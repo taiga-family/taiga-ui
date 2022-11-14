@@ -62,6 +62,7 @@
             <tui-hosted-dropdown
                 [content]="template ? dropdown : content"
                 [canOpen]="canOpen"
+                [sided]="sided"
                 [tuiDropdownAlign]="dropdownAlign"
                 [tuiDropdownDirection]="dropdownDirection"
                 [tuiDropdownLimitWidth]="dropdownLimitWidth"
@@ -134,6 +135,14 @@
                 [(documentationPropertyValue)]="content"
             >
                 Content inside a dropdown
+            </ng-template>
+            <ng-template
+                documentationPropertyName="sided"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="sided"
+            >
+                Whether dropdown should appear on the side or not
             </ng-template>
         </tui-doc-documentation>
         <dropdown-documentation></dropdown-documentation>
