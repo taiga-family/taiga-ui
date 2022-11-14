@@ -37,6 +37,11 @@ import {map, startWith} from 'rxjs/operators';
 
 import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.directive';
 
+export interface TuiHostedDropdownContext
+    extends TuiContextWithImplicit<TuiActiveZoneDirective> {
+    close(): void;
+}
+
 @Component({
     selector: `tui-hosted-dropdown`,
     templateUrl: `./hosted-dropdown.template.html`,
@@ -56,9 +61,16 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
 
     private readonly manual$ = new BehaviorSubject(false);
 
+    @ViewChild(TuiActiveZoneDirective)
+    readonly activeZone!: TuiActiveZoneDirective;
+
     @Input()
     @tuiDefaultProp()
-    content: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>> = ``;
+    content: PolymorpheusContent<TuiHostedDropdownContext> = ``;
+
+    @Input()
+    @tuiDefaultProp()
+    sided = false;
 
     @Input()
     @tuiDefaultProp()
@@ -193,6 +205,8 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         this.open = open;
         this.openChange.emit(open);
     }
+
+    readonly close = (): void => this.updateOpen(false);
 
     private get hostEditable(): boolean {
         return tuiIsElementEditable(this.computedHost);

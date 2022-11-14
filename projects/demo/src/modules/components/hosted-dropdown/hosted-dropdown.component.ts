@@ -45,6 +45,8 @@ export class ExampleTuiHostedDropdownComponent extends AbstractExampleTuiDropdow
 
     open = false;
 
+    sided = false;
+
     input = ``;
 
     canOpenVariants = [true, `getter this.input.length > 2`];
