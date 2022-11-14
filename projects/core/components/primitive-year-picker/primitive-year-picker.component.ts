@@ -113,6 +113,7 @@ export class TuiPrimitiveYearPickerComponent {
         return null;
     }
 
+    // eslint-disable-next-line complexity
     getItemRange(item: number): TuiRangeState | null {
         const {value, hoveredItem} = this;
 

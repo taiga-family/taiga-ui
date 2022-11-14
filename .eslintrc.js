@@ -8,7 +8,7 @@ console.log('CI mode', CI_MODE);
 module.exports = {
     root: true,
     extends: [
-        '@tinkoff/eslint-config/errors',
+        '@tinkoff/eslint-config',
         '@tinkoff/eslint-config-angular',
         '@tinkoff/eslint-config-angular/html',
         '@tinkoff/eslint-config-angular/rxjs',
@@ -107,5 +107,22 @@ module.exports = {
             },
         ],
         '@taiga-ui/prefer-inject-decorator': 'error',
+        // TODO: move to @tinkoff/eslint-config-angular
+        '@typescript-eslint/no-shadow': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/no-empty-function': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
+        'eslint-comments/no-unlimited-disable': 'off',
+        'eslint-comments/disable-enable-pair': 'off',
+        'import/no-dynamic-require': 'off',
+        'promise/catch-or-return': 'off',
+        'max-nested-callbacks': 'off',
+        'import/no-deprecated': 'off',
+        'prefer-destructuring': 'off',
+        'promise/no-nesting': 'off',
+        'spaced-comment': 'off',
+        'no-loop-func': 'off',
+        'no-bitwise': 'off',
     },
 };

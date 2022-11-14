@@ -98,8 +98,8 @@ export class TuiDropdownComponent {
         const offsetX = position === `fixed` ? 0 : -clientRect.left;
         const offsetY = position === `fixed` ? 0 : -clientRect.top;
 
-        top = top + offsetY;
-        left = left + offsetX;
+        top += offsetY;
+        left += offsetX;
 
         const isIntersecting =
             left < rect.right &&

@@ -31,5 +31,5 @@ export function tuiDescribeSector(startAngle: number, endAngle: number): string 
         `L 0 0`,
     ];
 
-    return isNaN(endX) ? EMPTY : result.join(` `);
+    return Number.isNaN(endX) ? EMPTY : result.join(` `);
 }

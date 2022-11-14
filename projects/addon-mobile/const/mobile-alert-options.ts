@@ -20,7 +20,7 @@ export const TUI_IOS_ALERT_OPTIONS: TuiIosAlertOptions = {
     ...MOBILE_ALERT_OPTIONS,
 };
 
-export interface TuiAndroidAlertOptions extends TuiIosAlertOptions {}
+export type TuiAndroidAlertOptions = TuiIosAlertOptions;
 
 export const TUI_ANDROID_ALERT_OPTIONS: TuiAndroidAlertOptions = {
     dismissible: true,

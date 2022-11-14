@@ -76,12 +76,6 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @tuiDefaultProp()
     canOpen = true;
 
-    @Input()
-    @tuiDefaultProp()
-    set open(open: boolean) {
-        this.manual$.next(open);
-    }
-
     @Output()
     readonly openChange = new EventEmitter<boolean>();
 
@@ -101,6 +95,12 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         private readonly hover$: Observable<boolean> | null,
         @Inject(ElementRef) private readonly elementRef: ElementRef,
     ) {}
+
+    @Input()
+    @tuiDefaultProp()
+    set open(open: boolean) {
+        this.manual$.next(open);
+    }
 
     get open(): boolean {
         return this.manual$.value;

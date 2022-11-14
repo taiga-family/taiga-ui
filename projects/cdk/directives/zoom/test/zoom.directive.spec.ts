@@ -18,7 +18,7 @@ xdescribe(`TuiZoom directive`, () => {
         scale = 1;
 
         onZoom({delta}: TuiZoom): void {
-            this.scale = this.scale - delta;
+            this.scale -= delta;
         }
     }
 

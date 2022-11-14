@@ -19,32 +19,15 @@ export class TuiMediaDirective {
 
     @Input()
     @HostBinding(`volume`)
-    @tuiDefaultProp((volume: number) => isFinite(volume) && volume >= 0 && volume <= 1)
+    @tuiDefaultProp(
+        (volume: number) => Number.isFinite(volume) && volume >= 0 && volume <= 1,
+    )
     volume = 1;
 
     @Input(`playbackRate`)
     @tuiRequiredSetter(nonNegativeFiniteAssertion)
     set playbackRateSetter(playbackRate: number) {
         this.updatePlaybackRate(playbackRate);
-    }
-
-    @Input()
-    @tuiRequiredSetter(nonNegativeFiniteAssertion)
-    set currentTime(currentTime: number) {
-        if (Math.abs(currentTime - this.currentTime) > 0.05) {
-            this.elementRef.nativeElement.currentTime = currentTime;
-        }
-    }
-
-    @Input()
-    set paused(paused: boolean) {
-        if (paused) {
-            this.elementRef.nativeElement.pause();
-        } else {
-            // eslint-disable-next-line @typescript-eslint/no-floating-promises
-            this.elementRef.nativeElement.play();
-            this.updatePlaybackRate(this.playbackRate);
-        }
     }
 
     @Output()
@@ -61,12 +44,31 @@ export class TuiMediaDirective {
         private readonly elementRef: ElementRef<HTMLMediaElement>,
     ) {}
 
-    get paused(): boolean {
-        return this.elementRef.nativeElement.paused;
+    @Input()
+    @tuiRequiredSetter(nonNegativeFiniteAssertion)
+    set currentTime(currentTime: number) {
+        if (Math.abs(currentTime - this.currentTime) > 0.05) {
+            this.elementRef.nativeElement.currentTime = currentTime;
+        }
     }
 
     get currentTime(): number {
         return this.elementRef.nativeElement.currentTime;
+    }
+
+    @Input()
+    set paused(paused: boolean) {
+        if (paused) {
+            this.elementRef.nativeElement.pause();
+        } else {
+            // eslint-disable-next-line @typescript-eslint/no-floating-promises
+            this.elementRef.nativeElement.play();
+            this.updatePlaybackRate(this.playbackRate);
+        }
+    }
+
+    get paused(): boolean {
+        return this.elementRef.nativeElement.paused;
     }
 
     // @bad TODO: Make sure no other events can affect this like network issues etc.
@@ -103,5 +105,5 @@ export class TuiMediaDirective {
 }
 
 function nonNegativeFiniteAssertion(value: number): boolean {
-    return isFinite(value) && value >= 0;
+    return Number.isFinite(value) && value >= 0;
 }

@@ -54,7 +54,7 @@ export class TuiLinearMultiPickerComponent {
     }
 
     private onPicker(x: number): void {
-        if (isNaN(this.index)) {
+        if (Number.isNaN(this.index)) {
             this.updateIndex(this.value.length);
             this.value = [...this.value, 0];
         }

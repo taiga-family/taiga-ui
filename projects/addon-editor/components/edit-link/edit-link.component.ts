@@ -28,13 +28,6 @@ type TuiLinkPrefix = typeof HASH_PREFIX | typeof HTTPS_PREFIX | typeof HTTP_PREF
 export class TuiEditLinkComponent {
     private isOnlyAnchorMode: boolean = this.detectAnchorMode();
 
-    @Input()
-    @tuiDefaultProp()
-    set anchorMode(mode: boolean) {
-        this.isOnlyAnchorMode = mode;
-        this.prefix = mode ? HASH_PREFIX : this.makeDefaultPrefix();
-    }
-
     @Output()
     readonly addLink = new EventEmitter<string>();
 
@@ -56,6 +49,13 @@ export class TuiEditLinkComponent {
         readonly texts$: TuiInjectionTokenType<typeof TUI_EDITOR_LINK_TEXTS>,
         @Inject(TuiTiptapEditorService) private readonly editor: AbstractTuiEditor,
     ) {}
+
+    @Input()
+    @tuiDefaultProp()
+    set anchorMode(mode: boolean) {
+        this.isOnlyAnchorMode = mode;
+        this.prefix = mode ? HASH_PREFIX : this.makeDefaultPrefix();
+    }
 
     get anchorMode(): boolean {
         return this.isOnlyAnchorMode;
@@ -175,11 +175,15 @@ export class TuiEditLinkComponent {
             this.prefix = this.isOnlyAnchorMode ? HASH_PREFIX : HTTP_PREFIX;
 
             return url.replace(HTTP_PREFIX, ``);
-        } else if (url.startsWith(HTTPS_PREFIX)) {
+        }
+
+        if (url.startsWith(HTTPS_PREFIX)) {
             this.prefix = this.isOnlyAnchorMode ? HASH_PREFIX : HTTPS_PREFIX;
 
             return url.replace(HTTPS_PREFIX, ``);
-        } else if (url.startsWith(HASH_PREFIX)) {
+        }
+
+        if (url.startsWith(HASH_PREFIX)) {
             this.prefix = HASH_PREFIX;
 
             return url.replace(HASH_PREFIX, ``);

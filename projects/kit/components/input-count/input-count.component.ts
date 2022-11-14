@@ -180,7 +180,7 @@ export class TuiInputCountComponent
     onValueChange(): void {
         const capped = this.capValue(this.nativeNumberValue);
 
-        if (capped === null || isNaN(capped)) {
+        if (capped === null || Number.isNaN(capped)) {
             return;
         }
 
@@ -263,7 +263,7 @@ export class TuiInputCountComponent
     private capValue(value: number): number | null {
         const capped = Math.min(value, this.max);
 
-        return isNaN(capped) || capped < this.min ? null : capped;
+        return Number.isNaN(capped) || capped < this.min ? null : capped;
     }
 
     private onBlur(): void {

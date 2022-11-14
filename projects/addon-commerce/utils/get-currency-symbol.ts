@@ -1,6 +1,7 @@
 import {TuiCurrency, TuiCurrencyCode} from '@taiga-ui/addon-commerce/enums';
 import {TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
 
+// eslint-disable-next-line complexity
 export function tuiGetCurrencySymbol(currency: TuiCurrencyVariants): string | null {
     switch (currency) {
         case TuiCurrency.Ruble:

@@ -145,7 +145,7 @@ describe(`InputTime`, () => {
     });
 
     describe(`Keyboard control`, () => {
-        beforeEach(async () => await fixture.whenStable());
+        beforeEach(async () => fixture.whenStable());
 
         it(`If the cursor is at position 0, then pressing UP increases the hour by 1`, () => {
             input.focus();

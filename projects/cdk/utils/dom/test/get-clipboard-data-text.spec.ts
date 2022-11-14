@@ -8,7 +8,7 @@ xdescribe(`getClipboardDataText`, () => {
 
         clipboardData.setData(`text/plain`, data);
 
-        const event = new ClipboardEvent(`copy`, {clipboardData: clipboardData});
+        const event = new ClipboardEvent(`copy`, {clipboardData});
 
         expect(tuiGetClipboardDataText(event)).toEqual(data);
     });

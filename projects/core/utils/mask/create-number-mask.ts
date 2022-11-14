@@ -29,6 +29,7 @@ export function tuiCreateNumberMask({
     tuiAssert.assert(Number.isInteger(integerLimit));
     tuiAssert.assert(integerLimit >= 0);
 
+    // eslint-disable-next-line max-statements
     return (rawValue, {previousConformedValue}) => {
         if (previousConformedValue && requireDecimal) {
             const conformedWithoutSeparator = rawValue.split(thousandSymbol).join(``);
@@ -143,7 +144,9 @@ function preventLeadingZeroes(
 
     if (isCaretTrap && leadingZerosAmount === 1) {
         return mask;
-    } else if (isCaretTrap) {
+    }
+
+    if (isCaretTrap) {
         mask.unshift(NON_ZERO_DIGIT);
 
         return mask;

@@ -30,7 +30,7 @@ function calculate(
         return value;
     }
 
-    tuiAssert.assert(!isNaN(value), `Value must be number`);
+    tuiAssert.assert(!Number.isNaN(value), `Value must be number`);
     tuiAssert.assert(Number.isInteger(precision), `Precision must be integer`);
 
     precision = Math.min(precision, MAX_PRECISION);

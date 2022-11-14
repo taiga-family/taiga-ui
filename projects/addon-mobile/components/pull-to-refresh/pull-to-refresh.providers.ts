@@ -38,7 +38,7 @@ export const TUI_PULL_TO_REFRESH_PROVIDERS: Provider[] = [
                 loaded$.pipe(mapTo(NaN)),
             ).pipe(
                 scan((max, current) => {
-                    if (isNaN(current)) {
+                    if (Number.isNaN(current)) {
                         return 0;
                     }
 

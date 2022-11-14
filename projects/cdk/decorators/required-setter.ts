@@ -7,12 +7,12 @@ import {TuiBooleanHandler} from '@taiga-ui/cdk/types';
  * It specifically checks for undefined values and prevents calls to the
  * original setter in this case.
  */
-export function tuiRequiredSetter<T extends object, K extends keyof T>(
+export function tuiRequiredSetter<T extends Record<string, any>, K extends keyof T>(
     assertion?: TuiBooleanHandler<T[K]>,
     ...args: any[]
 ): MethodDecorator {
     return (
-        target: object,
+        target: Record<string, any>,
         key,
         {configurable, enumerable, get, set}: PropertyDescriptor,
     ): PropertyDescriptor => {

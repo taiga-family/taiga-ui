@@ -63,9 +63,9 @@ export class TuiBadgeComponent {
 
         if (tuiIsNumber(value) && value > 99) {
             return `99+`;
-        } else {
-            return String(this.value);
         }
+
+        return String(this.value);
     }
 
     @HostBinding(`class._empty-value`)

@@ -18,10 +18,10 @@ export class TuiRingChartExample2 {
     index = NaN;
 
     get sum(): number {
-        return isNaN(this.index) ? this.total : this.value[this.index];
+        return Number.isNaN(this.index) ? this.total : this.value[this.index];
     }
 
     get label(): string {
-        return isNaN(this.index) ? `Total` : this.labels[this.index];
+        return Number.isNaN(this.index) ? `Total` : this.labels[this.index];
     }
 }

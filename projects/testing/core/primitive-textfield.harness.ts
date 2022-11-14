@@ -4,10 +4,10 @@ export class TuiPrimitiveTextfieldHarness extends TuiComponentHarness {
     static hostSelector = `tui-primitive-textfield`;
 
     async valueDecorationText(): Promise<string> {
-        return await (await this.locatorFor(`tui-value-decoration`)()).text();
+        return (await this.locatorFor(`tui-value-decoration`)()).text();
     }
 
     async inputPlaceholder(): Promise<string> {
-        return await (await this.locatorFor(`input`)()).getProperty(`placeholder`);
+        return (await this.locatorFor(`input`)()).getProperty(`placeholder`);
     }
 }

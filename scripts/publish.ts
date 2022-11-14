@@ -38,7 +38,7 @@ const path = getValueByFlag<string>(`--path`, ``);
 })();
 
 function makeTag(version: string, versions: string[]): string {
-    const currentMajor = parseInt(version);
+    const currentMajor = parseInt(version, 10);
     const maxMajorVersion = getLastMajorVersion(versions, currentMajor);
     const tagFlag = maxMajorVersion > currentMajor ? `--tag v${currentMajor}-lts` : ``;
 
