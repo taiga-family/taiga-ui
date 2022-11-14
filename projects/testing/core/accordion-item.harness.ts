@@ -5,6 +5,7 @@ import {TuiSvgHarness} from './svg.harness';
 
 export class TuiAccordionItemHarness extends TuiContentContainerComponentHarness {
     static hostSelector = `tui-accordion-item`;
+
     private readonly wrapper = this.locatorFor(`.t-wrapper`);
 
     async getTitle(): Promise<string> {
@@ -16,11 +17,11 @@ export class TuiAccordionItemHarness extends TuiContentContainerComponentHarness
     }
 
     async clickHeader(): Promise<void> {
-        return await (await this.locatorFor(`.t-header`)()).click();
+        return (await this.locatorFor(`.t-header`)()).click();
     }
 
     async getBorders(): Promise<string | null> {
-        return await (await this.host()).getAttribute(`data-tui-host-borders`);
+        return (await this.host()).getAttribute(`data-tui-host-borders`);
     }
 
     async hasArrow(): Promise<boolean> {
@@ -32,18 +33,18 @@ export class TuiAccordionItemHarness extends TuiContentContainerComponentHarness
     }
 
     async focus(): Promise<void> {
-        return await (await this.wrapper()).focus();
+        return (await this.wrapper()).focus();
     }
 
     async sendSpaceKey(): Promise<void> {
-        return await (await this.wrapper()).sendKeys(` `);
+        return (await this.wrapper()).sendKeys(` `);
     }
 
     async sendEscKey(): Promise<void> {
-        return await (await this.wrapper()).sendKeys(TestKey.ESCAPE);
+        return (await this.wrapper()).sendKeys(TestKey.ESCAPE);
     }
 
     async sendEnterKey(): Promise<void> {
-        return await (await this.wrapper()).sendKeys(TestKey.ENTER);
+        return (await this.wrapper()).sendKeys(TestKey.ENTER);
     }
 }
