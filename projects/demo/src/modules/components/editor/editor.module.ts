@@ -6,7 +6,8 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiEditorModule, TuiEditorSocketModule} from '@taiga-ui/addon-editor';
 import {
     TuiButtonModule,
-    TuiLinkModule, TuiLoaderModule,
+    TuiLinkModule,
+    TuiLoaderModule,
     TuiNotificationModule,
     TuiSvgModule,
 } from '@taiga-ui/core';

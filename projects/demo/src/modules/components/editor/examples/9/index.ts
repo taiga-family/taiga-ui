@@ -9,10 +9,10 @@ import {
     TuiEditorComponent,
     TuiEditorTool,
 } from '@taiga-ui/addon-editor';
-
-import {FileIoService} from './filesio.service';
 import {forkJoin} from 'rxjs';
 import {finalize} from 'rxjs/operators';
+
+import {FileIoService} from './filesio.service';
 
 @Component({
     selector: `tui-editor-example-9`,
