@@ -19,6 +19,9 @@ export const defaultEditorExtensions = [
     import(`@taiga-ui/addon-editor/extensions/jump-anchor`).then(
         ({TuiJumpAnchor}) => TuiJumpAnchor,
     ),
+    import(`@taiga-ui/addon-editor/extensions/file-link`).then(
+        ({TuiFileLink}) => TuiFileLink,
+    ),
     import(`@taiga-ui/addon-editor/extensions/background-color`).then(
         ({BackgroundColor}) => BackgroundColor,
     ),

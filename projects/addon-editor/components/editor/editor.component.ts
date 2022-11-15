@@ -4,10 +4,12 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
+    EventEmitter,
     Inject,
     Input,
     OnDestroy,
     Optional,
+    Output,
     Self,
     ViewChild,
 } from '@angular/core';
@@ -20,6 +22,7 @@ import {
     TuiTiptapEditorService,
 } from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
+import {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
 import {TIPTAP_EDITOR, TUI_EDITOR_CONTENT_PROCESSOR} from '@taiga-ui/addon-editor/tokens';
 import {tuiIsSafeLinkRange} from '@taiga-ui/addon-editor/utils';
 import {
@@ -57,6 +60,9 @@ export class TuiEditorComponent
     @Input()
     @tuiDefaultProp()
     tools: readonly TuiEditorTool[] = defaultEditorTools;
+
+    @Output()
+    fileAttached = new EventEmitter<TuiEditorAttachedFile[]>();
 
     @ViewChild(TuiToolbarComponent)
     readonly toolbar?: TuiToolbarComponent;

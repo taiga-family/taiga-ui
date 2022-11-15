@@ -15,6 +15,7 @@
             *ngIf="editorLoaded"
             [tools]="tools"
             [disabled]="!interactive"
+            (fileAttached)="fileAttached.emit($event)"
         >
             <ng-content select="tools"></ng-content>
         </tui-toolbar>

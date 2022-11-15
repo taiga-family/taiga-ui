@@ -132,6 +132,7 @@
             </ng-template>
         </tui-hosted-dropdown>
         <tui-hosted-dropdown
+            *ngIf="enabled(TuiEditorTool.Anchor)"
             #anchor
             class="t-wrapper"
             [canOpen]="canOpenAnchor"
@@ -157,22 +158,33 @@
                 ></tui-edit-link>
             </ng-template>
         </tui-hosted-dropdown>
-        <button
-            *ngIf="enabled(TuiEditorTool.Attach)"
-            #button
-            tuiIconButton
-            tuiItem
-            type="button"
-            size="s"
-            icon="tuiIconAttachLarge"
-            appearance="icon"
-            tuiHintDirection="top-left"
-            class="t-tool t-tool_margin"
-            [tuiHint]="texts.attach"
-            [tuiHintDescribe]="''"
-            [focusable]="false"
-            (click)="onAttach()"
-        ></button>
+        <ng-container *ngIf="enabled(TuiEditorTool.Attach)">
+            <button
+                #button
+                tuiIconButton
+                tuiItem
+                type="button"
+                size="s"
+                icon="tuiIconAttachLarge"
+                appearance="icon"
+                tuiHintDirection="top-left"
+                class="t-tool t-tool_margin"
+                [tuiHint]="texts.attach"
+                [tuiHintDescribe]="''"
+                [focusable]="false"
+                (click)="fileUpload.click()"
+            ></button>
+
+            <input
+                #fileUpload
+                type="file"
+                class="t-file-upload"
+                [accept]="attachOptions.accept"
+                [multiple]="attachOptions.multiple"
+                [tuiFocusable]="false"
+                (change)="onAttach(fileUpload)"
+            />
+        </ng-container>
     </div>
     <div
         *ngIf="enabled(TuiEditorTool.Sub) || enabled(TuiEditorTool.Sup)"
