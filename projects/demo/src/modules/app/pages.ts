@@ -1155,6 +1155,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
+                title: `IsPresent`,
+                keywords: `present, существует, ngif, if, пайп, pipe, null, undefined, nil`,
+                route: `/pipes/is-present`,
+            },
+            {
+                section: $localize`Tools`,
                 title: `Mapper`,
                 keywords: `mapper, мап, преобразование, пайп, pipe`,
                 route: `/pipes/mapper`,
