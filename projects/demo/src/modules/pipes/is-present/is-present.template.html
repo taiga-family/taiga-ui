@@ -1,0 +1,55 @@
+<tui-doc-page
+    header="IsPresent"
+    package="CDK"
+    type="pipes"
+>
+    <ng-template
+        i18n
+        pageTab
+    >
+        Pipe wrapper for
+        <a
+            tuiLink
+            routerLink="/utils/miscellaneous"
+            fragment="isPresent"
+        >
+            <code>IsPresent</code>
+        </a>
+        function
+
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
+            <tui-is-present-example1></tui-is-present-example1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>
+                    Import
+                    <code>TuiIsPresentPipeModule</code>
+                    into a module where you want to use our pipe
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Use pipe in template:</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleHtml"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>
