@@ -1,5 +1,6 @@
 export * from '@taiga-ui/addon-editor/extensions/background-color';
 export * from '@taiga-ui/addon-editor/extensions/default-editor-extensions';
+export * from '@taiga-ui/addon-editor/extensions/file-link';
 export * from '@taiga-ui/addon-editor/extensions/font-color';
 export * from '@taiga-ui/addon-editor/extensions/font-size';
 export * from '@taiga-ui/addon-editor/extensions/group';
