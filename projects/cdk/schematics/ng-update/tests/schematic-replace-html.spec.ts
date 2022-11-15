@@ -50,6 +50,38 @@ const TEMPLATE_BEFORE = `
     <div class="dropdown">But there is nothing to choose...</div>
 </ng-template>
 
+<tui-hosted-dropdown
+    tuiDropdownAlign="right"
+    [tuiDropdownSided]="false"
+    [content]="dropdown"
+    [(open)]="open"
+>
+    <button
+        tuiButton
+        type="button"
+        appearance="flat"
+        [iconRight]="icon"
+    >
+        Button
+    </button>
+</tui-hosted-dropdown>
+
+<tui-hosted-dropdown
+    tuiDropdownAlign="right"
+    [tuiDropdownSided]="true"
+    [content]="dropdown"
+    [(open)]="open"
+>
+    <button
+        tuiButton
+        type="button"
+        appearance="flat"
+        [iconRight]="icon"
+    >
+        Button
+    </button>
+</tui-hosted-dropdown>
+
 <label
     tuiLabel
     label="Step"
@@ -197,6 +229,22 @@ const TEMPLATE_BEFORE = `
     [link]="contentLink"
 >
 </tui-input-files>
+
+<tui-hosted-dropdown
+    tuiDropdownAlign="left"
+    tuiDropdownSided
+    [content]="dropdown"
+    [(open)]="open"
+>
+    <button
+        tuiButton
+        type="button"
+        appearance="flat"
+        [iconRight]="icon"
+    >
+        Button
+    </button>
+</tui-hosted-dropdown>
 `;
 
 const TEMPLATE_AFTER = `<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe has new API. See https://taiga-ui.dev/pipes/format-number -->
@@ -214,6 +262,38 @@ const TEMPLATE_AFTER = `<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe has
 <ng-template #dropdownContent>
     <div class="dropdown">But there is nothing to choose...</div>
 </ng-template>
+
+<tui-hosted-dropdown
+    tuiDropdownAlign="right"
+    [sided]="false"
+    [content]="dropdown"
+    [(open)]="open"
+>
+    <button
+        tuiButton
+        type="button"
+        appearance="flat"
+        [iconRight]="icon"
+    >
+        Button
+    </button>
+</tui-hosted-dropdown>
+
+<tui-hosted-dropdown
+    tuiDropdownAlign="right"
+    [sided]="true"
+    [content]="dropdown"
+    [(open)]="open"
+>
+    <button
+        tuiButton
+        type="button"
+        appearance="flat"
+        [iconRight]="icon"
+    >
+        Button
+    </button>
+</tui-hosted-dropdown>
 
 <label
     ${''}
@@ -365,6 +445,22 @@ const TEMPLATE_AFTER = `<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe has
         </a>
     </ng-container>
 </tui-breadcrumbs>
+
+<tui-hosted-dropdown
+    tuiDropdownAlign="left"
+    [sided]="true"
+    [content]="dropdown"
+    [(open)]="open"
+>
+    <button
+        tuiButton
+        type="button"
+        appearance="flat"
+        [iconRight]="icon"
+    >
+        Button
+    </button>
+</tui-hosted-dropdown>
 
 <tui-input-files
     [content]="contentLabel"

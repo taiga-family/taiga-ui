@@ -376,11 +376,15 @@ function migrateBinaryAttributes({
     const templateOffset = getTemplateOffset(resource);
 
     TRUTHY_BOOLEAN_INPUT_TO_HTML_BINARY_ATTRIBUTE.forEach(attrName => {
-        const elements = findElementsInTemplateByFn(template, el =>
-            el.attrs?.some(
-                attr =>
-                    attr.value === 'true' && attr.name.includes(attrName.toLowerCase()),
-            ),
+        const elements = findElementsInTemplateByFn(
+            template,
+            el =>
+                el.tagName !== `tui-hosted-dropdown` &&
+                el.attrs?.some(
+                    attr =>
+                        attr.value === 'true' &&
+                        attr.name.includes(attrName.toLowerCase()),
+                ),
         );
 
         elements.forEach(el => {
