@@ -2,6 +2,7 @@ import {
     BaseHarnessFilters,
     ComponentHarness,
     ComponentHarnessConstructor,
+    ContentContainerComponentHarness,
     HarnessPredicate,
 } from '@angular/cdk/testing';
 
@@ -43,6 +44,15 @@ export function tuiHarnessWith<T>(
 }
 
 export class TuiComponentHarness extends ComponentHarness {
+    static with<T extends ComponentHarness>(
+        this: ComponentHarnessConstructor<T>,
+        options: BaseHarnessFilters,
+    ): HarnessPredicate<T> {
+        return new HarnessPredicate(this, options);
+    }
+}
+
+export class TuiContentContainerComponentHarness extends ContentContainerComponentHarness {
     static with<T extends ComponentHarness>(
         this: ComponentHarnessConstructor<T>,
         options: BaseHarnessFilters,
