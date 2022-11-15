@@ -1,4 +1,9 @@
-import {LocationStrategy, PathLocationStrategy} from '@angular/common';
+import {
+    APP_BASE_HREF,
+    DOCUMENT,
+    LocationStrategy,
+    PathLocationStrategy,
+} from '@angular/common';
 import {inject, Provider} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
@@ -49,6 +54,11 @@ export const HIGHLIGHT_OPTIONS_VALUE = {
 export const APP_PROVIDERS: Provider[] = [
     Title,
     PROMPT_PROVIDER,
+    {
+        provide: APP_BASE_HREF,
+        // @note: By default, on webcontainer.io will not be provided APP_BASE_HREF, we use fallback
+        useFactory: () => inject(DOCUMENT).getElementsByTagName(`base`)?.[0]?.href || `/`,
+    },
     {
         provide: HIGHLIGHT_OPTIONS,
         useValue: HIGHLIGHT_OPTIONS_VALUE,
