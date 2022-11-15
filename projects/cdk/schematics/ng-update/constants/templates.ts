@@ -485,6 +485,24 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
             attrName: 'id',
         },
     },
+    {
+        from: {
+            attrName: `[tuiDropdownSided]`,
+            withTagNames: ['tui-hosted-dropdown'],
+        },
+        to: {
+            attrName: '[sided]',
+        },
+    },
+    {
+        from: {
+            attrName: `tuiDropdownSided`,
+            withTagNames: ['tui-hosted-dropdown'],
+        },
+        to: {
+            attrName: '[sided]="true"',
+        },
+    },
 ];
 
 export const INPUTS_TO_REMOVE: InputToRemove[] = [
