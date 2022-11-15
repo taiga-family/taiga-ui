@@ -3,37 +3,6 @@
 :host {
     .textfield-input();
 
-    /* stylelint-disable */
-    /* Safari autofill icons */
-    //noinspection ALL
-    &::-webkit-caps-lock-indicator {
-        margin-right: 0.375rem;
-        align-self: center;
-
-        :host-context(tui-primitive-textfield[data-size='l']:not(._label-outside)) & {
-            margin-top: -1.25rem;
-        }
-    }
-
-    //noinspection ALL
-    &::-webkit-credentials-auto-fill-button,
-    &::-webkit-contacts-auto-fill-button,
-    &::-webkit-credit-card-auto-fill-button {
-        background-color: var(--tui-text-03);
-
-        :host-context(tui-primitive-textfield[data-size='l']:not(._label-outside)) & {
-            margin-top: -1.25rem;
-        }
-    }
-
-    //noinspection ALL
-    &::-webkit-credentials-auto-fill-button:hover,
-    &::-webkit-contacts-auto-fill-button:hover,
-    &::-webkit-credit-card-auto-fill-button:hover {
-        background-color: var(--tui-text-02);
-    }
-    /* stylelint-enable */
-
     &::placeholder {
         color: var(--tui-text-03);
         opacity: 0;
@@ -47,6 +16,15 @@
     :host-context(tui-primitive-textfield._focused:not(._readonly))::placeholder,
     :host-context(tui-text-area._focused:not(._readonly))::placeholder {
         opacity: 1;
+    }
+
+    //noinspection ALL
+    &::-webkit-caps-lock-indicator,
+    &::-webkit-contacts-auto-fill-button,
+    &::-webkit-credit-card-auto-fill-button,
+    &::-webkit-credentials-auto-fill-button,
+    &::-webkit-strong-password-auto-fill-button {
+        .webkit-auto-fill-button-hidden();
     }
 }
 
