@@ -4,6 +4,7 @@
 [![All packages CI](https://github.com/tinkoff/taiga-ui/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/tinkoff/taiga-ui/actions/workflows/build.yml)
 [![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white)](https://discord.gg/Us8d8JVaTg)
 [![angular-open-source-starter](https://img.shields.io/badge/made%20with-angular--open--source--starter-d81676?logo=angular)](https://github.com/tinkoff/angular-open-source-starter)
+[![Codeflow](https://img.shields.io/badge/codeflow-pr.new-blue)](https://pr.new/github.com/tinkoff/taiga-ui)
 
 [Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) • [Core team](#core-team) •
 [Figma](https://www.figma.com/community/file/966347242613098831)
@@ -53,7 +54,8 @@ use to design your app with Taiga UI components.
 
 ## Contributing
 
-See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide
+See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
+[make pull request](https://pr.new/github.com/tinkoff/taiga-ui) online from Web IDE.
 
 ## Core team
 
