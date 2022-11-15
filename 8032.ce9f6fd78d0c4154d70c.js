@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[8032],{8032:e=>{e.exports=".editor {\n    ::ng-deep .tui-editor-socket .ProseMirror {\n        min-height: 10rem;\n    }\n}\n"}}]);
