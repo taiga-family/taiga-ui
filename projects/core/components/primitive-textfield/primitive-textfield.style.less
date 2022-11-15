@@ -85,39 +85,21 @@ input {
     /* stylelint-disable */
     /* Safari autofill icons */
     //noinspection CssInvalidPseudoSelector
-    &::-webkit-caps-lock-indicator {
-        margin-right: 0.375rem;
-        align-self: center;
-
-        :host[data-size='l']:not(._label-outside) & {
-            margin-top: -1.25rem;
-        }
-    }
-
-    //noinspection CssInvalidPseudoSelector
-    &::-webkit-credentials-auto-fill-button,
-    &::-webkit-contacts-auto-fill-button,
-    &::-webkit-credit-card-auto-fill-button {
-        background-color: var(--tui-text-03);
-
-        :host[data-size='l']:not(._label-outside) & {
-            margin-top: -1.25rem;
-        }
-    }
-
-    //noinspection CssInvalidPseudoSelector
-    &::-webkit-credentials-auto-fill-button:hover,
-    &::-webkit-contacts-auto-fill-button:hover,
-    &::-webkit-credit-card-auto-fill-button:hover {
-        background-color: var(--tui-text-02);
-    }
-
     &:-webkit-autofill,
     &:-webkit-autofill::first-line {
         font-size: inherit;
         line-height: inherit;
     }
     /* stylelint-enable */
+
+    //noinspection ALL
+    &::-webkit-caps-lock-indicator,
+    &::-webkit-contacts-auto-fill-button,
+    &::-webkit-credit-card-auto-fill-button,
+    &::-webkit-credentials-auto-fill-button,
+    &::-webkit-strong-password-auto-fill-button {
+        .webkit-auto-fill-button-hidden();
+    }
 }
 
 .t-text-template {
