@@ -12,9 +12,7 @@ import {TuiSelectOptionComponent} from '@taiga-ui/kit/components/select-option';
 export class TuiMultiSelectOptionComponent<T> extends TuiSelectOptionComponent<T> {
     get size(): TuiSizeL {
         return this.option.size === `l` ||
-            this.option.size === `m` ||
-            this.dataList?.size === `l` ||
-            (this.dataList?.size === `m` && !this.option.size)
+            (this.dataList?.size === `l` && !this.option.size)
             ? `l`
             : `m`;
     }
