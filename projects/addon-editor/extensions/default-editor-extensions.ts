@@ -18,6 +18,9 @@ export const defaultEditorExtensions = [
     import(`@taiga-ui/addon-editor/extensions/jump-anchor`).then(
         ({TuiJumpAnchor}) => TuiJumpAnchor,
     ),
+    import(`@taiga-ui/addon-editor/extensions/file-link`).then(
+        ({TuiFileLink}) => TuiFileLink,
+    ),
     import(`./background-color`).then(m => m.BackgroundColor),
     import(`@taiga-ui/addon-editor/extensions/table`).then(({TuiTable}) =>
         TuiTable.configure({resizable: true}),

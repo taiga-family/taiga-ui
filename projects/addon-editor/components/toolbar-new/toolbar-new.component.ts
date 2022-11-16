@@ -17,7 +17,10 @@ import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
+import {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
 import {
+    TUI_ATTACH_FILES_LOADER,
+    TUI_ATTACH_FILES_OPTIONS,
     TUI_EDITOR_OPTIONS,
     TUI_EDITOR_TOOLBAR_TEXTS,
     TUI_IMAGE_LOADER,
@@ -28,8 +31,10 @@ import {
     getClosestElement,
     isNativeFocusedIn,
     setNativeFocused,
+    tuiAssert,
     tuiDefaultProp,
     TuiHandler,
+    TuiInjectionTokenType,
 } from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {LanguageEditor} from '@taiga-ui/i18n';
@@ -73,7 +78,7 @@ export class TuiToolbarNewComponent {
     readonly texClicked = new EventEmitter<void>();
 
     @Output()
-    readonly attachClicked = new EventEmitter<void>();
+    readonly fileAttached = new EventEmitter<TuiEditorAttachedFile[]>();
 
     readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
 
@@ -96,6 +101,13 @@ export class TuiToolbarNewComponent {
         readonly texts$: Observable<LanguageEditor['toolbarTools']>,
         @Inject(TUI_EDITOR_OPTIONS)
         private readonly defaultOptions: TuiEditorOptions,
+        @Inject(TUI_ATTACH_FILES_OPTIONS)
+        readonly attachOptions: TuiInjectionTokenType<typeof TUI_ATTACH_FILES_OPTIONS>,
+        @Optional()
+        @Inject(TUI_ATTACH_FILES_LOADER)
+        private readonly filesLoader: TuiInjectionTokenType<
+            typeof TUI_ATTACH_FILES_LOADER
+        > | null,
     ) {}
 
     get focused(): boolean {
@@ -213,8 +225,20 @@ export class TuiToolbarNewComponent {
             });
     }
 
-    onAttach(): void {
-        this.attachClicked.emit();
+    onAttach(input: HTMLInputElement): void {
+        const files = Array.from(input.files || []);
+
+        input.value = ``;
+
+        if (!files) {
+            return;
+        }
+
+        tuiAssert.assert(!!this.filesLoader, `Please provide TUI_ATTACH_FILES_LOADER`);
+
+        this.filesLoader?.(files)
+            .pipe(take(1))
+            .subscribe(attachedFiles => this.fileAttached.emit(attachedFiles));
     }
 
     onTeX(): void {

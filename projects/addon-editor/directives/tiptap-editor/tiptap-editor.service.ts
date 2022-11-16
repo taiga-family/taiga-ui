@@ -2,6 +2,7 @@ import './tiptap-editor.types';
 
 import {Inject, Injectable} from '@angular/core';
 import {TuiEditor} from '@taiga-ui/addon-editor/abstract';
+import {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
 import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
 import {getMarkRange} from '@taiga-ui/addon-editor/utils';
 import type {Editor, Range} from '@tiptap/core';
@@ -323,5 +324,9 @@ export class TuiTiptapEditorService extends TuiEditor {
 
     removeAnchor(): void {
         this.editor.commands.removeAnchor();
+    }
+
+    setFileLink(preview: TuiEditorAttachedFile): void {
+        this.editor.commands.setFileLink(preview);
     }
 }
