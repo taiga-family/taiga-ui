@@ -6,6 +6,7 @@ import {TuiPrimitiveYearPickerHarness} from './primitive-year-picker.harness';
 
 export class TuiCalendarHarness extends TuiComponentHarness {
     static hostSelector = `tui-calendar`;
+
     private readonly getPrimitiveYearPickerHarness = this.locatorForOptional(
         TuiPrimitiveYearPickerHarness,
     );
