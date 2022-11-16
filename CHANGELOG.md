@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.10.0](https://github.com/tinkoff/taiga-ui/compare/v3.9.0...v3.10.0) (2022-11-16)
+
+### Features
+
+- **addon-editor:** improve ux for edit links ([#3008](https://github.com/tinkoff/taiga-ui/issues/3008))
+  ([b432f04](https://github.com/tinkoff/taiga-ui/commit/b432f0433049ecb36e76ae34691796d34dff6033))
+- **addon-editor:** support attach files ([#3056](https://github.com/tinkoff/taiga-ui/issues/3056))
+  ([7a3fbad](https://github.com/tinkoff/taiga-ui/commit/7a3fbad244df4e7905ac0f784857d162878e4a4c))
+- **addon-editor:** support nested counters in ordered list ([#3012](https://github.com/tinkoff/taiga-ui/issues/3012))
+  ([1fc6ee6](https://github.com/tinkoff/taiga-ui/commit/1fc6ee69358f3226916559d436a661398f60ccdb))
+- **addon-editor:** upgrade all tiptap dependencies ([#3001](https://github.com/tinkoff/taiga-ui/issues/3001))
+  ([c0ba4e3](https://github.com/tinkoff/taiga-ui/commit/c0ba4e3b8748ad46f9569251eac7fb6099cd7d3b))
+- **cdk:** implement `tuiIsPresent` pipe ([#3002](https://github.com/tinkoff/taiga-ui/issues/3002))
+  ([db4a29b](https://github.com/tinkoff/taiga-ui/commit/db4a29bf617b574815db7df13ffc319f1208dd35))
+- **core:** `DataList` add `size` input, deprecate `size` for `Option`
+  ([#3071](https://github.com/tinkoff/taiga-ui/issues/3071))
+  ([765ea01](https://github.com/tinkoff/taiga-ui/commit/765ea0129d1984d51700712395c18ac6d5ab6a71))
+- **core:** `HostedDropdown` add `sided` input and `close` method to context
+  ([#3060](https://github.com/tinkoff/taiga-ui/issues/3060))
+  ([60bd0db](https://github.com/tinkoff/taiga-ui/commit/60bd0dbc65af2bbd4f8562c1addefa1163e1a172))
+- **core:** change underline color for today cell in calendar ([#3037](https://github.com/tinkoff/taiga-ui/issues/3037))
+  ([331158a](https://github.com/tinkoff/taiga-ui/commit/331158a78bcf0794d1effe04a23ff4b7a3d8832d))
+- **testing:** accordion harness test ([#3018](https://github.com/tinkoff/taiga-ui/issues/3018))
+  ([5905545](https://github.com/tinkoff/taiga-ui/commit/590554541d16f11d9241f5641ce2c5c582338fe1))
+- **testing:** avatar harness test ([#3019](https://github.com/tinkoff/taiga-ui/issues/3019))
+  ([970e1d0](https://github.com/tinkoff/taiga-ui/commit/970e1d08f1584ef279abafd7621b398130cd0a9d))
+
+### Bug Fixes
+
+- **addon-commerce:** `InputExpire` fix translation in safari ([#3043](https://github.com/tinkoff/taiga-ui/issues/3043))
+  ([1a258c5](https://github.com/tinkoff/taiga-ui/commit/1a258c50960ee65745791367ea564c917a0e9e25))
+- **addon-commerce:** fix safari expire autofill ([#3015](https://github.com/tinkoff/taiga-ui/issues/3015))
+  ([c2aac4b](https://github.com/tinkoff/taiga-ui/commit/c2aac4b2ad5ede251da8b8fb1a66d8d8be70bb61))
+- **addon-doc:** scroll to last element in DOM if there are several
+  ([#3040](https://github.com/tinkoff/taiga-ui/issues/3040))
+  ([883db38](https://github.com/tinkoff/taiga-ui/commit/883db38ac63aad27e72819838bbf75afac023986))
+- **addon-editor:** support long words inside bulleted or ordered list
+  ([#3038](https://github.com/tinkoff/taiga-ui/issues/3038))
+  ([c93ae27](https://github.com/tinkoff/taiga-ui/commit/c93ae2781367565cf36455c268a3f7cc8f207696))
+- **addon-editor:** support write simple text after marked link
+  ([#3021](https://github.com/tinkoff/taiga-ui/issues/3021))
+  ([a2f0123](https://github.com/tinkoff/taiga-ui/commit/a2f01236e6df6974e8bf31315ac3b40bccb5135a))
+- **core:** `Dialog` fix padding ([#3009](https://github.com/tinkoff/taiga-ui/issues/3009))
+  ([0a68461](https://github.com/tinkoff/taiga-ui/commit/0a68461150e1e95564fe99e4a7bb86d9d018d0fa))
+- **core:** hide autofill button for Safari ([#3061](https://github.com/tinkoff/taiga-ui/issues/3061))
+  ([27a6aa2](https://github.com/tinkoff/taiga-ui/commit/27a6aa24205c1cb42a8eb88f872c624a946d1822))
+- **eslint-plugin:** broken `no-deep-imports` on `Windows`-OS ([#3053](https://github.com/tinkoff/taiga-ui/issues/3053))
+  ([a3451c2](https://github.com/tinkoff/taiga-ui/commit/a3451c28a809b1ad2afc32d13cfa7288bf4cc253))
+- **i18n:** fix french translations ([#3017](https://github.com/tinkoff/taiga-ui/issues/3017))
+  ([2afc420](https://github.com/tinkoff/taiga-ui/commit/2afc4207866f1afd3f71dfd82458e866f430a68e))
+- **kit:** icon in date-related components occupies space when hidden
+  ([#2966](https://github.com/tinkoff/taiga-ui/issues/2966))
+  ([27c2d79](https://github.com/tinkoff/taiga-ui/commit/27c2d79a7d1313a4372d04b5bfe93ba2f98afe2f))
+
 ## [3.9.0](https://github.com/tinkoff/taiga-ui/compare/v3.8.0...v3.9.0) (2022-10-31)
 
 ### Features
