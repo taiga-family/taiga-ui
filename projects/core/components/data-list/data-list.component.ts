@@ -62,7 +62,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     @Input()
     @HostBinding(`attr.data-list-size`)
     @tuiDefaultProp()
-    size = this.controller?.size || `l`;
+    size = this.controller?.size || `m`;
 
     constructor(
         @Optional()

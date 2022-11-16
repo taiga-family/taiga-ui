@@ -27,6 +27,6 @@ export class TuiDataListGroupWrapperComponent<T> extends AbstractTuiDataListWrap
         @Inject(TuiTextfieldSizeDirective)
         controller: TuiTextfieldSizeDirective | null,
     ) {
-        super(itemsHandlers, controller?.size || `l`);
+        super(itemsHandlers, controller?.size || `m`);
     }
 }
