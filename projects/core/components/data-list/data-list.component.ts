@@ -22,9 +22,10 @@ import {
     tuiPure,
     tuiSetNativeMouseFocused,
 } from '@taiga-ui/cdk';
+import {TuiTextfieldController} from '@taiga-ui/core/directives';
 import {TuiDataListAccessor} from '@taiga-ui/core/interfaces';
 import {TUI_NOTHING_FOUND_MESSAGE, tuiAsDataListAccessor} from '@taiga-ui/core/tokens';
-import {TuiDataListRole, TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {TuiDataListRole} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -60,9 +61,11 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     @Input()
     @HostBinding(`attr.data-list-size`)
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeL = `m`;
+    size = this.controller.size;
 
     constructor(
+        @Inject(TuiTextfieldController)
+        private readonly controller: TuiTextfieldController,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TUI_NOTHING_FOUND_MESSAGE)
         readonly defaultEmptyContent$: Observable<string>,

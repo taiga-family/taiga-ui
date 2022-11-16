@@ -16,6 +16,7 @@ import {
     TuiOptionComponent,
     TuiSizeL,
     TuiSizeXS,
+    TuiTextfieldController,
     TuiValueContentContext,
 } from '@taiga-ui/core';
 import {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
@@ -37,9 +38,12 @@ export abstract class AbstractTuiDataListWrapper<T> {
 
     @Input()
     @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeL = `m`;
+    size: TuiSizeXS | TuiSizeL = this.controller.size;
 
-    protected constructor(protected readonly itemsHandlers: TuiItemsHandlers<T>) {}
+    protected constructor(
+        protected readonly itemsHandlers: TuiItemsHandlers<T>,
+        protected readonly controller: TuiTextfieldController,
+    ) {}
 
     @Input()
     @tuiDefaultProp()
