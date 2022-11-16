@@ -15,11 +15,10 @@
                 <strong>{{ start + 1 }}–{{ end }}</strong>
             </button>
             <ng-template #content>
-                <tui-data-list>
+                <tui-data-list size="s">
                     <ng-container *ngFor="let item of items">
                         <button
                             tuiOption
-                            size="s"
                             class="t-item"
                             (click)="onItem(item)"
                         >

@@ -34,12 +34,14 @@
     </tui-primitive-textfield>
 </tui-hosted-dropdown>
 <ng-template #dropdownContent>
-    <tui-data-list automation-id="tui-input-time__dropdown">
+    <tui-data-list
+        automation-id="tui-input-time__dropdown"
+        [size]="itemSize"
+    >
         <button
             *ngFor="let item of filtered"
             tuiOption
             automation-id="tui-input-time__item"
-            [size]="itemSize"
             [disabled]="disabledItemHandler(item)"
             [value]="item"
         >

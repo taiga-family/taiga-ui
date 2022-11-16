@@ -22,12 +22,12 @@
     <ng-template #menu>
         <tui-data-list
             role="menu"
+            size="s"
             class="t-menu"
         >
             <button
                 *ngFor="let mode of modes"
                 tuiOption
-                size="xs"
                 role="menuitemradio"
                 [attr.aria-checked]="isModeActive(mode)"
                 (keydown.enter.prevent)="onModeSelect(mode, dropdown)"

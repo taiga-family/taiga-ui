@@ -24,7 +24,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiDataListAccessor} from '@taiga-ui/core/interfaces';
 import {TUI_NOTHING_FOUND_MESSAGE, tuiAsDataListAccessor} from '@taiga-ui/core/tokens';
-import {TuiDataListRole} from '@taiga-ui/core/types';
+import {TuiDataListRole, TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -56,6 +56,11 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     @Input()
     @tuiDefaultProp()
     emptyContent: PolymorpheusContent = ``;
+
+    @Input()
+    @HostBinding(`attr.data-list-size`)
+    @tuiDefaultProp()
+    size: TuiSizeS | TuiSizeL = `m`;
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
