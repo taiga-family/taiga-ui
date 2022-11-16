@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[21415],{91733:(s,e,o)=>{o.r(e),o.d(e,{TUI_FRENCH_LANGUAGE_ADDON_PREVIEW:()=>t});const t={previewTexts:{rotate:"Faire pivoter"},zoomTexts:{zoomOut:"Zoomer",zoomIn:"D\xe9zoomer",reset:"R\xe9initialiser"}}}}]);
