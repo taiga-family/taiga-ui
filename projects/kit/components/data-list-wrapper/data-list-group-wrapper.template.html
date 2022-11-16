@@ -1,6 +1,8 @@
+<!-- TODO: remove $any in 4.0 -->
 <tui-data-list
     *ngIf="items; else loading"
     [emptyContent]="emptyContent"
+    [size]="$any(size)"
 >
     <tui-opt-group
         *ngFor="let group of items; let index = index"
@@ -12,7 +14,6 @@
             tuiElement
             tuiOption
             automation-id="tui-data-list-wrapper__option"
-            [size]="size"
             [value]="item"
             [disabled]="disabledItemHandler(item)"
         >

@@ -4,6 +4,7 @@ import {
     ElementRef,
     Inject,
     OnInit,
+    Optional,
     TemplateRef,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
@@ -14,7 +15,12 @@ import {
     tuiIsPresent,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
-import {TUI_DATA_LIST_HOST, TuiDataListHost, TuiOptionComponent} from '@taiga-ui/core';
+import {
+    TUI_DATA_LIST_HOST,
+    TuiDataListComponent,
+    TuiDataListHost,
+    TuiOptionComponent,
+} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, merge} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
@@ -42,6 +48,9 @@ export class TuiSelectOptionComponent<T> implements OnInit {
         private readonly host: TuiDataListHost<T>,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiOptionComponent) protected readonly option: TuiOptionComponent<T>,
+        @Optional()
+        @Inject(TuiDataListComponent)
+        protected readonly dataList: TuiDataListComponent<T> | null,
         @Inject(NgControl) protected readonly control: NgControl,
     ) {}
 

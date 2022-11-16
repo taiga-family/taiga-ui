@@ -18,11 +18,11 @@
     <tui-data-list
         tuiDataListDropdownManager
         [tuiActiveZoneParent]="activeZone"
+        [size]="size"
     >
         <button
             *tuiLet="'French Fries' as item"
             tuiOption
-            [size]="size"
             (click)="selectOption(item)"
         >
             {{ item }}
@@ -31,7 +31,6 @@
             tuiOption
             tuiDropdownSided
             tuiDropdownAlign="right"
-            [size]="size"
             [tuiDropdownManual]="false"
             [tuiDropdown]="burgersTmp"
         >
@@ -41,7 +40,6 @@
             tuiOption
             tuiDropdownSided
             tuiDropdownAlign="right"
-            [size]="size"
             [tuiDropdownManual]="false"
             [tuiDropdown]="drinksTmp"
         >
@@ -50,7 +48,6 @@
         <button
             *tuiLet="'Ice Cream' as item"
             tuiOption
-            [size]="size"
             (click)="selectOption(item)"
         >
             {{ item }}
@@ -64,7 +61,6 @@
             <button
                 *ngFor="let burger of burgers"
                 tuiOption
-                [size]="size"
                 (click)="selectOption(burger)"
             >
                 {{ burger }}
@@ -73,7 +69,6 @@
                 tuiOption
                 tuiDropdownSided
                 tuiDropdownAlign="right"
-                [size]="size"
                 [tuiDropdownManual]="false"
                 [tuiDropdown]="drinksTmp"
             >
@@ -82,11 +77,10 @@
         </tui-data-list>
     </ng-template>
     <ng-template #drinksTmp>
-        <tui-data-list>
+        <tui-data-list [size]="size">
             <button
                 *ngFor="let drink of drinks"
                 tuiOption
-                [size]="size"
                 (click)="selectOption(drink)"
             >
                 {{ drink }}

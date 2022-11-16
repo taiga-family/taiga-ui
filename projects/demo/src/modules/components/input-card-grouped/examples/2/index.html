@@ -5,11 +5,11 @@
     >
         <tui-data-list
             *tuiDataList
+            size="l"
             (keydown.escape)="onEsc(component)"
         >
             <button
                 tuiOption
-                size="l"
                 (click)="onClick(component)"
             >
                 <tui-svg
@@ -21,7 +21,6 @@
             <button
                 *ngFor="let item of items; let index = index"
                 tuiOption
-                size="l"
                 [value]="item"
             >
                 <tui-card

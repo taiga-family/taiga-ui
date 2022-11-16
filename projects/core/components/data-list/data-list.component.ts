@@ -8,6 +8,7 @@ import {
     HostListener,
     Inject,
     Input,
+    Optional,
     QueryList,
     ViewEncapsulation,
 } from '@angular/core';
@@ -22,6 +23,7 @@ import {
     tuiPure,
     tuiSetNativeMouseFocused,
 } from '@taiga-ui/cdk';
+import {TuiTextfieldSizeDirective} from '@taiga-ui/core/directives';
 import {TuiDataListAccessor} from '@taiga-ui/core/interfaces';
 import {TUI_NOTHING_FOUND_MESSAGE, tuiAsDataListAccessor} from '@taiga-ui/core/tokens';
 import {TuiDataListRole} from '@taiga-ui/core/types';
@@ -57,7 +59,15 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     @tuiDefaultProp()
     emptyContent: PolymorpheusContent = ``;
 
+    @Input()
+    @HostBinding(`attr.data-list-size`)
+    @tuiDefaultProp()
+    size = this.controller?.size || `m`;
+
     constructor(
+        @Optional()
+        @Inject(TuiTextfieldSizeDirective)
+        private readonly controller: TuiTextfieldSizeDirective | null,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TUI_NOTHING_FOUND_MESSAGE)
         readonly defaultEmptyContent$: Observable<string>,

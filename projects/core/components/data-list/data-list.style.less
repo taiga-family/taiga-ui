@@ -1,10 +1,11 @@
 @import '../../styles/taiga-ui-local.less';
 
 tui-data-list {
+    --tui-padding: 0.25rem;
     display: flex;
     font: var(--tui-font-text-m);
     flex-direction: column;
-    padding: 0.375rem 0;
+    padding: var(--tui-padding);
     color: var(--tui-text-03);
 
     &:focus-within {
@@ -17,6 +18,10 @@ tui-data-list {
         }
     }
 
+    &[data-list-size='l'] {
+        --tui-padding: 0.375rem;
+    }
+
     & > .t-empty {
         margin: 0.75rem 1rem;
     }
@@ -25,10 +30,25 @@ tui-data-list {
 tui-opt-group {
     position: relative;
     display: flex;
-    font: var(--tui-font-text-s);
+    font: var(--tui-font-text-xs);
     color: var(--tui-text-02);
     flex-direction: column;
     line-height: 1rem;
+
+    tui-data-list[data-list-size='l'] & {
+        font: var(--tui-font-text-s);
+        line-height: 1.25rem;
+
+        &:before {
+            padding-left: 0.625rem;
+            padding-right: 0.625rem;
+        }
+
+        &:after {
+            left: 0.625rem;
+            right: 0.625rem;
+        }
+    }
 
     &:empty:before,
     &:empty:after {
@@ -37,32 +57,35 @@ tui-opt-group {
 
     &:before {
         content: attr(data-label);
-        padding: 0.375rem 1rem 0.75rem;
-        line-height: 1rem;
+        padding: var(--tui-padding) 0.5rem var(--tui-padding);
         white-space: normal;
+        word-break: break-word;
+    }
+
+    &:after {
+        position: absolute;
+        left: 0.5rem;
+        right: 0.5rem;
+        top: var(--tui-padding);
+        height: 1px;
+        background: var(--tui-base-03);
     }
 
     &:not(:empty) ~ & {
         &:before {
-            padding: 0.875rem 1rem 0.75rem;
+            padding-top: calc(0.75rem + var(--tui-padding));
         }
 
         &[data-label='']:before {
-            padding: 0.5rem 0 0;
+            padding: var(--tui-padding) 0;
         }
 
         &:after {
             content: '';
-            position: absolute;
-            left: 1rem;
-            right: 1rem;
-            top: 0.25rem;
-            height: 1px;
-            background: var(--tui-base-03);
         }
     }
 
     &[data-label='']:before {
-        padding: 0 1rem;
+        padding: 0 0.5rem;
     }
 }
