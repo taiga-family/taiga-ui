@@ -18,7 +18,6 @@ export class TuiPrimitiveYearPickerHarness extends TuiComponentHarness {
 class TuiYearCellHarness extends ComponentHarness {
     static hostSelector = `.t-cell`;
 
-    /** Creates a `HarnessPredicate` used to locate a particular `MyMenuHarness`. */
     static with(
         options: TuiYearCellHarnessFilters,
     ): HarnessPredicate<TuiYearCellHarness> {

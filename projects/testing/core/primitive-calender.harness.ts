@@ -28,7 +28,6 @@ export class TuiPrimitiveCalendarHarness extends TuiComponentHarness {
 class TuiDayCellHarness extends ComponentHarness {
     static hostSelector = `.t-cell`;
 
-    /** Creates a `HarnessPredicate` used to locate a particular `MyMenuHarness`. */
     static with(options: TuiDayCellHarnessFilters): HarnessPredicate<TuiDayCellHarness> {
         return new HarnessPredicate(TuiDayCellHarness, options).addOption(
             `day`,
