@@ -46,10 +46,11 @@ function shouldFocus({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>): bo
     },
 })
 export class TuiOptionComponent<T = unknown> implements OnDestroy {
+    /** @deprecated use size on {@link TuiDataListComponent} instead */
     @Input()
     @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeL = `m`;
+    size: TuiSizeXS | TuiSizeL | null = null;
 
     @Input()
     @HostBinding(`attr.role`)

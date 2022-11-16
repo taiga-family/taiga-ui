@@ -6,10 +6,12 @@
     [tuiTextfieldLabelOutside]="true"
     [(ngModel)]="mode"
 >
-    <tui-data-list *tuiDataList>
+    <tui-data-list
+        *tuiDataList
+        size="s"
+    >
         <button
             *ngFor="let item of modes"
-            size="xs"
             tuiOption
             [value]="item"
         >

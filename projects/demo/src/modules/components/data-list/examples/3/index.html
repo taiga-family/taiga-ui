@@ -12,7 +12,10 @@
     ></button>
 </tui-hosted-dropdown>
 <ng-template #content>
-    <tui-data-list style="width: 12rem">
+    <tui-data-list
+        style="width: 12rem"
+        size="l"
+    >
         <tui-opt-group
             tuiMultiSelectGroup
             [(ngModel)]="value"
@@ -21,7 +24,6 @@
                 <button
                     *ngFor="let burger of burgers"
                     tuiOption
-                    size="l"
                     [value]="burger"
                 >
                     {{ burger }}
@@ -31,7 +33,6 @@
                 <button
                     *ngFor="let drink of drinks"
                     tuiOption
-                    size="l"
                     [value]="drink"
                 >
                     {{ drink }}

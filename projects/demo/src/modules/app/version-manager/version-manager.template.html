@@ -5,11 +5,13 @@
     [valueContent]="'label' | tuiStringify | tuiStringifyContent"
 >
     <ng-content></ng-content>
-    <tui-data-list *tuiDataList>
+    <tui-data-list
+        *tuiDataList
+        size="s"
+    >
         <a
             *ngFor="let version of versions"
             tuiOption
-            size="s"
             [value]="version"
             [href]="getVersionHref(version)"
         >
