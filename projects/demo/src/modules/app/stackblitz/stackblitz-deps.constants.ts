@@ -22,7 +22,7 @@ export const STACKBLITZ_DEPS: Record<string, string> = {
     '@taiga-ui/styles': TAIGA_VERSION,
     '@taiga-ui/addon-charts': TAIGA_VERSION,
     '@taiga-ui/addon-commerce': TAIGA_VERSION,
-    '@taiga-ui/addon-editor': TAIGA_VERSION,
+    // '@taiga-ui/addon-editor': TAIGA_VERSION, TODO: https://github.com/Tinkoff/taiga-ui/issues/3081
     '@taiga-ui/addon-mobile': TAIGA_VERSION,
     '@taiga-ui/addon-preview': TAIGA_VERSION,
     '@taiga-ui/addon-table': TAIGA_VERSION,
