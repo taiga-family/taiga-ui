@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import {Directive} from '@angular/core';
+import {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
 import type {Editor, Range} from '@tiptap/core';
 import type {EditorState} from 'prosemirror-state';
 import {Observable, Subject} from 'rxjs';
@@ -80,6 +81,7 @@ export abstract class TuiEditor {
     abstract removeGroup(): void;
     abstract setAnchor(id: string): void;
     abstract removeAnchor(): void;
+    abstract setFileLink(preview: TuiEditorAttachedFile): void;
 }
 
 @Directive()

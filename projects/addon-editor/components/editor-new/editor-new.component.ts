@@ -3,11 +3,13 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    EventEmitter,
     forwardRef,
     Inject,
     Input,
     OnDestroy,
     Optional,
+    Output,
     Self,
     ViewChild,
 } from '@angular/core';
@@ -17,6 +19,7 @@ import {TuiToolbarNewComponent} from '@taiga-ui/addon-editor/components/toolbar-
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
+import {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
 import {TIPTAP_EDITOR, TUI_EDITOR_CONTENT_PROCESSOR} from '@taiga-ui/addon-editor/tokens';
 import {tuiIsSafeLinkRange} from '@taiga-ui/addon-editor/utils';
 import {
@@ -60,6 +63,9 @@ export class TuiEditorNewComponent
 
     @ViewChild(TuiToolbarNewComponent)
     readonly toolbar?: TuiToolbarNewComponent;
+
+    @Output()
+    fileAttached = new EventEmitter<TuiEditorAttachedFile[]>();
 
     focused = false;
 
