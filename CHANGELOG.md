@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.69.0](https://github.com/tinkoff/taiga-ui/compare/v2.68.0...v2.69.0) (2022-11-17)
+
+### Features
+
+- **addon-editor:** improve ux for edit links ([#3026](https://github.com/tinkoff/taiga-ui/issues/3026))
+  ([af0306a](https://github.com/tinkoff/taiga-ui/commit/af0306ac4e64e8fc679b41c7d6bb6629ecde33f6))
+- **addon-editor:** support attach files ([#3075](https://github.com/tinkoff/taiga-ui/issues/3075))
+  ([54daddf](https://github.com/tinkoff/taiga-ui/commit/54daddf447adf3cedd041c18396d33a74209bb33))
+- **addon-editor:** support nested counters in ordered ([#3025](https://github.com/tinkoff/taiga-ui/issues/3025))
+  ([b813226](https://github.com/tinkoff/taiga-ui/commit/b813226536b60b5877de0a6952bdf6e33ff6a818))
+- **addon-editor:** upgrade all tiptap dependencies ([#3004](https://github.com/tinkoff/taiga-ui/issues/3004))
+  ([de8b575](https://github.com/tinkoff/taiga-ui/commit/de8b575036f0eb2d89f45b8c86d70204e1efe5c1))
+
+### Bug Fixes
+
+- **addon-commerce:** fix safari expire autofill ([#3020](https://github.com/tinkoff/taiga-ui/issues/3020))
+  ([a43cc8d](https://github.com/tinkoff/taiga-ui/commit/a43cc8de730e5e890e7ce9c95ea439de95788d95))
+- **addon-commerce:** InputExpire fix translation in safari ([#3046](https://github.com/tinkoff/taiga-ui/issues/3046))
+  ([9b19727](https://github.com/tinkoff/taiga-ui/commit/9b19727dc265be897f07149be355547cd060b65d))
+- **addon-editor:** support long words inside bulleted or ordered list
+  ([#3039](https://github.com/tinkoff/taiga-ui/issues/3039))
+  ([6314c6b](https://github.com/tinkoff/taiga-ui/commit/6314c6b70c3e1f247a23d96012c2f45dd9f7f264))
+- **addon-editor:** support write simple text after marked link
+  ([#3027](https://github.com/tinkoff/taiga-ui/issues/3027))
+  ([3ef706c](https://github.com/tinkoff/taiga-ui/commit/3ef706ca3a08cd881482a9e50bb9600c33473b94))
+- **core:** hide autofill button for Safari ([#3076](https://github.com/tinkoff/taiga-ui/issues/3076))
+  ([73ab765](https://github.com/tinkoff/taiga-ui/commit/73ab76554e66284002f687f569bf9c2279bfe185))
+
 ## [2.68.0](https://github.com/tinkoff/taiga-ui/compare/v2.67.0...v2.68.0) (2022-11-01)
 
 ### Features
