@@ -29,6 +29,7 @@ describe(`Demo`, () => {
 
                 if (isScrollbarPage(path)) {
                     cy.get(`.t-thumb`, {log: false})
+                        .wait(WAIT_BEFORE_SCREENSHOT)
                         .should(`be.visible`)
                         .then(() =>
                             Cypress.log({

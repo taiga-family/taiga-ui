@@ -2,7 +2,7 @@ import {WAIT_BEFORE_SCREENSHOT} from '@demo-integrations/support/shared.entities
 
 describe(`Editor's anchors`, () => {
     beforeEach(() => {
-        cy.viewport(1280, 500).tuiVisit(`components/editor#anchors`);
+        cy.viewport(1280, 500).tuiVisit(`components/editor`);
 
         cy.get(`tui-doc-example[heading="Anchors"]`).tuiScrollIntoView().as(`wrapper`);
 
@@ -28,6 +28,12 @@ describe(`Editor's anchors`, () => {
 
             cy.get(`@wrapper`)
                 .find(`h4`)
+                .contains(`Text`)
+                .next()
+                .then(el => el.remove());
+
+            cy.get(`@wrapper`)
+                .find(`h4`)
                 .contains(`HTML`)
                 .next()
                 .tuiScrollIntoView()
@@ -43,9 +49,12 @@ describe(`Editor's anchors`, () => {
             `war`,
         ]) {
             it(`anchor is #${anchor}`, () => {
-                cy.get(`@example`).find(`a[href="#${anchor}"]`).click({force: true});
+                cy.get(`@example`)
+                    .find(`a[href="#${anchor}"]`)
+                    .click({force: true})
+                    .wait(2000);
 
-                cy.wait(WAIT_BEFORE_SCREENSHOT).matchImageSnapshot({capture: `viewport`});
+                cy.matchImageSnapshot({capture: `viewport`});
             });
         }
     });
