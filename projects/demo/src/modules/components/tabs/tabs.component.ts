@@ -56,6 +56,12 @@ export class ExampleTuiTabsComponent {
         LESS: import(`./examples/8/index.less?raw`),
     };
 
+    readonly example9: TuiDocExample = {
+        TypeScript: import(`./examples/9/index.ts?raw`),
+        HTML: import(`./examples/9/index.html?raw`),
+        LESS: import(`./examples/9/index.less?raw`),
+    };
+
     readonly moreContentVariants = [``, `And more`];
 
     moreContent = this.moreContentVariants[0];
