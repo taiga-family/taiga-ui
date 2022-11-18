@@ -26,7 +26,12 @@ import {
 } from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TuiSizeL} from '@taiga-ui/core';
 import {TuiFileLike} from '@taiga-ui/kit/interfaces';
-import {TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
+import {
+    TUI_INPUT_FILE_TEXTS,
+    TUI_INPUT_FILES_CONTENT,
+    TuiInputFilesContent,
+} from '@taiga-ui/kit/tokens';
+import {} from '@taiga-ui/kit/tokens/input-files-content';
 import {tuiGetAcceptArray} from '@taiga-ui/kit/utils/files';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, of} from 'rxjs';
@@ -51,13 +56,19 @@ export class TuiInputFilesComponent
 
     private dataTransfer: DataTransfer | null = null;
 
+    /** @deprecated use `content` instead */
     @Input()
     @tuiDefaultProp()
-    link: PolymorpheusContent = ``;
+    link: PolymorpheusContent = this.defaultContentValues.link;
+
+    /** @deprecated use `content` instead */
+    @Input()
+    @tuiDefaultProp()
+    label: PolymorpheusContent = this.defaultContentValues.label;
 
     @Input()
     @tuiDefaultProp()
-    label: PolymorpheusContent = ``;
+    content: PolymorpheusContent = ``;
 
     @Input()
     @tuiDefaultProp()
@@ -101,6 +112,8 @@ export class TuiInputFilesComponent
                 string
             >
         >,
+        @Inject(TUI_INPUT_FILES_CONTENT)
+        private readonly defaultContentValues: TuiInputFilesContent,
     ) {
         super(control, changeDetectorRef);
     }
