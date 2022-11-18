@@ -71,8 +71,8 @@
         <tui-doc-demo>
             <tui-input-files
                 [formControl]="control"
-                [link]="link"
-                [label]="label"
+                [accept]="accept"
+                [content]="content"
                 [maxFileSize]="maxFileSize"
                 [focusable]="focusable"
                 [pseudoFocus]="pseudoFocused"
@@ -163,7 +163,7 @@
                 documentationPropertyName="label"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
-                [(documentationPropertyValue)]="label"
+                [documentationPropertyDeprecated]="true"
             >
                 Label text
             </ng-template>
@@ -172,9 +172,19 @@
                 documentationPropertyName="link"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
-                [(documentationPropertyValue)]="link"
+                [documentationPropertyDeprecated]="true"
             >
                 Link text
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="content"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="contentVariants"
+                [(documentationPropertyValue)]="content"
+            >
+                Input label content
             </ng-template>
 
             <ng-template
