@@ -50,8 +50,8 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
     };
 
     readonly control = new FormControl();
-    link = `Choose a file`;
-    label = `or drop\u00A0it\u00A0here`;
+    content = ``;
+    contentVariants = [``, `Drop your file here`, `Place for your file`];
     multiple = true;
     showSize = true;
     accept = ``;
