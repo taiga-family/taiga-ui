@@ -17,7 +17,7 @@ jobs:
     name: Build demo # for reuse in e2e jobs
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 10
 
@@ -70,7 +70,7 @@ jobs:
             type: mobile
     name: ${{ matrix.project }} / ${{ matrix.type }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
