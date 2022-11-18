@@ -14,14 +14,19 @@
         (tuiDroppableDragOverChange)="onDragOver($event)"
         (mousedown.prevent.silent)="(0)"
     >
-        <a tuiLink>
-            <ng-container *polymorpheusOutlet="computedLink$ | async as text">
+        <ng-container *ngIf="content; else defaultContent">
+            <div *polymorpheusOutlet="content as valueContent">{{ valueContent }}</div>
+        </ng-container>
+        <ng-template #defaultContent>
+            <a tuiLink>
+                <ng-container *polymorpheusOutlet="computedLink$ | async as text">
+                    {{ text }}
+                </ng-container>
+            </a>
+            <ng-container *polymorpheusOutlet="computedLabel$ | async as text">
                 {{ text }}
             </ng-container>
-        </a>
-        <ng-container *polymorpheusOutlet="computedLabel$ | async as text">
-            {{ text }}
-        </ng-container>
+        </ng-template>
         <ng-container *ngIf="!readOnly && !computedDisabled">
             <ng-content select="input"></ng-content>
             <input
