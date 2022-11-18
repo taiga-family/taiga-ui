@@ -31,7 +31,6 @@ import {
     TUI_INPUT_FILES_CONTENT,
     TuiInputFilesContent,
 } from '@taiga-ui/kit/tokens';
-import {} from '@taiga-ui/kit/tokens/input-files-content';
 import {tuiGetAcceptArray} from '@taiga-ui/kit/utils/files';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, of} from 'rxjs';
