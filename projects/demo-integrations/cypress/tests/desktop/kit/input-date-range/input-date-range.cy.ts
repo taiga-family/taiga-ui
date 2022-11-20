@@ -18,6 +18,20 @@ describe(`InputDateRange`, () => {
             });
         }
 
+        it(`Maximum month less than current month`, () => {
+            cy.tuiVisit(`components/input-date-range/API?tuiMode=null&max$=4`);
+
+            getInput().click();
+            matchImageSnapshot(`input-date-range-maximum-month`);
+        });
+
+        it(`Minimum month more than current month`, () => {
+            cy.tuiVisit(`components/input-date-range/API?tuiMode=null&min$=3`);
+
+            getInput().click();
+            matchImageSnapshot(`input-date-range-minimum-month`);
+        });
+
         function visitBy(size: string): void {
             cy.tuiVisit(
                 `components/input-date-range/API?tuiMode=null&tuiTextfieldSize=${size}`,

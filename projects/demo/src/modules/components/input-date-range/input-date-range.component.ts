@@ -62,6 +62,8 @@ export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiControl
         new TuiDay(2021, 2, 5),
         new TuiDay(1900, 0, 1),
         new TuiDay(2300, 0, 1),
+        new TuiDay(2017, 11, 11),
+        new TuiDay(new Date().getFullYear() + 3, 1, 1),
         TUI_LAST_DAY,
     ];
 

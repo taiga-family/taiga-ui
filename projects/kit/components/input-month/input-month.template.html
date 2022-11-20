@@ -33,7 +33,8 @@
             [min]="min"
             [max]="max"
             [value]="value"
-            [(year)]="activeYear"
+            [year]="computedDefaultActiveYear"
+            (yearChange)="activeYear = $event"
             (monthClick)="onMonthClick($event)"
         ></tui-calendar-month>
     </ng-template>

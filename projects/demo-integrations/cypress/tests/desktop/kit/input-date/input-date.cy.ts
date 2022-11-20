@@ -46,6 +46,20 @@ describe(`InputDate`, () => {
             });
         }
 
+        it(`Maximum month less than current month`, () => {
+            cy.tuiVisit(`components/input-date/API?tuiMode=null&max$=1`);
+
+            getInput().click();
+            matchImageSnapshot(`input-date-maximum-month`);
+        });
+
+        it(`Minimum month more than current month`, () => {
+            cy.tuiVisit(`components/input-date/API?tuiMode=null&min$=3`);
+
+            getInput().click();
+            matchImageSnapshot(`input-date-minimum-month`);
+        });
+
         function getInput(): Cypress.Chainable<JQuery> {
             return cy
                 .get(`#demoContent`)

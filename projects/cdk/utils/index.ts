@@ -1,4 +1,5 @@
 export * from '@taiga-ui/cdk/utils/browser';
+export * from '@taiga-ui/cdk/utils/calendar';
 export * from '@taiga-ui/cdk/utils/color';
 export * from '@taiga-ui/cdk/utils/dom';
 export * from '@taiga-ui/cdk/utils/focus';
