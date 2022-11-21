@@ -6,11 +6,8 @@ import {
     HostListener,
     Inject,
     Input,
-    NgZone,
-    OnDestroy,
     Output,
 } from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
 import {tuiDefaultProp, tuiIsHTMLElement, tuiMoveFocus} from '@taiga-ui/cdk';
 
 import {TUI_TAB_ACTIVATE} from './tab/tab.providers';
@@ -18,16 +15,15 @@ import {TUI_TAB_ACTIVATE} from './tab/tab.providers';
 @Directive({
     selector: `tui-tabs, nav[tuiTabs]`,
 })
-export class TuiTabsDirective implements AfterViewChecked, OnDestroy {
-    private readonly autoScrollTimeout = 500;
-    private scrollingId = 0;
+export class TuiTabsDirective implements AfterViewChecked {
+    private autoScrollPositionDirty = false;
 
     @Input(`activeItemIndex`)
     set activeIndex(index: number) {
         this.activeItemIndex = index;
 
         if (this.autoScroll) {
-            this.safelyScrollToActiveElement();
+            this.autoScrollPositionDirty = true;
         }
     }
 
@@ -42,8 +38,6 @@ export class TuiTabsDirective implements AfterViewChecked, OnDestroy {
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(NgZone) private readonly ngZone: NgZone,
-        @Inject(WINDOW) private readonly windowRef: Window,
     ) {}
 
     get tabs(): readonly HTMLElement[] {
@@ -83,20 +77,20 @@ export class TuiTabsDirective implements AfterViewChecked, OnDestroy {
             nativeElement.classList.toggle(`_active`, active);
             nativeElement.setAttribute(`tabIndex`, active ? `0` : `-1`);
         });
-    }
 
-    ngOnDestroy(): void {
-        this.windowRef.clearInterval(this.scrollingId);
+        this.safelyScrollToActiveElement();
     }
 
     private safelyScrollToActiveElement(): void {
-        this.ngZone.runOutsideAngular(() => {
-            this.windowRef.clearTimeout(this.scrollingId);
-            this.scrollingId = this.windowRef.setTimeout(
-                () => this.scrollToVisibleAreaActiveElement(),
-                this.autoScrollTimeout,
-            );
-        });
+        const needUpdatePositionByAutoscroll =
+            this.autoScroll &&
+            this.autoScrollPositionDirty &&
+            this.activeElement?.offsetLeft;
+
+        if (needUpdatePositionByAutoscroll) {
+            this.scrollToVisibleAreaActiveElement();
+            this.autoScrollPositionDirty = false;
+        }
     }
 
     private scrollToVisibleAreaActiveElement(): void {
@@ -108,8 +102,8 @@ export class TuiTabsDirective implements AfterViewChecked, OnDestroy {
 
         const tabs = this.elementRef.nativeElement;
         const invisibleInAreaTabs =
-            tab.offsetLeft > tabs.offsetWidth + tabs.scrollLeft ||
-            tab?.scrollLeft + tab?.offsetWidth < tabs.scrollLeft;
+            tab.offsetLeft + tab.offsetWidth > tabs.scrollLeft + tabs.offsetWidth ||
+            tabs.scrollLeft > tab.offsetLeft;
 
         if (invisibleInAreaTabs) {
             tabs.scrollLeft = tab.offsetLeft;
