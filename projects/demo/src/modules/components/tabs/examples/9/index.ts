@@ -11,5 +11,4 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 })
 export class TuiTabsExample9 {
     horizontalActiveIndex = 9;
-    verticalActiveIndex = 9;
 }

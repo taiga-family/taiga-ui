@@ -23,42 +23,9 @@
 </section>
 
 <tui-input-count
-    class="tui-space_top-4 tui-space_bottom-4"
+    class="horizontal tui-space_top-4 tui-space_bottom-4"
     [max]="12"
     [(ngModel)]="horizontalActiveIndex"
 >
     horizontalActiveIndex
-</tui-input-count>
-
-<h5 class="title">Vertical</h5>
-
-<tui-scrollbar class="vertical">
-    <nav
-        tuiTabs
-        vertical="left"
-        [autoScroll]="true"
-        [(activeItemIndex)]="verticalActiveIndex"
-    >
-        <button tuiTab>Item 1</button>
-        <button tuiTab>Item 2</button>
-        <button tuiTab>Item 3</button>
-        <button tuiTab>Item 4</button>
-        <button tuiTab>Item 5</button>
-        <button tuiTab>Item 6</button>
-        <button tuiTab>Item 7</button>
-        <button tuiTab>Item 8</button>
-        <button tuiTab>Item 9 with name so long it spans multiple lines</button>
-        <button tuiTab>Item 10</button>
-        <button tuiTab>Item 11</button>
-        <button tuiTab>Item 12</button>
-        <button tuiTab>Item 13</button>
-    </nav>
-</tui-scrollbar>
-
-<tui-input-count
-    class="tui-space_top-4"
-    [max]="12"
-    [(ngModel)]="verticalActiveIndex"
->
-    verticalActiveIndex
 </tui-input-count>

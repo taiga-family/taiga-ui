@@ -19,6 +19,7 @@ import {TUI_TAB_ACTIVATE} from './tab/tab.providers';
     selector: `tui-tabs, nav[tuiTabs]`,
 })
 export class TuiTabsDirective implements AfterViewChecked, OnDestroy {
+    private readonly autoScrollTimeout = 500;
     private scrollingId = 0;
 
     @Input(`activeItemIndex`)
@@ -33,10 +34,6 @@ export class TuiTabsDirective implements AfterViewChecked, OnDestroy {
     @Input()
     @tuiDefaultProp()
     autoScroll = false;
-
-    @Input()
-    @tuiDefaultProp()
-    autoScrollTimeout = 500;
 
     @Output()
     readonly activeItemIndexChange = new EventEmitter<number>();
@@ -103,57 +100,19 @@ export class TuiTabsDirective implements AfterViewChecked, OnDestroy {
     }
 
     private scrollToVisibleAreaActiveElement(): void {
-        const element = this.activeElement;
+        const tab = this.activeElement;
 
-        if (!tuiIsHTMLElement(element)) {
+        if (!tuiIsHTMLElement(tab)) {
             return;
         }
 
-        const parent =
-            element.parentElement && this.isScrollable(element.parentElement)
-                ? element.parentElement
-                : this.findScrollableParent(element);
+        const tabs = this.elementRef.nativeElement;
+        const invisibleInAreaTabs =
+            tab.offsetLeft > tabs.offsetWidth + tabs.scrollLeft ||
+            tab?.scrollLeft + tab?.offsetWidth < tabs.scrollLeft;
 
-        if (!tuiIsHTMLElement(parent)) {
-            return;
+        if (invisibleInAreaTabs) {
+            tabs.scrollLeft = tab.offsetLeft;
         }
-
-        const invisibleInTopArea =
-            element.offsetTop > parent.offsetHeight + parent.scrollTop ||
-            element.scrollTop + element.offsetHeight <= parent.scrollTop;
-        const invisibleInLeftArea =
-            element.offsetLeft > parent.offsetWidth + parent.scrollLeft;
-
-        if (invisibleInTopArea) {
-            parent.scrollTop = element.offsetTop;
-        }
-
-        if (invisibleInLeftArea) {
-            parent.scrollLeft = element.offsetLeft;
-        }
-    }
-
-    private isScrollable(element: HTMLElement): boolean {
-        const hasScrollableContent =
-            element.scrollHeight > element.clientHeight ||
-            element.scrollWidth > element.clientWidth;
-        const overflowYStyle = this.windowRef.getComputedStyle(element).overflowY;
-        const isOverflowHidden = overflowYStyle.includes(`hidden`);
-
-        return hasScrollableContent && !isOverflowHidden;
-    }
-
-    private findScrollableParent(element: HTMLElement): HTMLElement {
-        if (!element || element === this.windowRef.document.body) {
-            return this.windowRef.document.body;
-        }
-
-        if (this.isScrollable(element)) {
-            return element;
-        }
-
-        return this.findScrollableParent(
-            (element as unknown as Node)?.parentNode as HTMLElement,
-        );
     }
 }
