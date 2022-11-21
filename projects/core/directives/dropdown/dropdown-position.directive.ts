@@ -5,7 +5,7 @@ import {
     TuiPositionAccessor,
     TuiRectAccessor,
 } from '@taiga-ui/core/abstract';
-import {TuiPoint} from '@taiga-ui/core/types';
+import {TuiPoint, TuiVerticalDirection} from '@taiga-ui/core/types';
 
 import {
     TUI_DROPDOWN_OFFSET,
@@ -18,7 +18,7 @@ import {
     providers: [tuiAsPositionAccessor(TuiDropdownPositionDirective)],
 })
 export class TuiDropdownPositionDirective implements TuiPositionAccessor {
-    private previous = this.options.direction || `bottom`;
+    private previous?: TuiVerticalDirection;
 
     constructor(
         @Inject(TUI_DROPDOWN_OPTIONS) private readonly options: TuiDropdownOptions,
@@ -30,6 +30,7 @@ export class TuiDropdownPositionDirective implements TuiPositionAccessor {
         const hostRect = this.accessor.getClientRect();
         const {innerHeight, innerWidth} = this.windowRef;
         const {minHeight, align, direction} = this.options;
+        const previous = this.previous || direction || `bottom`;
         const right = Math.max(hostRect.right - width, TUI_DROPDOWN_OFFSET);
         const available = {
             top: hostRect.top - 2 * TUI_DROPDOWN_OFFSET,
@@ -47,11 +48,10 @@ export class TuiDropdownPositionDirective implements TuiPositionAccessor {
         const better = available.top > available.bottom ? `top` : `bottom`;
 
         if (
-            (available[this.previous] > minHeight && direction) ||
-            available[this.previous] > height ||
-            this.previous === better
+            (available[previous] > minHeight && direction) ||
+            available[previous] > height
         ) {
-            return [position[this.previous], position[align]];
+            return [position[previous], position[align]];
         }
 
         this.previous = better;
