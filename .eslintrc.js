@@ -2,26 +2,35 @@ const CI_MODE = process.env['TUI_CI'] === 'true';
 
 console.log('CI mode', CI_MODE);
 
+const DEFAULT = [
+    '@tinkoff/eslint-config-angular',
+    '@tinkoff/eslint-config-angular/html',
+    '@tinkoff/eslint-config-angular/rxjs',
+    '@tinkoff/eslint-config-angular/imports',
+    '@tinkoff/eslint-config-angular/file-progress',
+    '@tinkoff/eslint-config-angular/line-statements',
+    '@tinkoff/eslint-config-angular/member-ordering',
+    '@tinkoff/eslint-config-angular/decorator-position',
+    // @custom
+    './scripts/eslint/common/cypress.js',
+    './scripts/eslint/common/naming-convention.js',
+];
+
+const ONLY_CI = CI_MODE
+    ? [
+          '@tinkoff/eslint-config',
+          '@tinkoff/eslint-config-angular/promise',
+          // @custom
+          './scripts/eslint/ci/nx.js',
+      ]
+    : [];
+
 /**
  * @type {import('eslint').Linter.Config}
  */
 module.exports = {
     root: true,
-    extends: [
-        '@tinkoff/eslint-config',
-        '@tinkoff/eslint-config-angular',
-        '@tinkoff/eslint-config-angular/html',
-        '@tinkoff/eslint-config-angular/rxjs',
-        '@tinkoff/eslint-config-angular/promise',
-        '@tinkoff/eslint-config-angular/imports',
-        '@tinkoff/eslint-config-angular/line-statements',
-        '@tinkoff/eslint-config-angular/member-ordering',
-
-        // @custom
-        './scripts/eslint/common/cypress.js',
-        './scripts/eslint/common/decorators.js',
-        './scripts/eslint/common/naming-convention.js',
-    ].concat(CI_MODE ? ['./scripts/eslint/ci/config.js'] : []),
+    extends: [...ONLY_CI, ...DEFAULT],
     ignorePatterns: [
         'projects/**/test.ts',
         'projects/**/icons/all.ts',
@@ -36,16 +45,9 @@ module.exports = {
         sourceType: 'module',
         project: [require.resolve('./tsconfig.eslint.json')],
     },
-    plugins: ['unicorn', 'file-progress', '@taiga-ui/eslint-plugin'],
+    plugins: ['unicorn', '@taiga-ui/eslint-plugin'],
     parser: '@typescript-eslint/parser',
-    settings: {
-        progress: {
-            hide: false,
-            successMessage: 'Lint done...',
-        },
-    },
     rules: {
-        'file-progress/activate': 1,
         quotes: 'off',
         '@typescript-eslint/quotes': ['error', 'backtick'],
         'dot-notation': 'off',
