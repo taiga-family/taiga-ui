@@ -65,7 +65,12 @@ export class ExampleTuiInputDateComponent extends AbstractExampleTuiControl {
         ),
     };
 
-    minVariants = [TUI_FIRST_DAY, new TuiDay(2017, 2, 5), new TuiDay(1900, 0, 1)];
+    minVariants = [
+        TUI_FIRST_DAY,
+        new TuiDay(2017, 2, 5),
+        new TuiDay(1900, 0, 1),
+        new TuiDay(new Date().getFullYear() + 3, 1, 1),
+    ];
 
     min = this.minVariants[0];
 

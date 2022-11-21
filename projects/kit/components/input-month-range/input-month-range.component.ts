@@ -15,11 +15,14 @@ import {
     CHAR_EN_DASH,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
+    tuiDateClamp,
+    TuiDay,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiHandler,
     TuiMonth,
     TuiMonthRange,
+    TuiYear,
 } from '@taiga-ui/cdk';
 import {
     TuiMonthPipe,
@@ -68,6 +71,10 @@ export class TuiInputMonthRangeComponent
     disabledItemHandler: TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext> =
         ALWAYS_FALSE_HANDLER;
 
+    @Input()
+    @tuiDefaultProp()
+    defaultActiveYear: TuiYear = TuiDay.currentLocal();
+
     open = false;
 
     constructor(
@@ -86,6 +93,12 @@ export class TuiInputMonthRangeComponent
 
     get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield ? this.textfield.nativeFocusableElement : null;
+    }
+
+    get computedDefaultActiveYear(): TuiYear {
+        return (
+            this.value?.from || tuiDateClamp(this.defaultActiveYear, this.min, this.max)
+        );
     }
 
     get focused(): boolean {
