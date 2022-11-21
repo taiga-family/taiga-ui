@@ -24,6 +24,7 @@ import {
     tuiClamp,
     TuiContextWithImplicit,
     TuiControlValueTransformer,
+    tuiDateClamp,
     TuiDateMode,
     TuiDay,
     tuiDefaultProp,
@@ -192,7 +193,15 @@ export class TuiInputDateTimeComponent
     }
 
     get computedActiveYearMonth(): TuiMonth {
-        return this.month || this.value[0] || this.defaultActiveYearMonth;
+        return (
+            this.month ||
+            this.value[0] ||
+            tuiDateClamp(
+                this.defaultActiveYearMonth,
+                Array.isArray(this.min) ? this.min[0] : this.min,
+                Array.isArray(this.max) ? this.max[0] : this.max,
+            )
+        );
     }
 
     get nativeValue(): string {

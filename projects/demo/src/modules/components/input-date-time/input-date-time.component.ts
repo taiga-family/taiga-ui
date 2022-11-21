@@ -61,6 +61,7 @@ export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiControl 
         TUI_FIRST_DAY,
         new TuiDay(2017, 2, 5),
         new TuiDay(1900, 0, 1),
+        new TuiDay(new Date().getFullYear() + 3, 1, 1),
         [this.today.append({day: -1}), new TuiTime(12, 20)],
     ];
 

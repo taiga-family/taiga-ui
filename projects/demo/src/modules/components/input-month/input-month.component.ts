@@ -7,6 +7,7 @@ import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiBooleanHandler,
+    TuiDay,
     TuiMonth,
 } from '@taiga-ui/cdk';
 
@@ -39,8 +40,19 @@ export class ExampleInputMonthComponent extends AbstractExampleTuiControl {
     readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
     readonly exampleForm = import(`./examples/import/declare-form.md?raw`);
 
-    readonly minVariants = [TUI_FIRST_DAY, new TuiMonth(2019, 2), new TuiMonth(2007, 0)];
-    readonly maxVariants = [TUI_LAST_DAY, new TuiMonth(2020, 2), new TuiMonth(2023, 0)];
+    readonly minVariants = [
+        TUI_FIRST_DAY,
+        new TuiMonth(2019, 2),
+        new TuiMonth(2007, 0),
+        new TuiDay(new Date().getFullYear() + 3, 1, 1),
+    ];
+
+    readonly maxVariants = [
+        TUI_LAST_DAY,
+        new TuiMonth(2017, 2),
+        new TuiMonth(2020, 2),
+        new TuiMonth(2023, 0),
+    ];
 
     min = this.minVariants[0];
     max = this.maxVariants[0];

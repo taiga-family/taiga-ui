@@ -15,6 +15,7 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
+    tuiDateClamp,
     TuiDay,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -66,8 +67,13 @@ export class TuiInputMonthComponent
     @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiMonth> = ALWAYS_FALSE_HANDLER;
 
+    @Input()
+    @tuiDefaultProp()
+    defaultActiveYear: TuiYear = TuiDay.currentLocal();
+
+    activeYear?: TuiYear;
+
     open = false;
-    activeYear: TuiYear = this.value || TuiDay.currentLocal();
 
     constructor(
         @Optional()
@@ -85,6 +91,14 @@ export class TuiInputMonthComponent
 
     get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield ? this.textfield.nativeFocusableElement : null;
+    }
+
+    get computedDefaultActiveYear(): TuiYear {
+        return (
+            this.activeYear ||
+            this.value ||
+            tuiDateClamp(this.defaultActiveYear, this.min, this.max)
+        );
     }
 
     get focused(): boolean {
