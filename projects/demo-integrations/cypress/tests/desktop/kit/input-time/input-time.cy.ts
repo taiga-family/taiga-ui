@@ -34,6 +34,14 @@ describe(`InputTime`, () => {
     });
 
     describe(`API`, () => {
+        for (const mode of [`HH:MM`, `HH:MM:SS`, `HH:MM:SS.MSS`]) {
+            it(`the input is configured for ${mode} mode`, () => {
+                visitBy(`mode=${mode}`);
+
+                getInput().click().matchImageSnapshot(`dropdown_mode_${mode}`);
+            });
+        }
+
         describe(`items are passed`, () => {
             it(`the dropdown is visible when the input is focused`, () => {
                 visitBy(`items$=1`);
@@ -46,7 +54,9 @@ describe(`InputTime`, () => {
                 visitBy(`disabledItemHandler$=1&items$=1`);
 
                 getInput().click();
-                getDropdown().scrollTo(0, 500).matchImageSnapshot(`06_00_is_disabled`);
+                getDropdown().scrollTo(0, 500);
+
+                cy.matchImageSnapshot(`06_00_is_disabled`, {capture: `viewport`});
             });
 
             for (const size of [`s`, `m`, `l`]) {
@@ -54,7 +64,8 @@ describe(`InputTime`, () => {
                     visitBy(`items$=1&itemSize=${size}`);
 
                     getInput().click();
-                    getDropdown().matchImageSnapshot(`dropdown_size_${size}`);
+
+                    cy.matchImageSnapshot(`dropdown_size_${size}`, {capture: `viewport`});
                 });
             }
 
@@ -67,14 +78,6 @@ describe(`InputTime`, () => {
                     .should(`have.value`, `08:00`);
             });
         });
-
-        for (const mode of [`HH:MM`, `HH:MM:SS`, `HH:MM:SS.MSS`]) {
-            it(`the input is configured for ${mode} mode`, () => {
-                visitBy(`mode=${mode}`);
-
-                getInput().click().matchImageSnapshot(`dropdown_mode_${mode}`);
-            });
-        }
 
         function visitBy(params: string): void {
             cy.tuiVisit(`components/input-time/API?tuiMode=null&${params}`);
