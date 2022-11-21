@@ -5,10 +5,8 @@
     "main": "index.js",
     "devDependencies": {
         "@nrwl/eslint-plugin-nx": "14.8.6",
-        "@tinkoff/eslint-config": "^1.40.0",
-        "@tinkoff/eslint-config-angular": "^1.40.0",
-        "eslint-plugin-decorator-position": "~5.0.1",
-        "eslint-plugin-file-progress": "^1.3.0",
+        "@tinkoff/eslint-config": "^1.41.0",
+        "@tinkoff/eslint-config-angular": "^1.46.0",
         "eslint-plugin-unicorn": "^44.0.2"
     },
     "peerDependencies": {
