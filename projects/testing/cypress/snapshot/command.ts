@@ -50,20 +50,13 @@ export function tuiAddMatchImageSnapshotCommand(
     );
 }
 
-const globalScreenshotsInfo = new Map<string, number>();
-
 function makeScreenshotName(name?: string): string {
-    const screenshot =
+    return (
         name ??
         Cypress.currentTest.titlePath
             .join(`-`)
             .replace(/\s|-/g, `.`)
             .replace(/['[\]`()]/g, ``)
-            .toLowerCase();
-    const index: number | undefined = globalScreenshotsInfo.get(screenshot);
-    const screenshotId = (index || 0) + 1;
-
-    globalScreenshotsInfo.set(screenshot, screenshotId);
-
-    return `${screenshotId}-${screenshot}`;
+            .toLowerCase()
+    );
 }
