@@ -9,14 +9,14 @@ describe(`Button`, () => {
 
         cy.get(`@content`).find(`button[data-appearance=primary]`).as(`button`);
 
-        cy.matchImageSnapshot({capture: `viewport`});
+        cy.matchImageSnapshot(`button-dropdown-1`, {capture: `viewport`});
         cy.get(`@button`).click();
         cy.get(`@content`).tuiScrollIntoView();
 
-        cy.matchImageSnapshot({capture: `viewport`});
+        cy.matchImageSnapshot(`button-dropdown-2`, {capture: `viewport`});
         cy.get(`@button`).tuiScrollIntoView().click();
         cy.get(`@content`).tuiScrollIntoView();
 
-        cy.matchImageSnapshot({capture: `viewport`});
+        cy.matchImageSnapshot(`button-dropdown-3`, {capture: `viewport`});
     });
 });

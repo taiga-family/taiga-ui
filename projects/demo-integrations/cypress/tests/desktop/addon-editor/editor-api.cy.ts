@@ -266,7 +266,7 @@ describe(`Editor API`, () => {
                 tuiGetDemoContent()
                     .find(`tui-editor-socket.tui-example`)
                     .wait(WAIT_BEFORE_SCREENSHOT)
-                    .matchImageSnapshot();
+                    .matchImageSnapshot(`tui-editor-socket.tui-example-${name}`);
             });
         }
     });
@@ -287,7 +287,7 @@ describe(`Editor API`, () => {
                 tuiGetDemoContent()
                     .find(`tui-editor-socket.tui-example`)
                     .wait(WAIT_BEFORE_SCREENSHOT)
-                    .matchImageSnapshot();
+                    .matchImageSnapshot(`tui-editor-socket.tui-example-${heading}`);
             });
         }
     });
