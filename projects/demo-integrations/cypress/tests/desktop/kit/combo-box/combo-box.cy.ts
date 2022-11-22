@@ -4,23 +4,45 @@ describe(`ComboBox`, () => {
             it(`search shouldn't be reset if an exact match is entered when strict is ${strict}`, () => {
                 visitBy(strict);
                 openFormValue();
-                cy.matchImageSnapshot({capture: `viewport`});
+                cy.matchImageSnapshot(`search-should-not-be-reset-strict-${strict}`, {
+                    capture: `viewport`,
+                });
 
                 getInput().type(`Rubles (500)`);
                 waitCheckmark();
-                cy.matchImageSnapshot({capture: `viewport`});
+                cy.matchImageSnapshot(
+                    `search-should-not-be-reset-strict-waited-mark-${strict}`,
+                    {
+                        capture: `viewport`,
+                    },
+                );
 
                 clickFirstOption();
                 focusWrapper();
-                cy.matchImageSnapshot({capture: `viewport`});
+                cy.matchImageSnapshot(
+                    `search-should-not-be-reset-strict-focused-${strict}`,
+                    {
+                        capture: `viewport`,
+                    },
+                );
 
                 getInput().type(`{backspace}`);
                 focusWrapper();
-                cy.matchImageSnapshot({capture: `viewport`});
+                cy.matchImageSnapshot(
+                    `search-should-not-be-reset-strict-backspaced-${strict}`,
+                    {
+                        capture: `viewport`,
+                    },
+                );
 
                 getInput().type(`{selectall}{backspace}`);
                 focusWrapper();
-                cy.matchImageSnapshot({capture: `viewport`});
+                cy.matchImageSnapshot(
+                    `search-should-not-be-reset-strict-remove-all-${strict}`,
+                    {
+                        capture: `viewport`,
+                    },
+                );
             });
 
             it(`correct word match when strict is ${strict}`, () => {
@@ -29,7 +51,9 @@ describe(`ComboBox`, () => {
 
                 getInput().type(`dOlLaRs (237)`);
                 waitCheckmark();
-                cy.matchImageSnapshot({capture: `viewport`});
+                cy.matchImageSnapshot(`correct-word-match-when-strict-${strict}`, {
+                    capture: `viewport`,
+                });
 
                 getInput()
                     .type(`{backspace}`, {force: true})
@@ -37,16 +61,37 @@ describe(`ComboBox`, () => {
                     .type(`{backspace}`, {force: true})
                     .wait(200)
                     .type(`{backspace}`, {force: true});
-                cy.matchImageSnapshot({capture: `viewport`});
+
+                cy.matchImageSnapshot(
+                    `correct-word-match-when-strict-backspaced-${strict}`,
+                    {
+                        capture: `viewport`,
+                    },
+                );
 
                 focusWrapper();
-                cy.matchImageSnapshot({capture: `viewport`});
+                cy.matchImageSnapshot(
+                    `correct-word-match-when-strict-focused-${strict}`,
+                    {
+                        capture: `viewport`,
+                    },
+                );
 
                 getInput().type(`{selectall}{backspace}`, {force: true});
-                cy.matchImageSnapshot({capture: `viewport`});
+                cy.matchImageSnapshot(
+                    `correct-word-match-when-strict-remove-all-${strict}`,
+                    {
+                        capture: `viewport`,
+                    },
+                );
 
                 focusWrapper();
-                cy.matchImageSnapshot({capture: `viewport`});
+                cy.matchImageSnapshot(
+                    `correct-word-match-when-strict-focused-2-${strict}`,
+                    {
+                        capture: `viewport`,
+                    },
+                );
             });
         }
 
