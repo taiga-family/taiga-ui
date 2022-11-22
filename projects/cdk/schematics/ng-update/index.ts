@@ -37,6 +37,7 @@ import {getExecutionTime} from '../utils/get-execution-time';
 import {migrateTaigaProprietaryIcons} from './steps/migrate-taiga-proprietary-icons';
 import {Schema} from '../ng-add/schema';
 import {migrateExpandTemplates} from './v3-5/steps/migrate-expand-templates';
+import {migrateInputFiles} from './steps/migrate-input-files';
 
 export function updateToV3(options: Schema): Rule {
     const t0 = performance.now();
@@ -94,6 +95,7 @@ function main(options: Schema): Rule {
 
         migrateSliders(updatedFileSystem);
         migrateProgress(updatedFileSystem);
+        migrateInputFiles(updatedFileSystem);
         removeModules();
         dateTimeMigrations();
         replaceFunctions();
