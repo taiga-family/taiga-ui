@@ -8,6 +8,7 @@ import {
     TUI_TABLE_PAGINATION_OPTIONS,
     TuiTablePaginationOptions,
 } from './table-pagination-options';
+import {TuiPagination} from './pagination.model';
 
 @Component({
     selector: `tui-table-pagination`,
@@ -36,6 +37,9 @@ export class TuiTablePaginationComponent {
 
     @Output()
     readonly sizeChange = new EventEmitter<number>();
+
+    @Output()
+    readonly paginationChange = new EventEmitter<TuiPagination>();
 
     open = false;
 
@@ -66,6 +70,13 @@ export class TuiTablePaginationComponent {
         return this.end === this.total;
     }
 
+    get pagination(): TuiPagination {
+        return {
+            page: this.page,
+            size: this.size,
+        }
+    }
+
     onItem(size: number): void {
         const {start} = this;
 
@@ -74,15 +85,18 @@ export class TuiTablePaginationComponent {
         this.open = false;
         this.page = Math.floor(start / this.size);
         this.pageChange.emit(this.page);
+        this.paginationChange.emit(this.pagination);
     }
 
     back(): void {
         this.page--;
         this.pageChange.emit(this.page);
+        this.paginationChange.emit(this.pagination);
     }
 
     forth(): void {
         this.page++;
         this.pageChange.emit(this.page);
+        this.paginationChange.emit(this.pagination);
     }
 }
