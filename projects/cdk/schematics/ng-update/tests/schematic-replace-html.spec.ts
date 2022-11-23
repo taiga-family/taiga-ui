@@ -191,6 +191,12 @@ const TEMPLATE_BEFORE = `
         </a>
     </ng-container>
 </tui-breadcrumbs>
+
+<tui-input-files
+    [label]="contentLabel"
+    [link]="contentLink"
+>
+</tui-input-files>
 `;
 
 const TEMPLATE_AFTER = `<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe has new API. See https://taiga-ui.dev/pipes/format-number -->
@@ -359,6 +365,11 @@ const TEMPLATE_AFTER = `<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe has
         </a>
     </ng-container>
 </tui-breadcrumbs>
+
+<tui-input-files
+    [content]="contentLabel"
+>
+</tui-input-files>
 `;
 
 const COMPONENT_BEFORE = `
