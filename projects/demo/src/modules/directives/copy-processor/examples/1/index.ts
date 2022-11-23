@@ -27,7 +27,7 @@ export class TuiCopyProcessorExample1 {
     @HostListener(`copy`, [`$event`])
     onCopy(event: ClipboardEvent): void {
         this.alertService
-            .open(event.clipboardData?.getData(`text/plain`) ?? ``)
+            .open(event.clipboardData?.getData(`text/plain`) || ``)
             .subscribe();
     }
 

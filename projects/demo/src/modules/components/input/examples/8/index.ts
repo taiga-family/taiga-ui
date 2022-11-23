@@ -42,7 +42,7 @@ export class TuiInputExample8 {
     readonly items$ = this.control.valueChanges.pipe(
         startWith(``),
         switchMap(value =>
-            this.request(value ?? ``).pipe(
+            this.request(value || ``).pipe(
                 map(response => {
                     if (response.length === 1 && String(response[0]) === value) {
                         this.onClick(response[0]);

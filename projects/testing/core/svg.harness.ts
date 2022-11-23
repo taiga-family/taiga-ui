@@ -17,7 +17,7 @@ export class TuiSvgHarness extends TuiComponentHarness {
 
     async getUse(): Promise<string | null> {
         return (
-            (await this.locatorForOptional(`use`)())?.getAttribute(`xlink:href`) ?? null
+            (await this.locatorForOptional(`use`)())?.getAttribute(`xlink:href`) || null
         );
     }
 }

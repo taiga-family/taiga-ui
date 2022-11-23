@@ -43,7 +43,7 @@ export function tuiAddMatchImageSnapshotCommand(
                     ? nameOrOptions
                     : options;
 
-            tuiWaitAllImgInside(prevSubject, overloadedOptions?.waitAllImages ?? true);
+            tuiWaitAllImgInside(prevSubject, overloadedOptions?.waitAllImages || true);
 
             matchSnapshotFn(prevSubject, makeScreenshotName(name), overloadedOptions);
         },

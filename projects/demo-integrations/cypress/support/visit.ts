@@ -79,7 +79,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
     cy.visit(`/`, {
         onBeforeLoad: window => {
             const baseHref =
-                window.document.baseURI.replace(`${window.location.origin}/`, ``) ?? `/`;
+                window.document.baseURI.replace(`${window.location.origin}/`, ``) || `/`;
             const nextUrl = `/${baseHref}${encodedPath}`.replace(REPEATED_SLASH_REG, `/`);
 
             setBeforeLoadOptions(window, {inIframe});

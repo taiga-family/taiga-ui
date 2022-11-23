@@ -89,7 +89,7 @@ export class TuiDocNavigationComponent {
     }
 
     get canOpen(): boolean {
-        return (this.search.value?.length ?? 0) > 2;
+        return (this.search.value?.length || 0) > 2;
     }
 
     get itemsWithoutSections(): TuiDocPages {

@@ -107,7 +107,7 @@ export class TuiButtonComponent
 
     @HostBinding(`attr.data-appearance`)
     get computedAppearance(): string {
-        return this.appearance ?? (this.options.appearance || ``);
+        return this.appearance || (this.options.appearance || ``);
     }
 
     @HostBinding(`attr.disabled`)

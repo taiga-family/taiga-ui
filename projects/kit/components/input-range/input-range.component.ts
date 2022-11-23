@@ -235,11 +235,11 @@ export class TuiInputRangeComponent
     }
 
     onInputLeft(value: number | null): void {
-        this.safelyUpdateValue([value ?? this.safeCurrentValue[0], this.value[1]]);
+        this.safelyUpdateValue([value || this.safeCurrentValue[0], this.value[1]]);
     }
 
     onInputRight(value: number | null): void {
-        this.safelyUpdateValue([this.value[0], value ?? this.safeCurrentValue[1]]);
+        this.safelyUpdateValue([this.value[0], value || this.safeCurrentValue[1]]);
     }
 
     onRangeValue(value: [number, number]): void {

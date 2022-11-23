@@ -13,7 +13,7 @@ export class TuiAccordionItemHarness extends TuiContentContainerComponentHarness
     }
 
     async getContent(): Promise<string | null> {
-        return (await this.locatorForOptional(`.t-content`)())?.text() ?? null;
+        return (await this.locatorForOptional(`.t-content`)())?.text() || null;
     }
 
     async clickHeader(): Promise<void> {
@@ -28,7 +28,7 @@ export class TuiAccordionItemHarness extends TuiContentContainerComponentHarness
         return (
             !!(await this.locatorForOptional(
                 TuiSvgHarness.with({selector: `.t-icon`}),
-            )()) ?? false
+            )()) || false
         );
     }
 

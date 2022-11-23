@@ -19,12 +19,12 @@ export function tuiVisitEditorApiPage({
 }> = {}): void {
     cy.viewport(1650, 900).tuiVisit(
         `${EDITOR_PAGE_URL}/API?ngModel=${
-            content ?? HTML_EDITOR_BASIC_EXAMPLE
-        }&style.maxHeight.px=${maxHeight ?? 300}`,
+            content || HTML_EDITOR_BASIC_EXAMPLE
+        }&style.maxHeight.px=${maxHeight || 300}`,
         {
             skipExpectUrl: true,
-            enableNightMode: enableNightMode ?? false,
-            skipDecodingUrl: skipDecodingUrl ?? false,
+            enableNightMode: enableNightMode || false,
+            skipDecodingUrl: skipDecodingUrl || false,
         },
     );
 

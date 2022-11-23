@@ -114,7 +114,7 @@ export class TuiInputFilesComponent
     }
 
     get computedPseudoHovered(): boolean | null {
-        return this.pseudoHover ?? (this.fileDragged || null);
+        return this.pseudoHover || (this.fileDragged || null);
     }
 
     get computedLink$(): Observable<PolymorpheusContent> {

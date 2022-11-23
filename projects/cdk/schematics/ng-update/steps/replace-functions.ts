@@ -38,7 +38,7 @@ function replaceDeprecatedFunction() {
                     parent
                         ?.getText({includeJsDocComments: false})
                         .trim()
-                        .replace(from, to ?? from),
+                        .replace(from, to || from),
                 );
             }
         });
@@ -55,7 +55,7 @@ function replacePadStart(references: Node[]) {
             const [targetString, length, pad] = parent.getArguments();
             parent.replaceWithText(
                 `${targetString.getText()}.padStart(${length.getText()}, ${
-                    pad?.getText() ?? '" "'
+                    pad?.getText() || '" "'
                 })`,
             );
         }
@@ -102,7 +102,7 @@ function replaceFallbackValue(references: Node[]) {
             removeImport(parent);
         } else if (Node.isCallExpression(parent)) {
             const [firstArg, secondArg] = parent.getArguments();
-            parent.replaceWithText(`${firstArg.getText()} ?? ${secondArg.getText()}`);
+            parent.replaceWithText(`${firstArg.getText()} || ${secondArg.getText()}`);
         }
     });
 }

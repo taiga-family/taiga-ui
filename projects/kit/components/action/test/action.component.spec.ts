@@ -14,7 +14,7 @@ describe(`Action`, () => {
                 tuiAction
                 [icon]="icon"
             >
-                {{ text ?? 'Some action' }}
+                {{ text || 'Some action' }}
             </button>
             <a
                 tuiAction
@@ -22,7 +22,7 @@ describe(`Action`, () => {
                 href="http://www.montypython.com/"
                 [icon]="icon"
             >
-                {{ text ?? 'Some action' }}
+                {{ text || 'Some action' }}
             </a>
         `,
     })

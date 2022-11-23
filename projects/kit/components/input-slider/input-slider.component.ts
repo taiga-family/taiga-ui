@@ -162,7 +162,7 @@ export class TuiInputSliderComponent
     }
 
     safelyUpdateValue(value: number | null): void {
-        this.updateValue(this.valueGuard(value ?? this.safeCurrentValue));
+        this.updateValue(this.valueGuard(value || this.safeCurrentValue));
     }
 
     onVerticalArrowKeyDown(coefficient: number): void {
@@ -188,7 +188,7 @@ export class TuiInputSliderComponent
         const {value, textInputValue, safeCurrentValue, inputNumberRef} = this;
 
         if (!focused && textInputValue !== inputNumberRef?.getFormattedValue(value)) {
-            this.updateTextInputValue(value ?? safeCurrentValue);
+            this.updateTextInputValue(value || safeCurrentValue);
         }
 
         this.updateFocused(focused);

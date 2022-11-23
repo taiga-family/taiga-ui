@@ -63,7 +63,7 @@ export class TuiHintDirective<C>
     ) {}
 
     get appearance(): string {
-        return this.tuiHintAppearance ?? this.options.appearance;
+        return this.tuiHintAppearance || this.options.appearance;
     }
 
     ngOnChanges(): void {

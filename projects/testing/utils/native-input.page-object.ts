@@ -19,12 +19,12 @@ export class TuiNativeInputPO {
     get nativeElement(): HTMLInputElement | HTMLTextAreaElement | null {
         return (
             this.pageObject.getByAutomationId(this.automationId, this.hostDebugElement)
-                ?.nativeElement ?? null
+                ?.nativeElement || null
         );
     }
 
     get value(): string {
-        return tuiReplaceNbsp(this.nativeElement?.value ?? ``);
+        return tuiReplaceNbsp(this.nativeElement?.value || ``);
     }
 
     get focused(): boolean {

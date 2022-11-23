@@ -40,14 +40,14 @@ tuiFormatNumber(42, {decimalLimit: dynamicDecimalLimit === null ? Infinity : dyn
 
 @Component({templateUrl: './app.template.html'})
 export class AppComponent extends AbstractTuiController {
-    some = number ?? 5;
+    some = number || 5;
 
     get formattedNumber(): number {
         return tuiFormatNumber(Math.floor(rawNumber), {decimalLimit: Infinity, decimalSeparator: this.numberFormat.decimalSeparator, thousandSeparator: this.numberFormat.thousandSeparator, zeroPadding: true});
     }
 
     method(): void {
-        return someFn(b ?? "some");
+        return someFn(b || "some");
     }
 
     get formattedDayPart(): string {

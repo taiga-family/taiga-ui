@@ -21,6 +21,6 @@ export class TuiMathExample3 {
     get normalized(): number {
         const {value, min, max} = this.parametersForm.value;
 
-        return tuiNormalizeToIntNumber(value ?? 0, min ?? 5, max ?? 42);
+        return tuiNormalizeToIntNumber(value || 0, min || 5, max || 42);
     }
 }

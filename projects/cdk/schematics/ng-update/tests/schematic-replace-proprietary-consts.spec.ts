@@ -30,7 +30,7 @@ export class TuiAccountExample1 extends TuiAccountComponent {
     ) {}
 
     getIcon({icon, currency = TuiCurrency.Ruble}: TuiAccount): PolymorpheusContent {
-        return icon ?? CURRENCY_ICONS[String(currency)] ?? \`tuiIconCurrencyDefaultMarker\`;
+        return icon || CURRENCY_ICONS[String(currency)] || \`tuiIconCurrencyDefaultMarker\`;
     }
 }
 
@@ -67,7 +67,7 @@ export class TuiAccountExample1 extends TuiAccountComponent {
     ) {}
 
     getIcon({icon, currency = TuiCurrency.Ruble}: TuiAccount): PolymorpheusContent {
-        return icon ?? CURRENCY_ICONS[String(currency)] ?? \`tuiIconCurrencyDefaultMarker\`;
+        return icon || CURRENCY_ICONS[String(currency)] || \`tuiIconCurrencyDefaultMarker\`;
     }
 }
 

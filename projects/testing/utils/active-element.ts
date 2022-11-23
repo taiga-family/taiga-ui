@@ -9,7 +9,7 @@ export function tuiDispatchOnActive<T>(key: string, fixture?: ComponentFixture<T
 }
 
 export function tuiActiveText(): string {
-    return document.activeElement?.textContent?.trim() ?? ``;
+    return document.activeElement?.textContent?.trim() || ``;
 }
 
 export function tuiIsActive(element: Element): boolean {

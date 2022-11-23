@@ -76,11 +76,11 @@ export abstract class AbstractTuiControl<T>
     }
 
     get value(): T {
-        return this.previousInternalValue ?? this.fallbackValue;
+        return this.previousInternalValue || this.fallbackValue;
     }
 
     get safeCurrentValue(): T {
-        return this.rawValue ?? this.fallbackValue;
+        return this.rawValue || this.fallbackValue;
     }
 
     get invalid(): boolean {
@@ -111,11 +111,11 @@ export abstract class AbstractTuiControl<T>
     }
 
     get computedName(): string | null {
-        return this.controlName?.toString() ?? null;
+        return this.controlName?.toString() || null;
     }
 
     protected get controlName(): string | null {
-        return this.ngControl?.name?.toString() ?? null;
+        return this.ngControl?.name?.toString() || null;
     }
 
     private get rawValue(): T | undefined {
@@ -200,7 +200,7 @@ export abstract class AbstractTuiControl<T>
         extractor: (ngControl: NgControl) => T | null | undefined,
         defaultFieldValue: T,
     ): T {
-        return (this.ngControl && extractor(this.ngControl)) ?? defaultFieldValue;
+        return (this.ngControl && extractor(this.ngControl)) || defaultFieldValue;
     }
 
     private controlMarkAsTouched(): void {

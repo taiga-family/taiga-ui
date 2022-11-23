@@ -125,7 +125,7 @@ export class TuiInputExample4 {
     get card(): string | null {
         const value = this.testForm.get(`card`)!.value;
 
-        if ((value?.length ?? 0) < 7) {
+        if ((value?.length || 0) < 7) {
             return null;
         }
 

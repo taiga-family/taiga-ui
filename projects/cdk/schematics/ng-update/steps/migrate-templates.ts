@@ -267,7 +267,7 @@ function replaceFieldError({
             );
         }
 
-        const input = `[error]="${orderVal ?? '[]'} | tuiFieldError | async"`;
+        const input = `[error]="${orderVal || '[]'} | tuiFieldError | async"`;
 
         replaceTag(
             recorder,

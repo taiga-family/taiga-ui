@@ -65,12 +65,12 @@ export abstract class AbstractTuiInteractive {
 
     @HostBinding(`class._focused`)
     get computedFocused(): boolean {
-        return !this.computedDisabled && (this.pseudoFocus ?? this.focused);
+        return !this.computedDisabled && (this.pseudoFocus || this.focused);
     }
 
     @HostBinding(`class._focus-visible`)
     get computedFocusVisible(): boolean {
-        return !this.computedDisabled && (this.pseudoFocus ?? this.focusVisible);
+        return !this.computedDisabled && (this.pseudoFocus || this.focusVisible);
     }
 
     // TODO: 3.0 Consider removing since native input is exposed

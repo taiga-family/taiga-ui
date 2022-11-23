@@ -20,7 +20,7 @@ export class TuiMiscellaneousExample5 {
 
     get isPresent(): boolean {
         const {value} = this.parametersForm.value;
-        const objectedValue = this.objectifyValue(value ?? ``);
+        const objectedValue = this.objectifyValue(value || ``);
 
         return tuiIsPresent(objectedValue);
     }

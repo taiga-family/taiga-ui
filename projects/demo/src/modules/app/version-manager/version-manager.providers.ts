@@ -22,7 +22,7 @@ export const TUI_VERSION_MANAGER_PROVIDERS: Provider[] = [
                         meta.baseHref === strategy.getBaseHref().replace(/\//g, ``) ||
                         meta.alias === `v${parseInt(TUI_VERSION, 10)}`
                     );
-                }) ?? null
+                }) || null
             );
         },
     },

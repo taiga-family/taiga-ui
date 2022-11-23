@@ -24,7 +24,7 @@ export async function convertAllCompileFileToAllFile(config: Options): Promise<v
         output: {preferConst: true},
         plugins: [
             typescript(
-                prt2Options ?? {
+                prt2Options || {
                     cacheRoot: `node_modules/.cache/.rpt2_cache`,
                 },
             ) as Plugin,

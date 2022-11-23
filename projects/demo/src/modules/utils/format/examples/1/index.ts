@@ -19,6 +19,6 @@ export class TuiFormatExample1 {
     get px(): string {
         const {value} = this.parametersForm.value;
 
-        return tuiPx(value ?? 0);
+        return tuiPx(value || 0);
     }
 }

@@ -41,31 +41,31 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
-      - name: Auto format files only in PR of maintainers
-        if: ${{ env.IS_FORK == 'false' && env.IS_MAIN_BRANCH == 'false' && env.IS_DEPENDABOT == 'false' }}
-        run: |
-          npm run prettier -- --write
-          npm run lint -- . --fix
-          npm run stylelint -- --fix
-
-      - name: Only linting files in fork or main branch
-        if: ${{ env.IS_FORK == 'true' || env.IS_MAIN_BRANCH == 'true' || env.IS_DEPENDABOT == 'true' }}
-        run: |
-          npm run prettier -- --check
-          npm run lint -- .
-          npm run stylelint
-
-      - name: Apply changes after linting
-        uses: stefanzweifel/git-auto-commit-action@v4
-        if: ${{ env.IS_MAIN_BRANCH == 'false' && env.IS_FORK == 'false' && env.IS_DEPENDABOT == 'false' }}
-        with:
-          commit_user_name: 'tinkoff-bot'
-          commit_user_email: 'tinkoff-bot@users.noreply.github.com'
-          commit_author: 'tinkoff-bot <tinkoff-bot@users.noreply.github.com>'
-          commit_message: 'chore: apply changes after linting [tinkoff-bot]'
-          status_options: '--untracked-files=no'
-          commit_options: '--no-verify'
-          skip_fetch: true
+#      - name: Auto format files only in PR of maintainers
+#        if: ${{ env.IS_FORK == 'false' && env.IS_MAIN_BRANCH == 'false' && env.IS_DEPENDABOT == 'false' }}
+#        run: |
+#          npm run prettier -- --write
+#          npm run lint -- . --fix
+#          npm run stylelint -- --fix
+#
+#      - name: Only linting files in fork or main branch
+#        if: ${{ env.IS_FORK == 'true' || env.IS_MAIN_BRANCH == 'true' || env.IS_DEPENDABOT == 'true' }}
+#        run: |
+#          npm run prettier -- --check
+#          npm run lint -- .
+#          npm run stylelint
+#
+#      - name: Apply changes after linting
+#        uses: stefanzweifel/git-auto-commit-action@v4
+#        if: ${{ env.IS_MAIN_BRANCH == 'false' && env.IS_FORK == 'false' && env.IS_DEPENDABOT == 'false' }}
+#        with:
+#          commit_user_name: 'tinkoff-bot'
+#          commit_user_email: 'tinkoff-bot@users.noreply.github.com'
+#          commit_author: 'tinkoff-bot <tinkoff-bot@users.noreply.github.com>'
+#          commit_message: 'chore: apply changes after linting [tinkoff-bot]'
+#          status_options: '--untracked-files=no'
+#          commit_options: '--no-verify'
+#          skip_fetch: true
 
 concurrency:
   group: lint-${{ github.workflow }}-${{ github.ref }}

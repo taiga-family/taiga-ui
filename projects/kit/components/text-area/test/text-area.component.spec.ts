@@ -175,7 +175,7 @@ describe(`TextArea`, () => {
             fixture.detectChanges();
 
             expect(
-                (testComponent.component.computeMaxHeight ?? 0) > DEFAULT_HEIGHT,
+                (testComponent.component.computeMaxHeight || 0) > DEFAULT_HEIGHT,
             ).toBeTruthy();
         });
     });

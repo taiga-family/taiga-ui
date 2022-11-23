@@ -114,11 +114,11 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
     }
 
     private get contentTop(): number {
-        return this.content?.nativeElement.offsetTop ?? Infinity;
+        return this.content?.nativeElement.offsetTop || Infinity;
     }
 
     private get sheetTop(): number {
-        return this.sheet?.nativeElement.offsetTop ?? Infinity;
+        return this.sheet?.nativeElement.offsetTop || Infinity;
     }
 
     @tuiPure

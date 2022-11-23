@@ -23,7 +23,7 @@ export class TuiTreeItemControllerDirective implements TuiTreeController {
     fallback = true;
 
     isExpanded(item: TuiTreeItemComponent): boolean {
-        return this.map.get(item) ?? this.fallback;
+        return this.map.get(item) || this.fallback;
     }
 
     toggle(item: TuiTreeItemComponent): void {

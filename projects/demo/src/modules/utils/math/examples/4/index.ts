@@ -20,6 +20,6 @@ export class TuiMathExample4 {
     get quantized(): number {
         const {value, quantum} = this.parametersForm.value;
 
-        return tuiQuantize(value ?? 3, quantum ?? 2);
+        return tuiQuantize(value || 3, quantum || 2);
     }
 }
