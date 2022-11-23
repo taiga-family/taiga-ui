@@ -446,11 +446,6 @@ const TEMPLATE_AFTER = `<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe has
     </ng-container>
 </tui-breadcrumbs>
 
-<tui-input-files
-    [content]="contentLabel"
->
-</tui-input-files>
-
 <tui-hosted-dropdown
     tuiDropdownAlign="left"
     [sided]="true"
@@ -466,6 +461,11 @@ const TEMPLATE_AFTER = `<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe has
         Button
     </button>
 </tui-hosted-dropdown>
+
+<tui-input-files
+    [content]="contentLabel"
+>
+</tui-input-files>
 `;
 
 const COMPONENT_BEFORE = `
