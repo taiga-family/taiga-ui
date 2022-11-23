@@ -70,7 +70,7 @@ function replaceLabelLinkInputs(
         templateResource,
         fileSystem,
         componentSelector: 'tui-input-files',
-        from: 'label',
+        from: '[label]',
         to: '[content]',
         newValue: LABEL_LINK_INPUTS_MIGRATION_METHOD_NAME,
     });
@@ -79,18 +79,18 @@ function replaceLabelLinkInputs(
         templateResource,
         fileSystem,
         componentSelector: 'tui-input-files',
-        from: 'link',
+        from: '[link]',
         to: '[content]',
         newValue: LABEL_LINK_INPUTS_MIGRATION_METHOD_NAME,
-        filterFn: element => !hasElementAttribute(element, 'label'),
+        filterFn: element => !hasElementAttribute(element, '[label]'),
     });
 
     removeInputProperty({
         templateResource,
         fileSystem,
         componentSelector: 'tui-input-files',
-        inputProperty: 'link',
-        filterFn: element => hasElementAttribute(element, 'label'),
+        inputProperty: '[link]',
+        filterFn: element => hasElementAttribute(element, '[label]'),
     });
 
     if (wasLabelInputModified || wasLinkInputModified) {
