@@ -73,7 +73,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
     } = options;
 
     if (clock) {
-        cy.clock(clock, ['Date']);
+        cy.clock(clock, [`Date`]);
     }
 
     stubExternalIcons();
