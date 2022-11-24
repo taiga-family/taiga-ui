@@ -1,19 +1,14 @@
-import {
-    tuiAddMatchImageSnapshotCommand,
-    tuiBeInViewportAssertion,
-    tuiWaitAllImgInside,
-} from '@taiga-ui/testing/cypress';
-
-import {tuiFocus} from './focus';
-import {tuiHide} from './hide';
-import {tuiScrollIntoView} from './scroll-into-view';
-import {tuiSetLanguage} from './set-language';
-import {tuiSetNightMode} from './set-night-mode';
-import {tuiShow} from './show';
-import {tuiTab} from './type-tab';
-import {tuiVisit} from './visit';
-import {tuiWaitCodeHighlight} from './wait-code-highlight';
-import {tuiWaitKitDialog} from './wait-kit-dialog';
+import {tuiFocus} from '@demo-integrations/support/helpers/focus';
+import {tuiHide} from '@demo-integrations/support/helpers/hide';
+import {tuiScrollIntoView} from '@demo-integrations/support/helpers/scroll-into-view';
+import {tuiSetLanguage} from '@demo-integrations/support/helpers/set-language';
+import {tuiSetNightMode} from '@demo-integrations/support/helpers/set-night-mode';
+import {tuiShow} from '@demo-integrations/support/helpers/show';
+import {tuiTab} from '@demo-integrations/support/helpers/type-tab';
+import {tuiVisit} from '@demo-integrations/support/helpers/visit';
+import {tuiWaitCodeHighlight} from '@demo-integrations/support/helpers/wait-code-highlight';
+import {tuiWaitKitDialog} from '@demo-integrations/support/helpers/wait-kit-dialog';
+import {tuiBeInViewportAssertion, tuiWaitAllImgInside} from '@taiga-ui/testing/cypress';
 
 declare global {
     namespace Cypress {
@@ -90,18 +85,5 @@ Cypress.Commands.add(
     {prevSubject: [`optional`, `element`, `window`, `document`]},
     tuiWaitAllImgInside,
 );
-
-tuiAddMatchImageSnapshotCommand({
-    allowSizeMismatch: true, // Windows CI fix
-    runInProcess: true, // macOS CI fix
-    failureThreshold: 0.0004,
-    failureThresholdType: `percent`,
-    comparisonMethod: `ssim`,
-    diffDirection: `horizontal`,
-    customDiffConfig: {
-        ssim: `fast`,
-        windowSize: 24,
-    } as any,
-});
 
 chai.use(tuiBeInViewportAssertion);

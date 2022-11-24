@@ -1,7 +1,10 @@
-import {NIGHT_THEME_KEY, WAIT_BEFORE_SCREENSHOT} from './shared.entities';
-import {stubExternalIcons} from './stub-external-icons.util';
-import {stubMetrics} from './stub-metrics';
-import {waitAllRequests} from './wait-requests.util';
+import {waitAllRequests} from '@demo-integrations/support/helpers/wait-requests.util';
+import {
+    NIGHT_THEME_KEY,
+    WAIT_BEFORE_SCREENSHOT,
+} from '@demo-integrations/support/properties/shared.entities';
+import {stubExternalIcons} from '@demo-integrations/support/stubs/stub-external-icons.util';
+import {stubMetrics} from '@demo-integrations/support/stubs/stub-metrics';
 
 const NEXT_URL_STORAGE_KEY = `env`;
 const REPEATED_SLASH_REG = new RegExp(`//`, `g`);

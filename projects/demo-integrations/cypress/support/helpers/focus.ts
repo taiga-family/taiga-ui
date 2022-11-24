@@ -1,4 +1,4 @@
-import {DEFAULT_TIMEOUT_BEFORE_ACTION} from './shared.entities';
+import {DEFAULT_TIMEOUT_BEFORE_ACTION} from '@demo-integrations/support/properties/shared.entities';
 
 export const tuiFocus = (
     $subject: Cypress.PrevSubjectMap<void>[Cypress.PrevSubject],

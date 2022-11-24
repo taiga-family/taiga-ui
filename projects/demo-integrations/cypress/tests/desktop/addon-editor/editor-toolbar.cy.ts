@@ -7,7 +7,7 @@ import {
     EDITOR_PAGE_URL,
     PROSE_MIRROR_EDITOR_SELECTOR,
     WAIT_BEFORE_SCREENSHOT,
-} from '@demo-integrations/support/shared.entities';
+} from '@demo-integrations/support/properties/shared.entities';
 
 describe(`Editor's toolbar`, () => {
     beforeEach(() => tuiVisitEditorApiPage());

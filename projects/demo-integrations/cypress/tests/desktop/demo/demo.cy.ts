@@ -2,12 +2,12 @@ import {
     DEMO_PATHS,
     isInputNumberPage,
     isScrollbarPage,
-} from '@demo-integrations/support/demo-paths';
-import {tuiExcluded} from '@demo-integrations/support/exclusions';
+} from '@demo-integrations/support/properties/demo-paths';
+import {tuiExcluded} from '@demo-integrations/support/properties/exclusions';
 import {
     EXAMPLE_ID,
     WAIT_BEFORE_SCREENSHOT,
-} from '@demo-integrations/support/shared.entities';
+} from '@demo-integrations/support/properties/shared.entities';
 
 describe(`Demo`, () => {
     for (const path of DEMO_PATHS) {
@@ -40,7 +40,10 @@ describe(`Demo`, () => {
 
                 return tuiExcluded(path, index + 1)
                     ? cy.get(`@example`)
-                    : cy.get(`@example`).matchImageSnapshot(`${path}/${index + 1}`);
+                    : cy
+                          .get(`@example`)
+                          .wait(Cypress.env(`waitBeforeScreenshotComponents`))
+                          .matchImageSnapshot(`${path}/${index + 1}`);
             });
         });
     }
