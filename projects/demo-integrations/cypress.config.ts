@@ -1,4 +1,5 @@
 import {defineConfig} from 'cypress';
+import {TUI_COMPONENTS_EXCLUSION} from '@demo-integrations/support/properties/exclusions';
 
 export const viewportWidth = 1440;
 export const viewportHeight = 900;
@@ -59,6 +60,7 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
 };
 
 export const TUI_CYPRESS_ENV = {
+    componentsExclusion: TUI_COMPONENTS_EXCLUSION,
     waitBeforeScreenshotComponents: 0,
     waitRenderedFont: `Manrope`,
     waitBeforeScreenshot: 1000,
