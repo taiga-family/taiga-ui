@@ -161,7 +161,7 @@ export const TUI_RUSSIAN_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> =
     [TuiCountryIsoCode.PW]: `Палау`,
     [TuiCountryIsoCode.PY]: `Парагвай`,
     [TuiCountryIsoCode.QA]: `Катар`,
-    [TuiCountryIsoCode.RE]: `Встреча`,
+    [TuiCountryIsoCode.RE]: `Реюньон`,
     [TuiCountryIsoCode.RO]: `Румыния`,
     [TuiCountryIsoCode.RS]: `Сербия`,
     [TuiCountryIsoCode.RU]: `Россия`,
