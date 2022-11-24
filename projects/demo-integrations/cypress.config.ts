@@ -1,5 +1,5 @@
-import {defineConfig} from 'cypress';
 import {TUI_COMPONENTS_EXCLUSION} from '@demo-integrations/support/properties/exclusions';
+import {defineConfig} from 'cypress';
 
 export const viewportWidth = 1440;
 export const viewportHeight = 900;

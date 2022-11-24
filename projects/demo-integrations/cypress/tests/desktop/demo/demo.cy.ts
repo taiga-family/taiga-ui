@@ -1,3 +1,4 @@
+import {tuiComponentsExcluded} from '@demo-integrations/support/helpers/components-excluded';
 import {
     DEMO_PATHS,
     isInputNumberPage,
@@ -7,7 +8,6 @@ import {
     EXAMPLE_ID,
     WAIT_BEFORE_SCREENSHOT,
 } from '@demo-integrations/support/properties/shared.entities';
-import {tuiComponentsExcluded} from '@demo-integrations/support/helpers/components-excluded';
 
 describe(`Demo`, () => {
     for (const path of DEMO_PATHS) {
