@@ -26,7 +26,7 @@ import {
 import {
     PROSE_MIRROR_EDITOR_SELECTOR,
     WAIT_BEFORE_SCREENSHOT,
-} from '@demo-integrations/support/shared.entities';
+} from '@demo-integrations/support/properties/shared.entities';
 
 describe(`Editor API`, () => {
     describe(`Check fonts in light and dark mode`, () => {

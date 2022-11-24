@@ -58,8 +58,15 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
     },
 };
 
+export const TUI_CYPRESS_ENV = {
+    waitBeforeScreenshotComponents: 0,
+    waitRenderedFont: `Manrope`,
+    waitBeforeScreenshot: 1000,
+    waitBeforeAction: 50,
+};
+
 // noinspection JSUnusedGlobalSymbols
 export default defineConfig({
     ...TUI_CYPRESS_CONFIG,
-    env: {waitRenderedFont: `Manrope`},
+    env: TUI_CYPRESS_ENV,
 });

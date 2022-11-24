@@ -1,7 +1,7 @@
 import {
     EXAMPLE_ID,
     WAIT_BEFORE_SCREENSHOT,
-} from '@demo-integrations/support/shared.entities';
+} from '@demo-integrations/support/properties/shared.entities';
 
 describe(`Icons`, () => {
     it(`display icons that are easily customizable`, () => {

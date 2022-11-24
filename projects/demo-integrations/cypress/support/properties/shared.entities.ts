@@ -1,5 +1,5 @@
-export const WAIT_BEFORE_SCREENSHOT = 1000; // editor has a huge number of icons (that is why we wait so long)
-export const DEFAULT_TIMEOUT_BEFORE_ACTION = 50;
+export const WAIT_BEFORE_SCREENSHOT = Cypress.env(`waitBeforeScreenshot`);
+export const DEFAULT_TIMEOUT_BEFORE_ACTION = Cypress.env(`waitBeforeAction`);
 export const PROSE_MIRROR_EDITOR_SELECTOR = `.ProseMirror[contenteditable]`;
 export const NIGHT_THEME_KEY = `night`;
 export const EXAMPLE_ID = `tui-doc-example`;

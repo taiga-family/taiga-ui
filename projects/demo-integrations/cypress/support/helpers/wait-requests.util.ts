@@ -1,4 +1,4 @@
-import {DEFAULT_TIMEOUT_BEFORE_ACTION} from './shared.entities';
+import {DEFAULT_TIMEOUT_BEFORE_ACTION} from '@demo-integrations/support/properties/shared.entities';
 
 const getNotLoadedRequests = (alias: string): Cypress.Chainable =>
     cy

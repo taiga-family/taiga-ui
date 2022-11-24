@@ -1,7 +1,7 @@
 import {
     DIALOG_PAGE_URL,
     WAIT_BEFORE_SCREENSHOT,
-} from '@demo-integrations/support/shared.entities';
+} from '@demo-integrations/support/properties/shared.entities';
 
 describe(`Dialogs`, () => {
     for (const [index, {width, height}] of [

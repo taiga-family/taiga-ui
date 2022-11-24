@@ -1,10 +1,10 @@
+import {HTML_EDITOR_BASIC_EXAMPLE} from '@demo-integrations/support/editor/html';
 import {
     DEFAULT_TIMEOUT_BEFORE_ACTION,
     EDITOR_PAGE_URL,
     PROSE_MIRROR_EDITOR_SELECTOR,
     WAIT_BEFORE_SCREENSHOT,
-} from '../shared.entities';
-import {HTML_EDITOR_BASIC_EXAMPLE} from './html';
+} from '@demo-integrations/support/properties/shared.entities';
 
 export function tuiVisitEditorApiPage({
     content,
@@ -92,7 +92,7 @@ export function tuiGetEditLinkInput(): Cypress.Chainable<JQuery> {
     return cy.get(`tui-edit-link`).find(`input[type=text]`);
 }
 
-export function tuiGetScreenshotArea(): Cypress.Chainable<JQuery> {
+export function tuiGetScreenshotArea(): Cypress.Chainable<unknown> {
     return tuiGetDemoContent().find(`tui-editor`).wait(WAIT_BEFORE_SCREENSHOT);
 }
 

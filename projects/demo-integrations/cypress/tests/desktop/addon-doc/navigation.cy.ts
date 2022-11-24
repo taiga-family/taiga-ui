@@ -1,4 +1,4 @@
-import {WAIT_BEFORE_SCREENSHOT} from '@demo-integrations/support/shared.entities';
+import {WAIT_BEFORE_SCREENSHOT} from '@demo-integrations/support/properties/shared.entities';
 
 describe(`Navigation`, () => {
     it(`getting started / [light mode]`, () => {
