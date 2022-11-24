@@ -116,7 +116,7 @@ describe(`Input`, () => {
         cy.tuiVisit(`${INPUT_PAGE_URL}`);
 
         cy.get(`tui-doc-example[id=mask]`).tuiScrollIntoView().as(`wrapper`);
-        cy.get(`@example`).find(`tui-input input[tuiTextfield]`).as(`input`);
+        cy.get(`@wrapper`).find(`tui-input input[tuiTextfield]`).as(`input`);
         cy.get(`@input`).first().focus().type(`111111111111`).blur();
         cy.get(`@wrapper`).matchImageSnapshot(`09-mask`);
     });
