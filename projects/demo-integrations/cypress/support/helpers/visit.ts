@@ -29,7 +29,7 @@ interface TuiVisitOptions {
     skipExpectUrl?: boolean;
     waitRenderedFont?: string | RegExp;
     rootSelector?: string;
-    clock?: Date;
+    clock?: Date | null;
     /**
      * WARNING: this flag does not provide fully emulation of touch mobile device.
      * Cypress can't do it (https://docs.cypress.io/faq/questions/general-questions-faq#Do-you-support-native-mobile-apps).
