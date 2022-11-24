@@ -115,13 +115,9 @@ describe(`Input`, () => {
     it(`external mask works`, () => {
         cy.tuiVisit(`${INPUT_PAGE_URL}`);
 
-        cy.get(`tui-doc-example[id=mask]`)
-            .find(`.t-example`)
-            .tuiScrollIntoView()
-            .as(`example`);
-
+        cy.get(`tui-doc-example[id=mask]`).tuiScrollIntoView().as(`wrapper`);
         cy.get(`@example`).find(`tui-input input[tuiTextfield]`).as(`input`);
-        cy.get(`@input`).first().focus().type(`1111111111`).blur();
+        cy.get(`@input`).first().focus().type(`111111111111`).blur();
         cy.get(`@wrapper`).matchImageSnapshot(`09-mask`);
     });
 });
