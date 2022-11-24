@@ -6,6 +6,7 @@ describe(`TuiPrimitiveTextfield`, () => {
     it(`Tooltip in primitive-textfield works`, () => {
         cy.tuiVisit(
             `components/primitive-textfield/API?tuiMode=null&tuiHintContent=Ivan%20Ivanov`,
+            {clock: null /* TODO: investigate why flaky instead of null */},
         );
         cy.get(`#demoContent tui-tooltip`)
             .first()

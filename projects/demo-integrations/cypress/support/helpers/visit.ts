@@ -29,6 +29,7 @@ interface TuiVisitOptions {
     skipExpectUrl?: boolean;
     waitRenderedFont?: string | RegExp;
     rootSelector?: string;
+    clock?: Date | null;
     /**
      * WARNING: this flag does not provide fully emulation of touch mobile device.
      * Cypress can't do it (https://docs.cypress.io/faq/questions/general-questions-faq#Do-you-support-native-mobile-apps).
@@ -67,8 +68,13 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         hideLanguageSwitcher = true,
         pseudoMobile = false,
         waitRenderedFont,
+        clock = Date.UTC(2018, 10, 1),
         rootSelector = `app`,
     } = options;
+
+    if (clock) {
+        cy.clock(clock, [`Date`]);
+    }
 
     stubExternalIcons();
     stubMetrics();
