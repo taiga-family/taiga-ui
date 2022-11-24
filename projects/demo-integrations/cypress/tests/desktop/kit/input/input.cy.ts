@@ -121,7 +121,7 @@ describe(`Input`, () => {
             .as(`example`);
 
         cy.get(`@example`).find(`tui-input input[tuiTextfield]`).as(`input`);
-        cy.get(`@input`).focus().type(`1111111111`).blur();
+        cy.get(`@input`).first().focus().type(`1111111111`).blur();
         cy.get(`@wrapper`).matchImageSnapshot(`09-mask`);
     });
 });
