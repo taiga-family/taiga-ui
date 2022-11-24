@@ -1,4 +1,3 @@
-import {Location} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -74,7 +73,6 @@ export class TuiPieChartComponent {
 
     constructor(
         @Inject(TuiIdService) idService: TuiIdService,
-        @Inject(Location) private readonly locationRef: Location,
         @Optional()
         @Inject(TuiHintOptionsDirective)
         private readonly hintOptions: TuiHintOptionsDirective | null,
@@ -101,11 +99,7 @@ export class TuiPieChartComponent {
     }
 
     get mask(): string | null {
-        return this.masked
-            ? `url(${this.locationRef.prepareExternalUrl(this.locationRef.path())}#${
-                  this.maskId
-              })`
-            : null;
+        return this.masked ? `url(#${this.maskId})` : null;
     }
 
     get radius(): string {
