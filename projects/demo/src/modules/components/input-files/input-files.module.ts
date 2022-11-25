@@ -7,6 +7,7 @@ import {
     TuiButtonModule,
     TuiErrorModule,
     TuiLinkModule,
+    TuiNotificationModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {
@@ -20,6 +21,7 @@ import {TuiInputFilesExample2} from './examples/2';
 import {TuiInputFilesExample3} from './examples/3';
 import {TuiInputFilesExample4} from './examples/4';
 import {TuiInputFilesExample5} from './examples/5';
+import {TuiInputFilesExample6} from './examples/6';
 import {ExampleTuiInputFilesComponent} from './input-files.component';
 
 @NgModule({
@@ -35,6 +37,7 @@ import {ExampleTuiInputFilesComponent} from './input-files.component';
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputFilesComponent)),
         TuiErrorModule,
         TuiFieldErrorPipeModule,
+        TuiNotificationModule,
     ],
     declarations: [
         ExampleTuiInputFilesComponent,
@@ -43,6 +46,7 @@ import {ExampleTuiInputFilesComponent} from './input-files.component';
         TuiInputFilesExample3,
         TuiInputFilesExample4,
         TuiInputFilesExample5,
+        TuiInputFilesExample6,
     ],
     exports: [ExampleTuiInputFilesComponent],
 })

@@ -3,7 +3,7 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeL} from '@taiga-ui/core';
-import {TuiFileLike} from '@taiga-ui/kit';
+import {TuiFileLike, TuiInputFilesOptions} from '@taiga-ui/kit';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -49,6 +49,11 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
         LESS: import(`./examples/5/index.less?raw`),
     };
 
+    readonly example6: TuiDocExample = {
+        TypeScript: import(`./examples/6/index.ts?raw`),
+        HTML: import(`./examples/6/index.html?raw`),
+    };
+
     readonly control = new FormControl();
     link = `Choose a file`;
     label = `or drop\u00A0it\u00A0here`;
@@ -56,6 +61,13 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
     showSize = true;
     accept = ``;
     acceptVariants = [`image/*`, `application/pdf`, `image/*,application/pdf`];
+    capture: TuiInputFilesOptions['capture'] = null;
+    captureVariants: Array<TuiInputFilesOptions['capture']> = [
+        null,
+        `user`,
+        `environment`,
+    ];
+
     readonly maxFileSizeVariants = [100, 512000, 30 * 1000 * 1000, 2.2 * 1000 * 1000];
     override readonly sizeVariants: readonly TuiSizeL[] = [`m`, `l`];
 
