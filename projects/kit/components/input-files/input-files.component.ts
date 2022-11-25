@@ -175,8 +175,7 @@ export class TuiInputFilesComponent
 
     @HostListener(`change`)
     onFilesSelected(): void {
-        const input: HTMLInputElement | undefined =
-            this.nativeInput?.input ?? this.input?.nativeElement;
+        const input = this.nativeInput?.input ?? this.input?.nativeElement;
 
         if (!input) {
             return;
