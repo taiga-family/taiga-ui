@@ -1,4 +1,4 @@
-import {Directive, Inject} from '@angular/core';
+import {Directive, Inject, Input} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {
     tuiAsPositionAccessor,
@@ -12,21 +12,35 @@ import {
     TUI_DROPDOWN_OPTIONS,
     TuiDropdownOptions,
 } from './dropdown-options.directive';
+import {TuiDropdownPositionDirective} from './dropdown-position.directive';
 
 @Directive({
     selector: `[tuiDropdownSided]`,
-    providers: [tuiAsPositionAccessor(TuiDropdownPositionSidedDirective)],
+    providers: [
+        TuiDropdownPositionDirective,
+        tuiAsPositionAccessor(TuiDropdownPositionSidedDirective),
+    ],
 })
 export class TuiDropdownPositionSidedDirective implements TuiPositionAccessor {
     private previous = this.options.direction || `bottom`;
+
+    @Input()
+    tuiDropdownSided: boolean | string = ``;
 
     constructor(
         @Inject(TUI_DROPDOWN_OPTIONS) private readonly options: TuiDropdownOptions,
         @Inject(WINDOW) private readonly windowRef: Window,
         @Inject(TuiRectAccessor) private readonly accessor: TuiRectAccessor,
+        @Inject(TuiDropdownPositionDirective)
+        private readonly vertical: TuiPositionAccessor,
     ) {}
 
-    getPosition({height, width}: ClientRect): TuiPoint {
+    getPosition(rect: ClientRect): TuiPoint {
+        if (this.tuiDropdownSided === false) {
+            return this.vertical.getPosition(rect);
+        }
+
+        const {height, width} = rect;
         const hostRect = this.accessor.getClientRect();
         const {innerHeight, innerWidth} = this.windowRef;
         const {align, direction, minHeight} = this.options;

@@ -1,57 +1,38 @@
-<ng-container *tuiLet="!!(open$ | async) as isOpen">
-    <div
-        *ngIf="sided; else default"
-        tuiDropdownSided
-        class="t-wrapper"
-        [tuiDropdownHost]="host"
-        [tuiDropdown]="dropdown"
-        [tuiDropdownManual]="isOpen && canOpen"
-        [tuiObscuredEnabled]="isOpen"
-        (tuiObscured)="onHostObscured($event)"
-        (tuiActiveZoneChange)="onActiveZone($event)"
-    >
-        <ng-container *ngTemplateOutlet="inner"></ng-container>
-    </div>
-    <ng-template #default>
-        <div
-            class="t-wrapper"
-            [tuiDropdownHost]="host"
-            [tuiDropdown]="dropdown"
-            [tuiDropdownManual]="isOpen && canOpen"
-            [tuiObscuredEnabled]="isOpen"
-            (tuiObscured)="onHostObscured($event)"
-            (tuiActiveZoneChange)="onActiveZone($event)"
-        >
-            <ng-container *ngTemplateOutlet="inner"></ng-container>
-        </div>
-    </ng-template>
-</ng-container>
-
-<ng-template #inner>
-    <ng-content></ng-content>
-</ng-template>
-
-<ng-template
-    #dropdown="polymorpheus"
-    [polymorpheus]="context"
+<div
+    *tuiLet="!!(open$ | async) as isOpen"
+    #activeZone="tuiActiveZone"
+    class="t-wrapper"
+    [tuiDropdownSided]="sided"
+    [tuiDropdownHost]="host"
+    [tuiDropdown]="dropdown"
+    [tuiDropdownManual]="isOpen && canOpen"
+    [tuiObscuredEnabled]="isOpen"
+    (tuiObscured)="onHostObscured($event)"
+    (tuiActiveZoneChange)="onActiveZone($event)"
 >
-    <div
-        #wrapper
-        (keydown.esc)="onKeyDownEsc($event)"
-        (keydown)="onKeydown($event)"
+    <ng-content></ng-content>
+    <ng-template
+        #dropdown="polymorpheus"
+        [polymorpheus]="context"
     >
-        <ng-container
-            *polymorpheusOutlet="
-                content as text;
-                context: {
-                    $implicit: activeZone,
-                    close: close
-                }
-            "
+        <div
+            #wrapper
+            (keydown.esc)="onKeyDownEsc($event)"
+            (keydown)="onKeydown($event)"
         >
-            {{ text }}
-        </ng-container>
-    </div>
-    <!--This DIV is here to start backwards TreeWalker for focusing last focusable item on ArrowUp-->
-    <div></div>
-</ng-template>
+            <ng-container
+                *polymorpheusOutlet="
+                    content as text;
+                    context: {
+                        $implicit: activeZone,
+                        close: close
+                    }
+                "
+            >
+                {{ text }}
+            </ng-container>
+        </div>
+        <!--This DIV is here to start backwards TreeWalker for focusing last focusable item on ArrowUp-->
+        <div></div>
+    </ng-template>
+</div>
