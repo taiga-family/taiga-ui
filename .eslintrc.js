@@ -126,5 +126,6 @@ module.exports = {
         'spaced-comment': 'off',
         'no-loop-func': 'off',
         'no-bitwise': 'off',
+        curly: ['error', 'all'],
     },
 };

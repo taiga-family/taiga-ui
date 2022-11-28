@@ -432,7 +432,9 @@ describe(`InputDateRangeComponent`, () => {
     function getCalendars(): DebugElement[] {
         const calendarsWrapper = getCalendarsWrapper();
 
-        if (!calendarsWrapper) return [];
+        if (!calendarsWrapper) {
+            return [];
+        }
 
         return pageObject.getAllByAutomationId(
             `tui-calendar__calendar`,
