@@ -1,22 +1,18 @@
-import {
-    tuiAddMatchImageSnapshotCommand,
-    tuiBeInViewportAssertion,
-    tuiWaitAllImgInside,
-} from '@taiga-ui/testing/cypress';
+import {tuiBeInViewportAssertion, tuiWaitAllImgInside} from '@taiga-ui/testing/cypress';
 
-import {tuiFocus} from './focus';
-import {tuiHideDocPage, tuiShowDocPage} from './hide-doc-page';
-import {tuiHideHeader} from './hide-header';
-import {tuiHideLanguageSwitcher} from './hide-language-switcher';
-import {tuiHideNavigation} from './hide-navigation';
-import {tuiHideVersionManager} from './hide-version-manager';
-import {tuiScrollIntoView} from './scroll-into-view';
-import {tuiSetLanguage} from './set-language';
-import {tuiSetNightMode} from './set-night-mode';
-import {tuiTab} from './type-tab';
-import {tuiVisit} from './visit';
-import {tuiWaitCodeHighlight} from './wait-code-highlight';
-import {tuiWaitKitDialog} from './wait-kit-dialog';
+import {tuiFocus} from '../helpers/focus';
+import {tuiHideDocPage, tuiShowDocPage} from '../helpers/hide-doc-page';
+import {tuiHideHeader} from '../helpers/hide-header';
+import {tuiHideLanguageSwitcher} from '../helpers/hide-language-switcher';
+import {tuiHideNavigation} from '../helpers/hide-navigation';
+import {tuiHideVersionManager} from '../helpers/hide-version-manager';
+import {tuiScrollIntoView} from '../helpers/scroll-into-view';
+import {tuiSetLanguage} from '../helpers/set-language';
+import {tuiSetNightMode} from '../helpers/set-night-mode';
+import {tuiTab} from '../helpers/type-tab';
+import {tuiVisit} from '../helpers/visit';
+import {tuiWaitCodeHighlight} from '../helpers/wait-code-highlight';
+import {tuiWaitKitDialog} from '../helpers/wait-kit-dialog';
 
 declare global {
     namespace Cypress {
@@ -101,18 +97,5 @@ Cypress.Commands.add(
     {prevSubject: [`optional`, `element`, `window`, `document`]},
     tuiWaitAllImgInside,
 );
-
-tuiAddMatchImageSnapshotCommand({
-    allowSizeMismatch: true, // Windows CI fix
-    runInProcess: true, // macOS CI fix
-    failureThreshold: 0.0004,
-    failureThresholdType: `percent`,
-    comparisonMethod: `ssim`,
-    diffDirection: `vertical`,
-    customDiffConfig: {
-        ssim: `fast`,
-        windowSize: 24,
-    } as any,
-});
 
 chai.use(tuiBeInViewportAssertion);
