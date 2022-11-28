@@ -7,11 +7,7 @@ import {
 } from '@taiga-ui/core/abstract';
 import {TuiPoint} from '@taiga-ui/core/types';
 
-import {
-    TUI_DROPDOWN_OFFSET,
-    TUI_DROPDOWN_OPTIONS,
-    TuiDropdownOptions,
-} from './dropdown-options.directive';
+import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.directive';
 import {TuiDropdownPositionDirective} from './dropdown-position.directive';
 
 @Directive({
@@ -46,15 +42,15 @@ export class TuiDropdownPositionSidedDirective implements TuiPositionAccessor {
         const {align, direction, minHeight} = this.options;
         const available = {
             top: hostRect.bottom,
-            left: hostRect.left - TUI_DROPDOWN_OFFSET,
-            right: innerWidth - hostRect.right - TUI_DROPDOWN_OFFSET,
+            left: hostRect.left - this.options.offset,
+            right: innerWidth - hostRect.right - this.options.offset,
             bottom: innerHeight - hostRect.top,
         } as const;
         const position = {
-            top: hostRect.bottom - height + 2 * TUI_DROPDOWN_OFFSET + 1, // 1 for border
-            left: hostRect.left - width - TUI_DROPDOWN_OFFSET,
-            right: hostRect.right + TUI_DROPDOWN_OFFSET,
-            bottom: hostRect.top - 2 * TUI_DROPDOWN_OFFSET - 1, // 1 for border
+            top: hostRect.bottom - height + 1, // 1 for border
+            left: hostRect.left - width - this.options.offset,
+            right: hostRect.right + this.options.offset,
+            bottom: hostRect.top - 1, // 1 for border
         } as const;
         const better = available.top > available.bottom ? `top` : `bottom`;
         const maxLeft = available.left > available.right ? position.left : position.right;

@@ -28,11 +28,7 @@ import {takeUntil} from 'rxjs/operators';
 // eslint-disable-next-line import/no-cycle
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TuiDropdownHoverDirective} from './dropdown-hover.directive';
-import {
-    TUI_DROPDOWN_OFFSET,
-    TUI_DROPDOWN_OPTIONS,
-    TuiDropdownOptions,
-} from './dropdown-options.directive';
+import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.directive';
 
 /**
  *  This component is used to show template in a portal using default style of white rounded box with a shadow
@@ -105,13 +101,13 @@ export class TuiDropdownComponent {
         const isIntersecting =
             left < rect.right &&
             right > rect.left &&
-            top < offsetY + 2 * TUI_DROPDOWN_OFFSET;
+            top < offsetY + 2 * this.options.offset;
         const available = isIntersecting
-            ? rect.top - 2 * TUI_DROPDOWN_OFFSET
-            : offsetY + innerHeight - top - TUI_DROPDOWN_OFFSET;
+            ? rect.top - 2 * this.options.offset
+            : offsetY + innerHeight - top - this.options.offset;
 
         style.position = position;
-        style.top = tuiPx(Math.max(top, offsetY + TUI_DROPDOWN_OFFSET));
+        style.top = tuiPx(Math.max(top, offsetY + this.options.offset));
         style.left = tuiPx(left);
         style.maxHeight = tuiPx(Math.min(maxHeight, available));
         style.width = ``;

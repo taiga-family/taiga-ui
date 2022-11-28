@@ -24,4 +24,5 @@ export abstract class AbstractExampleTuiDropdown {
     dropdownLimitWidth = TUI_DROPDOWN_DEFAULT_OPTIONS.limitWidth;
     dropdownMinHeight = TUI_DROPDOWN_DEFAULT_OPTIONS.minHeight;
     dropdownMaxHeight = TUI_DROPDOWN_DEFAULT_OPTIONS.maxHeight;
+    dropdownOffset = TUI_DROPDOWN_DEFAULT_OPTIONS.offset;
 }

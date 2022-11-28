@@ -16,17 +16,13 @@ import {
 } from '@taiga-ui/core/types';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 
-/**
- * Safe space around host and screen edges
- */
-export const TUI_DROPDOWN_OFFSET = 4;
-
 export interface TuiDropdownOptions {
     readonly align: TuiHorizontalDirection;
     readonly direction: TuiVerticalDirection | null;
     readonly limitWidth: TuiDropdownWidth;
     readonly minHeight: number;
     readonly maxHeight: number;
+    readonly offset: number;
 }
 
 /** Default values for dropdown options */
@@ -36,6 +32,7 @@ export const TUI_DROPDOWN_DEFAULT_OPTIONS: TuiDropdownOptions = {
     limitWidth: `auto`,
     maxHeight: 400,
     minHeight: 80,
+    offset: 4,
 };
 
 export const TUI_DROPDOWN_OPTIONS = new InjectionToken<TuiDropdownOptions>(
@@ -57,7 +54,7 @@ export const tuiDropdownOptionsProvider: (
 });
 
 @Directive({
-    selector: `[tuiDropdownAlign], [tuiDropdownDirection], [tuiDropdownLimitWidth], [tuiDropdownMinHeight], [tuiDropdownMaxHeight]`,
+    selector: `[tuiDropdownAlign], [tuiDropdownDirection], [tuiDropdownLimitWidth], [tuiDropdownMinHeight], [tuiDropdownMaxHeight], [tuiDropdownOffset]`,
     providers: [
         {
             provide: TUI_DROPDOWN_OPTIONS,
@@ -85,6 +82,10 @@ export class TuiDropdownOptionsDirective implements TuiDropdownOptions {
     @Input(`tuiDropdownMaxHeight`)
     @tuiDefaultProp()
     maxHeight = this.options.maxHeight;
+
+    @Input(`tuiDropdownOffset`)
+    @tuiDefaultProp()
+    offset = this.options.offset;
 
     constructor(
         @SkipSelf()

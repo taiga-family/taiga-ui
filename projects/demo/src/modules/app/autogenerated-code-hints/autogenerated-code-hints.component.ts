@@ -17,6 +17,7 @@ const DROPDOWN_CONTROLLER_SELECTORS = [
     `tuiDropdownLimitWidth`,
     `tuiDropdownMinHeight`,
     `tuiDropdownMaxHeight`,
+    `tuiDropdownOffset`,
 ];
 
 @Component({
