@@ -139,12 +139,6 @@ export const pages: TuiDocPages = [
                 keywords: `верстка, markup, форма, ввод, пример, input, form`,
                 route: `/form`,
             },
-            {
-                section: $localize`Foundations`,
-                title: $localize`Mobile`,
-                keywords: `верстка, pwa, мобильные, нативные`,
-                route: `/mobile-themes`,
-            },
         ],
     },
     // Components
