@@ -1,0 +1,21 @@
+<tui-tiles
+    class="tiles"
+    [(items)]="items"
+>
+    <tui-tile
+        *ngFor="let item of items; let index = index"
+        class="tile"
+        [width]="item.w"
+        [height]="item.h"
+    >
+        <div class="content tui-island tui-island_size_s">
+            <tui-svg
+                tuiTileHandle
+                src="tuiIconDragLarge"
+                class="handle"
+            ></tui-svg>
+            <h1 class="tui-island__title">{{ item.content }}</h1>
+            Index - {{ index }}
+        </div>
+    </tui-tile>
+</tui-tiles>

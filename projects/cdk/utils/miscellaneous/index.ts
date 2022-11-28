@@ -1,3 +1,4 @@
+export * from './array-equals';
 export * from './array-remove';
 export * from './array-toggle';
 export * from './distance-between-touches';

@@ -1,0 +1,11 @@
+<div
+    *ngIf="position$ | async as position"
+    class="t-wrapper"
+    [style.top.px]="position.top"
+    [style.left.px]="position.left"
+    [style.width.px]="position.width"
+    [style.height.px]="position.height"
+    (transitionend.self)="onTransitionEnd()"
+>
+    <ng-content></ng-content>
+</div>
