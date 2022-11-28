@@ -8,6 +8,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiDestroyComponent {
+    provideService = import(`./examples/provide-service.md?raw`);
     injectService = import(`./examples/inject-service.md?raw`);
 
     readonly example: TuiDocExample = {
