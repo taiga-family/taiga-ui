@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.11.0](https://github.com/tinkoff/taiga-ui/compare/v3.10.0...v3.11.0) (2022-11-28)
+
+### Features
+
+- **kit:** `Tiles` add component ([#3124](https://github.com/tinkoff/taiga-ui/issues/3124))
+  ([6facd5a](https://github.com/tinkoff/taiga-ui/commit/6facd5a80f793991edd79e0348e67f14d091de67))
+- **kit:** support capture in input files ([#3065](https://github.com/tinkoff/taiga-ui/issues/3065))
+  ([64d212c](https://github.com/tinkoff/taiga-ui/commit/64d212c120dd628b96fb051f15c654303cdd8c83))
+- **testing:** calendar harness test ([#3058](https://github.com/tinkoff/taiga-ui/issues/3058))
+  ([cfdb866](https://github.com/tinkoff/taiga-ui/commit/cfdb866b6bc74bf357af539ecc2cf6ec05acf877))
+
+### Bug Fixes
+
+- **addon-charts:** remove location origin from mask ([#3125](https://github.com/tinkoff/taiga-ui/issues/3125))
+  ([eaaa1fa](https://github.com/tinkoff/taiga-ui/commit/eaaa1fa112dd487167d954c8ee0375cd27c1bfe3))
+- **core:** `Dropdown` fix direction set with binding ([#3084](https://github.com/tinkoff/taiga-ui/issues/3084))
+  ([866675e](https://github.com/tinkoff/taiga-ui/commit/866675e3d95ae951ceff28e728f0ebc7d1a7098e))
+- **i18n:** fix vietnamese ([#3115](https://github.com/tinkoff/taiga-ui/issues/3115))
+  ([9ae15c7](https://github.com/tinkoff/taiga-ui/commit/9ae15c7f4387c1ee5e378414cbe808c6d697ab31))
+- **kit:** `Input` fix mask ([#3107](https://github.com/tinkoff/taiga-ui/issues/3107))
+  ([9d721e1](https://github.com/tinkoff/taiga-ui/commit/9d721e1740e0597ae498b322884d2462d264af6d))
+- **kit:** `Stepper` fix gap according to design spec ([#3095](https://github.com/tinkoff/taiga-ui/issues/3095))
+  ([aafd26e](https://github.com/tinkoff/taiga-ui/commit/aafd26ebb90dd3c4d81863fa6d1d78d1b1434bf0))
+- **kit:** `Stepper` scroll to active step when activeItemIndex changes
+  ([#3080](https://github.com/tinkoff/taiga-ui/issues/3080))
+  ([235100e](https://github.com/tinkoff/taiga-ui/commit/235100e01fcdb7e019a6a1ce93eadc89506253bf))
+- **kit:** correct default active month based on `min/max` ([#3092](https://github.com/tinkoff/taiga-ui/issues/3092))
+  ([e1668e7](https://github.com/tinkoff/taiga-ui/commit/e1668e7d85e91c20bc2e7eaeddeed3098ec239d2))
+
 ## [3.10.0](https://github.com/tinkoff/taiga-ui/compare/v3.9.0...v3.10.0) (2022-11-16)
 
 ### Features
