@@ -14,5 +14,6 @@ export class ExampleTuiTilesComponent {
     readonly example1: TuiDocExample = {
         TypeScript: import(`./examples/1/index.ts?raw`),
         HTML: import(`./examples/1/index.html?raw`),
+        LESS: import(`./examples/1/index.less?raw`),
     };
 }

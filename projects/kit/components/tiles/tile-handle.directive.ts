@@ -34,6 +34,8 @@ export class TuiTileHandleDirective {
 
     @HostListener(`document:pointermove.silent`, [`$event.x`, `$event.y`])
     onMove(x: number, y: number): void {
-        if (!Number.isNaN(this.x)) this.tile.offset$.next([x - this.x, y - this.y]);
+        if (!Number.isNaN(this.x)) {
+            this.tile.offset$.next([x - this.x, y - this.y]);
+        }
     }
 }
