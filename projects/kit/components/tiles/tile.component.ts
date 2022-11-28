@@ -75,7 +75,7 @@ export class TuiTileComponent {
         return this.elementRef.nativeElement;
     }
 
-    @HostListener(`pointerenter.silent`)
+    @HostListener(`pointerenter`)
     onEnter(): void {
         this.tiles.reorder(this.element);
     }

@@ -4,6 +4,7 @@ import {
     ElementRef,
     EventEmitter,
     HostBinding,
+    HostListener,
     Inject,
     Input,
     Output,
@@ -13,7 +14,7 @@ import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
-import {tuiDefaultProp, TuiResizeService} from '@taiga-ui/cdk';
+import {tuiDebounce, tuiDefaultProp, TuiResizeService} from '@taiga-ui/cdk';
 
 @Component({
     selector: `tui-tiles`,
@@ -45,8 +46,10 @@ export class TuiTilesComponent<T> {
 
     constructor(@Inject(ElementRef) private readonly elementRef: ElementRef<Element>) {}
 
-    reorder(element: Element): void {
-        if (!this.element || this.element === element) {
+    @tuiDebounce(500)
+    @HostListener(`pointerleave`)
+    reorder(element?: Element): void {
+        if (!this.element || !element || this.element === element) {
             return;
         }
 
