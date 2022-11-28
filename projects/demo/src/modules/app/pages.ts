@@ -870,6 +870,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
+        title: `Tiles`,
+        keywords: `tile, grid, грид, widgets, drag, drop`,
+        route: `/components/tiles`,
+    },
+    {
+        section: $localize`Components`,
         title: `Toggle`,
         keywords: `инпут, форма, ввод, toggle, переключение`,
         route: `/components/toggle`,

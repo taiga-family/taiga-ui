@@ -1,0 +1,47 @@
+<tui-doc-page
+    header="Tiles"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p i18n>
+            <code>Tiles</code>
+            is a light-weight touch-friendly tiles grid drag and drop component with no predefined styles.
+        </p>
+
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
+            <tui-tiles-example-1></tui-tiles-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>
+                    Import
+                    <code>TuiTilesModule</code>
+                    into a module where you want to use our component
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Add to the template and style according to your needs (see example):</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleHtml"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

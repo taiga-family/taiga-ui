@@ -1,4 +1,5 @@
 export * from './array-remove';
+export * from './array-shallow-equals';
 export * from './array-toggle';
 export * from './distance-between-touches';
 export * from './ease-in-out-quad';

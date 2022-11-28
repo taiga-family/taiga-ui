@@ -910,6 +910,14 @@ export const ROUTES = [
         },
     },
     {
+        path: `components/tiles`,
+        loadChildren: async () =>
+            (await import(`../components/tiles/tiles.module`)).ExampleTuiTilesModule,
+        data: {
+            title: `Tiles`,
+        },
+    },
+    {
         path: `components/toggle`,
         loadChildren: async () =>
             (await import(`../components/toggle/toggle.module`)).ExampleTuiToggleModule,

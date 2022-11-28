@@ -4,13 +4,7 @@ import {NavigationEnd, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
-import {
-    TUI_IS_ANDROID,
-    TUI_IS_CYPRESS,
-    TUI_IS_IOS,
-    TuiDestroyService,
-    TuiResizeService,
-} from '@taiga-ui/cdk';
+import {TUI_IS_CYPRESS, TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
 import {Metrika} from 'ng-yandex-metrika';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, filter, map, takeUntil} from 'rxjs/operators';
@@ -46,8 +40,6 @@ export class AppComponent extends AbstractDemoComponent {
         @Inject(TUI_IS_CYPRESS) isCypress: boolean,
         @Inject(TUI_DOC_PAGE_LOADED) pageLoaded$: Observable<boolean>,
         @Inject(TUI_SELECTED_VERSION_META) versionMeta: TuiVersionMeta | null,
-        @Inject(TUI_IS_ANDROID) readonly isAndroid: boolean,
-        @Inject(TUI_IS_IOS) readonly isIos: boolean,
         @Inject(Router) protected readonly router: Router,
         @Inject(LOCAL_STORAGE) protected readonly storage: Storage,
         @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
