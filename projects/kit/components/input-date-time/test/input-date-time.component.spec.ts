@@ -350,7 +350,9 @@ describe(`InputDateTime`, () => {
             }
 
             toControlValue([day, time]: [TuiDay | null, TuiTime | null]): string {
-                if (!day) return ``;
+                if (!day) {
+                    return ``;
+                }
 
                 return (
                     day.toString() + (time ? `${this.separator}${time.toString()}` : ``)
