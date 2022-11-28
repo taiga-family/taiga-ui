@@ -20,11 +20,19 @@
 .content {
     .transition(box-shadow);
     height: 100%;
+    padding: 1rem;
+    background: var(--tui-base-01);
     box-sizing: border-box;
+    border-radius: var(--tui-radius-l);
+    border: 1px solid var(--tui-base-03);
 
     tui-tile._dragged & {
         .shadow(5);
     }
+}
+
+.title {
+    margin: 0 0 1rem;
 }
 
 .handle {

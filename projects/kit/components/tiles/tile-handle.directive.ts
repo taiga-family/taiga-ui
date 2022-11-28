@@ -1,4 +1,5 @@
-import {Directive, ElementRef, HostListener, Inject} from '@angular/core';
+import {Directive, HostListener, Inject} from '@angular/core';
+import {tuiIsElement} from '@taiga-ui/cdk';
 
 import {TuiTileComponent} from './tile.component';
 
@@ -12,14 +13,14 @@ export class TuiTileHandleDirective {
     private x = NaN;
     private y = NaN;
 
-    constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(TuiTileComponent) private readonly tile: TuiTileComponent,
-    ) {}
+    constructor(@Inject(TuiTileComponent) private readonly tile: TuiTileComponent) {}
 
     @HostListener(`pointerdown.silent.prevent`, [`$event`])
-    onStart({x, y, pointerId}: PointerEvent): void {
-        this.elementRef.nativeElement.releasePointerCapture(pointerId);
+    onStart({x, y, pointerId, target}: PointerEvent): void {
+        if (tuiIsElement(target)) {
+            target.releasePointerCapture(pointerId);
+        }
+
         this.onPointer(x, y);
     }
 
