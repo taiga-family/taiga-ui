@@ -1,4 +1,4 @@
-import {WAIT_BEFORE_SCREENSHOT} from './shared.entities';
+import {WAIT_BEFORE_SCREENSHOT} from '../properties/shared.entities';
 
 export function tuiWaitKitDialog(selector = `tui-dialog`): void {
     cy.get(selector)

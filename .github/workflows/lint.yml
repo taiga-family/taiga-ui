@@ -24,14 +24,14 @@ jobs:
     steps:
       - name: Fetch from origin repo
         if: ${{ env.IS_FORK == 'false' && env.IS_DEPENDABOT == 'false' }}
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TINKOFF_BOT_PAT }}
           fetch-depth: 2
       - name: Fetch from forked repo
         if: ${{ env.IS_FORK == 'true' || env.IS_DEPENDABOT == 'true' }}
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 2
 

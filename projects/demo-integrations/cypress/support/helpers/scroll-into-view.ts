@@ -1,4 +1,4 @@
-import {DEFAULT_TIMEOUT_BEFORE_ACTION} from './shared.entities';
+import {DEFAULT_TIMEOUT_BEFORE_ACTION} from '../properties/shared.entities';
 
 export const tuiScrollIntoView = (
     $subject: Cypress.PrevSubjectMap<void>[Cypress.PrevSubject],

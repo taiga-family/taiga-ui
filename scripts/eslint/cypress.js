@@ -1,7 +1,7 @@
 module.exports = {
     overrides: [
         {
-            files: ['**/projects/demo-integrations/**/**.spec.ts'],
+            files: ['**/projects/demo-integrations/**/**.cy.ts'],
             parser: '@typescript-eslint/parser',
             plugins: ['@typescript-eslint'],
             rules: {

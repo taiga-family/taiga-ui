@@ -3,7 +3,7 @@ import {
     EDITOR_PAGE_URL,
     PROSE_MIRROR_EDITOR_SELECTOR,
     WAIT_BEFORE_SCREENSHOT,
-} from '../shared.entities';
+} from '../properties/shared.entities';
 import {HTML_EDITOR_BASIC_EXAMPLE} from './html';
 
 export function tuiVisitEditorApiPage({

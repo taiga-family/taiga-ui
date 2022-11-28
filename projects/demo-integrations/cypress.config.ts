@@ -1,5 +1,7 @@
 import {defineConfig} from 'cypress';
 
+import {TUI_COMPONENTS_EXCLUSION} from './cypress/support/properties/exclusions';
+
 export const viewportWidth = 1440;
 export const viewportHeight = 900;
 
@@ -34,7 +36,7 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
     numTestsKeptInMemory: 0,
 
     e2e: {
-        specPattern: `cypress/tests/**/*.spec.ts`,
+        specPattern: `cypress/tests/**/*.cy.ts`,
         supportFile: `cypress/support/e2e.ts`,
         baseUrl: `http://localhost:3333`,
         /**
@@ -48,9 +50,15 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
     },
 };
 
+export const TUI_CYPRESS_ENV = {
+    componentsExclusion: TUI_COMPONENTS_EXCLUSION,
+    waitBeforeScreenshotComponents: 0,
+    waitRenderedFont: `Manrope`,
+    waitBeforeScreenshot: 1000,
+    waitBeforeAction: 50,
+};
+
 export default defineConfig({
     ...TUI_CYPRESS_CONFIG,
-    env: {
-        waitRenderedFont: `Manrope`,
-    },
+    env: TUI_CYPRESS_ENV,
 });
