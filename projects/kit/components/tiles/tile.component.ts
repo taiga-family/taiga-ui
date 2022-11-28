@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {
-    tuiArrayEquals,
+    tuiArrayShallowEquals,
     tuiDefaultProp,
     TuiResizeService,
     tuiZonefull,
@@ -40,7 +40,7 @@ export class TuiTileComponent {
     readonly offset$ = new BehaviorSubject<[number, number]>([0, 0]);
 
     readonly position$ = combineLatest([
-        this.offset$.pipe(distinctUntilChanged(tuiArrayEquals)),
+        this.offset$.pipe(distinctUntilChanged(tuiArrayShallowEquals)),
         this.resize$.pipe(startWith(null)),
         this.mutation$.pipe(startWith(null)),
     ]).pipe(

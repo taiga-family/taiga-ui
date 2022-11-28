@@ -1,22 +1,19 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChildren,
     ElementRef,
     EventEmitter,
     HostBinding,
+    Inject,
     Input,
     Output,
-    QueryList,
     ViewEncapsulation,
 } from '@angular/core';
 import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
-import {EMPTY_QUERY, tuiDefaultProp, TuiResizeService} from '@taiga-ui/cdk';
-
-import {TuiTileComponent} from './tile.component';
+import {tuiDefaultProp, TuiResizeService} from '@taiga-ui/cdk';
 
 @Component({
     selector: `tui-tiles`,
@@ -36,9 +33,6 @@ import {TuiTileComponent} from './tile.component';
     ],
 })
 export class TuiTilesComponent<T> {
-    @ContentChildren(TuiTileComponent, {read: ElementRef})
-    private readonly elements: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
-
     @Input()
     @tuiDefaultProp()
     items: readonly T[] = [];
@@ -47,14 +41,16 @@ export class TuiTilesComponent<T> {
     readonly itemsChange = new EventEmitter<T[]>();
 
     @HostBinding(`class._dragged`)
-    element: HTMLElement | null = null;
+    element: Element | null = null;
 
-    reorder(element: HTMLElement): void {
+    constructor(@Inject(ElementRef) private readonly elementRef: ElementRef<Element>) {}
+
+    reorder(element: Element): void {
         if (!this.element || this.element === element) {
             return;
         }
 
-        const elements = this.elements.map(e => e.nativeElement);
+        const elements = Array.from(this.elementRef.nativeElement.children);
         const currentIndex = elements.indexOf(this.element);
         const newIndex = elements.indexOf(element);
         const items = [...this.items];
