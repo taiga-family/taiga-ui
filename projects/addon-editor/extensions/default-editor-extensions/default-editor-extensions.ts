@@ -13,7 +13,7 @@ export const defaultEditorExtensions = [
         ({FontColor}) => FontColor,
     ),
     import(`@tiptap/extension-image`).then(({default: Image}) =>
-        Image.configure({inline: true}),
+        Image.configure({inline: true, allowBase64: true}),
     ),
     import(`@taiga-ui/addon-editor/extensions/link`).then(({TuiLink}) => TuiLink),
     import(`@taiga-ui/addon-editor/extensions/jump-anchor`).then(
