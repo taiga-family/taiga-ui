@@ -101,7 +101,7 @@
         "bundlemon": "^2.0.0-rc.1",
         "cpy-cli": "^4.1.0",
         "cy2": "~3.2.0",
-        "cypress": "~11.1.0",
+        "cypress": "~11.2.0",
         "eslint": "^8.27.0",
         "find-in-files": "~0.5.0",
         "firebase-tools": "^9.23.3",
