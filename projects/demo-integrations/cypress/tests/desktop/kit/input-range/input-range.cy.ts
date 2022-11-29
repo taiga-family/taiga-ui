@@ -1,4 +1,4 @@
-import {INPUT_RANGE_PAGE_URL} from '@demo-integrations/support/shared.entities';
+import {INPUT_RANGE_PAGE_URL} from '@demo-integrations/support/properties/shared.entities';
 
 describe(`InputRange`, () => {
     beforeEach(() => {

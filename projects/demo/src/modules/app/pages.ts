@@ -139,12 +139,6 @@ export const pages: TuiDocPages = [
                 keywords: `верстка, markup, форма, ввод, пример, input, form`,
                 route: `/form`,
             },
-            {
-                section: $localize`Foundations`,
-                title: $localize`Mobile`,
-                keywords: `верстка, pwa, мобильные, нативные`,
-                route: `/mobile-themes`,
-            },
         ],
     },
     // Components
@@ -867,6 +861,12 @@ export const pages: TuiDocPages = [
         title: `ThemeSwitcher`,
         keywords: `тема, blue, цвета, стили, кастомизация, синий, синяя`,
         route: `/components/theme-switcher`,
+    },
+    {
+        section: $localize`Components`,
+        title: `Tiles`,
+        keywords: `tile, grid, грид, widgets, drag, drop`,
+        route: `/components/tiles`,
     },
     {
         section: $localize`Components`,

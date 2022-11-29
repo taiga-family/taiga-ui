@@ -7,7 +7,7 @@ describe(`tuiMarkerIcon`, () => {
             .tuiScrollIntoView()
             .as(`content`);
 
-        cy.get(`@content`).should(`be.visible`).matchImageSnapshot();
+        cy.get(`@content`).should(`be.visible`).matchImageSnapshot(`tui-marker-icon`);
 
         cy.get(`@content`)
             .find(`a[tuiMarkerIcon]`)
@@ -15,6 +15,6 @@ describe(`tuiMarkerIcon`, () => {
             .trigger(`mouseenter`)
             .invoke(`show`)
             .click() // emulate hover
-            .matchImageSnapshot();
+            .matchImageSnapshot(`tui-marker-icon-hover`);
     });
 });

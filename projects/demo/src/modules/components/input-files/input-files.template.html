@@ -50,23 +50,43 @@
         >
             <tui-input-files-example-5></tui-input-files-example-5>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="front-camera"
+            i18n-heading
+            heading="Camera capture"
+            [content]="example6"
+        >
+            <tui-notification
+                status="warning"
+                class="tui-space_bottom-4"
+            >
+                The capture attribute works only on mobile browsers
+            </tui-notification>
+            <tui-input-files-example-6></tui-input-files-example-6>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-input-files
                 [formControl]="control"
-                [accept]="accept"
                 [link]="link"
                 [label]="label"
                 [maxFileSize]="maxFileSize"
-                [multiple]="multiple"
                 [focusable]="focusable"
                 [pseudoFocus]="pseudoFocused"
                 [pseudoHover]="pseudoHovered"
                 [pseudoActive]="pseudoPressed"
                 (reject)="updateRejected($event)"
-            ></tui-input-files>
+            >
+                <input
+                    tuiInputFiles
+                    [attr.multiple]="multiple"
+                    [attr.accept]="accept"
+                    [attr.capture]="capture"
+                />
+            </tui-input-files>
             <tui-files class="tui-space_top-2">
                 <ng-container *ngIf="multiple; else single">
                     <ng-container *ngFor="let file of control.valueChanges | async">
@@ -114,7 +134,18 @@
                 <code>formControl.disable()</code>
                 )
             </ng-template>
-
+            <ng-template
+                i18n
+                documentationPropertyName="capture"
+                documentationPropertyMode="input"
+                documentationPropertyType="'user' | 'environment' | null"
+                [documentationPropertyValues]="captureVariants"
+                [(documentationPropertyValue)]="capture"
+            >
+                Allowed capture (for native attribute
+                <code>capture</code>
+                )
+            </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName="accept"

@@ -684,11 +684,11 @@ export const ATTR_TO_DIRECTIVE: AttributeToDirective[] = [
 ];
 
 /**
- * @example `<div [tuiDropdownSided]="true" />` => `<div tuiDropdownSided />`
+ * @example `<div [someDirective]="true" />` => `<div someDirective />`
+ *
+ * Keeping it for future sake
  */
-export const TRUTHY_BOOLEAN_INPUT_TO_HTML_BINARY_ATTRIBUTE = [
-    'tuiDropdownSided',
-] as const;
+export const TRUTHY_BOOLEAN_INPUT_TO_HTML_BINARY_ATTRIBUTE: readonly string[] = [];
 
 export const TEMPLATE_COMMENTS = [
     {

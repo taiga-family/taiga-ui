@@ -248,7 +248,7 @@ const TEMPLATE_AFTER = `<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe has
     iconRight="tuiIconChevronDown"
     [tuiDropdown]="dropdownContent"
     [tuiDropdownManual]="open"
-    tuiDropdownSided
+    [tuiDropdownSided]="true"
     (click)="onClick()"
 >
     Choose

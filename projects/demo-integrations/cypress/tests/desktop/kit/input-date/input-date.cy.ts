@@ -5,16 +5,16 @@ describe(`InputDate`, () => {
                 cy.tuiVisit(`components/input-date`);
 
                 getInputBy(size).click();
-                matchImageSnapshot(`input-date-size-${size}-filled`);
+                matchImageSnapshot(`examples-input-date-size-${size}-filled`);
 
                 getInputBy(size).type(`{selectall}{backspace}`);
-                matchImageSnapshot(`input-date-size-${size}-cleared`);
+                matchImageSnapshot(`examples-input-date-size-${size}-cleared`);
 
                 getInputBy(size).type(`01.`);
-                matchImageSnapshot(`input-date-size-${size}-set-day`);
+                matchImageSnapshot(`examples-input-date-size-${size}-set-day`);
 
                 getInputBy(size).type(`06.1994`);
-                matchImageSnapshot(`input-date-size-${size}-set-full`);
+                matchImageSnapshot(`examples-input-date-size-${size}-set-full`);
             });
         }
 
@@ -36,13 +36,13 @@ describe(`InputDate`, () => {
                 );
 
                 getInput().click();
-                matchImageSnapshot(`input-date-size-${size}-filled`);
+                matchImageSnapshot(`api-input-date-size-${size}-filled`);
 
                 getInput().type(`01.`);
-                matchImageSnapshot(`input-date-size-${size}-set-day`);
+                matchImageSnapshot(`api-input-date-size-${size}-set-day`);
 
                 getInput().type(`06.1994`);
-                matchImageSnapshot(`input-date-size-${size}-set-full`);
+                matchImageSnapshot(`api-input-date-size-${size}-set-full`);
             });
         }
 

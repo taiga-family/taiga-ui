@@ -1,4 +1,4 @@
-import {WAIT_BEFORE_SCREENSHOT} from '@demo-integrations/support/shared.entities';
+import {WAIT_BEFORE_SCREENSHOT} from '@demo-integrations/support/properties/shared.entities';
 
 describe(`TuiHint`, () => {
     beforeEach(() => cy.viewport(720, 700));

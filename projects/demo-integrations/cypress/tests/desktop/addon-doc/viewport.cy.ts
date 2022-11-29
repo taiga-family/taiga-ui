@@ -2,7 +2,7 @@ import {
     BREAKPOINTS_PAGE_URL,
     EXAMPLE_ID,
     WAIT_BEFORE_SCREENSHOT,
-} from '@demo-integrations/support/shared.entities';
+} from '@demo-integrations/support/properties/shared.entities';
 
 function makeScreenshot(screenshotName: string): void {
     cy.get(`#usage`)

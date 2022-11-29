@@ -1,4 +1,4 @@
-import {Location} from '@angular/common';
+import {Location as NgLocation} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -10,6 +10,8 @@ import {
     Output,
 } from '@angular/core';
 import {SafeValue} from '@angular/platform-browser';
+import {LOCATION} from '@ng-web-apis/common';
+import {tuiPrepareExternalUrl} from '@taiga-ui/addon-charts/utils';
 import {
     TuiContextWithImplicit,
     tuiDefaultProp,
@@ -74,7 +76,8 @@ export class TuiPieChartComponent {
 
     constructor(
         @Inject(TuiIdService) idService: TuiIdService,
-        @Inject(Location) private readonly locationRef: Location,
+        @Inject(NgLocation) private readonly ngLocation: NgLocation,
+        @Inject(LOCATION) private readonly locationRef: Location,
         @Optional()
         @Inject(TuiHintOptionsDirective)
         private readonly hintOptions: TuiHintOptionsDirective | null,
@@ -102,9 +105,7 @@ export class TuiPieChartComponent {
 
     get mask(): string | null {
         return this.masked
-            ? `url(${this.locationRef.prepareExternalUrl(this.locationRef.path())}#${
-                  this.maskId
-              })`
+            ? tuiPrepareExternalUrl(this.ngLocation, this.locationRef, this.maskId)
             : null;
     }
 
@@ -129,7 +130,7 @@ export class TuiPieChartComponent {
     }
 
     getColor(index: number): SafeValue {
-        return `var(--tui-chart-${index}`;
+        return `var(--tui-chart-${index})`;
     }
 
     @tuiPure

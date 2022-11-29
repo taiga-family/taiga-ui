@@ -1,7 +1,10 @@
-import {NIGHT_THEME_KEY, WAIT_BEFORE_SCREENSHOT} from './shared.entities';
-import {stubExternalIcons} from './stub-external-icons.util';
-import {stubMetrics} from './stub-metrics';
-import {waitAllRequests} from './wait-requests.util';
+import {waitAllRequests} from '@demo-integrations/support/helpers/wait-requests.util';
+import {
+    NIGHT_THEME_KEY,
+    WAIT_BEFORE_SCREENSHOT,
+} from '@demo-integrations/support/properties/shared.entities';
+import {stubExternalIcons} from '@demo-integrations/support/stubs/stub-external-icons.util';
+import {stubMetrics} from '@demo-integrations/support/stubs/stub-metrics';
 
 const NEXT_URL_STORAGE_KEY = `env`;
 const REPEATED_SLASH_REG = new RegExp(`//`, `g`);
@@ -27,6 +30,7 @@ interface TuiVisitOptions {
     skipExpectUrl?: boolean;
     waitRenderedFont?: string | RegExp;
     rootSelector?: string;
+    clock?: Date | null;
     /**
      * WARNING: this flag does not provide fully emulation of touch mobile device.
      * Cypress can't do it (https://docs.cypress.io/faq/questions/general-questions-faq#Do-you-support-native-mobile-apps).
@@ -66,8 +70,13 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         hideGetHelpLinks = true,
         pseudoMobile = false,
         waitRenderedFont,
+        clock = Date.UTC(2018, 10, 1),
         rootSelector = `app`,
     } = options;
+
+    if (clock) {
+        cy.clock(clock, [`Date`]);
+    }
 
     stubExternalIcons();
     stubMetrics();

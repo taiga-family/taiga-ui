@@ -1,0 +1,51 @@
+@import 'taiga-ui-local';
+
+.tiles {
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.tile:before {
+    content: 'Drop here';
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    color: var(--tui-base-04);
+    border-radius: var(--tui-radius-l);
+    border: 2px dashed var(--tui-base-03);
+}
+
+.content {
+    .transition(box-shadow);
+    height: 100%;
+    padding: 1rem;
+    background: var(--tui-base-01);
+    box-sizing: border-box;
+    border-radius: var(--tui-radius-l);
+    border: 1px solid var(--tui-base-03);
+
+    tui-tile._dragged & {
+        .shadow(5);
+    }
+}
+
+.title {
+    margin: 0 0 1rem;
+}
+
+.handle {
+    .transition(opacity);
+    position: absolute;
+    right: 0.75rem;
+    top: 1rem;
+    background: var(--tui-base-01);
+    opacity: 0;
+    cursor: move;
+
+    tui-tiles:not(._dragged) tui-tile:hover &,
+    tui-tile._dragged & {
+        opacity: 0.7;
+    }
+}

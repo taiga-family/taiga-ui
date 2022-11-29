@@ -1,4 +1,4 @@
-import {RANGE_PAGE_URL} from '@demo-integrations/support/shared.entities';
+import {RANGE_PAGE_URL} from '@demo-integrations/support/properties/shared.entities';
 
 const initializeBaseAliases = (exampleId: string): void => {
     cy.get(`${exampleId} tui-range`).should(`be.visible`).as(`range`);

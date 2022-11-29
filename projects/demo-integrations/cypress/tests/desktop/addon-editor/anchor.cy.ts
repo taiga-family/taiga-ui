@@ -1,4 +1,4 @@
-import {WAIT_BEFORE_SCREENSHOT} from '@demo-integrations/support/shared.entities';
+import {WAIT_BEFORE_SCREENSHOT} from '@demo-integrations/support/properties/shared.entities';
 
 describe(`Editor's anchors`, () => {
     beforeEach(() => {
@@ -10,14 +10,16 @@ describe(`Editor's anchors`, () => {
     });
 
     it(`all content`, () => {
-        cy.get(`@example`).wait(WAIT_BEFORE_SCREENSHOT).matchImageSnapshot();
+        cy.get(`@example`)
+            .wait(WAIT_BEFORE_SCREENSHOT)
+            .matchImageSnapshot(`anchors-example-content`);
     });
 
     it(`editor`, () => {
         cy.get(`@wrapper`)
             .find(`tui-editor`)
             .wait(WAIT_BEFORE_SCREENSHOT)
-            .matchImageSnapshot();
+            .matchImageSnapshot(`anchors-editor-content`);
     });
 
     describe(`anchors`, () => {
@@ -54,7 +56,7 @@ describe(`Editor's anchors`, () => {
                     .click({force: true})
                     .wait(2000);
 
-                cy.matchImageSnapshot({capture: `viewport`});
+                cy.matchImageSnapshot(`anchor-${anchor}`, {capture: `viewport`});
             });
         }
     });

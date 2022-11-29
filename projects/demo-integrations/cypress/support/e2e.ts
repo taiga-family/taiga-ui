@@ -1,1 +1,2 @@
-import './commands';
+import './commands/basic';
+import './commands/snapshot'; // @note: override in proprietary

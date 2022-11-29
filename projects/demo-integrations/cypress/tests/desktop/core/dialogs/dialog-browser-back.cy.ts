@@ -1,7 +1,7 @@
 import {
     DEFAULT_TIMEOUT_BEFORE_ACTION,
     DIALOG_PAGE_URL,
-} from '@demo-integrations/support/shared.entities';
+} from '@demo-integrations/support/properties/shared.entities';
 
 describe(`Dialogs + browser back navigation`, () => {
     /**

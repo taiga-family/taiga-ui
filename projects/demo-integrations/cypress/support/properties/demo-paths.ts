@@ -2,7 +2,7 @@ import '@angular/localize/init';
 
 import {TuiDocPage, TuiDocPages} from '@taiga-ui/addon-doc';
 
-import {pages} from '../../../demo/src/modules/app/pages';
+import {pages} from '../../../../demo/src/modules/app/pages';
 
 const EXCLUSION_SECTIONS = [`Documentation`, `Foundations`, `Tools`, `Testing`];
 const EXCLUSION_ROUTES = [`i18n`, `LineDaysChart`, `PrimitiveCheckbox`, `ThemeNight`];
