@@ -333,7 +333,7 @@ describe('ng-update', () => {
             const tree = await runner
                 .runSchematicAsync(
                     'updateToV3',
-                    {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                     host,
                 )
                 .toPromise();
@@ -345,7 +345,7 @@ describe('ng-update', () => {
             const tree = await runner
                 .runSchematicAsync(
                     'updateToV3',
-                    {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                     host,
                 )
                 .toPromise();
@@ -357,7 +357,7 @@ describe('ng-update', () => {
             const tree = await runner
                 .runSchematicAsync(
                     'updateToV3',
-                    {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                     host,
                 )
                 .toPromise();
@@ -371,7 +371,7 @@ describe('ng-update', () => {
             const tree = await runner
                 .runSchematicAsync(
                     'updateToV3',
-                    {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                     host,
                 )
                 .toPromise();
@@ -385,7 +385,7 @@ describe('ng-update', () => {
             const tree = await runner
                 .runSchematicAsync(
                     'updateToV3',
-                    {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                     host,
                 )
                 .toPromise();
@@ -401,7 +401,7 @@ describe('ng-update', () => {
             const tree = await runner
                 .runSchematicAsync(
                     'updateToV3',
-                    {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                     host,
                 )
                 .toPromise();
@@ -415,7 +415,7 @@ describe('ng-update', () => {
             const tree = await runner
                 .runSchematicAsync(
                     'updateToV3',
-                    {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                     host,
                 )
                 .toPromise();
@@ -429,7 +429,7 @@ describe('ng-update', () => {
             const tree = await runner
                 .runSchematicAsync(
                     'updateToV3',
-                    {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                     host,
                 )
                 .toPromise();
@@ -443,7 +443,7 @@ describe('ng-update', () => {
             const tree = await runner
                 .runSchematicAsync(
                     'updateToV3',
-                    {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                     host,
                 )
                 .toPromise();

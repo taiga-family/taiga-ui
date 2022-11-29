@@ -74,7 +74,7 @@ describe('ng-update', () => {
         const tree = await runner
             .runSchematicAsync(
                 'updateToV3_5',
-                {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
