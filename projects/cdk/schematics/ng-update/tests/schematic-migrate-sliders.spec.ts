@@ -10,6 +10,7 @@ import {
 } from 'ng-morph';
 import {join} from 'path';
 import {createAngularJson} from '../../utils/create-angular-json';
+import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -330,7 +331,11 @@ describe('ng-update', () => {
     describe('no deprecations inside AppComponent', () => {
         it('no imports of the new module inside app.module.ts', async () => {
             const tree = await runner
-                .runSchematicAsync('updateToV3', {}, host)
+                .runSchematicAsync(
+                    'updateToV3',
+                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    host,
+                )
                 .toPromise();
 
             expect(tree.readContent('test/app/app.module.ts')).toBe(APP_MODULE);
@@ -338,7 +343,11 @@ describe('ng-update', () => {
 
         it('no changes in app.template.ts', async () => {
             const tree = await runner
-                .runSchematicAsync('updateToV3', {}, host)
+                .runSchematicAsync(
+                    'updateToV3',
+                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    host,
+                )
                 .toPromise();
 
             expect(tree.readContent('test/app/app.template.html')).toBe(APP_TEMPLATE);
@@ -346,7 +355,11 @@ describe('ng-update', () => {
 
         it('no changes in app.component.ts', async () => {
             const tree = await runner
-                .runSchematicAsync('updateToV3', {}, host)
+                .runSchematicAsync(
+                    'updateToV3',
+                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    host,
+                )
                 .toPromise();
 
             expect(tree.readContent('test/app/app.component.ts')).toBe(APP_COMPONENT);
@@ -356,7 +369,11 @@ describe('ng-update', () => {
     describe('component with a inline html template', () => {
         it('adds TuiTextfieldControllerModule to the required module', async () => {
             const tree = await runner
-                .runSchematicAsync('updateToV3', {}, host)
+                .runSchematicAsync(
+                    'updateToV3',
+                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    host,
+                )
                 .toPromise();
 
             expect(
@@ -366,7 +383,11 @@ describe('ng-update', () => {
 
         it('replace deprecated attributes inside inline template (+ adds required class-methods)', async () => {
             const tree = await runner
-                .runSchematicAsync('updateToV3', {}, host)
+                .runSchematicAsync(
+                    'updateToV3',
+                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    host,
+                )
                 .toPromise();
 
             expect(
@@ -378,7 +399,11 @@ describe('ng-update', () => {
     describe('component with a separate html-file template', () => {
         it('replace deprecated attributes inside templates', async () => {
             const tree = await runner
-                .runSchematicAsync('updateToV3', {}, host)
+                .runSchematicAsync(
+                    'updateToV3',
+                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    host,
+                )
                 .toPromise();
 
             expect(
@@ -388,7 +413,11 @@ describe('ng-update', () => {
 
         it('adds required properties inside file-html-child.component.ts', async () => {
             const tree = await runner
-                .runSchematicAsync('updateToV3', {}, host)
+                .runSchematicAsync(
+                    'updateToV3',
+                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    host,
+                )
                 .toPromise();
 
             expect(
@@ -398,7 +427,11 @@ describe('ng-update', () => {
 
         it('adds TuiTextfieldControllerModule to the required module', async () => {
             const tree = await runner
-                .runSchematicAsync('updateToV3', {}, host)
+                .runSchematicAsync(
+                    'updateToV3',
+                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    host,
+                )
                 .toPromise();
 
             expect(
@@ -408,7 +441,11 @@ describe('ng-update', () => {
 
         it('does not add any imports in dummy.module.ts', async () => {
             const tree = await runner
-                .runSchematicAsync('updateToV3', {}, host)
+                .runSchematicAsync(
+                    'updateToV3',
+                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    host,
+                )
                 .toPromise();
 
             expect(tree.readContent('test/file-html-child/dummy.module.ts')).toBe(

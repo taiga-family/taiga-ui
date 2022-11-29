@@ -1,4 +1,4 @@
-import {Schema} from '../ng-add/schema';
+import {TuiSchema} from '../ng-add/schema';
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {getProject} from './get-project';
 import {getProjectTargetOptions} from './get-project-target-options';
@@ -21,7 +21,7 @@ export async function isInvalidAngularJson(tree: Tree): Promise<boolean> {
 }
 
 export function addStylesToAngularJson(
-    options: Schema,
+    options: TuiSchema,
     context: SchematicContext,
     taigaStyles: string[],
     filter?: (styles: JsonArray | undefined) => boolean,

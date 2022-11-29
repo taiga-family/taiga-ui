@@ -17,9 +17,11 @@ import {
 import {TemplateResource} from '../../interfaces/template-resourse';
 import {UpdateRecorder} from '@angular-devkit/schematics';
 import {findElementsByFn, findElementsByTagName} from '../../../utils/templates/elements';
+import {TuiSchema} from '../../../ng-add/schema';
 
-export function migrateExpandTemplates(fileSystem: DevkitFileSystem) {
-    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
+export function migrateExpandTemplates(fileSystem: DevkitFileSystem, options: TuiSchema) {
+    !options['skip-logs'] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
 
     const componentWithTemplatesPaths = getComponentTemplates(ALL_TS_FILES);
 
@@ -31,11 +33,12 @@ export function migrateExpandTemplates(fileSystem: DevkitFileSystem) {
         const path = fileSystem.resolve(getPathFromTemplateResource(resource));
         const recorder = fileSystem.edit(path);
 
-        progressLog('expand migration', true);
+        !options['skip-logs'] && progressLog('expand migration', true);
         migrateExpand({resource, fileSystem, recorder});
     });
 
-    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} templates migrated \n`);
+    !options['skip-logs'] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} templates migrated \n`);
 }
 
 function migrateExpand({

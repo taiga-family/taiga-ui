@@ -9,15 +9,18 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
+import {TuiSchema} from '../../ng-add/schema';
 
-export function replaceEnums(): void {
-    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing enums imports...`);
+export function replaceEnums(options: TuiSchema): void {
+    !options['skip-logs'] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing enums imports...`);
 
     ENUMS_TO_REPLACE.forEach(({name, replaceValues, keepAsType}) =>
         replaceEnumWithString(name, replaceValues, keepAsType),
     );
 
-    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} enums replaced \n`);
+    !options['skip-logs'] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} enums replaced \n`);
 }
 
 function replaceEnumWithString(

@@ -17,8 +17,12 @@ import {getComponentTemplates} from '../../../utils/templates/get-component-temp
 import {hasElementAttribute} from '../../../utils/templates/elements';
 import {ALL_FILES, ALL_TS_FILES} from '../../../constants';
 import {setupProgressLogger} from '../../../utils/progress';
+import {TuiSchema} from '../../../ng-add/schema';
 
-export function migrateInputSlider(fileSystem: DevkitFileSystem): void {
+export function migrateInputSlider(
+    fileSystem: DevkitFileSystem,
+    options: TuiSchema,
+): void {
     const templateResources = getComponentTemplates(ALL_TS_FILES);
     const COMPONENTS_WITH_MIN_MAX_LABELS = new Set<string>();
 
@@ -28,7 +32,7 @@ export function migrateInputSlider(fileSystem: DevkitFileSystem): void {
     });
 
     for (const templateResource of templateResources) {
-        progressLog(templateResource.componentPath);
+        !options['skip-logs'] && progressLog(templateResource.componentPath);
         replaceMinMaxLabels(templateResource, fileSystem, COMPONENTS_WITH_MIN_MAX_LABELS);
     }
 
@@ -46,7 +50,7 @@ export function migrateInputSlider(fileSystem: DevkitFileSystem): void {
     });
 
     for (const componentPath of Array.from(COMPONENTS_WITH_MIN_MAX_LABELS)) {
-        progressLog(componentPath);
+        !options['skip-logs'] && progressLog(componentPath);
         addMinMaxLabelMethod(componentPath);
     }
 }

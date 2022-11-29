@@ -11,6 +11,7 @@ import {
 import {join} from 'path';
 import {createAngularJson} from '../../utils/create-angular-json';
 import {TUI_WARNING_NORMALIZE, TUI_WARNING_WRAPPER_MIXINS} from '../steps/replace-styles';
+import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -270,7 +271,13 @@ describe('replace styles', () => {
     });
 
     it('should replace with new global styles', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+        const tree = await runner
+            .runSchematicAsync(
+                'updateToV3',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                host,
+            )
+            .toPromise();
 
         expect(tree.readContent('test/style.less')).toBe(AFTER_GLOBAL_STYLE);
         expect(tree.readContent('test/app/app.template.less')).toBe(AFTER_LOCAL_STYLE);

@@ -12,19 +12,26 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
+import {TuiSchema} from '../../ng-add/schema';
 
-export function replaceServices(): void {
-    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing services...`);
+export function replaceServices(options: TuiSchema): void {
+    !options['skip-logs'] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing services...`);
 
-    SERVICES_TO_REPLACE.forEach(service => replaceService(service));
+    SERVICES_TO_REPLACE.forEach(service => replaceService(service, options));
 
-    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} services replaced \n`);
+    !options['skip-logs'] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} services replaced \n`);
 }
 
-function replaceService({from, to, replaceMethods}: ReplacementService): void {
-    processLog(
-        `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}replacing ${from.name}...`,
-    );
+function replaceService(
+    {from, to, replaceMethods}: ReplacementService,
+    options: TuiSchema,
+): void {
+    !options['skip-logs'] &&
+        processLog(
+            `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}replacing ${from.name}...`,
+        );
 
     const references = getNamedImportReferences(from.name, from.moduleSpecifier);
 

@@ -8,9 +8,11 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
+import {TuiSchema} from '../../ng-add/schema';
 
-export function miscellaneousMigrations() {
-    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} miscellaneous migrating...`);
+export function miscellaneousMigrations(options: TuiSchema) {
+    !options['skip-logs'] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} miscellaneous migrating...`);
 
     replaceEnumProperty({
         enumName: 'TuiCurrency',
@@ -39,7 +41,8 @@ export function miscellaneousMigrations() {
         'addStyle method has been removed. Use components approach',
     );
 
-    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} miscellaneous migrated \n`);
+    !options['skip-logs'] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} miscellaneous migrated \n`);
 }
 
 function addWarningToMethod(className: string, method: string, message: string) {

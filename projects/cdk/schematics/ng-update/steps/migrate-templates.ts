@@ -43,9 +43,11 @@ import {migratePolymorpheus} from './migrate-polymorpheus';
 import {addImportToClosestModule} from '../../utils/add-import-to-closest-module';
 import {TODO_MARK} from '../../utils/insert-todo';
 import {migrateTextfieldController} from './migrate-textfield-controller';
+import {TuiSchema} from '../../ng-add/schema';
 
-export function migrateTemplates(fileSystem: DevkitFileSystem): void {
-    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
+export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchema): void {
+    !options['skip-logs'] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
 
     const componentWithTemplatesPaths = getComponentTemplates(ALL_TS_FILES);
     const actions = [
@@ -76,12 +78,13 @@ export function migrateTemplates(fileSystem: DevkitFileSystem): void {
         actions.forEach((action, actionIndex) => {
             const isLastAction = actionIndex === actions.length - 1;
 
-            progressLog(action.name, isLastAction);
+            !options['skip-logs'] && progressLog(action.name, isLastAction);
             action({resource, fileSystem, recorder});
         });
     });
 
-    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} templates migrated \n`);
+    !options['skip-logs'] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} templates migrated \n`);
 }
 
 function replaceAttrsByDirective({

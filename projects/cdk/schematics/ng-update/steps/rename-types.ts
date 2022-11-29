@@ -11,15 +11,18 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
+import {TuiSchema} from '../../ng-add/schema';
 
-export function renameTypes(): void {
-    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} renaming types...`);
+export function renameTypes(options: TuiSchema): void {
+    !options['skip-logs'] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} renaming types...`);
 
     TYPES_TO_RENAME.forEach(({from, to, moduleSpecifier, preserveGenerics}) =>
         renameType(from, to, moduleSpecifier, preserveGenerics),
     );
 
-    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} types renamed \n`);
+    !options['skip-logs'] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} types renamed \n`);
 }
 
 function renameType(

@@ -2,7 +2,7 @@ import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {updateWorkspace} from '@schematics/angular/utility/workspace';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {getProject} from '../../utils/get-project';
-import {Schema} from '../../ng-add/schema';
+import {TuiSchema} from '../../ng-add/schema';
 import {getPackageJsonDependency, getSourceFiles} from 'ng-morph';
 import {isInvalidAngularJson} from '../../utils/angular-json-manipulations';
 
@@ -20,7 +20,7 @@ const MANUAL_MIGRATION_TIPS = `Add ${JSON.stringify(
 
 type Asset = string | {glob: string; input: string; ignore: string[]; output: string};
 
-export function migrateTaigaProprietaryIcons(options: Schema): Rule {
+export function migrateTaigaProprietaryIcons(options: TuiSchema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
         let proprietaryIcons: string | null = null;
 

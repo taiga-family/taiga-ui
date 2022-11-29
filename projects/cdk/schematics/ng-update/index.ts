@@ -35,15 +35,16 @@ import {replaceStyles, TUI_WARNING_NORMALIZE} from './steps/replace-styles';
 import {ALL_FILES} from '../constants';
 import {getExecutionTime} from '../utils/get-execution-time';
 import {migrateTaigaProprietaryIcons} from './steps/migrate-taiga-proprietary-icons';
-import {Schema} from '../ng-add/schema';
+import {TuiSchema} from '../ng-add/schema';
 import {migrateExpandTemplates} from './v3-5/steps/migrate-expand-templates';
 
-export function updateToV3(options: Schema): Rule {
+export function updateToV3(options: TuiSchema): Rule {
     const t0 = performance.now();
 
-    titleLog(
-        `\n\n${START_SYMBOL} Your packages will be updated to @taiga-ui/*@${TAIGA_VERSION}\n`,
-    );
+    !options['skip-logs'] &&
+        titleLog(
+            `\n\n${START_SYMBOL} Your packages will be updated to @taiga-ui/*@${TAIGA_VERSION}\n`,
+        );
 
     return chain([
         main(options),
@@ -53,56 +54,58 @@ export function updateToV3(options: Schema): Rule {
         () => {
             const executionTime = getExecutionTime(t0, performance.now());
 
-            titleLog(
-                `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION} in ${executionTime}. \n`,
-            );
+            !options['skip-logs'] &&
+                titleLog(
+                    `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION} in ${executionTime}. \n`,
+                );
         },
     ]);
 }
 
-export function updateToV3_5(): Rule {
+export function updateToV3_5(options: TuiSchema): Rule {
     return async (tree: Tree, _: SchematicContext) => {
         const fileSystem = getFileSystem(tree);
 
-        migrateExpandTemplates(fileSystem);
+        migrateExpandTemplates(fileSystem, options);
 
         fileSystem.commitEdits();
         saveActiveProject();
 
-        titleLog(
-            `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION}\n`,
-        );
+        !options['skip-logs'] &&
+            titleLog(
+                `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION}\n`,
+            );
     };
 }
 
-function main(options: Schema): Rule {
+function main(options: TuiSchema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
         const fileSystem = getFileSystem(tree);
 
-        !options['skip-deep-imports'] && replaceDeepImports();
-        replaceEnums();
-        renameTypes();
-        replaceConstants();
-        replaceServices();
+        replaceDeepImports(options);
+        replaceEnums(options);
+        renameTypes(options);
+        replaceConstants(options);
+        replaceServices(options);
         replaceStyles();
         showWarnings(context);
-        migrateTemplates(fileSystem);
+        migrateTemplates(fileSystem, options);
 
         fileSystem.commitEdits();
         saveActiveProject();
         const updatedFileSystem = getFileSystem(tree);
 
-        migrateSliders(updatedFileSystem);
-        migrateProgress(updatedFileSystem);
-        removeModules();
-        dateTimeMigrations();
-        replaceFunctions();
-        miscellaneousMigrations();
+        migrateSliders(updatedFileSystem, options);
+        migrateProgress(updatedFileSystem, options);
+        removeModules(options);
+        dateTimeMigrations(options);
+        replaceFunctions(options);
+        miscellaneousMigrations(options);
         saveActiveProject();
     };
 }
 
-function addTaigaStyles(options: Schema): Rule {
+function addTaigaStyles(options: TuiSchema): Rule {
     return async (tree: Tree, context) => {
         const taigaStyles = [TAIGA_THEME_FONTS];
         const stylesToReplace = {

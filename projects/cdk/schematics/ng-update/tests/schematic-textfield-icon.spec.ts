@@ -10,6 +10,7 @@ import {
 } from 'ng-morph';
 import {join} from 'path';
 import {createAngularJson} from '../../utils/create-angular-json';
+import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -132,13 +133,25 @@ describe('ng-update', () => {
     });
 
     it('should edit templates', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+        const tree = await runner
+            .runSchematicAsync(
+                'updateToV3',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                host,
+            )
+            .toPromise();
 
         expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
     });
 
     it('should add directive to module', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+        const tree = await runner
+            .runSchematicAsync(
+                'updateToV3',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                host,
+            )
+            .toPromise();
 
         expect(tree.readContent('test/app/test.module.ts')).toEqual(MODULE_AFTER);
     });

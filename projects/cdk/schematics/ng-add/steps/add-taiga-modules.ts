@@ -18,10 +18,10 @@ import {
     MAIN_MODULES,
     SANITIZER_MODULES,
 } from '../constants/modules';
-import {Schema} from '../schema';
+import {TuiSchema} from '../schema';
 import {addUniqueImport} from '../../utils/add-unique-import';
 
-export function addTaigaModules(options: Schema): Rule {
+export function addTaigaModules(options: TuiSchema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
         const workspace = await getWorkspace(tree);
         const project = getProject(options, workspace);
@@ -48,7 +48,7 @@ export function addTaigaModules(options: Schema): Rule {
 
 function addTuiModules(
     mainModule: ClassDeclaration,
-    options: Schema,
+    options: TuiSchema,
     context: SchematicContext,
 ) {
     const modules = [
@@ -69,7 +69,7 @@ function addTuiModules(
     );
 }
 
-function addTuiProviders(mainModule: ClassDeclaration, options: Schema): void {
+function addTuiProviders(mainModule: ClassDeclaration, options: TuiSchema): void {
     if (!options.addSanitizer) {
         return;
     }

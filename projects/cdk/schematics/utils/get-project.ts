@@ -1,8 +1,8 @@
-import {Schema} from '../ng-add/schema';
+import {TuiSchema} from '../ng-add/schema';
 import {ProjectDefinition, WorkspaceDefinition} from '@angular-devkit/core/src/workspace';
 
 export function getProject(
-    options: Schema,
+    options: TuiSchema,
     workspace: WorkspaceDefinition,
 ): ProjectDefinition | undefined {
     const firstBuildableProjectName = Array.from(workspace.projects.entries()).find(

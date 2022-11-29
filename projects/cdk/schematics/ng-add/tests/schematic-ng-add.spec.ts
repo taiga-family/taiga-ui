@@ -15,7 +15,7 @@ import {
     NG_DOMPURIFY_VERSION,
     TAIGA_VERSION,
 } from '../constants/versions';
-import {Schema} from '../schema';
+import {TuiSchema} from '../schema';
 import {createAngularJson} from '../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, '../../collection.json');
@@ -40,13 +40,14 @@ describe('ng-add', () => {
     });
 
     it('should add main modules in package.json', async () => {
-        const options: Schema = {
+        const options: TuiSchema = {
             addSanitizer: false,
             addGlobalStyles: false,
             addDialogsModule: false,
             addAlertModule: false,
             addons: [],
             project: '',
+            'skip-logs': process.env['TUI_CI'] === 'true',
         };
 
         const tree = await runner.runSchematicAsync('ng-add', options, host).toPromise();
@@ -65,13 +66,14 @@ describe('ng-add', () => {
     });
 
     it('should add additional modules in package.json', async () => {
-        const options: Schema = {
+        const options: TuiSchema = {
             addSanitizer: true,
             addGlobalStyles: false,
             addDialogsModule: false,
             addAlertModule: false,
             addons: ['addon-doc', 'addon-mobile'],
             project: '',
+            'skip-logs': process.env['TUI_CI'] === 'true',
         };
 
         const tree = await runner.runSchematicAsync('ng-add', options, host).toPromise();
@@ -98,13 +100,14 @@ describe('ng-add', () => {
     });
 
     it('should add additional modules in package.json and global styles', async () => {
-        const options: Schema = {
+        const options: TuiSchema = {
             addSanitizer: true,
             addGlobalStyles: true,
             addDialogsModule: false,
             addAlertModule: false,
             addons: ['addon-doc', 'addon-mobile'],
             project: '',
+            'skip-logs': process.env['TUI_CI'] === 'true',
         };
 
         const tree = await runner.runSchematicAsync('ng-add', options, host).toPromise();
@@ -133,7 +136,11 @@ describe('ng-add', () => {
 
     it('should add assets and styles in angular.json', async () => {
         const tree = await runner
-            .runSchematicAsync('ng-add-setup-project', {}, host)
+            .runSchematicAsync(
+                'ng-add-setup-project',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                host,
+            )
             .toPromise();
 
         expect(tree.readContent('angular.json')).toEqual(`
@@ -170,7 +177,11 @@ describe('ng-add', () => {
         saveActiveProject();
 
         const tree = await runner
-            .runSchematicAsync('ng-add-setup-project', {}, host)
+            .runSchematicAsync(
+                'ng-add-setup-project',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                host,
+            )
             .toPromise();
 
         expect(tree.readContent('angular.json')).toEqual(`
@@ -208,7 +219,11 @@ describe('ng-add', () => {
         saveActiveProject();
 
         const tree = await runner
-            .runSchematicAsync('ng-add-setup-project', {addGlobalStyles: true}, host)
+            .runSchematicAsync(
+                'ng-add-setup-project',
+                {addGlobalStyles: true} as Partial<TuiSchema>,
+                host,
+            )
             .toPromise();
 
         expect(tree.readContent('angular.json')).toEqual(`
@@ -243,14 +258,16 @@ describe('ng-add', () => {
     });
 
     it('Should add Taiga-ui modules and providers to main module', async () => {
-        const options: Schema = {
+        const options: TuiSchema = {
             addSanitizer: true,
             addGlobalStyles: false,
             addDialogsModule: true,
             addAlertModule: true,
             addons: [],
             project: '',
+            'skip-logs': process.env['TUI_CI'] === 'true',
         };
+
         const tree = await runner
             .runSchematicAsync('ng-add-setup-project', options, host)
             .toPromise();
@@ -273,7 +290,11 @@ export class AppModule {}
 
     it('Should wrap main template with tui-root', async () => {
         const tree = await runner
-            .runSchematicAsync('ng-add-setup-project', {}, host)
+            .runSchematicAsync(
+                'ng-add-setup-project',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                host,
+            )
             .toPromise();
 
         expect(tree.readContent('test/app/app.template.html')).toEqual(`<tui-root>
