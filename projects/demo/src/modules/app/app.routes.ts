@@ -750,7 +750,7 @@ export const ROUTES = [
         loadChildren: async () =>
             (await import(`../components/range/range.module`)).ExampleTuiRangeModule,
         data: {
-            title: `range`,
+            title: `Range`,
         },
     },
     {

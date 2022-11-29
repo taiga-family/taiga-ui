@@ -1,4 +1,4 @@
-import {Component, ElementRef, Inject} from '@angular/core';
+import {Component, ElementRef, Inject, Self} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDestroyService} from '@taiga-ui/cdk';
@@ -14,7 +14,9 @@ import {takeUntil} from 'rxjs/operators';
 })
 export class TuiDestroyExample {
     constructor(
-        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
+        @Self()
+        @Inject(TuiDestroyService)
+        destroy$: TuiDestroyService,
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
     ) {
         fromEvent(nativeElement, `click`)
