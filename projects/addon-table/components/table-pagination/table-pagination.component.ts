@@ -74,7 +74,7 @@ export class TuiTablePaginationComponent {
         return {
             page: this.page,
             size: this.size,
-        }
+        };
     }
 
     onItem(size: number): void {

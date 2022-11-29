@@ -123,6 +123,15 @@
                 <code>size</code>
                 -property (user selects new amount of lines per page).
             </ng-template>
+            <ng-template
+                #documentationPropertyPaginationChange="documentationProperty"
+                i18n
+                documentationPropertyName="paginationChange"
+                documentationPropertyMode="output"
+                documentationPropertyType="TuiPagination"
+            >
+                Event emits when <code>page</code> or <code>size</code> changes.
+            </ng-template>
         </tui-doc-documentation>
     </ng-template>
 
