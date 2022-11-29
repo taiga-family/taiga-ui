@@ -2,6 +2,11 @@ import {TypeToRename} from './types';
 
 export const DEPRECATED_FUNCTIONS: readonly TypeToRename[] = [
     {
+        from: 'tuiReplayedValueChangesFrom',
+        to: 'tuiControlValue',
+        moduleSpecifier: ['@taiga-ui/cdk'],
+    },
+    {
         from: 'controlPoint',
         to: 'tuiControlPoint',
         moduleSpecifier: ['@taiga-ui/addon-charts'],
