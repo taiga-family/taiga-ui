@@ -1,5 +1,12 @@
 import {DOCUMENT} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Inject, InjectionToken} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Inject,
+    InjectionToken,
+    Self,
+} from '@angular/core';
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {TuiNodeViewNgComponent} from '@taiga-ui/addon-editor/extensions/tiptap-node-view';
 import {TuiDestroyService, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {merge} from 'rxjs';
@@ -35,8 +42,8 @@ export class TuiImageEditorComponent extends TuiNodeViewNgComponent {
         return (this.node?.attrs as TuiEditableImage) || {src: ``};
     }
 
-    get src(): string {
-        return this.attrs.src;
+    get src(): SafeResourceUrl {
+        return this.sanitizer.bypassSecurityTrustResourceUrl(this.attrs.src);
     }
 
     get width(): number {
@@ -55,7 +62,10 @@ export class TuiImageEditorComponent extends TuiNodeViewNgComponent {
         @Inject(TUI_EDITOR_MIN_IMAGE_WIDTH) readonly minWidth: number,
         @Inject(TUI_EDITOR_MAX_IMAGE_WIDTH) readonly maxWidth: number,
         @Inject(DOCUMENT) readonly documentRef: Document,
-        @Inject(TuiDestroyService) readonly destroy$: TuiDestroyService,
+        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
+        @Self()
+        @Inject(TuiDestroyService)
+        readonly destroy$: TuiDestroyService,
     ) {
         super();
 
