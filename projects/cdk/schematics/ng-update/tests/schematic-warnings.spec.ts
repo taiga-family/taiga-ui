@@ -14,6 +14,7 @@ import {LogEntry} from '@angular-devkit/core/src/logger/logger';
 import {MIGRATION_WARNINGS} from '../constants/warnings';
 import {createAngularJson} from '../../utils/create-angular-json';
 import {TUI_WARNING_NORMALIZE} from '../steps/replace-styles';
+import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -92,7 +93,13 @@ describe('ng-update', () => {
     });
 
     it('should show warnings', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+        const tree = await runner
+            .runSchematicAsync(
+                'updateToV3',
+                {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                host,
+            )
+            .toPromise();
         const expectedLogs = logs
             .filter(log => log.level === 'warn')
             .map(log => log.message);

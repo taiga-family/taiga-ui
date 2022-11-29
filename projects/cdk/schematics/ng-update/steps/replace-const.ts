@@ -10,13 +10,16 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
+import {TuiSchema} from '../../ng-add/schema';
 
-export function replaceConstants(): void {
-    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing constants...`);
+export function replaceConstants(options: TuiSchema): void {
+    !options['skip-logs'] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing constants...`);
 
     CONSTS_TO_REPLACE.forEach(constToReplace => replaceConst(constToReplace));
 
-    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} constants replaced \n`);
+    !options['skip-logs'] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} constants replaced \n`);
 }
 
 export function replaceConst({from, to}: ReplacementConst): void {

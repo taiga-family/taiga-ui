@@ -13,9 +13,9 @@ import {
     NG_DOMPURIFY_VERSION,
     TAIGA_VERSION,
 } from './constants/versions';
-import {Schema} from './schema';
+import {TuiSchema} from './schema';
 
-export function ngAdd(options: Schema): Rule {
+export function ngAdd(options: TuiSchema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
         context.logger.info(`The main packages will be installed - ${MAIN_PACKAGES}`);
 
@@ -27,7 +27,7 @@ export function ngAdd(options: Schema): Rule {
     };
 }
 
-function addDependencies(tree: Tree, options: Schema): void {
+function addDependencies(tree: Tree, options: TuiSchema): void {
     const packages = [...MAIN_PACKAGES, ...options.addons];
 
     packages.forEach(pack => {

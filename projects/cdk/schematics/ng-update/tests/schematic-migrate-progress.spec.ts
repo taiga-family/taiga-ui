@@ -10,6 +10,7 @@ import {
 import {join} from 'path';
 import {DEPRECATED_PROGRESS_PIPES_REG} from '../steps/migrate-progress';
 import {createAngularJson} from '../../utils/create-angular-json';
+import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -88,7 +89,11 @@ describe('migrate progress', () => {
     describe('migration works', () => {
         it('html', async () => {
             const tree = await runner
-                .runSchematicAsync('updateToV3', {}, host)
+                .runSchematicAsync(
+                    'updateToV3',
+                    {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    host,
+                )
                 .toPromise();
 
             expect(tree.readContent('test/app-with-progress/app.template.html')).toBe(

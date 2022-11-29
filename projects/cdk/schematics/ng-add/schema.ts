@@ -1,4 +1,4 @@
-export interface Schema {
+export interface TuiSchema {
     readonly project: string;
     readonly addons: ReadonlyArray<string>;
     readonly addGlobalStyles: boolean;
@@ -13,4 +13,12 @@ export interface Schema {
      * ```
      */
     'skip-deep-imports'?: boolean;
+
+    /**
+     * @example
+     * ```console
+     * schematics ./dist/cdk:updateToV3 --skip-logs
+     * ```
+     */
+    'skip-logs'?: boolean;
 }

@@ -21,14 +21,16 @@ import {
     successLog,
 } from '../../utils/colored-log';
 import {ALL_FILES, ALL_TS_FILES} from '../../constants';
+import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 
 export const DEPRECATED_PROGRESS_PIPES_REG =
     /\s*\|\s*tuiProgressColorSegments(Async\s*\|\s*async)?/gi;
 
 const PROPERTY_FOR_DEPRECATED_PIPES = '[color]';
 
-export function migrateProgress(fileSystem: DevkitFileSystem): void {
-    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating progress bars...`);
+export function migrateProgress(fileSystem: DevkitFileSystem, options: TuiSchema): void {
+    !options['skip-logs'] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating progress bars...`);
 
     const templateResources = getComponentTemplates(ALL_TS_FILES);
 
@@ -40,7 +42,8 @@ export function migrateProgress(fileSystem: DevkitFileSystem): void {
     saveActiveProject();
     setActiveProject(createProject(fileSystem.tree, '/', ALL_FILES));
 
-    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} progress bars migrated \n`);
+    !options['skip-logs'] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} progress bars migrated \n`);
 }
 
 function replaceProgressColorSegmentsPipe(

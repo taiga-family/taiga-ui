@@ -12,11 +12,15 @@ import {getNgComponents} from '../../../utils/angular/ng-component';
 import {addUniqueImport} from '../../../utils/add-unique-import';
 import {ALL_FILES, ALL_TS_FILES} from '../../../constants';
 import {setupProgressLogger} from '../../../utils/progress';
+import {TuiSchema} from '../../../ng-add/schema';
 
 const MIN_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationInputRangeMinLabel';
 const MAX_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationInputRangeMaxLabel';
 
-export function migrateInputRange(fileSystem: DevkitFileSystem): void {
+export function migrateInputRange(
+    fileSystem: DevkitFileSystem,
+    options: TuiSchema,
+): void {
     const templateResources = getComponentTemplates(ALL_TS_FILES);
     const COMPONENTS_WITH_MIN_LABELS = new Set<string>();
     const COMPONENTS_WITH_MAX_LABELS = new Set<string>();
@@ -27,7 +31,7 @@ export function migrateInputRange(fileSystem: DevkitFileSystem): void {
     });
 
     for (const templateResource of templateResources) {
-        progressLog(templateResource.componentPath);
+        !options['skip-logs'] && progressLog(templateResource.componentPath);
         replaceMinLabel(templateResource, fileSystem, COMPONENTS_WITH_MIN_LABELS);
         replaceMaxLabel(templateResource, fileSystem, COMPONENTS_WITH_MAX_LABELS);
     }
@@ -40,7 +44,7 @@ export function migrateInputRange(fileSystem: DevkitFileSystem): void {
     });
 
     for (const componentPath of Array.from(COMPONENTS_WITH_MIN_LABELS)) {
-        progressLog(componentPath);
+        !options['skip-logs'] && progressLog(componentPath);
         addMinMaxLabelMethod(componentPath, MIN_LABELS_MIGRATION_METHOD_NAME, [
             'const currentValue = context.$implicit;',
             'const minValue = 0; // TODO: (Taiga UI migration) replace with the MIN value of the input-range',
@@ -55,7 +59,7 @@ export function migrateInputRange(fileSystem: DevkitFileSystem): void {
         prefix: '[COMPONENTS_WITH_MAX_LABELS]',
     });
     for (const componentPath of Array.from(COMPONENTS_WITH_MAX_LABELS)) {
-        progressLog(componentPath);
+        !options['skip-logs'] && progressLog(componentPath);
         addMinMaxLabelMethod(componentPath, MAX_LABELS_MIGRATION_METHOD_NAME, [
             'const currentValue = context.$implicit;',
             'const maxValue = 100; // TODO: (Taiga UI migration) replace with the MAX value of the input',

@@ -10,6 +10,7 @@ import {
 } from 'ng-morph';
 import {join} from 'path';
 import {createAngularJson} from '../../utils/create-angular-json';
+import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -119,7 +120,13 @@ describe('ng-update (flat file structure)', () => {
     });
 
     it('should migrate textfields', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+        const tree = await runner
+            .runSchematicAsync(
+                'updateToV3',
+                {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                host,
+            )
+            .toPromise();
 
         expect(tree.readContent('test.template.html')).toEqual(TEMPLATE_AFTER);
     });

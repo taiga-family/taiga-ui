@@ -13,9 +13,9 @@ import {
 } from 'ng-morph';
 import {getProject} from '../../utils/get-project';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
-import {Schema} from '../schema';
+import {TuiSchema} from '../schema';
 
-export function wrapWithTuiRootComponent(options: Schema): Rule {
+export function wrapWithTuiRootComponent(options: TuiSchema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
         const workspace = await getWorkspace(tree);
         const project = getProject(options, workspace);

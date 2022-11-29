@@ -1,5 +1,5 @@
 import {Rule, Tree} from '@angular-devkit/schematics';
-import {Schema} from '../schema';
+import {TuiSchema} from '../schema';
 import {addStylesToAngularJson} from '../../utils/angular-json-manipulations';
 import {
     TAIGA_GLOBAL_NEW_STYLE,
@@ -7,7 +7,7 @@ import {
     TAIGA_THEME_STYLE,
 } from '../../constants/taiga-styles';
 
-export function addTaigaStyles(options: Schema): Rule {
+export function addTaigaStyles(options: TuiSchema): Rule {
     return async (_: Tree, context) => {
         const taigaLocalStyles = [TAIGA_THEME_STYLE, TAIGA_THEME_FONTS];
         const taigaStyles = options.addGlobalStyles

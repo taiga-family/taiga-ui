@@ -9,15 +9,18 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
+import {TuiSchema} from '../../ng-add/schema';
 
-export function removeModules(): void {
-    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} removing modules...`);
+export function removeModules(options: TuiSchema): void {
+    !options['skip-logs'] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} removing modules...`);
 
     REMOVED_MODULES.forEach(({name, moduleSpecifier}) =>
         removeModule(name, moduleSpecifier),
     );
 
-    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} modules removed \n`);
+    !options['skip-logs'] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} modules removed \n`);
 }
 
 export function removeModule(name: string, moduleSpecifier: string): void {

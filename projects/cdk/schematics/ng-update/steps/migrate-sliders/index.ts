@@ -10,16 +10,26 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../../utils/colored-log';
+import {TuiSchema} from '../../../ng-add/schema';
 
-export function migrateSliders(fileSystem: DevkitFileSystem): void {
-    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating sliders...`);
+export function migrateSliders(fileSystem: DevkitFileSystem, options: TuiSchema): void {
+    !options['skip-logs'] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating sliders...`);
 
-    processLog(
-        `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}InputSlider...`,
-    );
-    migrateInputSlider(fileSystem);
-    processLog(`${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}InputRange...`);
-    migrateInputRange(fileSystem);
+    !options['skip-logs'] &&
+        processLog(
+            `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}InputSlider...`,
+        );
 
-    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} sliders migrated \n`);
+    migrateInputSlider(fileSystem, options);
+
+    !options['skip-logs'] &&
+        processLog(
+            `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}InputRange...`,
+        );
+
+    migrateInputRange(fileSystem, options);
+
+    !options['skip-logs'] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} sliders migrated \n`);
 }

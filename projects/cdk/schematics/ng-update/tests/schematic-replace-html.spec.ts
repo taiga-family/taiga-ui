@@ -10,6 +10,7 @@ import {
 } from 'ng-morph';
 import {join} from 'path';
 import {createAngularJson} from '../../utils/create-angular-json';
+import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -541,13 +542,25 @@ describe('ng-update', () => {
     });
 
     it('should edit templates', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+        const tree = await runner
+            .runSchematicAsync(
+                'updateToV3',
+                {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                host,
+            )
+            .toPromise();
 
         expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
     });
 
     it('should edit components', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+        const tree = await runner
+            .runSchematicAsync(
+                'updateToV3',
+                {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                host,
+            )
+            .toPromise();
 
         expect(tree.readContent('test/app/test.component.ts')).toEqual(
             COMPONENT_WITH_TEMPLATE_URL_AFTER,
@@ -555,13 +568,25 @@ describe('ng-update', () => {
     });
 
     it('should add directive to module', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+        const tree = await runner
+            .runSchematicAsync(
+                'updateToV3',
+                {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                host,
+            )
+            .toPromise();
 
         expect(tree.readContent('test/app/test.module.ts')).toEqual(MODULE_AFTER);
     });
 
     it('should edit inline templates', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+        const tree = await runner
+            .runSchematicAsync(
+                'updateToV3',
+                {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                host,
+            )
+            .toPromise();
 
         expect(tree.readContent('test/app/test-inline.component.ts')).toEqual(
             COMPONENT_AFTER,
@@ -569,7 +594,13 @@ describe('ng-update', () => {
     });
 
     it('should NOT throw error if component without any template', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+        const tree = await runner
+            .runSchematicAsync(
+                'updateToV3',
+                {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                host,
+            )
+            .toPromise();
 
         expect(tree.readContent('test/app/no-template.component.ts')).toEqual(
             COMPONENT_WITHOUT_ANY_TEMPLATE,
@@ -577,7 +608,13 @@ describe('ng-update', () => {
     });
 
     it('should add font style in angular.json', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+        const tree = await runner
+            .runSchematicAsync(
+                'updateToV3',
+                {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                host,
+            )
+            .toPromise();
 
         expect(tree.readContent('angular.json')).toEqual(
             `

@@ -12,9 +12,11 @@ import {
     successLog,
 } from '../../utils/colored-log';
 import {getExecutionTime} from '../../utils/get-execution-time';
+import {TuiSchema} from '../../ng-add/schema';
 
-export function dateTimeMigrations() {
-    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating taiga date/time...`);
+export function dateTimeMigrations(options: TuiSchema) {
+    !options['skip-logs'] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating taiga date/time...`);
 
     let start = performance.now();
     migrateProperty({
@@ -26,10 +28,12 @@ export function dateTimeMigrations() {
                 node.getText().replace('formattedDay', 'getFormattedDay("DMY", ".")'),
             ),
     });
-    processLog(
-        `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}TuiDay.formattedDay ` +
-            `(${getExecutionTime(start, performance.now())})`,
-    );
+
+    !options['skip-logs'] &&
+        processLog(
+            `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}TuiDay.formattedDay ` +
+                `(${getExecutionTime(start, performance.now())})`,
+        );
 
     start = performance.now();
     migrateProperty({
@@ -43,10 +47,12 @@ export function dateTimeMigrations() {
                     .replace('formattedDayRange', 'getFormattedDayRange("DMY", ".")'),
             ),
     });
-    processLog(
-        `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}TuiDayRange.formattedDayRange ` +
-            `(${getExecutionTime(start, performance.now())})`,
-    );
+
+    !options['skip-logs'] &&
+        processLog(
+            `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}TuiDayRange.formattedDayRange ` +
+                `(${getExecutionTime(start, performance.now())})`,
+        );
 
     start = performance.now();
     migrateProperty({
@@ -60,10 +66,12 @@ export function dateTimeMigrations() {
             }
         },
     });
-    processLog(
-        `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}TuiDayRange.normalizeParse ` +
-            `(${getExecutionTime(start, performance.now())})`,
-    );
+
+    !options['skip-logs'] &&
+        processLog(
+            `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}TuiDayRange.normalizeParse ` +
+                `(${getExecutionTime(start, performance.now())})`,
+        );
 
     [
         {
@@ -116,13 +124,16 @@ export function dateTimeMigrations() {
             from: field,
             callback: node => insertTodoBeforeNode(node, message),
         });
-        processLog(
-            `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}${namedImport}.${field} ` +
-                `(${getExecutionTime(start, performance.now())})`,
-        );
+
+        !options['skip-logs'] &&
+            processLog(
+                `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}${namedImport}.${field} ` +
+                    `(${getExecutionTime(start, performance.now())})`,
+            );
     });
 
-    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} date/time migrated \n`);
+    !options['skip-logs'] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} date/time migrated \n`);
 }
 
 function migrateProperty({

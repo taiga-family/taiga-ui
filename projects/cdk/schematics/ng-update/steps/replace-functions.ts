@@ -9,9 +9,11 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
+import {TuiSchema} from '../../ng-add/schema';
 
-export function replaceFunctions() {
-    infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} functions replacing...`);
+export function replaceFunctions(options: TuiSchema) {
+    !options['skip-logs'] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} functions replacing...`);
 
     replacePadStart(getNamedImportReferences('padStart', '@taiga-ui/cdk'));
     replaceFallbackValue(getNamedImportReferences('fallbackValue', '@taiga-ui/cdk'));
@@ -21,7 +23,8 @@ export function replaceFunctions() {
     modifyFormatNumberArgs();
     modifyClosestFocusable();
 
-    successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} functions replaced \n`);
+    !options['skip-logs'] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} functions replaced \n`);
 }
 
 function replaceDeprecatedFunction() {

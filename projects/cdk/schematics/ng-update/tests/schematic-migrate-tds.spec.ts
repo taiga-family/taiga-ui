@@ -9,6 +9,7 @@ import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/test
 import {HostTree} from '@angular-devkit/schematics';
 import {join} from 'path';
 import {TAIGA_VERSION} from '../../ng-add/constants/versions';
+import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 
 const collectionPath = join(__dirname, '../../migration.json');
 
@@ -42,7 +43,13 @@ describe('ng-update angular.json', () => {
 
         saveActiveProject();
 
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+        const tree = await runner
+            .runSchematicAsync(
+                'updateToV3',
+                {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                host,
+            )
+            .toPromise();
 
         expect(tree.readContent('angular.json')).toEqual(
             makeAngularJsonWithAssets(`
@@ -84,7 +91,13 @@ describe('ng-update angular.json', () => {
 
         saveActiveProject();
 
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+        const tree = await runner
+            .runSchematicAsync(
+                'updateToV3',
+                {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                host,
+            )
+            .toPromise();
 
         expect(tree.readContent('angular.json')).toEqual(
             makeAngularJsonWithAssets(`
@@ -121,7 +134,13 @@ describe('ng-update angular.json', () => {
 
         saveActiveProject();
 
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+        const tree = await runner
+            .runSchematicAsync(
+                'updateToV3',
+                {'skip-logs':  process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                host,
+            )
+            .toPromise();
 
         expect(tree.readContent('angular.json')).toEqual(
             makeAngularJsonWithAssets(`
