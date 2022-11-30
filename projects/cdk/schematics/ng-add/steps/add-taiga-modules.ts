@@ -10,7 +10,7 @@ import {
     saveActiveProject,
     setActiveProject,
 } from 'ng-morph';
-import {getProject} from '../../utils/get-project';
+import {getProjects} from '../../utils/get-projects';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {
     ALERT_MODULES,
@@ -24,7 +24,7 @@ import {addUniqueImport} from '../../utils/add-unique-import';
 export function addTaigaModules(options: TuiSchema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
         const workspace = await getWorkspace(tree);
-        const project = getProject(options, workspace);
+        const project = getProjects(options, workspace)[0];
 
         if (!project) {
             context.logger.warn(

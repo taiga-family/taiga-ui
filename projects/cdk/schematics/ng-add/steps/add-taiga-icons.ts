@@ -1,7 +1,7 @@
 import {JsonArray} from '@angular-devkit/core';
 import {Rule, Tree} from '@angular-devkit/schematics';
 import {updateWorkspace} from '@schematics/angular/utility/workspace';
-import {getProject} from '../../utils/get-project';
+import {getProjects} from '../../utils/get-projects';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {TuiSchema} from '../schema';
 
@@ -19,7 +19,7 @@ export function addTaigaIcons(options: TuiSchema): Rule {
 
 export function addTaigaAssetsToAngularJson(options: TuiSchema): Rule {
     return updateWorkspace(workspace => {
-        const project = getProject(options, workspace);
+        const project = getProjects(options, workspace)[0];
 
         if (project) {
             const targetOptions = getProjectTargetOptions(project, 'build');

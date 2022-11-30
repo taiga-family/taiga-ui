@@ -12,7 +12,7 @@ import {join} from 'path';
 import {Subscription} from 'rxjs';
 import {LogEntry} from '@angular-devkit/core/src/logger/logger';
 import {MIGRATION_WARNINGS} from '../constants/warnings';
-import {createAngularJson} from '../../utils/create-angular-json';
+import {createAngularJsonWithAssets} from '../../utils/create-angular-json';
 import {TUI_WARNING_NORMALIZE} from '../steps/replace-styles';
 import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 
@@ -127,6 +127,6 @@ function createMainFiles(): void {
 
     createSourceFile('test/app/app.template.html', `<app></app>`);
 
-    createAngularJson();
+    createAngularJsonWithAssets();
     createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
 }

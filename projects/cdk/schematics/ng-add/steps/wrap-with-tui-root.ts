@@ -11,14 +11,14 @@ import {
     setActiveProject,
     ts,
 } from 'ng-morph';
-import {getProject} from '../../utils/get-project';
+import {getProjects} from '../../utils/get-projects';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {TuiSchema} from '../schema';
 
 export function wrapWithTuiRootComponent(options: TuiSchema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
         const workspace = await getWorkspace(tree);
-        const project = getProject(options, workspace);
+        const project = getProjects(options, workspace)[0];
 
         if (!project) {
             return;
