@@ -21,7 +21,7 @@ import {
     successLog,
 } from '../../utils/colored-log';
 import {ALL_FILES, ALL_TS_FILES} from '../../constants';
-import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
+import {TuiSchema} from '../../ng-add/schema';
 
 export const DEPRECATED_PROGRESS_PIPES_REG =
     /\s*\|\s*tuiProgressColorSegments(Async\s*\|\s*async)?/gi;
