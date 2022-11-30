@@ -5,6 +5,6 @@ export function getNgComponents(
     query?: Query<Omit<StructureType<ClassDeclaration>, 'kind'>>,
 ): ClassDeclaration[] {
     return getClasses(pattern, query).filter(
-        declaration => !!declaration.getDecorator('Component'),
+        declaration => !!declaration.getDecorator(`Component`),
     );
 }

@@ -13,5 +13,6 @@ export function renameImport(specifier: ImportSpecifier, to: string, from: strin
         .getImportDeclaration()
         .getNamedImports()
         .find(specifier => specifier.getName() === from);
+
     namedImport?.replaceWithText(to);
 }

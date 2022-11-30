@@ -1,7 +1,6 @@
 import {ImportSpecifier, Node, VariableDeclaration} from 'ng-morph';
-import {getNamedImportReferences} from '../../utils/get-named-import-references';
-import {ENUMS_TO_REPLACE} from '../constants/enums';
-import {removeImport} from '../../utils/import-manipulations';
+
+import {TuiSchema} from '../../ng-add/schema';
 import {
     infoLog,
     REPLACE_SYMBOL,
@@ -9,17 +8,19 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
-import {TuiSchema} from '../../ng-add/schema';
+import {getNamedImportReferences} from '../../utils/get-named-import-references';
+import {removeImport} from '../../utils/import-manipulations';
+import {ENUMS_TO_REPLACE} from '../constants/enums';
 
 export function replaceEnums(options: TuiSchema): void {
-    !options['skip-logs'] &&
+    !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing enums imports...`);
 
     ENUMS_TO_REPLACE.forEach(({name, replaceValues, keepAsType}) =>
         replaceEnumWithString(name, replaceValues, keepAsType),
     );
 
-    !options['skip-logs'] &&
+    !options[`skip-logs`] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} enums replaced \n`);
 }
 
@@ -27,10 +28,10 @@ function replaceEnumWithString(
     enumName: string,
     replaceValues: Record<string, string>,
     keepAsType = true,
-) {
+): void {
     const references = getNamedImportReferences(enumName);
 
-    for (let ref of references) {
+    for (const ref of references) {
         const parent = ref.getParent();
 
         if (Node.isImportSpecifier(parent) && !(keepAsType && containTypeRef(parent))) {
@@ -40,6 +41,7 @@ function replaceEnumWithString(
 
         if (Node.isTypeReferenceNode(parent) && !keepAsType) {
             const declaration = parent.getParent() as VariableDeclaration;
+
             declaration.removeType?.();
             continue;
         }

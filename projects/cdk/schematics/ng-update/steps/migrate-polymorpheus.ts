@@ -1,18 +1,19 @@
-import {TemplateResource} from '../interfaces/template-resourse';
 import {UpdateRecorder} from '@angular-devkit/schematics';
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
-import {
-    getTemplateFromTemplateResource,
-    getTemplateOffset,
-} from '../../utils/templates/template-resource';
+import {Element} from 'parse5';
+
+import {replaceTag} from '../../utils/replace-tag';
 import {
     findElementsByFn,
     findElementsWithAttribute,
     hasElementAttribute,
 } from '../../utils/templates/elements';
 import {getInputPropertyOffsets} from '../../utils/templates/ng-component-input-manipulations';
-import {replaceTag} from '../../utils/replace-tag';
-import {Element} from 'parse5';
+import {
+    getTemplateFromTemplateResource,
+    getTemplateOffset,
+} from '../../utils/templates/template-resource';
+import {TemplateResource} from '../interfaces/template-resourse';
 
 export function migratePolymorpheus({
     resource,
@@ -26,15 +27,15 @@ export function migratePolymorpheus({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    const elements = findElementsWithAttribute(template, 'polymorpheus-outlet');
+    const elements = findElementsWithAttribute(template, `polymorpheus-outlet`);
 
     elements.forEach(element => {
-        const contentVal = element.attrs.find(attr => attr.name === '[content]')?.value;
-        const contextVal = element.attrs.find(attr => attr.name === '[context]')?.value;
+        const contentVal = element.attrs.find(attr => attr.name === `[content]`)?.value;
+        const contextVal = element.attrs.find(attr => attr.name === `[context]`)?.value;
 
         const defaultTemplateEl = findElementsByFn(
             element.childNodes,
-            el => el.tagName === 'ng-template',
+            el => el.tagName === `ng-template`,
         )[0];
 
         if (!contentVal) {
@@ -78,7 +79,7 @@ function insertPolymorpheus({
 }): void {
     const content = `
 <ng-container *polymorpheusOutlet="${contentVal} as text${
-        contextVal ? '; context: ' + contextVal : ''
+        contextVal ? `; context: ${  contextVal}` : ``
     }">
     {{ text }}
 </ng-container>`;
@@ -96,14 +97,14 @@ function removeOldInputs(
     templateOffset: number,
 ): void {
     const offsets = [
-        ...getInputPropertyOffsets(template, '[content]', ['*'], el =>
-            hasElementAttribute(el, 'polymorpheus-outlet'),
+        ...getInputPropertyOffsets(template, `[content]`, [`*`], el =>
+            hasElementAttribute(el, `polymorpheus-outlet`),
         ),
-        ...getInputPropertyOffsets(template, '[context]', ['*'], el =>
-            hasElementAttribute(el, 'polymorpheus-outlet'),
+        ...getInputPropertyOffsets(template, `[context]`, [`*`], el =>
+            hasElementAttribute(el, `polymorpheus-outlet`),
         ),
-        ...getInputPropertyOffsets(template, 'polymorpheus-outlet', ['*'], el =>
-            hasElementAttribute(el, 'polymorpheus-outlet'),
+        ...getInputPropertyOffsets(template, `polymorpheus-outlet`, [`*`], el =>
+            hasElementAttribute(el, `polymorpheus-outlet`),
         ),
     ];
 
@@ -126,18 +127,18 @@ function insertPolymorpheusWithDefault({
     contextVal?: string;
 }): void {
     const templateVar = defaultTemplateEl.attrs.find(attr =>
-        attr.name.startsWith('let-'),
+        attr.name.startsWith(`let-`),
     );
-    const varName = templateVar?.name.replace('let-', '');
+    const varName = templateVar?.name.replace(`let-`, ``);
     const attr = `*polymorpheusOutlet="${contentVal} as ${varName}${
-        contextVal ? '; context: ' + contextVal : ''
+        contextVal ? `; context: ${  contextVal}` : ``
     }"`;
 
     replaceTag(
         recorder,
-        defaultTemplateEl.sourceCodeLocation!,
-        'ng-template',
-        'ng-container',
+        defaultTemplateEl.sourceCodeLocation,
+        `ng-template`,
+        `ng-container`,
         templateOffset,
         [attr],
     );

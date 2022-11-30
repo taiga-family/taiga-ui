@@ -1,6 +1,7 @@
+/* eslint-disable rxjs/no-topromise */
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-
+import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 import {
     createProject,
     createSourceFile,
@@ -9,10 +10,10 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {join} from 'path';
-import {createAngularJson} from '../../utils/create-angular-json';
-import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 
-const collectionPath = join(__dirname, '../../migration.json');
+import {createAngularJson} from '../../utils/create-angular-json';
+
+const collectionPath = join(__dirname, `../../migration.json`);
 
 const BEFORE = `
 import { Component } from '@angular/core';
@@ -137,13 +138,13 @@ export class AppComponent {
 export class Textfield extends AbstractTuiTextfieldHost {}
 `;
 
-describe('ng-update', () => {
+describe(`ng-update`, () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
     beforeEach(() => {
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner('schematics', collectionPath);
+        runner = new SchematicTestRunner(`schematics`, collectionPath);
 
         setActiveProject(createProject(host));
 
@@ -152,16 +153,16 @@ describe('ng-update', () => {
         saveActiveProject();
     });
 
-    it('should rename types', async () => {
+    it(`should rename types`, async () => {
         const tree = await runner
             .runSchematicAsync(
-                'updateToV3',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                `updateToV3`,
+                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent('test/app/app.component.ts')).toEqual(AFTER);
+        expect(tree.readContent(`test/app/app.component.ts`)).toEqual(AFTER);
     });
 
     afterEach(() => {
@@ -170,10 +171,10 @@ describe('ng-update', () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile('test/app/app.component.ts', BEFORE);
+    createSourceFile(`test/app/app.component.ts`, BEFORE);
 
-    createSourceFile('test/app/app.template.html', `<app></app>`);
+    createSourceFile(`test/app/app.template.html`, `<app></app>`);
 
     createAngularJson();
-    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
+    createSourceFile(`package.json`, `{"dependencies": {"@angular/core": "~13.0.0"}}`);
 }

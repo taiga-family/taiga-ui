@@ -4,7 +4,7 @@ export function addUniqueImport(
     filePath: string,
     namedImport: string,
     moduleSpecifier: string,
-) {
+): void {
     const existingNamedImport = getImports(filePath, {
         namedImports: namedImport,
         moduleSpecifier,

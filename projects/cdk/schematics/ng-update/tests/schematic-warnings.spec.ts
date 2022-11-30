@@ -1,6 +1,8 @@
+/* eslint-disable rxjs/no-topromise */
+import {LogEntry} from '@angular-devkit/core/src/logger/logger';
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-
+import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 import {
     createProject,
     createSourceFile,
@@ -10,13 +12,12 @@ import {
 } from 'ng-morph';
 import {join} from 'path';
 import {Subscription} from 'rxjs';
-import {LogEntry} from '@angular-devkit/core/src/logger/logger';
-import {MIGRATION_WARNINGS} from '../constants/warnings';
-import {createAngularJsonWithAssets} from '../../utils/create-angular-json';
-import {TUI_WARNING_NORMALIZE} from '../steps/replace-styles';
-import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 
-const collectionPath = join(__dirname, '../../migration.json');
+import {createAngularJsonWithAssets} from '../../utils/create-angular-json';
+import {MIGRATION_WARNINGS} from '../constants/warnings';
+import {TUI_WARNING_NORMALIZE} from '../steps/replace-styles';
+
+const collectionPath = join(__dirname, `../../migration.json`);
 
 const BEFORE = `
 import {TUI_MOBILE_AWARE, COUNTRIES_MASKS} from '@taiga-ui/kit';
@@ -71,7 +72,7 @@ export class AppComponent {
 }
 `;
 
-describe('ng-update', () => {
+describe(`ng-update`, () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
     let logs: LogEntry[];
@@ -80,7 +81,7 @@ describe('ng-update', () => {
     beforeEach(() => {
         logs = [];
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner('schematics', collectionPath);
+        runner = new SchematicTestRunner(`schematics`, collectionPath);
         logSubscription = runner.logger.subscribe(log =>
             logs.push(log),
         ) as unknown as Subscription;
@@ -92,16 +93,16 @@ describe('ng-update', () => {
         saveActiveProject();
     });
 
-    it('should show warnings', async () => {
+    it(`should show warnings`, async () => {
         const tree = await runner
             .runSchematicAsync(
-                'updateToV3',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                `updateToV3`,
+                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
         const expectedLogs = logs
-            .filter(log => log.level === 'warn')
+            .filter(log => log.level === `warn`)
             .map(log => log.message);
 
         expect(expectedLogs).toEqual([
@@ -113,7 +114,7 @@ describe('ng-update', () => {
             TUI_WARNING_NORMALIZE,
         ]);
 
-        expect(tree.readContent('test/app/app.component.ts')).toBe(AFTER);
+        expect(tree.readContent(`test/app/app.component.ts`)).toBe(AFTER);
     });
 
     afterEach(() => {
@@ -123,10 +124,10 @@ describe('ng-update', () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile('test/app/app.component.ts', BEFORE);
+    createSourceFile(`test/app/app.component.ts`, BEFORE);
 
-    createSourceFile('test/app/app.template.html', `<app></app>`);
+    createSourceFile(`test/app/app.template.html`, `<app></app>`);
 
     createAngularJsonWithAssets();
-    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
+    createSourceFile(`package.json`, `{"dependencies": {"@angular/core": "~13.0.0"}}`);
 }

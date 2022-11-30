@@ -8,7 +8,8 @@ import {
     InsertChange,
     insertImport,
 } from 'schematics-utilities';
-import {Schema} from '../doc-page/index';
+
+import type {TuiDocSchema} from '../doc-page';
 import {getRelativePath} from '../utils/get-relative-path';
 
 function generateImports(
@@ -41,7 +42,7 @@ function generateImports(
 }
 
 function addImportsAndModulesInModule(
-    {name, samples, root}: Schema,
+    {name, samples, root}: TuiDocSchema,
     start: number,
 ): Rule {
     return (host: Tree) => {
@@ -65,6 +66,6 @@ function addImportsAndModulesInModule(
     };
 }
 
-export function addCodeToModule(options: Schema, start: number): Rule {
+export function addCodeToModule(options: TuiDocSchema, start: number): Rule {
     return chain([addImportsAndModulesInModule(options, start)]);
 }

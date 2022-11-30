@@ -7,7 +7,7 @@ export function getProjectTargetOptions(
 ): Record<string, string | number | boolean | JsonArray | JsonObject | undefined | null> {
     const buildTargetObject = project.targets?.get(buildTarget);
 
-    if (buildTargetObject && buildTargetObject.options) {
+    if (buildTargetObject?.options) {
         return buildTargetObject.options;
     }
 

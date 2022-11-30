@@ -1,6 +1,7 @@
+/* eslint-disable rxjs/no-topromise */
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-
+import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 import {
     createProject,
     createSourceFile,
@@ -9,10 +10,10 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {join} from 'path';
-import {createAngularJsonWithAssets} from '../../utils/create-angular-json';
-import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 
-const collectionPath = join(__dirname, '../../migration.json');
+import {createAngularJsonWithAssets} from '../../utils/create-angular-json';
+
+const collectionPath = join(__dirname, `../../migration.json`);
 
 const COMPONENT_WITHOUT_ANY_TEMPLATE = `
 @Component({ selector: 'i-am-invalid-component' })
@@ -291,7 +292,7 @@ const TEMPLATE_AFTER = `<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe has
 </tui-hosted-dropdown>
 
 <label
-    ${''}
+    ${``}
     tuiLabel="Step"
 ></label>
 
@@ -526,13 +527,13 @@ import {TestComponent} from './test.component';
 export class ExampleModule {}
 `;
 
-describe('ng-update', () => {
+describe(`ng-update`, () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
     beforeEach(() => {
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner('schematics', collectionPath);
+        runner = new SchematicTestRunner(`schematics`, collectionPath);
 
         setActiveProject(createProject(host));
 
@@ -541,82 +542,82 @@ describe('ng-update', () => {
         saveActiveProject();
     });
 
-    it('should edit templates', async () => {
+    it(`should edit templates`, async () => {
         const tree = await runner
             .runSchematicAsync(
-                'updateToV3',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                `updateToV3`,
+                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
+        expect(tree.readContent(`test/app/test.template.html`)).toEqual(TEMPLATE_AFTER);
     });
 
-    it('should edit components', async () => {
+    it(`should edit components`, async () => {
         const tree = await runner
             .runSchematicAsync(
-                'updateToV3',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                `updateToV3`,
+                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent('test/app/test.component.ts')).toEqual(
+        expect(tree.readContent(`test/app/test.component.ts`)).toEqual(
             COMPONENT_WITH_TEMPLATE_URL_AFTER,
         );
     });
 
-    it('should add directive to module', async () => {
+    it(`should add directive to module`, async () => {
         const tree = await runner
             .runSchematicAsync(
-                'updateToV3',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                `updateToV3`,
+                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent('test/app/test.module.ts')).toEqual(MODULE_AFTER);
+        expect(tree.readContent(`test/app/test.module.ts`)).toEqual(MODULE_AFTER);
     });
 
-    it('should edit inline templates', async () => {
+    it(`should edit inline templates`, async () => {
         const tree = await runner
             .runSchematicAsync(
-                'updateToV3',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                `updateToV3`,
+                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent('test/app/test-inline.component.ts')).toEqual(
+        expect(tree.readContent(`test/app/test-inline.component.ts`)).toEqual(
             COMPONENT_AFTER,
         );
     });
 
-    it('should NOT throw error if component without any template', async () => {
+    it(`should NOT throw error if component without any template`, async () => {
         const tree = await runner
             .runSchematicAsync(
-                'updateToV3',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                `updateToV3`,
+                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent('test/app/no-template.component.ts')).toEqual(
+        expect(tree.readContent(`test/app/no-template.component.ts`)).toEqual(
             COMPONENT_WITHOUT_ANY_TEMPLATE,
         );
     });
 
-    it('should add font style in angular.json', async () => {
+    it(`should add font style in angular.json`, async () => {
         const tree = await runner
             .runSchematicAsync(
-                'updateToV3',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                `updateToV3`,
+                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent('angular.json')).toEqual(
+        expect(tree.readContent(`angular.json`)).toEqual(
             `
 {
   "version": 1,
@@ -652,15 +653,15 @@ describe('ng-update', () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile('test/app/no-template.component.ts', COMPONENT_WITHOUT_ANY_TEMPLATE);
-    createSourceFile('test/app/test.component.ts', COMPONENT_WITH_TEMPLATE_URL);
+    createSourceFile(`test/app/no-template.component.ts`, COMPONENT_WITHOUT_ANY_TEMPLATE);
+    createSourceFile(`test/app/test.component.ts`, COMPONENT_WITH_TEMPLATE_URL);
 
-    createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
+    createSourceFile(`test/app/test.template.html`, TEMPLATE_BEFORE);
 
-    createSourceFile('test/app/test-inline.component.ts', COMPONENT_BEFORE);
+    createSourceFile(`test/app/test-inline.component.ts`, COMPONENT_BEFORE);
 
-    createSourceFile('test/app/test.module.ts', MODULE_BEFORE);
+    createSourceFile(`test/app/test.module.ts`, MODULE_BEFORE);
 
     createAngularJsonWithAssets();
-    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
+    createSourceFile(`package.json`, `{"dependencies": {"@angular/core": "~13.0.0"}}`);
 }

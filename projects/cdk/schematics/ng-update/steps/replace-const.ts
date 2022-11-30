@@ -1,8 +1,7 @@
-import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {Node} from 'ng-morph';
-import {removeImport} from '../../utils/import-manipulations';
+
+import {TuiSchema} from '../../ng-add/schema';
 import {addUniqueImport} from '../../utils/add-unique-import';
-import {CONSTS_TO_REPLACE, ReplacementConst} from '../constants/consts';
 import {
     infoLog,
     REPLACE_SYMBOL,
@@ -10,15 +9,17 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
-import {TuiSchema} from '../../ng-add/schema';
+import {getNamedImportReferences} from '../../utils/get-named-import-references';
+import {removeImport} from '../../utils/import-manipulations';
+import {CONSTS_TO_REPLACE, ReplacementConst} from '../constants/consts';
 
 export function replaceConstants(options: TuiSchema): void {
-    !options['skip-logs'] &&
+    !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing constants...`);
 
     CONSTS_TO_REPLACE.forEach(constToReplace => replaceConst(constToReplace));
 
-    !options['skip-logs'] &&
+    !options[`skip-logs`] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} constants replaced \n`);
 }
 

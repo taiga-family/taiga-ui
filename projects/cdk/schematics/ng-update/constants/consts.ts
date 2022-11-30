@@ -13,443 +13,443 @@ export interface ReplacementConst {
 export const CONSTS_TO_REPLACE: ReplacementConst[] = [
     {
         from: {
-            name: 'EMPTY_VALIDATOR',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `EMPTY_VALIDATOR`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
         to: {
-            name: 'Validators.nullValidator',
-            namedImport: 'Validators',
-            moduleSpecifier: '@angular/forms',
+            name: `Validators.nullValidator`,
+            namedImport: `Validators`,
+            moduleSpecifier: `@angular/forms`,
         },
     },
     {
         from: {
-            name: 'TUI_CALENDAR_DATA_STREAM',
-            moduleSpecifier: '@taiga-ui/kit',
+            name: `TUI_CALENDAR_DATA_STREAM`,
+            moduleSpecifier: `@taiga-ui/kit`,
         },
         to: {
-            name: 'TUI_CALENDAR_DATE_STREAM',
-            moduleSpecifier: '@taiga-ui/kit',
+            name: `TUI_CALENDAR_DATE_STREAM`,
+            moduleSpecifier: `@taiga-ui/kit`,
         },
     },
     {
         from: {
-            name: 'TUI_DATE_MASK',
+            name: `TUI_DATE_MASK`,
         },
         to: {
             name: `tuiCreateDateMask('DMY', '.')`,
-            moduleSpecifier: '@taiga-ui/kit',
-            namedImport: 'tuiCreateDateMask',
+            moduleSpecifier: `@taiga-ui/kit`,
+            namedImport: `tuiCreateDateMask`,
         },
     },
     {
         from: {
-            name: 'TUI_DATE_RANGE_MASK',
+            name: `TUI_DATE_RANGE_MASK`,
         },
         to: {
             name: `tuiCreateDateRangeMask('DMY', '.')`,
-            moduleSpecifier: '@taiga-ui/kit',
-            namedImport: 'tuiCreateDateRangeMask',
+            moduleSpecifier: `@taiga-ui/kit`,
+            namedImport: `tuiCreateDateRangeMask`,
         },
     },
     {
         from: {
-            name: 'getClosestKeyboardFocusable',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `getClosestKeyboardFocusable`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
         to: {
-            name: 'getClosestFocusable',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `getClosestFocusable`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
     },
     {
         from: {
-            name: 'TuiNotificationsModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiNotificationsModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
         to: {
-            name: 'TuiAlertModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiAlertModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
     },
     {
         from: {
-            name: 'TuiHintControllerModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiHintControllerModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
         to: {
-            name: 'TuiHintModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiHintModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
     },
     {
         from: {
-            name: 'TuiManualHintModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiManualHintModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
         to: {
-            name: 'TuiHintModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiHintModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
     },
     {
         from: {
-            name: 'TuiPointerHintModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiPointerHintModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
         to: {
-            name: 'TuiHintModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiHintModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
     },
     {
         from: {
-            name: 'TuiDropdownControllerModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiDropdownControllerModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
         to: {
-            name: 'TuiDropdownModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiDropdownModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
     },
     {
         from: {
-            name: 'TuiDropdownSelectionModule',
-            moduleSpecifier: '@taiga-ui/kit',
+            name: `TuiDropdownSelectionModule`,
+            moduleSpecifier: `@taiga-ui/kit`,
         },
         to: {
-            name: 'TuiDropdownModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiDropdownModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
     },
     {
         from: {
-            name: 'TuiDropdownHoverModule',
-            moduleSpecifier: '@taiga-ui/kit',
+            name: `TuiDropdownHoverModule`,
+            moduleSpecifier: `@taiga-ui/kit`,
         },
         to: {
-            name: 'TuiDropdownModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiDropdownModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
     },
     {
         from: {
-            name: 'TuiDropdownContextModule',
-            moduleSpecifier: '@taiga-ui/kit',
+            name: `TuiDropdownContextModule`,
+            moduleSpecifier: `@taiga-ui/kit`,
         },
         to: {
-            name: 'TuiDropdownModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiDropdownModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
     },
     {
-        from: {name: 'identity', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'identity', moduleSpecifier: 'rxjs'},
+        from: {name: `identity`, moduleSpecifier: `@taiga-ui/cdk`},
+        to: {name: `identity`, moduleSpecifier: `rxjs`},
     },
     {
-        from: {name: 'TUI_SANITIZER', moduleSpecifier: '@taiga-ui/cdk'},
-        to: {name: 'TUI_SANITIZER', moduleSpecifier: '@taiga-ui/core'},
+        from: {name: `TUI_SANITIZER`, moduleSpecifier: `@taiga-ui/cdk`},
+        to: {name: `TUI_SANITIZER`, moduleSpecifier: `@taiga-ui/core`},
     },
     {
         from: {
-            name: 'TuiCountryIsoCode',
-            moduleSpecifier: '@taiga-ui/kit',
+            name: `TuiCountryIsoCode`,
+            moduleSpecifier: `@taiga-ui/kit`,
         },
         to: {
-            name: 'TuiCountryIsoCode',
-            moduleSpecifier: '@taiga-ui/i18n',
-        },
-    },
-    {
-        from: {
-            name: 'TableComands',
-            moduleSpecifier: '@taiga-ui/addon-editor',
-        },
-        to: {
-            name: 'TuiTableCommands',
-            moduleSpecifier: '@taiga-ui/addon-editor',
+            name: `TuiCountryIsoCode`,
+            moduleSpecifier: `@taiga-ui/i18n`,
         },
     },
     {
         from: {
-            name: 'TuiController',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `TableComands`,
+            moduleSpecifier: `@taiga-ui/addon-editor`,
         },
         to: {
-            name: 'AbstractTuiController',
-            moduleSpecifier: '@taiga-ui/cdk',
-            namedImport: 'AbstractTuiController',
+            name: `TuiTableCommands`,
+            moduleSpecifier: `@taiga-ui/addon-editor`,
         },
     },
     {
         from: {
-            name: 'TuiFilterByInputBase',
-            moduleSpecifier: '@taiga-ui/kit',
+            name: `TuiController`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
         to: {
-            name: 'AbstractTuiFilterByInput',
-            moduleSpecifier: '@taiga-ui/kit',
-            namedImport: 'AbstractTuiFilterByInput',
+            name: `AbstractTuiController`,
+            moduleSpecifier: `@taiga-ui/cdk`,
+            namedImport: `AbstractTuiController`,
         },
     },
     {
         from: {
-            name: 'TuiFieldErrorModule',
-            moduleSpecifier: '@taiga-ui/kit',
+            name: `TuiFilterByInputBase`,
+            moduleSpecifier: `@taiga-ui/kit`,
         },
         to: {
-            name: 'TuiFieldErrorPipeModule',
-            moduleSpecifier: '@taiga-ui/kit',
+            name: `AbstractTuiFilterByInput`,
+            moduleSpecifier: `@taiga-ui/kit`,
+            namedImport: `AbstractTuiFilterByInput`,
         },
     },
     {
         from: {
-            name: 'TuiInputFileModule',
-            moduleSpecifier: '@taiga-ui/kit',
+            name: `TuiFieldErrorModule`,
+            moduleSpecifier: `@taiga-ui/kit`,
         },
         to: {
-            name: 'TuiInputFilesModule',
-            moduleSpecifier: '@taiga-ui/kit',
+            name: `TuiFieldErrorPipeModule`,
+            moduleSpecifier: `@taiga-ui/kit`,
         },
     },
     {
         from: {
-            name: 'TuiPdfViewerModule',
-            moduleSpecifier: '@taiga-ui/proprietary-banking',
+            name: `TuiInputFileModule`,
+            moduleSpecifier: `@taiga-ui/kit`,
         },
         to: {
-            name: 'TuiPdfViewerModule',
-            moduleSpecifier: '@taiga-ui/kit',
+            name: `TuiInputFilesModule`,
+            moduleSpecifier: `@taiga-ui/kit`,
         },
     },
     {
         from: {
-            name: 'TuiPreviewHostModule',
-            moduleSpecifier: '@taiga-ui/proprietary-banking',
+            name: `TuiPdfViewerModule`,
+            moduleSpecifier: `@taiga-ui/proprietary-banking`,
         },
         to: {
-            name: 'TuiPreviewModule',
-            moduleSpecifier: '@taiga-ui/addon-preview',
+            name: `TuiPdfViewerModule`,
+            moduleSpecifier: `@taiga-ui/kit`,
         },
     },
     {
         from: {
-            name: 'TuiProgressModule',
-            moduleSpecifier: '@taiga-ui/proprietary-core',
+            name: `TuiPreviewHostModule`,
+            moduleSpecifier: `@taiga-ui/proprietary-banking`,
         },
         to: {
-            name: 'TuiProgressModule',
-            moduleSpecifier: '@taiga-ui/kit',
+            name: `TuiPreviewModule`,
+            moduleSpecifier: `@taiga-ui/addon-preview`,
         },
     },
     {
         from: {
-            name: 'hexToRgb',
-            moduleSpecifier: ['@taiga-ui/addon-doc', '@taiga-ui/addon-editor'],
+            name: `TuiProgressModule`,
+            moduleSpecifier: `@taiga-ui/proprietary-core`,
         },
         to: {
-            name: 'tuiHexToRgb',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `TuiProgressModule`,
+            moduleSpecifier: `@taiga-ui/kit`,
         },
     },
     {
         from: {
-            name: 'tuiHexToRgb',
-            moduleSpecifier: ['@taiga-ui/addon-doc', '@taiga-ui/addon-editor'],
+            name: `hexToRgb`,
+            moduleSpecifier: [`@taiga-ui/addon-doc`, `@taiga-ui/addon-editor`],
         },
         to: {
-            name: 'tuiHexToRgb',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `tuiHexToRgb`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
     },
     {
         from: {
-            name: 'hsvToRgb',
-            moduleSpecifier: '@taiga-ui/addon-editor',
+            name: `tuiHexToRgb`,
+            moduleSpecifier: [`@taiga-ui/addon-doc`, `@taiga-ui/addon-editor`],
         },
         to: {
-            name: 'tuiHsvToRgb',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `tuiHexToRgb`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
     },
     {
         from: {
-            name: 'tuiHsvToRgb',
-            moduleSpecifier: '@taiga-ui/addon-editor',
+            name: `hsvToRgb`,
+            moduleSpecifier: `@taiga-ui/addon-editor`,
         },
         to: {
-            name: 'tuiHsvToRgb',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `tuiHsvToRgb`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
     },
     {
         from: {
-            name: 'parseColor',
-            moduleSpecifier: '@taiga-ui/addon-editor',
+            name: `tuiHsvToRgb`,
+            moduleSpecifier: `@taiga-ui/addon-editor`,
         },
         to: {
-            name: 'tuiParseColor',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `tuiHsvToRgb`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
     },
     {
         from: {
-            name: 'tuiParseColor',
-            moduleSpecifier: '@taiga-ui/addon-editor',
+            name: `parseColor`,
+            moduleSpecifier: `@taiga-ui/addon-editor`,
         },
         to: {
-            name: 'tuiParseColor',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `tuiParseColor`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
     },
     {
         from: {
-            name: 'rgbToHex',
-            moduleSpecifier: ['@taiga-ui/addon-doc', '@taiga-ui/addon-editor'],
+            name: `tuiParseColor`,
+            moduleSpecifier: `@taiga-ui/addon-editor`,
         },
         to: {
-            name: 'tuiRgbToHex',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `tuiParseColor`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
     },
     {
         from: {
-            name: 'tuiRgbToHex',
-            moduleSpecifier: ['@taiga-ui/addon-doc', '@taiga-ui/addon-editor'],
+            name: `rgbToHex`,
+            moduleSpecifier: [`@taiga-ui/addon-doc`, `@taiga-ui/addon-editor`],
         },
         to: {
-            name: 'tuiRgbToHex',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `tuiRgbToHex`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
     },
     {
         from: {
-            name: 'rgbToHsv',
-            moduleSpecifier: '@taiga-ui/addon-editor',
+            name: `tuiRgbToHex`,
+            moduleSpecifier: [`@taiga-ui/addon-doc`, `@taiga-ui/addon-editor`],
         },
         to: {
-            name: 'tuiRgbToHsv',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `tuiRgbToHex`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
     },
     {
         from: {
-            name: 'tuiRgbToHsv',
-            moduleSpecifier: '@taiga-ui/addon-editor',
+            name: `rgbToHsv`,
+            moduleSpecifier: `@taiga-ui/addon-editor`,
         },
         to: {
-            name: 'tuiRgbToHsv',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `tuiRgbToHsv`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
     },
     {
         from: {
-            name: 'TuiAccountModule',
-            moduleSpecifier: '@taiga-ui/proprietary-core',
+            name: `tuiRgbToHsv`,
+            moduleSpecifier: `@taiga-ui/addon-editor`,
         },
         to: {
-            name: 'TuiAccountModule',
-            moduleSpecifier: '@taiga-ui/proprietary-banking',
+            name: `tuiRgbToHsv`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
     },
     {
         from: {
-            name: 'TuiAccountComponent',
-            moduleSpecifier: '@taiga-ui/proprietary-core',
+            name: `TuiAccountModule`,
+            moduleSpecifier: `@taiga-ui/proprietary-core`,
         },
         to: {
-            name: 'TuiAccountComponent',
-            moduleSpecifier: '@taiga-ui/proprietary-banking',
+            name: `TuiAccountModule`,
+            moduleSpecifier: `@taiga-ui/proprietary-banking`,
         },
     },
     {
         from: {
-            name: 'TuiAccount',
-            moduleSpecifier: '@taiga-ui/proprietary-core',
+            name: `TuiAccountComponent`,
+            moduleSpecifier: `@taiga-ui/proprietary-core`,
         },
         to: {
-            name: 'TuiAccount',
-            moduleSpecifier: '@taiga-ui/proprietary-banking',
+            name: `TuiAccountComponent`,
+            moduleSpecifier: `@taiga-ui/proprietary-banking`,
         },
     },
     {
         from: {
-            name: 'tuiAccountDelegate',
-            moduleSpecifier: '@taiga-ui/proprietary-core',
+            name: `TuiAccount`,
+            moduleSpecifier: `@taiga-ui/proprietary-core`,
         },
         to: {
-            name: 'tuiAccountDelegate',
-            moduleSpecifier: '@taiga-ui/proprietary-banking',
+            name: `TuiAccount`,
+            moduleSpecifier: `@taiga-ui/proprietary-banking`,
         },
     },
     {
         from: {
-            name: 'TuiAccountDelegateComponent',
-            moduleSpecifier: '@taiga-ui/proprietary-core',
+            name: `tuiAccountDelegate`,
+            moduleSpecifier: `@taiga-ui/proprietary-core`,
         },
         to: {
-            name: 'TuiAccountDelegateComponent',
-            moduleSpecifier: '@taiga-ui/proprietary-banking',
+            name: `tuiAccountDelegate`,
+            moduleSpecifier: `@taiga-ui/proprietary-banking`,
         },
     },
     {
         from: {
-            name: 'CURRENCY_ICONS',
-            moduleSpecifier: '@taiga-ui/proprietary-core',
+            name: `TuiAccountDelegateComponent`,
+            moduleSpecifier: `@taiga-ui/proprietary-core`,
         },
         to: {
-            name: 'CURRENCY_ICONS',
-            moduleSpecifier: '@taiga-ui/proprietary-banking',
+            name: `TuiAccountDelegateComponent`,
+            moduleSpecifier: `@taiga-ui/proprietary-banking`,
         },
     },
     {
         from: {
-            name: 'TUI_ACCOUNT_PROJECTOR',
-            moduleSpecifier: '@taiga-ui/proprietary-core',
+            name: `CURRENCY_ICONS`,
+            moduleSpecifier: `@taiga-ui/proprietary-core`,
         },
         to: {
-            name: 'TUI_ACCOUNT_PROJECTOR',
-            moduleSpecifier: '@taiga-ui/proprietary-banking',
+            name: `CURRENCY_ICONS`,
+            moduleSpecifier: `@taiga-ui/proprietary-banking`,
         },
     },
     {
         from: {
-            name: 'TuiAutofillFieldNameT',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `TUI_ACCOUNT_PROJECTOR`,
+            moduleSpecifier: `@taiga-ui/proprietary-core`,
         },
         to: {
-            name: 'TuiAutofillFieldName',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `TUI_ACCOUNT_PROJECTOR`,
+            moduleSpecifier: `@taiga-ui/proprietary-banking`,
         },
     },
     {
         from: {
-            name: 'TuiMarkerIconModeT',
-            moduleSpecifier: '@taiga-ui/kit',
+            name: `TuiAutofillFieldNameT`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
         to: {
-            name: 'TuiMarkerIconMode',
-            moduleSpecifier: '@taiga-ui/kit',
+            name: `TuiAutofillFieldName`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
     },
     {
         from: {
-            name: 'TuiStatusT',
-            moduleSpecifier: '@taiga-ui/kit',
+            name: `TuiMarkerIconModeT`,
+            moduleSpecifier: `@taiga-ui/kit`,
         },
         to: {
-            name: 'TuiStatus',
-            moduleSpecifier: '@taiga-ui/kit',
+            name: `TuiMarkerIconMode`,
+            moduleSpecifier: `@taiga-ui/kit`,
         },
     },
     {
         from: {
-            name: 'TuiAbstractTextfieldHost',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiStatusT`,
+            moduleSpecifier: `@taiga-ui/kit`,
         },
         to: {
-            name: 'AbstractTuiTextfieldHost',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiStatus`,
+            moduleSpecifier: `@taiga-ui/kit`,
+        },
+    },
+    {
+        from: {
+            name: `TuiAbstractTextfieldHost`,
+            moduleSpecifier: `@taiga-ui/core`,
+        },
+        to: {
+            name: `AbstractTuiTextfieldHost`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
     },
 ];

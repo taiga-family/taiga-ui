@@ -1,13 +1,21 @@
-import {getComponentTemplates} from '../../utils/templates/get-component-templates';
 import {UpdateRecorder} from '@angular-devkit/schematics';
+import {addProviderToComponent, DevkitFileSystem} from 'ng-morph';
+
+import {ALL_TS_FILES} from '../../constants';
+import {TuiSchema} from '../../ng-add/schema';
+import {addImportToClosestModule} from '../../utils/add-import-to-closest-module';
+import {addUniqueImport} from '../../utils/add-unique-import';
+import {getNgComponents} from '../../utils/angular/ng-component';
 import {
-    ATTR_TO_DIRECTIVE,
-    ATTRS_TO_REPLACE,
-    INPUTS_TO_REMOVE,
-    TAGS_TO_REPLACE,
-    TEMPLATE_COMMENTS,
-    TRUTHY_BOOLEAN_INPUT_TO_HTML_BINARY_ATTRIBUTE,
-} from '../constants/templates';
+    infoLog,
+    REPLACE_SYMBOL,
+    SMALL_TAB_SYMBOL,
+    SUCCESS_SYMBOL,
+    successLog,
+} from '../../utils/colored-log';
+import {TODO_MARK} from '../../utils/insert-todo';
+import {setupProgressLogger} from '../../utils/progress';
+import {replaceTag} from '../../utils/replace-tag';
 import {
     findAttributeOnElementWithAttrs,
     findAttributeOnElementWithTag,
@@ -16,8 +24,7 @@ import {
     findElementsWithAttribute,
     hasElementAttribute,
 } from '../../utils/templates/elements';
-import {addProviderToComponent, DevkitFileSystem} from 'ng-morph';
-import {TemplateResource} from '../interfaces/template-resourse';
+import {getComponentTemplates} from '../../utils/templates/get-component-templates';
 import {
     getInputPropertyOffsets,
     replaceInputPropertyByDirective,
@@ -27,26 +34,20 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../utils/templates/template-resource';
-import {getNgComponents} from '../../utils/angular/ng-component';
-import {addUniqueImport} from '../../utils/add-unique-import';
 import {
-    infoLog,
-    REPLACE_SYMBOL,
-    SMALL_TAB_SYMBOL,
-    SUCCESS_SYMBOL,
-    successLog,
-} from '../../utils/colored-log';
-import {ALL_TS_FILES} from '../../constants';
-import {replaceTag} from '../../utils/replace-tag';
-import {setupProgressLogger} from '../../utils/progress';
+    ATTR_TO_DIRECTIVE,
+    ATTRS_TO_REPLACE,
+    INPUTS_TO_REMOVE,
+    TAGS_TO_REPLACE,
+    TEMPLATE_COMMENTS,
+    TRUTHY_BOOLEAN_INPUT_TO_HTML_BINARY_ATTRIBUTE,
+} from '../constants/templates';
+import {TemplateResource} from '../interfaces/template-resourse';
 import {migratePolymorpheus} from './migrate-polymorpheus';
-import {addImportToClosestModule} from '../../utils/add-import-to-closest-module';
-import {TODO_MARK} from '../../utils/insert-todo';
 import {migrateTextfieldController} from './migrate-textfield-controller';
-import {TuiSchema} from '../../ng-add/schema';
 
 export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchema): void {
-    !options['skip-logs'] &&
+    !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
 
     const componentWithTemplatesPaths = getComponentTemplates(ALL_TS_FILES);
@@ -78,12 +79,12 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         actions.forEach((action, actionIndex) => {
             const isLastAction = actionIndex === actions.length - 1;
 
-            !options['skip-logs'] && progressLog(action.name, isLastAction);
+            !options[`skip-logs`] && progressLog(action.name, isLastAction);
             action({resource, fileSystem, recorder});
         });
     });
 
-    !options['skip-logs'] &&
+    !options[`skip-logs`] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} templates migrated \n`);
 }
 
@@ -93,7 +94,7 @@ function replaceAttrsByDirective({
 }: {
     resource: TemplateResource;
     fileSystem: DevkitFileSystem;
-}) {
+}): void {
     ATTR_TO_DIRECTIVE.forEach(
         ({componentSelector, directiveModule, directive, inputProperty, filterFn}) => {
             replaceInputPropertyByDirective({
@@ -152,7 +153,7 @@ function replaceTags({
     resource: TemplateResource;
     recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
-}) {
+}): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
@@ -208,14 +209,14 @@ function replaceBreadcrumbs({
     resource: TemplateResource;
     recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
-}) {
+}): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    const elements = findElementsByTagName(template, 'tui-breadcrumbs');
+    const elements = findElementsByTagName(template, `tui-breadcrumbs`);
 
     elements.forEach(element => {
-        const itemsAttr = element.attrs.find(attr => attr.name === '[items]');
+        const itemsAttr = element.attrs.find(attr => attr.name === `[items]`);
         const itemsValue = itemsAttr?.value;
         const insertTo = element?.sourceCodeLocation?.startTag.endOffset;
 
@@ -238,7 +239,8 @@ function replaceBreadcrumbs({
         );
 
         const {startOffset = 0, endOffset = 0} =
-            element.sourceCodeLocation?.attrs?.['[items]'] || {};
+            element.sourceCodeLocation?.attrs?.[`[items]`] || {};
+
         recorder.remove(templateOffset + startOffset - 1, endOffset - startOffset + 1);
     });
 }
@@ -251,32 +253,33 @@ function replaceFieldError({
     resource: TemplateResource;
     recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
-}) {
+}): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    const elements = findElementsByTagName(template, 'tui-field-error');
+    const elements = findElementsByTagName(template, `tui-field-error`);
 
     elements.forEach(element => {
-        const orderAttr = element.attrs.find(attr => attr.name === '[order]');
+        const orderAttr = element.attrs.find(attr => attr.name === `[order]`);
         const orderVal = orderAttr?.value;
 
         if (orderAttr) {
             const {startOffset = 0, endOffset = 0} =
-                element.sourceCodeLocation?.attrs?.['[order]'] || {};
+                element.sourceCodeLocation?.attrs?.[`[order]`] || {};
+
             recorder.remove(
                 templateOffset + startOffset - 1,
                 endOffset - startOffset + 1,
             );
         }
 
-        const input = `[error]="${orderVal ?? '[]'} | tuiFieldError | async"`;
+        const input = `[error]="${orderVal ?? `[]`} | tuiFieldError | async"`;
 
         replaceTag(
             recorder,
-            element.sourceCodeLocation!,
-            'tui-field-error',
-            'tui-error',
+            element.sourceCodeLocation,
+            `tui-field-error`,
+            `tui-error`,
             templateOffset,
             [input],
         );
@@ -285,8 +288,8 @@ function replaceFieldError({
     if (elements.length) {
         addImportToClosestModule(
             resource.componentPath,
-            'TuiErrorModule',
-            '@taiga-ui/core',
+            `TuiErrorModule`,
+            `@taiga-ui/core`,
         );
     }
 }
@@ -300,9 +303,10 @@ function addEditorProviders({
     fileSystem: DevkitFileSystem;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
-    const elements = findElementsByTagName(template, 'tui-editor').filter(
-        element => !hasElementAttribute(element, 'new'),
+    const elements = findElementsByTagName(template, `tui-editor`).filter(
+        element => !hasElementAttribute(element, `new`),
     );
+
     if (elements.length) {
         const componentPath = resource.componentPath;
         const componentClass = getNgComponents(componentPath);
@@ -316,15 +320,16 @@ function addEditorProviders({
             {unique: true},
         );
 
-        addUniqueImport(componentPath, 'TUI_EDITOR_EXTENSIONS', '@taiga-ui/addon-editor');
+        addUniqueImport(componentPath, `TUI_EDITOR_EXTENSIONS`, `@taiga-ui/addon-editor`);
         addUniqueImport(
             componentPath,
-            'defaultEditorExtensions',
-            '@taiga-ui/addon-editor',
+            `defaultEditorExtensions`,
+            `@taiga-ui/addon-editor`,
         );
     }
 }
 
+// eslint-disable-next-line unicorn/no-unsafe-regex
 const HIDE_SELECTED_PIPE_WITH_ARGS_REG = /\|\s*tuiHideSelected(\s*:\s*[^|'"]*)?/gi;
 
 function migrateTuiHideSelectedPipe({
@@ -355,11 +360,11 @@ function migrateTuiHideSelectedPipe({
 
         const newValue = oldValue.replace(
             HIDE_SELECTED_PIPE_WITH_ARGS_REG,
-            '| tuiHideSelected',
+            `| tuiHideSelected`,
         );
 
         const {startOffset} = attrLocations[name];
-        const valueOffset = templateOffset + startOffset + name.length + '="'.length;
+        const valueOffset = templateOffset + startOffset + name.length + `="`.length;
 
         recorder.remove(valueOffset, oldValue.length);
         recorder.insertRight(valueOffset, newValue);
@@ -382,7 +387,7 @@ function migrateBinaryAttributes({
         const elements = findElementsInTemplateByFn(template, el =>
             el.attrs?.some(
                 attr =>
-                    attr.value === 'true' && attr.name.includes(attrName.toLowerCase()),
+                    attr.value === `true` && attr.name.includes(attrName.toLowerCase()),
             ),
         );
 
@@ -431,22 +436,24 @@ function replaceInputValues({
     resource: TemplateResource;
     recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
-}) {
+}): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     const ATTR_VALUES = [
         {
-            attrName: 'tuiHintDirection',
+            attrName: `tuiHintDirection`,
             values: [
-                {from: 'bottom-middle', to: 'bottom'},
-                {from: 'top-middle', to: 'top'},
+                {from: `bottom-middle`, to: `bottom`},
+                {from: `top-middle`, to: `top`},
             ],
         },
     ] as const;
 
     ATTR_VALUES.forEach(({attrName, values}) => {
         const elements = [...findElementsWithAttribute(template, attrName)];
+
         elements.forEach(element => {
             const {name, value} =
                 element.attrs.find(attr => attr.name === attrName.toLowerCase()) || {};
@@ -460,6 +467,7 @@ function replaceInputValues({
                     const {startOffset, endOffset} = element.sourceCodeLocation?.attrs?.[
                         name
                     ] || {startOffset: 0, endOffset: 0};
+
                     recorder.remove(
                         templateOffset + startOffset,
                         endOffset - startOffset,

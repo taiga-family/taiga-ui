@@ -3,16 +3,17 @@ import {chain, noop, Rule, Tree} from '@angular-devkit/schematics';
 import {exec} from 'child_process';
 import * as path from 'path';
 import {getSourceFile} from 'schematics-utilities';
-import {Schema} from '../doc-page/index';
+
+import type {TuiDocSchema} from '../doc-page';
 import {getRelativePath} from '../utils/get-relative-path';
 
-const defaultAppPath = 'src/app';
+const defaultAppPath = `src/app`;
 
 function getModuleNameByName(name: string): string {
     return `Example${classify(name)}Module`;
 }
 
-function getText({name, route, title}: Schema, pathToModule: string): string {
+function getText({name, route, title}: TuiDocSchema, pathToModule: string): string {
     return `{
         path: "${route || dasherize(name)}",
         loadChildren:"${pathToModule}",
@@ -22,26 +23,26 @@ function getText({name, route, title}: Schema, pathToModule: string): string {
     },`;
 }
 
-function prittierFiles(options: Schema): Rule {
+function prittierFiles(options: TuiDocSchema): Rule {
     exec(`prettier --write ${path.join(options.root, options.pathToRouter)}`, () => {});
 
     return noop();
 }
 
-function changeRouterArray(options: Schema): Rule {
+function changeRouterArray(options: TuiDocSchema): Rule {
     return (host: Tree) => {
         const {pathToRouter, name} = options;
         const pathToModule = `${getRelativePath(options.root, process.cwd()).replace(
             defaultAppPath,
-            '.',
+            `.`,
         )}/${dasherize(name)}/${dasherize(name)}.module#${getModuleNameByName(name)}`;
         const sourceFile = getSourceFile(host, pathToRouter);
         const fullText = sourceFile.getFullText();
-        const label = 'Routes = [';
+        const label = `Routes = [`;
         const template = /Routes( ){0,}=( ){0,}\[/gm;
         const updatedFile = fullText.replace(
             template,
-            label + ' ' + getText(options, pathToModule),
+            `${label  } ${  getText(options, pathToModule)}`,
         );
 
         host.overwrite(pathToRouter, updatedFile);
@@ -50,7 +51,7 @@ function changeRouterArray(options: Schema): Rule {
     };
 }
 
-export function addFieldToRouter(options: Schema): Rule {
+export function addFieldToRouter(options: TuiDocSchema): Rule {
     if (!options.pathToRouter) {
         return noop();
     }

@@ -1,59 +1,59 @@
 import {ReplacementConst} from './consts';
 
 export interface ReplacementService extends ReplacementConst {
-    readonly replaceMethods?: {
+    readonly replaceMethods?: Array<{
         from: string;
         to: string;
-    }[];
+    }>;
 }
 
 export const SERVICES_TO_REPLACE: ReplacementService[] = [
     {
         from: {
-            name: 'TuiPortalService',
+            name: `TuiPortalService`,
         },
         to: {
-            name: 'TuiDropdownPortalService',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `TuiDropdownPortalService`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
     },
     {
         from: {
-            name: 'TuiNotificationsService',
+            name: `TuiNotificationsService`,
         },
         to: {
-            name: 'TuiAlertService',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiAlertService`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
         replaceMethods: [
             {
-                from: 'show',
-                to: 'open',
+                from: `show`,
+                to: `open`,
             },
         ],
     },
     {
         from: {
-            name: 'TuiCodeEditor',
+            name: `TuiCodeEditor`,
         },
         to: {
-            name: 'TuiCodeEditor',
-            moduleSpecifier: '@taiga-ui/addon-doc',
+            name: `TuiCodeEditor`,
+            moduleSpecifier: `@taiga-ui/addon-doc`,
         },
         replaceMethods: [
             {
-                from: 'open',
-                to: 'edit',
+                from: `open`,
+                to: `edit`,
             },
         ],
     },
     {
         from: {
-            name: 'PreviewDialogService',
+            name: `PreviewDialogService`,
         },
         to: {
-            name: 'TuiPreviewDialogService',
-            moduleSpecifier: '@taiga-ui/addon-preview',
+            name: `TuiPreviewDialogService`,
+            moduleSpecifier: `@taiga-ui/addon-preview`,
         },
     },
 ];

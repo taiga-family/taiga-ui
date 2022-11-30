@@ -2,37 +2,28 @@ const CI_MODE = process.env['TUI_CI'] === 'true';
 
 console.log('CI mode', CI_MODE);
 
-const DEFAULT = [
-    '@tinkoff/eslint-config-angular',
-    '@tinkoff/eslint-config-angular/html',
-    '@tinkoff/eslint-config-angular/rxjs',
-    '@tinkoff/eslint-config-angular/imports',
-    '@tinkoff/eslint-config-angular/file-progress',
-    '@tinkoff/eslint-config-angular/line-statements',
-    '@tinkoff/eslint-config-angular/member-ordering',
-    '@tinkoff/eslint-config-angular/decorator-position',
-    // @custom
-    './scripts/eslint/common/cypress.js',
-    './scripts/eslint/common/naming-convention.js',
-];
-
-const ONLY_CI = CI_MODE
-    ? [
-          '@tinkoff/eslint-config',
-          '@tinkoff/eslint-config-angular/promise',
-          // @custom
-          './scripts/eslint/ci/nx.js',
-      ]
-    : [];
-
 /**
  * @type {import('eslint').Linter.Config}
  */
 module.exports = {
     root: true,
-    extends: [...ONLY_CI, ...DEFAULT],
+    extends: [
+        ...(CI_MODE ? ['@tinkoff/eslint-config', './scripts/eslint/ci/nx.js'] : []),
+        // @default
+        '@tinkoff/eslint-config-angular',
+        '@tinkoff/eslint-config-angular/html',
+        '@tinkoff/eslint-config-angular/rxjs',
+        '@tinkoff/eslint-config-angular/imports',
+        '@tinkoff/eslint-config-angular/promise',
+        '@tinkoff/eslint-config-angular/file-progress',
+        '@tinkoff/eslint-config-angular/line-statements',
+        '@tinkoff/eslint-config-angular/member-ordering',
+        '@tinkoff/eslint-config-angular/decorator-position',
+        // @custom
+        './scripts/eslint/common/cypress.js',
+        './scripts/eslint/common/naming-convention.js',
+    ],
     ignorePatterns: [
-        'projects/**/test.ts',
         'projects/**/icons/all.ts',
         '404.html',
         '*.js',

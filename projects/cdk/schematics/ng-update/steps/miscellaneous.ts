@@ -1,6 +1,6 @@
-import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {Node, SyntaxKind, TypeReferenceNode} from 'ng-morph';
-import {insertTodo} from '../../utils/insert-todo';
+
+import {TuiSchema} from '../../ng-add/schema';
 import {
     infoLog,
     REPLACE_SYMBOL,
@@ -8,44 +8,45 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
-import {TuiSchema} from '../../ng-add/schema';
+import {getNamedImportReferences} from '../../utils/get-named-import-references';
+import {insertTodo} from '../../utils/insert-todo';
 
-export function miscellaneousMigrations(options: TuiSchema) {
-    !options['skip-logs'] &&
+export function miscellaneousMigrations(options: TuiSchema): void {
+    !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} miscellaneous migrating...`);
 
     replaceEnumProperty({
-        enumName: 'TuiCurrency',
-        from: 'HongKong_dollar',
-        to: 'HongKongDollar',
+        enumName: `TuiCurrency`,
+        from: `HongKong_dollar`,
+        to: `HongKongDollar`,
     });
     replaceEnumProperty({
-        enumName: 'TuiCurrencyCode',
-        from: 'HongKong_dollar',
-        to: 'HongKongDollar',
+        enumName: `TuiCurrencyCode`,
+        from: `HongKong_dollar`,
+        to: `HongKongDollar`,
     });
     replaceEnumProperty({
-        enumName: 'TuiCreditCardAutofillName',
-        from: 'CcExp_mounth',
-        to: 'CcExpMonth',
+        enumName: `TuiCreditCardAutofillName`,
+        from: `CcExp_mounth`,
+        to: `CcExpMonth`,
     });
     replaceEnumProperty({
-        enumName: 'TuiCreditCardAutofillName',
-        from: 'CcExp_year',
-        to: 'CcExpYear',
+        enumName: `TuiCreditCardAutofillName`,
+        from: `CcExp_year`,
+        to: `CcExpYear`,
     });
 
     addWarningToMethod(
-        'TuiDirectiveStylesService',
-        'addStyle',
-        'addStyle method has been removed. Use components approach',
+        `TuiDirectiveStylesService`,
+        `addStyle`,
+        `addStyle method has been removed. Use components approach`,
     );
 
-    !options['skip-logs'] &&
+    !options[`skip-logs`] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} miscellaneous migrated \n`);
 }
 
-function addWarningToMethod(className: string, method: string, message: string) {
+function addWarningToMethod(className: string, method: string, message: string): void {
     const references = getNamedImportReferences(className);
 
     references.forEach(ref => {
@@ -65,11 +66,12 @@ function replaceEnumProperty({
     enumName: string;
     from: string;
     to: string;
-}) {
+}): void {
     const references = getNamedImportReferences(enumName);
 
     references.forEach(ref => {
         const parent = ref.getParent();
+
         if (!Node.isPropertyAccessExpression(parent)) {
             return;
         }
@@ -82,7 +84,7 @@ function replaceEnumProperty({
     });
 }
 
-function checkMethod(node: TypeReferenceNode, method: string, message: string) {
+function checkMethod(node: TypeReferenceNode, method: string, message: string): void {
     const statement = node.getParent();
     const identifier = statement.getChildrenOfKind(SyntaxKind.Identifier)[0];
 
@@ -91,7 +93,7 @@ function checkMethod(node: TypeReferenceNode, method: string, message: string) {
 
         if (
             (Node.isPropertyAccessExpression(parent) &&
-                parent.getText().startsWith('this.')) ||
+                parent.getText().startsWith(`this.`)) ||
             Node.isCallExpression(parent)
         ) {
             parent = parent.getParentIfKind(SyntaxKind.PropertyAccessExpression);

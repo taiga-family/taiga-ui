@@ -1,6 +1,7 @@
+/* eslint-disable rxjs/no-topromise */
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-
+import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 import {
     createProject,
     createSourceFile,
@@ -9,10 +10,10 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {join} from 'path';
-import {createAngularJson} from '../../utils/create-angular-json';
-import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 
-const collectionPath = join(__dirname, '../../migration.json');
+import {createAngularJson} from '../../utils/create-angular-json';
+
+const collectionPath = join(__dirname, `../../migration.json`);
 
 const APP_MODULE = `
 import {CommonModule} from '@angular/common';
@@ -147,7 +148,7 @@ const FILE_HTML_CHILD_TEMPLATE_AFTER = `
 <tui-input-slider
     tuiHintContent="Select the answer to see how the right custom content changes"
     [valueContent]="tuiMigrationMinMaxLabel"
-    ${''}
+    ${``}
     class="control"
     [min]="0"
     [max]="10"
@@ -161,7 +162,7 @@ const FILE_HTML_CHILD_TEMPLATE_AFTER = `
 
 <!-- TODO: (Taiga UI migration) See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-range#segments -->
 <tui-input-range
-    ${''}
+    ${``}
     [min]="0"
     [max]="100"
     [segments]="5"
@@ -313,13 +314,13 @@ export class InlineHtmlChildComponent {
 }
 `;
 
-describe('ng-update', () => {
+describe(`ng-update`, () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
     beforeEach(() => {
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner('schematics', collectionPath);
+        runner = new SchematicTestRunner(`schematics`, collectionPath);
 
         setActiveProject(createProject(host));
 
@@ -328,127 +329,127 @@ describe('ng-update', () => {
         saveActiveProject();
     });
 
-    describe('no deprecations inside AppComponent', () => {
-        it('no imports of the new module inside app.module.ts', async () => {
+    describe(`no deprecations inside AppComponent`, () => {
+        it(`no imports of the new module inside app.module.ts`, async () => {
             const tree = await runner
                 .runSchematicAsync(
-                    'updateToV3',
-                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    `updateToV3`,
+                    {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                     host,
                 )
                 .toPromise();
 
-            expect(tree.readContent('test/app/app.module.ts')).toBe(APP_MODULE);
+            expect(tree.readContent(`test/app/app.module.ts`)).toBe(APP_MODULE);
         });
 
-        it('no changes in app.template.ts', async () => {
+        it(`no changes in app.template.ts`, async () => {
             const tree = await runner
                 .runSchematicAsync(
-                    'updateToV3',
-                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    `updateToV3`,
+                    {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                     host,
                 )
                 .toPromise();
 
-            expect(tree.readContent('test/app/app.template.html')).toBe(APP_TEMPLATE);
+            expect(tree.readContent(`test/app/app.template.html`)).toBe(APP_TEMPLATE);
         });
 
-        it('no changes in app.component.ts', async () => {
+        it(`no changes in app.component.ts`, async () => {
             const tree = await runner
                 .runSchematicAsync(
-                    'updateToV3',
-                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    `updateToV3`,
+                    {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                     host,
                 )
                 .toPromise();
 
-            expect(tree.readContent('test/app/app.component.ts')).toBe(APP_COMPONENT);
+            expect(tree.readContent(`test/app/app.component.ts`)).toBe(APP_COMPONENT);
         });
     });
 
-    describe('component with a inline html template', () => {
-        it('adds TuiTextfieldControllerModule to the required module', async () => {
+    describe(`component with a inline html template`, () => {
+        it(`adds TuiTextfieldControllerModule to the required module`, async () => {
             const tree = await runner
                 .runSchematicAsync(
-                    'updateToV3',
-                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    `updateToV3`,
+                    {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                     host,
                 )
                 .toPromise();
 
             expect(
-                tree.readContent('test/inline-html-child/inline-html-child.module.ts'),
+                tree.readContent(`test/inline-html-child/inline-html-child.module.ts`),
             ).toBe(INLINE_HTML_CHILD_MODULE_AFTER);
         });
 
-        it('replace deprecated attributes inside inline template (+ adds required class-methods)', async () => {
+        it(`replace deprecated attributes inside inline template (+ adds required class-methods)`, async () => {
             const tree = await runner
                 .runSchematicAsync(
-                    'updateToV3',
-                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    `updateToV3`,
+                    {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                     host,
                 )
                 .toPromise();
 
             expect(
-                tree.readContent('test/inline-html-child/inline-html-child.component.ts'),
+                tree.readContent(`test/inline-html-child/inline-html-child.component.ts`),
             ).toEqual(INLINE_HTML_CHILD_COMPONENT_AFTER);
         });
     });
 
-    describe('component with a separate html-file template', () => {
-        it('replace deprecated attributes inside templates', async () => {
+    describe(`component with a separate html-file template`, () => {
+        it(`replace deprecated attributes inside templates`, async () => {
             const tree = await runner
                 .runSchematicAsync(
-                    'updateToV3',
-                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    `updateToV3`,
+                    {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                     host,
                 )
                 .toPromise();
 
             expect(
-                tree.readContent('test/file-html-child/file-html-child.template.html'),
+                tree.readContent(`test/file-html-child/file-html-child.template.html`),
             ).toEqual(FILE_HTML_CHILD_TEMPLATE_AFTER);
         });
 
-        it('adds required properties inside file-html-child.component.ts', async () => {
+        it(`adds required properties inside file-html-child.component.ts`, async () => {
             const tree = await runner
                 .runSchematicAsync(
-                    'updateToV3',
-                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    `updateToV3`,
+                    {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                     host,
                 )
                 .toPromise();
 
             expect(
-                tree.readContent('test/file-html-child/file-html-child.component.ts'),
+                tree.readContent(`test/file-html-child/file-html-child.component.ts`),
             ).toBe(FILE_HTML_CHILD_COMPONENT_AFTER);
         });
 
-        it('adds TuiTextfieldControllerModule to the required module', async () => {
+        it(`adds TuiTextfieldControllerModule to the required module`, async () => {
             const tree = await runner
                 .runSchematicAsync(
-                    'updateToV3',
-                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    `updateToV3`,
+                    {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                     host,
                 )
                 .toPromise();
 
             expect(
-                tree.readContent('test/file-html-child/file-html-child.module.ts'),
+                tree.readContent(`test/file-html-child/file-html-child.module.ts`),
             ).toBe(FILE_HTML_CHILD_MODULE_AFTER);
         });
 
-        it('does not add any imports in dummy.module.ts', async () => {
+        it(`does not add any imports in dummy.module.ts`, async () => {
             const tree = await runner
                 .runSchematicAsync(
-                    'updateToV3',
-                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                    `updateToV3`,
+                    {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                     host,
                 )
                 .toPromise();
 
-            expect(tree.readContent('test/file-html-child/dummy.module.ts')).toBe(
+            expect(tree.readContent(`test/file-html-child/dummy.module.ts`)).toBe(
                 DUMMY_MODULE,
             );
         });
@@ -460,34 +461,34 @@ describe('ng-update', () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile('test/app/app.module.ts', APP_MODULE);
+    createSourceFile(`test/app/app.module.ts`, APP_MODULE);
 
-    createSourceFile('test/app/app.component.ts', APP_COMPONENT);
+    createSourceFile(`test/app/app.component.ts`, APP_COMPONENT);
 
-    createSourceFile('test/app/app.template.html', APP_TEMPLATE);
+    createSourceFile(`test/app/app.template.html`, APP_TEMPLATE);
 
-    createSourceFile('test/file-html-child/dummy.module.ts', DUMMY_MODULE);
+    createSourceFile(`test/file-html-child/dummy.module.ts`, DUMMY_MODULE);
     createSourceFile(
-        'test/file-html-child/file-html-child.module.ts',
+        `test/file-html-child/file-html-child.module.ts`,
         FILE_HTML_CHILD_MODULE_BEFORE,
     );
     createSourceFile(
-        'test/file-html-child/file-html-child.component.ts',
+        `test/file-html-child/file-html-child.component.ts`,
         FILE_HTML_CHILD_COMPONENT_BEFORE,
     );
     createSourceFile(
-        'test/file-html-child/file-html-child.template.html',
+        `test/file-html-child/file-html-child.template.html`,
         FILE_HTML_CHILD_TEMPLATE_BEFORE,
     );
 
     createSourceFile(
-        'test/inline-html-child/inline-html-child.module.ts',
+        `test/inline-html-child/inline-html-child.module.ts`,
         INLINE_HTML_CHILD_MODULE_BEFORE,
     );
     createSourceFile(
-        'test/inline-html-child/inline-html-child.component.ts',
+        `test/inline-html-child/inline-html-child.component.ts`,
         INLINE_HTML_CHILD_COMPONENT_BEFORE,
     );
     createAngularJson();
-    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
+    createSourceFile(`package.json`, `{"dependencies": {"@angular/core": "~13.0.0"}}`);
 }

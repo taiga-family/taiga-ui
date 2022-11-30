@@ -2,7 +2,8 @@ import {dasherize} from '@angular-devkit/core/src/utils/strings';
 import {chain, Rule, Tree} from '@angular-devkit/schematics';
 import * as path from 'path';
 import {getSourceFile} from 'schematics-utilities';
-import {Schema} from '../doc-page/index';
+
+import type {TuiDocSchema} from '../doc-page';
 import {getRelativePath} from '../utils/get-relative-path';
 
 function getText(name: string, index: number): string {
@@ -18,7 +19,7 @@ function getText(name: string, index: number): string {
 }
 
 function generateText(name: string, samples: number, startIndex: number): string {
-    let text = '';
+    let text = ``;
 
     for (
         let iteratorIndex = startIndex;
@@ -26,13 +27,16 @@ function generateText(name: string, samples: number, startIndex: number): string
         iteratorIndex++
     ) {
         text += getText(name, iteratorIndex);
-        text += '\n\n';
+        text += `\n\n`;
     }
 
     return text;
 }
 
-function addCodeToTemplate({name, samples, root}: Schema, startIndex: number): Rule {
+function addCodeToTemplate(
+    {name, samples, root}: TuiDocSchema,
+    startIndex: number,
+): Rule {
     return (host: Tree) => {
         const appTemplatePath = path.join(
             getRelativePath(root, process.cwd()),
@@ -41,7 +45,7 @@ function addCodeToTemplate({name, samples, root}: Schema, startIndex: number): R
         const sourceFile = getSourceFile(host, appTemplatePath);
         const fullText = sourceFile.getFullText();
         const addCodeTemplatesConst = fullText.replace(
-            '<tui-doc-example',
+            `<tui-doc-example`,
             `${generateText(name, samples, startIndex)}<tui-doc-example`,
         );
 
@@ -51,6 +55,6 @@ function addCodeToTemplate({name, samples, root}: Schema, startIndex: number): R
     };
 }
 
-export function addContentToHtml(options: Schema, startIndex: number): Rule {
+export function addContentToHtml(options: TuiDocSchema, startIndex: number): Rule {
     return chain([addCodeToTemplate(options, startIndex)]);
 }
