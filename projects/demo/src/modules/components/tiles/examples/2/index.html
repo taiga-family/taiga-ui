@@ -1,0 +1,11 @@
+<tui-tiles
+    class="tiles"
+    [(items)]="items"
+>
+    <tui-tile
+        *ngFor="let item of items"
+        tuiTileHandle
+    >
+        <div class="tile">{{ item }}</div>
+    </tui-tile>
+</tui-tiles>

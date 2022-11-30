@@ -1,30 +1,30 @@
-<div
-    cdkDropList
+<tui-tiles
     class="t-wrapper"
-    (cdkDropListDropped)="drop($event)"
+    [(items)]="items"
 >
-    <div
+    <tui-tile
         *ngFor="let item of items"
-        tabindex="-1"
-        cdkDrag
-        class="t-item"
+        tuiTileHandle
     >
-        <tui-svg
-            src="tuiIconDrag"
-            class="t-icon"
-        ></tui-svg>
-        {{ item }}
-        <button
-            type="button"
-            tuiIconButton
-            appearance="icon"
-            size="xs"
-            tuiPreventDefault="mousedown"
-            class="t-button"
-            [class.t-button_hidden]="!isEnabled(item)"
-            [title]="showHideText$ | async"
-            [icon]="getIcon(item)"
-            (click)="toggle(item)"
-        ></button>
-    </div>
-</div>
+        <div class="t-item">
+            <tui-svg
+                src="tuiIconDrag"
+                class="t-icon"
+            ></tui-svg>
+            {{ item }}
+            <button
+                type="button"
+                tuiIconButton
+                appearance="icon"
+                size="xs"
+                class="t-button"
+                [class.t-button_hidden]="!isEnabled(item)"
+                [title]="showHideText$ | async"
+                [icon]="getIcon(item)"
+                (click)="toggle(item)"
+                (keydown.arrowUp.prevent)="move(item, -1)"
+                (keydown.arrowDown.prevent)="move(item, 1)"
+            ></button>
+        </div>
+    </tui-tile>
+</tui-tiles>

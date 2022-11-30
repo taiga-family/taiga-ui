@@ -1,19 +1,12 @@
-import {DragDropModule} from '@angular/cdk/drag-drop';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiPreventDefaultModule} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiSvgModule} from '@taiga-ui/core';
+import {TuiTilesModule} from '@taiga-ui/kit';
 
 import {TuiReorderComponent} from './reorder.component';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        DragDropModule,
-        TuiSvgModule,
-        TuiButtonModule,
-        TuiPreventDefaultModule,
-    ],
+    imports: [CommonModule, TuiSvgModule, TuiButtonModule, TuiTilesModule],
     declarations: [TuiReorderComponent],
     exports: [TuiReorderComponent],
 })
