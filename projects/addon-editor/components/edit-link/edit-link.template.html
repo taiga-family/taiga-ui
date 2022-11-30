@@ -26,8 +26,9 @@
             </div>
         </label>
         <tui-svg
-            src="tuiIconCloseLarge"
+            *polymorpheusOutlet="options.iconCleaner as src"
             class="t-cleaner"
+            [src]="src"
             [class.t-cleaner_hidden]="!hasUrl"
             (click)="onClear()"
         ></tui-svg>

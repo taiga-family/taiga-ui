@@ -9,6 +9,7 @@ import {
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {TuiInputInlineModule, TuiToggleModule} from '@taiga-ui/kit';
+import {PolymorpheusModule} from "@tinkoff/ng-polymorpheus";
 
 import {TuiEditLinkComponent} from './edit-link.component';
 import {TuiFilterAnchorsPipe} from './pipes/filter-anchors.pipe';
@@ -25,6 +26,7 @@ import {TuiShortUrlPipe} from './pipes/short-url.pipe';
         TuiInputInlineModule,
         TuiToggleModule,
         TuiScrollbarModule,
+        PolymorpheusModule,
     ],
     declarations: [TuiEditLinkComponent, TuiShortUrlPipe, TuiFilterAnchorsPipe],
     exports: [TuiEditLinkComponent],

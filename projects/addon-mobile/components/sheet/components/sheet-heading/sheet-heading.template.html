@@ -1,9 +1,10 @@
 <button
+    *polymorpheusOutlet="options.iconCleaner as src"
     tuiIconButton
     size="xs"
     appearance="icon"
-    icon="tuiIconCloseLarge"
     class="t-close"
+    [icon]="src"
     [title]="closeWord$ | async"
     (click)="onClick()"
 ></button>

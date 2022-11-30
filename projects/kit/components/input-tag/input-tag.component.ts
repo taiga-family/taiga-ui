@@ -32,6 +32,7 @@ import {
     TuiFocusableElementAccessor,
     tuiGetActualTarget,
     tuiGetClipboardDataText,
+    TuiInjectionTokenType,
     tuiIsElement,
     tuiIsNativeFocusedIn,
     tuiPreventDefault,
@@ -42,6 +43,7 @@ import {
     MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_MODE,
+    TUI_PRIMITIVE_TEXTFIELD_OPTIONS,
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiAsDataListHost,
@@ -69,9 +71,9 @@ const EVENT_Y_TO_X_COEFFICIENT = 3;
 
 @Component({
     selector: `tui-input-tag`,
-    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: `./input-tag.template.html`,
     styleUrls: [`./input-tag.style.less`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputTagComponent),
         tuiAsControl(TuiInputTagComponent),
@@ -196,6 +198,10 @@ export class TuiInputTagComponent
         readonly controller: TuiTextfieldController,
         @Inject(TUI_INPUT_TAG_OPTIONS)
         private readonly options: TuiInputTagOptions,
+        @Inject(TUI_PRIMITIVE_TEXTFIELD_OPTIONS)
+        readonly textfieldOptions: TuiInjectionTokenType<
+            typeof TUI_PRIMITIVE_TEXTFIELD_OPTIONS
+        >,
         @Optional()
         @Inject(TuiHostedDropdownComponent)
         private readonly parentHostedDropdown?: TuiHostedDropdownComponent,

@@ -12,6 +12,7 @@ import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TUI_EDITOR_LINK_TEXTS} from '@taiga-ui/addon-editor/tokens';
 import {tuiDefaultProp, TuiInjectionTokenType, tuiIsElement} from '@taiga-ui/cdk';
+import {TUI_PRIMITIVE_TEXTFIELD_OPTIONS} from '@taiga-ui/core';
 
 const HASH_PREFIX = `#` as const;
 const HTTP_PREFIX = `http://` as const;
@@ -48,6 +49,8 @@ export class TuiEditLinkComponent {
         @Inject(TUI_EDITOR_LINK_TEXTS)
         readonly texts$: TuiInjectionTokenType<typeof TUI_EDITOR_LINK_TEXTS>,
         @Inject(TuiTiptapEditorService) private readonly editor: AbstractTuiEditor,
+        @Inject(TUI_PRIMITIVE_TEXTFIELD_OPTIONS)
+        readonly options: TuiInjectionTokenType<typeof TUI_PRIMITIVE_TEXTFIELD_OPTIONS>,
     ) {}
 
     @Input()

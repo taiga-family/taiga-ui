@@ -147,12 +147,14 @@
                 [src]="text"
             ></tui-svg>
         </div>
-        <tui-svg
-            *ngIf="hasCleaner"
-            src="tuiIconCloseLarge"
-            class="t-icon"
-            (click)="clear()"
-        ></tui-svg>
+        <ng-container *ngIf="hasCleaner">
+            <tui-svg
+                *polymorpheusOutlet="options.iconCleaner as src"
+                class="t-icon"
+                [src]="src"
+                (click)="clear()"
+            ></tui-svg>
+        </ng-container>
         <tui-svg
             *ngIf="hasDropdown"
             src="tuiIconChevronDownLarge"

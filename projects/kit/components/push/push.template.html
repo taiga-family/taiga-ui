@@ -1,15 +1,18 @@
 <div class="t-image"><ng-content select="img"></ng-content></div>
-<button
-    *ngIf="closeable"
-    tuiIconButton
-    icon="tuiIconCloseLarge"
-    size="xs"
-    appearance=""
-    shape="rounded"
-    class="t-close"
-    [title]="closeWord$ | async"
-    (click)="close.emit()"
-></button>
+<ng-container *ngIf="closeable">
+    <button
+        *polymorpheusOutlet="options.iconCleaner as src"
+        tuiIconButton
+        size="xs"
+        appearance=""
+        shape="rounded"
+        class="t-close"
+        [icon]="src"
+        [title]="closeWord$ | async"
+        (click)="close.emit()"
+    ></button>
+</ng-container>
+
 <div class="t-top">
     <span class="t-icon"><ng-content select="tui-svg"></ng-content></span>
     {{ type }}

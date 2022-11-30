@@ -33,14 +33,15 @@
     class="t-wrapper"
 >
     <button
+        *polymorpheusOutlet="options.iconCleaner as src"
         tuiIconButton
         tuiPreventDefault="mousedown"
         automation-id="tui-dialog__close"
         size="s"
         appearance=""
-        icon="tuiIconCloseLarge"
         shape="rounded"
         class="t-close"
+        [icon]="src"
         [title]="closeWord$ | async"
         (click)="close()"
     ></button>

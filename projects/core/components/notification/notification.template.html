@@ -7,15 +7,17 @@
 <div class="t-content">
     <ng-content></ng-content>
 </div>
-<button
-    *ngIf="hasClose"
-    tuiIconButton
-    type="button"
-    automation-id="tui-notification__close"
-    size="xs"
-    icon="tuiIconCloseLarge"
-    appearance="icon"
-    class="t-close"
-    [title]="closeWord$ | async"
-    (click)="close.emit()"
-></button>
+<ng-container *ngIf="hasClose">
+    <button
+        *polymorpheusOutlet="textfieldOptions.iconCleaner as src"
+        tuiIconButton
+        type="button"
+        automation-id="tui-notification__close"
+        size="xs"
+        appearance="icon"
+        class="t-close"
+        [icon]="src"
+        [title]="closeWord$ | async"
+        (click)="close.emit()"
+    ></button>
+</ng-container>

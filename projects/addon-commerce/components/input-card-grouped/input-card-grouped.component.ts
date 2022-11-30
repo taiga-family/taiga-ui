@@ -30,6 +30,7 @@ import {
     TuiBooleanHandler,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    TuiInjectionTokenType,
     tuiIsElement,
     tuiIsInput,
     tuiIsNativeFocused,
@@ -42,6 +43,7 @@ import {
     TUI_DIGIT_REGEXP,
     TUI_MODE,
     TUI_NON_DIGIT_REGEXP,
+    TUI_PRIMITIVE_TEXTFIELD_OPTIONS,
     TUI_TEXTFIELD_APPEARANCE,
     tuiAsDataListHost,
     TuiBrightness,
@@ -179,6 +181,8 @@ export class TuiInputCardGroupedComponent
         readonly cardGroupedTexts$: Observable<TuiCardGroupedTexts>,
         @Inject(TUI_TEXTFIELD_APPEARANCE)
         readonly appearance: string,
+        @Inject(TUI_PRIMITIVE_TEXTFIELD_OPTIONS)
+        readonly options: TuiInjectionTokenType<typeof TUI_PRIMITIVE_TEXTFIELD_OPTIONS>,
     ) {
         super(control, changeDetectorRef);
     }

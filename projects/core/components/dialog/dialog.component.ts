@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
-import {TUI_IS_MOBILE, TuiDialog} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, TuiDialog, TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
+import {TUI_PRIMITIVE_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components';
 import {TuiAnimationOptions, TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATIONS_DURATION, TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
 import {TuiDialogSize} from '@taiga-ui/core/types';
@@ -45,6 +46,8 @@ export class TuiDialogComponent<O, I> {
         @Inject(TUI_DIALOG_CLOSE_STREAM)
         close$: Observable<unknown>,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
+        @Inject(TUI_PRIMITIVE_TEXTFIELD_OPTIONS)
+        readonly options: TuiInjectionTokenType<typeof TUI_PRIMITIVE_TEXTFIELD_OPTIONS>,
     ) {
         close$.subscribe(() => {
             this.close();

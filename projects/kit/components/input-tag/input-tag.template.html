@@ -114,14 +114,17 @@
                 *ngIf="hasRightIcons"
                 class="t-icons t-icons_right"
             >
-                <tui-svg
-                    *ngIf="hasCleaner"
-                    #cleaner
-                    automation-id="tui-input-tag__cleaner"
-                    src="tuiIconCloseLarge"
-                    class="t-cleaner"
-                    (click.stop)="onCleanerClick()"
-                ></tui-svg>
+                <ng-container *ngIf="hasCleaner">
+                    <tui-svg
+                        *polymorpheusOutlet="textfieldOptions.iconCleaner as src"
+                        #cleaner
+                        automation-id="tui-input-tag__cleaner"
+                        class="t-cleaner"
+                        [src]="src"
+                        (click.stop)="onCleanerClick()"
+                    ></tui-svg>
+                </ng-container>
+
                 <tui-tooltip
                     *ngIf="hintOptions && hintOptions.content && !computedDisabled"
                     automation-id="tui-input-tag__tooltip"

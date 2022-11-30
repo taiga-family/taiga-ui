@@ -9,11 +9,12 @@ import {
     Sanitizer,
     SecurityContext,
 } from '@angular/core';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import {DomSanitizer, SafeHtml, SafeResourceUrl} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
 import {
     tuiAssert,
     tuiGetDocumentOrShadowRoot,
+    TuiInjectionTokenType,
     tuiPure,
     tuiRequiredSetter,
     TuiStaticRequestService,
@@ -29,6 +30,7 @@ import {
     TUI_SVG_SRC_PROCESSOR,
 } from '@taiga-ui/core/tokens';
 import {tuiIsPresumedHTMLString} from '@taiga-ui/core/utils/miscellaneous';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, of, ReplaySubject} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 
@@ -45,7 +47,7 @@ const FAILED_EXTERNAL_ICON = `Failed to load external SVG`;
 })
 export class TuiSvgComponent {
     private readonly src$ = new ReplaySubject<void>(1);
-    private icon = ``;
+    private icon: string | SafeResourceUrl | PolymorpheusContent = ``;
 
     readonly innerHTML$: Observable<SafeHtml>;
 
@@ -62,35 +64,41 @@ export class TuiSvgComponent {
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(ElementRef) private readonly elementRef: ElementRef<Element>,
         @Inject(TUI_SVG_SRC_PROCESSOR)
-        private readonly srcProcessor: TuiStringHandler<string>,
+        private readonly srcProcessor: TuiInjectionTokenType<
+            typeof TUI_SVG_SRC_PROCESSOR
+        >,
         @Inject(TUI_SVG_CONTENT_PROCESSOR)
         private readonly contentProcessor: TuiStringHandler<string>,
     ) {
         this.innerHTML$ = this.src$.pipe(
-            switchMap(() =>
-                this.isExternal
-                    ? this.getExternalIcon(this.icon)
-                    : of(this.getSafeHtml(this.icon)),
-            ),
+            switchMap(() => {
+                if (typeof this.icon === `string`) {
+                    return this.isExternal
+                        ? this.getExternalIcon(this.icon)
+                        : of(this.getSafeHtml(this.icon));
+                }
+
+                return of(this.icon as unknown as SafeHtml);
+            }),
             startWith(``),
         );
     }
 
     @Input()
     @tuiRequiredSetter()
-    set src(src: string) {
+    set src(src: string | SafeResourceUrl | PolymorpheusContent) {
         this.icon = this.srcProcessor(src);
         this.src$.next();
     }
 
-    get src(): string {
+    get src(): string | SafeResourceUrl | PolymorpheusContent {
         return this.icon;
     }
 
     get use(): string {
-        return this.icon.includes(`.svg#`)
-            ? this.icon
-            : this.resolveName(this.icon, this.iconsPath);
+        const icon: string = this.icon as unknown as string;
+
+        return icon.includes(`.svg#`) ? icon : this.resolveName(icon, this.iconsPath);
     }
 
     get isInnerHTML(): boolean {
@@ -112,11 +120,12 @@ export class TuiSvgComponent {
     }
 
     private get isUrl(): boolean {
-        return this.icon.endsWith(`.svg`);
+        // eslint-disable-next-line @typescript-eslint/no-base-to-string
+        return this.icon?.toString().endsWith(`.svg`) ?? false;
     }
 
     private get isSrc(): boolean {
-        return tuiIsPresumedHTMLString(this.icon);
+        return typeof this.icon === `string` ? tuiIsPresumedHTMLString(this.icon) : false;
     }
 
     private get isName(): boolean {
@@ -140,7 +149,7 @@ export class TuiSvgComponent {
             bubbles: true,
             detail: {
                 message,
-                icon,
+                icon: icon as string,
             },
         });
 
