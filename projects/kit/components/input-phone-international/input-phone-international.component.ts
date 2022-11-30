@@ -171,7 +171,18 @@ export class TuiInputPhoneInternationalComponent
         this.isoToCountryCode(item);
 
     getFlagPath(code: TuiCountryIsoCode): string {
-        return `${this.staticPath}${code}.png`;
+        switch (code) {
+            case TuiCountryIsoCode.BL:
+            case TuiCountryIsoCode.GF:
+            case TuiCountryIsoCode.GP:
+            case TuiCountryIsoCode.MF:
+            case TuiCountryIsoCode.MQ:
+            case TuiCountryIsoCode.RE:
+            case TuiCountryIsoCode.YT:
+                return `${this.staticPath}${TuiCountryIsoCode.FR}.png`;
+            default:
+                return `${this.staticPath}${code}.png`;
+        }
     }
 
     onItemClick(isoCode: TuiCountryIsoCode): void {
