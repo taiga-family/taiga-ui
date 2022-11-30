@@ -43,7 +43,7 @@ export class TuiBarSetComponent {
     }
 
     getColor(index: number): SafeValue {
-        return `var(--tui-chart-${index}`;
+        return `var(--tui-chart-${index})`;
     }
 
     @tuiPure
