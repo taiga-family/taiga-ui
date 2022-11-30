@@ -1,12 +1,13 @@
 import {ChangeDetectorRef, Inject, Injectable} from '@angular/core';
+import {SafeResourceUrl} from '@angular/platform-browser';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {TuiDestroyService, tuiWatch} from '@taiga-ui/cdk';
 import {Observable, of, Subject} from 'rxjs';
 import {catchError, filter, mapTo, switchMap, take, takeUntil} from 'rxjs/operators';
 
 @Injectable()
-export class TuiLazyLoadingService extends Observable<string> {
-    private readonly src$ = new Subject<string>();
+export class TuiLazyLoadingService extends Observable<string | SafeResourceUrl> {
+    private readonly src$ = new Subject<string | SafeResourceUrl>();
 
     constructor(
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
@@ -32,7 +33,7 @@ export class TuiLazyLoadingService extends Observable<string> {
         );
     }
 
-    next(src: string): void {
+    next(src: string | SafeResourceUrl): void {
         this.src$.next(src);
     }
 }

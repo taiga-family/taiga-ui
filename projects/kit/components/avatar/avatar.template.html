@@ -9,6 +9,6 @@
 <tui-svg
     *ngIf="iconAvatar"
     class="t-icon"
-    [src]="avatarUrl || ''"
+    [src]="$any(avatarUrl || '')"
 ></tui-svg>
 <span class="t-text">{{ computedText }}</span>
