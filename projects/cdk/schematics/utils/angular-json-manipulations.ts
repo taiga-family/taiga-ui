@@ -1,12 +1,13 @@
 import {TuiSchema} from '../ng-add/schema';
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {getProject} from './get-project';
+import {getProjects} from './get-projects';
 import {getProjectTargetOptions} from './get-project-target-options';
 import {JsonArray} from '@angular-devkit/core';
 import {getWorkspace, updateWorkspace} from '@schematics/angular/utility/workspace';
 import {addPackageJsonDependency} from 'ng-morph';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
+import {Asset} from '../ng-update/interfaces/asset';
 
 export async function isInvalidAngularJson(tree: Tree): Promise<boolean> {
     return (
@@ -33,57 +34,73 @@ export function addStylesToAngularJson(
     )} to angular.json manually.`;
 
     return updateWorkspace(workspace => {
-        const project = getProject(options, workspace);
+        const projects = getProjects(options, workspace);
 
-        if (!project) {
+        if (!projects.length) {
             context.logger.warn(
                 `[WARNING]: Target project not found. ${MANUAL_MIGRATION_TIPS}`,
             );
             return;
         }
 
-        let targetOptions;
+        for (let project of projects) {
+            let targetOptions;
 
-        try {
-            targetOptions = getProjectTargetOptions(project, 'build');
-        } catch {
-            context.logger.warn(
-                `[WARNING]: No buildable project was found. ${MANUAL_MIGRATION_TIPS}`,
-            );
-            return;
-        }
+            try {
+                targetOptions = getProjectTargetOptions(project, 'build');
+            } catch {
+                context.logger.warn(
+                    `[WARNING]: No buildable project was found. ${MANUAL_MIGRATION_TIPS}`,
+                );
+                return;
+            }
 
-        const styles = targetOptions.styles as JsonArray | undefined;
+            if (stylesToReplace && !hasTaigaIcons(targetOptions.assets as Asset[])) {
+                return;
+            }
 
-        if (filter && filter(styles)) {
-            taigaStyles = [];
-        }
+            const styles = targetOptions.styles as JsonArray | undefined;
 
-        if (!styles && taigaStyles.length) {
-            targetOptions.styles = taigaStyles;
-        }
+            if (filter && filter(styles)) {
+                taigaStyles = [];
+            }
 
-        if (stylesToReplace && styles?.filter(style => style !== stylesToReplace.from)) {
-            targetOptions.styles = Array.from(
-                new Set([
-                    ...taigaStyles,
-                    ...stylesToReplace.to,
-                    ...styles.filter(style => style !== stylesToReplace.from),
-                ]),
-            );
-        } else {
-            targetOptions.styles = Array.from(
-                new Set([...taigaStyles, ...(styles || [])]),
-            );
-        }
+            if (!styles && taigaStyles.length) {
+                targetOptions.styles = taigaStyles;
+            }
 
-        if (tree && stylesToReplace) {
-            addPackageJsonDependency(tree, {
-                name: `@taiga-ui/styles`,
-                version: TAIGA_VERSION,
-            });
+            if (
+                stylesToReplace &&
+                styles?.filter(style => style !== stylesToReplace.from)
+            ) {
+                targetOptions.styles = Array.from(
+                    new Set([
+                        ...taigaStyles,
+                        ...stylesToReplace.to,
+                        ...styles.filter(style => style !== stylesToReplace.from),
+                    ]),
+                );
+            } else {
+                targetOptions.styles = Array.from(
+                    new Set([...taigaStyles, ...(styles || [])]),
+                );
+            }
 
-            context.addTask(new NodePackageInstallTask());
+            if (tree && stylesToReplace) {
+                addPackageJsonDependency(tree, {
+                    name: `@taiga-ui/styles`,
+                    version: TAIGA_VERSION,
+                });
+
+                context.addTask(new NodePackageInstallTask());
+            }
         }
     });
 }
+
+const hasTaigaIcons = (assets: Asset[]): boolean =>
+    !!assets?.find(asset =>
+        typeof asset === 'string'
+            ? asset.includes('taiga-ui')
+            : asset?.input?.includes('taiga-ui'),
+    );

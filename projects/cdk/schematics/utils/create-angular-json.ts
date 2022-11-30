@@ -32,3 +32,33 @@ export function createAngularJson(
         {overwrite: true},
     );
 }
+
+export function createAngularJsonWithAssets(): void {
+    createSourceFile(
+        'angular.json',
+        `
+{
+  "version": 1,
+  "defaultProject": "demo",
+  "projects": {
+    "demo": {
+        "architect": {
+          "build": {
+            "options": {
+              "main": "test/main.ts",
+              "assets": [
+              {
+                "glob": "**/*",
+                "input": "node_modules/@taiga-ui/icons/src",
+                "output": "assets/taiga-ui/icons"
+              }
+            ]
+            }
+          }
+        }
+    }
+  }
+}`,
+        {overwrite: true},
+    );
+}

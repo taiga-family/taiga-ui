@@ -9,7 +9,7 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {join} from 'path';
-import {createAngularJson} from '../../utils/create-angular-json';
+import {createAngularJsonWithAssets} from '../../utils/create-angular-json';
 import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 
 const collectionPath = join(__dirname, '../../migration.json');
@@ -627,6 +627,13 @@ describe('ng-update', () => {
           "build": {
             "options": {
               "main": "test/main.ts",
+              "assets": [
+              {
+                "glob": "**/*",
+                "input": "node_modules/@taiga-ui/icons/src",
+                "output": "assets/taiga-ui/icons"
+              }
+            ],
             "styles": [
               "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less"
             ]
@@ -654,6 +661,6 @@ function createMainFiles(): void {
 
     createSourceFile('test/app/test.module.ts', MODULE_BEFORE);
 
-    createAngularJson();
+    createAngularJsonWithAssets();
     createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
 }

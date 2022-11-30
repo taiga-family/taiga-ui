@@ -1,10 +1,11 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {updateWorkspace} from '@schematics/angular/utility/workspace';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
-import {getProject} from '../../utils/get-project';
+import {getProjects} from '../../utils/get-projects';
 import {TuiSchema} from '../../ng-add/schema';
 import {getPackageJsonDependency, getSourceFiles} from 'ng-morph';
 import {isInvalidAngularJson} from '../../utils/angular-json-manipulations';
+import {Asset} from '../interfaces/asset';
 
 const PROPRIETARY_TDS_ICON_ASSETS = {
     glob: '**/*',
@@ -17,8 +18,6 @@ const MANUAL_MIGRATION_TIPS = `Add ${JSON.stringify(
     null,
     4,
 )} to angular.json manually`;
-
-type Asset = string | {glob: string; input: string; ignore: string[]; output: string};
 
 export function migrateTaigaProprietaryIcons(options: TuiSchema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
@@ -45,39 +44,43 @@ export function migrateTaigaProprietaryIcons(options: TuiSchema): Rule {
                       return;
                   }
 
-                  const project = getProject(options, workspace);
+                  const projects = getProjects(options, workspace);
 
-                  if (!project) {
+                  if (!projects.length) {
                       context.logger.warn(
                           `[WARNING]: Target project not found. ${MANUAL_MIGRATION_TIPS}`,
                       );
                       return;
                   }
 
-                  let targetOptions;
+                  for (let project of projects) {
+                      let targetOptions;
 
-                  try {
-                      targetOptions = getProjectTargetOptions(project, 'build');
-                  } catch {
-                      context.logger.warn(
-                          `[WARNING]: No buildable project was found. ${MANUAL_MIGRATION_TIPS}`,
-                      );
-                      return;
-                  }
-
-                  if (Array.isArray(targetOptions?.assets)) {
-                      const tdsSrc = '@taiga-ui/proprietary-tds-icons/src';
-                      const hasIcons = (targetOptions.assets as Asset[]).find(asset => {
-                          return typeof asset === 'string'
-                              ? asset.includes(tdsSrc)
-                              : asset?.input?.includes(tdsSrc);
-                      });
-
-                      if (hasIcons) {
+                      try {
+                          targetOptions = getProjectTargetOptions(project, 'build');
+                      } catch {
+                          context.logger.warn(
+                              `[WARNING]: No buildable project was found. ${MANUAL_MIGRATION_TIPS}`,
+                          );
                           return;
                       }
 
-                      targetOptions.assets.push(PROPRIETARY_TDS_ICON_ASSETS);
+                      if (Array.isArray(targetOptions?.assets)) {
+                          const tdsSrc = '@taiga-ui/proprietary-tds-icons/src';
+                          const hasIcons = (targetOptions.assets as Asset[]).find(
+                              asset => {
+                                  return typeof asset === 'string'
+                                      ? asset.includes(tdsSrc)
+                                      : asset?.input?.includes(tdsSrc);
+                              },
+                          );
+
+                          if (hasIcons) {
+                              return;
+                          }
+
+                          targetOptions.assets.push(PROPRIETARY_TDS_ICON_ASSETS);
+                      }
                   }
               })
             : () => {};

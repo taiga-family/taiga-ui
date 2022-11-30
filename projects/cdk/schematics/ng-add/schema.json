@@ -85,7 +85,7 @@
                     },
                     {
                         "value": "addon-preview",
-                        "label": "addon preview     Custom fullscreen dialog to preview various content such as documents, images etc."
+                        "label": "addon-preview     Custom fullscreen dialog to preview various content such as documents, images etc."
                     }
                 ]
             }
