@@ -1,3 +1,5 @@
+@import 'taiga-ui-local';
+
 tui-tiles {
     position: relative;
     z-index: 0;
@@ -11,12 +13,12 @@ tui-tiles {
         }
 
         tui-tile:not(._dragged) > .t-wrapper {
-            transition: all 0.3s;
+            .transition(all);
         }
     }
 
     &:not(._dragged) tui-tile._dragged > .t-wrapper {
-        transition: all 0.3s;
+        .transition(all);
     }
 }
 

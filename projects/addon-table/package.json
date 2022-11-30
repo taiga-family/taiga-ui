@@ -16,13 +16,13 @@
         "tslib": "^2.0.0"
     },
     "peerDependencies": {
-        "@angular/cdk": ">=9.0.0",
-        "@angular/common": ">=9.0.0",
-        "@angular/core": ">=9.0.0",
+        "@angular/common": ">=12.0.0",
+        "@angular/core": ">=12.0.0",
         "@ng-web-apis/intersection-observer": ">=3.0.0",
         "@taiga-ui/cdk": ">=3.11.0",
         "@taiga-ui/core": ">=3.11.0",
         "@taiga-ui/i18n": ">=3.11.0",
+        "@taiga-ui/kit": ">=3.11.0",
         "@tinkoff/ng-polymorpheus": ">=4.0.0",
         "rxjs": ">=6.0.0"
     }

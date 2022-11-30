@@ -23,10 +23,10 @@
         "tslib": "^2.0.0"
     },
     "peerDependencies": {
-        "@angular/animations": ">=9.0.0",
-        "@angular/common": ">=9.0.0",
-        "@angular/core": ">=9.0.0",
-        "@angular/forms": ">=9.0.0",
+        "@angular/animations": ">=12.0.0",
+        "@angular/common": ">=12.0.0",
+        "@angular/core": ">=12.0.0",
+        "@angular/forms": ">=12.0.0",
         "rxjs": ">=6.0.0"
     },
     "optionalDependencies": {

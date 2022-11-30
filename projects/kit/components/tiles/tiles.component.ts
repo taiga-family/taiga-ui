@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    EventEmitter,
     HostBinding,
     HostListener,
     Inject,
@@ -14,7 +13,9 @@ import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
-import {tuiDebounce, tuiDefaultProp, TuiResizeService} from '@taiga-ui/cdk';
+import {tuiDefaultProp, TuiResizeService} from '@taiga-ui/cdk';
+import {Subject, timer} from 'rxjs';
+import {debounce, filter, map} from 'rxjs/operators';
 
 @Component({
     selector: `tui-tiles`,
@@ -34,27 +35,40 @@ import {tuiDebounce, tuiDefaultProp, TuiResizeService} from '@taiga-ui/cdk';
     ],
 })
 export class TuiTilesComponent<T> {
+    private readonly element$ = new Subject<Element | undefined>();
+
+    @Input()
+    @tuiDefaultProp()
+    debounce = 0;
+
     @Input()
     @tuiDefaultProp()
     items: readonly T[] = [];
 
     @Output()
-    readonly itemsChange = new EventEmitter<T[]>();
+    readonly itemsChange = this.element$.pipe(
+        debounce(() => timer(this.debounce)),
+        filter(this.filter.bind(this)),
+        map(element => this.reorder(element)),
+    );
 
     @HostBinding(`class._dragged`)
     element: Element | null = null;
 
     constructor(@Inject(ElementRef) private readonly elementRef: ElementRef<Element>) {}
 
-    @tuiDebounce(500)
-    @HostListener(`pointerleave`)
-    reorder(element?: Element): void {
-        if (!this.element || !element || this.element === element) {
-            return;
-        }
+    @HostListener(`pointerleave.silent`)
+    rearrange(element?: Element): void {
+        this.element$.next(element);
+    }
 
+    private filter(element?: Element): element is Element {
+        return !!this.element && !!element && this.element !== element;
+    }
+
+    private reorder(element: Element): T[] {
         const elements = Array.from(this.elementRef.nativeElement.children);
-        const currentIndex = elements.indexOf(this.element);
+        const currentIndex = elements.indexOf(this.element || element);
         const newIndex = elements.indexOf(element);
         const items = [...this.items];
         const dragged = items[currentIndex];
@@ -62,6 +76,6 @@ export class TuiTilesComponent<T> {
         items[currentIndex] = items[newIndex];
         items[newIndex] = dragged;
 
-        this.itemsChange.emit(items);
+        return items;
     }
 }

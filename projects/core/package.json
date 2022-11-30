@@ -19,12 +19,12 @@
         "tslib": "^2.0.0"
     },
     "peerDependencies": {
-        "@angular/animations": ">=9.0.0",
-        "@angular/common": ">=9.0.0",
-        "@angular/core": ">=9.0.0",
-        "@angular/forms": ">=9.0.0",
-        "@angular/platform-browser": ">=9.0.0",
-        "@angular/router": ">=9.0.0",
+        "@angular/animations": ">=12.0.0",
+        "@angular/common": ">=12.0.0",
+        "@angular/core": ">=12.0.0",
+        "@angular/forms": ">=12.0.0",
+        "@angular/platform-browser": ">=12.0.0",
+        "@angular/router": ">=12.0.0",
         "@ng-web-apis/common": ">=2.0.0",
         "@ng-web-apis/mutation-observer": ">=2.0.0",
         "@taiga-ui/cdk": ">=3.11.0",

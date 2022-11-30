@@ -28,11 +28,11 @@ import {TuiTilesComponent} from './tiles.component';
 export class TuiTileComponent {
     @Input()
     @tuiDefaultProp()
-    width = 0;
+    width = 1;
 
     @Input()
     @tuiDefaultProp()
-    height = 0;
+    height = 1;
 
     @HostBinding(`class._dragged`)
     dragged = false;
@@ -77,7 +77,7 @@ export class TuiTileComponent {
 
     @HostListener(`pointerenter`)
     onEnter(): void {
-        this.tiles.reorder(this.element);
+        this.tiles.rearrange(this.element);
     }
 
     onDrag(dragged: boolean): void {
