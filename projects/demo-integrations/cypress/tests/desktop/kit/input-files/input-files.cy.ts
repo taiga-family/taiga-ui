@@ -41,5 +41,21 @@ describe(`InputFiles`, () => {
                 .should(`contain.text`, `Bestandsgrootte overschreden 2 KB`)
                 .matchImageSnapshot(`02-02-input-files-[dutch]-file-too-large`);
         });
+
+        it(`Link text is too long`, () => {
+            cy.viewport(550, 500);
+            cy.tuiVisit(
+                `/components/input-files/API?tuiMode=null&link=Select%20a%20file%20with%20a%20too%20long%20name.%20Long%20filename.%20Very%20long%20filename`,
+                {
+                    skipExpectUrl: true,
+                    hideNavigation: false,
+                    hideLanguageSwitcher: false,
+                },
+            );
+
+            cy.get(`[tuiInputFiles]`).matchImageSnapshot(
+                `03-01-input-files-link-text-too-long`,
+            );
+        });
     });
 });
