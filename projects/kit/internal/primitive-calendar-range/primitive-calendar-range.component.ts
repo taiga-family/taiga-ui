@@ -8,6 +8,7 @@ import {
     OnInit,
     Optional,
     Output,
+    Self,
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
@@ -79,7 +80,7 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
         @Optional()
         valueChanges: Observable<TuiDayRange | null> | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
+        @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         if (!valueChanges) {
             return;

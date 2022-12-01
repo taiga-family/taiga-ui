@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Inject} from '@angular/core';
+import {ChangeDetectorRef, Component, Inject, Self} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDestroyService, tuiWatch} from '@taiga-ui/cdk';
@@ -21,7 +21,7 @@ export class TuiDropdownExample3 {
     showBigText = false;
 
     constructor(
-        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
+        @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
     ) {
         interval(3000)

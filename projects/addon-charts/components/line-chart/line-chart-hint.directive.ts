@@ -9,6 +9,7 @@ import {
     NgZone,
     QueryList,
     Renderer2,
+    Self,
 } from '@angular/core';
 import {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
 import {
@@ -46,7 +47,7 @@ export class TuiLineChartHintDirective implements AfterContentInit {
 
     constructor(
         @Inject(Renderer2) private readonly renderer: Renderer2,
-        @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(NgZone) private readonly ngZone: NgZone,
         @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
     ) {}

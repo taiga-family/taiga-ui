@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, Self} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetService} from '@taiga-ui/addon-mobile';
@@ -17,7 +17,7 @@ export class TuiSheetExample1 {
     readonly stream$ = new Subject();
 
     constructor(
-        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
+        @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(TuiSheetService) service: TuiSheetService,
     ) {
         this.stream$

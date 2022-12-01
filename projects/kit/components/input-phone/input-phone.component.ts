@@ -124,7 +124,7 @@ export class TuiInputPhoneComponent
 
     constructor(
         @Optional() @Self() @Inject(NgControl) control: NgControl | null,
-        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
+        @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_SELECTION_STREAM) selection$: Observable<unknown>,
         @Inject(TUI_TEXTFIELD_CLEANER)

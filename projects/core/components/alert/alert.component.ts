@@ -6,6 +6,7 @@ import {
     HostBinding,
     Inject,
     OnInit,
+    Self,
 } from '@angular/core';
 import {TuiDestroyService, TuiDialog, tuiIsNumber} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse, tuiSlideInRight} from '@taiga-ui/core/animations';
@@ -42,7 +43,7 @@ export class TuiAlertComponent<O, I> implements OnInit {
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(TUI_NOTIFICATION_OPTIONS)
         private readonly options: TuiNotificationDefaultOptions,
         @Inject(TUI_ANIMATION_OPTIONS)

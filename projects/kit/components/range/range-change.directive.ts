@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, ElementRef, EventEmitter, Inject, Output} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, Inject, Output, Self} from '@angular/core';
 import {tuiClamp, TuiDestroyService, tuiRound, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {merge, Observable} from 'rxjs';
@@ -46,7 +46,7 @@ export class TuiRangeChangeDirective {
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiRangeComponent) private readonly range: TuiRangeComponent,
-        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
+        @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
     ) {
         let activeThumb: 'left' | 'right';
 

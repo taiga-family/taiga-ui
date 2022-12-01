@@ -1,4 +1,4 @@
-import {ElementRef, Inject, Injectable, NgZone} from '@angular/core';
+import {ElementRef, Inject, Injectable, NgZone, Self} from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {
     RESIZE_OBSERVER_SUPPORT,
@@ -25,7 +25,7 @@ export class TuiResizeService extends ResizeObserverService {
     constructor(
         @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,
         @Inject(NgZone) ngZone: NgZone,
-        @Inject(TuiDestroyService) destroy$: Observable<void>,
+        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Inject(RESIZE_OBSERVER_SUPPORT) support: boolean,
         @Inject(RESIZE_OPTION_BOX) box: ResizeObserverBoxOptions,
         @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,

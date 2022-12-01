@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {Component, Inject, Injector} from '@angular/core';
+import {Component, Inject, Injector, Self} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -48,7 +48,7 @@ export class TuiEditorExample2 {
         @Inject(TUI_IMAGE_LOADER)
         private readonly imageLoader: TuiHandler<Blob, Observable<string>>,
         @Inject(HttpClient) private readonly http: HttpClient,
-        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
+        @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         this.base64Image$.pipe(takeUntil(destroy$)).subscribe(src => {
             this.control.patchValue(

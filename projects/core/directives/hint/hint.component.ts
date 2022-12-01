@@ -7,6 +7,7 @@ import {
     HostListener,
     Inject,
     Optional,
+    Self,
 } from '@angular/core';
 import {
     tuiClamp,
@@ -55,7 +56,7 @@ export class TuiHintComponent<C = any> {
     constructor(
         @Inject(TuiHoveredService) hovered$: Observable<boolean>,
         @Inject(TuiPositionService) position$: Observable<TuiPoint>,
-        @Inject(TuiDestroyService) destroy$: Observable<void>,
+        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Inject(TuiRectAccessor) protected readonly accessor: TuiRectAccessor,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,

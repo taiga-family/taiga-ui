@@ -7,6 +7,7 @@ import {
     Inject,
     Input,
     Output,
+    Self,
     ViewChild,
 } from '@angular/core';
 import {
@@ -115,6 +116,7 @@ export class TuiMobileCalendarComponent {
         @Inject(TUI_IS_IOS) readonly isIOS: boolean,
         @Inject(TUI_IS_CYPRESS) readonly isCypress: boolean,
         @Inject(DOCUMENT) private readonly documentRef: Document,
+        @Self()
         @Inject(TuiDestroyService)
         private readonly destroy$: TuiDestroyService,
         @Inject(TUI_VALUE_STREAM) valueChanges: Observable<TuiDayRange | null>,

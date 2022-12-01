@@ -1,4 +1,4 @@
-import {Inject, Injectable} from '@angular/core';
+import {Inject, Injectable, Self} from '@angular/core';
 import {TUI_DEFAULT_MATCHER, TuiDestroyService} from '@taiga-ui/cdk';
 import {Observable, of, Subject} from 'rxjs';
 import {
@@ -30,7 +30,9 @@ export class RequestService {
         shareReplay({bufferSize: 1, refCount: true}),
     );
 
-    constructor(@Inject(TuiDestroyService) private readonly destroy$: Observable<void>) {}
+    constructor(
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
+    ) {}
 
     request(query: string | null): Observable<readonly User[] | null> {
         this.request$.next(query || ``);

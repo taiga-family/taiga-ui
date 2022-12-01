@@ -100,6 +100,7 @@ module.exports = {
             },
         ],
         '@taiga-ui/prefer-inject-decorator': 'error',
+        '@taiga-ui/prefer-self-destroy-service': 'error',
         // TODO: move to @tinkoff/eslint-config-angular
         '@typescript-eslint/no-shadow': 'off',
         '@typescript-eslint/no-var-requires': 'off',

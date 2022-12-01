@@ -4,6 +4,7 @@ import {
     forwardRef,
     Inject,
     Input,
+    Self,
     TemplateRef,
 } from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
@@ -30,7 +31,7 @@ export class TuiPushAlertDirective extends PolymorpheusTemplate<any> {
     constructor(
         @Inject(TemplateRef) template: TemplateRef<any>,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
+        @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(forwardRef(() => TuiPushService)) push: TuiPushService,
     ) {
         super(template, changeDetectorRef);

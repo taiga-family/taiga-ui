@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Inject, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Inject, Self, ViewChild} from '@angular/core';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocDemoComponent} from '@taiga-ui/addon-doc';
@@ -28,7 +28,7 @@ export class TuiCustomizationComponent implements AfterViewInit {
     readonly change$ = new Subject<void>();
 
     constructor(
-        @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(TUI_DOC_CUSTOMIZATION_VARS) private variables: Record<string, string>,
     ) {}

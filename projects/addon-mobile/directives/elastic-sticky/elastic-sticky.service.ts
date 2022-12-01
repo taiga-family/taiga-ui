@@ -1,4 +1,4 @@
-import {ElementRef, Inject, Injectable, NgZone, Optional} from '@angular/core';
+import {ElementRef, Inject, Injectable, NgZone, Optional, Self} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {
     TuiDestroyService,
@@ -27,7 +27,7 @@ export class TuiElasticStickyService extends Observable<number> {
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(NgZone) ngZone: NgZone,
         @Inject(WINDOW) windowRef: Window,
-        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
+        @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         super(subscriber =>
             ngZone.onStable

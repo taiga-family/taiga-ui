@@ -1,4 +1,4 @@
-import {Attribute, Directive, ElementRef, Inject, NgZone} from '@angular/core';
+import {Attribute, Directive, ElementRef, Inject, NgZone, Self} from '@angular/core';
 import {tuiPreventDefault, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {fromEvent, Observable} from 'rxjs';
@@ -16,7 +16,7 @@ export class TuiPreventDefaultDirective {
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(NgZone) ngZone: NgZone,
-        @Inject(TuiDestroyService) destroy$: Observable<void>,
+        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Attribute(`tuiPreventDefault`) eventName: string,
     ) {
         fromEvent(nativeElement, eventName, {passive: false})

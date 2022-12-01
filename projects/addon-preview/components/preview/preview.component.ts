@@ -4,6 +4,7 @@ import {
     ElementRef,
     Inject,
     Input,
+    Self,
 } from '@angular/core';
 import {TUI_PREVIEW_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import {
@@ -84,7 +85,7 @@ export class TuiPreviewComponent {
 
     constructor(
         @Inject(ElementRef) readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(TuiDestroyService) readonly destroy$: Observable<void>,
+        @Self() @Inject(TuiDestroyService) readonly destroy$: Observable<void>,
         @Inject(TUI_PREVIEW_TEXTS)
         readonly texts$: Observable<TuiLanguagePreview['previewTexts']>,
     ) {}

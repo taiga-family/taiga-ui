@@ -1,5 +1,12 @@
 import {APP_BASE_HREF, DOCUMENT} from '@angular/common';
-import {Component, Inject, InjectFlags, Injector, ViewEncapsulation} from '@angular/core';
+import {
+    Component,
+    Inject,
+    InjectFlags,
+    Injector,
+    Self,
+    ViewEncapsulation,
+} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
@@ -42,7 +49,7 @@ export class AppComponent extends AbstractDemoComponent {
         @Inject(TUI_SELECTED_VERSION_META) versionMeta: TuiVersionMeta | null,
         @Inject(Router) protected readonly router: Router,
         @Inject(LOCAL_STORAGE) protected readonly storage: Storage,
-        @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
         @Inject(Injector) private readonly injector: Injector,
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(APP_BASE_HREF) private readonly appBaseHref: string,

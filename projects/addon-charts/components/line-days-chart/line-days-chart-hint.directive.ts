@@ -7,6 +7,7 @@ import {
     Input,
     NgZone,
     QueryList,
+    Self,
 } from '@angular/core';
 import {tuiLineChartDrivers} from '@taiga-ui/addon-charts/components/line-chart';
 import {
@@ -42,7 +43,7 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
     hint: PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> = ``;
 
     constructor(
-        @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(NgZone) private readonly ngZone: NgZone,
         @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
     ) {}

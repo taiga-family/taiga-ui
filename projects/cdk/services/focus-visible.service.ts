@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, ElementRef, Inject, Injectable} from '@angular/core';
+import {ChangeDetectorRef, ElementRef, Inject, Injectable, Self} from '@angular/core';
 import {tuiFocusVisibleObservable, tuiWatch} from '@taiga-ui/cdk/observables';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -17,7 +17,7 @@ export class TuiFocusVisibleService extends Observable<boolean> {
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<Element>,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TuiDestroyService) destroy$: Observable<void>,
+        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
     ) {
         super(subscriber => this.focusVisible$.subscribe(subscriber));
 
