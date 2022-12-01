@@ -78,6 +78,12 @@ export class TuiAvatarComponent {
             : words[0].slice(0, 1);
     }
 
+    get stringAvatar(): string {
+        return this.iconAvatar && typeof this.avatarUrl === `string`
+            ? this.avatarUrl
+            : ``;
+    }
+
     onError(): void {
         this.isUrlValid = false;
     }
