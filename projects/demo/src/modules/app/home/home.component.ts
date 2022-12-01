@@ -24,6 +24,7 @@ export class HomeComponent {
     readonly importLocalLess = import(`./examples/import-local-less.md?raw`);
     readonly main = import(`./examples/main.md?raw`);
     readonly addons = import(`./examples/addons.md?raw`);
+    readonly nxAdd = import(`./examples/nx-add.md?raw`);
 
     readonly customGlobalStyle = import(
         `../../../../../styles/taiga-ui-global.less?raw`
