@@ -79,9 +79,7 @@ export class TuiAvatarComponent {
     }
 
     get stringAvatar(): string {
-        return this.iconAvatar && typeof this.avatarUrl === `string`
-            ? this.avatarUrl
-            : ``;
+        return this.iconAvatar ? String(this.avatarUrl) : ``;
     }
 
     onError(): void {
