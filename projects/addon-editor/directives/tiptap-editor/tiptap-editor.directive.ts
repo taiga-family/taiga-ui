@@ -1,4 +1,12 @@
-import {Directive, ElementRef, Inject, Input, Output, Renderer2, Self} from '@angular/core';
+import {
+    Directive,
+    ElementRef,
+    Inject,
+    Input,
+    Output,
+    Renderer2,
+    Self,
+} from '@angular/core';
 import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {
     INITIALIZATION_TIPTAP_CONTAINER,
