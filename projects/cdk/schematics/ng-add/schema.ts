@@ -1,6 +1,6 @@
 export interface TuiSchema {
     readonly project: string;
-    readonly addons: ReadonlyArray<string>;
+    readonly addons: readonly string[];
     readonly addGlobalStyles: boolean;
     readonly addAlertModule: boolean;
     readonly addDialogsModule: boolean;

@@ -1,6 +1,7 @@
-import {TUI_INTERACTIVE_SELECTORS} from './tui-interactive-selectors';
 import {Element} from 'parse5';
+
 import {hasElementAttribute} from '../../utils/templates/elements';
+import {TUI_INTERACTIVE_SELECTORS} from './tui-interactive-selectors';
 
 export interface ReplacementAttributes {
     readonly from: {
@@ -38,647 +39,647 @@ export interface InputToRemove {
 
 export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
     {
-        from: {attrName: 'tuiResizableColumn', withAttrsNames: ['tuiResizableColumn']},
-        to: {attrName: 'tuiTh [resizable]="true"'},
+        from: {attrName: `tuiResizableColumn`, withAttrsNames: [`tuiResizableColumn`]},
+        to: {attrName: `tuiTh [resizable]="true"`},
     },
     {
         from: {
-            attrName: 'new',
+            attrName: `new`,
             withTagNames: [
-                'tui-editor',
-                'tui-range',
-                'tui-input-range',
-                'tui-input-slider',
-                'tui-feed-item',
+                `tui-editor`,
+                `tui-range`,
+                `tui-input-range`,
+                `tui-input-slider`,
+                `tui-feed-item`,
             ],
         },
-        to: {attrName: ''},
+        to: {attrName: ``},
     },
     {
         from: {
-            attrName: '[hovered]',
-            withTagNames: ['tui-wrapper'],
-            withAttrsNames: ['tuiWrapper'],
+            attrName: `[hovered]`,
+            withTagNames: [`tui-wrapper`],
+            withAttrsNames: [`tuiWrapper`],
         },
         to: {
-            attrName: '[hover]',
+            attrName: `[hover]`,
         },
     },
     {
         from: {
-            attrName: '[pressed]',
-            withTagNames: ['tui-wrapper'],
-            withAttrsNames: ['tuiWrapper'],
+            attrName: `[pressed]`,
+            withTagNames: [`tui-wrapper`],
+            withAttrsNames: [`tuiWrapper`],
         },
         to: {
-            attrName: '[active]',
+            attrName: `[active]`,
         },
     },
     {
         from: {
-            attrName: '[label]',
-            withAttrsNames: ['tuiLabel'],
+            attrName: `[label]`,
+            withAttrsNames: [`tuiLabel`],
         },
 
         to: {
-            attrName: '[tuiLabel]',
+            attrName: `[tuiLabel]`,
         },
     },
     {
         from: {
-            attrName: 'label',
-            withAttrsNames: ['tuiLabel'],
+            attrName: `label`,
+            withAttrsNames: [`tuiLabel`],
         },
 
         to: {
-            attrName: 'tuiLabel',
+            attrName: `tuiLabel`,
         },
     },
     {
         from: {
-            attrName: '[state]',
-            withAttrsNames: ['tuiStep'],
+            attrName: `[state]`,
+            withAttrsNames: [`tuiStep`],
         },
 
         to: {
-            attrName: '[stepState]',
+            attrName: `[stepState]`,
         },
     },
     {
         from: {
-            attrName: 'state',
-            withAttrsNames: ['tuiStep'],
+            attrName: `state`,
+            withAttrsNames: [`tuiStep`],
         },
 
         to: {
-            attrName: 'stepState',
+            attrName: `stepState`,
         },
     },
     {
         from: {
-            attrName: '[focused]',
-            withTagNames: ['tui-wrapper'],
-            withAttrsNames: ['tuiWrapper'],
+            attrName: `[focused]`,
+            withTagNames: [`tui-wrapper`],
+            withAttrsNames: [`tuiWrapper`],
         },
         to: {
-            attrName: '[focus]',
+            attrName: `[focus]`,
         },
     },
     {
         from: {
-            attrName: '[pseudoPressed]',
+            attrName: `[pseudoPressed]`,
             withTagNames: TUI_INTERACTIVE_SELECTORS,
         },
         to: {
-            attrName: '[pseudoActive]',
+            attrName: `[pseudoActive]`,
         },
     },
     {
         from: {
-            attrName: '[pseudoHovered]',
+            attrName: `[pseudoHovered]`,
             withTagNames: TUI_INTERACTIVE_SELECTORS,
         },
         to: {
-            attrName: '[pseudoHover]',
+            attrName: `[pseudoHover]`,
         },
     },
     {
         from: {
-            attrName: '[pseudoFocused]',
+            attrName: `[pseudoFocused]`,
             withTagNames: TUI_INTERACTIVE_SELECTORS,
         },
         to: {
-            attrName: '[pseudoFocus]',
+            attrName: `[pseudoFocus]`,
         },
     },
     {
         from: {
-            attrName: '[pseudoHovered]',
-            withAttrsNames: ['tuiButton', 'tuiIconButton'],
+            attrName: `[pseudoHovered]`,
+            withAttrsNames: [`tuiButton`, `tuiIconButton`],
         },
         to: {
-            attrName: '[pseudoHover]',
+            attrName: `[pseudoHover]`,
         },
     },
     {
         from: {
-            attrName: '[pseudoFocused]',
-            withAttrsNames: ['tuiButton', 'tuiIconButton'],
+            attrName: `[pseudoFocused]`,
+            withAttrsNames: [`tuiButton`, `tuiIconButton`],
         },
         to: {
-            attrName: '[pseudoFocus]',
+            attrName: `[pseudoFocus]`,
         },
     },
     {
         from: {
-            attrName: '[pseudoPressed]',
-            withAttrsNames: ['tuiButton', 'tuiIconButton'],
+            attrName: `[pseudoPressed]`,
+            withAttrsNames: [`tuiButton`, `tuiIconButton`],
         },
         to: {
-            attrName: '[pseudoActive]',
+            attrName: `[pseudoActive]`,
         },
     },
     {
         from: {
-            attrName: '(rangeChange)',
-            withTagNames: ['tui-calendar-range'],
+            attrName: `(rangeChange)`,
+            withTagNames: [`tui-calendar-range`],
         },
         to: {
-            attrName: '(valueChange)',
+            attrName: `(valueChange)`,
         },
     },
     {
         from: {
-            attrName: '[quantum]',
-            withAttrsNames: ['tuiSlider'],
-            withTagNames: ['tui-slider'],
+            attrName: `[quantum]`,
+            withAttrsNames: [`tuiSlider`],
+            withTagNames: [`tui-slider`],
         },
         to: {
-            attrName: '[step]',
+            attrName: `[step]`,
         },
     },
     {
         from: {
-            attrName: '[quantum]',
-            withTagNames: ['tui-range'],
+            attrName: `[quantum]`,
+            withTagNames: [`tui-range`],
         },
         to: {
-            attrName: '[step]',
+            attrName: `[step]`,
         },
     },
     {
         from: {
-            attrName: '*tuiTab',
-            withTagNames: ['*'],
+            attrName: `*tuiTab`,
+            withTagNames: [`*`],
         },
         to: {
-            attrName: '*tuiItem',
+            attrName: `*tuiItem`,
         },
     },
     {
         from: {
-            attrName: '*tuiBreadcrumb',
-            withTagNames: ['*'],
+            attrName: `*tuiBreadcrumb`,
+            withTagNames: [`*`],
         },
         to: {
-            attrName: '*tuiItem',
+            attrName: `*tuiItem`,
         },
     },
     {
         from: {
-            attrName: 'tuiToolbarTool',
-            withTagNames: ['*'],
+            attrName: `tuiToolbarTool`,
+            withTagNames: [`*`],
         },
         to: {
-            attrName: 'tuiItem',
+            attrName: `tuiItem`,
         },
     },
     {
         from: {
-            attrName: 'tuiManualHint',
-            withTagNames: ['*'],
+            attrName: `tuiManualHint`,
+            withTagNames: [`*`],
         },
         to: {
-            attrName: 'tuiHint',
+            attrName: `tuiHint`,
         },
     },
     {
         from: {
-            attrName: '[tuiManualHint]',
-            withTagNames: ['*'],
+            attrName: `[tuiManualHint]`,
+            withTagNames: [`*`],
         },
         to: {
-            attrName: '[tuiHint]',
+            attrName: `[tuiHint]`,
         },
     },
     {
         from: {
-            attrName: '[tuiManualHintShow]',
-            withTagNames: ['*'],
+            attrName: `[tuiManualHintShow]`,
+            withTagNames: [`*`],
         },
         to: {
-            attrName: '[tuiHintManual]',
+            attrName: `[tuiHintManual]`,
         },
     },
     {
         from: {
-            attrName: '[tuiPointerHint]',
-            withTagNames: ['*'],
+            attrName: `[tuiPointerHint]`,
+            withTagNames: [`*`],
         },
         to: {
-            attrName: 'tuiHintPointer [tuiHint]',
+            attrName: `tuiHintPointer [tuiHint]`,
         },
     },
     {
         from: {
-            attrName: 'tuiPointerHint',
-            withTagNames: ['*'],
+            attrName: `tuiPointerHint`,
+            withTagNames: [`*`],
         },
         to: {
-            attrName: 'tuiHintPointer tuiHint',
+            attrName: `tuiHintPointer tuiHint`,
         },
     },
     {
         from: {
-            attrName: 'messageMode',
-            withTagNames: ['tui-input-copy'],
+            attrName: `messageMode`,
+            withTagNames: [`tui-input-copy`],
         },
         to: {
-            attrName: 'messageAppearance',
+            attrName: `messageAppearance`,
         },
     },
     {
         from: {
-            attrName: '[messageMode]',
-            withTagNames: ['tui-input-copy'],
+            attrName: `[messageMode]`,
+            withTagNames: [`tui-input-copy`],
         },
         to: {
-            attrName: '[messageAppearance]',
+            attrName: `[messageAppearance]`,
         },
     },
     {
         from: {
-            attrName: '[hintMode]',
-            withTagNames: ['tui-bar-chart'],
+            attrName: `[hintMode]`,
+            withTagNames: [`tui-bar-chart`],
         },
         to: {
-            attrName: '[tuiHintAppearance]',
+            attrName: `[tuiHintAppearance]`,
         },
     },
     {
         from: {
-            attrName: 'tuiHintMode',
-            withTagNames: ['*'],
+            attrName: `tuiHintMode`,
+            withTagNames: [`*`],
         },
         to: {
-            attrName: 'tuiHintAppearance',
+            attrName: `tuiHintAppearance`,
         },
     },
     {
         from: {
-            attrName: '[tuiHintMode]',
-            withTagNames: ['*'],
+            attrName: `[tuiHintMode]`,
+            withTagNames: [`*`],
         },
         to: {
-            attrName: '[tuiHintAppearance]',
+            attrName: `[tuiHintAppearance]`,
         },
     },
     {
         from: {
-            attrName: 'mode',
-            withTagNames: ['tui-tooltip'],
+            attrName: `mode`,
+            withTagNames: [`tui-tooltip`],
         },
         to: {
-            attrName: 'appearance',
+            attrName: `appearance`,
         },
     },
     {
         from: {
-            attrName: '[mode]',
-            withTagNames: ['tui-tooltip'],
+            attrName: `[mode]`,
+            withTagNames: [`tui-tooltip`],
         },
         to: {
-            attrName: '[appearance]',
+            attrName: `[appearance]`,
         },
     },
     {
         from: {
-            attrName: '[itemLabel]',
-            withTagNames: ['tui-feed-item'],
+            attrName: `[itemLabel]`,
+            withTagNames: [`tui-feed-item`],
         },
         to: {
-            attrName: '[description]',
+            attrName: `[description]`,
         },
     },
     {
         from: {
-            attrName: '[itemValue]',
-            withTagNames: ['tui-feed-item'],
+            attrName: `[itemValue]`,
+            withTagNames: [`tui-feed-item`],
         },
         to: {
-            attrName: '[title]',
+            attrName: `[title]`,
         },
     },
     {
         from: {
-            attrName: '[sumLabel]',
-            withTagNames: ['tui-feed-item'],
+            attrName: `[sumLabel]`,
+            withTagNames: [`tui-feed-item`],
         },
         to: {
-            attrName: '[secondaryDescription]',
+            attrName: `[secondaryDescription]`,
         },
     },
     {
         from: {
-            attrName: '[sumValue]',
-            withTagNames: ['tui-feed-item'],
+            attrName: `[sumValue]`,
+            withTagNames: [`tui-feed-item`],
         },
         to: {
-            attrName: '[secondaryTitle]',
+            attrName: `[secondaryTitle]`,
         },
     },
     {
         from: {
-            attrName: 'tuiDropdown',
-            withTagNames: ['*'],
+            attrName: `tuiDropdown`,
+            withTagNames: [`*`],
         },
         to: {
-            attrName: 'tuiDropdownManual',
+            attrName: `tuiDropdownManual`,
         },
     },
     {
         from: {
-            attrName: '[tuiDropdown]',
-            withTagNames: ['*'],
+            attrName: `[tuiDropdown]`,
+            withTagNames: [`*`],
         },
         to: {
-            attrName: '[tuiDropdownManual]',
+            attrName: `[tuiDropdownManual]`,
         },
     },
     {
         from: {
-            attrName: 'tuiDropdownContent',
-            withTagNames: ['*'],
+            attrName: `tuiDropdownContent`,
+            withTagNames: [`*`],
         },
         to: {
-            attrName: 'tuiDropdown',
+            attrName: `tuiDropdown`,
         },
     },
     {
         from: {
-            attrName: '[tuiDropdownContent]',
-            withTagNames: ['*'],
+            attrName: `[tuiDropdownContent]`,
+            withTagNames: [`*`],
         },
         to: {
-            attrName: '[tuiDropdown]',
+            attrName: `[tuiDropdown]`,
         },
     },
     {
         from: {
-            attrName: 'tuiTextfieldExampleText',
-            withTagNames: ['tui-input-tag', 'tui-multi-select'],
+            attrName: `tuiTextfieldExampleText`,
+            withTagNames: [`tui-input-tag`, `tui-multi-select`],
         },
         to: {
-            attrName: 'placeholder',
+            attrName: `placeholder`,
         },
     },
     {
         from: {
-            attrName: 'tuiTextfieldMaxLength',
-            withTagNames: ['tui-input-tag', 'tui-text-area'],
+            attrName: `tuiTextfieldMaxLength`,
+            withTagNames: [`tui-input-tag`, `tui-text-area`],
         },
         to: {
-            attrName: 'maxLength',
+            attrName: `maxLength`,
         },
     },
     {
         from: {
-            attrName: '[tuiTextfieldExampleText]',
-            withTagNames: ['tui-input-tag', 'tui-multi-select'],
+            attrName: `[tuiTextfieldExampleText]`,
+            withTagNames: [`tui-input-tag`, `tui-multi-select`],
         },
         to: {
-            attrName: '[placeholder]',
+            attrName: `[placeholder]`,
         },
     },
     {
         from: {
-            attrName: '[tuiTextfieldMaxLength]',
-            withTagNames: ['tui-input-tag', 'tui-text-area'],
+            attrName: `[tuiTextfieldMaxLength]`,
+            withTagNames: [`tui-input-tag`, `tui-text-area`],
         },
         to: {
-            attrName: '[maxLength]',
+            attrName: `[maxLength]`,
         },
     },
     {
         from: {
-            attrName: '[tuiHintId]',
-            withTagNames: ['*'],
+            attrName: `[tuiHintId]`,
+            withTagNames: [`*`],
         },
         to: {
-            attrName: '[tuiHintDescribe]',
+            attrName: `[tuiHintDescribe]`,
         },
     },
     {
         from: {
-            attrName: 'tuiHintId',
-            withTagNames: ['*'],
+            attrName: `tuiHintId`,
+            withTagNames: [`*`],
         },
         to: {
-            attrName: 'tuiHintDescribe',
+            attrName: `tuiHintDescribe`,
         },
     },
     {
         from: {
-            attrName: '[tuiDescribedBy]',
-            withTagNames: ['*'],
+            attrName: `[tuiDescribedBy]`,
+            withTagNames: [`*`],
         },
         to: {
-            attrName: '[id]',
+            attrName: `[id]`,
         },
     },
     {
         from: {
-            attrName: 'tuiDescribedBy',
-            withTagNames: ['*'],
+            attrName: `tuiDescribedBy`,
+            withTagNames: [`*`],
         },
         to: {
-            attrName: 'id',
+            attrName: `id`,
         },
     },
     {
         from: {
             attrName: `[tuiDropdownSided]`,
-            withTagNames: ['tui-hosted-dropdown'],
+            withTagNames: [`tui-hosted-dropdown`],
         },
         to: {
-            attrName: '[sided]',
+            attrName: `[sided]`,
         },
     },
     {
         from: {
             attrName: `tuiDropdownSided`,
-            withTagNames: ['tui-hosted-dropdown'],
+            withTagNames: [`tui-hosted-dropdown`],
         },
         to: {
-            attrName: '[sided]="true"',
+            attrName: `[sided]="true"`,
         },
     },
 ];
 
 export const INPUTS_TO_REMOVE: InputToRemove[] = [
     {
-        inputName: 'iconAlign',
-        tags: ['tui-input', 'tui-primitive-textfield', 'tui-input-tag'],
+        inputName: `iconAlign`,
+        tags: [`tui-input`, `tui-primitive-textfield`, `tui-input-tag`],
     },
     {
-        inputName: 'tuiLabel',
-        tags: ['label'],
+        inputName: `tuiLabel`,
+        tags: [`label`],
     },
 ];
 
 export const TAGS_TO_REPLACE: ReplacementTags[] = [
     {
-        from: 'tui-group',
-        to: 'div',
-        addAttributes: ['tuiGroup'],
+        from: `tui-group`,
+        to: `div`,
+        addAttributes: [`tuiGroup`],
     },
     {
-        from: 'tui-wrapper',
-        to: 'div',
-        addAttributes: ['tuiWrapper'],
+        from: `tui-wrapper`,
+        to: `div`,
+        addAttributes: [`tuiWrapper`],
     },
     {
-        from: 'tui-slider',
-        to: 'input',
-        addAttributes: ['tuiSlider', 'type="range"'],
+        from: `tui-slider`,
+        to: `input`,
+        addAttributes: [`tuiSlider`, `type="range"`],
     },
     {
-        from: 'tui-action',
-        to: 'button',
-        addAttributes: ['tuiAction'],
+        from: `tui-action`,
+        to: `button`,
+        addAttributes: [`tuiAction`],
     },
 ];
 
 export const ATTR_TO_DIRECTIVE: AttributeToDirective[] = [
     {
-        componentSelector: 'tui-primitive-textfield',
-        inputProperty: '(autofilledChange)',
-        directive: '(tuiAutofilledChange)',
+        componentSelector: `tui-primitive-textfield`,
+        inputProperty: `(autofilledChange)`,
+        directive: `(tuiAutofilledChange)`,
         directiveModule: {
-            name: 'TuiAutofilledModule',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `TuiAutofilledModule`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
     },
     {
         componentSelector: TUI_INTERACTIVE_SELECTORS,
-        inputProperty: '(pressedChange)',
-        directive: '(tuiPressedChange)',
+        inputProperty: `(pressedChange)`,
+        directive: `(tuiPressedChange)`,
         directiveModule: {
-            name: 'TuiPressedModule',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `TuiPressedModule`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
     },
     {
         componentSelector: TUI_INTERACTIVE_SELECTORS,
-        inputProperty: '(hoveredChange)',
-        directive: '(tuiHoveredChange)',
+        inputProperty: `(hoveredChange)`,
+        directive: `(tuiHoveredChange)`,
         directiveModule: {
-            name: 'TuiHoveredModule',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `TuiHoveredModule`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
     },
     {
-        componentSelector: 'tui-input-slider',
-        inputProperty: 'size',
-        directive: 'tuiTextfieldSize',
+        componentSelector: `tui-input-slider`,
+        inputProperty: `size`,
+        directive: `tuiTextfieldSize`,
         directiveModule: {
-            name: 'TuiTextfieldControllerModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiTextfieldControllerModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
     },
     {
-        componentSelector: 'tui-input-slider',
-        inputProperty: 'secondary',
-        directive: 'tuiTextfieldCustomContent',
+        componentSelector: `tui-input-slider`,
+        inputProperty: `secondary`,
+        directive: `tuiTextfieldCustomContent`,
         directiveModule: {
-            name: 'TuiTextfieldControllerModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiTextfieldControllerModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
     },
     {
-        componentSelector: 'tui-input-range',
-        inputProperty: 'size',
-        directive: 'tuiTextfieldSize',
+        componentSelector: `tui-input-range`,
+        inputProperty: `size`,
+        directive: `tuiTextfieldSize`,
         directiveModule: {
-            name: 'TuiTextfieldControllerModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiTextfieldControllerModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
     },
     {
-        componentSelector: 'tui-input',
-        inputProperty: 'icon',
-        directive: 'tuiTextfieldIcon',
+        componentSelector: `tui-input`,
+        inputProperty: `icon`,
+        directive: `tuiTextfieldIcon`,
         directiveModule: {
-            name: 'TuiTextfieldControllerModule',
-            moduleSpecifier: '@taiga-ui/core',
-        },
-        filterFn: element =>
-            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'right',
-    },
-    {
-        componentSelector: 'tui-input',
-        inputProperty: 'icon',
-        directive: 'tuiTextfieldIconLeft',
-        directiveModule: {
-            name: 'TuiTextfieldControllerModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiTextfieldControllerModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
         filterFn: element =>
-            !hasElementAttribute(element, 'iconAlign') ||
-            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
+            element.attrs.find(attr => attr.name === `iconalign`)?.value === `right`,
     },
     {
-        componentSelector: 'tui-primitive-textfield',
-        inputProperty: 'iconContent',
-        directive: 'tuiTextfieldIcon',
+        componentSelector: `tui-input`,
+        inputProperty: `icon`,
+        directive: `tuiTextfieldIconLeft`,
         directiveModule: {
-            name: 'TuiTextfieldControllerModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiTextfieldControllerModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
         filterFn: element =>
-            !hasElementAttribute(element, 'iconAlign') ||
-            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'right',
+            !hasElementAttribute(element, `iconAlign`) ||
+            element.attrs.find(attr => attr.name === `iconalign`)?.value === `left`,
     },
     {
-        componentSelector: 'tui-primitive-textfield',
-        inputProperty: 'iconContent',
-        directive: 'tuiTextfieldIconLeft',
+        componentSelector: `tui-primitive-textfield`,
+        inputProperty: `iconContent`,
+        directive: `tuiTextfieldIcon`,
         directiveModule: {
-            name: 'TuiTextfieldControllerModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiTextfieldControllerModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
         filterFn: element =>
-            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
+            !hasElementAttribute(element, `iconAlign`) ||
+            element.attrs.find(attr => attr.name === `iconalign`)?.value === `right`,
     },
     {
-        componentSelector: 'tui-input-tag',
-        inputProperty: 'icon',
-        directive: 'tuiTextfieldIcon',
+        componentSelector: `tui-primitive-textfield`,
+        inputProperty: `iconContent`,
+        directive: `tuiTextfieldIconLeft`,
         directiveModule: {
-            name: 'TuiTextfieldControllerModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiTextfieldControllerModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
         filterFn: element =>
-            !hasElementAttribute(element, 'iconAlign') ||
-            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'right',
+            element.attrs.find(attr => attr.name === `iconalign`)?.value === `left`,
     },
     {
-        componentSelector: 'tui-input-tag',
-        inputProperty: 'icon',
-        directive: 'tuiTextfieldIconLeft',
+        componentSelector: `tui-input-tag`,
+        inputProperty: `icon`,
+        directive: `tuiTextfieldIcon`,
         directiveModule: {
-            name: 'TuiTextfieldControllerModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiTextfieldControllerModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
         filterFn: element =>
-            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
+            !hasElementAttribute(element, `iconAlign`) ||
+            element.attrs.find(attr => attr.name === `iconalign`)?.value === `right`,
     },
     {
-        componentSelector: '*',
-        inputProperty: 'scrollIntoView',
-        directive: 'tuiScrollIntoViewLink',
+        componentSelector: `tui-input-tag`,
+        inputProperty: `icon`,
+        directive: `tuiTextfieldIconLeft`,
         directiveModule: {
-            name: 'TuiScrollIntoViewLinkModule',
-            moduleSpecifier: '@taiga-ui/addon-doc',
+            name: `TuiTextfieldControllerModule`,
+            moduleSpecifier: `@taiga-ui/core`,
+        },
+        filterFn: element =>
+            element.attrs.find(attr => attr.name === `iconalign`)?.value === `left`,
+    },
+    {
+        componentSelector: `*`,
+        inputProperty: `scrollIntoView`,
+        directive: `tuiScrollIntoViewLink`,
+        directiveModule: {
+            name: `TuiScrollIntoViewLinkModule`,
+            moduleSpecifier: `@taiga-ui/addon-doc`,
         },
     },
     {
-        componentSelector: ['tui-bar-chart', 'tui-pie-chart', 'tui-line-chart'],
-        inputProperty: 'hintContent',
-        directive: 'tuiHintContent',
+        componentSelector: [`tui-bar-chart`, `tui-pie-chart`, `tui-line-chart`],
+        inputProperty: `hintContent`,
+        directive: `tuiHintContent`,
         directiveModule: {
-            name: 'TuiHintControllerModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiHintControllerModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
     },
 ];
@@ -692,57 +693,48 @@ export const TRUTHY_BOOLEAN_INPUT_TO_HTML_BINARY_ATTRIBUTE: readonly string[] = 
 
 export const TEMPLATE_COMMENTS = [
     {
-        tag: 'tui-input-slider',
-        withAttr: 'pluralize',
-        comment:
-            '[pluralize] => Use [postfix] instead. See https://taiga-ui.dev/components/input-slider/API?postfix=apples',
+        tag: `tui-input-slider`,
+        withAttr: `pluralize`,
+        comment: `[pluralize] => Use [postfix] instead. See https://taiga-ui.dev/components/input-slider/API?postfix=apples`,
     },
     {
-        tag: 'tui-input-slider',
-        withAttr: 'segmentsPluralize',
-        comment:
-            'See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-slider#slider-segments',
+        tag: `tui-input-slider`,
+        withAttr: `segmentsPluralize`,
+        comment: `See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-slider#slider-segments`,
     },
     {
-        tag: 'tui-input-range',
-        withAttr: 'segmentsPluralize',
-        comment:
-            'See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-range#segments',
+        tag: `tui-input-range`,
+        withAttr: `segmentsPluralize`,
+        comment: `See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-range#segments`,
     },
     {
-        tag: 'tui-range',
-        withAttr: 'pluralize',
-        comment:
-            'See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/range#segments',
+        tag: `tui-range`,
+        withAttr: `pluralize`,
+        comment: `See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/range#segments`,
     },
     {
-        tag: 'tui-range',
-        withAttr: 'steps',
-        comment:
-            'This component has new API. Use property [step] instead. See: https://taiga-ui.dev/components/range/API',
+        tag: `tui-range`,
+        withAttr: `steps`,
+        comment: `This component has new API. Use property [step] instead. See: https://taiga-ui.dev/components/range/API`,
     },
     {
-        tag: 'tui-preview-host',
-        withAttr: 'ngProjectAs',
-        comment:
-            '"Preview"-component no longer needs it and requires only import of TuiPreviewModule to the main module. See "Setup"-section: https://taiga-ui.dev/components/preview/Setup',
+        tag: `tui-preview-host`,
+        withAttr: `ngProjectAs`,
+        comment: `"Preview"-component no longer needs it and requires only import of TuiPreviewModule to the main module. See "Setup"-section: https://taiga-ui.dev/components/preview/Setup`,
     },
     {
-        tag: 'tui-progress',
-        withAttr: 'value',
-        comment:
-            'This legacy component was replaced by 3 new ones (https://taiga-ui.dev/components/progress-bar | https://taiga-ui.dev/components/progress-circle | https://taiga-ui.dev/components/progress-segmented ) ',
+        tag: `tui-progress`,
+        withAttr: `value`,
+        comment: `This legacy component was replaced by 3 new ones (https://taiga-ui.dev/components/progress-bar | https://taiga-ui.dev/components/progress-circle | https://taiga-ui.dev/components/progress-segmented ) `,
     },
     {
-        tag: 'tui-input-file',
-        withAttr: 'loadingFiles',
-        comment:
-            'This legacy component was replaced by new one (https://taiga-ui.dev/components/input-files) ',
+        tag: `tui-input-file`,
+        withAttr: `loadingFiles`,
+        comment: `This legacy component was replaced by new one (https://taiga-ui.dev/components/input-files) `,
     },
     {
-        tag: 'tui-input-tag',
-        withAttr: 'allowSpaces',
-        comment:
-            'Use property [separator] to forbid spaces. See example: https://taiga-ui.dev/components/input-tag#no-spaces-inside-tags',
+        tag: `tui-input-tag`,
+        withAttr: `allowSpaces`,
+        comment: `Use property [separator] to forbid spaces. See example: https://taiga-ui.dev/components/input-tag#no-spaces-inside-tags`,
     },
 ] as const;

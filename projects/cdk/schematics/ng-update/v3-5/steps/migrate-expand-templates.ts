@@ -1,4 +1,8 @@
+import {UpdateRecorder} from '@angular-devkit/schematics';
 import {DevkitFileSystem} from 'ng-morph';
+
+import {ALL_TS_FILES} from '../../../constants';
+import {TuiSchema} from '../../../ng-add/schema';
 import {
     infoLog,
     REPLACE_SYMBOL,
@@ -6,21 +10,21 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../../utils/colored-log';
-import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
-import {ALL_TS_FILES} from '../../../constants';
 import {setupProgressLogger} from '../../../utils/progress';
+import {findElementsByFn, findElementsByTagName} from '../../../utils/templates/elements';
+import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {
     getPathFromTemplateResource,
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
 import {TemplateResource} from '../../interfaces/template-resourse';
-import {UpdateRecorder} from '@angular-devkit/schematics';
-import {findElementsByFn, findElementsByTagName} from '../../../utils/templates/elements';
-import {TuiSchema} from '../../../ng-add/schema';
 
-export function migrateExpandTemplates(fileSystem: DevkitFileSystem, options: TuiSchema) {
-    !options['skip-logs'] &&
+export function migrateExpandTemplates(
+    fileSystem: DevkitFileSystem,
+    options: TuiSchema,
+): void {
+    !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
 
     const componentWithTemplatesPaths = getComponentTemplates(ALL_TS_FILES);
@@ -33,11 +37,11 @@ export function migrateExpandTemplates(fileSystem: DevkitFileSystem, options: Tu
         const path = fileSystem.resolve(getPathFromTemplateResource(resource));
         const recorder = fileSystem.edit(path);
 
-        !options['skip-logs'] && progressLog('expand migration', true);
+        !options[`skip-logs`] && progressLog(`expand migration`, true);
         migrateExpand({resource, fileSystem, recorder});
     });
 
-    !options['skip-logs'] &&
+    !options[`skip-logs`] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} templates migrated \n`);
 }
 
@@ -53,12 +57,12 @@ function migrateExpand({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    const elements = findElementsByTagName(template, 'tui-expand');
+    const elements = findElementsByTagName(template, `tui-expand`);
 
     elements.forEach(element => {
         const templateElement = findElementsByFn(
             element.childNodes,
-            el => el.tagName === 'ng-template',
+            el => el.tagName === `ng-template`,
         )[0];
 
         if (!templateElement) {
@@ -66,7 +70,7 @@ function migrateExpand({
         }
 
         const tuiExpandAttr = templateElement.attrs.find(
-            attr => attr.name === 'tuiexpandcontent',
+            attr => attr.name === `tuiexpandcontent`,
         );
 
         const insertTo = templateElement?.sourceCodeLocation?.startTag.endOffset;

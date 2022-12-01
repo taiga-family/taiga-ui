@@ -1,6 +1,7 @@
+/* eslint-disable rxjs/no-topromise */
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-
+import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 import {
     createProject,
     createSourceFile,
@@ -9,18 +10,18 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {join} from 'path';
+
 import {createAngularJson} from '../../utils/create-angular-json';
-import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 
-const collectionPath = join(__dirname, '../../migration.json');
+const collectionPath = join(__dirname, `../../migration.json`);
 
-describe('ng-update', () => {
+describe(`ng-update`, () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
     beforeEach(() => {
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner('schematics', collectionPath);
+        runner = new SchematicTestRunner(`schematics`, collectionPath);
 
         setActiveProject(createProject(host));
 
@@ -29,16 +30,16 @@ describe('ng-update', () => {
         saveActiveProject();
     });
 
-    it('should replaces enums with strings and removes imports', async () => {
+    it(`should replaces enums with strings and removes imports`, async () => {
         const tree = await runner
             .runSchematicAsync(
-                'updateToV3',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                `updateToV3`,
+                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent('test/app/app.component.ts')).toEqual(
+        expect(tree.readContent(`test/app/app.component.ts`)).toEqual(
             `import {Component} from '@angular/core';
 import {some} from '@taiga-ui/cdk';
 import {TuiLineType} from '@taiga-ui/cdk';
@@ -65,7 +66,7 @@ export class AppComponent {
 
 function createMainFiles(): void {
     createSourceFile(
-        'test/app/app.component.ts',
+        `test/app/app.component.ts`,
         `import {Component} from '@angular/core';
 import {TuiTextAlign, some} from '@taiga-ui/cdk';
 import {TuiLineType} from '@taiga-ui/cdk';
@@ -86,8 +87,8 @@ export class AppComponent {
 }`,
     );
 
-    createSourceFile('test/app/app.template.html', `<app></app>`);
+    createSourceFile(`test/app/app.template.html`, `<app></app>`);
 
     createAngularJson();
-    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
+    createSourceFile(`package.json`, `{"dependencies": {"@angular/core": "~13.0.0"}}`);
 }

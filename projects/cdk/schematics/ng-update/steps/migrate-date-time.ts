@@ -1,7 +1,7 @@
 import {CallExpression, Identifier, Node, SyntaxKind} from 'ng-morph';
 import {performance} from 'perf_hooks';
-import {getNamedImportReferences} from '../../utils/get-named-import-references';
-import {insertTodo} from '../../utils/insert-todo';
+
+import {TuiSchema} from '../../ng-add/schema';
 import {
     infoLog,
     PROCESSING_SYMBOL,
@@ -12,24 +12,26 @@ import {
     successLog,
 } from '../../utils/colored-log';
 import {getExecutionTime} from '../../utils/get-execution-time';
-import {TuiSchema} from '../../ng-add/schema';
+import {getNamedImportReferences} from '../../utils/get-named-import-references';
+import {insertTodo} from '../../utils/insert-todo';
 
-export function dateTimeMigrations(options: TuiSchema) {
-    !options['skip-logs'] &&
+export function dateTimeMigrations(options: TuiSchema): void {
+    !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating taiga date/time...`);
 
     let start = performance.now();
+
     migrateProperty({
-        namedImport: 'TuiDay',
-        moduleSpecifier: '@taiga-ui/cdk',
-        from: 'formattedDay',
+        namedImport: `TuiDay`,
+        moduleSpecifier: `@taiga-ui/cdk`,
+        from: `formattedDay`,
         callback: node =>
             node.replaceWithText(
-                node.getText().replace('formattedDay', 'getFormattedDay("DMY", ".")'),
+                node.getText().replace(`formattedDay`, `getFormattedDay("DMY", ".")`),
             ),
     });
 
-    !options['skip-logs'] &&
+    !options[`skip-logs`] &&
         processLog(
             `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}TuiDay.formattedDay ` +
                 `(${getExecutionTime(start, performance.now())})`,
@@ -37,18 +39,18 @@ export function dateTimeMigrations(options: TuiSchema) {
 
     start = performance.now();
     migrateProperty({
-        namedImport: 'TuiDayRange',
-        moduleSpecifier: '@taiga-ui/cdk',
-        from: 'formattedDayRange',
+        namedImport: `TuiDayRange`,
+        moduleSpecifier: `@taiga-ui/cdk`,
+        from: `formattedDayRange`,
         callback: node =>
             node.replaceWithText(
                 node
                     .getText()
-                    .replace('formattedDayRange', 'getFormattedDayRange("DMY", ".")'),
+                    .replace(`formattedDayRange`, `getFormattedDayRange("DMY", ".")`),
             ),
     });
 
-    !options['skip-logs'] &&
+    !options[`skip-logs`] &&
         processLog(
             `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}TuiDayRange.formattedDayRange ` +
                 `(${getExecutionTime(start, performance.now())})`,
@@ -56,18 +58,19 @@ export function dateTimeMigrations(options: TuiSchema) {
 
     start = performance.now();
     migrateProperty({
-        namedImport: 'TuiDayRange',
-        moduleSpecifier: '@taiga-ui/cdk',
-        from: 'normalizeParse',
+        namedImport: `TuiDayRange`,
+        moduleSpecifier: `@taiga-ui/cdk`,
+        from: `normalizeParse`,
         callback: node => {
             const parent = node.getParent();
+
             if (Node.isCallExpression(parent)) {
                 changeNormalizeArgs(parent);
             }
         },
     });
 
-    !options['skip-logs'] &&
+    !options[`skip-logs`] &&
         processLog(
             `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}TuiDayRange.normalizeParse ` +
                 `(${getExecutionTime(start, performance.now())})`,
@@ -75,64 +78,57 @@ export function dateTimeMigrations(options: TuiSchema) {
 
     [
         {
-            namedImport: 'TuiMonthRange',
-            field: 'formattedMonthRange',
-            message:
-                'formattedMonthRange has been removed in 3.0. Please use TUI_MONTH_FORMATTER from @taiga-ui/kit',
+            namedImport: `TuiMonthRange`,
+            field: `formattedMonthRange`,
+            message: `formattedMonthRange has been removed in 3.0. Please use TUI_MONTH_FORMATTER from @taiga-ui/kit`,
         },
         {
-            namedImport: 'TuiMonth',
-            field: 'formattedMonth',
-            message:
-                'formattedMonth has been removed in 3.0. Please use TUI_MONTH_FORMATTER from @taiga-ui/kit',
+            namedImport: `TuiMonth`,
+            field: `formattedMonth`,
+            message: `formattedMonth has been removed in 3.0. Please use TUI_MONTH_FORMATTER from @taiga-ui/kit`,
         },
         {
-            namedImport: 'TuiDay',
-            field: 'getDayFromMonthRowCol',
-            message:
-                'getDayFromMonthRowCol has been removed in 3.0. If you need this utils check out this pipe https://github.com/Tinkoff/taiga-ui/tree/main/projects/core/pipes/calendar-sheet',
+            namedImport: `TuiDay`,
+            field: `getDayFromMonthRowCol`,
+            message: `getDayFromMonthRowCol has been removed in 3.0. If you need this utils check out this pipe https://github.com/Tinkoff/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
         },
         {
-            namedImport: 'TuiMonth',
-            field: 'monthStartDaysOffset',
-            message:
-                'monthStartDaysOffset has been removed in 3.0. If you need this utils check out this pipe https://github.com/Tinkoff/taiga-ui/tree/main/projects/core/pipes/calendar-sheet',
+            namedImport: `TuiMonth`,
+            field: `monthStartDaysOffset`,
+            message: `monthStartDaysOffset has been removed in 3.0. If you need this utils check out this pipe https://github.com/Tinkoff/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
         },
         {
-            namedImport: 'TuiMonth',
-            field: 'weeksRowsCount',
-            message:
-                'weeksRowsCount has been removed in 3.0. If you need this utils check out this pipe https://github.com/Tinkoff/taiga-ui/tree/main/projects/core/pipes/calendar-sheet',
+            namedImport: `TuiMonth`,
+            field: `weeksRowsCount`,
+            message: `weeksRowsCount has been removed in 3.0. If you need this utils check out this pipe https://github.com/Tinkoff/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
         },
         {
-            namedImport: 'TuiYear',
-            field: 'getYearStartDaysOffset',
-            message:
-                'getYearStartDaysOffset has been removed in 3.0. If you need this utils check out this pipe https://github.com/Tinkoff/taiga-ui/tree/main/projects/core/pipes/calendar-sheet',
+            namedImport: `TuiYear`,
+            field: `getYearStartDaysOffset`,
+            message: `getYearStartDaysOffset has been removed in 3.0. If you need this utils check out this pipe https://github.com/Tinkoff/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
         },
         {
-            namedImport: 'TuiYear',
-            field: 'weeksRowsCount',
-            message:
-                'weeksRowsCount has been removed in 3.0. If you need this utils check out this pipe https://github.com/Tinkoff/taiga-ui/tree/main/projects/core/pipes/calendar-sheet',
+            namedImport: `TuiYear`,
+            field: `weeksRowsCount`,
+            message: `weeksRowsCount has been removed in 3.0. If you need this utils check out this pipe https://github.com/Tinkoff/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
         },
     ].forEach(({namedImport, field, message}) => {
         start = performance.now();
         migrateProperty({
             namedImport,
-            moduleSpecifier: '@taiga-ui/cdk',
+            moduleSpecifier: `@taiga-ui/cdk`,
             from: field,
             callback: node => insertTodoBeforeNode(node, message),
         });
 
-        !options['skip-logs'] &&
+        !options[`skip-logs`] &&
             processLog(
                 `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}${namedImport}.${field} ` +
                     `(${getExecutionTime(start, performance.now())})`,
             );
     });
 
-    !options['skip-logs'] &&
+    !options[`skip-logs`] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} date/time migrated \n`);
 }
 
@@ -146,13 +142,14 @@ function migrateProperty({
     moduleSpecifier: string;
     from: string;
     callback: (node: Node) => void;
-}) {
+}): void {
     const references = getNamedImportReferences(namedImport, moduleSpecifier);
 
     references.forEach(ref => {
         if (ref.wasForgotten()) {
             return;
         }
+
         const parent = ref.getParent();
 
         if (!parent) {
@@ -169,6 +166,7 @@ function migrateProperty({
 
             if (searched && accessExpression) {
                 callback(accessExpression);
+
                 return;
             }
         }
@@ -177,8 +175,10 @@ function migrateProperty({
             const searched = parent
                 .getChildrenOfKind(SyntaxKind.Identifier)
                 .find(identifier => identifier.getText() === from);
+
             if (searched && !parent.wasForgotten()) {
                 callback(parent);
+
                 return;
             }
         }
@@ -187,7 +187,11 @@ function migrateProperty({
     });
 }
 
-function replaceIdentifier(node: Node, from: string, callback: (node: Node) => void) {
+function replaceIdentifier(
+    node: Node,
+    from: string,
+    callback: (node: Node) => void,
+): void {
     const declaration =
         node.getFirstAncestorByKind(SyntaxKind.VariableDeclaration) ||
         node.getFirstAncestorByKind(SyntaxKind.PropertyDeclaration);
@@ -203,7 +207,7 @@ function replaceIdentifierReferences(
     identifier: Identifier,
     from: string,
     callback: (node: Node) => void,
-) {
+): void {
     identifier
         .findReferencesAsNodes()
         /**
@@ -229,6 +233,7 @@ function replaceIdentifierReferences(
             if (ref.wasForgotten()) {
                 return;
             }
+
             let parent = ref.getParent();
 
             if (
@@ -242,7 +247,7 @@ function replaceIdentifierReferences(
                 return;
             }
 
-            if (parent?.getText().startsWith('this')) {
+            if (parent?.getText().startsWith(`this`)) {
                 parent = parent?.getParent();
             }
 
@@ -250,26 +255,29 @@ function replaceIdentifierReferences(
                 const searched = parent
                     .getChildrenOfKind(SyntaxKind.Identifier)
                     .find(identifier => identifier.getText() === from);
+
                 if (searched) {
-                    callback(parent!);
+                    callback(parent);
                 }
             }
         });
 }
 
-function changeNormalizeArgs(node: CallExpression) {
+function changeNormalizeArgs(node: CallExpression): void {
     const args = node.getArguments();
+
     if (args.length > 2) {
         node.removeArgument(2);
         node.removeArgument(1);
-        node.addArgument('"DMY"');
+        node.addArgument(`"DMY"`);
     } else if (args.length === 1) {
-        node.addArgument('"DMY"');
+        node.addArgument(`"DMY"`);
     }
 }
 
-function insertTodoBeforeNode(node: Node, message: string) {
+function insertTodoBeforeNode(node: Node, message: string): void {
     const identifier = node.getFirstDescendantByKind(SyntaxKind.Identifier);
+
     if (identifier) {
         insertTodo(identifier, message);
     }

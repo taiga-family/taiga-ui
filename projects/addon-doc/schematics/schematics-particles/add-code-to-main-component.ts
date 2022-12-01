@@ -2,7 +2,8 @@ import {classify, dasherize} from '@angular-devkit/core/src/utils/strings';
 import {chain, Rule, Tree} from '@angular-devkit/schematics';
 import * as path from 'path';
 import {Change, getSourceFile, InsertChange, insertImport} from 'schematics-utilities';
-import {Schema} from '../doc-page/index';
+
+import type {TuiDocSchema} from '../doc-page';
 import {getRelativePath} from '../utils/get-relative-path';
 
 function getText(sample: number): string {
@@ -43,11 +44,11 @@ function getImportArray(
 }
 
 function generateText(samples: number, startIndex: number): string {
-    let codeText = '';
+    let codeText = ``;
 
     for (let index = startIndex; index < samples + startIndex; index++) {
         codeText += getText(index);
-        codeText += '\n\n';
+        codeText += `\n\n`;
     }
 
     return codeText;
@@ -58,7 +59,7 @@ function getComponentNameByName(name: string): string {
 }
 
 function addCodeToMainComponent(
-    {name, samples, componentName, root}: Schema,
+    {name, samples, componentName, root}: TuiDocSchema,
     startIndex: number,
 ): Rule {
     return (host: Tree) => {
@@ -98,6 +99,6 @@ function addCodeToMainComponent(
     };
 }
 
-export function addCodeToComponent(options: Schema, startIndex: number): Rule {
+export function addCodeToComponent(options: TuiDocSchema, startIndex: number): Rule {
     return chain([addCodeToMainComponent(options, startIndex)]);
 }

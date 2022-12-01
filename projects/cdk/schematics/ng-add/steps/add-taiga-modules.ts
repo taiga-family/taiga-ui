@@ -1,5 +1,4 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-
 import {getWorkspace} from '@schematics/angular/utility/workspace';
 import {
     addImportToNgModule,
@@ -10,8 +9,10 @@ import {
     saveActiveProject,
     setActiveProject,
 } from 'ng-morph';
-import {getProjects} from '../../utils/get-projects';
+
+import {addUniqueImport} from '../../utils/add-unique-import';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
+import {getProjects} from '../../utils/get-projects';
 import {
     ALERT_MODULES,
     DIALOG_MODULES,
@@ -19,7 +20,6 @@ import {
     SANITIZER_MODULES,
 } from '../constants/modules';
 import {TuiSchema} from '../schema';
-import {addUniqueImport} from '../../utils/add-unique-import';
 
 export function addTaigaModules(options: TuiSchema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
@@ -28,14 +28,15 @@ export function addTaigaModules(options: TuiSchema): Rule {
 
         if (!project) {
             context.logger.warn(
-                '[WARNING]: Target project not found in current workspace',
+                `[WARNING]: Target project not found in current workspace`,
             );
+
             return;
         }
 
-        const buildOptions = getProjectTargetOptions(project, 'build');
+        const buildOptions = getProjectTargetOptions(project, `build`);
 
-        setActiveProject(createProject(tree, '/', ['**/*.ts', '**/*.json']));
+        setActiveProject(createProject(tree, `/`, [`**/*.ts`, `**/*.json`]));
 
         const mainModule = getMainModule(buildOptions.main as string);
 
@@ -50,7 +51,7 @@ function addTuiModules(
     mainModule: ClassDeclaration,
     options: TuiSchema,
     context: SchematicContext,
-) {
+): void {
     const modules = [
         ...MAIN_MODULES,
         ...(options.addDialogsModule ? DIALOG_MODULES : []),
@@ -76,7 +77,7 @@ function addTuiProviders(mainModule: ClassDeclaration, options: TuiSchema): void
 
     addProviderToNgModule(
         mainModule,
-        '{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}',
+        `{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}`,
         {unique: true},
     );
 

@@ -1,13 +1,14 @@
-import {TuiSchema} from '../ng-add/schema';
-import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {getProjects} from './get-projects';
-import {getProjectTargetOptions} from './get-project-target-options';
 import {JsonArray} from '@angular-devkit/core';
+import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import {getWorkspace, updateWorkspace} from '@schematics/angular/utility/workspace';
 import {addPackageJsonDependency} from 'ng-morph';
+
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
-import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
+import {TuiSchema} from '../ng-add/schema';
 import {Asset} from '../ng-update/interfaces/asset';
+import {getProjectTargetOptions} from './get-project-target-options';
+import {getProjects} from './get-projects';
 
 export async function isInvalidAngularJson(tree: Tree): Promise<boolean> {
     return (
@@ -21,6 +22,14 @@ export async function isInvalidAngularJson(tree: Tree): Promise<boolean> {
     );
 }
 
+function hasTaigaIcons(assets: Asset[]): boolean {
+    return !!assets?.find(asset =>
+        typeof asset === `string`
+            ? asset.includes(`taiga-ui`)
+            : asset?.input?.includes(`taiga-ui`),
+    );
+}
+
 export function addStylesToAngularJson(
     options: TuiSchema,
     context: SchematicContext,
@@ -29,8 +38,9 @@ export function addStylesToAngularJson(
     stylesToReplace?: {from: string; to: string[]},
     tree?: Tree,
 ): Rule {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     const MANUAL_MIGRATION_TIPS = `Add styles ${taigaStyles.join(
-        ',',
+        `,`,
     )} to angular.json manually.`;
 
     return updateWorkspace(workspace => {
@@ -40,18 +50,20 @@ export function addStylesToAngularJson(
             context.logger.warn(
                 `[WARNING]: Target project not found. ${MANUAL_MIGRATION_TIPS}`,
             );
+
             return;
         }
 
-        for (let project of projects) {
+        for (const project of projects) {
             let targetOptions;
 
             try {
-                targetOptions = getProjectTargetOptions(project, 'build');
+                targetOptions = getProjectTargetOptions(project, `build`);
             } catch {
                 context.logger.warn(
                     `[WARNING]: No buildable project was found. ${MANUAL_MIGRATION_TIPS}`,
                 );
+
                 return;
             }
 
@@ -61,7 +73,7 @@ export function addStylesToAngularJson(
 
             const styles = targetOptions.styles as JsonArray | undefined;
 
-            if (filter && filter(styles)) {
+            if (filter?.(styles)) {
                 taigaStyles = [];
             }
 
@@ -97,10 +109,3 @@ export function addStylesToAngularJson(
         }
     });
 }
-
-const hasTaigaIcons = (assets: Asset[]): boolean =>
-    !!assets?.find(asset =>
-        typeof asset === 'string'
-            ? asset.includes('taiga-ui')
-            : asset?.input?.includes('taiga-ui'),
-    );

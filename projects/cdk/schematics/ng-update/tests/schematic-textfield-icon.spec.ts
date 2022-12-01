@@ -1,6 +1,7 @@
+/* eslint-disable rxjs/no-topromise */
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-
+import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 import {
     createProject,
     createSourceFile,
@@ -9,10 +10,10 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {join} from 'path';
-import {createAngularJson} from '../../utils/create-angular-json';
-import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 
-const collectionPath = join(__dirname, '../../migration.json');
+import {createAngularJson} from '../../utils/create-angular-json';
+
+const collectionPath = join(__dirname, `../../migration.json`);
 
 const COMPONENT = `
 @Component({templateUrl: './test.template.html'})
@@ -54,7 +55,7 @@ const TEMPLATE_AFTER = `
 <tui-input
     formControlName="testValue"
     tuiTextfieldIconLeft="icon"
-    ${''}
+    ${``}
     tuiHintContent="Write a number"
     class="tui-group__inherit-item"
 >
@@ -66,7 +67,7 @@ const TEMPLATE_AFTER = `
 <tui-input
     formControlName="testValue"
     tuiTextfieldIcon="icon"
-    ${''}
+    ${``}
     tuiHintContent="Write a number"
     class="tui-group__inherit-item"
 >
@@ -75,7 +76,7 @@ const TEMPLATE_AFTER = `
 
 <tui-primitive-textfield
         class="textfield"
-        ${''}
+        ${``}
         [tuiTextfieldIcon]="icon"
     >
  </tui-primitive-textfield>
@@ -117,13 +118,13 @@ import {TestComponent} from './test.component';
 export class ExampleModule {}
 `;
 
-describe('ng-update', () => {
+describe(`ng-update`, () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
     beforeEach(() => {
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner('schematics', collectionPath);
+        runner = new SchematicTestRunner(`schematics`, collectionPath);
 
         setActiveProject(createProject(host));
 
@@ -132,28 +133,28 @@ describe('ng-update', () => {
         saveActiveProject();
     });
 
-    it('should edit templates', async () => {
+    it(`should edit templates`, async () => {
         const tree = await runner
             .runSchematicAsync(
-                'updateToV3',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                `updateToV3`,
+                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
+        expect(tree.readContent(`test/app/test.template.html`)).toEqual(TEMPLATE_AFTER);
     });
 
-    it('should add directive to module', async () => {
+    it(`should add directive to module`, async () => {
         const tree = await runner
             .runSchematicAsync(
-                'updateToV3',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+                `updateToV3`,
+                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent('test/app/test.module.ts')).toEqual(MODULE_AFTER);
+        expect(tree.readContent(`test/app/test.module.ts`)).toEqual(MODULE_AFTER);
     });
 
     afterEach(() => {
@@ -162,12 +163,12 @@ describe('ng-update', () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile('test/app/test.component.ts', COMPONENT);
+    createSourceFile(`test/app/test.component.ts`, COMPONENT);
 
-    createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
+    createSourceFile(`test/app/test.template.html`, TEMPLATE_BEFORE);
 
-    createSourceFile('test/app/test.module.ts', MODULE_BEFORE);
+    createSourceFile(`test/app/test.module.ts`, MODULE_BEFORE);
 
     createAngularJson();
-    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
+    createSourceFile(`package.json`, `{"dependencies": {"@angular/core": "~13.0.0"}}`);
 }

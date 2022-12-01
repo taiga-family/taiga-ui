@@ -1,4 +1,5 @@
 import {chain, Rule} from '@angular-devkit/schematics';
+
 import {TuiSchema} from './schema';
 import {addTaigaIcons} from './steps/add-taiga-icons';
 import {addTaigaModules} from './steps/add-taiga-modules';

@@ -1,7 +1,6 @@
-import {ReplacementService, SERVICES_TO_REPLACE} from '../constants/services';
-import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {Node, PropertyAccessExpression, SyntaxKind, TypeReferenceNode} from 'ng-morph';
-import {removeImport} from '../../utils/import-manipulations';
+
+import {TuiSchema} from '../../ng-add/schema';
 import {addUniqueImport} from '../../utils/add-unique-import';
 import {
     infoLog,
@@ -12,15 +11,17 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
-import {TuiSchema} from '../../ng-add/schema';
+import {getNamedImportReferences} from '../../utils/get-named-import-references';
+import {removeImport} from '../../utils/import-manipulations';
+import {ReplacementService, SERVICES_TO_REPLACE} from '../constants/services';
 
 export function replaceServices(options: TuiSchema): void {
-    !options['skip-logs'] &&
+    !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing services...`);
 
     SERVICES_TO_REPLACE.forEach(service => replaceService(service, options));
 
-    !options['skip-logs'] &&
+    !options[`skip-logs`] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} services replaced \n`);
 }
 
@@ -28,7 +29,7 @@ function replaceService(
     {from, to, replaceMethods}: ReplacementService,
     options: TuiSchema,
 ): void {
-    !options['skip-logs'] &&
+    !options[`skip-logs`] &&
         processLog(
             `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}replacing ${from.name}...`,
         );
@@ -69,7 +70,7 @@ function replaceProperties(
 
         if (
             (Node.isPropertyAccessExpression(parent) &&
-                parent.getText().startsWith('this.')) ||
+                parent.getText().startsWith(`this.`)) ||
             Node.isCallExpression(parent)
         ) {
             parent = parent.getParentIfKind(SyntaxKind.PropertyAccessExpression);
@@ -77,7 +78,6 @@ function replaceProperties(
 
         if (Node.isPropertyAccessExpression(parent)) {
             replaceProperty(parent, replaceProperties);
-            return;
         }
     });
 }
