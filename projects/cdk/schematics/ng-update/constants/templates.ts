@@ -695,55 +695,46 @@ export const TEMPLATE_COMMENTS = [
     {
         tag: `tui-input-slider`,
         withAttr: `pluralize`,
-        comment:
-            `[pluralize] => Use [postfix] instead. See https://taiga-ui.dev/components/input-slider/API?postfix=apples`,
+        comment: `[pluralize] => Use [postfix] instead. See https://taiga-ui.dev/components/input-slider/API?postfix=apples`,
     },
     {
         tag: `tui-input-slider`,
         withAttr: `segmentsPluralize`,
-        comment:
-            `See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-slider#slider-segments`,
+        comment: `See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-slider#slider-segments`,
     },
     {
         tag: `tui-input-range`,
         withAttr: `segmentsPluralize`,
-        comment:
-            `See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-range#segments`,
+        comment: `See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-range#segments`,
     },
     {
         tag: `tui-range`,
         withAttr: `pluralize`,
-        comment:
-            `See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/range#segments`,
+        comment: `See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/range#segments`,
     },
     {
         tag: `tui-range`,
         withAttr: `steps`,
-        comment:
-            `This component has new API. Use property [step] instead. See: https://taiga-ui.dev/components/range/API`,
+        comment: `This component has new API. Use property [step] instead. See: https://taiga-ui.dev/components/range/API`,
     },
     {
         tag: `tui-preview-host`,
         withAttr: `ngProjectAs`,
-        comment:
-            `"Preview"-component no longer needs it and requires only import of TuiPreviewModule to the main module. See "Setup"-section: https://taiga-ui.dev/components/preview/Setup`,
+        comment: `"Preview"-component no longer needs it and requires only import of TuiPreviewModule to the main module. See "Setup"-section: https://taiga-ui.dev/components/preview/Setup`,
     },
     {
         tag: `tui-progress`,
         withAttr: `value`,
-        comment:
-            `This legacy component was replaced by 3 new ones (https://taiga-ui.dev/components/progress-bar | https://taiga-ui.dev/components/progress-circle | https://taiga-ui.dev/components/progress-segmented ) `,
+        comment: `This legacy component was replaced by 3 new ones (https://taiga-ui.dev/components/progress-bar | https://taiga-ui.dev/components/progress-circle | https://taiga-ui.dev/components/progress-segmented ) `,
     },
     {
         tag: `tui-input-file`,
         withAttr: `loadingFiles`,
-        comment:
-            `This legacy component was replaced by new one (https://taiga-ui.dev/components/input-files) `,
+        comment: `This legacy component was replaced by new one (https://taiga-ui.dev/components/input-files) `,
     },
     {
         tag: `tui-input-tag`,
         withAttr: `allowSpaces`,
-        comment:
-            `Use property [separator] to forbid spaces. See example: https://taiga-ui.dev/components/input-tag#no-spaces-inside-tags`,
+        comment: `Use property [separator] to forbid spaces. See example: https://taiga-ui.dev/components/input-tag#no-spaces-inside-tags`,
     },
 ] as const;

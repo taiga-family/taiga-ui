@@ -42,7 +42,7 @@ function changeRouterArray(options: TuiDocSchema): Rule {
         const template = /Routes( ){0,}=( ){0,}\[/gm;
         const updatedFile = fullText.replace(
             template,
-            `${label  } ${  getText(options, pathToModule)}`,
+            `${label} ${getText(options, pathToModule)}`,
         );
 
         host.overwrite(pathToRouter, updatedFile);

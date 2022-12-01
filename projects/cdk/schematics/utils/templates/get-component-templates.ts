@@ -39,7 +39,9 @@ function decoratorToTemplateResource(decorator: Decorator): TemplateResource | n
             componentPath,
             templatePath: getFullTemplatePath(templatePath, path.parse(componentPath)),
         };
-    } else if (template) {
+    }
+
+    if (template) {
         return {
             componentPath,
             template: template.getInitializer()?.getText() || ``,

@@ -82,7 +82,7 @@ function prittierFiles(options: TuiDocSchema): Rule {
         `prettier --write ${path.join(
             process.cwd(),
             dasherize(options.name),
-            `${dasherize(options.name)  }.component.ts`,
+            `${dasherize(options.name)}.component.ts`,
         )}`,
         () => {},
     );
@@ -90,7 +90,7 @@ function prittierFiles(options: TuiDocSchema): Rule {
         `prettier --write ${path.join(
             process.cwd(),
             dasherize(options.name),
-            `${dasherize(options.name)  }.module.ts`,
+            `${dasherize(options.name)}.module.ts`,
         )}`,
         () => {},
     );
@@ -98,7 +98,7 @@ function prittierFiles(options: TuiDocSchema): Rule {
         `prettier --write ${path.join(
             process.cwd(),
             dasherize(options.name),
-            `${dasherize(options.name)  }.template.html`,
+            `${dasherize(options.name)}.template.html`,
         )}`,
         () => {},
     );
@@ -132,7 +132,7 @@ export function docPage(options: TuiDocSchema): Rule {
 
         const files = fs.readdirSync(
             path.join(process.cwd(), dasherize(options.name), `examples`),
-        ) ;
+        );
         const startIndex =
             Math.max(
                 ...files

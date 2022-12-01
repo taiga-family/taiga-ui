@@ -79,7 +79,7 @@ function insertPolymorpheus({
 }): void {
     const content = `
 <ng-container *polymorpheusOutlet="${contentVal} as text${
-        contextVal ? `; context: ${  contextVal}` : ``
+        contextVal ? `; context: ${contextVal}` : ``
     }">
     {{ text }}
 </ng-container>`;
@@ -131,7 +131,7 @@ function insertPolymorpheusWithDefault({
     );
     const varName = templateVar?.name.replace(`let-`, ``);
     const attr = `*polymorpheusOutlet="${contentVal} as ${varName}${
-        contextVal ? `; context: ${  contextVal}` : ``
+        contextVal ? `; context: ${contextVal}` : ``
     }"`;
 
     replaceTag(

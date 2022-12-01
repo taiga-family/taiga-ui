@@ -30,7 +30,7 @@ function changeTuiDocPagesArray(options: TuiDocSchema): Rule {
         const fullText = sourceFile.getFullText();
         const label = `TuiDocPages = [`;
         const template = /Tui-doc-pages( ){0,}=( ){0,}\[/gm;
-        const updatedFile = fullText.replace(template, `${label  } ${  getText(options)}`);
+        const updatedFile = fullText.replace(template, `${label} ${getText(options)}`);
 
         host.overwrite(options.pathToTuiDocPages, updatedFile);
 

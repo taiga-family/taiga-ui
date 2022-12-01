@@ -78,8 +78,6 @@ function replaceProperties(
 
         if (Node.isPropertyAccessExpression(parent)) {
             replaceProperty(parent, replaceProperties);
-
-            return;
         }
     });
 }

@@ -31,7 +31,7 @@ export function addUniqueImport(
     }
 
     addImports(filePath, {
-        moduleSpecifier: moduleSpecifier,
+        moduleSpecifier,
         namedImports: [namedImport],
     });
 }
