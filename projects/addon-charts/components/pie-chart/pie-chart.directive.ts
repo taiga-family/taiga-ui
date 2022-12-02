@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Inject, Input, NgZone} from '@angular/core';
+import {Directive, ElementRef, Inject, Input, NgZone, Self} from '@angular/core';
 import {ANIMATION_FRAME, PERFORMANCE} from '@ng-web-apis/common';
 import {tuiDescribeSector} from '@taiga-ui/addon-charts/utils';
 import {
@@ -28,7 +28,7 @@ export class TuiPieChartDirective {
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<SVGPathElement>,
         @Inject(NgZone) ngZone: NgZone,
-        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
+        @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(PERFORMANCE) performance: Performance,
         @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
         @Inject(TUI_ANIMATIONS_DURATION) duration: number,

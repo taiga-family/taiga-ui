@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Inject, Input, Renderer2} from '@angular/core';
+import {Directive, ElementRef, Inject, Input, Renderer2, Self} from '@angular/core';
 import {
     TuiDestroyService,
     TuiDirectiveStylesService,
@@ -37,7 +37,7 @@ export class TuiRippleDirective {
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
         @Inject(Renderer2) renderer: Renderer2,
-        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
+        @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
         @Inject(TUI_RIPPLE_START) start$: Observable<HTMLElement>,
         @Inject(TUI_RIPPLE_END) end$: Observable<EventTarget>,
     ) {

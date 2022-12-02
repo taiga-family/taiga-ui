@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, ElementRef, HostListener, Inject, Input} from '@angular/core';
+import {Directive, ElementRef, HostListener, Inject, Input, Self} from '@angular/core';
 import {
     tuiCoerceBooleanProperty,
     tuiDefaultProp,
@@ -36,6 +36,7 @@ export class TuiSliderReadonlyDirective {
     constructor(
         @Inject(ElementRef) elementRef: ElementRef<HTMLInputElement>,
         @Inject(DOCUMENT) documentRef: Document,
+        @Self()
         @Inject(TuiDestroyService)
         destroy$: Observable<unknown>,
     ) {

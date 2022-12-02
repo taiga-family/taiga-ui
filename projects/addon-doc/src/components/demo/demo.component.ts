@@ -12,6 +12,7 @@ import {
     OnInit,
     PLATFORM_ID,
     Renderer2,
+    Self,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
@@ -71,7 +72,7 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
 
     constructor(
         @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
-        @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(PLATFORM_ID) platformId: Record<string, unknown>,
         @Inject(Location) locationRef: Location,

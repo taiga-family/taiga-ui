@@ -6,6 +6,7 @@ import {
     HostBinding,
     Inject,
     Optional,
+    Self,
 } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
@@ -73,7 +74,7 @@ export class TuiDocNavigationComponent {
         @Inject(TUI_DOC_SEARCH_TEXT) readonly searchText: string,
         @Inject(Router) private readonly router: Router,
         @Inject(ActivatedRoute) private readonly activatedRoute: ActivatedRoute,
-        @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
         @Inject(TUI_DOC_PAGE_LOADED)
         private readonly readyToScroll$: Observable<boolean>,
         @Inject(TUI_DOC_SCROLL_BEHAVIOR) private readonly scrollBehavior: ScrollBehavior,

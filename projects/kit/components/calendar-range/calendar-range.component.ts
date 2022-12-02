@@ -8,6 +8,7 @@ import {
     Input,
     Optional,
     Output,
+    Self,
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
@@ -93,7 +94,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         @Inject(TUI_CALENDAR_DATE_STREAM)
         valueChanges: Observable<TuiDayRange | null> | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
+        @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
         @Inject(TUI_OTHER_DATE_TEXT) readonly otherDateText$: Observable<string>,
     ) {
         if (!valueChanges) {

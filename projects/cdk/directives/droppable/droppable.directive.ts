@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Inject, Output} from '@angular/core';
+import {Directive, ElementRef, Inject, Output, Self} from '@angular/core';
 import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -26,7 +26,7 @@ export class TuiDroppableDirective {
 
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
-        @Inject(TuiDestroyService) destroy$: Observable<void>,
+        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
     ) {
         this.tuiDroppableDropped = tuiTypedFromEvent(nativeElement, `drop`).pipe(
             tuiPreventDefault(),

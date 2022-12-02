@@ -5,6 +5,7 @@ import {
     HostListener,
     Inject,
     Input,
+    Self,
     ViewChild,
 } from '@angular/core';
 import {TUI_IS_MOBILE, tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
@@ -39,7 +40,7 @@ export class TuiTooltipComponent extends TuiHintOptionsDirective {
     describeId = ``;
 
     constructor(
-        @Inject(TuiDestroyService) destroy$: Observable<unknown>,
+        @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_HINT_OPTIONS) options: TuiHintOptions,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,

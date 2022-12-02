@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Inject, NgZone, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Inject, NgZone, OnInit, Self} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
@@ -23,7 +23,7 @@ export class TuiInputInlineExample3 implements OnInit {
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly cd: ChangeDetectorRef,
-        @Inject(TuiDestroyService) private readonly destroy$: Observable<unknown>,
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<unknown>,
         @Inject(NgZone) private readonly zone: NgZone,
         @Inject(TUI_IS_CYPRESS) readonly isCypress: boolean,
     ) {}

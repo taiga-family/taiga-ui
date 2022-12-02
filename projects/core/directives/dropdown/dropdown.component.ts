@@ -6,6 +6,7 @@ import {
     HostBinding,
     Inject,
     Optional,
+    Self,
 } from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {
@@ -54,7 +55,7 @@ export class TuiDropdownComponent {
 
     constructor(
         @Inject(TuiPositionService) position$: Observable<TuiPoint>,
-        @Inject(TuiDestroyService) destroy$: Observable<void>,
+        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Inject(TuiDropdownDirective) readonly directive: TuiDropdownDirective,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(AbstractTuiPortalHostComponent)

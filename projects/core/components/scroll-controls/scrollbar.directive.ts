@@ -7,6 +7,7 @@ import {
     NgZone,
     Optional,
     Renderer2,
+    Self,
 } from '@angular/core';
 import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
 import {
@@ -35,7 +36,7 @@ export class TuiScrollbarDirective {
     constructor(
         @Inject(NgZone) ngZone: NgZone,
         @Inject(Renderer2) renderer: Renderer2,
-        @Inject(TuiDestroyService) destroy$: Observable<void>,
+        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
         @Inject(TUI_ELEMENT_REF) private readonly wrapper: ElementRef<HTMLElement>,
         @Optional()

@@ -6,6 +6,7 @@ import {
     Inject,
     Input,
     QueryList,
+    Self,
 } from '@angular/core';
 import {
     EMPTY_QUERY,
@@ -39,6 +40,7 @@ export class TuiAccordionComponent implements AfterContentInit {
     readonly accordionItems: QueryList<TuiAccordionItemComponent> = EMPTY_QUERY;
 
     constructor(
+        @Self()
         @Inject(TuiDestroyService)
         private readonly destroy$: TuiDestroyService,
     ) {}

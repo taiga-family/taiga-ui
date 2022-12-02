@@ -1,4 +1,12 @@
-import {Directive, ElementRef, Inject, Input, Optional, Renderer2} from '@angular/core';
+import {
+    Directive,
+    ElementRef,
+    Inject,
+    Input,
+    Optional,
+    Renderer2,
+    Self,
+} from '@angular/core';
 import {TuiTouchMode} from '@taiga-ui/addon-mobile/types';
 import {tuiFindTouchIndex} from '@taiga-ui/addon-mobile/utils';
 import {
@@ -31,7 +39,7 @@ export class TuiTouchableDirective {
         @Inject(TUI_IS_IOS) isIos: boolean,
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(Renderer2) renderer: Renderer2,
-        @Inject(TuiDestroyService) destroy$: TuiDestroyService,
+        @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         if (!isIos) {
             return;
