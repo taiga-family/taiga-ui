@@ -109,7 +109,14 @@ export class TuiInputFilesComponent
         @Inject(TUI_INPUT_FILE_TEXTS)
         readonly inputFileTexts$: Observable<
             Record<
-                'defaultLabelMultiple' | 'defaultLabelSingle' | 'defaultLinkMultiple' | 'defaultLinkSingle' | 'drop' | 'dropMultiple' | 'formatRejectionReason' | 'maxSizeRejectionReason',
+                | 'defaultLabelMultiple'
+                | 'defaultLabelSingle'
+                | 'defaultLinkMultiple'
+                | 'defaultLinkSingle'
+                | 'drop'
+                | 'dropMultiple'
+                | 'formatRejectionReason'
+                | 'maxSizeRejectionReason',
                 string
             >
         >,
