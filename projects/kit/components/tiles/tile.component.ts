@@ -5,16 +5,10 @@ import {
     HostBinding,
     HostListener,
     Inject,
-    Input,
     NgZone,
 } from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
-import {
-    tuiArrayShallowEquals,
-    tuiDefaultProp,
-    TuiResizeService,
-    tuiZonefull,
-} from '@taiga-ui/cdk';
+import {tuiArrayShallowEquals, TuiResizeService, tuiZonefull} from '@taiga-ui/cdk';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
@@ -26,14 +20,6 @@ import {TuiTilesComponent} from './tiles.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTileComponent {
-    @Input()
-    @tuiDefaultProp()
-    width = 1;
-
-    @Input()
-    @tuiDefaultProp()
-    height = 1;
-
     @HostBinding(`class._dragged`)
     dragged = false;
 
@@ -60,16 +46,6 @@ export class TuiTileComponent {
         @Inject(TuiResizeService) private readonly resize$: Observable<unknown>,
         @Inject(MutationObserverService) private readonly mutation$: Observable<unknown>,
     ) {}
-
-    @HostBinding(`style.gridColumn`)
-    get column(): string {
-        return `span ${this.width}`;
-    }
-
-    @HostBinding(`style.gridRow`)
-    get row(): string {
-        return `span ${this.height}`;
-    }
 
     get element(): HTMLElement {
         return this.elementRef.nativeElement;
