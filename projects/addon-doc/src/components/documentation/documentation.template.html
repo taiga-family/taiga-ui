@@ -26,9 +26,9 @@
                 automation-id="tui-documentation__property-name"
                 class="t-property"
             >
-                {{ stripOptional(propertyConnector.attrName) }}
+                {{ propertyConnector.attrName | tuiStripOptionalPipe }}
                 <tui-badge
-                    *ngIf="isOptional(propertyConnector.attrName)"
+                    *ngIf="propertyConnector.attrName | tuiIsOptionalPipe"
                     size="s"
                     value="Optional"
                 ></tui-badge>
@@ -45,7 +45,7 @@
             <span class="type">
                 {{ propertyConnector.documentationPropertyType }}
                 <tui-tooltip
-                    *ngIf="showContentTooltip(propertyConnector.documentationPropertyType)"
+                    *ngIf="propertyConnector.documentationPropertyType | tuiShowContentTooltip"
                     [describeId]="propertyConnector.attrName"
                     [content]="content"
                 >
@@ -72,7 +72,7 @@
                     *ngIf="propertyConnector.hasItems; else noItems"
                     tuiTextfieldSize="m"
                     tuiDropdownLimitWidth="min"
-                    [tuiTextfieldCleaner]="showCleaner(propertyConnector.documentationPropertyType)"
+                    [tuiTextfieldCleaner]="propertyConnector.documentationPropertyType | tuiShowCleanerPipe"
                     [tuiTextfieldLabelOutside]="true"
                     [nativeId]="propertyConnector.attrName"
                     [valueContent]="selectContent"
@@ -122,8 +122,8 @@
                                 tuiTextfieldSize="m"
                                 [attr.id]="propertyConnector.attrName"
                                 [tuiTextfieldLabelOutside]="true"
-                                [tuiInputOpacity]="getOpacity(propertyConnector.documentationPropertyValue)"
-                                [value]="getColor(propertyConnector.documentationPropertyValue)"
+                                [tuiInputOpacity]="propertyConnector.documentationPropertyValue | tuiGetOpacity"
+                                [value]="propertyConnector.documentationPropertyValue | tuiGetColorPipe"
                                 (valueChange)="onColorChange(propertyConnector, $event)"
                             >
                                 <input
@@ -134,7 +134,7 @@
                             <tui-input-count
                                 tuiTextfieldSize="m"
                                 [max]="100"
-                                [ngModel]="getOpacity(propertyConnector.documentationPropertyValue)"
+                                [ngModel]="propertyConnector.documentationPropertyValue | tuiGetOpacity"
                                 (ngModelChange)="onOpacityChange(propertyConnector, $event)"
                             >
                                 Opacity
@@ -152,7 +152,9 @@
 
                         <ng-container *ngSwitchCase="'PolymorpheusContent'">
                             <tui-primitive-textfield
-                                *ngIf="isPrimitivePolymorpheusContent(propertyConnector.documentationPropertyValue)"
+                                *ngIf="
+                                    propertyConnector.documentationPropertyValue | tuiIsPrimitivePolymorpheusContentPipe
+                                "
                                 tuiTextfieldSize="m"
                                 [nativeId]="propertyConnector.attrName"
                                 [tuiTextfieldLabelOutside]="true"
