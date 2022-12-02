@@ -27,7 +27,9 @@ export function replaceStyles(): void {
             fullText = fullText
                 .replace(`tui-wrapper`, `${TUI_WARNING_WRAPPER_MIXINS}\n[tuiWrapper]`)
                 .replace(`&[data-state='hovered']`, `&[data-state='hover']`)
-                .replace(`&[data-state='pressed']`, `&[data-state='active']`);
+                .replace(`&[data-state='pressed']`, `&[data-state='active']`)
+                .replace(`tui-portal-host`, `tui-dropdown-host`)
+                .replace(`tui-dropdown-box`, `tui-dropdown`);
 
             sourceFile.replaceWithText(
                 fullText.replace(
