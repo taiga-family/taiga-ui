@@ -115,7 +115,7 @@ function replaceMaxLabel(
 function addMinMaxLabelMethod(
     componentPath: string,
     methodName: string,
-    methodCode: string | string[],
+    methodCode: string[] | string,
 ): void {
     const [ngComponent] = getNgComponents(componentPath);
 

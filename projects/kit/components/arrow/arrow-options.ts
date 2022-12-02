@@ -34,10 +34,10 @@ export const tuiArrowOptionsProvider: (
 
 export interface TuiArrowMode {
     readonly interactive: PolymorpheusContent<
-        TuiContextWithImplicit<TuiSizeS | TuiSizeM | TuiSizeL>
+        TuiContextWithImplicit<TuiSizeL | TuiSizeM | TuiSizeS>
     >;
     readonly disabled: PolymorpheusContent<
-        TuiContextWithImplicit<TuiSizeS | TuiSizeM | TuiSizeL>
+        TuiContextWithImplicit<TuiSizeL | TuiSizeM | TuiSizeS>
     >;
 }
 

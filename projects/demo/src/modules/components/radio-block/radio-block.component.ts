@@ -50,9 +50,9 @@ export class ExampleTuiRadioBlockComponent extends AbstractExampleTuiControl {
 
     hideRadio = false;
 
-    override readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
+    override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [`s`, `m`, `l`];
 
-    override size: TuiSizeS | TuiSizeL = this.sizeVariants[2];
+    override size: TuiSizeL | TuiSizeS = this.sizeVariants[2];
 
     pseudoDisabled = false;
 

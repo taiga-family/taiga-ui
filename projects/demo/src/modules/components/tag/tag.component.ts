@@ -84,9 +84,9 @@ export class ExampleTuiTagComponent {
 
     status = this.statusVariants[0];
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
+    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [`s`, `m`, `l`];
 
-    size: TuiSizeS | TuiSizeL = this.sizeVariants[1];
+    size: TuiSizeL | TuiSizeS = this.sizeVariants[1];
 
     readonly leftContentVariants = [``, `Error icon`];
 

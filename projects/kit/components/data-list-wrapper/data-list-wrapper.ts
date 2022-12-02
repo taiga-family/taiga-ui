@@ -37,11 +37,11 @@ export abstract class AbstractTuiDataListWrapper<T> {
 
     @Input()
     @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeL = this.defaultSize;
+    size: TuiSizeL | TuiSizeXS = this.defaultSize;
 
     protected constructor(
         protected readonly itemsHandlers: TuiItemsHandlers<T>,
-        protected readonly defaultSize: TuiSizeXS | TuiSizeL,
+        protected readonly defaultSize: TuiSizeL | TuiSizeXS,
     ) {}
 
     @Input()

@@ -75,14 +75,14 @@ export class TuiCustomizationComponent implements AfterViewInit {
         return key.includes(`onLight`);
     }
 
-    onModelChange(variable: string, value: string | number): void {
+    onModelChange(variable: string, value: number | string): void {
         this.variables = {
             ...this.variables,
             [variable]: tuiIsString(value) ? value : tuiPx(value),
         };
     }
 
-    getType(key: string): 'number' | 'color' | 'string' {
+    getType(key: string): 'color' | 'number' | 'string' {
         const variable = this.variables[key];
 
         if (key.includes(`boxshadow`)) {
@@ -94,7 +94,7 @@ export class TuiCustomizationComponent implements AfterViewInit {
             : `number`;
     }
 
-    getVariable(key: string): string | number {
+    getVariable(key: string): number | string {
         const variable = this.variables[key];
 
         return variable.includes(`px`) ? Number.parseInt(variable, 10) : variable;

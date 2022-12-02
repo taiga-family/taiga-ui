@@ -50,12 +50,12 @@ export class TuiMultiSelectExample4 {
 
     // Stringify mapper that turns IDs to names
     readonly stringify$: Observable<
-        TuiHandler<number | TuiContextWithImplicit<number>, string>
+        TuiHandler<TuiContextWithImplicit<number> | number, string>
     > = this.server$.pipe(
         map(items => new Map(items.map<[number, string]>(({id, name}) => [id, name]))),
         startWith(new Map()),
         map(
-            map => (id: number | TuiContextWithImplicit<number>) =>
+            map => (id: TuiContextWithImplicit<number> | number) =>
                 (tuiIsNumber(id) ? map.get(id) : map.get(id.$implicit)) || `Loading...`,
         ),
     );

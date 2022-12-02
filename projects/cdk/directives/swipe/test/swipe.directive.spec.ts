@@ -72,7 +72,7 @@ xdescribe(`TuiSwipe directive`, () => {
         x: number,
         y: number,
         element: HTMLElement,
-        eventType: 'touchstart' | 'touchend',
+        eventType: 'touchend' | 'touchstart',
         identifier: number,
     ): void {
         const touchObj = new Touch({

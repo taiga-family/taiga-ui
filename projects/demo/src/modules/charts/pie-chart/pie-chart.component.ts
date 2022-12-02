@@ -40,7 +40,7 @@ export class ExampleTuiPieChartComponent {
 
     activeItemIndex = this.activeItemIndexVariants[0];
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeXS | TuiSizeXL> = [
+    readonly sizeVariants: ReadonlyArray<TuiSizeXL | TuiSizeXS> = [
         `xs`,
         `s`,
         `m`,

@@ -90,7 +90,7 @@ export class TuiInputPhoneInternationalComponent
     open = false;
 
     readonly arrow: PolymorpheusContent<
-        TuiContextWithImplicit<TuiSizeS | TuiSizeM | TuiSizeL>
+        TuiContextWithImplicit<TuiSizeL | TuiSizeM | TuiSizeS>
     > = TUI_ARROW;
 
     constructor(

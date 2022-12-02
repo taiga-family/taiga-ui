@@ -48,7 +48,7 @@ export class ExampleTuiBadgeComponent {
 
     status = this.statusVariants[0];
 
-    values: {[key: string]: string | number} = {
+    values: {[key: string]: number | string} = {
         Taiga: `Taiga`,
         '5': 5,
         '100': 100,
@@ -56,13 +56,13 @@ export class ExampleTuiBadgeComponent {
         '""': ``,
     };
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeXS | TuiSizeL> = [`xs`, `s`, `m`, `l`];
+    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeXS> = [`xs`, `s`, `m`, `l`];
 
-    size: TuiSizeXS | TuiSizeL = this.sizeVariants[1];
+    size: TuiSizeL | TuiSizeXS = this.sizeVariants[1];
 
-    valueVariants: ReadonlyArray<string | number> = Object.keys(this.values);
+    valueVariants: ReadonlyArray<number | string> = Object.keys(this.values);
 
-    value: string | number = `Taiga`;
+    value: number | string = `Taiga`;
 
     hoverable = false;
 

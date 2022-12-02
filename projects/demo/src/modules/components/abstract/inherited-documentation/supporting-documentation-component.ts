@@ -3,6 +3,4 @@ import {AbstractExampleTuiHint} from '../hint';
 import {AbstractExampleTuiInteractive} from '../interactive';
 
 export type TuiSupportingDocumentationComponent =
-    | AbstractExampleTuiInteractive
-    | AbstractExampleTuiControl
-    | AbstractExampleTuiHint;
+    AbstractExampleTuiControl | AbstractExampleTuiHint | AbstractExampleTuiInteractive;

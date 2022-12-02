@@ -13,7 +13,7 @@ import {map} from 'rxjs/operators';
  * @internal
  */
 export function tuiControlValueFactory<
-    T extends TuiDayRange | TuiDay | [TuiDay | null, TuiTime | null],
+    T extends TuiDay | TuiDayRange | [TuiDay | null, TuiTime | null],
 >(
     control: NgControl | null,
     valueTransformer?: TuiControlValueTransformer<T> | null,

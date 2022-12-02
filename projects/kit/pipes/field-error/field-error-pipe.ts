@@ -42,7 +42,7 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
         @Inject(TUI_VALIDATION_ERRORS)
         private readonly validationErrors: Record<
             string,
-            PolymorpheusContent | Observable<PolymorpheusContent>
+            Observable<PolymorpheusContent> | PolymorpheusContent
         >,
     ) {
         if (this.ngControl && !this.ngControl.valueAccessor) {
@@ -121,7 +121,7 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
     @tuiPure
     private getError(
         firstError: any,
-        errorContent?: PolymorpheusContent | Observable<PolymorpheusContent>,
+        errorContent?: Observable<PolymorpheusContent> | PolymorpheusContent,
     ): Observable<TuiValidationError> {
         if (firstError instanceof TuiValidationError) {
             return of(firstError);

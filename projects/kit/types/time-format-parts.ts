@@ -1,1 +1,1 @@
-export type TuiTimeFormatParts = 'HH' | 'MM' | 'SS' | 'MS';
+export type TuiTimeFormatParts = 'HH' | 'MM' | 'MS' | 'SS';

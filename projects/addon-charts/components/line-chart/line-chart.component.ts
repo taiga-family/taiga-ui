@@ -188,7 +188,7 @@ export class TuiLineChartComponent {
     getContentContext(
         $implicit: TuiPoint,
         index: number,
-    ): TuiLineChartHintContext<readonly TuiPoint[] | TuiPoint> {
+    ): TuiLineChartHintContext<TuiPoint | readonly TuiPoint[]> {
         return (
             this.hintDirective?.getContext(this.value.indexOf($implicit), this) || {
                 $implicit,

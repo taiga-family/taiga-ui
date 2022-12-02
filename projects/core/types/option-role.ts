@@ -1,1 +1,1 @@
-export type TuiOptionRole = 'option' | 'menuitem' | 'menuitemradio' | 'menuitemcheckbox';
+export type TuiOptionRole = 'menuitem' | 'menuitemcheckbox' | 'menuitemradio' | 'option';

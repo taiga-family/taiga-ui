@@ -1,1 +1,1 @@
-export type TuiStepState = 'normal' | 'error' | 'pass';
+export type TuiStepState = 'error' | 'normal' | 'pass';

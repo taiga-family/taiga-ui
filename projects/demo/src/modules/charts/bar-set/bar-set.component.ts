@@ -45,9 +45,9 @@ export class ExampleTuiBarSetComponent {
 
     collapsed = false;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
+    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [`s`, `m`, `l`];
 
-    size: TuiSizeS | TuiSizeL | null = null;
+    size: TuiSizeL | TuiSizeS | null = null;
 
     readonly valueVariants = [
         [30, 20, 10],

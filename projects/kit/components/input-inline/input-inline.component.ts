@@ -31,7 +31,7 @@ import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit/providers';
     ],
 })
 export class TuiInputInlineComponent
-    extends AbstractTuiControl<string | number>
+    extends AbstractTuiControl<number | string>
     implements TuiFocusableElementAccessor
 {
     @ViewChild(`native`)

@@ -108,7 +108,7 @@ export class TuiInputTagComponent
 
     @Input()
     @tuiDefaultProp()
-    separator: string | RegExp = this.options.separator;
+    separator: RegExp | string = this.options.separator;
 
     @Input()
     @tuiDefaultProp()
@@ -145,7 +145,7 @@ export class TuiInputTagComponent
 
     @Input()
     @tuiDefaultProp()
-    disabledItemHandler: TuiBooleanHandler<string | TuiStringifiableItem<any>> =
+    disabledItemHandler: TuiBooleanHandler<TuiStringifiableItem<any> | string> =
         ALWAYS_FALSE_HANDLER;
 
     @Input(`pseudoFocused`)
@@ -228,11 +228,11 @@ export class TuiInputTagComponent
         return size === `s` || labelOutside;
     }
 
-    get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
+    get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
         return this.controller.icon;
     }
 
-    get iconLeft(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
+    get iconLeft(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
         return this.controller.iconLeft;
     }
 
@@ -378,7 +378,7 @@ export class TuiInputTagComponent
                               .filter(Boolean),
                 )
                 .reduce<string[]>(
-                    (result, item: string | string[]) => result.concat(item),
+                    (result, item: string[] | string) => result.concat(item),
                     [],
                 ),
         );

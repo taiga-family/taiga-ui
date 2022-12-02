@@ -1,1 +1,1 @@
-export type TuiTimeMode = 'HH:MM' | 'HH:MM:SS' | 'HH:MM:SS.MSS';
+export type TuiTimeMode = 'HH:MM:SS.MSS' | 'HH:MM:SS' | 'HH:MM';

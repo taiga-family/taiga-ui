@@ -17,7 +17,7 @@ export class TuiBarComponent {
     @Input()
     @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeL = `m`;
+    size: TuiSizeL | TuiSizeS = `m`;
 
     getHeight(value: number): number {
         return (100 * value) / this.getSum(this.value);

@@ -77,7 +77,7 @@ export class ExampleTuiButtonComponent extends AbstractExampleTuiInteractive {
 
     appearance = this.appearanceVariants[0];
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeXS | TuiSizeXL> = [
+    readonly sizeVariants: ReadonlyArray<TuiSizeXL | TuiSizeXS> = [
         `xs`,
         `s`,
         `m`,
@@ -85,11 +85,11 @@ export class ExampleTuiButtonComponent extends AbstractExampleTuiInteractive {
         `xl`,
     ];
 
-    size: TuiSizeXS | TuiSizeXL = this.sizeVariants[3];
+    size: TuiSizeXL | TuiSizeXS = this.sizeVariants[3];
 
     readonly shapeVariants = [`square`, `rounded`] as const;
 
-    shape: 'square' | 'rounded' | null = null;
+    shape: 'rounded' | 'square' | null = null;
 
     icon: PolymorpheusContent = ``;
 

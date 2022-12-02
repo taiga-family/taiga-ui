@@ -10,19 +10,7 @@ export const TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES = new InjectionToken<[string, 
 );
 
 export type EditorToolbarTexts =
-    | TuiEditorTool
-    | 'redo'
-    | 'font'
-    | 'fontStyle'
-    | 'justifyLeft'
-    | 'justifyCenter'
-    | 'justifyRight'
-    | 'justifyFull'
-    | 'unorderedList'
-    | 'orderedList'
-    | 'indent'
-    | 'outdent'
-    | 'backColor';
+    TuiEditorTool | 'backColor' | 'font' | 'fontStyle' | 'indent' | 'justifyCenter' | 'justifyFull' | 'justifyLeft' | 'justifyRight' | 'orderedList' | 'outdent' | 'redo' | 'unorderedList';
 
 export const TUI_EDITOR_TOOLBAR_TEXTS = new InjectionToken(
     `[TUI_EDITOR_TOOLBAR_TEXTS]: tui-editor-toolbar i18n`,

@@ -11,7 +11,7 @@ import {TuiDialogService, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 })
 export class TuiDataListExample2 {
     dropdownOpen = false;
-    size: TuiSizeS | TuiSizeL = `s`;
+    size: TuiSizeL | TuiSizeS = `s`;
 
     readonly burgers = [`Classic`, `Cheeseburger`, `Royal Cheeseburger`];
     readonly drinks = [`Cola`, `Tea`, `Coffee`, `Slurm`];

@@ -77,7 +77,7 @@ export class TuiPrimitiveCheckboxComponent {
         return this.value === false;
     }
 
-    private setCurrentIcon(value: null | boolean): void {
+    private setCurrentIcon(value: boolean | null): void {
         this.icon =
             value === null
                 ? this.options.icons.indeterminate

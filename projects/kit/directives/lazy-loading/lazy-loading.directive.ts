@@ -18,7 +18,7 @@ import {TuiLazyLoadingService} from './lazy-loading.service';
 })
 export class TuiLazyLoadingDirective {
     @Input(`src`)
-    set srcSetter(src: string | SafeResourceUrl) {
+    set srcSetter(src: SafeResourceUrl | string) {
         this.src = this.supported ? src : null;
         this.src$.next(src);
     }
@@ -30,7 +30,7 @@ export class TuiLazyLoadingDirective {
     background = `var(--tui-clear-hover)`;
 
     @HostBinding(`attr.src`)
-    src: string | null | SafeResourceUrl = null;
+    src: SafeResourceUrl | string | null = null;
 
     constructor(
         @Inject(TuiLazyLoadingService)

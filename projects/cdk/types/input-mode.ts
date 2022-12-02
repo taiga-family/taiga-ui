@@ -1,9 +1,2 @@
 export type TuiInputMode =
-    | 'none'
-    | 'text'
-    | 'decimal'
-    | 'numeric'
-    | 'tel'
-    | 'email'
-    | 'url'
-    | 'search';
+    'decimal' | 'email' | 'none' | 'numeric' | 'search' | 'tel' | 'text' | 'url';

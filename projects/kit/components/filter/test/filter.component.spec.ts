@@ -47,7 +47,7 @@ describe(`Filter`, () => {
 
         control = new FormControl([]);
 
-        items: readonly string[] | readonly ItemWithBadge[] = ARR_STRING;
+        items: readonly ItemWithBadge[] | readonly string[] = ARR_STRING;
 
         size: TuiSizeS = `m`;
 
@@ -56,7 +56,7 @@ describe(`Filter`, () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let component: TuiFilterComponent<string | ItemWithBadge>;
+    let component: TuiFilterComponent<ItemWithBadge | string>;
     let pageObject: TuiPageObject<TestComponent>;
     const testContext = {
         get prefix() {

@@ -125,10 +125,10 @@ export function tuiCreateNumberMask({
 }
 
 function preventLeadingZeroes(
-    mask: Array<string | RegExp>,
+    mask: Array<RegExp | string>,
     isOnlyZeroDigit: boolean = false,
     leadingZerosAmount: number = 0,
-): Array<string | RegExp> {
+): Array<RegExp | string> {
     if (isOnlyZeroDigit || leadingZerosAmount === 0) {
         return mask;
     }
@@ -184,7 +184,7 @@ function isDecimalSymbol(
     return str === decimalSymbol;
 }
 
-function convertToMask(strNumber: string): Array<string | RegExp> {
+function convertToMask(strNumber: string): Array<RegExp | string> {
     return strNumber
         .split(``)
         .map(char => (TUI_DIGIT_REGEXP.test(char) ? TUI_DIGIT_REGEXP : char));

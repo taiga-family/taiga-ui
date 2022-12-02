@@ -24,11 +24,11 @@ export abstract class AbstractTuiFilterByInput {
 
     @tuiPure
     protected filter<T>(
-        items: readonly T[] | ReadonlyArray<readonly T[]> | null,
+        items: ReadonlyArray<readonly T[]> | readonly T[] | null,
         matcher: TuiStringMatcher<T>,
         stringify: TuiStringHandler<T>,
         query: string,
-    ): readonly T[] | ReadonlyArray<readonly T[]> | null {
+    ): ReadonlyArray<readonly T[]> | readonly T[] | null {
         if (!items) {
             return null;
         }

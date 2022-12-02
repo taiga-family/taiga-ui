@@ -1,1 +1,1 @@
-export type TuiDecimalSymbol = '.' | ',';
+export type TuiDecimalSymbol = ',' | '.';

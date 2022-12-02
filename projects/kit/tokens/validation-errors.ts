@@ -3,7 +3,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
 export const TUI_VALIDATION_ERRORS = new InjectionToken<
-    Record<string, PolymorpheusContent | Observable<PolymorpheusContent>>
+    Record<string, Observable<PolymorpheusContent> | PolymorpheusContent>
 >(`[TUI_VALIDATION_ERRORS]: Validation errors`, {
     factory: () => ({}),
 });

@@ -126,7 +126,7 @@ export class ExampleTuiAlertsComponent {
 
     readonly component: PolymorpheusComponent<
         AlertExampleWithDataComponent,
-        TuiBaseDialogContext<number> & TuiAlertOptions<number>
+        TuiAlertOptions<number> & TuiBaseDialogContext<number>
     >;
 
     constructor(
@@ -141,7 +141,7 @@ export class ExampleTuiAlertsComponent {
     }
 
     get selectedContent(): PolymorpheusContent<
-        TuiBaseDialogContext<number> & TuiAlertOptions<number>
+        TuiAlertOptions<number> & TuiBaseDialogContext<number>
     > {
         return this.content === `String` ? this.content : this.component;
     }

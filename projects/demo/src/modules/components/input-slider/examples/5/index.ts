@@ -20,7 +20,7 @@ export class TuiInputSliderExample5 {
 
     readonly customLabel = ({
         $implicit,
-    }: TuiContextWithImplicit<number>): string | number => {
+    }: TuiContextWithImplicit<number>): number | string => {
         switch ($implicit) {
             case this.max:
                 return `Digits can't describe my love!`;

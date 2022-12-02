@@ -32,12 +32,12 @@ export class TuiTableDirective<
 > extends AbstractTuiController {
     @Input()
     @tuiDefaultProp()
-    columns: ReadonlyArray<keyof T | string> = [];
+    columns: ReadonlyArray<string | keyof T> = [];
 
     @Input()
     @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeL = `m`;
+    size: TuiSizeL | TuiSizeS = `m`;
 
     @Input()
     @tuiDefaultProp()

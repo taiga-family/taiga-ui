@@ -24,7 +24,7 @@ export class TuiSortByDirective<T extends Partial<Record<keyof T, any>>> {
 
     @Input()
     @tuiDefaultProp()
-    tuiSortBy: keyof T | string | null = null;
+    tuiSortBy: string | keyof T | null = null;
 
     @Output()
     readonly tuiSortByChange = this.table.sorterChange.pipe(

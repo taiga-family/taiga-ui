@@ -72,9 +72,9 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];
 
-    readonly itemSizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
+    readonly itemSizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [`s`, `m`, `l`];
 
-    itemSize: TuiSizeS | TuiSizeL = this.itemSizeVariants[1];
+    itemSize: TuiSizeL | TuiSizeS = this.itemSizeVariants[1];
 
     readonly itemsVariants: ReadonlyArray<readonly TuiTime[]> = [
         [],

@@ -38,7 +38,7 @@ const CUSTOM_SVG_NAME = `Bell`;
 export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInteractive {
     @ViewChild(`interactiveContent`)
     private readonly interactiveIcon: PolymorpheusContent<
-        TuiContextWithImplicit<TuiSizeS | TuiSizeL>
+        TuiContextWithImplicit<TuiSizeL | TuiSizeS>
     > = ``;
 
     readonly example1: TuiDocExample = {
@@ -113,7 +113,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     labelOutside = false;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
+    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [`s`, `m`, `l`];
 
     size = this.sizeVariants[2];
 
@@ -137,7 +137,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
             : this.customContentSelected;
     }
 
-    get iconContent(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
+    get iconContent(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
         if (this.selectedIcon === ``) {
             return ``;
         }
@@ -159,7 +159,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
         return this.isBootstrap ? `Type a value` : `Theming sample`;
     }
 
-    get customizationSize(): TuiSizeS | TuiSizeL {
+    get customizationSize(): TuiSizeL | TuiSizeS {
         return this.isBootstrap ? `s` : `l`;
     }
 

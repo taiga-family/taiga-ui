@@ -329,7 +329,7 @@ export class TuiInputDateRangeComponent
         }
     }
 
-    onItemSelect(item: string | TuiDayRangePeriod): void {
+    onItemSelect(item: TuiDayRangePeriod | string): void {
         this.toggle();
         this.focusInput();
 

@@ -13,7 +13,7 @@ export function tuiIsTextfield(
 }
 
 export function tuiIsElement(
-    node?: Node | Element | EventTarget | null,
+    node?: Element | EventTarget | Node | null,
 ): node is Element {
     return !!node && `nodeType` in node && node.nodeType === Node.ELEMENT_NODE;
 }

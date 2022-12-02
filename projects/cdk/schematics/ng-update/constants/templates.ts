@@ -22,7 +22,7 @@ export interface ReplacementTags {
 }
 
 export interface AttributeToDirective {
-    readonly componentSelector: string | string[];
+    readonly componentSelector: string[] | string;
     readonly filterFn?: (element: Element) => boolean;
     readonly inputProperty: string;
     readonly directive: string;

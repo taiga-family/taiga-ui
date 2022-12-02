@@ -72,7 +72,7 @@ export class TuiInputPasswordComponent
         startWith(``),
     );
 
-    readonly type!: TuiContextWithImplicit<TuiSizeS | TuiSizeL>;
+    readonly type!: TuiContextWithImplicit<TuiSizeL | TuiSizeS>;
 
     constructor(
         @Optional()
@@ -105,11 +105,11 @@ export class TuiInputPasswordComponent
         return !!this.textfield && this.textfield.focused;
     }
 
-    get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
+    get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
         return this.isPasswordHidden ? this.options.icons.hide : this.options.icons.show;
     }
 
-    get context(): TuiContextWithImplicit<TuiSizeS | TuiSizeL> {
+    get context(): TuiContextWithImplicit<TuiSizeL | TuiSizeS> {
         return this.getContext(this.textfieldSize.size);
     }
 
@@ -135,8 +135,8 @@ export class TuiInputPasswordComponent
 
     @tuiPure
     private getContext(
-        $implicit: TuiSizeS | TuiSizeL,
-    ): TuiContextWithImplicit<TuiSizeS | TuiSizeL> {
+        $implicit: TuiSizeL | TuiSizeS,
+    ): TuiContextWithImplicit<TuiSizeL | TuiSizeS> {
         return {$implicit};
     }
 }

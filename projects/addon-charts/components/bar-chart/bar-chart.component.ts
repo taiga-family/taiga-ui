@@ -57,7 +57,7 @@ export class TuiBarChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeL | null = `m`;
+    size: TuiSizeL | TuiSizeS | null = `m`;
 
     @Input()
     @tuiDefaultProp()

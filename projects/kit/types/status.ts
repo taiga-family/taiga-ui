@@ -1,9 +1,2 @@
 export type TuiStatus =
-    | 'default'
-    | 'primary'
-    | 'custom'
-    | 'success'
-    | 'error'
-    | 'warning'
-    | 'info'
-    | 'neutral';
+    'custom' | 'default' | 'error' | 'info' | 'neutral' | 'primary' | 'success' | 'warning';

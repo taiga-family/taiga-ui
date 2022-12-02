@@ -61,7 +61,7 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     @Input()
     @HostBinding(`attr.data-host-mode`)
     @tuiDefaultProp()
-    mode: 'positive' | 'negative' | null = null;
+    mode: 'negative' | 'positive' | null = null;
 
     @HostBinding(`class._focus-visible`)
     focusVisible = false;

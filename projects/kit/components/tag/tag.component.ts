@@ -49,7 +49,7 @@ export class TuiTagComponent {
 
     @Input()
     @tuiDefaultProp()
-    separator: string | RegExp = `,`;
+    separator: RegExp | string = `,`;
 
     @Input()
     @tuiDefaultProp()
@@ -58,7 +58,7 @@ export class TuiTagComponent {
     @Input()
     @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeL = this.options.size;
+    size: TuiSizeL | TuiSizeS = this.options.size;
 
     @Input()
     @tuiDefaultProp()

@@ -3,9 +3,7 @@ import {TuiNotification} from '@taiga-ui/core/enums';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export type TuiAlertAutoClose =
-    | boolean
-    | number
-    | TuiHandler<TuiNotification, number | boolean>;
+    TuiHandler<TuiNotification, boolean | number> | boolean | number;
 
 export interface TuiAlertOptions<I> {
     readonly label: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>>;

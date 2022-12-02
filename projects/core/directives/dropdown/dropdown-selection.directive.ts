@@ -75,7 +75,7 @@ export class TuiDropdownSelectionDirective
 
     @Input(`tuiDropdownSelectionPosition`)
     @tuiDefaultProp()
-    position: 'selection' | 'word' | 'tag' = `selection`;
+    position: 'selection' | 'tag' | 'word' = `selection`;
 
     @Input()
     set tuiDropdownSelection(visible: TuiBooleanHandler<Range> | string) {

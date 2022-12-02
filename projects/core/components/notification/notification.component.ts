@@ -37,7 +37,7 @@ export class TuiNotificationComponent {
     @Input()
     @HostBinding(`attr.data-tui-host-status`)
     @tuiDefaultProp()
-    status: 'info' | 'error' | 'warning' | 'success' = this.options.status;
+    status: 'error' | 'info' | 'success' | 'warning' = this.options.status;
 
     @Output()
     readonly close = new EventEmitter<void>();

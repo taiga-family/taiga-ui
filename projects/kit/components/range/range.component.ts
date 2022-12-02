@@ -77,7 +77,7 @@ export class TuiRangeComponent
     @ViewChildren(TuiSliderComponent, {read: ElementRef})
     slidersRefs: QueryList<ElementRef<HTMLInputElement>> = EMPTY_QUERY;
 
-    lastActiveThumb: 'right' | 'left' = `right`;
+    lastActiveThumb: 'left' | 'right' = `right`;
 
     constructor(
         @Optional()

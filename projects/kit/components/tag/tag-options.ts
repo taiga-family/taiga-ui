@@ -3,7 +3,7 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit/types';
 
 export interface TuiTagOptions {
-    readonly size: TuiSizeS | TuiSizeL;
+    readonly size: TuiSizeL | TuiSizeS;
     readonly status: TuiStatus;
     readonly autoColor: boolean;
 }

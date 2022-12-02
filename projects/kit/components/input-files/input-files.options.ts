@@ -7,7 +7,7 @@ export interface TuiInputFilesOptions {
      * user - The user-facing camera and/or microphone should be used.
      * environment - The outward-facing camera and/or microphone should be used
      */
-    capture: 'user' | 'environment' | null;
+    capture: 'environment' | 'user' | null;
     accepts: string;
     multiple: boolean;
     size: TuiSizeL;

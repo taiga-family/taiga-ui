@@ -84,7 +84,7 @@ describe(`TuiHostedDropdown`, () => {
 
         open = false;
         items = [`Item 1`, `Item 2`];
-        mode: 'default' | 'input' | 'targeted' | 'can-not-open' = `default`;
+        mode: 'can-not-open' | 'default' | 'input' | 'targeted' = `default`;
         canOpen = true;
 
         escCatched = false;

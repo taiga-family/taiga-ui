@@ -27,7 +27,7 @@ const APP_COMP_META = {
 export class TuiStackblitzService implements TuiCodeEditor {
     private readonly stacklitzProjectConfigs: Pick<
         Project,
-        'template' | 'dependencies' | 'tags'
+        'dependencies' | 'tags' | 'template'
     > = {
         template: `angular-cli`,
         dependencies: STACKBLITZ_DEPS,
@@ -91,7 +91,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
     }
 
     async openStarter(
-        {title, description, files}: Pick<Project, 'title' | 'description' | 'files'>,
+        {title, description, files}: Pick<Project, 'description' | 'files' | 'title'>,
         openOptions?: OpenOptions,
     ): Promise<void> {
         return stackblitz.openProject(

@@ -15,7 +15,7 @@ interface TestComponent {
     control?: FormControl;
     value?: unknown;
     labelOutside: boolean;
-    size: 's' | 'm' | 'l';
+    size: 'l' | 'm' | 's';
 }
 
 export function tuiTestPlaceholder(

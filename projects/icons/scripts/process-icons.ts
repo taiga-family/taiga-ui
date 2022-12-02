@@ -41,7 +41,7 @@ export function processIcons(files: string[], interceptor?: ContentInterceptor):
     }
 }
 
-function wrapIcon(source: string, name: string): string | WrappedContent {
+function wrapIcon(source: string, name: string): WrappedContent | string {
     const src = source.slice(Math.max(0, source.indexOf(START)));
     const attributes = src.slice(0, Math.max(0, src.indexOf(`>`)));
 

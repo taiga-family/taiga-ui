@@ -125,7 +125,7 @@ export class TuiYear implements TuiYearLike {
      * Depending on the argument, the method can return either a string or a number.
      * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/@@toPrimitive
      */
-    [Symbol.toPrimitive](hint: string): string | number {
+    [Symbol.toPrimitive](hint: string): number | string {
         return Date.prototype[Symbol.toPrimitive].call(this, hint);
     }
 

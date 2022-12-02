@@ -23,7 +23,7 @@ export class TuiMobileTabsDirective {
     }
 
     @HostBinding(`attr.data-platform`)
-    get platform(): 'ios' | 'android' | null {
+    get platform(): 'android' | 'ios' | null {
         if (this.isIos) {
             return `ios`;
         }

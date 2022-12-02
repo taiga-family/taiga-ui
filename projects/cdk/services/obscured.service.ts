@@ -23,8 +23,8 @@ import {TuiParentsScrollService} from './parents-scroll.service';
  * of elements that overlap given element edges
  */
 @Injectable()
-export class TuiObscuredService extends Observable<null | readonly Element[]> {
-    private readonly obscured$: Observable<null | readonly Element[]>;
+export class TuiObscuredService extends Observable<readonly Element[] | null> {
+    private readonly obscured$: Observable<readonly Element[] | null>;
 
     constructor(
         @Inject(TuiParentsScrollService)

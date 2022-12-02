@@ -56,7 +56,7 @@ xdescribe(`TuiPan directive`, () => {
         x: number,
         y: number,
         element: HTMLElement,
-        eventType: 'touchstart' | 'touchend' | 'touchmove',
+        eventType: 'touchend' | 'touchmove' | 'touchstart',
     ): void {
         const touchObj = new Touch({
             identifier: Date.now(),

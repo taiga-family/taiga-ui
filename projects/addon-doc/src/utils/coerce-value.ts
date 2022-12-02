@@ -1,6 +1,6 @@
 export function tuiCoerceValue<T>(
     value?: T,
-): T | number | string | boolean | null | Record<string, any> {
+): Record<string, any> | T | boolean | number | string | null {
     const prepared = String(value).trim();
 
     if (isEmptyParamValue(prepared)) {

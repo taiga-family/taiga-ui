@@ -53,7 +53,7 @@ describe(`Select`, () => {
     })
     class TestComponent {
         @ViewChild(TuiSelectComponent, {static: true})
-        component!: TuiSelectComponent<string | Beast>;
+        component!: TuiSelectComponent<Beast | string>;
 
         items = ITEMS;
         control = new FormControl();

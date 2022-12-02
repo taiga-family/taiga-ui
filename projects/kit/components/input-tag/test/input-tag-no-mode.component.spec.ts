@@ -33,7 +33,7 @@ describe(`InputTag [TUI_TAG_STATUS=neutral]`, () => {
         tags = [`Tag1`, `Tag2`];
 
         labelOutside = true;
-        size: TuiSizeS | TuiSizeL = `s`;
+        size: TuiSizeL | TuiSizeS = `s`;
     }
 
     let fixture: ComponentFixture<TestComponent>;

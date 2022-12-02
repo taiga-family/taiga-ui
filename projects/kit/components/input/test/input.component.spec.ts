@@ -85,7 +85,7 @@ describe(`Input`, () => {
 
         items: User[] | null = ITEMS;
 
-        size: TuiSizeS | TuiSizeL = `m`;
+        size: TuiSizeL | TuiSizeS = `m`;
 
         hintContent: string | null = `prompt`;
 

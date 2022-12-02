@@ -149,7 +149,7 @@ export class TuiMultiSelectComponent<T>
     }
 
     get arrow(): PolymorpheusContent<
-        TuiContextWithImplicit<TuiSizeS | TuiSizeM | TuiSizeL>
+        TuiContextWithImplicit<TuiSizeL | TuiSizeM | TuiSizeS>
     > {
         return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
     }
@@ -203,7 +203,7 @@ export class TuiMultiSelectComponent<T>
 
     readonly disabledItemHandlerWrapper: TuiMapper<
         TuiBooleanHandler<T>,
-        TuiBooleanHandler<string | TuiStringifiableItem<T>>
+        TuiBooleanHandler<TuiStringifiableItem<T> | string>
     > = handler => stringifiable =>
         tuiIsString(stringifiable) || handler(stringifiable.item);
 

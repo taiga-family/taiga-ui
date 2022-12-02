@@ -5,8 +5,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputPasswordOptions {
     readonly icons: Readonly<{
-        hide: PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>>;
-        show: PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>>;
+        hide: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>>;
+        show: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>>;
     }>;
 }
 

@@ -20,7 +20,7 @@ export class TuiBarSetComponent {
 
     @Input()
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeL | null = `m`;
+    size: TuiSizeL | TuiSizeS | null = `m`;
 
     @Input()
     @tuiDefaultProp()
@@ -34,7 +34,7 @@ export class TuiBarSetComponent {
         return this.collapsed ? this.value : EMPTY_ARRAY;
     }
 
-    get computedSize(): TuiSizeS | TuiSizeL {
+    get computedSize(): TuiSizeL | TuiSizeS {
         return this.size || `m`;
     }
 

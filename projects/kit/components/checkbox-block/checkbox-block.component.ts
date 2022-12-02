@@ -58,7 +58,7 @@ export class TuiCheckboxBlockComponent
     @Input()
     @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeL = `l`;
+    size: TuiSizeL | TuiSizeS = `l`;
 
     constructor(
         @Optional()

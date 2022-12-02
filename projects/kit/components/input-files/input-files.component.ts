@@ -109,14 +109,7 @@ export class TuiInputFilesComponent
         @Inject(TUI_INPUT_FILE_TEXTS)
         readonly inputFileTexts$: Observable<
             Record<
-                | 'defaultLabelSingle'
-                | 'defaultLabelMultiple'
-                | 'defaultLinkSingle'
-                | 'defaultLinkMultiple'
-                | 'maxSizeRejectionReason'
-                | 'formatRejectionReason'
-                | 'drop'
-                | 'dropMultiple',
+                'defaultLabelMultiple' | 'defaultLabelSingle' | 'defaultLinkMultiple' | 'defaultLinkSingle' | 'drop' | 'dropMultiple' | 'formatRejectionReason' | 'maxSizeRejectionReason',
                 string
             >
         >,
@@ -263,7 +256,7 @@ export class TuiInputFilesComponent
         }
 
         const errors: Record<
-            'maxSizeRejection' | 'formatRejection',
+            'formatRejection' | 'maxSizeRejection',
             PolymorpheusContent
         > = {
             formatRejection: this.formatRejection,

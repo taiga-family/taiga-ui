@@ -49,7 +49,7 @@ export class ExampleTuiFilterComponent {
 
     initialItems = [`Alex Inkin`, `Roman Sedov`];
 
-    itemsVariants: Array<ReadonlyArray<string | ItemWithBadge>> = [
+    itemsVariants: Array<ReadonlyArray<ItemWithBadge | string>> = [
         [`Alex Inkin`, `Roman Sedov`],
         [
             new ItemWithBadge(`Focused Zone`, 10),
@@ -67,7 +67,7 @@ export class ExampleTuiFilterComponent {
     badgeHandler = this.badgeHandlerVariants[0];
 
     disabledItemHandlerVariants: ReadonlyArray<
-        TuiBooleanHandler<string | ItemWithBadge>
+        TuiBooleanHandler<ItemWithBadge | string>
     > = [
         ALWAYS_FALSE_HANDLER,
         item => item === `Roman Sedov`,
@@ -80,9 +80,9 @@ export class ExampleTuiFilterComponent {
 
     control = new FormControl(this.initialItems);
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
+    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [`s`, `m`, `l`];
 
-    size: TuiSizeS | TuiSizeL = this.sizeVariants[1];
+    size: TuiSizeL | TuiSizeS = this.sizeVariants[1];
 
     constructor(
         @Inject(TuiAlertService)

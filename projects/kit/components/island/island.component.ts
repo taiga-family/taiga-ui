@@ -18,7 +18,7 @@ export class TuiIslandComponent {
 
     @Input()
     @tuiDefaultProp()
-    textAlign: 'left' | 'right' | 'center' = `left`;
+    textAlign: 'center' | 'left' | 'right' = `left`;
 
     @Input()
     @HostBinding(`class.tui-island_hoverable`)

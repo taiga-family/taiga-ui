@@ -37,7 +37,7 @@ export class TuiTrComponent<T extends Partial<Record<keyof T, any>>>
         map(cells =>
             cells.reduce(
                 (record, item) => ({...record, [item.tuiCell]: item}),
-                {} as Record<keyof T | string, TuiCellDirective>,
+                {} as Record<string | keyof T, TuiCellDirective>,
             ),
         ),
     );
@@ -50,7 +50,7 @@ export class TuiTrComponent<T extends Partial<Record<keyof T, any>>>
                  * TODO v4.0 replace `this.body.sorted` with `this.body.data` (dont forget to drop `sorted`-getter).
                  */
                 this.body.sorted[rows.findIndex(row => row === this)] as Record<
-                    keyof T | string,
+                    string | keyof T,
                     any
                 >,
         ),

@@ -1,1 +1,1 @@
-export type TuiDropdownPosition = 'selection' | 'word' | 'tag';
+export type TuiDropdownPosition = 'selection' | 'tag' | 'word';

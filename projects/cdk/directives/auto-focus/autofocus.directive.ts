@@ -13,7 +13,7 @@ import {
 })
 export class TuiAutoFocusDirective implements AfterViewInit {
     @Input(`tuiAutoFocus`)
-    autoFocus: '' | boolean = true;
+    autoFocus: boolean | '' = true;
 
     constructor(
         @Inject(TUI_AUTOFOCUS_HANDLER) private readonly handler: TuiAutofocusHandler,
