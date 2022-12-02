@@ -5,7 +5,9 @@
     <tui-tile
         *ngFor="let item of items"
         tuiTileHandle
+        class="tile"
+        [class.tile_tall]="item === 'John Cleese'"
     >
-        <div class="tile">{{ item }}</div>
+        <div class="content">{{ item }}</div>
     </tui-tile>
 </tui-tiles>

@@ -2,13 +2,21 @@
 
 .tiles {
     width: 10rem;
-    gap: 10px;
+    gap: 1rem;
     grid-auto-rows: minmax(var(--tui-height-m), auto);
 }
 
-.tile {
+@media @tui-mobile {
+    .tile_tall {
+        --tui-height: 2;
+    }
+}
+
+.content {
     .transition(box-shadow);
-    line-height: var(--tui-height-m);
+    height: 100%;
+    display: flex;
+    align-items: center;
     padding: 0 1rem;
     background: var(--tui-base-01);
     border-radius: var(--tui-radius-l);

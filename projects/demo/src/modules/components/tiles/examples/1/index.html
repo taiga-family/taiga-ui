@@ -6,8 +6,8 @@
     <tui-tile
         *ngFor="let item of items; let index = index"
         class="tile"
-        [style.gridColumn]="'span ' + item.w"
-        [style.gridRow]="'span ' + item.h"
+        [width]="item.w"
+        [height]="item.h"
     >
         <div class="content">
             <tui-svg
