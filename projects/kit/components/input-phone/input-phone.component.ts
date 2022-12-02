@@ -216,7 +216,9 @@ export class TuiInputPhoneComponent
     onValueChange(value: string): void {
         value = value === `` ? this.countryCode : value;
 
-        const parsed = isText(value) ? value : value.replace(TUI_MASK_SYMBOLS_REGEXP, ``);
+        const parsed = isText(value)
+            ? value
+            : value.replace(TUI_MASK_SYMBOLS_REGEXP, ``).slice(0, this.maxPhoneLength);
 
         this.updateSearch(parsed);
         this.updateValue(parsed === this.countryCode || isText(parsed) ? `` : parsed);

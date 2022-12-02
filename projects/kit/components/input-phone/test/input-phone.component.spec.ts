@@ -232,6 +232,14 @@ describe(`InputPhone`, () => {
         });
     });
 
+    describe(`Entering a long phone number (more than mask allow)`, () => {
+        it(`A long phone number is truncated`, () => {
+            component.onValueChange(`+712345678901`);
+            fixture.detectChanges();
+            expect(testComponent.control.value).toBe(`+71234567890`);
+        });
+    });
+
     describe(`Drag & Drop Phone Input`, () => {
         beforeEach(() => {
             testComponent.control.setValue(``);
