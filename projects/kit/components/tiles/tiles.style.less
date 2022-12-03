@@ -26,10 +26,13 @@ tui-tile {
     & > .t-wrapper {
         position: absolute;
         z-index: 0;
+        border-radius: inherit;
+        overflow: hidden;
     }
 
     &._dragged > .t-wrapper {
         z-index: 1;
         transition: none;
+        pointer-events: none;
     }
 }
