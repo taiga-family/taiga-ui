@@ -13,7 +13,7 @@ import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
-import {tuiDefaultProp, TuiResizeService} from '@taiga-ui/cdk';
+import {tuiDefaultProp, TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
 import {Subject, timer} from 'rxjs';
 import {debounce, filter, map} from 'rxjs/operators';
 
@@ -26,6 +26,7 @@ import {debounce, filter, map} from 'rxjs/operators';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        TuiDestroyService,
         TuiResizeService,
         MutationObserverService,
         {

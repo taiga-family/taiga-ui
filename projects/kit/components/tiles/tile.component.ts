@@ -63,12 +63,12 @@ export class TuiTileComponent {
 
     @HostBinding(`style.gridColumn`)
     get column(): string {
-        return `span ${this.width}`;
+        return `span var(--tui-width, ${this.width})`;
     }
 
     @HostBinding(`style.gridRow`)
     get row(): string {
-        return `span ${this.height}`;
+        return `span var(--tui-height, ${this.height})`;
     }
 
     get element(): HTMLElement {
