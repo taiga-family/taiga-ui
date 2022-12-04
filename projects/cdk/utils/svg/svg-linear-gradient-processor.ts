@@ -1,3 +1,5 @@
+import {SafeHtml} from '@angular/platform-browser';
+
 /**
  * @description:
  * Any ‘linearGradient’ attributes which are defined on the referenced
@@ -13,19 +15,23 @@
  *
  */
 export function tuiSvgLinearGradientProcessor(
-    svg: string,
+    svg: SafeHtml | string,
     salt?: number | string,
-): string {
-    const uniqueIds = extractLinearGradientIdsFromSvg(svg);
+): SafeHtml | string {
+    if (typeof svg === `string`) {
+        const uniqueIds = extractLinearGradientIdsFromSvg(svg);
 
-    return uniqueIds.reduce(
-        (processed, previousId) =>
-            processed.replace(
-                new RegExp(previousId, `g`),
-                `${previousId}_${salt || makeRandomSalt()}`,
-            ),
-        svg,
-    );
+        return uniqueIds.reduce(
+            (processed, previousId) =>
+                processed.replace(
+                    new RegExp(previousId, `g`),
+                    `${previousId}_${salt || makeRandomSalt()}`,
+                ),
+            svg,
+        );
+    }
+
+    return svg;
 }
 
 function makeRandomSalt(): number {

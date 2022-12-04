@@ -14,6 +14,8 @@ import {WINDOW} from '@ng-web-apis/common';
 import {
     tuiAssert,
     tuiGetDocumentOrShadowRoot,
+    TuiInjectionTokenType,
+    tuiIsString,
     tuiPure,
     tuiRequiredSetter,
     TuiStaticRequestService,
@@ -45,8 +47,7 @@ const FAILED_EXTERNAL_ICON = `Failed to load external SVG`;
 })
 export class TuiSvgComponent {
     private readonly src$ = new ReplaySubject<void>(1);
-    private icon = ``;
-
+    private icon: SafeHtml | string = ``;
     readonly innerHTML$: Observable<SafeHtml>;
 
     constructor(
@@ -62,39 +63,56 @@ export class TuiSvgComponent {
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(ElementRef) private readonly elementRef: ElementRef<Element>,
         @Inject(TUI_SVG_SRC_PROCESSOR)
-        private readonly srcProcessor: TuiStringHandler<string>,
+        private readonly srcProcessor: TuiInjectionTokenType<
+            typeof TUI_SVG_SRC_PROCESSOR
+        >,
         @Inject(TUI_SVG_CONTENT_PROCESSOR)
-        private readonly contentProcessor: TuiStringHandler<string>,
+        private readonly contentProcessor: TuiInjectionTokenType<
+            typeof TUI_SVG_CONTENT_PROCESSOR
+        >,
     ) {
         this.innerHTML$ = this.src$.pipe(
-            switchMap(() =>
-                this.isExternal
-                    ? this.getExternalIcon(this.icon)
-                    : of(this.getSafeHtml(this.icon)),
-            ),
+            switchMap(() => {
+                if (tuiIsString(this.icon)) {
+                    return this.isExternal
+                        ? this.getExternalIcon(this.icon)
+                        : of(this.getSafeHtml(this.icon));
+                }
+
+                return of(this.icon);
+            }),
             startWith(``),
         );
     }
 
     @Input()
     @tuiRequiredSetter()
-    set src(src: string) {
+    set src(src: SafeHtml | string) {
         this.icon = this.srcProcessor(src);
         this.src$.next();
     }
 
-    get src(): string {
+    get src(): SafeHtml | string {
         return this.icon;
     }
 
     get use(): string {
-        return this.icon.includes(`.svg#`)
-            ? this.icon
-            : this.resolveName(this.icon, this.iconsPath);
+        if (tuiIsString(this.icon)) {
+            return this.icon.includes(`.svg#`)
+                ? this.icon
+                : this.resolveName(this.icon, this.iconsPath);
+        }
+
+        return ``;
     }
 
     get isInnerHTML(): boolean {
-        return this.isSrc || this.isExternal || (this.isName && this.isShadowDOM);
+        return (
+            !tuiIsString(this.icon) ||
+            this.isSrc ||
+            this.isExternal ||
+            (this.isName && this.isShadowDOM)
+        );
     }
 
     private get isShadowDOM(): boolean {
@@ -112,11 +130,11 @@ export class TuiSvgComponent {
     }
 
     private get isUrl(): boolean {
-        return this.icon.endsWith(`.svg`);
+        return tuiIsString(this.icon) && this.icon.endsWith(`.svg`);
     }
 
     private get isSrc(): boolean {
-        return tuiIsPresumedHTMLString(this.icon);
+        return tuiIsString(this.icon) && tuiIsPresumedHTMLString(this.icon);
     }
 
     private get isName(): boolean {
@@ -140,7 +158,7 @@ export class TuiSvgComponent {
             bubbles: true,
             detail: {
                 message,
-                icon,
+                icon: icon as string,
             },
         });
 
@@ -168,10 +186,10 @@ export class TuiSvgComponent {
         return !this.isShadowDOM || !this.isName ? `` : this.sanitize(icon || ``);
     }
 
-    private sanitize(src: string): SafeHtml | string {
+    private sanitize(src: SafeHtml | string): SafeHtml | string {
         src = this.contentProcessor(src);
 
-        return this.tuiSanitizer
+        return this.tuiSanitizer && tuiIsString(src)
             ? this.sanitizer.bypassSecurityTrustHtml(
                   this.tuiSanitizer.sanitize(SecurityContext.HTML, src) || ``,
               )

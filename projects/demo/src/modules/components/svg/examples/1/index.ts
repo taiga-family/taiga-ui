@@ -1,4 +1,5 @@
 import {Component, Inject} from '@angular/core';
+import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
@@ -19,9 +20,12 @@ export class TuiSvgExample1 {
 
     readonly imageUrl = assets`/images/ts.svg#ts`;
 
-    readonly tuiIconTimeLarge = tuiIconTimeLarge;
+    readonly tuiIconTimeLarge = this.sanitizer.bypassSecurityTrustHtml(tuiIconTimeLarge);
 
-    constructor(@Inject(TuiSvgService) svgService: TuiSvgService) {
+    constructor(
+        @Inject(TuiSvgService) svgService: TuiSvgService,
+        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
+    ) {
         svgService.define({
             customTuiIconMaestro: tuiIconMaestro,
             customTuiIconMastercard: tuiIconMastercard,
