@@ -4,11 +4,11 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TUI_SPIN_TEXTS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
+import {TuiPagination} from './pagination.model';
 import {
     TUI_TABLE_PAGINATION_OPTIONS,
     TuiTablePaginationOptions,
 } from './table-pagination-options';
-import {TuiPagination} from './pagination.model';
 
 @Component({
     selector: `tui-table-pagination`,
