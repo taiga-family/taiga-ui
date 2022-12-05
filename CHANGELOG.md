@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.70.0](https://github.com/tinkoff/taiga-ui/compare/v2.69.0...v2.70.0) (2022-12-05)
+
+### Bug Fixes
+
+- **kit:** fixed label text align for input files ([#3159](https://github.com/tinkoff/taiga-ui/issues/3159))
+  ([a5354fe](https://github.com/tinkoff/taiga-ui/commit/a5354fedbce90b88f5e393b2f7182b3d5e4cd804))
+
 ## [2.69.0](https://github.com/tinkoff/taiga-ui/compare/v2.68.0...v2.69.0) (2022-11-17)
 
 ### Features
