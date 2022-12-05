@@ -34,9 +34,8 @@
                 class="handle"
             ></tui-svg>
             <ng-template #default>
-                <div class="title">{{ item.content }}</div>
-                Index - {{ index }}
-                <div>Order - {{ order.get(index) }}</div>
+                <h2 class="title">{{ item.content }}</h2>
+                Order - {{ order.get(index) ?? index }}
             </ng-template>
         </div>
     </tui-tile>
