@@ -1,8 +1,9 @@
 import {InjectionToken} from '@angular/core';
-import {TuiStringHandler, tuiSvgLinearGradientProcessor} from '@taiga-ui/cdk';
+import {SafeHtml} from '@angular/platform-browser';
+import {TuiHandler, tuiSvgLinearGradientProcessor} from '@taiga-ui/cdk';
 
-export const TUI_SVG_CONTENT_PROCESSOR: InjectionToken<TuiStringHandler<string>> =
-    new InjectionToken<TuiStringHandler<string>>(
-        `[TUI_SVG_CONTENT_PROCESSOR]: Transform function the contents of the loaded svg file`,
-        {factory: () => tuiSvgLinearGradientProcessor},
-    );
+export const TUI_SVG_CONTENT_PROCESSOR = new InjectionToken<
+    TuiHandler<SafeHtml | string, SafeHtml | string>
+>(`[TUI_SVG_CONTENT_PROCESSOR]: Transform function the contents of the loaded svg file`, {
+    factory: () => tuiSvgLinearGradientProcessor,
+});
