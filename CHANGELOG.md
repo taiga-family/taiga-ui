@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.12.0](https://github.com/tinkoff/taiga-ui/compare/v3.11.0...v3.12.0) (2022-12-05)
+
+### Features
+
+- **cdk:** `Schematics` migration multiple projects ([#3144](https://github.com/tinkoff/taiga-ui/issues/3144))
+  ([cf25f6a](https://github.com/tinkoff/taiga-ui/commit/cf25f6a9ba142b25a6f6db4bd1034e8fe6aa5fe0))
+- **cdk:** support `SafeHtml` input value in `tui-svg` ([#3166](https://github.com/tinkoff/taiga-ui/issues/3166))
+  ([aad787b](https://github.com/tinkoff/taiga-ui/commit/aad787b76e662b49c44b3c62ab4202a9f2ffdab7))
+- **kit:** avatar now accepts `SafeResourceUrl` as `avatarUrl`
+  ([#3149](https://github.com/tinkoff/taiga-ui/issues/3149))
+  ([d4bdf64](https://github.com/tinkoff/taiga-ui/commit/d4bdf64fd05f6dc58620fbb4159d158f822e2f37))
+
+### Bug Fixes
+
+- **addon-charts:** `Bar`, `BarSet` fix color getter ([#3148](https://github.com/tinkoff/taiga-ui/issues/3148))
+  ([e7c517c](https://github.com/tinkoff/taiga-ui/commit/e7c517cfc94d2be3b77900d124e2bf7f5a32c828))
+- **addon-editor:** allow paste base64 image ([#3138](https://github.com/tinkoff/taiga-ui/issues/3138))
+  ([4222293](https://github.com/tinkoff/taiga-ui/commit/42222934708aa72139feb263ef926269ae595d6c))
+- **addon-table:** `Reorder` fix wrong order when toggling visibility
+  ([#3145](https://github.com/tinkoff/taiga-ui/issues/3145))
+  ([0e7eb9b](https://github.com/tinkoff/taiga-ui/commit/0e7eb9b09a06f5e8b2154028bbd8852c3a1b660b))
+- **cdk:** add `tuiControlValue` to schematic ([#3137](https://github.com/tinkoff/taiga-ui/issues/3137))
+  ([465f834](https://github.com/tinkoff/taiga-ui/commit/465f834b1062496342f0eee5d405bca45cb32ac2))
+- **kit:** `InputPhone` cut value by max phone length ([#3160](https://github.com/tinkoff/taiga-ui/issues/3160))
+  ([67d80fc](https://github.com/tinkoff/taiga-ui/commit/67d80fc345918b9f13b727d1872b54ddd0880cfc))
+- **kit:** `Range` broken alignment + artifact line before track
+  ([#3136](https://github.com/tinkoff/taiga-ui/issues/3136))
+  ([17dd30b](https://github.com/tinkoff/taiga-ui/commit/17dd30ba396f7ece9b0a45664cb01448bd0ebb69))
+- **kit:** `Tiles` remove binding with JS to allow media query control
+  ([#3164](https://github.com/tinkoff/taiga-ui/issues/3164))
+  ([91e9f5f](https://github.com/tinkoff/taiga-ui/commit/91e9f5f230702ef564b70bcd6d3a443fd7846f45))
+- **kit:** `Tiles` switch to CSS `order` to prevent DOM redraw
+  ([#3170](https://github.com/tinkoff/taiga-ui/issues/3170))
+  ([e90da1d](https://github.com/tinkoff/taiga-ui/commit/e90da1d82e11b71f0556158d4d681aebaef1160e))
+- **kit:** Add missing `TUI_COUNTRIES_MASKS` for Overseas France
+  ([#3112](https://github.com/tinkoff/taiga-ui/issues/3112))
+  ([8c2a1c9](https://github.com/tinkoff/taiga-ui/commit/8c2a1c9540cc745ca4e4c62d2a7654df03737e7b))
+- **kit:** fixed label text align for input files ([#3156](https://github.com/tinkoff/taiga-ui/issues/3156))
+  ([699d473](https://github.com/tinkoff/taiga-ui/commit/699d47397d0b97d64e6f4adedadbd3424e9e2a05))
+
 ## [3.11.0](https://github.com/tinkoff/taiga-ui/compare/v3.10.0...v3.11.0) (2022-11-28)
 
 ### Features
