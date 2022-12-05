@@ -50,6 +50,7 @@ export class ExampleTuiBadgeComponent {
 
     values: {[key: string]: number | string} = {
         Taiga: `Taiga`,
+        'Very long text': `Very long text`,
         '5': 5,
         '100': 100,
         '"100"': `100`,
