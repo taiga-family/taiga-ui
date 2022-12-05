@@ -1,11 +1,12 @@
 <tui-tiles
     class="tiles"
-    [(items)]="items"
+    [(order)]="order"
 >
     <tui-tile
-        *ngFor="let item of items"
+        *ngFor="let item of items; let index = index"
         tuiTileHandle
         class="tile"
+        [style.order]="order.get(index)"
         [class.tile_tall]="item === 'John Cleese'"
     >
         <div class="content">{{ item }}</div>

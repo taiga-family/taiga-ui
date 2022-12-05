@@ -14,7 +14,7 @@ import {
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {tuiDefaultProp, TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
-import {Subject, timer} from 'rxjs';
+import {BehaviorSubject, Subject, timer} from 'rxjs';
 import {debounce, filter, map} from 'rxjs/operators';
 
 @Component({
@@ -35,7 +35,7 @@ import {debounce, filter, map} from 'rxjs/operators';
         },
     ],
 })
-export class TuiTilesComponent<T> {
+export class TuiTilesComponent {
     private readonly element$ = new Subject<Element | undefined>();
 
     @Input()
@@ -44,10 +44,16 @@ export class TuiTilesComponent<T> {
 
     @Input()
     @tuiDefaultProp()
-    items: readonly T[] = [];
+    set order(map: Map<number, number>) {
+        this.order$.next(map);
+    }
+
+    get order(): Map<number, number> {
+        return this.order$.value;
+    }
 
     @Output()
-    readonly itemsChange = this.element$.pipe(
+    readonly orderChange = this.element$.pipe(
         debounce(() => timer(this.debounce)),
         filter(this.filter.bind(this)),
         map(element => this.reorder(element)),
@@ -55,6 +61,8 @@ export class TuiTilesComponent<T> {
 
     @HostBinding(`class._dragged`)
     element: Element | null = null;
+
+    readonly order$ = new BehaviorSubject(new Map<number, number>());
 
     constructor(@Inject(ElementRef) private readonly elementRef: ElementRef<Element>) {}
 
@@ -67,16 +75,21 @@ export class TuiTilesComponent<T> {
         return !!this.element && !!element && this.element !== element;
     }
 
-    private reorder(element: Element): T[] {
+    private reorder(element: Element): Map<number, number> {
         const elements = Array.from(this.elementRef.nativeElement.children);
         const currentIndex = elements.indexOf(this.element || element);
         const newIndex = elements.indexOf(element);
-        const items = [...this.items];
-        const dragged = items[currentIndex];
+        const order = this.order.size
+            ? new Map(this.order)
+            : new Map(elements.map((_, index) => [index, index]));
+        const dragged = order.get(currentIndex) ?? currentIndex;
+        const placement = order.get(newIndex) ?? newIndex;
 
-        items[currentIndex] = items[newIndex];
-        items[newIndex] = dragged;
+        order.set(currentIndex, placement);
+        order.set(newIndex, dragged);
 
-        return items;
+        this.order$.next(order);
+
+        return order;
     }
 }

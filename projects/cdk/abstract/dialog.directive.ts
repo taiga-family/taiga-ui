@@ -2,7 +2,7 @@ import {ChangeDetectorRef, Directive, Inject, TemplateRef} from '@angular/core';
 import {TuiDialog} from '@taiga-ui/cdk/types';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, Subject} from 'rxjs';
-import {endWith, ignoreElements, switchMap} from 'rxjs/operators';
+import {endWith, ignoreElements, share, switchMap} from 'rxjs/operators';
 
 import {AbstractTuiDialogService} from './dialog.service';
 
@@ -26,6 +26,7 @@ export abstract class AbstractTuiDialogDirective<T> extends PolymorpheusTemplate
                       .pipe(ignoreElements(), endWith(false))
                 : EMPTY,
         ),
+        share(),
     );
 
     constructor(
