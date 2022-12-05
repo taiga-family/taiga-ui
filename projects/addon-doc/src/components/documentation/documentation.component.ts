@@ -8,21 +8,22 @@ import {
     Inject,
     Input,
     QueryList,
+    Self,
 } from '@angular/core';
 import {
     EMPTY_QUERY,
+    TuiDestroyService,
     tuiHexToRgb,
-    tuiIsNumber,
-    tuiIsString,
     tuiItemsQueryListObservable,
-    tuiRgbToHex,
     tuiWatch,
 } from '@taiga-ui/cdk';
 import {merge} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
+import {switchMap, takeUntil} from 'rxjs/operators';
 
 import {TUI_DOC_DOCUMENTATION_TEXTS} from '../../tokens/i18n';
 import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
+import {TuiGetOpacityPipe} from './pipes/opacity.pipe';
+import {TuiGetColorPipe} from './pipes/сolor.pipe';
 
 // @bad TODO subscribe propertiesConnectors changes
 // @bad TODO refactor to make more flexible
@@ -36,6 +37,7 @@ import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-pro
             transition(`:increment`, [style({opacity: 1}), animate(`500ms ease-in`)]),
         ]),
     ],
+    providers: [TuiGetColorPipe, TuiGetOpacityPipe, TuiDestroyService],
 })
 export class TuiDocDocumentationComponent implements AfterContentInit {
     @Input()
@@ -57,6 +59,13 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_DOC_DOCUMENTATION_TEXTS)
         readonly texts: [string, string, string, string, string],
+        @Self()
+        @Inject(TuiDestroyService)
+        private readonly destroy$: TuiDestroyService,
+        @Inject(TuiGetColorPipe)
+        private readonly getColor: TuiGetColorPipe,
+        @Inject(TuiGetOpacityPipe)
+        private readonly getOpacity: TuiGetOpacityPipe,
     ) {}
 
     ngAfterContentInit(): void {
@@ -64,6 +73,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
             .pipe(
                 switchMap(items => merge(...items.map(({changed$}) => changed$))),
                 tuiWatch(this.changeDetectorRef),
+                takeUntil(this.destroy$),
             )
             .subscribe();
     }
@@ -72,58 +82,13 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         return this.isAPI ? this.texts[0] : this.texts[1];
     }
 
-    getColor(color: string): string {
-        if (color.length === 4) {
-            return color
-                .split(``)
-                .reduce<string[]>((result, current) => [...result, current, current], [])
-                .join(``)
-                .replace(`#`, ``);
-        }
-
-        if (color.startsWith(`#`)) {
-            return color;
-        }
-
-        if (color === `transparent`) {
-            return `#000000`;
-        }
-
-        const parsed = color
-            .replace(`rgb(`, ``)
-            .replace(`rgba(`, ``)
-            .replace(`)`, ``)
-            .replace(` `, ``)
-            .split(`,`)
-            .map(v => Number.parseInt(v, 10)) as [number, number, number];
-
-        return tuiRgbToHex(...parsed);
-    }
-
-    getOpacity(color: string): number {
-        if (color.startsWith(`#`) || color.startsWith(`rgb(`)) {
-            return 100;
-        }
-
-        if (color === `transparent`) {
-            return 0;
-        }
-
-        const lastComma = color.lastIndexOf(`,`);
-        const parsed = color
-            .slice(lastComma)
-            .replace(`)`, ``)
-            .replace(` `, ``)
-            .replace(`,`, ``);
-
-        return Math.round(Number.parseFloat(parsed) * 100);
-    }
-
     onColorChange(
         connector: TuiDocDocumentationPropertyConnectorDirective<string>,
         color: string,
     ): void {
-        const opacity = this.getOpacity(connector.documentationPropertyValue || ``);
+        const opacity = this.getOpacity.transform(
+            connector.documentationPropertyValue || ``,
+        );
 
         if (opacity === 100) {
             connector.onValueChange(color);
@@ -141,30 +106,10 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         connector: TuiDocDocumentationPropertyConnectorDirective<string>,
         opacity: number,
     ): void {
-        const hex = this.getColor(connector.documentationPropertyValue || ``);
+        const hex = this.getColor.transform(connector.documentationPropertyValue || ``);
         const rgb = tuiHexToRgb(hex);
         const result = `rgba(${rgb}, ${opacity / 100})`;
 
         connector.onValueChange(result);
-    }
-
-    stripOptional(name: string): string {
-        return name.replace(`?`, ``);
-    }
-
-    isOptional(name: string): boolean {
-        return name.includes(`?`);
-    }
-
-    isPrimitivePolymorpheusContent(value: unknown): boolean {
-        return tuiIsString(value) || tuiIsNumber(value);
-    }
-
-    showCleaner(type: string): boolean {
-        return type.includes(`null`);
-    }
-
-    showContentTooltip(type: string): boolean {
-        return type.includes(`PolymorpheusContent`);
     }
 }

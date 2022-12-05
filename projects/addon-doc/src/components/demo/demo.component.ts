@@ -17,8 +17,8 @@ import {
     ViewChild,
 } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
-import {UrlSerializer} from '@angular/router';
-import {TUI_IS_MOBILE, TuiDestroyService, tuiPx} from '@taiga-ui/cdk';
+import {UrlSerializer, UrlTree} from '@angular/router';
+import {TUI_IS_MOBILE, tuiDebounce, TuiDestroyService, tuiPx} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 import {startWith, takeUntil} from 'rxjs/operators';
@@ -75,8 +75,8 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(PLATFORM_ID) platformId: Record<string, unknown>,
-        @Inject(Location) locationRef: Location,
-        @Inject(UrlSerializer) urlSerializer: UrlSerializer,
+        @Inject(Location) private readonly locationRef: Location,
+        @Inject(UrlSerializer) private readonly urlSerializer: UrlSerializer,
         @Inject(TUI_DOC_DEMO_TEXTS) readonly texts: [string, string, string],
     ) {
         this.isBrowser = isPlatformBrowser(platformId);
@@ -86,24 +86,9 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
         if (parsedMode !== null && parsedMode.length > 0) {
             this.modeControl.setValue(parsedMode[1]);
         }
-
-        this.modeControl.valueChanges
-            .pipe(startWith(this.modeControl.value), takeUntil(this.destroy$))
-            .subscribe(mode => {
-                const urlTree = urlSerializer.parse(locationRef.path());
-
-                urlTree.queryParams = {
-                    ...urlTree.queryParams,
-                    tuiMode: mode,
-                };
-
-                locationRef.go(String(urlTree));
-
-                this.mode = mode;
-                this.change$.next();
-            });
     }
 
+    @tuiDebounce(200)
     @HostListener(`window:resize`)
     onResize(): void {
         this.setResizerTextContent();
@@ -114,7 +99,26 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        this.setResizerTextContent();
+        this.modeControl.valueChanges
+            .pipe(startWith(this.modeControl.value), takeUntil(this.destroy$))
+            .subscribe(mode => {
+                this.updateUrl(mode);
+
+                const wrapperWidth =
+                    parseInt(this.getUrlTree().queryParams.sandboxWidth, 10) +
+                    this.getPaddingOfWrapper() +
+                    this.getResizeButtonWidth();
+
+                if (!Number.isNaN(wrapperWidth)) {
+                    this.wrapperWidth = wrapperWidth;
+                    this.setWidthWrapper(tuiPx(wrapperWidth));
+                }
+
+                this.setResizerTextContent();
+
+                this.mode = mode;
+                this.change$.next();
+            });
     }
 
     setResizerTextContent(): void {
@@ -122,14 +126,9 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
             return;
         }
 
-        const paddingLeft = this.isBrowser
-            ? getComputedStyle(this.content.nativeElement).paddingLeft
-            : `0`;
-        const {offsetWidth} = this.content.nativeElement;
-
-        this.resizerText.nativeElement.textContent = String(
-            offsetWidth - parseInt(paddingLeft || `0`, 10) * 2,
-        );
+        this.resizerText.nativeElement.textContent = (
+            this.content.nativeElement.offsetWidth - this.getPaddingOfWrapper()
+        ).toString();
     }
 
     onDragStart(event: MouseEvent): void {
@@ -147,6 +146,7 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
 
     onDragEnd(): void {
         this.wrapperWidth = this.wrapper ? this.wrapper.nativeElement.offsetWidth : 0;
+        this.updateSandboxWidth();
     }
 
     toggleDetails(): void {
@@ -169,14 +169,62 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
     }
 
     private resizeContent(delta: number): void {
+        this.setWidthWrapper(
+            tuiPx(Math.max(this.wrapperWidth - delta, MIN_COMPONENT_WIDTH)),
+        );
+    }
+
+    private setWidthWrapper(width: number | string): void {
         if (!this.wrapper) {
             return;
         }
 
-        this.renderer.setStyle(
-            this.wrapper.nativeElement,
-            `width`,
-            tuiPx(Math.max(this.wrapperWidth - delta, MIN_COMPONENT_WIDTH)),
+        this.renderer.setStyle(this.wrapper.nativeElement, `width`, width);
+    }
+
+    private updateUrl(mode: string): void {
+        const urlTree = this.getUrlTree();
+        const modeParam = mode ?? urlTree.queryParams.tuiMode ? {tuiMode: mode} : {};
+        const sandboxWidth = parseInt(urlTree.queryParams.sandboxWidth, 10);
+        const resizeParam =
+            !Number.isNaN(sandboxWidth) && MIN_COMPONENT_WIDTH > sandboxWidth
+                ? {sandboxWidth}
+                : {};
+
+        urlTree.queryParams = {
+            ...urlTree.queryParams,
+            ...modeParam,
+            ...resizeParam,
+        };
+
+        this.locationRef.go(String(urlTree));
+    }
+
+    private getUrlTree(): UrlTree {
+        return this.urlSerializer.parse(this.locationRef.path());
+    }
+
+    private getPaddingOfWrapper(): number {
+        const paddingLeft =
+            this.isBrowser && this.content
+                ? getComputedStyle(this.content.nativeElement).paddingLeft
+                : `0`;
+
+        return parseInt(paddingLeft || `0`, 10) * 2;
+    }
+
+    private getResizeButtonWidth(): number {
+        return this.resizerText?.nativeElement.parentElement?.offsetWidth ?? 0;
+    }
+
+    private updateSandboxWidth(): void {
+        const urlTree = this.getUrlTree();
+
+        urlTree.queryParams.sandboxWidth = parseInt(
+            this.resizerText?.nativeElement.textContent ?? `0`,
+            10,
         );
+
+        this.locationRef.go(String(urlTree));
     }
 }
