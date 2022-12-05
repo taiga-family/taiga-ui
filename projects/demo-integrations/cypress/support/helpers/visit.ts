@@ -22,6 +22,7 @@ interface TuiVisitOptions {
     hideScrollbar?: boolean;
     hideVersionManager?: boolean;
     hideLanguageSwitcher?: boolean;
+    hideGetHelpLinks?: boolean;
     noSmoothScroll?: boolean;
     hideHeader?: boolean;
     hideNavigation?: boolean;
@@ -66,6 +67,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         hideNavigation = true,
         hideVersionManager = true,
         hideLanguageSwitcher = true,
+        hideGetHelpLinks = true,
         pseudoMobile = false,
         waitRenderedFont,
         clock = Date.UTC(2018, 10, 1),
@@ -170,5 +172,9 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
 
     if (hideLanguageSwitcher) {
         cy.tuiHide(`tui-language-switcher`);
+    }
+
+    if (hideGetHelpLinks) {
+        cy.tuiHide(`community-links`);
     }
 }
