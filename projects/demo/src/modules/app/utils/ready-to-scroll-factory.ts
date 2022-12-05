@@ -1,10 +1,11 @@
 import {ElementRef} from '@angular/core';
 import {Observable} from 'rxjs';
-import {debounceTime, map, startWith} from 'rxjs/operators';
+import {debounceTime, map, startWith, takeUntil} from 'rxjs/operators';
 
 export function readyToScrollFactory(
     hostElement: ElementRef<HTMLElement>,
     resize$: Observable<unknown>,
+    destroy$: Observable<unknown>,
 ): Observable<boolean> {
     return resize$.pipe(
         startWith(null),
@@ -19,5 +20,6 @@ export function readyToScrollFactory(
                 codeElements.every(el => el.querySelector(`.t-code`))
             );
         }),
+        takeUntil(destroy$),
     );
 }
