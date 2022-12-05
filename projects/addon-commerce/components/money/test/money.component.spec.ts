@@ -138,7 +138,7 @@ describe(`Money`, () => {
             expect(fraction?.nativeElement.textContent).toEqual(`,10`);
         });
 
-        it(`correct rounding for float values`, () => {
+        it(`truncating float values`, () => {
             testComponent.value = 8918 + 10333.6 + 3527.78 + 805.62 + 140;
             fixture.detectChanges();
 
@@ -154,7 +154,7 @@ describe(`Money`, () => {
                 tuiReplaceNbsp(
                     `${integer?.nativeElement.textContent}${fraction?.nativeElement.textContent}`,
                 ),
-            ).toEqual(`23 725`);
+            ).toEqual(`23 724,99`);
         });
 
         it(`decimals only show 2 digits`, () => {
