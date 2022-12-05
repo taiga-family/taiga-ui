@@ -16,12 +16,12 @@ import {
 import {
     tuiDefaultProp,
     tuiIsCurrentTarget,
-    tuiPure,
     tuiTypedFromEvent,
+    tuiZonefree,
 } from '@taiga-ui/cdk';
 import {TUI_HINT_COMPONENT, TuiHintDirective} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
+import {BehaviorSubject, Observable, of, Subject, timer} from 'rxjs';
 import {
     distinctUntilChanged,
     filter,
@@ -73,6 +73,19 @@ export class TuiLineClampComponent implements AfterViewInit {
         distinctUntilChanged(),
     );
 
+    lineClamp$ = this.linesLimit$.pipe(
+        startWith(1),
+        pairwise(),
+        switchMap(([prev, next]) =>
+            next >= prev
+                ? of(next)
+                : tuiTypedFromEvent(this.elementRef.nativeElement, `transitionend`).pipe(
+                      filter(tuiIsCurrentTarget),
+                      mapTo(next),
+                  ),
+        ),
+    );
+
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
@@ -81,22 +94,6 @@ export class TuiLineClampComponent implements AfterViewInit {
         @Inject(TUI_LINE_CLAMP_OPTIONS) private readonly options: TuiLineClampOptions,
     ) {
         this.skipInitialTransition();
-    }
-
-    @tuiPure
-    get lineClamp$(): Observable<number> {
-        return this.linesLimit$.pipe(
-            startWith(1),
-            pairwise(),
-            switchMap(([prev, next]) =>
-                next >= prev
-                    ? of(next)
-                    : tuiTypedFromEvent(
-                          this.elementRef.nativeElement,
-                          `transitionend`,
-                      ).pipe(filter(tuiIsCurrentTarget), mapTo(next)),
-            ),
-        );
     }
 
     get overflown(): boolean {
@@ -139,11 +136,11 @@ export class TuiLineClampComponent implements AfterViewInit {
     }
 
     private skipInitialTransition(): void {
-        this.ngZone.runOutsideAngular(() => {
-            setTimeout(() => {
+        timer(0)
+            .pipe(tuiZonefree(this.ngZone))
+            .subscribe(() => {
                 this.renderer.addClass(this.elementRef.nativeElement, `_initialized`);
                 this.cd.detectChanges();
             });
-        });
     }
 }
