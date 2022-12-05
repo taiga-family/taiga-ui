@@ -32,9 +32,17 @@ export class TuiTablePaginationComponent {
     @tuiDefaultProp()
     size = this.items[0];
 
+    /**
+     * TODO: Remove in 4.0
+     * @deprecated use paginationChange
+     */
     @Output()
     readonly pageChange = new EventEmitter<number>();
 
+    /**
+     * TODO: Remove in 4.0
+     * @deprecated use paginationChange
+     */
     @Output()
     readonly sizeChange = new EventEmitter<number>();
 
