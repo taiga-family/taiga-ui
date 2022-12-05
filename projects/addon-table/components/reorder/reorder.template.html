@@ -1,10 +1,11 @@
 <tui-tiles
     class="t-wrapper"
-    [(items)]="items"
+    [(order)]="order"
 >
     <tui-tile
-        *ngFor="let item of items"
+        *ngFor="let item of unsortedItems; let index = index"
         tuiTileHandle
+        [style.order]="order.get(index)"
     >
         <div class="t-item">
             <tui-svg
@@ -22,8 +23,8 @@
                 [title]="showHideText$ | async"
                 [icon]="getIcon(item)"
                 (click)="toggle(item)"
-                (keydown.arrowUp.prevent)="move(item, -1)"
-                (keydown.arrowDown.prevent)="move(item, 1)"
+                (keydown.arrowUp.prevent)="move(index, -1)"
+                (keydown.arrowDown.prevent)="move(index, 1)"
             ></button>
         </div>
     </tui-tile>

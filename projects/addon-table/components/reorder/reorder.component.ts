@@ -20,7 +20,14 @@ export class TuiReorderComponent<T> {
 
     @Input()
     @tuiDefaultProp()
-    items: readonly T[] = [];
+    set items(items: readonly T[]) {
+        if (
+            items.length !== this.unsortedItems.length ||
+            !items.every(item => this.unsortedItems.includes(item))
+        ) {
+            this.unsortedItems = items;
+        }
+    }
 
     @Input()
     @tuiDefaultProp()
@@ -31,6 +38,10 @@ export class TuiReorderComponent<T> {
 
     @Output()
     readonly enabledChange = new EventEmitter<T[]>();
+
+    order = new Map<number, number>();
+
+    unsortedItems: readonly T[] = [];
 
     constructor(
         @Inject(TUI_TABLE_SHOW_HIDE_MESSAGE) readonly showHideText$: Observable<string>,
@@ -51,8 +62,7 @@ export class TuiReorderComponent<T> {
         }
 
         this.dragging = false;
-        this.updateItems([...this.items]);
-        this.updateEnabled(this.items.filter(item => this.isEnabled(item)));
+        this.updateItems();
     }
 
     isEnabled(item: T): boolean {
@@ -64,30 +74,53 @@ export class TuiReorderComponent<T> {
     }
 
     toggle(toggled: T): void {
-        const enabled = this.isEnabled(toggled)
-            ? this.items.filter(item => item !== toggled && this.isEnabled(item))
-            : this.items.filter(item => item === toggled || this.isEnabled(item));
+        this.enabled = this.isEnabled(toggled)
+            ? this.enabled.filter(item => item !== toggled)
+            : this.enabled.concat(toggled);
 
-        this.updateEnabled(enabled);
+        this.updateEnabled();
     }
 
-    move(item: T, direction: number): void {
-        const index = this.items.indexOf(item);
-        const newIndex = index + direction;
-        const items = [...this.items];
+    move(index: number, direction: number): void {
+        const oldIndex = this.order.get(index) ?? index;
 
-        items.splice(index, 1);
-        items.splice(newIndex, 0, item);
+        if (
+            (!oldIndex && direction < 0) ||
+            (oldIndex === this.unsortedItems.length - 1 && direction > 0)
+        ) {
+            return;
+        }
 
-        this.updateItems(items);
+        const newIndex = oldIndex + direction;
+        const oldItem = Array.from(this.order.values()).findIndex(
+            item => item === newIndex,
+        );
+
+        this.order.set(index, newIndex);
+        this.order.set(oldItem, oldIndex);
+        this.order = new Map(this.order);
+
+        this.updateItems();
     }
 
-    private updateItems(items: T[]): void {
-        this.items = items;
-        this.itemsChange.emit(items);
+    private getSortedItems(): T[] {
+        const items = new Array(this.unsortedItems.length);
+
+        this.unsortedItems.forEach((item, index) => {
+            items[this.order.get(index) ?? index] = item;
+        });
+
+        return items;
     }
 
-    private updateEnabled(enabled: T[]): void {
+    private updateItems(): void {
+        this.itemsChange.emit(this.getSortedItems());
+        this.updateEnabled();
+    }
+
+    private updateEnabled(): void {
+        const enabled = this.getSortedItems().filter(item => this.isEnabled(item));
+
         this.enabled = enabled;
         this.enabledChange.emit(enabled);
     }

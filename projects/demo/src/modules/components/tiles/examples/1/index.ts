@@ -17,8 +17,10 @@ export class TuiTilesExample1 {
         {w: 1, h: 1, content: `Item 4`},
         {w: 3, h: 1, content: `Item 5`},
         {w: 1, h: 1, content: `Item 6`},
-        {w: 2, h: 2, content: `Item 7`},
+        {w: 2, h: 2, content: `rick`},
         {w: 1, h: 1, content: `Item 8`},
         {w: 1, h: 1, content: `Item 9`},
     ];
+
+    order = new Map();
 }

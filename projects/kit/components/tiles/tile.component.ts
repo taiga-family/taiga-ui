@@ -16,7 +16,7 @@ import {
     tuiZonefull,
 } from '@taiga-ui/cdk';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
-import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
 import {TuiTilesComponent} from './tiles.component';
 
@@ -43,6 +43,7 @@ export class TuiTileComponent {
         this.offset$.pipe(distinctUntilChanged(tuiArrayShallowEquals)),
         this.resize$.pipe(startWith(null)),
         this.mutation$.pipe(startWith(null)),
+        this.tiles.order$.pipe(debounceTime(0)),
     ]).pipe(
         map(([[left, top]]) => ({
             top: top || this.element.offsetTop,
@@ -56,7 +57,7 @@ export class TuiTileComponent {
     constructor(
         @Inject(NgZone) private readonly ngZone: NgZone,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(TuiTilesComponent) private readonly tiles: TuiTilesComponent<unknown>,
+        @Inject(TuiTilesComponent) private readonly tiles: TuiTilesComponent,
         @Inject(TuiResizeService) private readonly resize$: Observable<unknown>,
         @Inject(MutationObserverService) private readonly mutation$: Observable<unknown>,
     ) {}
