@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[97139],{97139:n=>{n.exports="```bash\nnpm i taiga-ui\nnx g taiga-ui:ng-add\n```\n"}}]);
