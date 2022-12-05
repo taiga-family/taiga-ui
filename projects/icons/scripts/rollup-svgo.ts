@@ -2,7 +2,7 @@ import {createFilter} from '@rollup/pluginutils';
 import {Plugin, TransformResult} from 'rollup';
 import {optimize, OptimizedError, OptimizedSvg, OptimizeOptions} from 'svgo';
 
-type SvgoResult = OptimizedSvg | OptimizedError;
+type SvgoResult = OptimizedError | OptimizedSvg;
 
 export interface TuiRollupSvgoConfig {
     readonly include?: string;

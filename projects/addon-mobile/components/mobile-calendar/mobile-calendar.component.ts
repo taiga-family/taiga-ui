@@ -97,7 +97,7 @@ export class TuiMobileCalendarComponent {
     readonly cancel = new EventEmitter<void>();
 
     @Output()
-    readonly confirm = new EventEmitter<TuiDayRange | TuiDay>();
+    readonly confirm = new EventEmitter<TuiDay | TuiDayRange>();
 
     value: TuiDay | TuiDayRange | null = null;
 

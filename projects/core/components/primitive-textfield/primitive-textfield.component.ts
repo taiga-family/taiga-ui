@@ -143,7 +143,7 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     @HostBinding(`attr.data-size`)
-    get size(): TuiSizeS | TuiSizeL {
+    get size(): TuiSizeL | TuiSizeS {
         return this.controller.size;
     }
 
@@ -223,12 +223,12 @@ export class TuiPrimitiveTextfieldComponent
         );
     }
 
-    get iconContent(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
+    get iconContent(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
         return this.controller.icon;
     }
 
     get iconLeftContent(): PolymorpheusContent<
-        TuiContextWithImplicit<TuiSizeS | TuiSizeL>
+        TuiContextWithImplicit<TuiSizeL | TuiSizeS>
     > {
         return this.controller.iconLeft;
     }

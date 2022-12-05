@@ -3,7 +3,7 @@ import {TUI_NON_DIGITS_REGEXP} from '@taiga-ui/core';
 /**
  * Validates card number using Luhn algorithm
  */
-export function tuiIsCardNumberValid(value: string | number): boolean {
+export function tuiIsCardNumberValid(value: number | string): boolean {
     const cardNumber = String(value).replace(TUI_NON_DIGITS_REGEXP, ``);
 
     const {length} = cardNumber;

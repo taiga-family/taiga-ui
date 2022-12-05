@@ -34,7 +34,7 @@ export class ExampleTuiMarkerIconComponent {
 
     selectedIcon = this.icons[0];
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeXXS | TuiSizeXXL> = [
+    readonly sizeVariants: ReadonlyArray<TuiSizeXXL | TuiSizeXXS> = [
         `xxs`,
         `xs`,
         `s`,

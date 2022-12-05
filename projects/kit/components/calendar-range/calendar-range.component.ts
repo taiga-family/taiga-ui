@@ -150,7 +150,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         return this.value ? this.value.to : this.defaultViewedMonth;
     }
 
-    isItemActive(item: string | TuiDayRangePeriod): boolean {
+    isItemActive(item: TuiDayRangePeriod | string): boolean {
         const {activePeriod} = this;
 
         return (tuiIsString(item) && activePeriod === null) || activePeriod === item;
@@ -174,7 +174,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         this.updateValue(TuiDayRange.sort(value.from, day));
     }
 
-    onItemSelect(item: string | TuiDayRangePeriod): void {
+    onItemSelect(item: TuiDayRangePeriod | string): void {
         if (typeof item !== `string`) {
             this.updateValue(item.range.dayLimit(this.min, this.max));
 

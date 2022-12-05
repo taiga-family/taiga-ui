@@ -2,7 +2,7 @@ export interface TuiZoom {
     readonly clientX: number;
     readonly clientY: number;
     readonly delta: number;
-    readonly event: WheelEvent | TouchEvent;
+    readonly event: TouchEvent | WheelEvent;
 }
 
 export interface TuiZoomOptions {

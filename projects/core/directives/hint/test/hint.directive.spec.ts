@@ -10,7 +10,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiHintModule, TuiRootModule} from '@taiga-ui/core';
 import {configureTestSuite} from '@taiga-ui/testing';
 
-type Hint = string | TemplateRef<Record<string, unknown>> | undefined | null;
+type Hint = TemplateRef<Record<string, unknown>> | string | null | undefined;
 
 describe(`Hint`, () => {
     @Component({

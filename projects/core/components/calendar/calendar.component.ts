@@ -35,7 +35,7 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
 
     @Input()
     @tuiDefaultProp()
-    value: TuiDayRange | TuiDay | null = null;
+    value: TuiDay | TuiDayRange | null = null;
 
     @Input()
     @tuiDefaultProp()

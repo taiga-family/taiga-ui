@@ -27,9 +27,9 @@ export class ExampleTuiBarChartComponent {
 
     collapsed = false;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
+    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [`s`, `m`, `l`];
 
-    size: TuiSizeS | TuiSizeL | null = null;
+    size: TuiSizeL | TuiSizeS | null = null;
 
     max = 0;
 

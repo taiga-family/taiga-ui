@@ -62,10 +62,10 @@ describe(`InputTag`, () => {
         defaultInputs = false;
         cleaner = true;
         readOnly = false;
-        separator: string | RegExp = `,`;
+        separator: RegExp | string = `,`;
         placeholder = `Example`;
         labelOutside = true;
-        size: TuiSizeS | TuiSizeL = `m`;
+        size: TuiSizeL | TuiSizeS = `m`;
         hintContent: string | null = `prompt`;
         tagValidator: TuiBooleanHandler<string> = ALWAYS_TRUE_HANDLER;
     }

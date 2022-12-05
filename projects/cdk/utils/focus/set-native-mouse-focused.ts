@@ -6,7 +6,7 @@
  * @param preventScroll optionally prevent native browser scroll after focus
  */
 export function tuiSetNativeMouseFocused(
-    element: HTMLOrSVGElement & Element,
+    element: Element & HTMLOrSVGElement,
     focused: boolean = true,
     preventScroll: boolean = false,
 ): void {

@@ -29,11 +29,11 @@ export class TuiTextfieldController {
         return this.customContentDirective.customContent || ``;
     }
 
-    get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
+    get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
         return this.iconDirective.icon;
     }
 
-    get iconLeft(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>> {
+    get iconLeft(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
         return this.iconLeftDirective.iconLeft;
     }
 
@@ -41,7 +41,7 @@ export class TuiTextfieldController {
         return this.labelOutsideDirective.labelOutside;
     }
 
-    get size(): TuiSizeS | TuiSizeL {
+    get size(): TuiSizeL | TuiSizeS {
         return this.sizeDirective.size;
     }
 }

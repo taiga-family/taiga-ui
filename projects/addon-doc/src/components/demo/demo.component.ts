@@ -62,7 +62,7 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
 
     testForm?: FormGroup;
     updateOnVariants = [`change`, `blur`, `submit`];
-    updateOn: 'change' | 'blur' | 'submit' = `change`;
+    updateOn: 'blur' | 'change' | 'submit' = `change`;
     expanded = false;
     opaque = true;
     modeControl = new FormControl();
@@ -153,7 +153,7 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
         this.expanded = !this.expanded;
     }
 
-    updateOnChange(updateOn: 'change' | 'blur' | 'submit'): void {
+    updateOnChange(updateOn: 'blur' | 'change' | 'submit'): void {
         this.updateOn = updateOn;
         this.createForm();
     }

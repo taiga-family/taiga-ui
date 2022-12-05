@@ -61,7 +61,7 @@ export class TuiRadioBlockComponent<T>
     @Input()
     @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeL = `l`;
+    size: TuiSizeL | TuiSizeS = `l`;
 
     @Input()
     @HostBinding(`class._hidden_radio`)

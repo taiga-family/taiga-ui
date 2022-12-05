@@ -1,1 +1,1 @@
-export type TuiOrientation = 'vertical' | 'horizontal';
+export type TuiOrientation = 'horizontal' | 'vertical';

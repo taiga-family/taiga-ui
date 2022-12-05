@@ -17,7 +17,7 @@ const HASH_PREFIX = `#` as const;
 const HTTP_PREFIX = `http://` as const;
 const HTTPS_PREFIX = `https://` as const;
 
-type TuiLinkPrefix = typeof HASH_PREFIX | typeof HTTPS_PREFIX | typeof HTTP_PREFIX;
+type TuiLinkPrefix = typeof HASH_PREFIX | typeof HTTP_PREFIX | typeof HTTPS_PREFIX;
 
 @Component({
     selector: `tui-edit-link`,

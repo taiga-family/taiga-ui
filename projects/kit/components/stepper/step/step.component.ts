@@ -30,7 +30,7 @@ export class TuiStepComponent {
     @Input()
     @HostBinding(`attr.data-state`)
     @tuiDefaultProp()
-    stepState: 'normal' | 'pass' | 'error' = `normal`;
+    stepState: 'error' | 'normal' | 'pass' = `normal`;
 
     @Input()
     @tuiDefaultProp()

@@ -36,7 +36,7 @@ export function tuiCreateAutoCorrectedDateTimePipe(
 
         const pipedTime = timePipe(
             time,
-            {} as unknown as TuiTextMaskOptions & TuiTextMaskConfig,
+            {} as unknown as TuiTextMaskConfig & TuiTextMaskOptions,
         );
 
         if (!pipedTime || tuiIsString(pipedTime)) {

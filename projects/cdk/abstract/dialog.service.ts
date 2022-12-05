@@ -22,7 +22,7 @@ export abstract class AbstractTuiDialogService<T, K = void> extends Observable<
     }
 
     open<G = void>(
-        content: PolymorpheusContent<TuiBaseDialogContext<K extends void ? G : K> & T>,
+        content: PolymorpheusContent<T & TuiBaseDialogContext<K extends void ? G : K>>,
         options: Partial<T> = {},
     ): Observable<K extends void ? G : K> {
         return new Observable(observer => {

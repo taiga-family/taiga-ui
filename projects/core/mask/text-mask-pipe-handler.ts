@@ -7,5 +7,5 @@ import type {TuiTextMaskPipeResult} from './text-mask-pipe-result';
  */
 export type TuiTextMaskPipeHandler = (
     conformedValue: string,
-    config: TuiTextMaskOptions & TuiTextMaskConfig,
-) => string | TuiTextMaskPipeResult | false;
+    config: TuiTextMaskConfig & TuiTextMaskOptions,
+) => TuiTextMaskPipeResult | string | false;

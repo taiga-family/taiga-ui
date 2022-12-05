@@ -50,7 +50,7 @@ export function replaceInputProperty({
 }: {
     templateResource: TemplateResource;
     fileSystem: DevkitFileSystem;
-    componentSelector: string | string[];
+    componentSelector: string[] | string;
     from: string;
     to: string;
     newValue?: string;
@@ -165,7 +165,7 @@ export function replaceInputPropertyByDirective({
 }: {
     templateResource: TemplateResource;
     fileSystem: DevkitFileSystem;
-    componentSelector: string | string[];
+    componentSelector: string[] | string;
     inputProperty: string;
     directive: string;
     directiveModule?: {name: string; moduleSpecifier: string};

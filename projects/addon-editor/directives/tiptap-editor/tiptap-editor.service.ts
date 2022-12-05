@@ -255,7 +255,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         this.editor.chain().setHardBreak().run();
     }
 
-    setTextSelection(value: number | Range): void {
+    setTextSelection(value: Range | number): void {
         this.editor.commands.setTextSelection(value);
     }
 

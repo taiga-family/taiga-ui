@@ -50,7 +50,7 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
     @Input()
     @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeL | null = null;
+    size: TuiSizeL | TuiSizeXS | null = null;
 
     @Input()
     @HostBinding(`attr.role`)

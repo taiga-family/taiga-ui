@@ -70,7 +70,7 @@ export class ExampleTuiTextAreaComponent extends AbstractExampleTuiControl {
 
     control = new FormControl();
 
-    override readonly sizeVariants: ReadonlyArray<TuiSizeM | TuiSizeL> = [`m`, `l`];
+    override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeM> = [`m`, `l`];
 
-    override size: TuiSizeM | TuiSizeL = this.sizeVariants[1];
+    override size: TuiSizeL | TuiSizeM = this.sizeVariants[1];
 }

@@ -51,7 +51,7 @@ export class TuiMultiSelectGroupComponent<T> {
         @Inject(NgControl) private readonly control: NgControl,
     ) {}
 
-    get size(): TuiSizeXS | TuiSizeL {
+    get size(): TuiSizeL | TuiSizeXS {
         return this.options.first?.size || `m`;
     }
 

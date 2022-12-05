@@ -37,7 +37,7 @@ const TODAY = TuiDay.currentLocal();
 export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth> {
     @Input()
     @tuiDefaultProp()
-    value: TuiMonthRange | TuiMonth | null = null;
+    value: TuiMonth | TuiMonthRange | null = null;
 
     @Input()
     @tuiDefaultProp()

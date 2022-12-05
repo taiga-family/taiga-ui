@@ -1,3 +1,3 @@
-export function tuiToInt(bool: boolean): 1 | 0 {
+export function tuiToInt(bool: boolean): 0 | 1 {
     return bool ? 1 : 0;
 }

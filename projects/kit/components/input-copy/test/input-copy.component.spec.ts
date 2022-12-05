@@ -22,7 +22,7 @@ describe(`InputCopy`, () => {
 
         control = new FormControl();
         readOnly = false;
-        size: TuiSizeS | TuiSizeL = `m`;
+        size: TuiSizeL | TuiSizeS = `m`;
     }
 
     let fixture: ComponentFixture<TestComponent>;

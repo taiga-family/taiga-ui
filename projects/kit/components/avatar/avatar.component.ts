@@ -26,7 +26,7 @@ export class TuiAvatarComponent {
 
     @Input(`avatarUrl`)
     @tuiRequiredSetter()
-    set avatarUrlSetter(avatarUrl: string | null | SafeResourceUrl) {
+    set avatarUrlSetter(avatarUrl: SafeResourceUrl | string | null) {
         this.avatarUrl = avatarUrl;
         this.isUrlValid = !!avatarUrl && !this.iconAvatar;
     }
@@ -44,7 +44,7 @@ export class TuiAvatarComponent {
     @tuiDefaultProp()
     rounded: boolean = this.options.rounded;
 
-    avatarUrl: string | null | SafeResourceUrl = null;
+    avatarUrl: SafeResourceUrl | string | null = null;
 
     isUrlValid = false;
 

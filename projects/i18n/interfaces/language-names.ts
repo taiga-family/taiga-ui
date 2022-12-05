@@ -1,4 +1,5 @@
 export type TuiLanguageName =
+    | string
     | 'chinese'
     | 'dutch'
     | 'english'
@@ -11,5 +12,4 @@ export type TuiLanguageName =
     | 'spanish'
     | 'turkish'
     | 'ukrainian'
-    | 'vietnamese'
-    | string;
+    | 'vietnamese';

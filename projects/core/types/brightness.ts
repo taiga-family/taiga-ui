@@ -1,1 +1,1 @@
-export type TuiBrightness = 'onLight' | 'onDark';
+export type TuiBrightness = 'onDark' | 'onLight';

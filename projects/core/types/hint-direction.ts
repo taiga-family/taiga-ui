@@ -1,13 +1,13 @@
 export type TuiHintDirection =
-    | 'top-left'
-    | 'top'
-    | 'top-right'
     | 'bottom-left'
-    | 'bottom'
     | 'bottom-right'
+    | 'bottom'
+    | 'left-bottom'
     | 'left-top'
     | 'left'
-    | 'left-bottom'
+    | 'right-bottom'
     | 'right-top'
     | 'right'
-    | 'right-bottom';
+    | 'top-left'
+    | 'top-right'
+    | 'top';

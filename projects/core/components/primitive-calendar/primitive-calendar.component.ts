@@ -47,7 +47,7 @@ export class TuiPrimitiveCalendarComponent {
 
     @Input()
     @tuiDefaultProp()
-    value: TuiDayRange | TuiDay | null = null;
+    value: TuiDay | TuiDayRange | null = null;
 
     @Input()
     @tuiDefaultProp()
@@ -82,7 +82,7 @@ export class TuiPrimitiveCalendarComponent {
         day: TuiDay,
         today: boolean,
         inRange: boolean,
-    ): null | [string] | [string, string] => {
+    ): [string, string] | [string] | null => {
         if (today || inRange) {
             return null;
         }

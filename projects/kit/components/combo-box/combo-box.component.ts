@@ -122,7 +122,7 @@ export class TuiComboBoxComponent<T>
     }
 
     get arrow(): PolymorpheusContent<
-        TuiContextWithImplicit<TuiSizeS | TuiSizeM | TuiSizeL>
+        TuiContextWithImplicit<TuiSizeL | TuiSizeM | TuiSizeS>
     > {
         return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
     }

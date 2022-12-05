@@ -27,7 +27,7 @@ interface TuiVisitOptions {
     hideNavigation?: boolean;
     skipDecodingUrl?: boolean;
     skipExpectUrl?: boolean;
-    waitRenderedFont?: string | RegExp;
+    waitRenderedFont?: RegExp | string;
     rootSelector?: string;
     clock?: Date | null;
     /**

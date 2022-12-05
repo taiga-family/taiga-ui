@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
 })
 export class TuiTableExample6 {
-    data: Array<Record<string, string | number>> = [{id: 1, name: `name`}];
+    data: Array<Record<string, number | string>> = [{id: 1, name: `name`}];
 
     get columns(): string[] {
         return Object.keys(this.data[0]);

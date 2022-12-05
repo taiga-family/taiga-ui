@@ -54,7 +54,7 @@ const LAST = [
     `Wilson`,
 ];
 
-type Key = 'name' | 'dob' | 'age';
+type Key = 'age' | 'dob' | 'name';
 
 const DATA: readonly User[] = Array.from({length: 300}, () => ({
     name: `${LAST[Math.floor(Math.random() * 10)]}, ${
@@ -149,7 +149,7 @@ export class TuiTableExample4 {
     }
 
     private getData(
-        key: 'name' | 'dob' | 'age',
+        key: 'age' | 'dob' | 'name',
         direction: -1 | 1,
         page: number,
         size: number,
@@ -169,7 +169,7 @@ export class TuiTableExample4 {
     }
 }
 
-function sortBy(key: 'name' | 'dob' | 'age', direction: -1 | 1): TuiComparator<User> {
+function sortBy(key: 'age' | 'dob' | 'name', direction: -1 | 1): TuiComparator<User> {
     return (a, b) =>
         key === `age`
             ? direction * tuiDefaultSort(getAge(a), getAge(b))

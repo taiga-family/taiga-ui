@@ -16,7 +16,7 @@ export class TuiIslandHarness extends TuiComponentHarness {
         return `s`;
     }
 
-    async getTextAlign(): Promise<'left' | 'right' | 'center'> {
+    async getTextAlign(): Promise<'center' | 'left' | 'right'> {
         if (await this.isTextAlignLeft()) {
             return `left`;
         }

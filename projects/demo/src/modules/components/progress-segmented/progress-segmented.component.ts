@@ -14,7 +14,7 @@ export class ExampleProgressSegmentedComponent {
     readonly sizeVariants: readonly TuiSizeS[] = [`m`, `s`];
     size: TuiSizeS = this.sizeVariants[0];
 
-    readonly colorVariants: ReadonlyArray<string | string[]> = [
+    readonly colorVariants: ReadonlyArray<string[] | string> = [
         `var(--tui-primary)`,
         `lightskyblue`,
         `#3682db`,

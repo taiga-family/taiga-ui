@@ -445,7 +445,7 @@ export class TuiInputCardGroupedComponent
         }
     }
 
-    private updateProperty(propValue: string, propName: 'card' | 'expire' | 'cvc'): void {
+    private updateProperty(propValue: string, propName: 'card' | 'cvc' | 'expire'): void {
         const {card, expire, cvc} = this.value || STUB;
         const newValue: TuiCard = {
             card,

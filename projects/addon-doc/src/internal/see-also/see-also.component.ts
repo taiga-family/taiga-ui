@@ -17,7 +17,7 @@ export class TuiDocSeeAlsoComponent {
     constructor(
         @Inject(TUI_DOC_SEE_ALSO_TEXT) readonly text: string,
         @Inject(TUI_DOC_PAGES)
-        private readonly pages: ReadonlyArray<TuiDocPageGroup | TuiDocPage>,
+        private readonly pages: ReadonlyArray<TuiDocPage | TuiDocPageGroup>,
     ) {}
 
     getRouterLink(pageTitle: string): string {

@@ -48,7 +48,7 @@ describe(`InputNumber`, () => {
         decimal: TuiDecimal = `never`;
         cleaner = true;
         defaultValues = false;
-        size: TuiSizeS | TuiSizeL = `m`;
+        size: TuiSizeL | TuiSizeS = `m`;
         hintContent: string | null = `prompt`;
     }
 

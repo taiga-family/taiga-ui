@@ -94,9 +94,9 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
 
     search = ``;
 
-    override readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
+    override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [`s`, `m`, `l`];
 
-    override size: TuiSizeS | TuiSizeL = this.sizeVariants[this.sizeVariants.length - 1];
+    override size: TuiSizeL | TuiSizeS = this.sizeVariants[this.sizeVariants.length - 1];
 
     tagValidatorVariants: ReadonlyArray<TuiBooleanHandler<string>> = [
         ALWAYS_TRUE_HANDLER,
@@ -109,7 +109,7 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
     inputHidden = false;
 
     readonly disabledItemHandlerVariants: Array<
-        TuiBooleanHandler<string | TuiStringifiableItem<string>>
+        TuiBooleanHandler<TuiStringifiableItem<string> | string>
     > = [ALWAYS_FALSE_HANDLER, item => String(item)[0] === `T`];
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];

@@ -119,5 +119,6 @@ module.exports = {
         'no-loop-func': 'off',
         'no-bitwise': 'off',
         curly: ['error', 'all'],
+        '@typescript-eslint/sort-type-constituents': 'error',
     },
 };

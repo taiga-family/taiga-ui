@@ -1,5 +1,5 @@
 export class TuiMockEvent<T> extends Event {
-    constructor(type: string, options: Record<string, any> & CustomEventInit<T> = {}) {
+    constructor(type: string, options: CustomEventInit<T> & Record<string, any> = {}) {
         super(type, options);
 
         const event = new Event(type);

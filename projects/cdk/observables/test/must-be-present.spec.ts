@@ -49,7 +49,7 @@ describe(`tuiMustBePresent operator function`, () => {
     }));
 
     it(`throws on undefined`, fakeAsync(() => {
-        const stream = new Subject<undefined | null>();
+        const stream = new Subject<null | undefined>();
 
         stream.pipe(first(), tuiMustBePresent()).subscribe();
 
@@ -60,7 +60,7 @@ describe(`tuiMustBePresent operator function`, () => {
     }));
 
     it(`throws on null`, fakeAsync(() => {
-        const stream = new Subject<undefined | null>();
+        const stream = new Subject<null | undefined>();
 
         stream.pipe(first(), tuiMustBePresent()).subscribe();
 

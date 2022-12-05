@@ -31,7 +31,7 @@ const SLIDER_INTERACTION_KEYS = new Set([
 export class TuiSliderReadonlyDirective {
     @Input()
     @tuiDefaultProp()
-    readonly: string | boolean = true;
+    readonly: boolean | string = true;
 
     constructor(
         @Inject(ElementRef) elementRef: ElementRef<HTMLInputElement>,

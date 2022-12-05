@@ -264,7 +264,7 @@ export class TuiInputRangeComponent
         }
     }
 
-    onActiveThumbChange(activeThumb: 'right' | 'left'): void {
+    onActiveThumbChange(activeThumb: 'left' | 'right'): void {
         this.lastActiveSide = activeThumb;
     }
 

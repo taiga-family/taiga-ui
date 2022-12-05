@@ -116,7 +116,7 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
 
     override iconLeft = ``;
 
-    override size: TuiSizeS | TuiSizeL = this.sizeVariants[this.sizeVariants.length - 1];
+    override size: TuiSizeL | TuiSizeS = this.sizeVariants[this.sizeVariants.length - 1];
 
     stringifyVariants: Array<TuiStringHandler<Account | string>> = [
         TUI_DEFAULT_STRINGIFY,

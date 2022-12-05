@@ -2,7 +2,7 @@ import {InjectionToken, ValueProvider} from '@angular/core';
 import {TuiStatus} from '@taiga-ui/kit/types';
 
 export interface TuiInputTagOptions {
-    readonly separator: string | RegExp;
+    readonly separator: RegExp | string;
     readonly uniqueTags: boolean;
     readonly tagStatus: TuiStatus;
 }

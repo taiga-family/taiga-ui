@@ -36,7 +36,7 @@ export class TuiPrimitiveYearPickerComponent {
 
     @Input()
     @tuiDefaultProp()
-    value: TuiMonthRange | TuiYear | TuiDayRange | null = null;
+    value: TuiDayRange | TuiMonthRange | TuiYear | null = null;
 
     @Input()
     @tuiDefaultProp()

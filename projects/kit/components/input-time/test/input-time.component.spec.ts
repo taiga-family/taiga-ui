@@ -55,7 +55,7 @@ describe(`InputTime`, () => {
         readOnly = false;
         items: TuiTime[] | null = [];
         labelOutside = false;
-        size: TuiSizeS | TuiSizeL = `l`;
+        size: TuiSizeL | TuiSizeS = `l`;
         strict = false;
         hintContent: string | null = `prompt`;
     }

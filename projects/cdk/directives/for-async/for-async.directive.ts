@@ -15,7 +15,7 @@ export class TuiForAsyncDirective<T> implements OnChanges, OnDestroy {
     private readonly destroy$ = new Subject<void>();
 
     @Input()
-    tuiForAsyncOf: readonly T[] | undefined | null;
+    tuiForAsyncOf: readonly T[] | null | undefined;
 
     @Input()
     tuiForAsyncTimeout = 10;

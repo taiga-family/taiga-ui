@@ -2,7 +2,7 @@ import {InjectionToken, ValueProvider} from '@angular/core';
 import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 
 export interface TuiAvatarOptions {
-    readonly size: TuiSizeXXS | TuiSizeXXL;
+    readonly size: TuiSizeXXL | TuiSizeXXS;
     readonly autoColor: boolean;
     readonly rounded: boolean;
 }

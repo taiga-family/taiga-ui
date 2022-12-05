@@ -3,13 +3,13 @@ import {TuiAppearance} from '@taiga-ui/core/enums';
 import {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core/types';
 
 export interface TuiButtonOptions {
-    readonly size: TuiSizeXS | TuiSizeXL;
+    readonly size: TuiSizeXL | TuiSizeXS;
     readonly appearance:
-        | keyof Record<TuiAppearance, string>
         | TuiAppearance
         | string
+        | keyof Record<TuiAppearance, string>
         | null;
-    readonly shape: 'square' | 'rounded' | null;
+    readonly shape: 'rounded' | 'square' | null;
 }
 
 export const TUI_BUTTON_DEFAULT_OPTIONS: TuiButtonOptions = {

@@ -61,7 +61,7 @@ export class TuiPieChartComponent {
     @Input()
     @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeXL = `m`;
+    size: TuiSizeXL | TuiSizeXS = `m`;
 
     @Input()
     @tuiDefaultProp()

@@ -25,7 +25,7 @@ export class ExampleTuiBarComponent {
         LESS: import(`./examples/2/index.less?raw`),
     };
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
+    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [`s`, `m`, `l`];
 
     size = this.sizeVariants[1];
 

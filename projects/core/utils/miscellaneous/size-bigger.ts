@@ -9,8 +9,8 @@ const SIZES = [`xxs`, `xs`, `s`, `m`, `l`, `xl`, `xxl`] as const;
  * @param biggerThanSize size to compare with, 's' by default
  */
 export function tuiSizeBigger(
-    size: TuiSizeXXS | TuiSizeXXL,
-    biggerThanSize: TuiSizeXXS | TuiSizeXXL = `s`,
+    size: TuiSizeXXL | TuiSizeXXS,
+    biggerThanSize: TuiSizeXXL | TuiSizeXXS = `s`,
 ): boolean {
     return SIZES.indexOf(size) > SIZES.indexOf(biggerThanSize);
 }

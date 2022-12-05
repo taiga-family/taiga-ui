@@ -35,7 +35,7 @@ export class TuiBadgeComponent {
     @Input()
     @HostBinding(`attr.data-size`)
     @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeL = `m`;
+    size: TuiSizeL | TuiSizeXS = `m`;
 
     @Input()
     @HostBinding(`attr.data-tui-host-status`)

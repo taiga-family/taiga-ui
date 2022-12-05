@@ -10,7 +10,7 @@ export async function checkChangelogBeforePush(): Promise<string | undefined> {
     readline.prompt();
     console.info(`\n`);
 
-    return new Promise((resolve: (value?: string | PromiseLike<string>) => void) => {
+    return new Promise((resolve: (value?: PromiseLike<string> | string) => void) => {
         let response: string;
 
         readline.on(`line`, userInput => {

@@ -19,7 +19,7 @@ export class ExampleTuiTextfieldControllerComponent {
         HTML: import(`./examples/1/index.html?raw`),
     };
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
+    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [`s`, `m`, `l`];
 
     readonly inputModeVariants: readonly TuiInputMode[] = [`text`, `numeric`];
 

@@ -59,7 +59,7 @@ export class ExampleTuiAvatarComponent {
 
     autoColor = false;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeXXS | TuiSizeXXL> = [
+    readonly sizeVariants: ReadonlyArray<TuiSizeXXL | TuiSizeXXS> = [
         `xxs`,
         `xs`,
         `s`,

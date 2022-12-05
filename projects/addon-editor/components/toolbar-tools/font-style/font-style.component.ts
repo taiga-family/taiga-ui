@@ -18,7 +18,7 @@ export class TuiFontStyleComponent {
     private toolsSet: Set<TuiEditorTool> = new Set(defaultEditorTools);
 
     @Input()
-    set enabledTools(value: readonly TuiEditorTool[] | Set<TuiEditorTool>) {
+    set enabledTools(value: Set<TuiEditorTool> | readonly TuiEditorTool[]) {
         this.toolsSet = new Set(value);
     }
 

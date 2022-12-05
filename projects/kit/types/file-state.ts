@@ -1,4 +1,4 @@
 /**
  * @internal
  */
-export type TuiFileState = 'error' | 'deleted' | 'loading' | 'normal';
+export type TuiFileState = 'deleted' | 'error' | 'loading' | 'normal';

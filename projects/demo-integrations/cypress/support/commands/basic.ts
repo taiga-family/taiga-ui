@@ -25,7 +25,7 @@ declare global {
             tuiSetNightMode: typeof tuiSetNightMode;
             tuiWaitCodeHighlight: typeof tuiWaitCodeHighlight;
 
-            tuiTab(direction: 'forward' | 'backward'): Chainable;
+            tuiTab(direction: 'backward' | 'forward'): Chainable;
 
             tuiScrollIntoView(): Chainable;
 

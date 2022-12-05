@@ -71,13 +71,13 @@ describe(`ComboBox`, () => {
     })
     class TestComponent {
         @ViewChild(TuiComboBoxComponent, {static: true})
-        component!: TuiComboBoxComponent<string | Beast>;
+        component!: TuiComboBoxComponent<Beast | string>;
 
         items = ITEMS;
         control = new FormControl();
         defaultInputs = false;
         cleaner = false;
-        size: TuiSizeS | TuiSizeL = `m`;
+        size: TuiSizeL | TuiSizeS = `m`;
         readOnly = false;
         hintContent: string | null = `prompt`;
 

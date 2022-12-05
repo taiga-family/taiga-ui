@@ -28,7 +28,7 @@ export function renameTypes(options: TuiSchema): void {
 function renameType(
     from: string,
     to?: string,
-    moduleSpecifier?: string | string[],
+    moduleSpecifier?: string[] | string,
     preserveGenerics: boolean = false,
 ): void {
     const references = getNamedImportReferences(from, moduleSpecifier);

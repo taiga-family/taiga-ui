@@ -26,7 +26,7 @@ describe(`InputPassword`, () => {
 
         control = new FormControl();
         readOnly = false;
-        size: TuiSizeS | TuiSizeL = `m`;
+        size: TuiSizeL | TuiSizeS = `m`;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -41,7 +41,7 @@ describe(`InputPassword`, () => {
     function getIconScr(): string {
         return (
             component.icon as PolymorpheusHandler<
-                TuiContextWithImplicit<TuiSizeS | TuiSizeL>
+                TuiContextWithImplicit<TuiSizeL | TuiSizeS>
             >
         )(component.context) as string;
     }
