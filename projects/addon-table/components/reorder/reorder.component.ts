@@ -74,11 +74,11 @@ export class TuiReorderComponent<T> {
     }
 
     toggle(toggled: T): void {
-        const enabled = this.isEnabled(toggled)
-            ? this.unsortedItems.filter(item => item !== toggled && this.isEnabled(item))
-            : this.unsortedItems.filter(item => item === toggled || this.isEnabled(item));
+        this.enabled = this.isEnabled(toggled)
+            ? this.enabled.filter(item => item !== toggled)
+            : this.enabled.concat(toggled);
 
-        this.updateEnabled(enabled);
+        this.updateEnabled();
     }
 
     move(index: number, direction: number): void {
@@ -103,18 +103,24 @@ export class TuiReorderComponent<T> {
         this.updateItems();
     }
 
-    private updateItems(): void {
+    private getSortedItems(): T[] {
         const items = new Array(this.unsortedItems.length);
 
         this.unsortedItems.forEach((item, index) => {
             items[this.order.get(index) ?? index] = item;
         });
 
-        this.itemsChange.emit(items);
-        this.updateEnabled(items.filter(item => this.isEnabled(item)));
+        return items;
     }
 
-    private updateEnabled(enabled: T[]): void {
+    private updateItems(): void {
+        this.itemsChange.emit(this.getSortedItems());
+        this.updateEnabled();
+    }
+
+    private updateEnabled(): void {
+        const enabled = this.getSortedItems().filter(item => this.isEnabled(item));
+
         this.enabled = enabled;
         this.enabledChange.emit(enabled);
     }
