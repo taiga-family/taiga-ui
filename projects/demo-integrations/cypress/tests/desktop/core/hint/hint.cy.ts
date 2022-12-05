@@ -6,11 +6,9 @@ describe(`TuiHint`, () => {
     it(`TuiHint works`, () => {
         cy.tuiVisit(`/directives/hint`);
 
-        cy.get(`tui-hint-example-1 tui-avatar`)
-            .first()
-            .trigger(`mouseenter`)
-            .wait(WAIT_BEFORE_SCREENSHOT)
-            .get(`tui-hint-example-1`)
+        cy.get(`tui-hint-example-1 tui-avatar`).trigger(`mouseenter`).tick(1000);
+
+        cy.get(`tui-hint-example-1`)
             .first()
             .wait(WAIT_BEFORE_SCREENSHOT)
             .matchImageSnapshot(`hint`);
@@ -25,21 +23,49 @@ describe(`TuiHint`, () => {
             .matchImageSnapshot(`manual-hint`);
     });
 
+    it(`Dark mode hint`, () => {
+        cy.tuiVisit(`/directives/hint/API?tuiMode=onDark`);
+
+        cy.get(`#demoContent span`)
+            .trigger(`mouseenter`)
+            .tick(1000)
+            .wait(WAIT_BEFORE_SCREENSHOT);
+
+        cy.get(`tui-hint`).matchImageSnapshot(`on-dark-hint`);
+    });
+
+    it(`Light mode hint`, () => {
+        cy.tuiVisit(`/directives/hint/API?tuiMode=onLight`);
+
+        cy.get(`#demoContent span`)
+            .trigger(`mouseenter`)
+            .tick(1000)
+            .wait(WAIT_BEFORE_SCREENSHOT);
+
+        cy.get(`tui-hint`).matchImageSnapshot(`on-light-hint`);
+    });
+
     it(`Tooltip horizontal direction`, () => {
         cy.tuiVisit(`/components/tooltip`);
         cy.get(`tui-doc-example`)
             .first()
             .trigger(`mouseenter`, {x: 35, y: 200})
-            .wait(WAIT_BEFORE_SCREENSHOT)
-            .matchImageSnapshot(`tooltip-left`);
+            .tick(1000)
+            .wait(WAIT_BEFORE_SCREENSHOT);
+
+        cy.get(`tui-doc-example`).first().matchImageSnapshot(`tooltip-left`);
     });
 
     it(`Tooltip vertical direction`, () => {
         cy.tuiVisit(`/components/tooltip`);
         cy.get(`tui-doc-example`)
+            .eq(2)
+            .find(`tui-tooltip`)
             .first()
-            .trigger(`mouseenter`, {x: 35, y: 270})
-            .wait(WAIT_BEFORE_SCREENSHOT)
-            .matchImageSnapshot(`tooltip-bottom`);
+            .trigger(`mouseenter`)
+            .tick(1000)
+            .wait(WAIT_BEFORE_SCREENSHOT);
+
+        cy.get(`tui-doc-example`).eq(2).matchImageSnapshot(`tooltip-bottom`);
     });
 });
