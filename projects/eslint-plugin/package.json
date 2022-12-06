@@ -6,7 +6,7 @@
     "devDependencies": {
         "@nrwl/eslint-plugin-nx": "14.8.6",
         "@tinkoff/eslint-config": "^1.41.0",
-        "@tinkoff/eslint-config-angular": "^1.46.3",
+        "@tinkoff/eslint-config-angular": "^1.50.0",
         "eslint-plugin-unicorn": "^44.0.2"
     },
     "peerDependencies": {
