@@ -66,6 +66,8 @@ jobs:
           ]
         type: [desktop]
         include:
+          - project: addon-tablebars
+            type: mobile
           - project: kit
             type: mobile
     name: ${{ matrix.project }} / ${{ matrix.type }}
