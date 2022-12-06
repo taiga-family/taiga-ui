@@ -1,4 +1,7 @@
-import {INPUT_PAGE_URL} from '@demo-integrations/support/properties/shared.entities';
+import {
+    INPUT_PAGE_URL,
+    WAIT_BEFORE_SCREENSHOT,
+} from '@demo-integrations/support/properties/shared.entities';
 
 describe(`Input`, () => {
     describe(`macbook-13`, () => {
@@ -118,6 +121,6 @@ describe(`Input`, () => {
         cy.get(`tui-doc-example[id=mask]`).tuiScrollIntoView().as(`wrapper`);
         cy.get(`@wrapper`).find(`tui-input input[tuiTextfield]`).as(`input`);
         cy.get(`@input`).first().focus().type(`111111111111`).blur();
-        cy.get(`@wrapper`).matchImageSnapshot(`09-mask`);
+        cy.get(`@wrapper`).wait(WAIT_BEFORE_SCREENSHOT).matchImageSnapshot(`09-mask`);
     });
 });
