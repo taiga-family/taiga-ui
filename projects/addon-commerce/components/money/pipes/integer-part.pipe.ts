@@ -11,10 +11,7 @@ export class TuiIntegerPartPipe implements PipeTransform {
         @Inject(TUI_NUMBER_FORMAT) private readonly numberFormat: TuiNumberFormatSettings,
     ) {}
 
-    transform(value: number, precision: number): string {
-        return tuiFormatNumber(
-            Math.floor(Math.abs(Number(value.toFixed(precision)))),
-            this.numberFormat,
-        );
+    transform(value: number): string {
+        return tuiFormatNumber(Math.floor(Math.abs(Number(value))), this.numberFormat);
     }
 }

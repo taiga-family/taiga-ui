@@ -60,7 +60,9 @@ export class ExampleTuiMoneyComponent {
 
     currency = this.currencyVariants[0];
 
-    readonly valueVariants: readonly number[] = [-12345.1, 237, 1234, 123123414.0234, 0];
+    readonly valueVariants: readonly number[] = [
+        -12345.1, 237, 1234, 123123414.0234, 0, 23724.999999999996,
+    ];
 
     value = this.valueVariants[0];
 
