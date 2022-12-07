@@ -6,6 +6,7 @@ import {
     Inject,
     Input,
 } from '@angular/core';
+import {SafeResourceUrl} from '@angular/platform-browser';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 
@@ -17,7 +18,7 @@ import {TuiLazyLoadingService} from './lazy-loading.service';
 })
 export class TuiLazyLoadingDirective {
     @Input(`src`)
-    set srcSetter(src: string) {
+    set srcSetter(src: string | SafeResourceUrl) {
         this.src = this.supported ? src : null;
         this.src$.next(src);
     }
@@ -29,7 +30,7 @@ export class TuiLazyLoadingDirective {
     background = `var(--tui-clear-hover)`;
 
     @HostBinding(`attr.src`)
-    src: string | null = null;
+    src: string | null | SafeResourceUrl = null;
 
     constructor(
         @Inject(TuiLazyLoadingService)

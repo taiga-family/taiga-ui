@@ -7,8 +7,8 @@
     (error)="onError()"
 />
 <tui-svg
-    *ngIf="iconAvatar"
+    *ngIf="stringAvatar"
     class="t-icon"
-    [src]="avatarUrl || ''"
+    [src]="stringAvatar"
 ></tui-svg>
 <span class="t-text">{{ computedText }}</span>
