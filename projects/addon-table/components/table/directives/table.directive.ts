@@ -63,21 +63,30 @@ export class TuiTableDirective<
     @tuiDefaultProp()
     sorter: TuiComparator<T> = () => 0;
 
-    updateSorter(sorter: TuiComparator<T> | null): void {
+    updateSorterAndDirection(sorter: TuiComparator<T> | null): void {
         if (this.sorter === sorter) {
-            this.direction = this.direction === 1 ? -1 : 1;
-            this.directionChange.emit(this.direction);
+            this.updateDirection(this.direction === 1 ? -1 : 1);
         } else {
-            this.sorter = sorter || (() => 0);
-            this.sorterChange.emit(this.sorter);
-            this.direction = 1;
-            this.directionChange.emit(1);
+            this.updateSorter(sorter);
+            this.updateDirection(1);
         }
-
-        this.change$.next();
     }
 
     ngAfterViewInit(): void {
         this.changeDetectorRef.detectChanges();
+    }
+
+    updateSorter(sorter: TuiComparator<T> | null): void {
+        if (sorter !== this.sorter) {
+            this.sorter = sorter || (() => 0);
+            this.sorterChange.emit(this.sorter);
+            this.change$.next();
+        }
+    }
+
+    private updateDirection(direction: -1 | 1): void {
+        this.direction = direction;
+        this.directionChange.emit(this.direction);
+        this.change$.next();
     }
 }
