@@ -82,7 +82,7 @@
     <tui-scrollbar>
         <div class="t-anchor-list">
             <button
-                *ngFor="let id of anchorIds | tuiFilterAnchors: prefix:url"
+                *ngFor="let id of anchorIds | tuiFilterAnchors : prefix : url"
                 type="button"
                 class="t-anchor"
                 (click)="setAnchor(id)"

@@ -28,6 +28,6 @@
     <ng-container
         *ngFor="let item of sorted; let index = index"
         [ngTemplateOutlet]="row.template"
-        [ngTemplateOutletContext]="item | tuiMapper: toContext:index"
+        [ngTemplateOutletContext]="item | tuiMapper : toContext : index"
     ></ng-container>
 </ng-container>

@@ -31,7 +31,7 @@
     *ngIf="processor$ | async as files"
     class="t-example"
 >
-    <ng-container *ngIf="files | tuiDocExampleGetTabs: defaultTab as tabs">
+    <ng-container *ngIf="files | tuiDocExampleGetTabs : defaultTab as tabs">
         <div class="t-tabs-wrapper">
             <tui-tabs-with-more
                 class="t-tabs"
@@ -48,7 +48,7 @@
             </tui-tabs-with-more>
 
             <button
-                *ngIf="files | tuiMapper: visible"
+                *ngIf="files | tuiMapper : visible"
                 tuiButton
                 appearance="flat"
                 size="s"

@@ -40,7 +40,7 @@
             *ngFor="let chart of days"
             class="chart"
             [height]="200"
-            [value]="chart | tuiFilter: filter:range"
+            [value]="chart | tuiFilter : filter : range"
         ></tui-line-days-chart>
     </ng-container>
     <ng-template #line>
@@ -49,7 +49,7 @@
             class="chart"
             [height]="200"
             [width]="getWidth(range)"
-            [value]="chart | tuiFilter: filter:range | tuiMapper: toNumbers:range"
+            [value]="chart | tuiFilter : filter : range | tuiMapper : toNumbers : range"
         ></tui-line-chart>
     </ng-template>
 </tui-axes>

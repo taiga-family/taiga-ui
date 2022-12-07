@@ -17,7 +17,7 @@
         [max]="value[1]"
         [precision]="precision"
         [decimal]="decimal"
-        [postfix]="pluralize && !showLeftValueContent ? (value[0] | i18nPlural: pluralize) : ''"
+        [postfix]="pluralize && !showLeftValueContent ? (value[0] | i18nPlural : pluralize) : ''"
         [disabled]="computedDisabled"
         [readOnly]="readOnly"
         [ngModel]="value[0]"
@@ -70,7 +70,7 @@
             automation-id="tui-input-range__pluralize-right"
             class="t-pluralize-right"
         >
-            &nbsp;{{ value[1] | i18nPlural: pluralize }}
+            &nbsp;{{ value[1] | i18nPlural : pluralize }}
         </span>
     </div>
 
