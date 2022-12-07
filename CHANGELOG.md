@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.71.0](https://github.com/tinkoff/taiga-ui/compare/v2.70.0...v2.71.0) (2022-12-07)
+
+### Features
+
+- **kit:** avatar now accepts SafeResourceUrl as avatarUrl ([#3186](https://github.com/tinkoff/taiga-ui/issues/3186))
+  ([4c7f992](https://github.com/tinkoff/taiga-ui/commit/4c7f992134f9d7068a9b88a874b2fb5b9a842930))
+
+### Bug Fixes
+
+- **kit:** fix encapsulation problem in `input-files` ([#3193](https://github.com/tinkoff/taiga-ui/issues/3193))
+  ([2ba7c2c](https://github.com/tinkoff/taiga-ui/commit/2ba7c2c92bbe5a2374a5bff6e40fd5a4c2f78803))
+
 ## [2.70.0](https://github.com/tinkoff/taiga-ui/compare/v2.69.0...v2.70.0) (2022-12-05)
 
 ### Bug Fixes
