@@ -12,7 +12,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {AbstractTuiControl, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {
     TuiPrimitiveTextfieldComponent,
-    tuiPrimitiveTextfieldOptionsProvider,
+    tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core';
 
 @Component({
@@ -20,11 +20,7 @@ import {
     templateUrl: `./index.html`,
     changeDetection,
     encapsulation,
-    providers: [
-        tuiPrimitiveTextfieldOptionsProvider({
-            iconCleaner: `tuiIconChevronUp`,
-        }),
-    ],
+    providers: [tuiTextfieldOptionsProvider({iconCleaner: `tuiIconChevronUp`})],
 })
 export class TuiPrimitiveTextfieldExample2 extends AbstractTuiControl<string> {
     @ViewChild(TuiPrimitiveTextfieldComponent)

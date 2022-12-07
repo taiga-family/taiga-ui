@@ -87,7 +87,7 @@
             (click.stop)="clear()"
         >
             <tui-svg
-                *polymorpheusOutlet="iconCleaner as src"
+                *polymorpheusOutlet="iconCleaner || controller.options.iconCleaner as src; context: {$implicit: size}"
                 [src]="src"
             ></tui-svg>
         </span>

@@ -18,6 +18,7 @@ import {
     TUI_IS_IOS,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
+    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
@@ -36,6 +37,7 @@ import {
     TuiTextfieldComponent,
     TuiTextfieldController,
 } from '@taiga-ui/core';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
 export const DEFAULT_ROWS = 20;
@@ -149,6 +151,10 @@ export class TuiTextAreaComponent
 
     get hasPlaceholder(): boolean {
         return !this.controller.labelOutside || (!this.hasValue && !this.hasExampleText);
+    }
+
+    get iconCleaner(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
+        return this.controller.options.iconCleaner;
     }
 
     get hasExampleText(): boolean {

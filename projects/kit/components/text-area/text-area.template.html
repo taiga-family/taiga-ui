@@ -66,12 +66,14 @@
             </tui-scrollbar>
         </div>
         <div class="t-icons">
-            <tui-svg
-                *ngIf="hasCleaner"
-                src="tuiIconCloseLarge"
-                class="t-cleaner"
-                (click.stop)="onValueChange('')"
-            ></tui-svg>
+            <ng-container *ngIf="hasCleaner">
+                <tui-svg
+                    *polymorpheusOutlet="iconCleaner as src; context: {$implicit: size}"
+                    class="t-cleaner"
+                    [src]="src"
+                    (click.stop)="onValueChange('')"
+                ></tui-svg>
+            </ng-container>
             <tui-tooltip
                 *ngIf="hintOptions && hintOptions.content && !computedDisabled"
                 automation-id="tui-text-area__tooltip"

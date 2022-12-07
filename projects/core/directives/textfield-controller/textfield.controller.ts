@@ -8,11 +8,13 @@ import {TuiTextfieldCustomContentDirective} from './textfield-custom-content.dir
 import {TuiTextfieldIconDirective} from './textfield-icon.directive';
 import {TuiTextfieldIconLeftDirective} from './textfield-icon-left.directive';
 import {TuiTextfieldLabelOutsideDirective} from './textfield-label-outside.directive';
+import {TuiTextfieldOptions} from './textfield-options';
 import {TuiTextfieldSizeDirective} from './textfield-size.directive';
 
 export class TuiTextfieldController {
     constructor(
         readonly change$: Observable<void>,
+        readonly options: TuiTextfieldOptions,
         private readonly cleanerDirective: TuiTextfieldCleanerDirective,
         private readonly customContentDirective: TuiTextfieldCustomContentDirective,
         private readonly iconDirective: TuiTextfieldIconDirective,

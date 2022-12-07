@@ -21,6 +21,7 @@ import {
     TUI_TEXTFIELD_LABEL_OUTSIDE,
     TuiTextfieldLabelOutsideDirective,
 } from './textfield-label-outside.directive';
+import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptions} from './textfield-options';
 import {TUI_TEXTFIELD_SIZE, TuiTextfieldSizeDirective} from './textfield-size.directive';
 
 export const TUI_TEXTFIELD_WATCHED_CONTROLLER =
@@ -35,6 +36,7 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
         deps: [
             ChangeDetectorRef,
             TuiDestroyService,
+            TUI_TEXTFIELD_OPTIONS,
             TUI_TEXTFIELD_CLEANER,
             TUI_TEXTFIELD_CUSTOM_CONTENT,
             TUI_TEXTFIELD_ICON,
@@ -45,6 +47,7 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
         useFactory: (
             changeDetectorRef: ChangeDetectorRef,
             destroy$: Observable<void>,
+            options: TuiTextfieldOptions,
             ...controllers: [
                 TuiTextfieldCleanerDirective,
                 TuiTextfieldCustomContentDirective,
@@ -60,7 +63,7 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
 
             change$.subscribe();
 
-            return new TuiTextfieldController(change$, ...controllers);
+            return new TuiTextfieldController(change$, options, ...controllers);
         },
     },
 ];
