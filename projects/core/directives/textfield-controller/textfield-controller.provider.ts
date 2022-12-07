@@ -21,6 +21,14 @@ import {
     TUI_TEXTFIELD_LABEL_OUTSIDE,
     TuiTextfieldLabelOutsideDirective,
 } from './textfield-label-outside.directive';
+import {
+    TUI_TEXTFIELD_POSTFIX,
+    TuiTextfieldPostfixDirective,
+} from './textfield-postfix.directive';
+import {
+    TUI_TEXTFIELD_PREFIX,
+    TuiTextfieldPrefixDirective,
+} from './textfield-prefix.directive';
 import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptions} from './textfield-options';
 import {TUI_TEXTFIELD_SIZE, TuiTextfieldSizeDirective} from './textfield-size.directive';
 
@@ -43,6 +51,8 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
             TUI_TEXTFIELD_ICON_LEFT,
             TUI_TEXTFIELD_LABEL_OUTSIDE,
             TUI_TEXTFIELD_SIZE,
+            TUI_TEXTFIELD_PREFIX,
+            TUI_TEXTFIELD_POSTFIX,
         ],
         useFactory: (
             changeDetectorRef: ChangeDetectorRef,
@@ -55,6 +65,8 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
                 TuiTextfieldIconLeftDirective,
                 TuiTextfieldLabelOutsideDirective,
                 TuiTextfieldSizeDirective,
+                TuiTextfieldPrefixDirective,
+                TuiTextfieldPostfixDirective,
             ]
         ) => {
             const change$ = merge(

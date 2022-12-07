@@ -139,6 +139,12 @@ export abstract class AbstractExampleTuiControl
 
     dropdownMaxHeight = TUI_DROPDOWN_DEFAULT_OPTIONS.maxHeight;
 
+    readonly prefixVariants: readonly string[] = [``, `$`, `GBP`, `Very long text`];
+
+    prefix = this.prefixVariants[0];
+
+    postfix = this.prefixVariants[0];
+
     get customContent(): PolymorpheusContent {
         return this.customContentSelected === CUSTOM_SVG_NAME
             ? CUSTOM_SVG

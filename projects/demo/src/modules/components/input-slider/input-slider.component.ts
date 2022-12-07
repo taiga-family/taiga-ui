@@ -76,9 +76,6 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     override size = this.sizeVariants[1];
 
-    prefix = ``;
-    postfix = ``;
-
     readonly valueContentVariants = [
         ``,
         `TOP SECRET`,

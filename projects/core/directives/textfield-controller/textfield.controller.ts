@@ -8,6 +8,8 @@ import {TuiTextfieldCustomContentDirective} from './textfield-custom-content.dir
 import {TuiTextfieldIconDirective} from './textfield-icon.directive';
 import {TuiTextfieldIconLeftDirective} from './textfield-icon-left.directive';
 import {TuiTextfieldLabelOutsideDirective} from './textfield-label-outside.directive';
+import {TuiTextfieldPostfixDirective} from './textfield-postfix.directive';
+import {TuiTextfieldPrefixDirective} from './textfield-prefix.directive';
 import {TuiTextfieldOptions} from './textfield-options';
 import {TuiTextfieldSizeDirective} from './textfield-size.directive';
 
@@ -21,6 +23,8 @@ export class TuiTextfieldController {
         private readonly iconLeftDirective: TuiTextfieldIconLeftDirective,
         private readonly labelOutsideDirective: TuiTextfieldLabelOutsideDirective,
         private readonly sizeDirective: TuiTextfieldSizeDirective,
+        private readonly prefixDirective: TuiTextfieldPrefixDirective,
+        private readonly postfixDirective: TuiTextfieldPostfixDirective,
     ) {}
 
     get cleaner(): boolean {
@@ -45,5 +49,13 @@ export class TuiTextfieldController {
 
     get size(): TuiSizeL | TuiSizeS {
         return this.sizeDirective.size;
+    }
+
+    get prefix(): string {
+        return this.prefixDirective.prefix;
+    }
+
+    get postfix(): string {
+        return this.postfixDirective.postfix;
     }
 }
