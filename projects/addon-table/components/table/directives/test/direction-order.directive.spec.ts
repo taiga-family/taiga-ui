@@ -65,5 +65,11 @@ describe(`TuiDirectionOrder directive`, () => {
 
             expect(testComponent.directionOrderChange).toHaveBeenCalledWith(`desc`);
         });
+
+        it(`should not emit directionChange when updating sorter programmatically`, () => {
+            testComponent.table.updateSorter(() => -1);
+
+            expect(testComponent.directionOrderChange).not.toHaveBeenCalled();
+        });
     });
 });
