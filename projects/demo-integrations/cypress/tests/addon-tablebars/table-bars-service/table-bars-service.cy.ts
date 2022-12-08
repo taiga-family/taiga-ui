@@ -12,4 +12,16 @@ describe(`TableBarsService`, () => {
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
             .matchImageSnapshot(`table-bars`);
     });
+
+    it(`works on mobile`, () => {
+        cy.viewport(390, 844);
+
+        cy.tuiVisit(`/services/table-bars-service`);
+
+        cy.get(`tui-table-bar-example-1 button`).first().click();
+        cy.getByAutomationId(`tui-table-bar__bar`)
+            .first()
+            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+            .matchImageSnapshot(`table-bars-mobile`);
+    });
 });
