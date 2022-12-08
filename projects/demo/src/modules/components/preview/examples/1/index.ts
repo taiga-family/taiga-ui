@@ -37,7 +37,7 @@ export class TuiPreviewExample1 {
     get previewContent(): PolymorpheusContent {
         return this.index === 0 && this.contentSample
             ? this.contentSample
-            : `http://marsibarsi.me/images/1x1small.jpg`;
+            : `https://avatars.githubusercontent.com/u/10106368`;
     }
 
     show(): void {
