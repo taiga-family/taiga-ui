@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.12.1](https://github.com/tinkoff/taiga-ui/compare/v3.12.0...v3.12.1) (2022-12-08)
+
+### Bug Fixes
+
+- **addon-commerce:** truncate float values without rounding ([#3176](https://github.com/tinkoff/taiga-ui/issues/3176))
+  ([70e6887](https://github.com/tinkoff/taiga-ui/commit/70e6887fdb2dfaf0267f0362a6716a66751341a2))
+- **i18n:** fix french `TUI_COUNTRIES_MASKS` should accept numbers without leading 0
+  ([#3191](https://github.com/tinkoff/taiga-ui/issues/3191))
+  ([11ee5ed](https://github.com/tinkoff/taiga-ui/commit/11ee5edfab20f09eec92a2604dcf8b7538d63e14))
+- **kit:** `InputFiles` fix style encapsulation issue ([#3194](https://github.com/tinkoff/taiga-ui/issues/3194))
+  ([cd907c0](https://github.com/tinkoff/taiga-ui/commit/cd907c0bc9b4c5a27605c6adf09309b14b85d35b))
+
 ## [3.12.0](https://github.com/tinkoff/taiga-ui/compare/v3.11.0...v3.12.0) (2022-12-05)
 
 ### Features
