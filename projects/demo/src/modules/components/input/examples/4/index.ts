@@ -69,7 +69,12 @@ const accountsAlex = [
     ),
 ];
 const USERS = [
-    new User(`Roman`, `Sedov`, `http://marsibarsi.me/images/1x1small.jpg`, accountsRoman),
+    new User(
+        `Roman`,
+        `Sedov`,
+        `https://avatars.githubusercontent.com/u/10106368`,
+        accountsRoman,
+    ),
     new User(
         `Alex`,
         `Inkin`,

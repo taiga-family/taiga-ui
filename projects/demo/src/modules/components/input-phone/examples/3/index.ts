@@ -25,7 +25,7 @@ const DATA: readonly User[] = [
         `Roman`,
         `Sedov`,
         `+75678901234`,
-        `http://marsibarsi.me/images/1x1small.jpg`,
+        `https://avatars.githubusercontent.com/u/10106368`,
     ),
     new User(`Alex`, `Inkin`, `+75678901234`, assets`/images/avatar.jpg`),
 ];

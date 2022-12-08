@@ -21,7 +21,7 @@ class User {
 }
 
 const DATA: readonly User[] = [
-    new User(`Roman`, `Sedov`, `http://marsibarsi.me/images/1x1small.jpg`),
+    new User(`Roman`, `Sedov`, `https://avatars.githubusercontent.com/u/10106368`),
     new User(`Alex`, `Inkin`, assets`/images/avatar.jpg`),
     new User(`Gabriel José`, `de la Concordia «Gabo» García Márquez`),
 ];

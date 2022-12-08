@@ -1,7 +1,7 @@
 // not taiga ui icons
 export const EXTERNAL_ICONS = [
     `web-api.svg`,
-    `marsibarsi.*1x1small.jpg`,
+    `avatars.githubusercontent.com`,
     `.*ng-polymorpheus.*logo.svg`,
     `bf2e94ae58ee713717faf397958a8e3d.jpg`, // filename - MD5 hash value of file content (waterplea avatar)
     `avatar.jpg`,
