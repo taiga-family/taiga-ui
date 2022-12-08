@@ -25,7 +25,7 @@ const APP_COMP_META = {
 
 @Injectable()
 export class TuiStackblitzService implements TuiCodeEditor {
-    private readonly stacklitzProjectConfigs: Pick<
+    private readonly stackblitzProjectConfigs: Pick<
         Project,
         'dependencies' | 'tags' | 'template'
     > = {
@@ -50,7 +50,6 @@ export class TuiStackblitzService implements TuiCodeEditor {
 
         const appModule = new TsFileModuleParser(appModuleTs);
         const appCompTs = new TsFileComponentParser(content.TypeScript);
-
         const supportFilesTuples = getSupportFiles(content);
         const supportModulesTuples = getSupportModules(supportFilesTuples);
         const supportCompClassNames = getComponentsClassNames(supportFilesTuples);
@@ -75,7 +74,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
         appCompTs.className = APP_COMP_META.CLASS_NAME;
 
         return stackblitz.openProject({
-            ...this.stacklitzProjectConfigs,
+            ...this.stackblitzProjectConfigs,
             title: `${component}-${sampleId}`,
             description: `Taiga UI example of the component ${component}`,
             files: {
@@ -96,7 +95,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
     ): Promise<void> {
         return stackblitz.openProject(
             {
-                ...this.stacklitzProjectConfigs,
+                ...this.stackblitzProjectConfigs,
                 title,
                 description,
                 files: {
