@@ -17,7 +17,7 @@
 >
     <div class="t-wrapper">
         <label
-            *tuiLet="value?.card | tuiFormatCard: cardPrefilled as formattedCard"
+            *tuiLet="value?.card | tuiFormatCard : cardPrefilled as formattedCard"
             tuiPreventDefault="click"
         >
             <input
@@ -30,7 +30,7 @@
                 [class.t-input_inert]="cardPrefilled"
                 [class.t-input_hidden]="!card.length && focused"
                 [attr.id]="idCard"
-                [attr.aria-invalid]="!cardPrefilled && !(this.card | tuiMapper: cardValidator)"
+                [attr.aria-invalid]="!cardPrefilled && !(this.card | tuiMapper : cardValidator)"
                 [placeholder]="cardPrefilled ? '' : exampleText"
                 [autocomplete]="autocompleteCard"
                 [disabled]="computedDisabled"

@@ -15,7 +15,7 @@
 </tui-input>
 
 <ng-container *tuiForAsync="let key of icons | tuiKeys">
-    <ng-container *ngIf="icons[key] | tuiFilter: matcher:search as filtered">
+    <ng-container *ngIf="icons[key] | tuiFilter : matcher : search as filtered">
         <div class="header-group">
             <h2
                 i18n

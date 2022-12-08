@@ -6,7 +6,7 @@
     ></div>
 </div>
 <div
-    *tuiLet="month | tuiCalendarSheet: true as sheet"
+    *tuiLet="month | tuiCalendarSheet : true as sheet"
     id="date-rows"
 >
     <div
@@ -31,12 +31,12 @@
                     <div
                         automation-id="tui-primitive-calendar__item"
                         class="t-item"
-                        [attr.data-type]="item | tuiMapper: dayTypeHandler"
+                        [attr.data-type]="item | tuiMapper : dayTypeHandler"
                         [class.t-item_unavailable]="itemIsUnavailable(item)"
                     >
                         {{ item.day }}
                         <div
-                            *ngIf="item | tuiMapper: toMarkers:itemIsToday(item):!!getItemRange(item) as markers"
+                            *ngIf="item | tuiMapper : toMarkers : itemIsToday(item) : !!getItemRange(item) as markers"
                             class="t-dots"
                         >
                             <div

@@ -3,8 +3,8 @@
     automation-id="tui-calendar-range__calendars"
     tuiPreventDefault="mousedown"
     [markerHandler]="markerHandler"
-    [min]="min | tuiMapper: maxLengthMapper:value:maxLength:true"
-    [max]="max | tuiMapper: maxLengthMapper:value:maxLength:false"
+    [min]="min | tuiMapper : maxLengthMapper : value : maxLength : true"
+    [max]="max | tuiMapper : maxLengthMapper : value : maxLength : false"
     [defaultViewedMonthFirst]="defaultViewedMonth"
     [disabledItemHandler]="calculatedDisabledItemHandler"
     [value]="value"
@@ -17,8 +17,8 @@
             tuiPreventDefault="mousedown"
             [value]="value"
             [markerHandler]="markerHandler"
-            [min]="min | tuiMapper: maxLengthMapper:value:maxLength:true"
-            [max]="max | tuiMapper: maxLengthMapper:value:maxLength:false"
+            [min]="min | tuiMapper : maxLengthMapper : value : maxLength : true"
+            [max]="max | tuiMapper : maxLengthMapper : value : maxLength : false"
             [month]="computedMonth"
             [disabledItemHandler]="calculatedDisabledItemHandler"
             (dayClick)="onDayClick($event)"
@@ -29,7 +29,7 @@
             class="t-menu"
         >
             <button
-                *ngFor="let item of items | tuiMapper: mapper:min:max:minLength:(otherDateText$ | async)"
+                *ngFor="let item of items | tuiMapper : mapper : min : max : minLength : (otherDateText$ | async)"
                 tuiOption
                 tuiPreventDefault="mousedown"
                 role="menuitemradio"
