@@ -15,8 +15,8 @@
         "updateToV3": {
             "private": true,
             "description": "Manually run migration to update Taiga to v3.x.x",
-            "factory": "./ng-update/index#updateToV3",
-            "schema": "./ng-update/schema.json"
+            "factory": "./ng-update/v3/index#updateToV3",
+            "schema": "./ng-update/v3/schema.json"
         }
     }
 }

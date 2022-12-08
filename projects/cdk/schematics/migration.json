@@ -4,12 +4,17 @@
         "updateToV3": {
             "description": "Updates Taiga UI packages to v3",
             "version": "3.0.0",
-            "factory": "./ng-update/index#updateToV3"
+            "factory": "./ng-update/v3/index#updateToV3"
         },
         "updateToV3_5": {
             "description": "Small migration for expand",
             "version": "3.5.0",
-            "factory": "./ng-update/index#updateToV3_5"
+            "factory": "./ng-update/v3-5/index#updateToV3_5"
+        },
+        "updateToV4": {
+            "description": "Updates Taiga UI packages to v4",
+            "version": "4.0.0",
+            "factory": "./ng-update/v4/index#updateToV4"
         }
     }
 }

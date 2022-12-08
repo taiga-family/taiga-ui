@@ -10,15 +10,16 @@ import {
 } from '../../utils/colored-log';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {removeImport} from '../../utils/import-manipulations';
-import {REMOVED_MODULES} from '../constants/modules';
+import {RemovedModule} from '../interfaces/removed-module';
 
-export function removeModules(options: TuiSchema): void {
+export function removeModules(
+    options: TuiSchema,
+    modules: readonly RemovedModule[],
+): void {
     !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} removing modules...`);
 
-    REMOVED_MODULES.forEach(({name, moduleSpecifier}) =>
-        removeModule(name, moduleSpecifier),
-    );
+    modules.forEach(({name, moduleSpecifier}) => removeModule(name, moduleSpecifier));
 
     !options[`skip-logs`] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} modules removed \n`);
