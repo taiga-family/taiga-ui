@@ -3,6 +3,7 @@ import {
     DEMO_PATHS,
     isInputNumberPage,
     isScrollbarPage,
+    isTilesPage,
 } from '@demo-integrations/support/properties/demo-paths';
 import {
     EXAMPLE_ID,
@@ -14,7 +15,7 @@ describe(`Demo`, () => {
         it(path, () => {
             cy.tuiVisit(path, {hideScrollbar: !isScrollbarPage(path)});
 
-            const waitSomeAnimationBefore = isInputNumberPage(path);
+            const waitSomeAnimationBefore = isInputNumberPage(path) || isTilesPage(path);
 
             if (waitSomeAnimationBefore) {
                 cy.wait(WAIT_BEFORE_SCREENSHOT);
