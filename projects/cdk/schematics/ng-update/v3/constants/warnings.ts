@@ -1,4 +1,4 @@
-import {MigrationWarning} from '@taiga-ui/cdk/schematics/ng-update/interfaces/migration-warning';
+import {MigrationWarning} from '../../interfaces/migration-warning';
 
 export const MIGRATION_WARNINGS: readonly MigrationWarning[] = [
     {
