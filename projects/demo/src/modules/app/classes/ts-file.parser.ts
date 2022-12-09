@@ -28,6 +28,8 @@ export class TsFileParser {
         if (classesInside.length > 1) {
             throw new TuiTsParserException();
         }
+
+        this.replaceMetaAssets();
     }
 
     addImport(entity: string, packageOrPath: string): void {
@@ -51,5 +53,21 @@ export class TsFileParser {
         return this.rawFileContent.replace(packageImportsRegex, parsed => {
             return parsed.replace(`{`, `{${entity}, `);
         });
+    }
+
+    /**
+     * @description:
+     * The 'import.meta' doesn't support on Stackblitz
+     */
+    private replaceMetaAssets(): void {
+        this.rawFileContent = this.rawFileContent.replace(
+            `import {assets} from '@demo/utils';\n`,
+            ``,
+        );
+
+        this.rawFileContent = this.rawFileContent.replace(
+            `assets\``,
+            `\`https://taiga-ui.dev/assets`,
+        );
     }
 }
