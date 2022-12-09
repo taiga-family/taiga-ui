@@ -77,11 +77,9 @@ export class TuiTableDirective<
     }
 
     updateSorter(sorter: TuiComparator<T> | null): void {
-        if (sorter !== this.sorter) {
-            this.sorter = sorter || (() => 0);
-            this.sorterChange.emit(this.sorter);
-            this.change$.next();
-        }
+        this.sorter = sorter || (() => 0);
+        this.sorterChange.emit(this.sorter);
+        this.change$.next();
     }
 
     private updateDirection(direction: -1 | 1): void {
