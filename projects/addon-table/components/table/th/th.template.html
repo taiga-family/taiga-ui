@@ -3,7 +3,7 @@
     type="button"
     class="t-sort"
     [class.t-sort_sorted]="isCurrent"
-    (click)="table.updateSorter(sorter)"
+    (click)="table.updateSorterAndDirection(sorter)"
 >
     <ng-container [ngTemplateOutlet]="content"></ng-container>
     {{ table.change$ | async }}
