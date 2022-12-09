@@ -11,13 +11,13 @@ import {
 } from '../../utils/colored-log';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {removeImport, renameImport} from '../../utils/import-manipulations';
-import {TYPES_TO_RENAME} from '../constants/types';
+import {TypeToRename} from '../interfaces/type-to-rename';
 
-export function renameTypes(options: TuiSchema): void {
+export function renameTypes(options: TuiSchema, types: readonly TypeToRename[]): void {
     !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} renaming types...`);
 
-    TYPES_TO_RENAME.forEach(({from, to, moduleSpecifier, preserveGenerics}) =>
+    types.forEach(({from, to, moduleSpecifier, preserveGenerics}) =>
         renameType(from, to, moduleSpecifier, preserveGenerics),
     );
 

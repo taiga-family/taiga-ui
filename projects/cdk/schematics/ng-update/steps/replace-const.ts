@@ -11,13 +11,16 @@ import {
 } from '../../utils/colored-log';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {removeImport} from '../../utils/import-manipulations';
-import {CONSTS_TO_REPLACE, ReplacementConst} from '../constants/consts';
+import {ReplacementConst} from '../interfaces/replacement-const';
 
-export function replaceConstants(options: TuiSchema): void {
+export function replaceConstants(
+    options: TuiSchema,
+    consts: readonly ReplacementConst[],
+): void {
     !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing constants...`);
 
-    CONSTS_TO_REPLACE.forEach(constToReplace => replaceConst(constToReplace));
+    consts.forEach(constToReplace => replaceConst(constToReplace));
 
     !options[`skip-logs`] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} constants replaced \n`);

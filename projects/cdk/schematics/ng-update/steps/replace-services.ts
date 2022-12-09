@@ -13,13 +13,16 @@ import {
 } from '../../utils/colored-log';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {removeImport} from '../../utils/import-manipulations';
-import {ReplacementService, SERVICES_TO_REPLACE} from '../constants/services';
+import {ReplacementService} from '../interfaces/replacement-service';
 
-export function replaceServices(options: TuiSchema): void {
+export function replaceServices(
+    options: TuiSchema,
+    services: readonly ReplacementService[],
+): void {
     !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing services...`);
 
-    SERVICES_TO_REPLACE.forEach(service => replaceService(service, options));
+    services.forEach(service => replaceService(service, options));
 
     !options[`skip-logs`] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} services replaced \n`);

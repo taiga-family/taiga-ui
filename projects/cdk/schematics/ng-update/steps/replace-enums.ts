@@ -10,13 +10,13 @@ import {
 } from '../../utils/colored-log';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {removeImport} from '../../utils/import-manipulations';
-import {ENUMS_TO_REPLACE} from '../constants/enums';
+import {ReplacementEnum} from '../interfaces/replacement-enum';
 
-export function replaceEnums(options: TuiSchema): void {
+export function replaceEnums(options: TuiSchema, enums: ReplacementEnum[]): void {
     !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing enums imports...`);
 
-    ENUMS_TO_REPLACE.forEach(({name, replaceValues, keepAsType}) =>
+    enums.forEach(({name, replaceValues, keepAsType}) =>
         replaceEnumWithString(name, replaceValues, keepAsType),
     );
 
