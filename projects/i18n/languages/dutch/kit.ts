@@ -54,7 +54,7 @@ export const TUI_DUTCH_LANGUAGE_KIT: TuiLanguageKit = {
         dropMultiple: `Zet hier bestanden neer`,
     },
     multiSelectTexts: {
-        all: `Vælg alle`,
-        none: `Vælg ingen`,
+        all: `Selecteer alle`,
+        none: `Selecteer geen`,
     },
 };
