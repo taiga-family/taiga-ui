@@ -1,6 +1,10 @@
 export function tuiContainsOrAfter(current: Node, node: Node): boolean {
-    return (
-        current.contains(node) ||
-        !!(node.compareDocumentPosition(current) & Node.DOCUMENT_POSITION_PRECEDING)
-    );
+    try {
+        return (
+            current.contains(node) ||
+            !!(node.compareDocumentPosition(current) & Node.DOCUMENT_POSITION_PRECEDING)
+        );
+    } catch {
+        return false;
+    }
 }
