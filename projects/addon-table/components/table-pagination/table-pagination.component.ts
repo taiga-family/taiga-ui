@@ -4,7 +4,7 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TUI_SPIN_TEXTS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
-import {TuiPagination} from './pagination.model';
+import {TuiTablePagination} from './table-pagination';
 import {
     TUI_TABLE_PAGINATION_OPTIONS,
     TuiTablePaginationOptions,
@@ -47,7 +47,7 @@ export class TuiTablePaginationComponent {
     readonly sizeChange = new EventEmitter<number>();
 
     @Output()
-    readonly paginationChange = new EventEmitter<TuiPagination>();
+    readonly paginationChange = new EventEmitter<TuiTablePagination>();
 
     open = false;
 
@@ -78,7 +78,7 @@ export class TuiTablePaginationComponent {
         return this.end === this.total;
     }
 
-    get pagination(): TuiPagination {
+    get pagination(): TuiTablePagination {
         return {
             page: this.page,
             size: this.size,
