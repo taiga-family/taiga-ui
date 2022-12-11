@@ -24,15 +24,15 @@ export class TuiSliderThumbLabelComponent implements AfterContentInit {
     readonly control?: NgControl;
 
     get size(): TuiSizeS {
-        return this.slider?.size || `m`;
+        return this.slider?.size ?? `m`;
     }
 
     get ratio(): number {
-        return (this.slider?.valuePercentage || 0) / 100;
+        return (this.slider?.valuePercentage ?? 0) / 100;
     }
 
     get ghostLeft(): number {
-        return this.ratio * (this.slider?.elementRef.nativeElement.offsetWidth || 0);
+        return this.ratio * (this.slider?.elementRef.nativeElement.offsetWidth ?? 0);
     }
 
     ngAfterContentInit(): void {

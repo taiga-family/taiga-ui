@@ -63,6 +63,6 @@ export class TuiMultiSelectExample4 {
     readonly control = new FormControl([2, 3]);
 
     onSearch(search: string | null): void {
-        this.search$.next(search || ``);
+        this.search$.next(search ?? ``);
     }
 }

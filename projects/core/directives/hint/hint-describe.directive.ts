@@ -63,7 +63,7 @@ export class TuiHintDescribeDirective extends TuiDriver {
     @tuiPure
     private get element(): HTMLElement {
         return (
-            this.documentRef.getElementById(this.tuiHintDescribe) ||
+            this.documentRef.getElementById(this.tuiHintDescribe) ??
             this.elementRef.nativeElement
         );
     }

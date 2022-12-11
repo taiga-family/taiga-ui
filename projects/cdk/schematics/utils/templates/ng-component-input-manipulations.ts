@@ -122,7 +122,7 @@ export function getInputPropertyOffsets(
         )
         .map((element: Element) => {
             const {startOffset = 0, endOffset = 0} =
-                element.sourceCodeLocation?.attrs?.[attrName.toLowerCase()] || {};
+                element.sourceCodeLocation?.attrs?.[attrName.toLowerCase()] ?? {};
 
             return [startOffset, endOffset];
         });

@@ -19,6 +19,6 @@ export function getNamedImportReferences(
     );
 
     return arrayFlat(
-        namedImports.map(specifier => specifier?.findReferencesAsNodes() || []),
+        namedImports.map(specifier => specifier?.findReferencesAsNodes() ?? []),
     );
 }

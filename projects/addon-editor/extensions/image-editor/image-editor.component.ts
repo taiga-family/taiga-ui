@@ -47,15 +47,15 @@ export class TuiImageEditorComponent extends TuiNodeViewNgComponent {
     }
 
     get width(): number {
-        return this._width || this.attrs.width || 0;
+        return this._width || (this.attrs.width ?? 0);
     }
 
     get alt(): string {
-        return this.attrs.alt || ``;
+        return this.attrs.alt ?? ``;
     }
 
     get title(): string {
-        return this.attrs.title || ``;
+        return this.attrs.title ?? ``;
     }
 
     constructor(

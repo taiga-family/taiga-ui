@@ -34,6 +34,6 @@ export function findNgModule(ngComponent: ClassDeclaration): ClassDeclaration | 
             return imports.some(
                 i => i.getModuleSpecifierSourceFile() === ngComponent.getSourceFile(),
             );
-        }) || null
+        }) ?? null
     );
 }

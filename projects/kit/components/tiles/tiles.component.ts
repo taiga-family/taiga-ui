@@ -77,7 +77,7 @@ export class TuiTilesComponent {
 
     private reorder(element: Element): Map<number, number> {
         const elements = Array.from(this.elementRef.nativeElement.children);
-        const currentIndex = elements.indexOf(this.element || element);
+        const currentIndex = elements.indexOf(this.element ?? element);
         const newIndex = elements.indexOf(element);
         const order = this.order.size
             ? new Map(this.order)

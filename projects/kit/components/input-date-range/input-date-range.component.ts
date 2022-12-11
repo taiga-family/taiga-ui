@@ -180,7 +180,7 @@ export class TuiInputDateRangeComponent
 
     get computedExampleText(): string {
         return this.items.length
-            ? this.textfield?.nativeFocusableElement?.placeholder || ``
+            ? this.textfield?.nativeFocusableElement?.placeholder ?? ``
             : ``;
     }
 
@@ -198,7 +198,7 @@ export class TuiInputDateRangeComponent
                         a.from.daySame(b.from.dayLimit(this.min, this.max)) &&
                         a.to.daySame(b.to.dayLimit(this.min, this.max)),
                 ),
-            ) || null
+            ) ?? null
         );
     }
 

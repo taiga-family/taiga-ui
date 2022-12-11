@@ -183,7 +183,7 @@ export class TuiSvgComponent {
         }
 
         // Empty line for innerHTML when icon is shown through USE tag
-        return !this.isShadowDOM || !this.isName ? `` : this.sanitize(icon || ``);
+        return !this.isShadowDOM || !this.isName ? `` : this.sanitize(icon ?? ``);
     }
 
     private sanitize(src: SafeHtml | string): SafeHtml | string {
@@ -191,7 +191,7 @@ export class TuiSvgComponent {
 
         return this.tuiSanitizer && tuiIsString(src)
             ? this.sanitizer.bypassSecurityTrustHtml(
-                  this.tuiSanitizer.sanitize(SecurityContext.HTML, src) || ``,
+                  this.tuiSanitizer.sanitize(SecurityContext.HTML, src) ?? ``,
               )
             : src;
     }

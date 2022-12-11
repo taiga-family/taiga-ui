@@ -21,7 +21,7 @@ function findMarkInSet(
     return (
         marks.find(
             ({attrs, type}) => type === markType && hasAttributes(attrs, attributes),
-        ) || null
+        ) ?? null
     );
 }
 

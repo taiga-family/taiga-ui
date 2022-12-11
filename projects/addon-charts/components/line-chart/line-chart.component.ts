@@ -120,7 +120,7 @@ export class TuiLineChartComponent {
     }
 
     get hintContent(): PolymorpheusContent<TuiLineChartHintContext<TuiPoint>> {
-        return this.hintOptions?.content || ``;
+        return this.hintOptions?.content ?? ``;
     }
 
     get fillId(): string {
@@ -190,7 +190,7 @@ export class TuiLineChartComponent {
         index: number,
     ): TuiLineChartHintContext<TuiPoint | readonly TuiPoint[]> {
         return (
-            this.hintDirective?.getContext(this.value.indexOf($implicit), this) || {
+            this.hintDirective?.getContext(this.value.indexOf($implicit), this) ?? {
                 $implicit,
                 index,
             }

@@ -2,7 +2,7 @@ import {TuiTsParserException} from '@taiga-ui/cdk';
 
 export class TsFileParser {
     get className(): string {
-        const [, className] = this.rawFileContent.match(/(?:export class\s)(\w*)/i) || [];
+        const [, className] = this.rawFileContent.match(/(?:export class\s)(\w*)/i) ?? [];
 
         return className || ``;
     }
@@ -23,7 +23,7 @@ export class TsFileParser {
     }
 
     constructor(protected rawFileContent: string) {
-        const classesInside = rawFileContent.match(/export class/gi) || [];
+        const classesInside = rawFileContent.match(/export class/gi) ?? [];
 
         if (classesInside.length > 1) {
             throw new TuiTsParserException();

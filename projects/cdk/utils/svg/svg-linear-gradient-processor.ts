@@ -25,7 +25,7 @@ export function tuiSvgLinearGradientProcessor(
             (processed, previousId) =>
                 processed.replace(
                     new RegExp(previousId, `g`),
-                    `${previousId}_${salt || makeRandomSalt()}`,
+                    `${previousId}_${salt ?? makeRandomSalt()}`,
                 ),
             svg,
         );
@@ -39,7 +39,7 @@ function makeRandomSalt(): number {
 }
 
 function extractLinearGradientIdsFromSvg(svg: string): string[] {
-    const matchedIdsWithPrefix = svg.match(/url\(#(\w\w+)/g) || [];
+    const matchedIdsWithPrefix = svg.match(/url\(#(\w\w+)/g) ?? [];
 
     return [...new Set(matchedIdsWithPrefix)].map(
         matched => matched.slice(5), // remove prefix `url(#`

@@ -40,7 +40,7 @@ export class TuiButtonComponent
     extends AbstractTuiInteractive
     implements TuiFocusableElementAccessor, TuiButtonOptions
 {
-    private readonly mode$: Observable<unknown> = this.mode?.change$ || EMPTY;
+    private readonly mode$: Observable<unknown> = this.mode?.change$ ?? EMPTY;
 
     @Input()
     @tuiDefaultProp()
@@ -107,7 +107,7 @@ export class TuiButtonComponent
 
     @HostBinding(`attr.data-appearance`)
     get computedAppearance(): string {
-        return this.appearance ?? (this.options.appearance || ``);
+        return this.appearance ?? this.options.appearance ?? ``;
     }
 
     @HostBinding(`attr.disabled`)

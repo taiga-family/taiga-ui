@@ -36,7 +36,7 @@ export const TUI_MOBILE_CALENDAR_PROVIDERS: Provider[] = [
             destroy$: Observable<void>,
             changeDetectorRef: ChangeDetectorRef,
         ): Observable<TuiDayRange | null> => {
-            return (value$ || EMPTY).pipe(
+            return (value$ ?? EMPTY).pipe(
                 tuiWatch(changeDetectorRef),
                 takeUntil(destroy$),
             );

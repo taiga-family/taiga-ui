@@ -31,7 +31,7 @@ export class TuiValueDecorationComponent implements DoCheck {
     readonly pre$ = this.prefix$.pipe(
         delay(0),
         filter(() => !!this.pre?.nativeElement.isConnected),
-        map(() => this.pre?.nativeElement.offsetWidth || 0),
+        map(() => this.pre?.nativeElement.offsetWidth ?? 0),
         distinctUntilChanged(),
     );
 
@@ -73,7 +73,7 @@ export class TuiValueDecorationComponent implements DoCheck {
     }
 
     private get placeholder(): string {
-        return this.textfield.nativeFocusableElement?.placeholder || ``;
+        return this.textfield.nativeFocusableElement?.placeholder ?? ``;
     }
 
     private get exampleText(): string {

@@ -33,7 +33,7 @@ import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 })
 export class TuiSelectOptionComponent<T> implements OnInit {
     readonly selected$ = merge(
-        this.control.valueChanges || EMPTY,
+        this.control.valueChanges ?? EMPTY,
         tuiTypedFromEvent(this.elementRef.nativeElement, `animationstart`),
     ).pipe(
         startWith(null),
@@ -55,7 +55,7 @@ export class TuiSelectOptionComponent<T> implements OnInit {
     ) {}
 
     get matcher(): TuiIdentityMatcher<T> {
-        return this.host.identityMatcher || TUI_DEFAULT_IDENTITY_MATCHER;
+        return this.host.identityMatcher ?? TUI_DEFAULT_IDENTITY_MATCHER;
     }
 
     ngOnInit(): void {

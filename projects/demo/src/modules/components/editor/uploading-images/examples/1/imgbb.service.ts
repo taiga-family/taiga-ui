@@ -26,7 +26,7 @@ export class ImgbbService {
     private static createBody(base64: string): URLSearchParams {
         const formData = new FormData();
 
-        formData.append(`image`, base64.split(`,`).pop() || ``);
+        formData.append(`image`, base64.split(`,`).pop() ?? ``);
 
         return new URLSearchParams(formData as any);
     }

@@ -48,7 +48,11 @@ export class TuiHintComponent<C = any> {
     readonly animation = {value: ``, ...this.options} as const;
 
     @HostBinding(`attr.data-appearance`)
-    readonly appearance = this.polymorpheus.$implicit.appearance || this.mode?.mode;
+    readonly appearance =
+        (this.polymorpheus.$implicit.appearance as Exclude<
+            PolymorpheusContent,
+            null | undefined
+        >) || this.mode?.mode;
 
     @HostBinding(`class._untouchable`)
     readonly untouchable = !!this.pointer;

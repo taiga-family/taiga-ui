@@ -279,7 +279,7 @@ describe(`InputDateRangeComponent`, () => {
             }
 
             toControlValue(componentValue: TuiDay | null): Date | null {
-                return componentValue?.toLocalNativeDate() || null;
+                return componentValue?.toLocalNativeDate() ?? null;
             }
         }
 
@@ -295,7 +295,7 @@ describe(`InputDateRangeComponent`, () => {
             ) {}
 
             fromControlValue(controlValue: [Date, Date] | null): TuiDayRange | null {
-                const [transformedFrom, transformedTo] = controlValue || [null, null];
+                const [transformedFrom, transformedTo] = controlValue ?? [null, null];
                 const from =
                     transformedFrom &&
                     this.dateTransformer.fromControlValue(transformedFrom);
@@ -449,7 +449,7 @@ describe(`InputDateRangeComponent`, () => {
         return (
             pageObject
                 .getAllByAutomationId(`tui-primitive-calendar__cell`, calendarEl)
-                .find(el => Number(el.nativeElement.textContent.trim()) === dayNumber) ||
+                .find(el => Number(el.nativeElement.textContent.trim()) === dayNumber) ??
             null
         );
     }

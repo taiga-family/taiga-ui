@@ -194,8 +194,8 @@ export class TuiInputDateTimeComponent
 
     get computedActiveYearMonth(): TuiMonth {
         return (
-            this.month ||
-            this.value[0] ||
+            this.month ??
+            this.value[0] ??
             tuiDateClamp(
                 this.defaultActiveYearMonth,
                 Array.isArray(this.min) ? this.min[0] : this.min,
@@ -357,7 +357,7 @@ export class TuiInputDateTimeComponent
             date instanceof TuiDay
                 ? date.toString(this.dateFormat, this.dateSeparator)
                 : date;
-        const timeString = time instanceof TuiTime ? time.toString(timeMode) : time || ``;
+        const timeString = time instanceof TuiTime ? time.toString(timeMode) : time ?? ``;
 
         return `${dateString}${DATE_TIME_SEPARATOR}${timeString}`;
     }

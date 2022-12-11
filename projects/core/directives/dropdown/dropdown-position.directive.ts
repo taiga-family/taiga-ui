@@ -26,7 +26,7 @@ export class TuiDropdownPositionDirective implements TuiPositionAccessor {
         const hostRect = this.accessor.getClientRect();
         const {innerHeight, innerWidth} = this.windowRef;
         const {minHeight, align, direction} = this.options;
-        const previous = this.previous || direction || `bottom`;
+        const previous = this.previous ?? direction ?? `bottom`;
         const right = Math.max(hostRect.right - width, this.options.offset);
         const available = {
             top: hostRect.top - 2 * this.options.offset,

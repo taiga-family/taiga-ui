@@ -31,6 +31,6 @@ export class TuiDataListWrapperComponent<T> extends AbstractTuiDataListWrapper<T
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         controller: TuiTextfieldController | null,
     ) {
-        super(itemsHandlers, controller?.size || `m`);
+        super(itemsHandlers, controller?.size ?? `m`);
     }
 }

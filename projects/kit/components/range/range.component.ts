@@ -198,7 +198,7 @@ export class TuiRangeComponent
         max: number,
     ): TuiKeySteps {
         return (
-            keySteps || [
+            keySteps ?? [
                 [0, min],
                 [100, max],
             ]

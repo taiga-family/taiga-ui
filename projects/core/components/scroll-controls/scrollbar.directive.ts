@@ -169,7 +169,7 @@ export class TuiScrollbarDirective {
     }
 
     private get computedContainer(): Element {
-        return this.container?.nativeElement || this.documentRef.documentElement;
+        return this.container?.nativeElement ?? this.documentRef.documentElement;
     }
 
     private getScrolled(

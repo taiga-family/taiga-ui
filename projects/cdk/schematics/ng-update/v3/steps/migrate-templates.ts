@@ -127,13 +127,13 @@ function replaceAttrs({
             ...findAttributeOnElementWithTag(
                 template,
                 from.attrName,
-                from.withTagNames || [],
+                from.withTagNames ?? [],
                 from.filterFn,
             ),
             ...findAttributeOnElementWithAttrs(
                 template,
                 from.attrName,
-                from.withAttrsNames || [],
+                from.withAttrsNames ?? [],
                 from.filterFn,
             ),
         ];
@@ -193,7 +193,7 @@ function addHTMLCommentTags({
             ...findElementsWithAttribute(template, `[${withAttr}]`),
         ]
             .filter(el => el.tagName === tag)
-            .map(el => (el.sourceCodeLocation?.startOffset || 0) + templateOffset);
+            .map(el => (el.sourceCodeLocation?.startOffset ?? 0) + templateOffset);
 
         elementStartOffsets.forEach(offset => {
             recorder.insertRight(offset, `<!-- ${TODO_MARK} ${comment} -->\n`);
@@ -239,7 +239,7 @@ function replaceBreadcrumbs({
         );
 
         const {startOffset = 0, endOffset = 0} =
-            element.sourceCodeLocation?.attrs?.[`[items]`] || {};
+            element.sourceCodeLocation?.attrs?.[`[items]`] ?? {};
 
         recorder.remove(templateOffset + startOffset - 1, endOffset - startOffset + 1);
     });
@@ -265,7 +265,7 @@ function replaceFieldError({
 
         if (orderAttr) {
             const {startOffset = 0, endOffset = 0} =
-                element.sourceCodeLocation?.attrs?.[`[order]`] || {};
+                element.sourceCodeLocation?.attrs?.[`[order]`] ?? {};
 
             recorder.remove(
                 templateOffset + startOffset - 1,
@@ -350,7 +350,7 @@ function migrateTuiHideSelectedPipe({
 
     elementsWithPipe.forEach(el => {
         const {name, value: oldValue} =
-            el.attrs.find(attr => attr.value.match(HIDE_SELECTED_PIPE_WITH_ARGS_REG)) ||
+            el.attrs.find(attr => attr.value.match(HIDE_SELECTED_PIPE_WITH_ARGS_REG)) ??
             {};
         const attrLocations = el.sourceCodeLocation?.attrs;
 
@@ -456,7 +456,7 @@ function replaceInputValues({
 
         elements.forEach(element => {
             const {name, value} =
-                element.attrs.find(attr => attr.name === attrName.toLowerCase()) || {};
+                element.attrs.find(attr => attr.name === attrName.toLowerCase()) ?? {};
 
             if (!name || !value) {
                 return;
@@ -466,7 +466,7 @@ function replaceInputValues({
                 if (value === from) {
                     const {startOffset, endOffset} = element.sourceCodeLocation?.attrs?.[
                         name
-                    ] || {startOffset: 0, endOffset: 0};
+                    ] ?? {startOffset: 0, endOffset: 0};
 
                     recorder.remove(
                         templateOffset + startOffset,

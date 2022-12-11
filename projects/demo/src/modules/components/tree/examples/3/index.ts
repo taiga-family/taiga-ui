@@ -43,5 +43,5 @@ export class TuiTreeExample3 {
     };
 
     readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = item =>
-        item.children || EMPTY_ARRAY;
+        item.children ?? EMPTY_ARRAY;
 }

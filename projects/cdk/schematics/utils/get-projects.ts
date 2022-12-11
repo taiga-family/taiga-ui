@@ -12,7 +12,7 @@ export function getProjects(
 
     const nameFromContext =
         // eslint-disable-next-line @typescript-eslint/no-base-to-string
-        options.project || workspace.extensions.defaultProject?.toString() || ``;
+        options.project || (workspace.extensions.defaultProject?.toString() ?? ``);
     const projectFromContext = workspace.projects.get(nameFromContext);
 
     return projectFromContext ? [projectFromContext] : projects;

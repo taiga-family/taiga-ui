@@ -94,7 +94,7 @@ export function addStylesToAngularJson(
                 );
             } else {
                 targetOptions.styles = Array.from(
-                    new Set([...taigaStyles, ...(styles || [])]),
+                    new Set([...taigaStyles, ...(styles ?? [])]),
                 );
             }
 

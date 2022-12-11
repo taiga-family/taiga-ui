@@ -15,7 +15,7 @@ import {
 export class TuiCheckedDirective {
     @Input()
     set tuiChecked(checked: boolean | null) {
-        this.updateProperty(`checked`, checked || false);
+        this.updateProperty(`checked`, checked ?? false);
         this.updateProperty(`indeterminate`, checked === null);
     }
 

@@ -68,7 +68,7 @@ export class TuiSvgService {
         return this.sanitizer.bypassSecurityTrustHtml(
             (this.tuiSanitizer
                 ? this.tuiSanitizer.sanitize(SecurityContext.HTML, src)
-                : this.sanitizer.sanitize(SecurityContext.HTML, src)) || ``,
+                : this.sanitizer.sanitize(SecurityContext.HTML, src)) ?? ``,
         );
     }
 }

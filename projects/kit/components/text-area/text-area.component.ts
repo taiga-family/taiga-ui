@@ -112,7 +112,7 @@ export class TuiTextAreaComponent
         }
 
         return (
-            this.textfield?.nativeElement || this.focusableElement?.nativeElement || null
+            this.textfield?.nativeElement ?? this.focusableElement?.nativeElement ?? null
         );
     }
 
@@ -178,11 +178,11 @@ export class TuiTextAreaComponent
     }
 
     get fittedContent(): string {
-        return this.value.slice(0, this.maxLength || Infinity);
+        return this.value.slice(0, this.maxLength ?? Infinity);
     }
 
     get extraContent(): string {
-        return this.value.slice(this.maxLength || Infinity);
+        return this.value.slice(this.maxLength ?? Infinity);
     }
 
     @HostListener(`focusin`, [`true`])

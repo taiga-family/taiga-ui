@@ -26,7 +26,7 @@ export class TuiAlertsExampleComponent2 {
 
     showWithdrawAlert(): void {
         this.alertService
-            .open(this.withdrawTemplate || ``, {
+            .open(this.withdrawTemplate ?? ``, {
                 label: `A template sample`,
                 status: TuiNotification.Warning,
                 autoClose: false,
@@ -36,7 +36,7 @@ export class TuiAlertsExampleComponent2 {
 
     showDepositAlert(): void {
         this.alertService
-            .open(this.depositTemplate || ``, {
+            .open(this.depositTemplate ?? ``, {
                 label: `A template sample`,
                 status: TuiNotification.Success,
                 autoClose: false,

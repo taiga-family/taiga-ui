@@ -24,6 +24,6 @@ export class ImagePreviewExampleComponent {
 
     showImage(image: HTMLImageElement): void {
         this.image = image;
-        this.dialogService.open(this.template || ``).subscribe();
+        this.dialogService.open(this.template ?? ``).subscribe();
     }
 }

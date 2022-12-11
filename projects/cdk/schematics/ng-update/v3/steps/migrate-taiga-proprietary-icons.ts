@@ -26,7 +26,7 @@ export function migrateTaigaProprietaryIcons(options: TuiSchema): Rule {
 
         try {
             proprietaryIcons =
-                getPackageJsonDependency(tree, `@taiga-ui/proprietary-icons`)?.version ||
+                getPackageJsonDependency(tree, `@taiga-ui/proprietary-icons`)?.version ??
                 null;
         } catch {
             // noop

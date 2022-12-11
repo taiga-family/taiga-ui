@@ -25,7 +25,7 @@ export class TuiSheetExample5 {
     }
 
     getTransform(y: number | null): string {
-        const frame = Math.round((y || 0) / 2);
+        const frame = Math.round((y ?? 0) / 2);
         const looped = frame % FRAMES;
         const percent = (100 / FRAMES) * looped;
 

@@ -11,6 +11,6 @@ export class TuiHintHostDirective extends TuiRectAccessor {
     tuiHintHost?: HTMLElement;
 
     getClientRect(): ClientRect {
-        return this.tuiHintHost?.getBoundingClientRect() || EMPTY_CLIENT_RECT;
+        return this.tuiHintHost?.getBoundingClientRect() ?? EMPTY_CLIENT_RECT;
     }
 }

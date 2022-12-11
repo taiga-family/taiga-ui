@@ -11,8 +11,8 @@ import {tuiIsTextfield} from './element-checks';
 export function tuiGetSelectedText({getSelection, document}: Window): string | null {
     return document.activeElement && tuiIsTextfield(document.activeElement)
         ? document.activeElement.value.slice(
-              document.activeElement.selectionStart || 0,
-              document.activeElement.selectionEnd || 0,
+              document.activeElement.selectionStart ?? 0,
+              document.activeElement.selectionEnd ?? 0,
           )
-        : getSelection()?.toString() || null;
+        : getSelection()?.toString() ?? null;
 }

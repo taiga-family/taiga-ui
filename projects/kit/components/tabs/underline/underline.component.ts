@@ -61,7 +61,7 @@ export class TuiUnderlineComponent {
 
     @HostListener(`$.style.width.px`)
     readonly width$ = asCallable(
-        this.refresh$.pipe(map(element => element?.clientWidth || 0)),
+        this.refresh$.pipe(map(element => element?.clientWidth ?? 0)),
     );
 
     constructor(

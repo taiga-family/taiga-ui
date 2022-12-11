@@ -86,7 +86,7 @@ export class TuiEditorComponent
     }
 
     get nativeFocusableElement(): HTMLElement | null {
-        return this.computedDisabled ? null : this.element?.nativeElement || null;
+        return this.computedDisabled ? null : this.element?.nativeElement ?? null;
     }
 
     get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
@@ -108,7 +108,7 @@ export class TuiEditorComponent
     }
 
     override writeValue(value: string | null): void {
-        const processed = this.contentProcessor(value || ``);
+        const processed = this.contentProcessor(value ?? ``);
 
         super.writeValue(processed);
 
@@ -163,7 +163,7 @@ export class TuiEditorComponent
     private currentFocusedNodeIsAnchor(range: Range): boolean {
         return !!range.startContainer.parentElement
             ?.closest(`a`)
-            ?.contains(this.documentRef.getSelection()?.focusNode || null);
+            ?.contains(this.documentRef.getSelection()?.focusNode ?? null);
     }
 
     private get hasValue(): boolean {

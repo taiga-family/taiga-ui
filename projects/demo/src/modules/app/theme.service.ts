@@ -17,7 +17,7 @@ export class TuiThemeService extends BehaviorSubject<string> {
         @Inject(TUI_DEMO_DEFAULT_THEME) fallback: string,
         @Inject(LOCAL_STORAGE) private readonly storage: Storage,
     ) {
-        super(storage.getItem(`theme`) || fallback);
+        super(storage.getItem(`theme`) ?? fallback);
     }
 
     override next(value: string): void {

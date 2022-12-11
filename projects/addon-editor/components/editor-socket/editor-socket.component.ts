@@ -66,7 +66,7 @@ export class TuiEditorSocketComponent {
             return;
         }
 
-        const href = event.target?.closest(`a`)?.getAttribute(`href`) || ``;
+        const href = event.target?.closest(`a`)?.getAttribute(`href`) ?? ``;
 
         if (!href.startsWith(`#`)) {
             return;

@@ -371,7 +371,7 @@ describe(`InputDate + TUI_DATE_VALUE_TRANSFORMER`, () => {
         }
 
         toControlValue(componentValue: TuiDay | null): Date | null {
-            return componentValue?.toLocalNativeDate() || null;
+            return componentValue?.toLocalNativeDate() ?? null;
         }
     }
 
@@ -458,6 +458,6 @@ function getCalendarCell(dayNumber: number): DebugElement | null {
     return (
         pageObject
             .getAllByAutomationId(`tui-primitive-calendar__cell`)
-            .find(el => Number(el.nativeElement.textContent.trim()) === dayNumber) || null
+            .find(el => Number(el.nativeElement.textContent.trim()) === dayNumber) ?? null
     );
 }

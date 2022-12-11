@@ -135,7 +135,7 @@ export class TuiInputFilesComponent
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        return this.input?.nativeElement || null;
+        return this.input?.nativeElement ?? null;
     }
 
     get focused(): boolean {
@@ -214,7 +214,8 @@ export class TuiInputFilesComponent
                   map(texts =>
                       multiple && link === ``
                           ? texts.defaultLinkMultiple
-                          : link || texts.defaultLinkSingle,
+                          : (link as Exclude<PolymorpheusContent, null | undefined>) ||
+                            texts.defaultLinkSingle,
                   ),
               );
     }
@@ -240,7 +241,8 @@ export class TuiInputFilesComponent
             map(texts =>
                 multiple && label === ``
                     ? texts.defaultLabelMultiple
-                    : label || texts.defaultLabelSingle,
+                    : (label as Exclude<PolymorpheusContent, null | undefined>) ||
+                      texts.defaultLabelSingle,
             ),
         );
     }
@@ -308,7 +310,7 @@ export class TuiInputFilesComponent
             return true;
         }
 
-        const extension = `.${(file.name.split(`.`).pop() || ``).toLowerCase()}`;
+        const extension = `.${(file.name.split(`.`).pop() ?? ``).toLowerCase()}`;
 
         return tuiGetAcceptArray(this.computedAccept).some(
             format =>

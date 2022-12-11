@@ -52,7 +52,7 @@ export class TuiMultiSelectGroupComponent<T> {
     ) {}
 
     get size(): TuiSizeL | TuiSizeXS {
-        return this.options.first?.size || `m`;
+        return this.options.first?.size ?? `m`;
     }
 
     @tuiPure
@@ -109,7 +109,7 @@ export class TuiMultiSelectGroupComponent<T> {
     }
 
     private get matcher(): TuiIdentityMatcher<T> {
-        return this.host.identityMatcher || TUI_DEFAULT_IDENTITY_MATCHER;
+        return this.host.identityMatcher ?? TUI_DEFAULT_IDENTITY_MATCHER;
     }
 
     @tuiPure

@@ -34,7 +34,7 @@ function nextTabbable(
             return $candidateElement;
         }
 
-        let children = Array.from(element?.children || []);
+        let children = Array.from(element?.children ?? []);
 
         if (direction === `forward`) {
             children = children.reverse();

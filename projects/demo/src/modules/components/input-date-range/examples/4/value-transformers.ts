@@ -10,7 +10,7 @@ export class ExampleDateTransformer
     }
 
     toControlValue(componentValue: TuiDay | null): Date | null {
-        return componentValue?.toLocalNativeDate() || null;
+        return componentValue?.toLocalNativeDate() ?? null;
     }
 }
 
@@ -25,7 +25,7 @@ class ExampleDateRangeTransformer
     ) {}
 
     fromControlValue(controlValue: [Date, Date] | null): TuiDayRange | null {
-        const [transformedFrom, transformedTo] = controlValue || [null, null];
+        const [transformedFrom, transformedTo] = controlValue ?? [null, null];
         const from =
             transformedFrom && this.dateTransformer.fromControlValue(transformedFrom);
         const to = transformedTo && this.dateTransformer.fromControlValue(transformedTo);

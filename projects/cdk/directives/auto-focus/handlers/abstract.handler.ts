@@ -15,7 +15,7 @@ export abstract class AbstractTuiAutofocusHandler implements TuiAutofocusHandler
 
     protected get element(): TuiNativeFocusableElement {
         return (
-            this.tuiFocusableComponent?.nativeFocusableElement ||
+            this.tuiFocusableComponent?.nativeFocusableElement ??
             this.elementRef.nativeElement
         );
     }

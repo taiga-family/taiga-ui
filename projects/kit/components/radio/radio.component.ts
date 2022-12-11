@@ -115,7 +115,7 @@ export class TuiRadioComponent<T>
     }
 
     override get computedName(): string {
-        return this.name || this.radioGroupName || this.controlName || ``;
+        return this.name ?? this.radioGroupName ?? this.controlName ?? ``;
     }
 
     get isFocusable(): boolean {

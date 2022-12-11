@@ -131,17 +131,17 @@ export class TuiInputRangeComponent
     }
 
     get leftFocusableElement(): HTMLInputElement | null {
-        return this.inputNumberRefs.first?.nativeFocusableElement || null;
+        return this.inputNumberRefs.first?.nativeFocusableElement ?? null;
     }
 
     get rightFocusableElement(): HTMLInputElement | null {
-        return this.inputNumberRefs.last?.nativeFocusableElement || null;
+        return this.inputNumberRefs.last?.nativeFocusableElement ?? null;
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.disabled
             ? null
-            : this.leftFocusableElement || this.rightFocusableElement;
+            : this.leftFocusableElement ?? this.rightFocusableElement;
     }
 
     get focused(): boolean {
@@ -183,7 +183,7 @@ export class TuiInputRangeComponent
     @tuiPure
     computeKeySteps(keySteps: TuiKeySteps | null, min: number, max: number): TuiKeySteps {
         return (
-            keySteps || [
+            keySteps ?? [
                 [0, min],
                 [100, max],
             ]

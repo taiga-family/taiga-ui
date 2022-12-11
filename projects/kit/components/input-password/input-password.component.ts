@@ -57,7 +57,7 @@ export class TuiInputPasswordComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    private readonly directive$: Observable<any> = this.hintOptions?.change$ || EMPTY;
+    private readonly directive$: Observable<any> = this.hintOptions?.change$ ?? EMPTY;
 
     isPasswordHidden = true;
 
@@ -65,7 +65,7 @@ export class TuiInputPasswordComponent
         this.mode$.pipe(map(val => (val === `onDark` ? `onDark` : ``))),
         this.directive$.pipe(
             startWith(null),
-            map(() => this.hintOptions?.appearance || ``),
+            map(() => this.hintOptions?.appearance ?? ``),
         ),
     ]).pipe(
         map(([mode, controller]) => controller || mode),

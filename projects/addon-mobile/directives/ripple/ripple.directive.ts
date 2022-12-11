@@ -65,7 +65,7 @@ export class TuiRippleDirective {
                             renderer.setStyle(
                                 ripple,
                                 `background`,
-                                this.tuiRipple || null,
+                                this.tuiRipple ?? null,
                             );
                             renderer.appendChild(nativeElement, ripple);
                         }),

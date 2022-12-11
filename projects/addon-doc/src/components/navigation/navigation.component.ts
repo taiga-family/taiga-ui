@@ -55,7 +55,7 @@ export class TuiDocNavigationComponent {
 
     readonly mode$: Observable<TuiBrightness> = this.mode.change$.pipe(
         startWith(null),
-        map(() => this.mode.mode || `onLight`),
+        map(() => this.mode.mode ?? `onLight`),
     );
 
     constructor(
@@ -85,7 +85,7 @@ export class TuiDocNavigationComponent {
             changeDetectorRef.markForCheck();
             titleService.setTitle(title);
             this.openActivePageGroup();
-            this.handleAnchorLink(this.activatedRoute.snapshot.fragment || ``);
+            this.handleAnchorLink(this.activatedRoute.snapshot.fragment ?? ``);
         });
     }
 

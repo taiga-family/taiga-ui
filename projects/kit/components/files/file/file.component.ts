@@ -103,7 +103,7 @@ export class TuiFileComponent {
 
     @HostBinding(`class._link`)
     get src(): string {
-        return this.file.src || ``;
+        return this.file.src ?? ``;
     }
 
     get name(): string {
@@ -138,7 +138,7 @@ export class TuiFileComponent {
     ): Observable<PolymorpheusContent> {
         return state === `error` && !file.content
             ? fileTexts$.pipe(map(texts => texts.loadingError))
-            : of(this.file.content || ``);
+            : of(this.file.content ?? ``);
     }
 
     @tuiPure

@@ -12,7 +12,7 @@ describe(`Dialogs + browser back navigation`, () => {
     };
 
     const getFullUrl = (path: string): string =>
-        `${Cypress.config().baseUrl || ``}/${path}`.replace(
+        `${Cypress.config().baseUrl ?? ``}/${path}`.replace(
             new RegExp(`([^:]/)/+`, `g`),
             `$1`,
         );

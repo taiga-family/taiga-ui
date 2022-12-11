@@ -26,6 +26,6 @@ export class TuiMultiSelectExample1 {
 
     @tuiPure
     filter(search: string | null): readonly string[] {
-        return ITEMS.filter(item => TUI_DEFAULT_MATCHER(item, search || ``));
+        return ITEMS.filter(item => TUI_DEFAULT_MATCHER(item, search ?? ``));
     }
 }

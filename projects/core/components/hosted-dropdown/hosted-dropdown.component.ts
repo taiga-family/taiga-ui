@@ -86,7 +86,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
 
     readonly open$ = combineLatest([
         this.manual$,
-        (this.hover$ || EMPTY).pipe(startWith(false)),
+        (this.hover$ ?? EMPTY).pipe(startWith(false)),
     ]).pipe(map(([manual, hover]) => manual || hover));
 
     constructor(
@@ -107,13 +107,13 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     }
 
     get host(): HTMLElement {
-        return this.dropdownHost?.nativeElement || this.elementRef.nativeElement;
+        return this.dropdownHost?.nativeElement ?? this.elementRef.nativeElement;
     }
 
     get computedHost(): HTMLElement {
         return (
-            this.dropdownHost?.nativeElement ||
-            this.nativeFocusableElement ||
+            this.dropdownHost?.nativeElement ??
+            this.nativeFocusableElement ??
             this.elementRef.nativeElement
         );
     }

@@ -116,13 +116,13 @@ export class TuiDocExampleComponent {
     edit(files: Record<string, string>): void {
         this.loading$.next(true);
         this.codeEditor
-            ?.edit(this.componentName, this.id || ``, files)
+            ?.edit(this.componentName, this.id ?? ``, files)
             .finally(() => this.loading$.next(false));
     }
 
     private setFragmentWithoutRedirect(id: string | null): void {
         const url = this.router
-            .createUrlTree([], {relativeTo: this.route, fragment: id || ``})
+            .createUrlTree([], {relativeTo: this.route, fragment: id ?? ``})
             .toString();
 
         this.ngLocation.go(url);

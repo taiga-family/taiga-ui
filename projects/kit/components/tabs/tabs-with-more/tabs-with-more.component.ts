@@ -101,7 +101,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
 
         return this.options.exposeActive || this.lastVisibleIndex >= safeActiveIndex
             ? tabs[safeActiveIndex] || null
-            : this.moreButton?.nativeElement || null;
+            : this.moreButton?.nativeElement ?? null;
     }
 
     get isMoreAlone(): boolean {

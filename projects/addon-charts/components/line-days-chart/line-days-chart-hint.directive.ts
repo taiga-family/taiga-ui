@@ -89,5 +89,5 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
 }
 
 function find(value: ReadonlyArray<[TuiDay, number]>, current: TuiDay): [TuiDay, number] {
-    return value.find(([day]) => day.daySame(current)) || [current, NaN];
+    return value.find(([day]) => day.daySame(current)) ?? [current, NaN];
 }

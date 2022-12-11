@@ -454,7 +454,7 @@ describe(`InputDateTime`, () => {
         return (
             pageObject
                 .getAllByAutomationId(testContext.calendarCellAutomationId)
-                .find(el => Number(el.nativeElement.textContent.trim()) === dayNumber) ||
+                .find(el => Number(el.nativeElement.textContent.trim()) === dayNumber) ??
             null
         );
     }

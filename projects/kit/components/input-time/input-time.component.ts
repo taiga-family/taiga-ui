@@ -290,7 +290,7 @@ export class TuiInputTimeComponent
             return;
         }
 
-        const selectionStart = target.selectionStart || 0;
+        const selectionStart = target.selectionStart ?? 0;
 
         this.shiftTime(this.calculateShift(selectionStart, shift));
 

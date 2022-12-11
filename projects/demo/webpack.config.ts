@@ -40,7 +40,7 @@ const config: Configuration = {
 };
 
 export default (ngConfigs: Configuration): Configuration => {
-    const ngRules = [...(ngConfigs.module?.rules || [])].map(rule => {
+    const ngRules = [...(ngConfigs.module?.rules ?? [])].map(rule => {
         if (
             typeof rule === `object` &&
             DONT_MUTATE_RAW_FILE_CONTENTS.some(

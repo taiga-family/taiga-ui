@@ -29,7 +29,7 @@ export function tuiCreateAutoCorrectedNumberPipe(
 
     if (nativeInput && unlucky) {
         nativeInput.addEventListener(`beforeinput`, () => {
-            previousCaret = nativeInput.selectionStart || 0;
+            previousCaret = nativeInput.selectionStart ?? 0;
         });
     }
 

@@ -54,7 +54,7 @@ export class TuiCustomizationComponent implements AfterViewInit {
     }
 
     get mode(): TuiBrightness | null {
-        return this.demo?.mode || null;
+        return this.demo?.mode ?? null;
     }
 
     ngAfterViewInit(): void {

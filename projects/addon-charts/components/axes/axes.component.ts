@@ -97,6 +97,7 @@ export class TuiAxesComponent {
     }
 
     fallback(label: string | null): string {
+        // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
         return label || CHAR_NO_BREAK_SPACE;
     }
 }

@@ -155,18 +155,18 @@ export class TuiEditLinkComponent {
     }
 
     private getFocusedParentElement(): HTMLElement | null {
-        return this.documentRef.getSelection()?.focusNode?.parentElement || null;
+        return this.documentRef.getSelection()?.focusNode?.parentElement ?? null;
     }
 
     private getAnchorElement(): HTMLAnchorElement | null {
-        return this.getFocusedParentElement()?.closest(`a`) || null;
+        return this.getFocusedParentElement()?.closest(`a`) ?? null;
     }
 
     private getHrefOrAnchorId(): string {
         const a = this.getAnchorElement();
 
         return a
-            ? this.removePrefix(a.getAttribute(`href`) || a.getAttribute(`id`) || ``)
+            ? this.removePrefix(a.getAttribute(`href`) ?? a.getAttribute(`id`) ?? ``)
             : this.url;
     }
 
@@ -199,7 +199,7 @@ export class TuiEditLinkComponent {
                 .view.dom.querySelectorAll(`[data-type='jump-anchor']`) ?? [];
 
         return Array.from(nodes)
-            .map(node => node.getAttribute(`id`) || ``)
+            .map(node => node.getAttribute(`id`) ?? ``)
             .filter(Boolean);
     }
 }

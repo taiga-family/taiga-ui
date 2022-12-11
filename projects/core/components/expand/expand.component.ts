@@ -110,7 +110,7 @@ export class TuiExpandComponent {
     }
 
     get contentVisible(): boolean {
-        return this.expanded || this.state !== State.Idle;
+        return this.expanded ?? this.state !== State.Idle;
     }
 
     @HostListener(`transitionend`, [`$event`])

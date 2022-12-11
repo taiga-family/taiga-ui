@@ -71,14 +71,14 @@ export function tuiCreateNumberMask({
         );
         const hasDecimal = decimalIndex !== -1;
         const integer = hasDecimal ? rawValue.slice(0, decimalIndex) : rawValue;
-        const thousandSeparators = integer.match(new RegExp(thousandSymbol, `g`)) || [];
+        const thousandSeparators = integer.match(new RegExp(thousandSymbol, `g`)) ?? [];
         const integerCapped = integerLimit
             ? integer.slice(0, integerLimit + thousandSeparators.length)
             : integer;
         const integerCappedClean = integerCapped.replace(TUI_NON_DIGITS_REGEXP, ``);
         const [leadingZerosMatch] = integerCappedClean.match(
             TUI_LEADING_ZEROES_REGEXP,
-        ) || [``];
+        ) ?? [``];
         const leadingZerosAmount = leadingZerosMatch.length;
         const integerCappedZerosClean = integerCappedClean
             .replace(/^0+(?!\.|$)/, ``)

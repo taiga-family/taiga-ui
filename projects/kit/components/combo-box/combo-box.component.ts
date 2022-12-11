@@ -139,7 +139,7 @@ export class TuiComboBoxComponent<T>
     }
 
     get nativeValue(): string {
-        return this.value === null ? this.search || `` : this.stringify(this.value);
+        return this.value === null ? this.search ?? `` : this.stringify(this.value);
     }
 
     get showValueTemplate(): boolean {
@@ -147,7 +147,10 @@ export class TuiComboBoxComponent<T>
     }
 
     get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {
-        return this.valueContent || this.nativeValue;
+        return (
+            (this.valueContent as Exclude<PolymorpheusContent, null | undefined>) ||
+            this.nativeValue
+        );
     }
 
     onActiveZone(active: boolean): void {
@@ -176,7 +179,7 @@ export class TuiComboBoxComponent<T>
             event.preventDefault();
         }
 
-        const options = this.accessor?.getOptions() || [];
+        const options = this.accessor?.getOptions() ?? [];
 
         if (options.length !== 1) {
             return;
@@ -215,7 +218,7 @@ export class TuiComboBoxComponent<T>
     }
 
     private isStrictMatch(item: T): boolean {
-        return this.strictMatcher(item, this.search || ``, this.stringify);
+        return this.strictMatcher(item, this.search ?? ``, this.stringify);
     }
 
     private close(): void {

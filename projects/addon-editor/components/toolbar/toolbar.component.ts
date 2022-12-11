@@ -223,7 +223,7 @@ export class TuiToolbarComponent {
     }
 
     onAttach(input: HTMLInputElement): void {
-        const files = Array.from(input.files || []);
+        const files = Array.from(input.files ?? []);
 
         input.value = ``;
 

@@ -18,7 +18,7 @@ import {TuiDropdownPositionDirective} from './dropdown-position.directive';
     ],
 })
 export class TuiDropdownPositionSidedDirective implements TuiPositionAccessor {
-    private previous = this.options.direction || `bottom`;
+    private previous = this.options.direction ?? `bottom`;
 
     @Input()
     tuiDropdownSided: boolean | string = ``;

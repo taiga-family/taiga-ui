@@ -36,6 +36,6 @@ export class ExampleTuiErrorComponent {
             return this.selectedError;
         }
 
-        return new TuiValidationError(this.errorContent || ``);
+        return new TuiValidationError(this.errorContent ?? ``);
     }
 }

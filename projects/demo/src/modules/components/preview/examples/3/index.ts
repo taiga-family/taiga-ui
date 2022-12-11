@@ -54,7 +54,7 @@ export class TuiPreviewExample3 {
     ) {}
 
     show(): void {
-        this.previewDialogService.open(this.preview || ``).subscribe();
+        this.previewDialogService.open(this.preview ?? ``).subscribe();
     }
 
     download(): void {

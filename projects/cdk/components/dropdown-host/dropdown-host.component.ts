@@ -26,7 +26,7 @@ export class TuiDropdownHostComponent extends AbstractTuiPortalHostComponent {
 
     fixedPositionOffset(): ClientRect {
         return (
-            this.positionFixedOffsetRef?.nativeElement.getBoundingClientRect() ||
+            this.positionFixedOffsetRef?.nativeElement.getBoundingClientRect() ??
             EMPTY_CLIENT_RECT
         );
     }

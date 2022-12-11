@@ -72,7 +72,7 @@ export class TuiToolbarNavigationManagerDirective {
         });
 
         return (
-            lookedInside ||
+            lookedInside ??
             tuiGetClosestFocusable({
                 initial: wrapper,
                 root: this.elementRef.nativeElement,

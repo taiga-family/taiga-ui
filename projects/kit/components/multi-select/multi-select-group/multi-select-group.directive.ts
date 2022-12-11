@@ -25,7 +25,7 @@ export const TUI_MULTI_SELECT_OPTION = new PolymorpheusComponent(
                 control: NgControl,
                 host: TuiDataListHost<T> | null,
             ): TuiDataListHost<T> =>
-                host || {
+                host ?? {
                     handleOption: option =>
                         control.control?.setValue(
                             tuiArrayToggle(control.value || [], option),

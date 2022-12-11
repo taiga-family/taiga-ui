@@ -73,7 +73,7 @@ export class TuiInputPhoneExample3 {
     );
 
     readonly placeholder$ = combineLatest(this.user$, this.search$).pipe(
-        map(([user, search]) => user || this.getPlaceholder(search)),
+        map(([user, search]) => user ?? this.getPlaceholder(search)),
         startWith(`Phone number or name`),
     );
 

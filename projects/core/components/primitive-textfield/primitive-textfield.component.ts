@@ -151,7 +151,7 @@ export class TuiPrimitiveTextfieldComponent
 
         const {nativeElement} = this.focusableElement;
 
-        return (nativeElement.previousElementSibling ||
+        return (nativeElement.previousElementSibling ??
             nativeElement) as HTMLInputElement | null;
     }
 
@@ -205,7 +205,7 @@ export class TuiPrimitiveTextfieldComponent
 
     get placeholderVisible(): boolean {
         const hasDecor =
-            this.nativeFocusableElement?.placeholder || this.prefix || this.postfix;
+            (this.nativeFocusableElement?.placeholder ?? this.prefix) || this.postfix;
         const showDecor = hasDecor && !this.readOnly && this.computedFocused;
 
         return !this.hasValue && !showDecor;
@@ -258,7 +258,7 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     get computedId(): string {
-        return this.nativeFocusableElement?.id || ``;
+        return this.nativeFocusableElement?.id ?? ``;
     }
 
     @HostListener(`focusin`, [`true`])

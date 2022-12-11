@@ -217,7 +217,7 @@ export class TuiLineDaysChartComponent {
                     ? month
                     : [
                           ...month,
-                          array[index + 1].find(day => !Number.isNaN(day[1])) || DUMMY,
+                          array[index + 1].find(day => !Number.isNaN(day[1])) ?? DUMMY,
                       ],
             );
     }

@@ -134,7 +134,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
             .should(`have.css`, `font-family`)
             .and(
                 `match`,
-                waitRenderedFont || new RegExp(Cypress.env(`waitRenderedFont`)),
+                waitRenderedFont ?? new RegExp(Cypress.env(`waitRenderedFont`)),
             );
     }
 

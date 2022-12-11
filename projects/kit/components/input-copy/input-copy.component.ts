@@ -90,7 +90,7 @@ export class TuiInputCopyComponent
                 this.copy$.pipe(
                     switchMap(() =>
                         merge(
-                            of(this.successMessage || texts[1]),
+                            of(this.successMessage ?? texts[1]),
                             timer(3000).pipe(mapTo(texts[0])),
                         ),
                     ),

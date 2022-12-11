@@ -183,8 +183,8 @@ export class TuiInputDateComponent
         }
 
         return (
-            this.month ||
-            this.value ||
+            this.month ??
+            this.value ??
             tuiDateClamp(this.defaultActiveYearMonth, this.min, this.max)
         );
     }

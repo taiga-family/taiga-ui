@@ -16,7 +16,7 @@ import {tuiCreateUnfinishedValidator} from '@taiga-ui/kit/validators';
 export class TuiUnfinishedValidatorDirective implements Validator {
     readonly validate = tuiCreateUnfinishedValidator(
         () => this.injector.get(TUI_FOCUSABLE_ITEM_ACCESSOR),
-        this.message || ``,
+        this.message ?? ``,
     );
 
     constructor(

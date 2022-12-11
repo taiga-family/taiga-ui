@@ -184,7 +184,7 @@ export class TuiTagComponent {
         switch (event.key.toLowerCase()) {
             case `enter`:
                 event.preventDefault();
-                this.save(this.editedText || ``);
+                this.save(this.editedText ?? ``);
                 break;
             case `escape`:
             case `esc`:

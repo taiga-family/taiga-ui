@@ -41,7 +41,7 @@ export class TuiPreviewExample1 {
     }
 
     show(): void {
-        this.previewService.open(this.preview || ``).subscribe({
+        this.previewService.open(this.preview ?? ``).subscribe({
             complete: () => console.info(`complete`),
         });
     }

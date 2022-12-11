@@ -36,7 +36,7 @@ export class TuiForAsyncDirective<T> implements OnChanges, OnDestroy {
     }
 
     private createAsyncViewForNewNodes(): void {
-        from((this.tuiForAsyncOf || []).entries())
+        from((this.tuiForAsyncOf ?? []).entries())
             .pipe(
                 concatMap(entry => of(entry).pipe(delay(this.tuiForAsyncTimeout))),
                 takeUntil(this.destroy$),

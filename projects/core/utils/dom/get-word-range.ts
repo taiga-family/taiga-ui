@@ -26,7 +26,7 @@ export function tuiGetWordRange(currentRange: Range): Range {
 
     do {
         const container = treeWalker.currentNode;
-        const textContent = container.textContent || ``;
+        const textContent = container.textContent ?? ``;
         const content =
             container === startContainer
                 ? textContent.slice(0, Math.max(0, startOffset + 1))
@@ -50,7 +50,7 @@ export function tuiGetWordRange(currentRange: Range): Range {
 
     do {
         const container = treeWalker.currentNode;
-        const textContent = container.textContent || ``;
+        const textContent = container.textContent ?? ``;
         const content =
             container === endContainer ? textContent.slice(endOffset + 1) : textContent;
         const offset = [

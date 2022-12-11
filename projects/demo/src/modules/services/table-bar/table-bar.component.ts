@@ -54,7 +54,7 @@ export class ExampleTuiTableBarComponent implements OnDestroy {
         this.subscription.unsubscribe();
 
         this.subscription = this.tableBarsService
-            .open(this.tableBarTemplate || ``, {
+            .open(this.tableBarTemplate ?? ``, {
                 adaptive: this.adaptive,
                 mode: this.mode,
                 hasCloseButton: this.hasCloseButton,

@@ -21,6 +21,6 @@ export class TuiPreviewExample2 {
     ) {}
 
     show(): void {
-        this.previewDialogService.open(this.preview || ``).subscribe();
+        this.previewDialogService.open(this.preview ?? ``).subscribe();
     }
 }

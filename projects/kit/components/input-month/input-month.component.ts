@@ -95,8 +95,8 @@ export class TuiInputMonthComponent
 
     get computedDefaultActiveYear(): TuiYear {
         return (
-            this.activeYear ||
-            this.value ||
+            this.activeYear ??
+            this.value ??
             tuiDateClamp(this.defaultActiveYear, this.min, this.max)
         );
     }

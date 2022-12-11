@@ -42,7 +42,7 @@ export class TuiTreeExample6 {
     };
 
     readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = item =>
-        item.children || EMPTY_ARRAY;
+        item.children ?? EMPTY_ARRAY;
 
     readonly getValue = (item: TreeNode, map: Map<TreeNode, boolean>): boolean | null => {
         const flat = flatten(item);

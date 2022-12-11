@@ -11,6 +11,6 @@ export class TuiDropdownHostDirective extends TuiRectAccessor {
     tuiDropdownHost?: HTMLElement;
 
     getClientRect(): ClientRect {
-        return this.tuiDropdownHost?.getBoundingClientRect() || EMPTY_CLIENT_RECT;
+        return this.tuiDropdownHost?.getBoundingClientRect() ?? EMPTY_CLIENT_RECT;
     }
 }

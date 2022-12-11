@@ -96,7 +96,7 @@ export class TuiPieChartComponent {
     }
 
     get hintContent(): PolymorpheusContent<TuiContextWithImplicit<number>> {
-        return this.hintOptions?.content || ``;
+        return this.hintOptions?.content ?? ``;
     }
 
     get maskId(): string {

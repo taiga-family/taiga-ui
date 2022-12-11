@@ -36,7 +36,7 @@ export function replaceConst({from, to}: ReplacementConst): void {
             removeImport(parent);
             addUniqueImport(
                 parent.getSourceFile().getFilePath(),
-                to.namedImport || to.name,
+                to.namedImport ?? to.name,
                 to.moduleSpecifier,
             );
         } else {

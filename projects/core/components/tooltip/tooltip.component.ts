@@ -54,7 +54,7 @@ export class TuiTooltipComponent extends TuiHintOptionsDirective {
 
     @HostBinding(`attr.data-appearance`)
     get computedAppearance(): string {
-        return this.appearance || this.mode || ``;
+        return this.appearance || (this.mode ?? ``);
     }
 
     @HostListener(`mousedown`, [`$event`])

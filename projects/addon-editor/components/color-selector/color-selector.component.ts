@@ -194,7 +194,7 @@ export class TuiColorSelectorComponent {
     }
 
     private getStop(stop: number): [number, number, number, number] {
-        return this.stops.get(stop) || EMPTY_STOP;
+        return this.stops.get(stop) ?? EMPTY_STOP;
     }
 
     private addStop(stop: number): void {

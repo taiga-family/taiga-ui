@@ -138,7 +138,7 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
 
     @tuiPure
     filter(query: string | null): readonly Account[] {
-        return this.items.filter(item => TUI_DEFAULT_MATCHER(item, query || ``));
+        return this.items.filter(item => TUI_DEFAULT_MATCHER(item, query ?? ``));
     }
 
     setValue(): void {

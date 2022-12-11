@@ -38,8 +38,8 @@ export class TuiInputMonthRangeDirective
                 distinctUntilChanged(),
                 switchMap((value: TuiMonthRange | null) =>
                     combineLatest([
-                        formatter(value?.from || null),
-                        formatter(value?.to || null),
+                        formatter(value?.from ?? null),
+                        formatter(value?.to ?? null),
                     ]),
                 ),
                 takeUntil(destroy$),

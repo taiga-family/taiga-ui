@@ -535,6 +535,6 @@ export class TuiInputTagComponent
     }
 
     private clippedValue(value: string): string {
-        return value.slice(0, this.maxLength || value.length);
+        return value.slice(0, this.maxLength ?? value.length);
     }
 }

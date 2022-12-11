@@ -20,7 +20,7 @@ export const tuiBeInViewportAssertion: Chai.ChaiPlugin = _chai => {
 
         const viewportHeight: number =
             // @ts-ignore TS2339: Property 'state' does not exist on type 'cy & CyEventEmitter'.
-            Cypress.$(cy.state(`window`)).height() || 0;
+            Cypress.$(cy.state(`window`)).height() ?? 0;
 
         const subjectOverlapsAllViewport = top < 0 && bottom > viewportHeight;
         const topBorderIsVisible = top >= 0 && top < viewportHeight;

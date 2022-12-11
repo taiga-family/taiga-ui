@@ -40,7 +40,7 @@ export class TuiFontSizeComponent {
         if (headingLevel) {
             this.editor.setHeading(headingLevel);
         } else {
-            this.editor.setParagraph({fontSize: tuiPx(px || 0)});
+            this.editor.setParagraph({fontSize: tuiPx(px ?? 0)});
         }
     }
 }

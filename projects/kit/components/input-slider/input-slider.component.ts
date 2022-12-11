@@ -135,7 +135,7 @@ export class TuiInputSliderComponent
     get focused(): boolean {
         return (
             tuiIsNativeFocused(this.nativeFocusableElement) ||
-            tuiIsNativeFocused(this.sliderRef?.nativeElement || null)
+            tuiIsNativeFocused(this.sliderRef?.nativeElement ?? null)
         );
     }
 
@@ -162,7 +162,7 @@ export class TuiInputSliderComponent
     @tuiPure
     computeKeySteps(keySteps: TuiKeySteps | null, min: number, max: number): TuiKeySteps {
         return (
-            keySteps || [
+            keySteps ?? [
                 [0, min],
                 [100, max],
             ]
@@ -211,7 +211,7 @@ export class TuiInputSliderComponent
     }
 
     private get textInputValue(): string {
-        return this.inputNumberRef?.nativeValue || ``;
+        return this.inputNumberRef?.nativeValue ?? ``;
     }
 
     protected getFallbackValue(): number {

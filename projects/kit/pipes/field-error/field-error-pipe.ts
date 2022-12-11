@@ -91,10 +91,10 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
 
     private get control(): AbstractControl | null {
         return (
-            this.ngControl?.control ||
-            this.formArrayName?.control ||
-            this.formGroupName?.control ||
-            this.formGroup?.control ||
+            this.ngControl?.control ??
+            this.formArrayName?.control ??
+            this.formGroupName?.control ??
+            this.formGroup?.control ??
             null
         );
     }
@@ -104,7 +104,7 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
     }
 
     private get controlErrors(): Record<string, unknown> {
-        return this.control?.errors || EMPTY_RECORD;
+        return this.control?.errors ?? EMPTY_RECORD;
     }
 
     @tuiPure
@@ -115,7 +115,7 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
         const id = order?.find(errorId => controlErrors[errorId]);
         const fallback = Object.keys(controlErrors)[0];
 
-        return id || fallback || ``;
+        return id ?? fallback ?? ``;
     }
 
     @tuiPure
@@ -133,10 +133,10 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
 
         if (isObservable(errorContent)) {
             return errorContent.pipe(
-                map(error => new TuiValidationError(error || ``, firstError)),
+                map(error => new TuiValidationError(error ?? ``, firstError)),
             );
         }
 
-        return of(new TuiValidationError(errorContent || ``, firstError));
+        return of(new TuiValidationError(errorContent ?? ``, firstError));
     }
 }

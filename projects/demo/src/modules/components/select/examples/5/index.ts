@@ -38,6 +38,6 @@ export class TuiSelectExample5 {
     ): TuiStringHandler<TuiContextWithImplicit<number>> {
         const map = new Map(items.map(({id, name}) => [id, name] as [number, string]));
 
-        return ({$implicit}: TuiContextWithImplicit<number>) => map.get($implicit) || ``;
+        return ({$implicit}: TuiContextWithImplicit<number>) => map.get($implicit) ?? ``;
     }
 }

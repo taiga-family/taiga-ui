@@ -17,8 +17,8 @@ export class TuiTableFilterDirective<T> implements OnDestroy, TuiTableFilter<T> 
 
     readonly refresh$ = defer(() =>
         merge(
-            this.control.valueChanges || EMPTY,
-            this.control.statusChanges?.pipe(distinctUntilChanged()) || EMPTY,
+            this.control.valueChanges ?? EMPTY,
+            this.control.statusChanges?.pipe(distinctUntilChanged()) ?? EMPTY,
         ),
     );
 
@@ -45,6 +45,6 @@ export class TuiTableFilterDirective<T> implements OnDestroy, TuiTableFilter<T> 
     }
 
     private get key(): keyof T | undefined {
-        return this.tuiTableFilter || this.head?.tuiHead;
+        return this.tuiTableFilter ?? this.head?.tuiHead;
     }
 }

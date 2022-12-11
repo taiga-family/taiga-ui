@@ -201,7 +201,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
                         a.from.daySame(b.from.dayLimit(this.min, this.max)) &&
                         a.to.daySame(b.to.dayLimit(this.min, this.max)),
                 ),
-            ) || null
+            ) ?? null
         );
     }
 

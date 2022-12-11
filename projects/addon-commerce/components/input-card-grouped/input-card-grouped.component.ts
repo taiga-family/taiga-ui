@@ -192,15 +192,15 @@ export class TuiInputCardGroupedComponent
     }
 
     get card(): string {
-        return this.value?.card || ``;
+        return this.value?.card ?? ``;
     }
 
     get expire(): string {
-        return this.value?.expire || ``;
+        return this.value?.expire ?? ``;
     }
 
     get cvc(): string {
-        return this.value?.cvc || ``;
+        return this.value?.cvc ?? ``;
     }
 
     get hasCleaner(): boolean {
@@ -218,7 +218,10 @@ export class TuiInputCardGroupedComponent
     }
 
     get icon(): PolymorpheusContent {
-        return this.cardSrc || this.defaultIcon;
+        return (
+            (this.cardSrc as Exclude<PolymorpheusContent, null | undefined>) ||
+            this.defaultIcon
+        );
     }
 
     get bin(): string | null {
@@ -446,7 +449,7 @@ export class TuiInputCardGroupedComponent
     }
 
     private updateProperty(propValue: string, propName: 'card' | 'cvc' | 'expire'): void {
-        const {card, expire, cvc} = this.value || STUB;
+        const {card, expire, cvc} = this.value ?? STUB;
         const newValue: TuiCard = {
             card,
             expire,

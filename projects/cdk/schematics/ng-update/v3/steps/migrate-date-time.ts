@@ -193,7 +193,7 @@ function replaceIdentifier(
     callback: (node: Node) => void,
 ): void {
     const declaration =
-        node.getFirstAncestorByKind(SyntaxKind.VariableDeclaration) ||
+        node.getFirstAncestorByKind(SyntaxKind.VariableDeclaration) ??
         node.getFirstAncestorByKind(SyntaxKind.PropertyDeclaration);
 
     const identifier = declaration?.getFirstDescendantByKind(SyntaxKind.Identifier);
