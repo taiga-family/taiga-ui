@@ -15,10 +15,10 @@ describe(`Demo`, () => {
         it(path, () => {
             cy.tuiVisit(path, {hideScrollbar: !isScrollbarPage(path)});
 
-            const waitSomeAnimationBefore = isInputNumberPage(path) || isTilesPage(path);
-
-            if (waitSomeAnimationBefore) {
+            if (isInputNumberPage(path)) {
                 cy.wait(WAIT_BEFORE_SCREENSHOT);
+            } else if (isTilesPage(path)) {
+                cy.wait(10_000);
             }
 
             cy.get(`tui-doc-example`).each((example, index) => {

@@ -28,7 +28,7 @@ describe(`Tabs`, () => {
             cy.get(`@complex`)
                 .get(`button[type="button"]`)
                 .contains(`Collaborators`)
-                .click();
+                .click({force: true});
 
             cy.get(`@complex`)
                 .wait(WAIT_BEFORE_SCREENSHOT)
@@ -37,7 +37,7 @@ describe(`Tabs`, () => {
             cy.get(`tui-dropdown`)
                 .get(`button[type="button"]`)
                 .contains(`Neil Innes`)
-                .click();
+                .click({force: true});
 
             cy.get(`@complex`)
                 .wait(WAIT_BEFORE_SCREENSHOT)
