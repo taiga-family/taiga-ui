@@ -69,9 +69,10 @@ export class TuiPrimitiveTextfieldComponent
     @tuiDefaultProp()
     editable = true;
 
-    @Input()
+    /** @deprecated use `tuiTextfieldFiller` from {@link TuiTextfieldControllerModule} instead */
+    @Input(`filler`)
     @tuiDefaultProp()
-    filler = ``;
+    textfieldFiller = ``;
 
     /**
      * @deprecated:
@@ -137,6 +138,10 @@ export class TuiPrimitiveTextfieldComponent
 
     get postfix(): string {
         return this.textfieldPostfix || this.controller.postfix;
+    }
+
+    get filler(): string {
+        return this.textfieldFiller || this.controller.filler;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

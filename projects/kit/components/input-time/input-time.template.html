@@ -9,7 +9,7 @@
     <tui-primitive-textfield
         tuiValueAccessor
         class="t-textfield"
-        [filler]="(getFiller$(mode) | async) || ''"
+        [tuiTextfieldFiller]="(getFiller$(mode) | async) || ''"
         [nativeId]="nativeId"
         [pseudoFocus]="innerPseudoFocused"
         [pseudoHover]="pseudoHover"

@@ -10,10 +10,10 @@
         tuiValueAccessor
         class="t-textfield"
         [tuiTextfieldIcon]="calendarIcon && iconContent"
+        [tuiTextfieldFiller]="(filler$ | async) || ''"
         [pseudoFocus]="pseudoFocus"
         [pseudoHover]="pseudoHover"
         [invalid]="computedInvalid"
-        [filler]="(filler$ | async) || ''"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
         [disabled]="computedDisabled"

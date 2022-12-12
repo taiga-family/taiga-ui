@@ -104,7 +104,7 @@ export class TuiInputSliderComponent
     /** @deprecated use `tuiTextfieldPostfix` from {@link TuiTextfieldControllerModule} instead */
     @Input(`postfix`)
     @tuiDefaultProp()
-    texfieldPostfix = ``;
+    textfieldPostfix = ``;
 
     constructor(
         @Optional()
@@ -123,7 +123,7 @@ export class TuiInputSliderComponent
     }
 
     get postfix(): string {
-        return this.texfieldPostfix || this.controller.postfix;
+        return this.textfieldPostfix || this.controller.postfix;
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {

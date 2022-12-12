@@ -103,6 +103,8 @@ export abstract class AbstractExampleTuiControl
 
     exampleText = ``;
 
+    filler = ``;
+
     maxHeight: number | null = null;
 
     readonly iconLeftVariants = [``, `tuiIconMailLarge`, `tuiIconPiechartLarge`];
