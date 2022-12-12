@@ -23,7 +23,11 @@ import {
     tuiPure,
     tuiSetNativeMouseFocused,
 } from '@taiga-ui/cdk';
-import {TuiTextfieldSizeDirective} from '@taiga-ui/core/directives';
+import {
+    TEXTFIELD_CONTROLLER_PROVIDER,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
+    TuiTextfieldController,
+} from '@taiga-ui/core/directives';
 import {TuiDataListAccessor} from '@taiga-ui/core/interfaces';
 import {TUI_NOTHING_FOUND_MESSAGE, tuiAsDataListAccessor} from '@taiga-ui/core/tokens';
 import {TuiDataListRole} from '@taiga-ui/core/types';
@@ -42,7 +46,10 @@ import {TuiOptionComponent} from './option/option.component';
     styleUrls: [`./data-list.style.less`],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    providers: [tuiAsDataListAccessor(TuiDataListComponent)],
+    providers: [
+        tuiAsDataListAccessor(TuiDataListComponent),
+        TEXTFIELD_CONTROLLER_PROVIDER,
+    ],
 })
 export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     @ContentChildren(forwardRef(() => TuiOptionComponent), {descendants: true})
@@ -66,8 +73,8 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
 
     constructor(
         @Optional()
-        @Inject(TuiTextfieldSizeDirective)
-        private readonly controller: TuiTextfieldSizeDirective | null,
+        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
+        private readonly controller: TuiTextfieldController | null,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TUI_NOTHING_FOUND_MESSAGE)
         readonly defaultEmptyContent$: Observable<string>,
