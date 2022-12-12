@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.13.0](https://github.com/tinkoff/taiga-ui/compare/v3.12.1...v3.13.0) (2022-12-12)
+
+### Features
+
+- **addon-table:** add paginationChange event ([#3105](https://github.com/tinkoff/taiga-ui/issues/3105))
+  ([453c65f](https://github.com/tinkoff/taiga-ui/commit/453c65ff262aa687da375fd3a5f8a019f85bc7e9))
+- **kit:** use `tuiIconClose` for size `s` ([#3192](https://github.com/tinkoff/taiga-ui/issues/3192))
+  ([a80c85d](https://github.com/tinkoff/taiga-ui/commit/a80c85d4c277fdae1024e33e1d3639ab2bb32c5b))
+
+### Bug Fixes
+
+- **addon-tablebars:** fixed close button in table bar ([#3184](https://github.com/tinkoff/taiga-ui/issues/3184))
+  ([bf5d6bd](https://github.com/tinkoff/taiga-ui/commit/bf5d6bd518a7fc83e29d0e8401dd21c41abd407d))
+- **addon-table:** don't update direction order when updating sorter programmatically
+  ([#3196](https://github.com/tinkoff/taiga-ui/issues/3196))
+  ([0197d56](https://github.com/tinkoff/taiga-ui/commit/0197d5617acf55f2c80ea536b8e3eed060c0ac5c))
+- **core:** `DataList` fix default size ([#3217](https://github.com/tinkoff/taiga-ui/issues/3217))
+  ([9ab7a53](https://github.com/tinkoff/taiga-ui/commit/9ab7a53e40ef286cc251fdc68f13c1fc229e3733))
+- **core:** `Dropdown` fix change detection inside dialogs ([#3200](https://github.com/tinkoff/taiga-ui/issues/3200))
+  ([74df80d](https://github.com/tinkoff/taiga-ui/commit/74df80dd302c0fa8fdabfcaf063d2d99cc18c815))
+- **i18n:** fix dutch translations for `multiSelectTexts` ([#3211](https://github.com/tinkoff/taiga-ui/issues/3211))
+  ([41cb92e](https://github.com/tinkoff/taiga-ui/commit/41cb92eacda9ffbab5503c6bad3a6ef73ace6ebb))
+- **kit:** `Tiles` fix handle inside Shadow DOM ([#3216](https://github.com/tinkoff/taiga-ui/issues/3216))
+  ([35e5399](https://github.com/tinkoff/taiga-ui/commit/35e5399a47c12fb521456f2628b620c487fb89d7))
+
 ### [3.12.1](https://github.com/tinkoff/taiga-ui/compare/v3.12.0...v3.12.1) (2022-12-08)
 
 ### Bug Fixes
