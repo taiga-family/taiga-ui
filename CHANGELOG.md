@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.72.0](https://github.com/tinkoff/taiga-ui/compare/v2.71.0...v2.72.0) (2022-12-12)
+
+### Bug Fixes
+
+- **addon-tablebars:** fixed close button in table bar v2x ([#3204](https://github.com/tinkoff/taiga-ui/issues/3204))
+  ([5debff9](https://github.com/tinkoff/taiga-ui/commit/5debff9439072cb028fe9918aa68a528f43d92cb))
+
 ## [2.71.0](https://github.com/tinkoff/taiga-ui/compare/v2.70.0...v2.71.0) (2022-12-07)
 
 ### Features
