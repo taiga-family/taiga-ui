@@ -69,9 +69,9 @@ const EVENT_Y_TO_X_COEFFICIENT = 3;
 
 @Component({
     selector: `tui-input-tag`,
-    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: `./input-tag.template.html`,
     styleUrls: [`./input-tag.style.less`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputTagComponent),
         tuiAsControl(TuiInputTagComponent),
@@ -230,6 +230,10 @@ export class TuiInputTagComponent
 
     get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
         return this.controller.icon;
+    }
+
+    get iconCleaner(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
+        return this.controller.options.iconCleaner;
     }
 
     get iconLeft(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {

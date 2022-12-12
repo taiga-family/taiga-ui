@@ -123,4 +123,18 @@ describe(`Input`, () => {
         cy.get(`@input`).first().focus().type(`111111111111`).blur();
         cy.get(`@wrapper`).wait(WAIT_BEFORE_SCREENSHOT).matchImageSnapshot(`09-mask`);
     });
+
+    describe(`check tuiTextfieldCleaner`, () => {
+        for (const size of [`s`, `m`, `l`]) {
+            it(`size=${size}`, () => {
+                cy.tuiVisit(
+                    `components/input/API?tuiTextfieldIcon=tuiIconCalendarLarge&tuiTextfieldCleaner=true&tuiTextfieldSize=${size}`,
+                );
+
+                cy.get(`#demoContent`).matchImageSnapshot(
+                    `input-tuiTextfieldIcon-tuiTextfieldCleaner-tuiTextfieldSize-${size}`,
+                );
+            });
+        }
+    });
 });

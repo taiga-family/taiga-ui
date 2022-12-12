@@ -10,6 +10,7 @@ import {
     TuiTooltipModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiTextAreaComponent} from './text-area.component';
 import {TuiTextAreaDirective} from './text-area.directive';
@@ -24,6 +25,7 @@ import {TuiTextAreaDirective} from './text-area.directive';
         TuiWrapperModule,
         TuiSvgModule,
         TuiPrimitiveTextfieldModule,
+        PolymorpheusModule,
     ],
     declarations: [TuiTextAreaComponent, TuiTextAreaDirective],
     exports: [TuiTextAreaComponent, TuiTextAreaDirective, TuiTextfieldComponent],

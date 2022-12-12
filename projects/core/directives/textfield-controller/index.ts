@@ -6,4 +6,5 @@ export * from './textfield-custom-content.directive';
 export * from './textfield-icon.directive';
 export * from './textfield-icon-left.directive';
 export * from './textfield-label-outside.directive';
+export * from './textfield-options';
 export * from './textfield-size.directive';

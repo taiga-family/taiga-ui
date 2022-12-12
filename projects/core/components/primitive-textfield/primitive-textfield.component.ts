@@ -24,8 +24,10 @@ import {
 import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
+    TUI_TEXTFIELD_OPTIONS,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiTextfieldController,
+    TuiTextfieldOptions,
 } from '@taiga-ui/core/directives/textfield-controller';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE, TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/core/tokens';
@@ -35,10 +37,6 @@ import {PolymorpheusContent, PolymorpheusOutletDirective} from '@tinkoff/ng-poly
 import {fromEvent, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {
-    TUI_PRIMITIVE_TEXTFIELD_OPTIONS,
-    TuiPrimitiveTextfieldOptions,
-} from './primitive-textfield-options';
 import {TuiPrimitiveTextfield} from './primitive-textfield-types';
 
 const ICON_PADDING = 1.75;
@@ -75,9 +73,13 @@ export class TuiPrimitiveTextfieldComponent
     @tuiDefaultProp()
     filler = ``;
 
+    /**
+     * @deprecated:
+     * use `tuiTextfieldOptionsProvider({iconCleaner: `tuiIconChevronUp`})`
+     */
     @Input()
     @tuiDefaultProp()
-    iconCleaner: TuiPrimitiveTextfieldOptions['iconCleaner'] = this.options.iconCleaner;
+    iconCleaner = this.options.iconCleaner;
 
     @Input()
     @HostBinding(`class._readonly`)
@@ -120,8 +122,8 @@ export class TuiPrimitiveTextfieldComponent
         @Optional()
         @Inject(TuiHintOptionsDirective)
         readonly hintOptions: TuiHintOptionsDirective | null,
-        @Inject(TUI_PRIMITIVE_TEXTFIELD_OPTIONS)
-        readonly options: TuiPrimitiveTextfieldOptions,
+        @Inject(TUI_TEXTFIELD_OPTIONS)
+        readonly options: TuiTextfieldOptions,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
     ) {
         super();
