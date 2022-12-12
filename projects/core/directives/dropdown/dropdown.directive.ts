@@ -1,4 +1,5 @@
 import {
+    AfterViewChecked,
     ComponentRef,
     Directive,
     ElementRef,
@@ -43,7 +44,13 @@ import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
     ],
 })
 export class TuiDropdownDirective
-    implements OnDestroy, OnChanges, TuiPortalItem, TuiRectAccessor, TuiVehicle
+    implements
+        AfterViewChecked,
+        OnDestroy,
+        OnChanges,
+        TuiPortalItem,
+        TuiRectAccessor,
+        TuiVehicle
 {
     @Input(`tuiDropdown`)
     @tuiDefaultProp()
@@ -64,6 +71,11 @@ export class TuiDropdownDirective
         return tuiCheckFixedPosition(this.elementRef.nativeElement)
             ? `fixed`
             : `absolute`;
+    }
+
+    ngAfterViewChecked(): void {
+        this.dropdownBoxRef?.changeDetectorRef.detectChanges();
+        this.dropdownBoxRef?.changeDetectorRef.markForCheck();
     }
 
     ngOnChanges(): void {

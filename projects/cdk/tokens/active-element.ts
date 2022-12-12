@@ -47,7 +47,7 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
                 ),
                 blur$.pipe(
                     map(() => documentRef.activeElement),
-                    filter(element => !!element && element.matches(`iframe`)),
+                    filter(element => !!element?.matches(`iframe`)),
                 ),
                 focusin$.pipe(
                     switchMap(event => {
