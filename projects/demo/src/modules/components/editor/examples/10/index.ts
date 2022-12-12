@@ -3,8 +3,8 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_EDITOR_CONTENT_PROCESSOR, TuiEditorTool} from '@taiga-ui/addon-editor';
-import MarkdownIt from 'markdown-it';
 import {tuiPure} from '@taiga-ui/cdk';
+import MarkdownIt from 'markdown-it';
 import {Converter} from 'showdown';
 
 @Component({
