@@ -39,12 +39,15 @@ jobs:
       - name: Run release
         id: run-release
         run: |
-          git config user.name "tinkoff-bot"
+          git config --global user.name "tinkoff-bot"
+          git config --global user.email "tinkoff-bot@tinkoff.ru"
           git config --global push.followTags true
+
           npx ts-node ./scripts/release.ts \
                 --ci-mode \
                 --release-as ${{ github.event.inputs.mode }} \
                 --dry-run ${{ github.event.inputs.dryRun }}
+
           echo "new_version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
       - name: Generate Release Body
