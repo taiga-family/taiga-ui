@@ -15,6 +15,9 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';
                 import(`@taiga-ui/addon-editor/extensions/starter-kit`).then(
                     ({StarterKit}) => StarterKit,
                 ),
+                import(`@tiptap/extension-image`).then(({default: Image}) =>
+                    Image.configure({inline: true, allowBase64: true}),
+                ),
                 import(`@taiga-ui/addon-editor/extensions/image-editor`).then(
                     ({createImageEditorExtension}) =>
                         createImageEditorExtension(injector),
