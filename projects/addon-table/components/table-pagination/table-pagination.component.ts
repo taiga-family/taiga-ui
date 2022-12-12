@@ -4,6 +4,7 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TUI_SPIN_TEXTS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
+import {TuiTablePagination} from './table-pagination';
 import {
     TUI_TABLE_PAGINATION_OPTIONS,
     TuiTablePaginationOptions,
@@ -31,11 +32,22 @@ export class TuiTablePaginationComponent {
     @tuiDefaultProp()
     size = this.items[0];
 
+    /**
+     * TODO: Remove in 4.0
+     * @deprecated use paginationChange
+     */
     @Output()
     readonly pageChange = new EventEmitter<number>();
 
+    /**
+     * TODO: Remove in 4.0
+     * @deprecated use paginationChange
+     */
     @Output()
     readonly sizeChange = new EventEmitter<number>();
+
+    @Output()
+    readonly paginationChange = new EventEmitter<TuiTablePagination>();
 
     open = false;
 
@@ -66,6 +78,13 @@ export class TuiTablePaginationComponent {
         return this.end === this.total;
     }
 
+    get pagination(): TuiTablePagination {
+        return {
+            page: this.page,
+            size: this.size,
+        };
+    }
+
     onItem(size: number): void {
         const {start} = this;
 
@@ -74,15 +93,18 @@ export class TuiTablePaginationComponent {
         this.open = false;
         this.page = Math.floor(start / this.size);
         this.pageChange.emit(this.page);
+        this.paginationChange.emit(this.pagination);
     }
 
     back(): void {
         this.page--;
         this.pageChange.emit(this.page);
+        this.paginationChange.emit(this.pagination);
     }
 
     forth(): void {
         this.page++;
         this.pageChange.emit(this.page);
+        this.paginationChange.emit(this.pagination);
     }
 }
