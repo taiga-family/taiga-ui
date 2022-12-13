@@ -604,6 +604,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
+        title: `ItemsWithMore`,
+        keywords: `список, list, items, элементы, more, больше, overflow`,
+        route: `/components/items-with-more`,
+    },
+    {
+        section: $localize`Components`,
         title: `Label`,
         keywords: `лэйбл, метка, форма, label`,
         route: `/components/label`,

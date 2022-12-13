@@ -572,6 +572,15 @@ export const ROUTES = [
         },
     },
     {
+        path: `components/items-with-more`,
+        loadChildren: async () =>
+            (await import(`../components/items-with-more/items-with-more.module`))
+                .ExampleTuiItemsWithMoreModule,
+        data: {
+            title: `ItemsWithMore`,
+        },
+    },
+    {
         path: `components/label`,
         loadChildren: async () =>
             (await import(`../components/label/label.module`)).ExampleTuiLabelModule,
