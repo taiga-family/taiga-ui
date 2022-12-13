@@ -40,7 +40,7 @@ describe(`InputDateRange`, () => {
 
         function getInput(): Cypress.Chainable<JQuery> {
             return cy
-                .get(`#demoContent`)
+                .get(`#demo-content`)
                 .findByAutomationId(`tui-primitive-textfield__native-input`);
         }
 

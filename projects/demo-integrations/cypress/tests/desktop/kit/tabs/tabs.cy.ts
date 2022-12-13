@@ -50,7 +50,7 @@ describe(`Tabs`, () => {
             it(`clamp active activeItemIndex=${index}`, () => {
                 cy.tuiVisit(`/navigation/tabs/API?tuiMode=null&activeItemIndex=${index}`);
 
-                cy.get(`#demoContent`)
+                cy.get(`#demo-content`)
                     .tuiScrollIntoView()
                     .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
                     .matchImageSnapshot(`03-activeItemIndex-${index}`);

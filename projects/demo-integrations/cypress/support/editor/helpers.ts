@@ -32,7 +32,7 @@ export function tuiVisitEditorApiPage({
 }
 
 export function tuiGetDemoContent(): Cypress.Chainable<JQuery> {
-    return cy.get(`#demoContent`).tuiScrollIntoView();
+    return cy.get(`#demo-content`).tuiScrollIntoView();
 }
 
 export function tuiClearEditor(): void {

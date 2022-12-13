@@ -5,7 +5,7 @@ describe(`LineClamp`, () => {
         it(`linesLimit=1`, () => {
             cy.tuiVisit(`/components/line-clamp/API?content=${basicText}&linesLimit=1`);
 
-            cy.get(`#demoContent`)
+            cy.get(`#demo-content`)
                 .should(`be.visible`)
                 .matchImageSnapshot(`01-[linesLimit=1]-basicText`);
         });
@@ -13,7 +13,7 @@ describe(`LineClamp`, () => {
         it(`linesLimit=2`, () => {
             cy.tuiVisit(`/components/line-clamp/API?content=${basicText}&linesLimit=2`);
 
-            cy.get(`#demoContent`)
+            cy.get(`#demo-content`)
                 .should(`be.visible`)
                 .matchImageSnapshot(`02-[linesLimit=2]-basicText`);
         });
@@ -25,7 +25,7 @@ describe(`LineClamp`, () => {
                 `/components/line-clamp/API?content=Incomprehensibilities&linesLimit=1`,
             );
 
-            cy.get(`#demoContent`)
+            cy.get(`#demo-content`)
                 .should(`be.visible`)
                 .matchImageSnapshot(`03-[linesLimit=1]-longWord`);
         });
@@ -37,7 +37,7 @@ describe(`LineClamp`, () => {
                 `/components/line-clamp/API?content=${textWithLongWord}&linesLimit=2`,
             );
 
-            cy.get(`#demoContent`)
+            cy.get(`#demo-content`)
                 .should(`be.visible`)
                 .matchImageSnapshot(`04-[linesLimit=2]-longWord`);
         });
@@ -53,7 +53,7 @@ describe(`LineClamp`, () => {
                     `components/line-clamp/API?tuiMode=null&style.maxWidth.px=${width}&linesLimit=${linesLimit}`,
                 );
 
-                cy.get(`#demoContent`)
+                cy.get(`#demo-content`)
                     .should(`be.visible`)
                     .matchImageSnapshot(`05-[linesLimit=${linesLimit}]-[width=${width}]`);
             });

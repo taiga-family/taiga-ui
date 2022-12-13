@@ -8,10 +8,10 @@ console.log('CI mode', CI_MODE);
 module.exports = {
     root: true,
     extends: [
-        // @default
-        ...(CI_MODE ? ['@tinkoff/eslint-config', './scripts/eslint/ci/nx.js'] : []),
+        // @strict heavy ci rules (slow = BUILD time + LINT time)
+        ...(CI_MODE ? ['@tinkoff/eslint-config', './scripts/eslint/nx.js'] : []),
+        // @tinkoff default rules
         '@tinkoff/eslint-config-angular',
-        '@tinkoff/eslint-config-angular/html',
         '@tinkoff/eslint-config-angular/rxjs',
         '@tinkoff/eslint-config-angular/imports',
         '@tinkoff/eslint-config-angular/promise',
@@ -23,27 +23,19 @@ module.exports = {
         '@tinkoff/eslint-config-angular/experimental',
         '@tinkoff/eslint-config-angular/function-return-type',
         // @custom
-        './scripts/eslint/common/off.js',
-        './scripts/eslint/common/cypress.js',
-        './scripts/eslint/common/naming-convention.js',
-        // @taiga
-        'plugin:@taiga-ui/eslint-plugin/all',
+        './scripts/eslint/typescript.js',
+        './scripts/eslint/taiga.js',
+        './scripts/eslint/off.js',
+        './scripts/eslint/html.js',
+        './scripts/eslint/cypress.js',
+        './scripts/eslint/naming-convention.js',
     ],
     ignorePatterns: [
-        'projects/**/icons/all.ts',
+        '*/icons/all.ts',
         '404.html',
         '*.js',
         '*.json',
         '*.less',
         '*.md',
     ],
-    parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-        project: [require.resolve('./tsconfig.eslint.json')],
-    },
-    parser: '@typescript-eslint/parser',
-    rules: {
-        '@typescript-eslint/quotes': ['error', 'backtick'],
-    },
 };

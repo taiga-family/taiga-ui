@@ -40,7 +40,7 @@ const makeDemoSnapshot = (
         .then(propertyName$ => propertyName$.text().trim())
         .then(property => {
             return cy
-                .get(`#demoContent`)
+                .get(`#demo-content`)
                 .first()
                 .matchImageSnapshot(`${path}/${stepIndex}-${property}-${optionIndex}`);
         });

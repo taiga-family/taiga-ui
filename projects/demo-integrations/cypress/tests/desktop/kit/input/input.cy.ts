@@ -13,7 +13,7 @@ describe(`Input`, () => {
                 {skipExpectUrl: true},
             );
 
-            cy.get(`#demoContent`)
+            cy.get(`#demo-content`)
                 .should(`be.visible`)
                 .matchImageSnapshot(`01-custom-text-content-cleaner-hint`);
         });
@@ -23,7 +23,7 @@ describe(`Input`, () => {
                 `${INPUT_PAGE_URL}/API?tuiTextfieldCustomContent=tuiIconCalendarLarge`,
             );
 
-            cy.get(`#demoContent`)
+            cy.get(`#demo-content`)
                 .should(`be.visible`)
                 .matchImageSnapshot(`02-custom-large-icon-content`);
         });
@@ -33,7 +33,7 @@ describe(`Input`, () => {
                 `${INPUT_PAGE_URL}/API?tuiTextfieldCleaner=true&tuiTextfieldCustomContent=tuiIconSearchLarge&tuiHintContent=Some%20content`,
             );
 
-            cy.get(`#demoContent`)
+            cy.get(`#demo-content`)
                 .should(`be.visible`)
                 .matchImageSnapshot(`03-custom-large-icon-content-cleaner-hint`);
         });
@@ -43,7 +43,7 @@ describe(`Input`, () => {
                 `${INPUT_PAGE_URL}/API?tuiTextfieldCleaner=true&tuiTextfieldCustomContent=tuiIconVisaMono&tuiHintContent=Some%20content`,
             );
 
-            cy.get(`#demoContent`)
+            cy.get(`#demo-content`)
                 .should(`be.visible`)
                 .matchImageSnapshot(`04-custom-normal-icon-content-cleaner-hint`);
         });
@@ -74,7 +74,7 @@ describe(`Input`, () => {
             `${INPUT_PAGE_URL}/API?tuiMode=null&pseudoFocused=true&placeholder=${characters}`,
         );
 
-        cy.get(`#demoContent`)
+        cy.get(`#demo-content`)
             .find(`.t-input-wrapper`)
             .tuiScrollIntoView()
             .find(`input[tuiTextfield]`)
@@ -99,7 +99,7 @@ describe(`Input`, () => {
     it(`can be horizontally scrolled`, () => {
         cy.viewport(450, 300).tuiVisit(`${INPUT_PAGE_URL}/API`);
 
-        cy.get(`#demoContent`).should(`be.visible`).as(`wrapper`);
+        cy.get(`#demo-content`).should(`be.visible`).as(`wrapper`);
         cy.get(`@wrapper`).find(`tui-input input[tuiTextfield]`).as(`input`);
 
         cy.get(`@input`)
@@ -131,7 +131,7 @@ describe(`Input`, () => {
                     `components/input/API?tuiTextfieldIcon=tuiIconCalendarLarge&tuiTextfieldCleaner=true&tuiTextfieldSize=${size}`,
                 );
 
-                cy.get(`#demoContent`).matchImageSnapshot(
+                cy.get(`#demo-content`).matchImageSnapshot(
                     `input-tuiTextfieldIcon-tuiTextfieldCleaner-tuiTextfieldSize-${size}`,
                 );
             });

@@ -20,7 +20,6 @@ module.exports = {
                 'max-nested-callbacks': 'off',
                 'import/no-deprecated': 'off',
                 'promise/no-nesting': 'off',
-                'spaced-comment': 'off',
                 'no-loop-func': 'off',
                 'no-bitwise': 'off',
                 quotes: 'off',

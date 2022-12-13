@@ -104,12 +104,12 @@ describe(`ComboBox`, () => {
         }
 
         function focusWrapper(): void {
-            cy.get(`#demoContent`).click({force: true});
+            cy.get(`#demo-content`).click({force: true});
         }
 
         function getInput(): Cypress.Chainable<JQuery> {
             return cy
-                .get(`#demoContent`)
+                .get(`#demo-content`)
                 .findByAutomationId(`tui-combo-box__textfield`)
                 .findByAutomationId(`tui-primitive-textfield__native-input`);
         }

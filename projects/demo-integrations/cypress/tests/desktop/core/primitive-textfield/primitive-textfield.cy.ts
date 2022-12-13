@@ -8,7 +8,7 @@ describe(`TuiPrimitiveTextfield`, () => {
             `components/primitive-textfield/API?tuiMode=null&tuiHintContent=Ivan%20Ivanov`,
             {clock: null /* TODO: investigate why flaky instead of null */},
         );
-        cy.get(`#demoContent tui-tooltip`)
+        cy.get(`#demo-content tui-tooltip`)
             .first()
             .click()
             .wait(500)
@@ -21,7 +21,7 @@ describe(`TuiPrimitiveTextfield`, () => {
         cy.tuiVisit(
             `components/primitive-textfield/API?value=TEXT&postfix=__!&prefix=!__`,
         );
-        cy.get(`#demoContent`)
+        cy.get(`#demo-content`)
             .should(`be.visible`)
             .matchImageSnapshot(`02-prefix-postfix`);
     });
