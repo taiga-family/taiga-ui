@@ -81,6 +81,10 @@ export class TuiTableExample3 {
     readonly totalSorter: TuiComparator<Item> = (a, b) =>
         tuiDefaultSort(a.price * a.quantity, b.price * b.quantity);
 
+    trackByIndex(index: number): number {
+        return index;
+    }
+
     getTotal({price, quantity}: Item): number {
         return price * quantity;
     }
