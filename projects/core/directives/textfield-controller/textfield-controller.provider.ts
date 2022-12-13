@@ -25,6 +25,7 @@ import {
     TUI_TEXTFIELD_LABEL_OUTSIDE,
     TuiTextfieldLabelOutsideDirective,
 } from './textfield-label-outside.directive';
+import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptions} from './textfield-options';
 import {
     TUI_TEXTFIELD_POSTFIX,
     TuiTextfieldPostfixDirective,
@@ -33,7 +34,6 @@ import {
     TUI_TEXTFIELD_PREFIX,
     TuiTextfieldPrefixDirective,
 } from './textfield-prefix.directive';
-import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptions} from './textfield-options';
 import {TUI_TEXTFIELD_SIZE, TuiTextfieldSizeDirective} from './textfield-size.directive';
 
 export const TUI_TEXTFIELD_WATCHED_CONTROLLER =

@@ -9,9 +9,9 @@ import {TuiTextfieldFillerDirective} from './textfield-filler.directive';
 import {TuiTextfieldIconDirective} from './textfield-icon.directive';
 import {TuiTextfieldIconLeftDirective} from './textfield-icon-left.directive';
 import {TuiTextfieldLabelOutsideDirective} from './textfield-label-outside.directive';
+import {TuiTextfieldOptions} from './textfield-options';
 import {TuiTextfieldPostfixDirective} from './textfield-postfix.directive';
 import {TuiTextfieldPrefixDirective} from './textfield-prefix.directive';
-import {TuiTextfieldOptions} from './textfield-options';
 import {TuiTextfieldSizeDirective} from './textfield-size.directive';
 
 export class TuiTextfieldController {
