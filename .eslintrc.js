@@ -30,12 +30,5 @@ module.exports = {
         './scripts/eslint/cypress.js',
         './scripts/eslint/naming-convention.js',
     ],
-    ignorePatterns: [
-        '*/icons/all.ts',
-        '404.html',
-        '*.js',
-        '*.json',
-        '*.less',
-        '*.md',
-    ],
+    ignorePatterns: ['*/icons/all.ts', '404.html', '*.js', '*.json', '*.less', '*.md'],
 };
