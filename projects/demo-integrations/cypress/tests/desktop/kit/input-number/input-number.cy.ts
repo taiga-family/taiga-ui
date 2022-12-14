@@ -1,18 +1,22 @@
+import {WAIT_BEFORE_SCREENSHOT} from '@demo-integrations/support/properties/shared.entities';
+
 describe(`InputNumber`, () => {
     describe(`API`, () => {
         it(`prefix + value + postfix`, () => {
             cy.tuiVisit(`components/input-number/API?tuiMode=null&prefix=$&postfix=GBP`);
 
-            cy.get(`#demo-content`).matchImageSnapshot(
-                `01-input-number-prefix-value-postfix`,
-            );
+            cy.get(`#demo-content`)
+                .wait(WAIT_BEFORE_SCREENSHOT)
+                .matchImageSnapshot(`01-input-number-prefix-value-postfix`);
 
             cy.get(`#demo-content`)
                 .findByAutomationId(`tui-primitive-textfield__native-input`)
                 .focus()
                 .type(`{selectall}{backspace}`);
 
-            cy.get(`#demo-content`).matchImageSnapshot(`02-input-number-prefix-postfix`);
+            cy.get(`#demo-content`)
+                .wait(WAIT_BEFORE_SCREENSHOT)
+                .matchImageSnapshot(`02-input-number-prefix-postfix`);
         });
 
         for (const align of [`left`, `right`]) {
