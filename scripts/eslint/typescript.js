@@ -1,6 +1,4 @@
-const tsconfig = require.resolve('../../tsconfig.eslint.json');
-
-console.log('Compiling typescript files by tsconfig: ', tsconfig);
+console.log('Compiling typescript files by tsconfig...');
 
 module.exports = {
     overrides: [
@@ -8,7 +6,7 @@ module.exports = {
             files: ['*.ts'],
             parserOptions: {
                 ecmaVersion: 'latest',
-                project: [tsconfig],
+                project: ['tsconfig.eslint.json'],
                 sourceType: 'module',
             },
             parser: '@typescript-eslint/parser',
