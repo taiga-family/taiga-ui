@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiItemDirective, TuiItemModule} from '@taiga-ui/cdk';
+import {TuiItemDirective, TuiItemModule, TuiLetModule} from '@taiga-ui/cdk';
 import {TuiProjectClassModule} from '@taiga-ui/kit/directives';
 
 import {TuiItemsWithMoreComponent} from './items-with-more.component';
@@ -8,7 +8,7 @@ import {TuiItemsWithMoreDirective} from './items-with-more.directive';
 import {TuiMoreDirective} from './more.directive';
 
 @NgModule({
-    imports: [CommonModule, TuiItemModule, TuiProjectClassModule],
+    imports: [CommonModule, TuiItemModule, TuiLetModule, TuiProjectClassModule],
     declarations: [
         TuiItemsWithMoreComponent,
         TuiItemsWithMoreDirective,

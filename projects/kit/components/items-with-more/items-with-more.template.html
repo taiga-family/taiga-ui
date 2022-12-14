@@ -1,5 +1,5 @@
 <ng-container *ngIf="items.changes | async"></ng-container>
-<ng-container *ngIf="lastVisibleIndex$ | async as lastIndex">
+<ng-container *tuiLet="(lastVisibleIndex$ | async) || 0 as lastIndex">
     <div
         *ngFor="let item of items; let index = index"
         class="t-item"
@@ -8,9 +8,9 @@
     >
         <ng-container *ngTemplateOutlet="item"></ng-container>
     </div>
-    <div
+    <span
         *ngIf="more && lastIndex < items.length - 1"
-        class="t-item t-more"
+        class="t-item"
         [class.t-item_hidden]="lastIndex >= items.length - 1"
         [tuiProjectClass]="['_active']"
     >
@@ -18,5 +18,5 @@
             [ngTemplateOutlet]="more"
             [ngTemplateOutletContext]="{$implicit: lastIndex}"
         ></ng-container>
-    </div>
+    </span>
 </ng-container>

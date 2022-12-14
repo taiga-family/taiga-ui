@@ -1,20 +1,23 @@
-import {ElementRef, Inject, Injectable} from '@angular/core';
+import {ElementRef, Inject, Injectable, NgZone} from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
-import {tuiClamp, TuiResizeService} from '@taiga-ui/cdk';
+import {tuiClamp, TuiResizeService, tuiZoneOptimized} from '@taiga-ui/cdk';
 import {merge, Observable} from 'rxjs';
-import {distinctUntilChanged, map, share} from 'rxjs/operators';
+import {distinctUntilChanged, map, share, throttleTime} from 'rxjs/operators';
 
 import {TuiItemsWithMoreDirective} from './items-with-more.directive';
 
 @Injectable()
 export class TuiItemsWithMoreService extends Observable<number> {
     readonly stream$ = merge(this.mutation$, this.resize$).pipe(
+        throttleTime(0),
         map(() => this.getOverflowIndex()),
         distinctUntilChanged(),
+        tuiZoneOptimized(this.ngZone),
         share(),
     );
 
     constructor(
+        @Inject(NgZone) private readonly ngZone: NgZone,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(MutationObserverService) private readonly mutation$: Observable<unknown>,
         @Inject(TuiResizeService) private readonly resize$: Observable<unknown>,
@@ -29,7 +32,7 @@ export class TuiItemsWithMoreService extends Observable<number> {
         const items = Array.from(children, ({clientWidth}) => clientWidth);
         const first = this.directive.required === -1 ? 0 : this.directive.required;
         const last = items.length - 1;
-        const more = children[last]?.matches(`.t-more`) ? items[last] : 0;
+        const more = children[last]?.tagName === `SPAN` ? items[last] : 0;
 
         items.unshift(...items.splice(first, 1));
 
