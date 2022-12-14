@@ -8,7 +8,7 @@ describe(`InputCardGrouped`, () => {
         });
 
         it(`set value and clear after`, () => {
-            cy.get(`#demoContent`).should(`be.visible`).as(`wrapper`);
+            cy.get(`#demo-content`).should(`be.visible`).as(`wrapper`);
 
             cy.get(`@wrapper`)
                 .findByAutomationId(`tui-input-card-grouped__card`)
@@ -26,7 +26,7 @@ describe(`InputCardGrouped`, () => {
         });
 
         it(`set value and disable`, () => {
-            cy.get(`#demoContent`).should(`be.visible`).as(`wrapper`);
+            cy.get(`#demo-content`).should(`be.visible`).as(`wrapper`);
 
             cy.get(`@wrapper`)
                 .findByAutomationId(`tui-input-card-grouped__card`)

@@ -26,7 +26,7 @@ describe(`TuiHint`, () => {
     it(`Dark mode hint`, () => {
         cy.tuiVisit(`/directives/hint/API?tuiMode=onDark`);
 
-        cy.get(`#demoContent span`)
+        cy.get(`#demo-content span`)
             .trigger(`mouseenter`)
             .tick(1000)
             .wait(WAIT_BEFORE_SCREENSHOT);
@@ -37,7 +37,7 @@ describe(`TuiHint`, () => {
     it(`Light mode hint`, () => {
         cy.tuiVisit(`/directives/hint/API?tuiMode=onLight`);
 
-        cy.get(`#demoContent span`)
+        cy.get(`#demo-content span`)
             .trigger(`mouseenter`)
             .tick(1000)
             .wait(WAIT_BEFORE_SCREENSHOT);

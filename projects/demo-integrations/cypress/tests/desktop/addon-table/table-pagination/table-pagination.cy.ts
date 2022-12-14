@@ -8,7 +8,7 @@ describe(`TablePagination`, () => {
     describe(`Dropdown with \`[size]\`-options (amount items per page)`, () => {
         it(`Basic case`, () => {
             cy.tuiVisit(`/components/table-pagination/API`);
-            initializeAliases(`#demoContent`);
+            initializeAliases(`#demo-content`);
 
             cy.get(`@linesPerPageSelect`).click();
             waitForCheckmarkIcon();
@@ -23,7 +23,7 @@ describe(`TablePagination`, () => {
             cy.tuiVisit(
                 `/components/table-pagination/API?items=[0, ${longNumber}]&size=${longNumber}&total=${longNumber}&page=0`,
             );
-            initializeAliases(`#demoContent`);
+            initializeAliases(`#demo-content`);
 
             cy.get(`@linesPerPageSelect`).click();
             waitForCheckmarkIcon();

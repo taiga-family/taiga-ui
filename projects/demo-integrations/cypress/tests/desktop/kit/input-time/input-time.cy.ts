@@ -8,8 +8,8 @@ describe(`InputTime`, () => {
             `base`,
             `dropdown`,
             `options`,
-            `options_max`,
-            `options_ampm`,
+            `options-max`,
+            `options-ampm`,
         ].entries()) {
             it(id, () => {
                 cy.get(`#${id}`)
@@ -84,7 +84,7 @@ describe(`InputTime`, () => {
         }
 
         function getInput(): Cypress.Chainable<JQuery> {
-            return cy.get(`#demoContent`).find(`input`).first();
+            return cy.get(`#demo-content`).find(`input`).first();
         }
 
         function getDropdown(): Cypress.Chainable<JQuery> {

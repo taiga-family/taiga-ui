@@ -72,11 +72,11 @@ describe(`InputSlider`, () => {
                 `${INPUT_SLIDER_PAGE_URL}/API?valueContent=TOP-SECRET&postfix=things&prefix=$`,
             );
 
-            initializeAliases(`#demoContent tui-input-slider`);
+            initializeAliases(`#demo-content tui-input-slider`);
 
             cy.get(`@textInput`).focus().wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
 
-            cy.get(`#demoContent`).matchImageSnapshot(`3-value-content-hide-on-focus`);
+            cy.get(`#demo-content`).matchImageSnapshot(`3-value-content-hide-on-focus`);
         });
 
         it(`[valueContent] is not overlapped by [prefix]/[postfix] (input is NOT focused)`, () => {
@@ -84,7 +84,7 @@ describe(`InputSlider`, () => {
                 `${INPUT_SLIDER_PAGE_URL}/API?valueContent=TOP-SECRET&postfix=things&prefix=$`,
             );
 
-            cy.get(`#demoContent`)
+            cy.get(`#demo-content`)
                 .should(`be.visible`)
                 .matchImageSnapshot(`4-value-content-not-overlapped`);
         });

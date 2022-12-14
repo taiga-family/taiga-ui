@@ -33,7 +33,7 @@ describe(`Slider`, () => {
     it(`correctly sets control value on input change (using TuiSliderKeyStepsDirective)`, () => {
         cy.tuiVisit(SLIDER_PAGE_URL);
 
-        cy.get(`#keySteps`)
+        cy.get(`#key-steps`)
             .findByAutomationId(EXAMPLE_ID)
             .should(`be.visible`)
             .as(`example`);

@@ -4,7 +4,7 @@ describe(`Button`, () => {
             `/components/button/API?tuiMode=onDark&appearance=icon&icon=tuiIconEyeClosed`,
         );
 
-        cy.get(`#demoContent`)
+        cy.get(`#demo-content`)
             .should(`be.visible`)
             .find(`[tuiButton]`)
             .trigger(`mouseenter`)

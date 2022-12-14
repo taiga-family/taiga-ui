@@ -3,16 +3,16 @@ describe(`InputNumber`, () => {
         it(`prefix + value + postfix`, () => {
             cy.tuiVisit(`components/input-number/API?tuiMode=null&prefix=$&postfix=GBP`);
 
-            cy.get(`#demoContent`).matchImageSnapshot(
+            cy.get(`#demo-content`).matchImageSnapshot(
                 `01-input-number-prefix-value-postfix`,
             );
 
-            cy.get(`#demoContent`)
+            cy.get(`#demo-content`)
                 .findByAutomationId(`tui-primitive-textfield__native-input`)
                 .focus()
                 .type(`{selectall}{backspace}`);
 
-            cy.get(`#demoContent`).matchImageSnapshot(`02-input-number-prefix-postfix`);
+            cy.get(`#demo-content`).matchImageSnapshot(`02-input-number-prefix-postfix`);
         });
 
         for (const align of [`left`, `right`]) {
@@ -23,7 +23,7 @@ describe(`InputNumber`, () => {
                     `/components/input-number/API?tuiMode=null&style.text-align=${align}&prefix=${readableFormatText}&postfix=${readableFormatText}`,
                 );
 
-                cy.get(`#demoContent`).matchImageSnapshot(
+                cy.get(`#demo-content`).matchImageSnapshot(
                     `03-input-number-align-${align}`,
                 );
             });

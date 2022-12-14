@@ -10,13 +10,13 @@ describe(`InputFiles`, () => {
 
             cy.get(`[tuiInputFiles]`).selectFile(`cypress/fixtures/stubs/web-api.svg`);
 
-            cy.get(`#demoContent tui-file`)
+            cy.get(`#demo-content tui-file`)
                 .should(`contain.text`, `Wrong file type`)
                 .matchImageSnapshot(`01-01-input-files-[english]-wrong-file-type`);
 
             cy.tuiSetLanguage(`dutch`);
 
-            cy.get(`#demoContent tui-file`)
+            cy.get(`#demo-content tui-file`)
                 .should(`contain.text`, `Verkeerd bestandsformaat`)
                 .matchImageSnapshot(`01-02-input-files-[dutch]-wrong-file-type`);
         });
@@ -31,13 +31,13 @@ describe(`InputFiles`, () => {
 
             cy.get(`[tuiInputFiles]`).selectFile(`cypress/fixtures/stubs/web-api.svg`);
 
-            cy.get(`#demoContent tui-file`)
+            cy.get(`#demo-content tui-file`)
                 .should(`contain.text`, `File is too large 2 KB`)
                 .matchImageSnapshot(`02-01-input-files-[english]-file-too-large`);
 
             cy.tuiSetLanguage(`dutch`);
 
-            cy.get(`#demoContent tui-file`)
+            cy.get(`#demo-content tui-file`)
                 .should(`contain.text`, `Bestandsgrootte overschreden 2 KB`)
                 .matchImageSnapshot(`02-02-input-files-[dutch]-file-too-large`);
         });

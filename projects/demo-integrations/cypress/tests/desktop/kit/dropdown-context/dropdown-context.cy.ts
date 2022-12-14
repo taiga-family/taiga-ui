@@ -12,7 +12,7 @@ describe(`DropdownContext`, () => {
     });
 
     it(`opens dropdown on right click`, () => {
-        cy.get(`#contextMenu`).find(`tr`).last().rightclick();
+        cy.get(`#context-menu`).find(`tr`).last().rightclick();
 
         cy.window()
             .wait(WAIT_BEFORE_SCREENSHOT)
@@ -20,20 +20,20 @@ describe(`DropdownContext`, () => {
     });
 
     it(`closes previous dropdown after new one is opened`, () => {
-        cy.get(`#contextMenu`).find(`tr`).eq(1).rightclick(`left`);
+        cy.get(`#context-menu`).find(`tr`).eq(1).rightclick(`left`);
         cy.get(`tui-dropdown`).should(`have.length`, 1);
-        cy.get(`#contextMenu`).matchImageSnapshot(`02-1-opened-dropdown`);
+        cy.get(`#context-menu`).matchImageSnapshot(`02-1-opened-dropdown`);
 
-        cy.get(`#contextMenu`).find(`tr`).eq(2).rightclick(`center`);
+        cy.get(`#context-menu`).find(`tr`).eq(2).rightclick(`center`);
         cy.get(`tui-dropdown`).should(`have.length`, 1);
 
-        cy.get(`#contextMenu`).matchImageSnapshot(
+        cy.get(`#context-menu`).matchImageSnapshot(
             `02-2-close-previous-dropdown-open-new-dropdown`,
         );
     });
 
     it(`focuses content inside on Arrow Up key`, () => {
-        cy.get(`#contextMenu`).find(`tr`).eq(2).rightclick();
+        cy.get(`#context-menu`).find(`tr`).eq(2).rightclick();
 
         cy.get(`body`).type(`{uparrow}`);
 

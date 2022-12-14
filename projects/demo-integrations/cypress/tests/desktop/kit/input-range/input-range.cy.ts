@@ -8,7 +8,7 @@ describe(`InputRange`, () => {
     describe(`Keyboard interactions`, () => {
         beforeEach(() => {
             cy.tuiVisit(`${INPUT_RANGE_PAGE_URL}/API?min=-100&max=100&quantum=5`);
-            initializeAliases(`#demoContent tui-input-range`, [0, 10]);
+            initializeAliases(`#demo-content tui-input-range`, [0, 10]);
         });
 
         it(`pressing Arrow Down decreases LEFT value when LEFT text input is focused`, () => {
@@ -123,7 +123,7 @@ describe(`InputRange`, () => {
     describe(`Rounding numbers (to the nearest step which satisfies quantum) (min=0 | max=10 | quantum=2.5)`, () => {
         beforeEach(() => {
             cy.tuiVisit(`${INPUT_RANGE_PAGE_URL}/API?min=0&max=10&quantum=2.5`);
-            initializeAliases(`#demoContent tui-input-range`, [0, 10]);
+            initializeAliases(`#demo-content tui-input-range`, [0, 10]);
         });
 
         const testsConditions = [
@@ -154,7 +154,7 @@ describe(`InputRange`, () => {
         describe(`click on the sliders' track`, () => {
             beforeEach(() => {
                 cy.tuiVisit(`${INPUT_RANGE_PAGE_URL}/API?min=-100&max=100&quantum=10`);
-                initializeAliases(`#demoContent tui-input-range`, [0, 10]);
+                initializeAliases(`#demo-content tui-input-range`, [0, 10]);
             });
 
             it(`clicking on the RIGHT side changes only the RIGHT value (+ focuses the RIGHT text input)`, () => {
@@ -183,7 +183,7 @@ describe(`InputRange`, () => {
         describe(`click on a thumb`, () => {
             beforeEach(() => {
                 cy.tuiVisit(`${INPUT_RANGE_PAGE_URL}/API?min=0&max=10&quantum=1`);
-                initializeAliases(`#demoContent tui-input-range`, [0, 10]);
+                initializeAliases(`#demo-content tui-input-range`, [0, 10]);
             });
 
             it(`click on the LEFT thumb (with NO value changes) => focuses the LEFT text input`, () => {
@@ -209,7 +209,7 @@ describe(`InputRange`, () => {
             cy.viewport(`macbook-11`);
             cy.tuiVisit(`${INPUT_RANGE_PAGE_URL}/API`);
 
-            cy.get(`#demoContent`)
+            cy.get(`#demo-content`)
                 .should(`be.visible`)
                 .matchImageSnapshot(`01-long-placeholder_basic`);
         });
@@ -220,7 +220,7 @@ describe(`InputRange`, () => {
                 `${INPUT_RANGE_PAGE_URL}/API?rightValueContent=TOP%20SECRET&leftValueContent=I%20am%20a%20leftValueContent`,
             );
 
-            cy.get(`#demoContent`)
+            cy.get(`#demo-content`)
                 .should(`be.visible`)
                 .matchImageSnapshot(`02-long-placeholder_value-content`);
         });
@@ -229,7 +229,7 @@ describe(`InputRange`, () => {
             cy.viewport(`iphone-8`);
             cy.tuiVisit(`${INPUT_RANGE_PAGE_URL}/API?pluralize$=1`);
 
-            cy.get(`#demoContent`)
+            cy.get(`#demo-content`)
                 .should(`be.visible`)
                 .matchImageSnapshot(`03-long-placeholder_pluralize`);
         });
@@ -241,7 +241,7 @@ describe(`InputRange`, () => {
             cy.tuiVisit(`${INPUT_RANGE_PAGE_URL}/API?min=-20&max=20&quantum=5`, {
                 pseudoMobile: true,
             });
-            initializeAliases(`#demoContent tui-input-range`, [0, 10]);
+            initializeAliases(`#demo-content tui-input-range`, [0, 10]);
         });
 
         describe(`After Range interactions`, () => {
