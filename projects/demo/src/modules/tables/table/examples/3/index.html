@@ -80,7 +80,7 @@
             [data]="sortedPythons"
         >
             <tr
-                *ngFor="let item of sortedPythons"
+                *ngFor="let item of sortedPythons; trackBy: trackByIndex"
                 tuiTr
             >
                 <th
@@ -164,7 +164,7 @@
             [data]="sortedStarwars"
         >
             <tr
-                *ngFor="let item of sortedStarwars"
+                *ngFor="let item of sortedStarwars; trackBy: trackByIndex"
                 tuiTr
             >
                 <th
