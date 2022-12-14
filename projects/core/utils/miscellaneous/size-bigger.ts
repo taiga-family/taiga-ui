@@ -16,7 +16,9 @@ const SIZES: Record<TuiSizeXXL | TuiSizeXXS, number> = {
  * @param size size that we need to compare
  * @param biggerThanSize size to compare with, 's' by default
  */
-export const tuiSizeBigger = (
+export function tuiSizeBigger(
     size: TuiSizeXXL | TuiSizeXXS,
     biggerThanSize: TuiSizeXXL | TuiSizeXXS = `s`,
-): boolean => SIZES[size] > SIZES[biggerThanSize];
+): boolean {
+    return SIZES[size] > SIZES[biggerThanSize];
+}
