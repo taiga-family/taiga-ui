@@ -8,7 +8,7 @@ import {TuiItemsWithMoreDirective} from './items-with-more.directive';
 
 @Injectable()
 export class TuiItemsWithMoreService extends Observable<number> {
-    readonly stream$ = merge(this.mutation$, this.resize$).pipe(
+    readonly stream$ = merge(this.directive.change$, this.mutation$, this.resize$).pipe(
         throttleTime(0),
         map(() => this.getOverflowIndex()),
         distinctUntilChanged(),
@@ -38,8 +38,8 @@ export class TuiItemsWithMoreService extends Observable<number> {
 
         let total = items.reduce((sum, width) => sum + width, 0) - more;
 
-        if (total <= clientWidth) {
-            return Math.min(this.directive.itemsLimit - 1, Infinity);
+        if (total <= clientWidth && this.directive.itemsLimit >= items.length) {
+            return this.max;
         }
 
         for (let i = last - 1; i > 0; i--) {
@@ -49,13 +49,17 @@ export class TuiItemsWithMoreService extends Observable<number> {
                 return tuiClamp(
                     i > this.directive.required ? i - 1 : i - 2,
                     -1,
-                    this.directive.itemsLimit > this.directive.required
-                        ? this.directive.itemsLimit - 1
-                        : this.directive.itemsLimit - 2,
+                    this.max,
                 );
             }
         }
 
-        return 0;
+        return -1;
+    }
+
+    private get max(): number {
+        return this.directive.itemsLimit > this.directive.required
+            ? this.directive.itemsLimit - 1
+            : this.directive.itemsLimit - 2;
     }
 }
