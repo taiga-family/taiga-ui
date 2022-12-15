@@ -11,10 +11,10 @@
         tuiValueAccessor
         class="t-textfield"
         [tuiTextfieldIcon]="calendarIcon && iconContent"
+        [tuiTextfieldFiller]="getComputedFiller(filler || '')"
         [pseudoFocus]="pseudoFocus"
         [pseudoHover]="pseudoHover"
         [invalid]="computedInvalid"
-        [filler]="getComputedFiller(filler || '')"
         [nativeId]="nativeId"
         [readOnly]="readOnly"
         [focusable]="computedFocusable"

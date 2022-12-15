@@ -81,6 +81,7 @@
                     [readOnly]="readOnly"
                     [tuiTextfieldIconLeft]="iconLeft"
                     [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldFiller]="filler"
                     [tuiTextfieldSize]="size"
                     [style.text-align]="textAlign"
                 >
@@ -133,18 +134,24 @@
                 documentationPropertyName="prefix"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
+                [documentationPropertyDeprecated]="true"
                 [(documentationPropertyValue)]="prefix"
             >
-                A prefix symbol, like currency
+                A prefix symbol, like currency. Use
+                <code>tuiTextfieldPrefix</code>
+                instead
             </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName="postfix"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
+                [documentationPropertyDeprecated]="true"
                 [(documentationPropertyValue)]="postfix"
             >
-                Some string after value
+                Some string after value. Use
+                <code>tuiTextfieldPostfix</code>
+                instead
             </ng-template>
             <ng-template
                 i18n
@@ -155,6 +162,26 @@
                 [(documentationPropertyValue)]="step"
             >
                 Step for buttons
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiTextfieldPrefix"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="prefixVariants"
+                [(documentationPropertyValue)]="prefix"
+            >
+                Uneditable text before value
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiTextfieldPostfix"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="prefixVariants"
+                [(documentationPropertyValue)]="postfix"
+            >
+                Uneditable text after value
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>

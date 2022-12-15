@@ -24,8 +24,11 @@ import {
     tuiRound,
 } from '@taiga-ui/cdk';
 import {
+    TEXTFIELD_CONTROLLER_PROVIDER,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiDecimal,
     tuiGetFractionPartPadded,
+    TuiTextfieldController,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiInputNumberComponent} from '@taiga-ui/kit/components/input-number';
@@ -46,6 +49,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
         tuiAsFocusableItemAccessor(TuiInputSliderComponent),
         tuiAsControl(TuiInputSliderComponent),
         tuiSliderOptionsProvider({trackColor: `transparent`}),
+        TEXTFIELD_CONTROLLER_PROVIDER,
     ],
 })
 export class TuiInputSliderComponent
@@ -92,13 +96,15 @@ export class TuiInputSliderComponent
     @tuiDefaultProp()
     valueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = ``;
 
-    @Input()
+    /** @deprecated use `tuiTextfieldPrefix` from {@link TuiTextfieldControllerModule} instead */
+    @Input(`prefix`)
     @tuiDefaultProp()
-    prefix = ``;
+    textfieldPrefix = ``;
 
-    @Input()
+    /** @deprecated use `tuiTextfieldPostfix` from {@link TuiTextfieldControllerModule} instead */
+    @Input(`postfix`)
     @tuiDefaultProp()
-    postfix = ``;
+    textfieldPostfix = ``;
 
     constructor(
         @Optional()
@@ -106,8 +112,18 @@ export class TuiInputSliderComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
+        readonly controller: TuiTextfieldController,
     ) {
         super(control, changeDetectorRef);
+    }
+
+    get prefix(): string {
+        return this.textfieldPrefix || this.controller.prefix;
+    }
+
+    get postfix(): string {
+        return this.textfieldPostfix || this.controller.postfix;
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {

@@ -5,10 +5,13 @@ import {Observable} from 'rxjs';
 
 import {TuiTextfieldCleanerDirective} from './textfield-cleaner.directive';
 import {TuiTextfieldCustomContentDirective} from './textfield-custom-content.directive';
+import {TuiTextfieldFillerDirective} from './textfield-filler.directive';
 import {TuiTextfieldIconDirective} from './textfield-icon.directive';
 import {TuiTextfieldIconLeftDirective} from './textfield-icon-left.directive';
 import {TuiTextfieldLabelOutsideDirective} from './textfield-label-outside.directive';
 import {TuiTextfieldOptions} from './textfield-options';
+import {TuiTextfieldPostfixDirective} from './textfield-postfix.directive';
+import {TuiTextfieldPrefixDirective} from './textfield-prefix.directive';
 import {TuiTextfieldSizeDirective} from './textfield-size.directive';
 
 export class TuiTextfieldController {
@@ -21,6 +24,9 @@ export class TuiTextfieldController {
         private readonly iconLeftDirective: TuiTextfieldIconLeftDirective,
         private readonly labelOutsideDirective: TuiTextfieldLabelOutsideDirective,
         private readonly sizeDirective: TuiTextfieldSizeDirective,
+        private readonly prefixDirective: TuiTextfieldPrefixDirective,
+        private readonly postfixDirective: TuiTextfieldPostfixDirective,
+        private readonly fillerDirective: TuiTextfieldFillerDirective,
     ) {}
 
     get cleaner(): boolean {
@@ -45,5 +51,17 @@ export class TuiTextfieldController {
 
     get size(): TuiSizeL | TuiSizeS {
         return this.sizeDirective.size;
+    }
+
+    get prefix(): string {
+        return this.prefixDirective.prefix;
+    }
+
+    get postfix(): string {
+        return this.postfixDirective.postfix;
+    }
+
+    get filler(): string {
+        return this.fillerDirective.filler;
     }
 }

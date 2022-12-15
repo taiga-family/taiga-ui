@@ -12,12 +12,12 @@
         tuiValueAccessor
         class="t-textfield"
         [tuiTextfieldIcon]="calendarIcon && iconContent"
+        [tuiTextfieldFiller]="getComputedRangeFiller(dateFiller || '')"
         [pseudoFocus]="innerPseudoFocused"
         [pseudoHover]="pseudoHover"
         [pseudoActive]="pseudoActive"
         [invalid]="computedInvalid"
         [nativeId]="nativeId"
-        [filler]="getComputedRangeFiller(dateFiller || '')"
         [readOnly]="readOnly"
         [disabled]="computedDisabled"
         [textMask]="computedMask"

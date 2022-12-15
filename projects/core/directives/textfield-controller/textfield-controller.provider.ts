@@ -12,6 +12,10 @@ import {
     TUI_TEXTFIELD_CUSTOM_CONTENT,
     TuiTextfieldCustomContentDirective,
 } from './textfield-custom-content.directive';
+import {
+    TUI_TEXTFIELD_FILLER,
+    TuiTextfieldFillerDirective,
+} from './textfield-filler.directive';
 import {TUI_TEXTFIELD_ICON, TuiTextfieldIconDirective} from './textfield-icon.directive';
 import {
     TUI_TEXTFIELD_ICON_LEFT,
@@ -22,6 +26,14 @@ import {
     TuiTextfieldLabelOutsideDirective,
 } from './textfield-label-outside.directive';
 import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptions} from './textfield-options';
+import {
+    TUI_TEXTFIELD_POSTFIX,
+    TuiTextfieldPostfixDirective,
+} from './textfield-postfix.directive';
+import {
+    TUI_TEXTFIELD_PREFIX,
+    TuiTextfieldPrefixDirective,
+} from './textfield-prefix.directive';
 import {TUI_TEXTFIELD_SIZE, TuiTextfieldSizeDirective} from './textfield-size.directive';
 
 export const TUI_TEXTFIELD_WATCHED_CONTROLLER =
@@ -43,6 +55,9 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
             TUI_TEXTFIELD_ICON_LEFT,
             TUI_TEXTFIELD_LABEL_OUTSIDE,
             TUI_TEXTFIELD_SIZE,
+            TUI_TEXTFIELD_PREFIX,
+            TUI_TEXTFIELD_POSTFIX,
+            TUI_TEXTFIELD_FILLER,
         ],
         useFactory: (
             changeDetectorRef: ChangeDetectorRef,
@@ -55,6 +70,9 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
                 TuiTextfieldIconLeftDirective,
                 TuiTextfieldLabelOutsideDirective,
                 TuiTextfieldSizeDirective,
+                TuiTextfieldPrefixDirective,
+                TuiTextfieldPostfixDirective,
+                TuiTextfieldFillerDirective,
             ]
         ) => {
             const change$ = merge(

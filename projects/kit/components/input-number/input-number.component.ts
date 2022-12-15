@@ -77,10 +77,12 @@ export class TuiInputNumberComponent
     @tuiDefaultProp()
     precision = 2;
 
+    /** @deprecated use `tuiTextfieldPrefix` from {@link TuiTextfieldControllerModule} instead */
     @Input()
     @tuiDefaultProp()
     prefix = ``;
 
+    /** @deprecated use `tuiTextfieldPostfix` from {@link TuiTextfieldControllerModule} instead */
     @Input()
     @tuiDefaultProp()
     postfix = ``;

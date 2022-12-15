@@ -168,6 +168,11 @@
                     [tuiTextfieldCustomContent]="customContent"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
+                    [tuiTextfieldPrefix]="prefix"
+                    [tuiTextfieldPostfix]="postfix"
+                    [tuiTextfieldFiller]="filler"
+                    [prefix]="prefix"
+                    [postfix]="postfix"
                     [min]="min"
                     [max]="max"
                     [style.text-align]="textAlign"
@@ -178,8 +183,6 @@
                     [precision]="precision"
                     [readOnly]="readOnly"
                     [decimal]="decimal"
-                    [prefix]="prefix"
-                    [postfix]="postfix"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
                     [tuiHintAppearance]="hintAppearance"
@@ -224,20 +227,26 @@
                 documentationPropertyName="prefix"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
-                [documentationPropertyValues]="postfixVariants"
+                [documentationPropertyDeprecated]="true"
+                [documentationPropertyValues]="prefixVariants"
                 [(documentationPropertyValue)]="prefix"
             >
-                A prefix symbol, like currency
+                A prefix symbol, like currency. Use
+                <code>tuiTextfieldPrefix</code>
+                instead
             </ng-template>
             <ng-template
                 i18n
                 documentationPropertyName="postfix"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
-                [documentationPropertyValues]="postfixVariants"
+                [documentationPropertyDeprecated]="true"
+                [documentationPropertyValues]="prefixVariants"
                 [(documentationPropertyValue)]="postfix"
             >
-                A postfix symbol, like currency
+                A postfix symbol, like currency. Use
+                <code>tuiTextfieldPostfix</code>
+                instead
             </ng-template>
             <ng-template
                 i18n
@@ -258,6 +267,26 @@
                 [(documentationPropertyValue)]="decimal"
             >
                 Show/hide decimal
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiTextfieldPrefix"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="prefixVariants"
+                [(documentationPropertyValue)]="prefix"
+            >
+                Uneditable text before value
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiTextfieldPostfix"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="prefixVariants"
+                [(documentationPropertyValue)]="postfix"
+            >
+                Uneditable text after value
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>

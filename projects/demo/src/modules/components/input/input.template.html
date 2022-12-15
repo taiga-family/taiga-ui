@@ -233,12 +233,15 @@
                     [pseudoInvalid]="pseudoInvalid"
                     [pseudoFocus]="pseudoFocused"
                     [pseudoHover]="pseudoHovered"
+                    [readOnly]="readOnly"
                     [tuiTextfieldIcon]="icon"
                     [tuiTextfieldIconLeft]="iconLeft"
-                    [readOnly]="readOnly"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldCustomContent]="customContent"
                     [tuiTextfieldSize]="size"
+                    [tuiTextfieldPrefix]="prefix"
+                    [tuiTextfieldPostfix]="postfix"
+                    [tuiTextfieldFiller]="filler"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiDropdownAlign]="dropdownAlign"
                     [tuiDropdownDirection]="dropdownDirection"
@@ -305,6 +308,26 @@
                 Placeholder (use external
                 <code>&lt;input tuiTextfield/&gt;</code>
                 to set it)
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiTextfieldPrefix"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="prefixVariants"
+                [(documentationPropertyValue)]="prefix"
+            >
+                Uneditable text before value
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiTextfieldPostfix"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="prefixVariants"
+                [(documentationPropertyValue)]="postfix"
+            >
+                Uneditable text after value
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation [dropdown]="true"></inherited-documentation>

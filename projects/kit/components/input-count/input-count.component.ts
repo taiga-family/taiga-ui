@@ -75,10 +75,12 @@ export class TuiInputCountComponent
     @tuiDefaultProp()
     hideButtons = this.options.hideButtons;
 
+    /** @deprecated use `tuiTextfieldPrefix` from {@link TuiTextfieldControllerModule} instead */
     @Input()
     @tuiDefaultProp()
     prefix = ``;
 
+    /** @deprecated use `tuiTextfieldPostfix` from {@link TuiTextfieldControllerModule} instead */
     @Input()
     @tuiDefaultProp()
     postfix = this.options.postfix;
