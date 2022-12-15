@@ -1,0 +1,58 @@
+<tui-items-with-more
+    tuiGroup
+    [collapsed]="true"
+>
+    <ng-container *ngFor="let item of items; let index = index">
+        <tui-checkbox-block
+            *tuiItem
+            size="m"
+            class="item"
+            [hideCheckbox]="true"
+            [ngModel]="value[index]"
+            (ngModelChange)="onModelChange(index)"
+        >
+            {{ item }}
+        </tui-checkbox-block>
+    </ng-container>
+    <ng-template
+        tuiMore
+        let-lastIndex
+    >
+        <tui-hosted-dropdown
+            tuiDropdownAlign="right"
+            class="item"
+            [content]="dropdown"
+        >
+            <button
+                tuiButton
+                size="m"
+                appearance="whiteblock"
+                class="item"
+            >
+                More
+                <tui-badge
+                    class="tui-space_left-2"
+                    [value]="items.length - lastIndex - 1"
+                ></tui-badge>
+            </button>
+            <ng-template #dropdown>
+                <tui-data-list size="l">
+                    <ng-container *ngFor="let item of items; let index = index">
+                        <button
+                            *ngIf="index > lastIndex"
+                            tuiOption
+                            (click)="onModelChange(index)"
+                        >
+                            {{ item }}
+                            <tui-svg
+                                src="tuiIconCheckLarge"
+                                class="tui-space_left-2"
+                                [class._hidden]="!value[index]"
+                            ></tui-svg>
+                        </button>
+                    </ng-container>
+                </tui-data-list>
+            </ng-template>
+        </tui-hosted-dropdown>
+    </ng-template>
+</tui-items-with-more>

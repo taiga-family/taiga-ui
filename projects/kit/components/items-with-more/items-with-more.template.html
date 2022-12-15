@@ -1,0 +1,22 @@
+<ng-container *ngIf="items.changes | async"></ng-container>
+<ng-container *tuiLet="(lastVisibleIndex$ | async) || 0 as lastIndex">
+    <div
+        *ngFor="let item of items; let index = index"
+        class="t-item"
+        [class.t-item_hidden]="index > lastIndex && index !== directive.required"
+        [tuiProjectClass]="['_active']"
+    >
+        <ng-container *ngTemplateOutlet="item"></ng-container>
+    </div>
+    <span
+        *ngIf="more && lastIndex < items.length - 1"
+        class="t-item"
+        [class.t-item_hidden]="lastIndex >= items.length - 1"
+        [tuiProjectClass]="['_active']"
+    >
+        <ng-container
+            [ngTemplateOutlet]="more"
+            [ngTemplateOutletContext]="{$implicit: lastIndex}"
+        ></ng-container>
+    </span>
+</ng-container>

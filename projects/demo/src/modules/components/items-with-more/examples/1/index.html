@@ -1,0 +1,16 @@
+<tui-items-with-more [required]="required">
+    <ng-container *ngFor="let item of items">
+        <tui-tag
+            *tuiItem
+            size="m"
+            class="tui-space_right-1"
+            [value]="item"
+        ></tui-tag>
+    </ng-container>
+    <ng-template
+        tuiMore
+        let-index
+    >
+        and {{ getRemaining(index) }} more
+    </ng-template>
+</tui-items-with-more>
