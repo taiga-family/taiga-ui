@@ -27,9 +27,9 @@ describe(`InputNumber`, () => {
                     `/components/input-number/API?tuiMode=null&style.text-align=${align}&prefix=${readableFormatText}&postfix=${readableFormatText}`,
                 );
 
-                cy.get(`#demo-content`).matchImageSnapshot(
-                    `03-input-number-align-${align}`,
-                );
+                cy.get(`#demo-content`)
+                    .wait(WAIT_BEFORE_SCREENSHOT)
+                    .matchImageSnapshot(`03-input-number-align-${align}`);
             });
         }
     });
@@ -42,7 +42,9 @@ describe(`InputNumber`, () => {
                 .tuiScrollIntoView()
                 .as(`currency`);
 
-            cy.get(`@currency`).matchImageSnapshot(`03-input-number-currency`);
+            cy.get(`@currency`)
+                .wait(WAIT_BEFORE_SCREENSHOT)
+                .matchImageSnapshot(`03-input-number-currency`);
 
             for (const [index, currency] of [`dollar`, `eur`, `pounds`].entries()) {
                 cy.get(`@currency`)
@@ -52,9 +54,9 @@ describe(`InputNumber`, () => {
                     .type(`{selectall}{backspace}`)
                     .focused();
 
-                cy.get(`@currency`).matchImageSnapshot(
-                    `0${4 + index}-currency-${currency}`,
-                );
+                cy.get(`@currency`)
+                    .wait(WAIT_BEFORE_SCREENSHOT)
+                    .matchImageSnapshot(`0${4 + index}-currency-${currency}`);
             }
         });
     });
