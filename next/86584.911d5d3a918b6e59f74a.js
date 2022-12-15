@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[86584],{86584:n=>{n.exports=".item {\n    border-radius: inherit;\n    font-weight: normal;\n}\n\n._hidden {\n    visibility: hidden;\n}\n"}}]);
