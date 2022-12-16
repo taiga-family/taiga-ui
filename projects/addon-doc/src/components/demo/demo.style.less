@@ -33,6 +33,7 @@
     max-width: 100%;
     min-height: 6rem;
     width: 100%;
+    min-width: 10rem;
     background-color: var(--tui-base-01);
     overflow: hidden;
 
@@ -124,14 +125,15 @@
 }
 
 .t-resizer {
-    .clearbtn();
     .shadow(2);
     position: relative;
     width: 3.5rem;
     min-height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
     border-left: 1px solid var(--tui-base-03);
-    cursor: col-resize;
     outline: none;
     background: var(--tui-base-01);
     color: var(--tui-text-01);
@@ -142,17 +144,16 @@
         position: absolute;
         top: 0.75rem;
         left: 50%;
-        bottom: 0.75rem;
+        bottom: calc(50% + 1rem);
         width: 1px;
-        background: var(--tui-base-05);
-    }
-
-    &:before {
-        transform: translateX(0.125rem);
+        background: var(--tui-base-04);
+        box-shadow: -0.25rem 0 var(--tui-base-04);
+        transform: translate3d(0, 0, 0);
     }
 
     &:after {
-        transform: translateX(-0.1875rem);
+        bottom: 0.75rem;
+        top: calc(50% + 1rem);
     }
 
     :host-context(tui-root._mobile) & {

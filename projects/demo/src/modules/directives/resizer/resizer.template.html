@@ -1,0 +1,51 @@
+<tui-doc-page
+    i18n-header
+    header="Resizer"
+    package="CDK"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p i18n>Directive to resize container in multiple directions.</p>
+
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
+            <tui-notification class="tui-space_bottom-3">
+                If you need to react to the new size somehow, you can subscribe to
+                <code>(tuiSizeChange)</code>
+                event of type
+                <code>[x: number, y: number]</code>
+            </tui-notification>
+            <tui-resizer-example-1></tui-resizer-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>
+                    Import
+                    <code>TuiResizerModule</code>
+                    into a module where you want to use our directive
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Add to the template:</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleHtml"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

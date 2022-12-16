@@ -1,6 +1,5 @@
-import {isPlatformBrowser, Location} from '@angular/common';
+import {Location} from '@angular/common';
 import {
-    AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ContentChild,
@@ -10,22 +9,25 @@ import {
     Inject,
     Input,
     OnInit,
-    PLATFORM_ID,
-    Renderer2,
-    Self,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
+import {AbstractControl, FormGroup} from '@angular/forms';
 import {UrlSerializer, UrlTree} from '@angular/router';
-import {TUI_IS_MOBILE, tuiDebounce, TuiDestroyService, tuiPx} from '@taiga-ui/cdk';
+import {
+    TUI_IS_MOBILE,
+    tuiClamp,
+    TuiDestroyService,
+    tuiPure,
+    tuiPx,
+    TuiResizeableDirective,
+} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
-import {startWith, takeUntil} from 'rxjs/operators';
 
 import {TUI_DOC_DEMO_TEXTS} from '../../tokens/i18n';
 
-const MIN_COMPONENT_WIDTH = 104;
+const MIN_WIDTH = 160;
 
 @Component({
     selector: `tui-doc-demo`,
@@ -40,19 +42,15 @@ const MIN_COMPONENT_WIDTH = 104;
         },
     ],
 })
-export class TuiDocDemoComponent implements OnInit, AfterViewInit {
-    @ViewChild(`content`)
+export class TuiDocDemoComponent implements OnInit {
+    @ViewChild(TuiResizeableDirective, {static: true})
+    private readonly resizeable?: ElementRef<HTMLElement>;
+
+    @ViewChild(`content`, {static: true})
     private readonly content?: ElementRef<HTMLElement>;
 
-    @ViewChild(`wrapper`)
-    private readonly wrapper?: ElementRef<HTMLElement>;
-
-    @ViewChild(`resizerText`)
-    private readonly resizerText?: ElementRef<HTMLElement>;
-
-    private readonly isBrowser: boolean;
-    private initialX = 0;
-    private wrapperWidth = 0;
+    @ViewChild(`resizer`, {static: true})
+    private readonly resizer?: ElementRef<HTMLElement>;
 
     @Input()
     control: AbstractControl | null = null;
@@ -61,92 +59,44 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
     readonly template: TemplateRef<Record<string, unknown>> | null = null;
 
     testForm?: FormGroup;
-    updateOnVariants = [`change`, `blur`, `submit`];
-    updateOn: 'blur' | 'change' | 'submit' = `change`;
+    readonly updateOnVariants = [`change`, `blur`, `submit`] as const;
+    updateOn: 'blur' | 'change' | 'submit' = this.updateOnVariants[0];
     expanded = false;
     opaque = true;
-    modeControl = new FormControl();
-    mode: TuiBrightness | null = null;
+    mode: TuiBrightness | null = this.getUrlTree().queryParams.tuiMode;
+    sandboxWidth = parseInt(this.getUrlTree().queryParams.sandboxWidth, 10);
+
     readonly change$ = new Subject<void>();
     readonly items: readonly TuiBrightness[] = [`onLight`, `onDark`];
 
     constructor(
         @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
-        @Inject(Renderer2) private readonly renderer: Renderer2,
-        @Inject(PLATFORM_ID) platformId: Record<string, unknown>,
+        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(Location) private readonly locationRef: Location,
         @Inject(UrlSerializer) private readonly urlSerializer: UrlSerializer,
         @Inject(TUI_DOC_DEMO_TEXTS) readonly texts: [string, string, string],
-    ) {
-        this.isBrowser = isPlatformBrowser(platformId);
+    ) {}
 
-        const parsedMode = locationRef.path().match(/tuiMode=(onDark|onLight)/);
-
-        if (parsedMode !== null && parsedMode.length > 0) {
-            this.modeControl.setValue(parsedMode[1]);
-        }
-    }
-
-    @tuiDebounce(200)
     @HostListener(`window:resize`)
     onResize(): void {
-        this.setResizerTextContent();
+        this.updateWidth();
+        this.onMouseUp();
+    }
+
+    @HostListener(`document:mouseup.silent`)
+    onMouseUp(): void {
+        this.updateUrl(this.mode, this.sandboxWidth);
     }
 
     ngOnInit(): void {
         this.createForm();
+        this.updateWidth(this.sandboxWidth + this.delta);
     }
 
-    ngAfterViewInit(): void {
-        this.modeControl.valueChanges
-            .pipe(startWith(this.modeControl.value), takeUntil(this.destroy$))
-            .subscribe(mode => {
-                this.updateUrl(mode);
-
-                const wrapperWidth =
-                    parseInt(this.getUrlTree().queryParams.sandboxWidth, 10) +
-                    this.getPaddingOfWrapper() +
-                    this.getResizeButtonWidth();
-
-                if (!Number.isNaN(wrapperWidth)) {
-                    this.wrapperWidth = wrapperWidth;
-                    this.setWidthWrapper(tuiPx(wrapperWidth));
-                }
-
-                this.setResizerTextContent();
-
-                this.mode = mode;
-                this.change$.next();
-            });
-    }
-
-    setResizerTextContent(): void {
-        if (!this.content || !this.resizerText) {
-            return;
-        }
-
-        this.resizerText.nativeElement.textContent = (
-            this.content.nativeElement.offsetWidth - this.getPaddingOfWrapper()
-        ).toString();
-    }
-
-    onDragStart(event: MouseEvent): void {
-        event.preventDefault();
-        this.initialX = event.clientX;
-        this.wrapperWidth = this.wrapper ? this.wrapper.nativeElement.offsetWidth : 0;
-    }
-
-    onDragContinues(event: MouseEvent): void {
-        const deltaX = this.initialX - event.clientX;
-
-        this.resizeContent(deltaX);
-        this.setResizerTextContent();
-    }
-
-    onDragEnd(): void {
-        this.wrapperWidth = this.wrapper ? this.wrapper.nativeElement.offsetWidth : 0;
-        this.updateSandboxWidth();
+    onModeChange(mode: TuiBrightness | null): void {
+        this.updateUrl(mode, this.sandboxWidth);
+        this.mode = mode;
+        this.change$.next();
     }
 
     toggleDetails(): void {
@@ -158,73 +108,56 @@ export class TuiDocDemoComponent implements OnInit, AfterViewInit {
         this.createForm();
     }
 
-    private createForm(): void {
-        const {control, updateOn} = this;
-
-        if (!control) {
+    updateWidth(width: number = NaN): void {
+        if (!this.resizer || !this.resizeable || !this.content) {
             return;
         }
 
-        this.testForm = new FormGroup({testValue: control}, {updateOn});
+        const safe = width || this.resizeable.nativeElement.clientWidth;
+        const total = this.elementRef.nativeElement.clientWidth;
+        const clamped = Math.round(tuiClamp(safe, MIN_WIDTH, total)) - this.delta;
+        const validated = safe < total ? clamped : NaN;
+
+        this.resizer.nativeElement.textContent = String(clamped);
+        this.resizeable.nativeElement.style.width = validated ? tuiPx(safe) : ``;
+        this.sandboxWidth = validated;
     }
 
-    private resizeContent(delta: number): void {
-        this.setWidthWrapper(
-            tuiPx(Math.max(this.wrapperWidth - delta, MIN_COMPONENT_WIDTH)),
-        );
+    private get delta(): number {
+        return this.resizeable && this.content
+            ? this.resizeable.nativeElement.clientWidth -
+                  this.content.nativeElement.clientWidth
+            : 0;
     }
 
-    private setWidthWrapper(width: number | string): void {
-        if (!this.wrapper) {
-            return;
-        }
-
-        this.renderer.setStyle(this.wrapper.nativeElement, `width`, width);
-    }
-
-    private updateUrl(mode: string): void {
+    @tuiPure
+    private updateUrl(tuiMode: TuiBrightness | null, sandboxWidth: number): void {
         const urlTree = this.getUrlTree();
-        const modeParam = mode ?? urlTree.queryParams.tuiMode ? {tuiMode: mode} : {};
-        const sandboxWidth = parseInt(urlTree.queryParams.sandboxWidth, 10);
-        const resizeParam =
-            !Number.isNaN(sandboxWidth) && MIN_COMPONENT_WIDTH > sandboxWidth
-                ? {sandboxWidth}
-                : {};
+        const {queryParams} = urlTree;
+        const modeParam = tuiMode ? {tuiMode} : {};
+        const resizeParam = !Number.isNaN(sandboxWidth) ? {sandboxWidth} : {};
+
+        delete queryParams.sandboxWidth;
+        delete queryParams.tuiMode;
 
         urlTree.queryParams = {
-            ...urlTree.queryParams,
+            ...queryParams,
             ...modeParam,
             ...resizeParam,
         };
 
-        this.locationRef.go(String(urlTree));
+        this.locationRef.replaceState(String(urlTree));
+    }
+
+    private createForm(): void {
+        const {control, updateOn} = this;
+
+        if (control) {
+            this.testForm = new FormGroup({testValue: control}, {updateOn});
+        }
     }
 
     private getUrlTree(): UrlTree {
         return this.urlSerializer.parse(this.locationRef.path());
-    }
-
-    private getPaddingOfWrapper(): number {
-        const paddingLeft =
-            this.isBrowser && this.content
-                ? getComputedStyle(this.content.nativeElement).paddingLeft
-                : `0`;
-
-        return parseInt(paddingLeft || `0`, 10) * 2;
-    }
-
-    private getResizeButtonWidth(): number {
-        return this.resizerText?.nativeElement.parentElement?.offsetWidth ?? 0;
-    }
-
-    private updateSandboxWidth(): void {
-        const urlTree = this.getUrlTree();
-
-        urlTree.queryParams.sandboxWidth = parseInt(
-            this.resizerText?.nativeElement.textContent ?? `0`,
-            10,
-        );
-
-        this.locationRef.go(String(urlTree));
     }
 }

@@ -1045,6 +1045,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
+                title: `Resizer`,
+                keywords: `scale, drag, размер, ресайз`,
+                route: `/directives/resizer`,
+            },
+            {
+                section: $localize`Tools`,
                 title: `Swipe`,
                 keywords: `swipe, свайп`,
                 route: `/directives/swipe`,
