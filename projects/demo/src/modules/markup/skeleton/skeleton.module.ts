@@ -14,6 +14,7 @@ import {
     TuiToggleModule,
 } from '@taiga-ui/kit';
 
+import {StylesInfoModule} from '../../app/styles-info/styles-info.module';
 import {TuiSkeletonExample1} from './examples/1';
 import {TuiSkeletonExample2} from './examples/2';
 import {SkeletonComponent} from './skeleton.component';
@@ -23,6 +24,7 @@ import {SkeletonComponent} from './skeleton.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        StylesInfoModule,
         TuiModeModule,
         TuiInputTimeModule,
         TuiCheckboxLabeledModule,

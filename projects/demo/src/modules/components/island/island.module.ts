@@ -17,6 +17,7 @@ import {
     TuiToggleModule,
 } from '@taiga-ui/kit';
 
+import {StylesInfoModule} from '../../app/styles-info/styles-info.module';
 import {TuiIslandExample1} from './examples/1';
 import {TuiIslandExample2} from './examples/2';
 import {TuiIslandExample3} from './examples/3';
@@ -37,6 +38,7 @@ import {ExampleTuiIslandComponent} from './island.component';
         TuiTextfieldControllerModule,
         TuiAddonDocModule,
         TuiNotificationModule,
+        StylesInfoModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiIslandComponent)),
     ],
     declarations: [

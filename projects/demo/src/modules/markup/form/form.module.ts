@@ -34,6 +34,7 @@ import {
     TuiTextAreaModule,
 } from '@taiga-ui/kit';
 
+import {StylesInfoModule} from '../../app/styles-info/styles-info.module';
 import {TuiExample} from './example';
 import {FormComponent} from './form.component';
 
@@ -42,6 +43,7 @@ import {FormComponent} from './form.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        StylesInfoModule,
         TuiMoneyModule,
         TuiStepperModule,
         TuiInputDateModule,
