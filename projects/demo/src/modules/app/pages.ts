@@ -376,6 +376,78 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
+        title: `Editor`,
+        subPages: [
+            {
+                section: $localize`Components`,
+                title: `Getting started`,
+                keywords: `wysiwyg, редактор, текст, html, rich, text`,
+                route: `/components/editor`,
+            },
+            {
+                section: $localize`Components`,
+                title: `Custom tool`,
+                keywords: `custom, tool, wysiwyg, редактор, текст, html, rich, text`,
+                route: `/components/editor-custom-tool`,
+            },
+            {
+                section: $localize`Components`,
+                title: `Resizable images`,
+                keywords: `resizable, image, wysiwyg, редактор, текст, html, rich, text`,
+                route: `/components/editor-resizable-images`,
+            },
+            {
+                section: $localize`Components`,
+                title: `Preview images`,
+                keywords: `preview, images, wysiwyg, редактор, текст, html, rich, text`,
+                route: `/components/editor-preview-images`,
+            },
+            {
+                section: $localize`Components`,
+                title: `Processing content`,
+                keywords: `processing, content, wysiwyg, редактор, текст, html, rich, text`,
+                route: `/components/editor-processing-content`,
+            },
+            {
+                section: $localize`Components`,
+                title: `Draggable groups`,
+                keywords: `draggable, groups, wysiwyg, редактор, текст, html, rich, text`,
+                route: `/components/editor-draggable-groups`,
+            },
+            {
+                section: $localize`Components`,
+                title: `Nested groups`,
+                keywords: `nested, groups, wysiwyg, редактор, текст, html, rich, text`,
+                route: `/components/editor-nested-groups`,
+            },
+            {
+                section: $localize`Components`,
+                title: `Uploading images`,
+                keywords: `upload, images, wysiwyg, редактор, текст, html, rich, text`,
+                route: `/components/editor-uploading-images`,
+            },
+            {
+                section: $localize`Components`,
+                title: `Anchors`,
+                keywords: `anchors, wysiwyg, редактор, текст, html, rich, text`,
+                route: `/components/editor-anchors`,
+            },
+            {
+                section: $localize`Components`,
+                title: `Upload files`,
+                keywords: `upload, files, wysiwyg, редактор, текст, html, rich, text`,
+                route: `/components/editor-upload-files`,
+            },
+            {
+                section: $localize`Components`,
+                title: `Markdown`,
+                keywords: `markdown, wysiwyg, редактор, текст, html, rich, text`,
+                route: `/components/editor-markdown`,
+            },
+        ],
+    },
+    {
+        section: $localize`Components`,
         title: `Error`,
         keywords: `error, ошибка`,
         route: `/components/error`,
@@ -581,12 +653,6 @@ export const pages: TuiDocPages = [
                 title: `TextArea`,
                 keywords: `поле, инпут, форма, ввод, text-area, area`,
                 route: `/components/text-area`,
-            },
-            {
-                section: $localize`Components`,
-                title: `Editor`,
-                keywords: `wysiwyg, редактор, текст, html, rich, text, input, инпут, ввод`,
-                route: `/components/editor`,
             },
             {
                 section: $localize`Components`,

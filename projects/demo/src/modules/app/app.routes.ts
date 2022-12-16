@@ -951,14 +951,125 @@ export const ROUTES = [
             title: `Tree`,
         },
     },
+    // EDITOR
     {
         path: `components/editor`,
         loadChildren: async () =>
-            (await import(`../components/editor/editor.module`)).ExampleTuiEditorModule,
+            (await import(`../components/editor/getting-started/editor.module`))
+                .ExampleTuiEditorModule,
         data: {
-            title: `Editor`,
+            title: `Editor[Getting started]`,
         },
     },
+    {
+        path: `components/editor-custom-tool`,
+        loadChildren: async () =>
+            (await import(`../components/editor/custom-tool/editor-custom-tool.module`))
+                .ExampleTuiEditorCustomToolModule,
+        data: {
+            title: `Editor[Custom tool]`,
+        },
+    },
+    {
+        path: `components/editor-resizable-images`,
+        loadChildren: async () =>
+            (
+                await import(
+                    `../components/editor/resizable-images/editor-resizable-images.module`
+                )
+            ).ExampleTuiEditorResizableImagesToolModule,
+        data: {
+            title: `Editor[Resizable images]`,
+        },
+    },
+    {
+        path: `components/editor-preview-images`,
+        loadChildren: async () =>
+            (
+                await import(
+                    `../components/editor/preview-images/editor-preview-images.module`
+                )
+            ).ExampleTuiEditorPreviewImagesToolModule,
+        data: {
+            title: `Editor[Preview images]`,
+        },
+    },
+    {
+        path: `components/editor-processing-content`,
+        loadChildren: async () =>
+            (
+                await import(
+                    `../components/editor/processing-content/editor-processing-content.module`
+                )
+            ).ExampleTuiEditorProcessingContentModule,
+        data: {
+            title: `Editor[Processing content]`,
+        },
+    },
+    {
+        path: `components/editor-draggable-groups`,
+        loadChildren: async () =>
+            (
+                await import(
+                    `../components/editor/draggable-groups/editor-draggable-groups.module`
+                )
+            ).ExampleTuiEditorDraggableGroupsModule,
+        data: {
+            title: `Editor[Draggable groups]`,
+        },
+    },
+    {
+        path: `components/editor-nested-groups`,
+        loadChildren: async () =>
+            (
+                await import(
+                    `../components/editor/nested-groups/editor-nested-groups.module`
+                )
+            ).ExampleTuiEditorNestedGroupsModule,
+        data: {
+            title: `Editor[Nested groups]`,
+        },
+    },
+    {
+        path: `components/editor-uploading-images`,
+        loadChildren: async () =>
+            (
+                await import(
+                    `../components/editor/uploading-images/editor-uploading-images.module`
+                )
+            ).ExampleTuiEditorUploadingImagesModule,
+        data: {
+            title: `Editor[Uploading images]`,
+        },
+    },
+    {
+        path: `components/editor-anchors`,
+        loadChildren: async () =>
+            (await import(`../components/editor/anchors/editor-anchors.module`))
+                .ExampleTuiEditorAnchorsModule,
+        data: {
+            title: `Editor[Anchors]`,
+        },
+    },
+    {
+        path: `components/editor-upload-files`,
+        loadChildren: async () =>
+            (await import(`../components/editor/upload-files/editor-upload-files.module`))
+                .ExampleTuiEditorUploadFilesModule,
+        data: {
+            title: `Editor[Upload files]`,
+        },
+    },
+    {
+        path: `components/editor-markdown`,
+        loadChildren: async () =>
+            (await import(`../components/editor/markdown/editor-markdown.module`))
+                .ExampleTuiEditorMarkdownModule,
+        data: {
+            title: `Editor[Markdown]`,
+        },
+    },
+    // FILTER
     {
         path: `components/filter`,
         loadChildren: async () =>
