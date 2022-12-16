@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiInputComponent} from '@taiga-ui/kit';
@@ -11,6 +12,8 @@ import {TuiInputComponent} from '@taiga-ui/kit';
     encapsulation,
 })
 export class TuiActiveZoneExample1 {
+    readonly control = new FormControl();
+
     childActive = false;
 
     parentActive = false;
