@@ -63,7 +63,7 @@ export class TuiDocDemoComponent implements OnInit {
     updateOn: 'blur' | 'change' | 'submit' = this.updateOnVariants[0];
     expanded = false;
     opaque = true;
-    mode: TuiBrightness | null = this.getUrlTree().queryParams.tuiMode;
+    mode: TuiBrightness | null = this.getUrlTree().queryParams.tuiMode || null;
     sandboxWidth = parseInt(this.getUrlTree().queryParams.sandboxWidth, 10);
 
     readonly change$ = new Subject<void>();
