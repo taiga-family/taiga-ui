@@ -7,9 +7,13 @@ import {
     TuiButtonModule,
     TuiDropdownModule,
     TuiHintModule,
+    TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiInputPhoneInternationalModule} from '@taiga-ui/kit';
+import {
+    TuiInputPhoneInternationalModule,
+    TuiSortCountriesPipeModule,
+} from '@taiga-ui/kit';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputPhoneExample1} from './examples/1';
@@ -28,6 +32,8 @@ import {ExampleTuiInputPhoneInternationalComponent} from './input-phone-internat
         TuiHintModule,
         TuiAddonDocModule,
         TuiButtonModule,
+        TuiSortCountriesPipeModule,
+        TuiNotificationModule,
         RouterModule.forChild(
             tuiGenerateRoutes(ExampleTuiInputPhoneInternationalComponent),
         ),
