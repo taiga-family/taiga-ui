@@ -87,7 +87,7 @@ export class TuiResizerDirective {
     }
 
     onMove(x: number, y: number): void {
-        if (isNaN(this.x)) {
+        if (Number.isNaN(this.x)) {
             return;
         }
 
