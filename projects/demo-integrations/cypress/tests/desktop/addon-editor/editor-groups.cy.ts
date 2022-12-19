@@ -4,9 +4,8 @@ import {
 } from '@demo-integrations/support/properties/shared.entities';
 
 describe(`Examples with groups in editor`, () => {
-    beforeEach(() => cy.tuiVisit(`components/editor-nested-groups`));
-
     it(`Simple nested group`, () => {
+        cy.tuiVisit(`components/editor-nested-groups`);
         makeWrapper(`#nested-groups`);
 
         cy.get(`@wrapper`).should(`be.visible`).click(); // clear hints
@@ -17,6 +16,7 @@ describe(`Examples with groups in editor`, () => {
     });
 
     it(`Draggable groups`, () => {
+        cy.tuiVisit(`components/editor-draggable-groups`);
         makeWrapper(`#draggable-groups`);
 
         cy.get(`@editor`)
