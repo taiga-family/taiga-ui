@@ -173,6 +173,8 @@ export class TuiInputPhoneInternationalComponent
     getFlagPath(code: TuiCountryIsoCode): string {
         switch (code) {
             case TuiCountryIsoCode.BL:
+            case TuiCountryIsoCode.BQ:
+            case TuiCountryIsoCode.CW:
             case TuiCountryIsoCode.GF:
             case TuiCountryIsoCode.GP:
             case TuiCountryIsoCode.MF:
@@ -180,6 +182,8 @@ export class TuiInputPhoneInternationalComponent
             case TuiCountryIsoCode.RE:
             case TuiCountryIsoCode.YT:
                 return `${this.staticPath}${TuiCountryIsoCode.FR}.png`;
+            case TuiCountryIsoCode.SX:
+                return `${this.staticPath}${TuiCountryIsoCode.NL}.png`;
             default:
                 return `${this.staticPath}${code}.png`;
         }

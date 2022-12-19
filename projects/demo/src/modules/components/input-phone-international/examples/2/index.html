@@ -2,7 +2,7 @@
     <tui-input-phone-international
         formControlName="testValue"
         class="input"
-        [countries]="countries"
+        [countries]="(countries | tuiSortCountries | async) || []"
         [(countryIsoCode)]="countryIsoCode"
     >
         Type your number
