@@ -3,6 +3,9 @@ import {tuiDragAndDropFrom, TuiDragStage} from '@taiga-ui/cdk/observables';
 import {Observable} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
 
+/**
+ * @deprecated not used anywhere
+ */
 @Directive({
     selector: `[tuiDragStart], [tuiDragContinues], [tuiDragEnd]`,
 })

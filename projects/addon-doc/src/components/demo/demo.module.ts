@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiDragModule} from '@taiga-ui/cdk';
+import {TuiResizerModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
@@ -31,7 +31,6 @@ import {TuiDocDemoComponent} from './demo.component';
         FormsModule,
         RouterModule,
         TuiLinkModule,
-        TuiDragModule,
         TuiButtonModule,
         TuiSelectModule,
         TuiExpandModule,
@@ -45,6 +44,7 @@ import {TuiDocDemoComponent} from './demo.component';
         TuiDataListModule,
         TuiTextfieldControllerModule,
         TuiHintModule,
+        TuiResizerModule,
     ],
     declarations: [TuiDocDemoComponent],
     exports: [TuiDocDemoComponent],

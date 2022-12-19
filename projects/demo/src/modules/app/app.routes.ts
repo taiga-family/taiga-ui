@@ -1257,6 +1257,15 @@ export const ROUTES = [
         },
     },
     {
+        path: `directives/resizer`,
+        loadChildren: async () =>
+            (await import(`../directives/resizer/resizer.module`))
+                .ExampleTuiResizerModule,
+        data: {
+            title: `Resizer`,
+        },
+    },
+    {
         path: `directives/swipe`,
         loadChildren: async () =>
             (await import(`../directives/swipe/swipe.module`)).ExampleTuiSwipeModule,

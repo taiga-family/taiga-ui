@@ -18,7 +18,8 @@
             class="t-mode"
             [tuiTextfieldCleaner]="true"
             [tuiHintContent]="tooltip"
-            [formControl]="modeControl"
+            [ngModel]="mode"
+            (ngModelChange)="onModeChange($event)"
         >
             tuiMode
             <tui-data-list-wrapper
@@ -44,7 +45,8 @@
                 class="tui-group__auto-width-item"
                 [item]="null"
                 [hideRadio]="true"
-                [formControl]="modeControl"
+                [ngModel]="mode"
+                (ngModelChange)="onModeChange($event)"
             >
                 null
             </tui-radio-block>
@@ -54,7 +56,8 @@
                 nativeId="form"
                 class="tui-group__auto-width-item"
                 [hideRadio]="true"
-                [formControl]="modeControl"
+                [ngModel]="mode"
+                (ngModelChange)="onModeChange($event)"
             >
                 onDark
             </tui-radio-block>
@@ -64,7 +67,8 @@
                 nativeId="form"
                 class="tui-group__auto-width-item"
                 [hideRadio]="true"
-                [formControl]="modeControl"
+                [ngModel]="mode"
+                (ngModelChange)="onModeChange($event)"
             >
                 onLight
             </tui-radio-block>
@@ -79,97 +83,92 @@
     </tui-checkbox-labeled>
 </div>
 <div
-    #wrapper
+    tuiResizeable
     class="t-wrapper"
-    [class.t-wrapper_dark]="modeControl.value === 'onDark'"
-    [class.t-wrapper_gray]="modeControl.value === 'onLight'"
+    [class.t-wrapper_dark]="mode === 'onDark'"
+    [class.t-wrapper_gray]="mode === 'onLight'"
     [class.t-wrapper_transparent]="!opaque"
 >
     <div
-        #content
         id="demo-content"
         class="t-content"
     >
-        <form
-            *ngIf="testForm"
-            class="t-form"
-            [formGroup]="testForm"
-        >
-            <div class="t-input-wrapper">
-                <ng-container [ngTemplateOutlet]="template"></ng-container>
-            </div>
-            <button
-                tuiButton
-                type="button"
-                size="s"
-                class="t-button"
-                [iconRight]="icon"
-                (click)="toggleDetails()"
+        <div #content>
+            <form
+                *ngIf="testForm"
+                class="t-form"
+                [formGroup]="testForm"
             >
-                {{ texts[2] }}
-            </button>
-            <ng-template #icon>
-                <tui-svg
-                    src="tuiIconChevronDown"
-                    class="t-icon"
-                    [class.t-icon_rotated]="expanded"
-                ></tui-svg>
-            </ng-template>
-            <tui-expand
-                class="t-expand"
-                [expanded]="expanded"
-            >
-                <ng-template tuiExpandContent>
-                    <pre class="t-value">Form data: {{ testForm.value | json }}</pre>
-                    <div
-                        tuiGroup
-                        class="t-form-controls"
-                    >
-                        <tui-select
-                            tuiTextfieldSize="s"
-                            class="t-select"
-                            [ngModel]="updateOn"
-                            [ngModelOptions]="{standalone: true}"
-                            (ngModelChange)="updateOnChange($event)"
-                        >
-                            updateOn
-                            <tui-data-list-wrapper
-                                *tuiDataList
-                                [items]="updateOnVariants"
-                            ></tui-data-list-wrapper>
-                        </tui-select>
-                        <button
-                            tuiButton
-                            type="reset"
-                            size="s"
-                            class="tui-group__auto-width-item"
-                        >
-                            Reset
-                        </button>
-                        <button
-                            tuiButton
-                            type="submit"
-                            size="s"
-                            class="tui-group__auto-width-item"
-                        >
-                            Submit
-                        </button>
-                    </div>
+                <div class="t-input-wrapper">
+                    <ng-container [ngTemplateOutlet]="template"></ng-container>
+                </div>
+                <button
+                    tuiButton
+                    type="button"
+                    size="s"
+                    class="t-button"
+                    [iconRight]="icon"
+                    (click)="toggleDetails()"
+                >
+                    {{ texts[2] }}
+                </button>
+                <ng-template #icon>
+                    <tui-svg
+                        src="tuiIconChevronDown"
+                        class="t-icon"
+                        [class.t-icon_rotated]="expanded"
+                    ></tui-svg>
                 </ng-template>
-            </tui-expand>
-        </form>
-        <ng-content></ng-content>
+                <tui-expand
+                    class="t-expand"
+                    [expanded]="expanded"
+                >
+                    <ng-template tuiExpandContent>
+                        <pre class="t-value">Form data: {{ testForm.value | json }}</pre>
+                        <div
+                            tuiGroup
+                            class="t-form-controls"
+                        >
+                            <tui-select
+                                tuiTextfieldSize="s"
+                                class="t-select"
+                                [ngModel]="updateOn"
+                                [ngModelOptions]="{standalone: true}"
+                                (ngModelChange)="updateOnChange($event)"
+                            >
+                                updateOn
+                                <tui-data-list-wrapper
+                                    *tuiDataList
+                                    [items]="updateOnVariants"
+                                ></tui-data-list-wrapper>
+                            </tui-select>
+                            <button
+                                tuiButton
+                                type="reset"
+                                size="s"
+                                class="tui-group__auto-width-item"
+                            >
+                                Reset
+                            </button>
+                            <button
+                                tuiButton
+                                type="submit"
+                                size="s"
+                                class="tui-group__auto-width-item"
+                            >
+                                Submit
+                            </button>
+                        </div>
+                    </ng-template>
+                </tui-expand>
+            </form>
+            <ng-content></ng-content>
+        </div>
     </div>
-    <button
-        tabindex="-1"
+    <div
+        #resizer
         class="t-resizer"
-        (tuiDragStart)="onDragStart($event)"
-        (tuiDragContinues)="onDragContinues($event)"
-        (tuiDragEnd)="onDragEnd()"
-    >
-        <span
-            #resizerText
-            class="t-resizer-text"
-        ></span>
-    </button>
+        [tuiResizer]="[1, 0]"
+        (tuiSizeChange)="updateWidth($event[0])"
+    ></div>
 </div>
