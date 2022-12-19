@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.73.0](https://github.com/tinkoff/taiga-ui/compare/v2.72.0...v2.73.0) (2022-12-19)
+
+### Features
+
+- **cdk:** ScrollService support window ([#3238](https://github.com/tinkoff/taiga-ui/issues/3238))
+  ([ed6eb53](https://github.com/tinkoff/taiga-ui/commit/ed6eb53de0a8522223803461afe339cb2e5095d3))
+
 ## [2.72.0](https://github.com/tinkoff/taiga-ui/compare/v2.71.0...v2.72.0) (2022-12-12)
 
 ### Bug Fixes
