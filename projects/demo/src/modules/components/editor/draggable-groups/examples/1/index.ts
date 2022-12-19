@@ -1,6 +1,7 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 
@@ -29,7 +30,7 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
             ],
         },
     ],
-    encapsulation: ViewEncapsulation.None,
+    encapsulation,
     changeDetection,
 })
 export class TuiEditorDraggableGroupExample1 {

@@ -1,6 +1,7 @@
-import {Component, forwardRef, ViewEncapsulation} from '@angular/core';
+import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     defaultEditorExtensions,
     defaultEditorTools,
@@ -15,7 +16,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../../abstract/inherited-documentation/ab
     selector: `example-tui-editor`,
     templateUrl: `./editor.template.html`,
     styleUrls: [`./editor.styles.less`],
-    encapsulation: ViewEncapsulation.None,
+    encapsulation,
     changeDetection,
     providers: [
         {

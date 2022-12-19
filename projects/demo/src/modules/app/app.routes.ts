@@ -958,7 +958,7 @@ export const ROUTES = [
             (await import(`../components/editor/getting-started/editor.module`))
                 .ExampleTuiEditorModule,
         data: {
-            title: `Editor[Getting started]`,
+            title: `Editor  — Getting started`,
         },
     },
     {
@@ -967,7 +967,7 @@ export const ROUTES = [
             (await import(`../components/editor/custom-tool/editor-custom-tool.module`))
                 .ExampleTuiEditorCustomToolModule,
         data: {
-            title: `Editor[Custom tool]`,
+            title: `Editor — Custom tool`,
         },
     },
     {
@@ -979,7 +979,7 @@ export const ROUTES = [
                 )
             ).ExampleTuiEditorResizableImagesToolModule,
         data: {
-            title: `Editor[Resizable images]`,
+            title: `Editor  — Resizable images`,
         },
     },
     {
@@ -991,7 +991,7 @@ export const ROUTES = [
                 )
             ).ExampleTuiEditorPreviewImagesToolModule,
         data: {
-            title: `Editor[Preview images]`,
+            title: `Editor  — Preview images`,
         },
     },
     {
@@ -1003,7 +1003,7 @@ export const ROUTES = [
                 )
             ).ExampleTuiEditorProcessingContentModule,
         data: {
-            title: `Editor[Processing content]`,
+            title: `Editor — Processing content`,
         },
     },
     {
@@ -1015,7 +1015,7 @@ export const ROUTES = [
                 )
             ).ExampleTuiEditorDraggableGroupsModule,
         data: {
-            title: `Editor[Draggable groups]`,
+            title: `Editor — Draggable groups`,
         },
     },
     {
@@ -1027,7 +1027,7 @@ export const ROUTES = [
                 )
             ).ExampleTuiEditorNestedGroupsModule,
         data: {
-            title: `Editor[Nested groups]`,
+            title: `Editor — Nested groups`,
         },
     },
     {
@@ -1039,7 +1039,7 @@ export const ROUTES = [
                 )
             ).ExampleTuiEditorUploadingImagesModule,
         data: {
-            title: `Editor[Uploading images]`,
+            title: `Editor — Uploading images`,
         },
     },
     {
@@ -1048,7 +1048,7 @@ export const ROUTES = [
             (await import(`../components/editor/anchors/editor-anchors.module`))
                 .ExampleTuiEditorAnchorsModule,
         data: {
-            title: `Editor[Anchors]`,
+            title: `Editor — Anchors`,
         },
     },
     {
@@ -1057,7 +1057,7 @@ export const ROUTES = [
             (await import(`../components/editor/upload-files/editor-upload-files.module`))
                 .ExampleTuiEditorUploadFilesModule,
         data: {
-            title: `Editor[Upload files]`,
+            title: `Editor — Upload files`,
         },
     },
     {
@@ -1066,7 +1066,7 @@ export const ROUTES = [
             (await import(`../components/editor/markdown/editor-markdown.module`))
                 .ExampleTuiEditorMarkdownModule,
         data: {
-            title: `Editor[Markdown]`,
+            title: `Editor — Markdown`,
         },
     },
     // FILTER
