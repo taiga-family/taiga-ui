@@ -15,36 +15,42 @@ describe(`Demo`, () => {
         it(path, () => {
             cy.tuiVisit(path, {hideScrollbar: !isScrollbarPage(path)});
 
-            if (isInputNumberPage(path)) {
-                cy.wait(WAIT_BEFORE_SCREENSHOT);
-            } else if (isTilesPage(path)) {
-                cy.wait(10_000);
-            }
-
-            cy.get(`tui-doc-example`).each((example, index) => {
-                cy.wrap(example)
-                    .find(`.t-example`)
-                    .findByAutomationId(EXAMPLE_ID)
-                    .tuiScrollIntoView()
-                    .as(`example`);
-
-                if (isScrollbarPage(path)) {
-                    cy.get(`.t-thumb`, {log: false})
-                        .wait(WAIT_BEFORE_SCREENSHOT)
-                        .should(`be.visible`)
-                        .then(() =>
-                            Cypress.log({
-                                name: `wait rendering scrollbar for prevent flaky`,
-                            }),
-                        );
+            cy.get(`body`).then($body => {
+                if (isInputNumberPage(path)) {
+                    cy.wait(WAIT_BEFORE_SCREENSHOT);
+                } else if (isTilesPage(path)) {
+                    cy.wait(10_000);
                 }
 
-                return tuiComponentsExcluded(path, index + 1)
-                    ? cy.get(`@example`)
-                    : cy
-                          .get(`@example`)
-                          .wait(Cypress.env(`waitBeforeScreenshotComponents`))
-                          .matchImageSnapshot(`${path}/${index + 1}`);
+                if ($body.find(`tui-doc-example`).length < 1) {
+                    return;
+                }
+
+                cy.get(`tui-doc-example`).each((example, index) => {
+                    cy.wrap(example)
+                        .find(`.t-example`)
+                        .findByAutomationId(EXAMPLE_ID)
+                        .tuiScrollIntoView()
+                        .as(`example`);
+
+                    if (isScrollbarPage(path)) {
+                        cy.get(`.t-thumb`, {log: false})
+                            .wait(WAIT_BEFORE_SCREENSHOT)
+                            .should(`be.visible`)
+                            .then(() =>
+                                Cypress.log({
+                                    name: `wait rendering scrollbar for prevent flaky`,
+                                }),
+                            );
+                    }
+
+                    return tuiComponentsExcluded(path, index + 1)
+                        ? cy.get(`@example`)
+                        : cy
+                              .get(`@example`)
+                              .wait(Cypress.env(`waitBeforeScreenshotComponents`))
+                              .matchImageSnapshot(`${path}/${index + 1}`);
+                });
             });
         });
     }

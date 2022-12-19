@@ -2,7 +2,7 @@ import {WAIT_BEFORE_SCREENSHOT} from '@demo-integrations/support/properties/shar
 
 describe(`Editor's anchors`, () => {
     beforeEach(() => {
-        cy.viewport(1280, 500).tuiVisit(`components/editor`);
+        cy.viewport(1280, 500).tuiVisit(`editor/anchors`);
 
         cy.get(`tui-doc-example[heading="Anchors"]`).tuiScrollIntoView().as(`wrapper`);
 

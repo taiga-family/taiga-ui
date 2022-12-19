@@ -1,13 +1,11 @@
 import {
-    EDITOR_PAGE_URL,
     PROSE_MIRROR_EDITOR_SELECTOR,
     WAIT_BEFORE_SCREENSHOT,
 } from '@demo-integrations/support/properties/shared.entities';
 
 describe(`Examples with groups in editor`, () => {
-    beforeEach(() => cy.tuiVisit(EDITOR_PAGE_URL));
-
     it(`Simple nested group`, () => {
+        cy.tuiVisit(`editor/nested-groups`);
         makeWrapper(`#nested-groups`);
 
         cy.get(`@wrapper`).should(`be.visible`).click(); // clear hints
@@ -18,6 +16,7 @@ describe(`Examples with groups in editor`, () => {
     });
 
     it(`Draggable groups`, () => {
+        cy.tuiVisit(`editor/draggable-groups`);
         makeWrapper(`#draggable-groups`);
 
         cy.get(`@editor`)

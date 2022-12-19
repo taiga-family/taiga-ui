@@ -4,7 +4,6 @@ import {
 } from '@demo-integrations/support/editor/helpers';
 import {
     DEFAULT_TIMEOUT_BEFORE_ACTION,
-    EDITOR_PAGE_URL,
     PROSE_MIRROR_EDITOR_SELECTOR,
     WAIT_BEFORE_SCREENSHOT,
 } from '@demo-integrations/support/properties/shared.entities';
@@ -48,9 +47,8 @@ describe(`Editor's toolbar`, () => {
             .matchImageSnapshot(`1-1-tui-palette-not-exist`);
     });
 
-    // TODO: Figure out scroll issue
-    xit(`has the possibility to add custom tool`, () => {
-        cy.tuiVisit(EDITOR_PAGE_URL);
+    it(`has the possibility to add custom tool`, () => {
+        cy.tuiVisit(`editor/custom-tool`);
 
         cy.get(`#custom-tool`)
             .findByAutomationId(`tui-doc-example`)
@@ -233,7 +231,7 @@ describe(`Editor's toolbar`, () => {
         });
 
         it(`works with custom tools`, () => {
-            cy.tuiVisit(EDITOR_PAGE_URL);
+            cy.tuiVisit(`editor/custom-tool`);
 
             cy.get(`#custom-tool`)
                 .findByAutomationId(`tui-doc-example`)

@@ -584,12 +584,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Components`,
-                title: `Editor`,
-                keywords: `wysiwyg, редактор, текст, html, rich, text, input, инпут, ввод`,
-                route: `/components/editor`,
-            },
-            {
-                section: $localize`Components`,
                 title: `InputFiles`,
                 keywords: `input-files, files, file, файлы`,
                 route: `/components/input-files`,
@@ -885,6 +879,73 @@ export const pages: TuiDocPages = [
         title: `Tree`,
         keywords: `tree, view, multi, recursive, folders, рекурсия, дерево, папки`,
         route: `/components/tree`,
+    },
+    // Editor
+    {
+        section: $localize`Editor`,
+        title: `Getting started`,
+        keywords: `editor, wysiwyg, редактор, текст, html, rich, text`,
+        route: `/editor/getting-started`,
+    },
+    {
+        section: $localize`Editor`,
+        title: `Custom tool`,
+        keywords: `editor, custom, tool, wysiwyg, редактор, текст, html, rich, text`,
+        route: `/editor/custom-tool`,
+    },
+    {
+        section: $localize`Editor`,
+        title: `Resizable images`,
+        keywords: `editor, resizable, image, wysiwyg, редактор, текст, html, rich, text`,
+        route: `/editor/resizable-images`,
+    },
+    {
+        section: $localize`Editor`,
+        title: `Preview images`,
+        keywords: `editor, preview, images, wysiwyg, редактор, текст, html, rich, text`,
+        route: `/editor/preview-images`,
+    },
+    {
+        section: $localize`Editor`,
+        title: `Processing content`,
+        keywords: `editor, processing, content, wysiwyg, редактор, текст, html, rich, text`,
+        route: `/editor/processing-content`,
+    },
+    {
+        section: $localize`Editor`,
+        title: `Draggable groups`,
+        keywords: `editor, draggable, groups, wysiwyg, редактор, текст, html, rich, text`,
+        route: `/editor/draggable-groups`,
+    },
+    {
+        section: $localize`Editor`,
+        title: `Nested groups`,
+        keywords: `editor, nested, groups, wysiwyg, редактор, текст, html, rich, text`,
+        route: `/editor/nested-groups`,
+    },
+    {
+        section: $localize`Editor`,
+        title: `Uploading images`,
+        keywords: `editor, upload, images, wysiwyg, редактор, текст, html, rich, text`,
+        route: `/editor/uploading-images`,
+    },
+    {
+        section: $localize`Editor`,
+        title: `Anchors`,
+        keywords: `editor, anchors, wysiwyg, редактор, текст, html, rich, text`,
+        route: `/editor/anchors`,
+    },
+    {
+        section: $localize`Editor`,
+        title: `Upload files`,
+        keywords: `editor, upload, files, wysiwyg, редактор, текст, html, rich, text`,
+        route: `/editor/upload-files`,
+    },
+    {
+        section: $localize`Editor`,
+        title: `Markdown`,
+        keywords: `editor, markdown, wysiwyg, редактор, текст, html, rich, text`,
+        route: `/editor/markdown`,
     },
     // Navigation
     {

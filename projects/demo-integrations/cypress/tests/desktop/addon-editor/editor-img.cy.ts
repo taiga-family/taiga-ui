@@ -3,10 +3,7 @@ import {
     tuiVisitEditorApiPage,
 } from '@demo-integrations/support/editor/helpers';
 import {HTML_BASE64_IMG} from '@demo-integrations/support/editor/html';
-import {
-    EDITOR_PAGE_URL,
-    WAIT_BEFORE_SCREENSHOT,
-} from '@demo-integrations/support/properties/shared.entities';
+import {WAIT_BEFORE_SCREENSHOT} from '@demo-integrations/support/properties/shared.entities';
 
 describe(`Examples images`, () => {
     it(`base64`, () => {
@@ -18,7 +15,7 @@ describe(`Examples images`, () => {
     });
 
     describe(`Preview`, () => {
-        beforeEach(() => cy.viewport(1650, 900).tuiVisit(EDITOR_PAGE_URL));
+        beforeEach(() => cy.viewport(1650, 900).tuiVisit(`editor/preview-images`));
 
         it(`preview display of images`, () => {
             cy.get(`#preview-image`).findByAutomationId(`tui-doc-example`).as(`wrapper`);
