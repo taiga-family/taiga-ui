@@ -29,8 +29,8 @@ import {TuiVersionMeta} from './version-manager/versions.constants';
     templateUrl: `./app.template.html`,
     styleUrls: [`./app.style.less`],
     providers: [
-        TuiDestroyService,
         TuiResizeService,
+        TuiDestroyService,
         DEMO_PAGE_LOADED_PROVIDER,
         TUI_VERSION_MANAGER_PROVIDERS,
     ],

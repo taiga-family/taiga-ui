@@ -1,7 +1,7 @@
 import {Directive, ElementRef, HostBinding, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
-import {tuiPure, TuiResizeService} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiPure, TuiResizeService} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 
 import {readyToScrollFactory} from './utils/ready-to-scroll-factory';
@@ -9,7 +9,7 @@ import {TuiVersionMeta} from './version-manager/versions.constants';
 
 export const DEMO_PAGE_LOADED_PROVIDER = {
     provide: TUI_DOC_PAGE_LOADED,
-    deps: [ElementRef, TuiResizeService],
+    deps: [ElementRef, TuiResizeService, TuiDestroyService],
     useFactory: readyToScrollFactory,
 };
 

@@ -14,6 +14,7 @@ import {
     distinctUntilChanged,
     map,
     mapTo,
+    share,
     takeUntil,
     throttleTime,
 } from 'rxjs/operators';
@@ -34,6 +35,10 @@ export class TuiResizeService extends ResizeObserverService {
 
         return this.pipe(
             catchError(() =>
+                /**
+                 * @note: if not supported ResizeObserver
+                 * remove `catchError` after supports modern browsers
+                 */
                 animationFrame$.pipe(
                     throttleTime(POLLING_TIME),
                     map(
@@ -46,6 +51,7 @@ export class TuiResizeService extends ResizeObserverService {
             ),
             debounceTime(0),
             tuiZonefree(ngZone),
+            share(),
             takeUntil(destroy$),
         );
     }
