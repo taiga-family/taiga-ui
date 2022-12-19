@@ -1,7 +1,7 @@
 import {DEFAULT_TIMEOUT_BEFORE_ACTION} from '@demo-integrations/support/properties/shared.entities';
 
 describe(`PieChart`, () => {
-    beforeEach(() => cy.tuiVisit(`components/pie-chart`));
+    beforeEach(() => cy.tuiVisit(`charts/pie-chart`));
 
     it(`should be show hints on charts`, () => {
         cy.get(`tui-doc-example[heading="With labels"]`)

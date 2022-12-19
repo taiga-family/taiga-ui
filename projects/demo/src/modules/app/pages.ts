@@ -224,72 +224,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
-        title: `Charts`,
-        subPages: [
-            {
-                section: $localize`Components`,
-                title: `ArcChart`,
-                keywords: `график, чарт, chart, graph, line, столбик, диаграмма, дуга, кольцо`,
-                route: `/components/arc-chart`,
-            },
-            {
-                section: $localize`Components`,
-                title: `Axes`,
-                keywords: `график, чарт, chart, graph, line, столбик, диаграмма, оси, координаты`,
-                route: `/components/axes`,
-            },
-            {
-                section: $localize`Components`,
-                title: `Bar`,
-                keywords: `график, чарт, chart, graph, line, столбик, диаграмма`,
-                route: `/components/bar`,
-            },
-            {
-                section: $localize`Components`,
-                title: `BarChart`,
-                keywords: `график, чарт, chart, graph, line, столбик, диаграмма`,
-                route: `/components/bar-chart`,
-            },
-            {
-                section: $localize`Components`,
-                title: `BarSet`,
-                keywords: `график, чарт, chart, graph, line, столбик, диаграмма`,
-                route: `/components/bar-set`,
-            },
-            {
-                section: $localize`Components`,
-                title: `LegendItem`,
-                keywords: `график, легенда, подпись, диаграмма`,
-                route: `/components/legend-item`,
-            },
-            {
-                section: $localize`Components`,
-                title: `LineChart`,
-                keywords: `график, линия, кривая, диаграмма`,
-                route: `/components/line-chart`,
-            },
-            {
-                section: $localize`Components`,
-                title: `LineDaysChart`,
-                keywords: `график, линия, кривая, диаграмма, год, месяц`,
-                route: `/components/line-days-chart`,
-            },
-            {
-                section: $localize`Components`,
-                title: `PieChart`,
-                keywords: `график, чарт, chart, graph, пирог, круг, диаграмма`,
-                route: `/components/pie-chart`,
-            },
-            {
-                section: $localize`Components`,
-                title: `RingChart`,
-                keywords: `график, чарт, chart, graph, кольцо, круг, диаграмма`,
-                route: `/components/ring-chart`,
-            },
-        ],
-    },
-    {
-        section: $localize`Components`,
         title: `Checkboxes`,
         subPages: [
             {
@@ -879,6 +813,67 @@ export const pages: TuiDocPages = [
         title: `Tree`,
         keywords: `tree, view, multi, recursive, folders, рекурсия, дерево, папки`,
         route: `/components/tree`,
+    },
+    // Charts
+    {
+        section: $localize`Charts`,
+        title: `ArcChart`,
+        keywords: `график, чарт, chart, graph, line, столбик, диаграмма, дуга, кольцо`,
+        route: `/charts/arc-chart`,
+    },
+    {
+        section: $localize`Charts`,
+        title: `Axes`,
+        keywords: `график, чарт, chart, graph, line, столбик, диаграмма, оси, координаты`,
+        route: `/charts/axes`,
+    },
+    {
+        section: $localize`Charts`,
+        title: `Bar`,
+        keywords: `график, чарт, chart, graph, line, столбик, диаграмма`,
+        route: `/charts/bar`,
+    },
+    {
+        section: $localize`Charts`,
+        title: `BarChart`,
+        keywords: `график, чарт, chart, graph, line, столбик, диаграмма`,
+        route: `/charts/bar-chart`,
+    },
+    {
+        section: $localize`Charts`,
+        title: `BarSet`,
+        keywords: `график, чарт, chart, graph, line, столбик, диаграмма`,
+        route: `/charts/bar-set`,
+    },
+    {
+        section: $localize`Charts`,
+        title: `LegendItem`,
+        keywords: `график, chart, легенда, подпись, диаграмма`,
+        route: `/charts/legend-item`,
+    },
+    {
+        section: $localize`Charts`,
+        title: `LineChart`,
+        keywords: `график, chart, линия, кривая, диаграмма`,
+        route: `/charts/line-chart`,
+    },
+    {
+        section: $localize`Charts`,
+        title: `LineDaysChart`,
+        keywords: `график, chart, линия, кривая, диаграмма, год, месяц`,
+        route: `/charts/line-days-chart`,
+    },
+    {
+        section: $localize`Charts`,
+        title: `PieChart`,
+        keywords: `график, чарт, chart, graph, пирог, круг, диаграмма`,
+        route: `/charts/pie-chart`,
+    },
+    {
+        section: $localize`Charts`,
+        title: `RingChart`,
+        keywords: `график, чарт, chart, graph, кольцо, круг, диаграмма`,
+        route: `/charts/ring-chart`,
     },
     // Editor
     {

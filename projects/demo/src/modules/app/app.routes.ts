@@ -1080,7 +1080,7 @@ export const ROUTES = [
     },
     // CHARTS
     {
-        path: `components/arc-chart`,
+        path: `charts/arc-chart`,
         loadChildren: async () =>
             (await import(`../charts/arc-chart/arc-chart.module`))
                 .ExampleTuiArcChartModule,
@@ -1089,7 +1089,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/axes`,
+        path: `charts/axes`,
         loadChildren: async () =>
             (await import(`../charts/axes/axes.module`)).ExampleTuiAxesModule,
         data: {
@@ -1097,7 +1097,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/bar`,
+        path: `charts/bar`,
         loadChildren: async () =>
             (await import(`../charts/bar/bar.module`)).ExampleTuiBarModule,
         data: {
@@ -1105,7 +1105,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/bar-chart`,
+        path: `charts/bar-chart`,
         loadChildren: async () =>
             (await import(`../charts/bar-chart/bar-chart.module`))
                 .ExampleTuiBarChartModule,
@@ -1114,7 +1114,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/bar-set`,
+        path: `charts/bar-set`,
         loadChildren: async () =>
             (await import(`../charts/bar-set/bar-set.module`)).ExampleTuiBarSetModule,
         data: {
@@ -1122,7 +1122,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/legend-item`,
+        path: `charts/legend-item`,
         loadChildren: async () =>
             (await import(`../charts/legend-item/legend-item.module`))
                 .ExampleTuiLegendItemModule,
@@ -1131,7 +1131,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/line-chart`,
+        path: `charts/line-chart`,
         loadChildren: async () =>
             (await import(`../charts/line-chart/line-chart.module`))
                 .ExampleTuiLineChartModule,
@@ -1140,7 +1140,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/line-days-chart`,
+        path: `charts/line-days-chart`,
         loadChildren: async () =>
             (await import(`../charts/line-days-chart/line-days-chart.module`))
                 .ExampleTuiLineDaysChartModule,
@@ -1149,7 +1149,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/pie-chart`,
+        path: `charts/pie-chart`,
         loadChildren: async () =>
             (await import(`../charts/pie-chart/pie-chart.module`))
                 .ExampleTuiPieChartModule,
@@ -1158,7 +1158,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/ring-chart`,
+        path: `charts/ring-chart`,
         loadChildren: async () =>
             (await import(`../charts/ring-chart/ring-chart.module`))
                 .ExampleTuiRingChartModule,

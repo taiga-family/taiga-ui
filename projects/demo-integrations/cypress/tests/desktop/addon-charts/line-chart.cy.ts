@@ -1,5 +1,5 @@
 describe(`LineChart`, () => {
-    beforeEach(() => cy.tuiVisit(`components/line-chart`));
+    beforeEach(() => cy.tuiVisit(`charts/line-chart`));
 
     it(`should not show hint`, () => {
         cy.get(`tui-line-chart-example-1 tui-line-chart .t-column`)
