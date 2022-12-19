@@ -16,7 +16,6 @@ import {TuiInputPhoneModule} from '@taiga-ui/kit/components/input-phone';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputPhoneInternationalComponent} from './input-phone-international.component';
-import {TuiSortCountriesPipe} from './sort-countries.pipe';
 
 @NgModule({
     imports: [
@@ -36,7 +35,7 @@ import {TuiSortCountriesPipe} from './sort-countries.pipe';
         TuiMapperPipeModule,
         TuiActiveZoneModule,
     ],
-    declarations: [TuiInputPhoneInternationalComponent, TuiSortCountriesPipe],
-    exports: [TuiInputPhoneInternationalComponent, TuiSortCountriesPipe],
+    declarations: [TuiInputPhoneInternationalComponent],
+    exports: [TuiInputPhoneInternationalComponent],
 })
 export class TuiInputPhoneInternationalModule {}
