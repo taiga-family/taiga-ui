@@ -953,7 +953,7 @@ export const ROUTES = [
     },
     // EDITOR
     {
-        path: `components/editor`,
+        path: `editor/getting-started`,
         loadChildren: async () =>
             (await import(`../components/editor/getting-started/editor.module`))
                 .ExampleTuiEditorModule,
@@ -962,7 +962,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/editor-custom-tool`,
+        path: `editor/custom-tool`,
         loadChildren: async () =>
             (await import(`../components/editor/custom-tool/editor-custom-tool.module`))
                 .ExampleTuiEditorCustomToolModule,
@@ -971,7 +971,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/editor-resizable-images`,
+        path: `editor/resizable-images`,
         loadChildren: async () =>
             (
                 await import(
@@ -983,7 +983,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/editor-preview-images`,
+        path: `editor/preview-images`,
         loadChildren: async () =>
             (
                 await import(
@@ -995,7 +995,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/editor-processing-content`,
+        path: `editor/processing-content`,
         loadChildren: async () =>
             (
                 await import(
@@ -1007,7 +1007,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/editor-draggable-groups`,
+        path: `editor/draggable-groups`,
         loadChildren: async () =>
             (
                 await import(
@@ -1019,7 +1019,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/editor-nested-groups`,
+        path: `editor/nested-groups`,
         loadChildren: async () =>
             (
                 await import(
@@ -1031,7 +1031,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/editor-uploading-images`,
+        path: `editor/uploading-images`,
         loadChildren: async () =>
             (
                 await import(
@@ -1043,7 +1043,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/editor-anchors`,
+        path: `editor/anchors`,
         loadChildren: async () =>
             (await import(`../components/editor/anchors/editor-anchors.module`))
                 .ExampleTuiEditorAnchorsModule,
@@ -1052,7 +1052,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/editor-upload-files`,
+        path: `editor/upload-files`,
         loadChildren: async () =>
             (await import(`../components/editor/upload-files/editor-upload-files.module`))
                 .ExampleTuiEditorUploadFilesModule,
@@ -1061,7 +1061,7 @@ export const ROUTES = [
         },
     },
     {
-        path: `components/editor-markdown`,
+        path: `editor/markdown`,
         loadChildren: async () =>
             (await import(`../components/editor/markdown/editor-markdown.module`))
                 .ExampleTuiEditorMarkdownModule,

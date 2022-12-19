@@ -15,9 +15,7 @@ describe(`Examples images`, () => {
     });
 
     describe(`Preview`, () => {
-        beforeEach(() =>
-            cy.viewport(1650, 900).tuiVisit(`components/editor-preview-images`),
-        );
+        beforeEach(() => cy.viewport(1650, 900).tuiVisit(`editor/preview-images`));
 
         it(`preview display of images`, () => {
             cy.get(`#preview-image`).findByAutomationId(`tui-doc-example`).as(`wrapper`);

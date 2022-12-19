@@ -48,7 +48,7 @@ describe(`Editor's toolbar`, () => {
     });
 
     it(`has the possibility to add custom tool`, () => {
-        cy.tuiVisit(`components/editor-custom-tool`);
+        cy.tuiVisit(`editor/custom-tool`);
 
         cy.get(`#custom-tool`)
             .findByAutomationId(`tui-doc-example`)
@@ -231,7 +231,7 @@ describe(`Editor's toolbar`, () => {
         });
 
         it(`works with custom tools`, () => {
-            cy.tuiVisit(`components/editor-custom-tool`);
+            cy.tuiVisit(`editor/custom-tool`);
 
             cy.get(`#custom-tool`)
                 .findByAutomationId(`tui-doc-example`)
