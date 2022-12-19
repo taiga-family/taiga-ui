@@ -3,7 +3,7 @@
 
 .tui-island {
     position: relative;
-    border-radius: var(--tui-radius-l);
+    border-radius: var(--tui-radius-xl);
     background-color: var(--tui-base-01);
     word-wrap: break-word;
     text-decoration: none;
@@ -43,11 +43,13 @@
     }
 
     &_size_s {
+        --tui-radius-xl: calc(4 * var(--tui-radius-l) / 3);
         font: var(--tui-font-text-s);
         padding: @padding;
     }
 
     &_size_m {
+        --tui-radius-xl: calc(5 * var(--tui-radius-l) / 3);
         font: var(--tui-font-text-m);
         padding: @padding;
     }
@@ -168,7 +170,7 @@
         width: ~'calc(100% + 1.875rem);'; // margin compensation
         margin: @padding calc(-1rem + 1px) calc(-1rem + 1px); // 1px is compensations of border
         border-top: 1px solid var(--tui-base-03);
-        border-radius: 0 0 var(--tui-radius-l) var(--tui-radius-l);
+        border-radius: 0 0 var(--tui-radius-xl) var(--tui-radius-xl);
     }
 
     .tui-island_size_l &__footer-button {

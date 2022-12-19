@@ -89,12 +89,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Foundations`,
-        title: $localize`Grid`,
-        keywords: `верстка, markup, layout, grid, сетка, стили`,
-        route: `/grid`,
-    },
-    {
-        section: $localize`Foundations`,
         title: $localize`Icons`,
         keywords: `img, layout, markup, icons, image, картинка, свг, svg, графика`,
         route: `/icons`,
@@ -120,6 +114,12 @@ export const pages: TuiDocPages = [
                 title: $localize`Spaces`,
                 keywords: `layout, markup, отступы, margin, padding, маржин, падинг, spaces`,
                 route: `/spaces`,
+            },
+            {
+                section: $localize`Foundations`,
+                title: $localize`Grid`,
+                keywords: `верстка, markup, layout, grid, сетка, стили`,
+                route: `/grid`,
             },
             {
                 section: $localize`Foundations`,

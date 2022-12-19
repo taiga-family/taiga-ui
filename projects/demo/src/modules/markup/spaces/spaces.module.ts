@@ -8,6 +8,7 @@ import {
     tuiGenerateRoutes,
 } from '@taiga-ui/addon-doc';
 
+import {StylesInfoModule} from '../../app/styles-info/styles-info.module';
 import {TuiSpacingExample1} from './examples/1';
 import {TuiSpacingExample2} from './examples/2';
 import {SpacesComponent} from './spaces.component';
@@ -16,6 +17,7 @@ import {SpacesComponent} from './spaces.component';
     imports: [
         CommonModule,
         ClipboardModule,
+        StylesInfoModule,
         TuiDocCopyModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(SpacesComponent)),

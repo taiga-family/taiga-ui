@@ -3,6 +3,21 @@
     header="Typography"
 >
     <ng-template pageTab>
+        <tui-notification class="tui-space_bottom-3">
+            To use classes you need to add optional
+            <code>@taiga-ui/styles</code>
+            package and include
+            <code>@taiga-ui/styles/taiga-ui-global</code>
+            in your global styles.
+            <a
+                tuiLink
+                routerLink="/getting-started"
+                fragment="styles"
+            >
+                Read more.
+            </a>
+        </tui-notification>
+
         <h2
             i18n
             class="tui-text_h3 tui-space_bottom-1"

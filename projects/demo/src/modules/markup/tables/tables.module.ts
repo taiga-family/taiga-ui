@@ -6,6 +6,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLinkModule, TuiNotificationModule, TuiSvgModule} from '@taiga-ui/core';
 import {TuiCheckboxModule, TuiInputTagModule, TuiTagModule} from '@taiga-ui/kit';
 
+import {StylesInfoModule} from '../../app/styles-info/styles-info.module';
 import {TuiTablesExample1} from './examples/1';
 import {TablesComponent} from './tables.component';
 
@@ -20,6 +21,7 @@ import {TablesComponent} from './tables.component';
         TuiNotificationModule,
         TuiAddonDocModule,
         TuiLinkModule,
+        StylesInfoModule,
         RouterModule.forChild(tuiGenerateRoutes(TablesComponent)),
     ],
     declarations: [TablesComponent, TuiTablesExample1],
