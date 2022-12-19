@@ -150,7 +150,7 @@ export class TuiTextAreaComponent
     }
 
     get hasPlaceholder(): boolean {
-        return !this.controller.labelOutside || (!this.hasValue && !this.hasExampleText);
+        return this.placeholderRaisable || (!this.hasValue && !this.hasExampleText);
     }
 
     get iconCleaner(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
@@ -172,7 +172,7 @@ export class TuiTextAreaComponent
 
     get placeholderRaised(): boolean {
         return (
-            !this.controller.labelOutside &&
+            this.placeholderRaisable &&
             ((this.computedFocused && !this.readOnly) || this.hasValue)
         );
     }
@@ -213,5 +213,9 @@ export class TuiTextAreaComponent
 
     private get lineHeight(): number {
         return this.controller.size === `m` ? LINE_HEIGHT_M : LINE_HEIGHT_L;
+    }
+
+    private get placeholderRaisable(): boolean {
+        return this.size !== `s` && !this.controller.labelOutside;
     }
 }
