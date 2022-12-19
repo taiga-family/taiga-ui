@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.14.0](https://github.com/tinkoff/taiga-ui/compare/v3.13.0...v3.14.0) (2022-12-19)
+
+### Features
+
+- **cdk:** `Resizer` add new directive ([#3248](https://github.com/tinkoff/taiga-ui/issues/3248))
+  ([121e977](https://github.com/tinkoff/taiga-ui/commit/121e9775c3fe2b9ba0538fa1b9ebaed9fedc265d))
+- **cdk:** add `--tui-backdrop` variable for dialog overlay ([#3251](https://github.com/tinkoff/taiga-ui/issues/3251))
+  ([ebe2d80](https://github.com/tinkoff/taiga-ui/commit/ebe2d8024cf36dd52c0769e349db905263a46b09))
+- **core:** `TextfieldController` add prefix, postfix and filler
+  ([#3188](https://github.com/tinkoff/taiga-ui/issues/3188))
+  ([75276fb](https://github.com/tinkoff/taiga-ui/commit/75276fb79ec5380bdd3428ff4c3861bd538cf439))
+- **kit:** `ItemsWithMore` add new component ([#3230](https://github.com/tinkoff/taiga-ui/issues/3230))
+  ([de63d7b](https://github.com/tinkoff/taiga-ui/commit/de63d7b056534320b1cc37aa452c5682ed7d5e76))
+- **kit:** `SortCountries` add pipe for `InputPhoneInternational`
+  ([#3257](https://github.com/tinkoff/taiga-ui/issues/3257))
+  ([ffb6cd1](https://github.com/tinkoff/taiga-ui/commit/ffb6cd17972efbadd0c17041989487f0e0c88ac6))
+- **kit:** `TextArea` support `s` size, fix `m` font and padding
+  ([#3242](https://github.com/tinkoff/taiga-ui/issues/3242))
+  ([cdb9c05](https://github.com/tinkoff/taiga-ui/commit/cdb9c052257301e79cc55876f3db901fc3661872))
+
+### Bug Fixes
+
+- **cdk:** share a single subscription to the underlying source observable between multiple subscribers
+  ([#3174](https://github.com/tinkoff/taiga-ui/issues/3174))
+  ([6ee6f50](https://github.com/tinkoff/taiga-ui/commit/6ee6f501882883f3c1bc11ec469d19f47a38ef56))
+- **kit:** `File` fix background ([#3247](https://github.com/tinkoff/taiga-ui/issues/3247))
+  ([9300260](https://github.com/tinkoff/taiga-ui/commit/93002604c05deb1c06f9d7022d97403f108a8a1f))
+- **schematics:** exclude popular hidden directories ([#3252](https://github.com/tinkoff/taiga-ui/issues/3252))
+  ([6ea575e](https://github.com/tinkoff/taiga-ui/commit/6ea575e3c3cd57341d2cd5614512916a518ca8d9))
+
 ## [3.13.0](https://github.com/tinkoff/taiga-ui/compare/v3.12.1...v3.13.0) (2022-12-12)
 
 ### Features
