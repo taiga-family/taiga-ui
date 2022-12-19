@@ -1,5 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
@@ -17,6 +18,7 @@ import {TuiActiveZoneExample1} from './examples/1';
         TuiActiveZoneModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiActiveZoneComponent)),
+        ReactiveFormsModule,
     ],
     declarations: [ExampleTuiActiveZoneComponent, TuiActiveZoneExample1],
     exports: [ExampleTuiActiveZoneComponent],
