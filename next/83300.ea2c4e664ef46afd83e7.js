@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[83300],{83300:e=>{e.exports=".editor {\n    min-height: 30rem;\n}\n"}}]);
