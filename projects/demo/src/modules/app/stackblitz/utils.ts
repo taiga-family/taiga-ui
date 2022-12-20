@@ -152,6 +152,7 @@ import {
     ${tablebars}
 } from '@taiga-ui/addon-tablebars';
 
+import {ScrollingModule} from '@angular/cdk/scrolling';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -164,6 +165,7 @@ export const ALL_TAIGA_UI_MODULES = [
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    ScrollingModule,
     PolymorpheusModule,
     RouterModule.forRoot([]),
     /* CDK */

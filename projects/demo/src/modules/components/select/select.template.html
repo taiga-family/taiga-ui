@@ -82,7 +82,23 @@
             id="virtual"
             heading="Virtual scroll"
             [content]="example8"
+            [description]="cdkVirtualScrollDescription"
         >
+            <ng-template #cdkVirtualScrollDescription>
+                You can use
+                <code>Select</code>
+                with
+                <code>ScrollingModule</code>
+                from
+                <a
+                    tuiLink
+                    href="https://material.angular.io/cdk/scrolling/overview"
+                    target="_blank"
+                >
+                    @angular/cdk/scrolling
+                </a>
+                .
+            </ng-template>
             <tui-select-example-8></tui-select-example-8>
         </tui-doc-example>
 
