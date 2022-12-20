@@ -1,7 +1,7 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, tuiExcludeProperties} from '@taiga-ui/addon-doc';
 import {
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
@@ -22,6 +22,11 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
             provide: ABSTRACT_PROPS_ACCESSOR,
             useExisting: forwardRef(() => ExampleTuiInputTagComponent),
         },
+        tuiExcludeProperties([
+            `tuiTextfieldPrefix`,
+            `tuiTextfieldPostfix`,
+            `tuiTextfieldFiller`,
+        ]),
     ],
 })
 export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {

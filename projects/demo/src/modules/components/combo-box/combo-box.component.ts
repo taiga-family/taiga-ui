@@ -1,7 +1,7 @@
 import {Component, forwardRef, ViewChild} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, tuiExcludeProperties} from '@taiga-ui/addon-doc';
 import {
     TUI_DEFAULT_MATCHER,
     TUI_DEFAULT_STRINGIFY,
@@ -35,6 +35,7 @@ class Account {
             provide: ABSTRACT_PROPS_ACCESSOR,
             useExisting: forwardRef(() => ExampleTuiComboBoxComponent),
         },
+        tuiExcludeProperties([`tuiTextfieldPrefix`, `tuiTextfieldPostfix`]),
     ],
 })
 export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {

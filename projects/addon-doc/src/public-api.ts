@@ -45,6 +45,7 @@ export * from './tokens/code-actions';
 export * from './tokens/code-editor';
 export * from './tokens/default-tabs';
 export * from './tokens/example-content-processor';
+export * from './tokens/excluded-properties';
 export * from './tokens/i18n';
 export * from './tokens/logo';
 export * from './tokens/page-loaded';
