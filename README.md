@@ -11,7 +11,7 @@
 **Taiga UI** is fully-treeshakable Angular UI Kit consisting of multiple base libraries and several add-ons.
 
 It is based on [ng-polymorpheus](https://github.com/tinkoff/ng-polymorpheus) dynamic content approach and uses
-[Web APIs for Angular](https://github.com/ng-web-apis) for required browser APIs.
+[Web APIs for Angular](https://github.com/ng-web-apis) for required browser APIs
 
 ## Why Taiga UI
 
