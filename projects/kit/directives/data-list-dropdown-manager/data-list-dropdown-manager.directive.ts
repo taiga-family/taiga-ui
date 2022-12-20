@@ -46,7 +46,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
     ) {}
 
     ngAfterViewInit(): void {
-        this.right$.subscribe(index => {
+        this.right$.pipe(takeUntil(this.destroy$)).subscribe(index => {
             this.tryToFocus(index);
         });
 
