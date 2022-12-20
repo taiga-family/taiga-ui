@@ -51,7 +51,23 @@
             i18n-heading
             heading="Virtual scroll"
             [content]="example5"
+            [description]="cdkVirtualScrollDescription"
         >
+            <ng-template #cdkVirtualScrollDescription>
+                You can use
+                <code>Table</code>
+                with
+                <code>ScrollingModule</code>
+                from
+                <a
+                    tuiLink
+                    href="https://material.angular.io/cdk/scrolling/overview"
+                    target="_blank"
+                >
+                    @angular/cdk/scrolling
+                </a>
+                .
+            </ng-template>
             <tui-table-example-5></tui-table-example-5>
         </tui-doc-example>
 

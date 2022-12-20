@@ -59,7 +59,23 @@
             id="virtual"
             heading="Virtual scroll"
             [content]="example5"
+            [description]="cdkVirtualScrollDescription"
         >
+            <ng-template #cdkVirtualScrollDescription>
+                You can use
+                <code>ComboBox</code>
+                with
+                <code>ScrollingModule</code>
+                from
+                <a
+                    tuiLink
+                    href="https://material.angular.io/cdk/scrolling/overview"
+                    target="_blank"
+                >
+                    @angular/cdk/scrolling
+                </a>
+                .
+            </ng-template>
             <tui-notification class="tui-space_bottom-3">
                 Note that virtual scroll can imperatively remove focused option from DOM. This causes ExpressionChange
                 errors and to solve those take a look at a tiny
