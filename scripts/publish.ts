@@ -17,27 +17,34 @@ const path = getValueByFlag<string>(`--path`, ``);
 
 (async function main(): Promise<void> {
     const packageJson = await import(resolve(path, `package.json`));
+    const version = getValueByFlag<string>(`--customVersion`, packageJson.version);
     const versions: string[] = getAllVersions(packageJson.name);
 
-    if (versions.includes(packageJson.version) && !isDryRun) {
+    if (versions.includes(version) && !isDryRun) {
         errorLog(`${packageJson.name}@${packageJson.version} is already published`);
 
         return;
     }
 
     infoLog(`name: ${packageJson.name}`);
-    infoLog(`version: ${packageJson.version}`);
+    infoLog(`version: ${version}`);
 
     const dry = isDryRun ? `--dry-run` : ``;
-    const tag = makeTag(packageJson.version, versions);
-    const command = `npm publish ${path} ${tag} ${dry} --access public`;
+    const tag = makeTag(version, versions);
+    const command = `npm publish ${path} ${tag} ${dry} --new-version ${version} --access public`;
 
     processLog(command);
     execSync(command, {stdio: `inherit`, encoding: `utf8`});
-    successLog(`+${packageJson.name}@${packageJson.version} is published successfully`);
+    successLog(`+${packageJson.name}@${version} is published successfully`);
 })();
 
 function makeTag(version: string, versions: string[]): string {
+    const customTag = getValueByFlag<string>(`--customTag`, ``);
+
+    if (customTag !== ``) {
+        return `--tag ${customTag}`;
+    }
+
     const currentMajor = parseInt(version, 10);
     const maxMajorVersion = getLastMajorVersion(versions, currentMajor);
     const tagFlag = maxMajorVersion > currentMajor ? `--tag v${currentMajor}-lts` : ``;
