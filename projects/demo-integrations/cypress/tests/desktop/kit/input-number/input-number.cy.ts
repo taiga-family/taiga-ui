@@ -6,7 +6,7 @@ describe(`InputNumber`, () => {
             cy.tuiVisit(`components/input-number/API?tuiMode=null&prefix=$&postfix=GBP`);
 
             cy.get(`#demo-content`)
-                .wait(WAIT_BEFORE_SCREENSHOT)
+                .wait(3000)
                 .matchImageSnapshot(`01-input-number-prefix-value-postfix`);
 
             cy.get(`#demo-content`)
@@ -15,7 +15,7 @@ describe(`InputNumber`, () => {
                 .type(`{selectall}{backspace}`);
 
             cy.get(`#demo-content`)
-                .wait(WAIT_BEFORE_SCREENSHOT)
+                .wait(3000)
                 .matchImageSnapshot(`02-input-number-prefix-postfix`);
         });
 
