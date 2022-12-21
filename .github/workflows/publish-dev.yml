@@ -1,0 +1,32 @@
+name: Nightly publish dev version
+
+on:
+  schedule:
+    - cron: '00 00 * * *'
+
+env:
+  NX_BRANCH: ${{ github.event.number }}
+  NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
+
+jobs:
+  build:
+    if: ${{ !contains(github.head_ref, 'release/') }}
+    name: Packages
+    runs-on: ubuntu-latest
+    env:
+      FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js and Cache
+        uses: ./.github/actions/nodejs
+
+        run: |
+          npm run run-many:build:libs
+          npx ts-node ./scripts/publish-dev-builds.ts
+
+concurrency:
+  group: publish-dev-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
