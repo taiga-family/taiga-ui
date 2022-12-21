@@ -11,6 +11,7 @@ import {TuiSchema} from '../../../../ng-add/schema';
 import {addUniqueImport} from '../../../../utils/add-unique-import';
 import {getNgComponents} from '../../../../utils/angular/ng-component';
 import {setupProgressLogger} from '../../../../utils/progress';
+import {projectRoot} from '../../../../utils/project-root';
 import {hasElementAttribute} from '../../../../utils/templates/elements';
 import {getComponentTemplates} from '../../../../utils/templates/get-component-templates';
 import {
@@ -43,7 +44,7 @@ export function migrateInputSlider(
      * */
     fileSystem.commitEdits();
     saveActiveProject();
-    setActiveProject(createProject(fileSystem.tree, `/`, ALL_FILES));
+    setActiveProject(createProject(fileSystem.tree, projectRoot(), ALL_FILES));
 
     progressLog = setupProgressLogger({
         total: COMPONENTS_WITH_MIN_MAX_LABELS.size,

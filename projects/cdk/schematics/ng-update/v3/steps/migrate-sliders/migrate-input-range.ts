@@ -11,6 +11,7 @@ import {TuiSchema} from '../../../../ng-add/schema';
 import {addUniqueImport} from '../../../../utils/add-unique-import';
 import {getNgComponents} from '../../../../utils/angular/ng-component';
 import {setupProgressLogger} from '../../../../utils/progress';
+import {projectRoot} from '../../../../utils/project-root';
 import {getComponentTemplates} from '../../../../utils/templates/get-component-templates';
 import {replaceInputProperty} from '../../../../utils/templates/ng-component-input-manipulations';
 import {TemplateResource} from '../../../interfaces/template-resourse';
@@ -142,5 +143,5 @@ function addMinMaxLabelMethod(
 function save(fileSystem: DevkitFileSystem): void {
     fileSystem.commitEdits();
     saveActiveProject();
-    setActiveProject(createProject(fileSystem.tree, `/`, ALL_FILES));
+    setActiveProject(createProject(fileSystem.tree, projectRoot(), ALL_FILES));
 }
