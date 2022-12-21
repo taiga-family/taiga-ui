@@ -1,7 +1,7 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample, tuiExcludeProperties} from '@taiga-ui/addon-doc';
+import {TuiDocExample, tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import {TuiSizeL, TuiSizeM} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -16,7 +16,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
             provide: ABSTRACT_PROPS_ACCESSOR,
             useExisting: forwardRef(() => ExampleTuiTextAreaComponent),
         },
-        tuiExcludeProperties([
+        tuiDocExcludeProperties([
             `tuiTextfieldPrefix`,
             `tuiTextfieldPostfix`,
             `tuiTextfieldFiller`,

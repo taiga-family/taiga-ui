@@ -1,7 +1,7 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample, tuiExcludeProperties} from '@taiga-ui/addon-doc';
+import {TuiDocExample, tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_DEFAULT_STRINGIFY,
@@ -34,7 +34,7 @@ class Account {
             provide: ABSTRACT_PROPS_ACCESSOR,
             useExisting: forwardRef(() => ExampleTuiMultiSelectComponent),
         },
-        tuiExcludeProperties([
+        tuiDocExcludeProperties([
             `tuiTextfieldPrefix`,
             `tuiTextfieldPostfix`,
             `tuiTextfieldFiller`,
