@@ -3,10 +3,13 @@ import {
     ContentChildren,
     Directive,
     ElementRef,
+    Inject,
     QueryList,
+    Self,
 } from '@angular/core';
 import {
     EMPTY_QUERY,
+    TuiDestroyService,
     tuiGetClosestFocusable,
     tuiItemsQueryListObservable,
     tuiPreventDefault,
@@ -23,11 +26,13 @@ import {
     shareReplay,
     switchMap,
     take,
+    takeUntil,
     tap,
 } from 'rxjs/operators';
 
 @Directive({
     selector: `tui-data-list[tuiDataListDropdownManager]`,
+    providers: [TuiDestroyService],
 })
 export class TuiDataListDropdownManagerDirective implements AfterViewInit {
     @ContentChildren(TuiDropdownDirective, {descendants: true})
@@ -36,8 +41,12 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
     @ContentChildren(TuiDropdownDirective, {read: ElementRef, descendants: true})
     private readonly elements: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
+    constructor(
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
+    ) {}
+
     ngAfterViewInit(): void {
-        this.right$.subscribe(index => {
+        this.right$.pipe(takeUntil(this.destroy$)).subscribe(index => {
             this.tryToFocus(index);
         });
 
@@ -76,6 +85,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                         }),
                     );
                 }),
+                takeUntil(this.destroy$),
             )
             .subscribe();
     }
