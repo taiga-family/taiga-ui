@@ -1,4 +1,4 @@
-name: Nightly publish dev version
+name: Nightly publish
 
 on:
   schedule:
@@ -23,6 +23,7 @@ jobs:
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
+      - name: Publish dev builds
         run: |
           npm run run-many:build:libs
           npx ts-node ./scripts/publish-dev-builds.ts
