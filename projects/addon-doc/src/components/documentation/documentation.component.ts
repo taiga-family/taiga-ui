@@ -62,7 +62,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         @Inject(TUI_DOC_DOCUMENTATION_TEXTS)
         readonly texts: [string, string, string, string, string],
         @Inject(TUI_DOC_EXCLUDED_PROPERTIES)
-        readonly excludedProperties: readonly string[],
+        readonly excludedProperties: Set<string>,
         @Self()
         @Inject(TuiDestroyService)
         private readonly destroy$: TuiDestroyService,
@@ -88,9 +88,9 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
 
     matcher: TuiMatcher<TuiDocDocumentationPropertyConnectorDirective<any>> = (
         item: TuiDocDocumentationPropertyConnectorDirective<any>,
-        exclusions: readonly string[],
+        exclusions: Set<string>,
     ) => {
-        return !exclusions.includes(item.documentationPropertyName);
+        return !exclusions.has(item.documentationPropertyName);
     };
 
     onColorChange(
