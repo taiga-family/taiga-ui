@@ -1,0 +1,43 @@
+{
+    $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+    baseBranches: ['main'],
+    enabledManagers: ['npm'],
+    extends: ['config:base', 'group:allNonMajor'],
+    fetchReleaseNotes: false, // Only fetch release notes for breaking changes
+    internalChecksFilter: 'strict', // PRs will be skipped unless a non-pending version is available (applies to "stabilityDays" check only)
+    labels: ['dependencies'],
+    branchConcurrentLimit: 3,
+    prConcurrentLimit: 3,
+    repositories: ['tinkoff/taiga-ui'],
+    username: 'renovate',
+    gitAuthor: 'Renovate Bot <bot@renovateapp.com>',
+    platform: 'github',
+    rangeStrategy: 'bump', // Always bump minor/patch to latest
+    branchPrefix: 'renovate/',
+    timezone: 'Europe/Moscow',
+    // Required to prevent onboarding pr and generation of new config file https://github.com/renovatebot/github-action#configurationfile
+    onboarding: false,
+    requireConfig: false,
+    digest: {
+        enabled: false,
+    },
+    pinDigests: false,
+    ignoreDeps: ['typescript'],
+    includePaths: ['package.json', '**/package.json', '!node_modules/**'],
+    prBodyTemplate: '{{{table}}}{{{notes}}}{{{changelogs}}}{{{controls}}}{{{footer}}}',
+    prBodyColumns: ['Package', 'Type', 'Change'],
+    packageRules: [
+        {
+            matchUpdateTypes: ['major'],
+            labels: ['renovate', 'major'],
+        },
+        {
+            matchUpdateTypes: ['minor'],
+            labels: ['renovate', 'minor'],
+        },
+        {
+            matchUpdateTypes: ['patch'],
+            labels: ['renovate', 'patch'],
+        },
+    ],
+}
