@@ -1,11 +1,10 @@
-import {execSync} from 'child_process';
-
 import {version} from '../package.json';
 import {infoLog} from '../projects/cdk/schematics/utils/colored-log';
+import {execute} from './shared/execute';
 
 (function main(): void {
-    const commit = execSync(`git rev-parse HEAD`).toString().trim().slice(0, 7);
-    const branch = execSync(`git symbolic-ref --short HEAD`).toString().trim();
+    const commit = execute(`git rev-parse HEAD`, {}).slice(0, 7);
+    const branch = execute(`git symbolic-ref --short HEAD`, {});
     const [major, minor, patch] = version.split(/[.-]/);
 
     // construct new version from base version x.y.z to become x.y.z-{dev}.{shortSha}
@@ -13,8 +12,7 @@ import {infoLog} from '../projects/cdk/schematics/utils/colored-log';
 
     infoLog(`New dev version - ${newVersion}`);
 
-    execSync(
+    execute(
         `npx nx run-many --target publish --all --customTag=dev --customVersion=${newVersion}`,
-        {stdio: `inherit`},
     );
 })();

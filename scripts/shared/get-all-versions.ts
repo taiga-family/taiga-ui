@@ -1,7 +1,5 @@
-import {execSync} from 'child_process';
+import {execute} from './execute';
 
 export function getAllVersions(name: string): string[] {
-    return JSON.parse(
-        execSync(`npm view ${name} versions --json || echo "[]"`).toString(),
-    );
+    return JSON.parse(execute(`npm view ${name} versions --json || echo "[]"`, {}));
 }

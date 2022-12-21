@@ -1,6 +1,6 @@
-import {execSync} from 'child_process';
+import {execute} from './execute';
 
 export function checkPrettierChanges(pattern = `**/*.{json,md}`): void {
-    execSync(`prettier '${pattern}' --write`, {stdio: `inherit`});
-    execSync(`git add .`, {stdio: `inherit`});
+    execute(`prettier '${pattern}' --write`);
+    execute(`git add .`, {stdio: `inherit`});
 }

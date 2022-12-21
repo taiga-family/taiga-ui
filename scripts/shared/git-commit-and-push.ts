@@ -1,10 +1,8 @@
-import {execSync} from 'child_process';
+import {execute} from './execute';
 
 export function gitCommitAndPush(newVersion: string): void {
-    execSync(`git add .`);
-    execSync(
-        `git commit -m 'chore(changelog): fix incorrect generated logs' --no-verify`,
-    );
-    execSync(`git push --set-upstream origin release/${newVersion}`, {stdio: `inherit`});
-    execSync(`git push --tags`, {stdio: `inherit`});
+    execute(`git add .`);
+    execute(`git commit -m 'chore(changelog): fix incorrect generated logs' --no-verify`);
+    execute(`git push --set-upstream origin release/${newVersion}`);
+    execute(`git push --tags`);
 }
