@@ -1,7 +1,7 @@
 import {Component, forwardRef, ViewChild} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import {TuiAutofillFieldName} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -17,6 +17,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
             provide: ABSTRACT_PROPS_ACCESSOR,
             useExisting: forwardRef(() => ExampleTuiInputCopyComponent),
         },
+        tuiDocExcludeProperties([`tuiTextfieldPrefix`, `tuiTextfieldPostfix`]),
     ],
 })
 export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {

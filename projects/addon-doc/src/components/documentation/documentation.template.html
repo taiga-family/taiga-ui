@@ -17,7 +17,7 @@
         </th>
     </tr>
     <tr
-        *ngFor="let propertyConnector of propertiesConnectors"
+        *ngFor="let propertyConnector of $any(propertiesConnectors) | tuiFilter : matcher : excludedProperties"
         class="t-row"
         [class.t-deprecated]="propertyConnector.documentationPropertyDeprecated"
     >

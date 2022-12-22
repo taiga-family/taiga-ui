@@ -102,4 +102,24 @@
     >
         Pale text suggestion for input (e.g. HH:MM:SS for time)
     </ng-template>
+    <ng-template
+        i18n
+        documentationPropertyName="tuiTextfieldPrefix"
+        documentationPropertyMode="input"
+        documentationPropertyType="string"
+        [documentationPropertyValues]="documentedComponent.prefixVariants"
+        [(documentationPropertyValue)]="documentedComponent.prefix"
+    >
+        Uneditable text before value
+    </ng-template>
+    <ng-template
+        i18n
+        documentationPropertyName="tuiTextfieldPostfix"
+        documentationPropertyMode="input"
+        documentationPropertyType="string"
+        [documentationPropertyValues]="documentedComponent.prefixVariants"
+        [(documentationPropertyValue)]="documentedComponent.postfix"
+    >
+        Uneditable text after value
+    </ng-template>
 </tui-doc-documentation>

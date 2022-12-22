@@ -15,11 +15,13 @@ import {
     TuiDestroyService,
     tuiHexToRgb,
     tuiItemsQueryListObservable,
+    TuiMatcher,
     tuiWatch,
 } from '@taiga-ui/cdk';
 import {merge} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
 
+import {TUI_DOC_EXCLUDED_PROPERTIES} from '../../tokens/excluded-properties';
 import {TUI_DOC_DOCUMENTATION_TEXTS} from '../../tokens/i18n';
 import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
 import {TuiGetOpacityPipe} from './pipes/opacity.pipe';
@@ -59,6 +61,8 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_DOC_DOCUMENTATION_TEXTS)
         readonly texts: [string, string, string, string, string],
+        @Inject(TUI_DOC_EXCLUDED_PROPERTIES)
+        readonly excludedProperties: Set<string>,
         @Self()
         @Inject(TuiDestroyService)
         private readonly destroy$: TuiDestroyService,
@@ -81,6 +85,11 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     get type(): string {
         return this.isAPI ? this.texts[0] : this.texts[1];
     }
+
+    matcher: TuiMatcher<TuiDocDocumentationPropertyConnectorDirective<any>> = (
+        item: TuiDocDocumentationPropertyConnectorDirective<any>,
+        exclusions: Set<string>,
+    ) => !exclusions.has(item.documentationPropertyName);
 
     onColorChange(
         connector: TuiDocDocumentationPropertyConnectorDirective<string>,
