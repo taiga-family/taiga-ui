@@ -1,13 +1,12 @@
-import {execSync} from 'child_process';
 import {resolve} from 'path';
 
 import {
     errorLog,
     infoLog,
-    processLog,
     successLog,
 } from '../projects/cdk/schematics/utils/colored-log';
 import {getValueByFlag} from './shared/argv.utils';
+import {execute} from './shared/execute';
 import {getAllVersions} from './shared/get-all-versions';
 import {getLastMajorVersion} from './shared/get-last-major-version';
 
@@ -21,7 +20,7 @@ const path = getValueByFlag<string>(`--path`, ``);
     const versions: string[] = getAllVersions(packageJson.name);
 
     if (versions.includes(version) && !isDryRun) {
-        errorLog(`${packageJson.name}@${packageJson.version} is already published`);
+        errorLog(`${packageJson.name}@${version} is already published`);
 
         return;
     }
@@ -31,10 +30,13 @@ const path = getValueByFlag<string>(`--path`, ``);
 
     const dry = isDryRun ? `--dry-run` : ``;
     const tag = makeTag(version, versions);
-    const command = `npm publish ${path} ${tag} ${dry} --new-version ${version} --access public`;
 
-    processLog(command);
-    execSync(command, {stdio: `inherit`, encoding: `utf8`});
+    execute(
+        `cd ${path} && npm version ${version} --allow-same-version --no-git-tag-version`,
+    );
+
+    execute(`npm publish ${path} ${tag} ${dry} --access public`);
+
     successLog(`+${packageJson.name}@${version} is published successfully`);
 })();
 

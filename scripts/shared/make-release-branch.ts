@@ -1,7 +1,7 @@
-import {execSync} from 'child_process';
+import {execute} from './execute';
 
 export function makeReleaseBranch(newVersion: string): void {
-    execSync(`git checkout main`, {stdio: `inherit`});
-    execSync(`git pull`, {stdio: `inherit`});
-    execSync(`git checkout -B release/${newVersion}`, {stdio: `inherit`});
+    execute(`git checkout main`);
+    execute(`git pull`);
+    execute(`git checkout -B release/${newVersion}`);
 }
