@@ -8,6 +8,7 @@ export interface TuiTablePaginationOptions {
     >;
     readonly showPages: boolean;
     readonly items: readonly number[];
+    readonly size: number;
 }
 
 function defaultSizeOptionContent({$implicit}: TuiContextWithImplicit<number>): string {
@@ -17,7 +18,8 @@ function defaultSizeOptionContent({$implicit}: TuiContextWithImplicit<number>): 
 export const TUI_TABLE_PAGINATION_DEFAULT_OPTIONS: TuiTablePaginationOptions = {
     sizeOptionContent: defaultSizeOptionContent,
     showPages: true,
-    items: [10, 20, 50, 100]
+    items: [10, 20, 50, 100],
+    size: 10,
 };
 
 export const TUI_TABLE_PAGINATION_OPTIONS = new InjectionToken(

@@ -30,7 +30,7 @@ export class TuiTablePaginationComponent {
 
     @Input()
     @tuiDefaultProp()
-    size = this.items[0];
+    size = this.options.size;
 
     /**
      * TODO: Remove in 4.0
