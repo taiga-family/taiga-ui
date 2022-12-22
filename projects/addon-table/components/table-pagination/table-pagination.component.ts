@@ -18,7 +18,7 @@ import {
 export class TuiTablePaginationComponent {
     @Input()
     @tuiDefaultProp()
-    items: readonly number[] = [10, 20, 50, 100];
+    items: readonly number[] = this.options.items;
 
     @Input()
     @tuiDefaultProp()
@@ -30,7 +30,7 @@ export class TuiTablePaginationComponent {
 
     @Input()
     @tuiDefaultProp()
-    size = this.items[0];
+    size = this.options.size;
 
     /**
      * TODO: Remove in 4.0
