@@ -7,6 +7,7 @@ on:
 
 env:
   NX_BRANCH: ${{ github.event.number }}
+  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
 
 jobs:
@@ -24,10 +25,11 @@ jobs:
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
+      - name: Build
+        run: npm run run-many:build:libs
+
       - name: Publish dev builds
-        run: |
-          npm run run-many:build:libs
-          npx ts-node ./scripts/publish-dev-builds.ts
+        run: npx ts-node ./scripts/publish-dev-builds.ts
 
 concurrency:
   group: publish-dev-${{ github.workflow }}-${{ github.ref }}
