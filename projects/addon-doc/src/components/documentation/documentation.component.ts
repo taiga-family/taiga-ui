@@ -89,9 +89,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     matcher: TuiMatcher<TuiDocDocumentationPropertyConnectorDirective<any>> = (
         item: TuiDocDocumentationPropertyConnectorDirective<any>,
         exclusions: Set<string>,
-    ) => {
-        return !exclusions.has(item.documentationPropertyName);
-    };
+    ) => !exclusions.has(item.documentationPropertyName);
 
     onColorChange(
         connector: TuiDocDocumentationPropertyConnectorDirective<string>,
