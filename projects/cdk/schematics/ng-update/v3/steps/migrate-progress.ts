@@ -15,6 +15,7 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../../utils/colored-log';
+import {projectRoot} from '../../../utils/project-root';
 import {findElementsWithAttribute} from '../../../utils/templates/elements';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {
@@ -42,7 +43,7 @@ export function migrateProgress(fileSystem: DevkitFileSystem, options: TuiSchema
 
     fileSystem.commitEdits();
     saveActiveProject();
-    setActiveProject(createProject(fileSystem.tree, `/`, ALL_FILES));
+    setActiveProject(createProject(fileSystem.tree, projectRoot(), ALL_FILES));
 
     !options[`skip-logs`] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} progress bars migrated \n`);
