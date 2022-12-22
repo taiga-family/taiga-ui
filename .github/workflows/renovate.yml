@@ -1,4 +1,4 @@
-name: Update npm dependencies by renovate
+name: Update dependencies
 
 on:
   workflow_dispatch:
@@ -17,5 +17,5 @@ jobs:
         with:
           configurationFile: .github/renovate/renovate.json5
           token: ${{ secrets.TINKOFF_BOT_PAT }}
-          env:
-            LOG_LEVEL: 'debug'
+        env:
+          LOG_LEVEL: 'debug'
