@@ -6,7 +6,6 @@ import {
 } from '@angular/common';
 import {inject, Provider} from '@angular/core';
 import {Title} from '@angular/platform-browser';
-import {WINDOW} from '@ng-web-apis/common';
 import {
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
@@ -23,7 +22,6 @@ import {
     TUI_DIALOG_CLOSES_ON_BACK,
     TUI_IS_CYPRESS,
     TUI_TAKE_ONLY_TRUSTED_EVENTS,
-    tuiIsInsideIframe,
 } from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DURATION, TUI_SANITIZER} from '@taiga-ui/core';
 import {TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
@@ -131,7 +129,9 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_DIALOG_CLOSES_ON_BACK,
-        useFactory: () => of(!tuiIsInsideIframe(inject(WINDOW))), // for cypress tests
+        // TODO: change it back after solving https://github.com/Tinkoff/taiga-ui/issues/3270
+        // useFactory: () => of(!tuiIsInsideIframe(inject(WINDOW))), // for cypress tests
+        useFactory: () => of(inject(TUI_IS_CYPRESS)),
     },
     tuiLanguageSwitcher(
         async (language: TuiLanguageName): Promise<unknown> =>
