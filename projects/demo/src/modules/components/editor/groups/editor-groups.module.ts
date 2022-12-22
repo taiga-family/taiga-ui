@@ -12,8 +12,10 @@ import {
     TuiSvgModule,
 } from '@taiga-ui/core';
 
-import {ExampleTuiEditorDraggableGroupsComponent} from './editor-draggable-groups.component';
-import {TuiEditorDraggableGroupExample1} from './examples/1';
+import {ExampleTuiEditorDraggableGroupsComponent} from './editor-groups.component';
+import {TuiEditorGroupExample1} from './examples/1';
+import {TuiEditorGroupExample2} from './examples/2';
+import {TuiEditorGroupExample3} from './examples/3';
 
 @NgModule({
     imports: [
@@ -33,8 +35,10 @@ import {TuiEditorDraggableGroupExample1} from './examples/1';
         ),
     ],
     declarations: [
-        TuiEditorDraggableGroupExample1,
+        TuiEditorGroupExample1,
+        TuiEditorGroupExample2,
+        TuiEditorGroupExample3,
         ExampleTuiEditorDraggableGroupsComponent,
     ],
 })
-export class ExampleTuiEditorDraggableGroupsModule {}
+export class ExampleTuiEditorGroupsModule {}

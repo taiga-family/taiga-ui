@@ -36,6 +36,7 @@ export const TUI_PORTUGUESE_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         superscript: `Superscript`,
         subscript: `Subscript`,
         insertTable: `Insert table`,
+        hiliteGroup: `Hilite group`,
         insertGroup: `Insert group`,
         removeGroup: `Remove group`,
         insertAnchor: `Insert anchor`,

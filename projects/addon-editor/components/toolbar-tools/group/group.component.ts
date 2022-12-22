@@ -9,6 +9,7 @@ import {distinctUntilChanged, map} from 'rxjs/operators';
 @Component({
     selector: 'tui-editor-group-tool',
     templateUrl: './group.component.html',
+    styleUrls: ['../tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditorGroupToolComponent {

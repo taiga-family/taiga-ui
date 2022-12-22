@@ -357,6 +357,12 @@
             tuiItem
             class="t-tool t-tool_margin"
         ></tui-editor-group-tool>
+        <tui-table-cell-color
+            *ngIf="!enabled(TuiEditorTool.Table)"
+            tuiItem
+            class="t-tool t-wrapper"
+            [colors]="colors"
+        ></tui-table-cell-color>
     </div>
     <div
         *ngIf="enabled(TuiEditorTool.Table)"

@@ -23,6 +23,7 @@ export abstract class AbstractTuiEditor {
     abstract getFontColor(): string;
     abstract getBackgroundColor(): string;
     abstract getCellColor(): string;
+    abstract getGroupColor(): string;
     abstract onAlign(align: string): void;
     abstract setImage(src: string): void;
     abstract undo(): void;
@@ -73,6 +74,7 @@ export abstract class AbstractTuiEditor {
     abstract setDetails(): void;
     abstract removeDetails(): void;
     abstract setGroup(): void;
+    abstract setGroupHilite(color: string): void;
     abstract removeGroup(): void;
     abstract setAnchor(id: string): void;
     abstract removeAnchor(): void;

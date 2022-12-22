@@ -908,21 +908,15 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Editor`,
-        title: `Draggable groups`,
-        keywords: `editor, draggable, groups, wysiwyg, редактор, текст, html, rich, text`,
-        route: `/editor/draggable-groups`,
-    },
-    {
-        section: $localize`Editor`,
-        title: `Nested groups`,
-        keywords: `editor, nested, groups, wysiwyg, редактор, текст, html, rich, text`,
-        route: `/editor/nested-groups`,
-    },
-    {
-        section: $localize`Editor`,
         title: `Uploading images`,
         keywords: `editor, upload, images, wysiwyg, редактор, текст, html, rich, text`,
         route: `/editor/uploading-images`,
+    },
+    {
+        section: $localize`Editor`,
+        title: `Groups`,
+        keywords: `editor, draggable, nested, hilite, groups, wysiwyg, редактор, текст, html, rich, text`,
+        route: `/editor/groups`,
     },
     {
         section: $localize`Editor`,

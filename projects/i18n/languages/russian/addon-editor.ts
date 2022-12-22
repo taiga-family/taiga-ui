@@ -37,6 +37,7 @@ export const TUI_RUSSIAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         subscript: `Подстрочный`,
         insertTable: `Добавить таблицу`,
         insertGroup: `Добавить группу`,
+        hiliteGroup: `Покрасить группу`,
         removeGroup: `Удалить группу`,
         insertAnchor: `Добавить якорь`,
         mergeCells: `Объединить ячейки`,

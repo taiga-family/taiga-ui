@@ -6,7 +6,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 
 @Component({
-    selector: `tui-editor-nested-groups-example-1`,
+    selector: `tui-editor-groups-example-3`,
     templateUrl: `./index.html`,
     styleUrls: [`./index.less`],
     providers: [
@@ -33,7 +33,7 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
     changeDetection,
     encapsulation,
 })
-export class TuiEditorNestedGroupsExample1 {
+export class TuiEditorGroupExample3 {
     readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Group];
 
     control = new FormControl(``);

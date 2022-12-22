@@ -37,6 +37,7 @@ export const TUI_FRENCH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         subscript: `Indice`,
         insertTable: `Insérer une table`,
         insertGroup: `Insérer un groupe`,
+        hiliteGroup: `Hilite group`,
         removeGroup: `Supprimer le groupe`,
         insertAnchor: `Insérer une ancre`,
         mergeCells: `Fusionner les cellules`,

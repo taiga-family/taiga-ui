@@ -36,6 +36,7 @@ export const TUI_TURKISH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         superscript: `Üst Simge`,
         subscript: `Alt Simge`,
         insertTable: `Insert table`,
+        hiliteGroup: `Hilite group`,
         insertGroup: `Insert group`,
         removeGroup: `Remove group`,
         insertAnchor: `Insert anchor`,

@@ -37,6 +37,7 @@ export const TUI_POLISH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         subscript: `Indeks dolny`,
         insertTable: `Wstaw tabelę`,
         insertGroup: `Insert group`,
+        hiliteGroup: `Hilite group`,
         removeGroup: `Remove group`,
         insertAnchor: `Insert anchor`,
         mergeCells: `Scal komórki`,

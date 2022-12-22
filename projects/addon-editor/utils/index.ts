@@ -8,5 +8,6 @@ export * from './insert-text';
 export * from './is-selection-in';
 export * from './legacy-converter';
 export * from './parse-gradient';
+export * from './parse-style';
 export * from './safe-link-range';
 export * from './to-gradient';

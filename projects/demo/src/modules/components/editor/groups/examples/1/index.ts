@@ -6,7 +6,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 
 @Component({
-    selector: `tui-editor-draggable-group-example-1`,
+    selector: `tui-editor-groups-example-1`,
     templateUrl: `./index.html`,
     providers: [
         TuiDestroyService,
@@ -33,7 +33,7 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
     encapsulation,
     changeDetection,
 })
-export class TuiEditorDraggableGroupExample1 {
+export class TuiEditorGroupExample1 {
     readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Group];
 
     control = new FormControl(``);
