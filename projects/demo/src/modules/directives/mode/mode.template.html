@@ -7,7 +7,27 @@
     <ng-template pageTab>
         <p i18n>
             <code>tuiMode</code>
-            allows to set style for a scope of interface
+            allows to set style for a scope of interface.
+        </p>
+
+        <p>There are three modes by default:</p>
+
+        <ul class="tui-list">
+            <li class="tui-list__item">
+                <b>Normal</b>
+            </li>
+            <li class="tui-list__item">
+                <b>tuiMode="onDark"</b>
+                - transparent light for dark background
+            </li>
+            <li class="tui-list__item">
+                <b>tuiMode="onLight"</b>
+                - transparent dark for light background
+            </li>
+        </ul>
+
+        <p>
+            If you need something more, then you can either redefine various css variables or define appearance in css.
         </p>
 
         <tui-doc-example
