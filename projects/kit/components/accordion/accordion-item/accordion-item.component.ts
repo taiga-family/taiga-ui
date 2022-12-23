@@ -128,15 +128,6 @@ export class TuiAccordionItemComponent
         this.updateOpen(false);
     }
 
-    onItemKeyDownSpace(event: Event): void {
-        if (!this.focused) {
-            return;
-        }
-
-        event.preventDefault();
-        this.onRowToggle();
-    }
-
     close(): void {
         this.updateOpen(false);
         this.changeDetectorRef.markForCheck();
