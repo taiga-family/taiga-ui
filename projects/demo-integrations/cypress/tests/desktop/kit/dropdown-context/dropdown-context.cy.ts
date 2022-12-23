@@ -32,19 +32,14 @@ describe(`DropdownContext`, () => {
         );
     });
 
-    it(`focuses content inside on Arrow Up key`, () => {
-        cy.get(`#context-menu`).find(`tr`).eq(2).rightclick();
+    it(`does not close dropdown when nested dropdown is clicked`, () => {
+        cy.get(`#context-menu`).find(`tr`).eq(1).rightclick(`left`);
+        cy.get(`[tuioption]`).last().click();
 
-        cy.get(`body`).type(`{uparrow}`);
+        cy.get(`#context-menu`).matchImageSnapshot(`03-1-second-opened`);
 
-        cy.window()
-            .wait(WAIT_BEFORE_SCREENSHOT)
-            .matchImageSnapshot(`03-arrow-up`, {capture: `viewport`});
+        cy.get(`[tuioption]`).last().click();
 
-        cy.get(`body`).type(`{rightarrow}`);
-
-        cy.window()
-            .wait(WAIT_BEFORE_SCREENSHOT)
-            .matchImageSnapshot(`03-arrow-up-right`, {capture: `viewport`});
+        cy.get(`#context-menu`).matchImageSnapshot(`03-2-second-remains`);
     });
 });
