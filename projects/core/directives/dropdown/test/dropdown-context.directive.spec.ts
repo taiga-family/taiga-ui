@@ -89,7 +89,7 @@ describe(`TuiDropdownContext directive`, () => {
         fixture.detectChanges();
 
         expect(getTextInsideDropdown()).not.toBeFalsy();
-        getRootBlock()?.click();
+        getRootBlock()?.dispatchEvent(new Event(`mousedown`, {bubbles: true}));
         fixture.detectChanges();
 
         await fixture.whenStable();
