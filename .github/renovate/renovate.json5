@@ -2,20 +2,27 @@
     $schema: 'https://docs.renovatebot.com/renovate-schema.json',
     baseBranches: ['main'],
     enabledManagers: ['npm'],
-    extends: ['config:base', 'group:allNonMajor'],
-    fetchReleaseNotes: false, // Only fetch release notes for breaking changes
-    internalChecksFilter: 'strict', // PRs will be skipped unless a non-pending version is available (applies to "stabilityDays" check only)
+    // Only fetch release notes for breaking changes
+    fetchReleaseNotes: false,
+    // PRs will be skipped unless a non-pending version
+    // is available (applies to "stabilityDays" check only)
+    internalChecksFilter: 'strict',
     labels: ['dependencies'],
-    branchConcurrentLimit: 3,
-    prConcurrentLimit: 3,
     repositories: ['tinkoff/taiga-ui'],
     username: 'renovate',
     gitAuthor: 'Renovate Bot <bot@renovateapp.com>',
     platform: 'github',
-    rangeStrategy: 'bump', // Always bump minor/patch to latest
+    masterIssueApproval: false,
+    separateMajorMinor: true,
+    separateMinorPatch: true,
+    dependencyDashboard: false,
+    dependencyDashboardApproval: false,
+    // Always bump minor/patch to latest
+    rangeStrategy: 'bump',
     branchPrefix: 'renovate/',
     timezone: 'Europe/Moscow',
-    // Required to prevent onboarding pr and generation of new config file https://github.com/renovatebot/github-action#configurationfile
+    // Required to prevent onboarding pr and generation
+    // of new config file https://github.com/renovatebot/github-action#configurationfile
     onboarding: false,
     requireConfig: false,
     digest: {
@@ -28,16 +35,127 @@
     prBodyColumns: ['Package', 'Type', 'Change'],
     packageRules: [
         {
-            matchUpdateTypes: ['major'],
-            labels: ['renovate', 'major'],
+            matchUpdateTypes: ['major', 'minor'],
+            enabled: false,
         },
         {
-            matchUpdateTypes: ['minor'],
-            labels: ['renovate', 'minor'],
+            depTypeList: ['engines', 'peerDependencies'],
+            enabled: false,
+        },
+        {
+            // ignore list
+            matchPackageNames: [
+                '^typescript',
+                '^@angular-devkit/.*',
+                '^@angular-builders/.*',
+                '^@nguniversal/.*',
+                '^@angular/.*',
+                '^tslib',
+                'zone.js',
+                'rxjs',
+            ],
+            enabled: false,
         },
         {
             matchUpdateTypes: ['patch'],
             labels: ['renovate', 'patch'],
+        },
+        {
+            matchPackagePatterns: ['^@ng-web-apis/.*'],
+            groupSlug: 'ng-web-apis',
+            groupName: 'ng-web-apis dependencies',
+        },
+        {
+            matchPackagePatterns: ['^@tiptap/.*', '^prosemirror.*'],
+            groupSlug: 'tiptap',
+            groupName: 'tiptap dependencies',
+        },
+        {
+            matchPackagePatterns: ['^@types/.*'],
+            groupSlug: 'types',
+            groupName: 'types dependencies',
+        },
+        {
+            matchPackagePatterns: ['^prettier'],
+            groupSlug: 'prettier',
+            groupName: 'prettier dependencies',
+        },
+        {
+            matchPackagePatterns: ['^@nrwl/.*'],
+            groupSlug: 'nrwl',
+            groupName: 'nrwl dependencies',
+        },
+        {
+            matchPackagePatterns: ['cypress', 'cy2', '@types/cypress-image-snapshot', 'cypress-image-snapshot'],
+            groupSlug: 'cypress',
+            groupName: 'cypress dependencies',
+        },
+        {
+            matchPackagePatterns: ['^@commitlint/.*'],
+            groupSlug: 'commitlint',
+            groupName: 'commitlint dependencies',
+        },
+        {
+            matchPackagePatterns: ['^@tinkoff/.*'],
+            groupSlug: 'tinkoff',
+            groupName: 'tinkoff dependencies',
+        },
+        {
+            matchPackagePatterns: ['^rollup.*', '@types/svgo', '@rollup/pluginutils', 'svgo'],
+            groupSlug: 'icons',
+            groupName: 'icons dependencies',
+        },
+        {
+            matchPackagePatterns: [
+                'find-in-files',
+                'ts-loader',
+                'ts-node',
+                'wait-on',
+                'kill-port',
+                'http-server',
+                'firebase-tools',
+                'husky',
+                'postcss',
+                'standard-version',
+                'angular-http-server',
+                'bundlemon',
+                'parse5',
+                'core-js',
+                'date-fns',
+                'cpy-cli',
+                'ng-yandex-metrika',
+                'ngx-markdown',
+                'dompurify',
+                '^@stackblitz/.*',
+                'express',
+                'less-plugin-npm-import',
+                'showdown',
+            ],
+            groupSlug: 'tools',
+            groupName: 'tools dependencies',
+        },
+        {
+            matchPackagePatterns: [
+                '^eslint.*',
+                '^@types/eslint$',
+                '^@angular-eslint/.*',
+                '^@html-eslint/.*',
+                '^@typescript-eslint/.*',
+                '^@nrwl/eslint-.*',
+                '^@tinkoff/eslint-.*',
+            ],
+            groupSlug: 'eslint',
+            groupName: 'eslint dependencies',
+        },
+        {
+            matchPackagePatterns: ['^@types/jest$', '^@types/jsdom$', '^jest.*', '^ts-jest$', '^jest-preset-angular$'],
+            groupSlug: 'jest',
+            groupName: 'jest dependencies',
+        },
+        {
+            matchPackagePatterns: ['^jasmine.*'],
+            groupSlug: 'jasmine',
+            groupName: 'jasmine dependencies',
         },
     ],
 }
