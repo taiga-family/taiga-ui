@@ -31,8 +31,8 @@ export class TuiValueDecorationComponent implements DoCheck {
     readonly pre$ = this.prefix$.pipe(
         delay(0),
         filter(() => !!this.pre?.nativeElement.isConnected),
-        distinctUntilChanged(),
         map(() => this.pre?.nativeElement.offsetWidth || 0),
+        distinctUntilChanged(),
     );
 
     constructor(
