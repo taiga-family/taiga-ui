@@ -30,7 +30,7 @@
         "rxjs": ">=6.0.0"
     },
     "optionalDependencies": {
-        "ng-morph": "^2.1.0",
+        "ng-morph": "^2.1.1",
         "parse5": "^6.0.1"
     },
     "ng-update": {
