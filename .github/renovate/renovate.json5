@@ -7,14 +7,16 @@
     // PRs will be skipped unless a non-pending version
     // is available (applies to "stabilityDays" check only)
     internalChecksFilter: 'strict',
-    labels: ['dependencies'],
+    // Prevent DDos github platform
+    branchConcurrentLimit: 3,
+    prConcurrentLimit: 3,
     repositories: ['tinkoff/taiga-ui'],
     username: 'renovate',
     gitAuthor: 'Renovate Bot <bot@renovateapp.com>',
     platform: 'github',
     masterIssueApproval: false,
     separateMajorMinor: true,
-    separateMinorPatch: true,
+    separateMinorPatch: false,
     dependencyDashboard: false,
     dependencyDashboardApproval: false,
     // Always bump minor/patch to latest
@@ -29,13 +31,13 @@
         enabled: false,
     },
     pinDigests: false,
-    ignoreDeps: ['typescript'],
     includePaths: ['package.json', '**/package.json', '!node_modules/**'],
     prBodyTemplate: '{{{table}}}{{{notes}}}{{{changelogs}}}{{{controls}}}{{{footer}}}',
     prBodyColumns: ['Package', 'Type', 'Change'],
     packageRules: [
+        // Disable
         {
-            matchUpdateTypes: ['major', 'minor'],
+            matchUpdateTypes: ['major'],
             enabled: false,
         },
         {
@@ -43,69 +45,89 @@
             enabled: false,
         },
         {
-            // ignore list
+            matchUpdateTypes: ['major', 'minor', 'patch'],
             matchPackageNames: [
-                '^typescript',
                 '^@angular-devkit/.*',
                 '^@angular-builders/.*',
                 '^@nguniversal/.*',
                 '^@angular/.*',
-                '^tslib',
                 'zone.js',
                 'rxjs',
             ],
+            groupSlug: 'angular',
+            groupName: 'angular dependencies',
             enabled: false,
+        },
+        {
+            matchUpdateTypes: ['major', 'minor', 'patch'],
+            matchPackageNames: ['typescript', 'tslib'],
+            enabled: false,
+        },
+        // Enable
+        {
+            matchUpdateTypes: ['minor'],
+            labels: ['renovate', 'minor'],
         },
         {
             matchUpdateTypes: ['patch'],
             labels: ['renovate', 'patch'],
         },
         {
+            matchUpdateTypes: ['minor', 'patch'],
             matchPackagePatterns: ['^@ng-web-apis/.*'],
             groupSlug: 'ng-web-apis',
             groupName: 'ng-web-apis dependencies',
         },
         {
+            matchUpdateTypes: ['minor', 'patch'],
             matchPackagePatterns: ['^@tiptap/.*', '^prosemirror.*'],
             groupSlug: 'tiptap',
             groupName: 'tiptap dependencies',
         },
         {
+            matchUpdateTypes: ['minor', 'patch'],
             matchPackagePatterns: ['^@types/.*'],
             groupSlug: 'types',
             groupName: 'types dependencies',
         },
         {
+            matchUpdateTypes: ['minor', 'patch'],
             matchPackagePatterns: ['^prettier'],
             groupSlug: 'prettier',
             groupName: 'prettier dependencies',
         },
         {
+            matchUpdateTypes: ['minor', 'patch'],
             matchPackagePatterns: ['^@nrwl/.*'],
             groupSlug: 'nrwl',
             groupName: 'nrwl dependencies',
         },
         {
+            matchUpdateTypes: ['minor', 'patch'],
             matchPackagePatterns: ['cypress', 'cy2', '@types/cypress-image-snapshot', 'cypress-image-snapshot'],
             groupSlug: 'cypress',
             groupName: 'cypress dependencies',
         },
         {
+            matchUpdateTypes: ['minor', 'patch'],
             matchPackagePatterns: ['^@commitlint/.*'],
             groupSlug: 'commitlint',
             groupName: 'commitlint dependencies',
         },
         {
+            matchUpdateTypes: ['minor', 'patch'],
             matchPackagePatterns: ['^@tinkoff/.*'],
             groupSlug: 'tinkoff',
             groupName: 'tinkoff dependencies',
         },
         {
+            matchUpdateTypes: ['minor', 'patch'],
             matchPackagePatterns: ['^rollup.*', '@types/svgo', '@rollup/pluginutils', 'svgo'],
             groupSlug: 'icons',
             groupName: 'icons dependencies',
         },
         {
+            matchUpdateTypes: ['minor', 'patch'],
             matchPackagePatterns: [
                 'find-in-files',
                 'ts-loader',
@@ -135,6 +157,7 @@
             groupName: 'tools dependencies',
         },
         {
+            matchUpdateTypes: ['minor', 'patch'],
             matchPackagePatterns: [
                 '^eslint.*',
                 '^@types/eslint$',
@@ -148,11 +171,13 @@
             groupName: 'eslint dependencies',
         },
         {
+            matchUpdateTypes: ['minor', 'patch'],
             matchPackagePatterns: ['^@types/jest$', '^@types/jsdom$', '^jest.*', '^ts-jest$', '^jest-preset-angular$'],
             groupSlug: 'jest',
             groupName: 'jest dependencies',
         },
         {
+            matchUpdateTypes: ['minor', 'patch'],
             matchPackagePatterns: ['^jasmine.*'],
             groupSlug: 'jasmine',
             groupName: 'jasmine dependencies',
