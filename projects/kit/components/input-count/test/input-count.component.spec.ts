@@ -73,7 +73,7 @@ describe(`InputCount`, () => {
             it(`During initialization, fallback value 0 is displayed, control does not change values`, async () => {
                 await fixture.whenStable();
 
-                expect(inputPO.value).toBe(`0`);
+                expect(inputPO.value).toBe(``);
                 expect(testComponent.control.value).toBe(null);
             });
         });
@@ -252,8 +252,8 @@ describe(`InputCount`, () => {
 
             await fixture.whenStable();
 
-            expect(inputPO.value).toBe(`10`);
-            expect(testComponent.control.value).toBe(10);
+            expect(inputPO.value).toBe(``);
+            expect(testComponent.control.value).toBe(null);
         });
 
         it(`If you enter a number greater than max, the new value is max`, () => {
@@ -278,7 +278,7 @@ describe(`InputCount`, () => {
             await fixture.whenStable();
 
             fixture.detectChanges();
-            expect(testComponent.control.value).toBe(0);
+            expect(testComponent.control.value).toBe(null);
         });
 
         it(`Entering in the field negative value changes the value control correctly`, () => {

@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
-    AbstractTuiControl,
+    AbstractTuiNullableControl,
     TUI_IS_MOBILE,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
@@ -53,7 +53,7 @@ import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from './input-count-optio
     ],
 })
 export class TuiInputCountComponent
-    extends AbstractTuiControl<number>
+    extends AbstractTuiNullableControl<number>
     implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
@@ -182,7 +182,9 @@ export class TuiInputCountComponent
     onValueChange(): void {
         const capped = this.capValue(this.nativeNumberValue);
 
-        if (capped === null || Number.isNaN(capped)) {
+        if (this.isNotNumber(capped)) {
+            this.updateValue(null);
+
             return;
         }
 
@@ -232,10 +234,6 @@ export class TuiInputCountComponent
         }
     }
 
-    protected getFallbackValue(): number {
-        return 0;
-    }
-
     private get nativeNumberValue(): number {
         return parseInt(
             this.nativeValue.split(this.numberFormat.thousandSeparator).join(``),
@@ -269,6 +267,12 @@ export class TuiInputCountComponent
     }
 
     private onBlur(): void {
+        if (this.isNotNumber(this.value)) {
+            this.updateValue(null);
+
+            return;
+        }
+
         const value = Math.max(this.nativeNumberValue || 0, this.min);
         const formattedValue = this.formatNumber(value);
 
@@ -280,7 +284,11 @@ export class TuiInputCountComponent
         }
     }
 
-    private formatNumber(value: number): string {
-        return tuiFormatNumber(value, this.numberFormat);
+    private formatNumber(value: number | null): string {
+        return this.isNotNumber(value) ? `` : tuiFormatNumber(value, this.numberFormat);
+    }
+
+    private isNotNumber(value: number | null): value is null {
+        return Number.isNaN(value) || !tuiIsPresent(value);
     }
 }
