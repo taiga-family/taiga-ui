@@ -15,7 +15,7 @@ jobs:
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v34.68.0
         with:
-          configurationFile: .github/renovate/renovate.json5
           token: ${{ secrets.TINKOFF_BOT_PAT }}
+          configurationFile: renovate.json
         env:
           LOG_LEVEL: 'debug'
