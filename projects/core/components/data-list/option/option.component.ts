@@ -96,7 +96,6 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
 
     // @bad TODO: Consider aria-activedescendant for proper accessibility implementation
     @shouldCall(shouldFocus)
-    @HostListener(`mousemove.init`, [`$event`])
     @HostListener(`mousemove.silent`, [`$event`])
     onMouseMove({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>): void {
         currentTarget.focus({preventScroll: true});
