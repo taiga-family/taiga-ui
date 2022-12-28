@@ -2,14 +2,14 @@ import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
 import {AbstractTuiController} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_FILLER = new InjectionToken<TuiTextfieldFillerDirective>(
-    `[TUI_TEXTFIELD_FILLER]: tuiTextfieldPrefix`,
+    '[TUI_TEXTFIELD_FILLER]: tuiTextfieldPrefix',
     {
         factory: () => new TuiTextfieldFillerDirective(),
     },
 );
 
 @Directive({
-    selector: `[tuiTextfieldFiller]`,
+    selector: '[tuiTextfieldFiller]',
     providers: [
         {
             provide: TUI_TEXTFIELD_FILLER,
@@ -18,6 +18,6 @@ export const TUI_TEXTFIELD_FILLER = new InjectionToken<TuiTextfieldFillerDirecti
     ],
 })
 export class TuiTextfieldFillerDirective extends AbstractTuiController {
-    @Input(`tuiTextfieldFiller`)
-    filler = ``;
+    @Input('tuiTextfieldFiller')
+    filler = '';
 }

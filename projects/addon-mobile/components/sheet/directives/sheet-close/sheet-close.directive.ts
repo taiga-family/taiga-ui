@@ -9,7 +9,7 @@ import {TUI_SHEET_CLOSE} from '../../components/sheet-heading/sheet-heading.comp
 import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 
 @Directive({
-    selector: `tui-sheet[close]`,
+    selector: 'tui-sheet[close]',
 })
 export class TuiSheetCloseDirective {
     @Output()

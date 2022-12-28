@@ -29,9 +29,9 @@ import {
 } from '@taiga-ui/core';
 
 @Component({
-    selector: `tui-input-cvc`,
-    templateUrl: `./input-cvc.template.html`,
-    styleUrls: [`./input-cvc.style.less`],
+    selector: 'tui-input-cvc',
+    templateUrl: './input-cvc.template.html',
+    styleUrls: ['./input-cvc.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputCVCComponent),
@@ -52,14 +52,14 @@ export class TuiInputCVCComponent
     @Input()
     @tuiRequiredSetter()
     set length(length: TuiCodeCVCLength) {
-        this.exampleText = `0`.repeat(length);
+        this.exampleText = '0'.repeat(length);
         this.textMaskOptions = {
             mask: new Array(length).fill(TUI_DIGIT_REGEXP),
             guide: false,
         };
     }
 
-    exampleText = `000`;
+    exampleText = '000';
 
     textMaskOptions: TuiTextMaskOptions = {
         mask: new Array(3).fill(TUI_DIGIT_REGEXP),
@@ -87,11 +87,11 @@ export class TuiInputCVCComponent
     }
 
     get autocomplete(): TuiAutofillFieldName {
-        return this.autocompleteEnabled ? `cc-csc` : `off`;
+        return this.autocompleteEnabled ? 'cc-csc' : 'off';
     }
 
     get computedPlaceholder(): string {
-        return this.textfieldLabelOutside.labelOutside ? `` : this.exampleText;
+        return this.textfieldLabelOutside.labelOutside ? '' : this.exampleText;
     }
 
     onFocused(focused: boolean): void {
@@ -105,6 +105,6 @@ export class TuiInputCVCComponent
     }
 
     protected getFallbackValue(): string {
-        return ``;
+        return '';
     }
 }

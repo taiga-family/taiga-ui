@@ -18,11 +18,11 @@ import {BehaviorSubject, Subject, timer} from 'rxjs';
 import {debounce, filter, map} from 'rxjs/operators';
 
 @Component({
-    selector: `tui-tiles`,
+    selector: 'tui-tiles',
     template: `
         <ng-content></ng-content>
     `,
-    styleUrls: [`tiles.style.less`],
+    styleUrls: ['tiles.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -59,14 +59,14 @@ export class TuiTilesComponent {
         map(element => this.reorder(element)),
     );
 
-    @HostBinding(`class._dragged`)
+    @HostBinding('class._dragged')
     element: Element | null = null;
 
     readonly order$ = new BehaviorSubject(new Map<number, number>());
 
     constructor(@Inject(ElementRef) private readonly elementRef: ElementRef<Element>) {}
 
-    @HostListener(`pointerleave.silent`)
+    @HostListener('pointerleave.silent')
     rearrange(element?: Element): void {
         this.element$.next(element);
     }

@@ -9,7 +9,7 @@ import {takeUntil} from 'rxjs/operators';
  * else on event and do not want to trigger change detection
  */
 @Directive({
-    selector: `[tuiPreventDefault]`,
+    selector: '[tuiPreventDefault]',
     providers: [TuiDestroyService],
 })
 export class TuiPreventDefaultDirective {
@@ -17,7 +17,7 @@ export class TuiPreventDefaultDirective {
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(NgZone) ngZone: NgZone,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
-        @Attribute(`tuiPreventDefault`) eventName: string,
+        @Attribute('tuiPreventDefault') eventName: string,
     ) {
         fromEvent(nativeElement, eventName, {passive: false})
             .pipe(tuiZonefree(ngZone), tuiPreventDefault(), takeUntil(destroy$))

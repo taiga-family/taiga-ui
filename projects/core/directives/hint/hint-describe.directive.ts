@@ -20,19 +20,19 @@ import {
 import {TuiHintHoverDirective} from './hint-hover.directive';
 
 @Directive({
-    selector: `[tuiHintDescribe]`,
+    selector: '[tuiHintDescribe]',
     providers: [tuiAsDriver(TuiHintDescribeDirective)],
 })
 export class TuiHintDescribeDirective extends TuiDriver {
-    private readonly focus$ = tuiTypedFromEvent(this.documentRef, `keydown`, {
+    private readonly focus$ = tuiTypedFromEvent(this.documentRef, 'keydown', {
         capture: true,
     }).pipe(
         switchMap(() =>
             this.focused
                 ? of(false)
                 : merge(
-                      tuiTypedFromEvent(this.documentRef, `keyup`),
-                      tuiTypedFromEvent(this.element, `blur`),
+                      tuiTypedFromEvent(this.documentRef, 'keyup'),
+                      tuiTypedFromEvent(this.element, 'blur'),
                   ).pipe(map(() => this.focused)),
         ),
         debounce(visible => (visible ? timer(1000) : of(null))),
@@ -45,7 +45,7 @@ export class TuiHintDescribeDirective extends TuiDriver {
     private readonly stream$ = merge(this.hover$, this.focus$);
 
     @Input()
-    tuiHintDescribe = ``;
+    tuiHintDescribe = '';
 
     constructor(
         @Inject(NgZone) private readonly ngZone: NgZone,

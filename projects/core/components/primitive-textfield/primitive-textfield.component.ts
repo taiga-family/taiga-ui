@@ -43,9 +43,9 @@ const ICON_PADDING = 1.75;
 const ICON_PADDING_S = 1.5;
 
 @Component({
-    selector: `tui-primitive-textfield`,
-    templateUrl: `./primitive-textfield.template.html`,
-    styleUrls: [`./primitive-textfield.style.less`],
+    selector: 'tui-primitive-textfield',
+    templateUrl: './primitive-textfield.template.html',
+    styleUrls: ['./primitive-textfield.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiPrimitiveTextfieldComponent),
@@ -53,16 +53,16 @@ const ICON_PADDING_S = 1.5;
         MODE_PROVIDER,
     ],
     host: {
-        '($.data-mode.attr)': `mode$`,
-        '[class._autofilled]': `autofilled`,
-        '[class._label-outside]': `controller.labelOutside`,
+        '($.data-mode.attr)': 'mode$',
+        '[class._autofilled]': 'autofilled',
+        '[class._label-outside]': 'controller.labelOutside',
     },
 })
 export class TuiPrimitiveTextfieldComponent
     extends AbstractTuiInteractive
     implements TuiPrimitiveTextfield
 {
-    @ViewChild(`focusableElement`)
+    @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
     @Input()
@@ -70,9 +70,9 @@ export class TuiPrimitiveTextfieldComponent
     editable = true;
 
     /** @deprecated use `tuiTextfieldFiller` from {@link TuiTextfieldControllerModule} instead */
-    @Input(`filler`)
+    @Input('filler')
     @tuiDefaultProp()
-    textfieldFiller = ``;
+    textfieldFiller = '';
 
     /**
      * @deprecated:
@@ -83,7 +83,7 @@ export class TuiPrimitiveTextfieldComponent
     iconCleaner = this.options.iconCleaner;
 
     @Input()
-    @HostBinding(`class._readonly`)
+    @HostBinding('class._readonly')
     @tuiDefaultProp()
     readOnly = false;
 
@@ -96,18 +96,18 @@ export class TuiPrimitiveTextfieldComponent
     disabled = false;
 
     /** @deprecated use `tuiTextfieldPrefix` from {@link TuiTextfieldControllerModule} instead */
-    @Input(`prefix`)
+    @Input('prefix')
     @tuiDefaultProp()
-    textfieldPrefix = ``;
+    textfieldPrefix = '';
 
     /** @deprecated use `tuiTextfieldPostfix` from {@link TuiTextfieldControllerModule} instead */
-    @Input(`postfix`)
+    @Input('postfix')
     @tuiDefaultProp()
-    textfieldPostfix = ``;
+    textfieldPostfix = '';
 
     @Input()
     @tuiDefaultProp()
-    value = ``;
+    value = '';
 
     @Output()
     readonly valueChange = new EventEmitter<string>();
@@ -159,17 +159,17 @@ export class TuiPrimitiveTextfieldComponent
         return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
     }
 
-    @HostBinding(`attr.data-size`)
+    @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {
         return this.controller.size;
     }
 
-    @HostBinding(`class._invalid`)
+    @HostBinding('class._invalid')
     get computedInvalid(): boolean {
         return !this.readOnly && !this.disabled && this.invalid;
     }
 
-    @HostBinding(`class._hidden`)
+    @HostBinding('class._hidden')
     get inputHidden(): boolean {
         return !!this.content?.length;
     }
@@ -199,7 +199,7 @@ export class TuiPrimitiveTextfieldComponent
         return (
             this.focused &&
             this.placeholderVisible &&
-            (this.size === `s` || (this.size === `m` && !this.placeholderRaisable))
+            (this.size === 's' || (this.size === 'm' && !this.placeholderRaisable))
         );
     }
 
@@ -225,12 +225,12 @@ export class TuiPrimitiveTextfieldComponent
         );
     }
 
-    @HostBinding(`style.--border-start.rem`)
+    @HostBinding('style.--border-start.rem')
     get borderStart(): number {
         return this.iconLeftContent ? this.iconPaddingLeft : 0;
     }
 
-    @HostBinding(`style.--border-end.rem`)
+    @HostBinding('style.--border-end.rem')
     get borderEnd(): number {
         return tuiGetBorder(
             !!this.iconContent,
@@ -252,32 +252,32 @@ export class TuiPrimitiveTextfieldComponent
 
     // Safari expiration date autofill workaround
     get name(): 'ccexpiryyear' | null {
-        return this.nativeFocusableElement?.autocomplete === `cc-exp`
-            ? `ccexpiryyear`
+        return this.nativeFocusableElement?.autocomplete === 'cc-exp'
+            ? 'ccexpiryyear'
             : null;
     }
 
     get computedId(): string {
-        return this.nativeFocusableElement?.id || ``;
+        return this.nativeFocusableElement?.id || '';
     }
 
-    @HostListener(`focusin`, [`true`])
-    @HostListener(`focusout`, [`false`])
+    @HostListener('focusin', ['true'])
+    @HostListener('focusout', ['false'])
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
     @tuiPure
     getIndent$(element: HTMLElement): Observable<number> {
-        return fromEvent(element, `scroll`).pipe(map(() => -1 * element.scrollLeft));
+        return fromEvent(element, 'scroll').pipe(map(() => -1 * element.scrollLeft));
     }
 
     clear(): void {
         if (this.nativeFocusableElement) {
-            this.nativeFocusableElement.value = ``;
+            this.nativeFocusableElement.value = '';
         }
 
-        this.updateValue(``);
+        this.updateValue('');
     }
 
     onMouseDown(event: MouseEvent): void {
@@ -300,11 +300,11 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     private get iconPaddingLeft(): number {
-        return this.size === `s` ? ICON_PADDING_S : ICON_PADDING;
+        return this.size === 's' ? ICON_PADDING_S : ICON_PADDING;
     }
 
     private get placeholderRaisable(): boolean {
-        return this.size !== `s` && !this.controller.labelOutside;
+        return this.size !== 's' && !this.controller.labelOutside;
     }
 
     private updateAutofilled(autofilled: boolean): void {

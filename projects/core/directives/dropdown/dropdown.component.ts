@@ -35,15 +35,15 @@ import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.direc
  */
 // @bad TODO: OnPush
 @Component({
-    selector: `tui-dropdown`,
-    templateUrl: `./dropdown.template.html`,
-    styleUrls: [`./dropdown.style.less`],
+    selector: 'tui-dropdown',
+    templateUrl: './dropdown.template.html',
+    styleUrls: ['./dropdown.style.less'],
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [TuiDestroyService, TuiPositionService],
     animations: [tuiDropdownAnimation],
 })
 export class TuiDropdownComponent {
-    @HostBinding(`@tuiDropdownAnimation`)
+    @HostBinding('@tuiDropdownAnimation')
     readonly dropdownAnimation = {
         value: TuiDropdownAnimation.FadeInTop,
         ...this.animationOptions,
@@ -92,8 +92,8 @@ export class TuiDropdownComponent {
         const {clientRect} = this.host;
         const {position} = this.directive;
         const rect = this.accessor.getClientRect();
-        const offsetX = position === `fixed` ? 0 : -clientRect.left;
-        const offsetY = position === `fixed` ? 0 : -clientRect.top;
+        const offsetX = position === 'fixed' ? 0 : -clientRect.left;
+        const offsetY = position === 'fixed' ? 0 : -clientRect.top;
 
         top += offsetY;
         left += offsetX;
@@ -110,20 +110,20 @@ export class TuiDropdownComponent {
         style.top = tuiPx(Math.max(top, offsetY + this.options.offset));
         style.left = tuiPx(left);
         style.maxHeight = tuiPx(Math.min(maxHeight, available));
-        style.width = ``;
-        style.minWidth = ``;
+        style.width = '';
+        style.minWidth = '';
 
         switch (limitWidth) {
-            case `min`:
+            case 'min':
                 style.minWidth = tuiPx(rect.width);
                 break;
-            case `fixed`:
+            case 'fixed':
                 style.width = tuiPx(rect.width);
         }
     }
 
     private moveFocusOutside(previous: boolean): void {
-        const host = document.createElement(`div`);
+        const host = document.createElement('div');
         const {ownerDocument} = host;
         const root = ownerDocument ? ownerDocument.body : host;
         let focusable = tuiGetClosestFocusable({initial: host, root, previous});

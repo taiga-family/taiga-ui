@@ -14,9 +14,9 @@ import {TuiSvgService} from '@taiga-ui/core/services';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({
-    selector: `tui-svg-defs-host`,
-    templateUrl: `./svg-defs-host.template.html`,
-    styleUrls: [`./svg-defs-host.style.less`],
+    selector: 'tui-svg-defs-host',
+    templateUrl: './svg-defs-host.template.html',
+    styleUrls: ['./svg-defs-host.style.less'],
     providers: [TuiDestroyService],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

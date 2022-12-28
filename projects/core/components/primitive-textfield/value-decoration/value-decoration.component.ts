@@ -16,17 +16,17 @@ import {delay, distinctUntilChanged, filter, map} from 'rxjs/operators';
 import {TuiPrimitiveTextfield} from '../primitive-textfield-types';
 
 @Component({
-    selector: `tui-value-decoration`,
-    templateUrl: `./value-decoration.template.html`,
-    styleUrls: [`./value-decoration.style.less`],
+    selector: 'tui-value-decoration',
+    templateUrl: './value-decoration.template.html',
+    styleUrls: ['./value-decoration.style.less'],
     // It follows Change Detection of PrimitiveTextfield
     changeDetection: ChangeDetectionStrategy.Default,
 })
 export class TuiValueDecorationComponent implements DoCheck {
-    @ViewChild(`pre`, {read: ElementRef, static: true})
+    @ViewChild('pre', {read: ElementRef, static: true})
     private readonly pre?: ElementRef<HTMLElement>;
 
-    private readonly prefix$ = new BehaviorSubject(``);
+    private readonly prefix$ = new BehaviorSubject('');
 
     readonly pre$ = this.prefix$.pipe(
         delay(0),
@@ -40,7 +40,7 @@ export class TuiValueDecorationComponent implements DoCheck {
         private readonly textfield: TuiPrimitiveTextfield,
     ) {}
 
-    @HostBinding(`class._table`)
+    @HostBinding('class._table')
     get isContextTable(): boolean {
         return this.textfield.appearance === TuiAppearance.Table;
     }
@@ -53,31 +53,31 @@ export class TuiValueDecorationComponent implements DoCheck {
         const {focused, placeholder, exampleText, value, textfield} = this;
 
         if (placeholder && exampleText) {
-            return ``;
+            return '';
         }
 
-        return focused ? exampleText || textfield.filler.slice(value.length) : ``;
+        return focused ? exampleText || textfield.filler.slice(value.length) : '';
     }
 
     get prefix(): string {
-        return this.decorationsVisible ? this.textfield.prefix : ``;
+        return this.decorationsVisible ? this.textfield.prefix : '';
     }
 
     get postfix(): string {
-        return this.decorationsVisible ? this.computedPostfix : ``;
+        return this.decorationsVisible ? this.computedPostfix : '';
     }
 
-    @HostListener(`animationstart`)
+    @HostListener('animationstart')
     ngDoCheck(): void {
         this.prefix$.next(this.prefix);
     }
 
     private get placeholder(): string {
-        return this.textfield.nativeFocusableElement?.placeholder || ``;
+        return this.textfield.nativeFocusableElement?.placeholder || '';
     }
 
     private get exampleText(): string {
-        return !this.value && this.focused ? this.placeholder : ``;
+        return !this.value && this.focused ? this.placeholder : '';
     }
 
     private get decorationsVisible(): boolean {

@@ -5,7 +5,7 @@ import {TUI_TAB_MARGIN} from '@taiga-ui/kit';
 import {TuiMobileTabsComponent} from './mobile-tabs.component';
 
 @Directive({
-    selector: `[tuiMobileTabs]`,
+    selector: '[tuiMobileTabs]',
     providers: [
         {
             provide: TUI_TAB_MARGIN,
@@ -22,14 +22,14 @@ export class TuiMobileTabsDirective {
         directiveStyles.addComponent(TuiMobileTabsComponent);
     }
 
-    @HostBinding(`attr.data-platform`)
+    @HostBinding('attr.data-platform')
     get platform(): 'android' | 'ios' | null {
         if (this.isIos) {
-            return `ios`;
+            return 'ios';
         }
 
         if (this.isAndroid) {
-            return `android`;
+            return 'android';
         }
 
         return null;

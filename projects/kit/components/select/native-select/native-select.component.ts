@@ -4,8 +4,8 @@ import {TuiDataListDirective} from '@taiga-ui/core';
 import {AbstractTuiNativeSelect} from './native-select';
 
 @Component({
-    selector: `select[tuiSelect]:not([labels])`,
-    templateUrl: `./native-select.template.html`,
+    selector: 'select[tuiSelect]:not([labels])',
+    templateUrl: './native-select.template.html',
     providers: [
         {
             provide: TuiDataListDirective,
@@ -23,14 +23,14 @@ import {AbstractTuiNativeSelect} from './native-select';
         },
     ],
     host: {
-        '[attr.aria-invalid]': `host.invalid`,
-        '[disabled]': `host.disabled`,
-        '[tabIndex]': `host.focusable ? 0 : -1`,
-        '[readOnly]': `host.readOnly`,
-        '[value]': `host.value`,
-        '(change)': `host.onValueChange($event.target.value)`,
+        '[attr.aria-invalid]': 'host.invalid',
+        '[disabled]': 'host.disabled',
+        '[tabIndex]': 'host.focusable ? 0 : -1',
+        '[readOnly]': 'host.readOnly',
+        '[value]': 'host.value',
+        '(change)': 'host.onValueChange($event.target.value)',
     },
-    styleUrls: [`./native-select.style.less`],
+    styleUrls: ['./native-select.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiNativeSelectComponent extends AbstractTuiNativeSelect {

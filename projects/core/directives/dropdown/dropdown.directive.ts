@@ -31,8 +31,8 @@ import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorphe
 import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
 
 @Directive({
-    selector: `[tuiDropdown]:not(ng-container)`,
-    exportAs: `tuiDropdown`,
+    selector: '[tuiDropdown]:not(ng-container)',
+    exportAs: 'tuiDropdown',
     providers: [
         tuiAsRectAccessor(TuiDropdownDirective),
         tuiAsVehicle(TuiDropdownDirective),
@@ -52,9 +52,9 @@ export class TuiDropdownDirective
         TuiRectAccessor,
         TuiVehicle
 {
-    @Input(`tuiDropdown`)
+    @Input('tuiDropdown')
     @tuiDefaultProp()
-    content: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>> = ``;
+    content: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>> = '';
 
     dropdownBoxRef: ComponentRef<unknown> | null = null;
 
@@ -67,10 +67,10 @@ export class TuiDropdownDirective
     ) {}
 
     @tuiPure
-    get position(): `absolute` | `fixed` {
+    get position(): 'absolute' | 'fixed' {
         return tuiCheckFixedPosition(this.elementRef.nativeElement)
-            ? `fixed`
-            : `absolute`;
+            ? 'fixed'
+            : 'absolute';
     }
 
     ngAfterViewChecked(): void {

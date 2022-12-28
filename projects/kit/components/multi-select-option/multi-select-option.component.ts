@@ -4,17 +4,17 @@ import {TuiSizeL} from '@taiga-ui/core';
 import {TuiSelectOptionComponent} from '@taiga-ui/kit/components/select-option';
 
 @Component({
-    selector: `tui-multi-select-option`,
-    templateUrl: `./multi-select-option.template.html`,
-    styleUrls: [`./multi-select-option.style.less`],
+    selector: 'tui-multi-select-option',
+    templateUrl: './multi-select-option.template.html',
+    styleUrls: ['./multi-select-option.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMultiSelectOptionComponent<T> extends TuiSelectOptionComponent<T> {
     get size(): TuiSizeL {
-        return this.option.size === `l` ||
-            (this.dataList?.size === `l` && !this.option.size)
-            ? `l`
-            : `m`;
+        return this.option.size === 'l' ||
+            (this.dataList?.size === 'l' && !this.option.size)
+            ? 'l'
+            : 'm';
     }
 
     protected override get selected(): boolean {

@@ -30,20 +30,20 @@ import {TuiGetColorPipe} from './pipes/сolor.pipe';
 // @bad TODO subscribe propertiesConnectors changes
 // @bad TODO refactor to make more flexible
 @Component({
-    selector: `tui-doc-documentation`,
-    templateUrl: `./documentation.template.html`,
-    styleUrls: [`./documentation.style.less`],
+    selector: 'tui-doc-documentation',
+    templateUrl: './documentation.template.html',
+    styleUrls: ['./documentation.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [
-        trigger(`emitEvent`, [
-            transition(`:increment`, [style({opacity: 1}), animate(`500ms ease-in`)]),
+        trigger('emitEvent', [
+            transition(':increment', [style({opacity: 1}), animate('500ms ease-in')]),
         ]),
     ],
     providers: [TuiGetColorPipe, TuiGetOpacityPipe, TuiDestroyService],
 })
 export class TuiDocDocumentationComponent implements AfterContentInit {
     @Input()
-    heading = ``;
+    heading = '';
 
     @Input()
     showValues = true;
@@ -96,7 +96,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         color: string,
     ): void {
         const opacity = this.getOpacity.transform(
-            connector.documentationPropertyValue || ``,
+            connector.documentationPropertyValue || '',
         );
 
         if (opacity === 100) {
@@ -105,7 +105,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
             return;
         }
 
-        const rgb = tuiHexToRgb(color).join(`, `);
+        const rgb = tuiHexToRgb(color).join(', ');
         const result = `rgba(${rgb}, ${opacity / 100})`;
 
         connector.onValueChange(result);
@@ -115,7 +115,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         connector: TuiDocDocumentationPropertyConnectorDirective<string>,
         opacity: number,
     ): void {
-        const hex = this.getColor.transform(connector.documentationPropertyValue || ``);
+        const hex = this.getColor.transform(connector.documentationPropertyValue || '');
         const rgb = tuiHexToRgb(hex);
         const result = `rgba(${rgb}, ${opacity / 100})`;
 

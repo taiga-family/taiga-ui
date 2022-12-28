@@ -13,7 +13,7 @@ import {
 import {Subject} from 'rxjs';
 
 @Directive({
-    selector: `[tuiDropdown][tuiDropdownContext]`,
+    selector: '[tuiDropdown][tuiDropdownContext]',
     providers: [
         TuiActiveZoneDirective,
         tuiAsDriver(TuiDropdownContextDirective),
@@ -32,15 +32,15 @@ export class TuiDropdownContextDirective extends TuiDriver implements TuiRectAcc
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
-    @HostListener(`contextmenu.prevent.stop`, [`$event.clientX`, `$event.clientY`])
+    @HostListener('contextmenu.prevent.stop', ['$event.clientX', '$event.clientY'])
     onContextMenu(x: number, y: number): void {
         this.currentRect = tuiPointToClientRect(x, y);
         this.stream$.next(true);
     }
 
-    @HostListener(`document:click.silent`, [`$event.target`])
-    @HostListener(`document:contextmenu.capture.silent`, [`$event.target`])
-    @HostListener(`document:keydown.esc`, [`$event.currentTarget`])
+    @HostListener('document:click.silent', ['$event.target'])
+    @HostListener('document:contextmenu.capture.silent', ['$event.target'])
+    @HostListener('document:keydown.esc', ['$event.currentTarget'])
     closeDropdown(target: Element): void {
         if (!this.activeZone.contains(target)) {
             this.stream$.next(false);

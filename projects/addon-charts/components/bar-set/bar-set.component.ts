@@ -8,9 +8,9 @@ const EMPTY_ARRAY: readonly number[] = [];
 const FILLER_ARRAY: readonly number[] = [1];
 
 @Component({
-    selector: `tui-bar-set`,
-    templateUrl: `./bar-set.template.html`,
-    styleUrls: [`./bar-set.style.less`],
+    selector: 'tui-bar-set',
+    templateUrl: './bar-set.template.html',
+    styleUrls: ['./bar-set.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiBarSetComponent {
@@ -20,7 +20,7 @@ export class TuiBarSetComponent {
 
     @Input()
     @tuiDefaultProp()
-    size: TuiSizeL | TuiSizeS | null = `m`;
+    size: TuiSizeL | TuiSizeS | null = 'm';
 
     @Input()
     @tuiDefaultProp()
@@ -35,7 +35,7 @@ export class TuiBarSetComponent {
     }
 
     get computedSize(): TuiSizeL | TuiSizeS {
-        return this.size || `m`;
+        return this.size || 'm';
     }
 
     getHeight(value: number): number {

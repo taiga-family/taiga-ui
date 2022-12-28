@@ -4,7 +4,7 @@ import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 import {TuiInputCardComponent} from './input-card.component';
 
 @Directive({
-    selector: `tui-input-card`,
+    selector: 'tui-input-card',
     providers: [tuiAsTextfieldHost(TuiInputCardDirective)],
 })
 export class TuiInputCardDirective
@@ -22,8 +22,8 @@ export class TuiInputCardDirective
             return;
         }
 
-        nativeFocusableElement.inputMode = `numeric`;
+        nativeFocusableElement.inputMode = 'numeric';
         nativeFocusableElement.placeholder =
-            nativeFocusableElement.placeholder || `0000 0000 0000 0000`;
+            nativeFocusableElement.placeholder || '0000 0000 0000 0000';
     }
 }

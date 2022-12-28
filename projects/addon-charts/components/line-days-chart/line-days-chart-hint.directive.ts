@@ -31,16 +31,16 @@ import {TuiLineDaysChartComponent} from './line-days-chart.component';
 
 // TODO: Consider extending TuiLineChartHintDirective
 @Directive({
-    selector: `[tuiLineChartHint]`,
+    selector: '[tuiLineChartHint]',
     providers: [TuiDestroyService, TuiHoveredService],
 })
 export class TuiLineDaysChartHintDirective implements AfterContentInit {
     @ContentChildren(forwardRef(() => TuiLineDaysChartComponent))
     private readonly charts: QueryList<TuiLineDaysChartComponent> = EMPTY_QUERY;
 
-    @Input(`tuiLineChartHint`)
+    @Input('tuiLineChartHint')
     @tuiDefaultProp()
-    hint: PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> = ``;
+    hint: PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> = '';
 
     constructor(
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,

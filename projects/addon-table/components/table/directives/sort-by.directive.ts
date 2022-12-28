@@ -16,7 +16,7 @@ import {TuiSortableDirective} from './sortable.directive';
 import {TuiTableDirective} from './table.directive';
 
 @Directive({
-    selector: `table[tuiTable][tuiSortBy]`,
+    selector: 'table[tuiTable][tuiSortBy]',
 })
 export class TuiSortByDirective<T extends Partial<Record<keyof T, any>>> {
     @ContentChildren(TuiSortableDirective, {descendants: true})

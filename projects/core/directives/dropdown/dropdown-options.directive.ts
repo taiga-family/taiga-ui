@@ -27,16 +27,16 @@ export interface TuiDropdownOptions {
 
 /** Default values for dropdown options */
 export const TUI_DROPDOWN_DEFAULT_OPTIONS: TuiDropdownOptions = {
-    align: `left`,
+    align: 'left',
     direction: null,
-    limitWidth: `auto`,
+    limitWidth: 'auto',
     maxHeight: 400,
     minHeight: 80,
     offset: 4,
 };
 
 export const TUI_DROPDOWN_OPTIONS = new InjectionToken<TuiDropdownOptions>(
-    `[TUI_DROPDOWN_OPTIONS] Default parameters for dropdown directive`,
+    '[TUI_DROPDOWN_OPTIONS] Default parameters for dropdown directive',
     {
         factory: () => TUI_DROPDOWN_DEFAULT_OPTIONS,
     },
@@ -54,7 +54,7 @@ export const tuiDropdownOptionsProvider: (
 });
 
 @Directive({
-    selector: `[tuiDropdownAlign], [tuiDropdownDirection], [tuiDropdownLimitWidth], [tuiDropdownMinHeight], [tuiDropdownMaxHeight], [tuiDropdownOffset]`,
+    selector: '[tuiDropdownAlign], [tuiDropdownDirection], [tuiDropdownLimitWidth], [tuiDropdownMinHeight], [tuiDropdownMaxHeight], [tuiDropdownOffset]',
     providers: [
         {
             provide: TUI_DROPDOWN_OPTIONS,
@@ -63,27 +63,27 @@ export const tuiDropdownOptionsProvider: (
     ],
 })
 export class TuiDropdownOptionsDirective implements TuiDropdownOptions {
-    @Input(`tuiDropdownAlign`)
+    @Input('tuiDropdownAlign')
     @tuiDefaultProp()
     align = this.options.align;
 
-    @Input(`tuiDropdownDirection`)
+    @Input('tuiDropdownDirection')
     @tuiDefaultProp()
     direction = this.options.direction;
 
-    @Input(`tuiDropdownLimitWidth`)
+    @Input('tuiDropdownLimitWidth')
     @tuiDefaultProp()
     limitWidth = this.options.limitWidth;
 
-    @Input(`tuiDropdownMinHeight`)
+    @Input('tuiDropdownMinHeight')
     @tuiDefaultProp()
     minHeight = this.options.minHeight;
 
-    @Input(`tuiDropdownMaxHeight`)
+    @Input('tuiDropdownMaxHeight')
     @tuiDefaultProp()
     maxHeight = this.options.maxHeight;
 
-    @Input(`tuiDropdownOffset`)
+    @Input('tuiDropdownOffset')
     @tuiDefaultProp()
     offset = this.options.offset;
 

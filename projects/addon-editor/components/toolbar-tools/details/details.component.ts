@@ -6,8 +6,8 @@ import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: `tui-details`,
-    templateUrl: `./details.template.html`,
+    selector: 'tui-details',
+    templateUrl: './details.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDetailsComponent {

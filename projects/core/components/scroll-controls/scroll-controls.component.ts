@@ -18,14 +18,14 @@ import {Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith, throttleTime} from 'rxjs/operators';
 
 @Component({
-    selector: `tui-scroll-controls`,
-    templateUrl: `./scroll-controls.template.html`,
-    styleUrls: [`./scroll-controls.style.less`],
+    selector: 'tui-scroll-controls',
+    templateUrl: './scroll-controls.template.html',
+    styleUrls: ['./scroll-controls.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiFadeIn],
     providers: [MODE_PROVIDER],
     host: {
-        '($.data-mode.attr)': `mode$`,
+        '($.data-mode.attr)': 'mode$',
     },
 })
 export class TuiScrollControlsComponent {
@@ -38,7 +38,7 @@ export class TuiScrollControlsComponent {
     );
 
     readonly animation = {
-        value: ``,
+        value: '',
         ...this.options,
     } as const;
 

@@ -15,8 +15,8 @@ import {TuiResizeableDirective} from './resizeable.directive';
 
 // TODO: Migrate to PointerEvent in 4.0
 @Directive({
-    selector: `[tuiResizer]`,
-    host: {'[style.touchAction]': `"none"`},
+    selector: '[tuiResizer]',
+    host: {'[style.touchAction]': '"none"'},
 })
 export class TuiResizerDirective {
     @Input()
@@ -36,29 +36,29 @@ export class TuiResizerDirective {
         private readonly resizeable: ElementRef<HTMLElement>,
     ) {}
 
-    @HostBinding(`style.cursor`)
+    @HostBinding('style.cursor')
     get cursor(): string {
         if (!this.tuiResizer[0]) {
-            return `ns-resize`;
+            return 'ns-resize';
         }
 
         if (!this.tuiResizer[1]) {
-            return `ew-resize`;
+            return 'ew-resize';
         }
 
         if (this.tuiResizer[0] * this.tuiResizer[1] > 0) {
-            return `nwse-resize`;
+            return 'nwse-resize';
         }
 
-        return `nesw-resize`;
+        return 'nesw-resize';
     }
 
-    @HostListener(`touchstart.silent.passive`, [`$event`])
+    @HostListener('touchstart.silent.passive', ['$event'])
     onTouchStart({touches}: TouchEvent): void {
         this.onMouseDown(touches[0].clientX, touches[0].clientY);
     }
 
-    @HostListener(`mousedown.silent.prevent`, [`$event.x`, `$event.y`])
+    @HostListener('mousedown.silent.prevent', ['$event.x', '$event.y'])
     onMouseDown(x: number, y: number): void {
         this.x = x;
         this.y = y;
@@ -66,7 +66,7 @@ export class TuiResizerDirective {
         this.height = this.resizeable.nativeElement.clientHeight;
     }
 
-    @HostListener(`document:mousemove.silent`, [`$event`])
+    @HostListener('document:mousemove.silent', ['$event'])
     onMouseMove({x, y, buttons}: MouseEvent): void {
         if (!buttons) {
             this.onMouseUp();
@@ -75,13 +75,13 @@ export class TuiResizerDirective {
         }
     }
 
-    @HostListener(`document:touchmove.silent`, [`$event`])
+    @HostListener('document:touchmove.silent', ['$event'])
     onTouchMove({touches}: TouchEvent): void {
         this.onMove(touches[0].clientX, touches[0].clientY);
     }
 
-    @HostListener(`document:mouseup.silent`)
-    @HostListener(`document:touchend.silent`)
+    @HostListener('document:mouseup.silent')
+    @HostListener('document:touchend.silent')
     onMouseUp(): void {
         this.x = NaN;
     }

@@ -10,7 +10,7 @@ import {distinctUntilChanged, map, skip, startWith} from 'rxjs/operators';
  * other focus related directives that require bubbling
  */
 @Directive({
-    selector: `[tuiFocusedChange]`,
+    selector: '[tuiFocusedChange]',
 })
 export class TuiFocusedDirective {
     @Output()
@@ -22,8 +22,8 @@ export class TuiFocusedDirective {
         @Inject(NgZone) ngZone: NgZone,
     ) {
         this.tuiFocusedChange = merge(
-            tuiTypedFromEvent(nativeElement, `focusin`),
-            tuiTypedFromEvent(nativeElement, `focusout`),
+            tuiTypedFromEvent(nativeElement, 'focusin'),
+            tuiTypedFromEvent(nativeElement, 'focusout'),
         ).pipe(
             map(() => tuiIsNativeFocused(nativeElement)),
             startWith(false),

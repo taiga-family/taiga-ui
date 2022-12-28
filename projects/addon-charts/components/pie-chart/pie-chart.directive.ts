@@ -13,7 +13,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {map, pairwise, switchMap, takeUntil, takeWhile} from 'rxjs/operators';
 
 @Directive({
-    selector: `path[tuiPieChart]`,
+    selector: 'path[tuiPieChart]',
     providers: [TuiDestroyService],
 })
 export class TuiPieChartDirective {
@@ -58,7 +58,7 @@ export class TuiPieChartDirective {
                 takeUntil(destroy$),
             )
             .subscribe(([start, end]) => {
-                nativeElement.setAttribute(`d`, tuiDescribeSector(start, end));
+                nativeElement.setAttribute('d', tuiDescribeSector(start, end));
             });
     }
 }

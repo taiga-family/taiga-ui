@@ -3,7 +3,7 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
 import {AbstractTuiDriverDirective} from '@taiga-ui/core/abstract';
 
 @Directive({
-    selector: `[tuiHint]`,
+    selector: '[tuiHint]',
     providers: [TuiDestroyService],
 })
 export class TuiHintDriverDirective extends AbstractTuiDriverDirective {}

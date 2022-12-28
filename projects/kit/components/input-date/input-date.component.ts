@@ -65,9 +65,9 @@ import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
 @Component({
-    selector: `tui-input-date`,
-    templateUrl: `./input-date.template.html`,
-    styleUrls: [`./input-date.style.less`],
+    selector: 'tui-input-date',
+    templateUrl: './input-date.template.html',
+    styleUrls: ['./input-date.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputDateComponent),
@@ -190,7 +190,7 @@ export class TuiInputDateComponent
     }
 
     get nativeValue(): string {
-        return this.nativeFocusableElement ? this.nativeFocusableElement.value : ``;
+        return this.nativeFocusableElement ? this.nativeFocusableElement.value : '';
     }
 
     set nativeValue(value: string) {
@@ -219,7 +219,7 @@ export class TuiInputDateComponent
         return this.textfieldSize.size;
     }
 
-    @HostListener(`click`)
+    @HostListener('click')
     onClick(): void {
         if (!this.isMobile) {
             this.open = !this.open;
@@ -227,7 +227,7 @@ export class TuiInputDateComponent
     }
 
     getComputedFiller(filler: string): string {
-        return this.activeItem ? `` : filler;
+        return this.activeItem ? '' : filler;
     }
 
     onIconClick(): void {
@@ -237,7 +237,7 @@ export class TuiInputDateComponent
 
         this.dialogService
             .open<TuiDay>(new PolymorpheusComponent(this.mobileCalendar, this.injector), {
-                size: `fullscreen`,
+                size: 'fullscreen',
                 closeable: false,
                 data: {
                     single: true,
@@ -292,7 +292,7 @@ export class TuiInputDateComponent
 
     override writeValue(value: TuiDay | null): void {
         super.writeValue(value);
-        this.nativeValue = value ? this.computedValue : ``;
+        this.nativeValue = value ? this.computedValue : '';
     }
 
     protected override valueIdenticalComparator(

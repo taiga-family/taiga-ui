@@ -59,18 +59,18 @@ import {
 } from './mobile-calendar.providers';
 
 @Component({
-    selector: `tui-mobile-calendar`,
-    templateUrl: `./mobile-calendar.template.html`,
-    styleUrls: [`./mobile-calendar.style.less`],
+    selector: 'tui-mobile-calendar',
+    templateUrl: './mobile-calendar.template.html',
+    styleUrls: ['./mobile-calendar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_MOBILE_CALENDAR_PROVIDERS,
-    host: {'[class._ios]': `isIOS`},
+    host: {'[class._ios]': 'isIOS'},
 })
 export class TuiMobileCalendarComponent {
-    @ViewChild(`yearsScrollRef`)
+    @ViewChild('yearsScrollRef')
     private readonly yearsScrollRef?: CdkVirtualScrollViewport;
 
-    @ViewChild(`monthsScrollRef`)
+    @ViewChild('monthsScrollRef')
     private readonly monthsScrollRef?: CdkVirtualScrollViewport;
 
     private readonly today = TuiDay.currentLocal();
@@ -176,11 +176,11 @@ export class TuiMobileCalendarComponent {
 
     getState(index: number): 'active' | 'adjacent' | null {
         if (this.isYearActive(index)) {
-            return `active`;
+            return 'active';
         }
 
         if (this.isYearActive(index - 1) || this.isYearActive(index + 1)) {
-            return `adjacent`;
+            return 'adjacent';
         }
 
         return null;
@@ -211,7 +211,7 @@ export class TuiMobileCalendarComponent {
 
         this.activeMonth += this.getMonthOffset(year);
         this.activeYear = year;
-        this.scrollToActiveYear(`smooth`);
+        this.scrollToActiveYear('smooth');
 
         // Delay is required to run months scroll in the next frame to prevent flicker
         setTimeout(() => {
@@ -290,15 +290,15 @@ export class TuiMobileCalendarComponent {
 
         const touchstart$ = tuiTypedFromEvent(
             yearsScrollRef.elementRef.nativeElement,
-            `touchstart`,
+            'touchstart',
         );
         const touchend$ = tuiTypedFromEvent(
             yearsScrollRef.elementRef.nativeElement,
-            `touchend`,
+            'touchend',
         );
         const click$ = tuiTypedFromEvent(
             yearsScrollRef.elementRef.nativeElement,
-            `click`,
+            'click',
         );
 
         // Refresh activeYear
@@ -343,7 +343,7 @@ export class TuiMobileCalendarComponent {
                 ),
                 takeUntil(this.destroy$),
             )
-            .subscribe(() => this.scrollToActiveYear(`smooth`));
+            .subscribe(() => this.scrollToActiveYear('smooth'));
     }
 
     private initMonthScroll(): void {
@@ -355,12 +355,12 @@ export class TuiMobileCalendarComponent {
 
         const touchstart$ = tuiTypedFromEvent(
             monthsScrollRef.elementRef.nativeElement,
-            `touchstart`,
+            'touchstart',
             {passive: true},
         );
         const touchend$ = tuiTypedFromEvent(
             monthsScrollRef.elementRef.nativeElement,
-            `touchend`,
+            'touchend',
         );
 
         // Smooth scroll to the closest month after scrolling is done
@@ -379,20 +379,20 @@ export class TuiMobileCalendarComponent {
                 ),
                 takeUntil(this.destroy$),
             )
-            .subscribe(() => this.scrollToActiveMonth(`smooth`));
+            .subscribe(() => this.scrollToActiveMonth('smooth'));
     }
 
-    private scrollToActiveYear(behavior: ScrollBehavior = `auto`): void {
+    private scrollToActiveYear(behavior: ScrollBehavior = 'auto'): void {
         this.yearsScrollRef?.scrollToIndex(
             Math.max(this.activeYear - STARTING_YEAR - 2, 0),
-            this.isCypress ? `auto` : behavior,
+            this.isCypress ? 'auto' : behavior,
         );
     }
 
-    private scrollToActiveMonth(behavior: ScrollBehavior = `auto`): void {
+    private scrollToActiveMonth(behavior: ScrollBehavior = 'auto'): void {
         this.monthsScrollRef?.scrollToIndex(
             this.activeMonth,
-            this.isCypress ? `auto` : behavior,
+            this.isCypress ? 'auto' : behavior,
         );
     }
 

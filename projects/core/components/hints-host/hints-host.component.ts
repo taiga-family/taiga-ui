@@ -5,14 +5,14 @@ import {TuiHintService} from '@taiga-ui/core/services';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: `tui-hints-host`,
-    templateUrl: `./hints-host.template.html`,
-    styleUrls: [`./hints-host.style.less`],
+    selector: 'tui-hints-host',
+    templateUrl: './hints-host.template.html',
+    styleUrls: ['./hints-host.style.less'],
     // So that we do not force OnPush on custom hints
     changeDetection: ChangeDetectionStrategy.Default,
     animations: [TUI_PARENT_ANIMATION],
     host: {
-        'aria-live': `polite`,
+        'aria-live': 'polite',
     },
 })
 export class TuiHintsHostComponent {

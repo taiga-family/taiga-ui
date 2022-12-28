@@ -31,9 +31,9 @@ import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
-    selector: `tui-opt-group[tuiMultiSelectGroup]`,
-    templateUrl: `./multi-select-group.template.html`,
-    styleUrls: [`./multi-select-group.style.less`],
+    selector: 'tui-opt-group[tuiMultiSelectGroup]',
+    templateUrl: './multi-select-group.template.html',
+    styleUrls: ['./multi-select-group.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMultiSelectGroupComponent<T> {
@@ -42,7 +42,7 @@ export class TuiMultiSelectGroupComponent<T> {
 
     @Input()
     @tuiDefaultProp()
-    label = ``;
+    label = '';
 
     constructor(
         @Inject(TUI_MULTI_SELECT_TEXTS)
@@ -52,7 +52,7 @@ export class TuiMultiSelectGroupComponent<T> {
     ) {}
 
     get size(): TuiSizeL | TuiSizeXS {
-        return this.options.first?.size || `m`;
+        return this.options.first?.size || 'm';
     }
 
     @tuiPure

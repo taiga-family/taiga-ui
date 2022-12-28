@@ -30,9 +30,9 @@ import {TUI_DOC_DEMO_TEXTS} from '../../tokens/i18n';
 const MIN_WIDTH = 160;
 
 @Component({
-    selector: `tui-doc-demo`,
-    templateUrl: `./demo.template.html`,
-    styleUrls: [`./demo.style.less`],
+    selector: 'tui-doc-demo',
+    templateUrl: './demo.template.html',
+    styleUrls: ['./demo.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,
@@ -46,10 +46,10 @@ export class TuiDocDemoComponent implements OnInit {
     @ViewChild(TuiResizeableDirective, {static: true})
     private readonly resizeable?: ElementRef<HTMLElement>;
 
-    @ViewChild(`content`, {static: true})
+    @ViewChild('content', {static: true})
     private readonly content?: ElementRef<HTMLElement>;
 
-    @ViewChild(`resizer`, {static: true})
+    @ViewChild('resizer', {static: true})
     private readonly resizer?: ElementRef<HTMLElement>;
 
     @Input()
@@ -59,7 +59,7 @@ export class TuiDocDemoComponent implements OnInit {
     readonly template: TemplateRef<Record<string, unknown>> | null = null;
 
     testForm?: FormGroup;
-    readonly updateOnVariants = [`change`, `blur`, `submit`] as const;
+    readonly updateOnVariants = ['change', 'blur', 'submit'] as const;
     updateOn: 'blur' | 'change' | 'submit' = this.updateOnVariants[0];
     expanded = false;
     opaque = true;
@@ -67,7 +67,7 @@ export class TuiDocDemoComponent implements OnInit {
     sandboxWidth = parseInt(this.getUrlTree().queryParams.sandboxWidth, 10);
 
     readonly change$ = new Subject<void>();
-    readonly items: readonly TuiBrightness[] = [`onLight`, `onDark`];
+    readonly items: readonly TuiBrightness[] = ['onLight', 'onDark'];
 
     constructor(
         @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
@@ -77,13 +77,13 @@ export class TuiDocDemoComponent implements OnInit {
         @Inject(TUI_DOC_DEMO_TEXTS) readonly texts: [string, string, string],
     ) {}
 
-    @HostListener(`window:resize`)
+    @HostListener('window:resize')
     onResize(): void {
         this.updateWidth();
         this.onMouseUp();
     }
 
-    @HostListener(`document:mouseup.silent`)
+    @HostListener('document:mouseup.silent')
     onMouseUp(): void {
         this.updateUrl(this.mode, this.sandboxWidth);
     }
@@ -119,7 +119,7 @@ export class TuiDocDemoComponent implements OnInit {
         const validated = safe < total ? clamped : NaN;
 
         this.resizer.nativeElement.textContent = String(clamped);
-        this.resizeable.nativeElement.style.width = validated ? tuiPx(safe) : ``;
+        this.resizeable.nativeElement.style.width = validated ? tuiPx(safe) : '';
         this.sandboxWidth = validated;
     }
 

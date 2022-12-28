@@ -1,8 +1,8 @@
 import {Directive, ElementRef, Inject} from '@angular/core';
 
 @Directive({
-    selector: `[tuiElement]`,
-    exportAs: `elementRef`,
+    selector: '[tuiElement]',
+    exportAs: 'elementRef',
 })
 export class TuiElementDirective<T extends Element = HTMLElement>
     implements ElementRef<T>

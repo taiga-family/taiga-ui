@@ -23,7 +23,7 @@ import {TUI_HINT_COMPONENT} from './hint.providers';
 import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 
 @Directive({
-    selector: `[tuiHint]:not(ng-container)`,
+    selector: '[tuiHint]:not(ng-container)',
     providers: [
         tuiAsRectAccessor(TuiHintDirective),
         tuiAsVehicle(TuiHintDirective),
@@ -37,11 +37,11 @@ import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 export class TuiHintDirective<C>
     implements OnDestroy, OnChanges, TuiPortalItem<C>, TuiRectAccessor, TuiVehicle
 {
-    @Input(`tuiHint`)
+    @Input('tuiHint')
     @tuiDefaultProp()
-    content: PolymorpheusContent<C> = ``;
+    content: PolymorpheusContent<C> = '';
 
-    @Input(`tuiHintContext`)
+    @Input('tuiHintContext')
     context?: C;
 
     @Input()

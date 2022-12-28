@@ -17,7 +17,7 @@ const TOP = 0;
 const LEFT = 1;
 
 @Directive({
-    selector: `[tuiHint]:not([tuiHintCustomPosition])`,
+    selector: '[tuiHint]:not([tuiHintCustomPosition])',
     providers: [tuiAsPositionAccessor(TuiHintPositionDirective)],
 })
 export class TuiHintPositionDirective implements TuiPositionAccessor {
@@ -27,7 +27,7 @@ export class TuiHintPositionDirective implements TuiPositionAccessor {
             {} as any,
         );
 
-    @Input(`tuiHintDirection`)
+    @Input('tuiHintDirection')
     @tuiDefaultProp()
     direction: TuiHintOptions['direction'] = this.options.direction;
 
@@ -43,33 +43,33 @@ export class TuiHintPositionDirective implements TuiPositionAccessor {
         const leftCenter = hostRect.left + hostRect.width / 2;
         const topCenter = hostRect.top + hostRect.height / 2;
 
-        this.points[`top-left`][TOP] = hostRect.top - height - OFFSET;
-        this.points[`top-left`][LEFT] = leftCenter - width + ARROW_OFFSET;
-        this.points.top[TOP] = this.points[`top-left`][TOP];
+        this.points['top-left'][TOP] = hostRect.top - height - OFFSET;
+        this.points['top-left'][LEFT] = leftCenter - width + ARROW_OFFSET;
+        this.points.top[TOP] = this.points['top-left'][TOP];
         this.points.top[LEFT] = leftCenter - width / 2;
-        this.points[`top-right`][TOP] = this.points[`top-left`][TOP];
-        this.points[`top-right`][LEFT] = leftCenter - ARROW_OFFSET;
+        this.points['top-right'][TOP] = this.points['top-left'][TOP];
+        this.points['top-right'][LEFT] = leftCenter - ARROW_OFFSET;
 
-        this.points[`bottom-left`][TOP] = hostRect.bottom + OFFSET;
-        this.points[`bottom-left`][LEFT] = this.points[`top-left`][LEFT];
-        this.points.bottom[TOP] = this.points[`bottom-left`][TOP];
+        this.points['bottom-left'][TOP] = hostRect.bottom + OFFSET;
+        this.points['bottom-left'][LEFT] = this.points['top-left'][LEFT];
+        this.points.bottom[TOP] = this.points['bottom-left'][TOP];
         this.points.bottom[LEFT] = this.points.top[LEFT];
-        this.points[`bottom-right`][TOP] = this.points[`bottom-left`][TOP];
-        this.points[`bottom-right`][LEFT] = this.points[`top-right`][LEFT];
+        this.points['bottom-right'][TOP] = this.points['bottom-left'][TOP];
+        this.points['bottom-right'][LEFT] = this.points['top-right'][LEFT];
 
-        this.points[`left-top`][TOP] = topCenter - height + ARROW_OFFSET;
-        this.points[`left-top`][LEFT] = hostRect.left - width - OFFSET;
+        this.points['left-top'][TOP] = topCenter - height + ARROW_OFFSET;
+        this.points['left-top'][LEFT] = hostRect.left - width - OFFSET;
         this.points.left[TOP] = topCenter - height / 2;
-        this.points.left[LEFT] = this.points[`left-top`][LEFT];
-        this.points[`left-bottom`][TOP] = topCenter - ARROW_OFFSET;
-        this.points[`left-bottom`][LEFT] = this.points[`left-top`][LEFT];
+        this.points.left[LEFT] = this.points['left-top'][LEFT];
+        this.points['left-bottom'][TOP] = topCenter - ARROW_OFFSET;
+        this.points['left-bottom'][LEFT] = this.points['left-top'][LEFT];
 
-        this.points[`right-top`][TOP] = this.points[`left-top`][TOP];
-        this.points[`right-top`][LEFT] = hostRect.right + OFFSET;
+        this.points['right-top'][TOP] = this.points['left-top'][TOP];
+        this.points['right-top'][LEFT] = hostRect.right + OFFSET;
         this.points.right[TOP] = this.points.left[TOP];
-        this.points.right[LEFT] = this.points[`right-top`][LEFT];
-        this.points[`right-bottom`][TOP] = this.points[`left-bottom`][TOP];
-        this.points[`right-bottom`][LEFT] = this.points[`right-top`][LEFT];
+        this.points.right[LEFT] = this.points['right-top'][LEFT];
+        this.points['right-bottom'][TOP] = this.points['left-bottom'][TOP];
+        this.points['right-bottom'][LEFT] = this.points['right-top'][LEFT];
 
         if (this.checkPosition(this.points[this.direction], width, height)) {
             return this.points[this.direction];
@@ -84,8 +84,8 @@ export class TuiHintPositionDirective implements TuiPositionAccessor {
 
     private get fallback(): TuiHintDirection {
         return this.points.top[TOP] > this.windowRef.innerHeight - this.points.bottom[TOP]
-            ? `top`
-            : `bottom`;
+            ? 'top'
+            : 'bottom';
     }
 
     private checkPosition([top, left]: TuiPoint, width: number, height: number): boolean {

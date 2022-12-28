@@ -8,11 +8,11 @@ import {
 } from './autofocus.options';
 
 @Directive({
-    selector: `[tuiAutoFocus]`,
+    selector: '[tuiAutoFocus]',
     providers: TUI_AUTOFOCUS_PROVIDERS,
 })
 export class TuiAutoFocusDirective implements AfterViewInit {
-    @Input(`tuiAutoFocus`)
+    @Input('tuiAutoFocus')
     autoFocus: boolean | '' = true;
 
     constructor(

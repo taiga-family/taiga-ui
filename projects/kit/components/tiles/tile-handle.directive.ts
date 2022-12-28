@@ -4,9 +4,9 @@ import {tuiGetActualTarget, tuiIsElement} from '@taiga-ui/cdk';
 import {TuiTileComponent} from './tile.component';
 
 @Directive({
-    selector: `[tuiTileHandle]`,
+    selector: '[tuiTileHandle]',
     host: {
-        '[style.touchAction]': `"none"`,
+        '[style.touchAction]': '"none"',
     },
 })
 export class TuiTileHandleDirective {
@@ -15,7 +15,7 @@ export class TuiTileHandleDirective {
 
     constructor(@Inject(TuiTileComponent) private readonly tile: TuiTileComponent) {}
 
-    @HostListener(`pointerdown.silent.prevent`, [`$event`])
+    @HostListener('pointerdown.silent.prevent', ['$event'])
     onStart(event: PointerEvent): void {
         const target = tuiGetActualTarget(event);
         const {x, y, pointerId} = event;
@@ -27,7 +27,7 @@ export class TuiTileHandleDirective {
         this.onPointer(x, y);
     }
 
-    @HostListener(`document:pointerup.silent`)
+    @HostListener('document:pointerup.silent')
     onPointer(x = NaN, y = NaN): void {
         this.x = x - this.tile.element.offsetLeft;
         this.y = y - this.tile.element.offsetTop;
@@ -35,7 +35,7 @@ export class TuiTileHandleDirective {
         this.tile.offset$.next([0, 0]);
     }
 
-    @HostListener(`document:pointermove.silent`, [`$event.x`, `$event.y`])
+    @HostListener('document:pointermove.silent', ['$event.x', '$event.y'])
     onMove(x: number, y: number): void {
         if (!Number.isNaN(this.x)) {
             this.tile.offset$.next([x - this.x, y - this.y]);

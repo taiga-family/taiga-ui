@@ -5,7 +5,7 @@ import {WINDOW} from '@ng-web-apis/common';
  * Only adds current content if user has High DPI display
  */
 @Directive({
-    selector: `[tuiHighDpi]`,
+    selector: '[tuiHighDpi]',
 })
 export class TuiHighDpiDirective {
     constructor(

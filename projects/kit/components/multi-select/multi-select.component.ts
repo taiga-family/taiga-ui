@@ -55,9 +55,9 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {TUI_MULTI_SELECT_OPTIONS, TuiMultiSelectOptions} from './multi-select-options';
 
 @Component({
-    selector: `tui-multi-select`,
-    templateUrl: `./multi-select.template.html`,
-    styleUrls: [`./multi-select.style.less`],
+    selector: 'tui-multi-select',
+    templateUrl: './multi-select.template.html',
+    styleUrls: ['./multi-select.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiMultiSelectComponent),
@@ -95,14 +95,14 @@ export class TuiMultiSelectComponent<T>
 
     @Input()
     @tuiDefaultProp()
-    search: string | null = ``;
+    search: string | null = '';
 
     @Input()
     @tuiDefaultProp()
-    placeholder = ``;
+    placeholder = '';
 
     @Input()
-    @HostBinding(`class._editable`)
+    @HostBinding('class._editable')
     @tuiDefaultProp()
     editable = true;
 
@@ -121,7 +121,7 @@ export class TuiMultiSelectComponent<T>
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent<
         TuiContextWithImplicit<TuiActiveZoneDirective>
-    > = ``;
+    > = '';
 
     open = false;
 
@@ -143,7 +143,7 @@ export class TuiMultiSelectComponent<T>
         super(control, changeDetectorRef);
     }
 
-    @HostBinding(`attr.data-size`)
+    @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {
         return this.controller.size;
     }
@@ -171,11 +171,11 @@ export class TuiMultiSelectComponent<T>
 
     // @bad TODO: think of a better way
     get searchOrSpace(): string {
-        return this.computedGroup ? ` ` : this.searchString;
+        return this.computedGroup ? ' ' : this.searchString;
     }
 
     get searchString(): string {
-        return this.search === null ? `` : this.search;
+        return this.search === null ? '' : this.search;
     }
 
     get computedGroup(): boolean {

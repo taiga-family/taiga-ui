@@ -50,9 +50,9 @@ import {TUI_COUNTRIES_MASKS} from './tokens/countries-masks';
 import {tuiExtractValueFromEvent} from './utils/extract-value-from-event';
 
 @Component({
-    selector: `tui-input-phone-international`,
-    templateUrl: `./input-phone-international.template.html`,
-    styleUrls: [`./input-phone-international.style.less`],
+    selector: 'tui-input-phone-international',
+    templateUrl: './input-phone-international.template.html',
+    styleUrls: ['./input-phone-international.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputPhoneInternationalComponent),
@@ -72,7 +72,7 @@ export class TuiInputPhoneInternationalComponent
 
     private readonly staticPath: string | null = null;
 
-    @Input(`countryIsoCode`)
+    @Input('countryIsoCode')
     @tuiDefaultProp()
     set isoCode(code: TuiCountryIsoCode) {
         this.inputPhoneComponent?.writeValue(this.value);
@@ -110,7 +110,7 @@ export class TuiInputPhoneInternationalComponent
     ) {
         super(control, changeDetectorRef);
 
-        this.staticPath = iconsPath(`tuiIcon`).replace(`tuiIcon.svg#tuiIcon`, ``);
+        this.staticPath = iconsPath('tuiIcon').replace('tuiIcon.svg#tuiIcon', '');
     }
 
     get nativeFocusableElement(): HTMLElement | null {
@@ -143,16 +143,16 @@ export class TuiInputPhoneInternationalComponent
         return this.getFlagPath(this.countryIsoCode);
     }
 
-    @HostListener(`paste.capture.prevent.stop`, [`$event`])
-    @HostListener(`drop.capture.prevent.stop`, [`$event`])
+    @HostListener('paste.capture.prevent.stop', ['$event'])
+    @HostListener('drop.capture.prevent.stop', ['$event'])
     onPaste(event: ClipboardEvent | DragEvent): void {
-        let value = tuiExtractValueFromEvent(event).replace(TUI_NON_DIGITS_REGEXP, ``);
+        let value = tuiExtractValueFromEvent(event).replace(TUI_NON_DIGITS_REGEXP, '');
         const countryIsoCode = this.extractCountryCode(value);
 
         if (!countryIsoCode) {
             this.updateValue(
                 `${this.inputPhoneCountryCode}${value}`
-                    .replace(TUI_MASK_SYMBOLS_REGEXP, ``)
+                    .replace(TUI_MASK_SYMBOLS_REGEXP, '')
                     .slice(0, this.getMaxAllowedLength(this.countryIsoCode)),
             );
 
@@ -160,7 +160,7 @@ export class TuiInputPhoneInternationalComponent
         }
 
         if (countryIsoCode === TuiCountryIsoCode.RU) {
-            value = value.replace(/^8/, `7`);
+            value = value.replace(/^8/, '7');
         }
 
         this.updateCountryIsoCode(countryIsoCode);
@@ -212,7 +212,7 @@ export class TuiInputPhoneInternationalComponent
     }
 
     isoToCountryCode(isoCode: TuiCountryIsoCode): string {
-        return this.countriesMasks[isoCode].replace(MASK_AFTER_CODE_REGEXP, ``);
+        return this.countriesMasks[isoCode].replace(MASK_AFTER_CODE_REGEXP, '');
     }
 
     onModelChange(value: string): void {
@@ -224,12 +224,12 @@ export class TuiInputPhoneInternationalComponent
     }
 
     protected getFallbackValue(): string {
-        return ``;
+        return '';
     }
 
     @tuiPure
     private calculateMaskAfterCountryCode(mask: string, countryCode: string): string {
-        return mask.replace(countryCode, ``).trim();
+        return mask.replace(countryCode, '').trim();
     }
 
     private close(): void {
@@ -237,7 +237,7 @@ export class TuiInputPhoneInternationalComponent
     }
 
     private getMaxAllowedLength(isoCode: TuiCountryIsoCode): number {
-        return this.countriesMasks[isoCode].replace(/[()\- ]/g, ``).length;
+        return this.countriesMasks[isoCode].replace(/[()\- ]/g, '').length;
     }
 
     private updateCountryIsoCode(code: TuiCountryIsoCode): void {
@@ -256,7 +256,7 @@ export class TuiInputPhoneInternationalComponent
             return (
                 ruCodeTest ||
                 (value.startsWith(
-                    this.isoToCountryCode(countryIsoCode).replace(CHAR_PLUS, ``),
+                    this.isoToCountryCode(countryIsoCode).replace(CHAR_PLUS, ''),
                 ) &&
                     value.length + 1 === this.getMaxAllowedLength(countryIsoCode))
             );

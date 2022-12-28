@@ -4,7 +4,7 @@ import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 import {TuiInputCountComponent} from './input-count.component';
 
 @Directive({
-    selector: `tui-input-count`,
+    selector: 'tui-input-count',
     providers: [tuiAsTextfieldHost(TuiInputCountDirective)],
 })
 export class TuiInputCountDirective
@@ -19,8 +19,8 @@ export class TuiInputCountDirective
         if (this.host.nativeFocusableElement) {
             const {nativeFocusableElement} = this.host;
 
-            nativeFocusableElement.autocomplete = `off`;
-            nativeFocusableElement.inputMode = `numeric`;
+            nativeFocusableElement.autocomplete = 'off';
+            nativeFocusableElement.inputMode = 'numeric';
             nativeFocusableElement.maxLength =
                 nativeFocusableElement.maxLength > -1
                     ? nativeFocusableElement.maxLength

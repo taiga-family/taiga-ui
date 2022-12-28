@@ -13,9 +13,9 @@ import {AbstractExampleTuiControl} from '../../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: `example-tui-editor`,
-    templateUrl: `./editor.template.html`,
-    styleUrls: [`./editor.styles.less`],
+    selector: 'example-tui-editor',
+    templateUrl: './editor.template.html',
+    styleUrls: ['./editor.styles.less'],
     encapsulation,
     changeDetection,
     providers: [
@@ -30,12 +30,12 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../../abstract/inherited-documentation/ab
     ],
 })
 export class ExampleEditorComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
-    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
-    readonly provideExtensions = import(`./examples/import/provide-extensions.md?raw`);
+    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    readonly provideExtensions = import('./examples/import/provide-extensions.md?raw');
 
     readonly exampleEditorOptionsToken = import(
-        `./examples/import/editor-options-token.md?raw`
+        './examples/import/editor-options-token.md?raw'
     );
 
     readonly control = new FormControl();

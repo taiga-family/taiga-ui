@@ -11,9 +11,9 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: `tui-reorder`,
-    templateUrl: `./reorder.template.html`,
-    styleUrls: [`./reorder.style.less`],
+    selector: 'tui-reorder',
+    templateUrl: './reorder.template.html',
+    styleUrls: ['./reorder.style.less'],
 })
 export class TuiReorderComponent<T> {
     private dragging = false;
@@ -47,15 +47,15 @@ export class TuiReorderComponent<T> {
         @Inject(TUI_TABLE_SHOW_HIDE_MESSAGE) readonly showHideText$: Observable<string>,
     ) {}
 
-    @HostListener(`focusout.stop`)
+    @HostListener('focusout.stop')
     noop(): void {}
 
-    @HostListener(`pointerdown.silent`)
+    @HostListener('pointerdown.silent')
     onDrag(): void {
         this.dragging = true;
     }
 
-    @HostListener(`document:pointerup.silent`)
+    @HostListener('document:pointerup.silent')
     onDrop(): void {
         if (!this.dragging) {
             return;
@@ -70,7 +70,7 @@ export class TuiReorderComponent<T> {
     }
 
     getIcon(item: T): string {
-        return this.isEnabled(item) ? `tuiIconEyeOpen` : `tuiIconEyeClosed`;
+        return this.isEnabled(item) ? 'tuiIconEyeOpen' : 'tuiIconEyeClosed';
     }
 
     toggle(toggled: T): void {

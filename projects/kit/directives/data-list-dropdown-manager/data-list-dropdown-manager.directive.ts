@@ -31,7 +31,7 @@ import {
 } from 'rxjs/operators';
 
 @Directive({
-    selector: `tui-data-list[tuiDataListDropdownManager]`,
+    selector: 'tui-data-list[tuiDataListDropdownManager]',
     providers: [TuiDestroyService],
 })
 export class TuiDataListDropdownManagerDirective implements AfterViewInit {
@@ -67,11 +67,11 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                     const {nativeElement} = dropdown.dropdownBoxRef.location;
                     const mouseEnter$ = tuiTypedFromEvent(
                         nativeElement,
-                        `mouseenter`,
+                        'mouseenter',
                     ).pipe(take(1));
                     const esc$ = merge(
-                        tuiTypedFromEvent(element.nativeElement, `keydown`),
-                        tuiTypedFromEvent(nativeElement, `keydown`),
+                        tuiTypedFromEvent(element.nativeElement, 'keydown'),
+                        tuiTypedFromEvent(nativeElement, 'keydown'),
                     ).pipe(filter(({keyCode}) => keyCode === 27));
 
                     return merge(mouseEnter$, esc$).pipe(
@@ -81,7 +81,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                             }
 
                             element.nativeElement.focus();
-                            dropdown.toggle(`offsetX` in event);
+                            dropdown.toggle('offsetX' in event);
                         }),
                     );
                 }),
@@ -104,7 +104,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
             switchMap(elements =>
                 merge(
                     ...elements.map((element, index) =>
-                        tuiTypedFromEvent(element, `keydown`).pipe(
+                        tuiTypedFromEvent(element, 'keydown').pipe(
                             filter(({keyCode}) => keyCode === 39),
                             tuiPreventDefault(),
                             mapTo(index),
@@ -121,7 +121,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
             switchMap(elements =>
                 merge(
                     ...elements.map((element, index) =>
-                        tuiTypedFromEvent(element, `click`).pipe(mapTo(index)),
+                        tuiTypedFromEvent(element, 'click').pipe(mapTo(index)),
                     ),
                 ),
             ),
@@ -135,13 +135,13 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                 merge(
                     ...elements.map((element, index) =>
                         merge(
-                            tuiTypedFromEvent(element, `focus`),
-                            tuiTypedFromEvent(element, `blur`),
+                            tuiTypedFromEvent(element, 'focus'),
+                            tuiTypedFromEvent(element, 'blur'),
                         ).pipe(
                             filter(({relatedTarget}) =>
                                 this.notInDropdown(relatedTarget, index),
                             ),
-                            map(({type}) => (type === `focus` ? index : NaN)),
+                            map(({type}) => (type === 'focus' ? index : NaN)),
                         ),
                     ),
                 ),

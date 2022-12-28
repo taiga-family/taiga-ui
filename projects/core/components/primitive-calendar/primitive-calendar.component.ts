@@ -24,9 +24,9 @@ import {TUI_DAY_TYPE_HANDLER, TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
 import {TuiMarkerHandler} from '@taiga-ui/core/types';
 
 @Component({
-    selector: `tui-primitive-calendar`,
-    templateUrl: `./primitive-calendar.template.html`,
-    styleUrls: [`./primitive-calendar.style.less`],
+    selector: 'tui-primitive-calendar',
+    templateUrl: './primitive-calendar.template.html',
+    styleUrls: ['./primitive-calendar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveCalendarComponent {
@@ -70,7 +70,7 @@ export class TuiPrimitiveCalendarComponent {
         readonly dayTypeHandler: TuiHandler<TuiDay, string>,
     ) {}
 
-    @HostBinding(`class._single`)
+    @HostBinding('class._single')
     get isSingle(): boolean {
         return (
             this.value !== null &&

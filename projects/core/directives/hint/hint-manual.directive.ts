@@ -3,7 +3,7 @@ import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {Subject} from 'rxjs';
 
 @Directive({
-    selector: `[tuiHint][tuiHintManual]`,
+    selector: '[tuiHint][tuiHintManual]',
     providers: [tuiAsDriver(TuiHintManualDirective)],
 })
 export class TuiHintManualDirective extends TuiDriver implements OnChanges {

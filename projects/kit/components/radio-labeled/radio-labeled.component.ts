@@ -24,9 +24,9 @@ import {TuiBrightness, TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
 import {TuiRadioComponent} from '@taiga-ui/kit/components/radio';
 
 @Component({
-    selector: `tui-radio-labeled`,
-    templateUrl: `./radio-labeled.template.html`,
-    styleUrls: [`./radio-labeled.style.less`],
+    selector: 'tui-radio-labeled',
+    templateUrl: './radio-labeled.template.html',
+    styleUrls: ['./radio-labeled.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiRadioLabeledComponent),
@@ -44,9 +44,9 @@ export class TuiRadioLabeledComponent<T>
     item?: T;
 
     @Input()
-    @HostBinding(`attr.data-size`)
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
-    size: TuiSizeL = `m`;
+    size: TuiSizeL = 'm';
 
     @Input()
     @tuiDefaultProp()
@@ -77,12 +77,12 @@ export class TuiRadioLabeledComponent<T>
         return !!this.radio && this.radio.focused;
     }
 
-    @HostBinding(`class._disabled`)
+    @HostBinding('class._disabled')
     override get computedDisabled(): boolean {
         return this.disabled || this.pseudoDisabled;
     }
 
-    @HostBinding(`attr.data-mode`)
+    @HostBinding('attr.data-mode')
     get mode(): TuiBrightness | null {
         return this.modeDirective ? this.modeDirective.mode : null;
     }

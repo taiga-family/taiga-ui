@@ -7,7 +7,7 @@ import {delay, switchMap} from 'rxjs/operators';
 import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 
 @Directive({
-    selector: `[tuiHint]:not(ng-container)`,
+    selector: '[tuiHint]:not(ng-container)',
     providers: [tuiAsDriver(TuiHintHoverDirective), TuiHoveredService],
 })
 export class TuiHintHoverDirective extends TuiDriver {
@@ -18,11 +18,11 @@ export class TuiHintHoverDirective extends TuiDriver {
         ),
     );
 
-    @Input(`tuiHintShowDelay`)
+    @Input('tuiHintShowDelay')
     @tuiDefaultProp()
     showDelay: TuiHintOptions['showDelay'] = this.options.showDelay;
 
-    @Input(`tuiHintHideDelay`)
+    @Input('tuiHintHideDelay')
     @tuiDefaultProp()
     hideDelay: TuiHintOptions['hideDelay'] = this.options.hideDelay;
 
@@ -33,7 +33,7 @@ export class TuiHintHoverDirective extends TuiDriver {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
-    @HostListener(`click`, [`true`])
+    @HostListener('click', ['true'])
     toggle(visible: boolean): void {
         this.toggle$.next(visible);
     }

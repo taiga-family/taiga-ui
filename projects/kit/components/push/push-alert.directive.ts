@@ -17,7 +17,7 @@ import {switchMap, takeUntil} from 'rxjs/operators';
 import {TuiPushService} from './push.service';
 
 @Directive({
-    selector: `[tuiPush]`,
+    selector: '[tuiPush]',
     providers: [TuiDestroyService],
 })
 export class TuiPushAlertDirective extends PolymorpheusTemplate<any> {

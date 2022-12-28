@@ -5,12 +5,12 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {TuiMobileDialogOptions} from './mobile-dialog-options';
 
 @Component({
-    selector: `tui-mobile-dialog`,
-    templateUrl: `./mobile-dialog.template.html`,
-    styleUrls: [`./mobile-dialog.style.less`],
+    selector: 'tui-mobile-dialog',
+    templateUrl: './mobile-dialog.template.html',
+    styleUrls: ['./mobile-dialog.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._ios]': `isIOS`,
+        '[class._ios]': 'isIOS',
     },
 })
 export class TuiMobileDialogComponent<I> {

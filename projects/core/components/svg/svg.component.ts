@@ -34,20 +34,20 @@ import {tuiIsPresumedHTMLString} from '@taiga-ui/core/utils/miscellaneous';
 import {Observable, of, ReplaySubject} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 
-const UNDEFINED_NAMED_ICON = `Attempted to use undefined named icon`;
-const MISSING_EXTERNAL_ICON = `External icon is missing on the given URL`;
-const FAILED_EXTERNAL_ICON = `Failed to load external SVG`;
+const UNDEFINED_NAMED_ICON = 'Attempted to use undefined named icon';
+const MISSING_EXTERNAL_ICON = 'External icon is missing on the given URL';
+const FAILED_EXTERNAL_ICON = 'Failed to load external SVG';
 
 // TODO: Consider moving to CDK along with SvgService and SvgDefsHostComponent
 @Component({
-    selector: `tui-svg`,
-    templateUrl: `./svg.template.html`,
-    styleUrls: [`./svg.style.less`],
+    selector: 'tui-svg',
+    templateUrl: './svg.template.html',
+    styleUrls: ['./svg.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSvgComponent {
     private readonly src$ = new ReplaySubject<void>(1);
-    private icon: SafeHtml | string = ``;
+    private icon: SafeHtml | string = '';
     readonly innerHTML$: Observable<SafeHtml>;
 
     constructor(
@@ -81,7 +81,7 @@ export class TuiSvgComponent {
 
                 return of(this.icon);
             }),
-            startWith(``),
+            startWith(''),
         );
     }
 
@@ -98,12 +98,12 @@ export class TuiSvgComponent {
 
     get use(): string {
         if (tuiIsString(this.icon)) {
-            return this.icon.includes(`.svg#`)
+            return this.icon.includes('.svg#')
                 ? this.icon
                 : this.resolveName(this.icon, this.iconsPath);
         }
 
-        return ``;
+        return '';
     }
 
     get isInnerHTML(): boolean {
@@ -122,7 +122,7 @@ export class TuiSvgComponent {
     }
 
     private get isUse(): boolean {
-        return this.use.includes(`.svg#`);
+        return this.use.includes('.svg#');
     }
 
     private get isExternal(): boolean {
@@ -130,7 +130,7 @@ export class TuiSvgComponent {
     }
 
     private get isUrl(): boolean {
-        return tuiIsString(this.icon) && this.icon.endsWith(`.svg`);
+        return tuiIsString(this.icon) && this.icon.endsWith('.svg');
     }
 
     private get isSrc(): boolean {
@@ -146,7 +146,7 @@ export class TuiSvgComponent {
 
         return (
             isUse &&
-            use.startsWith(`http`) &&
+            use.startsWith('http') &&
             !!windowRef.origin &&
             !use.startsWith(windowRef.origin)
         );
@@ -183,7 +183,7 @@ export class TuiSvgComponent {
         }
 
         // Empty line for innerHTML when icon is shown through USE tag
-        return !this.isShadowDOM || !this.isName ? `` : this.sanitize(icon || ``);
+        return !this.isShadowDOM || !this.isName ? '' : this.sanitize(icon || '');
     }
 
     private sanitize(src: SafeHtml | string): SafeHtml | string {
@@ -191,22 +191,22 @@ export class TuiSvgComponent {
 
         return this.tuiSanitizer && tuiIsString(src)
             ? this.sanitizer.bypassSecurityTrustHtml(
-                  this.tuiSanitizer.sanitize(SecurityContext.HTML, src) || ``,
+                  this.tuiSanitizer.sanitize(SecurityContext.HTML, src) || '',
               )
             : src;
     }
 
     private getExternalIcon(src: string): Observable<SafeHtml> {
-        const url = src.includes(`.svg`) ? src : this.use;
+        const url = src.includes('.svg') ? src : this.use;
 
         return this.staticRequestService.request(url).pipe(
             catchError(() => {
                 this.onError(FAILED_EXTERNAL_ICON);
 
-                return of(``);
+                return of('');
             }),
             map(response =>
-                this.sanitize(response.replace(`<svg`, `<svg focusable="false"`)),
+                this.sanitize(response.replace('<svg', '<svg focusable="false"')),
             ),
         );
     }

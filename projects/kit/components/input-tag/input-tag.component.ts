@@ -68,9 +68,9 @@ import {TUI_INPUT_TAG_OPTIONS, TuiInputTagOptions} from './input-tag-options';
 const EVENT_Y_TO_X_COEFFICIENT = 3;
 
 @Component({
-    selector: `tui-input-tag`,
-    templateUrl: `./input-tag.template.html`,
-    styleUrls: [`./input-tag.style.less`],
+    selector: 'tui-input-tag',
+    templateUrl: './input-tag.template.html',
+    styleUrls: ['./input-tag.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputTagComponent),
@@ -88,16 +88,16 @@ export class TuiInputTagComponent
     @ViewChild(TuiHostedDropdownComponent)
     private readonly hostedDropdown?: TuiHostedDropdownComponent;
 
-    @ViewChild(`focusableElement`)
+    @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
-    @ViewChild(`tagsContainer`)
+    @ViewChild('tagsContainer')
     private readonly tagsContainer?: ElementRef<HTMLElement>;
 
-    @ViewChildren(`tag`, {read: ElementRef})
+    @ViewChildren('tag', {read: ElementRef})
     private readonly tags: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    @ViewChild(`cleaner`, {read: ElementRef})
+    @ViewChild('cleaner', {read: ElementRef})
     private readonly cleanerSvg?: ElementRef<HTMLElement>;
 
     @ViewChild(TuiScrollbarComponent, {read: ElementRef})
@@ -112,7 +112,7 @@ export class TuiInputTagComponent
 
     @Input()
     @tuiDefaultProp()
-    search = ``;
+    search = '';
 
     @Input()
     @tuiDefaultProp()
@@ -123,7 +123,7 @@ export class TuiInputTagComponent
     tagValidator: TuiBooleanHandler<string> = ALWAYS_TRUE_HANDLER;
 
     @Input()
-    @HostBinding(`class._expandable`)
+    @HostBinding('class._expandable')
     @tuiDefaultProp()
     expandable = true;
 
@@ -141,14 +141,14 @@ export class TuiInputTagComponent
 
     @Input()
     @tuiDefaultProp()
-    placeholder = ``;
+    placeholder = '';
 
     @Input()
     @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiStringifiableItem<any> | string> =
         ALWAYS_FALSE_HANDLER;
 
-    @Input(`pseudoFocused`)
+    @Input('pseudoFocused')
     set pseudoFocusedSetter(value: boolean | null) {
         if (!value && !this.focused) {
             this.scrollToStart$.next();
@@ -163,7 +163,7 @@ export class TuiInputTagComponent
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist?: TemplateRef<TuiContextWithImplicit<TuiActiveZoneDirective>>;
 
-    @ViewChild(`errorIcon`)
+    @ViewChild('errorIcon')
     readonly errorIconTemplate?: TemplateRef<Record<string, unknown>>;
 
     @ViewChild(TuiScrollbarComponent)
@@ -216,16 +216,16 @@ export class TuiInputTagComponent
         );
     }
 
-    @HostBinding(`attr.data-size`)
+    @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {
         return this.controller.size;
     }
 
-    @HostBinding(`class._label-outside`)
+    @HostBinding('class._label-outside')
     get labelOutside(): boolean {
         const {size, labelOutside} = this.controller;
 
-        return size === `s` || labelOutside;
+        return size === 's' || labelOutside;
     }
 
     get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
@@ -284,7 +284,7 @@ export class TuiInputTagComponent
     }
 
     get status(): TuiStatus {
-        return this.modeDirective?.mode ? `default` : this.options.tagStatus;
+        return this.modeDirective?.mode ? 'default' : this.options.tagStatus;
     }
 
     get canOpen(): boolean {
@@ -294,11 +294,11 @@ export class TuiInputTagComponent
     getLeftContent(tag: string): PolymorpheusContent {
         return !this.tagValidator(tag) && this.errorIconTemplate
             ? this.errorIconTemplate
-            : ``;
+            : '';
     }
 
     onCleanerClick(): void {
-        this.updateSearch(``);
+        this.updateSearch('');
         this.clear();
         this.focusInput();
         this.parentHostedDropdown?.updateOpen(true);
@@ -390,7 +390,7 @@ export class TuiInputTagComponent
 
     handleOption(item: string): void {
         this.focusInput();
-        this.updateSearch(``);
+        this.updateSearch('');
         this.updateValue(this.value.concat(item));
         this.open = false;
         this.scrollToEnd$.next();
@@ -416,12 +416,12 @@ export class TuiInputTagComponent
     onPaste(event: Event): void {
         const pasted = tuiGetClipboardDataText(event as ClipboardEvent);
 
-        this.onInput(pasted || ``);
+        this.onInput(pasted || '');
     }
 
     onDrop({dataTransfer}: DragEvent): void {
         if (dataTransfer) {
-            this.onInput(dataTransfer.getData(`text`) || ``);
+            this.onInput(dataTransfer.getData('text') || '');
         }
     }
 
@@ -476,7 +476,7 @@ export class TuiInputTagComponent
 
         const {nativeElement} = scroller.browserScrollRef;
 
-        const wheel$ = tuiTypedFromEvent(nativeElement, `wheel`, {passive: false}).pipe(
+        const wheel$ = tuiTypedFromEvent(nativeElement, 'wheel', {passive: false}).pipe(
             filter(event => event.deltaX === 0 && this.shouldScroll(nativeElement)),
             tuiPreventDefault(),
             map(({deltaY}) =>
@@ -514,7 +514,7 @@ export class TuiInputTagComponent
             return;
         }
 
-        this.updateSearch(``);
+        this.updateSearch('');
         this.updateValue(this.value.concat(inputValue));
     }
 

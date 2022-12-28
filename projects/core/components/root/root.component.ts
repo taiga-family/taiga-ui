@@ -18,17 +18,17 @@ import {merge, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
-    selector: `tui-root`,
-    templateUrl: `root.template.html`,
-    styleUrls: [`./root.style.less`],
+    selector: 'tui-root',
+    templateUrl: 'root.template.html',
+    styleUrls: ['./root.style.less'],
     // So that we do not force OnPush on custom dialogs
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [TUI_IS_MOBILE_RES_PROVIDER],
     encapsulation: ViewEncapsulation.None,
     host: {
         'data-tui-version': TUI_VERSION,
-        '[style.--tui-duration.ms]': `duration`,
-        '($.class._mobile)': `isMobileRes$`,
+        '[style.--tui-duration.ms]': 'duration',
+        '($.class._mobile)': 'isMobileRes$',
     },
 })
 export class TuiRootComponent {
@@ -49,6 +49,6 @@ export class TuiRootComponent {
         @Inject(TUI_THEME) theme: string,
     ) {
         tuiAssert.enabled = enabled;
-        body.setAttribute(`data-tui-theme`, theme.toLowerCase());
+        body.setAttribute('data-tui-theme', theme.toLowerCase());
     }
 }

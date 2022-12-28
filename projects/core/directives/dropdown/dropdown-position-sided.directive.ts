@@ -11,17 +11,17 @@ import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.direc
 import {TuiDropdownPositionDirective} from './dropdown-position.directive';
 
 @Directive({
-    selector: `[tuiDropdownSided]`,
+    selector: '[tuiDropdownSided]',
     providers: [
         TuiDropdownPositionDirective,
         tuiAsPositionAccessor(TuiDropdownPositionSidedDirective),
     ],
 })
 export class TuiDropdownPositionSidedDirective implements TuiPositionAccessor {
-    private previous = this.options.direction || `bottom`;
+    private previous = this.options.direction || 'bottom';
 
     @Input()
-    tuiDropdownSided: boolean | string = ``;
+    tuiDropdownSided: boolean | string = '';
 
     constructor(
         @Inject(TUI_DROPDOWN_OPTIONS) private readonly options: TuiDropdownOptions,
@@ -52,7 +52,7 @@ export class TuiDropdownPositionSidedDirective implements TuiPositionAccessor {
             right: hostRect.right + this.options.offset,
             bottom: hostRect.top - 1, // 1 for border
         } as const;
-        const better = available.top > available.bottom ? `top` : `bottom`;
+        const better = available.top > available.bottom ? 'top' : 'bottom';
         const maxLeft = available.left > available.right ? position.left : position.right;
         const left = available[align] > width ? position[align] : maxLeft;
 

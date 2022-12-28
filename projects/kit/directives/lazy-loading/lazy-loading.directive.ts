@@ -13,23 +13,23 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiLazyLoadingService} from './lazy-loading.service';
 
 @Directive({
-    selector: `img[loading="lazy"]`,
+    selector: 'img[loading="lazy"]',
     providers: [TuiLazyLoadingService, IntersectionObserverService, TuiDestroyService],
 })
 export class TuiLazyLoadingDirective {
-    @Input(`src`)
+    @Input('src')
     set srcSetter(src: SafeResourceUrl | string) {
         this.src = this.supported ? src : null;
         this.src$.next(src);
     }
 
-    @HostBinding(`style.animation`)
-    animation = `tuiSkeletonVibe ease-in-out 1s infinite alternate`;
+    @HostBinding('style.animation')
+    animation = 'tuiSkeletonVibe ease-in-out 1s infinite alternate';
 
-    @HostBinding(`style.background`)
-    background = `var(--tui-clear-hover)`;
+    @HostBinding('style.background')
+    background = 'var(--tui-clear-hover)';
 
-    @HostBinding(`attr.src`)
+    @HostBinding('attr.src')
     src: SafeResourceUrl | string | null = null;
 
     constructor(
@@ -46,12 +46,12 @@ export class TuiLazyLoadingDirective {
     }
 
     private get supported(): boolean {
-        return `loading` in this.elementRef.nativeElement;
+        return 'loading' in this.elementRef.nativeElement;
     }
 
-    @HostListener(`load`)
+    @HostListener('load')
     onLoad(): void {
-        this.background = ``;
-        this.animation = ``;
+        this.background = '';
+        this.animation = '';
     }
 }

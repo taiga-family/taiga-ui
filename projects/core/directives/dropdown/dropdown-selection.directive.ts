@@ -36,7 +36,7 @@ import {distinctUntilChanged, map} from 'rxjs/operators';
 import {TuiDropdownDirective} from './dropdown.directive';
 
 @Directive({
-    selector: `[tuiDropdown][tuiDropdownSelection]`,
+    selector: '[tuiDropdown][tuiDropdownSelection]',
     providers: [
         tuiAsDriver(TuiDropdownSelectionDirective),
         tuiAsRectAccessor(TuiDropdownSelectionDirective),
@@ -73,9 +73,9 @@ export class TuiDropdownSelectionDirective
 
     private ghost?: HTMLElement;
 
-    @Input(`tuiDropdownSelectionPosition`)
+    @Input('tuiDropdownSelectionPosition')
     @tuiDefaultProp()
-    position: 'selection' | 'tag' | 'word' = `selection`;
+    position: 'selection' | 'tag' | 'word' = 'selection';
 
     @Input()
     set tuiDropdownSelection(visible: TuiBooleanHandler<Range> | string) {
@@ -97,7 +97,7 @@ export class TuiDropdownSelectionDirective
 
     getClientRect(): ClientRect {
         switch (this.position) {
-            case `tag`: {
+            case 'tag': {
                 const {commonAncestorContainer} = this.range;
                 const element = tuiIsElement(commonAncestorContainer)
                     ? commonAncestorContainer
@@ -107,7 +107,7 @@ export class TuiDropdownSelectionDirective
                     ? element.getBoundingClientRect()
                     : EMPTY_CLIENT_RECT;
             }
-            case `word`:
+            case 'word':
                 return tuiGetWordRange(this.range).getBoundingClientRect();
             default:
                 return this.range.getBoundingClientRect();
@@ -177,14 +177,14 @@ export class TuiDropdownSelectionDirective
      * Create an invisible DIV styled exactly like input/textarea element inside directive
      */
     private initGhost(element: HTMLInputElement | HTMLTextAreaElement): HTMLElement {
-        const ghost = this.documentRef.createElement(`div`);
+        const ghost = this.documentRef.createElement('div');
         const {nativeElement} = this.viewContainerRef.element;
         const {font, letterSpacing, textTransform, padding} = getComputedStyle(element);
 
-        ghost.style.position = `absolute`;
-        ghost.style.pointerEvents = `none`;
-        ghost.style.opacity = `0`;
-        ghost.style.whiteSpace = `pre-wrap`;
+        ghost.style.position = 'absolute';
+        ghost.style.pointerEvents = 'none';
+        ghost.style.opacity = '0';
+        ghost.style.whiteSpace = 'pre-wrap';
         ghost.style.font = font;
         ghost.style.letterSpacing = letterSpacing;
         ghost.style.textTransform = textTransform;

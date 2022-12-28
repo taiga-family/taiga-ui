@@ -6,7 +6,7 @@ import {tuiGetSelectedText} from '@taiga-ui/cdk/utils';
 import {identity} from 'rxjs';
 
 @Directive({
-    selector: `[tuiCopyProcessor]`,
+    selector: '[tuiCopyProcessor]',
 })
 export class TuiCopyProcessorDirective {
     @Input()
@@ -15,12 +15,12 @@ export class TuiCopyProcessorDirective {
 
     constructor(@Inject(WINDOW) private readonly windowRef: Window) {}
 
-    @HostListener(`copy.prevent`, [`$event`])
+    @HostListener('copy.prevent', ['$event'])
     onCopy(event: ClipboardEvent): void {
         const text = tuiGetSelectedText(this.windowRef);
 
         if (text) {
-            event.clipboardData?.setData(`text/plain`, this.tuiCopyProcessor(text));
+            event.clipboardData?.setData('text/plain', this.tuiCopyProcessor(text));
         }
     }
 }

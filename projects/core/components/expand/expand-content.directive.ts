@@ -1,6 +1,6 @@
 import {Directive} from '@angular/core';
 
 @Directive({
-    selector: `[tuiExpandContent]`,
+    selector: '[tuiExpandContent]',
 })
 export class TuiExpandContentDirective {}

@@ -3,8 +3,8 @@ import {TuiPanService} from '@taiga-ui/cdk/services';
 import {Observable} from 'rxjs';
 
 @Directive({
-    selector: `[tuiPan]`,
-    outputs: [`tuiPan`],
+    selector: '[tuiPan]',
+    outputs: ['tuiPan'],
     providers: [TuiPanService],
 })
 export class TuiPanDirective {

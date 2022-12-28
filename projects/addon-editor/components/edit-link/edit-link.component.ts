@@ -13,16 +13,16 @@ import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TUI_EDITOR_LINK_TEXTS} from '@taiga-ui/addon-editor/tokens';
 import {tuiDefaultProp, TuiInjectionTokenType, tuiIsElement} from '@taiga-ui/cdk';
 
-const HASH_PREFIX = `#` as const;
-const HTTP_PREFIX = `http://` as const;
-const HTTPS_PREFIX = `https://` as const;
+const HASH_PREFIX = '#' as const;
+const HTTP_PREFIX = 'http://' as const;
+const HTTPS_PREFIX = 'https://' as const;
 
 type TuiLinkPrefix = typeof HASH_PREFIX | typeof HTTP_PREFIX | typeof HTTPS_PREFIX;
 
 @Component({
-    selector: `tui-edit-link`,
-    templateUrl: `./edit-link.template.html`,
-    styleUrls: [`./edit-link.style.less`],
+    selector: 'tui-edit-link',
+    templateUrl: './edit-link.template.html',
+    styleUrls: ['./edit-link.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditLinkComponent {
@@ -81,7 +81,7 @@ export class TuiEditLinkComponent {
         return !this.edit;
     }
 
-    @HostListener(`document:selectionchange`)
+    @HostListener('document:selectionchange')
     onSelectionChange(): void {
         if (this.isViewMode) {
             this.url = this.getHrefOrAnchorId();
@@ -89,9 +89,9 @@ export class TuiEditLinkComponent {
         }
     }
 
-    @HostListener(`mousedown`, [`$event`])
+    @HostListener('mousedown', ['$event'])
     onMouseDown(event: MouseEvent): void {
-        if (tuiIsElement(event.target) && !event.target.matches(`a, button, input`)) {
+        if (tuiIsElement(event.target) && !event.target.matches('a, button, input')) {
             event.preventDefault();
         }
     }
@@ -132,15 +132,15 @@ export class TuiEditLinkComponent {
     }
 
     onClear(): void {
-        this.url = ``;
+        this.url = '';
     }
 
     private makeDefaultPrefix(): TuiLinkPrefix {
         const a = this.getAnchorElement();
 
         if (a) {
-            return (!a.getAttribute(`href`) && a.getAttribute(`id`)) ||
-                a.getAttribute(`href`)?.startsWith(HASH_PREFIX)
+            return (!a.getAttribute('href') && a.getAttribute('id')) ||
+                a.getAttribute('href')?.startsWith(HASH_PREFIX)
                 ? HASH_PREFIX
                 : HTTP_PREFIX;
         }
@@ -151,7 +151,7 @@ export class TuiEditLinkComponent {
     private detectAnchorMode(): boolean {
         const a = this.getAnchorElement();
 
-        return !a?.href && !!a?.getAttribute(`id`);
+        return !a?.href && !!a?.getAttribute('id');
     }
 
     private getFocusedParentElement(): HTMLElement | null {
@@ -159,14 +159,14 @@ export class TuiEditLinkComponent {
     }
 
     private getAnchorElement(): HTMLAnchorElement | null {
-        return this.getFocusedParentElement()?.closest(`a`) || null;
+        return this.getFocusedParentElement()?.closest('a') || null;
     }
 
     private getHrefOrAnchorId(): string {
         const a = this.getAnchorElement();
 
         return a
-            ? this.removePrefix(a.getAttribute(`href`) || a.getAttribute(`id`) || ``)
+            ? this.removePrefix(a.getAttribute('href') || a.getAttribute('id') || '')
             : this.url;
     }
 
@@ -174,19 +174,19 @@ export class TuiEditLinkComponent {
         if (url.startsWith(HTTP_PREFIX)) {
             this.prefix = this.isOnlyAnchorMode ? HASH_PREFIX : HTTP_PREFIX;
 
-            return url.replace(HTTP_PREFIX, ``);
+            return url.replace(HTTP_PREFIX, '');
         }
 
         if (url.startsWith(HTTPS_PREFIX)) {
             this.prefix = this.isOnlyAnchorMode ? HASH_PREFIX : HTTPS_PREFIX;
 
-            return url.replace(HTTPS_PREFIX, ``);
+            return url.replace(HTTPS_PREFIX, '');
         }
 
         if (url.startsWith(HASH_PREFIX)) {
             this.prefix = HASH_PREFIX;
 
-            return url.replace(HASH_PREFIX, ``);
+            return url.replace(HASH_PREFIX, '');
         }
 
         return url;
@@ -196,10 +196,10 @@ export class TuiEditLinkComponent {
         const nodes =
             this.editor
                 .getOriginTiptapEditor()
-                .view.dom.querySelectorAll(`[data-type='jump-anchor']`) ?? [];
+                .view.dom.querySelectorAll('[data-type="jump-anchor"]') ?? [];
 
         return Array.from(nodes)
-            .map(node => node.getAttribute(`id`) || ``)
+            .map(node => node.getAttribute('id') || '')
             .filter(Boolean);
     }
 }

@@ -32,21 +32,21 @@ import {
 } from './navigation.providers';
 
 @Component({
-    selector: `tui-doc-navigation`,
-    templateUrl: `navigation.template.html`,
-    styleUrls: [`navigation.style.less`],
+    selector: 'tui-doc-navigation',
+    templateUrl: 'navigation.template.html',
+    styleUrls: ['navigation.style.less'],
     providers: NAVIGATION_PROVIDERS,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocNavigationComponent {
-    @HostBinding(`class._open`)
+    @HostBinding('class._open')
     menuOpen = false;
 
     openPagesArr: boolean[] = [];
     openPagesGroupsArr: boolean[] = [];
-    active = ``;
+    active = '';
 
-    readonly search = new FormControl(``);
+    readonly search = new FormControl('');
 
     readonly filtered$ = tuiControlValue<string>(this.search).pipe(
         filter(search => search.length > 2),
@@ -55,7 +55,7 @@ export class TuiDocNavigationComponent {
 
     readonly mode$: Observable<TuiBrightness> = this.mode.change$.pipe(
         startWith(null),
-        map(() => this.mode.mode || `onLight`),
+        map(() => this.mode.mode || 'onLight'),
     );
 
     constructor(
@@ -85,7 +85,7 @@ export class TuiDocNavigationComponent {
             changeDetectorRef.markForCheck();
             titleService.setTitle(title);
             this.openActivePageGroup();
-            this.handleAnchorLink(this.activatedRoute.snapshot.fragment || ``);
+            this.handleAnchorLink(this.activatedRoute.snapshot.fragment || '');
         });
     }
 
@@ -112,7 +112,7 @@ export class TuiDocNavigationComponent {
     onClick(input: TuiInputComponent): void {
         input.open = false;
         this.menuOpen = false;
-        this.search.setValue(``);
+        this.search.setValue('');
         this.openActivePageGroup();
     }
 
@@ -123,7 +123,7 @@ export class TuiDocNavigationComponent {
     ): ReadonlyArray<readonly TuiDocPage[]> {
         return items.map(section =>
             tuiUniqBy(
-                section.filter(({title, keywords = ``}) => {
+                section.filter(({title, keywords = ''}) => {
                     title = title.toLowerCase();
                     search = search.toLowerCase();
                     keywords = keywords.toLowerCase();
@@ -133,10 +133,10 @@ export class TuiDocNavigationComponent {
                         keywords.includes(search) ||
                         title.includes(tuiTransliterateKeyboardLayout(search)) ||
                         keywords.includes(tuiTransliterateKeyboardLayout(search)) ||
-                        search.replace(/-/gi, ``).includes(title)
+                        search.replace(/-/gi, '').includes(title)
                     );
                 }),
-                `title`,
+                'title',
             ),
         );
     }
@@ -150,7 +150,7 @@ export class TuiDocNavigationComponent {
                 ...array,
                 item.reduce<readonly TuiDocPage[]>(
                     (pages, page) =>
-                        `subPages` in page
+                        'subPages' in page
                             ? [...pages, ...page.subPages]
                             : [...pages, page],
                     [],
@@ -173,12 +173,12 @@ export class TuiDocNavigationComponent {
     private openActivePageGroup(): void {
         this.items.forEach((pages, pagesIndex) => {
             pages.forEach((page, pageIndex) => {
-                if (`route` in page && this.isActiveRoute(page.route)) {
+                if ('route' in page && this.isActiveRoute(page.route)) {
                     this.openPagesArr[pagesIndex] = true;
                     this.active = page.route;
                 }
 
-                if (`subPages` in page) {
+                if ('subPages' in page) {
                     page.subPages.forEach(subPage => {
                         if (this.isActiveRoute(subPage.route)) {
                             this.openPagesArr[pagesIndex] = true;
@@ -199,10 +199,10 @@ export class TuiDocNavigationComponent {
             return;
         }
 
-        element.classList.add(`tui-doc-animated-example`);
+        element.classList.add('tui-doc-animated-example');
         element.scrollIntoView({
-            block: `start`,
-            inline: `nearest`,
+            block: 'start',
+            inline: 'nearest',
             behavior: this.scrollBehavior,
         });
     }

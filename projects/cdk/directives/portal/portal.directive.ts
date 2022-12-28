@@ -9,7 +9,7 @@ import {
 import {TuiDropdownPortalService} from '@taiga-ui/cdk/components/dropdown-host';
 
 @Directive({
-    selector: `[tuiPortal]`,
+    selector: '[tuiPortal]',
 })
 export class TuiPortalDirective implements OnDestroy {
     private viewRef?: EmbeddedViewRef<unknown>;

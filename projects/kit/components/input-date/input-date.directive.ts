@@ -4,7 +4,7 @@ import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 import {TuiInputDateComponent} from './input-date.component';
 
 @Directive({
-    selector: `tui-input-date`,
+    selector: 'tui-input-date',
     providers: [tuiAsTextfieldHost(TuiInputDateDirective)],
 })
 export class TuiInputDateDirective extends AbstractTuiTextfieldHost<TuiInputDateComponent> {
@@ -17,6 +17,6 @@ export class TuiInputDateDirective extends AbstractTuiTextfieldHost<TuiInputDate
     }
 
     override process(input: HTMLInputElement): void {
-        input.inputMode = `numeric`;
+        input.inputMode = 'numeric';
     }
 }

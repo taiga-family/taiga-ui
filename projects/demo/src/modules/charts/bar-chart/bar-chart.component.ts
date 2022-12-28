@@ -4,30 +4,30 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
-    selector: `example-tui-bar-chart`,
-    templateUrl: `./bar-chart.template.html`,
-    styleUrls: [`./bar-chart.style.less`],
+    selector: 'example-tui-bar-chart',
+    templateUrl: './bar-chart.template.html',
+    styleUrls: ['./bar-chart.style.less'],
     changeDetection,
 })
 export class ExampleTuiBarChartComponent {
-    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
-    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
+    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`./examples/1/index.ts?raw`),
-        HTML: import(`./examples/1/index.html?raw`),
-        LESS: import(`./examples/1/index.less?raw`),
+        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
+        LESS: import('./examples/1/index.less?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`./examples/2/index.ts?raw`),
-        HTML: import(`./examples/2/index.html?raw`),
-        LESS: import(`./examples/2/index.less?raw`),
+        TypeScript: import('./examples/2/index.ts?raw'),
+        HTML: import('./examples/2/index.html?raw'),
+        LESS: import('./examples/2/index.less?raw'),
     };
 
     collapsed = false;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [`s`, `m`, `l`];
+    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
     size: TuiSizeL | TuiSizeS | null = null;
 

@@ -32,25 +32,25 @@ import {TuiHintHoverDirective} from './hint-hover.directive';
 import {TuiHintPointerDirective} from './hint-pointer.directive';
 
 @Component({
-    selector: `tui-hint`,
+    selector: 'tui-hint',
     template: `
         <ng-container *polymorpheusOutlet="content as text; context: context">
             {{ text }}
         </ng-container>
     `,
-    styleUrls: [`./hint.style.less`],
+    styleUrls: ['./hint.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, TuiPositionService, TuiHoveredService],
     animations: [tuiFadeIn],
 })
 export class TuiHintComponent<C = any> {
-    @HostBinding(`@tuiFadeIn`)
-    readonly animation = {value: ``, ...this.options} as const;
+    @HostBinding('@tuiFadeIn')
+    readonly animation = {value: '', ...this.options} as const;
 
-    @HostBinding(`attr.data-appearance`)
+    @HostBinding('attr.data-appearance')
     readonly appearance = this.polymorpheus.$implicit.appearance || this.mode?.mode;
 
-    @HostBinding(`class._untouchable`)
+    @HostBinding('class._untouchable')
     readonly untouchable = !!this.pointer;
 
     constructor(
@@ -83,7 +83,7 @@ export class TuiHintComponent<C = any> {
         return this.polymorpheus.$implicit.context;
     }
 
-    @HostListener(`document:click`, [`$event.target`])
+    @HostListener('document:click', ['$event.target'])
     onClick(target: HTMLElement): void {
         if (!this.elementRef.nativeElement.contains(target)) {
             this.hover.toggle(false);
@@ -102,7 +102,7 @@ export class TuiHintComponent<C = any> {
 
         style.top = tuiPx(top);
         style.left = tuiPx(safeLeft);
-        style.setProperty(`--top`, tuiPx(tuiClamp(beakTop, 0.5, height - 1)));
-        style.setProperty(`--left`, tuiPx(tuiClamp(beakLeft, 0.5, width - 1)));
+        style.setProperty('--top', tuiPx(tuiClamp(beakTop, 0.5, height - 1)));
+        style.setProperty('--left', tuiPx(tuiClamp(beakLeft, 0.5, width - 1)));
     }
 }
