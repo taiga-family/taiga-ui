@@ -36,15 +36,7 @@ export class TuiAccordionItemHarness extends TuiContentContainerComponentHarness
         return (await this.header()).focus();
     }
 
-    async sendSpaceKey(): Promise<void> {
-        return (await this.header()).sendKeys(` `);
-    }
-
     async sendEscKey(): Promise<void> {
         return (await this.header()).sendKeys(TestKey.ESCAPE);
-    }
-
-    async sendEnterKey(): Promise<void> {
-        return (await this.header()).sendKeys(TestKey.ENTER);
     }
 }
