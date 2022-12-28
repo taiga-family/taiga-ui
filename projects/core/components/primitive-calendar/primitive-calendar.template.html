@@ -22,6 +22,7 @@
                     class="t-cell"
                     [class.t-cell_today]="itemIsToday(item)"
                     [class.t-cell_interval]="itemIsInterval(item)"
+                    [class.t-cell_unavailable]="itemIsUnavailable(item)"
                     [attr.data-range]="getItemRange(item)"
                     [attr.data-state]="getItemState(item)"
                     (tuiHoveredChange)="onItemHovered($event && item)"
