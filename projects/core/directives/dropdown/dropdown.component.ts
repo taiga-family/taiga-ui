@@ -87,7 +87,7 @@ export class TuiDropdownComponent {
     private update(top: number, left: number): void {
         const {style} = this.elementRef.nativeElement;
         const {right} = this.elementRef.nativeElement.getBoundingClientRect();
-        const {limitWidth, maxHeight} = this.options;
+        const {limitWidth, maxHeight, offset} = this.options;
         const {innerHeight} = this.windowRef;
         const {clientRect} = this.host;
         const {position} = this.directive;
@@ -99,15 +99,13 @@ export class TuiDropdownComponent {
         left += offsetX;
 
         const isIntersecting =
-            left < rect.right &&
-            right > rect.left &&
-            top < offsetY + 2 * this.options.offset;
+            left < rect.right && right > rect.left && top < offsetY + 2 * offset;
         const available = isIntersecting
-            ? rect.top - 2 * this.options.offset
-            : offsetY + innerHeight - top - this.options.offset;
+            ? rect.top - 2 * offset
+            : offsetY + innerHeight - top - offset;
 
         style.position = position;
-        style.top = tuiPx(Math.max(top, offsetY + this.options.offset));
+        style.top = tuiPx(Math.max(top, offsetY + offset));
         style.left = tuiPx(left);
         style.maxHeight = tuiPx(Math.min(maxHeight, available));
         style.width = '';

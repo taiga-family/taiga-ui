@@ -23,6 +23,9 @@ export class TuiDropdownPositionSidedDirective implements TuiPositionAccessor {
     @Input()
     tuiDropdownSided: boolean | string = '';
 
+    @Input()
+    tuiDropdownSidedOffset = 4;
+
     constructor(
         @Inject(TUI_DROPDOWN_OPTIONS) private readonly options: TuiDropdownOptions,
         @Inject(WINDOW) private readonly windowRef: Window,
@@ -39,18 +42,18 @@ export class TuiDropdownPositionSidedDirective implements TuiPositionAccessor {
         const {height, width} = rect;
         const hostRect = this.accessor.getClientRect();
         const {innerHeight, innerWidth} = this.windowRef;
-        const {align, direction, minHeight} = this.options;
+        const {align, direction, minHeight, offset} = this.options;
         const available = {
             top: hostRect.bottom,
-            left: hostRect.left - this.options.offset,
-            right: innerWidth - hostRect.right - this.options.offset,
+            left: hostRect.left - offset,
+            right: innerWidth - hostRect.right - offset,
             bottom: innerHeight - hostRect.top,
         } as const;
         const position = {
-            top: hostRect.bottom - height + 1, // 1 for border
-            left: hostRect.left - width - this.options.offset,
-            right: hostRect.right + this.options.offset,
-            bottom: hostRect.top - 1, // 1 for border
+            top: hostRect.bottom - height + this.tuiDropdownSidedOffset + 1, // 1 for border
+            left: hostRect.left - width - offset,
+            right: hostRect.right + offset,
+            bottom: hostRect.top - this.tuiDropdownSidedOffset - 1, // 1 for border
         } as const;
         const better = available.top > available.bottom ? 'top' : 'bottom';
         const maxLeft = available.left > available.right ? position.left : position.right;
