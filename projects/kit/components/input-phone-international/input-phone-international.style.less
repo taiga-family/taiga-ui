@@ -27,6 +27,18 @@
         cursor: default;
     }
     /* stylelint-enable */
+
+    &[data-size='m'] {
+        width: 5.5rem;
+    }
+
+    &[data-size='s'] {
+        width: 2rem;
+
+        .t-flag {
+            margin-left: -@space * 4;
+        }
+    }
 }
 
 .t-arrow-icon {
