@@ -216,6 +216,7 @@ describe(`Accordion`, () => {
         const accordionItem = await accordion.getHarness(TuiAccordionItemHarness);
 
         await accordionItem.clickHeader();
+        await accordionItem.focus();
         await accordionItem.sendEscKey();
 
         expect(await accordionItem.getContent()).toBeNull();

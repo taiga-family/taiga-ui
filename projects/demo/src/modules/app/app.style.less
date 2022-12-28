@@ -1,3 +1,4 @@
+@import '~@taiga-ui/core/styles/taiga-ui-local';
 @import '~@taiga-ui/core/styles/taiga-ui-theme';
 @import '~@taiga-ui/core/styles/taiga-ui-fonts';
 @import '~@taiga-ui/styles/taiga-ui-global';
@@ -16,7 +17,7 @@ app {
     transform: rotate(20deg);
     margin-left: 1.25rem;
 
-    :host-context(tui-root._mobile) & {
+    @media @tui-mobile {
         left: 2.5rem;
     }
 }
