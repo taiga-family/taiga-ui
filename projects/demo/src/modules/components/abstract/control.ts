@@ -147,6 +147,8 @@ export abstract class AbstractExampleTuiControl
 
     postfix = this.prefixVariants[0];
 
+    dropdownOffset = TUI_DROPDOWN_DEFAULT_OPTIONS.offset;
+
     get customContent(): PolymorpheusContent {
         return this.customContentSelected === CUSTOM_SVG_NAME
             ? CUSTOM_SVG
