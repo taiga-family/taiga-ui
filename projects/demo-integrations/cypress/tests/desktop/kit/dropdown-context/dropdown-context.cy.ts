@@ -42,4 +42,11 @@ describe(`DropdownContext`, () => {
 
         cy.get(`#context-menu`).matchImageSnapshot(`03-2-second-remains`);
     });
+
+    it(`closes dropdown when clicked outside`, () => {
+        cy.get(`#context-menu`).find(`tr`).eq(1).rightclick(`left`);
+        cy.get(`#context-menu`).find(`tr`).eq(2).click();
+
+        cy.get(`#context-menu`).matchImageSnapshot(`04-1-dropdown-closed`);
+    });
 });
