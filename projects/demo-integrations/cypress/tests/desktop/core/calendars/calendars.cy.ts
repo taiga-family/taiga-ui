@@ -4,6 +4,7 @@ describe(`Calendars`, () => {
     beforeEach(() => {
         cy.viewport(720, 700);
     });
+
     it(`Calendar`, () => {
         cy.tuiVisit(
             `components/calendar/API?tuiMode=null&value$=2&maxViewedMonth$=1&max$=0`,
@@ -13,6 +14,24 @@ describe(`Calendars`, () => {
             .first()
             .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
             .matchImageSnapshot(`calendar`);
+    });
+
+    it(`Open calendar from start value`, () => {
+        cy.tuiVisit(`components/calendar/API?value$=2`);
+
+        cy.get(`tui-calendar`)
+            .first()
+            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+            .matchImageSnapshot(`calendar-is-april-2020`);
+    });
+
+    it(`Set range between two days`, () => {
+        cy.tuiVisit(`components/calendar/API?value$=1`);
+
+        cy.get(`tui-calendar`)
+            .first()
+            .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+            .matchImageSnapshot(`range-calendar`);
     });
 
     it(`Month`, () => {
