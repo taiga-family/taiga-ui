@@ -45,6 +45,20 @@ export class TuiCalendarHarness extends TuiComponentHarness {
         );
     }
 
+    async clickMonthLeft(): Promise<void> {
+        return (await this.getPrimitiveYearMonthPaginationHarness())?.clickLeft();
+    }
+
+    async getContentText(): Promise<string> {
+        return (
+            (await this.getPrimitiveYearMonthPaginationHarness())?.getContentText() ?? ``
+        );
+    }
+
+    async clickMonthRight(): Promise<void> {
+        return (await this.getPrimitiveYearMonthPaginationHarness())?.clickRight();
+    }
+
     async clickPaginationYear(): Promise<void> {
         return (await this.getPrimitiveYearMonthPaginationHarness())?.clickYear();
     }

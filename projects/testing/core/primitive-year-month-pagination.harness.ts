@@ -4,18 +4,41 @@ import {TuiPrimitiveSpinButtonHarness} from './primitive-spin-button.harness';
 
 export class TuiPrimitiveYearMonthPaginationHarness extends TuiComponentHarness {
     static hostSelector = `tui-primitive-year-month-pagination`;
+
+    private readonly buttonLeft = this.locatorForOptional(
+        `button[icon=tuiIconChevronLeftLarge]`,
+    );
+
+    private readonly content = this.locatorForOptional(`.t-calendar-title`);
+
+    private readonly buttonRight = this.locatorForOptional(
+        `button[icon=tuiIconChevronRightLarge]`,
+    );
+
     private readonly button = this.locatorForOptional(`#year-btn`);
-    private readonly primitveSpinButton = this.locatorFor(TuiPrimitiveSpinButtonHarness);
+    private readonly primitiveSpinButton = this.locatorFor(TuiPrimitiveSpinButtonHarness);
+
+    async clickLeft(): Promise<void> {
+        return (await this.buttonLeft())?.click();
+    }
+
+    async getContentText(): Promise<string> {
+        return (await this.content())?.text() ?? ``;
+    }
+
+    async clickRight(): Promise<void> {
+        return (await this.buttonRight())?.click();
+    }
 
     async clickYear(): Promise<void> {
         return (await this.button())?.click();
     }
 
     async isLeftDisabled(): Promise<boolean> {
-        return (await this.primitveSpinButton()).isLeftDisabled();
+        return (await this.primitiveSpinButton()).isLeftDisabled();
     }
 
     async isRightDisabled(): Promise<boolean> {
-        return (await this.primitveSpinButton()).isRightDisabled();
+        return (await this.primitiveSpinButton()).isRightDisabled();
     }
 }

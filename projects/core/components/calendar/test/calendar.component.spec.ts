@@ -120,6 +120,33 @@ describe(`Calendar`, () => {
         expect(testComponent.dayClick).toHaveBeenCalledWith(day);
     });
 
+    it(`right button should not toggle after max value`, async () => {
+        const calendar = await loader.getHarness(
+            TuiCalendarHarness.with({selector: `#max-case`}),
+        );
+
+        expect(await calendar.getContentText()).toEqual(`March  2019`);
+
+        await calendar.clickMonthLeft(); // Feb
+        await calendar.clickMonthLeft(); // Jan
+
+        expect(await calendar.getContentText()).toEqual(`January  2019`);
+
+        await calendar.clickMonthRight(); // Feb
+
+        expect(await calendar.getContentText()).toEqual(`February  2019`);
+
+        await calendar.clickMonthRight(); // Mar
+
+        // max month is March
+        await calendar.clickMonthRight(); // Mar
+        await calendar.clickMonthRight(); // Mar
+        await calendar.clickMonthRight(); // Mar
+        await calendar.clickMonthRight(); // Mar
+
+        expect(await calendar.getContentText()).toEqual(`March  2019`);
+    });
+
     it(`monitors hover on a certain day`, async () => {
         const day = TuiDay.fromUtcNativeDate(new Date());
         const calendar = await loader.getHarness(TuiCalendarHarness);
