@@ -22,7 +22,7 @@ export class ExampleTuiEditorProcessingContentComponent {
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
         'legacy-editor.ts': import(
-            './../../../../../../addon-editor/utils/legacy-converter.ts?raw'
+            '../../../../../../addon-editor/utils/legacy-converter.ts?raw'
         ),
     };
 }

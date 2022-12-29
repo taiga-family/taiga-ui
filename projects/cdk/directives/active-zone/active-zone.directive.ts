@@ -17,7 +17,8 @@ import {Observable} from 'rxjs';
 import {distinctUntilChanged, map, skip, startWith} from 'rxjs/operators';
 
 @Directive({
-    selector: '[tuiActiveZone]:not(ng-container), [tuiActiveZoneChange]:not(ng-container), [tuiActiveZoneParent]:not(ng-container)',
+    selector:
+        '[tuiActiveZone]:not(ng-container), [tuiActiveZoneChange]:not(ng-container), [tuiActiveZoneParent]:not(ng-container)',
     exportAs: 'tuiActiveZone',
 })
 export class TuiActiveZoneDirective implements OnDestroy {

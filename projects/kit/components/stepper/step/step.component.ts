@@ -17,7 +17,8 @@ import {filter} from 'rxjs/operators';
 import {TuiStepperComponent} from '../stepper.component';
 
 @Component({
-    selector: 'button[tuiStep], a[tuiStep]:not([routerLink]), a[tuiStep][routerLink][routerLinkActive]',
+    selector:
+        'button[tuiStep], a[tuiStep]:not([routerLink]), a[tuiStep][routerLink][routerLinkActive]',
     templateUrl: './step.template.html',
     styleUrls: ['./step.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
