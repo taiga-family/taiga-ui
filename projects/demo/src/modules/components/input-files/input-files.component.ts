@@ -59,6 +59,7 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
     label = 'or drop\u00A0it\u00A0here';
     multiple = true;
     showSize = true;
+    showDelete = true;
     accept = '';
     acceptVariants = ['image/*', 'application/pdf', 'image/*,application/pdf'];
     capture: TuiInputFilesOptions['capture'] = null;

@@ -95,6 +95,7 @@
                             [file]="file"
                             [size]="size"
                             [showSize]="showSize"
+                            [showDelete]="showDelete"
                             (removed)="removeFile(file)"
                         ></tui-file>
                     </ng-container>
@@ -107,6 +108,7 @@
                             [file]="file"
                             [size]="size"
                             [showSize]="showSize"
+                            [showDelete]="showDelete"
                         ></tui-file>
                     </ng-container>
                 </ng-template>
@@ -118,6 +120,7 @@
                         [file]="file"
                         [size]="size"
                         [showSize]="showSize"
+                        [showDelete]="showDelete"
                         (removed)="removeRejected(file)"
                     ></tui-file>
                 </ng-container>
@@ -210,13 +213,21 @@
         <tui-doc-documentation heading="TuiFile">
             <ng-template
                 i18n
+                documentationPropertyName="showDelete"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="showDelete"
+            >
+                Allow to delete file after attach it
+            </ng-template>
+            <ng-template
+                i18n
                 documentationPropertyName="file"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiFileLike"
             >
                 File
             </ng-template>
-
             <ng-template
                 i18n
                 documentationPropertyName="state"
@@ -225,7 +236,6 @@
             >
                 State of the file
             </ng-template>
-
             <ng-template
                 i18n
                 documentationPropertyName="showSize"
@@ -235,7 +245,6 @@
             >
                 Show file size
             </ng-template>
-
             <ng-template
                 i18n
                 documentationPropertyName="size"
@@ -246,10 +255,9 @@
             >
                 Component size
             </ng-template>
-
             <ng-template
                 i18n
-                documentationPropertyName="fileRemoved"
+                documentationPropertyName="removed"
                 documentationPropertyMode="output"
                 documentationPropertyType="TuiFileLike"
             >

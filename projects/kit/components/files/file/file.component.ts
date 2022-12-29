@@ -22,9 +22,9 @@ type FileTexts = 'loadingError' | 'preview' | 'remove';
 
 @Component({
     selector: 'tui-file',
-    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './file.template.html',
     styleUrls: ['./file.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFileComponent {
     @Input()
@@ -38,6 +38,10 @@ export class TuiFileComponent {
     @Input()
     @tuiDefaultProp()
     size: TuiSizeL = 'm';
+
+    @Input()
+    @tuiDefaultProp()
+    showDelete = true;
 
     @Input()
     @tuiDefaultProp()
@@ -83,7 +87,7 @@ export class TuiFileComponent {
     }
 
     get allowDelete(): boolean {
-        return tuiIsObserved(this.removed);
+        return this.showDelete && tuiIsObserved(this.removed);
     }
 
     get icon(): string {

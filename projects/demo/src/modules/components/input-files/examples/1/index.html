@@ -9,6 +9,7 @@
     <tui-file
         *ngIf="loadedFiles$ | async as file"
         [file]="file"
+        [showDelete]="control.enabled"
         (removed)="removeFile()"
     ></tui-file>
 
@@ -16,6 +17,7 @@
         *ngIf="rejectedFiles$ | async as file"
         state="error"
         [file]="file"
+        [showDelete]="control.enabled"
         (removed)="clearRejected()"
     ></tui-file>
 
@@ -23,5 +25,6 @@
         *ngIf="loadingFiles$ | async as file"
         state="loading"
         [file]="file"
+        [showDelete]="control.enabled"
     ></tui-file>
 </tui-files>
