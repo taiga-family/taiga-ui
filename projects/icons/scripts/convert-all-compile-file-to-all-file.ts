@@ -1,4 +1,4 @@
-import {Plugin, rollup, RollupOptions} from 'rollup';
+import {rollup, RollupOptions} from 'rollup';
 import typescript, {RPT2Options} from 'rollup-plugin-typescript2';
 
 import {rollupSvgo} from './rollup-svgo';
@@ -21,13 +21,17 @@ export async function convertAllCompileFileToAllFile(config: Options): Promise<v
 
     const inputOptions: RollupOptions = {
         input: from,
-        output: {preferConst: true},
+        output: {
+            generatedCode: {
+                constBindings: true,
+            },
+        },
         plugins: [
             typescript(
                 prt2Options ?? {
                     cacheRoot: `node_modules/.cache/.rpt2_cache`,
                 },
-            ) as Plugin,
+            ),
             rollupSvgo({
                 include: `**/*.svg`,
                 options: {
@@ -55,7 +59,9 @@ export async function convertAllCompileFileToAllFile(config: Options): Promise<v
         banner,
         file: to,
         format: `es`,
-        preferConst: true,
+        generatedCode: {
+            constBindings: true,
+        },
     });
 
     /**
