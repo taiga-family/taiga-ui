@@ -76,6 +76,7 @@ const LINE_HEIGHT_REM = {
     m: 1.25,
     l: 1.25,
 };
+const TAG_VERTICAL_SPACE_REM = 0.125;
 
 @Component({
     selector: 'tui-input-tag',
@@ -557,7 +558,7 @@ export class TuiInputTagComponent
 
     private get lineHeight(): number {
         return this.labelOutside
-            ? TAG_SIZE_REM[this.controller.size] + 2 * 0.125
+            ? TAG_SIZE_REM[this.controller.size] + 2 * TAG_VERTICAL_SPACE_REM
             : LINE_HEIGHT_REM[this.controller.size];
     }
 }
