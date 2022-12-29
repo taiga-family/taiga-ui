@@ -38,11 +38,11 @@ import {distinctUntilChanged} from 'rxjs/operators';
 import {TuiLineChartHintDirective} from './line-chart-hint.directive';
 
 @Component({
-    selector: `tui-line-chart`,
-    templateUrl: `./line-chart.template.html`,
-    styleUrls: [`./line-chart.style.less`],
+    selector: 'tui-line-chart',
+    templateUrl: './line-chart.template.html',
+    styleUrls: ['./line-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    viewProviders: [tuiHintOptionsProvider({direction: `top`})],
+    viewProviders: [tuiHintOptionsProvider({direction: 'top'})],
 })
 export class TuiLineChartComponent {
     private readonly _hovered$ = new Subject<number>();
@@ -52,7 +52,7 @@ export class TuiLineChartComponent {
     @ViewChildren(TuiDriver)
     readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
-    @Input(`value`)
+    @Input('value')
     @tuiDefaultProp()
     set valueSetter(value: readonly TuiPoint[]) {
         this.value = value.filter(item => !item.some(Number.isNaN));
@@ -77,7 +77,7 @@ export class TuiLineChartComponent {
     @Input()
     @tuiDefaultProp(
         (smoothingFactor: number) => tuiInRange(smoothingFactor, 0, 100),
-        `smoothingFactor must be between 0 and 100`,
+        'smoothingFactor must be between 0 and 100',
     )
     smoothingFactor = 0;
 
@@ -120,7 +120,7 @@ export class TuiLineChartComponent {
     }
 
     get hintContent(): PolymorpheusContent<TuiLineChartHintContext<TuiPoint>> {
-        return this.hintOptions?.content || ``;
+        return this.hintOptions?.content || '';
     }
 
     get fillId(): string {
@@ -130,7 +130,7 @@ export class TuiLineChartComponent {
     get fill(): string {
         return this.filled
             ? tuiPrepareExternalUrl(this.ngLocation, this.locationRef, this.fillId)
-            : `none`;
+            : 'none';
     }
 
     get viewBox(): string {
@@ -160,7 +160,7 @@ export class TuiLineChartComponent {
         );
     }
 
-    @HostListener(`mouseleave`)
+    @HostListener('mouseleave')
     onMouseLeave(): void {
         if (!this.hintDirective) {
             this.onHovered(NaN);
@@ -237,7 +237,7 @@ export class TuiLineChartComponent {
         return value.reduce(
             (d, point, index) =>
                 index ? `${d} ${tuiDraw(value, index, smoothingFactor)}` : `M ${point}`,
-            ``,
+            '',
         );
     }
 

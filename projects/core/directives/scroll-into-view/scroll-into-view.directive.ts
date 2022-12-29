@@ -8,7 +8,7 @@ import {takeUntil} from 'rxjs/operators';
  * Directive scrolls element into view inside tui-scrollbar
  */
 @Directive({
-    selector: `[tuiScrollIntoView]`,
+    selector: '[tuiScrollIntoView]',
     providers: [TuiDestroyService],
 })
 export class TuiScrollIntoViewDirective {

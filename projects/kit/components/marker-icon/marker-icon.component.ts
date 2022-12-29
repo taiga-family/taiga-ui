@@ -17,29 +17,29 @@ import {TuiMarkerIconMode} from '@taiga-ui/kit/types';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: `tui-marker-icon, a[tuiMarkerIcon], button[tuiMarkerIcon]`,
-    templateUrl: `./marker-icon.template.html`,
-    styleUrls: [`./marker-icon.style.less`],
+    selector: 'tui-marker-icon, a[tuiMarkerIcon], button[tuiMarkerIcon]',
+    templateUrl: './marker-icon.template.html',
+    styleUrls: ['./marker-icon.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService, MODE_PROVIDER],
     host: {
-        '($.data-mode.attr)': `mode$`,
+        '($.data-mode.attr)': 'mode$',
     },
 })
 export class TuiMarkerIconComponent {
     @Input()
-    @HostBinding(`attr.data-marker-mode`)
+    @HostBinding('attr.data-marker-mode')
     @tuiDefaultProp()
     mode: TuiMarkerIconMode | null = null;
 
     @Input()
-    @HostBinding(`attr.data-size`)
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
-    size: TuiSizeXXL | TuiSizeXXS = `m`;
+    size: TuiSizeXXL | TuiSizeXXS = 'm';
 
     @Input()
     @tuiDefaultProp()
-    src = ``;
+    src = '';
 
     constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
 }

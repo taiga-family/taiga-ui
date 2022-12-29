@@ -13,6 +13,16 @@ module.exports = {
             plugins: ['@typescript-eslint'],
             rules: {
                 '@typescript-eslint/quotes': ['error', 'backtick'],
+                '@typescript-eslint/prefer-nullish-coalescing': 'off',
+            },
+        },
+        {
+            files: ['*.component.ts', '*.directive.ts'],
+            parser: '@typescript-eslint/parser',
+            plugins: ['@typescript-eslint'],
+            rules: {
+                '@typescript-eslint/quotes': ['error', 'single'],
+                'import/extensions': 'off',
             },
         },
     ],

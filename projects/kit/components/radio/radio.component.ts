@@ -29,9 +29,9 @@ import {TuiRadioGroupComponent} from '@taiga-ui/kit/components/radio-group';
 import {TUI_RADIO_OPTIONS, TuiRadioOptions} from './radio-options';
 
 @Component({
-    selector: `tui-radio`,
-    templateUrl: `./radio.template.html`,
-    styleUrls: [`./radio.style.less`],
+    selector: 'tui-radio',
+    templateUrl: './radio.template.html',
+    styleUrls: ['./radio.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiRadioComponent),
@@ -43,7 +43,7 @@ export class TuiRadioComponent<T>
     extends AbstractTuiNullableControl<T>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild(`focusableElement`)
+    @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
 
     @Input()
@@ -58,7 +58,7 @@ export class TuiRadioComponent<T>
     name: string | null = null;
 
     @Input()
-    @HostBinding(`attr.data-size`)
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size: TuiSizeL = this.options.size;
 
@@ -66,7 +66,7 @@ export class TuiRadioComponent<T>
     @tuiDefaultProp()
     pseudoDisabled = false;
 
-    readonly animation = {value: ``, ...this.animationOptions} as const;
+    readonly animation = {value: '', ...this.animationOptions} as const;
 
     constructor(
         @Optional()
@@ -91,7 +91,7 @@ export class TuiRadioComponent<T>
             : this.options.appearances.unchecked;
     }
 
-    @HostBinding(`class._disabled`)
+    @HostBinding('class._disabled')
     override get computedDisabled(): boolean {
         return this.disabled || this.pseudoDisabled;
     }
@@ -115,7 +115,7 @@ export class TuiRadioComponent<T>
     }
 
     override get computedName(): string {
-        return this.name || this.radioGroupName || this.controlName || ``;
+        return this.name || this.radioGroupName || this.controlName || '';
     }
 
     get isFocusable(): boolean {

@@ -39,9 +39,9 @@ import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({
-    selector: `tui-calendar-range`,
-    templateUrl: `./calendar-range.template.html`,
-    styleUrls: [`./calendar-range.style.less`],
+    selector: 'tui-calendar-range',
+    templateUrl: './calendar-range.template.html',
+    styleUrls: ['./calendar-range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
 })
@@ -108,9 +108,9 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
             });
     }
 
-    @HostListener(`document:keydown.capture`, [`$event`])
+    @HostListener('document:keydown.capture', ['$event'])
     onEsc(event: KeyboardEvent): void {
-        if (event.key !== `Escape` || !this.value?.isSingleDay) {
+        if (event.key !== 'Escape' || !this.value?.isSingleDay) {
             return;
         }
 
@@ -175,7 +175,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     }
 
     onItemSelect(item: TuiDayRangePeriod | string): void {
-        if (typeof item !== `string`) {
+        if (typeof item !== 'string') {
             this.updateValue(item.range.dayLimit(this.min, this.max));
 
             return;

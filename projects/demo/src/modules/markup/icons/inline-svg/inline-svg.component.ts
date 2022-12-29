@@ -3,14 +3,14 @@ import {TUI_SANITIZER} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 
 @Component({
-    selector: `inline-svg-example`,
+    selector: 'inline-svg-example',
     template: `
         <tui-svg
             class="example"
             [src]="svg"
         ></tui-svg>
     `,
-    styleUrls: [`./inline-svg.style.less`],
+    styleUrls: ['./inline-svg.style.less'],
     providers: [
         {
             provide: TUI_SANITIZER,

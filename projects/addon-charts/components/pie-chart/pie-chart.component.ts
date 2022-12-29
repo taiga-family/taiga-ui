@@ -28,11 +28,11 @@ import {
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const RADII = {
-    xs: `50`,
-    s: `50`,
-    m: `77.8`,
-    l: `81.9`,
-    xl: `81.3`,
+    xs: '50',
+    s: '50',
+    m: '77.8',
+    l: '81.9',
+    xl: '81.3',
 };
 const TRANSFORM = {
     xs: 1.15,
@@ -43,12 +43,12 @@ const TRANSFORM = {
 };
 
 @Component({
-    selector: `tui-pie-chart`,
-    templateUrl: `./pie-chart.template.html`,
-    styleUrls: [`./pie-chart.style.less`],
+    selector: 'tui-pie-chart',
+    templateUrl: './pie-chart.template.html',
+    styleUrls: ['./pie-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     viewProviders: [
-        tuiHintOptionsProvider({direction: `top-right`, appearance: `onDark`}),
+        tuiHintOptionsProvider({direction: 'top-right', appearance: 'onDark'}),
     ],
 })
 export class TuiPieChartComponent {
@@ -59,9 +59,9 @@ export class TuiPieChartComponent {
     value: readonly number[] = [];
 
     @Input()
-    @HostBinding(`attr.data-size`)
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
-    size: TuiSizeXL | TuiSizeXS = `m`;
+    size: TuiSizeXL | TuiSizeXS = 'm';
 
     @Input()
     @tuiDefaultProp()
@@ -90,13 +90,13 @@ export class TuiPieChartComponent {
         }
     }
 
-    @HostBinding(`class._empty`)
+    @HostBinding('class._empty')
     get empty(): boolean {
         return !this.getSum(this.value);
     }
 
     get hintContent(): PolymorpheusContent<TuiContextWithImplicit<number>> {
-        return this.hintOptions?.content || ``;
+        return this.hintOptions?.content || '';
     }
 
     get maskId(): string {

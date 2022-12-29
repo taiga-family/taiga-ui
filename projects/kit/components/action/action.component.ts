@@ -18,11 +18,11 @@ import {
 } from '@taiga-ui/cdk';
 
 @Component({
-    selector: `button[tuiAction], a[tuiAction]`,
-    templateUrl: `./action.template.html`,
-    styleUrls: [`./action.style.less`],
+    selector: 'button[tuiAction], a[tuiAction]',
+    templateUrl: './action.template.html',
+    styleUrls: ['./action.style.less'],
     host: {
-        class: `tui-island tui-island_hoverable`,
+        class: 'tui-island tui-island_hoverable',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -34,7 +34,7 @@ import {
 export class TuiActionComponent extends AbstractTuiInteractive {
     @Input()
     @tuiDefaultProp()
-    icon = ``;
+    icon = '';
 
     readonly disabled = false;
 
@@ -57,13 +57,13 @@ export class TuiActionComponent extends AbstractTuiInteractive {
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    @HostBinding(`tabIndex`)
+    @HostBinding('tabIndex')
     get tabIndex(): number {
         return this.computedFocusable ? 0 : -1;
     }
 
-    @HostListener(`focusin`, [`true`])
-    @HostListener(`focusout`, [`false`])
+    @HostListener('focusin', ['true'])
+    @HostListener('focusout', ['false'])
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }

@@ -16,42 +16,42 @@ import {
     TuiMarkerHandler,
 } from '@taiga-ui/core';
 
-const TWO_DOTS: [string, string] = [`var(--tui-primary)`, `var(--tui-info-fill)`];
-const ONE_DOT: [string] = [`var(--tui-success-fill)`];
+const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
+const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 
 @Component({
-    selector: `example-tui-calendar`,
-    templateUrl: `./calendar.template.html`,
+    selector: 'example-tui-calendar',
+    templateUrl: './calendar.template.html',
     changeDetection,
 })
 export class ExampleTuiCalendarComponent {
-    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
-    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
+    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`./examples/1/index.ts?raw`),
-        HTML: import(`./examples/1/index.html?raw`),
+        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`./examples/2/index.ts?raw`),
-        HTML: import(`./examples/2/index.html?raw`),
+        TypeScript: import('./examples/2/index.ts?raw'),
+        HTML: import('./examples/2/index.html?raw'),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import(`./examples/3/index.ts?raw`),
-        HTML: import(`./examples/3/index.html?raw`),
+        TypeScript: import('./examples/3/index.ts?raw'),
+        HTML: import('./examples/3/index.html?raw'),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import(`./examples/4/index.ts?raw`),
-        HTML: import(`./examples/4/index.html?raw`),
+        TypeScript: import('./examples/4/index.ts?raw'),
+        HTML: import('./examples/4/index.html?raw'),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import(`./examples/5/index.ts?raw`),
-        HTML: import(`./examples/5/index.html?raw`),
-        LESS: import(`./examples/5/index.less?raw`),
+        TypeScript: import('./examples/5/index.ts?raw'),
+        HTML: import('./examples/5/index.html?raw'),
+        LESS: import('./examples/5/index.less?raw'),
     };
 
     showAdjacent = true;

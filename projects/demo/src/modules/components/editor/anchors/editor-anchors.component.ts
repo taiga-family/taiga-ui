@@ -5,8 +5,8 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '@taiga-ui/addon-editor';
 
 @Component({
-    selector: `editor-anchors`,
-    templateUrl: `./editor-anchors.component.html`,
+    selector: 'editor-anchors',
+    templateUrl: './editor-anchors.component.html',
     encapsulation,
     changeDetection,
     providers: [
@@ -18,7 +18,7 @@ import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '@taiga-ui/addon-ed
 })
 export class ExampleTuiEditorAnchorsComponent {
     readonly example1: TuiDocExample = {
-        TypeScript: import(`./examples/1/index.ts?raw`),
-        HTML: import(`./examples/1/index.html?raw`),
+        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
     };
 }

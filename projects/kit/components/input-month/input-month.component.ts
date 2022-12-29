@@ -37,9 +37,9 @@ import {
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: `tui-input-month`,
-    templateUrl: `./input-month.template.html`,
-    styleUrls: [`./input-month.style.less`],
+    selector: 'tui-input-month',
+    templateUrl: './input-month.template.html',
+    styleUrls: ['./input-month.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputMonthComponent),

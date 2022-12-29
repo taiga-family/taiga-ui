@@ -9,8 +9,8 @@ import {ABSTRACT_PROPS_ACCESSOR} from './abstract-props-accessor';
 import {TuiSupportingDocumentationComponent} from './supporting-documentation-component';
 
 @Component({
-    selector: `inherited-documentation`,
-    templateUrl: `./inherited-documentation.template.html`,
+    selector: 'inherited-documentation',
+    templateUrl: './inherited-documentation.template.html',
     changeDetection,
 })
 export class InheritedDocumentationComponent {
@@ -21,7 +21,7 @@ export class InheritedDocumentationComponent {
 
     readonly directionVariants = TUI_HINT_DIRECTIONS;
 
-    readonly appearanceVariants = [``, `error`, `onDark`];
+    readonly appearanceVariants = ['', 'error', 'onDark'];
 
     constructor(
         @Inject(ABSTRACT_PROPS_ACCESSOR)

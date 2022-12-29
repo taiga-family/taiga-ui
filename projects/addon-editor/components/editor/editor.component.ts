@@ -40,9 +40,9 @@ import {Observable} from 'rxjs';
 import {TUI_EDITOR_PROVIDERS} from './editor.providers';
 
 @Component({
-    selector: `tui-editor`,
-    templateUrl: `./editor.component.html`,
-    styleUrls: [`./editor.style.less`],
+    selector: 'tui-editor',
+    templateUrl: './editor.component.html',
+    styleUrls: ['./editor.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsFocusableItemAccessor(TuiEditorComponent), TUI_EDITOR_PROVIDERS],
 })
@@ -55,7 +55,7 @@ export class TuiEditorComponent
 
     @Input()
     @tuiDefaultProp()
-    exampleText = ``;
+    exampleText = '';
 
     @Input()
     @tuiDefaultProp()
@@ -108,7 +108,7 @@ export class TuiEditorComponent
     }
 
     override writeValue(value: string | null): void {
-        const processed = this.contentProcessor(value || ``);
+        const processed = this.contentProcessor(value || '');
 
         super.writeValue(processed);
 
@@ -148,7 +148,7 @@ export class TuiEditorComponent
     }
 
     protected getFallbackValue(): string {
-        return ``;
+        return '';
     }
 
     private readonly isSelectionLink = (range: Range): boolean =>
@@ -162,7 +162,7 @@ export class TuiEditorComponent
      */
     private currentFocusedNodeIsAnchor(range: Range): boolean {
         return !!range.startContainer.parentElement
-            ?.closest(`a`)
+            ?.closest('a')
             ?.contains(this.documentRef.getSelection()?.focusNode || null);
     }
 

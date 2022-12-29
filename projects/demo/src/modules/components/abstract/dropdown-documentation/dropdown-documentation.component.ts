@@ -5,8 +5,8 @@ import {AbstractExampleTuiDropdown} from '../dropdown';
 import {ABSTRACT_PROPS_ACCESSOR} from '../inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: `dropdown-documentation`,
-    templateUrl: `./dropdown-documentation.template.html`,
+    selector: 'dropdown-documentation',
+    templateUrl: './dropdown-documentation.template.html',
     changeDetection,
 })
 export class DropdownDocumentationComponent {

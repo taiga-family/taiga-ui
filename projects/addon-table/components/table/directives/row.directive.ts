@@ -9,7 +9,7 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
  * TODO v4.0 delete it.
  */
 @Directive({
-    selector: `ng-template[tuiRow]`,
+    selector: 'ng-template[tuiRow]',
 })
 export class TuiRowDirective<T extends Partial<Record<keyof T, any>>> {
     @Input()

@@ -7,7 +7,7 @@ import {
 import {TUI_VALUE_ACCESSOR} from '@taiga-ui/core/tokens';
 
 @Directive({
-    selector: `input[tuiMaskAccessor]`,
+    selector: 'input[tuiMaskAccessor]',
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,

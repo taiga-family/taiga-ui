@@ -33,9 +33,9 @@ import {
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: `tui-input`,
-    templateUrl: `./input.template.html`,
-    styleUrls: [`./input.style.less`],
+    selector: 'tui-input',
+    templateUrl: './input.template.html',
+    styleUrls: ['./input.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TUI_VALUE_ACCESSOR_PROVIDER,
@@ -58,7 +58,7 @@ export class TuiInputComponent
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent<
         TuiContextWithImplicit<TuiActiveZoneDirective>
-    > = ``;
+    > = '';
 
     open = false;
 
@@ -106,7 +106,7 @@ export class TuiInputComponent
     }
 
     protected getFallbackValue(): string {
-        return ``;
+        return '';
     }
 
     private focusInput(preventScroll: boolean = false): void {

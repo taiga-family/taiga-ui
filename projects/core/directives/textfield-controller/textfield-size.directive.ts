@@ -3,14 +3,14 @@ import {AbstractTuiController} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 export const TUI_TEXTFIELD_SIZE = new InjectionToken<TuiTextfieldSizeDirective>(
-    `[TUI_TEXTFIELD_SIZE]: tuiTextfieldSize`,
+    '[TUI_TEXTFIELD_SIZE]: tuiTextfieldSize',
     {
         factory: () => new TuiTextfieldSizeDirective(),
     },
 );
 
 @Directive({
-    selector: `[tuiTextfieldSize]`,
+    selector: '[tuiTextfieldSize]',
     providers: [
         {
             provide: TUI_TEXTFIELD_SIZE,
@@ -19,6 +19,6 @@ export const TUI_TEXTFIELD_SIZE = new InjectionToken<TuiTextfieldSizeDirective>(
     ],
 })
 export class TuiTextfieldSizeDirective extends AbstractTuiController {
-    @Input(`tuiTextfieldSize`)
-    size: TuiSizeL | TuiSizeS = `l`;
+    @Input('tuiTextfieldSize')
+    size: TuiSizeL | TuiSizeS = 'l';
 }

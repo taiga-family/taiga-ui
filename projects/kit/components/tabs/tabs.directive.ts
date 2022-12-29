@@ -13,7 +13,7 @@ import {tuiDefaultProp, tuiMoveFocus} from '@taiga-ui/cdk';
 import {TUI_TAB_ACTIVATE} from './tab/tab.providers';
 
 @Directive({
-    selector: `tui-tabs, nav[tuiTabs]`,
+    selector: 'tui-tabs, nav[tuiTabs]',
 })
 export class TuiTabsDirective implements AfterViewChecked {
     @Input()
@@ -29,7 +29,7 @@ export class TuiTabsDirective implements AfterViewChecked {
 
     get tabs(): readonly HTMLElement[] {
         return Array.from(
-            this.elementRef.nativeElement.querySelectorAll<HTMLElement>(`[tuiTab]`),
+            this.elementRef.nativeElement.querySelectorAll<HTMLElement>('[tuiTab]'),
         );
     }
 
@@ -37,7 +37,7 @@ export class TuiTabsDirective implements AfterViewChecked {
         return this.tabs[this.activeItemIndex] || null;
     }
 
-    @HostListener(`${TUI_TAB_ACTIVATE}.stop`, [`$event.target`])
+    @HostListener(`${TUI_TAB_ACTIVATE}.stop`, ['$event.target'])
     onActivate(element: HTMLElement): void {
         const index = this.tabs.findIndex(tab => tab === element);
 
@@ -61,8 +61,8 @@ export class TuiTabsDirective implements AfterViewChecked {
         tabs.forEach(nativeElement => {
             const active = nativeElement === activeElement;
 
-            nativeElement.classList.toggle(`_active`, active);
-            nativeElement.setAttribute(`tabIndex`, active ? `0` : `-1`);
+            nativeElement.classList.toggle('_active', active);
+            nativeElement.setAttribute('tabIndex', active ? '0' : '-1');
         });
     }
 }

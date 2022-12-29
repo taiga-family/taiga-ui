@@ -3,7 +3,7 @@ import {TUI_BUTTON_OPTIONS, TuiButtonOptions, TuiModeDirective} from '@taiga-ui/
 import {Subject} from 'rxjs';
 
 @Directive({
-    selector: `tui-push`,
+    selector: 'tui-push',
     providers: [
         {
             provide: TuiModeDirective,
@@ -16,7 +16,7 @@ import {Subject} from 'rxjs';
     ],
 })
 export class TuiPushDirective extends TuiModeDirective implements TuiButtonOptions {
-    size: TuiButtonOptions['size'] = `s`;
+    size: TuiButtonOptions['size'] = 's';
 
     shape = null;
 
@@ -32,6 +32,6 @@ export class TuiPushDirective extends TuiModeDirective implements TuiButtonOptio
     }
 
     get appearance(): string {
-        return this.modeDirective?.mode === `onDark` ? `accent` : `secondary`;
+        return this.modeDirective?.mode === 'onDark' ? 'accent' : 'secondary';
     }
 }

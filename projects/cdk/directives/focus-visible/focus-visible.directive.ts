@@ -8,8 +8,8 @@ import {Observable} from 'rxjs';
  * in browsers that do not support it
  */
 @Directive({
-    selector: `[tuiFocusVisibleChange]`,
-    outputs: [`tuiFocusVisibleChange`],
+    selector: '[tuiFocusVisibleChange]',
+    outputs: ['tuiFocusVisibleChange'],
     providers: [TuiDestroyService, TuiFocusVisibleService],
 })
 export class TuiFocusVisibleDirective {

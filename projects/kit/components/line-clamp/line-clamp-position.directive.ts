@@ -7,7 +7,7 @@ import {
 } from '@taiga-ui/core';
 
 @Directive({
-    selector: `[tuiHintCustomPosition]`,
+    selector: '[tuiHintCustomPosition]',
     providers: [tuiAsPositionAccessor(TuiLineClampPositionDirective)],
 })
 export class TuiLineClampPositionDirective implements TuiPositionAccessor {

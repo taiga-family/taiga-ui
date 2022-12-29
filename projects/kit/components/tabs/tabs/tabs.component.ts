@@ -31,9 +31,9 @@ import {TuiTabsDirective} from '../tabs.directive';
 import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs-options';
 
 @Component({
-    selector: `tui-tabs:not([vertical]), nav[tuiTabs]:not([vertical])`,
-    templateUrl: `./tabs.template.html`,
-    styleUrls: [`./tabs.style.less`],
+    selector: 'tui-tabs:not([vertical]), nav[tuiTabs]:not([vertical])',
+    templateUrl: './tabs.template.html',
+    styleUrls: ['./tabs.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,
@@ -52,7 +52,7 @@ export class TuiTabsComponent implements AfterViewChecked {
     readonly children: QueryList<unknown> = EMPTY_QUERY;
 
     @Input()
-    @HostBinding(`class._underline`)
+    @HostBinding('class._underline')
     @tuiDefaultProp()
     underline = this.options.underline;
 
@@ -82,8 +82,8 @@ export class TuiTabsComponent implements AfterViewChecked {
         return this.tabs.activeElement;
     }
 
-    @HostListener(`keydown.arrowRight.prevent`, [`$event.target`, `1`])
-    @HostListener(`keydown.arrowLeft.prevent`, [`$event.target`, `-1`])
+    @HostListener('keydown.arrowRight.prevent', ['$event.target', '1'])
+    @HostListener('keydown.arrowLeft.prevent', ['$event.target', '-1'])
     onKeyDownArrow(current: HTMLElement, step: number): void {
         this.tabs.moveFocus(current, step);
     }

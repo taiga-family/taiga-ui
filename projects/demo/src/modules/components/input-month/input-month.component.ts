@@ -15,8 +15,8 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: `example-input-month`,
-    templateUrl: `./input-month.template.html`,
+    selector: 'example-input-month',
+    templateUrl: './input-month.template.html',
     changeDetection,
     providers: [
         {
@@ -27,18 +27,18 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
 })
 export class ExampleInputMonthComponent extends AbstractExampleTuiControl {
     readonly example1: TuiDocExample = {
-        TypeScript: import(`./examples/1/index.ts?raw`),
-        HTML: import(`./examples/1/index.html?raw`),
+        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`./examples/2/index.ts?raw`),
-        HTML: import(`./examples/2/index.html?raw`),
+        TypeScript: import('./examples/2/index.ts?raw'),
+        HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
-    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
-    readonly exampleForm = import(`./examples/import/declare-form.md?raw`);
+    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    readonly exampleForm = import('./examples/import/declare-form.md?raw');
 
     readonly minVariants = [
         TUI_FIRST_DAY,

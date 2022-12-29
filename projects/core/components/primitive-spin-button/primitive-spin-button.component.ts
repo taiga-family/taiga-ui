@@ -14,13 +14,13 @@ import {TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: `tui-primitive-spin-button`,
+    selector: 'tui-primitive-spin-button',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: `./primitive-spin-button.template.html`,
-    styleUrls: [`./primitive-spin-button.style.less`],
+    templateUrl: './primitive-spin-button.template.html',
+    styleUrls: ['./primitive-spin-button.style.less'],
 })
 export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
-    @ViewChild(`wrapper`)
+    @ViewChild('wrapper')
     private readonly wrapper?: ElementRef<HTMLElement>;
 
     @Input()

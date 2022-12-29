@@ -11,9 +11,9 @@ import {
 } from './table-pagination-options';
 
 @Component({
-    selector: `tui-table-pagination`,
-    templateUrl: `./table-pagination.template.html`,
-    styleUrls: [`./table-pagination.style.less`],
+    selector: 'tui-table-pagination',
+    templateUrl: './table-pagination.template.html',
+    styleUrls: ['./table-pagination.style.less'],
 })
 export class TuiTablePaginationComponent {
     @Input()

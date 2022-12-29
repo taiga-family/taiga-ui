@@ -7,9 +7,9 @@ import {TUI_SELECTED_VERSION_META} from './version-manager.providers';
 import {TUI_VERSIONS_META_OPTIONS, TuiVersionMeta} from './versions.constants';
 
 @Component({
-    selector: `version-manager`,
-    templateUrl: `./version-manager.template.html`,
-    styleUrls: [`./version-manager.style.less`],
+    selector: 'version-manager',
+    templateUrl: './version-manager.template.html',
+    styleUrls: ['./version-manager.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VersionManagerComponent {

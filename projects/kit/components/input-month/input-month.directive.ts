@@ -8,7 +8,7 @@ import {distinctUntilChanged, switchMap, takeUntil} from 'rxjs/operators';
 import {TuiInputMonthComponent} from './input-month.component';
 
 @Directive({
-    selector: `tui-input-month`,
+    selector: 'tui-input-month',
     providers: [tuiAsTextfieldHost(TuiInputMonthDirective), TuiDestroyService],
 })
 export class TuiInputMonthDirective
@@ -17,7 +17,7 @@ export class TuiInputMonthDirective
 {
     private readonly value$ = new Subject<TuiMonth | null>();
 
-    private localizedValue = ``;
+    private localizedValue = '';
 
     constructor(
         @Inject(AbstractTuiControl) host: TuiInputMonthComponent,

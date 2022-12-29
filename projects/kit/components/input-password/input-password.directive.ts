@@ -5,7 +5,7 @@ import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 import {TuiInputPasswordComponent} from './input-password.component';
 
 @Directive({
-    selector: `tui-input-password`,
+    selector: 'tui-input-password',
     providers: [tuiAsTextfieldHost(TuiInputPasswordDirective)],
 })
 export class TuiInputPasswordDirective

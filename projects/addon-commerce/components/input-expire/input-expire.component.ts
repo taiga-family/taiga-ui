@@ -25,9 +25,9 @@ import {
 } from '@taiga-ui/core';
 
 @Component({
-    selector: `tui-input-expire`,
-    templateUrl: `./input-expire.template.html`,
-    styleUrls: [`./input-expire.style.less`],
+    selector: 'tui-input-expire',
+    templateUrl: './input-expire.template.html',
+    styleUrls: ['./input-expire.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputExpireComponent),
@@ -49,7 +49,7 @@ export class TuiInputExpireComponent
         mask: [
             TUI_DIGIT_REGEXP,
             TUI_DIGIT_REGEXP,
-            `/`,
+            '/',
             TUI_DIGIT_REGEXP,
             TUI_DIGIT_REGEXP,
         ],
@@ -76,7 +76,7 @@ export class TuiInputExpireComponent
     }
 
     get autocomplete(): TuiAutofillFieldName {
-        return this.autocompleteEnabled ? `cc-exp` : `off`;
+        return this.autocompleteEnabled ? 'cc-exp' : 'off';
     }
 
     onValueChange(value: string): void {
@@ -90,7 +90,7 @@ export class TuiInputExpireComponent
             value = `12${value.slice(2)}`;
         }
 
-        if (value.slice(0, 2) === `00`) {
+        if (value.slice(0, 2) === '00') {
             value = `01${value.slice(2)}`;
         }
 
@@ -106,6 +106,6 @@ export class TuiInputExpireComponent
     }
 
     protected getFallbackValue(): string {
-        return ``;
+        return '';
     }
 }

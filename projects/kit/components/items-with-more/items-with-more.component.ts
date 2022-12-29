@@ -25,9 +25,9 @@ import {TuiItemsWithMoreService} from './items-with-more.service';
 import {TuiMoreDirective} from './more.directive';
 
 @Component({
-    selector: `tui-items-with-more`,
-    templateUrl: `./items-with-more.template.html`,
-    styleUrls: [`./items-with-more.style.less`],
+    selector: 'tui-items-with-more',
+    templateUrl: './items-with-more.template.html',
+    styleUrls: ['./items-with-more.style.less'],
     providers: [
         MutationObserverService,
         TuiResizeService,

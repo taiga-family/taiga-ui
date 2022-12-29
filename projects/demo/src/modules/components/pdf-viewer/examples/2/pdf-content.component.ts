@@ -25,7 +25,7 @@ import {mapTo} from 'rxjs/operators';
     ],
 })
 export class PdfContent {
-    private readonly pdf = `assets/media/taiga.pdf`;
+    private readonly pdf = 'assets/media/taiga.pdf';
 
     /**
      * @description:

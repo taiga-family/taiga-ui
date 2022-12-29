@@ -7,9 +7,9 @@ import {TuiAlertService, TuiNotification} from '@taiga-ui/core';
 import {IconsGroupDirective} from './icons-group.directive';
 
 @Component({
-    selector: `icons-group`,
-    templateUrl: `./icons-group.template.html`,
-    styleUrls: [`./icons-group.style.less`],
+    selector: 'icons-group',
+    templateUrl: './icons-group.template.html',
+    styleUrls: ['./icons-group.style.less'],
     changeDetection,
 })
 export class IconsGroupComponent {
@@ -21,7 +21,7 @@ export class IconsGroupComponent {
     icons: Record<string, readonly string[]> = {};
 
     matcher = TUI_DEFAULT_MATCHER;
-    search = ``;
+    search = '';
 
     constructor(
         @Inject(Clipboard) private readonly clipboard: Clipboard,

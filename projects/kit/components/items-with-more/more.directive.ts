@@ -2,7 +2,7 @@ import {Directive} from '@angular/core';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 
 @Directive({
-    selector: `[tuiMore]`,
+    selector: '[tuiMore]',
 })
 export class TuiMoreDirective {
     static ngTemplateContextGuard(

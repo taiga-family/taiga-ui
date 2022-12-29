@@ -23,9 +23,9 @@ import {TuiBrightness, TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
 import {TuiCheckboxComponent} from '@taiga-ui/kit/components/checkbox';
 
 @Component({
-    selector: `tui-checkbox-labeled`,
-    templateUrl: `./checkbox-labeled.template.html`,
-    styleUrls: [`./checkbox-labeled.style.less`],
+    selector: 'tui-checkbox-labeled',
+    templateUrl: './checkbox-labeled.template.html',
+    styleUrls: ['./checkbox-labeled.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiCheckboxLabeledComponent),
@@ -40,9 +40,9 @@ export class TuiCheckboxLabeledComponent
     private readonly checkbox?: TuiCheckboxComponent;
 
     @Input()
-    @HostBinding(`attr.data-size`)
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
-    size: TuiSizeL = `m`;
+    size: TuiSizeL = 'm';
 
     constructor(
         @Optional()
@@ -65,7 +65,7 @@ export class TuiCheckboxLabeledComponent
         return this.checkbox ? this.checkbox.nativeFocusableElement : null;
     }
 
-    @HostBinding(`attr.data-mode`)
+    @HostBinding('attr.data-mode')
     get hostMode(): TuiBrightness | null {
         return this.modeDirective ? this.modeDirective.mode : null;
     }

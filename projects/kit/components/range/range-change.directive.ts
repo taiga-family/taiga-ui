@@ -8,7 +8,7 @@ import {filter, map, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs/op
 import {TuiRangeComponent} from './range.component';
 
 @Directive({
-    selector: `tui-range`,
+    selector: 'tui-range',
     providers: [TuiDestroyService],
 })
 export class TuiRangeChangeDirective {
@@ -17,26 +17,26 @@ export class TuiRangeChangeDirective {
      * Dont forget to use setPointerCapture instead of listening all documentRef events
      */
     private readonly pointerDown$ = merge(
-        tuiTypedFromEvent(this.elementRef.nativeElement, `touchstart`, {
+        tuiTypedFromEvent(this.elementRef.nativeElement, 'touchstart', {
             passive: true,
         }).pipe(
             filter(({touches}) => touches.length === 1),
             map(({touches}) => touches[0]),
         ),
-        tuiTypedFromEvent(this.elementRef.nativeElement, `mousedown`, {passive: true}),
+        tuiTypedFromEvent(this.elementRef.nativeElement, 'mousedown', {passive: true}),
     );
 
     private readonly pointerMove$ = merge(
-        tuiTypedFromEvent(this.documentRef, `touchmove`).pipe(
+        tuiTypedFromEvent(this.documentRef, 'touchmove').pipe(
             filter(({touches}) => touches.length === 1),
             map(({touches}) => touches[0]),
         ),
-        tuiTypedFromEvent(this.documentRef, `mousemove`),
+        tuiTypedFromEvent(this.documentRef, 'mousemove'),
     );
 
     private readonly pointerUp$ = merge(
-        tuiTypedFromEvent(this.documentRef, `touchend`, {passive: true}),
-        tuiTypedFromEvent(this.documentRef, `mouseup`, {passive: true}),
+        tuiTypedFromEvent(this.documentRef, 'touchend', {passive: true}),
+        tuiTypedFromEvent(this.documentRef, 'mouseup', {passive: true}),
     );
 
     @Output()
@@ -69,7 +69,7 @@ export class TuiRangeChangeDirective {
             .subscribe(fraction => {
                 const value = this.range.getValueFromFraction(fraction);
 
-                this.range.processValue(value, activeThumb === `right`);
+                this.range.processValue(value, activeThumb === 'right');
             });
     }
 
@@ -89,9 +89,9 @@ export class TuiRangeChangeDirective {
 
         switch (target) {
             case leftSliderRef.nativeElement:
-                return `left`;
+                return 'left';
             case rightSliderRef.nativeElement:
-                return `right`;
+                return 'right';
             default:
                 return this.findNearestActiveThumb(clientX);
         }
@@ -105,7 +105,7 @@ export class TuiRangeChangeDirective {
         return Math.abs(deltaLeft) > Math.abs(deltaRight) ||
             deltaRight > 0 ||
             (this.range.left === 0 && this.range.right === 100)
-            ? `right`
-            : `left`;
+            ? 'right'
+            : 'left';
     }
 }

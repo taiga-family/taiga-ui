@@ -39,9 +39,9 @@ import {TuiInputFilesDirective} from './input-files.directive';
 import {TUI_INPUT_FILES_OPTIONS, TuiInputFilesOptions} from './input-files.options';
 
 @Component({
-    selector: `tui-input-files`,
-    templateUrl: `./input-files.template.html`,
-    styleUrls: [`./input-files.style.less`],
+    selector: 'tui-input-files',
+    templateUrl: './input-files.template.html',
+    styleUrls: ['./input-files.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     providers: [MODE_PROVIDER, tuiAsFocusableItemAccessor(TuiInputFilesComponent)],
@@ -50,7 +50,7 @@ export class TuiInputFilesComponent
     extends AbstractTuiNullableControl<TuiFileLike | readonly TuiFileLike[]>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild(`input`)
+    @ViewChild('input')
     private readonly input?: ElementRef<HTMLInputElement>;
 
     private dataTransfer: DataTransfer | null = null;
@@ -58,19 +58,19 @@ export class TuiInputFilesComponent
     @ContentChild(TuiInputFilesDirective, {read: TuiInputFilesDirective})
     readonly nativeInput?: TuiInputFilesDirective;
 
-    @ViewChild(`formatRejection`)
+    @ViewChild('formatRejection')
     readonly formatRejection!: PolymorpheusContent;
 
-    @ViewChild(`maxSizeRejection`)
+    @ViewChild('maxSizeRejection')
     readonly maxSizeRejection!: PolymorpheusContent;
 
     @Input()
     @tuiDefaultProp()
-    link: PolymorpheusContent = ``;
+    link: PolymorpheusContent = '';
 
     @Input()
     @tuiDefaultProp()
-    label: PolymorpheusContent = ``;
+    label: PolymorpheusContent = '';
 
     /**
      * @deprecated: use `<input tuiInputFiles accept="image/*" />`
@@ -160,20 +160,20 @@ export class TuiInputFilesComponent
     }
 
     get fileDragged(): boolean {
-        return !!this.dataTransfer?.types.includes(`Files`);
+        return !!this.dataTransfer?.types.includes('Files');
     }
 
     get arrayValue(): readonly TuiFileLike[] {
         return this.getValueArray(this.value);
     }
 
-    @HostListener(`focusin`, [`true`])
-    @HostListener(`focusout`, [`false`])
+    @HostListener('focusin', ['true'])
+    @HostListener('focusout', ['false'])
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    @HostListener(`change`)
+    @HostListener('change')
     onFilesSelected(): void {
         const input = this.nativeInput?.input ?? this.input?.nativeElement;
 
@@ -183,7 +183,7 @@ export class TuiInputFilesComponent
 
         this.processSelectedFiles(input.files);
 
-        input.value = ``;
+        input.value = '';
     }
 
     onDropped(event: DataTransfer): void {
@@ -209,10 +209,10 @@ export class TuiInputFilesComponent
         link: PolymorpheusContent,
     ): Observable<PolymorpheusContent> {
         return fileDragged
-            ? of(``)
+            ? of('')
             : this.inputFileTexts$.pipe(
                   map(texts =>
-                      multiple && link === ``
+                      multiple && link === ''
                           ? texts.defaultLinkMultiple
                           : link || texts.defaultLinkSingle,
                   ),
@@ -227,7 +227,7 @@ export class TuiInputFilesComponent
         label: PolymorpheusContent,
     ): Observable<PolymorpheusContent> {
         if (isMobile) {
-            return of(``);
+            return of('');
         }
 
         if (fileDragged) {
@@ -238,7 +238,7 @@ export class TuiInputFilesComponent
 
         return this.inputFileTexts$.pipe(
             map(texts =>
-                multiple && label === ``
+                multiple && label === ''
                     ? texts.defaultLabelMultiple
                     : label || texts.defaultLabelSingle,
             ),
@@ -308,14 +308,14 @@ export class TuiInputFilesComponent
             return true;
         }
 
-        const extension = `.${(file.name.split(`.`).pop() || ``).toLowerCase()}`;
+        const extension = `.${(file.name.split('.').pop() || '').toLowerCase()}`;
 
         return tuiGetAcceptArray(this.computedAccept).some(
             format =>
                 format === extension ||
                 format === file.type ||
-                (format.split(`/`)[1] === `*` &&
-                    file.type.split(`/`)[0] === format.split(`/`)[0]),
+                (format.split('/')[1] === '*' &&
+                    file.type.split('/')[0] === format.split('/')[0]),
         );
     }
 

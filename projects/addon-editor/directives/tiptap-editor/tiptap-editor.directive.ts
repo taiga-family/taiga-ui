@@ -20,7 +20,7 @@ import {takeUntil} from 'rxjs/operators';
 import {TuiTiptapEditorService} from './tiptap-editor.service';
 
 @Directive({
-    selector: `[tuiTiptapEditor]`,
+    selector: '[tuiTiptapEditor]',
     providers: [TuiDestroyService],
 })
 export class TuiTiptapEditorDirective {

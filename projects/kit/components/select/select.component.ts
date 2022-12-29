@@ -46,9 +46,9 @@ import {AbstractTuiNativeSelect} from './native-select/native-select';
 import {TUI_SELECT_OPTIONS, TuiSelectOptions} from './select-options';
 
 @Component({
-    selector: `tui-select`,
-    templateUrl: `./select.template.html`,
-    styleUrls: [`./select.style.less`],
+    selector: 'tui-select',
+    templateUrl: './select.template.html',
+    styleUrls: ['./select.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiSelectComponent),
@@ -87,7 +87,7 @@ export class TuiSelectComponent<T>
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent<
         TuiContextWithImplicit<TuiActiveZoneDirective>
-    > = ``;
+    > = '';
 
     constructor(
         @Optional()
@@ -131,7 +131,7 @@ export class TuiSelectComponent<T>
     }
 
     get computedValue(): string {
-        return this.value === null ? `` : this.stringify(this.value) || ` `;
+        return this.value === null ? '' : this.stringify(this.value) || ' ';
     }
 
     get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {

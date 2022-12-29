@@ -3,7 +3,7 @@ import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {Subject} from 'rxjs';
 
 @Directive({
-    selector: `[tuiDropdown][tuiDropdownManual]`,
+    selector: '[tuiDropdown][tuiDropdownManual]',
     providers: [tuiAsDriver(TuiDropdownManualDirective)],
 })
 export class TuiDropdownManualDirective extends TuiDriver implements OnChanges {

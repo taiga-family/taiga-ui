@@ -7,9 +7,9 @@ import {mapTo, startWith, switchMapTo} from 'rxjs/operators';
 const COPIED_TIMEOUT = 1500;
 
 @Component({
-    selector: `tui-doc-copy`,
-    templateUrl: `./copy.template.html`,
-    styleUrls: [`./copy.style.less`],
+    selector: 'tui-doc-copy',
+    templateUrl: './copy.template.html',
+    styleUrls: ['./copy.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
 })

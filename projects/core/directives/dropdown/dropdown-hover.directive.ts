@@ -5,7 +5,7 @@ import {merge, Observable, of, Subject} from 'rxjs';
 import {delay, switchMap} from 'rxjs/operators';
 
 @Directive({
-    selector: `[tuiDropdownHover]:not(ng-container)`,
+    selector: '[tuiDropdownHover]:not(ng-container)',
     providers: [tuiAsDriver(TuiDropdownHoverDirective), TuiHoveredService],
 })
 export class TuiDropdownHoverDirective extends TuiDriver {
@@ -16,11 +16,11 @@ export class TuiDropdownHoverDirective extends TuiDriver {
         ),
     );
 
-    @Input(`tuiDropdownShowDelay`)
+    @Input('tuiDropdownShowDelay')
     @tuiDefaultProp()
     showDelay = 200;
 
-    @Input(`tuiDropdownHideDelay`)
+    @Input('tuiDropdownHideDelay')
     @tuiDefaultProp()
     hideDelay = 500;
 

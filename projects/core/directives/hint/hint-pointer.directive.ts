@@ -5,7 +5,7 @@ import {tuiAsDriver, tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/ab
 import {TuiHintHoverDirective} from './hint-hover.directive';
 
 @Directive({
-    selector: `[tuiHint][tuiHintPointer]`,
+    selector: '[tuiHint][tuiHintPointer]',
     providers: [
         tuiAsRectAccessor(TuiHintPointerDirective),
         tuiAsDriver(TuiHintPointerDirective),
@@ -17,7 +17,7 @@ export class TuiHintPointerDirective
 {
     private currentRect = EMPTY_CLIENT_RECT;
 
-    @HostListener(`mousemove.silent`, [`$event`])
+    @HostListener('mousemove.silent', ['$event'])
     onMove({clientX, clientY}: MouseEvent): void {
         this.currentRect = tuiPointToClientRect(clientX, clientY);
     }

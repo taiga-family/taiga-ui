@@ -17,13 +17,13 @@ import {tuiIsElement} from '@taiga-ui/cdk';
 import {TUI_SANITIZER} from '@taiga-ui/core';
 
 @Component({
-    selector: `tui-editor-socket`,
-    template: ``,
-    styleUrls: [`./editor-socket.component.less`],
+    selector: 'tui-editor-socket',
+    template: '',
+    styleUrls: ['./editor-socket.component.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        class: `tui-editor-socket`,
+        class: 'tui-editor-socket',
     },
 })
 export class TuiEditorSocketComponent {
@@ -31,11 +31,11 @@ export class TuiEditorSocketComponent {
     set content(content: string) {
         this.renderer.setProperty(
             this.elementRef.nativeElement,
-            `innerHTML`,
+            'innerHTML',
             this.tuiSanitizer
                 ? this.tuiSanitizer.sanitize(
                       SecurityContext.HTML,
-                      content.replace(/colwidth/g, `width`),
+                      content.replace(/colwidth/g, 'width'),
                   )
                 : this.sanitizer.sanitize(SecurityContext.HTML, content),
         );
@@ -60,19 +60,19 @@ export class TuiEditorSocketComponent {
      * the main problem is that the external environment editor can use different base href="../"
      * More information: https://rogerkeays.com/blog/using-base-href-with-anchors
      */
-    @HostListener(`click`, [`$event`])
+    @HostListener('click', ['$event'])
     click(event: Event): void {
         if (this.editor || !tuiIsElement(event.target)) {
             return;
         }
 
-        const href = event.target?.closest(`a`)?.getAttribute(`href`) || ``;
+        const href = event.target?.closest('a')?.getAttribute('href') || '';
 
-        if (!href.startsWith(`#`)) {
+        if (!href.startsWith('#')) {
             return;
         }
 
-        this.document.location.hash = href.replace(`#`, ``);
+        this.document.location.hash = href.replace('#', '');
         event.preventDefault();
     }
 }

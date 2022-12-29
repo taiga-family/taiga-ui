@@ -6,7 +6,7 @@ import {debounceTime, filter, switchMapTo, takeUntil} from 'rxjs/operators';
 import {TUI_DOC_PAGE_LOADED} from '../../tokens/page-loaded';
 
 @Directive({
-    selector: `[tuiScrollIntoViewLink]`,
+    selector: '[tuiScrollIntoViewLink]',
     providers: [TuiDestroyService],
 })
 export class TuiScrollIntoViewLinkDirective {

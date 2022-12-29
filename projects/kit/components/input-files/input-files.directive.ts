@@ -6,10 +6,10 @@ import {TuiInputFilesComponent} from './input-files.component';
 import {TUI_INPUT_FILES_OPTIONS, TuiInputFilesOptions} from './input-files.options';
 
 @Directive({
-    selector: `input[tuiInputFiles]`,
+    selector: 'input[tuiInputFiles]',
     host: {
-        type: `file`,
-        class: `t-native`,
+        type: 'file',
+        class: 't-native',
     },
 })
 export class TuiInputFilesDirective {
@@ -20,27 +20,27 @@ export class TuiInputFilesDirective {
         @Inject(TUI_INPUT_FILES_OPTIONS) private readonly options: TuiInputFilesOptions,
     ) {}
 
-    @HostBinding(`tabIndex`)
+    @HostBinding('tabIndex')
     get tabIndex(): number {
         return this.host.focusable ? 0 : -1;
     }
 
-    @HostBinding(`id`)
+    @HostBinding('id')
     get id(): string {
         return this.elementRef.nativeElement.id || this.idService.generate();
     }
 
-    @HostBinding(`accept`)
+    @HostBinding('accept')
     get accept(): TuiInputFilesOptions['accepts'] {
         return this.elementRef.nativeElement.accept ?? this.options.accepts;
     }
 
-    @HostBinding(`multiple`)
+    @HostBinding('multiple')
     get multiple(): TuiInputFilesOptions['multiple'] {
         return this.elementRef.nativeElement.multiple ?? this.options.multiple;
     }
 
-    @HostBinding(`capture`)
+    @HostBinding('capture')
     get capture(): TuiInputFilesOptions['capture'] {
         return (
             (

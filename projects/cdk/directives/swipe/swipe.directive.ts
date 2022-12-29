@@ -4,8 +4,8 @@ import {TuiSwipeService} from '@taiga-ui/cdk/services';
 import {Observable} from 'rxjs';
 
 @Directive({
-    selector: `[tuiSwipe]`,
-    outputs: [`tuiSwipe`],
+    selector: '[tuiSwipe]',
+    outputs: ['tuiSwipe'],
     providers: [TuiSwipeService],
 })
 export class TuiSwipeDirective {

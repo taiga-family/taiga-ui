@@ -14,9 +14,9 @@ import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: `example-tui-mobile-calendar`,
-    templateUrl: `./mobile-calendar.template.html`,
-    styleUrls: [`./mobile-calendar.style.less`],
+    selector: 'example-tui-mobile-calendar',
+    templateUrl: './mobile-calendar.template.html',
+    styleUrls: ['./mobile-calendar.style.less'],
     changeDetection,
     providers: [
         {
@@ -29,27 +29,27 @@ import {Observable} from 'rxjs';
     ],
 })
 export class ExampleTuiMobileCalendarComponent {
-    readonly exampleHtml = import(`./examples/import/insert-template.md?raw`);
-    readonly exampleModule = import(`./examples/import/import-module.md?raw`);
+    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    readonly exampleModule = import('./examples/import/import-module.md?raw');
     readonly exampleImportDialogModule = import(
-        `./examples/import/import-dialog-module.md?raw`
+        './examples/import/import-dialog-module.md?raw'
     );
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`./examples/1/index.ts?raw`),
-        HTML: import(`./examples/1/index.html?raw`),
-        LESS: import(`./examples/1/index.less?raw`),
+        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
+        LESS: import('./examples/1/index.less?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`./examples/2/index.ts?raw`),
-        HTML: import(`./examples/2/index.html?raw`),
+        TypeScript: import('./examples/2/index.ts?raw'),
+        HTML: import('./examples/2/index.html?raw'),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import(`./examples/3/index.ts?raw`),
-        HTML: import(`./examples/3/index.html?raw`),
-        LESS: import(`./examples/3/index.less?raw`),
+        TypeScript: import('./examples/3/index.ts?raw'),
+        HTML: import('./examples/3/index.html?raw'),
+        LESS: import('./examples/3/index.less?raw'),
     };
 
     minVariants = [TUI_FIRST_DAY, new TuiDay(2017, 2, 5), new TuiDay(1900, 0, 1)];

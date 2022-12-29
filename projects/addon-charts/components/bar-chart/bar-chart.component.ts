@@ -32,14 +32,14 @@ function valueAssertion(value: ReadonlyArray<readonly number[]>): boolean {
     return valid;
 }
 
-const VALUE_ERROR = `All arrays must be of the same length`;
+const VALUE_ERROR = 'All arrays must be of the same length';
 
 @Component({
-    selector: `tui-bar-chart`,
-    templateUrl: `./bar-chart.template.html`,
-    styleUrls: [`./bar-chart.style.less`],
+    selector: 'tui-bar-chart',
+    templateUrl: './bar-chart.template.html',
+    styleUrls: ['./bar-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    viewProviders: [tuiHintOptionsProvider({direction: `top`})],
+    viewProviders: [tuiHintOptionsProvider({direction: 'top'})],
 })
 export class TuiBarChartComponent {
     private readonly autoIdString: string;
@@ -57,7 +57,7 @@ export class TuiBarChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    size: TuiSizeL | TuiSizeS | null = `m`;
+    size: TuiSizeL | TuiSizeS | null = 'm';
 
     @Input()
     @tuiDefaultProp()
@@ -73,7 +73,7 @@ export class TuiBarChartComponent {
     }
 
     get hintContent(): PolymorpheusContent<TuiContextWithImplicit<number>> {
-        return this.hintOptions?.content || ``;
+        return this.hintOptions?.content || '';
     }
 
     get transposed(): ReadonlyArray<readonly number[]> {

@@ -21,8 +21,8 @@ import {debounceTime, distinctUntilChanged, map, startWith} from 'rxjs/operators
 import {TuiTilesComponent} from './tiles.component';
 
 @Component({
-    selector: `tui-tile`,
-    templateUrl: `tile.template.html`,
+    selector: 'tui-tile',
+    templateUrl: 'tile.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTileComponent {
@@ -34,7 +34,7 @@ export class TuiTileComponent {
     @tuiDefaultProp()
     height = 1;
 
-    @HostBinding(`class._dragged`)
+    @HostBinding('class._dragged')
     dragged = false;
 
     readonly offset$ = new BehaviorSubject<[number, number]>([0, 0]);
@@ -62,12 +62,12 @@ export class TuiTileComponent {
         @Inject(MutationObserverService) private readonly mutation$: Observable<unknown>,
     ) {}
 
-    @HostBinding(`style.gridColumn`)
+    @HostBinding('style.gridColumn')
     get column(): string {
         return `span var(--tui-width, ${this.width})`;
     }
 
-    @HostBinding(`style.gridRow`)
+    @HostBinding('style.gridRow')
     get row(): string {
         return `span var(--tui-height, ${this.height})`;
     }
@@ -76,7 +76,7 @@ export class TuiTileComponent {
         return this.elementRef.nativeElement;
     }
 
-    @HostListener(`pointerenter`)
+    @HostListener('pointerenter')
     onEnter(): void {
         this.tiles.rearrange(this.element);
     }

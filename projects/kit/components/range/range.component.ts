@@ -33,13 +33,13 @@ import {
 } from '@taiga-ui/kit/utils';
 
 @Component({
-    selector: `tui-range`,
-    templateUrl: `./range.template.html`,
-    styleUrls: [`./range.style.less`],
+    selector: 'tui-range',
+    templateUrl: './range.template.html',
+    styleUrls: ['./range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[attr.tabindex]': `-1`,
-        '[attr.aria-disabled]': `computedDisabled`,
+        '[attr.tabindex]': '-1',
+        '[attr.aria-disabled]': 'computedDisabled',
     },
 })
 export class TuiRangeComponent
@@ -55,18 +55,18 @@ export class TuiRangeComponent
     max = 100;
 
     @Input()
-    @tuiDefaultProp(s => s > 0, `Step must be a non-negative number`)
+    @tuiDefaultProp(s => s > 0, 'Step must be a non-negative number')
     step = 1;
 
     @Input()
-    @HostBinding(`attr.data-size`)
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
-    size: TuiSizeS = `m`;
+    size: TuiSizeS = 'm';
 
     @Input()
     @tuiDefaultProp(
         s => s > 0 && Number.isInteger(s),
-        `Segments must be positive integer`,
+        'Segments must be positive integer',
     )
     segments = 1;
 
@@ -77,7 +77,7 @@ export class TuiRangeComponent
     @ViewChildren(TuiSliderComponent, {read: ElementRef})
     slidersRefs: QueryList<ElementRef<HTMLInputElement>> = EMPTY_QUERY;
 
-    lastActiveThumb: 'left' | 'right' = `right`;
+    lastActiveThumb: 'left' | 'right' = 'right';
 
     constructor(
         @Optional()
@@ -125,26 +125,26 @@ export class TuiRangeComponent
         return 1 / this.segments;
     }
 
-    @HostBinding(`style.--left.%`)
+    @HostBinding('style.--left.%')
     get left(): number {
         return this.getPercentageFromValue(this.value[0]);
     }
 
-    @HostBinding(`style.--right.%`)
+    @HostBinding('style.--right.%')
     get right(): number {
         return 100 - this.getPercentageFromValue(this.value[1]);
     }
 
-    @HostListener(`focusin`, [`true`])
-    @HostListener(`focusout`, [`false`])
+    @HostListener('focusin', ['true'])
+    @HostListener('focusout', ['false'])
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    @HostListener(`keydown.arrowUp.prevent`, [`1`, `$event.target`])
-    @HostListener(`keydown.arrowRight.prevent`, [`1`, `$event.target`])
-    @HostListener(`keydown.arrowLeft.prevent`, [`-1`, `$event.target`])
-    @HostListener(`keydown.arrowDown.prevent`, [`-1`, `$event.target`])
+    @HostListener('keydown.arrowUp.prevent', ['1', '$event.target'])
+    @HostListener('keydown.arrowRight.prevent', ['1', '$event.target'])
+    @HostListener('keydown.arrowLeft.prevent', ['-1', '$event.target'])
+    @HostListener('keydown.arrowDown.prevent', ['-1', '$event.target'])
     changeByStep(coefficient: number, target: HTMLElement): void {
         const [sliderLeftRef, sliderRightRef] = this.slidersRefs;
         const leftThumbElement = sliderLeftRef.nativeElement;
@@ -152,7 +152,7 @@ export class TuiRangeComponent
 
         const isRightThumb =
             target === this.elementRef.nativeElement
-                ? this.lastActiveThumb === `right`
+                ? this.lastActiveThumb === 'right'
                 : target === rightThumbElement;
         const activeThumbElement = isRightThumb ? rightThumbElement : leftThumbElement;
         const previousValue = isRightThumb ? this.value[1] : this.value[0];
@@ -174,7 +174,7 @@ export class TuiRangeComponent
             this.updateStart(value);
         }
 
-        this.lastActiveThumb = right ? `right` : `left`;
+        this.lastActiveThumb = right ? 'right' : 'left';
     }
 
     getValueFromFraction(fraction: number): number {

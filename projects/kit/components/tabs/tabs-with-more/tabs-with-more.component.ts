@@ -36,9 +36,9 @@ import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs-options';
 import {TUI_TABS_PROVIDERS, TUI_TABS_REFRESH} from './tabs-with-more.providers';
 
 @Component({
-    selector: `tui-tabs-with-more, nav[tuiTabsWithMore]`,
-    templateUrl: `./tabs-with-more.template.html`,
-    styleUrls: [`./tabs-with-more.style.less`],
+    selector: 'tui-tabs-with-more, nav[tuiTabsWithMore]',
+    templateUrl: './tabs-with-more.template.html',
+    styleUrls: ['./tabs-with-more.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_TABS_PROVIDERS,
 })
@@ -50,16 +50,15 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
 
     @Input()
     @tuiDefaultProp()
-    moreContent: PolymorpheusContent = ``;
+    moreContent: PolymorpheusContent = '';
 
     @Input()
     @tuiDefaultProp()
-    dropdownContent: PolymorpheusContent<
-        TuiContextWithImplicit<TuiActiveZoneDirective>
-    > = ``;
+    dropdownContent: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>> =
+        '';
 
     @Input()
-    @HostBinding(`class._underline`)
+    @HostBinding('class._underline')
     @tuiDefaultProp()
     underline = this.options.underline;
 
@@ -91,7 +90,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     // TODO: Improve performance
     get tabs(): readonly HTMLElement[] {
         return Array.from<HTMLElement>(
-            this.elementRef.nativeElement.querySelectorAll(`[tuiTab]`),
+            this.elementRef.nativeElement.querySelectorAll('[tuiTab]'),
         );
     }
 

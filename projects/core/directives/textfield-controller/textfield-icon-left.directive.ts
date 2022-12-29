@@ -4,14 +4,14 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export const TUI_TEXTFIELD_ICON_LEFT = new InjectionToken<TuiTextfieldIconLeftDirective>(
-    `[TUI_TEXTFIELD_ICON_LEFT]: tuiTextfieldIconLeft`,
+    '[TUI_TEXTFIELD_ICON_LEFT]: tuiTextfieldIconLeft',
     {
         factory: tuiIconLeftDirectiveFactory,
     },
 );
 
 @Directive({
-    selector: `[tuiTextfieldIconLeft]`,
+    selector: '[tuiTextfieldIconLeft]',
     providers: [
         {
             provide: TUI_TEXTFIELD_ICON_LEFT,
@@ -20,8 +20,8 @@ export const TUI_TEXTFIELD_ICON_LEFT = new InjectionToken<TuiTextfieldIconLeftDi
     ],
 })
 export class TuiTextfieldIconLeftDirective extends AbstractTuiController {
-    @Input(`tuiTextfieldIconLeft`)
-    iconLeft: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> = ``;
+    @Input('tuiTextfieldIconLeft')
+    iconLeft: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> = '';
 }
 
 export function tuiIconLeftDirectiveFactory(): TuiTextfieldIconLeftDirective {

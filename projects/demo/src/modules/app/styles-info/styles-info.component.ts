@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
-    selector: `tui-styles-info`,
+    selector: 'tui-styles-info',
     template: `
         <tui-notification class="tui-space_bottom-3">
             To use this you need to add optional

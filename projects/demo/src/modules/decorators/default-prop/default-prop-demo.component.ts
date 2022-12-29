@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 
 @Component({
-    selector: `example-tui-default-prop-demo`,
+    selector: 'example-tui-default-prop-demo',
     template: `
         Value: {{ quantity }}
     `,
@@ -13,7 +13,7 @@ export class ExampleTuiDefaultPropDemoComponent {
     @Input()
     @tuiDefaultProp(
         quantity => Number.isInteger(quantity) && quantity >= 5,
-        `Should be integer number more than min value`,
+        'Should be integer number more than min value',
     )
     quantity: number | undefined = 10;
 }

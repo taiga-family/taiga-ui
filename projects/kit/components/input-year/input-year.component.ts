@@ -27,9 +27,9 @@ import {
 import {TUI_INPUT_DATE_OPTIONS, TuiInputDateOptions} from '@taiga-ui/kit/tokens';
 
 @Component({
-    selector: `tui-input-year`,
-    templateUrl: `./input-year.template.html`,
-    styleUrls: [`./input-year.style.less`],
+    selector: 'tui-input-year',
+    templateUrl: './input-year.template.html',
+    styleUrls: ['./input-year.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputYearComponent),

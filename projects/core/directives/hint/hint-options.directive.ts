@@ -23,15 +23,15 @@ export interface TuiHintOptions {
 
 /** Default values for hint options */
 export const TUI_HINT_DEFAULT_OPTIONS: TuiHintOptions = {
-    direction: `bottom-left`,
+    direction: 'bottom-left',
     showDelay: 500,
     hideDelay: 200,
-    appearance: ``,
-    icon: `tuiIconTooltipLarge`,
+    appearance: '',
+    icon: 'tuiIconTooltipLarge',
 };
 
 export const TUI_HINT_OPTIONS = new InjectionToken<TuiHintOptions>(
-    `[TUI_HINT_OPTIONS] Default parameters for hint directive`,
+    '[TUI_HINT_OPTIONS] Default parameters for hint directive',
     {
         factory: () => TUI_HINT_DEFAULT_OPTIONS,
     },
@@ -49,7 +49,7 @@ export const tuiHintOptionsProvider: (
 });
 
 @Directive({
-    selector: `[tuiHintContent]`,
+    selector: '[tuiHintContent]',
     providers: [
         {
             provide: TUI_HINT_OPTIONS,
@@ -61,23 +61,23 @@ export class TuiHintOptionsDirective
     extends AbstractTuiController
     implements TuiHintOptions
 {
-    @Input(`tuiHintContent`)
+    @Input('tuiHintContent')
     @tuiDefaultProp()
-    content: PolymorpheusContent = ``;
+    content: PolymorpheusContent = '';
 
-    @Input(`tuiHintDirection`)
+    @Input('tuiHintDirection')
     @tuiDefaultProp()
     direction = this.options.direction;
 
-    @Input(`tuiHintAppearance`)
+    @Input('tuiHintAppearance')
     @tuiDefaultProp()
     appearance = this.options.appearance;
 
-    @Input(`tuiHintShowDelay`)
+    @Input('tuiHintShowDelay')
     @tuiDefaultProp()
     showDelay = this.options.showDelay;
 
-    @Input(`tuiHintHideDelay`)
+    @Input('tuiHintHideDelay')
     @tuiDefaultProp()
     hideDelay = this.options.hideDelay;
 

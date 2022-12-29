@@ -14,7 +14,7 @@ import {distinctUntilChanged, switchMap, takeUntil} from 'rxjs/operators';
 import {TuiInputMonthRangeComponent} from './input-month-range.component';
 
 @Directive({
-    selector: `tui-input-month-range`,
+    selector: 'tui-input-month-range',
     providers: [tuiAsTextfieldHost(TuiInputMonthRangeDirective), TuiDestroyService],
 })
 export class TuiInputMonthRangeDirective
@@ -23,7 +23,7 @@ export class TuiInputMonthRangeDirective
 {
     private readonly value$ = new Subject<TuiMonthRange | null>();
 
-    private localizedValue: [string, string] = [``, ``];
+    private localizedValue: [string, string] = ['', ''];
 
     constructor(
         @Inject(AbstractTuiControl) host: TuiInputMonthRangeComponent,
@@ -56,7 +56,7 @@ export class TuiInputMonthRangeDirective
     override get value(): string {
         return this.localizedValue[0]
             ? this.host.computeValue(...this.localizedValue)
-            : ``;
+            : '';
     }
 
     ngDoCheck(): void {

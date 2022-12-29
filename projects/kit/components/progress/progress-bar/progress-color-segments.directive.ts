@@ -15,17 +15,17 @@ function calculateColorSegments(colors: string[], progressWidth: number): string
     const colorsString = colors.reduce(
         (acc, color, i) =>
             `${acc}, ${color} ${i * segmentWidth}px ${(i + 1) * segmentWidth}px`,
-        ``,
+        '',
     );
 
     return `linear-gradient(to right ${colorsString})`;
 }
 
 @Directive({
-    selector: `progress[tuiProgressBar][tuiProgressColorSegments]`,
+    selector: 'progress[tuiProgressBar][tuiProgressColorSegments]',
     host: {
-        '[$.style.--tui-progress-color]': `calcSegments$`,
-        '($.style.--tui-progress-color)': `0`,
+        '[$.style.--tui-progress-color]': 'calcSegments$',
+        '($.style.--tui-progress-color)': '0',
     },
     providers: [TuiDestroyService, TuiResizeService],
 })
@@ -36,7 +36,7 @@ export class TuiProgressColorSegmentsDirective {
         this.userAgent,
     );
 
-    @Input(`tuiProgressColorSegments`)
+    @Input('tuiProgressColorSegments')
     colors: string[] = [];
 
     @tuiPure

@@ -12,14 +12,14 @@ import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 const OFFSET = 16;
 
 @Directive({
-    selector: `[tuiSheetWrapper]`,
+    selector: '[tuiSheetWrapper]',
     host: {
-        '[$.class._overlay]': `overlay$`,
-        '($.class._overlay)': `overlay$`,
-        '[$.class._visible]': `visible$`,
-        '($.class._visible)': `visible$`,
-        '[$.style.height.px]': `height$`,
-        '($.style.height.px)': `height$`,
+        '[$.class._overlay]': 'overlay$',
+        '($.class._overlay)': 'overlay$',
+        '[$.class._visible]': 'visible$',
+        '($.class._visible)': 'visible$',
+        '[$.style.height.px]': 'height$',
+        '($.style.height.px)': 'height$',
     },
 })
 export class TuiSheetWrapperDirective {

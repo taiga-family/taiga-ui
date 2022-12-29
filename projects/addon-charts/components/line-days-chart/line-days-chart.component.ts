@@ -35,9 +35,9 @@ import {TuiLineDaysChartHintDirective} from './line-days-chart-hint.directive';
 const DUMMY: TuiPoint = [NaN, NaN];
 
 @Component({
-    selector: `tui-line-days-chart`,
-    templateUrl: `./line-days-chart.template.html`,
-    styleUrls: [`./line-days-chart.style.less`],
+    selector: 'tui-line-days-chart',
+    templateUrl: './line-days-chart.template.html',
+    styleUrls: ['./line-days-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -53,7 +53,7 @@ export class TuiLineDaysChartComponent {
     @ViewChildren(TuiDriver)
     readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
-    @Input(`value`)
+    @Input('value')
     @tuiDefaultProp()
     set valueSetter(value: ReadonlyArray<[TuiDay, number]>) {
         if (!value.length) {
@@ -89,7 +89,7 @@ export class TuiLineDaysChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    hintContent: PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>> = ``;
+    hintContent: PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>> = '';
 
     @Input()
     @tuiDefaultProp()
@@ -103,7 +103,7 @@ export class TuiLineDaysChartComponent {
     @tuiDefaultProp()
     dots = false;
 
-    @HostBinding(`style.zIndex`)
+    @HostBinding('style.zIndex')
     zIndex = 0;
 
     value: ReadonlyArray<[TuiDay, number]> = [];
@@ -139,7 +139,7 @@ export class TuiLineDaysChartComponent {
     }
 
     readonly daysStringify: TuiStringHandler<number> = index =>
-        this.xStringify ? this.xStringify(this.getMonth(index)) : ``;
+        this.xStringify ? this.xStringify(this.getMonth(index)) : '';
 
     getX(index: number): number {
         const current = this.getMonth(index);

@@ -26,17 +26,17 @@ import {TuiPrimitiveTextfieldComponent, TuiTextMaskOptions} from '@taiga-ui/core
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const icons: Record<TuiPaymentSystem, string> = {
-    mir: `tuiIconMir`,
-    visa: `tuiIconVisa`,
-    electron: `tuiIconElectron`,
-    mastercard: `tuiIconMastercard`,
-    maestro: `tuiIconMaestro`,
+    mir: 'tuiIconMir',
+    visa: 'tuiIconVisa',
+    electron: 'tuiIconElectron',
+    mastercard: 'tuiIconMastercard',
+    maestro: 'tuiIconMaestro',
 };
 
 @Component({
-    selector: `tui-input-card`,
-    templateUrl: `./input-card.template.html`,
-    styleUrls: [`./input-card.style.less`],
+    selector: 'tui-input-card',
+    templateUrl: './input-card.template.html',
+    styleUrls: ['./input-card.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputCardComponent),
@@ -52,7 +52,7 @@ export class TuiInputCardComponent
 
     @Input()
     @tuiDefaultProp()
-    cardSrc: PolymorpheusContent = ``;
+    cardSrc: PolymorpheusContent = '';
 
     @Input()
     @tuiDefaultProp()
@@ -96,7 +96,7 @@ export class TuiInputCardComponent
     }
 
     get autocomplete(): TuiAutofillFieldName {
-        return this.autocompleteEnabled ? `cc-number` : `off`;
+        return this.autocompleteEnabled ? 'cc-number' : 'off';
     }
 
     get paymentSystem(): TuiPaymentSystem | null {
@@ -109,13 +109,13 @@ export class TuiInputCardComponent
 
     get formattedCard(): string {
         return this.value
-            .split(``)
+            .split('')
             .map((char, index) => (index && index % 4 === 0 ? ` ${char}` : char))
-            .join(``);
+            .join('');
     }
 
     onValueChange(value: string): void {
-        const parsed = value.split(` `).join(``);
+        const parsed = value.split(' ').join('');
         const currentBin = this.bin;
 
         this.updateValue(parsed);
@@ -144,6 +144,6 @@ export class TuiInputCardComponent
     }
 
     protected getFallbackValue(): string {
-        return ``;
+        return '';
     }
 }

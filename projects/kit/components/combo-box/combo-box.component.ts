@@ -47,9 +47,9 @@ import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: `tui-combo-box`,
-    templateUrl: `./combo-box.template.html`,
-    styleUrls: [`./combo-box.style.less`],
+    selector: 'tui-combo-box',
+    templateUrl: './combo-box.template.html',
+    styleUrls: ['./combo-box.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiComboBoxComponent),
@@ -87,7 +87,7 @@ export class TuiComboBoxComponent<T>
 
     @Input()
     @tuiDefaultProp()
-    valueContent: PolymorpheusContent<TuiValueContentContext<T>> = ``;
+    valueContent: PolymorpheusContent<TuiValueContentContext<T>> = '';
 
     @Input()
     @tuiDefaultProp()
@@ -103,7 +103,7 @@ export class TuiComboBoxComponent<T>
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent<
         TuiContextWithImplicit<TuiActiveZoneDirective>
-    > = ``;
+    > = '';
 
     open = false;
 
@@ -139,7 +139,7 @@ export class TuiComboBoxComponent<T>
     }
 
     get nativeValue(): string {
-        return this.value === null ? this.search || `` : this.stringify(this.value);
+        return this.value === null ? this.search || '' : this.stringify(this.value);
     }
 
     get showValueTemplate(): boolean {
@@ -199,7 +199,7 @@ export class TuiComboBoxComponent<T>
             return;
         }
 
-        if (this.strict || this.search === ``) {
+        if (this.strict || this.search === '') {
             this.updateValue(null);
         }
 
@@ -215,7 +215,7 @@ export class TuiComboBoxComponent<T>
     }
 
     private isStrictMatch(item: T): boolean {
-        return this.strictMatcher(item, this.search || ``, this.stringify);
+        return this.strictMatcher(item, this.search || '', this.stringify);
     }
 
     private close(): void {

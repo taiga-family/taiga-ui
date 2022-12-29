@@ -40,9 +40,9 @@ import {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: `tui-input-month-range`,
-    templateUrl: `./input-month-range.template.html`,
-    styleUrls: [`./input-month-range.style.less`],
+    selector: 'tui-input-month-range',
+    templateUrl: './input-month-range.template.html',
+    styleUrls: ['./input-month-range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputMonthRangeComponent),
@@ -110,7 +110,7 @@ export class TuiInputMonthRangeComponent
     }
 
     computeValue(from: string | null, to: string | null): string {
-        const formattedTo = from === to && this.focused && !this.readOnly ? `` : to;
+        const formattedTo = from === to && this.focused && !this.readOnly ? '' : to;
 
         return `${from} ${CHAR_EN_DASH} ${formattedTo}`;
     }

@@ -5,8 +5,8 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '@taiga-ui/addon-editor';
 
 @Component({
-    selector: `editor-draggable-groups`,
-    templateUrl: `./editor-draggable-groups.component.html`,
+    selector: 'editor-draggable-groups',
+    templateUrl: './editor-draggable-groups.component.html',
     encapsulation,
     changeDetection,
     providers: [
@@ -18,7 +18,7 @@ import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '@taiga-ui/addon-ed
 })
 export class ExampleTuiEditorDraggableGroupsComponent {
     readonly example1: TuiDocExample = {
-        TypeScript: import(`./examples/1/index.ts?raw`),
-        HTML: import(`./examples/1/index.html?raw`),
+        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
     };
 }

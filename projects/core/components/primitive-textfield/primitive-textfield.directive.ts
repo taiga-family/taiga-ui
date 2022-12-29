@@ -6,7 +6,7 @@ import {tuiAsTextfieldHost} from '@taiga-ui/core/tokens';
 import {TuiPrimitiveTextfieldComponent} from './primitive-textfield.component';
 
 @Directive({
-    selector: `tui-primitive-textfield`,
+    selector: 'tui-primitive-textfield',
     providers: [tuiAsTextfieldHost(TuiPrimitiveTextfieldDirective)],
 })
 export class TuiPrimitiveTextfieldDirective extends AbstractTuiTextfieldHost<any> {
