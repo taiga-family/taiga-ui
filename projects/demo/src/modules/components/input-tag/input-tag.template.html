@@ -80,6 +80,21 @@
             </ng-template>
             <tui-input-tag-example-7></tui-input-tag-example-7>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="expandable"
+            i18n-heading
+            heading="expandable"
+            [content]="example8"
+        >
+            <div class="tui-space_bottom-3">
+                You can limit the number of visible rows in expandable mode with
+                <code>rows</code>
+                input
+            </div>
+
+            <tui-input-tag-example-8></tui-input-tag-example-8>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -102,6 +117,7 @@
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
                     [maxLength]="maxLength"
+                    [rows]="rows"
                     [focusable]="focusable"
                     [disabledItemHandler]="disabledItemHandler"
                     [editable]="editable"
@@ -198,6 +214,17 @@
                 [(documentationPropertyValue)]="separator"
             >
                 String or RegExp to separate tags
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="rows"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="rows"
+            >
+                A number of visible rows in
+                <code>expandable</code>
+                mode
             </ng-template>
             <ng-template
                 i18n

@@ -39,17 +39,11 @@
                     </div>
                 </div>
                 <tui-scrollbar
-                    *ngIf="!expandable; else items"
                     class="t-scrollbar"
-                    [hidden]="true"
+                    [hidden]="!expandable"
+                    [style.maxHeight.rem]="computeMaxHeight"
                 >
-                    <ng-container [ngTemplateOutlet]="items"></ng-container>
-                </tui-scrollbar>
-                <ng-template #items>
-                    <div
-                        #tagsContainer
-                        class="t-tags"
-                    >
+                    <div class="t-tags">
                         <ng-container *ngIf="labelOutside; else text">
                             <tui-tag
                                 *ngFor="let item of value; index as index; trackBy: trackByFn"
@@ -108,7 +102,7 @@
                             />
                         </div>
                     </div>
-                </ng-template>
+                </tui-scrollbar>
             </div>
             <div
                 *ngIf="hasRightIcons"
