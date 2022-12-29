@@ -285,7 +285,7 @@ export class TuiInputCountComponent
     }
 
     private formatNumber(value: number | null): string {
-        return this.isNotNumber(value) ? `` : tuiFormatNumber(value, this.numberFormat);
+        return this.isNotNumber(value) ? '' : tuiFormatNumber(value, this.numberFormat);
     }
 
     private isNotNumber(value: number | null): value is null {
