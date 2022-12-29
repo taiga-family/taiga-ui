@@ -2,7 +2,9 @@ import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TUI_FIRST_DAY, TuiDay, TuiDayRange, TuiYear} from '@taiga-ui/cdk';
 import {
+    TuiGetItemRangePipe,
     TuiInteractiveState,
+    TuiItemIsIntervalPipe,
     TuiPrimitiveYearPickerComponent,
     TuiPrimitiveYearPickerModule,
     TuiRangeState,
@@ -89,13 +91,19 @@ describe(`TuiPrimitiveYearPickerComponent`, () => {
         });
     });
 
-    describe(`getItemRange`, () => {
+    describe(`get item range`, () => {
         it(`returns null if there is no value`, () => {
             const item = 2019;
 
             component.value = null;
 
-            expect(component.getItemRange(item)).toBe(null);
+            expect(
+                new TuiGetItemRangePipe().transform(
+                    item,
+                    component.value,
+                    component.hoveredItem,
+                ),
+            ).toBe(null);
         });
 
         it(`returns start correctly`, () => {
@@ -106,7 +114,13 @@ describe(`TuiPrimitiveYearPickerComponent`, () => {
                 new TuiDay(2020, 1, 1),
             );
 
-            expect(component.getItemRange(item)).toBe(TuiRangeState.Start);
+            expect(
+                new TuiGetItemRangePipe().transform(
+                    item,
+                    component.value,
+                    component.hoveredItem,
+                ),
+            ).toBe(TuiRangeState.Start);
         });
 
         it(`returns end correctly`, () => {
@@ -117,7 +131,13 @@ describe(`TuiPrimitiveYearPickerComponent`, () => {
                 new TuiDay(item, 1, 1),
             );
 
-            expect(component.getItemRange(item)).toBe(TuiRangeState.End);
+            expect(
+                new TuiGetItemRangePipe().transform(
+                    item,
+                    component.value,
+                    component.hoveredItem,
+                ),
+            ).toBe(TuiRangeState.End);
         });
 
         it(`returns single correctly`, () => {
@@ -128,18 +148,30 @@ describe(`TuiPrimitiveYearPickerComponent`, () => {
                 new TuiDay(item, 2, 2),
             );
 
-            expect(component.getItemRange(item)).toBe(TuiRangeState.Single);
+            expect(
+                new TuiGetItemRangePipe().transform(
+                    item,
+                    component.value,
+                    component.hoveredItem,
+                ),
+            ).toBe(TuiRangeState.Single);
         });
     });
 
-    describe(`itemIsInterval`, () => {
+    describe(`item is interval`, () => {
         it(`works correctly if item is in value range`, () => {
             component.value = new TuiDayRange(
                 new TuiDay(2018, 4, 20),
                 new TuiDay(2020, 4, 22),
             );
 
-            expect(component.itemIsInterval(2019)).toBe(true);
+            expect(
+                new TuiItemIsIntervalPipe().transform(
+                    2019,
+                    component.value,
+                    component.hoveredItem,
+                ),
+            ).toBe(true);
         });
 
         it(`returns false if item is in value range of same year and no item is hovered`, () => {
@@ -148,7 +180,13 @@ describe(`TuiPrimitiveYearPickerComponent`, () => {
                 new TuiDay(2019, 4, 22),
             );
 
-            expect(component.itemIsInterval(2019)).toBe(false);
+            expect(
+                new TuiItemIsIntervalPipe().transform(
+                    2019,
+                    component.value,
+                    component.hoveredItem,
+                ),
+            ).toBe(false);
         });
 
         it(`works correctly if item is in value range of same year and there is hovered item`, () => {
@@ -158,7 +196,13 @@ describe(`TuiPrimitiveYearPickerComponent`, () => {
             );
             component.onItemHovered(true, 2017);
 
-            expect(component.itemIsInterval(2018)).toBe(true);
+            expect(
+                new TuiItemIsIntervalPipe().transform(
+                    2018,
+                    component.value,
+                    component.hoveredItem,
+                ),
+            ).toBe(true);
         });
     });
 

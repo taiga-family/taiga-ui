@@ -13,12 +13,11 @@ import {
     TuiBooleanHandler,
     TuiDayRange,
     tuiDefaultProp,
-    tuiInRange,
     TuiMonth,
     TuiMonthRange,
     TuiYear,
 } from '@taiga-ui/cdk';
-import {TuiInteractiveState, TuiRangeState} from '@taiga-ui/core/enums';
+import {TuiInteractiveState} from '@taiga-ui/core/enums';
 
 const LIMIT = 100;
 const ITEMS_IN_ROW = 4;
@@ -30,10 +29,6 @@ const ITEMS_IN_ROW = 4;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveYearPickerComponent {
-    private hoveredItem: number | null = null;
-    private pressedItem: number | null = null;
-    private readonly currentYear = TuiMonth.currentLocal().year;
-
     @Input()
     @tuiDefaultProp()
     value: TuiDayRange | TuiMonthRange | TuiYear | null = null;
@@ -56,6 +51,9 @@ export class TuiPrimitiveYearPickerComponent {
 
     @Output()
     readonly yearClick = new EventEmitter<TuiYear>();
+
+    pressedItem: number | null = null;
+    hoveredItem: number | null = null;
 
     @HostBinding(`class._single`)
     get isSingle(): boolean {
@@ -84,10 +82,6 @@ export class TuiPrimitiveYearPickerComponent {
         return item instanceof TuiMonthRange;
     }
 
-    scrollItemIntoView(item: number): boolean {
-        return this.initialItem.year === item;
-    }
-
     getItem(rowIndex: number, colIndex: number): number {
         return rowIndex * ITEMS_IN_ROW + colIndex + this.calculatedMin;
     }
@@ -111,77 +105,6 @@ export class TuiPrimitiveYearPickerComponent {
         }
 
         return null;
-    }
-
-    // eslint-disable-next-line complexity
-    getItemRange(item: number): TuiRangeState | null {
-        const {value, hoveredItem} = this;
-
-        if (value === null) {
-            return null;
-        }
-
-        if (value instanceof TuiYear) {
-            return value.year === item ? TuiRangeState.Single : null;
-        }
-
-        if (
-            (value.from.year === item && !value.from.yearSame(value.to)) ||
-            (hoveredItem !== null &&
-                hoveredItem > value.from.year &&
-                value.from.year === item &&
-                value.from.yearSame(value.to)) ||
-            (hoveredItem !== null &&
-                hoveredItem === item &&
-                hoveredItem < value.from.year &&
-                value.from.yearSame(value.to))
-        ) {
-            return TuiRangeState.Start;
-        }
-
-        if (
-            (value.to.year === item && !value.from.yearSame(value.to)) ||
-            (hoveredItem !== null &&
-                hoveredItem < value.from.year &&
-                value.from.year === item &&
-                value.from.yearSame(value.to)) ||
-            (hoveredItem !== null &&
-                hoveredItem === item &&
-                hoveredItem > value.from.year &&
-                value.from.yearSame(value.to))
-        ) {
-            return TuiRangeState.End;
-        }
-
-        return value.from.yearSame(value.to) && value.from.year === item
-            ? TuiRangeState.Single
-            : null;
-    }
-
-    itemIsToday(item: number): boolean {
-        return this.currentYear === item;
-    }
-
-    itemIsInterval(item: number): boolean {
-        const {value, hoveredItem} = this;
-
-        if (value === null || !this.isRange(value)) {
-            return false;
-        }
-
-        if (!value.from.yearSame(value.to)) {
-            return value.from.year <= item && value.to.year > item;
-        }
-
-        if (hoveredItem === null || value.from.year === hoveredItem) {
-            return false;
-        }
-
-        return tuiInRange(
-            item,
-            Math.min(value.from.year, hoveredItem),
-            Math.max(value.from.year, hoveredItem),
-        );
     }
 
     onItemHovered(hovered: boolean, item: number): void {

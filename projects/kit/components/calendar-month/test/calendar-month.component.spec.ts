@@ -154,7 +154,7 @@ describe(`CalendarMonth`, () => {
         });
     });
 
-    describe(`getItemRange`, () => {
+    describe(`get item range`, () => {
         it(`returns null if no value`, () => {
             const month = new TuiMonth(TODAY.year, 7);
 

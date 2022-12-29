@@ -149,7 +149,7 @@ describe(`PrimitiveCalendar`, () => {
         });
     });
 
-    describe(`getItemRange`, () => {
+    describe(`get item range`, () => {
         it(`returns start correctly if there is range in value`, () => {
             const day1 = new TuiDay(2019, 4, 16);
             const day2 = new TuiDay(2020, 1, 1);
@@ -180,7 +180,7 @@ describe(`PrimitiveCalendar`, () => {
         });
     });
 
-    describe(`itemIsInterval`, () => {
+    describe(`item is interval`, () => {
         it(`returns false if there is single day range value but no hoveredItem`, () => {
             const day = new TuiDay(2019, 4, 16);
 
