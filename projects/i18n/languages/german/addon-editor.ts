@@ -37,6 +37,7 @@ export const TUI_GERMAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         subscript: `Tiefgestellt`,
         insertTable: `Insert table`,
         insertGroup: `Insert group`,
+        hiliteGroup: `Hilite group`,
         removeGroup: `Remove group`,
         insertAnchor: `Insert anchor`,
         mergeCells: `Merge cells`,

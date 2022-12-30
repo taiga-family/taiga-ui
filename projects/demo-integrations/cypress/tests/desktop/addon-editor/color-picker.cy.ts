@@ -6,9 +6,7 @@ describe(`Editor's color picker`, () => {
     it(`opened color picker`, () => {
         openColorPicker(`wrapper`);
 
-        cy.get(`@wrapper`)
-            .wait(WAIT_BEFORE_SCREENSHOT)
-            .matchImageSnapshot(`1-color-picker-with-hex`);
+        cy.matchImageSnapshot(`1-color-picker-with-hex`);
     });
 
     it(`opened color picker and change rgb`, () => {
@@ -19,15 +17,12 @@ describe(`Editor's color picker`, () => {
         setInputBox(2, 255);
         setInputBox(3, 255);
 
-        cy.get(`@wrapper`)
-            .wait(WAIT_BEFORE_SCREENSHOT)
-            .matchImageSnapshot(`2-color-picker-with-rgb`);
+        cy.wait(WAIT_BEFORE_SCREENSHOT).matchImageSnapshot(`2-color-picker-with-rgb`);
     });
 
     function openColorPicker(alias: string): void {
         cy.get(`#dropdown`)
             .findByAutomationId(`tui-doc-example`)
-
             .tuiScrollIntoView()
             .as(alias);
 

@@ -36,6 +36,7 @@ export const TUI_UKRAINIAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         superscript: `Надрядковий`,
         subscript: `Підрядковий`,
         insertTable: `Insert table`,
+        hiliteGroup: `Hilite group`,
         insertGroup: `Insert group`,
         removeGroup: `Remove group`,
         insertAnchor: `Insert anchor`,

@@ -8,7 +8,7 @@ import {
 } from '@taiga-ui/addon-editor/tokens';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
-import {Observable} from 'rxjs';
+import {combineLatest, Observable} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 
 @Component({
@@ -22,12 +22,27 @@ export class TuiTableCellColorComponent {
     @tuiDefaultProp()
     colors: ReadonlyMap<string, string> = this.defaultOptions.colors;
 
-    readonly cellColorText$ = this.texts$.pipe(map(texts => texts.cellColor));
+    readonly colorText$ = this.texts$.pipe(
+        map(
+            texts =>
+                (this.editor.isActive('group') && texts.hiliteGroup) ||
+                (this.editor.isActive('table') && texts.cellColor) ||
+                '',
+        ),
+    );
 
-    readonly isActive$ = this.editor.isActive$('table');
+    readonly isActive$ = combineLatest([
+        this.editor.isActive$('table'),
+        this.editor.isActive$('group'),
+    ]).pipe(map(([table, group]) => table || group));
 
-    readonly cellColor$ = this.editor.stateChange$.pipe(
-        map(() => this.editor.getCellColor() || this.defaultOptions.blankColor),
+    readonly color$ = this.editor.stateChange$.pipe(
+        map(
+            () =>
+                this.editor.getCellColor() ||
+                this.editor.getGroupColor() ||
+                this.defaultOptions.blankColor,
+        ),
         distinctUntilChanged(),
     );
 
@@ -44,6 +59,10 @@ export class TuiTableCellColorComponent {
     }
 
     setCellColor(color: string): void {
-        this.editor.setCellColor(color);
+        if (this.editor.isActive('group')) {
+            this.editor.setGroupHilite(color);
+        } else if (this.editor.isActive('table')) {
+            this.editor.setCellColor(color);
+        }
     }
 }

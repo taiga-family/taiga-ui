@@ -4,7 +4,7 @@ import {Inject, Injectable} from '@angular/core';
 import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
 import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
-import {tuiGetMarkRange} from '@taiga-ui/addon-editor/utils';
+import {tuiGetMarkRange, tuiParseStyle} from '@taiga-ui/addon-editor/utils';
 import type {Editor, Range} from '@tiptap/core';
 import type {EditorState} from 'prosemirror-state';
 import {Observable} from 'rxjs';
@@ -85,6 +85,17 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
             this.editor.getAttributes(`tableCell`).background ||
             this.editor.getAttributes(`tableHeader`).background
         );
+    }
+
+    getGroupColor(): string {
+        if (this.editor.isActive(`group`)) {
+            const style = this.editor.getAttributes(`group`)?.style ?? ``;
+            const styles = tuiParseStyle(style);
+
+            return styles[`background-color`] ?? styles[`background`] ?? ``;
+        }
+
+        return ``;
     }
 
     onAlign(align: string): void {
@@ -315,6 +326,10 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
 
     removeGroup(): void {
         this.editor.commands.removeGroup();
+    }
+
+    setGroupHilite(color: string): void {
+        this.editor.commands.setGroupHilite(color);
     }
 
     setAnchor(anchor: string): void {

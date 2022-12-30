@@ -1,4 +1,5 @@
 export const defaultEditorColors = new Map([
+    [`transparent`, `transparent`],
     [`color-black-300`, `#333333`],
     [`color-black-200`, `#666666`],
     [`color-black-100`, `#909090`],

@@ -36,6 +36,7 @@ export const TUI_VIETNAMESE_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         superscript: `Chỉ số trên`,
         subscript: `Chỉ số dưới`,
         insertTable: `Chèn bảng`,
+        hiliteGroup: `Hilite group`,
         insertGroup: `Chèn nhóm`,
         removeGroup: `Xóa nhóm`,
         insertAnchor: `Chèn mỏ neo`,

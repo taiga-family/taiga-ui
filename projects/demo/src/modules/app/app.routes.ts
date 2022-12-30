@@ -1007,27 +1007,12 @@ export const ROUTES = [
         },
     },
     {
-        path: `editor/draggable-groups`,
+        path: `editor/groups`,
         loadChildren: async () =>
-            (
-                await import(
-                    `../components/editor/draggable-groups/editor-draggable-groups.module`
-                )
-            ).ExampleTuiEditorDraggableGroupsModule,
+            (await import(`../components/editor/groups/editor-groups.module`))
+                .ExampleTuiEditorGroupsModule,
         data: {
-            title: `Editor — Draggable groups`,
-        },
-    },
-    {
-        path: `editor/nested-groups`,
-        loadChildren: async () =>
-            (
-                await import(
-                    `../components/editor/nested-groups/editor-nested-groups.module`
-                )
-            ).ExampleTuiEditorNestedGroupsModule,
-        data: {
-            title: `Editor — Nested groups`,
+            title: `Editor — Groups`,
         },
     },
     {

@@ -154,6 +154,7 @@ export interface TuiLanguageEditor {
         insertGroup: string;
         insertAnchor: string;
         removeGroup: string;
+        hiliteGroup: string;
         mergeCells: string;
         splitCells: string;
         rowsColumnsManaging: string;

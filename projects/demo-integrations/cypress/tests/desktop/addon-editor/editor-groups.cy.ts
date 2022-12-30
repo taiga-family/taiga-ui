@@ -5,7 +5,7 @@ import {
 
 describe(`Examples with groups in editor`, () => {
     it(`Simple nested group`, () => {
-        cy.tuiVisit(`editor/nested-groups`);
+        cy.tuiVisit(`editor/groups`);
         makeWrapper(`#nested-groups`);
 
         cy.get(`@wrapper`).should(`be.visible`).click(); // clear hints
@@ -16,7 +16,7 @@ describe(`Examples with groups in editor`, () => {
     });
 
     it(`Draggable groups`, () => {
-        cy.tuiVisit(`editor/draggable-groups`);
+        cy.tuiVisit(`editor/groups`);
         makeWrapper(`#draggable-groups`);
 
         cy.get(`@editor`)
