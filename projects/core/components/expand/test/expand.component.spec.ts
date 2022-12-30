@@ -145,7 +145,7 @@ describe(`expand`, () => {
      * JDOM doesn't support native transitionend
      */
     function transitionend(): void {
-        const event = new Event(`transitionend`);
+        const event = new Event(`transitionend.self`);
 
         (event as any).propertyName = `opacity`;
         testComponent.expandElement.nativeElement.dispatchEvent(event);
