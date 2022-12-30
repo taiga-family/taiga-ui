@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.74.0](https://github.com/tinkoff/taiga-ui/compare/v2.73.0...v2.74.0) (2022-12-30)
+
+### Features
+
+- **kit:** support empty value in `InputCount` ([#3343](https://github.com/tinkoff/taiga-ui/issues/3343))
+  ([f38e979](https://github.com/tinkoff/taiga-ui/commit/f38e97914eed70d3d518d175eea94eeafc395307))
+
 ## [2.73.0](https://github.com/tinkoff/taiga-ui/compare/v2.72.0...v2.73.0) (2022-12-19)
 
 ### Features
