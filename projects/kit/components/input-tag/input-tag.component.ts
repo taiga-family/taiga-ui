@@ -133,6 +133,7 @@ export class TuiInputTagComponent
     @tuiDefaultProp()
     tagValidator: TuiBooleanHandler<string> = ALWAYS_TRUE_HANDLER;
 
+    // TODO: 4.0 Consider removing and use rows = 1 instead
     @Input()
     @HostBinding('class._expandable')
     @tuiDefaultProp()
@@ -506,7 +507,13 @@ export class TuiInputTagComponent
 
         merge(wheel$, start$, end$)
             .pipe(
-                switchMap(left => this.tuiScrollService.scroll$(nativeElement, 0, left)),
+                switchMap(left =>
+                    this.tuiScrollService.scroll$(
+                        nativeElement,
+                        nativeElement.scrollHeight,
+                        left,
+                    ),
+                ),
                 takeUntil(this.destroy$),
             )
             .subscribe();

@@ -73,6 +73,7 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
     readonly example8: TuiDocExample = {
         TypeScript: import('./examples/8/index.ts?raw'),
         HTML: import('./examples/8/index.html?raw'),
+        LESS: import('./examples/8/index.less?raw'),
     };
 
     readonly control = new FormControl(
