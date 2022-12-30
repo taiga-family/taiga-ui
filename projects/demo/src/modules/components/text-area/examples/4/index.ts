@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
+import {AfterViewInit, Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
 
 const LONG_TEXT_EXAMPLE = `
@@ -30,7 +31,7 @@ export function maxLengthMessageFactory(context: {requiredLength: string}): stri
         },
     ],
 })
-export class TuiTextAreaExample4 {
+export class TuiTextAreaExample4 implements AfterViewInit {
     readonly maxLength = 97;
 
     readonly testForm = new FormGroup({
@@ -40,7 +41,7 @@ export class TuiTextAreaExample4 {
         ]),
     });
 
-    constructor() {
-        this.testForm.markAllAsTouched();
+    ngAfterViewInit(): void {
+        tuiMarkControlAsTouchedAndValidate(this.testForm);
     }
 }
