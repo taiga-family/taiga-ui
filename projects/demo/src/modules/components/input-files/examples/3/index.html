@@ -3,18 +3,21 @@
         *ngFor="let file of files"
         state="normal"
         [file]="file"
+        [showDelete]="control.enabled"
     ></tui-file>
 
     <tui-file
         *ngFor="let file of rejectedFiles"
         state="error"
         [file]="file"
+        [showDelete]="control.enabled"
     ></tui-file>
 
     <tui-file
         *ngIf="loadingFile && !isCypress"
         state="loading"
         [file]="loadingFile"
+        [showDelete]="control.enabled"
         (removed)="removeLoading()"
     ></tui-file>
 </tui-files>
@@ -25,6 +28,7 @@
         *tuiItem
         state="normal"
         [file]="fileWithLink"
+        [showDelete]="control.enabled"
     ></tui-file>
 </tui-files>
 
@@ -35,6 +39,7 @@
         state="deleted"
         size="l"
         [file]="file"
+        [showDelete]="control.enabled"
     >
         <button
             tuiLink
@@ -49,6 +54,7 @@
         size="l"
         [file]="file"
         [leftContent]="icon"
+        [showDelete]="control.enabled"
         (removed)="remove(file)"
     ></tui-file>
 </tui-files>
