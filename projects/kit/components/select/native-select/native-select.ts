@@ -6,7 +6,7 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {TuiIdService} from '@taiga-ui/cdk';
+import {AbstractTuiControl, TuiIdService} from '@taiga-ui/cdk';
 import {TUI_TEXTFIELD_HOST, TuiDataListDirective, TuiTextfieldHost} from '@taiga-ui/core';
 
 @Directive()
@@ -16,6 +16,7 @@ export abstract class AbstractTuiNativeSelect {
 
     constructor(
         @Inject(TUI_TEXTFIELD_HOST) readonly host: TuiTextfieldHost,
+        @Inject(AbstractTuiControl) readonly control: AbstractTuiControl<unknown>,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLInputElement>,
         @Inject(TuiIdService)
         private readonly idService: TuiIdService,
