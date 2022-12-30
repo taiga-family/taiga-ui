@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.15.0](https://github.com/tinkoff/taiga-ui/compare/v3.14.0...v3.15.0) (2022-12-30)
+
+### Features
+
+- **addon-doc:** add `TUI_DOC_EXCLUDED_PROPERTIES` token to exclude inherited props
+  ([#3267](https://github.com/tinkoff/taiga-ui/issues/3267))
+  ([07d0aac](https://github.com/tinkoff/taiga-ui/commit/07d0aac5a9029caec63b298773b03eb2697d60c6))
+- **addon-editor:** support hilite groups ([#3283](https://github.com/tinkoff/taiga-ui/issues/3283))
+  ([c632052](https://github.com/tinkoff/taiga-ui/commit/c632052754ac3c2513b36ec3828d36ec72d0b66c))
+- **addon-table:** add items to `TUI_TABLE_PAGINATION_OPTIONS` token
+  ([#3276](https://github.com/tinkoff/taiga-ui/issues/3276))
+  ([5dbdae0](https://github.com/tinkoff/taiga-ui/commit/5dbdae071af013c51a678dc85b29d08c1cdf4433))
+- **cdk:** `Schematics` add root path option ([#3274](https://github.com/tinkoff/taiga-ui/issues/3274))
+  ([00a0e4d](https://github.com/tinkoff/taiga-ui/commit/00a0e4d7d8c467db705b59435bef312583e77e9d))
+- **core:** `tuiDropdownSidedOffset` add new input ([#3345](https://github.com/tinkoff/taiga-ui/issues/3345))
+  ([0215211](https://github.com/tinkoff/taiga-ui/commit/02152111dc55021b88bb7f9bce0eb4580bce772c))
+- **core:** dynamic switch view of calendar when value changes
+  ([#3337](https://github.com/tinkoff/taiga-ui/issues/3337))
+  ([bc05066](https://github.com/tinkoff/taiga-ui/commit/bc050662ff20b27d0cbc9658fa52bc58739ae505))
+- **core:** replace `TUI_DROPDOWN_OFFSET` with injection token
+  ([#3141](https://github.com/tinkoff/taiga-ui/issues/3141))
+  ([a126af0](https://github.com/tinkoff/taiga-ui/commit/a126af04e22da277182989fef57bb4629c53f798))
+- **kit:** `InputTag` add max number of rows for `expandable` mode
+  ([#3339](https://github.com/tinkoff/taiga-ui/issues/3339))
+  ([82d2679](https://github.com/tinkoff/taiga-ui/commit/82d2679888c2fa1a2bc3a75e9e0513cde6576256))
+- **kit:** add `showDelete` input prop for `TuiFileComponent` ([#3342](https://github.com/tinkoff/taiga-ui/issues/3342))
+  ([67c40f3](https://github.com/tinkoff/taiga-ui/commit/67c40f374d88fd766e1ee52085c653070200969f))
+- **kit:** support empty value in `InputCount` ([#3317](https://github.com/tinkoff/taiga-ui/issues/3317))
+  ([a1e112b](https://github.com/tinkoff/taiga-ui/commit/a1e112b7c7e632bcfea4cb98c9f8254376bdbb72))
+
+### Bug Fixes
+
+- **addon-table:** export `TuiTablePagination` ([#3331](https://github.com/tinkoff/taiga-ui/issues/3331))
+  ([e93cda3](https://github.com/tinkoff/taiga-ui/commit/e93cda32ec30d065f021e191c352bfd25fd20bcc))
+- **core:** `DropdownContext` fix nested dropdowns ([#3288](https://github.com/tinkoff/taiga-ui/issues/3288))
+  ([6fca3d4](https://github.com/tinkoff/taiga-ui/commit/6fca3d43ac7d8111aaf65744beac80f0e17fd670))
+- **core:** fix overlapping prefix and value when resizing textfield
+  ([#3316](https://github.com/tinkoff/taiga-ui/issues/3316))
+  ([97999e6](https://github.com/tinkoff/taiga-ui/commit/97999e6c82987bf1453f92599564f5bf1dfa531f))
+- **kit:** `Accordion` fix incorrectly focusing item ([#3289](https://github.com/tinkoff/taiga-ui/issues/3289))
+  ([a81b132](https://github.com/tinkoff/taiga-ui/commit/a81b1321f1861afd9d2a4e1fdbd39161836f7ac6))
+- **kit:** `NativeSelect` fix readonly state ([#3347](https://github.com/tinkoff/taiga-ui/issues/3347))
+  ([ab9a266](https://github.com/tinkoff/taiga-ui/commit/ab9a266a4c2234512495050546f3d9a2b60918f5))
+- **kit:** fix reopening nested dropdown ([#3263](https://github.com/tinkoff/taiga-ui/issues/3263))
+  ([f08f1aa](https://github.com/tinkoff/taiga-ui/commit/f08f1aaa3cf5883966798909c120ea554b282bba))
+- **testing:** skip unavailable cell for calendar ([#3334](https://github.com/tinkoff/taiga-ui/issues/3334))
+  ([fe80197](https://github.com/tinkoff/taiga-ui/commit/fe80197e1fa7651a713104bcecaff1670e12b665))
+
 ## [3.14.0](https://github.com/tinkoff/taiga-ui/compare/v3.13.0...v3.14.0) (2022-12-19)
 
 ### Features
