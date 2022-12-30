@@ -120,7 +120,7 @@ export class TuiAccordionItemComponent
     }
 
     onItemKeyDownEsc(event: Event): void {
-        if (!this.focused || !this.open) {
+        if (!this.open) {
             return;
         }
 

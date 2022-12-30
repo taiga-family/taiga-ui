@@ -212,16 +212,6 @@ describe(`Accordion`, () => {
         expect(await accordionItem.hasArrow()).toBe(false);
     });
 
-    it(`Pressing esc closes the content`, async () => {
-        const accordionItem = await accordion.getHarness(TuiAccordionItemHarness);
-
-        await accordionItem.clickHeader();
-        await accordionItem.focus();
-        await accordionItem.sendEscKey();
-
-        expect(await accordionItem.getContent()).toBeNull();
-    });
-
     describe(`Multi-section`, () => {
         beforeEach(async () => {
             accordion = await loader.getHarness(
