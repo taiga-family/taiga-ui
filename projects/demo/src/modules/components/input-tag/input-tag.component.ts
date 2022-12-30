@@ -70,6 +70,12 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
         HTML: import('./examples/7/index.html?raw'),
     };
 
+    readonly example8: TuiDocExample = {
+        TypeScript: import('./examples/8/index.ts?raw'),
+        HTML: import('./examples/8/index.html?raw'),
+        LESS: import('./examples/8/index.less?raw'),
+    };
+
     readonly control = new FormControl(
         ['John Cleese', 'Eric Idle', 'Michael Palin'],
         Validators.required,
@@ -98,6 +104,8 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
     override maxLength: number | null = null;
 
     search = '';
+
+    rows = 100;
 
     override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 

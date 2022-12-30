@@ -66,6 +66,17 @@ import {filter, map, mapTo, switchMap, takeUntil} from 'rxjs/operators';
 import {TUI_INPUT_TAG_OPTIONS, TuiInputTagOptions} from './input-tag-options';
 
 const EVENT_Y_TO_X_COEFFICIENT = 3;
+const TAG_SIZE_REM = {
+    s: 1.25,
+    m: 1.5,
+    l: 2,
+};
+const LINE_HEIGHT_REM = {
+    s: 1,
+    m: 1.25,
+    l: 1.25,
+};
+const TAG_VERTICAL_SPACE_REM = 0.125;
 
 @Component({
     selector: 'tui-input-tag',
@@ -122,10 +133,14 @@ export class TuiInputTagComponent
     @tuiDefaultProp()
     tagValidator: TuiBooleanHandler<string> = ALWAYS_TRUE_HANDLER;
 
+    // TODO: 4.0 Consider removing and use rows = 1 instead
     @Input()
     @HostBinding('class._expandable')
     @tuiDefaultProp()
     expandable = true;
+
+    @Input()
+    rows = Infinity;
 
     @Input()
     @tuiDefaultProp()
@@ -289,6 +304,10 @@ export class TuiInputTagComponent
 
     get canOpen(): boolean {
         return this.interactive && !!this.datalist;
+    }
+
+    get computeMaxHeight(): number | null {
+        return this.expandable ? this.rows * this.lineHeight : null;
     }
 
     getLeftContent(tag: string): PolymorpheusContent {
@@ -488,7 +507,13 @@ export class TuiInputTagComponent
 
         merge(wheel$, start$, end$)
             .pipe(
-                switchMap(left => this.tuiScrollService.scroll$(nativeElement, 0, left)),
+                switchMap(left =>
+                    this.tuiScrollService.scroll$(
+                        nativeElement,
+                        nativeElement.scrollHeight,
+                        left,
+                    ),
+                ),
                 takeUntil(this.destroy$),
             )
             .subscribe();
@@ -536,5 +561,11 @@ export class TuiInputTagComponent
 
     private clippedValue(value: string): string {
         return value.slice(0, this.maxLength || value.length);
+    }
+
+    private get lineHeight(): number {
+        return this.labelOutside
+            ? TAG_SIZE_REM[this.controller.size] + 2 * TAG_VERTICAL_SPACE_REM
+            : LINE_HEIGHT_REM[this.controller.size];
     }
 }

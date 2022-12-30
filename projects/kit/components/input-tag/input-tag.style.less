@@ -28,13 +28,14 @@
 
 .t-scrollbar {
     margin: 0 -0.25rem;
-    padding: 0 0.25rem;
 }
 
 .t-tags {
     display: flex;
-    align-items: center;
-    box-sizing: border-box;
+    padding-left: 0.25rem;
+    padding-inline-start: 0.25rem;
+    padding-right: 0.5rem;
+    padding-inline-end: 0.5rem;
 
     :host._expandable & {
         flex-wrap: wrap;
@@ -43,29 +44,6 @@
 
     :host._readonly & {
         pointer-events: none;
-    }
-
-    :host[data-size='s'] & {
-        min-height: var(--tui-height-s);
-        padding: 0.25rem 0.25rem 0.25rem 0;
-    }
-
-    :host[data-size='m'] & {
-        min-height: var(--tui-height-m);
-        padding: 0.5rem 0.25rem 0.5rem 0;
-    }
-
-    :host[data-size='l'] & {
-        min-height: var(--tui-height-l);
-        padding: 0.625rem 0.25rem 0.625rem 0;
-    }
-
-    :host[data-size='m']:not(._label-outside) & {
-        padding: 1.1875rem 1rem 0 0;
-    }
-
-    :host[data-size='l']:not(._label-outside) & {
-        padding: 1.6875rem 1rem 0.5625rem 0;
     }
 
     :host[data-size] {
@@ -134,7 +112,32 @@
 
 .t-wrapper {
     position: relative;
+    display: flex;
+    align-items: center;
     padding: 0;
+    box-sizing: border-box;
+
+    :host[data-size='s'] & {
+        min-height: var(--tui-height-s);
+        padding: 0.25rem 0;
+    }
+
+    :host[data-size='m'] & {
+        min-height: var(--tui-height-m);
+        padding: 0.5rem 0;
+    }
+
+    :host[data-size='l'] & {
+        padding: 0.625rem 0;
+    }
+
+    :host[data-size='m']:not(._label-outside) & {
+        padding: 1.1875rem 0 0;
+    }
+
+    :host[data-size='l']:not(._label-outside) & {
+        padding: 1.6875rem 0 0.5625rem;
+    }
 }
 
 .t-tag {
