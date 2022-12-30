@@ -17,10 +17,6 @@
     position: relative;
     border-radius: inherit;
 
-    &:focus {
-        outline: none;
-    }
-
     &:after {
         .fullsize();
         content: '';
@@ -73,8 +69,10 @@
 }
 
 .t-header {
+    .clearbtn();
     .transition(background);
     display: flex;
+    width: 100%;
     font: var(--tui-font-text-l);
     align-items: center;
     box-sizing: border-box;
@@ -83,6 +81,8 @@
     padding: 0.75rem 1.25rem;
     color: var(--tui-text-01);
     cursor: pointer;
+    text-align: left;
+    outline: none;
 
     :host[data-mode='onDark'] & {
         color: var(--tui-text-01-night);

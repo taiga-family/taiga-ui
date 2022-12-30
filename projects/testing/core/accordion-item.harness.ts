@@ -6,7 +6,7 @@ import {TuiSvgHarness} from './svg.harness';
 export class TuiAccordionItemHarness extends TuiContentContainerComponentHarness {
     static hostSelector = `tui-accordion-item`;
 
-    private readonly wrapper = this.locatorFor(`.t-wrapper`);
+    private readonly header = this.locatorFor(`.t-header`);
 
     async getTitle(): Promise<string> {
         return (await this.locatorFor(`.t-title`)()).text();
@@ -33,18 +33,10 @@ export class TuiAccordionItemHarness extends TuiContentContainerComponentHarness
     }
 
     async focus(): Promise<void> {
-        return (await this.wrapper()).focus();
-    }
-
-    async sendSpaceKey(): Promise<void> {
-        return (await this.wrapper()).sendKeys(` `);
+        return (await this.header()).focus();
     }
 
     async sendEscKey(): Promise<void> {
-        return (await this.wrapper()).sendKeys(TestKey.ESCAPE);
-    }
-
-    async sendEnterKey(): Promise<void> {
-        return (await this.wrapper()).sendKeys(TestKey.ENTER);
+        return (await this.header()).sendKeys(TestKey.ESCAPE);
     }
 }

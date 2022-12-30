@@ -212,49 +212,6 @@ describe(`Accordion`, () => {
         expect(await accordionItem.hasArrow()).toBe(false);
     });
 
-    describe(`Keyboard control`, () => {
-        let accordionItem: TuiAccordionItemHarness;
-
-        beforeEach(async () => {
-            accordionItem = await accordion.getHarness(TuiAccordionItemHarness);
-            await accordionItem.focus();
-        });
-
-        it(`Pressing space opens content`, async () => {
-            await accordionItem.sendSpaceKey();
-            expect(await accordionItem.getContent()).not.toBeNull();
-        });
-
-        it(`Pressing space again closes the content`, async () => {
-            await parallel(() => [
-                accordionItem.sendSpaceKey(),
-                accordionItem.sendSpaceKey(),
-            ]);
-            expect(await accordionItem.getContent()).toBeNull();
-        });
-
-        it(`Pressing enter opens content`, async () => {
-            await accordionItem.sendEnterKey();
-            expect(await accordionItem.getContent()).not.toBeNull();
-        });
-
-        it(`Pressing enter again closes the content`, async () => {
-            await parallel(() => [
-                accordionItem.sendEnterKey(),
-                accordionItem.sendEnterKey(),
-            ]);
-            expect(await accordionItem.getContent()).toBeNull();
-        });
-
-        it(`Pressing esc closes the content`, async () => {
-            await parallel(() => [
-                accordionItem.sendSpaceKey(),
-                accordionItem.sendEscKey(),
-            ]);
-            expect(await accordionItem.getContent()).toBeNull();
-        });
-    });
-
     describe(`Multi-section`, () => {
         beforeEach(async () => {
             accordion = await loader.getHarness(

@@ -120,21 +120,12 @@ export class TuiAccordionItemComponent
     }
 
     onItemKeyDownEsc(event: Event): void {
-        if (!this.focused || !this.open) {
+        if (!this.open) {
             return;
         }
 
         event.stopPropagation();
         this.updateOpen(false);
-    }
-
-    onItemKeyDownSpace(event: Event): void {
-        if (!this.focused) {
-            return;
-        }
-
-        event.preventDefault();
-        this.onRowToggle();
     }
 
     close(): void {

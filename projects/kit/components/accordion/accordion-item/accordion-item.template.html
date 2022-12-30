@@ -1,27 +1,26 @@
 <div
-    #focusableElement
     automation-id="tui-accordion__item-wrapper"
     class="t-wrapper"
-    [tuiFocusable]="computedFocusable"
-    (tuiFocusVisibleChange)="onFocusVisible($event)"
-    (tuiFocusedChange)="onFocused($event)"
-    (keydown.space)="onItemKeyDownSpace($event)"
-    (keydown.enter)="onItemKeyDownSpace($event)"
-    (keydown.esc)="onItemKeyDownEsc($event)"
 >
-    <div
+    <button
+        #focusableElement
         automation-id="tui-accordion__item-header"
         class="t-header"
+        [disabled]="computedDisabled"
         [class.t-header_open]="open"
         [class.t-header_hoverable]="!disableHover"
+        [tuiFocusable]="computedFocusable"
+        (tuiFocusVisibleChange)="onFocusVisible($event)"
+        (tuiFocusedChange)="onFocused($event)"
+        (keydown.esc)="onItemKeyDownEsc($event)"
         (click)="onRowToggle()"
     >
-        <div
+        <span
             automation-id="tui-accordion__item-title"
             class="t-title"
         >
             <ng-content></ng-content>
-        </div>
+        </span>
         <tui-svg
             *ngIf="showArrow"
             automation-id="tui-accordion__item-arrow"
@@ -29,7 +28,7 @@
             class="t-icon"
             [class.t-icon_open]="open"
         ></tui-svg>
-    </div>
+    </button>
     <tui-expand
         [async]="async"
         [expanded]="open"
