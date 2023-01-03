@@ -286,6 +286,15 @@ export const ROUTES = [
         },
     },
     {
+        path: `components/data-list-wrapper`,
+        loadChildren: async () =>
+            (await import(`../components/data-list-wrapper/data-list-wrapper.module`))
+                .ExampleTuiDataListWrapperModule,
+        data: {
+            title: `DataListWrapper`,
+        },
+    },
+    {
         path: `components/dialog`,
         loadChildren: async () =>
             (await import(`../components/dialog/dialog.module`)).ExampleTuiDialogModule,

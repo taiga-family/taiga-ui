@@ -278,6 +278,14 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Components`,
+                title: `DataListWrapper`,
+                keywords:
+                    `контекст, выпадашка, дропдаун, меню, Context, ContextMenu, option,` +
+                    `optGroup, опции, tuiOption, варианты, dropdown, menu`,
+                route: `/components/data-list-wrapper`,
+            },
+            {
+                section: $localize`Components`,
                 title: `HostedDropdown`,
                 keywords: `dropdown, контекст, выпадашка, дропдаун, меню, menu`,
                 route: `/components/hosted-dropdown`,
