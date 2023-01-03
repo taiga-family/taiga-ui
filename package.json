@@ -106,7 +106,7 @@
         "find-in-files": "~0.5.0",
         "firebase-tools": "^9.23.3",
         "http-server": "^0.13.0",
-        "husky": "^8.0.2",
+        "husky": "^8.0.3",
         "kill-port": "^2.0.1",
         "lint-staged": "^8.2.1",
         "ng-packagr": "^12.2.7",
