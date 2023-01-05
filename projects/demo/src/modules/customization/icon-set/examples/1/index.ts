@@ -13,7 +13,7 @@ const MAPPER: Record<string, string> = {
 
 // This assumes that icons were properly processed
 export function iconsPath(name: string): string {
-    return `assets/icons/${MAPPER[name]}.svg#${MAPPER[name]}`;
+    return `assets/icons/${MAPPER[name]}.svg#${name}`;
 }
 
 @Component({
