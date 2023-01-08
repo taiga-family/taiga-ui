@@ -110,7 +110,7 @@
         "kill-port": "^2.0.1",
         "lint-staged": "^8.2.1",
         "ng-packagr": "^12.2.7",
-        "postcss": "^8.4.20",
+        "postcss": "^8.4.21",
         "prettier": "~2.8.2",
         "rollup": "~2.79.1",
         "standard-version": "^8.0.2",
