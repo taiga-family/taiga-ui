@@ -5,14 +5,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 
 @Component({
-    selector: `tui-pdf-viewer-example-3`,
-    templateUrl: `index.html`,
-    styleUrls: [`index.less`],
+    selector: 'tui-pdf-viewer-example-3',
+    templateUrl: 'index.html',
+    styleUrls: ['index.less'],
     changeDetection,
     encapsulation,
 })
 export class TuiPdfViewerExample3 {
-    private readonly pdf = `assets/media/taiga.pdf`;
+    private readonly pdf = 'assets/media/taiga.pdf';
 
     open = false;
 

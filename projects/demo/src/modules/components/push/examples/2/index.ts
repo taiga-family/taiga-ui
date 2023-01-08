@@ -6,8 +6,8 @@ import {TuiPushService} from '@taiga-ui/kit';
 import {switchMap, take} from 'rxjs/operators';
 
 @Component({
-    selector: `tui-push-example-2`,
-    templateUrl: `./index.html`,
+    selector: 'tui-push-example-2',
+    templateUrl: './index.html',
     changeDetection,
     encapsulation,
 })
@@ -19,11 +19,11 @@ export class TuiPushExample2 {
 
     onClick(): void {
         this.push
-            .open(`This is heavy!`, {
-                heading: `Great Scott!`,
-                type: `Quote`,
-                icon: `tuiIconVideoLarge`,
-                buttons: [`Roads?`, `1.21 Gigawatts!?!`],
+            .open('This is heavy!', {
+                heading: 'Great Scott!',
+                type: 'Quote',
+                icon: 'tuiIconVideoLarge',
+                buttons: ['Roads?', '1.21 Gigawatts!?!'],
             })
             .pipe(
                 take(1),

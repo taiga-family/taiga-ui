@@ -5,9 +5,9 @@ import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {tuiFormatNumber} from '@taiga-ui/core';
 
 @Component({
-    selector: `tui-bar-chart-example-2`,
-    templateUrl: `./index.html`,
-    styleUrls: [`./index.less`],
+    selector: 'tui-bar-chart-example-2',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
@@ -17,14 +17,14 @@ export class TuiBarChartExample2 {
         [6000, 2000, 4500, 7000, 5000],
     ];
 
-    readonly labelsX = [`Jan 2021`, `Feb`, `Mar`];
-    readonly labelsY = [`0`, `10 000`];
-    readonly appearances = [`onDark`, `error`];
+    readonly labelsX = ['Jan 2021', 'Feb', 'Mar'];
+    readonly labelsY = ['0', '10 000'];
+    readonly appearances = ['onDark', 'error'];
 
-    appearance = `onDark`;
+    appearance = 'onDark';
 
     readonly hint = ({$implicit}: TuiContextWithImplicit<number>): string =>
         this.value
-            .reduce((result, set) => `${result}$${tuiFormatNumber(set[$implicit])}\n`, ``)
+            .reduce((result, set) => `${result}$${tuiFormatNumber(set[$implicit])}\n`, '')
             .trim();
 }

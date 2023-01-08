@@ -4,9 +4,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 
 @Component({
-    selector: `tui-dropdown-example-2`,
-    templateUrl: `./index.html`,
-    styleUrls: [`./index.less`],
+    selector: 'tui-dropdown-example-2',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })

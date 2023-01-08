@@ -4,13 +4,13 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
 import {TuiMarkerHandler} from '@taiga-ui/core';
 
-const TWO_DOTS: [string, string] = [`var(--tui-primary)`, `var(--tui-info-fill)`];
-const ONE_DOT: [string] = [`var(--tui-success-fill)`];
+const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
+const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 
 @Component({
-    selector: `tui-calendar-example-3`,
-    templateUrl: `./index.html`,
-    styleUrls: [`./index.less`],
+    selector: 'tui-calendar-example-3',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })

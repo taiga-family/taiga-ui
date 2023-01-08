@@ -5,8 +5,8 @@ import {TUI_IS_MOBILE_RES} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: `tui-token-example-7`,
-    templateUrl: `./index.html`,
+    selector: 'tui-token-example-7',
+    templateUrl: './index.html',
     changeDetection,
     encapsulation,
 })

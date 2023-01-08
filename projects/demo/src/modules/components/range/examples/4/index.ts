@@ -4,14 +4,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiKeySteps} from '@taiga-ui/kit';
 
 @Component({
-    selector: `tui-range-example-4`,
-    templateUrl: `./index.html`,
-    styleUrls: [`./index.less`],
+    selector: 'tui-range-example-4',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
 export class TuiRangeExample4 {
-    readonly ticksLabels = [`0`, `10K`, `100K`, `500k`, `1000K`];
+    readonly ticksLabels = ['0', '10K', '100K', '500k', '1000K'];
     readonly segments = this.ticksLabels.length - 1;
 
     // 12.5% (of total distance) per step

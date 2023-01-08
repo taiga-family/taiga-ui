@@ -5,8 +5,8 @@ import {TuiDayOfWeek} from '@taiga-ui/cdk';
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
 
 @Component({
-    selector: `tui-token-example-9`,
-    templateUrl: `./index.html`,
+    selector: 'tui-token-example-9',
+    templateUrl: './index.html',
     providers: [
         {
             provide: TUI_FIRST_DAY_OF_WEEK,
@@ -18,20 +18,20 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
 })
 export class TuiTokensExample9 {
     readonly provideFirstDayOfWeekToken = import(
-        `./provide-first-day-of-week-token.md?raw`
+        './provide-first-day-of-week-token.md?raw'
     );
 
     readonly customizableComponentsViaThisToken = [
-        {name: `Calendar`, link: `/components/calendar`, fragment: `localization`},
+        {name: 'Calendar', link: '/components/calendar', fragment: 'localization'},
         {
-            name: `CalendarRange`,
-            link: `/components/calendar-range`,
-            fragment: `localization`,
+            name: 'CalendarRange',
+            link: '/components/calendar-range',
+            fragment: 'localization',
         },
         {
-            name: `MobileCalendar`,
-            link: `/components/mobile-calendar`,
-            fragment: `localization`,
+            name: 'MobileCalendar',
+            link: '/components/mobile-calendar',
+            fragment: 'localization',
         },
     ] as const;
 }

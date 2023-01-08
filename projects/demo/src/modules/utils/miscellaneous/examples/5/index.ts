@@ -5,14 +5,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsPresent} from '@taiga-ui/cdk';
 
 @Component({
-    selector: `tui-miscellaneous-example-5`,
-    templateUrl: `./index.html`,
-    styleUrls: [`./index.less`],
+    selector: 'tui-miscellaneous-example-5',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
 export class TuiMiscellaneousExample5 {
-    readonly items = [`String`, `null`, `undefined`];
+    readonly items = ['String', 'null', 'undefined'];
 
     parametersForm = new FormGroup({
         value: new FormControl(null),
@@ -20,17 +20,17 @@ export class TuiMiscellaneousExample5 {
 
     get isPresent(): boolean {
         const {value} = this.parametersForm.value;
-        const objectedValue = this.objectifyValue(value ?? ``);
+        const objectedValue = this.objectifyValue(value ?? '');
 
         return tuiIsPresent(objectedValue);
     }
 
     private objectifyValue(value: string): string | null | undefined {
-        if (value === `null`) {
+        if (value === 'null') {
             return null;
         }
 
-        if (value === `undefined`) {
+        if (value === 'undefined') {
             return undefined;
         }
 
