@@ -59,8 +59,8 @@
     background-color: @thumb-color;
     border: none;
     border-radius: 50%;
-    height: @thumb-diameters[ @@size];
-    width: @thumb-diameters[ @@size];
+    height: @thumb-diameters[@@size];
+    width: @thumb-diameters[@@size];
 
     :not(:disabled)& {
         cursor: ew-resize;
@@ -81,7 +81,7 @@
 
 /* Vertically centers thumb on the track (webkit only) */
 .vertically-align-thumb(@size) {
-    margin-top: (@track-height / 2) - (@thumb-diameters[ @@size] / 2);
+    margin-top: (@track-height / 2) - (@thumb-diameters[@@size] / 2);
 }
 
 :host {
