@@ -1,6 +1,7 @@
 <tui-tabs [(activeItemIndex)]="activeItemIndex">
     <button
         tuiTab
+        type="button"
         (click)="onClick('Maps')"
     >
         <tui-svg
@@ -12,6 +13,7 @@
     <button
         tuiTab
         disabled
+        type="button"
         (click)="onClick('Calls')"
     >
         <tui-svg
@@ -22,6 +24,7 @@
     </button>
     <button
         tuiTab
+        type="button"
         (click)="onClick('Settings')"
     >
         <tui-svg

@@ -29,6 +29,7 @@
             tuiPreviewAction
             icon="tuiIconTrash"
             title="Delete"
+            type="button"
             (click)="delete()"
         ></button>
         <button
@@ -36,6 +37,7 @@
             tuiPreviewAction
             icon="tuiIconDownload"
             title="Download"
+            type="button"
             (click)="download()"
         ></button>
         <button
@@ -43,12 +45,13 @@
             tuiIconButton
             icon="tuiIconCloseLarge"
             title="Close"
+            type="button"
             (click)="preview.complete()"
         ></button>
 
         <img
             *polymorpheusOutlet="previewContent as src"
-            alt=""
+            alt="preview"
             [src]="src"
         />
     </tui-preview>
@@ -69,6 +72,7 @@
 
         <img
             src="https://github.com/tinkoff/ng-polymorpheus/raw/master/projects/demo/assets/logo.svg"
+            alt="logo"
             class="polymorpheus"
         />
     </div>

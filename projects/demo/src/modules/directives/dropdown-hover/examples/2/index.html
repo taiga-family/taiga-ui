@@ -2,7 +2,12 @@
     tuiTabs
     [(activeItemIndex)]="index"
 >
-    <button tuiTab>Just a tab</button>
+    <button
+        tuiTab
+        type="button"
+    >
+        Just a tab
+    </button>
     <tui-hosted-dropdown
         tuiDropdownHover
         [content]="content"
@@ -11,19 +16,40 @@
         <button
             tuiHostedDropdownHost
             tuiTab
+            type="button"
             (tui-tab-activate.stop)="(0)"
         >
             Hoverable/Clickable
         </button>
         <ng-template #content>
             <tui-data-list (click)="onClick()">
-                <button tuiOption>Option 1</button>
-                <button tuiOption>Option 2</button>
-                <button tuiOption>Option 3</button>
+                <button
+                    tuiOption
+                    type="button"
+                >
+                    Option 1
+                </button>
+                <button
+                    tuiOption
+                    type="button"
+                >
+                    Option 2
+                </button>
+                <button
+                    tuiOption
+                    type="button"
+                >
+                    Option 3
+                </button>
             </tui-data-list>
         </ng-template>
     </tui-hosted-dropdown>
-    <button tuiTab>Another tab</button>
+    <button
+        tuiTab
+        type="button"
+    >
+        Another tab
+    </button>
     <tui-hosted-dropdown
         tuiDropdownAlign="right"
         tuiDropdownHover
@@ -33,6 +59,7 @@
         <button
             tuiHostedDropdownHost
             tuiTab
+            type="button"
             (tui-tab-activate.stop)="(0)"
         >
             <tui-svg src="tuiIconSettingsLarge"></tui-svg>

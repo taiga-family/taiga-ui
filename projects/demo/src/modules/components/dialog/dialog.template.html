@@ -21,9 +21,13 @@
             class="tui-space_vertical-4"
         >
             Use
-            <code><strong>TUI_DIALOGS_CLOSE</strong></code>
+            <code>
+                <strong>TUI_DIALOGS_CLOSE</strong>
+            </code>
             token if you need to close dialog with from a stream. For example, this way you can close dialogs by logout:
-            <p><tui-doc-code [code]="dialogsCloseToken"></tui-doc-code></p>
+            <p>
+                <tui-doc-code [code]="dialogsCloseToken"></tui-doc-code>
+            </p>
         </tui-notification>
 
         <tui-notification
@@ -31,7 +35,9 @@
             class="tui-space_vertical-4"
         >
             Do not forget to add
-            <code><strong>TuiDialogModule</strong></code>
+            <code>
+                <strong>TuiDialogModule</strong>
+            </code>
             into your app.module to use dialogs (See also "Setup" for details)
         </tui-notification>
 
@@ -371,14 +377,18 @@
                 <p i18n>
                     Dialogs have experimental feature with closing them on browser backward navigation. It was achieved
                     through manipulation of
-                    <code><strong>window.history</strong></code>
+                    <code>
+                        <strong>window.history</strong>
+                    </code>
                     .
                 </p>
 
                 <p i18n>
                     The feature is disabled by default because it can cause troubles in some cases. To enable this
                     feature for your app use
-                    <code><strong>TUI_DIALOG_CLOSES_ON_BACK</strong></code>
+                    <code>
+                        <strong>TUI_DIALOG_CLOSES_ON_BACK</strong>
+                    </code>
                     token.
                 </p>
 

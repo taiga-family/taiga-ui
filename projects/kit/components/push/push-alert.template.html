@@ -20,6 +20,7 @@
     </ng-container>
     <button
         *ngIf="context.buttons.length > 1"
+        type="button"
         tuiButton
         (click)="context.$implicit.next(context.buttons[0])"
     >
@@ -28,6 +29,7 @@
     <button
         *ngIf="context.buttons.length"
         tuiLink
+        type="button"
         (click)="context.$implicit.next(context.buttons[context.buttons.length - 1])"
     >
         {{ context.buttons[context.buttons.length - 1] }}

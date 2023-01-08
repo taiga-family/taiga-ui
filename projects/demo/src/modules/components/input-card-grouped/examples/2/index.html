@@ -10,6 +10,7 @@
         >
             <button
                 tuiOption
+                type="button"
                 (click)="onClick(component)"
             >
                 <tui-svg
@@ -21,6 +22,7 @@
             <button
                 *ngFor="let item of items; let index = index"
                 tuiOption
+                type="button"
                 [value]="item"
             >
                 <tui-card

@@ -47,6 +47,7 @@
             <button
                 *ngFor="let item of countries"
                 tuiOption
+                type="button"
                 (click)="onItemClick(item)"
             >
                 <img
@@ -66,6 +67,7 @@
 
     <ng-template #countryValueContent>
         <img
+            alt="flag"
             class="t-flag"
             [alt]="countriesNames[countryIsoCode]"
             [src]="countryFlagPath"

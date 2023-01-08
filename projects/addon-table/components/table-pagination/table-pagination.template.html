@@ -11,7 +11,10 @@
             [content]="content"
             [(open)]="open"
         >
-            <button tuiLink>
+            <button
+                tuiLink
+                type="button"
+            >
                 <strong>{{ start + 1 }}–{{ end }}</strong>
             </button>
             <ng-template #content>
@@ -19,6 +22,7 @@
                     <ng-container *ngFor="let item of items">
                         <button
                             tuiOption
+                            type="button"
                             class="t-item"
                             (click)="onItem(item)"
                         >

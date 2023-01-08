@@ -26,6 +26,7 @@
             <button
                 tuiButton
                 size="m"
+                type="button"
                 appearance="whiteblock"
                 class="item"
             >
@@ -41,6 +42,7 @@
                         <button
                             *ngIf="index > lastIndex"
                             tuiOption
+                            type="button"
                             (click)="onModelChange(index)"
                         >
                             {{ item }}

@@ -25,6 +25,7 @@
             <button
                 *ngFor="let item of group; let j = index"
                 tuiOption
+                type="button"
                 (click)="onTableOption(i * 2 + j)"
             >
                 {{ item }}

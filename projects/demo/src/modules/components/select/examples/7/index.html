@@ -9,6 +9,7 @@
             <tui-opt-group>
                 <button
                     tuiOption
+                    type="button"
                     [value]="all"
                 >
                     All
@@ -19,6 +20,7 @@
                     <button
                         *ngFor="let item of bank"
                         tuiOption
+                        type="button"
                         [value]="item"
                     >
                         <label [tuiLabel]="item.name">
@@ -32,6 +34,7 @@
                     <button
                         *ngFor="let item of others"
                         tuiOption
+                        type="button"
                         [value]="item"
                     >
                         <label [tuiLabel]="item.name">
@@ -43,6 +46,7 @@
             <tui-opt-group tuiMultiSelectGroup>
                 <button
                     tuiOption
+                    type="button"
                     [value]="cash"
                 >
                     Cash

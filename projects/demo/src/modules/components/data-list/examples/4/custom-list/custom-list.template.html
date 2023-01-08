@@ -17,6 +17,7 @@
     <tui-opt-group *ngIf="!value">
         <button
             tuiOption
+            type="button"
             [value]="all"
         >
             All
@@ -24,6 +25,7 @@
         <button
             *ngFor="let item of items"
             tuiOption
+            type="button"
             [value]="item.items"
         >
             {{ item.name }} only
@@ -41,6 +43,7 @@
                 <button
                     *ngFor="let item of filtered"
                     tuiOption
+                    type="button"
                     [value]="item"
                 >
                     {{ item }}

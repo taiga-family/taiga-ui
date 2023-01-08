@@ -41,6 +41,7 @@
                     <button
                         *tuiItem
                         tuiTab
+                        type="button"
                     >
                         {{ tab }}
                     </button>
@@ -52,6 +53,7 @@
                 tuiButton
                 appearance="flat"
                 size="s"
+                type="button"
                 [showLoader]="!!(loading$ | async)"
                 (click)="edit(files)"
             >

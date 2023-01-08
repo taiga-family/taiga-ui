@@ -13,6 +13,7 @@
                 <button
                     *tuiItem
                     tuiTab
+                    type="button"
                     (click)="onClick(tab)"
                 >
                     {{ tab }}
@@ -26,6 +27,7 @@
                 >
                     <button
                         tuiTab
+                        type="button"
                         (tui-tab-activate)="stop($event)"
                     >
                         Collaborators
@@ -46,6 +48,7 @@
         <button
             *ngFor="let collaborator of collaborators"
             tuiOption
+            type="button"
             (click)="onClick(collaborator)"
         >
             {{ collaborator }}
