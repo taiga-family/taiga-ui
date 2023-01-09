@@ -4,8 +4,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiCreateDefaultDayRangePeriods} from '@taiga-ui/kit';
 
 @Component({
-    selector: `tui-calendar-range-example-3`,
-    templateUrl: `./index.html`,
+    selector: 'tui-calendar-range-example-3',
+    templateUrl: './index.html',
     changeDetection,
     encapsulation,
 })

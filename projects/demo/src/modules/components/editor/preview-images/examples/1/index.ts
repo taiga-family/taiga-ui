@@ -6,19 +6,19 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 
 @Component({
-    selector: `tui-editor-preview-images-example-1`,
-    templateUrl: `./index.html`,
-    styleUrls: [`./index.less`],
+    selector: 'tui-editor-preview-images-example-1',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     providers: [
         TuiDestroyService,
         {
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import(`@taiga-ui/addon-editor/extensions/starter-kit`).then(
+                import('@taiga-ui/addon-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
-                import(`@taiga-ui/addon-editor/extensions/image-editor`).then(
+                import('@taiga-ui/addon-editor/extensions/image-editor').then(
                     ({createImageEditorExtension}) =>
                         createImageEditorExtension(injector),
                 ),
@@ -31,11 +31,11 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
 export class TuiEditorPreviewImagesExample1 {
     readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
 
-    control = new FormControl(``);
+    control = new FormControl('');
 
     constructor() {
         this.control.patchValue(
-            `<p>Small image</p><img data-type="image-editor" src="assets/images/lumberjack.png" width="300"><p>Big image</p><img data-type="image-editor" src="assets/images/big-wallpaper.jpg" width="500">`,
+            '<p>Small image</p><img data-type="image-editor" src="assets/images/lumberjack.png" width="300"><p>Big image</p><img data-type="image-editor" src="assets/images/big-wallpaper.jpg" width="500">',
         );
     }
 }

@@ -6,8 +6,8 @@ import {TuiValidationError} from '@taiga-ui/cdk';
 import {TuiFileLike} from '@taiga-ui/kit';
 
 @Component({
-    selector: `tui-input-files-example-2`,
-    templateUrl: `./index.html`,
+    selector: 'tui-input-files-example-2',
+    templateUrl: './index.html',
     changeDetection,
     encapsulation,
 })
@@ -17,8 +17,8 @@ export class TuiInputFilesExample2 implements OnInit {
 
     ngOnInit(): void {
         this.control.statusChanges.subscribe(response => {
-            console.info(`STATUS`, response);
-            console.info(`ERRORS`, this.control.errors, `\n`);
+            console.info('STATUS', response);
+            console.info('ERRORS', this.control.errors, '\n');
         });
     }
 
@@ -44,7 +44,7 @@ export function maxFilesLength(maxLength: number): ValidatorFn {
         return value.length > maxLength
             ? {
                   maxLength: new TuiValidationError(
-                      `Error: maximum limit - 5 files for upload`,
+                      'Error: maximum limit - 5 files for upload',
                   ),
               }
             : null;

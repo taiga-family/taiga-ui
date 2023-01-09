@@ -16,11 +16,11 @@ import {
 } from '@taiga-ui/core';
 
 @Component({
-    selector: `tui-primitive-textfield-example-2`,
-    templateUrl: `./index.html`,
+    selector: 'tui-primitive-textfield-example-2',
+    templateUrl: './index.html',
     changeDetection,
     encapsulation,
-    providers: [tuiTextfieldOptionsProvider({iconCleaner: `tuiIconChevronUp`})],
+    providers: [tuiTextfieldOptionsProvider({iconCleaner: 'tuiIconChevronUp'})],
 })
 export class TuiPrimitiveTextfieldExample2 extends AbstractTuiControl<string> {
     @ViewChild(TuiPrimitiveTextfieldComponent)
@@ -55,6 +55,6 @@ export class TuiPrimitiveTextfieldExample2 extends AbstractTuiControl<string> {
     }
 
     protected getFallbackValue(): string {
-        return ``;
+        return '';
     }
 }

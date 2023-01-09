@@ -7,8 +7,8 @@ import {Observable, of, Subject, timer} from 'rxjs';
 import {finalize, map, switchMap} from 'rxjs/operators';
 
 @Component({
-    selector: `tui-input-files-example-1`,
-    templateUrl: `./index.html`,
+    selector: 'tui-input-files-example-1',
+    templateUrl: './index.html',
     changeDetection,
     encapsulation,
 })

@@ -6,8 +6,8 @@ import {TuiFormatDateService} from '@taiga-ui/core';
 import {FormatService} from './service';
 
 @Component({
-    selector: `tui-format-date-example-1`,
-    templateUrl: `./index.html`,
+    selector: 'tui-format-date-example-1',
+    templateUrl: './index.html',
     changeDetection,
     encapsulation,
     providers: [

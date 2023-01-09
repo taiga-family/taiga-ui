@@ -4,8 +4,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiTablePaginationOptionsProvider} from '@taiga-ui/addon-table';
 
 @Component({
-    selector: `tui-table-pagination-example-3`,
-    templateUrl: `./index.html`,
+    selector: 'tui-table-pagination-example-3',
+    templateUrl: './index.html',
     providers: [
         tuiTablePaginationOptionsProvider({
             showPages: false,

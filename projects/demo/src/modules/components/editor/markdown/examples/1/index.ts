@@ -8,9 +8,9 @@ import MarkdownIt from 'markdown-it';
 import {Converter} from 'showdown';
 
 @Component({
-    selector: `tui-editor-markdown-example-1`,
-    templateUrl: `./index.html`,
-    styleUrls: [`./index.less`],
+    selector: 'tui-editor-markdown-example-1',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     providers: [
         {
             provide: TUI_EDITOR_CONTENT_PROCESSOR,

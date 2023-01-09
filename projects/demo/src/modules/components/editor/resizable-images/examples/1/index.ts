@@ -13,19 +13,19 @@ import {Observable} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
 
 @Component({
-    selector: `tui-editor-resizable-editor-example-1`,
-    templateUrl: `./index.html`,
-    styleUrls: [`./index.less`],
+    selector: 'tui-editor-resizable-editor-example-1',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     providers: [
         TuiDestroyService,
         {
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import(`@taiga-ui/addon-editor/extensions/starter-kit`).then(
+                import('@taiga-ui/addon-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
-                import(`@taiga-ui/addon-editor/extensions/image-editor`).then(
+                import('@taiga-ui/addon-editor/extensions/image-editor').then(
                     ({createImageEditorExtension}) =>
                         createImageEditorExtension(injector),
                 ),
@@ -39,10 +39,10 @@ export class TuiEditorResizableEditorExample1 {
     readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
 
     base64Image$ = this.http
-        .get(`assets/images/lumberjack.png`, {responseType: `blob`})
+        .get('assets/images/lumberjack.png', {responseType: 'blob'})
         .pipe(switchMap(file => this.imageLoader(file)));
 
-    control = new FormControl(``);
+    control = new FormControl('');
 
     constructor(
         @Inject(TUI_IMAGE_LOADER)

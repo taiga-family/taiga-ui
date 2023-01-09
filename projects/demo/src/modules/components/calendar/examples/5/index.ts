@@ -5,16 +5,16 @@ import {TUI_DAY_TYPE_HANDLER} from '@taiga-ui/core';
 
 const handler: TuiHandler<TuiDay, string> = (day: TuiDay) => {
     if (day.day === 10) {
-        return `holiday`;
+        return 'holiday';
     }
 
-    return day.isWeekend ? `weekend` : `weekday`;
+    return day.isWeekend ? 'weekend' : 'weekday';
 };
 
 @Component({
-    selector: `tui-calendar-example-5`,
-    templateUrl: `./index.html`,
-    styleUrls: [`./index.less`],
+    selector: 'tui-calendar-example-5',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation: ViewEncapsulation.None,
     providers: [{provide: TUI_DAY_TYPE_HANDLER, useValue: handler}],

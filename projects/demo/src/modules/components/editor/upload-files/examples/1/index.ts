@@ -15,24 +15,24 @@ import {finalize} from 'rxjs/operators';
 import {FileIoService} from './filesio.service';
 
 @Component({
-    selector: `tui-editor-upload-files-example-1`,
-    templateUrl: `./index.html`,
-    styleUrls: [`./index.less`],
+    selector: 'tui-editor-upload-files-example-1',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import(`@taiga-ui/addon-editor/extensions/starter-kit`).then(
+                import('@taiga-ui/addon-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
-                import(`@tiptap/extension-text-style`).then(({TextStyle}) => TextStyle),
-                import(`@taiga-ui/addon-editor/extensions/link`).then(
+                import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
+                import('@taiga-ui/addon-editor/extensions/link').then(
                     ({TuiLink}) => TuiLink,
                 ),
-                import(`@taiga-ui/addon-editor/extensions/jump-anchor`).then(
+                import('@taiga-ui/addon-editor/extensions/jump-anchor').then(
                     ({TuiJumpAnchor}) => TuiJumpAnchor,
                 ),
-                import(`@taiga-ui/addon-editor/extensions/file-link`).then(
+                import('@taiga-ui/addon-editor/extensions/file-link').then(
                     ({TuiFileLink}) => TuiFileLink,
                 ),
             ],
@@ -62,7 +62,7 @@ export class TuiEditorUploadFilesExample1 {
         TuiEditorTool.Attach,
     ];
 
-    control = new FormControl(``);
+    control = new FormControl('');
 
     constructor(@Inject(FileIoService) readonly fileIoService: FileIoService) {}
 

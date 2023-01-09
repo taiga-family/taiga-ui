@@ -9,9 +9,9 @@ import {timer} from 'rxjs';
 import {mapTo} from 'rxjs/operators';
 
 @Component({
-    selector: `tui-svg-example-1`,
-    templateUrl: `./index.html`,
-    styleUrls: [`./index.less`],
+    selector: 'tui-svg-example-1',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
