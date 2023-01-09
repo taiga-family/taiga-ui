@@ -17,7 +17,6 @@
                 <button
                     *ngFor="let user of users"
                     tuiOption
-                    type="button"
                     [value]="user.toString()"
                     (click)="onSelected(user)"
                 >

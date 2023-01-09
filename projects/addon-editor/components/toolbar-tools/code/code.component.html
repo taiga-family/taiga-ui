@@ -19,7 +19,6 @@
             <button
                 *ngFor="let item of codeOptionsTexts$ | async; let index = index"
                 tuiOption
-                type="button"
                 (click)="onCode(!!index)"
             >
                 {{ item }}

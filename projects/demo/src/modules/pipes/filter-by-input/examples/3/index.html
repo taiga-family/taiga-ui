@@ -11,7 +11,6 @@
             <button
                 *ngFor="let item of items | tuiFilterByInputWith : stringify"
                 tuiOption
-                type="button"
                 [value]="item"
             >
                 {{ item.name }}

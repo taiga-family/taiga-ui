@@ -19,7 +19,6 @@
         <button
             *ngFor="let item of filterItems(textarea.nativeFocusableElement)"
             tuiOption
-            type="button"
             (click)="onClick(item.login, textarea.nativeFocusableElement)"
         >
             {{ item.name }}

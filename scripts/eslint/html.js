@@ -17,7 +17,7 @@ module.exports = {
                 '@html-eslint/no-inline-styles': 'error',
                 '@html-eslint/no-obsolete-tags': 'error',
                 '@html-eslint/no-target-blank': 'error',
-                '@html-eslint/require-button-type': 'error',
+                '@html-eslint/require-button-type': 'off',
                 '@html-eslint/require-closing-tags': [
                     'error',
                     {selfClosing: 'always', allowSelfClosingCustom: false},

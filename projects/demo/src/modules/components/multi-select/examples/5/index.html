@@ -14,7 +14,6 @@
             <button
                 *ngFor="let item of jedi"
                 tuiOption
-                type="button"
                 [value]="item"
             >
                 {{ item }}
@@ -24,7 +23,6 @@
             <button
                 *ngFor="let item of sith | tuiHideSelected"
                 tuiOption
-                type="button"
                 [value]="item"
             >
                 {{ item }}

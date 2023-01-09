@@ -33,7 +33,6 @@
                     <button
                         *ngFor="let item of menuItems"
                         tuiOption
-                        type="button"
                         (click)="printToConsole(item.title, rowInfo); dropdown.toggle(false)"
                     >
                         {{ item.title }}
@@ -47,7 +46,6 @@
                         tuiOption
                         tuiDropdownSided
                         tuiDropdownAlign="right"
-                        type="button"
                         [tuiDropdown]="nestedMenu"
                     >
                         More
@@ -58,7 +56,6 @@
                     <tui-data-list>
                         <button
                             *ngFor="let option of moreOptions"
-                            type="button"
                             tuiOption
                         >
                             {{ option }}

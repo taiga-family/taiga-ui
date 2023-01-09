@@ -12,7 +12,6 @@
             <button
                 *ngFor="let item of items"
                 tuiOption
-                type="button"
                 [value]="item.phone"
                 [disabled]="item.disabled"
                 (click)="onClick(item)"

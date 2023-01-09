@@ -11,7 +11,6 @@
             <button
                 *ngIf="!signatureVisible"
                 tuiOption
-                type="button"
                 class="link"
                 (click)="toggle()"
             >
@@ -24,7 +23,6 @@
             <button
                 *ngFor="let item of items"
                 tuiOption
-                type="button"
                 [value]="item"
             >
                 {{ item }}
