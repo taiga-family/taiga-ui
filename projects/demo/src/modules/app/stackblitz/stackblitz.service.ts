@@ -127,17 +127,10 @@ export class TuiStackblitzService implements TuiCodeEditor {
     private async getStackblitzOnlyFiles(
         additionalModules: Array<[fileName: string, parsedFile: TsFileModuleParser]> = [],
     ): Promise<Project['files']> {
-        const taigaStyles = Object.fromEntries(
-            Object.entries(
-                await AbstractTuiStackblitzResourcesLoader.getTaigaStyles(),
-            ).map(([path, content]) => [stackblitzPrefix`${path}`, prepareLess(content)]),
-        );
-
         const {stackblitzReadMe} =
             await AbstractTuiStackblitzResourcesLoader.getReadMeFiles();
 
         return {
-            ...taigaStyles,
             [stackblitzPrefix`README.md`]: stackblitzReadMe,
             [stackblitzPrefix`all-taiga-modules.ts`]: await getAllTaigaUIModulesFile(
                 additionalModules,
