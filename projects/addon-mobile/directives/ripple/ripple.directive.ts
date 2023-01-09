@@ -31,7 +31,7 @@ const TOUCH_MOVE_DELAY = 100;
 })
 export class TuiRippleDirective {
     @Input()
-    tuiRipple?: string;
+    tuiRipple?: string | '';
 
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
