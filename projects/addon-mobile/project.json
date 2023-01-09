@@ -21,14 +21,14 @@
             ]
         },
         "test": {
-            "builder": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "outputs": ["coverage/addon-mobile"],
             "options": {
                 "command": "jest --testMatch '**/projects/addon-mobile/**/*.spec.ts' jest --testMatch '**/projects/addon-mobile/**/*.spec.ts' --collect-coverage --collect-coverage-from '**/projects/addon-mobile/**/*.ts' --coverage-directory=coverage/addon-mobile"
             }
         },
         "publish": {
-            "builder": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "options": {
                 "command": "ts-node ./scripts/publish.ts --path ./dist/addon-mobile --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
             }

@@ -20,7 +20,7 @@
             ]
         },
         "build": {
-            "builder": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "outputs": ["dist/cdk"],
             "options": {
                 "parallel": false,
@@ -28,13 +28,13 @@
             }
         },
         "postbuild": {
-            "builder": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "options": {
                 "command": "tsc -p ./tsconfig.schematics.json"
             }
         },
         "test": {
-            "builder": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "outputs": ["coverage/cdk"],
             "options": {
                 "command": "jest --testMatch '**/projects/cdk/**/*.spec.ts' jest --testMatch '**/projects/cdk/**/*.spec.ts' --collect-coverage --collect-coverage-from '**/projects/cdk/**/*.ts' --coverage-directory=coverage/cdk",
@@ -49,7 +49,7 @@
             ]
         },
         "test-schematics": {
-            "builder": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "options": {
                 "parallel": false,
                 "commands": [
@@ -66,7 +66,7 @@
             ]
         },
         "publish": {
-            "builder": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "options": {
                 "command": "ts-node ./scripts/publish.ts --path ./dist/cdk --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
             }
