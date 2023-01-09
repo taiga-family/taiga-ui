@@ -18,7 +18,7 @@
     </button>
 </div>
 <p>
-    <button>A button outside of zone</button>
+    <button type="button">A button outside of zone</button>
 </p>
 <div
     class="active-zone"
@@ -41,6 +41,11 @@
 </div>
 <p>
     <input placeholder="input outside zone" />
-    <button (click)="onClick(input)">Focus input in zone</button>
+    <button
+        type="button"
+        (click)="onClick(input)"
+    >
+        Focus input in zone
+    </button>
 </p>
 <p i18n>Zone keeps active after browser tab change</p>

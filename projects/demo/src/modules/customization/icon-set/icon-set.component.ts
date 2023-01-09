@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiKitIcons} from '@taiga-ui/icons';
 
 @Component({
@@ -11,7 +12,7 @@ import {tuiKitIcons} from '@taiga-ui/icons';
 export class IconSetComponent {
     readonly exampleSanitizer = import('./examples/sanitizer/sanitizer.md?raw');
 
-    readonly example1 = {
+    readonly example1: TuiDocExample = {
         'process-icons.js': import('./examples/1/process-icons.js.md?raw'),
         'process-icons.ts': import('./examples/1/process-icons.ts.md?raw'),
         TypeScript: import('./examples/1/index.ts?raw'),

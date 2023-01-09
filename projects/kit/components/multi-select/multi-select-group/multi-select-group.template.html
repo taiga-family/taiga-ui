@@ -6,6 +6,7 @@
     <button
         *ngIf="label && !(empty$ | async)"
         tuiLink
+        type="button"
         class="t-button"
         [disabled]="!!(disabled$ | async)"
         (click)="onClick(value)"

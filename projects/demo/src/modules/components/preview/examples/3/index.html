@@ -28,6 +28,7 @@
             tuiPreviewAction
             icon="tuiIconDownload"
             title="Download"
+            type="button"
             (click)="download()"
         ></button>
 
@@ -36,6 +37,7 @@
             tuiPreviewAction
             icon="tuiIconCloseLarge"
             title="Close"
+            type="button"
             (click)="preview.complete()"
         ></button>
 
@@ -53,6 +55,7 @@
             *ngIf="imageSrc$ | async as src"
             width="512"
             height="512"
+            alt="img source"
             [src]="src"
         />
 

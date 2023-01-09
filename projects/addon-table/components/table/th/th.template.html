@@ -13,7 +13,9 @@
         [class.t-sort-icon_rotated]="isCurrent && table.direction === 1"
     ></tui-svg>
 </button>
-<ng-template #content><ng-content></ng-content></ng-template>
+<ng-template #content>
+    <ng-content></ng-content>
+</ng-template>
 <div
     *ngIf="resizable"
     class="t-bar"

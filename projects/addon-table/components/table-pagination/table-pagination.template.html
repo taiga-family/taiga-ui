@@ -11,7 +11,10 @@
             [content]="content"
             [(open)]="open"
         >
-            <button tuiLink>
+            <button
+                tuiLink
+                type="button"
+            >
                 <strong>{{ start + 1 }}–{{ end }}</strong>
             </button>
             <ng-template #content>

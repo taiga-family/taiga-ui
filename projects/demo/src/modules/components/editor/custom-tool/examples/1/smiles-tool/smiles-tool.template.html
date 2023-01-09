@@ -25,6 +25,7 @@
         >
             <button
                 *ngFor="let smile of smiles"
+                type="button"
                 class="smile"
                 [innerHTML]="smile"
                 (click)="insertSmile(smile)"

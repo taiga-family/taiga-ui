@@ -16,6 +16,7 @@
         shape="rounded"
         appearance=""
         size="s"
+        type="button"
         icon="tuiIconCloseLarge"
         class="t-close"
         [title]="closeWord$ | async"
@@ -26,6 +27,7 @@
     <!-- TODO: Polymorpheus fix type -->
     <iframe
         *polymorpheusOutlet="$any(context.content) as content; context: context"
+        title="pdf"
         class="t-iframe"
         [src]="content"
     ></iframe>

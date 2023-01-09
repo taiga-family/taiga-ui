@@ -1,11 +1,13 @@
 <button
     tuiButton
+    type="button"
     (click)="open = true"
 >
     Taiga
 </button>
 <ng-template [(tuiPdfViewer)]="open">
     <iframe
+        title="pdf"
         class="iframe"
         [src]="src"
     ></iframe>

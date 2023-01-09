@@ -47,6 +47,7 @@
     <div class="t-years-wrapper">
         <button
             *cdkVirtualFor="let index of years"
+            type="button"
             class="t-year"
             [attr.data-state]="getState(index)"
             (click)="setYear(index)"

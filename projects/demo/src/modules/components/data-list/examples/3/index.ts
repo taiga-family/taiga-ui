@@ -6,6 +6,7 @@ import {TUI_ARROW} from '@taiga-ui/kit';
 @Component({
     selector: 'tui-data-list-example-3',
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
