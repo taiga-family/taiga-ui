@@ -6,7 +6,7 @@
     "implicitDependencies": ["!testing"],
     "architect": {
         "test": {
-            "builder": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "outputs": ["coverage/i18n"],
             "options": {
                 "command": "jest --testMatch '**/projects/eslint-plugin/**/*.spec.ts'",

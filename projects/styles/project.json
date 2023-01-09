@@ -6,14 +6,14 @@
     "implicitDependencies": ["!testing"],
     "architect": {
         "build": {
-            "builder": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "outputs": ["dist/styles"],
             "options": {
                 "command": "npx cpy . '!project.json'  '../../dist/styles' --cwd=projects/styles"
             }
         },
         "publish": {
-            "builder": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "options": {
                 "command": "ts-node ./scripts/publish.ts --path ./dist/styles --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
             }
