@@ -43,7 +43,10 @@
                     [hidden]="!expandable"
                     [style.maxHeight.rem]="computeMaxHeight"
                 >
-                    <div class="t-tags">
+                    <div
+                        class="t-tags"
+                        [class.t-tags_expandable]="expandable"
+                    >
                         <ng-container *ngIf="labelOutside; else text">
                             <tui-tag
                                 *ngFor="let item of value; index as index; trackBy: trackByFn"
