@@ -7,7 +7,6 @@
         <input
             tuiTextfield
             type="email"
-            translate="no"
             autocomplete="email"
         />
     </tui-input>
@@ -54,5 +53,10 @@
     <code>autocomplete="new-password"</code>
     We could use
     <code>new-password</code>
-    , which should tell the browser, that this is like a new password and autofill is therefore not useful here.
+    which should tell the browser, that this is like a new password and autofill is therefore not useful here.
+</p>
+
+<p>
+    Another way you can use this combination of html attributes:
+    <code>&lt;input role="presentation" autocomplete="off" /&gt;</code>
 </p>
