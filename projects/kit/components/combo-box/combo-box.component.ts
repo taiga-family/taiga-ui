@@ -70,7 +70,7 @@ export class TuiComboBoxComponent<T>
     private readonly hostedDropdown?: TuiHostedDropdownComponent;
 
     @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly textfield?: TuiPrimitiveTextfieldComponent;
+    readonly hostControl?: TuiPrimitiveTextfieldComponent;
 
     @Input()
     @tuiDefaultProp()
@@ -128,7 +128,7 @@ export class TuiComboBoxComponent<T>
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
-        return this.textfield ? this.textfield.nativeFocusableElement : null;
+        return this.hostControl?.nativeFocusableElement ?? null;
     }
 
     get focused(): boolean {

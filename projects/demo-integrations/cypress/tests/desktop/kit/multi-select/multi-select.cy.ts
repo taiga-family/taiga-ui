@@ -51,27 +51,106 @@ describe(`MultiSelect`, () => {
     });
 
     describe(`API page`, () => {
-        beforeEach(() => cy.viewport(400, 812));
+        describe(`sizes`, () => {
+            beforeEach(() => cy.viewport(400, 812));
 
-        [`s`, `m`, `l`].forEach(size => {
-            it(`tuiTextfieldSize=${size}`, () => {
-                cy.tuiVisit(
-                    `components/multi-select/API?tuiMode=null&tuiTextfieldCleaner=true&tuiTextfieldSize=${size}`,
-                );
+            [`s`, `m`, `l`].forEach(size => {
+                it(`tuiTextfieldSize=${size}`, () => {
+                    cy.tuiVisit(
+                        `components/multi-select/API?tuiMode=null&tuiTextfieldCleaner=true&tuiTextfieldSize=${size}`,
+                    );
 
-                cy.getByAutomationId(`tui-multi-select__arrow`).click({force: true});
+                    cy.getByAutomationId(`tui-multi-select__arrow`).click({force: true});
 
-                [0, 1, 2, 3, 4].forEach(index => {
-                    cy.get(`tui-data-list-wrapper`)
-                        .findByAutomationId(`tui-data-list-wrapper__option`)
-                        .eq(index)
-                        .click({force: true});
+                    [0, 1, 2, 3, 4].forEach(index => {
+                        cy.get(`tui-data-list-wrapper`)
+                            .findByAutomationId(`tui-data-list-wrapper__option`)
+                            .eq(index)
+                            .click({force: true});
+                    });
+
+                    cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION).matchImageSnapshot(
+                        `02-multi-select-size-${size}`,
+                        {capture: `viewport`},
+                    );
                 });
+            });
+        });
 
-                cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION).matchImageSnapshot(
-                    `02-multi-select-size-${size}`,
-                    {capture: `viewport`},
-                );
+        describe(`Form changes by updateOn`, () => {
+            [`submit`, `blur`, `change`].forEach(type => {
+                it(`updateOn: ${type}`, () => {
+                    cy.tuiVisit(`components/multi-select/API`);
+
+                    cy.getByAutomationId(`tui-demo-button__toggle-details`)
+                        .click()
+                        .wait(100);
+
+                    cy.getByAutomationId(`tui-demo-select__expand-update-on`)
+                        .click()
+                        .wait(100);
+
+                    cy.get(`tui-data-list[role=listbox]`)
+                        .find(`button`)
+                        .contains(type)
+                        .click({force: true});
+
+                    cy.get(`#demo-content`)
+                        .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+                        .matchImageSnapshot(
+                            // initial
+                            `multi-select-update-on-${type}__1`,
+                        );
+                    cy.getByAutomationId(`tui-multi-select__arrow`).click();
+
+                    [0, 1, 2].forEach(index =>
+                        cy
+                            .get(`tui-data-list-wrapper`)
+                            .findByAutomationId(`tui-data-list-wrapper__option`)
+                            .eq(index)
+                            .click({force: true}),
+                    );
+                    cy.get(`tui-data-list-wrapper`).matchImageSnapshot(
+                        // selected-values
+                        `multi-select-update-on-${type}__2`,
+                    );
+
+                    cy.getByAutomationId(`tui-multi-select__arrow`).click({force: true});
+                    cy.get(`#demo-content`)
+                        .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+                        .matchImageSnapshot(
+                            // hide-dropdown
+                            `multi-select-update-on-${type}__3`,
+                        );
+
+                    cy.get(`#demo-content`).click({force: true});
+                    cy.get(`#demo-content`)
+                        .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+                        .matchImageSnapshot(
+                            // blur event
+                            `multi-select-update-on-${type}__4`,
+                        );
+
+                    cy.getByAutomationId(`tui-demo-button__submit-state`).click({
+                        force: true,
+                    });
+                    cy.get(`#demo-content`)
+                        .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+                        .matchImageSnapshot(
+                            // submit event
+                            `multi-select-update-on-${type}__5`,
+                        );
+
+                    cy.getByAutomationId(`tui-demo-button__reset-state`).click({
+                        force: true,
+                    });
+                    cy.get(`#demo-content`)
+                        .wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+                        .matchImageSnapshot(
+                            // reset
+                            `multi-select-update-on-${type}__6`,
+                        );
+                });
             });
         });
     });
