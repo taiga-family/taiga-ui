@@ -106,6 +106,7 @@
                     tuiButton
                     type="button"
                     size="s"
+                    automation-id="tui-demo-button__toggle-details"
                     class="t-button"
                     [iconRight]="icon"
                     (click)="toggleDetails()"
@@ -131,6 +132,7 @@
                         >
                             <tui-select
                                 tuiTextfieldSize="s"
+                                automation-id="tui-demo-select__expand-update-on"
                                 class="t-select"
                                 [ngModel]="updateOn"
                                 [ngModelOptions]="{standalone: true}"
@@ -146,6 +148,7 @@
                                 tuiButton
                                 type="reset"
                                 size="s"
+                                automation-id="tui-demo-button__reset-state"
                                 class="tui-group__auto-width-item"
                             >
                                 Reset
@@ -154,6 +157,7 @@
                                 tuiButton
                                 type="submit"
                                 size="s"
+                                automation-id="tui-demo-button__submit-state"
                                 class="tui-group__auto-width-item"
                             >
                                 Submit
