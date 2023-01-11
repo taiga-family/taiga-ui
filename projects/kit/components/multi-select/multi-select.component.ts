@@ -115,6 +115,9 @@ export class TuiMultiSelectComponent<T>
     @tuiDefaultProp()
     valueContent: TuiMultiSelectOptions<T>['valueContent'] = this.options.valueContent;
 
+    @Input()
+    rows = Infinity;
+
     @Output()
     readonly searchChange = new EventEmitter<string | null>();
 

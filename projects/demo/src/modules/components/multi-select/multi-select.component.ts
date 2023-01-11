@@ -107,6 +107,8 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
 
     expandable = true;
 
+    rows = 100;
+
     editable = true;
 
     search: string | null = '';
