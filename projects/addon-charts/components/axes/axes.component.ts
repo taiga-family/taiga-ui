@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostBinding,
+    HostListener,
     Inject,
     Input,
 } from '@angular/core';
@@ -9,7 +10,7 @@ import {TUI_ALWAYS_DASHED, TUI_ALWAYS_SOLID} from '@taiga-ui/addon-charts/consta
 import {TuiLineHandler, TuiLineType} from '@taiga-ui/addon-charts/types';
 import {CHAR_NO_BREAK_SPACE, tuiDefaultProp} from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-axes',
@@ -79,7 +80,15 @@ export class TuiAxesComponent {
         return this.axisY === 'none';
     }
 
+    readonly hovered$ = new BehaviorSubject<boolean>(false);
+
     constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
+
+    @HostListener('mouseover', ['true'])
+    @HostListener('mouseout', ['false'])
+    onHovered(hover: boolean): void {
+        this.hovered$.next(hover);
+    }
 
     get hasXLabels(): boolean {
         return !!this.axisXLabels.length;

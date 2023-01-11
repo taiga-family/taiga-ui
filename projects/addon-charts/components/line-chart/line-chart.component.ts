@@ -11,6 +11,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {LOCATION} from '@ng-web-apis/common';
+import {TuiAxesComponent} from '@taiga-ui/addon-charts/components/axes';
 import {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
 import {tuiDraw, tuiPrepareExternalUrl} from '@taiga-ui/addon-charts/utils';
 import {
@@ -27,11 +28,20 @@ import {
     TuiDriver,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
+    TuiHintService,
     TuiPoint,
+    TuiPortalItem,
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable, Subject} from 'rxjs';
-import {distinctUntilChanged} from 'rxjs/operators';
+import {EMPTY, Observable, Subject} from 'rxjs';
+import {
+    debounceTime,
+    distinctUntilChanged,
+    filter,
+    map,
+    switchMap,
+    tap,
+} from 'rxjs/operators';
 
 // TODO: find the best way for prevent cycle
 // eslint-disable-next-line import/no-cycle
@@ -99,6 +109,20 @@ export class TuiLineChartComponent {
 
     value: readonly TuiPoint[] = [];
 
+    hovered$ = this._hovered$.pipe(distinctUntilChanged(), tuiZoneOptimized(this.ngZone));
+
+    leftHoverAxes$ = this.hints$.pipe(map(values => !!values.length)).pipe(
+        switchMap(hasHints =>
+            (this.axes?.hovered$.asObservable() ?? EMPTY).pipe(
+                map(hovered => hasHints || hovered),
+            ),
+        ),
+        debounceTime(100),
+        filter(visible => !visible),
+        tap(() => this.onHovered(NaN)),
+        tuiZoneOptimized(this.ngZone),
+    );
+
     constructor(
         @Inject(TuiIdService) idService: TuiIdService,
         @Inject(NgZone) private readonly ngZone: NgZone,
@@ -110,13 +134,13 @@ export class TuiLineChartComponent {
         @Optional()
         @Inject(TuiHintOptionsDirective)
         readonly hintOptions: TuiHintOptionsDirective | null,
+        @Optional()
+        @Inject(TuiAxesComponent)
+        readonly axes: TuiAxesComponent | null,
+        @Inject(TuiHintService)
+        readonly hints$: Observable<readonly TuiPortalItem[]>,
     ) {
         this.autoIdString = idService.generate();
-    }
-
-    @tuiPure
-    get hovered$(): Observable<number> {
-        return this._hovered$.pipe(distinctUntilChanged(), tuiZoneOptimized(this.ngZone));
     }
 
     get hintContent(): PolymorpheusContent<TuiLineChartHintContext<TuiPoint>> {
