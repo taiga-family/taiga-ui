@@ -1,10 +1,11 @@
 import {
     APP_BASE_HREF,
     DOCUMENT,
+    isPlatformBrowser,
     LocationStrategy,
     PathLocationStrategy,
 } from '@angular/common';
-import {inject, Provider} from '@angular/core';
+import {inject, PLATFORM_ID, Provider} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {
     TUI_DOC_CODE_EDITOR,
@@ -37,18 +38,6 @@ import {pages} from './pages';
 import {TuiStackblitzService} from './stackblitz/stackblitz.service';
 import {exampleContentProcessor} from './utils';
 
-const TITLE_PREFIX = `Taiga UI: `;
-
-export const HIGHLIGHT_OPTIONS_VALUE = {
-    coreLibraryLoader: async () => import(`highlight.js/lib/core`),
-    lineNumbersLoader: async () => import(`highlightjs-line-numbers.js`), // Optional, only if you want the line numbers
-    languages: {
-        typescript: async () => import(`highlight.js/lib/languages/typescript`),
-        less: async () => import(`highlight.js/lib/languages/less`),
-        xml: async () => import(`highlight.js/lib/languages/xml`),
-    },
-};
-
 export const APP_PROVIDERS: Provider[] = [
     Title,
     PROMPT_PROVIDER,
@@ -59,7 +48,22 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: HIGHLIGHT_OPTIONS,
-        useValue: HIGHLIGHT_OPTIONS_VALUE,
+        useFactory: () => {
+            const isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+
+            return {
+                coreLibraryLoader: async () => import(`highlight.js/lib/core`),
+                lineNumbersLoader: async () =>
+                    // SSR ReferenceError: window is not defined
+                    isBrowser ? import(`highlightjs-line-numbers.js`) : Promise.resolve(),
+                languages: {
+                    typescript: async () =>
+                        import(`highlight.js/lib/languages/typescript`),
+                    less: async () => import(`highlight.js/lib/languages/less`),
+                    xml: async () => import(`highlight.js/lib/languages/xml`),
+                },
+            };
+        },
     },
     {
         provide: TUI_SANITIZER,
@@ -89,7 +93,7 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_DOC_TITLE,
-        useValue: TITLE_PREFIX,
+        useValue: `Taiga UI: `,
     },
     {
         provide: TUI_DOC_PAGES,
