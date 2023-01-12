@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
+    AbstractTuiMultipleControl,
     TUI_DEFAULT_IDENTITY_MATCHER,
     TuiContextWithImplicit,
     TuiIdentityMatcher,
@@ -33,7 +34,8 @@ import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 })
 export class TuiSelectOptionComponent<T> implements OnInit {
     readonly selected$ = merge(
-        this.control.valueChanges || EMPTY,
+        this.control.valueChanges ?? EMPTY,
+        this.host?.hostControl?.control?.valueChanges ?? EMPTY,
         tuiTypedFromEvent(this.elementRef.nativeElement, 'animationstart'),
     ).pipe(
         startWith(null),
@@ -45,7 +47,7 @@ export class TuiSelectOptionComponent<T> implements OnInit {
         @Inject(POLYMORPHEUS_CONTEXT)
         readonly context: TuiContextWithImplicit<TemplateRef<Record<string, unknown>>>,
         @Inject(TUI_DATA_LIST_HOST)
-        private readonly host: TuiDataListHost<T>,
+        protected readonly host: TuiDataListHost<T, AbstractTuiMultipleControl<string>>,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TuiOptionComponent) protected readonly option: TuiOptionComponent<T>,
         @Optional()

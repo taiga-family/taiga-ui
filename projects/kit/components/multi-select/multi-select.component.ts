@@ -78,7 +78,7 @@ export class TuiMultiSelectComponent<T>
     private readonly hostedDropdown?: TuiHostedDropdownComponent;
 
     @ViewChild(TuiInputTagComponent)
-    private readonly input?: TuiInputTagComponent;
+    readonly hostControl?: TuiInputTagComponent;
 
     @Input()
     @tuiDefaultProp()
@@ -158,14 +158,11 @@ export class TuiMultiSelectComponent<T>
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
-        return this.input ? this.input.nativeFocusableElement : null;
+        return this.hostControl?.nativeFocusableElement ?? null;
     }
 
     get focused(): boolean {
-        return (
-            (!!this.input && this.input.focused) ||
-            (!!this.hostedDropdown && this.hostedDropdown.focused)
-        );
+        return !!this.hostControl?.focused || !!this.hostedDropdown?.focused;
     }
 
     get computedValue(): readonly T[] {

@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {tuiIsPresent} from '@taiga-ui/cdk';
 import {TuiSizeL} from '@taiga-ui/core';
+import type {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {TuiSelectOptionComponent} from '@taiga-ui/kit/components/select-option';
 
 @Component({
@@ -22,8 +23,15 @@ export class TuiMultiSelectOptionComponent<T> extends TuiSelectOptionComponent<T
 
         return (
             tuiIsPresent(value) &&
-            tuiIsPresent(this.control.value) &&
-            this.control.value.some((item: T) => this.matcher(item, value))
+            ((this.control.value ?? []).some((item: T) => this.matcher(item, value)) ||
+                /**
+                 * @description:
+                 * if host has updateOn type in form by values as 'blur' | 'submit'
+                 * then we can't listen changes directly in this.control.value
+                 */
+                (this.host.hostControl?.control?.value ?? []).some(
+                    ({item}: TuiStringifiableItem<T>) => this.matcher(item, value),
+                ))
         );
     }
 }
