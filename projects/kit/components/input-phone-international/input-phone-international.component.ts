@@ -179,6 +179,7 @@ export class TuiInputPhoneInternationalComponent
             case TuiCountryIsoCode.GP:
             case TuiCountryIsoCode.MF:
             case TuiCountryIsoCode.MQ:
+            case TuiCountryIsoCode.NC:
             case TuiCountryIsoCode.RE:
             case TuiCountryIsoCode.YT:
                 return `${this.staticPath}${TuiCountryIsoCode.FR}.png`;
