@@ -27,3 +27,20 @@
 <ng-template #mormont>
     <div class="hint no-wrap">Jorah Mormont of House Mormont, Lord of Bear Island</div>
 </ng-template>
+
+<div
+    *ngIf="value$ | async as value; else loading"
+    class="wrapper"
+>
+    <div class="result">
+        <div class="content">
+            <tui-line-clamp
+                [content]="value"
+                [lineHeight]="20"
+                [linesLimit]="1"
+            ></tui-line-clamp>
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>Loading...</ng-template>
