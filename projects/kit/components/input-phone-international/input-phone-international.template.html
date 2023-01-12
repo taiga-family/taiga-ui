@@ -41,20 +41,20 @@
     <ng-template #dropdown>
         <tui-data-list>
             <button
-                *ngFor="let item of countries"
+                *ngFor="let isoCode of countries"
                 tuiOption
-                (click)="onItemClick(item)"
+                (click)="onItemClick(isoCode)"
             >
                 <img
                     alt=""
                     class="t-country-item-flag"
-                    [src]="getFlagPath(item)"
+                    [src]="getFlagPath(isoCode)"
                 />
                 <span class="t-country-item-name">
-                    {{ countriesNames[item] }}
+                    {{ countriesNames[isoCode] }}
                 </span>
                 <span class="t-country-item-code">
-                    {{ item | tuiMapper: isoToCountryCodeMapper }}
+                    {{ isoCode | tuiMapper: isoToCountryCodeMapper }}
                 </span>
             </button>
         </tui-data-list>

@@ -10,7 +10,7 @@
             <img
                 alt=""
                 class="t-flag"
-                [src]="getFlagPath(flags.get(name))"
+                [src]="flags.get(name) | tuiFlag"
             />
             {{ name | titlecase }}
         </button>
