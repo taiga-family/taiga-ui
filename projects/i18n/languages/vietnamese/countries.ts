@@ -142,6 +142,7 @@ export const TUI_VIETNAMESE_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string
     [TuiCountryIsoCode.MY]: `Malaysia`,
     [TuiCountryIsoCode.MZ]: `Mozambique`,
     [TuiCountryIsoCode.NA]: `Namibia`,
+    [TuiCountryIsoCode.NC]: `Nouvelle-Calédonie`,
     [TuiCountryIsoCode.NE]: `Niger`,
     [TuiCountryIsoCode.NG]: `Nigeria`,
     [TuiCountryIsoCode.NI]: `Nicaragua`,

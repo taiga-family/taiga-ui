@@ -139,6 +139,7 @@ export enum TuiCountryIsoCode {
     MY = `MY`,
     MZ = `MZ`,
     NA = `NA`,
+    NC = `NC`,
     NE = `NE`,
     NG = `NG`,
     NI = `NI`,

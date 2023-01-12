@@ -142,6 +142,7 @@ export const TUI_CHINESE_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> =
     [TuiCountryIsoCode.MY]: `墨西哥`,
     [TuiCountryIsoCode.MZ]: `马来西亚`,
     [TuiCountryIsoCode.NA]: `莫桑比克`,
+    [TuiCountryIsoCode.NC]: `新喀里多尼亞`,
     [TuiCountryIsoCode.NE]: `纳米比亚`,
     [TuiCountryIsoCode.NG]: `尼日尔`,
     [TuiCountryIsoCode.NI]: `尼日利亚`,

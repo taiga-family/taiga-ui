@@ -147,6 +147,7 @@ export const TUI_COUNTRIES_MASKS: InjectionToken<Record<TuiCountryIsoCode, strin
                 [TuiCountryIsoCode.MY]: `+60(###) ###-###`,
                 [TuiCountryIsoCode.MZ]: `+258##-###-###`,
                 [TuiCountryIsoCode.NA]: `+264##-###-####`,
+                [TuiCountryIsoCode.NC]: `+687 ### ###`,
                 [TuiCountryIsoCode.NE]: `+227##-##-####`,
                 [TuiCountryIsoCode.NG]: `+234(###) ###-####`,
                 [TuiCountryIsoCode.NI]: `+505####-####`,

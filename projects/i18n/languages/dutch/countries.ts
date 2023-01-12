@@ -142,6 +142,7 @@ export const TUI_DUTCH_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> = {
     [TuiCountryIsoCode.MY]: `Maleisië`,
     [TuiCountryIsoCode.MZ]: `Mozambique`,
     [TuiCountryIsoCode.NA]: `Namibië`,
+    [TuiCountryIsoCode.NC]: `Nieuw-Caledonië`,
     [TuiCountryIsoCode.NE]: `Niger`,
     [TuiCountryIsoCode.NG]: `Nigeria`,
     [TuiCountryIsoCode.NI]: `Nicaragua`,

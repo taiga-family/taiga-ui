@@ -142,6 +142,7 @@ export const TUI_ITALIAN_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> =
     [TuiCountryIsoCode.MY]: `Malesia`,
     [TuiCountryIsoCode.MZ]: `Mozambico`,
     [TuiCountryIsoCode.NA]: `Namibia`,
+    [TuiCountryIsoCode.NC]: `Nuova Caledonia`,
     [TuiCountryIsoCode.NE]: `Niger`,
     [TuiCountryIsoCode.NG]: `Nigeria`,
     [TuiCountryIsoCode.NI]: `Nicaragua`,

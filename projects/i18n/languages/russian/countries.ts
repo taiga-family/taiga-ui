@@ -142,6 +142,7 @@ export const TUI_RUSSIAN_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> =
     [TuiCountryIsoCode.MY]: `Малайзия`,
     [TuiCountryIsoCode.MZ]: `Мозамбик`,
     [TuiCountryIsoCode.NA]: `Намибия`,
+    [TuiCountryIsoCode.NC]: `Новая Каледония`,
     [TuiCountryIsoCode.NE]: `Нигер`,
     [TuiCountryIsoCode.NG]: `Нигерия`,
     [TuiCountryIsoCode.NI]: `Никарагуа`,
