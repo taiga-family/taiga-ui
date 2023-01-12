@@ -143,14 +143,14 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
 
     @HostListener('focusin', ['$event.target'])
     onFocusIn(target: HTMLElement): void {
-        if (!this.computedHost.contains(target)) {
+        if (!this.hover$ && !this.computedHost.contains(target)) {
             this.updateOpen(false);
         }
     }
 
     @HostListener('click', ['$event.target'])
     onClick(target: HTMLElement): void {
-        if (!this.hostEditable && this.computedHost.contains(target)) {
+        if (!this.hover$ && !this.hostEditable && this.computedHost.contains(target)) {
             this.updateOpen(!this.open);
         }
     }

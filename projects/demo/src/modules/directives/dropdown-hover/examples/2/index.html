@@ -5,6 +5,7 @@
     <button tuiTab>Just a tab</button>
     <tui-hosted-dropdown
         tuiDropdownHover
+        tuiDropdownDirection="top"
         [content]="content"
         [(open)]="open"
     >
@@ -14,6 +15,10 @@
             (tui-tab-activate.stop)="(0)"
         >
             Hoverable/Clickable
+            <span
+                class="dropdown-marker"
+                [class.opened]="open"
+            ></span>
         </button>
         <ng-template #content>
             <tui-data-list (click)="onClick()">
@@ -26,6 +31,7 @@
     <button tuiTab>Another tab</button>
     <tui-hosted-dropdown
         tuiDropdownAlign="right"
+        tuiDropdownDirection="top"
         tuiDropdownHover
         [content]="settings"
         [(open)]="openSettings"
@@ -36,6 +42,10 @@
             (tui-tab-activate.stop)="(0)"
         >
             <tui-svg src="tuiIconSettingsLarge"></tui-svg>
+            <span
+                class="dropdown-marker"
+                [class.opened]="openSettings"
+            ></span>
         </button>
 
         <ng-template #settings>
