@@ -1,7 +1,7 @@
 import {DEFAULT_TIMEOUT_BEFORE_ACTION} from '@demo-integrations/support/properties/shared.entities';
 
 describe(`PieChart`, () => {
-    beforeEach(() => cy.tuiVisit(`charts/pie-chart`));
+    beforeEach(() => cy.viewport(400, 400).tuiVisit(`charts/pie-chart`));
 
     it(`should be show hints on charts`, () => {
         cy.get(`tui-doc-example[heading="With labels"]`)
@@ -15,20 +15,14 @@ describe(`PieChart`, () => {
         cy.get(`@wrapper`)
             .findByAutomationId(`tui-doc-example`)
             .findByAutomationId(`tui-pie-chart__segment`)
-            .each((segment, index) => {
-                cy.wrap(segment)
-                    .trigger(`mouseover`)
-                    .trigger(`mouseenter`)
-                    .invoke(`show`)
-                    .click() // emulate hover
-                    .wait(300); // wait animation for skip flaky tests
+            .as(`segment`);
 
-                cy.get(`@wrapper`).matchImageSnapshot(
-                    `01-pie-chart-with-label-${index + 1}`,
-                );
-
-                // unfocused pie-chart before next iteration
-                cy.get(`@wrapper`).click().wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
-            });
+        cy.get(`@segment`).each((segment, index) => {
+            cy.wrap(segment).realHover();
+            cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION).matchImageSnapshot(
+                `01-pie-chart-with-label--hover-${index + 1}`,
+                {capture: `viewport`},
+            );
+        });
     });
 });
