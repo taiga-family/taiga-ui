@@ -2,6 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
+    TUI_IS_CYPRESS,
     TuiDay,
     TuiDayLike,
     TuiDayRange,
@@ -38,6 +39,7 @@ export class TuiLineDaysChartExample1 {
 
     constructor(
         @Inject(TUI_MONTHS) private readonly months$: Observable<readonly string[]>,
+        @Inject(TUI_IS_CYPRESS) readonly isCypress: boolean,
     ) {}
 
     get value(): ReadonlyArray<[TuiDay, number]> {
@@ -68,7 +70,9 @@ export class TuiLineDaysChartExample1 {
                     ...array,
                     [
                         from.append({day: i}),
-                        (i ? array[i - 1][1] : 100) + Math.random() * 10 - 5,
+                        this.isCypress
+                            ? 100
+                            : (i ? array[i - 1][1] : 100) + Math.random() * 10 - 5,
                     ],
                 ],
                 [],

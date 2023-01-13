@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
+    TUI_IS_CYPRESS,
     TuiDay,
     TuiDayLike,
     TuiDayRange,
@@ -27,6 +28,8 @@ export class TuiLineDaysChartExample2 {
     days: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = this.computeArrays(this.data);
 
     readonly maxLength: TuiDayLike = {month: 6};
+
+    constructor(@Inject(TUI_IS_CYPRESS) readonly isCypress: boolean) {}
 
     get range(): TuiDayRange {
         return this.computeRange(this.show);
@@ -97,10 +100,14 @@ export class TuiLineDaysChartExample2 {
                     ...array,
                     [
                         from.append({day: i}),
-                        Math.max(
-                            (i ? array[i - 1][1] : initial) + Math.random() * 10 - 5,
-                            0,
-                        ),
+                        this.isCypress
+                            ? initial
+                            : Math.max(
+                                  (i ? array[i - 1][1] : initial) +
+                                      Math.random() * 10 -
+                                      5,
+                                  0,
+                              ),
                     ],
                 ],
                 [],
