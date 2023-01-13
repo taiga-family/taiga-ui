@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostBinding,
+    HostListener,
     Inject,
     Input,
     Optional,
@@ -48,7 +49,7 @@ const DUMMY: TuiPoint = [NaN, NaN];
 })
 export class TuiLineDaysChartComponent {
     @ViewChildren(TuiLineChartComponent)
-    private readonly charts: QueryList<TuiLineChartComponent> = EMPTY_QUERY;
+    readonly charts: QueryList<TuiLineChartComponent> = EMPTY_QUERY;
 
     @ViewChildren(TuiDriver)
     readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
@@ -113,6 +114,13 @@ export class TuiLineDaysChartComponent {
         @Inject(TuiLineDaysChartHintDirective)
         private readonly hintDirective: TuiLineDaysChartHintDirective | null,
     ) {}
+
+    @HostListener('mouseleave')
+    onMouseLeave(): void {
+        if (!this.hintDirective) {
+            this.onHovered(NaN);
+        }
+    }
 
     get months(): ReadonlyArray<readonly TuiPoint[]> {
         return this.value.length ? this.breakMonths(this.value) : EMPTY_ARRAY;

@@ -22,7 +22,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {combineLatest, Observable} from 'rxjs';
+import {combineLatest, merge, Observable} from 'rxjs';
 import {filter, map, takeUntil} from 'rxjs/operators';
 
 // TODO: find the best way for prevent cycle
@@ -49,7 +49,13 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
     ) {}
 
     ngAfterContentInit(): void {
-        combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
+        combineLatest([
+            merge(
+                tuiLineChartDrivers(this.charts),
+                ...this.charts.map(({charts}) => tuiLineChartDrivers(charts)),
+            ),
+            this.hovered$,
+        ])
             .pipe(
                 map(([drivers, hovered]) => !drivers && !hovered),
                 filter(Boolean),
@@ -57,7 +63,12 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
                 takeUntil(this.destroy$),
             )
             .subscribe(() => {
-                this.charts.forEach(chart => chart.onHovered(NaN));
+                this.charts.forEach(lineDaysChart => {
+                    lineDaysChart.onHovered(NaN);
+                    lineDaysChart.charts.forEach(nestedLineChart =>
+                        nestedLineChart.onHovered(NaN),
+                    );
+                });
             });
     }
 
