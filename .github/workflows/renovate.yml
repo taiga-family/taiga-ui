@@ -3,8 +3,8 @@ name: Update dependencies
 on:
   workflow_dispatch:
   schedule:
-    # At 11:00 on Tuesday (UTC+8)
-    - cron: '0 3 * * 2'
+    # every day 8am
+    - cron: '0 8 * * *'
 
 jobs:
   renovate:
