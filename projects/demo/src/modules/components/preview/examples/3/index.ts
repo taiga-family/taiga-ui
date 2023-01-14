@@ -5,7 +5,7 @@ import {TuiPreviewDialogService} from '@taiga-ui/addon-preview';
 import {tuiIsPresent} from '@taiga-ui/cdk';
 import {TuiDialogContext} from '@taiga-ui/core';
 import {BehaviorSubject, Observable, of, timer} from 'rxjs';
-import {filter, map, mapTo, startWith, switchMap} from 'rxjs/operators';
+import {filter, map, startWith, switchMap} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-preview-example-3',
@@ -63,7 +63,7 @@ export class TuiPreviewExample3 {
 
     emulateBackendRequest(): Observable<string> {
         return timer(1500).pipe(
-            mapTo('https://ng-web-apis.github.io/dist/assets/images/web-api.svg'),
+            map(() => 'https://ng-web-apis.github.io/dist/assets/images/web-api.svg'),
         );
     }
 }

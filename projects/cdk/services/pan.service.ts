@@ -2,7 +2,7 @@ import {DOCUMENT} from '@angular/common';
 import {ElementRef, Inject, Injectable} from '@angular/core';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {merge, Observable} from 'rxjs';
-import {filter, map, pairwise, repeat, switchMapTo, takeUntil} from 'rxjs/operators';
+import {filter, map, pairwise, repeat, switchMap, takeUntil} from 'rxjs/operators';
 
 @Injectable()
 export class TuiPanService extends Observable<readonly [number, number]> {
@@ -16,7 +16,7 @@ export class TuiPanService extends Observable<readonly [number, number]> {
                 tuiTypedFromEvent(nativeElement, `mousedown`),
             )
                 .pipe(
-                    switchMapTo(
+                    switchMap(() =>
                         merge(
                             tuiTypedFromEvent(documentRef, `touchmove`, {
                                 passive: true,

@@ -22,7 +22,6 @@ import {
     debounceTime,
     filter,
     map,
-    mapTo,
     shareReplay,
     switchMap,
     take,
@@ -72,7 +71,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                     const esc$ = merge(
                         tuiTypedFromEvent(element.nativeElement, 'keydown'),
                         tuiTypedFromEvent(nativeElement, 'keydown'),
-                    ).pipe(filter(({keyCode}) => keyCode === 27));
+                    ).pipe(filter(({key}) => key === 'Escape'));
 
                     return merge(mouseEnter$, esc$).pipe(
                         tap(event => {
@@ -105,9 +104,9 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                 merge(
                     ...elements.map((element, index) =>
                         tuiTypedFromEvent(element, 'keydown').pipe(
-                            filter(({keyCode}) => keyCode === 39),
+                            filter(({key}) => key === 'ArrowRight'),
                             tuiPreventDefault(),
-                            mapTo(index),
+                            map(() => index),
                         ),
                     ),
                 ),
@@ -121,7 +120,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
             switchMap(elements =>
                 merge(
                     ...elements.map((element, index) =>
-                        tuiTypedFromEvent(element, 'click').pipe(mapTo(index)),
+                        tuiTypedFromEvent(element, 'click').pipe(map(() => index)),
                     ),
                 ),
             ),

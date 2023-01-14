@@ -1,13 +1,15 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, HostListener, Inject, Input, Self} from '@angular/core';
 import {
+    ALWAYS_FALSE_HANDLER,
+    ALWAYS_TRUE_HANDLER,
     tuiCoerceBooleanProperty,
     tuiDefaultProp,
     TuiDestroyService,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {combineLatest, merge, Observable} from 'rxjs';
-import {filter, mapTo, takeUntil, tap} from 'rxjs/operators';
+import {filter, map, takeUntil, tap} from 'rxjs/operators';
 
 const SLIDER_INTERACTION_KEYS = new Set([
     'ArrowLeft',
@@ -53,9 +55,9 @@ export class TuiSliderReadonlyDirective {
         const shouldPreventMove$ = merge(
             touchStart$.pipe(
                 tap(e => this.preventEvent(e)),
-                mapTo(true),
+                map(ALWAYS_TRUE_HANDLER),
             ),
-            touchEnd$.pipe(mapTo(false)),
+            touchEnd$.pipe(map(ALWAYS_FALSE_HANDLER)),
         );
 
         /**

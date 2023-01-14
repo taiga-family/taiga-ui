@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {Router} from '@angular/router';
-import {TuiSwipeService} from '@taiga-ui/cdk';
+import {ALWAYS_FALSE_HANDLER, TuiSwipeService} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Subject} from 'rxjs';
-import {distinctUntilChanged, filter, map, mapTo, startWith} from 'rxjs/operators';
+import {distinctUntilChanged, filter, map, startWith} from 'rxjs/operators';
 
 import {TUI_DOC_MENU_TEXT} from '../../tokens/i18n';
 import {TUI_DOC_LOGO} from '../../tokens/logo';
@@ -18,7 +18,7 @@ export class TuiDocHeaderComponent {
     private readonly stream$ = new Subject<boolean>();
 
     readonly open$ = merge(
-        this.router.events.pipe(mapTo(false)),
+        this.router.events.pipe(map(ALWAYS_FALSE_HANDLER)),
         this.stream$,
         this.swipes$.pipe(
             filter(swipe => swipe.direction === 'left' || swipe.direction === 'right'),

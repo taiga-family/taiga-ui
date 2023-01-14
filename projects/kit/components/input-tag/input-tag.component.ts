@@ -61,7 +61,7 @@ import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TuiStatus} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Observable, Subject} from 'rxjs';
-import {filter, map, mapTo, switchMap, takeUntil} from 'rxjs/operators';
+import {filter, map, switchMap, takeUntil} from 'rxjs/operators';
 
 import {TUI_INPUT_TAG_OPTIONS, TuiInputTagOptions} from './input-tag-options';
 
@@ -502,7 +502,7 @@ export class TuiInputTagComponent
                 Math.max(nativeElement.scrollLeft + deltaY * EVENT_Y_TO_X_COEFFICIENT, 0),
             ),
         );
-        const start$ = this.scrollToStart$.pipe(mapTo(0));
+        const start$ = this.scrollToStart$.pipe(map(() => 0));
         const end$ = this.scrollToEnd$.pipe(map(() => nativeElement.scrollWidth));
 
         merge(wheel$, start$, end$)

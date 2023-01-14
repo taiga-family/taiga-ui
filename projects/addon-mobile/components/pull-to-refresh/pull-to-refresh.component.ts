@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, Inject, Output} from '@angular/core';
 import {TUI_IS_IOS, tuiPure} from '@taiga-ui/cdk';
 import {Observable, of} from 'rxjs';
-import {distinctUntilChanged, filter, map, mapTo} from 'rxjs/operators';
+import {distinctUntilChanged, filter, map} from 'rxjs/operators';
 
 import {
     MICRO_OFFSET,
@@ -29,7 +29,7 @@ export class TuiPullToRefreshComponent {
     readonly pulled: Observable<void> = this.pulling$.pipe(
         distinctUntilChanged(),
         filter(distance => distance === PULLED_DISTANCE),
-        mapTo(undefined),
+        map(() => undefined),
     );
 
     readonly pulledInPercent$: Observable<number> = this.pulling$.pipe(

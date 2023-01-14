@@ -13,7 +13,7 @@ import {TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {tuiGetViewportWidth} from '@taiga-ui/core/utils/dom';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, merge, Observable} from 'rxjs';
-import {filter, switchMapTo, take, takeUntil} from 'rxjs/operators';
+import {filter, switchMap, take, takeUntil} from 'rxjs/operators';
 
 export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
     `[TUI_DIALOGS_CLOSE]: A stream to close dialogs`,
@@ -69,7 +69,7 @@ export const TUI_DIALOG_PROVIDERS: Provider[] = [
                                       SCROLLBAR_PLACEHOLDER &&
                                   !tuiContainsOrAfter(nativeElement, target),
                           ),
-                          switchMapTo(
+                          switchMap(() =>
                               tuiTypedFromEvent(documentRef, `mouseup`).pipe(
                                   take(1),
                                   filter(

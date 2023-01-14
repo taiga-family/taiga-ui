@@ -161,7 +161,12 @@ export class TuiDocNavigationComponent {
     }
 
     private isActiveRoute(route: string): boolean {
-        return this.router.isActive(route, false);
+        return this.router.isActive(route, {
+            paths: 'subset',
+            queryParams: 'subset',
+            fragment: 'ignored',
+            matrixParams: 'ignored',
+        });
     }
 
     private handleAnchorLink(hash: string): void {

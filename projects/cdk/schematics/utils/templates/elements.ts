@@ -1,6 +1,6 @@
 import {ChildNode, Element, parseFragment} from 'parse5';
 
-const ALWAYS_TRUE_HANDLER = (): true => true;
+import {ALWAYS_TRUE_HANDLER} from '../../../constants';
 
 export function findElementsByFn(
     nodes: ChildNode[],

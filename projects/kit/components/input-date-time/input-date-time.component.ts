@@ -59,7 +59,7 @@ import {
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
 import {combineLatest, Observable} from 'rxjs';
-import {map, pluck} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-input-date-time',
@@ -113,7 +113,7 @@ export class TuiInputDateTimeComponent
                 changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
             ),
         ),
-        this.timeTexts$.pipe(pluck(this.timeMode)),
+        this.timeTexts$.pipe(map(texts => texts[this.timeMode])),
     ]).pipe(map(fillers => this.getDateTimeString(...fillers)));
 
     constructor(

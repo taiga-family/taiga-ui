@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {TuiTreeLoader} from '@taiga-ui/kit';
 import {Observable, timer} from 'rxjs';
-import {mapTo} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 import type {Item} from './index';
 
@@ -9,7 +9,7 @@ import type {Item} from './index';
 export class TreeLoader implements TuiTreeLoader<Item> {
     loadChildren({text}: Item): Observable<Item[]> {
         return timer(3000).pipe(
-            mapTo([
+            map(() => [
                 {text: `${text} 1`, children: Math.random() > 0.5},
                 {text: `${text} 2`, children: Math.random() > 0.5},
                 {text: `${text} 3`, children: Math.random() > 0.5},

@@ -39,7 +39,7 @@ export class TuiItemsWithMoreService extends Observable<number> {
         let total = items.reduce((sum, width) => sum + width, 0) - more;
 
         if (total <= clientWidth && this.directive.itemsLimit >= items.length) {
-            return this.max;
+            return this.maxItems;
         }
 
         for (let i = last - 1; i > 0; i--) {
@@ -49,7 +49,7 @@ export class TuiItemsWithMoreService extends Observable<number> {
                 return tuiClamp(
                     i > this.directive.required ? i - 1 : i - 2,
                     -1,
-                    this.max,
+                    this.maxItems,
                 );
             }
         }
@@ -57,7 +57,7 @@ export class TuiItemsWithMoreService extends Observable<number> {
         return -1;
     }
 
-    private get max(): number {
+    private get maxItems(): number {
         return this.directive.itemsLimit > this.directive.required
             ? this.directive.itemsLimit - 1
             : this.directive.itemsLimit - 2;

@@ -2,7 +2,7 @@ import {ElementRef, InjectionToken, Provider} from '@angular/core';
 import {TUI_LOADED} from '@taiga-ui/addon-mobile/tokens';
 import {TUI_IS_IOS, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {merge, Observable} from 'rxjs';
-import {endWith, filter, map, mapTo, scan, switchMap, takeUntil} from 'rxjs/operators';
+import {endWith, filter, map, scan, switchMap, takeUntil} from 'rxjs/operators';
 
 export const MICRO_OFFSET = 10 ** -6;
 export const PULLED_DISTANCE = 50;
@@ -35,7 +35,7 @@ export const TUI_PULL_TO_REFRESH_PROVIDERS: Provider[] = [
                         ),
                     ),
                 ),
-                loaded$.pipe(mapTo(NaN)),
+                loaded$.pipe(map(() => NaN)),
             ).pipe(
                 scan((max, current) => {
                     if (Number.isNaN(current)) {

@@ -30,7 +30,7 @@ import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Observable, of, Subject, timer} from 'rxjs';
-import {mapTo, startWith, switchMap} from 'rxjs/operators';
+import {map, startWith, switchMap} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-input-copy',
@@ -91,7 +91,7 @@ export class TuiInputCopyComponent
                     switchMap(() =>
                         merge(
                             of(this.successMessage || texts[1]),
-                            timer(3000).pipe(mapTo(texts[0])),
+                            timer(3000).pipe(map(() => texts[0])),
                         ),
                     ),
                     startWith(texts[0]),

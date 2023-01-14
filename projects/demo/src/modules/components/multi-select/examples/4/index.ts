@@ -8,7 +8,7 @@ import {
     tuiIsNumber,
 } from '@taiga-ui/cdk';
 import {Observable, Subject, timer} from 'rxjs';
-import {map, mapTo, shareReplay, startWith, switchMap} from 'rxjs/operators';
+import {map, shareReplay, startWith, switchMap} from 'rxjs/operators';
 
 const DICTIONARY = [
     {id: 1, name: 'Luke Skywalker'},
@@ -27,7 +27,7 @@ const DICTIONARY = [
 export class TuiMultiSelectExample4 {
     // Server request emulation
     private readonly server$ = timer(5000).pipe(
-        mapTo(DICTIONARY),
+        map(() => DICTIONARY),
         shareReplay({bufferSize: 1, refCount: true}),
     );
 

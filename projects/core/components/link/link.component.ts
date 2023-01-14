@@ -7,6 +7,8 @@ import {
     Input,
 } from '@angular/core';
 import {
+    ALWAYS_FALSE_HANDLER,
+    ALWAYS_TRUE_HANDLER,
     tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiDestroyService,
@@ -20,7 +22,7 @@ import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness, TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {merge, Observable} from 'rxjs';
-import {mapTo} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 // @bad TODO: Think about extending Interactive
 @Component({
@@ -67,8 +69,12 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     focusVisible = false;
 
     readonly focusedChange = merge(
-        tuiTypedFromEvent(this.elementRef.nativeElement, 'focusin').pipe(mapTo(true)),
-        tuiTypedFromEvent(this.elementRef.nativeElement, 'focusout').pipe(mapTo(false)),
+        tuiTypedFromEvent(this.elementRef.nativeElement, 'focusin').pipe(
+            map(ALWAYS_TRUE_HANDLER),
+        ),
+        tuiTypedFromEvent(this.elementRef.nativeElement, 'focusout').pipe(
+            map(ALWAYS_FALSE_HANDLER),
+        ),
     );
 
     constructor(

@@ -1,19 +1,13 @@
 import {Directive, ElementRef, Inject, Input, Renderer2, Self} from '@angular/core';
 import {
+    ALWAYS_FALSE_HANDLER,
+    ALWAYS_TRUE_HANDLER,
     TuiDestroyService,
     TuiDirectiveStylesService,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {Observable, race, timer} from 'rxjs';
-import {
-    mapTo,
-    mergeMap,
-    switchMap,
-    switchMapTo,
-    take,
-    takeUntil,
-    tap,
-} from 'rxjs/operators';
+import {map, mergeMap, switchMap, take, takeUntil, tap} from 'rxjs/operators';
 
 import {
     RIPPLE_OFF,
@@ -55,8 +49,8 @@ export class TuiRippleDirective {
                     const animationEndOn$ = tuiTypedFromEvent(ripple, 'animationend');
 
                     return race(
-                        timer(TOUCH_MOVE_DELAY).pipe(mapTo(false)),
-                        touchEnd$.pipe(mapTo(true)),
+                        timer(TOUCH_MOVE_DELAY).pipe(map(ALWAYS_FALSE_HANDLER)),
+                        touchEnd$.pipe(map(ALWAYS_TRUE_HANDLER)),
                     ).pipe(
                         take(1),
                         // eslint-disable-next-line rxjs/no-unsafe-takeuntil
@@ -72,12 +66,12 @@ export class TuiRippleDirective {
                         switchMap(isTap =>
                             isTap
                                 ? animationEndOn$
-                                : race<unknown>(
-                                      touchEnd$.pipe(switchMapTo(animationEndOn$)),
-                                      animationEndOn$.pipe(switchMapTo(touchEnd$)),
+                                : race(
+                                      touchEnd$.pipe(switchMap(() => animationEndOn$)),
+                                      animationEndOn$.pipe(switchMap(() => touchEnd$)),
                                   ),
                         ),
-                        mapTo(ripple),
+                        map(() => ripple),
                     );
                 }),
                 takeUntil(destroy$),

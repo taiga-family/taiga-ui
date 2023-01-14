@@ -14,7 +14,7 @@ import {DomSanitizer, SafeValue} from '@angular/platform-browser';
 import {tuiDefaultProp, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TuiSizeXL} from '@taiga-ui/core';
 import {merge, Observable, ReplaySubject} from 'rxjs';
-import {mapTo, startWith, switchMap, tap} from 'rxjs/operators';
+import {map, startWith, switchMap, tap} from 'rxjs/operators';
 
 // 3/4 with 1% safety offset
 const ARC = 0.76;
@@ -143,8 +143,8 @@ export class TuiArcChartComponent {
 function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<number>> {
     return arcs.map(({nativeElement}, index) =>
         merge(
-            tuiTypedFromEvent(nativeElement, 'mouseenter').pipe(mapTo(index)),
-            tuiTypedFromEvent(nativeElement, 'mouseleave').pipe(mapTo(NaN)),
+            tuiTypedFromEvent(nativeElement, 'mouseenter').pipe(map(() => index)),
+            tuiTypedFromEvent(nativeElement, 'mouseleave').pipe(map(() => NaN)),
         ),
     );
 }

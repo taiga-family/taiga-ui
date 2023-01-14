@@ -12,15 +12,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_ARROW} from '@taiga-ui/kit';
 import {BehaviorSubject, combineLatest, Observable, timer} from 'rxjs';
-import {
-    debounceTime,
-    filter,
-    map,
-    mapTo,
-    share,
-    startWith,
-    switchMap,
-} from 'rxjs/operators';
+import {debounceTime, filter, map, share, startWith, switchMap} from 'rxjs/operators';
 
 interface User {
     readonly name: string;
@@ -165,7 +157,7 @@ export class TuiTableExample4 {
             .map((user, index) => (index >= start && index < end ? user : null));
 
         // Imitating server response
-        return timer(3000).pipe(mapTo(result));
+        return timer(3000).pipe(map(() => result));
     }
 }
 

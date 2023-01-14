@@ -33,12 +33,12 @@ describe(`tuiControlValue`, () => {
     it(`throws an error if there is no valueChanges`, fakeAsync(() => {
         let actual = ``;
 
-        tuiControlValue({} as AbstractControl).subscribe(
-            () => {},
-            (err: unknown) => {
+        tuiControlValue({} as AbstractControl).subscribe({
+            next: () => {},
+            error: (err: unknown) => {
                 actual = (err as Error).message;
             },
-        );
+        });
 
         expect(actual).toBe(`Control does not have valueChanges`);
     }));

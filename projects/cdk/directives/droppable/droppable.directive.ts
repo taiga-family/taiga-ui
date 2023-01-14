@@ -7,7 +7,6 @@ import {
     distinctUntilChanged,
     filter,
     map,
-    mapTo,
     startWith,
     switchMap,
     takeUntil,
@@ -44,7 +43,10 @@ export class TuiDroppableDirective {
                         filter(event => event.target === target),
                     ),
                     tuiTypedFromEvent(nativeElement, 'drop'),
-                ).pipe(mapTo(null), startWith(dataTransfer)),
+                ).pipe(
+                    map(() => null),
+                    startWith(dataTransfer),
+                ),
             ),
             distinctUntilChanged((a, b) => (!!a && !!b) || (!a && !b)),
         );

@@ -14,7 +14,7 @@ import {first, retry, switchMap, takeUntil} from 'rxjs/operators';
     encapsulation,
 })
 export class TuiSheetExample1 {
-    readonly stream$ = new Subject();
+    readonly stream$ = new Subject<void>();
 
     constructor(
         @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
