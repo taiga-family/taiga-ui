@@ -3,8 +3,7 @@
     "version": "3.15.0",
     "description": "Utils functions for testing Taiga UI packages",
     "dependencies": {
-        "cypress-image-snapshot": "^4.0.1",
-        "tslib": "^2.0.0"
+        "cypress-image-snapshot": "^4.0.1"
     },
     "devDependencies": {
         "@types/cypress-image-snapshot": "^3.1.6",
@@ -18,5 +17,9 @@
         "jest-environment-node": "^29.1.2",
         "jest-preset-angular": "^12.2.3",
         "ts-jest": "^29.0.3"
+    },
+    "peerDependencies": {
+        "@taiga-ui/cdk": ">=3.15.0",
+        "tslib": ">=2.0.0"
     }
 }
