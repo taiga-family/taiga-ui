@@ -158,7 +158,7 @@ export const TUI_COUNTRIES_MASKS: InjectionToken<Record<TuiCountryIsoCode, strin
                 [TuiCountryIsoCode.OM]: `+968##-###-###`,
                 [TuiCountryIsoCode.PA]: `+507###-####`,
                 [TuiCountryIsoCode.PE]: `+51(###) ###-###`,
-                [TuiCountryIsoCode.PF]: `+689##-##-##`,
+                [TuiCountryIsoCode.PF]: `+689 ## ## ## ##`,
                 [TuiCountryIsoCode.PG]: `+675(###) ##-###`,
                 [TuiCountryIsoCode.PH]: `+63(###) ###-####`,
                 [TuiCountryIsoCode.PK]: `+92(###) ###-####`,
