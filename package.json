@@ -75,7 +75,6 @@
         "core-js": "^2.6.12",
         "parse5": "^6.0.1",
         "rxjs": "~6.6.3",
-        "tslib": "^2.0.0",
         "zone.js": "~0.11.4"
     },
     "devDependencies": {

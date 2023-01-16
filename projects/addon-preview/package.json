@@ -12,9 +12,6 @@
     "homepage": "https://github.com/tinkoff/taiga-ui",
     "repository": "https://github.com/tinkoff/taiga-ui",
     "license": "Apache-2.0",
-    "dependencies": {
-        "tslib": "^2.0.0"
-    },
     "peerDependencies": {
         "@angular/common": ">=12.0.0",
         "@angular/core": ">=12.0.0",
@@ -25,7 +22,8 @@
         "@taiga-ui/icons": ">=3.15.0",
         "@taiga-ui/kit": ">=3.15.0",
         "@tinkoff/ng-polymorpheus": ">=4.0.0",
-        "rxjs": ">=6.0.0"
+        "rxjs": ">=6.0.0",
+        "tslib": ">=2.0.0"
     },
     "publishConfig": {
         "access": "public"
