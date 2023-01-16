@@ -1,16 +1,14 @@
 import {NgZone} from '@angular/core';
-import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
+import {ALWAYS_FALSE_HANDLER, tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
 import {concat, merge, Observable, race, timer, zip} from 'rxjs';
 import {
     debounceTime,
     delay,
     filter,
     map,
-    mapTo,
     share,
     startWith,
     switchMap,
-    switchMapTo,
     take,
     takeUntil,
 } from 'rxjs/operators';
@@ -63,11 +61,16 @@ export function processDragged(
     const race$ = race(scroll$, timer(100)).pipe(
         debounceTime(200),
         take(1),
-        mapTo(false),
+        map(ALWAYS_FALSE_HANDLER),
     );
 
     return touchstart$.pipe(
-        switchMapTo(touchend$.pipe(switchMapTo(race$), startWith(true))),
+        switchMap(() =>
+            touchend$.pipe(
+                switchMap(() => race$),
+                startWith(true),
+            ),
+        ),
         startWith(false),
     );
 }

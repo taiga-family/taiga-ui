@@ -16,7 +16,7 @@ import {
     tuiItemsQueryListObservable,
 } from '@taiga-ui/cdk';
 import {identity, merge} from 'rxjs';
-import {filter, map, mapTo, pairwise, switchMap, takeUntil} from 'rxjs/operators';
+import {filter, map, pairwise, switchMap, takeUntil} from 'rxjs/operators';
 
 import {TuiAccordionItemComponent} from './accordion-item/accordion-item.component';
 
@@ -60,7 +60,10 @@ export class TuiAccordionComponent implements AfterContentInit {
                 switchMap(rows =>
                     merge(
                         ...rows.map(row =>
-                            row.openChange.pipe(filter(identity), mapTo(row)),
+                            row.openChange.pipe(
+                                filter(identity),
+                                map(() => row),
+                            ),
                         ),
                     ),
                 ),

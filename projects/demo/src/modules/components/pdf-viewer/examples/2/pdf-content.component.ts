@@ -2,7 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {timer} from 'rxjs';
-import {mapTo} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 @Component({
     template: `
@@ -34,7 +34,7 @@ export class PdfContent {
      * or your own service to render PDF in mobile iframe
      */
     readonly src$ = timer(3000).pipe(
-        mapTo(
+        map(() =>
             this.sanitizer.bypassSecurityTrustResourceUrl(
                 this.isMobile
                     ? `https://drive.google.com/viewerng/viewer?embedded=true&url=https://taiga-ui.dev/${this.pdf}`

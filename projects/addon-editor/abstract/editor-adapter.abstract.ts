@@ -10,7 +10,7 @@ export abstract class AbstractTuiEditor {
     abstract readonly html: string;
     abstract editable: boolean;
 
-    readonly stateChange$ = new Subject();
+    readonly stateChange$ = new Subject<void>();
     readonly valueChange$ = new Subject<string>();
 
     abstract get state(): EditorState;

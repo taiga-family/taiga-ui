@@ -25,7 +25,7 @@ import {BehaviorSubject, Observable, of, Subject, timer} from 'rxjs';
 import {
     distinctUntilChanged,
     filter,
-    mapTo,
+    map,
     pairwise,
     startWith,
     switchMap,
@@ -87,7 +87,7 @@ export class TuiLineClampComponent implements AfterViewInit {
                 ? of(next)
                 : tuiTypedFromEvent(this.elementRef.nativeElement, 'transitionend').pipe(
                       filter(tuiIsCurrentTarget),
-                      mapTo(next),
+                      map(() => next),
                   ),
         ),
     );

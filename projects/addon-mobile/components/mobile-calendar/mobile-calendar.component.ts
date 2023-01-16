@@ -38,10 +38,9 @@ import {
     debounceTime,
     delay,
     filter,
-    flatMap,
     map,
+    mergeMap,
     switchMap,
-    switchMapTo,
     take,
     takeUntil,
     windowToggle,
@@ -307,7 +306,7 @@ export class TuiMobileCalendarComponent {
             .pipe(
                 // Ignore smooth scroll resulting from click on the exact year
                 windowToggle(touchstart$, () => click$),
-                flatMap(x => x),
+                mergeMap(x => x),
                 // Delay is required to run months scroll in the next frame to prevent flicker
                 delay(0),
                 map(
@@ -332,7 +331,7 @@ export class TuiMobileCalendarComponent {
             .pipe(
                 switchMap(() => touchend$),
                 switchMap(() =>
-                    race<unknown>(
+                    race(
                         yearsScrollRef.elementScrolled(),
                         timer(SCROLL_DEBOUNCE_TIME),
                     ).pipe(
@@ -366,9 +365,9 @@ export class TuiMobileCalendarComponent {
         // Smooth scroll to the closest month after scrolling is done
         touchstart$
             .pipe(
-                switchMapTo(touchend$),
-                switchMapTo(
-                    race<unknown>(
+                switchMap(() => touchend$),
+                switchMap(() =>
+                    race(
                         monthsScrollRef.elementScrolled(),
                         timer(SCROLL_DEBOUNCE_TIME),
                     ).pipe(

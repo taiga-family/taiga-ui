@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import {TUI_PREVIEW_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import {
+    ALWAYS_FALSE_HANDLER,
     tuiClamp,
     tuiDefaultProp,
     TuiDestroyService,
@@ -21,7 +22,7 @@ import {
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {TuiLanguagePreview} from '@taiga-ui/i18n';
 import {BehaviorSubject, combineLatest, merge, Observable} from 'rxjs';
-import {map, mapTo, startWith} from 'rxjs/operators';
+import {map, startWith} from 'rxjs/operators';
 
 const INITIAL_SCALE_COEF = 0.8;
 const EMPTY_COORDINATES: [number, number] = [0, 0];
@@ -61,9 +62,9 @@ export class TuiPreviewComponent {
         ),
         tuiTypedFromEvent(this.elementRef.nativeElement, 'touchmove', {
             passive: true,
-        }).pipe(mapTo(false)),
+        }).pipe(map(ALWAYS_FALSE_HANDLER)),
         tuiTypedFromEvent(this.elementRef.nativeElement, 'wheel', {passive: true}).pipe(
-            mapTo(false),
+            map(ALWAYS_FALSE_HANDLER),
         ),
     );
 

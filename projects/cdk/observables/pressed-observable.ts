@@ -1,6 +1,7 @@
+import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiOwnerDocumentException} from '@taiga-ui/cdk/exceptions';
 import {Observable} from 'rxjs';
-import {filter, mapTo, startWith, switchMapTo, take} from 'rxjs/operators';
+import {filter, map, startWith, switchMap, take} from 'rxjs/operators';
 
 import {tuiMouseDragFinishFrom} from './mouse-drag-finish-from';
 import {tuiTypedFromEvent} from './typed-from-event';
@@ -21,9 +22,9 @@ export function tuiPressedObservable(
 
     return tuiTypedFromEvent(element, `mousedown`).pipe(
         filter(({isTrusted}) => isTrusted || !onlyTrusted),
-        switchMapTo(
+        switchMap(() =>
             tuiMouseDragFinishFrom(ownerDocument).pipe(
-                mapTo(false),
+                map(ALWAYS_FALSE_HANDLER),
                 take(1),
                 startWith(true),
             ),

@@ -1,9 +1,15 @@
 import {DOCUMENT} from '@angular/common';
 import {ElementRef, forwardRef, NgZone, Provider} from '@angular/core';
-import {TUI_IS_IOS, tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
+import {
+    ALWAYS_FALSE_HANDLER,
+    ALWAYS_TRUE_HANDLER,
+    TUI_IS_IOS,
+    tuiTypedFromEvent,
+    tuiZonefree,
+} from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core';
 import {merge, Observable} from 'rxjs';
-import {map, mapTo, share} from 'rxjs/operators';
+import {map, share} from 'rxjs/operators';
 
 import {iosScrollFactory} from '../../ios.hacks';
 import {TUI_SHEET, TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
@@ -18,9 +24,11 @@ export const TUI_SHEET_PROVIDERS: Provider[] = [
         useFactory: ({nativeElement}: ElementRef<HTMLElement>): Observable<boolean> => {
             return merge(
                 tuiTypedFromEvent(nativeElement, `touchstart`, {passive: true}).pipe(
-                    mapTo(true),
+                    map(ALWAYS_TRUE_HANDLER),
                 ),
-                tuiTypedFromEvent(nativeElement, `touchend`).pipe(mapTo(false)),
+                tuiTypedFromEvent(nativeElement, `touchend`).pipe(
+                    map(ALWAYS_FALSE_HANDLER),
+                ),
             );
         },
     },

@@ -8,7 +8,6 @@ import {
     distinctUntilChanged,
     filter,
     map,
-    mapTo,
     repeatWhen,
     share,
     startWith,
@@ -37,6 +36,11 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
                 focusout$.pipe(
                     // eslint-disable-next-line rxjs/no-unsafe-takeuntil
                     takeUntil(mousedown$),
+                    /**
+                     * TODO: replace to
+                     * repeat({delay: () => mouseup$})
+                     * in RxJS 7
+                     */
                     // eslint-disable-next-line rxjs/no-ignored-notifier
                     repeatWhen(() => mouseup$),
                     withLatestFrom(removedElement$),
@@ -60,16 +64,24 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
                     }),
                 ),
                 mousedown$.pipe(
-                    switchMap(event =>
-                        !documentRef.activeElement ||
-                        documentRef.activeElement === documentRef.body
-                            ? of(tuiGetActualTarget(event))
+                    switchMap(event => {
+                        const actualTargetInCurrentTime = tuiGetActualTarget(event);
+
+                        return !documentRef.activeElement ||
+                            documentRef.activeElement === documentRef.body
+                            ? of(actualTargetInCurrentTime)
                             : focusout$.pipe(
                                   take(1),
-                                  mapTo(tuiGetActualTarget(event)),
+                                  map(
+                                      /**
+                                       * Do not use `map(() => tuiGetActualTarget(event))`
+                                       * because we have different result in runtime
+                                       */
+                                      () => actualTargetInCurrentTime,
+                                  ),
                                   takeUntil(timer(0)),
-                              ),
-                    ),
+                              );
+                    }),
                 ),
             ).pipe(distinctUntilChanged(), share());
         },
