@@ -15,8 +15,8 @@
         "jest": "^29.3.1",
         "jest-environment-jsdom": "^29.3.1",
         "jest-environment-node": "^29.1.2",
-        "jest-preset-angular": "^12.2.3",
-        "ts-jest": "^29.0.3"
+        "jest-preset-angular": "^12.2.4",
+        "ts-jest": "^29.0.5"
     },
     "peerDependencies": {
         "@taiga-ui/cdk": ">=3.15.0",
