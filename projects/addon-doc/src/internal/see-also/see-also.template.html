@@ -3,8 +3,7 @@
     <a
         tuiLink
         [routerLink]="getRouterLink(item)"
-    >
-        {{ item }}
-    </a>
+        [innerText]="item"
+    ></a>
     <ng-container *ngIf="!last">{{ ', ' }}</ng-container>
 </ng-container>
