@@ -4,7 +4,6 @@
     .transition(box-shadow);
     position: relative;
     top: 0;
-    z-index: 20;
     height: var(--tui-height-m);
     font: var(--tui-font-text-s);
     text-align: left;
@@ -41,6 +40,10 @@
             background: rgba(237, 237, 237, 0.7);
             opacity: 0;
         }
+    }
+
+    :host-context(._stuck) & {
+        z-index: 20;
     }
 }
 

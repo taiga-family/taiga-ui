@@ -6,14 +6,16 @@
     background: transparent;
     color: var(--tui-text-01);
 
+    /* stylelint-disable meowtec/no-px */
     &:before,
     &[data-appearance='table']:after {
         position: fixed;
-        top: -1px;
+        top: -0.5px;
         left: -1px;
-        right: -1px;
+        right: -0.5px;
         bottom: -1px;
     }
+    /* stylelint-enable meowtec/no-px */
 
     &:before {
         .transition(background);
