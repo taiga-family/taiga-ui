@@ -5,7 +5,7 @@ import {getWorkspace, updateWorkspace} from '@schematics/angular/utility/workspa
 import {addPackageJsonDependency} from 'ng-morph';
 
 import {ALWAYS_FALSE_HANDLER, ALWAYS_TRUE_HANDLER} from '../../constants';
-import {tuiIsString} from '../../utils';
+import {tuiIsString} from '../../utils/miscellaneous/is-string';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
 import {TuiSchema} from '../ng-add/schema';
 import {Asset} from '../ng-update/interfaces/asset';

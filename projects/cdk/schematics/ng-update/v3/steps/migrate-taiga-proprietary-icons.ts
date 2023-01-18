@@ -2,7 +2,7 @@ import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {updateWorkspace} from '@schematics/angular/utility/workspace';
 import {getPackageJsonDependency, getSourceFiles} from 'ng-morph';
 
-import {tuiIsString} from '../../../../utils';
+import {tuiIsString} from '../../../../utils/miscellaneous/is-string';
 import {TuiSchema} from '../../../ng-add/schema';
 import {isInvalidAngularJson} from '../../../utils/angular-json-manipulations';
 import {getProjectTargetOptions} from '../../../utils/get-project-target-options';
