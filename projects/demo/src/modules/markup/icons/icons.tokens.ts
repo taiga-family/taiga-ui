@@ -15,6 +15,8 @@ export const COMMERCE: DemoTuiIcon[] = [
     `tuiIconVisa`,
 ];
 
+const DEPRECATED: DemoTuiIcon[] = [`tuiIconSortUp`, `tuiIconSortDown`];
+
 const {LARGE, NORMAL} = ensureIcons();
 
 export const ICONS: DemoTuiIconsTabs = {
@@ -22,6 +24,7 @@ export const ICONS: DemoTuiIconsTabs = {
         [`Normal interface icons / 16px`]: NORMAL,
         [`Large interface icons / 24px`]: LARGE,
         [`Payment systems`]: COMMERCE,
+        [`Deprecated ❌`]: DEPRECATED,
     },
 };
 

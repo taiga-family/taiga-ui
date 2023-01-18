@@ -69,7 +69,13 @@ export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
     }
 
     get icon(): string {
-        return this.isCurrent ? 'tuiIconSortDown' : 'tuiIconSortOff';
+        if (this.isCurrent) {
+            return this.table?.direction === 1
+                ? 'tuiIconSortDescending'
+                : 'tuiIconSortAscending';
+        }
+
+        return 'tuiIconSortOff';
     }
 
     onResized(width: number): void {

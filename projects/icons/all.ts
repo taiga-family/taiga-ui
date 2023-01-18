@@ -519,6 +519,12 @@ const tuiIconSettingsLarge =
 const tuiIconShowLarge =
     '<svg focusable="false" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><g id="tuiIconShowLarge" xmlns="http://www.w3.org/2000/svg"><svg fill="none" height="1.5em" overflow="visible" viewBox="0 0 24 24" width="1.5em" x="50%" y="50%"><svg x="-12" xmlns="http://www.w3.org/2000/svg" y="-12"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg></svg></g></svg>';
 
+const tuiIconSortAscending =
+    '<svg focusable="false" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g id="tuiIconSortAscending" xmlns="http://www.w3.org/2000/svg"><svg fill="none" height="1em" overflow="visible" viewBox="0 0 16 16" width="1em" x="50%" xmlns="http://www.w3.org/2000/svg" y="50%"><svg x="-8" y="-8"><path d="M4.1 5H12c.3 0 .5.2.5.5 0 .1 0 .2-.1.3l-3.9 4.7c-.2.2-.5.2-.7.1l-.1-.1-4-4.7c-.2-.2-.2-.5 0-.7.1-.1.3-.1.4-.1z" fill="currentColor"/></svg></svg></g></svg>';
+
+const tuiIconSortDescending =
+    '<svg focusable="false" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g id="tuiIconSortDescending" xmlns="http://www.w3.org/2000/svg"><svg fill="none" height="1em" overflow="visible" viewBox="0 0 16 16" width="1em" x="50%" xmlns="http://www.w3.org/2000/svg" y="50%"><svg x="-8" y="-8"><path d="M4.1 10.665H12c.3 0 .5-.2.5-.5 0-.1 0-.2-.1-.3l-3.9-4.7c-.2-.2-.5-.2-.7-.1l-.1.1-4 4.7c-.2.2-.2.5 0 .7.1.1.3.1.4.1z" fill="currentColor"/></svg></svg></g></svg>';
+
 const tuiIconSortDown =
     '<svg focusable="false" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g id="tuiIconSortDown" xmlns="http://www.w3.org/2000/svg"><svg fill="none" height="1em" overflow="visible" viewBox="0 0 16 16" width="1em" x="50%" xmlns="http://www.w3.org/2000/svg" y="50%"><svg x="-8" y="-8"><path d="M4.1 5H12c.3 0 .5.2.5.5 0 .1 0 .2-.1.3l-3.9 4.7c-.2.2-.5.2-.7.1l-.1-.1-4-4.7c-.2-.2-.2-.5 0-.7.1-.1.3-.1.4-.1z" fill="currentColor"/></svg></svg></g></svg>';
 
@@ -848,6 +854,8 @@ export {
     tuiIconSettings,
     tuiIconSettingsLarge,
     tuiIconShowLarge,
+    tuiIconSortAscending,
+    tuiIconSortDescending,
     tuiIconSortDown,
     tuiIconSortOff,
     tuiIconSortUp,
