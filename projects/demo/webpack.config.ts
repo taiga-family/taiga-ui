@@ -1,3 +1,4 @@
+import {tuiIsObject} from '@taiga-ui/cdk';
 import {Configuration} from 'webpack';
 import {merge} from 'webpack-merge';
 
@@ -42,7 +43,7 @@ const config: Configuration = {
 export default (ngConfigs: Configuration): Configuration => {
     const ngRules = [...(ngConfigs.module?.rules || [])].map(rule => {
         if (
-            typeof rule === `object` &&
+            tuiIsObject(rule) &&
             DONT_MUTATE_RAW_FILE_CONTENTS.some(
                 pattern => rule.test instanceof RegExp && rule.test?.test(pattern),
             )

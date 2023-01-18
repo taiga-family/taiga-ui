@@ -12,5 +12,6 @@ module.exports = {
         'no-deep-imports': require('./rules/no-deep-imports'),
         'prefer-inject-decorator': require('./rules/prefer-inject-decorator'),
         'prefer-self-destroy-service': require('./rules/prefer-self-destroy-service'),
+        'no-typeof': require('./rules/no-typeof'),
     },
 };

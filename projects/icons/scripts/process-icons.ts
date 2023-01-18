@@ -1,3 +1,5 @@
+// eslint-disable-next-line @taiga-ui/no-deep-imports
+import {tuiIsString} from '@taiga-ui/cdk/utils';
 import fs from 'fs';
 import {parse} from 'path';
 
@@ -27,13 +29,12 @@ export function processIcons(files: string[], interceptor?: ContentInterceptor):
 
         const wrapped = wrapIcon(src, name);
 
-        const final =
-            typeof wrapped === `string`
-                ? `${wrapped.replace(
-                      START,
-                      `<svg xmlns="http://www.w3.org/2000/svg"><g id="${name}" xmlns="http://www.w3.org/2000/svg"><svg`,
-                  )}</g></svg>`
-                : `<svg xmlns="http://www.w3.org/2000/svg" width="${wrapped.width}" height="${wrapped.height}">${wrapped.src}</svg>`;
+        const final = tuiIsString(wrapped)
+            ? `${wrapped.replace(
+                  START,
+                  `<svg xmlns="http://www.w3.org/2000/svg"><g id="${name}" xmlns="http://www.w3.org/2000/svg"><svg`,
+              )}</g></svg>`
+            : `<svg xmlns="http://www.w3.org/2000/svg" width="${wrapped.width}" height="${wrapped.height}">${wrapped.src}</svg>`;
 
         fs.writeFileSync(file, final);
 

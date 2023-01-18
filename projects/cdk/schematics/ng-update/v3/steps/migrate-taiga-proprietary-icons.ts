@@ -2,6 +2,7 @@ import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {updateWorkspace} from '@schematics/angular/utility/workspace';
 import {getPackageJsonDependency, getSourceFiles} from 'ng-morph';
 
+import {tuiIsString} from '../../../../utils';
 import {TuiSchema} from '../../../ng-add/schema';
 import {isInvalidAngularJson} from '../../../utils/angular-json-manipulations';
 import {getProjectTargetOptions} from '../../../utils/get-project-target-options';
@@ -73,7 +74,7 @@ export function migrateTaigaProprietaryIcons(options: TuiSchema): Rule {
                           const tdsSrc = `@taiga-ui/proprietary-tds-icons/src`;
                           const hasIcons = (targetOptions.assets as Asset[]).find(
                               asset => {
-                                  return typeof asset === `string`
+                                  return tuiIsString(asset)
                                       ? asset.includes(tdsSrc)
                                       : asset?.input?.includes(tdsSrc);
                               },

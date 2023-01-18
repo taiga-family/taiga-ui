@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-
+import {tuiIsObject, tuiIsString} from '@taiga-ui/cdk';
 import {Options} from 'cypress-image-snapshot';
 import {matchImageSnapshotCommand} from 'cypress-image-snapshot/command';
 
@@ -37,11 +37,10 @@ export function tuiAddMatchImageSnapshotCommand(
             nameOrOptions: string | (Options & TuiSnapshotCommandOptions),
             options?: Options & TuiSnapshotCommandOptions,
         ) => {
-            const name = typeof nameOrOptions === `string` ? nameOrOptions : undefined;
-            const overloadedOptions =
-                typeof nameOrOptions === `object` && !!nameOrOptions
-                    ? nameOrOptions
-                    : options;
+            const name = tuiIsString(nameOrOptions) ? nameOrOptions : undefined;
+            const overloadedOptions = tuiIsObject(nameOrOptions)
+                ? nameOrOptions
+                : options;
 
             tuiWaitAllImgInside(prevSubject, overloadedOptions?.waitAllImages ?? true);
 

@@ -1,3 +1,4 @@
+import {tuiIsString} from '../../projects/cdk';
 import {isTuiPackageName} from './is-tui-package-name';
 
 export interface TuiBumpDepsOptions {
@@ -18,7 +19,7 @@ export function bumpTuiDeps({
     const keys = Object.keys(deps).filter(key => isTuiPackageName(key, ignores));
 
     for (const key of keys) {
-        if (typeof deps[key] === `string`) {
+        if (tuiIsString(deps[key])) {
             deps[key] = isPeerDependency
                 ? (deps[key] as string)?.replace(prevVersion, newVersion)
                 : `^${newVersion}`;
