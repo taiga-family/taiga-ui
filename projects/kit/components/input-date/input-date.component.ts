@@ -230,6 +230,15 @@ export class TuiInputDateComponent
         return this.activeItem ? '' : filler;
     }
 
+    // noinspection JSUnusedGlobalSymbols
+    /**
+     * TODO: Remove in 4.0
+     * @deprecated: use {@link onIconClick} instead
+     */
+    onMobileClick(): void {
+        this.onIconClick();
+    }
+
     onIconClick(): void {
         if (!this.computedMobile || !this.mobileCalendar) {
             return;
