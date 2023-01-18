@@ -15,6 +15,7 @@ export const COMMERCE: DemoTuiIcon[] = [
     `tuiIconVisa`,
 ];
 
+// TODO: remove in 4.0
 const DEPRECATED: DemoTuiIcon[] = [`tuiIconSortUp`, `tuiIconSortDown`];
 
 const {LARGE, NORMAL} = ensureIcons();
