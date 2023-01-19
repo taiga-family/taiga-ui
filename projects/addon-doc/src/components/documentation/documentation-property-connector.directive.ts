@@ -109,10 +109,14 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
             return;
         }
 
-        const value =
+        let value =
             !!propertyValueWithSuffix && this.documentationPropertyValues
                 ? this.documentationPropertyValues[propertyValueWithSuffix as number]
                 : tuiCoerceValue(propertyValue);
+
+        if (this.documentationPropertyType === 'string' && typeof value === 'number') {
+            value = value.toString();
+        }
 
         this.onValueChange(value as T);
     }
