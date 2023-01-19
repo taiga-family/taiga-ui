@@ -19,15 +19,15 @@
         "@ng-web-apis/mutation-observer": "2.0.0",
         "@ng-web-apis/resize-observer": "2.0.0",
         "@tinkoff/ng-event-plugins": "3.1.0",
-        "@tinkoff/ng-polymorpheus": "4.0.10",
-        "tslib": "^2.0.0"
+        "@tinkoff/ng-polymorpheus": "4.0.10"
     },
     "peerDependencies": {
         "@angular/animations": ">=12.0.0",
         "@angular/common": ">=12.0.0",
         "@angular/core": ">=12.0.0",
         "@angular/forms": ">=12.0.0",
-        "rxjs": ">=6.0.0"
+        "rxjs": ">=6.0.0",
+        "tslib": ">=2.0.0"
     },
     "optionalDependencies": {
         "ng-morph": "^2.1.0",
