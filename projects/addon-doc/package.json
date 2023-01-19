@@ -35,6 +35,5 @@
         "@taiga-ui/kit": ">=3.15.0",
         "@tinkoff/ng-polymorpheus": ">=4.0.0",
         "tslib": ">=2.0.0"
-    },
-    "schematics": "./schematics/collection.json"
+    }
 }
