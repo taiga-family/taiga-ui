@@ -14,4 +14,6 @@ export class TuiRadioBlockExample2 {
     readonly testForm = new FormGroup({
         testValue: new FormControl('orange'),
     });
+
+    readonly fruits = ['apple', 'orange', 'pineapple'];
 }

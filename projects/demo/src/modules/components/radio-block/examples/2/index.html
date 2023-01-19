@@ -35,7 +35,7 @@
             item="pineapple"
             size="l"
         >
-            Pineapple
+            Pineapples
         </tui-radio-block>
     </div>
 </form>
@@ -74,7 +74,35 @@
             item="pineapple"
             size="l"
         >
-            Pinapples
+            Pineapples
+        </tui-radio-block>
+    </div>
+</form>
+<h3
+    i18n
+    class="title"
+>
+    Group without radio indicators
+</h3>
+<form
+    class="group"
+    [formGroup]="testForm"
+>
+    <div
+        tuiGroup
+        class="group"
+        [collapsed]="true"
+    >
+        <tui-radio-block
+            *ngFor="let fruit of fruits"
+            formControlName="testValue"
+            i18n
+            contentAlign="right"
+            size="l"
+            [item]="fruit"
+            [hideRadio]="true"
+        >
+            {{ fruit }}
         </tui-radio-block>
     </div>
 </form>
