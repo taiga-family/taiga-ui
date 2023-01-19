@@ -7,7 +7,7 @@ describe(`Carousel`, () => {
     });
 
     it(`padding: 0`, () => {
-        cy.tuiVisit(`components/carousel/API?style.--tui-carousel-item-padding=0`);
+        cy.tuiVisit(`components/carousel/API?style.--tui-carousel-padding=0`);
         cy.get(`#demo-content`)
             .should(`be.visible`)
             .matchImageSnapshot(`carousel-padding-0`);
