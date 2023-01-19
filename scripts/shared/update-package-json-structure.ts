@@ -1,3 +1,4 @@
+import {tuiIsObject, tuiIsString} from '../../projects/cdk';
 import {bumpTuiDeps} from './bump-tui-deps';
 import {bumpTuiVersionInPackageJson} from './bump-tui-version-in-package-json';
 import {isTuiPackageName} from './is-tui-package-name';
@@ -19,15 +20,15 @@ export function updatePackageJsonStructure({
 }: UpdatePackageJsonOptions): void {
     const {name, dependencies, peerDependencies, devDependencies, packages} = packageJson;
 
-    if (typeof name === `string` && isTuiPackageName(name, ignores)) {
+    if (tuiIsString(name) && isTuiPackageName(name, ignores)) {
         bumpTuiVersionInPackageJson(packageJson, newVersion);
     }
 
-    if (typeof dependencies === `object`) {
+    if (tuiIsObject(dependencies)) {
         bumpTuiDeps({deps: dependencies, prevVersion, newVersion, ignores});
     }
 
-    if (typeof peerDependencies === `object`) {
+    if (tuiIsObject(peerDependencies)) {
         bumpTuiDeps({
             deps: peerDependencies,
             prevVersion,
@@ -37,11 +38,11 @@ export function updatePackageJsonStructure({
         });
     }
 
-    if (typeof devDependencies === `object`) {
+    if (tuiIsObject(devDependencies)) {
         bumpTuiDeps({deps: devDependencies, prevVersion, newVersion, ignores});
     }
 
-    if (isPackageLockFile && typeof packages === `object`) {
+    if (isPackageLockFile && tuiIsObject(packages)) {
         for (const packageLockJson of Object.values(packages)) {
             if (!isTuiPackageName(packageLockJson?.name, ignores)) {
                 continue;

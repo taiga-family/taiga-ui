@@ -5,6 +5,7 @@ import {getWorkspace, updateWorkspace} from '@schematics/angular/utility/workspa
 import {addPackageJsonDependency} from 'ng-morph';
 
 import {ALWAYS_FALSE_HANDLER, ALWAYS_TRUE_HANDLER} from '../../constants';
+import {tuiIsString} from '../../utils/miscellaneous/is-string';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
 import {TuiSchema} from '../ng-add/schema';
 import {Asset} from '../ng-update/interfaces/asset';
@@ -25,7 +26,7 @@ export async function isInvalidAngularJson(tree: Tree): Promise<boolean> {
 
 function hasTaigaIcons(assets: Asset[]): boolean {
     return !!assets?.find(asset =>
-        typeof asset === `string`
+        tuiIsString(asset)
             ? asset.includes(`taiga-ui`)
             : asset?.input?.includes(`taiga-ui`),
     );
