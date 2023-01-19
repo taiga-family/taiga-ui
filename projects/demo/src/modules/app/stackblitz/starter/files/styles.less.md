@@ -9,6 +9,6 @@
 
 tui-root {
   margin: 20px;
-  font-size: 15px;
+  font-size: 16px;
 }
 ```
