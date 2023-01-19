@@ -51,12 +51,16 @@ export class TuiStepperComponent {
     @tuiDefaultProp()
     orientation: TuiOrientationT = `horizontal`;
 
-    @Input()
-    @tuiDefaultProp()
-    activeItemIndex = 0;
+    @Input(`activeItemIndex`)
+    set activeIndex(index: number) {
+        this.activeItemIndex = index;
+        this.scrollIntoView(index);
+    }
 
     @Output()
     readonly activeItemIndexChange = new EventEmitter<number>();
+
+    activeItemIndex = 0;
 
     @tuiPure
     get changes$(): Observable<unknown> {
