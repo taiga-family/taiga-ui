@@ -74,6 +74,7 @@
                 [draggable]="draggable"
                 [duration]="duration"
                 [itemsCount]="itemsCount"
+                [style.--tui-carousel-item-padding]="itemPadding"
                 [(index)]="index"
                 (touchstart.passive.stop)="(0)"
             >
@@ -128,6 +129,18 @@
                 [(documentationPropertyValue)]="index"
             >
                 Current index
+            </ng-template>
+        </tui-doc-documentation>
+        <tui-doc-documentation heading="CSS customization">
+            <ng-template
+                i18n
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                documentationPropertyName="style.--tui-carousel-item-padding"
+                [documentationPropertyValues]="itemPaddingVariants"
+                [(documentationPropertyValue)]="itemPadding"
+            >
+                Custom color
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
