@@ -70,6 +70,7 @@ export const TYPES_TO_RENAME: readonly TypeToRename[] = [
     },
     {
         from: `Country`,
+        moduleSpecifier: [`@taiga-ui/kit`],
     },
     {
         from: `NumberFormatSettings`,
