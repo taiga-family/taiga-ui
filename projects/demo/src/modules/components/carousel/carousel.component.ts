@@ -10,8 +10,10 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 })
 export class ExampleTuiCarouselComponent {
     readonly durationVariants = [0, 3000, 10000];
+    readonly itemPaddingVariants = [null, '0 10px', '0'];
     draggable = false;
     duration = this.durationVariants[0];
+    itemPadding: string | null = this.itemPaddingVariants[0];
     index = 0;
     itemsCount = 1;
 

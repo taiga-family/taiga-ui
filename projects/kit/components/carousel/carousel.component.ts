@@ -26,8 +26,8 @@ import {
 
 @Component({
     selector: 'tui-carousel',
-    templateUrl: 'carousel.template.html',
-    styleUrls: ['carousel.style.less'],
+    templateUrl: './carousel.template.html',
+    styleUrls: ['./carousel.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
