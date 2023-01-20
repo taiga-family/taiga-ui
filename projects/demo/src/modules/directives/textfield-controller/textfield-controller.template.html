@@ -53,6 +53,7 @@
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
+                    (tuiTextfieldCleanerOnChange)="documentationPropertyRangeChange.emitEvent($event)"
                 >
                     Hello
                 </tui-input>
@@ -110,6 +111,17 @@
                 [(documentationPropertyValue)]="size"
             >
                 Size
+            </ng-template>
+            <ng-template
+                #documentationPropertyRangeChange="documentationProperty"
+                i18n
+                documentationPropertyName="tuiTextfieldCleanerOnChange"
+                documentationPropertyMode="output"
+                documentationPropertyType="void"
+            >
+                Emit event when click on
+                <code>tuiTextfieldCleaner</code>
+                icon
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

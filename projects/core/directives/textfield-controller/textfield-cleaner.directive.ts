@@ -1,4 +1,11 @@
-import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
+import {
+    Directive,
+    EventEmitter,
+    forwardRef,
+    InjectionToken,
+    Input,
+    Output,
+} from '@angular/core';
 import {AbstractTuiController} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_CLEANER = new InjectionToken<TuiTextfieldCleanerDirective>(
@@ -20,4 +27,7 @@ export const TUI_TEXTFIELD_CLEANER = new InjectionToken<TuiTextfieldCleanerDirec
 export class TuiTextfieldCleanerDirective extends AbstractTuiController {
     @Input('tuiTextfieldCleaner')
     cleaner = false;
+
+    @Output('tuiTextfieldCleanerOnChange')
+    cleanerOnChange = new EventEmitter<void>();
 }

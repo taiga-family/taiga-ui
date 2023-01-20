@@ -1,3 +1,4 @@
+import {EventEmitter} from '@angular/core';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -31,6 +32,10 @@ export class TuiTextfieldController {
 
     get cleaner(): boolean {
         return this.cleanerDirective.cleaner;
+    }
+
+    get cleanerOnChange(): EventEmitter<void> {
+        return this.cleanerDirective.cleanerOnChange;
     }
 
     get customContent(): PolymorpheusContent {

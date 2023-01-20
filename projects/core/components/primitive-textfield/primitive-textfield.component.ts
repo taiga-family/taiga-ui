@@ -278,6 +278,7 @@ export class TuiPrimitiveTextfieldComponent
         }
 
         this.updateValue('');
+        this.controller.cleanerOnChange.next();
     }
 
     onMouseDown(event: MouseEvent): void {
