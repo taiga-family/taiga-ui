@@ -2,9 +2,9 @@ import {tuiIsApplePlatform} from './is-apple-platform';
 
 const IOS_REG_EXP = /ipad|iphone|ipod/;
 
-export function tuiIsIos(navigator: Navigator): boolean {
+export function tuiIsIos(navigatorRef: Navigator): boolean {
     return (
-        IOS_REG_EXP.test(navigator.userAgent.toLowerCase()) ||
-        (tuiIsApplePlatform(navigator) && navigator.maxTouchPoints > 1)
+        IOS_REG_EXP.test(navigatorRef.userAgent.toLowerCase()) ||
+        (tuiIsApplePlatform(navigatorRef) && navigatorRef.maxTouchPoints > 1)
     );
 }

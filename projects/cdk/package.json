@@ -15,11 +15,11 @@
     "repository": "https://github.com/tinkoff/taiga-ui",
     "license": "Apache-2.0",
     "dependencies": {
-        "@ng-web-apis/common": "2.1.0",
-        "@ng-web-apis/mutation-observer": "2.0.0",
-        "@ng-web-apis/resize-observer": "2.0.0",
-        "@tinkoff/ng-event-plugins": "3.1.0",
-        "@tinkoff/ng-polymorpheus": "4.0.10",
+        "@ng-web-apis/common": "^2.1.0",
+        "@ng-web-apis/mutation-observer": "^2.0.0",
+        "@ng-web-apis/resize-observer": "^2.0.0",
+        "@tinkoff/ng-event-plugins": "^3.1.0",
+        "@tinkoff/ng-polymorpheus": "^4.0.10",
         "tslib": "^2.0.0"
     },
     "peerDependencies": {

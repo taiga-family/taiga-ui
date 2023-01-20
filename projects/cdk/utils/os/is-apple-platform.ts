@@ -8,6 +8,8 @@
  * Documentation:
  * https://developer.mozilla.org/en-US/docs/Web/API/Navigator/platform
  */
-export function tuiIsApplePlatform(navigator: Navigator): boolean {
-    return navigator.platform.indexOf(`Mac`) === 0 || navigator.platform === `iPhone`;
+export function tuiIsApplePlatform(navigatorRef: Navigator): boolean {
+    return (
+        navigatorRef.platform.indexOf(`Mac`) === 0 || navigatorRef.platform === `iPhone`
+    );
 }
