@@ -8,7 +8,7 @@
         "@html-eslint/parser": "^0.15.0",
         "@nrwl/eslint-plugin-nx": "14.8.6",
         "@tinkoff/eslint-config": "^1.50.1",
-        "@tinkoff/eslint-config-angular": "^1.50.2",
+        "@tinkoff/eslint-config-angular": "^1.51.0",
         "eslint-plugin-unicorn": "^44.0.2"
     },
     "peerDependencies": {
