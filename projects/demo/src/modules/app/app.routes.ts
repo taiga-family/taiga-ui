@@ -1054,6 +1054,15 @@ export const ROUTES = [
             title: `Editor — Markdown`,
         },
     },
+    {
+        path: `editor/embed`,
+        loadChildren: async () =>
+            (await import(`../components/editor/embed/editor-embed.module`))
+                .ExampleTuiEditorEmbedModule,
+        data: {
+            title: `Editor — Embed`,
+        },
+    },
     // FILTER
     {
         path: `components/filter`,

@@ -1,0 +1,34 @@
+@import 'taiga-ui-local';
+
+.tool-button {
+    .transition(background);
+
+    &:hover {
+        background: var(--tui-secondary-hover);
+    }
+}
+
+.youtube-tool-content {
+    display: flex;
+    min-height: 4rem;
+    align-items: center;
+    padding-right: 0.75rem;
+}
+
+.t-label {
+    height: var(--tui-height-l);
+    box-sizing: border-box;
+    padding: 0.4375rem 1rem;
+    min-width: 12.5rem;
+    max-width: 25rem;
+    width: 100%;
+}
+
+.t-input {
+    flex: 1;
+    color: var(--tui-text-02);
+
+    &_filled {
+        color: var(--tui-text-01);
+    }
+}
