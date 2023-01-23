@@ -9,10 +9,12 @@ import {TuiSelectOptionComponent} from '@taiga-ui/kit/components/select-option';
     styleUrls: ['./multi-select-option.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiMultiSelectOptionComponent<T extends any[]> extends TuiSelectOptionComponent<T> {
+export class TuiMultiSelectOptionComponent<
+    T extends any[],
+> extends TuiSelectOptionComponent<T> {
     get size(): TuiSizeL {
         return this.option.size === 'l' ||
-        (this.dataList?.size === 'l' && !this.option.size)
+            (this.dataList?.size === 'l' && !this.option.size)
             ? 'l'
             : 'm';
     }
