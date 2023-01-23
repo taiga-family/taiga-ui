@@ -4,8 +4,8 @@
     "private": true,
     "main": "index.js",
     "devDependencies": {
-        "@html-eslint/eslint-plugin": "^0.15.0",
-        "@html-eslint/parser": "^0.15.0",
+        "@html-eslint/eslint-plugin": "^0.16.0",
+        "@html-eslint/parser": "^0.16.0",
         "@nrwl/eslint-plugin-nx": "14.8.6",
         "@tinkoff/eslint-config": "^1.50.1",
         "@tinkoff/eslint-config-angular": "^1.51.0",
