@@ -29,13 +29,16 @@ export function replaceStyles(): void {
                 .replace(`&[data-state='hovered']`, `&[data-state='hover']`)
                 .replace(`&[data-state='pressed']`, `&[data-state='active']`)
                 .replace(`tui-portal-host`, `tui-dropdown-host`)
-                .replace(`tui-dropdown-box`, `tui-dropdown`);
-
-            sourceFile.replaceWithText(
-                fullText.replace(
+                .replace(`tui-dropdown-box`, `tui-dropdown`)
+                .replace(
                     `@import '~@taiga-ui/core/styles/taiga-ui-global';`,
-                    `${TUI_WARNING_NORMALIZE}\n@import '~@taiga-ui/styles/taiga-ui-global';`,
-                ),
-            );
+                    `${TUI_WARNING_NORMALIZE}\n@import '@taiga-ui/styles/taiga-ui-global.less';`,
+                )
+                .replace(/@import '~@taiga-ui/g, `@import '@taiga-ui`)
+                .replace(/@import '@taiga-ui\/.+(.less)?';/g, val =>
+                    `${val.replace(`';`, ``)}.less';`.replace(`.less.less`, `.less`),
+                );
+
+            sourceFile.replaceWithText(fullText);
         });
 }

@@ -25,12 +25,12 @@ const BEFORE_GLOBAL_STYLE = `
 `;
 
 const AFTER_GLOBAL_STYLE = `
-@import '~@taiga-ui/core/styles/taiga-ui-fonts';
+@import '@taiga-ui/core/styles/taiga-ui-fonts.less';
 ${TUI_WARNING_NORMALIZE}
-@import '~@taiga-ui/styles/taiga-ui-global';
-@import '~@taiga-ui/proprietary-core/styles/tinkoff-fonts';
-@import '~@taiga-ui/proprietary-core/styles/theme-tinkoff-v2';
-@import '~@taiga-ui/proprietary-core/styles/theme-tinkoff-mobile';
+@import '@taiga-ui/styles/taiga-ui-global.less';
+@import '@taiga-ui/proprietary-core/styles/tinkoff-fonts.less';
+@import '@taiga-ui/proprietary-core/styles/theme-tinkoff-v2.less';
+@import '@taiga-ui/proprietary-core/styles/theme-tinkoff-mobile.less';
 `;
 
 const BEFORE_LOCAL_STYLE = `
@@ -145,7 +145,7 @@ tui-wrapper[data-appearance='textfield'] {
 `;
 
 const AFTER_LOCAL_STYLE = `
-@import '~@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
 
 ${TUI_WARNING_WRAPPER_MIXINS}
 [tuiWrapper][data-appearance='textfield'] {
