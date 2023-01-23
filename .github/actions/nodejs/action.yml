@@ -5,7 +5,7 @@ inputs:
   node-version:
     description: Node.js version
     required: false
-    default: 16.x
+    default: 18.x
 
 outputs:
   root-package-version:
