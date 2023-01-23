@@ -2,7 +2,7 @@ import {tuiIsObject} from '@taiga-ui/cdk';
 import {Configuration} from 'webpack';
 import {merge} from 'webpack-merge';
 
-console.info(`\nNODE_OPTIONS= ${process.env[`NODE_OPTIONS`]}`);
+console.info(`\nNODE_OPTIONS=${process.env[`NODE_OPTIONS`]}`);
 
 /**
  * We can't just import TS-file to get its content
