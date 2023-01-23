@@ -21,9 +21,13 @@ export class TuiBrowserExample1 {
             return tuiIsEdgeOlderThan(13, this.userAgent)
                 ? 'Edge older than 13'
                 : 'Edge until 13';
-        } else if (tuiIsFirefox(this.userAgent)) {
+        }
+
+        if (tuiIsFirefox(this.userAgent)) {
             return 'Okay, you have Firefox!';
-        } else if (tuiIsSafari(this.elementRef.nativeElement)) {
+        }
+
+        if (tuiIsSafari(this.elementRef.nativeElement)) {
             return 'Okay, you have Safari!';
         }
 
