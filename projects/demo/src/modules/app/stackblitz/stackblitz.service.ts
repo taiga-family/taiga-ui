@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import stackblitz, {OpenOptions, Project} from '@stackblitz/sdk';
 import {TuiCodeEditor} from '@taiga-ui/addon-doc';
 
 import {TsFileComponentParser, TsFileModuleParser} from '../classes';
-import {STACKBLITZ_DEPS} from './stackblitz-deps.constants';
+import {StackblitzDepsService} from './stackblitz-deps.service';
 import {AbstractTuiStackblitzResourcesLoader} from './stackblitz-resources-loader';
 import {
     appPrefix,
@@ -25,16 +25,12 @@ const APP_COMP_META = {
 
 @Injectable()
 export class TuiStackblitzService implements TuiCodeEditor {
-    private readonly stackblitzProjectConfigs: Pick<
-        Project,
-        'dependencies' | 'tags' | 'template'
-    > = {
-        template: `angular-cli`,
-        dependencies: STACKBLITZ_DEPS,
-        tags: [`Angular`, `Taiga UI`, `Angular components`, `UI Kit`],
-    };
-
     readonly name = `Stackblitz`;
+
+    constructor(
+        @Inject(StackblitzDepsService)
+        private readonly deps: StackblitzDepsService,
+    ) {}
 
     async edit(
         component: string,
@@ -74,7 +70,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
         appCompTs.className = APP_COMP_META.CLASS_NAME;
 
         return stackblitz.openProject({
-            ...this.stackblitzProjectConfigs,
+            ...(await this.getStackblitzProjectConfig()),
             title: `${component}-${sampleId}`,
             description: `Taiga UI example of the component ${component}`,
             files: {
@@ -95,7 +91,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
     ): Promise<void> {
         return stackblitz.openProject(
             {
-                ...this.stackblitzProjectConfigs,
+                ...(await this.getStackblitzProjectConfig()),
                 title,
                 description,
                 files: {
@@ -135,6 +131,16 @@ export class TuiStackblitzService implements TuiCodeEditor {
             [stackblitzPrefix`all-taiga-modules.ts`]: await getAllTaigaUIModulesFile(
                 additionalModules,
             ),
+        };
+    }
+
+    private async getStackblitzProjectConfig(): Promise<
+        Pick<Project, 'dependencies' | 'tags' | 'template'>
+    > {
+        return {
+            template: `angular-cli`,
+            dependencies: await this.deps.get(),
+            tags: [`Angular`, `Taiga UI`, `Angular components`, `UI Kit`],
         };
     }
 }
