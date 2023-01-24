@@ -936,6 +936,12 @@ export const pages: TuiDocPages = [
         keywords: `editor, markdown, wysiwyg, редактор, текст, html, rich, text`,
         route: `/editor/markdown`,
     },
+    {
+        section: $localize`Editor`,
+        title: `Embed`,
+        keywords: `editor, embed, video player, audio player, youtube, wysiwyg, редактор, плейер, плеер, ютуб, текст, html, rich, text`,
+        route: `/editor/embed`,
+    },
     // Navigation
     {
         section: $localize`Navigation`,
