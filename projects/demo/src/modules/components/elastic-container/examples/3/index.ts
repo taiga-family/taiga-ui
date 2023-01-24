@@ -10,13 +10,13 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
 })
 export class TuiElasticContainerExample3 {
-    content = 1
+    content = 1;
 
     add(): void {
-        this.content++
+        this.content++;
     }
 
     remove(): void {
-        this.content--
+        this.content--;
     }
 }
