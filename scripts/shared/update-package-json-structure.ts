@@ -1,4 +1,5 @@
-import {tuiIsObject, tuiIsString} from '../../projects/cdk';
+import {tuiIsObject} from '../../projects/cdk/utils/miscellaneous/is-object';
+import {tuiIsString} from '../../projects/cdk/utils/miscellaneous/is-string';
 import {bumpTuiDeps} from './bump-tui-deps';
 import {bumpTuiVersionInPackageJson} from './bump-tui-version-in-package-json';
 import {isTuiPackageName} from './is-tui-package-name';

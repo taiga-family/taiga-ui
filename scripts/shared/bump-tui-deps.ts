@@ -1,4 +1,4 @@
-import {tuiIsString} from '../../projects/cdk';
+import {tuiIsString} from '../../projects/cdk/utils/miscellaneous/is-string';
 import {isTuiPackageName} from './is-tui-package-name';
 
 export interface TuiBumpDepsOptions {

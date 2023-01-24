@@ -1,4 +1,4 @@
-import {tuiIsString} from '../../projects/cdk';
+import {tuiIsString} from '../../projects/cdk/utils/miscellaneous/is-string';
 
 export function bumpTuiVersionInPackageJson(
     packageJson: Record<string, unknown>,
