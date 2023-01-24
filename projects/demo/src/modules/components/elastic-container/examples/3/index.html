@@ -1,0 +1,23 @@
+<tui-elastic-container class="visible">
+    <div
+        *tuiRepeatTimes="let index of content"
+        class="tui-space_bottom-4"
+    >
+        I'm content
+    </div>
+    <button
+        tuiButton
+        size="s"
+        class="tui-space_right-2"
+        (click)="add()"
+    >
+        Add content
+    </button>
+    <button
+        tuiButton
+        size="s"
+        (click)="remove()"
+    >
+        Remove content
+    </button>
+</tui-elastic-container>

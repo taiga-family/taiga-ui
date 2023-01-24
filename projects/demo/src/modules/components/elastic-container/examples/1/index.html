@@ -1,0 +1,9 @@
+<tui-elastic-container>
+    {{ current }}
+    <button
+        tuiLink
+        (click)="toggle()"
+    >
+        Show {{ current === more ? 'less' : 'more' }}
+    </button>
+</tui-elastic-container>
