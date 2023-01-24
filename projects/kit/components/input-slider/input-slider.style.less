@@ -10,9 +10,11 @@
 input[type='range'] {
     position: absolute;
     top: 100%;
-    left: calc(var(--tui-radius-m) / 2);
+    left: 0;
     right: 0;
-    width: auto;
+    box-sizing: border-box;
+    padding-left: calc(var(--tui-radius-m) / 2);
+    height: 1rem;
     margin: -0.5625rem 0 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: calc(var(--tui-radius-m) * 5) calc(var(--tui-radius-m) * 1.5);
