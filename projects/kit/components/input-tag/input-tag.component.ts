@@ -328,7 +328,7 @@ export class TuiInputTagComponent
         this.addTag();
         this.updateFocused(active);
 
-        if (!this.computedFocused) {
+        if (!active && !this.computedFocused) {
             this.scrollToStart$.next();
         }
     }

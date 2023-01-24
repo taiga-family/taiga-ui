@@ -183,4 +183,26 @@ describe(`MultiSelect`, () => {
             {capture: `viewport`},
         );
     });
+
+    it(`should scroll to end on focus`, () => {
+        cy.tuiVisit(`components/multi-select/API?expandable=false&sandboxWidth=350`);
+        cy.getByAutomationId(`tui-multi-select__arrow`).click({force: true});
+
+        [0, 1, 2, 3, 4].forEach(index => {
+            cy.get(`tui-data-list-wrapper`)
+                .findByAutomationId(`tui-data-list-wrapper__option`)
+                .eq(index)
+                .click({force: true});
+        });
+
+        cy.get(`button`).first().focus();
+        cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION)
+            .getByAutomationId(`tui-multi-select__arrow`)
+            .click({force: true});
+
+        cy.wait(DEFAULT_TIMEOUT_BEFORE_ACTION).matchImageSnapshot(
+            `03-multi-select-scroll-to-end`,
+            {capture: `viewport`},
+        );
+    });
 });
