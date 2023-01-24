@@ -1754,7 +1754,7 @@ export const ROUTES = [
     imports: [
         RouterModule.forRoot(ROUTES, {
             initialNavigation: `enabledBlocking`,
-            scrollPositionRestoration: `top`,
+            scrollPositionRestoration: `enabled`,
         }),
     ],
     exports: [RouterModule],
