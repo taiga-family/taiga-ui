@@ -150,8 +150,21 @@
     }
 
     &::-moz-range-progress {
-        background: @thumb-color;
+        /**
+        Don't join this line with other ones from the same selector!
+        Angular optimizer mistakenly transforms all lines with `border-**-radius` into the single one:
+        ```
+        border-radius: inherit 0 0 inherit;
+        ```
+        It is not valid for Firefox.
+        Read more: https://github.com/Tinkoff/taiga-ui/issues/3489#issuecomment-1401820320
+        */
         border-radius: inherit;
+    }
+
+    /* stylelint-disable-next-line no-duplicate-selectors */
+    &::-moz-range-progress {
+        background: @thumb-color;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
     }
