@@ -127,7 +127,7 @@ export class TuiStepperComponent {
     }
 
     private scrollIntoView(targetStepIndex: number): void {
-        this.getNativeElements(this.steps)[targetStepIndex].scrollIntoView(
+        this.getNativeElements(this.steps)[targetStepIndex]?.scrollIntoView(
             this.orientation === `vertical`
                 ? ONLY_VERTICAL_SCROLL
                 : ONLY_HORIZONTAL_SCROLL,
