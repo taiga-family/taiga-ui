@@ -3,7 +3,6 @@ import {
     NIGHT_THEME_KEY,
     WAIT_BEFORE_SCREENSHOT,
 } from '@demo-integrations/support/properties/shared.entities';
-import {stubExceptions} from '@demo-integrations/support/stubs/stub-exceptions';
 import {stubExternalIcons} from '@demo-integrations/support/stubs/stub-external-icons.util';
 import {stubMetrics} from '@demo-integrations/support/stubs/stub-metrics';
 
@@ -81,7 +80,6 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
 
     stubExternalIcons();
     stubMetrics();
-    stubExceptions();
 
     const encodedPath = skipDecodingUrl
         ? path
