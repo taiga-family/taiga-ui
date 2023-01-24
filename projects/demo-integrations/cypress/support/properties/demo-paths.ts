@@ -12,6 +12,7 @@ export const DEMO_PATHS = flatPages(pages)
     .filter(page => !EXCLUSION_ROUTES.includes(page.title))
     .map(page => page.route.replace(`/`, ``));
 
+export const isEmbedPage = (path: string): boolean => path === `editor/embed`;
 export const isTilesPage = (path: string): boolean => path === `components/tiles`;
 export const isScrollbarPage = (path: string): boolean => path === `components/scrollbar`;
 export const isInputNumberPage = (path: string): boolean =>
