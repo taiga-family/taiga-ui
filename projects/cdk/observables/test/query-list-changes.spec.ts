@@ -1,7 +1,7 @@
 import {QueryList} from '@angular/core';
-import {tuiItemsQueryListObservable} from '@taiga-ui/cdk';
+import {tuiQueryListChanges} from '@taiga-ui/cdk';
 
-describe(`tuiItemsQueryListObservable`, () => {
+describe(`tuiQueryListChanges`, () => {
     let queryList: QueryList<number>;
 
     beforeEach(() => {
@@ -12,7 +12,7 @@ describe(`tuiItemsQueryListObservable`, () => {
     it(`emits current array on subscription`, () => {
         let result: readonly number[] | null = null;
 
-        tuiItemsQueryListObservable<number>(queryList).subscribe(data => {
+        tuiQueryListChanges<number>(queryList).subscribe(data => {
             result = data;
         });
 
@@ -22,7 +22,7 @@ describe(`tuiItemsQueryListObservable`, () => {
     it(`emits new array on changes`, () => {
         let result: readonly number[] | null = null;
 
-        tuiItemsQueryListObservable<number>(queryList).subscribe(data => {
+        tuiQueryListChanges<number>(queryList).subscribe(data => {
             result = data;
         });
 

@@ -6,7 +6,7 @@ import {map, startWith} from 'rxjs/operators';
 /**
  * Converts changes observable of a QueryList to an Observable of arrays
  */
-export function tuiItemsQueryListObservable<T>(
+export function tuiQueryListChanges<T>(
     queryList: QueryList<T>,
 ): Observable<readonly T[]> {
     return queryList.changes.pipe(
@@ -14,3 +14,8 @@ export function tuiItemsQueryListObservable<T>(
         map(() => tuiGetOriginalArrayFromQueryList(queryList)),
     );
 }
+
+/**
+ * @deprecated An alias, use {@link tuiQueryListChanges} instead
+ */
+export const tuiItemsQueryListObservable = tuiQueryListChanges;

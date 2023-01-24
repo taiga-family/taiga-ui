@@ -7,7 +7,7 @@ import {
     Inject,
     QueryList,
 } from '@angular/core';
-import {EMPTY_QUERY, tuiItemsQueryListObservable} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, tuiQueryListChanges} from '@taiga-ui/cdk';
 import {ReplaySubject} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
 
@@ -33,7 +33,7 @@ export class TuiTrComponent<T extends Partial<Record<keyof T, any>>>
     private readonly contentReady$ = new ReplaySubject<boolean>(1);
 
     readonly cells$ = this.contentReady$.pipe(
-        switchMap(() => tuiItemsQueryListObservable(this.cells)),
+        switchMap(() => tuiQueryListChanges(this.cells)),
         map(cells =>
             cells.reduce(
                 (record, item) => ({...record, [item.tuiCell]: item}),
@@ -43,7 +43,7 @@ export class TuiTrComponent<T extends Partial<Record<keyof T, any>>>
     );
 
     readonly item$ = this.contentReady$.pipe(
-        switchMap(() => tuiItemsQueryListObservable(this.body.rows)),
+        switchMap(() => tuiQueryListChanges(this.body.rows)),
         map(
             rows =>
                 /**

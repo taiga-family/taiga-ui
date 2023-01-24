@@ -193,7 +193,7 @@ export const DEPRECATED_FUNCTIONS: readonly TypeToRename[] = [
     },
     {
         from: `itemsQueryListObservable`,
-        to: `tuiItemsQueryListObservable`,
+        to: `tuiQueryListChanges`,
         moduleSpecifier: [`@taiga-ui/cdk`],
     },
     {

@@ -11,9 +11,9 @@ import {
     EMPTY_QUERY,
     TuiDestroyService,
     tuiGetClosestFocusable,
-    tuiItemsQueryListObservable,
     tuiPreventDefault,
     tuiPure,
+    tuiQueryListChanges,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core';
@@ -91,7 +91,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
 
     @tuiPure
     private get elements$(): Observable<readonly HTMLElement[]> {
-        return tuiItemsQueryListObservable(this.elements).pipe(
+        return tuiQueryListChanges(this.elements).pipe(
             map(array => array.map(({nativeElement}) => nativeElement)),
             shareReplay({bufferSize: 1, refCount: true}),
         );

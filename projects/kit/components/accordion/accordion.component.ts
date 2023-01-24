@@ -13,7 +13,7 @@ import {
     tuiDefaultProp,
     TuiDestroyService,
     tuiIsPresent,
-    tuiItemsQueryListObservable,
+    tuiQueryListChanges,
 } from '@taiga-ui/cdk';
 import {identity, merge} from 'rxjs';
 import {filter, map, pairwise, switchMap, takeUntil} from 'rxjs/operators';
@@ -47,7 +47,7 @@ export class TuiAccordionComponent implements AfterContentInit {
 
     ngAfterContentInit(): void {
         const {accordionItems} = this;
-        const rows$ = tuiItemsQueryListObservable(accordionItems);
+        const rows$ = tuiQueryListChanges(accordionItems);
         const newOpenRow$ = rows$.pipe(
             pairwise(),
             map(([previous, current]) =>

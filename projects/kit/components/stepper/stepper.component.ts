@@ -16,9 +16,9 @@ import {
     tuiDefaultProp,
     tuiGetOriginalArrayFromQueryList,
     tuiIsElement,
-    tuiItemsQueryListObservable,
     tuiMoveFocus,
     tuiPure,
+    tuiQueryListChanges,
 } from '@taiga-ui/cdk';
 import {TuiOrientation} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
@@ -66,9 +66,9 @@ export class TuiStepperComponent {
 
     @tuiPure
     get changes$(): Observable<unknown> {
-        // Delay is required to trigger change detection after steps are rendered
+        // Delay is required to trigger change detection after steps are rendered,
         // so they can update their "active" status
-        return tuiItemsQueryListObservable(this.steps).pipe(delay(0));
+        return tuiQueryListChanges(this.steps).pipe(delay(0));
     }
 
     @HostListener('keydown.arrowRight', ['$event', '1'])

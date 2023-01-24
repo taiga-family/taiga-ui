@@ -18,9 +18,9 @@ import {
     tuiIsElement,
     tuiIsNativeFocusedIn,
     tuiIsPresent,
-    tuiItemsQueryListObservable,
     tuiMoveFocus,
     tuiPure,
+    tuiQueryListChanges,
     tuiSetNativeMouseFocused,
 } from '@taiga-ui/cdk';
 import {
@@ -82,7 +82,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
 
     @tuiPure
     get empty$(): Observable<boolean> {
-        return tuiItemsQueryListObservable(this.options).pipe(map(({length}) => !length));
+        return tuiQueryListChanges(this.options).pipe(map(({length}) => !length));
     }
 
     @HostListener('focusin', ['$event.relatedTarget', '$event.currentTarget'])
