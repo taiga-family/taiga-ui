@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.75.0](https://github.com/tinkoff/taiga-ui/compare/v2.74.0...v2.75.0) (2023-01-24)
+
+### Bug Fixes
+
+- **kit:** `Stepper` scroll to active step when activeItemIndex changes
+  ([#3457](https://github.com/tinkoff/taiga-ui/issues/3457))
+  ([d765d3c](https://github.com/tinkoff/taiga-ui/commit/d765d3cd79e5315d8927ef72ff770f076f54c492))
+
 ## [2.74.0](https://github.com/tinkoff/taiga-ui/compare/v2.73.0...v2.74.0) (2022-12-30)
 
 ### Features
