@@ -32,6 +32,20 @@ describe(`InputNumber`, () => {
                     .matchImageSnapshot(`03-input-number-align-${align}`);
             });
         }
+
+        describe(`overflow`, () => {
+            for (const sandboxWidth of [`75`, `140`, `158`]) {
+                it(`sandboxWidth=${sandboxWidth}`, () => {
+                    cy.tuiVisit(
+                        `components/input-number/API?tuiTextfieldPostfix=$&tuiTextfieldPrefix=VeryLongText&sandboxWidth=${sandboxWidth}`,
+                    );
+
+                    cy.get(`#demo-content`).matchImageSnapshot(
+                        `input-number-sandboxWidth-${sandboxWidth}`,
+                    );
+                });
+            }
+        });
     });
 
     describe(`Examples`, () => {
