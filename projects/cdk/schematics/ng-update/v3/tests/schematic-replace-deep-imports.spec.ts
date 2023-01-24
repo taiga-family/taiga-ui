@@ -51,11 +51,11 @@ export class AppComponent {}`,
         );
 
         expect(tree.readContent(`test/style.less`)).toEqual(
-            `${TUI_WARNING_NORMALIZE}\n@import '~@taiga-ui/styles/taiga-ui-global';`,
+            `${TUI_WARNING_NORMALIZE}\n@import '@taiga-ui/styles/taiga-ui-global.less';`,
         );
 
         expect(tree.readContent(`test/app/app.template.less`)).toEqual(
-            `@import '~@taiga-ui/core/styles/taiga-ui-local';`,
+            `@import '@taiga-ui/core/styles/taiga-ui-local.less';`,
         );
     });
 

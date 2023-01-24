@@ -1,3 +1,5 @@
 ```less
-@import '~@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+// other styles
 ```

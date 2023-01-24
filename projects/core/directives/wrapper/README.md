@@ -8,7 +8,7 @@ Overlay is click-through and typically used for focus ring
 To apply styles use following mixins from
 
 ```less
-@import '~@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
 ```
 
 1. `.wrapper-hover(@ruleset)`
