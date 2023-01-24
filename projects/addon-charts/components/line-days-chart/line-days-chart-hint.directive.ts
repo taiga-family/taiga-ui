@@ -23,7 +23,7 @@ import {
 import {TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, Observable} from 'rxjs';
-import {filter, map, takeUntil} from 'rxjs/operators';
+import {filter, takeUntil} from 'rxjs/operators';
 
 // TODO: find the best way for prevent cycle
 // eslint-disable-next-line import/no-cycle
@@ -49,10 +49,12 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
     ) {}
 
     ngAfterContentInit(): void {
-        combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
+        combineLatest([
+            ...this.charts.map(({charts}) => tuiLineChartDrivers(charts)),
+            this.hovered$,
+        ])
             .pipe(
-                map(([drivers, hovered]) => !drivers && !hovered),
-                filter(Boolean),
+                filter(result => !result.some(Boolean)),
                 tuiZonefree(this.ngZone),
                 takeUntil(this.destroy$),
             )

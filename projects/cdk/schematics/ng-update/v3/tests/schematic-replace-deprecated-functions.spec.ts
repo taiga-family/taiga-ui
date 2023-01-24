@@ -488,7 +488,7 @@ import {
   tuiToGradient,
 } from '@taiga-ui/addon-editor';
 import {tuiDefaultSort} from '@taiga-ui/addon-table';
-import { tuiMockCurrentDate, tuiRestoreRealDate, tuiMockDateInside, tuiPendingIfNotMoscowTimeZone, tuiDragAndDropFrom, tuiFocusVisibleObservable, tuiItemsQueryListObservable, tuiMouseDragFinishFrom, tuiMustBePresent, tuiPressedObservable, tuiPreventDefault, tuiStopPropagation, tuiTypedFromEvent, tuiWatch, tuiIsEdgeOlderThan, tuiIsEdge, tuiIsFirefox, tuiIsIE, tuiIsSafari, tuiCanScroll, tuiContainsOrAfter, tuiGetActualTarget, tuiGetClipboardDataText, tuiGetDocumentOrShadowRoot, tuiGetElementObscures, tuiGetElementOffset, tuiGetScrollParent, tuiIsCurrentTarget, tuiIsInsideIframe, tuiIsNodeIn, tuiBlurNativeFocused, tuiGetNativeFocused, tuiIsNativeFocusedIn, tuiIsNativeFocused, tuiIsNativeKeyboardFocusable, tuiIsNativeMouseFocusable, tuiMoveFocus, tuiSetNativeFocused, tuiSetNativeMouseFocused, tuiPx, tuiClamp, tuiInRange, tuiNormalizeToIntNumber, tuiQuantize, tuiRound, tuiCeil, tuiFloor, tuiSum, tuiToInt, tuiToRadians, tuiDistanceBetweenTouches, tuiEaseInOutQuad, tuiFlatLength, tuiGetOriginalArrayFromQueryList, tuiGetSwipeDirection, tuiIsElementEditable, tuiIsNumber, tuiIsPresent, tuiMarkControlAsTouchedAndValidate, tuiNullableSame, tuiUniqBy, tuiIsApplePlatform, tuiIsApple, tuiIsIos, tuiSvgLinearGradientProcessor, tuiGetClosestFocusable, tuiHexToRgb, tuiHsvToRgb, tuiParseColor, tuiRgbToHex, tuiRgbToHsv } from '@taiga-ui/cdk';
+import { tuiMockCurrentDate, tuiRestoreRealDate, tuiMockDateInside, tuiPendingIfNotMoscowTimeZone, tuiDragAndDropFrom, tuiFocusVisibleObservable, tuiQueryListChanges, tuiMouseDragFinishFrom, tuiMustBePresent, tuiPressedObservable, tuiPreventDefault, tuiStopPropagation, tuiTypedFromEvent, tuiWatch, tuiIsEdgeOlderThan, tuiIsEdge, tuiIsFirefox, tuiIsIE, tuiIsSafari, tuiCanScroll, tuiContainsOrAfter, tuiGetActualTarget, tuiGetClipboardDataText, tuiGetDocumentOrShadowRoot, tuiGetElementObscures, tuiGetElementOffset, tuiGetScrollParent, tuiIsCurrentTarget, tuiIsInsideIframe, tuiIsNodeIn, tuiBlurNativeFocused, tuiGetNativeFocused, tuiIsNativeFocusedIn, tuiIsNativeFocused, tuiIsNativeKeyboardFocusable, tuiIsNativeMouseFocusable, tuiMoveFocus, tuiSetNativeFocused, tuiSetNativeMouseFocused, tuiPx, tuiClamp, tuiInRange, tuiNormalizeToIntNumber, tuiQuantize, tuiRound, tuiCeil, tuiFloor, tuiSum, tuiToInt, tuiToRadians, tuiDistanceBetweenTouches, tuiEaseInOutQuad, tuiFlatLength, tuiGetOriginalArrayFromQueryList, tuiGetSwipeDirection, tuiIsElementEditable, tuiIsNumber, tuiIsPresent, tuiMarkControlAsTouchedAndValidate, tuiNullableSame, tuiUniqBy, tuiIsApplePlatform, tuiIsApple, tuiIsIos, tuiSvgLinearGradientProcessor, tuiGetClosestFocusable, tuiHexToRgb, tuiHsvToRgb, tuiParseColor, tuiRgbToHex, tuiRgbToHsv } from '@taiga-ui/cdk';
 import {
   tuiTextfieldWatchedControllerFactory,
   tuiSmartSearch,
@@ -576,7 +576,7 @@ tuiMockDateInside(...args);
 tuiPendingIfNotMoscowTimeZone(...args);
 tuiDragAndDropFrom(...args);
 tuiFocusVisibleObservable(...args);
-tuiItemsQueryListObservable(...args);
+tuiQueryListChanges(...args);
 tuiMouseDragFinishFrom(...args);
 tuiMustBePresent(...args);
 tuiPressedObservable(...args);
@@ -718,7 +718,7 @@ class Component {
     tuiPendingIfNotMoscowTimeZone();
     tuiDragAndDropFrom();
     tuiFocusVisibleObservable();
-    tuiItemsQueryListObservable();
+    tuiQueryListChanges();
     tuiMouseDragFinishFrom();
     tuiMustBePresent();
     tuiPressedObservable();

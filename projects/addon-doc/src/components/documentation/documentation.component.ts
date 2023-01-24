@@ -14,8 +14,8 @@ import {
     EMPTY_QUERY,
     TuiDestroyService,
     tuiHexToRgb,
-    tuiItemsQueryListObservable,
     TuiMatcher,
+    tuiQueryListChanges,
     tuiWatch,
 } from '@taiga-ui/cdk';
 import {merge} from 'rxjs';
@@ -73,7 +73,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     ) {}
 
     ngAfterContentInit(): void {
-        tuiItemsQueryListObservable(this.propertiesConnectors)
+        tuiQueryListChanges(this.propertiesConnectors)
             .pipe(
                 switchMap(items => merge(...items.map(({changed$}) => changed$))),
                 tuiWatch(this.changeDetectorRef),

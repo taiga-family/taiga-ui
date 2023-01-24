@@ -1,15 +1,19 @@
 import {
+    AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     HostBinding,
     Inject,
     Input,
+    NgZone,
     Optional,
     QueryList,
+    Self,
     ViewChildren,
 } from '@angular/core';
 import {
     TuiLineChartComponent,
+    tuiLineChartDrivers,
     TuiLineChartHintDirective,
 } from '@taiga-ui/addon-charts/components/line-chart';
 import {
@@ -18,15 +22,19 @@ import {
     TuiContextWithImplicit,
     TuiDay,
     tuiDefaultProp,
+    TuiDestroyService,
+    TuiHoveredService,
     tuiIsNumber,
     tuiIsPresent,
     TuiMonth,
     tuiPure,
     TuiStringHandler,
+    tuiZonefree,
 } from '@taiga-ui/cdk';
-import {TuiDriver, TuiPoint} from '@taiga-ui/core';
+import {TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import {combineLatest, Observable} from 'rxjs';
+import {filter, takeUntil} from 'rxjs/operators';
 
 // TODO: find the best way for prevent cycle
 // eslint-disable-next-line import/no-cycle
@@ -40,18 +48,17 @@ const DUMMY: TuiPoint = [NaN, NaN];
     styleUrls: ['./line-days-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        TuiDestroyService,
+        TuiHoveredService,
         {
             provide: TuiLineChartHintDirective,
             useExisting: TuiLineDaysChartComponent,
         },
     ],
 })
-export class TuiLineDaysChartComponent {
+export class TuiLineDaysChartComponent implements AfterViewInit {
     @ViewChildren(TuiLineChartComponent)
-    private readonly charts: QueryList<TuiLineChartComponent> = EMPTY_QUERY;
-
-    @ViewChildren(TuiDriver)
-    readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
+    readonly charts: QueryList<TuiLineChartComponent> = EMPTY_QUERY;
 
     @Input('value')
     @tuiDefaultProp()
@@ -112,6 +119,9 @@ export class TuiLineDaysChartComponent {
         @Optional()
         @Inject(TuiLineDaysChartHintDirective)
         private readonly hintDirective: TuiLineDaysChartHintDirective | null,
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
+        @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
     ) {}
 
     get months(): ReadonlyArray<readonly TuiPoint[]> {
@@ -125,7 +135,7 @@ export class TuiLineDaysChartComponent {
     get hint():
         | PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>>
         | PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> {
-        return this.hintDirective ? this.hintDirective.hint : this.hintContent;
+        return this.hintDirective?.hint ?? this.hintContent;
     }
 
     @tuiPure
@@ -138,11 +148,23 @@ export class TuiLineDaysChartComponent {
         };
     }
 
+    ngAfterViewInit(): void {
+        combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
+            .pipe(
+                filter(result => !result.some(Boolean)),
+                tuiZonefree(this.ngZone),
+                takeUntil(this.destroy$),
+            )
+            .subscribe(() => {
+                this.onHovered(NaN);
+            });
+    }
+
     readonly daysStringify: TuiStringHandler<number> = index =>
-        this.xStringify ? this.xStringify(this.getMonth(index)) : '';
+        this.xStringify ? this.xStringify(this.getDay(index)) : '';
 
     getX(index: number): number {
-        const current = this.getMonth(index);
+        const current = this.getDay(index);
         const months = TuiMonth.lengthBetween(this.value[0][0], current);
         const offset = months * current.daysCount;
 
@@ -171,7 +193,7 @@ export class TuiLineDaysChartComponent {
 
     raise(index: number, {value}: TuiLineChartComponent): void {
         const x = value[index][0];
-        const month = this.getMonth(x);
+        const month = this.getDay(x);
 
         if (this.hintDirective) {
             this.hintDirective.raise(month);
@@ -181,7 +203,7 @@ export class TuiLineDaysChartComponent {
     }
 
     getWidth(index: number): number {
-        return this.getMonth(index).daysCount * this.months.length;
+        return this.getDay(index).daysCount * this.months.length;
     }
 
     getContext(
@@ -191,7 +213,7 @@ export class TuiLineDaysChartComponent {
         const x = value[index][0];
 
         return this.hintDirective
-            ? this.hintDirective.getContext(this.getMonth(x))
+            ? this.hintDirective.getContext(this.getDay(x))
             : this.getHintContext(x, this.value);
     }
 
@@ -222,7 +244,7 @@ export class TuiLineDaysChartComponent {
             );
     }
 
-    private getMonth(index: number): TuiDay {
+    private getDay(index: number): TuiDay {
         return this.value[index - this.value[0][0].day + 1][0];
     }
 }

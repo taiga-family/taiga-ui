@@ -42,7 +42,7 @@ import {TuiLineChartHintDirective} from './line-chart-hint.directive';
     templateUrl: './line-chart.template.html',
     styleUrls: ['./line-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    viewProviders: [tuiHintOptionsProvider({direction: 'top'})],
+    viewProviders: [tuiHintOptionsProvider({direction: 'top', hideDelay: 0})],
 })
 export class TuiLineChartComponent {
     private readonly _hovered$ = new Subject<number>();
