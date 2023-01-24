@@ -939,7 +939,7 @@ export const pages: TuiDocPages = [
     {
         section: $localize`Editor`,
         title: `Embed`,
-        keywords: `editor, embed, video player, audio player, wysiwyg, редактор, плейер, плеер, текст, html, rich, text`,
+        keywords: `editor, embed, video player, audio player, youtube, wysiwyg, редактор, плейер, плеер, ютуб, текст, html, rich, text`,
         route: `/editor/embed`,
     },
     // Navigation
