@@ -1,6 +1,7 @@
 import {tuiComponentsExcluded} from '@demo-integrations/support/helpers/components-excluded';
 import {
     DEMO_PATHS,
+    isEmbedPage,
     isInputNumberPage,
     isScrollbarPage,
     isTilesPage,
@@ -18,7 +19,7 @@ describe(`Demo`, () => {
             cy.get(`body`).then($body => {
                 if (isInputNumberPage(path)) {
                     cy.wait(WAIT_BEFORE_SCREENSHOT);
-                } else if (isTilesPage(path)) {
+                } else if (isTilesPage(path) || isEmbedPage(path)) {
                     cy.wait(10_000);
                 }
 
