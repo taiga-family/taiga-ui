@@ -54,4 +54,17 @@ describe(`Viewport`, () => {
 
         makeScreenshot(`06-breakpoints-1280-900-desktop-m-viewport`);
     });
+
+    describe(`Check fonts`, () => {
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+        for (const [breakpoint, {width, font}] of Object.entries(
+            Cypress.env(`fonts`) ?? [],
+        ) as Array<[string, {width: number; font: string}]>) {
+            it(breakpoint, () => {
+                cy.viewport(width, 900).tuiVisit(BREAKPOINTS_PAGE_URL, {
+                    waitRenderedFont: new RegExp(font),
+                });
+            });
+        }
+    });
 });
