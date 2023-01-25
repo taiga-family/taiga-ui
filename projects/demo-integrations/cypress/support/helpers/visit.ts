@@ -28,7 +28,7 @@ interface TuiVisitOptions {
     hideNavigation?: boolean;
     skipDecodingUrl?: boolean;
     skipExpectUrl?: boolean;
-    waitRenderedFont?: RegExp | string;
+    waitRenderedFont?: RegExp;
     rootSelector?: string;
     clock?: Date | null;
     /**
@@ -129,13 +129,10 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         .then(document => (document as any)?.fonts.ready)
         .then(() => cy.log(`Font loading completed`));
 
-    if (waitRenderedFont || Cypress.env(`waitRenderedFont`)) {
+    if (waitRenderedFont) {
         cy.get(`body`, {log: false})
             .should(`have.css`, `font-family`)
-            .and(
-                `match`,
-                waitRenderedFont || new RegExp(Cypress.env(`waitRenderedFont`)),
-            );
+            .and(`match`, waitRenderedFont);
     }
 
     if (waitAllIcons) {
