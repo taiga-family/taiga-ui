@@ -20,7 +20,7 @@ export class TuiHintHoverDirective extends TuiDriver {
                 of(visible).pipe(delay(visible ? this.showDelay : this.hideDelay)),
             ),
         ),
-        this.click$.pipe(delay(0)),
+        this.click$.pipe(switchMap(visible => of(visible).pipe(delay(this.clickDelay)))),
     );
 
     @Input('tuiHintShowDelay')
@@ -30,6 +30,10 @@ export class TuiHintHoverDirective extends TuiDriver {
     @Input('tuiHintHideDelay')
     @tuiDefaultProp()
     hideDelay: TuiHintOptions['hideDelay'] = this.options.hideDelay;
+
+    @Input('tuiHintClickDelay')
+    @tuiDefaultProp()
+    clickDelay: TuiHintOptions['clickDelay'] = this.options.clickDelay;
 
     constructor(
         @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
