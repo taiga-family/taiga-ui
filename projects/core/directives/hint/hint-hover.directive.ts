@@ -13,10 +13,14 @@ import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 })
 export class TuiHintHoverDirective extends TuiDriver {
     private readonly toggle$ = new Subject<boolean>();
-    private readonly stream$ = merge(this.toggle$, this.hovered$).pipe(
-        switchMap(visible =>
-            of(visible).pipe(delay(visible ? this.showDelay : this.hideDelay)),
+    private readonly click$ = new Subject<boolean>();
+    private readonly stream$ = merge(
+        merge(this.toggle$, this.hovered$).pipe(
+            switchMap(visible =>
+                of(visible).pipe(delay(visible ? this.showDelay : this.hideDelay)),
+            ),
         ),
+        this.click$.pipe(delay(0)),
     );
 
     @Input('tuiHintShowDelay')
@@ -35,6 +39,10 @@ export class TuiHintHoverDirective extends TuiDriver {
     }
 
     @HostListener('click', ['true'])
+    onClick(visible: boolean): void {
+        this.click$.next(visible);
+    }
+
     toggle(visible: boolean): void {
         this.toggle$.next(visible);
     }
