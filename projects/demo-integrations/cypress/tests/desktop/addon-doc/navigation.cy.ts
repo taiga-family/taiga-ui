@@ -37,6 +37,7 @@ describe(`Navigation`, () => {
         it(`scroll after click on link with anchor`, () => {
             cy.tuiVisit(`/getting-started`);
 
+            cy.wait(500); // @note: fix flaky in proprietary
             cy.get(`a[fragment="root"]`).should(`be.visible`).click();
             cy.get(`#root`).should(`be.inViewport`);
         });

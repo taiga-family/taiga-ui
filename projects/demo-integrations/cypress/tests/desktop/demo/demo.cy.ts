@@ -9,6 +9,7 @@ import {
 import {
     EXAMPLE_ID,
     WAIT_BEFORE_SCREENSHOT,
+    WAIT_BEFORE_SCREENSHOT_COMPONENTS,
 } from '@demo-integrations/support/properties/shared.entities';
 
 describe(`Demo`, () => {
@@ -49,7 +50,7 @@ describe(`Demo`, () => {
                         ? cy.get(`@example`)
                         : cy
                               .get(`@example`)
-                              .wait(Cypress.env(`waitBeforeScreenshotComponents`))
+                              .wait(WAIT_BEFORE_SCREENSHOT_COMPONENTS)
                               .matchImageSnapshot(`${path}/${index + 1}`);
                 });
             });
