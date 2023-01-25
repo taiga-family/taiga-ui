@@ -322,6 +322,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Components`,
+        title: `ElasticContainer`,
+        keywords: `container, height, transition, expand, контейнер, высота, анимация`,
+        route: `/components/elastic-container`,
+    },
+    {
+        section: $localize`Components`,
         title: `Filter`,
         keywords: `фильтр, filters`,
         route: `/components/filter`,
