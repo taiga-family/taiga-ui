@@ -5,7 +5,7 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {merge, Observable} from 'rxjs';
-import {distinctUntilChanged, map} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 
 @Directive({
     selector: '[tuiElasticContainer]',
@@ -25,6 +25,7 @@ import {distinctUntilChanged, map} from 'rxjs/operators';
 export class TuiElasticContainerDirective {
     @Output()
     readonly tuiElasticContainer = merge(this.resize$, this.mutation$).pipe(
+        debounceTime(0),
         map(() => this.elementRef.nativeElement.clientHeight),
         distinctUntilChanged(),
     );
