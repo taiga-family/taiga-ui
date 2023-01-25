@@ -32,8 +32,8 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject, combineLatest, EMPTY, Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {BehaviorSubject, EMPTY, merge, Observable} from 'rxjs';
+import {distinctUntilChanged, skip} from 'rxjs/operators';
 
 import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.directive';
 
@@ -42,6 +42,7 @@ export interface TuiHostedDropdownContext
     close(): void;
 }
 
+/* eslint-disable @typescript-eslint/member-ordering */
 @Component({
     selector: 'tui-hosted-dropdown',
     templateUrl: './hosted-dropdown.template.html',
@@ -59,7 +60,8 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @ViewChild(TuiDropdownDirective)
     private readonly dropdownDirective?: TuiDropdownDirective;
 
-    private readonly manual$ = new BehaviorSubject(false);
+    /** TODO: rename in 4.0 */
+    readonly openChange = new BehaviorSubject(false);
 
     @ViewChild(TuiActiveZoneDirective)
     readonly activeZone!: TuiActiveZoneDirective;
@@ -76,18 +78,16 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @tuiDefaultProp()
     canOpen = true;
 
-    @Output()
-    readonly openChange = new EventEmitter<boolean>();
+    @Output('openChange')
+    readonly open$ = merge(this.openChange, this.hover$ || EMPTY).pipe(
+        skip(1),
+        distinctUntilChanged(),
+    );
 
     @Output()
     readonly focusedChange = new EventEmitter<boolean>();
 
     readonly context!: TuiContextWithImplicit<TuiActiveZoneDirective>;
-
-    readonly open$ = combineLatest([
-        this.manual$,
-        (this.hover$ || EMPTY).pipe(startWith(false)),
-    ]).pipe(map(([manual, hover]) => manual || hover));
 
     constructor(
         @Optional()
@@ -99,11 +99,11 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @Input()
     @tuiDefaultProp()
     set open(open: boolean) {
-        this.manual$.next(open);
+        this.openChange.next(open);
     }
 
     get open(): boolean {
-        return this.manual$.value;
+        return this.openChange.value;
     }
 
     get host(): HTMLElement {
@@ -198,12 +198,9 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     }
 
     updateOpen(open: boolean): void {
-        if (open && !this.canOpen) {
-            return;
+        if (!open || this.canOpen) {
+            this.open = open;
         }
-
-        this.open = open;
-        this.openChange.emit(open);
     }
 
     readonly close = (): void => this.updateOpen(false);
