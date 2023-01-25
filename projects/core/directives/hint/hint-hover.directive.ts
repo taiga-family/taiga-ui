@@ -38,9 +38,9 @@ export class TuiHintHoverDirective extends TuiDriver {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
-    @HostListener('click', ['true'])
-    onClick(visible: boolean): void {
-        this.click$.next(visible);
+    @HostListener('click')
+    onClick(): void {
+        this.click$.next(true);
     }
 
     toggle(visible: boolean): void {
