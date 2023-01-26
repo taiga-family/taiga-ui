@@ -5,6 +5,7 @@ import {
     ElementRef,
     HostBinding,
     Inject,
+    OnDestroy,
     Optional,
     Self,
 } from '@angular/core';
@@ -42,7 +43,7 @@ import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.direc
     providers: [TuiDestroyService, TuiPositionService],
     animations: [tuiDropdownAnimation],
 })
-export class TuiDropdownComponent {
+export class TuiDropdownComponent implements OnDestroy {
     @HostBinding('@tuiDropdownAnimation')
     readonly dropdownAnimation = {
         value: TuiDropdownAnimation.FadeInTop,
@@ -68,6 +69,10 @@ export class TuiDropdownComponent {
         position$.pipe(takeUntil(destroy$)).subscribe(([top, left]) => {
             this.update(top, left);
         });
+    }
+
+    ngOnDestroy(): void {
+        this.onHoveredChange(false);
     }
 
     onHoveredChange(hovered: boolean): void {

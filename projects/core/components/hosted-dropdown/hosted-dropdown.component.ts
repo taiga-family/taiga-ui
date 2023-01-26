@@ -32,7 +32,7 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject, EMPTY, merge, Observable} from 'rxjs';
+import {BehaviorSubject, EMPTY, merge} from 'rxjs';
 import {distinctUntilChanged, skip} from 'rxjs/operators';
 
 import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.directive';
@@ -92,7 +92,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     constructor(
         @Optional()
         @Inject(TuiDropdownHoverDirective)
-        private readonly hover$: Observable<boolean> | null,
+        private readonly hover$: TuiDropdownHoverDirective | null,
         @Inject(ElementRef) private readonly elementRef: ElementRef,
     ) {}
 
@@ -150,7 +150,11 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
 
     @HostListener('click', ['$event.target'])
     onClick(target: HTMLElement): void {
-        if (!this.hostEditable && this.computedHost.contains(target)) {
+        if (
+            !this.hostEditable &&
+            this.computedHost.contains(target) &&
+            !this.hover$?.hovered
+        ) {
             this.updateOpen(!this.open);
         }
     }
