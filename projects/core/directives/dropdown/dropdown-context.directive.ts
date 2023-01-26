@@ -10,7 +10,12 @@ import {
     TuiDriver,
     TuiRectAccessor,
 } from '@taiga-ui/core/abstract';
+import {shouldCall} from '@tinkoff/ng-event-plugins';
 import {Subject} from 'rxjs';
+
+function activeZoneFilter(this: TuiDropdownContextDirective, target: Element): boolean {
+    return !this.activeZone.contains(target);
+}
 
 @Directive({
     selector: '[tuiDropdown][tuiDropdownContext]',
@@ -27,7 +32,7 @@ export class TuiDropdownContextDirective extends TuiDriver implements TuiRectAcc
 
     constructor(
         @Inject(TuiActiveZoneDirective)
-        private readonly activeZone: TuiActiveZoneDirective,
+        readonly activeZone: TuiActiveZoneDirective,
     ) {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
@@ -38,13 +43,12 @@ export class TuiDropdownContextDirective extends TuiDriver implements TuiRectAcc
         this.stream$.next(true);
     }
 
-    @HostListener('document:click', ['$event.target'])
+    @shouldCall(activeZoneFilter)
+    @HostListener('document:click.silent', ['$event.target'])
     @HostListener('document:contextmenu.capture.silent', ['$event.target'])
     @HostListener('document:keydown.esc', ['$event.currentTarget'])
-    closeDropdown(target: Element): void {
-        if (!this.activeZone.contains(target)) {
-            this.stream$.next(false);
-        }
+    closeDropdown(): void {
+        this.stream$.next(false);
     }
 
     getClientRect(): ClientRect {
