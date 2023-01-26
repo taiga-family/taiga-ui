@@ -2,6 +2,7 @@ import './tiptap-editor.types';
 
 import {Inject, Injectable} from '@angular/core';
 import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
+import type {TuiEditableIframe} from '@taiga-ui/addon-editor/extensions/iframe-editor';
 import type {TuiYoutubeOptions} from '@taiga-ui/addon-editor/extensions/youtube';
 import {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
 import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
@@ -347,5 +348,9 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
 
     setYoutubeVideo(options: TuiYoutubeOptions): void {
         this.editor.commands.setYoutubeVideo(options as any);
+    }
+
+    setIframe(options: TuiEditableIframe): void {
+        this.editor.commands.setIframe(options);
     }
 }

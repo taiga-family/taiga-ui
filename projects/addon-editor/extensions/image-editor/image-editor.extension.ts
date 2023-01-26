@@ -10,13 +10,7 @@ import {
 import {DOMOutputSpec, NodeSpec} from 'prosemirror-model';
 
 import {TuiImageEditorComponent} from './image-editor.component';
-
-export interface TuiEditableImage {
-    src: string;
-    width?: number;
-    alt?: string;
-    title?: string;
-}
+import type {TuiEditableImage} from './image-editor.options';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {

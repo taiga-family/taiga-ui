@@ -1,0 +1,62 @@
+@import 'taiga-ui-local';
+
+:host {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+
+    .t-resizable {
+        box-sizing: border-box;
+
+        &-auto-height {
+            height: auto !important;
+        }
+    }
+
+    iframe {
+        display: inline;
+        pointer-events: none;
+    }
+
+    &:hover .t-handle:after {
+        opacity: 1;
+    }
+}
+
+.t-handle {
+    position: absolute;
+    top: 0;
+    display: flex;
+    width: 0.75rem;
+    cursor: col-resize;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    &:after {
+        .transition(opacity);
+        content: '';
+        width: 50%;
+        height: 33%;
+        box-sizing: border-box;
+        border-radius: var(--tui-radius-m);
+        background: var(--tui-base-08);
+        border: 1px solid var(--tui-base-03);
+        opacity: 0;
+    }
+
+    &-left-side {
+        left: 0;
+    }
+
+    &-bottom-side {
+        top: unset;
+        bottom: 0.3125rem;
+        height: 0.95rem;
+        width: 100%;
+    }
+
+    &-right-side {
+        right: 0;
+    }
+}
