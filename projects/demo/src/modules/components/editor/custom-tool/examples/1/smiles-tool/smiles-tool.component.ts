@@ -1,10 +1,11 @@
-import {Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor';
 
 @Component({
     selector: 'smiles-tool',
     templateUrl: './smiles-tool.template.html',
     styleUrls: ['./smiles-tool.styles.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleTuiSmilesToolComponent {
     /* More smiles: https://www.w3schools.com/charsets/ref_emoji.asp */

@@ -4,7 +4,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
     selector: 'spaces',
-    templateUrl: 'spaces.template.html',
+    templateUrl: './spaces.template.html',
     changeDetection,
 })
 export class SpacesComponent {

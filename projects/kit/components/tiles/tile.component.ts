@@ -22,7 +22,7 @@ import {TuiTilesComponent} from './tiles.component';
 
 @Component({
     selector: 'tui-tile',
-    templateUrl: 'tile.template.html',
+    templateUrl: './tile.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTileComponent {

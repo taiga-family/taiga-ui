@@ -37,10 +37,10 @@ export class TuiTiptapEditorDirective {
     }
 
     @Output()
-    valueChange = this.editor.valueChange$;
+    readonly valueChange = this.editor.valueChange$;
 
     @Output()
-    stateChange = this.editor.stateChange$;
+    readonly stateChange = this.editor.stateChange$;
 
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,

@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import {EMPTY_QUERY, tuiDefaultProp, TuiItemDirective} from '@taiga-ui/cdk';
 import {TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
-import {Subject} from 'rxjs';
 
 @Component({
     selector: 'tui-breadcrumbs',
@@ -24,7 +23,7 @@ import {Subject} from 'rxjs';
         },
     ],
 })
-export class TuiBreadcrumbsComponent implements TuiModeDirective {
+export class TuiBreadcrumbsComponent extends TuiModeDirective {
     @Input()
     @HostBinding('attr.data-size')
     @tuiDefaultProp()
@@ -33,8 +32,5 @@ export class TuiBreadcrumbsComponent implements TuiModeDirective {
     @ContentChildren(TuiItemDirective, {read: TemplateRef})
     readonly items: QueryList<TemplateRef<Record<string, unknown>>> = EMPTY_QUERY;
 
-    readonly change$ = new Subject<void>();
-    readonly mode = 'onLight';
-
-    ngOnChanges(): void {}
+    override readonly mode = 'onLight';
 }

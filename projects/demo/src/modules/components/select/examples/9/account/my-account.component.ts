@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {TuiCurrencyVariants} from '@taiga-ui/addon-commerce';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -13,6 +13,7 @@ export interface MyAccount {
     selector: 'my-account',
     templateUrl: './my-account.component.html',
     styleUrls: ['./my-account.component.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleMyAccountComponent {
     @Input()

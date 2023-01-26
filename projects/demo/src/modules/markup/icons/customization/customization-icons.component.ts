@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TUI_SANITIZER, TUI_SVG_SRC_PROCESSOR} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 
@@ -29,5 +29,6 @@ import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
             },
         },
     ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconsCustomizationComponent {}

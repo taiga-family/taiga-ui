@@ -4,7 +4,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
     selector: 'example-form',
-    templateUrl: 'form.template.html',
+    templateUrl: './form.template.html',
     changeDetection,
 })
 export class FormComponent {

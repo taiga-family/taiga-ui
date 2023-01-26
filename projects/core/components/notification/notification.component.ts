@@ -40,6 +40,7 @@ export class TuiNotificationComponent {
     status: 'error' | 'info' | 'success' | 'warning' = this.options.status;
 
     @Output()
+    // eslint-disable-next-line @angular-eslint/no-output-native
     readonly close = new EventEmitter<void>();
 
     constructor(

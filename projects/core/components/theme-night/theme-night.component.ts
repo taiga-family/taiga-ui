@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 import {AbstractTuiThemeSwitcher} from '@taiga-ui/cdk';
 
 @Component({
@@ -6,5 +6,6 @@ import {AbstractTuiThemeSwitcher} from '@taiga-ui/cdk';
     template: '',
     styleUrls: ['./theme-night.style.less'],
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiThemeNightComponent extends AbstractTuiThemeSwitcher {}

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TUI_SANITIZER} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 
@@ -17,6 +17,7 @@ import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
             useClass: NgDompurifySanitizer,
         },
     ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InlineSvgExampleComponent {
     svg = `

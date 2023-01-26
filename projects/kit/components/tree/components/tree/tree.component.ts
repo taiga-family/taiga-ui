@@ -19,8 +19,8 @@ import {TuiTreeItemComponent} from '../tree-item/tree-item.component';
 
 @Component({
     selector: 'tui-tree[value]',
-    templateUrl: 'tree.template.html',
-    styleUrls: ['tree.style.less'],
+    templateUrl: './tree.template.html',
+    styleUrls: ['./tree.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

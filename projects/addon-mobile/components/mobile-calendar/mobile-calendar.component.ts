@@ -1,6 +1,7 @@
 import {CdkVirtualScrollViewport} from '@angular/cdk/scrolling';
 import {DOCUMENT} from '@angular/common';
 import {
+    AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
@@ -69,7 +70,7 @@ import {
     providers: TUI_MOBILE_CALENDAR_PROVIDERS,
     host: {'[class._ios]': 'isIOS'},
 })
-export class TuiMobileCalendarComponent {
+export class TuiMobileCalendarComponent implements AfterViewInit {
     @ViewChild('yearsScrollRef')
     private readonly yearsScrollRef?: CdkVirtualScrollViewport;
 

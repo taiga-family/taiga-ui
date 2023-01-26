@@ -13,8 +13,8 @@ import {
 
 @Component({
     selector: 'colors',
-    templateUrl: 'colors.template.html',
-    styleUrls: ['colors.style.less'],
+    templateUrl: './colors.template.html',
+    styleUrls: ['./colors.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })

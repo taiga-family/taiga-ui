@@ -37,6 +37,7 @@ export class TuiPreviewZoomComponent {
     readonly valueChange = new EventEmitter<number>();
 
     @Output()
+    // eslint-disable-next-line @angular-eslint/no-output-native
     readonly reset = new EventEmitter<void>();
 
     readonly hintShow$ = this.valueChange.pipe(

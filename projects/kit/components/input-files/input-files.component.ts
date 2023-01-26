@@ -95,7 +95,7 @@ export class TuiInputFilesComponent
     maxFileSize = this.options.maxFileSize;
 
     @Output()
-    reject = new EventEmitter<TuiFileLike | readonly TuiFileLike[]>();
+    readonly reject = new EventEmitter<TuiFileLike | readonly TuiFileLike[]>();
 
     constructor(
         @Optional()

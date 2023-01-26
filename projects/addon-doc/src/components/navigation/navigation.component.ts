@@ -33,8 +33,8 @@ import {
 
 @Component({
     selector: 'tui-doc-navigation',
-    templateUrl: 'navigation.template.html',
-    styleUrls: ['navigation.style.less'],
+    templateUrl: './navigation.template.html',
+    styleUrls: ['./navigation.style.less'],
     providers: NAVIGATION_PROVIDERS,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

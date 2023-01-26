@@ -6,7 +6,7 @@ import {switchMap} from 'rxjs/operators';
 
 @Component({
     selector: 'changelog',
-    templateUrl: 'changelog.template.html',
+    templateUrl: './changelog.template.html',
     styleUrls: ['./changelog.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection,

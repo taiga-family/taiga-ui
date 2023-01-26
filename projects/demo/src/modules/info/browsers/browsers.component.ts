@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 
 @Component({
     selector: 'browsers',
-    templateUrl: 'browsers.template.html',
+    templateUrl: './browsers.template.html',
     styleUrls: ['./browsers.style.less'],
     changeDetection,
 })

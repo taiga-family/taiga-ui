@@ -4,7 +4,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
     selector: 'tables',
-    templateUrl: 'tables.template.html',
+    templateUrl: './tables.template.html',
     styleUrls: ['./tables.style.less'],
     changeDetection,
 })

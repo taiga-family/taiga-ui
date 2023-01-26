@@ -25,6 +25,7 @@ const isFakeHistoryState = (
     templateUrl: './dialog-host.template.html',
     styleUrls: ['./dialog-host.style.less'],
     // So that we do not force OnPush on custom dialogs
+    // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
     animations: [TUI_PARENT_ANIMATION],
 })

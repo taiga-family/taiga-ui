@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeS} from '@taiga-ui/core';
 
@@ -6,6 +6,7 @@ import {TuiSizeS} from '@taiga-ui/core';
     selector: 'example-progress-segmented',
     templateUrl: './progress-segmented.template.html',
     styleUrls: ['./progress-segmented.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleProgressSegmentedComponent {
     value = 3;

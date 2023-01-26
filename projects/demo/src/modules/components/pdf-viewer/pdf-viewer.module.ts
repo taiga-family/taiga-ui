@@ -7,8 +7,8 @@ import {TuiPdfViewerModule} from '@taiga-ui/kit';
 
 import {TuiPdfViewerExample1} from './examples/1';
 import {TuiPdfViewerExample2} from './examples/2';
-import {ActionsContent} from './examples/2/actions-content.component';
-import {PdfContent} from './examples/2/pdf-content.component';
+import {ActionsContentComponent} from './examples/2/actions-content.component';
+import {PdfContentComponent} from './examples/2/pdf-content.component';
 import {TuiPdfViewerExample3} from './examples/3';
 import {ExampleTuiPdfViewerComponent} from './pdf-viewer.component';
 
@@ -24,8 +24,8 @@ import {ExampleTuiPdfViewerComponent} from './pdf-viewer.component';
     ],
     declarations: [
         ExampleTuiPdfViewerComponent,
-        PdfContent,
-        ActionsContent,
+        PdfContentComponent,
+        ActionsContentComponent,
         TuiPdfViewerExample1,
         TuiPdfViewerExample2,
         TuiPdfViewerExample3,
