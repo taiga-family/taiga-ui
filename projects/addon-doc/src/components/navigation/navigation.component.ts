@@ -1,7 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {
+    AfterViewInit,
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     HostBinding,
     Inject,
@@ -16,7 +16,7 @@ import {tuiControlValue, TuiDestroyService, tuiPure, tuiUniqBy} from '@taiga-ui/
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {TuiInputComponent} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
-import {filter, map, startWith, take, takeUntil} from 'rxjs/operators';
+import {delay, filter, map, startWith, take, takeUntil} from 'rxjs/operators';
 
 import {TuiDocPage} from '../../interfaces/page';
 import {TUI_DOC_SEARCH_TEXT} from '../../tokens/i18n';
@@ -38,7 +38,7 @@ import {
     providers: NAVIGATION_PROVIDERS,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDocNavigationComponent {
+export class TuiDocNavigationComponent implements AfterViewInit {
     @HostBinding('class._open')
     menuOpen = false;
 
@@ -59,9 +59,8 @@ export class TuiDocNavigationComponent {
     );
 
     constructor(
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(Title) titleService: Title,
-        @Inject(NAVIGATION_TITLE) title$: Observable<string>,
+        @Inject(Title) private readonly titleService: Title,
+        @Inject(NAVIGATION_TITLE) private readonly title$: Observable<string>,
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(TuiModeDirective)
         private readonly mode: TuiModeDirective,
@@ -78,12 +77,11 @@ export class TuiDocNavigationComponent {
         @Inject(TUI_DOC_PAGE_LOADED)
         private readonly readyToScroll$: Observable<boolean>,
         @Inject(TUI_DOC_SCROLL_BEHAVIOR) private readonly scrollBehavior: ScrollBehavior,
-    ) {
-        // Angular can't navigate no anchor links
-        // https://stackoverflow.com/questions/36101756/angular2-routing-with-hashtag-to-page-anchor
-        title$.subscribe(title => {
-            changeDetectorRef.markForCheck();
-            titleService.setTitle(title);
+    ) {}
+
+    ngAfterViewInit(): void {
+        this.title$.pipe(delay(0), takeUntil(this.destroy$)).subscribe(title => {
+            this.titleService.setTitle(title);
             this.openActivePageGroup();
             this.handleAnchorLink(this.activatedRoute.snapshot.fragment || '');
         });
