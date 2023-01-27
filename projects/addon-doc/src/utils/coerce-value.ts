@@ -35,9 +35,7 @@ function isBooleanParamValue(value: string): boolean {
 }
 
 function isNumberParamValue(value: string): boolean {
-    // TODO: investigate to disallow potentially catastrophic exponential-time regular expressions.
-    // eslint-disable-next-line unicorn/no-unsafe-regex
-    return /^-?[\d.]+(?:e-?\d+)?$/.test(value);
+    return !!value.trim() && !Number.isNaN(Number(value)) && !value.startsWith(`+`);
 }
 
 function isPossibleArray(value: string): boolean {

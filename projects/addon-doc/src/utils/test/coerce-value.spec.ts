@@ -8,11 +8,21 @@ describe(`coercing values`, () => {
         expect(tuiCoerceValue(`Hello world`)).toBe(`Hello world`);
         expect(tuiCoerceValue(`2+5`)).toBe(`2+5`);
         expect(tuiCoerceValue(``)).toBe(``);
+        expect(tuiCoerceValue(`    `)).toBe(``);
     });
 
     it(`string -> number`, () => {
         expect(tuiCoerceValue(`123`)).toBe(123);
         expect(tuiCoerceValue(`-123`)).toBe(-123);
+        expect(tuiCoerceValue(`.2`)).toBe(0.2);
+        expect(tuiCoerceValue(`-.2`)).toBe(-0.2);
+        expect(tuiCoerceValue(`2e5`)).toBe(200000);
+
+        expect(tuiCoerceValue(`.`)).not.toBeInstanceOf(Number);
+        expect(tuiCoerceValue(`1,2`)).not.toBeInstanceOf(Number);
+        expect(tuiCoerceValue(`abc`)).not.toBeInstanceOf(Number);
+        expect(tuiCoerceValue(`1+2`)).not.toBeInstanceOf(Number);
+        expect(tuiCoerceValue(`   123   `)).not.toBeInstanceOf(Number);
     });
 
     it(`string -> boolean`, () => {
