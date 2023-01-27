@@ -10,6 +10,7 @@ import {
     TuiDropdownModule,
     TuiHostedDropdownModule,
     TuiLinkModule,
+    TuiLoaderModule,
     TuiNotificationModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
@@ -40,8 +41,9 @@ import {TuiButtonExample6} from './examples/6';
         TuiNotificationModule,
         InheritedDocumentationModule,
         TuiAddonDocModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiButtonComponent)),
+        TuiLoaderModule,
         TuiLinkModule,
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiButtonComponent)),
     ],
     declarations: [
         ExampleTuiButtonComponent,
