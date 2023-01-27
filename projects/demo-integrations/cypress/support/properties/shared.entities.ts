@@ -1,5 +1,9 @@
-export const WAIT_BEFORE_SCREENSHOT = Cypress.env(`waitBeforeScreenshot`);
-export const DEFAULT_TIMEOUT_BEFORE_ACTION = Cypress.env(`waitBeforeAction`);
+export const DEFAULT_TIMEOUT_BEFORE_ACTION = Cypress.env(`waitBeforeAction`) ?? 50;
+export const WAIT_BEFORE_SCREENSHOT = Cypress.env(`waitBeforeScreenshot`) ?? 1000;
+export const WAIT_BEFORE_SCREENSHOT_COMPONENTS =
+    Cypress.env(`waitBeforeScreenshotComponents`) ?? 50;
+export const FONTS_MATRIX_BY_BREAKPOINT: Array<[string, {width: number; font: string}]> =
+    Object.entries(Cypress.env(`fonts`) ?? []);
 export const PROSE_MIRROR_EDITOR_SELECTOR = `.ProseMirror[contenteditable]`;
 export const NIGHT_THEME_KEY = `night`;
 export const EXAMPLE_ID = `tui-doc-example`;
@@ -12,4 +16,3 @@ export const INPUT_RANGE_PAGE_URL = `components/input-range`;
 export const INPUT_SLIDER_PAGE_URL = `components/input-slider`;
 export const INPUT_PAGE_URL = `components/input`;
 export const RANGE_PAGE_URL = `components/range`;
-export const BREAKPOINTS_PAGE_URL = `/breakpoints`;
