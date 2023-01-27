@@ -68,6 +68,8 @@ export class TuiDropdownComponent {
         position$.pipe(takeUntil(destroy$)).subscribe(([top, left]) => {
             this.update(top, left);
         });
+
+        this.updateWidth();
     }
 
     onHoveredChange(hovered: boolean): void {
@@ -87,7 +89,7 @@ export class TuiDropdownComponent {
     private update(top: number, left: number): void {
         const {style} = this.elementRef.nativeElement;
         const {right} = this.elementRef.nativeElement.getBoundingClientRect();
-        const {limitWidth, maxHeight, offset} = this.options;
+        const {maxHeight, offset} = this.options;
         const {innerHeight} = this.windowRef;
         const {clientRect} = this.host;
         const {position} = this.directive;
@@ -110,6 +112,14 @@ export class TuiDropdownComponent {
         style.maxHeight = tuiPx(Math.min(maxHeight, available));
         style.width = '';
         style.minWidth = '';
+
+        this.updateWidth();
+    }
+
+    private updateWidth(): void {
+        const {style} = this.elementRef.nativeElement;
+        const rect = this.accessor.getClientRect();
+        const {limitWidth} = this.options;
 
         switch (limitWidth) {
             case 'min':

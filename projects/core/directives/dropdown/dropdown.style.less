@@ -16,6 +16,10 @@
     &.ng-animating {
         pointer-events: none;
     }
+
+    &:not([style*='top']) {
+        visibility: hidden;
+    }
 }
 
 .t-wrapper {
