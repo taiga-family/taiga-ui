@@ -4,7 +4,7 @@
     "dependencies": {
         "@ng-web-apis/universal": "2.1.0",
         "@nguniversal/express-engine": "~12.1.3",
-        "@stackblitz/sdk": "^1.8.1",
+        "@stackblitz/sdk": "^1.8.2",
         "@tinkoff/angular-contenteditable-accessor": "~1.2.0",
         "@tinkoff/ng-dompurify": "^3.0.0",
         "date-fns": "2.29.3",
