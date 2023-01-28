@@ -147,6 +147,15 @@
                     "namedChunks": false,
                     "statsJson": false,
                     "budgets": []
+                },
+                "serve-coalescing": {
+                    "baseHref": "/",
+                    "fileReplacements": [
+                        {
+                            "replace": "projects/demo/src/emulate/ng-zone-options.ts",
+                            "with": "projects/demo/src/emulate/ng-zone-options.coalescing.ts"
+                        }
+                    ]
                 }
             },
             "defaultConfiguration": "production"
@@ -197,8 +206,10 @@
                     "browserTarget": "demo:build:development"
                 },
                 "development-fast": {
-                    "port": 3334,
                     "browserTarget": "demo:build:serve-fast"
+                },
+                "coalescing": {
+                    "browserTarget": "demo:build:serve-coalescing"
                 }
             },
             "defaultConfiguration": "development"
