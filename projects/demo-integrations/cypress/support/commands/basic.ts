@@ -1,8 +1,8 @@
-import {tuiFocus} from '@demo-integrations/support/helpers/focus';
 import {
     tuiFindDocExample,
     tuiGetDocExample,
 } from '@demo-integrations/support/helpers/example-id-utils';
+import {tuiFocus} from '@demo-integrations/support/helpers/focus';
 import {tuiHide} from '@demo-integrations/support/helpers/hide';
 import {tuiScrollIntoView} from '@demo-integrations/support/helpers/scroll-into-view';
 import {tuiSetLanguage} from '@demo-integrations/support/helpers/set-language';
