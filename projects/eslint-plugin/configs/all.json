@@ -11,6 +11,7 @@
                 "currentProject": "(?<=projects/)([-\\w]+)",
                 "ignoreImports": ["\\?raw", "@taiga-ui/testing/cypress", "@taiga-ui/testing/setup-jest"]
             }
-        ]
+        ],
+        "@taiga-ui/strict-tui-doc-example": "error"
     }
 }

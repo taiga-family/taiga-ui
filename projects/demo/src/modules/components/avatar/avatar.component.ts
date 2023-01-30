@@ -39,7 +39,7 @@ export class ExampleTuiAvatarComponent {
     readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
-        LESS: import('./examples/4/index.html?raw'),
+        LESS: import('./examples/4/index.less?raw'),
     };
 
     readonly example5: TuiDocExample = {

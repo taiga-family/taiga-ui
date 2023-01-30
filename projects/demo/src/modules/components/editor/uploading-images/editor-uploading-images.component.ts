@@ -21,7 +21,7 @@ export class ExampleTuiEditorUploadingImagesComponent {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
-        './image-loader.ts': import('./examples/1/image-loader?raw'),
-        './imgbb.service.ts': import('./examples/1/imgbb.service?raw'),
+        './image-loader.ts': import('./examples/1/image-loader.ts?raw'),
+        './imgbb.service.ts': import('./examples/1/imgbb.service.ts?raw'),
     };
 }

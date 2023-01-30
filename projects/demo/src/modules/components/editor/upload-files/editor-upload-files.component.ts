@@ -21,6 +21,6 @@ export class ExampleTuiEditorUploadFilesComponent {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
-        './filesio.service.ts': import('./examples/1/filesio.service?raw'),
+        './filesio.service.ts': import('./examples/1/filesio.service.ts?raw'),
     };
 }
