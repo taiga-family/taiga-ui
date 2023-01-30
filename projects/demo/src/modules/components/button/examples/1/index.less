@@ -1,0 +1,19 @@
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+:host {
+    .loader {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    &:not(._cypress) .loader {
+        animation: rotating 1.5s linear infinite;
+    }
+}
