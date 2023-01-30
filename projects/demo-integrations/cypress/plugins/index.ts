@@ -1,9 +1,9 @@
-// don't change import to `@taiga-ui/testing/cypress` until merging of this PR
-// https://github.com/jaredpalmer/cypress-image-snapshot/pull/250
 import {
     TUI_CYPRESS_DESKTOP_VIEWPORT_HEIGHT,
     TUI_CYPRESS_DESKTOP_VIEWPORT_WIDTH,
 } from '@demo-integrations/cypress.options';
+// don't change import to `@taiga-ui/testing/cypress` until merging of this PR
+// https://github.com/jaredpalmer/cypress-image-snapshot/pull/250
 import {tuiAddSnapshotPlugin} from '@taiga-ui/testing/cypress/snapshot/plugin';
 
 export default async (
