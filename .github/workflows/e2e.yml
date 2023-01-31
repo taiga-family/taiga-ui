@@ -64,13 +64,7 @@ jobs:
             demo,
             kit,
           ]
-        type: [desktop]
-        include:
-          - project: addon-tablebars
-            type: mobile
-          - project: kit
-            type: mobile
-    name: ${{ matrix.project }} / ${{ matrix.type }}
+    name: ${{ matrix.project }}
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node.js and Cache
@@ -92,7 +86,7 @@ jobs:
         run: npx nx serve-compiled --path ${{ env.LOCAL_REF_DEMO }} --port ${{ env.NG_SERVER_PORT }}
 
       - name: Run screenshot tests on ${{ env.LOCAL_REF_DEMO }}
-        run: npx nx e2e-ci --key localhost --folder ${{ matrix.project }} --config cypress.config.${{ matrix.type }}.ts
+        run: npx nx e2e-ci --key localhost --folder ${{ matrix.project }}
 
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}

@@ -1,8 +1,10 @@
+import {
+    TUI_CYPRESS_DESKTOP_VIEWPORT_HEIGHT,
+    TUI_CYPRESS_DESKTOP_VIEWPORT_WIDTH,
+} from '@demo-integrations/cypress.options';
 // don't change import to `@taiga-ui/testing/cypress` until merging of this PR
 // https://github.com/jaredpalmer/cypress-image-snapshot/pull/250
 import {tuiAddSnapshotPlugin} from '@taiga-ui/testing/cypress/snapshot/plugin';
-
-import {viewportHeight, viewportWidth} from '../../cypress.config';
 
 export default async (
     on: Cypress.PluginEvents,
@@ -17,7 +19,7 @@ export default async (
         if (browser.name === `chrome`) {
             launchOptions.args.push(
                 `--font-render-hinting=none`, // prevent inconsistent text rendering in headless mode
-                `--window-size=${viewportWidth},${viewportHeight}`,
+                `--window-size=${TUI_CYPRESS_DESKTOP_VIEWPORT_WIDTH},${TUI_CYPRESS_DESKTOP_VIEWPORT_HEIGHT}`,
                 `--force-device-scale-factor=2`,
                 `--high-dpi-support=1`,
                 `--force-color-profile=srgb`,

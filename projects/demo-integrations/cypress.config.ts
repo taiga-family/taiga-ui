@@ -1,8 +1,9 @@
-import {TUI_COMPONENTS_EXCLUSION} from '@demo-integrations/support/properties/exclusions';
 import {defineConfig} from 'cypress';
 
-export const viewportWidth = 1440;
-export const viewportHeight = 900;
+import {
+    TUI_CYPRESS_DESKTOP_VIEWPORT_HEIGHT as viewportHeight,
+    TUI_CYPRESS_DESKTOP_VIEWPORT_WIDTH as viewportWidth,
+} from './cypress/cypress.options';
 
 export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
     projectId: `sorry-cypress`,
@@ -44,8 +45,27 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
      */
     numTestsKeptInMemory: 0,
 
+    env: {
+        componentsExclusion: [
+            [`components/select`, [5]],
+            [`components/multi-select`, [4]],
+            [`components/mobile-calendar`, [2, 3]], // flaky test, need investigate
+            [`components/table`, [4, 5]], // randomly generated data
+            [`components/preview`, [1, 2, 3]],
+            [`components/progress-bar`, [6]], // indeterminate progress bar
+        ],
+        waitBeforeScreenshot: 1000,
+        waitBeforeAction: 50,
+        fonts: {
+            '@tui-mobile-min': {width: 360, font: `Manrope`},
+            '@tui-mobile': {width: 767, font: `Manrope`},
+            '@tui-tablet': {width: 1024, font: `Manrope`},
+            '@tui-desktop': {width: 1280, font: `Manrope`},
+        },
+    },
+
     e2e: {
-        specPattern: `cypress/tests/desktop/**/*.cy.ts`,
+        specPattern: `cypress/tests/**/*.cy.ts`,
         supportFile: `cypress/support/e2e.ts`,
         baseUrl: `http://localhost:3333`,
         /**
@@ -59,20 +79,5 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
     },
 };
 
-export const TUI_CYPRESS_ENV = {
-    componentsExclusion: TUI_COMPONENTS_EXCLUSION,
-    waitBeforeScreenshot: 1000,
-    waitBeforeAction: 50,
-    fonts: {
-        '@tui-mobile-min': {width: 360, font: `Manrope`},
-        '@tui-mobile': {width: 767, font: `Manrope`},
-        '@tui-tablet': {width: 1024, font: `Manrope`},
-        '@tui-desktop': {width: 1280, font: `Manrope`},
-    },
-};
-
 // noinspection JSUnusedGlobalSymbols
-export default defineConfig({
-    ...TUI_CYPRESS_CONFIG,
-    env: TUI_CYPRESS_ENV,
-});
+export default defineConfig(TUI_CYPRESS_CONFIG);

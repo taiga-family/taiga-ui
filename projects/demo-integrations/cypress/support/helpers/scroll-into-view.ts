@@ -1,5 +1,3 @@
-import {DEFAULT_TIMEOUT_BEFORE_ACTION} from '@demo-integrations/support/properties/shared.entities';
-
 export const tuiScrollIntoView = (
     $subject: Cypress.PrevSubjectMap<void>[Cypress.PrevSubject],
 ): Cypress.Chainable<unknown> =>
@@ -12,4 +10,4 @@ export const tuiScrollIntoView = (
         })
         .should(`be.inViewport`)
         .should(`be.visible`)
-        .wait(DEFAULT_TIMEOUT_BEFORE_ACTION);
+        .tuiWaitBeforeAction();
