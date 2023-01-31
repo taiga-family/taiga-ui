@@ -12,6 +12,8 @@ const fileNameToExtension = {
     TypeScript: `.ts`,
     HTML: `.html`,
     LESS: `.less`,
+    CSS: '.css',
+    JavaScript: '.md',
 };
 
 /**
