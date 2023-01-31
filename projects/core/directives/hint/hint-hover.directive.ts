@@ -1,4 +1,4 @@
-import {Directive, HostListener, Inject, Input} from '@angular/core';
+import {Directive, ElementRef, HostListener, Inject, Input} from '@angular/core';
 import {tuiDefaultProp, TuiHoveredService} from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {merge, Observable, of, Subject} from 'rxjs';
@@ -20,7 +20,9 @@ export class TuiHintHoverDirective extends TuiDriver {
                 of(visible).pipe(delay(visible ? this.showDelay : this.hideDelay)),
             ),
         ),
-        this.click$.pipe(switchMap(visible => of(visible).pipe(delay(this.clickDelay)))),
+        this.click$.pipe(
+            switchMap(() => of(true).pipe(delay(this.inTooltip ? 0 : this.showDelay))),
+        ),
     );
 
     @Input('tuiHintShowDelay')
@@ -31,13 +33,10 @@ export class TuiHintHoverDirective extends TuiDriver {
     @tuiDefaultProp()
     hideDelay: TuiHintOptions['hideDelay'] = this.options.hideDelay;
 
-    @Input('tuiHintClickDelay')
-    @tuiDefaultProp()
-    clickDelay: TuiHintOptions['clickDelay'] = this.options.clickDelay;
-
     constructor(
         @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
         @Inject(TUI_HINT_OPTIONS) private readonly options: TuiHintOptions,
+        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
     ) {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
@@ -49,5 +48,9 @@ export class TuiHintHoverDirective extends TuiDriver {
 
     toggle(visible: boolean): void {
         this.toggle$.next(visible);
+    }
+
+    private get inTooltip(): boolean {
+        return !!this.elementRef.nativeElement.closest('tui-tooltip');
     }
 }

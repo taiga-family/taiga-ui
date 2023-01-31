@@ -17,7 +17,6 @@ export interface TuiHintOptions {
     readonly direction: TuiHintDirection;
     readonly showDelay: number;
     readonly hideDelay: number;
-    readonly clickDelay: number;
     readonly appearance: string;
     readonly icon: PolymorpheusContent;
 }
@@ -27,7 +26,6 @@ export const TUI_HINT_DEFAULT_OPTIONS: TuiHintOptions = {
     direction: 'bottom-left',
     showDelay: 500,
     hideDelay: 200,
-    clickDelay: 500,
     appearance: '',
     icon: 'tuiIconHelpCircle',
 };
@@ -82,10 +80,6 @@ export class TuiHintOptionsDirective
     @Input('tuiHintHideDelay')
     @tuiDefaultProp()
     hideDelay = this.options.hideDelay;
-
-    @Input('tuiHintClickDelay')
-    @tuiDefaultProp()
-    clickDelay = this.options.clickDelay;
 
     icon = this.options.icon;
 
