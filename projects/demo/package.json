@@ -10,7 +10,7 @@
         "date-fns": "2.29.3",
         "dompurify": "^2.4.3",
         "ng-yandex-metrika": "^4.0.0",
-        "ngx-markdown": "^12.1.0"
+        "ngx-markdown": "^10.1.1"
     },
     "devDependencies": {
         "@nguniversal/builders": "~12.1.3",
