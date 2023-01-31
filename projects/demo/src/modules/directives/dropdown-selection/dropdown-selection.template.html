@@ -40,6 +40,7 @@
                 [tuiDropdownDirection]="dropdownDirection"
                 [tuiDropdownLimitWidth]="dropdownLimitWidth"
                 [tuiDropdownOffset]="dropdownOffset"
+                (tuiDropdownManualChange)="dropdownDoc?.manualChange?.emitEvent($event)"
             >
                 Select a text to
                 <strong>see a dropdown</strong>
@@ -82,7 +83,7 @@
             >
                 Position of dropdown near text selection
             </ng-template>
-            <dropdown-documentation></dropdown-documentation>
+            <dropdown-documentation #dropdownDoc></dropdown-documentation>
         </tui-doc-documentation>
     </ng-template>
 

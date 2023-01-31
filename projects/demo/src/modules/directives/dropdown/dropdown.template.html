@@ -73,6 +73,7 @@
                     [tuiDropdownOffset]="dropdownOffset"
                     (tuiObscured)="onObscured($event)"
                     (click)="onClick()"
+                    (tuiDropdownManualChange)="dropdownDoc?.manualChange?.emitEvent($event)"
                 >
                     PRESS!
                     <i>* There is also a pretty long text to check its width limitations</i>
@@ -114,7 +115,7 @@
             >
                 Content
             </ng-template>
-            <dropdown-documentation></dropdown-documentation>
+            <dropdown-documentation #dropdownDoc></dropdown-documentation>
         </tui-doc-documentation>
     </ng-template>
 

@@ -76,6 +76,7 @@
                     [tuiHintDirection]="hintDirection"
                     [tuiHintAppearance]="hintAppearance"
                     [style.text-align]="textAlign"
+                    (tuiDropdownManualChange)="inherited?.manualChange?.emitEvent($event)"
                 >
                     Type a phone number
                 </tui-input-phone>

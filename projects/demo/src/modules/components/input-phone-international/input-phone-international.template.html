@@ -57,6 +57,7 @@
                     [pseudoInvalid]="pseudoInvalid"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [(countryIsoCode)]="countryIsoCode"
+                    (tuiDropdownManualChange)="inherited?.manualChange?.emitEvent($event)"
                 >
                     Type a phone number
                 </tui-input-phone-international>

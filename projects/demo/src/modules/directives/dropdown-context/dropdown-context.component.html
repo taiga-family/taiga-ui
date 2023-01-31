@@ -69,13 +69,14 @@
                 [tuiDropdownDirection]="dropdownDirection"
                 [tuiDropdownLimitWidth]="dropdownLimitWidth"
                 [tuiDropdownOffset]="dropdownOffset"
+                (tuiDropdownManualChange)="dropdownDoc?.manualChange?.emitEvent($event)"
             >
                 Right click on me to
                 <strong>see a dropdown</strong>
                 <ng-template #dropdownContent>Hello there!</ng-template>
             </p>
         </tui-doc-demo>
-        <dropdown-documentation></dropdown-documentation>
+        <dropdown-documentation #dropdownDoc></dropdown-documentation>
     </ng-template>
 
     <ng-template pageTab>

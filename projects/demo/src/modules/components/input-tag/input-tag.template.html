@@ -133,6 +133,7 @@
                     [pseudoInvalid]="pseudoInvalid"
                     [style.text-align]="textAlign"
                     [(search)]="search"
+                    (tuiDropdownManualChange)="inherited?.manualChange?.emitEvent($event)"
                 >
                     Please enter Pythons' names
                 </tui-input-tag>

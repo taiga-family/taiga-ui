@@ -163,6 +163,7 @@
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
                     [tuiHintAppearance]="hintAppearance"
+                    (tuiDropdownManualChange)="inherited?.manualChange?.emitEvent($event)"
                 >
                     Choose an account
                     <tui-data-list-wrapper

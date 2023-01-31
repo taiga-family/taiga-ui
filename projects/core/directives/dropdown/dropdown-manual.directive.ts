@@ -1,6 +1,8 @@
-import {Directive, Input, OnChanges} from '@angular/core';
+import {Directive, Inject, Input, OnChanges, Optional} from '@angular/core';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {Subject} from 'rxjs';
+
+import {TuiDropdownManualChangeDirective} from './dropdown-manual-change.directive';
 
 @Directive({
     selector: '[tuiDropdown][tuiDropdownManual]',
@@ -12,11 +14,16 @@ export class TuiDropdownManualDirective extends TuiDriver implements OnChanges {
     @Input()
     tuiDropdownManual = false;
 
-    constructor() {
+    constructor(
+        @Optional()
+        @Inject(TuiDropdownManualChangeDirective)
+        readonly manualChange: TuiDropdownManualChangeDirective | null,
+    ) {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
     ngOnChanges(): void {
         this.stream$.next(this.tuiDropdownManual);
+        this.manualChange?.change.next(this.tuiDropdownManual);
     }
 }

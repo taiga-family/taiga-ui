@@ -41,6 +41,7 @@
                 [tuiDropdownDirection]="dropdownDirection"
                 [tuiDropdownLimitWidth]="dropdownLimitWidth"
                 [tuiDropdownOffset]="dropdownOffset"
+                (tuiDropdownManualChange)="dropdownDoc?.manualChange?.emitEvent($event)"
             >
                 Hover pointer over
                 <strong>to see a dropdown</strong>
@@ -80,7 +81,7 @@
             >
                 Hide delay for dropdown to disappear after pointer is moved away
             </ng-template>
-            <dropdown-documentation></dropdown-documentation>
+            <dropdown-documentation #dropdownDoc></dropdown-documentation>
         </tui-doc-documentation>
     </ng-template>
 

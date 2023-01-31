@@ -1,7 +1,8 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import type {TuiDocDocumentationPropertyConnectorDirective} from '@taiga-ui/addon-doc';
 
-import {AbstractExampleTuiDropdown} from '../dropdown';
+import type {AbstractExampleTuiDropdown} from '../dropdown';
 import {ABSTRACT_PROPS_ACCESSOR} from '../inherited-documentation/abstract-props-accessor';
 
 @Component({
@@ -10,6 +11,9 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../inherited-documentation/abstract-props
     changeDetection,
 })
 export class DropdownDocumentationComponent {
+    @ViewChild('documentationPropertyManualChange')
+    manualChange?: TuiDocDocumentationPropertyConnectorDirective<boolean>;
+
     constructor(
         @Inject(ABSTRACT_PROPS_ACCESSOR)
         readonly documentedComponent: AbstractExampleTuiDropdown,

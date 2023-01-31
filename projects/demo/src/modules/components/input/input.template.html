@@ -262,6 +262,7 @@
                     [tuiHintDirection]="hintDirection"
                     [tuiHintAppearance]="hintAppearance"
                     [style.text-align]="textAlign"
+                    (tuiDropdownManualChange)="inherited?.manualChange?.emitEvent($event)"
                 >
                     Label
                     <strong>strong text</strong>

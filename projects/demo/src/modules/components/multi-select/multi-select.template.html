@@ -138,6 +138,7 @@
                     [pseudoActive]="pseudoPressed"
                     [valueContent]="valueContent"
                     [(search)]="search"
+                    (tuiDropdownManualChange)="inherited?.manualChange?.emitEvent($event)"
                 >
                     Choose an account
                     <tui-data-list-wrapper

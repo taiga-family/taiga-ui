@@ -1,12 +1,15 @@
-import {Component, Inject, Input} from '@angular/core';
+import {Component, Inject, Input, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import type {TuiDocDocumentationPropertyConnectorDirective} from '@taiga-ui/addon-doc';
 import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
 
+// eslint-disable-next-line import/no-cycle
 import {AbstractExampleTuiControl} from '../control';
+import {DropdownDocumentationComponent} from '../dropdown-documentation/dropdown-documentation.component';
 import {AbstractExampleTuiHint} from '../hint';
 import {AbstractExampleTuiInteractive} from '../interactive';
 import {ABSTRACT_PROPS_ACCESSOR} from './abstract-props-accessor';
-import {TuiSupportingDocumentationComponent} from './supporting-documentation-component';
+import type {TuiSupportingDocumentationComponent} from './supporting-documentation-component';
 
 @Component({
     selector: 'inherited-documentation',
@@ -14,6 +17,9 @@ import {TuiSupportingDocumentationComponent} from './supporting-documentation-co
     changeDetection,
 })
 export class InheritedDocumentationComponent {
+    @ViewChild(DropdownDocumentationComponent)
+    readonly dropdownDocumentation?: DropdownDocumentationComponent;
+
     @Input()
     dropdown = false;
 
@@ -27,6 +33,10 @@ export class InheritedDocumentationComponent {
         @Inject(ABSTRACT_PROPS_ACCESSOR)
         readonly documentedComponent: TuiSupportingDocumentationComponent,
     ) {}
+
+    get manualChange(): TuiDocDocumentationPropertyConnectorDirective<boolean> | null {
+        return this.dropdownDocumentation?.manualChange ?? null;
+    }
 
     isTuiReactiveControl(
         documentedComponent: TuiSupportingDocumentationComponent,

@@ -70,6 +70,7 @@
                 [tuiDropdownMaxHeight]="dropdownMaxHeight"
                 [tuiDropdownOffset]="dropdownOffset"
                 [(open)]="open"
+                (tuiDropdownManualChange)="dropdownDoc?.manualChange?.emitEvent($event)"
             >
                 <tui-input
                     class="input"
@@ -146,7 +147,7 @@
                 Whether dropdown should appear on the side or not
             </ng-template>
         </tui-doc-documentation>
-        <dropdown-documentation></dropdown-documentation>
+        <dropdown-documentation #dropdownDoc></dropdown-documentation>
     </ng-template>
 
     <ng-template pageTab>

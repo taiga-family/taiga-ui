@@ -1,3 +1,4 @@
+import {Directive, ViewChild} from '@angular/core';
 import {AbstractControl} from '@angular/forms';
 import {TuiAutofillFieldName, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import {
@@ -12,6 +13,8 @@ import {
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {AbstractExampleTuiDropdown} from './dropdown';
+// eslint-disable-next-line import/no-cycle
+import {InheritedDocumentationComponent} from './inherited-documentation/inherited-documentation.component';
 import {AbstractExampleTuiInteractive} from './interactive';
 
 const CUSTOM_SVG = `<svg xmlns="http://www.w3.org/2000/svg"
@@ -27,11 +30,15 @@ const CUSTOM_SVG_NAME = `Bell`;
 
 type TuiPossibleGenericType = any;
 
+@Directive()
 export abstract class AbstractExampleTuiControl
     extends AbstractExampleTuiInteractive
     implements AbstractExampleTuiDropdown
 {
     abstract readonly control: AbstractControl;
+
+    @ViewChild(InheritedDocumentationComponent)
+    readonly inherited?: InheritedDocumentationComponent;
 
     readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [`s`, `m`, `l`];
 
