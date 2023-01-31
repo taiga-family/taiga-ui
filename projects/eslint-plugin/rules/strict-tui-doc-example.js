@@ -27,7 +27,7 @@ const fileNameToExtension = {
  * @param {string} path
  * @returns {RegExpMatchArray | null}
  */
-const getPathGroups = path => path.match(/(.+)(\.(?:ts|less|scss|js|html))(.*)/);
+const getPathGroups = path => path.match(/(.+)(\.(?:ts|less|scss|js|md|css|html))(.*)/);
 
 /**
  * @type {import(`eslint`).Rule.RuleModule}
