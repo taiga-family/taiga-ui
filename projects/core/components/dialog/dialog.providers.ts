@@ -5,6 +5,7 @@ import {
     tuiContainsOrAfter,
     TuiDestroyService,
     TuiDialog,
+    tuiGetActualTarget,
     tuiIsCurrentTarget,
     tuiIsElement,
     tuiTypedFromEvent,
@@ -53,30 +54,41 @@ export const TUI_DIALOG_PROVIDERS: Provider[] = [
                           filter(tuiIsCurrentTarget),
                       ),
                       tuiTypedFromEvent(documentRef, `keydown`).pipe(
-                          filter(
-                              ({key, target}) =>
+                          filter(event => {
+                              const key = event.key;
+                              const target = tuiGetActualTarget(event);
+
+                              return (
                                   key === `Escape` &&
                                   tuiIsElement(target) &&
                                   (!tuiContainsOrAfter(nativeElement, target) ||
-                                      nativeElement.contains(target)),
-                          ),
+                                      nativeElement.contains(target))
+                              );
+                          }),
                       ),
                       tuiTypedFromEvent(documentRef, `mousedown`).pipe(
-                          filter(
-                              ({target, clientX}) =>
+                          filter(event => {
+                              const target = tuiGetActualTarget(event);
+                              const clientX = event.clientX;
+
+                              return (
                                   tuiIsElement(target) &&
                                   tuiGetViewportWidth(windowRef) - clientX >
                                       SCROLLBAR_PLACEHOLDER &&
-                                  !tuiContainsOrAfter(nativeElement, target),
-                          ),
+                                  !tuiContainsOrAfter(nativeElement, target)
+                              );
+                          }),
                           switchMap(() =>
                               tuiTypedFromEvent(documentRef, `mouseup`).pipe(
                                   take(1),
-                                  filter(
-                                      ({target}) =>
+                                  filter(event => {
+                                      const target = tuiGetActualTarget(event);
+
+                                      return (
                                           tuiIsElement(target) &&
-                                          !tuiContainsOrAfter(nativeElement, target),
-                                  ),
+                                          !tuiContainsOrAfter(nativeElement, target)
+                                      );
+                                  }),
                               ),
                           ),
                       ),
