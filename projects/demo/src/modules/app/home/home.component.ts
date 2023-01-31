@@ -32,7 +32,7 @@ export class HomeComponent {
     ).then(({default: content}) => ({
         default: content
             // eslint-disable-next-line @typescript-eslint/quotes
-            .replaceAll("@import '", "@import '@taiga-ui/styles/")
+            .replace(/@import '/g, `@import '@taiga-ui/styles/`)
             .replace('@taiga-ui/styles/@taiga-ui/core', '@taiga-ui/core'),
     }));
 }

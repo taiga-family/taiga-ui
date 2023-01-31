@@ -24,6 +24,7 @@ import {
     TuiMapper,
     TuiMonth,
     tuiNullableSame,
+    tuiObjectFromEntries,
     tuiPure,
     tuiWatch,
 } from '@taiga-ui/cdk';
@@ -216,7 +217,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
                 return disabledItemHandler(item);
             }
 
-            const negativeMinLength = Object.fromEntries(
+            const negativeMinLength = tuiObjectFromEntries(
                 Object.entries(minLength).map(([key, value]) => [key, -value]),
             );
             const disabledBefore = value.from.append(negativeMinLength).append({day: 1});

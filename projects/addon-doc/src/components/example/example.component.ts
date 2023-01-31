@@ -117,7 +117,10 @@ export class TuiDocExampleComponent {
         this.loading$.next(true);
         this.codeEditor
             ?.edit(this.componentName, this.id || '', files)
-            .finally(() => this.loading$.next(false));
+            // TODO: replace lines below with `finally` when we bump Firefox to 58+
+            // TODO: Add `es2018.promise` to `tsconfig.json` => `compilerOptions.lib`.
+            .then(() => this.loading$.next(false))
+            .catch(() => this.loading$.next(false));
     }
 
     private setFragmentWithoutRedirect(id: string | null): void {

@@ -9,7 +9,7 @@
             "builder": "@angular-devkit/build-angular:ng-packagr",
             "outputs": ["dist/testing"],
             "options": {
-                "tsConfig": "tsconfig.build.json",
+                "tsConfig": "projects/testing/tsconfig.build.json",
                 "project": "projects/testing/ng-package.json"
             },
             "dependsOn": [
