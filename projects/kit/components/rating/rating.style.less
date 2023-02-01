@@ -1,5 +1,7 @@
 @import 'taiga-ui-local';
 
+@default-size: 1.5rem;
+
 :host {
     &._readonly,
     &._disabled {
@@ -14,6 +16,22 @@
 .t-host {
     position: relative;
     display: inline-flex;
+}
+
+.t-icon-rating {
+    width: var(--tui-rating-size, @default-size);
+    height: var(--tui-rating-size, @default-size);
+
+    /**
+     * @description:
+     * don't use margin as you won't be able
+     * to control hover event and opacity for .t-icon-filled
+     */
+    padding: 0 var(--tui-rating-gap, 0) 0 0;
+
+    &-last {
+        padding-right: 0;
+    }
 }
 
 .t-input {

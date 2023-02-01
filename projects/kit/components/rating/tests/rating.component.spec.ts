@@ -165,14 +165,14 @@ describe(`Rating`, () => {
 
             expect(testComponent.rate).toEqual(100);
             expect(component.value).toEqual(100);
-            expect(component.percent).toEqual(2000);
+            expect(component.percent).toEqual(100);
 
             component.setRate(-1);
             fixture.detectChanges();
 
             expect(testComponent.rate).toEqual(-1);
             expect(component.value).toEqual(-1);
-            expect(component.percent).toEqual(-20);
+            expect(component.percent).toEqual(0);
         });
     });
 });

@@ -5,7 +5,8 @@
         <div class="t-interactive">
             <tui-svg
                 *tuiRepeatTimes="let index of max"
-                class="t-icon-filled"
+                class="t-icon-rating t-icon-filled"
+                [class.t-icon-rating-last]="index === 0"
                 [src]="iconFilled"
                 (click)="setRateByReverseIndex(index)"
             ></tui-svg>
@@ -17,13 +18,16 @@
         >
             <tui-svg
                 *tuiRepeatTimes="let index of max"
-                class="t-icon-filled"
+                class="t-icon-rating t-icon-filled"
+                [class.t-icon-rating-last]="index === 0"
                 [src]="iconFilled"
             ></tui-svg>
         </div>
 
         <tui-svg
-            *tuiRepeatTimes="let item of max"
+            *tuiRepeatTimes="let index of max"
+            class="t-icon-rating"
+            [class.t-icon-rating-last]="max - 1 === index"
             [src]="iconNormal"
         ></tui-svg>
 
