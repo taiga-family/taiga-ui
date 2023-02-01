@@ -21,7 +21,11 @@ import {
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
-import {TuiRadioComponent} from '@taiga-ui/kit/components/radio';
+import {
+    TUI_RADIO_OPTIONS,
+    TuiRadioComponent,
+    TuiRadioOptions,
+} from '@taiga-ui/kit/components/radio';
 
 @Component({
     selector: 'tui-radio-labeled',
@@ -46,7 +50,7 @@ export class TuiRadioLabeledComponent<T>
     @Input()
     @HostBinding('attr.data-size')
     @tuiDefaultProp()
-    size: TuiSizeL = 'm';
+    size: TuiSizeL = this.options.size;
 
     @Input()
     @tuiDefaultProp()
@@ -65,6 +69,8 @@ export class TuiRadioLabeledComponent<T>
         @Optional()
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
+        @Inject(TUI_RADIO_OPTIONS)
+        private readonly options: TuiRadioOptions,
     ) {
         super(control, changeDetectorRef);
     }
