@@ -37,6 +37,11 @@ export class TestComponent {}
 `;
 
 const TEMPLATE_BEFORE = `
+<tui-svg
+    src="tuiIconSettingsLarge"
+    class="icon"
+    [tuiDropdownContext]="iconInfo"
+></tui-svg>
 <button
     tuiButton
     type="button"
@@ -244,6 +249,11 @@ const TEMPLATE_BEFORE = `
 `;
 
 const TEMPLATE_AFTER = `<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe has new API. See https://taiga-ui.dev/pipes/format-number -->
+<tui-svg
+    src="tuiIconSettingsLarge"
+    class="icon"
+    tuiDropdownContext [tuiDropdown]="iconInfo"
+></tui-svg>
 <button
     tuiButton
     type="button"

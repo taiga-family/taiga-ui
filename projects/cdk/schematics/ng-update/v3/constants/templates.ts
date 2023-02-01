@@ -416,6 +416,24 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
     },
     {
         from: {
+            attrName: `tuiDropdownContext`,
+            withTagNames: [`*`],
+        },
+        to: {
+            attrName: `tuiDropdownContext tuiDropdown`,
+        },
+    },
+    {
+        from: {
+            attrName: `[tuiDropdownContext]`,
+            withTagNames: [`*`],
+        },
+        to: {
+            attrName: `tuiDropdownContext [tuiDropdown]`,
+        },
+    },
+    {
+        from: {
             attrName: `tuiTextfieldExampleText`,
             withTagNames: [`tui-input-tag`, `tui-multi-select`],
         },
