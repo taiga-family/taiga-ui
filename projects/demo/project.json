@@ -114,6 +114,9 @@
                     "statsJson": false,
                     "progress": false
                 },
+                "development": {
+                    "baseHref": "/"
+                },
                 "def": {
                     "baseHref": "/",
                     "budgets": [],
@@ -134,21 +137,14 @@
                         }
                     ]
                 },
-                "ru": {
-                    "baseHref": "/",
-                    "localize": ["ru"]
-                },
-                "development": {
-                    "baseHref": "/"
-                },
-                "serve-fast": {
+                "fast": {
                     "baseHref": "/",
                     "sourceMap": false,
                     "namedChunks": false,
                     "statsJson": false,
                     "budgets": []
                 },
-                "serve-coalescing": {
+                "coalescing": {
                     "baseHref": "/",
                     "fileReplacements": [
                         {
@@ -193,23 +189,23 @@
                     "browserTarget": "demo:build:production",
                     "aot": true
                 },
-                "def": {
-                    "browserTarget": "demo:build:def"
-                },
-                "shadow": {
-                    "browserTarget": "demo:build:shadow"
-                },
                 "ru": {
                     "browserTarget": "demo:build:ru"
                 },
                 "development": {
                     "browserTarget": "demo:build:development"
                 },
-                "development-fast": {
-                    "browserTarget": "demo:build:serve-fast"
+                "def": {
+                    "browserTarget": "demo:build:def"
+                },
+                "fast": {
+                    "browserTarget": "demo:build:fast"
+                },
+                "shadow": {
+                    "browserTarget": "demo:build:shadow"
                 },
                 "coalescing": {
-                    "browserTarget": "demo:build:serve-coalescing"
+                    "browserTarget": "demo:build:coalescing"
                 }
             },
             "defaultConfiguration": "development"
@@ -224,24 +220,6 @@
             "executor": "nx:run-commands",
             "options": {
                 "command": "nx serve --open --host 0.0.0.0 --disable-host-check"
-            }
-        },
-        "serve-ru": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "nx serve --configuration ru"
-            }
-        },
-        "serve-default": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "nx serve --configuration def"
-            }
-        },
-        "serve-shadow": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "nx serve --configuration shadow"
             }
         },
         "serve-ssr": {
