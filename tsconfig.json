@@ -87,6 +87,7 @@
             "@taiga-ui/addon-mobile/*": ["projects/addon-mobile/*"],
             "@demo/root-package": ["package.json"],
             "@demo/emulate/change-detection": ["projects/demo/src/emulate/change-detection-strategy.ts"],
+            "@demo/emulate/ng-zone-options": ["projects/demo/src/emulate/ng-zone-options.ts"],
             "@demo/emulate/encapsulation": ["projects/demo/src/emulate/view-encapsulation.ts"],
             "@demo/utils": ["projects/demo/src/utils/index"],
             "@demo/environments/*": ["projects/demo/src/environments/*"],

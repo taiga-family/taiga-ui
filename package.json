@@ -26,6 +26,7 @@
         "start": "nx serve",
         "start:fast": "nx serve demo -c development-fast",
         "start:default": "nx serve-default demo",
+        "start:coalescing": "nx serve demo -c coalescing",
         "start:shadow": "nx serve-shadow demo",
         "build:ssr": "nx build && nx run demo:server:production",
         "prerender": "nx run demo:prerender",
