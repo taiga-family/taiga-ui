@@ -208,9 +208,10 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
             return 0;
         }
 
+        const {exposeActive, minMoreWidth} = this.options;
         const {clientWidth} = this.elementRef.nativeElement;
         const activeWidth = tabs[activeItemIndex] ? tabs[activeItemIndex].scrollWidth : 0;
-        const moreWidth = tabs[tabs.length - 1].scrollWidth;
+        const moreWidth = Math.max(tabs[tabs.length - 1].scrollWidth, minMoreWidth);
         let maxIndex = tabs.length - 2;
         let total =
             tabs.reduce((acc, {scrollWidth}) => acc + scrollWidth, 0) +
@@ -225,8 +226,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
             total -= tabs[maxIndex].scrollWidth + margin;
             maxIndex--;
 
-            const activeDisplaced =
-                this.options.exposeActive && activeItemIndex > maxIndex;
+            const activeDisplaced = exposeActive && activeItemIndex > maxIndex;
             const activeOffset = activeDisplaced ? activeWidth + margin : 0;
             const currentWidth = total + activeOffset + moreWidth + margin;
             // Needed for different rounding of visible and hidden elements scrollWidth
