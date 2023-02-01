@@ -29,7 +29,7 @@
         "outDir": "./dist",
         "target": "es2015",
         "module": "es2020",
-        "lib": ["esnext", "dom"],
+        "lib": ["es2017", "es2018.asynciterable", "dom"],
         "typeRoots": ["node_modules/@types"],
         "skipLibCheck": true,
         "downlevelIteration": true,
