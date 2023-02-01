@@ -52,12 +52,10 @@
     "lint-staged": {
         "*.{js,ts,html,md,less,json}": [
             "npm run lint -- --fix",
-            "prettier --write",
-            "git add"
+            "prettier --write"
         ],
         "*.less": [
-            "stylelint --fix",
-            "git add"
+            "stylelint --fix"
         ]
     },
     "dependencies": {
