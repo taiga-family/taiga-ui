@@ -33,6 +33,6 @@ export class HomeComponent {
         default: content
             // eslint-disable-next-line @typescript-eslint/quotes
             .replaceAll("@import '", "@import '@taiga-ui/styles/")
-            .replace('~@taiga-ui/styles/@taiga-ui/core', '@taiga-ui/core'),
+            .replace('@taiga-ui/styles/@taiga-ui/core', '@taiga-ui/core'),
     }));
 }
