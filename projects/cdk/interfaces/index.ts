@@ -6,6 +6,7 @@ export * from './context-with-implicit';
 export * from './control-value-transformer';
 export * from './day-like';
 export * from './focusable-element-accessor';
+export * from './for-of-context-with-implicit';
 export * from './month-like';
 export * from './swipe';
 export * from './time-like';

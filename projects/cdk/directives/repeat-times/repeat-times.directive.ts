@@ -1,13 +1,18 @@
-import {Directive, Inject, Input, TemplateRef, ViewContainerRef} from '@angular/core';
+import {
+    Directive,
+    EmbeddedViewRef,
+    Inject,
+    Input,
+    TemplateRef,
+    ViewContainerRef,
+} from '@angular/core';
 import {tuiRequiredSetter} from '@taiga-ui/cdk/decorators';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk/interfaces';
+import {TuiForOfContextWithImplicit} from '@taiga-ui/cdk/interfaces';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 
 const MAX_VALUE = 0x10000;
 
-export class TuiRepeatTimesContext implements TuiContextWithImplicit<number> {
-    constructor(readonly $implicit: number) {}
-}
+export class TuiRepeatTimesContext extends TuiForOfContextWithImplicit<number> {}
 
 /**
  * Directive similar to ngFor but using a number of repetitions rather than an array
@@ -32,6 +37,8 @@ export class TuiRepeatTimesDirective {
         } else {
             this.addContainers(safeCount);
         }
+
+        this.recomputeViewContext(count);
     }
 
     constructor(
@@ -45,7 +52,7 @@ export class TuiRepeatTimesDirective {
         for (let index = this.viewContainer.length; index < count; index++) {
             this.viewContainer.createEmbeddedView<TuiRepeatTimesContext>(
                 this.templateRef,
-                new TuiRepeatTimesContext(index),
+                new TuiRepeatTimesContext(index, index, count),
             );
         }
     }
@@ -53,6 +60,19 @@ export class TuiRepeatTimesDirective {
     private removeContainers(amount: number): void {
         for (let index = 0; index < amount; index++) {
             this.viewContainer.remove();
+        }
+    }
+
+    /**
+     * @description:
+     * this is necessary if then count changes dynamically
+     * and then we need to update the first and the first marker for all elements
+     */
+    private recomputeViewContext(count: number): void {
+        for (let index = 0; index < count; index++) {
+            const view = <EmbeddedViewRef<unknown>>this.viewContainer.get(index);
+
+            view.context = new TuiRepeatTimesContext(index, index, count);
         }
     }
 }
