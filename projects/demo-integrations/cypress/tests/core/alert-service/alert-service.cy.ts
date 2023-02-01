@@ -8,6 +8,6 @@ describe(`AlertService`, () => {
 
         cy.get(`tui-alerts-example-1 button`).first().click().wait(1000);
 
-        cy.get(`tui-alert`).first().matchImageSnapshot(`alert`);
+        cy.get(`tui-alert`).first().tuiWaitBeforeScreenshot().matchImageSnapshot(`alert`);
     });
 });

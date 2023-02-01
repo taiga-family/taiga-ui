@@ -5,6 +5,7 @@ module.exports = {
             parser: '@typescript-eslint/parser',
             plugins: ['@typescript-eslint'],
             rules: {
+                'no-implicit-globals': 'error',
                 'no-restricted-properties': [
                     'error',
                     {

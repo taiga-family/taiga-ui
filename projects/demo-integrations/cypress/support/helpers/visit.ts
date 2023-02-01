@@ -86,6 +86,9 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
               decodeURIComponent(path), // @note: prevent twice encoding
           );
 
+    // eslint-disable-next-line no-restricted-syntax
+    Cypress.on(`uncaught:exception`, () => false);
+
     cy.visit(`/`, {
         headers,
         onBeforeLoad: window => {

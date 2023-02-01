@@ -37,10 +37,12 @@ describe(`MultiSelect`, () => {
                         .click({force: true});
                 });
 
-                cy.get(`tui-dialog`).matchImageSnapshot(
-                    `04-multi-select-inside-dialog-with-field-size-${size}`,
-                    {capture: `viewport`},
-                );
+                cy.get(`tui-dialog`)
+                    .tuiWaitBeforeAction()
+                    .matchImageSnapshot(
+                        `04-multi-select-inside-dialog-with-field-size-${size}`,
+                        {capture: `viewport`},
+                    );
             });
         });
     });

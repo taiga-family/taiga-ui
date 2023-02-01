@@ -47,25 +47,25 @@ describe(`TablePagination`, () => {
             .tuiWaitBeforeScreenshot()
             .matchImageSnapshot(`2-[sizeOptionContent]-dropdown`);
     });
+
+    function initializeAliases(selectorToTablePagination: string): void {
+        cy.get(`${selectorToTablePagination} tui-table-pagination`)
+            .should(`be.visible`)
+            .as(`tablePagination`);
+
+        cy.get(`@tablePagination`)
+            .find(
+                `[automation-id=tui-table-pagination__lines-per-page-wrapper] tui-hosted-dropdown`,
+            )
+            .should(`be.visible`)
+            .as(`linesPerPageSelect`);
+    }
+
+    function waitForCheckmarkIcon(): void {
+        cy.get(`tui-dropdown`)
+            .find(`tui-svg[src=tuiIconCheckLarge] use`)
+            .should(`be.visible`)
+            .invoke(`height`)
+            .should(`be.greaterThan`, 0);
+    }
 });
-
-function initializeAliases(selectorToTablePagination: string): void {
-    cy.get(`${selectorToTablePagination} tui-table-pagination`)
-        .should(`be.visible`)
-        .as(`tablePagination`);
-
-    cy.get(`@tablePagination`)
-        .find(
-            `[automation-id=tui-table-pagination__lines-per-page-wrapper] tui-hosted-dropdown`,
-        )
-        .should(`be.visible`)
-        .as(`linesPerPageSelect`);
-}
-
-function waitForCheckmarkIcon(): void {
-    cy.get(`tui-dropdown`)
-        .find(`tui-svg[src=tuiIconCheckLarge] use`)
-        .should(`be.visible`)
-        .invoke(`height`)
-        .should(`be.greaterThan`, 0);
-}

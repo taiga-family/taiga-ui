@@ -8,6 +8,7 @@ describe(`Button`, () => {
             .should(`be.visible`)
             .find(`[tuiButton]`)
             .trigger(`mouseenter`)
+            .tuiWaitBeforeScreenshot()
             .matchImageSnapshot(
                 `01-[tuiMode=onDark]-[appearance=icon]-[data-state=hovered]`,
             );
