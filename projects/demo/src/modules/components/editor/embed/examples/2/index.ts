@@ -45,12 +45,10 @@ export class TuiEditorEmbedExample2 {
         </iframe>
         <p>Here is a media player:</p>
         <iframe
-            src="https://music.yandex.com/iframe/#track/71263/419460"
-            frameborder="0"
-            width="400"
-            allowfullscreen="true"
-            data-type="iframe-editor"
-        >
+            src="https://bandcamp.com/EmbeddedPlayer/album=2219061201/size=small/bgcol=ffffff/linkcol=63b2cc/transparent=true/"
+            height="42"
+            width="100%"
+            data-type="iframe-editor">
         </iframe>
         <p></p>
     `,
