@@ -32,18 +32,14 @@ declare global {
             tuiSetLanguage: typeof tuiSetLanguage;
             tuiSetNightMode: typeof tuiSetNightMode;
             tuiWaitCodeHighlight: typeof tuiWaitCodeHighlight;
-            tuiWaitBeforeScreenshot: typeof tuiWaitBeforeScreenshot;
-            tuiWaitBeforeAction: typeof tuiWaitBeforeAction;
 
             tuiTab(direction: 'backward' | 'forward'): Chainable;
-
             tuiGetByExampleId(): Chainable;
             tuiFindByExampleId(): Chainable;
-
+            tuiWaitBeforeAction(): Chainable;
+            tuiWaitBeforeScreenshot(): Chainable;
             tuiScrollIntoView(): Chainable;
-
             tuiFocus(): Chainable;
-
             tuiWaitAllImgInside(enabled?: boolean): Chainable;
         }
 
