@@ -291,29 +291,29 @@ describe(`InputRange`, () => {
             });
         });
     });
+
+    function initializeAliases(
+        inputRangeSelector: string,
+        [expectedLeftValue, expectedRightValue]: [number, number],
+    ): void {
+        cy.get(`${inputRangeSelector} [automation-id=tui-input-range__left-input] input`)
+            .should(`exist`)
+            .should(`have.value`, expectedLeftValue)
+            .as(`leftTextInput`);
+
+        cy.get(`${inputRangeSelector} [automation-id=tui-input-range__right-input] input`)
+            .should(`exist`)
+            .should(`have.value`, expectedRightValue)
+            .as(`rightTextInput`);
+
+        cy.get(`${inputRangeSelector} tui-range [tuiSlider]:first-of-type`)
+            .should(`exist`)
+            .should(`have.value`, expectedLeftValue)
+            .as(`leftSlider`);
+
+        cy.get(`${inputRangeSelector} tui-range [tuiSlider]:last-of-type`)
+            .should(`exist`)
+            .should(`have.value`, expectedRightValue)
+            .as(`rightSlider`);
+    }
 });
-
-function initializeAliases(
-    inputRangeSelector: string,
-    [expectedLeftValue, expectedRightValue]: [number, number],
-): void {
-    cy.get(`${inputRangeSelector} [automation-id=tui-input-range__left-input] input`)
-        .should(`exist`)
-        .should(`have.value`, expectedLeftValue)
-        .as(`leftTextInput`);
-
-    cy.get(`${inputRangeSelector} [automation-id=tui-input-range__right-input] input`)
-        .should(`exist`)
-        .should(`have.value`, expectedRightValue)
-        .as(`rightTextInput`);
-
-    cy.get(`${inputRangeSelector} tui-range [tuiSlider]:first-of-type`)
-        .should(`exist`)
-        .should(`have.value`, expectedLeftValue)
-        .as(`leftSlider`);
-
-    cy.get(`${inputRangeSelector} tui-range [tuiSlider]:last-of-type`)
-        .should(`exist`)
-        .should(`have.value`, expectedRightValue)
-        .as(`rightSlider`);
-}

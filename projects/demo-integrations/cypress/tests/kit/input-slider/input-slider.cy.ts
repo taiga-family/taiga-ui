@@ -83,13 +83,13 @@ describe(`InputSlider`, () => {
                 .matchImageSnapshot(`4-value-content-not-overlapped`);
         });
     });
-});
 
-function initializeAliases(inputSliderSelector: string): void {
-    cy.get(`${inputSliderSelector} input[type="range"]`)
-        .should(`be.visible`)
-        .as(`slider`);
-    cy.get(`${inputSliderSelector} tui-input-number input`)
-        .should(`exist`)
-        .as(`textInput`);
-}
+    function initializeAliases(inputSliderSelector: string): void {
+        cy.get(`${inputSliderSelector} input[type="range"]`)
+            .should(`be.visible`)
+            .as(`slider`);
+        cy.get(`${inputSliderSelector} tui-input-number input`)
+            .should(`exist`)
+            .as(`textInput`);
+    }
+});

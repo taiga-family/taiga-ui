@@ -1,8 +1,8 @@
 import {tuiAddMatchImageSnapshotCommand} from '@taiga-ui/testing/cypress';
 
 tuiAddMatchImageSnapshotCommand({
-    allowSizeMismatch: true, // Windows CI fix
-    runInProcess: true, // macOS CI fix
+    allowSizeMismatch: false,
+    runInProcess: false,
     failureThreshold: 0.0004,
     failureThresholdType: `percent`,
     comparisonMethod: `ssim`,

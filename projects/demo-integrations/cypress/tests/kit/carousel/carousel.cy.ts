@@ -1,15 +1,19 @@
 describe(`Carousel`, () => {
-    it(`padding: default`, () => {
+    it(`default padding`, () => {
         cy.tuiVisit(`components/carousel/API`);
+
         cy.get(`#demo-content`)
             .should(`be.visible`)
+            .tuiWaitBeforeScreenshot()
             .matchImageSnapshot(`carousel-padding-default`);
     });
 
-    it(`padding: 0`, () => {
+    it(`padding has zero value`, () => {
         cy.tuiVisit(`components/carousel/API?style.--tui-carousel-padding=0`);
+
         cy.get(`#demo-content`)
             .should(`be.visible`)
+            .tuiWaitBeforeScreenshot()
             .matchImageSnapshot(`carousel-padding-0`);
     });
 });

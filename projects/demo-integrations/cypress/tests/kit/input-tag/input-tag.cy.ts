@@ -11,21 +11,27 @@ describe(`InputTag`, () => {
             .findByAutomationId(`tui-input-tag__native`)
             .type(`Very looooooooooooooooooooooooong Text{enter}`);
 
-        cy.get(`@wrapper`).matchImageSnapshot(`02-input-tag-very-long-text`);
+        cy.get(`@wrapper`)
+            .tuiWaitBeforeScreenshot()
+            .matchImageSnapshot(`02-input-tag-very-long-text`);
 
         cy.get(`@wrapper`)
             .findByAutomationId(`tui-input-tag__native`)
             .type(`1{enter}`)
             .type(`2{enter}`);
 
-        cy.get(`@wrapper`).matchImageSnapshot(`03-input-tag-not-very-long-text`);
+        cy.get(`@wrapper`)
+            .tuiWaitBeforeScreenshot()
+            .matchImageSnapshot(`03-input-tag-not-very-long-text`);
     });
 
     it(`switch theme mode`, {responseTimeout: 30_000}, () => {
         cy.get(`tui-doc-example`)
             .tuiFindByExampleId()
             .each(($el, index) => {
-                cy.wrap($el, {log: false}).matchImageSnapshot(`01-light-mode-${index}`);
+                cy.wrap($el, {log: false})
+                    .tuiWaitBeforeScreenshot()
+                    .matchImageSnapshot(`01-light-mode-${index}`);
             });
 
         cy.tuiShow(`[tuidocheader]`);
@@ -35,7 +41,9 @@ describe(`InputTag`, () => {
         cy.get(`tui-doc-example`)
             .tuiFindByExampleId()
             .each(($el, index) => {
-                cy.wrap($el, {log: false}).matchImageSnapshot(`01-night-mode-${index}`);
+                cy.wrap($el, {log: false})
+                    .tuiWaitBeforeScreenshot()
+                    .matchImageSnapshot(`01-night-mode-${index}`);
             });
     });
 
@@ -53,6 +61,7 @@ describe(`InputTag`, () => {
         cy.get(`@wrapper`).find(`tui-tag`).should(`have.length`, 6);
         cy.get(`@wrapper`)
             .find(`tui-input-tag`)
+            .tuiWaitBeforeScreenshot()
             .matchImageSnapshot(`04-input-tag-forbidden-spaces`, {padding: 5});
     });
 });
