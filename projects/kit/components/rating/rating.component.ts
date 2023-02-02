@@ -15,6 +15,7 @@ import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
+    tuiClamp,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
@@ -83,7 +84,7 @@ export class TuiRatingComponent
     }
 
     get percent(): number {
-        return (100 * this.value) / this.max;
+        return tuiClamp((100 * this.value) / this.max, 0, 100);
     }
 
     @HostListener('focusin', ['true'])

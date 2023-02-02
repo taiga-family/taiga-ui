@@ -37,6 +37,8 @@
                     [iconNormal]="iconNormal"
                     [iconFilled]="iconFilled"
                     [formControl]="control"
+                    [style.--tui-rating-size]="size"
+                    [style.--tui-rating-gap]="gap"
                 >
                     <p class="label">Current rating - {{ rating.value }}</p>
                 </tui-rating>
@@ -111,6 +113,26 @@
                 [(documentationPropertyValue)]="color"
             >
                 Custom color
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                documentationPropertyName="style.--tui-rating-size"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Customized size for svg icon
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                documentationPropertyName="style.--tui-rating-gap"
+                [documentationPropertyValues]="gapVariants"
+                [(documentationPropertyValue)]="gap"
+            >
+                Customized gap for svg icon between other svg icons
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
