@@ -4,6 +4,7 @@ export * from '@taiga-ui/addon-editor/extensions/file-link';
 export * from '@taiga-ui/addon-editor/extensions/font-color';
 export * from '@taiga-ui/addon-editor/extensions/font-size';
 export * from '@taiga-ui/addon-editor/extensions/group';
+export * from '@taiga-ui/addon-editor/extensions/iframe-editor';
 export * from '@taiga-ui/addon-editor/extensions/image-editor';
 export * from '@taiga-ui/addon-editor/extensions/indent-outdent';
 export * from '@taiga-ui/addon-editor/extensions/link';

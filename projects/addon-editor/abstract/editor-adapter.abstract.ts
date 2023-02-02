@@ -1,6 +1,7 @@
 import {Directive} from '@angular/core';
-import {TuiYoutubeOptions} from '@taiga-ui/addon-editor/extensions/youtube';
-import {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
+import type {TuiEditableIframe} from '@taiga-ui/addon-editor/extensions/iframe-editor';
+import type {TuiYoutubeOptions} from '@taiga-ui/addon-editor/extensions/youtube';
+import type {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
 import type {Editor, Range} from '@tiptap/core';
 import type {EditorState} from 'prosemirror-state';
 import {Observable, Subject} from 'rxjs';
@@ -81,4 +82,5 @@ export abstract class AbstractTuiEditor {
     abstract removeAnchor(): void;
     abstract setFileLink(preview: TuiEditorAttachedFile): void;
     abstract setYoutubeVideo(options: TuiYoutubeOptions): void;
+    abstract setIframe(options: TuiEditableIframe): void;
 }

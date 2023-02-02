@@ -1,0 +1,20 @@
+<tui-editor
+    class="editor"
+    [formControl]="control"
+    [tools]="builtInTools"
+>
+    <ng-container ngProjectAs="tools">
+        <embed-tool tuiItem></embed-tool>
+
+        <span class="hint">
+            <tui-svg src="tuiIconArrowLeft"></tui-svg>
+            click it
+        </span>
+    </ng-container>
+</tui-editor>
+
+<h4>HTML:</h4>
+<div [innerHTML]="safe(control.value)"></div>
+
+<h4>Text:</h4>
+<p>{{ control.value }}</p>

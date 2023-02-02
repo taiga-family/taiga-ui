@@ -15,6 +15,8 @@ import {
 import {ExampleTuiEditorEmbedComponent} from './editor-embed.component';
 import {TuiEditorEmbedExample1} from './examples/1';
 import {ExampleTuiYoutubeToolModule} from './examples/1/youtube-tool/youtube-tool.module';
+import {TuiEditorEmbedExample2} from './examples/2';
+import {ExampleTuiEmbedToolModule} from './examples/2/embed-tool/embed-tool.module';
 
 @NgModule({
     imports: [
@@ -30,8 +32,13 @@ import {ExampleTuiYoutubeToolModule} from './examples/1/youtube-tool/youtube-too
         TuiEditorModule,
         TuiEditorSocketModule,
         ExampleTuiYoutubeToolModule,
+        ExampleTuiEmbedToolModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiEditorEmbedComponent)),
     ],
-    declarations: [ExampleTuiEditorEmbedComponent, TuiEditorEmbedExample1],
+    declarations: [
+        ExampleTuiEditorEmbedComponent,
+        TuiEditorEmbedExample1,
+        TuiEditorEmbedExample2,
+    ],
 })
 export class ExampleTuiEditorEmbedModule {}

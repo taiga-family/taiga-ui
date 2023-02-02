@@ -1,0 +1,16 @@
+<!-- eslint-disable @html-eslint/require-frame-title -->
+<tui-editor-resizable
+    [width]="width"
+    [height]="height"
+    (sizeChange)="updateSize($event)"
+>
+    <iframe
+        [src]="src"
+        [width]="width"
+        [height]="height"
+        [style.min-width]="options.minWidth"
+        [style.min-height]="options.minHeight"
+        [style.max-width]="options.maxWidth"
+        [style.max-height]="options.maxHeight"
+    ></iframe>
+</tui-editor-resizable>
