@@ -4,7 +4,6 @@ import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import {getWorkspace, updateWorkspace} from '@schematics/angular/utility/workspace';
 import {addPackageJsonDependency} from 'ng-morph';
 
-import {ALWAYS_FALSE_HANDLER, ALWAYS_TRUE_HANDLER} from '../../constants';
 import {tuiIsString} from '../../utils/miscellaneous/is-string';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
 import {TuiSchema} from '../ng-add/schema';
@@ -15,12 +14,14 @@ import {getProjects} from './get-projects';
 export async function isInvalidAngularJson(tree: Tree): Promise<boolean> {
     return (
         getWorkspace(tree)
-            .then(ALWAYS_FALSE_HANDLER)
+            // eslint-disable-next-line no-restricted-syntax
+            .then(() => false)
             /**
              * Possible error – "Invalid format version detected - Expected:[ 1 ] Found: [ 2 ]"
              * @see https://github.com/angular/angular-cli/blob/main/packages/angular_devkit/core/src/workspace/json/reader.ts#L67-L69
              */
-            .catch(ALWAYS_TRUE_HANDLER)
+            // eslint-disable-next-line no-restricted-syntax
+            .catch(() => true)
     );
 }
 
