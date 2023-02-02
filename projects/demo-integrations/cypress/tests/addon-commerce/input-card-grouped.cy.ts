@@ -66,7 +66,9 @@ describe(`InputCardGrouped`, () => {
                 .findByAutomationId(`tui-input-card-grouped__card`)
                 .as(`cardNumber`);
 
-            cy.get(`@example`).matchImageSnapshot(`05-default-state-input-card`);
+            cy.get(`@example`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`05-default-state-input-card`);
 
             cy.get(`@cardNumber`).type(`5213 0000 4039 5834`).tuiWaitBeforeAction();
 
