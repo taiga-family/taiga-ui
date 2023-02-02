@@ -19,20 +19,8 @@ import {
     providers: [TuiDestroyService],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiImageEditorComponent extends AbstractTuiEditorResizable {
-    get attrs(): TuiEditableImage {
-        return (this.node?.attrs as TuiEditableImage) || {src: ''};
-    }
-
-    get src(): SafeResourceUrl {
-        return this.sanitizer.bypassSecurityTrustResourceUrl(this.attrs.src);
-    }
-
-    get width(): number | string | null {
-        return this._width || this.attrs.width || null;
-    }
-
-    get height(): number | string | null {
+export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEditableImage> {
+    override get height(): number | string | null {
         return null;
     }
 
@@ -42,6 +30,10 @@ export class TuiImageEditorComponent extends AbstractTuiEditorResizable {
 
     get title(): string {
         return this.attrs.title || '';
+    }
+
+    get src(): SafeResourceUrl {
+        return this.sanitizer.bypassSecurityTrustResourceUrl(this.attrs.src);
     }
 
     constructor(

@@ -17,21 +17,9 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
 })
-export class TuiIframeEditorComponent extends AbstractTuiEditorResizable {
-    get attrs(): TuiEditableIframe {
-        return (this.node?.attrs as unknown as TuiEditableIframe) || {src: ''};
-    }
-
+export class TuiIframeEditorComponent extends AbstractTuiEditorResizable<TuiEditableIframe> {
     get src(): SafeResourceUrl {
         return this.sanitizer.bypassSecurityTrustResourceUrl(this.attrs.src ?? '');
-    }
-
-    get width(): number | string | null {
-        return this._width || this.attrs.width || null;
-    }
-
-    get height(): number | string | null {
-        return this._height || this.attrs.height || null;
     }
 
     constructor(

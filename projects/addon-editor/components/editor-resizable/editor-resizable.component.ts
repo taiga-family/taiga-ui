@@ -6,7 +6,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiIsNumber} from '@taiga-ui/cdk';
+import {tuiIsNumber, tuiPx} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tui-editor-resizable',
@@ -29,7 +29,7 @@ export class TuiEditorResizableComponent {
 
     @HostBinding('style.width')
     get hostWidth(): number | string | null {
-        return tuiIsNumber(this.width) ? `${this.width}px` : this.width;
+        return tuiIsNumber(this.width) ? tuiPx(this.width) : this.width;
     }
 
     @HostBinding('style.height')
@@ -38,6 +38,6 @@ export class TuiEditorResizableComponent {
             return null;
         }
 
-        return tuiIsNumber(this.height) ? `${this.height}px` : this.height;
+        return tuiIsNumber(this.height) ? tuiPx(this.height) : this.height;
     }
 }
