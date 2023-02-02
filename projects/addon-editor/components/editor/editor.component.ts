@@ -108,12 +108,21 @@ export class TuiEditorComponent
     }
 
     override writeValue(value: string | null): void {
+        if (value === this.value) {
+            return;
+        }
+
         const processed = this.contentProcessor(value || '');
 
         super.writeValue(processed);
 
         if (processed !== value) {
-            this.control?.setValue(processed);
+            this.control?.setValue(processed, {
+                onlySelf: false,
+                emitEvent: false,
+                emitModelToViewChange: false,
+                emitViewToModelChange: false,
+            });
         }
     }
 
