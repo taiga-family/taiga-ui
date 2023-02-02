@@ -1,15 +1,23 @@
-import {Component, HostBinding, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    Inject,
+    Input,
+} from '@angular/core';
+import {TuiHandler} from '@taiga-ui/cdk';
 import {BehaviorSubject} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
 
 import {RawLoaderContent} from '../../interfaces/page';
+import {TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR} from '../../tokens/example-content-processor';
 import {tuiRawLoad} from '../../utils/raw-load';
-import {tuiTryParseMarkdownCodeBlock} from './parse-code-block';
 
 @Component({
     selector: 'tui-doc-code',
     templateUrl: './code.template.html',
     styleUrls: ['./code.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocCodeComponent {
     private readonly rawLoader$$ = new BehaviorSubject<RawLoaderContent>('');
@@ -19,8 +27,13 @@ export class TuiDocCodeComponent {
 
     readonly processor$ = this.rawLoader$$.pipe(
         switchMap(tuiRawLoad),
-        map(tuiTryParseMarkdownCodeBlock),
+        map((value: string): string[] => this.markdownCodeProcessor(value)),
     );
+
+    constructor(
+        @Inject(TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR)
+        readonly markdownCodeProcessor: TuiHandler<string, string[]>,
+    ) {}
 
     @Input()
     set code(code: RawLoaderContent) {
