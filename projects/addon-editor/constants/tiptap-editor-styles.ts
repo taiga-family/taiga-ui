@@ -43,7 +43,6 @@ export const tiptapEditorStyles = `
     margin: 16px 0;
 }
 
-
 .tui-editor-socket li p {
     display: inline;
     margin: 0 auto;
