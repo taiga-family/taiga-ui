@@ -1,7 +1,5 @@
 import {ChildNode, Element, parseFragment} from 'parse5';
 
-import {ALWAYS_TRUE_HANDLER} from '../../../constants';
-
 export function findElementsByFn(
     nodes: ChildNode[],
     predicateFn: (el: Element) => boolean,
@@ -70,7 +68,8 @@ export function findAttributeOnElementWithTag(
     html: string,
     name: string,
     tagNames: string[],
-    filterFn: (element: Element) => boolean = ALWAYS_TRUE_HANDLER,
+    // eslint-disable-next-line no-restricted-syntax
+    filterFn: (element: Element) => boolean = () => true,
 ): number[] {
     return findElementsWithAttribute(html, name)
         .filter(
@@ -89,7 +88,8 @@ export function findAttributeOnElementWithAttrs(
     html: string,
     name: string,
     attrs: string[],
-    filterFn: (element: Element) => boolean = ALWAYS_TRUE_HANDLER,
+    // eslint-disable-next-line no-restricted-syntax
+    filterFn: (element: Element) => boolean = () => true,
 ): number[] {
     return findElementsWithAttribute(html, name)
         .filter(
