@@ -193,10 +193,11 @@ export class TuiEditLinkComponent {
     }
 
     private getAllAnchorsIds(): string[] {
-        const nodes =
+        const nodes: Element[] = Array.from(
             this.editor
                 .getOriginTiptapEditor()
-                .view.dom.querySelectorAll('[data-type="jump-anchor"]') ?? [];
+                .view.dom.querySelectorAll('[data-type="jump-anchor"]') ?? [],
+        );
 
         return Array.from(nodes)
             .map(node => node.getAttribute('id') || '')
