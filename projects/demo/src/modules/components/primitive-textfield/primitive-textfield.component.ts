@@ -62,7 +62,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
     readonly iconVariants = ['', 'tuiIconSearchLarge', 'Interactive content'];
     selectedIcon = this.iconVariants[0];
 
-    readonly iconLeftVariants = ['', 'tuiIconPiechartLarge', 'tuiIconCardsLarge'];
+    readonly iconLeftVariants = ['', 'tuiIconPieChartLarge', 'tuiIconCreditCardLarge'];
     iconLeft = '';
 
     readonly iconAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
@@ -95,9 +95,13 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     inputMode = this.inputModeVariants[0];
 
-    readonly customContentVariants = [CUSTOM_SVG_NAME, '<span>LongTextContent</span>'];
+    readonly customContentVariants = [
+        '',
+        CUSTOM_SVG_NAME,
+        '<span>LongTextContent</span>',
+    ];
 
-    customContentSelected = null;
+    customContentSelected = this.customContentVariants[0];
 
     password = '';
 

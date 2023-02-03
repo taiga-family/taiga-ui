@@ -43,7 +43,7 @@ export class TuiTableBarsHostComponent {
     }
 
     get closeIcon(): string {
-        return this.isMobile ? 'tuiIconClose' : 'tuiIconRemoveLarge';
+        return this.isMobile ? 'tuiIconX' : 'tuiIconXLarge';
     }
 
     getMode(mode: TuiBrightness): TuiBrightness | null {

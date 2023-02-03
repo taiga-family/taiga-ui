@@ -106,9 +106,10 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
     override autocomplete: TuiAutofillFieldName | '' = '';
 
     override readonly customContentVariants: string[] = [
+        '',
         'tuiIconVisaMono',
         'tuiIconMastercardMono',
     ];
 
-    override customContentSelected = null;
+    override customContentSelected = this.customContentVariants[0];
 }

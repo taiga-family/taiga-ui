@@ -46,7 +46,7 @@ export class TuiPrimitiveTextfieldExample1 extends AbstractTuiControl<string> {
     }
 
     get icon(): string {
-        return this.isPasswordHidden ? 'tuiIconHideLarge' : 'tuiIconShowLarge';
+        return this.isPasswordHidden ? 'tuiIconEyeOffLarge' : 'tuiIconEyeLarge';
     }
 
     get hint(): string {

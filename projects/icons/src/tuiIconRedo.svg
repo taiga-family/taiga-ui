@@ -11,13 +11,7 @@
             y="50%"
         >
             <svg x="-8" y="-8">
-                <g
-                    clip-path="url(#a)"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                >
+                <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                     <path d="M15.333 2.667v4h-4" />
                     <path d="M13.66 10a6 6 0 1 1-1.413-6.24l3.086 2.907" />
                 </g>

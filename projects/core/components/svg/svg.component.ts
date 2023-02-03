@@ -14,7 +14,6 @@ import {WINDOW} from '@ng-web-apis/common';
 import {
     tuiAssert,
     tuiGetDocumentOrShadowRoot,
-    TuiInjectionTokenType,
     tuiIsString,
     tuiPure,
     tuiRequiredSetter,
@@ -24,15 +23,13 @@ import {
 import {TUI_ICON_ERROR} from '@taiga-ui/core/constants';
 import {TuiIconError} from '@taiga-ui/core/interfaces';
 import {TuiSvgService} from '@taiga-ui/core/services';
-import {
-    TUI_ICONS_PATH,
-    TUI_SANITIZER,
-    TUI_SVG_CONTENT_PROCESSOR,
-    TUI_SVG_SRC_PROCESSOR,
-} from '@taiga-ui/core/tokens';
+import {TUI_SANITIZER} from '@taiga-ui/core/tokens';
 import {tuiIsPresumedHTMLString} from '@taiga-ui/core/utils/miscellaneous';
 import {Observable, of, ReplaySubject} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
+
+import {TUI_SVG_DEPRECATED} from './deprecated-icons';
+import {TUI_SVG_OPTIONS, TuiSvgOptions} from './svg-options';
 
 const UNDEFINED_NAMED_ICON = 'Attempted to use undefined named icon';
 const MISSING_EXTERNAL_ICON = 'External icon is missing on the given URL';
@@ -48,12 +45,14 @@ const FAILED_EXTERNAL_ICON = 'Failed to load external SVG';
 export class TuiSvgComponent {
     private readonly src$ = new ReplaySubject<void>(1);
     private icon: SafeHtml | string = '';
+
     readonly innerHTML$: Observable<SafeHtml>;
 
     constructor(
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(WINDOW) private readonly windowRef: Window,
-        @Inject(TUI_ICONS_PATH) private readonly iconsPath: TuiStringHandler<string>,
+        @Inject(TUI_SVG_DEPRECATED) private readonly deprecated: Record<string, string>,
+        @Inject(TUI_SVG_OPTIONS) private readonly options: TuiSvgOptions,
         @Optional()
         @Inject(TUI_SANITIZER)
         private readonly tuiSanitizer: Sanitizer | null,
@@ -62,14 +61,6 @@ export class TuiSvgComponent {
         private readonly staticRequestService: TuiStaticRequestService,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(ElementRef) private readonly elementRef: ElementRef<Element>,
-        @Inject(TUI_SVG_SRC_PROCESSOR)
-        private readonly srcProcessor: TuiInjectionTokenType<
-            typeof TUI_SVG_SRC_PROCESSOR
-        >,
-        @Inject(TUI_SVG_CONTENT_PROCESSOR)
-        private readonly contentProcessor: TuiInjectionTokenType<
-            typeof TUI_SVG_CONTENT_PROCESSOR
-        >,
     ) {
         this.innerHTML$ = this.src$.pipe(
             switchMap(() => {
@@ -88,7 +79,14 @@ export class TuiSvgComponent {
     @Input()
     @tuiRequiredSetter()
     set src(src: SafeHtml | string) {
-        this.icon = this.srcProcessor(src);
+        const deprecated = this.deprecated[String(src).replace('Large', '')];
+
+        tuiAssert.assert(
+            !deprecated,
+            // eslint-disable-next-line @typescript-eslint/no-base-to-string
+            `${src} is deprecated, use ${deprecated}/Large instead`,
+        );
+        this.icon = this.options.srcProcessor(src);
         this.src$.next();
     }
 
@@ -100,7 +98,7 @@ export class TuiSvgComponent {
         if (tuiIsString(this.icon)) {
             return this.icon.includes('.svg#')
                 ? this.icon
-                : this.resolveName(this.icon, this.iconsPath);
+                : this.resolveName(this.icon, this.options.path);
         }
 
         return '';
@@ -187,7 +185,7 @@ export class TuiSvgComponent {
     }
 
     private sanitize(src: SafeHtml | string): SafeHtml | string {
-        src = this.contentProcessor(src);
+        src = this.options.contentProcessor(src);
 
         return this.tuiSanitizer && tuiIsString(src)
             ? this.sanitizer.bypassSecurityTrustHtml(

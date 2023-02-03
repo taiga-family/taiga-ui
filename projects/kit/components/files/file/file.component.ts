@@ -103,7 +103,7 @@ export class TuiFileComponent {
 
     get icon(): string {
         if (this.state === 'normal' && this.isBig) {
-            return 'tuiIconDefaultDocLarge';
+            return 'tuiIconFileLarge';
         }
 
         switch (this.state) {

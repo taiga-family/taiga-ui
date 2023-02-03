@@ -8,6 +8,7 @@ import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 
 @Directive({
     selector: '[tuiHint]:not(ng-container)',
+    exportAs: 'tuiHintHover',
     providers: [tuiAsDriver(TuiHintHoverDirective), TuiHoveredService],
 })
 export class TuiHintHoverDirective extends TuiDriver {

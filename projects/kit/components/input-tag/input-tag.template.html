@@ -23,6 +23,8 @@
             >
                 <tui-svg
                     *polymorpheusOutlet="iconLeft as src; context: {$implicit: size}"
+                    tuiWrapper
+                    appearance="icon"
                     class="t-icon"
                     [src]="src"
                 ></tui-svg>
@@ -115,6 +117,8 @@
                     <tui-svg
                         *polymorpheusOutlet="iconCleaner as src; context: {$implicit: size}"
                         #cleaner
+                        tuiWrapper
+                        appearance="icon"
                         automation-id="tui-input-tag__cleaner"
                         class="t-cleaner"
                         [src]="src"
@@ -132,10 +136,14 @@
                     [showDelay]="hintOptions.showDelay"
                     [hideDelay]="hintOptions.hideDelay"
                 ></tui-tooltip>
-                <div *ngIf="icon">
+                <div
+                    *ngIf="icon"
+                    tuiWrapper
+                    appearance="icon"
+                    class="t-icon"
+                >
                     <tui-svg
                         *polymorpheusOutlet="icon as src; context: {$implicit: size}"
-                        class="t-icon"
                         [src]="src"
                     ></tui-svg>
                 </div>
@@ -143,7 +151,7 @@
         </div>
         <ng-template #errorIcon>
             <tui-svg
-                src="tuiIconAttention"
+                src="tuiIconAlertCircle"
                 class="t-error-icon"
             ></tui-svg>
         </ng-template>

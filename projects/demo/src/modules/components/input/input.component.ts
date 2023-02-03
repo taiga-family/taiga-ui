@@ -102,6 +102,7 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
     placeholder = 'Field placeholder';
 
     override readonly customContentVariants = [
+        '',
         'tuiIconSearchLarge',
         'tuiIconCalendarLarge',
         'tuiIconVisaMono',

@@ -135,7 +135,7 @@ describe(`Editor's toolbar`, () => {
             .should(`be.visible`)
             .click();
 
-        cy.get(`button[icon="tuiIconViewListLarge"].t-option`)
+        cy.get(`button[icon="tuiIconListLarge"].t-option`)
             .should(`be.visible`)
             .click({force: true});
 
@@ -175,9 +175,7 @@ describe(`Editor's toolbar`, () => {
                 .find(`button[icon="tuiIconAlignLeftLarge"]`)
                 .as(`initialTool`);
             cy.get(`@wrapper`).find(`button[icon="tuiIconFormatLarge"]`).as(`leftTool`);
-            cy.get(`@wrapper`)
-                .find(`button[icon="tuiIconViewListLarge"]`)
-                .as(`rightTool`);
+            cy.get(`@wrapper`).find(`button[icon="tuiIconListLarge"]`).as(`rightTool`);
 
             cy.get(`@initialTool`).tuiFocus();
 

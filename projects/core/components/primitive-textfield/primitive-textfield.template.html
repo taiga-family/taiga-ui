@@ -45,6 +45,8 @@
         >
             <tui-svg
                 *polymorpheusOutlet="iconLeftContent as src; context: {$implicit: size}"
+                tuiWrapper
+                appearance="icon"
                 [src]="src"
             ></tui-svg>
         </div>
@@ -82,6 +84,8 @@
         </div>
         <span
             *ngIf="hasCleaner"
+            tuiWrapper
+            appearance="icon"
             automation-id="tui-primitive-textfield__cleaner"
             class="t-cleaner"
             (click.stop)="clear()"
@@ -107,6 +111,8 @@
         >
             <tui-svg
                 *polymorpheusOutlet="iconContent as src; context: {$implicit: size}"
+                tuiWrapper
+                appearance="icon"
                 [src]="src"
             ></tui-svg>
         </div>

@@ -14,7 +14,7 @@ import {of} from 'rxjs';
         tuiInputPasswordOptionsProvider({
             icons: {
                 hide: 'tuiIconLockLarge',
-                show: 'tuiIconLockOpenLarge',
+                show: 'tuiIconUnlockLarge',
             },
         }),
         {

@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 const getIcon: Record<string, string> = {
     Calendar: 'tuiIconCalendarLarge',
     Favorite: 'tuiIconStarLarge',
-    Messages: 'tuiIconCommentLarge',
+    Messages: 'tuiIconMessageSquareLarge',
     FAQ: 'tuiIconHelpCircleLarge',
     Settings: 'tuiIconSettingsLarge',
 };

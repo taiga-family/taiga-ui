@@ -12,7 +12,7 @@ import {TuiDialogService} from '@taiga-ui/core';
 })
 export class TuiDropdownContextExample2 {
     readonly menuItems = [
-        {title: 'View', iconName: 'tuiIconEyeOpen'},
+        {title: 'View', iconName: 'tuiIconEye'},
         {title: 'Copy', iconName: 'tuiIconCopy'},
         {title: 'Delete', iconName: 'tuiIconTrash'},
         {title: 'Move', iconName: 'tuiIconFolder'},

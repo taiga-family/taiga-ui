@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TUI_ICONS_PATH, TuiRootModule} from '@taiga-ui/core';
+import {TuiRootModule, tuiSvgOptionsProvider} from '@taiga-ui/core';
 import {
     TUI_ENGLISH_LANGUAGE,
     TUI_LANGUAGE,
@@ -66,10 +66,9 @@ describe(`InputPhoneInternational`, () => {
                 ],
                 declarations: [TestComponent],
                 providers: [
-                    {
-                        provide: TUI_ICONS_PATH,
-                        useValue: (_: string) => `path/tuiIcon.svg#tuiIcon`,
-                    },
+                    tuiSvgOptionsProvider({
+                        path: (_: string) => `path/tuiIcon.svg#tuiIcon`,
+                    }),
                     {
                         provide: TUI_LANGUAGE,
                         useValue: of(language),
@@ -89,11 +88,11 @@ describe(`InputPhoneInternational`, () => {
     describe(`flag paths`, () => {
         initializeTestModule();
 
-        it(`resolves path from TUI_ICONS_PATH`, () => {
+        it(`resolves path from TUI_SVG_OPTIONS`, () => {
             expect(component.countryFlagPath).toContain(`path/`);
         });
 
-        it(`calculates countryFlagPath to flag from TUI_ICONS_PATH`, () => {
+        it(`calculates countryFlagPath to flag from TUI_SVG_OPTIONS`, () => {
             component.countryIsoCode = TuiCountryIsoCode.RU;
 
             expect(component.countryFlagPath).toBe(`path/${TuiCountryIsoCode.RU}.png`);

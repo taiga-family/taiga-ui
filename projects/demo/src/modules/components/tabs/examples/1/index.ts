@@ -24,7 +24,7 @@ export class TuiTabsExample1 {
     readonly items = [
         {
             text: 'Maps',
-            icon: 'tuiIconCard',
+            icon: 'tuiIconCreditCard',
         },
         {
             text: 'Calls',

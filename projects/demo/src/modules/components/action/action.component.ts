@@ -43,7 +43,7 @@ export class ExampleTuiActionComponent {
     };
 
     readonly iconVariants = [
-        'tuiIconPrintLarge',
+        'tuiIconPrinterLarge',
         'tuiIconLoginLarge',
         'tuiIconCalendarLarge',
     ];

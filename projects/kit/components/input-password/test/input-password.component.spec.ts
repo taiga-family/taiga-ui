@@ -73,7 +73,7 @@ describe(`InputPassword`, () => {
             const iconSrc = getIconScr();
 
             expect(icon).not.toBeNull();
-            expect(iconSrc).toBe(`tuiIconHideLarge`);
+            expect(iconSrc).toBe(`tuiIconEyeOffLarge`);
         });
 
         it(`When you click on it, the icon represents "Open eye"`, () => {
@@ -84,7 +84,7 @@ describe(`InputPassword`, () => {
             const iconSrc = getIconScr();
 
             expect(icon).not.toBeNull();
-            expect(iconSrc).toBe(`tuiIconShowLarge`);
+            expect(iconSrc).toBe(`tuiIconEyeLarge`);
         });
 
         it(`Small icons are small`, () => {
@@ -94,14 +94,14 @@ describe(`InputPassword`, () => {
             const icon = getIcon();
             let iconSrc = getIconScr();
 
-            expect(iconSrc).toBe(`tuiIconEyeClosed`);
+            expect(iconSrc).toBe(`tuiIconEyeOff`);
 
             icon?.nativeElement.click();
 
             iconSrc = getIconScr();
 
             expect(icon).not.toBeNull();
-            expect(iconSrc).toBe(`tuiIconEyeOpen`);
+            expect(iconSrc).toBe(`tuiIconEye`);
         });
 
         it(`If readOnly - no icon`, () => {

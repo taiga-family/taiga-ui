@@ -1,7 +1,7 @@
 describe(`Button`, () => {
     it(`tuiMode=OnDark + appearance=icon + hovered state`, () => {
         cy.tuiVisit(
-            `/components/button/API?tuiMode=onDark&appearance=icon&icon=tuiIconEyeClosed`,
+            `/components/button/API?tuiMode=onDark&appearance=icon&icon=tuiIconEyeOff`,
         );
 
         cy.get(`#demo-content`)

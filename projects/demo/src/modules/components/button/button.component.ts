@@ -102,6 +102,6 @@ export class ExampleTuiButtonComponent extends AbstractExampleTuiInteractive {
     getContentVariants(
         template: TemplateRef<Record<string, unknown>>,
     ): readonly PolymorpheusContent[] {
-        return ['', 'tuiIconEyeClosed', 'tuiIconHeartLarge', template];
+        return ['', 'tuiIconEyeOff', 'tuiIconHeartLarge', template];
     }
 }

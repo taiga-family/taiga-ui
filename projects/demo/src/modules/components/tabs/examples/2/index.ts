@@ -24,11 +24,11 @@ export class TuiTabsExample2 {
     readonly items = [
         {
             text: 'Maps',
-            icon: 'tuiIconCard',
+            icon: 'tuiIconCreditCard',
         },
         {
             text: 'Calls',
-            icon: 'tuiIconCall',
+            icon: 'tuiIconPhone',
         },
         {
             text: 'Settings',

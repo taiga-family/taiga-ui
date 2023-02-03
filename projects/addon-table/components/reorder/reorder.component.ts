@@ -72,7 +72,7 @@ export class TuiReorderComponent<T> {
     }
 
     getIcon(item: T): string {
-        return this.isEnabled(item) ? 'tuiIconEyeOpen' : 'tuiIconEyeClosed';
+        return this.isEnabled(item) ? 'tuiIconEye' : 'tuiIconEyeOff';
     }
 
     toggle(toggled: T): void {

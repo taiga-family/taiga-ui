@@ -4,6 +4,9 @@ import {tuiIconsPathFactory} from '@taiga-ui/core/utils';
 
 import {TUI_ICONS_PLACE} from './icon-place';
 
+/**
+ * @deprecated Use {@link TUI_SVG_OPTIONS} instead
+ */
 export const TUI_ICONS_PATH: InjectionToken<TuiStringHandler<string>> =
     new InjectionToken<TuiStringHandler<string>>(
         `[TUI_ICONS_PATH]: A handler to retrieve USE id for icon by name`,

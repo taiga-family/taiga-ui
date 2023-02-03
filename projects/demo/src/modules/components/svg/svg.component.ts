@@ -28,7 +28,7 @@ export class ExampleTuiSvgComponent {
 
     readonly iconVariants: readonly string[] = [
         'https://ng-web-apis.github.io/dist/assets/images/web-api.svg',
-        'tuiIconTooltip',
+        'tuiIconHelpCircle',
         `<svg xmlns="http://www.w3.org/2000/svg"
              width="24px"
              height="24px"

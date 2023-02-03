@@ -4,23 +4,20 @@
     class="icon"
 ></tui-svg>
 <ng-container *ngIf="timeout$ | async">
-    <h2 i18n>Named icon</h2>
+    <h2 i18n>Custom named icon</h2>
     <tui-svg
         src="customTuiIconMastercard"
         class="icon"
     ></tui-svg>
 
-    <h2 i18n>
-        Named icon got with
-        <code>TUI_ICONS_PATH</code>
-    </h2>
+    <h2 i18n>Named icon</h2>
     <tui-svg
-        src="tuiIconLikeLarge"
+        src="tuiIconThumbsUpLarge"
         class="icon"
     ></tui-svg>
 
     <h2 i18n>Source code</h2>
-    <tui-svg [src]="tuiIconTimeLarge"></tui-svg>
+    <tui-svg [src]="tuiIconClockLarge"></tui-svg>
 
     <h2 i18n>External link</h2>
     <tui-svg

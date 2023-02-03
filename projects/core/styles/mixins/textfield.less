@@ -213,41 +213,22 @@
 }
 
 .input-icon() {
+    position: relative;
     display: flex;
     width: 1.5rem;
     height: 1.5rem;
     align-items: center;
     justify-content: center;
-    color: var(--tui-text-03);
-
-    :host[data-mode='onDark'] & {
-        color: var(--tui-text-03-night);
-    }
+    box-sizing: border-box;
+    cursor: pointer;
 }
 
 .icon-button() {
-    .transition(all);
     .input-icon();
-    position: relative;
-    box-sizing: border-box;
-    cursor: pointer;
-    transition-property: color, transform;
-
-    &:hover {
-        color: var(--tui-text-02);
-    }
 
     :host._readonly &,
     :host._disabled & {
         pointer-events: none;
-    }
-
-    :host[data-mode='onDark'] & {
-        color: var(--tui-text-03-night);
-
-        &:hover {
-            color: var(--tui-text-01-night);
-        }
     }
 }
 
@@ -279,6 +260,16 @@
     // @bad TODO: Refactor this and interactive icons together
     .t-icon {
         .input-icon();
+        pointer-events: none;
+
+        :host:hover:not(._readonly) & {
+            opacity: 0.65;
+        }
+
+        :host[data-mode='onDark']:hover:not(._readonly) &,
+        :host[data-mode='onLight']:hover:not(._readonly) & {
+            opacity: 1;
+        }
 
         &_left {
             margin: 0 2 * @space 0 -@space;

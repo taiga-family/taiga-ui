@@ -18,8 +18,8 @@ import {Observable} from 'rxjs';
 export const STATUS_ICON = {
     info: 'tuiIconInfo',
     success: 'tuiIconCheckCircle',
-    error: 'tuiIconCancel',
-    warning: 'tuiIconAttention',
+    error: 'tuiIconXCircle',
+    warning: 'tuiIconAlertCircle',
 } as const;
 
 @Component({

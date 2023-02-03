@@ -128,7 +128,7 @@ describe(`Editor API`, () => {
 
             cy.get(`@wrapper`).find(tuiGetTipTapContentSelector()).as(`editor`);
 
-            toggleBullet(`tuiIconViewListLarge`);
+            toggleBullet(`tuiIconListLarge`);
 
             cy.get(`@editor`).type(`1{enter}`).type(`{enter}`);
 
@@ -140,7 +140,7 @@ describe(`Editor API`, () => {
                 .matchImageSnapshot(`6-1-bullet-and-ordered-list`);
 
             clearEditor();
-            toggleBullet(`tuiIconViewListLarge`);
+            toggleBullet(`tuiIconListLarge`);
 
             cy.get(`@editor`).type(
                 `first line{shift+enter}second line{shift+enter}third line{shift+enter}{enter}first line`,
@@ -166,7 +166,7 @@ describe(`Editor API`, () => {
 
             cy.get(`@wrapper`).find(tuiGetTipTapContentSelector()).as(`editor`);
 
-            toggleBullet(`tuiIconViewListLarge`);
+            toggleBullet(`tuiIconListLarge`);
             cy.get(`@editor`).type(`1{enter}`);
             cy.get(`@editor`).type(`2`);
             toggleBullet(`tuiIconIndentLarge`);
@@ -207,7 +207,7 @@ describe(`Editor API`, () => {
 
         function toggleBullet(iconType: string): void {
             cy.get(`@wrapper`)
-                .find(`button[icon="tuiIconViewListLarge"]`)
+                .find(`button[icon="tuiIconListLarge"]`)
                 .click({force: true});
             cy.get(`tui-dropdown`)
                 .find(`button[icon="${iconType}"]`)

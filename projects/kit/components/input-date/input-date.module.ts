@@ -9,6 +9,7 @@ import {
     TuiSvgModule,
     TuiTextfieldComponent,
     TuiTextfieldControllerModule,
+    TuiWrapperModule,
 } from '@taiga-ui/core';
 import {TextMaskModule, TuiValueAccessorModule} from '@taiga-ui/kit/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -21,6 +22,7 @@ import {TuiInputDateDirective} from './input-date.directive';
         CommonModule,
         TextMaskModule,
         PolymorpheusModule,
+        TuiWrapperModule,
         TuiPreventDefaultModule,
         TuiCalendarModule,
         TuiSvgModule,
