@@ -1,7 +1,15 @@
 import {getHTMLFromFragment} from '@tiptap/core';
 import {Link} from '@tiptap/extension-link';
+import {tuiParseNodeAttributes} from '@taiga-ui/addon-editor/utils';
 
 export const TuiLink = Link.extend({
+    addAttributes() {
+        return {
+            ...this.parent?.(),
+            ...tuiParseNodeAttributes([`download`]),
+        };
+    },
+
     addCommands() {
         return {
             ...this.parent?.(),

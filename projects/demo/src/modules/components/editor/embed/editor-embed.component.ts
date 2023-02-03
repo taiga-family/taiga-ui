@@ -52,4 +52,9 @@ export class ExampleTuiEditorEmbedComponent {
             './examples/2/embed-tool/embed-tool.module.ts?raw'
         ),
     };
+
+    readonly example3: TuiDocExample = {
+        HTML: import('./examples/3/index.html?raw'),
+        TypeScript: import('./examples/3/index.ts?raw'),
+    };
 }

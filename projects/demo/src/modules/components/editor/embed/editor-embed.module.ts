@@ -17,6 +17,7 @@ import {TuiEditorEmbedExample1} from './examples/1';
 import {ExampleTuiYoutubeToolModule} from './examples/1/youtube-tool/youtube-tool.module';
 import {TuiEditorEmbedExample2} from './examples/2';
 import {ExampleTuiEmbedToolModule} from './examples/2/embed-tool/embed-tool.module';
+import {TuiEditorEmbedExample3} from './examples/3';
 
 @NgModule({
     imports: [
@@ -39,6 +40,7 @@ import {ExampleTuiEmbedToolModule} from './examples/2/embed-tool/embed-tool.modu
         ExampleTuiEditorEmbedComponent,
         TuiEditorEmbedExample1,
         TuiEditorEmbedExample2,
+        TuiEditorEmbedExample3,
     ],
 })
 export class ExampleTuiEditorEmbedModule {}

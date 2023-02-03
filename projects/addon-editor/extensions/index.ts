@@ -12,3 +12,4 @@ export * from '@taiga-ui/addon-editor/extensions/starter-kit';
 export * from '@taiga-ui/addon-editor/extensions/table';
 export * from '@taiga-ui/addon-editor/extensions/table-cell-background';
 export * from '@taiga-ui/addon-editor/extensions/tiptap-node-view';
+export * from '@taiga-ui/addon-editor/extensions/media';
