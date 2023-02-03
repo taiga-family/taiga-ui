@@ -13,7 +13,6 @@ import {
     QueryList,
     TemplateRef,
 } from '@angular/core';
-import {INTERSECTION_ROOT} from '@ng-web-apis/intersection-observer';
 import {
     EMPTY_QUERY,
     TUI_IS_MOBILE,
@@ -29,12 +28,6 @@ import {
     templateUrl: './carousel.template.html',
     styleUrls: ['./carousel.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: INTERSECTION_ROOT,
-            useExisting: ElementRef,
-        },
-    ],
 })
 export class TuiCarouselComponent {
     private translate = 0;
