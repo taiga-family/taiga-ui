@@ -4,7 +4,7 @@ import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';
-import {TUI_IS_CYPRESS, tuiPure} from '@taiga-ui/cdk';
+import {tuiPure} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tui-editor-embed-example-2',
@@ -35,15 +35,16 @@ export class TuiEditorEmbedExample2 {
         `
         <p>Here is an online IDE:</p>
         <iframe
-            src="https://stackblitz.com/edit/angular?embed=1${
-                this.isCypress ? '&view=editor' : ''
-            }"
-            frameborder="0"
-            width="100%"
-            allowfullscreen="true"
-            data-type="iframe-editor"
-            height="500"
-        >
+         src="https://codepen.io/mehdinajafi/embed/preview/LYyqNqR?default-tab=html%2Cresult&editable=true"
+         height="375"
+         width="100%"
+         scrolling="no"
+         frameborder="no"
+         loading="lazy"
+         allowtransparency="true"
+         data-type="iframe-editor"
+         allowfullscreen="true">
+        </iframe>
         </iframe>
         <p>Here is a media player:</p>
         <iframe
@@ -57,10 +58,7 @@ export class TuiEditorEmbedExample2 {
         Validators.required,
     );
 
-    constructor(
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-        @Inject(TUI_IS_CYPRESS) private readonly isCypress: boolean,
-    ) {}
+    constructor(@Inject(DomSanitizer) private readonly sanitizer: DomSanitizer) {}
 
     @tuiPure
     safe(content: string): SafeHtml {
