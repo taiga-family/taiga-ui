@@ -1,5 +1,6 @@
 import {workspaces} from '@angular-devkit/core';
 import {SchematicsException} from '@angular-devkit/schematics';
+
 import {Schema} from '../ng-add/schema';
 
 export function getProject(
@@ -7,7 +8,7 @@ export function getProject(
     workspace: workspaces.WorkspaceDefinition,
 ): workspaces.ProjectDefinition {
     const projectName =
-        options.project || workspace.extensions.defaultProject?.toString() || '';
+        options.project || workspace.extensions.defaultProject?.toString() || ``;
     const project = workspace.projects.get(projectName);
 
     if (!project) {

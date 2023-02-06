@@ -12,12 +12,13 @@ export function tuiDeleteNode(
         const node = position.node(depth);
 
         if (node.type.name === nodeName) {
-            if (dispatch)
+            if (dispatch) {
                 dispatch(
                     state.tr
                         .delete(position.before(depth), position.after(depth))
                         .scrollIntoView(),
                 );
+            }
 
             return true;
         }

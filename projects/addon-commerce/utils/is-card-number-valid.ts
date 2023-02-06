@@ -5,7 +5,7 @@ import {TUI_NON_DIGITS_REGEXP} from '@taiga-ui/core';
  * Validates card number using Luhn algorithm
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export function isCardNumberValid(value: string | number): boolean {
+export function isCardNumberValid(value: number | string): boolean {
     const cardNumber = String(value).replace(TUI_NON_DIGITS_REGEXP, ``);
 
     const {length} = cardNumber;

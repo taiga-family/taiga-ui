@@ -24,9 +24,9 @@ import {TuiMarkerHandler} from '@taiga-ui/core/types';
 
 // @dynamic
 @Component({
-    selector: `tui-calendar`,
-    templateUrl: `./calendar.template.html`,
-    styleUrls: [`./calendar.style.less`],
+    selector: 'tui-calendar',
+    templateUrl: './calendar.template.html',
+    styleUrls: ['./calendar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
@@ -36,7 +36,7 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
 
     @Input()
     @tuiDefaultProp()
-    value: TuiDayRange | TuiDay | null = null;
+    value: TuiDay | TuiDayRange | null = null;
 
     @Input()
     @tuiDefaultProp()

@@ -3,6 +3,6 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiHint {
     readonly id: string | null;
-    readonly component: PolymorpheusComponent<object, object>;
+    readonly component: PolymorpheusComponent<Record<string, any>, Record<string, any>>;
     readonly activeZone: TuiActiveZoneDirective | null;
 }

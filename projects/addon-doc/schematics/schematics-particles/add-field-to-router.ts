@@ -3,10 +3,11 @@ import {chain, noop, Rule, Tree} from '@angular-devkit/schematics';
 import {exec} from 'child_process';
 import * as path from 'path';
 import {getSourceFile} from 'schematics-utilities';
+
 import {Schema} from '../doc-page/index';
 import {getRelativePath} from '../utils/get-relative-path';
 
-const defaultAppPath = 'src/app';
+const defaultAppPath = `src/app`;
 
 function getModuleNameByName(name: string): string {
     return `Example${classify(name)}Module`;
@@ -33,15 +34,15 @@ function changeRouterArray(options: Schema): Rule {
         const {pathToRouter, name} = options;
         const pathToModule = `${getRelativePath(options.root, process.cwd()).replace(
             defaultAppPath,
-            '.',
+            `.`,
         )}/${dasherize(name)}/${dasherize(name)}.module#${getModuleNameByName(name)}`;
         const sourceFile = getSourceFile(host, pathToRouter);
         const fullText = sourceFile.getFullText();
-        const label = 'Routes = [';
+        const label = `Routes = [`;
         const template = /Routes( ){0,}=( ){0,}\[/gm;
         const updatedFile = fullText.replace(
             template,
-            label + ' ' + getText(options, pathToModule),
+            `${label} ${getText(options, pathToModule)}`,
         );
 
         host.overwrite(pathToRouter, updatedFile);

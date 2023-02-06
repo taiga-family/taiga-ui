@@ -2,7 +2,7 @@
  * @deprecated: use {@link tuiUniqBy} instead
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export function uniqBy<T extends object>(
+export function uniqBy<T extends Record<string, any>>(
     array: readonly T[],
     key: keyof T,
 ): readonly T[] {

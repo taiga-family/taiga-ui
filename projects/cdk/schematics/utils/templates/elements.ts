@@ -9,7 +9,7 @@ export function findElementByFn(
     const document = parseFragment(html, {sourceCodeLocationInfo: true});
     const elements: Element[] = [];
 
-    const visitNodes = (nodes: ChildNode[]) => {
+    const visitNodes = (nodes: ChildNode[]): void => {
         nodes.forEach(n => {
             const node = n as Element;
 
@@ -58,7 +58,7 @@ export function findAttributeOnElementWithTag(
     return findElementsWithAttribute(html, name)
         .filter(
             element =>
-                (tagNames.includes(element.tagName) || tagNames.includes('*')) &&
+                (tagNames.includes(element.tagName) || tagNames.includes(`*`)) &&
                 filterFn(element),
         )
         .map(element => getStartOffsetOfAttribute(element, name));
@@ -85,10 +85,7 @@ export function findAttributeOnElementWithAttrs(
 
 /** Shorthand function that checks if the specified element contains the given attribute. */
 export function hasElementAttribute(element: Element, attributeName: string): boolean {
-    return (
-        element.attrs &&
-        element.attrs.some(attr => attr.name === attributeName.toLowerCase())
-    );
+    return element.attrs?.some(attr => attr.name === attributeName.toLowerCase());
 }
 
 /** Gets the start offset of the given attribute from a Parse5 element. */

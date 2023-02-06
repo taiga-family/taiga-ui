@@ -6,19 +6,20 @@ import {
     setActiveProject,
 } from 'ng-morph';
 
+import {ALL_TS_FILES} from '../../../constants';
+import {addUniqueImport} from '../../../utils/add-unique-import';
+import {getNgComponents} from '../../../utils/angular/ng-component';
+import {hasElementAttribute} from '../../../utils/templates/elements';
+import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {
     removeInputProperty,
     replaceInputProperty,
 } from '../../../utils/templates/ng-component-input-manipulations';
 import {TemplateResource} from '../../interfaces/template-resourse';
-import {getNgComponents} from '../../../utils/angular/ng-component';
-import {addUniqueImport} from '../../../utils/add-unique-import';
-import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
-import {hasElementAttribute} from '../../../utils/templates/elements';
-import {ALL_TS_FILES} from '../../../constants';
 
 export function migrateInputSlider(fileSystem: DevkitFileSystem): void {
     const templateResources = getComponentTemplates(ALL_TS_FILES);
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     const COMPONENTS_WITH_MIN_MAX_LABELS = new Set<string>();
 
     for (const templateResource of templateResources) {
@@ -31,14 +32,14 @@ export function migrateInputSlider(fileSystem: DevkitFileSystem): void {
      * */
     fileSystem.commitEdits();
     saveActiveProject();
-    setActiveProject(createProject(fileSystem.tree, '/', '**/**'));
+    setActiveProject(createProject(fileSystem.tree, `/`, `**/**`));
 
     for (const componentPath of Array.from(COMPONENTS_WITH_MIN_MAX_LABELS)) {
         addMinMaxLabelMethod(componentPath);
     }
 }
 
-const MIN_MAX_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationMinMaxLabel';
+const MIN_MAX_LABELS_MIGRATION_METHOD_NAME = `tuiMigrationMinMaxLabel`;
 
 function replaceMinMaxLabels(
     templateResource: TemplateResource,
@@ -48,27 +49,27 @@ function replaceMinMaxLabels(
     const wasMaxLabelModified = replaceInputProperty({
         templateResource,
         fileSystem,
-        componentSelector: 'tui-input-slider',
-        from: 'maxLabel',
-        to: '[valueContent]',
+        componentSelector: `tui-input-slider`,
+        from: `maxLabel`,
+        to: `[valueContent]`,
         newValue: MIN_MAX_LABELS_MIGRATION_METHOD_NAME,
     });
     const wasMinLabelModified = replaceInputProperty({
         templateResource,
         fileSystem,
-        componentSelector: 'tui-input-slider',
-        from: 'minLabel',
-        to: '[valueContent]',
+        componentSelector: `tui-input-slider`,
+        from: `minLabel`,
+        to: `[valueContent]`,
         newValue: MIN_MAX_LABELS_MIGRATION_METHOD_NAME,
-        filterFn: element => !hasElementAttribute(element, 'maxLabel'),
+        filterFn: element => !hasElementAttribute(element, `maxLabel`),
     });
 
     removeInputProperty({
         templateResource,
         fileSystem,
-        componentSelector: 'tui-input-slider',
-        inputProperty: 'minLabel',
-        filterFn: element => hasElementAttribute(element, 'maxLabel'),
+        componentSelector: `tui-input-slider`,
+        inputProperty: `minLabel`,
+        filterFn: element => hasElementAttribute(element, `maxLabel`),
     });
 
     if (wasMaxLabelModified || wasMinLabelModified) {
@@ -80,20 +81,20 @@ function addMinMaxLabelMethod(componentPath: string): void {
     const [ngComponent] = getNgComponents(componentPath);
 
     if (ngComponent) {
-        addUniqueImport(componentPath, 'TuiContextWithImplicit', '@taiga-ui/cdk');
+        addUniqueImport(componentPath, `TuiContextWithImplicit`, `@taiga-ui/cdk`);
         addMethods(ngComponent, {
             name: MIN_MAX_LABELS_MIGRATION_METHOD_NAME,
-            returnType: 'string',
-            parameters: [{name: 'context', type: 'TuiContextWithImplicit<number>'}],
+            returnType: `string`,
+            parameters: [{name: `context`, type: `TuiContextWithImplicit<number>`}],
             statements: [
-                'const currentValue = context.$implicit;',
-                'const maxValue = 100; // TODO: (Taiga UI migration) replace with the MAX value of the input',
-                'const maxLabelText = "Max"; // TODO: (Taiga UI migration) replace with the required label',
-                'const minValue = 0; // TODO: (Taiga UI migration) replace with the MIN value of the input',
-                'const minLabelText = "Min"; // TODO: (Taiga UI migration) replace with the required label',
-                'if (currentValue === maxValue) return maxLabelText;',
-                'if (currentValue === minValue) return minLabelText;',
-                'return String(currentValue);',
+                `const currentValue = context.$implicit;`,
+                `const maxValue = 100; // TODO: (Taiga UI migration) replace with the MAX value of the input`,
+                `const maxLabelText = "Max"; // TODO: (Taiga UI migration) replace with the required label`,
+                `const minValue = 0; // TODO: (Taiga UI migration) replace with the MIN value of the input`,
+                `const minLabelText = "Min"; // TODO: (Taiga UI migration) replace with the required label`,
+                `if (currentValue === maxValue) return maxLabelText;`,
+                `if (currentValue === minValue) return minLabelText;`,
+                `return String(currentValue);`,
             ],
         });
     }

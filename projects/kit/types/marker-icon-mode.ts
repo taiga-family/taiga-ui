@@ -1,8 +1,8 @@
 export type TuiMarkerIconModeT =
+    | 'error'
     | 'link'
     | 'primary'
-    | 'warning'
-    | 'white'
     | 'secondary'
     | 'success'
-    | 'error';
+    | 'warning'
+    | 'white';

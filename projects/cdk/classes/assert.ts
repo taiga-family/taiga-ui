@@ -9,7 +9,7 @@ export const tuiAssert = {
     },
 };
 
-type PossibleNode = Node | Element | EventTarget | null;
+type PossibleNode = Element | EventTarget | Node | null;
 
 // TODO: remove `DefaultView` in v3.0
 // TS 3.8 Property 'Element' does not exist on type 'Window'.

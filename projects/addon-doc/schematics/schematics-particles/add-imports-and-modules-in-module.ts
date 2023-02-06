@@ -8,6 +8,7 @@ import {
     InsertChange,
     insertImport,
 } from 'schematics-utilities';
+
 import {Schema} from '../doc-page/index';
 import {getRelativePath} from '../utils/get-relative-path';
 

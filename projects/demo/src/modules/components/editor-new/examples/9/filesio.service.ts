@@ -22,7 +22,7 @@ export class FileIoService {
         return from(
             fetch(host, {
                 method: `POST`,
-                body: body,
+                body,
             }).then(async (response: Response) => response.json()),
         ).pipe(map(result => ({name: result.name, link: result.link})));
     }

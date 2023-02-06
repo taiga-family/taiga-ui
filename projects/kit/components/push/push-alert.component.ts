@@ -13,18 +13,18 @@ import {TuiPushOptions} from './push.options';
 import {TuiPushAlertDirective} from './push-alert.directive';
 
 @Component({
-    selector: `tui-push-alert`,
-    templateUrl: `./push-alert.template.html`,
-    styleUrls: [`./push-alert.style.less`],
+    selector: 'tui-push-alert',
+    templateUrl: './push-alert.template.html',
+    styleUrls: ['./push-alert.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiFadeIn, tuiSlideInRight, tuiHeightCollapse],
-    host: {role: `alert`},
+    host: {role: 'alert'},
 })
 export class TuiPushAlertComponent {
-    @HostBinding(`@tuiFadeIn`)
-    @HostBinding(`@tuiSlideInRight`)
-    @HostBinding(`@tuiHeightCollapse`)
-    readonly animation = {value: ``, ...this.options} as const;
+    @HostBinding('@tuiFadeIn')
+    @HostBinding('@tuiSlideInRight')
+    @HostBinding('@tuiHeightCollapse')
+    readonly animation = {value: '', ...this.options} as const;
 
     constructor(
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,

@@ -5,6 +5,7 @@ import {
     getPackageJsonDependency,
     NodeDependencyType,
 } from 'ng-morph';
+
 import {MAIN_PACKAGES} from './constants/packages';
 import {
     DOMPURIFY_TYPES_VERSION,
@@ -21,7 +22,7 @@ export function ngAdd(options: Schema): Rule {
         addDependencies(tree, options);
 
         context.addTask(new NodePackageInstallTask(), [
-            context.addTask(new RunSchematicTask('ng-add-setup-project', options)),
+            context.addTask(new RunSchematicTask(`ng-add-setup-project`, options)),
         ]);
     };
 }
@@ -38,27 +39,27 @@ function addDependencies(tree: Tree, options: Schema): void {
 
     if (options.addSanitizer) {
         addPackageJsonDependency(tree, {
-            name: '@tinkoff/ng-dompurify',
+            name: `@tinkoff/ng-dompurify`,
             version: NG_DOMPURIFY_VERSION,
         });
         addPackageJsonDependency(tree, {
-            name: 'dompurify',
+            name: `dompurify`,
             version: DOMPURIFY_VERSION,
         });
         addPackageJsonDependency(tree, {
-            name: '@types/dompurify',
+            name: `@types/dompurify`,
             version: DOMPURIFY_TYPES_VERSION,
             type: NodeDependencyType.Dev,
         });
     }
 
-    if (packages.includes('addon-table') || packages.includes('addon-mobile')) {
+    if (packages.includes(`addon-table`) || packages.includes(`addon-mobile`)) {
         addAngularCdkDep(tree);
     }
 }
 
 function addAngularCdkDep(tree: Tree): void {
-    const angularCore = getPackageJsonDependency(tree, '@angular/core')?.version;
+    const angularCore = getPackageJsonDependency(tree, `@angular/core`)?.version;
 
     if (!angularCore) {
         return;
@@ -68,7 +69,7 @@ function addAngularCdkDep(tree: Tree): void {
 
     if (majorVersionArr) {
         addPackageJsonDependency(tree, {
-            name: '@angular/cdk',
+            name: `@angular/cdk`,
             version: `^${majorVersionArr[0]}.0.0`,
         });
     }

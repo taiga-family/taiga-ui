@@ -55,7 +55,7 @@ export class TuiTextfieldController {
         return this.maxLengthDirective.maxLength;
     }
 
-    get size(): TuiSizeS | TuiSizeL {
+    get size(): TuiSizeL | TuiSizeS {
         return this.sizeDirective.size;
     }
 

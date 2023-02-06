@@ -1,19 +1,20 @@
+import {addImportToNgModule, DevkitFileSystem} from 'ng-morph';
 import {Element} from 'parse5';
-import {
-    getPathFromTemplateResource,
-    getTemplateFromTemplateResource,
-    getTemplateOffset,
-} from './template-resource';
+
 import {TemplateResource} from '../../ng-update/interfaces/template-resourse';
+import {addUniqueImport} from '../add-unique-import';
 import {getNgComponents} from '../angular/ng-component';
 import {findNgModule} from '../angular/ng-module';
-import {addImportToNgModule, DevkitFileSystem} from 'ng-morph';
-import {addUniqueImport} from '../add-unique-import';
 import {
     findAttributeOnElementWithAttrs,
     findAttributeOnElementWithTag,
     findElementsWithAttribute,
 } from './elements';
+import {
+    getPathFromTemplateResource,
+    getTemplateFromTemplateResource,
+    getTemplateOffset,
+} from './template-resource';
 
 /**
  * Replace component input property by new value
@@ -46,12 +47,12 @@ export function replaceInputProperty({
     componentSelector,
     from,
     to,
-    newValue = '',
+    newValue = ``,
     filterFn,
 }: {
     templateResource: TemplateResource;
     fileSystem: DevkitFileSystem;
-    componentSelector: string | string[];
+    componentSelector: string[] | string;
     from: string;
     to: string;
     newValue?: string;
@@ -91,7 +92,7 @@ export function replaceInputProperty({
 
     propertyBindings.forEach(offset => {
         recorder.remove(offset, `[${from}]`.length);
-        recorder.insertRight(offset, to.startsWith('[') ? to : `[${to}]`);
+        recorder.insertRight(offset, to.startsWith(`[`) ? to : `[${to}]`);
     });
 
     propertyValues.forEach(([startOffset, endOffset]) => {
@@ -114,11 +115,11 @@ export function getInputPropertyOffsets(
     attrName: string,
     tags: string[],
     filterFn: (element: Element) => boolean = () => true,
-): [number, number][] {
+): Array<[number, number]> {
     return findElementsWithAttribute(html, attrName)
         .filter(
             element =>
-                (tags.includes(element.tagName) || tags.includes('*')) &&
+                (tags.includes(element.tagName) || tags.includes(`*`)) &&
                 filterFn(element),
         )
         .map((element: Element) => {
@@ -140,17 +141,17 @@ export function getInputPropertyValueOffsets(
     template: string,
     attrName: string,
     tags: string[],
-): [number, number][] {
-    const stringProperties: [number, number][] = getInputPropertyOffsets(
+): Array<[number, number]> {
+    const stringProperties: Array<[number, number]> = getInputPropertyOffsets(
         template,
         attrName,
         tags,
-    ).map(([start, end]) => [start + attrName.length + '="'.length, end - 1]);
-    const propertyBindings: [number, number][] = getInputPropertyOffsets(
+    ).map(([start, end]) => [start + attrName.length + `="`.length, end - 1]);
+    const propertyBindings: Array<[number, number]> = getInputPropertyOffsets(
         template,
         `[${attrName}]`,
         tags,
-    ).map(([start, end]) => [start + `[${attrName}]`.length + '="'.length, end - 1]);
+    ).map(([start, end]) => [start + `[${attrName}]`.length + `="`.length, end - 1]);
 
     return [...stringProperties, ...propertyBindings];
 }
@@ -166,7 +167,7 @@ export function replaceInputPropertyByDirective({
 }: {
     templateResource: TemplateResource;
     fileSystem: DevkitFileSystem;
-    componentSelector: string | string[];
+    componentSelector: string[] | string;
     inputProperty: string;
     directive: string;
     directiveModule?: {name: string; moduleSpecifier: string};
@@ -215,7 +216,7 @@ export function removeInputProperty({
     componentSelector: string;
     inputProperty: string;
     filterFn?: (element: Element) => boolean;
-}) {
+}): void {
     const template = getTemplateFromTemplateResource(templateResource, fileSystem);
     const templateOffset = getTemplateOffset(templateResource);
 

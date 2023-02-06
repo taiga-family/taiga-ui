@@ -17,23 +17,23 @@ import {TUI_STUCK} from '../providers/stuck.provider';
 import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
 
 @Directive({
-    selector: `table[tuiTable]`,
+    selector: 'table[tuiTable]',
     providers: TUI_TABLE_PROVIDERS,
     host: {
-        '($.data-mode.attr)': `mode$`,
-        '($.class._stuck)': `stuck$`,
-        style: `border-collapse: separate`,
+        '($.data-mode.attr)': 'mode$',
+        '($.class._stuck)': 'stuck$',
+        style: 'border-collapse: separate',
     },
 })
 export class TuiTableDirective<T> extends TuiController {
     @Input()
     @tuiDefaultProp()
-    columns: ReadonlyArray<keyof T | string> = [];
+    columns: ReadonlyArray<string | keyof T> = [];
 
     @Input()
-    @HostBinding(`attr.data-size`)
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
-    size: TuiSizeS | TuiSizeL = `m`;
+    size: TuiSizeL | TuiSizeS = 'm';
 
     @Input()
     @tuiDefaultProp()

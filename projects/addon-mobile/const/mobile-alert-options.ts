@@ -2,7 +2,7 @@ import {TuiDialogOptions} from '@taiga-ui/core';
 
 export type TuiMobileAlertOptions = Omit<
     TuiDialogOptions<unknown>,
-    'data' | 'required' | 'dismissible' | 'header' | 'label'
+    'data' | 'dismissible' | 'header' | 'label' | 'required'
 >;
 
 const MOBILE_ALERT_OPTIONS: TuiMobileAlertOptions = {
@@ -12,7 +12,7 @@ const MOBILE_ALERT_OPTIONS: TuiMobileAlertOptions = {
 
 export type TuiIosAlertOptions = Omit<
     TuiDialogOptions<unknown>,
-    'data' | 'required' | 'header' | 'label'
+    'data' | 'header' | 'label' | 'required'
 >;
 
 export const TUI_IOS_ALERT_OPTIONS: TuiIosAlertOptions = {
@@ -20,7 +20,7 @@ export const TUI_IOS_ALERT_OPTIONS: TuiIosAlertOptions = {
     ...MOBILE_ALERT_OPTIONS,
 };
 
-export interface TuiAndroidAlertOptions extends TuiIosAlertOptions {}
+export type TuiAndroidAlertOptions = TuiIosAlertOptions;
 
 export const TUI_ANDROID_ALERT_OPTIONS: TuiAndroidAlertOptions = {
     dismissible: true,

@@ -6,7 +6,7 @@
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function getNativeFocused(documentRef: Document): Element | null {
-    if (!documentRef.activeElement || !documentRef.activeElement.shadowRoot) {
+    if (!documentRef.activeElement?.shadowRoot) {
         return documentRef.activeElement;
     }
 

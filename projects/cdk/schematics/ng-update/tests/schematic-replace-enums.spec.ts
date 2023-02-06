@@ -1,6 +1,5 @@
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-
 import {
     createProject,
     createSourceFile,
@@ -10,15 +9,15 @@ import {
 } from 'ng-morph';
 import {join} from 'path';
 
-const collectionPath = join(__dirname, '../../migration.json');
+const collectionPath = join(__dirname, `../../migration.json`);
 
-describe('ng-update', () => {
+describe(`ng-update`, () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
     beforeEach(() => {
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner('schematics', collectionPath);
+        runner = new SchematicTestRunner(`schematics`, collectionPath);
 
         setActiveProject(createProject(host));
 
@@ -27,10 +26,10 @@ describe('ng-update', () => {
         saveActiveProject();
     });
 
-    it('should replaces enums with strings and removes imports', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+    it(`should replaces enums with strings and removes imports`, async () => {
+        const tree = await runner.runSchematicAsync(`updateToV3`, {}, host).toPromise();
 
-        expect(tree.readContent('test/app/app.component.ts')).toEqual(
+        expect(tree.readContent(`test/app/app.component.ts`)).toEqual(
             `import {Component} from '@angular/core';
 import {some} from '@taiga-ui/cdk';
 import {TuiLineType} from '@taiga-ui/cdk';
@@ -57,7 +56,7 @@ export class AppComponent {
 
 function createMainFiles(): void {
     createSourceFile(
-        'test/app/app.component.ts',
+        `test/app/app.component.ts`,
         `import {Component} from '@angular/core';
 import {TuiTextAlign, some} from '@taiga-ui/cdk';
 import {TuiLineType} from '@taiga-ui/cdk';
@@ -78,5 +77,5 @@ export class AppComponent {
 }`,
     );
 
-    createSourceFile('test/app/app.template.html', `<app></app>`);
+    createSourceFile(`test/app/app.template.html`, `<app></app>`);
 }

@@ -24,9 +24,9 @@ import {TuiVersionMeta} from './version-manager/versions.constants';
 
 // @dynamic
 @Component({
-    selector: `app`,
-    templateUrl: `./app.template.html`,
-    styleUrls: [`./app.style.less`],
+    selector: 'app',
+    templateUrl: './app.template.html',
+    styleUrls: ['./app.style.less'],
     providers: [
         TuiDestroyService,
         TuiResizeService,
@@ -38,7 +38,7 @@ import {TuiVersionMeta} from './version-manager/versions.constants';
 })
 export class AppComponent extends AbstractDemoComponent {
     readonly isLanding$ = this.router.events.pipe(
-        map(() => this.router.routerState.snapshot.url === `/`),
+        map(() => this.router.routerState.snapshot.url === '/'),
         distinctUntilChanged(),
     );
 
@@ -63,7 +63,7 @@ export class AppComponent extends AbstractDemoComponent {
 
     private enableYandexMetrika(): void {
         if (!environment.production || this.isCypress) {
-            console.info(`Yandex.Metrika disabled for non-production mode.`);
+            console.info('Yandex.Metrika disabled for non-production mode.');
 
             return;
         }
@@ -83,7 +83,7 @@ export class AppComponent extends AbstractDemoComponent {
                     metrika?.hit(event.urlAfterRedirects, {referer: event.url});
                 });
         } catch {
-            console.error(`You forgot to import MetrikaModule!`);
+            console.error('You forgot to import MetrikaModule!');
         }
     }
 }

@@ -1,9 +1,6 @@
-import {TypeNode} from 'ts-morph';
 import {getImports, ImportSpecifier, Node} from 'ng-morph';
+import {TypeNode} from 'ts-morph';
 
-import {getNamedImportReferences} from '../../utils/get-named-import-references';
-import {TYPES_TO_RENAME} from '../constants/types';
-import {removeImport, renameImport} from '../../utils/import-manipulations';
 import {
     infoLog,
     REPLACE_SYMBOL,
@@ -11,6 +8,9 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
+import {getNamedImportReferences} from '../../utils/get-named-import-references';
+import {removeImport, renameImport} from '../../utils/import-manipulations';
+import {TYPES_TO_RENAME} from '../constants/types';
 
 export function renameTypes(): void {
     infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} renaming types...`);
@@ -25,7 +25,7 @@ export function renameTypes(): void {
 function renameType(
     from: string,
     to?: string,
-    moduleSpecifier?: string | string[],
+    moduleSpecifier?: string[] | string,
     preserveGenerics: boolean = false,
 ): void {
     const references = getNamedImportReferences(from, moduleSpecifier);
@@ -39,7 +39,7 @@ function renameType(
             const targetType =
                 preserveGenerics && to ? addGeneric(to, parent.getTypeArguments()) : to;
 
-            parent.replaceWithText(targetType || 'any');
+            parent.replaceWithText(targetType || `any`);
         }
     });
 }
@@ -58,12 +58,12 @@ function processImport(node: ImportSpecifier, from: string, to?: string): void {
 }
 
 function removeGeneric(type: string): string {
-    return type.replace(/<.*>$/gi, '');
+    return type.replace(/<.*>$/gi, ``);
 }
 
 function addGeneric(typeName: string, generics: TypeNode[]): string {
     const typeArgs = generics.map(t => t.getType().getText());
-    const genericType = typeArgs.length ? `<${typeArgs.join(', ')}>` : '';
+    const genericType = typeArgs.length ? `<${typeArgs.join(`, `)}>` : ``;
 
     return typeName + genericType;
 }

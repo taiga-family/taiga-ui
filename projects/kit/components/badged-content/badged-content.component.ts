@@ -4,59 +4,59 @@ import {sizeBigger, TuiSizeL, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 import {TuiStatusT} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-const BADGE_SIZE: {[key: string]: TuiSizeXS | TuiSizeL} = {
-    xs: `xs`,
-    s: `s`,
-    m: `s`,
-    l: `m`,
-    xl: `m`,
-    xxl: `l`,
+const BADGE_SIZE: {[key: string]: TuiSizeL | TuiSizeXS} = {
+    xs: 'xs',
+    s: 's',
+    m: 's',
+    l: 'm',
+    xl: 'm',
+    xxl: 'l',
 };
 
 @Component({
-    selector: `tui-badged-content`,
+    selector: 'tui-badged-content',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: `./badged-content.template.html`,
-    styleUrls: [`./badged-content.style.less`],
+    templateUrl: './badged-content.template.html',
+    styleUrls: ['./badged-content.style.less'],
 })
 export class TuiBadgedContentComponent {
     @Input()
-    @HostBinding(`attr.data-tui-host-top`)
+    @HostBinding('attr.data-tui-host-top')
     @tuiDefaultProp()
-    contentTop: PolymorpheusContent = ``;
+    contentTop: PolymorpheusContent = '';
 
     @Input()
-    @HostBinding(`attr.data-tui-host-bottom`)
+    @HostBinding('attr.data-tui-host-bottom')
     @tuiDefaultProp()
-    contentBottom: PolymorpheusContent = ``;
+    contentBottom: PolymorpheusContent = '';
 
     @Input()
-    @HostBinding(`attr.data-size`)
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
-    size: TuiSizeXS | TuiSizeXXL = `m`;
-
-    @Input()
-    @tuiDefaultProp()
-    colorTop = ``;
+    size: TuiSizeXS | TuiSizeXXL = 'm';
 
     @Input()
     @tuiDefaultProp()
-    colorBottom = ``;
+    colorTop = '';
 
     @Input()
-    @HostBinding(`class._rounded`)
+    @tuiDefaultProp()
+    colorBottom = '';
+
+    @Input()
+    @HostBinding('class._rounded')
     @tuiDefaultProp()
     rounded = false;
 
     get topNotification(): string {
-        return !this.contentTop && this.colorTop ? this.colorTop : ``;
+        return !this.contentTop && this.colorTop ? this.colorTop : '';
     }
 
     get bottomNotification(): string {
-        return !this.contentBottom && this.colorBottom ? this.colorBottom : ``;
+        return !this.contentBottom && this.colorBottom ? this.colorBottom : '';
     }
 
-    get badgeSize(): TuiSizeXS | TuiSizeL {
+    get badgeSize(): TuiSizeL | TuiSizeXS {
         return BADGE_SIZE[this.size];
     }
 
@@ -75,10 +75,10 @@ export class TuiBadgedContentComponent {
     }
 
     contentIsString(content: PolymorpheusContent): boolean {
-        return typeof content.valueOf() === `string`;
+        return typeof content.valueOf() === 'string';
     }
 
     getStatus(color: string): TuiStatusT {
-        return color ? `custom` : `primary`;
+        return color ? 'custom' : 'primary';
     }
 }

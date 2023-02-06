@@ -1,4 +1,6 @@
 import {editImports, getImports} from 'ng-morph';
+
+import {ALL_TS_FILES} from '../../constants';
 import {
     infoLog,
     REPLACE_SYMBOL,
@@ -6,7 +8,6 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
-import {ALL_TS_FILES} from '../../constants';
 
 const DEEP_REGEX = /(@taiga-ui\/\w+)\/.*/;
 
@@ -18,7 +19,8 @@ export function replaceDeepImports(): void {
     );
 
     editImports(deepImports, deepImport => {
-        const specifier = deepImport.moduleSpecifier.replace(DEEP_REGEX, '$1');
+        const specifier = deepImport.moduleSpecifier.replace(DEEP_REGEX, `$1`);
+
         return {moduleSpecifier: specifier};
     });
 

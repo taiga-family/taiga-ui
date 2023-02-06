@@ -25,9 +25,9 @@ export class TuiFilterByInputWithPipe
 
     transform<T>(items: T, matcher?: TuiStringHandler<ArrayElement<T>>): T;
     transform<T>(
-        items: readonly T[] | ReadonlyArray<readonly T[]> | null,
+        items: ReadonlyArray<readonly T[]> | readonly T[] | null,
         stringify: TuiStringHandler<T>,
-    ): readonly T[] | ReadonlyArray<readonly T[]> | null {
+    ): ReadonlyArray<readonly T[]> | readonly T[] | null {
         return this.filter(items, TUI_DEFAULT_MATCHER, stringify, this.query);
     }
 }

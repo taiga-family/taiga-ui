@@ -5,8 +5,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_NUMBER_FORMAT} from '@taiga-ui/core';
 
 @Component({
-    selector: `tui-input-range-example-2`,
-    templateUrl: `./index.html`,
+    selector: 'tui-input-range-example-2',
+    templateUrl: './index.html',
     styles: [
         `
             tui-input-range {
@@ -20,8 +20,8 @@ import {TUI_NUMBER_FORMAT} from '@taiga-ui/core';
         {
             provide: TUI_NUMBER_FORMAT,
             useValue: {
-                decimalSeparator: `.`,
-                thousandSeparator: `,`,
+                decimalSeparator: '.',
+                thousandSeparator: ',',
                 zeroPadding: true,
             },
         },

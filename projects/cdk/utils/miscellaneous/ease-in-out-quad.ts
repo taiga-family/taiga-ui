@@ -6,7 +6,7 @@ import {tuiAssert} from '@taiga-ui/cdk/classes';
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function easeInOutQuad(t: number): number {
     tuiAssert.assert(
-        0 <= t && t <= 1,
+        t >= 0 && t <= 1,
         `Input must be between 0 and 1 inclusive but received `,
         t,
     );

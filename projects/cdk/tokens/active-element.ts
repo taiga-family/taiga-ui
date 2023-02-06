@@ -84,7 +84,7 @@ function isValidFocusout(target: any, removedElement: Element | null = null): bo
         // Not due to button/input becoming disabled
         !target.disabled &&
         // Not due to element being removed from DOM
-        (!removedElement || !removedElement.contains(target))
+        !removedElement?.contains(target)
     );
 }
 

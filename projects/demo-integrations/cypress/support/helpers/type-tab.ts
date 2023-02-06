@@ -76,7 +76,7 @@ function isFocusable($element: JQuery<HTMLElement>): boolean {
 
 export function tuiTab(
     $subject: Cypress.PrevSubjectMap<void>[Cypress.PrevSubject],
-    direction: 'forward' | 'backward',
+    direction: 'backward' | 'forward',
 ): Cypress.Chainable<JQuery<HTMLElement>> {
     const thenable: Cypress.Chainable = $subject
         ? cy.wrap($subject, {log: false})

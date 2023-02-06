@@ -1,8 +1,6 @@
-import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {Node} from 'ng-morph';
-import {removeImport} from '../../utils/import-manipulations';
+
 import {addUniqueImport} from '../../utils/add-unique-import';
-import {CONSTS_TO_REPLACE, ReplacementConst} from '../constants/consts';
 import {
     infoLog,
     REPLACE_SYMBOL,
@@ -10,6 +8,9 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
+import {getNamedImportReferences} from '../../utils/get-named-import-references';
+import {removeImport} from '../../utils/import-manipulations';
+import {CONSTS_TO_REPLACE, ReplacementConst} from '../constants/consts';
 
 export function replaceConstants(): void {
     infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing constants...`);

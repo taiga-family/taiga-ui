@@ -11,19 +11,19 @@ import {TUI_CLOSE_WORD} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: `tui-push`,
-    templateUrl: `./push.template.html`,
-    styleUrls: [`./push.style.less`],
+    selector: 'tui-push',
+    templateUrl: './push.template.html',
+    styleUrls: ['./push.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPushComponent {
     @Input()
     @tuiDefaultProp()
-    heading = ``;
+    heading = '';
 
     @Input()
     @tuiDefaultProp()
-    type = ``;
+    type = '';
 
     @Input()
     @tuiDefaultProp()

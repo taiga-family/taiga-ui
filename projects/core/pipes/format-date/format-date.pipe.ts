@@ -10,7 +10,7 @@ export class TuiFormatDatePipe implements PipeTransform {
         @Inject(TuiFormatDateService) private readonly service: TuiFormatDateService,
     ) {}
 
-    transform(timestampOrDate: number | Date): Observable<string> {
+    transform(timestampOrDate: Date | number): Observable<string> {
         return this.service.format(timestampOrDate.valueOf());
     }
 }

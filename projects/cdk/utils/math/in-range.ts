@@ -10,9 +10,9 @@ import {tuiAssert} from '@taiga-ui/cdk/classes';
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function inRange(value: number, fromInclude: number, toExclude: number): boolean {
-    tuiAssert.assert(!isNaN(value));
-    tuiAssert.assert(!isNaN(fromInclude));
-    tuiAssert.assert(!isNaN(toExclude));
+    tuiAssert.assert(!Number.isNaN(value));
+    tuiAssert.assert(!Number.isNaN(fromInclude));
+    tuiAssert.assert(!Number.isNaN(toExclude));
     tuiAssert.assert(fromInclude < toExclude);
 
     return value >= fromInclude && value < toExclude;

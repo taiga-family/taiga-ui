@@ -83,7 +83,7 @@ export abstract class AbstractTuiSlider<T>
     // TODO: remove setter in v3.0:
     @Input()
     @tuiDefaultProp()
-    set pluralize(pluralize: TuiPluralize | Record<string, string> | null) {
+    set pluralize(pluralize: Record<string, string> | TuiPluralize | null) {
         this.pluralizeMap = Array.isArray(pluralize)
             ? tuiPluralizeToICU(pluralize)
             : pluralize;
@@ -336,7 +336,7 @@ export abstract class AbstractTuiSlider<T>
      * @param isFraction translation is carried out from fullness to value
      */
     private fractionValueKeyStepConverter(value: number, isFraction: boolean): number {
-        const steps = [[0, this.min]].concat(this.keySteps as TuiKeySteps, [
+        const steps = [[0, this.min]].concat(this.keySteps as unknown as TuiKeySteps, [
             [100, this.max],
         ]);
 

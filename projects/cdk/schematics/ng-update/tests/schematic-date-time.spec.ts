@@ -1,6 +1,5 @@
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-
 import {
     createProject,
     createSourceFile,
@@ -10,7 +9,7 @@ import {
 } from 'ng-morph';
 import {join} from 'path';
 
-const collectionPath = join(__dirname, '../../migration.json');
+const collectionPath = join(__dirname, `../../migration.json`);
 
 const BEFORE = `import {Component} from '@angular/core';
 import {TuiDay, TuiMonth, TuiDayRange} from '@taiga-ui/cdk';
@@ -94,13 +93,13 @@ export class AppComponent {
     }
 }`;
 
-describe('ng-update', () => {
+describe(`ng-update`, () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
     beforeEach(() => {
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner('schematics', collectionPath);
+        runner = new SchematicTestRunner(`schematics`, collectionPath);
 
         setActiveProject(createProject(host));
 
@@ -109,10 +108,10 @@ describe('ng-update', () => {
         saveActiveProject();
     });
 
-    it('date-time migrations', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+    it(`date-time migrations`, async () => {
+        const tree = await runner.runSchematicAsync(`updateToV3`, {}, host).toPromise();
 
-        expect(tree.readContent('test/app/app.component.ts')).toEqual(AFTER);
+        expect(tree.readContent(`test/app/app.component.ts`)).toEqual(AFTER);
     });
 
     afterEach(() => {
@@ -121,8 +120,8 @@ describe('ng-update', () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile('test/app/app.component.ts', BEFORE);
-    createSourceFile('test/app/mock.ts', 'export class TuiDay {}');
+    createSourceFile(`test/app/app.component.ts`, BEFORE);
+    createSourceFile(`test/app/mock.ts`, `export class TuiDay {}`);
 
-    createSourceFile('test/app/app.template.html', `<app></app>`);
+    createSourceFile(`test/app/app.template.html`, `<app></app>`);
 }

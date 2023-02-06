@@ -13,7 +13,7 @@ import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiHintModule} from '../hint.module';
 
-type Hint = string | TemplateRef<Record<string, unknown>> | undefined | null;
+type Hint = TemplateRef<Record<string, unknown>> | string | null | undefined;
 
 describe(`Hint`, () => {
     @Component({
@@ -84,7 +84,7 @@ describe(`Hint`, () => {
         it(`is shown after 500ms`, async () => {
             await fixture.whenStable();
             fixture.detectChanges();
-            expect(getTooltip()!.textContent!.trim()).toBe(`Tooltip text`);
+            expect(getTooltip()?.textContent?.trim()).toBe(`Tooltip text`);
         });
 
         it(`is hidden immediately if null is passed as content`, async () => {

@@ -1,1 +1,1 @@
-export const MAIN_PACKAGES = ['core', 'cdk', 'kit', 'icons'];
+export const MAIN_PACKAGES = [`core`, `cdk`, `kit`, `icons`];

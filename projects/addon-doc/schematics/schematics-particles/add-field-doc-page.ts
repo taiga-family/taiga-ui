@@ -3,6 +3,7 @@ import {chain, noop, Rule, Tree} from '@angular-devkit/schematics';
 import {exec} from 'child_process';
 import * as path from 'path';
 import {getSourceFile} from 'schematics-utilities';
+
 import {Schema} from '../doc-page/index';
 
 function getText({section, name, route, keywords}: Schema): string {
@@ -27,9 +28,9 @@ function changeTuiDocPagesArray(options: Schema): Rule {
     return (host: Tree) => {
         const sourceFile = getSourceFile(host, options.pathToTuiDocPages);
         const fullText = sourceFile.getFullText();
-        const label = 'TuiDocPages = [';
+        const label = `TuiDocPages = [`;
         const template = /Tui-doc-pages( ){0,}=( ){0,}\[/gm;
-        const updatedFile = fullText.replace(template, label + ' ' + getText(options));
+        const updatedFile = fullText.replace(template, `${label} ${getText(options)}`);
 
         host.overwrite(options.pathToTuiDocPages, updatedFile);
 

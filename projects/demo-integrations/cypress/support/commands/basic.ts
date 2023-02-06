@@ -33,7 +33,7 @@ declare global {
             tuiHideDocPage: typeof tuiHideDocPage;
             tuiShowDocPage: typeof tuiShowDocPage;
 
-            tuiTab(direction: 'forward' | 'backward'): Chainable;
+            tuiTab(direction: 'backward' | 'forward'): Chainable;
 
             tuiScrollIntoView(): Chainable;
 

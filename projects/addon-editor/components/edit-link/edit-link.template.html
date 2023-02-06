@@ -5,7 +5,9 @@
                 <ng-container *ngIf="anchorMode; else fullOptions">Edit anchor</ng-container>
                 <ng-template #fullOptions>
                     <span *ngIf="prefixIsHashMode; else urlTitle">Link to anchor</span>
-                    <ng-template #urlTitle><span>URL</span></ng-template>
+                    <ng-template #urlTitle>
+                        <span>URL</span>
+                    </ng-template>
                 </ng-template>
             </div>
             <div class="t-url">

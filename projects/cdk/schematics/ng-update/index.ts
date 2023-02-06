@@ -5,23 +5,24 @@ import {
     saveActiveProject,
     setActiveProject,
 } from 'ng-morph';
+
+import {ALL_FILES} from '../constants';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
-import {replaceEnums} from './steps/replace-enums';
+import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../utils/colored-log';
+import {getExecutionTime} from '../utils/get-execution-time';
+import {dateTimeMigrations} from './steps/migrate-date-time';
+import {migrateProgress} from './steps/migrate-progress';
+import {migrateSliders} from './steps/migrate-sliders';
+import {migrateTemplates} from './steps/migrate-templates';
+import {miscellaneousMigrations} from './steps/miscellaneous';
+import {removeModules} from './steps/remove-module';
 import {renameTypes} from './steps/rename-types';
 import {replaceConstants} from './steps/replace-const';
 import {replaceDeepImports} from './steps/replace-deep-import';
-import {showWarnings} from './steps/show-warnings';
-import {replaceServices} from './steps/replace-services';
-import {dateTimeMigrations} from './steps/migrate-date-time';
-import {migrateTemplates} from './steps/migrate-templates';
-import {migrateSliders} from './steps/migrate-sliders';
-import {removeModules} from './steps/remove-module';
-import {miscellaneousMigrations} from './steps/miscellaneous';
+import {replaceEnums} from './steps/replace-enums';
 import {replaceFunctions} from './steps/replace-functions';
-import {migrateProgress} from './steps/migrate-progress';
-import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../utils/colored-log';
-import {ALL_FILES} from '../constants';
-import {getExecutionTime} from '../utils/get-execution-time';
+import {replaceServices} from './steps/replace-services';
+import {showWarnings} from './steps/show-warnings';
 
 interface Schema {
     /**
@@ -43,7 +44,7 @@ export function updateToV3(cliFlags: Schema): Rule {
 
         const fileSystem = getFileSystem(tree);
 
-        !cliFlags['skip-deep-imports'] && replaceDeepImports();
+        !cliFlags[`skip-deep-imports`] && replaceDeepImports();
         replaceEnums();
         renameTypes();
         replaceConstants();
@@ -72,7 +73,9 @@ export function updateToV3(cliFlags: Schema): Rule {
 }
 
 function getFileSystem(tree: Tree): DevkitFileSystem {
-    const project = createProject(tree, '/', [ALL_FILES]);
+    const project = createProject(tree, `/`, [ALL_FILES]);
+
     setActiveProject(project);
+
     return project.getFileSystem().fs;
 }

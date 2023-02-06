@@ -3,14 +3,14 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: `tui-table-example-6`,
-    templateUrl: `./index.html`,
-    styleUrls: [`./index.less`],
+    selector: 'tui-table-example-6',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
 export class TuiTableExample6 {
-    data: Array<Record<string, string | number>> = [{id: 1, name: `name`}];
+    data: Array<Record<string, number | string>> = [{id: 1, name: 'name'}];
 
     get columns(): string[] {
         return Object.keys(this.data[0]);

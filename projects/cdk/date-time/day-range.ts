@@ -55,7 +55,7 @@ export class TuiDayRange extends TuiMonthRange {
      */
     static normalizeParse(
         rangeString: string,
-        dateMode: string | TuiDateMode = `DMY`,
+        dateMode: TuiDateMode | string = `DMY`,
     ): TuiDayRange {
         const dateFormat = isDateMode(dateMode) ? dateMode : `DMY`;
 

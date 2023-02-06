@@ -6,8 +6,8 @@ import {Observable, of, Subject} from 'rxjs';
 import {catchError, filter, mapTo, switchMap, take, takeUntil} from 'rxjs/operators';
 
 @Injectable()
-export class TuiLazyLoadingService extends Observable<string | SafeResourceUrl> {
-    private readonly src$ = new Subject<string | SafeResourceUrl>();
+export class TuiLazyLoadingService extends Observable<SafeResourceUrl | string> {
+    private readonly src$ = new Subject<SafeResourceUrl | string>();
 
     constructor(
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
@@ -33,7 +33,7 @@ export class TuiLazyLoadingService extends Observable<string | SafeResourceUrl> 
         );
     }
 
-    next(src: string | SafeResourceUrl): void {
+    next(src: SafeResourceUrl | string): void {
         this.src$.next(src);
     }
 }

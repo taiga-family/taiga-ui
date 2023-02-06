@@ -2,6 +2,7 @@ import {classify, dasherize} from '@angular-devkit/core/src/utils/strings';
 import {chain, Rule, Tree} from '@angular-devkit/schematics';
 import * as path from 'path';
 import {Change, getSourceFile, InsertChange, insertImport} from 'schematics-utilities';
+
 import {Schema} from '../doc-page/index';
 import {getRelativePath} from '../utils/get-relative-path';
 
@@ -43,11 +44,11 @@ function getImportArray(
 }
 
 function generateText(samples: number, startIndex: number): string {
-    let codeText = '';
+    let codeText = ``;
 
     for (let index = startIndex; index < samples + startIndex; index++) {
         codeText += getText(index);
-        codeText += '\n\n';
+        codeText += `\n\n`;
     }
 
     return codeText;

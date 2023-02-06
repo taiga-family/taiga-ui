@@ -24,9 +24,9 @@ import {Observable} from 'rxjs';
 
 // @dynamic
 @Component({
-    selector: `tui-primitive-calendar`,
-    templateUrl: `./primitive-calendar.template.html`,
-    styleUrls: [`./primitive-calendar.style.less`],
+    selector: 'tui-primitive-calendar',
+    templateUrl: './primitive-calendar.template.html',
+    styleUrls: ['./primitive-calendar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveCalendarComponent {
@@ -47,7 +47,7 @@ export class TuiPrimitiveCalendarComponent {
 
     @Input()
     @tuiDefaultProp()
-    value: TuiDayRange | TuiDay | null = null;
+    value: TuiDay | TuiDayRange | null = null;
 
     @Input()
     @tuiDefaultProp()
@@ -68,7 +68,7 @@ export class TuiPrimitiveCalendarComponent {
         readonly weekDays$: Observable<WEEK_DAYS_NAMES>,
     ) {}
 
-    @HostBinding(`class._single`)
+    @HostBinding('class._single')
     get isSingle(): boolean {
         return (
             this.value !== null &&
@@ -80,7 +80,7 @@ export class TuiPrimitiveCalendarComponent {
         day: TuiDay,
         today: boolean,
         inRange: boolean,
-    ): null | [TuiColor | string] | [TuiColor | string, TuiColor | string] => {
+    ): [TuiColor | string, TuiColor | string] | [TuiColor | string] | null => {
         if (today || inRange) {
             return null;
         }

@@ -5,8 +5,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputPasswordOptions {
     readonly icons: Readonly<{
-        hide: PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>>;
-        show: PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>>;
+        hide: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>>;
+        show: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>>;
     }>;
 }
 
@@ -19,13 +19,13 @@ export type InputPasswordOptions = TuiInputPasswordOptions;
 // TODO: 3.0 remove in ivy compilation
 export const PASSWORD_ICON_HIDE = ({
     $implicit,
-}: TuiContextWithImplicit<TuiSizeS | TuiSizeL>):
+}: TuiContextWithImplicit<TuiSizeL | TuiSizeS>):
     | 'tuiIconEyeClosed'
     | 'tuiIconHideLarge' => ($implicit === `s` ? `tuiIconEyeClosed` : `tuiIconHideLarge`);
 
 export const PASSWORD_ICON_SHOW = ({
     $implicit,
-}: TuiContextWithImplicit<TuiSizeS | TuiSizeL>): 'tuiIconEyeOpen' | 'tuiIconShowLarge' =>
+}: TuiContextWithImplicit<TuiSizeL | TuiSizeS>): 'tuiIconEyeOpen' | 'tuiIconShowLarge' =>
     $implicit === `s` ? `tuiIconEyeOpen` : `tuiIconShowLarge`;
 
 /** Default values for the input password options. */

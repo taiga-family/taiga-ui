@@ -64,6 +64,7 @@ export const enum TuiTransactionAutofillName {
 }
 
 export type TuiAutofillFieldNameT =
+    // eslint-disable-next-line @typescript-eslint/sort-type-constituents
     | 'off'
     // TuiCreditCardAutofillName
     | 'cc-name'
@@ -97,12 +98,12 @@ export type TuiAutofillFieldNameT =
     | 'transaction-amount';
 
 export type TuiAutofillFieldName =
+    | TuiAccountAutofillName
+    | TuiAddressAutofillName
     | TuiAutofillFieldNameT
     | TuiCreditCardAutofillName
-    | TuiNameAutofillName
-    | TuiAccountAutofillName
-    | TuiEmailAutofillName
-    | TuiAddressAutofillName
-    | TuiPhoneAutofillName
     | TuiDateAutofillName
+    | TuiEmailAutofillName
+    | TuiNameAutofillName
+    | TuiPhoneAutofillName
     | TuiTransactionAutofillName;

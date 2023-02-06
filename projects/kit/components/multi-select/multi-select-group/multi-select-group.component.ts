@@ -31,9 +31,9 @@ import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
-    selector: `tui-opt-group[tuiMultiSelectGroup]`,
-    templateUrl: `./multi-select-group.template.html`,
-    styleUrls: [`./multi-select-group.style.less`],
+    selector: 'tui-opt-group[tuiMultiSelectGroup]',
+    templateUrl: './multi-select-group.template.html',
+    styleUrls: ['./multi-select-group.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     viewProviders: [
         {
@@ -48,19 +48,19 @@ export class TuiMultiSelectGroupComponent<T> {
 
     @Input()
     @tuiDefaultProp()
-    label = ``;
+    label = '';
 
     constructor(
         @Inject(TUI_DATA_LIST_HOST) private readonly host: TuiDataListHost<T>,
         @Inject(NgControl) private readonly control: NgControl,
     ) {}
 
-    get size(): TuiSizeXS | TuiSizeL {
-        return this.options.first?.size || `m`;
+    get size(): TuiSizeL | TuiSizeXS {
+        return this.options.first?.size || 'm';
     }
 
     get checkboxSize(): TuiSizeL {
-        return this.options.first && sizeBigger(this.options.first.size) ? `l` : `m`;
+        return this.options.first && sizeBigger(this.options.first.size) ? 'l' : 'm';
     }
 
     @tuiPure

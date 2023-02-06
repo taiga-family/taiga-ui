@@ -3,7 +3,7 @@ export interface TuiSwipe {
     readonly events: [TouchEvent, TouchEvent];
 }
 
-export type TuiSwipeDirection = 'left' | 'right' | 'top' | 'bottom';
+export type TuiSwipeDirection = 'bottom' | 'left' | 'right' | 'top';
 
 export interface TuiSwipeOptions {
     readonly threshold: number;

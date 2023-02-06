@@ -46,17 +46,17 @@ import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager
 
 // @dynamic
 @Component({
-    selector: `tui-toolbar[new]`,
-    templateUrl: `./toolbar-new.template.html`,
-    styleUrls: [`./toolbar-new.style.less`],
+    selector: 'tui-toolbar[new]',
+    templateUrl: './toolbar-new.template.html',
+    styleUrls: ['./toolbar-new.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
     host: {
-        role: `toolbar`,
+        role: 'toolbar',
     },
 })
 export class TuiToolbarNewComponent {
-    @ViewChildren(`dropdown`, {read: ElementRef})
+    @ViewChildren('dropdown', {read: ElementRef})
     private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     @ViewChild(TuiToolbarNavigationManagerDirective)
@@ -67,7 +67,7 @@ export class TuiToolbarNewComponent {
     colors: ReadonlyMap<string, string> = this.defaultOptions.colors;
 
     @Input()
-    @HostBinding(`class._disabled`)
+    @HostBinding('class._disabled')
     @tuiDefaultProp()
     disabled = false;
 
@@ -85,7 +85,7 @@ export class TuiToolbarNewComponent {
     toolsSet: Set<TuiEditorTool> = new Set(defaultEditorTools);
 
     @Input()
-    @tuiDefaultProp(toolsAssertion, `Attach and TeX are not yet implemented in Editor`)
+    @tuiDefaultProp(toolsAssertion, 'Attach and TeX are not yet implemented in Editor')
     set tools(value: readonly TuiEditorTool[]) {
         this.toolsSet = new Set(value);
     }
@@ -122,23 +122,23 @@ export class TuiToolbarNewComponent {
     }
 
     get unorderedList(): boolean {
-        return this.editor.isActive(`bulletList`);
+        return this.editor.isActive('bulletList');
     }
 
     get orderedList(): boolean {
-        return this.editor.isActive(`orderedList`);
+        return this.editor.isActive('orderedList');
     }
 
     get blockquote(): boolean {
-        return this.editor.isActive(`blockquote`);
+        return this.editor.isActive('blockquote');
     }
 
     get a(): boolean {
-        return this.editor.isActive(`link`);
+        return this.editor.isActive('link');
     }
 
     get jumpAnchor(): boolean {
-        return this.editor.isActive(`jumpAnchor`);
+        return this.editor.isActive('jumpAnchor');
     }
 
     get canOpenAnchor(): boolean {
@@ -154,11 +154,11 @@ export class TuiToolbarNewComponent {
     }
 
     get subscript(): boolean {
-        return this.editor.isActive(`subscript`);
+        return this.editor.isActive('subscript');
     }
 
     get superscript(): boolean {
-        return this.editor.isActive(`superscript`);
+        return this.editor.isActive('superscript');
     }
 
     get formatEnabled(): boolean {
@@ -191,9 +191,9 @@ export class TuiToolbarNewComponent {
         );
     }
 
-    @HostListener(`mousedown`, [`$event`, `$event.target`])
+    @HostListener('mousedown', ['$event', '$event.target'])
     onMouseDown(event: MouseEvent, target: HTMLElement): void {
-        if (getClosestElement(target, `button`)) {
+        if (getClosestElement(target, 'button')) {
             return;
         }
 
@@ -212,7 +212,7 @@ export class TuiToolbarNewComponent {
     onImage(input: HTMLInputElement): void {
         const file = input.files?.[0];
 
-        input.value = ``;
+        input.value = '';
 
         if (!file) {
             return;
@@ -228,13 +228,13 @@ export class TuiToolbarNewComponent {
     onAttach(input: HTMLInputElement): void {
         const files = Array.from(input.files || []);
 
-        input.value = ``;
+        input.value = '';
 
         if (!files) {
             return;
         }
 
-        tuiAssert.assert(!!this.filesLoader, `Please provide TUI_ATTACH_FILES_LOADER`);
+        tuiAssert.assert(!!this.filesLoader, 'Please provide TUI_ATTACH_FILES_LOADER');
 
         this.filesLoader?.(files)
             .pipe(take(1))

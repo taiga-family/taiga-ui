@@ -51,7 +51,7 @@ describe(`InputNumber`, () => {
         decimal: TuiDecimalT = `never`;
         cleaner = true;
         defaultValues = false;
-        size: TuiSizeS | TuiSizeL = `m`;
+        size: TuiSizeL | TuiSizeS = `m`;
         hintContent: string | null = `prompt`;
         exampleText = `placeholder`;
     }
@@ -143,9 +143,7 @@ describe(`InputNumber`, () => {
         await fixture.whenStable();
 
         fixture.detectChanges();
-        expect(getNativeInput()!.nativeElement!.value).toBe(
-            `12${CHAR_NO_BREAK_SPACE}345`,
-        );
+        expect(getNativeInput()!.nativeElement.value).toBe(`12${CHAR_NO_BREAK_SPACE}345`);
     });
 
     describe(`onValueChange | updating form values`, () => {

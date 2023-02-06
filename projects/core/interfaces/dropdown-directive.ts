@@ -7,11 +7,11 @@ import {
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
-export interface TuiDropdown<C = object> {
+export interface TuiDropdown<C = Record<string, any>> {
     refresh$: Observable<unknown>;
     clientRect: ClientRect;
     content: PolymorpheusContent;
-    host: TuiNativeFocusableElement | HTMLElement;
+    host: HTMLElement | TuiNativeFocusableElement;
     align: TuiHorizontalDirection;
     minHeight: number;
     maxHeight: number;

@@ -7,4 +7,4 @@ export const enum TuiDropdownPosition {
     Tag = `tag`,
 }
 
-export type TuiDropdownPositionT = 'selection' | 'word' | 'tag';
+export type TuiDropdownPositionT = 'selection' | 'tag' | 'word';

@@ -1,5 +1,4 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-
 import {getWorkspace} from '@schematics/angular/utility/workspace';
 import {
     addImportToNgModule,
@@ -10,6 +9,8 @@ import {
     saveActiveProject,
     setActiveProject,
 } from 'ng-morph';
+
+import {addUniqueImport} from '../../utils/add-unique-import';
 import {getProject} from '../../utils/get-project';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {
@@ -19,15 +20,14 @@ import {
     SANITIZER_MODULES,
 } from '../constants/modules';
 import {Schema} from '../schema';
-import {addUniqueImport} from '../../utils/add-unique-import';
 
 export function addTaigaModules(options: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
         const workspace = await getWorkspace(tree);
         const project = getProject(options, workspace);
-        const buildOptions = getProjectTargetOptions(project, 'build');
+        const buildOptions = getProjectTargetOptions(project, `build`);
 
-        setActiveProject(createProject(tree, '/', ['**/*.ts', '**/*.json']));
+        setActiveProject(createProject(tree, `/`, [`**/*.ts`, `**/*.json`]));
 
         const mainModule = getMainModule(buildOptions.main as string);
 
@@ -42,7 +42,7 @@ function addTuiModules(
     mainModule: ClassDeclaration,
     options: Schema,
     context: SchematicContext,
-) {
+): void {
     const modules = [
         ...MAIN_MODULES,
         ...(options.addDialogsModule ? DIALOG_MODULES : []),
@@ -68,7 +68,7 @@ function addTuiProviders(mainModule: ClassDeclaration, options: Schema): void {
 
     addProviderToNgModule(
         mainModule,
-        '{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}',
+        `{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}`,
         {unique: true},
     );
 

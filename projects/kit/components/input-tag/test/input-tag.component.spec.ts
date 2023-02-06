@@ -67,7 +67,7 @@ describe(`InputTag`, () => {
         separator = `,`;
         labelOutside = true;
         exampleText = `Example`;
-        size: TuiSizeS | TuiSizeL = `m`;
+        size: TuiSizeL | TuiSizeS = `m`;
         hintContent: string | null = `prompt`;
         tagValidator: TuiBooleanHandler<string> = ALWAYS_TRUE_HANDLER;
     }

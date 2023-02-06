@@ -2,7 +2,7 @@ import {createFilter} from '@rollup/pluginutils';
 import {Plugin, TransformResult} from 'rollup';
 import {optimize, OptimizedError, OptimizedSvg, OptimizeOptions} from 'svgo';
 
-type SvgoResult = OptimizedSvg | OptimizedError;
+type SvgoResult = OptimizedError | OptimizedSvg;
 
 export interface TuiRollupSvgoConfig {
     readonly include?: string;
@@ -37,7 +37,7 @@ export function rollupSvgo({
                 const result: SvgoResult = optimize(svgString, {path, ...options});
 
                 data = (result as OptimizedSvg)?.data || {};
-                errorMessage = result.error as string;
+                errorMessage = result.error as unknown as string;
             } catch (err) {
                 errorMessage = err.message;
             }

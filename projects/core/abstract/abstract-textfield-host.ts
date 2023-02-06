@@ -4,6 +4,7 @@ import {TuiTextfieldHost} from '@taiga-ui/core/interfaces';
 
 // @dynamic
 @Directive()
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export abstract class TuiAbstractTextfieldHost<T extends AbstractTuiControl<any>>
     implements TuiTextfieldHost
 {
