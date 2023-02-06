@@ -6,7 +6,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 export type TuiNotificationAutoClose =
     | boolean
     | number
-    | ((status: TuiNotification) => number | boolean);
+    | ((status: TuiNotification) => boolean | number);
 
 /** @deprecated use {@link TuiAlertOptions} from @taiga-ui/core */
 export interface TuiNotificationOptions {

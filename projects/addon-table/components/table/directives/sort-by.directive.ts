@@ -14,7 +14,7 @@ import {TuiSortableDirective} from './sortable.directive';
 import {TuiTableDirective} from './table.directive';
 
 @Directive({
-    selector: `table[tuiTable][tuiSortBy]`,
+    selector: 'table[tuiTable][tuiSortBy]',
 })
 export class TuiSortByDirective<T> {
     @ContentChildren(TuiSortableDirective, {descendants: true})
@@ -22,7 +22,7 @@ export class TuiSortByDirective<T> {
 
     @Input()
     @tuiDefaultProp()
-    tuiSortBy: keyof T | string | null = null;
+    tuiSortBy: string | keyof T | null = null;
 
     @Output()
     readonly tuiSortByChange = this.table.sorterChange.pipe(

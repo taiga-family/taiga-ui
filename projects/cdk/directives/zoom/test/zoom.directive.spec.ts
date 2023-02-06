@@ -20,7 +20,7 @@ describe(`TuiZoom directive`, () => {
         scale = 1;
 
         onZoom({delta}: TuiZoom): void {
-            this.scale = this.scale - delta;
+            this.scale -= delta;
         }
     }
 
@@ -67,7 +67,7 @@ describe(`TuiZoom directive`, () => {
         [x, y]: [number, number],
         [x2, y2]: [number, number],
         element: HTMLElement,
-        eventType: 'touchstart' | 'touchend' | 'touchmove',
+        eventType: 'touchend' | 'touchmove' | 'touchstart',
     ): void {
         const touchObj1 = new Touch({
             identifier: Date.now(),

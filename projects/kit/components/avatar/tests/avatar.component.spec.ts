@@ -25,7 +25,7 @@ describe(`Avatar`, () => {
         avatarUrl: string | null = `someUrl`;
         text: string | null = `James Cameron`;
         autoColor = false;
-        size: TuiSizeXS | TuiSizeXL = `m`;
+        size: TuiSizeXL | TuiSizeXS = `m`;
     }
 
     let fixture: ComponentFixture<TestComponent>;

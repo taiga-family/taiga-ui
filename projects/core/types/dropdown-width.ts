@@ -1,1 +1,1 @@
-export type TuiDropdownWidthT = 'fixed' | 'min' | 'auto';
+export type TuiDropdownWidthT = 'auto' | 'fixed' | 'min';

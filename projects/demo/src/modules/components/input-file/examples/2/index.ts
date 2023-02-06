@@ -41,9 +41,9 @@ function convertRejected({file, reason}: RejectedFile): TuiFileLike {
 }
 
 @Component({
-    selector: `tui-input-file-example-2`,
-    templateUrl: `./index.html`,
-    styleUrls: [`./index.less`],
+    selector: 'tui-input-file-example-2',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
@@ -60,7 +60,7 @@ export class TuiInputFileExample2 {
         map(([prev, cur]) => cur.filter(item => !prev.includes(item))),
         // We use mergeScan + combineLatest to accumulate results in one array
         mergeScan(
-            (acc: ReadonlyArray<RejectedFile | File>, cur) =>
+            (acc: ReadonlyArray<File | RejectedFile>, cur) =>
                 combineLatest(
                     cur.map(file =>
                         this.serverRequest(file).pipe(
@@ -137,12 +137,12 @@ export class TuiInputFileExample2 {
         }
     }
 
-    private serverRequest(file: File): Observable<RejectedFile | File | null> {
+    private serverRequest(file: File): Observable<File | RejectedFile | null> {
         const delay = Math.round(Math.random() * 5000 + 500);
         const result =
             delay % 2
                 ? null
-                : new RejectedFile(file, `Server responded for odd number of time`);
+                : new RejectedFile(file, 'Server responded for odd number of time');
 
         return timer(delay).pipe(mapTo(result));
     }

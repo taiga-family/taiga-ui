@@ -35,7 +35,7 @@ export abstract class AbstractExampleTuiControl
 {
     abstract readonly control: AbstractControl;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
+    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [`s`, `m`, `l`];
 
     readonly hintContentVariants: readonly string[] = [`Some content`];
 
@@ -110,7 +110,7 @@ export abstract class AbstractExampleTuiControl
 
     labelOutside = false;
 
-    size: TuiSizeS | TuiSizeL = this.sizeVariants[2];
+    size: TuiSizeL | TuiSizeS = this.sizeVariants[2];
 
     exampleText = ``;
 

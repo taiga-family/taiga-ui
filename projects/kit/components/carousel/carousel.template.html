@@ -3,11 +3,14 @@
     class="t-scroller"
     (tuiCarouselScroll)="onScroll($event)"
 >
-    <div class="t-wrapper">
+    <div
+        waIntersectionRoot
+        waIntersectionObserver
+        waIntersectionThreshold="0,1"
+        waIntersectionRootMargin="100px 1000000px 100px -51%"
+        class="t-wrapper"
+    >
         <div
-            waIntersectionObserver
-            waIntersectionThreshold="0,1"
-            waIntersectionRootMargin="100px 100000px 100px -51%"
             class="t-items"
             [style.transform]="transform"
             (tuiPan)="onPan($event[0])"

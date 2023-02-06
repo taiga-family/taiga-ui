@@ -13,15 +13,15 @@ import {map} from 'rxjs/operators';
 
 // @dynamic
 @Component({
-    selector: `tui-root`,
-    templateUrl: `root.template.html`,
-    styleUrls: [`./root.style.less`],
+    selector: 'tui-root',
+    templateUrl: 'root.template.html',
+    styleUrls: ['./root.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_IS_MOBILE_RES_PROVIDER],
     host: {
         'data-tui-version': TUI_VERSION,
-        '[style.--tui-duration]': `duration + "ms"`,
-        '($.class._mobile)': `isMobileRes$`,
+        '[style.--tui-duration]': 'duration + "ms"',
+        '($.class._mobile)': 'isMobileRes$',
     },
 })
 export class TuiRootComponent {
@@ -42,6 +42,6 @@ export class TuiRootComponent {
         @Inject(TUI_THEME) theme: string,
     ) {
         tuiAssert.enabled = enabled;
-        body.setAttribute(`data-tui-theme`, theme.toLowerCase());
+        body.setAttribute('data-tui-theme', theme.toLowerCase());
     }
 }

@@ -14,8 +14,8 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: `example-input-tag`,
-    templateUrl: `./input-tag.template.html`,
+    selector: 'example-input-tag',
+    templateUrl: './input-tag.template.html',
     changeDetection,
     providers: [
         {
@@ -25,48 +25,48 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
+        HTML: import('!!raw-loader!./examples/1/index.html'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
+        HTML: import('!!raw-loader!./examples/2/index.html'),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
-        HTML: import(`!!raw-loader!./examples/3/index.html`),
+        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
+        HTML: import('!!raw-loader!./examples/3/index.html'),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
-        HTML: import(`!!raw-loader!./examples/4/index.html`),
+        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
+        HTML: import('!!raw-loader!./examples/4/index.html'),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/5/index.ts`),
-        HTML: import(`!!raw-loader!./examples/5/index.html`),
-        LESS: import(`!!raw-loader!./examples/5/index.less`),
+        TypeScript: import('!!raw-loader!./examples/5/index.ts'),
+        HTML: import('!!raw-loader!./examples/5/index.html'),
+        LESS: import('!!raw-loader!./examples/5/index.less'),
     };
 
     readonly example6: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/6/index.ts`),
-        HTML: import(`!!raw-loader!./examples/6/index.html`),
-        LESS: import(`!!raw-loader!./examples/6/index.less`),
+        TypeScript: import('!!raw-loader!./examples/6/index.ts'),
+        HTML: import('!!raw-loader!./examples/6/index.html'),
+        LESS: import('!!raw-loader!./examples/6/index.less'),
     };
 
     readonly example7: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/7/index.ts`),
-        HTML: import(`!!raw-loader!./examples/7/index.html`),
+        TypeScript: import('!!raw-loader!./examples/7/index.ts'),
+        HTML: import('!!raw-loader!./examples/7/index.html'),
     };
 
     readonly control = new FormControl(
-        [`John Cleese`, `Eric Idle`, `Michael Palin`],
+        ['John Cleese', 'Eric Idle', 'Michael Palin'],
         Validators.required,
     );
 
@@ -78,15 +78,15 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
 
     uniqueTags = true;
 
-    readonly separatorVariants = [`,`, `;`, /[\d]/, /[\s,]/];
+    readonly separatorVariants = [',', ';', /[\d]/, /[\s,]/];
 
     separator = this.separatorVariants[0];
 
-    readonly iconVariants: readonly string[] = [`tuiIconSearchLarge`];
+    readonly iconVariants: readonly string[] = ['tuiIconSearchLarge'];
 
-    icon = ``;
+    icon = '';
 
-    readonly iconAlignVariants: readonly TuiHorizontalDirection[] = [`left`, `right`];
+    readonly iconAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
 
     iconAlign: TuiHorizontalDirection = this.iconAlignVariants[1];
 
@@ -94,16 +94,16 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
 
     maxLength: number | null = null;
 
-    search = ``;
+    search = '';
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
+    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
-    size: TuiSizeS | TuiSizeL = this.sizeVariants[this.sizeVariants.length - 1];
+    size: TuiSizeL | TuiSizeS = this.sizeVariants[this.sizeVariants.length - 1];
 
     tagValidatorVariants: ReadonlyArray<TuiBooleanHandler<string>> = [
         ALWAYS_TRUE_HANDLER,
-        item => item === `test`,
-        item => item !== `mail`,
+        item => item === 'test',
+        item => item !== 'mail',
     ];
 
     tagValidator = this.tagValidatorVariants[0];
@@ -111,8 +111,8 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
     inputHidden = false;
 
     readonly disabledItemHandlerVariants: Array<
-        TuiBooleanHandler<string | TuiStringifiableItem<string>>
-    > = [ALWAYS_FALSE_HANDLER, item => String(item)[0] === `T`];
+        TuiBooleanHandler<TuiStringifiableItem<string> | string>
+    > = [ALWAYS_FALSE_HANDLER, item => String(item)[0] === 'T'];
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];
 }

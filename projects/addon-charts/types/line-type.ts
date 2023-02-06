@@ -1,4 +1,4 @@
 /**
  * Native CSS border-style options
  */
-export type TuiLineTypeT = 'solid' | 'dashed' | 'dotted' | 'none' | 'hidden';
+export type TuiLineTypeT = 'dashed' | 'dotted' | 'hidden' | 'none' | 'solid';

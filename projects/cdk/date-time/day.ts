@@ -78,7 +78,7 @@ export class TuiDay extends TuiMonth {
         let day = row * DAYS_IN_WEEK + col - month.monthStartDaysOffset + 1;
 
         if (day > month.daysCount) {
-            day = day - month.daysCount;
+            day -= month.daysCount;
             month = month.append({month: 1});
         }
 

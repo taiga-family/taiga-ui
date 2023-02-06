@@ -3,7 +3,7 @@
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function isFlat<T>(
-    items: readonly T[] | ReadonlyArray<readonly T[]>,
+    items: ReadonlyArray<readonly T[]> | readonly T[],
 ): items is readonly T[] {
     return !Array.isArray(items[0]);
 }

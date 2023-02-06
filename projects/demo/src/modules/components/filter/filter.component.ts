@@ -18,44 +18,44 @@ class ItemWithBadge {
 }
 
 @Component({
-    selector: `example-filters`,
-    templateUrl: `./filter.template.html`,
+    selector: 'example-filters',
+    templateUrl: './filter.template.html',
     changeDetection,
 })
 export class ExampleTuiFilterComponent {
-    readonly exampleModule = import(`!!raw-loader!./examples/import/import-module.md`);
-    readonly exampleHtml = import(`!!raw-loader!./examples/import/insert-template.md`);
+    readonly exampleModule = import('!!raw-loader!./examples/import/import-module.md');
+    readonly exampleHtml = import('!!raw-loader!./examples/import/insert-template.md');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/1/index.ts`),
-        HTML: import(`!!raw-loader!./examples/1/index.html`),
+        TypeScript: import('!!raw-loader!./examples/1/index.ts'),
+        HTML: import('!!raw-loader!./examples/1/index.html'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/2/index.ts`),
-        HTML: import(`!!raw-loader!./examples/2/index.html`),
+        TypeScript: import('!!raw-loader!./examples/2/index.ts'),
+        HTML: import('!!raw-loader!./examples/2/index.html'),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/3/index.ts`),
-        HTML: import(`!!raw-loader!./examples/3/index.html`),
+        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
+        HTML: import('!!raw-loader!./examples/3/index.html'),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import(`!!raw-loader!./examples/4/index.ts`),
-        HTML: import(`!!raw-loader!./examples/4/index.html`),
-        LESS: import(`!!raw-loader!./examples/4/index.less`),
+        TypeScript: import('!!raw-loader!./examples/4/index.ts'),
+        HTML: import('!!raw-loader!./examples/4/index.html'),
+        LESS: import('!!raw-loader!./examples/4/index.less'),
     };
 
-    initialItems = [`Alex Inkin`, `Roman Sedov`];
+    initialItems = ['Alex Inkin', 'Roman Sedov'];
 
-    itemsVariants: Array<ReadonlyArray<string | ItemWithBadge>> = [
-        [`Alex Inkin`, `Roman Sedov`],
+    itemsVariants: Array<ReadonlyArray<ItemWithBadge | string>> = [
+        ['Alex Inkin', 'Roman Sedov'],
         [
-            new ItemWithBadge(`Focused Zone`, 10),
-            new ItemWithBadge(`Dropdown`, 100),
-            new ItemWithBadge(`Menu Items`, 30),
-            new ItemWithBadge(`Accordion`),
+            new ItemWithBadge('Focused Zone', 10),
+            new ItemWithBadge('Dropdown', 100),
+            new ItemWithBadge('Menu Items', 30),
+            new ItemWithBadge('Accordion'),
         ],
     ];
 
@@ -67,10 +67,10 @@ export class ExampleTuiFilterComponent {
     badgeHandler = this.badgeHandlerVariants[0];
 
     disabledItemHandlerVariants: ReadonlyArray<
-        TuiBooleanHandler<string | ItemWithBadge>
+        TuiBooleanHandler<ItemWithBadge | string>
     > = [
         ALWAYS_FALSE_HANDLER,
-        item => item === `Roman Sedov`,
+        item => item === 'Roman Sedov',
         item => (item.valueOf() || 0) >= 30,
     ];
 
@@ -80,9 +80,9 @@ export class ExampleTuiFilterComponent {
 
     control = new FormControl(this.initialItems);
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeL> = [`s`, `m`, `l`];
+    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
-    size: TuiSizeS | TuiSizeL = this.sizeVariants[1];
+    size: TuiSizeL | TuiSizeS = this.sizeVariants[1];
 
     constructor(
         @Inject(TuiAlertService)

@@ -6,6 +6,7 @@ import {
     Query,
     StructureType,
 } from 'ng-morph';
+
 import {ALL_TS_FILES} from '../../constants';
 
 export function getNgModules(
@@ -13,7 +14,7 @@ export function getNgModules(
     query?: Query<Omit<StructureType<ClassDeclaration>, 'kind'>>,
 ): ClassDeclaration[] {
     return getClasses(pattern, query).filter(
-        declaration => !!declaration.getDecorator('NgModule'),
+        declaration => !!declaration.getDecorator(`NgModule`),
     );
 }
 
@@ -22,6 +23,7 @@ export function getNgModules(
  */
 export function findNgModule(ngComponent: ClassDeclaration): ClassDeclaration | null {
     const allNgModules = getNgModules(ALL_TS_FILES);
+
     return (
         allNgModules.find(module => {
             const moduleFile = module.getSourceFile();

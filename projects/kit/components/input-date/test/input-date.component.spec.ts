@@ -53,7 +53,7 @@ class TestComponent {
 
     labelOutside = false;
 
-    size: TuiSizeS | TuiSizeL = `m`;
+    size: TuiSizeL | TuiSizeS = `m`;
 
     hintContent: string | null = `prompt`;
 

@@ -21,9 +21,9 @@ function convertRejected({file, reason}: RejectedFile): TuiFileLike {
 }
 
 @Component({
-    selector: `tui-input-file-example-1`,
-    templateUrl: `./index.html`,
-    styleUrls: [`./index.less`],
+    selector: 'tui-input-file-example-1',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
@@ -52,7 +52,7 @@ export class TuiInputFileExample1 {
     }
 
     @tuiPure
-    private get requests$(): Observable<RejectedFile | File | null> {
+    private get requests$(): Observable<File | RejectedFile | null> {
         return this.control.valueChanges.pipe(
             switchMap(file =>
                 file ? this.serverRequest(file).pipe(startWith(file)) : of(null),
@@ -61,12 +61,12 @@ export class TuiInputFileExample1 {
         );
     }
 
-    private serverRequest(file: File): Observable<RejectedFile | File | null> {
+    private serverRequest(file: File): Observable<File | RejectedFile | null> {
         const delay = Math.round(Math.random() * 5000 + 500);
         const result =
             delay % 2
                 ? null
-                : new RejectedFile(file, `Server responded for odd number of time`);
+                : new RejectedFile(file, 'Server responded for odd number of time');
 
         return timer(delay).pipe(mapTo(result));
     }

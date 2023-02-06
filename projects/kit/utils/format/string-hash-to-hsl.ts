@@ -15,7 +15,7 @@ export function stringHashToHsl(value: string): string {
 
     for (let i = 0; i < value.length; i++) {
         hash = value.charCodeAt(i) + ((hash << 5) - hash);
-        hash = hash & hash;
+        hash &= hash;
     }
 
     const hue = hash % 360;

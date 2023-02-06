@@ -1,6 +1,6 @@
+import {LogEntry} from '@angular-devkit/core/src/logger/logger';
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-
 import {
     createProject,
     createSourceFile,
@@ -10,10 +10,10 @@ import {
 } from 'ng-morph';
 import {join} from 'path';
 import {Subscription} from 'rxjs';
-import {LogEntry} from '@angular-devkit/core/src/logger/logger';
+
 import {MIGRATION_WARNINGS} from '../constants/warnings';
 
-const collectionPath = join(__dirname, '../../migration.json');
+const collectionPath = join(__dirname, `../../migration.json`);
 
 const BEFORE = `
 import {TUI_MOBILE_AWARE, COUNTRIES_MASKS} from '@taiga-ui/kit';
@@ -68,7 +68,7 @@ export class AppComponent {
 }
 `;
 
-describe('ng-update', () => {
+describe(`ng-update`, () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
     let logs: LogEntry[];
@@ -77,7 +77,7 @@ describe('ng-update', () => {
     beforeEach(() => {
         logs = [];
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner('schematics', collectionPath);
+        runner = new SchematicTestRunner(`schematics`, collectionPath);
         logSubscription = runner.logger.subscribe(log =>
             logs.push(log),
         ) as unknown as Subscription;
@@ -89,10 +89,10 @@ describe('ng-update', () => {
         saveActiveProject();
     });
 
-    it('should show warnings', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+    it(`should show warnings`, async () => {
+        const tree = await runner.runSchematicAsync(`updateToV3`, {}, host).toPromise();
         const expectedLogs = logs
-            .filter(log => log.level === 'warn')
+            .filter(log => log.level === `warn`)
             .map(log => log.message);
 
         expect(expectedLogs).toEqual([
@@ -103,7 +103,7 @@ describe('ng-update', () => {
             `[WARNING] in /test/app/app.component.ts: ${MIGRATION_WARNINGS[5].message}`,
         ]);
 
-        expect(tree.readContent('test/app/app.component.ts')).toBe(AFTER);
+        expect(tree.readContent(`test/app/app.component.ts`)).toBe(AFTER);
     });
 
     afterEach(() => {
@@ -113,7 +113,7 @@ describe('ng-update', () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile('test/app/app.component.ts', BEFORE);
+    createSourceFile(`test/app/app.component.ts`, BEFORE);
 
-    createSourceFile('test/app/app.template.html', `<app></app>`);
+    createSourceFile(`test/app/app.template.html`, `<app></app>`);
 }

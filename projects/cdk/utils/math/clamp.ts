@@ -10,9 +10,9 @@ import {tuiAssert} from '@taiga-ui/cdk/classes';
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function clamp(value: number, min: number, max: number): number {
-    tuiAssert.assert(!isNaN(value));
-    tuiAssert.assert(!isNaN(min));
-    tuiAssert.assert(!isNaN(max));
+    tuiAssert.assert(!Number.isNaN(value));
+    tuiAssert.assert(!Number.isNaN(min));
+    tuiAssert.assert(!Number.isNaN(max));
     tuiAssert.assert(max >= min);
 
     return Math.min(max, Math.max(min, value));

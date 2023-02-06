@@ -36,9 +36,9 @@ import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({
-    selector: `tui-calendar-range`,
-    templateUrl: `./calendar-range.template.html`,
-    styleUrls: [`./calendar-range.style.less`],
+    selector: 'tui-calendar-range',
+    templateUrl: './calendar-range.template.html',
+    styleUrls: ['./calendar-range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
 })
@@ -142,11 +142,11 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         return this.value ? this.value.to : this.defaultViewedMonth;
     }
 
-    isItemActive(item: string | TuiDayRangePeriod): boolean {
+    isItemActive(item: TuiDayRangePeriod | string): boolean {
         const {activePeriod} = this;
 
         return (
-            (typeof item === `string` && activePeriod === null) || activePeriod === item
+            (typeof item === 'string' && activePeriod === null) || activePeriod === item
         );
     }
 
@@ -166,8 +166,8 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         this.updateValue(TuiDayRange.sort(value.from, day));
     }
 
-    onItemSelect(item: string | TuiDayRangePeriod): void {
-        if (typeof item !== `string`) {
+    onItemSelect(item: TuiDayRangePeriod | string): void {
+        if (typeof item !== 'string') {
             this.updateValue(item.range.dayLimit(this.min, this.max));
 
             return;
@@ -205,7 +205,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         minLength: TuiDayLike | null,
     ): TuiBooleanHandler<TuiDay> {
         return item => {
-            if (!value || !value.isSingleDay || !minLength) {
+            if (!value?.isSingleDay || !minLength) {
                 return disabledItemHandler(item);
             }
 

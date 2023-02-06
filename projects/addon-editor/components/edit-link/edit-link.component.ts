@@ -15,17 +15,17 @@ import {TUI_EDITOR_LINK_TEXTS} from '@taiga-ui/addon-editor/tokens';
 import {tuiDefaultProp, TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {TUI_DOCUMENT_OR_SHADOW_ROOT} from '@taiga-ui/core';
 
-const HASH_PREFIX = `#` as const;
-const HTTP_PREFIX = `http://` as const;
-const HTTPS_PREFIX = `https://` as const;
+const HASH_PREFIX = '#' as const;
+const HTTP_PREFIX = 'http://' as const;
+const HTTPS_PREFIX = 'https://' as const;
 
-type TuiLinkPrefix = typeof HASH_PREFIX | typeof HTTPS_PREFIX | typeof HTTP_PREFIX;
+type TuiLinkPrefix = typeof HASH_PREFIX | typeof HTTP_PREFIX | typeof HTTPS_PREFIX;
 
 // @dynamic
 @Component({
-    selector: `tui-edit-link`,
-    templateUrl: `./edit-link.template.html`,
-    styleUrls: [`./edit-link.style.less`],
+    selector: 'tui-edit-link',
+    templateUrl: './edit-link.template.html',
+    styleUrls: ['./edit-link.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditLinkComponent {
@@ -36,6 +36,10 @@ export class TuiEditLinkComponent {
     set anchorMode(mode: boolean) {
         this.isOnlyAnchorMode = mode;
         this.prefix = mode ? HASH_PREFIX : this.makeDefaultPrefix();
+    }
+
+    get anchorMode(): boolean {
+        return this.isOnlyAnchorMode;
     }
 
     @Output()
@@ -63,10 +67,6 @@ export class TuiEditLinkComponent {
         @Inject(TuiTiptapEditorService) private readonly editor: AbstractTuiEditor,
     ) {}
 
-    get anchorMode(): boolean {
-        return this.isOnlyAnchorMode;
-    }
-
     get prefixIsHashMode(): boolean {
         return this.prefix === HASH_PREFIX;
     }
@@ -87,7 +87,7 @@ export class TuiEditLinkComponent {
         return !this.edit;
     }
 
-    @HostListener(`document:selectionchange`)
+    @HostListener('document:selectionchange')
     onSelectionChange(): void {
         if (this.isViewMode) {
             this.url = this.getHrefOrAnchorId();
@@ -95,12 +95,12 @@ export class TuiEditLinkComponent {
         }
     }
 
-    @HostListener(`mousedown`, [`$event`])
+    @HostListener('mousedown', ['$event'])
     onMouseDown(event: MouseEvent): void {
         const tagName =
-            event.target instanceof HTMLElement ? event.target.tagName.toLowerCase() : ``;
+            event.target instanceof HTMLElement ? event.target.tagName.toLowerCase() : '';
 
-        if (tagName === `a` || tagName === `button` || tagName === `input`) {
+        if (tagName === 'a' || tagName === 'button' || tagName === 'input') {
             return;
         }
 
@@ -143,15 +143,15 @@ export class TuiEditLinkComponent {
     }
 
     onClear(): void {
-        this.url = ``;
+        this.url = '';
     }
 
     private makeDefaultPrefix(): TuiLinkPrefix {
         const a = this.getAnchorElement();
 
         if (a) {
-            return (!a.getAttribute(`href`) && a.getAttribute(`id`)) ||
-                a.getAttribute(`href`)?.startsWith(HASH_PREFIX)
+            return (!a.getAttribute('href') && a.getAttribute('id')) ||
+                a.getAttribute('href')?.startsWith(HASH_PREFIX)
                 ? HASH_PREFIX
                 : HTTP_PREFIX;
         }
@@ -162,7 +162,7 @@ export class TuiEditLinkComponent {
     private detectAnchorMode(): boolean {
         const a = this.getAnchorElement();
 
-        return !a?.href && !!a?.getAttribute(`id`);
+        return !a?.href && !!a?.getAttribute('id');
     }
 
     private getFocusedParentElement(): HTMLElement | null {
@@ -172,14 +172,14 @@ export class TuiEditLinkComponent {
     }
 
     private getAnchorElement(): HTMLAnchorElement | null {
-        return this.getFocusedParentElement()?.closest(`a`) || null;
+        return this.getFocusedParentElement()?.closest('a') || null;
     }
 
     private getHrefOrAnchorId(): string {
         const a = this.getAnchorElement();
 
         return a
-            ? this.removePrefix(a.getAttribute(`href`) || a.getAttribute(`id`) || ``)
+            ? this.removePrefix(a.getAttribute('href') || a.getAttribute('id') || '')
             : this.url;
     }
 
@@ -187,15 +187,19 @@ export class TuiEditLinkComponent {
         if (url.startsWith(HTTP_PREFIX)) {
             this.prefix = this.isOnlyAnchorMode ? HASH_PREFIX : HTTP_PREFIX;
 
-            return url.replace(HTTP_PREFIX, ``);
-        } else if (url.startsWith(HTTPS_PREFIX)) {
+            return url.replace(HTTP_PREFIX, '');
+        }
+
+        if (url.startsWith(HTTPS_PREFIX)) {
             this.prefix = this.isOnlyAnchorMode ? HASH_PREFIX : HTTPS_PREFIX;
 
-            return url.replace(HTTPS_PREFIX, ``);
-        } else if (url.startsWith(HASH_PREFIX)) {
+            return url.replace(HTTPS_PREFIX, '');
+        }
+
+        if (url.startsWith(HASH_PREFIX)) {
             this.prefix = HASH_PREFIX;
 
-            return url.replace(HASH_PREFIX, ``);
+            return url.replace(HASH_PREFIX, '');
         }
 
         return url;
@@ -203,12 +207,13 @@ export class TuiEditLinkComponent {
 
     private getAllAnchorsIds(): string[] {
         const nodes =
-            this.editor
-                .getOriginTiptapEditor()
-                .view.dom.querySelectorAll(`[data-type='jump-anchor']`) ?? [];
+            this.editor.getOriginTiptapEditor().view.dom.querySelectorAll(
+                // eslint-disable-next-line @typescript-eslint/quotes
+                "[data-type='jump-anchor']",
+            ) ?? [];
 
         return Array.from(nodes)
-            .map(node => node.getAttribute(`id`) || ``)
+            .map(node => node.getAttribute('id') || '')
             .filter(Boolean);
     }
 }

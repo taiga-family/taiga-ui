@@ -13,7 +13,7 @@ import {getDocumentOrShadowRoot} from './get-document-or-shadow-root';
 export function getElementObscurers(element: Element): readonly Element[] | null {
     const {ownerDocument} = element;
 
-    if (!ownerDocument || !ownerDocument.defaultView) {
+    if (!ownerDocument?.defaultView) {
         return null;
     }
 

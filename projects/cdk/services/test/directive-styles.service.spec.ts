@@ -14,7 +14,7 @@ describe(`TuiDirectiveStylesService service`, () => {
         const service = new TuiDirectiveStylesService(
             null as unknown as ComponentFactoryResolver,
             null as unknown as Injector,
-            stub as unknown as Document,
+            stub as Document,
             null as unknown as Renderer2,
         );
 

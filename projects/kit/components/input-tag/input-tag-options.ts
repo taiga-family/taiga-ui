@@ -1,7 +1,7 @@
 import {InjectionToken} from '@angular/core';
 
 export interface TuiInputTagOptions {
-    readonly separator: string | RegExp;
+    readonly separator: RegExp | string;
     readonly uniqueTags: boolean;
 }
 

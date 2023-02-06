@@ -10,7 +10,7 @@ import {setNativeFocused} from './set-native-focused';
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function setNativeMouseFocused(
-    element: HTMLOrSVGElement & Element,
+    element: Element & HTMLOrSVGElement,
     focused: boolean = true,
     preventScroll: boolean = false,
 ): void {

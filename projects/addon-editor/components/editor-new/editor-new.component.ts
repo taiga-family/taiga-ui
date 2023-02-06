@@ -37,9 +37,9 @@ import {TUI_EDITOR_NEW_PROVIDERS} from './editor-new.providers';
 
 // @dynamic
 @Component({
-    selector: `tui-editor[new]`,
-    templateUrl: `./editor-new.component.html`,
-    styleUrls: [`./editor-new.style.less`],
+    selector: 'tui-editor[new]',
+    templateUrl: './editor-new.component.html',
+    styleUrls: ['./editor-new.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -55,7 +55,7 @@ export class TuiEditorNewComponent
 {
     @Input()
     @tuiDefaultProp()
-    exampleText = ``;
+    exampleText = '';
 
     @Input()
     @tuiDefaultProp()
@@ -104,7 +104,7 @@ export class TuiEditorNewComponent
     }
 
     writeValue(value: string | null): void {
-        const processed = this.contentProcessor(value || ``);
+        const processed = this.contentProcessor(value || '');
 
         super.writeValue(processed);
 
@@ -148,7 +148,7 @@ export class TuiEditorNewComponent
     }
 
     protected getFallbackValue(): string {
-        return ``;
+        return '';
     }
 
     private readonly isSelectionLink = (range: Range): boolean =>
@@ -162,7 +162,7 @@ export class TuiEditorNewComponent
      */
     private currentFocusedNodeIsAnchor(range: Range): boolean {
         return !!range.startContainer.parentElement
-            ?.closest(`a`)
+            ?.closest('a')
             ?.contains(this.documentRef.getSelection()?.focusNode || null);
     }
 

@@ -16,7 +16,7 @@ import {map} from 'rxjs/operators';
  * TODO: 3.0 name should be shorter and start with lowercase letter.
  */
 export function TuiReplayControlValueChangesFactory<
-    T extends TuiDayRange | TuiDay | [TuiDay | null, TuiTime | null],
+    T extends TuiDay | TuiDayRange | [TuiDay | null, TuiTime | null],
 >(
     control: NgControl | null,
     valueTransformer?: TuiControlValueTransformer<T> | null,

@@ -35,9 +35,9 @@ function convertRejected({file, reason}: RejectedFile): TuiFileLike {
 }
 
 @Component({
-    selector: `tui-input-file-example-3`,
-    templateUrl: `./index.html`,
-    styleUrls: [`./index.less`],
+    selector: 'tui-input-file-example-3',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     providers: [TuiDestroyService],
     changeDetection,
     encapsulation,
@@ -47,19 +47,19 @@ export class TuiInputFileExample3 {
 
     files: readonly TuiFileLike[] = [
         {
-            name: `Loading file.txt`,
+            name: 'Loading file.txt',
         },
         {
-            name: `A file with a very very long title to check that it can be cut correctly.txt`,
-            src: `https://tools.ietf.org/html/rfc675`,
+            name: 'A file with a very very long title to check that it can be cut correctly.txt',
+            src: 'https://tools.ietf.org/html/rfc675',
         },
     ];
 
     loadingFiles: readonly TuiFileLike[] = [this.files[0]];
     rejectedFiles: readonly TuiFileLike[] = [
         {
-            name: `File with an error.txt`,
-            content: `Something went wrong this time`,
+            name: 'File with an error.txt',
+            content: 'Something went wrong this time',
         },
     ];
 
@@ -129,12 +129,12 @@ export class TuiInputFileExample3 {
         );
     }
 
-    private serverRequest(file: TuiFileLike): Observable<RejectedFile | File | null> {
+    private serverRequest(file: TuiFileLike): Observable<File | RejectedFile | null> {
         const delay = Math.round(Math.random() * 5000 + 500);
         const result =
             delay % 2
                 ? null
-                : new RejectedFile(file, `Server responded for odd number of time`);
+                : new RejectedFile(file, 'Server responded for odd number of time');
 
         return timer(delay).pipe(mapTo(result));
     }

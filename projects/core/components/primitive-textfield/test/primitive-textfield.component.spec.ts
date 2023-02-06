@@ -46,7 +46,7 @@ describe(`PrimitiveTextfield`, () => {
 
         labelOutside = false;
 
-        size: TuiSizeS | TuiSizeL = `m`;
+        size: TuiSizeL | TuiSizeS = `m`;
 
         exampleText = `placeholder`;
 

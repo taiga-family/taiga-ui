@@ -20,7 +20,7 @@ export const tuiWaitAllImgInside = (
                 autoEnd: false,
                 consoleProps: () => ({
                     prevSubject,
-                    img: img,
+                    img,
                 }),
             });
 
@@ -56,7 +56,7 @@ export const tuiWaitAllImgInside = (
                                 ).to.be.greaterThan(0);
                             } else {
                                 cy.request({
-                                    url: url,
+                                    url,
                                     failOnStatusCode: false,
                                     log: false,
                                 }).then(resp => {

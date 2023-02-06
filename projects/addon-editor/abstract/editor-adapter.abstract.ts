@@ -20,9 +20,9 @@ export abstract class TuiEditor {
 
     abstract get state(): EditorState;
 
-    abstract isActive$(name: string | Record<string, string>): Observable<boolean>;
+    abstract isActive$(name: Record<string, string> | string): Observable<boolean>;
 
-    abstract isActive(name: string | Record<string, string>): boolean;
+    abstract isActive(name: Record<string, string> | string): boolean;
     abstract undoDisabled(): boolean;
     abstract redoDisabled(): boolean;
     abstract getFontColor(): string;
@@ -64,7 +64,7 @@ export abstract class TuiEditor {
     abstract setHeading(level: number): void;
     abstract setParagraph(options?: {fontSize: string}): void;
     abstract setHardBreak(): void;
-    abstract setTextSelection(value: number | Range): void;
+    abstract setTextSelection(value: Range | number): void;
     abstract toggleLink(href: string): void;
     abstract setLink(href: string): void;
     abstract unsetLink(): void;

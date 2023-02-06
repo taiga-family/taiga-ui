@@ -73,11 +73,11 @@ describe(`TuiSwipe directive`, () => {
         x: number,
         y: number,
         element: HTMLElement,
-        eventType: 'touchstart' | 'touchend',
+        eventType: 'touchend' | 'touchstart',
         identifier: number,
     ): void {
         const touchObj = new Touch({
-            identifier: identifier,
+            identifier,
             target: element,
             clientX: x,
             clientY: y,
@@ -85,7 +85,7 @@ describe(`TuiSwipe directive`, () => {
             radiusY: 2.5,
             rotationAngle: 10,
             force: 0.5,
-        }) as Touch;
+        });
 
         const touchEvent = new TouchEvent(eventType, {
             cancelable: true,

@@ -11,9 +11,9 @@ import {
 
 // @dynamic
 @Component({
-    selector: `tui-table-pagination`,
-    templateUrl: `./table-pagination.template.html`,
-    styleUrls: [`./table-pagination.style.less`],
+    selector: 'tui-table-pagination',
+    templateUrl: './table-pagination.template.html',
+    styleUrls: ['./table-pagination.style.less'],
 })
 export class TuiTablePaginationComponent {
     @Input()
@@ -43,7 +43,7 @@ export class TuiTablePaginationComponent {
     constructor(
         @Inject(TUI_SPIN_TEXTS) readonly spinTexts$: Observable<[string, string]>,
         @Inject(TUI_TABLE_PAGINATION_TEXTS)
-        readonly texts$: Observable<Record<'pages' | 'linesPerPage' | 'of', string>>,
+        readonly texts$: Observable<Record<'linesPerPage' | 'of' | 'pages', string>>,
         @Inject(TUI_TABLE_PAGINATION_OPTIONS) readonly options: TuiTablePaginationOptions,
     ) {}
 

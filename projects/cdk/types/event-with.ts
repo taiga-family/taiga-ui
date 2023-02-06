@@ -2,12 +2,12 @@ export interface TuiTypedEventTarget<E> {
     addEventListener(
         type: string,
         listener: ((evt: E) => void) | null,
-        options?: boolean | AddEventListenerOptions,
+        options?: AddEventListenerOptions | boolean,
     ): void;
     removeEventListener(
         type: string,
         listener?: ((evt: E) => void) | null,
-        options?: boolean | EventListenerOptions,
+        options?: EventListenerOptions | boolean,
     ): void;
 }
 

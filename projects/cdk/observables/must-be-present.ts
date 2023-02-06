@@ -7,7 +7,7 @@ import {map} from 'rxjs/operators';
  * @deprecated: use {@link tuiMustBePresent} instead
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export function mustBePresent<T>(): OperatorFunction<T | undefined | null, T> {
+export function mustBePresent<T>(): OperatorFunction<T | null | undefined, T> {
     return map(value => {
         if (!isPresent(value)) {
             throw new TuiValuePresentException();

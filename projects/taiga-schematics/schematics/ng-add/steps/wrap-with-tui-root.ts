@@ -11,6 +11,7 @@ import {
     setActiveProject,
     ts,
 } from 'ng-morph';
+
 import {getProject} from '../../utils/get-project';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {Schema} from '../schema';
@@ -19,19 +20,19 @@ export function wrapWithTuiRootComponent(options: Schema): Rule {
     return async (tree: Tree, context: SchematicContext) => {
         const workspace = await getWorkspace(tree);
         const project = getProject(options, workspace);
-        const buildOptions = getProjectTargetOptions(project, 'build');
+        const buildOptions = getProjectTargetOptions(project, `build`);
 
         const appTemplatePath = getAppTemplatePath(tree, buildOptions.main as string);
 
         if (!appTemplatePath) {
             context.logger.error(
-                'Could not find the default main template file for this project.',
+                `Could not find the default main template file for this project.`,
             );
             context.logger.info(
-                'Consider manually wrapping content of your app with tui-root',
+                `Consider manually wrapping content of your app with tui-root`,
             );
             context.logger.info(
-                'More information at https://taiga-ui.dev/getting-started',
+                `More information at https://taiga-ui.dev/getting-started`,
             );
 
             return;
@@ -53,15 +54,15 @@ function addTuiRootComponent(
             `Could not read the default template file within the project ${filePath}`,
         );
         context.logger.info(
-            'Consider manually wrapping content of your app with tui-root',
+            `Consider manually wrapping content of your app with tui-root`,
         );
 
         return;
     }
 
     const htmlContent = buffer.toString();
-    const openTag = '<tui-root>' + '\n';
-    const closeTag = '\n' + '</tui-root>';
+    const openTag = `<tui-root>` + `\n`;
+    const closeTag = `\n` + `</tui-root>`;
 
     if (htmlContent.includes(openTag)) {
         return;
@@ -78,10 +79,10 @@ function addTuiRootComponent(
 }
 
 function getAppTemplatePath(tree: Tree, mainPath: string): string | undefined {
-    setActiveProject(createProject(tree, '/', ['**/*.ts', '**/*.json']));
+    setActiveProject(createProject(tree, `/`, [`**/*.ts`, `**/*.json`]));
 
     const mainModule = getMainModule(mainPath);
-    const mainInitializer = getInitializer(mainModule, 'NgModule', 'declarations');
+    const mainInitializer = getInitializer(mainModule, `NgModule`, `declarations`);
 
     if (!Node.isArrayLiteralExpression(mainInitializer)) {
         return;
@@ -90,13 +91,13 @@ function getAppTemplatePath(tree: Tree, mainPath: string): string | undefined {
     const appIdentifier = mainInitializer.getElements()[0] as Identifier;
     const appComponent = appIdentifier.getDefinitionNodes()[0] as ClassDeclaration;
 
-    const templateInitializer = getInitializer(appComponent, 'Component', 'templateUrl');
+    const templateInitializer = getInitializer(appComponent, `Component`, `templateUrl`);
 
-    const appComponentPath = appComponent.getSourceFile().getFilePath().split('/');
+    const appComponentPath = appComponent.getSourceFile().getFilePath().split(`/`);
 
     const templateUrlPath = `${appComponentPath
         .splice(0, appComponentPath.length - 1)
-        .join('/')}/${templateInitializer?.getText().replace(/['"]/g, '')}`;
+        .join(`/`)}/${templateInitializer?.getText().replace(/['"]/g, ``)}`;
 
     saveActiveProject();
 

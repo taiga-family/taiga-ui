@@ -52,14 +52,16 @@ describe(`Badge`, () => {
             testComponent.value = 99;
             fixture.detectChanges();
 
-            expect(testComponent.element.nativeElement.textContent!.trim()).toEqual(`99`);
+            expect(testComponent.element.nativeElement.textContent?.trim() ?? ``).toEqual(
+                `99`,
+            );
         });
 
         it(`if it takes three digits or more, it displays the abbreviation 99+`, () => {
             testComponent.value = 999;
             fixture.detectChanges();
 
-            expect(testComponent.element.nativeElement.textContent!.trim()).toEqual(
+            expect(testComponent.element.nativeElement.textContent?.trim() ?? ``).toEqual(
                 `99+`,
             );
         });
@@ -68,18 +70,18 @@ describe(`Badge`, () => {
             testComponent.value = `Text`;
             fixture.detectChanges();
 
-            expect(testComponent.element.nativeElement.textContent!.trim()).toEqual(
-                `Text`,
-            );
+            expect(
+                testComponent.element.nativeElement?.textContent?.trim() ?? ``,
+            ).toEqual(`Text`);
         });
 
         it(`if it accepts a string containing a number, it outputs it unchanged`, () => {
             testComponent.value = `125`;
             fixture.detectChanges();
 
-            expect(testComponent.element.nativeElement.textContent!.trim()).toEqual(
-                `125`,
-            );
+            expect(
+                testComponent.element.nativeElement?.textContent?.trim() ?? ``,
+            ).toEqual(`125`);
         });
     });
 

@@ -88,7 +88,7 @@ describe(`Input`, () => {
 
         items: User[] | null = ITEMS;
 
-        size: TuiSizeS | TuiSizeL = `m`;
+        size: TuiSizeL | TuiSizeS = `m`;
 
         exampleText = `placeholder`;
 

@@ -8,6 +8,7 @@ export function lineLength(a: TuiPoint, b: TuiPoint): number {
     const x = b[0] - a[0];
     const y = b[1] - a[1];
 
+    // eslint-disable-next-line no-restricted-properties
     return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
 }
 

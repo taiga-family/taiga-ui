@@ -11,11 +11,11 @@
 
 export type TuiSizeM = 'm';
 
-export type TuiSizeS = 's' | TuiSizeM;
+export type TuiSizeS = TuiSizeM | 's';
 
 export type TuiSizeL = TuiSizeM | 'l';
 
-export type TuiSizeXS = 'xs' | TuiSizeS;
+export type TuiSizeXS = TuiSizeS | 'xs';
 
 export type TuiSizeXL = TuiSizeL | 'xl';
 

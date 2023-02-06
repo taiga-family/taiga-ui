@@ -1,1 +1,1 @@
-export type TuiInputTypeT = 'text' | 'tel' | 'email' | 'url' | 'password';
+export type TuiInputTypeT = 'email' | 'password' | 'tel' | 'text' | 'url';

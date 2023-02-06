@@ -8,4 +8,4 @@ export const enum TuiFileState {
     Normal = `normal`,
 }
 
-export type TuiFileStateT = 'error' | 'deleted' | 'loading' | 'normal';
+export type TuiFileStateT = 'deleted' | 'error' | 'loading' | 'normal';

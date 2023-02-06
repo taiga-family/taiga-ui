@@ -26,7 +26,7 @@ export interface LanguageCore {
     countries: Record<TuiCountryIsoCode, string>;
 }
 
-export interface TuiLanguageCore extends LanguageCore {}
+export type TuiLanguageCore = LanguageCore;
 
 /**
  * @deprecated use {@link TuiLanguageKit}
@@ -96,7 +96,7 @@ export interface LanguageKit {
     };
 }
 
-export interface TuiLanguageKit extends LanguageKit {}
+export type TuiLanguageKit = LanguageKit;
 
 /**
  * @deprecated use {@link TuiLanguageCommerce}
@@ -115,7 +115,7 @@ export interface LanguageCommerce {
     cardExpiry: [string, string];
 }
 
-export interface TuiLanguageCommerce extends LanguageCommerce {}
+export type TuiLanguageCommerce = LanguageCommerce;
 
 /**
  * @deprecated use {@link TuiLanguageTable}
@@ -133,7 +133,7 @@ export interface LanguageTable {
     };
 }
 
-export interface TuiLanguageTable extends LanguageTable {}
+export type TuiLanguageTable = LanguageTable;
 
 /**
  * @deprecated use {@link TuiLanguageEditor}
@@ -200,7 +200,7 @@ export interface LanguageEditor {
     };
 }
 
-export interface TuiLanguageEditor extends LanguageEditor {}
+export type TuiLanguageEditor = LanguageEditor;
 
 /**
  * @deprecated use {@link TuiLanguagePreview}
@@ -217,7 +217,7 @@ export type LanguagePreview = {
     };
 };
 
-export interface TuiLanguagePreview extends LanguagePreview {}
+export type TuiLanguagePreview = LanguagePreview;
 
 export interface TuiLanguageMeta {
     name: TuiLanguageName;
@@ -236,4 +236,4 @@ export interface Language
         LanguagePreview,
         TuiLanguageMeta {}
 
-export interface TuiLanguage extends Language {}
+export type TuiLanguage = Language;

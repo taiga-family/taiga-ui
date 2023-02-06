@@ -7,13 +7,13 @@ import {TuiPdfViewerOptions, TuiPdfViewerService} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: `tui-pdf-viewer-example-1`,
-    templateUrl: `./index.html`,
+    selector: 'tui-pdf-viewer-example-1',
+    templateUrl: './index.html',
     changeDetection,
     encapsulation,
 })
 export class TuiPdfViewerExample1 {
-    private readonly pdf = `assets/media/taiga.pdf`;
+    private readonly pdf = 'assets/media/taiga.pdf';
 
     constructor(
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
@@ -36,7 +36,7 @@ export class TuiPdfViewerExample1 {
                         : this.pdf,
                 ),
                 {
-                    label: `Taiga UI`,
+                    label: 'Taiga UI',
                     actions,
                 },
             )

@@ -42,7 +42,7 @@ export function pullingFactory(
         loaded$.pipe(mapTo(NaN)),
     ).pipe(
         scan((max, current) => {
-            if (isNaN(current)) {
+            if (Number.isNaN(current)) {
                 return 0;
             }
 

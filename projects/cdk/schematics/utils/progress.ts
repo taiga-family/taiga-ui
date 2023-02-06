@@ -6,6 +6,6 @@ export function printProgress(progressLog: string, isLastLog: boolean = false): 
     process.stdout.write(progressLog);
 
     if (isLastLog) {
-        process.stdout.write('\n');
+        process.stdout.write(`\n`);
     }
 }

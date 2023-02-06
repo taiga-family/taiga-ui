@@ -164,7 +164,7 @@ describe(`InputFile`, () => {
         const files: FileList = [text, image, error] as unknown as FileList;
 
         testComponent.component.onDropped(
-            {files: files} as unknown as DataTransfer,
+            {files} as unknown as DataTransfer,
             {
                 maxSizeRejectionReason: `File exceeds size `,
                 formatRejectionReason: `Wrong file format`,
@@ -190,7 +190,7 @@ describe(`InputFile`, () => {
         const files: FileList = [text] as unknown as FileList;
 
         testComponent.component.onDropped(
-            {files: files} as unknown as DataTransfer,
+            {files} as unknown as DataTransfer,
             {
                 maxSizeRejectionReason: `File exceeds size `,
                 formatRejectionReason: `Wrong file format`,

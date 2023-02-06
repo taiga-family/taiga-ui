@@ -1,6 +1,5 @@
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-
 import {
     createProject,
     createSourceFile,
@@ -10,7 +9,7 @@ import {
 } from 'ng-morph';
 import {join} from 'path';
 
-const collectionPath = join(__dirname, '../../migration.json');
+const collectionPath = join(__dirname, `../../migration.json`);
 
 const COMPONENT_WITH_TEMPLATE_URL = `
 @Component({templateUrl: './test.template.html'})
@@ -319,13 +318,13 @@ import {TestComponent} from './test.component';
 export class ExampleModule {}
 `;
 
-describe('ng-update', () => {
+describe(`ng-update`, () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
     beforeEach(() => {
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner('schematics', collectionPath);
+        runner = new SchematicTestRunner(`schematics`, collectionPath);
 
         setActiveProject(createProject(host));
 
@@ -334,30 +333,30 @@ describe('ng-update', () => {
         saveActiveProject();
     });
 
-    it('should edit templates', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+    it(`should edit templates`, async () => {
+        const tree = await runner.runSchematicAsync(`updateToV3`, {}, host).toPromise();
 
-        expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
+        expect(tree.readContent(`test/app/test.template.html`)).toEqual(TEMPLATE_AFTER);
     });
 
-    it('should edit components', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+    it(`should edit components`, async () => {
+        const tree = await runner.runSchematicAsync(`updateToV3`, {}, host).toPromise();
 
-        expect(tree.readContent('test/app/test.component.ts')).toEqual(
+        expect(tree.readContent(`test/app/test.component.ts`)).toEqual(
             COMPONENT_WITH_TEMPLATE_URL_AFTER,
         );
     });
 
-    it('should add directive to module', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+    it(`should add directive to module`, async () => {
+        const tree = await runner.runSchematicAsync(`updateToV3`, {}, host).toPromise();
 
-        expect(tree.readContent('test/app/test.module.ts')).toEqual(MODULE_AFTER);
+        expect(tree.readContent(`test/app/test.module.ts`)).toEqual(MODULE_AFTER);
     });
 
-    it('should edit inline templates', async () => {
-        const tree = await runner.runSchematicAsync('updateToV3', {}, host).toPromise();
+    it(`should edit inline templates`, async () => {
+        const tree = await runner.runSchematicAsync(`updateToV3`, {}, host).toPromise();
 
-        expect(tree.readContent('test/app/test-inline.component.ts')).toEqual(
+        expect(tree.readContent(`test/app/test-inline.component.ts`)).toEqual(
             COMPONENT_AFTER,
         );
     });
@@ -368,11 +367,11 @@ describe('ng-update', () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile('test/app/test.component.ts', COMPONENT_WITH_TEMPLATE_URL);
+    createSourceFile(`test/app/test.component.ts`, COMPONENT_WITH_TEMPLATE_URL);
 
-    createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
+    createSourceFile(`test/app/test.template.html`, TEMPLATE_BEFORE);
 
-    createSourceFile('test/app/test-inline.component.ts', COMPONENT_BEFORE);
+    createSourceFile(`test/app/test-inline.component.ts`, COMPONENT_BEFORE);
 
-    createSourceFile('test/app/test.module.ts', MODULE_BEFORE);
+    createSourceFile(`test/app/test.module.ts`, MODULE_BEFORE);
 }

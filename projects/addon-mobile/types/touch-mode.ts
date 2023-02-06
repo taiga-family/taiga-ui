@@ -1,1 +1,1 @@
-export type TuiTouchModeT = 'transform' | 'opacity' | 'background';
+export type TuiTouchModeT = 'background' | 'opacity' | 'transform';

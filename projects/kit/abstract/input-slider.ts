@@ -59,7 +59,7 @@ export abstract class AbstractTuiInputSlider<T>
     // TODO: remove setter in v3.0:
     @Input()
     @tuiDefaultProp()
-    set pluralize(pluralize: TuiPluralize | Record<string, string> | null) {
+    set pluralize(pluralize: Record<string, string> | TuiPluralize | null) {
         this.pluralizeMap = Array.isArray(pluralize)
             ? tuiPluralizeToICU(pluralize)
             : pluralize;
@@ -79,7 +79,7 @@ export abstract class AbstractTuiInputSlider<T>
      */
     @Input()
     @tuiDefaultProp()
-    set segmentsPluralize(pluralize: TuiPluralize | Record<string, string> | null) {
+    set segmentsPluralize(pluralize: Record<string, string> | TuiPluralize | null) {
         this.segmentsPluralizeMap = Array.isArray(pluralize)
             ? tuiPluralizeToICU(pluralize)
             : pluralize;

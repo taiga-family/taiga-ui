@@ -24,7 +24,7 @@ describe(`Island`, () => {
         component!: TuiIslandComponent;
 
         hoverable = false;
-        textAlign: 'left' | 'right' | 'center' = `left`;
+        textAlign: 'center' | 'left' | 'right' = `left`;
         size: TuiSizeL = `m`;
     }
 

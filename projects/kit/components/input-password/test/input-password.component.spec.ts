@@ -26,7 +26,7 @@ describe(`InputPassword`, () => {
 
         control = new FormControl();
         readOnly = false;
-        size: TuiSizeS | TuiSizeL = `m`;
+        size: TuiSizeL | TuiSizeS = `m`;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -41,7 +41,7 @@ describe(`InputPassword`, () => {
     function getIconScr(): string {
         return (
             component.icon as PolymorpheusHandler<
-                TuiContextWithImplicit<TuiSizeS | TuiSizeL>
+                TuiContextWithImplicit<TuiSizeL | TuiSizeS>
             >
         )(component.context) as string;
     }
@@ -79,7 +79,7 @@ describe(`InputPassword`, () => {
         it(`When you click on it, the icon represents "Open eye"`, () => {
             const icon = getIcon();
 
-            icon!.nativeElement.click();
+            icon?.nativeElement.click();
 
             const iconSrc = getIconScr();
 
@@ -96,7 +96,7 @@ describe(`InputPassword`, () => {
 
             expect(iconSrc).toBe(`tuiIconEyeClosed`);
 
-            icon!.nativeElement.click();
+            icon?.nativeElement.click();
 
             iconSrc = getIconScr();
 

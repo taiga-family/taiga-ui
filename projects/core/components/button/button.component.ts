@@ -32,9 +32,9 @@ import {distinctUntilChanged, map, startWith, takeUntil} from 'rxjs/operators';
 import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button-options';
 
 @Component({
-    selector: `button[tuiButton], button[tuiIconButton], a[tuiButton], a[tuiIconButton]`,
-    templateUrl: `./button.template.html`,
-    styleUrls: [`./button.style.less`],
+    selector: 'button[tuiButton], button[tuiIconButton], a[tuiButton], a[tuiIconButton]',
+    templateUrl: './button.template.html',
+    styleUrls: ['./button.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -61,24 +61,24 @@ export class TuiButtonComponent
 
     @Input()
     @tuiDefaultProp()
-    icon: PolymorpheusContent = ``;
+    icon: PolymorpheusContent = '';
 
     @Input()
     @tuiDefaultProp()
-    iconRight: PolymorpheusContent = ``;
+    iconRight: PolymorpheusContent = '';
 
     @Input()
-    @HostBinding(`attr.data-shape`)
+    @HostBinding('attr.data-shape')
     @tuiDefaultProp()
     shape = this.options.shape;
 
     @Input()
-    @HostBinding(`class._loading`)
+    @HostBinding('class._loading')
     @tuiDefaultProp()
     showLoader = false;
 
     @Input()
-    @HostBinding(`attr.data-size`)
+    @HostBinding('attr.data-size')
     @tuiDefaultProp()
     size = this.options.size;
 
@@ -130,26 +130,26 @@ export class TuiButtonComponent
     }
 
     get loaderSize(): TuiSizeS {
-        return this.size === `l` || this.size === `xl` ? `m` : `s`;
+        return this.size === 'l' || this.size === 'xl' ? 'm' : 's';
     }
 
-    @HostBinding(`attr.data-appearance`)
+    @HostBinding('attr.data-appearance')
     get computedAppearance(): string {
-        return this.appearance ?? (this.options.appearance || ``);
+        return this.appearance ?? (this.options.appearance || '');
     }
 
-    @HostBinding(`attr.disabled`)
+    @HostBinding('attr.disabled')
     get nativeDisabled(): '' | null {
-        return this.computedDisabled || this.showLoader ? `` : null;
+        return this.computedDisabled || this.showLoader ? '' : null;
     }
 
-    @HostBinding(`tabIndex`)
+    @HostBinding('tabIndex')
     get tabIndex(): number {
         return this.focusable ? 0 : -1;
     }
 
-    @HostListener(`focusin`, [`true`])
-    @HostListener(`focusout`, [`false`])
+    @HostListener('focusin', ['true'])
+    @HostListener('focusout', ['false'])
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }

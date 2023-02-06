@@ -1,7 +1,5 @@
 import {Node} from 'ng-morph';
-import {getNamedImportReferences} from '../../utils/get-named-import-references';
-import {removeImport} from '../../utils/import-manipulations';
-import {REMOVED_MODULES} from '../constants/modules';
+
 import {
     infoLog,
     REPLACE_SYMBOL,
@@ -9,6 +7,9 @@ import {
     SUCCESS_SYMBOL,
     successLog,
 } from '../../utils/colored-log';
+import {getNamedImportReferences} from '../../utils/get-named-import-references';
+import {removeImport} from '../../utils/import-manipulations';
+import {REMOVED_MODULES} from '../constants/modules';
 
 export function removeModules(): void {
     infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} removing modules...`);
@@ -30,6 +31,7 @@ export function removeModule(name: string, moduleSpecifier: string): void {
             removeImport(parent);
         } else if (Node.isArrayLiteralExpression(parent)) {
             const index = parent.getElements().findIndex(el => el.getText() === name);
+
             parent.removeElement(index);
         }
     });

@@ -6,11 +6,11 @@ import {TuiTimeFormatParts} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputTimeOptions {
-    readonly icon: PolymorpheusContent<TuiContextWithImplicit<TuiSizeS | TuiSizeL>>;
+    readonly icon: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>>;
     readonly mode: TuiTimeMode;
     readonly postfix: string;
     readonly maxValues: Record<TuiTimeFormatParts, number>;
-    readonly itemSize: TuiSizeS | TuiSizeL;
+    readonly itemSize: TuiSizeL | TuiSizeS;
 }
 
 /**
@@ -22,7 +22,7 @@ export type InputTimeOptions = TuiInputTimeOptions;
 // TODO: 3.0 remove in ivy compilation
 export const INPUT_TIME_ICON = ({
     $implicit,
-}: TuiContextWithImplicit<TuiSizeS | TuiSizeL>): string =>
+}: TuiContextWithImplicit<TuiSizeL | TuiSizeS>): string =>
     $implicit === `s` ? `tuiIconTime` : `tuiIconTimeLarge`;
 
 export const TUI_INPUT_TIME_DEFAULT_OPTIONS: TuiInputTimeOptions = {

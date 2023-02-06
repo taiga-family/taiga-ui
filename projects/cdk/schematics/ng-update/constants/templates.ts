@@ -1,6 +1,7 @@
-import {TUI_INTERACTIVE_SELECTORS} from './tui-interactive-selectors';
 import {Element} from 'parse5';
+
 import {hasElementAttribute} from '../../utils/templates/elements';
+import {TUI_INTERACTIVE_SELECTORS} from './tui-interactive-selectors';
 
 export interface ReplacementAttributes {
     readonly from: {
@@ -21,7 +22,7 @@ export interface ReplacementTags {
 }
 
 export interface AttributeToDirective {
-    readonly componentSelector: string | string[];
+    readonly componentSelector: string[] | string;
     readonly filterFn?: (element: Element) => boolean;
     readonly inputProperty: string;
     readonly directive: string;
@@ -39,261 +40,254 @@ export interface InputToRemove {
 export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
     {
         from: {
-            attrName: 'icon',
-            withTagNames: ['tui-input-tag'],
+            attrName: `icon`,
+            withTagNames: [`tui-input-tag`],
             filterFn: element =>
-                element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
+                element.attrs.find(attr => attr.name === `iconalign`)?.value === `left`,
         },
         to: {
-            attrName: 'iconLeft',
+            attrName: `iconLeft`,
         },
     },
     {
         from: {
-            attrName: '[icon]',
-            withTagNames: ['tui-input-tag'],
+            attrName: `[icon]`,
+            withTagNames: [`tui-input-tag`],
             filterFn: element =>
-                element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
+                element.attrs.find(attr => attr.name === `iconalign`)?.value === `left`,
         },
         to: {
-            attrName: '[iconLeft]',
+            attrName: `[iconLeft]`,
         },
     },
     {
-        from: {attrName: 'tuiResizableColumn', withAttrsNames: ['tuiResizableColumn']},
-        to: {attrName: 'tuiTh [resizable]="true"'},
+        from: {attrName: `tuiResizableColumn`, withAttrsNames: [`tuiResizableColumn`]},
+        to: {attrName: `tuiTh [resizable]="true"`},
     },
     {
         from: {
-            attrName: 'new',
+            attrName: `new`,
             withTagNames: [
-                'tui-editor',
-                'tui-range',
-                'tui-input-range',
-                'tui-input-slider',
+                `tui-editor`,
+                `tui-range`,
+                `tui-input-range`,
+                `tui-input-slider`,
             ],
         },
-        to: {attrName: ''},
+        to: {attrName: ``},
     },
     {
         from: {
-            attrName: '[hovered]',
-            withTagNames: ['tui-wrapper'],
-            withAttrsNames: ['tuiWrapper'],
+            attrName: `[hovered]`,
+            withTagNames: [`tui-wrapper`],
+            withAttrsNames: [`tuiWrapper`],
         },
         to: {
-            attrName: '[hover]',
-        },
-    },
-    {
-        from: {
-            attrName: '[pressed]',
-            withTagNames: ['tui-wrapper'],
-            withAttrsNames: ['tuiWrapper'],
-        },
-        to: {
-            attrName: '[active]',
+            attrName: `[hover]`,
         },
     },
     {
         from: {
-            attrName: '(rangeChange)',
-            withTagNames: ['tui-calendar-range'],
+            attrName: `[pressed]`,
+            withTagNames: [`tui-wrapper`],
+            withAttrsNames: [`tuiWrapper`],
         },
         to: {
-            attrName: '(valueChange)',
+            attrName: `[active]`,
         },
     },
     {
         from: {
-            attrName: '[quantum]',
-            withAttrsNames: ['tuiSlider'],
-            withTagNames: ['tui-slider'],
+            attrName: `(rangeChange)`,
+            withTagNames: [`tui-calendar-range`],
         },
         to: {
-            attrName: '[step]',
+            attrName: `(valueChange)`,
+        },
+    },
+    {
+        from: {
+            attrName: `[quantum]`,
+            withAttrsNames: [`tuiSlider`],
+            withTagNames: [`tui-slider`],
+        },
+        to: {
+            attrName: `[step]`,
         },
     },
 ];
 
 export const INPUTS_TO_REMOVE: InputToRemove[] = [
     {
-        inputName: 'iconAlign',
-        tags: ['tui-input', 'tui-primitive-textfield', 'tui-input-tag'],
+        inputName: `iconAlign`,
+        tags: [`tui-input`, `tui-primitive-textfield`, `tui-input-tag`],
     },
 ];
 
 export const TAGS_TO_REPLACE: ReplacementTags[] = [
     {
-        from: 'tui-group',
-        to: 'div',
-        addAttributes: ['tuiGroup'],
+        from: `tui-group`,
+        to: `div`,
+        addAttributes: [`tuiGroup`],
     },
     {
-        from: 'tui-wrapper',
-        to: 'div',
-        addAttributes: ['tuiWrapper'],
+        from: `tui-wrapper`,
+        to: `div`,
+        addAttributes: [`tuiWrapper`],
     },
     {
-        from: 'tui-slider',
-        to: 'input',
-        addAttributes: ['tuiSlider', 'type="range"'],
+        from: `tui-slider`,
+        to: `input`,
+        addAttributes: [`tuiSlider`, `type="range"`],
     },
 ];
 
 export const ATTR_TO_DIRECTIVE: AttributeToDirective[] = [
     {
-        componentSelector: 'tui-primitive-textfield',
-        inputProperty: '(autofilledChange)',
-        directive: '(tuiAutofilledChange)',
+        componentSelector: `tui-primitive-textfield`,
+        inputProperty: `(autofilledChange)`,
+        directive: `(tuiAutofilledChange)`,
         directiveModule: {
-            name: 'TuiAutofilledModule',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `TuiAutofilledModule`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
     },
     {
         componentSelector: TUI_INTERACTIVE_SELECTORS,
-        inputProperty: '(pressedChange)',
-        directive: '(tuiPressedChange)',
+        inputProperty: `(pressedChange)`,
+        directive: `(tuiPressedChange)`,
         directiveModule: {
-            name: 'TuiPressedModule',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `TuiPressedModule`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
     },
     {
         componentSelector: TUI_INTERACTIVE_SELECTORS,
-        inputProperty: '(hoveredChange)',
-        directive: '(tuiHoveredChange)',
+        inputProperty: `(hoveredChange)`,
+        directive: `(tuiHoveredChange)`,
         directiveModule: {
-            name: 'TuiHoveredModule',
-            moduleSpecifier: '@taiga-ui/cdk',
+            name: `TuiHoveredModule`,
+            moduleSpecifier: `@taiga-ui/cdk`,
         },
     },
     {
-        componentSelector: 'tui-input-slider',
-        inputProperty: 'size',
-        directive: 'tuiTextfieldSize',
+        componentSelector: `tui-input-slider`,
+        inputProperty: `size`,
+        directive: `tuiTextfieldSize`,
         directiveModule: {
-            name: 'TuiTextfieldControllerModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiTextfieldControllerModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
     },
     {
-        componentSelector: 'tui-input-slider',
-        inputProperty: 'secondary',
-        directive: 'tuiTextfieldCustomContent',
+        componentSelector: `tui-input-slider`,
+        inputProperty: `secondary`,
+        directive: `tuiTextfieldCustomContent`,
         directiveModule: {
-            name: 'TuiTextfieldControllerModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiTextfieldControllerModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
     },
     {
-        componentSelector: 'tui-input-range',
-        inputProperty: 'size',
-        directive: 'tuiTextfieldSize',
+        componentSelector: `tui-input-range`,
+        inputProperty: `size`,
+        directive: `tuiTextfieldSize`,
         directiveModule: {
-            name: 'TuiTextfieldControllerModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiTextfieldControllerModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
     },
     {
-        componentSelector: 'tui-input',
-        inputProperty: 'icon',
-        directive: 'tuiTextfieldIcon',
+        componentSelector: `tui-input`,
+        inputProperty: `icon`,
+        directive: `tuiTextfieldIcon`,
         directiveModule: {
-            name: 'TuiTextfieldControllerModule',
-            moduleSpecifier: '@taiga-ui/core',
-        },
-        filterFn: element =>
-            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'right',
-    },
-    {
-        componentSelector: 'tui-input',
-        inputProperty: 'icon',
-        directive: 'tuiTextfieldIconLeft',
-        directiveModule: {
-            name: 'TuiTextfieldControllerModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiTextfieldControllerModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
         filterFn: element =>
-            !hasElementAttribute(element, 'iconAlign') ||
-            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
+            element.attrs.find(attr => attr.name === `iconalign`)?.value === `right`,
     },
     {
-        componentSelector: 'tui-primitive-textfield',
-        inputProperty: 'iconContent',
-        directive: 'tuiTextfieldIcon',
+        componentSelector: `tui-input`,
+        inputProperty: `icon`,
+        directive: `tuiTextfieldIconLeft`,
         directiveModule: {
-            name: 'TuiTextfieldControllerModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiTextfieldControllerModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
         filterFn: element =>
-            !hasElementAttribute(element, 'iconAlign') ||
-            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'right',
+            !hasElementAttribute(element, `iconAlign`) ||
+            element.attrs.find(attr => attr.name === `iconalign`)?.value === `left`,
     },
     {
-        componentSelector: 'tui-primitive-textfield',
-        inputProperty: 'iconContent',
-        directive: 'tuiTextfieldIconLeft',
+        componentSelector: `tui-primitive-textfield`,
+        inputProperty: `iconContent`,
+        directive: `tuiTextfieldIcon`,
         directiveModule: {
-            name: 'TuiTextfieldControllerModule',
-            moduleSpecifier: '@taiga-ui/core',
+            name: `TuiTextfieldControllerModule`,
+            moduleSpecifier: `@taiga-ui/core`,
         },
         filterFn: element =>
-            element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
+            !hasElementAttribute(element, `iconAlign`) ||
+            element.attrs.find(attr => attr.name === `iconalign`)?.value === `right`,
     },
     {
-        componentSelector: '*',
-        inputProperty: 'scrollIntoView',
-        directive: 'tuiScrollIntoViewLink',
+        componentSelector: `tui-primitive-textfield`,
+        inputProperty: `iconContent`,
+        directive: `tuiTextfieldIconLeft`,
         directiveModule: {
-            name: 'TuiScrollIntoViewLinkModule',
-            moduleSpecifier: '@taiga-ui/addon-doc',
+            name: `TuiTextfieldControllerModule`,
+            moduleSpecifier: `@taiga-ui/core`,
+        },
+        filterFn: element =>
+            element.attrs.find(attr => attr.name === `iconalign`)?.value === `left`,
+    },
+    {
+        componentSelector: `*`,
+        inputProperty: `scrollIntoView`,
+        directive: `tuiScrollIntoViewLink`,
+        directiveModule: {
+            name: `TuiScrollIntoViewLinkModule`,
+            moduleSpecifier: `@taiga-ui/addon-doc`,
         },
     },
 ];
 
 export const TEMPLATE_COMMENTS = [
     {
-        tag: 'tui-input-slider',
-        withAttr: 'pluralize',
-        comment:
-            '[pluralize] => Use [postfix] instead. See https://taiga-ui.dev/components/input-slider/API?postfix=apples',
+        tag: `tui-input-slider`,
+        withAttr: `pluralize`,
+        comment: `[pluralize] => Use [postfix] instead. See https://taiga-ui.dev/components/input-slider/API?postfix=apples`,
     },
     {
-        tag: 'tui-input-slider',
-        withAttr: 'segmentsPluralize',
-        comment:
-            'See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-slider#slider-segments',
+        tag: `tui-input-slider`,
+        withAttr: `segmentsPluralize`,
+        comment: `See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-slider#slider-segments`,
     },
     {
-        tag: 'tui-input-range',
-        withAttr: 'segmentsPluralize',
-        comment:
-            'See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-range#segments',
+        tag: `tui-input-range`,
+        withAttr: `segmentsPluralize`,
+        comment: `See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/input-range#segments`,
     },
     {
-        tag: 'tui-range',
-        withAttr: 'pluralize',
-        comment:
-            'See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/range#segments',
+        tag: `tui-range`,
+        withAttr: `pluralize`,
+        comment: `See examples how create labels for ticks without this property (outside the component): https://taiga-ui.dev/components/range#segments`,
     },
     {
-        tag: 'tui-preview-host',
-        withAttr: 'ngProjectAs',
-        comment:
-            '"Preview"-component no longer needs it and requires only import of TuiPreviewModule to the main module. See "Setup"-section: https://taiga-ui.dev/components/preview/Setup',
+        tag: `tui-preview-host`,
+        withAttr: `ngProjectAs`,
+        comment: `"Preview"-component no longer needs it and requires only import of TuiPreviewModule to the main module. See "Setup"-section: https://taiga-ui.dev/components/preview/Setup`,
     },
     {
-        tag: 'tui-progress',
-        withAttr: 'value',
-        comment:
-            'This legacy component was replaced by 3 new ones (https://taiga-ui.dev/components/progress-bar | https://taiga-ui.dev/components/progress-circle | https://taiga-ui.dev/components/progress-segmented ) ',
+        tag: `tui-progress`,
+        withAttr: `value`,
+        comment: `This legacy component was replaced by 3 new ones (https://taiga-ui.dev/components/progress-bar | https://taiga-ui.dev/components/progress-circle | https://taiga-ui.dev/components/progress-segmented ) `,
     },
     {
-        tag: 'tui-input-tag',
-        withAttr: 'allowSpaces',
-        comment:
-            'Use property [separator] to forbid spaces. See example: https://taiga-ui.dev/components/input-tag#no-spaces-inside-tags',
+        tag: `tui-input-tag`,
+        withAttr: `allowSpaces`,
+        comment: `Use property [separator] to forbid spaces. See example: https://taiga-ui.dev/components/input-tag#no-spaces-inside-tags`,
     },
 ] as const;

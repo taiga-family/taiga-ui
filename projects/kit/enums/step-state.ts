@@ -7,4 +7,4 @@ export const enum TuiStepState {
     Pass = `pass`,
 }
 
-export type TuiStepStateT = 'normal' | 'error' | 'pass';
+export type TuiStepStateT = 'error' | 'normal' | 'pass';

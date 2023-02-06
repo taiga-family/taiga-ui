@@ -4,5 +4,5 @@ import {TuiColor} from './color';
 
 export type TuiMarkerHandler = TuiHandler<
     TuiDay,
-    [] | [TuiColor | string] | [TuiColor | string, TuiColor | string]
+    [] | [TuiColor | string, TuiColor | string] | [TuiColor | string]
 >;

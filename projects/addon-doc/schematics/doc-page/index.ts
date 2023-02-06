@@ -1,3 +1,4 @@
+import {getWorkspace} from '@angular/cli/utilities/config';
 import {strings} from '@angular-devkit/core';
 import {dasherize} from '@angular-devkit/core/src/utils/strings';
 import {
@@ -10,10 +11,10 @@ import {
     template,
     url,
 } from '@angular-devkit/schematics';
-import {getWorkspace} from '@angular/cli/utilities/config';
 import {exec} from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
+
 import {addCodeToComponent} from '../schematics-particles/add-code-to-main-component';
 import {addContentToHtml} from '../schematics-particles/add-code-to-template';
 import {addFieldDocPage} from '../schematics-particles/add-field-doc-page';
@@ -37,7 +38,7 @@ export interface Schema {
 
 function moveComponent(options: Schema): Rule {
     return mergeWith(
-        apply(url('./files/component'), [
+        apply(url(`./files/component`), [
             template({
                 ...options,
                 ...strings,
@@ -49,7 +50,7 @@ function moveComponent(options: Schema): Rule {
 
 function moveExample(options: Schema, index: number): Rule {
     return mergeWith(
-        apply(url('./files/examples'), [
+        apply(url(`./files/examples`), [
             template({
                 ...options,
                 samples: index,
@@ -59,7 +60,7 @@ function moveExample(options: Schema, index: number): Rule {
                 `${path.join(
                     getRelativePath(options.root, process.cwd()),
                     dasherize(options.name),
-                    'examples',
+                    `examples`,
                 )}`,
             ),
         ]),
@@ -81,7 +82,7 @@ function prittierFiles(options: Schema): Rule {
         `prettier --write ${path.join(
             process.cwd(),
             dasherize(options.name),
-            dasherize(options.name) + '.component.ts',
+            `${dasherize(options.name)}.component.ts`,
         )}`,
         () => {},
     );
@@ -89,7 +90,7 @@ function prittierFiles(options: Schema): Rule {
         `prettier --write ${path.join(
             process.cwd(),
             dasherize(options.name),
-            dasherize(options.name) + '.module.ts',
+            `${dasherize(options.name)}.module.ts`,
         )}`,
         () => {},
     );
@@ -97,7 +98,7 @@ function prittierFiles(options: Schema): Rule {
         `prettier --write ${path.join(
             process.cwd(),
             dasherize(options.name),
-            dasherize(options.name) + '.template.html',
+            `${dasherize(options.name)}.template.html`,
         )}`,
         () => {},
     );
@@ -107,7 +108,7 @@ function prittierFiles(options: Schema): Rule {
 
 export function docPage(options: Schema): Rule {
     return async () => {
-        const workSpace = await getWorkspace('local');
+        const workSpace = await getWorkspace(`local`);
 
         if (workSpace === null) {
             return noop();
@@ -119,7 +120,7 @@ export function docPage(options: Schema): Rule {
         };
 
         if (
-            !fs.existsSync(path.join(process.cwd(), dasherize(options.name), 'examples'))
+            !fs.existsSync(path.join(process.cwd(), dasherize(options.name), `examples`))
         ) {
             return chain([
                 moveComponent(options),
@@ -130,8 +131,8 @@ export function docPage(options: Schema): Rule {
         }
 
         const files = fs.readdirSync(
-            path.join(process.cwd(), dasherize(options.name), 'examples'),
-        ) as string[];
+            path.join(process.cwd(), dasherize(options.name), `examples`),
+        );
         const startIndex =
             Math.max(
                 ...files

@@ -17,19 +17,19 @@ import {imageLoader} from './image-loader';
 import {ImgbbService} from './imgbb.service';
 
 @Component({
-    selector: `tui-editor-example-7`,
-    templateUrl: `./index.html`,
-    styleUrls: [`./index.less`],
+    selector: 'tui-editor-example-7',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     providers: [
         TuiDestroyService,
         {
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import(`@taiga-ui/addon-editor/extensions/starter-kit`).then(
+                import('@taiga-ui/addon-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
-                import(`@taiga-ui/addon-editor/extensions/image-editor`).then(
+                import('@taiga-ui/addon-editor/extensions/image-editor').then(
                     ({createImageEditorExtension}) =>
                         createImageEditorExtension(injector),
                 ),
@@ -59,11 +59,11 @@ import {ImgbbService} from './imgbb.service';
 export class TuiEditorNewExample7 {
     readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
 
-    control = new FormControl(``);
+    control = new FormControl('');
 
     constructor() {
         this.control.patchValue(
-            `<img data-type="image-editor" src="/assets/images/lumberjack.png" width="300"><p>Try to drag right border of image!</p><p>To change min size of image use token <code>TUI_EDITOR_MIN_IMAGE_WIDTH</code>.</p><p>To change max size of image use token <code>TUI_EDITOR_MAX_IMAGE_WIDTH</code>.</p>`,
+            '<img data-type="image-editor" src="/assets/images/lumberjack.png" width="300"><p>Try to drag right border of image!</p><p>To change min size of image use token <code>TUI_EDITOR_MIN_IMAGE_WIDTH</code>.</p><p>To change max size of image use token <code>TUI_EDITOR_MAX_IMAGE_WIDTH</code>.</p>',
         );
     }
 }

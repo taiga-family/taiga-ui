@@ -40,7 +40,7 @@ export abstract class AbstractTuiDropdown
 
     @Input(`tuiDropdownHost`)
     @tuiDefaultProp()
-    tuiDropdownHost: TuiNativeFocusableElement | HTMLElement | null = null;
+    tuiDropdownHost: HTMLElement | TuiNativeFocusableElement | null = null;
 
     @Input(`tuiDropdownMinHeight`)
     @tuiDefaultProp()
@@ -92,7 +92,7 @@ export abstract class AbstractTuiDropdown
         return this.elementRef.nativeElement.getBoundingClientRect();
     }
 
-    get host(): TuiNativeFocusableElement | HTMLElement {
+    get host(): HTMLElement | TuiNativeFocusableElement {
         return this.tuiDropdownHost || this.elementRef.nativeElement;
     }
 

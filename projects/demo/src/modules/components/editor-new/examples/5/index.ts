@@ -10,8 +10,8 @@ import {
 import {TuiDestroyService} from '@taiga-ui/cdk';
 
 @Component({
-    selector: `tui-editor-example-5`,
-    templateUrl: `./index.html`,
+    selector: 'tui-editor-example-5',
+    templateUrl: './index.html',
     providers: [
         TuiDestroyService,
         {
@@ -21,15 +21,16 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import(`@tiptap/starter-kit`).then(({default: module}) => module),
-                import(`@tiptap/extension-placeholder`).then(({Placeholder}) =>
+                import('@tiptap/starter-kit').then(({default: module}) => module),
+                import('@tiptap/extension-placeholder').then(({Placeholder}) =>
                     Placeholder.configure({
-                        emptyNodeClass: `t-editor-placeholder`,
-                        placeholder: `Type '/' for command`, // Notion like
+                        emptyNodeClass: 't-editor-placeholder',
+                        // eslint-disable-next-line @typescript-eslint/quotes
+                        placeholder: "Type '/' for command", // Notion like
                         includeChildren: true,
                     }),
                 ),
-                import(`@taiga-ui/addon-editor/extensions/group`).then(
+                import('@taiga-ui/addon-editor/extensions/group').then(
                     ({createGroupExtension}) =>
                         createGroupExtension({nested: false, createOnEnter: true}),
                 ),
@@ -42,11 +43,11 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
 export class TuiEditorNewExample5 {
     readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Group];
 
-    control = new FormControl(``);
+    control = new FormControl('');
 
     constructor() {
         this.control.patchValue(
-            `<div data-type="group"><p>This is a boring paragraph.</p></div><div data-type="group"><p>And another draggable paragraph.</p></div><div data-type="group"><p>Let’s finish with a boring paragraph.</p></div>`,
+            '<div data-type="group"><p>This is a boring paragraph.</p></div><div data-type="group"><p>And another draggable paragraph.</p></div><div data-type="group"><p>Let’s finish with a boring paragraph.</p></div>',
         );
     }
 }

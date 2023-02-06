@@ -1,13 +1,13 @@
 export type TuiHorizontalDirection = 'left' | 'right';
 
-export type TuiVerticalDirection = 'top' | 'bottom';
+export type TuiVerticalDirection = 'bottom' | 'top';
 
 export type TuiSideDirection =
     | 'bottom-left'
-    | 'bottom-right'
     | 'bottom-middle'
+    | 'bottom-right'
     | 'top-left'
-    | 'top-right'
-    | 'top-middle';
+    | 'top-middle'
+    | 'top-right';
 
 export type TuiDirection = TuiHorizontalDirection | TuiSideDirection;

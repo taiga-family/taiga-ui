@@ -26,9 +26,9 @@ import {
 import {TextMaskConfig} from 'angular2-text-mask';
 
 @Component({
-    selector: `tui-input-expire`,
-    templateUrl: `./input-expire.template.html`,
-    styleUrls: [`./input-expire.style.less`],
+    selector: 'tui-input-expire',
+    templateUrl: './input-expire.template.html',
+    styleUrls: ['./input-expire.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -52,7 +52,7 @@ export class TuiInputExpireComponent
         mask: [
             TUI_DIGIT_REGEXP,
             TUI_DIGIT_REGEXP,
-            `/`,
+            '/',
             TUI_DIGIT_REGEXP,
             TUI_DIGIT_REGEXP,
         ],
@@ -87,7 +87,7 @@ export class TuiInputExpireComponent
     onValueChange(value: string): void {
         // @bad TODO: Workaround until mask pipe can replace chars and keep caret position
         // @bad TODO: Think about a solution without mask at all
-        if (!this.input || !this.input.nativeFocusableElement) {
+        if (!this.input?.nativeFocusableElement) {
             return;
         }
 
@@ -95,7 +95,7 @@ export class TuiInputExpireComponent
             value = `12${value.slice(2)}`;
         }
 
-        if (value.slice(0, 2) === `00`) {
+        if (value.slice(0, 2) === '00') {
             value = `01${value.slice(2)}`;
         }
 
@@ -115,6 +115,6 @@ export class TuiInputExpireComponent
     }
 
     protected getFallbackValue(): string {
-        return ``;
+        return '';
     }
 }

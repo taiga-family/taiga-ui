@@ -15,7 +15,13 @@ module.exports = {
                         selector: 'class',
                         modifiers: ['exported'],
                         format: ['PascalCase'],
-                        prefix: ['AbstractTui', 'Tui'],
+                        prefix: ['Tui'],
+                    },
+                    {
+                        selector: 'class',
+                        modifiers: ['exported', 'abstract'],
+                        format: ['PascalCase'],
+                        prefix: ['AbstractTui'],
                     },
                     {
                         selector: 'function',
@@ -68,7 +74,11 @@ module.exports = {
             },
         },
         {
-            files: ['**/projects/*demo/**/*.ts', '**/scripts/**/*.ts'],
+            files: [
+                '**/projects/*demo/**/*.ts',
+                '**/scripts/**/*.ts',
+                '**/schematics/**/*.ts',
+            ],
             parser: '@typescript-eslint/parser',
             plugins: ['@typescript-eslint'],
             rules: {
