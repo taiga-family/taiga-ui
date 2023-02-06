@@ -1,0 +1,12 @@
+<tui-editor
+    class="editor"
+    [formControl]="control"
+    [tools]="builtInTools"
+    (fileAttached)="attach($event)"
+></tui-editor>
+
+<h4>HTML:</h4>
+<div [innerHTML]="safe(control.value)"></div>
+
+<h4>Text:</h4>
+<p>{{ control.value }}</p>

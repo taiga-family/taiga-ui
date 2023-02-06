@@ -62,7 +62,7 @@ export class TuiEditorComponent
     tools: readonly TuiEditorTool[] = defaultEditorTools;
 
     @Output()
-    fileAttached = new EventEmitter<TuiEditorAttachedFile[]>();
+    fileAttached = new EventEmitter<Array<TuiEditorAttachedFile<any>>>();
 
     @ViewChild(TuiToolbarComponent)
     readonly toolbar?: TuiToolbarComponent;

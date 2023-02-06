@@ -8,6 +8,7 @@ export * from '@taiga-ui/addon-editor/extensions/iframe-editor';
 export * from '@taiga-ui/addon-editor/extensions/image-editor';
 export * from '@taiga-ui/addon-editor/extensions/indent-outdent';
 export * from '@taiga-ui/addon-editor/extensions/link';
+export * from '@taiga-ui/addon-editor/extensions/media';
 export * from '@taiga-ui/addon-editor/extensions/starter-kit';
 export * from '@taiga-ui/addon-editor/extensions/table';
 export * from '@taiga-ui/addon-editor/extensions/table-cell-background';
