@@ -50,6 +50,11 @@ crypto.createHash = (algorithm: string) =>
     fallbackCreateHash(algorithm === `md4` ? `sha256` : algorithm);
 
 const config: Configuration = {
+    resolve: {
+        fallback: {
+            punycode: false,
+        },
+    },
     module: {
         /**
          * With Webpack 5, the raw-loader is no longer needed.
