@@ -239,7 +239,6 @@ export class TuiInputPhoneComponent
 
     override writeValue(value: string | null): void {
         super.writeValue(value);
-        this.updateSearch('');
     }
 
     protected getFallbackValue(): string {
