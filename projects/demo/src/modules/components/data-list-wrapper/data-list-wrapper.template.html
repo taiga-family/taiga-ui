@@ -1,0 +1,121 @@
+<tui-doc-page
+    header="DataListWrapper"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p i18n>
+            <code>DataListWrapper</code>
+            is an abstraction over
+            <code>DataList</code>
+            to simplify usage in common cases where precise control is not necessary.
+        </p>
+
+        <tui-doc-example
+            id="disable"
+            heading="Disables items that start with T"
+            [content]="example1"
+        >
+            <tui-data-list-wrapper-example-1></tui-data-list-wrapper-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="custom"
+            heading="Custom item content"
+            [content]="example2"
+        >
+            <tui-data-list-wrapper-example-2></tui-data-list-wrapper-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="group-by"
+            heading="Group by labels"
+            [content]="example3"
+        >
+            <tui-data-list-wrapper-example-3></tui-data-list-wrapper-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <h2>DataListWrapper</h2>
+
+        <tui-doc-documentation>
+            <ng-template
+                i18n
+                documentationPropertyName="items"
+                documentationPropertyMode="input"
+                documentationPropertyType="T[] | T[][] | null"
+            >
+                Items to select
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="itemContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent<TuiValueContentContext<T>>"
+            >
+                Content of an item
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="emptyContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+            >
+                Content to display when there are no options inside
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="disabledItemHandler"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiBooleanHandler<T>"
+            >
+                <div>A handler that gets an item and returns true if it is disabled.</div>
+
+                <strong>Must be a pure function</strong>
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="size"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiSizeL | TuiSizeXS"
+            >
+                Size of items
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="labels"
+                documentationPropertyMode="input"
+                documentationPropertyType="string[]"
+            >
+                Group label
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>
+                    Import
+                    <code>TuiDataListWrapperModule</code>
+                    into a module where you want to use our component
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Add to the template:</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleHtml"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

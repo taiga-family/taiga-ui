@@ -1,0 +1,9 @@
+<tui-input [formControl]="control">
+    Account
+
+    <tui-data-list-wrapper
+        *tuiDataList
+        [items]="items | tuiFilterByInputWith : stringify"
+        [itemContent]="stringify | tuiStringifyContent"
+    ></tui-data-list-wrapper>
+</tui-input>
