@@ -11,7 +11,7 @@ import {
     TuiEditorComponent,
     TuiEditorTool,
 } from '@taiga-ui/addon-editor';
-import {tuiPure, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {TUI_IS_CYPRESS, tuiPure, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -102,12 +102,16 @@ export class TuiEditorEmbedExample3 {
         `
             <p>Here is video: </p>
 
-            <video controls="controls" width="100%">
+            <video controls="controls" width="100%" preload="${
+                this.isCypress ? 'none' : 'auto'
+            }">
                 <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
             </video>
 
             <p>Here is audio: </p>
-            <audio controls style="width: 100%">
+            <audio controls style="width: 100%" preload="${
+                this.isCypress ? 'none' : 'auto'
+            }">
               <source src="https://www.w3docs.com/build/audios/audio.mp3" type="audio/mp3">
             </audio>
 
@@ -116,7 +120,10 @@ export class TuiEditorEmbedExample3 {
         Validators.required,
     );
 
-    constructor(@Inject(DomSanitizer) private readonly sanitizer: DomSanitizer) {}
+    constructor(
+        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
+        @Inject(TUI_IS_CYPRESS) private readonly isCypress: boolean,
+    ) {}
 
     @tuiPure
     safe(content: string): SafeHtml {
