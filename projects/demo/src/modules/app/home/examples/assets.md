@@ -1,12 +1,12 @@
-```json5
+```json
 {
   //...
-  assets: [
+  "assets": [
     {
-      glob: '**/*',
-      input: 'node_modules/@taiga-ui/icons/src',
-      output: 'assets/taiga-ui/icons',
-    },
-  ],
+      "glob": "**/*",
+      "input": "node_modules/@taiga-ui/icons/src",
+      "output": "assets/taiga-ui/icons"
+    }
+  ]
 }
 ```
