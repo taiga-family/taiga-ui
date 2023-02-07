@@ -17,7 +17,7 @@
                 const url = `${location.pathname}${location.search}${location.hash}`;
                 const appPath = url.replace(/^\/(next|v[0-9]+)\//, ``);
                 const segments = url.split('/').filter(Boolean);
-                const version = segments[0] ?? ``;
+                const version = segments[0] || ``;
                 const redirectUrl = /^(next|v[0-9]+)$/.test(version) ? `/${version}` : `/`;
 
                 // @note: use preserve log for debug
