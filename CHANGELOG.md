@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.76.0](https://github.com/tinkoff/taiga-ui/compare/v2.75.0...v2.76.0) (2023-02-07)
+
+### Bug Fixes
+
+- **addon-editor:** wrong styles of list element ([#3570](https://github.com/tinkoff/taiga-ui/issues/3570))
+  ([b0e3f68](https://github.com/tinkoff/taiga-ui/commit/b0e3f6822576efbdf70f692b2beb72425ccacc91))
+
 ## [2.75.0](https://github.com/tinkoff/taiga-ui/compare/v2.74.0...v2.75.0) (2023-01-24)
 
 ### Bug Fixes
