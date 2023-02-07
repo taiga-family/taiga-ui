@@ -32,7 +32,7 @@ export class TuiSheetDirective extends PolymorpheusTemplate<TuiSheet<never>> {
     }
 
     @Output()
-    tuiSheetChange = this.open$.pipe(
+    readonly tuiSheetChange = this.open$.pipe(
         switchMap(open =>
             open
                 ? this.service

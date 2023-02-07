@@ -22,6 +22,7 @@ export class TuiUnfinishedValidatorDirective implements Validator {
     constructor(
         @Inject(Injector)
         private readonly injector: Injector,
+        // eslint-disable-next-line @angular-eslint/no-attribute-decorator
         @Attribute('tuiUnfinishedValidator')
         private readonly message: string | null,
     ) {}

@@ -13,6 +13,7 @@ import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 })
 export class TuiSheetCloseDirective {
     @Output()
+    // eslint-disable-next-line @angular-eslint/no-output-native
     readonly close: Observable<unknown> = merge(
         tuiTypedFromEvent(this.elementRef.nativeElement, TUI_SHEET_CLOSE),
         this.dragged$.pipe(

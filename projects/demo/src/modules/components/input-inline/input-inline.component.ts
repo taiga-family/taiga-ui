@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 
@@ -8,6 +8,7 @@ import {AbstractExampleTuiControl} from '../abstract/control';
     selector: 'example-tui-input-inline',
     templateUrl: './input-inline.template.html',
     styleUrls: ['./input-inline.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleTuiInputInlineComponent extends AbstractExampleTuiControl {
     readonly exampleModule = import('./examples/import/import-module.md?raw');

@@ -1,4 +1,5 @@
 import {
+    AfterViewInit,
     ChangeDetectorRef,
     Directive,
     EventEmitter,
@@ -27,9 +28,10 @@ import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
         style: 'border-collapse: separate',
     },
 })
-export class TuiTableDirective<
-    T extends Partial<Record<keyof T, any>>,
-> extends AbstractTuiController {
+export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
+    extends AbstractTuiController
+    implements AfterViewInit
+{
     @Input()
     @tuiDefaultProp()
     columns: ReadonlyArray<string | keyof T> = [];

@@ -30,6 +30,7 @@ export class TuiPushComponent {
     timestamp = 0;
 
     @Output()
+    // eslint-disable-next-line @angular-eslint/no-output-native
     readonly close = new EventEmitter<void>();
 
     constructor(@Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>) {}

@@ -19,9 +19,10 @@ import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-root',
-    templateUrl: 'root.template.html',
+    templateUrl: './root.template.html',
     styleUrls: ['./root.style.less'],
     // So that we do not force OnPush on custom dialogs
+    // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [TUI_IS_MOBILE_RES_PROVIDER],
     encapsulation: ViewEncapsulation.None,

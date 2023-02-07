@@ -1,10 +1,11 @@
-import {Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {timer} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
+    selector: 'tui-pdf-content',
     template: `
         <iframe
             *ngIf="src$ | async as src; else loading"
@@ -23,8 +24,9 @@ import {map} from 'rxjs/operators';
             }
         `,
     ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PdfContent {
+export class PdfContentComponent {
     private readonly pdf = 'assets/media/taiga.pdf';
 
     /**

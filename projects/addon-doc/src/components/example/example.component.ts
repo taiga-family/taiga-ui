@@ -1,13 +1,6 @@
 import {Clipboard} from '@angular/cdk/clipboard';
 import {Location as NgLocation} from '@angular/common';
-import {
-    Attribute,
-    ChangeDetectionStrategy,
-    Component,
-    Inject,
-    Input,
-    Optional,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, Input, Optional} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LOCATION} from '@ng-web-apis/common';
 import {TUI_IS_CYPRESS, TuiContextWithImplicit, TuiHandler} from '@taiga-ui/cdk';
@@ -33,6 +26,9 @@ import {tuiRawLoadRecord} from '../../utils/raw-load-record';
 })
 export class TuiDocExampleComponent {
     private readonly rawLoader$$ = new BehaviorSubject<TuiDocExample>({});
+
+    @Input()
+    id: string | null = null;
 
     @Input()
     heading: PolymorpheusContent = '';
@@ -64,8 +60,6 @@ export class TuiDocExampleComponent {
     readonly loading$ = new Subject<boolean>();
 
     constructor(
-        @Attribute('id')
-        readonly id: string | null,
         @Inject(Clipboard) private readonly clipboard: Clipboard,
         @Inject(TuiAlertService)
         private readonly alertService: TuiAlertService,

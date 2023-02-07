@@ -22,7 +22,7 @@ import {debounce, filter, map} from 'rxjs/operators';
     template: `
         <ng-content></ng-content>
     `,
-    styleUrls: ['tiles.style.less'],
+    styleUrls: ['./tiles.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

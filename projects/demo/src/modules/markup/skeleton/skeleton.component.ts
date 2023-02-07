@@ -4,7 +4,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
     selector: 'skeleton',
-    templateUrl: 'skeleton.template.html',
+    templateUrl: './skeleton.template.html',
     changeDetection,
 })
 export class SkeletonComponent {

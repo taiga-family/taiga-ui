@@ -1,4 +1,11 @@
-import {Component, EventEmitter, Inject, Input, Output} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Inject,
+    Input,
+    Output,
+} from '@angular/core';
 import {TUI_TABLE_PAGINATION_TEXTS} from '@taiga-ui/addon-table/tokens';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TUI_SPIN_TEXTS} from '@taiga-ui/core';
@@ -14,6 +21,7 @@ import {
     selector: 'tui-table-pagination',
     templateUrl: './table-pagination.template.html',
     styleUrls: ['./table-pagination.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTablePaginationComponent {
     @Input()

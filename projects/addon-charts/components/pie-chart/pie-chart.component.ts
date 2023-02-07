@@ -72,7 +72,7 @@ export class TuiPieChartComponent {
     activeItemIndex = NaN;
 
     @Output()
-    activeItemIndexChange = new EventEmitter<number>();
+    readonly activeItemIndexChange = new EventEmitter<number>();
 
     constructor(
         @Inject(TuiIdService) idService: TuiIdService,

@@ -2,7 +2,7 @@
     <h1 class="t-title">
         {{ header }}
         <tui-tag
-            *ngIf="deprecated !== null"
+            *ngIf="!!deprecated || deprecated === ''"
             value="deprecated"
             status="custom"
             class="t-tag t-tag_deprecated"

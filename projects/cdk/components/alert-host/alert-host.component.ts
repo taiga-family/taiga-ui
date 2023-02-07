@@ -17,6 +17,7 @@ import {Observable} from 'rxjs';
     templateUrl: './alert-host.template.html',
     styleUrls: ['./alert-host.style.less'],
     // So that we do not force OnPush on custom alerts
+    // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
     animations: [TUI_PARENT_ANIMATION],
     encapsulation: ViewEncapsulation.None,

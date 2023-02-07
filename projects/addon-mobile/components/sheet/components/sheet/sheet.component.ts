@@ -27,8 +27,8 @@ import {TUI_SHEET_PROVIDERS} from './sheet.providers';
 
 @Component({
     selector: 'tui-sheet',
-    templateUrl: 'sheet.template.html',
-    styleUrls: ['sheet.style.less'],
+    templateUrl: './sheet.template.html',
+    styleUrls: ['./sheet.style.less'],
     providers: TUI_SHEET_PROVIDERS,
     animations: [tuiSlideInTop],
     changeDetection: ChangeDetectionStrategy.OnPush,

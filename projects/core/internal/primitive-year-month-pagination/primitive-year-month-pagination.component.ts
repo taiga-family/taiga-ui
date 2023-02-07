@@ -1,4 +1,10 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    Output,
+} from '@angular/core';
 import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
@@ -13,6 +19,7 @@ import {TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
     selector: 'tui-primitive-year-month-pagination',
     templateUrl: './primitive-year-month-pagination.template.html',
     styleUrls: ['./primitive-year-month-pagination.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveYearMonthPaginationComponent
     implements TuiWithOptionalMinMax<TuiMonth>

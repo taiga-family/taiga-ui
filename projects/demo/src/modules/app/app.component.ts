@@ -4,6 +4,7 @@ import {
     Inject,
     InjectFlags,
     Injector,
+    OnInit,
     Self,
     ViewEncapsulation,
 } from '@angular/core';
@@ -37,7 +38,7 @@ import {TuiVersionMeta} from './version-manager/versions.constants';
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
-export class AppComponent extends AbstractDemoComponent {
+export class AppComponent extends AbstractDemoComponent implements OnInit {
     readonly isLanding$ = this.router.events.pipe(
         map(() => this.router.routerState.snapshot.url === '/'),
         distinctUntilChanged(),

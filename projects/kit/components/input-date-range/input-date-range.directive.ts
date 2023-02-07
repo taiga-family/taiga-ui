@@ -1,4 +1,4 @@
-import {Directive} from '@angular/core';
+import {Directive, DoCheck} from '@angular/core';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
 import {TuiInputDateRangeComponent} from './input-date-range.component';
@@ -7,7 +7,10 @@ import {TuiInputDateRangeComponent} from './input-date-range.component';
     selector: 'tui-input-date-range',
     providers: [tuiAsTextfieldHost(TuiInputDateRangeDirective)],
 })
-export class TuiInputDateRangeDirective extends AbstractTuiTextfieldHost<TuiInputDateRangeComponent> {
+export class TuiInputDateRangeDirective
+    extends AbstractTuiTextfieldHost<TuiInputDateRangeComponent>
+    implements DoCheck
+{
     override get value(): string {
         return this.host.computedValue;
     }

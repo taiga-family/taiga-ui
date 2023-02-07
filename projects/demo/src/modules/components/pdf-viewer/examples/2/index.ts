@@ -9,8 +9,8 @@ import {switchMap} from 'rxjs/operators';
 
 // TODO: find the best way for prevent cycle
 // eslint-disable-next-line import/no-cycle
-import {ActionsContent} from './actions-content.component';
-import {PdfContent} from './pdf-content.component';
+import {ActionsContentComponent} from './actions-content.component';
+import {PdfContentComponent} from './pdf-content.component';
 
 export type Buttons = ReadonlyArray<
     Readonly<{
@@ -35,7 +35,7 @@ export class TuiPdfViewerExample2 {
     show(): void {
         const options: TuiPdfViewerOptions<Buttons> = {
             label: 'Taiga UI',
-            actions: new PolymorpheusComponent(ActionsContent),
+            actions: new PolymorpheusComponent(ActionsContentComponent),
             data: [
                 {
                     text: 'Sign',
@@ -49,7 +49,7 @@ export class TuiPdfViewerExample2 {
         };
 
         this.pdfService
-            .open<string>(new PolymorpheusComponent(PdfContent), options)
+            .open<string>(new PolymorpheusComponent(PdfContentComponent), options)
             .pipe(switchMap(response => this.alertService.open(response)))
             .subscribe();
     }

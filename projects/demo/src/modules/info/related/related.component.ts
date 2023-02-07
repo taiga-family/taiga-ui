@@ -8,7 +8,7 @@ import {
 
 @Component({
     selector: 'related',
-    templateUrl: 'related.template.html',
+    templateUrl: './related.template.html',
     styleUrls: ['./related.style.less'],
     changeDetection,
 })

@@ -1,4 +1,5 @@
 import {
+    ChangeDetectionStrategy,
     Component,
     EventEmitter,
     HostListener,
@@ -14,6 +15,7 @@ import {Observable} from 'rxjs';
     selector: 'tui-reorder',
     templateUrl: './reorder.template.html',
     styleUrls: ['./reorder.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiReorderComponent<T> {
     private dragging = false;

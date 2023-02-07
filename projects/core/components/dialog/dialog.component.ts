@@ -16,6 +16,7 @@ const REQUIRED_ERROR = new Error('Required dialog was dismissed');
     templateUrl: './dialog.template.html',
     styleUrls: ['./dialog.style.less'],
     // So we don't force OnPush on dialog content
+    // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
     providers: TUI_DIALOG_PROVIDERS,
     animations: [tuiSlideInTop, tuiFadeIn],

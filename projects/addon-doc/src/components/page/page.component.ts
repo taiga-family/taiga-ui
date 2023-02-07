@@ -1,5 +1,4 @@
 import {
-    Attribute,
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
@@ -33,13 +32,15 @@ export class TuiDocPageComponent {
     @Input()
     path = '';
 
+    @Input()
+    deprecated: boolean | '' = false;
+
     @ContentChildren(TuiDocPageTabConnectorDirective)
     readonly tabConnectors: QueryList<TuiDocPageTabConnectorDirective> = EMPTY_QUERY;
 
     activeItemIndex = NaN;
 
     constructor(
-        @Attribute('deprecated') readonly deprecated: string | null,
         @Inject(TUI_DOC_DEFAULT_TABS) readonly defaultTabs: readonly string[],
         @Inject(PAGE_SEE_ALSO) readonly seeAlso: readonly string[],
     ) {}

@@ -32,16 +32,19 @@ import {TuiDropdownHoverDirective} from './dropdown-hover.directive';
 import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.directive';
 
 /**
- *  This component is used to show template in a portal using default style of white rounded box with a shadow
+ * @description:
+ * This component is used to show template in a portal
+ * using default style of white rounded box with a shadow
  */
-// @bad TODO: OnPush
 @Component({
     selector: 'tui-dropdown',
     templateUrl: './dropdown.template.html',
     styleUrls: ['./dropdown.style.less'],
-    changeDetection: ChangeDetectionStrategy.Default,
     providers: [TuiDestroyService, TuiPositionService],
     animations: [tuiDropdownAnimation],
+    // @bad TODO: OnPush
+    // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
+    changeDetection: ChangeDetectionStrategy.Default,
 })
 export class TuiDropdownComponent implements OnDestroy {
     @HostBinding('@tuiDropdownAnimation')

@@ -20,7 +20,15 @@ const MIN_DISTANCE_PX = 70;
 })
 export class TuiTableSizeSelectorComponent {
     @Output()
-    readonly onSelectSize = new EventEmitter<{cols: number; rows: number}>();
+    readonly selectSize = new EventEmitter<{cols: number; rows: number}>();
+
+    /**
+     * @deprecated use {@link selectSize}
+     * TODO: remove in v4.0
+     */
+    @Output()
+    // eslint-disable-next-line @angular-eslint/no-output-on-prefix
+    readonly onSelectSize = this.selectSize;
 
     tableSize = {
         rows: 1,
@@ -47,7 +55,15 @@ export class TuiTableSizeSelectorComponent {
         }
     }
 
+    /**
+     * @deprecated use {@link select}
+     * TODO: remove in v4.0
+     */
     onClick(): void {
-        this.onSelectSize.emit(this.tableSize);
+        this.select();
+    }
+
+    select(): void {
+        this.selectSize.emit(this.tableSize);
     }
 }

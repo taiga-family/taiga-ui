@@ -1,9 +1,11 @@
 import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
     selector: 'example-tui-scrollbar',
     templateUrl: './scrollbar.template.html',
+    changeDetection,
 })
 export class ExampleTuiScrollbarComponent {
     readonly exampleModule = import('./examples/import/import-module.md?raw');

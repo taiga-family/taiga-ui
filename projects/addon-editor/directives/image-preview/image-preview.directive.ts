@@ -6,7 +6,7 @@ import {Directive, EventEmitter, HostListener, Output} from '@angular/core';
 })
 export class TuiEditorImagePreviewDirective {
     @Output()
-    imagePreview = new EventEmitter<HTMLImageElement>();
+    readonly imagePreview = new EventEmitter<HTMLImageElement>();
 
     @HostListener('click', ['$event.target'])
     click(target: HTMLElement): void {

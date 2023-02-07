@@ -13,7 +13,7 @@ const icons: Record<TuiPaymentSystem, string> = {
 
 @Component({
     selector: 'tui-card',
-    templateUrl: 'card.template.html',
+    templateUrl: './card.template.html',
     styleUrls: ['./card.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

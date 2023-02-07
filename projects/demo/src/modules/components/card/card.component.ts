@@ -16,7 +16,7 @@ const BRAND_LOGOS = [
 @Component({
     selector: 'example-tui-card',
     templateUrl: './card.template.html',
-    styleUrls: ['card.style.less'],
+    styleUrls: ['./card.style.less'],
     changeDetection,
 })
 export class ExampleTuiCardComponent {

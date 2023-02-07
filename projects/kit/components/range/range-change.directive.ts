@@ -40,7 +40,7 @@ export class TuiRangeChangeDirective {
     );
 
     @Output()
-    activeThumbChange = new EventEmitter<'left' | 'right'>();
+    readonly activeThumbChange = new EventEmitter<'left' | 'right'>();
 
     constructor(
         @Inject(DOCUMENT) private readonly documentRef: Document,

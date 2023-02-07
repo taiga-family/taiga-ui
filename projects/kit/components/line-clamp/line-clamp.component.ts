@@ -3,6 +3,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    DoCheck,
     ElementRef,
     HostBinding,
     HostListener,
@@ -46,7 +47,7 @@ import {TUI_LINE_CLAMP_OPTIONS, TuiLineClampOptions} from './line-clamp-options'
         },
     ],
 })
-export class TuiLineClampComponent implements AfterViewInit {
+export class TuiLineClampComponent implements DoCheck, AfterViewInit {
     @ViewChild(TuiHintDirective, {read: ElementRef})
     private readonly outlet?: ElementRef<HTMLElement>;
 

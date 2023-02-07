@@ -13,6 +13,7 @@ export class TuiDragDirective {
     private readonly dragAndDropFrom$ = tuiDragAndDropFrom(this.elementRef.nativeElement);
 
     @Output('tuiDragStart')
+    // eslint-disable-next-line @angular-eslint/no-output-native
     readonly start: Observable<MouseEvent> = this.dragAndDropFrom$.pipe(
         filter(({stage}) => stage === TuiDragStage.Start),
         map(({event}) => event),
@@ -25,13 +26,11 @@ export class TuiDragDirective {
     );
 
     @Output('tuiDragEnd')
+    // eslint-disable-next-line @angular-eslint/no-output-native
     readonly end: Observable<MouseEvent> = this.dragAndDropFrom$.pipe(
         filter(({stage}) => stage === TuiDragStage.End),
         map(({event}) => event),
     );
 
-    constructor(
-        @Inject(ElementRef)
-        private readonly elementRef: ElementRef<Element>,
-    ) {}
+    constructor(@Inject(ElementRef) private readonly elementRef: ElementRef<Element>) {}
 }
