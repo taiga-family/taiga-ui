@@ -52,12 +52,17 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
 
 export const TUI_CYPRESS_ENV = {
     componentsExclusion: TUI_COMPONENTS_EXCLUSION,
-    waitBeforeScreenshotComponents: 0,
-    waitRenderedFont: `Manrope`,
     waitBeforeScreenshot: 1000,
     waitBeforeAction: 50,
+    fonts: {
+        '@tui-mobile-min': {width: 360, font: `Manrope`},
+        '@tui-mobile': {width: 767, font: `Manrope`},
+        '@tui-tablet': {width: 1024, font: `Manrope`},
+        '@tui-desktop': {width: 1280, font: `Manrope`},
+    },
 };
 
+// noinspection JSUnusedGlobalSymbols
 export default defineConfig({
     ...TUI_CYPRESS_CONFIG,
     env: TUI_CYPRESS_ENV,
