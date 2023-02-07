@@ -27,3 +27,4 @@ export * from './textfield-appearance';
 export * from './textfield-host';
 export * from './theme';
 export * from './value-accessor';
+export * from './viewport';
