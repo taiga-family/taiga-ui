@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.17.0](https://github.com/tinkoff/taiga-ui/compare/v3.16.0...v3.17.0) (2023-02-07)
+
+### Features
+
+- **addon-commerce:** add `tuiGetCurrencyByCode` ([#3563](https://github.com/tinkoff/taiga-ui/issues/3563))
+  ([f9982ef](https://github.com/tinkoff/taiga-ui/commit/f9982ef272c31baf5e2585ecd192c9379a7dc243))
+- **addon-editor:** add `Iframe` extension ([#3520](https://github.com/tinkoff/taiga-ui/issues/3520))
+  ([778f678](https://github.com/tinkoff/taiga-ui/commit/778f67815cb90295d45c44bd0091ce90e5aeff13))
+- **addon-editor:** support `audio/video` tag in editor ([#3585](https://github.com/tinkoff/taiga-ui/issues/3585))
+  ([5f65b72](https://github.com/tinkoff/taiga-ui/commit/5f65b72eddd23882318d598558524d32bbb3ecd8))
+- **core:** introduce new font variables ([#3518](https://github.com/tinkoff/taiga-ui/issues/3518))
+  ([3ae2572](https://github.com/tinkoff/taiga-ui/commit/3ae257250319cf511143943962276cbbea5514a2))
+- **eslint-plugin:** add strict-doc-example-extensions rule ([#3534](https://github.com/tinkoff/taiga-ui/issues/3534))
+  ([8e5efbf](https://github.com/tinkoff/taiga-ui/commit/8e5efbfa4fe15823ccc2e8d4ad5d85e6aa260c80))
+- **kit:** `ElasticContainer` add new component ([#3492](https://github.com/tinkoff/taiga-ui/issues/3492))
+  ([3e9a53c](https://github.com/tinkoff/taiga-ui/commit/3e9a53c653a520e32e00c6c599fc81967d2829a8))
+- **kit:** support customization for rating component ([#3556](https://github.com/tinkoff/taiga-ui/issues/3556))
+  ([6f9b7d9](https://github.com/tinkoff/taiga-ui/commit/6f9b7d9a4f0d96d5adfbb15560e3e0ca2d6de6bf))
+
+### Bug Fixes
+
+- **addon-doc:** prevent convert invalid number to `NaN` ([#3528](https://github.com/tinkoff/taiga-ui/issues/3528))
+  ([6e259f4](https://github.com/tinkoff/taiga-ui/commit/6e259f479184a6197cc9a50e03a3b986be62beed))
+- **addon-editor:** explicit provide `@tiptap/extension-blockquote`
+  ([#3609](https://github.com/tinkoff/taiga-ui/issues/3609))
+  ([ed878e6](https://github.com/tinkoff/taiga-ui/commit/ed878e6c4ab2d135b63e0c48e19497e51cdebd44))
+- **addon-editor:** prevent recursive overwriting value ([#3567](https://github.com/tinkoff/taiga-ui/issues/3567))
+  ([045af4c](https://github.com/tinkoff/taiga-ui/commit/045af4ce7a4ac07352da47a3a9cf90bb0b8d01be))
+- **addon-mobile:** wait before update viewport dimension ([#3536](https://github.com/tinkoff/taiga-ui/issues/3536))
+  ([c2cf685](https://github.com/tinkoff/taiga-ui/commit/c2cf6853470e9869046906c483f06999872e869a))
+- **cdk:** `Schematics` add `tuiDropdownContext` migration ([#3558](https://github.com/tinkoff/taiga-ui/issues/3558))
+  ([a2c3ce8](https://github.com/tinkoff/taiga-ui/commit/a2c3ce8cfaaeb7889fcb473b3d21a13aa05ef7f7))
+- **cdk:** `schematics` fix require() of ES modules error ([#3569](https://github.com/tinkoff/taiga-ui/issues/3569))
+  ([941039b](https://github.com/tinkoff/taiga-ui/commit/941039be708e86a640c1fe61122e85687925de9b))
+- **core:** `DropdownContext` fix closing (ng14) ([#3511](https://github.com/tinkoff/taiga-ui/issues/3511))
+  ([5f34896](https://github.com/tinkoff/taiga-ui/commit/5f34896b3782208f0ef4cd2e9513956509994f2e))
+- **core:** `DropdownHover` properly reflect state for `HostedDropdown`
+  ([#3507](https://github.com/tinkoff/taiga-ui/issues/3507))
+  ([78b8e92](https://github.com/tinkoff/taiga-ui/commit/78b8e921482793c35f04e1501397b4ea74f273bd))
+- **core:** `TUI_DIALOG_CLOSE_STREAM` event targets ([#3541](https://github.com/tinkoff/taiga-ui/issues/3541))
+  ([11c6b7c](https://github.com/tinkoff/taiga-ui/commit/11c6b7c14b8a93acd7faf8786df8d8c7eceee599))
+- **core:** visible incorrect initial position from `TuiDropdownComponent` & `TuiHintComponent` without animation &
+  ngZoneEventCoalescing ([#3529](https://github.com/tinkoff/taiga-ui/issues/3529))
+  ([e570eab](https://github.com/tinkoff/taiga-ui/commit/e570eab68864828fa417cd0d62f280faee014704))
+- **kit:** `Carousel` fix drag to next slide ([#3583](https://github.com/tinkoff/taiga-ui/issues/3583))
+  ([92f5373](https://github.com/tinkoff/taiga-ui/commit/92f5373d2a81dde0fb77098d28f810b5d62353ea))
+- **kit:** use `TUI_CHECKBOX_OPTIONS/TUI_RADIO_OPTIONS` for `checkbox/radio-labeled`
+  ([#3555](https://github.com/tinkoff/taiga-ui/issues/3555))
+  ([1f0e337](https://github.com/tinkoff/taiga-ui/commit/1f0e33750de2f164cef104ca55ade2ea446f3464))
+
 ## [3.16.0](https://github.com/tinkoff/taiga-ui/compare/v3.15.0...v3.16.0) (2023-01-24)
 
 ### Features
