@@ -125,7 +125,6 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
             .and(`match`, waitRenderedFont);
     }
 
-
     if (waitAllIcons) {
         waitAllRequests(`@icons`);
     }
