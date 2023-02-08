@@ -9,5 +9,5 @@ import {TuiAlertModule, TuiRootModule} from '@taiga-ui/core';
     //...
   ],
 })
-export class MyModule {}
+export class AppModule {}
 ```
