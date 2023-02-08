@@ -13,8 +13,8 @@ import {
 } from '@taiga-ui/core';
 
 import {ExampleTuiEditorEmbedIframeComponent} from './editor-embed-iframe.component';
-import {ExampleTuiEmbedToolModule} from './examples/1/embed-tool/embed-tool.module';
 import {TuiEditorEmbedIframeExample1} from './examples/1';
+import {ExampleTuiEmbedToolModule} from './examples/1/embed-tool/embed-tool.module';
 
 @NgModule({
     imports: [
