@@ -7,7 +7,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';
 import {tuiPure} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-editor-embed-example-1',
+    selector: 'tui-editor-embed-youtube-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     providers: [
@@ -26,7 +26,7 @@ import {tuiPure} from '@taiga-ui/cdk';
     changeDetection,
     encapsulation,
 })
-export class TuiEditorEmbedExample1 {
+export class TuiEditorEmbedYoutubeExample1 {
     readonly builtInTools = [TuiEditorTool.Undo];
     readonly control = new FormControl(
         `

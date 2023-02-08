@@ -7,7 +7,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';
 import {TUI_IS_CYPRESS, tuiPure} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-editor-embed-example-2',
+    selector: 'tui-editor-embed-iframe-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     providers: [
@@ -28,7 +28,7 @@ import {TUI_IS_CYPRESS, tuiPure} from '@taiga-ui/cdk';
     changeDetection,
     encapsulation,
 })
-export class TuiEditorEmbedExample2 {
+export class TuiEditorEmbedIframeExample1 {
     readonly builtInTools = [TuiEditorTool.Undo];
 
     readonly control = new FormControl(
