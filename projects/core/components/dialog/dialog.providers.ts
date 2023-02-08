@@ -2,17 +2,19 @@ import {DOCUMENT} from '@angular/common';
 import {ElementRef, InjectionToken, Provider} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {
-    containsOrAfter,
+    getActualTarget,
     isCurrentTarget,
+    tuiContainsOrAfter,
     TuiDestroyService,
     TuiDialog,
+    tuiIsElement,
     typedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {tuiGetViewportWidth} from '@taiga-ui/core/utils/dom';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, merge, Observable} from 'rxjs';
-import {filter, switchMapTo, take, takeUntil} from 'rxjs/operators';
+import {filter, switchMap, take, takeUntil} from 'rxjs/operators';
 
 export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
     `A stream to close dialogs`,
@@ -36,33 +38,41 @@ export function dialogCloseStreamFactory(
         ? merge(
               typedFromEvent(nativeElement, `click`).pipe(filter(isCurrentTarget)),
               typedFromEvent(documentRef, `keydown`).pipe(
-                  // TODO: iframe warning
-                  filter(
-                      ({key, target}) =>
+                  filter(event => {
+                      const key = event.key;
+                      const target = getActualTarget(event);
+
+                      return (
                           key === `Escape` &&
-                          target instanceof Element &&
-                          (!containsOrAfter(nativeElement, target) ||
-                              nativeElement.contains(target)),
-                  ),
+                          tuiIsElement(target) &&
+                          (!tuiContainsOrAfter(nativeElement, target) ||
+                              nativeElement.contains(target))
+                      );
+                  }),
               ),
               typedFromEvent(documentRef, `mousedown`).pipe(
-                  // TODO: iframe warning
-                  filter(
-                      ({target, clientX}) =>
-                          target instanceof Element &&
+                  filter(event => {
+                      const target = getActualTarget(event);
+                      const clientX = event.clientX;
+
+                      return (
+                          tuiIsElement(target) &&
                           tuiGetViewportWidth(windowRef) - clientX >
                               SCROLLBAR_PLACEHOLDER &&
-                          !containsOrAfter(nativeElement, target),
-                  ),
-                  switchMapTo(
+                          !tuiContainsOrAfter(nativeElement, target)
+                      );
+                  }),
+                  switchMap(() =>
                       typedFromEvent(documentRef, `mouseup`).pipe(
                           take(1),
-                          // TODO: iframe warning
-                          filter(
-                              ({target}) =>
-                                  target instanceof Element &&
-                                  !containsOrAfter(nativeElement, target),
-                          ),
+                          filter(event => {
+                              const target = getActualTarget(event);
+
+                              return (
+                                  tuiIsElement(target) &&
+                                  !tuiContainsOrAfter(nativeElement, target)
+                              );
+                          }),
                       ),
                   ),
               ),
