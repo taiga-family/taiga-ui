@@ -17,6 +17,7 @@ export function tuiDefaultProp<T extends Record<string, any>, K extends keyof T>
         const errorSetDefaultMessage = errorSetDefault(key, name);
 
         Object.defineProperty(target, key, {
+            configurable: true,
             get(): undefined {
                 tuiAssert.assert(false, errorGetDefaultMessage);
 
@@ -39,6 +40,7 @@ export function tuiDefaultProp<T extends Record<string, any>, K extends keyof T>
                 }
 
                 Object.defineProperty(this, key, {
+                    configurable: true,
                     get(): T[K] {
                         return currentValue;
                     },
