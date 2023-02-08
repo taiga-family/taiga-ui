@@ -18,7 +18,7 @@ describe(`@tuiDefaultProp and @tuiPure`, () => {
 
         class B extends C {
             @tuiDefaultProp()
-            override limitWidth = `__B`;
+            limitWidth = `__B`;
 
             @tuiPure
             update(val: string): this {
@@ -28,19 +28,19 @@ describe(`@tuiDefaultProp and @tuiPure`, () => {
             }
 
             @tuiPure
-            override get width(): string {
+            get width(): string {
                 return super.width; // the target is super(parent) class
             }
         }
 
         class A extends B {
             @tuiPure
-            override get width(): string {
+            get width(): string {
                 return super.width; // the target is super(parent) class
             }
 
             @tuiPure
-            override update(val: string): this {
+            update(val: string): this {
                 super.update(val); // the target is super(parent) class
 
                 return this;

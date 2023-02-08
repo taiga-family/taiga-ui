@@ -42,7 +42,7 @@ describe(`Demo`, () => {
                     ? cy.get(`@example`)
                     : cy
                           .get(`@example`)
-                          .wait(Cypress.env(`waitBeforeScreenshotComponents`))
+                          .wait(Cypress.env(`waitBeforeScreenshotComponents`) ?? 0)
                           .matchImageSnapshot(`${path}/${index + 1}`);
             });
         });
