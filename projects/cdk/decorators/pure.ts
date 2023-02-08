@@ -16,6 +16,7 @@ export function tuiPure<T>(
 ): TypedPropertyDescriptor<T> {
     if (get) {
         return {
+            configurable: true,
             enumerable,
             get(): T {
                 const value = get.call(this);
@@ -34,6 +35,7 @@ export function tuiPure<T>(
     const original = value;
 
     return {
+        configurable: true,
         enumerable,
         get(): T {
             let previousArgs: readonly unknown[] = [];
@@ -57,7 +59,10 @@ export function tuiPure<T>(
                 return pureValue;
             };
 
-            Object.defineProperty(this, propertyKey, {value: patched});
+            Object.defineProperty(this, propertyKey, {
+                configurable: true,
+                value: patched,
+            });
 
             return patched as unknown as T;
         },
