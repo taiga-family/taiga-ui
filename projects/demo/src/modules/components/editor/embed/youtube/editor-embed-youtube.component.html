@@ -3,33 +3,31 @@
     package="ADDON-EDITOR"
     type="components"
 >
-    <ng-template pageTab>
-        <p i18n>
-            Rich Text Editor based on
-            <a
-                tuiLink
-                href="https://www.tiptap.dev/"
-            >
-                TipTap Editor
-            </a>
-            for using with Angular forms. For safety reasons use a
-            <a
-                tuiLink
-                routerLink="/icon-set"
-                fragment="sanitizer"
-            >
-                sanitizer
-            </a>
-            with this component.
-        </p>
-
-        <tui-doc-example
-            id="youtube"
-            i18n-heading
-            heading="Youtube extension"
-            [content]="example1"
+    <p i18n>
+        Rich Text Editor based on
+        <a
+            tuiLink
+            href="https://www.tiptap.dev/"
         >
-            <tui-editor-embed-youtube-example-1></tui-editor-embed-youtube-example-1>
-        </tui-doc-example>
-    </ng-template>
+            TipTap Editor
+        </a>
+        for using with Angular forms. For safety reasons use a
+        <a
+            tuiLink
+            routerLink="/icon-set"
+            fragment="sanitizer"
+        >
+            sanitizer
+        </a>
+        with this component.
+    </p>
+
+    <tui-doc-example
+        id="youtube"
+        i18n-heading
+        heading="Youtube extension"
+        [content]="example1"
+    >
+        <tui-editor-embed-youtube-example-1></tui-editor-embed-youtube-example-1>
+    </tui-doc-example>
 </tui-doc-page>
