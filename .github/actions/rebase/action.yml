@@ -5,14 +5,8 @@ runs:
   using: composite
   steps:
     - name: Try rebase locally for check affected
-      if: always()
       uses: imba-tjd/rebase-upstream-action@0.5
       with:
         upstream: Tinkoff/taiga-ui
         branch: ${{ github.base_ref }}
         push: false
-
-    - name: revert
-      if: failure()
-      shell: bash
-      run: git rebase --abort
