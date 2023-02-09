@@ -24,7 +24,14 @@ import {
     TUI_IS_CYPRESS,
     TUI_TAKE_ONLY_TRUSTED_EVENTS,
 } from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_DURATION, TUI_SANITIZER} from '@taiga-ui/core';
+import {
+    TUI_ANIMATIONS_DURATION,
+    TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
+    TUI_DROPDOWN_HOVER_OPTIONS,
+    TUI_HINT_DEFAULT_OPTIONS,
+    TUI_HINT_OPTIONS,
+    TUI_SANITIZER,
+} from '@taiga-ui/core';
 import {TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
@@ -122,6 +129,20 @@ export const APP_PROVIDERS: Provider[] = [
     {
         provide: TUI_ANIMATIONS_DURATION,
         useFactory: () => (inject(TUI_IS_CYPRESS) ? 0 : 300),
+    },
+    {
+        provide: TUI_HINT_OPTIONS,
+        useFactory: () =>
+            inject(TUI_IS_CYPRESS)
+                ? {...TUI_HINT_DEFAULT_OPTIONS, showDelay: 0, hideDelay: 0}
+                : TUI_HINT_DEFAULT_OPTIONS,
+    },
+    {
+        provide: TUI_DROPDOWN_HOVER_OPTIONS,
+        useFactory: () =>
+            inject(TUI_IS_CYPRESS)
+                ? {...TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS, showDelay: 0, hideDelay: 0}
+                : TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
     },
     {
         provide: TUI_DOC_SCROLL_BEHAVIOR,
