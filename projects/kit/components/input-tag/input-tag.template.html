@@ -19,7 +19,7 @@
         <div class="t-content">
             <div
                 *ngIf="iconLeft"
-                class="t-icons t-icons_left"
+                class="t-icons t-icons_left t-textfield-icon"
             >
                 <tui-svg
                     *polymorpheusOutlet="iconLeft as src; context: {$implicit: size}"
@@ -138,12 +138,12 @@
                 ></tui-tooltip>
                 <div
                     *ngIf="icon"
-                    tuiWrapper
-                    appearance="icon"
-                    class="t-icon"
+                    class="t-icon t-textfield-icon"
                 >
                     <tui-svg
                         *polymorpheusOutlet="icon as src; context: {$implicit: size}"
+                        tuiWrapper
+                        appearance="icon"
                         [src]="src"
                     ></tui-svg>
                 </div>

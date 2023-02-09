@@ -262,15 +262,6 @@
         .input-icon();
         pointer-events: none;
 
-        :host:hover:not(._readonly) & {
-            opacity: 0.65;
-        }
-
-        :host[data-mode='onDark']:hover:not(._readonly) &,
-        :host[data-mode='onLight']:hover:not(._readonly) & {
-            opacity: 1;
-        }
-
         &_left {
             margin: 0 2 * @space 0 -@space;
             margin-inline-start: -@space;
