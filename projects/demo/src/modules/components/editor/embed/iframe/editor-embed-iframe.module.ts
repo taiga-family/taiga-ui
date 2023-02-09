@@ -12,12 +12,9 @@ import {
     TuiSvgModule,
 } from '@taiga-ui/core';
 
-import {ExampleTuiEditorEmbedComponent} from './editor-embed.component';
-import {TuiEditorEmbedExample1} from './examples/1';
-import {ExampleTuiYoutubeToolModule} from './examples/1/youtube-tool/youtube-tool.module';
-import {TuiEditorEmbedExample2} from './examples/2';
-import {ExampleTuiEmbedToolModule} from './examples/2/embed-tool/embed-tool.module';
-import {TuiEditorEmbedExample3} from './examples/3';
+import {ExampleTuiEditorEmbedIframeComponent} from './editor-embed-iframe.component';
+import {TuiEditorEmbedIframeExample1} from './examples/1';
+import {ExampleTuiEmbedToolModule} from './examples/1/embed-tool/embed-tool.module';
 
 @NgModule({
     imports: [
@@ -32,15 +29,9 @@ import {TuiEditorEmbedExample3} from './examples/3';
         ReactiveFormsModule,
         TuiEditorModule,
         TuiEditorSocketModule,
-        ExampleTuiYoutubeToolModule,
         ExampleTuiEmbedToolModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiEditorEmbedComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiEditorEmbedIframeComponent)),
     ],
-    declarations: [
-        ExampleTuiEditorEmbedComponent,
-        TuiEditorEmbedExample1,
-        TuiEditorEmbedExample2,
-        TuiEditorEmbedExample3,
-    ],
+    declarations: [ExampleTuiEditorEmbedIframeComponent, TuiEditorEmbedIframeExample1],
 })
-export class ExampleTuiEditorEmbedModule {}
+export class ExampleTuiEditorEmbedIframeModule {}

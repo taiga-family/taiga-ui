@@ -1073,12 +1073,33 @@ export const ROUTES = [
         },
     },
     {
-        path: `editor/embed`,
+        path: `editor/embed/youtube`,
         loadChildren: async () =>
-            (await import(`../components/editor/embed/editor-embed.module`))
-                .ExampleTuiEditorEmbedModule,
+            (
+                await import(
+                    `../components/editor/embed/youtube/editor-embed-youtube.module`
+                )
+            ).ExampleTuiEditorEmbedYoutubeModule,
         data: {
-            title: `Editor — Embed`,
+            title: `Editor — Youtube`,
+        },
+    },
+    {
+        path: `editor/embed/iframe`,
+        loadChildren: async () =>
+            (await import(`../components/editor/embed/iframe/editor-embed-iframe.module`))
+                .ExampleTuiEditorEmbedIframeModule,
+        data: {
+            title: `Editor — Iframe`,
+        },
+    },
+    {
+        path: `editor/embed/html5`,
+        loadChildren: async () =>
+            (await import(`../components/editor/embed/html5/editor-embed-html5.module`))
+                .ExampleTuiEditorEmbedHtml5Module,
+        data: {
+            title: `Editor — HTML5`,
         },
     },
     // FILTER

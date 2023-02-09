@@ -952,9 +952,27 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Editor`,
-        title: `Embed`,
-        keywords: `editor, embed, video player, audio player, youtube, wysiwyg, редактор, плейер, плеер, ютуб, текст, html, rich, text`,
-        route: `/editor/embed`,
+        title: $localize`Embed`,
+        subPages: [
+            {
+                section: $localize`Editor`,
+                title: `Youtube`,
+                keywords: `editor, embed, video player, audio player, youtube, wysiwyg, редактор, плейер, плеер, ютуб, текст, html, rich, text`,
+                route: `/editor/embed/youtube`,
+            },
+            {
+                section: $localize`Editor`,
+                title: `Iframe`,
+                keywords: `editor, embed, iframe, wysiwyg, редактор, айфрейм, html, rich, text`,
+                route: `/editor/embed/iframe`,
+            },
+            {
+                section: $localize`Editor`,
+                title: `HTML5`,
+                keywords: `editor, embed, video player, audio player, html5, wysiwyg, редактор, плеер, html, rich, text`,
+                route: `/editor/embed/html5`,
+            },
+        ],
     },
     // Navigation
     {

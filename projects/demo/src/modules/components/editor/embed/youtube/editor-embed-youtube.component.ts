@@ -5,8 +5,8 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '@taiga-ui/addon-editor';
 
 @Component({
-    selector: 'editor-embed',
-    templateUrl: './editor-embed.component.html',
+    selector: 'editor-embed-youtube',
+    templateUrl: './editor-embed-youtube.component.html',
     encapsulation,
     changeDetection,
     providers: [
@@ -33,28 +33,5 @@ export class ExampleTuiEditorEmbedComponent {
         'youtube-tool/youtube-tool.module.ts': import(
             './examples/1/youtube-tool/youtube-tool.module.ts?raw'
         ),
-    };
-
-    readonly example2: TuiDocExample = {
-        HTML: import('./examples/2/index.html?raw'),
-        TypeScript: import('./examples/2/index.ts?raw'),
-        LESS: import('./examples/2/index.less?raw'),
-        'embed-tool/embed-tool.component.ts': import(
-            './examples/2/embed-tool/embed-tool.component.ts?raw'
-        ),
-        'embed-tool/embed-tool.template.html': import(
-            './examples/2/embed-tool/embed-tool.template.html?raw'
-        ),
-        'embed-tool/embed-tool.styles.less': import(
-            './examples/2/embed-tool/embed-tool.styles.less?raw'
-        ),
-        'embed-tool/embed-tool.module.ts': import(
-            './examples/2/embed-tool/embed-tool.module.ts?raw'
-        ),
-    };
-
-    readonly example3: TuiDocExample = {
-        HTML: import('./examples/3/index.html?raw'),
-        TypeScript: import('./examples/3/index.ts?raw'),
     };
 }

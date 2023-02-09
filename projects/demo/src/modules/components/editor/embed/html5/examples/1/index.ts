@@ -16,7 +16,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-editor-embed-example-3',
+    selector: 'tui-editor-embed-html5-example-1',
     templateUrl: './index.html',
     providers: [
         {
@@ -88,7 +88,7 @@ import {map} from 'rxjs/operators';
     changeDetection,
     encapsulation,
 })
-export class TuiEditorEmbedExample3 {
+export class TuiEditorEmbedHtml5Example1 {
     @ViewChild(TuiEditorComponent)
     private readonly wysiwyg?: TuiEditorComponent;
 
