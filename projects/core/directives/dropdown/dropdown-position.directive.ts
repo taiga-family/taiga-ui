@@ -1,10 +1,10 @@
 import {Directive, Inject} from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
 import {
     tuiAsPositionAccessor,
     TuiPositionAccessor,
     TuiRectAccessor,
 } from '@taiga-ui/core/abstract';
+import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {TuiPoint, TuiVerticalDirection} from '@taiga-ui/core/types';
 
 import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.directive';
@@ -18,25 +18,25 @@ export class TuiDropdownPositionDirective implements TuiPositionAccessor {
 
     constructor(
         @Inject(TUI_DROPDOWN_OPTIONS) private readonly options: TuiDropdownOptions,
-        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(TUI_VIEWPORT) private readonly viewport: TuiRectAccessor,
         @Inject(TuiRectAccessor) private readonly accessor: TuiRectAccessor,
     ) {}
 
     getPosition({width, height}: ClientRect): TuiPoint {
         const hostRect = this.accessor.getClientRect();
-        const {innerHeight, innerWidth} = this.windowRef;
+        const viewport = this.viewport.getClientRect();
         const {minHeight, align, direction, offset} = this.options;
         const previous = this.previous || direction || 'bottom';
         const right = Math.max(hostRect.right - width, offset);
         const available = {
-            top: hostRect.top - 2 * offset,
-            bottom: innerHeight - hostRect.bottom - 2 * offset,
+            top: hostRect.top - 2 * offset - viewport.top,
+            bottom: viewport.bottom - hostRect.bottom - 2 * offset,
         } as const;
         const position = {
             top: hostRect.top - offset - height,
             bottom: hostRect.bottom + offset,
             right,
-            left: hostRect.left + width < innerWidth - offset ? hostRect.left : right,
+            left: hostRect.left + width < viewport.right - offset ? hostRect.left : right,
         } as const;
         const better = available.top > available.bottom ? 'top' : 'bottom';
 

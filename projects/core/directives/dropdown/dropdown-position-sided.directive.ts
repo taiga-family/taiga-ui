@@ -1,10 +1,10 @@
 import {Directive, Inject, Input} from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
 import {
     tuiAsPositionAccessor,
     TuiPositionAccessor,
     TuiRectAccessor,
 } from '@taiga-ui/core/abstract';
+import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {TuiPoint} from '@taiga-ui/core/types';
 
 import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.directive';
@@ -28,7 +28,7 @@ export class TuiDropdownPositionSidedDirective implements TuiPositionAccessor {
 
     constructor(
         @Inject(TUI_DROPDOWN_OPTIONS) private readonly options: TuiDropdownOptions,
-        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(TUI_VIEWPORT) private readonly viewport: TuiRectAccessor,
         @Inject(TuiRectAccessor) private readonly accessor: TuiRectAccessor,
         @Inject(TuiDropdownPositionDirective)
         private readonly vertical: TuiPositionAccessor,
@@ -41,13 +41,13 @@ export class TuiDropdownPositionSidedDirective implements TuiPositionAccessor {
 
         const {height, width} = rect;
         const hostRect = this.accessor.getClientRect();
-        const {innerHeight, innerWidth} = this.windowRef;
+        const viewport = this.viewport.getClientRect();
         const {align, direction, minHeight, offset} = this.options;
         const available = {
-            top: hostRect.bottom,
-            left: hostRect.left - offset,
-            right: innerWidth - hostRect.right - offset,
-            bottom: innerHeight - hostRect.top,
+            top: hostRect.bottom - viewport.top,
+            left: hostRect.left - offset - viewport.left,
+            right: viewport.right - hostRect.right - offset,
+            bottom: viewport.bottom - hostRect.top,
         } as const;
         const position = {
             top: hostRect.bottom - height + this.tuiDropdownSidedOffset + 1, // 1 for border

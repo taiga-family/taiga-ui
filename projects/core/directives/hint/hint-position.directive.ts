@@ -1,5 +1,4 @@
 import {Directive, Inject, Input} from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {
     tuiAsPositionAccessor,
@@ -7,6 +6,7 @@ import {
     TuiRectAccessor,
 } from '@taiga-ui/core/abstract';
 import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core/constants';
+import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {TuiHintDirection, TuiPoint} from '@taiga-ui/core/types';
 
 import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
@@ -33,7 +33,7 @@ export class TuiHintPositionDirective implements TuiPositionAccessor {
 
     constructor(
         @Inject(TUI_HINT_OPTIONS) private readonly options: TuiHintOptions,
-        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(TUI_VIEWPORT) private readonly viewport: TuiRectAccessor,
         @Inject(TuiRectAccessor) private readonly accessor: TuiRectAccessor,
     ) {}
 
@@ -83,19 +83,20 @@ export class TuiHintPositionDirective implements TuiPositionAccessor {
     }
 
     private get fallback(): TuiHintDirection {
-        return this.points.top[TOP] > this.windowRef.innerHeight - this.points.bottom[TOP]
+        return this.points.top[TOP] >
+            this.viewport.getClientRect().bottom - this.points.bottom[TOP]
             ? 'top'
             : 'bottom';
     }
 
     private checkPosition([top, left]: TuiPoint, width: number, height: number): boolean {
-        const {innerHeight, innerWidth} = this.windowRef;
+        const viewport = this.viewport.getClientRect();
 
         return (
             top > OFFSET &&
             left > OFFSET &&
-            top + height < innerHeight - OFFSET &&
-            left + width < innerWidth - OFFSET
+            top + height < viewport.bottom - OFFSET &&
+            left + width < viewport.right - OFFSET
         );
     }
 }
