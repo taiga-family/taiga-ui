@@ -3,51 +3,49 @@
     package="ADDON-EDITOR"
     type="components"
 >
-    <ng-template pageTab>
-        <p i18n>
-            Rich Text Editor based on
-            <a
-                tuiLink
-                href="https://www.tiptap.dev/"
-            >
-                TipTap Editor
-            </a>
-            for using with Angular forms. For safety reasons use a
-            <a
-                tuiLink
-                routerLink="/icon-set"
-                fragment="sanitizer"
-            >
-                sanitizer
-            </a>
-            with this component.
-        </p>
-
-        <tui-doc-example
-            id="draggable-groups"
-            i18n-heading
-            heading="Draggable groups the looks like in Notion"
-            [content]="example1"
+    <p i18n>
+        Rich Text Editor based on
+        <a
+            tuiLink
+            href="https://www.tiptap.dev/"
         >
-            <tui-editor-groups-example-1></tui-editor-groups-example-1>
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="hilite-groups"
-            i18n-heading
-            heading="Hilite groups"
-            [content]="example2"
+            TipTap Editor
+        </a>
+        for using with Angular forms. For safety reasons use a
+        <a
+            tuiLink
+            routerLink="/icon-set"
+            fragment="sanitizer"
         >
-            <tui-editor-groups-example-2></tui-editor-groups-example-2>
-        </tui-doc-example>
+            sanitizer
+        </a>
+        with this component.
+    </p>
 
-        <tui-doc-example
-            id="nested-groups"
-            i18n-heading
-            heading="Simple create nested groups"
-            [content]="example3"
-        >
-            <tui-editor-groups-example-3></tui-editor-groups-example-3>
-        </tui-doc-example>
-    </ng-template>
+    <tui-doc-example
+        id="draggable-groups"
+        i18n-heading
+        heading="Draggable groups the looks like in Notion"
+        [content]="example1"
+    >
+        <tui-editor-groups-example-1></tui-editor-groups-example-1>
+    </tui-doc-example>
+
+    <tui-doc-example
+        id="hilite-groups"
+        i18n-heading
+        heading="Hilite groups"
+        [content]="example2"
+    >
+        <tui-editor-groups-example-2></tui-editor-groups-example-2>
+    </tui-doc-example>
+
+    <tui-doc-example
+        id="nested-groups"
+        i18n-heading
+        heading="Simple create nested groups"
+        [content]="example3"
+    >
+        <tui-editor-groups-example-3></tui-editor-groups-example-3>
+    </tui-doc-example>
 </tui-doc-page>

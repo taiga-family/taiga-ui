@@ -904,27 +904,9 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Editor`,
-        title: `Resizable images`,
-        keywords: `editor, resizable, image, wysiwyg, редактор, текст, html, rich, text`,
-        route: `/editor/resizable-images`,
-    },
-    {
-        section: $localize`Editor`,
-        title: `Preview images`,
-        keywords: `editor, preview, images, wysiwyg, редактор, текст, html, rich, text`,
-        route: `/editor/preview-images`,
-    },
-    {
-        section: $localize`Editor`,
-        title: `Processing content`,
-        keywords: `editor, processing, content, wysiwyg, редактор, текст, html, rich, text`,
-        route: `/editor/processing-content`,
-    },
-    {
-        section: $localize`Editor`,
-        title: `Uploading images`,
-        keywords: `editor, upload, images, wysiwyg, редактор, текст, html, rich, text`,
-        route: `/editor/uploading-images`,
+        title: `Anchors`,
+        keywords: `editor, anchors, wysiwyg, редактор, текст, html, rich, text`,
+        route: `/editor/anchors`,
     },
     {
         section: $localize`Editor`,
@@ -934,21 +916,51 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Editor`,
-        title: `Anchors`,
-        keywords: `editor, anchors, wysiwyg, редактор, текст, html, rich, text`,
-        route: `/editor/anchors`,
-    },
-    {
-        section: $localize`Editor`,
         title: `Upload files`,
         keywords: `editor, upload, files, wysiwyg, редактор, текст, html, rich, text`,
         route: `/editor/upload-files`,
     },
     {
         section: $localize`Editor`,
-        title: `Markdown`,
-        keywords: `editor, markdown, wysiwyg, редактор, текст, html, rich, text`,
-        route: `/editor/markdown`,
+        title: $localize`Processing`,
+        subPages: [
+            {
+                section: $localize`Editor`,
+                title: `Legacy html`,
+                keywords: `editor, processing, content, legacy html, wysiwyg, редактор, текст, html, rich, text`,
+                route: `/editor/processing/legacy-html`,
+            },
+            {
+                section: $localize`Editor`,
+                title: `Markdown`,
+                keywords: `editor, markdown, wysiwyg, редактор, текст, html, rich, text`,
+                route: `/editor/processing/markdown`,
+            },
+        ],
+    },
+    {
+        section: $localize`Editor`,
+        title: $localize`Images`,
+        subPages: [
+            {
+                section: $localize`Editor`,
+                title: `Resizable`,
+                keywords: `editor, resizable, image, wysiwyg, редактор, текст, html, rich, text`,
+                route: `/editor/images/resizable`,
+            },
+            {
+                section: $localize`Editor`,
+                title: `Preview`,
+                keywords: `editor, preview, images, wysiwyg, редактор, текст, html, rich, text`,
+                route: `/editor/images/preview`,
+            },
+            {
+                section: $localize`Editor`,
+                title: `Upload`,
+                keywords: `editor, upload, images, wysiwyg, редактор, текст, html, rich, text`,
+                route: `/editor/images/upload`,
+            },
+        ],
     },
     {
         section: $localize`Editor`,

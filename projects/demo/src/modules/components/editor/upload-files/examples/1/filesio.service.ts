@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
+import {environment} from '@demo/environments/environment';
 import {TuiEditorAttachedFile} from '@taiga-ui/addon-editor';
 import {BehaviorSubject, from, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-
-import {environment} from '../../../../../../environments/environment';
 
 @Injectable({
     providedIn: `root`,
