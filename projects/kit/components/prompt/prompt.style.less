@@ -1,0 +1,22 @@
+@import 'taiga-ui-local';
+
+.t-content:not(:empty) {
+    margin-bottom: 1.25rem;
+}
+
+.t-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.75rem;
+    width: 100%;
+}
+
+.t-buttonL:last-child {
+    margin-left: 0.75rem;
+}
+
+:host-context(tui-root._mobile) {
+    .t-button {
+        flex: 1;
+    }
+}

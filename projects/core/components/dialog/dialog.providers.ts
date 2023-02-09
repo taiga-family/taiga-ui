@@ -13,8 +13,8 @@ import {
 import {TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {tuiGetViewportWidth} from '@taiga-ui/core/utils/dom';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {EMPTY, merge, Observable} from 'rxjs';
-import {filter, switchMap, take, takeUntil} from 'rxjs/operators';
+import {EMPTY, isObservable, merge, Observable, of} from 'rxjs';
+import {filter, switchMap, take} from 'rxjs/operators';
 
 export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
     `[TUI_DIALOGS_CLOSE]: A stream to close dialogs`,
@@ -25,6 +25,7 @@ export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
 
 const SCROLLBAR_PLACEHOLDER = 17;
 
+// TODO: Refactor this to be reusable in custom dialogs
 export const TUI_DIALOG_CLOSE_STREAM = new InjectionToken<Observable<unknown>>(
     `[TUI_DIALOG_CLOSE_STREAM]: Dialogs closing stream`,
 );
@@ -32,68 +33,69 @@ export const TUI_DIALOG_PROVIDERS: Provider[] = [
     TuiDestroyService,
     {
         provide: TUI_DIALOG_CLOSE_STREAM,
-        deps: [
-            DOCUMENT,
-            WINDOW,
-            ElementRef,
-            TUI_DIALOGS_CLOSE,
-            TuiDestroyService,
-            POLYMORPHEUS_CONTEXT,
-        ],
+        deps: [DOCUMENT, WINDOW, ElementRef, TUI_DIALOGS_CLOSE, POLYMORPHEUS_CONTEXT],
         useFactory: (
             documentRef: Document,
             windowRef: Window,
             {nativeElement}: ElementRef<HTMLElement>,
             close$: Observable<void>,
-            destroy$: Observable<void>,
             {dismissible}: TuiDialog<TuiDialogOptions<unknown>, unknown>,
         ): Observable<unknown> => {
             return dismissible
                 ? merge(
-                      tuiTypedFromEvent(nativeElement, `click`).pipe(
-                          filter(tuiIsCurrentTarget),
-                      ),
-                      tuiTypedFromEvent(documentRef, `keydown`).pipe(
-                          filter(event => {
-                              const key = event.key;
-                              const target = tuiGetActualTarget(event);
+                      merge(
+                          tuiTypedFromEvent(nativeElement, `click`).pipe(
+                              filter(tuiIsCurrentTarget),
+                          ),
+                          tuiTypedFromEvent(documentRef, `keydown`).pipe(
+                              filter(event => {
+                                  const key = event.key;
+                                  const target = tuiGetActualTarget(event);
 
-                              return (
-                                  key === `Escape` &&
-                                  tuiIsElement(target) &&
-                                  (!tuiContainsOrAfter(nativeElement, target) ||
-                                      nativeElement.contains(target))
-                              );
-                          }),
-                      ),
-                      tuiTypedFromEvent(documentRef, `mousedown`).pipe(
-                          filter(event => {
-                              const target = tuiGetActualTarget(event);
-                              const clientX = event.clientX;
+                                  return (
+                                      key === `Escape` &&
+                                      tuiIsElement(target) &&
+                                      (!tuiContainsOrAfter(nativeElement, target) ||
+                                          nativeElement.contains(target))
+                                  );
+                              }),
+                          ),
+                          tuiTypedFromEvent(documentRef, `mousedown`).pipe(
+                              filter(event => {
+                                  const target = tuiGetActualTarget(event);
+                                  const clientX = event.clientX;
 
-                              return (
-                                  tuiIsElement(target) &&
-                                  tuiGetViewportWidth(windowRef) - clientX >
-                                      SCROLLBAR_PLACEHOLDER &&
-                                  !tuiContainsOrAfter(nativeElement, target)
-                              );
-                          }),
-                          switchMap(() =>
-                              tuiTypedFromEvent(documentRef, `mouseup`).pipe(
-                                  take(1),
-                                  filter(event => {
-                                      const target = tuiGetActualTarget(event);
+                                  return (
+                                      tuiIsElement(target) &&
+                                      tuiGetViewportWidth(windowRef) - clientX >
+                                          SCROLLBAR_PLACEHOLDER &&
+                                      !tuiContainsOrAfter(nativeElement, target)
+                                  );
+                              }),
+                              switchMap(() =>
+                                  tuiTypedFromEvent(documentRef, `mouseup`).pipe(
+                                      take(1),
+                                      filter(event => {
+                                          const target = tuiGetActualTarget(event);
 
-                                      return (
-                                          tuiIsElement(target) &&
-                                          !tuiContainsOrAfter(nativeElement, target)
-                                      );
-                                  }),
+                                          return (
+                                              tuiIsElement(target) &&
+                                              !tuiContainsOrAfter(nativeElement, target)
+                                          );
+                                      }),
+                                  ),
                               ),
                           ),
+                      ).pipe(
+                          switchMap(() =>
+                              isObservable(dismissible)
+                                  ? dismissible.pipe(take(1))
+                                  : of(dismissible),
+                          ),
+                          filter(Boolean),
                       ),
                       close$,
-                  ).pipe(takeUntil(destroy$))
+                  )
                 : close$;
         },
     },

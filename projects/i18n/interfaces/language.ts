@@ -88,6 +88,10 @@ export interface TuiLanguageKit {
         all: string;
         none: string;
     };
+    prompt: {
+        yes: string;
+        no: string;
+    };
 }
 
 export interface TuiLanguageCommerce {

@@ -1,11 +1,18 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
-import {TUI_IS_MOBILE, TuiDialog} from '@taiga-ui/cdk';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    Inject,
+    Self,
+} from '@angular/core';
+import {TUI_IS_MOBILE, TuiDestroyService, TuiDialog} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiAnimationOptions, TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATIONS_DURATION, TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
 import {TuiDialogSize} from '@taiga-ui/core/types';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import {isObservable, merge, Observable, of, Subject} from 'rxjs';
+import {filter, switchMap, takeUntil} from 'rxjs/operators';
 
 import {TUI_DIALOG_CLOSE_STREAM, TUI_DIALOG_PROVIDERS} from './dialog.providers';
 
@@ -38,18 +45,31 @@ export class TuiDialogComponent<O, I> {
         },
     } as const;
 
+    readonly close$ = new Subject();
+
     constructor(
         @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(POLYMORPHEUS_CONTEXT)
-        readonly context: TuiDialog<TuiDialogOptions<I>, O>,
-        @Inject(TUI_DIALOG_CLOSE_STREAM)
-        close$: Observable<unknown>,
+        @Inject(POLYMORPHEUS_CONTEXT) readonly context: TuiDialog<TuiDialogOptions<I>, O>,
+        @Inject(TuiDestroyService) @Self() destroy$: Observable<void>,
+        @Inject(TUI_DIALOG_CLOSE_STREAM) close$: Observable<unknown>,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
     ) {
-        close$.subscribe(() => {
-            this.close();
-        });
+        merge(
+            this.close$.pipe(
+                switchMap(() =>
+                    isObservable(context.closeable)
+                        ? context.closeable
+                        : of(context.closeable),
+                ),
+                filter(Boolean),
+            ),
+            close$,
+        )
+            .pipe(takeUntil(destroy$))
+            .subscribe(() => {
+                this.close();
+            });
     }
 
     @HostBinding('attr.data-size')
@@ -70,7 +90,7 @@ export class TuiDialogComponent<O, I> {
             : this.animation;
     }
 
-    close(): void {
+    private close(): void {
         if (this.context.required) {
             this.context.$implicit.error(REQUIRED_ERROR);
         } else {

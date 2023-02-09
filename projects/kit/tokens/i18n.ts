@@ -3,6 +3,13 @@ import {TuiDateMode} from '@taiga-ui/cdk';
 import {TuiCountryIsoCode, tuiExtractI18n} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';
 
+export const TUI_PROMPT_WORDS = new InjectionToken(
+    `[TUI_PROMPT_WORDS]: i18n 'prompt' words`,
+    {
+        factory: tuiExtractI18n(`prompt`),
+    },
+);
+
 export const TUI_CANCEL_WORD = new InjectionToken(
     `[TUI_CANCEL_WORD]: i18n 'cancel' word`,
     {

@@ -85,6 +85,11 @@ export class ExampleTuiDialogComponent {
         ),
     };
 
+    readonly example8: TuiDocExample = {
+        TypeScript: import('./examples/8/index.ts?raw'),
+        HTML: import('./examples/8/index.html?raw'),
+    };
+
     readonly exampleServiceUsage = import('./examples/import/service-usage.md?raw');
 
     readonly exampleCustomDialog = import('./examples/import/custom-dialog.md?raw');

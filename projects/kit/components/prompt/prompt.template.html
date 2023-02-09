@@ -1,0 +1,29 @@
+<div
+    *polymorpheusOutlet="context.data?.content as text"
+    class="t-content"
+    [innerText]="text"
+></div>
+<div
+    *ngIf="words$ | async as words"
+    class="t-buttons"
+>
+    <button
+        tuiButton
+        type="button"
+        size="m"
+        class="t-button"
+        [appearance]="appearance"
+        (click)="context.completeWith(false)"
+    >
+        {{ context.data?.no || words.no }}
+    </button>
+    <button
+        tuiButton
+        type="button"
+        size="m"
+        class="t-button"
+        (click)="context.completeWith(true)"
+    >
+        {{ context.data?.yes || words.yes }}
+    </button>
+</div>
