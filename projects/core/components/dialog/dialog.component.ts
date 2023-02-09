@@ -14,7 +14,8 @@ import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheu
 import {isObservable, merge, Observable, of, Subject} from 'rxjs';
 import {filter, switchMap, takeUntil} from 'rxjs/operators';
 
-import {TUI_DIALOG_CLOSE_STREAM, TUI_DIALOG_PROVIDERS} from './dialog.providers';
+import {TUI_DIALOGS_CLOSE} from './dialog.tokens';
+import {TuiDialogCloseService} from './dialog-close.service';
 
 const REQUIRED_ERROR = new Error('Required dialog was dismissed');
 
@@ -25,7 +26,7 @@ const REQUIRED_ERROR = new Error('Required dialog was dismissed');
     // So we don't force OnPush on dialog content
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    providers: TUI_DIALOG_PROVIDERS,
+    providers: [TuiDestroyService, TuiDialogCloseService],
     animations: [tuiSlideInTop, tuiFadeIn],
 })
 export class TuiDialogComponent<O, I> {
@@ -52,11 +53,12 @@ export class TuiDialogComponent<O, I> {
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(POLYMORPHEUS_CONTEXT) readonly context: TuiDialog<TuiDialogOptions<I>, O>,
         @Inject(TuiDestroyService) @Self() destroy$: Observable<void>,
-        @Inject(TUI_DIALOG_CLOSE_STREAM) close$: Observable<unknown>,
+        @Inject(TuiDialogCloseService) dialogClose$: Observable<unknown>,
+        @Inject(TUI_DIALOGS_CLOSE) close$: Observable<unknown>,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
     ) {
         merge(
-            this.close$.pipe(
+            merge(dialogClose$, this.close$).pipe(
                 switchMap(() =>
                     isObservable(context.closeable)
                         ? context.closeable

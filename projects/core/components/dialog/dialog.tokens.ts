@@ -1,5 +1,6 @@
 import {InjectionToken, ValueProvider} from '@angular/core';
 import type {TuiDialogOptions} from '@taiga-ui/core/interfaces';
+import {EMPTY, Observable} from 'rxjs';
 
 type TuiDialogDefaultOptions = Omit<TuiDialogOptions<unknown>, 'data'>;
 
@@ -11,6 +12,13 @@ export const TUI_DIALOG_DEFAULT_OPTIONS: TuiDialogDefaultOptions = {
     label: ``,
     header: ``,
 };
+
+export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
+    `[TUI_DIALOGS_CLOSE]: A stream to close dialogs`,
+    {
+        factory: () => EMPTY,
+    },
+);
 
 export const TUI_DIALOG_OPTIONS = new InjectionToken<TuiDialogDefaultOptions>(
     `[TUI_DIALOG_OPTIONS]: Default parameters for dialog component`,
