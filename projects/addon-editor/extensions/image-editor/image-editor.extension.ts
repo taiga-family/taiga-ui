@@ -8,7 +8,10 @@ import {
     NodeViewRenderer,
     RawCommands,
 } from '@tiptap/core';
+import {Image} from '@tiptap/extension-image';
+import {Plugin} from '@tiptap/pm/state';
 import {DOMOutputSpec, NodeSpec} from 'prosemirror-model';
+import {EditorView} from 'prosemirror-view';
 
 import {TuiImageEditorComponent} from './image-editor.component';
 import type {TuiEditableImage} from './image-editor.options';
@@ -52,7 +55,7 @@ export function createImageEditorExtension<T, K>(
 ): Node<T, K> {
     const enableDraggable = tuiIsPresent(draggable) ? draggable : true;
 
-    return Node.create({
+    return Image.extend({
         name: `imageEditor`,
         group: `block`,
         atom: true,
@@ -94,7 +97,51 @@ export function createImageEditorExtension<T, K>(
                         }),
             };
         },
+
+        addProseMirrorPlugins() {
+            return [
+                new Plugin({
+                    props: {
+                        handleDOMEvents: {
+                            paste: pasteImage,
+                            drop: pasteImage,
+                        },
+                    },
+                }),
+            ];
+        },
     });
+}
+
+function pasteImage(view: EditorView, event: ClipboardEvent | DragEvent): void {
+    const dataTransfer =
+        event instanceof DragEvent ? event.dataTransfer : event.clipboardData;
+    const images = Array.from(dataTransfer?.files ?? []).filter(file =>
+        /image/i.test(file.type),
+    );
+
+    if (images.length) {
+        event.preventDefault();
+    }
+
+    for (const image of images) {
+        const reader = new FileReader();
+
+        reader.onload = readerEvent => {
+            const node = view.state.schema.nodes.image.create({
+                src: readerEvent.target?.result,
+            });
+            const transaction = view.state.tr.replaceSelectionWith(node);
+
+            /**
+             * @note:
+             * workaround for `Applying a mismatched transaction`
+             */
+            setTimeout(() => view.dispatch(transaction));
+        };
+
+        reader.readAsDataURL(image);
+    }
 }
 
 export function tuiCreateImageEditorExtension<T, K>({
