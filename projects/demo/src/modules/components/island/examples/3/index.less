@@ -25,3 +25,29 @@
     margin: -1.25rem -1.25rem 1.25rem;
     border-radius: var(--tui-radius-l) var(--tui-radius-l) 0 0;
 }
+
+.my-panel {
+    display: flex;
+    height: 15rem;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+    overflow: hidden;
+
+    .title {
+        margin-top: 2.1875rem;
+    }
+
+    [tuiaction] {
+        box-shadow: none;
+        border: 1px solid var(--tui-base-03);
+        border-bottom: none;
+        border-radius-right-bottom: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+
+        &:hover {
+            transform: translateY(-1.6rem);
+        }
+    }
+}
