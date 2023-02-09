@@ -11,5 +11,5 @@ import {TuiRootModule} from '@taiga-ui/core';
   ],
   // ...
 })
-export class MyModule {}
+export class AppModule {}
 ```
