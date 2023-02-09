@@ -23,6 +23,7 @@ jobs:
 
       - name: Try rebase locally for check affected e2e
         uses: ./.github/actions/rebase
+        continue-on-error: true
 
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
