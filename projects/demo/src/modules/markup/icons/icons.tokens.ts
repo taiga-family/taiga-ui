@@ -33,25 +33,21 @@ const DEPRECATED: DemoTuiIcon[] = [
 
 const {LARGE, NORMAL} = ensureIcons();
 
+export const ICONS = (deprecated: Record<string, string>): DemoTuiIconsTabs => ({
+    'Description and examples': {
+        [`Normal interface icons / 16px`]: NORMAL.filter(
+            icon => !deprecated[icon] && !DEPRECATED.includes(icon),
+        ),
+        [`Large interface icons / 24px`]: LARGE.filter(
+            icon => !deprecated[icon.replace(`Large`, ``)] && !DEPRECATED.includes(icon),
+        ),
+        [`Payment systems`]: COMMERCE,
+    },
+});
+
 export const TUI_DEMO_ICONS: InjectionToken<DemoTuiIconsTabs> =
     new InjectionToken<DemoTuiIconsTabs>(`[TUI_DEMO_ICONS]: Icons`, {
-        factory: () => {
-            const deprecated = inject(TUI_SVG_DEPRECATED);
-
-            return {
-                'Description and examples': {
-                    [`Normal interface icons / 16px`]: NORMAL.filter(
-                        icon => !deprecated[icon] && !DEPRECATED.includes(icon),
-                    ),
-                    [`Large interface icons / 24px`]: LARGE.filter(
-                        icon =>
-                            !deprecated[icon.replace(`Large`, ``)] &&
-                            !DEPRECATED.includes(icon),
-                    ),
-                    [`Payment systems`]: COMMERCE,
-                },
-            };
-        },
+        factory: () => ICONS(inject(TUI_SVG_DEPRECATED)),
     });
 
 /**
