@@ -10,6 +10,7 @@ import {
     TuiPrimitiveTextfieldModule,
     TuiSvgModule,
     TuiTextfieldControllerModule,
+    TuiWrapperModule,
 } from '@taiga-ui/core';
 import {TuiArrowModule} from '@taiga-ui/kit/components/arrow';
 import {TuiInputPhoneModule} from '@taiga-ui/kit/components/input-phone';
@@ -31,6 +32,7 @@ import {TuiInputPhoneInternationalComponent} from './input-phone-international.c
         TuiHostedDropdownModule,
         TuiDataListModule,
         TuiArrowModule,
+        TuiWrapperModule,
         TuiLetModule,
         TuiMapperPipeModule,
         TuiActiveZoneModule,
