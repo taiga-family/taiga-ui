@@ -5,8 +5,8 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '@taiga-ui/addon-editor';
 
 @Component({
-    selector: 'editor-upload-files',
-    templateUrl: './editor-upload-files.component.html',
+    selector: 'editor-resizable-images',
+    templateUrl: './editor-resizable-images.component.html',
     encapsulation,
     changeDetection,
     providers: [
@@ -16,12 +16,9 @@ import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '@taiga-ui/addon-ed
         },
     ],
 })
-export class ExampleTuiEditorUploadFilesComponent {
+export class ExampleTuiEditorResizableImagesComponent {
     readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
-        './filesio.service.ts': import('./examples/1/filesio.service.ts?raw'),
-        './file-loader.ts': import('./examples/1/file-loader.ts?raw'),
     };
 }

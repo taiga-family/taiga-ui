@@ -3,34 +3,32 @@
     package="ADDON-EDITOR"
     type="components"
 >
-    <ng-template pageTab>
-        <p i18n>
-            Rich Text Editor based on
-            <a
-                tuiLink
-                href="https://www.tiptap.dev/"
-            >
-                TipTap Editor
-            </a>
-            for using with Angular forms. For safety reasons use a
-            <a
-                tuiLink
-                routerLink="/icon-set"
-                fragment="sanitizer"
-            >
-                sanitizer
-            </a>
-            with this component.
-        </p>
-
-        <tui-doc-example
-            id="upload-file"
-            i18n-heading
-            heading="Upload files"
-            description="100 uploads per day, 2GB file size limit, files auto-deleted after 1 download"
-            [content]="example1"
+    <p i18n>
+        Rich Text Editor based on
+        <a
+            tuiLink
+            href="https://www.tiptap.dev/"
         >
-            <tui-editor-upload-files-example-1></tui-editor-upload-files-example-1>
-        </tui-doc-example>
-    </ng-template>
+            TipTap Editor
+        </a>
+        for using with Angular forms. For safety reasons use a
+        <a
+            tuiLink
+            routerLink="/icon-set"
+            fragment="sanitizer"
+        >
+            sanitizer
+        </a>
+        with this component.
+    </p>
+
+    <tui-doc-example
+        id="upload-file"
+        i18n-heading
+        heading="Upload files"
+        description="100 uploads per day, 2GB file size limit, files auto-deleted after 1 download"
+        [content]="example1"
+    >
+        <tui-editor-upload-files-example-1></tui-editor-upload-files-example-1>
+    </tui-doc-example>
 </tui-doc-page>

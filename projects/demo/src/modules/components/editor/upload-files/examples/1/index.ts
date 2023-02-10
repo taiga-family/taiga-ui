@@ -9,9 +9,8 @@ import {
     TuiEditorComponent,
     TuiEditorTool,
 } from '@taiga-ui/addon-editor';
-import {forkJoin} from 'rxjs';
-import {finalize} from 'rxjs/operators';
 
+import {fileLoader} from './file-loader';
 import {FileIoService} from './filesio.service';
 
 @Component({
@@ -40,13 +39,7 @@ import {FileIoService} from './filesio.service';
         {
             provide: TUI_ATTACH_FILES_LOADER,
             deps: [FileIoService],
-            useFactory: (service: FileIoService) => (files: File[]) => {
-                service.loading$.next(true);
-
-                return forkJoin(files.map(file => service.upload(file))).pipe(
-                    finalize(() => service.loading$.next(false)),
-                );
-            },
+            useFactory: fileLoader,
         },
     ],
     changeDetection,

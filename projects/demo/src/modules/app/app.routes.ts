@@ -989,60 +989,12 @@ export const ROUTES = [
         },
     },
     {
-        path: `editor/resizable-images`,
-        loadChildren: async () =>
-            (
-                await import(
-                    `../components/editor/resizable-images/editor-resizable-images.module`
-                )
-            ).ExampleTuiEditorResizableImagesToolModule,
-        data: {
-            title: `Editor  — Resizable images`,
-        },
-    },
-    {
-        path: `editor/preview-images`,
-        loadChildren: async () =>
-            (
-                await import(
-                    `../components/editor/preview-images/editor-preview-images.module`
-                )
-            ).ExampleTuiEditorPreviewImagesToolModule,
-        data: {
-            title: `Editor  — Preview images`,
-        },
-    },
-    {
-        path: `editor/processing-content`,
-        loadChildren: async () =>
-            (
-                await import(
-                    `../components/editor/processing-content/editor-processing-content.module`
-                )
-            ).ExampleTuiEditorProcessingContentModule,
-        data: {
-            title: `Editor — Processing content`,
-        },
-    },
-    {
         path: `editor/groups`,
         loadChildren: async () =>
             (await import(`../components/editor/groups/editor-groups.module`))
                 .ExampleTuiEditorGroupsModule,
         data: {
             title: `Editor — Groups`,
-        },
-    },
-    {
-        path: `editor/uploading-images`,
-        loadChildren: async () =>
-            (
-                await import(
-                    `../components/editor/uploading-images/editor-uploading-images.module`
-                )
-            ).ExampleTuiEditorUploadingImagesModule,
-        data: {
-            title: `Editor — Uploading images`,
         },
     },
     {
@@ -1064,12 +1016,63 @@ export const ROUTES = [
         },
     },
     {
-        path: `editor/markdown`,
+        path: `editor/processing/legacy-html`,
         loadChildren: async () =>
-            (await import(`../components/editor/markdown/editor-markdown.module`))
-                .ExampleTuiEditorMarkdownModule,
+            (
+                await import(
+                    `../components/editor/processing/legacy-html/editor-legacy-html.module`
+                )
+            ).ExampleTuiEditorLegacyHtmlModule,
+        data: {
+            title: `Editor — Legacy html`,
+        },
+    },
+    {
+        path: `editor/processing/markdown`,
+        loadChildren: async () =>
+            (
+                await import(
+                    `../components/editor/processing/markdown/editor-markdown.module`
+                )
+            ).ExampleTuiEditorMarkdownModule,
         data: {
             title: `Editor — Markdown`,
+        },
+    },
+    {
+        path: `editor/images/resizable`,
+        loadChildren: async () =>
+            (
+                await import(
+                    `../components/editor/images/resizable/editor-resizable-images.module`
+                )
+            ).ExampleTuiEditorResizableImagesToolModule,
+        data: {
+            title: `Editor  — Resizable images`,
+        },
+    },
+    {
+        path: `editor/images/preview`,
+        loadChildren: async () =>
+            (
+                await import(
+                    `../components/editor/images/preview/editor-preview-images.module`
+                )
+            ).ExampleTuiEditorPreviewImagesToolModule,
+        data: {
+            title: `Editor  — Preview images`,
+        },
+    },
+    {
+        path: `editor/images/upload`,
+        loadChildren: async () =>
+            (
+                await import(
+                    `../components/editor/images/upload/editor-upload-images.module`
+                )
+            ).ExampleTuiEditorUploadImagesModule,
+        data: {
+            title: `Editor — Upload images`,
         },
     },
     {
