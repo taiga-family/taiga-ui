@@ -1,24 +1,17 @@
-<svg focusable="false" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-    <g id="tuiIconSearch" xmlns="http://www.w3.org/2000/svg">
-        <svg
-            fill="none"
-            height="1em"
-            overflow="visible"
-            viewBox="0 0 16 16"
-            width="1em"
-            x="50%"
-            xmlns="http://www.w3.org/2000/svg"
-            y="50%"
-        >
-            <svg x="-8" y="-8">
-                <path
-                    d="M7.333 12.667A5.333 5.333 0 1 0 7.333 2a5.333 5.333 0 0 0 0 10.667zM14 14l-2.9-2.9"
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><g
+        id="tuiIconSearch"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+            <svg x="50%" y="50%" width="1em" height="1em" overflow="visible" viewBox="0 0 16 16">
+                <svg x="-8" y="-8"><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
                     stroke="currentColor"
+                    stroke-width="3"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
-                />
+                ><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg></svg>
             </svg>
-        </svg>
-    </g>
-</svg>
+        </g></svg>
