@@ -18,6 +18,7 @@ import {map} from 'rxjs/operators';
 @Component({
     selector: 'tui-editor-embed-html5-example-1',
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
@@ -85,8 +86,12 @@ import {map} from 'rxjs/operators';
             },
         },
     ],
-    changeDetection,
+    host: {
+        class: 'html5-editor-example',
+        '[class._cypress]': 'isCypress',
+    },
     encapsulation,
+    changeDetection,
 })
 export class TuiEditorEmbedHtml5Example1 {
     @ViewChild(TuiEditorComponent)
@@ -121,8 +126,8 @@ export class TuiEditorEmbedHtml5Example1 {
     );
 
     constructor(
+        @Inject(TUI_IS_CYPRESS) readonly isCypress: boolean,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-        @Inject(TUI_IS_CYPRESS) private readonly isCypress: boolean,
     ) {}
 
     @tuiPure
