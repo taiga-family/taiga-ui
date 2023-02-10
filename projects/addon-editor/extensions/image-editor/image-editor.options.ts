@@ -10,6 +10,7 @@ export interface TuiEditableImage {
     width?: number | string;
     alt?: string;
     title?: string;
+    draggable?: '' | null;
 }
 
 /**

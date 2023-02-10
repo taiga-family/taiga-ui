@@ -1,5 +1,11 @@
 import {DOCUMENT} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Inject, Self} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    Inject,
+    Self,
+} from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {AbstractTuiEditorResizable} from '@taiga-ui/addon-editor/components/editor-resizable';
 import {TuiDestroyService} from '@taiga-ui/cdk';
@@ -20,6 +26,11 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEditableImage> {
+    @HostBinding('attr.data-drag-handle')
+    get dragHandle(): '' | null {
+        return this.attrs.draggable ?? null;
+    }
+
     override get height(): number | string | null {
         return null;
     }
