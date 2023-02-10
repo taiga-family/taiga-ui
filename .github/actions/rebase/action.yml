@@ -10,3 +10,11 @@ runs:
         upstream: Tinkoff/taiga-ui
         branch: ${{ github.base_ref }}
         push: false
+
+    - name: Abort rebase when merge conflict
+      if: failure()
+      shell: bash
+      run: |
+        git status
+        git rebase --abort
+        git status
