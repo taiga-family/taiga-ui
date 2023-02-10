@@ -1,24 +1,17 @@
-<svg focusable="false" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-    <g id="tuiIconFolder" xmlns="http://www.w3.org/2000/svg">
-        <svg
-            fill="none"
-            height="1em"
-            overflow="visible"
-            viewBox="0 0 16 16"
-            width="1em"
-            x="50%"
-            xmlns="http://www.w3.org/2000/svg"
-            y="50%"
-        >
-            <svg x="-8" y="-8">
-                <path
-                    d="M15 12.667c0 .353-.148.692-.41.943-.263.25-.619.39-.99.39H2.4c-.371 0-.727-.14-.99-.39-.262-.25-.41-.59-.41-.943V3.333c0-.353.147-.692.41-.942S2.029 2 2.4 2h3.5l1.4 2h6.3c.371 0 .727.14.99.39.262.25.41.59.41.943v7.334z"
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><g
+        id="tuiIconFolder"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+            <svg x="50%" y="50%" width="1em" height="1em" overflow="visible" viewBox="0 0 16 16">
+                <svg x="-8" y="-8"><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
                     stroke="currentColor"
+                    stroke-width="3"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
-                />
+                ><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" /></svg></svg>
             </svg>
-        </svg>
-    </g>
-</svg>
+        </g></svg>

@@ -1,31 +1,19 @@
-<svg focusable="false" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-    <g id="tuiIconPicture" xmlns="http://www.w3.org/2000/svg">
-        <svg
-            fill="none"
-            height="1em"
-            overflow="visible"
-            viewBox="0 0 16 16"
-            width="1em"
-            x="50%"
-            xmlns="http://www.w3.org/2000/svg"
-            y="50%"
-        >
-            <svg x="-8" y="-8">
-                <path
-                    d="M12.667 2H3.333C2.597 2 2 2.597 2 3.333v9.334C2 13.403 2.597 14 3.333 14h9.334c.736 0 1.333-.597 1.333-1.333V3.333C14 2.597 13.403 2 12.667 2z"
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><g
+        id="tuiIconPicture"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+    <svg x="50%" y="50%" width="1em" height="1em" overflow="visible" viewBox="0 0 16 16">
+        <svg x="-8" y="-8"><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
                     stroke="currentColor"
+                    stroke-width="3"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
-                />
-                <path
-                    d="M5.667 6.667a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM14 10l-3.333-3.333L3.333 14"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                />
-            </svg>
-        </svg>
-    </g>
-</svg>
+                ><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><circle cx="8.5" cy="8.5" r="1.5" /><polyline
+                        points="21 15 16 10 5 21"
+                    /></svg></svg>
+    </svg>
+</g></svg>
