@@ -1,0 +1,34 @@
+<tui-doc-page
+    header="Editor"
+    package="ADDON-EDITOR"
+    type="components"
+>
+    <p i18n>
+        Rich Text Editor based on
+        <a
+            tuiLink
+            href="https://www.tiptap.dev/"
+        >
+            TipTap Editor
+        </a>
+        for using with Angular forms. For safety reasons use a
+        <a
+            tuiLink
+            routerLink="/icon-set"
+            fragment="sanitizer"
+        >
+            sanitizer
+        </a>
+        with this component.
+    </p>
+
+    <tui-doc-example
+        id="anchors"
+        i18n-heading
+        heading="Focus"
+        description="The Focus extension adds a CSS class to focused nodes. By default it adds .has-focus, but you can change that. Note that it’s only a class, the styling is totally up to you. The usage example below has some CSS for that class."
+        [content]="example1"
+    >
+        <tui-editor-focus-example-1></tui-editor-focus-example-1>
+    </tui-doc-example>
+</tui-doc-page>

@@ -998,6 +998,15 @@ export const ROUTES = [
         },
     },
     {
+        path: `editor/focus`,
+        loadChildren: async () =>
+            (await import(`../components/editor/focus/editor-focus.module`))
+                .ExampleTuiEditorFocusModule,
+        data: {
+            title: `Editor — Focus`,
+        },
+    },
+    {
         path: `editor/anchors`,
         loadChildren: async () =>
             (await import(`../components/editor/anchors/editor-anchors.module`))

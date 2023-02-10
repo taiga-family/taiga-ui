@@ -916,6 +916,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Editor`,
+        title: `Focus`,
+        keywords: `editor, focus, focusable, wysiwyg, редактор, фокус, html, rich, text`,
+        route: `/editor/focus`,
+    },
+    {
+        section: $localize`Editor`,
         title: `Upload files`,
         keywords: `editor, upload, files, wysiwyg, редактор, текст, html, rich, text`,
         route: `/editor/upload-files`,
