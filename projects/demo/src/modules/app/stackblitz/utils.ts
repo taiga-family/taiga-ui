@@ -179,7 +179,7 @@ export const ALL_TAIGA_UI_MODULES = [
     /* ADDON-COMMERCE */
     ${commerce},
     /* ADDON-EDITOR */
-    /* ${editor}, */
+    ${editor},
     /* ADDON-MOBILE */
     ${mobile},
     /* ADDON-PREVIEW */
