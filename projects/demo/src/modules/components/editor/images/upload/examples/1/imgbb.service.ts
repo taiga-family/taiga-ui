@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {environment} from '@demo/environments/environment';
 import {BehaviorSubject, from, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+
+import {environment} from '../../../../../../../environments/environment';
 
 interface ImgbbResponse {
     data: {
