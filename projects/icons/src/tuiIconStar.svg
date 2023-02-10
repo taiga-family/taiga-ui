@@ -1,24 +1,16 @@
-<svg focusable="false" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-    <g id="tuiIconStar" xmlns="http://www.w3.org/2000/svg">
-        <svg
-            fill="none"
-            height="1em"
-            overflow="visible"
-            viewBox="0 0 16 16"
-            width="1em"
-            x="50%"
-            xmlns="http://www.w3.org/2000/svg"
-            y="50%"
-        >
-            <svg x="-8" y="-8">
-                <path
-                    d="M8 1.333l2.06 4.174 4.607.673-3.334 3.247.787 4.587L8 11.847l-4.12 2.167.787-4.587L1.333 6.18l4.607-.673L8 1.334z"
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><g id="tuiIconStar" xmlns="http://www.w3.org/2000/svg">
+            <svg x="50%" y="50%" width="1em" height="1em" overflow="visible" viewBox="0 0 16 16">
+                <svg x="-8" y="-8"><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
                     stroke="currentColor"
+                    stroke-width="3"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
-                />
+                ><polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                    /></svg></svg>
             </svg>
-        </svg>
-    </g>
-</svg>
+        </g></svg>

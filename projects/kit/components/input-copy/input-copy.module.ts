@@ -7,6 +7,7 @@ import {
     TuiSvgModule,
     TuiTextfieldComponent,
     TuiTextfieldControllerModule,
+    TuiWrapperModule,
 } from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -17,6 +18,7 @@ import {TuiInputCopyDirective} from './input-copy.directive';
     imports: [
         CommonModule,
         PolymorpheusModule,
+        TuiWrapperModule,
         TuiSvgModule,
         TuiHintModule,
         TuiPrimitiveTextfieldModule,

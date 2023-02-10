@@ -101,7 +101,7 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
 
     selectedValueTemplate = '';
 
-    readonly iconVariants = ['', 'tuiIconPiechartLarge', 'tuiIconCardsLarge'];
+    readonly iconVariants = ['', 'tuiIconPieChartLarge', 'tuiIconCreditCardLarge'];
 
     override iconLeft = this.iconVariants[0];
 

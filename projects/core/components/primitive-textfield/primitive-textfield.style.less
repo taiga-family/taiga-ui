@@ -33,24 +33,6 @@
     height: 100%;
 }
 
-.t-icon {
-    .icon-button();
-    position: relative;
-    pointer-events: none;
-
-    :host:hover:not(._readonly) & {
-        color: var(--tui-text-02);
-    }
-
-    :host[data-mode='onDark']:hover:not(._readonly) & {
-        color: var(--tui-text-01-night);
-    }
-
-    :host[data-mode='onLight']:hover:not(._readonly) & {
-        color: var(--tui-text-01);
-    }
-}
-
 input {
     &::placeholder {
         color: var(--tui-text-03);

@@ -10,8 +10,8 @@ import {TUI_INPUT_PASSWORD_OPTIONS, TUI_INPUT_PASSWORD_DEFAULT_OPTIONS} from '@t
       useValue: {
         ...TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
         icons: {
-          hide: 'tuiIconEyeClosed',
-          show: 'tuiIconEyeOpen',
+          hide: 'tuiIconEyeOff',
+          show: 'tuiIconEye',
         },
       },
     },

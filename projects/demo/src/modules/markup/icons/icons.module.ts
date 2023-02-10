@@ -2,7 +2,12 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiButtonModule, TuiLinkModule, TuiSvgModule} from '@taiga-ui/core';
+import {
+    TuiButtonModule,
+    TuiLinkModule,
+    TuiNotificationModule,
+    TuiSvgModule,
+} from '@taiga-ui/core';
 
 import {IconsCustomizationComponent} from './customization/customization-icons.component';
 import {IconsComponent} from './icons.component';
@@ -12,6 +17,7 @@ import {InlineSvgExampleComponent} from './inline-svg/inline-svg.component';
 @NgModule({
     imports: [
         CommonModule,
+        TuiNotificationModule,
         TuiLinkModule,
         TuiSvgModule,
         TuiButtonModule,

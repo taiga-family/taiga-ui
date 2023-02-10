@@ -1,7 +1,10 @@
 <span
+    #driver="tuiHintHover"
     automation-id="tui-tooltip__icon"
+    tuiWrapper
+    appearance="icon"
     class="t-tooltip-icon"
-    [class.t-icon_hovered]="driver$ | async"
+    [hover]="(driver | async) || null"
     [tuiHint]="content"
     [tuiHintDescribe]="describeId"
     [tuiHintDirection]="direction"

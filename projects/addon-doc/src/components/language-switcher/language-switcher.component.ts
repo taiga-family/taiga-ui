@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {TuiStringHandler} from '@taiga-ui/cdk';
-import {TUI_ICONS_PATH, tuiCapitalizeFirstLetter} from '@taiga-ui/core';
+import {TUI_SVG_OPTIONS, tuiCapitalizeFirstLetter, TuiSvgOptions} from '@taiga-ui/core';
 import {TuiCountryIsoCode, TuiLanguageName, TuiLanguageSwitcher} from '@taiga-ui/i18n';
 
 @Component({
@@ -11,7 +10,9 @@ import {TuiCountryIsoCode, TuiLanguageName, TuiLanguageSwitcher} from '@taiga-ui
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiLanguageSwitcherComponent {
-    private readonly path = this.iconsPath('tuiIcon').replace('tuiIcon.svg#tuiIcon', '');
+    private readonly path = this.options
+        .path('tuiIcon')
+        .replace('tuiIcon.svg#tuiIcon', '');
 
     readonly language = new FormControl(tuiCapitalizeFirstLetter(this.switcher.language));
 
@@ -35,7 +36,7 @@ export class TuiLanguageSwitcherComponent {
 
     constructor(
         @Inject(TuiLanguageSwitcher) readonly switcher: TuiLanguageSwitcher,
-        @Inject(TUI_ICONS_PATH) private readonly iconsPath: TuiStringHandler<string>,
+        @Inject(TUI_SVG_OPTIONS) private readonly options: TuiSvgOptions,
     ) {}
 
     getFlagPath(code?: TuiCountryIsoCode): string | null {

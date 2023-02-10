@@ -35,9 +35,9 @@ export class ExampleTuiTextfieldControllerComponent {
 
     type: TuiInputType = this.typeVariants[0];
 
-    readonly customContentVariants = ['Bell'];
+    readonly customContentVariants = ['', 'Bell'];
 
-    customContentSelected: string | null = null;
+    customContentSelected = this.customContentVariants[0];
 
     autocompleteVariants: Array<TuiAutofillFieldName | ''> = [
         '',

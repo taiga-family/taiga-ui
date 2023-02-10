@@ -1,4 +1,5 @@
-import {InjectionToken} from '@angular/core';
+import {inject, InjectionToken} from '@angular/core';
+import {TUI_SVG_DEPRECATED} from '@taiga-ui/core';
 import * as allIcons from '@taiga-ui/icons';
 
 export type DemoTuiIcon = keyof typeof import('@taiga-ui/icons');
@@ -9,29 +10,48 @@ export type DemoTuiIconsTabs = Record<string, Record<string, DemoTuiIconsList>>;
 
 export const COMMERCE: DemoTuiIcon[] = [
     `tuiIconElectron`,
+    `tuiIconElectronMono`,
     `tuiIconMaestro`,
+    `tuiIconMaestroMono`,
     `tuiIconMastercard`,
+    `tuiIconMastercardMono`,
     `tuiIconMir`,
+    `tuiIconMirMono`,
     `tuiIconVisa`,
+    `tuiIconVisaMono`,
 ];
 
 // TODO: remove in 4.0
-const DEPRECATED: DemoTuiIcon[] = [`tuiIconSortUp`, `tuiIconSortDown`];
+const DEPRECATED: DemoTuiIcon[] = [
+    `tuiIconRedo`,
+    `tuiIconRefresh`,
+    `tuiIconRefreshLarge`,
+    `tuiIconSortUp`,
+    `tuiIconSortDown`,
+    `tuiIconUndo`,
+];
 
 const {LARGE, NORMAL} = ensureIcons();
 
-export const ICONS: DemoTuiIconsTabs = {
-    'Description and examples': {
-        [`Normal interface icons / 16px`]: NORMAL,
-        [`Large interface icons / 24px`]: LARGE,
-        [`Payment systems`]: COMMERCE,
-        [`Deprecated ❌`]: DEPRECATED,
-    },
-};
-
 export const TUI_DEMO_ICONS: InjectionToken<DemoTuiIconsTabs> =
     new InjectionToken<DemoTuiIconsTabs>(`[TUI_DEMO_ICONS]: Icons`, {
-        factory: () => ICONS,
+        factory: () => {
+            const deprecated = inject(TUI_SVG_DEPRECATED);
+
+            return {
+                'Description and examples': {
+                    [`Normal interface icons / 16px`]: NORMAL.filter(
+                        icon => !deprecated[icon] && !DEPRECATED.includes(icon),
+                    ),
+                    [`Large interface icons / 24px`]: LARGE.filter(
+                        icon =>
+                            !deprecated[icon.replace(`Large`, ``)] &&
+                            !DEPRECATED.includes(icon),
+                    ),
+                    [`Payment systems`]: COMMERCE,
+                },
+            };
+        },
     });
 
 /**

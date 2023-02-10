@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><g id="tuiIconEye" xmlns="http://www.w3.org/2000/svg">
+            <svg x="50%" y="50%" width="1em" height="1em" overflow="visible" viewBox="0 0 16 16">
+                <svg x="-8" y="-8"><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                ><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></svg>
+            </svg>
+        </g></svg>

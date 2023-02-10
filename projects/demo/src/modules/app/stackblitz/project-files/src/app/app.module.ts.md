@@ -1,6 +1,6 @@
 ```ts
 import {NgModule} from '@angular/core';
-import {TUI_ICONS_PATH, tuiIconsPathFactory, TUI_SANITIZER} from '@taiga-ui/core';
+import {tuiSvgOptionsProvider, TUI_SANITIZER} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 
 import {ALL_TAIGA_UI_MODULES} from './@stackblitz/all-taiga-modules';
@@ -16,12 +16,11 @@ import {AppComponent} from './app.component';
   bootstrap: [AppComponent],
   providers: [
     // A workaround because StackBlitz does not support assets
-    {
-      provide: TUI_ICONS_PATH,
-      useValue: tuiIconsPathFactory('https://taiga-ui.dev/assets/taiga-ui/icons'),
-    },
+    tuiSvgOptionsProvider({
+      path: 'https://taiga-ui.dev/assets/taiga-ui/icons',
+    }),
     /**
-     * If you use unsafe icons or have kind of WYSISYG editor in your app
+     * If you use unsafe icons or TuiEditor in your app
      *
      * Take a look at: https://github.com/tinkoff/ng-dompurify
      *

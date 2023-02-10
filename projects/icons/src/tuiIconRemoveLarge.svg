@@ -1,14 +1,17 @@
-<svg focusable="false" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
-    <g id="tuiIconRemoveLarge" xmlns="http://www.w3.org/2000/svg">
-        <svg fill="none" height="1.5em" overflow="visible" viewBox="0 0 24 24" width="1.5em" x="50%" y="50%">
-            <svg x="-12" xmlns="http://www.w3.org/2000/svg" y="-12">
-                <path
-                    clip-rule="evenodd"
-                    d="M6.707 5.293a1 1 0 0 0-1.414 1.414L10.586 12l-5.293 5.293a1 1 0 1 0 1.414 1.414L12 13.414l5.293 5.293a1 1 0 0 0 1.414-1.414L13.414 12l5.293-5.293a1 1 0 0 0-1.414-1.414L12 10.586 6.707 5.293z"
-                    fill="currentColor"
-                    fill-rule="evenodd"
-                />
-            </svg>
-        </svg>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"><g
+        id="tuiIconRemoveLarge"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+    <svg x="50%" y="50%" width="1.5em" height="1.5em" overflow="visible" viewBox="0 0 24 24">
+        <svg x="-12" y="-12"><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                ><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg></svg>
+    </svg>
+</g></svg>

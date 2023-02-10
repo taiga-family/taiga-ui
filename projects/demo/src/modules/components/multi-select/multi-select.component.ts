@@ -118,8 +118,8 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
     readonly iconVariants = [
         '',
         'tuiIconSearchLarge',
-        'tuiIconPiechartLarge',
-        'tuiIconCardsLarge',
+        'tuiIconPieChartLarge',
+        'tuiIconCreditCardLarge',
     ];
 
     override iconLeft = '';

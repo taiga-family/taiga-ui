@@ -14,9 +14,8 @@ export interface TuiInputPasswordOptions {
 export const TUI_INPUT_PASSWORD_DEFAULT_OPTIONS: TuiInputPasswordOptions = {
     icons: {
         hide: ({$implicit}) =>
-            $implicit === `s` ? `tuiIconEyeClosed` : `tuiIconHideLarge`,
-        show: ({$implicit}) =>
-            $implicit === `s` ? `tuiIconEyeOpen` : `tuiIconShowLarge`,
+            $implicit === `s` ? `tuiIconEyeOff` : `tuiIconEyeOffLarge`,
+        show: ({$implicit}) => ($implicit === `s` ? `tuiIconEye` : `tuiIconEyeLarge`),
     },
 };
 

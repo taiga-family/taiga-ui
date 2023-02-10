@@ -22,16 +22,16 @@ import {
     TuiFocusableElementAccessor,
     TuiMapper,
     tuiPure,
-    TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {
-    TUI_ICONS_PATH,
     TUI_MASK_SYMBOLS_REGEXP,
     TUI_NON_DIGITS_REGEXP,
+    TUI_SVG_OPTIONS,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeM,
     TuiSizeS,
+    TuiSvgOptions,
 } from '@taiga-ui/core';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_ARROW} from '@taiga-ui/kit/components/arrow';
@@ -99,8 +99,7 @@ export class TuiInputPhoneInternationalComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_ICONS_PATH)
-        iconsPath: TuiStringHandler<string>,
+        @Inject(TUI_SVG_OPTIONS) {path}: TuiSvgOptions,
         @Inject(TUI_COUNTRIES)
         readonly countriesNames$: Observable<Record<TuiCountryIsoCode, string>>,
         @Inject(TUI_COUNTRIES_MASKS)
@@ -110,7 +109,7 @@ export class TuiInputPhoneInternationalComponent
     ) {
         super(control, changeDetectorRef);
 
-        this.staticPath = iconsPath('tuiIcon').replace('tuiIcon.svg#tuiIcon', '');
+        this.staticPath = path('tuiIcon').replace('tuiIcon.svg#tuiIcon', '');
     }
 
     get nativeFocusableElement(): HTMLElement | null {

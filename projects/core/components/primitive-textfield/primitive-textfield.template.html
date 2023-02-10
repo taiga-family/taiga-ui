@@ -41,10 +41,13 @@
     <div class="t-content">
         <div
             *ngIf="iconLeftContent"
-            class="t-icon t-icon_left"
+            class="t-icon t-icon_left t-textfield-icon"
         >
             <tui-svg
                 *polymorpheusOutlet="iconLeftContent as src; context: {$implicit: size}"
+                tuiWrapper
+                appearance="icon"
+                class="t-icon"
                 [src]="src"
             ></tui-svg>
         </div>
@@ -82,6 +85,8 @@
         </div>
         <span
             *ngIf="hasCleaner"
+            tuiWrapper
+            appearance="icon"
             automation-id="tui-primitive-textfield__cleaner"
             class="t-cleaner"
             (click.stop)="clear()"
@@ -103,10 +108,12 @@
         ></tui-tooltip>
         <div
             *ngIf="iconContent"
-            class="t-icon"
+            class="t-icon t-textfield-icon"
         >
             <tui-svg
                 *polymorpheusOutlet="iconContent as src; context: {$implicit: size}"
+                tuiWrapper
+                appearance="icon"
                 [src]="src"
             ></tui-svg>
         </div>

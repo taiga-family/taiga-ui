@@ -7,6 +7,7 @@ import {
     TuiSvgModule,
     TuiTextfieldComponent,
     TuiTextfieldControllerModule,
+    TuiWrapperModule,
 } from '@taiga-ui/core';
 import {TuiCalendarRangeModule} from '@taiga-ui/kit/components/calendar-range';
 import {TextMaskModule, TuiValueAccessorModule} from '@taiga-ui/kit/directives';
@@ -22,6 +23,7 @@ import {TuiInputDateRangeDirective} from './input-date-range.directive';
         TuiActiveZoneModule,
         TuiLetModule,
         PolymorpheusModule,
+        TuiWrapperModule,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiHostedDropdownModule,

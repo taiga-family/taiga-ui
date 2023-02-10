@@ -11,7 +11,7 @@ export const TUI_RATING_DEFAULT_OPTIONS: TuiRatingOptions = {
     min: 0,
     max: 5,
     iconNormal: `tuiIconStarLarge`,
-    iconFilled: `tuiIconStarFilledLarge`,
+    iconFilled: `tuiIconStarLarge`,
 };
 
 export const TUI_RATING_OPTIONS = new InjectionToken<TuiRatingOptions>(

@@ -72,6 +72,7 @@ export abstract class AbstractExampleTuiControl
     readonly inputModeVariants: readonly TuiInputMode[] = [`text`, `numeric`];
 
     readonly customContentVariants: PolymorpheusContent[] = [
+        ``,
         CUSTOM_SVG_NAME,
         `tuiIconSearchLarge`,
         `tuiIconCalendarLarge`,
@@ -79,7 +80,7 @@ export abstract class AbstractExampleTuiControl
         `tuiIconMastercardMono`,
     ];
 
-    customContentSelected: PolymorpheusContent = ``;
+    customContentSelected = this.customContentVariants[0];
 
     inputMode = this.inputModeVariants[0];
 
@@ -107,7 +108,7 @@ export abstract class AbstractExampleTuiControl
 
     maxHeight: number | null = null;
 
-    readonly iconLeftVariants = [``, `tuiIconMailLarge`, `tuiIconPiechartLarge`];
+    readonly iconLeftVariants = [``, `tuiIconMailLarge`, `tuiIconPieChartLarge`];
 
     iconLeft = this.iconLeftVariants[0];
 

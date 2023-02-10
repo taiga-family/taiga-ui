@@ -41,7 +41,11 @@
     </tui-primitive-textfield>
 
     <ng-template #icon>
-        <div class="t-icon">
+        <div
+            tuiWrapper
+            appearance="icon"
+            class="t-icon"
+        >
             <ng-container *polymorpheusOutlet="arrow"></ng-container>
         </div>
     </ng-template>
