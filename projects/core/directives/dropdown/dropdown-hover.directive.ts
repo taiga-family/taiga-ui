@@ -4,6 +4,11 @@ import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {merge, Observable, of, Subject} from 'rxjs';
 import {delay, share, switchMap, tap} from 'rxjs/operators';
 
+import {
+    TUI_DROPDOWN_HOVER_OPTIONS,
+    TuiDropdownHoverOptions,
+} from './dropdown-hover-options.directive';
+
 @Directive({
     selector: '[tuiDropdownHover]:not(ng-container)',
     providers: [tuiAsDriver(TuiDropdownHoverDirective), TuiHoveredService],
@@ -22,16 +27,18 @@ export class TuiDropdownHoverDirective extends TuiDriver {
 
     @Input('tuiDropdownShowDelay')
     @tuiDefaultProp()
-    showDelay = 200;
+    showDelay = this.options.showDelay;
 
     @Input('tuiDropdownHideDelay')
     @tuiDefaultProp()
-    hideDelay = 500;
+    hideDelay = this.options.hideDelay;
 
     hovered = false;
 
     constructor(
         @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
+        @Inject(TUI_DROPDOWN_HOVER_OPTIONS)
+        private readonly options: TuiDropdownHoverOptions,
     ) {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
