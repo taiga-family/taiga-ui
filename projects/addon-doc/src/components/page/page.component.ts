@@ -38,7 +38,7 @@ export class TuiDocPageComponent {
     @ContentChildren(TuiDocPageTabConnectorDirective)
     readonly tabConnectors: QueryList<TuiDocPageTabConnectorDirective> = EMPTY_QUERY;
 
-    activeItemIndex = NaN;
+    activeItemIndex = 0;
 
     constructor(
         @Inject(TUI_DOC_DEFAULT_TABS) readonly defaultTabs: readonly string[],
