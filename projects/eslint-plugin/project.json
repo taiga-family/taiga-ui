@@ -12,6 +12,12 @@
                 "command": "jest --testMatch '**/projects/eslint-plugin/**/*.spec.ts'",
                 "forwardAllArgs": true
             }
+        },
+        "publish": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "ts-node ./scripts/publish.ts --path ./projects/eslint-plugin --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
+            }
         }
     }
 }
