@@ -36,7 +36,15 @@ export class TuiFontSizeComponent {
         >,
     ) {}
 
+    /**
+     * @deprecated:
+     * use {@link setFontOption}
+     */
     onClick({headingLevel, px}: Partial<TuiEditorFontOption>): void {
+        this.setFontOption({headingLevel, px});
+    }
+
+    setFontOption({headingLevel, px}: Partial<TuiEditorFontOption>): void {
         if (headingLevel) {
             this.editor.setHeading(headingLevel);
         } else {

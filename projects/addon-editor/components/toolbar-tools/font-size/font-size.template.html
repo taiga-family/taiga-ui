@@ -23,7 +23,8 @@
                 [attr.automation-id]="'tui_font__' + (item.name || '' | lowercase)"
                 [style.fontSize.px]="item.px"
                 [style.fontWeight]="item.weight"
-                (click)="onClick(item)"
+                [ngClass]="item?.ngClass || {}"
+                (click)="setFontOption(item)"
             >
                 {{ item.name }}
             </button>
