@@ -9,6 +9,7 @@ export const TUI_IS_MOBILE_RES_PROVIDER: Provider = {
         mobile$: Observable<boolean>,
         {nativeElement}: ElementRef,
     ): Observable<boolean> => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         nativeElement[`$.class._mobile`] = mobile$;
 
         return mobile$;

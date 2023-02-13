@@ -10,7 +10,7 @@ import {TUI_DEFAULT_RENDERER} from '@taiga-ui/cdk';
     encapsulation,
 })
 export class TuiTokensExample1 {
-    style = this.renderer.createElement('style');
+    style = this.renderer.createElement('style') as HTMLStyleElement;
 
     constructor(@Inject(TUI_DEFAULT_RENDERER) private readonly renderer: Renderer2) {}
 }

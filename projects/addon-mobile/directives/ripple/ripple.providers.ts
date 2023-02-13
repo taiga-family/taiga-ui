@@ -39,7 +39,7 @@ export const TUI_RIPPLE_PROVIDERS: Provider[] = [
                           const dimension = radius * 2;
                           const x = clientX - left - radius;
                           const y = clientY - top - radius;
-                          const ripple = renderer.createElement(`div`);
+                          const ripple = renderer.createElement(`div`) as HTMLDivElement;
 
                           renderer.addClass(ripple, `tui-ripple`);
                           renderer.setAttribute(

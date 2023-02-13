@@ -20,7 +20,9 @@ export class TuiStaticRequestService {
 
             xhr.onreadystatechange = () => {
                 if (xhr.readyState === 4) {
-                    const response = xhr.responseType ? xhr.response : xhr.responseText;
+                    const response: string = xhr.responseType
+                        ? (xhr.response as string)
+                        : xhr.responseText;
 
                     if (xhr.status === 200) {
                         observer.next(response);

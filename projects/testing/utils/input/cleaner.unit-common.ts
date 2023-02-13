@@ -91,7 +91,7 @@ export function tuiTestCleaner(
 
                 fixture.detectChanges();
 
-                getCleaner()!.nativeElement.click();
+                (getCleaner()?.nativeElement as HTMLInputElement).click();
                 fixture.detectChanges();
 
                 expect(inputPO.value).toBe(``);

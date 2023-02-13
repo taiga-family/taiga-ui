@@ -10,5 +10,8 @@ export function tuiGetClipboardDataText(
     return `clipboardData` in event && event.clipboardData !== null
         ? event.clipboardData.getData(format) ||
               event.clipboardData.getData(DEFAULT_FORMAT)
-        : (event as any).target.ownerDocument.defaultView.clipboardData.getData(`text`);
+        : // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
+          ((event as any).target.ownerDocument.defaultView.clipboardData.getData(
+              `text`,
+          ) as string);
 }

@@ -19,7 +19,11 @@ export class TuiFormatExample5 {
     });
 
     get formattedPhone(): string {
-        const {value, countryCode, phoneMask} = this.parametersForm.value;
+        const {value, countryCode, phoneMask} = this.parametersForm.value as {
+            value: string;
+            countryCode: string;
+            phoneMask: string;
+        };
 
         return tuiFormatPhone(value ?? '', countryCode ?? '', phoneMask ?? '');
     }

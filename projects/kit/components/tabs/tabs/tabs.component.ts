@@ -17,9 +17,9 @@ import {
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {
-    EMPTY_QUERY,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiEmptyQuery,
     tuiPure,
     TuiResizeService,
 } from '@taiga-ui/cdk';
@@ -49,7 +49,7 @@ import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs-options';
 })
 export class TuiTabsComponent implements AfterViewChecked {
     @ContentChildren(forwardRef(() => TuiTabComponent))
-    readonly children: QueryList<unknown> = EMPTY_QUERY;
+    readonly children: QueryList<unknown> = tuiEmptyQuery();
 
     @Input()
     @HostBinding('class._underline')

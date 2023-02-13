@@ -44,8 +44,10 @@ export function updatePackageJsonStructure({
     }
 
     if (isPackageLockFile && tuiIsObject(packages)) {
-        for (const packageLockJson of Object.values(packages)) {
-            if (!isTuiPackageName(packageLockJson?.name, ignores)) {
+        const pkg = Object.values(packages) as Array<Record<string, any>>;
+
+        for (const packageLockJson of pkg) {
+            if (!isTuiPackageName(packageLockJson?.name as string | undefined, ignores)) {
                 continue;
             }
 

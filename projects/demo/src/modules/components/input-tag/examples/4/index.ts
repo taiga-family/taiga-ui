@@ -11,7 +11,8 @@ import {
 } from '@taiga-ui/cdk';
 
 function createControlValidator(handler: TuiBooleanHandler<string>): ValidatorFn {
-    return ({value}: AbstractControl) => {
+    return (control: AbstractControl) => {
+        const value = control.value as readonly string[];
         const invalidTags = value ? value.filter(handler) : EMPTY_ARRAY;
 
         return invalidTags.length > 0
@@ -42,7 +43,7 @@ export class TuiInputTagExample4 {
     readonly control = new FormControl([], createControlValidator(tagValidator));
 
     get filtered(): readonly string[] {
-        return this.filterBy(this.search, this.control.value ?? []);
+        return this.filterBy(this.search, (this.control.value as string[]) ?? []);
     }
 
     @tuiPure

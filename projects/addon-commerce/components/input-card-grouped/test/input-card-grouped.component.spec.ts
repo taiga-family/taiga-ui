@@ -2,6 +2,7 @@ import {Component, TemplateRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
+    TuiCard,
     TuiInputCardGroupedComponent,
     TuiInputCardGroupedModule,
 } from '@taiga-ui/addon-commerce';
@@ -264,7 +265,7 @@ describe(`InputCardGrouped`, () => {
 
     function expectCardOutlet(): boolean {
         return (
-            fixture.componentRef.location?.nativeElement?.querySelectorAll(
+            (fixture.componentRef.location?.nativeElement as Element)?.querySelectorAll(
                 `.t-icon-outlet`,
             )?.length === 1 || false
         );
@@ -275,6 +276,6 @@ describe(`InputCardGrouped`, () => {
     }
 
     function getExpire(): string {
-        return testComponent.control.value.expire;
+        return (testComponent.control.value as TuiCard).expire;
     }
 });

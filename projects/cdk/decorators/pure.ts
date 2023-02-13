@@ -19,7 +19,7 @@ export function tuiPure<T>(
             configurable: true,
             enumerable,
             get(): T {
-                const value = get.call(this);
+                const value = get.call(this) as T;
 
                 Object.defineProperty(this, propertyKey, {enumerable, value});
 

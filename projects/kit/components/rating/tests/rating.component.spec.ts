@@ -107,7 +107,7 @@ describe(`Rating`, () => {
             }
 
             get rate(): number {
-                return this.form.get(`rating`)?.value;
+                return this.form.get(`rating`)?.value as number;
             }
         }
 

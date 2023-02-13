@@ -18,19 +18,28 @@ export class TuiMathExample1 {
     });
 
     get rounded(): number {
-        const {value, precision} = this.parametersForm.value;
+        const {value, precision} = this.parametersForm.value as {
+            value: number;
+            precision: number;
+        };
 
         return tuiRound(value ?? 1.005, precision ?? 2);
     }
 
     get floored(): number {
-        const {value, precision} = this.parametersForm.value;
+        const {value, precision} = this.parametersForm.value as {
+            value: number;
+            precision: number;
+        };
 
         return tuiFloor(value ?? 1.005, precision ?? 2);
     }
 
     get ceiled(): number {
-        const {value, precision} = this.parametersForm.value;
+        const {value, precision} = this.parametersForm.value as {
+            value: number;
+            precision: number;
+        };
 
         return tuiCeil(value ?? 1.005, precision ?? 2);
     }

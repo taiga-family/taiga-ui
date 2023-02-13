@@ -12,12 +12,12 @@ import {
 } from '@angular/core';
 import {
     AbstractTuiInteractive,
-    EMPTY_QUERY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiAsFocusableItemAccessor,
     tuiClamp,
     TuiContextWithImplicit,
     tuiDefaultProp,
+    tuiEmptyQuery,
     TuiFocusableElementAccessor,
     tuiIsNativeFocusedIn,
     TuiNativeFocusableElement,
@@ -50,7 +50,7 @@ export class TuiPaginationComponent
     implements TuiFocusableElementAccessor
 {
     @ViewChildren('element', {read: TUI_FOCUSABLE_ITEM_ACCESSOR})
-    private readonly elements: QueryList<TuiFocusableElementAccessor> = EMPTY_QUERY;
+    private readonly elements: QueryList<TuiFocusableElementAccessor> = tuiEmptyQuery();
 
     @Input()
     @tuiDefaultProp(nonNegativeInteger, 'Must be non-negative integer')

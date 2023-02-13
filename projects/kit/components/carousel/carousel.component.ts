@@ -14,10 +14,10 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {
-    EMPTY_QUERY,
     TUI_IS_MOBILE,
     tuiClamp,
     tuiDefaultProp,
+    tuiEmptyQuery,
     TuiItemDirective,
     tuiPure,
     TuiSwipeDirection,
@@ -49,7 +49,7 @@ export class TuiCarouselComponent {
     readonly indexChange = new EventEmitter<number>();
 
     @ContentChildren(TuiItemDirective, {read: TemplateRef})
-    readonly items: QueryList<TemplateRef<Record<string, unknown>>> = EMPTY_QUERY;
+    readonly items: QueryList<TemplateRef<Record<string, unknown>>> = tuiEmptyQuery();
 
     @HostBinding('class._transitioned')
     transitioned = true;

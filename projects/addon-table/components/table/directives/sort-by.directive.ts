@@ -7,7 +7,7 @@ import {
     QueryList,
 } from '@angular/core';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
-import {EMPTY_QUERY, tuiDefaultProp} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiEmptyQuery} from '@taiga-ui/cdk';
 import {filter, map} from 'rxjs/operators';
 
 // TODO: find the best way for prevent cycle
@@ -20,7 +20,7 @@ import {TuiTableDirective} from './table.directive';
 })
 export class TuiSortByDirective<T extends Partial<Record<keyof T, any>>> {
     @ContentChildren(TuiSortableDirective, {descendants: true})
-    private readonly sortables: QueryList<TuiSortableDirective<T>> = EMPTY_QUERY;
+    private readonly sortables: QueryList<TuiSortableDirective<T>> = tuiEmptyQuery();
 
     @Input()
     @tuiDefaultProp()

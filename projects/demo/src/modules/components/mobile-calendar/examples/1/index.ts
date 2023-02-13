@@ -25,7 +25,9 @@ export class TuiMobileCalendarExample1 {
     readonly date$ = this.control.valueChanges.pipe(
         startWith(this.control.value),
         withLatestFrom(this.months),
-        map(([value, months]) => this.getParsed(value, months)),
+        map(([value, months]: [TuiDay | null, string[]]) =>
+            this.getParsed(value, months),
+        ),
     );
 
     constructor(

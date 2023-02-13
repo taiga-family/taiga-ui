@@ -42,10 +42,10 @@ xdescribe(`TuiPan directive`, () => {
     });
 
     it(`emits delta`, () => {
-        sendTouchEvent(0, 0, testElement.nativeElement, `touchstart`);
-        sendTouchEvent(0, 0, testElement.nativeElement, `touchmove`);
-        sendTouchEvent(0, 20, testElement.nativeElement, `touchmove`);
-        sendTouchEvent(0, 20, testElement.nativeElement, `touchend`);
+        sendTouchEvent(0, 0, testElement.nativeElement as HTMLElement, `touchstart`);
+        sendTouchEvent(0, 0, testElement.nativeElement as HTMLElement, `touchmove`);
+        sendTouchEvent(0, 20, testElement.nativeElement as HTMLElement, `touchmove`);
+        sendTouchEvent(0, 20, testElement.nativeElement as HTMLElement, `touchend`);
 
         fixture.detectChanges();
 

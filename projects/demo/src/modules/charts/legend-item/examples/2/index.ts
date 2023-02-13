@@ -12,7 +12,7 @@ import {TuiAlertService, tuiFormatNumber} from '@taiga-ui/core';
     encapsulation,
 })
 export class TuiLegendItemExample2 {
-    private enabled = new Array(5).fill(true);
+    private enabled = new Array(5).fill(true) as boolean[];
 
     readonly data = [13769, 12367, 10172, 3018, 2592];
     readonly sum = tuiSum(...this.data);
@@ -54,7 +54,7 @@ export class TuiLegendItemExample2 {
     @tuiPure
     private getValue(
         data: readonly number[],
-        enabled: readonly number[],
+        enabled: readonly boolean[],
     ): readonly number[] {
         return data.map((value, index) => (enabled[index] ? value : 0));
     }

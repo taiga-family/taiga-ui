@@ -6,6 +6,16 @@ import {QueryList} from '@angular/core';
  * NOTE: Be careful subscribing to 'changes'
  */
 export const EMPTY_QUERY = new QueryList<any>();
+
+/**
+ * @note:
+ * auto infer T for
+ * private readonly list: QueryList<string> = tuiEmptyQuery<string>();
+ */
+export function tuiEmptyQuery<T>(): QueryList<T> {
+    return EMPTY_QUERY as QueryList<T>;
+}
+
 export const EMPTY_ARRAY: [] = [];
 export const EMPTY_FUNCTION: (...args: any[]) => void = () => {};
 

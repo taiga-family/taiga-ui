@@ -76,7 +76,7 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
 
         if (popupOpened) {
             this.historyRef.pushState(FAKE_HISTORY_STATE, this.titleService.getTitle());
-        } else if (isFakeHistoryState(this.historyRef.state)) {
+        } else if (isFakeHistoryState(this.historyRef.state as Record<string, any>)) {
             this.historyRef.back();
         }
     }

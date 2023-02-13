@@ -19,7 +19,11 @@ export class TuiMathExample5 {
     });
 
     get clamped(): number {
-        const {value, min, max} = this.parametersForm.value;
+        const {value, min, max} = this.parametersForm.value as {
+            value: number;
+            min: number;
+            max: number;
+        };
 
         return tuiClamp(value ?? 0, min ?? 5, max ?? 42);
     }

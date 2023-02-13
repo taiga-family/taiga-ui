@@ -45,9 +45,7 @@ export class ExampleTuiExpandComponent {
             this.delayed = false;
             this.changeDetectorRef.detectChanges();
 
-            if (this.expand) {
-                this.expand.nativeElement.dispatchEvent(event);
-            }
+            (this.expand?.nativeElement as HTMLElement).dispatchEvent(event);
         }, 5000);
     }
 }

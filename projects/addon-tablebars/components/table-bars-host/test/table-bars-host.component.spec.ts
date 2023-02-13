@@ -50,6 +50,8 @@ describe(`TableBarsHost`, () => {
         fixture.detectChanges();
         component = testComponent.component;
         service = TestBed.inject(TuiTableBarsService);
+
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         (service.bar$ as any)._events = [];
     });
 
@@ -101,14 +103,18 @@ describe(`TableBarsHost`, () => {
 
         fixture.detectChanges();
 
-        expect(getBar().nativeElement.classList.contains(`t-bar_light`)).toBe(false);
+        expect(
+            (getBar().nativeElement as HTMLElement).classList.contains(`t-bar_light`),
+        ).toBe(false);
     });
 
     it(`pi mode: light tableBar light`, () => {
         service.open(title, {mode: `onDark`}).pipe(take(1)).subscribe();
         fixture.detectChanges();
 
-        expect(getBar().nativeElement.classList.contains(`t-bar_light`)).toBe(true);
+        expect(
+            (getBar().nativeElement as HTMLElement).classList.contains(`t-bar_light`),
+        ).toBe(true);
     });
 
     it(`there is no close button by default`, () => {
@@ -136,7 +142,7 @@ describe(`TableBarsHost`, () => {
         subscription = service.open(title, {hasCloseButton: true}).subscribe();
         fixture.detectChanges();
 
-        getCloseButton().nativeElement.click();
+        (getCloseButton().nativeElement as HTMLElement).click();
 
         expect(result).toBe(null);
     });

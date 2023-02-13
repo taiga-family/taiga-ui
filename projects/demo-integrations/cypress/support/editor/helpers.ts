@@ -26,7 +26,7 @@ export function tuiVisitEditorApiPage({
 }
 
 export function tuiGetDemoContent(): Cypress.Chainable<JQuery> {
-    return cy.get(`#demo-content`).tuiScrollIntoView();
+    return cy.get(`#demo-content`).tuiScrollIntoView() as Cypress.Chainable<JQuery>;
 }
 
 export function tuiClearEditor(): void {

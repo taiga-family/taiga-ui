@@ -21,11 +21,10 @@ const LEFT = 1;
     providers: [tuiAsPositionAccessor(TuiHintPositionDirective)],
 })
 export class TuiHintPositionDirective implements TuiPositionAccessor {
-    private readonly points: Record<TuiHintDirection, [number, number]> =
-        TUI_HINT_DIRECTIONS.reduce(
-            (acc, direction) => ({...acc, [direction]: [0, 0]}),
-            {} as any,
-        );
+    private readonly points = TUI_HINT_DIRECTIONS.reduce(
+        (acc, direction) => ({...acc, [direction]: [0, 0]}),
+        {} as Record<TuiHintDirection, [number, number]>,
+    );
 
     @Input('tuiHintDirection')
     @tuiDefaultProp()

@@ -135,7 +135,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         // https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/ready
         // The promise will only resolve once the document has completed loading fonts,
         // layout operations are completed, and no further font loads are needed.
-        .then(document => (document as any)?.fonts.ready)
+        .then(async (document: Document) => document?.fonts.ready)
         .then(() => cy.log(`Font loading completed`));
 
     if (waitRenderedFont) {

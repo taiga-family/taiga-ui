@@ -86,7 +86,7 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
     }
 
     protected get value(): T | null {
-        return this.abstractControl?.value ?? this.control.value;
+        return this.abstractControl?.value ?? (this.control.value as T | null);
     }
 
     protected get selected(): boolean {

@@ -41,7 +41,7 @@ describe(`Filter`, () => {
     })
     class TestComponent {
         @ViewChild(TuiFilterComponent, {static: true})
-        component!: TuiFilterComponent<any>;
+        component!: TuiFilterComponent<ItemWithBadge | string>;
 
         disabledItemHandler: TuiBooleanHandler<any> = ALWAYS_FALSE_HANDLER;
 
@@ -93,7 +93,7 @@ describe(`Filter`, () => {
 
     describe(`value`, () => {
         it(`default absent`, () => {
-            expect(testComponent.control.value.length).toBe(0);
+            expect((testComponent.control.value as string).length).toBe(0);
         });
 
         it(`set from checked items`, () => {
@@ -113,7 +113,7 @@ describe(`Filter`, () => {
 
     describe(`content items`, () => {
         it(`passed correctly if items is an array of strings`, () => {
-            expect(getContent().nativeElement.textContent.trim()).toBe(
+            expect((getContent().nativeElement as HTMLElement)?.textContent?.trim()).toBe(
                 `Clothes and footwear`,
             );
         });
@@ -121,7 +121,7 @@ describe(`Filter`, () => {
         it(`passed correctly if items is an array of objects with toString`, () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
-            expect(getContent().nativeElement.textContent.trim()).toBe(
+            expect((getContent().nativeElement as HTMLElement)?.textContent?.trim()).toBe(
                 `Focused Zone  10`,
             );
         });
@@ -150,20 +150,28 @@ describe(`Filter`, () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
 
-            expect(Number(getBadge().nativeElement.textContent)).toBe(BADGE_VALUE);
+            expect(Number((getBadge().nativeElement as HTMLElement).textContent)).toBe(
+                BADGE_VALUE,
+            );
         });
     });
 
     describe(`disabled element`, () => {
         it(`false by default`, () => {
-            expect(getCheckbox().nativeElement.classList.contains(`_disabled`)).toBe(
-                false,
-            );
+            expect(
+                (getCheckbox().nativeElement as HTMLElement).classList.contains(
+                    `_disabled`,
+                ),
+            ).toBe(false);
         });
 
         it(`present if disabledHandler returned true`, () => {
-            testComponent.disabledItemHandler = item => item.indexOf(`footwear`) > -1;
+            testComponent.disabledItemHandler = (item: string) =>
+                item.includes(`footwear`);
+
             fixture.detectChanges();
+
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             expect(getCheckbox().componentInstance.ngControl.isDisabled).toBe(true);
         });
     });

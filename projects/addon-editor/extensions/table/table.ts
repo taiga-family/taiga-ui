@@ -13,23 +13,28 @@ export const TuiTable = Table.extend({
                     ?.content as unknown as ProseMirrorNode[]
             )[0]; // use first row to determine width of table;
 
-            (tr?.content as unknown as ProseMirrorNode)?.content.forEach(td => {
-                if (td.attrs.colwidth) {
-                    td.attrs.colwidth.forEach((col: any) => {
-                        if (!col) {
-                            fixedWidth = false;
-                            totalWidth += this.options.cellMinWidth;
-                        } else {
-                            totalWidth += col;
-                        }
-                    });
-                } else {
-                    fixedWidth = false;
-                    const colspan = td.attrs.colspan ? td.attrs.colspan : 1;
+            (tr?.content as unknown as ProseMirrorNode)?.content.forEach(
+                (td: ProseMirrorNode) => {
+                    if (td.attrs.colwidth) {
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
+                        td.attrs.colwidth.forEach((col: any) => {
+                            if (!col) {
+                                fixedWidth = false;
+                                totalWidth += this.options.cellMinWidth;
+                            } else {
+                                totalWidth += col;
+                            }
+                        });
+                    } else {
+                        fixedWidth = false;
+                        const colspan = td.attrs.colspan
+                            ? (td.attrs.colspan as number)
+                            : 1;
 
-                    totalWidth += this.options.cellMinWidth * colspan;
-                }
-            });
+                        totalWidth += this.options.cellMinWidth * colspan;
+                    }
+                },
+            );
         } catch (error) {
             fixedWidth = false;
         }

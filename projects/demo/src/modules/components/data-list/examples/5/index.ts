@@ -31,7 +31,7 @@ export class TuiDataListExample5 {
     );
 
     get testValue(): string | null | undefined {
-        return this.testForm.get('testValue')?.value;
+        return this.testForm.get('testValue')?.value as string | null | undefined;
     }
 
     get moneyValue(): number {

@@ -79,7 +79,7 @@ export class TuiSliderComponent {
              * If developer uses `[(ngModel)]` and programmatically change value,
              * the `elementRef.nativeElement.value` is equal to the previous value at this moment.
              */
-            return control.viewModel;
+            return control.viewModel as number;
         }
 
         return Number(elementRef.nativeElement.value) || 0;

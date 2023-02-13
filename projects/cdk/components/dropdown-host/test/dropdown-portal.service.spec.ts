@@ -37,8 +37,8 @@ describe(`PortalService`, () => {
 
         try {
             service.add(a);
-        } catch (err) {
-            actual = err.message;
+        } catch (err: unknown) {
+            actual = (err as Error).message;
         }
 
         expect(actual).toEqual(`Portals cannot be used without TuiPortalHostComponent`);

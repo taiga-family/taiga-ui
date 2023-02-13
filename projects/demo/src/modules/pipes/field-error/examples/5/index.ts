@@ -16,7 +16,7 @@ const latinChars = /^[a-zA-Z]+$/;
 
 function asyncValidatorFn(isCypress: boolean): AsyncValidatorFn {
     return (field: AbstractControl) => {
-        return field.value && latinChars.test(field.value)
+        return field.value && latinChars.test(field.value as string)
             ? of(null)
             : of({
                   error: new TuiValidationError('Only latin letters allowed'),

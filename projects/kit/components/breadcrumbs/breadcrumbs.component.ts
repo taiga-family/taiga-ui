@@ -8,7 +8,7 @@ import {
     QueryList,
     TemplateRef,
 } from '@angular/core';
-import {EMPTY_QUERY, tuiDefaultProp, TuiItemDirective} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiEmptyQuery, TuiItemDirective} from '@taiga-ui/cdk';
 import {TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
 
 @Component({
@@ -30,7 +30,7 @@ export class TuiBreadcrumbsComponent extends TuiModeDirective {
     size: TuiSizeL = 'm';
 
     @ContentChildren(TuiItemDirective, {read: TemplateRef})
-    readonly items: QueryList<TemplateRef<Record<string, unknown>>> = EMPTY_QUERY;
+    readonly items: QueryList<TemplateRef<Record<string, unknown>>> = tuiEmptyQuery();
 
     override readonly mode = 'onLight';
 }

@@ -8,7 +8,7 @@ function tuiCreateTimePartMask(
     prefix?: string,
 ): Array<RegExp | string> {
     const {length} = String(maxPartValue);
-    const regExp = new Array(length).fill(TUI_DIGIT_REGEXP);
+    const regExp = new Array(length).fill(TUI_DIGIT_REGEXP) as Array<RegExp | string>;
 
     if (prefix) {
         regExp.unshift(prefix);

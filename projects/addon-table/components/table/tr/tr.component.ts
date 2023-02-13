@@ -7,7 +7,7 @@ import {
     Inject,
     QueryList,
 } from '@angular/core';
-import {EMPTY_QUERY, tuiQueryListChanges} from '@taiga-ui/cdk';
+import {tuiEmptyQuery, tuiQueryListChanges} from '@taiga-ui/cdk';
 import {ReplaySubject} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
 
@@ -28,7 +28,7 @@ export class TuiTrComponent<T extends Partial<Record<keyof T, any>>>
     implements AfterContentInit
 {
     @ContentChildren(forwardRef(() => TuiCellDirective))
-    private readonly cells: QueryList<TuiCellDirective> = EMPTY_QUERY;
+    private readonly cells: QueryList<TuiCellDirective> = tuiEmptyQuery();
 
     private readonly contentReady$ = new ReplaySubject<boolean>(1);
 

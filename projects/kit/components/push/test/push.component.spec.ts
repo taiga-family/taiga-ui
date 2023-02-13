@@ -54,7 +54,9 @@ describe(`Push with TUI_PUSH_OPTIONS`, () => {
 
             const labelElement = getLabelElement();
 
-            expect(labelElement.nativeElement.textContent.trim()).toBe(heading);
+            expect((labelElement.nativeElement as HTMLElement)?.textContent?.trim()).toBe(
+                heading,
+            );
         });
     });
 });

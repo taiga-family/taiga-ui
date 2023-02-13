@@ -58,7 +58,11 @@ describe(`Pdf Viewer with TUI_PDF_VIEWER_OPTIONS`, () => {
                 .subscribe();
             fixture.detectChanges();
 
-            expect(getLabelElement()!.nativeElement.textContent.trim()).toBe(label);
+            expect(
+                (
+                    getLabelElement()?.nativeElement as HTMLInputElement
+                )?.textContent?.trim(),
+            ).toBe(label);
         });
     });
 });

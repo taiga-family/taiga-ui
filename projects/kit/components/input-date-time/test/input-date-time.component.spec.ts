@@ -274,7 +274,7 @@ describe(`InputDateTime`, () => {
 
             const calendarCell = getCalendarCell(9);
 
-            calendarCell?.nativeElement.click();
+            (calendarCell?.nativeElement as HTMLInputElement).click();
             fixture.detectChanges();
 
             expect(inputPO.value).toBe(`04/09/2010, 20:18`);
@@ -322,7 +322,7 @@ describe(`InputDateTime`, () => {
 
             const calendarCell = getCalendarCell(9);
 
-            calendarCell?.nativeElement.click();
+            (calendarCell?.nativeElement as HTMLInputElement).click();
             fixture.detectChanges();
 
             expect(inputPO.value).toBe(`2010-04-09, 20:18`);
@@ -408,7 +408,7 @@ describe(`InputDateTime`, () => {
 
             const calendarCell = getCalendarCell(17);
 
-            calendarCell?.nativeElement.click();
+            (calendarCell?.nativeElement as HTMLInputElement).click();
             fixture.detectChanges();
 
             expect(inputPO.value).toBe(`17.03.2022, 12:11`);
@@ -427,18 +427,21 @@ describe(`InputDateTime`, () => {
             testContext.calendarCellAutomationId,
         );
         const cell = cells.find(
-            debugEl => debugEl.nativeElement.textContent.trim() === `${dayNumber}`,
+            debugEl =>
+                (debugEl.nativeElement as HTMLInputElement)?.textContent?.trim() ===
+                `${dayNumber}`,
         );
 
-        cell?.nativeElement.click();
+        (cell?.nativeElement as HTMLInputElement).click();
         fixture.detectChanges();
     }
 
     function mouseDownOnTextfield(): void {
-        getTextfield()?.nativeElement.dispatchEvent(
+        (getTextfield()?.nativeElement as HTMLInputElement).dispatchEvent(
             new MouseEvent(`mousedown`, {bubbles: true}),
         );
-        getTextfield()?.nativeElement.click();
+
+        (getTextfield()?.nativeElement as HTMLInputElement).click();
         fixture.detectChanges();
     }
 
@@ -454,8 +457,12 @@ describe(`InputDateTime`, () => {
         return (
             pageObject
                 .getAllByAutomationId(testContext.calendarCellAutomationId)
-                .find(el => Number(el.nativeElement.textContent.trim()) === dayNumber) ||
-            null
+                .find(
+                    el =>
+                        Number(
+                            (el.nativeElement as HTMLInputElement)?.textContent?.trim(),
+                        ) === dayNumber,
+                ) || null
         );
     }
 });

@@ -25,7 +25,7 @@ export abstract class AbstractTuiTextfieldHost<T extends AbstractTuiControl<any>
     }
 
     get value(): string {
-        return this.host.value?.toString() || ``;
+        return (this.host.value as string)?.toString() || ``;
     }
 
     abstract onValueChange(value: string): void;

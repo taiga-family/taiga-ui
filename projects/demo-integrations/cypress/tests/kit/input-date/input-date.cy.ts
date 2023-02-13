@@ -64,7 +64,7 @@ describe(`InputDate`, () => {
             return cy
                 .get(`#demo-content`)
                 .findByAutomationId(`tui-primitive-textfield__native-input`)
-                .tuiScrollIntoView();
+                .tuiScrollIntoView() as Cypress.Chainable<JQuery>;
         }
     });
 });

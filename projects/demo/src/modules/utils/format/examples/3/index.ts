@@ -19,7 +19,7 @@ export class TuiFormatExample3 {
     });
 
     get currency(): string | null {
-        const {currency} = this.parametersForm.value;
+        const {currency} = this.parametersForm.value as {currency: string};
 
         return tuiGetCurrencySymbol(currency as unknown as TuiCurrencyVariants);
     }

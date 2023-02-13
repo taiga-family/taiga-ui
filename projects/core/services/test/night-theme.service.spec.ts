@@ -26,6 +26,7 @@ describe(`TuiNightThemeService`, () => {
 
     beforeEach(() => {
         service = TestBed.inject(TuiNightThemeService);
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         mock.matches = true as any;
     });
 
@@ -46,6 +47,7 @@ describe(`TuiNightThemeService`, () => {
             value = v;
         });
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         mock.matches = false as any;
         mock.dispatchEvent(new Event(`change`));
 

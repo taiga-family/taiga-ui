@@ -18,7 +18,10 @@ export class TuiMathExample4 {
     });
 
     get quantized(): number {
-        const {value, quantum} = this.parametersForm.value;
+        const {value, quantum} = this.parametersForm.value as {
+            value: number;
+            quantum: number;
+        };
 
         return tuiQuantize(value ?? 3, quantum ?? 2);
     }

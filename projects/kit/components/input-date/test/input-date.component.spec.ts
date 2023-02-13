@@ -131,7 +131,7 @@ describe(`InputDate (base cases when TUI_DATE_FORMAT = DMY)`, () => {
 
         const calendarCell = getCalendarCell(14);
 
-        calendarCell?.nativeElement.click();
+        (calendarCell?.nativeElement as HTMLInputElement).click();
         fixture.detectChanges();
         await fixture.whenStable();
 
@@ -219,7 +219,7 @@ describe(`InputDate + TUI_DATE_FORMAT = YMD integration`, () => {
     it(`accepts yyyy.mm.dd`, () => {
         inputPO.sendText(`2021.12.23`);
 
-        const typedDay = testComponent.control.value;
+        const typedDay = testComponent.control.value as TuiDay;
 
         expect(inputPO.value).toBe(`2021.12.23`);
         expect(typedDay.day).toBe(23);
@@ -230,7 +230,7 @@ describe(`InputDate + TUI_DATE_FORMAT = YMD integration`, () => {
     it(`does not accept dd.mm.yyyy`, () => {
         inputPO.sendText(`23.12.2021`);
 
-        const typedDay = testComponent.control.value;
+        const typedDay = testComponent.control.value as TuiDay;
 
         expect(inputPO.value).toBe(`2312.12.21`);
         expect(typedDay.day).toBe(21);
@@ -241,7 +241,7 @@ describe(`InputDate + TUI_DATE_FORMAT = YMD integration`, () => {
     it(`does not accept mm.dd.yyyy (and set min day if it is less min day)`, () => {
         inputPO.sendText(`12.23.2021`);
 
-        const typedDay = testComponent.control.value;
+        const typedDay = testComponent.control.value as TuiDay;
 
         expect(inputPO.value).toBe(`1900.01.01`);
         expect(typedDay.day).toBe(1);
@@ -256,7 +256,7 @@ describe(`InputDate + TUI_DATE_FORMAT = YMD integration`, () => {
 
         const calendarCell = getCalendarCell(22);
 
-        calendarCell?.nativeElement.click();
+        (calendarCell?.nativeElement as HTMLInputElement).click();
         fixture.detectChanges();
         await fixture.whenStable();
 
@@ -279,7 +279,7 @@ describe(`InputDate + TUI_DATE_FORMAT = MDY integration`, () => {
     it(`accepts mm.dd.yyyy`, () => {
         inputPO.sendText(`12.23.2021`);
 
-        const typedDay = testComponent.control.value;
+        const typedDay = testComponent.control.value as TuiDay;
 
         expect(inputPO.value).toBe(`12.23.2021`);
         expect(typedDay.day).toBe(23);
@@ -290,7 +290,7 @@ describe(`InputDate + TUI_DATE_FORMAT = MDY integration`, () => {
     it(`does not accept dd.mm.yyyy`, () => {
         inputPO.sendText(`23.12.2021`);
 
-        const typedDay = testComponent.control.value;
+        const typedDay = testComponent.control.value as TuiDay;
 
         expect(inputPO.value).toBe(`12.12.2021`);
         expect(typedDay.day).toBe(12);
@@ -301,7 +301,7 @@ describe(`InputDate + TUI_DATE_FORMAT = MDY integration`, () => {
     it(`does not accept yyyy.mm.dd (and set min day if it is less min day)`, () => {
         inputPO.sendText(`2021.12.23`);
 
-        const typedDay = testComponent.control.value;
+        const typedDay = testComponent.control.value as TuiDay;
 
         expect(inputPO.value).toBe(`01.01.1900`);
         expect(typedDay.day).toBe(1);
@@ -316,7 +316,7 @@ describe(`InputDate + TUI_DATE_FORMAT = MDY integration`, () => {
 
         const calendarCell = getCalendarCell(9);
 
-        calendarCell?.nativeElement.click();
+        (calendarCell?.nativeElement as HTMLInputElement).click();
         fixture.detectChanges();
         await fixture.whenStable();
 
@@ -342,7 +342,7 @@ describe(`InputDate + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR ="/" (USA forma
     it(`accepts valid mm/dd/yyyy`, () => {
         inputPO.sendText(`12272021`);
 
-        const typedDay = testComponent.control.value;
+        const typedDay = testComponent.control.value as TuiDay;
 
         expect(inputPO.value).toBe(`12/27/2021`);
         expect(typedDay.day).toBe(27);
@@ -353,7 +353,7 @@ describe(`InputDate + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR ="/" (USA forma
     it(`replaces dots by custom separator`, () => {
         inputPO.sendText(`05.14.1988`);
 
-        const typedDay = testComponent.control.value;
+        const typedDay = testComponent.control.value as TuiDay;
 
         expect(inputPO.value).toBe(`05/14/1988`);
         expect(typedDay.day).toBe(14);
@@ -422,7 +422,7 @@ describe(`InputDate + TUI_DATE_VALUE_TRANSFORMER`, () => {
 
         const calendarCell = getCalendarCell(20);
 
-        calendarCell?.nativeElement.click();
+        (calendarCell?.nativeElement as HTMLInputElement).click();
         fixture.detectChanges();
         await fixture.whenStable();
 
@@ -439,10 +439,10 @@ describe(`InputDate + TUI_DATE_VALUE_TRANSFORMER`, () => {
 });
 
 function mouseDownOnTextfield(): void {
-    getTextfield()!.nativeElement.dispatchEvent(
+    (getTextfield()?.nativeElement as HTMLInputElement).dispatchEvent(
         new MouseEvent(`mousedown`, {bubbles: true}),
     );
-    getTextfield()!.nativeElement.click();
+    (getTextfield()?.nativeElement as HTMLInputElement).click();
     fixture.detectChanges();
 }
 
@@ -458,6 +458,11 @@ function getCalendarCell(dayNumber: number): DebugElement | null {
     return (
         pageObject
             .getAllByAutomationId(`tui-primitive-calendar__cell`)
-            .find(el => Number(el.nativeElement.textContent.trim()) === dayNumber) || null
+            .find(
+                el =>
+                    Number(
+                        (el.nativeElement as HTMLInputElement)?.textContent?.trim(),
+                    ) === dayNumber,
+            ) || null
     );
 }

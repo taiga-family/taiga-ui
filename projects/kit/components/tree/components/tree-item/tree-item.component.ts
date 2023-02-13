@@ -9,7 +9,7 @@ import {
     Inject,
     QueryList,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk';
+import {tuiEmptyQuery} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Subject} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
@@ -37,8 +37,8 @@ import {TUI_TREE_ITEM_PROVIDERS} from './tree-item.providers';
     },
 })
 export class TuiTreeItemComponent implements DoCheck {
-    @ContentChildren(TUI_TREE_NODE as any)
-    private readonly nested: QueryList<unknown> = EMPTY_QUERY;
+    @ContentChildren(TUI_TREE_NODE)
+    private readonly nested: QueryList<unknown> = tuiEmptyQuery();
 
     private readonly change$ = new Subject<void>();
 

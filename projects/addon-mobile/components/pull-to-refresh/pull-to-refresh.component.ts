@@ -26,11 +26,11 @@ function translateY(distance: number): string {
 })
 export class TuiPullToRefreshComponent {
     @Output()
-    readonly pulled: Observable<void> = this.pulling$.pipe(
+    readonly pulled = this.pulling$.pipe(
         distinctUntilChanged(),
         filter(distance => distance === PULLED_DISTANCE),
         map(() => undefined),
-    );
+    ) as Observable<void>;
 
     readonly pulledInPercent$: Observable<number> = this.pulling$.pipe(
         map(distance => (distance * 100) / PULLED_DISTANCE),
@@ -48,7 +48,7 @@ export class TuiPullToRefreshComponent {
               ),
               map(translateY),
           )
-        : of(null);
+        : (of(null) as Observable<string | null>);
 
     constructor(
         @Inject(TUI_IS_IOS) readonly isIOS: boolean,

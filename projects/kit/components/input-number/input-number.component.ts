@@ -14,11 +14,11 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
-    EMPTY_QUERY,
     TUI_IS_IOS,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiDefaultProp,
+    tuiEmptyQuery,
     TuiFocusableElementAccessor,
     TuiInputMode,
     TuiMapper,
@@ -88,7 +88,7 @@ export class TuiInputNumberComponent
     postfix = '';
 
     @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
-    readonly polymorpheusValueContent: QueryList<unknown> = EMPTY_QUERY;
+    readonly polymorpheusValueContent: QueryList<unknown> = tuiEmptyQuery();
 
     constructor(
         @Optional()

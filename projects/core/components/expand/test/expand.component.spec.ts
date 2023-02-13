@@ -147,6 +147,7 @@ describe(`expand`, () => {
     function transitionend(): void {
         const event = new Event(`transitionend.self`);
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         (event as any).propertyName = `opacity`;
         testComponent.expandElement.nativeElement.dispatchEvent(event);
         fixture.detectChanges();

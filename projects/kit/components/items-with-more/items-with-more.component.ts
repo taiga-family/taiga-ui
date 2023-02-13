@@ -12,9 +12,9 @@ import {
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {
-    EMPTY_QUERY,
     TuiContextWithImplicit,
     TuiDestroyService,
+    tuiEmptyQuery,
     TuiItemDirective,
     TuiResizeService,
 } from '@taiga-ui/cdk';
@@ -46,7 +46,7 @@ import {TuiMoreDirective} from './more.directive';
 })
 export class TuiItemsWithMoreComponent {
     @ContentChildren(TuiItemDirective, {read: TemplateRef, descendants: true})
-    readonly items: QueryList<TemplateRef<unknown>> = EMPTY_QUERY;
+    readonly items: QueryList<TemplateRef<unknown>> = tuiEmptyQuery();
 
     @ContentChild(TuiMoreDirective, {read: TemplateRef})
     readonly more?: TemplateRef<TuiContextWithImplicit<number>>;

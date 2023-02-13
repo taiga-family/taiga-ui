@@ -22,7 +22,7 @@ export class TuiHostedDropdownExample4 {
     readonly arrow = TUI_ARROW;
 
     private get value(): readonly string[] {
-        return this.form.get('control')?.value || [];
+        return (this.form.get('control')?.value as readonly string[]) || [];
     }
 
     get appearance(): string {

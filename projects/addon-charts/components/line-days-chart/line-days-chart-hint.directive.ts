@@ -11,11 +11,11 @@ import {
 } from '@angular/core';
 import {tuiLineChartDrivers} from '@taiga-ui/addon-charts/components/line-chart';
 import {
-    EMPTY_QUERY,
     TuiContextWithImplicit,
     TuiDay,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiEmptyQuery,
     TuiHoveredService,
     tuiPure,
     tuiZonefree,
@@ -36,7 +36,7 @@ import {TuiLineDaysChartComponent} from './line-days-chart.component';
 })
 export class TuiLineDaysChartHintDirective implements AfterContentInit {
     @ContentChildren(forwardRef(() => TuiLineDaysChartComponent))
-    private readonly charts: QueryList<TuiLineDaysChartComponent> = EMPTY_QUERY;
+    private readonly charts: QueryList<TuiLineDaysChartComponent> = tuiEmptyQuery();
 
     @Input('tuiLineChartHint')
     @tuiDefaultProp()

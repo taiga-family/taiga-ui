@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiFormatNumber} from '@taiga-ui/core';
+import {TuiDecimalSymbol, tuiFormatNumber} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-format-example-6',
@@ -20,8 +20,13 @@ export class TuiFormatExample6 {
     });
 
     get formattedNumber(): string {
-        const {value, decimalLimit, decimalSeparator, thousandSeparator} =
-            this.parametersForm.value;
+        const {value, decimalLimit, decimalSeparator, thousandSeparator} = this
+            .parametersForm.value as {
+            value: number;
+            decimalLimit: number;
+            decimalSeparator: TuiDecimalSymbol;
+            thousandSeparator: string;
+        };
 
         return tuiFormatNumber(value ?? 123456.789, {
             decimalLimit: decimalLimit ?? 2,

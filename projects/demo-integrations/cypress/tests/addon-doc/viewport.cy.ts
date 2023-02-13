@@ -50,9 +50,9 @@ describe(`Viewport`, () => {
     });
 
     describe(`Check fonts`, () => {
-        const fonts: Array<[string, {width: number; font: string}]> = Object.entries(
-            Cypress.env(`fonts`) ?? [],
-        );
+        const fonts = Object.entries(
+            (Cypress.env(`fonts`) as Record<string, any>) ?? [],
+        ) as Array<[string, {width: number; font: string}]>;
 
         for (const [breakpoint, {width, font}] of fonts) {
             it(breakpoint, () => {

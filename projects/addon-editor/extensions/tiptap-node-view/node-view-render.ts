@@ -60,6 +60,7 @@ class TuiNodeView extends NodeView<
             decorations: this.decorations,
             selected: false,
             extension: this.extension,
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-return
             getPos: () => this.getPos(),
             updateAttributes: (attributes = {}) => this.updateAttributes(attributes),
             deleteNode: () => this.deleteNode(),
@@ -70,7 +71,9 @@ class TuiNodeView extends NodeView<
 
         // Register drag handler
         if (this.extension.config.draggable) {
-            this.renderer.elementRef.nativeElement.ondragstart = (e: DragEvent) => {
+            (this.renderer.elementRef.nativeElement as HTMLElement).ondragstart = (
+                e: DragEvent,
+            ) => {
                 this.onDragStart(e);
             };
         }

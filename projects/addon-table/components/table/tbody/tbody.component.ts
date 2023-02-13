@@ -10,7 +10,7 @@ import {
     Output,
     QueryList,
 } from '@angular/core';
-import {EMPTY_QUERY, tuiDefaultProp} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiEmptyQuery} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiRowDirective} from '../directives/row.directive';
@@ -48,7 +48,7 @@ export class TuiTbodyComponent<T extends Partial<Record<keyof T, any>>> {
     readonly row?: TuiRowDirective<T>;
 
     @ContentChildren(forwardRef(() => TuiTrComponent))
-    readonly rows: QueryList<TuiTrComponent<T>> = EMPTY_QUERY;
+    readonly rows: QueryList<TuiTrComponent<T>> = tuiEmptyQuery();
 
     constructor(
         @Inject(TuiTableSortPipe) private readonly pipe: TuiTableSortPipe<T>,

@@ -78,6 +78,7 @@ describe(`Dialogs + browser back navigation`, () => {
     });
 
     // TODO: change it back after solving https://github.com/Tinkoff/taiga-ui/issues/3270
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     describe.skip(`feature is disabled`, () => {
         beforeEach(() => {
             cy.tuiVisit(`components/dialog`, {inIframe: true});

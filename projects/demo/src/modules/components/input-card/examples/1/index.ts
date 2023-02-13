@@ -17,7 +17,7 @@ export class TuiInputCardExample1 {
     });
 
     get card(): string | null {
-        const value: string | null | undefined = this.form.get('card')?.value;
+        const value = this.form.get('card')?.value as string | null | undefined;
 
         if ((value?.length ?? 0) < 7) {
             return null;

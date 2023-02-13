@@ -50,7 +50,9 @@ describe(`TuiElasticStickyDirective`, () => {
 
     // TODO: scroll event doesn't work
     xit(`callback is triggered with 0.5 when half of sticky would be hidden`, done => {
-        fixture.debugElement.query(By.css(`#scroll`)).nativeElement.scrollTop = 75;
+        (
+            fixture.debugElement.query(By.css(`#scroll`)).nativeElement as HTMLElement
+        ).scrollTop = 75;
         fixture.detectChanges();
 
         setTimeout(() => {
@@ -61,7 +63,9 @@ describe(`TuiElasticStickyDirective`, () => {
 
     // TODO: scroll event doesn't work
     xit(`callback is triggered with 0 when sticky is fully hidden`, done => {
-        fixture.debugElement.query(By.css(`#scroll`)).nativeElement.scrollTop = 100;
+        (
+            fixture.debugElement.query(By.css(`#scroll`)).nativeElement as HTMLElement
+        ).scrollTop = 100;
         fixture.detectChanges();
 
         setTimeout(() => {

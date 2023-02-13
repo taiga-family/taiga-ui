@@ -14,11 +14,10 @@ import {finalize, map, switchMap} from 'rxjs/operators';
 })
 export class TuiInputFilesExample1 {
     readonly control = new FormControl();
-
     readonly rejectedFiles$ = new Subject<TuiFileLike | null>();
     readonly loadingFiles$ = new Subject<TuiFileLike | null>();
     readonly loadedFiles$ = this.control.valueChanges.pipe(
-        switchMap(file => (file ? this.makeRequest(file) : of(null))),
+        switchMap((file: TuiFileLike) => (file ? this.makeRequest(file) : of(null))),
     );
 
     onReject(file: TuiFileLike | readonly TuiFileLike[]): void {

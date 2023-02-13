@@ -29,8 +29,8 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
                 default: true,
                 keepOnSplit: false,
                 parseHTML: element => element.getAttribute(`data-opened`) === `true`,
-                renderHTML: attributes => ({
-                    'data-opened': attributes.opened,
+                renderHTML: (attributes: Record<string, any>) => ({
+                    'data-opened': attributes.opened as boolean,
                 }),
             },
         };
@@ -69,6 +69,7 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
             wrapper.className = `details-wrapper`;
             button.className = `details-arrow`;
 
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             details.open = node.attrs.opened;
 
             button.addEventListener(`click`, () => {

@@ -75,7 +75,11 @@ describe(`PrimitiveCalendar`, () => {
             const currentItem = getTodayCalendarItem();
 
             expect(currentItem).not.toBeNull();
-            expect(currentItem.nativeElement.innerHTML.includes(TODAY)).toBe(true);
+            expect(
+                (currentItem.nativeElement as HTMLElement).innerHTML.includes(
+                    TODAY.toString(),
+                ),
+            ).toBe(true);
         });
 
         it(`is not highlighted if not current month and current year were selected`, () => {
@@ -111,12 +115,14 @@ describe(`PrimitiveCalendar`, () => {
             it(`blocked date under condition`, () => {
                 expect(getDisabledCalendarItems().length).toEqual(1);
                 expect(
-                    getDisabledCalendarItems()[0].nativeElement.textContent.trim(),
+                    (
+                        getDisabledCalendarItems()[0].nativeElement as HTMLElement
+                    )?.textContent?.trim(),
                 ).toEqual(`20`);
             });
 
             it(`click on blocked date does not change value`, () => {
-                getDisabledCalendarItems()[0].nativeElement.click();
+                (getDisabledCalendarItems()[0].nativeElement as HTMLElement).click();
                 fixture.detectChanges();
                 expect(testComponent.value).toBe(null);
             });
@@ -379,7 +385,9 @@ describe(`integration with TUI_FIRST_DAY_OF_WEEK token`, () => {
         const daysOfWeekContainers =
             fixture.debugElement.queryAll(By.css(`.t-row_weekday .t-cell`)) || [];
 
-        return daysOfWeekContainers.map(container => container.nativeElement.textContent);
+        return daysOfWeekContainers.map(
+            container => (container.nativeElement as HTMLElement)?.textContent ?? ``,
+        );
     }
 
     function getColumnCells(columnIndex: number): DebugElement[] {
@@ -395,8 +403,9 @@ describe(`integration with TUI_FIRST_DAY_OF_WEEK token`, () => {
     function getColumnDates(columnIndex: number): string[] {
         const columnDatesContainers = getColumnCells(columnIndex);
 
-        return columnDatesContainers.map(container =>
-            container.nativeElement.textContent.trim(),
+        return columnDatesContainers.map(
+            container =>
+                (container.nativeElement as HTMLElement)?.textContent?.trim() ?? ``,
         );
     }
 });

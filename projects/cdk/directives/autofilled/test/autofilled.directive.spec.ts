@@ -23,6 +23,7 @@ describe(`TuiAutofillModule`, () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
+    let input: HTMLInputElement | null = null;
     let directiveInstance: TuiAutofilledDirective;
 
     configureTestSuite(() => {
@@ -39,6 +40,7 @@ describe(`TuiAutofillModule`, () => {
         directiveInstance = fixture.debugElement
             .query(By.directive(TuiAutofilledDirective))
             .injector.get(TuiAutofilledDirective);
+        input = getInput(fixture);
     });
 
     it(`correctly works if \`tuiAutofilledChange\` is set to \`input\``, () => {
@@ -51,12 +53,14 @@ describe(`TuiAutofillModule`, () => {
          */
         directiveInstance.transitionStartHandler({
             propertyName: `box-shadow`,
-            target: getInput(fixture) as EventTarget,
+            target: input as unknown as EventTarget,
         } as TransitionEvent);
-        getInput(fixture).value = `1111 2222 3333 4444`;
-        getInput(fixture).dispatchEvent(
-            new InputEvent(`input`, {data: `1111 2222 3333 4444`}),
-        );
+
+        if (input) {
+            input.value = `1111 2222 3333 4444`;
+        }
+
+        input?.dispatchEvent(new InputEvent(`input`, {data: `1111 2222 3333 4444`}));
         fixture.detectChanges();
 
         expect(getInputClassList(fixture)).toEqual([`tui-autofill`, `_autofilled`]);
@@ -70,8 +74,13 @@ describe(`TuiAutofillModule`, () => {
             propertyName: `box-shadow`,
             target: getInput(fixture) as EventTarget,
         } as TransitionEvent);
-        getInput(fixture).value = ``;
-        getInput(fixture).dispatchEvent(new InputEvent(`input`, {data: ``}));
+
+        if (input) {
+            input.value = ``;
+        }
+
+        input?.dispatchEvent(new InputEvent(`input`, {data: ``}));
+
         fixture.detectChanges();
 
         expect(testComponent.autofilled).toBeFalsy();
@@ -80,8 +89,8 @@ describe(`TuiAutofillModule`, () => {
     });
 });
 
-function getInput<T>(fixture: ComponentFixture<T>): HTMLInputElement {
-    return fixture.nativeElement?.querySelector(`#cardNumber`);
+function getInput<T>(fixture: ComponentFixture<T>): HTMLInputElement | null {
+    return (fixture.nativeElement as HTMLElement)?.querySelector(`#cardNumber`) ?? null;
 }
 
 function getInputClassList<T>(fixture: ComponentFixture<T>): string[] {

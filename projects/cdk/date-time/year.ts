@@ -126,7 +126,7 @@ export class TuiYear implements TuiYearLike {
      * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/@@toPrimitive
      */
     [Symbol.toPrimitive](hint: string): number | string {
-        return Date.prototype[Symbol.toPrimitive].call(this, hint);
+        return Date.prototype[Symbol.toPrimitive].call(this, hint) as number | string;
     }
 
     toJSON(): string {

@@ -156,9 +156,12 @@ describe(`InputDateRangeComponent`, () => {
             it(`When entering two dates, the control value is updated`, () => {
                 inputPO.sendText(`15.07.2000${RANGE_SEPARATOR_CHAR}15.07.2020`);
 
-                expect(testComponent.control.value.getFormattedDayRange(`DMY`, `.`)).toBe(
-                    `15.07.2000${RANGE_SEPARATOR_CHAR}15.07.2020`,
-                );
+                expect(
+                    (testComponent.control.value as TuiDayRange).getFormattedDayRange(
+                        `DMY`,
+                        `.`,
+                    ),
+                ).toBe(`15.07.2000${RANGE_SEPARATOR_CHAR}15.07.2020`);
             });
 
             it(`When entering two dates, the value is truncated by min / max is updated`, () => {
@@ -167,9 +170,12 @@ describe(`InputDateRangeComponent`, () => {
                 fixture.detectChanges();
                 inputPO.sendText(`15.07.2000${RANGE_SEPARATOR_CHAR}15.07.2020`);
 
-                expect(testComponent.control.value.getFormattedDayRange(`DMY`, `.`)).toBe(
-                    `15.07.2001${RANGE_SEPARATOR_CHAR}15.07.2019`,
-                );
+                expect(
+                    (testComponent.control.value as TuiDayRange).getFormattedDayRange(
+                        `DMY`,
+                        `.`,
+                    ),
+                ).toBe(`15.07.2001${RANGE_SEPARATOR_CHAR}15.07.2019`);
             });
 
             it(`empty value opens dropdown`, () => {
@@ -215,8 +221,8 @@ describe(`InputDateRangeComponent`, () => {
             expect(leftCalendar).toBeTruthy();
             expect(rightCalendar).toBeTruthy();
 
-            getCalendarCell(leftCalendar, 16)?.nativeElement?.click();
-            getCalendarCell(rightCalendar, 27)?.nativeElement?.click();
+            (getCalendarCell(leftCalendar, 16)?.nativeElement as HTMLElement)?.click();
+            (getCalendarCell(rightCalendar, 27)?.nativeElement as HTMLElement)?.click();
             fixture.detectChanges();
 
             await fixture.whenStable();
@@ -261,8 +267,8 @@ describe(`InputDateRangeComponent`, () => {
             expect(leftCalendar).toBeTruthy();
             expect(rightCalendar).toBeTruthy();
 
-            getCalendarCell(leftCalendar, 12)?.nativeElement?.click();
-            getCalendarCell(rightCalendar, 18)?.nativeElement?.click();
+            (getCalendarCell(leftCalendar, 12)?.nativeElement as HTMLElement)?.click();
+            (getCalendarCell(rightCalendar, 18)?.nativeElement as HTMLElement)?.click();
 
             fixture.detectChanges();
 
@@ -394,8 +400,8 @@ describe(`InputDateRangeComponent`, () => {
             expect(leftCalendar).toBeTruthy();
             expect(rightCalendar).toBeTruthy();
 
-            getCalendarCell(leftCalendar, 12)?.nativeElement?.click();
-            getCalendarCell(rightCalendar, 18)?.nativeElement?.click();
+            (getCalendarCell(leftCalendar, 12)?.nativeElement as HTMLElement)?.click();
+            (getCalendarCell(rightCalendar, 18)?.nativeElement as HTMLElement)?.click();
 
             fixture.detectChanges();
 
@@ -417,7 +423,7 @@ describe(`InputDateRangeComponent`, () => {
     });
 
     function clickOnTextfield(): void {
-        getTextfield()?.nativeElement.click();
+        (getTextfield()?.nativeElement as HTMLElement).click();
         fixture.detectChanges();
     }
 
@@ -449,8 +455,11 @@ describe(`InputDateRangeComponent`, () => {
         return (
             pageObject
                 .getAllByAutomationId(`tui-primitive-calendar__cell`, calendarEl)
-                .find(el => Number(el.nativeElement.textContent.trim()) === dayNumber) ||
-            null
+                .find(
+                    el =>
+                        Number((el.nativeElement as HTMLElement)?.textContent?.trim()) ===
+                        dayNumber,
+                ) || null
         );
     }
 });

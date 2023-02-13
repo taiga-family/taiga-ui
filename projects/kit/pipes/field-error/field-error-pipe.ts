@@ -124,19 +124,21 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
         errorContent?: Observable<PolymorpheusContent> | PolymorpheusContent,
     ): Observable<TuiValidationError> {
         if (firstError instanceof TuiValidationError) {
-            return of(firstError);
+            return of<TuiValidationError>(firstError);
         }
 
         if (errorContent === undefined && tuiIsString(firstError)) {
-            return of(new TuiValidationError(firstError));
+            return of<TuiValidationError>(new TuiValidationError(firstError));
         }
 
         if (isObservable(errorContent)) {
             return errorContent.pipe(
                 map(error => new TuiValidationError(error || ``, firstError)),
-            );
+            ) as Observable<TuiValidationError>;
         }
 
-        return of(new TuiValidationError(errorContent || ``, firstError));
+        return of<TuiValidationError>(
+            new TuiValidationError(errorContent || ``, firstError),
+        );
     }
 }

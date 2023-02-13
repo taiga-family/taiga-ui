@@ -1,5 +1,9 @@
 import {RANGE_SEPARATOR_CHAR, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
-import {TuiTextMaskPipeResult} from '@taiga-ui/core';
+import {
+    TuiTextMaskConfig,
+    TuiTextMaskOptions,
+    TuiTextMaskPipeResult,
+} from '@taiga-ui/core';
 import {tuiCreateAutoCorrectedDateRangePipe} from '@taiga-ui/kit';
 
 const DUMMY: any = `any`;
@@ -17,7 +21,10 @@ function wrapper(
             value,
             dateFormat: `DMY`,
             dateSeparator: `.`,
-        })(rawString, DUMMY) as TuiTextMaskPipeResult
+        })(
+            rawString,
+            DUMMY as TuiTextMaskConfig & TuiTextMaskOptions,
+        ) as TuiTextMaskPipeResult
     ).value;
 }
 

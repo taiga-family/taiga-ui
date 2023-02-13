@@ -93,7 +93,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         @Optional()
         @Inject(TuiDropdownHoverDirective)
         private readonly hover$: TuiDropdownHoverDirective | null,
-        @Inject(ElementRef) private readonly elementRef: ElementRef,
+        @Inject(ElementRef) private readonly elementRef: ElementRef<Element>,
     ) {}
 
     @Input()
@@ -107,19 +107,22 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     }
 
     get host(): HTMLElement {
-        return this.dropdownHost?.nativeElement || this.elementRef.nativeElement;
-    }
-
-    get computedHost(): HTMLElement {
         return (
             this.dropdownHost?.nativeElement ||
-            this.nativeFocusableElement ||
-            this.elementRef.nativeElement
+            (this.elementRef.nativeElement as HTMLElement)
         );
     }
 
+    get computedHost(): HTMLElement {
+        return (this.dropdownHost?.nativeElement ||
+            this.nativeFocusableElement ||
+            this.elementRef.nativeElement) as HTMLElement;
+    }
+
     get dropdown(): HTMLElement | undefined {
-        return this.dropdownDirective?.dropdownBoxRef?.location.nativeElement;
+        return this.dropdownDirective?.dropdownBoxRef?.location.nativeElement as
+            | HTMLElement
+            | undefined;
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {

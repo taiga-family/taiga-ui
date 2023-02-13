@@ -17,8 +17,9 @@ export const MODE_PROVIDER: Provider = {
                   startWith(null),
                   map(() => mode.mode),
               )
-            : of(null);
+            : (of(null) as Observable<TuiBrightness | null>);
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         nativeElement[`$.data-mode.attr`] = mode$;
 
         return mode$;

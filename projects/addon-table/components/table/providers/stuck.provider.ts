@@ -18,6 +18,7 @@ export const TUI_STUCK_PROVIDER: Provider = {
             map(([{intersectionRatio}]) => intersectionRatio < 1),
         );
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         nativeElement[`$.class._stuck`] = stream$;
 
         return stream$;

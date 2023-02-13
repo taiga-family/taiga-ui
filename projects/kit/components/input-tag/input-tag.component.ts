@@ -21,7 +21,6 @@ import {
     AbstractTuiMultipleControl,
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
-    EMPTY_QUERY,
     TuiActiveZoneDirective,
     tuiArrayRemove,
     tuiAsControl,
@@ -29,6 +28,7 @@ import {
     TuiBooleanHandler,
     TuiContextWithImplicit,
     tuiDefaultProp,
+    tuiEmptyQuery,
     TuiFocusableElementAccessor,
     tuiGetActualTarget,
     tuiGetClipboardDataText,
@@ -106,7 +106,7 @@ export class TuiInputTagComponent
     private readonly tagsContainer?: ElementRef<HTMLElement>;
 
     @ViewChildren('tag', {read: ElementRef})
-    private readonly tags: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+    private readonly tags: QueryList<ElementRef<HTMLElement>> = tuiEmptyQuery();
 
     @ViewChild('cleaner', {read: ElementRef})
     private readonly cleanerSvg?: ElementRef<HTMLElement>;

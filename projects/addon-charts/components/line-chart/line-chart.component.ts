@@ -14,8 +14,8 @@ import {LOCATION} from '@ng-web-apis/common';
 import {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
 import {tuiDraw, tuiPrepareExternalUrl} from '@taiga-ui/addon-charts/utils';
 import {
-    EMPTY_QUERY,
     tuiDefaultProp,
+    tuiEmptyQuery,
     TuiIdService,
     tuiInRange,
     tuiIsPresent,
@@ -50,7 +50,7 @@ export class TuiLineChartComponent {
     private readonly autoIdString: string;
 
     @ViewChildren(TuiDriver)
-    readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
+    readonly drivers: QueryList<Observable<boolean>> = tuiEmptyQuery();
 
     @Input('value')
     @tuiDefaultProp()

@@ -53,7 +53,7 @@ describe(`TuiPressed directive`, () => {
         it(`emits "true"`, () => {
             const event = new MouseEvent(`mousedown`, {clientX: 5, clientY: 100});
 
-            innerElement.nativeElement.dispatchEvent(event);
+            (innerElement.nativeElement as HTMLElement).dispatchEvent(event);
             fixture.detectChanges();
             expect(testComponent.pressed).toBe(true);
         });
@@ -61,7 +61,7 @@ describe(`TuiPressed directive`, () => {
         describe(`emits "false" after pressing stopped`, () => {
             describe(`on initial element via`, () => {
                 it(`mouseup`, () => {
-                    innerElement.nativeElement.dispatchEvent(
+                    (innerElement.nativeElement as HTMLElement).dispatchEvent(
                         new MouseEvent(`mouseup`, {bubbles: true}),
                     );
                     fixture.detectChanges();
@@ -69,7 +69,7 @@ describe(`TuiPressed directive`, () => {
                 });
 
                 it(`dragend`, () => {
-                    innerElement.nativeElement.dispatchEvent(
+                    (innerElement.nativeElement as HTMLElement).dispatchEvent(
                         new MouseEvent(`dragend`, {bubbles: true}),
                     );
                     fixture.detectChanges();
@@ -79,7 +79,7 @@ describe(`TuiPressed directive`, () => {
 
             describe(`on other element via`, () => {
                 it(`mouseup`, () => {
-                    wrapperElement.nativeElement.dispatchEvent(
+                    (wrapperElement.nativeElement as HTMLElement).dispatchEvent(
                         new MouseEvent(`mouseup`, {bubbles: true}),
                     );
                     fixture.detectChanges();
@@ -87,7 +87,7 @@ describe(`TuiPressed directive`, () => {
                 });
 
                 it(`dragend`, () => {
-                    wrapperElement.nativeElement.dispatchEvent(
+                    (wrapperElement.nativeElement as HTMLElement).dispatchEvent(
                         new MouseEvent(`dragend`, {bubbles: true}),
                     );
                     fixture.detectChanges();

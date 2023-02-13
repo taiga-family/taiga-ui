@@ -7,8 +7,8 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {
-    EMPTY_QUERY,
     tuiDefaultProp,
+    tuiEmptyQuery,
     tuiIsNativeFocused,
     tuiIsPresent,
 } from '@taiga-ui/cdk';
@@ -24,7 +24,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 @Directive()
 export abstract class AbstractTuiDataListWrapper<T> {
     @ViewChildren(forwardRef(() => TuiOptionComponent))
-    protected readonly optionsQuery: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
+    protected readonly optionsQuery: QueryList<TuiOptionComponent<T>> = tuiEmptyQuery();
 
     @Input()
     @tuiDefaultProp()

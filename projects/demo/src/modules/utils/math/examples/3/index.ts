@@ -19,7 +19,11 @@ export class TuiMathExample3 {
     });
 
     get normalized(): number {
-        const {value, min, max} = this.parametersForm.value;
+        const {value, min, max} = this.parametersForm.value as {
+            value: number;
+            min: number;
+            max: number;
+        };
 
         return tuiNormalizeToIntNumber(value ?? 0, min ?? 5, max ?? 42);
     }

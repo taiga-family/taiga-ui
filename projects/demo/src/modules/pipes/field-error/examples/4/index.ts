@@ -63,7 +63,7 @@ export class TuiFieldErrorPipeExample4 {
         field: AbstractControl,
     ) => ValidationErrors | null {
         return (field: AbstractControl): ValidationErrors | null =>
-            field.value.length !== 12
+            (field.value as string).length !== 12
                 ? {
                       length: new TuiValidationError(this.phoneErrorContent),
                   }

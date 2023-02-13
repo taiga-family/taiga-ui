@@ -58,7 +58,7 @@ export function addStylesToAngularJson(
         }
 
         for (const project of projects) {
-            let targetOptions;
+            let targetOptions: Record<string, any>;
 
             try {
                 targetOptions = getProjectTargetOptions(project, `build`);

@@ -8,8 +8,8 @@ import {
     Self,
 } from '@angular/core';
 import {
-    EMPTY_QUERY,
     TuiDestroyService,
+    tuiEmptyQuery,
     tuiGetClosestFocusable,
     tuiPreventDefault,
     tuiPure,
@@ -35,10 +35,10 @@ import {
 })
 export class TuiDataListDropdownManagerDirective implements AfterViewInit {
     @ContentChildren(TuiDropdownDirective, {descendants: true})
-    private readonly dropdowns: QueryList<TuiDropdownDirective> = EMPTY_QUERY;
+    private readonly dropdowns: QueryList<TuiDropdownDirective> = tuiEmptyQuery();
 
     @ContentChildren(TuiDropdownDirective, {read: ElementRef, descendants: true})
-    private readonly elements: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+    private readonly elements: QueryList<ElementRef<HTMLElement>> = tuiEmptyQuery();
 
     constructor(
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
@@ -63,7 +63,8 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                         return EMPTY;
                     }
 
-                    const {nativeElement} = dropdown.dropdownBoxRef.location;
+                    const nativeElement = dropdown.dropdownBoxRef.location
+                        .nativeElement as Element;
                     const mouseEnter$ = tuiTypedFromEvent(
                         nativeElement,
                         'mouseenter',
@@ -150,13 +151,16 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
     }
 
     private notInDropdown(element: EventTarget | null, index: number): boolean {
+        // TODO: fix later
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
         return !this.dropdowns
             .get(index)
             ?.dropdownBoxRef?.location.nativeElement.contains(element);
     }
 
     private tryToFocus(index: number): void {
-        const content = this.dropdowns.get(index)?.dropdownBoxRef?.location.nativeElement;
+        const content = this.dropdowns.get(index)?.dropdownBoxRef?.location
+            .nativeElement as Element;
 
         if (!content) {
             return;

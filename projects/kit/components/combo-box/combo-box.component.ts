@@ -63,7 +63,7 @@ export class TuiComboBoxComponent<T>
     extends AbstractTuiNullableControl<T>
     implements TuiFocusableElementAccessor, TuiDataListHost<T>
 {
-    @ContentChild(TUI_DATA_LIST_ACCESSOR as any)
+    @ContentChild(TUI_DATA_LIST_ACCESSOR)
     private readonly accessor?: TuiDataListAccessor<T>;
 
     @ViewChild(TuiHostedDropdownComponent)

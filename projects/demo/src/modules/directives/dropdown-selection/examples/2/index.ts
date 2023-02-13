@@ -2,7 +2,7 @@ import {Component, ElementRef, QueryList, ViewChild, ViewChildren} from '@angula
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
-import {EMPTY_QUERY, TuiBooleanHandler, tuiPure} from '@taiga-ui/cdk';
+import {TuiBooleanHandler, tuiEmptyQuery, tuiPure} from '@taiga-ui/cdk';
 import {TuiDriver, tuiGetWordRange, TuiOptionComponent} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
@@ -21,7 +21,7 @@ export interface User {
 })
 export class TuiDropdownSelectionExample2 {
     @ViewChildren(TuiOptionComponent, {read: ElementRef})
-    private readonly options: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+    private readonly options: QueryList<ElementRef<HTMLElement>> = tuiEmptyQuery();
 
     @ViewChild(TuiDriver)
     readonly driver?: Observable<boolean>;

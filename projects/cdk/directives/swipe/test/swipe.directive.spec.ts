@@ -42,8 +42,8 @@ xdescribe(`TuiSwipe directive`, () => {
     });
 
     it(`emits events bottom`, () => {
-        sendTouchEvent(0, 0, testElement.nativeElement, `touchstart`, 1);
-        sendTouchEvent(0, 100, testElement.nativeElement, `touchend`, 1);
+        sendTouchEvent(0, 0, testElement.nativeElement as HTMLElement, `touchstart`, 1);
+        sendTouchEvent(0, 100, testElement.nativeElement as HTMLElement, `touchend`, 1);
 
         fixture.detectChanges();
 
@@ -51,8 +51,8 @@ xdescribe(`TuiSwipe directive`, () => {
     });
 
     it(`emits events right`, () => {
-        sendTouchEvent(0, 0, testElement.nativeElement, `touchstart`, 1);
-        sendTouchEvent(100, 0, testElement.nativeElement, `touchend`, 1);
+        sendTouchEvent(0, 0, testElement.nativeElement as HTMLElement, `touchstart`, 1);
+        sendTouchEvent(100, 0, testElement.nativeElement as HTMLElement, `touchend`, 1);
 
         fixture.detectChanges();
 
@@ -60,8 +60,8 @@ xdescribe(`TuiSwipe directive`, () => {
     });
 
     it(`does not emits events due to threshold`, () => {
-        sendTouchEvent(0, 0, testElement.nativeElement, `touchstart`, 1);
-        sendTouchEvent(0, 20, testElement.nativeElement, `touchend`, 1);
+        sendTouchEvent(0, 0, testElement.nativeElement as HTMLElement, `touchstart`, 1);
+        sendTouchEvent(0, 20, testElement.nativeElement as HTMLElement, `touchend`, 1);
 
         fixture.detectChanges();
 

@@ -77,10 +77,12 @@ describe(`PreviewPagination`, () => {
     });
 
     function getLeftArrow(): HTMLElement {
-        return fixture.debugElement.query(By.css(`.t-arrow_left`)).nativeElement;
+        return fixture.debugElement.query(By.css(`.t-arrow_left`))
+            .nativeElement as HTMLElement;
     }
 
     function getRightArrow(): HTMLElement {
-        return fixture.debugElement.query(By.css(`.t-arrow_right`)).nativeElement;
+        return fixture.debugElement.query(By.css(`.t-arrow_right`))
+            .nativeElement as HTMLElement;
     }
 });

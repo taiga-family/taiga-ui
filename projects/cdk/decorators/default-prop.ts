@@ -32,6 +32,7 @@ export function tuiDefaultProp<T extends Record<string, any>, K extends keyof T>
 
                 if (isValid && assertion) {
                     tuiAssert.assert(
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                         assertion.call(this, initialValue),
                         `${String(key)} in ${name} received:`,
                         initialValue,
@@ -42,6 +43,7 @@ export function tuiDefaultProp<T extends Record<string, any>, K extends keyof T>
                 Object.defineProperty(this, key, {
                     configurable: true,
                     get(): T[K] {
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
                         return currentValue;
                     },
                     set(this: T, value: T[K]) {
@@ -56,6 +58,7 @@ export function tuiDefaultProp<T extends Record<string, any>, K extends keyof T>
 
                         if (isValid && assertion) {
                             tuiAssert.assert(
+                                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                                 assertion.call(this, value),
                                 `${String(key)} in ${name} received:`,
                                 value,

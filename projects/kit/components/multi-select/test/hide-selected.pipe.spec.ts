@@ -1,7 +1,11 @@
 import {TuiHideSelectedPipe, TuiMultiSelectComponent} from '@taiga-ui/kit';
 
 describe(`tuiHideSelected pipe`, () => {
-    let multiSelect: any;
+    let multiSelect: {
+        value: Array<{id: number}> | number[];
+        identityMatcher: (a: {id: number}, b: {id: number}) => boolean;
+    };
+
     let pipe: TuiHideSelectedPipe;
 
     beforeEach(() => {
@@ -9,6 +13,7 @@ describe(`tuiHideSelected pipe`, () => {
             value: [1, 2, 3],
             identityMatcher: (a: unknown, b: unknown) => a === b,
         };
+
         pipe = new TuiHideSelectedPipe(
             multiSelect as unknown as TuiMultiSelectComponent<unknown>,
         );
@@ -28,14 +33,14 @@ describe(`tuiHideSelected pipe`, () => {
     });
 
     it(`Works with flat array and custom matcher`, () => {
-        multiSelect.identityMatcher = (a: any, b: any) => a.id === b.id;
+        multiSelect.identityMatcher = (a, b) => a.id === b.id;
         multiSelect.value = [{id: 1}, {id: 2}];
 
         expect(pipe.transform([{id: 1}, {id: 3}])).toEqual([{id: 3}]);
     });
 
     it(`Works with 2d array and custom matcher`, () => {
-        multiSelect.identityMatcher = (a: any, b: any) => a.id === b.id;
+        multiSelect.identityMatcher = (a, b) => a.id === b.id;
         multiSelect.value = [{id: 1}, {id: 2}];
 
         expect(pipe.transform([[{id: 1}, {id: 3}], [{id: 2}]])).toEqual([[{id: 3}], []]);

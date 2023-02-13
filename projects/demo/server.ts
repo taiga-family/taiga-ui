@@ -10,6 +10,7 @@ import {join} from 'path';
 
 import {AppServerModule} from './src/main.server';
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 global.requestAnimationFrame = global.setImmediate as any;
 
 global.cancelAnimationFrame = () => {};
@@ -27,7 +28,7 @@ export function app(): Express {
         `html`,
         ngExpressEngine({
             bootstrap: AppServerModule,
-        }) as any,
+        }),
     );
 
     server.set(`view engine`, `html`);
@@ -40,7 +41,7 @@ export function app(): Express {
         `*.*`,
         express.static(distFolder, {
             maxAge: `1y`,
-        }) as any,
+        }),
     );
 
     // All regular routes use the Universal engine

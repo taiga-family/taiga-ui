@@ -1,5 +1,5 @@
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {NgModule, SecurityContext} from '@angular/core';
+import {ModuleWithProviders, NgModule, SecurityContext} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiDocMainModule, TuiLanguageSwitcherModule} from '@taiga-ui/addon-doc';
@@ -29,10 +29,8 @@ import {LandingModule} from './landing/landing.module';
 import {LogoModule} from './logo/logo.module';
 import {VersionManagerModule} from './version-manager/version-manager.module';
 
-const PRODUCTION_MODULES = environment.production
-    ? ([
-          MetrikaModule.forRoot({id: environment.ym, webvisor: false, clickmap: false}),
-      ] as const)
+const PRODUCTION_MODULES: Array<ModuleWithProviders<any>> = environment.production
+    ? [MetrikaModule.forRoot({id: environment.ym, webvisor: false, clickmap: false})]
     : [];
 
 @NgModule({

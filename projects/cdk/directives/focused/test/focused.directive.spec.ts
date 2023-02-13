@@ -48,16 +48,16 @@ describe(`TuiFocused directive`, () => {
     });
 
     it(`emits "true" when receives focus`, () => {
-        testElement.nativeElement.focus();
+        (testElement.nativeElement as HTMLElement).focus();
         fixture.detectChanges();
 
         expect(testComponent.focused).toBe(true);
     });
 
     it(`emits "false" when loses focus`, () => {
-        testElement.nativeElement.focus();
+        (testElement.nativeElement as HTMLElement).focus();
         fixture.detectChanges();
-        otherElement.nativeElement.focus();
+        (otherElement.nativeElement as HTMLElement).focus();
         fixture.detectChanges();
 
         expect(testComponent.focused).toBe(false);

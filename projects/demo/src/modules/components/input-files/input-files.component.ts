@@ -78,7 +78,9 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
 
     removeFile(file: TuiFileLike): void {
         this.control.setValue(
-            this.control.value.filter((current: File) => current.name !== file.name),
+            (this.control.value as File[]).filter(
+                (current: File) => current.name !== file.name,
+            ),
         );
     }
 
@@ -91,7 +93,7 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
     updateRejected(file: TuiFileLike | readonly TuiFileLike[]): void {
         this.rejectedFiles = [
             ...this.rejectedFiles,
-            ...(Array.isArray(file) ? file : [file]),
+            ...(Array.isArray(file) ? (file as File[]) : ([file] as [TuiFileLike])),
         ];
     }
 

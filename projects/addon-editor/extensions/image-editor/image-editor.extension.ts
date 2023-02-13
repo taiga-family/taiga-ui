@@ -78,7 +78,9 @@ export function createImageEditorExtension<T, K>(
         renderHTML({HTMLAttributes}: Record<string, any>): DOMOutputSpec {
             return [
                 `img`,
-                mergeAttributes(HTMLAttributes, {'data-type': `image-editor`}),
+                mergeAttributes(HTMLAttributes as Record<string, any>, {
+                    'data-type': `image-editor`,
+                }),
             ];
         },
 

@@ -102,9 +102,13 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
     }
 
     private parseParams(params: Params): void {
-        const propertyValue: string | undefined = params[this.documentationPropertyName];
-        const propertyValueWithSuffix: number | string | undefined =
-            params[`${this.documentationPropertyName}${SERIALIZED_SUFFIX}`];
+        const propertyValue = params[this.documentationPropertyName] as
+            | string
+            | undefined;
+
+        const propertyValueWithSuffix = params[
+            `${this.documentationPropertyName}${SERIALIZED_SUFFIX}`
+        ] as number | string | undefined;
 
         if (!propertyValue && !propertyValueWithSuffix) {
             return;

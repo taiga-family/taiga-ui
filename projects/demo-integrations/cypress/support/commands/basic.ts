@@ -106,3 +106,54 @@ Cypress.Commands.add(
 );
 
 chai.use(tuiBeInViewportAssertion);
+
+export {};
+
+declare global {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    const FontFace: FontFace;
+
+    interface Document {
+        fonts: FontFaceSet;
+    }
+
+    type CSSOMString = string;
+
+    type FontFaceLoadStatus = 'error' | 'loaded' | 'loading' | 'unloaded';
+
+    type FontFaceSetStatus = 'loaded' | 'loading';
+
+    interface FontFace extends FontFaceDescriptors {
+        // eslint-disable-next-line @typescript-eslint/no-misused-new
+        new (
+            family: string,
+            source: ArrayBuffer | string,
+            descriptors?: FontFaceDescriptors,
+        ): FontFace;
+        readonly status: FontFaceLoadStatus;
+        readonly loaded: Promise<FontFace>;
+        variationSettings: CSSOMString;
+        display: CSSOMString;
+        load(): Promise<FontFace>;
+    }
+
+    interface FontFaceDescriptors {
+        family: CSSOMString;
+        style: CSSOMString;
+        weight: CSSOMString;
+        stretch: CSSOMString;
+        unicodeRange: CSSOMString;
+        variant: CSSOMString;
+        featureSettings: CSSOMString;
+    }
+
+    interface FontFaceSet extends Iterable<FontFace> {
+        readonly status: FontFaceSetStatus;
+        readonly ready: Promise<FontFaceSet>;
+        add(font: FontFace): void;
+        check(font: string, text?: string): boolean; // throws exception
+        load(font: string, text?: string): Promise<FontFace[]>;
+        delete(font: FontFace): void;
+        clear(): void;
+    }
+}

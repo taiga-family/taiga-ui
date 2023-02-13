@@ -84,7 +84,7 @@ describe(`TextArea`, () => {
 
     function getScrollbar(): HTMLElement {
         return pageObject.getByAutomationId(`${testContext.prefix}scrollbar`)!
-            .nativeElement;
+            .nativeElement as HTMLElement;
     }
 
     function getCounter(): DebugElement {

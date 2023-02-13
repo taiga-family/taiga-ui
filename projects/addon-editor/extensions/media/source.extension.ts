@@ -22,6 +22,6 @@ export const TuiSource = Node.create({
     },
 
     renderHTML({HTMLAttributes}: Record<string, any>) {
-        return [`source`, mergeAttributes(HTMLAttributes)];
+        return [`source`, mergeAttributes(HTMLAttributes as Record<string, any>)];
     },
 });

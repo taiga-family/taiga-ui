@@ -24,7 +24,7 @@ export const TuiJumpAnchor = Mark.create({
                         return {};
                     }
 
-                    return {id: attributes.id};
+                    return {id: attributes.id as number};
                 },
             },
         };

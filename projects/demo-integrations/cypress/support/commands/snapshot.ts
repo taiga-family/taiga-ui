@@ -7,6 +7,7 @@ tuiAddMatchImageSnapshotCommand({
     failureThresholdType: `percent`,
     comparisonMethod: `ssim`,
     diffDirection: `horizontal`,
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     customDiffConfig: {
         ssim: `fast`,
         windowSize: 24,

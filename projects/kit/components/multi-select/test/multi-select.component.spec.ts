@@ -107,7 +107,7 @@ describe(`MultiSelect`, () => {
                 });
 
                 it(`opens a dropdown`, () => {
-                    getInputTag(pageObject).nativeElement.click();
+                    (getInputTag(pageObject).nativeElement as HTMLElement).click();
                     fixture.detectChanges();
 
                     expect(getDropdown(pageObject)).not.toBeNull();
@@ -117,7 +117,7 @@ describe(`MultiSelect`, () => {
                     it(`in readOnly mode`, () => {
                         testComponent.readOnly = true;
                         fixture.detectChanges();
-                        getInputTag(pageObject).nativeElement.click();
+                        (getInputTag(pageObject).nativeElement as HTMLElement).click();
                         fixture.detectChanges();
 
                         expect(getDropdown(pageObject)).toBeNull();
@@ -126,7 +126,7 @@ describe(`MultiSelect`, () => {
                     it(`if control is disabled`, () => {
                         testComponent.control.disable();
                         fixture.detectChanges();
-                        getInputTag(pageObject).nativeElement.click();
+                        (getInputTag(pageObject).nativeElement as HTMLElement).click();
                         fixture.detectChanges();
 
                         expect(getDropdown(pageObject)).toBeNull();
@@ -141,16 +141,16 @@ describe(`MultiSelect`, () => {
             });
 
             it(`Click on the arrow to open the dropdown`, () => {
-                getArrow(pageObject)?.nativeElement.click();
+                (getArrow(pageObject)?.nativeElement as HTMLElement).click();
                 fixture.detectChanges();
 
                 expect(getDropdown(pageObject)).not.toBeNull();
             });
 
             it(`Clicking the arrow again closes the dropdown`, () => {
-                getArrow(pageObject)?.nativeElement.click();
+                (getArrow(pageObject)?.nativeElement as HTMLElement).click();
                 fixture.detectChanges();
-                getArrow(pageObject)?.nativeElement.click();
+                (getArrow(pageObject)?.nativeElement as HTMLElement).click();
                 fixture.detectChanges();
 
                 expect(getDropdown(pageObject)).toBeNull();
@@ -311,12 +311,16 @@ describe(`MultiSelect`, () => {
             testComponent.control.disable();
             fixture.detectChanges();
 
-            expect(getArrow(pageObject)?.nativeElement.textContent).toEqual(` ★ `);
+            expect(
+                (getArrow(pageObject)?.nativeElement as HTMLElement).textContent,
+            ).toEqual(` ★ `);
 
             testComponent.control.enable();
             fixture.detectChanges();
 
-            expect(getArrow(pageObject)?.nativeElement.textContent).toEqual(` ☆ `);
+            expect(
+                (getArrow(pageObject)?.nativeElement as HTMLElement).textContent,
+            ).toEqual(` ☆ `);
         });
     });
 });

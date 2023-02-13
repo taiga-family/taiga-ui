@@ -30,7 +30,7 @@ export class ImgbbService {
 
         formData.append(`image`, base64.split(`,`).pop() || ``);
 
-        return new URLSearchParams(formData as any);
+        return new URLSearchParams(formData as unknown as Record<string, string>);
     }
 
     save(base64: string): Observable<string> {

@@ -1,5 +1,5 @@
 export function tuiEnsureDocExample(): string {
-    return Cypress.env(`EXAMPLE_ID`) ?? `tui-doc-example`;
+    return (Cypress.env(`EXAMPLE_ID`) as string) ?? `tui-doc-example`;
 }
 
 export function tuiGetDocExample(): Cypress.Chainable<unknown> {

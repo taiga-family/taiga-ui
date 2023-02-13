@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access */
 const {TextEncoder: TextEncoderMock, TextDecoder: TextDecoderMock} = require(`util`);
 
 global.TextEncoder = TextEncoderMock;
@@ -131,7 +132,7 @@ global.DataTransfer = class {
     }
 
     getData(format: string): string {
-        return this.data.get(format);
+        return this.data.get(format) as string;
     }
 } as unknown as typeof DataTransfer;
 

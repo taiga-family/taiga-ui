@@ -13,10 +13,10 @@ import {
 } from '@angular/core';
 import {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
 import {
-    EMPTY_QUERY,
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiEmptyQuery,
     TuiHoveredService,
     tuiPure,
     tuiQueryListChanges,
@@ -44,10 +44,10 @@ import {TuiLineChartComponent} from './line-chart.component';
 })
 export class TuiLineChartHintDirective implements AfterContentInit {
     @ContentChildren(forwardRef(() => TuiLineChartComponent))
-    private readonly charts: QueryList<TuiLineChartComponent> = EMPTY_QUERY;
+    private readonly charts: QueryList<TuiLineChartComponent> = tuiEmptyQuery();
 
     @ContentChildren(forwardRef(() => TuiLineChartComponent), {read: ElementRef})
-    private readonly chartsRef: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+    private readonly chartsRef: QueryList<ElementRef<HTMLElement>> = tuiEmptyQuery();
 
     @Input('tuiLineChartHint')
     @tuiDefaultProp()

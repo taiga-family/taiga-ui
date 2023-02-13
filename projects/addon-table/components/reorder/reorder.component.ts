@@ -106,7 +106,7 @@ export class TuiReorderComponent<T> {
     }
 
     private getSortedItems(): T[] {
-        const items = new Array(this.unsortedItems.length);
+        const items = new Array(this.unsortedItems.length) as T[];
 
         this.unsortedItems.forEach((item, index) => {
             items[this.order.get(index) ?? index] = item;

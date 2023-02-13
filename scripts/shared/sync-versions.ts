@@ -1,5 +1,5 @@
 import {readFileSync, writeFileSync} from 'fs';
-import {glob} from 'glob';
+import {sync} from 'glob';
 
 import {processLog, successLog} from '../../projects/cdk/schematics/utils/colored-log';
 import {updatePackageJsonStructure} from './update-package-json-structure';
@@ -11,15 +11,15 @@ export function syncVersions(
     newVersion: string,
     ignores: string[] = [],
 ): void {
-    const patterns = filesOrDirectories.map(pattern =>
+    const patterns: string[] = filesOrDirectories.map(pattern =>
         pattern.endsWith(`.json`)
             ? pattern
             : `${pattern}/**/*(package.json|package-lock.json)`,
     );
 
     const files = patterns
-        .map(pattern => glob.sync(pattern, {ignore: `**/node_modules/**`}))
-        .flatMap(files => files)
+        .map(pattern => sync(pattern, {ignore: `**/node_modules/**`}))
+        .flatMap((files: string[]) => files)
         .filter(file => !file.includes(`node_modules`));
 
     for (const file of files) {
@@ -28,8 +28,8 @@ export function syncVersions(
             null,
             INDENTATION,
         )}`;
-        const packageJson = JSON.parse(originalJSON);
-        const prevVersion = packageJson.version;
+        const packageJson = JSON.parse(originalJSON) as Record<string, any>;
+        const prevVersion = packageJson.version as string;
 
         if (!prevVersion) {
             continue;

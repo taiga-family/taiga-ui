@@ -55,7 +55,8 @@ export const createIframeEditorExtension = (injector: Injector): Node => {
                 },
                 allowfullscreen: {
                     keepOnSplit: false,
-                    default: this.options.allowFullscreen,
+                    default: (this.options as Record<string, any>)
+                        .allowFullscreen as string,
                     parseHTML: element => element.getAttribute(`allowfullscreen`),
                 },
             };
@@ -64,7 +65,9 @@ export const createIframeEditorExtension = (injector: Injector): Node => {
         renderHTML({HTMLAttributes}: Record<string, any>): DOMOutputSpec {
             return [
                 `iframe`,
-                mergeAttributes(HTMLAttributes, {'data-type': `iframe-editor`}),
+                mergeAttributes(HTMLAttributes as Record<string, any>, {
+                    'data-type': `iframe-editor`,
+                }),
             ];
         },
 

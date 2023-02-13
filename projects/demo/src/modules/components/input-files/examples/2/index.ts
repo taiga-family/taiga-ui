@@ -28,7 +28,9 @@ export class TuiInputFilesExample2 implements OnInit {
 
     removeFile({name}: File): void {
         this.control.setValue(
-            this.control.value?.filter((current: File) => current.name !== name) ?? [],
+            (this.control.value as File[])?.filter(
+                (current: File) => current.name !== name,
+            ) ?? [],
         );
     }
 
@@ -41,7 +43,7 @@ export class TuiInputFilesExample2 implements OnInit {
 
 export function maxFilesLength(maxLength: number): ValidatorFn {
     return ({value}: AbstractControl) => {
-        return value.length > maxLength
+        return (value as File[]).length > maxLength
             ? {
                   maxLength: new TuiValidationError(
                       'Error: maximum limit - 5 files for upload',

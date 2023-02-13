@@ -92,7 +92,7 @@ describe(`InputCopy`, () => {
         it(`When you click on the "Copy" icon, copy command is executed`, () => {
             const func = jest.spyOn(document, `execCommand`);
 
-            getIcon()!.nativeElement.click();
+            (getIcon()?.nativeElement as HTMLElement).click();
 
             expect(func).toHaveBeenCalledWith(`copy`);
         });

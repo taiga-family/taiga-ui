@@ -34,7 +34,7 @@ export const TUI_EDITOR_PROVIDERS = [
     {
         provide: INITIALIZATION_TIPTAP_CONTAINER,
         deps: [Renderer2],
-        useFactory: (renderer: Renderer2): HTMLElement => renderer.createElement(`div`),
+        useFactory: (renderer: Renderer2) => renderer.createElement(`div`) as HTMLElement,
     },
     {
         provide: TIPTAP_EDITOR,

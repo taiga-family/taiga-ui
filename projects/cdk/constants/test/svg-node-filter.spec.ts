@@ -5,12 +5,14 @@ describe(`SvgNodeFilter`, () => {
     it(`child SVG`, () => {
         const node: Node = {ownerSVGElement: null} as unknown as Node;
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         expect((svgNodeFilter as any)(node)).toBe(NodeFilter.FILTER_REJECT);
     });
 
     it(`not child SVG`, () => {
         const node: Node = {} as unknown as Node;
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         expect((svgNodeFilter as any)(node)).toBe(NodeFilter.FILTER_ACCEPT);
     });
 });

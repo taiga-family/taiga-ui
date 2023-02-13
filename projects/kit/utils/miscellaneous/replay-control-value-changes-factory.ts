@@ -19,12 +19,10 @@ export function tuiControlValueFactory<
     valueTransformer?: TuiControlValueTransformer<T> | null,
 ): Observable<T | null> | null {
     return control
-        ? tuiControlValue(control).pipe(
+        ? tuiControlValue<T | null>(control).pipe(
               map(value =>
-                  valueTransformer
-                      ? valueTransformer.fromControlValue(value)
-                      : (value as T),
+                  valueTransformer ? valueTransformer.fromControlValue(value) : value,
               ),
           )
-        : of(null);
+        : (of(null) as Observable<T | null>);
 }

@@ -79,7 +79,7 @@ describe(`InputPassword`, () => {
         it(`When you click on it, the icon represents "Open eye"`, () => {
             const icon = getIcon();
 
-            icon?.nativeElement.click();
+            (icon?.nativeElement as HTMLElement).click();
 
             const iconSrc = getIconScr();
 
@@ -96,7 +96,7 @@ describe(`InputPassword`, () => {
 
             expect(iconSrc).toBe(`tuiIconEyeOff`);
 
-            icon?.nativeElement.click();
+            (icon?.nativeElement as HTMLElement).click();
 
             iconSrc = getIconScr();
 
@@ -127,7 +127,7 @@ describe(`InputPassword`, () => {
         });
 
         it(`When you click on the "Show password" icon, the field becomes type = "text"`, () => {
-            getIcon()!.nativeElement.click();
+            (getIcon()?.nativeElement as HTMLElement).click();
 
             const inputType = component.inputType;
 

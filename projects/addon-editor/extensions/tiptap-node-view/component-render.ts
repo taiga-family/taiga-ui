@@ -38,7 +38,7 @@ export class TuiComponentRenderer<C, P> {
     }
 
     get dom(): HTMLElement {
-        return this.elementRef.nativeElement;
+        return this.elementRef.nativeElement as HTMLElement;
     }
 
     updateProps<T extends P>(props: Partial<T>): void {

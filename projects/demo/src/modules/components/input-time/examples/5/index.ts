@@ -23,6 +23,6 @@ export class TuiInputTimeExample5 {
     });
 
     get postfix(): string {
-        return this.testForm.value?.isPm ? 'PM' : 'AM';
+        return (this.testForm.value as {isPm: boolean})?.isPm ? 'PM' : 'AM';
     }
 }

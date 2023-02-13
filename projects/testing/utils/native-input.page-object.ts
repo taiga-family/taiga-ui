@@ -18,8 +18,8 @@ export class TuiNativeInputPO {
 
     get nativeElement(): HTMLInputElement | HTMLTextAreaElement | null {
         return (
-            this.pageObject.getByAutomationId(this.automationId, this.hostDebugElement)
-                ?.nativeElement ?? null
+            (this.pageObject.getByAutomationId(this.automationId, this.hostDebugElement)
+                ?.nativeElement as HTMLInputElement | HTMLTextAreaElement | null) ?? null
         );
     }
 

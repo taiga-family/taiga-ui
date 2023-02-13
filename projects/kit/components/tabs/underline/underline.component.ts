@@ -56,7 +56,7 @@ export class TuiUnderlineComponent {
     @HostListener('$.style.transform')
     readonly transform$ = asCallable(
         this.refresh$.pipe(
-            map(element =>
+            map((element: HTMLElement | null) =>
                 element ? `translate3d(${element.offsetLeft}px, 0, 0)` : null,
             ),
         ),
@@ -64,7 +64,9 @@ export class TuiUnderlineComponent {
 
     @HostListener('$.style.width.px')
     readonly width$ = asCallable(
-        this.refresh$.pipe(map(element => element?.clientWidth || 0)),
+        this.refresh$.pipe(
+            map((element: HTMLElement | null) => element?.clientWidth || 0),
+        ),
     );
 
     constructor(
@@ -73,8 +75,11 @@ export class TuiUnderlineComponent {
         @Inject(ANIMATION_FRAME) private readonly animationFrame$: Observable<number>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
     ) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         nativeElement['$.style.transitionProperty'] = this.transition$;
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         nativeElement['$.style.transform'] = this.transform$;
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         nativeElement['$.style.width.px'] = this.width$;
     }
 }

@@ -9,7 +9,7 @@ import {TuiBooleanHandler} from '@taiga-ui/cdk/types';
  */
 export function tuiRequiredSetter<T extends Record<string, any>, K extends keyof T>(
     assertion?: TuiBooleanHandler<T[K]>,
-    ...args: any[]
+    ...args: unknown[]
 ): MethodDecorator {
     return (
         target: Record<string, any>,
@@ -25,6 +25,7 @@ export function tuiRequiredSetter<T extends Record<string, any>, K extends keyof
             set(this: T, value: T[K]) {
                 if (value !== undefined && assertion) {
                     tuiAssert.assert(
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                         assertion.call(this, value),
                         `${String(key)} in ${name} received:`,
                         value,

@@ -53,7 +53,7 @@ describe(`InputTag [TUI_TAG_STATUS=neutral]`, () => {
         fixture.detectChanges();
 
         expect(
-            fixture.nativeElement
+            (fixture.nativeElement as HTMLElement)
                 .querySelector(`[data-tui-host-status]`)
                 ?.getAttribute(`data-tui-host-status`),
         ).toEqual(`neutral`);

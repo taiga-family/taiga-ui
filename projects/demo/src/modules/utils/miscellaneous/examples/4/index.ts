@@ -25,7 +25,7 @@ export class TuiMiscellaneousExample4 {
     });
 
     get paymentSystem(): string | null {
-        const {cardNumber} = this.parametersForm.value;
+        const {cardNumber} = this.parametersForm.value as {cardNumber: string};
 
         return tuiGetPaymentSystem(cardNumber ?? '');
     }

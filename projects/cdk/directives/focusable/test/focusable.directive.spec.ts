@@ -34,12 +34,12 @@ describe(`TuiFocusable directive`, () => {
     it(`when tuiFocusable === false tabindex attribute is "-1"`, () => {
         testComponent.focusable = false;
         fixture.detectChanges();
-        expect(testElement.nativeElement.tabIndex).toBe(-1);
+        expect((testElement.nativeElement as HTMLElement).tabIndex).toBe(-1);
     });
 
     it(`when tuiFocusable === true tabindex attribute is "0"`, () => {
         testComponent.focusable = true;
         fixture.detectChanges();
-        expect(testElement.nativeElement.tabIndex).toBe(0);
+        expect((testElement.nativeElement as HTMLElement).tabIndex).toBe(0);
     });
 });

@@ -1,3 +1,5 @@
+import {TuiTextMaskConfig, TuiTextMaskOptions} from '@taiga-ui/core';
+
 import {TuiTextMaskPipeResult} from '../../../mask/text-mask-pipe-result';
 import {tuiCreateAutoCorrectedNumberPipe} from '../create-auto-corrected-money-pipe';
 
@@ -11,7 +13,7 @@ function wrapper(
     return (
         tuiCreateAutoCorrectedNumberPipe(decimalLimit, decimalSymbol)(
             rawString,
-            DUMMY,
+            DUMMY as TuiTextMaskConfig & TuiTextMaskOptions,
         ) as TuiTextMaskPipeResult
     ).value;
 }

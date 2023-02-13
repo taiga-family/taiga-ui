@@ -15,9 +15,9 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    EMPTY_QUERY,
     tuiClamp,
     tuiDefaultProp,
+    tuiEmptyQuery,
     TuiFocusableElementAccessor,
     tuiIsNativeFocusedIn,
     TuiNativeFocusableElement,
@@ -75,7 +75,7 @@ export class TuiRangeComponent
     keySteps: TuiKeySteps | null = null;
 
     @ViewChildren(TuiSliderComponent, {read: ElementRef})
-    slidersRefs: QueryList<ElementRef<HTMLInputElement>> = EMPTY_QUERY;
+    slidersRefs: QueryList<ElementRef<HTMLInputElement>> = tuiEmptyQuery();
 
     lastActiveThumb: 'left' | 'right' = 'right';
 

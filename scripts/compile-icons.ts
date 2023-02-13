@@ -24,7 +24,9 @@ import {
 
     try {
         unlinkSync(allToCompilePath);
-    } catch (err) {
-        console.error(`Cannot delete file ${allToCompilePath}: ${String(err)}`);
+    } catch (err: unknown) {
+        console.error(
+            `Cannot delete file ${allToCompilePath}: ${(err as Error).toString()}`,
+        );
     }
 })();

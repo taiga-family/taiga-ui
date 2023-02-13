@@ -8,7 +8,7 @@ import {
     Inject,
     QueryList,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk';
+import {tuiEmptyQuery} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
@@ -30,7 +30,7 @@ export class TuiThGroupComponent<T extends Partial<Record<keyof T, any>>>
     readonly th!: TuiThComponent<T>;
 
     @ContentChildren(forwardRef(() => TuiHeadDirective))
-    readonly heads: QueryList<TuiHeadDirective<T>> = EMPTY_QUERY;
+    readonly heads: QueryList<TuiHeadDirective<T>> = tuiEmptyQuery();
 
     heads$: Observable<Record<any, TuiHeadDirective<T>>> | null = null;
 

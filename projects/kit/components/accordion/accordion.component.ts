@@ -9,9 +9,9 @@ import {
     Self,
 } from '@angular/core';
 import {
-    EMPTY_QUERY,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiEmptyQuery,
     tuiIsPresent,
     tuiQueryListChanges,
 } from '@taiga-ui/cdk';
@@ -37,7 +37,7 @@ export class TuiAccordionComponent implements AfterContentInit {
     rounded = true;
 
     @ContentChildren(TuiAccordionItemComponent)
-    readonly accordionItems: QueryList<TuiAccordionItemComponent> = EMPTY_QUERY;
+    readonly accordionItems: QueryList<TuiAccordionItemComponent> = tuiEmptyQuery();
 
     constructor(
         @Self()

@@ -174,7 +174,7 @@ describe(`TuiHostedDropdown`, () => {
             tuiDispatchOnActive(`arrowDown`, fixture);
             tuiDispatchOnActive(`arrowDown`, fixture);
 
-            expect(document.activeElement).toBe(getItems()[0].nativeElement);
+            expect(document.activeElement).toBe(getItems()[0].nativeElement as Element);
         });
 
         it(`Escape closes the dropdown`, () => {

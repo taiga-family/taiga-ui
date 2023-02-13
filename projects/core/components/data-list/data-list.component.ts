@@ -13,8 +13,8 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {
-    EMPTY_QUERY,
     tuiDefaultProp,
+    tuiEmptyQuery,
     tuiIsElement,
     tuiIsNativeFocusedIn,
     tuiIsPresent,
@@ -53,7 +53,7 @@ import {TuiOptionComponent} from './option/option.component';
 })
 export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     @ContentChildren(forwardRef(() => TuiOptionComponent), {descendants: true})
-    private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
+    private readonly options: QueryList<TuiOptionComponent<T>> = tuiEmptyQuery();
 
     private origin?: HTMLElement;
 

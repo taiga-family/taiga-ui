@@ -8,9 +8,9 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {
-    EMPTY_QUERY,
     TuiContextWithImplicit,
     tuiDefaultProp,
+    tuiEmptyQuery,
     TuiIdService,
     TuiMapper,
     tuiPure,
@@ -45,7 +45,7 @@ export class TuiBarChartComponent {
     private readonly autoIdString: string;
 
     @ViewChildren(TuiDriver)
-    readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
+    readonly drivers: QueryList<Observable<boolean>> = tuiEmptyQuery();
 
     @Input()
     @tuiDefaultProp(valueAssertion, VALUE_ERROR)

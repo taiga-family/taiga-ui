@@ -15,12 +15,12 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
-    EMPTY_QUERY,
     TUI_DEFAULT_IDENTITY_MATCHER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     tuiDefaultProp,
+    tuiEmptyQuery,
     TuiIdentityMatcher,
     tuiIsNativeFocusedIn,
     TuiNativeFocusableElement,
@@ -42,7 +42,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     @ViewChildren(TuiRadioLabeledComponent)
     private readonly radioButtons: QueryList<TuiRadioLabeledComponent<unknown>> =
-        EMPTY_QUERY;
+        tuiEmptyQuery();
 
     @Input()
     @tuiDefaultProp()

@@ -18,8 +18,9 @@ function getProcessor(fileName: string): (item: string) => string {
 
 export function exampleContentProcessor<T extends Record<string, any>>(content: T): T {
     const processedContent: Record<string, string> = {};
+    const map = Object.entries(content) as Array<[string, string]>;
 
-    for (const [fileName, fileContent] of Object.entries(content)) {
+    for (const [fileName, fileContent] of map) {
         const processor = getProcessor(fileName);
 
         processedContent[fileName] = processor(fileContent);

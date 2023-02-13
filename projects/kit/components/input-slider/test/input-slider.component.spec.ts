@@ -542,23 +542,27 @@ describe(`InputSlider[new]`, () => {
 
 function getTextInputCustomValue(): string {
     return (
-        pageObject
-            .getByAutomationId(testContext.textInputCustomValueAutoId)
-            ?.nativeElement.textContent.trim() || ``
+        (
+            pageObject.getByAutomationId(testContext.textInputCustomValueAutoId)
+                ?.nativeElement as HTMLElement
+        )?.textContent?.trim() ?? ``
     );
 }
 
 function getTextfieldCustomContent(): string {
     return (
-        pageObject
-            .getByAutomationId(testContext.customContentAutoId)
-            ?.nativeElement.textContent.trim() || ``
+        (
+            pageObject.getByAutomationId(testContext.customContentAutoId)
+                ?.nativeElement as HTMLElement
+        )?.textContent?.trim() ?? ``
     );
 }
 
 function getValueDecoration(): string {
     return (
-        pageObject.getByAutomationId(testContext.valueDecorationAutoId)?.nativeElement
-            .textContent || ``
+        (
+            pageObject.getByAutomationId(testContext.valueDecorationAutoId)
+                ?.nativeElement as HTMLElement
+        ).textContent ?? ``
     );
 }

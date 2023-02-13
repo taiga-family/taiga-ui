@@ -19,7 +19,7 @@ export function tuiCoerceValue<T>(
 
     try {
         return isPossibleArray(decodedValue) || isPossibleObject(decodedValue)
-            ? JSON.parse(decodedValue)
+            ? (JSON.parse(decodedValue) as T)
             : decodedValue;
     } catch {
         return decodedValue;

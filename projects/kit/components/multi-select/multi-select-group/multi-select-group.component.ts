@@ -8,10 +8,10 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
-    EMPTY_QUERY,
     TUI_DEFAULT_IDENTITY_MATCHER,
     tuiControlValue,
     tuiDefaultProp,
+    tuiEmptyQuery,
     tuiGetOriginalArrayFromQueryList,
     TuiIdentityMatcher,
     TuiInjectionTokenType,
@@ -38,7 +38,7 @@ import {map} from 'rxjs/operators';
 })
 export class TuiMultiSelectGroupComponent<T> {
     @ContentChildren(TuiOptionComponent)
-    private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
+    private readonly options: QueryList<TuiOptionComponent<T>> = tuiEmptyQuery();
 
     @Input()
     @tuiDefaultProp()
@@ -95,7 +95,7 @@ export class TuiMultiSelectGroupComponent<T> {
             return;
         }
 
-        const controlValue: readonly T[] = this.control.value || [];
+        const controlValue: readonly T[] = (this.control.value as readonly T[]) || [];
         const {values} = this;
         const filtered = controlValue.filter(current =>
             values.every(item => !this.matcher(current, item)),

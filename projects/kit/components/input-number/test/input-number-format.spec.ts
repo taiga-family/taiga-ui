@@ -54,7 +54,7 @@ describe(`InputNumber - backward compatibility for separators`, () => {
             testComponent = fixture.componentInstance;
             fixture.detectChanges();
             component = testComponent.component;
-            nativeInput = getNativeInput()!.nativeElement;
+            nativeInput = getNativeInput()?.nativeElement as HTMLInputElement;
             fixture.detectChanges();
         });
 
@@ -93,7 +93,7 @@ describe(`InputNumber - backward compatibility for separators`, () => {
             testComponent = fixture.componentInstance;
             fixture.detectChanges();
             component = testComponent.component;
-            nativeInput = getNativeInput()!.nativeElement;
+            nativeInput = getNativeInput()?.nativeElement as HTMLInputElement;
             fixture.detectChanges();
         });
 
@@ -138,7 +138,7 @@ describe(`InputNumber - backward compatibility for separators`, () => {
             testComponent = fixture.componentInstance;
             fixture.detectChanges();
             component = testComponent.component;
-            nativeInput = getNativeInput()!.nativeElement;
+            nativeInput = getNativeInput()?.nativeElement as HTMLInputElement;
             fixture.detectChanges();
         });
 

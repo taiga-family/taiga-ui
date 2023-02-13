@@ -27,9 +27,9 @@ import {
     TuiEditorOptions,
 } from '@taiga-ui/addon-editor/tokens';
 import {
-    EMPTY_QUERY,
     tuiAssert,
     tuiDefaultProp,
+    tuiEmptyQuery,
     TuiHandler,
     TuiInjectionTokenType,
     tuiIsNativeFocusedIn,
@@ -52,7 +52,7 @@ import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager
 })
 export class TuiToolbarComponent {
     @ViewChildren('dropdown', {read: ElementRef})
-    private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+    private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = tuiEmptyQuery();
 
     @ViewChild(TuiToolbarNavigationManagerDirective)
     private readonly navigationManager?: TuiToolbarNavigationManagerDirective;

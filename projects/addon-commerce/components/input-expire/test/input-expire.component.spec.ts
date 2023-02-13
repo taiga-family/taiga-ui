@@ -35,7 +35,8 @@ describe(`InputExpire`, () => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
-        input = fixture.debugElement.query(By.css(`input`)).nativeElement;
+        input = fixture.debugElement.query(By.css(`input`))
+            .nativeElement as HTMLInputElement;
 
         await fixture.whenStable();
     });

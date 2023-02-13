@@ -5,7 +5,8 @@ export class TuiPageObject<T> {
     constructor(protected fixture: ComponentFixture<T>) {}
 
     static getIds({nativeElement}: DebugElement): string[] {
-        const attributeValue: string | null = nativeElement.getAttribute(`automation-id`);
+        const attributeValue: string | null =
+            (nativeElement as Element | null)?.getAttribute(`automation-id`) ?? null;
 
         return attributeValue === null ? [] : attributeValue.split(` `);
     }
@@ -34,13 +35,15 @@ export class TuiPageObject<T> {
             TuiPageObject.byAutomationId(automationId),
         );
         const domEls = Array.from(
-            debugElement.nativeElement.querySelectorAll(
+            (debugElement.nativeElement as Element).querySelectorAll(
                 `[automation-id='${automationId}']`,
             ),
         );
 
         return debugEls.sort(
-            (a, b) => domEls.indexOf(a.nativeElement) - domEls.indexOf(b.nativeElement),
+            (a, b) =>
+                domEls.indexOf(a.nativeElement as Element) -
+                domEls.indexOf(b.nativeElement as Element),
         );
     }
 }

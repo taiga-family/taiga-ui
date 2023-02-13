@@ -73,25 +73,25 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     getFontColor(): string {
-        return this.editor.getAttributes(`textStyle`).fontColor || `rgb(51, 51, 51)`;
+        return (
+            (this.editor.getAttributes(`textStyle`).fontColor as string) ||
+            `rgb(51, 51, 51)`
+        );
     }
 
     getBackgroundColor(): string {
-        return (
-            this.editor?.getAttributes(`textStyle`).backgroundColor || `rgb(51, 51, 51)`
-        );
+        return (this.editor?.getAttributes(`textStyle`).backgroundColor ||
+            `rgb(51, 51, 51)`) as string;
     }
 
     getCellColor(): string {
-        return (
-            this.editor.getAttributes(`tableCell`).background ||
-            this.editor.getAttributes(`tableHeader`).background
-        );
+        return (this.editor.getAttributes(`tableCell`).background ||
+            this.editor.getAttributes(`tableHeader`).background) as string;
     }
 
     getGroupColor(): string {
         if (this.editor.isActive(`group`)) {
-            const style = this.editor.getAttributes(`group`)?.style ?? ``;
+            const style = (this.editor.getAttributes(`group`)?.style as string) ?? ``;
             const styles = tuiParseStyle(style);
 
             return styles[`background-color`] ?? styles[`background`] ?? ``;
@@ -347,7 +347,12 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     setYoutubeVideo(options: TuiYoutubeOptions): void {
-        this.editor.commands.setYoutubeVideo(options as any);
+        this.editor.commands.setYoutubeVideo(
+            options as Omit<TuiYoutubeOptions, 'height' | 'width'> & {
+                width?: number;
+                height?: number;
+            },
+        );
     }
 
     setIframe(options: TuiEditableIframe): void {

@@ -12,7 +12,7 @@ export const TUI_REMOVED_ELEMENT = new InjectionToken<Observable<Element | null>
             const engine = inject(AnimationEngine, InjectFlags.Optional) || stub;
             const {onRemovalComplete = stub.onRemovalComplete} = engine;
 
-            engine.onRemovalComplete = (element, context) => {
+            engine.onRemovalComplete = (element: Element, context) => {
                 element$.next(element);
                 onRemovalComplete(element, context);
             };

@@ -12,8 +12,8 @@ import {
     QueryList,
 } from '@angular/core';
 import {
-    EMPTY_QUERY,
     tuiDefaultProp,
+    tuiEmptyQuery,
     tuiGetOriginalArrayFromQueryList,
     tuiIsElement,
     tuiMoveFocus,
@@ -46,7 +46,7 @@ const ONLY_VERTICAL_SCROLL: ScrollIntoViewOptions = {
 })
 export class TuiStepperComponent {
     @ContentChildren(forwardRef(() => TuiStepComponent), {read: ElementRef})
-    private readonly steps: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+    private readonly steps: QueryList<ElementRef<HTMLElement>> = tuiEmptyQuery();
 
     @Input()
     @HostBinding('attr.data-orientation')

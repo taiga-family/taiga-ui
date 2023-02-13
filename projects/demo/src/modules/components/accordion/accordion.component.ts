@@ -66,9 +66,7 @@ export class ExampleTuiAccordionComponent {
         setTimeout(() => {
             const event = new CustomEvent(TUI_EXPAND_LOADED, {bubbles: true});
 
-            if (this.content) {
-                this.content.nativeElement.dispatchEvent(event);
-            }
+            (this.content?.nativeElement as HTMLElement).dispatchEvent(event);
         }, 3000);
     }
 }

@@ -1,3 +1,5 @@
+import {TuiCurrencyVariants} from '@taiga-ui/addon-commerce';
+
 import {tuiFormatCurrency} from '../format-currency';
 
 describe(`tuiFormatCurrency`, () => {
@@ -14,7 +16,7 @@ describe(`tuiFormatCurrency`, () => {
     });
 
     it(`returns empty string if there is no value`, () => {
-        const noCurrency = null;
+        const noCurrency: TuiCurrencyVariants | null = null;
 
         expect(tuiFormatCurrency(noCurrency)).toBe(``);
     });

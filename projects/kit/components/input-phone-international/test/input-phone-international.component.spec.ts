@@ -297,7 +297,7 @@ describe(`InputPhoneInternational`, () => {
             initializeTestModule(TUI_RUSSIAN_LANGUAGE);
 
             it(`displays country names in Russian inside dropdown`, () => {
-                getCountrySelector().nativeElement.click();
+                (getCountrySelector().nativeElement as HTMLElement).click();
                 fixture.detectChanges();
 
                 expect(getDropdownCountryNames()).toEqual([
@@ -315,7 +315,7 @@ describe(`InputPhoneInternational`, () => {
             initializeTestModule(TUI_ENGLISH_LANGUAGE);
 
             it(`displays country names in English inside dropdown`, () => {
-                getCountrySelector().nativeElement.click();
+                (getCountrySelector().nativeElement as HTMLInputElement).click();
                 fixture.detectChanges();
 
                 expect(getDropdownCountryNames()).toEqual([
@@ -334,8 +334,9 @@ describe(`InputPhoneInternational`, () => {
         const countryNameContainers =
             fixture.debugElement.queryAll(By.css(`.t-country-item-name`)) || [];
 
-        return countryNameContainers.map(container =>
-            container.nativeElement.textContent?.trim(),
+        return countryNameContainers.map(
+            container =>
+                (container.nativeElement as HTMLElement)?.textContent?.trim() ?? ``,
         );
     }
 

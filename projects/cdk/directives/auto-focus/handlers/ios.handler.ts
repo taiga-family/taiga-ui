@@ -81,7 +81,7 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
      * before focus to real textfield element
      */
     private makeFakeInput(): HTMLInputElement {
-        const fakeInput: HTMLInputElement = this.renderer.createElement(`input`);
+        const fakeInput = this.renderer.createElement(`input`) as HTMLInputElement;
         const rect: DOMRect = this.element.getBoundingClientRect();
 
         fakeInput.style.height = tuiPx(rect.height);

@@ -48,7 +48,7 @@ describe(`Avatar`, () => {
 
     function getAvatar(): HTMLElement {
         return pageObject.getByAutomationId(`${testContext.prefix}component`)!
-            .nativeElement;
+            .nativeElement as HTMLElement;
     }
 
     configureTestSuite(() => {

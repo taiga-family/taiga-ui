@@ -49,11 +49,13 @@ xdescribe(`Range`, () => {
     };
 
     function getLeft(): HTMLElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}left`)!.nativeElement;
+        return pageObject.getByAutomationId(`${testContext.prefix}left`)
+            ?.nativeElement as HTMLElement;
     }
 
     function getRight(): HTMLElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}right`)!.nativeElement;
+        return pageObject.getByAutomationId(`${testContext.prefix}right`)
+            ?.nativeElement as HTMLElement;
     }
 
     function getFilledRangeOffeset(): {left: string; right: string} {
@@ -87,15 +89,15 @@ xdescribe(`Range`, () => {
             it(`Pressing the left arrow decreases the value by one step`, () => {
                 getLeft().dispatchEvent(keydownArrowLeft);
 
-                expect(testComponent.testValue.value[0]).toBe(2);
-                expect(testComponent.testValue.value[1]).toBe(5);
+                expect((testComponent.testValue.value as [number, number])[0]).toBe(2);
+                expect((testComponent.testValue.value as [number, number])[1]).toBe(5);
             });
 
             it(`Pressing the right arrow increases the value by one step`, () => {
                 getLeft().dispatchEvent(keydownArrowRight);
 
-                expect(testComponent.testValue.value[0]).toBe(4);
-                expect(testComponent.testValue.value[1]).toBe(5);
+                expect((testComponent.testValue.value as [number, number])[0]).toBe(4);
+                expect((testComponent.testValue.value as [number, number])[1]).toBe(5);
             });
 
             it(`Pressing the left arrow correctly paints the strip`, () => {
@@ -119,15 +121,15 @@ xdescribe(`Range`, () => {
             it(`Pressing the left arrow decreases the value by one step`, () => {
                 getRight().dispatchEvent(keydownArrowLeft);
 
-                expect(testComponent.testValue.value[0]).toBe(3);
-                expect(testComponent.testValue.value[1]).toBe(4);
+                expect((testComponent.testValue.value as [number, number])[0]).toBe(3);
+                expect((testComponent.testValue.value as [number, number])[1]).toBe(4);
             });
 
             it(`Pressing the right arrow increases the value by one step`, () => {
                 getRight().dispatchEvent(keydownArrowRight);
 
-                expect(testComponent.testValue.value[0]).toBe(3);
-                expect(testComponent.testValue.value[1]).toBe(6);
+                expect((testComponent.testValue.value as [number, number])[0]).toBe(3);
+                expect((testComponent.testValue.value as [number, number])[1]).toBe(6);
             });
 
             it(`Pressing the left arrow correctly paints the strip`, () => {
@@ -153,7 +155,7 @@ xdescribe(`Range`, () => {
                 getLeft().dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
-                expect(testComponent.testValue.value[0]).toBe(5);
+                expect((testComponent.testValue.value as [number, number])[0]).toBe(5);
             });
 
             it(`Prevents the right border from dropping below the left`, () => {
@@ -161,7 +163,7 @@ xdescribe(`Range`, () => {
                 getRight().dispatchEvent(keydownArrowLeft);
                 fixture.detectChanges();
 
-                expect(testComponent.testValue.value[1]).toBe(5);
+                expect((testComponent.testValue.value as [number, number])[1]).toBe(5);
             });
 
             it(`Prevents the value from decreasing below the minimum`, () => {
@@ -169,7 +171,7 @@ xdescribe(`Range`, () => {
                 getLeft().dispatchEvent(keydownArrowLeft);
                 fixture.detectChanges();
 
-                expect(testComponent.testValue.value[0]).toBe(1);
+                expect((testComponent.testValue.value as [number, number])[0]).toBe(1);
             });
 
             it(`Prevents the value from exceeding the maximum`, () => {
@@ -177,7 +179,7 @@ xdescribe(`Range`, () => {
                 getRight().dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
-                expect(testComponent.testValue.value[1]).toBe(11);
+                expect((testComponent.testValue.value as [number, number])[1]).toBe(11);
             });
 
             it(`Adds a value to the closest allowed step`, () => {
@@ -185,7 +187,7 @@ xdescribe(`Range`, () => {
                 getLeft().dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
-                expect(testComponent.testValue.value[0]).toBe(4);
+                expect((testComponent.testValue.value as [number, number])[0]).toBe(4);
             });
         });
 
@@ -202,14 +204,14 @@ xdescribe(`Range`, () => {
                 getLeft().dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
-                expect(testComponent.testValue.value[0]).toBe(1.1);
+                expect((testComponent.testValue.value as [number, number])[0]).toBe(1.1);
             });
 
             it(`Pressing the left arrow decreases the value by one step`, () => {
                 getRight().dispatchEvent(keydownArrowLeft);
                 fixture.detectChanges();
 
-                expect(testComponent.testValue.value[1]).toBe(4.9);
+                expect((testComponent.testValue.value as [number, number])[1]).toBe(4.9);
             });
 
             it(`Pressing the right arrow increases the value by one step (step = 3)`, () => {
@@ -220,7 +222,7 @@ xdescribe(`Range`, () => {
                 getLeft().dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
-                expect(testComponent.testValue.value[0]).toBe(3);
+                expect((testComponent.testValue.value as [number, number])[0]).toBe(3);
             });
         });
 

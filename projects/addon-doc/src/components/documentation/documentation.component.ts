@@ -11,8 +11,8 @@ import {
     Self,
 } from '@angular/core';
 import {
-    EMPTY_QUERY,
     TuiDestroyService,
+    tuiEmptyQuery,
     tuiHexToRgb,
     TuiMatcher,
     tuiQueryListChanges,
@@ -53,7 +53,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
 
     @ContentChildren(TuiDocDocumentationPropertyConnectorDirective)
     propertiesConnectors: QueryList<TuiDocDocumentationPropertyConnectorDirective<any>> =
-        EMPTY_QUERY;
+        tuiEmptyQuery();
 
     activeItemIndex = 0;
 

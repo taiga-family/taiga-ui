@@ -16,11 +16,10 @@ const secretRegexTwelve = /^\d{12}$/;
 
 export function innValidator(field: AbstractControl): unknown {
     return field.value &&
-        (secretRegexTen.test(field.value) || secretRegexTwelve.test(field.value))
+        (secretRegexTen.test(field.value as string) ||
+            secretRegexTwelve.test(field.value as string))
         ? null
-        : {
-              inn: new TuiValidationError('Secret number contains 10 or 12 digits'),
-          };
+        : {inn: new TuiValidationError('Secret number contains 10 or 12 digits')};
 }
 
 @Component({
@@ -59,7 +58,8 @@ export class TuiFieldErrorPipeExample3 implements OnInit {
     private getSecretValidator(): (field: AbstractControl) => ValidationErrors | null {
         return (field: AbstractControl): ValidationErrors | null =>
             field.value &&
-            (secretRegexTen.test(field.value) || secretRegexTwelve.test(field.value))
+            (secretRegexTen.test(field.value as string) ||
+                secretRegexTwelve.test(field.value as string))
                 ? null
                 : {
                       secret: new TuiValidationError(this.errorContent),

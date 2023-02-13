@@ -15,13 +15,13 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    EMPTY_QUERY,
     TUI_IS_MOBILE,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
     TuiContextWithImplicit,
     tuiDefaultProp,
+    tuiEmptyQuery,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     tuiIsNativeFocusedIn,
@@ -64,7 +64,8 @@ export class TuiInputRangeComponent
     implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor
 {
     @ViewChildren(TuiInputNumberComponent)
-    private readonly inputNumberRefs: QueryList<TuiInputNumberComponent> = EMPTY_QUERY;
+    private readonly inputNumberRefs: QueryList<TuiInputNumberComponent> =
+        tuiEmptyQuery();
 
     @ViewChild(TuiRangeComponent)
     private readonly rangeRef: TuiRangeComponent | null = null;
@@ -123,7 +124,7 @@ export class TuiInputRangeComponent
         private readonly isMobile: boolean,
         @Inject(TUI_TEXTFIELD_APPEARANCE)
         readonly appearance: string,
-        @Inject(ElementRef) private readonly elementRef: ElementRef,
+        @Inject(ElementRef) private readonly elementRef: ElementRef<Element>,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
     ) {
@@ -311,7 +312,7 @@ export class TuiInputRangeComponent
         {
             provide: TUI_TEXTFIELD_APPEARANCE,
             deps: [ElementRef],
-            useFactory: ({nativeElement}: ElementRef) =>
+            useFactory: ({nativeElement}: ElementRef<Element>) =>
                 nativeElement.getAttribute('tuiTextfieldAppearance'),
         },
     ],

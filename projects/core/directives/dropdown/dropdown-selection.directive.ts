@@ -116,7 +116,9 @@ export class TuiDropdownSelectionDirective
 
     ngOnDestroy(): void {
         if (this.ghost) {
-            this.viewContainerRef.element.nativeElement.removeChild(this.ghost);
+            (this.viewContainerRef.element.nativeElement as HTMLElement).removeChild(
+                this.ghost,
+            );
         }
     }
 
@@ -136,7 +138,9 @@ export class TuiDropdownSelectionDirective
      * Check if Node is inside dropdown
      */
     private boxContains(node: Node): boolean {
-        return !!this.dropdown.dropdownBoxRef?.location.nativeElement.contains(node);
+        const elementRef = this.dropdown.dropdownBoxRef?.location as ElementRef<Element>;
+
+        return !!elementRef?.nativeElement.contains(node);
     }
 
     /**
@@ -178,7 +182,7 @@ export class TuiDropdownSelectionDirective
      */
     private initGhost(element: HTMLInputElement | HTMLTextAreaElement): HTMLElement {
         const ghost = this.documentRef.createElement('div');
-        const {nativeElement} = this.viewContainerRef.element;
+        const nativeElement = this.viewContainerRef.element.nativeElement as Element;
         const {font, letterSpacing, textTransform, padding} = getComputedStyle(element);
 
         ghost.style.position = 'absolute';

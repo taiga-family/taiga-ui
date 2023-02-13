@@ -11,12 +11,12 @@ export const PAGE_PROVIDERS: Provider[] = [
         provide: PAGE_SEE_ALSO,
         deps: [ElementRef, TUI_DOC_SEE_ALSO],
         useFactory: (
-            {nativeElement}: ElementRef,
+            {nativeElement}: ElementRef<Element>,
             seeAlsoGroups: ReadonlyArray<readonly string[]>,
         ): readonly string[] => {
             const currentHeader = nativeElement.getAttribute(`header`);
             const groups =
-                seeAlsoGroups.filter(group => group.includes(currentHeader)) || [];
+                seeAlsoGroups.filter(group => group.includes(currentHeader || ``)) || [];
 
             const seeAlsoSet = new Set(
                 groups

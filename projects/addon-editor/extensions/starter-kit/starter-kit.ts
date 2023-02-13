@@ -118,6 +118,6 @@ export const StarterKit = Extension.create<TuiStarterKitOptions>({
             extensions.push(Text.configure(this.options?.text));
         }
 
-        return extensions;
+        return extensions as Extension[];
     },
 });

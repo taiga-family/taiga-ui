@@ -10,7 +10,7 @@ export class TuiMapperPipe implements PipeTransform {
      * @param mapper a mapping function
      * @param args arbitrary number of additional arguments
      */
-    transform<T, G>(value: T, mapper: TuiMapper<T, G>, ...args: any[]): G {
+    transform<T, G>(value: T, mapper: TuiMapper<T, G>, ...args: unknown[]): G {
         return mapper(value, ...args);
     }
 }

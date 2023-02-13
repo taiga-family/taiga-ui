@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
@@ -72,22 +72,24 @@ describe(`MobileCalendar`, () => {
     function getToday(): HTMLElement {
         return pageObject
             .getAllByAutomationId(`tui-primitive-calendar-mobile__cell`)
-            .find(item => item.classes[`t-cell_today`])?.nativeElement;
+            .find(item => item.classes[`t-cell_today`])?.nativeElement as HTMLElement;
     }
 
     it(`the back button emits a cancel event`, () => {
-        pageObject
-            .getByAutomationId(`tui-mobile-calendar__cancel`)
-            ?.nativeElement.click();
+        (
+            pageObject.getByAutomationId(`tui-mobile-calendar__cancel`)
+                ?.nativeElement as HTMLElement
+        ).click();
 
         expect(testComponent.onCancel).toHaveBeenCalled();
     });
 
     it(`single === true`, () => {
         expect(
-            pageObject
-                .getByAutomationId(`tui-mobile-calendar__label`)
-                ?.nativeElement.textContent.trim(),
+            (
+                pageObject.getByAutomationId(`tui-mobile-calendar__label`)
+                    ?.nativeElement as HTMLElement
+            )?.textContent?.trim(),
         ).toBe(`Choose day`);
     });
 
@@ -98,9 +100,10 @@ describe(`MobileCalendar`, () => {
         tick(100);
 
         expect(
-            pageObject
-                .getByAutomationId(`tui-mobile-calendar__label`)
-                ?.nativeElement.textContent.trim(),
+            (
+                pageObject.getByAutomationId(`tui-mobile-calendar__label`)
+                    ?.nativeElement as HTMLElement
+            )?.textContent?.trim(),
         ).toBe(`Choose range`);
     }));
 
@@ -110,11 +113,13 @@ describe(`MobileCalendar`, () => {
         xit(`confirm event with selected day`, fakeAsync(() => {
             fixture.detectChanges();
             getToday().click();
-            pageObject
-                .getByAutomationId(`tui-mobile-calendar__confirm`)
-                ?.nativeElement.click();
+            (
+                pageObject.getByAutomationId(`tui-mobile-calendar__confirm`)
+                    ?.nativeElement as HTMLElement
+            ).click();
 
-            const value = testComponent.onConfirm.mock.calls[0][0];
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+            const value = testComponent.onConfirm.mock.calls[0][0] as TuiDay;
 
             expect(value.daySame(today)).toBe(true);
         }));
@@ -124,11 +129,13 @@ describe(`MobileCalendar`, () => {
             testComponent.single = false;
             fixture.autoDetectChanges();
             getToday().click();
-            pageObject
-                .getByAutomationId(`tui-mobile-calendar__confirm`)!
-                .nativeElement.click();
+            (
+                pageObject.getByAutomationId(`tui-mobile-calendar__confirm`)!
+                    .nativeElement as HTMLElement
+            ).click();
 
-            const value = testComponent.onConfirm.mock.calls[0][0];
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+            const value = testComponent.onConfirm.mock.calls[0][0] as TuiDayRange;
 
             expect(value instanceof TuiDayRange).toBe(true);
             expect(value.from.daySame(today)).toBe(true);
@@ -142,24 +149,28 @@ describe(`MobileCalendar`, () => {
 
             const days = pageObject.getAllByAutomationId(
                 `tui-primitive-calendar-mobile__cell`,
-            );
+            ) as Array<ElementRef<HTMLElement>>;
 
             days[0].nativeElement.click();
             days[1].nativeElement.click();
-            pageObject
-                .getByAutomationId(`tui-mobile-calendar__confirm`)!
-                .nativeElement.click();
 
-            const value = testComponent.onConfirm.mock.calls[0][0];
+            (
+                pageObject.getByAutomationId(`tui-mobile-calendar__confirm`)!
+                    .nativeElement as HTMLElement
+            ).click();
+
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+            const value = testComponent.onConfirm.mock.calls[0][0] as TuiDayRange;
 
             expect(value.isSingleDay).toBe(false);
         }));
 
         xit(`cancel event if null`, fakeAsync(() => {
             testComponent.component.value = null;
-            pageObject
-                .getByAutomationId(`tui-mobile-calendar__confirm`)!
-                .nativeElement.click();
+            (
+                pageObject.getByAutomationId(`tui-mobile-calendar__confirm`)!
+                    .nativeElement as HTMLElement
+            ).click();
 
             expect(testComponent.onConfirm).not.toHaveBeenCalled();
             expect(testComponent.onCancel).toHaveBeenCalled();
@@ -190,15 +201,18 @@ describe(`MobileCalendar`, () => {
         const waitCdkScrollToIndex = 300;
 
         setTimeout(() => {
-            pageObject
-                .getAllByAutomationId(`tui-primitive-calendar-mobile__cell`)[0]
-                .nativeElement.click();
+            (
+                pageObject.getAllByAutomationId(`tui-primitive-calendar-mobile__cell`)[0]
+                    .nativeElement as HTMLElement
+            ).click();
 
-            pageObject
-                .getByAutomationId(`tui-mobile-calendar__confirm`)
-                ?.nativeElement.click();
+            (
+                pageObject.getByAutomationId(`tui-mobile-calendar__confirm`)
+                    ?.nativeElement as HTMLElement
+            ).click();
 
-            const value = testComponent.onConfirm.mock.calls[0][0];
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+            const value = testComponent.onConfirm.mock.calls[0][0] as TuiDay;
 
             expect(value.year <= 1950).toBe(true);
             done();

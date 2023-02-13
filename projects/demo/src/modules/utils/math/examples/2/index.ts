@@ -19,7 +19,11 @@ export class TuiMathExample2 {
     });
 
     get ranged(): boolean {
-        const {value, fromInclude, toExclude} = this.parametersForm.value;
+        const {value, fromInclude, toExclude} = this.parametersForm.value as {
+            value: number;
+            fromInclude: number;
+            toExclude: number;
+        };
 
         return tuiInRange(value ?? 13, fromInclude ?? 5, toExclude ?? 42);
     }

@@ -127,8 +127,8 @@ export abstract class AbstractTuiControl<T>
 
         const controlValue =
             ngControl instanceof NgModel && this.previousInternalValue === undefined
-                ? ngControl.viewModel
-                : ngControl.value;
+                ? (ngControl.viewModel as T | null)
+                : (ngControl.value as T | null);
 
         return this.fromControlValue(controlValue);
     }
@@ -169,7 +169,7 @@ export abstract class AbstractTuiControl<T>
     writeValue(value: T | null): void {
         const controlValue =
             this.ngControl instanceof NgModel && this.previousInternalValue === undefined
-                ? this.ngControl.model
+                ? (this.ngControl.model as T | null)
                 : value;
 
         this.refreshLocalValue(this.fromControlValue(controlValue));

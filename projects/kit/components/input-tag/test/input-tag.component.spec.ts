@@ -332,9 +332,10 @@ describe(`InputTag`, () => {
 
         it(`Clicking on cleaner clears the input field and tags`, () => {
             inputPO.sendText(`123`);
-            pageObject
-                .getByAutomationId(`${testContext.prefix}cleaner`)!
-                .nativeElement.click();
+            (
+                pageObject.getByAutomationId(`${testContext.prefix}cleaner`)!
+                    .nativeElement as HTMLElement
+            ).click();
 
             expect(component.search).toBe(``);
             expect(component.value).toEqual([]);
@@ -364,8 +365,8 @@ describe(`InputTag`, () => {
 
             expect(
                 tuiIsActive(
-                    pageObject.getByAutomationId(`${testContext.prefix}tag`)!
-                        .nativeElement,
+                    pageObject.getByAutomationId(`${testContext.prefix}tag`)
+                        ?.nativeElement as HTMLElement,
                 ),
             ).toBe(true);
         });
@@ -384,8 +385,8 @@ describe(`InputTag`, () => {
 
             expect(
                 tuiIsActive(
-                    pageObject.getByAutomationId(`${testContext.prefix}tag`)!
-                        .nativeElement,
+                    pageObject.getByAutomationId(`${testContext.prefix}tag`)
+                        ?.nativeElement as HTMLElement,
                 ),
             ).toBe(true);
         });
@@ -451,10 +452,13 @@ describe(`InputTag`, () => {
 
 function getPlaceholderText<T>(fixture: ComponentFixture<T>): string {
     return (
-        new TuiPageObject(fixture)
-            .getByAutomationId(`tui-input-tag__placeholder`)
-            ?.nativeElement.textContent?.trim() ||
-        new TuiPageObject(fixture)?.getByAutomationId(`tui-input-tag__native`)
-            ?.nativeElement.placeholder
+        (
+            new TuiPageObject(fixture).getByAutomationId(`tui-input-tag__placeholder`)
+                ?.nativeElement as HTMLElement
+        )?.textContent?.trim() ||
+        (
+            new TuiPageObject(fixture)?.getByAutomationId(`tui-input-tag__native`)
+                ?.nativeElement as HTMLInputElement
+        ).placeholder
     );
 }

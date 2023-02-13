@@ -134,14 +134,18 @@ describe(`ComboBox`, () => {
         });
 
         it(`The default is String(item)`, () => {
-            expect(getValue()!.nativeElement.textContent.trim()).toBe(String(ITEMS[0]));
+            expect((getValue()?.nativeElement as HTMLElement)?.textContent?.trim()).toBe(
+                String(ITEMS[0]),
+            );
         });
 
         it(`Custom value`, () => {
             testComponent.defaultInputs = false;
             fixture.detectChanges();
 
-            expect(getValue()!.nativeElement.textContent.trim()).toBe(ITEMS[0].trait);
+            expect((getValue()?.nativeElement as HTMLElement)?.textContent?.trim()).toBe(
+                ITEMS[0].trait,
+            );
         });
     });
 

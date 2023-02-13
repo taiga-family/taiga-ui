@@ -128,7 +128,7 @@ export class TuiInputExample4 {
     );
 
     get card(): string | null {
-        const value = this.testForm.get('card')!.value;
+        const value = this.testForm.get('card')?.value as string;
 
         if ((value?.length ?? 0) < 7) {
             return null;
@@ -157,7 +157,7 @@ export class TuiInputExample4 {
         return (
             this.lastUser !== null &&
             this.lastUser.toString().toLowerCase() ===
-                this.testForm.get('user')?.value?.toLowerCase()
+                (this.testForm.get('user')?.value as string)?.toLowerCase()
         );
     }
 

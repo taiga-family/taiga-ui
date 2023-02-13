@@ -39,9 +39,11 @@ export class TuiTableFilterDirective<T> implements OnDestroy, TuiTableFilter<T> 
     }
 
     filter(item: T): boolean {
-        const {disabled, value} = this.control;
-
-        return !!disabled || !this.key || this.delegate.filter(item[this.key], value);
+        return (
+            !!this.control.disabled ||
+            !this.key ||
+            this.delegate.filter(item[this.key], this.control.value)
+        );
     }
 
     private get key(): keyof T | undefined {

@@ -37,16 +37,17 @@ export class TuiDroppableDirective {
             nativeElement,
             'dragenter',
         ).pipe(
-            switchMap(({target, dataTransfer}) =>
-                merge(
-                    tuiTypedFromEvent(nativeElement, 'dragleave').pipe(
-                        filter(event => event.target === target),
-                    ),
-                    tuiTypedFromEvent(nativeElement, 'drop'),
-                ).pipe(
-                    map(() => null),
-                    startWith(dataTransfer),
-                ),
+            switchMap(
+                ({target, dataTransfer}) =>
+                    merge(
+                        tuiTypedFromEvent(nativeElement, 'dragleave').pipe(
+                            filter(event => event.target === target),
+                        ),
+                        tuiTypedFromEvent(nativeElement, 'drop'),
+                    ).pipe(
+                        map(() => null),
+                        startWith(dataTransfer),
+                    ) as Observable<DataTransfer | null>,
             ),
             distinctUntilChanged((a, b) => (!!a && !!b) || (!a && !b)),
         );

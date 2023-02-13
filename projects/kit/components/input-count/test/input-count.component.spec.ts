@@ -373,14 +373,14 @@ describe(`InputCount`, () => {
     function clickPlusButton(): void {
         const plusButton = getPlusButton();
 
-        plusButton?.nativeElement.click();
+        (plusButton?.nativeElement as HTMLElement).click();
         fixture.detectChanges();
     }
 
     function clickMinusButton(): void {
         const minusButton = getMinusButton();
 
-        minusButton?.nativeElement.click();
+        (minusButton?.nativeElement as HTMLElement).click();
         fixture.detectChanges();
     }
 

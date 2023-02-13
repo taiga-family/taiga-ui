@@ -24,7 +24,9 @@ import {Observable, of} from 'rxjs';
 export function tuiRangeCalendarTestFactory(
     control: NgControl | null,
 ): Observable<TuiDayRange | null> | null {
-    return control ? tuiControlValue(control) : of(null);
+    return control
+        ? tuiControlValue(control)
+        : (of(null) as Observable<TuiDayRange | null>);
 }
 
 describe(`rangeCalendarComponent`, () => {
@@ -116,11 +118,15 @@ describe(`rangeCalendarComponent`, () => {
         });
 
         it(`If the value does not fit any range, check the box next to "Other date..."`, () => {
-            expect(getItems()[6].nativeElement.contains(getCheckmark())).toBe(true);
+            expect(
+                (getItems()[6].nativeElement as HTMLElement).contains(getCheckmark()),
+            ).toBe(true);
         });
 
         it(`If the value does not fit the range, the range has no tick`, () => {
-            expect(getItems()[5].nativeElement.contains(getCheckmark())).toBe(false);
+            expect(
+                (getItems()[5].nativeElement as HTMLElement).contains(getCheckmark()),
+            ).toBe(false);
         });
 
         it(`Interval selection takes into account min / max`, () => {
@@ -135,7 +141,7 @@ describe(`rangeCalendarComponent`, () => {
             fixture.detectChanges();
 
             expect(
-                testComponent.control.value.daySame(
+                (testComponent.control.value as TuiDayRange).daySame(
                     new TuiDayRange(min, startOfMonth.append({day: -1})),
                 ),
             ).toBe(true);
@@ -153,7 +159,9 @@ describe(`rangeCalendarComponent`, () => {
             testComponent.max = TuiDay.currentLocal().append({day: -1});
             fixture.detectChanges();
 
-            const items = getItems().map(item => item.nativeElement.textContent.trim());
+            const items = getItems().map(item =>
+                (item.nativeElement as HTMLElement)?.textContent?.trim(),
+            );
 
             expect(items.some(item => item === `Yesterday`)).toBe(true);
             expect(items.some(item => item === `Today`)).toBe(false);
@@ -172,8 +180,12 @@ describe(`rangeCalendarComponent`, () => {
             const items = getItems();
 
             expect(items.length).toBe(2);
-            expect(items[0].nativeElement.textContent.trim()).toBe(title);
-            expect(items[1].nativeElement.textContent.trim()).toBe(`Other date...`);
+            expect((items[0].nativeElement as HTMLElement)?.textContent?.trim()).toBe(
+                title,
+            );
+            expect((items[1].nativeElement as HTMLElement)?.textContent?.trim()).toBe(
+                `Other date...`,
+            );
         });
     });
 
@@ -187,7 +199,7 @@ describe(`rangeCalendarComponent`, () => {
 
     function getCheckmark(): HTMLElement {
         return pageObject.getByAutomationId(`tui-calendar-range__checkmark`)!
-            .nativeElement;
+            .nativeElement as HTMLElement;
     }
 
     function getItems(): DebugElement[] {

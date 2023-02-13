@@ -14,7 +14,7 @@ import {
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {tuiDefaultProp, TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
-import {BehaviorSubject, Subject, timer} from 'rxjs';
+import {BehaviorSubject, OperatorFunction, Subject, timer} from 'rxjs';
 import {debounce, filter, map} from 'rxjs/operators';
 
 @Component({
@@ -55,8 +55,8 @@ export class TuiTilesComponent {
     @Output()
     readonly orderChange = this.element$.pipe(
         debounce(() => timer(this.debounce)),
-        filter(this.filter.bind(this)),
-        map(element => this.reorder(element)),
+        filter(el => this.filter(el)) as OperatorFunction<Element | undefined, Element>,
+        map(el => this.reorder(el)),
     );
 
     @HostBinding('class._dragged')

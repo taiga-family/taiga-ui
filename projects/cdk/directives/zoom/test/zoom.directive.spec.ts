@@ -42,9 +42,24 @@ xdescribe(`TuiZoom directive`, () => {
     });
 
     it(`pinch`, () => {
-        sendTouchEvent([10, 10], [20, 20], testElement.nativeElement, `touchstart`);
-        sendTouchEvent([5, 5], [25, 25], testElement.nativeElement, `touchmove`);
-        sendTouchEvent([5, 5], [25, 25], testElement.nativeElement, `touchend`);
+        sendTouchEvent(
+            [10, 10],
+            [20, 20],
+            testElement.nativeElement as HTMLElement,
+            `touchstart`,
+        );
+        sendTouchEvent(
+            [5, 5],
+            [25, 25],
+            testElement.nativeElement as HTMLElement,
+            `touchmove`,
+        );
+        sendTouchEvent(
+            [5, 5],
+            [25, 25],
+            testElement.nativeElement as HTMLElement,
+            `touchend`,
+        );
 
         fixture.detectChanges();
 
@@ -54,7 +69,7 @@ xdescribe(`TuiZoom directive`, () => {
     it(`wheel`, () => {
         const wheel = new WheelEvent(`wheel`, {deltaY: 1.1});
 
-        testElement.nativeElement.dispatchEvent(wheel);
+        (testElement.nativeElement as HTMLElement).dispatchEvent(wheel);
 
         fixture.detectChanges();
 

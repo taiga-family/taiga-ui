@@ -54,7 +54,7 @@ export class TuiSheetWrapperDirective {
 
     @tuiPure
     get height$(): Observable<number | null> {
-        return this.scroll$.pipe(map(this.getHeight.bind(this)));
+        return this.scroll$.pipe(map(value => this.getHeight(value)));
     }
 
     private getHeight(value: number): number | null {

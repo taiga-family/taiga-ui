@@ -296,7 +296,7 @@ describe(`InputPhone`, () => {
 
     function getTel(): HTMLElement {
         return pageObject.getByAutomationId(`tui-primitive-textfield__native-input`)!
-            .nativeElement;
+            .nativeElement as HTMLElement;
     }
 
     async function onPasteRemovePrefix(value: string): Promise<void> {

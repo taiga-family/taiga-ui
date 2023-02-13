@@ -6,7 +6,7 @@ import {
     Input,
     QueryList,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk';
+import {tuiEmptyQuery} from '@taiga-ui/cdk';
 
 import {TUI_DOC_DEFAULT_TABS} from '../../tokens/default-tabs';
 import {PAGE_PROVIDERS, PAGE_SEE_ALSO} from './page.providers';
@@ -36,7 +36,7 @@ export class TuiDocPageComponent {
     deprecated: boolean | '' = false;
 
     @ContentChildren(TuiDocPageTabConnectorDirective)
-    readonly tabConnectors: QueryList<TuiDocPageTabConnectorDirective> = EMPTY_QUERY;
+    readonly tabConnectors: QueryList<TuiDocPageTabConnectorDirective> = tuiEmptyQuery();
 
     activeItemIndex = 0;
 

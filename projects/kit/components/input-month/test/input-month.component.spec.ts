@@ -110,9 +110,10 @@ describe(`InputMonth`, () => {
 
     function getActiveYear(): string {
         return (
-            pageObject
-                .getByAutomationId(`tui-calendar-month__active-year`)
-                ?.nativeElement?.textContent.trim() || ``
+            (
+                pageObject.getByAutomationId(`tui-calendar-month__active-year`)
+                    ?.nativeElement as HTMLInputElement
+            )?.textContent?.trim() ?? ``
         );
     }
 });

@@ -17,7 +17,7 @@ describe(`root`, () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TuiRootComponent);
-        root = fixture.nativeElement;
+        root = fixture.nativeElement as HTMLElement;
 
         fixture.detectChanges();
     });

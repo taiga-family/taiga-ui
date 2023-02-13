@@ -56,7 +56,9 @@ describe(`Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS`, () => {
             const labelElement = getLabelElement();
 
             expect(labelElement).toBeTruthy();
-            expect(labelElement.nativeElement.textContent.trim()).toBe(label);
+            expect((labelElement.nativeElement as HTMLElement)?.textContent?.trim()).toBe(
+                label,
+            );
         });
     });
 });

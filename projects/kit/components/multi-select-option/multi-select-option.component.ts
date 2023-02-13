@@ -25,7 +25,7 @@ export class TuiMultiSelectOptionComponent<
         return (
             tuiIsPresent(value) &&
             tuiIsPresent(this.value) &&
-            this.value.some(item => this.matcher(item, value))
+            this.value.some((item: T) => this.matcher(item, value))
         );
     }
 }

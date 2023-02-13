@@ -13,7 +13,7 @@ import {tuiIsEdge, tuiIsEdgeOlderThan, tuiIsFirefox, tuiIsSafari} from '@taiga-u
 export class TuiBrowserExample1 {
     constructor(
         @Inject(USER_AGENT) private readonly userAgent: string,
-        @Inject(ElementRef) private readonly elementRef: ElementRef,
+        @Inject(ElementRef) private readonly elementRef: ElementRef<Element>,
     ) {}
 
     get aboutMyBrowser(): string {

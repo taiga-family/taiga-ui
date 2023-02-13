@@ -7,7 +7,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {INTERSECTION_ROOT} from '@ng-web-apis/intersection-observer';
-import {EMPTY_QUERY, TuiDay} from '@taiga-ui/cdk';
+import {TuiDay, tuiEmptyQuery} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'landing',
@@ -23,7 +23,7 @@ import {EMPTY_QUERY, TuiDay} from '@taiga-ui/cdk';
 })
 export class LandingComponent {
     @ViewChildren('block', {read: ElementRef})
-    private readonly blocks: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+    private readonly blocks: QueryList<ElementRef<HTMLElement>> = tuiEmptyQuery();
 
     current = 0;
 

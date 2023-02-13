@@ -18,11 +18,11 @@ import {
 } from '@taiga-ui/addon-charts/components/line-chart';
 import {
     EMPTY_ARRAY,
-    EMPTY_QUERY,
     TuiContextWithImplicit,
     TuiDay,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiEmptyQuery,
     TuiHoveredService,
     tuiIsNumber,
     tuiIsPresent,
@@ -58,7 +58,7 @@ const DUMMY: TuiPoint = [NaN, NaN];
 })
 export class TuiLineDaysChartComponent implements AfterViewInit {
     @ViewChildren(TuiLineChartComponent)
-    readonly charts: QueryList<TuiLineChartComponent> = EMPTY_QUERY;
+    readonly charts: QueryList<TuiLineChartComponent> = tuiEmptyQuery();
 
     @Input('value')
     @tuiDefaultProp()

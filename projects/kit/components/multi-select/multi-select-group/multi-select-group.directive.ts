@@ -28,7 +28,7 @@ export const TUI_MULTI_SELECT_OPTION = new PolymorpheusComponent(
                 host || {
                     handleOption: option =>
                         control.control?.setValue(
-                            tuiArrayToggle(control.value || [], option),
+                            tuiArrayToggle((control.value as readonly T[]) || [], option),
                         ),
                 },
         },

@@ -90,7 +90,7 @@ export class TuiDocNavigationComponent {
     }
 
     get canOpen(): boolean {
-        return (this.search.value?.length ?? 0) > 2;
+        return ((this.search.value as string)?.length ?? 0) > 2;
     }
 
     get itemsWithoutSections(): TuiDocPages {
@@ -198,11 +198,12 @@ export class TuiDocNavigationComponent {
 
     private navigateToAnchorLink(fragment: string): void {
         const nodes = fragment ? this.documentRef.querySelectorAll(`#${fragment}`) : [];
-        const element = nodes.length && nodes[nodes.length - 1];
 
-        if (!element) {
+        if (!nodes.length) {
             return;
         }
+
+        const element = nodes[nodes.length - 1] as Element;
 
         element.classList.add('tui-doc-animated-example');
         element.scrollIntoView({

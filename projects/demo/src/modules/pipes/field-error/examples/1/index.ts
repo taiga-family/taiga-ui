@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 const latinChars = /^[a-zA-Z]+$/;
 
 export function passwordValidator(field: AbstractControl): Validators | null {
-    return field.value && latinChars.test(field.value)
+    return field.value && latinChars.test(field.value as string)
         ? null
         : {
               other: 'Only latin letters are allowed',

@@ -4,10 +4,10 @@ export function tuiCreateKeyboardEvent(
 ): KeyboardEvent {
     const event = new KeyboardEvent(eventType, {bubbles: true});
 
-    delete (event as any).target;
+    delete (event as unknown as {target?: EventTarget}).target;
     Object.defineProperty(event, `type`, {value: eventType});
 
-    delete (event as any).key;
+    delete (event as unknown as {key?: string}).key;
     Object.defineProperty(event, `key`, {value: key});
 
     return event;

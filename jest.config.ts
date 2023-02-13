@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access */
 import {Config} from 'jest';
 import {resolve} from 'path';
 import {pathsToModuleNameMapper} from 'ts-jest';
@@ -85,11 +86,14 @@ module.exports = {
      * Use <rootDir> string token to refer to rootDir value if you want to use file paths.
      * Additionally, you can substitute captured regex groups using numbered back references.
      */
-    moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-        prefix: `<rootDir>/${compilerOptions.baseUrl}/`
-            .replace(/\.\//g, `/`)
-            .replace(/\/\/+/g, `/`),
-    }),
+    moduleNameMapper: pathsToModuleNameMapper(
+        compilerOptions.paths as import('typescript').MapLike<string[]>,
+        {
+            prefix: `<rootDir>/${compilerOptions.baseUrl}/`
+                .replace(/\.\//g, `/`)
+                .replace(/\/\/+/g, `/`),
+        },
+    ),
 
     /**
      * An array of regexp pattern strings that are matched against all module paths before those

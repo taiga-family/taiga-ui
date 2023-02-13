@@ -15,9 +15,16 @@ const isDryRun =
 const path = getValueByFlag<string>(`--path`, ``);
 
 (async function main(): Promise<void> {
-    const packageJson = await import(resolve(path, `package.json`));
-    const version = getValueByFlag<string>(`--customVersion`, packageJson.version);
-    const versions: string[] = getAllVersions(packageJson.name);
+    const packageJson = (await import(resolve(path, `package.json`))) as Record<
+        string,
+        any
+    >;
+
+    const versions: string[] = getAllVersions(packageJson.name as string);
+    const version = getValueByFlag<string>(
+        `--customVersion`,
+        packageJson.version as string,
+    );
 
     if (versions.includes(version) && !isDryRun) {
         errorLog(`${packageJson.name}@${version} is already published`);

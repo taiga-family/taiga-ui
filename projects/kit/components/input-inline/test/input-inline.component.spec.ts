@@ -56,7 +56,7 @@ describe(`InputInline`, () => {
 
     describe(`entry field`, () => {
         it(`editable if not locked`, () => {
-            expect(getNative()!.nativeElement.disabled).toBe(false);
+            expect((getNative()?.nativeElement as HTMLInputElement).disabled).toBe(false);
         });
 
         it(`not editable if locked`, async () => {
@@ -65,7 +65,7 @@ describe(`InputInline`, () => {
 
             await fixture.whenStable();
 
-            expect(getNative()?.nativeElement.disabled).toBe(true);
+            expect((getNative()?.nativeElement as HTMLInputElement).disabled).toBe(true);
         });
     });
 

@@ -11,7 +11,7 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {EMPTY_QUERY, TUI_IS_IOS, tuiPure, tuiZonefull} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, tuiEmptyQuery, tuiPure, tuiZonefull} from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {TUI_MORE_WORD} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
@@ -49,7 +49,7 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
     private readonly content?: ElementRef<HTMLElement>;
 
     @ViewChildren('stops')
-    private readonly stopsRefs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+    private readonly stopsRefs: QueryList<ElementRef<HTMLElement>> = tuiEmptyQuery();
 
     @Input()
     item!: TuiSheet<T>;

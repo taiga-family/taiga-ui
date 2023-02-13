@@ -37,7 +37,7 @@ export const createGroupExtension = (
                             return {};
                         }
 
-                        return {style: attributes.style};
+                        return {style: attributes.style as string};
                     },
                 },
             };
@@ -60,8 +60,9 @@ export const createGroupExtension = (
                 content.setAttribute(`data-type`, `group`);
 
                 if (HTMLAttributes.style) {
-                    (node.attrs as any).style = HTMLAttributes.style;
-                    content.setAttribute(`style`, HTMLAttributes.style);
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                    (node.attrs as any).style = HTMLAttributes.style as string;
+                    content.setAttribute(`style`, HTMLAttributes.style as string);
                 }
 
                 if (draggable) {

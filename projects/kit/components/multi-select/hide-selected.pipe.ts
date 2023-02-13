@@ -28,8 +28,8 @@ export class TuiHideSelectedPipe implements PipeTransform {
         }
 
         return tuiIsFlat(items)
-            ? this.filter(items, value, identityMatcher)
-            : this.filter2d(items, value, identityMatcher);
+            ? this.filter<T>(items, value as readonly T[], identityMatcher)
+            : this.filter2d<T>(items, value as readonly T[], identityMatcher);
     }
 
     @tuiPure

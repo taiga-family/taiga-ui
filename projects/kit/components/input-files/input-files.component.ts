@@ -253,7 +253,7 @@ export class TuiInputFilesComponent
             return EMPTY_ARRAY;
         }
 
-        return Array.isArray(value) ? value : [value];
+        return Array.isArray(value) ? (value as TuiFileLike[]) : [value as TuiFileLike];
     }
 
     private processSelectedFiles(files: FileList | null): void {

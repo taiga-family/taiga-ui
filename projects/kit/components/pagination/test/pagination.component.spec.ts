@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {tuiIsPresent} from '@taiga-ui/cdk';
 import {TuiPaginationComponent, TuiPaginationModule} from '@taiga-ui/kit';
@@ -6,11 +6,8 @@ import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 interface TuiPaginationParams {
     readonly index?: number;
-
     readonly length?: number;
-
     readonly activePadding?: number;
-
     readonly sidePadding?: number;
 }
 
@@ -76,8 +73,8 @@ describe(`TuiPaginationComponent`, () => {
     function getElements(): readonly number[] {
         return pageObject
             .getAllByAutomationId(`${testContext.prefix}element`)
-            .map<number>(({nativeElement}) => {
-                const text: string = nativeElement.textContent.trim();
+            .map<number>(({nativeElement}: ElementRef<Element>) => {
+                const text: string = nativeElement?.textContent?.trim() ?? ``;
 
                 return text === `…` ? 0 : Number(text);
             });

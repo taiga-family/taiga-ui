@@ -15,11 +15,11 @@ import {
     ViewChild,
 } from '@angular/core';
 import {
-    EMPTY_QUERY,
     TuiActiveZoneDirective,
     tuiClamp,
     TuiContextWithImplicit,
     tuiDefaultProp,
+    tuiEmptyQuery,
     tuiGetClosestFocusable,
     tuiIsElement,
     tuiIsNativeFocused,
@@ -74,7 +74,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     readonly activeItemIndexChange = new EventEmitter<number>();
 
     @ContentChildren(TuiItemDirective, {read: TemplateRef})
-    readonly items: QueryList<TemplateRef<Record<string, unknown>>> = EMPTY_QUERY;
+    readonly items: QueryList<TemplateRef<Record<string, unknown>>> = tuiEmptyQuery();
 
     open = false;
 

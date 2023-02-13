@@ -14,6 +14,7 @@ module.exports = {
             rules: {
                 '@typescript-eslint/quotes': ['error', 'backtick'],
                 '@typescript-eslint/prefer-nullish-coalescing': 'off',
+                '@typescript-eslint/no-misused-new': 'error',
                 'no-restricted-syntax': [
                     'error',
                     {
@@ -57,6 +58,11 @@ module.exports = {
                           ]
                         : [],
                 ),
+                '@typescript-eslint/no-unsafe-argument': 'error',
+                '@typescript-eslint/no-unsafe-assignment': 'error',
+                '@typescript-eslint/no-unsafe-call': 'error',
+                '@typescript-eslint/no-unsafe-member-access': 'error',
+                '@typescript-eslint/no-unsafe-return': 'error',
             },
         },
         {
