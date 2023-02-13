@@ -1,8 +1,9 @@
-import {Directive, ElementRef, HostListener, Inject, Input} from '@angular/core';
+/* eslint-disable rxjs/no-unsafe-takeuntil */
+import {Directive, Inject, Input} from '@angular/core';
 import {tuiDefaultProp, TuiHoveredService} from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {merge, Observable, of, Subject} from 'rxjs';
-import {delay, switchMap} from 'rxjs/operators';
+import {delay, repeat, switchMap, takeUntil} from 'rxjs/operators';
 
 import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 
@@ -13,15 +14,18 @@ import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 })
 export class TuiHintHoverDirective extends TuiDriver {
     private readonly toggle$ = new Subject<boolean>();
-    private readonly click$ = new Subject<boolean>();
     private readonly stream$ = merge(
-        merge(this.toggle$, this.hovered$).pipe(
+        this.toggle$.pipe(
+            switchMap(visible => of(visible).pipe(delay(visible ? 0 : this.hideDelay))),
+            takeUntil(this.hovered$),
+            repeat(),
+        ),
+        this.hovered$.pipe(
             switchMap(visible =>
                 of(visible).pipe(delay(visible ? this.showDelay : this.hideDelay)),
             ),
-        ),
-        this.click$.pipe(
-            switchMap(() => of(true).pipe(delay(this.inTooltip ? 0 : this.showDelay))),
+            takeUntil(this.toggle$),
+            repeat(),
         ),
     );
 
@@ -36,21 +40,11 @@ export class TuiHintHoverDirective extends TuiDriver {
     constructor(
         @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
         @Inject(TUI_HINT_OPTIONS) private readonly options: TuiHintOptions,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
     ) {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
-    @HostListener('click')
-    onClick(): void {
-        this.click$.next(true);
-    }
-
     toggle(visible: boolean): void {
         this.toggle$.next(visible);
-    }
-
-    private get inTooltip(): boolean {
-        return !!this.elementRef.nativeElement.closest('tui-tooltip');
     }
 }

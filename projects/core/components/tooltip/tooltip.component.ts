@@ -6,10 +6,12 @@ import {
     Inject,
     Input,
     Self,
+    ViewChild,
 } from '@angular/core';
 import {TUI_IS_MOBILE, tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
 import {
     TUI_HINT_OPTIONS,
+    TuiHintHoverDirective,
     TuiHintOptions,
     TuiHintOptionsDirective,
 } from '@taiga-ui/core/directives';
@@ -29,6 +31,9 @@ import {takeUntil} from 'rxjs/operators';
 })
 export class TuiTooltipComponent extends TuiHintOptionsDirective {
     private mode: TuiBrightness | null = null;
+
+    @ViewChild(TuiHintHoverDirective)
+    readonly driver$?: TuiHintHoverDirective;
 
     @Input()
     @tuiDefaultProp()
@@ -59,5 +64,8 @@ export class TuiTooltipComponent extends TuiHintOptionsDirective {
             event.preventDefault();
             event.stopPropagation();
         }
+
+        // zero timeout is needed to prevent tooltip from closing after textfield focus
+        setTimeout(() => this.driver$?.toggle(true));
     }
 }
