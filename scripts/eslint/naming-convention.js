@@ -70,6 +70,15 @@ module.exports = {
                         selector: 'enumMember',
                         format: ['PascalCase'],
                     },
+                    {
+                        selector: 'classMethod',
+                        format: ['strictCamelCase'],
+                        filter: {
+                            // you can expand this regex to add more allowed names
+                            regex: '(HTML|JSON|CVC|CVCChange|DOM)$',
+                            match: false,
+                        },
+                    },
                 ],
             },
         },
