@@ -47,9 +47,9 @@ describe(`Dialogs`, () => {
                 cy.tuiHide(`tui-doc-page`);
                 cy.tuiWaitKitDialog();
 
-                cy.get(`tui-dialog`).matchImageSnapshot(
-                    `${index}-4-dialogs-dialog-directive`,
-                );
+                cy.get(`tui-dialog`)
+                    .tuiWaitBeforeScreenshot()
+                    .matchImageSnapshot(`${index}-4-dialogs-dialog-directive`);
             });
 
             it(`show simple`, () => {
@@ -58,7 +58,9 @@ describe(`Dialogs`, () => {
                 cy.tuiHide(`tui-doc-page`);
                 cy.tuiWaitKitDialog();
 
-                cy.get(`tui-dialog`).matchImageSnapshot(`${index}-5-dialogs`);
+                cy.get(`tui-dialog`)
+                    .tuiWaitBeforeScreenshot()
+                    .matchImageSnapshot(`${index}-5-dialogs`);
             });
 
             it(`show simple with custom button`, () => {
@@ -67,7 +69,9 @@ describe(`Dialogs`, () => {
                 cy.tuiHide(`tui-doc-page`);
                 cy.tuiWaitKitDialog();
 
-                cy.get(`tui-dialog`).matchImageSnapshot(`${index}-6-dialogs`);
+                cy.get(`tui-dialog`)
+                    .tuiWaitBeforeScreenshot()
+                    .matchImageSnapshot(`${index}-6-dialogs`);
             });
 
             it(`Dialog with confirmation works`, () => {
@@ -76,16 +80,27 @@ describe(`Dialogs`, () => {
                 cy.tuiHide(`tui-doc-page`);
                 cy.tuiWaitKitDialog();
 
-                cy.get(`tui-dialog`).matchImageSnapshot(`${index}-7-dialogs`);
+                cy.get(`tui-dialog`)
+                    .last()
+                    .tuiWaitBeforeScreenshot()
+                    .matchImageSnapshot(`${index}-7-dialogs`);
 
                 cy.get(`tui-dialog .t-close`).click();
                 cy.tuiWaitKitDialog();
 
-                cy.get(`tui-dialog`).matchImageSnapshot(`${index}-7-dialogs-prompt`);
+                cy.get(`tui-dialog`)
+                    .last()
+                    .tuiWaitBeforeScreenshot()
+                    .matchImageSnapshot(`${index}-7-dialogs-prompt`);
 
                 cy.get(`tui-prompt .t-button`).last().click();
 
-                cy.get(`tui-dialog`).matchImageSnapshot(`${index}-7-dialogs-prompt-gone`);
+                cy.tuiShow(`tui-doc-page`);
+
+                cy.tuiWaitBeforeScreenshot().matchImageSnapshot(
+                    `${index}-7-dialogs-prompt-gone`,
+                    {capture: `viewport`},
+                );
             });
         });
     }
