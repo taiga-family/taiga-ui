@@ -50,9 +50,9 @@ export class TsFileParser {
             `gm`,
         );
 
-        return this.rawFileContent.replace(packageImportsRegex, parsed => {
-            return parsed.replace(`{`, `{${entity}, `);
-        });
+        return this.rawFileContent.replace(packageImportsRegex, parsed =>
+            parsed.includes(entity) ? parsed : parsed.replace(`{`, `{${entity}, `),
+        );
     }
 
     /**
