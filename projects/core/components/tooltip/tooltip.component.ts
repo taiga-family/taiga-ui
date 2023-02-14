@@ -65,7 +65,6 @@ export class TuiTooltipComponent extends TuiHintOptionsDirective {
             event.stopPropagation();
         }
 
-        // zero timeout is needed to prevent tooltip from closing after textfield focus
-        setTimeout(() => this.driver$?.toggle(true));
+        this.driver$?.toggle(true);
     }
 }
