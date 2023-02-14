@@ -85,7 +85,10 @@ export class TuiHintComponent<C = any> {
 
     @HostListener('document:click', ['$event.target'])
     onClick(target: HTMLElement): void {
-        if (!this.elementRef.nativeElement.contains(target)) {
+        if (
+            !this.elementRef.nativeElement.contains(target) &&
+            !this.hover.elementRef.nativeElement.contains(target)
+        ) {
             this.hover.toggle(false);
         }
     }

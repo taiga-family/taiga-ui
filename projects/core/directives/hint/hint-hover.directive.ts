@@ -1,8 +1,9 @@
-import {Directive, HostListener, Inject, Input} from '@angular/core';
+/* eslint-disable rxjs/no-unsafe-takeuntil */
+import {Directive, ElementRef, Inject, Input} from '@angular/core';
 import {tuiDefaultProp, TuiHoveredService} from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {merge, Observable, of, Subject} from 'rxjs';
-import {delay, switchMap} from 'rxjs/operators';
+import {delay, repeat, switchMap, takeUntil} from 'rxjs/operators';
 
 import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 
@@ -13,9 +14,18 @@ import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 })
 export class TuiHintHoverDirective extends TuiDriver {
     private readonly toggle$ = new Subject<boolean>();
-    private readonly stream$ = merge(this.toggle$, this.hovered$).pipe(
-        switchMap(visible =>
-            of(visible).pipe(delay(visible ? this.showDelay : this.hideDelay)),
+    private readonly stream$ = merge(
+        this.toggle$.pipe(
+            switchMap(visible => of(visible).pipe(delay(visible ? 0 : this.hideDelay))),
+            takeUntil(this.hovered$),
+            repeat(),
+        ),
+        this.hovered$.pipe(
+            switchMap(visible =>
+                of(visible).pipe(delay(visible ? this.showDelay : this.hideDelay)),
+            ),
+            takeUntil(this.toggle$),
+            repeat(),
         ),
     );
 
@@ -30,11 +40,11 @@ export class TuiHintHoverDirective extends TuiDriver {
     constructor(
         @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
         @Inject(TUI_HINT_OPTIONS) private readonly options: TuiHintOptions,
+        @Inject(ElementRef) readonly elementRef: ElementRef<HTMLElement>,
     ) {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
-    @HostListener('click', ['true'])
     toggle(visible: boolean): void {
         this.toggle$.next(visible);
     }
