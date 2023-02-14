@@ -8,7 +8,7 @@
         "preprocess": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "ts-node ./scripts/preprocess-icons.ts"
+                "command": "ts-node ./projects/icons/scripts/prepare-feather-icons.ts && ts-node ./scripts/preprocess-icons.ts"
             }
         },
         "prebuild": {

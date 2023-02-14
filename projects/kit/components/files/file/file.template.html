@@ -94,7 +94,7 @@
         <tui-svg
             automation-id="tui-file__icon"
             class="t-icon"
-            [class.t-icon_deleted]="isDeleted"
+            [class.t-icon_blank]="isBig || isDeleted"
             [class.t-icon_error]="isError"
             [src]="icon"
         ></tui-svg>

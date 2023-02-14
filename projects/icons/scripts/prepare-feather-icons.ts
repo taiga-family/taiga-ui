@@ -1,7 +1,7 @@
 const path = require(`path`);
 const fs = require(`fs`);
 
-export function prepareFeatherIcons(): void {
+(function main(): void {
     const src = path.join(
         process.cwd(),
         `node_modules`,
@@ -30,7 +30,7 @@ export function prepareFeatherIcons(): void {
                 .replace(`height="24"`, `height="16"`),
         );
     });
-}
+})();
 
 function processName(name: string, postfix = ``): string {
     return `tuiIcon${name
