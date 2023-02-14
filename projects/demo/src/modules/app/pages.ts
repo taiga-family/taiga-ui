@@ -898,12 +898,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Editor`,
-        title: `Custom tool`,
-        keywords: `editor, custom, tool, wysiwyg, редактор, текст, html, rich, text`,
-        route: `/editor/custom-tool`,
-    },
-    {
-        section: $localize`Editor`,
         title: `Anchors`,
         keywords: `editor, anchors, wysiwyg, редактор, текст, html, rich, text`,
         route: `/editor/anchors`,
@@ -925,6 +919,24 @@ export const pages: TuiDocPages = [
         title: `Upload files`,
         keywords: `editor, upload, files, wysiwyg, редактор, текст, html, rich, text`,
         route: `/editor/upload-files`,
+    },
+    {
+        section: $localize`Editor`,
+        title: $localize`Custom tool`,
+        subPages: [
+            {
+                section: $localize`Editor`,
+                title: `Paste emoji`,
+                keywords: `editor, custom, tool, emoji, wysiwyg, редактор, текст, html, rich, text`,
+                route: `/editor/custom-tool/paste-emoji`,
+            },
+            {
+                section: $localize`Editor`,
+                title: `Paste image`,
+                keywords: `editor, paste image, tool, wysiwyg, редактор, текст, html, rich, text`,
+                route: `/editor/custom-tool/paste-image`,
+            },
+        ],
     },
     {
         section: $localize`Editor`,

@@ -12,9 +12,9 @@ import {
     TuiSvgModule,
 } from '@taiga-ui/core';
 
-import {ExampleTuiEditorCustomToolComponent} from './editor-custom-tool.component';
-import {TuiEditorCustomToolExample1} from './examples/1';
-import {ExampleTuiSmilesToolModule} from './examples/1/smiles-tool/smiles-tool.module';
+import {ExampleTuiEditorPasteImageToolComponent} from './editor-paste-image-tool.component';
+import {TuiEditorPasteImageToolExample1} from './examples/1';
+import {ExampleTuiPasteImageToolModule} from './examples/1/image-tool/image-tool.module';
 
 @NgModule({
     imports: [
@@ -28,10 +28,13 @@ import {ExampleTuiSmilesToolModule} from './examples/1/smiles-tool/smiles-tool.m
         FormsModule,
         ReactiveFormsModule,
         TuiEditorModule,
-        ExampleTuiSmilesToolModule,
+        ExampleTuiPasteImageToolModule,
         TuiEditorSocketModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiEditorCustomToolComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiEditorPasteImageToolComponent)),
     ],
-    declarations: [TuiEditorCustomToolExample1, ExampleTuiEditorCustomToolComponent],
+    declarations: [
+        TuiEditorPasteImageToolExample1,
+        ExampleTuiEditorPasteImageToolComponent,
+    ],
 })
-export class ExampleTuiEditorCustomToolModule {}
+export class ExampleTuiEditorPasteImageToolModule {}

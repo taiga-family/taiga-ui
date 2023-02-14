@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';
 
 @Component({
-    selector: 'tui-editor-custom-tool-example-1',
+    selector: 'tui-editor-paste-emoji-tool-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     providers: [
@@ -24,7 +24,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';
     changeDetection,
     encapsulation,
 })
-export class TuiEditorCustomToolExample1 {
+export class TuiEditorPasteEmojiToolExample1 {
     readonly builtInTools = [TuiEditorTool.Undo];
-    readonly control = new FormControl('', Validators.required);
+    readonly control = new FormControl('');
 }

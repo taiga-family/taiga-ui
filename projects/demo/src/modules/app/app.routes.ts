@@ -980,12 +980,27 @@ export const ROUTES = [
         },
     },
     {
-        path: `editor/custom-tool`,
+        path: `editor/custom-tool/paste-emoji`,
         loadChildren: async () =>
-            (await import(`../components/editor/custom-tool/editor-custom-tool.module`))
-                .ExampleTuiEditorCustomToolModule,
+            (
+                await import(
+                    `../components/editor/custom-tool/paste-emoji/editor-paste-emoji.module`
+                )
+            ).ExampleTuiEditorPasteEmojiToolModule,
         data: {
-            title: `Editor — Custom tool`,
+            title: `Editor — Paste emoji custom tool`,
+        },
+    },
+    {
+        path: `editor/custom-tool/paste-image`,
+        loadChildren: async () =>
+            (
+                await import(
+                    `../components/editor/custom-tool/paste-image/editor-paste-image-tool.module`
+                )
+            ).ExampleTuiEditorPasteImageToolModule,
+        data: {
+            title: `Editor — Paste image custom tool`,
         },
     },
     {
