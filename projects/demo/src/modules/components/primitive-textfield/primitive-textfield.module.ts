@@ -12,6 +12,7 @@ import {
     TuiPrimitiveTextfieldModule,
     TuiSvgModule,
     TuiTextfieldControllerModule,
+    TuiWrapperModule,
 } from '@taiga-ui/core';
 import {TuiAvatarModule, TuiRadioListModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -45,6 +46,7 @@ import {ExampleTuiPrimitiveTextfieldComponent} from './primitive-textfield.compo
         TuiRadioListModule,
         TuiCustomizationModule,
         TuiLabelModule,
+        TuiWrapperModule,
         ThemesModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiPrimitiveTextfieldComponent)),
