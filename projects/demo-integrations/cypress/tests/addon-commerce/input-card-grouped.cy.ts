@@ -2,7 +2,7 @@ describe(`InputCardGrouped`, () => {
     describe(`API mode`, () => {
         beforeEach(() => {
             cy.viewport(`macbook-13`);
-            cy.tuiVisit(`components/input-card-grouped/API?tuiMode=null`);
+            cy.tuiVisit(`components/input-card-grouped/API`);
         });
 
         it(`set value and clear after`, () => {
@@ -14,13 +14,21 @@ describe(`InputCardGrouped`, () => {
 
             closeTuiAlerts();
 
-            cy.get(`@wrapper`).matchImageSnapshot(`01-input-card-grouped-filled`);
+            cy.get(`@wrapper`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`01-input-card-grouped-filled`);
 
             cy.get(`@wrapper`).find(`[src="tuiIconCloseLarge"]`).click({force: true});
-            cy.get(`@wrapper`).matchImageSnapshot(`02-input-card-grouped-cleared`);
+
+            cy.get(`@wrapper`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`02-input-card-grouped-cleared`);
 
             cy.get(`@wrapper`).click({force: true});
-            cy.get(`@wrapper`).matchImageSnapshot(`03-input-card-grouped-unfocused`);
+
+            cy.get(`@wrapper`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`03-input-card-grouped-unfocused`);
         });
 
         it(`set value and disable`, () => {
@@ -37,7 +45,9 @@ describe(`InputCardGrouped`, () => {
                 .findByAutomationId(`tui-toggle__checkbox`)
                 .click({force: true});
 
-            cy.get(`@wrapper`).matchImageSnapshot(`04-input-card-grouped-disabled`);
+            cy.get(`@wrapper`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`04-input-card-grouped-disabled`);
         });
 
         // prevent flaky screenshot tests
@@ -72,13 +82,15 @@ describe(`InputCardGrouped`, () => {
 
             cy.get(`@cardNumber`).type(`5213 0000 4039 5834`).tuiWaitBeforeAction();
 
-            cy.get(`@example`).matchImageSnapshot(`06-input-card-with-value`);
+            cy.get(`@example`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`06-input-card-with-value`);
 
             cy.get(`@cardNumber`).should(`be.visible`).focus();
 
-            cy.get(`@example`).matchImageSnapshot(
-                `07-input-card-with-value-focus-edit-card`,
-            );
+            cy.get(`@example`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`07-input-card-with-value-focus-edit-card`);
 
             cy.get(`@cardNumber`)
                 .should(`be.visible`)
@@ -86,9 +98,9 @@ describe(`InputCardGrouped`, () => {
                 .tuiTab(`forward`)
                 .tuiWaitBeforeAction();
 
-            cy.get(`@example`).matchImageSnapshot(
-                `08-input-card-with-value-tab-to-expired`,
-            );
+            cy.get(`@example`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`08-input-card-with-value-tab-to-expired`);
 
             cy.get(`@example`)
                 .findByAutomationId(`tui-input-card-grouped__expire`)
@@ -96,9 +108,10 @@ describe(`InputCardGrouped`, () => {
                 .as(`cardExpired`);
 
             cy.get(`@cardExpired`).type(`02/38`);
-            cy.get(`@example`).matchImageSnapshot(
-                `09-input-card-with-value-expire-filled`,
-            );
+
+            cy.get(`@example`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`09-input-card-with-value-expire-filled`);
 
             cy.get(`@example`)
                 .findByAutomationId(`tui-input-card-grouped__cvc`)
@@ -106,17 +119,24 @@ describe(`InputCardGrouped`, () => {
                 .as(`cvc`);
 
             cy.get(`@cvc`).type(`123`);
-            cy.get(`@example`).matchImageSnapshot(`10-input-card-with-value-cvc-filled`);
+
+            cy.get(`@example`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`10-input-card-with-value-cvc-filled`);
 
             cy.get(`@example`)
                 .find(`tui-svg[src=tuiIconCloseLarge]`)
                 .click({force: true});
-            cy.get(`@example`).matchImageSnapshot(
-                `11-input-card-with-focused-after-clear`,
-            );
+
+            cy.get(`@example`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`11-input-card-with-focused-after-clear`);
 
             cy.get(`@example`).click({force: true});
-            cy.get(`@example`).matchImageSnapshot(`12-default-state-input-card`);
+
+            cy.get(`@example`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`12-default-state-input-card`);
         });
 
         it(`input card grouped with saved cards`, () => {
@@ -130,32 +150,41 @@ describe(`InputCardGrouped`, () => {
             cy.get(`@example`)
                 .findByAutomationId(`tui-input-card-grouped__card`)
                 .as(`cardNumber`);
-            cy.get(`@example`).matchImageSnapshot(
-                `13-default-prefilled-state-input-card`,
-            );
+
+            cy.get(`@example`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`13-default-prefilled-state-input-card`);
 
             cy.get(`@cardNumber`)
                 .should(`have.css`, `pointer-events`)
                 .and(`match`, /none/);
-            cy.get(`@example`).matchImageSnapshot(`14-prefilled-value-cannot-be-edit`);
+
+            cy.get(`@example`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`14-prefilled-value-cannot-be-edit`);
 
             cy.get(`@example`)
                 .findByAutomationId(`tui-input-card-grouped__cvc`)
                 .focus()
                 .type(`123`);
-            cy.get(`@example`).matchImageSnapshot(`15-input-card-with-value-cvc-filled`);
+
+            cy.get(`@example`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`15-input-card-with-value-cvc-filled`);
 
             cy.get(`@example`)
                 .find(`tui-svg[src=tuiIconCloseLarge]`)
                 .click({force: true});
-            cy.get(`@example`).matchImageSnapshot(
-                `16-input-card-with-focused-after-clear`,
-            );
+
+            cy.get(`@example`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`16-input-card-with-focused-after-clear`);
 
             cy.get(`@example`).click({force: true});
-            cy.get(`@example`).matchImageSnapshot(
-                `17-default-prefilled-state-input-card`,
-            );
+
+            cy.get(`@example`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`17-default-prefilled-state-input-card`);
         });
     });
 });
