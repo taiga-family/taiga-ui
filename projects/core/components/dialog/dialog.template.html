@@ -44,6 +44,6 @@
         shape="rounded"
         class="t-close"
         [title]="closeWord$ | async"
-        (click)="close()"
+        (click)="close$.next()"
     ></button>
 </div>

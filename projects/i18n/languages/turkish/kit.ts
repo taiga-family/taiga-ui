@@ -57,4 +57,8 @@ export const TUI_TURKISH_LANGUAGE_KIT: TuiLanguageKit = {
         all: `Hepsini seç`,
         none: `Hiçbirini Seçme`,
     },
+    prompt: {
+        yes: `Evet`,
+        no: `Hayır`,
+    },
 };

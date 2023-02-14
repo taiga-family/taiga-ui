@@ -57,4 +57,8 @@ export const TUI_FRENCH_LANGUAGE_KIT: TuiLanguageKit = {
         all: `Tout sélectionner`,
         none: `Ne rien sélectionner`,
     },
+    prompt: {
+        yes: `Oui`,
+        no: `Non`,
+    },
 };

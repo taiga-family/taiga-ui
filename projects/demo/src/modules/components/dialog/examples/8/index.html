@@ -1,0 +1,25 @@
+<button
+    tuiButton
+    size="m"
+    (click)="onClick(content)"
+>
+    Open
+</button>
+
+<ng-template
+    #content
+    let-context
+>
+    <tui-input
+        class="tui-space_bottom-3"
+        [ngModel]="''"
+    >
+        Your name
+    </tui-input>
+    <button
+        tuiButton
+        (click)="context.complete()"
+    >
+        Submit
+    </button>
+</ng-template>

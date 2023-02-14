@@ -104,6 +104,16 @@
         >
             <tui-dialog-example-7></tui-dialog-example-7>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="prompt"
+            i18n-heading
+            heading="Prompt"
+            description="Confirming closing of the dialog"
+            [content]="example8"
+        >
+            <tui-dialog-example-8></tui-dialog-example-8>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -233,7 +243,9 @@
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="closeable"
             >
-                Show a cross to close dialog
+                Show a cross to close dialog. Pass
+                <code>Observable&lt;boolean&gt;</code>
+                if you want prevent closing, for example, with a prompt.
             </ng-template>
             <ng-template
                 i18n
@@ -241,7 +253,9 @@
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="dismissible"
             >
-                Dialog can be canceled with Escape key or with a click outside
+                Dialog can be canceled with Escape key or with a click outside. Pass
+                <code>Observable&lt;boolean&gt;</code>
+                if you want prevent closing, for example, with a prompt.
             </ng-template>
             <ng-template
                 i18n

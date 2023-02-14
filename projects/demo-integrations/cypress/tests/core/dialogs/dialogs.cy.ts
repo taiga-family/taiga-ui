@@ -69,6 +69,24 @@ describe(`Dialogs`, () => {
 
                 cy.get(`tui-dialog`).matchImageSnapshot(`${index}-6-dialogs`);
             });
+
+            it(`Dialog with confirmation works`, () => {
+                cy.get(`tui-dialog-example-8 button`).first().click();
+
+                cy.tuiHide(`tui-doc-page`);
+                cy.tuiWaitKitDialog();
+
+                cy.get(`tui-dialog`).matchImageSnapshot(`${index}-7-dialogs`);
+
+                cy.get(`tui-dialog .t-close`).click();
+                cy.tuiWaitKitDialog();
+
+                cy.get(`tui-dialog`).matchImageSnapshot(`${index}-7-dialogs-prompt`);
+
+                cy.get(`tui-prompt .t-button`).last().click();
+
+                cy.get(`tui-dialog`).matchImageSnapshot(`${index}-7-dialogs-prompt-gone`);
+            });
         });
     }
 });
