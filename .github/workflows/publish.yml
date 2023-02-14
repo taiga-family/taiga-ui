@@ -11,7 +11,7 @@ env:
   FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
