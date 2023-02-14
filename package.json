@@ -110,7 +110,7 @@
         "http-server": "^0.13.0",
         "husky": "^8.0.3",
         "kill-port": "^2.0.1",
-        "lint-staged": "^13.1.1",
+        "lint-staged": "^13.1.2",
         "ng-packagr": "^12.2.7",
         "postcss": "^8.4.21",
         "prettier": "~2.8.4",
