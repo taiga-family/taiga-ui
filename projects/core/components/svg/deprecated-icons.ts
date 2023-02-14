@@ -1,6 +1,4 @@
-import {InjectionToken} from '@angular/core';
-
-export const TUI_DEPRECATED_ICONS = {
+export const TUI_DEPRECATED_ICONS: Record<string, string> = {
     tuiIconAttach: `tuiIconPaperclip`,
     tuiIconAttention: `tuiIconAlertCircle`,
     tuiIconBackCircle: `tuiIconArrowLeftCircle`,
@@ -12,21 +10,23 @@ export const TUI_DEPRECATED_ICONS = {
     tuiIconCancelCircle: `tuiIconSlash`,
     tuiIconCard: `tuiIconCreditCard`,
     tuiIconCards: `tuiIconCreditCard`,
-    tuiIconChartBar: `tuiIconBarChart2`,
+    tuiIconChartBar: `tuiIconBarChart`,
     tuiIconChart: `tuiIconBarChart`,
     tuiIconCheckList: `tuiIconClipboard`,
     tuiIconCloseCircle: `tuiIconXCircle`,
-    tuiIconCollapse: `tuiIconMinimize2`,
+    tuiIconCollapse: `tuiIconMinimize`,
     tuiIconComment: `tuiIconMessageSquare`,
+    tuiIconCommentFw: `tuiIconMessageForward`,
     tuiIconCompany: `tuiIconBriefcase`,
     tuiIconDefaultDoc: `tuiIconFile`,
     tuiIconDesktop: `tuiIconMonitor`,
+    tuiIconDesktopOff: `tuiIconMonitorOff`,
     tuiIconDislike: `tuiIconThumbsDown`,
     tuiIconDone: `tuiIconCheckCircle`,
     tuiIconDraft: `tuiIconEdit2`,
     tuiIconEyeOpen: `tuiIconEye`,
     tuiIconEyeClosed: `tuiIconEyeOff`,
-    tuiIconExpand: `tuiIconMaximize2`,
+    tuiIconExpand: `tuiIconMaximize`,
     tuiIconExternal: `tuiIconExternalLink`,
     tuiIconFrame: `tuiIconLayout`,
     tuiIconGeo: `tuiIconMapPin`,
@@ -46,7 +46,7 @@ export const TUI_DEPRECATED_ICONS = {
     tuiIconRefresh: `tuiIconRefreshCw`,
     tuiIconRemove: `tuiIconX`,
     tuiIconShow: `tuiIconEye`,
-    tuiIconSound: `tuiIconVolume2`,
+    tuiIconSound: `tuiIconVolume`,
     tuiIconSoundOff: `tuiIconVolumeX`,
     tuiIconStarFilled: `tuiIconStar`,
     tuiIconStop: `tuiIconSquare`,
@@ -56,10 +56,3 @@ export const TUI_DEPRECATED_ICONS = {
     tuiIconViewList: `tuiIconList`,
     tuiIconWifiOn: `tuiIconWifi`,
 };
-
-export const TUI_SVG_DEPRECATED = new InjectionToken<Record<string, string>>(
-    `[TUI_SVG_DEPRECATED]: Deprecated icons`,
-    {
-        factory: () => TUI_DEPRECATED_ICONS,
-    },
-);

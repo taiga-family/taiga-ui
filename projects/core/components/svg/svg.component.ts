@@ -28,7 +28,6 @@ import {tuiIsPresumedHTMLString} from '@taiga-ui/core/utils/miscellaneous';
 import {Observable, of, ReplaySubject} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 
-import {TUI_SVG_DEPRECATED} from './deprecated-icons';
 import {TUI_SVG_OPTIONS, TuiSvgOptions} from './svg-options';
 
 const UNDEFINED_NAMED_ICON = 'Attempted to use undefined named icon';
@@ -51,7 +50,6 @@ export class TuiSvgComponent {
     constructor(
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(WINDOW) private readonly windowRef: Window,
-        @Inject(TUI_SVG_DEPRECATED) private readonly deprecated: Record<string, string>,
         @Inject(TUI_SVG_OPTIONS) private readonly options: TuiSvgOptions,
         @Optional()
         @Inject(TUI_SANITIZER)
@@ -79,13 +77,9 @@ export class TuiSvgComponent {
     @Input()
     @tuiRequiredSetter()
     set src(src: SafeHtml | string) {
-        const deprecated = this.deprecated[String(src).replace('Large', '')];
+        const deprecated = this.options.deprecated(String(src));
 
-        tuiAssert.assert(
-            !deprecated,
-            // eslint-disable-next-line @typescript-eslint/no-base-to-string
-            `${src} is deprecated, use ${deprecated}/Large instead`,
-        );
+        tuiAssert.assert(!deprecated, deprecated);
         this.icon = this.options.srcProcessor(src);
         this.src$.next();
     }

@@ -1,5 +1,6 @@
 import {inject, InjectionToken} from '@angular/core';
-import {TUI_SVG_DEPRECATED} from '@taiga-ui/core';
+import {TuiStringHandler} from '@taiga-ui/cdk';
+import {TUI_SVG_OPTIONS} from '@taiga-ui/core';
 import * as allIcons from '@taiga-ui/icons';
 
 export type DemoTuiIcon = keyof typeof import('@taiga-ui/icons');
@@ -33,13 +34,13 @@ const DEPRECATED: DemoTuiIcon[] = [
 
 const {LARGE, NORMAL} = ensureIcons();
 
-export const ICONS = (deprecated: Record<string, string>): DemoTuiIconsTabs => ({
+export const ICONS = (deprecated: TuiStringHandler<string>): DemoTuiIconsTabs => ({
     'Description and examples': {
         [`Normal interface icons / 16px`]: NORMAL.filter(
-            icon => !deprecated[icon] && !DEPRECATED.includes(icon),
+            icon => !deprecated(icon) && !DEPRECATED.includes(icon),
         ),
         [`Large interface icons / 24px`]: LARGE.filter(
-            icon => !deprecated[icon.replace(`Large`, ``)] && !DEPRECATED.includes(icon),
+            icon => !deprecated(icon) && !DEPRECATED.includes(icon),
         ),
         [`Payment systems`]: COMMERCE,
     },
@@ -47,7 +48,7 @@ export const ICONS = (deprecated: Record<string, string>): DemoTuiIconsTabs => (
 
 export const TUI_DEMO_ICONS: InjectionToken<DemoTuiIconsTabs> =
     new InjectionToken<DemoTuiIconsTabs>(`[TUI_DEMO_ICONS]: Icons`, {
-        factory: () => ICONS(inject(TUI_SVG_DEPRECATED)),
+        factory: () => ICONS(inject(TUI_SVG_OPTIONS).deprecated),
     });
 
 /**

@@ -28,7 +28,7 @@ export class TuiTabsExample1 {
         },
         {
             text: 'Calls',
-            icon: 'tuiIconCall',
+            icon: 'tuiIconPhone',
         },
         {
             text: 'Settings',
