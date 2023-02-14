@@ -10,7 +10,7 @@
     <button
       tuiIconButton
       tuiPreviewAction
-      icon="tuiIconTrash2"
+      icon="tuiIconTrash"
       title="Delete"
       (click)="delete()"
     ></button>
