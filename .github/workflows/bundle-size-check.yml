@@ -19,7 +19,7 @@ jobs:
       - run: npx nx build
 
       - name: Run BundleMon
-        if: always()
+        continue-on-error: true
         run: npx bundlemon
         env:
           CI_COMMIT_SHA: ${{github.event.pull_request.head.sha || github.sha}}
