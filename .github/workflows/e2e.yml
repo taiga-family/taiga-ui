@@ -41,11 +41,6 @@ jobs:
     if: ${{ !contains(github.head_ref , 'release/') }}
     needs: [build-demo]
     runs-on: ubuntu-latest
-    services:
-      sorry-cypress-director:
-        image: agoldis/sorry-cypress-director:2.5.1
-        ports:
-          - 1234:1234
     strategy:
       fail-fast: false
       matrix:
@@ -74,7 +69,6 @@ jobs:
       - name: Setup Cypress and Sorry Cypress
         uses: ./.github/actions/cypress
         with:
-          cypress-api-url: http://localhost:1234/
           snapshot-path: ./projects/demo-integrations/cypress/snapshots
 
       - name: Download ${{ env.LOCAL_REF_DEMO }} for serve locally
@@ -87,7 +81,7 @@ jobs:
         run: npx nx serve-compiled --path ${{ env.LOCAL_REF_DEMO }} --port ${{ env.NG_SERVER_PORT }}
 
       - name: Run screenshot tests on ${{ env.LOCAL_REF_DEMO }}
-        run: npx nx e2e-ci --key localhost --folder ${{ matrix.project }}
+        run: npx nx e2e-ci --folder ${{ matrix.project }}
 
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
@@ -107,7 +101,7 @@ jobs:
         env: # note: need to collect all
           # diff files for lumberjack bot
           CYPRESS_failOnSnapshotDiff: 0
-        run: npx nx e2e-ci --key next --folder ${{ matrix.project }}
+        run: npx nx e2e-ci --folder ${{ matrix.project }}
 
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}

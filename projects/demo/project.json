@@ -327,7 +327,7 @@
             "options": {
                 "parallel": true,
                 "commands": [
-                    "npx cy2 run --parallel --record --key {args.key} --ci-build-id {args.key} --env ci=true --browser chrome --headless --project ./projects/demo-integrations --spec '**/{args.folder}/**/*.cy.ts'"
+                    "npx cypress run --env ci=true --browser chrome --headless --project ./projects/demo-integrations --spec '**/{args.folder}/**/*.cy.ts'"
                 ]
             }
         }

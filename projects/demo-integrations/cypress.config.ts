@@ -6,7 +6,6 @@ import {
 } from './cypress/cypress.options';
 
 export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
-    projectId: `sorry-cypress`,
     video: false,
     viewportWidth,
     viewportHeight,
