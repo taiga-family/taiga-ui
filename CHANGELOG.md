@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.77.0](https://github.com/tinkoff/taiga-ui/compare/v2.76.0...v2.77.0) (2023-02-15)
+
+### Features
+
+- **addon-editor:** upgrade tiptap editor ([#3634](https://github.com/tinkoff/taiga-ui/issues/3634))
+  ([491eae3](https://github.com/tinkoff/taiga-ui/commit/491eae395c8ee3ef2628764d3ae75b8140c0db45))
+
+### Bug Fixes
+
+- **cdk:** support redefine properties for parent class ([#3632](https://github.com/tinkoff/taiga-ui/issues/3632))
+  ([f6ab303](https://github.com/tinkoff/taiga-ui/commit/f6ab30351cc555bdbc815932b7172f51c4f0f753))
+- **core:** `TUI_DIALOG_CLOSE_STREAM` event targets ([#3625](https://github.com/tinkoff/taiga-ui/issues/3625))
+  ([b9b0e86](https://github.com/tinkoff/taiga-ui/commit/b9b0e86228a0c5c84076642c838c7d2786950037))
+
 ## [2.76.0](https://github.com/tinkoff/taiga-ui/compare/v2.75.0...v2.76.0) (2023-02-07)
 
 ### Bug Fixes
