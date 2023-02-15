@@ -75,6 +75,10 @@ export class TuiInputPhoneInternationalComponent
     @Input('countryIsoCode')
     @tuiDefaultProp()
     set isoCode(code: TuiCountryIsoCode) {
+        if (this.countryIsoCode === code) {
+            return;
+        }
+
         this.inputPhoneComponent?.writeValue(this.value);
         this.countryIsoCode = code;
     }
