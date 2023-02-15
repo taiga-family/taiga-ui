@@ -8,6 +8,7 @@
             x="50%"
             xmlns="http://www.w3.org/2000/svg"
             y="50%"
+            stroke="none"
         >
             <svg x="-16" y="-16">
                 <path d="M11.2571 21.3023L12.8746 12.1589H15.4617L13.8431 21.3023H11.2571Z" fill="currentColor" />
