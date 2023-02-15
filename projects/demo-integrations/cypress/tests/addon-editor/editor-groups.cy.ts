@@ -6,7 +6,7 @@ describe(`Examples with groups in editor`, () => {
     it(`Simple nested group`, () => {
         makeWrapper(`#nested-groups`);
 
-        cy.get(`@wrapper`).should(`be.visible`).click(); // clear hints
+        cy.get(`@wrapper`).should(`be.visible`).tuiWaitBeforeAction().click(); // clear hints
 
         cy.get(`@editor`)
             .tuiWaitBeforeScreenshot()
@@ -34,7 +34,7 @@ describe(`Examples with groups in editor`, () => {
         cy.get(`@wrapper`).find(`button[icon=tuiIconPlusLarge]`).click();
         cy.document().then(doc => cy.wrap(doc.activeElement, {log: false}).type(`456`));
 
-        cy.get(`@wrapper`).should(`be.visible`).click(); // clear hints
+        cy.get(`@wrapper`).should(`be.visible`).tuiWaitBeforeAction().click(); // clear hints
 
         cy.get(`@editor`)
             .tuiWaitBeforeScreenshot()
