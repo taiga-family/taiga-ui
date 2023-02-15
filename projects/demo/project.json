@@ -1,4 +1,6 @@
 {
+    "name": "demo",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "root": "projects/demo/",
     "sourceRoot": "projects/demo/src",
     "projectType": "application",
@@ -10,8 +12,7 @@
             "ru": "projects/demo/src/locale/messages.ru.xlf"
         }
     },
-    "implicitDependencies": ["!testing"],
-    "architect": {
+    "targets": {
         "i18n": {
             "executor": "nx:run-commands",
             "options": {
@@ -19,7 +20,7 @@
             }
         },
         "build": {
-            "builder": "@angular-builders/custom-webpack:browser",
+            "executor": "@angular-builders/custom-webpack:browser",
             "outputs": ["dist/demo"],
             "dependsOn": [
                 {
@@ -61,7 +62,7 @@
                     "includePaths": ["projects/core/styles"]
                 },
                 "scripts": [
-                    "projects/demo/node_modules/marked/lib/marked.js",
+                    "node_modules/marked/lib/marked.js",
                     "node_modules/prismjs/prism.js",
                     "node_modules/prismjs/components/prism-less.min.js",
                     "node_modules/prismjs/components/prism-markup.min.js",
@@ -171,7 +172,7 @@
             }
         },
         "serve": {
-            "builder": "@angular-builders/custom-webpack:dev-server",
+            "executor": "@angular-builders/custom-webpack:dev-server",
             "dependsOn": [
                 {
                     "target": "i18n",
@@ -223,7 +224,7 @@
             }
         },
         "serve-ssr": {
-            "builder": "@nguniversal/builders:ssr-dev-server",
+            "executor": "@nguniversal/builders:ssr-dev-server",
             "options": {},
             "configurations": {
                 "production": {
@@ -252,7 +253,7 @@
             }
         },
         "server": {
-            "builder": "@angular-builders/custom-webpack:server",
+            "executor": "@angular-builders/custom-webpack:server",
             "options": {
                 "customWebpackConfig": {
                     "path": "projects/demo/webpack.config.ts"
@@ -277,7 +278,7 @@
             "defaultConfiguration": "production"
         },
         "prerender": {
-            "builder": "@nguniversal/builders:prerender",
+            "executor": "@nguniversal/builders:prerender",
             "options": {
                 "browserTarget": "demo:build:production",
                 "serverTarget": "demo:server:production",
@@ -288,7 +289,7 @@
             }
         },
         "extract-i18n": {
-            "builder": "@angular-builders/custom-webpack:extract-i18n",
+            "executor": "@angular-builders/custom-webpack:extract-i18n",
             "options": {
                 "browserTarget": "demo:build"
             }

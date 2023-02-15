@@ -1,12 +1,13 @@
 {
+    "name": "i18n",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "root": "projects/i18n",
     "sourceRoot": "projects/i18n",
     "projectType": "library",
     "prefix": "tui",
-    "implicitDependencies": ["!testing"],
-    "architect": {
+    "targets": {
         "build": {
-            "builder": "@angular-devkit/build-angular:ng-packagr",
+            "executor": "@angular-devkit/build-angular:ng-packagr",
             "outputs": ["dist/i18n"],
             "options": {
                 "tsConfig": "tsconfig.build.json",

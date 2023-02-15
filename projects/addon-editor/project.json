@@ -1,4 +1,6 @@
 {
+    "name": "addon-editor",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "root": "projects/addon-editor",
     "sourceRoot": "projects/addon-editor",
     "projectType": "library",
@@ -10,10 +12,9 @@
             "displayBlock": true
         }
     },
-    "implicitDependencies": ["!testing"],
-    "architect": {
+    "targets": {
         "build": {
-            "builder": "@angular-devkit/build-angular:ng-packagr",
+            "executor": "@angular-devkit/build-angular:ng-packagr",
             "outputs": ["dist/addon-editor"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
