@@ -128,7 +128,7 @@ function pasteImage(view: EditorView, event: ClipboardEvent | DragEvent): void {
         const reader = new FileReader();
 
         reader.onload = readerEvent => {
-            const node = view.state.schema.nodes.image.create({
+            const node = view.state.schema.nodes.imageEditor.create({
                 src: readerEvent.target?.result,
             });
             const transaction = view.state.tr.replaceSelectionWith(node);
