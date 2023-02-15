@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.18.0](https://github.com/tinkoff/taiga-ui/compare/v3.17.0...v3.18.0) (2023-02-15)
+
+### Features
+
+- **addon-editor:** add a little bit space between top and bottom in editor
+  ([#3647](https://github.com/tinkoff/taiga-ui/issues/3647))
+  ([c105795](https://github.com/tinkoff/taiga-ui/commit/c105795abf539a00daab516923744c10fad1e09e))
+- **addon-editor:** customize css classes for font-tool in toolbar
+  ([#3662](https://github.com/tinkoff/taiga-ui/issues/3662))
+  ([ef5398b](https://github.com/tinkoff/taiga-ui/commit/ef5398bbe9334fec8789f1c11c8c0a356ea84aff))
+- **addon-editor:** support drop/paste event for resizable ([#3646](https://github.com/tinkoff/taiga-ui/issues/3646))
+  ([7e446bd](https://github.com/tinkoff/taiga-ui/commit/7e446bd4d80076f53267e9822781092918da8818))
+- **addon-editor:** support focus extension ([#3649](https://github.com/tinkoff/taiga-ui/issues/3649))
+  ([be04427](https://github.com/tinkoff/taiga-ui/commit/be04427c0309126d5d993ebef541777ffeed39d8))
+- **core:** `Dialog` allow closing confirmation ([#3638](https://github.com/tinkoff/taiga-ui/issues/3638))
+  ([7ac0c1e](https://github.com/tinkoff/taiga-ui/commit/7ac0c1e0f58b250828c5f6dfb51f1c0417456264))
+- **core:** `Tooltip` remove delay on click ([#3502](https://github.com/tinkoff/taiga-ui/issues/3502))
+  ([d6ed9e0](https://github.com/tinkoff/taiga-ui/commit/d6ed9e0698344a2d9b67bba51314a39f9f212cee))
+- **core:** `TUI_VIEWPORT` add new token ([#3617](https://github.com/tinkoff/taiga-ui/issues/3617))
+  ([a0093a0](https://github.com/tinkoff/taiga-ui/commit/a0093a010a9263f2880c5e10fafd3df7c76c657a))
+- **core:** support options for dropdown-hover directive ([#3643](https://github.com/tinkoff/taiga-ui/issues/3643))
+  ([241616b](https://github.com/tinkoff/taiga-ui/commit/241616b86068279ec39a11824828f4f6c2d12baf))
+- **icons:** `FeatherIcons` add full icon pack ([#3577](https://github.com/tinkoff/taiga-ui/issues/3577))
+  ([19ea759](https://github.com/tinkoff/taiga-ui/commit/19ea759d7a9f846a9788b2d1a8aab292de91f19d))
+- **styles:** remove legacy browser clearfix ([#3639](https://github.com/tinkoff/taiga-ui/issues/3639))
+  ([191b0ab](https://github.com/tinkoff/taiga-ui/commit/191b0ab7edf9e4ae6af0b1eff0b1f126c12232f5))
+
+### Bug Fixes
+
+- **addon-doc:** change activeItemIndex from NaN to 0 ([#3660](https://github.com/tinkoff/taiga-ui/issues/3660))
+  ([6f7f31d](https://github.com/tinkoff/taiga-ui/commit/6f7f31dab359b380c9b612be664fbfc8c21a3591))
+- **addon-editor:** pin dependencies ([#3652](https://github.com/tinkoff/taiga-ui/issues/3652))
+  ([eda6a37](https://github.com/tinkoff/taiga-ui/commit/eda6a37a8612ab9cba510d36b7642ce89dd35951))
+- **addon-editor:** support `Drag and Drop` for resizable images
+  ([#3654](https://github.com/tinkoff/taiga-ui/issues/3654))
+  ([0cd3c2f](https://github.com/tinkoff/taiga-ui/commit/0cd3c2f603299ac24bfc03d45a49dd9a5b60bc1e))
+- **addon-editor:** use `imageEditor` extension instead of `image` for copy-paste
+  ([#3680](https://github.com/tinkoff/taiga-ui/issues/3680))
+  ([f311845](https://github.com/tinkoff/taiga-ui/commit/f311845309f121b29f29e15abaa66fc54551722f))
+- **cdk:** support redefine properties for parent class ([#3618](https://github.com/tinkoff/taiga-ui/issues/3618))
+  ([a7a5bee](https://github.com/tinkoff/taiga-ui/commit/a7a5beeca50cb103dc25fc0530a48e958661f870))
+
 ## [3.17.0](https://github.com/tinkoff/taiga-ui/compare/v3.16.0...v3.17.0) (2023-02-07)
 
 ### Features
