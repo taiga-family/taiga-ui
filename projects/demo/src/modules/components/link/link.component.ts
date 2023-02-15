@@ -44,7 +44,9 @@ export class ExampleTuiLinkComponent {
 
     icon = '';
 
-    readonly iconVariants = ['tuiIconStarLarge', 'tuiIconMapPinLarge'];
+    readonly iconVariants = ['tuiIconStarLarge', 'tuiIconMapPinLarge', 'tuiIconMapPin'];
 
     iconAlign: TuiHorizontalDirection = this.iconAlignValues[0];
+
+    size = '1.5rem';
 }

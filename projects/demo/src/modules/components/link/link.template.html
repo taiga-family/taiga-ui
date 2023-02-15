@@ -52,6 +52,7 @@
                     [icon]="icon"
                     [iconAlign]="iconAlign"
                     [iconRotated]="iconRotated"
+                    [style.--tui-link-icon-size]="size"
                 >
                     Link example
                 </a>
@@ -65,6 +66,7 @@
                     [iconAlign]="iconAlign"
                     [pseudo]="true"
                     [iconRotated]="iconRotated"
+                    [style.--tui-link-icon-size]="size"
                 >
                     It is a pseudo-link because it is actually a button
                 </button>
@@ -126,6 +128,15 @@
                 [(documentationPropertyValue)]="pseudo"
             >
                 Pseudo-link
+            </ng-template>
+        </tui-doc-documentation>
+        <tui-doc-documentation heading="CSS customization">
+            <ng-template
+                documentationPropertyName="--tui-link-icon-size"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="size"
+            >
+                Size of the icon (adjust to 1rem when using icons from small set)
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

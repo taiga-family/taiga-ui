@@ -43,12 +43,17 @@
 }
 
 .t-heading {
+    .transition(background);
     height: var(--tui-height-m);
     font: var(--tui-font-text-s);
     padding: 0;
     background: var(--tui-base-02);
     border-bottom: 1px solid var(--tui-base-04);
     border-color: inherit;
+
+    &:hover {
+        background: var(--tui-base-03);
+    }
 
     :host-context(table[data-size='l']) & {
         font: var(--tui-font-text-m);
