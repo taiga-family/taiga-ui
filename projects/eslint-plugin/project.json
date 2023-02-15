@@ -1,10 +1,11 @@
 {
+    "name": "eslint-plugin",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "root": "projects/eslint-plugin",
     "sourceRoot": "projects/eslint-plugin",
     "projectType": "library",
     "prefix": "tui",
-    "implicitDependencies": ["!testing"],
-    "architect": {
+    "targets": {
         "test": {
             "executor": "nx:run-commands",
             "outputs": ["coverage/i18n"],

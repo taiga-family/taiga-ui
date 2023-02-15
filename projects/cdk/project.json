@@ -1,12 +1,13 @@
 {
+    "name": "cdk",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "root": "projects/cdk",
     "sourceRoot": "projects/cdk",
     "projectType": "library",
     "prefix": "tui",
-    "implicitDependencies": ["!testing"],
-    "architect": {
+    "targets": {
         "prebuild": {
-            "builder": "@angular-devkit/build-angular:ng-packagr",
+            "executor": "@angular-devkit/build-angular:ng-packagr",
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "projects/cdk/ng-package.json"

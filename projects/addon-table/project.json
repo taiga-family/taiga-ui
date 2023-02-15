@@ -1,12 +1,13 @@
 {
+    "name": "addon-table",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "root": "projects/addon-table",
     "sourceRoot": "projects/addon-table",
     "projectType": "library",
     "prefix": "tui",
-    "implicitDependencies": ["!testing"],
-    "architect": {
+    "targets": {
         "build": {
-            "builder": "@angular-devkit/build-angular:ng-packagr",
+            "executor": "@angular-devkit/build-angular:ng-packagr",
             "outputs": ["dist/addon-table"],
             "options": {
                 "tsConfig": "tsconfig.build.json",

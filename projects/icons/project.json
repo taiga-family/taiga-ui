@@ -1,10 +1,19 @@
 {
+    "name": "icons",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "root": "projects/icons",
     "sourceRoot": "projects/icons/src",
     "projectType": "library",
     "prefix": "tui",
-    "implicitDependencies": ["!testing"],
-    "architect": {
+    "targets": {
+        "build": {
+            "executor": "@angular-devkit/build-angular:ng-packagr",
+            "outputs": ["dist/icons"],
+            "options": {
+                "tsConfig": "tsconfig.build.json",
+                "project": "projects/icons/ng-package.json"
+            }
+        },
         "preprocess": {
             "executor": "nx:run-commands",
             "options": {
@@ -19,21 +28,6 @@
             "dependsOn": [
                 {
                     "target": "preprocess",
-                    "projects": "self",
-                    "params": "forward"
-                }
-            ]
-        },
-        "build": {
-            "builder": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["dist/icons"],
-            "options": {
-                "tsConfig": "tsconfig.build.json",
-                "project": "projects/icons/ng-package.json"
-            },
-            "dependsOn": [
-                {
-                    "target": "prebuild",
                     "projects": "self",
                     "params": "forward"
                 }

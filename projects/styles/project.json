@@ -1,10 +1,11 @@
 {
+    "name": "styles",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "root": "projects/styles",
     "sourceRoot": "projects/styles",
     "projectType": "library",
     "prefix": "tui",
-    "implicitDependencies": ["!testing"],
-    "architect": {
+    "targets": {
         "build": {
             "executor": "nx:run-commands",
             "outputs": ["dist/styles"],

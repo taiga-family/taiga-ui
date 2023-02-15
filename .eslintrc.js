@@ -1,16 +1,10 @@
-const CI_MODE = process.env['TUI_CI'] === 'true';
-
-console.log('CI mode', CI_MODE);
-
 /**
  * @type {import('eslint').Linter.Config}
  */
 module.exports = {
     root: true,
     extends: [
-        // @strict heavy ci rules (slow = BUILD time + LINT time)
-        ...(CI_MODE ? ['@tinkoff/eslint-config', './scripts/eslint/nx.js'] : []),
-        // @tinkoff default rules
+        '@tinkoff/eslint-config',
         '@tinkoff/eslint-config-angular',
         '@tinkoff/eslint-config-angular/rxjs',
         '@tinkoff/eslint-config-angular/imports',

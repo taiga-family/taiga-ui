@@ -1,6 +1,5 @@
 {
     "implicitDependencies": {
-        "angular.json": "*",
         "package.json": {
             "dependencies": "*",
             "devDependencies": "*"
@@ -27,6 +26,11 @@
                 "cacheableOperations": ["build", "test", "lint"],
                 "parallel": 1
             }
+        }
+    },
+    "pluginsConfig": {
+        "@nrwl/js": {
+            "analyzeSourceFiles": false
         }
     },
     "affected": {
