@@ -1040,6 +1040,15 @@ export const ROUTES = [
         },
     },
     {
+        path: `editor/highlight`,
+        loadChildren: async () =>
+            (await import(`../components/editor/highlight/editor-highlight.module`))
+                .ExampleTuiEditorHighlightModule,
+        data: {
+            title: `Editor — Highlight`,
+        },
+    },
+    {
         path: `editor/processing/legacy-html`,
         loadChildren: async () =>
             (
