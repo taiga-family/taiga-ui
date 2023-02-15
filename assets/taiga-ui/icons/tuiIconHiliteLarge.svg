@@ -1,6 +1,15 @@
 <svg focusable="false" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
     <g id="tuiIconHiliteLarge" xmlns="http://www.w3.org/2000/svg">
-        <svg fill="none" height="1.5em" overflow="visible" viewBox="0 0 24 24" width="1.5em" x="50%" y="50%">
+        <svg
+            fill="none"
+            stroke="none"
+            height="1.5em"
+            overflow="visible"
+            viewBox="0 0 24 24"
+            width="1.5em"
+            x="50%"
+            y="50%"
+        >
             <svg x="-12" xmlns="http://www.w3.org/2000/svg" y="-12">
                 <path clip-rule="evenodd" d="M0 18H4V22H0V18Z" fill="#E7E8EA" fill-rule="evenodd" />
                 <path clip-rule="evenodd" d="M4 18H8V22H4V18Z" fill="#CBCFD3" fill-rule="evenodd" />

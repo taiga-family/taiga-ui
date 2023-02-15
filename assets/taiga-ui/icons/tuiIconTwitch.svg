@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><g
+        id="tuiIconTwitch"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+            <svg x="50%" y="50%" width="1em" height="1em" overflow="visible" viewBox="0 0 16 16">
+                <svg x="-8" y="-8"><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                ><path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7" /></svg></svg>
+            </svg>
+        </g></svg>
