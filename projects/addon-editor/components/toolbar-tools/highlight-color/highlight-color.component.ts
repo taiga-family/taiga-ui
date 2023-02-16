@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
+import {AbstractTuiBaseColorPicker} from '@taiga-ui/addon-editor/components/toolbar-tools/shared';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {
     TUI_EDITOR_OPTIONS,
@@ -9,7 +10,7 @@ import {
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';
-import {distinctUntilChanged, map} from 'rxjs/operators';
+import {distinctUntilChanged, map, share, tap} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-highlight-color',
@@ -17,7 +18,7 @@ import {distinctUntilChanged, map} from 'rxjs/operators';
     styleUrls: ['../tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiHighlightColorComponent {
+export class TuiHighlightColorComponent extends AbstractTuiBaseColorPicker {
     @Input()
     @tuiDefaultProp()
     colors: ReadonlyMap<string, string> = this.defaultOptions.colors;
@@ -25,6 +26,10 @@ export class TuiHighlightColorComponent {
     readonly backgroundColor$ = this.editor.stateChange$.pipe(
         map(() => this.editor.getBackgroundColor() || this.defaultOptions.blankColor),
         distinctUntilChanged(),
+        tap(value => {
+            this.selectedColor = value;
+        }),
+        share(),
     );
 
     readonly backColorText$ = this.texts$.pipe(map(texts => texts.backColor));
@@ -35,9 +40,15 @@ export class TuiHighlightColorComponent {
         readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
         @Inject(TUI_EDITOR_OPTIONS)
         private readonly defaultOptions: TuiEditorOptions,
-    ) {}
+    ) {
+        super();
+    }
 
     isBlankColor(color: string): boolean {
         return color === this.defaultOptions.blankColor;
+    }
+
+    setColor(): void {
+        this.editor.setBackgroundColor(this.selectedColor);
     }
 }

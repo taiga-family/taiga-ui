@@ -24,6 +24,7 @@ export const TUI_SPANISH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         orderedList: `Lista ordenada`,
         quote: `Cita`,
         foreColor: `Color`,
+        colorSaveAction: `Set color`,
         backColor: `Color de fondo`,
         hiliteColor: `Color de resaltado`,
         clear: `Limpiar`,

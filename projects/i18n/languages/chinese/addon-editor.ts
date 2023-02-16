@@ -24,6 +24,7 @@ export const TUI_CHINESE_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         orderedList: `有序列表`,
         quote: `引用`,
         foreColor: `颜色`,
+        colorSaveAction: `Set color`,
         backColor: `背景颜色`,
         hiliteColor: `高亮颜色`,
         clear: `清除`,

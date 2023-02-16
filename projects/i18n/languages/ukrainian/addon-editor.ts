@@ -24,6 +24,7 @@ export const TUI_UKRAINIAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         orderedList: `Нумерований список`,
         quote: `Цитата`,
         foreColor: `Колір: Текст`,
+        colorSaveAction: `Set color`,
         hiliteColor: `Колір виділення`,
         backColor: `Колір фону`,
         clear: `Скинути форматування`,

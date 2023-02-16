@@ -1,10 +1,10 @@
 <!-- TODO: refactor colors -->
 <!-- @bad TODO: Keyboard navigation-->
 <tui-hosted-dropdown
-    *tuiLet="fontColor$ | async as selectedColor"
     #color
     [content]="colorDropdown"
     [tuiDropdownMaxHeight]="999"
+    (openChange)="autoSave($event)"
 >
     <button
         tuiIconButton
@@ -16,22 +16,32 @@
         automation-id="toolbar__color-button"
         [tuiHint]="foreColorText$ | async"
         [tuiHintDescribe]="''"
-        [pseudoActive]="color.open"
         [focusable]="color.open"
     ></button>
     <div
         class="t-plate"
-        [style.background]="selectedColor"
+        [style.background]="fontColor$ | async"
     ></div>
     <ng-template
         #colorDropdown
         let-activeZone
     >
-        <tui-palette
-            class="t-color-picker"
-            [tuiActiveZoneParent]="activeZone"
+        <tui-color-selector
             [colors]="colors"
-            (selectedColor)="editor.setFontColor($event)"
-        ></tui-palette>
+            [color]="selectedColor"
+            [tuiActiveZoneParent]="activeZone"
+            (colorChange)="onValueChange($event)"
+        ></tui-color-selector>
+
+        <button
+            tuiButton
+            size="m"
+            type="button"
+            appearance="flat"
+            class="t-color-save"
+            (click)="setColor()"
+        >
+            {{ (texts$ | async)?.colorSaveAction }}
+        </button>
     </ng-template>
 </tui-hosted-dropdown>

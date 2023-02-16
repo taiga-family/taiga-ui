@@ -24,6 +24,7 @@ export const TUI_ENGLISH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         orderedList: `Ordered list`,
         quote: `Quote`,
         foreColor: `Color`,
+        colorSaveAction: `Set color`,
         backColor: `Background color`,
         hiliteColor: `Highlight color`,
         clear: `Clear`,

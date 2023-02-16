@@ -1,9 +1,9 @@
 <!-- @bad TODO: Keyboard navigation-->
 <tui-hosted-dropdown
-    *tuiLet="backgroundColor$ | async as selectedColor"
     #hilite
     [content]="hiliteDropdown"
     [tuiDropdownMaxHeight]="999"
+    (openChange)="autoSave($event)"
 >
     <button
         tuiIconButton
@@ -19,20 +19,33 @@
         [pseudoActive]="hilite.open"
         [focusable]="hilite.open"
     ></button>
-    <div
-        *ngIf="!isBlankColor(selectedColor || '')"
-        class="t-plate"
-        [style.background]="selectedColor"
-    ></div>
+    <ng-container *tuiLet="backgroundColor$ | async as currentColor">
+        <div
+            *ngIf="!isBlankColor(currentColor || '')"
+            class="t-plate"
+            [style.background]="currentColor"
+        ></div>
+    </ng-container>
     <ng-template
         #hiliteDropdown
         let-activeZone
     >
-        <tui-palette
-            class="t-color-picker"
-            [tuiActiveZoneParent]="activeZone"
+        <tui-color-selector
             [colors]="colors"
-            (selectedColor)="editor.setBackgroundColor($event)"
-        ></tui-palette>
+            [color]="selectedColor"
+            [tuiActiveZoneParent]="activeZone"
+            (colorChange)="onValueChange($event)"
+        ></tui-color-selector>
+
+        <button
+            tuiButton
+            size="m"
+            type="button"
+            appearance="flat"
+            class="t-color-save"
+            (click)="setColor()"
+        >
+            {{ (texts$ | async)?.colorSaveAction }}
+        </button>
     </ng-template>
 </tui-hosted-dropdown>

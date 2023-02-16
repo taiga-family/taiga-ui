@@ -14,15 +14,24 @@ describe(`Editor's toolbar`, () => {
             .findByAutomationId(`toolbar__color-button`)
             .should(`be.visible`)
             .click();
+
+        cy.tuiWaitBeforeScreenshot().matchImageSnapshot(
+            `1-1-color-picker-for-text-color`,
+            {capture: `viewport`},
+        );
+
+        // click outside
+        cy.get(`body`).click(0, 0);
+
         tuiGetDemoContent()
             .findByAutomationId(`toolbar__hilite-button`)
             .should(`be.visible`)
-            .click()
-            .trigger(`mouseleave`);
+            .click();
 
-        tuiGetDemoContent()
-            .tuiWaitBeforeScreenshot()
-            .matchImageSnapshot(`1-open-new-dropdown-close-old-dropdown`);
+        cy.tuiWaitBeforeScreenshot().matchImageSnapshot(
+            `1-1-color-picker-for-background-color`,
+            {capture: `viewport`},
+        );
     });
 
     it(`closes tool's dropdown if clicked outside`, () => {
@@ -32,15 +41,15 @@ describe(`Editor's toolbar`, () => {
             .click();
 
         cy.get(`tui-palette`).should(`exist`);
-        tuiGetDemoContent()
-            .find(`tui-editor-socket.tui-example`)
-            .should(`be.visible`)
-            .click();
+
+        // click outside
+        cy.get(`body`).click(0, 0);
+
         cy.get(`tui-palette`).should(`not.exist`);
 
-        tuiGetDemoContent()
-            .tuiWaitBeforeScreenshot()
-            .matchImageSnapshot(`1-1-tui-palette-not-exist`);
+        cy.tuiWaitBeforeScreenshot().matchImageSnapshot(`1-2-tui-palette-not-exist`, {
+            capture: `viewport`,
+        });
     });
 
     it(`has the possibility to add custom tool`, () => {

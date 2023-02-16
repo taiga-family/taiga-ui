@@ -24,6 +24,7 @@ export const TUI_DUTCH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         orderedList: `Gesorteerde lijst`,
         quote: `Citeren`,
         foreColor: `Kleur`,
+        colorSaveAction: `Set color`,
         backColor: `Achtergrondkleur`,
         hiliteColor: `Tekstmarkeringskleur`,
         clear: `Wis`,

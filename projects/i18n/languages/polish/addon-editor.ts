@@ -24,6 +24,7 @@ export const TUI_POLISH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         orderedList: `Lista numerowana`,
         quote: `Cytat`,
         foreColor: `Kolor tekstu`,
+        colorSaveAction: `Set color`,
         backColor: `Kolor tła`,
         hiliteColor: `Kolor zaznaczenia`,
         clear: `Wyczyść`,

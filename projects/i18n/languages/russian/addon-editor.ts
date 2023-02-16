@@ -24,6 +24,7 @@ export const TUI_RUSSIAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         orderedList: `Нумерованный список`,
         quote: `Цитата`,
         foreColor: `Цвет: Текст`,
+        colorSaveAction: `Сохранить цвет`,
         hiliteColor: `Цвет выделения`,
         backColor: `Цвет фона`,
         clear: `Сбросить форматирование`,

@@ -24,6 +24,7 @@ export const TUI_GERMAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         orderedList: `Geordnete Liste`,
         quote: `Blockquote`,
         foreColor: `Farbe`,
+        colorSaveAction: `Set color`,
         backColor: `Hintergrundfarbe`,
         hiliteColor: `Hilite-Farbe`,
         clear: `Löschen`,

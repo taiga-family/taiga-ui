@@ -24,6 +24,7 @@ export const TUI_VIETNAMESE_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         orderedList: `Danh sách được đánh số`,
         quote: `Trích dẫn`,
         foreColor: `Màu`,
+        colorSaveAction: `Set color`,
         backColor: `Màu nền`,
         hiliteColor: `Màu đánh dấu`,
         clear: `Xóa`,

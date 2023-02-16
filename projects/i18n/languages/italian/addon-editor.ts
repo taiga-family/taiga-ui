@@ -24,6 +24,7 @@ export const TUI_ITALIAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         orderedList: `Lista ordinata`,
         quote: `Virgolette`,
         foreColor: `Colore`,
+        colorSaveAction: `Set color`,
         backColor: `Colore sfondo`,
         hiliteColor: `Evidenziazione del testo`,
         clear: `Pulisci`,

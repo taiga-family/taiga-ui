@@ -24,6 +24,7 @@ export const TUI_FRENCH_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         orderedList: `Liste numérotée`,
         quote: `Citation`,
         foreColor: `Couleur de texte`,
+        colorSaveAction: `Set color`,
         backColor: `Couleur de fond`,
         hiliteColor: `Couleur de mise en évidence`,
         clear: `Effacer`,

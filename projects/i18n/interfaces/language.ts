@@ -144,6 +144,7 @@ export interface TuiLanguageEditor {
         quote: string;
         foreColor: string;
         hiliteColor: string;
+        colorSaveAction: string;
         backColor: string;
         clear: string;
         link: string;

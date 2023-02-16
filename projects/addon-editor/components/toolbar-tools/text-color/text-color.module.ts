@@ -1,6 +1,10 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiPaletteModule} from '@taiga-ui/addon-editor/components/color-selector';
+import {
+    TuiColorPickerModule,
+    TuiColorSelectorModule,
+    TuiPaletteModule,
+} from '@taiga-ui/addon-editor/components/color-selector';
 import {TuiActiveZoneModule, TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
@@ -21,6 +25,8 @@ import {TuiTextColorComponent} from './text-color.component';
         TuiPaletteModule,
         TuiActiveZoneModule,
         TuiLetModule,
+        TuiColorPickerModule,
+        TuiColorSelectorModule,
     ],
     declarations: [TuiTextColorComponent],
     exports: [TuiTextColorComponent],
