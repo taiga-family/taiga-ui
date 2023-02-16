@@ -45,10 +45,17 @@ export class TuiFontSizeComponent {
     }
 
     setFontOption({headingLevel, px}: Partial<TuiEditorFontOption>): void {
+        this.clearPreviousTextStyles();
+
         if (headingLevel) {
             this.editor.setHeading(headingLevel);
         } else {
             this.editor.setParagraph({fontSize: tuiPx(px || 0)});
         }
+    }
+
+    private clearPreviousTextStyles(): void {
+        this.editor.getOriginTiptapEditor().commands.removeEmptyTextStyle();
+        this.editor.getOriginTiptapEditor().commands.toggleMark('textStyle');
     }
 }

@@ -8,6 +8,7 @@ import {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
 import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
 import {tuiGetMarkRange, tuiParseStyle} from '@taiga-ui/addon-editor/utils';
 import type {Editor, Range} from '@tiptap/core';
+import {MarkType} from 'prosemirror-model';
 import type {EditorState} from 'prosemirror-state';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
@@ -352,5 +353,17 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
 
     setIframe(options: TuiEditableIframe): void {
         this.editor.commands.setIframe(options);
+    }
+
+    removeEmptyTextStyle(): void {
+        this.editor.commands.removeEmptyTextStyle();
+    }
+
+    toggleMark(
+        typeOrName: MarkType | string,
+        attributes?: Record<string, any>,
+        options?: {extendEmptyMarkRange?: boolean},
+    ): void {
+        this.editor.commands.toggleMark(typeOrName, attributes, options);
     }
 }
