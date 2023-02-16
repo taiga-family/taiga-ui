@@ -55,7 +55,7 @@ export class TuiFontSizeComponent {
     }
 
     private clearPreviousTextStyles(): void {
-        this.editor.getOriginTiptapEditor().commands.removeEmptyTextStyle();
-        this.editor.getOriginTiptapEditor().commands.toggleMark('textStyle');
+        this.editor.removeEmptyTextStyle();
+        this.editor.toggleMark('textStyle');
     }
 }
