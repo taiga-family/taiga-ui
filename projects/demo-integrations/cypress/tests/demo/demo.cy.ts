@@ -18,7 +18,7 @@ describe(`Demo`, () => {
                 } else if (isTilesPage(path)) {
                     cy.wait(10_000);
                 } else if (isEmbedPage(path)) {
-                    cy.wait(30_000);
+                    cy.wait(40_000);
                 }
 
                 if ($body.find(`tui-doc-example`).length < 1) {
