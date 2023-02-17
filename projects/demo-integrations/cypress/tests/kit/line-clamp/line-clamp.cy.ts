@@ -7,6 +7,7 @@ describe(`LineClamp`, () => {
 
             cy.get(`#demo-content`)
                 .should(`be.visible`)
+                .tuiWaitBeforeScreenshot()
                 .matchImageSnapshot(`01-[linesLimit=1]-basicText`);
         });
 
@@ -15,6 +16,7 @@ describe(`LineClamp`, () => {
 
             cy.get(`#demo-content`)
                 .should(`be.visible`)
+                .tuiWaitBeforeScreenshot()
                 .matchImageSnapshot(`02-[linesLimit=2]-basicText`);
         });
     });
@@ -27,6 +29,7 @@ describe(`LineClamp`, () => {
 
             cy.get(`#demo-content`)
                 .should(`be.visible`)
+                .tuiWaitBeforeScreenshot()
                 .matchImageSnapshot(`03-[linesLimit=1]-longWord`);
         });
 
@@ -39,6 +42,7 @@ describe(`LineClamp`, () => {
 
             cy.get(`#demo-content`)
                 .should(`be.visible`)
+                .tuiWaitBeforeScreenshot()
                 .matchImageSnapshot(`04-[linesLimit=2]-longWord`);
         });
     });
@@ -55,6 +59,7 @@ describe(`LineClamp`, () => {
 
                 cy.get(`#demo-content`)
                     .should(`be.visible`)
+                    .tuiWaitBeforeScreenshot()
                     .matchImageSnapshot(`05-[linesLimit=${linesLimit}]-[width=${width}]`);
             });
         }
