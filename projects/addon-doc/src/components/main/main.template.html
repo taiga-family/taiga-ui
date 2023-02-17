@@ -9,15 +9,18 @@
         </div>
     </div>
     <header tuiDocHeader>
-        <label class="night-mode">
-            Night mode
-            <tui-toggle
-                class="tui-toggle"
-                [ngModel]="night"
-                (ngModelChange)="onMode($event)"
-            ></tui-toggle>
-        </label>
         <ng-content select="tuiDocHeader"></ng-content>
+        <button
+            tuiIconButton
+            tuiMode="onLight"
+            appearance="secondary"
+            size="s"
+            shape="rounded"
+            type="button"
+            class="tui-doc-night-mode-switch"
+            [icon]="night ? 'tuiIconSunLarge' : 'tuiIconMoonLarge'"
+            (click)="onMode(!night)"
+        ></button>
     </header>
     <ng-container ngProjectAs="tuiOverContent">
         <ng-content select="tuiOverContent"></ng-content>
