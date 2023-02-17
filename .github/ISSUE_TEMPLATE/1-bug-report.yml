@@ -81,6 +81,8 @@ body:
         - label: Firefox
         - label: Safari
         - label: Edge
+    validations:
+      required: true
 
   - type: checkboxes
     id: operating-systems
@@ -93,3 +95,5 @@ body:
         - label: Linux
         - label: iOS
         - label: Android
+    validations:
+      required: true
