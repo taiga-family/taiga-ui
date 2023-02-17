@@ -1050,9 +1050,27 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Customization`,
-        title: `Dialogs`,
-        keywords: `dialog, modal, popup, theme, custom, style`,
-        route: `dialogs`,
+        title: `Dialog`,
+        subPages: [
+            {
+                section: $localize`Customization`,
+                title: `Custom`,
+                keywords: `dialog, modal, popup, theme, custom, style`,
+                route: `/dialog/custom`,
+            },
+            {
+                section: $localize`Customization`,
+                title: `Routable`,
+                keywords: `dialog, modal, navigation, route, eager`,
+                route: `/dialog/routable`,
+            },
+            {
+                section: $localize`Customization`,
+                title: `LazyRoutable`,
+                keywords: `dialog, modal, navigation, route, lazy`,
+                route: `/dialog/lazy-routable`,
+            },
+        ],
     },
     {
         section: $localize`Customization`,

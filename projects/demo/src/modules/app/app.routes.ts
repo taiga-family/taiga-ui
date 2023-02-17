@@ -113,11 +113,29 @@ export const ROUTES = [
         },
     },
     {
-        path: `dialogs`,
+        path: `dialog/custom`,
         loadChildren: async () =>
             (await import(`../customization/dialogs/dialogs.module`)).DialogsModule,
         data: {
-            title: `Dialogs`,
+            title: `Custom`,
+        },
+    },
+    {
+        path: `dialog/routable`,
+        loadChildren: async () =>
+            (await import(`../customization/routable/eager/routable-dialog.module`))
+                .RoutableDialogModule,
+        data: {
+            title: `Routable`,
+        },
+    },
+    {
+        path: `dialog/lazy-routable`,
+        loadChildren: async () =>
+            (await import(`../customization/routable/lazy/lazy-routable-dialog.module`))
+                .LazyRoutableDialogModule,
+        data: {
+            title: `LazyRoutable`,
         },
     },
     {

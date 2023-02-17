@@ -1,0 +1,73 @@
+<tui-doc-page
+    i18n-header
+    header="Lazy routable dialog"
+>
+    <ng-template pageTab>
+        <p i18n>Can be used to create lazy loading dialogs with custom route</p>
+
+        <tui-doc-example
+            i18n-heading
+            heading="Lazy loading dialog"
+            [content]="example1"
+        >
+            <router-outlet></router-outlet>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>
+                    Add
+                    <code>router-outlet</code>
+                    to the page template:
+                </p>
+
+                <tui-doc-code
+                    filename="my-page.component.html"
+                    [code]="addRouterOutlet"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>
+                    Import
+                    <code>TuiRoutableDialogModule</code>
+                    into a module where you want to use our helper
+                </p>
+
+                <tui-doc-code
+                    filename="my-page.module.ts"
+                    [code]="importModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>
+                    Add
+                    <code>MyDialogModule</code>
+                    as usual lazy loaded module
+                </p>
+
+                <tui-doc-code
+                    filename="my-page.module.ts"
+                    [code]="addLazyLoadedModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>
+                    Use
+                    <code>tuiGenerateDialogableRoute</code>
+                    in the
+                    <code>MyDialogModule</code>
+                    router config
+                </p>
+                <tui-doc-code
+                    filename="my-dialog.module.ts"
+                    [code]="useRouteGenerator"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

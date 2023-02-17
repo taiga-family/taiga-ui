@@ -1,3 +1,4 @@
+import {tuiClickOutside} from '@demo-integrations/support/helpers/click-outside';
 import {
     tuiFindDocExample,
     tuiGetDocExample,
@@ -32,6 +33,7 @@ declare global {
             tuiSetLanguage: typeof tuiSetLanguage;
             tuiSetNightMode: typeof tuiSetNightMode;
             tuiWaitCodeHighlight: typeof tuiWaitCodeHighlight;
+            tuiClickOutside: typeof tuiClickOutside;
 
             tuiTab(direction: 'backward' | 'forward'): Chainable;
             tuiGetByExampleId(): Chainable;
@@ -74,6 +76,7 @@ Cypress.Commands.add(`tuiShow`, tuiShow);
 Cypress.Commands.add(`tuiFindByExampleId`, {prevSubject: true}, <S>(subject: S) =>
     tuiFindDocExample<S>(subject),
 );
+Cypress.Commands.add(`tuiClickOutside`, tuiClickOutside);
 Cypress.Commands.add(
     `tuiWaitBeforeScreenshot`,
     {prevSubject: [`optional`]},
