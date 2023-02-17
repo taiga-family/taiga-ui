@@ -971,12 +971,12 @@ export const ROUTES = [
     },
     // EDITOR
     {
-        path: `editor/getting-started`,
+        path: `editor/setup`,
         loadChildren: async () =>
-            (await import(`../components/editor/getting-started/editor.module`))
-                .ExampleTuiEditorModule,
+            (await import(`../components/editor/setup/editor-setup.module`))
+                .ExampleTuiEditorSetupModule,
         data: {
-            title: `Editor  — Getting started`,
+            title: `Editor  — Setup and API`,
         },
     },
     {

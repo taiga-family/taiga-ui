@@ -13,7 +13,7 @@ import {
 } from '@taiga-ui/core';
 
 import {InheritedDocumentationModule} from '../../abstract/inherited-documentation/inherited-documentation.module';
-import {ExampleEditorComponent} from './editor.component';
+import {ExampleEditorSetupComponent} from './editor-setup.component';
 
 @NgModule({
     imports: [
@@ -28,10 +28,10 @@ import {ExampleEditorComponent} from './editor.component';
         TuiAddonDocModule,
         TuiLinkModule,
         TuiSvgModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleEditorComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleEditorSetupComponent)),
         TuiLoaderModule,
     ],
-    declarations: [ExampleEditorComponent],
-    exports: [ExampleEditorComponent],
+    declarations: [ExampleEditorSetupComponent],
+    exports: [ExampleEditorSetupComponent],
 })
-export class ExampleTuiEditorModule {}
+export class ExampleTuiEditorSetupModule {}
