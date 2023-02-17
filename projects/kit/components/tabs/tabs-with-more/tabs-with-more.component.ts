@@ -220,7 +220,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         let total =
             tabs.reduce((acc, {scrollWidth}) => acc + scrollWidth, 0) +
             maxIndex * margin -
-            moreWidth;
+            tabs[tabs.length - 1].scrollWidth;
 
         if (total <= clientWidth) {
             return Infinity;
