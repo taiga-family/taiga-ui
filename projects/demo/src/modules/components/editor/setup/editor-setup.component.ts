@@ -13,15 +13,15 @@ import {AbstractExampleTuiControl} from '../../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
-    selector: 'example-tui-editor',
-    templateUrl: './editor.template.html',
-    styleUrls: ['./editor.styles.less'],
+    selector: 'example-tui-editor-setup',
+    templateUrl: './editor-setup.template.html',
+    styleUrls: ['./editor-setup.styles.less'],
     encapsulation,
     changeDetection,
     providers: [
         {
             provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleEditorComponent),
+            useExisting: forwardRef(() => ExampleEditorSetupComponent),
         },
         {
             provide: TUI_EDITOR_EXTENSIONS,
@@ -29,7 +29,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../../abstract/inherited-documentation/ab
         },
     ],
 })
-export class ExampleEditorComponent extends AbstractExampleTuiControl {
+export class ExampleEditorSetupComponent extends AbstractExampleTuiControl {
     readonly exampleModule = import('./examples/import/import-module.md?raw');
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
     readonly provideExtensions = import('./examples/import/provide-extensions.md?raw');

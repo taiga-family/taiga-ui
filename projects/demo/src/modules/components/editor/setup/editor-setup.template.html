@@ -36,6 +36,56 @@
                 ></tui-doc-code>
             </li>
         </ol>
+
+        <h2 i18n>TUI_EDITOR_OPTIONS</h2>
+        You can configure some editor's params via DI-token
+        <code>TUI_EDITOR_OPTIONS</code>
+        .
+
+        <p>
+            <strong>Usage:</strong>
+        </p>
+        <tui-doc-code [code]="exampleEditorOptionsToken"></tui-doc-code>
+
+        <p>
+            <strong>Description of the available configurations:</strong>
+        </p>
+        <dl i18n>
+            <dt>
+                <code>colors</code>
+            </dt>
+            <dd class="tui-space_bottom-5">
+                map of colors in toolbar's dropdowns with color-selection.
+
+                <p>
+                    It accepts
+                    <code>ReadonlyMap&lt;string, string&gt;</code>
+                    : the
+                    <strong>key</strong>
+                    is the name of the color (used only for hint and accessibility), the
+                    <strong>value</strong>
+                    – HTML color code.
+                </p>
+            </dd>
+
+            <dt>
+                <code>blankColor</code>
+            </dt>
+            <dd class="tui-space_bottom-5">
+                Null color. It is used in situations when there is no color selected.
+
+                <p>
+                    it accepts
+                    <code>string</code>
+                    (HTML color code).
+                </p>
+            </dd>
+
+            <dt>
+                <code>fontOptions</code>
+            </dt>
+            <dd class="tui-space_bottom-5">You can customize your own list of font sizes in editor.</dd>
+        </dl>
     </ng-template>
 
     <ng-template pageTab>
@@ -115,57 +165,5 @@
                 Value of CSS-property "max-height"
             </ng-template>
         </tui-doc-documentation>
-    </ng-template>
-
-    <ng-template pageTab="DI tokens">
-        <h2 i18n>TUI_EDITOR_OPTIONS</h2>
-        You can configure some editor's params via DI-token
-        <code>TUI_EDITOR_OPTIONS</code>
-        .
-
-        <p>
-            <strong>Usage:</strong>
-        </p>
-        <tui-doc-code [code]="exampleEditorOptionsToken"></tui-doc-code>
-
-        <p>
-            <strong>Description of the available configurations:</strong>
-        </p>
-        <dl i18n>
-            <dt>
-                <code>colors</code>
-            </dt>
-            <dd class="tui-space_bottom-5">
-                map of colors in toolbar's dropdowns with color-selection.
-
-                <p>
-                    It accepts
-                    <code>ReadonlyMap&lt;string, string&gt;</code>
-                    : the
-                    <strong>key</strong>
-                    is the name of the color (used only for hint and accessibility), the
-                    <strong>value</strong>
-                    – HTML color code.
-                </p>
-            </dd>
-
-            <dt>
-                <code>blankColor</code>
-            </dt>
-            <dd class="tui-space_bottom-5">
-                Null color. It is used in situations when there is no color selected.
-
-                <p>
-                    it accepts
-                    <code>string</code>
-                    (HTML color code).
-                </p>
-            </dd>
-
-            <dt>
-                <code>fontOptions</code>
-            </dt>
-            <dd class="tui-space_bottom-5">You can customize your own list of font sizes in editor.</dd>
-        </dl>
     </ng-template>
 </tui-doc-page>

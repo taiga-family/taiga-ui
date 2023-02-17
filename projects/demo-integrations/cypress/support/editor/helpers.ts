@@ -12,7 +12,7 @@ export function tuiVisitEditorApiPage({
     skipDecodingUrl: boolean;
 }> = {}): void {
     cy.viewport(1650, 900).tuiVisit(
-        `editor/getting-started/API?ngModel=${
+        `editor/setup/API?ngModel=${
             content ?? HTML_EDITOR_BASIC_EXAMPLE
         }&style.maxHeight.px=${maxHeight ?? 300}`,
         {
