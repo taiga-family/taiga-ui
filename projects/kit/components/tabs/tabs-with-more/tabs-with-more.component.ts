@@ -87,9 +87,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_MORE_WORD) readonly moreWord$: Observable<string>,
-    ) {
-        console.error(options.minMoreWidth);
-    }
+    ) {}
 
     // TODO: Improve performance
     get tabs(): readonly HTMLElement[] {
