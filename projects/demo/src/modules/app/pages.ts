@@ -117,12 +117,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Foundations`,
-                title: $localize`Grid`,
-                keywords: `верстка, markup, layout, grid, сетка, стили`,
-                route: `/grid`,
-            },
-            {
-                section: $localize`Foundations`,
                 title: $localize`Tables`,
                 keywords: `верстка, markup, таблицы, tables`,
                 route: `/tables`,

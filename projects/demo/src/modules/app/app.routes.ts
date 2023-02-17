@@ -1243,13 +1243,6 @@ export const ROUTES = [
         },
     },
     {
-        path: `grid`,
-        loadChildren: async () => (await import(`../markup/grid/grid.module`)).GridModule,
-        data: {
-            title: `Grid`,
-        },
-    },
-    {
         path: `icons`,
         loadChildren: async () =>
             (await import(`../markup/icons/icons.module`)).IconsModule,
