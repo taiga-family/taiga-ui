@@ -1601,6 +1601,14 @@ export const ROUTES = [
         },
     },
     {
+        path: `pipes/flag`,
+        loadChildren: async () =>
+            (await import(`../pipes/flag/flag.module`)).ExampleTuiFlagModule,
+        data: {
+            title: `Flag`,
+        },
+    },
+    {
         path: `pipes/format-date`,
         loadChildren: async () =>
             import(`../pipes/format-date/format-date.module`).then(

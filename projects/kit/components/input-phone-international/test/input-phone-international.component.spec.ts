@@ -85,26 +85,6 @@ describe(`InputPhoneInternational`, () => {
         fixture.detectChanges();
     });
 
-    describe(`flag paths`, () => {
-        initializeTestModule();
-
-        it(`resolves path from TUI_SVG_OPTIONS`, () => {
-            expect(component.countryFlagPath).toContain(`path/`);
-        });
-
-        it(`calculates countryFlagPath to flag from TUI_SVG_OPTIONS`, () => {
-            component.countryIsoCode = TuiCountryIsoCode.RU;
-
-            expect(component.countryFlagPath).toBe(`path/${TuiCountryIsoCode.RU}.png`);
-        });
-
-        it(`calculates flag path from isoCode`, () => {
-            expect(component.getFlagPath(TuiCountryIsoCode.AD)).toBe(
-                `path/${TuiCountryIsoCode.AD}.png`,
-            );
-        });
-    });
-
     describe(`country codes`, () => {
         initializeTestModule();
 

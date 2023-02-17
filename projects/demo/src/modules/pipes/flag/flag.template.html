@@ -1,0 +1,43 @@
+<tui-doc-page
+    header="Flag"
+    package="CORE"
+    type="pipes"
+>
+    <ng-template pageTab>
+        Pipe for getting source path to image with flag
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [content]="example1"
+        >
+            <tui-flag-example1></tui-flag-example1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <ol class="b-demo-steps">
+            <li>
+                <p>
+                    Import
+                    <code>TuiFlagPipeModule</code>
+                    into a module where you want to use our component
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p>Use pipe in template with ISO-code of selected country as the single argument:</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleHtml"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

@@ -1267,6 +1267,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
+                title: `Flag`,
+                keywords: `flag, country, state`,
+                route: `/pipes/flag`,
+            },
+            {
+                section: $localize`Tools`,
                 title: `FormatDate`,
                 keywords: `format, форматирование, преобразование, дата, date, timestamp, пайп, pipe`,
                 route: `/pipes/format-date`,

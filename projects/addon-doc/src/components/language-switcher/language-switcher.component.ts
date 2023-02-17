@@ -1,19 +1,19 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {TUI_SVG_OPTIONS, tuiCapitalizeFirstLetter, TuiSvgOptions} from '@taiga-ui/core';
+import {tuiCapitalizeFirstLetter, TuiFlagPipe} from '@taiga-ui/core';
 import {TuiCountryIsoCode, TuiLanguageName, TuiLanguageSwitcher} from '@taiga-ui/i18n';
 
 @Component({
     selector: 'tui-language-switcher',
     templateUrl: './language-switcher.component.html',
     styleUrls: ['./language-switcher.component.less'],
+    providers: [
+        // TODO: for backward compatibility only. Drop in v4.0
+        TuiFlagPipe,
+    ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiLanguageSwitcherComponent {
-    private readonly path = this.options
-        .path('tuiIcon')
-        .replace('tuiIcon.svg#tuiIcon', '');
-
     readonly language = new FormControl(tuiCapitalizeFirstLetter(this.switcher.language));
 
     readonly flags: Map<TuiLanguageName, TuiCountryIsoCode> = new Map([
@@ -36,10 +36,14 @@ export class TuiLanguageSwitcherComponent {
 
     constructor(
         @Inject(TuiLanguageSwitcher) readonly switcher: TuiLanguageSwitcher,
-        @Inject(TUI_SVG_OPTIONS) private readonly options: TuiSvgOptions,
+        @Inject(TuiFlagPipe) private readonly flagPipe: TuiFlagPipe,
     ) {}
 
+    /**
+     * @deprecated use `<img [src]=countryIsoCode | tuiFlagPipe />`
+     * TODO drop in v4.0
+     */
     getFlagPath(code?: TuiCountryIsoCode): string | null {
-        return code ? `${this.path}${code}.png` : null;
+        return code ? this.flagPipe.transform(code) : null;
     }
 }
