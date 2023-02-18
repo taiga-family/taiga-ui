@@ -35,7 +35,7 @@ describe(`InputTag`, () => {
             });
 
         cy.tuiShow(`[tuidocheader]`);
-        cy.get(`.night-mode`).click();
+        cy.get(`.tui-doc-night-mode-switch`).click();
         cy.tuiHide(`[tuidocheader]`);
 
         cy.get(`tui-doc-example`)
