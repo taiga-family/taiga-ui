@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiCapitalize} from '@taiga-ui/core';
+import {tuiFormatPhone} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-format-example-4',
@@ -13,12 +13,14 @@ import {tuiCapitalize} from '@taiga-ui/core';
 })
 export class TuiFormatExample4 {
     parametersForm = new FormGroup({
-        value: new FormControl('roman sEdOv'),
+        value: new FormControl('+79991234567'),
+        countryCode: new FormControl('+7'),
+        phoneMask: new FormControl('### ###-##-##'),
     });
 
-    get capitalized(): string {
-        const {value} = this.parametersForm.value;
+    get formattedPhone(): string {
+        const {value, countryCode, phoneMask} = this.parametersForm.value;
 
-        return tuiCapitalize(value ?? '');
+        return tuiFormatPhone(value ?? '', countryCode ?? '', phoneMask ?? '');
     }
 }

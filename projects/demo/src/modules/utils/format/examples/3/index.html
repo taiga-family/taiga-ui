@@ -1,16 +1,12 @@
-{{ currency }} = getCurrencySymbol(currency);
+'{{ capitalized }}' = capitalize(value);
 
 <form [formGroup]="parametersForm">
     <div class="parameters">
-        <tui-select
-            formControlName="currency"
+        <tui-input
+            formControlName="value"
             class="tui-space_top-2"
         >
-            currency
-            <tui-data-list-wrapper
-                *tuiDataList
-                [items]="items"
-            ></tui-data-list-wrapper>
-        </tui-select>
+            value
+        </tui-input>
     </div>
 </form>

@@ -16,6 +16,12 @@ export class ExampleFormatComponent {
         LESS: import('./examples/1/index.less?raw'),
     };
 
+    readonly example2: TuiDocExample = {
+        TypeScript: import('./examples/2/index.ts?raw'),
+        HTML: import('./examples/2/index.html?raw'),
+        LESS: import('./examples/2/index.less?raw'),
+    };
+
     readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
@@ -32,11 +38,5 @@ export class ExampleFormatComponent {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
-    };
-
-    readonly example6: TuiDocExample = {
-        TypeScript: import('./examples/6/index.ts?raw'),
-        HTML: import('./examples/6/index.html?raw'),
-        LESS: import('./examples/6/index.less?raw'),
     };
 }

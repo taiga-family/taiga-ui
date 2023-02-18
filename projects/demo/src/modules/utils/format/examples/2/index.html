@@ -1,0 +1,16 @@
+{{ currency }} = getCurrencySymbol(currency);
+
+<form [formGroup]="parametersForm">
+    <div class="parameters">
+        <tui-select
+            formControlName="currency"
+            class="tui-space_top-2"
+        >
+            currency
+            <tui-data-list-wrapper
+                *tuiDataList
+                [items]="items"
+            ></tui-data-list-wrapper>
+        </tui-select>
+    </div>
+</form>

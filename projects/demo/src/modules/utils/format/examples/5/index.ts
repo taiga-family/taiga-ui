@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiFormatPhone} from '@taiga-ui/core';
+import {tuiFormatNumber} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-format-example-5',
@@ -13,14 +13,20 @@ import {tuiFormatPhone} from '@taiga-ui/core';
 })
 export class TuiFormatExample5 {
     parametersForm = new FormGroup({
-        value: new FormControl('+79991234567'),
-        countryCode: new FormControl('+7'),
-        phoneMask: new FormControl('### ###-##-##'),
+        value: new FormControl(123456.789),
+        decimalLimit: new FormControl(2),
+        decimalSeparator: new FormControl('.'),
+        thousandSeparator: new FormControl(' '),
     });
 
-    get formattedPhone(): string {
-        const {value, countryCode, phoneMask} = this.parametersForm.value;
+    get formattedNumber(): string {
+        const {value, decimalLimit, decimalSeparator, thousandSeparator} =
+            this.parametersForm.value;
 
-        return tuiFormatPhone(value ?? '', countryCode ?? '', phoneMask ?? '');
+        return tuiFormatNumber(value ?? 123456.789, {
+            decimalLimit: decimalLimit ?? 2,
+            decimalSeparator: decimalSeparator ?? '.',
+            thousandSeparator: thousandSeparator ?? ' ',
+        });
     }
 }
