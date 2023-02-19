@@ -4,12 +4,7 @@ import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 
 @Component({
     selector: 'inline-svg-example',
-    template: `
-        <tui-svg
-            class="example"
-            [src]="svg"
-        ></tui-svg>
-    `,
+    templateUrl: './inline-svg.component.html',
     styleUrls: ['./inline-svg.style.less'],
     providers: [
         {

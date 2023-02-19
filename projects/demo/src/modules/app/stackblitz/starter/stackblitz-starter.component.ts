@@ -6,14 +6,7 @@ import {appPrefix} from '../utils';
 
 @Component({
     selector: 'demo-stackblitz-starter',
-    template: `
-        <tui-loader
-            size="xxl"
-            textContent="Stackblitz loading..."
-            class="loader"
-            [overlay]="true"
-        ></tui-loader>
-    `,
+    templateUrl: './stackblitz-starter.component.html',
     styleUrls: ['./stackblitz-starter.style.less'],
     providers: [TuiStackblitzService],
     changeDetection: ChangeDetectionStrategy.OnPush,

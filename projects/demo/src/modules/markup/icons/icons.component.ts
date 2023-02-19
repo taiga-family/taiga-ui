@@ -21,6 +21,7 @@ export class IconsComponent {
 
     readonly example2: TuiDocExample = {
         TypeScript: import('./inline-svg/inline-svg.component.ts?raw'),
+        HTML: import('./inline-svg/inline-svg.component.html?raw'),
         LESS: import('./inline-svg/inline-svg.style.less?raw'),
     };
 

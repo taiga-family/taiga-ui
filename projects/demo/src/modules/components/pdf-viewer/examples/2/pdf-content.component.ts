@@ -6,24 +6,8 @@ import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-pdf-content',
-    template: `
-        <iframe
-            *ngIf="src$ | async as src; else loading"
-            [src]="src"
-        ></iframe>
-        <ng-template #loading><tui-loader size="xl"></tui-loader></ng-template>
-    `,
-    styles: [
-        `
-            :host {
-                display: flex;
-                height: 100%;
-            }
-            :host > * {
-                flex: 1;
-            }
-        `,
-    ],
+    templateUrl: './pdf-content.component.html',
+    styleUrls: ['./pdf-content.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PdfContentComponent {
