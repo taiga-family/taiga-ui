@@ -94,9 +94,9 @@ module.exports = {
                 '@angular-eslint/use-component-selector': 'error',
                 '@angular-eslint/use-lifecycle-interface': 'error',
                 '@angular-eslint/use-pipe-transform-interface': 'error',
+                '@angular-eslint/no-lifecycle-call': 'error',
                 // Off
                 '@angular-eslint/component-max-inline-declarations': 'off',
-                '@angular-eslint/no-lifecycle-call': 'off',
                 '@angular-eslint/no-host-metadata-property': 'off',
                 '@angular-eslint/use-component-view-encapsulation': 'off',
                 '@angular-eslint/use-injectable-provided-in': 'off',
