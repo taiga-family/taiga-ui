@@ -1,4 +1,4 @@
-'{{ formattedPhone }}' = formatPhone(value, countryCode, phoneMask);
+'{{ formattedNumber }}' = tuiFormatNumber(value, decimalLimit, decimalSeparator, thousandSeparator);
 
 <form [formGroup]="parametersForm">
     <div class="parameters">
@@ -9,16 +9,22 @@
             value
         </tui-input>
         <tui-input
-            formControlName="countryCode"
+            formControlName="decimalLimit"
             class="tui-space_top-2"
         >
-            countryCode
+            decimalLimit
         </tui-input>
         <tui-input
-            formControlName="phoneMask"
+            formControlName="decimalSeparator"
             class="tui-space_top-2"
         >
-            phoneMask
+            decimalSeparator
+        </tui-input>
+        <tui-input
+            formControlName="thousandSeparator"
+            class="tui-space_top-2"
+        >
+            thousandSeparator
         </tui-input>
     </div>
 </form>
