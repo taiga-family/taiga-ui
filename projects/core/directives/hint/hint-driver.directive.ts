@@ -6,4 +6,6 @@ import {AbstractTuiDriverDirective} from '@taiga-ui/core/abstract';
     selector: '[tuiHint]',
     providers: [TuiDestroyService],
 })
-export class TuiHintDriverDirective extends AbstractTuiDriverDirective {}
+export class TuiHintDriverDirective extends AbstractTuiDriverDirective {
+    readonly type = 'hint';
+}

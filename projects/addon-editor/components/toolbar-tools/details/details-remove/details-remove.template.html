@@ -6,8 +6,8 @@
     icon="tuiIconSpoilerDeleteLarge"
     appearance="icon"
     tuiHintDirection="top-left"
+    tuiHintDescribe
     [tuiHint]="text.removeDetails"
-    [tuiHintDescribe]="''"
     [focusable]="false"
     [disabled]="!!(disabled$ | async)"
     (click)="removeDetails()"

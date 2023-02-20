@@ -6,4 +6,6 @@ import {AbstractTuiDriverDirective} from '@taiga-ui/core/abstract';
     selector: '[tuiDropdown]',
     providers: [TuiDestroyService],
 })
-export class TuiDropdownDriverDirective extends AbstractTuiDriverDirective {}
+export class TuiDropdownDriverDirective extends AbstractTuiDriverDirective {
+    readonly type = 'dropdown';
+}

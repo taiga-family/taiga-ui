@@ -1,6 +1,7 @@
 import {Directive, Inject} from '@angular/core';
 import {
     tuiAsPositionAccessor,
+    TuiHintDirective,
     TuiPoint,
     TuiPositionAccessor,
     TuiRectAccessor,
@@ -10,8 +11,12 @@ import {
     selector: '[tuiHintCustomPosition]',
     providers: [tuiAsPositionAccessor(TuiLineClampPositionDirective)],
 })
-export class TuiLineClampPositionDirective implements TuiPositionAccessor {
-    constructor(@Inject(TuiRectAccessor) private readonly accessor: TuiRectAccessor) {}
+export class TuiLineClampPositionDirective extends TuiPositionAccessor {
+    readonly type = 'hint';
+
+    constructor(@Inject(TuiHintDirective) private readonly accessor: TuiRectAccessor) {
+        super();
+    }
 
     getPosition(): TuiPoint {
         const {top, left} = this.accessor.getClientRect();

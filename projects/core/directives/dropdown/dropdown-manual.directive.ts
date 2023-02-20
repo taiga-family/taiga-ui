@@ -12,6 +12,8 @@ export class TuiDropdownManualDirective extends TuiDriver implements OnChanges {
     @Input()
     tuiDropdownManual = false;
 
+    readonly type = 'dropdown';
+
     constructor() {
         super(subscriber => this.stream$.subscribe(subscriber));
     }

@@ -31,9 +31,9 @@
             icon="tuiIconUndoLarge"
             appearance="icon"
             tuiHintDirection="top-left"
+            tuiHintDescribe
             class="t-tool t-tool_margin"
             [tuiHint]="texts.undo"
-            [tuiHintDescribe]="''"
             [disabled]="undoDisabled"
             [focusable]="false"
             (click)="undo()"
@@ -46,9 +46,9 @@
             icon="tuiIconRedoLarge"
             appearance="icon"
             tuiHintDirection="top-left"
+            tuiHintDescribe
             class="t-tool t-tool_margin"
             [tuiHint]="texts.redo"
-            [tuiHintDescribe]="''"
             [disabled]="redoDisabled"
             [focusable]="false"
             (click)="redo()"
@@ -96,9 +96,9 @@
             icon="tuiIconQuoteLarge"
             appearance="icon"
             tuiHintDirection="top-left"
+            tuiHintDescribe
             class="t-tool t-tool_margin"
             [tuiHint]="texts.quote"
-            [tuiHintDescribe]="''"
             [pseudoActive]="blockquote"
             [disabled]="unorderedList || orderedList"
             [focusable]="false"
@@ -120,9 +120,9 @@
                 icon="tuiIconLinkLarge"
                 appearance="icon"
                 tuiHintDirection="top-left"
+                tuiHintDescribe
                 class="t-tool"
                 [tuiHint]="texts.link"
-                [tuiHintDescribe]="''"
                 [pseudoActive]="link.open || a"
                 [focusable]="link.open"
             ></button>
@@ -148,10 +148,10 @@
                 icon="tuiIconAnchorLarge"
                 tuiHintDirection="top-left"
                 appearance="icon"
+                tuiHintDescribe
                 [focusable]="false"
                 [pseudoActive]="anchor.open || jumpAnchor"
                 [tuiHint]="texts.insertAnchor"
-                [tuiHintDescribe]="''"
             ></button>
             <ng-template #anchorDropdown>
                 <tui-edit-link
@@ -171,9 +171,9 @@
                 icon="tuiIconPaperclipLarge"
                 appearance="icon"
                 tuiHintDirection="top-left"
+                tuiHintDescribe
                 class="t-tool t-tool_margin"
                 [tuiHint]="texts.attach"
-                [tuiHintDescribe]="''"
                 [focusable]="false"
                 (click)="fileUpload.click()"
             ></button>
@@ -203,9 +203,9 @@
             icon="tuiIconSubscriptLarge"
             appearance="icon"
             tuiHintDirection="top-left"
+            tuiHintDescribe
             class="t-tool t-tool_margin"
             [tuiHint]="texts.subscript"
-            [tuiHintDescribe]="''"
             [pseudoActive]="subscript"
             [focusable]="false"
             (click)="toggleSubscript()"
@@ -220,9 +220,9 @@
             icon="tuiIconSuperscriptLarge"
             appearance="icon"
             tuiHintDirection="top-left"
+            tuiHintDescribe
             class="t-tool t-tool_margin"
             [tuiHint]="texts.superscript"
-            [tuiHintDescribe]="''"
             [pseudoActive]="superscript"
             [focusable]="false"
             (click)="toggleSuperscript()"
@@ -266,9 +266,9 @@
             icon="tuiIconTeXLarge"
             appearance="icon"
             tuiHintDirection="top-left"
+            tuiHintDescribe
             class="t-tool"
             [tuiHint]="texts.tex"
-            [tuiHintDescribe]="''"
             [focusable]="false"
             (click)="onTeX()"
         ></button>
@@ -285,9 +285,9 @@
                 icon="tuiIconImageLarge"
                 appearance="icon"
                 tuiHintDirection="top-left"
+                tuiHintDescribe
                 class="t-tool"
                 [tuiHint]="texts.image"
-                [tuiHintDescribe]="''"
                 [focusable]="false"
                 (click)="image.click()"
             ></button>
@@ -311,9 +311,9 @@
             icon="tuiIconHrLarge"
             appearance="icon"
             tuiHintDirection="top-left"
+            tuiHintDescribe
             class="t-tool t-tool_margin"
             [tuiHint]="texts.insertHorizontalRule"
-            [tuiHintDescribe]="''"
             [focusable]="false"
             (click)="insertHorizontalRule()"
         ></button>
@@ -331,9 +331,9 @@
             icon="tuiIconClearFormatLarge"
             appearance="icon"
             tuiHintDirection="top-left"
+            tuiHintDescribe
             class="t-tool t-tool_margin"
             [tuiHint]="texts.clear"
-            [tuiHintDescribe]="''"
             [focusable]="false"
             (click)="removeFormat()"
         ></button>

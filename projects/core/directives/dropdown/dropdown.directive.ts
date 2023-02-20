@@ -5,9 +5,11 @@ import {
     ElementRef,
     Inject,
     INJECTOR,
+    Injector,
     Input,
     OnChanges,
     OnDestroy,
+    Type,
 } from '@angular/core';
 import {
     TuiActiveZoneDirective,
@@ -36,11 +38,6 @@ import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
     providers: [
         tuiAsRectAccessor(TuiDropdownDirective),
         tuiAsVehicle(TuiDropdownDirective),
-        {
-            provide: PolymorpheusComponent,
-            deps: [TUI_DROPDOWN_COMPONENT, INJECTOR],
-            useClass: PolymorpheusComponent,
-        },
     ],
 })
 export class TuiDropdownDirective
@@ -58,10 +55,14 @@ export class TuiDropdownDirective
 
     dropdownBoxRef: ComponentRef<unknown> | null = null;
 
+    readonly type = 'dropdown';
+
+    readonly component = new PolymorpheusComponent(this.hapica, this.injector);
+
     constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(PolymorpheusComponent)
-        readonly component: PolymorpheusComponent<unknown, any>,
+        @Inject(ElementRef) readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(TUI_DROPDOWN_COMPONENT) private readonly hapica: Type<unknown>,
+        @Inject(INJECTOR) private readonly injector: Injector,
         @Inject(TuiDropdownPortalService)
         private readonly dropdownService: TuiDropdownPortalService,
     ) {}

@@ -3,7 +3,7 @@ import {Directive, ElementRef, Inject, Input} from '@angular/core';
 import {tuiDefaultProp, TuiHoveredService} from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {merge, Observable, of, Subject} from 'rxjs';
-import {delay, repeat, switchMap, takeUntil} from 'rxjs/operators';
+import {delay, filter, repeat, switchMap, takeUntil} from 'rxjs/operators';
 
 import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 
@@ -27,7 +27,7 @@ export class TuiHintHoverDirective extends TuiDriver {
             takeUntil(this.toggle$),
             repeat(),
         ),
-    );
+    ).pipe(filter(() => this.enabled));
 
     @Input('tuiHintShowDelay')
     @tuiDefaultProp()
@@ -36,6 +36,10 @@ export class TuiHintHoverDirective extends TuiDriver {
     @Input('tuiHintHideDelay')
     @tuiDefaultProp()
     hideDelay: TuiHintOptions['hideDelay'] = this.options.hideDelay;
+
+    readonly type = 'hint';
+
+    enabled = true;
 
     constructor(
         @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,

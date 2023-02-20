@@ -35,6 +35,8 @@ export class TuiDropdownHoverDirective extends TuiDriver {
 
     hovered = false;
 
+    readonly type = 'dropdown';
+
     constructor(
         @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
         @Inject(TUI_DROPDOWN_HOVER_OPTIONS)

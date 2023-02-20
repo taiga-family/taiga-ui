@@ -84,6 +84,8 @@ export class TuiDropdownSelectionDirective
         }
     }
 
+    readonly type = 'dropdown';
+
     constructor(
         @Inject(TUI_RANGE) private range: Range,
         @Inject(DOCUMENT) private readonly documentRef: Document,

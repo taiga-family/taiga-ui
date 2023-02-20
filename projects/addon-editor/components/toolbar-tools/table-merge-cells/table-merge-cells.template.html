@@ -11,9 +11,9 @@
         size="s"
         appearance="icon"
         tuiHintDirection="top-left"
+        tuiHintDescribe
         [icon]="can.mergeCells ? 'tuiIconTableMergeLarge' : 'tuiIconTableSplitLarge'"
         [tuiHint]="can.mergeCells ? texts.mergeCells : texts.splitCells"
-        [tuiHintDescribe]="''"
         [focusable]="false"
         [disabled]="!can.mergeCells && !can.splitCells"
         (click)="can.mergeCells ? mergeCells() : splitCell()"

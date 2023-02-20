@@ -9,8 +9,8 @@
         icon="tuiIconCodeLarge"
         appearance="icon"
         tuiHintDirection="top-left"
+        tuiHintDescribe
         [tuiHint]="hintText$ | async"
-        [tuiHintDescribe]="''"
         [pseudoActive]="codes.open || (insideCode$ | async)"
         [focusable]="codes.open"
     ></button>

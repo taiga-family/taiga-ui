@@ -65,11 +65,11 @@
             type="button"
             size="xs"
             appearance=""
+            tuiHintDescribe
             class="t-direction"
             [class.t-direction_active]="isDirectionActive(button)"
             [icon]="getIcon(button)"
             [tuiHint]="button"
-            [tuiHintDescribe]="''"
             (click)="onDirectionChange(button)"
         ></button>
     </div>

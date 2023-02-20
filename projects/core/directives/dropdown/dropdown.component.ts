@@ -16,7 +16,11 @@ import {
     tuiGetClosestFocusable,
     tuiPx,
 } from '@taiga-ui/cdk';
-import {TuiRectAccessor} from '@taiga-ui/core/abstract';
+import {
+    tuiPositionAccessorFor,
+    TuiRectAccessor,
+    tuiRectAccessorFor,
+} from '@taiga-ui/core/abstract';
 import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
 import {TuiDropdownAnimation} from '@taiga-ui/core/enums';
 import {TuiPositionService} from '@taiga-ui/core/services';
@@ -40,7 +44,12 @@ import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.direc
     selector: 'tui-dropdown',
     templateUrl: './dropdown.template.html',
     styleUrls: ['./dropdown.style.less'],
-    providers: [TuiDestroyService, TuiPositionService],
+    providers: [
+        TuiDestroyService,
+        TuiPositionService,
+        tuiPositionAccessorFor('dropdown'),
+        tuiRectAccessorFor('dropdown', TuiDropdownDirective),
+    ],
     animations: [tuiDropdownAnimation],
     // @bad TODO: OnPush
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
@@ -139,12 +148,12 @@ export class TuiDropdownComponent implements OnDestroy {
     }
 
     private moveFocusOutside(previous: boolean): void {
-        const host = document.createElement('div');
-        const {ownerDocument} = host;
-        const root = ownerDocument ? ownerDocument.body : host;
-        let focusable = tuiGetClosestFocusable({initial: host, root, previous});
+        const {nativeElement} = this.directive.elementRef;
+        const {ownerDocument} = nativeElement;
+        const root = ownerDocument ? ownerDocument.body : nativeElement;
+        let focusable = tuiGetClosestFocusable({initial: nativeElement, root, previous});
 
-        while (focusable !== null && host.contains(focusable)) {
+        while (focusable !== null && nativeElement.contains(focusable)) {
             focusable = tuiGetClosestFocusable({initial: focusable, root, previous});
         }
 

@@ -17,7 +17,11 @@ import {
     tuiPure,
     tuiPx,
 } from '@taiga-ui/cdk';
-import {TuiRectAccessor} from '@taiga-ui/core/abstract';
+import {
+    tuiPositionAccessorFor,
+    TuiRectAccessor,
+    tuiRectAccessorFor,
+} from '@taiga-ui/core/abstract';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
 import {TuiPortalItem} from '@taiga-ui/core/interfaces';
@@ -28,6 +32,8 @@ import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheu
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
+// eslint-disable-next-line import/no-cycle
+import {TuiHintDirective} from './hint.directive';
 import {TuiHintHoverDirective} from './hint-hover.directive';
 import {TuiHintPointerDirective} from './hint-pointer.directive';
 
@@ -40,7 +46,13 @@ import {TuiHintPointerDirective} from './hint-pointer.directive';
     `,
     styleUrls: ['./hint.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService, TuiPositionService, TuiHoveredService],
+    providers: [
+        TuiDestroyService,
+        TuiPositionService,
+        TuiHoveredService,
+        tuiPositionAccessorFor('hint'),
+        tuiRectAccessorFor('hint', TuiHintDirective),
+    ],
     animations: [tuiFadeIn],
 })
 export class TuiHintComponent<C = any> {

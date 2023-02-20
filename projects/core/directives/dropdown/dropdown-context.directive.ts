@@ -30,6 +30,8 @@ export class TuiDropdownContextDirective extends TuiDriver implements TuiRectAcc
 
     private currentRect = EMPTY_CLIENT_RECT;
 
+    readonly type = 'dropdown';
+
     constructor(
         @Inject(TuiActiveZoneDirective)
         readonly activeZone: TuiActiveZoneDirective,
