@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[32245],{32245:e=>{e.exports="::ng-deep .marked {\n    padding: 0.3125rem;\n    border-radius: 0.3125rem;\n    margin: 0 0.3125rem;\n    box-shadow: 0 0 0 2px rgb(0 123 255 / 25%);\n}\n"}}]);
