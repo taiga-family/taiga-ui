@@ -29,10 +29,6 @@ export class TuiPrimitiveCheckboxComponent {
 
     @Input()
     @tuiDefaultProp()
-    readOnly = false;
-
-    @Input()
-    @tuiDefaultProp()
     focused = false;
 
     @Input()
