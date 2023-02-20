@@ -20,7 +20,7 @@
         "@ng-web-apis/resize-observer": "2.0.0",
         "@tinkoff/ng-event-plugins": "3.1.0",
         "@tinkoff/ng-polymorpheus": "4.0.10",
-        "tslib": "^2.0.0"
+        "tslib": "2.5.0"
     },
     "peerDependencies": {
         "@angular/animations": ">=12.0.0",
@@ -30,8 +30,8 @@
         "rxjs": ">=6.0.0"
     },
     "optionalDependencies": {
-        "ng-morph": "^2.1.0",
-        "parse5": "^6.0.1"
+        "ng-morph": "2.1.0",
+        "parse5": "6.0.1"
     },
     "ng-update": {
         "migrations": "./schematics/migration.json",
