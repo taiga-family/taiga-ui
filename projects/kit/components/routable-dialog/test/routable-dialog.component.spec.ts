@@ -1,6 +1,13 @@
 import {Component, Provider} from '@angular/core';
 import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
-import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
+import {
+    ActivatedRoute,
+    ActivatedRouteSnapshot,
+    Data,
+    NavigationExtras,
+    Router,
+    UrlSegment,
+} from '@angular/router';
 import {TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, NEVER} from 'rxjs';
@@ -75,8 +82,8 @@ describe(`TuiRoutableDialog`, () => {
                 data: {
                     dialog: DialogComponent,
                     dialogOptions,
-                },
-            } as any,
+                } as Data,
+            } as ActivatedRouteSnapshot,
         });
 
         fixture.detectChanges();
@@ -90,20 +97,30 @@ describe(`TuiRoutableDialog`, () => {
                 data: {
                     dialog: DialogComponent,
                     isLazy: true,
-                },
-            },
+                } as Data,
+            } as ActivatedRouteSnapshot,
             parent: {
                 snapshot: {
-                    url: `path/to/lazy/dialog`,
-                },
-            },
-        } as any);
+                    url: [
+                        {
+                            path: `path`,
+                        } as UrlSegment,
+                        {
+                            path: `to`,
+                        } as UrlSegment,
+                        {
+                            path: `dialog`,
+                        } as UrlSegment,
+                    ],
+                } as ActivatedRouteSnapshot,
+            } as ActivatedRoute,
+        });
 
         when(tuiDialogService.open(anything(), anything())).thenReturn(EMPTY);
 
         verify(
             router.navigate(
-                deepEqual([`../../../..`]),
+                deepEqual([`../../..`]),
                 deepEqual({
                     relativeTo: DEFAULT_ACTIVATED_ROUTE_MOCK,
                 }) as unknown as NavigationExtras,
@@ -117,8 +134,8 @@ describe(`TuiRoutableDialog`, () => {
                 data: {
                     dialog: DialogComponent,
                     backUrl: `../../..`,
-                },
-            } as any,
+                } as Data,
+            } as ActivatedRouteSnapshot,
         });
 
         when(tuiDialogService.open(anything(), anything())).thenReturn(EMPTY);
