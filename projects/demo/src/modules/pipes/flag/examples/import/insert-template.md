@@ -1,3 +1,6 @@
 ```html
-<img [src]="countryIsoCode | tuiFlag" />
+<img
+  alt="United Arab Emirates"
+  [src]="'AE' | tuiFlag"
+/>
 ```

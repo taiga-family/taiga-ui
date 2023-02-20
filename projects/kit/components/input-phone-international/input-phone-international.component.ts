@@ -141,7 +141,7 @@ export class TuiInputPhoneInternationalComponent
     }
 
     /**
-     * @deprecated use `<img [src]=countryIsoCode | tuiFlagPipe />`
+     * @deprecated use `<img [src]="countryIsoCode | tuiFlagPipe" />`
      * TODO drop in v4.0
      */
     get countryFlagPath(): string {
@@ -176,7 +176,7 @@ export class TuiInputPhoneInternationalComponent
         this.isoToCountryCode(item);
 
     /**
-     * @deprecated use `<img [src]=countryIsoCode | tuiFlagPipe />`
+     * @deprecated use `<img [src]="countryIsoCode | tuiFlagPipe" />`
      * TODO drop in v4.0
      */
     getFlagPath(code: TuiCountryIsoCode): string {

@@ -40,7 +40,7 @@ export class TuiLanguageSwitcherComponent {
     ) {}
 
     /**
-     * @deprecated use `<img [src]=countryIsoCode | tuiFlagPipe />`
+     * @deprecated use `<img [src]="countryIsoCode | tuiFlagPipe" />`
      * TODO drop in v4.0
      */
     getFlagPath(code?: TuiCountryIsoCode): string | null {
