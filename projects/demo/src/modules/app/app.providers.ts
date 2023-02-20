@@ -60,7 +60,7 @@ export const APP_PROVIDERS: Provider[] = [
     {
         provide: TUI_DOC_SOURCE_CODE,
         useValue: (context: TuiDocSourceCodePathOptions) => {
-            const link = `https://github.com/tinkoff/taiga-ui/tree/main/projects`;
+            const link = `https://github.com/tinkoff/taiga-ui/tree/v2.x/projects`;
 
             if (!context.package) {
                 return null;
