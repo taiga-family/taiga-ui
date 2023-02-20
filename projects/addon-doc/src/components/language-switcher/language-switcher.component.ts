@@ -44,6 +44,6 @@ export class TuiLanguageSwitcherComponent {
      * TODO drop in v4.0
      */
     getFlagPath(code?: TuiCountryIsoCode): string | null {
-        return code ? this.flagPipe.transform(code) : null;
+        return this.flagPipe.transform(code);
     }
 }

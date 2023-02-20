@@ -10,7 +10,13 @@ export class TuiFlagPipe implements PipeTransform {
 
     constructor(@Inject(TUI_SVG_OPTIONS) private readonly svgOptions: TuiSvgOptions) {}
 
-    transform(countryIsoCode: TuiCountryIsoCode | string): string {
+    transform(countryIsoCode: TuiCountryIsoCode | string): string;
+    transform(countryIsoCode?: TuiCountryIsoCode | string | null): string | null;
+    transform(countryIsoCode?: TuiCountryIsoCode | string | null): string | null {
+        if (!countryIsoCode) {
+            return null;
+        }
+
         switch (countryIsoCode) {
             case TuiCountryIsoCode.BL:
             case TuiCountryIsoCode.BQ:
