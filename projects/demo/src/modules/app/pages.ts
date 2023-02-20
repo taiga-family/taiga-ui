@@ -916,6 +916,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Editor`,
+        title: `Highlight`,
+        keywords: `editor, highlight, wysiwyg, редактор, текст, подсветка, html, rich, text`,
+        route: `/editor/highlight`,
+    },
+    {
+        section: $localize`Editor`,
         title: $localize`Custom tool`,
         subPages: [
             {

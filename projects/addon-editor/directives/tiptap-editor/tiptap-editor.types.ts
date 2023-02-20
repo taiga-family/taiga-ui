@@ -8,6 +8,7 @@ import type {BackgroundColor, FontColor} from '@taiga-ui/addon-editor/extensions
 import type {TuiDetails} from '@taiga-ui/addon-editor/extensions/details';
 import type {TuiJumpAnchor} from '@taiga-ui/addon-editor/extensions/jump-anchor';
 import type {Youtube} from '@taiga-ui/addon-editor/extensions/youtube';
+import type Highlight from '@tiptap/extension-highlight';
 import type {Image} from '@tiptap/extension-image';
 import type Link from '@tiptap/extension-link';
 import type Subscript from '@tiptap/extension-subscript';
@@ -24,6 +25,7 @@ import type StarterKit from '@tiptap/starter-kit';
 export {
     BackgroundColor,
     FontColor,
+    Highlight,
     Image,
     Link,
     StarterKit,
