@@ -6,20 +6,18 @@ import {TuiRoutableDialogComponent} from './routable-dialog.component';
 
 export function tuiGenerateDialogableRoute<I>(
     component: Type<any>,
-    {path, ...dialogOptions}: Partial<TuiDialogOptions<I>> & {path?: string} = {},
+    {path = ``, ...dialogOptions}: Partial<TuiDialogOptions<I>> & {path?: string} = {},
 ): Route {
-    const processedPath = path ?? ``;
-
     return {
-        path: processedPath,
+        path,
         component: TuiRoutableDialogComponent,
         data: {
             dialog: component,
-            backUrl: processedPath
+            backUrl: path
                 .split(`/`)
                 .map(() => `..`)
                 .join(`/`),
-            isLazy: processedPath === ``,
+            isLazy: path === ``,
             dialogOptions,
         },
     };

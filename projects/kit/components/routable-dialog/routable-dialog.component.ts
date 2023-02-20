@@ -13,21 +13,18 @@ import {takeUntil} from 'rxjs/operators';
 })
 export class TuiRoutableDialogComponent {
     constructor(
-        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
         @Inject(ActivatedRoute) private readonly route: ActivatedRoute,
         @Inject(Router) private readonly router: Router,
-        @Inject(Injector) private readonly injector: Injector,
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
+        @Inject(TuiDialogService) dialogService: TuiDialogService,
+        @Inject(Injector) injector: Injector,
+        @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
-        this.dialogService
+        dialogService
             .open(
-                new PolymorpheusComponent(
-                    this.route.snapshot.data['dialog'],
-                    this.injector,
-                ),
+                new PolymorpheusComponent(this.route.snapshot.data['dialog'], injector),
                 this.route.snapshot.data['dialogOptions'],
             )
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntil(destroy$))
             .subscribe({
                 complete: () => this.navigateToParent(),
             });
