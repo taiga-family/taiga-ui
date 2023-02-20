@@ -74,6 +74,10 @@ export class TuiTreeItemComponent implements DoCheck {
     }
 
     ngDoCheck(): void {
+        this.checkChanges();
+    }
+
+    checkChanges(): void {
         this.change$.next();
     }
 }
