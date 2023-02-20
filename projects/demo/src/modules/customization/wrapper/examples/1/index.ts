@@ -1,5 +1,8 @@
 import {Component, ViewEncapsulation} from '@angular/core';
-import {TUI_TEXTFIELD_APPEARANCE, tuiCheckboxOptionsProvider} from '@taiga-ui/core';
+import {
+    TUI_TEXTFIELD_APPEARANCE_DIRECTIVE,
+    tuiCheckboxOptionsProvider,
+} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-wrapper-example-1',
@@ -8,8 +11,10 @@ import {TUI_TEXTFIELD_APPEARANCE, tuiCheckboxOptionsProvider} from '@taiga-ui/co
     encapsulation: ViewEncapsulation.None,
     providers: [
         {
-            provide: TUI_TEXTFIELD_APPEARANCE,
-            useValue: 'material-textfield',
+            provide: TUI_TEXTFIELD_APPEARANCE_DIRECTIVE,
+            useValue: {
+                appearance: 'material-textfield',
+            },
         },
         tuiCheckboxOptionsProvider({
             appearances: {

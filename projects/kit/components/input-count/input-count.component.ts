@@ -23,16 +23,16 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
+    TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_NUMBER_FORMAT,
-    TUI_TEXTFIELD_APPEARANCE,
-    TUI_TEXTFIELD_SIZE,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiCreateNumberMask,
     tuiFormatNumber,
     TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTextfieldSizeDirective,
+    TuiTextfieldController,
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
@@ -50,6 +50,7 @@ import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from './input-count-optio
     providers: [
         tuiAsFocusableItemAccessor(TuiInputCountComponent),
         tuiAsControl(TuiInputCountComponent),
+        TEXTFIELD_CONTROLLER_PROVIDER,
     ],
 })
 export class TuiInputCountComponent
@@ -91,10 +92,8 @@ export class TuiInputCountComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_TEXTFIELD_APPEARANCE)
-        private readonly appearance: string,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
+        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
+        private readonly textfieldController: TuiTextfieldController,
         @Inject(TUI_PLUS_MINUS_TEXTS)
         readonly minusTexts$: Observable<[string, string]>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
@@ -120,7 +119,7 @@ export class TuiInputCountComponent
 
     @HostBinding('class._hide-buttons')
     get buttonsHidden(): boolean {
-        return this.hideButtons || this.appearance === 'table';
+        return this.hideButtons || this.textfieldController.appearance === 'table';
     }
 
     get iconUp(): PolymorpheusContent<Record<string, unknown>> {
@@ -139,7 +138,7 @@ export class TuiInputCountComponent
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
+        return this.textfieldController.size;
     }
 
     get focused(): boolean {

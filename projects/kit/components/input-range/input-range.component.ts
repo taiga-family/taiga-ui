@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    Directive,
     ElementRef,
     Inject,
     Input,
@@ -31,7 +30,6 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
-    TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiDecimal,
     tuiGetFractionPartPadded,
@@ -121,8 +119,6 @@ export class TuiInputRangeComponent
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_IS_MOBILE)
         private readonly isMobile: boolean,
-        @Inject(TUI_TEXTFIELD_APPEARANCE)
-        readonly appearance: string,
         @Inject(ElementRef) private readonly elementRef: ElementRef,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
@@ -146,6 +142,10 @@ export class TuiInputRangeComponent
 
     get focused(): boolean {
         return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
+    }
+
+    get appearance(): string {
+        return this.controller.appearance;
     }
 
     get showLeftValueContent(): boolean {
@@ -304,16 +304,3 @@ export class TuiInputRangeComponent
         }
     }
 }
-
-@Directive({
-    selector: '[tuiTextfieldAppearance]',
-    providers: [
-        {
-            provide: TUI_TEXTFIELD_APPEARANCE,
-            deps: [ElementRef],
-            useFactory: ({nativeElement}: ElementRef) =>
-                nativeElement.getAttribute('tuiTextfieldAppearance'),
-        },
-    ],
-})
-export class TuiTextfieldAppearanceDirective {}

@@ -3,6 +3,7 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
+import {TuiTextfieldAppearanceDirective} from './textfield-appearance.directive';
 import {TuiTextfieldCleanerDirective} from './textfield-cleaner.directive';
 import {TuiTextfieldCustomContentDirective} from './textfield-custom-content.directive';
 import {TuiTextfieldFillerDirective} from './textfield-filler.directive';
@@ -18,6 +19,8 @@ export class TuiTextfieldController {
     constructor(
         readonly change$: Observable<void>,
         readonly options: TuiTextfieldOptions,
+        private readonly legacyAppearance: string,
+        private readonly appearanceDirective: TuiTextfieldAppearanceDirective,
         private readonly cleanerDirective: TuiTextfieldCleanerDirective,
         private readonly customContentDirective: TuiTextfieldCustomContentDirective,
         private readonly iconDirective: TuiTextfieldIconDirective,
@@ -28,6 +31,10 @@ export class TuiTextfieldController {
         private readonly postfixDirective: TuiTextfieldPostfixDirective,
         private readonly fillerDirective: TuiTextfieldFillerDirective,
     ) {}
+
+    get appearance(): string {
+        return this.appearanceDirective.appearance || this.legacyAppearance;
+    }
 
     get cleaner(): boolean {
         return this.cleanerDirective.cleaner;

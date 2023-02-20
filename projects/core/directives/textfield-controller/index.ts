@@ -1,4 +1,5 @@
 export * from './textfield.controller';
+export * from './textfield-appearance.directive';
 export * from './textfield-cleaner.directive';
 export * from './textfield-controller.module';
 export * from './textfield-controller.provider';
