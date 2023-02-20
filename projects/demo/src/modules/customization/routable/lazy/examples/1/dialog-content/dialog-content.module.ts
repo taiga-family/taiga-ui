@@ -5,7 +5,7 @@ import {tuiGenerateDialogableRoute} from '@taiga-ui/kit';
 import {DialogContentComponent} from './dialog-content.component';
 
 @NgModule({
-    // step 4:  use tuiGenerateDialogableRoute
+    // step 4:  use tuiGenerateDialogableRoute without path param(or with path: '')
     imports: [
         RouterModule.forChild([tuiGenerateDialogableRoute(DialogContentComponent)]),
     ],
