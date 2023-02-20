@@ -22,7 +22,16 @@ export class ExampleTuiPdfViewerComponent {
         'actions-content.component.ts': import(
             './examples/2/actions-content.component.ts?raw'
         ),
+        'actions-content.component.html': import(
+            './examples/2/actions-content.component.html?raw'
+        ),
         'pdf-content.component.ts': import('./examples/2/pdf-content.component.ts?raw'),
+        'pdf-content.component.html': import(
+            './examples/2/pdf-content.component.html?raw'
+        ),
+        'pdf-content.component.less': import(
+            './examples/2/pdf-content.component.less?raw'
+        ),
     };
 
     readonly example3: TuiDocExample = {

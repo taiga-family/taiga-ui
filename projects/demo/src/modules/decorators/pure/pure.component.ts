@@ -12,9 +12,11 @@ export class ExampleTuiPureComponent {
 
     readonly example1: TuiDocExample = {
         TypeScript: import('./pure-getter.component.ts?raw'),
+        HTML: import('./pure-getter.component.html?raw'),
     };
 
     readonly example2: TuiDocExample = {
         TypeScript: import('./pure-function.component.ts?raw'),
+        HTML: import('./pure-function.component.html?raw'),
     };
 }

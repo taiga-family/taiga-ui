@@ -7,18 +7,7 @@ import type {Buttons} from './index';
 
 @Component({
     selector: 'tui-actions-content',
-    template: `
-        <button
-            *ngFor="let button of context.data"
-            tuiButton
-            size="s"
-            shape="rounded"
-            class="tui-space_left-3"
-            (click)="button.onClick(context)"
-        >
-            {{ button.text }}
-        </button>
-    `,
+    templateUrl: './actions-content.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActionsContentComponent {
