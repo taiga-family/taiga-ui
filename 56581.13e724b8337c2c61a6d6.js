@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[56581],{56581:n=>{n.exports="```ts\nimport {TuiRoutableDialogModule} from '@taiga-ui/kit';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiRoutableDialogModule,\n  ],\n  // ...\n})\nexport class MyPageModule {}\n```\n"}}]);
