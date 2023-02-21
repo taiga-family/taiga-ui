@@ -37,7 +37,7 @@
             "executor": "nx:run-commands",
             "outputs": ["coverage/icons"],
             "options": {
-                "command": "jest --testMatch '**/projects/icons/**/*.spec.ts'",
+                "command": "jest --testMatch \"**/projects/icons/**/*.spec.ts\"",
                 "forwardAllArgs": true
             }
         },

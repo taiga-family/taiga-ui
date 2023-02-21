@@ -298,7 +298,7 @@
             "executor": "nx:run-commands",
             "outputs": ["coverage/demo"],
             "options": {
-                "command": "jest --testMatch '**/projects/demo/**/*.spec.ts'",
+                "command": "jest --testMatch \"**/projects/demo/**/*.spec.ts\"",
                 "forwardAllArgs": true
             }
         },

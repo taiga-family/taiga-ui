@@ -10,7 +10,7 @@
             "executor": "nx:run-commands",
             "outputs": ["dist/styles"],
             "options": {
-                "command": "npx cpy . '!project.json'  '../../dist/styles' --cwd=projects/styles"
+                "command": "npx cpy . \"!project.json\"  \"../../dist/styles\" --cwd=projects/styles"
             }
         },
         "publish": {

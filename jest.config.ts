@@ -12,6 +12,8 @@ const maxParallel = require(`os`).cpus().length / 2;
 module.exports = {
     rootDir: __dirname,
 
+    globalSetup: `jest-preset-angular/global-setup`,
+
     /**
      * The preset sets up the environment and is very opinionated
      * and based on what we found to be useful at Facebook.

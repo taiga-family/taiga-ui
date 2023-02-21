@@ -25,7 +25,7 @@
             "executor": "nx:run-commands",
             "outputs": ["coverage/addon-table"],
             "options": {
-                "command": "jest --testMatch '**/projects/addon-table/**/*.spec.ts' jest --testMatch '**/projects/addon-table/**/*.spec.ts' --collect-coverage --collect-coverage-from '**/projects/addon-table/**/*.ts' --coverage-directory=coverage/addon-table"
+                "command": "jest --testMatch \"**/projects/addon-table/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/addon-table/**/*.ts\" --coverage-directory=coverage/addon-table"
             }
         },
         "publish": {

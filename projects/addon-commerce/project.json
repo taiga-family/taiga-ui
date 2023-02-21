@@ -25,7 +25,7 @@
             "executor": "nx:run-commands",
             "outputs": ["coverage/addon-commerce"],
             "options": {
-                "command": "jest --testMatch '**/projects/addon-commerce/**/*.spec.ts' --collect-coverage --collect-coverage-from '**/projects/addon-commerce/**/*.ts' --coverage-directory=coverage/addon-commerce"
+                "command": "jest --testMatch \"**/projects/addon-commerce/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/addon-commerce/**/*.ts\" --coverage-directory=coverage/addon-commerce"
             }
         },
         "publish": {

@@ -25,7 +25,7 @@
             "executor": "nx:run-commands",
             "outputs": ["coverage/addon-doc"],
             "options": {
-                "command": "jest --testMatch '**/projects/addon-doc/**/*.spec.ts' --collect-coverage --collect-coverage-from '**/projects/addon-doc/src/**/*.ts' --coverage-directory=coverage/addon-doc"
+                "command": "jest --testMatch \"**/projects/addon-doc/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/addon-doc/src/**/*.ts\" --coverage-directory=coverage/addon-doc"
             }
         },
         "publish": {

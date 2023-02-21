@@ -32,7 +32,7 @@
             "executor": "nx:run-commands",
             "outputs": ["coverage/addon-editor"],
             "options": {
-                "command": "jest --testMatch '**/projects/addon-editor/**/*.spec.ts' jest --testMatch '**/projects/addon-editor/**/*.spec.ts' --collect-coverage --collect-coverage-from '**/projects/addon-editor/**/*.ts' --coverage-directory=coverage/addon-editor"
+                "command": "jest --testMatch \"**/projects/addon-editor/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/addon-editor/**/*.ts\" --coverage-directory=coverage/addon-editor"
             }
         },
         "publish": {

@@ -25,7 +25,7 @@
             "executor": "nx:run-commands",
             "outputs": ["coverage/addon-charts"],
             "options": {
-                "command": "jest --testMatch '**/projects/addon-charts/**/*.spec.ts' --collect-coverage --collect-coverage-from '**/projects/addon-charts/**/*.ts' --coverage-directory=coverage/addon-charts"
+                "command": "jest --testMatch \"**/projects/addon-charts/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/addon-charts/**/*.ts\" --coverage-directory=coverage/addon-charts"
             }
         },
         "publish": {

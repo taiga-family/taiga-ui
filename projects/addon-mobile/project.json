@@ -25,7 +25,7 @@
             "executor": "nx:run-commands",
             "outputs": ["coverage/addon-mobile"],
             "options": {
-                "command": "jest --testMatch '**/projects/addon-mobile/**/*.spec.ts' jest --testMatch '**/projects/addon-mobile/**/*.spec.ts' --collect-coverage --collect-coverage-from '**/projects/addon-mobile/**/*.ts' --coverage-directory=coverage/addon-mobile"
+                "command": "jest --testMatch \"**/projects/addon-mobile/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/addon-mobile/**/*.ts\" --coverage-directory=coverage/addon-mobile"
             }
         },
         "publish": {
