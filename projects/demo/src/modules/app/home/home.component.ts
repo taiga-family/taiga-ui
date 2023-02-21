@@ -26,6 +26,7 @@ export class HomeComponent {
     readonly main = import('./examples/main.md?raw');
     readonly addons = import('./examples/addons.md?raw');
     readonly nxAdd = import('./examples/nx-add.md?raw');
+    readonly nxMigrate = import('./examples/nx-migrate.md?raw');
 
     readonly customGlobalStyle = import(
         '../../../../../styles/taiga-ui-global.less?raw'
