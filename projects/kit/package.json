@@ -13,8 +13,8 @@
     "repository": "https://github.com/tinkoff/taiga-ui",
     "license": "Apache-2.0",
     "dependencies": {
-        "@ng-web-apis/intersection-observer": "^3.0.0",
-        "text-mask-core": "^5.1.2"
+        "@ng-web-apis/intersection-observer": "3.0.0",
+        "text-mask-core": "5.1.2"
     },
     "peerDependencies": {
         "@angular/common": ">=12.0.0",

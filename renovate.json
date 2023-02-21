@@ -1,7 +1,7 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "baseBranches": ["main"],
-    "enabledManagers": ["npm"],
+    "enabledManagers": ["npm", "github-actions"],
     "fetchReleaseNotes": false,
     "internalChecksFilter": "strict",
     "branchConcurrentLimit": 3,
@@ -16,7 +16,7 @@
     "separateMinorPatch": false,
     "dependencyDashboard": false,
     "dependencyDashboardApproval": false,
-    "rangeStrategy": "bump",
+    "rangeStrategy": "pin",
     "branchPrefix": "renovate/",
     "timezone": "Europe/Moscow",
     "onboarding": false,
@@ -66,8 +66,8 @@
             ]
         },
         {
-            "matchUpdateTypes": ["major", "minor", "patch"],
-            "matchPackageNames": ["typescript", "tslib"],
+            "matchUpdateTypes": ["major", "minor"],
+            "matchPackageNames": ["typescript"],
             "enabled": false
         },
         {
