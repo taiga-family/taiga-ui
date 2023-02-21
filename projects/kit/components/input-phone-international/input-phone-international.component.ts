@@ -26,12 +26,11 @@ import {
 import {
     TUI_MASK_SYMBOLS_REGEXP,
     TUI_NON_DIGITS_REGEXP,
-    TUI_SVG_OPTIONS,
+    TuiFlagPipe,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeM,
     TuiSizeS,
-    TuiSvgOptions,
 } from '@taiga-ui/core';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_ARROW} from '@taiga-ui/kit/components/arrow';
@@ -57,6 +56,8 @@ import {tuiExtractValueFromEvent} from './utils/extract-value-from-event';
     providers: [
         tuiAsFocusableItemAccessor(TuiInputPhoneInternationalComponent),
         tuiAsControl(TuiInputPhoneInternationalComponent),
+        // TODO: for backward compatibility only. Drop in v4.0
+        TuiFlagPipe,
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
@@ -69,8 +70,6 @@ export class TuiInputPhoneInternationalComponent
 
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;
-
-    private readonly staticPath: string | null = null;
 
     @Input('countryIsoCode')
     @tuiDefaultProp()
@@ -103,17 +102,16 @@ export class TuiInputPhoneInternationalComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(TUI_SVG_OPTIONS) {path}: TuiSvgOptions,
         @Inject(TUI_COUNTRIES)
         readonly countriesNames$: Observable<Record<TuiCountryIsoCode, string>>,
         @Inject(TUI_COUNTRIES_MASKS)
         readonly countriesMasks: Record<TuiCountryIsoCode, string>,
         @Inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS)
         private readonly options: TuiInputPhoneInternationalOptions,
+        @Inject(TuiFlagPipe)
+        private readonly flagPipe: TuiFlagPipe,
     ) {
         super(control, changeDetectorRef);
-
-        this.staticPath = path('tuiIcon').replace('tuiIcon.svg#tuiIcon', '');
     }
 
     get nativeFocusableElement(): HTMLElement | null {
@@ -142,6 +140,10 @@ export class TuiInputPhoneInternationalComponent
         );
     }
 
+    /**
+     * @deprecated use `<img [src]="countryIsoCode | tuiFlagPipe" />`
+     * TODO drop in v4.0
+     */
     get countryFlagPath(): string {
         return this.getFlagPath(this.countryIsoCode);
     }
@@ -173,24 +175,12 @@ export class TuiInputPhoneInternationalComponent
     readonly isoToCountryCodeMapper: TuiMapper<TuiCountryIsoCode, string> = item =>
         this.isoToCountryCode(item);
 
+    /**
+     * @deprecated use `<img [src]="countryIsoCode | tuiFlagPipe" />`
+     * TODO drop in v4.0
+     */
     getFlagPath(code: TuiCountryIsoCode): string {
-        switch (code) {
-            case TuiCountryIsoCode.BL:
-            case TuiCountryIsoCode.BQ:
-            case TuiCountryIsoCode.CW:
-            case TuiCountryIsoCode.GF:
-            case TuiCountryIsoCode.GP:
-            case TuiCountryIsoCode.MF:
-            case TuiCountryIsoCode.MQ:
-            case TuiCountryIsoCode.NC:
-            case TuiCountryIsoCode.RE:
-            case TuiCountryIsoCode.YT:
-                return `${this.staticPath}${TuiCountryIsoCode.FR}.png`;
-            case TuiCountryIsoCode.SX:
-                return `${this.staticPath}${TuiCountryIsoCode.NL}.png`;
-            default:
-                return `${this.staticPath}${code}.png`;
-        }
+        return this.flagPipe.transform(code);
     }
 
     onItemClick(isoCode: TuiCountryIsoCode): void {

@@ -52,7 +52,7 @@
                 <img
                     alt=""
                     class="t-country-item-flag"
-                    [src]="getFlagPath(item)"
+                    [src]="item | tuiFlag"
                 />
                 <span class="t-country-item-name">
                     {{ countriesNames[item] }}
@@ -69,7 +69,7 @@
         <img
             class="t-flag"
             [alt]="countriesNames[countryIsoCode]"
-            [src]="countryFlagPath"
+            [src]="countryIsoCode | tuiFlag"
         />
     </ng-template>
 
