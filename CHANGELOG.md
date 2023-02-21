@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.78.0](https://github.com/tinkoff/taiga-ui/compare/v2.77.0...v2.78.0) (2023-02-21)
+
+### Bug Fixes
+
+- **kit:** `TabsWithMore` properly calculate overflow ([#3696](https://github.com/tinkoff/taiga-ui/issues/3696))
+  ([602d4c5](https://github.com/tinkoff/taiga-ui/commit/602d4c54bc08e426e58e03f6b9763a5458b2960b))
+
 ## [2.77.0](https://github.com/tinkoff/taiga-ui/compare/v2.76.0...v2.77.0) (2023-02-15)
 
 ### Features
