@@ -38,7 +38,7 @@
             "executor": "nx:run-commands",
             "outputs": ["coverage/cdk"],
             "options": {
-                "command": "jest --testMatch '**/projects/cdk/**/*.spec.ts' --collect-coverage --collect-coverage-from '**/projects/cdk/**/*.ts' --coverage-directory=coverage/cdk",
+                "command": "jest --testMatch \"**/projects/cdk/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/cdk/**/*.ts\" --coverage-directory=coverage/cdk",
                 "forwardAllArgs": true
             },
             "dependsOn": [

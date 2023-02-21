@@ -10,7 +10,7 @@
             "executor": "nx:run-commands",
             "outputs": ["coverage/i18n"],
             "options": {
-                "command": "jest --testMatch '**/projects/eslint-plugin/**/*.spec.ts'",
+                "command": "jest --testMatch \"**/projects/eslint-plugin/**/*.spec.ts\"",
                 "forwardAllArgs": true
             }
         },

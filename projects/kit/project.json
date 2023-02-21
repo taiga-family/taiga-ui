@@ -25,7 +25,7 @@
             "executor": "nx:run-commands",
             "outputs": ["coverage/kit"],
             "options": {
-                "command": "jest --testMatch '**/projects/kit/**/*.spec.ts' jest --testMatch '**/projects/kit/**/*.spec.ts' --collect-coverage --collect-coverage-from '**/projects/kit/**/*.ts' --coverage-directory=coverage/kit"
+                "command": "jest --testMatch \"**/projects/kit/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/kit/**/*.ts\" --coverage-directory=coverage/kit"
             }
         },
         "publish": {
