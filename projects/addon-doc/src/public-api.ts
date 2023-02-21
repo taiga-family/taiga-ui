@@ -18,6 +18,7 @@ export * from './components/example/example.component';
 export * from './components/example/example.module';
 export * from './components/example/example-capitalize.pipe';
 export * from './components/example/example-get-tabs.pipe';
+export * from './components/example/example-options';
 export * from './components/language-switcher/language-switcher.component';
 export * from './components/language-switcher/language-switcher.module';
 export * from './components/main/main.component';

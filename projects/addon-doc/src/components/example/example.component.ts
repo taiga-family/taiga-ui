@@ -11,12 +11,13 @@ import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
 
 import {TuiCodeEditor} from '../../interfaces/code-editor';
-import {TUI_EXAMPLE_PRIMARY_FILE_NAME, TuiDocExample} from '../../interfaces/page';
+import {TuiDocExample} from '../../interfaces/page';
 import {TUI_DOC_CODE_ACTIONS} from '../../tokens/code-actions';
 import {TUI_DOC_CODE_EDITOR} from '../../tokens/code-editor';
 import {TUI_DOC_EXAMPLE_CONTENT_PROCESSOR} from '../../tokens/example-content-processor';
 import {TUI_DOC_EXAMPLE_TEXTS} from '../../tokens/i18n';
 import {tuiRawLoadRecord} from '../../utils/raw-load-record';
+import {TUI_DOC_EXAMPLE_OPTIONS, TuiDocExampleOptions} from './example-options';
 
 @Component({
     selector: 'tui-doc-example',
@@ -80,14 +81,11 @@ export class TuiDocExampleComponent {
         @Inject(Router) private readonly router: Router,
         @Inject(ActivatedRoute) private readonly route: ActivatedRoute,
         @Inject(NgLocation) private readonly ngLocation: NgLocation,
+        @Inject(TUI_DOC_EXAMPLE_OPTIONS) private readonly options: TuiDocExampleOptions,
     ) {}
 
     readonly visible = (files: Record<string, string>): boolean =>
-        Boolean(
-            this.codeEditor &&
-                files[TUI_EXAMPLE_PRIMARY_FILE_NAME.TS] &&
-                files[TUI_EXAMPLE_PRIMARY_FILE_NAME.HTML],
-        );
+        Boolean(this.codeEditor && this.options.codeEditorVisibilityHandler(files));
 
     copyExampleLink(): void {
         const hashPosition = this.location.href.indexOf('#');
