@@ -40,7 +40,7 @@ export const MIGRATION_WARNINGS: readonly MigrationWarning[] = [
     {
         name: `TuiPluralizePipeModule`,
         moduleSpecifier: `@taiga-ui/core`,
-        message: `TuiPluralizePipeModule has been deleted in 3.0, please use use Angular built-in pipe https://angular.io/api/common/I18nPluralPipe `,
+        message: `TuiPluralizePipeModule has been deleted in 3.0, please use Angular built-in pipe https://angular.io/api/common/I18nPluralPipe`,
     },
     {
         name: `TUI_DEFAULT_COLOR_HANDLER`,
@@ -95,7 +95,7 @@ export const MIGRATION_WARNINGS: readonly MigrationWarning[] = [
     {
         name: `TuiCarouselModule`,
         moduleSpecifier: `@taiga-ui/proprietary-core`,
-        message: `Proprietary Carousel is old and has different API. Use new version of the same module from @taiga-ui/kit. Also, check new API: https://taiga-ui.dev/components/carousel/API`,
+        message: `Proprietary Carousel is outdated and has different API. Use new version of the same module from @taiga-ui/kit. Also, check new API: https://taiga-ui.dev/components/carousel/API`,
     },
     {
         name: `TUI_EDITOR_STYLES`,
