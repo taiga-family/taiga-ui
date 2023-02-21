@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.19.0](https://github.com/tinkoff/taiga-ui/compare/v3.18.0...v3.19.0) (2023-02-21)
+
+### Features
+
+- **addon-doc:** new `TUI_DOC_EXAMPLE_OPTIONS` DI-token ([#3729](https://github.com/tinkoff/taiga-ui/issues/3729))
+  ([705e36a](https://github.com/tinkoff/taiga-ui/commit/705e36ab1346ebe48aee6402d20b4cc741207399))
+- **addon-doc:** night mode toggle redesign ([#3702](https://github.com/tinkoff/taiga-ui/issues/3702))
+  ([e5d9955](https://github.com/tinkoff/taiga-ui/commit/e5d9955d6b253c8d52550b0b7bc121dce5576ee5))
+- **addon-editor:** add `highlight` extension ([#3688](https://github.com/tinkoff/taiga-ui/issues/3688))
+  ([6d27db4](https://github.com/tinkoff/taiga-ui/commit/6d27db4eeee3c441a59b9b0203b652e4d26e7847))
+- **core:** implement `tuiTextfieldAppearance` directive ([#3007](https://github.com/tinkoff/taiga-ui/issues/3007))
+  ([87714f5](https://github.com/tinkoff/taiga-ui/commit/87714f519a6335f2696c177fe6b9ee07b49f1bba))
+- **core:** new `tuiFlag` pipe ([#3725](https://github.com/tinkoff/taiga-ui/issues/3725))
+  ([af78ec0](https://github.com/tinkoff/taiga-ui/commit/af78ec05af3a786bcc4be5b333c4917449ca083b))
+- **kit:** add routable dialog ([#3369](https://github.com/tinkoff/taiga-ui/issues/3369))
+  ([daadcab](https://github.com/tinkoff/taiga-ui/commit/daadcab6594f9b9a6076bbc4c94bc00622197975))
+
+### Bug Fixes
+
+- **addon-editor:** do not inherit previous text style for heading
+  ([#3695](https://github.com/tinkoff/taiga-ui/issues/3695))
+  ([91949f9](https://github.com/tinkoff/taiga-ui/commit/91949f96f19b8d44623baa6cc77d52afc6ba4bde))
+- **cdk:** correct schematics' messages ([#3734](https://github.com/tinkoff/taiga-ui/issues/3734))
+  ([4452896](https://github.com/tinkoff/taiga-ui/commit/4452896798c63ee459a9e48ee25bb2372baaa4d2))
+- **i18n:** correct translate for `indent/outdent` ([#3711](https://github.com/tinkoff/taiga-ui/issues/3711))
+  ([f7e2357](https://github.com/tinkoff/taiga-ui/commit/f7e235749b8ee002242f8fea3be9778d0ff33bfa))
+- **kit:** `InputPhoneInternational` after changing country the mask does not render
+  ([#3596](https://github.com/tinkoff/taiga-ui/issues/3596))
+  ([0f86ec9](https://github.com/tinkoff/taiga-ui/commit/0f86ec94b7c790b2dd60e1637b0d91cad0d6dfa7))
+- **kit:** `TabsWithMore` properly calculate overflow ([#3697](https://github.com/tinkoff/taiga-ui/issues/3697))
+  ([da6fde0](https://github.com/tinkoff/taiga-ui/commit/da6fde09937aca78cca02272859b16922b64c9a4))
+- **kit:** set `pointer-events: none` by readonly state for checkbox
+  ([#3712](https://github.com/tinkoff/taiga-ui/issues/3712))
+  ([a12f1fc](https://github.com/tinkoff/taiga-ui/commit/a12f1fcebbbd3b035de6e10eb405cd2790654866))
+
 ## [3.18.0](https://github.com/tinkoff/taiga-ui/compare/v3.17.0...v3.18.0) (2023-02-15)
 
 ### Features
