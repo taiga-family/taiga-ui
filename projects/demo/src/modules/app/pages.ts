@@ -936,6 +936,12 @@ export const pages: TuiDocPages = [
                 keywords: `editor, paste image, tool, wysiwyg, редактор, текст, html, rich, text`,
                 route: `/editor/custom-tool/paste-image`,
             },
+            {
+                section: $localize`Editor`,
+                title: `Color picker`,
+                keywords: `editor, custom color picker, color picker, tool, wysiwyg, редактор, выбрать цвет, html, rich, text`,
+                route: `/editor/custom-tool/color-picker`,
+            },
         ],
     },
     {
