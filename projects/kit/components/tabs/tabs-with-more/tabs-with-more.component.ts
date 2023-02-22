@@ -245,10 +245,6 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     }
 
     private updateActiveItemIndex(activeItemIndex: number): void {
-        if (this.activeItemIndex === activeItemIndex) {
-            return;
-        }
-
         this.activeItemIndex = activeItemIndex;
         this.activeItemIndexChange.emit(activeItemIndex);
         this.maxIndex = this.getMaxIndex();
