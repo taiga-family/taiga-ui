@@ -10,6 +10,8 @@ export class TuiDropdownHostDirective extends TuiRectAccessor {
     @Input()
     tuiDropdownHost?: HTMLElement;
 
+    readonly type = 'dropdown';
+
     getClientRect(): ClientRect {
         return this.tuiDropdownHost?.getBoundingClientRect() || EMPTY_CLIENT_RECT;
     }

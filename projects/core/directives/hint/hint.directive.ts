@@ -19,6 +19,7 @@ import {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiHintService} from '@taiga-ui/core/services';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
+// eslint-disable-next-line import/no-cycle
 import {TUI_HINT_COMPONENT} from './hint.providers';
 import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 
@@ -48,13 +49,12 @@ export class TuiHintDirective<C>
     @tuiDefaultProp()
     tuiHintAppearance: string | null = null;
 
+    readonly type = 'hint';
+
     constructor(
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
         @Inject(PolymorpheusComponent)
-        readonly component: PolymorpheusComponent<
-            Record<string, any>,
-            Record<string, any>
-        >,
+        readonly component: PolymorpheusComponent<unknown, any>,
         @Inject(TuiHintService) private readonly hintService: TuiHintService,
         @Inject(TUI_HINT_OPTIONS) private readonly options: TuiHintOptions,
         @Optional()

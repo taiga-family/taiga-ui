@@ -1,4 +1,5 @@
 import {Directive, Inject, Input} from '@angular/core';
+import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
 import {
     tuiAsPositionAccessor,
     TuiPositionAccessor,
@@ -17,7 +18,7 @@ import {TuiDropdownPositionDirective} from './dropdown-position.directive';
         tuiAsPositionAccessor(TuiDropdownPositionSidedDirective),
     ],
 })
-export class TuiDropdownPositionSidedDirective implements TuiPositionAccessor {
+export class TuiDropdownPositionSidedDirective extends TuiPositionAccessor {
     private previous = this.options.direction || 'bottom';
 
     @Input()
@@ -26,13 +27,16 @@ export class TuiDropdownPositionSidedDirective implements TuiPositionAccessor {
     @Input()
     tuiDropdownSidedOffset = 4;
 
+    readonly type = 'dropdown';
+
     constructor(
         @Inject(TUI_DROPDOWN_OPTIONS) private readonly options: TuiDropdownOptions,
         @Inject(TUI_VIEWPORT) private readonly viewport: TuiRectAccessor,
-        @Inject(TuiRectAccessor) private readonly accessor: TuiRectAccessor,
         @Inject(TuiDropdownPositionDirective)
-        private readonly vertical: TuiPositionAccessor,
-    ) {}
+        private readonly vertical: TuiDropdownPositionDirective,
+    ) {
+        super();
+    }
 
     getPosition(rect: ClientRect): TuiPoint {
         if (this.tuiDropdownSided === false) {
@@ -40,7 +44,7 @@ export class TuiDropdownPositionSidedDirective implements TuiPositionAccessor {
         }
 
         const {height, width} = rect;
-        const hostRect = this.accessor.getClientRect();
+        const hostRect = this.vertical.accessor?.getClientRect() ?? EMPTY_CLIENT_RECT;
         const viewport = this.viewport.getClientRect();
         const {align, direction, minHeight, offset} = this.options;
         const available = {

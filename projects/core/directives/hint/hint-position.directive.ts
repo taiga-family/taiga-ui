@@ -1,7 +1,8 @@
 import {Directive, Inject, Input} from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
+import {EMPTY_CLIENT_RECT, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
 import {
     tuiAsPositionAccessor,
+    tuiFallbackRectAccessor,
     TuiPositionAccessor,
     TuiRectAccessor,
 } from '@taiga-ui/core/abstract';
@@ -9,6 +10,7 @@ import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core/constants';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {TuiHintDirection, TuiPoint} from '@taiga-ui/core/types';
 
+import {TuiHintDirective} from './hint.directive';
 import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 
 const OFFSET = 8;
@@ -20,7 +22,7 @@ const LEFT = 1;
     selector: '[tuiHint]:not([tuiHintCustomPosition])',
     providers: [tuiAsPositionAccessor(TuiHintPositionDirective)],
 })
-export class TuiHintPositionDirective implements TuiPositionAccessor {
+export class TuiHintPositionDirective extends TuiPositionAccessor {
     private readonly points: Record<TuiHintDirection, [number, number]> =
         TUI_HINT_DIRECTIONS.reduce(
             (acc, direction) => ({...acc, [direction]: [0, 0]}),
@@ -31,15 +33,20 @@ export class TuiHintPositionDirective implements TuiPositionAccessor {
     @tuiDefaultProp()
     direction: TuiHintOptions['direction'] = this.options.direction;
 
+    readonly type = 'hint';
+
     constructor(
         @Inject(TUI_HINT_OPTIONS) private readonly options: TuiHintOptions,
         @Inject(TUI_VIEWPORT) private readonly viewport: TuiRectAccessor,
-        @Inject(TuiRectAccessor) private readonly accessor: TuiRectAccessor,
-    ) {}
+        @Inject(TuiHintDirective) private readonly directive: TuiRectAccessor,
+        @Inject(TuiRectAccessor) private readonly accessors: readonly TuiRectAccessor[],
+    ) {
+        super();
+    }
 
     // eslint-disable-next-line max-statements
     getPosition({width, height}: ClientRect): TuiPoint {
-        const hostRect = this.accessor.getClientRect();
+        const hostRect = this.accessor?.getClientRect() ?? EMPTY_CLIENT_RECT;
         const leftCenter = hostRect.left + hostRect.width / 2;
         const topCenter = hostRect.top + hostRect.height / 2;
 
@@ -80,6 +87,11 @@ export class TuiHintPositionDirective implements TuiPositionAccessor {
         );
 
         return this.points[direction || this.fallback];
+    }
+
+    @tuiPure
+    private get accessor(): TuiRectAccessor | undefined {
+        return tuiFallbackRectAccessor('hint')(this.accessors, this.directive);
     }
 
     private get fallback(): TuiHintDirection {

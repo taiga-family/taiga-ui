@@ -1,6 +1,13 @@
 import {ChangeDetectionStrategy, Component, HostBinding} from '@angular/core';
 import {TuiDestroyService, TuiHoveredService} from '@taiga-ui/cdk';
-import {tuiFadeIn, TuiHintComponent, TuiPositionService} from '@taiga-ui/core';
+import {
+    tuiFadeIn,
+    TuiHintComponent,
+    TuiHintDirective,
+    tuiPositionAccessorFor,
+    TuiPositionService,
+    tuiRectAccessorFor,
+} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-line-clamp-box',
@@ -9,7 +16,13 @@ import {tuiFadeIn, TuiHintComponent, TuiPositionService} from '@taiga-ui/core';
     `,
     styleUrls: ['./line-clamp-box.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService, TuiPositionService, TuiHoveredService],
+    providers: [
+        TuiDestroyService,
+        TuiPositionService,
+        TuiHoveredService,
+        tuiPositionAccessorFor('hint'),
+        tuiRectAccessorFor('hint', TuiHintDirective),
+    ],
     animations: [tuiFadeIn],
 })
 export class TuiLineClampBoxComponent extends TuiHintComponent {

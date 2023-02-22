@@ -7,7 +7,7 @@ import {
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
-import {merge, Observable, of, timer} from 'rxjs';
+import {merge, of, timer} from 'rxjs';
 import {
     debounce,
     distinctUntilChanged,
@@ -17,14 +17,12 @@ import {
     switchMap,
 } from 'rxjs/operators';
 
-import {TuiHintHoverDirective} from './hint-hover.directive';
-
 @Directive({
     selector: '[tuiHintDescribe]',
     providers: [tuiAsDriver(TuiHintDescribeDirective)],
 })
 export class TuiHintDescribeDirective extends TuiDriver {
-    private readonly focus$ = tuiTypedFromEvent(this.documentRef, 'keydown', {
+    private readonly stream$ = tuiTypedFromEvent(this.documentRef, 'keydown', {
         capture: true,
     }).pipe(
         switchMap(() =>
@@ -42,14 +40,13 @@ export class TuiHintDescribeDirective extends TuiDriver {
         tuiZoneOptimized(this.ngZone),
     );
 
-    private readonly stream$ = merge(this.hover$, this.focus$);
-
     @Input()
-    tuiHintDescribe = '';
+    tuiHintDescribe: string | '' = '';
+
+    readonly type = 'hint';
 
     constructor(
         @Inject(NgZone) private readonly ngZone: NgZone,
-        @Inject(TuiHintHoverDirective) private readonly hover$: Observable<boolean>,
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
     ) {

@@ -9,6 +9,7 @@ export const TUI_VIEWPORT = new InjectionToken<TuiRectAccessor>(
             const windowRef = inject(WINDOW);
 
             return {
+                type: `viewport`,
                 getClientRect() {
                     return {
                         top: 0,

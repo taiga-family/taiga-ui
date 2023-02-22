@@ -10,6 +10,8 @@ export class TuiHintHostDirective extends TuiRectAccessor {
     @Input()
     tuiHintHost?: HTMLElement;
 
+    readonly type = 'hint';
+
     getClientRect(): ClientRect {
         return this.tuiHintHost?.getBoundingClientRect() || EMPTY_CLIENT_RECT;
     }
