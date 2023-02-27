@@ -16,12 +16,15 @@ export class TuiCarouselExample4 {
 
     get background(): string {
         switch (this.index) {
-            case 0:
+            case 0: {
                 return 'url(https://cdn.tvc.ru/pictures/mood/bw/194/22.jpg)';
-            case 1:
+            }
+            case 1: {
                 return 'url(https://ic.pics.livejournal.com/ruhtal/6943012/12468/12468_900.jpg)';
-            default:
+            }
+            default: {
                 return 'url(https://cdn.motor1.com/images/mgl/28bxz/s1/ford-carousel.jpg)';
+            }
         }
     }
 

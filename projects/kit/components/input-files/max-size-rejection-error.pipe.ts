@@ -22,7 +22,7 @@ export class TuiMaxSizeRejectionErrorPipe implements PipeTransform {
         return combineLatest([this.inputFileTexts$, this.units$]).pipe(
             map(
                 ([{maxSizeRejectionReason}, units]) =>
-                    maxSizeRejectionReason + tuiFormatSize(units, maxFileSize),
+                    `${maxSizeRejectionReason}${tuiFormatSize(units, maxFileSize) ?? ``}`,
             ),
         );
     }

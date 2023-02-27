@@ -4,7 +4,8 @@
         "rootDir": ".",
         "baseUrl": ".",
         "strict": false,
-        "incremental": true
+        "incremental": true,
+        "strictNullChecks": true
     },
     "include": ["projects/**/*.ts", "scripts", "setup-jest.ts", "jest.config.ts", "*.spec.ts", "*.cy.ts"],
     "exclude": ["**/node_modules", "*.js"]

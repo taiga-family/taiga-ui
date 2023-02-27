@@ -21,17 +21,22 @@ export function tuiIsNativeKeyboardFocusable(element: Element): boolean {
     switch (element.tagName) {
         case `BUTTON`:
         case `SELECT`:
-        case `TEXTAREA`:
+        case `TEXTAREA`: {
             return true;
+        }
         case `VIDEO`:
-        case `AUDIO`:
+        case `AUDIO`: {
             return element.hasAttribute(`controls`);
-        case `INPUT`:
+        }
+        case `INPUT`: {
             return element.getAttribute(`type`) !== `hidden`;
+        }
         case `A`:
-        case `LINK`:
+        case `LINK`: {
             return element.hasAttribute(`href`);
-        default:
+        }
+        default: {
             return false;
+        }
     }
 }

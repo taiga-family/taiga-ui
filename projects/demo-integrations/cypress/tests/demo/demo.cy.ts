@@ -26,6 +26,10 @@ describe(`Demo`, () => {
                 }
 
                 cy.get(`tui-doc-example`).each((example, index) => {
+                    if (tuiComponentsExcluded(path, index + 1)) {
+                        return;
+                    }
+
                     cy.wrap(example)
                         .find(`.t-example`)
                         .tuiFindByExampleId()
@@ -43,15 +47,12 @@ describe(`Demo`, () => {
                             );
                     }
 
-                    return tuiComponentsExcluded(path, index + 1)
-                        ? cy.get(`@example`)
-                        : cy
-                              .get(`@example`)
-                              .tuiWaitBeforeAction()
-                              .wait(Cypress.env(`waitBeforeScreenshotComponents`) ?? 50, {
-                                  log: false,
-                              })
-                              .matchImageSnapshot(`${path}/${index + 1}`);
+                    cy.get(`@example`)
+                        .wait(Cypress.env(`waitBeforeScreenshotComponents`) ?? 50, {
+                            log: false,
+                        })
+                        .tuiWaitBeforeAction()
+                        .matchImageSnapshot(`${path}/${index + 1}`);
                 });
             });
         });

@@ -31,19 +31,19 @@ const selectExclusions: Record<string, readonly number[]> = {
 const makeDemoSnapshot = (
     path: string,
     stepIndex: number,
-    $input: JQuery<HTMLElement>,
+    $input: JQuery,
     optionIndex: number,
 ): void => {
     cy.wrap($input, {log: false})
         .parents(`table.t-table tr`)
         .find(`[automation-id="tui-documentation__property-name"]`)
         .then(propertyName$ => propertyName$.text().trim())
-        .then(property => {
-            return cy
+        .then(property =>
+            cy
                 .get(`#demo-content`)
                 .first()
-                .matchImageSnapshot(`${path}/${stepIndex}-${property}-${optionIndex}`);
-        });
+                .matchImageSnapshot(`${path}/${stepIndex}-${property}-${optionIndex}`),
+        );
 };
 
 describe(`Deep`, () => {
@@ -76,7 +76,7 @@ describe(`Deep`, () => {
                             .eq(optionIndex)
                             .click({force: true});
 
-                        return makeDemoSnapshot(path, counter++, $select, optionIndex);
+                        makeDemoSnapshot(path, counter++, $select, optionIndex);
                     })
                     .wrap($select, {log: false})
                     .click()
@@ -93,12 +93,12 @@ describe(`Deep`, () => {
                 )
                 .each((toggle$, index) => {
                     if (toggleExclusions[path]?.includes(index)) {
-                        return cy.wrap(toggle$, {log: false});
+                        cy.wrap(toggle$, {log: false});
+                    } else {
+                        cy.wrap(toggle$, {log: false}).click();
+
+                        makeDemoSnapshot(path, counter++, toggle$, 0);
                     }
-
-                    cy.wrap(toggle$, {log: false}).click();
-
-                    return makeDemoSnapshot(path, counter++, toggle$, 0);
                 });
         });
     }

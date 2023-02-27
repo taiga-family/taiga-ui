@@ -64,12 +64,15 @@ export class TuiPrimitiveCheckboxComponent {
 
     get appearance(): string {
         switch (this.value) {
-            case false:
+            case false: {
                 return this.options.appearances.unchecked;
-            case true:
+            }
+            case true: {
                 return this.options.appearances.checked;
-            default:
+            }
+            default: {
                 return this.options.appearances.indeterminate;
+            }
         }
     }
 

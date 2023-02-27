@@ -282,16 +282,21 @@ describe(`InputSlider[new]`, () => {
             $implicit,
         }: TuiContextWithImplicit<number>): number | string => {
             switch ($implicit) {
-                case 100:
+                case 100: {
                     return `MAX`;
-                case 75:
+                }
+                case 75: {
                     return `Three quarters`;
-                case 50:
+                }
+                case 50: {
                     return `Middle`;
-                case 10:
+                }
+                case 10: {
                     return `TEN`;
-                default:
+                }
+                default: {
                     return $implicit;
+                }
             }
         };
 

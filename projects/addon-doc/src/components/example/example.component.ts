@@ -93,7 +93,7 @@ export class TuiDocExampleComponent {
             hashPosition > -1
                 ? this.location.href.slice(0, Math.max(0, hashPosition))
                 : this.location.href;
-        const url = `${currentUrl}#${this.id}`;
+        const url = `${currentUrl}#${this.id ?? ''}`;
 
         this.setFragmentWithoutRedirect(this.id);
         this.clipboard.copy(url);

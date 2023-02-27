@@ -27,12 +27,15 @@ export class TuiFlagPipe implements PipeTransform {
             case TuiCountryIsoCode.MQ:
             case TuiCountryIsoCode.NC:
             case TuiCountryIsoCode.RE:
-            case TuiCountryIsoCode.YT:
+            case TuiCountryIsoCode.YT: {
                 return `${this.staticPath}${TuiCountryIsoCode.FR}.png`;
-            case TuiCountryIsoCode.SX:
+            }
+            case TuiCountryIsoCode.SX: {
                 return `${this.staticPath}${TuiCountryIsoCode.NL}.png`;
-            default:
+            }
+            default: {
                 return `${this.staticPath}${countryIsoCode}.png`;
+            }
         }
     }
 }

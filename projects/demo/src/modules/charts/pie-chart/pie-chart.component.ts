@@ -65,8 +65,8 @@ export class ExampleTuiPieChartComponent {
     }
 
     format(index: number): string {
-        return `${tuiFormatNumber(this.value[index])} ${tuiGetCurrencySymbol(
-            TuiCurrency.Ruble,
-        )}`;
+        return `${tuiFormatNumber(this.value[index])} ${
+            tuiGetCurrencySymbol(TuiCurrency.Ruble) ?? ''
+        }`;
     }
 }

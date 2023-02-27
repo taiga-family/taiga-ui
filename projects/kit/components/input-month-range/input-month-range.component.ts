@@ -112,7 +112,7 @@ export class TuiInputMonthRangeComponent
     computeValue(from: string | null, to: string | null): string {
         const formattedTo = from === to && this.focused && !this.readOnly ? '' : to;
 
-        return `${from} ${CHAR_EN_DASH} ${formattedTo}`;
+        return `${from ?? ''} ${CHAR_EN_DASH} ${formattedTo ?? ''}`;
     }
 
     onValueChange(value: string): void {

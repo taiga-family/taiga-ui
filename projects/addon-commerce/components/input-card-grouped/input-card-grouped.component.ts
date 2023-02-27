@@ -357,7 +357,7 @@ export class TuiInputCardGroupedComponent
             expire = `12${expire.slice(2)}`;
         }
 
-        if (expire.slice(0, 2) === '00') {
+        if (expire.startsWith('00')) {
             expire = `01${expire.slice(2)}`;
         }
 

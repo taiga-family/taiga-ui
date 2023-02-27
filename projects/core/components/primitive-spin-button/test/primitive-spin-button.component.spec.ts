@@ -38,7 +38,7 @@ describe(`primitiveSpinButton`, () => {
     it(`emits left click if it is not disabled`, () => {
         let result: unknown = {};
 
-        component.leftClick.subscribe((voidResult: void) => {
+        component.leftClick.subscribe((voidResult: unknown) => {
             result = voidResult;
         });
 
@@ -50,7 +50,7 @@ describe(`primitiveSpinButton`, () => {
     it(`emits right click if it is not disabled`, () => {
         let result: unknown = {};
 
-        component.rightClick.subscribe((voidResult: void) => {
+        component.rightClick.subscribe((voidResult: unknown) => {
             result = voidResult;
         });
 

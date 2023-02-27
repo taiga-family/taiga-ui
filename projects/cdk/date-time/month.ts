@@ -33,15 +33,18 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
         tuiAssert.assert(TuiMonth.isValidMonthPart(month));
 
         switch (month) {
-            case TuiMonthNumber.February:
+            case TuiMonthNumber.February: {
                 return isLeapYear ? 29 : 28;
+            }
             case TuiMonthNumber.April:
             case TuiMonthNumber.June:
             case TuiMonthNumber.September:
-            case TuiMonthNumber.November:
+            case TuiMonthNumber.November: {
                 return 30;
-            default:
+            }
+            default: {
                 return 31;
+            }
         }
     }
 

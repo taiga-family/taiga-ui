@@ -7,9 +7,9 @@ import {tuiMouseDragFinishFrom} from './mouse-drag-finish-from';
 import {tuiTypedFromEvent} from './typed-from-event';
 
 export const enum TuiDragStage {
-    Start,
-    Continues,
-    End,
+    Start = 0,
+    Continues = 1,
+    End = 2,
 }
 
 export class TuiDragState {

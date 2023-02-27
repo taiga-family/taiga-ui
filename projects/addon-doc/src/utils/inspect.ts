@@ -57,13 +57,20 @@ export function tuiInspectAny<T>(data: T, depth: number): string {
     }
 
     switch (typeof data) {
-        case `string`:
+        case `string`: {
             return `'${data}'`;
+        }
         case `undefined`:
         case `number`:
         case `boolean`:
-        case `function`:
+        case `function`: {
             return String(data);
+        }
+        case `bigint`:
+        case `symbol`:
+        case `object`: {
+            break;
+        }
     }
 
     if (data instanceof RegExp) {

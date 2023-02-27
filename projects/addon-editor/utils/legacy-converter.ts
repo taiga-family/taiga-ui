@@ -42,6 +42,10 @@ function migration(element: Element): void {
                         migrateParagraph(`13px`, child);
                         break;
                     }
+
+                    default: {
+                        break;
+                    }
                 }
             } else if (child.hasAttribute(`color`)) {
                 migrateFontHighlight(child);

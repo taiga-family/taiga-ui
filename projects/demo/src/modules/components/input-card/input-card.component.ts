@@ -123,6 +123,6 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
     }
 
     onBinChange(bin: string | null): void {
-        this.alertService.open(`bin: ${bin}`).subscribe();
+        this.alertService.open(`bin: ${bin ?? ''}`).subscribe();
     }
 }

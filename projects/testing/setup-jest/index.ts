@@ -38,7 +38,8 @@ global.window.resizeTo = width => {
     global.window.dispatchEvent(resizeEvent);
 };
 
-global.URL.createObjectURL = jest.fn(blob => `${blob}`);
+// eslint-disable-next-line @typescript-eslint/no-base-to-string
+global.URL.createObjectURL = jest.fn((blob: Blob) => `${blob}`);
 global.URL.revokeObjectURL = jest.fn();
 
 Object.defineProperty(global.window, `CSS`, {value: null});

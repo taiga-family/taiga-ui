@@ -9,14 +9,14 @@ export const waitAllRequests = (alias: string): void => {
             return reqs.length ? cy.wait(alias, {log: false}) : cy.tuiWaitBeforeAction();
         })
         .then(() => getNotLoadedRequests(alias))
-        .then(reqs => {
-            return reqs.length
+        .then(reqs =>
+            reqs.length
                 ? waitAllRequests(alias)
                 : cy
                       .tuiWaitBeforeAction()
                       .then(() => getNotLoadedRequests(alias))
                       .then(async reqs =>
                           reqs.length ? waitAllRequests(alias) : Promise.resolve(),
-                      );
-        });
+                      ),
+        );
 };

@@ -8,6 +8,7 @@ process.env.TS_JEST_DISABLE_VER_CHECKER = `true`;
 
 const {compilerOptions} = require(resolve(`./tsconfig.json`));
 const maxParallel = require(`os`).cpus().length / 2;
+const baseUrl: string = compilerOptions.baseUrl ?? ``;
 
 module.exports = {
     rootDir: __dirname,
@@ -88,9 +89,7 @@ module.exports = {
      * Additionally, you can substitute captured regex groups using numbered back references.
      */
     moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-        prefix: `<rootDir>/${compilerOptions.baseUrl}/`
-            .replace(/\.\//g, `/`)
-            .replace(/\/\/+/g, `/`),
+        prefix: `<rootDir>/${baseUrl}/`.replace(/\.\//g, `/`).replace(/\/\/+/g, `/`),
     }),
 
     /**
@@ -140,4 +139,4 @@ module.exports = {
      * Run tests with specified reporters
      */
     reporters: [`default`],
-} as Config;
+} as unknown as Config;

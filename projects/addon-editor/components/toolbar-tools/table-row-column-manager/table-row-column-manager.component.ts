@@ -10,12 +10,12 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 export enum TuiTableCommands {
-    InsertColumnBefore,
-    InsertColumnAfter,
-    InsertRowBefore,
-    InsertRowAfter,
-    DeleteColumn,
-    DeleteRow,
+    InsertColumnBefore = 0,
+    InsertColumnAfter = 1,
+    InsertRowBefore = 2,
+    InsertRowAfter = 3,
+    DeleteColumn = 4,
+    DeleteRow = 5,
 }
 
 @Component({

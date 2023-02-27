@@ -15,6 +15,7 @@
  * */
 export const tuiBeInViewportAssertion: Chai.ChaiPlugin = _chai => {
     chai.Assertion.addMethod(`inViewport`, function () {
+        // eslint-disable-next-line @typescript-eslint/no-invalid-this
         const subject = this._obj;
         const {top, bottom} = subject[0].getBoundingClientRect();
 
@@ -26,6 +27,7 @@ export const tuiBeInViewportAssertion: Chai.ChaiPlugin = _chai => {
         const topBorderIsVisible = top >= 0 && top < viewportHeight;
         const bottomBorderIsVisible = bottom >= 0 && bottom < viewportHeight;
 
+        // eslint-disable-next-line @typescript-eslint/no-invalid-this
         this.assert(
             subjectOverlapsAllViewport || topBorderIsVisible || bottomBorderIsVisible,
             `expected #{this} to be in viewport`,

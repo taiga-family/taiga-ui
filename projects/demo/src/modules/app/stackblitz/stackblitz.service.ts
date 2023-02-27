@@ -69,7 +69,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
         appCompTs.styleUrls = APP_COMP_META.STYLE_URLS;
         appCompTs.className = APP_COMP_META.CLASS_NAME;
 
-        return stackblitz.openProject({
+        stackblitz.openProject({
             ...(await this.getStackblitzProjectConfig()),
             title: `${component}-${sampleId}`,
             description: `Taiga UI example of the component ${component}`,
@@ -89,7 +89,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
         {title, description, files}: Pick<Project, 'description' | 'files' | 'title'>,
         openOptions?: OpenOptions,
     ): Promise<void> {
-        return stackblitz.openProject(
+        stackblitz.openProject(
             {
                 ...(await this.getStackblitzProjectConfig()),
                 title,

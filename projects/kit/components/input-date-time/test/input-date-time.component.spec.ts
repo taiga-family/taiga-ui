@@ -354,9 +354,7 @@ describe(`InputDateTime`, () => {
                     return ``;
                 }
 
-                return (
-                    day.toString() + (time ? `${this.separator}${time.toString()}` : ``)
-                );
+                return day.toString() + (time ? `${this.separator}${time}` : ``);
             }
         }
 

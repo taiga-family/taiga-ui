@@ -65,14 +65,18 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
 
     get attrName(): string {
         switch (this.documentationPropertyMode) {
-            case 'input':
+            case 'input': {
                 return `[${this.documentationPropertyName}]`;
-            case 'output':
+            }
+            case 'output': {
                 return `(${this.documentationPropertyName})`;
-            case 'input-output':
+            }
+            case 'input-output': {
                 return `[(${this.documentationPropertyName})]`;
-            default:
+            }
+            default: {
                 return this.documentationPropertyName;
+            }
         }
     }
 

@@ -81,10 +81,12 @@ export function tuiIsElectron(four: number): boolean {
         case 4508:
         case 4844:
         case 4913:
-        case 4917:
+        case 4917: {
             return true;
-        default:
+        }
+        default: {
             return false;
+        }
     }
 }
 

@@ -8,11 +8,13 @@ export function tuiCreateDateMask(mode: TuiDateMode, separator: string): TuiText
     tuiAssert.assert(separator.length === 1, `Separator should consist of only 1 symbol`);
 
     switch (mode) {
-        case `YMD`:
+        case `YMD`: {
             return [...FOUR_DIGITS, separator, ...TWO_DIGITS, separator, ...TWO_DIGITS];
+        }
         case `MDY`:
         case `DMY`:
-        default:
+        default: {
             return [...TWO_DIGITS, separator, ...TWO_DIGITS, separator, ...FOUR_DIGITS];
+        }
     }
 }

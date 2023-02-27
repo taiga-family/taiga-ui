@@ -16,8 +16,6 @@ export class ExampleDateTimeTransformer
     }
 
     toControlValue([day, time]: [TuiDay | null, TuiTime | null]): string {
-        return day
-            ? day.toString() + (time ? `${this.separator}${time.toString()}` : ``)
-            : ``;
+        return day ? day.toString() + (time ? `${this.separator}${time}` : ``) : ``;
     }
 }

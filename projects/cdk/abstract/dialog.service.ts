@@ -22,10 +22,13 @@ export abstract class AbstractTuiDialogService<T, K = void> extends Observable<
     }
 
     open<G = void>(
+        // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
         content: PolymorpheusContent<T & TuiBaseDialogContext<K extends void ? G : K>>,
         options: Partial<T> = {},
+        // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): Observable<K extends void ? G : K> {
         return new Observable(observer => {
+            // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
             const completeWith = (result: K extends void ? G : K): void => {
                 observer.next(result);
                 observer.complete();

@@ -12,15 +12,20 @@ export function bumpVersion(version: string, mode: TuiReleaseMode): string {
     }
 
     switch (mode) {
-        case `major`:
+        case `major`: {
             return `${rc === -1 ? ++major : major}.0.0`;
-        case `minor`:
+        }
+        case `minor`: {
             return `${major}.${++minor}.0`;
-        case `patch`:
+        }
+        case `patch`: {
             return `${major}.${minor}.${++patch}`;
-        case `prerelease`:
+        }
+        case `prerelease`: {
             return `${major}.0.0-rc.${++rc}`;
-        default:
+        }
+        default: {
             return version;
+        }
     }
 }

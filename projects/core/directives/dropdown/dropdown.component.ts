@@ -139,11 +139,20 @@ export class TuiDropdownComponent implements OnDestroy {
         const {limitWidth} = this.options;
 
         switch (limitWidth) {
-            case 'min':
+            case 'min': {
                 style.minWidth = tuiPx(rect.width);
                 break;
-            case 'fixed':
+            }
+            case 'fixed': {
                 style.width = tuiPx(rect.width);
+                break;
+            }
+            case 'auto': {
+                break;
+            }
+            default: {
+                break;
+            }
         }
     }
 

@@ -48,8 +48,8 @@ export class TuiTreeExample6 {
         const flat = flatten(item);
         const result = !!map.get(flat[0]);
 
-        for (let i = 0; i < flat.length; i++) {
-            if (result !== !!map.get(flat[i])) {
+        for (const edge of flat) {
+            if (result !== !!map.get(edge)) {
                 return null;
             }
         }

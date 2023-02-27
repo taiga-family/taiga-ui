@@ -15,7 +15,10 @@ const isDryRun =
 const path = getValueByFlag<string>(`--path`, ``);
 
 (async function main(): Promise<void> {
-    const packageJson = await import(resolve(path, `package.json`));
+    const packageJson: Record<string, string> = await import(
+        resolve(path, `package.json`)
+    );
+
     const version = getValueByFlag<string>(`--customVersion`, packageJson.version);
     const versions: string[] = getAllVersions(packageJson.name);
 

@@ -95,7 +95,7 @@ export class TuiHighlightDirective implements OnChanges {
     }
 
     private setUpHighlight(): HTMLElement {
-        const highlight = this.renderer.createElement('div');
+        const highlight: HTMLElement = this.renderer.createElement('div');
         const {style} = highlight;
 
         style.background = this.tuiHighlightColor;

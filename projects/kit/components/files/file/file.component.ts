@@ -107,12 +107,15 @@ export class TuiFileComponent {
         }
 
         switch (this.state) {
-            case 'deleted':
+            case 'deleted': {
                 return 'tuiIconTrashLarge';
-            case 'error':
+            }
+            case 'error': {
                 return 'tuiIconAlertCircleLarge';
-            default:
+            }
+            default: {
                 return 'tuiIconCheckCircleLarge';
+            }
         }
     }
 
@@ -185,6 +188,6 @@ export class TuiFileComponent {
 
     @tuiPure
     private getType(file: TuiFileLike): string {
-        return `.${file.name.split('.').pop()}` || '';
+        return `.${file.name.split('.').pop() ?? ''}` || '';
     }
 }

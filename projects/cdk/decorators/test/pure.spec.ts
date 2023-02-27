@@ -98,9 +98,15 @@ describe(`tuiPure`, () => {
 
         const testObject = new TestClass();
 
+        // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
         expect(testObject.voidFn()).toEqual(undefined);
+
+        // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
         expect(testObject.voidFn()).toEqual(undefined);
+
+        // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
         expect(testObject.voidFn()).toEqual(undefined);
+
         expect(testObject.sideEffect).toEqual(1);
     });
 });

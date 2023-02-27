@@ -25,14 +25,16 @@ function processRawValue(value: string, config: TuiAutoCorrectedDatePipeConfigs)
     const {dateFormat, dateSeparator} = config;
 
     switch (value.length) {
-        case DATE_FILLER_LENGTH:
+        case DATE_FILLER_LENGTH: {
             return parseWithLimit(value, config).toString(dateFormat, dateSeparator);
-        case DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length:
+        }
+        case DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length: {
             return (
                 parseWithLimit(value, config).toString(dateFormat, dateSeparator) +
                 RANGE_SEPARATOR_CHAR
             );
-        case DATE_RANGE_FILLER_LENGTH:
+        }
+        case DATE_RANGE_FILLER_LENGTH: {
             return config.value &&
                 config.value.toString(dateFormat, dateSeparator) === value
                 ? value
@@ -43,8 +45,10 @@ function processRawValue(value: string, config: TuiAutoCorrectedDatePipeConfigs)
                           config,
                       ),
                   ).toString(dateFormat, dateSeparator);
-        default:
+        }
+        default: {
             return value;
+        }
     }
 }
 

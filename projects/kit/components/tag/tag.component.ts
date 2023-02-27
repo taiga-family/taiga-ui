@@ -182,18 +182,21 @@ export class TuiTagComponent {
         event.stopPropagation();
 
         switch (event.key.toLowerCase()) {
-            case 'enter':
+            case 'enter': {
                 event.preventDefault();
                 this.save(this.editedText || '');
                 break;
+            }
             case 'escape':
-            case 'esc':
+            case 'esc': {
                 event.preventDefault();
                 this.stopEditing();
                 this.elementRef.nativeElement.focus();
                 break;
-            default:
+            }
+            default: {
                 break;
+            }
         }
     }
 

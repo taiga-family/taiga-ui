@@ -109,10 +109,12 @@ export class TuiDropdownSelectionDirective
                     ? element.getBoundingClientRect()
                     : EMPTY_CLIENT_RECT;
             }
-            case 'word':
+            case 'word': {
                 return tuiGetWordRange(this.range).getBoundingClientRect();
-            default:
+            }
+            default: {
                 return this.range.getBoundingClientRect();
+            }
         }
     }
 

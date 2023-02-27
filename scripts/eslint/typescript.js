@@ -12,15 +12,100 @@ module.exports = {
             parser: '@typescript-eslint/parser',
             plugins: ['@typescript-eslint'],
             rules: {
+                'unicorn/switch-case-braces': ['error', 'always'],
                 '@typescript-eslint/type-annotation-spacing': 'error',
                 '@typescript-eslint/quotes': ['error', 'backtick'],
                 '@typescript-eslint/member-delimiter-style': 'error',
-                '@typescript-eslint/prefer-nullish-coalescing': 'off',
                 '@typescript-eslint/func-call-spacing': 'error',
                 '@typescript-eslint/no-useless-constructor': 'error',
                 '@typescript-eslint/no-use-before-define': 'error',
                 '@typescript-eslint/no-unused-vars': 'error',
                 '@typescript-eslint/consistent-generic-constructors': 'error',
+                '@typescript-eslint/consistent-type-definitions': 'error',
+                '@typescript-eslint/consistent-type-exports': 'error',
+                '@typescript-eslint/no-confusing-non-null-assertion': 'error',
+                '@typescript-eslint/no-unnecessary-qualifier': 'error',
+                '@typescript-eslint/no-confusing-void-expression': [
+                    'error',
+                    {
+                        ignoreArrowShorthand: true,
+                    },
+                ],
+                '@typescript-eslint/no-duplicate-enum-values': 'error',
+                '@typescript-eslint/no-extra-non-null-assertion': 'error',
+                '@typescript-eslint/no-invalid-void-type': [
+                    'error',
+                    {
+                        allowInGenericTypeArguments: true,
+                    },
+                ],
+                '@typescript-eslint/no-meaningless-void-operator': 'error',
+                '@typescript-eslint/consistent-type-assertions': [
+                    'error',
+                    {
+                        assertionStyle: 'as',
+                        objectLiteralTypeAssertions: 'allow-as-parameter',
+                    },
+                ],
+                '@typescript-eslint/no-misused-new': 'error',
+                '@typescript-eslint/no-mixed-enums': 'error',
+                '@typescript-eslint/no-namespace': [
+                    'error',
+                    {
+                        allowDeclarations: true,
+                        allowDefinitionFiles: true,
+                    },
+                ],
+                '@typescript-eslint/no-non-null-asserted-optional-chain': 'error',
+                '@typescript-eslint/no-non-null-assertion': 'error',
+                '@typescript-eslint/no-this-alias': 'error',
+                '@typescript-eslint/no-unnecessary-type-arguments': 'error',
+                '@typescript-eslint/no-unnecessary-type-assertion': 'error',
+                '@typescript-eslint/no-unnecessary-type-constraint': 'error',
+                '@typescript-eslint/no-unsafe-declaration-merging': 'error',
+                '@typescript-eslint/prefer-as-const': 'error',
+                '@typescript-eslint/prefer-enum-initializers': 'error',
+                '@typescript-eslint/prefer-for-of': 'error',
+                '@typescript-eslint/prefer-includes': 'error',
+                '@typescript-eslint/prefer-literal-enum-member': 'error',
+                '@typescript-eslint/prefer-optional-chain': 'error',
+                '@typescript-eslint/prefer-readonly': 'error',
+                '@typescript-eslint/prefer-return-this-type': 'error',
+                '@typescript-eslint/prefer-string-starts-ends-with': 'error',
+                '@typescript-eslint/restrict-plus-operands': 'error',
+                '@typescript-eslint/sort-type-constituents': 'error',
+                '@typescript-eslint/switch-exhaustiveness-check': 'error',
+                '@typescript-eslint/unified-signatures': 'error',
+                '@typescript-eslint/no-dupe-class-members': 'error',
+                '@typescript-eslint/no-extra-semi': 'error',
+                '@typescript-eslint/no-implied-eval': 'error',
+                '@typescript-eslint/no-invalid-this': 'error',
+                '@typescript-eslint/triple-slash-reference': [
+                    'error',
+                    {path: 'always', types: 'always', lib: 'always'},
+                ],
+                '@typescript-eslint/ban-types': [
+                    'error',
+                    {
+                        types: {
+                            Number: {
+                                message: 'Use number instead',
+                                fixWith: 'number',
+                            },
+
+                            String: {
+                                message: 'Use string instead',
+                                fixWith: 'string',
+                            },
+
+                            '{}': {
+                                message: 'Use Record instead',
+                                fixWith: 'Record<string, any>',
+                            },
+                        },
+                        extendDefaults: true,
+                    },
+                ],
                 'no-restricted-syntax': [
                     'error',
                     {
@@ -64,6 +149,15 @@ module.exports = {
                           ]
                         : [],
                 ),
+                // TODO: investigate / enable later
+                '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off',
+                '@typescript-eslint/prefer-readonly-parameter-types': 'off',
+                '@typescript-eslint/strict-boolean-expressions': 'off',
+                '@typescript-eslint/prefer-nullish-coalescing': 'off',
+                '@typescript-eslint/require-array-sort-compare': 'off',
+                '@typescript-eslint/no-unnecessary-condition': 'off',
+                '@typescript-eslint/no-unsafe-member-access': 'off',
+                '@typescript-eslint/no-unsafe-return': 'off',
             },
         },
         {

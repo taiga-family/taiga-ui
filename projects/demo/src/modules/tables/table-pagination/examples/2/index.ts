@@ -11,12 +11,15 @@ const customOptionContent: TuiTablePaginationOptions['sizeOptionContent'] = ({
     total,
 }) => {
     switch ($implicit) {
-        case 10:
+        case 10: {
             return 'Ten';
-        case total:
+        }
+        case total: {
             return 'Show all rows';
-        default:
+        }
+        default: {
             return $implicit;
+        }
     }
 };
 

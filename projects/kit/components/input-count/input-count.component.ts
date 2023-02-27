@@ -204,17 +204,20 @@ export class TuiInputCountComponent
     onKeydown(event: KeyboardEvent): void {
         switch (event.key) {
             case 'ArrowUp':
-            case 'Up':
+            case 'Up': {
                 this.increaseValue();
                 event.preventDefault();
                 break;
+            }
             case 'ArrowDown':
-            case 'Down':
+            case 'Down': {
                 this.decreaseValue();
                 event.preventDefault();
                 break;
-            default:
+            }
+            default: {
                 break;
+            }
         }
     }
 

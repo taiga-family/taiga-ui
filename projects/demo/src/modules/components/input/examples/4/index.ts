@@ -137,19 +137,23 @@ export class TuiInputExample4 {
         switch (value?.charAt(0)) {
             case '0':
             case '1':
-            case '2':
+            case '2': {
                 return 'https://ng-web-apis.github.io/dist/assets/images/common.svg';
+            }
             case '3':
             case '4':
-            case '5':
+            case '5': {
                 return 'https://ng-web-apis.github.io/dist/assets/images/geolocation.svg';
+            }
             case '6':
-            case '7':
+            case '7': {
                 return 'https://ng-web-apis.github.io/dist/assets/images/intersection-observer.svg';
+            }
             case '8':
             case '9':
-            default:
+            default: {
                 return 'https://ng-web-apis.github.io/dist/assets/images/payment-request.svg';
+            }
         }
     }
 

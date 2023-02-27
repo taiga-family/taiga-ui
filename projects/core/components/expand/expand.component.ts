@@ -18,10 +18,10 @@ import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
 import {TuiExpandContentDirective} from './expand-content.directive';
 
 const enum State {
-    Idle,
-    Loading,
-    Prepared,
-    Animated,
+    Idle = 0,
+    Loading = 1,
+    Prepared = 2,
+    Animated = 3,
 }
 
 const LOADER_HEIGHT = 48;

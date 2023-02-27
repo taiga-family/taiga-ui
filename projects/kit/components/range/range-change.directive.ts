@@ -88,12 +88,15 @@ export class TuiRangeChangeDirective {
         const [leftSliderRef, rightSliderRef] = this.range.slidersRefs;
 
         switch (target) {
-            case leftSliderRef.nativeElement:
+            case leftSliderRef.nativeElement: {
                 return 'left';
-            case rightSliderRef.nativeElement:
+            }
+            case rightSliderRef.nativeElement: {
                 return 'right';
-            default:
+            }
+            default: {
                 return this.findNearestActiveThumb(clientX);
+            }
         }
     }
 

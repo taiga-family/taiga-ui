@@ -22,15 +22,19 @@ export class TuiInputSliderExample5 {
         $implicit,
     }: TuiContextWithImplicit<number>): number | string => {
         switch ($implicit) {
-            case this.max:
+            case this.max: {
                 // eslint-disable-next-line @typescript-eslint/quotes
                 return "Digits can't describe my love!";
-            case this.min:
+            }
+            case this.min: {
                 return 'Just a label for min value';
-            case (this.max - this.min) / 2:
+            }
+            case (this.max - this.min) / 2: {
                 return 'Middle';
-            default:
+            }
+            default: {
                 return $implicit;
+            }
         }
     };
 }

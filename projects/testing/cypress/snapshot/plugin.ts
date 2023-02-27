@@ -6,7 +6,7 @@ import fs from 'fs';
 declare module 'cypress-image-snapshot/plugin' {
     function matchImageSnapshotPlugin(
         details: Cypress.ScreenshotDetails,
-    ): Cypress.AfterScreenshotReturnObject | void;
+    ): Cypress.AfterScreenshotReturnObject;
 }
 
 export interface TuiSnapshotPluginOptions {

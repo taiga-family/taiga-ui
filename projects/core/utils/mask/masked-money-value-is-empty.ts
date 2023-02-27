@@ -5,9 +5,11 @@ export function tuiMaskedMoneyValueIsEmpty(value: string): boolean {
         case ``:
         case CHAR_HYPHEN:
         case `,`:
-        case `${CHAR_HYPHEN},`:
+        case `${CHAR_HYPHEN},`: {
             return true;
-        default:
+        }
+        default: {
             return false;
+        }
     }
 }

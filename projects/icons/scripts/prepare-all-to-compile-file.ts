@@ -9,7 +9,7 @@ export function prepareAllToCompileFile(iconsSrc: string, entryPointTs: string):
     let exportDeclarations = ``;
 
     for (const iconPath of icons) {
-        const fileName = iconPath.split(`.`).shift();
+        const fileName = iconPath.split(`.`).shift() ?? ``;
 
         importDeclarations += `import ${fileName} from './src/${fileName}.svg';\n`;
         exportDeclarations += `${fileName}, `;

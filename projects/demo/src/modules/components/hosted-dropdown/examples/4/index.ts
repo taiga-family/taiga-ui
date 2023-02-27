@@ -35,12 +35,15 @@ export class TuiHostedDropdownExample4 {
 
     get text(): string {
         switch (this.length) {
-            case 0:
+            case 0: {
                 return 'Select';
-            case 1:
+            }
+            case 1: {
                 return this.value[0];
-            default:
+            }
+            default: {
                 return `${this.length} selected`;
+            }
         }
     }
 }
