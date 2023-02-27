@@ -15,7 +15,7 @@ import {map} from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFontStyleComponent {
-    private toolsSet: Set<TuiEditorTool> = new Set(defaultEditorTools);
+    private toolsSet = new Set<TuiEditorTool>(defaultEditorTools);
 
     @Input()
     set enabledTools(value: Set<TuiEditorTool> | readonly TuiEditorTool[]) {

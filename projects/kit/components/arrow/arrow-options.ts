@@ -41,7 +41,7 @@ export interface TuiArrowMode {
     >;
 }
 
-export const TUI_ARROW_MODE: InjectionToken<TuiArrowMode> = new InjectionToken(
+export const TUI_ARROW_MODE = new InjectionToken<TuiArrowMode>(
     `[TUI_ARROW_MODE]: Type of icon in dropdowns for interactive or disable mode`,
     {
         factory: () => ({

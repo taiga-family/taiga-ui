@@ -16,7 +16,7 @@ import {TuiCountryIsoCode, TuiLanguageName, TuiLanguageSwitcher} from '@taiga-ui
 export class TuiLanguageSwitcherComponent {
     readonly language = new FormControl(tuiCapitalizeFirstLetter(this.switcher.language));
 
-    readonly flags: Map<TuiLanguageName, TuiCountryIsoCode> = new Map([
+    readonly flags = new Map<TuiLanguageName, TuiCountryIsoCode>([
         ['chinese', TuiCountryIsoCode.CN],
         ['dutch', TuiCountryIsoCode.NL],
         ['english', TuiCountryIsoCode.GB],

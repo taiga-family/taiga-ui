@@ -125,8 +125,8 @@ export const TUI_MULTI_SELECT_TEXTS = new InjectionToken(
     },
 );
 
-export const TUI_COUNTRIES: InjectionToken<
+export const TUI_COUNTRIES = new InjectionToken<
     Observable<Record<TuiCountryIsoCode, string>>
-> = new InjectionToken(`[TUI_COUNTRIES]: Localized countries names`, {
+>(`[TUI_COUNTRIES]: Localized countries names`, {
     factory: tuiExtractI18n(`countries`),
 });

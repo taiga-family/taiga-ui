@@ -10,7 +10,7 @@ describe(`TuiForAsync directive`, () => {
 
     @Directive()
     abstract class AbstractTuiTestComponent {
-        readonly items$: Subject<string[] | null | undefined> = new Subject();
+        readonly items$ = new Subject<string[] | null | undefined>();
 
         constructor(readonly elementRef: ElementRef<HTMLElement>) {}
     }

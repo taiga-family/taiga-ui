@@ -32,7 +32,7 @@ const databaseMockData: readonly User[] = [
     encapsulation,
 })
 export class TuiComboBoxExample1 {
-    readonly search$: Subject<string | null> = new Subject();
+    readonly search$ = new Subject<string | null>();
 
     readonly items$: Observable<readonly User[] | null> = this.search$.pipe(
         filter(value => value !== null),

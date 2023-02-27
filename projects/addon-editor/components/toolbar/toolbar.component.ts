@@ -77,7 +77,7 @@ export class TuiToolbarComponent {
 
     readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
 
-    toolsSet: Set<TuiEditorTool> = new Set(defaultEditorTools);
+    toolsSet = new Set<TuiEditorTool>(defaultEditorTools);
 
     @Input()
     @tuiDefaultProp(toolsAssertion, 'Attach and TeX are not yet implemented in Editor')
