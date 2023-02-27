@@ -12,8 +12,15 @@ module.exports = {
             parser: '@typescript-eslint/parser',
             plugins: ['@typescript-eslint'],
             rules: {
+                '@typescript-eslint/type-annotation-spacing': 'error',
                 '@typescript-eslint/quotes': ['error', 'backtick'],
+                '@typescript-eslint/member-delimiter-style': 'error',
                 '@typescript-eslint/prefer-nullish-coalescing': 'off',
+                '@typescript-eslint/func-call-spacing': 'error',
+                '@typescript-eslint/no-useless-constructor': 'error',
+                '@typescript-eslint/no-use-before-define': 'error',
+                '@typescript-eslint/no-unused-vars': 'error',
+                '@typescript-eslint/consistent-generic-constructors': 'error',
                 'no-restricted-syntax': [
                     'error',
                     {

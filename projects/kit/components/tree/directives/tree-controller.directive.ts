@@ -28,7 +28,7 @@ export class TuiTreeControllerDirective<T>
 
     @Input()
     @tuiDefaultProp()
-    map: Map<T, boolean> = new Map();
+    map = new Map<T, boolean>();
 
     @Output()
     readonly toggled = new EventEmitter<T>();
