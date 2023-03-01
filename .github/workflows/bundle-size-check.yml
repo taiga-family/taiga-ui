@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
-      - run: npx nx build
+      - run: npx nx build demo
 
       - name: Run BundleMon
         continue-on-error: true
