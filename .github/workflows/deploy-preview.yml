@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
-      - run: npx nx build --base-href='/'
+      - run: npx nx build demo --base-href='/'
 
       - name: Debug output
         run: tree dist/demo/browser -P '*.html'
