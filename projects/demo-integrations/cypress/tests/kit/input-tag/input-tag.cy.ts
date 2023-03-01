@@ -26,6 +26,8 @@ describe(`InputTag`, () => {
     });
 
     it(`switch theme mode`, {responseTimeout: 30_000}, () => {
+        cy.tuiWaitBeforeScreenshot();
+
         cy.get(`tui-doc-example`)
             .tuiFindByExampleId()
             .each(($el, index) => {
