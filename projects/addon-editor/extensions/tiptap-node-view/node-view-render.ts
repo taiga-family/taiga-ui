@@ -1,6 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {Injector, Type} from '@angular/core';
 import {
+    DecorationWithType,
     Editor,
     NodeView,
     NodeViewProps,
@@ -102,7 +103,7 @@ class TuiNodeView extends NodeView<
         return this.contentDOMElement;
     }
 
-    update(node: ProseMirrorNode, decorations: Decoration[]): boolean {
+    update(node: ProseMirrorNode, decorations: DecorationWithType[]): boolean {
         if (this.options.update) {
             return this.options.update(node, decorations);
         }

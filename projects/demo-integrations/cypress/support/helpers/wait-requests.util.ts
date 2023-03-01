@@ -15,7 +15,7 @@ export const waitAllRequests = (alias: string): void => {
                 : cy
                       .tuiWaitBeforeAction()
                       .then(() => getNotLoadedRequests(alias))
-                      .then(reqs =>
+                      .then(async reqs =>
                           reqs.length ? waitAllRequests(alias) : Promise.resolve(),
                       );
         });
