@@ -16,7 +16,7 @@ describe(`Demo`, () => {
                 if (isInputNumberPage(path)) {
                     cy.tuiWaitBeforeScreenshot();
                 } else if (isTilesPage(path)) {
-                    cy.wait(10_000);
+                    cy.wait(15_000);
                 } else if (isEmbedPage(path)) {
                     cy.wait(40_000);
                 }
@@ -47,6 +47,7 @@ describe(`Demo`, () => {
                         ? cy.get(`@example`)
                         : cy
                               .get(`@example`)
+                              .tuiWaitBeforeAction()
                               .wait(Cypress.env(`waitBeforeScreenshotComponents`) ?? 50, {
                                   log: false,
                               })

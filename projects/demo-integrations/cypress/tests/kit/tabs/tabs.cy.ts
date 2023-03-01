@@ -8,6 +8,7 @@ describe(`Tabs`, () => {
             cy.get(`#complex`)
                 .tuiFindByExampleId()
                 .tuiScrollIntoView()
+                .tuiWaitBeforeScreenshot()
                 .matchImageSnapshot(`01-[wide-screen]-[no-margin-last-tab]`);
         });
 
