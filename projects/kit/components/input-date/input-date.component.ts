@@ -160,7 +160,7 @@ export class TuiInputDateComponent
     }
 
     get computedMobile(): boolean {
-        return this.isMobile && (!!this.mobileCalendar || this.options.nativePicker);
+        return this.isMobile && (!!this.mobileCalendar || this.nativePicker);
     }
 
     get nativePicker(): boolean {

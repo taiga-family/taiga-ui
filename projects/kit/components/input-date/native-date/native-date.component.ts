@@ -7,7 +7,7 @@ import {TUI_TEXTFIELD_HOST, TuiTextfieldHost} from '@taiga-ui/core';
     template: '',
     host: {
         type: 'date',
-        '[tabIndex]': 'host.focusable ? 0 : -1',
+        '[tabIndex]': '-1',
         '[value]': 'value',
         '(change)': 'onChange($event.target.value)',
         '(click.stop.silent)': '0',
@@ -31,7 +31,7 @@ export class TuiNativeDateComponent {
 
     onChange(value: string): void {
         this.host.onValueChange(
-            TuiDay.normalizeParse(value, 'YMD').toString(this.dateFormat),
+            value ? TuiDay.normalizeParse(value, 'YMD').toString(this.dateFormat) : '',
         );
     }
 }
