@@ -131,7 +131,7 @@ export class TuiInputDateComponent
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(Injector) private readonly injector: Injector,
-        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
+        @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
         @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
         @Optional()
         @Inject(TUI_MOBILE_CALENDAR)
@@ -160,7 +160,11 @@ export class TuiInputDateComponent
     }
 
     get computedMobile(): boolean {
-        return this.isMobile && !!this.mobileCalendar;
+        return this.isMobile && (!!this.mobileCalendar || this.options.nativePicker);
+    }
+
+    get nativePicker(): boolean {
+        return this.options.nativePicker;
     }
 
     get calendarIcon(): TuiInputDateOptions['icon'] {

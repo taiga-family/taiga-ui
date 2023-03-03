@@ -41,6 +41,11 @@
             [src]="src"
             (click)="onIconClick()"
         ></tui-svg>
+        <input
+            *ngIf="isMobile && nativePicker"
+            tuiDate
+            type="date"
+        />
     </ng-template>
 
     <ng-template

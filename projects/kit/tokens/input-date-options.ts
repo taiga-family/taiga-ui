@@ -7,6 +7,7 @@ export interface TuiInputDateOptions {
     readonly icon: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>>;
     readonly min: TuiDay;
     readonly max: TuiDay;
+    readonly nativePicker: boolean;
 }
 
 export const TUI_INPUT_DATE_DEFAULT_OPTIONS: TuiInputDateOptions = {
@@ -14,6 +15,7 @@ export const TUI_INPUT_DATE_DEFAULT_OPTIONS: TuiInputDateOptions = {
         $implicit === `s` ? `tuiIconCalendar` : `tuiIconCalendarLarge`,
     min: TUI_FIRST_DAY,
     max: TUI_LAST_DAY,
+    nativePicker: false,
 };
 
 export const TUI_INPUT_DATE_OPTIONS = new InjectionToken<TuiInputDateOptions>(
