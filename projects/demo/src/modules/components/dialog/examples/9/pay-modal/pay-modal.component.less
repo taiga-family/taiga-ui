@@ -1,0 +1,121 @@
+:host {
+    ::ng-deep {
+        tui-input-card-grouped {
+            width: 100% !important;
+
+            &.without-date {
+                .t-wrapper_expire {
+                    display: none;
+                }
+
+                tui-svg[src='tuiIconCloseLarge'] {
+                    display: none;
+                }
+            }
+
+            .t-value_collapsed {
+                letter-spacing: 0.1px;
+            }
+        }
+
+        tui-primitive-checkbox tui-wrapper {
+            color: #313132 !important;
+            background: #f6f7f8 !important;
+        }
+    }
+}
+
+.modal-container {
+    width: 480px;
+}
+
+@media screen and (max-width: 599px) {
+    .modal-container {
+        width: 100%;
+    }
+}
+
+.title {
+    margin: 0 0 16px 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: 0.18px;
+}
+
+.form-block {
+    position: relative;
+    margin-bottom: 16px;
+
+    .saved-card-preset {
+        &__item {
+            height: 56px;
+            background: #fafbfb;
+            border-radius: 16px;
+            border: 2px solid #eaeaea;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            &__placeholder {
+                color: #717172;
+                letter-spacing: 0.24px;
+                font-size: 12px;
+                line-height: 18px;
+            }
+
+            &__info {
+                display: flex;
+                align-items: center;
+
+                &__icon {
+                    width: 36px;
+                    height: 22px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    margin-right: 8px;
+                }
+
+                &__number {
+                    letter-spacing: 0.2px;
+                    line-height: 22px;
+                    color: #313132;
+                }
+            }
+        }
+    }
+
+    &.is--links {
+        display: flex;
+        align-items: center;
+
+        ::ng-deep {
+            a {
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 20px;
+
+                &:first-child {
+                    color: #6496dc;
+                }
+
+                &:last-child {
+                    color: #b0b0b0;
+                    margin-left: auto;
+                }
+            }
+        }
+    }
+}
+
+.fake-input {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -9999999;
+    width: 100%;
+    caret-color: transparent;
+    cursor: none;
+    color: transparent;
+}

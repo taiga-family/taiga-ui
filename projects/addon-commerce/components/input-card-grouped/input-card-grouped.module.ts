@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {TuiFormatCardModule} from '@taiga-ui/addon-commerce/pipes';
 import {
     TuiActiveZoneModule,
+    TuiAutoFocusModule,
     TuiFocusableModule,
     TuiLetModule,
     TuiMapperPipeModule,
@@ -30,6 +31,7 @@ import {TuiInputCardGroupedComponent} from './input-card-grouped.component';
         PolymorpheusModule,
         TuiLetModule,
         TuiFormatCardModule,
+        TuiAutoFocusModule,
     ],
     declarations: [TuiInputCardGroupedComponent],
     exports: [TuiInputCardGroupedComponent],

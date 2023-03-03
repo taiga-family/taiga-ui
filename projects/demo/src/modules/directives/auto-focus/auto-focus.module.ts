@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiAutoFocusModule} from '@taiga-ui/cdk';
-import {TuiButtonModule} from '@taiga-ui/core';
+import {TuiButtonModule, TuiLinkModule} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/kit';
 
 import {ExampleTuiAutoFocusComponent} from './auto-focus.component';
@@ -17,6 +17,7 @@ import {TuiAutoFocusExample1} from './examples/1';
         TuiInputModule,
         TuiAutoFocusModule,
         TuiButtonModule,
+        TuiLinkModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiAutoFocusComponent)),
     ],

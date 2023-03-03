@@ -84,10 +84,17 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         const fakeInput: HTMLInputElement = this.renderer.createElement(`input`);
         const rect: DOMRect = this.element.getBoundingClientRect();
 
+        fakeInput.setAttribute(`maxlength`, `0`);
+
+        // @note: don't use opacity: 0,
+        // sometimes it's doesn't work for emulate real input
         fakeInput.style.height = tuiPx(rect.height);
         fakeInput.style.width = tuiPx(rect.width / 2);
         fakeInput.style.position = `fixed`;
-        fakeInput.style.opacity = `0`;
+        fakeInput.style.zIndex = `-99999999`;
+        fakeInput.style.caretColor = `transparent`;
+        fakeInput.style.color = `transparent`;
+        fakeInput.style.cursor = `none`;
         fakeInput.style.fontSize = tuiPx(16); // disable possible auto zoom
         fakeInput.readOnly = true; // prevent keyboard for fake input
 

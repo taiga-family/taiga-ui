@@ -90,6 +90,28 @@ export class ExampleTuiDialogComponent {
         HTML: import('./examples/8/index.html?raw'),
     };
 
+    readonly example9: TuiDocExample = {
+        TypeScript: import('./examples/9/index.ts?raw'),
+        HTML: import('./examples/9/index.html?raw'),
+        LESS: import('./examples/9/index.less?raw'),
+        'helpers/mock-cards.ts': import('./examples/9/helpers/mock-cards.ts?raw'),
+        'helpers/models.ts': import('./examples/9/helpers/models.ts?raw'),
+        'helpers/pay.service.ts': import('./examples/9/helpers/pay.service.ts?raw'),
+        'helpers/validator.ts': import('./examples/9/helpers/validator.ts?raw'),
+        'pay-modal/pay-modal.component.ts': import(
+            './examples/9/pay-modal/pay-modal.component.ts?raw'
+        ),
+        'pay-modal/pay-modal.component.less': import(
+            './examples/9/pay-modal/pay-modal.component.less?raw'
+        ),
+        'pay-modal/pay-modal.component.html': import(
+            './examples/9/pay-modal/pay-modal.component.html?raw'
+        ),
+        'pay-modal/pay-modal.module.ts': import(
+            './examples/9/pay-modal/pay-modal.module.ts?raw'
+        ),
+    };
+
     readonly exampleServiceUsage = import('./examples/import/service-usage.md?raw');
 
     readonly exampleCustomDialog = import('./examples/import/custom-dialog.md?raw');
