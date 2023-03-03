@@ -13,6 +13,7 @@ import {TUI_TEXTFIELD_HOST, TuiTextfieldHost} from '@taiga-ui/core';
         '(change)': 'onChange($event.target.value)',
         '(click.stop.silent)': '0',
         '(input.stop.silent)': '0',
+        '(mousedown.stop.silent)': '0',
     },
     styleUrls: ['./native-date.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
