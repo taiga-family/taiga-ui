@@ -2,9 +2,12 @@ import {InjectionToken, Provider, Type} from '@angular/core';
 import {TuiAriaDialogContext} from '@taiga-ui/cdk/interfaces';
 import {Observable} from 'rxjs';
 
+/**
+ * A stream of dialogs
+ */
 export const TUI_DIALOGS = new InjectionToken<
     ReadonlyArray<Observable<readonly TuiAriaDialogContext[]>>
->(`[TUI_DIALOGS]: A stream of dialogs`, {
+>(`[TUI_DIALOGS]`, {
     factory: () => [],
 });
 

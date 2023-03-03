@@ -19,8 +19,11 @@ export const TUI_INPUT_PASSWORD_DEFAULT_OPTIONS: TuiInputPasswordOptions = {
     },
 };
 
+/**
+ * Default parameters for input password component
+ */
 export const TUI_INPUT_PASSWORD_OPTIONS = new InjectionToken<TuiInputPasswordOptions>(
-    `[TUI_INPUT_PASSWORD_OPTIONS]: Default parameters for input password component`,
+    `[TUI_INPUT_PASSWORD_OPTIONS]`,
     {
         factory: () => TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
     },

@@ -12,9 +12,12 @@ export const TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS: TuiInputPhoneInterna
         countryIsoCode: TuiCountryIsoCode.RU,
     };
 
+/**
+ * Default parameters for input phone international component
+ */
 export const TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS =
     new InjectionToken<TuiInputPhoneInternationalOptions>(
-        `[TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS]: Default parameters for input phone international component`,
+        `[TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS]`,
         {
             factory: () => TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS,
         },

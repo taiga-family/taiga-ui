@@ -7,9 +7,10 @@ import {endWith, filter, map, scan, switchMap, takeUntil} from 'rxjs/operators';
 export const MICRO_OFFSET = 10 ** -6;
 export const PULLED_DISTANCE = 50;
 
-export const TUI_PULLING = new InjectionToken<Observable<number>>(
-    `[TUI_PULLING]: Stream that emits content pulling`,
-);
+/**
+ * Stream that emits content pulling
+ */
+export const TUI_PULLING = new InjectionToken<Observable<number>>(`[TUI_PULLING]`);
 
 export const TUI_PULL_TO_REFRESH_PROVIDERS: Provider[] = [
     {

@@ -17,8 +17,11 @@ export const TUI_NOTIFICATION_DEFAULT_OPTIONS: TuiNotificationDefaultOptions = {
     defaultAutoCloseTime: 3000,
 };
 
+/**
+ * Default parameters for notification alert component
+ */
 export const TUI_NOTIFICATION_OPTIONS = new InjectionToken<TuiNotificationDefaultOptions>(
-    `[TUI_NOTIFICATION_OPTIONS]: Default parameters for notification alert component`,
+    `[TUI_NOTIFICATION_OPTIONS]`,
     {
         factory: () => TUI_NOTIFICATION_DEFAULT_OPTIONS,
     },

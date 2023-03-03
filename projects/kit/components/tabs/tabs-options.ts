@@ -14,12 +14,12 @@ export const TUI_TABS_DEFAULT_OPTIONS: TuiTabsOptions = {
     minMoreWidth: 0,
 };
 
-export const TUI_TABS_OPTIONS = new InjectionToken<TuiTabsOptions>(
-    `[TUI_TABS_OPTIONS]: Default parameters for tabs component`,
-    {
-        factory: () => TUI_TABS_DEFAULT_OPTIONS,
-    },
-);
+/**
+ * Default parameters for Tabs component
+ */
+export const TUI_TABS_OPTIONS = new InjectionToken<TuiTabsOptions>(`[TUI_TABS_OPTIONS]`, {
+    factory: () => TUI_TABS_DEFAULT_OPTIONS,
+});
 
 export const tuiTabsOptionsProvider: (
     options: Partial<TuiTabsOptions>,

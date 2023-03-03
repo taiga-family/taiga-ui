@@ -15,8 +15,11 @@ export const TUI_TEXTFIELD_DEFAULT_OPTIONS: TuiTextfieldOptions = {
         $implicit === `s` ? `tuiIconClose` : `tuiIconCloseLarge`,
 };
 
+/**
+ * Default parameters for textfield
+ */
 export const TUI_TEXTFIELD_OPTIONS = new InjectionToken<TuiTextfieldOptions>(
-    `[TUI_TEXTFIELD_OPTIONS]: Default parameters for textfield`,
+    `[TUI_TEXTFIELD_OPTIONS]`,
     {factory: () => TUI_TEXTFIELD_DEFAULT_OPTIONS},
 );
 

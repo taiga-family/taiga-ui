@@ -10,10 +10,11 @@ import {MODE_PROVIDER, TuiRouterLinkActiveService} from '@taiga-ui/core';
 import {EMPTY, identity, merge, Observable} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
 
+/**
+ * Stream of tab activation events
+ */
+export const TUI_TAB_EVENT = new InjectionToken<Observable<Event>>(`[TUI_TAB_EVENT]`);
 export const TUI_TAB_ACTIVATE = `tui-tab-activate`;
-export const TUI_TAB_EVENT = new InjectionToken<Observable<Event>>(
-    `[TUI_TAB_EVENT]: Stream of tab activation events`,
-);
 export const TUI_TAB_PROVIDERS: Provider[] = [
     TuiDestroyService,
     TuiFocusVisibleService,

@@ -22,8 +22,11 @@ export const TUI_TABLE_PAGINATION_DEFAULT_OPTIONS: TuiTablePaginationOptions = {
     size: 10,
 };
 
+/**
+ * Default parameters for TablePagination component
+ */
 export const TUI_TABLE_PAGINATION_OPTIONS = new InjectionToken(
-    `[TUI_TABLE_PAGINATION_OPTIONS]: Default parameters for TablePagination component`,
+    `[TUI_TABLE_PAGINATION_OPTIONS]`,
     {factory: () => TUI_TABLE_PAGINATION_DEFAULT_OPTIONS},
 );
 

@@ -15,8 +15,11 @@ export const TUI_DOC_EXAMPLE_DEFAULT_OPTIONS: TuiDocExampleOptions = {
         ),
 };
 
+/**
+ * Default parameters for DocExample component
+ */
 export const TUI_DOC_EXAMPLE_OPTIONS = new InjectionToken<TuiDocExampleOptions>(
-    `[TUI_DOC_EXAMPLE_OPTIONS]: Default parameters for DocExample component`,
+    `[TUI_DOC_EXAMPLE_OPTIONS]`,
     {
         factory: () => TUI_DOC_EXAMPLE_DEFAULT_OPTIONS,
     },

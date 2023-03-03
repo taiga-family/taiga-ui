@@ -2,7 +2,7 @@ import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
 import {AbstractTuiController} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_POSTFIX = new InjectionToken<TuiTextfieldPostfixDirective>(
-    '[TUI_TEXTFIELD_POSTFIX]: tuiTextfieldPostfix',
+    '[TUI_TEXTFIELD_POSTFIX]',
     {
         factory: () => new TuiTextfieldPostfixDirective(),
     },

@@ -18,8 +18,11 @@ export const TUI_RADIO_DEFAULT_OPTIONS: TuiRadioOptions = {
     },
 };
 
+/**
+ * Default parameters for Radio component
+ */
 export const TUI_RADIO_OPTIONS = new InjectionToken<TuiRadioOptions>(
-    `[TUI_RADIO_OPTIONS]: Default parameters for radio component`,
+    `[TUI_RADIO_OPTIONS]`,
     {
         factory: () => TUI_RADIO_DEFAULT_OPTIONS,
     },

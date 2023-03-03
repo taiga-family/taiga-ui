@@ -2,7 +2,7 @@ import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
 import {AbstractTuiController} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_PREFIX = new InjectionToken<TuiTextfieldPrefixDirective>(
-    '[TUI_TEXTFIELD_PREFIX]: tuiTextfieldPrefix',
+    '[TUI_TEXTFIELD_PREFIX]',
     {
         factory: () => new TuiTextfieldPrefixDirective(),
     },

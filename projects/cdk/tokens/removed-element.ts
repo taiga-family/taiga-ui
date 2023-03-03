@@ -3,8 +3,11 @@ import {inject, InjectFlags, InjectionToken} from '@angular/core';
 import {BehaviorSubject, Observable, timer} from 'rxjs';
 import {map, share, startWith, switchMap} from 'rxjs/operators';
 
+/**
+ * Element currently being removed by AnimationEngine
+ */
 export const TUI_REMOVED_ELEMENT = new InjectionToken<Observable<Element | null>>(
-    `[TUI_REMOVED_ELEMENT]: Element currently being removed by AnimationEngine`,
+    `[TUI_REMOVED_ELEMENT]`,
     {
         factory: () => {
             const stub = {onRemovalComplete: () => {}};

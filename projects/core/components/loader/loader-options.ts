@@ -14,8 +14,11 @@ export const TUI_LOADER_DEFAULT_OPTIONS: TuiLoaderOptions = {
     overlay: false,
 };
 
+/**
+ * Default parameters for loader component
+ */
 export const TUI_LOADER_OPTIONS = new InjectionToken<TuiLoaderOptions>(
-    `[TUI_LOADER_OPTIONS]: Default parameters for loader component`,
+    `[TUI_LOADER_OPTIONS]`,
     {
         factory: () => TUI_LOADER_DEFAULT_OPTIONS,
     },

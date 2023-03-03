@@ -12,12 +12,12 @@ export const TUI_PUSH_DEFAULT_OPTIONS: TuiPushOptions = {
     buttons: [],
 };
 
-export const TUI_PUSH_OPTIONS = new InjectionToken<TuiPushOptions>(
-    `[TUI_PUSH_OPTIONS]: Default parameters for push component`,
-    {
-        factory: () => TUI_PUSH_DEFAULT_OPTIONS,
-    },
-);
+/**
+ * Default parameters for Push component
+ */
+export const TUI_PUSH_OPTIONS = new InjectionToken<TuiPushOptions>(`[TUI_PUSH_OPTIONS]`, {
+    factory: () => TUI_PUSH_DEFAULT_OPTIONS,
+});
 
 export function tuiPushOptionsProvider(options: Partial<TuiPushOptions>): ValueProvider {
     return {

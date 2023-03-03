@@ -5,17 +5,19 @@ import {InjectionToken} from '@angular/core';
  */
 
 /**
+ * tui-doc-demo i18n texts
  * Works with a tuple
  * [@string tuiMode tooltip content, @string word 'background', @string 'form value']
  */
 export const TUI_DOC_DEMO_TEXTS = new InjectionToken<[string, string, string]>(
-    `[TUI_DOC_DEMO_TEXTS]: tui-doc-demo i18n texts`,
+    `[TUI_DOC_DEMO_TEXTS]`,
     {
         factory: () => [`Read more more about modes: `, `Background`, `Form value`],
     },
 );
 
 /**
+ * tui-doc-documentation i18n texts
  * Works with a tuple
  * [
  * @string word 'argument',
@@ -27,7 +29,7 @@ export const TUI_DOC_DEMO_TEXTS = new InjectionToken<[string, string, string]>(
  */
 export const TUI_DOC_DOCUMENTATION_TEXTS = new InjectionToken<
     [string, string, string, string, string]
->(`[TUI_DOC_DOCUMENTATION_TEXTS]: tui-doc-documentation i18n texts`, {
+>(`[TUI_DOC_DOCUMENTATION_TEXTS]`, {
     factory: () => [
         `Argument`,
         `Type`,
@@ -38,6 +40,7 @@ export const TUI_DOC_DOCUMENTATION_TEXTS = new InjectionToken<
 });
 
 /**
+ * tui-doc-example i18n texts
  * Works with a tuple
  * [
  * @string default tab name,
@@ -46,35 +49,29 @@ export const TUI_DOC_DOCUMENTATION_TEXTS = new InjectionToken<
  * ]
  */
 export const TUI_DOC_EXAMPLE_TEXTS = new InjectionToken<[string, string, string]>(
-    `[TUI_DOC_EXAMPLE_TEXTS]: tui-doc-example i18n texts`,
+    `[TUI_DOC_EXAMPLE_TEXTS]`,
     {
         factory: () => [`Preview`, `Link to a sample was successfully copied`, `Done`],
     },
 );
 
-export const TUI_DOC_MENU_TEXT = new InjectionToken<string>(
-    `[TUI_DOC_MENU_TEXT]: menu i18n text`,
-    {
-        factory: () => `Menu`,
-    },
-);
+export const TUI_DOC_MENU_TEXT = new InjectionToken<string>(`[TUI_DOC_MENU_TEXT]`, {
+    factory: () => `Menu`,
+});
 
-export const TUI_DOC_SEARCH_TEXT = new InjectionToken<string>(
-    `[TUI_DOC_SEARCH_TEXT]: search i18n text`,
-    {
-        factory: () => `Search`,
-    },
-);
+export const TUI_DOC_SEARCH_TEXT = new InjectionToken<string>(`[TUI_DOC_SEARCH_TEXT]`, {
+    factory: () => `Search`,
+});
 
 export const TUI_DOC_SEE_ALSO_TEXT = new InjectionToken<string>(
-    `[TUI_DOC_SEE_ALSO_TEXT]: tui-doc-see-also i18n text`,
+    `[TUI_DOC_SEE_ALSO_TEXT]`,
     {
         factory: () => `See also`,
     },
 );
 
 export const TUI_DOC_SOURCE_CODE_TEXT = new InjectionToken<string>(
-    `[TUI_DOC_SOURCE_CODE_TEXT]: tui-doc-source-code i18n text`,
+    `[TUI_DOC_SOURCE_CODE_TEXT]`,
     {
         factory: () => `Source code`,
     },

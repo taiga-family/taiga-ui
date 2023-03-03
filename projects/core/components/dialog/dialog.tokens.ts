@@ -13,15 +13,21 @@ export const TUI_DIALOG_DEFAULT_OPTIONS: TuiDialogDefaultOptions = {
     header: ``,
 };
 
+/**
+ * A stream to close dialogs
+ */
 export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
-    `[TUI_DIALOGS_CLOSE]: A stream to close dialogs`,
+    `[TUI_DIALOGS_CLOSE]`,
     {
         factory: () => EMPTY,
     },
 );
 
+/**
+ * Default parameters for dialog component
+ */
 export const TUI_DIALOG_OPTIONS = new InjectionToken<TuiDialogDefaultOptions>(
-    `[TUI_DIALOG_OPTIONS]: Default parameters for dialog component`,
+    `[TUI_DIALOG_OPTIONS]`,
     {
         factory: () => TUI_DIALOG_DEFAULT_OPTIONS,
     },

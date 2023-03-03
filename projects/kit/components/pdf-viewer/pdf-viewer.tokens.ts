@@ -6,8 +6,11 @@ type TuiPdfViewerDefaultOptions = Omit<TuiPdfViewerOptions<unknown>, 'data'>;
 
 export const TUI_PDF_VIEWER_DEFAULT_OPTIONS = {label: ``, actions: ``};
 
+/**
+ * Default parameters for PdfViewer component
+ */
 export const TUI_PDF_VIEWER_OPTIONS = new InjectionToken<TuiPdfViewerDefaultOptions>(
-    `[TUI_PDF_VIEWER_OPTIONS]: Default parameters for pdf viewer component`,
+    `[TUI_PDF_VIEWER_OPTIONS]`,
     {
         factory: () => TUI_PDF_VIEWER_DEFAULT_OPTIONS,
     },

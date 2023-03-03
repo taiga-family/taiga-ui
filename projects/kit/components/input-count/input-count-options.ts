@@ -28,8 +28,11 @@ export const TUI_INPUT_COUNT_DEFAULT_OPTIONS: TuiInputCountOptions = {
     postfix: ``,
 };
 
+/**
+ * Default parameters for input count component
+ */
 export const TUI_INPUT_COUNT_OPTIONS = new InjectionToken<TuiInputCountOptions>(
-    `[TUI_INPUT_COUNT_OPTIONS]: Default parameters for input count component`,
+    `[TUI_INPUT_COUNT_OPTIONS]`,
     {
         factory: () => TUI_INPUT_COUNT_DEFAULT_OPTIONS,
     },

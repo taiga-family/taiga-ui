@@ -35,8 +35,11 @@ export const TUI_DROPDOWN_DEFAULT_OPTIONS: TuiDropdownOptions = {
     offset: 4,
 };
 
+/**
+ * Default parameters for dropdown directive
+ */
 export const TUI_DROPDOWN_OPTIONS = new InjectionToken<TuiDropdownOptions>(
-    '[TUI_DROPDOWN_OPTIONS] Default parameters for dropdown directive',
+    '[TUI_DROPDOWN_OPTIONS]',
     {
         factory: () => TUI_DROPDOWN_DEFAULT_OPTIONS,
     },

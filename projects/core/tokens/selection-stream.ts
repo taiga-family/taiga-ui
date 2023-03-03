@@ -4,8 +4,11 @@ import {tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {merge, Observable} from 'rxjs';
 import {share, switchMap, takeUntil} from 'rxjs/operators';
 
+/**
+ * A stream of possible selection changes
+ */
 export const TUI_SELECTION_STREAM = new InjectionToken<Observable<unknown>>(
-    `[TUI_SELECTION_STREAM]: A stream of possible selection changes`,
+    `[TUI_SELECTION_STREAM]`,
     {
         factory: () => {
             const documentRef = inject(DOCUMENT);

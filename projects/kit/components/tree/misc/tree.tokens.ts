@@ -11,41 +11,59 @@ import type {
     TuiTreeLoader,
 } from './tree.interfaces';
 
+/**
+ * Controller for tracking value - TuiTreeItemComponent pairs
+ */
 export const TUI_TREE_ACCESSOR = new InjectionToken<TuiTreeAccessor<unknown>>(
-    `[TUI_TREE_ACCESSOR]: Controller for tracking value - TuiTreeItemComponent pairs`,
+    `[TUI_TREE_ACCESSOR]`,
 );
 
+/**
+ * Controller for expanding the tree
+ */
 export const TUI_TREE_CONTROLLER = new InjectionToken<TuiTreeController>(
-    `[TUI_TREE_CONTROLLER]: Controller for expanding the tree`,
+    `[TUI_TREE_CONTROLLER]`,
     {
         factory: () => TUI_DEFAULT_TREE_CONTROLLER,
     },
 );
 
-export const TUI_TREE_NODE = new InjectionToken(`[TUI_TREE_NODE]: A node of a tree view`);
+/**
+ * A node of a tree view
+ */
+export const TUI_TREE_NODE = new InjectionToken(`[TUI_TREE_NODE]`);
 
-export const TUI_TREE_LOADING = new InjectionToken(
-    `[TUI_TREE_LOADING]: A tree node placeholder for loading`,
-    {factory: () => ({})},
-);
+/**
+ * A tree node placeholder for loading
+ */
+export const TUI_TREE_LOADING = new InjectionToken(`[TUI_TREE_LOADING]`, {
+    factory: () => ({}),
+});
 
-export const TUI_TREE_START = new InjectionToken(
-    `[TUI_TREE_START]: A tree node starting point`,
-);
+/**
+ * A tree node starting point
+ */
+export const TUI_TREE_START = new InjectionToken(`[TUI_TREE_START]`);
 
+/**
+ * A service to load tree progressively
+ */
 export const TUI_TREE_LOADER = new InjectionToken<TuiTreeLoader<unknown>>(
-    `[TUI_TREE_LOADER]: A service to load tree progressively`,
+    `[TUI_TREE_LOADER]`,
 );
 
+/**
+ * Content for a tree item
+ */
 export const TUI_TREE_CONTENT = new InjectionToken<
     PolymorpheusContent<TuiTreeItemContext>
->(`[TUI_TREE_CONTENT]: Content for a tree item`, {
+>(`[TUI_TREE_CONTENT]`, {
     factory: () => TUI_TREE_ITEM_CONTENT,
 });
 
-export const TUI_TREE_LEVEL = new InjectionToken<number>(
-    `[TUI_TREE_LEVEL]: Nesting level of current TreeView node`,
-    {
-        factory: () => -1,
-    },
-);
+/**
+ * Nesting level of current TreeView node
+ */
+export const TUI_TREE_LEVEL = new InjectionToken<number>(`[TUI_TREE_LEVEL]`, {
+    factory: () => -1,
+});

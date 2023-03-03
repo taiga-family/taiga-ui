@@ -8,8 +8,11 @@ export const TUI_LINE_CLAMP_DEFAULT_OPTIONS: TuiLineClampOptions = {
     showHint: true,
 };
 
+/**
+ * Default parameters for LineClamp component
+ */
 export const TUI_LINE_CLAMP_OPTIONS = new InjectionToken<TuiLineClampOptions>(
-    `[TUI_LINE_CLAMP_OPTIONS]: Default parameters for line-clamp component`,
+    `[TUI_LINE_CLAMP_OPTIONS]`,
     {
         factory: () => TUI_LINE_CLAMP_DEFAULT_OPTIONS,
     },

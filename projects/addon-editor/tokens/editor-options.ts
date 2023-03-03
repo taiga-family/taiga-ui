@@ -17,8 +17,11 @@ export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
     fontOptions: tuiDefaultFontOptionsHandler,
 };
 
+/**
+ * Default Editor colors
+ */
 export const TUI_EDITOR_OPTIONS = new InjectionToken<TuiEditorOptions>(
-    `[TUI_EDITOR_OPTIONS]: Default Editor colors`,
+    `[TUI_EDITOR_OPTIONS]`,
     {
         factory: () => TUI_EDITOR_DEFAULT_OPTIONS,
     },
