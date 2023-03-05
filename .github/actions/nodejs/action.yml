@@ -67,6 +67,21 @@ runs:
         node -v
         npm -v
 
+    - name: Get installed Playwright version
+      id: playwright-version
+      shell: bash
+      run:
+        echo "PLAYWRIGHT_VERSION=$(node -e
+        "console.log(require('./package-lock.json').dependencies['@playwright/test'].version)")" >> $GITHUB_ENV
+
+    - name: Cache playwright binaries
+      uses: actions/cache@v3
+      id: playwright-cache
+      with:
+        path: |
+          ~/.cache/ms-playwright
+        key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+
     - shell: bash
       run: |
         echo "Provide global variables ..."
@@ -75,10 +90,16 @@ runs:
         echo "NPM_CONFIG_CACHE=~/.npm" >> $GITHUB_ENV
         echo "NODE_OPTIONS=--max-old-space-size=12288" >> $GITHUB_ENV
         echo "CYPRESS_CACHE_FOLDER=node_modules/cache-cypress" >> $GITHUB_ENV
+        echo "SNAPSHOTS_E2E_KEY=e2e-${GITHUB_REF//\//-}-${GITHUB_SHA//\//-}" >> $GITHUB_ENV
 
     - name: Clean install dependencies
       if: steps.cache-node-modules.outputs.cache-hit != 'true'
       run: npm ci
+      shell: bash
+
+    - name: Reinstall playwright
+      if: steps.playwright-cache.outputs.cache-hit != 'true'
+      run: npx playwright install --with-deps && npx playwright install-deps
       shell: bash
 
     - id: output

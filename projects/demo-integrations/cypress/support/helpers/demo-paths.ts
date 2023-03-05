@@ -7,10 +7,16 @@ import {pages} from '../../../../demo/src/modules/app/pages';
 const EXCLUSION_SECTIONS = [`Documentation`, `Foundations`, `Tools`, `Testing`];
 const EXCLUSION_ROUTES = [`i18n`, `PrimitiveCheckbox`, `ThemeNight`, `Markdown`];
 
-export const DEMO_PATHS = flatPages(pages)
-    .filter(page => !EXCLUSION_SECTIONS.includes(page.section as unknown as string))
-    .filter(page => !EXCLUSION_ROUTES.includes(page.title))
-    .map(page => page.route.replace(`/`, ``));
+export const DEMO_PATHS = Array.from(
+    new Set( // filter duplicate
+        flatPages(pages)
+            .filter(
+                page => !EXCLUSION_SECTIONS.includes(page.section as unknown as string),
+            )
+            .filter(page => !EXCLUSION_ROUTES.includes(page.title))
+            .map(page => page.route.replace(`/`, ``)),
+    ),
+);
 
 export const isEmbedPage = (path: string): boolean => path.startsWith(`editor/embed`);
 export const isTilesPage = (path: string): boolean => path === `components/tiles`;

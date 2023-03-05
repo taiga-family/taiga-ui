@@ -30,6 +30,7 @@ quality-check
 dist
 **/cypress/screenshots
 **/cypress/snapshots
+**/demo-e2e/snapshots
 .ssl
 RELEASE_BODY.md
 *tsbuildinfo

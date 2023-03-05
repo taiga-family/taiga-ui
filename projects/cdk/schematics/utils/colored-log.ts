@@ -24,3 +24,4 @@ export const FINISH_SYMBOL = `🏆`;
 export const REPLACE_SYMBOL = `⚡️`;
 export const PROCESSING_SYMBOL = `> `;
 export const SUCCESS_SYMBOL = `✅ `;
+export const ERROR_SYMBOL = `🚫`;
