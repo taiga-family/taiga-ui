@@ -18,8 +18,11 @@ export const TUI_INPUT_DATE_DEFAULT_OPTIONS: TuiInputDateOptions = {
     nativePicker: false,
 };
 
+/**
+ * Default parameters for InputDate component
+ */
 export const TUI_INPUT_DATE_OPTIONS = new InjectionToken<TuiInputDateOptions>(
-    `[TUI_INPUT_DATE_OPTIONS]: Default parameters for date input component`,
+    `[TUI_INPUT_DATE_OPTIONS]`,
     {
         factory: () => TUI_INPUT_DATE_DEFAULT_OPTIONS,
     },

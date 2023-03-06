@@ -13,8 +13,11 @@ export const TUI_INPUT_TAG_DEFAULT_OPTIONS: TuiInputTagOptions = {
     tagStatus: `primary`,
 };
 
+/**
+ * Default parameters for InputTag component
+ */
 export const TUI_INPUT_TAG_OPTIONS = new InjectionToken<TuiInputTagOptions>(
-    `[TUI_INPUT_TAG_OPTIONS]: Default parameters for input-tag`,
+    `[TUI_INPUT_TAG_OPTIONS]`,
     {
         factory: () => TUI_INPUT_TAG_DEFAULT_OPTIONS,
     },

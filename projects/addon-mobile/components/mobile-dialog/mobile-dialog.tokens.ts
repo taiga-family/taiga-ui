@@ -9,13 +9,13 @@ export const TUI_MOBILE_DIALOG_DEFAULT_OPTIONS: TuiMobileDialogDefaultOptions = 
     actions: [`OK`],
 };
 
+/**
+ * Default parameters for mobile dialog component
+ */
 export const TUI_MOBILE_DIALOG_OPTIONS =
-    new InjectionToken<TuiMobileDialogDefaultOptions>(
-        `[TUI_MOBILE_DIALOG_OPTIONS]: Default parameters for mobile dialog component`,
-        {
-            factory: () => TUI_MOBILE_DIALOG_DEFAULT_OPTIONS,
-        },
-    );
+    new InjectionToken<TuiMobileDialogDefaultOptions>(`[TUI_MOBILE_DIALOG_OPTIONS]`, {
+        factory: () => TUI_MOBILE_DIALOG_DEFAULT_OPTIONS,
+    });
 
 export function tuiMobileDialogOptionsProvider(
     options: Partial<TuiMobileDialogDefaultOptions>,

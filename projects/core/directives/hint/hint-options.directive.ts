@@ -30,12 +30,12 @@ export const TUI_HINT_DEFAULT_OPTIONS: TuiHintOptions = {
     icon: 'tuiIconHelpCircle',
 };
 
-export const TUI_HINT_OPTIONS = new InjectionToken<TuiHintOptions>(
-    '[TUI_HINT_OPTIONS] Default parameters for hint directive',
-    {
-        factory: () => TUI_HINT_DEFAULT_OPTIONS,
-    },
-);
+/**
+ * Default parameters for hint directive
+ */
+export const TUI_HINT_OPTIONS = new InjectionToken<TuiHintOptions>('[TUI_HINT_OPTIONS]', {
+    factory: () => TUI_HINT_DEFAULT_OPTIONS,
+});
 
 export const tuiHintOptionsProvider: (
     options: Partial<TuiHintOptions>,

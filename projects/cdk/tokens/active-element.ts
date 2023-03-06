@@ -19,8 +19,11 @@ import {
 
 import {TUI_REMOVED_ELEMENT} from './removed-element';
 
+/**
+ * Active element on the document for ActiveZone
+ */
 export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | null>>(
-    `[TUI_ACTIVE_ELEMENT]: Active element on the document for ActiveZone`,
+    `[TUI_ACTIVE_ELEMENT]`,
     {
         factory: () => {
             const removedElement$ = inject(TUI_REMOVED_ELEMENT);

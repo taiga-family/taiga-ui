@@ -4,7 +4,7 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export const TUI_TEXTFIELD_ICON = new InjectionToken<TuiTextfieldIconDirective>(
-    '[TUI_TEXTFIELD_ICON]: tuiTextfieldIcon',
+    '[TUI_TEXTFIELD_ICON]',
     {
         factory: tuiIconDirectiveFactory,
     },

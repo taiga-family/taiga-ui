@@ -11,8 +11,11 @@ export const TUI_SLIDER_DEFAULT_OPTIONS: TuiSliderOptions = {
     trackColor: `var(--tui-base-03)`,
 };
 
+/**
+ * Default parameters for Slider component
+ */
 export const TUI_SLIDER_OPTIONS = new InjectionToken<TuiSliderOptions>(
-    `[TUI_SLIDER_OPTIONS]: Default parameters for Slider component`,
+    `[TUI_SLIDER_OPTIONS]`,
     {factory: () => TUI_SLIDER_DEFAULT_OPTIONS},
 );
 

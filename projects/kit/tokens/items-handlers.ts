@@ -20,8 +20,11 @@ export const TUI_DEFAULT_ITEMS_HANDLERS: TuiItemsHandlers<unknown> = {
     disabledItemHandler: ALWAYS_FALSE_HANDLER,
 };
 
+/**
+ * Default items handlers for components
+ */
 export const TUI_ITEMS_HANDLERS = new InjectionToken<TuiItemsHandlers<unknown>>(
-    `[TUI_ITEMS_HANDLERS]: Default items handlers for components`,
+    `[TUI_ITEMS_HANDLERS]`,
     {
         factory: () => TUI_DEFAULT_ITEMS_HANDLERS,
     },

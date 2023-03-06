@@ -11,8 +11,11 @@ export const TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS: TuiDropdownHoverOptions = {
     hideDelay: 500,
 };
 
+/**
+ * Default parameters for dropdown hover directive
+ */
 export const TUI_DROPDOWN_HOVER_OPTIONS = new InjectionToken<TuiDropdownHoverOptions>(
-    '[TUI_DROPDOWN_HOVER_OPTIONS] Default parameters for dropdown hover directive',
+    '[TUI_DROPDOWN_HOVER_OPTIONS]',
     {
         factory: () => TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
     },

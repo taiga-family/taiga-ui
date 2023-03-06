@@ -15,12 +15,12 @@ export const TUI_TAG_DEFAULT_OPTIONS: TuiTagOptions = {
     autoColor: false,
 };
 
-export const TUI_TAG_OPTIONS = new InjectionToken<TuiTagOptions>(
-    `[TUI_TAG_OPTIONS]: Default parameters for tag component`,
-    {
-        factory: () => TUI_TAG_DEFAULT_OPTIONS,
-    },
-);
+/**
+ * Default parameters for Tag component
+ */
+export const TUI_TAG_OPTIONS = new InjectionToken<TuiTagOptions>(`[TUI_TAG_OPTIONS]`, {
+    factory: () => TUI_TAG_DEFAULT_OPTIONS,
+});
 
 export const tuiTagOptionsProvider: (options: Partial<TuiTagOptions>) => ValueProvider = (
     options: Partial<TuiTagOptions>,

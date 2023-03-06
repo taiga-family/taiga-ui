@@ -2,9 +2,10 @@ import {ElementRef, InjectionToken, Provider} from '@angular/core';
 
 import {TUI_DOC_SEE_ALSO} from '../../tokens/see-also';
 
-export const PAGE_SEE_ALSO = new InjectionToken<readonly string[]>(
-    `[PAGE_SEE_ALSO]: Page see also`,
-);
+/**
+ * Array if related page titles
+ */
+export const PAGE_SEE_ALSO = new InjectionToken<readonly string[]>(`[PAGE_SEE_ALSO]`);
 
 export const PAGE_PROVIDERS: Provider[] = [
     {

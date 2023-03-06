@@ -4,8 +4,11 @@ import {InjectionToken, Type} from '@angular/core';
 // eslint-disable-next-line import/no-cycle
 import {TuiDropdownComponent} from './dropdown.component';
 
+/**
+ * A component to display a dropdown
+ */
 export const TUI_DROPDOWN_COMPONENT = new InjectionToken<Type<any>>(
-    `[TUI_DROPDOWN_COMPONENT] A component to display a dropdown`,
+    `[TUI_DROPDOWN_COMPONENT]`,
     {
         factory: () => TuiDropdownComponent,
     },

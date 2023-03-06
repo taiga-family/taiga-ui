@@ -7,8 +7,11 @@ import {TuiDialog} from '@taiga-ui/cdk/types';
 import {combineLatest, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
+/**
+ * Is closing dialog on browser backward navigation enabled
+ */
 export const TUI_DIALOG_CLOSES_ON_BACK = new InjectionToken<Observable<boolean>>(
-    '[TUI_DIALOG_CLOSES_ON_BACK]: Is closing dialog on browser backward navigation enabled',
+    '[TUI_DIALOG_CLOSES_ON_BACK]',
     {
         factory: () => of(false),
     },

@@ -22,8 +22,11 @@ export const TUI_INPUT_FILES_DEFAULT_OPTIONS: TuiInputFilesOptions = {
     maxFileSize: 30 * 1000 * 1000, // 30 MB
 };
 
+/**
+ * Default parameters for input files component
+ */
 export const TUI_INPUT_FILES_OPTIONS = new InjectionToken<TuiInputFilesOptions>(
-    `[TUI_INPUT_FILES_OPTIONS]: Default parameters for input files component`,
+    `[TUI_INPUT_FILES_OPTIONS]`,
     {
         factory: () => TUI_INPUT_FILES_DEFAULT_OPTIONS,
     },

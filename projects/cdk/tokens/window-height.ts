@@ -4,8 +4,11 @@ import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {Observable} from 'rxjs';
 import {map, shareReplay, startWith} from 'rxjs/operators';
 
+/**
+ * Window height accounting for disappearing address bar
+ */
 export const TUI_WINDOW_HEIGHT = new InjectionToken<Observable<number>>(
-    `[TUI_WINDOW_HEIGHT]: Window height accounting for disappearing address bar`,
+    `[TUI_WINDOW_HEIGHT]`,
     {
         factory: () => {
             const windowRef = inject(WINDOW);

@@ -3,7 +3,7 @@ import {AbstractTuiController} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 export const TUI_TEXTFIELD_SIZE = new InjectionToken<TuiTextfieldSizeDirective>(
-    '[TUI_TEXTFIELD_SIZE]: tuiTextfieldSize',
+    '[TUI_TEXTFIELD_SIZE]',
     {
         factory: () => new TuiTextfieldSizeDirective(),
     },

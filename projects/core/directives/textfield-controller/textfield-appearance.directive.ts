@@ -4,7 +4,7 @@ import {AbstractTuiController} from '@taiga-ui/cdk';
 // TODO: rename to TUI_TEXTFIELD_APPEARANCE in v4
 export const TUI_TEXTFIELD_APPEARANCE_DIRECTIVE =
     new InjectionToken<TuiTextfieldAppearanceDirective>(
-        '[TUI_TEXTFIELD_APPEARANCE_DIRECTIVE]: tuiTextfieldAppearance',
+        '[TUI_TEXTFIELD_APPEARANCE_DIRECTIVE]',
         {
             factory: () => new TuiTextfieldAppearanceDirective(),
         },

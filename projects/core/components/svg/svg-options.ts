@@ -35,17 +35,17 @@ export const TUI_SVG_DEFAULT_OPTIONS: TuiSvgOptions = {
             : ``,
 };
 
-export const TUI_SVG_OPTIONS = new InjectionToken<TuiSvgOptions>(
-    `[TUI_SVG_OPTIONS]: SVG component options`,
-    {
-        factory: () => ({
-            path: inject(TUI_ICONS_PATH),
-            deprecated: TUI_SVG_DEFAULT_OPTIONS.deprecated,
-            srcProcessor: inject(TUI_SVG_SRC_PROCESSOR),
-            contentProcessor: inject(TUI_SVG_CONTENT_PROCESSOR),
-        }),
-    },
-);
+/**
+ * SVG component options
+ */
+export const TUI_SVG_OPTIONS = new InjectionToken<TuiSvgOptions>(`[TUI_SVG_OPTIONS]`, {
+    factory: () => ({
+        path: inject(TUI_ICONS_PATH),
+        deprecated: TUI_SVG_DEFAULT_OPTIONS.deprecated,
+        srcProcessor: inject(TUI_SVG_SRC_PROCESSOR),
+        contentProcessor: inject(TUI_SVG_CONTENT_PROCESSOR),
+    }),
+});
 
 export const tuiSvgOptionsProvider: (
     options: Partial<Omit<TuiSvgOptions, 'path'>> & {

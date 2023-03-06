@@ -10,8 +10,11 @@ export const TUI_SELECT_DEFAULT_OPTIONS: TuiSelectOptions<unknown> = {
     valueContent: ``,
 };
 
+/**
+ * Default parameters for Select component
+ */
 export const TUI_SELECT_OPTIONS = new InjectionToken<TuiSelectOptions<unknown>>(
-    `[TUI_SELECT_OPTIONS]: Default parameters for select component`,
+    `[TUI_SELECT_OPTIONS]`,
     {
         factory: () => TUI_SELECT_DEFAULT_OPTIONS,
     },

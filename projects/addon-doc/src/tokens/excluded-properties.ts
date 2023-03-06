@@ -1,7 +1,10 @@
 import {InjectionToken, Provider} from '@angular/core';
 
+/**
+ * Token to exclude inherited documentation properties
+ */
 export const TUI_DOC_EXCLUDED_PROPERTIES = new InjectionToken<Set<string>>(
-    `[TUI_DOC_EXCLUDED_PROPERTIES]: Token to exclude inherited documentation properties`,
+    `[TUI_DOC_EXCLUDED_PROPERTIES]`,
     {factory: () => new Set([])},
 );
 

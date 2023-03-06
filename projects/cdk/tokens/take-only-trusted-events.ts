@@ -8,7 +8,6 @@ import {ALWAYS_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
  * modified by a script or dispatched via EventTarget.dispatchEvent().
  */
 export const TUI_TAKE_ONLY_TRUSTED_EVENTS: InjectionToken<boolean> =
-    new InjectionToken<boolean>(
-        `[TUI_TAKE_ONLY_TRUSTED_EVENTS]: This token need for override behavior the \`pressedObservable\` function`,
-        {factory: ALWAYS_TRUE_HANDLER},
-    );
+    new InjectionToken<boolean>(`[TUI_TAKE_ONLY_TRUSTED_EVENTS]`, {
+        factory: ALWAYS_TRUE_HANDLER,
+    });

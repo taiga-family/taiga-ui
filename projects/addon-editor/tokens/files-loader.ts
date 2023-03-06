@@ -6,14 +6,19 @@ import {
 import {TuiHandler} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 
+/**
+ * files loader options
+ */
 export const TUI_ATTACH_FILES_OPTIONS: InjectionToken<TuiEditorAttachOptions> =
-    new InjectionToken<TuiEditorAttachOptions>(
-        `[TUI_ATTACH_FILES_OPTIONS]: files loader options`,
-        {factory: () => ({accept: `*/*`, multiple: true})},
-    );
+    new InjectionToken<TuiEditorAttachOptions>(`[TUI_ATTACH_FILES_OPTIONS]`, {
+        factory: () => ({accept: `*/*`, multiple: true}),
+    });
 
+/**
+ * files loader handler
+ */
 export const TUI_ATTACH_FILES_LOADER: InjectionToken<
     TuiHandler<File[], Observable<TuiEditorAttachedFile[]>>
 > = new InjectionToken<TuiHandler<File[], Observable<TuiEditorAttachedFile[]>>>(
-    `[TUI_ATTACH_FILES_LOADER]: files loader handler`,
+    `[TUI_ATTACH_FILES_LOADER]`,
 );

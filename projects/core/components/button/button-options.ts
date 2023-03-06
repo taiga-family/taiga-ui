@@ -18,8 +18,11 @@ export const TUI_BUTTON_DEFAULT_OPTIONS: TuiButtonOptions = {
     appearance: TuiAppearance.Primary,
 };
 
+/**
+ * Default parameters for button component
+ */
 export const TUI_BUTTON_OPTIONS = new InjectionToken<TuiButtonOptions>(
-    `[TUI_BUTTON_OPTIONS]: Default parameters for button component`,
+    `[TUI_BUTTON_OPTIONS]`,
     {
         factory: () => TUI_BUTTON_DEFAULT_OPTIONS,
     },

@@ -12,9 +12,12 @@ export const TUI_MULTI_SELECT_DEFAULT_OPTIONS: TuiMultiSelectOptions<unknown> = 
     valueContent: ``,
 };
 
+/**
+ * Default parameters for MultiSelect component
+ */
 export const TUI_MULTI_SELECT_OPTIONS = new InjectionToken<
     TuiMultiSelectOptions<unknown>
->(`[TUI_MULTI_SELECT_OPTIONS]: Default parameters for multi select component`, {
+>(`[TUI_MULTI_SELECT_OPTIONS]`, {
     factory: () => TUI_MULTI_SELECT_DEFAULT_OPTIONS,
 });
 

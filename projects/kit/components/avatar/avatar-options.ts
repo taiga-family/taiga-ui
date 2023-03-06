@@ -14,8 +14,11 @@ export const TUI_AVATAR_DEFAULT_OPTIONS: TuiAvatarOptions = {
     rounded: false,
 };
 
+/**
+ * Default parameters for avatar component
+ */
 export const TUI_AVATAR_OPTIONS = new InjectionToken<TuiAvatarOptions>(
-    `[TUI_AVATAR_OPTIONS]: Default parameters for avatar component`,
+    `[TUI_AVATAR_OPTIONS]`,
     {
         factory: () => TUI_AVATAR_DEFAULT_OPTIONS,
     },

@@ -7,8 +7,11 @@ import {distinctUntilChanged, map, share, startWith} from 'rxjs/operators';
 
 import {TUI_MEDIA} from './media';
 
+/**
+ * Mobile resolution stream for private providers
+ */
 export const TUI_IS_MOBILE_RES = new InjectionToken<Observable<boolean>>(
-    `[TUI_IS_MOBILE_RES]: Mobile resolution stream for private providers`,
+    `[TUI_IS_MOBILE_RES]`,
     {
         factory: () => {
             const windowRef = inject(WINDOW);

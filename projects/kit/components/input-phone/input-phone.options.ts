@@ -12,8 +12,11 @@ export const TUI_INPUT_PHONE_DEFAULT_OPTIONS: TuiInputPhoneOptions = {
     countryCode: `+7`,
 };
 
+/**
+ * Default parameters for input phone component
+ */
 export const TUI_INPUT_PHONE_OPTIONS = new InjectionToken<TuiInputPhoneOptions>(
-    `[TUI_INPUT_PHONE_OPTIONS]: Default parameters for input phone component`,
+    `[TUI_INPUT_PHONE_OPTIONS]`,
     {
         factory: () => TUI_INPUT_PHONE_DEFAULT_OPTIONS,
     },

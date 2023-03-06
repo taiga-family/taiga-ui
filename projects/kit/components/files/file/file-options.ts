@@ -12,9 +12,9 @@ export const TUI_FILE_DEFAULT_OPTIONS: TuiFileOptions = {
     formatSize: tuiFormatSize,
 };
 
-export const TUI_FILE_OPTIONS = new InjectionToken<TuiFileOptions>(
-    `[TUI_FILE_OPTIONS]: Default parameters for file component`,
-    {
-        factory: () => TUI_FILE_DEFAULT_OPTIONS,
-    },
-);
+/**
+ * Default parameters for file component
+ */
+export const TUI_FILE_OPTIONS = new InjectionToken<TuiFileOptions>(`[TUI_FILE_OPTIONS]`, {
+    factory: () => TUI_FILE_DEFAULT_OPTIONS,
+});

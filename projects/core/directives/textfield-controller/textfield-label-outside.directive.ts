@@ -3,7 +3,7 @@ import {AbstractTuiController} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_LABEL_OUTSIDE =
     new InjectionToken<TuiTextfieldLabelOutsideDirective>(
-        '[TUI_TEXTFIELD_LABEL_OUTSIDE]: tuiTextfieldLabelOutside',
+        '[TUI_TEXTFIELD_LABEL_OUTSIDE]',
         {
             factory: () => new TuiTextfieldLabelOutsideDirective(),
         },
