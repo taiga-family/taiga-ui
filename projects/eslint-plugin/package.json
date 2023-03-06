@@ -7,8 +7,8 @@
         "@angular-eslint/eslint-plugin": "15.2.1",
         "@angular-eslint/eslint-plugin-template": "15.2.1",
         "@angular-eslint/template-parser": "15.2.1",
-        "@html-eslint/eslint-plugin": "0.16.0",
-        "@html-eslint/parser": "0.16.0",
+        "@html-eslint/eslint-plugin": "0.17.1",
+        "@html-eslint/parser": "0.17.1",
         "@tinkoff/eslint-config": "1.50.1",
         "@tinkoff/eslint-config-angular": "1.51.0",
         "eslint-plugin-unicorn": "45.0.2"
