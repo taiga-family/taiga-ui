@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.20.0](https://github.com/tinkoff/taiga-ui/compare/v3.19.0...v3.20.0) (2023-03-07)
+
+### Features
+
+- **kit:** `InputDate` add ability to use native date picker on mobile
+  ([#3790](https://github.com/tinkoff/taiga-ui/issues/3790))
+  ([99a25b1](https://github.com/tinkoff/taiga-ui/commit/99a25b150cd5c2980b8a92205e85b4b0444654f3))
+
+### Bug Fixes
+
+- **cdk:** `schematics` fix global-styles migration ([#3797](https://github.com/tinkoff/taiga-ui/issues/3797))
+  ([21cc5fa](https://github.com/tinkoff/taiga-ui/commit/21cc5fad61c10da9a52034b240d90ac2fb28dd27))
+- **core:** `Hint`/`Dropdown` fix directives order mattering ([#3726](https://github.com/tinkoff/taiga-ui/issues/3726))
+  ([263c713](https://github.com/tinkoff/taiga-ui/commit/263c71356b0453f199daf645a0419a3fb31660dd))
+- **kit:** `TabsWithMore` sync max index on active index change
+  ([#3747](https://github.com/tinkoff/taiga-ui/issues/3747))
+  ([6af42b3](https://github.com/tinkoff/taiga-ui/commit/6af42b3ee12d8dad94331c6942d7d6660e49ff24))
+
 ## [3.19.0](https://github.com/tinkoff/taiga-ui/compare/v3.18.0...v3.19.0) (2023-02-21)
 
 ### Features
