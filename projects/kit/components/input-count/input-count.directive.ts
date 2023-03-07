@@ -11,8 +11,8 @@ export class TuiInputCountDirective
     extends AbstractTuiTextfieldHost<TuiInputCountComponent>
     implements AfterViewInit
 {
-    onValueChange(): void {
-        this.host.onValueChange();
+    onValueChange(value: string): void {
+        this.host.onValueChange(value);
     }
 
     ngAfterViewInit(): void {

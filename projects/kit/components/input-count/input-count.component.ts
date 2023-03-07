@@ -27,15 +27,17 @@ import {
     TUI_NUMBER_FORMAT,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiCreateNumberMask,
+    tuiEnableAutoCorrectDecimalSymbol,
     tuiFormatNumber,
+    tuiMaskedNumberStringToNumber,
     TuiNumberFormatSettings,
-    TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
     TuiTextfieldController,
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
+import {TuiInputNumberComponent} from '@taiga-ui/kit/components/input-number';
 import {TUI_PLUS_MINUS_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -57,8 +59,8 @@ export class TuiInputCountComponent
     extends AbstractTuiNullableControl<number>
     implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor
 {
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;
+    @ViewChild(TuiInputNumberComponent)
+    private readonly inputNumber?: TuiInputNumberComponent;
 
     @Input()
     @tuiDefaultProp()
@@ -112,6 +114,9 @@ export class TuiInputCountComponent
                 allowNegative,
                 decimalSymbol: this.numberFormat.decimalSeparator,
                 thousandSymbol: this.numberFormat.thousandSeparator,
+                autoCorrectDecimalSymbol: tuiEnableAutoCorrectDecimalSymbol(
+                    this.numberFormat,
+                ),
             }),
             guide: false,
         };
@@ -131,9 +136,9 @@ export class TuiInputCountComponent
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
-        return !this.primitiveTextfield || this.computedDisabled
+        return !this.inputNumber || this.computedDisabled
             ? null
-            : this.primitiveTextfield.nativeFocusableElement;
+            : this.inputNumber.nativeFocusableElement;
     }
 
     @HostBinding('attr.data-size')
@@ -143,14 +148,6 @@ export class TuiInputCountComponent
 
     get focused(): boolean {
         return tuiIsNativeFocused(this.nativeFocusableElement);
-    }
-
-    get exampleText(): string {
-        return String(this.min);
-    }
-
-    get computedValue(): string {
-        return this.focused ? this.nativeValue : this.formatNumber(this.value);
     }
 
     get minusButtonDisabled(): boolean {
@@ -170,30 +167,18 @@ export class TuiInputCountComponent
         this.nativeFocusableElement.focus();
     }
 
-    onFocused(focused: boolean): void {
-        if (!focused) {
-            this.onBlur();
-        }
-
-        this.updateFocused(focused);
+    onInputNumberChange(value: number | null): void {
+        this.updateValue(value);
     }
 
-    onValueChange(): void {
-        const capped = this.capValue(this.nativeNumberValue);
-
-        if (this.isNotNumber(capped)) {
-            this.updateValue(null);
-
-            return;
-        }
-
-        const newValue = this.formatNumber(capped);
-
-        if (this.nativeValue !== newValue) {
-            this.nativeValue = newValue;
-        }
-
-        this.updateValue(capped);
+    onValueChange(value: string): void {
+        this.updateValue(
+            tuiMaskedNumberStringToNumber(
+                value,
+                this.numberFormat.decimalSeparator,
+                this.numberFormat.thousandSeparator,
+            ),
+        );
     }
 
     decreaseValue(): void {
@@ -233,17 +218,6 @@ export class TuiInputCountComponent
         }
     }
 
-    private get nativeNumberValue(): number {
-        return parseInt(
-            this.nativeValue.split(this.numberFormat.thousandSeparator).join(''),
-            10,
-        );
-    }
-
-    private get nativeValue(): string {
-        return this.nativeFocusableElement ? this.nativeFocusableElement.value : '';
-    }
-
     private set nativeValue(value: string) {
         if (!this.nativeFocusableElement) {
             return;
@@ -257,30 +231,6 @@ export class TuiInputCountComponent
 
         this.updateValue(value);
         this.nativeValue = this.formatNumber(value);
-    }
-
-    private capValue(value: number): number | null {
-        const capped = Math.min(value, this.max);
-
-        return Number.isNaN(capped) || capped < this.min ? null : capped;
-    }
-
-    private onBlur(): void {
-        if (this.isNotNumber(this.value)) {
-            this.updateValue(null);
-
-            return;
-        }
-
-        const value = Math.max(this.nativeNumberValue || 0, this.min);
-        const formattedValue = this.formatNumber(value);
-
-        this.nativeValue = formattedValue;
-        this.updateValue(value);
-
-        if (this.primitiveTextfield) {
-            this.primitiveTextfield.value = formattedValue;
-        }
     }
 
     private formatNumber(value: number | null): string {
