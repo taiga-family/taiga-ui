@@ -16,6 +16,14 @@ export class RoutableDialogComponent {
         ),
     };
 
+    readonly example2: TuiDocExample = {
+        'page.template.html': import('./examples/2/page-2.component.html?raw'),
+        'page.module.ts': import('./examples/2/page-2.module.ts?raw'),
+        'dialog-content.component.ts': import(
+            './examples/2/dialog-content.component.ts?raw'
+        ),
+    };
+
     readonly addRouterOutlet = import('./examples/setup/add-router-outlet.md?raw');
     readonly importModule = import('./examples/setup/import-module.md?raw');
     readonly useRouteGenerator = import('./examples/setup/use-route-generator.md?raw');

@@ -22,6 +22,12 @@ import {RoutableDialogComponent} from './routable-dialog.component';
                                 .TuiPage1ExampleModule,
                     },
                     {
+                        path: `NamedOutlet`,
+                        loadChildren: async () =>
+                            (await import(`./examples/2/page-2.module`))
+                                .TuiPage2ExampleModule,
+                    },
+                    {
                         path: `Setup`,
                         component: RoutableDialogComponent,
                     },

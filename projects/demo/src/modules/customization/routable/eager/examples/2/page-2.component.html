@@ -1,0 +1,9 @@
+<button
+    tuiButton
+    [routerLink]="[{outlets: {myOutlet: 'path/to/dialog'}}]"
+>
+    Open dialog
+</button>
+
+<!-- step 1: add named router-outlet to the page -->
+<router-outlet name="myOutlet"></router-outlet>
