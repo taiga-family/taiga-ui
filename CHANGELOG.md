@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.79.0](https://github.com/tinkoff/taiga-ui/compare/v2.78.0...v2.79.0) (2023-03-07)
+
+### Bug Fixes
+
+- **kit:** `TabsWithMore` sync max index on active index change
+  ([#3746](https://github.com/tinkoff/taiga-ui/issues/3746))
+  ([d466767](https://github.com/tinkoff/taiga-ui/commit/d466767f4f43175d4a2781b9636e650664a5afc3))
+
 ## [2.78.0](https://github.com/tinkoff/taiga-ui/compare/v2.77.0...v2.78.0) (2023-02-21)
 
 ### Bug Fixes
