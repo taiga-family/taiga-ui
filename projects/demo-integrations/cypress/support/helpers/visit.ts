@@ -23,7 +23,7 @@ interface TuiVisitOptions {
     noSmoothScroll?: boolean;
     hideHeader?: boolean;
     hideNavigation?: boolean;
-    pauseAnimation?: boolean;
+    stopAnimation?: boolean;
     skipDecodingUrl?: boolean;
     skipExpectUrl?: boolean;
     waitRenderedFont?: RegExp;
@@ -61,7 +61,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         hideScrollbar = true,
         noSmoothScroll = true,
         hideHeader = true,
-        pauseAnimation = true,
+        stopAnimation = true,
         skipExpectUrl = false,
         skipDecodingUrl = false,
         hideNavigation = true,
@@ -152,8 +152,8 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
 
     cy.get(`${rootSelector}._is-cypress-mode`).as(`app`);
 
-    if (pauseAnimation) {
-        cy.get(`@app`).invoke(`addClass`, `_paused-animation`);
+    if (stopAnimation) {
+        cy.get(`@app`).invoke(`addClass`, `_stop-animation`);
     }
 
     if (hideCursor) {
