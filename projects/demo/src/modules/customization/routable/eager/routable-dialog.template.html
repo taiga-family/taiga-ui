@@ -22,7 +22,7 @@
             heading="Named outlet"
             [content]="example2"
         >
-            <router-outlet></router-outlet>
+            <router-outlet *ngIf="isNamedOutletPage$ | async"></router-outlet>
         </tui-doc-example>
     </ng-template>
 
