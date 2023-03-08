@@ -2,7 +2,7 @@
     "extends": "../../tsconfig.json",
     "compilerOptions": {
         "typeRoots": ["../../node_modules/@types", "../../node_modules/cypress/types"],
-        "types": ["cypress", "node", "cypress-real-events"]
+        "types": ["cypress", "node", "cypress-real-events", "@testing-library/cypress"]
     },
     "include": ["./cypress/**/*.ts"],
     "exclude": []
