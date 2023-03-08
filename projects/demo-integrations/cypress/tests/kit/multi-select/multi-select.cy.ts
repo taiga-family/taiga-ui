@@ -2,7 +2,7 @@ describe(`MultiSelect`, () => {
     describe(`Description and examples page`, () => {
         beforeEach(() => {
             cy.viewport(`macbook-13`);
-            cy.tuiVisit(`components/multi-select`, {pauseAnimation: false});
+            cy.tuiVisit(`components/multi-select`, {stopAnimation: false});
         });
 
         it(`does not overflow arrow icon by many tags`, () => {
@@ -55,7 +55,7 @@ describe(`MultiSelect`, () => {
                 it(`tuiTextfieldSize=${size}`, () => {
                     cy.tuiVisit(
                         `components/multi-select/API?tuiMode=null&tuiTextfieldCleaner=true&tuiTextfieldSize=${size}`,
-                        {pauseAnimation: false},
+                        {stopAnimation: false},
                     );
 
                     cy.getByAutomationId(`tui-multi-select__arrow`).click({force: true});
@@ -78,7 +78,7 @@ describe(`MultiSelect`, () => {
         describe(`Form changes by updateOn`, () => {
             [`submit`, `blur`, `change`].forEach(type => {
                 it(`updateOn: ${type}`, () => {
-                    cy.tuiVisit(`components/multi-select/API`, {pauseAnimation: false});
+                    cy.tuiVisit(`components/multi-select/API`, {stopAnimation: false});
 
                     cy.getByAutomationId(`tui-demo-button__toggle-details`)
                         .click()
@@ -145,7 +145,7 @@ describe(`MultiSelect`, () => {
 
     it(`checking that the arrow icon is rotated when enabled tuiTextfieldCleaner`, () => {
         cy.tuiVisit(`components/multi-select/API?tuiMode=null&tuiTextfieldCleaner=true`, {
-            pauseAnimation: false,
+            stopAnimation: false,
         });
 
         cy.getByAutomationId(`tui-multi-select__arrow`).click({force: true});
@@ -174,7 +174,7 @@ describe(`MultiSelect`, () => {
 
     it(`should scroll to end on focus`, () => {
         cy.tuiVisit(`components/multi-select/API?expandable=false&sandboxWidth=350`, {
-            pauseAnimation: false,
+            stopAnimation: false,
         });
         cy.getByAutomationId(`tui-multi-select__arrow`).click({force: true});
 
