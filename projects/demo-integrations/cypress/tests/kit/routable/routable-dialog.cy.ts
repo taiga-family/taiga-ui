@@ -28,10 +28,10 @@ describe(`RoutableDialog`, () => {
             .should(`not.include`, `path/to/dialog`);
     });
 
-    it(`should open named outlet example`, () => {
+    it(`should open dialog in named outlet example`, () => {
         cy.tuiVisit(`/dialog/routable/NamedOutlet`);
 
-        cy.get(`tui-page-2-example button`).click();
+        cy.findByText(`Open dialog`).click();
         cy.tuiWaitKitDialog();
         cy.url().should(
             `include`,
