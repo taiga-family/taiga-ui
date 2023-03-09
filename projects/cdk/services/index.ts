@@ -1,4 +1,3 @@
-export * from './breakpoint.service';
 export * from './destroy.service';
 export * from './directive-styles.service';
 export * from './focus-visible.service';
