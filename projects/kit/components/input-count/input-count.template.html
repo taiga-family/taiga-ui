@@ -1,28 +1,28 @@
-<tui-primitive-textfield
-    tuiValueAccessor
+<tui-input-number
     class="t-textfield"
     [pseudoFocus]="pseudoFocus"
     [pseudoHover]="pseudoHover"
+    [pseudoInvalid]="pseudoInvalid"
     [pseudoActive]="pseudoActive"
     [focusable]="focusable"
-    [nativeId]="nativeId"
+    [min]="min"
+    [max]="max"
     [prefix]="prefix"
     [postfix]="postfix"
     [disabled]="computedDisabled"
     [readOnly]="readOnly"
     [textMask]="getMask(min < 0)"
-    [invalid]="computedInvalid"
-    [value]="computedValue"
-    (valueChange)="onValueChange()"
+    [ngModel]="value"
+    [nativeId]="nativeId"
+    (ngModelChange)="onInputNumberChange($event)"
     (keydown)="onKeydown($event)"
-    (focusedChange)="onFocused($event)"
 >
     <ng-content></ng-content>
     <ng-content
         select="input"
         ngProjectAs="input"
     ></ng-content>
-</tui-primitive-textfield>
+</tui-input-number>
 <ng-container *ngIf="!buttonsHidden">
     <ng-container *ngIf="minusTexts$ | async as texts">
         <section class="t-buttons">

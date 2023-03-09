@@ -1,11 +1,13 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {
     TuiButtonModule,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiInputNumberModule} from '@taiga-ui/kit/components/input-number';
 import {TextMaskModule, TuiValueAccessorModule} from '@taiga-ui/kit/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -16,11 +18,13 @@ import {TuiInputCountDirective} from './input-count.directive';
     imports: [
         CommonModule,
         TextMaskModule,
+        FormsModule,
         TuiButtonModule,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiValueAccessorModule,
         PolymorpheusModule,
+        TuiInputNumberModule,
     ],
     declarations: [TuiInputCountComponent, TuiInputCountDirective],
     exports: [TuiInputCountComponent, TuiInputCountDirective, TuiTextfieldComponent],

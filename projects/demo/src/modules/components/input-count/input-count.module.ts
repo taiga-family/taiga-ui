@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
+    TuiHintModule,
     TuiLabelModule,
     TuiLinkModule,
     TuiNotificationModule,
@@ -26,6 +27,7 @@ import {ExampleTuiInputCountComponent} from './input-count.component';
         TuiLabelModule,
         TuiLinkModule,
         TuiAddonDocModule,
+        TuiHintModule,
         TuiTextfieldControllerModule,
         TuiNotificationModule,
         InheritedDocumentationModule,
