@@ -116,6 +116,7 @@
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
+                    [placeholder]="exampleText"
                     [maxLength]="maxLength"
                     [rows]="rows"
                     [focusable]="focusable"
@@ -178,6 +179,15 @@
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
                 Handler for deactivation some tags
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="placeholder"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="exampleText"
+            >
+                Placeholder
             </ng-template>
             <ng-template
                 documentationPropertyName="uniqueTags"

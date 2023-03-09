@@ -66,4 +66,15 @@ describe(`InputTag`, () => {
             .tuiWaitBeforeScreenshot()
             .matchImageSnapshot(`04-input-tag-forbidden-spaces`, {padding: 5});
     });
+
+    it(`placeholder`, () => {
+        cy.tuiVisit(`components/input-tag/API?placeholder=placeholder`);
+
+        cy.get(`#demo-content`).find(`tui-input-tag`).click().tuiWaitBeforeScreenshot();
+
+        cy.get(`#demo-content`)
+            .find(`tui-input-tag`)
+            .tuiWaitBeforeScreenshot()
+            .matchImageSnapshot(`05-input-tag-placeholder`);
+    });
 });
