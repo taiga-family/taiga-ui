@@ -132,6 +132,7 @@
                     [identityMatcher]="identityMatcher"
                     [readOnly]="readOnly"
                     [stringify]="stringify"
+                    [placeholder]="exampleText"
                     [pseudoInvalid]="pseudoInvalid"
                     [pseudoFocus]="pseudoFocused"
                     [pseudoHover]="pseudoHovered"
@@ -260,6 +261,15 @@
                 [(documentationPropertyValue)]="valueContent"
             >
                 A template for custom view of selected value
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="placeholder"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="exampleText"
+            >
+                Placeholder
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation [dropdown]="true"></inherited-documentation>
