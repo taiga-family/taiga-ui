@@ -14,6 +14,18 @@
         </tui-doc-example>
     </ng-template>
 
+    <ng-template pageTab="NamedOutlet">
+        <p i18n>It also works with named outlet</p>
+
+        <tui-doc-example
+            i18n-heading
+            heading="Named outlet"
+            [content]="example2"
+        >
+            <router-outlet *ngIf="isNamedOutletPage$ | async"></router-outlet>
+        </tui-doc-example>
+    </ng-template>
+
     <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>

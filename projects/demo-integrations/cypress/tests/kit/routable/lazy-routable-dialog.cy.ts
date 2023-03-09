@@ -6,7 +6,7 @@ describe(`LazyRoutableDialog`, () => {
     it(`should open lazy loaded dialog by click and then close by outside click`, () => {
         cy.tuiVisit(`/dialog/lazy-routable`);
 
-        cy.get(`tui-page-1-example button`).click();
+        cy.findByText(`Open dialog`).click();
         cy.tuiWaitKitDialog();
         cy.url().should(`include`, `/dialog/lazy-routable/path/to/dialog`);
 

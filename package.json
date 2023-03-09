@@ -90,6 +90,7 @@
         "@nrwl/nx-cloud": "15.1.1",
         "@nrwl/tao": "15.8.5",
         "@nrwl/workspace": "15.8.5",
+        "@testing-library/cypress": "9.0.0",
         "@tinkoff/prettier-config": "1.47.1",
         "@tinkoff/stylelint-config": "1.46.2",
         "@types/glob": "8.1.0",
