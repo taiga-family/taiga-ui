@@ -11,11 +11,13 @@ import {from, of, Subject} from 'rxjs';
 import {concatMap, delay, takeUntil} from 'rxjs/operators';
 
 @Directive({selector: '[tuiForAsync][tuiForAsyncOf]'})
-export class TuiForAsyncDirective<T> implements OnChanges, OnDestroy {
+export class TuiForAsyncDirective<T extends readonly any[]>
+    implements OnChanges, OnDestroy
+{
     private readonly destroy$ = new Subject<void>();
 
     @Input()
-    tuiForAsyncOf: readonly T[] | null | undefined;
+    tuiForAsyncOf: T | null | undefined;
 
     @Input()
     tuiForAsyncTimeout = 10;
