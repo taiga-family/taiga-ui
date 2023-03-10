@@ -4,15 +4,14 @@
     type="pipes"
 >
     <ng-template pageTab>
-        <p i18n>Pipe to format timestamps/dates dynamically</p>
-        <p i18n>
+        <p>Pipe to format timestamps/dates dynamically</p>
+        <p>
             Differs from built-in Angular date formatting pipe because it returns an
             <code>Observable</code>
         </p>
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Custom service"
             [content]="example1"
         >
@@ -23,7 +22,7 @@
     <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiFormatDatePipeModule</code>
                     into a module where you want to use the pipe
@@ -36,7 +35,7 @@
             </li>
 
             <li>
-                <p i18n>Use pipe in template</p>
+                <p>Use pipe in template</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"
@@ -45,7 +44,7 @@
             </li>
 
             <li>
-                <p i18n>Provide custom service for formatting</p>
+                <p>Provide custom service for formatting</p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"

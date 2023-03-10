@@ -4,7 +4,7 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>
+        <p>
             Radio button without a label. If you want to use it with a label, see
             <a
                 tuiLink
@@ -24,7 +24,6 @@
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -33,7 +32,6 @@
 
         <tui-doc-example
             id="large"
-            i18n-heading
             heading="Big size"
             [content]="example2"
         >
@@ -89,7 +87,6 @@
             </ng-template>
         </tui-doc-demo>
         <button
-            i18n
             tuiButton
             type="button"
             size="m"
@@ -99,7 +96,6 @@
         </button>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -109,7 +105,6 @@
                 )
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="identityMatcher"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiIdentityMatcher"
@@ -123,7 +118,6 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="pseudoDisabled"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -132,7 +126,6 @@
                 Emulates disabled state without disabling a form
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeL"
@@ -169,7 +162,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Declare a form (
                     <code>FormGroup</code>
                     ) or a control (
@@ -184,7 +177,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

@@ -4,11 +4,10 @@
     type="pipes"
 >
     <ng-template pageTab>
-        <p i18n>Pipe to format phone number</p>
+        <p>Pipe to format phone number</p>
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -17,10 +16,7 @@
     </ng-template>
 
     <ng-template pageTab>
-        <p
-            i18n
-            class="text b-full-width"
-        >
+        <p class="text b-full-width">
             Formatted phone number:
             {{ index | tuiFormatPhone : countryCode : phoneMask }}
         </p>
@@ -32,7 +28,6 @@
         ></tui-input>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="countryCode"
                 documentationPropertyType="string | undefined"
                 [documentationPropertyValues]="countryCodes"
@@ -41,7 +36,6 @@
                 Country code
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="phoneMask"
                 documentationPropertyType="string | undefined"
                 [documentationPropertyValues]="phoneMasks"
@@ -55,7 +49,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiFormatPhonePipeModule</code>
                     into a module where you want to use the pipe
@@ -68,7 +62,7 @@
             </li>
 
             <li>
-                <p i18n>Use pipe in template with function and its arguments:</p>
+                <p>Use pipe in template with function and its arguments:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

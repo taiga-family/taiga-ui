@@ -2,10 +2,7 @@
     class="b-form"
     [formGroup]="testForm"
 >
-    <label
-        i18n-tuiLabel
-        tuiLabel="Step is 1 by default"
-    >
+    <label tuiLabel="Step is 1 by default">
         <tui-input-count
             formControlName="testValue1"
             [min]="1"
@@ -20,7 +17,6 @@
     </label>
 
     <label
-        i18n-tuiLabel
         tuiLabel="Step is 100"
         class="tui-space_top-4"
     >
@@ -32,7 +28,6 @@
     </label>
 
     <label
-        i18n-tuiLabel
         tuiLabel="Also works with negative values"
         class="tui-space_top-4"
     >

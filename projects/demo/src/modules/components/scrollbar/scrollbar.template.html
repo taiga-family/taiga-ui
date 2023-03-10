@@ -4,20 +4,14 @@
     type="components"
 >
     <ng-template pageTab>
-        <div
-            i18n
-            class="tui-space_bottom-3"
-        >
+        <div class="tui-space_bottom-3">
             <code>Scrollbar</code>
             implements a custom scrollbar in Taiga UI style.
         </div>
 
-        <p i18n>Native scrollbar is hidden to keep native platform scroll experience</p>
+        <p>Native scrollbar is hidden to keep native platform scroll experience</p>
 
-        <tui-notification
-            i18n
-            class="tui-space_vertical-3"
-        >
+        <tui-notification class="tui-space_vertical-3">
             Use
             <code>TUI_SCROLL_REF</code>
             token to get a scrollable container. For example, when working with virtual scroll.
@@ -25,7 +19,6 @@
 
         <tui-doc-example
             id="vertical"
-            i18n-heading
             heading="Vertical"
             [content]="example1"
         >
@@ -34,7 +27,6 @@
 
         <tui-doc-example
             id="horizontal"
-            i18n-heading
             heading="horizontal"
             [content]="example2"
         >
@@ -43,7 +35,6 @@
 
         <tui-doc-example
             id="all"
-            i18n-heading
             heading="All"
             [content]="example3"
         >
@@ -52,7 +43,6 @@
 
         <tui-doc-example
             id="hidden"
-            i18n-heading
             heading="Hidden"
             [content]="example4"
         >
@@ -61,7 +51,6 @@
 
         <tui-doc-example
             id="light"
-            i18n-heading
             heading="Light scrollbar"
             [content]="example5"
         >
@@ -70,11 +59,10 @@
 
         <tui-doc-example
             id="virtual"
-            i18n-heading
             heading="Virtual scroll"
             [content]="example6"
         >
-            <p i18n>
+            <p>
                 Use
                 <code>tuiScrollable</code>
                 directive as an element for scroll. In this sample, we use vitual scroll from
@@ -85,13 +73,10 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        i18n-pageTab
-        pageTab="Setup"
-    >
+    <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiScrollbarModule</code>
                     into a module where you want to use our component
@@ -104,7 +89,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

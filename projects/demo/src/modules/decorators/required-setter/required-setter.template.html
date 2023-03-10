@@ -1,13 +1,12 @@
 <tui-doc-page
-    i18n-header
     header="RequiredSetter"
     package="CDK"
     path="cdk/decorators/required-setter.ts"
 >
     <ng-template pageTab>
-        <p i18n>Decorator setter @Input</p>
+        <p>Decorator setter @Input</p>
 
-        <p i18n>
+        <p>
             Decorator stops
             <code>undefined</code>
             values if they were passed into setter input. If it gets
@@ -16,7 +15,7 @@
         </p>
 
         <div>
-            <p i18n>See console. Min value is 5</p>
+            <p>See console. Min value is 5</p>
             <example-tui-required-setter-demo [quantity]="quantity"></example-tui-required-setter-demo>
             <tui-input-count
                 class="tui-space_top-4"
@@ -36,7 +35,7 @@
     </ng-template>
 
     <ng-template pageTab>
-        <p i18n>
+        <p>
             You can also pass contract function of type
             <code>TuiBooleanHandler&lt;T&gt;</code>
             with the component instance as
@@ -45,14 +44,12 @@
         </p>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="assertion"
                 documentationPropertyType="TuiBooleanHandler<T>"
             >
                 Optional argument, contract function
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="args"
                 documentationPropertyType="any"
             >
@@ -64,7 +61,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Add
                     <code>@tuiRequiredSetter</code>
                     to setter input of your component

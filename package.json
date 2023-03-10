@@ -30,7 +30,6 @@
         "start:shadow": "nx serve demo -c shadow",
         "build:ssr": "nx build demo && nx run demo:server:production",
         "prerender": "nx run demo:prerender",
-        "i18n": "nx xi18n --output-path src/locale",
         "*** Workflow ***": "",
         "stylelint": "stylelint '**/*.{less,css}'",
         "lint": "eslint --cache --cache-location node_modules/.cache/eslint",

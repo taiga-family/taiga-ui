@@ -1,11 +1,5 @@
-<h2
-    i18n
-    class="title"
->
-    Search by name
-</h2>
+<h2 class="title">Search by name</h2>
 <tui-input
-    i18n
     tuiHintContent="You can copy icon's name with a click"
     tuiTextfieldSize="m"
     [tuiTextfieldLabelOutside]="true"
@@ -17,10 +11,7 @@
 <ng-container *tuiForAsync="let key of icons | tuiKeys">
     <ng-container *ngIf="icons[key] | tuiFilter : matcher : search as filtered">
         <div class="header-group">
-            <h2
-                i18n
-                class="title"
-            >
+            <h2 class="title">
                 {{ key }}
             </h2>
 

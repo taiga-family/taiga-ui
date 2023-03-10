@@ -3,10 +3,7 @@
     package="ADDON-MOBILE"
     type="components"
 >
-    <ng-template
-        i18n
-        pageTab
-    >
+    <ng-template pageTab>
         A mobile draggable sheet popup
 
         <tui-notification
@@ -18,7 +15,6 @@
 
         <tui-doc-example
             id="string"
-            i18n-heading
             heading="String"
             [content]="example1"
         >
@@ -27,7 +23,6 @@
 
         <tui-doc-example
             id="basic"
-            i18n-heading
             heading="Basic"
             [content]="example2"
         >
@@ -41,7 +36,6 @@
 
         <tui-doc-example
             id="advanced"
-            i18n-heading
             heading="Advanced"
             [content]="example3"
         >
@@ -50,7 +44,6 @@
 
         <tui-doc-example
             id="elastic"
-            i18n-heading
             heading="Elastic sticky"
             [content]="example4"
         >
@@ -69,7 +62,6 @@
 
         <tui-doc-example
             id="scroll"
-            i18n-heading
             heading="Scroll"
             description="Modifying content using scroll stream from the context"
             [content]="example5"
@@ -79,7 +71,6 @@
 
         <tui-doc-example
             id="intersection"
-            i18n-heading
             heading="IntersectionObserver"
             description="Modifying content with IntersectionObserver"
             [content]="example6"
@@ -129,7 +120,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="closeable"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="closeable"
@@ -137,14 +127,12 @@
                 Whether or not a sheet can be closed by user.
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="data"
                 documentationPropertyType="I"
             >
                 Optional data to be passed to the sheet.
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="image"
                 documentationPropertyType="PolymorpheusContent<TuiSheetOptions<I>>"
                 [documentationPropertyValues]="imageVariants"
@@ -153,7 +141,6 @@
                 A content to show above the sheet.
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="imageSlide"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="imageSlide"
@@ -161,7 +148,6 @@
                 Should image slide as the sheet is dragged.
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="stops"
                 documentationPropertyType="string[]"
                 [documentationPropertyValues]="stopsVariants"
@@ -170,7 +156,6 @@
                 An array of stop points in any units for the sheet.
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="initial"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="initial"
@@ -180,7 +165,6 @@
                 are treated as stop on image then stop on top of the sheet's content.
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="overlay"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="overlay"
@@ -193,7 +177,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiSheetModule</code>
                     into main module of your app
@@ -206,7 +190,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Add
                     <code>tui-sheets-host</code>
                     to the main template like this:
@@ -219,7 +203,7 @@
             </li>
 
             <li>
-                <p i18n>Use directive or service as shown in examples.</p>
+                <p>Use directive or service as shown in examples.</p>
             </li>
         </ol>
     </ng-template>

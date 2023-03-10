@@ -4,9 +4,9 @@
     path="core/services/svg.service.ts"
 >
     <ng-template pageTab>
-        <p i18n>Service to define SVG to reuse it later</p>
+        <p>Service to define SVG to reuse it later</p>
 
-        <p i18n>
+        <p>
             <strong>Singleton</strong>
             you do not need to provide it, just inject into your component and use it
         </p>
@@ -14,7 +14,6 @@
     <ng-template pageTab>
         <tui-doc-documentation [isAPI]="true">
             <ng-template
-                i18n
                 documentationPropertyName="define"
                 documentationPropertyType="Record<string, string>"
             >
@@ -33,7 +32,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Inject
                     <code>TuiSvgService</code>
                     into your component and define an icon:
@@ -44,7 +43,7 @@
                     [code]="injectService"
                 ></tui-doc-code>
 
-                <p i18n>
+                <p>
                     Show in templates with
                     <code>tui-svg</code>
                     :

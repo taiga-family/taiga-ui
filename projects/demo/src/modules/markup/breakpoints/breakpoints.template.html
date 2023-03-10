@@ -34,7 +34,6 @@
                         tuiTd
                     >
                         <tui-doc-copy
-                            i18n
                             class="copy"
                             [cdkCopyToClipboard]="breakpoint.name"
                         >
@@ -48,7 +47,6 @@
 
         <tui-doc-example
             id="usage"
-            i18n-heading
             heading="Usage"
             [content]="example1"
         >
@@ -59,7 +57,7 @@
     <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p i18n>Add import to your file with styles:</p>
+                <p>Add import to your file with styles:</p>
 
                 <tui-doc-code
                     filename="your-file.styles.less"
@@ -68,7 +66,7 @@
             </li>
 
             <li>
-                <p i18n>Use breakpoints inside media queries:</p>
+                <p>Use breakpoints inside media queries:</p>
 
                 <tui-doc-code
                     filename="your-file.styles.less"

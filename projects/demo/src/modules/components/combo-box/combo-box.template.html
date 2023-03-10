@@ -4,10 +4,7 @@
     type="components"
 >
     <ng-template pageTab>
-        <div
-            i18n
-            class="tui-space_bottom-3"
-        >
+        <div class="tui-space_bottom-3">
             <code>ComboBox</code>
             is a textfield with a dropdown with items. You can choose one of available options or input a value
             manually.
@@ -15,7 +12,6 @@
 
         <tui-doc-example
             id="async"
-            i18n-heading
             heading="Async data loading"
             [content]="example1"
         >
@@ -147,7 +143,7 @@
                 <span>{{ item }}</span>
             </div>
         </ng-template>
-        <div i18n>
+        <div>
             <p>
                 Set a value with copied object from items to check
                 <code>identityMatcher</code>
@@ -166,7 +162,6 @@
 
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -176,7 +171,6 @@
                 )
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="search"
                 documentationPropertyMode="input-output"
                 documentationPropertyType="string | null"
@@ -187,7 +181,6 @@
                 when item from list selected)
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="identityMatcher"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiIdentityMatcher"
@@ -198,7 +191,6 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="strict"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -221,7 +213,6 @@
                 </p>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="strictMatcher"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiStringMatcher | null"
@@ -233,7 +224,6 @@
                 <strong>Should be a pure function</strong>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="stringify"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiStringHandler"
@@ -246,7 +236,6 @@
                 <strong>Should be a pure function</strong>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="valueContent"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
@@ -261,7 +250,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import an Angular module for forms and
                     <code>TuiComboBoxModule</code>
                     in the same module where you want to use our component:
@@ -272,7 +261,7 @@
                     [code]="exampleModule"
                 ></tui-doc-code>
 
-                <p i18n>
+                <p>
                     See samples to learn more about working with
                     <code>tui-data-list-wrapper</code>
                     or without them
@@ -280,7 +269,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Declare a form (
                     <code>FormGroup</code>
                     ) or a control (
@@ -295,7 +284,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

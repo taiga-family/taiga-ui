@@ -4,7 +4,7 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>
+        <p>
             <code>Svg</code>
             is a component for working with SVG-image and its colors.
         </p>
@@ -34,7 +34,6 @@
 
         <tui-doc-example
             id="all"
-            i18n-heading
             heading="All options"
             [content]="example1"
         >
@@ -44,7 +43,6 @@
         <tui-doc-example
             *ngIf="(themeService | async) !== 'Open-source'"
             id="double"
-            i18n-heading
             heading="Two colors"
             [content]="example2"
         >
@@ -62,7 +60,6 @@
 
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="src"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
@@ -73,7 +70,6 @@
                 size with CSS
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="tui-icon-error"
                 documentationPropertyMode="output"
                 documentationPropertyType="CustomEvent<TuiIconError>"
@@ -86,7 +82,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiSvgModule</code>
                     into a module where you want to use our component
@@ -99,7 +95,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

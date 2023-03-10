@@ -4,17 +4,13 @@
     type="components"
 >
     <ng-template pageTab>
-        <div
-            i18n
-            class="tui-space_bottom-3"
-        >
+        <div class="tui-space_bottom-3">
             <code>MultiSelect</code>
             is a textfield with a dropdown for choosing several items
         </div>
 
         <tui-doc-example
             id="string-array"
-            i18n-heading
             heading="String array"
             [content]="example1"
         >
@@ -23,7 +19,6 @@
 
         <tui-doc-example
             id="object-array"
-            i18n-heading
             heading="Custom template, async items loading"
             [content]="example2"
         >
@@ -32,7 +27,6 @@
 
         <tui-doc-example
             id="sizes"
-            i18n-heading
             heading="sizes"
             [content]="example3"
         >
@@ -41,7 +35,6 @@
 
         <tui-doc-example
             id="ids"
-            i18n-heading
             heading="With IDs"
             [content]="example4"
         >
@@ -150,7 +143,7 @@
                 </tui-multi-select>
             </ng-template>
         </tui-doc-demo>
-        <div i18n>
+        <div>
             <p>
                 Set a value with copied object from items to check
                 <code>identityMatcher</code>
@@ -169,7 +162,6 @@
 
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -179,7 +171,6 @@
                 )
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="search"
                 documentationPropertyMode="input-output"
                 documentationPropertyType="string | null"
@@ -190,7 +181,6 @@
                 when item from list selected)
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiBooleanHandler<T>"
@@ -200,7 +190,6 @@
                 Handler for deactivation some items
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="editable"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -209,7 +198,6 @@
                 Textfield can be use for typing
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="expandable"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -218,7 +206,6 @@
                 Control height can be expanded to show all tags
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="rows"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -229,7 +216,6 @@
                 mode
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="identityMatcher"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiIdentityMatcher"
@@ -240,7 +226,6 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="stringify"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiStringHandler"
@@ -253,7 +238,6 @@
                 <strong>Should be a pure function</strong>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="valueContent"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
@@ -263,7 +247,6 @@
                 A template for custom view of selected value
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="placeholder"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
@@ -278,7 +261,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import an Angular module for forms and
                     <code>TuiMultiSelectModule</code>
                     in the same module where you want to use our component:
@@ -289,7 +272,7 @@
                     [code]="exampleModule"
                 ></tui-doc-code>
 
-                <p i18n>
+                <p>
                     See samples to learn more about working with
                     <code>tui-data-list-wrapper</code>
                     or without them
@@ -297,7 +280,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Declare a form (
                     <code>FormGroup</code>
                     ) or a control (
@@ -312,7 +295,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

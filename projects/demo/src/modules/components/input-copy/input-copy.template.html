@@ -4,11 +4,10 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>InputCopy alows user to copy a text of textfield</p>
+        <p>InputCopy alows user to copy a text of textfield</p>
 
         <tui-doc-example
             id="example-size"
-            i18n-heading
             heading="sizes"
             [content]="example1"
         >
@@ -48,7 +47,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -58,7 +56,6 @@
                 )
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="successMessage"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
@@ -68,7 +65,6 @@
                 Tooltip message after successfull copy
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="messageDirection"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDirection"
@@ -78,7 +74,6 @@
                 Message tooltip direction
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="messageMode"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiHintModeT | null"
@@ -91,7 +86,6 @@
         <inherited-documentation></inherited-documentation>
         <tui-doc-documentation heading="CSS customization">
             <ng-template
-                i18n
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 documentationPropertyName="style.text-align"
@@ -110,7 +104,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiInputCopyModule</code>
                     into a module where you want to use our component
@@ -123,7 +117,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Declare a form (
                     <code>FormGroup</code>
                     ) or a control (
@@ -138,7 +132,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

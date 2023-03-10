@@ -4,14 +4,13 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>
+        <p>
             <code>InputPhone</code>
             allows to input a phone number
         </p>
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -27,7 +26,6 @@
 
         <tui-doc-example
             id="validated"
-            i18n-heading
             heading="With length validator"
             [content]="example2"
         >
@@ -36,8 +34,6 @@
 
         <tui-doc-example
             id="autocomplete"
-            i18n-heading
-            i18n-description
             heading="With autocomplete"
             description="By number and by name"
             [content]="example3"
@@ -83,7 +79,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -93,7 +88,6 @@
                 )
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="countryCode"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
@@ -103,7 +97,6 @@
                 Country code
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="phoneMaskAfterCountryCode"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
@@ -117,7 +110,6 @@
                 and spaces as a template symbol
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="search"
                 documentationPropertyMode="input-output"
                 documentationPropertyType="string"
@@ -128,7 +120,6 @@
         <inherited-documentation [dropdown]="true"></inherited-documentation>
         <tui-doc-documentation heading="CSS customization">
             <ng-template
-                i18n
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 documentationPropertyName="style.text-align"
@@ -143,7 +134,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import an Angular module for forms and
                     <code>TuiInputPhoneModule</code>
                     in the same module where you want to use our component:
@@ -156,7 +147,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Declare a form (
                     <code>FormGroup</code>
                     ) or a control (
@@ -171,7 +162,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

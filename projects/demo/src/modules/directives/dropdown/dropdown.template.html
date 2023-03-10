@@ -4,10 +4,7 @@
     type="directives"
 >
     <ng-template pageTab>
-        <div
-            i18n
-            class="tui-space_bottom-3"
-        >
+        <div class="tui-space_bottom-3">
             <code>tuiDropdown</code>
             shows a dropdown with custom template. Use
             <a
@@ -19,7 +16,7 @@
             directive to hide dropdown.
         </div>
 
-        <p i18n>
+        <p>
             See also
             <a
                 tuiLink
@@ -31,7 +28,6 @@
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -40,7 +36,6 @@
 
         <tui-doc-example
             id="full-featured"
-            i18n-heading
             heading="Interesting one"
             [content]="example2"
         >
@@ -49,7 +44,6 @@
 
         <tui-doc-example
             id="change-detection"
-            i18n-heading
             heading="Change detection"
             [content]="example3"
         >
@@ -78,10 +72,7 @@
                     <i>* There is also a pretty long text to check its width limitations</i>
                 </button>
                 <ng-template #dropdownContent>
-                    <div
-                        i18n
-                        class="dropdown"
-                    >
+                    <div class="dropdown">
                         Here can be any content
                         <p>You can even insert other components:</p>
                         <button
@@ -98,7 +89,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="tuiDropdownManual"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -107,7 +97,6 @@
                 Show dropdown (basic manual implementation, see related pages for other options)
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="tuiDropdown"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
@@ -121,7 +110,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiDropdownModule</code>
                     into a module where you want to use our component
@@ -134,7 +123,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

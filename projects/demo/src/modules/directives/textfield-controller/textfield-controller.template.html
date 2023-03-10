@@ -1,11 +1,10 @@
 <tui-doc-page
-    i18n-header
     header="TextfieldController"
     package="CORE"
     type="directives"
 >
     <ng-template pageTab>
-        <p i18n>
+        <p>
             Directive allows to customize
             <a
                 tuiLink
@@ -17,7 +16,7 @@
             with parameters that it adds into DI tree.
         </p>
 
-        <p i18n>
+        <p>
             That means that you can use the directive on any root element and it will customize all textfields in this
             scope. Most Taiga UI form controls are based on
             <a
@@ -30,14 +29,13 @@
             and thus accept these options.
         </p>
 
-        <p i18n>
+        <p>
             If there are several controllers above textfield, their values will be merged. The nearest directives are in
             priority.
         </p>
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -60,7 +58,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="tuiTextfieldCleaner"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -69,7 +66,6 @@
                 Shows a cross to reset a value
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="tuiTextfieldCustomContent"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
@@ -87,7 +83,6 @@
                 </a>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="tuiTextfieldLabelOutside"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -102,7 +97,6 @@
                 </a>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="tuiTextfieldSize"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeS | TuiSizeL"
@@ -114,13 +108,10 @@
         </tui-doc-documentation>
     </ng-template>
 
-    <ng-template
-        i18n-pageTab
-        pageTab="Setup"
-    >
+    <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiTextfieldControllerModule</code>
                     in the same module where you want to use the directive:
@@ -133,7 +124,7 @@
             </li>
 
             <li>
-                <p i18n>Use it on Taiga UI controls or parent elements</p>
+                <p>Use it on Taiga UI controls or parent elements</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

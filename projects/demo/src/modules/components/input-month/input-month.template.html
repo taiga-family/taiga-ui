@@ -4,11 +4,10 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>Component to input a single month</p>
+        <p>Component to input a single month</p>
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -24,7 +23,6 @@
 
         <tui-doc-example
             id="sizes"
-            i18n-heading
             heading="sizes"
             [content]="example2"
         >
@@ -58,7 +56,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -68,7 +65,6 @@
                 )
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiBooleanHandler<TuiMonth>"
@@ -80,7 +76,6 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="min"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMonth"
@@ -90,7 +85,6 @@
                 Minimum date
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="max"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMonth"
@@ -103,7 +97,6 @@
         <inherited-documentation></inherited-documentation>
         <tui-doc-documentation heading="CSS customization">
             <ng-template
-                i18n
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 documentationPropertyName="style.text-align"
@@ -118,7 +111,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>InputMonthModule</code>
                     into a module where you want to use our component
@@ -131,7 +124,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Declare a form (
                     <code>FormGroup</code>
                     ) or a control (
@@ -146,7 +139,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Insert a
                     <code>TuiInoutMonthComponent</code>
                     in the template:

@@ -4,11 +4,10 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>Link component. It has focus highlight and can be customized with an icon</p>
+        <p>Link component. It has focus highlight and can be customized with an icon</p>
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -17,7 +16,6 @@
 
         <tui-doc-example
             id="with-icon"
-            i18n-heading
             heading="With icon"
             [content]="example2"
         >
@@ -26,7 +24,6 @@
 
         <tui-doc-example
             id="modes"
-            i18n-heading
             heading="Modes"
             [content]="example3"
         >
@@ -35,7 +32,6 @@
 
         <tui-doc-example
             id="long-text"
-            i18n-heading
             heading="With long text"
             [content]="example4"
         >
@@ -74,20 +70,20 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="mode"
                 documentationPropertyMode="input"
-                documentationPropertyType="'positive' | 'negative' | null"
+                documentationPropertyType="'positive'
+                | 'negative' | null"
                 [documentationPropertyValues]="modeValues"
                 [(documentationPropertyValue)]="mode"
             >
                 Link mode
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="icon"
                 documentationPropertyMode="input"
-                documentationPropertyType="string | null"
+                documentationPropertyType="string |
+                null"
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="icon"
             >
@@ -100,7 +96,6 @@
                 </a>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="iconAlign"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
@@ -112,7 +107,6 @@
                 by default
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="iconRotated"
                 documentationPropertyType="boolean"
                 documentationPropertyMode="input"
@@ -121,7 +115,6 @@
                 Rotate icon 180 deg (for dropdowns)
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="pseudo"
                 documentationPropertyType="boolean"
                 documentationPropertyMode="input"
@@ -144,7 +137,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiLinkModule</code>
                     into a module where you want to use our component
@@ -157,7 +150,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

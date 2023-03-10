@@ -4,16 +4,13 @@
     type="components"
 >
     <ng-template pageTab>
-        <div
-            i18n
-            class="tui-space_bottom-9"
-        >
+        <div class="tui-space_bottom-9">
             <code>InputDate</code>
             – input with a calendar.
         </div>
 
-        <h3 i18n>DI-tokens for date localization:</h3>
-        <dl i18n>
+        <h3>DI-tokens for date localization:</h3>
+        <dl>
             <dt>
                 <code>TUI_DATE_FORMAT</code>
             </dt>
@@ -38,8 +35,8 @@
             with the usage of these tokens.
         </p>
 
-        <h3 i18n>DI-tokens for input-configurations:</h3>
-        <dl i18n>
+        <h3>DI-tokens for input-configurations:</h3>
+        <dl>
             <dt>
                 <code>TUI_DATE_VALUE_TRANSFORMER</code>
             </dt>
@@ -78,7 +75,6 @@
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -87,7 +83,6 @@
 
         <tui-doc-example
             id="sizes"
-            i18n-heading
             heading="sizes"
             [content]="example2"
         >
@@ -96,7 +91,6 @@
 
         <tui-doc-example
             id="named"
-            i18n-heading
             heading="With named dates"
             [content]="example3"
         >
@@ -105,7 +99,6 @@
 
         <tui-doc-example
             id="date-localization"
-            i18n-heading
             heading="Date localization"
             [content]="example4"
         >
@@ -114,7 +107,6 @@
 
         <tui-doc-example
             id="native-date-output"
-            i18n-heading
             heading="With native Date output"
             [content]="example5"
         >
@@ -123,7 +115,6 @@
 
         <tui-doc-example
             id="native-input-date"
-            i18n-heading
             heading="Native input date"
             [content]="example6"
         >
@@ -161,7 +152,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -171,7 +161,6 @@
                 )
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiBooleanHandler<TuiDay>"
@@ -183,7 +172,6 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="items"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiNamedDay[]"
@@ -193,7 +181,6 @@
                 A list of preset dates for dropdown
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="markerHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMarkerHandler"
@@ -203,7 +190,6 @@
                 A handler that gets date and returns null or a tuple with circled marker colors
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="min"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDay"
@@ -213,7 +199,6 @@
                 Minimum date
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="max"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDay"
@@ -226,7 +211,6 @@
         <inherited-documentation [dropdown]="true"></inherited-documentation>
         <tui-doc-documentation heading="CSS customization">
             <ng-template
-                i18n
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 documentationPropertyName="style.text-align"
@@ -239,7 +223,7 @@
     </ng-template>
 
     <ng-template pageTab>
-        <p i18n>
+        <p>
             Mobile calendar does not use the same dropdown with calendar as desktop uses. It uses digital keyboard. If
             you want to open
             <a
@@ -263,7 +247,7 @@
 
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import an Angular module for forms and
                     <code>TuiInputDateModule</code>
                     in the same module where you want to use our component:
@@ -276,7 +260,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Declare a form (
                     <code>FormGroup</code>
                     ) or a control (

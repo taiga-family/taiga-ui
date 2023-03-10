@@ -4,14 +4,14 @@
     path="core/components/alert/alert.service.ts"
 >
     <ng-template pageTab>
-        <p i18n>Service to show notifications</p>
-        <p i18n>
+        <p>Service to show notifications</p>
+        <p>
             Do not forget to add
             <code>TuiAlertModule</code>
             into your app.module to use it
         </p>
 
-        <p i18n>
+        <p>
             <strong>Singleton</strong>
             you do not need to provide a service. It is just available to inject
         </p>
@@ -42,7 +42,6 @@
 
         <tui-doc-example
             id="data"
-            i18n-heading
             heading="Component with data"
             [content]="example4"
         >
@@ -51,7 +50,6 @@
 
         <tui-doc-example
             id="label"
-            i18n-heading
             heading="Component with custom label"
             [content]="example5"
         >
@@ -68,10 +66,7 @@
         >
             Show
         </button>
-        <div
-            i18n
-            class="b-full-width"
-        >
+        <div class="b-full-width">
             <p>To show notification, use method</p>
             <tui-doc-code
                 class="tui-space_bottom-4"
@@ -98,7 +93,6 @@
         </div>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="content"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="contentVariants"
@@ -107,13 +101,12 @@
                 Content
             </ng-template>
         </tui-doc-documentation>
-        <p i18n>
+        <p>
             <code>TuiNotificationOptionsWithData</code>
             interface:
         </p>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="status"
                 documentationPropertyType="TuiNotification"
                 [documentationPropertyValues]="statusVariants"
@@ -122,7 +115,6 @@
                 Status
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="label"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="label"
@@ -130,7 +122,6 @@
                 Heading
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="data"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="data"
@@ -138,7 +129,6 @@
                 Input data of notification, type &lt;I&gt;
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="autoClose"
                 documentationPropertyType="boolean | number"
                 [documentationPropertyValues]="autoCloseVariants"
@@ -147,7 +137,6 @@
                 Autoclose after 3 seconds
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="hasCloseButton"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="hasCloseButton"
@@ -155,7 +144,6 @@
                 Has close button
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="hasIcon"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="hasIcon"
@@ -167,7 +155,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Add
                     <code>TuiAlertModule</code>
                     into your app.module
@@ -180,7 +168,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Use service
                     <code>show</code>
                     method and subscribe to
@@ -193,7 +181,7 @@
                 ></tui-doc-code>
             </li>
 
-            <li i18n>
+            <li>
                 To pass notification with custom content, you can use
                 <a
                     routerLink="/services/alert-service"
@@ -206,7 +194,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     You can also customize notification logic with a component. Use
                     <code>POLYMORPHEUS_CONTEXT</code>
                     into the component to get context input data and to output results. It has the following interface:
@@ -220,7 +208,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Use
                     <code>new PolymorpheusComponent(CustomNotificationComponent)</code>
                     to show notification component with a service:
@@ -233,7 +221,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Use
                     <code>completeWith</code>
                     method to control notification from itself:
@@ -246,7 +234,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     If you use it from lazy loading modules, do not forget to use
                     <code>new TuiComponentContent Injector</code>
                     of component where you call it
@@ -259,7 +247,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Optionally use the
                     <code>TUI_NOTIFICATION_OPTIONS</code>
                     injection token to override the default options (works only in app.module.ts).

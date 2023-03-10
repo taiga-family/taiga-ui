@@ -3,15 +3,11 @@
     package="ADDON-TABLE"
     type="components"
 >
-    <ng-template
-        i18n
-        pageTab
-    >
+    <ng-template pageTab>
         <p>This module allows you to filter table data in a flexible way.</p>
 
         <tui-doc-example
             id="basic"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -22,7 +18,7 @@
     <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiTableFiltersModule</code>
                     into a module where you want to filter data for your table
@@ -35,7 +31,7 @@
             </li>
 
             <li>
-                <p i18n>Add directives and pipe to the template:</p>
+                <p>Add directives and pipe to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

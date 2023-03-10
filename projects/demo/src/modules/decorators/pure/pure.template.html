@@ -1,23 +1,17 @@
 <tui-doc-page
-    i18n-header
     header="Pure"
     package="CDK"
     path="cdk/decorators/pure.ts"
 >
     <ng-template pageTab>
-        <div
-            i18n
-            class="tui-space_bottom-3"
-        >
-            Decorator for memoization of pure methods and getters
-        </div>
+        <div class="tui-space_bottom-3">Decorator for memoization of pure methods and getters</div>
 
-        <p i18n>
+        <p>
             Decorator can help to cache result of methods or getters that can be computed once in the first call. The
             next calls to getter will just use computed static value.
         </p>
 
-        <p i18n>
+        <p>
             If you use decorator with methods, it does not compute the result again if arguments did not change after
             the last call (concept similar to Angular pure pipes)
         </p>
@@ -42,7 +36,7 @@
     <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Add
                     <code>@tuiPure</code>
                     decorator for your method or getter:

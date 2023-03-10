@@ -4,14 +4,9 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>
-            Component to refresh content after pull top. It emulates appearance of native iOS and Android components
-        </p>
+        <p>Component to refresh content after pull top. It emulates appearance of native iOS and Android components</p>
 
-        <tui-notification
-            i18n
-            class="tui-space_top-4"
-        >
+        <tui-notification class="tui-space_top-4">
             <div>
                 It emits
                 <code>(pulled)</code>
@@ -41,13 +36,10 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        i18n-pageTab
-        pageTab="Setup"
-    >
+    <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiPullToRefreshModule</code>
                     into a module where you want to use our component
@@ -60,7 +52,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

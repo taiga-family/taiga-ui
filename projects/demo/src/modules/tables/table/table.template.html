@@ -3,15 +3,11 @@
     package="ADDON-TABLE"
     type="components"
 >
-    <ng-template
-        i18n
-        pageTab
-    >
+    <ng-template pageTab>
         <p>This module allows you to create various tables, both static and editable.</p>
 
         <tui-doc-example
             id="basic"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -20,7 +16,6 @@
 
         <tui-doc-example
             id="custom"
-            i18n-heading
             heading="Custom"
             [content]="example2"
         >
@@ -29,7 +24,6 @@
 
         <tui-doc-example
             id="editable"
-            i18n-heading
             heading="Editable"
             [content]="example3"
         >
@@ -38,7 +32,6 @@
 
         <tui-doc-example
             id="server"
-            i18n-heading
             heading="Server sorting"
             description="With tuiSortBy directive to work with column titles instead of sorters"
             [content]="example4"
@@ -48,7 +41,6 @@
 
         <tui-doc-example
             id="virtual"
-            i18n-heading
             heading="Virtual scroll"
             [content]="example5"
             [description]="cdkVirtualScrollDescription"
@@ -74,7 +66,6 @@
 
         <tui-doc-example
             id="dynamic"
-            i18n-heading
             heading="Dynamic columns"
             [content]="example6"
         >
@@ -91,7 +82,6 @@
                     <p>Parent directive that sets the table up.</p>
                     <tui-doc-documentation [showValues]="false">
                         <ng-template
-                            i18n
                             documentationPropertyName="columns"
                             documentationPropertyMode="input"
                             documentationPropertyType="readonly string[]"
@@ -99,7 +89,6 @@
                             An array of keys to set up columns order
                         </ng-template>
                         <ng-template
-                            i18n
                             documentationPropertyName="size"
                             documentationPropertyMode="input"
                             documentationPropertyType="TuiSizeS | TuiSizeL"
@@ -107,7 +96,6 @@
                             Cells size
                         </ng-template>
                         <ng-template
-                            i18n
                             documentationPropertyName="sorter"
                             documentationPropertyMode="input-output"
                             documentationPropertyType="TuiComparator<T>"
@@ -115,7 +103,6 @@
                             Sort function (basic JavaScript array sort API)
                         </ng-template>
                         <ng-template
-                            i18n
                             documentationPropertyName="direction"
                             documentationPropertyMode="input-output"
                             documentationPropertyType="-1 | 1"
@@ -156,7 +143,6 @@
                     </p>
                     <tui-doc-documentation [showValues]="false">
                         <ng-template
-                            i18n
                             documentationPropertyName="resizable"
                             documentationPropertyMode="input"
                             documentationPropertyType="boolean"
@@ -164,7 +150,6 @@
                             Makes this column resizable
                         </ng-template>
                         <ng-template
-                            i18n
                             documentationPropertyName="sorter"
                             documentationPropertyMode="input"
                             documentationPropertyType="TuiComparator<T> | null"
@@ -172,7 +157,6 @@
                             Sorter function for this column
                         </ng-template>
                         <ng-template
-                            i18n
                             documentationPropertyName="sticky"
                             documentationPropertyMode="input"
                             documentationPropertyType="boolean"
@@ -191,7 +175,6 @@
                     </p>
                     <tui-doc-documentation [showValues]="false">
                         <ng-template
-                            i18n
                             documentationPropertyName="data"
                             documentationPropertyMode="input"
                             documentationPropertyType="readonly T[]"
@@ -199,7 +182,6 @@
                             Data to display
                         </ng-template>
                         <ng-template
-                            i18n
                             documentationPropertyName="heading"
                             documentationPropertyMode="input"
                             documentationPropertyType="PolymorpheusContent"
@@ -207,7 +189,6 @@
                             Optional heading content for the group that makes it collapsable
                         </ng-template>
                         <ng-template
-                            i18n
                             documentationPropertyName="open"
                             documentationPropertyMode="input-output"
                             documentationPropertyType="boolean"
@@ -276,7 +257,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiTableModule</code>
                     into a module where you want to use our component
@@ -289,7 +270,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

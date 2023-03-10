@@ -5,13 +5,6 @@
     "sourceRoot": "projects/demo/src",
     "projectType": "application",
     "prefix": "app",
-    "schematics": {},
-    "i18n": {
-        "sourceLocale": "en-US",
-        "locales": {
-            "ru": "projects/demo/src/locale/messages.ru.xlf"
-        }
-    },
     "targets": {
         "i18n": {
             "executor": "nx:run-commands",
@@ -286,12 +279,6 @@
             },
             "configurations": {
                 "production": {}
-            }
-        },
-        "extract-i18n": {
-            "executor": "@angular-builders/custom-webpack:extract-i18n",
-            "options": {
-                "browserTarget": "demo:build"
             }
         },
         "test": {

@@ -4,11 +4,10 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>Inline field</p>
+        <p>Inline field</p>
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -17,7 +16,6 @@
 
         <tui-doc-example
             id="in-heading"
-            i18n-heading
             heading="In heading"
             [content]="example2"
         >
@@ -26,7 +24,6 @@
 
         <tui-doc-example
             id="dynamic-increment"
-            i18n-heading
             heading="Dynamic counter increment (3 sec)"
             [content]="example3"
         >
@@ -49,7 +46,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -59,7 +55,6 @@
                 )
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="maxLength"
                 documentationPropertyMode="input"
                 documentationPropertyType="number | null"
@@ -71,7 +66,6 @@
         </tui-doc-documentation>
         <tui-doc-documentation heading="CSS customization">
             <ng-template
-                i18n
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
                 documentationPropertyName="style.float"
@@ -86,7 +80,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiInputInlineModule</code>
                     into a module where you want to use our component
@@ -99,7 +93,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

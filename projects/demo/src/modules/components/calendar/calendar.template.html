@@ -23,7 +23,6 @@
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -32,7 +31,6 @@
 
         <tui-doc-example
             id="range"
-            i18n-heading
             heading="range"
             [content]="example2"
         >
@@ -41,7 +39,6 @@
 
         <tui-doc-example
             id="markers"
-            i18n-heading
             heading="With markers"
             [content]="example3"
         >
@@ -50,7 +47,6 @@
 
         <tui-doc-example
             id="localization"
-            i18n-heading
             heading="Localization"
             [content]="example4"
             [description]="localizationDescription"
@@ -71,7 +67,6 @@
 
         <tui-doc-example
             id="color"
-            i18n-heading
             heading="Color customization"
             [content]="example5"
             [description]="colorDescription"
@@ -104,7 +99,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiBooleanHandler<TuiDay>"
@@ -116,7 +110,6 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="showAdjacent"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -125,7 +118,6 @@
                 Show adjacent months days
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="hoveredItem"
                 documentationPropertyMode="input-output"
                 documentationPropertyType="TuiDay | null"
@@ -134,7 +126,6 @@
                 Hovered date
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="markerHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMarkerHandler"
@@ -144,7 +135,6 @@
                 A handler that gets date and returns null or a tuple with circled marker colors
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="max"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDay"
@@ -154,7 +144,6 @@
                 Maximal date to choose
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="maxViewedMonth"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMonth"
@@ -164,7 +153,6 @@
                 Maximal month to access
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="min"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDay"
@@ -174,7 +162,6 @@
                 Minimum date to choose
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="minViewedMonth"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiMonth"
@@ -184,7 +171,6 @@
                 Minimum month to access
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="month"
                 documentationPropertyMode="input-output"
                 documentationPropertyType="TuiMonth"
@@ -193,7 +179,6 @@
                 Current month
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="value"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDay | TuiDayRange | null"
@@ -203,7 +188,6 @@
                 Selected day or range
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="dayClick"
                 documentationPropertyMode="output"
                 documentationPropertyType="TuiDay"
@@ -216,7 +200,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiCalendarModule</code>
                     into a module where you want to use our component
@@ -229,7 +213,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"
