@@ -12,18 +12,13 @@ import {TUI_MEDIA} from '../tokens';
 @Injectable()
 export class TuiBreakpointService extends Observable<string | null> {
     constructor(@Inject(TUI_MEDIA) media: TuiMedia, @Inject(WINDOW) windowRef: Window) {
-        const breakpoints = tuiGetBreakpoints(media);
-        const events$ = breakpoints.map(breakpoint =>
-            fromEvent<MediaQueryListEvent>(
-                windowRef.matchMedia(breakpoint.query),
-                `change`,
-            ),
+        const breakpoints = getBreakpoints(media);
+        const events$ = breakpoints.map(({query}) =>
+            fromEvent<MediaQueryListEvent>(windowRef.matchMedia(query), `change`),
         );
         const media$ = merge(...events$).pipe(
-            map(event => event.media),
-            map(media => breakpoints.find(breakpoint => breakpoint.query === media)!),
-            startWith(tuiCurrentBreakpoint(breakpoints, windowRef)),
-            map(media => media.name),
+            map(({media}) => breakpoints.find(({query}) => query === media)!.name),
+            startWith(currentBreakpoint(breakpoints, windowRef).name),
             share(),
         );
 
@@ -31,23 +26,18 @@ export class TuiBreakpointService extends Observable<string | null> {
     }
 }
 
-export interface TuiBreakpoint {
+interface Breakpoint {
     name: string;
     query: string;
 }
 
-export function tuiGetBreakpoints(media: TuiMedia): TuiBreakpoint[] {
+function getBreakpoints(media: TuiMedia): Breakpoint[] {
     return Object.entries(media).map(([name, value]) => ({
         name,
         query: `(max-width: ${value - 1}px)`,
     }));
 }
 
-export function tuiCurrentBreakpoint(
-    breakpoints: TuiBreakpoint[],
-    windowRef: Window,
-): TuiBreakpoint {
-    return breakpoints.find(
-        breakpoint => windowRef.matchMedia(breakpoint.query).matches,
-    )!;
+function currentBreakpoint(breakpoints: Breakpoint[], windowRef: Window): Breakpoint {
+    return breakpoints.find(({query}) => windowRef.matchMedia(query).matches)!;
 }

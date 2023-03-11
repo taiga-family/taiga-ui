@@ -4,12 +4,7 @@ import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiMedia} from '../../interfaces';
 import {TUI_MEDIA} from '../../tokens';
-import {
-    TuiBreakpoint,
-    TuiBreakpointService,
-    tuiCurrentBreakpoint,
-    tuiGetBreakpoints,
-} from '../breakpoint.service';
+import {TuiBreakpointService} from '../breakpoint.service';
 
 describe(`TuiBreakpointService`, () => {
     const mock: HTMLDivElement = document.createElement(`div`);
@@ -52,30 +47,6 @@ describe(`TuiBreakpointService`, () => {
 
     it(`should create`, () => {
         expect(service).toBeTruthy();
-    });
-
-    it(`should return an array of breakpoint objects`, () => {
-        const media = TestBed.inject(TUI_MEDIA);
-
-        expect(tuiGetBreakpoints(media)).toEqual([
-            {name: `mobile`, query: `(max-width: 767px)`},
-            {name: `desktopSmall`, query: `(max-width: 1023px)`},
-            {name: `desktopLarge`, query: `(max-width: 1279px)`},
-        ]);
-    });
-
-    it(`should return the correct breakpoint object`, () => {
-        const breakpoints: TuiBreakpoint[] = [
-            {name: `mobile`, query: `(max-width: 767px)`},
-            {name: `desktopSmall`, query: `(max-width: 1023px)`},
-            {name: `desktopLarge`, query: `(max-width: 1279px)`},
-        ];
-        const windowRef = TestBed.inject(WINDOW);
-
-        expect(tuiCurrentBreakpoint(breakpoints, windowRef)).toEqual({
-            name: `mobile`,
-            query: `(max-width: 767px)`,
-        });
     });
 
     it(`should emit the current breakpoint name when subscribed to`, () => {
