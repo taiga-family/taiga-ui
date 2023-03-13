@@ -104,4 +104,42 @@ describe(`Dialogs`, () => {
             });
         });
     }
+
+    describe(`dismissible & closeable`, () => {
+        it(`dismissible = false, closeable = false`, () => {
+            cy.tuiVisit(`components/dialog/API?closeable=true&dismissible=false`);
+
+            cy.get(`tui-doc-page .t-content button`).first().click();
+            cy.tuiWaitBeforeAction()
+                .get(`tui-dialog`)
+                .should(`exist`)
+                .trigger(`click`, {x: 100, y: 100, force: true})
+                .tuiWaitBeforeAction();
+            cy.get(`tui-dialog`).should(`be.visible`);
+        });
+
+        it(`dismissible = true, closeable = false`, () => {
+            cy.tuiVisit(`components/dialog/API?closeable=false&dismissible=true`);
+
+            cy.get(`tui-doc-page .t-content button`).first().click();
+            cy.get(`tui-dialog`)
+                .should(`exist`)
+                .trigger(`click`, {x: 10, y: 10, force: true})
+                .tuiWaitBeforeAction()
+                .should(`not.exist`);
+        });
+
+        it(`dismissible = false, closeable = true`, () => {
+            cy.tuiVisit(`components/dialog/API?closeable=true&dismissible=false`);
+
+            cy.get(`tui-doc-page .t-content button`).first().click();
+            cy.get(`tui-dialog`)
+                .should(`be.visible`)
+                .trigger(`click`, {x: 100, y: 100, force: true});
+
+            cy.getByAutomationId(`tui-dialog__close`).click();
+
+            cy.tuiWaitBeforeAction().get(`tui-dialog`).should(`not.exist`);
+        });
+    });
 });
