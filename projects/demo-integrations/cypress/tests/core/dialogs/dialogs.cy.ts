@@ -75,32 +75,51 @@ describe(`Dialogs`, () => {
             });
 
             it(`Dialog with confirmation works`, () => {
-                cy.get(`tui-dialog-example-8 button`).first().click();
+                beforeEach(() => {
+                    cy.get(`tui-dialog-example-8 button`).first().click();
 
-                cy.tuiHide(`tui-doc-page`);
-                cy.tuiWaitKitDialog();
+                    cy.tuiHide(`tui-doc-page`);
+                    cy.tuiWaitKitDialog();
 
-                cy.get(`tui-dialog`)
-                    .last()
-                    .tuiWaitBeforeScreenshot()
-                    .matchImageSnapshot(`${index}-7-dialogs`);
+                    cy.get(`tui-dialog`)
+                        .last()
+                        .tuiWaitBeforeScreenshot()
+                        .matchImageSnapshot(`${index}-7-dialogs`);
+                });
 
-                cy.get(`tui-dialog .t-close`).click();
-                cy.tuiWaitKitDialog();
+                it(`Pristine form does not show prompt`, () => {
+                    cy.get(`tui-dialog .t-close`).click();
+                    cy.tuiWaitKitDialog();
 
-                cy.get(`tui-dialog`)
-                    .last()
-                    .tuiWaitBeforeScreenshot()
-                    .matchImageSnapshot(`${index}-7-dialogs-prompt`);
+                    cy.get(`tui-dialog`).should(`not.exist`);
+                });
 
-                cy.get(`tui-prompt .t-button`).last().click();
+                it(`Dirty form shows prompt`, () => {
+                    cy.get(`tui-dialog input`).type(`Test`);
+                    cy.get(`tui-dialog .t-close`).click();
+                    cy.tuiWaitKitDialog();
 
-                cy.tuiShow(`tui-doc-page`);
+                    cy.get(`tui-dialog`)
+                        .last()
+                        .tuiWaitBeforeScreenshot()
+                        .matchImageSnapshot(`${index}-7-dialogs-prompt`);
+                });
 
-                cy.tuiWaitBeforeScreenshot().matchImageSnapshot(
-                    `${index}-7-dialogs-prompt-gone`,
-                    {capture: `viewport`},
-                );
+                it(`Form is reset to pristine`, () => {
+                    cy.get(`tui-dialog input`).type(`Test`);
+                    cy.get(`tui-dialog .t-close`).click();
+                    cy.tuiWaitKitDialog();
+                    cy.get(`tui-prompt .t-button`).last().click();
+
+                    cy.get(`tui-dialog`).should(`not.exist`);
+
+                    cy.get(`tui-dialog-example-8 button`).first().click();
+                    cy.tuiWaitKitDialog();
+                    cy.get(`tui-dialog .t-close`).click();
+                    cy.tuiWaitKitDialog();
+
+                    cy.get(`tui-dialog`).should(`not.exist`);
+                });
             });
         });
     }

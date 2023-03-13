@@ -12,7 +12,8 @@
 >
     <tui-input
         class="tui-space_bottom-3"
-        [ngModel]="''"
+        [ngModel]="value"
+        (ngModelChange)="onModelChange($event)"
     >
         Your name
     </tui-input>
