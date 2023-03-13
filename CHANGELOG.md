@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.21.0](https://github.com/tinkoff/taiga-ui/compare/v3.20.0...v3.21.0) (2023-03-13)
+
+### Features
+
+- **demo:** add example with named outlets ([#3821](https://github.com/tinkoff/taiga-ui/issues/3821))
+  ([5e897f7](https://github.com/tinkoff/taiga-ui/commit/5e897f79ec26d7fc9d68461dfb07f3c16824a9bf))
+
+### Bug Fixes
+
+- **cdk:** improve type annotation for `tuiForAsync` ([#3767](https://github.com/tinkoff/taiga-ui/issues/3767))
+  ([731c8bf](https://github.com/tinkoff/taiga-ui/commit/731c8bfe772f17a5a22f5ec79b6bd117e483e0c2))
+- **core:** `Textarea` fix line breaks in disabled/readonly state
+  ([#3833](https://github.com/tinkoff/taiga-ui/issues/3833))
+  ([301a505](https://github.com/tinkoff/taiga-ui/commit/301a505712d22df2538b0aa3199f5d4e6a3de959))
+- **kit:** `InputCount` fix formatting, fix cutting by min value, use `InputNumber` inside
+  ([#3824](https://github.com/tinkoff/taiga-ui/issues/3824))
+  ([fc96c86](https://github.com/tinkoff/taiga-ui/commit/fc96c8682b98fead3c3247afb7d9041b59b54bef))
+- **kit:** `InputTag`, `Multiselect` fix placeholder ([#3832](https://github.com/tinkoff/taiga-ui/issues/3832))
+  ([75d4b6e](https://github.com/tinkoff/taiga-ui/commit/75d4b6efbe5bc9f607b74b711352c592e358b006))
+
 ## [3.20.0](https://github.com/tinkoff/taiga-ui/compare/v3.19.0...v3.20.0) (2023-03-07)
 
 ### Features
