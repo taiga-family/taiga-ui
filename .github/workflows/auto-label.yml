@@ -1,4 +1,4 @@
-name: Auto label
+name: 🤖 Auto label
 
 on: pull_request_review
 

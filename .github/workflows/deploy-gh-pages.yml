@@ -1,4 +1,4 @@
-name: Deploy to Github Pages (taiga-ui.dev)
+name: 🚀 Deploy to Github Pages (taiga-ui.dev)
 
 on:
   workflow_run:

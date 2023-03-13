@@ -1,4 +1,4 @@
-name: Bundle size check
+name: ⚙️ Bundle size check
 
 on:
   push:
