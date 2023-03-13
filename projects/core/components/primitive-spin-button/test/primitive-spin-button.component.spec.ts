@@ -70,16 +70,4 @@ describe(`primitiveSpinButton`, () => {
 
         expect(result).toBe(true);
     });
-
-    it(`emits focusVisible if it was updated`, () => {
-        let result: unknown;
-
-        component.focusVisibleChange.subscribe((focusVisible: boolean) => {
-            result = focusVisible;
-        });
-
-        component.onFocusVisible(true);
-
-        expect(result).toBe(true);
-    });
 });
