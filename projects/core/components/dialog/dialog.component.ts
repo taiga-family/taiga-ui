@@ -58,11 +58,19 @@ export class TuiDialogComponent<O, I> {
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
     ) {
         merge(
-            merge(dialogClose$, this.close$).pipe(
+            this.close$.pipe(
                 switchMap(() =>
                     isObservable(context.closeable)
                         ? context.closeable
                         : of(context.closeable),
+                ),
+                filter(Boolean),
+            ),
+            dialogClose$.pipe(
+                switchMap(() =>
+                    isObservable(context.dismissible)
+                        ? context.dismissible
+                        : of(context.dismissible),
                 ),
                 filter(Boolean),
             ),
