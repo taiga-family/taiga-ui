@@ -1,11 +1,10 @@
 <tui-doc-page
-    i18n-header
     header="DropdownContext"
     package="CORE"
     type="directives"
 >
     <ng-template pageTab>
-        <p i18n>
+        <p>
             <code>DropdownContext</code>
             allows to show custom right click context dropdown.
         </p>
@@ -31,7 +30,6 @@
 
         <tui-doc-example
             id="basic"
-            i18n-heading
             heading="Basic"
             [content]="exampleBasic"
         >
@@ -40,7 +38,6 @@
 
         <tui-doc-example
             id="context-menu"
-            i18n-heading
             heading="Context menu"
             [content]="exampleContextMenu"
         >
@@ -49,7 +46,6 @@
 
         <tui-doc-example
             id="report-mistake-form"
-            i18n-heading
             heading="Report mistake form"
             [content]="exampleReportMistakeForm"
         >
@@ -60,7 +56,6 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <p
-                i18n
                 tuiDropdownContext
                 [tuiDropdown]="dropdownContent"
                 [tuiDropdownMinHeight]="dropdownMinHeight"
@@ -81,7 +76,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiDropdownModule</code>
                     into a module where you want to use our directive
@@ -94,7 +89,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

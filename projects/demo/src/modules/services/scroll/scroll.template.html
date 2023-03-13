@@ -4,11 +4,10 @@
     path="cdk/services/scroll.service.ts"
 >
     <ng-template pageTab>
-        <p i18n>A service for smooth scroll</p>
+        <p>A service for smooth scroll</p>
 
         <tui-doc-example
             id="interactive"
-            i18n-heading
             heading="Interactive sample"
             [content]="example1"
         >
@@ -17,10 +16,7 @@
     </ng-template>
 
     <ng-template pageTab>
-        <p
-            i18n
-            class="b-full-width"
-        >
+        <p class="b-full-width">
             Method
             <strong>
                 <code>scroll$: Observable&lt;[number, number]&gt;</code>
@@ -33,21 +29,18 @@
         </p>
         <tui-doc-documentation [showValues]="false">
             <ng-template
-                i18n
                 documentationPropertyName="element"
                 documentationPropertyType="Element"
             >
                 Element to be scrolled
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="scrollTop"
                 documentationPropertyType="number"
             >
                 Target position from top
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="scrollLeft"
                 documentationPropertyType="number"
             >
@@ -55,7 +48,6 @@
                 . Target position from left
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="duration"
                 documentationPropertyType="number"
             >
@@ -67,7 +59,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Inject
                     <code>TuiScrollService</code>
                     into your component:
@@ -80,7 +72,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Call
                     <code>scroll$</code>
                     method and subscribe to returned

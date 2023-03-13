@@ -4,13 +4,12 @@
     type="components"
 >
     <ng-template pageTab>
-        <div i18n>
+        <div>
             Component for showing a dialog on mobile devices. It emulates appearance of native alerts on iOS and Android
         </div>
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -18,13 +17,10 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        i18n-pageTab
-        pageTab="Setup"
-    >
+    <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiMobileDialogModule</code>
                     to your
@@ -38,7 +34,7 @@
             </li>
 
             <li>
-                <p i18n>Use it in component</p>
+                <p>Use it in component</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

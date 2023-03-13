@@ -4,7 +4,7 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>
+        <p>
             A calendar for mobile devices. It is used in
             <a
                 tuiLink
@@ -25,16 +25,15 @@
             <code>TuiDialogModule</code>
             are both imported once in the main module
         </p>
-        <p i18n>
+        <p>
             You can use
             <code>TUI_CALENDAR_DATE_STREAM</code>
             token to set value from outside (see samples)
         </p>
-        <strong i18n>Component should be used on mobile devices as fullscreen dialog</strong>
+        <strong>Component should be used on mobile devices as fullscreen dialog</strong>
 
         <tui-doc-example
             id="dropdown"
-            i18n-heading
             heading="Custom dropdown"
             [content]="example1"
         >
@@ -43,7 +42,6 @@
 
         <tui-doc-example
             id="range"
-            i18n-heading
             heading="Range"
             [content]="example2"
         >
@@ -52,7 +50,6 @@
 
         <tui-doc-example
             id="localization"
-            i18n-heading
             heading="Localization"
             [content]="example3"
             [description]="localizationDescription"
@@ -85,7 +82,6 @@
 
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiBooleanHandler<TuiDay>"
@@ -97,7 +93,6 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="max"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDay"
@@ -107,7 +102,6 @@
                 Max date
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="min"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiDay"
@@ -117,7 +111,6 @@
                 Min date
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="single"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -126,7 +119,6 @@
                 Single date or a range
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="cancel"
                 documentationPropertyMode="output"
                 documentationPropertyType="void"
@@ -134,7 +126,6 @@
                 "Cancel" clicked
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="confirm"
                 documentationPropertyMode="output"
                 documentationPropertyType="TuiDayRange | TuiDay"
@@ -147,7 +138,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiDialogModule</code>
                     and
@@ -162,7 +153,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiMobileCalendarDialogModule</code>
                     for automatic use with
@@ -179,7 +170,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

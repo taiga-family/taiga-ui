@@ -2,9 +2,4 @@
     [value]="value"
     (dayClick)="onDayClick($event)"
 ></tui-calendar>
-<div
-    *ngIf="value"
-    i18n
->
-    Chosen date: {{ value }}
-</div>
+<div *ngIf="value">Chosen date: {{ value }}</div>

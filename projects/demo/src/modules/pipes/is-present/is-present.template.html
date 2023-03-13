@@ -3,10 +3,7 @@
     package="CDK"
     type="pipes"
 >
-    <ng-template
-        i18n
-        pageTab
-    >
+    <ng-template pageTab>
         Pipe wrapper for
         <a
             tuiLink
@@ -19,7 +16,6 @@
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -30,7 +26,7 @@
     <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiIsPresentPipeModule</code>
                     into a module where you want to use our pipe
@@ -43,7 +39,7 @@
             </li>
 
             <li>
-                <p i18n>Use pipe in template:</p>
+                <p>Use pipe in template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

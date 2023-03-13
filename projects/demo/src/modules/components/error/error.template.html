@@ -4,7 +4,7 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>
+        <p>
             <code>Error</code>
             allows to show an error. If you work with a form, see
             <a
@@ -18,7 +18,6 @@
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -40,7 +39,6 @@
 
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="error"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiValidationError | string | null"
@@ -57,7 +55,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiErrorModule</code>
                     into a module where you want to use our component
@@ -70,7 +68,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

@@ -3,7 +3,7 @@
     class="b-form"
     [formGroup]="testForm"
 >
-    <p i18n>Default:</p>
+    <p>Default:</p>
 
     <tui-input-date-time
         formControlName="testValue"
@@ -12,7 +12,7 @@
         Choose date and time
     </tui-input-date-time>
 
-    <p i18n>With seconds:</p>
+    <p>With seconds:</p>
 
     <tui-input-date-time
         formControlName="testValue"
@@ -21,7 +21,7 @@
         Choose date and time
     </tui-input-date-time>
 
-    <p i18n>With SS and MS:</p>
+    <p>With SS and MS:</p>
 
     <tui-input-date-time
         formControlName="testValue"
@@ -30,7 +30,7 @@
         Choose date and time
     </tui-input-date-time>
 
-    <p i18n>Form value:</p>
+    <p>Form value:</p>
 
     <pre><code>{{testForm.value | json}}</code></pre>
 </form>

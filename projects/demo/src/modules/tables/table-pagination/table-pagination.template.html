@@ -4,11 +4,10 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>Component to show pagination in table footer</p>
+        <p>Component to show pagination in table footer</p>
 
         <tui-doc-example
             id="usage"
-            i18n-heading
             heading="Usage"
             [content]="example1"
         >
@@ -17,7 +16,6 @@
 
         <tui-doc-example
             id="custom-size-option-content"
-            i18n-heading
             heading="Custom size-option content"
             [description]="tokenDescription"
             [content]="example2"
@@ -38,7 +36,6 @@
 
         <tui-doc-example
             id="toggle-pages-label"
-            i18n-heading
             heading="Toggle pages label"
             [content]="example3"
         >
@@ -59,7 +56,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="total"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -68,7 +64,6 @@
                 Total amount of items/lines in the table.
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -83,7 +78,6 @@
                 </p>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="page"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -94,7 +88,6 @@
                 <p>Indexing starts at zero.</p>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="items"
                 documentationPropertyMode="input"
                 documentationPropertyType="readonly number[]"
@@ -105,7 +98,6 @@
             </ng-template>
             <ng-template
                 #documentationPropertyPageChange="documentationProperty"
-                i18n
                 documentationPropertyName="pageChange"
                 documentationPropertyMode="output"
                 documentationPropertyType="number"
@@ -114,7 +106,6 @@
             </ng-template>
             <ng-template
                 #documentationPropertySizeChange="documentationProperty"
-                i18n
                 documentationPropertyName="sizeChange"
                 documentationPropertyMode="output"
                 documentationPropertyType="number"
@@ -125,7 +116,6 @@
             </ng-template>
             <ng-template
                 #documentationPropertyPaginationChange="documentationProperty"
-                i18n
                 documentationPropertyName="paginationChange"
                 documentationPropertyMode="output"
                 documentationPropertyType="TuiTablePagination"
@@ -142,7 +132,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import an Angular module for forms and
                     <code>TuiTablePaginationModule</code>
                     in the same module where you want to use our component:
@@ -155,7 +145,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

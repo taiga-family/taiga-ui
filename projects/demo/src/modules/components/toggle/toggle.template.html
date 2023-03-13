@@ -4,11 +4,10 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>Toggle is a switcher between two states. It can also be used with icons and loading.</p>
+        <p>Toggle is a switcher between two states. It can also be used with icons and loading.</p>
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -17,7 +16,6 @@
 
         <tui-doc-example
             id="options"
-            i18n-heading
             heading="options"
             [content]="example2"
         >
@@ -40,7 +38,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -50,7 +47,6 @@
                 )
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="showIcons"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -59,7 +55,6 @@
                 Show icons
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="showLoader"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -68,7 +63,6 @@
                 Show loader. If icons are also enabled, show loader anyway.
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="singleColor"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -77,7 +71,6 @@
                 All states have the same color
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeL"
@@ -93,7 +86,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiToggleModule</code>
                     into a module where you want to use our component
@@ -106,7 +99,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Declare a form (
                     <code>FormGroup</code>
                     ) or a control (
@@ -121,7 +114,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"
@@ -130,7 +123,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Optionally use the
                     <code>TUI_TOGGLE_OPTIONS</code>
                     injection token to override the default options for the component.

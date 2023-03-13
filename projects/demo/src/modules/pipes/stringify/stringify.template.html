@@ -3,17 +3,13 @@
     package="KIT"
     type="pipes"
 >
-    <ng-template
-        i18n
-        pageTab
-    >
+    <ng-template pageTab>
         Pipe that creates
         <code>TuiStringHandler</code>
         by given key.
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -41,7 +37,7 @@
     <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiStringifyPipeModule</code>
                     into a module where you want to use our component
@@ -54,7 +50,7 @@
             </li>
 
             <li>
-                <p i18n>Use pipe in template:</p>
+                <p>Use pipe in template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

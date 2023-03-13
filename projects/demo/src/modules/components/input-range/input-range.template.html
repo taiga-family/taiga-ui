@@ -4,9 +4,9 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>Component to input a range of values</p>
+        <p>Component to input a range of values</p>
 
-        <p i18n>
+        <p>
             Number formatting can be customized by using
             <a
                 tuiLink
@@ -19,7 +19,6 @@
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
             [description]="stepQuantumDescription"
@@ -50,13 +49,12 @@
 
         <tui-doc-example
             id="number-format"
-            i18n-heading
             heading="Override number format"
             [content]="example2"
             [description]="numberFormatTokenDescription"
         >
             <ng-template #numberFormatTokenDescription>
-                <p i18n>
+                <p>
                     Number formatting can be customized by using
                     <a
                         tuiLink
@@ -73,7 +71,6 @@
 
         <tui-doc-example
             id="value-content"
-            i18n-heading
             heading="Custom value content"
             [content]="example3"
         >
@@ -82,14 +79,10 @@
 
         <tui-doc-example
             id="segments"
-            i18n-heading
             heading="Visual segments + labels for ticks"
             [content]="example4"
         >
-            <tui-notification
-                i18n
-                class="tui-space_bottom-8"
-            >
+            <tui-notification class="tui-space_bottom-8">
                 Use mixin
                 <code>tui-slider-ticks-labels</code>
                 to arrange ticks' labels (it places them strictly below ticks).
@@ -99,14 +92,10 @@
 
         <tui-doc-example
             id="key-steps"
-            i18n-heading
             heading="KeySteps"
             [content]="example5"
         >
-            <dl
-                i18n
-                class="tui-space_bottom-8 tui-space_top-0"
-            >
+            <dl class="tui-space_bottom-8 tui-space_top-0">
                 <dt>
                     <strong>Key steps</strong>
                 </dt>
@@ -141,7 +130,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -151,7 +139,6 @@
                 )
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="min"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -161,7 +148,6 @@
                 Min value
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="max"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -171,7 +157,6 @@
                 Max value
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="quantum"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -181,7 +166,6 @@
                 Minimum indivisible value
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="steps"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -190,7 +174,6 @@
                 Number of actual discrete slider steps
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="segments"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -199,7 +182,6 @@
                 A number of visual segments
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="keySteps"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiKeySteps"
@@ -209,7 +191,6 @@
                 Anchor points of non-uniform format between value and position
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="leftValueContent"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
@@ -219,7 +200,6 @@
                 A template for custom view of the left selected value.
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="rightValueContent"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
@@ -229,7 +209,6 @@
                 A template for custom view of the right selected value.
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="pluralize"
                 documentationPropertyMode="input"
                 documentationPropertyType="Record<string, string>"
@@ -246,11 +225,10 @@
                     >
                         ICU format
                     </a>
-                    for i18nPlural
+                    for Plural
                 </p>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="readOnly"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -260,10 +238,7 @@
             </ng-template>
         </tui-doc-documentation>
 
-        <h6
-            i18n
-            class="tui-text_h6"
-        >
+        <h6 class="tui-text_h6">
             Can be expanded with
             <a
                 tuiLink
@@ -281,7 +256,6 @@
 
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="tuiTextfieldLabelOutside"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -297,7 +271,6 @@
             </ng-template>
 
             <ng-template
-                i18n
                 documentationPropertyName="tuiTextfieldSize"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeL"
@@ -312,7 +285,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiInputRangeModule</code>
                     into a module where you want to use our component
@@ -325,7 +298,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

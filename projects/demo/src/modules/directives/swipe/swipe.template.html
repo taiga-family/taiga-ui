@@ -1,16 +1,15 @@
 <tui-doc-page
-    i18n-header
     header="Swipe"
     package="CDK"
     type="directives"
 >
     <ng-template pageTab>
-        <p i18n>
+        <p>
             <code>tuiSwipe</code>
             directive allows detecting swipes on mobile devices.
         </p>
 
-        <p i18n>
+        <p>
             You can configure the directive with
             <code>TUI_SWIPE_OPTIONS</code>
             token.
@@ -31,7 +30,6 @@
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -40,7 +38,6 @@
 
         <tui-doc-example
             id="sidebar"
-            i18n-heading
             heading="With sidebar"
             [content]="example2"
         >
@@ -48,13 +45,10 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        i18n-pageTab
-        pageTab="Setup"
-    >
+    <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiSwipeModule</code>
                     into a module where you want to use our directive
@@ -67,7 +61,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

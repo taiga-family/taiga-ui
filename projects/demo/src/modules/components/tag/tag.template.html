@@ -4,14 +4,9 @@
     type="components"
 >
     <ng-template pageTab>
-        <div
-            i18n
-            class="tui-space_bottom-3"
-        >
-            Tags show information and they can be edited, deleted or clicked.
-        </div>
+        <div class="tui-space_bottom-3">Tags show information and they can be edited, deleted or clicked.</div>
 
-        <p i18n>
+        <p>
             They work with both
             <code>tui-tag</code>
             and
@@ -21,7 +16,6 @@
 
         <tui-doc-example
             id="sizes"
-            i18n-heading
             heading="sizes"
             [content]="example1"
         >
@@ -30,7 +24,6 @@
 
         <tui-doc-example
             id="statuses"
-            i18n-heading
             heading="Statuses"
             [content]="example2"
         >
@@ -39,7 +32,6 @@
 
         <tui-doc-example
             id="custom"
-            i18n-heading
             heading="Custom"
             [content]="example3"
         >
@@ -48,7 +40,6 @@
 
         <tui-doc-example
             id="remove-and-edit"
-            i18n-heading
             heading="Removing and editing"
             [content]="example4"
         >
@@ -57,7 +48,6 @@
 
         <tui-doc-example
             id="options"
-            i18n-heading
             heading="Options"
             [content]="example5"
         >
@@ -90,7 +80,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="autoColor"
                 documentationPropertyType="boolean"
                 documentationPropertyMode="input"
@@ -99,7 +88,6 @@
                 Autocolor for tag
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="disabled"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -108,7 +96,6 @@
                 Disabled state
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="editable"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -117,7 +104,6 @@
                 Tag can be edited
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="hoverable"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -126,7 +112,6 @@
                 Enable hovered state
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="leftContent"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
@@ -136,7 +121,6 @@
                 Content left to text
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="maxLength"
                 documentationPropertyMode="input"
                 documentationPropertyType="number | null"
@@ -146,7 +130,6 @@
                 Max length of tag (when editing)
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="removable"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -155,7 +138,6 @@
                 Tag can be removed
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="showLoader"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -164,7 +146,6 @@
                 Show loader
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeL"
@@ -174,7 +155,6 @@
                 Size
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="status"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiStatus"
@@ -184,7 +164,6 @@
                 Changes color
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="value"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
@@ -193,7 +172,6 @@
                 String value of tag
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="edited"
                 documentationPropertyMode="output"
                 documentationPropertyType="string"
@@ -206,7 +184,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiTagModule</code>
                     into a module where you want to use our component
@@ -219,7 +197,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"
@@ -228,7 +206,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Optionally use the
                     <code>TUI_TAG_OPTIONS</code>
                     injection token to override the default options for the component.

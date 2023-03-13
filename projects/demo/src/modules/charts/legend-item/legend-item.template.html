@@ -1,15 +1,13 @@
 <tui-doc-page
-    i18n-header
     header="LegendItem"
     package="ADDON-CHARTS"
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>A button for a legend of ring or pie charts</p>
+        <p>A button for a legend of ring or pie charts</p>
 
         <tui-doc-example
             id="ring"
-            i18n-heading
             heading="With a ring chart"
             [content]="example1"
         >
@@ -18,7 +16,6 @@
 
         <tui-doc-example
             id="toggle"
-            i18n-heading
             heading="Toggling"
             [content]="example2"
         >
@@ -40,14 +37,13 @@
                     [singleColor]="true"
                 ></tui-money>
             </tui-legend-item>
-            <p i18n>
+            <p>
                 <code>tui-money</code>
                 is used to format currency and fraction
             </p>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="active"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -56,7 +52,6 @@
                 Active state from outside
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="color"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiColor | string | null"
@@ -66,7 +61,6 @@
                 Indicator color
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="disabled"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -75,7 +69,6 @@
                 Disabled item (i.e. hidden from the related chart)
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeS"
@@ -85,7 +78,6 @@
                 Size
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="value"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
@@ -99,7 +91,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiBarModule</code>
                     into a module where you want to use our component
@@ -112,7 +104,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

@@ -4,11 +4,10 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>Line chart but for days</p>
+        <p>Line chart but for days</p>
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -17,7 +16,6 @@
 
         <tui-doc-example
             id="complex"
-            i18n-heading
             heading="Complex"
             [content]="example2"
         >
@@ -47,7 +45,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="dots"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -56,7 +53,6 @@
                 Show dots on chart
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="hintContent"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
@@ -69,7 +65,6 @@
                 <code>[TuiDay, number]</code>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="height"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -78,7 +73,6 @@
                 Axis Y range, pixel scale is 1:1
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="y"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -87,7 +81,6 @@
                 Start of Y axis
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="smoothingFactor"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -96,7 +89,6 @@
                 Smoothing factor from 0 to 99
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="value"
                 documentationPropertyMode="input"
                 documentationPropertyType="[TuiDay, number][]"
@@ -106,7 +98,6 @@
                 Array of data
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="xStringify"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiStringHandler<TuiDay> | null"
@@ -116,7 +107,6 @@
                 Function to stringify a value number to a string in axis X hint
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="yStringify"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiStringHandler<number> | null"
@@ -131,7 +121,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiLineDaysChartModule</code>
                     into a module where you want to use our component
@@ -144,7 +134,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

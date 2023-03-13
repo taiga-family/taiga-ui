@@ -4,7 +4,7 @@
     type="directives"
 >
     <ng-template pageTab>
-        <p i18n>
+        <p>
             This directive augments built-in
             <code>ngFor</code>
             with ability to provide loading template (for
@@ -18,7 +18,6 @@
 
         <tui-doc-example
             id="usage"
-            i18n-heading
             heading="Usage"
             [content]="example1"
         >
@@ -26,13 +25,10 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        i18n-pageTab
-        pageTab="Setup"
-    >
+    <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiForModule</code>
                     and Angular's
@@ -47,7 +43,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

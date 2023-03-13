@@ -4,11 +4,10 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>Use Avatar to view person or company. It can be photo, icon or first letters of name.</p>
+        <p>Use Avatar to view person or company. It can be photo, icon or first letters of name.</p>
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -17,7 +16,6 @@
 
         <tui-doc-example
             id="autocolor"
-            i18n-heading
             heading="Colors"
             [content]="example2"
         >
@@ -26,7 +24,6 @@
 
         <tui-doc-example
             id="options"
-            i18n-heading
             heading="Options"
             [content]="example3"
         >
@@ -35,7 +32,6 @@
 
         <tui-doc-example
             id="stacking"
-            i18n-heading
             heading="Stacking avatars"
             [content]="example4"
         >
@@ -49,7 +45,6 @@
 
         <tui-doc-example
             id="icons"
-            i18n-heading
             heading="Icons"
             [content]="example5"
         >
@@ -84,7 +79,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="autoColor"
                 documentationPropertyType="boolean"
                 documentationPropertyMode="input"
@@ -93,7 +87,6 @@
                 Autocolor if there is no image
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="avatarUrl"
                 documentationPropertyType="string | SafeResourceUrl | null"
                 documentationPropertyMode="input"
@@ -103,7 +96,6 @@
                 Avatar URL or Taiga UI icon name
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="rounded"
                 documentationPropertyType="boolean"
                 documentationPropertyMode="input"
@@ -112,7 +104,6 @@
                 Rounded mode
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="size"
                 documentationPropertyType="TuiSizeXXS | TuiSizeXXL"
                 documentationPropertyMode="input"
@@ -122,7 +113,6 @@
                 Size
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="text"
                 documentationPropertyType="string"
                 documentationPropertyMode="input"
@@ -159,7 +149,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiAvatarModule</code>
                     into a module where you want to use our component
@@ -172,7 +162,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"
@@ -181,7 +171,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Optionally use the
                     <code>TUI_AVATAR_OPTIONS</code>
                     injection token to override the default options for the component.

@@ -4,13 +4,12 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>An element that allows to show and hide content in sections</p>
+        <p>An element that allows to show and hide content in sections</p>
 
-        <p i18n>Only one section of accordion can be opened by default</p>
+        <p>Only one section of accordion can be opened by default</p>
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -19,7 +18,6 @@
 
         <tui-doc-example
             id="custom"
-            i18n-heading
             heading="with custom design"
             [content]="example2"
         >
@@ -28,7 +26,6 @@
 
         <tui-doc-example
             id="single"
-            i18n-heading
             heading="alone"
             [content]="example3"
         >
@@ -37,7 +34,6 @@
 
         <tui-doc-example
             id="eager-and-lazy"
-            i18n-heading
             heading="Eager and Lazy content"
             [content]="example4"
         >
@@ -96,7 +92,6 @@
                 <ng-template tuiAccordionItemContent>
                     <tui-doc-documentation>
                         <ng-template
-                            i18n
                             documentationPropertyName="closeOthers"
                             documentationPropertyMode="input"
                             documentationPropertyType="boolean"
@@ -105,7 +100,6 @@
                             Other sections are closed when user opens one
                         </ng-template>
                         <ng-template
-                            i18n
                             documentationPropertyName="rounded"
                             documentationPropertyMode="input"
                             documentationPropertyType="boolean"
@@ -121,7 +115,6 @@
                 <ng-template tuiAccordionItemContent>
                     <tui-doc-documentation>
                         <ng-template
-                            i18n
                             documentationPropertyName="async"
                             documentationPropertyMode="input"
                             documentationPropertyType="boolean"
@@ -132,7 +125,6 @@
                             before opening. Content is initialized when opening starts
                         </ng-template>
                         <ng-template
-                            i18n
                             documentationPropertyName="borders"
                             documentationPropertyMode="input"
                             documentationPropertyType="'all' | 'top-bottom' | null"
@@ -142,7 +134,6 @@
                             Borders variants
                         </ng-template>
                         <ng-template
-                            i18n
                             documentationPropertyName="disabled"
                             documentationPropertyMode="input"
                             documentationPropertyType="boolean"
@@ -151,7 +142,6 @@
                             Disabled state for an item
                         </ng-template>
                         <ng-template
-                            i18n
                             documentationPropertyName="noPadding"
                             documentationPropertyMode="input"
                             documentationPropertyType="boolean"
@@ -160,7 +150,6 @@
                             Removes default paddings
                         </ng-template>
                         <ng-template
-                            i18n
                             documentationPropertyName="disableHover"
                             documentationPropertyMode="input"
                             documentationPropertyType="boolean"
@@ -169,7 +158,6 @@
                             Disabled header hover state
                         </ng-template>
                         <ng-template
-                            i18n
                             documentationPropertyName="open"
                             documentationPropertyMode="input-output"
                             documentationPropertyType="boolean"
@@ -179,7 +167,6 @@
                             Open / close state of section
                         </ng-template>
                         <ng-template
-                            i18n
                             documentationPropertyName="size"
                             documentationPropertyMode="input"
                             documentationPropertyType="TuiSizeS"
@@ -189,7 +176,6 @@
                             Size of an accordion item
                         </ng-template>
                         <ng-template
-                            i18n
                             documentationPropertyName="showArrow"
                             documentationPropertyMode="input"
                             documentationPropertyType="boolean"
@@ -205,7 +191,7 @@
 
     <ng-template pageTab>
         <ol class="b-demo-steps">
-            <li i18n>
+            <li>
                 Import
                 <code>TuiAccordionModule</code>
                 into a module where you want to use our component
@@ -216,7 +202,7 @@
                 ></tui-doc-code>
             </li>
 
-            <li i18n>
+            <li>
                 Add it into template:
 
                 <tui-doc-code

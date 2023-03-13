@@ -4,7 +4,7 @@
     type="components"
 >
     <ng-template pageTab>
-        <dl i18n>
+        <dl>
             <dt>
                 <code>tuiSlider</code>
             </dt>
@@ -26,7 +26,7 @@
             </a>
             .
         </p>
-        <p i18n>
+        <p>
             <strong>Usage:</strong>
             <code>&lt;input tuiSlider type="range" min="0" max="100" step="1" /&gt;</code>
             .
@@ -34,7 +34,6 @@
 
         <tui-doc-example
             id="sizes"
-            i18n-heading
             heading="Sizes"
             [content]="example1"
         >
@@ -43,7 +42,6 @@
 
         <tui-doc-example
             id="colors"
-            i18n-heading
             heading="Colors"
             [content]="example2"
         >
@@ -52,20 +50,16 @@
 
         <tui-doc-example
             id="segments"
-            i18n-heading
             heading="With visual segments"
             [content]="example3"
         >
             <tui-notification class="tui-space_bottom-8">
-                <p
-                    i18n
-                    class="tui-space_top-0"
-                >
+                <p class="tui-space_top-0">
                     Use mixin
                     <code>tui-slider-ticks-labels</code>
                     to arrange ticks' labels (it places them strictly below ticks).
                 </p>
-                <p i18n>
+                <p>
                     The mixin accepts only a single argument – size of the slider (
                     <code>m</code>
                     or
@@ -78,7 +72,6 @@
 
         <tui-doc-example
             id="disabled"
-            i18n-heading
             heading="Disabled"
             [content]="example4"
         >
@@ -87,14 +80,10 @@
 
         <tui-doc-example
             id="key-steps"
-            i18n-heading
             heading="With key steps"
             [content]="example5"
         >
-            <dl
-                i18n
-                class="tui-space_bottom-8 tui-space_top-0"
-            >
+            <dl class="tui-space_bottom-8 tui-space_top-0">
                 <dt>
                     <strong>Key steps</strong>
                 </dt>
@@ -105,7 +94,6 @@
 
         <tui-doc-example
             id="complex"
-            i18n-heading
             heading="Complex"
             [content]="example6"
             [description]="tuiSliderThumbLabelDescription"
@@ -136,7 +124,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -146,7 +133,6 @@
                 )
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="max"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -165,7 +151,6 @@
                 <code>&lt;input&nbsp;type="range"&nbsp;/&gt;</code>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="min"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -184,7 +169,6 @@
                 <code>&lt;input&nbsp;type="range"&nbsp;/&gt;</code>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="step"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -203,7 +187,6 @@
                 <code>&lt;input&nbsp;type="range"&nbsp;/&gt;</code>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeS"
@@ -213,7 +196,6 @@
                 Size
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="segments"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -241,7 +223,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Declare a form (
                     <code>FormGroup</code>
                     ) or a control (
@@ -256,7 +238,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

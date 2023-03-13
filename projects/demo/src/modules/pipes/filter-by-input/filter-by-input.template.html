@@ -3,15 +3,11 @@
     package="KIT"
     type="pipes"
 >
-    <ng-template
-        i18n
-        pageTab
-    >
+    <ng-template pageTab>
         Pipe for filtering an array by value entered in a textfield
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -20,7 +16,6 @@
 
         <tui-doc-example
             id="matcher"
-            i18n-heading
             heading="Custom matcher"
             [content]="example2"
         >
@@ -29,7 +24,6 @@
 
         <tui-doc-example
             id="stringify"
-            i18n-heading
             heading="Custom stringify"
             [content]="example3"
         >
@@ -40,7 +34,7 @@
     <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiFilterByInputPipeModule</code>
                     into a module where you want to use our component
@@ -53,7 +47,7 @@
             </li>
 
             <li>
-                <p i18n>Use pipe in template under Taiga UI control:</p>
+                <p>Use pipe in template under Taiga UI control:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

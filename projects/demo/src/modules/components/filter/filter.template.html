@@ -4,14 +4,13 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>
+        <p>
             Components shows separated items that can be used to filter content on the page. There are also an option
             with badges.
         </p>
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -20,7 +19,6 @@
 
         <tui-doc-example
             id="badge"
-            i18n-heading
             heading="With badges"
             [content]="example2"
         >
@@ -29,7 +27,6 @@
 
         <tui-doc-example
             id="custom"
-            i18n-heading
             heading="Custom"
             [content]="example3"
         >
@@ -38,7 +35,6 @@
 
         <tui-doc-example
             id="all"
-            i18n-heading
             heading="With all button"
             [content]="example4"
         >
@@ -61,7 +57,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="badgeHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiHandler<T>"
@@ -73,7 +68,6 @@
                 to get a number to show by default
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="content"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
@@ -81,7 +75,6 @@
                 Template for custom content in filter
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiBooleanHandler<T>"
@@ -93,7 +86,6 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="identityMatcher"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiIdentityMatcher"
@@ -105,7 +97,6 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="items"
                 documentationPropertyMode="input"
                 documentationPropertyType="T[]"
@@ -117,7 +108,6 @@
                 for view
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeS | TuiSizeL"
@@ -127,7 +117,6 @@
                 Size
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="toggledItem"
                 documentationPropertyMode="output"
                 documentationPropertyType="T"
@@ -140,7 +129,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiFilterModule</code>
                     into a module where you want to use our component
@@ -153,7 +142,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

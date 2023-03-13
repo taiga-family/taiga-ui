@@ -1,27 +1,20 @@
 <tui-doc-page
-    i18n-header
     header="DefaultProp"
     package="CDK"
     path="cdk/decorators/default-prop.ts"
 >
     <ng-template pageTab>
-        <div
-            i18n
-            class="tui-space_bottom-3"
-        >
+        <div class="tui-space_bottom-3">
             Decorator for
             <code>@Input</code>
             with default value
         </div>
-        <div
-            i18n
-            class="tui-space_bottom-3"
-        >
+        <div class="tui-space_bottom-3">
             <strong>Warning:</strong>
             decorator overrides getter/setter of input
         </div>
 
-        <p i18n>
+        <p>
             Decorator stops
             <code>undefined</code>
             values if they were passed into input. If it gets
@@ -29,7 +22,7 @@
             , it will use default value and show an error message about the problem in console in dev mode.
         </p>
 
-        <div i18n>
+        <div>
             See
             <a
                 tuiLink
@@ -41,7 +34,7 @@
         </div>
 
         <div>
-            <p i18n>See console. Min value is 5</p>
+            <p>See console. Min value is 5</p>
             <example-tui-default-prop-demo [quantity]="quantity"></example-tui-default-prop-demo>
             <tui-input-count
                 class="tui-space_top-4"
@@ -61,7 +54,7 @@
     </ng-template>
 
     <ng-template pageTab>
-        <p i18n>
+        <p>
             You can also pass contract function of type
             <code>TuiBooleanHandler&lt;T&gt;</code>
             with the component instance as
@@ -70,14 +63,12 @@
         </p>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="assertion"
                 documentationPropertyType="TuiBooleanHandler<T>"
             >
                 Optional argument, contract function
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="args"
                 documentationPropertyType="any"
             >
@@ -89,7 +80,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Add
                     <code>@tuiDefaultProp</code>
                     to input of your component

@@ -1,16 +1,14 @@
 <tui-doc-page
-    i18n-header
     header="Format utils"
     package="CDK / CORE"
     path="cdk/utils/format"
 >
     <ng-template pageTab>
-        <p i18n>A set of format utils</p>
+        <p>A set of format utils</p>
 
         <tui-doc-example
             id="px"
             heading="px"
-            i18n-description
             description="Adds 'px' to a number"
             [content]="example1"
         >
@@ -20,7 +18,6 @@
         <tui-doc-example
             id="get-currency-symbol"
             heading="getCurrencySymbol"
-            i18n-description
             description="Returns a currency symbol from its three letter code or ISO 4217"
             [content]="example2"
         >
@@ -30,7 +27,6 @@
         <tui-doc-example
             id="capitalize"
             heading="capitalize"
-            i18n-description
             description="Capitalizes every word in a string"
             [content]="example3"
         >
@@ -40,7 +36,6 @@
         <tui-doc-example
             id="format-phone"
             heading="formatPhone"
-            i18n-description
             description="Formats a phone number with separators"
             [content]="example4"
         >
@@ -50,7 +45,6 @@
         <tui-doc-example
             id="format-number"
             heading="formatNumber"
-            i18n-description
             description="Formats a number with separators"
             [content]="example5"
         >
@@ -58,13 +52,10 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        i18n-pageTab
-        pageTab="Setup"
-    >
+    <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p i18n>Import into component and use:</p>
+                <p>Import into component and use:</p>
 
                 <tui-doc-code
                     filename="myComponent.component.ts"

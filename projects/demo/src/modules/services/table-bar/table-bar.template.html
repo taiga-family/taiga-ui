@@ -4,14 +4,13 @@
     path="addon-tablebars/services/table-bars.service.ts"
 >
     <ng-template pageTab>
-        <p i18n>
+        <p>
             It is an element on the bottom of screen to show actions by multiselect of some items. It works with custom
             content.
         </p>
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -45,7 +44,6 @@
         <br />
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="adaptive"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="adaptive"
@@ -53,7 +51,6 @@
                 Adaprive content
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="hasCloseButton"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="hasCloseButton"
@@ -61,7 +58,6 @@
                 Enable close button
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="mode"
                 documentationPropertyType="TuiBrightness"
                 [documentationPropertyValues]="modeVariants"
@@ -74,7 +70,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Add
                     <code>TuiTableBarsHostModule</code>
                     into your app.module
@@ -86,7 +82,7 @@
                 ></tui-doc-code>
             </li>
             <li>
-                <p i18n>
+                <p>
                     Add
                     <code>tui-table-bars-host</code>
                     into your app.template
@@ -98,7 +94,7 @@
                 ></tui-doc-code>
             </li>
             <li>
-                <p i18n>
+                <p>
                     Use
                     <code>open</code>
                     method and subscribe to returened
@@ -117,7 +113,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     If you use component in lazy loading modules, do not forget to pass into
                     <code>new PolymorpheusComponent Injector</code>
                     of component where you open table bar

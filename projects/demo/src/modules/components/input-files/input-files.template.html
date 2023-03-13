@@ -4,11 +4,10 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>An input for upload one or several files. It uses native input file abilities.</p>
+        <p>An input for upload one or several files. It uses native input file abilities.</p>
 
         <tui-doc-example
             id="single"
-            i18n-heading
             heading="Basic single"
             [content]="example1"
         >
@@ -17,7 +16,6 @@
 
         <tui-doc-example
             id="multiple"
-            i18n-heading
             heading="multiple"
             [content]="example2"
         >
@@ -26,7 +24,6 @@
 
         <tui-doc-example
             id="standalone-files"
-            i18n-heading
             heading="Standalone files"
             [content]="example3"
         >
@@ -35,7 +32,6 @@
 
         <tui-doc-example
             id="with-button"
-            i18n-heading
             heading="With button"
             [content]="example4"
         >
@@ -44,7 +40,6 @@
 
         <tui-doc-example
             id="custom"
-            i18n-heading
             heading="Custom content"
             [content]="example5"
         >
@@ -53,7 +48,6 @@
 
         <tui-doc-example
             id="front-camera"
-            i18n-heading
             heading="Camera capture"
             [content]="example6"
         >
@@ -128,7 +122,6 @@
         </tui-doc-demo>
         <tui-doc-documentation heading="TuiInputFiles">
             <ng-template
-                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -138,7 +131,6 @@
                 )
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="capture"
                 documentationPropertyMode="input"
                 documentationPropertyType="'user' | 'environment' | null"
@@ -150,7 +142,6 @@
                 )
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="accept"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
@@ -162,7 +153,6 @@
                 )
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="label"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
@@ -171,7 +161,6 @@
                 Label text
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="link"
                 documentationPropertyMode="input"
                 documentationPropertyType="string"
@@ -181,7 +170,6 @@
             </ng-template>
 
             <ng-template
-                i18n
                 documentationPropertyName="maxFileSize"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -191,7 +179,6 @@
                 Max file size in bytes (30 MB by default — 30 * 1000 * 1000)
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="multiple"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -201,7 +188,6 @@
                 Allows to upload several files
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="reject"
                 documentationPropertyMode="output"
                 documentationPropertyType="TuiFileLike"
@@ -212,7 +198,6 @@
 
         <tui-doc-documentation heading="TuiFile">
             <ng-template
-                i18n
                 documentationPropertyName="showDelete"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -221,7 +206,6 @@
                 Allow to delete file after attach it
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="file"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiFileLike"
@@ -229,7 +213,6 @@
                 File
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="state"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiFileStateT"
@@ -237,7 +220,6 @@
                 State of the file
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="showSize"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -246,7 +228,6 @@
                 Show file size
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeL"
@@ -256,7 +237,6 @@
                 Component size
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="removed"
                 documentationPropertyMode="output"
                 documentationPropertyType="TuiFileLike"
@@ -269,7 +249,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiInputFilesModule</code>
                     into a module where you want to use our component
@@ -282,7 +262,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

@@ -4,9 +4,9 @@
     type="pipes"
 >
     <ng-template pageTab>
-        <p i18n>Pipe to format number values to separate thousands</p>
+        <p>Pipe to format number values to separate thousands</p>
 
-        <p i18n>
+        <p>
             Number formatting can be customized by using
             <a
                 tuiLink
@@ -19,7 +19,6 @@
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -28,10 +27,7 @@
     </ng-template>
 
     <ng-template pageTab>
-        <p
-            i18n
-            class="text b-full-width"
-        >
+        <p class="text b-full-width">
             Formatted number:
             {{ value | tuiFormatNumber : {decimalLimit, decimalSeparator} }}
         </p>
@@ -44,7 +40,6 @@
         ></tui-input-slider>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="decimalLimit"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="decimalLimitVariants"
@@ -55,7 +50,6 @@
                 not to change)
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="decimalSeparator"
                 documentationPropertyType="TuiDecimalSymbol"
                 [documentationPropertyValues]="decimalSeparatorVariants"
@@ -69,7 +63,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiFormatNumberPipeModule</code>
                     into a module where you want to use the pipe
@@ -82,7 +76,7 @@
             </li>
 
             <li>
-                <p i18n>Use pipe in template with function and its arguments:</p>
+                <p>Use pipe in template with function and its arguments:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

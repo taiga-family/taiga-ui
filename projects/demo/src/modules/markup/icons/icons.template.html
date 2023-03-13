@@ -1,10 +1,6 @@
-<tui-doc-page
-    i18n-header
-    header="Icons"
->
+<tui-doc-page header="Icons">
     <ng-template
         *ngFor="let key of keys"
-        i18n-pageTab
         [pageTab]="key"
     >
         <tui-notification>
@@ -19,7 +15,7 @@
             </a>
             as its icon pack with some custom made icons.
         </tui-notification>
-        <p i18n>
+        <p>
             These icons can be used by name in
             <a
                 tuiLink
@@ -48,7 +44,6 @@
                     tuiIconButton
                     type="button"
                     size="m"
-                    i18n-title
                     title="Copy"
                     appearance="icon"
                     class="icon"
@@ -63,7 +58,6 @@
     <ng-template pageTab="SVG Tips">
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Customization"
             description="You can customize the path to your icons and inherit color"
             [content]="example1"
@@ -73,7 +67,6 @@
 
         <tui-doc-example
             id="inline"
-            i18n-heading
             heading="Inline SVG"
             description="If you use unsafe icons or inline SVG with linear gradient you need to provide TUI_SANITIZER"
             [content]="example2"

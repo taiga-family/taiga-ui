@@ -3,10 +3,7 @@
     package="KIT"
     type="pipes"
 >
-    <ng-template
-        i18n
-        pageTab
-    >
+    <ng-template pageTab>
         <p>
             FieldErrorPipe takes order of errors as array and transform it to
             <code>TuiValidationError</code>
@@ -31,7 +28,6 @@
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -40,7 +36,6 @@
 
         <tui-doc-example
             id="custom-messages"
-            i18n-heading
             heading="With custom messages for validators"
             [content]="example2"
         >
@@ -49,7 +44,6 @@
 
         <tui-doc-example
             id="patterns"
-            i18n-heading
             heading="with a template"
             [content]="example3"
         >
@@ -58,7 +52,6 @@
 
         <tui-doc-example
             id="form-array"
-            i18n-heading
             heading="With adding new controls (FormArray)"
             [content]="example4"
         >
@@ -67,7 +60,6 @@
 
         <tui-doc-example
             id="async"
-            i18n-heading
             heading="async validator"
             [content]="example5"
         >
@@ -76,7 +68,6 @@
 
         <tui-doc-example
             id="content"
-            i18n-heading
             heading="tuiFieldErrorContentPipe"
             [content]="example6"
         >
@@ -87,7 +78,7 @@
     <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiFieldErrorPipeModule</code>
                     into a module where you want to use our component
@@ -100,7 +91,7 @@
             </li>
 
             <li>
-                <p i18n>Use pipe in template:</p>
+                <p>Use pipe in template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

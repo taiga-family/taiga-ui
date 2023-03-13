@@ -4,7 +4,7 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>
+        <p>
             <code>TuiButtonModule</code>
             is a module with components
             <code>tuiButton</code>
@@ -19,12 +19,11 @@
 
         <tui-doc-example
             id="usage"
-            i18n-heading
             heading="Usage"
             [content]="example1"
         >
             <tui-button-example-1></tui-button-example-1>
-            <tui-notification i18n>
+            <tui-notification>
                 Link cannot be
                 <code>disabled</code>
                 . If you want to make an unactive link, remove
@@ -41,7 +40,6 @@
 
         <tui-doc-example
             id="appearance"
-            i18n-heading
             heading="Modes"
             [content]="example2"
         >
@@ -50,7 +48,6 @@
 
         <tui-doc-example
             id="dropdown"
-            i18n-heading
             heading="Rotating"
             [content]="example3"
         >
@@ -59,7 +56,6 @@
 
         <tui-doc-example
             id="custom"
-            i18n-heading
             heading="Custom theme"
             [content]="example4"
         >
@@ -68,7 +64,6 @@
 
         <tui-doc-example
             id="options"
-            i18n-heading
             heading="Options"
             [content]="example5"
         >
@@ -77,7 +72,6 @@
 
         <tui-doc-example
             id="padding"
-            i18n-heading
             heading="Custom padding"
             [content]="example6"
         >
@@ -140,7 +134,6 @@
         </ng-template>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="appearance"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiAppearance | string"
@@ -150,7 +143,6 @@
                 Appearance mode
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="disabled"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -159,7 +151,6 @@
                 disabled state
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="icon"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
@@ -169,7 +160,6 @@
                 Left content
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="iconRight"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
@@ -179,17 +169,16 @@
                 Right content
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="shape"
                 documentationPropertyMode="input"
-                documentationPropertyType="'square' | 'rounded' | null"
+                documentationPropertyType="'square'
+                | 'rounded' | null"
                 [documentationPropertyValues]="shapeVariants"
                 [(documentationPropertyValue)]="shape"
             >
                 Button shape
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="showLoader"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -198,7 +187,6 @@
                 Adds loader inside
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeXS | TuiSizeXL"
@@ -214,7 +202,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiButtonModule</code>
                     into a module where you want to use our component
@@ -227,7 +215,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"
@@ -236,7 +224,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Optionally use the
                     <code>TUI_BUTTON_OPTIONS</code>
                     injection token to override the default options for the component.

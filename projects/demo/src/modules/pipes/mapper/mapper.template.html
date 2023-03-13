@@ -3,15 +3,11 @@
     package="CDK"
     type="pipes"
 >
-    <ng-template
-        i18n
-        pageTab
-    >
+    <ng-template pageTab>
         Pipe to transform a value with a function
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -19,7 +15,6 @@
         </tui-doc-example>
         <tui-doc-example
             id="array"
-            i18n-heading
             heading="With array"
             [content]="example2"
         >
@@ -30,7 +25,7 @@
     <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiMapperPipeModule</code>
                     into a module where you want to use our component
@@ -43,7 +38,7 @@
             </li>
 
             <li>
-                <p i18n>Use pipe in template with function and its arguments:</p>
+                <p>Use pipe in template with function and its arguments:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

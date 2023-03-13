@@ -4,7 +4,7 @@
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>
+        <p>
             <code>RadioLabeled</code>
             is a radio and a label. Label click changes form value. Without label:
             <a
@@ -18,7 +18,6 @@
 
         <tui-doc-example
             id="base"
-            i18n-heading
             heading="Label without formatting"
             [content]="example1"
         >
@@ -27,7 +26,6 @@
 
         <tui-doc-example
             id="custom"
-            i18n-heading
             heading="Label with formatting"
             [content]="example2"
         >
@@ -36,7 +34,6 @@
 
         <tui-doc-example
             id="large"
-            i18n-heading
             heading="Big size"
             [content]="example3"
         >
@@ -96,7 +93,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName=""
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -106,7 +102,6 @@
                 )
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="identityMatcher"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiIdentityMatcher"
@@ -118,7 +113,6 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="pseudoDisabled"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -127,7 +121,6 @@
                 Emulates disabled state without disabling a form
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="TuiSizeL"
@@ -143,7 +136,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import an Angular module for forms and
                     <code>TuiRadioLabeledModule</code>
                     in the same module where you want to use our component:
@@ -156,7 +149,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Declare a form (
                     <code>FormGroup</code>
                     ) or a control (
@@ -171,7 +164,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

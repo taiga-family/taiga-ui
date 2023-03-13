@@ -1,12 +1,8 @@
-<tui-doc-page
-    i18n-header
-    header="Routable dialog"
->
+<tui-doc-page header="Routable dialog">
     <ng-template pageTab>
-        <p i18n>Can be used to create eager loading dialogs with custom route</p>
+        <p>Can be used to create eager loading dialogs with custom route</p>
 
         <tui-doc-example
-            i18n-heading
             heading="Eager loading dialog"
             [content]="example1"
         >
@@ -15,10 +11,9 @@
     </ng-template>
 
     <ng-template pageTab="NamedOutlet">
-        <p i18n>It also works with named outlet</p>
+        <p>It also works with named outlet</p>
 
         <tui-doc-example
-            i18n-heading
             heading="Named outlet"
             [content]="example2"
         >
@@ -29,7 +24,7 @@
     <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Add
                     <code>router-outlet</code>
                     to the page template:
@@ -42,7 +37,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiRoutableDialogModule</code>
                     into a module where you want to use our helper
@@ -55,7 +50,7 @@
             </li>
 
             <li>
-                <p i18n>
+                <p>
                     Use
                     <code>tuiGenerateDialogableRoute</code>
                     inside children property of page router config

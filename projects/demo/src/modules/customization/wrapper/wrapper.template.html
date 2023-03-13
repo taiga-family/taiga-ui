@@ -1,8 +1,5 @@
-<tui-doc-page
-    i18n-header
-    header="Wrapper"
->
-    <p i18n>
+<tui-doc-page header="Wrapper">
+    <p>
         Many Taiga UI components use
         <code>tui-wrapper</code>
         component internally. It is responsible for display of various interactive states and is controlled with CSS.
@@ -10,7 +7,7 @@
         <code>appearance</code>
         while others, like input fields, are configurable through Dependency Injection.
     </p>
-    <p i18n>
+    <p>
         Built-in appearances come with Taiga UI theme. You can extend or completely replace them with your own in global
         non-encapsulated styles. Use the following mixins from
         <code>@import '@taiga-ui/core/styles/taiga-ui-local.less';</code>
@@ -42,7 +39,6 @@
 
     <tui-doc-example
         id="material"
-        i18n-heading
         heading="Imitate material"
         [content]="example1"
     >

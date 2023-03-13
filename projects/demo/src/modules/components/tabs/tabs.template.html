@@ -1,11 +1,10 @@
 <tui-doc-page
-    i18n-header
     header="Tabs"
     package="KIT"
     type="components"
 >
     <ng-template pageTab>
-        <p i18n>
+        <p>
             Component for creating tabs. It emulates appearance and behaviour of native iOS and Android components with
             <code>tuiMobileTabs</code>
             directive from
@@ -15,10 +14,7 @@
             .
         </p>
 
-        <tui-notification
-            i18n
-            class="tui-space_top-4"
-        >
+        <tui-notification class="tui-space_top-4">
             If you use
             <code>routerLink</code>
             , add also
@@ -44,7 +40,6 @@
 
         <tui-doc-example
             id="complex"
-            i18n-heading
             heading="Complex"
             [content]="example5"
         >
@@ -112,7 +107,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="itemsLimit"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -126,7 +120,6 @@
                 </strong>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="dropdownContent"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
@@ -139,7 +132,6 @@
                 </strong>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="moreContent"
                 documentationPropertyMode="input"
                 documentationPropertyType="PolymorpheusContent"
@@ -154,7 +146,6 @@
                 </strong>
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="underline"
                 documentationPropertyMode="input"
                 documentationPropertyType="boolean"
@@ -163,7 +154,6 @@
                 Enable active item underline
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="activeItemIndex"
                 documentationPropertyMode="input-output"
                 documentationPropertyType="number"
@@ -177,7 +167,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiTabsModule</code>
                     into a module where you want to use our component
@@ -190,7 +180,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"

@@ -1,9 +1,4 @@
-<h3
-    i18n
-    class="title"
->
-    Horizontal group
-</h3>
+<h3 class="title">Horizontal group</h3>
 <form
     class="group"
     [formGroup]="testForm"
@@ -39,12 +34,7 @@
         </tui-radio-block>
     </div>
 </form>
-<h3
-    i18n
-    class="title"
->
-    Vertical group
-</h3>
+<h3 class="title">Vertical group</h3>
 <form [formGroup]="testForm">
     <div
         tuiGroup
@@ -78,12 +68,7 @@
         </tui-radio-block>
     </div>
 </form>
-<h3
-    i18n
-    class="title"
->
-    Group without radio indicators
-</h3>
+<h3 class="title">Group without radio indicators</h3>
 <form
     class="group"
     [formGroup]="testForm"
@@ -96,7 +81,6 @@
         <tui-radio-block
             *ngFor="let fruit of fruits"
             formControlName="testValue"
-            i18n
             contentAlign="right"
             size="l"
             [item]="fruit"

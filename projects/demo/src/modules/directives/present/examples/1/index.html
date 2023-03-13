@@ -1,7 +1,4 @@
-<p
-    i18n
-    (tuiHoveredChange)="onHovered($event)"
->
+<p (tuiHoveredChange)="onHovered($event)">
     Hover
     <span
         [class.hidden]="!hovered"
@@ -16,7 +13,7 @@
         I am a component hidden with *ngIf
     </span>
 </p>
-<p i18n>Counter of component appearance minus counter of its disappearance:</p>
+<p>Counter of component appearance minus counter of its disappearance:</p>
 <p>
     CSS:
     <tui-badge [value]="counterCSS"></tui-badge>

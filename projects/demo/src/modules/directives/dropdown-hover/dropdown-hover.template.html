@@ -4,14 +4,13 @@
     type="directives"
 >
     <ng-template pageTab>
-        <p i18n>
+        <p>
             <code>DropdownHover</code>
             shows dropdown with custom template upon hover
         </p>
 
         <tui-doc-example
             id="basic"
-            i18n-heading
             heading="Basic"
             [content]="example1"
         >
@@ -30,7 +29,6 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <p
-                i18n
                 tuiDropdownHover
                 [tuiDropdownShowDelay]="showDelay"
                 [tuiDropdownHideDelay]="hideDelay"
@@ -46,10 +44,7 @@
                 <strong>to see a dropdown</strong>
             </p>
             <ng-template #dropdownContent>
-                <div
-                    i18n
-                    class="dropdown"
-                >
+                <div class="dropdown">
                     Here you can have any content
                     <p>You can select a text inside a dropdown and it will not close a dropdown</p>
                     <button
@@ -63,7 +58,6 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                i18n
                 documentationPropertyName="tuiDropdownShowDelay"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -72,7 +66,6 @@
                 Show delay for dropdown appearance after hover
             </ng-template>
             <ng-template
-                i18n
                 documentationPropertyName="tuiDropdownHideDelay"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
@@ -87,7 +80,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p i18n>
+                <p>
                     Import
                     <code>TuiDropdownModule</code>
                     into a module where you want to use our component
@@ -100,7 +93,7 @@
             </li>
 
             <li>
-                <p i18n>Add to the template:</p>
+                <p>Add to the template:</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"
