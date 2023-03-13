@@ -1,3 +1,5 @@
+console.log('Compiling typescript files by tsconfig...');
+
 /**
  * @type {import('eslint').Linter.Config}
  */
@@ -19,10 +21,12 @@ module.exports = {
         '@tinkoff/eslint-config-angular/function-return-type',
         // @custom
         './scripts/eslint/typescript.js',
+        './scripts/eslint/no-restricted-syntax.js',
+        './scripts/eslint/angular.js',
         './scripts/eslint/taiga.js',
-        './scripts/eslint/off.js',
         './scripts/eslint/cypress.js',
         './scripts/eslint/naming-convention.js',
+        './scripts/eslint/off.js',
     ],
     ignorePatterns: ['*/icons/all.ts', '404.html', '*.js', '*.json', '*.less', '*.md'],
 };
