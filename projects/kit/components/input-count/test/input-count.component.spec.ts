@@ -254,8 +254,8 @@ describe(`InputCount`, () => {
 
             await fixture.whenStable();
 
-            expect(inputPO.value).toBe(``);
-            expect(testComponent.control.value).toBe(null);
+            expect(inputPO.value).toBe(`10`);
+            expect(testComponent.control.value).toBe(10);
         });
 
         it(`If you enter a number greater than max, the new value is max`, () => {

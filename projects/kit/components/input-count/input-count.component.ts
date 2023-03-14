@@ -30,6 +30,7 @@ import {
     TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_SIZE,
     tuiCreateNumberMask,
+    tuiMaskedNumberStringToNumber,
     TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
@@ -68,6 +69,8 @@ export class TuiInputCountComponent
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;
+
+    private unfinishedValue: string | null = '';
 
     @Input()
     @tuiDefaultProp()
@@ -197,6 +200,14 @@ export class TuiInputCountComponent
     }
 
     onValueChange(): void {
+        if (this.isNativeValueNotFinished) {
+            this.unfinishedValue = this.nativeValue;
+
+            return;
+        }
+
+        this.unfinishedValue = null;
+
         const capped = this.capValue(this.nativeNumberValue);
 
         if (this.isNotNumber(capped)) {
@@ -284,13 +295,23 @@ export class TuiInputCountComponent
     }
 
     private onBlur(): void {
-        if (this.isNotNumber(this.value)) {
+        const nativeNumberValue = this.unfinishedValue
+            ? tuiMaskedNumberStringToNumber(
+                  this.unfinishedValue,
+                  this.numberFormat.decimalSeparator,
+                  this.numberFormat.thousandSeparator,
+              )
+            : this.nativeNumberValue;
+
+        this.unfinishedValue = null;
+
+        if (this.isNotNumber(nativeNumberValue)) {
             this.updateValue(null);
 
             return;
         }
 
-        const value = Math.max(this.nativeNumberValue || 0, this.min);
+        const value = Math.max(nativeNumberValue || 0, this.min);
         const formattedValue = this.formatNumber(value);
 
         this.nativeValue = formattedValue;
@@ -314,5 +335,13 @@ export class TuiInputCountComponent
 
     private isNotNumber(value: number | null): value is null {
         return !isPresent(value) || Number.isNaN(value);
+    }
+
+    private get isNativeValueNotFinished(): boolean {
+        const {nativeNumberValue} = this;
+
+        return nativeNumberValue < 0
+            ? nativeNumberValue > this.max
+            : nativeNumberValue < this.min;
     }
 }
