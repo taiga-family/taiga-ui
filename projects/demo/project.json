@@ -207,13 +207,13 @@
         "serve-ssl": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "nx mkcert demo && nx serve --ssl"
+                "command": "nx mkcert demo && nx serve demo --ssl"
             }
         },
         "serve-ip": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "nx serve --open --host 0.0.0.0 --disable-host-check"
+                "command": "nx serve demo --open --host 0.0.0.0 --disable-host-check"
             }
         },
         "serve-ssr": {
