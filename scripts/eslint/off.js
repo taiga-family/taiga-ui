@@ -5,7 +5,16 @@ module.exports = {
             parser: '@typescript-eslint/parser',
             plugins: ['@typescript-eslint'],
             rules: {
+                // TODO: investigate / enable later
                 // TODO: move to @tinkoff/eslint-config-angular
+                '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off',
+                '@typescript-eslint/prefer-readonly-parameter-types': 'off',
+                '@typescript-eslint/strict-boolean-expressions': 'off',
+                '@typescript-eslint/prefer-nullish-coalescing': 'off',
+                '@typescript-eslint/require-array-sort-compare': 'off',
+                '@typescript-eslint/no-unnecessary-condition': 'off',
+                '@typescript-eslint/no-unsafe-member-access': 'off',
+                '@typescript-eslint/no-unsafe-return': 'off',
                 '@typescript-eslint/no-useless-constructor': 'off',
                 'no-prototype-builtins': 'off',
                 '@typescript-eslint/no-shadow': 'off',
