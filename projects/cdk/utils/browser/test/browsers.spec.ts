@@ -1,4 +1,4 @@
-import {isIE, isEdge, isEdgeOlderThan, isFirefox, tuiIsSafari} from '@taiga-ui/cdk';
+import {isEdge, isEdgeOlderThan, isFirefox, isIE, tuiIsSafari} from '@taiga-ui/cdk';
 
 describe(`Browsers`, () => {
     it(`isIE`, () => {
