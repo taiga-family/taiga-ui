@@ -18,6 +18,8 @@ export class ExampleTuiAccordionComponent {
     noPadding = false;
     open = false;
     rounded = true;
+    gapVariants = [null, '10px', '20px'];
+    gap = this.gapVariants[0];
     showArrow = true;
     disableHover = false;
 

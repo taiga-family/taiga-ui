@@ -11,6 +11,16 @@
         // when accordion has rounded=true and item has top-bottom borders
         border-radius: 0 !important;
     }
+
+    margin: var(--tui-accordion-item-gap) 0;
+
+    &:first-child {
+        margin-top: unset;
+    }
+
+    &:last-child {
+        margin-bottom: unset;
+    }
 }
 
 .t-wrapper {

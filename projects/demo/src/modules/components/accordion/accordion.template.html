@@ -44,6 +44,7 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-accordion
+                [style.--tui-accordion-item-gap]="gap"
                 [closeOthers]="closeOthers"
                 [rounded]="rounded"
             >
@@ -80,6 +81,19 @@
                         </div>
                     </ng-template>
                 </tui-accordion-item>
+                <tui-accordion-item
+                    [borders]="borders"
+                    [disabled]="disabled"
+                    [noPadding]="noPadding"
+                    [size]="size"
+                    [showArrow]="showArrow"
+                    [disableHover]="disableHover"
+                >
+                    Taiga UI addon-mobile
+                    <ng-template tuiAccordionItemContent>
+                        Components and tools specific to mobile version of the app
+                    </ng-template>
+                </tui-accordion-item>
             </tui-accordion>
         </tui-doc-demo>
 
@@ -106,6 +120,16 @@
                             [(documentationPropertyValue)]="rounded"
                         >
                             Rounded accordion style
+                        </ng-template>
+                    </tui-doc-documentation>
+                    <tui-doc-documentation heading="CSS customization">
+                        <ng-template
+                            documentationPropertyName="style.--tui-accordion-item-gap"
+                            documentationPropertyType="string"
+                            [documentationPropertyValues]="gapVariants"
+                            [(documentationPropertyValue)]="gap"
+                        >
+                            Gap beetween accordion item
                         </ng-template>
                     </tui-doc-documentation>
                 </ng-template>
