@@ -101,7 +101,7 @@
         "bundlemon": "2.0.1",
         "cpy-cli": "4.2.0",
         "cy2": "4.0.6",
-        "cypress": "12.7.0",
+        "cypress": "12.8.0",
         "cypress-real-events": "1.7.6",
         "eslint": "8.36.0",
         "find-in-files": "0.5.0",
