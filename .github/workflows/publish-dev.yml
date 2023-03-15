@@ -1,4 +1,4 @@
-name: Nightly publish
+name: ⚠️ Nightly publish
 
 on:
   workflow_dispatch:
