@@ -85,6 +85,8 @@ describe(`Dialogs`, () => {
                         .last()
                         .tuiWaitBeforeScreenshot()
                         .matchImageSnapshot(`${index}-7-dialogs`);
+
+                    cy.tuiShow(`tui-doc-page`);
                 });
 
                 it(`Pristine form does not show prompt`, () => {
@@ -97,6 +99,7 @@ describe(`Dialogs`, () => {
                 it(`Dirty form shows prompt`, () => {
                     cy.get(`tui-dialog input`).type(`Test`);
                     cy.get(`tui-dialog .t-close`).click();
+                    cy.tuiHide(`tui-doc-page`);
                     cy.tuiWaitKitDialog();
 
                     cy.get(`tui-dialog`)
