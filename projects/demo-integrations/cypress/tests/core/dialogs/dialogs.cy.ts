@@ -91,8 +91,6 @@ describe(`Dialogs`, () => {
 
                 it(`Pristine form does not show prompt`, () => {
                     cy.get(`tui-dialog .t-close`).click();
-                    cy.tuiWaitKitDialog();
-
                     cy.get(`tui-dialog`).should(`not.exist`);
                 });
 
@@ -119,7 +117,6 @@ describe(`Dialogs`, () => {
                     cy.get(`tui-dialog-example-8 button`).first().click();
                     cy.tuiWaitKitDialog();
                     cy.get(`tui-dialog .t-close`).click();
-                    cy.tuiWaitKitDialog();
 
                     cy.get(`tui-dialog`).should(`not.exist`);
                 });
