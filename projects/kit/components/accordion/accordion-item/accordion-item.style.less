@@ -5,14 +5,13 @@
     display: block;
     overflow: hidden;
     border-radius: var(--tui-radius-l);
+    margin: var(--tui-accordion-item-gap) 0;
 
     &[data-tui-host-borders='top-bottom'] {
         // @bad TODO: find the better way to prevent radius in case
         // when accordion has rounded=true and item has top-bottom borders
         border-radius: 0 !important;
     }
-
-    margin: var(--tui-accordion-item-gap) 0;
 
     &:first-child {
         margin-top: unset;
