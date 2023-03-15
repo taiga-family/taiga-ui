@@ -74,7 +74,7 @@ describe(`Dialogs`, () => {
                     .matchImageSnapshot(`${index}-6-dialogs`);
             });
 
-            it(`Dialog with confirmation works`, () => {
+            describe(`Dialog with confirmation works`, () => {
                 beforeEach(() => {
                     cy.get(`tui-dialog-example-8 button`).first().click();
 
