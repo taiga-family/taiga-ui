@@ -3,6 +3,7 @@ import './tiptap-editor.types';
 import {Inject, Injectable} from '@angular/core';
 import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import type {TuiEditableIframe} from '@taiga-ui/addon-editor/extensions/iframe-editor';
+import type {TuiEditableImage} from '@taiga-ui/addon-editor/extensions/image-editor';
 import type {TuiYoutubeOptions} from '@taiga-ui/addon-editor/extensions/youtube';
 import {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
 import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
@@ -109,10 +110,23 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         this.editor
             .chain()
             .focus()
-            .first(({commands}) => [
-                () => commands.setEditableImage?.({src}) || false,
-                () => commands.setImage({src}),
-            ])
+            .command(({commands, state}) => {
+                const setImage = (commands.setEditableImage ?? commands.setImage) as
+                    | ((config: TuiEditableImage) => boolean)
+                    | undefined;
+
+                if (setImage) {
+                    const anchor = state.selection.anchor;
+
+                    setImage({src});
+                    commands.setTextSelection(anchor);
+                    commands.insertContent(`<p></p>`);
+
+                    return true;
+                }
+
+                return false;
+            })
             .run();
     }
 

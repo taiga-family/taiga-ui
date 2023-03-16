@@ -25,8 +25,8 @@ import {switchMap, takeUntil} from 'rxjs/operators';
                     ({StarterKit}) => StarterKit,
                 ),
                 import('@taiga-ui/addon-editor/extensions/image-editor').then(
-                    ({createImageEditorExtension}) =>
-                        createImageEditorExtension(injector),
+                    ({tuiCreateImageEditorExtension}) =>
+                        tuiCreateImageEditorExtension({injector}),
                 ),
             ],
         },
