@@ -19,7 +19,7 @@ export abstract class AbstractDemoComponent implements OnInit {
     protected abstract readonly router: Router;
 
     @HostBinding(`attr.data-tui-version-demo`)
-    protected readonly version = this.selectedVersion?.alias;
+    protected readonly versionDemo = this.selectedVersion?.majorTitle;
 
     // TODO: use inject(TUI_IS_CYPRESS) in angular v14+
     @HostBinding(`class._is-cypress-mode`)
