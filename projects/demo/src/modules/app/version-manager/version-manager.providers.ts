@@ -22,11 +22,13 @@ export const TUI_VERSION_MANAGER_PROVIDERS: Provider[] = [
             const baseHrefAppVersion =
                 strategy.path().split(`/`).filter(Boolean)?.[0] ?? `/`;
 
+            console.info(`[Current base href]: `, baseHrefAppVersion);
+
             return (
                 versions.find(
                     meta =>
                         meta.baseHref === baseHrefAppVersion ||
-                        meta.alias === `v${TUI_CURRENT_MAJOR_VERSION}`,
+                        meta.majorTitle === `v${TUI_CURRENT_MAJOR_VERSION}`,
                 ) ?? null
             );
         },
