@@ -11,6 +11,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
 })
 export class TuiSkeletonExample1 {
+    radius = 10;
+
     testForm = new FormGroup({
         testValue: new FormControl(true),
     });
