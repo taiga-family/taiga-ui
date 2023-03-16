@@ -2,7 +2,7 @@ name: 🚀 Deploy to Github Pages (taiga-ui.dev)
 
 on:
   workflow_run:
-    workflows: ['Snapshots']
+    workflows: ['🚀 Snapshots']
     types:
       - completed
   workflow_dispatch:
