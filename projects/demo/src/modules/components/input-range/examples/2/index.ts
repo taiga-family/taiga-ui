@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_NUMBER_FORMAT} from '@taiga-ui/core';
+import {tuiNumberFormatProvider} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-input-range-example-2',
@@ -17,14 +17,11 @@ import {TUI_NUMBER_FORMAT} from '@taiga-ui/core';
     changeDetection,
     encapsulation,
     providers: [
-        {
-            provide: TUI_NUMBER_FORMAT,
-            useValue: {
-                decimalSeparator: '.',
-                thousandSeparator: ',',
-                zeroPadding: true,
-            },
-        },
+        tuiNumberFormatProvider({
+            decimalSeparator: '.',
+            thousandSeparator: ',',
+            zeroPadding: true,
+        }),
     ],
 })
 export class TuiInputRangeExample2 {
