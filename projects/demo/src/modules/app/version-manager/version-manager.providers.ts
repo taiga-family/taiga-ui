@@ -19,15 +19,13 @@ export const TUI_VERSION_MANAGER_PROVIDERS: Provider[] = [
             strategy: LocationStrategy,
             versions: readonly TuiVersionMeta[],
         ): TuiVersionMeta | null => {
-            const baseHrefAppVersion =
+            const firstSubdirectory =
                 strategy.path().split(`/`).filter(Boolean)?.[0] ?? `/`;
-
-            console.info(`[Current base href]: `, baseHrefAppVersion);
 
             return (
                 versions.find(
                     meta =>
-                        meta.baseHref === baseHrefAppVersion ||
+                        meta.appSubdirectory === firstSubdirectory ||
                         meta.majorTitle === `v${TUI_CURRENT_MAJOR_VERSION}`,
                 ) ?? null
             );
