@@ -5,14 +5,19 @@ import {
     Inject,
     Self,
 } from '@angular/core';
-import {TUI_IS_MOBILE, TuiDestroyService, TuiDialog} from '@taiga-ui/cdk';
+import {
+    ALWAYS_TRUE_HANDLER,
+    TUI_IS_MOBILE,
+    TuiDestroyService,
+    TuiDialog,
+} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiAnimationOptions, TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATIONS_DURATION, TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
 import {TuiDialogSize} from '@taiga-ui/core/types';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {isObservable, merge, Observable, of, Subject} from 'rxjs';
-import {filter, switchMap, takeUntil} from 'rxjs/operators';
+import {filter, map, switchMap, takeUntil} from 'rxjs/operators';
 
 import {TUI_DIALOGS_CLOSE} from './dialog.tokens';
 import {TuiDialogCloseService} from './dialog-close.service';
@@ -58,25 +63,11 @@ export class TuiDialogComponent<O, I> {
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
     ) {
         merge(
-            this.close$.pipe(
-                switchMap(() =>
-                    isObservable(context.closeable)
-                        ? context.closeable
-                        : of(context.closeable),
-                ),
-                filter(Boolean),
-            ),
-            dialogClose$.pipe(
-                switchMap(() =>
-                    isObservable(context.dismissible)
-                        ? context.dismissible
-                        : of(context.dismissible),
-                ),
-                filter(Boolean),
-            ),
-            close$,
+            this.close$.pipe(switchMap(() => toObservable(context.closeable))),
+            dialogClose$.pipe(switchMap(() => toObservable(context.dismissible))),
+            close$.pipe(map(ALWAYS_TRUE_HANDLER)),
         )
-            .pipe(takeUntil(destroy$))
+            .pipe(filter(Boolean), takeUntil(destroy$))
             .subscribe(() => {
                 this.close();
             });
@@ -107,4 +98,8 @@ export class TuiDialogComponent<O, I> {
             this.context.$implicit.complete();
         }
     }
+}
+
+function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
+    return isObservable(valueOrStream) ? valueOrStream : of(valueOrStream);
 }
