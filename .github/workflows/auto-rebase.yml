@@ -1,4 +1,4 @@
-name: Rebase from main branch
+name: 🤖 Auto rebase from main branch
 
 on:
   push:

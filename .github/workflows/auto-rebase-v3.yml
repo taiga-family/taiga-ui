@@ -1,4 +1,4 @@
-name: Rebase from v3.x branch
+name: 🤖 Auto rebase from v3.x branch
 
 on:
   push:

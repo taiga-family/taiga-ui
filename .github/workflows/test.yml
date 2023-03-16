@@ -1,4 +1,4 @@
-name: Unit tests
+name: ⚙️ Unit tests
 
 on:
   pull_request:

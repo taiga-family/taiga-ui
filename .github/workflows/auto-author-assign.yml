@@ -1,4 +1,4 @@
-name: Auto Assign
+name: 🤖 Auto assign
 
 on:
   pull_request:

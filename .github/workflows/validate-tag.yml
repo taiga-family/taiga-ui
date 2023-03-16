@@ -1,4 +1,4 @@
-name: Validate release tag
+name: ⚙️ Validate release tag
 
 on:
   push:

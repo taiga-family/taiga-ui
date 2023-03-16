@@ -1,4 +1,4 @@
-name: Move new issues into Triage
+name: 🤖 Auto move new issues into Triage
 
 on:
   issues:
