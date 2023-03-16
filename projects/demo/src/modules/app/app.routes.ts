@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 
 import {GettingStartedComponent} from './getting-started/getting-started.component';
 import {LandingComponent} from './landing/landing.component';
 
-export const ROUTES = [
+export const ROUTES: Routes = [
     {
         path: ``,
         component: LandingComponent,
@@ -1841,7 +1841,10 @@ export const ROUTES = [
             title: `Stackblitz Starter`,
         },
     },
-    {path: `**`, redirectTo: ``},
+    {
+        path: `**`,
+        redirectTo: ``,
+    },
 ];
 
 @NgModule({

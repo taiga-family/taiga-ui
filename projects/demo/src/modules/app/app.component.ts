@@ -47,7 +47,7 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
     constructor(
         @Inject(TUI_IS_CYPRESS) isCypress: boolean,
         @Inject(TUI_DOC_PAGE_LOADED) pageLoaded$: Observable<boolean>,
-        @Inject(TUI_SELECTED_VERSION_META) versionMeta: TuiVersionMeta | null,
+        @Inject(TUI_SELECTED_VERSION_META) selectedVersion: TuiVersionMeta | null,
         @Inject(Router) protected readonly router: Router,
         @Inject(LOCAL_STORAGE) protected readonly storage: Storage,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
@@ -55,7 +55,7 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
         @Inject(DOCUMENT) private readonly documentRef: Document,
         @Inject(APP_BASE_HREF) private readonly appBaseHref: string,
     ) {
-        super(isCypress, pageLoaded$, versionMeta);
+        super(isCypress, pageLoaded$, selectedVersion);
     }
 
     override async ngOnInit(): Promise<void> {

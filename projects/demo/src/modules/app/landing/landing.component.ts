@@ -3,9 +3,12 @@ import {
     Component,
     ElementRef,
     HostBinding,
+    Inject,
+    OnInit,
     QueryList,
     ViewChildren,
 } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {INTERSECTION_ROOT} from '@ng-web-apis/intersection-observer';
 import {EMPTY_QUERY, TuiDay} from '@taiga-ui/cdk';
 
@@ -21,7 +24,7 @@ import {EMPTY_QUERY, TuiDay} from '@taiga-ui/cdk';
         },
     ],
 })
-export class LandingComponent {
+export class LandingComponent implements OnInit {
     @ViewChildren('block', {read: ElementRef})
     private readonly blocks: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
@@ -32,6 +35,15 @@ export class LandingComponent {
     date: TuiDay | null = null;
 
     readonly labels = ['New', 'Read', 'Archived', 'Junk'];
+
+    constructor(
+        @Inject(Router) private readonly router: Router,
+        @Inject(ActivatedRoute) private readonly activatedRoute: ActivatedRoute,
+    ) {}
+
+    async ngOnInit(): Promise<void> {
+        await this.clearQueryParams();
+    }
 
     @HostBinding('style.background')
     get background(): string {
@@ -53,6 +65,14 @@ export class LandingComponent {
             if (index === this.current + 1) {
                 nativeElement.scrollIntoView();
             }
+        });
+    }
+
+    private async clearQueryParams(): Promise<void> {
+        await this.router.navigate([], {
+            relativeTo: this.activatedRoute,
+            queryParamsHandling: '',
+            queryParams: {},
         });
     }
 }
