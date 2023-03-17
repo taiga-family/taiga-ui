@@ -27,6 +27,7 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiAutofillFieldName,
+    TuiAutoFocusDirective,
     TuiBooleanHandler,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -97,11 +98,20 @@ export class TuiInputCardGroupedComponent
     @ViewChild('inputCard')
     private readonly inputCard?: ElementRef<HTMLInputElement>;
 
+    @ViewChild('inputCard', {read: TuiAutoFocusDirective})
+    private readonly cardNumberAutofocusRef?: TuiAutoFocusDirective;
+
     @ViewChild('inputExpire')
     private readonly inputExpire?: ElementRef<HTMLInputElement>;
 
+    @ViewChild('inputExpire', {read: TuiAutoFocusDirective})
+    private readonly expireCardAutofocusRef?: TuiAutoFocusDirective;
+
     @ViewChild('inputCVC')
     private readonly inputCVC?: ElementRef<HTMLInputElement>;
+
+    @ViewChild('inputCVC', {read: TuiAutoFocusDirective})
+    private readonly cvcCardAutofocusRef?: TuiAutoFocusDirective;
 
     private expireInert = false;
 
@@ -416,15 +426,15 @@ export class TuiInputCardGroupedComponent
 
     /** Public API for manual focus management */
     focusCard(): void {
-        this.inputCard?.nativeElement.focus();
+        this.cardNumberAutofocusRef?.focus();
     }
 
     focusExpire(): void {
-        this.inputExpire?.nativeElement.focus({preventScroll: true});
+        this.expireCardAutofocusRef?.focus();
     }
 
     focusCVC(): void {
-        this.inputCVC?.nativeElement.focus();
+        this.cvcCardAutofocusRef?.focus();
     }
 
     private get cardFocused(): boolean {

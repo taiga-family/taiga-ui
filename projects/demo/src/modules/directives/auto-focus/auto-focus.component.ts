@@ -5,6 +5,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 @Component({
     selector: 'example-tui-auto-focus',
     templateUrl: './auto-focus.template.html',
+    styleUrls: ['./auto-focus.component.less'],
     changeDetection,
 })
 export class ExampleTuiAutoFocusComponent {

@@ -1,10 +1,24 @@
-import {Component, TemplateRef, ViewChild} from '@angular/core';
+import {
+    Component,
+    ElementRef,
+    Optional,
+    Self,
+    TemplateRef,
+    ViewChild,
+} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
     TuiInputCardGroupedComponent,
     TuiInputCardGroupedModule,
 } from '@taiga-ui/addon-commerce';
+import {
+    TUI_AUTOFOCUS_HANDLER,
+    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    TuiAutoFocusDirective,
+    TuiFocusableElementAccessor,
+    TuiSynchronousAutofocusHandler,
+} from '@taiga-ui/cdk';
 import {TuiSvgModule} from '@taiga-ui/core';
 import {configureTestSuite, TuiNativeInputPO} from '@taiga-ui/testing';
 
@@ -40,7 +54,28 @@ describe(`InputCardGrouped`, () => {
     let inputCVCPO: TuiNativeInputPO;
 
     configureTestSuite(() => {
-        TestBed.configureTestingModule({
+        TestBed.overrideDirective(TuiAutoFocusDirective, {
+            set: {
+                selector: `[tuiAutoFocus]`,
+                providers: [
+                    {
+                        provide: TUI_AUTOFOCUS_HANDLER,
+                        useFactory: (
+                            tuiFocusableComponent: TuiFocusableElementAccessor | null,
+                            elementRef: ElementRef<HTMLElement>,
+                        ) =>
+                            new TuiSynchronousAutofocusHandler(
+                                tuiFocusableComponent,
+                                elementRef,
+                            ),
+                        deps: [
+                            [new Optional(), new Self(), TUI_FOCUSABLE_ITEM_ACCESSOR],
+                            ElementRef,
+                        ],
+                    },
+                ],
+            },
+        }).configureTestingModule({
             imports: [ReactiveFormsModule, TuiInputCardGroupedModule, TuiSvgModule],
             declarations: [TestComponent],
         });

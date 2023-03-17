@@ -1,0 +1,40 @@
+<div class="container">
+    <tui-input-number
+        tuiTextfieldSize="l"
+        tuiTextfieldPostfix="₽"
+        [formControl]="amountControl"
+        [tuiTextfieldCleaner]="true"
+        [tuiTextfieldLabelOutside]="true"
+    >
+        <input
+            tuiTextfield
+            inputmode="numeric"
+        />
+    </tui-input-number>
+
+    <button
+        tuiButton
+        class="pay-button"
+        [icon]="paySystems"
+        (click)="payByCard()"
+    >
+        Pay
+    </button>
+</div>
+
+<ng-template #paySystems>
+    <div class="icon-group">
+        <tui-svg
+            src="tuiIconVisa"
+            class="icon"
+        ></tui-svg>
+        <tui-svg
+            src="tuiIconMaestro"
+            class="icon"
+        ></tui-svg>
+        <tui-svg
+            src="tuiIconMir"
+            class="icon"
+        ></tui-svg>
+    </div>
+</ng-template>

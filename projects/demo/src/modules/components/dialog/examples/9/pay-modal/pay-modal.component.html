@@ -1,0 +1,97 @@
+<div class="modal-container">
+    <h1 class="title">Pay by card</h1>
+
+    <form [formGroup]="form">
+        <ng-container *ngFor="let card of cards">
+            <div class="form-block">
+                <div
+                    class="saved-card-preset"
+                    (click)="payBySelectedCard(card)"
+                >
+                    <div class="saved-card-preset__item">
+                        <div class="saved-card-preset__item__inner">
+                            <div class="saved-card-preset__item__placeholder">Card number</div>
+                            <div class="saved-card-preset__item__info">
+                                <tui-svg
+                                    class="saved-card-preset__item__info__icon"
+                                    [src]="
+                                        card.cardType === 'MasterCard'
+                                            ? 'tuiIconMaestro'
+                                            : card.cardType === 'Visa'
+                                            ? 'tuiIconVisa'
+                                            : 'tuiIconMir'
+                                    "
+                                ></tui-svg>
+
+                                <div class="saved-card-preset__item__info__number">
+                                    {{ card.firstSix }}****{{ card.lastFour }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+        <div class="form-block">
+            <ng-container *tuiLet="(loading$ | async) ?? false as loading">
+                <p *ngIf="loading">Please wait, we are loading fake cards...</p>
+
+                <!-- hack: open keyboard on iOS before focus target input -->
+                <input
+                    tuiAutoFocus
+                    maxlength="0"
+                    class="fake-input"
+                />
+
+                <tui-loader
+                    [overlay]="true"
+                    [showLoader]="loading"
+                >
+                    <tui-input-card-grouped
+                        #cardGroupedInput
+                        formControlName="card"
+                        [cardValidator]="cardValidator"
+                        [class.without-date]="paymentMode === PAYMENT_MODE.BySavedCard"
+                        [tuiTextfieldCleaner]="paymentMode === PAYMENT_MODE.ByNewCard"
+                    ></tui-input-card-grouped>
+                </tui-loader>
+            </ng-container>
+        </div>
+
+        <ng-container *ngIf="paymentMode === PAYMENT_MODE.ByNewCard">
+            <div class="form-block">
+                <tui-checkbox-labeled
+                    formControlName="saveCard"
+                    size="l"
+                >
+                    Remember card
+                </tui-checkbox-labeled>
+            </div>
+        </ng-container>
+
+        <div
+            *ngIf="paymentMode === PAYMENT_MODE.BySavedCard"
+            class="form-block is--links"
+        >
+            <a
+                icon="tuiIconPlus"
+                iconAlign="left"
+                tuiLink
+                (click)="payByNewCard()"
+            >
+                New card
+            </a>
+        </div>
+    </form>
+    <button
+        appearance="primary"
+        size="l"
+        tuiButton
+        type="submit"
+        [showLoader]="!!(payProcessing$ | async)"
+        (click)="pay()"
+    >
+        Pay {{ amount | tuiFormatNumber }} ₽
+    </button>
+</div>
