@@ -138,7 +138,7 @@ export const TUI_COUNTRIES_MASKS: InjectionToken<Record<TuiCountryIsoCode, strin
             [TuiCountryIsoCode.MR]: `+222##-##-####`,
             [TuiCountryIsoCode.MS]: `+1(664) ###-####`,
             [TuiCountryIsoCode.MT]: `+356####-####`,
-            [TuiCountryIsoCode.MU]: `+230###-####`,
+            [TuiCountryIsoCode.MU]: `+230####-####`,
             [TuiCountryIsoCode.MV]: `+960###-####`,
             [TuiCountryIsoCode.MW]: `+265#-####-####`,
             [TuiCountryIsoCode.MX]: `+52(###) ###-####`,
