@@ -8,7 +8,7 @@
     "devDependencies": {
         "@types/cypress-image-snapshot": "3.1.6",
         "@types/jasmine": "3.10.7",
-        "@types/jest": "29.4.4",
+        "@types/jest": "29.5.0",
         "@types/jsdom": "16.2.15",
         "jasmine": "4.5.0",
         "jasmine-spec-reporter": "4.2.1",
