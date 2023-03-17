@@ -3,7 +3,12 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiButtonModule, TuiLinkModule, TuiModeModule} from '@taiga-ui/core';
+import {
+    TuiButtonModule,
+    TuiLinkModule,
+    TuiModeModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
 import {
     TuiCheckboxLabeledModule,
     TuiInputModule,
@@ -37,6 +42,7 @@ import {SkeletonComponent} from './skeleton.component';
         TuiToggleModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(SkeletonComponent)),
+        TuiTextfieldControllerModule,
     ],
     declarations: [SkeletonComponent, TuiSkeletonExample1, TuiSkeletonExample2],
     exports: [SkeletonComponent],

@@ -1,4 +1,4 @@
-<p>
+<div class="header">
     <button
         tuiButton
         type="button"
@@ -12,16 +12,28 @@
         tuiButton
         type="button"
         size="xs"
+        class="tui-space_right-2"
         (click)="toggleLight()"
     >
         Light mode
     </button>
-</p>
+
+    <div class="skeleton-options b-form">
+        --tui-skeleton-radius:
+
+        <tui-input
+            tuiTextfieldSize="s"
+            class="radius-option"
+            [(ngModel)]="radius"
+        ></tui-input>
+    </div>
+</div>
 
 <div
     class="container"
     [class.container_dark]="lightMode"
     [tuiMode]="lightMode ? 'onDark' : null"
+    [style.--tui-skeleton-radius.px]="radius"
 >
     <div class="tui-row">
         <div class="tui-col_md-4 tui-col_stretch">
