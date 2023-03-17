@@ -1,8 +1,8 @@
 <tui-hosted-dropdown
     class="t-wrapper"
-    [canOpen]="interactive && !!filtered.length"
+    [canOpen]="canOpen"
     [content]="dropdownContent"
-    [open]="interactive && open && !!filtered.length"
+    [open]="canOpen && open"
     (openChange)="onOpen($event)"
     (focusedChange)="onFocused($event)"
 >

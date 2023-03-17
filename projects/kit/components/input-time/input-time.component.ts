@@ -115,6 +115,10 @@ export class TuiInputTimeComponent
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
+    get canOpen(): boolean {
+        return this.interactive && !!this.filtered.length;
+    }
+
     get filtered(): readonly TuiTime[] {
         return this.filter(this.items, this.mode, this.computedSearch);
     }
@@ -136,7 +140,7 @@ export class TuiInputTimeComponent
             return false;
         }
 
-        if (this.open || this.computedFocused) {
+        if ((this.open && this.canOpen) || this.computedFocused) {
             return true;
         }
 
