@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
-import {TUI_NUMBER_FORMAT, TuiDecimal} from '@taiga-ui/core';
+import {TuiDecimal, tuiNumberFormatProvider} from '@taiga-ui/core';
 import {TuiInputNumberComponent, TuiInputNumberModule} from '@taiga-ui/kit';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
@@ -124,10 +124,10 @@ describe(`InputNumber - backward compatibility for separators`, () => {
                 ],
                 declarations: [TestComponent],
                 providers: [
-                    {
-                        provide: TUI_NUMBER_FORMAT,
-                        useValue: {decimalSeparator: `.`, thousandSeparator: `,`},
-                    },
+                    tuiNumberFormatProvider({
+                        decimalSeparator: `.`,
+                        thousandSeparator: `,`,
+                    }),
                 ],
             });
         });
