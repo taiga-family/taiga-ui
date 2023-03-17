@@ -31,6 +31,7 @@ import {
     TuiDropdownHoverDirective,
 } from '@taiga-ui/core/directives/dropdown';
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
+import {shouldCall} from '@tinkoff/ng-event-plugins';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, EMPTY, merge} from 'rxjs';
 import {distinctUntilChanged, skip} from 'rxjs/operators';
@@ -40,6 +41,15 @@ import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.d
 export interface TuiHostedDropdownContext
     extends TuiContextWithImplicit<TuiActiveZoneDirective> {
     close(): void;
+}
+
+function shouldClose(this: TuiHostedDropdownComponent, {key}: KeyboardEvent): boolean {
+    return (
+        key.toLowerCase() === 'escape' &&
+        this.canOpen &&
+        this.open &&
+        !this.dropdown?.nextElementSibling
+    );
 }
 
 /* eslint-disable @typescript-eslint/member-ordering */
@@ -159,12 +169,9 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         }
     }
 
-    @HostListener('keydown.esc', ['$event'])
+    @shouldCall(shouldClose)
+    @HostListener('document:keydown.silent', ['$event'])
     onKeyDownEsc(event: Event): void {
-        if (!this.canOpen || !this.open) {
-            return;
-        }
-
         event.stopPropagation();
         this.closeDropdown();
     }
