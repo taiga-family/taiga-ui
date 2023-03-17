@@ -24,6 +24,10 @@ export abstract class AbstractTuiTextfieldHost<T extends AbstractTuiControl<any>
         return this.host.computedFocusable;
     }
 
+    get inputMode(): TuiTextfieldHost['inputMode'] {
+        return `text`;
+    }
+
     get value(): string {
         return this.host.value?.toString() || ``;
     }

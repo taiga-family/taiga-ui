@@ -27,6 +27,6 @@ export class TuiInputNumberDirective
         }
 
         this.host.nativeFocusableElement.maxLength = this.host.calculatedMaxLength;
-        this.host.nativeFocusableElement.inputMode = 'decimal';
+        this.host.nativeFocusableElement.inputMode = this.host.inputMode;
     }
 }
