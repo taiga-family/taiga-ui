@@ -18,6 +18,10 @@ module.exports = {
                 '@typescript-eslint/no-use-before-define': 'error',
                 '@typescript-eslint/no-unused-vars': 'error',
                 '@typescript-eslint/consistent-generic-constructors': 'error',
+                '@typescript-eslint/triple-slash-reference': [
+                    'error',
+                    {path: 'always', types: 'always', lib: 'always'},
+                ],
             },
         },
         {
