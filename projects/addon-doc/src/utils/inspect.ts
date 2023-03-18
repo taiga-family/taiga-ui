@@ -64,6 +64,10 @@ export function tuiInspectAny<T>(data: T, depth: number): string {
         case `boolean`:
         case `function`:
             return String(data);
+        case `bigint`:
+        case `symbol`:
+        case `object`:
+            break;
     }
 
     if (data instanceof RegExp) {
