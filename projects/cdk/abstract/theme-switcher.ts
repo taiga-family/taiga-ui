@@ -20,12 +20,12 @@ export abstract class AbstractTuiThemeSwitcher implements OnDestroy {
 
         const styles = this.documentRef.head.querySelectorAll(`style`);
 
-        (<typeof AbstractTuiThemeSwitcher>this.constructor).style =
+        (this.constructor as typeof AbstractTuiThemeSwitcher).style =
             styles[styles.length - 1];
     }
 
     get style(): HTMLStyleElement | null {
-        return (<typeof AbstractTuiThemeSwitcher>this.constructor).style;
+        return (this.constructor as typeof AbstractTuiThemeSwitcher).style;
     }
 
     ngOnDestroy(): void {

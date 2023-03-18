@@ -140,4 +140,4 @@ module.exports = {
      * Run tests with specified reporters
      */
     reporters: [`default`],
-} as Config;
+} as unknown as Config;

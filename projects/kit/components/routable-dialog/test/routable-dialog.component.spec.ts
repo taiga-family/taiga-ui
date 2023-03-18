@@ -82,8 +82,8 @@ describe(`TuiRoutableDialog`, () => {
                 data: {
                     dialog: DialogComponent,
                     dialogOptions,
-                } as Data,
-            } as ActivatedRouteSnapshot,
+                } as unknown as Data,
+            } as unknown as ActivatedRouteSnapshot,
         });
 
         fixture.detectChanges();
@@ -97,23 +97,23 @@ describe(`TuiRoutableDialog`, () => {
                 data: {
                     dialog: DialogComponent,
                     isLazy: true,
-                } as Data,
-            } as ActivatedRouteSnapshot,
+                } as unknown as Data,
+            } as unknown as ActivatedRouteSnapshot,
             parent: {
                 snapshot: {
                     url: [
                         {
                             path: `path`,
-                        } as UrlSegment,
+                        } as unknown as UrlSegment,
                         {
                             path: `to`,
-                        } as UrlSegment,
+                        } as unknown as UrlSegment,
                         {
                             path: `dialog`,
-                        } as UrlSegment,
+                        } as unknown as UrlSegment,
                     ],
-                } as ActivatedRouteSnapshot,
-            } as ActivatedRoute,
+                } as unknown as ActivatedRouteSnapshot,
+            } as unknown as ActivatedRoute,
         });
 
         when(tuiDialogService.open(anything(), anything())).thenReturn(EMPTY);
@@ -134,8 +134,8 @@ describe(`TuiRoutableDialog`, () => {
                 data: {
                     dialog: DialogComponent,
                     backUrl: `../../..`,
-                } as Data,
-            } as ActivatedRouteSnapshot,
+                } as unknown as Data,
+            } as unknown as ActivatedRouteSnapshot,
         });
 
         when(tuiDialogService.open(anything(), anything())).thenReturn(EMPTY);
