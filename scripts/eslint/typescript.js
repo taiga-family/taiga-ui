@@ -18,6 +18,7 @@ module.exports = {
                 '@typescript-eslint/no-use-before-define': 'error',
                 '@typescript-eslint/no-unused-vars': 'error',
                 '@typescript-eslint/consistent-generic-constructors': 'error',
+                '@typescript-eslint/consistent-type-definitions': 'error',
             },
         },
         {
