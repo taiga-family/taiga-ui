@@ -22,6 +22,8 @@ module.exports = {
                     'error',
                     {path: 'always', types: 'always', lib: 'always'},
                 ],
+                '@typescript-eslint/consistent-type-definitions': 'error',
+                '@typescript-eslint/no-duplicate-enum-values': 'error',
             },
         },
         {
