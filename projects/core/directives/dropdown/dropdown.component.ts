@@ -144,6 +144,9 @@ export class TuiDropdownComponent implements OnDestroy {
                 break;
             case 'fixed':
                 style.width = tuiPx(rect.width);
+                break;
+            case 'auto':
+                break;
         }
     }
 
