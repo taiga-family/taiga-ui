@@ -15,6 +15,7 @@
  * */
 export const tuiBeInViewportAssertion: Chai.ChaiPlugin = _chai => {
     chai.Assertion.addMethod(`inViewport`, function () {
+        // eslint-disable-next-line @typescript-eslint/no-invalid-this
         const subject = this._obj;
         const {top, bottom} = subject[0].getBoundingClientRect();
 
