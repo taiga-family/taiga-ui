@@ -25,6 +25,8 @@ module.exports = {
                         objectLiteralTypeAssertions: 'allow-as-parameter',
                     },
                 ],
+                '@typescript-eslint/switch-exhaustiveness-check': 'error',
+                '@typescript-eslint/no-non-null-asserted-optional-chain': 'error',
                 '@typescript-eslint/triple-slash-reference': [
                     'error',
                     {path: 'always', types: 'always', lib: 'always'},
