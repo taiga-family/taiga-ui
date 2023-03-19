@@ -181,7 +181,7 @@ export interface TuiLanguageEditor {
     };
 }
 
-export type TuiLanguagePreview = {
+export interface TuiLanguagePreview {
     previewTexts: {
         rotate: string;
     };
@@ -190,7 +190,7 @@ export type TuiLanguagePreview = {
         zoomIn: string;
         reset: string;
     };
-};
+}
 
 export interface TuiLanguageMeta {
     name: TuiLanguageName;
