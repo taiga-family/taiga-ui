@@ -26,6 +26,7 @@ module.exports = {
                 ],
                 '@typescript-eslint/consistent-type-definitions': 'error',
                 '@typescript-eslint/no-duplicate-enum-values': 'error',
+                '@typescript-eslint/no-implied-eval': 'error',
             },
         },
         {
