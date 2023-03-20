@@ -22,9 +22,9 @@ import {tuiBeInViewportAssertion, tuiWaitAllImgInside} from '@taiga-ui/testing/c
 declare global {
     namespace Cypress {
         interface Chainable {
-            getByAutomationId(automationId: string): Chainable<JQuery<HTMLElement>>;
+            getByAutomationId(automationId: string): Chainable<JQuery>;
 
-            findByAutomationId(automationId: string): Chainable<JQuery<HTMLElement>>;
+            findByAutomationId(automationId: string): Chainable<JQuery>;
 
             tuiVisit: typeof tuiVisit;
             tuiHide: typeof tuiHide;

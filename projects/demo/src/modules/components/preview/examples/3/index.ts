@@ -16,7 +16,7 @@ import {filter, map, startWith, switchMap} from 'rxjs/operators';
 })
 export class TuiPreviewExample3 {
     @ViewChild('preview')
-    readonly preview?: TemplateRef<TuiDialogContext<void>>;
+    readonly preview?: TemplateRef<TuiDialogContext>;
 
     readonly items = [
         {

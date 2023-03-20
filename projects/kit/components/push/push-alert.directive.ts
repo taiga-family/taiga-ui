@@ -20,7 +20,7 @@ import {TuiPushService} from './push.service';
     selector: '[tuiPush]',
     providers: [TuiDestroyService],
 })
-export class TuiPushAlertDirective extends PolymorpheusTemplate<any> {
+export class TuiPushAlertDirective extends PolymorpheusTemplate {
     private readonly show$ = new Subject<boolean>();
 
     @Input()
