@@ -9,5 +9,5 @@
  * https://developer.mozilla.org/en-US/docs/Web/API/Navigator/platform
  */
 export function tuiIsApplePlatform(navigator: Navigator): boolean {
-    return navigator.platform.indexOf(`Mac`) === 0 || navigator.platform === `iPhone`;
+    return navigator.platform.startsWith(`Mac`) || navigator.platform === `iPhone`;
 }

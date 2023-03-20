@@ -123,7 +123,7 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
 
     readonly disabledItemHandlerVariants: Array<
         TuiBooleanHandler<TuiStringifiableItem<string> | string>
-    > = [ALWAYS_FALSE_HANDLER, item => String(item)[0] === 'T'];
+    > = [ALWAYS_FALSE_HANDLER, item => String(item).startsWith('T')];
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];
 }
