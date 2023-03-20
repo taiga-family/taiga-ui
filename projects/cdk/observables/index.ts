@@ -1,6 +1,7 @@
 export * from './control-value';
 export * from './drag-and-drop-from';
 export * from './focus-visible-observable';
+export * from './if-map';
 export * from './is-alive';
 export * from './is-observed';
 export * from './items-query-list-observable';

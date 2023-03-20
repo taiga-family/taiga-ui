@@ -1,13 +1,14 @@
 import {Directive, Inject, Input, Optional, Output, Self} from '@angular/core';
 import {tuiRequiredSetter} from '@taiga-ui/cdk/decorators';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk/directives/active-zone';
+import {tuiIfMap} from '@taiga-ui/cdk/observables';
 import {
     TuiDestroyService,
     TuiObscuredService,
     TuiParentsScrollService,
 } from '@taiga-ui/cdk/services';
-import {EMPTY, Observable, Subject} from 'rxjs';
-import {map, switchMap} from 'rxjs/operators';
+import {Observable, Subject} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 /**
  * Directive that monitors element visibility
@@ -46,8 +47,6 @@ export class TuiObscuredDirective {
             ),
         );
 
-        this.tuiObscured = this.enabled$.pipe(
-            switchMap(enabled => (enabled ? mapped$ : EMPTY)),
-        );
+        this.tuiObscured = this.enabled$.pipe(tuiIfMap(() => mapped$));
     }
 }
