@@ -1,5 +1,6 @@
 import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiOwnerDocumentException} from '@taiga-ui/cdk/exceptions';
+import {tuiIsFalsy} from '@taiga-ui/cdk/utils';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {concat, merge, Observable} from 'rxjs';
 import {
@@ -64,7 +65,7 @@ export function tuiFocusVisibleObservable(element: Element): Observable<boolean>
                 (_event, elementActual, documentActual) =>
                     elementActual || documentActual,
             ),
-            filter(isUserFocus => !isUserFocus),
+            filter(tuiIsFalsy),
         ),
     ).pipe(
         switchMap(() =>

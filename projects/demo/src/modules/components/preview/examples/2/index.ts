@@ -13,7 +13,7 @@ import {TuiDialogContext} from '@taiga-ui/core';
 })
 export class TuiPreviewExample2 {
     @ViewChild('preview')
-    readonly preview?: TemplateRef<TuiDialogContext<void>>;
+    readonly preview?: TemplateRef<TuiDialogContext>;
 
     constructor(
         @Inject(TuiPreviewDialogService)

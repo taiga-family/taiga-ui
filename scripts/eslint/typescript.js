@@ -11,6 +11,7 @@ module.exports = {
             plugins: ['@typescript-eslint'],
             rules: {
                 '@typescript-eslint/no-extra-non-null-assertion': 'error',
+                '@typescript-eslint/no-unnecessary-type-arguments': 'error',
                 '@typescript-eslint/type-annotation-spacing': 'error',
                 '@typescript-eslint/quotes': ['error', 'backtick'],
                 '@typescript-eslint/member-delimiter-style': 'error',
@@ -19,6 +20,13 @@ module.exports = {
                 '@typescript-eslint/no-use-before-define': 'error',
                 '@typescript-eslint/no-unused-vars': 'error',
                 '@typescript-eslint/consistent-generic-constructors': 'error',
+                '@typescript-eslint/consistent-type-assertions': [
+                    'error',
+                    {
+                        assertionStyle: 'as',
+                        objectLiteralTypeAssertions: 'allow-as-parameter',
+                    },
+                ],
                 '@typescript-eslint/no-confusing-non-null-assertion': 'error',
                 '@typescript-eslint/switch-exhaustiveness-check': 'error',
                 '@typescript-eslint/no-non-null-asserted-optional-chain': 'error',

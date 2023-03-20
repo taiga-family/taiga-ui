@@ -3,8 +3,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetService} from '@taiga-ui/addon-mobile';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {EMPTY, Observable, Subject} from 'rxjs';
-import {first, retry, switchMap, takeUntil} from 'rxjs/operators';
+import {Observable, Subject} from 'rxjs';
+import {switchMap, takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-sheet-example-1',
@@ -22,12 +22,7 @@ export class TuiSheetExample1 {
     ) {
         this.stream$
             .pipe(
-                switchMap((_, i) =>
-                    i % 2
-                        ? EMPTY
-                        : service.open('Simple sheet', {overlay: true}).pipe(first()),
-                ),
-                retry(),
+                switchMap(() => service.open('Simple sheet', {overlay: true})),
                 takeUntil(destroy$),
             )
             .subscribe();

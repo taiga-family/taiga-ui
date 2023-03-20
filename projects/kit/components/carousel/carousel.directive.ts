@@ -3,10 +3,11 @@ import {PAGE_VISIBILITY} from '@ng-web-apis/common';
 import {
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
+    tuiIfMap,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
-import {BehaviorSubject, combineLatest, EMPTY, interval, merge, Observable} from 'rxjs';
-import {map, switchMap} from 'rxjs/operators';
+import {BehaviorSubject, combineLatest, interval, merge, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Directive({
     selector: 'tui-carousel',
@@ -31,8 +32,9 @@ export class TuiCarouselDirective extends Observable<unknown> {
     );
 
     private readonly output$ = combineLatest([this.duration$, this.running$]).pipe(
-        switchMap(([duration, running]) =>
-            duration && running ? interval(duration) : EMPTY,
+        tuiIfMap(
+            ([duration]) => interval(duration),
+            values => values.every(Boolean),
         ),
     );
 

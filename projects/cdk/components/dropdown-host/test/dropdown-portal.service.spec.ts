@@ -46,7 +46,8 @@ describe(`PortalService`, () => {
 
     it(`addTemplateChild with host attached`, () => {
         const a: TemplateRef<unknown> = null as unknown as TemplateRef<unknown>;
-        const result: EmbeddedViewRef<unknown> = {} as EmbeddedViewRef<unknown>;
+        const result: EmbeddedViewRef<unknown> =
+            {} as unknown as EmbeddedViewRef<unknown>;
         const componentPortalStub: AbstractTuiPortalHostComponent = {
             addTemplateChild: () => result,
         } as unknown as AbstractTuiPortalHostComponent;

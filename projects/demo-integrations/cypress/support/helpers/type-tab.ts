@@ -1,7 +1,4 @@
-function nextTabbable(
-    $referenceElement: JQuery<HTMLElement>,
-    direction = `forward`,
-): JQuery<HTMLElement> {
+function nextTabbable($referenceElement: JQuery, direction = `forward`): JQuery {
     if (!(direction === `forward` || direction === `backward`)) {
         throw new Error(`Expected direction to be forward or backward`);
     }
@@ -48,7 +45,7 @@ function nextTabbable(
     return $referenceElement.constructor();
 }
 
-function isTabbable($element: JQuery<HTMLElement>): boolean {
+function isTabbable($element: JQuery): boolean {
     const tabIndex = $element.attr(`tabindex`);
 
     return (!tabIndex || parseInt(tabIndex, 10) >= 0) && isFocusable($element);
@@ -63,7 +60,7 @@ const DISABLEMENT_ELEMENTS = [
     `object`,
 ];
 
-function isFocusable($element: JQuery<HTMLElement>): boolean {
+function isFocusable($element: JQuery): boolean {
     const nodeName = $element.prop(`nodeName`)?.toLowerCase() || ``;
 
     return (
@@ -77,7 +74,7 @@ function isFocusable($element: JQuery<HTMLElement>): boolean {
 export function tuiTab(
     $subject: Cypress.PrevSubjectMap<void>[Cypress.PrevSubject],
     direction: 'backward' | 'forward',
-): Cypress.Chainable<JQuery<HTMLElement>> {
+): Cypress.Chainable<JQuery> {
     const thenable: Cypress.Chainable = $subject
         ? cy.wrap($subject, {log: false})
         : cy.focused({log: false});
