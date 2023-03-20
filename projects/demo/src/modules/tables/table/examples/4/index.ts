@@ -7,6 +7,7 @@ import {
     TUI_DEFAULT_MATCHER,
     tuiControlValue,
     TuiDay,
+    tuiIsFalsy,
     tuiIsPresent,
     tuiToInt,
 } from '@taiga-ui/cdk';
@@ -99,7 +100,7 @@ export class TuiTableExample4 {
 
     readonly arrow = TUI_ARROW;
 
-    readonly loading$ = this.request$.pipe(map(value => !value));
+    readonly loading$ = this.request$.pipe(map(tuiIsFalsy));
 
     readonly total$ = this.request$.pipe(
         filter(tuiIsPresent),

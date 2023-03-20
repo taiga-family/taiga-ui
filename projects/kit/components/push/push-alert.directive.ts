@@ -7,10 +7,10 @@ import {
     Self,
     TemplateRef,
 } from '@angular/core';
-import {TuiDestroyService} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiIfMap} from '@taiga-ui/cdk';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
-import {EMPTY, Observable, Subject} from 'rxjs';
-import {switchMap, takeUntil} from 'rxjs/operators';
+import {Observable, Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 // TODO: find the best way for prevent cycle
 // eslint-disable-next-line import/no-cycle
@@ -38,7 +38,7 @@ export class TuiPushAlertDirective extends PolymorpheusTemplate<any> {
 
         this.show$
             .pipe(
-                switchMap(show => (show ? push.open(this) : EMPTY)),
+                tuiIfMap(() => push.open(this)),
                 takeUntil(destroy$),
             )
             .subscribe();

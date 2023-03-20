@@ -1,5 +1,10 @@
 import {NgZone} from '@angular/core';
-import {ALWAYS_FALSE_HANDLER, tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
+import {
+    ALWAYS_FALSE_HANDLER,
+    tuiIsFalsy,
+    tuiTypedFromEvent,
+    tuiZonefree,
+} from '@taiga-ui/cdk';
 import {concat, merge, Observable, race, timer, zip} from 'rxjs';
 import {
     debounceTime,
@@ -57,7 +62,7 @@ export function processDragged(
     scroll$: Observable<unknown>,
 ): Observable<boolean> {
     const touchstart$ = dragged$.pipe(filter(Boolean));
-    const touchend$ = dragged$.pipe(filter(v => !v));
+    const touchend$ = dragged$.pipe(filter(tuiIsFalsy));
     const race$ = race(scroll$, timer(100)).pipe(
         debounceTime(200),
         take(1),
