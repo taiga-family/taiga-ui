@@ -21,6 +21,7 @@ export class TuiDocSeeAlsoComponent {
     ) {}
 
     getRouterLink(pageTitle: string): string {
+        // eslint-disable-next-line @typescript-eslint/prefer-for-of
         for (let i = 0; i < this.pages.length; i++) {
             const page = this.pages
                 .map(page => ('subPages' in page ? page.subPages : [page]))
