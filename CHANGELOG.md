@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.80.0](https://github.com/tinkoff/taiga-ui/compare/v2.79.0...v2.80.0) (2023-03-20)
+
+### Bug Fixes
+
+- **cdk:** correct detect that is safari ([#3865](https://github.com/tinkoff/taiga-ui/issues/3865))
+  ([9fb91fd](https://github.com/tinkoff/taiga-ui/commit/9fb91fd64130ddb9599ab9b544458634f7722b7b))
+- **kit:** `InputCount` fix cutting by min ([#3852](https://github.com/tinkoff/taiga-ui/issues/3852))
+  ([3ddfca6](https://github.com/tinkoff/taiga-ui/commit/3ddfca6ada80e134f20652efdec476fe2bd16188))
+
 ## [2.79.0](https://github.com/tinkoff/taiga-ui/compare/v2.78.0...v2.79.0) (2023-03-07)
 
 ### Bug Fixes
