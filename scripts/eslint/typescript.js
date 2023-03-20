@@ -18,6 +18,7 @@ module.exports = {
                 '@typescript-eslint/no-use-before-define': 'error',
                 '@typescript-eslint/no-unused-vars': 'error',
                 '@typescript-eslint/consistent-generic-constructors': 'error',
+                '@typescript-eslint/no-confusing-non-null-assertion': 'error',
                 '@typescript-eslint/switch-exhaustiveness-check': 'error',
                 '@typescript-eslint/no-non-null-asserted-optional-chain': 'error',
                 '@typescript-eslint/triple-slash-reference': [
