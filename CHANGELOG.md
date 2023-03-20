@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.21.0](https://github.com/tinkoff/taiga-ui/compare/v3.20.0...v3.21.0) (2023-03-20)
+
+### Features
+
+- **core:** add helper `tuiNumberFormatProvider` ([#3884](https://github.com/tinkoff/taiga-ui/issues/3884))
+  ([7e136dc](https://github.com/tinkoff/taiga-ui/commit/7e136dc795d6efebd1d518fbaa7bcc1b0ab14996))
+- **demo:** add example with named outlets ([#3821](https://github.com/tinkoff/taiga-ui/issues/3821))
+  ([5e897f7](https://github.com/tinkoff/taiga-ui/commit/5e897f79ec26d7fc9d68461dfb07f3c16824a9bf))
+- **kit:** `DialogForm` add new service ([#3851](https://github.com/tinkoff/taiga-ui/issues/3851))
+  ([10813f5](https://github.com/tinkoff/taiga-ui/commit/10813f5b3f95f9a9316a469e1ea7675467270a97))
+- **styles:** add `--tui-skeleton-radius` for skeleton ([#3890](https://github.com/tinkoff/taiga-ui/issues/3890))
+  ([3dc67b1](https://github.com/tinkoff/taiga-ui/commit/3dc67b14334d5fb91f2f5ba7e921bd196a757f84))
+
+### Bug Fixes
+
+- **addon-charts:** `dot` dont shrink to fit own width for `legend-item`
+  ([#3905](https://github.com/tinkoff/taiga-ui/issues/3905))
+  ([4109764](https://github.com/tinkoff/taiga-ui/commit/4109764c38ff2614da325d8f90bee262657ee39d))
+- **addon-commerce:** emulate focus on iOS by `tuiAutoFocus` ([#3799](https://github.com/tinkoff/taiga-ui/issues/3799))
+  ([57b263d](https://github.com/tinkoff/taiga-ui/commit/57b263d654d6e204a85eb6b137126e2ea9011eff))
+- **addon-editor:** dispatch `ImageNode` in `viewModel` ([#3872](https://github.com/tinkoff/taiga-ui/issues/3872))
+  ([89869ef](https://github.com/tinkoff/taiga-ui/commit/89869ef3a95f4b44b67fcd0db48c95786a69e497))
+- **cdk:** `tuiIfMap` add operator ([#3920](https://github.com/tinkoff/taiga-ui/issues/3920))
+  ([4ef2de6](https://github.com/tinkoff/taiga-ui/commit/4ef2de6513a55747e45a53e947415ccba3279199))
+- **cdk:** correct safari detection ([#3855](https://github.com/tinkoff/taiga-ui/issues/3855))
+  ([ee474b8](https://github.com/tinkoff/taiga-ui/commit/ee474b8e59a62455f0f444d0db0e747e1c32221e))
+- **cdk:** improve type annotation for `tuiForAsync` ([#3767](https://github.com/tinkoff/taiga-ui/issues/3767))
+  ([731c8bf](https://github.com/tinkoff/taiga-ui/commit/731c8bfe772f17a5a22f5ec79b6bd117e483e0c2))
+- **core:** `Dialog` fix `dismissible` property ([#3848](https://github.com/tinkoff/taiga-ui/issues/3848))
+  ([ea4730f](https://github.com/tinkoff/taiga-ui/commit/ea4730f0982f856759d45a5359e2f12ab0328825))
+- **core:** `Textarea` fix line breaks in disabled/readonly state
+  ([#3833](https://github.com/tinkoff/taiga-ui/issues/3833))
+  ([301a505](https://github.com/tinkoff/taiga-ui/commit/301a505712d22df2538b0aa3199f5d4e6a3de959))
+- **core:** escape event doesn't work in Safari ([#3751](https://github.com/tinkoff/taiga-ui/issues/3751))
+  ([32774b2](https://github.com/tinkoff/taiga-ui/commit/32774b2c93652bc8d8b55ae99f5405731d8098e2))
+- **core:** set `text` input mode for iOS devices when use negative values
+  ([#3899](https://github.com/tinkoff/taiga-ui/issues/3899))
+  ([8797bea](https://github.com/tinkoff/taiga-ui/commit/8797bea743d1fade8bed9ff6e9acdaa21d6d2013))
+- **kit:** `InputCount` fix formatting, fix cutting by min value, use `InputNumber` inside
+  ([#3824](https://github.com/tinkoff/taiga-ui/issues/3824))
+  ([fc96c86](https://github.com/tinkoff/taiga-ui/commit/fc96c8682b98fead3c3247afb7d9041b59b54bef))
+- **kit:** `InputPhoneInternational` change Mauritius phone pattern
+  ([#3901](https://github.com/tinkoff/taiga-ui/issues/3901))
+  ([47eb6ae](https://github.com/tinkoff/taiga-ui/commit/47eb6ae653fe88f803710171da3b137dd8c95bd6))
+- **kit:** `InputTag`, `Multiselect` fix placeholder ([#3832](https://github.com/tinkoff/taiga-ui/issues/3832))
+  ([75d4b6e](https://github.com/tinkoff/taiga-ui/commit/75d4b6efbe5bc9f607b74b711352c592e358b006))
+- **kit:** `InputTime` fix wrong preudofocus state ([#3896](https://github.com/tinkoff/taiga-ui/issues/3896))
+  ([dea3de7](https://github.com/tinkoff/taiga-ui/commit/dea3de782d622b9e14597c9eabd898733ca15bf1))
+- **kit:** use ellipsis for label in `pdf-viewer` when overflow text
+  ([#3845](https://github.com/tinkoff/taiga-ui/issues/3845))
+  ([dd308ac](https://github.com/tinkoff/taiga-ui/commit/dd308ac295ac2e8bab04f1fee06e520cef138f2a))
+- **kit:** use wrap for non-breaking string in `line-clamp` ([#3876](https://github.com/tinkoff/taiga-ui/issues/3876))
+  ([68169bf](https://github.com/tinkoff/taiga-ui/commit/68169bfa9294a9f31344cd710a50967ce4ec673e))
+
 ## [3.20.0](https://github.com/tinkoff/taiga-ui/compare/v3.19.0...v3.20.0) (2023-03-07)
 
 ### Features
