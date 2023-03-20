@@ -32,7 +32,7 @@ export class TuiFieldErrorPipeExample4 {
     });
 
     get formData(): FormArray {
-        return <FormArray>this.testForm.get('phones');
+        return this.testForm.get('phones') as FormArray;
     }
 
     addPhone(): void {
