@@ -15,7 +15,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 })
 export class TuiPreviewExample1 {
     @ViewChild('preview')
-    readonly preview?: TemplateRef<TuiDialogContext<void>>;
+    readonly preview?: TemplateRef<TuiDialogContext>;
 
     @ViewChild('contentSample')
     readonly contentSample?: TemplateRef<Record<string, unknown>>;

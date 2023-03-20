@@ -113,7 +113,7 @@ function getInitializer(
     classDeclaration: ClassDeclaration,
     decoratorName: string,
     propertyName: string,
-): Expression<ts.Expression> | undefined {
+): Expression | undefined {
     const decorator = classDeclaration.getDecorator(decoratorName);
 
     if (!decorator) {
