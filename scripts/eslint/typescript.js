@@ -10,6 +10,7 @@ module.exports = {
             parser: '@typescript-eslint/parser',
             plugins: ['@typescript-eslint'],
             rules: {
+                '@typescript-eslint/no-extra-non-null-assertion': 'error',
                 '@typescript-eslint/no-unnecessary-type-arguments': 'error',
                 '@typescript-eslint/type-annotation-spacing': 'error',
                 '@typescript-eslint/quotes': ['error', 'backtick'],
