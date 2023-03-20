@@ -35,7 +35,7 @@
         },
         {
             "enabled": false,
-            "depTypeList": ["engines", "peerDependencies", "optionalDependencies"]
+            "depTypeList": ["engines", "peerDependencies"]
         },
         {
             "enabled": false,
