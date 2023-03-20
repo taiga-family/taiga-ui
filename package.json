@@ -28,7 +28,7 @@
         "start:default": "nx serve demo -c def",
         "start:coalescing": "nx serve demo -c coalescing",
         "start:shadow": "nx serve demo -c shadow",
-        "start:ip": "nx run demo:serve-ip",
+        "start:ip": "nx serve-ip demo",
         "build:ssr": "nx build demo && nx run demo:server:production",
         "prerender": "nx run demo:prerender",
         "*** Workflow ***": "",
