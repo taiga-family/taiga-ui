@@ -9,7 +9,6 @@ import {
     Node,
     saveActiveProject,
     setActiveProject,
-    ts,
 } from 'ng-morph';
 
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
