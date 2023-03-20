@@ -1,4 +1,13 @@
 export interface TuiTextfieldHost {
+    readonly inputMode:
+        | 'decimal'
+        | 'email'
+        | 'none'
+        | 'numeric'
+        | 'search'
+        | 'tel'
+        | 'text'
+        | 'url';
     readonly readOnly: boolean;
     readonly disabled: boolean;
     readonly invalid: boolean;

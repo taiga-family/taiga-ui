@@ -31,7 +31,7 @@ const selectExclusions: Record<string, readonly number[]> = {
 const makeDemoSnapshot = (
     path: string,
     stepIndex: number,
-    $input: JQuery<HTMLElement>,
+    $input: JQuery,
     optionIndex: number,
 ): void => {
     cy.wrap($input, {log: false})

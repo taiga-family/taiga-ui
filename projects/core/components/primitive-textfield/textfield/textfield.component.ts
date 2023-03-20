@@ -1,10 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    HostBinding,
-    Inject,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Inject} from '@angular/core';
 import {TuiIdService} from '@taiga-ui/cdk';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
@@ -20,6 +14,8 @@ import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
     providers: [TEXTFIELD_CONTROLLER_PROVIDER],
     host: {
         type: 'text',
+        '[attr.id]': 'id',
+        '[attr.inputMode]': 'inputMode',
         '[attr.aria-invalid]': 'host.invalid',
         '[attr.disabled]': 'host.disabled || null',
         '[tabIndex]': 'host.focusable ? 0 : -1',
@@ -42,8 +38,11 @@ export class TuiTextfieldComponent {
         this.host.process(this.elementRef.nativeElement);
     }
 
-    @HostBinding('id')
     get id(): string {
         return this.elementRef.nativeElement.id || this.idService.generate();
+    }
+
+    get inputMode(): string {
+        return this.elementRef.nativeElement.inputMode || this.host.inputMode;
     }
 }

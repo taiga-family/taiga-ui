@@ -34,7 +34,7 @@ export class DialogExampleComponent {
         }
     }
 
-    showDialog(content: TemplateRef<TuiDialogContext<void>>): void {
+    showDialog(content: TemplateRef<TuiDialogContext>): void {
         this.dialogService.open(content, {dismissible: true}).subscribe();
     }
 }
