@@ -77,6 +77,7 @@ module.exports = {
                         extendDefaults: true,
                     },
                 ],
+                '@typescript-eslint/prefer-includes': 'error',
             },
         },
         {
