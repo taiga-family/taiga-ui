@@ -11,6 +11,7 @@ module.exports = {
             plugins: ['@typescript-eslint'],
             rules: {
                 '@typescript-eslint/prefer-for-of': 'error',
+                '@typescript-eslint/restrict-plus-operands': 'error',
                 '@typescript-eslint/no-extra-non-null-assertion': 'error',
                 '@typescript-eslint/no-unnecessary-type-arguments': 'error',
                 '@typescript-eslint/type-annotation-spacing': 'error',
