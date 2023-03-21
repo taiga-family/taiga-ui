@@ -9,7 +9,9 @@ import {
     Optional,
     Self,
 } from '@angular/core';
+import {WINDOW} from '@ng-web-apis/common';
 import {
+    TUI_IS_WEBKIT,
     tuiClamp,
     TuiContextWithImplicit,
     TuiDestroyService,
@@ -30,7 +32,7 @@ import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
 import {TuiPoint} from '@taiga-ui/core/types';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {map, takeUntil} from 'rxjs/operators';
 
 // eslint-disable-next-line import/no-cycle
 import {TuiHintDirective} from './hint.directive';
@@ -79,10 +81,17 @@ export class TuiHintComponent<C = any> {
         @Optional()
         @Inject(TuiModeDirective)
         private readonly mode: TuiModeDirective | null,
+        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(TUI_IS_WEBKIT) private readonly isWebkit: boolean,
     ) {
-        position$.pipe(takeUntil(destroy$)).subscribe(([top, left]) => {
-            this.update(top, left);
-        });
+        position$
+            .pipe(
+                map(point => this.correctPosition(point)),
+                takeUntil(destroy$),
+            )
+            .subscribe(([top, left]) => {
+                this.update(top, left);
+            });
 
         hovered$.pipe(takeUntil(destroy$)).subscribe(hover => this.hover.toggle(hover));
     }
@@ -112,12 +121,38 @@ export class TuiHintComponent<C = any> {
         const {style} = nativeElement;
         const rect = this.accessor.getClientRect();
         const safeLeft = Math.max(left, 4);
-        const beakTop = rect.top + rect.height / 2 - top;
-        const beakLeft = rect.left + rect.width / 2 - safeLeft;
+        const beakTop =
+            rect.top +
+            rect.height / 2 -
+            top +
+            (this.isWebkit ? this.visualViewportOffsetTop : 0);
+        const beakLeft =
+            rect.left +
+            rect.width / 2 -
+            safeLeft +
+            (this.isWebkit ? this.visualViewportOffsetLeft : 0);
 
         style.top = tuiPx(top);
         style.left = tuiPx(safeLeft);
         style.setProperty('--top', tuiPx(tuiClamp(beakTop, 0.5, height - 1)));
         style.setProperty('--left', tuiPx(tuiClamp(beakLeft, 0.5, width - 1)));
+    }
+
+    // https://bugs.webkit.org/show_bug.cgi?id=207089
+    private correctPosition(point: TuiPoint): TuiPoint {
+        return this.isWebkit
+            ? [
+                  point[0] + this.visualViewportOffsetTop,
+                  point[1] + this.visualViewportOffsetLeft,
+              ]
+            : point;
+    }
+
+    private get visualViewportOffsetTop(): number {
+        return this.windowRef.visualViewport?.offsetTop ?? 0;
+    }
+
+    private get visualViewportOffsetLeft(): number {
+        return this.windowRef.visualViewport?.offsetLeft ?? 0;
     }
 }
