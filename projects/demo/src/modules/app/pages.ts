@@ -916,7 +916,7 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Editor`,
-        title: `Highlight`,
+        title: `Highlight text`,
         keywords: `editor, highlight, wysiwyg, редактор, текст, подсветка, html, rich, text`,
         route: `/editor/highlight`,
     },
@@ -968,7 +968,7 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Editor`,
-                title: `Preview`,
+                title: `Preview images`,
                 keywords: `editor, preview, images, wysiwyg, редактор, текст, html, rich, text`,
                 route: `/editor/images/preview`,
             },
@@ -1273,7 +1273,7 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
-                title: `Filter`,
+                title: `Filters an array`,
                 keywords: `filter, совпадения, ngfor, for, match, пайп, pipe`,
                 route: `/pipes/filter`,
             },

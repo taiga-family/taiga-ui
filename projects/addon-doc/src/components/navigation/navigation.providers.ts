@@ -44,7 +44,7 @@ export const NAVIGATION_PROVIDERS: Provider[] = [
                 map(() => activatedRoute.firstChild),
                 filter(tuiIsPresent),
                 mergeMap(({data}) => data),
-                map(({title}) => titlePrefix + title),
+                map(({title}) => `${titlePrefix}${title}`),
                 takeUntil(destroy$),
             );
         },

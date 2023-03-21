@@ -35,16 +35,16 @@ export function tuiFormatPhone(
         return result;
     }
 
-    for (let i = 0; i < splitPhoneMask.length; i++) {
+    for (const mask of splitPhoneMask) {
         if (splitValue.length === 0) {
             break;
         }
 
-        if (splitPhoneMask[i] === `#`) {
+        if (mask === `#`) {
             result += splitValue[0] || ``;
             splitValue.splice(0, 1);
         } else {
-            result += splitPhoneMask[i];
+            result += mask;
         }
     }
 
