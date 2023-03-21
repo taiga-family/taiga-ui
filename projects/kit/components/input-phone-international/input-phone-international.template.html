@@ -1,5 +1,5 @@
 <tui-hosted-dropdown
-    *tuiLet="countriesNames$ | async as countriesNames"
+    *ngIf="countriesNames$ | async as countriesNames"
     class="t-hosted-dropdown"
     [content]="dropdown"
     [canOpen]="!readOnly"
