@@ -90,7 +90,7 @@ export class TuiInputExpireComponent
             value = `12${value.slice(2)}`;
         }
 
-        if (value.slice(0, 2) === '00') {
+        if (value.startsWith('00')) {
             value = `01${value.slice(2)}`;
         }
 
