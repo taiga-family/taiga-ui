@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
-import {tuiPure} from '@taiga-ui/cdk';
 
 import type {TuiDocPage} from '../../interfaces/page';
 import {TUI_DOC_SEE_ALSO_TEXT} from '../../tokens/i18n';
@@ -20,7 +19,6 @@ export class TuiDocSeeAlsoComponent {
         @Inject(TUI_DOC_MAP_PAGES) private readonly pages: Map<string, TuiDocPage>,
     ) {}
 
-    @tuiPure
     getRouterLink(pageTitle: string): string {
         return this.pages.get(pageTitle)?.route ?? '';
     }
