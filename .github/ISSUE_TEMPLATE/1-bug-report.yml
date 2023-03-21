@@ -4,45 +4,21 @@ description: Report a bug in the Taiga UI
 labels: ['bug', 'state: need triage']
 
 body:
-  - type: dropdown
-    id: affected-packages
-    attributes:
-      label: Which @taiga-ui/* package(s) are the source of the bug?
-      options:
-        - core
-        - kit
-        - cdk
-        - i18n
-        - icons
-        - taiga-schematics
-        - testing
-        - styles
-        - eslint-plugin
-        - addon-charts
-        - addon-commerce
-        - addon-doc
-        - addon-editor
-        - addon-mobile
-        - addon-table
-        - addon-tablebars
-        - Don't known / other
-      multiple: true
-    validations:
-      required: true
-
   - type: input
-    id: reproduction-url
+    id: playground-link
     attributes:
-      label: Please provide a link to a minimal reproduction of the bug
-      value: https://taiga-ui.dev/stackblitz
+      label: Playground Link
+      description: |
+        Link to an isolated reproduction [in our online playground](https://taiga-ui.dev/stackblitz).
 
-  - type: dropdown
-    id: blocking
-    attributes:
-      label: Is this issue blocking you?
-      options:
-        - Non-Blocking
-        - Blocking
+        If either of the following holds true:
+        - You can't reproduce the issue in the playground
+        - Your issue requires some complex setup - such as multiple files or a specific folder structure.
+
+        So you can use any link that might help for reproduction bug: github repo, demo url, etc.
+
+        ***Help us to help you!***
+      placeholder: https://stackblitz.com/edit/angular-...
     validations:
       required: true
 
@@ -52,6 +28,9 @@ body:
       label: Description
       placeholder: |
         Please provide the exception or error you saw.
+        How do you trigger this bug?
+        Please walk us through it step by step.
+        Please provide a screenshot if possible.
     validations:
       required: true
 
