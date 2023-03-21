@@ -10,6 +10,7 @@ module.exports = {
             parser: '@typescript-eslint/parser',
             plugins: ['@typescript-eslint'],
             rules: {
+                '@typescript-eslint/prefer-for-of': 'error',
                 '@typescript-eslint/no-unnecessary-qualifier': 'error',
                 '@typescript-eslint/restrict-plus-operands': 'error',
                 '@typescript-eslint/no-extra-non-null-assertion': 'error',
