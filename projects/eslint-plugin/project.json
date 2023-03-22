@@ -5,6 +5,7 @@
     "sourceRoot": "projects/eslint-plugin",
     "projectType": "library",
     "prefix": "tui",
+    "implicitDependencies": ["!testing"],
     "targets": {
         "test": {
             "executor": "nx:run-commands",
