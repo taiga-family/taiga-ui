@@ -87,7 +87,7 @@
         "@commitlint/config-conventional": "17.4.4",
         "@nrwl/cli": "15.8.7",
         "@nrwl/node": "15.8.7",
-        "@nrwl/nx-cloud": "15.2.3",
+        "@nrwl/nx-cloud": "15.2.4",
         "@nrwl/tao": "15.8.7",
         "@nrwl/workspace": "15.8.7",
         "@testing-library/cypress": "9.0.0",
