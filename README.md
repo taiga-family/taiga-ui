@@ -6,7 +6,7 @@
 [![angular-open-source-starter](https://img.shields.io/badge/made%20with-angular--open--source--starter-d81676?logo=angular)](https://github.com/tinkoff/angular-open-source-starter)
 
 [Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) • [Core team](#core-team) •
-[Figma](https://www.figma.com/community/file/966347242613098831)
+[Figma](https://www.figma.com/community/file/1220308188005380608)
 
 **Taiga UI** is fully-treeshakable Angular UI Kit consisting of multiple base libraries and several add-ons.
 
@@ -41,8 +41,8 @@ See our [Getting started](https://taiga-ui.dev/getting-started) page to start wo
 You can also use our [StackBlitz starter](https://stackblitz.com/edit/taiga-starter?file=src%2Fapp%2Fapp.component.html)
 to create a quick sample with Taiga UI
 
-🎨 Check out [Taiga UI Figma library](https://www.figma.com/community/file/966347242613098831/Taiga-UI) which you can
-use to design your app with Taiga UI components.
+🎨 Check out [Taiga UI Figma library](https://www.figma.com/community/file/1220308188005380608) which you can use to
+design your app with Taiga UI components.
 
 ## Community
 
