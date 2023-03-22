@@ -88,8 +88,8 @@ export class TuiOverscrollDirective {
     }
 
     @HostBinding('style.overscrollBehavior')
-    get overscrollBehavior(): 'none' | null {
-        return this.enabled ? 'none' : null;
+    get overscrollBehavior(): 'contain' | null {
+        return this.enabled ? 'contain' : null;
     }
 
     private processEvent(
