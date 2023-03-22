@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[381],{TX90:function(n,t,e){"use strict";e.r(t),t.default=".axes {\n    height: 12.5rem;\n    width: 25rem;\n    color: #bc71c9;\n}\n\n.chart {\n    position: absolute;\n    top: 0;\n    left: 0;\n\n    &_dotted {\n        stroke-dasharray: 2;\n    }\n\n    &_dashed {\n        stroke-dasharray: 4;\n    }\n}\n"}}]);
