@@ -5,6 +5,7 @@
     "sourceRoot": "projects/addon-editor",
     "projectType": "library",
     "prefix": "tui",
+    "implicitDependencies": ["!testing"],
     "schematics": {
         "@schematics/angular:component": {
             "changeDetection": "OnPush",

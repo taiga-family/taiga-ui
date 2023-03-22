@@ -5,6 +5,7 @@
     "sourceRoot": "projects/i18n",
     "projectType": "library",
     "prefix": "tui",
+    "implicitDependencies": ["!testing"],
     "targets": {
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
