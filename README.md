@@ -8,7 +8,7 @@
 [![Codeflow](https://img.shields.io/badge/codeflow-pr.new-blue)](https://pr.new/github.com/tinkoff/taiga-ui)
 
 [Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) • [Core team](#core-team) •
-[Figma](https://www.figma.com/community/file/966347242613098831)
+[Figma](https://www.figma.com/community/file/1220308188005380608)
 
 **Taiga UI** is fully-treeshakable Angular UI Kit consisting of multiple base libraries and several add-ons.
 
@@ -42,8 +42,8 @@ See our [Getting started](https://taiga-ui.dev/getting-started) page to start wo
 
 You can also use our [StackBlitz starter](https://taiga-ui.dev/stackblitz) to create a quick sample with Taiga UI
 
-🎨 Check out [Taiga UI Figma library](https://www.figma.com/community/file/966347242613098831/Taiga-UI) which you can
-use to design your app with Taiga UI components.
+🎨 Check out [Taiga UI Figma library](https://www.figma.com/community/file/1220308188005380608) which you can use to
+design your app with Taiga UI components.
 
 ## Community
 
