@@ -9,10 +9,11 @@ import {
     Output,
     TemplateRef,
 } from '@angular/core';
-import {ActivatedRoute, Params, UrlSerializer} from '@angular/router';
-import {tuiIsNumber} from '@taiga-ui/cdk';
+import {ActivatedRoute, Params, UrlSerializer, UrlTree} from '@angular/router';
+import {tuiIsNumber, TuiStringHandler} from '@taiga-ui/cdk';
 import {BehaviorSubject, Subject} from 'rxjs';
 
+import {TUI_DOC_URL_STATE_HANDLER} from '../../tokens/url-state-handler';
 import {tuiCoerceValue} from '../../utils/coerce-value';
 
 const SERIALIZED_SUFFIX = '$';
@@ -57,6 +58,8 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         @Inject(Location) private readonly locationRef: Location,
         @Inject(ActivatedRoute) private readonly activatedRoute: ActivatedRoute,
         @Inject(UrlSerializer) private readonly urlSerializer: UrlSerializer,
+        @Inject(TUI_DOC_URL_STATE_HANDLER)
+        private readonly urlStateHandler: TuiStringHandler<UrlTree>,
     ) {}
 
     ngOnInit(): void {
@@ -139,6 +142,6 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
             [propName]: computedValue,
         };
 
-        this.locationRef.go(String(tree));
+        this.locationRef.go(this.urlStateHandler(tree));
     }
 }

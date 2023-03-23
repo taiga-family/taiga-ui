@@ -21,11 +21,13 @@ import {
     tuiPure,
     tuiPx,
     TuiResizeableDirective,
+    TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
 import {TUI_DOC_DEMO_TEXTS} from '../../tokens/i18n';
+import {TUI_DOC_URL_STATE_HANDLER} from '../../tokens/url-state-handler';
 
 const MIN_WIDTH = 160;
 
@@ -75,6 +77,8 @@ export class TuiDocDemoComponent implements OnInit {
         @Inject(Location) private readonly locationRef: Location,
         @Inject(UrlSerializer) private readonly urlSerializer: UrlSerializer,
         @Inject(TUI_DOC_DEMO_TEXTS) readonly texts: [string, string, string],
+        @Inject(TUI_DOC_URL_STATE_HANDLER)
+        private readonly urlStateHandler: TuiStringHandler<UrlTree>,
     ) {}
 
     @HostListener('window:resize')
@@ -132,21 +136,21 @@ export class TuiDocDemoComponent implements OnInit {
 
     @tuiPure
     private updateUrl(tuiMode: TuiBrightness | null, sandboxWidth: number): void {
-        const urlTree = this.getUrlTree();
-        const {queryParams} = urlTree;
+        const tree = this.getUrlTree();
+        const {queryParams} = tree;
         const modeParam = tuiMode ? {tuiMode} : {};
         const resizeParam = !Number.isNaN(sandboxWidth) ? {sandboxWidth} : {};
 
         delete queryParams.sandboxWidth;
         delete queryParams.tuiMode;
 
-        urlTree.queryParams = {
+        tree.queryParams = {
             ...queryParams,
             ...modeParam,
             ...resizeParam,
         };
 
-        this.locationRef.replaceState(String(urlTree));
+        this.locationRef.go(this.urlStateHandler(tree));
     }
 
     private createForm(): void {
