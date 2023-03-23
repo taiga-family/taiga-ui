@@ -55,6 +55,7 @@ export * from './tokens/scroll-behavior';
 export * from './tokens/see-also';
 export * from './tokens/source-code';
 export * from './tokens/title';
+export * from './tokens/url-state-handler';
 
 /* Types */
 export * from './types/pages';

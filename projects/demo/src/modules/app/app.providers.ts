@@ -7,6 +7,7 @@ import {
 } from '@angular/common';
 import {inject, PLATFORM_ID, Provider} from '@angular/core';
 import {Title} from '@angular/platform-browser';
+import {UrlTree} from '@angular/router';
 import {
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
@@ -17,10 +18,12 @@ import {
     TUI_DOC_SEE_ALSO,
     TUI_DOC_SOURCE_CODE,
     TUI_DOC_TITLE,
+    TUI_DOC_URL_STATE_HANDLER,
     TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
 import {
     TUI_DIALOG_CLOSES_ON_BACK,
+    TUI_ENSURE_BASE_HREF,
     TUI_IS_CYPRESS,
     TUI_TAKE_ONLY_TRUSTED_EVENTS,
 } from '@taiga-ui/cdk';
@@ -157,6 +160,12 @@ export const APP_PROVIDERS: Provider[] = [
         // TODO: change it back after solving https://github.com/Tinkoff/taiga-ui/issues/3270
         // useFactory: () => of(!tuiIsInsideIframe(inject(WINDOW))), // for cypress tests
         useFactory: () => of(inject(TUI_IS_CYPRESS)),
+    },
+    {
+        provide: TUI_DOC_URL_STATE_HANDLER,
+        deps: [TUI_ENSURE_BASE_HREF],
+        useFactory: (baseHref: string) => (tree: UrlTree) =>
+            String(tree).replace(baseHref, ``),
     },
     tuiLanguageSwitcher(
         async (language: TuiLanguageName): Promise<unknown> =>
