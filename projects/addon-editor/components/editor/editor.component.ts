@@ -129,6 +129,7 @@ export class TuiEditorComponent
     onActiveZone(focused: boolean): void {
         this.focused = focused;
         this.updateFocused(focused);
+        this.control?.updateValueAndValidity();
     }
 
     onModelChange(value: string): void {
