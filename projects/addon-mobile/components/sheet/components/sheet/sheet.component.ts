@@ -1,5 +1,5 @@
+import type {AfterViewInit, QueryList} from '@angular/core';
 import {
-    AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
@@ -7,18 +7,17 @@ import {
     Inject,
     Input,
     NgZone,
-    QueryList,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
 import {EMPTY_QUERY, TUI_IS_IOS, tuiPure, tuiZonefull} from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {TUI_MORE_WORD} from '@taiga-ui/kit';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {fakeSmoothScroll} from '../../ios.hacks';
-import {TuiSheet, TuiSheetRequiredProps} from '../../sheet';
+import type {TuiSheet, TuiSheetRequiredProps} from '../../sheet';
 import {TUI_SHEET_SCROLL} from '../../sheet-tokens';
 import {TUI_SHEET_ID} from '../sheet-heading/sheet-heading.component';
 // TODO: find the best way for prevent cycle

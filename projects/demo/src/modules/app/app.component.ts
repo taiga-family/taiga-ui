@@ -1,10 +1,10 @@
 import {APP_BASE_HREF, DOCUMENT} from '@angular/common';
+import type {OnInit} from '@angular/core';
 import {
     Component,
     Inject,
     InjectFlags,
     Injector,
-    OnInit,
     Self,
     ViewEncapsulation,
 } from '@angular/core';
@@ -14,7 +14,7 @@ import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
 import {TUI_IS_CYPRESS, TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
 import {Metrika} from 'ng-yandex-metrika';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {distinctUntilChanged, filter, map, takeUntil} from 'rxjs/operators';
 
 import {environment} from '../../environments/environment';
@@ -23,7 +23,7 @@ import {
     TUI_SELECTED_VERSION_META,
     TUI_VERSION_MANAGER_PROVIDERS,
 } from './version-manager/version-manager.providers';
-import {TuiVersionMeta} from './version-manager/versions.constants';
+import type {TuiVersionMeta} from './version-manager/versions.constants';
 
 @Component({
     selector: 'app',

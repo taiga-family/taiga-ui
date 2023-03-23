@@ -1,4 +1,4 @@
-import {AnimationOptions} from '@angular/animations';
+import type {AnimationOptions} from '@angular/animations';
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {tuiDefaultProp, tuiIsString, TuiValidationError} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse} from '@taiga-ui/core/animations';
@@ -8,8 +8,8 @@ import {
     TUI_DEFAULT_ERROR_MESSAGE,
     TUI_MODE,
 } from '@taiga-ui/core/tokens';
-import {TuiBrightness} from '@taiga-ui/core/types';
-import {Observable} from 'rxjs';
+import type {TuiBrightness} from '@taiga-ui/core/types';
+import type {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-error',

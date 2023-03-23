@@ -1,4 +1,5 @@
-import {Injectable, OnDestroy} from '@angular/core';
+import type {OnDestroy} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ReplaySubject} from 'rxjs';
 
 /**

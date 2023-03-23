@@ -1,7 +1,9 @@
 import {tuiDeleteNode, tuiGetSelectedContent} from '@taiga-ui/addon-editor/utils';
-import {mergeAttributes, Node, RawCommands} from '@tiptap/core';
+import type {RawCommands} from '@tiptap/core';
+import {mergeAttributes, Node} from '@tiptap/core';
 
-import {TUI_EDITOR_GROUP_DEFAULT_OPTIONS, TuiEditorGroupOptions} from './group.options';
+import type {TuiEditorGroupOptions} from './group.options';
+import {TUI_EDITOR_GROUP_DEFAULT_OPTIONS} from './group.options';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {

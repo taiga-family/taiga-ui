@@ -1,5 +1,5 @@
 import {InjectionToken} from '@angular/core';
-import {TuiMedia} from '@taiga-ui/core/interfaces';
+import type {TuiMedia} from '@taiga-ui/core/interfaces';
 
 /**
  * Token for media constant

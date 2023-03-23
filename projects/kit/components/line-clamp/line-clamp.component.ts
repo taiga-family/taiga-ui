@@ -1,9 +1,8 @@
+import type {AfterViewInit, DoCheck} from '@angular/core';
 import {
-    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    DoCheck,
     ElementRef,
     HostBinding,
     HostListener,
@@ -21,8 +20,9 @@ import {
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {TUI_HINT_COMPONENT, TuiHintDirective} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject, Observable, of, Subject, timer} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
+import {BehaviorSubject, of, Subject, timer} from 'rxjs';
 import {
     distinctUntilChanged,
     filter,
@@ -33,7 +33,8 @@ import {
 } from 'rxjs/operators';
 
 import {TuiLineClampBoxComponent} from './line-clamp-box.component';
-import {TUI_LINE_CLAMP_OPTIONS, TuiLineClampOptions} from './line-clamp-options';
+import type {TuiLineClampOptions} from './line-clamp-options';
+import {TUI_LINE_CLAMP_OPTIONS} from './line-clamp-options';
 
 @Component({
     selector: 'tui-line-clamp',

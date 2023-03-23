@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {TUI_TABLE_SHOW_HIDE_MESSAGE} from '@taiga-ui/addon-table/tokens';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-reorder',

@@ -3,21 +3,24 @@ import {Location as NgLocation} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Inject, Input, Optional} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LOCATION} from '@ng-web-apis/common';
-import {TUI_IS_CYPRESS, TuiContextWithImplicit, TuiHandler} from '@taiga-ui/cdk';
+import type {TuiContextWithImplicit, TuiHandler} from '@taiga-ui/cdk';
+import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
 import {TuiAlertService, TuiNotification} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
 
-import {TuiCodeEditor} from '../../interfaces/code-editor';
-import {TuiDocExample} from '../../interfaces/page';
+import type {TuiCodeEditor} from '../../interfaces/code-editor';
+import type {TuiDocExample} from '../../interfaces/page';
 import {TUI_DOC_CODE_ACTIONS} from '../../tokens/code-actions';
 import {TUI_DOC_CODE_EDITOR} from '../../tokens/code-editor';
 import {TUI_DOC_EXAMPLE_CONTENT_PROCESSOR} from '../../tokens/example-content-processor';
 import {TUI_DOC_EXAMPLE_TEXTS} from '../../tokens/i18n';
 import {tuiRawLoadRecord} from '../../utils/raw-load-record';
-import {TUI_DOC_EXAMPLE_OPTIONS, TuiDocExampleOptions} from './example-options';
+import type {TuiDocExampleOptions} from './example-options';
+import {TUI_DOC_EXAMPLE_OPTIONS} from './example-options';
 
 @Component({
     selector: 'tui-doc-example',

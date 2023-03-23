@@ -1,20 +1,15 @@
-import {
-    addMethods,
-    createProject,
-    DevkitFileSystem,
-    saveActiveProject,
-    setActiveProject,
-} from 'ng-morph';
+import type {DevkitFileSystem} from 'ng-morph';
+import {addMethods, createProject, saveActiveProject, setActiveProject} from 'ng-morph';
 
 import {ALL_FILES, ALL_TS_FILES} from '../../../../constants';
-import {TuiSchema} from '../../../../ng-add/schema';
+import type {TuiSchema} from '../../../../ng-add/schema';
 import {addUniqueImport} from '../../../../utils/add-unique-import';
 import {getNgComponents} from '../../../../utils/angular/ng-component';
 import {setupProgressLogger} from '../../../../utils/progress';
 import {projectRoot} from '../../../../utils/project-root';
 import {getComponentTemplates} from '../../../../utils/templates/get-component-templates';
 import {replaceInputProperty} from '../../../../utils/templates/ng-component-input-manipulations';
-import {TemplateResource} from '../../../interfaces/template-resourse';
+import type {TemplateResource} from '../../../interfaces/template-resourse';
 
 const MIN_LABELS_MIGRATION_METHOD_NAME = `tuiMigrationInputRangeMinLabel`;
 const MAX_LABELS_MIGRATION_METHOD_NAME = `tuiMigrationInputRangeMaxLabel`;

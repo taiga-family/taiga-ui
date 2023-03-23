@@ -12,20 +12,22 @@ import {
     Self,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiBooleanHandler,
+    TuiContextWithImplicit,
+    TuiHandler,
+    TuiIdentityMatcher,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiMultipleControl,
     ALWAYS_FALSE_HANDLER,
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_DEFAULT_STRINGIFY,
-    TuiBooleanHandler,
-    TuiContextWithImplicit,
     tuiDefaultProp,
-    TuiHandler,
-    TuiIdentityMatcher,
     tuiIsNativeFocusedIn,
 } from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 // @bad TODO: Add active zone to track focus
 @Component({

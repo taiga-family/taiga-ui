@@ -1,6 +1,7 @@
 import '@tiptap/extension-text-style';
 
-import {Command, Extension, GlobalAttributes} from '@tiptap/core';
+import type {Command, GlobalAttributes} from '@tiptap/core';
+import {Extension} from '@tiptap/core';
 
 interface FontColorOptions {
     types: string[];

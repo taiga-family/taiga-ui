@@ -1,4 +1,5 @@
-import {InjectionToken, Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 
 /**
  * Token to exclude inherited documentation properties

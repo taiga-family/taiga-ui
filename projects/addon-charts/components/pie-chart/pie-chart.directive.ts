@@ -9,7 +9,8 @@ import {
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DURATION} from '@taiga-ui/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 import {map, pairwise, switchMap, takeUntil, takeWhile} from 'rxjs/operators';
 
 @Directive({

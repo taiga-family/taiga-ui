@@ -1,3 +1,4 @@
+import type {Type} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -8,10 +9,17 @@ import {
     Input,
     Optional,
     Self,
-    Type,
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiActiveZoneDirective,
+    TuiBooleanHandler,
+    TuiContextWithImplicit,
+    TuiControlValueTransformer,
+    TuiDateMode,
+    TuiFocusableElementAccessor,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
@@ -20,48 +28,44 @@ import {
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
     TUI_IS_MOBILE,
-    TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiBooleanHandler,
-    TuiContextWithImplicit,
-    TuiControlValueTransformer,
     tuiDateClamp,
-    TuiDateMode,
     TuiDay,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     TuiMonth,
     tuiNullableSame,
 } from '@taiga-ui/cdk';
-import {
-    TUI_DEFAULT_MARKER_HANDLER,
-    TUI_TEXTFIELD_SIZE,
-    TuiDialogService,
+import type {
     TuiMarkerHandler,
-    TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
     TuiTextfieldSizeDirective,
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {TuiNamedDay} from '@taiga-ui/kit/classes';
+import {
+    TUI_DEFAULT_MARKER_HANDLER,
+    TUI_TEXTFIELD_SIZE,
+    TuiDialogService,
+    TuiPrimitiveTextfieldComponent,
+} from '@taiga-ui/core';
+import type {TuiNamedDay} from '@taiga-ui/kit/classes';
 import {EMPTY_MASK} from '@taiga-ui/kit/constants';
+import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
 import {
     TUI_DATE_TEXTS,
     TUI_DATE_VALUE_TRANSFORMER,
     TUI_INPUT_DATE_OPTIONS,
     TUI_MOBILE_CALENDAR,
     tuiDateStreamWithTransformer,
-    TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
 import {
     tuiCreateAutoCorrectedDatePipe,
     tuiCreateDateMask,
 } from '@taiga-ui/kit/utils/mask';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
 @Component({

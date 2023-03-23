@@ -1,4 +1,4 @@
-import {ReplacementConst} from '../../interfaces/replacement-const';
+import type {ReplacementConst} from '../../interfaces/replacement-const';
 
 export const CONSTS_TO_REPLACE: ReplacementConst[] = [
     {

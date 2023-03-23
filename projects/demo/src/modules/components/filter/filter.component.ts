@@ -1,9 +1,11 @@
 import {Component, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {ALWAYS_FALSE_HANDLER, TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
+import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiAlertService} from '@taiga-ui/core';
 
 class ItemWithBadge {
     constructor(readonly text: string, readonly badgeValue?: number) {}

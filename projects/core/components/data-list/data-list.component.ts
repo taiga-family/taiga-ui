@@ -1,3 +1,4 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,7 +10,6 @@ import {
     Inject,
     Input,
     Optional,
-    QueryList,
     ViewEncapsulation,
 } from '@angular/core';
 import {
@@ -23,16 +23,16 @@ import {
     tuiQueryListChanges,
     tuiSetNativeMouseFocused,
 } from '@taiga-ui/cdk';
+import type {TuiTextfieldController} from '@taiga-ui/core/directives';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    TuiTextfieldController,
 } from '@taiga-ui/core/directives';
-import {TuiDataListAccessor} from '@taiga-ui/core/interfaces';
+import type {TuiDataListAccessor} from '@taiga-ui/core/interfaces';
 import {TUI_NOTHING_FOUND_MESSAGE, tuiAsDataListAccessor} from '@taiga-ui/core/tokens';
-import {TuiDataListRole} from '@taiga-ui/core/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {TuiDataListRole} from '@taiga-ui/core/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 // TODO: find the best way for prevent cycle

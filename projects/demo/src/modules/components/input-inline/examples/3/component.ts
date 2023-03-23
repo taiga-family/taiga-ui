@@ -1,4 +1,5 @@
-import {ChangeDetectorRef, Component, Inject, NgZone, OnInit, Self} from '@angular/core';
+import type {OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Inject, NgZone, Self} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
@@ -7,7 +8,8 @@ import {
     tuiWatch,
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
-import {Observable, timer} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {timer} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({

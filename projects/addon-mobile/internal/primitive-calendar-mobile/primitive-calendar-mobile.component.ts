@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {TUI_IS_IOS, TuiDay, TuiHandler, TuiInjectionTokenType} from '@taiga-ui/cdk';
+import type {TuiDay, TuiHandler, TuiInjectionTokenType} from '@taiga-ui/cdk';
+import {TUI_IS_IOS} from '@taiga-ui/cdk';
 import {
     TUI_DAY_TYPE_HANDLER,
     TUI_SHORT_WEEK_DAYS,

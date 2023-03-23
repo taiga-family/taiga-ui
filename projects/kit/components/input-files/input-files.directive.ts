@@ -3,7 +3,8 @@ import {TuiIdService} from '@taiga-ui/cdk';
 
 // eslint-disable-next-line import/no-cycle
 import {TuiInputFilesComponent} from './input-files.component';
-import {TUI_INPUT_FILES_OPTIONS, TuiInputFilesOptions} from './input-files.options';
+import type {TuiInputFilesOptions} from './input-files.options';
+import {TUI_INPUT_FILES_OPTIONS} from './input-files.options';
 
 @Directive({
     selector: 'input[tuiInputFiles]',

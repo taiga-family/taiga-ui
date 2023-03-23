@@ -1,3 +1,4 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -10,34 +11,37 @@ import {
     Input,
     Optional,
     Output,
-    QueryList,
     ViewChild,
 } from '@angular/core';
+import type {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
     tuiDefaultProp,
     tuiIsNativeFocusedIn,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
+import type {
+    TuiTextfieldController,
+    TuiTextfieldOptions,
+} from '@taiga-ui/core/directives/textfield-controller';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_OPTIONS,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    TuiTextfieldController,
-    TuiTextfieldOptions,
 } from '@taiga-ui/core/directives/textfield-controller';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import type {TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {tuiGetBorder} from '@taiga-ui/core/utils/miscellaneous';
-import {PolymorpheusContent, PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
-import {fromEvent, Observable} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
+import {fromEvent} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {TuiPrimitiveTextfield} from './primitive-textfield-types';
+import type {TuiPrimitiveTextfield} from './primitive-textfield-types';
 
 const ICON_PADDING = 1.75;
 const ICON_PADDING_S = 1.5;

@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component, Inject, NgZone} from '@angular/core';
 import {tuiClamp} from '@taiga-ui/cdk';
 import {tuiZonefulMap} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
-import {TuiSheetRequiredProps} from '../../sheet';
+import type {TuiSheetRequiredProps} from '../../sheet';
 import {TUI_SHEET, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 
 @Component({

@@ -1,6 +1,6 @@
 import {InjectionToken} from '@angular/core';
-import {SafeHtml} from '@angular/platform-browser';
-import {TuiHandler} from '@taiga-ui/cdk';
+import type {SafeHtml} from '@angular/platform-browser';
+import type {TuiHandler} from '@taiga-ui/cdk';
 import {identity} from 'rxjs';
 
 /**

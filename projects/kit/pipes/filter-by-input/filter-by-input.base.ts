@@ -1,10 +1,9 @@
-import {
+import type {
     TuiFocusableElementAccessor,
-    tuiIsPresent,
-    tuiPure,
     TuiStringHandler,
     TuiStringMatcher,
 } from '@taiga-ui/cdk';
+import {tuiIsPresent, tuiPure} from '@taiga-ui/cdk';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 export type ArrayElement<A> = A extends ReadonlyArray<infer T>

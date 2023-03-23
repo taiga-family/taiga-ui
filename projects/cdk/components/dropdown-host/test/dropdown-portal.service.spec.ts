@@ -1,6 +1,6 @@
-import {ComponentRef, EmbeddedViewRef, TemplateRef} from '@angular/core';
-import {AbstractTuiPortalHostComponent} from '@taiga-ui/cdk';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import type {ComponentRef, EmbeddedViewRef, TemplateRef} from '@angular/core';
+import type {AbstractTuiPortalHostComponent} from '@taiga-ui/cdk';
+import type {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiDropdownPortalService} from '../dropdown-portal.service';
 

@@ -13,38 +13,44 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {
-    AbstractTuiNullableControl,
-    TUI_STRICT_MATCHER,
+import type {
     TuiActiveZoneDirective,
-    tuiAsControl,
-    tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
-    tuiIsNativeFocused,
-    tuiIsPresent,
     TuiStringMatcher,
 } from '@taiga-ui/cdk';
 import {
-    TUI_DATA_LIST_ACCESSOR,
-    tuiAsDataListHost,
-    tuiAsOptionContent,
+    AbstractTuiNullableControl,
+    TUI_STRICT_MATCHER,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
+    tuiDefaultProp,
+    tuiIsNativeFocused,
+    tuiIsPresent,
+} from '@taiga-ui/cdk';
+import type {
     TuiDataListAccessor,
-    TuiDataListDirective,
     TuiDataListHost,
-    TuiHostedDropdownComponent,
-    TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeM,
     TuiSizeS,
     TuiValueContentContext,
 } from '@taiga-ui/core';
-import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
+import {
+    TUI_DATA_LIST_ACCESSOR,
+    tuiAsDataListHost,
+    tuiAsOptionContent,
+    TuiDataListDirective,
+    TuiHostedDropdownComponent,
+    TuiPrimitiveTextfieldComponent,
+} from '@taiga-ui/core';
+import type {TuiArrowMode} from '@taiga-ui/kit/components/arrow';
+import {TUI_ARROW_MODE} from '@taiga-ui/kit/components/arrow';
 import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     selector: 'tui-combo-box',

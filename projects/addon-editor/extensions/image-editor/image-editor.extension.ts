@@ -1,17 +1,12 @@
-import {Injector} from '@angular/core';
+import type {Injector} from '@angular/core';
 import {TuiNodeViewRenderer} from '@taiga-ui/addon-editor/extensions/tiptap-node-view';
 import {tuiIsPresent} from '@taiga-ui/cdk';
-import {
-    Attribute,
-    mergeAttributes,
-    Node,
-    NodeViewRenderer,
-    RawCommands,
-} from '@tiptap/core';
+import type {Attribute, Node, NodeViewRenderer, RawCommands} from '@tiptap/core';
+import {mergeAttributes} from '@tiptap/core';
 import {Image} from '@tiptap/extension-image';
 import {Plugin} from '@tiptap/pm/state';
-import {DOMOutputSpec, NodeSpec} from 'prosemirror-model';
-import {EditorView} from 'prosemirror-view';
+import type {DOMOutputSpec, NodeSpec} from 'prosemirror-model';
+import type {EditorView} from 'prosemirror-view';
 
 import {TuiImageEditorComponent} from './image-editor.component';
 import type {TuiEditableImage} from './image-editor.options';

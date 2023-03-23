@@ -1,10 +1,10 @@
+import type {OnDestroy} from '@angular/core';
 import {
     Directive,
     ElementRef,
     Inject,
     Input,
     NgZone,
-    OnDestroy,
     Optional,
     Output,
     SkipSelf,
@@ -13,7 +13,7 @@ import {tuiDefaultProp, tuiPure} from '@taiga-ui/cdk/decorators';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_ACTIVE_ELEMENT} from '@taiga-ui/cdk/tokens';
 import {tuiArrayRemove} from '@taiga-ui/cdk/utils';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {distinctUntilChanged, map, skip, startWith} from 'rxjs/operators';
 
 @Directive({

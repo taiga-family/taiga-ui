@@ -10,19 +10,15 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
+import type {SafeStyle} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {
     tuiGetGradientData,
     tuiParseGradient,
     tuiToGradient,
 } from '@taiga-ui/addon-editor/utils';
-import {
-    AbstractTuiControl,
-    tuiDefaultProp,
-    TuiFocusableElementAccessor,
-    TuiNativeFocusableElement,
-    tuiPure,
-} from '@taiga-ui/cdk';
+import type {TuiFocusableElementAccessor, TuiNativeFocusableElement} from '@taiga-ui/cdk';
+import {AbstractTuiControl, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
 import {
     tuiDropdownOptionsProvider,
     TuiHostedDropdownComponent,

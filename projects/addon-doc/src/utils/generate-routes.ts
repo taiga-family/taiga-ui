@@ -1,5 +1,5 @@
-import {Type} from '@angular/core';
-import {Routes} from '@angular/router';
+import type {Type} from '@angular/core';
+import type {Routes} from '@angular/router';
 
 export function tuiGenerateRoutes(type: Type<unknown>): Routes {
     return [

@@ -14,45 +14,52 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {
-    AbstractTuiMultipleControl,
-    EMPTY_ARRAY,
+import type {
     TuiActiveZoneDirective,
-    tuiArrayToggle,
-    tuiAsControl,
-    tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
-    tuiIsNativeFocused,
-    tuiIsString,
     TuiMapper,
-    tuiPure,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {
-    TEXTFIELD_CONTROLLER_PROVIDER,
-    TUI_DATA_LIST_ACCESSOR,
-    TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    tuiAsDataListHost,
+    AbstractTuiMultipleControl,
+    EMPTY_ARRAY,
+    tuiArrayToggle,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
+    tuiDefaultProp,
+    tuiIsNativeFocused,
+    tuiIsString,
+    tuiPure,
+} from '@taiga-ui/cdk';
+import type {
     TuiDataListAccessor,
-    TuiDataListDirective,
     TuiDataListHost,
-    TuiHostedDropdownComponent,
     TuiSizeL,
     TuiSizeM,
     TuiSizeS,
     TuiTextfieldController,
 } from '@taiga-ui/core';
+import {
+    TEXTFIELD_CONTROLLER_PROVIDER,
+    TUI_DATA_LIST_ACCESSOR,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
+    tuiAsDataListHost,
+    TuiDataListDirective,
+    TuiHostedDropdownComponent,
+} from '@taiga-ui/core';
 import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
-import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
+import type {TuiArrowMode} from '@taiga-ui/kit/components/arrow';
+import {TUI_ARROW_MODE} from '@taiga-ui/kit/components/arrow';
 import {TuiInputTagComponent} from '@taiga-ui/kit/components/input-tag';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_MULTI_SELECT_OPTIONS, TuiMultiSelectOptions} from './multi-select-options';
+import type {TuiMultiSelectOptions} from './multi-select-options';
+import {TUI_MULTI_SELECT_OPTIONS} from './multi-select-options';
 
 @Component({
     selector: 'tui-multi-select',

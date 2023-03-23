@@ -7,7 +7,7 @@ import {
 } from '@ng-web-apis/resize-observer';
 import {EMPTY_ARRAY, POLLING_TIME} from '@taiga-ui/cdk/constants';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {
     catchError,
     debounceTime,

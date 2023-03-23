@@ -8,8 +8,9 @@ import {
 } from '@angular/core';
 import {TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import {ALWAYS_FALSE_HANDLER, tuiClamp, tuiDefaultProp} from '@taiga-ui/cdk';
-import {TuiLanguagePreview} from '@taiga-ui/i18n';
-import {merge, Observable, of, timer} from 'rxjs';
+import type {TuiLanguagePreview} from '@taiga-ui/i18n';
+import type {Observable} from 'rxjs';
+import {merge, of, timer} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
 
 const STEP = 0.5;

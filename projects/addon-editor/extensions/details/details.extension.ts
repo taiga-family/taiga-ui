@@ -1,5 +1,6 @@
 import {tuiDeleteNode, tuiGetSelectedContent} from '@taiga-ui/addon-editor/utils';
-import {mergeAttributes, Node, RawCommands} from '@tiptap/core';
+import type {RawCommands} from '@tiptap/core';
+import {mergeAttributes, Node} from '@tiptap/core';
 
 export interface TuiDetailsOptions {
     readonly HTMLAttributes: Record<string, unknown>;

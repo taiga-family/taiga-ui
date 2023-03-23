@@ -1,7 +1,7 @@
+import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     EventEmitter,
     Inject,
     Input,
@@ -11,7 +11,7 @@ import {
 import {AbstractTuiInteractive, tuiDefaultProp, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core/enums';
 import {TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-primitive-spin-button',

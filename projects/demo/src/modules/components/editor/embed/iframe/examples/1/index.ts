@@ -1,6 +1,7 @@
 import {Component, Inject, Injector} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import type {SafeHtml} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';

@@ -1,7 +1,7 @@
-import {TuiDialog} from '@taiga-ui/cdk';
-import {TuiDialogSize} from '@taiga-ui/core/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {TuiDialog} from '@taiga-ui/cdk';
+import type {TuiDialogSize} from '@taiga-ui/core/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 
 /**
  * Options for a dialog

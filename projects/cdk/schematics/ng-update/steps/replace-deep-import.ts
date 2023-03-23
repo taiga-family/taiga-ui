@@ -1,7 +1,7 @@
 import {editImports, getImports} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../constants';
-import {TuiSchema} from '../../ng-add/schema';
+import type {TuiSchema} from '../../ng-add/schema';
 import {
     infoLog,
     REPLACE_SYMBOL,

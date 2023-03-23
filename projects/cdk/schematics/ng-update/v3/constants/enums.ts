@@ -1,4 +1,4 @@
-import {ReplacementEnum} from '../../interfaces/replacement-enum';
+import type {ReplacementEnum} from '../../interfaces/replacement-enum';
 
 export const ENUMS_TO_REPLACE: ReplacementEnum[] = [
     {

@@ -7,7 +7,7 @@ import {
     tuiPure,
     TuiResizeService,
 } from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 function calculateColorSegments(colors: string[], progressWidth: number): string {

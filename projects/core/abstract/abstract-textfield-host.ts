@@ -1,6 +1,6 @@
 import {Directive, Inject} from '@angular/core';
 import {AbstractTuiControl} from '@taiga-ui/cdk';
-import {TuiTextfieldHost} from '@taiga-ui/core/interfaces';
+import type {TuiTextfieldHost} from '@taiga-ui/core/interfaces';
 
 @Directive()
 export abstract class AbstractTuiTextfieldHost<T extends AbstractTuiControl<any>>

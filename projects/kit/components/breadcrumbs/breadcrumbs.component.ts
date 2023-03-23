@@ -1,3 +1,4 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -5,11 +6,11 @@ import {
     forwardRef,
     HostBinding,
     Input,
-    QueryList,
     TemplateRef,
 } from '@angular/core';
 import {EMPTY_QUERY, tuiDefaultProp, TuiItemDirective} from '@taiga-ui/cdk';
-import {TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
+import type {TuiSizeL} from '@taiga-ui/core';
+import {TuiModeDirective} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-breadcrumbs',

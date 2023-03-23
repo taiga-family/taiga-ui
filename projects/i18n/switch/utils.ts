@@ -3,7 +3,8 @@ import type {
     TuiLanguageLoader,
     TuiLanguageName,
 } from '@taiga-ui/i18n/interfaces';
-import {from, Observable, of} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {from, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 export function tuiAsyncLoadLanguage(

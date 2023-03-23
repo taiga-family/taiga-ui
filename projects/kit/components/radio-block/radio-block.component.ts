@@ -10,23 +10,20 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiFocusableElementAccessor,
+    TuiIdentityMatcher,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     TUI_DEFAULT_IDENTITY_MATCHER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
-    TuiIdentityMatcher,
-    TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {
-    TuiAppearance,
-    TuiHorizontalDirection,
-    TuiModeDirective,
-    TuiSizeL,
-    TuiSizeS,
-} from '@taiga-ui/core';
+import type {TuiHorizontalDirection, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiAppearance, TuiModeDirective} from '@taiga-ui/core';
 import {TuiRadioComponent} from '@taiga-ui/kit/components/radio';
 
 @Component({

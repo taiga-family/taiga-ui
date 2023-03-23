@@ -1,7 +1,8 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_NUMBER_FORMAT, TuiNumberFormatSettings} from '@taiga-ui/core';
+import type {TuiNumberFormatSettings} from '@taiga-ui/core';
+import {TUI_NUMBER_FORMAT} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-token-example-8',

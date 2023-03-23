@@ -4,7 +4,8 @@ import {
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {merge, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {merge} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 
 @Directive({

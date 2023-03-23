@@ -1,5 +1,6 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
-import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
+import type {ValueProvider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
+import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 
 export interface TuiAvatarOptions {
     readonly size: TuiSizeXXL | TuiSizeXXS;

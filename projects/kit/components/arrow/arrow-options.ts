@@ -1,7 +1,8 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {ValueProvider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
+import type {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 // TODO: find the best way for prevent cycle
 // eslint-disable-next-line import/no-cycle

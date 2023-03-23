@@ -10,22 +10,22 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiFocusableElementAccessor,
+    TuiIdentityMatcher,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     TUI_DEFAULT_IDENTITY_MATCHER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
-    TuiIdentityMatcher,
-    TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TuiBrightness, TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
-import {
-    TUI_RADIO_OPTIONS,
-    TuiRadioComponent,
-    TuiRadioOptions,
-} from '@taiga-ui/kit/components/radio';
+import type {TuiBrightness, TuiSizeL} from '@taiga-ui/core';
+import {TuiModeDirective} from '@taiga-ui/core';
+import type {TuiRadioOptions} from '@taiga-ui/kit/components/radio';
+import {TUI_RADIO_OPTIONS, TuiRadioComponent} from '@taiga-ui/kit/components/radio';
 
 @Component({
     selector: 'tui-radio-labeled',

@@ -1,6 +1,6 @@
 import {Node} from 'ng-morph';
 
-import {TuiSchema} from '../../ng-add/schema';
+import type {TuiSchema} from '../../ng-add/schema';
 import {addUniqueImport} from '../../utils/add-unique-import';
 import {
     infoLog,
@@ -11,7 +11,7 @@ import {
 } from '../../utils/colored-log';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {removeImport} from '../../utils/import-manipulations';
-import {ReplacementConst} from '../interfaces/replacement-const';
+import type {ReplacementConst} from '../interfaces/replacement-const';
 
 export function replaceConstants(
     options: TuiSchema,

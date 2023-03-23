@@ -1,4 +1,5 @@
-import {InjectionToken, Type} from '@angular/core';
+import type {Type} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 
 // eslint-disable-next-line import/no-cycle
 import {TuiHintComponent} from './hint.component';

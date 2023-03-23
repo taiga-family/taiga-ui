@@ -1,10 +1,10 @@
-import {JsonArray} from '@angular-devkit/core';
-import {Rule, Tree} from '@angular-devkit/schematics';
+import type {JsonArray} from '@angular-devkit/core';
+import type {Rule, Tree} from '@angular-devkit/schematics';
 import {updateWorkspace} from '@schematics/angular/utility/workspace';
 
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {getProjects} from '../../utils/get-projects';
-import {TuiSchema} from '../schema';
+import type {TuiSchema} from '../schema';
 
 const ICON_ASSETS = {
     glob: `**/*`,

@@ -6,8 +6,8 @@ import {
     tuiIsNativeFocused,
     tuiIsSafari,
 } from '@taiga-ui/cdk';
-import {TuiTextMaskPipeHandler} from '@taiga-ui/core/mask';
-import {TuiDecimalSymbol} from '@taiga-ui/core/types';
+import type {TuiTextMaskPipeHandler} from '@taiga-ui/core/mask';
+import type {TuiDecimalSymbol} from '@taiga-ui/core/types';
 
 /**
  * Used to finish a number with zeros to a given precision

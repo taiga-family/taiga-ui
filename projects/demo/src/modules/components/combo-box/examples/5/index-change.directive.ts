@@ -1,4 +1,5 @@
-import {VIRTUAL_SCROLL_STRATEGY, VirtualScrollStrategy} from '@angular/cdk/scrolling';
+import type {VirtualScrollStrategy} from '@angular/cdk/scrolling';
+import {VIRTUAL_SCROLL_STRATEGY} from '@angular/cdk/scrolling';
 import {Directive, Inject, Output} from '@angular/core';
 
 @Directive({

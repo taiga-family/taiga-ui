@@ -1,6 +1,6 @@
+import type {FactoryProvider} from '@angular/core';
 import {
     Directive,
-    FactoryProvider,
     forwardRef,
     Inject,
     InjectionToken,
@@ -9,9 +9,9 @@ import {
     SkipSelf,
 } from '@angular/core';
 import {AbstractTuiController, tuiDefaultProp} from '@taiga-ui/cdk';
-import {TuiHintDirection} from '@taiga-ui/core/types';
+import type {TuiHintDirection} from '@taiga-ui/core/types';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiHintOptions {
     readonly direction: TuiHintDirection;

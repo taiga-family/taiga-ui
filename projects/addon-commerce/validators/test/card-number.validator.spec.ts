@@ -1,5 +1,6 @@
 import {FormControl} from '@angular/forms';
-import {TuiCard, tuiCardNumberValidator} from '@taiga-ui/addon-commerce';
+import type {TuiCard} from '@taiga-ui/addon-commerce';
+import {tuiCardNumberValidator} from '@taiga-ui/addon-commerce';
 
 describe(`tuiCardNumberValidator`, () => {
     let control: FormControl | null = null;

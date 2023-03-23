@@ -1,6 +1,7 @@
 import {InjectionToken} from '@angular/core';
-import {SafeHtml} from '@angular/platform-browser';
-import {TuiHandler, tuiSvgLinearGradientProcessor} from '@taiga-ui/cdk';
+import type {SafeHtml} from '@angular/platform-browser';
+import type {TuiHandler} from '@taiga-ui/cdk';
+import {tuiSvgLinearGradientProcessor} from '@taiga-ui/cdk';
 
 /**
  * Transform function the contents of the loaded svg file

@@ -3,8 +3,9 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {TuiPdfViewerOptions, TuiPdfViewerService} from '@taiga-ui/kit';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiPdfViewerOptions} from '@taiga-ui/kit';
+import {TuiPdfViewerService} from '@taiga-ui/kit';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     selector: 'tui-pdf-viewer-example-1',

@@ -7,14 +7,14 @@ import {
     Renderer2,
     Self,
 } from '@angular/core';
-import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
+import type {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {
     INITIALIZATION_TIPTAP_CONTAINER,
     TIPTAP_EDITOR,
 } from '@taiga-ui/addon-editor/tokens';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {Editor} from '@tiptap/core';
-import {Observable} from 'rxjs';
+import type {Editor} from '@tiptap/core';
+import type {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 import {TuiTiptapEditorService} from './tiptap-editor.service';

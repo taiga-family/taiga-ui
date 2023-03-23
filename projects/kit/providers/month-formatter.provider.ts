@@ -1,8 +1,9 @@
-import {FactoryProvider} from '@angular/core';
-import {TuiHandler, TuiMonth} from '@taiga-ui/cdk';
+import type {FactoryProvider} from '@angular/core';
+import type {TuiHandler, TuiMonth} from '@taiga-ui/cdk';
 import {TuiMonthPipe} from '@taiga-ui/core';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
-import {Observable, of} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 export const TUI_MONTH_FORMATTER_PROVIDER: FactoryProvider = {

@@ -1,10 +1,11 @@
 import {Inject, Injectable} from '@angular/core';
 import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
-import {Observable, timer} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {timer} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {MOCK_CARDS} from './mock-cards';
-import {AccountCard, FetchedCards} from './models';
+import type {AccountCard, FetchedCards} from './models';
 
 @Injectable({
     providedIn: `root`,

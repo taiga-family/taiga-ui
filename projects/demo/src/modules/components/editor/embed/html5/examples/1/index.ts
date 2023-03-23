@@ -1,18 +1,19 @@
 import {Component, Inject, Injector, ViewChild} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import type {SafeHtml} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import type {TuiEditorAttachedFile} from '@taiga-ui/addon-editor';
 import {
     TUI_ATTACH_FILES_LOADER,
     TUI_ATTACH_FILES_OPTIONS,
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorAttachedFile,
     TuiEditorComponent,
     TuiEditorTool,
 } from '@taiga-ui/addon-editor';
 import {TUI_IS_CYPRESS, tuiPure, tuiTypedFromEvent} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({

@@ -1,3 +1,4 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -8,25 +9,23 @@ import {
     Inject,
     Input,
     Optional,
-    QueryList,
     Self,
     ViewChildren,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {TuiFocusableElementAccessor, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     EMPTY_QUERY,
     tuiClamp,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiIsNativeFocusedIn,
-    TuiNativeFocusableElement,
     tuiPure,
     tuiQuantize,
 } from '@taiga-ui/cdk';
-import {TuiSizeS, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import type {TuiSizeS, TuiWithOptionalMinMax} from '@taiga-ui/core';
 import {TuiSliderComponent} from '@taiga-ui/kit/components/slider';
-import {TuiKeySteps} from '@taiga-ui/kit/types';
+import type {TuiKeySteps} from '@taiga-ui/kit/types';
 import {
     tuiKeyStepValueToPercentage,
     tuiPercentageToKeyStepValue,

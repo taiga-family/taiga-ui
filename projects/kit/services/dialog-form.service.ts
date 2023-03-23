@@ -1,7 +1,10 @@
 import {Inject, Injectable} from '@angular/core';
-import {TuiDialogOptions, TuiDialogService} from '@taiga-ui/core';
-import {TUI_PROMPT, TuiPromptData} from '@taiga-ui/kit/components';
-import {defer, Observable, of} from 'rxjs';
+import type {TuiDialogOptions} from '@taiga-ui/core';
+import {TuiDialogService} from '@taiga-ui/core';
+import type {TuiPromptData} from '@taiga-ui/kit/components';
+import {TUI_PROMPT} from '@taiga-ui/kit/components';
+import type {Observable} from 'rxjs';
+import {defer, of} from 'rxjs';
 
 @Injectable()
 export class TuiDialogFormService {

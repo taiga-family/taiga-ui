@@ -10,6 +10,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     TUI_IS_MOBILE,
@@ -17,11 +18,18 @@ import {
     tuiAsFocusableItemAccessor,
     tuiClamp,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     tuiIsPresent,
     tuiPure,
 } from '@taiga-ui/cdk';
+import type {
+    TuiNumberFormatSettings,
+    TuiSizeL,
+    TuiSizeS,
+    TuiTextfieldController,
+    TuiTextMaskOptions,
+    TuiWithOptionalMinMax,
+} from '@taiga-ui/core';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_NUMBER_FORMAT,
@@ -30,19 +38,14 @@ import {
     tuiEnableAutoCorrectDecimalSymbol,
     tuiFormatNumber,
     tuiMaskedNumberStringToNumber,
-    TuiNumberFormatSettings,
-    TuiSizeL,
-    TuiSizeS,
-    TuiTextfieldController,
-    TuiTextMaskOptions,
-    TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiInputNumberComponent} from '@taiga-ui/kit/components/input-number';
 import {TUI_PLUS_MINUS_TEXTS} from '@taiga-ui/kit/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 
-import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from './input-count-options';
+import type {TuiInputCountOptions} from './input-count-options';
+import {TUI_INPUT_COUNT_OPTIONS} from './input-count-options';
 
 @Component({
     selector: 'tui-input-count',

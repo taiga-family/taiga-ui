@@ -1,5 +1,5 @@
 import {EMPTY_ARRAY} from '@taiga-ui/cdk';
-import {Observable, OperatorFunction} from 'rxjs';
+import type {Observable, OperatorFunction} from 'rxjs';
 import {
     debounceTime,
     distinctUntilChanged,

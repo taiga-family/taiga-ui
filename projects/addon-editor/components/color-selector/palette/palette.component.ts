@@ -1,4 +1,4 @@
-import {KeyValue} from '@angular/common';
+import type {KeyValue} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,

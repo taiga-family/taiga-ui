@@ -7,7 +7,8 @@ import {
     TuiObscuredService,
     TuiParentsScrollService,
 } from '@taiga-ui/cdk/services';
-import {Observable, Subject} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {Subject} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 /**

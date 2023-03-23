@@ -14,7 +14,8 @@ import {
     TUI_IS_MOBILE_RES,
     TUI_THEME,
 } from '@taiga-ui/core/tokens';
-import {merge, Observable, of} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {merge, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({

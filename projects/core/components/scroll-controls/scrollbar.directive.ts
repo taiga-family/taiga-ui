@@ -19,8 +19,9 @@ import {
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {TuiOrientation} from '@taiga-ui/core/types';
-import {fromEvent, merge, Observable} from 'rxjs';
+import type {TuiOrientation} from '@taiga-ui/core/types';
+import type {Observable} from 'rxjs';
+import {fromEvent, merge} from 'rxjs';
 import {map, switchMap, takeUntil, throttleTime} from 'rxjs/operators';
 
 const MIN_WIDTH = 24;

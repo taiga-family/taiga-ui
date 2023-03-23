@@ -1,7 +1,8 @@
-import {CallExpression, Identifier, Node, SyntaxKind} from 'ng-morph';
+import type {CallExpression, Identifier} from 'ng-morph';
+import {Node, SyntaxKind} from 'ng-morph';
 import {performance} from 'perf_hooks';
 
-import {TuiSchema} from '../../../ng-add/schema';
+import type {TuiSchema} from '../../../ng-add/schema';
 import {
     infoLog,
     PROCESSING_SYMBOL,

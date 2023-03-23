@@ -1,15 +1,8 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {
-    TUI_IS_CYPRESS,
-    TuiDay,
-    TuiDayLike,
-    TuiDayRange,
-    TuiMapper,
-    TuiMatcher,
-    tuiPure,
-} from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
+import type {TuiDayLike, TuiMapper, TuiMatcher} from '@taiga-ui/cdk';
+import {TUI_IS_CYPRESS, TuiDay, TuiDayRange, tuiPure} from '@taiga-ui/cdk';
+import type {TuiPoint} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-line-days-chart-example-2',

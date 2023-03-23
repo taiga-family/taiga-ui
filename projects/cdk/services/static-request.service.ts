@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Observable, Observer} from 'rxjs';
+import type {Observer} from 'rxjs';
+import {Observable} from 'rxjs';
 import {shareReplay} from 'rxjs/operators';
 
 @Injectable({

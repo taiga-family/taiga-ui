@@ -10,6 +10,15 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiActiveZoneDirective,
+    TuiBooleanHandler,
+    TuiContextWithImplicit,
+    TuiControlValueTransformer,
+    TuiDateMode,
+    TuiFocusableElementAccessor,
+    TuiTimeMode,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
@@ -17,48 +26,41 @@ import {
     DATE_FILLER_LENGTH,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
-    TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiBooleanHandler,
     tuiClamp,
-    TuiContextWithImplicit,
-    TuiControlValueTransformer,
     tuiDateClamp,
-    TuiDateMode,
     TuiDay,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     TuiMonth,
     tuiNullableSame,
     tuiPure,
     TuiTime,
-    TuiTimeMode,
 } from '@taiga-ui/cdk';
-import {
-    TUI_TEXTFIELD_SIZE,
-    TuiPrimitiveTextfieldComponent,
+import type {
     TuiSizeL,
     TuiSizeS,
     TuiTextfieldSizeDirective,
     TuiTextMaskOptions,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
+import {TUI_TEXTFIELD_SIZE, TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
 import {DATE_TIME_SEPARATOR} from '@taiga-ui/kit/constants';
+import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
 import {
     TUI_DATE_TEXTS,
     TUI_DATE_TIME_VALUE_TRANSFORMER,
     TUI_INPUT_DATE_OPTIONS,
     TUI_TIME_TEXTS,
     tuiDateStreamWithTransformer,
-    TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
 import {
     tuiCreateAutoCorrectedDateTimePipe,
     tuiCreateDateMask,
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
-import {combineLatest, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {combineLatest} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({

@@ -1,6 +1,7 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
+import type {ValueProvider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 
-import {TuiPushOptions} from './push.options';
+import type {TuiPushOptions} from './push.options';
 
 export const TUI_PUSH_DEFAULT_OPTIONS: TuiPushOptions = {
     heading: ``,

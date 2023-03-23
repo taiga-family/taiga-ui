@@ -1,8 +1,8 @@
 import {Inject, Injectable} from '@angular/core';
-import {TuiBaseDialogContext} from '@taiga-ui/cdk/interfaces';
+import type {TuiBaseDialogContext} from '@taiga-ui/cdk/interfaces';
 import {TuiIdService} from '@taiga-ui/cdk/services';
-import {TuiDialog} from '@taiga-ui/cdk/types';
-import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiDialog} from '@taiga-ui/cdk/types';
+import type {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable()

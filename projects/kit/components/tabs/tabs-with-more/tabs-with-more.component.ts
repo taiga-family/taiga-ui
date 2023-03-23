@@ -1,5 +1,5 @@
+import type {AfterViewInit, QueryList} from '@angular/core';
 import {
-    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -10,15 +10,13 @@ import {
     Inject,
     Input,
     Output,
-    QueryList,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
+import type {TuiActiveZoneDirective, TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
-    TuiActiveZoneDirective,
     tuiClamp,
-    TuiContextWithImplicit,
     tuiDefaultProp,
     tuiGetClosestFocusable,
     tuiIsElement,
@@ -27,12 +25,13 @@ import {
     tuiToInt,
 } from '@taiga-ui/cdk';
 import {TUI_MORE_WORD, TUI_TAB_MARGIN} from '@taiga-ui/kit/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
 
 import {TuiTabComponent} from '../tab/tab.component';
-import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs-options';
+import type {TuiTabsOptions} from '../tabs-options';
+import {TUI_TABS_OPTIONS} from '../tabs-options';
 import {TUI_TABS_PROVIDERS, TUI_TABS_REFRESH} from './tabs-with-more.providers';
 
 @Component({

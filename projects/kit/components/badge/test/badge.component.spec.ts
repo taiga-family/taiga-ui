@@ -1,10 +1,11 @@
-import {HarnessLoader} from '@angular/cdk/testing';
+import type {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {TuiSizeL} from '@taiga-ui/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
+import type {TuiSizeL} from '@taiga-ui/core';
 import {TuiBadgeComponent, TuiBadgeModule} from '@taiga-ui/kit';
-import {TuiStatus} from '@taiga-ui/kit/types';
+import type {TuiStatus} from '@taiga-ui/kit/types';
 import {configureTestSuite, TuiBadgeHarness} from '@taiga-ui/testing';
 
 describe(`Badge`, () => {

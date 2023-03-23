@@ -7,7 +7,8 @@ import {
     ViewChild,
 } from '@angular/core';
 import {AbstractTuiControl, TuiIdService} from '@taiga-ui/cdk';
-import {TUI_TEXTFIELD_HOST, TuiDataListDirective, TuiTextfieldHost} from '@taiga-ui/core';
+import type {TuiTextfieldHost} from '@taiga-ui/core';
+import {TUI_TEXTFIELD_HOST, TuiDataListDirective} from '@taiga-ui/core';
 
 @Directive()
 export abstract class AbstractTuiNativeSelect {

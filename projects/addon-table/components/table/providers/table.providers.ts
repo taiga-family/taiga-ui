@@ -12,7 +12,8 @@ import {
     TuiAppearance,
     TuiTextfieldAppearanceDirective,
 } from '@taiga-ui/core';
-import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from '@taiga-ui/kit';
+import type {TuiInputCountOptions} from '@taiga-ui/kit';
+import {TUI_INPUT_COUNT_OPTIONS} from '@taiga-ui/kit';
 
 // TODO: find the best way for prevent cycle
 // eslint-disable-next-line import/no-cycle

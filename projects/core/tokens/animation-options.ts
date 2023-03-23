@@ -1,4 +1,4 @@
-import {AnimationOptions} from '@angular/animations';
+import type {AnimationOptions} from '@angular/animations';
 import {inject, InjectionToken} from '@angular/core';
 
 import {TUI_ANIMATIONS_DURATION} from './animations-duration';

@@ -1,4 +1,4 @@
-import {TypeToRename} from '../../interfaces/type-to-rename';
+import type {TypeToRename} from '../../interfaces/type-to-rename';
 
 export const TYPES_TO_RENAME: readonly TypeToRename[] = [
     {

@@ -1,4 +1,4 @@
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 export interface TuiTableFilter<T> {
     readonly refresh$: Observable<unknown>;

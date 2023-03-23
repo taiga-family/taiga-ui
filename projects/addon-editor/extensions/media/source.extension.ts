@@ -1,6 +1,6 @@
 import {tuiParseNodeAttributes} from '@taiga-ui/addon-editor/utils';
 import {mergeAttributes, Node} from '@tiptap/core';
-import {MarkSpec} from 'prosemirror-model';
+import type {MarkSpec} from 'prosemirror-model';
 
 export const TuiSource = Node.create({
     name: `source`,

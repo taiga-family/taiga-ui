@@ -1,11 +1,9 @@
-import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {getWorkspace} from '@schematics/angular/utility/workspace';
+import type {ClassDeclaration, Expression, Identifier} from 'ng-morph';
 import {
-    ClassDeclaration,
     createProject,
-    Expression,
     getMainModule,
-    Identifier,
     Node,
     saveActiveProject,
     setActiveProject,
@@ -13,7 +11,7 @@ import {
 
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {getProjects} from '../../utils/get-projects';
-import {TuiSchema} from '../schema';
+import type {TuiSchema} from '../schema';
 
 export function wrapWithTuiRootComponent(options: TuiSchema): Rule {
     return async (tree: Tree, context: SchematicContext) => {

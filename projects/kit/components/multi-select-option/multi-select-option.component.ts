@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {tuiIsPresent} from '@taiga-ui/cdk';
-import {TuiSizeL} from '@taiga-ui/core';
+import type {TuiSizeL} from '@taiga-ui/core';
 import {TuiSelectOptionComponent} from '@taiga-ui/kit/components/select-option';
 
 @Component({

@@ -1,12 +1,13 @@
 import {ChangeDetectionStrategy, Component, Inject, Input, Optional} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
+import type {TuiTextfieldController} from '@taiga-ui/core';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiAsDataListAccessor,
-    TuiTextfieldController,
 } from '@taiga-ui/core';
-import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
 
 import {AbstractTuiDataListWrapper} from './data-list-wrapper';
 

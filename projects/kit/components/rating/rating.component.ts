@@ -1,8 +1,8 @@
+import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    ElementRef,
     HostListener,
     Inject,
     Input,
@@ -11,17 +11,18 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 
-import {TUI_RATING_OPTIONS, TuiRatingOptions} from './rating-options';
+import type {TuiRatingOptions} from './rating-options';
+import {TUI_RATING_OPTIONS} from './rating-options';
 
 @Component({
     selector: 'tui-rating',

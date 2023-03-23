@@ -1,4 +1,5 @@
 import {Location as NgLocation} from '@angular/common';
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,12 +8,12 @@ import {
     Input,
     NgZone,
     Optional,
-    QueryList,
     ViewChildren,
 } from '@angular/core';
 import {LOCATION} from '@ng-web-apis/common';
-import {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
+import type {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
 import {tuiDraw, tuiPrepareExternalUrl} from '@taiga-ui/addon-charts/utils';
+import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
     tuiDefaultProp,
@@ -20,17 +21,13 @@ import {
     tuiInRange,
     tuiIsPresent,
     tuiPure,
-    TuiStringHandler,
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
-import {
-    TuiDriver,
-    TuiHintOptionsDirective,
-    tuiHintOptionsProvider,
-    TuiPoint,
-} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable, Subject} from 'rxjs';
+import type {TuiPoint} from '@taiga-ui/core';
+import {TuiDriver, TuiHintOptionsDirective, tuiHintOptionsProvider} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
+import {Subject} from 'rxjs';
 import {distinctUntilChanged} from 'rxjs/operators';
 
 // TODO: find the best way for prevent cycle

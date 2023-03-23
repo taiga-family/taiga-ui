@@ -1,4 +1,4 @@
-import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
+import type {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 
 export function inputCardGroupedCVCValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {

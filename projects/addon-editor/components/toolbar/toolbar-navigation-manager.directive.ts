@@ -1,10 +1,10 @@
 import {Directive, ElementRef, HostListener, Inject} from '@angular/core';
+import type {TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {
     tuiClamp,
     tuiGetClosestFocusable,
     tuiIsNativeFocusedIn,
     tuiIsNativeMouseFocusable,
-    TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 
 @Directive({

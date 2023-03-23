@@ -1,11 +1,5 @@
-import {
-    DAYS_IN_WEEK,
-    tuiAssert,
-    TuiDay,
-    TuiDayOfWeek,
-    tuiInRange,
-    TuiMonth,
-} from '@taiga-ui/cdk';
+import type {TuiDayOfWeek, TuiMonth} from '@taiga-ui/cdk';
+import {DAYS_IN_WEEK, tuiAssert, TuiDay, tuiInRange} from '@taiga-ui/cdk';
 
 /**
  * Computes day of week offset of the beginning of the month

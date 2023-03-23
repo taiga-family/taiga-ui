@@ -1,10 +1,8 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiTablePaginationOptions,
-    tuiTablePaginationOptionsProvider,
-} from '@taiga-ui/addon-table';
+import type {TuiTablePaginationOptions} from '@taiga-ui/addon-table';
+import {tuiTablePaginationOptionsProvider} from '@taiga-ui/addon-table';
 
 const customOptionContent: TuiTablePaginationOptions['sizeOptionContent'] = ({
     $implicit,

@@ -1,4 +1,5 @@
-import {Inject, Pipe, PipeTransform} from '@angular/core';
+import type {PipeTransform} from '@angular/core';
+import {Inject, Pipe} from '@angular/core';
 import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
 
 import {tuiInspectAny} from '../../../utils/inspect';

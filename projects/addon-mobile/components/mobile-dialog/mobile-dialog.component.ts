@@ -1,8 +1,9 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {TUI_IS_IOS, TuiDialog} from '@taiga-ui/cdk';
+import type {TuiDialog} from '@taiga-ui/cdk';
+import {TUI_IS_IOS} from '@taiga-ui/cdk';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
-import {TuiMobileDialogOptions} from './mobile-dialog-options';
+import type {TuiMobileDialogOptions} from './mobile-dialog-options';
 
 @Component({
     selector: 'tui-mobile-dialog',

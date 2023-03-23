@@ -1,9 +1,6 @@
 import {Directive, Optional} from '@angular/core';
-import {
-    ControlValueAccessor,
-    DefaultValueAccessor,
-    NG_VALUE_ACCESSOR,
-} from '@angular/forms';
+import type {ControlValueAccessor} from '@angular/forms';
+import {DefaultValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {TUI_VALUE_ACCESSOR} from '@taiga-ui/core/tokens';
 
 @Directive({

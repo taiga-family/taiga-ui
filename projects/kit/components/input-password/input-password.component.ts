@@ -8,36 +8,39 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {
-    AbstractTuiControl,
-    tuiAsControl,
-    tuiAsFocusableItemAccessor,
+import type {
     TuiContextWithImplicit,
     TuiFocusableElementAccessor,
     TuiInputType,
     TuiNativeFocusableElement,
-    tuiPure,
 } from '@taiga-ui/cdk';
 import {
-    MODE_PROVIDER,
-    TUI_MODE,
-    TUI_TEXTFIELD_SIZE,
+    AbstractTuiControl,
+    tuiAsControl,
+    tuiAsFocusableItemAccessor,
+    tuiPure,
+} from '@taiga-ui/cdk';
+import type {
     TuiBrightness,
-    TuiHintOptionsDirective,
-    TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
     TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
+import {
+    MODE_PROVIDER,
+    TUI_MODE,
+    TUI_TEXTFIELD_SIZE,
+    TuiHintOptionsDirective,
+    TuiPrimitiveTextfieldComponent,
+} from '@taiga-ui/core';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {combineLatest, EMPTY, Observable} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
+import {combineLatest, EMPTY} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
-import {
-    TUI_INPUT_PASSWORD_OPTIONS,
-    TuiInputPasswordOptions,
-} from './input-password-options';
+import type {TuiInputPasswordOptions} from './input-password-options';
+import {TUI_INPUT_PASSWORD_OPTIONS} from './input-password-options';
 
 @Component({
     selector: 'tui-input-password',

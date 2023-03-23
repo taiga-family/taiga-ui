@@ -8,10 +8,11 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
+import type {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TUI_EDITOR_LINK_TEXTS} from '@taiga-ui/addon-editor/tokens';
-import {tuiDefaultProp, TuiInjectionTokenType, tuiIsElement} from '@taiga-ui/cdk';
+import type {TuiInjectionTokenType} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiIsElement} from '@taiga-ui/cdk';
 
 const HASH_PREFIX = '#' as const;
 const HTTP_PREFIX = 'http://' as const;

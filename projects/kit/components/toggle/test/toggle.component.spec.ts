@@ -1,7 +1,8 @@
-import {HarnessLoader} from '@angular/cdk/testing';
+import type {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiToggleModule, tuiToggleOptionsProvider} from '@taiga-ui/kit';
 import {configureTestSuite, TuiToggleHarness} from '@taiga-ui/testing';

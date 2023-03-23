@@ -1,4 +1,5 @@
-import {ExistingProvider, FactoryProvider, SkipSelf, Type} from '@angular/core';
+import type {ExistingProvider, FactoryProvider, Type} from '@angular/core';
+import {SkipSelf} from '@angular/core';
 
 // TODO: Rename to getBoundingClientRect to match the DOM API
 // eslint-disable-next-line @typescript-eslint/naming-convention

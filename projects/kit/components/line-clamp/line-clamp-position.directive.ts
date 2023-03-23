@@ -1,10 +1,9 @@
 import {Directive, Inject} from '@angular/core';
+import type {TuiPoint, TuiRectAccessor} from '@taiga-ui/core';
 import {
     tuiAsPositionAccessor,
     TuiHintDirective,
-    TuiPoint,
     TuiPositionAccessor,
-    TuiRectAccessor,
 } from '@taiga-ui/core';
 
 @Directive({

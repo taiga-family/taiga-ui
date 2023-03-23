@@ -1,6 +1,7 @@
-import {Component, TemplateRef, ViewChild} from '@angular/core';
+import type {TemplateRef} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiValidationError} from '@taiga-ui/cdk';
 
 @Component({

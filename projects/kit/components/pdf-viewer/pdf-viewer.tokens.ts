@@ -1,6 +1,7 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
+import type {ValueProvider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 
-import {TuiPdfViewerOptions} from './pdf-viewer-options';
+import type {TuiPdfViewerOptions} from './pdf-viewer-options';
 
 type TuiPdfViewerDefaultOptions = Omit<TuiPdfViewerOptions<unknown>, 'data'>;
 

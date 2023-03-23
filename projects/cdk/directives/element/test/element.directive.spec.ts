@@ -1,5 +1,7 @@
-import {ChangeDetectionStrategy, Component, ElementRef} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ElementRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {TuiElementModule} from '@taiga-ui/cdk';
 import {
     TuiDropdownHostComponent,

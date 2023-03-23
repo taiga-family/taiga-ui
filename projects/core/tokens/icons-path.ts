@@ -1,5 +1,5 @@
 import {inject, InjectionToken} from '@angular/core';
-import {TuiStringHandler} from '@taiga-ui/cdk';
+import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {tuiIconsPathFactory} from '@taiga-ui/core/utils';
 
 import {TUI_ICONS_PLACE} from './icon-place';

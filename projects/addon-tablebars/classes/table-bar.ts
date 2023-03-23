@@ -1,8 +1,8 @@
-import {TuiBrightness} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observer} from 'rxjs';
+import type {TuiBrightness} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observer} from 'rxjs';
 
-import {TuiTableBarOptions} from '../interfaces/table-bar-options';
+import type {TuiTableBarOptions} from '../interfaces/table-bar-options';
 
 export class TuiTableBar {
     readonly adaptive: boolean;

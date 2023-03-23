@@ -1,4 +1,4 @@
-import {TuiLanguageKit} from '@taiga-ui/i18n/interfaces';
+import type {TuiLanguageKit} from '@taiga-ui/i18n/interfaces';
 
 export const TUI_VIETNAMESE_LANGUAGE_KIT: TuiLanguageKit = {
     cancel: `Hủy bỏ`,

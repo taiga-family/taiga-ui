@@ -1,7 +1,7 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 
 import {RANGE_SEPARATOR_CHAR} from './date-time';
-import {TuiMonth} from './month';
+import type {TuiMonth} from './month';
 
 /**
  * An immutable range of two {@link TuiMonth} objects

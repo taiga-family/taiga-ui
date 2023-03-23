@@ -1,4 +1,4 @@
-import {MigrationWarning} from '../../interfaces/migration-warning';
+import type {MigrationWarning} from '../../interfaces/migration-warning';
 
 export const MIGRATION_WARNINGS: readonly MigrationWarning[] = [
     {

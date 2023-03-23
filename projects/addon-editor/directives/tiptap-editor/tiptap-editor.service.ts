@@ -5,13 +5,13 @@ import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import type {TuiEditableIframe} from '@taiga-ui/addon-editor/extensions/iframe-editor';
 import type {TuiEditableImage} from '@taiga-ui/addon-editor/extensions/image-editor';
 import type {TuiYoutubeOptions} from '@taiga-ui/addon-editor/extensions/youtube';
-import {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
+import type {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
 import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
 import {tuiGetMarkRange, tuiParseStyle} from '@taiga-ui/addon-editor/utils';
 import type {Editor, Range} from '@tiptap/core';
-import {MarkType} from 'prosemirror-model';
+import type {MarkType} from 'prosemirror-model';
 import type {EditorState} from 'prosemirror-state';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
 import {tuiIsEmptyParagraph} from './utils/is-empty-paragraph';

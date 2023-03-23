@@ -1,5 +1,5 @@
+import type {AfterViewChecked} from '@angular/core';
 import {
-    AfterViewChecked,
     Directive,
     ElementRef,
     EventEmitter,

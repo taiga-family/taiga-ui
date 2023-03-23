@@ -1,6 +1,9 @@
-import {ProjectDefinition, WorkspaceDefinition} from '@angular-devkit/core/src/workspace';
+import type {
+    ProjectDefinition,
+    WorkspaceDefinition,
+} from '@angular-devkit/core/src/workspace';
 
-import {TuiSchema} from '../ng-add/schema';
+import type {TuiSchema} from '../ng-add/schema';
 
 export function getProjects(
     options: TuiSchema,

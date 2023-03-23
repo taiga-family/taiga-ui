@@ -5,18 +5,16 @@ import {
     Inject,
     Self,
 } from '@angular/core';
-import {
-    ALWAYS_TRUE_HANDLER,
-    TUI_IS_MOBILE,
-    TuiDestroyService,
-    TuiDialog,
-} from '@taiga-ui/cdk';
+import type {TuiDialog} from '@taiga-ui/cdk';
+import {ALWAYS_TRUE_HANDLER, TUI_IS_MOBILE, TuiDestroyService} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
-import {TuiAnimationOptions, TuiDialogOptions} from '@taiga-ui/core/interfaces';
+import type {TuiAnimationOptions, TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATIONS_DURATION, TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
-import {TuiDialogSize} from '@taiga-ui/core/types';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {isObservable, merge, Observable, of, Subject} from 'rxjs';
+import type {TuiDialogSize} from '@taiga-ui/core/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
+import {isObservable, merge, of, Subject} from 'rxjs';
 import {filter, map, switchMap, takeUntil} from 'rxjs/operators';
 
 import {TUI_DIALOGS_CLOSE} from './dialog.tokens';

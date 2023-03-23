@@ -1,21 +1,23 @@
-import {Component, DebugElement, Optional, Type, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement, Type} from '@angular/core';
+import {Component, Optional, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import type {TuiControlValueTransformer} from '@taiga-ui/cdk';
 import {
     RANGE_SEPARATOR_CHAR,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
     TUI_LAST_DAY,
-    TuiControlValueTransformer,
     TuiDay,
     TuiDayRange,
 } from '@taiga-ui/cdk';
 import {TuiRootModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import type {TuiDayRangePeriod} from '@taiga-ui/kit';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_VALUE_TRANSFORMER,
-    TuiDayRangePeriod,
     TuiInputDateRangeComponent,
     TuiInputDateRangeModule,
 } from '@taiga-ui/kit';

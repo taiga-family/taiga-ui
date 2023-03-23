@@ -1,7 +1,7 @@
-import {CdkVirtualScrollViewport} from '@angular/cdk/scrolling';
+import type {CdkVirtualScrollViewport} from '@angular/cdk/scrolling';
 import {DOCUMENT} from '@angular/common';
+import type {AfterViewInit} from '@angular/core';
 import {
-    AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
@@ -11,6 +11,7 @@ import {
     Self,
     ViewChild,
 } from '@angular/core';
+import type {TuiBooleanHandler, TuiInjectionTokenType, TuiMapper} from '@taiga-ui/cdk';
 import {
     ALWAYS_FALSE_HANDLER,
     MONTHS_IN_YEAR,
@@ -18,13 +19,10 @@ import {
     TUI_IS_CYPRESS,
     TUI_IS_IOS,
     TUI_LAST_DAY,
-    TuiBooleanHandler,
     TuiDay,
     TuiDayRange,
     tuiDefaultProp,
     TuiDestroyService,
-    TuiInjectionTokenType,
-    TuiMapper,
     TuiMonth,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
@@ -38,7 +36,8 @@ import {
     TUI_CHOOSE_DAY_OR_RANGE_TEXTS,
     TUI_DONE_WORD,
 } from '@taiga-ui/kit';
-import {identity, MonoTypeOperatorFunction, Observable, race, timer} from 'rxjs';
+import type {MonoTypeOperatorFunction, Observable} from 'rxjs';
+import {identity, race, timer} from 'rxjs';
 import {
     debounceTime,
     delay,

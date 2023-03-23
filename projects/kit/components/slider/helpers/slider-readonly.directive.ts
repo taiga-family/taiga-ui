@@ -8,7 +8,8 @@ import {
     TuiDestroyService,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
-import {combineLatest, merge, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {combineLatest, merge} from 'rxjs';
 import {filter, map, takeUntil, tap} from 'rxjs/operators';
 
 const SLIDER_INTERACTION_KEYS = new Set([

@@ -1,4 +1,4 @@
-import {Location as NgLocation} from '@angular/common';
+import type {Location as NgLocation} from '@angular/common';
 
 export function tuiPrepareExternalUrl(
     locationNg: NgLocation,

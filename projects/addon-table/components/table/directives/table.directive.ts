@@ -1,5 +1,5 @@
+import type {AfterViewInit} from '@angular/core';
 import {
-    AfterViewInit,
     ChangeDetectorRef,
     Directive,
     EventEmitter,
@@ -9,10 +9,11 @@ import {
     Output,
 } from '@angular/core';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
-import {TuiComparator} from '@taiga-ui/addon-table/types';
+import type {TuiComparator} from '@taiga-ui/addon-table/types';
 import {AbstractTuiController, tuiDefaultProp} from '@taiga-ui/cdk';
-import {TUI_MODE, TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import type {TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TUI_MODE} from '@taiga-ui/core';
+import type {Observable} from 'rxjs';
 
 import {TUI_STUCK} from '../providers/stuck.provider';
 // TODO: find the best way for prevent cycle

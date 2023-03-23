@@ -1,7 +1,7 @@
 import {Directive, Inject} from '@angular/core';
-import {TuiZoom} from '@taiga-ui/cdk/interfaces';
+import type {TuiZoom} from '@taiga-ui/cdk/interfaces';
 import {TuiZoomService} from '@taiga-ui/cdk/services';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 @Directive({
     selector: '[tuiZoom]',

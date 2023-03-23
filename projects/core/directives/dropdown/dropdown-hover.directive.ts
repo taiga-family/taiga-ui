@@ -1,13 +1,12 @@
 import {Directive, Inject, Input} from '@angular/core';
 import {tuiDefaultProp, TuiHoveredService} from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
-import {merge, Observable, of, Subject} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {merge, of, Subject} from 'rxjs';
 import {delay, share, switchMap, tap} from 'rxjs/operators';
 
-import {
-    TUI_DROPDOWN_HOVER_OPTIONS,
-    TuiDropdownHoverOptions,
-} from './dropdown-hover-options.directive';
+import type {TuiDropdownHoverOptions} from './dropdown-hover-options.directive';
+import {TUI_DROPDOWN_HOVER_OPTIONS} from './dropdown-hover-options.directive';
 
 @Directive({
     selector: '[tuiDropdownHover]:not(ng-container)',

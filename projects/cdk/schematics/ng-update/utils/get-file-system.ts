@@ -1,6 +1,6 @@
-import {Tree} from '@angular-devkit/schematics';
+import type {Tree} from '@angular-devkit/schematics';
 import {createProject, setActiveProject} from 'ng-morph';
-import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
+import type {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 
 import {ALL_FILES} from '../../constants';
 import {projectRoot} from '../../utils/project-root';

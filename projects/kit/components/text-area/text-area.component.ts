@@ -13,31 +13,32 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {TuiContextWithImplicit, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     TUI_IS_IOS,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
+import type {
+    TuiBrightness,
+    TuiSizeL,
+    TuiSizeS,
+    TuiTextfieldController,
+} from '@taiga-ui/core';
 import {
     MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_MODE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    TuiBrightness,
     tuiGetBorder,
     TuiHintOptionsDirective,
-    TuiSizeL,
-    TuiSizeS,
     TuiTextfieldComponent,
-    TuiTextfieldController,
 } from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 
 export const DEFAULT_ROWS = 20;
 export const LINE_HEIGHT_M = 20;

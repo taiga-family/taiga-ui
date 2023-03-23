@@ -1,6 +1,6 @@
+import type {ElementRef} from '@angular/core';
 import {
     Directive,
-    ElementRef,
     EventEmitter,
     HostBinding,
     HostListener,

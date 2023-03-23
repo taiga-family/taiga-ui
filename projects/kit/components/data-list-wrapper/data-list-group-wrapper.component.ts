@@ -1,7 +1,8 @@
 import {ChangeDetectionStrategy, Component, Inject, Input, Optional} from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {tuiAsDataListAccessor, TuiTextfieldSizeDirective} from '@taiga-ui/core';
-import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
 
 import {AbstractTuiDataListWrapper} from './data-list-wrapper';
 

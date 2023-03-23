@@ -8,8 +8,9 @@ import {
     TUI_IMAGE_LOADER,
     TuiEditorTool,
 } from '@taiga-ui/addon-editor';
-import {TuiDestroyService, TuiHandler} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import type {TuiHandler} from '@taiga-ui/cdk';
+import {TuiDestroyService} from '@taiga-ui/cdk';
+import type {Observable} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
 
 @Component({

@@ -2,7 +2,7 @@ import {Component, Inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor';
-import {TuiHostedDropdownComponent} from '@taiga-ui/core';
+import type {TuiHostedDropdownComponent} from '@taiga-ui/core';
 
 @Component({
     selector: 'youtube-tool',

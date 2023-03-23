@@ -1,5 +1,5 @@
-import {UpdateRecorder} from '@angular-devkit/schematics';
-import {ElementLocation} from 'parse5';
+import type {UpdateRecorder} from '@angular-devkit/schematics';
+import type {ElementLocation} from 'parse5';
 
 const START_TAG_OFFSET = 1;
 const END_TAG_OFFSET = 2;

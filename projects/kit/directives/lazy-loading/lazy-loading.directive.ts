@@ -6,7 +6,7 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {SafeResourceUrl} from '@angular/platform-browser';
+import type {SafeResourceUrl} from '@angular/platform-browser';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 

@@ -1,4 +1,5 @@
-import {ChildNode, Element, parseFragment} from 'parse5';
+import type {ChildNode, Element} from 'parse5';
+import {parseFragment} from 'parse5';
 
 export function findElementsByFn(
     nodes: ChildNode[],

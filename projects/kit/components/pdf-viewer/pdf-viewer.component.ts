@@ -1,4 +1,4 @@
-import {AnimationOptions} from '@angular/animations';
+import type {AnimationOptions} from '@angular/animations';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,7 +6,7 @@ import {
     HostListener,
     Inject,
 } from '@angular/core';
-import {TuiDialog} from '@taiga-ui/cdk';
+import type {TuiDialog} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATION_OPTIONS,
     TUI_CLOSE_WORD,
@@ -14,9 +14,9 @@ import {
     tuiSlideInTop,
 } from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
-import {TuiPdfViewerOptions} from './pdf-viewer-options';
+import type {TuiPdfViewerOptions} from './pdf-viewer-options';
 
 @Component({
     selector: 'tui-pdf-viewer',

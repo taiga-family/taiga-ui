@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Inject, Injectable, Self} from '@angular/core';
-import {SafeResourceUrl} from '@angular/platform-browser';
+import type {SafeResourceUrl} from '@angular/platform-browser';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {TuiDestroyService, tuiWatch} from '@taiga-ui/cdk';
 import {Observable, of, Subject} from 'rxjs';

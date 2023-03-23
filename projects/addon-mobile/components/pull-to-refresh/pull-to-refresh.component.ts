@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, Inject, Output} from '@angular/core';
 import {TUI_IS_IOS, tuiPure} from '@taiga-ui/cdk';
-import {Observable, of} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {of} from 'rxjs';
 import {distinctUntilChanged, filter, map} from 'rxjs/operators';
 
 import {

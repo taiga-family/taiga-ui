@@ -4,7 +4,8 @@ import 'zone.js/node';
 import {APP_BASE_HREF} from '@angular/common';
 import {provideLocation, provideUserAgent} from '@ng-web-apis/universal';
 import {ngExpressEngine} from '@nguniversal/express-engine';
-import express, {Express} from 'express';
+import type {Express} from 'express';
+import express from 'express';
 import {existsSync} from 'fs';
 import {join} from 'path';
 

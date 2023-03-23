@@ -1,5 +1,5 @@
 import {InjectionToken} from '@angular/core';
-import {ControlValueAccessor} from '@angular/forms';
+import type {ControlValueAccessor} from '@angular/forms';
 
 /**
  * Buffer token to pass NG_VALUE_ACCESSOR to a different Injector

@@ -1,4 +1,5 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
+import type {ValueProvider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 
 export interface TuiInputPhoneInternationalOptions {

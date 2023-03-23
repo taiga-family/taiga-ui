@@ -1,7 +1,8 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {tuiCapitalizeFirstLetter, TuiFlagPipe} from '@taiga-ui/core';
-import {TuiCountryIsoCode, TuiLanguageName, TuiLanguageSwitcher} from '@taiga-ui/i18n';
+import type {TuiLanguageName} from '@taiga-ui/i18n';
+import {TuiCountryIsoCode, TuiLanguageSwitcher} from '@taiga-ui/i18n';
 
 @Component({
     selector: 'tui-language-switcher',

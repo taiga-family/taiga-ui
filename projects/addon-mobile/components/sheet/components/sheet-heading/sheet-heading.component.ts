@@ -1,13 +1,8 @@
-import {
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    Inject,
-} from '@angular/core';
+import type {AfterViewInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Inject} from '@angular/core';
 import {TuiIdService} from '@taiga-ui/cdk';
 import {TUI_CLOSE_WORD} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 export const TUI_SHEET_CLOSE = 'tui-sheet-close';
 export const TUI_SHEET_ID = 'tui-sheet-id';

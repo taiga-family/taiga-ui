@@ -1,6 +1,6 @@
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable, Observer} from 'rxjs';
+import type {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable, Observer} from 'rxjs';
 
 import type {TuiSheetOptions} from './sheet-options';
 

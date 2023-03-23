@@ -1,5 +1,6 @@
 import {Directive, Injectable} from '@angular/core';
-import {TuiControlValueTransformer, TuiDay} from '@taiga-ui/cdk';
+import type {TuiControlValueTransformer} from '@taiga-ui/cdk';
+import {TuiDay} from '@taiga-ui/cdk';
 import {TUI_DATE_VALUE_TRANSFORMER} from '@taiga-ui/kit';
 
 type From = TuiDay | null;

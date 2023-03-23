@@ -1,4 +1,4 @@
-import {QueryList} from '@angular/core';
+import type {QueryList} from '@angular/core';
 
 /**
  * Extracts original array from {@link QueryList} rather than

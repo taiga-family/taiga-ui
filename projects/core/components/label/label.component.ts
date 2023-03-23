@@ -7,12 +7,13 @@ import {
     Input,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {TuiContextWithImplicit, tuiDefaultProp} from '@taiga-ui/cdk';
+import type {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiBrightness} from '@taiga-ui/core/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {TuiBrightness} from '@taiga-ui/core/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 
 @Component({
     selector: 'label[tuiLabel]',

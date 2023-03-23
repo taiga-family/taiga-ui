@@ -17,7 +17,7 @@ import {
     NG_DOMPURIFY_VERSION,
     TAIGA_VERSION,
 } from '../constants/versions';
-import {TuiSchema} from '../schema';
+import type {TuiSchema} from '../schema';
 
 const collectionPath = join(__dirname, `../../collection.json`);
 

@@ -1,4 +1,4 @@
-import {TuiHintDirection} from '@taiga-ui/core/types';
+import type {TuiHintDirection} from '@taiga-ui/core/types';
 
 export const TUI_HINT_DIRECTIONS: readonly TuiHintDirection[] = [
     `bottom-left`,

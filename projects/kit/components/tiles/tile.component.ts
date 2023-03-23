@@ -15,7 +15,8 @@ import {
     TuiResizeService,
     tuiZonefull,
 } from '@taiga-ui/cdk';
-import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {BehaviorSubject, combineLatest} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
 import {TuiTilesComponent} from './tiles.component';

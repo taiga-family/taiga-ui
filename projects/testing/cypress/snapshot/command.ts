@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 // eslint-disable-next-line @taiga-ui/no-deep-imports
 import {tuiIsObject, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
-import {Options} from 'cypress-image-snapshot';
+import type {Options} from 'cypress-image-snapshot';
 import {matchImageSnapshotCommand} from 'cypress-image-snapshot/command';
 
 import {tuiWaitAllImgInside} from '../commands/wait-all-img-inside.command';

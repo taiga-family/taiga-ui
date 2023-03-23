@@ -1,5 +1,6 @@
-import {Directive, ElementRef} from '@angular/core';
-import {
+import type {ElementRef} from '@angular/core';
+import {Directive} from '@angular/core';
+import type {
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk/interfaces';

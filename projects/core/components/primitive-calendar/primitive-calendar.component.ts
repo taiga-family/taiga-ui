@@ -7,21 +7,19 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import type {TuiBooleanHandler, TuiHandler, TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {
     ALWAYS_FALSE_HANDLER,
-    TuiBooleanHandler,
     TuiDay,
     TuiDayRange,
     tuiDefaultProp,
-    TuiHandler,
-    TuiInjectionTokenType,
     TuiMonth,
     tuiNullableSame,
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
 import {TuiInteractiveState, TuiRangeState} from '@taiga-ui/core/enums';
 import {TUI_DAY_TYPE_HANDLER, TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
-import {TuiMarkerHandler} from '@taiga-ui/core/types';
+import type {TuiMarkerHandler} from '@taiga-ui/core/types';
 
 @Component({
     selector: 'tui-primitive-calendar',

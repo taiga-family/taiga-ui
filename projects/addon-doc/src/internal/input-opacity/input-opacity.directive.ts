@@ -1,5 +1,6 @@
 import {Directive, Inject, Input, Renderer2} from '@angular/core';
-import {TUI_FOCUSABLE_ITEM_ACCESSOR, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
+import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk';
 
 @Directive({
     selector: '[tuiInputOpacity]',

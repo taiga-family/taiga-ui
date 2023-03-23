@@ -2,10 +2,12 @@
 import {Directive, ElementRef, Inject, Input} from '@angular/core';
 import {tuiDefaultProp, TuiHoveredService} from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
-import {merge, Observable, of, Subject} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {merge, of, Subject} from 'rxjs';
 import {delay, filter, repeat, switchMap, takeUntil} from 'rxjs/operators';
 
-import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
+import type {TuiHintOptions} from './hint-options.directive';
+import {TUI_HINT_OPTIONS} from './hint-options.directive';
 
 @Directive({
     selector: '[tuiHint]:not(ng-container)',

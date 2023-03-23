@@ -1,12 +1,14 @@
 import {inject, Injectable} from '@angular/core';
-import {SafeResourceUrl} from '@angular/platform-browser';
-import {AbstractTuiDialogService, TuiBaseDialogContext} from '@taiga-ui/cdk';
-import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {SafeResourceUrl} from '@angular/platform-browser';
+import type {TuiBaseDialogContext} from '@taiga-ui/cdk';
+import {AbstractTuiDialogService} from '@taiga-ui/cdk';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 
 import {TuiPdfViewerComponent} from './pdf-viewer.component';
 import {TUI_PDF_VIEWER_OPTIONS} from './pdf-viewer.tokens';
-import {TuiPdfViewerOptions} from './pdf-viewer-options';
+import type {TuiPdfViewerOptions} from './pdf-viewer-options';
 
 const DIALOG = new PolymorpheusComponent(TuiPdfViewerComponent);
 

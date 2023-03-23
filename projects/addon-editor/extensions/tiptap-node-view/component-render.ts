@@ -1,11 +1,5 @@
-import {
-    ApplicationRef,
-    ComponentFactoryResolver,
-    ComponentRef,
-    ElementRef,
-    Injector,
-    Type,
-} from '@angular/core';
+import type {ComponentRef, Injector, Type} from '@angular/core';
+import {ApplicationRef, ComponentFactoryResolver, ElementRef} from '@angular/core';
 
 /**
  * Copied from

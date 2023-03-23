@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import type {TuiContextWithImplicit} from '@taiga-ui/cdk';
 
 @Directive({
     selector: '[tuiMore]',

@@ -1,16 +1,16 @@
-import {
+import type {
     ClassDeclaration,
     Decorator,
-    getClasses,
     ObjectLiteralExpression,
     Pattern,
     PropertyAssignment,
     Query,
     StructureType,
 } from 'ng-morph';
+import {getClasses} from 'ng-morph';
 import * as path from 'path';
 
-import {TemplateResource} from '../../ng-update/interfaces/template-resourse';
+import type {TemplateResource} from '../../ng-update/interfaces/template-resourse';
 
 export function getComponentTemplates(
     pattern: Pattern,

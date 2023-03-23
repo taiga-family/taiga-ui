@@ -1,5 +1,7 @@
-import {Inject, Injectable, Optional, Sanitizer, SecurityContext} from '@angular/core';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import type {Sanitizer} from '@angular/core';
+import {Inject, Injectable, Optional, SecurityContext} from '@angular/core';
+import type {SafeHtml} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {tuiAssert} from '@taiga-ui/cdk';
 import {TUI_ICONS, TUI_SANITIZER} from '@taiga-ui/core/tokens';
 import {tuiProcessIcon} from '@taiga-ui/core/utils/dom';

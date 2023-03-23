@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TUI_DOC_CODE_EDITOR, TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TUI_DOC_CODE_EDITOR} from '@taiga-ui/addon-doc';
 
 @Component({
     selector: 'example-tokens',

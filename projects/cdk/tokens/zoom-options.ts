@@ -1,5 +1,5 @@
 import {InjectionToken} from '@angular/core';
-import {TuiZoomOptions} from '@taiga-ui/cdk/interfaces';
+import type {TuiZoomOptions} from '@taiga-ui/cdk/interfaces';
 
 /**
  * Zoom options

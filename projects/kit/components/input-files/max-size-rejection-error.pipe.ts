@@ -1,8 +1,10 @@
-import {Inject, Pipe, PipeTransform} from '@angular/core';
-import {TuiInjectionTokenType} from '@taiga-ui/cdk';
+import type {PipeTransform} from '@angular/core';
+import {Inject, Pipe} from '@angular/core';
+import type {TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiFormatSize} from '@taiga-ui/kit/utils';
-import {combineLatest, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {combineLatest} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Pipe({name: `tuiMaxSizeRejectionError`})

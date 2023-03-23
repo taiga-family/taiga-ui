@@ -10,19 +10,15 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {tuiCreateAutoCorrectedExpirePipe} from '@taiga-ui/addon-commerce/utils';
+import type {TuiAutofillFieldName, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiAutofillFieldName,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
-import {
-    TUI_DIGIT_REGEXP,
-    TuiPrimitiveTextfieldComponent,
-    TuiTextMaskOptions,
-} from '@taiga-ui/core';
+import type {TuiTextMaskOptions} from '@taiga-ui/core';
+import {TUI_DIGIT_REGEXP, TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-input-expire',

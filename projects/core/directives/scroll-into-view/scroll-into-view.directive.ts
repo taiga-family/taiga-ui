@@ -1,7 +1,8 @@
 import {Directive, ElementRef, Inject, Input, Self} from '@angular/core';
 import {TuiDestroyService, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {TUI_SCROLL_INTO_VIEW} from '@taiga-ui/core/constants';
-import {Observable, timer} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {timer} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 /**

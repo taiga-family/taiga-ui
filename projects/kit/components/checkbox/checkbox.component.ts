@@ -1,8 +1,8 @@
+import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    ElementRef,
     HostBinding,
     Inject,
     Input,
@@ -11,15 +11,16 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
-import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions, TuiSizeL} from '@taiga-ui/core';
+import type {TuiCheckboxOptions, TuiSizeL} from '@taiga-ui/core';
+import {TUI_CHECKBOX_OPTIONS} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-checkbox',

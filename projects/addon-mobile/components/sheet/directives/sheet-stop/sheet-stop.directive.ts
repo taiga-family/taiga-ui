@@ -1,7 +1,7 @@
 import {Directive, ElementRef, Inject, Self} from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {
     distinctUntilChanged,
     filter,

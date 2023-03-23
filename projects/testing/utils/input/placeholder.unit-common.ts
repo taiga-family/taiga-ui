@@ -1,8 +1,8 @@
-import {DebugElement} from '@angular/core';
-import {ComponentFixture} from '@angular/core/testing';
-import {FormControl} from '@angular/forms';
+import type {DebugElement} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import type {FormControl} from '@angular/forms';
 
-import {TuiPageObject} from '../page-object';
+import type {TuiPageObject} from '../page-object';
 
 interface TestParams {
     pageObject: TuiPageObject<unknown>;

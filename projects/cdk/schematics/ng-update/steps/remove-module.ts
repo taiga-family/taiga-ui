@@ -1,6 +1,6 @@
 import {Node} from 'ng-morph';
 
-import {TuiSchema} from '../../ng-add/schema';
+import type {TuiSchema} from '../../ng-add/schema';
 import {
     infoLog,
     REPLACE_SYMBOL,
@@ -10,7 +10,7 @@ import {
 } from '../../utils/colored-log';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {removeImport} from '../../utils/import-manipulations';
-import {RemovedModule} from '../interfaces/removed-module';
+import type {RemovedModule} from '../interfaces/removed-module';
 
 export function removeModules(
     options: TuiSchema,

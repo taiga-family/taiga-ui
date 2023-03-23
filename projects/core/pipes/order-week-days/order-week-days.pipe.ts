@@ -1,7 +1,8 @@
-import {Inject, Pipe, PipeTransform} from '@angular/core';
-import {TuiInjectionTokenType} from '@taiga-ui/cdk';
+import type {PipeTransform} from '@angular/core';
+import {Inject, Pipe} from '@angular/core';
+import type {TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 type WeekDays<T> = [T, T, T, T, T, T, T];

@@ -9,7 +9,8 @@ import {
 } from '@angular/core';
 import {tuiDefaultProp, TuiDestroyService, TuiFocusVisibleService} from '@taiga-ui/cdk';
 import {TuiRouterLinkActiveService} from '@taiga-ui/core';
-import {identity, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {identity} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
 // TODO: find the best way for prevent cycle

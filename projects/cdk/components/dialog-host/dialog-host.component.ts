@@ -3,8 +3,9 @@ import {Title} from '@angular/platform-browser';
 import {HISTORY} from '@ng-web-apis/common';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
 import {TUI_DIALOGS} from '@taiga-ui/cdk/tokens';
-import {TuiDialog} from '@taiga-ui/cdk/types';
-import {combineLatest, Observable, of} from 'rxjs';
+import type {TuiDialog} from '@taiga-ui/cdk/types';
+import type {Observable} from 'rxjs';
+import {combineLatest, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 /**

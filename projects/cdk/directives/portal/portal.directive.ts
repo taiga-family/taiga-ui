@@ -1,11 +1,5 @@
-import {
-    Directive,
-    EmbeddedViewRef,
-    Inject,
-    Input,
-    OnDestroy,
-    TemplateRef,
-} from '@angular/core';
+import type {EmbeddedViewRef, OnDestroy} from '@angular/core';
+import {Directive, Inject, Input, TemplateRef} from '@angular/core';
 import {TuiDropdownPortalService} from '@taiga-ui/cdk/components/dropdown-host';
 
 @Directive({

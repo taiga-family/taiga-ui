@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {TuiContextWithImplicit, tuiPure} from '@taiga-ui/cdk';
+import type {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {tuiPure} from '@taiga-ui/cdk';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 const HINT_CONTROLLER_SELECTORS = ['tuiHintContent'];

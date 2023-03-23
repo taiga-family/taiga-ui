@@ -1,7 +1,7 @@
 import {Directive} from '@angular/core';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
-import {TuiInputYearComponent} from './input-year.component';
+import type {TuiInputYearComponent} from './input-year.component';
 
 @Directive({
     selector: 'tui-input-year',

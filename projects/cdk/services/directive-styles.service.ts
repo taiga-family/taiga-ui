@@ -1,11 +1,5 @@
-import {
-    ComponentFactoryResolver,
-    Inject,
-    Injectable,
-    INJECTOR,
-    Injector,
-    Type,
-} from '@angular/core';
+import type {Injector, Type} from '@angular/core';
+import {ComponentFactoryResolver, Inject, Injectable, INJECTOR} from '@angular/core';
 
 /**
  * Service to use styles with directives

@@ -1,8 +1,8 @@
 /* eslint-disable rxjs/no-topromise */
-import {LogEntry} from '@angular-devkit/core/src/logger/logger';
+import type {LogEntry} from '@angular-devkit/core/src/logger/logger';
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
+import type {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 import {
     createProject,
     createSourceFile,
@@ -11,7 +11,7 @@ import {
     setActiveProject,
 } from 'ng-morph';
 import {join} from 'path';
-import {Subscription} from 'rxjs';
+import type {Subscription} from 'rxjs';
 
 import {createAngularJsonWithAssets} from '../../../utils/create-angular-json';
 import {MIGRATION_WARNINGS} from '../constants/warnings';

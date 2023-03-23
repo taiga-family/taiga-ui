@@ -7,7 +7,7 @@ import {
     Input,
 } from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {TuiHorizontalDirection} from '@taiga-ui/core';
+import type {TuiHorizontalDirection} from '@taiga-ui/core';
 
 import {TuiTabsDirective} from '../tabs.directive';
 

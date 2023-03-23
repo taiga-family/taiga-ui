@@ -1,5 +1,5 @@
 import {InjectionToken} from '@angular/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 /**
  * Main logo

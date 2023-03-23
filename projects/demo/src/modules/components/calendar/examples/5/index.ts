@@ -1,6 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDay, TuiHandler} from '@taiga-ui/cdk';
+import type {TuiDay, TuiHandler} from '@taiga-ui/cdk';
 import {TUI_DAY_TYPE_HANDLER} from '@taiga-ui/core';
 
 const handler: TuiHandler<TuiDay, string> = (day: TuiDay) => {

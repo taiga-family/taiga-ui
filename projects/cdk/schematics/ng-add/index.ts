@@ -1,4 +1,4 @@
-import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {NodePackageInstallTask, RunSchematicTask} from '@angular-devkit/schematics/tasks';
 import {
     addPackageJsonDependency,
@@ -14,7 +14,7 @@ import {
     NG_DOMPURIFY_VERSION,
     TAIGA_VERSION,
 } from './constants/versions';
-import {TuiSchema} from './schema';
+import type {TuiSchema} from './schema';
 
 export function ngAdd(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {

@@ -7,7 +7,8 @@ import {
     tuiPure,
     tuiZonefull,
 } from '@taiga-ui/cdk';
-import {Observable, race, timer} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {race, timer} from 'rxjs';
 import {
     debounceTime,
     distinctUntilChanged,

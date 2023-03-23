@@ -1,7 +1,7 @@
 import {Directive} from '@angular/core';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
-import {TuiComboBoxComponent} from './combo-box.component';
+import type {TuiComboBoxComponent} from './combo-box.component';
 
 @Directive({
     selector: 'tui-combo-box',

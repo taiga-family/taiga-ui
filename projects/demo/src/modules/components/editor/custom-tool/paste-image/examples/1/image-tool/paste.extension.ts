@@ -1,6 +1,6 @@
-import {NodeConfig} from '@tiptap/core';
+import type {NodeConfig} from '@tiptap/core';
 import {Plugin} from '@tiptap/pm/state';
-import {EditorView} from 'prosemirror-view';
+import type {EditorView} from 'prosemirror-view';
 
 export const IMAGE_CLIPBOARD_PASTE_EXTENSION: Partial<NodeConfig<unknown, unknown>> = {
     addProseMirrorPlugins() {

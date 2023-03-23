@@ -10,29 +10,30 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiBooleanHandler,
+    TuiFocusableElementAccessor,
+    TuiTimeLike,
+    TuiTimeMode,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
     TUI_STRICT_MATCHER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiBooleanHandler,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiIsElement,
     tuiIsInput,
     tuiIsNativeFocused,
     tuiPure,
     TuiTime,
-    TuiTimeLike,
-    TuiTimeMode,
 } from '@taiga-ui/cdk';
+import type {TuiDataListHost, TuiTextMaskOptions} from '@taiga-ui/core';
 import {
     tuiAsDataListHost,
     tuiAsOptionContent,
-    TuiDataListHost,
     TuiPrimitiveTextfieldComponent,
-    TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
@@ -41,10 +42,11 @@ import {
     tuiCreateAutoCorrectedTimePipe,
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {TUI_INPUT_TIME_OPTIONS, TuiInputTimeOptions} from './input-time-options';
+import type {TuiInputTimeOptions} from './input-time-options';
+import {TUI_INPUT_TIME_OPTIONS} from './input-time-options';
 
 @Component({
     selector: 'tui-input-time',

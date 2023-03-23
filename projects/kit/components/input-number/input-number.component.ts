@@ -1,3 +1,4 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -7,11 +8,11 @@ import {
     Inject,
     Input,
     Optional,
-    QueryList,
     Self,
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {TuiFocusableElementAccessor, TuiInputMode, TuiMapper} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     EMPTY_QUERY,
@@ -19,24 +20,23 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
-    TuiInputMode,
-    TuiMapper,
 } from '@taiga-ui/cdk';
+import type {
+    TuiDecimal,
+    TuiNumberFormatSettings,
+    TuiTextMaskOptions,
+} from '@taiga-ui/core';
 import {
     TUI_DECIMAL_SYMBOLS,
     TUI_NUMBER_FORMAT,
     tuiCreateAutoCorrectedNumberPipe,
     tuiCreateNumberMask,
-    TuiDecimal,
     tuiEnableAutoCorrectDecimalSymbol,
     tuiFormatNumber,
     tuiGetFractionPartPadded,
     tuiMaskedMoneyValueIsEmpty,
     tuiMaskedNumberStringToNumber,
-    TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
-    TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 

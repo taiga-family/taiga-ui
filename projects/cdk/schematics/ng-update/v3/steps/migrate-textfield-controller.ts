@@ -1,7 +1,7 @@
-import {UpdateRecorder} from '@angular-devkit/schematics';
+import type {UpdateRecorder} from '@angular-devkit/schematics';
 import {arrayFlat} from 'ng-morph';
-import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
-import {Attribute, Element} from 'parse5';
+import type {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
+import type {Attribute, Element} from 'parse5';
 
 import {
     findElementsByFn,
@@ -13,7 +13,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
-import {TemplateResource} from '../../interfaces/template-resourse';
+import type {TemplateResource} from '../../interfaces/template-resourse';
 
 const TEXTFIELDS = [
     `tui-input`,

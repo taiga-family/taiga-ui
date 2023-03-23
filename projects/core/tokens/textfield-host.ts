@@ -1,5 +1,6 @@
-import {InjectionToken, Provider, Type} from '@angular/core';
-import {TuiTextfieldHost} from '@taiga-ui/core/interfaces';
+import type {Provider, Type} from '@angular/core';
+import {InjectionToken} from '@angular/core';
+import type {TuiTextfieldHost} from '@taiga-ui/core/interfaces';
 
 /**
  * An interface to communicate with textfield based controls

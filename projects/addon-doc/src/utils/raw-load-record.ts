@@ -1,4 +1,4 @@
-import {TuiDocExample} from '../interfaces/page';
+import type {TuiDocExample} from '../interfaces/page';
 import {tuiRawLoad} from './raw-load';
 
 export async function tuiRawLoadRecord(

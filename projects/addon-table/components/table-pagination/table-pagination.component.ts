@@ -9,13 +9,11 @@ import {
 import {TUI_TABLE_PAGINATION_TEXTS} from '@taiga-ui/addon-table/tokens';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TUI_SPIN_TEXTS} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
-import {TuiTablePagination} from './table-pagination';
-import {
-    TUI_TABLE_PAGINATION_OPTIONS,
-    TuiTablePaginationOptions,
-} from './table-pagination-options';
+import type {TuiTablePagination} from './table-pagination';
+import type {TuiTablePaginationOptions} from './table-pagination-options';
+import {TUI_TABLE_PAGINATION_OPTIONS} from './table-pagination-options';
 
 @Component({
     selector: 'tui-table-pagination',

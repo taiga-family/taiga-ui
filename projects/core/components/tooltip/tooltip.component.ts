@@ -9,16 +9,16 @@ import {
     ViewChild,
 } from '@angular/core';
 import {TUI_IS_MOBILE, tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
+import type {TuiHintOptions} from '@taiga-ui/core/directives';
 import {
     TUI_HINT_OPTIONS,
     TuiHintHoverDirective,
-    TuiHintOptions,
     TuiHintOptionsDirective,
 } from '@taiga-ui/core/directives';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiBrightness} from '@taiga-ui/core/types';
-import {Observable} from 'rxjs';
+import type {TuiBrightness} from '@taiga-ui/core/types';
+import type {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({

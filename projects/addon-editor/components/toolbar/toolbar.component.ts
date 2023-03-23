@@ -1,3 +1,4 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,34 +10,32 @@ import {
     Input,
     Optional,
     Output,
-    QueryList,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
+import type {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {defaultEditorTools} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
-import {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
+import type {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
+import type {TuiEditorOptions} from '@taiga-ui/addon-editor/tokens';
 import {
     TUI_ATTACH_FILES_LOADER,
     TUI_ATTACH_FILES_OPTIONS,
     TUI_EDITOR_OPTIONS,
     TUI_EDITOR_TOOLBAR_TEXTS,
     TUI_IMAGE_LOADER,
-    TuiEditorOptions,
 } from '@taiga-ui/addon-editor/tokens';
+import type {TuiHandler, TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
     tuiAssert,
     tuiDefaultProp,
-    TuiHandler,
-    TuiInjectionTokenType,
     tuiIsNativeFocusedIn,
 } from '@taiga-ui/cdk';
-import {TuiHostedDropdownComponent} from '@taiga-ui/core';
-import {TuiLanguageEditor} from '@taiga-ui/i18n';
-import {Observable} from 'rxjs';
+import type {TuiHostedDropdownComponent} from '@taiga-ui/core';
+import type {TuiLanguageEditor} from '@taiga-ui/i18n';
+import type {Observable} from 'rxjs';
 import {take} from 'rxjs/operators';
 
 import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager.directive';

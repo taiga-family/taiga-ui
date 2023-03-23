@@ -1,5 +1,6 @@
 import {CHAR_HYPHEN, CHAR_PLUS} from '@taiga-ui/cdk';
-import {TUI_DIGIT_REGEXP, TuiTextMaskList} from '@taiga-ui/core';
+import type {TuiTextMaskList} from '@taiga-ui/core';
+import {TUI_DIGIT_REGEXP} from '@taiga-ui/core';
 
 export const TUI_PHONE_MASK: TuiTextMaskList = [
     CHAR_PLUS,

@@ -1,7 +1,10 @@
-import {Component, DebugElement} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement} from '@angular/core';
+import {Component} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {TuiSwipe, TuiSwipeModule} from '@taiga-ui/cdk';
+import type {TuiSwipe} from '@taiga-ui/cdk';
+import {TuiSwipeModule} from '@taiga-ui/cdk';
 import {configureTestSuite} from '@taiga-ui/testing';
 
 // TODO: need mock Touch

@@ -1,5 +1,6 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
-import {TuiBooleanHandler} from '@taiga-ui/cdk';
+import type {ValueProvider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 
 import {TUI_EXAMPLE_PRIMARY_FILE_NAME} from '../../interfaces/page';
 

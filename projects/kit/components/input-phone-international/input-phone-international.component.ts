@@ -12,39 +12,37 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiContextWithImplicit,
+    TuiFocusableElementAccessor,
+    TuiMapper,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     CHAR_PLUS,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
-    TuiMapper,
     tuiPure,
 } from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core';
 import {
     TUI_MASK_SYMBOLS_REGEXP,
     TUI_NON_DIGITS_REGEXP,
     TuiFlagPipe,
     TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeM,
-    TuiSizeS,
 } from '@taiga-ui/core';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_ARROW} from '@taiga-ui/kit/components/arrow';
 import {TuiInputPhoneComponent} from '@taiga-ui/kit/components/input-phone';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 
 import {MASK_AFTER_CODE_REGEXP} from './const/mask-after-code-regexp';
-import {
-    TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS,
-    TuiInputPhoneInternationalOptions,
-} from './input-phone-international.options';
+import type {TuiInputPhoneInternationalOptions} from './input-phone-international.options';
+import {TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS} from './input-phone-international.options';
 import {TUI_COUNTRIES_MASKS} from './tokens/countries-masks';
 import {tuiExtractValueFromEvent} from './utils/extract-value-from-event';
 

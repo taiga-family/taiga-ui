@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {Observable, of, Subject} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {of, Subject} from 'rxjs';
 import {delay, startWith, switchMap} from 'rxjs/operators';
 
 const databaseMockData: readonly string[] = [

@@ -1,4 +1,4 @@
-import {TuiYearLike} from './year-like';
+import type {TuiYearLike} from './year-like';
 
 /**
  * Optionaly has year and/or month

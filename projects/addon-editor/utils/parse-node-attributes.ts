@@ -1,4 +1,4 @@
-import {Attribute} from '@tiptap/core';
+import type {Attribute} from '@tiptap/core';
 
 export function tuiParseNodeAttributes(
     attrs: string[],

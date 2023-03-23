@@ -1,16 +1,16 @@
+import type {OnInit, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
     HostBinding,
     Inject,
-    OnInit,
-    QueryList,
     ViewChildren,
 } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {INTERSECTION_ROOT} from '@ng-web-apis/intersection-observer';
-import {EMPTY_QUERY, TuiDay} from '@taiga-ui/cdk';
+import type {TuiDay} from '@taiga-ui/cdk';
+import {EMPTY_QUERY} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'landing',

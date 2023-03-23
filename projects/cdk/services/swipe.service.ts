@@ -1,6 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import {ElementRef, Inject, Injectable} from '@angular/core';
-import {TuiSwipe, TuiSwipeOptions} from '@taiga-ui/cdk/interfaces';
+import type {TuiSwipe, TuiSwipeOptions} from '@taiga-ui/cdk/interfaces';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_SWIPE_OPTIONS} from '@taiga-ui/cdk/tokens';
 import {tuiGetSwipeDirection, tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';

@@ -1,5 +1,5 @@
 import {InjectionToken} from '@angular/core';
-import {TuiDateMode} from '@taiga-ui/cdk/types';
+import type {TuiDateMode} from '@taiga-ui/cdk/types';
 
 /**
  * Active date format for Taiga UI

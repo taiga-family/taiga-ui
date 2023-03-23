@@ -5,11 +5,11 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {TuiHandler} from '@taiga-ui/cdk';
+import type {TuiHandler} from '@taiga-ui/cdk';
 import {BehaviorSubject} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
 
-import {RawLoaderContent} from '../../interfaces/page';
+import type {RawLoaderContent} from '../../interfaces/page';
 import {TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR} from '../../tokens/example-content-processor';
 import {tuiRawLoad} from '../../utils/raw-load';
 

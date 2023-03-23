@@ -1,6 +1,7 @@
 import {InjectionToken} from '@angular/core';
 import type {Editor} from '@tiptap/core';
-import {Observable, ReplaySubject} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {ReplaySubject} from 'rxjs';
 
 /**
  * Token for Tiptap Editor

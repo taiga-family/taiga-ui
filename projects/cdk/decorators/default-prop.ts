@@ -1,5 +1,5 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
-import {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 
 /**
  * Decorator for checking input values for undefined. You can also pass

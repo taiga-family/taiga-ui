@@ -1,5 +1,6 @@
 import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import {OperatorFunction, pipe, timer} from 'rxjs';
+import type {OperatorFunction} from 'rxjs';
+import {pipe, timer} from 'rxjs';
 import {distinctUntilChanged, map, startWith, switchMap} from 'rxjs/operators';
 
 /**

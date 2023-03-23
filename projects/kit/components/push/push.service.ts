@@ -1,9 +1,11 @@
 import {inject, Injectable} from '@angular/core';
-import {AbstractTuiDialogService, TuiBaseDialogContext} from '@taiga-ui/cdk';
-import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {TuiBaseDialogContext} from '@taiga-ui/cdk';
+import {AbstractTuiDialogService} from '@taiga-ui/cdk';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 
-import {TuiPushOptions} from './push.options';
+import type {TuiPushOptions} from './push.options';
 import {TUI_PUSH_OPTIONS} from './push.tokens';
 // TODO: find the best way for prevent cycle
 // eslint-disable-next-line import/no-cycle

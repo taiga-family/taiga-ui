@@ -2,10 +2,10 @@ import {Component, Inject, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import type {TuiEditorAttachedFile} from '@taiga-ui/addon-editor';
 import {
     TUI_ATTACH_FILES_LOADER,
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorAttachedFile,
     TuiEditorComponent,
     TuiEditorTool,
 } from '@taiga-ui/addon-editor';

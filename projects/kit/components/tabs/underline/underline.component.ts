@@ -9,9 +9,11 @@ import {
 } from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {tuiDefaultProp, tuiZonefree} from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
+import type {TuiBrightness} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE} from '@taiga-ui/core';
 import {asCallable} from '@tinkoff/ng-event-plugins';
-import {Observable, of, ReplaySubject} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {of, ReplaySubject} from 'rxjs';
 import {debounceTime, map, share, switchMap} from 'rxjs/operators';
 
 @Component({

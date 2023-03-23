@@ -1,12 +1,15 @@
+import type {TuiDateMode} from '@taiga-ui/cdk';
 import {
     DATE_FILLER_LENGTH,
     DATE_RANGE_FILLER_LENGTH,
     RANGE_SEPARATOR_CHAR,
-    TuiDateMode,
     TuiDay,
     TuiDayRange,
 } from '@taiga-ui/cdk';
-import {TuiTextMaskPipeHandler, TuiWithOptionalMinMaxWithValue} from '@taiga-ui/core';
+import type {
+    TuiTextMaskPipeHandler,
+    TuiWithOptionalMinMaxWithValue,
+} from '@taiga-ui/core';
 
 interface TuiAutoCorrectedDatePipeConfigs
     extends TuiWithOptionalMinMaxWithValue<TuiDayRange | null, TuiDay> {

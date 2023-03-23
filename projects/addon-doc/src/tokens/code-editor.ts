@@ -1,6 +1,6 @@
 import {InjectionToken} from '@angular/core';
 
-import {TuiCodeEditor} from '../interfaces/code-editor';
+import type {TuiCodeEditor} from '../interfaces/code-editor';
 
 /**
  * Service for opening online IDE e.g. Stackblitz

@@ -1,12 +1,9 @@
 import {Component, HostListener, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiStringHandler} from '@taiga-ui/cdk';
-import {
-    TUI_NUMBER_FORMAT,
-    TuiAlertService,
-    TuiNumberFormatSettings,
-} from '@taiga-ui/core';
+import type {TuiStringHandler} from '@taiga-ui/cdk';
+import type {TuiNumberFormatSettings} from '@taiga-ui/core';
+import {TUI_NUMBER_FORMAT, TuiAlertService} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-copy-processor-example-1',

@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, Inject, Injector, Self} from '@angular/core';
-import {ActivatedRoute, Router, UrlSegment} from '@angular/router';
+import type {UrlSegment} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';

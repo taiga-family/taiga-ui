@@ -13,38 +13,43 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiActiveZoneDirective,
+    TuiContextWithImplicit,
+    TuiFocusableElementAccessor,
+    TuiInputMode,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
-    TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiDestroyService,
-    TuiFocusableElementAccessor,
     tuiGetClipboardDataText,
-    TuiInputMode,
     tuiIsNativeFocused,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
+import type {
+    TuiDataListHost,
+    TuiTextfieldCleanerDirective,
+    TuiTextMaskOptions,
+} from '@taiga-ui/core';
 import {
     TUI_MASK_SYMBOLS_REGEXP,
     TUI_SELECTION_STREAM,
     TUI_TEXTFIELD_CLEANER,
     tuiAsDataListHost,
     TuiDataListDirective,
-    TuiDataListHost,
     tuiFormatPhone,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
-    TuiTextfieldCleanerDirective,
-    TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
-import {TUI_INPUT_PHONE_OPTIONS, TuiInputPhoneOptions} from './input-phone.options';
+import type {TuiInputPhoneOptions} from './input-phone.options';
+import {TUI_INPUT_PHONE_OPTIONS} from './input-phone.options';
 
 @Component({
     selector: 'tui-input-phone',

@@ -1,6 +1,6 @@
-import {QueryList} from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {tuiGetOriginalArrayFromQueryList} from '@taiga-ui/cdk/utils/miscellaneous';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
 /**

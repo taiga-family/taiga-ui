@@ -1,4 +1,5 @@
-import {Extension, GlobalAttributes} from '@tiptap/core';
+import type {GlobalAttributes} from '@tiptap/core';
+import {Extension} from '@tiptap/core';
 
 export const EmojiExtension = Extension.create({
     name: `emoji`,

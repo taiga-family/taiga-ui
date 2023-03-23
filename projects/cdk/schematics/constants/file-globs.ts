@@ -1,4 +1,4 @@
-import {Pattern} from 'ng-morph';
+import type {Pattern} from 'ng-morph';
 
 const EXCLUDE_DIRECTORIES = [
     // compiled

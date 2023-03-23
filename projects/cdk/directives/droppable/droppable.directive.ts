@@ -2,7 +2,8 @@ import {Directive, ElementRef, Inject, Output, Self} from '@angular/core';
 import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import {merge, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {merge} from 'rxjs';
 import {
     distinctUntilChanged,
     filter,

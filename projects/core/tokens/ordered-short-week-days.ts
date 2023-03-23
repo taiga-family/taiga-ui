@@ -2,7 +2,7 @@
  * TODO: v4.0 delete the whole file
  */
 import {inject, InjectionToken} from '@angular/core';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {TUI_FIRST_DAY_OF_WEEK} from './first-day-of-week';

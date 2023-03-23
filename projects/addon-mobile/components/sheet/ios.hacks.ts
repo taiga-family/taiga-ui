@@ -1,6 +1,7 @@
-import {NgZone} from '@angular/core';
+import type {NgZone} from '@angular/core';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
-import {concat, merge, Observable, zip} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {concat, merge, zip} from 'rxjs';
 import {delay, map, share, switchMap, take, takeUntil} from 'rxjs/operators';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

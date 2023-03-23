@@ -1,5 +1,5 @@
 import {Directive, Inject} from '@angular/core';
-import {AbstractTuiControl} from '@taiga-ui/cdk';
+import type {AbstractTuiControl} from '@taiga-ui/cdk';
 import {AbstractTuiTextfieldHost} from '@taiga-ui/core/abstract';
 import {tuiAsTextfieldHost} from '@taiga-ui/core/tokens';
 

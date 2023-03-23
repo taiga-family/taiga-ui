@@ -1,5 +1,6 @@
 import {InjectionToken} from '@angular/core';
-import {defer, Observable, of, timer} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {defer, of, timer} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 
 /**

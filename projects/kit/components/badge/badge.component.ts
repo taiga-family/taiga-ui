@@ -6,16 +6,11 @@ import {
     Input,
 } from '@angular/core';
 import {tuiDefaultProp, tuiIsNumber} from '@taiga-ui/cdk';
-import {
-    MODE_PROVIDER,
-    TUI_MODE,
-    TuiBrightness,
-    TuiSizeL,
-    TuiSizeXS,
-} from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {TuiBrightness, TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE} from '@taiga-ui/core';
+import type {TuiStatus} from '@taiga-ui/kit/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-badge',

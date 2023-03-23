@@ -1,33 +1,28 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
     Inject,
     Input,
-    QueryList,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {TuiIdentityMatcher, TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
     TUI_DEFAULT_IDENTITY_MATCHER,
     tuiControlValue,
     tuiDefaultProp,
     tuiGetOriginalArrayFromQueryList,
-    TuiIdentityMatcher,
-    TuiInjectionTokenType,
     tuiIsPresent,
     tuiPure,
     tuiQueryListChanges,
 } from '@taiga-ui/cdk';
-import {
-    TUI_DATA_LIST_HOST,
-    TuiDataListHost,
-    TuiOptionComponent,
-    TuiSizeL,
-    TuiSizeXS,
-} from '@taiga-ui/core';
+import type {TuiDataListHost, TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
+import {TUI_DATA_LIST_HOST, TuiOptionComponent} from '@taiga-ui/core';
 import {TUI_MULTI_SELECT_TEXTS} from '@taiga-ui/kit/tokens';
-import {combineLatest, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {combineLatest} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({

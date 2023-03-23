@@ -1,7 +1,7 @@
-import {TuiTimeMode} from '@taiga-ui/cdk';
-import {TuiTextMaskPipeHandler} from '@taiga-ui/core';
+import type {TuiTimeMode} from '@taiga-ui/cdk';
+import type {TuiTextMaskPipeHandler} from '@taiga-ui/core';
 import {MAX_TIME_VALUES} from '@taiga-ui/kit/constants';
-import {TuiTimeFormatParts} from '@taiga-ui/kit/types';
+import type {TuiTimeFormatParts} from '@taiga-ui/kit/types';
 
 /**
  * Adjusts the entered time by omitting only suitable values for hours and minutes

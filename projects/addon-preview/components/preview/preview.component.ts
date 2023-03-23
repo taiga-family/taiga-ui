@@ -7,6 +7,7 @@ import {
     Self,
 } from '@angular/core';
 import {TUI_PREVIEW_TEXTS} from '@taiga-ui/addon-preview/tokens';
+import type {TuiZoom} from '@taiga-ui/cdk';
 import {
     ALWAYS_FALSE_HANDLER,
     tuiClamp,
@@ -17,11 +18,11 @@ import {
     tuiPx,
     tuiRound,
     tuiTypedFromEvent,
-    TuiZoom,
 } from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
-import {TuiLanguagePreview} from '@taiga-ui/i18n';
-import {BehaviorSubject, combineLatest, merge, Observable} from 'rxjs';
+import type {TuiLanguagePreview} from '@taiga-ui/i18n';
+import type {Observable} from 'rxjs';
+import {BehaviorSubject, combineLatest, merge} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
 const INITIAL_SCALE_COEF = 0.8;

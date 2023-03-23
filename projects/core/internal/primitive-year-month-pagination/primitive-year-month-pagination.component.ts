@@ -5,15 +5,9 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {
-    TUI_FIRST_DAY,
-    TUI_LAST_DAY,
-    tuiDefaultProp,
-    TuiMonth,
-    TuiMonthLike,
-    TuiYear,
-} from '@taiga-ui/cdk';
-import {TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
+import type {TuiMonthLike, TuiYear} from '@taiga-ui/cdk';
+import {TUI_FIRST_DAY, TUI_LAST_DAY, tuiDefaultProp, TuiMonth} from '@taiga-ui/cdk';
+import type {TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
 
 @Component({
     selector: 'tui-primitive-year-month-pagination',

@@ -8,22 +8,24 @@ import {
     Input,
     Optional,
 } from '@angular/core';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
     tuiDefaultProp,
     TuiDestroyService,
-    TuiFocusableElementAccessor,
     TuiFocusVisibleService,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {TuiModeDirective} from '@taiga-ui/core/directives';
-import {TuiSizeS} from '@taiga-ui/core/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {EMPTY, Observable} from 'rxjs';
+import type {TuiSizeS} from '@taiga-ui/core/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
+import {EMPTY} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
-import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button-options';
+import type {TuiButtonOptions} from './button-options';
+import {TUI_BUTTON_OPTIONS} from './button-options';
 
 @Component({
     selector: 'button[tuiButton], button[tuiIconButton], a[tuiButton], a[tuiIconButton]',

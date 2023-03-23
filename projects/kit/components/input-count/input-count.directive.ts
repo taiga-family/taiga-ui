@@ -1,7 +1,8 @@
-import {AfterViewInit, Directive} from '@angular/core';
+import type {AfterViewInit} from '@angular/core';
+import {Directive} from '@angular/core';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
-import {TuiInputCountComponent} from './input-count.component';
+import type {TuiInputCountComponent} from './input-count.component';
 
 @Directive({
     selector: 'tui-input-count',

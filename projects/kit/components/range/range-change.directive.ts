@@ -2,7 +2,8 @@ import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, EventEmitter, Inject, Output, Self} from '@angular/core';
 import {tuiClamp, TuiDestroyService, tuiRound, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
-import {merge, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {merge} from 'rxjs';
 import {filter, map, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs/operators';
 
 import {TuiRangeComponent} from './range.component';

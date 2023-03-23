@@ -1,20 +1,17 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {
-    TUI_DEFAULT_IDENTITY_MATCHER,
-    TUI_DEFAULT_STRINGIFY,
-    TuiIdentityMatcher,
-    TuiStringHandler,
-} from '@taiga-ui/cdk';
+import type {TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_IDENTITY_MATCHER, TUI_DEFAULT_STRINGIFY} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TuiDataListModule,
     TuiHintModule,
     TuiRootModule,
-    TuiSizeL,
-    TuiSizeS,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiComboBoxComponent, TuiComboBoxModule} from '@taiga-ui/kit';

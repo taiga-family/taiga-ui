@@ -1,7 +1,7 @@
 import {Directive, Inject} from '@angular/core';
-import {TuiSwipe} from '@taiga-ui/cdk/interfaces';
+import type {TuiSwipe} from '@taiga-ui/cdk/interfaces';
 import {TuiSwipeService} from '@taiga-ui/cdk/services';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 @Directive({
     selector: '[tuiSwipe]',

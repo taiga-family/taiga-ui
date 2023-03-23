@@ -1,6 +1,6 @@
-import {TuiBaseDialogContext} from '@taiga-ui/cdk';
+import type {TuiBaseDialogContext} from '@taiga-ui/cdk';
 
-import {TuiDialogOptions} from './dialog-options';
+import type {TuiDialogOptions} from './dialog-options';
 
 export interface TuiDialogContext<O = void, I = undefined>
     extends TuiBaseDialogContext<O>,

@@ -9,22 +9,22 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiBooleanHandler,
+    TuiFocusableElementAccessor,
+    TuiYear,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiBooleanHandler,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
-    TuiYear,
 } from '@taiga-ui/cdk';
-import {
-    TUI_DIGIT_REGEXP,
-    TuiPrimitiveTextfieldComponent,
-    TuiWithOptionalMinMax,
-} from '@taiga-ui/core';
-import {TUI_INPUT_DATE_OPTIONS, TuiInputDateOptions} from '@taiga-ui/kit/tokens';
+import type {TuiWithOptionalMinMax} from '@taiga-ui/core';
+import {TUI_DIGIT_REGEXP, TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
+import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
+import {TUI_INPUT_DATE_OPTIONS} from '@taiga-ui/kit/tokens';
 
 @Component({
     selector: 'tui-input-year',

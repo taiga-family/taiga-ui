@@ -1,4 +1,4 @@
-import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core/types';
+import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core/types';
 
 const SIZES: Record<TuiSizeXXL | TuiSizeXXS, number> = {
     xxs: 0,

@@ -1,5 +1,6 @@
 import {Inject, Injectable, LOCALE_ID} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {of} from 'rxjs';
 
 @Injectable({
     providedIn: `root`,

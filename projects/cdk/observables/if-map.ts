@@ -1,5 +1,6 @@
-import {TuiBooleanHandler} from '@taiga-ui/cdk/types';
-import {EMPTY, Observable, OperatorFunction, pipe} from 'rxjs';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import type {Observable, OperatorFunction} from 'rxjs';
+import {EMPTY, pipe} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 
 export function tuiIfMap<T, G>(

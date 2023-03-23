@@ -1,10 +1,10 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiAutofillFieldName, TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {TuiSizeL} from '@taiga-ui/core';
-import {TuiKeySteps} from '@taiga-ui/kit';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiAutofillFieldName, TuiContextWithImplicit} from '@taiga-ui/cdk';
+import type {TuiSizeL} from '@taiga-ui/core';
+import type {TuiKeySteps} from '@taiga-ui/kit';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';

@@ -1,9 +1,9 @@
+import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ContentChild,
-    ElementRef,
     EventEmitter,
     HostListener,
     Inject,
@@ -15,28 +15,30 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {TuiFocusableElementAccessor, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     EMPTY_ARRAY,
     TUI_IS_MOBILE,
     tuiAsFocusableItemAccessor,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiIsNativeFocused,
-    TuiNativeFocusableElement,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TuiSizeL} from '@taiga-ui/core';
-import {TuiFileLike} from '@taiga-ui/kit/interfaces';
+import type {TuiSizeL} from '@taiga-ui/core';
+import {MODE_PROVIDER} from '@taiga-ui/core';
+import type {TuiFileLike} from '@taiga-ui/kit/interfaces';
 import {TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiGetAcceptArray} from '@taiga-ui/kit/utils/files';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable, of} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
+import {of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 // eslint-disable-next-line import/no-cycle
 import {TuiInputFilesDirective} from './input-files.directive';
-import {TUI_INPUT_FILES_OPTIONS, TuiInputFilesOptions} from './input-files.options';
+import type {TuiInputFilesOptions} from './input-files.options';
+import {TUI_INPUT_FILES_OPTIONS} from './input-files.options';
 
 @Component({
     selector: 'tui-input-files',

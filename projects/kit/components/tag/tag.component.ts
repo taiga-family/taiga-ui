@@ -10,25 +10,29 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import {TuiContextWithImplicit, tuiDefaultProp} from '@taiga-ui/cdk';
-import {
-    MODE_PROVIDER,
-    TEXTFIELD_CONTROLLER_PROVIDER,
-    TUI_MODE,
-    TUI_TEXTFIELD_WATCHED_CONTROLLER,
+import type {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {tuiDefaultProp} from '@taiga-ui/cdk';
+import type {
     TuiBrightness,
-    tuiSizeBigger,
     TuiSizeL,
     TuiSizeS,
     TuiSizeXS,
     TuiTextfieldController,
 } from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit/types';
+import {
+    MODE_PROVIDER,
+    TEXTFIELD_CONTROLLER_PROVIDER,
+    TUI_MODE,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
+    tuiSizeBigger,
+} from '@taiga-ui/core';
+import type {TuiStatus} from '@taiga-ui/kit/types';
 import {tuiStringHashToHsl} from '@taiga-ui/kit/utils/format';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 
-import {TUI_TAG_OPTIONS, TuiTagOptions} from './tag-options';
+import type {TuiTagOptions} from './tag-options';
+import {TUI_TAG_OPTIONS} from './tag-options';
 
 @Component({
     selector: 'tui-tag, a[tuiTag]',

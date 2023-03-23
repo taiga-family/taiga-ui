@@ -1,11 +1,10 @@
+import type {AfterContentInit, QueryList} from '@angular/core';
 import {
-    AfterContentInit,
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
     Inject,
     Input,
-    QueryList,
     Self,
 } from '@angular/core';
 import {

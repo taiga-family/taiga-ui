@@ -1,15 +1,17 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
+import type {TuiTextfieldSizeDirective} from '@taiga-ui/core';
 import {
     TUI_TEXTFIELD_SIZE,
     TuiHostedDropdownComponent,
     tuiSizeBigger,
-    TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
-import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
+import type {TuiArrowOptions} from './arrow-options';
 // TODO: find the best way for prevent cycle
 // eslint-disable-next-line import/no-cycle
-import {TUI_ARROW_OPTIONS, TuiArrowOptions} from './arrow-options';
+import {TUI_ARROW_OPTIONS} from './arrow-options';
 
 @Component({
     selector: 'tui-arrow',

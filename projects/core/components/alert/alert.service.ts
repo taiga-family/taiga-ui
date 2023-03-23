@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {AbstractTuiDialogService, TuiIdService} from '@taiga-ui/cdk';
-import {TuiAlertOptions} from '@taiga-ui/core/interfaces';
+import type {TuiAlertOptions} from '@taiga-ui/core/interfaces';
 import {TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/tokens';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 

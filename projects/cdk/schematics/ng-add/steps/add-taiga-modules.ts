@@ -1,9 +1,9 @@
-import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {getWorkspace} from '@schematics/angular/utility/workspace';
+import type {ClassDeclaration} from 'ng-morph';
 import {
     addImportToNgModule,
     addProviderToNgModule,
-    ClassDeclaration,
     createProject,
     getMainModule,
     saveActiveProject,
@@ -19,7 +19,7 @@ import {
     MAIN_MODULES,
     SANITIZER_MODULES,
 } from '../constants/modules';
-import {TuiSchema} from '../schema';
+import type {TuiSchema} from '../schema';
 
 export function addTaigaModules(options: TuiSchema): Rule {
     return async (tree: Tree, context: SchematicContext) => {

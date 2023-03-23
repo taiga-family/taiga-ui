@@ -5,9 +5,11 @@ import {
     LocationStrategy,
     PathLocationStrategy,
 } from '@angular/common';
-import {inject, PLATFORM_ID, Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {inject, PLATFORM_ID} from '@angular/core';
 import {Title} from '@angular/platform-browser';
-import {UrlTree} from '@angular/router';
+import type {UrlTree} from '@angular/router';
+import type {TuiDocSourceCodePathOptions} from '@taiga-ui/addon-doc';
 import {
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
@@ -19,7 +21,6 @@ import {
     TUI_DOC_SOURCE_CODE,
     TUI_DOC_TITLE,
     TUI_DOC_URL_STATE_HANDLER,
-    TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
 import {
     TUI_DIALOG_CLOSES_ON_BACK,
@@ -35,7 +36,8 @@ import {
     TUI_HINT_OPTIONS,
     TUI_SANITIZER,
 } from '@taiga-ui/core';
-import {TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
+import type {TuiLanguageName} from '@taiga-ui/i18n';
+import {tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 import {of} from 'rxjs';

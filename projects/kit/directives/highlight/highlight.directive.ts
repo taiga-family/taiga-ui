@@ -1,5 +1,6 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, ElementRef, Inject, Input, OnChanges, Renderer2} from '@angular/core';
+import type {OnChanges} from '@angular/core';
+import {Directive, ElementRef, Inject, Input, Renderer2} from '@angular/core';
 import {
     svgNodeFilter,
     tuiDefaultProp,
@@ -7,7 +8,7 @@ import {
     tuiPx,
     TuiResizeService,
 } from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 @Directive({
     selector: '[tuiHighlight]',

@@ -6,7 +6,8 @@ import {
     TuiDirectiveStylesService,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
-import {Observable, race, timer} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {race, timer} from 'rxjs';
 import {map, mergeMap, switchMap, take, takeUntil, tap} from 'rxjs/operators';
 
 import {

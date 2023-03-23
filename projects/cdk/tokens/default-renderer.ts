@@ -1,4 +1,5 @@
-import {inject, InjectionToken, Renderer2, RendererFactory2} from '@angular/core';
+import type {Renderer2} from '@angular/core';
+import {inject, InjectionToken, RendererFactory2} from '@angular/core';
 
 /**
  * A Renderer2 for global services

@@ -1,7 +1,9 @@
-import {Directive, ElementRef, Inject, Input, NgZone, OnInit, Self} from '@angular/core';
+import type {OnInit} from '@angular/core';
+import {Directive, ElementRef, Inject, Input, NgZone, Self} from '@angular/core';
 import {tuiPreventDefault, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
-import {fromEvent, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {fromEvent} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 /**

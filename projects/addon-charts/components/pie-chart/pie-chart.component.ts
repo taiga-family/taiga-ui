@@ -9,23 +9,14 @@ import {
     Optional,
     Output,
 } from '@angular/core';
-import {SafeValue} from '@angular/platform-browser';
+import type {SafeValue} from '@angular/platform-browser';
 import {LOCATION} from '@ng-web-apis/common';
 import {tuiPrepareExternalUrl} from '@taiga-ui/addon-charts/utils';
-import {
-    TuiContextWithImplicit,
-    tuiDefaultProp,
-    TuiIdService,
-    tuiPure,
-    tuiSum,
-} from '@taiga-ui/cdk';
-import {
-    TuiHintOptionsDirective,
-    tuiHintOptionsProvider,
-    TuiSizeXL,
-    TuiSizeXS,
-} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {tuiDefaultProp, TuiIdService, tuiPure, tuiSum} from '@taiga-ui/cdk';
+import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
+import {TuiHintOptionsDirective, tuiHintOptionsProvider} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const RADII = {
     xs: '50',

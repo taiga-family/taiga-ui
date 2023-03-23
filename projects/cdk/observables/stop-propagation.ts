@@ -1,4 +1,4 @@
-import {MonoTypeOperatorFunction} from 'rxjs';
+import type {MonoTypeOperatorFunction} from 'rxjs';
 import {tap} from 'rxjs/operators';
 
 export function tuiStopPropagation<T extends Event>(): MonoTypeOperatorFunction<T> {

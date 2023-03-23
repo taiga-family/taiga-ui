@@ -1,5 +1,7 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
-import {TuiAppearance, TuiSizeL} from '@taiga-ui/core';
+import type {ValueProvider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
+import type {TuiSizeL} from '@taiga-ui/core';
+import {TuiAppearance} from '@taiga-ui/core';
 
 export interface TuiRadioOptions {
     readonly size: TuiSizeL;

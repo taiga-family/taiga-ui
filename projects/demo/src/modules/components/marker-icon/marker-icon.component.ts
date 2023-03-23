@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
-import {TuiMarkerIconMode} from '@taiga-ui/kit';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
+import type {TuiMarkerIconMode} from '@taiga-ui/kit';
 
 @Component({
     selector: 'example-tui-marker-icon',

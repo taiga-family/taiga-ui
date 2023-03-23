@@ -1,4 +1,4 @@
-import {AccountCard} from './models';
+import type {AccountCard} from './models';
 
 export const MOCK_CARDS: AccountCard[] = [
     {

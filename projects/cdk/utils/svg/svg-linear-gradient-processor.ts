@@ -1,4 +1,4 @@
-import {SafeHtml} from '@angular/platform-browser';
+import type {SafeHtml} from '@angular/platform-browser';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**

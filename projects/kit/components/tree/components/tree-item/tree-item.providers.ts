@@ -1,4 +1,5 @@
-import {forwardRef, Provider, SkipSelf} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {forwardRef, SkipSelf} from '@angular/core';
 
 // TODO: find the best way for prevent cycle
 // eslint-disable-next-line import/no-cycle

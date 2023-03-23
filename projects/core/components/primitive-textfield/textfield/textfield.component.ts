@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component, ElementRef, Inject} from '@angular/core';
 import {TuiIdService} from '@taiga-ui/cdk';
+import type {TuiTextfieldController} from '@taiga-ui/core/directives';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    TuiTextfieldController,
 } from '@taiga-ui/core/directives';
-import {TuiTextfieldHost} from '@taiga-ui/core/interfaces';
+import type {TuiTextfieldHost} from '@taiga-ui/core/interfaces';
 import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
 
 @Component({

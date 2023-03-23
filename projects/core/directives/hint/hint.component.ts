@@ -1,4 +1,4 @@
-import {AnimationOptions} from '@angular/animations';
+import type {AnimationOptions} from '@angular/animations';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,9 +9,9 @@ import {
     Optional,
     Self,
 } from '@angular/core';
+import type {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {
     tuiClamp,
-    TuiContextWithImplicit,
     TuiDestroyService,
     TuiHoveredService,
     tuiPure,
@@ -24,12 +24,13 @@ import {
 } from '@taiga-ui/core/abstract';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
-import {TuiPortalItem} from '@taiga-ui/core/interfaces';
+import type {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
-import {TuiPoint} from '@taiga-ui/core/types';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {TuiPoint} from '@taiga-ui/core/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
 // eslint-disable-next-line import/no-cycle

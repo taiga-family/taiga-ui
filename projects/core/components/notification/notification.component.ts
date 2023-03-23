@@ -8,12 +8,9 @@ import {
     Output,
 } from '@angular/core';
 import {tuiDefaultProp, tuiIsObserved} from '@taiga-ui/cdk';
-import {
-    TUI_CLOSE_WORD,
-    TUI_NOTIFICATION_OPTIONS,
-    TuiNotificationDefaultOptions,
-} from '@taiga-ui/core/tokens';
-import {Observable} from 'rxjs';
+import type {TuiNotificationDefaultOptions} from '@taiga-ui/core/tokens';
+import {TUI_CLOSE_WORD, TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/tokens';
+import type {Observable} from 'rxjs';
 
 export const STATUS_ICON = {
     info: 'tuiIconInfo',

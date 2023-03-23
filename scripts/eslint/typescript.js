@@ -10,6 +10,14 @@ module.exports = {
             parser: '@typescript-eslint/parser',
             plugins: ['@typescript-eslint'],
             rules: {
+                '@typescript-eslint/consistent-type-imports': [
+                    'error',
+                    {
+                        prefer: `type-imports`,
+                        disallowTypeAnnotations: false,
+                        fixStyle: `separate-type-imports`,
+                    },
+                ],
                 '@typescript-eslint/prefer-string-starts-ends-with': 'error',
                 '@typescript-eslint/no-unnecessary-type-assertion': 'error',
                 '@typescript-eslint/prefer-for-of': 'error',

@@ -16,21 +16,23 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TUI_CARD_MASK, tuiDefaultCardValidator} from '@taiga-ui/addon-commerce/constants';
-import {TuiCard} from '@taiga-ui/addon-commerce/interfaces';
-import {TuiCodeCVCLength, TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import type {TuiCard} from '@taiga-ui/addon-commerce/interfaces';
+import type {TuiCodeCVCLength, TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {
     tuiCreateAutoCorrectedExpirePipe,
     tuiGetPaymentSystem,
 } from '@taiga-ui/addon-commerce/utils';
+import type {
+    TuiAutofillFieldName,
+    TuiBooleanHandler,
+    TuiFocusableElementAccessor,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiAutofillFieldName,
     TuiAutoFocusDirective,
-    TuiBooleanHandler,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiIsElement,
     tuiIsInput,
     tuiIsNativeFocused,
@@ -38,6 +40,12 @@ import {
     tuiPure,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
+import type {
+    TuiBrightness,
+    TuiDataListHost,
+    TuiTextfieldController,
+    TuiTextMaskOptions,
+} from '@taiga-ui/core';
 import {
     MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
@@ -46,20 +54,14 @@ import {
     TUI_NON_DIGIT_REGEXP,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiAsDataListHost,
-    TuiBrightness,
     TuiDataListComponent,
     TuiDataListDirective,
-    TuiDataListHost,
-    TuiTextfieldController,
-    TuiTextMaskOptions,
 } from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 
-import {
-    TUI_INPUT_CARD_GROUPED_TEXTS,
-    TuiCardGroupedTexts,
-} from './input-card-grouped.providers';
+import type {TuiCardGroupedTexts} from './input-card-grouped.providers';
+import {TUI_INPUT_CARD_GROUPED_TEXTS} from './input-card-grouped.providers';
 
 const STUB: TuiCard = {
     card: '',

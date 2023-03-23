@@ -1,11 +1,11 @@
-import {AnimationOptions} from '@angular/animations';
+import type {AnimationOptions} from '@angular/animations';
+import type {OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
     HostBinding,
     Inject,
-    OnDestroy,
     Optional,
     Self,
 } from '@angular/core';
@@ -25,15 +25,16 @@ import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
 import {TuiDropdownAnimation} from '@taiga-ui/core/enums';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
-import {TuiPoint} from '@taiga-ui/core/types';
-import {Observable} from 'rxjs';
+import type {TuiPoint} from '@taiga-ui/core/types';
+import type {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
 // TODO: find the best way for prevent cycle
 // eslint-disable-next-line import/no-cycle
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TuiDropdownHoverDirective} from './dropdown-hover.directive';
-import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.directive';
+import type {TuiDropdownOptions} from './dropdown-options.directive';
+import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
 
 /**
  * @description:

@@ -1,8 +1,8 @@
-import {UpdateRecorder} from '@angular-devkit/schematics';
-import {DevkitFileSystem} from 'ng-morph';
+import type {UpdateRecorder} from '@angular-devkit/schematics';
+import type {DevkitFileSystem} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../../constants';
-import {TuiSchema} from '../../../ng-add/schema';
+import type {TuiSchema} from '../../../ng-add/schema';
 import {
     infoLog,
     REPLACE_SYMBOL,
@@ -18,7 +18,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
-import {TemplateResource} from '../../interfaces/template-resourse';
+import type {TemplateResource} from '../../interfaces/template-resourse';
 
 export function migrateExpandTemplates(
     fileSystem: DevkitFileSystem,

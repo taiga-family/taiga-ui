@@ -1,9 +1,9 @@
-import {AnimationOptions} from '@angular/animations';
+import type {AnimationOptions} from '@angular/animations';
 import {DOCUMENT} from '@angular/common';
+import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     Inject,
     NgZone,
     Optional,
@@ -13,8 +13,8 @@ import {tuiZoneOptimized} from '@taiga-ui/cdk';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_ANIMATION_OPTIONS, TUI_MODE, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {TuiBrightness} from '@taiga-ui/core/types';
-import {Observable} from 'rxjs';
+import type {TuiBrightness} from '@taiga-ui/core/types';
+import type {Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith, throttleTime} from 'rxjs/operators';
 
 @Component({

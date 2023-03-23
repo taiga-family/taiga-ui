@@ -1,7 +1,7 @@
 import {Directive, Inject, Self} from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {AbstractTuiDriverDirective, TuiDriver, TuiVehicle} from '@taiga-ui/core/abstract';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 @Directive({
     selector: '[tuiHint]',

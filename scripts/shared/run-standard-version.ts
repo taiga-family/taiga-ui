@@ -1,5 +1,5 @@
 import {execute} from './execute';
-import {TuiReleaseMode} from './release-mode';
+import type {TuiReleaseMode} from './release-mode';
 
 export function runStandardVersion(
     version: string,

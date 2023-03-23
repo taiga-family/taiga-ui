@@ -1,7 +1,8 @@
-import {Inject, Pipe, PipeTransform} from '@angular/core';
-import {TuiMonth} from '@taiga-ui/cdk';
+import type {PipeTransform} from '@angular/core';
+import {Inject, Pipe} from '@angular/core';
+import type {TuiMonth} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core/tokens';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Pipe({name: `tuiMonth`})

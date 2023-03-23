@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import type {Routes} from '@angular/router';
+import {RouterModule} from '@angular/router';
 
 import {GettingStartedComponent} from './getting-started/getting-started.component';
 import {LandingComponent} from './landing/landing.component';

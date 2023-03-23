@@ -1,4 +1,4 @@
-import {Config} from 'jest';
+import type {Config} from 'jest';
 import {resolve} from 'path';
 import {pathsToModuleNameMapper} from 'ts-jest';
 

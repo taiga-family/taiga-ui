@@ -6,10 +6,11 @@ import {
     Input,
 } from '@angular/core';
 import {TUI_ALWAYS_DASHED, TUI_ALWAYS_SOLID} from '@taiga-ui/addon-charts/constants';
-import {TuiLineHandler, TuiLineType} from '@taiga-ui/addon-charts/types';
+import type {TuiLineHandler, TuiLineType} from '@taiga-ui/addon-charts/types';
 import {CHAR_NO_BREAK_SPACE, tuiDefaultProp} from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import type {TuiBrightness} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE} from '@taiga-ui/core';
+import type {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-axes',

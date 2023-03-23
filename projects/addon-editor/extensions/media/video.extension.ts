@@ -1,6 +1,6 @@
 import {tuiGetNestedNodes, tuiParseNodeAttributes} from '@taiga-ui/addon-editor/utils';
 import {Node} from '@tiptap/core';
-import {MarkSpec} from 'prosemirror-model';
+import type {MarkSpec} from 'prosemirror-model';
 
 export const TuiVideo = Node.create({
     name: `video`,

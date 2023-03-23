@@ -12,19 +12,21 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
+import type {
+    TuiContextWithImplicit,
+    TuiFocusableElementAccessor,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
 import {
     TuiActiveZoneDirective,
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiGetClosestFocusable,
     tuiIsElement,
     tuiIsElementEditable,
     tuiIsHTMLElement,
     tuiIsNativeFocusedIn,
     tuiIsNativeKeyboardFocusable,
-    TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
     TuiDropdownDirective,
@@ -32,7 +34,7 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, EMPTY, merge} from 'rxjs';
 import {distinctUntilChanged, skip} from 'rxjs/operators';
 

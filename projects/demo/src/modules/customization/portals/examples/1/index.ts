@@ -1,4 +1,5 @@
-import {Component, EmbeddedViewRef, Inject, TemplateRef} from '@angular/core';
+import type {EmbeddedViewRef, TemplateRef} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 
 import {CustomPortalService} from './portal/custom-portal.service';

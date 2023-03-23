@@ -5,12 +5,13 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {SafeResourceUrl} from '@angular/platform-browser';
+import type {SafeResourceUrl} from '@angular/platform-browser';
 import {tuiDefaultProp, tuiIsString, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {tuiSizeBigger} from '@taiga-ui/core';
 import {tuiStringHashToHsl} from '@taiga-ui/kit/utils/format';
 
-import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar-options';
+import type {TuiAvatarOptions} from './avatar-options';
+import {TUI_AVATAR_OPTIONS} from './avatar-options';
 
 @Component({
     selector: 'tui-avatar',

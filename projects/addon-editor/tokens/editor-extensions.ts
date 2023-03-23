@@ -1,6 +1,6 @@
 import {InjectionToken} from '@angular/core';
-import {Extension, Mark, Node} from '@tiptap/core';
-import {Observable} from 'rxjs';
+import type {Extension, Mark, Node} from '@tiptap/core';
+import type {Observable} from 'rxjs';
 
 /**
  * Extensions for editor

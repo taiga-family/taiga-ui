@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSwipe} from '@taiga-ui/cdk';
+import type {TuiSwipe} from '@taiga-ui/cdk';
 import {Subject} from 'rxjs';
 
 @Component({

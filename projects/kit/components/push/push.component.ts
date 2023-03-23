@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {tuiDefaultProp, tuiIsObserved} from '@taiga-ui/cdk';
 import {TUI_CLOSE_WORD} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-push',

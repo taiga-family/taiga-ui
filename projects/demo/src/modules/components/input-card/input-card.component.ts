@@ -1,9 +1,11 @@
 import {Component, forwardRef, Inject} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiCodeCVCLength, tuiCreateLuhnValidator} from '@taiga-ui/addon-commerce';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiAlertService, TuiHintOptions} from '@taiga-ui/core';
+import type {TuiCodeCVCLength} from '@taiga-ui/addon-commerce';
+import {tuiCreateLuhnValidator} from '@taiga-ui/addon-commerce';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiHintOptions} from '@taiga-ui/core';
+import {TuiAlertService} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';

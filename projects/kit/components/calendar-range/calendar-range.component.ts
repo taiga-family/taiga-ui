@@ -10,33 +10,27 @@ import {
     Output,
     Self,
 } from '@angular/core';
+import type {TuiBooleanHandler, TuiDay, TuiDayLike, TuiMapper} from '@taiga-ui/cdk';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiBooleanHandler,
-    TuiDay,
-    TuiDayLike,
     TuiDayRange,
     tuiDefaultProp,
     TuiDestroyService,
     tuiIsString,
-    TuiMapper,
     TuiMonth,
     tuiNullableSame,
     tuiObjectFromEntries,
     tuiPure,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import {
-    TUI_DEFAULT_MARKER_HANDLER,
-    TuiMarkerHandler,
-    TuiWithOptionalMinMax,
-} from '@taiga-ui/core';
-import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
+import type {TuiMarkerHandler, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core';
+import type {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 import {MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
 import {TUI_CALENDAR_DATE_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({

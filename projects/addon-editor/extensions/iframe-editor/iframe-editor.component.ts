@@ -1,14 +1,12 @@
 import {DOCUMENT} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Inject, Self} from '@angular/core';
-import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import type {SafeResourceUrl} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {AbstractTuiEditorResizable} from '@taiga-ui/addon-editor/components/editor-resizable';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 
-import {
-    TUI_IFRAME_EDITOR_OPTIONS,
-    TuiEditableIframe,
-    TuiEditableIframeOptions,
-} from './iframe-editor.options';
+import type {TuiEditableIframe, TuiEditableIframeOptions} from './iframe-editor.options';
+import {TUI_IFRAME_EDITOR_OPTIONS} from './iframe-editor.options';
 
 @Component({
     selector: 'tui-iframe-editor',

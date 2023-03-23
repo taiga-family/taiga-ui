@@ -1,7 +1,7 @@
+import type {TuiTextfieldOptions} from '@taiga-ui/core/directives';
 import {
     TUI_TEXTFIELD_DEFAULT_OPTIONS,
     TUI_TEXTFIELD_OPTIONS,
-    TuiTextfieldOptions,
     tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core/directives';
 

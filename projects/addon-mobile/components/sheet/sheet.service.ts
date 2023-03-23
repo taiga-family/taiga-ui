@@ -1,9 +1,10 @@
 import {Inject, Injectable} from '@angular/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, EMPTY, Observable} from 'rxjs';
 
-import {TuiSheet} from './sheet';
-import {TUI_SHEET_OPTIONS, TuiSheetOptions} from './sheet-options';
+import type {TuiSheet} from './sheet';
+import type {TuiSheetOptions} from './sheet-options';
+import {TUI_SHEET_OPTIONS} from './sheet-options';
 
 @Injectable({
     providedIn: `root`,

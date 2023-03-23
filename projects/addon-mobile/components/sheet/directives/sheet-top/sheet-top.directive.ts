@@ -1,10 +1,10 @@
 import {Directive, Inject, Input} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiClamp, tuiDefaultProp} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {TuiSheetRequiredProps} from '../../sheet';
+import type {TuiSheetRequiredProps} from '../../sheet';
 import {TUI_SHEET, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 
 // So that borders get rounded when image is visible for at least 10px

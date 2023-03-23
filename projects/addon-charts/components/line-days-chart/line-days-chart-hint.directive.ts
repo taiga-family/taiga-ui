@@ -1,28 +1,27 @@
+import type {AfterContentInit, QueryList} from '@angular/core';
 import {
-    AfterContentInit,
     ContentChildren,
     Directive,
     forwardRef,
     Inject,
     Input,
     NgZone,
-    QueryList,
     Self,
 } from '@angular/core';
 import {tuiLineChartDrivers} from '@taiga-ui/addon-charts/components/line-chart';
+import type {TuiContextWithImplicit, TuiDay} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
-    TuiContextWithImplicit,
-    TuiDay,
     tuiDefaultProp,
     TuiDestroyService,
     TuiHoveredService,
     tuiPure,
     tuiZonefree,
 } from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {combineLatest, Observable} from 'rxjs';
+import type {TuiPoint} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
+import {combineLatest} from 'rxjs';
 import {filter, takeUntil} from 'rxjs/operators';
 
 // TODO: find the best way for prevent cycle

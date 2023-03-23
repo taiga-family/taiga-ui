@@ -1,6 +1,7 @@
-import {InjectionToken, Provider, Type} from '@angular/core';
-import {TuiAriaDialogContext} from '@taiga-ui/cdk/interfaces';
-import {Observable} from 'rxjs';
+import type {Provider, Type} from '@angular/core';
+import {InjectionToken} from '@angular/core';
+import type {TuiAriaDialogContext} from '@taiga-ui/cdk/interfaces';
+import type {Observable} from 'rxjs';
 
 /**
  * A stream of alerts

@@ -1,5 +1,5 @@
 import {tuiClamp} from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
+import type {TuiPoint} from '@taiga-ui/core';
 
 export function tuiGetElementPoint(x: number, y: number, element: HTMLElement): TuiPoint {
     const {left, top, width, height} = element.getBoundingClientRect();

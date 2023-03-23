@@ -1,4 +1,4 @@
-import {TuiHorizontalDirection} from '@taiga-ui/core';
+import type {TuiHorizontalDirection} from '@taiga-ui/core';
 
 /**
  * @internal

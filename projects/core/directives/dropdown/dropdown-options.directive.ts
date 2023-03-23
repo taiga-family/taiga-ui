@@ -1,6 +1,6 @@
+import type {FactoryProvider} from '@angular/core';
 import {
     Directive,
-    FactoryProvider,
     forwardRef,
     Inject,
     InjectionToken,
@@ -9,7 +9,7 @@ import {
     SkipSelf,
 } from '@angular/core';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
-import {
+import type {
     TuiDropdownWidth,
     TuiHorizontalDirection,
     TuiVerticalDirection,

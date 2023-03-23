@@ -1,11 +1,8 @@
-import {inject, InjectionToken, ValueProvider} from '@angular/core';
-import {SafeHtml} from '@angular/platform-browser';
-import {
-    TuiHandler,
-    tuiIsString,
-    TuiStringHandler,
-    tuiSvgLinearGradientProcessor,
-} from '@taiga-ui/cdk';
+import type {ValueProvider} from '@angular/core';
+import {inject, InjectionToken} from '@angular/core';
+import type {SafeHtml} from '@angular/platform-browser';
+import type {TuiHandler, TuiStringHandler} from '@taiga-ui/cdk';
+import {tuiIsString, tuiSvgLinearGradientProcessor} from '@taiga-ui/cdk';
 import {
     TUI_ICONS_PATH,
     TUI_SVG_CONTENT_PROCESSOR,

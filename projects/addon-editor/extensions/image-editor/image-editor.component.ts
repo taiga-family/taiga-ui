@@ -6,16 +6,16 @@ import {
     Inject,
     Self,
 } from '@angular/core';
-import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import type {SafeResourceUrl} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {AbstractTuiEditorResizable} from '@taiga-ui/addon-editor/components/editor-resizable';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 
+import type {TuiEditableImage, TuiImageEditorOptions} from './image-editor.options';
 import {
     TUI_EDITOR_MAX_IMAGE_WIDTH,
     TUI_EDITOR_MIN_IMAGE_WIDTH,
     TUI_IMAGE_EDITOR_OPTIONS,
-    TuiEditableImage,
-    TuiImageEditorOptions,
 } from './image-editor.options';
 
 @Component({

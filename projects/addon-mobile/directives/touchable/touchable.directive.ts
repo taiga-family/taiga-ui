@@ -7,7 +7,7 @@ import {
     Renderer2,
     Self,
 } from '@angular/core';
-import {TuiTouchMode} from '@taiga-ui/addon-mobile/types';
+import type {TuiTouchMode} from '@taiga-ui/addon-mobile/types';
 import {tuiFindTouchIndex} from '@taiga-ui/addon-mobile/utils';
 import {
     TUI_IS_IOS,

@@ -8,9 +8,9 @@ import {
     Output,
 } from '@angular/core';
 import {tuiClamp, tuiDefaultProp} from '@taiga-ui/cdk';
-import {TuiLanguageKit} from '@taiga-ui/i18n';
+import type {TuiLanguageKit} from '@taiga-ui/i18n';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-preview-pagination',

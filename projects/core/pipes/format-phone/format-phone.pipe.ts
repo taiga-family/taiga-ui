@@ -1,4 +1,5 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import type {PipeTransform} from '@angular/core';
+import {Pipe} from '@angular/core';
 import {CHAR_PLUS, tuiAssert} from '@taiga-ui/cdk';
 import {tuiFormatPhone} from '@taiga-ui/core/utils/format';
 

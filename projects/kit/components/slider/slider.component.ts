@@ -19,13 +19,14 @@ import {
     tuiPure,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import {TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeS} from '@taiga-ui/core';
 import {take} from 'rxjs/operators';
 
 // TODO: find the best way for prevent cycle
 // eslint-disable-next-line import/no-cycle
 import {TuiSliderKeyStepsDirective} from './helpers/slider-key-steps.directive';
-import {TUI_SLIDER_OPTIONS, TuiSliderOptions} from './slider-options';
+import type {TuiSliderOptions} from './slider-options';
+import {TUI_SLIDER_OPTIONS} from './slider-options';
 
 @Component({
     /**

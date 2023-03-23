@@ -1,5 +1,7 @@
-import {Inject, Pipe, PipeTransform} from '@angular/core';
-import {TUI_SVG_OPTIONS, TuiSvgOptions} from '@taiga-ui/core/components/svg';
+import type {PipeTransform} from '@angular/core';
+import {Inject, Pipe} from '@angular/core';
+import type {TuiSvgOptions} from '@taiga-ui/core/components/svg';
+import {TUI_SVG_OPTIONS} from '@taiga-ui/core/components/svg';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 
 @Pipe({name: `tuiFlag`})

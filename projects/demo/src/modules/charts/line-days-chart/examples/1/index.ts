@@ -1,17 +1,10 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TUI_IS_CYPRESS,
-    TuiDay,
-    TuiDayLike,
-    TuiDayRange,
-    TuiMonth,
-    tuiPure,
-    TuiStringHandler,
-} from '@taiga-ui/cdk';
+import type {TuiDayLike, TuiStringHandler} from '@taiga-ui/cdk';
+import {TUI_IS_CYPRESS, TuiDay, TuiDayRange, TuiMonth, tuiPure} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({

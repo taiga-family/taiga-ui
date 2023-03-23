@@ -1,4 +1,5 @@
-import {Component, Inject, InjectionToken, Type} from '@angular/core';
+import type {Type} from '@angular/core';
+import {Component, Inject, InjectionToken} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 
 import {HomeComponent} from '../home/home.component';

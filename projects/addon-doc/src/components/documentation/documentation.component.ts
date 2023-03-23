@@ -1,20 +1,19 @@
 import {animate, style, transition, trigger} from '@angular/animations';
+import type {AfterContentInit, QueryList} from '@angular/core';
 import {
-    AfterContentInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ContentChildren,
     Inject,
     Input,
-    QueryList,
     Self,
 } from '@angular/core';
+import type {TuiMatcher} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
     TuiDestroyService,
     tuiHexToRgb,
-    TuiMatcher,
     tuiQueryListChanges,
     tuiWatch,
 } from '@taiga-ui/cdk';

@@ -1,4 +1,5 @@
 import {Location} from '@angular/common';
+import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,12 +9,14 @@ import {
     HostListener,
     Inject,
     Input,
-    OnInit,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {AbstractControl, FormGroup} from '@angular/forms';
-import {UrlSerializer, UrlTree} from '@angular/router';
+import type {AbstractControl} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
+import type {UrlTree} from '@angular/router';
+import {UrlSerializer} from '@angular/router';
+import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {
     TUI_IS_MOBILE,
     tuiClamp,
@@ -21,9 +24,9 @@ import {
     tuiPure,
     tuiPx,
     TuiResizeableDirective,
-    TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
+import type {TuiBrightness} from '@taiga-ui/core';
+import {TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
 import {TUI_DOC_DEMO_TEXTS} from '../../tokens/i18n';

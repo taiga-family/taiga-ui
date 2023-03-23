@@ -1,13 +1,9 @@
-import {
-    createProject,
-    DevkitFileSystem,
-    saveActiveProject,
-    setActiveProject,
-} from 'ng-morph';
-import {Element} from 'parse5';
+import type {DevkitFileSystem} from 'ng-morph';
+import {createProject, saveActiveProject, setActiveProject} from 'ng-morph';
+import type {Element} from 'parse5';
 
 import {ALL_FILES, ALL_TS_FILES} from '../../../constants';
-import {TuiSchema} from '../../../ng-add/schema';
+import type {TuiSchema} from '../../../ng-add/schema';
 import {
     infoLog,
     REPLACE_SYMBOL,
@@ -23,7 +19,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
-import {TemplateResource} from '../../interfaces/template-resourse';
+import type {TemplateResource} from '../../interfaces/template-resourse';
 
 export const DEPRECATED_PROGRESS_PIPES_REG =
     // eslint-disable-next-line unicorn/no-unsafe-regex

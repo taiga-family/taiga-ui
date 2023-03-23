@@ -1,6 +1,6 @@
 import {CHAR_HYPHEN} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_NUMBER_FORMAT} from '@taiga-ui/core/constants';
-import {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
+import type {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
 
 import {tuiGetFractionPartPadded} from './get-fractional-part-padded';
 

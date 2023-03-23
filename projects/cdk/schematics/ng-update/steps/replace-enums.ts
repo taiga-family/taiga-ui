@@ -1,6 +1,7 @@
-import {ImportSpecifier, Node, VariableDeclaration} from 'ng-morph';
+import type {ImportSpecifier, VariableDeclaration} from 'ng-morph';
+import {Node} from 'ng-morph';
 
-import {TuiSchema} from '../../ng-add/schema';
+import type {TuiSchema} from '../../ng-add/schema';
 import {
     infoLog,
     REPLACE_SYMBOL,
@@ -10,7 +11,7 @@ import {
 } from '../../utils/colored-log';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {removeImport} from '../../utils/import-manipulations';
-import {ReplacementEnum} from '../interfaces/replacement-enum';
+import type {ReplacementEnum} from '../interfaces/replacement-enum';
 
 export function replaceEnums(options: TuiSchema, enums: ReplacementEnum[]): void {
     !options[`skip-logs`] &&

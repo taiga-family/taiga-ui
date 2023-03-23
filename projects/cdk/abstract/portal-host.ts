@@ -1,17 +1,15 @@
+import type {ComponentRef, EmbeddedViewRef, TemplateRef} from '@angular/core';
 import {
     ComponentFactoryResolver,
-    ComponentRef,
     Directive,
     ElementRef,
-    EmbeddedViewRef,
     Inject,
     INJECTOR,
     Injector,
-    TemplateRef,
     ViewChild,
     ViewContainerRef,
 } from '@angular/core';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 // TODO: find the best way for prevent cycle
 // eslint-disable-next-line import/no-cycle

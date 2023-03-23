@@ -1,6 +1,6 @@
 import {mergeAttributes} from '@tiptap/core';
 import {Table} from '@tiptap/extension-table';
-import {Node as ProseMirrorNode} from 'prosemirror-model';
+import type {Node as ProseMirrorNode} from 'prosemirror-model';
 
 export const TuiTable = Table.extend({
     renderHTML({node, HTMLAttributes}) {

@@ -1,4 +1,5 @@
-import {TUI_SVG_DEFAULT_OPTIONS, TuiFlagPipe, TuiSvgOptions} from '@taiga-ui/core';
+import type {TuiSvgOptions} from '@taiga-ui/core';
+import {TUI_SVG_DEFAULT_OPTIONS, TuiFlagPipe} from '@taiga-ui/core';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 
 describe(`tuiFlagPipe`, () => {

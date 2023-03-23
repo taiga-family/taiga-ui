@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {EMPTY_ARRAY, TuiHandler} from '@taiga-ui/cdk';
+import type {TuiHandler} from '@taiga-ui/cdk';
+import {EMPTY_ARRAY} from '@taiga-ui/cdk';
 
 interface TreeNode {
     readonly text: string;

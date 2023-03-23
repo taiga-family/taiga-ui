@@ -2,8 +2,9 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiFileLike} from '@taiga-ui/kit';
-import {Observable, of, Subject, timer} from 'rxjs';
+import type {TuiFileLike} from '@taiga-ui/kit';
+import type {Observable} from 'rxjs';
+import {of, Subject, timer} from 'rxjs';
 import {finalize, map, switchMap} from 'rxjs/operators';
 
 @Component({

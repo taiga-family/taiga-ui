@@ -7,21 +7,18 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {DomSanitizer, SafeValue} from '@angular/platform-browser';
-import {
-    TUI_IS_MOBILE,
-    tuiDefaultProp,
-    TuiInjectionTokenType,
-    tuiIsObserved,
-    tuiPure,
-} from '@taiga-ui/cdk';
-import {TuiSizeL} from '@taiga-ui/core';
-import {TuiLanguage} from '@taiga-ui/i18n';
-import {TuiFileLike} from '@taiga-ui/kit/interfaces';
+import type {SafeValue} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
+import type {TuiInjectionTokenType} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, tuiDefaultProp, tuiIsObserved, tuiPure} from '@taiga-ui/cdk';
+import type {TuiSizeL} from '@taiga-ui/core';
+import type {TuiLanguage} from '@taiga-ui/i18n';
+import type {TuiFileLike} from '@taiga-ui/kit/interfaces';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
-import {TuiFileState} from '@taiga-ui/kit/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable, of} from 'rxjs';
+import type {TuiFileState} from '@taiga-ui/kit/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
+import {of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {TUI_FILE_OPTIONS} from './file-options';

@@ -1,7 +1,8 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {ALWAYS_FALSE_HANDLER, TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
-import {Observable, Subject, timer} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {Subject, timer} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
 
 const COPIED_TIMEOUT = 1500;

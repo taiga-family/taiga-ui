@@ -9,8 +9,8 @@ import {
 } from '@angular/core';
 import {TuiPickerService} from '@taiga-ui/addon-editor/services';
 import {tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import type {TuiPoint} from '@taiga-ui/core';
+import type {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-linear-multi-picker',

@@ -1,24 +1,24 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ContentChild,
     ContentChildren,
     Inject,
-    QueryList,
     TemplateRef,
 } from '@angular/core';
 import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
+import type {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
-    TuiContextWithImplicit,
     TuiDestroyService,
     TuiItemDirective,
     TuiResizeService,
 } from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 import {TuiItemsWithMoreDirective} from './items-with-more.directive';
 import {TuiItemsWithMoreService} from './items-with-more.service';

@@ -10,26 +10,30 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiContextWithImplicit,
+    TuiFocusableElementAccessor,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
-    TuiContextWithImplicit,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiIsNativeFocused,
-    TuiNativeFocusableElement,
     tuiPure,
     tuiRound,
 } from '@taiga-ui/cdk';
+import type {
+    TuiDecimal,
+    TuiTextfieldController,
+    TuiWithOptionalMinMax,
+} from '@taiga-ui/core';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    TuiDecimal,
     tuiGetFractionPartPadded,
-    TuiTextfieldController,
-    TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiInputNumberComponent} from '@taiga-ui/kit/components/input-number';
 import {
@@ -37,8 +41,8 @@ import {
     tuiSliderOptionsProvider,
 } from '@taiga-ui/kit/components/slider';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
-import {TuiKeySteps} from '@taiga-ui/kit/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiKeySteps} from '@taiga-ui/kit/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     selector: 'tui-input-slider',

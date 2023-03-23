@@ -9,23 +9,24 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
+import type {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
+import type {
+    TuiAutofillFieldName,
+    TuiFocusableElementAccessor,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiAutofillFieldName,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
-    TuiNativeFocusableElement,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
+import type {TuiTextfieldLabelOutsideDirective, TuiTextMaskOptions} from '@taiga-ui/core';
 import {
     TUI_DIGIT_REGEXP,
     TUI_TEXTFIELD_LABEL_OUTSIDE,
     TuiPrimitiveTextfieldComponent,
-    TuiTextfieldLabelOutsideDirective,
-    TuiTextMaskOptions,
 } from '@taiga-ui/core';
 
 @Component({

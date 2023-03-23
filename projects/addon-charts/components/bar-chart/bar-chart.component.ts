@@ -1,30 +1,18 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     Inject,
     Input,
     Optional,
-    QueryList,
     ViewChildren,
 } from '@angular/core';
-import {
-    EMPTY_QUERY,
-    TuiContextWithImplicit,
-    tuiDefaultProp,
-    TuiIdService,
-    TuiMapper,
-    tuiPure,
-    tuiSum,
-} from '@taiga-ui/cdk';
-import {
-    TuiDriver,
-    TuiHintOptionsDirective,
-    tuiHintOptionsProvider,
-    TuiSizeL,
-    TuiSizeS,
-} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {TuiContextWithImplicit, TuiMapper} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, tuiDefaultProp, TuiIdService, tuiPure, tuiSum} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiDriver, TuiHintOptionsDirective, tuiHintOptionsProvider} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 
 function valueAssertion(value: ReadonlyArray<readonly number[]>): boolean {
     const valid = value.every(array => array.length === value[0].length);

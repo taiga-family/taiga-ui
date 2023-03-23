@@ -1,4 +1,4 @@
-import {RemovedModule} from '../../interfaces/removed-module';
+import type {RemovedModule} from '../../interfaces/removed-module';
 
 export const REMOVED_MODULES: readonly RemovedModule[] = [
     {name: `TuiResizableColumnModule`, moduleSpecifier: `@taiga-ui/addon-table`},

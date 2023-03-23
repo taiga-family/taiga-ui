@@ -1,6 +1,6 @@
-import {Type} from '@angular/core';
-import {Route} from '@angular/router';
-import {TuiDialogOptions} from '@taiga-ui/core';
+import type {Type} from '@angular/core';
+import type {Route} from '@angular/router';
+import type {TuiDialogOptions} from '@taiga-ui/core';
 
 import {TuiRoutableDialogComponent} from './routable-dialog.component';
 

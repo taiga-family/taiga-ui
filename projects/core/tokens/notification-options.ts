@@ -1,6 +1,7 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
+import type {ValueProvider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import {TuiNotification} from '@taiga-ui/core/enums';
-import {TuiAlertOptions} from '@taiga-ui/core/interfaces';
+import type {TuiAlertOptions} from '@taiga-ui/core/interfaces';
 
 export interface TuiNotificationDefaultOptions
     extends Omit<TuiAlertOptions<unknown>, 'data'> {

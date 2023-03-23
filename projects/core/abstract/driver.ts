@@ -1,4 +1,4 @@
-import {ExistingProvider, Type} from '@angular/core';
+import type {ExistingProvider, Type} from '@angular/core';
 import {Observable} from 'rxjs';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

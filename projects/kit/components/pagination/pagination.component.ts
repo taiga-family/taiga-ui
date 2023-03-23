@@ -1,3 +1,4 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,33 +8,33 @@ import {
     Input,
     Optional,
     Output,
-    QueryList,
     ViewChildren,
 } from '@angular/core';
+import type {
+    TuiContextWithImplicit,
+    TuiFocusableElementAccessor,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiInteractive,
     EMPTY_QUERY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiAsFocusableItemAccessor,
     tuiClamp,
-    TuiContextWithImplicit,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiIsNativeFocusedIn,
-    TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {
-    TuiAppearance,
+import type {
     TuiBrightness,
     TuiButtonComponent,
     TuiHorizontalDirection,
-    TuiModeDirective,
     TuiSizeS,
 } from '@taiga-ui/core';
+import {TuiAppearance, TuiModeDirective} from '@taiga-ui/core';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiHorizontalDirectionToNumber} from '@taiga-ui/kit/utils/math';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 
 const DOTS_LENGTH = 1;
 const ACTIVE_ITEM_LENGTH = 1;

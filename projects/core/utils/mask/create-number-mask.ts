@@ -5,8 +5,8 @@ import {
     TUI_LEADING_ZEROES_REGEXP,
     TUI_NON_DIGITS_REGEXP,
 } from '@taiga-ui/core/constants';
-import {TuiNumberMaskOptions, TuiTextMaskListHandler} from '@taiga-ui/core/mask';
-import {TuiDecimalSymbol} from '@taiga-ui/core/types';
+import type {TuiNumberMaskOptions, TuiTextMaskListHandler} from '@taiga-ui/core/mask';
+import type {TuiDecimalSymbol} from '@taiga-ui/core/types';
 import {tuiOtherDecimalSymbol} from '@taiga-ui/core/utils/format';
 
 const NON_ZERO_DIGIT = /[1-9]/;

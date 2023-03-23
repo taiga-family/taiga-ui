@@ -2,8 +2,8 @@ import {Directive, HostBinding, Inject, Input} from '@angular/core';
 import {TuiInteractiveState} from '@taiga-ui/core/enums';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiBrightness} from '@taiga-ui/core/types';
-import {Observable} from 'rxjs';
+import type {TuiBrightness} from '@taiga-ui/core/types';
+import type {Observable} from 'rxjs';
 
 @Directive({
     selector: '[tuiWrapper]',

@@ -1,6 +1,6 @@
 import {InjectionToken} from '@angular/core';
-import {TuiHandler, TuiMonth} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import type {TuiHandler, TuiMonth} from '@taiga-ui/cdk';
+import type {Observable} from 'rxjs';
 
 /**
  * A function to get localized formatted month

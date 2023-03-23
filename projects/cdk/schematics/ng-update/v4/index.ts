@@ -1,9 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/naming-convention
-import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {saveActiveProject} from 'ng-morph';
 
 import {TAIGA_VERSION} from '../../ng-add/constants/versions';
-import {TuiSchema} from '../../ng-add/schema';
+import type {TuiSchema} from '../../ng-add/schema';
 import {FINISH_SYMBOL, titleLog} from '../../utils/colored-log';
 import {getFileSystem} from '../utils/get-file-system';
 

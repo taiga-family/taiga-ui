@@ -1,11 +1,9 @@
-import {AfterViewInit, Directive, Inject, Input} from '@angular/core';
+import type {AfterViewInit} from '@angular/core';
+import {Directive, Inject, Input} from '@angular/core';
 import {tuiCoerceBooleanProperty} from '@taiga-ui/cdk/coercion';
 
-import {
-    TUI_AUTOFOCUS_HANDLER,
-    TUI_AUTOFOCUS_PROVIDERS,
-    TuiAutofocusHandler,
-} from './autofocus.options';
+import type {TuiAutofocusHandler} from './autofocus.options';
+import {TUI_AUTOFOCUS_HANDLER, TUI_AUTOFOCUS_PROVIDERS} from './autofocus.options';
 
 @Directive({
     selector: '[tuiAutoFocus]',

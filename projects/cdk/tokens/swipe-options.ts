@@ -1,5 +1,5 @@
 import {InjectionToken} from '@angular/core';
-import {TuiSwipeOptions} from '@taiga-ui/cdk/interfaces';
+import type {TuiSwipeOptions} from '@taiga-ui/cdk/interfaces';
 
 /**
  * Swipe options

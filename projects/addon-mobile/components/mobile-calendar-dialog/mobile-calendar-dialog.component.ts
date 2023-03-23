@@ -1,14 +1,8 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {
-    ALWAYS_FALSE_HANDLER,
-    TUI_FIRST_DAY,
-    TUI_LAST_DAY,
-    TuiBooleanHandler,
-    TuiDay,
-    TuiDayRange,
-} from '@taiga-ui/cdk';
-import {TuiDialogContext} from '@taiga-ui/core';
-import {TuiMobileCalendarData} from '@taiga-ui/kit';
+import type {TuiBooleanHandler, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
+import {ALWAYS_FALSE_HANDLER, TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk';
+import type {TuiDialogContext} from '@taiga-ui/core';
+import type {TuiMobileCalendarData} from '@taiga-ui/kit';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 @Component({

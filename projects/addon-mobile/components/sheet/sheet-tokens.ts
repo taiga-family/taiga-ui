@@ -1,6 +1,6 @@
 import {InjectionToken} from '@angular/core';
 
-import {TuiSheetRequiredProps} from './sheet';
+import type {TuiSheetRequiredProps} from './sheet';
 
 /**
  * Sheet main component

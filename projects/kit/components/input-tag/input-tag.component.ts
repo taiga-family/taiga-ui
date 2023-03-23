@@ -1,3 +1,4 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -10,26 +11,27 @@ import {
     Input,
     Optional,
     Output,
-    QueryList,
     Self,
     TemplateRef,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {
+    TuiActiveZoneDirective,
+    TuiBooleanHandler,
+    TuiContextWithImplicit,
+    TuiFocusableElementAccessor,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiMultipleControl,
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
     EMPTY_QUERY,
-    TuiActiveZoneDirective,
     tuiArrayRemove,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiBooleanHandler,
-    TuiContextWithImplicit,
     tuiDefaultProp,
-    TuiFocusableElementAccessor,
     tuiGetActualTarget,
     tuiGetClipboardDataText,
     tuiIsElement,
@@ -38,31 +40,35 @@ import {
     TuiScrollService,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
+import type {
+    TuiBrightness,
+    TuiDataListHost,
+    TuiSizeL,
+    TuiSizeS,
+    TuiTextfieldController,
+} from '@taiga-ui/core';
 import {
     MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_MODE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiAsDataListHost,
-    TuiBrightness,
     TuiDataListDirective,
-    TuiDataListHost,
     TuiHintOptionsDirective,
     TuiHostedDropdownComponent,
     TuiModeDirective,
     TuiScrollbarComponent,
-    TuiSizeL,
-    TuiSizeS,
-    TuiTextfieldController,
 } from '@taiga-ui/core';
-import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
+import type {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {TuiStatus} from '@taiga-ui/kit/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {merge, Observable, Subject} from 'rxjs';
+import type {TuiStatus} from '@taiga-ui/kit/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
+import {merge, Subject} from 'rxjs';
 import {filter, map, switchMap, takeUntil} from 'rxjs/operators';
 
-import {TUI_INPUT_TAG_OPTIONS, TuiInputTagOptions} from './input-tag-options';
+import type {TuiInputTagOptions} from './input-tag-options';
+import {TUI_INPUT_TAG_OPTIONS} from './input-tag-options';
 
 const EVENT_Y_TO_X_COEFFICIENT = 3;
 const TAG_SIZE_REM = {

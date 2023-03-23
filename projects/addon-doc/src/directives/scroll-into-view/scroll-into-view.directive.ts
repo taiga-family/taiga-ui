@@ -1,6 +1,7 @@
 import {Directive, ElementRef, Inject, Input, Self} from '@angular/core';
 import {TuiDestroyService, tuiGetElementObscures} from '@taiga-ui/cdk';
-import {Observable, ReplaySubject} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {ReplaySubject} from 'rxjs';
 import {debounceTime, filter, switchMap, takeUntil} from 'rxjs/operators';
 
 import {TUI_DOC_PAGE_LOADED} from '../../tokens/page-loaded';

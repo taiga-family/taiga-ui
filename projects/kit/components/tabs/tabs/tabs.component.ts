@@ -1,5 +1,5 @@
+import type {AfterViewChecked, QueryList} from '@angular/core';
 import {
-    AfterViewChecked,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -10,7 +10,6 @@ import {
     HostListener,
     Inject,
     Input,
-    QueryList,
 } from '@angular/core';
 import {
     MUTATION_OBSERVER_INIT,
@@ -23,12 +22,13 @@ import {
     tuiPure,
     TuiResizeService,
 } from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
 import {TuiTabComponent} from '../tab/tab.component';
 import {TuiTabsDirective} from '../tabs.directive';
-import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs-options';
+import type {TuiTabsOptions} from '../tabs-options';
+import {TUI_TABS_OPTIONS} from '../tabs-options';
 
 @Component({
     selector: 'tui-tabs:not([vertical]), nav[tuiTabs]:not([vertical])',

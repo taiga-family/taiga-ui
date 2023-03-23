@@ -1,7 +1,7 @@
-import {ComponentFixture} from '@angular/core/testing';
-import {FormControl} from '@angular/forms';
+import type {ComponentFixture} from '@angular/core/testing';
+import type {FormControl} from '@angular/forms';
 
-import {TuiNativeInputPO} from '../native-input.page-object';
+import type {TuiNativeInputPO} from '../native-input.page-object';
 
 interface TestParams {
     fixture: ComponentFixture<unknown>;

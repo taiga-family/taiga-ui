@@ -1,4 +1,4 @@
-import {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
+import type {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
 import {Extension} from '@tiptap/core';
 
 declare module '@tiptap/core' {

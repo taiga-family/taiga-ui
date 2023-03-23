@@ -1,16 +1,16 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
     Inject,
     Input,
-    QueryList,
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiDefaultProp, TuiItemDirective} from '@taiga-ui/cdk';
 import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-files',

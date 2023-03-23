@@ -1,10 +1,10 @@
-import {NgIfContext} from '@angular/common';
+import type {NgIfContext} from '@angular/common';
+import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ContentChild,
-    ElementRef,
     HostBinding,
     HostListener,
     Inject,

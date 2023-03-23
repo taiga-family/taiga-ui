@@ -1,4 +1,4 @@
-import {Observer, Subject} from 'rxjs';
+import type {Observer, Subject} from 'rxjs';
 
 /* In RxJS 7 All subjects now have an observed property */
 type SubjectRxJS7plus<T> = Subject<T> & {observed: boolean};

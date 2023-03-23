@@ -1,5 +1,7 @@
-import {Component, ElementRef} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ElementRef} from '@angular/core';
+import {Component} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';

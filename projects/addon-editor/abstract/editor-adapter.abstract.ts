@@ -5,7 +5,8 @@ import type {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
 import type {Editor, Range} from '@tiptap/core';
 import type {MarkType} from '@tiptap/pm/model';
 import type {EditorState} from 'prosemirror-state';
-import {Observable, Subject} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {Subject} from 'rxjs';
 
 @Directive()
 export abstract class AbstractTuiEditor {

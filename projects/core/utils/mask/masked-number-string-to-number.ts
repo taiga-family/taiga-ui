@@ -1,4 +1,4 @@
-import {TuiDecimalSymbol} from '@taiga-ui/core/types';
+import type {TuiDecimalSymbol} from '@taiga-ui/core/types';
 
 export function tuiMaskedNumberStringToNumber(
     value: string,

@@ -1,4 +1,5 @@
-import {Directive, ElementRef, Inject, OnInit} from '@angular/core';
+import type {OnInit} from '@angular/core';
+import {Directive, ElementRef, Inject} from '@angular/core';
 import {TUI_SCROLLABLE} from '@taiga-ui/core/constants';
 
 @Directive({

@@ -1,21 +1,19 @@
-import {AnimationOptions} from '@angular/animations';
+import type {AnimationOptions} from '@angular/animations';
+import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
     HostBinding,
     Inject,
-    OnInit,
     Self,
 } from '@angular/core';
-import {TuiDestroyService, TuiDialog, tuiIsNumber} from '@taiga-ui/cdk';
+import type {TuiDialog} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiIsNumber} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse, tuiSlideInRight} from '@taiga-ui/core/animations';
-import {TuiAlertOptions} from '@taiga-ui/core/interfaces';
-import {
-    TUI_ANIMATION_OPTIONS,
-    TUI_NOTIFICATION_OPTIONS,
-    TuiNotificationDefaultOptions,
-} from '@taiga-ui/core/tokens';
+import type {TuiAlertOptions} from '@taiga-ui/core/interfaces';
+import type {TuiNotificationDefaultOptions} from '@taiga-ui/core/tokens';
+import {TUI_ANIMATION_OPTIONS, TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/tokens';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {fromEvent, timer} from 'rxjs';
 import {repeatWhen, takeUntil} from 'rxjs/operators';

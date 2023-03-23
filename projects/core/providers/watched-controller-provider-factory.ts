@@ -1,6 +1,7 @@
-import {ChangeDetectorRef} from '@angular/core';
-import {AbstractTuiController, tuiWatch} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import type {ChangeDetectorRef} from '@angular/core';
+import type {AbstractTuiController} from '@taiga-ui/cdk';
+import {tuiWatch} from '@taiga-ui/cdk';
+import type {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 export function tuiWatchedControllerFactory(

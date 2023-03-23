@@ -1,5 +1,5 @@
 import {InjectionToken} from '@angular/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 // TODO: find the best way for prevent cycle
 // eslint-disable-next-line import/no-cycle

@@ -1,4 +1,4 @@
-import {TuiLineHandler} from '@taiga-ui/addon-charts/types';
+import type {TuiLineHandler} from '@taiga-ui/addon-charts/types';
 
 export const TUI_ALWAYS_DASHED: TuiLineHandler = () => `dashed`;
 export const TUI_ALWAYS_DOTTED: TuiLineHandler = () => `dotted`;

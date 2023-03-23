@@ -1,6 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {TuiAxesComponent, TuiAxesModule} from '@taiga-ui/addon-charts';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
+import type {TuiAxesComponent} from '@taiga-ui/addon-charts';
+import {TuiAxesModule} from '@taiga-ui/addon-charts';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {configureTestSuite} from '@taiga-ui/testing';
 

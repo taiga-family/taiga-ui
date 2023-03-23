@@ -9,7 +9,8 @@ import {
 } from '@angular/core';
 import {TuiDestroyService, tuiIfMap} from '@taiga-ui/cdk';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
-import {Observable, Subject} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 // TODO: find the best way for prevent cycle

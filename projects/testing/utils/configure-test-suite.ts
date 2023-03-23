@@ -1,4 +1,5 @@
-import {ComponentFixture, getTestBed, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {getTestBed, TestBed} from '@angular/core/testing';
 
 export const configureTestSuite = (configureModule?: () => void): void => {
     const testBedApi = getTestBed();

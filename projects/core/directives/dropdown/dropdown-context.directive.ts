@@ -4,12 +4,8 @@ import {
     TuiActiveZoneDirective,
     tuiPointToClientRect,
 } from '@taiga-ui/cdk';
-import {
-    tuiAsDriver,
-    tuiAsRectAccessor,
-    TuiDriver,
-    TuiRectAccessor,
-} from '@taiga-ui/core/abstract';
+import type {TuiRectAccessor} from '@taiga-ui/core/abstract';
+import {tuiAsDriver, tuiAsRectAccessor, TuiDriver} from '@taiga-ui/core/abstract';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 import {Subject} from 'rxjs';
 

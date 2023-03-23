@@ -1,7 +1,8 @@
-import {getImports, ImportSpecifier, Node} from 'ng-morph';
-import {TypeNode} from 'ts-morph';
+import type {ImportSpecifier} from 'ng-morph';
+import {getImports, Node} from 'ng-morph';
+import type {TypeNode} from 'ts-morph';
 
-import {TuiSchema} from '../../ng-add/schema';
+import type {TuiSchema} from '../../ng-add/schema';
 import {
     infoLog,
     REPLACE_SYMBOL,
@@ -11,7 +12,7 @@ import {
 } from '../../utils/colored-log';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {removeImport, renameImport} from '../../utils/import-manipulations';
-import {TypeToRename} from '../interfaces/type-to-rename';
+import type {TypeToRename} from '../interfaces/type-to-rename';
 
 export function renameTypes(options: TuiSchema, types: readonly TypeToRename[]): void {
     !options[`skip-logs`] &&

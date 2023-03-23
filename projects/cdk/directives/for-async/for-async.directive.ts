@@ -1,12 +1,5 @@
-import {
-    Directive,
-    Inject,
-    Input,
-    OnChanges,
-    OnDestroy,
-    TemplateRef,
-    ViewContainerRef,
-} from '@angular/core';
+import type {OnChanges, OnDestroy} from '@angular/core';
+import {Directive, Inject, Input, TemplateRef, ViewContainerRef} from '@angular/core';
 import {from, of, Subject} from 'rxjs';
 import {concatMap, delay, takeUntil} from 'rxjs/operators';
 
