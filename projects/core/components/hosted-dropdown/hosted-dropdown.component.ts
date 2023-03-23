@@ -43,9 +43,13 @@ export interface TuiHostedDropdownContext
     close(): void;
 }
 
-function shouldClose(this: TuiHostedDropdownComponent, {key}: KeyboardEvent): boolean {
+function shouldClose(
+    this: TuiHostedDropdownComponent,
+    event: Event | KeyboardEvent,
+): boolean {
     return (
-        key.toLowerCase() === 'escape' &&
+        'key' in event &&
+        event.key.toLowerCase() === 'escape' &&
         this.canOpen &&
         this.open &&
         !this.dropdown?.nextElementSibling
