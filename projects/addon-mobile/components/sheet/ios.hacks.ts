@@ -1,22 +1,7 @@
 import {NgZone} from '@angular/core';
-import {
-    ALWAYS_FALSE_HANDLER,
-    tuiIsFalsy,
-    tuiTypedFromEvent,
-    tuiZonefree,
-} from '@taiga-ui/cdk';
-import {concat, merge, Observable, race, timer, zip} from 'rxjs';
-import {
-    debounceTime,
-    delay,
-    filter,
-    map,
-    share,
-    startWith,
-    switchMap,
-    take,
-    takeUntil,
-} from 'rxjs/operators';
+import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
+import {concat, merge, Observable, zip} from 'rxjs';
+import {delay, map, share, switchMap, take, takeUntil} from 'rxjs/operators';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function iosScrollFactory(
@@ -54,30 +39,6 @@ export function iosScrollFactory(
     );
 
     return concat(scroll$.pipe(take(1)), result$).pipe(tuiZonefree(ngZone), share());
-}
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function processDragged(
-    dragged$: Observable<boolean>,
-    scroll$: Observable<unknown>,
-): Observable<boolean> {
-    const touchstart$ = dragged$.pipe(filter(Boolean));
-    const touchend$ = dragged$.pipe(filter(tuiIsFalsy));
-    const race$ = race(scroll$, timer(100)).pipe(
-        debounceTime(200),
-        take(1),
-        map(ALWAYS_FALSE_HANDLER),
-    );
-
-    return touchstart$.pipe(
-        switchMap(() =>
-            touchend$.pipe(
-                switchMap(() => race$),
-                startWith(true),
-            ),
-        ),
-        startWith(false),
-    );
 }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

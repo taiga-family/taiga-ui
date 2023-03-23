@@ -1,11 +1,24 @@
-import {ContentChild, Directive, Inject, Input} from '@angular/core';
+import {ContentChild, Directive, Inject, Input, NgZone} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {tuiClamp, tuiPure} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {
+    ALWAYS_FALSE_HANDLER,
+    tuiClamp,
+    tuiIsFalsy,
+    tuiPure,
+    tuiZonefull,
+} from '@taiga-ui/cdk';
+import {Observable, race, timer} from 'rxjs';
+import {
+    debounceTime,
+    distinctUntilChanged,
+    filter,
+    map,
+    startWith,
+    switchMap,
+    take,
+} from 'rxjs/operators';
 
 import {TuiSheetComponent} from '../../components/sheet/sheet.component';
-import {processDragged} from '../../ios.hacks';
 import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 
 // Safety offset for shadow
@@ -13,43 +26,41 @@ const OFFSET = 16;
 
 @Directive({
     selector: '[tuiSheetWrapper]',
-    host: {
-        '[$.class._overlay]': 'overlay$',
-        '($.class._overlay)': 'overlay$',
-        '[$.class._visible]': 'visible$',
-        '($.class._visible)': 'visible$',
-        '[$.style.height.px]': 'height$',
-        '($.style.height.px)': 'height$',
-    },
+    exportAs: 'tuiSheetWrapper',
 })
 export class TuiSheetWrapperDirective {
     @ContentChild(TuiSheetComponent)
     private readonly sheet?: TuiSheetComponent<unknown>;
 
-    @ContentChild(TuiSheetComponent, {read: TUI_SHEET_DRAGGED})
+    @ContentChild(TuiSheetComponent, {read: TUI_SHEET_DRAGGED, static: true})
     private readonly dragged$!: Observable<boolean>;
 
-    @ContentChild(TuiSheetComponent, {read: TUI_SHEET_SCROLL})
+    @ContentChild(TuiSheetComponent, {read: TUI_SHEET_SCROLL, static: true})
     private readonly scroll$!: Observable<number>;
 
     @Input()
     tuiSheetWrapper = 16;
 
-    // Trying to get overflow: visible as early as possible for Safari
-    touched = false;
-
-    constructor(@Inject(WINDOW) private readonly windowRef: Window) {}
+    constructor(
+        @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(WINDOW) private readonly windowRef: Window,
+    ) {}
 
     @tuiPure
     get overlay$(): Observable<boolean> {
         return this.scroll$.pipe(
             map(y => y + 16 > this.windowRef.innerHeight - this.tuiSheetWrapper),
+            distinctUntilChanged(),
+            tuiZonefull(this.ngZone),
         );
     }
 
     @tuiPure
     get visible$(): Observable<boolean> {
-        return processDragged(this.dragged$, this.scroll$);
+        return processDragged(this.dragged$, this.scroll$).pipe(
+            distinctUntilChanged(),
+            tuiZonefull(this.ngZone),
+        );
     }
 
     @tuiPure
@@ -72,4 +83,27 @@ export class TuiSheetWrapperDirective {
             ? value
             : value - this.sheet.imageHeight;
     }
+}
+
+function processDragged(
+    dragged$: Observable<boolean>,
+    scroll$: Observable<unknown>,
+): Observable<boolean> {
+    const touchstart$ = dragged$.pipe(filter(Boolean));
+    const touchend$ = dragged$.pipe(filter(tuiIsFalsy));
+    const race$ = race(scroll$, timer(100)).pipe(
+        debounceTime(200),
+        take(1),
+        map(ALWAYS_FALSE_HANDLER),
+    );
+
+    return touchstart$.pipe(
+        switchMap(() =>
+            touchend$.pipe(
+                switchMap(() => race$),
+                startWith(true),
+            ),
+        ),
+        startWith(false),
+    );
 }

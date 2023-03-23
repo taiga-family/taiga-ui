@@ -9,13 +9,18 @@
     overflow-y: auto;
     overflow-x: hidden;
     scroll-snap-type: y mandatory;
-    box-shadow: 0 4rem var(--tui-base-01);
+    /* stylelint-disable-next-line */
+    box-shadow: 0 50vh var(--tui-elevation-01);
     padding-right: 1rem;
     margin-left: -1rem;
     transform: scaleX(-1);
     clip-path: inset(0 1rem 0 0 round 0.75rem 0.75rem 0 0);
 
     &._stuck {
+        scroll-snap-type: none;
+    }
+
+    @supports (-moz-appearance: none) {
         scroll-snap-type: none;
     }
 }
@@ -40,7 +45,6 @@
 
 .t-wrapper {
     border-radius: inherit;
-    pointer-events: auto;
     scroll-snap-stop: always;
     scroll-snap-align: start;
 
@@ -53,7 +57,6 @@
     .shadow();
     position: sticky;
     top: 0;
-    pointer-events: auto;
     border-radius: 0.8rem 0.8rem 0 0;
     transform: scaleX(-1);
     overflow: hidden;
@@ -79,7 +82,6 @@
     scroll-snap-stop: always;
     scroll-snap-align: start;
     transform: scaleX(-1);
-    box-shadow: 0 4rem var(--tui-base-01);
 
     .t-top:not(._rounded) ~ & .t-bar {
         border-radius: 0;
