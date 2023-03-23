@@ -1,6 +1,6 @@
 import {Directive, Inject, Input, OnChanges} from '@angular/core';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
-import {Subject} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 
 import {TuiHintHoverDirective} from './hint-hover.directive';
 
@@ -9,7 +9,7 @@ import {TuiHintHoverDirective} from './hint-hover.directive';
     providers: [tuiAsDriver(TuiHintManualDirective)],
 })
 export class TuiHintManualDirective extends TuiDriver implements OnChanges {
-    private readonly stream$ = new Subject<boolean>();
+    private readonly stream$ = new BehaviorSubject(false);
 
     @Input()
     tuiHintManual = false;
