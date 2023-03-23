@@ -66,7 +66,7 @@ export const StarterKit = Extension.create<TuiStarterKitOptions>({
             extensions.push(CodeBlock.configure(this.options?.codeBlock));
         }
 
-        if (this.options?.document !== false) {
+        if (this.options?.document) {
             extensions.push(Document.configure(this.options?.document));
         }
 
@@ -114,7 +114,7 @@ export const StarterKit = Extension.create<TuiStarterKitOptions>({
             extensions.push(Strike.configure(this.options?.strike));
         }
 
-        if (this.options?.text !== false) {
+        if (this.options?.text) {
             extensions.push(Text.configure(this.options?.text));
         }
 

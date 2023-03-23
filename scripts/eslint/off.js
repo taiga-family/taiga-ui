@@ -7,7 +7,6 @@ module.exports = {
             rules: {
                 // TODO: investigate / enable later
                 // TODO: move to @tinkoff/eslint-config-angular
-                '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off',
                 '@typescript-eslint/prefer-readonly-parameter-types': 'off',
                 '@typescript-eslint/strict-boolean-expressions': 'off',
                 '@typescript-eslint/prefer-nullish-coalescing': 'off',
