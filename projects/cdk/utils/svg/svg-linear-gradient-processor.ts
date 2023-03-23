@@ -40,9 +40,9 @@ function makeRandomSalt(): number {
 }
 
 function extractLinearGradientIdsFromSvg(svg: string): string[] {
-    const matchedIdsWithPrefix = svg.match(/url\(#(\w\w+)/g) || [];
+    const matchedIdsWithPrefix = svg.match(/url.*[\w\s$]*(\((.*[\w\s,$]*)\))/g) || [];
 
     return [...new Set(matchedIdsWithPrefix)].map(
-        matched => matched.slice(5), // remove prefix `url(#`
+        matched => matched.slice(5, matched.length - 1), // extract values between `url(#` and `)`
     );
 }
