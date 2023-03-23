@@ -23,11 +23,11 @@ import {
 } from '@taiga-ui/core/abstract';
 import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
 import {TuiDropdownAnimation} from '@taiga-ui/core/enums';
-import {TuiPositionService} from '@taiga-ui/core/services';
+import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
 import {TuiPoint} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {map, takeUntil} from 'rxjs/operators';
 
 // TODO: find the best way for prevent cycle
 // eslint-disable-next-line import/no-cycle
@@ -77,10 +77,20 @@ export class TuiDropdownComponent implements OnDestroy {
         @Optional()
         @Inject(TuiDropdownHoverDirective)
         private readonly hoverDirective: TuiDropdownHoverDirective | null,
+        @Inject(TuiVisualViewportService) visualViewportService: TuiVisualViewportService,
     ) {
-        position$.pipe(takeUntil(destroy$)).subscribe(([top, left]) => {
-            this.update(top, left);
-        });
+        position$
+            .pipe(
+                map(point =>
+                    this.directive.position === 'fixed'
+                        ? visualViewportService.correct(point)
+                        : point,
+                ),
+                takeUntil(destroy$),
+            )
+            .subscribe(([top, left]) => {
+                this.update(top, left);
+            });
 
         this.updateWidth();
     }
