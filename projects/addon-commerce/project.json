@@ -5,6 +5,7 @@
     "sourceRoot": "projects/addon-commerce",
     "projectType": "library",
     "prefix": "tui",
+    "implicitDependencies": ["!testing"],
     "targets": {
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",

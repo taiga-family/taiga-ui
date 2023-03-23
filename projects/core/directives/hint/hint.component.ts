@@ -25,12 +25,12 @@ import {
 import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
 import {TuiPortalItem} from '@taiga-ui/core/interfaces';
-import {TuiPositionService} from '@taiga-ui/core/services';
+import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
 import {TuiPoint} from '@taiga-ui/core/types';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {map, takeUntil} from 'rxjs/operators';
 
 // eslint-disable-next-line import/no-cycle
 import {TuiHintDirective} from './hint.directive';
@@ -79,10 +79,17 @@ export class TuiHintComponent<C = any> {
         @Optional()
         @Inject(TuiModeDirective)
         private readonly mode: TuiModeDirective | null,
+        @Inject(TuiVisualViewportService)
+        private readonly visualViewportService: TuiVisualViewportService,
     ) {
-        position$.pipe(takeUntil(destroy$)).subscribe(([top, left]) => {
-            this.update(top, left);
-        });
+        position$
+            .pipe(
+                map(point => this.visualViewportService.correct(point)),
+                takeUntil(destroy$),
+            )
+            .subscribe(([top, left]) => {
+                this.update(top, left);
+            });
 
         hovered$.pipe(takeUntil(destroy$)).subscribe(hover => this.hover.toggle(hover));
     }
@@ -112,8 +119,10 @@ export class TuiHintComponent<C = any> {
         const {style} = nativeElement;
         const rect = this.accessor.getClientRect();
         const safeLeft = Math.max(left, 4);
-        const beakTop = rect.top + rect.height / 2 - top;
-        const beakLeft = rect.left + rect.width / 2 - safeLeft;
+        const [beakTop, beakLeft] = this.visualViewportService.correct([
+            rect.top + rect.height / 2 - top,
+            rect.left + rect.width / 2 - safeLeft,
+        ]);
 
         style.top = tuiPx(top);
         style.left = tuiPx(safeLeft);

@@ -4,6 +4,7 @@
     "root": "projects/taiga-schematics",
     "sourceRoot": "projects/taiga-schematics",
     "projectType": "library",
+    "implicitDependencies": ["!testing"],
     "targets": {
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",

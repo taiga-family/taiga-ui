@@ -1,9 +1,8 @@
-import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {
     AbstractTuiPortalHostComponent,
     AbstractTuiPortalService,
 } from '@taiga-ui/cdk/abstract';
-import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 
 import {TuiDropdownPortalService} from './dropdown-portal.service';
 
@@ -20,14 +19,4 @@ import {TuiDropdownPortalService} from './dropdown-portal.service';
         {provide: AbstractTuiPortalHostComponent, useExisting: TuiDropdownHostComponent},
     ],
 })
-export class TuiDropdownHostComponent extends AbstractTuiPortalHostComponent {
-    @ViewChild('positionFixedOffset')
-    private readonly positionFixedOffsetRef?: ElementRef<HTMLDivElement>;
-
-    fixedPositionOffset(): ClientRect {
-        return (
-            this.positionFixedOffsetRef?.nativeElement.getBoundingClientRect() ||
-            EMPTY_CLIENT_RECT
-        );
-    }
-}
+export class TuiDropdownHostComponent extends AbstractTuiPortalHostComponent {}

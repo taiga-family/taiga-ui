@@ -5,6 +5,7 @@
     "sourceRoot": "projects/styles",
     "projectType": "library",
     "prefix": "tui",
+    "implicitDependencies": ["!testing"],
     "targets": {
         "build": {
             "executor": "nx:run-commands",

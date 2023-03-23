@@ -5,6 +5,7 @@
     "sourceRoot": "projects/cdk",
     "projectType": "library",
     "prefix": "tui",
+    "implicitDependencies": ["!testing", "!core", "!styles"],
     "targets": {
         "prebuild": {
             "executor": "@angular-devkit/build-angular:ng-packagr",

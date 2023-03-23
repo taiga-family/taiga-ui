@@ -28,11 +28,6 @@
             }
         }
     },
-    "pluginsConfig": {
-        "@nrwl/js": {
-            "analyzeSourceFiles": false
-        }
-    },
     "affected": {
         "defaultBase": "origin/main"
     },
