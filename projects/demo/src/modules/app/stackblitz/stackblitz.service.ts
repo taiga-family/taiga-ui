@@ -1,10 +1,12 @@
 import {Inject, Injectable} from '@angular/core';
 import stackblitz, {OpenOptions, Project} from '@stackblitz/sdk';
 import {TuiCodeEditor} from '@taiga-ui/addon-doc';
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TsFileComponentParser, TsFileModuleParser} from '../classes';
 import {StackblitzDepsService} from './stackblitz-deps.service';
 import {AbstractTuiStackblitzResourcesLoader} from './stackblitz-resources-loader';
+import {StackblitzEditButtonComponent} from './starter/stackblitz-edit-button.component';
 import {
     appPrefix,
     getAllTaigaUIModulesFile,
@@ -26,6 +28,7 @@ const APP_COMP_META = {
 @Injectable()
 export class TuiStackblitzService implements TuiCodeEditor {
     readonly name = `Stackblitz`;
+    readonly content = new PolymorpheusComponent(StackblitzEditButtonComponent);
 
     constructor(
         @Inject(StackblitzDepsService)

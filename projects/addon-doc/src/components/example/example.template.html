@@ -47,17 +47,30 @@
                 </ng-container>
             </tui-tabs-with-more>
 
-            <button
+            <tui-loader
                 *ngIf="files | tuiMapper : visible"
-                tuiButton
-                appearance="flat"
-                size="s"
-                type="button"
+                size="xs"
+                [overlay]="true"
                 [showLoader]="!!(loading$ | async)"
                 (click)="edit(files)"
             >
-                Edit on {{ codeEditor!.name }}
-            </button>
+                <ng-container *ngIf="codeEditor?.content as content; else defaultEditContent">
+                    <ng-container *polymorpheusOutlet="content as editContent">
+                        {{ editContent }}
+                    </ng-container>
+                </ng-container>
+
+                <ng-template #defaultEditContent>
+                    <button
+                        tuiButton
+                        appearance="flat"
+                        size="s"
+                        type="button"
+                    >
+                        Edit on {{ codeEditor!.name }}
+                    </button>
+                </ng-template>
+            </tui-loader>
         </div>
 
         <div
