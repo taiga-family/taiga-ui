@@ -10,6 +10,7 @@ module.exports = {
             parser: '@typescript-eslint/parser',
             plugins: ['@typescript-eslint'],
             rules: {
+                '@typescript-eslint/no-unnecessary-type-constraint': 'error',
                 '@typescript-eslint/no-unsafe-declaration-merging': 'error',
                 '@typescript-eslint/prefer-as-const': 'error',
                 '@typescript-eslint/prefer-string-starts-ends-with': 'error',
