@@ -4,38 +4,36 @@ import {TuiDataListDirective} from '@taiga-ui/core';
 import {AbstractTuiNativeSelect} from './native-select';
 
 @Component({
-    selector: 'select[tuiSelect][labels]:not([multiple])',
-    templateUrl: './native-select-group.template.html',
+    selector: 'select[multiple][tuiSelect]:not([labels])',
+    templateUrl: './native-select.template.html',
     providers: [
         {
             provide: TuiDataListDirective,
-            deps: [TuiNativeSelectGroupComponent],
-            useExisting: TuiNativeSelectGroupComponent,
+            deps: [TuiNativeSelectComponent],
+            useExisting: TuiNativeSelectComponent,
         },
         {
             provide: TemplateRef,
-            deps: [TuiNativeSelectGroupComponent],
-            useFactory: ({datalist}: TuiNativeSelectGroupComponent) => datalist,
+            deps: [TuiNativeSelectComponent],
+            useFactory: ({datalist}: TuiNativeSelectComponent) => datalist,
         },
         {
             provide: AbstractTuiNativeSelect,
-            useExisting: TuiNativeSelectGroupComponent,
+            useExisting: TuiNativeSelectComponent,
         },
     ],
     host: {
         '[attr.aria-invalid]': 'host.invalid',
         '[disabled]': 'host.disabled || control.readOnly',
         '[tabIndex]': 'host.focusable ? 0 : -1',
-        '[value]': 'host.value',
-        '(change)': 'host.onValueChange($event.target.value)',
+        '(change)': 'onValueChange($event.target)',
+        '(click.stop.silent)': '0',
+        '(mousedown.stop.silent)': '0',
     },
     styleUrls: ['./native-select.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiNativeSelectGroupComponent extends AbstractTuiNativeSelect {
+export class TuiNativeSelectComponent extends AbstractTuiNativeSelect {
     @Input()
-    items: readonly string[][] | null = [];
-
-    @Input()
-    labels: readonly string[] = [];
+    items: string[] | null = [];
 }

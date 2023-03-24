@@ -4,7 +4,7 @@ import {TuiDataListDirective} from '@taiga-ui/core';
 import {AbstractTuiNativeSelect} from './native-select';
 
 @Component({
-    selector: 'select[tuiSelect]:not([labels])',
+    selector: 'select[tuiSelect]:not([labels]):not([multiple])',
     templateUrl: './native-select.template.html',
     providers: [
         {

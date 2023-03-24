@@ -1,0 +1,13 @@
+<ng-container *ngIf="control.control?.valueChanges | async"></ng-container>
+
+<tui-data-list-wrapper
+    *tuiDataList
+    [items]="items"
+></tui-data-list-wrapper>
+<option
+    *ngFor="let option of items"
+    [attr.selected]="option | tuiMapper : selectedMapper : host.value"
+    [value]="option"
+>
+    {{ option }}
+</option>

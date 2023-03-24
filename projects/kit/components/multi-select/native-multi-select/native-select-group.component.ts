@@ -4,7 +4,7 @@ import {TuiDataListDirective} from '@taiga-ui/core';
 import {AbstractTuiNativeSelect} from './native-select';
 
 @Component({
-    selector: 'select[tuiSelect][labels]:not([multiple])',
+    selector: 'select[multiple][tuiSelect][labels]',
     templateUrl: './native-select-group.template.html',
     providers: [
         {
@@ -26,8 +26,9 @@ import {AbstractTuiNativeSelect} from './native-select';
         '[attr.aria-invalid]': 'host.invalid',
         '[disabled]': 'host.disabled || control.readOnly',
         '[tabIndex]': 'host.focusable ? 0 : -1',
-        '[value]': 'host.value',
-        '(change)': 'host.onValueChange($event.target.value)',
+        '(change)': 'onValueChange($event.target)',
+        '(click.stop.silent)': '0',
+        '(mousedown.stop.silent)': '0',
     },
     styleUrls: ['./native-select.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
