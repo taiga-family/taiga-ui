@@ -194,4 +194,18 @@ describe(`MultiSelect`, () => {
             capture: `viewport`,
         });
     });
+
+    it(`multi-select with data list`, () => {
+        cy.tuiVisit(`components/multi-select#datalist`);
+
+        cy.get(`tui-doc-example[heading="DataList"]`)
+            .tuiScrollIntoView()
+            .findByAutomationId(`tui-multi-select__arrow`)
+            .click({force: true});
+
+        cy.get(`tui-dropdown`)
+            .find(`tui-data-list[role="listbox"]`)
+            .tuiWaitBeforeScreenshot()
+            .matchImageSnapshot(`multi-select-with-data-list`);
+    });
 });
