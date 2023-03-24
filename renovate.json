@@ -84,6 +84,11 @@
             "matchPackagePatterns": ["^@ng-web-apis/.*"]
         },
         {
+            "groupName": "taiga",
+            "matchUpdateTypes": ["minor", "patch"],
+            "matchPackagePatterns": ["^@taiga-ui/.*"]
+        },
+        {
             "groupName": "tiptap",
             "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["^@tiptap/.*", "^prosemirror.*"]
