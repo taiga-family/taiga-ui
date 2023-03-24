@@ -46,76 +46,79 @@ export const StarterKit = Extension.create<TuiStarterKitOptions>({
     addExtensions() {
         const extensions = [];
 
-        if (this.options?.blockquote !== false) {
-            extensions.push(Blockquote.configure(this.options?.blockquote));
+        // note: in runtime it possibly be undefined
+        const options = this.options as Partial<TuiStarterKitOptions> | undefined;
+
+        if (options?.blockquote !== false) {
+            extensions.push(Blockquote.configure(options?.blockquote));
         }
 
-        if (this.options?.bold !== false) {
-            extensions.push(Bold.configure(this.options?.bold));
+        if (options?.bold !== false) {
+            extensions.push(Bold.configure(options?.bold));
         }
 
-        if (this.options?.bulletList !== false) {
-            extensions.push(BulletList.configure(this.options?.bulletList));
+        if (options?.bulletList !== false) {
+            extensions.push(BulletList.configure(options?.bulletList));
         }
 
-        if (this.options?.code !== false) {
-            extensions.push(Code.configure(this.options?.code));
+        if (options?.code !== false) {
+            extensions.push(Code.configure(options?.code));
         }
 
-        if (this.options?.codeBlock !== false) {
-            extensions.push(CodeBlock.configure(this.options?.codeBlock));
+        if (options?.codeBlock !== false) {
+            extensions.push(CodeBlock.configure(options?.codeBlock));
         }
 
-        if (this.options?.document) {
-            extensions.push(Document.configure(this.options?.document));
+        if (options?.document !== false) {
+            extensions.push(Document.configure(options?.document));
         }
 
-        if (this.options?.dropcursor !== false) {
-            extensions.push(Dropcursor.configure(this.options?.dropcursor));
+        if (options?.dropcursor !== false) {
+            extensions.push(Dropcursor.configure(options?.dropcursor));
         }
 
-        if (this.options?.gapcursor) {
-            extensions.push(Gapcursor.configure(this.options?.gapcursor));
+        if (options?.gapcursor !== false) {
+            extensions.push(Gapcursor.configure(options?.gapcursor));
         }
 
-        if (this.options?.hardBreak !== false) {
-            extensions.push(HardBreak.configure(this.options?.hardBreak));
+        if (options?.hardBreak !== false) {
+            extensions.push(HardBreak.configure(options?.hardBreak));
         }
 
-        if (this.options?.heading !== false) {
-            extensions.push(Heading.configure(this.options?.heading));
+        if (options?.heading !== false) {
+            extensions.push(Heading.configure(options?.heading));
         }
 
-        if (this.options?.history !== false) {
-            extensions.push(History.configure(this.options?.history));
+        if (options?.history !== false) {
+            extensions.push(History.configure(options?.history));
         }
 
-        if (this.options?.horizontalRule !== false) {
-            extensions.push(HorizontalRule.configure(this.options?.horizontalRule));
+        if (options?.horizontalRule !== false) {
+            extensions.push(HorizontalRule.configure(options?.horizontalRule));
         }
 
-        if (this.options?.italic !== false) {
-            extensions.push(Italic.configure(this.options?.italic));
+        if (options?.italic !== false) {
+            extensions.push(Italic.configure(options?.italic));
         }
 
-        if (this.options?.listItem !== false) {
-            extensions.push(ListItem.configure(this.options?.listItem));
+        if (options?.listItem !== false) {
+            extensions.push(ListItem.configure(options?.listItem));
         }
 
-        if (this.options?.orderedList !== false) {
-            extensions.push(OrderedList.configure(this.options?.orderedList));
+        if (options?.orderedList !== false) {
+            extensions.push(OrderedList.configure(options?.orderedList));
         }
 
-        if (this.options?.paragraph !== false) {
-            extensions.push(Paragraph.configure(this.options?.paragraph));
+        if (options?.paragraph !== false) {
+            extensions.push(Paragraph.configure(options?.paragraph));
         }
 
-        if (this.options?.strike !== false) {
-            extensions.push(Strike.configure(this.options?.strike));
+        if (options?.strike !== false) {
+            extensions.push(Strike.configure(options?.strike));
         }
 
-        if (this.options?.text) {
-            extensions.push(Text.configure(this.options?.text));
+        if (options?.text !== false) {
+            extensions.push(Text.configure(options?.text));
         }
 
         return extensions;
