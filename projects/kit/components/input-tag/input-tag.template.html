@@ -75,6 +75,7 @@
                             <span
                                 *ngFor="let item of value"
                                 class="t-text"
+                                [class.t-text_comma]="computedFocused && !inputHidden"
                                 [class.t-text_disabled]="disabledItemHandler(item)"
                                 [class.t-text_error]="!tagValidator(item)"
                                 [textContent]="item"

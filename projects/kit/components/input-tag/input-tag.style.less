@@ -166,12 +166,12 @@
         color: var(--tui-negative);
     }
 
-    :host:not(._expandable) & {
-        white-space: nowrap;
+    &:not(.t-text_comma):last-of-type:after {
+        content: '';
     }
 
-    :host:not(._focused) &:last-of-type:after {
-        content: '';
+    :host:not(._expandable) & {
+        white-space: nowrap;
     }
 }
 
