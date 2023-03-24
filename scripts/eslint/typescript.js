@@ -11,6 +11,7 @@ module.exports = {
             plugins: ['@typescript-eslint'],
             rules: {
                 '@typescript-eslint/no-unsafe-declaration-merging': 'error',
+                '@typescript-eslint/prefer-as-const': 'error',
                 '@typescript-eslint/prefer-string-starts-ends-with': 'error',
                 '@typescript-eslint/no-unnecessary-type-assertion': 'error',
                 '@typescript-eslint/prefer-for-of': 'error',
