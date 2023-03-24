@@ -74,7 +74,7 @@ export const StarterKit = Extension.create<TuiStarterKitOptions>({
             extensions.push(Dropcursor.configure(this.options?.dropcursor));
         }
 
-        if (this.options?.gapcursor !== false) {
+        if (this.options?.gapcursor) {
             extensions.push(Gapcursor.configure(this.options?.gapcursor));
         }
 
