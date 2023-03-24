@@ -84,7 +84,7 @@
             "matchPackagePatterns": ["^@ng-web-apis/.*"]
         },
         {
-            "groupName": "taiga",
+            "groupName": "taiga-ui",
             "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["^@taiga-ui/.*"]
         },
