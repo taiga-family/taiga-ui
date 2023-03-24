@@ -1,6 +1,6 @@
 <tui-hosted-dropdown
     class="t-wrapper"
-    [canOpen]="canOpen"
+    [canOpen]="canOpen && !nativePicker"
     [content]="dropdownContent"
     [open]="canOpen && open"
     (openChange)="onOpen($event)"
@@ -19,7 +19,7 @@
         [disabled]="disabled"
         [readOnly]="readOnly"
         [textMask]="textMaskOptions"
-        [tuiTextfieldIcon]="icon"
+        [tuiTextfieldIcon]="iconContent"
         [value]="computedValue"
         [postfix]="postfix"
         (valueChange)="onValueChange($event)"
@@ -48,4 +48,18 @@
             {{ item }}
         </button>
     </tui-data-list>
+</ng-template>
+
+<ng-template #iconContent>
+    <tui-svg
+        *polymorpheusOutlet="icon as src; context: {$implicit: size}"
+        tuiWrapper
+        appearance="icon"
+        [class.t-icon]="!computedDisabled"
+        [src]="src"
+    ></tui-svg>
+    <input
+        *ngIf="isMobile && nativePicker"
+        tuiTime
+    />
 </ng-template>

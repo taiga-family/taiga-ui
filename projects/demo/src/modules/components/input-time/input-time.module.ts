@@ -22,6 +22,7 @@ import {TuiInputTimeExample2} from './examples/2';
 import {TuiInputTimeExample3} from './examples/3';
 import {TuiInputTimeExample4} from './examples/4';
 import {TuiInputTimeExample5} from './examples/5';
+import {TuiInputTimeExample6} from './examples/6';
 import {ExampleTuiInputTimeComponent} from './input-time.component';
 
 @NgModule({
@@ -48,6 +49,7 @@ import {ExampleTuiInputTimeComponent} from './input-time.component';
         TuiInputTimeExample3,
         TuiInputTimeExample4,
         TuiInputTimeExample5,
+        TuiInputTimeExample6,
     ],
     exports: [ExampleTuiInputTimeComponent],
 })

@@ -1,0 +1,28 @@
+<form
+    class="b-form"
+    [formGroup]="testForm"
+>
+    <tui-input-time
+        formControlName="testValue"
+        class="tui-space_bottom-2"
+        [tuiTextfieldCleaner]="true"
+    >
+        Choose a time
+    </tui-input-time>
+    <tui-input-time
+        formControlName="testValue2"
+        mode="HH:MM:SS"
+        class="tui-space_bottom-2"
+        [tuiTextfieldCleaner]="true"
+    >
+        Choose a time
+    </tui-input-time>
+    <tui-input-time
+        formControlName="testValue3"
+        mode="HH:MM:SS.MSS"
+        class="tui-space_bottom-2"
+        [tuiTextfieldCleaner]="true"
+    >
+        Choose a time
+    </tui-input-time>
+</form>

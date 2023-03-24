@@ -11,6 +11,7 @@ export interface TuiInputTimeOptions {
     readonly postfix: string;
     readonly maxValues: Record<TuiTimeFormatParts, number>;
     readonly itemSize: TuiSizeL | TuiSizeS;
+    readonly nativePicker?: boolean;
 }
 
 export const TUI_INPUT_TIME_DEFAULT_OPTIONS: TuiInputTimeOptions = {
@@ -19,6 +20,7 @@ export const TUI_INPUT_TIME_DEFAULT_OPTIONS: TuiInputTimeOptions = {
     postfix: ``,
     maxValues: MAX_TIME_VALUES,
     itemSize: `m`,
+    nativePicker: false,
 };
 
 /**

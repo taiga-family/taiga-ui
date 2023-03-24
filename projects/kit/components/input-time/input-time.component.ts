@@ -13,6 +13,7 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
+    TUI_IS_MOBILE,
     TUI_STRICT_MATCHER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
@@ -28,10 +29,14 @@ import {
     TuiTimeMode,
 } from '@taiga-ui/cdk';
 import {
+    TUI_TEXTFIELD_SIZE,
     tuiAsDataListHost,
     tuiAsOptionContent,
     TuiDataListHost,
     TuiPrimitiveTextfieldComponent,
+    TuiSizeL,
+    TuiSizeS,
+    TuiTextfieldSizeDirective,
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
@@ -103,6 +108,9 @@ export class TuiInputTimeComponent
         private readonly timeTexts$: Observable<Record<TuiTimeMode, string>>,
         @Inject(TUI_INPUT_TIME_OPTIONS)
         private readonly options: TuiInputTimeOptions,
+        @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
+        @Inject(TUI_TEXTFIELD_SIZE)
+        private readonly textfieldSize: TuiTextfieldSizeDirective,
     ) {
         super(control, cdr);
     }
@@ -121,6 +129,14 @@ export class TuiInputTimeComponent
 
     get filtered(): readonly TuiTime[] {
         return this.filter(this.items, this.mode, this.computedSearch);
+    }
+
+    get nativePicker(): boolean {
+        return !!this.options.nativePicker;
+    }
+
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
     }
 
     get textMaskOptions(): TuiTextMaskOptions {
