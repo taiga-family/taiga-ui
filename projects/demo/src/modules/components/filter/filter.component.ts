@@ -13,7 +13,7 @@ class ItemWithBadge {
     }
 
     valueOf(): number | null {
-        return this.badgeValue ? this.badgeValue : null;
+        return this.badgeValue || null;
     }
 }
 

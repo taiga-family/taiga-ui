@@ -25,7 +25,7 @@ export const TuiTable = Table.extend({
                     });
                 } else {
                     fixedWidth = false;
-                    const colspan = td.attrs.colspan ? td.attrs.colspan : 1;
+                    const colspan = td.attrs.colspan || 1;
 
                     totalWidth += this.options.cellMinWidth * colspan;
                 }
