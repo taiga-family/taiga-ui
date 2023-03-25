@@ -10,6 +10,7 @@ module.exports = {
             parser: '@typescript-eslint/parser',
             plugins: ['@typescript-eslint'],
             rules: {
+                'unicorn/prefer-logical-operator-over-ternary': 'error',
                 '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
                 '@typescript-eslint/no-unnecessary-type-constraint': 'error',
                 '@typescript-eslint/no-unsafe-declaration-merging': 'error',
