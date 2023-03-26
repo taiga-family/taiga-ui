@@ -1,0 +1,81 @@
+.tui-editor-socket {
+    summary {
+        display: flex;
+        align-items: center;
+        min-height: 3.5rem;
+        width: 100%;
+        padding: 0 1.25rem;
+        box-sizing: border-box;
+        border-radius: var(--tui-radius-l);
+        pointer-events: none;
+        outline: none;
+
+        p {
+            min-width: 1px;
+            margin: 0;
+        }
+
+        &::-webkit-details-marker {
+            display: none;
+        }
+    }
+
+    details[open] summary {
+        border-radius: var(--tui-radius-l) var(--tui-radius-l) 0 0;
+    }
+
+    .t-details-arrow {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.25rem;
+        height: 0.575rem;
+        width: 0.575rem;
+        border: 1px solid var(--tui-base-06);
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+        transition: var(--tui-duration, 0.3s);
+        appearance: none;
+        box-sizing: border-box;
+        padding: 0;
+        background: none;
+        cursor: pointer;
+        outline: none;
+    }
+
+    details {
+        width: 100%;
+        border: 1px solid var(--tui-base-04);
+        border-radius: var(--tui-radius-l);
+    }
+
+    div[data-type='details-content'] {
+        padding: 1.25rem;
+        min-height: 3rem;
+        border: 1px solid var(--tui-base-04);
+        border-width: 1px 0 0;
+    }
+
+    .t-details-wrapper {
+        position: relative;
+        display: flex;
+    }
+
+    .t-details-wrapper_rendered .t-details-arrow {
+        pointer-events: none;
+    }
+
+    .t-details-wrapper_rendered summary {
+        transition: transform var(--tui-duration, 0.3s);
+        cursor: pointer;
+        pointer-events: auto;
+    }
+
+    .t-details-wrapper_rendered summary:hover {
+        background: var(--tui-base-02);
+    }
+
+    details[open] + .t-details-arrow {
+        top: 1.75rem;
+        transform: rotate(225deg);
+    }
+}

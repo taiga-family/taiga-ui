@@ -54,9 +54,9 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
     renderHTML({HTMLAttributes}) {
         return [
             `div`,
-            {class: `details-wrapper details-wrapper_rendered`},
+            {class: `t-details-wrapper t-details-wrapper_rendered`},
             [`details`, mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0],
-            [`button`, {class: `details-arrow`}],
+            [`button`, {class: `t-details-arrow`}],
         ];
     },
 
@@ -66,8 +66,8 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
             const details = document.createElement(`details`);
             const button = document.createElement(`button`);
 
-            wrapper.className = `details-wrapper`;
-            button.className = `details-arrow`;
+            wrapper.className = `t-details-wrapper`;
+            button.className = `t-details-arrow`;
 
             details.open = node.attrs.opened;
 
