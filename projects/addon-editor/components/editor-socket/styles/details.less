@@ -1,3 +1,5 @@
+@import 'taiga-ui-local';
+
 .tui-editor-socket {
     summary {
         display: flex;
@@ -53,9 +55,22 @@
         min-height: 3rem;
         border: 1px solid var(--tui-base-04);
         border-width: 1px 0 0;
+
+        // Prevents extra margin between top border of details and content
+        h1:first-child,
+        h2:first-child,
+        pre:first-child,
+        ul:first-child,
+        ol:first-child,
+        ol li:first-child,
+        ul li:first-child {
+            margin-top: 0;
+        }
     }
 
     .t-details-wrapper {
+        // This one helps in case you have several details blocks
+        .tui-space(bottom, 2);
         position: relative;
         display: flex;
     }

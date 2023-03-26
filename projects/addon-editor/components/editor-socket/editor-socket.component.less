@@ -21,6 +21,16 @@
         line-height: normal;
     }
 
+    // Prevents extra margin when tui-editor-socket is combined
+    // with components like tui-radio-labeled or tui-checkbox-labeled
+    h1:first-child,
+    h2:first-child,
+    pre:first-child,
+    p:last-child,
+    pre:last-child {
+        margin-bottom: 0;
+    }
+
     a:not([data-type='jump-anchor']) {
         color: var(--tui-link);
         text-decoration: none;
