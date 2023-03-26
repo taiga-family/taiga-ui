@@ -3,8 +3,8 @@ import {TUI_VERSION} from '@taiga-ui/cdk';
 
 export interface TuiVersionMeta {
     label: string;
-    majorTitle: string;
-    appSubdirectory: string;
+    baseHref: string;
+    title: string;
 }
 
 export const TUI_CURRENT_MAJOR_VERSION = parseInt(TUI_VERSION, 10);
@@ -12,20 +12,25 @@ export const TUI_CURRENT_MAJOR_VERSION = parseInt(TUI_VERSION, 10);
 export const TUI_VERSIONS_META: readonly TuiVersionMeta[] = [
     {
         label: `next`,
-        appSubdirectory: `next`,
-        majorTitle: `v${TUI_CURRENT_MAJOR_VERSION}-next`,
+        baseHref: `/next/`,
+        title: `v${TUI_CURRENT_MAJOR_VERSION}.next`,
     },
     {
-        appSubdirectory: `/`,
         label: `latest (v${TUI_VERSION})`,
-        majorTitle: `v${TUI_CURRENT_MAJOR_VERSION}`,
+        baseHref: `/`,
+        title: `v${TUI_CURRENT_MAJOR_VERSION}`,
     },
     {
         label: `v2`,
-        appSubdirectory: `v2`,
-        majorTitle: `v2`,
+        baseHref: `/v2/`,
+        title: `v2`,
     },
 ];
+
+export const TUI_VERSIONS_META_MAP = TUI_VERSIONS_META.reduce(
+    (map, item) => map.set(item.baseHref, item),
+    new Map<string, TuiVersionMeta>(),
+);
 
 export const TUI_VERSIONS_META_OPTIONS = new InjectionToken<readonly TuiVersionMeta[]>(
     `[TUI_VERSIONS_META_OPTIONS]: list of versions taiga ui kit`,
