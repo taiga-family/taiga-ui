@@ -34,11 +34,11 @@ interface Breakpoint {
 function getBreakpoints(media: TuiMedia): Breakpoint[] {
     return Object.entries(media).map(([name, value]) => ({
         name,
-        query: `(max-width: ${value}px)`,
+        query: `(max-width: ${value - 1}px)`,
         width: value,
     }));
 }
 
 function currentBreakpoint(breakpoints: Breakpoint[], innerWidth: number): Breakpoint {
-    return breakpoints.find(({width}) => innerWidth <= width) ?? breakpoints.slice(-1)[0];
+    return breakpoints.find(({width}) => innerWidth < width) ?? breakpoints.slice(-1)[0];
 }
