@@ -38,6 +38,11 @@ interface Breakpoint {
 function getBreakpoints(media: TuiMedia): Breakpoint[] {
     return Object.entries(media).map(([name, width]) => ({
         name: name as MediaKey,
+        /**
+         * @note:
+         * min-width query in css is inclusive, but in window.matchMedia it is exclusive
+         * so we need to subtract 1px to get the same result
+         */
         query: `(max-width: ${width - 1}px)`,
         width,
     }));
