@@ -2,6 +2,7 @@ import './tiptap-editor.types';
 
 import {Inject, Injectable} from '@angular/core';
 import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
+import {EDITOR_BLANK_COLOR} from '@taiga-ui/addon-editor/constants';
 import type {TuiEditableIframe} from '@taiga-ui/addon-editor/extensions/iframe-editor';
 import type {TuiEditableImage} from '@taiga-ui/addon-editor/extensions/image-editor';
 import type {TuiYoutubeOptions} from '@taiga-ui/addon-editor/extensions/youtube';
@@ -75,13 +76,11 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     getFontColor(): string {
-        return this.editor.getAttributes(`textStyle`).fontColor || `rgb(51, 51, 51)`;
+        return this.editor.getAttributes(`textStyle`).fontColor || EDITOR_BLANK_COLOR;
     }
 
     getBackgroundColor(): string {
-        return (
-            this.editor?.getAttributes(`textStyle`).backgroundColor || `rgb(51, 51, 51)`
-        );
+        return this.editor?.getAttributes(`textStyle`).backgroundColor || `transparent`;
     }
 
     getCellColor(): string {

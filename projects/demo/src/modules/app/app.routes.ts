@@ -1010,6 +1010,18 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `editor/custom-tool/color-picker`,
+        loadChildren: async () =>
+            (
+                await import(
+                    `../components/editor/custom-tool/color-picker/editor-color-picker.module`
+                )
+            ).ExampleTuiEditorColorPickerToolModule,
+        data: {
+            title: `Editor — Color picker custom tool`,
+        },
+    },
+    {
         path: `editor/custom-tool/paste-image`,
         loadChildren: async () =>
             (

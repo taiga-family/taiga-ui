@@ -1,0 +1,41 @@
+<tui-hosted-dropdown
+    #color
+    [content]="colorDropdown"
+    [tuiDropdownMaxHeight]="999"
+>
+    <button
+        tuiIconButton
+        type="button"
+        size="s"
+        appearance="icon"
+        automation-id="toolbar__color-button"
+        [icon]="icon"
+        [focusable]="color.open"
+    ></button>
+    <div
+        class="t-plate"
+        [style.background]="fontColor$ | async"
+    ></div>
+    <ng-template
+        #colorDropdown
+        let-activeZone
+    >
+        <tui-color-selector
+            [colors]="colors"
+            [color]="selectedColor"
+            [tuiActiveZoneParent]="activeZone"
+            (colorChange)="onValueChange($event)"
+        ></tui-color-selector>
+
+        <button
+            tuiButton
+            size="m"
+            type="button"
+            appearance="flat"
+            class="t-color-save"
+            (click)="setColor()"
+        >
+            Use color
+        </button>
+    </ng-template>
+</tui-hosted-dropdown>
