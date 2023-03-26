@@ -1,10 +1,9 @@
 import {Inject, Injectable} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
+import {TuiMedia} from '@taiga-ui/core/interfaces';
+import {TUI_MEDIA} from '@taiga-ui/core/tokens';
 import {fromEvent, merge, Observable} from 'rxjs';
 import {map, share, startWith} from 'rxjs/operators';
-
-import {TuiMedia} from '../interfaces';
-import {TUI_MEDIA} from '../tokens';
 
 /**
  * Service to provide the current breakpoint based on Taiga UI's media queries

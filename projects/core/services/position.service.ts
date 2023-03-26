@@ -10,6 +10,7 @@ import {map} from 'rxjs/operators';
 export class TuiPositionService extends Observable<TuiPoint> {
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
+
         @Inject(ANIMATION_FRAME) animationFrame: Observable<unknown>,
         @Inject(NgZone) ngZone: NgZone,
         @Inject(TuiPositionAccessor) accessor: TuiPositionAccessor,
