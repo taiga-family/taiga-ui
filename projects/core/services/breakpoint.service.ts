@@ -16,8 +16,8 @@ export class TuiBreakpointService extends Observable<string | null> {
             fromEvent<MediaQueryListEvent>(windowRef.matchMedia(query), `change`),
         );
         const media$ = merge(...events$).pipe(
-            map(({media}) => breakpoints.find(({query}) => query === media)!.name),
-            startWith(currentBreakpoint(breakpoints, windowRef).name),
+            map(() => currentBreakpoint(breakpoints, windowRef.innerWidth).name),
+            startWith(currentBreakpoint(breakpoints, windowRef.innerWidth).name),
             share(),
         );
 
@@ -28,15 +28,17 @@ export class TuiBreakpointService extends Observable<string | null> {
 interface Breakpoint {
     name: string;
     query: string;
+    width: number;
 }
 
 function getBreakpoints(media: TuiMedia): Breakpoint[] {
     return Object.entries(media).map(([name, value]) => ({
         name,
-        query: `(max-width: ${value - 1}px)`,
+        query: `(max-width: ${value}px)`,
+        width: value,
     }));
 }
 
-function currentBreakpoint(breakpoints: Breakpoint[], windowRef: Window): Breakpoint {
-    return breakpoints.find(({query}) => windowRef.matchMedia(query).matches)!;
+function currentBreakpoint(breakpoints: Breakpoint[], innerWidth: number): Breakpoint {
+    return breakpoints.find(({width}) => innerWidth <= width) ?? breakpoints.slice(-1)[0];
 }
