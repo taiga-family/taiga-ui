@@ -2,6 +2,9 @@
 
 tui-input-files {
     display: block;
+    min-height: var(--tui-height-l);
+    border-radius: var(--tui-radius-m);
+    font: var(--tui-font-text-m);
 
     .t-native {
         .fullsize();
@@ -26,16 +29,13 @@ tui-input-files {
 [tuiWrapper][data-appearance='input-file'] {
     display: flex;
     background: transparent;
-    font: var(--tui-font-text-m);
     word-wrap: break-word;
     color: var(--tui-text-02);
-    flex: 1;
     justify-content: center;
     align-items: center;
-    min-height: var(--tui-height-l);
-    border-radius: var(--tui-radius-m);
-    padding: 1rem 0.5rem;
-    box-sizing: border-box;
+    min-height: inherit;
+    border-radius: inherit;
+    padding: 0 0.5rem;
 
     &:after {
         border: 1px dashed;

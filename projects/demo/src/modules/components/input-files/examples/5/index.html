@@ -1,3 +1,33 @@
+<tui-input-files
+    class="control"
+    [formControl]="control"
+>
+    <ng-template let-dragged>
+        <div
+            *ngIf="dragged; else base"
+            class="content"
+        >
+            <tui-marker-icon
+                mode="link"
+                src="tuiIconDropletLarge"
+            ></tui-marker-icon>
+            <div>Drop it like it's hot!</div>
+        </div>
+        <ng-template #base>
+            <div class="content">
+                <tui-marker-icon
+                    mode="link"
+                    src="tuiIconUploadCloudLarge"
+                ></tui-marker-icon>
+                <div>
+                    Drag and drop file here or
+                    <a tuiLink>click to upload</a>
+                </div>
+            </div>
+        </ng-template>
+    </ng-template>
+</tui-input-files>
+
 <tui-files>
     <tui-file
         [file]="file"
