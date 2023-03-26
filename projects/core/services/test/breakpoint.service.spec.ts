@@ -18,7 +18,8 @@ describe(`TuiBreakpointService`, () => {
     const windowMock: any = {
         matchMedia: jest
             .fn()
-            .mockReturnValue({...mock, matches: true, media: `(max-width: 1023px)`}),
+            .mockReturnValue({...mock, matches: true, media: `(max-width: 767px)`}),
+        innerWidth: 700,
     };
 
     configureTestSuite(() => {
