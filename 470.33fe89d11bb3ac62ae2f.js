@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[470],{ZRKd:function(n,o,u){"use strict";u.r(o),o.default="```ts\nimport {TuiBreadcrumbsModule} from '@taiga-ui/kit';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiBreadcrumbsModule,\n  ],\n  // ...\n})\nexport class MyModule {}\n```\n"}}]);
