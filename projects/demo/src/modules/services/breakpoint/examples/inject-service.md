@@ -5,7 +5,6 @@ import {TuiBreakpointService} from '@taiga-ui/core';
 // ...
 export class MyComponent {
   constructor(
-    @Self()
     @Inject(TuiBreakpointService)
     private readonly breakpoint$: TuiBreakpointService,
   ) {}

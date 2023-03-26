@@ -8,8 +8,10 @@ import {map, share, startWith} from 'rxjs/operators';
 /**
  * Service to provide the current breakpoint based on Taiga UI's media queries
  */
-@Injectable()
-export class TuiBreakpointService extends Observable<string | null> {
+@Injectable({
+    providedIn: `root`,
+})
+export class TuiBreakpointService extends Observable<MediaKey | null> {
     constructor(@Inject(TUI_MEDIA) media: TuiMedia, @Inject(WINDOW) windowRef: Window) {
         const breakpoints = getBreakpoints(media);
         const events$ = breakpoints.map(({query}) =>
@@ -25,17 +27,19 @@ export class TuiBreakpointService extends Observable<string | null> {
     }
 }
 
+type MediaKey = Omit<keyof TuiMedia, 'tablet'>;
+
 interface Breakpoint {
-    name: string;
+    name: MediaKey;
     query: string;
     width: number;
 }
 
 function getBreakpoints(media: TuiMedia): Breakpoint[] {
-    return Object.entries(media).map(([name, value]) => ({
-        name,
-        query: `(max-width: ${value - 1}px)`,
-        width: value,
+    return Object.entries(media).map(([name, width]) => ({
+        name: name as MediaKey,
+        query: `(max-width: ${width - 1}px)`,
+        width,
     }));
 }
 
