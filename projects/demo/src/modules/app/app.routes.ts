@@ -1474,6 +1474,15 @@ export const ROUTES = [
         },
     },
     {
+        path: `pipes/is-present`,
+        loadChildren: async () =>
+            (await import(`../pipes/is-present/is-present.module`))
+                .ExampleTuiIsPresentModule,
+        data: {
+            title: `IsPresent`,
+        },
+    },
+    {
         path: `pipes/mapper`,
         loadChildren: async () =>
             (await import(`../pipes/mapper/mapper.module`)).ExampleTuiMapperModule,
