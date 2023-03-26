@@ -1,0 +1,59 @@
+@import 'taiga-ui-local';
+
+:host {
+    display: block;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+th,
+td {
+    text-align: left;
+    border: 1px solid var(--tui-base-03);
+    height: 3.375rem;
+    padding: 0 1rem;
+    vertical-align: middle;
+}
+
+.mobile {
+    display: block;
+}
+
+.desktop-small {
+    display: none;
+}
+
+.desktop-large {
+    display: none;
+}
+
+@media @tui-tablet-min {
+    .mobile {
+        display: none;
+    }
+
+    .desktop-small {
+        display: block;
+    }
+
+    .desktop-large {
+        display: none;
+    }
+}
+
+@media @tui-desktop-min {
+    .mobile {
+        display: none;
+    }
+
+    .desktop-small {
+        display: none;
+    }
+
+    .desktop-large {
+        display: block;
+    }
+}

@@ -1357,6 +1357,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Tools`,
+                title: `BreakpointService`,
+                keywords: `breakpoint`,
+                route: `/services/breakpoint-service`,
+            },
+            {
+                section: $localize`Tools`,
                 title: `DestroyService`,
                 keywords: `сервис`,
                 route: `/services/destroy-service`,

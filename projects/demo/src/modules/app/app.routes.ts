@@ -1711,6 +1711,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `services/breakpoint-service`,
+        loadChildren: async () =>
+            (await import(`../services/breakpoint/breakpoint.module`))
+                .ExampleTuiBreakpointModule,
+        data: {
+            title: `BreakpointService`,
+        },
+    },
+    {
         path: `services/destroy-service`,
         loadChildren: async () =>
             (await import(`../services/destroy/destroy.module`)).ExampleTuiDestroyModule,
