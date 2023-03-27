@@ -97,8 +97,14 @@ export class TuiResizerDirective {
             this.height + this.tuiResizer[1] * (y - this.y),
         ] as const;
 
-        style.width = tuiPx(size[0]);
-        style.height = tuiPx(size[1]);
+        if (this.tuiResizer[0]) {
+            style.width = tuiPx(size[0]);
+        }
+
+        if (this.tuiResizer[1]) {
+            style.height = tuiPx(size[1]);
+        }
+
         this.tuiSizeChange.emit(size);
     }
 }
