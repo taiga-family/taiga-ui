@@ -1,4 +1,5 @@
 @import './styles/details.less';
+@import './styles/code-blocks.less';
 
 .tui-editor-socket {
     display: block;
@@ -158,26 +159,6 @@
     counter-increment: item;
     color: var(--tui-base-05);
     vertical-align: top;
-}
-
-.tui-editor-socket pre {
-    white-space: pre-wrap;
-    word-break: break-word;
-    border-radius: 0.25rem;
-    margin: 1rem 0;
-    padding: 0.75rem 1rem;
-    font-family: Courier, monospace;
-    color: var(--tui-text-02);
-    background: var(--tui-base-02);
-}
-
-.tui-editor-socket code {
-    box-shadow: none;
-}
-
-.tui-editor-socket pre + pre {
-    margin-top: -1.8125rem;
-    padding-top: 0;
 }
 
 .tui-editor-socket blockquote {

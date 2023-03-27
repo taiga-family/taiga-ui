@@ -6,6 +6,8 @@ export const HTML_EDITOR_EXAMPLE_DETAILS = `<div class="t-details-wrapper t-deta
 
 export const HTML_EDITOR_EXAMPLE_LEGACY_DETAILS = `<div class="details-wrapper details-wrapper_rendered"><details data-opened="true"><summary><p><span>Details</span></p></summary><div data-type="details-content"><h1>Title</h1><h2>Subtitle</h2><p><span style="font-size: 17px">Large</span></p><p><span style="font-size: 15px">Normal</span></p><p><span style="font-size: 13px">Small</span></p></div></details><button class="details-arrow"></button></div><p></p>`;
 
+export const HTML_EDITOR_EXAMPLE_HIGHTLIGH_BLOCK = `<pre class="language- t-editor-code-block"><code>Hello world</code></pre><p><code class="t-editor-code">Tell me please, why?</code></p><pre class="language- t-editor-code-block"><code class="language-ts">export class MyName { readonly a = 5; }</code></pre><p></p>`;
+
 export const HTML_EDITOR_EXAMPLE_BLOCKQUOTE = `<blockquote><p>123123123a</p><p>112323</p></blockquote><p></p>`;
 
 export const HTML_EDITOR_EXAMPLE_PRE_CODE = `<pre><code>%26lt;script%26gt;<%2Fcode><%2Fpre><pre><code>%20const%20hello%20%3D%20"world";<%2Fcode><%2Fpre><pre><code>%26lt;%2Fscript%26gt;<%2Fcode><%2Fpre><p>Hello<%2Fp><pre><code>World<%2Fcode><%2Fpre><p><code>Taiga%20UI<%2Fcode>%20%20by%20%20<code>Tinkoff<%2Fcode><%2Fp>`;

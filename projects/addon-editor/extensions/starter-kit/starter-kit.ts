@@ -3,7 +3,10 @@ import {Blockquote, BlockquoteOptions} from '@tiptap/extension-blockquote';
 import {Bold, BoldOptions} from '@tiptap/extension-bold';
 import {BulletList, BulletListOptions} from '@tiptap/extension-bullet-list';
 import {Code, CodeOptions} from '@tiptap/extension-code';
-import {CodeBlock, CodeBlockOptions} from '@tiptap/extension-code-block';
+import {
+    CodeBlockLowlight,
+    CodeBlockLowlightOptions,
+} from '@tiptap/extension-code-block-lowlight';
 import {Document} from '@tiptap/extension-document';
 import {Dropcursor, DropcursorOptions} from '@tiptap/extension-dropcursor';
 import {Gapcursor} from '@tiptap/extension-gapcursor';
@@ -17,13 +20,14 @@ import {OrderedList, OrderedListOptions} from '@tiptap/extension-ordered-list';
 import {Paragraph, ParagraphOptions} from '@tiptap/extension-paragraph';
 import {Strike, StrikeOptions} from '@tiptap/extension-strike';
 import {Text} from '@tiptap/extension-text';
+import {lowlight} from 'lowlight';
 
 export interface TuiStarterKitOptions {
     blockquote: Partial<BlockquoteOptions> | false;
     bold: Partial<BoldOptions> | false;
     bulletList: Partial<BulletListOptions> | false;
     code: Partial<CodeOptions> | false;
-    codeBlock: Partial<CodeBlockOptions> | false;
+    codeBlock: Partial<CodeBlockLowlightOptions> | false;
     document: false;
     dropcursor: Partial<DropcursorOptions> | false;
     gapcursor: false;
@@ -62,11 +66,29 @@ export const StarterKit = Extension.create<TuiStarterKitOptions>({
         }
 
         if (options?.code !== false) {
-            extensions.push(Code.configure(options?.code));
+            extensions.push(
+                Code.configure(
+                    options?.code ?? {
+                        HTMLAttributes: {
+                            class: `t-editor-code`,
+                        },
+                    },
+                ),
+            );
         }
 
         if (options?.codeBlock !== false) {
-            extensions.push(CodeBlock.configure(options?.codeBlock));
+            extensions.push(
+                CodeBlockLowlight.configure(
+                    options?.codeBlock ?? {
+                        lowlight,
+                        defaultLanguage: `plaintext`,
+                        HTMLAttributes: {
+                            class: `language- t-editor-code-block`,
+                        },
+                    },
+                ),
+            );
         }
 
         if (options?.document !== false) {
