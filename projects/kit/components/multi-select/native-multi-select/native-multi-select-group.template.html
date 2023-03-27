@@ -14,7 +14,7 @@
         *ngFor="let option of group"
         [selected]="option | tuiMapper : selectedMapper : host.value"
         [value]="option"
-        [attr.disabled]="host.disableItemHandler(option) || null"
+        [disabled]="host.disableItemHandler(option)"
     >
         {{ option }}
     </option>

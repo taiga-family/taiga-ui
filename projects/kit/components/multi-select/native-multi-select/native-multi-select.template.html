@@ -9,7 +9,7 @@
     *ngFor="let option of items"
     [selected]="option | tuiMapper : selectedMapper : host.value"
     [value]="option"
-    [attr.disabled]="host.disableItemHandler(option) || null"
+    [disabled]="host.disableItemHandler(option)"
 >
     {{ option }}
 </option>

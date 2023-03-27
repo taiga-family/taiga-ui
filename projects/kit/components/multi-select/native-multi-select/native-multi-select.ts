@@ -31,10 +31,12 @@ export abstract class AbstractTuiNativeMultiSelect {
         return this.elementRef.nativeElement.id || this.idService.generate();
     }
 
-    selectedMapper: TuiMapper<string, true | null> = (option, value) =>
-        value.includes(option) || null;
+    selectedMapper: TuiMapper<string, boolean> = (option, value) =>
+        value.includes(option);
 
-    onValueChange({selectedOptions}: HTMLSelectElement): void {
+    onValueChange(): void {
+        const {selectedOptions} = this.elementRef.nativeElement;
+
         this.host.onSelectionChange(
             Array.from(selectedOptions).map(option => option.value),
         );

@@ -22,7 +22,7 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select';
         '[attr.aria-invalid]': 'host.invalid',
         '[disabled]': 'host.disabled || control.readOnly',
         '[tabIndex]': 'host.focusable ? 0 : -1',
-        '(change)': 'onValueChange(elementRef.nativeElement)',
+        '(change)': 'onValueChange()',
         '(click.stop.silent)': '0',
         '(mousedown.stop.silent)': '0',
     },
