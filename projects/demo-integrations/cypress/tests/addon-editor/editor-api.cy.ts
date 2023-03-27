@@ -17,6 +17,7 @@ import {
 } from '@demo-integrations/support/editor/helpers';
 import {
     HTML_EDITOR_EXAMPLE_BLOCKQUOTE,
+    HTML_EDITOR_EXAMPLE_DETAILS,
     HTML_EDITOR_EXAMPLE_LONG_WORD_UL,
     HTML_EDITOR_EXAMPLE_NESTED_OL_UL,
     HTML_EDITOR_EXAMPLE_NESTED_UL,
@@ -82,6 +83,16 @@ describe(`Editor API`, () => {
                 .find(`tui-editor-socket.tui-example`)
                 .tuiWaitBeforeScreenshot()
                 .matchImageSnapshot(`2-1-dark-mode-output`);
+        });
+    });
+
+    describe(`details`, () => {
+        it(`prevents extra margin between top border of details and content`, () => {
+            tuiVisitEditorApiPage({content: HTML_EDITOR_EXAMPLE_DETAILS});
+
+            tuiGetDemoContent()
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`prevents-extra-margin-details`);
         });
     });
 
