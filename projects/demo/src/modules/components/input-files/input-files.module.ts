@@ -14,6 +14,7 @@ import {
     TuiFieldErrorPipeModule,
     TuiFilesModule,
     TuiInputFilesModule,
+    TuiMarkerIconModule,
 } from '@taiga-ui/kit';
 
 import {TuiInputFilesExample1} from './examples/1';
@@ -30,14 +31,15 @@ import {ExampleTuiInputFilesComponent} from './input-files.component';
         ReactiveFormsModule,
         TuiFilesModule,
         TuiInputFilesModule,
-        TuiAddonDocModule,
         TuiLinkModule,
         TuiButtonModule,
         TuiSvgModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputFilesComponent)),
         TuiErrorModule,
         TuiFieldErrorPipeModule,
         TuiNotificationModule,
+        TuiMarkerIconModule,
+        TuiAddonDocModule,
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputFilesComponent)),
     ],
     declarations: [
         ExampleTuiInputFilesComponent,

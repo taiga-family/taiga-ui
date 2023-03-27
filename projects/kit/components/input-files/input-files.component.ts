@@ -11,6 +11,7 @@ import {
     Optional,
     Output,
     Self,
+    TemplateRef,
     ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
@@ -20,6 +21,7 @@ import {
     EMPTY_ARRAY,
     TUI_IS_MOBILE,
     tuiAsFocusableItemAccessor,
+    TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
@@ -57,6 +59,9 @@ export class TuiInputFilesComponent
 
     @ContentChild(TuiInputFilesDirective, {read: TuiInputFilesDirective})
     readonly nativeInput?: TuiInputFilesDirective;
+
+    @ContentChild(TemplateRef)
+    readonly template?: TemplateRef<TuiContextWithImplicit<boolean>>;
 
     @ViewChild('formatRejection')
     readonly formatRejection!: PolymorpheusContent;
