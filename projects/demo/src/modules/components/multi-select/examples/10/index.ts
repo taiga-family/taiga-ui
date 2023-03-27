@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiBooleanHandler} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tui-multi-select-example-10',
@@ -10,8 +11,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
 })
 export class TuiMultiSelectExample10 {
-    search: string | null = '';
-
     itemControl = new FormControl();
     itemGroupControl = new FormControl();
 
@@ -30,4 +29,6 @@ export class TuiMultiSelectExample10 {
     ];
 
     labels = ['Salad', 'Soup'];
+
+    disableHandler: TuiBooleanHandler<string> = item => item.startsWith('Broccoli');
 }

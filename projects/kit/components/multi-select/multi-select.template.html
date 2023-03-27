@@ -21,6 +21,7 @@
         [pseudoInvalid]="computedInvalid"
         [editable]="false"
         [expandable]="expandable"
+        [removable]="!nativeDropdownMode"
         [search]="searchOrSpace"
         [rows]="rows"
         [ngModel]="computedValue | tuiMapper : valueMapper : stringify"
@@ -32,12 +33,10 @@
     >
         <ng-content></ng-content>
         <ng-template #select>
-            <ng-container *ngIf="isMobile">
-                <ng-content
-                    select="select"
-                    ngProjectAs="select"
-                ></ng-content>
-            </ng-container>
+            <ng-content
+                *ngIf="isMobile"
+                select="select"
+            ></ng-content>
         </ng-template>
 
         <ng-container
@@ -66,6 +65,7 @@
                 tuiWrapper
                 appearance="icon"
                 automation-id="tui-multi-select__arrow"
+                tuiPreventDefault="mousedown"
                 class="t-arrow"
                 [class.t-arrow_native-dropdown]="nativeDropdownMode"
             >

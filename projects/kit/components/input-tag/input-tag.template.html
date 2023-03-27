@@ -61,7 +61,7 @@
                                 [disabled]="computedDisabled || disabledItemHandler(item)"
                                 [editable]="editable && !readOnly"
                                 [hoverable]="!readOnly"
-                                [removable]="!readOnly"
+                                [removable]="!readOnly && removable"
                                 [separator]="separator"
                                 [maxLength]="maxLength"
                                 [size]="controller.size"

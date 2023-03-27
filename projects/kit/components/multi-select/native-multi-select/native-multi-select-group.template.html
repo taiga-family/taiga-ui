@@ -4,6 +4,7 @@
     *tuiDataList
     [items]="items"
     [labels]="labels"
+    [disabledItemHandler]="host.disableItemHandler"
 ></tui-data-list-wrapper>
 <optgroup
     *ngFor="let group of items; let index = index"
@@ -13,6 +14,7 @@
         *ngFor="let option of group"
         [attr.selected]="option | tuiMapper : selectedMapper : host.value"
         [value]="option"
+        [attr.disabled]="host.disableItemHandler(option) || null"
     >
         {{ option }}
     </option>

@@ -3,11 +3,13 @@
 <tui-data-list-wrapper
     *tuiDataList
     [items]="items"
+    [disabledItemHandler]="host.disableItemHandler"
 ></tui-data-list-wrapper>
 <option
     *ngFor="let option of items"
     [attr.selected]="option | tuiMapper : selectedMapper : host.value"
     [value]="option"
+    [attr.disabled]="host.disableItemHandler(option) || null"
 >
     {{ option }}
 </option>

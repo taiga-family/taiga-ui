@@ -54,7 +54,7 @@ import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_MULTI_SELECT_OPTIONS, TuiMultiSelectOptions} from './multi-select-options';
-import {AbstractTuiNativeSelect} from './native-multi-select/native-select';
+import {AbstractTuiNativeMultiSelect} from './native-multi-select/native-multi-select';
 
 @Component({
     selector: 'tui-multi-select',
@@ -76,8 +76,8 @@ export class TuiMultiSelectComponent<T>
     @ContentChild(TUI_DATA_LIST_ACCESSOR as any)
     private readonly accessor?: TuiDataListAccessor<T>;
 
-    @ContentChild(AbstractTuiNativeSelect, {static: true})
-    private readonly nativeSelect?: AbstractTuiNativeSelect;
+    @ContentChild(AbstractTuiNativeMultiSelect, {static: true})
+    private readonly nativeSelect?: AbstractTuiNativeMultiSelect;
 
     @ViewChild(TuiHostedDropdownComponent)
     private readonly hostedDropdown?: TuiHostedDropdownComponent;
@@ -270,10 +270,6 @@ export class TuiMultiSelectComponent<T>
     }
 
     onSearch(search: string | null): void {
-        if (!this.nativeDropdownMode) {
-            this.open = true;
-        }
-
         this.updateSearch(search);
     }
 

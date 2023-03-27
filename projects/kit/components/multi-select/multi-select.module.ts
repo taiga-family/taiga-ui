@@ -26,8 +26,8 @@ import {TuiMultiSelectComponent} from './multi-select.component';
 import {TuiMultiSelectDirective} from './multi-select.directive';
 import {TuiMultiSelectGroupComponent} from './multi-select-group/multi-select-group.component';
 import {TuiMultiSelectGroupDirective} from './multi-select-group/multi-select-group.directive';
-import {TuiNativeSelectComponent} from './native-multi-select/native-select.component';
-import {TuiNativeSelectGroupComponent} from './native-multi-select/native-select-group.component';
+import {TuiNativeMultiSelectComponent} from './native-multi-select/native-multi-select.component';
+import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-multi-select-group.component';
 
 @NgModule({
     imports: [
@@ -55,8 +55,8 @@ import {TuiNativeSelectGroupComponent} from './native-multi-select/native-select
         TuiMultiSelectGroupComponent,
         TuiMultiSelectGroupDirective,
         TuiHideSelectedPipe,
-        TuiNativeSelectComponent,
-        TuiNativeSelectGroupComponent,
+        TuiNativeMultiSelectComponent,
+        TuiNativeMultiSelectGroupComponent,
         TuiMultiSelectDirective,
     ],
     exports: [
@@ -65,8 +65,8 @@ import {TuiNativeSelectGroupComponent} from './native-multi-select/native-select
         TuiMultiSelectGroupDirective,
         TuiHideSelectedPipe,
         TuiMultiSelectDirective,
-        TuiNativeSelectComponent,
-        TuiNativeSelectGroupComponent,
+        TuiNativeMultiSelectComponent,
+        TuiNativeMultiSelectGroupComponent,
     ],
 })
 export class TuiMultiSelectModule {}

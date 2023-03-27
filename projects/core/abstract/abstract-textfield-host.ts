@@ -32,7 +32,7 @@ export abstract class AbstractTuiTextfieldHost<T extends AbstractTuiControl<any>
         return this.host.value?.toString() || ``;
     }
 
-    abstract onValueChange(value: string[] | string): void;
+    abstract onValueChange(value: string): void;
 
     process(_input: HTMLInputElement): void {}
 }
