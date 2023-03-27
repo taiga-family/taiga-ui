@@ -1,5 +1,6 @@
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     ContentChildren,
     ElementRef,
@@ -7,6 +8,7 @@ import {
     forwardRef,
     HostBinding,
     HostListener,
+    Inject,
     Input,
     Output,
     QueryList,
@@ -64,6 +66,10 @@ export class TuiStepperComponent {
 
     activeItemIndex = 0;
 
+    constructor(
+        @Inject(ChangeDetectorRef) private readonly changeDetector: ChangeDetectorRef,
+    ) {}
+
     @tuiPure
     get changes$(): Observable<unknown> {
         // Delay is required to trigger change detection after steps are rendered,
@@ -111,6 +117,8 @@ export class TuiStepperComponent {
         this.activeItemIndex = index;
         this.activeItemIndexChange.emit(index);
         this.scrollIntoView(index);
+
+        this.changeDetector.markForCheck();
     }
 
     @tuiPure
