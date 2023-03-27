@@ -92,7 +92,7 @@
         "@nrwl/workspace": "15.8.9",
         "@testing-library/cypress": "9.0.0",
         "@tinkoff/prettier-config": "1.47.1",
-        "@tinkoff/stylelint-config": "1.46.2",
+        "@tinkoff/stylelint-config": "1.52.0",
         "@types/glob": "8.1.0",
         "@types/node": "18.15.10",
         "@types/parse5": "6.0.3",
