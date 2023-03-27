@@ -3,9 +3,12 @@
 .tui-editor-socket {
     display: block;
     margin: 0;
-    overflow: hidden;
     color: var(--tui-text-01);
     font: var(--tui-font-text-m);
+
+    &[tuiTiptapEditor] {
+        overflow: hidden;
+    }
 
     &._preview-image img {
         cursor: pointer;
