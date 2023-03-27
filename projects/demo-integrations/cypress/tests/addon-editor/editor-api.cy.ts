@@ -72,7 +72,6 @@ describe(`Editor API`, () => {
                 .tuiWaitBeforeScreenshot()
                 .matchImageSnapshot(`1-1-dark-mode-input`);
 
-            cy.get(`@editor`).find(`tui-scrollbar`).scrollTo(0, 500);
             cy.get(`@editor`)
                 .tuiWaitBeforeScreenshot()
                 .matchImageSnapshot(`1-2-dark-mode-input`);
@@ -231,7 +230,7 @@ describe(`Editor API`, () => {
     });
 
     describe(`Editor and Dropdown`, () => {
-        beforeEach(() => tuiVisitEditorApiPage());
+        beforeEach(() => tuiVisitEditorApiPage({maxHeight: 400}));
 
         it(`should not overlap tools`, () => {
             tuiFocusToStartInEditor();

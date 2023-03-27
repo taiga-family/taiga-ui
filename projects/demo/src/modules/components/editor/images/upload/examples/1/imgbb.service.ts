@@ -33,6 +33,10 @@ export class ImgbbService {
         return new URLSearchParams(formData as any);
     }
 
+    get isLoading(): boolean {
+        return this.loading$.getValue();
+    }
+
     save(base64: string): Observable<string> {
         const {host, apiKey, expiration} = environment.imgbb;
 
