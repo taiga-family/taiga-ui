@@ -1,5 +1,4 @@
 import {
-    AfterViewInit,
     ChangeDetectorRef,
     Directive,
     ElementRef,
@@ -14,7 +13,7 @@ import {TUI_TEXTFIELD_HOST, TuiDataListDirective} from '@taiga-ui/core';
 import {TuiMultiSelectDirective} from '../multi-select.directive';
 
 @Directive()
-export abstract class AbstractTuiNativeMultiSelect implements AfterViewInit {
+export abstract class AbstractTuiNativeMultiSelect {
     @ViewChild(TuiDataListDirective, {read: TemplateRef, static: true})
     readonly datalist: TemplateRef<any> | null = null;
 
@@ -39,18 +38,5 @@ export abstract class AbstractTuiNativeMultiSelect implements AfterViewInit {
         this.host.onSelectionChange(
             Array.from(selectedOptions).map(option => option.value),
         );
-    }
-
-    // Deselecting all for Chrome and Android
-    ngAfterViewInit(): void {
-        this.control.control?.valueChanges.subscribe(value => {
-            if (!value?.length) {
-                this.elementRef.nativeElement
-                    .querySelectorAll(`option`)
-                    .forEach(option => {
-                        option.selected = false;
-                    });
-            }
-        });
     }
 }

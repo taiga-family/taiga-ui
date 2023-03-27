@@ -7,7 +7,7 @@
 ></tui-data-list-wrapper>
 <option
     *ngFor="let option of items"
-    [attr.selected]="option | tuiMapper : selectedMapper : host.value"
+    [selected]="option | tuiMapper : selectedMapper : host.value"
     [value]="option"
     [attr.disabled]="host.disableItemHandler(option) || null"
 >
