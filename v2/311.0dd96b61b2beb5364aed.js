@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[311],{"6Kis":function(n,i,s){"use strict";s.r(i),i.default="```bash\nnpm i @taiga-ui/{cdk,core,kit,icons}\n```\n"}}]);
