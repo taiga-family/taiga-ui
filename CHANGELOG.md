@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.22.0](https://github.com/tinkoff/taiga-ui/compare/v3.21.0...v3.22.0) (2023-03-27)
+
+### Features
+
+- **addon-doc:** add `TUI_DOC_MAP_PAGES` for cached map pages ([#3932](https://github.com/tinkoff/taiga-ui/issues/3932))
+  ([9c227e0](https://github.com/tinkoff/taiga-ui/commit/9c227e00332a1b7d5e193721305935e093fe166a))
+- **addon-doc:** add `TUI_DOC_URL_STATE_HANDLER` for override URL tree segments in history
+  ([#3955](https://github.com/tinkoff/taiga-ui/issues/3955))
+  ([a175c81](https://github.com/tinkoff/taiga-ui/commit/a175c81a84c0bea39cc4df9be5344407dbb2e86e))
+- **addon-doc:** support `icon` for code editor button ([#3933](https://github.com/tinkoff/taiga-ui/issues/3933))
+  ([6ce8572](https://github.com/tinkoff/taiga-ui/commit/6ce8572af0ea47478f5daec880d6cfeea0695562))
+- **addon-editor:** improve styles for `details` component ([#4000](https://github.com/tinkoff/taiga-ui/issues/4000))
+  ([ab5342b](https://github.com/tinkoff/taiga-ui/commit/ab5342bead5c14634cdd6993bcdea6074feb0700))
+- **addon-editor:** support custom full color picker ([#3748](https://github.com/tinkoff/taiga-ui/issues/3748))
+  ([aefb518](https://github.com/tinkoff/taiga-ui/commit/aefb51875270881cccb5b340fd1856a782c0a08b))
+- **kit:** `InputFiles` customize content ([#3995](https://github.com/tinkoff/taiga-ui/issues/3995))
+  ([c70ccfe](https://github.com/tinkoff/taiga-ui/commit/c70ccfeada3c56b1e739ef7f8a8ef0dd5143d756))
+- **kit:** `MultiSelect` add ability to use native dropdown on mobile
+  ([#3983](https://github.com/tinkoff/taiga-ui/issues/3983))
+  ([35b86e0](https://github.com/tinkoff/taiga-ui/commit/35b86e0ba7670481b0a98a3ba429c8bbf7ac3040))
+
+### Bug Fixes
+
+- **addon-editor:** overflow `tui-editor-socket` only inside `tui-editor`
+  ([#4003](https://github.com/tinkoff/taiga-ui/issues/4003))
+  ([d20b0e7](https://github.com/tinkoff/taiga-ui/commit/d20b0e7d3707378dc4c53ef0a906fb4caa1403fe))
+- **addon-editor:** trigger `updateValueAndValidity` after `focus/blur` events in `tui-editor`
+  ([#3968](https://github.com/tinkoff/taiga-ui/issues/3968))
+  ([6af090b](https://github.com/tinkoff/taiga-ui/commit/6af090b72ea545a87f6fc7daf851ff682e2bd52c))
+- **addon-mobile:** `Sheet` disable scroll snap for Firefox ([#3946](https://github.com/tinkoff/taiga-ui/issues/3946))
+  ([411a58a](https://github.com/tinkoff/taiga-ui/commit/411a58aaa0e5a844fa838587f56b850711cd1adc))
+- **cdk:** `Resizer` leave irrelevant dimensions untouched ([#4004](https://github.com/tinkoff/taiga-ui/issues/4004))
+  ([c691390](https://github.com/tinkoff/taiga-ui/commit/c69139005df2c1c29de58f11f10f27d52c9f15a7))
+- **cdk:** correct extraction of id for processing in svg ([#3965](https://github.com/tinkoff/taiga-ui/issues/3965))
+  ([28190fa](https://github.com/tinkoff/taiga-ui/commit/28190fa5ef8ff220c93024cb15c755a5f67c5719))
+- **core:** `HintManual` fix initial state ([#3956](https://github.com/tinkoff/taiga-ui/issues/3956))
+  ([091ed25](https://github.com/tinkoff/taiga-ui/commit/091ed25a0f319c4027f1fa1687f59f87cc4e19c2))
+- **core:** `HostedDropdown` properly detect size in case of custom host
+  ([#3957](https://github.com/tinkoff/taiga-ui/issues/3957))
+  ([a7f1f8f](https://github.com/tinkoff/taiga-ui/commit/a7f1f8f909dd85bdf57b25145d13b2bec8933ba4))
+- **core:** fix `Hint` position on pinch-to-zoom in webkit ([#3940](https://github.com/tinkoff/taiga-ui/issues/3940))
+  ([d512952](https://github.com/tinkoff/taiga-ui/commit/d512952839a0426e4519c623effa7f5449a0d68c))
+- **core:** Google Chrome fires keydown event when form autocomplete
+  ([#3964](https://github.com/tinkoff/taiga-ui/issues/3964))
+  ([3444080](https://github.com/tinkoff/taiga-ui/commit/3444080828922b7e23971517d88e534687baa241))
+- **core:** increase default font size from 15px to 16px to remove iOS zoom
+  ([#3994](https://github.com/tinkoff/taiga-ui/issues/3994))
+  ([75461d4](https://github.com/tinkoff/taiga-ui/commit/75461d4670f94ef411c3f87753ee1cf37bb927cb))
+- **kit:** `InputTag` remove trailing comma for non editable mode
+  ([#3980](https://github.com/tinkoff/taiga-ui/issues/3980))
+  ([83f0305](https://github.com/tinkoff/taiga-ui/commit/83f0305db038fcb2e910ff7b00a24620500c7322))
+- **kit:** align for multiSelectTexts ([#3978](https://github.com/tinkoff/taiga-ui/issues/3978))
+  ([376c2b9](https://github.com/tinkoff/taiga-ui/commit/376c2b99ce4404f78fe0dee6ecd4aaf8a24cb0b2))
+- **kit:** align placeholder ([#3999](https://github.com/tinkoff/taiga-ui/issues/3999))
+  ([872919e](https://github.com/tinkoff/taiga-ui/commit/872919e27828ece252eeb5c85b3c99371bbfb82b))
+
 ## [3.21.0](https://github.com/tinkoff/taiga-ui/compare/v3.20.0...v3.21.0) (2023-03-20)
 
 ### Features
