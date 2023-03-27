@@ -33,6 +33,7 @@ import {TuiMultiSelectExample6} from './examples/6';
 import {TuiMultiSelectExample7} from './examples/7';
 import {TuiMultiSelectExample8} from './examples/8';
 import {TuiMultiSelectExample9} from './examples/9';
+import {TuiMultiSelectExample10} from './examples/10';
 import {ExampleTuiMultiSelectComponent} from './multi-select.component';
 
 @NgModule({
@@ -70,6 +71,7 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         TuiMultiSelectExample7,
         TuiMultiSelectExample8,
         TuiMultiSelectExample9,
+        TuiMultiSelectExample10,
     ],
     exports: [ExampleTuiMultiSelectComponent],
 })

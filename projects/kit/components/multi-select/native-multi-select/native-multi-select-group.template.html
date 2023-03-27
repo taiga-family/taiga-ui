@@ -1,0 +1,21 @@
+<ng-container *ngIf="control.control?.valueChanges | async"></ng-container>
+
+<tui-data-list-wrapper
+    *tuiDataList
+    [items]="items"
+    [labels]="labels"
+    [disabledItemHandler]="host.disableItemHandler"
+></tui-data-list-wrapper>
+<optgroup
+    *ngFor="let group of items; let index = index"
+    [label]="labels[index]"
+>
+    <option
+        *ngFor="let option of group"
+        [selected]="option | tuiMapper : selectedMapper : host.value"
+        [value]="option"
+        [disabled]="host.disableItemHandler(option)"
+    >
+        {{ option }}
+    </option>
+</optgroup>

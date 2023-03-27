@@ -61,7 +61,7 @@
                                 [disabled]="computedDisabled || disabledItemHandler(item)"
                                 [editable]="editable && !readOnly"
                                 [hoverable]="!readOnly"
-                                [removable]="!readOnly"
+                                [removable]="!readOnly && removable"
                                 [separator]="separator"
                                 [maxLength]="maxLength"
                                 [size]="controller.size"
@@ -110,6 +110,7 @@
                     </div>
                 </tui-scrollbar>
             </div>
+            <ng-content select="select"></ng-content>
             <div
                 *ngIf="hasRightIcons"
                 class="t-icons t-icons_right"

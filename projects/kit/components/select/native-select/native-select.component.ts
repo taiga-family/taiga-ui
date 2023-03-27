@@ -1,17 +1,13 @@
 import {ChangeDetectionStrategy, Component, Input, TemplateRef} from '@angular/core';
-import {TuiDataListDirective} from '@taiga-ui/core';
+import {tuiAsDataList} from '@taiga-ui/core';
 
 import {AbstractTuiNativeSelect} from './native-select';
 
 @Component({
-    selector: 'select[tuiSelect]:not([labels])',
+    selector: 'select[tuiSelect]:not([labels]):not([multiple])',
     templateUrl: './native-select.template.html',
     providers: [
-        {
-            provide: TuiDataListDirective,
-            deps: [TuiNativeSelectComponent],
-            useExisting: TuiNativeSelectComponent,
-        },
+        tuiAsDataList(TuiNativeSelectComponent),
         {
             provide: TemplateRef,
             deps: [TuiNativeSelectComponent],

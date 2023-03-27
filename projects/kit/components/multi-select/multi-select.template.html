@@ -1,6 +1,6 @@
 <tui-hosted-dropdown
     class="t-hosted"
-    [canOpen]="interactive"
+    [canOpen]="interactive && !nativeDropdownMode"
     [content]="datalist || ''"
     [(open)]="open"
     (tuiActiveZoneChange)="onActiveZone($event)"
@@ -21,6 +21,7 @@
         [pseudoInvalid]="computedInvalid"
         [editable]="false"
         [expandable]="expandable"
+        [removable]="!nativeDropdownMode"
         [search]="searchOrSpace"
         [rows]="rows"
         [ngModel]="computedValue | tuiMapper : valueMapper : stringify"
@@ -31,7 +32,19 @@
         (click.prevent)="onClick(inputTag)"
     >
         <ng-content></ng-content>
+        <ng-template #select>
+            <ng-content
+                *ngIf="isMobile"
+                select="select"
+            ></ng-content>
+        </ng-template>
+
+        <ng-container
+            *ngTemplateOutlet="select"
+            ngProjectAs="select"
+        ></ng-container>
     </tui-input-tag>
+
     <div
         class="t-wrapper"
         [class.t-wrapper_disabled]="disabled"
@@ -54,6 +67,7 @@
                 automation-id="tui-multi-select__arrow"
                 tuiPreventDefault="mousedown"
                 class="t-arrow"
+                [class.t-arrow_native-dropdown]="nativeDropdownMode"
             >
                 <ng-container *polymorpheusOutlet="arrow as text">
                     {{ text }}

@@ -95,6 +95,11 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
         HTML: import('./examples/9/index.html?raw'),
     };
 
+    readonly example10: TuiDocExample = {
+        TypeScript: import('./examples/10/index.ts?raw'),
+        HTML: import('./examples/10/index.html?raw'),
+    };
+
     override labelOutside = true;
 
     readonly items = [

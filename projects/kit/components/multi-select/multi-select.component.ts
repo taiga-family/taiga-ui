@@ -17,6 +17,7 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiMultipleControl,
     EMPTY_ARRAY,
+    TUI_IS_MOBILE,
     TuiActiveZoneDirective,
     tuiArrayToggle,
     tuiAsControl,
@@ -53,6 +54,7 @@ import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_MULTI_SELECT_OPTIONS, TuiMultiSelectOptions} from './multi-select-options';
+import {AbstractTuiNativeMultiSelect} from './native-multi-select/native-multi-select';
 
 @Component({
     selector: 'tui-multi-select',
@@ -73,6 +75,9 @@ export class TuiMultiSelectComponent<T>
 {
     @ContentChild(TUI_DATA_LIST_ACCESSOR as any)
     private readonly accessor?: TuiDataListAccessor<T>;
+
+    @ContentChild(AbstractTuiNativeMultiSelect, {static: true})
+    private readonly nativeSelect?: AbstractTuiNativeMultiSelect;
 
     @ViewChild(TuiHostedDropdownComponent)
     private readonly hostedDropdown?: TuiHostedDropdownComponent;
@@ -142,6 +147,8 @@ export class TuiMultiSelectComponent<T>
         private readonly options: TuiMultiSelectOptions<T>,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
+        @Inject(TUI_IS_MOBILE)
+        readonly isMobile: boolean,
     ) {
         super(control, changeDetectorRef);
     }
@@ -163,6 +170,10 @@ export class TuiMultiSelectComponent<T>
 
     get focused(): boolean {
         return !!this.input?.focused || !!this.hostedDropdown?.focused;
+    }
+
+    get nativeDropdownMode(): boolean {
+        return !!this.nativeSelect && this.isMobile;
     }
 
     get computedValue(): readonly T[] {
@@ -254,8 +265,11 @@ export class TuiMultiSelectComponent<T>
         this.updateValue(value.map(({item}) => item));
     }
 
+    onValueChange(value: readonly T[]): void {
+        this.updateValue(value);
+    }
+
     onSearch(search: string | null): void {
-        this.open = true;
         this.updateSearch(search);
     }
 

@@ -159,6 +159,10 @@ export class TuiInputTagComponent
 
     @Input()
     @tuiDefaultProp()
+    removable = true;
+
+    @Input()
+    @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiStringifiableItem<any> | string> =
         ALWAYS_FALSE_HANDLER;
 
