@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.81.0](https://github.com/tinkoff/taiga-ui/compare/v2.80.0...v2.81.0) (2023-03-27)
+
+### Features
+
+- **cdk:** implement `tuiIsPresent` pipe in v2 ([#3992](https://github.com/tinkoff/taiga-ui/issues/3992))
+  ([51bb129](https://github.com/tinkoff/taiga-ui/commit/51bb129df09993aadadfce84019d3851ba094a26))
+- **kit:** use `tuiFlag` for correct detect country flag ([#3945](https://github.com/tinkoff/taiga-ui/issues/3945))
+  ([f01fb4c](https://github.com/tinkoff/taiga-ui/commit/f01fb4cc252f0f08cff76a3685ed58ba1bfb27bd))
+
+### Bug Fixes
+
+- **kit:** cannot read properties of null in `input-phone-international`
+  ([#3942](https://github.com/tinkoff/taiga-ui/issues/3942))
+  ([6ecb641](https://github.com/tinkoff/taiga-ui/commit/6ecb6410d7e23628cd9442914f1d0151b53fec15))
+
 ## [2.80.0](https://github.com/tinkoff/taiga-ui/compare/v2.79.0...v2.80.0) (2023-03-20)
 
 ### Bug Fixes
