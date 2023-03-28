@@ -161,7 +161,7 @@ export class TuiMultiSelectComponent<T>
     get arrow(): PolymorpheusContent<
         TuiContextWithImplicit<TuiSizeL | TuiSizeM | TuiSizeS>
     > {
-        return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
+        return this.interactive ? this.arrowMode.interactive : this.arrowMode.disabled;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

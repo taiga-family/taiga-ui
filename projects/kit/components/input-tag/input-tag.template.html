@@ -128,15 +128,10 @@
                     ></tui-svg>
                 </ng-container>
                 <tui-tooltip
-                    *ngIf="hintOptions && hintOptions.content && !computedDisabled"
+                    *ngIf="hintOptions?.content && !computedDisabled"
                     automation-id="tui-input-tag__tooltip"
-                    describeId="placeholer_until_accesibility_is_added"
                     class="t-tooltip"
-                    [direction]="hintOptions.direction"
-                    [appearance]="hintOptions.appearance"
-                    [content]="hintOptions.content"
-                    [showDelay]="hintOptions.showDelay"
-                    [hideDelay]="hintOptions.hideDelay"
+                    [content]="hintOptions?.content"
                 ></tui-tooltip>
                 <div
                     *ngIf="icon"

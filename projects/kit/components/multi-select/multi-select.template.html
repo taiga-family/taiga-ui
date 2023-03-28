@@ -10,7 +10,7 @@
         automation-id="tui-multi-select__input"
         class="t-input"
         [nativeId]="nativeId"
-        [tuiTextfieldIcon]="icon"
+        [tuiTextfieldIcon]="arrow ? icon : ''"
         [disabled]="disabled"
         [disabledItemHandler]="disabledItemHandler | tuiMapper : disabledItemHandlerWrapper"
         [readOnly]="readOnly"
@@ -61,7 +61,6 @@
 
         <ng-template #icon>
             <div
-                *ngIf="arrow"
                 tuiWrapper
                 appearance="icon"
                 automation-id="tui-multi-select__arrow"
