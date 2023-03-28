@@ -1,0 +1,17 @@
+<button
+    tuiButton
+    size="s"
+    (click)="show = !show"
+>
+    Toggle
+</button>
+<label>
+    Show error:
+    <tui-toggle [(ngModel)]="error"></tui-toggle>
+</label>
+<tui-expand [expanded]="show">
+    <tui-error
+        *tuiExpandContent
+        [error]="error ? 'Error' : null"
+    ></tui-error>
+</tui-expand>

@@ -3,9 +3,11 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiButtonModule, TuiExpandModule} from '@taiga-ui/core';
+import {TuiButtonModule, TuiErrorModule, TuiExpandModule} from '@taiga-ui/core';
+import {TuiToggleModule} from '@taiga-ui/kit';
 
 import {TuiExpandExample1} from './examples/1';
+import {TuiExpandExample2} from './examples/2';
 import {ExampleTuiExpandComponent} from './expand.component';
 
 @NgModule({
@@ -16,9 +18,11 @@ import {ExampleTuiExpandComponent} from './expand.component';
         FormsModule,
         ReactiveFormsModule,
         TuiAddonDocModule,
+        TuiErrorModule,
+        TuiToggleModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiExpandComponent)),
     ],
-    declarations: [ExampleTuiExpandComponent, TuiExpandExample1],
+    declarations: [ExampleTuiExpandComponent, TuiExpandExample1, TuiExpandExample2],
     exports: [ExampleTuiExpandComponent],
 })
 export class ExampleTuiExpandModule {}

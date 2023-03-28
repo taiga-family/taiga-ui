@@ -1,6 +1,7 @@
 <div
     #wrapper
     class="t-wrapper"
+    [@.disabled]="overflow"
 >
     <ng-container *ngIf="contentVisible">
         <ng-content></ng-content>

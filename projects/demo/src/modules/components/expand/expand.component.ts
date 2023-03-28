@@ -21,6 +21,11 @@ export class ExampleTuiExpandComponent {
         HTML: import('./examples/1/index.html?raw'),
     };
 
+    readonly example2: TuiDocExample = {
+        TypeScript: import('./examples/2/index.ts?raw'),
+        HTML: import('./examples/2/index.html?raw'),
+    };
+
     expanded = false;
 
     async = false;
