@@ -3,7 +3,7 @@ import {Directive, ElementRef, Inject, Input} from '@angular/core';
 import {tuiDefaultProp, TuiHoveredService} from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {merge, Observable, of, Subject} from 'rxjs';
-import {delay, filter, repeat, switchMap, takeUntil} from 'rxjs/operators';
+import {delay, filter, repeat, switchMap, takeUntil, tap} from 'rxjs/operators';
 
 import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 
@@ -13,6 +13,7 @@ import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
     providers: [tuiAsDriver(TuiHintHoverDirective), TuiHoveredService],
 })
 export class TuiHintHoverDirective extends TuiDriver {
+    private visible = false;
     private readonly toggle$ = new Subject<boolean>();
     private readonly stream$ = merge(
         this.toggle$.pipe(
@@ -27,7 +28,12 @@ export class TuiHintHoverDirective extends TuiDriver {
             takeUntil(this.toggle$),
             repeat(),
         ),
-    ).pipe(filter(() => this.enabled));
+    ).pipe(
+        filter(() => this.enabled),
+        tap(visible => {
+            this.visible = visible;
+        }),
+    );
 
     @Input('tuiHintShowDelay')
     @tuiDefaultProp()
@@ -49,7 +55,7 @@ export class TuiHintHoverDirective extends TuiDriver {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
-    toggle(visible: boolean): void {
+    toggle(visible = !this.visible): void {
         this.toggle$.next(visible);
     }
 }
