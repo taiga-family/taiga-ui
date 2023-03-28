@@ -58,13 +58,12 @@ export class TuiTooltipComponent extends TuiHintOptionsDirective {
     }
 
     @HostListener('mousedown', ['$event'])
-    @HostListener('click', ['$event'])
     stopOnMobile(event: MouseEvent): void {
         if (this.isMobile) {
             event.preventDefault();
             event.stopPropagation();
         }
 
-        this.driver$?.toggle(true);
+        this.driver$?.toggle();
     }
 }
