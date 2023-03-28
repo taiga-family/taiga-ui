@@ -1,5 +1,5 @@
 ```ts
-import {Inject, Self} from '@angular/core';
+import {Inject} from '@angular/core';
 import {TuiBreakpointService} from '@taiga-ui/core';
 
 // ...
