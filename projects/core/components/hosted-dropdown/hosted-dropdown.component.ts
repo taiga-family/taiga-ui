@@ -10,6 +10,7 @@ import {
     Input,
     Optional,
     Output,
+    Self,
     ViewChild,
 } from '@angular/core';
 import {
@@ -26,6 +27,7 @@ import {
     tuiIsNativeKeyboardFocusable,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
+import {TuiPositionAccessor} from '@taiga-ui/core/abstract';
 import {
     TuiDropdownDirective,
     TuiDropdownHoverDirective,
@@ -36,6 +38,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, EMPTY, merge} from 'rxjs';
 import {distinctUntilChanged, skip} from 'rxjs/operators';
 
+import {TuiAccessorProxyDirective} from './accessor-proxy.directive';
 import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.directive';
 
 export interface TuiHostedDropdownContext
@@ -62,7 +65,14 @@ function shouldClose(
     templateUrl: './hosted-dropdown.template.html',
     styleUrls: ['./hosted-dropdown.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsFocusableItemAccessor(TuiHostedDropdownComponent)],
+    providers: [
+        tuiAsFocusableItemAccessor(TuiHostedDropdownComponent),
+        {
+            provide: TuiAccessorProxyDirective,
+            deps: [[new Optional(), new Self(), TuiPositionAccessor]],
+            useFactory: (position: TuiPositionAccessor[] | null) => position?.[0],
+        },
+    ],
 })
 export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @ContentChild(TuiHostedDropdownConnectorDirective, {read: ElementRef})

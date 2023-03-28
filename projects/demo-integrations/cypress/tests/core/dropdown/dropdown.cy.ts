@@ -18,6 +18,13 @@ describe(`Dropdown`, () => {
             cy.get(`tui-hosted-dropdown-example-1 button`).first().click().wait(1000);
             cy.matchImageSnapshot(`3`);
         });
+
+        it(`HostedDropdown custom position`, () => {
+            cy.tuiVisit(`/components/hosted-dropdown`);
+
+            cy.get(`tui-hosted-dropdown-example-5 button`).first().click().wait(1000);
+            cy.matchImageSnapshot(`4`);
+        });
     });
 
     describe(`a12y`, () => {
