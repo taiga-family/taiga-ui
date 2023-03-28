@@ -18,8 +18,8 @@ import {
 import {
     HTML_EDITOR_EXAMPLE_BLOCKQUOTE,
     HTML_EDITOR_EXAMPLE_DETAILS,
+    HTML_EDITOR_EXAMPLE_HIGHLIGHT_BLOCK,
     HTML_EDITOR_EXAMPLE_LEGACY_DETAILS,
-    HTML_EDITOR_EXAMPLE_HIGHTLIGH_BLOCK,
     HTML_EDITOR_EXAMPLE_LONG_WORD_UL,
     HTML_EDITOR_EXAMPLE_NESTED_OL_UL,
     HTML_EDITOR_EXAMPLE_NESTED_UL,
@@ -110,7 +110,12 @@ describe(`Editor API`, () => {
 
     describe(`highlight`, () => {
         it(`code + pre/code`, () => {
-            tuiVisitEditorApiPage({content: HTML_EDITOR_EXAMPLE_HIGHTLIGH_BLOCK});
+            tuiVisitEditorApiPage({content: ``});
+
+            cy.get(`.t-table tr`)
+                .eq(2)
+                .findByAutomationId(`tui-primitive-textfield__native-input`)
+                .type(HTML_EDITOR_EXAMPLE_HIGHLIGHT_BLOCK, {force: true, delay: 0});
 
             tuiGetDemoContent()
                 .tuiWaitBeforeScreenshot()

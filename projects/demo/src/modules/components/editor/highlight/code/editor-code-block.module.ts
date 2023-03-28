@@ -6,8 +6,8 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiEditorModule, TuiEditorSocketModule} from '@taiga-ui/addon-editor';
 import {TuiButtonModule, TuiLinkModule, TuiSvgModule} from '@taiga-ui/core';
 
-import {ExampleTuiEditorHighlightComponent} from './editor-highlight.component';
-import {TuiEditorHighlightExample1} from './examples/1';
+import {ExampleTuiEditorCodeBlockComponent} from './editor-code-block.component';
+import {TuiEditorCodeBlockExample1} from './examples/1';
 
 @NgModule({
     imports: [
@@ -20,8 +20,8 @@ import {TuiEditorHighlightExample1} from './examples/1';
         ReactiveFormsModule,
         TuiEditorModule,
         TuiEditorSocketModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiEditorHighlightComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiEditorCodeBlockComponent)),
     ],
-    declarations: [TuiEditorHighlightExample1, ExampleTuiEditorHighlightComponent],
+    declarations: [TuiEditorCodeBlockExample1, ExampleTuiEditorCodeBlockComponent],
 })
-export class ExampleTuiEditorHighlightModule {}
+export class ExampleTuiEditorCodeBlockModule {}

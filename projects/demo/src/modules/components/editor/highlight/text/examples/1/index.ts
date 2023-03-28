@@ -9,7 +9,7 @@ import {
 } from '@taiga-ui/addon-editor';
 
 @Component({
-    selector: 'tui-editor-highlight-example-1',
+    selector: 'tui-editor-mark-text-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     providers: [
@@ -39,7 +39,7 @@ import {
     changeDetection,
     encapsulation,
 })
-export class TuiEditorHighlightExample1 {
+export class TuiEditorMarkTextExample1 {
     @ViewChild(TuiEditorComponent)
     private readonly wysiwyg?: TuiEditorComponent;
 

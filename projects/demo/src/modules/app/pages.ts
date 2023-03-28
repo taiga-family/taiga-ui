@@ -916,12 +916,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Editor`,
-        title: `Highlight text`,
-        keywords: `editor, highlight, wysiwyg, редактор, текст, подсветка, html, rich, text`,
-        route: `/editor/highlight`,
-    },
-    {
-        section: $localize`Editor`,
         title: $localize`Custom tool`,
         subPages: [
             {
@@ -941,6 +935,24 @@ export const pages: TuiDocPages = [
                 title: `Color picker`,
                 keywords: `editor, custom color picker, color picker, tool, wysiwyg, редактор, выбрать цвет, html, rich, text`,
                 route: `/editor/custom-tool/color-picker`,
+            },
+        ],
+    },
+    {
+        section: $localize`Editor`,
+        title: $localize`Highlight`,
+        subPages: [
+            {
+                section: $localize`Editor`,
+                title: `Mark text`,
+                keywords: `editor, highlight, text, wysiwyg, редактор, текст, подсветка, html, rich, text`,
+                route: `/editor/highlight/text`,
+            },
+            {
+                section: $localize`Editor`,
+                title: `Code block`,
+                keywords: `editor, highlight, code, block, pre, wysiwyg, редактор, текст, подсветка, html, rich, text`,
+                route: `/editor/highlight/code`,
             },
         ],
     },

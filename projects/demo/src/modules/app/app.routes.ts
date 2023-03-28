@@ -1070,12 +1070,21 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: `editor/highlight`,
+        path: `editor/highlight/text`,
         loadChildren: async () =>
-            (await import(`../components/editor/highlight/editor-highlight.module`))
-                .ExampleTuiEditorHighlightModule,
+            (await import(`../components/editor/highlight/text/editor-mark-text.module`))
+                .ExampleTuiEditorMarkTextModule,
         data: {
-            title: `Editor — Highlight`,
+            title: `Editor — Highlight text`,
+        },
+    },
+    {
+        path: `editor/highlight/code`,
+        loadChildren: async () =>
+            (await import(`../components/editor/highlight/code/editor-code-block.module`))
+                .ExampleTuiEditorCodeBlockModule,
+        data: {
+            title: `Editor — Highlight code`,
         },
     },
     {

@@ -1,7 +1,7 @@
 @import 'taiga-ui-local';
 
 .tui-editor-socket {
-    .t-editor-code-block {
+    pre {
         white-space: pre-wrap;
         word-break: break-word;
         border-radius: 0.25rem;
@@ -9,14 +9,6 @@
         padding: 0.75rem 1rem;
         font-family: Courier, monospace;
         color: var(--tui-text-02);
-
-        &:has(code:not([class*='language-'])) {
-            background: var(--tui-base-02);
-        }
-    }
-
-    .t-editor-code-block + .t-editor-code-block {
-        margin-top: -1.8125rem;
-        padding-top: 0;
+        background: var(--tui-base-02);
     }
 }
