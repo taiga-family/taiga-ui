@@ -15,8 +15,15 @@ steps to kick-start the development:
 
 1. Run `npm ci` to install dependencies
 2. Run `npm start` to launch demo project where you could test your changes (see [angular.json](angular.json) to find
-   alternative configurations with AoT or Russian Language) 2.1 Or run `npm run start:fast` to launch demo with about
-   10% faster reloading when serve.
+   alternative configurations with `Default` change detection strategy or Russian Language)
+3. Run `npm run start:fast` to launch demo with about 10% faster reloading when serve.
+
+## Testing
+
+Make sure your changes pass current tests and also write new tests for the new behavior:
+
+- `npm test` to run unit tests
+- `npm run test:e2e` to run screenshot tests
 
 ## Pull Request Process
 
