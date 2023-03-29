@@ -83,7 +83,7 @@
         "@angular/cli": "12.2.18",
         "@angular/compiler-cli": "12.2.17",
         "@angular/language-service": "12.2.17",
-        "@commitlint/cli": "17.5.0",
+        "@commitlint/cli": "17.5.1",
         "@commitlint/config-conventional": "17.4.4",
         "@nrwl/cli": "15.8.9",
         "@nrwl/node": "15.8.9",
