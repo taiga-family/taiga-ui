@@ -45,7 +45,7 @@ export abstract class AbstractTuiControl<T>
     @tuiDefaultProp()
     pseudoInvalid: boolean | null = null;
 
-    constructor(
+    protected constructor(
         private readonly ngControl: NgControl | null,
         protected readonly changeDetectorRef: ChangeDetectorRef,
         protected readonly valueTransformer?: TuiControlValueTransformer<T> | null,
