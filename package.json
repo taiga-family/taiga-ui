@@ -31,6 +31,8 @@
         "start:ip": "nx serve-ip demo",
         "build:ssr": "nx build demo && nx run demo:server:production",
         "prerender": "nx run demo:prerender",
+        "test": "nx run-many --target test --all",
+        "test:e2e": "nx e2e demo",
         "*** Workflow ***": "",
         "stylelint": "stylelint '**/*.{less,css}'",
         "lint": "eslint --cache --cache-location node_modules/.cache/eslint",
