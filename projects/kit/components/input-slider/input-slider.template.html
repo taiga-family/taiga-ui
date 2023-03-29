@@ -4,7 +4,7 @@
     [precision]="precision"
     [decimal]="decimal"
     [prefix]="showValueContent ? '' : prefix"
-    [postfix]="showValueContent ? '' : postfix || (value | i18nPlural : pluralizeMap || pluralizeMapFallback)"
+    [postfix]="showValueContent ? '' : postfix || (value | i18nPlural: pluralizeMap || pluralizeMapFallback)"
     [tuiTextfieldCustomContent]="controller.customContent || deprecatedSecondary"
     [tuiTextfieldSize]="computedSize"
     [tuiTextfieldLabelOutside]="computedSize !== 'l'"
@@ -61,11 +61,9 @@
         >
             <span *ngIf="fromToTexts$ | async as fromToText">
                 {{ getTickPrefix(tickIndex, segments, fromToText) }}
-                {{ tickIndex | tuiSliderTickLabel : segments : computedKeySteps | tuiFormatNumber }}
+                {{ tickIndex | tuiSliderTickLabel: segments:computedKeySteps | tuiFormatNumber }}
                 <span *ngIf="segmentsPluralizeMap">
-                    {{
-                        tickIndex | tuiSliderTickLabel : segments : computedKeySteps | i18nPlural : segmentsPluralizeMap
-                    }}
+                    {{ tickIndex | tuiSliderTickLabel: segments:computedKeySteps | i18nPlural: segmentsPluralizeMap }}
                 </span>
             </span>
         </span>
