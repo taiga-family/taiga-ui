@@ -16,7 +16,7 @@ export abstract class AbstractTuiEditorResizable<
     protected _height = 0;
     protected _width = 0;
 
-    protected constructor(documentRef: Document, destroy$: TuiDestroyService) {
+    constructor(documentRef: Document, destroy$: TuiDestroyService) {
         super();
 
         merge(

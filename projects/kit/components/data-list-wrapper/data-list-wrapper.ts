@@ -39,7 +39,7 @@ export abstract class AbstractTuiDataListWrapper<T> {
     @tuiDefaultProp()
     size: TuiSizeL | TuiSizeXS = this.defaultSize;
 
-    protected constructor(
+    constructor(
         protected readonly itemsHandlers: TuiItemsHandlers<T>,
         protected readonly defaultSize: TuiSizeL | TuiSizeXS,
     ) {}

@@ -8,7 +8,7 @@ import type {TuiAutofocusHandler} from '../autofocus.options';
 
 @Directive()
 export abstract class AbstractTuiAutofocusHandler implements TuiAutofocusHandler {
-    protected constructor(
+    constructor(
         protected readonly tuiFocusableComponent: TuiFocusableElementAccessor | null,
         protected readonly elementRef: ElementRef<HTMLElement>,
     ) {}

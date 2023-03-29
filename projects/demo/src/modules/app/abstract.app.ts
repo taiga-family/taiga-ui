@@ -32,7 +32,7 @@ export abstract class AbstractDemoComponent implements OnInit {
     @HostBinding(`$.class._loaded`)
     protected readonly pageLoaded = this.pageLoaded$;
 
-    protected constructor(
+    constructor(
         protected readonly isCypress: boolean,
         protected readonly pageLoaded$: Observable<boolean>,
         protected readonly selectedVersion: TuiVersionMeta | null,
