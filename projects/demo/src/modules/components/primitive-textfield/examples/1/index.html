@@ -4,8 +4,7 @@
     [focusable]="focusable"
     [disabled]="disabled"
     [readOnly]="readOnly"
-    [value]="value"
-    (valueChange)="onValueChange($event)"
+    [(value)]="value"
     (focusedChange)="onFocused($event)"
 >
     <ng-content></ng-content>

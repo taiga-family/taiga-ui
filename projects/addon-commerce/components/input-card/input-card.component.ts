@@ -118,7 +118,7 @@ export class TuiInputCardComponent
         const parsed = value.split(' ').join('');
         const currentBin = this.bin;
 
-        this.updateValue(parsed);
+        this.value = parsed;
 
         const newBin = this.bin;
 

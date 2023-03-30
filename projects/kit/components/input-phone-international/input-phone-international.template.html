@@ -23,7 +23,6 @@
         ></tui-primitive-textfield>
         <tui-input-phone
             class="t-input-phone tui-group__auto-width-item"
-            [ngModel]="value"
             [disabled]="disabled"
             [focusable]="focusable"
             [countryCode]="inputPhoneCountryCode"
@@ -32,7 +31,7 @@
             [pseudoInvalid]="computedInvalid"
             [pseudoFocus]="pseudoFocus"
             [pseudoHover]="pseudoHover"
-            (ngModelChange)="onModelChange($event)"
+            [(ngModel)]="value"
         >
             <ng-content></ng-content>
             <input

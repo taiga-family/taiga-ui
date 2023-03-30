@@ -81,11 +81,9 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
 
     onCheckbox(value: boolean, item: T): void {
         this.toggledItem.emit(item);
-        this.updateValue(
-            value
-                ? [...this.value, item]
-                : this.value.filter(arrItem => !this.identityMatcher(arrItem, item)),
-        );
+        this.value = value
+            ? [...this.value, item]
+            : this.value.filter(arrItem => !this.identityMatcher(arrItem, item));
     }
 
     isCheckboxEnabled(item: T): boolean {

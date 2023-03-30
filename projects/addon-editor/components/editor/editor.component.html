@@ -48,9 +48,8 @@
                 tuiTiptapEditor
                 spellcheck="false"
                 class="tui-editor-socket"
-                [value]="value"
                 [editable]="interactive"
-                (valueChange)="onModelChange($event)"
+                [(value)]="value"
                 (stateChange)="(0)"
             ></tui-editor-socket>
         </div>

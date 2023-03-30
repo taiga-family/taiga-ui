@@ -89,11 +89,11 @@ export class TuiInputYearComponent
     }
 
     onValueChange(value: string): void {
-        this.updateValue(value ? Number(value.slice(0, 4)) : null);
+        this.value = value ? Number(value.slice(0, 4)) : null;
     }
 
     onYearClick({year}: TuiYear): void {
-        this.updateValue(year);
+        this.value = year;
         this.onOpenChange(false);
     }
 

@@ -168,16 +168,15 @@ export class TuiInputCountComponent
     }
 
     onInputNumberChange(value: number | null): void {
-        this.updateValue(value);
+        this.value = value;
     }
 
+    /** @deprecated */
     onValueChange(value: string): void {
-        this.updateValue(
-            tuiMaskedNumberStringToNumber(
-                value,
-                this.numberFormat.decimalSeparator,
-                this.numberFormat.thousandSeparator,
-            ),
+        this.value = tuiMaskedNumberStringToNumber(
+            value,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
         );
     }
 
@@ -229,7 +228,7 @@ export class TuiInputCountComponent
     private safeUpdateValue(newValue: number): void {
         const value = tuiClamp(newValue, this.min, this.max);
 
-        this.updateValue(value);
+        this.value = value;
         this.nativeValue = this.formatNumber(value);
     }
 

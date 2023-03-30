@@ -284,7 +284,7 @@ export class TuiInputDateRangeComponent
             )
             .pipe(takeUntil(this.destroy$))
             .subscribe(value => {
-                this.updateValue(value);
+                this.value = value;
             });
     }
 
@@ -302,18 +302,17 @@ export class TuiInputDateRangeComponent
         }
 
         if (value.length !== DATE_RANGE_FILLER_LENGTH) {
-            this.updateValue(null);
+            this.value = null;
 
             return;
         }
 
         const parsedValue = TuiDayRange.normalizeParse(value, this.dateFormat);
 
-        this.updateValue(
+        this.value =
             !this.minLength && !this.maxLength
                 ? parsedValue
-                : this.clampValue(parsedValue),
-        );
+                : this.clampValue(parsedValue);
     }
 
     onRangeChange(range: TuiDayRange | null): void {
@@ -324,9 +323,7 @@ export class TuiInputDateRangeComponent
             this.nativeValue = '';
         }
 
-        if (!tuiNullableSame<TuiDayRange>(this.value, range, (a, b) => a.daySame(b))) {
-            this.updateValue(range);
-        }
+        this.value = range;
     }
 
     onItemSelect(item: TuiDayRangePeriod | string): void {
@@ -334,15 +331,17 @@ export class TuiInputDateRangeComponent
         this.focusInput();
 
         if (typeof item !== 'string') {
-            this.updateValue(item.range.dayLimit(this.min, this.max));
+            this.value = item.range.dayLimit(this.min, this.max);
 
             return;
         }
 
-        if (this.activePeriod !== null) {
-            this.updateValue(null);
-            this.nativeValue = '';
+        if (this.activePeriod === null) {
+            return;
         }
+
+        this.value = null;
+        this.nativeValue = '';
     }
 
     onActiveZone(focused: boolean): void {
@@ -355,15 +354,20 @@ export class TuiInputDateRangeComponent
                 this.nativeValue.length ===
                     DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length)
         ) {
-            this.updateValue(
-                TuiDayRange.normalizeParse(this.nativeValue, this.dateFormat),
-            );
+            this.value = TuiDayRange.normalizeParse(this.nativeValue, this.dateFormat);
         }
     }
 
     override writeValue(value: TuiDayRange | null): void {
         super.writeValue(value);
         this.nativeValue = value ? this.computedValue : '';
+    }
+
+    protected override valueIdenticalComparator(
+        oldValue: TuiDayRange | null,
+        newValue: TuiDayRange | null,
+    ): boolean {
+        return tuiNullableSame(oldValue, newValue, (a, b) => a.daySame(b));
     }
 
     private get itemSelected(): boolean {

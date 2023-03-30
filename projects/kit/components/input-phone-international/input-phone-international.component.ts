@@ -155,11 +155,9 @@ export class TuiInputPhoneInternationalComponent
         const countryIsoCode = this.extractCountryCode(value);
 
         if (!countryIsoCode) {
-            this.updateValue(
-                `${this.inputPhoneCountryCode}${value}`
-                    .replace(TUI_MASK_SYMBOLS_REGEXP, '')
-                    .slice(0, this.getMaxAllowedLength(this.countryIsoCode)),
-            );
+            this.value = `${this.inputPhoneCountryCode}${value}`
+                .replace(TUI_MASK_SYMBOLS_REGEXP, '')
+                .slice(0, this.getMaxAllowedLength(this.countryIsoCode));
 
             return;
         }
@@ -169,7 +167,7 @@ export class TuiInputPhoneInternationalComponent
         }
 
         this.updateCountryIsoCode(countryIsoCode);
-        this.updateValue(`${CHAR_PLUS}${value}`);
+        this.value = `${CHAR_PLUS}${value}`;
     }
 
     readonly isoToCountryCodeMapper: TuiMapper<TuiCountryIsoCode, string> = item =>
@@ -192,7 +190,7 @@ export class TuiInputPhoneInternationalComponent
         const maxLength = this.getMaxAllowedLength(isoCode);
 
         if (this.value.length > maxLength) {
-            this.updateValue(this.value.slice(0, maxLength));
+            this.value = this.value.slice(0, maxLength);
         }
 
         if (this.nativeFocusableElement) {
@@ -209,8 +207,9 @@ export class TuiInputPhoneInternationalComponent
         return this.countriesMasks[isoCode].replace(MASK_AFTER_CODE_REGEXP, '');
     }
 
+    /** @deprecated use 'value' setter */
     onModelChange(value: string): void {
-        this.updateValue(value);
+        this.value = value;
     }
 
     onActiveZone(active: boolean): void {

@@ -332,7 +332,7 @@ export class TuiInputCardGroupedComponent
         const element =
             (!expire && this.inputExpire?.nativeElement) || this.inputCVC?.nativeElement;
 
-        this.updateValue({card, expire, cvc});
+        this.value = {card, expire, cvc};
         this.updateBin(bin);
         this.open = false;
         this.expireInert = !!expire;
@@ -408,7 +408,7 @@ export class TuiInputCardGroupedComponent
     }
 
     clear(): void {
-        this.updateValue(null);
+        this.value = null;
         this.focusCard();
     }
 
@@ -472,11 +472,7 @@ export class TuiInputCardGroupedComponent
 
         newValue[propName] = propValue;
 
-        if (!newValue.expire && !newValue.cvc && !newValue.card) {
-            this.updateValue(null);
-        } else {
-            this.updateValue(newValue);
-        }
+        this.value = newValue.expire || newValue.cvc || newValue.card ? newValue : null;
     }
 
     private focusInput(): void {

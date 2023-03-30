@@ -463,15 +463,12 @@ export class TuiInputTagComponent
     protected override updateValue(value: string[]): void {
         const seen = new Set();
 
-        super.updateValue(
-            value
-                .reverse()
-                .filter(
-                    item =>
-                        !this.uniqueTags || (!!item && !seen.has(item) && seen.add(item)),
-                )
-                .reverse(),
-        );
+        this.value = value
+            .reverse()
+            .filter(
+                item => !this.uniqueTags || (item && !seen.has(item) && seen.add(item)),
+            )
+            .reverse();
     }
 
     private onScrollKeyDown(currentIndex: number, flag: number): void {

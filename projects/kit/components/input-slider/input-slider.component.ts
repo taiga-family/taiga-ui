@@ -178,7 +178,7 @@ export class TuiInputSliderComponent
     }
 
     safelyUpdateValue(value: number | null): void {
-        this.updateValue(this.valueGuard(value ?? this.safeCurrentValue));
+        this.value = this.valueGuard(value ?? this.safeCurrentValue);
     }
 
     onVerticalArrowKeyDown(coefficient: number): void {

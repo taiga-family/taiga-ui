@@ -12,8 +12,7 @@
         [pseudoActive]="pseudoActive"
         [size]="size"
         [item]="item"
-        [ngModel]="value"
-        (ngModelChange)="onModelChange($event)"
+        [(ngModel)]="value"
         (focusedChange)="onFocused($event)"
     ></tui-radio>
     <div

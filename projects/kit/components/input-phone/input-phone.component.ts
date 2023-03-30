@@ -221,13 +221,13 @@ export class TuiInputPhoneComponent
             : value.replace(TUI_MASK_SYMBOLS_REGEXP, '').slice(0, this.maxPhoneLength);
 
         this.updateSearch(parsed);
-        this.updateValue(parsed === this.countryCode || isText(parsed) ? '' : parsed);
+        this.value = parsed === this.countryCode || isText(parsed) ? '' : parsed;
         this.open = true;
     }
 
     handleOption(item: string): void {
         this.focusInput();
-        this.updateValue(item);
+        this.value = item;
         this.updateSearch('');
         this.open = false;
     }
@@ -293,7 +293,7 @@ export class TuiInputPhoneComponent
         }
 
         this.open = true;
-        this.updateValue(this.cleanValue(value));
+        this.value = this.cleanValue(value);
         this.updateSearch(
             this.allowText && isText(value)
                 ? value
@@ -342,7 +342,7 @@ export class TuiInputPhoneComponent
 
     private updateValueWithNewCountryCode(newCountryCode: string): void {
         if (!this.isTextValue) {
-            this.updateValue(this.value.replace(this.countryCode, newCountryCode));
+            this.value = this.value.replace(this.countryCode, newCountryCode);
         }
     }
 }

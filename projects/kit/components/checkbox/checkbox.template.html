@@ -14,10 +14,9 @@
         class="t-native"
         [disabled]="disabled"
         [id]="id"
-        [tuiChecked]="value"
         [tuiFocusable]="computedFocusable"
+        [(tuiChecked)]="value"
         (tuiFocusedChange)="onFocused($event)"
-        (tuiCheckedChange)="onChecked($event)"
         (tuiFocusVisibleChange)="onFocusVisible($event)"
     />
 </tui-primitive-checkbox>

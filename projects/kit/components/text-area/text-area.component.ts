@@ -194,7 +194,7 @@ export class TuiTextAreaComponent
     }
 
     onValueChange(value: string): void {
-        this.updateValue(value);
+        this.value = value;
     }
 
     onMouseDown(event: MouseEvent): void {

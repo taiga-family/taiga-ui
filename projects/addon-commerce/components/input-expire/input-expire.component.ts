@@ -95,10 +95,7 @@ export class TuiInputExpireComponent
         }
 
         this.input.nativeFocusableElement.value = value;
-
-        if (this.value !== value) {
-            this.updateValue(value);
-        }
+        this.value = value;
     }
 
     onFocused(focused: boolean): void {

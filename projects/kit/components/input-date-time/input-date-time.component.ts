@@ -231,7 +231,7 @@ export class TuiInputDateTimeComponent
         }
 
         if (value.length < DATE_FILLER_LENGTH) {
-            this.updateValue([null, null]);
+            this.value = [null, null];
 
             return;
         }
@@ -245,13 +245,13 @@ export class TuiInputDateTimeComponent
                 : null;
 
         this.open = false;
-        this.updateValue([parsedDate, parsedTime]);
+        this.value = [parsedDate, parsedTime];
     }
 
     onDayClick(day: TuiDay): void {
         const modifiedTime = this.value[1] && this.clampTime(this.value[1], day);
 
-        this.updateValue([day, modifiedTime]);
+        this.value = [day, modifiedTime];
         this.updateNativeValue(day);
         this.open = false;
     }
@@ -285,7 +285,7 @@ export class TuiInputDateTimeComponent
 
         const parsedTime = TuiTime.fromString(time);
 
-        this.updateValue([this.value[0], parsedTime]);
+        this.value = [this.value[0], parsedTime];
 
         setTimeout(() => {
             if (this.nativeValue.endsWith('.') || this.nativeValue.endsWith(':')) {

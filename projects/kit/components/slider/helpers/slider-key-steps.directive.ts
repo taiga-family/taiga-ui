@@ -74,8 +74,9 @@ export class TuiSliderKeyStepsDirective
     @HostListener('input')
     @HostListener('change')
     updateControlValue(): void {
-        this.updateValue(
-            tuiPercentageToKeyStepValue(this.slider.valuePercentage, this.keySteps),
+        this.value = tuiPercentageToKeyStepValue(
+            this.slider.valuePercentage,
+            this.keySteps,
         );
     }
 

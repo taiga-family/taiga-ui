@@ -100,8 +100,9 @@ export class TuiInputCVCComponent
 
     onCopy(): void {}
 
+    /** deprecated use 'value' setter */
     onValueChange(value: string): void {
-        this.updateValue(value);
+        this.value = value;
     }
 
     protected getFallbackValue(): string {

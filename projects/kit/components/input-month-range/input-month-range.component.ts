@@ -120,7 +120,7 @@ export class TuiInputMonthRangeComponent
             return;
         }
 
-        this.updateValue(null);
+        this.value = null;
         this.onOpenChange(true);
     }
 
@@ -131,7 +131,7 @@ export class TuiInputMonthRangeComponent
             return;
         }
 
-        this.updateValue(TuiMonthRange.sort(this.value.from, month));
+        this.value = TuiMonthRange.sort(this.value.from, month);
         this.close();
     }
 
@@ -147,7 +147,7 @@ export class TuiInputMonthRangeComponent
         }
 
         if (this.value?.isSingleMonth) {
-            this.updateValue(new TuiMonthRange(this.value.from, this.value.from));
+            this.value = new TuiMonthRange(this.value.from, this.value.from);
         }
     }
 

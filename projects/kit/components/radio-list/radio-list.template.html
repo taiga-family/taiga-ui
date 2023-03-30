@@ -9,8 +9,7 @@
         [size]="size"
         [pseudoInvalid]="computedInvalid"
         [pseudoDisabled]="itemIsDisabled(item)"
-        [ngModel]="value"
-        (ngModelChange)="onModelChange($event)"
+        [(ngModel)]="value"
     >
         <ng-container
             *polymorpheusOutlet="

@@ -20,8 +20,7 @@
                     [pseudoActive]="pseudoActive"
                     [size]="checkboxSize"
                     [focusable]="focusable"
-                    [ngModel]="value"
-                    (ngModelChange)="onModelChange($event)"
+                    [(ngModel)]="value"
                     (focusedChange)="onFocused($event)"
                     (focusVisibleChange)="onFocusVisible($event)"
                 ></tui-checkbox>

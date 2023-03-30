@@ -57,10 +57,6 @@ export class TuiPrimitiveTextfieldExample1 extends AbstractTuiControl<string> {
         return this.isPasswordHidden ? 'password' : 'text';
     }
 
-    onValueChange(textValue: string): void {
-        this.updateValue(textValue);
-    }
-
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }

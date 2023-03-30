@@ -7,7 +7,7 @@ export abstract class AbstractTuiMultipleControl<T> extends AbstractTuiControl<
     readonly T[]
 > {
     clear(): void {
-        this.updateValue([]);
+        this.value = [];
     }
 
     protected getFallbackValue(): readonly T[] {

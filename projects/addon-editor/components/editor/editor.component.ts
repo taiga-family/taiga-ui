@@ -132,8 +132,9 @@ export class TuiEditorComponent
         this.control?.updateValueAndValidity();
     }
 
+    /** deprecated use 'value' setter */
     onModelChange(value: string): void {
-        this.updateValue(value);
+        this.value = value;
     }
 
     addAnchor(anchor: string): void {

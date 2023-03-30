@@ -200,11 +200,9 @@ export class TuiInputFilesComponent
     }
 
     removeFile(removedFile: TuiFileLike): void {
-        this.updateValue(
-            this.computedMultiple
-                ? this.arrayValue.filter(file => file !== removedFile)
-                : null,
-        );
+        this.value = this.computedMultiple
+            ? this.arrayValue.filter(file => file !== removedFile)
+            : null;
     }
 
     @tuiPure
@@ -301,11 +299,9 @@ export class TuiInputFilesComponent
             ]);
         }
 
-        this.updateValue(
-            this.computedMultiple
-                ? [...this.arrayValue, ...acceptedFiles]
-                : acceptedFiles[0] || null,
-        );
+        this.value = this.computedMultiple
+            ? [...this.arrayValue, ...acceptedFiles]
+            : acceptedFiles[0] || null;
     }
 
     private isFormatAcceptable(file: File): boolean {

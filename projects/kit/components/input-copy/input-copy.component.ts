@@ -115,7 +115,7 @@ export class TuiInputCopyComponent
     }
 
     onValueChange(value: string): void {
-        this.updateValue(value);
+        this.value = value;
     }
 
     onFocused(focused: boolean): void {

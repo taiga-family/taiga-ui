@@ -56,9 +56,8 @@
                             [id]="id"
                             [tuiFocusable]="computedFocusable"
                             [disabled]="computedDisabled"
-                            [ngModel]="value"
                             [readOnly]="readOnly"
-                            (ngModelChange)="onValueChange($event)"
+                            [(ngModel)]="value"
                         ></textarea>
                         <ng-content select="textarea"></ng-content>
                     </div>

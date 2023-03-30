@@ -198,7 +198,7 @@ export class TuiInputNumberComponent
 
     onValueChange(value: string): void {
         if (tuiMaskedMoneyValueIsEmpty(value)) {
-            this.updateValue(null);
+            this.value = null;
 
             return;
         }
@@ -216,7 +216,7 @@ export class TuiInputNumberComponent
             return;
         }
 
-        this.updateValue(capped);
+        this.value = capped;
 
         if (
             capped !==
@@ -270,9 +270,7 @@ export class TuiInputNumberComponent
             return;
         }
 
-        const clamped = Math.min(this.max, Math.max(this.min, nativeNumberValue));
-
-        this.updateValue(clamped);
+        this.value = Math.min(this.max, Math.max(this.min, nativeNumberValue));
         this.nativeValue = this.formattedValue;
     }
 
@@ -329,7 +327,7 @@ export class TuiInputNumberComponent
 
     private clear(): void {
         this.nativeValue = '';
-        this.updateValue(null);
+        this.value = null;
     }
 
     private absoluteCapInputValue(inputValue: string): number | null {
