@@ -4,30 +4,6 @@ description: Suggest a feature for Taiga UI
 labels: ['feature', 'state: need triage']
 
 body:
-  - type: dropdown
-    id: affected-packages
-    attributes:
-      label: Which @taiga-ui/* package(s) are relevant/related to the feature request?
-      options:
-        - core
-        - kit
-        - cdk
-        - i18n
-        - icons
-        - taiga-schematics
-        - testing
-        - styles
-        - eslint-plugin
-        - addon-charts
-        - addon-commerce
-        - addon-doc
-        - addon-editor
-        - addon-mobile
-        - addon-table
-        - addon-tablebars
-        - Don't known / other
-      multiple: true
-
   - type: textarea
     id: description
     attributes:
