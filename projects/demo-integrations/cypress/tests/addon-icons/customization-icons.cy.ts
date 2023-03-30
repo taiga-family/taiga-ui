@@ -6,5 +6,10 @@ describe(`Icons`, () => {
             .tuiFindByExampleId()
             .tuiWaitBeforeScreenshot()
             .matchImageSnapshot(`customize-icons8`);
+
+        cy.get(`#inline`)
+            .tuiFindByExampleId()
+            .tuiWaitBeforeScreenshot()
+            .matchImageSnapshot(`inline-text`);
     });
 });
