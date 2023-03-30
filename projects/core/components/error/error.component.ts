@@ -37,8 +37,6 @@ export class TuiErrorComponent {
 
     expanded$ = this.error$$.pipe(map(Boolean));
 
-    readonly animation = {value: '', ...this.options} as const;
-
     constructor(
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,

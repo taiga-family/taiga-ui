@@ -7,11 +7,23 @@
     word-wrap: break-word;
 }
 
+.t-container {
+    transition: max-height var(--tui-duration);
+    max-height: 0;
+    overflow: hidden;
+
+    &_expanded {
+        max-height: 7rem;
+    }
+}
+
 .t-message-text {
     transition: opacity var(--tui-duration) ease-in-out;
+    opacity: 0;
     margin-top: 0.25rem;
     white-space: pre-wrap;
-    opacity: 0;
+    transform: translate3d(0, 0, 0);
+    animation: tuiFadeIn var(--tui-duration) ease-in-out;
 
     &_expanded {
         opacity: 1;

@@ -1,6 +1,7 @@
-<tui-expand
+<div
     *tuiLet="expanded$ | async as expanded"
-    [expanded]="expanded"
+    class="t-container"
+    [class.t-container_expanded]="expanded"
 >
     <div
         *ngIf="error$ | async as error"
@@ -15,4 +16,4 @@
             {{ text }}
         </ng-container>
     </div>
-</tui-expand>
+</div>
