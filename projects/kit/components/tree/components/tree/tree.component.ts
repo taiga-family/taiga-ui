@@ -61,12 +61,12 @@ export class TuiTreeComponent<T> implements DoCheck {
 
     ngDoCheck(): void {
         this.checkChanges();
-        this.item?.checkChanges();
-        this.child?.checkChanges();
     }
 
     checkChanges(): void {
         this.check$.next();
+        this.item?.checkChanges();
+        this.child?.checkChanges();
     }
 
     private get handler(): TuiHandler<T, readonly T[]> {
