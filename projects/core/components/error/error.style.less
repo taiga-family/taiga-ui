@@ -8,8 +8,14 @@
 }
 
 .t-message-text {
+    transition: opacity var(--tui-duration) ease-in-out;
     margin-top: 0.25rem;
     white-space: pre-wrap;
+    opacity: 0;
+
+    &_expanded {
+        opacity: 1;
+    }
 
     &_light {
         color: var(--tui-negative-night);

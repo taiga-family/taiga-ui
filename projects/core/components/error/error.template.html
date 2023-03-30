@@ -1,14 +1,18 @@
-<div
-    *ngIf="error"
-    automation-id="tui-error__text"
-    class="t-message-text"
-    [@tuiHeightCollapse]="animation"
-    [@tuiFadeIn]="animation"
-    [class.t-message-text_light]="(mode$ | async) === 'onDark'"
+<tui-expand
+    *tuiLet="expanded$ | async as expanded"
+    [expanded]="expanded"
 >
-    <ng-container
-        *polymorpheusOutlet="error.message || (defaultErrorMessage$ | async) as text; context: error.context || {}"
+    <div
+        *ngIf="error$ | async as error"
+        automation-id="tui-error__text"
+        class="t-message-text"
+        [class.t-message-text_expanded]="expanded"
+        [class.t-message-text_light]="(mode$ | async) === 'onDark'"
     >
-        {{ text }}
-    </ng-container>
-</div>
+        <ng-container
+            *polymorpheusOutlet="error.message || (defaultErrorMessage$ | async) as text; context: error.context || {}"
+        >
+            {{ text }}
+        </ng-container>
+    </div>
+</tui-expand>
