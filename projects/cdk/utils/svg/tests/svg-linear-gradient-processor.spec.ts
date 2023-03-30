@@ -74,28 +74,97 @@ describe(`svgLinearGradientProcessor`, () => {
         d="M49,22h-2h-0.049c-0.284-4.495-2.458-8.387-5.765-10.919l3.521-3.521l-1.414-1.414 l-3.807,3.807C37.293,8.713,34.747,8,32,8s-5.294,0.713-7.486,1.953l-3.807-3.807l-1.414,1.414l3.521,3.521 c-3.307,2.532-5.48,6.424-5.765,10.919H17h-2c-2.243,0-4,1.692-4,3.854v13c0,2.206,1.794,4,4,4c0.732,0,1-0.212,2-0.556v1.556 c0,2.438,2,4.545,4,5.038v4.962c0,2.206,1.794,4,4,4s4-1.794,4-4V49h6v4.854c0,2.206,1.794,4,4,4s4-1.794,4-4v-4.962 c2-0.492,4-2.599,4-5.038v-1.556c1,0.344,1.268,0.556,2,0.556c2.206,0,4-1.794,4-4v-13C53,23.692,51.243,22,49,22z M32,10 c6.953,0,12.469,5.194,12.964,12H19.036C19.531,15.194,25.047,10,32,10z M15,40.854c-1.103,0-2-0.897-2-2v-13 C13,24.797,13.859,24,15,24h2v14.854C17,39.956,16.103,40.854,15,40.854z M27,53.854c0,1.103-0.897,2-2,2s-2-0.897-2-2V49h4V53.854z M39,55.854c-1.103,0-2-0.897-2-2V49h4v4.854C41,54.956,40.103,55.854,39,55.854z M45,43.854C45,45.56,43.626,47,42,47H22 c-1.626,0-3-1.44-3-3.146v-5V24h26v14.854V43.854z M51,38.854c0,1.103-0.897,2-2,2s-2-0.897-2-2V24h2c1.141,0,2,0.797,2,1.854 V38.854z"
     /></svg>
 `);
+    });
 
-        expect(
-            tuiSvgLinearGradientProcessor(
-                `<svg xmlns="http://www.w3.org/2000/svg" width="440" height="232" viewBox="0 0 440 232" fill="none">
-    <mask id="path-1-outside-1" maskUnits="userSpaceOnUse" x="-2" y="-2" width="444" height="235" fill="black">
-        <rect fill="white" x="-2" y="-2" width="444" height="235"/>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M440 4C440 1.79086 438.209 0 436 0H4C1.79086 0 0 1.79087 0 4.00001V227C0 229.209 1.79086 231 4 231H436C438.209 231 440 229.209 440 227V4ZM117 4.00195C112.582 4.00195 109 7.58367 109 12.002V219.002C109 223.42 112.582 227.002 117 227.002H324C328.418 227.002 332 223.42 332 219.002V12.002C332 7.58368 328.418 4.00195 324 4.00195H117Z"/>
-    </mask>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M440 4C440 1.79086 438.209 0 436 0H4C1.79086 0 0 1.79087 0 4.00001V227C0 229.209 1.79086 231 4 231H436C438.209 231 440 229.209 440 227V4ZM117 4.00195C112.582 4.00195 109 7.58367 109 12.002V219.002C109 223.42 112.582 227.002 117 227.002H324C328.418 227.002 332 223.42 332 219.002V12.002C332 7.58368 328.418 4.00195 324 4.00195H117Z" fill="black" fill-opacity="0.24"/>
-    <path d="M4 2H436V-2H4V2ZM2 227V4.00001H-2V227H2ZM436 229H4V233H436V229ZM438 4V227H442V4H438ZM111 12.002C111 8.68824 113.686 6.00195 117 6.00195V2.00195C111.477 2.00195 107 6.4791 107 12.002H111ZM111 219.002V12.002H107V219.002H111ZM117 225.002C113.686 225.002 111 222.316 111 219.002H107C107 224.525 111.477 229.002 117 229.002V225.002ZM324 225.002H117V229.002H324V225.002ZM330 219.002C330 222.316 327.314 225.002 324 225.002V229.002C329.523 229.002 334 224.525 334 219.002H330ZM330 12.002V219.002H334V12.002H330ZM324 6.00195C327.314 6.00195 330 8.68825 330 12.002H334C334 6.47911 329.523 2.00195 324 2.00195V6.00195ZM117 6.00195H324V2.00195H117V6.00195ZM436 233C439.314 233 442 230.314 442 227H438C438 228.105 437.105 229 436 229V233ZM-2 227C-2 230.314 0.686285 233 4 233V229C2.89543 229 2 228.105 2 227H-2ZM436 2C437.105 2 438 2.89543 438 4H442C442 0.686294 439.314 -2 436 -2V2ZM4 -2C0.686287 -2 -2 0.686302 -2 4.00001H2C2 2.89543 2.89543 2 4 2V-2Z" fill="white" mask="url(#path-1-outside-1)"/>
-</svg>`,
-                `MOCK_ID`,
-            ),
-        )
-            .toEqual(`<svg xmlns="http://www.w3.org/2000/svg" width="440" height="232" viewBox="0 0 440 232" fill="none">
-    <mask id="path-1-outside-1_MOCK_ID" maskUnits="userSpaceOnUse" x="-2" y="-2" width="444" height="235" fill="black">
-        <rect fill="white" x="-2" y="-2" width="444" height="235"/>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M440 4C440 1.79086 438.209 0 436 0H4C1.79086 0 0 1.79087 0 4.00001V227C0 229.209 1.79086 231 4 231H436C438.209 231 440 229.209 440 227V4ZM117 4.00195C112.582 4.00195 109 7.58367 109 12.002V219.002C109 223.42 112.582 227.002 117 227.002H324C328.418 227.002 332 223.42 332 219.002V12.002C332 7.58368 328.418 4.00195 324 4.00195H117Z"/>
-    </mask>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M440 4C440 1.79086 438.209 0 436 0H4C1.79086 0 0 1.79087 0 4.00001V227C0 229.209 1.79086 231 4 231H436C438.209 231 440 229.209 440 227V4ZM117 4.00195C112.582 4.00195 109 7.58367 109 12.002V219.002C109 223.42 112.582 227.002 117 227.002H324C328.418 227.002 332 223.42 332 219.002V12.002C332 7.58368 328.418 4.00195 324 4.00195H117Z" fill="black" fill-opacity="0.24"/>
-    <path d="M4 2H436V-2H4V2ZM2 227V4.00001H-2V227H2ZM436 229H4V233H436V229ZM438 4V227H442V4H438ZM111 12.002C111 8.68824 113.686 6.00195 117 6.00195V2.00195C111.477 2.00195 107 6.4791 107 12.002H111ZM111 219.002V12.002H107V219.002H111ZM117 225.002C113.686 225.002 111 222.316 111 219.002H107C107 224.525 111.477 229.002 117 229.002V225.002ZM324 225.002H117V229.002H324V225.002ZM330 219.002C330 222.316 327.314 225.002 324 225.002V229.002C329.523 229.002 334 224.525 334 219.002H330ZM330 12.002V219.002H334V12.002H330ZM324 6.00195C327.314 6.00195 330 8.68825 330 12.002H334C334 6.47911 329.523 2.00195 324 2.00195V6.00195ZM117 6.00195H324V2.00195H117V6.00195ZM436 233C439.314 233 442 230.314 442 227H438C438 228.105 437.105 229 436 229V233ZM-2 227C-2 230.314 0.686285 233 4 233V229C2.89543 229 2 228.105 2 227H-2ZM436 2C437.105 2 438 2.89543 438 4H442C442 0.686294 439.314 -2 436 -2V2ZM4 -2C0.686287 -2 -2 0.686302 -2 4.00001H2C2 2.89543 2.89543 2 4 2V-2Z" fill="white" mask="url(#path-1-outside-1_MOCK_ID)"/>
-</svg>`);
+    it(`correct replacing ids with some symbols`, () => {
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64px" height="64px"><linearGradient
+        id="r4wzZI4nTYpRSYqL7WQ95a_1.x"
+        x1="37"
+        x2="37"
+        y1="14.5"
+        y2="19.332"
+        gradientUnits="userSpaceOnUse"
+        spreadMethod="reflect"
+    ><stop offset="0" stop-color="currentColor" /><stop offset="1" stop-color="currentColor" /></linearGradient><path
+        fill="url(#r4wzZI4nTYpRSYqL7WQ95a_1.x)"
+        d="M37 14.854A2 2 0 1 0 37 18.854A2 2 0 1 0 37 14.854Z"
+    /><linearGradient
+        id="r4wzZI4nTYpRSYqL7WQ95b"
+        x1="27"
+        x2="27"
+        y1="14.5"
+        y2="19.332"
+        gradientUnits="userSpaceOnUse"
+        spreadMethod="reflect"
+    ><stop offset="0" stop-color="currentColor" /><stop offset="1" stop-color="currentColor" /></linearGradient><path
+        fill="url(#r4wzZI4nTYpRSYqL7WQ95b)"
+        d="M27 14.854A2 2 0 1 0 27 18.854A2 2 0 1 0 27 14.854Z"
+    /><linearGradient
+        id="r4wzZI4nTYpRSYqL7WQ95c"
+        x1="32"
+        x2="32"
+        y1="5.25"
+        y2="59.232"
+        gradientUnits="userSpaceOnUse"
+        spreadMethod="reflect"
+    ><stop offset="0" stop-color="currentColor" /><stop offset="1" stop-color="currentColor" /></linearGradient><path
+        fill="url(#r4wzZI4nTYpRSYqL7WQ95c)"
+        d="M49,22h-2h-0.049c-0.284-4.495-2.458-8.387-5.765-10.919l3.521-3.521l-1.414-1.414 l-3.807,3.807C37.293,8.713,34.747,8,32,8s-5.294,0.713-7.486,1.953l-3.807-3.807l-1.414,1.414l3.521,3.521 c-3.307,2.532-5.48,6.424-5.765,10.919H17h-2c-2.243,0-4,1.692-4,3.854v13c0,2.206,1.794,4,4,4c0.732,0,1-0.212,2-0.556v1.556 c0,2.438,2,4.545,4,5.038v4.962c0,2.206,1.794,4,4,4s4-1.794,4-4V49h6v4.854c0,2.206,1.794,4,4,4s4-1.794,4-4v-4.962 c2-0.492,4-2.599,4-5.038v-1.556c1,0.344,1.268,0.556,2,0.556c2.206,0,4-1.794,4-4v-13C53,23.692,51.243,22,49,22z M32,10 c6.953,0,12.469,5.194,12.964,12H19.036C19.531,15.194,25.047,10,32,10z M15,40.854c-1.103,0-2-0.897-2-2v-13 C13,24.797,13.859,24,15,24h2v14.854C17,39.956,16.103,40.854,15,40.854z M27,53.854c0,1.103-0.897,2-2,2s-2-0.897-2-2V49h4V53.854z M39,55.854c-1.103,0-2-0.897-2-2V49h4v4.854C41,54.956,40.103,55.854,39,55.854z M45,43.854C45,45.56,43.626,47,42,47H22 c-1.626,0-3-1.44-3-3.146v-5V24h26v14.854V43.854z M51,38.854c0,1.103-0.897,2-2,2s-2-0.897-2-2V24h2c1.141,0,2,0.797,2,1.854 V38.854z"
+    /></svg>
+`;
+
+        expect(tuiSvgLinearGradientProcessor(svg, `MOCK_ID`))
+            .toEqual(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64px" height="64px"><linearGradient
+        id="r4wzZI4nTYpRSYqL7WQ95a_1.x_MOCK_ID"
+        x1="37"
+        x2="37"
+        y1="14.5"
+        y2="19.332"
+        gradientUnits="userSpaceOnUse"
+        spreadMethod="reflect"
+    ><stop offset="0" stop-color="currentColor" /><stop offset="1" stop-color="currentColor" /></linearGradient><path
+        fill="url(#r4wzZI4nTYpRSYqL7WQ95a_1.x_MOCK_ID)"
+        d="M37 14.854A2 2 0 1 0 37 18.854A2 2 0 1 0 37 14.854Z"
+    /><linearGradient
+        id="r4wzZI4nTYpRSYqL7WQ95b_MOCK_ID"
+        x1="27"
+        x2="27"
+        y1="14.5"
+        y2="19.332"
+        gradientUnits="userSpaceOnUse"
+        spreadMethod="reflect"
+    ><stop offset="0" stop-color="currentColor" /><stop offset="1" stop-color="currentColor" /></linearGradient><path
+        fill="url(#r4wzZI4nTYpRSYqL7WQ95b_MOCK_ID)"
+        d="M27 14.854A2 2 0 1 0 27 18.854A2 2 0 1 0 27 14.854Z"
+    /><linearGradient
+        id="r4wzZI4nTYpRSYqL7WQ95c_MOCK_ID"
+        x1="32"
+        x2="32"
+        y1="5.25"
+        y2="59.232"
+        gradientUnits="userSpaceOnUse"
+        spreadMethod="reflect"
+    ><stop offset="0" stop-color="currentColor" /><stop offset="1" stop-color="currentColor" /></linearGradient><path
+        fill="url(#r4wzZI4nTYpRSYqL7WQ95c_MOCK_ID)"
+        d="M49,22h-2h-0.049c-0.284-4.495-2.458-8.387-5.765-10.919l3.521-3.521l-1.414-1.414 l-3.807,3.807C37.293,8.713,34.747,8,32,8s-5.294,0.713-7.486,1.953l-3.807-3.807l-1.414,1.414l3.521,3.521 c-3.307,2.532-5.48,6.424-5.765,10.919H17h-2c-2.243,0-4,1.692-4,3.854v13c0,2.206,1.794,4,4,4c0.732,0,1-0.212,2-0.556v1.556 c0,2.438,2,4.545,4,5.038v4.962c0,2.206,1.794,4,4,4s4-1.794,4-4V49h6v4.854c0,2.206,1.794,4,4,4s4-1.794,4-4v-4.962 c2-0.492,4-2.599,4-5.038v-1.556c1,0.344,1.268,0.556,2,0.556c2.206,0,4-1.794,4-4v-13C53,23.692,51.243,22,49,22z M32,10 c6.953,0,12.469,5.194,12.964,12H19.036C19.531,15.194,25.047,10,32,10z M15,40.854c-1.103,0-2-0.897-2-2v-13 C13,24.797,13.859,24,15,24h2v14.854C17,39.956,16.103,40.854,15,40.854z M27,53.854c0,1.103-0.897,2-2,2s-2-0.897-2-2V49h4V53.854z M39,55.854c-1.103,0-2-0.897-2-2V49h4v4.854C41,54.956,40.103,55.854,39,55.854z M45,43.854C45,45.56,43.626,47,42,47H22 c-1.626,0-3-1.44-3-3.146v-5V24h26v14.854V43.854z M51,38.854c0,1.103-0.897,2-2,2s-2-0.897-2-2V24h2c1.141,0,2,0.797,2,1.854 V38.854z"
+    /></svg>
+`);
+    });
+
+    it(`correct replacing ids for a one line SVG`, () => {
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64px" height="64px"><linearGradient id="r4wzZI4nTYpRSYqL7WQ95a" x1="37" x2="37" y1="14.5"y2="19.332"gradientUnits="userSpaceOnUse"spreadMethod="reflect"><stop offset="0" stop-color="currentColor" /><stop offset="1" stop-color="currentColor" /></linearGradient><path fill="url(#r4wzZI4nTYpRSYqL7WQ95a)" d="M37 14.854A2 2 0 1 0 37 18.854A2 2 0 1 0 37 14.854Z"/><linearGradient id="r4wzZI4nTYpRSYqL7WQ95b"x1="27"x2="27"y1="14.5"y2="19.332"gradientUnits="userSpaceOnUse"spreadMethod="reflect"><stop offset="0" stop-color="currentColor" /><stop offset="1" stop-color="currentColor" /></linearGradient><path fill="url(#r4wzZI4nTYpRSYqL7WQ95b)" d="M27 14.854A2 2 0 1 0 27 18.854A2 2 0 1 0 27 14.854Z"/><linearGradient id="r4wzZI4nTYpRSYqL7WQ95c"x1="32"x2="32"y1="5.25"y2="59.232"gradientUnits="userSpaceOnUse"spreadMethod="reflect"><stop offset="0" stop-color="currentColor" /><stop offset="1" stop-color="currentColor" /></linearGradient><path fill="url(#r4wzZI4nTYpRSYqL7WQ95c)" d="M49,22h-2h-0.049c-0.284-4.495-2.458-8.387-5.765-10.919l3.521-3.521l-1.414-1.414 l-3.807,3.807C37.293,8.713,34.747,8,32,8s-5.294,0.713-7.486,1.953l-3.807-3.807l-1.414,1.414l3.521,3.521 c-3.307,2.532-5.48,6.424-5.765,10.919H17h-2c-2.243,0-4,1.692-4,3.854v13c0,2.206,1.794,4,4,4c0.732,0,1-0.212,2-0.556v1.556 c0,2.438,2,4.545,4,5.038v4.962c0,2.206,1.794,4,4,4s4-1.794,4-4V49h6v4.854c0,2.206,1.794,4,4,4s4-1.794,4-4v-4.962 c2-0.492,4-2.599,4-5.038v-1.556c1,0.344,1.268,0.556,2,0.556c2.206,0,4-1.794,4-4v-13C53,23.692,51.243,22,49,22z M32,10 c6.953,0,12.469,5.194,12.964,12H19.036C19.531,15.194,25.047,10,32,10z M15,40.854c-1.103,0-2-0.897-2-2v-13 C13,24.797,13.859,24,15,24h2v14.854C17,39.956,16.103,40.854,15,40.854z M27,53.854c0,1.103-0.897,2-2,2s-2-0.897-2-2V49h4V53.854z M39,55.854c-1.103,0-2-0.897-2-2V49h4v4.854C41,54.956,40.103,55.854,39,55.854z M45,43.854C45,45.56,43.626,47,42,47H22 c-1.626,0-3-1.44-3-3.146v-5V24h26v14.854V43.854z M51,38.854c0,1.103-0.897,2-2,2s-2-0.897-2-2V24h2c1.141,0,2,0.797,2,1.854 V38.854z"/></svg>`;
+
+        expect(tuiSvgLinearGradientProcessor(svg, `MOCK_ID`)).toEqual(
+            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64px" height="64px"><linearGradient id="r4wzZI4nTYpRSYqL7WQ95a_MOCK_ID" x1="37" x2="37" y1="14.5"y2="19.332"gradientUnits="userSpaceOnUse"spreadMethod="reflect"><stop offset="0" stop-color="currentColor" /><stop offset="1" stop-color="currentColor" /></linearGradient><path fill="url(#r4wzZI4nTYpRSYqL7WQ95a_MOCK_ID)" d="M37 14.854A2 2 0 1 0 37 18.854A2 2 0 1 0 37 14.854Z"/><linearGradient id="r4wzZI4nTYpRSYqL7WQ95b_MOCK_ID"x1="27"x2="27"y1="14.5"y2="19.332"gradientUnits="userSpaceOnUse"spreadMethod="reflect"><stop offset="0" stop-color="currentColor" /><stop offset="1" stop-color="currentColor" /></linearGradient><path fill="url(#r4wzZI4nTYpRSYqL7WQ95b_MOCK_ID)" d="M27 14.854A2 2 0 1 0 27 18.854A2 2 0 1 0 27 14.854Z"/><linearGradient id="r4wzZI4nTYpRSYqL7WQ95c_MOCK_ID"x1="32"x2="32"y1="5.25"y2="59.232"gradientUnits="userSpaceOnUse"spreadMethod="reflect"><stop offset="0" stop-color="currentColor" /><stop offset="1" stop-color="currentColor" /></linearGradient><path fill="url(#r4wzZI4nTYpRSYqL7WQ95c_MOCK_ID)" d="M49,22h-2h-0.049c-0.284-4.495-2.458-8.387-5.765-10.919l3.521-3.521l-1.414-1.414 l-3.807,3.807C37.293,8.713,34.747,8,32,8s-5.294,0.713-7.486,1.953l-3.807-3.807l-1.414,1.414l3.521,3.521 c-3.307,2.532-5.48,6.424-5.765,10.919H17h-2c-2.243,0-4,1.692-4,3.854v13c0,2.206,1.794,4,4,4c0.732,0,1-0.212,2-0.556v1.556 c0,2.438,2,4.545,4,5.038v4.962c0,2.206,1.794,4,4,4s4-1.794,4-4V49h6v4.854c0,2.206,1.794,4,4,4s4-1.794,4-4v-4.962 c2-0.492,4-2.599,4-5.038v-1.556c1,0.344,1.268,0.556,2,0.556c2.206,0,4-1.794,4-4v-13C53,23.692,51.243,22,49,22z M32,10 c6.953,0,12.469,5.194,12.964,12H19.036C19.531,15.194,25.047,10,32,10z M15,40.854c-1.103,0-2-0.897-2-2v-13 C13,24.797,13.859,24,15,24h2v14.854C17,39.956,16.103,40.854,15,40.854z M27,53.854c0,1.103-0.897,2-2,2s-2-0.897-2-2V49h4V53.854z M39,55.854c-1.103,0-2-0.897-2-2V49h4v4.854C41,54.956,40.103,55.854,39,55.854z M45,43.854C45,45.56,43.626,47,42,47H22 c-1.626,0-3-1.44-3-3.146v-5V24h26v14.854V43.854z M51,38.854c0,1.103-0.897,2-2,2s-2-0.897-2-2V24h2c1.141,0,2,0.797,2,1.854 V38.854z"/></svg>`,
+        );
+    });
+
+    it(`correct replacing ids for a one line SVG with url with quotes`, () => {
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64px" height="64px"><linearGradient id="r4wzZI4nTYpRSYqL7WQ95a" x1="37" x2="37" y1="14.5"y2="19.332"gradientUnits="userSpaceOnUse"spreadMethod="reflect"><stop offset="0" stop-color="currentColor" /><stop offset="1" stop-color="currentColor" /></linearGradient><path fill="url('#r4wzZI4nTYpRSYqL7WQ95a')" d="M37 14.854A2 2 0 1 0 37 18.854A2 2 0 1 0 37 14.854Z"/><linearGradient id="r4wzZI4nTYpRSYqL7WQ95b"x1="27"x2="27"y1="14.5"y2="19.332"gradientUnits="userSpaceOnUse"spreadMethod="reflect"><stop offset="0" stop-color="currentColor" /><stop offset="1" stop-color="currentColor" /></linearGradient><path fill="url(#r4wzZI4nTYpRSYqL7WQ95b)" d="M27 14.854A2 2 0 1 0 27 18.854A2 2 0 1 0 27 14.854Z"/><linearGradient id="r4wzZI4nTYpRSYqL7WQ95c"x1="32"x2="32"y1="5.25"y2="59.232"gradientUnits="userSpaceOnUse"spreadMethod="reflect"><stop offset="0" stop-color="currentColor" /><stop offset="1" stop-color="currentColor" /></linearGradient><path fill="url(#r4wzZI4nTYpRSYqL7WQ95c)" d="M49,22h-2h-0.049c-0.284-4.495-2.458-8.387-5.765-10.919l3.521-3.521l-1.414-1.414 l-3.807,3.807C37.293,8.713,34.747,8,32,8s-5.294,0.713-7.486,1.953l-3.807-3.807l-1.414,1.414l3.521,3.521 c-3.307,2.532-5.48,6.424-5.765,10.919H17h-2c-2.243,0-4,1.692-4,3.854v13c0,2.206,1.794,4,4,4c0.732,0,1-0.212,2-0.556v1.556 c0,2.438,2,4.545,4,5.038v4.962c0,2.206,1.794,4,4,4s4-1.794,4-4V49h6v4.854c0,2.206,1.794,4,4,4s4-1.794,4-4v-4.962 c2-0.492,4-2.599,4-5.038v-1.556c1,0.344,1.268,0.556,2,0.556c2.206,0,4-1.794,4-4v-13C53,23.692,51.243,22,49,22z M32,10 c6.953,0,12.469,5.194,12.964,12H19.036C19.531,15.194,25.047,10,32,10z M15,40.854c-1.103,0-2-0.897-2-2v-13 C13,24.797,13.859,24,15,24h2v14.854C17,39.956,16.103,40.854,15,40.854z M27,53.854c0,1.103-0.897,2-2,2s-2-0.897-2-2V49h4V53.854z M39,55.854c-1.103,0-2-0.897-2-2V49h4v4.854C41,54.956,40.103,55.854,39,55.854z M45,43.854C45,45.56,43.626,47,42,47H22 c-1.626,0-3-1.44-3-3.146v-5V24h26v14.854V43.854z M51,38.854c0,1.103-0.897,2-2,2s-2-0.897-2-2V24h2c1.141,0,2,0.797,2,1.854 V38.854z"/></svg>`;
+
+        expect(tuiSvgLinearGradientProcessor(svg, `MOCK_ID`)).toEqual(
+            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64px" height="64px"><linearGradient id="r4wzZI4nTYpRSYqL7WQ95a_MOCK_ID" x1="37" x2="37" y1="14.5"y2="19.332"gradientUnits="userSpaceOnUse"spreadMethod="reflect"><stop offset="0" stop-color="currentColor" /><stop offset="1" stop-color="currentColor" /></linearGradient><path fill="url('#r4wzZI4nTYpRSYqL7WQ95a_MOCK_ID')" d="M37 14.854A2 2 0 1 0 37 18.854A2 2 0 1 0 37 14.854Z"/><linearGradient id="r4wzZI4nTYpRSYqL7WQ95b_MOCK_ID"x1="27"x2="27"y1="14.5"y2="19.332"gradientUnits="userSpaceOnUse"spreadMethod="reflect"><stop offset="0" stop-color="currentColor" /><stop offset="1" stop-color="currentColor" /></linearGradient><path fill="url(#r4wzZI4nTYpRSYqL7WQ95b_MOCK_ID)" d="M27 14.854A2 2 0 1 0 27 18.854A2 2 0 1 0 27 14.854Z"/><linearGradient id="r4wzZI4nTYpRSYqL7WQ95c_MOCK_ID"x1="32"x2="32"y1="5.25"y2="59.232"gradientUnits="userSpaceOnUse"spreadMethod="reflect"><stop offset="0" stop-color="currentColor" /><stop offset="1" stop-color="currentColor" /></linearGradient><path fill="url(#r4wzZI4nTYpRSYqL7WQ95c_MOCK_ID)" d="M49,22h-2h-0.049c-0.284-4.495-2.458-8.387-5.765-10.919l3.521-3.521l-1.414-1.414 l-3.807,3.807C37.293,8.713,34.747,8,32,8s-5.294,0.713-7.486,1.953l-3.807-3.807l-1.414,1.414l3.521,3.521 c-3.307,2.532-5.48,6.424-5.765,10.919H17h-2c-2.243,0-4,1.692-4,3.854v13c0,2.206,1.794,4,4,4c0.732,0,1-0.212,2-0.556v1.556 c0,2.438,2,4.545,4,5.038v4.962c0,2.206,1.794,4,4,4s4-1.794,4-4V49h6v4.854c0,2.206,1.794,4,4,4s4-1.794,4-4v-4.962 c2-0.492,4-2.599,4-5.038v-1.556c1,0.344,1.268,0.556,2,0.556c2.206,0,4-1.794,4-4v-13C53,23.692,51.243,22,49,22z M32,10 c6.953,0,12.469,5.194,12.964,12H19.036C19.531,15.194,25.047,10,32,10z M15,40.854c-1.103,0-2-0.897-2-2v-13 C13,24.797,13.859,24,15,24h2v14.854C17,39.956,16.103,40.854,15,40.854z M27,53.854c0,1.103-0.897,2-2,2s-2-0.897-2-2V49h4V53.854z M39,55.854c-1.103,0-2-0.897-2-2V49h4v4.854C41,54.956,40.103,55.854,39,55.854z M45,43.854C45,45.56,43.626,47,42,47H22 c-1.626,0-3-1.44-3-3.146v-5V24h26v14.854V43.854z M51,38.854c0,1.103-0.897,2-2,2s-2-0.897-2-2V24h2c1.141,0,2,0.797,2,1.854 V38.854z"/></svg>`,
+        );
     });
 
     it(`ignore hex color`, () => {
@@ -155,5 +224,115 @@ describe(`svgLinearGradientProcessor`, () => {
   </g>
  </g>
 </svg>`);
+    });
+
+    it(`correct replace ids with svg inline from example`, () => {
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 200 200"
+    preserveAspectRatio="xMidYMid slice"
+    id="svg">
+
+    <linearGradient id="grad">
+        <stop class="stop stop--1"
+                stop-color="crimson"
+                offset="0"></stop>
+        <stop class="stop stop--2"
+                stop-color="gold"
+                offset="49%"></stop>
+        <stop class="stop stop--2"
+                stop-color="gold"
+                offset="51%"></stop>
+        <stop class="stop stop--3"
+                stop-color="teal"
+                offset="100%"></stop>
+    </linearGradient>
+
+    <pattern id="pattern"
+                viewBox="0 0 50 50"
+                width="2" height="2"
+            patternUnits="userSpaceOnUse">
+        <path stroke="black"
+                stroke-width="6"
+                d="M0,50 50,0
+                "></path>
+    </pattern>
+
+    <mask id="mask">
+        <rect width="100%" height="100%"
+            fill="white">
+        </rect>
+        <rect width="100%" height="100%"
+            fill="url(#pattern)">
+        </rect>
+    </mask>
+
+    <g mask="url(#mask)">
+        <text x="50.7%" y="50.7%" dy=".25em"
+            text-anchor="middle"
+            fill="none"
+            stroke="url(#grad)"
+            stroke-width=".25"
+            >Text</text>
+        <text x="50%" y="50%" dy=".25em"
+            text-anchor="middle"
+            fill="url(#grad)"
+            >Text</text>
+    </g>
+</svg>`;
+
+        const expectedSvg = `<svg xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 200 200"
+    preserveAspectRatio="xMidYMid slice"
+    id="svg">
+
+    <linearGradient id="grad_MOCK_ID">
+        <stop class="stop stop--1"
+                stop-color="crimson"
+                offset="0"></stop>
+        <stop class="stop stop--2"
+                stop-color="gold"
+                offset="49%"></stop>
+        <stop class="stop stop--2"
+                stop-color="gold"
+                offset="51%"></stop>
+        <stop class="stop stop--3"
+                stop-color="teal"
+                offset="100%"></stop>
+    </linearGradient>
+
+    <pattern id="pattern_MOCK_ID"
+                viewBox="0 0 50 50"
+                width="2" height="2"
+            patternUnits="userSpaceOnUse">
+        <path stroke="black"
+                stroke-width="6"
+                d="M0,50 50,0
+                "></path>
+    </pattern>
+
+    <mask id="mask_MOCK_ID">
+        <rect width="100%" height="100%"
+            fill="white">
+        </rect>
+        <rect width="100%" height="100%"
+            fill="url(#pattern_MOCK_ID)">
+        </rect>
+    </mask>
+
+    <g mask="url(#mask_MOCK_ID)">
+        <text x="50.7%" y="50.7%" dy=".25em"
+            text-anchor="middle"
+            fill="none"
+            stroke="url(#grad_MOCK_ID)"
+            stroke-width=".25"
+            >Text</text>
+        <text x="50%" y="50%" dy=".25em"
+            text-anchor="middle"
+            fill="url(#grad_MOCK_ID)"
+            >Text</text>
+    </g>
+</svg>`;
+
+        expect(tuiSvgLinearGradientProcessor(svg, `MOCK_ID`)).toEqual(expectedSvg);
     });
 });
