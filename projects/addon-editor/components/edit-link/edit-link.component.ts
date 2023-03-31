@@ -9,15 +9,20 @@ import {
     Output,
 } from '@angular/core';
 import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
+import {
+    TUI_EDITOR_LINK_HASH_PREFIX,
+    TUI_EDITOR_LINK_HTTP_PREFIX,
+    TUI_EDITOR_LINK_HTTPS_PREFIX,
+    TuiEditorLinkPrefix,
+    TuiEditorLinkProtocol,
+} from '@taiga-ui/addon-editor/constants';
 import {TuiTiptapEditorService} from '@taiga-ui/addon-editor/directives';
-import {TUI_EDITOR_LINK_TEXTS} from '@taiga-ui/addon-editor/tokens';
+import {
+    TUI_EDITOR_LINK_TEXTS,
+    TUI_EDITOR_OPTIONS,
+    TuiEditorOptions,
+} from '@taiga-ui/addon-editor/tokens';
 import {tuiDefaultProp, TuiInjectionTokenType, tuiIsElement} from '@taiga-ui/cdk';
-
-const HASH_PREFIX = '#' as const;
-const HTTP_PREFIX = 'http://' as const;
-const HTTPS_PREFIX = 'https://' as const;
-
-type TuiLinkPrefix = typeof HASH_PREFIX | typeof HTTP_PREFIX | typeof HTTPS_PREFIX;
 
 @Component({
     selector: 'tui-edit-link',
@@ -38,7 +43,7 @@ export class TuiEditLinkComponent {
 
     edit = !this.url;
 
-    prefix: TuiLinkPrefix = this.makeDefaultPrefix();
+    prefix: TuiEditorLinkPrefix = this.makeDefaultPrefix();
 
     anchorIds = this.getAllAnchorsIds();
 
@@ -48,13 +53,19 @@ export class TuiEditLinkComponent {
         @Inject(TUI_EDITOR_LINK_TEXTS)
         readonly texts$: TuiInjectionTokenType<typeof TUI_EDITOR_LINK_TEXTS>,
         @Inject(TuiTiptapEditorService) private readonly editor: AbstractTuiEditor,
+        @Inject(TUI_EDITOR_OPTIONS)
+        private readonly options: TuiEditorOptions,
     ) {}
+
+    get defaultProtocol(): TuiEditorLinkProtocol {
+        return this.options.linkOptions?.protocol ?? TUI_EDITOR_LINK_HTTPS_PREFIX;
+    }
 
     @Input()
     @tuiDefaultProp()
     set anchorMode(mode: boolean) {
         this.isOnlyAnchorMode = mode;
-        this.prefix = mode ? HASH_PREFIX : this.makeDefaultPrefix();
+        this.prefix = mode ? TUI_EDITOR_LINK_HASH_PREFIX : this.makeDefaultPrefix();
     }
 
     get anchorMode(): boolean {
@@ -62,7 +73,7 @@ export class TuiEditLinkComponent {
     }
 
     get prefixIsHashMode(): boolean {
-        return this.prefix === HASH_PREFIX;
+        return this.prefix === TUI_EDITOR_LINK_HASH_PREFIX;
     }
 
     get hasUrl(): boolean {
@@ -102,7 +113,7 @@ export class TuiEditLinkComponent {
     }
 
     changePrefix(isPrefix: boolean): void {
-        this.prefix = isPrefix ? HASH_PREFIX : HTTP_PREFIX;
+        this.prefix = isPrefix ? TUI_EDITOR_LINK_HASH_PREFIX : this.defaultProtocol;
     }
 
     onSave(): void {
@@ -115,7 +126,9 @@ export class TuiEditLinkComponent {
 
     onBackspace(): void {
         if (!this.url) {
-            this.prefix = this.isOnlyAnchorMode ? HASH_PREFIX : HTTP_PREFIX;
+            this.prefix = this.isOnlyAnchorMode
+                ? TUI_EDITOR_LINK_HASH_PREFIX
+                : this.defaultProtocol;
         }
     }
 
@@ -135,17 +148,17 @@ export class TuiEditLinkComponent {
         this.url = '';
     }
 
-    private makeDefaultPrefix(): TuiLinkPrefix {
+    private makeDefaultPrefix(): TuiEditorLinkPrefix {
         const a = this.getAnchorElement();
 
         if (a) {
             return (!a.getAttribute('href') && a.getAttribute('id')) ||
-                a.getAttribute('href')?.startsWith(HASH_PREFIX)
-                ? HASH_PREFIX
-                : HTTP_PREFIX;
+                a.getAttribute('href')?.startsWith(TUI_EDITOR_LINK_HASH_PREFIX)
+                ? TUI_EDITOR_LINK_HASH_PREFIX
+                : this.defaultProtocol;
         }
 
-        return HTTP_PREFIX;
+        return this.defaultProtocol;
     }
 
     private detectAnchorMode(): boolean {
@@ -171,22 +184,26 @@ export class TuiEditLinkComponent {
     }
 
     private removePrefix(url: string): string {
-        if (url.startsWith(HTTP_PREFIX)) {
-            this.prefix = this.isOnlyAnchorMode ? HASH_PREFIX : HTTP_PREFIX;
+        if (url.startsWith(TUI_EDITOR_LINK_HTTP_PREFIX)) {
+            this.prefix = this.isOnlyAnchorMode
+                ? TUI_EDITOR_LINK_HASH_PREFIX
+                : TUI_EDITOR_LINK_HTTP_PREFIX;
 
-            return url.replace(HTTP_PREFIX, '');
+            return url.replace(TUI_EDITOR_LINK_HTTP_PREFIX, '');
         }
 
-        if (url.startsWith(HTTPS_PREFIX)) {
-            this.prefix = this.isOnlyAnchorMode ? HASH_PREFIX : HTTPS_PREFIX;
+        if (url.startsWith(TUI_EDITOR_LINK_HTTPS_PREFIX)) {
+            this.prefix = this.isOnlyAnchorMode
+                ? TUI_EDITOR_LINK_HASH_PREFIX
+                : TUI_EDITOR_LINK_HTTPS_PREFIX;
 
-            return url.replace(HTTPS_PREFIX, '');
+            return url.replace(TUI_EDITOR_LINK_HTTPS_PREFIX, '');
         }
 
-        if (url.startsWith(HASH_PREFIX)) {
-            this.prefix = HASH_PREFIX;
+        if (url.startsWith(TUI_EDITOR_LINK_HASH_PREFIX)) {
+            this.prefix = TUI_EDITOR_LINK_HASH_PREFIX;
 
-            return url.replace(HASH_PREFIX, '');
+            return url.replace(TUI_EDITOR_LINK_HASH_PREFIX, '');
         }
 
         return url;

@@ -42,7 +42,7 @@ describe(`Editing links in Editor`, () => {
         tuiFocusToStartInEditor();
 
         tuiGetScreenshotArea().matchImageSnapshot(`2-1-added-new-link`);
-        tuiOpenAnchorDropdown({containHref: `http://wysiwyg.com`});
+        tuiOpenAnchorDropdown({containHref: `https://wysiwyg.com`});
         tuiGetScreenshotArea().matchImageSnapshot(`2-2-focused-new-link`);
 
         tuiFocusToStartInEditor();
@@ -56,12 +56,12 @@ describe(`Editing links in Editor`, () => {
         tuiFocusToStartInEditor();
 
         tuiGetScreenshotArea().matchImageSnapshot(`2-3-added-new-link-2`);
-        tuiOpenAnchorDropdown({containHref: `http://example.com`});
+        tuiOpenAnchorDropdown({containHref: `https://example.com`});
         tuiGetContentEditable().find(`sup`).type(`{leftArrow}`);
 
         tuiGetScreenshotArea().matchImageSnapshot(`2-4-focused-new-link-2`);
 
-        tuiOpenAnchorDropdown({containHref: `http://wysiwyg.com`});
+        tuiOpenAnchorDropdown({containHref: `https://wysiwyg.com`});
         tuiGetScreenshotArea().matchImageSnapshot(
             `2-5-correct-refresh-content-in-dropdown`,
         );
@@ -78,7 +78,7 @@ describe(`Editing links in Editor`, () => {
 
         tuiGetScreenshotArea().matchImageSnapshot(`3-1-before-remove-link`);
 
-        tuiOpenAnchorDropdown({containHref: `http://wysiwyg.com`});
+        tuiOpenAnchorDropdown({containHref: `https://wysiwyg.com`});
         tuiTrashValueByEditLink();
 
         tuiClearHint();
