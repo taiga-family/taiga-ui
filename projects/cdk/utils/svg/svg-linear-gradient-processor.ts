@@ -1,6 +1,8 @@
 import {SafeHtml} from '@angular/platform-browser';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 
+const regexpUrlIdsStr = `url\\((("{0,1}))('*)#(.*?)('*)\\)`;
+
 /**
  * @description:
  * Any ‘linearGradient’ attributes which are defined on the referenced
@@ -22,14 +24,17 @@ export function tuiSvgLinearGradientProcessor(
     if (tuiIsString(svg)) {
         const uniqueIds = extractLinearGradientIdsFromSvg(svg);
 
-        return uniqueIds.reduce(
-            (processed, previousId) =>
-                processed.replace(
-                    new RegExp(previousId, `g`),
-                    `${previousId}_${salt || makeRandomSalt()}`,
-                ),
-            svg,
-        );
+        return uniqueIds.reduce((processed, previousId) => {
+            const newId = `${previousId}_${salt || makeRandomSalt()}`;
+
+            return processed
+                .replace(new RegExp(`"${previousId}"`, `g`), `"${newId}"`)
+                .replace(
+                    new RegExp(`url\\((("{0,1}))('*)#${previousId}('*)\\)`, `g`),
+                    (substring): string =>
+                        substring.includes(`'`) ? `url('#${newId}')` : `url(#${newId})`,
+                );
+        }, svg);
     }
 
     return svg;
@@ -40,9 +45,12 @@ function makeRandomSalt(): number {
 }
 
 function extractLinearGradientIdsFromSvg(svg: string): string[] {
-    const matchedIdsWithPrefix = svg.match(/url.*[\w\s$]*(\((.*[\w\s,$]*)\))/g) || [];
+    const matchedIdsWithPrefix = svg.match(new RegExp(regexpUrlIdsStr, `g`)) || [];
 
     return [...new Set(matchedIdsWithPrefix)].map(
-        matched => matched.slice(5, matched.length - 1), // extract values between `url(#` and `)`
+        matched =>
+            matched.includes(`'`)
+                ? matched.slice(6, matched.length - 2)
+                : matched.slice(5, matched.length - 1), // extract values between `url(#` and `)`
     );
 }
