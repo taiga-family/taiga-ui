@@ -82,8 +82,9 @@ export class TuiInputColorComponent
         this.open = !this.open;
     }
 
+    /** deprecated use 'value' setter */
     onValueChange(textValue: string): void {
-        this.updateValue(textValue);
+        this.value = textValue;
     }
 
     onFocused(focused: boolean): void {

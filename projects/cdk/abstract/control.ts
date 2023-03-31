@@ -79,6 +79,10 @@ export abstract class AbstractTuiControl<T>
         return this.previousInternalValue ?? this.fallbackValue;
     }
 
+    set value(value: T) {
+        this.updateValue(value);
+    }
+
     get safeCurrentValue(): T {
         return this.rawValue ?? this.fallbackValue;
     }
@@ -183,6 +187,9 @@ export abstract class AbstractTuiControl<T>
         super.updateFocused(focused);
     }
 
+    /**
+     * @deprecated use `value` setter
+     */
     protected updateValue(value: T): void {
         if (this.disabled || this.valueIdenticalComparator(this.value, value)) {
             return;

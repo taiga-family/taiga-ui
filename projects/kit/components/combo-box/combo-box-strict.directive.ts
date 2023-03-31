@@ -19,7 +19,7 @@ export class TuiComboBoxStrictDirective<T> {
     @HostListener('input')
     onInput(): void {
         if (!this.strict && this.comboBox.search) {
-            this.comboBox.updateValue(this.comboBox.search);
+            this.comboBox.value = this.comboBox.search;
         }
     }
 }

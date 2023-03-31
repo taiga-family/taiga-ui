@@ -14,8 +14,7 @@
         [nativeId]="nativeId"
         [disabled]="disabled"
         [readOnly]="readOnly"
-        [value]="value"
-        (valueChange)="onValueChange($event)"
+        [(value)]="value"
         (focusedChange)="onFocused($event)"
     >
         <ng-content></ng-content>
@@ -36,7 +35,6 @@
     <tui-color-selector
         [tuiActiveZoneParent]="activeZone"
         [colors]="colors"
-        [color]="value"
-        (colorChange)="onValueChange($event)"
+        [(color)]="value"
     ></tui-color-selector>
 </ng-template>

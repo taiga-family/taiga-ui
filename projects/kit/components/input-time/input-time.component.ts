@@ -183,20 +183,20 @@ export class TuiInputTimeComponent
         const match = this.getMatch(value);
 
         if (match !== undefined) {
-            this.updateValue(match);
+            this.value = match;
 
             return;
         }
 
         if (value.length !== this.mode.length) {
-            this.updateValue(null);
+            this.value = null;
 
             return;
         }
 
         const time = TuiTime.fromString(value);
 
-        this.updateValue(this.strict ? this.findNearestTimeFromItems(time) : time);
+        this.value = this.strict ? this.findNearestTimeFromItems(time) : time;
     }
 
     onFocused(focused: boolean): void {
@@ -211,9 +211,7 @@ export class TuiInputTimeComponent
             return;
         }
 
-        const parsedTime = TuiTime.fromString(this.nativeValue);
-
-        this.updateValue(parsedTime);
+        this.value = TuiTime.fromString(this.nativeValue);
 
         setTimeout(() => {
             if (this.nativeValue.endsWith('.') || this.nativeValue.endsWith(':')) {
@@ -240,7 +238,7 @@ export class TuiInputTimeComponent
 
     handleOption(item: TuiTime): void {
         this.focusInput();
-        this.updateValue(item);
+        this.value = item;
     }
 
     onOpen(open: boolean): void {
@@ -323,11 +321,11 @@ export class TuiInputTimeComponent
             return;
         }
 
-        const increasedTime: TuiTime = this.value.shift(shift);
+        const increasedTime = this.value.shift(shift);
 
         // Manual update so we can set caret position properly
         this.nativeValue = increasedTime.toString(this.mode);
-        this.updateValue(increasedTime);
+        this.value = increasedTime;
     }
 
     private focusInput(preventScroll: boolean = false): void {

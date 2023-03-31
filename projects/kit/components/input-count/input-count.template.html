@@ -12,9 +12,8 @@
     [disabled]="computedDisabled"
     [readOnly]="readOnly"
     [textMask]="getMask(min < 0)"
-    [ngModel]="value"
     [nativeId]="nativeId"
-    (ngModelChange)="onInputNumberChange($event)"
+    [(ngModel)]="value"
     (keydown)="onKeydown($event)"
 >
     <ng-content></ng-content>

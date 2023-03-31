@@ -19,7 +19,6 @@
     [disabled]="computedDisabled"
     [readOnly]="readOnly"
     [tuiFocusable]="focusable"
-    [ngModel]="value"
-    (ngModelChange)="onValueChange($event)"
+    [(ngModel)]="value"
     (tuiFocusedChange)="onFocused($event)"
 />

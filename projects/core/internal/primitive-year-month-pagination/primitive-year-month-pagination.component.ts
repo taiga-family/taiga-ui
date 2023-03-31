@@ -75,13 +75,7 @@ export class TuiPrimitiveYearMonthPaginationComponent
             return;
         }
 
-        if (this.max.monthSameOrBefore(newMonth)) {
-            this.updateValue(this.max);
-
-            return;
-        }
-
-        this.updateValue(newMonth);
+        this.updateValue(this.max.monthSameOrBefore(newMonth) ? this.max : newMonth);
     }
 
     private updateValue(value: TuiMonth): void {

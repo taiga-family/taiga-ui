@@ -140,9 +140,9 @@ export class TuiSelectComponent<T>
 
     onValueChange(value: T): void {
         if (!value) {
-            this.updateValue(null);
+            this.value = null;
         } else {
-            this.updateValue(value || null);
+            this.value = value || null;
         }
     }
 
@@ -152,13 +152,13 @@ export class TuiSelectComponent<T>
 
     onKeyDownDelete(): void {
         if (this.textfieldCleaner.cleaner) {
-            this.updateValue(null);
+            this.value = null;
         }
     }
 
     handleOption(option: T): void {
         this.focusInput();
-        this.updateValue(option);
+        this.value = option;
         this.hostedDropdown?.updateOpen(false);
     }
 

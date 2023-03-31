@@ -108,7 +108,8 @@ export class TuiCheckboxBlockComponent
         this.updateFocusVisible(focusVisible);
     }
 
+    /** @deprecated use 'value' setter */
     onModelChange(value: boolean): void {
-        this.updateValue(value);
+        this.value = value;
     }
 }

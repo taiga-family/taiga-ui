@@ -97,7 +97,8 @@ export class TuiRadioLabeledComponent<T>
         this.updateFocused(focused);
     }
 
+    /** @deprecated use 'value' setter */
     onModelChange(value: T): void {
-        this.updateValue(value);
+        this.value = value;
     }
 }

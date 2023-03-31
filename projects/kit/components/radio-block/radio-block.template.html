@@ -24,8 +24,7 @@
                     [pseudoHover]="pseudoHover"
                     [pseudoActive]="pseudoActive"
                     [size]="checkboxSize"
-                    [ngModel]="value"
-                    (ngModelChange)="onModelChange($event)"
+                    [(ngModel)]="value"
                     (focusedChange)="onFocused($event)"
                     (focusVisibleChange)="onFocusVisible($event)"
                 ></tui-radio>

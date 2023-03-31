@@ -26,9 +26,7 @@ import {TuiTiptapEditorService} from './tiptap-editor.service';
 export class TuiTiptapEditorDirective {
     @Input()
     set value(value: string) {
-        if (value !== this.editor.html) {
-            this.editor.setValue(value);
-        }
+        this.editor.setValue(value);
     }
 
     @Input()

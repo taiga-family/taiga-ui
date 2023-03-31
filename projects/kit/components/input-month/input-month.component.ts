@@ -114,12 +114,12 @@ export class TuiInputMonthComponent
             return;
         }
 
-        this.updateValue(null);
+        this.value = null;
         this.onOpenChange(true);
     }
 
     onMonthClick(month: TuiMonth): void {
-        this.updateValue(month);
+        this.value = month;
         this.close();
     }
 

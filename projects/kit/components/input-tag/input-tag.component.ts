@@ -396,7 +396,7 @@ export class TuiInputTagComponent
 
     onTagEdited(value: string, index: number): void {
         this.focusInput();
-        this.updateValue(
+        this.value = this.filterValue(
             this.value
                 .map((tag, tagIndex) =>
                     tagIndex !== index
@@ -416,7 +416,7 @@ export class TuiInputTagComponent
     handleOption(item: string): void {
         this.focusInput();
         this.updateSearch('');
-        this.updateValue(this.value.concat(item));
+        this.value = this.filterValue(this.value.concat(item));
         this.open = false;
         this.scrollToEnd$.next();
     }
@@ -430,7 +430,7 @@ export class TuiInputTagComponent
 
         if (array.length > 1) {
             this.updateSearch(this.clippedValue(array[array.length - 1].trim()));
-            this.updateValue([...this.value, ...validated]);
+            this.value = this.filterValue([...this.value, ...validated]);
         } else {
             this.updateSearch(this.clippedValue(value));
         }
@@ -460,18 +460,15 @@ export class TuiInputTagComponent
         return tag.toString();
     }
 
-    protected override updateValue(value: string[]): void {
+    private filterValue(value: string[]): string[] {
         const seen = new Set();
 
-        super.updateValue(
-            value
-                .reverse()
-                .filter(
-                    item =>
-                        !this.uniqueTags || (!!item && !seen.has(item) && seen.add(item)),
-                )
-                .reverse(),
-        );
+        return value
+            .reverse()
+            .filter(
+                item => !this.uniqueTags || (item && !seen.has(item) && seen.add(item)),
+            )
+            .reverse();
     }
 
     private onScrollKeyDown(currentIndex: number, flag: number): void {
@@ -546,13 +543,13 @@ export class TuiInputTagComponent
         }
 
         this.updateSearch('');
-        this.updateValue(this.value.concat(inputValue));
+        this.value = this.filterValue(this.value.concat(inputValue));
     }
 
     private deleteLastEnabledItem(): void {
         for (let index = this.value.length - 1; index >= 0; index--) {
             if (!this.disabledItemHandler(this.value[index])) {
-                this.updateValue(tuiArrayRemove(this.value, index));
+                this.value = tuiArrayRemove(this.value, index);
 
                 break;
             }

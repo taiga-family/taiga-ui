@@ -133,7 +133,7 @@ export class TuiEditorComponent
     }
 
     onModelChange(value: string): void {
-        this.updateValue(value);
+        this.value = value;
     }
 
     addAnchor(anchor: string): void {

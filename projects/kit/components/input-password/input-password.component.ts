@@ -118,7 +118,7 @@ export class TuiInputPasswordComponent
     }
 
     onValueChange(textValue: string): void {
-        this.updateValue(textValue);
+        this.value = textValue;
     }
 
     onFocused(focused: boolean): void {
