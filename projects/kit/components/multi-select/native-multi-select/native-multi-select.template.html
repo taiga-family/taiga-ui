@@ -2,14 +2,15 @@
 
 <tui-data-list-wrapper
     *tuiDataList
+    tuiMultiSelectGroup
     [items]="items"
-    [disabledItemHandler]="host.disableItemHandler"
+    [disabledItemHandler]="disabledItemHandler || host.disableItemHandler"
 ></tui-data-list-wrapper>
 <option
     *ngFor="let option of items"
     [selected]="option | tuiMapper : selectedMapper : host.value"
     [value]="option"
-    [disabled]="host.disableItemHandler(option)"
+    [disabled]="disabledItemHandler ? disabledItemHandler(option) : host.disableItemHandler(option)"
 >
     {{ option }}
 </option>

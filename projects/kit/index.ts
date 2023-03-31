@@ -1,3 +1,4 @@
+export * from '@taiga-ui/kit/abstract';
 export * from '@taiga-ui/kit/classes';
 export * from '@taiga-ui/kit/components';
 export * from '@taiga-ui/kit/constants';

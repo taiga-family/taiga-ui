@@ -1,10 +1,12 @@
 <tui-data-list-wrapper
     *tuiDataList
     [items]="items"
+    [disabledItemHandler]="disabledItemHandler || itemsHandlers.disabledItemHandler"
 ></tui-data-list-wrapper>
 <option
     *ngFor="let option of items"
     [value]="option"
+    [disabled]="disabledItemHandler ? disabledItemHandler(option) : itemsHandlers.disabledItemHandler(option)"
 >
     {{ option }}
 </option>
