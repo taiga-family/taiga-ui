@@ -34,7 +34,9 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     set editable(editable: boolean) {
-        this.editor.setEditable(editable);
+        if (this.editable !== editable) {
+            this.editor.setEditable(editable);
+        }
     }
 
     get state(): EditorState {
@@ -303,7 +305,9 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     setValue(value: string): void {
-        this.editor.commands.setContent(value);
+        if (value !== this.html) {
+            this.editor.commands.setContent(value);
+        }
     }
 
     destroy(): void {

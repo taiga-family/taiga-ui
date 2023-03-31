@@ -3,6 +3,7 @@ import {
     ElementRef,
     Inject,
     Input,
+    OnChanges,
     Output,
     Renderer2,
     Self,
@@ -23,18 +24,12 @@ import {TuiTiptapEditorService} from './tiptap-editor.service';
     selector: '[tuiTiptapEditor]',
     providers: [TuiDestroyService],
 })
-export class TuiTiptapEditorDirective {
+export class TuiTiptapEditorDirective implements OnChanges {
     @Input()
-    set value(value: string) {
-        if (value !== this.editor.html) {
-            this.editor.setValue(value);
-        }
-    }
+    value = this.editor.html;
 
     @Input()
-    set editable(editable: boolean) {
-        this.editor.editable = editable;
-    }
+    editable = this.editor.editable;
 
     @Output()
     readonly valueChange = this.editor.valueChange$;
@@ -56,5 +51,10 @@ export class TuiTiptapEditorDirective {
                 this.editorContainer,
             );
         });
+    }
+
+    ngOnChanges(): void {
+        this.editor.setValue(this.value);
+        this.editor.editable = this.editable;
     }
 }
