@@ -1,9 +1,11 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {assets} from '@demo/utils';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-
-import {TuiThemeService} from '../../app/theme.service';
+import {
+    TUI_THEME_DEFAULT_NAME,
+    TuiDocExample,
+    TuiThemeService,
+} from '@taiga-ui/addon-doc';
 
 @Component({
     selector: 'example-tui-svg',
@@ -11,6 +13,7 @@ import {TuiThemeService} from '../../app/theme.service';
     changeDetection,
 })
 export class ExampleTuiSvgComponent {
+    readonly defaultTheme = TUI_THEME_DEFAULT_NAME;
     readonly exampleModule = import('./examples/import/import-module.md?raw');
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 

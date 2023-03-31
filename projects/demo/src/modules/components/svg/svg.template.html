@@ -41,7 +41,7 @@
         </tui-doc-example>
 
         <tui-doc-example
-            *ngIf="(themeService | async) !== 'Open-source'"
+            *ngIf="(themeService | async) !== defaultTheme"
             id="double"
             heading="Two colors"
             [content]="example2"
