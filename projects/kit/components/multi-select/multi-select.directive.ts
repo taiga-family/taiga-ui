@@ -18,9 +18,7 @@ export class TuiMultiSelectDirective extends AbstractTuiTextfieldHost<
     disableItemHandler: TuiBooleanHandler<string> = item =>
         this.host.disabledItemHandler(item);
 
-    onValueChange(_: string): void {
-        //
-    }
+    onValueChange(): void {}
 
     onSelectionChange(value: string[]): void {
         this.host.onValueChange(value);

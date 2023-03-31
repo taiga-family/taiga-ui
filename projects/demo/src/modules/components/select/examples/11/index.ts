@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiBooleanHandler} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tui-select-example-11',
@@ -28,4 +29,6 @@ export class TuiSelectExample11 {
     ];
 
     labels = ['Salad', 'Soup'];
+
+    disabledItemHandler: TuiBooleanHandler<string> = item => item.startsWith('Chicken');
 }

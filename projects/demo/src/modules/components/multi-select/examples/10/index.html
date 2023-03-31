@@ -1,5 +1,4 @@
 <tui-multi-select
-    placeholder="Ignored text"
     class="b-form"
     [formControl]="itemControl"
     [tuiTextfieldLabelOutside]="true"
@@ -11,14 +10,12 @@
 
     <select
         tuiSelect
-        tuiMultiSelectGroup
         multiple
         [items]="items"
     ></select>
 </tui-multi-select>
 
 <tui-multi-select
-    placeholder="Ignored text"
     class="b-form tui-space_top-5"
     [formControl]="itemGroupControl"
     [tuiTextfieldLabelOutside]="true"
@@ -29,7 +26,6 @@
 
     <select
         tuiSelect
-        tuiMultiSelectGroup
         multiple
         [items]="groupItems"
         [labels]="labels"
