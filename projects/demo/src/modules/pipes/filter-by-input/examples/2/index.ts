@@ -3,6 +3,11 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
+interface User {
+    readonly id: number;
+    readonly name: string;
+}
+
 @Component({
     selector: 'tui-filter-by-input-example-2',
     templateUrl: './index.html',
@@ -19,10 +24,24 @@ export class TuiFilterByInputExample2 {
         'Terry Jones',
     ];
 
+    readonly users = [
+        {id: 1, name: 'John Cleese'},
+        {id: 2, name: 'Eric Idle'},
+        {id: 3, name: 'Graham Chapman'},
+        {id: 4, name: 'Michael Palin'},
+        {id: 5, name: 'Terry Gilliam'},
+    ];
+
     readonly form = new FormGroup({
         user: new FormControl(),
+        user2: new FormControl(),
     });
 
-    readonly matcher = (name: string, search: string): boolean =>
+    readonly stringify = (item: User): string => `${item.name}`;
+
+    readonly matcherString = (name: string, search: string): boolean =>
         name.split(' ').pop()!.toLowerCase().startsWith(search.toLowerCase());
+
+    readonly matcherUser = (user: User, search: string): boolean =>
+        user.name.toLowerCase().startsWith(search.toLowerCase());
 }

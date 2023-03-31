@@ -6,7 +6,27 @@
         Search by last name
         <tui-data-list-wrapper
             *tuiDataList
-            [items]="items | tuiFilterByInput : matcher"
+            [items]="items | tuiFilterByInput : matcherString"
         ></tui-data-list-wrapper>
+    </tui-combo-box>
+
+    <tui-combo-box
+        formControlName="user2"
+        class="tui-space_top-5"
+        [stringify]="stringify"
+    >
+        With ids
+        <tui-data-list-wrapper
+            *tuiDataList
+            [items]="users | tuiFilterByInput : matcherUser"
+            [itemContent]="content"
+        ></tui-data-list-wrapper>
+
+        <ng-template
+            #content
+            let-item
+        >
+            <span>{{ item.name }}</span>
+        </ng-template>
     </tui-combo-box>
 </form>
