@@ -134,6 +134,10 @@ $line-height-l: 1.25rem;
     padding-right: 0.25rem;
     padding-inline-end: 0.25rem;
     padding-inline-start: 0;
+
+    & + * {
+        margin: 0;
+    }
 }
 
 @mixin textfield-placeholder() {
