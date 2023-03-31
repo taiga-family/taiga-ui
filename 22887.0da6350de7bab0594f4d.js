@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[22887],{22887:n=>{n.exports="```ts\nimport {Component} from '@angular/core';\nimport {TuiBreakpointService} from '@taiga-ui/core';\n\n@Component({\n  // ...\n  providers: [TuiBreakpointService],\n})\nexport class MyComponent {}\n```\n"}}]);
