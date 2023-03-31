@@ -9,7 +9,6 @@ import {TuiBreakpointService} from '@taiga-ui/core';
     styleUrls: [`./style.less`],
     changeDetection,
     encapsulation,
-    providers: [TuiBreakpointService],
 })
 export class TuiBreakpointExample {
     constructor(
