@@ -28,11 +28,14 @@
                 <h3 class="tui-form__header tui-form__header_margin-top_none">A header</h3>
                 <div class="tui-form__row">
                     <tui-input
-                        tuiTextfieldExampleText="Field placeholder"
                         formControlName="nameValue"
                         tuiHintContent="A tooltip"
                     >
                         Textfield
+                        <input
+                            tuiTextfield
+                            placeholder="Field placeholder"
+                        />
                         <span class="tui-required"></span>
                     </tui-input>
                     <tui-error
@@ -41,11 +44,12 @@
                     ></tui-error>
                 </div>
                 <div class="tui-form__row">
-                    <tui-input-date
-                        tuiTextfieldExampleText="Placeholder"
-                        formControlName="periodValue"
-                    >
+                    <tui-input-date formControlName="periodValue">
                         Input date
+                        <input
+                            tuiTextfield
+                            placeholder="Placeholder"
+                        />
                         <span class="tui-required"></span>
                     </tui-input-date>
                     <tui-error
@@ -64,7 +68,7 @@
                     <div class="tui-form__multi-field">
                         <tui-input-number
                             formControlName="moneyValue"
-                            [postfix]="'RUB' | tuiCurrency"
+                            [tuiTextfieldPostfix]="'RUB' | tuiCurrency"
                         >
                             Input money
                         </tui-input-number>
@@ -77,7 +81,7 @@
                 <div class="tui-form__row">
                     <tui-input-slider
                         formControlName="quantityValue"
-                        postfix="₽"
+                        tuiTextfieldPostfix="₽"
                         [min]="50000"
                         [max]="3000000"
                         [segments]="1"
@@ -234,11 +238,14 @@
                 <h3 class="tui-form__header">Header</h3>
                 <div class="tui-form__row">
                     <tui-input
-                        tuiTextfieldExampleText="Placeholder"
                         formControlName="textValue"
                         tuiHintContent="A tooltip"
                     >
                         Textfield
+                        <input
+                            tuiTextfield
+                            placeholder="Placeholder"
+                        />
                     </tui-input>
                     <div class="tui-form__field-checkbox">
                         <tui-checkbox-labeled

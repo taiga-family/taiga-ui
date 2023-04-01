@@ -82,7 +82,7 @@ export class TuiValueDecorationComponent implements DoCheck {
     }
 
     private get decorationsVisible(): boolean {
-        return !!this.value || this.focused;
+        return !!this.value || (this.focused && !this.placeholder);
     }
 
     private get focused(): boolean {
