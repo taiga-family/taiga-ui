@@ -232,9 +232,8 @@ export class TuiMultiSelectComponent<T>
         const {value, identityMatcher} = this;
         const index = value.findIndex(item => identityMatcher(item, option));
 
-        this.updateValue(
-            index === -1 ? [...value, option] : value.filter((_, i) => i !== index),
-        );
+        this.value =
+            index === -1 ? [...value, option] : value.filter((_, i) => i !== index);
         this.updateSearch(null);
     }
 
@@ -247,7 +246,7 @@ export class TuiMultiSelectComponent<T>
         }
 
         event.preventDefault();
-        this.updateValue(tuiArrayToggle(value, options[0]));
+        this.value = tuiArrayToggle(value, options[0]);
         this.updateSearch(null);
     }
 
@@ -262,11 +261,11 @@ export class TuiMultiSelectComponent<T>
     }
 
     onInput(value: ReadonlyArray<TuiStringifiableItem<T>>): void {
-        this.updateValue(value.map(({item}) => item));
+        this.value = value.map(({item}) => item);
     }
 
     onValueChange(value: readonly T[]): void {
-        this.updateValue(value);
+        this.value = value;
     }
 
     onSearch(search: string | null): void {

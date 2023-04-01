@@ -31,5 +31,5 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select';
 })
 export class TuiNativeMultiSelectComponent extends AbstractTuiNativeMultiSelect {
     @Input()
-    items: string[] | null = [];
+    items: readonly string[] | null = [];
 }

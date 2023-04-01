@@ -9,8 +9,7 @@
         [pseudoHover]="pseudoHover"
         [pseudoActive]="pseudoActive"
         [size]="size"
-        [ngModel]="value"
-        (ngModelChange)="onModelChange($event)"
+        [(ngModel)]="value"
         (focusedChange)="onFocused($event)"
     ></tui-checkbox>
     <div

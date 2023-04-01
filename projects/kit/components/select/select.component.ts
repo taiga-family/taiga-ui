@@ -36,13 +36,13 @@ import {
     TuiTextfieldCleanerDirective,
     TuiValueContentContext,
 } from '@taiga-ui/core';
+import {AbstractTuiNativeSelect} from '@taiga-ui/kit/abstract';
 import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
 import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {AbstractTuiNativeSelect} from './native-select/native-select';
 import {TUI_SELECT_OPTIONS, TuiSelectOptions} from './select-options';
 
 @Component({
@@ -140,9 +140,9 @@ export class TuiSelectComponent<T>
 
     onValueChange(value: T): void {
         if (!value) {
-            this.updateValue(null);
+            this.value = null;
         } else {
-            this.updateValue(value || null);
+            this.value = value || null;
         }
     }
 
@@ -152,13 +152,13 @@ export class TuiSelectComponent<T>
 
     onKeyDownDelete(): void {
         if (this.textfieldCleaner.cleaner) {
-            this.updateValue(null);
+            this.value = null;
         }
     }
 
     handleOption(option: T): void {
         this.focusInput();
-        this.updateValue(option);
+        this.value = option;
         this.hostedDropdown?.updateOpen(false);
     }
 

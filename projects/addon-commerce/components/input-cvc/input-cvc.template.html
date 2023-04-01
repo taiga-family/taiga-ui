@@ -10,8 +10,7 @@
     [pseudoHover]="pseudoHover"
     [pseudoActive]="pseudoActive"
     [pseudoFocus]="pseudoFocus"
-    [value]="value"
-    (valueChange)="onValueChange($event)"
+    [(value)]="value"
     (focusedChange)="onFocused($event)"
     (copy.prevent)="onCopy()"
 >

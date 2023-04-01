@@ -94,11 +94,11 @@ export class TuiRatingComponent
     }
 
     setRateByReverseIndex(index: number): void {
-        this.updateValue(this.max - index);
+        this.value = this.max - index;
     }
 
     setRate(value: number): void {
-        this.updateValue(value);
+        this.value = value;
     }
 
     protected getFallbackValue(): number {

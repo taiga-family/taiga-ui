@@ -159,7 +159,7 @@ export class TuiComboBoxComponent<T>
             return;
         }
 
-        this.updateValue(option);
+        this.value = option;
         this.updateSearch(null);
     }
 
@@ -168,7 +168,7 @@ export class TuiComboBoxComponent<T>
         this.focusInput();
         this.close();
         this.updateSearch(null);
-        this.updateValue(item);
+        this.value = item;
     }
 
     onFieldKeyDownEnter(event: Event): void {
@@ -182,7 +182,7 @@ export class TuiComboBoxComponent<T>
             return;
         }
 
-        this.updateValue(options[0]);
+        this.value = options[0];
         this.updateSearch(null);
         this.close();
     }
@@ -193,19 +193,20 @@ export class TuiComboBoxComponent<T>
         const match = this.accessor?.getOptions().find(item => this.isStrictMatch(item));
 
         if (match !== undefined) {
-            this.updateValue(match);
+            this.value = match;
             this.updateSearch(null);
 
             return;
         }
 
         if (this.strict || this.search === '') {
-            this.updateValue(null);
+            this.value = null;
         }
 
         this.hostedDropdown?.updateOpen(true);
     }
 
+    /** @deprecated use 'value' setter */
     override updateValue(value: T | null): void {
         super.updateValue(value);
     }

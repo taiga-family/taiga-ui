@@ -273,7 +273,7 @@ export class TuiInputRangeComponent
     }
 
     private safelyUpdateValue(value: [number, number]): void {
-        this.updateValue(this.valueGuard(value));
+        this.value = this.valueGuard(value);
     }
 
     private valueGuard([leftValue, rightValue]: [number, number]): [number, number] {

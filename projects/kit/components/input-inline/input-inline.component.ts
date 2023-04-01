@@ -63,8 +63,9 @@ export class TuiInputInlineComponent
         return this.value !== '';
     }
 
+    /** @deprecated use 'value' setter */
     onValueChange(value: string): void {
-        this.updateValue(value);
+        this.value = value;
     }
 
     onFocused(focused: boolean): void {

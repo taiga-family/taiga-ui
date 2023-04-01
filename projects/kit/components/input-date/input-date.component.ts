@@ -261,7 +261,7 @@ export class TuiInputDateComponent
             })
             .pipe(takeUntil(this.destroy$))
             .subscribe(value => {
-                this.updateValue(value);
+                this.value = value;
             });
     }
 
@@ -274,15 +274,14 @@ export class TuiInputDateComponent
             this.onOpenChange(true);
         }
 
-        this.updateValue(
+        this.value =
             value.length !== DATE_FILLER_LENGTH
                 ? null
-                : TuiDay.normalizeParse(value, this.dateFormat),
-        );
+                : TuiDay.normalizeParse(value, this.dateFormat);
     }
 
     onDayClick(value: TuiDay): void {
-        this.updateValue(value);
+        this.value = value;
         this.open = false;
     }
 

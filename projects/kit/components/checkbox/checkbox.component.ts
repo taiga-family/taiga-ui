@@ -69,8 +69,9 @@ export class TuiCheckboxComponent
         return this.interactive && this.focusable;
     }
 
+    /** @deprecated use 'value' setter */
     onChecked(checked: boolean): void {
-        this.updateValue(checked);
+        this.value = checked;
     }
 
     onFocused(focused: boolean): void {

@@ -104,8 +104,9 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
         return this.disabledItemHandler(item);
     }
 
+    /** @deprecated use 'value' setter */
     onModelChange(value: T): void {
-        this.updateValue(value);
+        this.value = value;
     }
 
     itemIsActive(item: T): boolean {

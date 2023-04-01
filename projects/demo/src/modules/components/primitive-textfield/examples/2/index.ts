@@ -46,10 +46,6 @@ export class TuiPrimitiveTextfieldExample2 extends AbstractTuiControl<string> {
         return !!this.textfield && this.textfield.focused;
     }
 
-    onValueChange(textValue: string): void {
-        this.updateValue(textValue);
-    }
-
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }

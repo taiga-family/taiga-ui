@@ -82,7 +82,8 @@ export class TuiCheckboxLabeledComponent
         this.updateFocused(focused);
     }
 
+    /** @deprecated use 'value' setter */
     onModelChange(value: boolean): void {
-        this.updateValue(value);
+        this.value = value;
     }
 }

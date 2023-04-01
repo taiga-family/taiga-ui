@@ -14,7 +14,7 @@
             class="t-loader"
             [size]="loaderSize"
             [inheritColor]="true"
-            [showLoader]="checked"
+            [showLoader]="value"
         ></tui-loader>
         <span
             *ngIf="showIcons && !showLoader"
@@ -33,7 +33,7 @@
             class="t-loader"
             [size]="loaderSize"
             [inheritColor]="true"
-            [showLoader]="!checked"
+            [showLoader]="!value"
         ></tui-loader>
         <span
             *ngIf="showIcons && !showLoader"
@@ -56,9 +56,8 @@
         [attr.aria-checked]="value"
         [id]="id"
         [disabled]="disabled"
-        [tuiChecked]="checked"
         [tuiFocusable]="focusable"
-        (tuiCheckedChange)="onChecked($event)"
+        [(tuiChecked)]="value"
         (tuiFocusedChange)="onFocused($event)"
         (tuiFocusVisibleChange)="onFocusVisible($event)"
     />

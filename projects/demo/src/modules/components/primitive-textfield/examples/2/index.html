@@ -6,8 +6,7 @@
 >
     <label tuiLabel="Modified cleaner icon">
         <tui-primitive-textfield
-            [value]="value"
-            (valueChange)="onValueChange($event)"
+            [(value)]="value"
             (focusedChange)="onFocused($event)"
         >
             Type an email
@@ -23,9 +22,8 @@
         class="tui-space_top-4"
     >
         <tui-primitive-textfield
-            [value]="value"
             [iconCleaner]="iconCleaner"
-            (valueChange)="onValueChange($event)"
+            [(value)]="value"
             (focusedChange)="onFocused($event)"
         >
             Type an email

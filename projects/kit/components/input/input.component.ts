@@ -90,7 +90,7 @@ export class TuiInputComponent
     }
 
     onValueChange(value: string): void {
-        this.updateValue(value);
+        this.value = value;
         this.open = true;
     }
 
@@ -101,7 +101,7 @@ export class TuiInputComponent
     handleOption(item: unknown): void {
         this.setNativeValue(String(item));
         this.focusInput();
-        this.updateValue(String(item));
+        this.value = String(item);
         this.open = false;
     }
 

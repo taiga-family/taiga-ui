@@ -125,7 +125,8 @@ export class TuiRadioBlockComponent<T>
         this.updateFocusVisible(focusVisible);
     }
 
+    /** @deprecated use 'value' setter */
     onModelChange(value: T): void {
-        this.updateValue(value);
+        this.value = value;
     }
 }

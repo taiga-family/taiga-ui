@@ -1,0 +1,24 @@
+<p>Change the viewport of this window to see changes in breakpoint</p>
+
+<table class="tui-space_top-4">
+    <thead>
+        <tr>
+            <th>CSS</th>
+            <th>Breakpoint service</th>
+        </tr>
+    </thead>
+    <tbody>
+        <td>
+            <div class="mobile">Mobile breakpoint</div>
+            <div class="desktop-small">Desktop small breakpoint</div>
+            <div class="desktop-large">Desktop large breakpoint</div>
+        </td>
+        <td>
+            <ng-container *ngIf="breakpoint$ | async as breakpoint">
+                <div *ngIf="breakpoint === 'mobile'">Mobile breakpoint</div>
+                <div *ngIf="breakpoint === 'desktopSmall'">Desktop small breakpoint</div>
+                <div *ngIf="breakpoint === 'desktopLarge'">Desktop large breakpoint</div>
+            </ng-container>
+        </td>
+    </tbody>
+</table>

@@ -303,7 +303,9 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     setValue(value: string): void {
-        this.editor.commands.setContent(value);
+        if (value !== this.html) {
+            this.editor.commands.setContent(value);
+        }
     }
 
     destroy(): void {

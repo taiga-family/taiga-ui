@@ -124,7 +124,7 @@ export class TuiRadioComponent<T>
 
     onChecked(checked: boolean): void {
         if (checked) {
-            this.updateValue(this.item !== undefined ? this.item : this.fallbackValue);
+            this.value = this.item !== undefined ? this.item : this.fallbackValue;
         }
     }
 
