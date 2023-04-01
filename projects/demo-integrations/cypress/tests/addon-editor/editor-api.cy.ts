@@ -253,7 +253,7 @@ describe(`Editor API`, () => {
 
             tuiClearHint();
 
-            tuiOpenAnchorDropdown({containHref: `http://wysiwyg.com`});
+            tuiOpenAnchorDropdown({containHref: `https://wysiwyg.com`});
             tuiGetEditorScrollbarArea().scrollTo(0, 100);
             tuiGetScreenshotArea().matchImageSnapshot(`8-1-added-new-link`);
 
