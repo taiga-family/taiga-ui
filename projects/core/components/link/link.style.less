@@ -144,11 +144,10 @@
 }
 
 .t-icon {
-    .transition(~'transform, opacity');
+    .transition(~'transform');
     width: var(--tui-link-icon-size, 1.5rem);
     height: var(--tui-link-icon-size, 1.5rem);
     margin-top: -0.125rem;
-    opacity: 0.8;
 
     &_left {
         margin-right: @space;
@@ -156,10 +155,6 @@
 
     &_right {
         margin-left: @space;
-    }
-
-    :host:hover & {
-        opacity: 1;
     }
 
     :host._icon-rotated & {
