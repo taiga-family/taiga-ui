@@ -12,6 +12,7 @@ import {TuiGradientDirection} from '@taiga-ui/addon-editor/types';
 import {tuiGetGradientData, tuiParseGradient} from '@taiga-ui/addon-editor/utils';
 import {tuiDefaultProp, tuiParseColor, tuiPure, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
+import {tuiDefaultSort} from '@taiga-ui/addon-table';
 
 const EMPTY_STOP: [number, number, number, number] = [0, 0, 0, 0];
 const DEFAULT_STEPS: ReadonlyArray<[number, [number, number, number, number]]> = [
@@ -188,7 +189,7 @@ export class TuiColorSelectorComponent {
 
     private getGradient(direction: TuiGradientDirection): string {
         return `linear-gradient(${direction}, ${[...this.stopsKeys]
-            .sort()
+            .sort(tuiDefaultSort)
             .map(key => `rgba(${this.getStop(key).join(', ')}) ${key * 100}%`)
             .join(', ')})`;
     }
