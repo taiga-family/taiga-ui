@@ -2,6 +2,7 @@ import {UpdateRecorder} from '@angular-devkit/schematics';
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {Element} from 'parse5';
 
+import {tuiIsPresent} from '../../../../utils';
 import {replaceTag} from '../../../utils/replace-tag';
 import {
     findElementsByFn,
@@ -42,7 +43,7 @@ export function migratePolymorpheus({
             return;
         }
 
-        if (defaultTemplateEl) {
+        if (tuiIsPresent(defaultTemplateEl)) {
             insertPolymorpheusWithDefault({
                 defaultTemplateEl,
                 recorder,

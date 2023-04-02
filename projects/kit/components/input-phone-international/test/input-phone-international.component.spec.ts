@@ -312,7 +312,7 @@ describe(`InputPhoneInternational`, () => {
 
     function getDropdownCountryNames(): string[] {
         const countryNameContainers =
-            fixture.debugElement.queryAll(By.css(`.t-country-item-name`)) || [];
+            fixture.debugElement.queryAll(By.css(`.t-country-item-name`)) ?? [];
 
         return countryNameContainers.map(container =>
             container.nativeElement.textContent?.trim(),

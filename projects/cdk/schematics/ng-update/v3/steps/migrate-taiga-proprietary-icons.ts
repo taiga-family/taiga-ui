@@ -2,6 +2,7 @@ import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {updateWorkspace} from '@schematics/angular/utility/workspace';
 import {getPackageJsonDependency, getSourceFiles} from 'ng-morph';
 
+import {tuiIsPresent} from '../../../../utils';
 import {tuiIsString} from '../../../../utils/miscellaneous/is-string';
 import {TuiSchema} from '../../../ng-add/schema';
 import {isInvalidAngularJson} from '../../../utils/angular-json-manipulations';
@@ -80,7 +81,7 @@ export function migrateTaigaProprietaryIcons(options: TuiSchema): Rule {
                               },
                           );
 
-                          if (hasIcons) {
+                          if (tuiIsPresent(hasIcons)) {
                               return;
                           }
 

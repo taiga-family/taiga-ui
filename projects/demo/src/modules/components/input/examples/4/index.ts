@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TuiCurrency} from '@taiga-ui/addon-commerce';
-import {TUI_DEFAULT_MATCHER, tuiControlValue} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, tuiControlValue, tuiIsPresent} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map} from 'rxjs/operators';
 
@@ -162,7 +162,7 @@ export class TuiInputExample4 {
     }
 
     get content(): PolymorpheusContent {
-        return this.avatar && this.isUserSelected ? this.avatar : '';
+        return tuiIsPresent(this.avatar) && this.isUserSelected ? this.avatar : '';
     }
 
     get accounts(): Account[] {

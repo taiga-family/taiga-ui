@@ -6,7 +6,12 @@ import {
     Input,
 } from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
-import {tuiDefaultProp, tuiIsString, tuiRequiredSetter} from '@taiga-ui/cdk';
+import {
+    tuiDefaultProp,
+    tuiIsPresent,
+    tuiIsString,
+    tuiRequiredSetter,
+} from '@taiga-ui/cdk';
 import {tuiSizeBigger} from '@taiga-ui/core';
 import {tuiStringHashToHsl} from '@taiga-ui/kit/utils/format';
 
@@ -28,7 +33,7 @@ export class TuiAvatarComponent {
     @tuiRequiredSetter()
     set avatarUrlSetter(avatarUrl: SafeResourceUrl | string | null) {
         this.avatarUrl = avatarUrl;
-        this.isUrlValid = !!avatarUrl && !this.iconAvatar;
+        this.isUrlValid = tuiIsPresent(avatarUrl) && !this.iconAvatar;
     }
 
     @Input()

@@ -120,7 +120,7 @@ export class TuiLineChartComponent {
     }
 
     get hintContent(): PolymorpheusContent<TuiLineChartHintContext<TuiPoint>> {
-        return this.hintOptions?.content || '';
+        return this.hintOptions?.content ?? '';
     }
 
     get fillId(): string {
@@ -155,8 +155,8 @@ export class TuiLineChartComponent {
         return (
             !!this.xStringify ||
             !!this.yStringify ||
-            !!this.hintDirective?.hint ||
-            !!this.hintContent
+            tuiIsPresent(this.hintDirective?.hint) ||
+            tuiIsPresent(this.hintContent)
         );
     }
 

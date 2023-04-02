@@ -2,6 +2,8 @@ import {waitAllRequests} from '@demo-integrations/support/helpers/wait-requests.
 import {stubExternalIcons} from '@demo-integrations/support/stubs/stub-external-icons.util';
 import {stubMetrics} from '@demo-integrations/support/stubs/stub-metrics';
 
+import {tuiIsPresent} from '../../../../cdk/utils/miscellaneous/is-present';
+
 const NEXT_URL_STORAGE_KEY = `env`;
 const NIGHT_THEME_KEY = `night`;
 const REPEATED_SLASH_REG = new RegExp(`//`, `g`);
@@ -75,7 +77,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         rootSelector = `app`,
     } = options;
 
-    if (clock) {
+    if (tuiIsPresent(clock)) {
         cy.clock(clock, [`Date`]);
     }
 

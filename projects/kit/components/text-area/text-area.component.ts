@@ -22,6 +22,7 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
+    tuiIsPresent,
 } from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
@@ -138,7 +139,7 @@ export class TuiTextAreaComponent
 
     @HostBinding('class._has-tooltip')
     get hasTooltip(): boolean {
-        return !!this.hintOptions?.content && !this.computedDisabled;
+        return tuiIsPresent(this.hintOptions?.content) && !this.computedDisabled;
     }
 
     @HostBinding('class._has-value')

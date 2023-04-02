@@ -27,7 +27,7 @@ export class TuiTableBarExampleComponent1 {
         this.subscription.unsubscribe();
 
         this.subscription = this.tableBarsService
-            .open(this.tableBarTemplate || '', {
+            .open(this.tableBarTemplate ?? '', {
                 hasCloseButton: true,
                 adaptive: true,
             })

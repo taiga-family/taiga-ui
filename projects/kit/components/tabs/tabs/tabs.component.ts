@@ -20,6 +20,7 @@ import {
     EMPTY_QUERY,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiIsPresent,
     tuiPure,
     TuiResizeService,
 } from '@taiga-ui/cdk';
@@ -94,9 +95,9 @@ export class TuiTabsComponent implements AfterViewChecked {
 
     @tuiPure
     private scrollTo(index: number): void {
-        const element = this.tabs.tabs[index];
+        const element: HTMLElement | undefined = this.tabs.tabs[index];
 
-        if (!element) {
+        if (!tuiIsPresent(element)) {
             return;
         }
 

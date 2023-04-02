@@ -20,6 +20,7 @@ import {
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsPresent,
     TuiMapper,
     tuiPure,
 } from '@taiga-ui/cdk';
@@ -154,7 +155,7 @@ export class TuiInputPhoneInternationalComponent
         let value = tuiExtractValueFromEvent(event).replace(TUI_NON_DIGITS_REGEXP, '');
         const countryIsoCode = this.extractCountryCode(value);
 
-        if (!countryIsoCode) {
+        if (!tuiIsPresent(countryIsoCode)) {
             this.value = `${this.inputPhoneCountryCode}${value}`
                 .replace(TUI_MASK_SYMBOLS_REGEXP, '')
                 .slice(0, this.getMaxAllowedLength(this.countryIsoCode));

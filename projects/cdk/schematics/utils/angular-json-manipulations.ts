@@ -4,6 +4,7 @@ import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import {getWorkspace, updateWorkspace} from '@schematics/angular/utility/workspace';
 import {addPackageJsonDependency} from 'ng-morph';
 
+import {tuiIsPresent} from '../../utils/miscellaneous/is-present';
 import {tuiIsString} from '../../utils/miscellaneous/is-string';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
 import {TuiSchema} from '../ng-add/schema';
@@ -26,10 +27,12 @@ export async function isInvalidAngularJson(tree: Tree): Promise<boolean> {
 }
 
 function hasTaigaIcons(assets: Asset[]): boolean {
-    return !!assets?.find(asset =>
-        tuiIsString(asset)
-            ? asset.includes(`taiga-ui`)
-            : asset?.input?.includes(`taiga-ui`),
+    return tuiIsPresent(
+        assets?.find(asset =>
+            tuiIsString(asset)
+                ? asset.includes(`taiga-ui`)
+                : asset?.input?.includes(`taiga-ui`),
+        ),
     );
 }
 

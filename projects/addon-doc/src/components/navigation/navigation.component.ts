@@ -12,7 +12,13 @@ import {FormControl} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
-import {tuiControlValue, TuiDestroyService, tuiPure, tuiUniqBy} from '@taiga-ui/cdk';
+import {
+    tuiControlValue,
+    TuiDestroyService,
+    tuiIsHTMLElement,
+    tuiPure,
+    tuiUniqBy,
+} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {TuiInputComponent} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
@@ -200,15 +206,13 @@ export class TuiDocNavigationComponent {
         const nodes = fragment ? this.documentRef.querySelectorAll(`#${fragment}`) : [];
         const element = nodes.length && nodes[nodes.length - 1];
 
-        if (!element) {
-            return;
+        if (tuiIsHTMLElement(element)) {
+            element.classList.add('tui-doc-animated-example');
+            element.scrollIntoView({
+                block: 'start',
+                inline: 'nearest',
+                behavior: this.scrollBehavior,
+            });
         }
-
-        element.classList.add('tui-doc-animated-example');
-        element.scrollIntoView({
-            block: 'start',
-            inline: 'nearest',
-            behavior: this.scrollBehavior,
-        });
     }
 }

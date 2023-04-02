@@ -1,3 +1,4 @@
+import {tuiIsPresent} from '@taiga-ui/cdk';
 import {ChildNode, Element, parseFragment} from 'parse5';
 
 export function findElementsByFn(
@@ -10,7 +11,7 @@ export function findElementsByFn(
         nodes.forEach(n => {
             const node = n as Element;
 
-            if (node.childNodes) {
+            if (tuiIsPresent(node.childNodes)) {
                 visitNodes(node.childNodes);
             }
 

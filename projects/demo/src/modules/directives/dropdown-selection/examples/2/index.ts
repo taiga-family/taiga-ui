@@ -2,7 +2,7 @@ import {Component, ElementRef, QueryList, ViewChild, ViewChildren} from '@angula
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
-import {EMPTY_QUERY, TuiBooleanHandler, tuiPure} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiBooleanHandler, tuiIsPresent, tuiPure} from '@taiga-ui/cdk';
 import {TuiDriver, tuiGetWordRange, TuiOptionComponent} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
@@ -47,7 +47,7 @@ export class TuiDropdownSelectionExample2 {
     onArrow(event: Event, which: 'first' | 'last'): void {
         const item = this.options[which];
 
-        if (!item) {
+        if (!tuiIsPresent(item)) {
             return;
         }
 

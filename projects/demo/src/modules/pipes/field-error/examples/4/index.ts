@@ -10,7 +10,7 @@ import {
 } from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiValidationError} from '@taiga-ui/cdk';
+import {tuiIsPresent, TuiValidationError} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
@@ -44,7 +44,7 @@ export class TuiFieldErrorPipeExample4 {
 
         let n = 0;
 
-        while (n <= 1 && this.formData.controls[n]) {
+        while (n <= 1 && tuiIsPresent(this.formData.controls[n])) {
             this.formData.controls[n].setValidators([
                 Validators.required,
                 this.getPhoneLengthValidator(),

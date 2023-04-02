@@ -1,6 +1,6 @@
 import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiOwnerDocumentException} from '@taiga-ui/cdk/exceptions';
-import {tuiIsFalsy} from '@taiga-ui/cdk/utils';
+import {tuiIsFalsy, tuiIsPresent} from '@taiga-ui/cdk/utils';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {concat, merge, Observable} from 'rxjs';
 import {
@@ -26,11 +26,14 @@ export function tuiFocusVisibleObservable(element: Element): Observable<boolean>
     const elementBlur$ = tuiTypedFromEvent(element, `blur`);
     const {ownerDocument} = element;
 
-    if (!ownerDocument) {
+    if (!tuiIsPresent(ownerDocument)) {
         throw new TuiOwnerDocumentException();
     }
 
-    if (!documentMouseDownIsAlive$ || !documentMouseUpIsAlive$) {
+    if (
+        !tuiIsPresent(documentMouseDownIsAlive$) ||
+        !tuiIsPresent(documentMouseUpIsAlive$)
+    ) {
         documentMouseUpIsAlive$ = tuiTypedFromEvent(ownerDocument, `mouseup`, {
             capture: true,
         }).pipe(

@@ -12,6 +12,7 @@ import {
     tuiBlurNativeFocused,
     tuiDefaultProp,
     tuiIsNativeFocusedIn,
+    tuiIsPresent,
     tuiIsSafari,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
@@ -71,7 +72,7 @@ export class TuiLoaderComponent {
     }
 
     get hasText(): boolean {
-        return !!this.textContent;
+        return tuiIsPresent(this.textContent);
     }
 
     get isHorizontal(): boolean {

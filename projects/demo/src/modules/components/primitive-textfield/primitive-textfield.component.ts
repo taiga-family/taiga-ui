@@ -1,7 +1,12 @@
 import {Component, forwardRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiContextWithImplicit, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
+import {
+    TuiContextWithImplicit,
+    TuiInputMode,
+    TuiInputType,
+    tuiIsPresent,
+} from '@taiga-ui/cdk';
 import {
     TUI_HINT_DIRECTIONS,
     TuiHorizontalDirection,
@@ -146,7 +151,8 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
             return '';
         }
 
-        return this.interactiveIcon && this.selectedIcon !== 'tuiIconSearchLarge'
+        return tuiIsPresent(this.interactiveIcon) &&
+            this.selectedIcon !== 'tuiIconSearchLarge'
             ? this.interactiveIcon
             : 'tuiIconSearchLarge';
     }

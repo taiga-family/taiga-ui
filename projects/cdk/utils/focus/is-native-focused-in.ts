@@ -1,3 +1,5 @@
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+
 import {tuiGetNativeFocused} from './get-native-focused';
 
 /**
@@ -8,7 +10,7 @@ import {tuiGetNativeFocused} from './get-native-focused';
  */
 export function tuiIsNativeFocusedIn(node: Node): boolean {
     // !node.contains - check for IE11
-    if (!node.ownerDocument || !node.contains) {
+    if (!node.ownerDocument || !tuiIsPresent(node.contains)) {
         return false;
     }
 

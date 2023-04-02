@@ -13,6 +13,7 @@ import {
     tuiDefaultProp,
     TuiInjectionTokenType,
     tuiIsObserved,
+    tuiIsPresent,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {TuiSizeL} from '@taiga-ui/core';
@@ -151,9 +152,9 @@ export class TuiFileComponent {
         file: TuiFileLike,
         fileTexts$: Observable<Record<keyof TuiLanguage['fileTexts'], string>>,
     ): Observable<PolymorpheusContent> {
-        return state === 'error' && !file.content
+        return state === 'error' && !tuiIsPresent(file.content)
             ? fileTexts$.pipe(map(texts => texts.loadingError))
-            : of(this.file.content || '');
+            : of(this.file.content ?? '');
     }
 
     @tuiPure

@@ -34,7 +34,7 @@ export class TuiTabsDirective implements AfterViewChecked {
     }
 
     get activeElement(): HTMLElement | null {
-        return this.tabs[this.activeItemIndex] || null;
+        return this.tabs[this.activeItemIndex] ?? null;
     }
 
     @HostListener(TUI_TAB_ACTIVATE, ['$event', '$event.target'])

@@ -8,7 +8,7 @@ import {
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export function tuiCreateUnfinishedValidator(
-    nativeInputGetter: () => TuiFocusableElementAccessor,
+    nativeInputGetter: () => TuiFocusableElementAccessor | undefined,
     message: PolymorpheusContent,
 ): ValidatorFn {
     return ({

@@ -1,6 +1,7 @@
 import {UpdateRecorder} from '@angular-devkit/schematics';
 import {DevkitFileSystem} from 'ng-morph';
 
+import {tuiIsPresent} from '../../../../utils';
 import {ALL_TS_FILES} from '../../../constants';
 import {TuiSchema} from '../../../ng-add/schema';
 import {
@@ -65,7 +66,7 @@ function migrateExpand({
             el => el.tagName === `ng-template`,
         )[0];
 
-        if (!templateElement) {
+        if (!tuiIsPresent(templateElement)) {
             return;
         }
 

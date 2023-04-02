@@ -13,6 +13,7 @@ import {
     TUI_IS_IOS,
     tuiDefaultProp,
     TuiDestroyService,
+    tuiIsPresent,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
@@ -84,7 +85,7 @@ export class TuiTouchableDirective {
         const {ownerDocument} = element;
         const id = tuiFindTouchIndex(touches, identifier);
 
-        if (!ownerDocument || id === -1) {
+        if (!tuiIsPresent(ownerDocument) || id === -1) {
             return true;
         }
 

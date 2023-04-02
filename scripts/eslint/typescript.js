@@ -11,6 +11,19 @@ module.exports = {
             plugins: ['@typescript-eslint'],
             rules: {
                 'unicorn/prefer-logical-operator-over-ternary': 'error',
+                '@typescript-eslint/strict-boolean-expressions': [
+                    'error',
+                    {
+                        allowAny: true,
+                        allowString: true,
+                        allowNumber: true,
+                        allowNullableString: true,
+                        allowNullableObject: true,
+                        allowNullableEnum: true,
+                        allowNullableNumber: true,
+                        allowNullableBoolean: true,
+                    },
+                ],
                 '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
                 '@typescript-eslint/no-unnecessary-type-constraint': 'error',
                 '@typescript-eslint/no-unsafe-declaration-merging': 'error',

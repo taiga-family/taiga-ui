@@ -11,6 +11,7 @@ import {
     setActiveProject,
 } from 'ng-morph';
 
+import {tuiIsPresent} from '../../../utils';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {getProjects} from '../../utils/get-projects';
 import {TuiSchema} from '../schema';
@@ -20,7 +21,7 @@ export function wrapWithTuiRootComponent(options: TuiSchema): Rule {
         const workspace = await getWorkspace(tree);
         const project = getProjects(options, workspace)[0];
 
-        if (!project) {
+        if (!tuiIsPresent(project)) {
             return;
         }
 

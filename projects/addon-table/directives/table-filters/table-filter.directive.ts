@@ -1,6 +1,7 @@
 import {Directive, Inject, Input, OnDestroy, Optional} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiHeadDirective} from '@taiga-ui/addon-table/components';
+import {tuiIsPresent} from '@taiga-ui/cdk';
 import {defer, EMPTY, merge} from 'rxjs';
 import {distinctUntilChanged} from 'rxjs/operators';
 
@@ -41,10 +42,14 @@ export class TuiTableFilterDirective<T> implements OnDestroy, TuiTableFilter<T> 
     filter(item: T): boolean {
         const {disabled, value} = this.control;
 
-        return !!disabled || !this.key || this.delegate.filter(item[this.key], value);
+        return (
+            !!disabled ??
+            !tuiIsPresent(this.key) ??
+            this.delegate.filter(item[this.key], value)
+        );
     }
 
     private get key(): keyof T | undefined {
-        return this.tuiTableFilter || this.head?.tuiHead;
+        return this.tuiTableFilter ?? this.head?.tuiHead;
     }
 }

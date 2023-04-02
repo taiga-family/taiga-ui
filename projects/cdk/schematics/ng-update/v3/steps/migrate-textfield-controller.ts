@@ -3,6 +3,7 @@ import {arrayFlat} from 'ng-morph';
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {Attribute, Element} from 'parse5';
 
+import {tuiIsPresent} from '../../../../utils';
 import {
     findElementsByFn,
     findElementsByTagNames,
@@ -79,7 +80,7 @@ export function migrateTextfieldController({
                 hasElementAttribute(el, `tuiTextfield`),
         )[0];
 
-        if (existingInput) {
+        if (tuiIsPresent(existingInput)) {
             addAttrToExistingInput({existingInput, attrs, recorder, templateOffset});
         } else {
             insertTuiTextfieldInput({element, attrs, recorder, templateOffset});

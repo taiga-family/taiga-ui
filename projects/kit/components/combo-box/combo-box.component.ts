@@ -147,7 +147,7 @@ export class TuiComboBoxComponent<T>
     }
 
     get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {
-        return this.valueContent || this.nativeValue;
+        return this.valueContent ?? this.nativeValue;
     }
 
     onActiveZone(active: boolean): void {

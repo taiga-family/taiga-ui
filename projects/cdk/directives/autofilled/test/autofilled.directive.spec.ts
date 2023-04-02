@@ -85,7 +85,7 @@ function getInput<T>(fixture: ComponentFixture<T>): HTMLInputElement {
 }
 
 function getInputClassList<T>(fixture: ComponentFixture<T>): string[] {
-    return Array.from(getInput<T>(fixture)?.classList || []).filter(
+    return Array.from(getInput<T>(fixture)?.classList ?? []).filter(
         className => !className.includes(`ng-`),
     );
 }

@@ -15,7 +15,7 @@ import {tuiGetDocumentOrShadowRoot} from './get-document-or-shadow-root';
 export function tuiGetElementObscures(element: Element): readonly Element[] | null {
     const {ownerDocument} = element;
 
-    if (!ownerDocument?.defaultView || !element.getBoundingClientRect) {
+    if (!ownerDocument?.defaultView || !tuiIsPresent(element.getBoundingClientRect)) {
         return null;
     }
 

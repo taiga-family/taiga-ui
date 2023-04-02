@@ -18,6 +18,7 @@ import {
     TuiContextWithImplicit,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
+    tuiIsPresent,
 } from '@taiga-ui/cdk';
 import {
     tuiAsDataListHost,
@@ -86,7 +87,7 @@ export class TuiInputComponent
     }
 
     get canOpen(): boolean {
-        return this.interactive && !!this.datalist;
+        return this.interactive && tuiIsPresent(this.datalist);
     }
 
     onValueChange(value: string): void {

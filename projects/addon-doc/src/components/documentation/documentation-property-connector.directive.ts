@@ -10,7 +10,7 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {ActivatedRoute, Params, UrlSerializer, UrlTree} from '@angular/router';
-import {tuiIsNumber, TuiStringHandler} from '@taiga-ui/cdk';
+import {tuiIsNumber, tuiIsPresent, TuiStringHandler} from '@taiga-ui/cdk';
 import {BehaviorSubject, Subject} from 'rxjs';
 
 import {TUI_DOC_URL_STATE_HANDLER} from '../../tokens/url-state-handler';
@@ -109,12 +109,12 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         const propertyValueWithSuffix: number | string | undefined =
             params[`${this.documentationPropertyName}${SERIALIZED_SUFFIX}`];
 
-        if (!propertyValue && !propertyValueWithSuffix) {
+        if (!propertyValue && !tuiIsPresent(propertyValueWithSuffix)) {
             return;
         }
 
         let value =
-            !!propertyValueWithSuffix && this.documentationPropertyValues
+            tuiIsPresent(propertyValueWithSuffix) && this.documentationPropertyValues
                 ? this.documentationPropertyValues[propertyValueWithSuffix as number]
                 : tuiCoerceValue(propertyValue);
 

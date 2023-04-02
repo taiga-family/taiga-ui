@@ -92,7 +92,7 @@ export class TuiInputCardComponent
     }
 
     get icon(): PolymorpheusContent {
-        return this.cardSrc || this.defaultCardIcon;
+        return this.cardSrc ?? this.defaultCardIcon;
     }
 
     get autocomplete(): TuiAutofillFieldName {

@@ -135,7 +135,7 @@ export class TuiSelectComponent<T>
     }
 
     get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {
-        return this.valueContent || this.computedValue;
+        return this.valueContent ?? this.computedValue;
     }
 
     onValueChange(value: T): void {

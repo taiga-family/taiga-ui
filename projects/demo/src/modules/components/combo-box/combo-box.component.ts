@@ -7,6 +7,7 @@ import {
     TUI_DEFAULT_STRINGIFY,
     TUI_STRICT_MATCHER,
     TuiIdentityMatcher,
+    tuiIsPresent,
     tuiPure,
     TuiStringHandler,
     TuiStringMatcher,
@@ -131,7 +132,7 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
     readonly control = new FormControl(null, Validators.required);
 
     get valueContent(): PolymorpheusContent<TuiValueContentContext<Account>> {
-        return this.valueTemplateRef && this.selectedValueTemplate
+        return tuiIsPresent(this.valueTemplateRef) && this.selectedValueTemplate
             ? this.valueTemplateRef
             : '';
     }

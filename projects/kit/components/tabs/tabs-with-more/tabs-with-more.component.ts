@@ -99,8 +99,8 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         const safeActiveIndex = tuiClamp(this.activeItemIndex || 0, 0, tabs.length - 2);
 
         return this.options.exposeActive || this.lastVisibleIndex >= safeActiveIndex
-            ? tabs[safeActiveIndex] || null
-            : this.moreButton?.nativeElement || null;
+            ? tabs[safeActiveIndex] ?? null
+            : this.moreButton?.nativeElement ?? null;
     }
 
     get isMoreAlone(): boolean {
@@ -210,7 +210,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
 
         const {exposeActive, minMoreWidth} = this.options;
         const {clientWidth} = this.elementRef.nativeElement;
-        const activeWidth = tabs[activeItemIndex] ? tabs[activeItemIndex].scrollWidth : 0;
+        const activeWidth = tabs[activeItemIndex]?.scrollWidth ?? 0;
         const moreWidth = Math.max(tabs[tabs.length - 1].scrollWidth, minMoreWidth);
         let maxIndex = tabs.length - 2;
         let total =

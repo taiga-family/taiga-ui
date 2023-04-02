@@ -16,6 +16,7 @@ import {
     TuiContextWithImplicit,
     tuiDefaultProp,
     TuiDropdownPortalService,
+    tuiIsPresent,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
@@ -80,7 +81,7 @@ export class TuiDropdownDirective
     }
 
     ngOnChanges(): void {
-        if (!this.content) {
+        if (!tuiIsPresent(this.content)) {
             this.toggle(false);
         }
     }
@@ -94,7 +95,7 @@ export class TuiDropdownDirective
     }
 
     toggle(show: boolean): void {
-        if (show && this.content && !this.dropdownBoxRef) {
+        if (show && tuiIsPresent(this.content) && !this.dropdownBoxRef) {
             this.dropdownBoxRef = this.dropdownService.add(this.component);
         } else if (!show && this.dropdownBoxRef) {
             this.dropdownService.remove(this.dropdownBoxRef);

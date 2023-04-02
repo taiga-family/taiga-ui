@@ -1,5 +1,6 @@
 import {addImportToNgModule} from 'ng-morph';
 
+import {tuiIsPresent} from '../../utils/miscellaneous/is-present';
 import {addUniqueImport} from './add-unique-import';
 import {getNgComponents} from './angular/ng-component';
 import {findNgModule} from './angular/ng-module';
@@ -10,7 +11,7 @@ export function addImportToClosestModule(
     moduleSpecifier: string,
 ): void {
     const [ngComponent] = getNgComponents(componentPath);
-    const ngModule = ngComponent ? findNgModule(ngComponent) : null;
+    const ngModule = tuiIsPresent(ngComponent) ? findNgModule(ngComponent) : null;
 
     if (ngModule) {
         addImportToNgModule(ngModule, moduleName, {

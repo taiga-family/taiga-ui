@@ -1,5 +1,6 @@
 import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiOwnerDocumentException} from '@taiga-ui/cdk/exceptions';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils';
 import {Observable} from 'rxjs';
 import {filter, map, startWith, switchMap, take} from 'rxjs/operators';
 
@@ -16,7 +17,7 @@ export function tuiPressedObservable(
 ): Observable<boolean> {
     const {ownerDocument} = element;
 
-    if (!ownerDocument) {
+    if (!tuiIsPresent(ownerDocument)) {
         throw new TuiOwnerDocumentException();
     }
 

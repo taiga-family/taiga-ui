@@ -8,7 +8,7 @@ import {
     OnDestroy,
     Optional,
 } from '@angular/core';
-import {TuiActiveZoneDirective, tuiDefaultProp} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective, tuiDefaultProp, tuiIsPresent} from '@taiga-ui/cdk';
 import {
     tuiAsRectAccessor,
     tuiAsVehicle,
@@ -67,7 +67,7 @@ export class TuiHintDirective<C>
     }
 
     ngOnChanges(): void {
-        if (!this.content) {
+        if (!tuiIsPresent(this.content)) {
             this.toggle(false);
         }
     }
@@ -81,7 +81,7 @@ export class TuiHintDirective<C>
     }
 
     toggle(show: boolean): void {
-        if (show && this.content) {
+        if (show && tuiIsPresent(this.content)) {
             this.hintService.add(this);
         } else {
             this.hintService.remove(this);

@@ -179,11 +179,11 @@ export class TuiPrimitiveCalendarComponent {
     }
 
     onItemHovered(item: TuiDay | false): void {
-        this.updateHoveredItem(item || null);
+        this.updateHoveredItem(typeof item !== 'boolean' ? item : null);
     }
 
     onItemPressed(item: TuiDay | false): void {
-        this.pressedItem = item || null;
+        this.pressedItem = typeof item !== 'boolean' ? item : null;
     }
 
     onItemClick(item: TuiDay): void {

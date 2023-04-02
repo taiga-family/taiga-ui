@@ -83,7 +83,7 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
             ]
         ) => {
             const change$ = merge(
-                ...controllers.map(({change$}) => change$ || NEVER),
+                ...controllers.map(({change$}) => change$ ?? NEVER),
             ).pipe(tuiWatch(changeDetectorRef), takeUntil(destroy$));
 
             change$.subscribe();

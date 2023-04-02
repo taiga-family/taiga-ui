@@ -24,6 +24,7 @@ import {
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     tuiIsNativeFocusedIn,
+    tuiIsPresent,
     TuiNativeFocusableElement,
     tuiPure,
     tuiRound,
@@ -149,18 +150,18 @@ export class TuiInputRangeComponent
     }
 
     get showLeftValueContent(): boolean {
-        return Boolean(
-            this.leftValueContent &&
-                !tuiIsNativeFocused(this.leftFocusableElement) &&
-                !(this.rangeRef?.focused && this.lastActiveSide === 'left'),
+        return (
+            tuiIsPresent(this.leftValueContent) &&
+            !tuiIsNativeFocused(this.leftFocusableElement) &&
+            !(this.rangeRef?.focused && this.lastActiveSide === 'left')
         );
     }
 
     get showRightValueContent(): boolean {
-        return Boolean(
-            this.rightValueContent &&
-                !tuiIsNativeFocused(this.rightFocusableElement) &&
-                !(this.rangeRef?.focused && this.lastActiveSide === 'right'),
+        return (
+            tuiIsPresent(this.rightValueContent) &&
+            !tuiIsNativeFocused(this.rightFocusableElement) &&
+            !(this.rangeRef?.focused && this.lastActiveSide === 'right')
         );
     }
 
@@ -299,7 +300,7 @@ export class TuiInputRangeComponent
         const [leftInputRef, rightInputRef] = this.inputNumberRefs;
         const textInputRef = right ? rightInputRef : leftInputRef;
 
-        if (textInputRef) {
+        if (tuiIsPresent(textInputRef)) {
             textInputRef.nativeValue = textInputRef.getFormattedValue(value);
         }
     }

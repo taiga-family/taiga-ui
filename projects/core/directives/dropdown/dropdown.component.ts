@@ -14,6 +14,7 @@ import {
     AbstractTuiPortalHostComponent,
     TuiDestroyService,
     tuiGetClosestFocusable,
+    tuiIsPresent,
     tuiPx,
 } from '@taiga-ui/cdk';
 import {
@@ -163,7 +164,7 @@ export class TuiDropdownComponent implements OnDestroy {
     private moveFocusOutside(previous: boolean): void {
         const {nativeElement} = this.directive.elementRef;
         const {ownerDocument} = nativeElement;
-        const root = ownerDocument ? ownerDocument.body : nativeElement;
+        const root = tuiIsPresent(ownerDocument) ? ownerDocument.body : nativeElement;
         let focusable = tuiGetClosestFocusable({initial: nativeElement, root, previous});
 
         while (focusable !== null && nativeElement.contains(focusable)) {

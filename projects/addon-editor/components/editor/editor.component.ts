@@ -32,6 +32,7 @@ import {
     TuiBooleanHandler,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsPresent,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {Editor} from '@tiptap/core';
@@ -94,7 +95,9 @@ export class TuiEditorComponent
     }
 
     get editor(): AbstractTuiEditor | null {
-        return this.editorService.getOriginTiptapEditor() ? this.editorService : null;
+        return tuiIsPresent(this.editorService.getOriginTiptapEditor())
+            ? this.editorService
+            : null;
     }
 
     get placeholderRaised(): boolean {

@@ -63,7 +63,7 @@ export class ExampleTuiLoaderComponent {
     get template(): PolymorpheusContent {
         switch (this.selectedTemplate) {
             case 'template': {
-                return this.textTemplate || '';
+                return this.textTemplate ?? '';
             }
             case 'string': {
                 return 'string';

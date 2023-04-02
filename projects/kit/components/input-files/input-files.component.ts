@@ -217,7 +217,7 @@ export class TuiInputFilesComponent
                   map(texts =>
                       multiple && link === ''
                           ? texts.defaultLinkMultiple
-                          : link || texts.defaultLinkSingle,
+                          : link ?? texts.defaultLinkSingle,
                   ),
               );
     }
@@ -243,7 +243,7 @@ export class TuiInputFilesComponent
             map(texts =>
                 multiple && label === ''
                     ? texts.defaultLabelMultiple
-                    : label || texts.defaultLabelSingle,
+                    : label ?? texts.defaultLabelSingle,
             ),
         );
     }
@@ -301,7 +301,7 @@ export class TuiInputFilesComponent
 
         this.value = this.computedMultiple
             ? [...this.arrayValue, ...acceptedFiles]
-            : acceptedFiles[0] || null;
+            : acceptedFiles[0] ?? null;
     }
 
     private isFormatAcceptable(file: File): boolean {

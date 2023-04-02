@@ -1,3 +1,5 @@
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+
 /**
  * Focuses or blurs element with mouse action imitation (to spoof {@link TuiFocusVisibleService})
  *
@@ -10,7 +12,7 @@ export function tuiSetNativeMouseFocused(
     focused: boolean = true,
     preventScroll: boolean = false,
 ): void {
-    if (!element.ownerDocument) {
+    if (!tuiIsPresent(element.ownerDocument)) {
         return;
     }
 

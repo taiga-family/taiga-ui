@@ -35,6 +35,7 @@ import {
     tuiIsInput,
     tuiIsNativeFocused,
     tuiIsNativeFocusedIn,
+    tuiIsPresent,
     tuiPure,
     tuiRequiredSetter,
 } from '@taiga-ui/cdk';
@@ -225,7 +226,7 @@ export class TuiInputCardGroupedComponent
     }
 
     get hasDropdown(): boolean {
-        return !!this.dropdown;
+        return tuiIsPresent(this.dropdown);
     }
 
     get defaultIcon(): string | null {
@@ -235,7 +236,7 @@ export class TuiInputCardGroupedComponent
     }
 
     get icon(): PolymorpheusContent {
-        return this.cardSrc || this.defaultIcon;
+        return this.cardSrc ?? this.defaultIcon;
     }
 
     get bin(): string | null {

@@ -399,7 +399,7 @@ function migrateBinaryAttributes({
             }
 
             const {startOffset, endOffset} =
-                attrLocations[`[${attrName.toLowerCase()}]`] ||
+                attrLocations[`[${attrName.toLowerCase()}]`] ??
                 attrLocations[attrName.toLowerCase()];
 
             recorder.remove(templateOffset + startOffset, endOffset - startOffset);

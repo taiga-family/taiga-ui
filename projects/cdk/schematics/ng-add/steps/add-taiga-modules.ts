@@ -10,6 +10,7 @@ import {
     setActiveProject,
 } from 'ng-morph';
 
+import {tuiIsPresent} from '../../../utils';
 import {addUniqueImport} from '../../utils/add-unique-import';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {getProjects} from '../../utils/get-projects';
@@ -26,7 +27,7 @@ export function addTaigaModules(options: TuiSchema): Rule {
         const workspace = await getWorkspace(tree);
         const project = getProjects(options, workspace)[0];
 
-        if (!project) {
+        if (!tuiIsPresent(project)) {
             context.logger.warn(
                 `[WARNING]: Target project not found in current workspace`,
             );

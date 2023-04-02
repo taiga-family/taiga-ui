@@ -27,6 +27,7 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
+    tuiIsPresent,
     tuiIsString,
     TuiMapper,
     tuiPure,
@@ -191,7 +192,7 @@ export class TuiMultiSelectComponent<T>
 
     get computedGroup(): boolean {
         return (
-            !!this.valueContent &&
+            tuiIsPresent(this.valueContent) &&
             this.value.length > 0 &&
             (!this.focused || !this.editable)
         );

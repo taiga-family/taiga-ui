@@ -34,6 +34,7 @@ import {
     tuiGetClipboardDataText,
     tuiIsElement,
     tuiIsNativeFocusedIn,
+    tuiIsPresent,
     tuiPreventDefault,
     TuiScrollService,
     tuiTypedFromEvent,
@@ -299,8 +300,8 @@ export class TuiInputTagComponent
     get hasRightIcons(): boolean {
         return (
             this.hasCleaner ||
-            !!this.icon ||
-            (!!this.hintOptions?.content && !this.computedDisabled)
+            tuiIsPresent(this.icon) ||
+            (tuiIsPresent(this.hintOptions?.content) && !this.computedDisabled)
         );
     }
 

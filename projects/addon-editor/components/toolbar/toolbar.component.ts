@@ -33,6 +33,7 @@ import {
     TuiHandler,
     TuiInjectionTokenType,
     tuiIsNativeFocusedIn,
+    tuiIsPresent,
 } from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
@@ -223,11 +224,11 @@ export class TuiToolbarComponent {
     }
 
     onAttach(input: HTMLInputElement): void {
-        const files = Array.from(input.files || []);
+        const files = Array.from(input.files ?? []);
 
         input.value = '';
 
-        if (!files) {
+        if (!tuiIsPresent(files)) {
             return;
         }
 

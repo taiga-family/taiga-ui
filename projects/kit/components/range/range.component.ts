@@ -20,6 +20,7 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocusedIn,
+    tuiIsPresent,
     TuiNativeFocusableElement,
     tuiPure,
     tuiQuantize,
@@ -96,8 +97,8 @@ export class TuiRangeComponent
         if (
             this.computedDisabled ||
             !this.focusable ||
-            !sliderLeftRef ||
-            !sliderRightRef
+            !tuiIsPresent(sliderLeftRef) ||
+            !tuiIsPresent(sliderRightRef)
         ) {
             return null;
         }
@@ -162,9 +163,7 @@ export class TuiRangeComponent
 
         this.processValue(this.getValueFromFraction(newFractionValue), isRightThumb);
 
-        if (activeThumbElement) {
-            activeThumbElement.focus();
-        }
+        activeThumbElement?.focus();
     }
 
     processValue(value: number, right: boolean): void {

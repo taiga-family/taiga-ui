@@ -37,6 +37,6 @@ export class TuiSortByDirective<T extends Partial<Record<keyof T, any>>> {
     ) {}
 
     private getKey(sorter: TuiComparator<T> | null): keyof T | null {
-        return this.sortables.find(s => s.sorter === sorter)?.key || null;
+        return this.sortables.find(s => s.sorter === sorter)?.key ?? null;
     }
 }

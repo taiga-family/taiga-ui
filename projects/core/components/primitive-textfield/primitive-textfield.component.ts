@@ -19,6 +19,7 @@ import {
     TuiContextWithImplicit,
     tuiDefaultProp,
     tuiIsNativeFocusedIn,
+    tuiIsPresent,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
@@ -191,11 +192,11 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     get hasTooltip(): boolean {
-        return !!this.hintOptions?.content && !this.computedDisabled;
+        return tuiIsPresent(this.hintOptions?.content) && !this.computedDisabled;
     }
 
     get hasCustomContent(): boolean {
-        return !!this.controller.customContent;
+        return tuiIsPresent(this.controller.customContent);
     }
 
     get showOnlyPlaceholder(): boolean {
@@ -209,7 +210,7 @@ export class TuiPrimitiveTextfieldComponent
     get placeholderVisible(): boolean {
         const hasDecor =
             this.nativeFocusableElement?.placeholder || this.prefix || this.postfix;
-        const showDecor = hasDecor && !this.readOnly && this.computedFocused;
+        const showDecor = hasDecor.length > 0 && !this.readOnly && this.computedFocused;
 
         return !this.hasValue && !showDecor;
     }
@@ -230,13 +231,13 @@ export class TuiPrimitiveTextfieldComponent
 
     @HostBinding('style.--border-start.rem')
     get borderStart(): number {
-        return this.iconLeftContent ? this.iconPaddingLeft : 0;
+        return tuiIsPresent(this.iconLeftContent) ? this.iconPaddingLeft : 0;
     }
 
     @HostBinding('style.--border-end.rem')
     get borderEnd(): number {
         return tuiGetBorder(
-            !!this.iconContent,
+            tuiIsPresent(this.iconContent),
             this.hasCleaner,
             this.hasTooltip,
             this.hasCustomContent,

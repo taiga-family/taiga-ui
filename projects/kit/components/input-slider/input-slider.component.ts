@@ -19,6 +19,7 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
+    tuiIsPresent,
     TuiNativeFocusableElement,
     tuiPure,
     tuiRound,
@@ -152,7 +153,7 @@ export class TuiInputSliderComponent
     }
 
     get showValueContent(): boolean {
-        return Boolean(this.valueContent && !this.focused);
+        return tuiIsPresent(this.valueContent) && !this.focused;
     }
 
     get step(): number {

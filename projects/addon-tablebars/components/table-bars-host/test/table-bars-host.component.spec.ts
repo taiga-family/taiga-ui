@@ -6,6 +6,7 @@ import {
     TuiTableBarsHostModule,
     TuiTableBarsService,
 } from '@taiga-ui/addon-tablebars';
+import {tuiIsPresent} from '@taiga-ui/cdk';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 import {Subscription, timer} from 'rxjs';
 import {skip, take, takeUntil} from 'rxjs/operators';
@@ -62,7 +63,7 @@ describe(`TableBarsHost`, () => {
     }
 
     beforeEach(() => {
-        if (subscription) {
+        if (tuiIsPresent(subscription)) {
             subscription.unsubscribe();
         }
     });

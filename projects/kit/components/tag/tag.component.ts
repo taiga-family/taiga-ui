@@ -104,10 +104,8 @@ export class TuiTagComponent {
     editedText: string | null = null;
 
     @ViewChild('input', {read: ElementRef})
-    set input(input: ElementRef<HTMLInputElement>) {
-        if (input) {
-            input.nativeElement.focus();
-        }
+    set input(input: ElementRef<HTMLInputElement> | undefined) {
+        input?.nativeElement.focus();
     }
 
     constructor(

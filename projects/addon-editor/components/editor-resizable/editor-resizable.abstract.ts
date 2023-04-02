@@ -30,15 +30,15 @@ export abstract class AbstractTuiEditorResizable<
     }
 
     get attrs(): T {
-        return (this.node?.attrs as T) || {src: ``};
+        return (this.node?.attrs as T) ?? {src: ``};
     }
 
     get width(): number | string | null {
-        return this._width || this.attrs.width || null;
+        return this._width ?? this.attrs.width ?? null;
     }
 
     get height(): number | string | null {
-        return this._height || this.attrs.height || null;
+        return this._height ?? this.attrs.height ?? null;
     }
 
     abstract updateSize([width, height]: readonly [width: number, height: number]): void;

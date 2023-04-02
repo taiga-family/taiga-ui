@@ -8,7 +8,7 @@ import {
     OnInit,
     Self,
 } from '@angular/core';
-import {TuiDestroyService, TuiDialog, tuiIsNumber} from '@taiga-ui/cdk';
+import {TuiDestroyService, TuiDialog, tuiIsNumber, tuiIsPresent} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse, tuiSlideInRight} from '@taiga-ui/core/animations';
 import {TuiAlertOptions} from '@taiga-ui/core/interfaces';
 import {
@@ -60,7 +60,7 @@ export class TuiAlertComponent<O, I> implements OnInit {
     }
 
     private initAutoClose(): void {
-        if (!this.autoClose) {
+        if (!tuiIsPresent(this.autoClose)) {
             return;
         }
 

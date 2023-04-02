@@ -24,7 +24,7 @@ export function tuiSvgLinearGradientProcessor(
 
         return uniqueIds.reduce((newSvg, previousId) => {
             const escapedId = escapeRegExp(previousId);
-            const newId = `${previousId}_${salt || makeRandomSalt()}`;
+            const newId = `${previousId}_${salt ?? makeRandomSalt()}`;
 
             return newSvg
                 .replace(new RegExp(`"${escapedId}"`, `g`), `"${newId}"`)

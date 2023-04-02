@@ -44,9 +44,9 @@ export class TuiTreeControllerDirective<T>
     }
 
     isExpanded(item: TuiTreeItemComponent): boolean {
-        const value = this.items.get(item);
+        const value: T | undefined = this.items.get(item);
 
-        return (value && this.map.get(value)) ?? this.fallback;
+        return (tuiIsPresent(value) && this.map.get(value)) ?? this.fallback;
     }
 
     toggle(item: TuiTreeItemComponent): void {

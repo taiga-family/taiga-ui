@@ -1,3 +1,4 @@
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous/is-present';
 import {
     ClassDeclaration,
     Decorator,
@@ -30,7 +31,7 @@ function decoratorToTemplateResource(decorator: Decorator): TemplateResource | n
     const template = metadata.getProperty(`template`) as PropertyAssignment;
     const componentPath = decorator.getSourceFile().getFilePath();
 
-    if (templateUrl) {
+    if (tuiIsPresent(templateUrl)) {
         const templatePath = path.parse(
             templateUrl?.getInitializer()?.getText().replace(/['"`]/g, ``) || ``,
         );
@@ -41,11 +42,11 @@ function decoratorToTemplateResource(decorator: Decorator): TemplateResource | n
         };
     }
 
-    if (template) {
+    if (tuiIsPresent(template)) {
         return {
             componentPath,
-            template: template.getInitializer()?.getText() || ``,
-            offset: template.getInitializer()?.getStart() || 0,
+            template: template.getInitializer()?.getText() ?? ``,
+            offset: template.getInitializer()?.getStart() ?? 0,
         };
     }
 

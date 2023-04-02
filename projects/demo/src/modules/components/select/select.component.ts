@@ -2,7 +2,12 @@ import {Component, forwardRef, ViewChild} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample, tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
-import {ALWAYS_FALSE_HANDLER, TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
+import {
+    ALWAYS_FALSE_HANDLER,
+    TuiBooleanHandler,
+    TuiIdentityMatcher,
+    tuiIsPresent,
+} from '@taiga-ui/cdk';
 import {TuiValueContentContext} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -137,7 +142,7 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
     ];
 
     get valueContent(): PolymorpheusContent<TuiValueContentContext<Account>> {
-        return this.valueTemplateRef && this.selectedValueTemplate
+        return tuiIsPresent(this.valueTemplateRef) && this.selectedValueTemplate
             ? this.valueTemplateRef
             : '';
     }

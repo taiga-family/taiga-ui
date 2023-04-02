@@ -377,7 +377,7 @@ describe(`integration with TUI_FIRST_DAY_OF_WEEK token`, () => {
 
     function getDaysOfWeek(): string[] {
         const daysOfWeekContainers =
-            fixture.debugElement.queryAll(By.css(`.t-row_weekday .t-cell`)) || [];
+            fixture.debugElement.queryAll(By.css(`.t-row_weekday .t-cell`)) ?? [];
 
         return daysOfWeekContainers.map(container => container.nativeElement.textContent);
     }
@@ -388,7 +388,7 @@ describe(`integration with TUI_FIRST_DAY_OF_WEEK token`, () => {
                 By.css(
                     `.t-row:not(.t-row_weekday) .t-cell:nth-child(${columnIndex + 1})`,
                 ),
-            ) || []
+            ) ?? []
         );
     }
 

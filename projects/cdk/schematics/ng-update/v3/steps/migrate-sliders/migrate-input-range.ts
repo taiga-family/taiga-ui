@@ -6,6 +6,7 @@ import {
     setActiveProject,
 } from 'ng-morph';
 
+import {tuiIsPresent} from '../../../../../utils';
 import {ALL_FILES, ALL_TS_FILES} from '../../../../constants';
 import {TuiSchema} from '../../../../ng-add/schema';
 import {addUniqueImport} from '../../../../utils/add-unique-import';
@@ -120,7 +121,7 @@ function addMinMaxLabelMethod(
 ): void {
     const [ngComponent] = getNgComponents(componentPath);
 
-    if (ngComponent) {
+    if (tuiIsPresent(ngComponent)) {
         addUniqueImport(
             ngComponent.getSourceFile().getFilePath(),
             `TuiContextWithImplicit`,

@@ -31,6 +31,7 @@ import {
     TuiDay,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsPresent,
     TuiMonth,
     tuiNullableSame,
 } from '@taiga-ui/cdk';
@@ -182,7 +183,11 @@ export class TuiInputDateComponent
     }
 
     get computedActiveYearMonth(): TuiMonth {
-        if (this.items[0] && this.value && this.value.daySame(this.items[0].day)) {
+        if (
+            tuiIsPresent(this.items[0]) &&
+            this.value &&
+            this.value.daySame(this.items[0].day)
+        ) {
             return this.items[0].displayDay;
         }
 

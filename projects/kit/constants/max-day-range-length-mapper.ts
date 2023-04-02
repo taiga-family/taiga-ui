@@ -28,6 +28,7 @@ export const MAX_DAY_RANGE_LENGTH_MAPPER: TuiMapper<TuiDay, TuiDay> = (
         return dateShift.dayBefore(min) ? min : dateShift;
     }
 
+    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     if (!min) {
         return dateShift;
     }

@@ -133,10 +133,10 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
 
         if (isObservable(errorContent)) {
             return errorContent.pipe(
-                map(error => new TuiValidationError(error || ``, firstError)),
+                map(error => new TuiValidationError(error ?? ``, firstError)),
             );
         }
 
-        return of(new TuiValidationError(errorContent || ``, firstError));
+        return of(new TuiValidationError(errorContent ?? ``, firstError));
     }
 }

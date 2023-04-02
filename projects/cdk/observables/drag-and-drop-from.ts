@@ -19,7 +19,7 @@ export class TuiDragState {
 export function tuiDragAndDropFrom(element: Element): Observable<TuiDragState> {
     const {ownerDocument} = element;
 
-    if (!ownerDocument) {
+    if (!tuiIsPresent(ownerDocument)) {
         throw new TuiOwnerDocumentException();
     }
 

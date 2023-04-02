@@ -1,5 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import {Injector, Type} from '@angular/core';
+import {tuiIsPresent} from '@taiga-ui/cdk';
 import {
     DecorationWithType,
     Editor,
@@ -70,7 +71,7 @@ class TuiNodeView extends NodeView<
         this.renderer = new TuiComponentRenderer(this.component, injector, props);
 
         // Register drag handler
-        if (this.extension.config.draggable) {
+        if (tuiIsPresent(this.extension.config.draggable)) {
             this.renderer.elementRef.nativeElement.ondragstart = (e: DragEvent) => {
                 this.onDragStart(e);
             };
