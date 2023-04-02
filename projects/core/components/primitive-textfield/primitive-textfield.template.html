@@ -47,7 +47,6 @@
                 *polymorpheusOutlet="iconLeftContent as src; context: {$implicit: size}"
                 tuiWrapper
                 appearance="icon"
-                class="t-icon"
                 [src]="src"
             ></tui-svg>
         </div>
@@ -97,14 +96,11 @@
             ></tui-svg>
         </span>
         <tui-tooltip
-            *ngIf="hintOptions && hintOptions.content && !computedDisabled"
+            *ngIf="hintOptions?.content && !computedDisabled"
             automation-id="tui-primitive-textfield__tooltip"
+            class="t-tooltip"
             [describeId]="computedId"
-            [content]="hintOptions.content"
-            [direction]="hintOptions.direction"
-            [appearance]="hintOptions.appearance"
-            [showDelay]="hintOptions.showDelay"
-            [hideDelay]="hintOptions.hideDelay"
+            [content]="hintOptions?.content"
         ></tui-tooltip>
         <div
             *ngIf="iconContent"

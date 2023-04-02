@@ -7,6 +7,7 @@ import {
     TuiDataListModule,
     TuiDropdownModule,
     TuiErrorModule,
+    TuiGroupModule,
     TuiHintModule,
     TuiLinkModule,
     TuiTextfieldControllerModule,
@@ -14,6 +15,7 @@ import {
 import {
     TuiDataListWrapperModule,
     TuiFieldErrorPipeModule,
+    TuiInputModule,
     TuiInputTagModule,
 } from '@taiga-ui/kit';
 
@@ -37,6 +39,8 @@ import {ExampleTuiInputTagComponent} from './input-tag.component';
         TuiDataListModule,
         TuiDataListWrapperModule,
         TuiLinkModule,
+        TuiInputModule,
+        TuiGroupModule,
         TuiInputTagModule,
         TuiErrorModule,
         TuiFieldErrorPipeModule,

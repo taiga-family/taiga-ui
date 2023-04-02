@@ -39,8 +39,8 @@ import {map} from 'rxjs/operators';
 
 import {TuiPrimitiveTextfield} from './primitive-textfield-types';
 
-const ICON_PADDING = 1.75;
-const ICON_PADDING_S = 1.5;
+const ICON_PADDING_L = 1.75;
+const ICON_PADDING = 1.625;
 
 @Component({
     selector: 'tui-primitive-textfield',
@@ -303,7 +303,7 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     private get iconPaddingLeft(): number {
-        return this.size === 's' ? ICON_PADDING_S : ICON_PADDING;
+        return this.size === 'l' ? ICON_PADDING_L : ICON_PADDING;
     }
 
     private get placeholderRaisable(): boolean {
