@@ -68,7 +68,7 @@ export class TuiTagComponent {
     showLoader = false;
 
     @Input()
-    @HostBinding('attr.data-tui-host-status')
+    @HostBinding('attr.data-status')
     @tuiDefaultProp()
     status: TuiStatus = this.options.status;
 
@@ -136,11 +136,6 @@ export class TuiTagComponent {
 
     get iconCleaner(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
         return this.controller.options.iconCleaner;
-    }
-
-    @HostBinding('class._has-icon')
-    get hasIcon(): boolean {
-        return this.showLoader || this.removable;
     }
 
     @HostListener('keydown.enter', ['$event'])
