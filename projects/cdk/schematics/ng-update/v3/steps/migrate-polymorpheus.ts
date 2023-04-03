@@ -44,6 +44,7 @@ export function migratePolymorpheus({
 
         if (defaultTemplateEl) {
             insertPolymorpheusWithDefault({
+                template,
                 defaultTemplateEl,
                 recorder,
                 templateOffset,
@@ -114,12 +115,14 @@ function removeOldInputs(
 }
 
 function insertPolymorpheusWithDefault({
+    template,
     defaultTemplateEl,
     recorder,
     templateOffset,
     contentVal,
     contextVal,
 }: {
+    template: string;
     defaultTemplateEl: Element;
     recorder: UpdateRecorder;
     templateOffset: number;
@@ -129,7 +132,14 @@ function insertPolymorpheusWithDefault({
     const templateVar = defaultTemplateEl.attrs.find(attr =>
         attr.name.startsWith(`let-`),
     );
-    const varName = templateVar?.name.replace(`let-`, ``);
+
+    let templateVarName = templateVar?.name;
+
+    if (templateVarName?.startsWith(`let-`)) {
+        templateVarName = template.match(new RegExp(templateVarName, `i`))?.[0];
+    }
+
+    const varName = templateVarName?.replace(`let-`, ``);
     const attr = `*polymorpheusOutlet="${contentVal} as ${varName}${
         contextVal ? `; context: ${contextVal}` : ``
     }"`;
