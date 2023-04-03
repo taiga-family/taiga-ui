@@ -18,6 +18,7 @@ import {
 import {
     HTML_EDITOR_EXAMPLE_BLOCKQUOTE,
     HTML_EDITOR_EXAMPLE_DETAILS,
+    HTML_EDITOR_EXAMPLE_HIGHLIGHT_BLOCK,
     HTML_EDITOR_EXAMPLE_LEGACY_DETAILS,
     HTML_EDITOR_EXAMPLE_LONG_WORD_UL,
     HTML_EDITOR_EXAMPLE_NESTED_OL_UL,
@@ -104,6 +105,21 @@ describe(`Editor API`, () => {
                 .type(HTML_EDITOR_EXAMPLE_LEGACY_DETAILS, {force: true, delay: 0});
 
             tuiGetDemoContent().tuiWaitBeforeScreenshot().matchImageSnapshot(`legacy`);
+        });
+    });
+
+    describe(`highlight`, () => {
+        it(`code + pre/code`, () => {
+            tuiVisitEditorApiPage({content: ``});
+
+            cy.get(`.t-table tr`)
+                .eq(2)
+                .findByAutomationId(`tui-primitive-textfield__native-input`)
+                .type(HTML_EDITOR_EXAMPLE_HIGHLIGHT_BLOCK, {force: true, delay: 0});
+
+            tuiGetDemoContent()
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`code-block-highlight`);
         });
     });
 
