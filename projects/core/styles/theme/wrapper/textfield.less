@@ -35,7 +35,11 @@
     });
 
     .wrapper-invalid({
-        --tui-focus: var(--tui-error-fill-night);
+        --tui-focus: var(--tui-error-fill);
+
+        &:after {
+            color: var(--tui-error-fill);
+        }
     });
 }
 
