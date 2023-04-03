@@ -24,6 +24,7 @@ module.exports = {
                 'eslint-comments/disable-enable-pair': 'off',
                 'import/no-dynamic-require': 'off',
                 'promise/catch-or-return': 'off',
+                'prettier/prettier': 'off',
                 'spaced-comment': 'off',
                 'max-nested-callbacks': 'off',
                 'import/no-deprecated': 'off',
