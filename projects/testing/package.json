@@ -16,7 +16,7 @@
         "jest-environment-jsdom": "29.5.0",
         "jest-environment-node": "29.4.3",
         "jest-preset-angular": "12.2.6",
-        "ts-jest": "29.0.5"
+        "ts-jest": "29.1.0"
     },
     "peerDependencies": {
         "@taiga-ui/cdk": ">=3.22.0",
