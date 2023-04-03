@@ -1,7 +1,7 @@
 <tui-input-number
     tuiHintContent="Dollar sign is commonly placed BEFORE the amount. Use [prefix]."
     [formControl]="control"
-    [prefix]="'USD' | tuiCurrency"
+    [tuiTextfieldPrefix]="'USD' | tuiCurrency"
 >
     Type a sum
 </tui-input-number>
@@ -9,7 +9,7 @@
 <tui-input-number
     tuiHintContent="Euro sign (numeric code 978) is commonly placed AFTER the amount. Use [postfix]."
     [formControl]="control"
-    [postfix]="'978' | tuiCurrency"
+    [tuiTextfieldPostfix]="'978' | tuiCurrency"
 >
     Type a sum
 </tui-input-number>
@@ -17,7 +17,7 @@
 <tui-input-number
     tuiHintContent="Pound sign (numeric code 826) is commonly placed BEFORE the amount. Use [prefix]."
     [formControl]="control"
-    [prefix]="826 | tuiCurrency"
+    [tuiTextfieldPrefix]="826 | tuiCurrency"
 >
     Type a sum
 </tui-input-number>
