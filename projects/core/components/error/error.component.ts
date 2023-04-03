@@ -1,5 +1,11 @@
 import {AnimationOptions} from '@angular/animations';
-import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostListener,
+    Inject,
+    Input,
+} from '@angular/core';
 import {tuiDefaultProp, tuiIsString, TuiValidationError} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse} from '@taiga-ui/core/animations';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
@@ -28,6 +34,8 @@ export class TuiErrorComponent {
 
     error: TuiValidationError | null = null;
 
+    visible = true;
+
     readonly animation = {value: '', ...this.options} as const;
 
     constructor(
@@ -36,4 +44,10 @@ export class TuiErrorComponent {
         @Inject(TUI_DEFAULT_ERROR_MESSAGE)
         readonly defaultErrorMessage$: Observable<string>,
     ) {}
+
+    @HostListener('animationcancel.self', ['false'])
+    @HostListener('animationstart.self', ['true'])
+    onAnimation(visible: boolean): void {
+        this.visible = visible;
+    }
 }
