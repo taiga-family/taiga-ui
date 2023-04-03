@@ -115,7 +115,11 @@ describe(`Editor API`, () => {
             cy.get(`.t-table tr`)
                 .eq(2)
                 .findByAutomationId(`tui-primitive-textfield__native-input`)
-                .type(HTML_EDITOR_EXAMPLE_HIGHLIGHT_BLOCK, {force: true, delay: 0});
+                .type(HTML_EDITOR_EXAMPLE_HIGHLIGHT_BLOCK, {
+                    delay: 0,
+                    force: true,
+                    parseSpecialCharSequences: false,
+                });
 
             tuiGetDemoContent()
                 .tuiWaitBeforeScreenshot()
