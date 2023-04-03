@@ -1,6 +1,8 @@
 <div
     #wrapper
     class="t-wrapper"
+    @tuiParentAnimation
+    [@.disabled]="overflow"
 >
     <ng-container *ngIf="contentVisible">
         <ng-content></ng-content>

@@ -12,7 +12,7 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {tuiDefaultProp, tuiRequiredSetter} from '@taiga-ui/cdk';
+import {TUI_PARENT_ANIMATION, tuiDefaultProp, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
 
 import {TuiExpandContentDirective} from './expand-content.directive';
@@ -30,6 +30,7 @@ const LOADER_HEIGHT = 48;
     selector: 'tui-expand',
     templateUrl: './expand.template.html',
     styleUrls: ['./expand.style.less'],
+    animations: [TUI_PARENT_ANIMATION],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiExpandComponent {
