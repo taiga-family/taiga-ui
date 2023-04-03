@@ -35,7 +35,7 @@ export class TuiNotificationComponent {
     hasIcon = this.options.hasIcon;
 
     @Input()
-    @HostBinding('attr.data-tui-host-status')
+    @HostBinding('attr.data-status')
     @tuiDefaultProp()
     status: 'error' | 'info' | 'success' | 'warning' = this.options.status;
 

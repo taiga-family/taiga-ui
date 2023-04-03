@@ -58,7 +58,7 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
 
     @Input()
-    @HostBinding('attr.data-tui-host-orientation')
+    @HostBinding('attr.data-orientation')
     @tuiDefaultProp()
     orientation: TuiOrientation = 'vertical';
 

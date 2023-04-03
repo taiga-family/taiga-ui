@@ -53,7 +53,7 @@ export class TuiAccordionItemComponent
     showArrow = true;
 
     @Input()
-    @HostBinding('attr.data-tui-host-borders')
+    @HostBinding('attr.data-borders')
     @tuiDefaultProp()
     borders: 'all' | 'top-bottom' | null = 'all';
 

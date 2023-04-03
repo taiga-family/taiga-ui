@@ -6,7 +6,7 @@
     overflow: hidden;
     border-radius: var(--tui-radius-l);
 
-    &[data-tui-host-borders='top-bottom'] {
+    &[data-borders='top-bottom'] {
         // @bad TODO: find the better way to prevent radius in case
         // when accordion has rounded=true and item has top-bottom borders
         border-radius: 0 !important;
@@ -25,26 +25,26 @@
         border: 1px solid var(--tui-base-04);
         pointer-events: none;
 
-        :host:not([data-tui-host-borders]) & {
+        :host:not([data-borders]) & {
             border-width: 0;
         }
 
-        :host[data-tui-host-borders='all'] & {
+        :host[data-borders='all'] & {
             border-width: 1px;
         }
 
-        :host[data-tui-host-borders='top-bottom'] & {
+        :host[data-borders='top-bottom'] & {
             border-left-width: 0;
             border-right-width: 0;
         }
 
-        :host[data-tui-host-borders='top'] & {
+        :host[data-borders='top'] & {
             border-left-width: 0;
             border-right-width: 0;
             border-bottom-width: 0;
         }
 
-        :host[data-tui-host-borders='bottom'] & {
+        :host[data-borders='bottom'] & {
             border-left-width: 0;
             border-right-width: 0;
             border-top-width: 0;
@@ -93,7 +93,7 @@
         border-color: var(--tui-text-01);
     }
 
-    :host:not([data-tui-host-borders]) & {
+    :host:not([data-borders]) & {
         border-bottom-width: 0;
         box-shadow: none;
     }

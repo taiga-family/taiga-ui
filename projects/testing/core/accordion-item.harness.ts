@@ -21,7 +21,7 @@ export class TuiAccordionItemHarness extends TuiContentContainerComponentHarness
     }
 
     async getBorders(): Promise<string | null> {
-        return (await this.host()).getAttribute(`data-tui-host-borders`);
+        return (await this.host()).getAttribute(`data-borders`);
     }
 
     async hasArrow(): Promise<boolean> {

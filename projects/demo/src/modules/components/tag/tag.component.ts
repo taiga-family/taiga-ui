@@ -93,9 +93,7 @@ export class ExampleTuiTagComponent {
     leftContentSelected = '';
 
     get leftContent(): PolymorpheusContent {
-        return this.errorTemplate && this.leftContentSelected !== null
-            ? this.errorTemplate
-            : '';
+        return this.leftContentSelected && this.errorTemplate;
     }
 
     editTag(value: string): void {

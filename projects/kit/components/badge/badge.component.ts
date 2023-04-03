@@ -38,7 +38,7 @@ export class TuiBadgeComponent {
     size: TuiSizeL | TuiSizeXS = 'm';
 
     @Input()
-    @HostBinding('attr.data-tui-host-status')
+    @HostBinding('attr.data-status')
     @tuiDefaultProp()
     status: TuiStatus = 'default';
 
@@ -49,7 +49,7 @@ export class TuiBadgeComponent {
 
     constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
 
-    @HostBinding('attr.data-tui-host-padding')
+    @HostBinding('attr.data-padding')
     get padding(): string {
         if (this.isEmpty) {
             return 'none';

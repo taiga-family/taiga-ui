@@ -46,7 +46,7 @@ export class TuiCheckboxBlockComponent
     private readonly checkbox?: TuiCheckboxComponent;
 
     @Input()
-    @HostBinding('attr.data-tui-host-align')
+    @HostBinding('attr.data-align')
     @tuiDefaultProp()
     contentAlign: TuiHorizontalDirection = 'right';
 

@@ -30,12 +30,12 @@
 
     &._hoverable:hover,
     &._hoverable:active {
-        &[data-tui-host-status='custom']:after {
+        &[data-status='custom']:after {
             background-color: var(--tui-clear);
         }
     }
 
-    &[data-tui-host-status='primary'] {
+    &[data-status='primary'] {
         background-color: var(--tui-primary);
         color: var(--tui-primary-text);
 
@@ -48,7 +48,7 @@
         }
     }
 
-    &[data-tui-host-status='error'] {
+    &[data-status='error'] {
         --left-content-color: var(--tui-error-fill);
         background-color: var(--tui-error-bg);
         color: var(--tui-text-01);
@@ -69,7 +69,7 @@
         }
     }
 
-    &[data-tui-host-status='success'] {
+    &[data-status='success'] {
         --left-content-color: var(--tui-success-fill);
         background-color: var(--tui-success-bg);
         color: var(--tui-text-01);
@@ -90,7 +90,7 @@
         }
     }
 
-    &[data-tui-host-status='warning'] {
+    &[data-status='warning'] {
         --left-content-color: var(--tui-warning-fill);
         background-color: var(--tui-warning-bg);
         color: var(--tui-text-01);
@@ -111,7 +111,7 @@
         }
     }
 
-    &[data-tui-host-status='info'] {
+    &[data-status='info'] {
         --left-content-color: var(--tui-info-fill);
         background-color: var(--tui-info-bg);
         color: var(--tui-text-01);
@@ -132,7 +132,7 @@
         }
     }
 
-    &[data-tui-host-status='neutral'] {
+    &[data-status='neutral'] {
         --left-content-color: var(--tui-neutral-fill);
         background-color: var(--tui-neutral-bg);
         color: var(--tui-text-01);
@@ -153,7 +153,7 @@
         }
     }
 
-    &[data-tui-host-status='default'] {
+    &[data-status='default'] {
         background-color: var(--tui-base-06);
 
         &:not([data-mode]) {
@@ -200,7 +200,7 @@
         cursor: pointer;
     }
 
-    &[data-tui-host-padding='m'] {
+    &[data-padding='m'] {
         padding: 0 @padding - 0.25rem;
 
         &[data-size='xs'] {
@@ -216,7 +216,7 @@
         }
     }
 
-    &[data-tui-host-padding='l'] {
+    &[data-padding='l'] {
         padding: 0 @padding - 0.125rem;
 
         &[data-size='xs'] {
@@ -297,11 +297,11 @@
         }
     }
 
-    :host[data-tui-host-status='error'] &,
-    :host[data-tui-host-status='success'] &,
-    :host[data-tui-host-status='warning'] &,
-    :host[data-tui-host-status='info'] &,
-    :host[data-tui-host-status='neutral'] & {
+    :host[data-status='error'] &,
+    :host[data-status='success'] &,
+    :host[data-status='warning'] &,
+    :host[data-status='info'] &,
+    :host[data-status='neutral'] & {
         display: block;
     }
 

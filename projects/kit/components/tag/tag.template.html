@@ -5,7 +5,7 @@
 >
     <div
         *ngIf="leftContent"
-        class="t-left-content"
+        class="t-content"
     >
         <ng-container *polymorpheusOutlet="leftContent as text">
             {{ text }}
@@ -14,12 +14,11 @@
     <span
         automation-id="tui-tag__text"
         class="t-text"
-    >
-        {{ displayText }}
-    </span>
+        [textContent]="displayText"
+    ></span>
     <tui-loader
         *ngIf="showLoader"
-        class="t-icon t-icon_loader"
+        class="t-content"
         [inheritColor]="true"
         [size]="loaderSize"
     ></tui-loader>
