@@ -264,7 +264,7 @@ describe(`InputTag`, () => {
             const savedLength = component.value.length;
             const newTag = `new`;
 
-            component.tagValidator = item => item !== newTag;
+            component.tagValidator = (item: string) => item !== newTag;
             inputPO.sendText(newTag);
             inputPO.sendKeydown(`Space`);
 
@@ -276,7 +276,7 @@ describe(`InputTag`, () => {
             const savedLength = component.value.length;
             const newTag = `new`;
 
-            component.tagValidator = item => item !== newTag;
+            component.tagValidator = (item: string) => item !== newTag;
             inputPO.sendText(newTag);
             inputPO.sendKeydown(`,`);
 

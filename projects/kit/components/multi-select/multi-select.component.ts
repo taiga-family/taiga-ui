@@ -16,6 +16,7 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiMultipleControl,
+    ALWAYS_TRUE_HANDLER,
     EMPTY_ARRAY,
     TUI_IS_MOBILE,
     TuiActiveZoneDirective,
@@ -119,6 +120,10 @@ export class TuiMultiSelectComponent<T>
     @Input()
     @tuiDefaultProp()
     valueContent: TuiMultiSelectOptions<T>['valueContent'] = this.options.valueContent;
+
+    @Input()
+    @tuiDefaultProp()
+    tagValidator: TuiBooleanHandler<T> = ALWAYS_TRUE_HANDLER;
 
     @Input()
     rows = Infinity;

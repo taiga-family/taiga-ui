@@ -4,6 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample, tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import {
     ALWAYS_FALSE_HANDLER,
+    ALWAYS_TRUE_HANDLER,
     TUI_DEFAULT_STRINGIFY,
     TuiBooleanHandler,
     TuiContextWithImplicit,
@@ -144,6 +145,14 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
     ];
 
     identityMatcher = this.identityMatcherVariants[0];
+
+    tagValidatorVariants: ReadonlyArray<TuiBooleanHandler<Account>> = [
+        ALWAYS_TRUE_HANDLER,
+        item => item.balance > 300,
+        item => !item.name.startsWith('Pounds'),
+    ];
+
+    tagValidator = this.tagValidatorVariants[0];
 
     override readonly maxLengthVariants: readonly number[] = [10];
 

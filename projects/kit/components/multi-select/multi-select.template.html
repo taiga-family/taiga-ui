@@ -23,6 +23,7 @@
         [expandable]="expandable"
         [removable]="!nativeDropdownMode"
         [search]="searchOrSpace"
+        [tagValidator]="tagValidator | tuiMapper : disabledItemHandlerWrapper"
         [rows]="rows"
         [ngModel]="computedValue | tuiMapper : valueMapper : stringify"
         (ngModelChange)="onInput($event)"

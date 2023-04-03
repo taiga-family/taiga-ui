@@ -133,6 +133,7 @@
                     [identityMatcher]="identityMatcher"
                     [readOnly]="readOnly"
                     [stringify]="stringify"
+                    [tagValidator]="tagValidator"
                     [placeholder]="exampleText"
                     [pseudoInvalid]="pseudoInvalid"
                     [pseudoFocus]="pseudoFocused"
@@ -253,6 +254,15 @@
                 [(documentationPropertyValue)]="valueContent"
             >
                 A template for custom view of selected value
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tagValidator"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiBooleanHandler<T>"
+                [documentationPropertyValues]="tagValidatorVariants"
+                [(documentationPropertyValue)]="tagValidator"
+            >
+                A function that cheks that tag is valid
             </ng-template>
             <ng-template
                 documentationPropertyName="placeholder"
