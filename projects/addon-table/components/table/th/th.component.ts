@@ -9,8 +9,7 @@ import {
     Optional,
 } from '@angular/core';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
-import {tuiDefaultSort} from '@taiga-ui/addon-table/utils';
-import {tuiDefaultProp, TuiTableSortKeyException} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiDefaultSort, TuiTableSortKeyException} from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 
 import {TuiHeadDirective} from '../directives/head.directive';

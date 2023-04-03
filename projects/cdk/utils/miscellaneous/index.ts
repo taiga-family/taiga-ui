@@ -1,6 +1,7 @@
 export * from './array-remove';
 export * from './array-shallow-equals';
 export * from './array-toggle';
+export * from './default-sort';
 export * from './distance-between-touches';
 export * from './ease-in-out-quad';
 export * from './flat-length';
