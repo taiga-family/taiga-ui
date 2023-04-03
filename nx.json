@@ -17,13 +17,16 @@
     "targetDefaults": {
         "build": {
             "inputs": ["!{projectRoot}/**/*.spec.ts"]
+        },
+        "e2e": {
+            "inputs": ["!{projectRoot}/**/*.spec.ts"]
         }
     },
     "tasksRunnerOptions": {
         "default": {
             "runner": "@nrwl/nx-cloud",
             "options": {
-                "cacheableOperations": ["build", "test", "lint"],
+                "cacheableOperations": ["build", "test", "lint", "e2e"],
                 "parallel": 1
             }
         }

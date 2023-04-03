@@ -5,6 +5,7 @@
     "sourceRoot": "projects/demo/src",
     "projectType": "application",
     "prefix": "app",
+    "implicitDependencies": ["!testing"],
     "targets": {
         "i18n": {
             "executor": "nx:run-commands",
@@ -287,35 +288,6 @@
             "options": {
                 "command": "jest --testMatch \"**/projects/demo/**/*.spec.ts\"",
                 "forwardAllArgs": true
-            }
-        },
-        "e2e": {
-            "executor": "nx:run-commands",
-            "options": {
-                "parallel": false,
-                "commands": [
-                    "npx wait-on http://localhost:3333 --timeout 1000",
-                    "cypress open --browser chrome --project ./projects/demo-integrations"
-                ]
-            }
-        },
-        "e2e-headless": {
-            "executor": "nx:run-commands",
-            "options": {
-                "parallel": false,
-                "commands": [
-                    "npx wait-on http://localhost:3333 --timeout 1000",
-                    "cypress open --browser chrome --headless --project ./projects/demo-integrations"
-                ]
-            }
-        },
-        "e2e-ci": {
-            "executor": "nx:run-commands",
-            "options": {
-                "parallel": true,
-                "commands": [
-                    "npx cy2 run --parallel --record --key {args.key} --ci-build-id {args.key} --env ci=true --browser chrome --headless --project ./projects/demo-integrations --spec '**/{args.folder}/**/*.cy.ts'"
-                ]
             }
         }
     }

@@ -1,0 +1,27 @@
+{
+    "name": "demo-integrations",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "root": "projects/demo-integrations/",
+    "sourceRoot": "projects/demo-integrations/cypress",
+    "projectType": "application",
+    "prefix": "app",
+    "implicitDependencies": ["!testing"],
+    "targets": {
+        "e2e-ui": {
+            "executor": "nx:run-commands",
+            "options": {
+                "parallel": false,
+                "commands": [
+                    "npx wait-on http://localhost:3333 --timeout 1000",
+                    "cypress open --browser chrome --project ./projects/demo-integrations"
+                ]
+            }
+        },
+        "e2e": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "npx cy2 run --parallel --record --key {args.key} --ci-build-id {args.key} --env ci=true --browser chrome --headless --project ./projects/demo-integrations --spec '**/{args.folder}/**/*.cy.ts'"
+            }
+        }
+    }
+}
