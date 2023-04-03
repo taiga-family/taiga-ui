@@ -130,7 +130,9 @@ export class TuiInputTagComponent
 
     @Input()
     @tuiDefaultProp()
-    tagValidator: TuiBooleanHandler<string> = ALWAYS_TRUE_HANDLER;
+    tagValidator:
+        | TuiBooleanHandler<string>
+        | TuiBooleanHandler<TuiStringifiableItem<unknown> | string> = ALWAYS_TRUE_HANDLER;
 
     // TODO: 4.0 Consider removing and use rows = 1 instead
     @Input()
