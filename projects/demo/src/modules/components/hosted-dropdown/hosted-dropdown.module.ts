@@ -29,6 +29,8 @@ import {TuiHostedDropdownExample1} from './examples/1';
 import {TuiHostedDropdownExample2} from './examples/2';
 import {TuiHostedDropdownExample3} from './examples/3';
 import {TuiHostedDropdownExample4} from './examples/4';
+import {TuiHostedDropdownExample5} from './examples/5';
+import {TopRightDirective} from './examples/5/accessor';
 import {ExampleTuiHostedDropdownComponent} from './hosted-dropdown.component';
 
 @NgModule({
@@ -62,6 +64,8 @@ import {ExampleTuiHostedDropdownComponent} from './hosted-dropdown.component';
         TuiHostedDropdownExample2,
         TuiHostedDropdownExample3,
         TuiHostedDropdownExample4,
+        TuiHostedDropdownExample5,
+        TopRightDirective,
         ExampleTuiHostedDropdownComponent,
     ],
     exports: [ExampleTuiHostedDropdownComponent],

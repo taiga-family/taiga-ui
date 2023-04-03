@@ -18,22 +18,30 @@ describe(`Dropdown`, () => {
             cy.get(`tui-hosted-dropdown-example-1 button`).first().click().wait(1000);
             cy.matchImageSnapshot(`3`);
         });
+
+        it(`HostedDropdown custom position`, () => {
+            cy.tuiVisit(`/components/hosted-dropdown`);
+
+            cy.get(`tui-hosted-dropdown-example-5 button`).first().click().wait(1000);
+            cy.matchImageSnapshot(`4`);
+        });
     });
 
     describe(`a12y`, () => {
-        beforeEach(() => cy.viewport(1280, 720));
+        beforeEach(() => cy.viewport(1280, 1280));
 
         it(`Esc -> Hosted Dropdown`, () => {
-            cy.tuiVisit(`/components/hosted-dropdown`);
+            cy.tuiVisit(`/components/hosted-dropdown#tui-dropdown-host`);
 
-            cy.get(`tui-hosted-dropdown-example-2 button`)
-                .eq(1)
+            cy.get(`tui-hosted-dropdown-example-2 button [src=tuiIconChevronDown]`)
                 .tuiWaitBeforeAction()
                 .click();
 
             cy.tuiWaitBeforeScreenshot().matchImageSnapshot(`01-opened-hosted-dropdown`, {
                 capture: `viewport`,
             });
+
+            cy.get(`tui-dropdown`).findByAutomationId(`tui-select__textfield`).click();
 
             cy.get(`tui-dropdown`)
                 .findByAutomationId(`tui-primitive-textfield__native-input`)
