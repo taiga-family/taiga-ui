@@ -11,6 +11,7 @@ module.exports = {
             plugins: ['@typescript-eslint'],
             rules: {
                 'unicorn/prefer-logical-operator-over-ternary': 'error',
+                '@typescript-eslint/require-array-sort-compare': 'error',
                 '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
                 '@typescript-eslint/no-unnecessary-type-constraint': 'error',
                 '@typescript-eslint/no-unsafe-declaration-merging': 'error',
