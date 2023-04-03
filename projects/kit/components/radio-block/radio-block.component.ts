@@ -54,7 +54,7 @@ export class TuiRadioBlockComponent<T>
     identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
 
     @Input()
-    @HostBinding('attr.data-tui-host-align')
+    @HostBinding('attr.data-align')
     @tuiDefaultProp()
     contentAlign: TuiHorizontalDirection = 'right';
 

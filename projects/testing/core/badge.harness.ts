@@ -8,7 +8,7 @@ export class TuiBadgeHarness extends TuiComponentHarness {
     }
 
     async padding(): Promise<string | null> {
-        return (await this.host()).getAttribute(`data-tui-host-padding`);
+        return (await this.host()).getAttribute(`data-padding`);
     }
 
     async hasClass(cls: string): Promise<boolean> {
