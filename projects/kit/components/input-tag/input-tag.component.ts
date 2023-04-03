@@ -142,7 +142,9 @@ export class TuiInputTagComponent
 
     @Input()
     @tuiDefaultProp()
-    tagValidator: TuiBooleanHandler<string> = ALWAYS_TRUE_HANDLER;
+    tagValidator:
+        | TuiBooleanHandler<string>
+        | TuiBooleanHandler<TuiStringifiableItem<unknown> | string> = ALWAYS_TRUE_HANDLER;
 
     @Input()
     @HostBinding('class._expandable')

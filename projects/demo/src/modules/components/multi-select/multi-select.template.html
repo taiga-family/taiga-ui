@@ -109,6 +109,7 @@
                     [tuiHintMode]="hintMode"
                     [focusable]="focusable"
                     [disabledItemHandler]="disabledItemHandler"
+                    [tagValidator]="tagValidator"
                     [editable]="editable"
                     [expandable]="expandable"
                     [identityMatcher]="identityMatcher"
@@ -231,6 +232,15 @@
                 [(documentationPropertyValue)]="valueContent"
             >
                 A template for custom view of selected value
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tagValidator"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiBooleanHandler<T>"
+                [documentationPropertyValues]="tagValidatorVariants"
+                [(documentationPropertyValue)]="tagValidator"
+            >
+                A function that cheks that tag is valid
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation [dropdown]="true"></inherited-documentation>
