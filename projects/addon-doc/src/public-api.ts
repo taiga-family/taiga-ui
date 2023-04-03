@@ -60,6 +60,12 @@ export * from './tokens/url-state-handler';
 /* Types */
 export * from './types/pages';
 
+/* Services */
+export * from './services/theme.options';
+export * from './services/theme.service';
+export * from './services/theme-night.options';
+export * from './services/theme-night.service';
+
 /* Utils */
 export * from './addon-doc.module';
 export * from './utils/coerce-value';

@@ -2,8 +2,9 @@ import {waitAllRequests} from '@demo-integrations/support/helpers/wait-requests.
 import {stubExternalIcons} from '@demo-integrations/support/stubs/stub-external-icons.util';
 import {stubMetrics} from '@demo-integrations/support/stubs/stub-metrics';
 
+import {TUI_THEME_NIGHT_STORAGE_DEFAULT_KEY} from '../../../../addon-doc/src/services/theme-night.options';
+
 const NEXT_URL_STORAGE_KEY = `env`;
-const NIGHT_THEME_KEY = `night`;
 const REPEATED_SLASH_REG = new RegExp(`//`, `g`);
 
 interface TuiVisitOptions {
@@ -107,7 +108,10 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
             setBeforeLoadOptions(window, {inIframe});
 
             window.localStorage.setItem(NEXT_URL_STORAGE_KEY, nextUrl);
-            window.localStorage.setItem(NIGHT_THEME_KEY, enableNightMode.toString());
+            window.localStorage.setItem(
+                TUI_THEME_NIGHT_STORAGE_DEFAULT_KEY,
+                enableNightMode.toString(),
+            );
 
             if (pseudoMobile) {
                 Object.defineProperty(window.navigator, `userAgent`, {

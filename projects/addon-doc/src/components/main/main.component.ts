@@ -6,10 +6,11 @@ import {
     Inject,
     ViewEncapsulation,
 } from '@angular/core';
-import {LOCAL_STORAGE, WINDOW} from '@ng-web-apis/common';
 import {TuiSwipeService} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
-import {Subject} from 'rxjs';
+
+import {TuiThemeService} from '../../services/theme.service';
+import {TuiThemeNightService} from '../../services/theme-night.service';
 
 @Component({
     selector: 'tui-doc-main',
@@ -28,26 +29,15 @@ import {Subject} from 'rxjs';
     ],
 })
 export class TuiDocMainComponent {
-    night =
-        this.storage.getItem('night') === 'true' ||
-        (this.storage.getItem('night') === null &&
-            this.windowRef.matchMedia('(prefers-color-scheme: dark)').matches);
-
-    readonly change$ = new Subject<void>();
+    readonly change$ = this.nightService;
 
     constructor(
-        @Inject(LOCAL_STORAGE) private readonly storage: Storage,
-        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(TuiThemeService) readonly themeService: TuiThemeService,
+        @Inject(TuiThemeNightService) readonly nightService: TuiThemeNightService,
     ) {}
 
     @HostBinding('attr.data-mode')
     get mode(): TuiBrightness | null {
-        return this.night ? 'onDark' : null;
-    }
-
-    onMode(night: boolean): void {
-        this.night = night;
-        this.change$.next();
-        this.storage.setItem('night', String(night));
+        return this.nightService.value ? 'onDark' : null;
     }
 }
