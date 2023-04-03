@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {ValidatorFn} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiComparator, tuiDefaultSort} from '@taiga-ui/addon-table';
-import {TuiDay} from '@taiga-ui/cdk';
+import {TuiComparator} from '@taiga-ui/addon-table';
+import {TuiDay, tuiDefaultSort} from '@taiga-ui/cdk';
 
 interface Item {
     readonly name: string;

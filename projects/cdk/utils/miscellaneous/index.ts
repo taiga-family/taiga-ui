@@ -8,6 +8,7 @@ export * from './get-original-array-from-query-list';
 export * from './get-swipe-direction';
 export * from './is-falsy';
 export * from './is-number';
+export * from './default-sort';
 export * from './is-object';
 export * from './is-present';
 export * from './is-string';

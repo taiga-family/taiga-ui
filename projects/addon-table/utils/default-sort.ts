@@ -1,16 +1,7 @@
-import {TuiDay, tuiIsString} from '@taiga-ui/cdk';
+import {tuiDefaultSort as tuiDefaultSortFromCdk} from '@taiga-ui/cdk';
 
-export function tuiDefaultSort<T>(x: T, y: T): number {
-    const a = x instanceof TuiDay ? Number(x.toUtcNativeDate()) : x;
-    const b = y instanceof TuiDay ? Number(y.toUtcNativeDate()) : y;
-
-    if (a === b) {
-        return 0;
-    }
-
-    if (tuiIsString(a) && tuiIsString(b)) {
-        return a.localeCompare(b);
-    }
-
-    return a > b ? 1 : -1;
-}
+/**
+ * @deprecated: use {tuiDefaultSort} from `@taiga-ui/cdk`
+ * drop in v4.0
+ */
+export const tuiDefaultSort = tuiDefaultSortFromCdk;
