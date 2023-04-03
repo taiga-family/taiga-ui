@@ -17,6 +17,7 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiMultipleControl,
+    ALWAYS_TRUE_HANDLER,
     EMPTY_ARRAY,
     isNativeFocused,
     setNativeFocused,
@@ -116,6 +117,10 @@ export class TuiMultiSelectComponent<T>
     @Input()
     @tuiDefaultProp()
     valueContent: TuiMultiSelectOptions<T>['valueContent'] = this.options.valueContent;
+
+    @Input()
+    @tuiDefaultProp()
+    tagValidator: TuiBooleanHandler<T> = ALWAYS_TRUE_HANDLER;
 
     @Output()
     readonly searchChange = new EventEmitter<string | null>();

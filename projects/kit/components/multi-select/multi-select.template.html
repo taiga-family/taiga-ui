@@ -15,6 +15,7 @@
         [icon]="tagIcon"
         [disabled]="disabled"
         [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledItemHandlerWrapper"
+        [tagValidator]="tagValidator | tuiMapper: disabledItemHandlerWrapper"
         [readOnly]="readOnly"
         [inputHidden]="!editable"
         [pseudoHovered]="computedHovered"
