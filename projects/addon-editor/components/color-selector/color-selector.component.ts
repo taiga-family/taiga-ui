@@ -10,7 +10,9 @@ import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 import {TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES} from '@taiga-ui/addon-editor/tokens';
 import {TuiGradientDirection} from '@taiga-ui/addon-editor/types';
 import {tuiGetGradientData, tuiParseGradient} from '@taiga-ui/addon-editor/utils';
-import {tuiDefaultSort} from '@taiga-ui/addon-table';
+// note: unable to write a reference to TuiReorderComponent
+// eslint-disable-next-line @taiga-ui/no-deep-imports
+import {tuiDefaultSort} from '@taiga-ui/addon-table/utils';
 import {tuiDefaultProp, tuiParseColor, tuiPure, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 
@@ -189,7 +191,7 @@ export class TuiColorSelectorComponent {
 
     private getGradient(direction: TuiGradientDirection): string {
         return `linear-gradient(${direction}, ${[...this.stopsKeys]
-            .sort(tuiDefaultSort)
+            .sort((a, b) => tuiDefaultSort(a, b))
             .map(key => `rgba(${this.getStop(key).join(', ')}) ${key * 100}%`)
             .join(', ')})`;
     }
