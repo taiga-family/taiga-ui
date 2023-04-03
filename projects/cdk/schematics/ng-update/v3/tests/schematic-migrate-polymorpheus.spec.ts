@@ -24,7 +24,7 @@ const TEMPLATE_BEFORE = `
 <div
     polymorpheus-outlet
     [content]="content"
-    [context]="context"
+    [context]="myContext"
 ></div>
 
 <div
@@ -32,8 +32,8 @@ const TEMPLATE_BEFORE = `
     [content]="content"
     [context]="context"
 >
-    <ng-template let-hapica>
-        <div>{{ hapica }}</div>
+    <ng-template let-hapicaCamelCase>
+        <div>{{ hapicaCamelCase }}</div>
     </ng-template>
 </div>
 
@@ -59,7 +59,7 @@ const TEMPLATE_AFTER = `
     ${``}
     ${``}
 >
-<ng-container *polymorpheusOutlet="content as text; context: context">
+<ng-container *polymorpheusOutlet="content as text; context: myContext">
     {{ text }}
 </ng-container></div>
 
@@ -68,8 +68,8 @@ const TEMPLATE_AFTER = `
     ${``}
     ${``}
 >
-    <ng-container *polymorpheusOutlet="content as hapica; context: context" >
-        <div>{{ hapica }}</div>
+    <ng-container *polymorpheusOutlet="content as hapicaCamelCase; context: context" >
+        <div>{{ hapicaCamelCase }}</div>
     </ng-container>
 </div>
 
