@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.82.0](https://github.com/tinkoff/taiga-ui/compare/v2.81.0...v2.82.0) (2023-04-03)
+
+### Features
+
+- **kit:** `Multiselect` add tag validator ([#4089](https://github.com/tinkoff/taiga-ui/issues/4089))
+  ([528c8c4](https://github.com/tinkoff/taiga-ui/commit/528c8c417b79a5b8b7cb7cb8b7e2bb2e37ae84c1))
+
+### Bug Fixes
+
+- **kit:** `InputSlider` broken disabled state ([#4032](https://github.com/tinkoff/taiga-ui/issues/4032))
+  ([5542c43](https://github.com/tinkoff/taiga-ui/commit/5542c43af236adf7607224f7574b56a00f32121a))
+- **kit:** `Stepper` - add `markForCheck` on activate step ([#4039](https://github.com/tinkoff/taiga-ui/issues/4039))
+  ([ebd68b9](https://github.com/tinkoff/taiga-ui/commit/ebd68b9d757ea66e0456d82e7d9f704afaa881cf))
+
 ## [2.81.0](https://github.com/tinkoff/taiga-ui/compare/v2.80.0...v2.81.0) (2023-03-27)
 
 ### Features
