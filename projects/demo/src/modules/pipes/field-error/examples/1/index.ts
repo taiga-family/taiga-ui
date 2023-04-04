@@ -32,10 +32,19 @@ export class TuiFieldErrorPipeExample1 {
 
     readonly testValue3 = new FormControl('', [Validators.required, passwordValidator]);
 
-    readonly testForm = new FormGroup({
-        testValue1: this.testValue1,
-        testValue2: new FormControl('', [Validators.required, superComputerValidator]),
-    });
+    readonly testForm = new FormGroup(
+        {
+            testValue1: this.testValue1,
+            testValue2: new FormControl('', [
+                Validators.required,
+                superComputerValidator,
+            ]),
+        },
+        control =>
+            Object.values((control as FormGroup).controls).every(({valid}) => valid)
+                ? null
+                : {other: 'Form is invalid'},
+    );
 
     constructor() {
         this.testValue1.valueChanges.subscribe(() => {
