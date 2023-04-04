@@ -5,7 +5,26 @@
     "sourceRoot": "projects/demo-integrations/cypress",
     "projectType": "application",
     "prefix": "app",
-    "implicitDependencies": ["!testing"],
+    "implicitDependencies": [
+        "!testing",
+        "!eslint-plugin",
+        "!taiga-schematics",
+        "addon-charts",
+        "addon-commerce",
+        "addon-doc",
+        "addon-editor",
+        "addon-mobile",
+        "addon-preview",
+        "addon-table",
+        "addon-tablebars",
+        "cdk",
+        "core",
+        "demo",
+        "i18n",
+        "icons",
+        "kit",
+        "styles"
+    ],
     "targets": {
         "e2e-ui": {
             "executor": "nx:run-commands",
