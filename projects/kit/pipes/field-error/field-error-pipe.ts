@@ -1,10 +1,8 @@
-import {Inject, Optional, Pipe, PipeTransform, Self} from '@angular/core';
+import {Inject, Optional, Pipe, PipeTransform, Self, SkipSelf} from '@angular/core';
 import {
     AbstractControl,
+    ControlContainer,
     ControlValueAccessor,
-    FormArrayName,
-    FormGroupDirective,
-    FormGroupName,
     NgControl,
 } from '@angular/forms';
 import {tuiIsString, tuiPure, TuiValidationError} from '@taiga-ui/cdk';
@@ -24,29 +22,24 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
 
     constructor(
         @Optional()
+        @SkipSelf()
+        @Inject(NgControl)
+        private readonly parent: NgControl | null,
+        @Optional()
         @Self()
         @Inject(NgControl)
-        private readonly ngControl: NgControl | null,
+        private readonly self: NgControl | null,
         @Optional()
-        @Self()
-        @Inject(FormArrayName)
-        private readonly formArrayName: FormArrayName | null,
-        @Optional()
-        @Self()
-        @Inject(FormGroupName)
-        private readonly formGroupName: FormGroupName | null,
-        @Optional()
-        @Self()
-        @Inject(FormGroupDirective)
-        private readonly formGroup: FormGroupDirective | null,
+        @Inject(ControlContainer)
+        private readonly container: ControlContainer | null,
         @Inject(TUI_VALIDATION_ERRORS)
         private readonly validationErrors: Record<
             string,
             Observable<PolymorpheusContent> | PolymorpheusContent
         >,
     ) {
-        if (this.ngControl && !this.ngControl.valueAccessor) {
-            this.ngControl.valueAccessor = this;
+        if (this.self && !this.self.valueAccessor) {
+            this.self.valueAccessor = this;
         }
     }
 
@@ -89,14 +82,8 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
         return !!this.control?.touched;
     }
 
-    private get control(): AbstractControl | null {
-        return (
-            this.ngControl?.control ||
-            this.formArrayName?.control ||
-            this.formGroupName?.control ||
-            this.formGroup?.control ||
-            null
-        );
+    private get control(): AbstractControl | null | undefined {
+        return this.self?.control || this.parent?.control || this.container?.control;
     }
 
     private get errorId(): string {

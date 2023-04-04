@@ -39,4 +39,33 @@
         If you need to show validation message as early as a user started to type something, subscribe on form value
         changes and call markAsTouched on control on first value change
     </p>
+
+    <p>
+        <code>tuiFieldError</code>
+        pipe can be used inside your controls to show error messages for parent
+        <a
+            tuiLink
+            href="https://angular.io/api/forms/NgControl"
+            rel="noreferrer"
+            target="_blank"
+        >
+            NgControl
+        </a>
+        or
+        <a
+            tuiLink
+            href="https://angular.io/api/forms/ControlContainer"
+            rel="noreferrer"
+            target="_blank"
+        >
+            ControlContainer
+        </a>
+        through DI without explicit directive on
+        <code>tui-error</code>
+        .
+    </p>
+
+    <p>Below is an error for the entire form:</p>
+
+    <tui-error [error]="[] | tuiFieldError | async"></tui-error>
 </form>
