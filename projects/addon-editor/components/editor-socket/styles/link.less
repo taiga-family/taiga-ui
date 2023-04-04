@@ -1,0 +1,32 @@
+@import 'taiga-ui-local';
+
+a:not([data-type='jump-anchor']) {
+    color: var(--tui-link);
+    text-decoration: none;
+    outline: none;
+
+    &:hover {
+        color: var(--tui-link-hover);
+        text-decoration: underline;
+    }
+
+    &:active {
+        color: var(--tui-primary-active);
+    }
+}
+
+/* stylelint-disable-next-line */
+.ProseMirror {
+    a[data-type='jump-anchor'] {
+        text-decoration: underline;
+        text-decoration-color: var(--tui-link);
+
+        &:before {
+            content: '#';
+        }
+
+        &:hover {
+            color: var(--tui-link);
+        }
+    }
+}

@@ -1,0 +1,79 @@
+@import 'taiga-ui-local';
+
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* stylelint-disable-next-line */
+table .tableWrapper {
+    overflow-x: auto;
+}
+
+/* stylelint-disable-next-line */
+.tableWrapper,
+.tui-table-wrapper {
+    overflow-x: auto;
+}
+
+table td {
+    position: relative;
+    min-width: 1em;
+    height: 2rem;
+    border: 2px solid var(--tui-base-03);
+    padding: 3px 5px;
+    vertical-align: top;
+    box-sizing: border-box;
+    word-break: break-word;
+}
+
+table th {
+    position: relative;
+    min-width: 1em;
+    height: 2rem;
+    border: 2px solid var(--tui-base-03);
+    padding: 3px 5px;
+    vertical-align: top;
+    box-sizing: border-box;
+    word-break: break-word;
+    font-weight: bold;
+    text-align: left;
+    background-color: var(--tui-base-02);
+    min-height: 2rem;
+}
+
+/* stylelint-disable-next-line */
+table .column-resize-handle {
+    position: absolute;
+    right: -2px;
+    top: 0;
+    bottom: -2px;
+    width: 4px;
+    background-color: #adf;
+    pointer-events: none;
+}
+
+table td > * {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+table th > * {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* stylelint-disable-next-line */
+.selectedCell:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--tui-selection);
+    pointer-events: none;
+}
