@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.23.1](https://github.com/tinkoff/taiga-ui/compare/v3.23.0...v3.23.1) (2023-04-04)
+
+### Bug Fixes
+
+- **addon-commerce:** `Money` fix decimal limit in integer part
+  ([#4106](https://github.com/tinkoff/taiga-ui/issues/4106))
+  ([a159447](https://github.com/tinkoff/taiga-ui/commit/a159447f2831a0f292c04a7ad99a8a9fcdf7e6cb))
+- **addon-doc:** correct detect `Open-source` theme ([#4098](https://github.com/tinkoff/taiga-ui/issues/4098))
+  ([aab2bef](https://github.com/tinkoff/taiga-ui/commit/aab2beff3a3a6732421db47fc80354596cce9147))
+- **cdk:** remove `protected` from constructors ([#4100](https://github.com/tinkoff/taiga-ui/issues/4100))
+  ([68cc663](https://github.com/tinkoff/taiga-ui/commit/68cc6636dde13dd91c8c3061c65efd5082477a25))
+- **kit:** `FieldError` work when nested inside control ([#4107](https://github.com/tinkoff/taiga-ui/issues/4107))
+  ([fb7b827](https://github.com/tinkoff/taiga-ui/commit/fb7b827a62f6081cefc970b97ef9d3351d688783))
+
 ## [3.23.0](https://github.com/tinkoff/taiga-ui/compare/v3.22.0...v3.23.0) (2023-04-03)
 
 ### Features
