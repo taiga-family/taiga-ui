@@ -5,26 +5,6 @@
     "sourceRoot": "projects/demo-integrations/cypress",
     "projectType": "application",
     "prefix": "app",
-    "implicitDependencies": [
-        "!testing",
-        "!eslint-plugin",
-        "!taiga-schematics",
-        "addon-charts",
-        "addon-commerce",
-        "addon-doc",
-        "addon-editor",
-        "addon-mobile",
-        "addon-preview",
-        "addon-table",
-        "addon-tablebars",
-        "cdk",
-        "core",
-        "demo",
-        "i18n",
-        "icons",
-        "kit",
-        "styles"
-    ],
     "targets": {
         "lint": {
             "executor": "nx:run-commands",
@@ -50,6 +30,7 @@
         },
         "e2e": {
             "executor": "nx:run-commands",
+            "outputs": ["projects/demo-integrations/cypress/snapshots"],
             "options": {
                 "command": "npx cy2 run --parallel --record --key {args.key} --ci-build-id {args.key} --env ci=true --browser chrome --headless --project ./projects/demo-integrations --spec '**/{args.folder}/**/*.cy.ts'"
             }
