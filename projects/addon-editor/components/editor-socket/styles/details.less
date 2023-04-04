@@ -1,113 +1,111 @@
 @import 'taiga-ui-local';
 
 // TODO: drop in v4.0 classes without prefix `t-`
-.tui-editor-socket {
-    summary {
-        display: flex;
-        align-items: center;
-        min-height: 3.5rem;
-        width: 100%;
-        padding: 0 1.25rem;
-        box-sizing: border-box;
-        border-radius: var(--tui-radius-l);
-        pointer-events: none;
-        outline: none;
+summary {
+    display: flex;
+    align-items: center;
+    min-height: 3.5rem;
+    width: 100%;
+    padding: 0 1.25rem;
+    box-sizing: border-box;
+    border-radius: var(--tui-radius-l);
+    pointer-events: none;
+    outline: none;
 
-        &:focus-visible {
-            outline: 2px solid var(--tui-link);
-        }
-
-        p {
-            min-width: 1px;
-            margin: 0;
-        }
-
-        &::-webkit-details-marker {
-            display: none;
-        }
+    &:focus-visible {
+        outline: 2px solid var(--tui-link);
     }
 
-    details[open] summary {
-        border-radius: var(--tui-radius-l) var(--tui-radius-l) 0 0;
+    p {
+        min-width: 1px;
+        margin: 0;
     }
 
+    &::-webkit-details-marker {
+        display: none;
+    }
+}
+
+details[open] summary {
+    border-radius: var(--tui-radius-l) var(--tui-radius-l) 0 0;
+}
+
+/* stylelint-disable-next-line */
+.details-arrow,
+.t-details-arrow {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.25rem;
+    height: 0.575rem;
+    width: 0.575rem;
+    border: 1px solid var(--tui-base-06);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    transition: var(--tui-duration, 0.3s);
+    appearance: none;
+    box-sizing: border-box;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+    outline: none;
+}
+
+details {
+    width: 100%;
+    border: 1px solid var(--tui-base-04);
+    border-radius: var(--tui-radius-l);
+}
+
+div[data-type='details-content'] {
+    padding: 1.25rem;
+    min-height: 3rem;
+    border: 1px solid var(--tui-base-04);
+    border-width: 1px 0 0;
+
+    // Prevents extra margin between
+    // top border of details and content
+    h1:first-child,
+    h2:first-child,
+    pre:first-child,
+    ul:first-child,
+    ol:first-child,
+    ol li:first-child,
+    ul li:first-child {
+        margin-top: 0;
+    }
+}
+
+/* stylelint-disable-next-line */
+.details-wrapper,
+.t-details-wrapper {
+    .tui-space(bottom, 2);
+    position: relative;
+    display: flex;
+}
+
+/* stylelint-disable-next-line */
+.details-wrapper_rendered,
+.t-details-wrapper_rendered {
     /* stylelint-disable-next-line */
     .details-arrow,
     .t-details-arrow {
-        position: absolute;
-        top: 1.5rem;
-        right: 1.25rem;
-        height: 0.575rem;
-        width: 0.575rem;
-        border: 1px solid var(--tui-base-06);
-        border-width: 0 2px 2px 0;
-        transform: rotate(45deg);
-        transition: var(--tui-duration, 0.3s);
-        appearance: none;
-        box-sizing: border-box;
-        padding: 0;
-        background: none;
+        pointer-events: none;
+    }
+
+    summary {
+        transition: transform var(--tui-duration, 0.3s);
         cursor: pointer;
-        outline: none;
-    }
+        pointer-events: auto;
 
-    details {
-        width: 100%;
-        border: 1px solid var(--tui-base-04);
-        border-radius: var(--tui-radius-l);
-    }
-
-    div[data-type='details-content'] {
-        padding: 1.25rem;
-        min-height: 3rem;
-        border: 1px solid var(--tui-base-04);
-        border-width: 1px 0 0;
-
-        // Prevents extra margin between
-        // top border of details and content
-        h1:first-child,
-        h2:first-child,
-        pre:first-child,
-        ul:first-child,
-        ol:first-child,
-        ol li:first-child,
-        ul li:first-child {
-            margin-top: 0;
+        &:hover {
+            background: var(--tui-base-02);
         }
     }
+}
 
-    /* stylelint-disable-next-line */
-    .details-wrapper,
-    .t-details-wrapper {
-        .tui-space(bottom, 2);
-        position: relative;
-        display: flex;
-    }
-
-    /* stylelint-disable-next-line */
-    .details-wrapper_rendered,
-    .t-details-wrapper_rendered {
-        /* stylelint-disable-next-line */
-        .details-arrow,
-        .t-details-arrow {
-            pointer-events: none;
-        }
-
-        summary {
-            transition: transform var(--tui-duration, 0.3s);
-            cursor: pointer;
-            pointer-events: auto;
-
-            &:hover {
-                background: var(--tui-base-02);
-            }
-        }
-    }
-
-    /* stylelint-disable-next-line */
-    details[open] + .details-arrow,
-    details[open] + .t-details-arrow {
-        top: 1.75rem;
-        transform: rotate(225deg);
-    }
+/* stylelint-disable-next-line */
+details[open] + .details-arrow,
+details[open] + .t-details-arrow {
+    top: 1.75rem;
+    transform: rotate(225deg);
 }
