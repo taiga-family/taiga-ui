@@ -1,0 +1,21 @@
+.image {
+    width: 9rem;
+    height: 9rem;
+}
+
+.title {
+    margin: 0;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+
+    & > *:not(:last-child) {
+        margin-bottom: 0.75rem;
+    }
+
+    :host-context(tui-root._mobile) & > *:not(:last-child) {
+        margin-right: 0.5rem;
+    }
+}

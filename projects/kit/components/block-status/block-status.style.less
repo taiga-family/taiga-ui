@@ -1,0 +1,73 @@
+@import 'taiga-ui-local';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+
+    &._card {
+        border-radius: var(--tui-radius-xl);
+        padding: 2rem;
+    }
+
+    :host-context(tui-root._mobile) & {
+        padding: 2rem;
+    }
+}
+
+.t-image:not(:empty) {
+    margin-bottom: 2rem;
+
+    :host-context(tui-root._mobile) & {
+        margin-bottom: 1.5rem;
+    }
+}
+
+.t-title:not(:empty) {
+    font: var(--tui-font-heading-4);
+    margin-bottom: 1rem;
+
+    :host-context(tui-root._mobile) & {
+        font: var(--tui-font-heading-5);
+        margin-bottom: 0.5rem;
+    }
+
+    & > * {
+        margin: 0;
+    }
+}
+
+.t-text {
+    font: var(--tui-font-text-m);
+    color: var(--tui-text-02);
+    margin-bottom: 2rem;
+    white-space: pre-line;
+
+    :host-context(tui-root._mobile) & {
+        margin-bottom: 1.5rem;
+    }
+
+    & > * {
+        margin: 0;
+    }
+}
+
+.t-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    &:not(:last-child) {
+        margin-bottom: 0.75rem;
+
+        :host-context(tui-root._mobile) & {
+            margin-bottom: 0.5rem;
+        }
+    }
+}

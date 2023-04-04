@@ -4,6 +4,7 @@ export * from '@taiga-ui/kit/components/arrow';
 export * from '@taiga-ui/kit/components/avatar';
 export * from '@taiga-ui/kit/components/badge';
 export * from '@taiga-ui/kit/components/badged-content';
+export * from '@taiga-ui/kit/components/block-status';
 export * from '@taiga-ui/kit/components/breadcrumbs';
 export * from '@taiga-ui/kit/components/calendar-month';
 export * from '@taiga-ui/kit/components/calendar-range';
