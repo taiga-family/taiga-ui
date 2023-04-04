@@ -1,0 +1,15 @@
+{
+    "name": "scripts",
+    "$schema": "../node_modules/nx/schemas/project-schema.json",
+    "root": "projects/scripts",
+    "sourceRoot": "projects/scripts",
+    "projectType": "application",
+    "targets": {
+        "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "eslint --no-error-on-unmatched-pattern \"scripts/**/*\""
+            }
+        }
+    }
+}

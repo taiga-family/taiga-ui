@@ -14,6 +14,18 @@
         }
     },
     "targets": {
+        "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "eslint --no-error-on-unmatched-pattern \"**/projects/addon-editor/**/*\""
+            }
+        },
+        "stylelint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "stylelint \"**/addon-editor/**/*.{css,less}\" --allow-empty-input"
+            }
+        },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
             "outputs": ["dist/addon-editor"],

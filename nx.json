@@ -11,7 +11,7 @@
         "setup-jest.ts": "*",
         "tsconfig.*.json": "*",
         "tsconfig.json": "*",
-        "scripts/*.ts": "*",
+        "scripts/**/*": "*",
         "*.md": "*"
     },
     "targetDefaults": {

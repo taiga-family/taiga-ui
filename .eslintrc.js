@@ -5,6 +5,7 @@ console.log('Compiling typescript files by tsconfig...');
  */
 module.exports = {
     root: true,
+    ignorePatterns: require('./scripts/eslint/ignore-patterns'),
     extends: [
         '@tinkoff/eslint-config',
         '@tinkoff/eslint-config-angular',
@@ -19,7 +20,7 @@ module.exports = {
         '@tinkoff/eslint-config-angular/decorator-position',
         '@tinkoff/eslint-config-angular/experimental',
         '@tinkoff/eslint-config-angular/function-return-type',
-        // @custom
+        // @custom rules
         './scripts/eslint/typescript.js',
         './scripts/eslint/no-restricted-syntax.js',
         './scripts/eslint/angular.js',
@@ -28,5 +29,4 @@ module.exports = {
         './scripts/eslint/naming-convention.js',
         './scripts/eslint/off.js',
     ],
-    ignorePatterns: ['*/icons/all.ts', '404.html', '*.js', '*.json', '*.less', '*.md'],
 };

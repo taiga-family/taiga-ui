@@ -6,6 +6,18 @@
     "projectType": "library",
     "prefix": "tui",
     "targets": {
+        "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "eslint --no-error-on-unmatched-pattern \"**/projects/testing/**/*\""
+            }
+        },
+        "stylelint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "stylelint \"**/testing/**/*.{css,less}\" --allow-empty-input"
+            }
+        },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
             "outputs": ["dist/testing"],

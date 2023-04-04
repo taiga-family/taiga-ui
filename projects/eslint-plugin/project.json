@@ -7,6 +7,18 @@
     "prefix": "tui",
     "implicitDependencies": ["!testing"],
     "targets": {
+        "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "eslint --no-error-on-unmatched-pattern \"**/projects/eslint-plugin/**/*\""
+            }
+        },
+        "stylelint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "stylelint \"**/eslint-plugin/**/*.{css,less}\" --allow-empty-input"
+            }
+        },
         "test": {
             "executor": "nx:run-commands",
             "outputs": ["coverage/i18n"],
