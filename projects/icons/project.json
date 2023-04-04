@@ -7,6 +7,18 @@
     "prefix": "tui",
     "implicitDependencies": ["!testing"],
     "targets": {
+        "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "eslint --no-error-on-unmatched-pattern \"**/projects/icons/**/*\""
+            }
+        },
+        "stylelint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "stylelint \"**/icons/**/*.{css,less}\" --allow-empty-input"
+            }
+        },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
             "outputs": ["dist/icons"],

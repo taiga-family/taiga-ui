@@ -7,6 +7,18 @@
     "prefix": "tui",
     "implicitDependencies": ["!testing", "!core", "!styles"],
     "targets": {
+        "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "eslint --no-error-on-unmatched-pattern \"**/projects/cdk/**/*\""
+            }
+        },
+        "stylelint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "stylelint \"**/cdk/**/*.{css,less}\" --allow-empty-input"
+            }
+        },
         "prebuild": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
             "options": {

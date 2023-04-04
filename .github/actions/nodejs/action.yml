@@ -70,9 +70,12 @@ runs:
     - shell: bash
       run: |
         echo "Provide global variables ..."
-        echo "TIMING=true" >> $GITHUB_ENV
         echo "TUI_CI=true" >> $GITHUB_ENV
         echo "NPM_CONFIG_CACHE=~/.npm" >> $GITHUB_ENV
+        echo "NX_BRANCH=${{ github.event.number }}" >> $GITHUB_ENV
+        echo "IS_FORK=${{ github.event.pull_request.head.repo.full_name != github.repository }}" >> $GITHUB_ENV
+        echo "IS_DEPENDABOT=${{ github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' }}" >> $GITHUB_ENV
+        echo "IS_MAIN_BRANCH=${{ github.ref == 'refs/heads/main' }}" >> $GITHUB_ENV
         echo "NODE_OPTIONS=--max-old-space-size=12288" >> $GITHUB_ENV
         echo "CYPRESS_CACHE_FOLDER=node_modules/cache-cypress" >> $GITHUB_ENV
 

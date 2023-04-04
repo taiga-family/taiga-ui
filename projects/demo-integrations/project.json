@@ -26,6 +26,18 @@
         "styles"
     ],
     "targets": {
+        "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "eslint --no-error-on-unmatched-pattern \"**/projects/demo-integrations/**/*\""
+            }
+        },
+        "stylelint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "stylelint \"**/demo-integrations/**/*.{css,less}\" --allow-empty-input"
+            }
+        },
         "e2e-ui": {
             "executor": "nx:run-commands",
             "options": {

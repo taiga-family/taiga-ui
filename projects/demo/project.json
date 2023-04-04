@@ -7,6 +7,18 @@
     "prefix": "app",
     "implicitDependencies": ["!testing"],
     "targets": {
+        "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "eslint --no-error-on-unmatched-pattern \"**/projects/demo/**/*\""
+            }
+        },
+        "stylelint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "stylelint \"**/demo/**/*.{css,less}\" --allow-empty-input"
+            }
+        },
         "i18n": {
             "executor": "nx:run-commands",
             "options": {

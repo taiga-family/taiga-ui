@@ -1,9 +1,7 @@
 module.exports = {
     overrides: [
         {
-            files: ['*.ts'],
-            parser: '@typescript-eslint/parser',
-            plugins: ['@typescript-eslint'],
+            files: ['*'],
             rules: {
                 // TODO: investigate / enable later
                 // TODO: move to @tinkoff/eslint-config-angular
@@ -28,6 +26,7 @@ module.exports = {
                 'spaced-comment': 'off',
                 'max-nested-callbacks': 'off',
                 'import/no-deprecated': 'off',
+                'import/no-cycle': 'off',
                 'promise/no-nesting': 'off',
                 'no-loop-func': 'off',
                 'no-bitwise': 'off',
