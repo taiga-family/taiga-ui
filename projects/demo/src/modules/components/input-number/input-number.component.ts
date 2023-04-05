@@ -73,7 +73,7 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
 
     override cleaner = false;
 
-    readonly precisionVariants: readonly number[] = [2, 3, 4];
+    readonly precisionVariants: readonly number[] = [2, 3, 4, Infinity];
 
     precision = this.precisionVariants[0];
 

@@ -1,5 +1,18 @@
 describe(`InputNumber`, () => {
     describe(`API`, () => {
+        it(`Infinite precision`, () => {
+            cy.tuiVisit(`components/input-number/API?tuiMode=null&precision=Infinity`);
+
+            cy.get(`#demo-content`)
+                .findByAutomationId(`tui-primitive-textfield__native-input`)
+                .focus()
+                .type(`1,2345`);
+
+            cy.get(`#demo-content`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`00-input-number-decimals`);
+        });
+
         it(`prefix + value + postfix`, () => {
             cy.tuiVisit(`components/input-number/API?tuiMode=null&prefix=$&postfix=GBP`);
 
