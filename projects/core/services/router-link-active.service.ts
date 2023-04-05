@@ -5,6 +5,7 @@ import {TuiDestroyService, tuiZoneOptimized} from '@taiga-ui/cdk';
 import {EMPTY, merge, Observable, timer} from 'rxjs';
 import {distinctUntilChanged, map, takeUntil} from 'rxjs/operators';
 
+// TODO: Remove when Angular is update and `RouterLinkActive` has output
 @Injectable()
 export class TuiRouterLinkActiveService extends Observable<boolean> {
     constructor(

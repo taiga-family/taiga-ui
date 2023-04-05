@@ -1,0 +1,14 @@
+<nav
+    tuiTabBar
+    [(activeItemIndex)]="activeItemIndex"
+>
+    <button
+        *ngFor="let item of items"
+        tuiTabBarItem
+        [icon]="item.icon"
+        [badge]="item.badge"
+        (click)="onClick(item)"
+    >
+        {{ item.text }}
+    </button>
+</nav>

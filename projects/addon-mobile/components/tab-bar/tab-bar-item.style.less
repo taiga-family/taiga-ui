@@ -1,0 +1,57 @@
+@import 'taiga-ui-local';
+
+.loop (@i) when (@i > 0) {
+    .loop(@i - 1);
+    &:nth-child(@{i}) {
+        color: ~'var(--tui-tab-@{i}, inherit)';
+    }
+}
+
+:host {
+    .loop(10);
+    .clearbtn();
+    .transition(color);
+    position: relative;
+    display: flex;
+    flex: 1 0;
+    font: inherit;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.t-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    margin: 0.375rem 0 0.125rem;
+    pointer-events: none;
+}
+
+.t-wrapper {
+    position: absolute;
+    top: 0.125rem;
+    left: 1rem;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.t-badge {
+    height: 1.125rem;
+    min-width: 1.125rem;
+    line-height: 1.125;
+    padding: 0 0.25rem;
+    border-radius: 1rem;
+    font-size: 0.8125rem;
+    box-sizing: border-box;
+    color: var(--tui-base-01);
+    background: var(--tui-error-fill);
+}
+
+.t-text {
+    .text-overflow();
+    max-width: 100%;
+    pointer-events: none;
+}

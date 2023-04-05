@@ -1,0 +1,83 @@
+<tui-doc-page
+    header="TabBar"
+    package="ADDON-MOBILE"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>Component for creating mobile navigation.</p>
+
+        <tui-doc-example
+            id="buttons"
+            heading="Buttons"
+            [content]="example1"
+        >
+            <tui-checkbox-labeled
+                size="l"
+                class="tui-space_bottom-4"
+                [(ngModel)]="fixed"
+            >
+                Fixed
+            </tui-checkbox-labeled>
+            <tui-tab-bar-example-1
+                *ngIf="!fixed"
+                class="bar"
+            ></tui-tab-bar-example-1>
+            <ng-template [tuiPortal]="fixed">
+                <tui-tab-bar-example-1 class="fixed"></tui-tab-bar-example-1>
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="links"
+            heading="Links"
+            [content]="example2"
+        >
+            <tui-notification class="bar tui-space_bottom-4">
+                If you use
+                <code>routerLink</code>
+                you must also add
+                <code>routerLinkActive</code>
+                directive.
+            </tui-notification>
+            <tui-tab-bar-example-2 class="bar"></tui-tab-bar-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="customization"
+            heading="Customization"
+            [content]="example3"
+        >
+            <tui-tab-bar-example-3 class="bar"></tui-tab-bar-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <ol class="b-demo-steps">
+            <li>
+                <p>
+                    Import
+                    <code>TuiTabBarModule</code>
+                    into your main module
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p>
+                    Add to the template inside
+                    <code>Root</code>
+                    component at the required layer:
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleHtml"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

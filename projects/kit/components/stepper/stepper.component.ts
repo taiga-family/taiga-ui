@@ -67,7 +67,7 @@ export class TuiStepperComponent {
     activeItemIndex = 0;
 
     constructor(
-        @Inject(ChangeDetectorRef) private readonly changeDetector: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
     ) {}
 
     @tuiPure
@@ -116,9 +116,8 @@ export class TuiStepperComponent {
 
         this.activeItemIndex = index;
         this.activeItemIndexChange.emit(index);
+        this.changeDetectorRef.markForCheck();
         this.scrollIntoView(index);
-
-        this.changeDetector.markForCheck();
     }
 
     @tuiPure
