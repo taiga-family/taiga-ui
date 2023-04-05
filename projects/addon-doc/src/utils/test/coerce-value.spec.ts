@@ -23,6 +23,8 @@ describe(`coercing values`, () => {
         expect(tuiCoerceValue(`abc`)).not.toBeInstanceOf(Number);
         expect(tuiCoerceValue(`1+2`)).not.toBeInstanceOf(Number);
         expect(tuiCoerceValue(`   123   `)).not.toBeInstanceOf(Number);
+
+        expect(tuiCoerceValue(`Infinity`)).toBe(Infinity);
     });
 
     it(`string -> boolean`, () => {
@@ -34,7 +36,6 @@ describe(`coercing values`, () => {
         expect(tuiCoerceValue(`null`)).toBe(null);
         expect(tuiCoerceValue(`undefined`)).toBe(null);
         expect(tuiCoerceValue(`NaN`)).toBe(null);
-        expect(tuiCoerceValue(`Infinity`)).toBe(null);
     });
 
     it(`string -> array`, () => {
