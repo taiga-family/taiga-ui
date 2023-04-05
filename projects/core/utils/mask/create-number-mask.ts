@@ -24,7 +24,6 @@ export function tuiCreateNumberMask({
     allowNegative = false,
     integerLimit = 0,
 }: TuiNumberMaskOptions = {}): TuiTextMaskListHandler {
-    tuiAssert.assert(Number.isInteger(decimalLimit));
     tuiAssert.assert(decimalLimit >= 0);
     tuiAssert.assert(Number.isInteger(integerLimit));
     tuiAssert.assert(integerLimit >= 0);
@@ -105,7 +104,7 @@ export function tuiCreateNumberMask({
 
             mask.push(decimalSymbol, MASK_CARET_TRAP, ...fractionCapped);
 
-            for (let i = 0; i < decimalLimit - fractionCapped.length; i++) {
+            for (let i = 0; i < Math.min(decimalLimit - fractionCapped.length, 20); i++) {
                 mask.push(TUI_DIGIT_REGEXP);
             }
         }

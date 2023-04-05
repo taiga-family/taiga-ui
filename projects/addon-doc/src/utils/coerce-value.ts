@@ -27,7 +27,7 @@ export function tuiCoerceValue<T>(
 }
 
 function isEmptyParamValue(value: string): boolean {
-    return [`undefined`, `null`, `NaN`, `Infinity`].includes(value);
+    return [`undefined`, `null`, `NaN`].includes(value);
 }
 
 function isBooleanParamValue(value: string): boolean {

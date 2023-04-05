@@ -131,7 +131,7 @@ export class TuiInputNumberComponent
         const decimalPart =
             this.decimal !== 'never' &&
             this.nativeValue.includes(this.numberFormat.decimalSeparator);
-        const precision = decimalPart ? this.precision + 1 : 0;
+        const precision = decimalPart ? Math.min(this.precision + 1, 20) : 0;
         const takeThousand = this.numberFormat.thousandSeparator.repeat(5).length;
 
         return DEFAULT_MAX_LENGTH + precision + takeThousand;
