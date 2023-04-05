@@ -20,7 +20,7 @@ export function tuiFormatNumber(
         ...TUI_DEFAULT_NUMBER_FORMAT,
         ...settings,
     };
-    const integerPartString = String(Math.floor(Math.abs(value)));
+    const integerPartString = String(Math.trunc(value));
 
     let fractionPartPadded = tuiGetFractionPartPadded(value, decimalLimit);
 

@@ -12,7 +12,7 @@ export class TuiIntegerPartPipe implements PipeTransform {
     ) {}
 
     transform(value: number): string {
-        return tuiFormatNumber(Math.floor(Math.abs(Number(value))), {
+        return tuiFormatNumber(Math.trunc(Number(value)), {
             ...this.numberFormat,
             decimalLimit: 0,
         });

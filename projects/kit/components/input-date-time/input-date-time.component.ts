@@ -12,6 +12,7 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
+    AbstractTuiValueTransformer,
     ALWAYS_FALSE_HANDLER,
     changeDateSeparator,
     DATE_FILLER_LENGTH,
@@ -23,7 +24,6 @@ import {
     TuiBooleanHandler,
     tuiClamp,
     TuiContextWithImplicit,
-    TuiControlValueTransformer,
     tuiDateClamp,
     TuiDateMode,
     TuiDay,
@@ -132,7 +132,7 @@ export class TuiInputDateTimeComponent
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
         @Optional()
         @Inject(TUI_DATE_TIME_VALUE_TRANSFORMER)
-        override readonly valueTransformer: TuiControlValueTransformer<
+        override readonly valueTransformer: AbstractTuiValueTransformer<
             [TuiDay | null, TuiTime | null]
         > | null,
         @Inject(TUI_INPUT_DATE_OPTIONS)

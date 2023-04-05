@@ -14,6 +14,7 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
+    AbstractTuiValueTransformer,
     ALWAYS_FALSE_HANDLER,
     changeDateSeparator,
     DATE_FILLER_LENGTH,
@@ -25,7 +26,6 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
-    TuiControlValueTransformer,
     TuiDateMode,
     TuiDay,
     TuiDayLike,
@@ -151,7 +151,7 @@ export class TuiInputDateRangeComponent
         readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
         @Optional()
         @Inject(TUI_DATE_RANGE_VALUE_TRANSFORMER)
-        override readonly valueTransformer: TuiControlValueTransformer<TuiDayRange | null> | null,
+        override readonly valueTransformer: AbstractTuiValueTransformer<TuiDayRange | null> | null,
         @Inject(TUI_INPUT_DATE_OPTIONS)
         private readonly options: TuiInputDateOptions,
     ) {

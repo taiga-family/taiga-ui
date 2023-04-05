@@ -3,11 +3,11 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
+    AbstractTuiValueTransformer,
     RANGE_SEPARATOR_CHAR,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
     TUI_LAST_DAY,
-    TuiControlValueTransformer,
     TuiDay,
     TuiDayRange,
 } from '@taiga-ui/cdk';
@@ -271,9 +271,10 @@ describe(`InputDateRangeComponent`, () => {
     });
 
     describe(`InputDateRangeComponent + TUI_DATE_RANGE_VALUE_TRANSFORMER`, () => {
-        class TestDateTransformer
-            implements TuiControlValueTransformer<TuiDay | null, Date | null>
-        {
+        class TestDateTransformer extends AbstractTuiValueTransformer<
+            TuiDay | null,
+            Date | null
+        > {
             fromControlValue(controlValue: Date | null): TuiDay | null {
                 return controlValue && TuiDay.fromLocalNativeDate(controlValue);
             }
@@ -283,16 +284,18 @@ describe(`InputDateRangeComponent`, () => {
             }
         }
 
-        class TestDateRangeTransformer
-            implements
-                TuiControlValueTransformer<TuiDayRange | null, [Date, Date] | null>
-        {
+        class TestDateRangeTransformer extends AbstractTuiValueTransformer<
+            TuiDayRange | null,
+            [Date, Date] | null
+        > {
             constructor(
-                private readonly dateTransformer: TuiControlValueTransformer<
+                private readonly dateTransformer: AbstractTuiValueTransformer<
                     TuiDay | null,
                     Date | null
                 >,
-            ) {}
+            ) {
+                super();
+            }
 
             fromControlValue(controlValue: [Date, Date] | null): TuiDayRange | null {
                 const [transformedFrom, transformedTo] = controlValue || [null, null];
@@ -319,12 +322,8 @@ describe(`InputDateRangeComponent`, () => {
 
         function getExampleDateRangeTransformer(
             dateTransformer: TestDateTransformer | null,
-        ): TuiControlValueTransformer<TuiDayRange | null, [Date, Date] | null> | null {
-            if (!dateTransformer) {
-                return null;
-            }
-
-            return new TestDateRangeTransformer(dateTransformer);
+        ): AbstractTuiValueTransformer<TuiDayRange | null, [Date, Date] | null> | null {
+            return dateTransformer && new TestDateRangeTransformer(dateTransformer);
         }
 
         class TransformerTestComponent extends TestComponent {

@@ -2,9 +2,11 @@ import {
     ChangeDetectorRef,
     Directive,
     HostBinding,
+    Inject,
     Input,
     OnDestroy,
     OnInit,
+    Optional,
     Provider,
     Type,
 } from '@angular/core';
@@ -17,6 +19,7 @@ import {merge, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 import {AbstractTuiInteractive} from './interactive';
+import {AbstractTuiValueTransformer} from './value-transformer';
 
 /**
  * Basic ControlValueAccessor class to build form components upon
@@ -46,8 +49,11 @@ export abstract class AbstractTuiControl<T>
     pseudoInvalid: boolean | null = null;
 
     constructor(
+        @Optional()
         private readonly ngControl: NgControl | null,
         protected readonly changeDetectorRef: ChangeDetectorRef,
+        @Optional()
+        @Inject(AbstractTuiValueTransformer)
         protected readonly valueTransformer?: TuiControlValueTransformer<T> | null,
     ) {
         super();
