@@ -8,3 +8,4 @@ export * from './nullable-control';
 export * from './portal-host';
 export * from './portal-service';
 export * from './theme-switcher';
+export * from './value-transformer';
