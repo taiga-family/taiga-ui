@@ -26,6 +26,7 @@ import {
     HTML_EDITOR_EXAMPLE_PRE_CODE,
     HTML_EDITOR_EXAMPLE_TABLE,
     HTML_EDITOR_EXAMPLE_UL,
+    HTML_EDITOR_EXAMPLE_WITH_DETAILS_INSIDE_LIST,
 } from '@demo-integrations/support/editor/html';
 
 describe(`Editor API`, () => {
@@ -329,5 +330,18 @@ describe(`Editor API`, () => {
                     .matchImageSnapshot(`tui-editor-socket.tui-example-${heading}`);
             });
         }
+    });
+
+    describe.only(`Details inside list`, () => {
+        it(`support break line`, () => {
+            tuiVisitEditorApiPage({
+                content: HTML_EDITOR_EXAMPLE_WITH_DETAILS_INSIDE_LIST,
+            });
+
+            tuiGetDemoContent()
+                .find(`[tuiTiptapEditor]`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`details-inside-list-in-editor`);
+        });
     });
 });
