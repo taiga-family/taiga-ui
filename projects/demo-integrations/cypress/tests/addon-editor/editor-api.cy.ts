@@ -332,7 +332,7 @@ describe(`Editor API`, () => {
         }
     });
 
-    describe.only(`Details inside list`, () => {
+    describe(`Details inside list`, () => {
         it(`support break line`, () => {
             tuiVisitEditorApiPage({
                 content: HTML_EDITOR_EXAMPLE_WITH_DETAILS_INSIDE_LIST,
