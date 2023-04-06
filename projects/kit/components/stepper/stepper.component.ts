@@ -49,15 +49,10 @@ export class TuiStepperComponent  {
     orientation: TuiOrientation = 'horizontal';
 
     @Input('activeItemIndex')
-    set activeIndex(index: number) {
-        this.activeItemIndex = index;
-        this.scrollIntoView(index);
-    }
+    activeItemIndex = 0;
 
     @Output()
     readonly activeItemIndexChange = new EventEmitter<number>();
-
-    activeItemIndex = 0;
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
@@ -98,7 +93,9 @@ export class TuiStepperComponent  {
     }
 
     ngAfterViewChecked(): void {
-        this.scrollIntoView(this.activeItemIndex);
+        if (this.initialized) {
+            this.scrollIntoView(this.activeItemIndex);
+        }
     }
 
     indexOf(step: HTMLElement): number {
@@ -129,17 +126,7 @@ export class TuiStepperComponent  {
         return queryList.map(({nativeElement}) => nativeElement);
     }
 
-    private moveFocus(current: EventTarget, step: number): void {
-        if (!tuiIsElement(current)) {
-            return;
-        }
-
-        const stepElements = this.getNativeElements(this.steps);
-        const index = stepElements.findIndex(item => item === current);
-
-        tuiMoveFocus(index, stepElements, step);
-    }
-
+    @tuiPure
     private scrollIntoView(index: number): void {
         const step = this.getNativeElements(this.steps)[index];
 
@@ -161,5 +148,25 @@ export class TuiStepperComponent  {
         this.scrollService
             .scroll$(nativeElement, Math.max(0, top), Math.max(0, left), 100)
             .subscribe();
+    }
+
+    private get initialized(): boolean {
+        const {nativeElement} = this.elementRef;
+
+        return (
+            !!nativeElement.offsetWidth &&
+            !!this.getNativeElements(this.steps)[this.activeItemIndex]
+        );
+    }
+
+    private moveFocus(current: EventTarget, step: number): void {
+        if (!tuiIsElement(current)) {
+            return;
+        }
+
+        const stepElements = this.getNativeElements(this.steps);
+        const index = stepElements.findIndex(item => item === current);
+
+        tuiMoveFocus(index, stepElements, step);
     }
 }
