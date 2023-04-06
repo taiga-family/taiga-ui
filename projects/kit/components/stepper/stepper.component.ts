@@ -1,5 +1,4 @@
 import {
-    AfterViewChecked,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -17,6 +16,7 @@ import {
 import {
     EMPTY_QUERY,
     tuiDefaultProp,
+    TuiDestroyService,
     tuiGetOriginalArrayFromQueryList,
     tuiIsElement,
     tuiMoveFocus,
@@ -38,8 +38,9 @@ import {TuiStepComponent} from './step/step.component';
     templateUrl: './stepper.template.html',
     styleUrls: ['./stepper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [TuiResizeService, TuiDestroyService],
 })
-export class TuiStepperComponent  {
+export class TuiStepperComponent {
     @ContentChildren(forwardRef(() => TuiStepComponent), {read: ElementRef})
     private readonly steps: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
@@ -49,10 +50,15 @@ export class TuiStepperComponent  {
     orientation: TuiOrientation = 'horizontal';
 
     @Input('activeItemIndex')
-    activeItemIndex = 0;
+    set activeIndex(index: number) {
+        this.activeItemIndex = index;
+        this.scrollIntoView(index);
+    }
 
     @Output()
     readonly activeItemIndexChange = new EventEmitter<number>();
+
+    activeItemIndex = 0;
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
@@ -60,7 +66,7 @@ export class TuiStepperComponent  {
         @Inject(TuiScrollService) private readonly scrollService: TuiScrollService,
         @Inject(TuiResizeService) resize$: Observable<void>,
     ) {
-        resize$.subscribe(() => this.changeDetectorRef.markForCheck());
+        resize$.subscribe(() => this.scrollIntoView(this.activeItemIndex));
     }
 
     @tuiPure
@@ -92,12 +98,6 @@ export class TuiStepperComponent  {
         this.moveFocus(event.target, step);
     }
 
-    ngAfterViewChecked(): void {
-        if (this.initialized) {
-            this.scrollIntoView(this.activeItemIndex);
-        }
-    }
-
     indexOf(step: HTMLElement): number {
         return tuiGetOriginalArrayFromQueryList(this.steps).findIndex(
             ({nativeElement}) => nativeElement === step,
@@ -120,6 +120,23 @@ export class TuiStepperComponent  {
     }
 
     @tuiPure
+    private getNativeElements(
+        queryList: QueryList<ElementRef<HTMLElement>>,
+    ): HTMLElement[] {
+        return queryList.map(({nativeElement}) => nativeElement);
+    }
+
+    private moveFocus(current: EventTarget, step: number): void {
+        if (!tuiIsElement(current)) {
+            return;
+        }
+
+        const stepElements = this.getNativeElements(this.steps);
+        const index = stepElements.findIndex(item => item === current);
+
+        tuiMoveFocus(index, stepElements, step);
+    }
+
     private scrollIntoView(index: number): void {
         const step = this.getNativeElements(this.steps)[index];
 
@@ -141,32 +158,5 @@ export class TuiStepperComponent  {
         this.scrollService
             .scroll$(nativeElement, Math.max(0, top), Math.max(0, left), 100)
             .subscribe();
-    }
-
-    @tuiPure
-    private getNativeElements(
-        queryList: QueryList<ElementRef<HTMLElement>>,
-    ): HTMLElement[] {
-        return queryList.map(({nativeElement}) => nativeElement);
-    }
-
-    private get initialized(): boolean {
-        const {nativeElement} = this.elementRef;
-
-        return (
-            !!nativeElement.offsetWidth &&
-            !!this.getNativeElements(this.steps)[this.activeItemIndex]
-        );
-    }
-
-    private moveFocus(current: EventTarget, step: number): void {
-        if (!tuiIsElement(current)) {
-            return;
-        }
-
-        const stepElements = this.getNativeElements(this.steps);
-        const index = stepElements.findIndex(item => item === current);
-
-        tuiMoveFocus(index, stepElements, step);
     }
 }
