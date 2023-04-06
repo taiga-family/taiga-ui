@@ -36,7 +36,6 @@
         "*** Workflow ***": "",
         "stylelint": "nx run-many --target stylelint --all --output-style=stream --parallel=1",
         "lint": "nx run-many --target lint --all --output-style=stream --parallel=1",
-        "lint-precommit": "eslint --cache --cache-location node_modules/.cache/eslint",
         "prettier": "prettier '**/*.{svg,yml,js,ts,html,md,less,json}' --cache node_modules/.cache/prettier",
         "typecheck": "tsc --noEmit --strict --incremental false --tsBuildInfoFile null --project tsconfig.spec.json",
         "*** Build **": "",
@@ -55,7 +54,7 @@
     },
     "lint-staged": {
         "*.{js,ts,html,md,less,json}": [
-            "npm run lint-precommit -- --fix",
+            "eslint --fix",
             "prettier --write"
         ],
         "*.less": [
