@@ -1589,6 +1589,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `directives/value-changes`,
+        loadChildren: async () =>
+            (await import(`../directives/value-changes/value-changes.module`))
+                .ExampleTuiValueChangesModule,
+        data: {
+            title: `ValueChanges`,
+        },
+    },
+    {
         path: `directives/media`,
         loadChildren: async () =>
             (await import(`../directives/media/media.module`)).ExampleTuiMediaModule,

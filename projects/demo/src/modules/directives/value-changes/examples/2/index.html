@@ -1,0 +1,13 @@
+<form
+    class="b-form"
+    [formGroup]="form"
+    (tuiValueChanges)="onChanges($event)"
+>
+    <tui-input formControlName="name">Value changes on blur</tui-input>
+    <tui-input-count
+        formControlName="age"
+        class="tui-space_top-4"
+    >
+        Value changes on edit
+    </tui-input-count>
+</form>
