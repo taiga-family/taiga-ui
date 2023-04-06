@@ -21,27 +21,17 @@
         [(activeItemIndex)]="activeItemIndex"
     >
         <ng-container *ngFor="let tab of tabConnectors; first as first; index as index">
-            <ng-container *ngIf="first; else dynamicTab">
+            <ng-container *ngIf="tab.pageTab || defaultTabs[index] as tabName">
                 <a
                     *tuiItem
                     tuiTab
-                    routerLink="./"
                     routerLinkActive
-                    [routerLinkActiveOptions]="{exact: true}"
+                    [routerLinkActiveOptions]="{exact: first}"
+                    [routerLink]="first ? './' : (tabName | tuiReplace : from : to)"
                 >
-                    {{ tab.pageTab || defaultTabs[index] }}
+                    {{ tabName }}
                 </a>
             </ng-container>
-            <ng-template #dynamicTab>
-                <a
-                    *tuiItem
-                    tuiTab
-                    routerLinkActive
-                    [routerLink]="getRouterLink(tab.pageTab || defaultTabs[index])"
-                >
-                    {{ tab.pageTab || defaultTabs[index] }}
-                </a>
-            </ng-template>
         </ng-container>
     </tui-tabs-with-more>
     <tui-doc-source-code

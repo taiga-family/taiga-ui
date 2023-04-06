@@ -40,6 +40,9 @@ export class TuiDocPageComponent {
 
     activeItemIndex = 0;
 
+    readonly from = / /g;
+    readonly to = '_';
+
     constructor(
         @Inject(TUI_DOC_DEFAULT_TABS) readonly defaultTabs: readonly string[],
         @Inject(PAGE_SEE_ALSO) readonly seeAlso: readonly string[],
@@ -47,9 +50,5 @@ export class TuiDocPageComponent {
 
     get showSeeAlso(): boolean {
         return !!this.seeAlso.length && this.activeItemIndex === 0;
-    }
-
-    getRouterLink(tab: string = ''): string {
-        return `./${tab.replace(/ /g, '_')}`;
     }
 }
