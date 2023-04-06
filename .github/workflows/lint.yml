@@ -29,49 +29,64 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Fetch from origin repo
+        if: ${{ env.RUN_AUTOFIX == 'true' }}
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.TINKOFF_BOT_PAT }}
+      - name: Fetch from forked repo
+        if: ${{ env.RUN_AUTOFIX == 'false' }}
+        uses: actions/checkout@v3
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
       - name: Run prettier
         run: npm run prettier ${{ env.RUN_AUTOFIX == 'true' && '-- --write' || '' }}
+      - name: Apply changes after linting
+        if: ${{ env.RUN_AUTOFIX == 'true' }}
+        uses: ./.github/actions/auto-push
 
   stylelint:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Fetch from origin repo
+        if: ${{ env.RUN_AUTOFIX == 'true' }}
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.TINKOFF_BOT_PAT }}
+      - name: Fetch from forked repo
+        if: ${{ env.RUN_AUTOFIX == 'false' }}
+        uses: actions/checkout@v3
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
-      - name: Run Stylelint
+      - name: Run stylelint
         run: npm run stylelint ${{ env.RUN_AUTOFIX == 'true' && '-- --fix' || '' }}
+      - name: Apply changes after linting
+        if: ${{ env.RUN_AUTOFIX == 'true' }}
+        uses: ./.github/actions/auto-push
 
   eslint:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Fetch from origin repo
+        if: ${{ env.RUN_AUTOFIX == 'true' }}
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.TINKOFF_BOT_PAT }}
+      - name: Fetch from forked repo
+        if: ${{ env.RUN_AUTOFIX == 'false' }}
+        uses: actions/checkout@v3
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
-      - name: Run Eslint
+      - name: Run eslint
         run: npm run lint ${{ env.RUN_AUTOFIX == 'true' && '-- --fix' || '' }}
-
-  auto-push-fixed-files:
-    if: ${{ !contains(github.head_ref, 'release/') }}
-    runs-on: ubuntu-latest
-    needs: [typecheck, prettier, eslint, stylelint]
-    steps:
-      - uses: actions/checkout@v3
       - name: Apply changes after linting
         if: ${{ env.RUN_AUTOFIX == 'true' }}
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_user_name: 'tinkoff-bot'
-          commit_user_email: 'tinkoff-bot@users.noreply.github.com'
-          commit_author: 'tinkoff-bot <tinkoff-bot@users.noreply.github.com>'
-          commit_message: 'chore: apply changes after linting [tinkoff-bot]'
-          status_options: '--untracked-files=no'
-          commit_options: '--no-verify'
-          skip_fetch: true
+        uses: ./.github/actions/auto-push
 
 concurrency:
   group: lint-${{ github.workflow }}-${{ github.ref }}
