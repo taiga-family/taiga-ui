@@ -1,6 +1,20 @@
-import {Component, TemplateRef, ViewChild} from '@angular/core';
+import {
+    Component,
+    ElementRef,
+    Optional,
+    Self,
+    TemplateRef,
+    ViewChild,
+} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {
+    TUI_AUTOFOCUS_HANDLER,
+    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    TuiAutoFocusDirective,
+    TuiFocusableElementAccessor,
+    TuiSynchronousAutofocusHandler,
+} from '@taiga-ui/cdk';
 import {TuiSvgModule} from '@taiga-ui/core';
 import {configureTestSuite, TuiNativeInputPO} from '@taiga-ui/testing';
 
@@ -39,7 +53,28 @@ describe(`InputCardGrouped`, () => {
     let inputCVCPO: TuiNativeInputPO;
 
     configureTestSuite(() => {
-        TestBed.configureTestingModule({
+        TestBed.overrideDirective(TuiAutoFocusDirective, {
+            set: {
+                selector: `[tuiAutoFocus]`,
+                providers: [
+                    {
+                        provide: TUI_AUTOFOCUS_HANDLER,
+                        useFactory: (
+                            tuiFocusableComponent: TuiFocusableElementAccessor | null,
+                            elementRef: ElementRef<HTMLElement>,
+                        ) =>
+                            new TuiSynchronousAutofocusHandler(
+                                tuiFocusableComponent,
+                                elementRef,
+                            ),
+                        deps: [
+                            [new Optional(), new Self(), TUI_FOCUSABLE_ITEM_ACCESSOR],
+                            ElementRef,
+                        ],
+                    },
+                ],
+            },
+        }).configureTestingModule({
             imports: [ReactiveFormsModule, TuiInputCardGroupedModule, TuiSvgModule],
             declarations: [TestComponent],
         });
@@ -177,27 +212,36 @@ describe(`InputCardGrouped`, () => {
             expect(inputCardPO.focused).toBe(true);
         });
 
-        it(`focuses expire input when valid card is entered`, () => {
+        it(`focuses expire input when valid card is entered`, done => {
             inputCardPO.focus();
             inputCardPO.sendText(`563693784073`);
 
-            expect(inputExpirePO.focused).toBe(true);
+            setTimeout(() => {
+                expect(inputExpirePO.focused).toBe(true);
+                done();
+            }, 100);
         });
 
-        it(`focus remains in expire input when date is not fully entered`, () => {
+        it(`focus remains in expire input when date is not fully entered`, done => {
             inputCardPO.focus();
             inputCardPO.sendText(`563693784073`);
             inputExpirePO.sendText(`12/2`);
 
-            expect(inputExpirePO.focused).toBe(true);
+            setTimeout(() => {
+                expect(inputExpirePO.focused).toBe(true);
+                done();
+            }, 100);
         });
 
-        it(`focuses cvc input when expiration date is fully entered`, () => {
+        it(`focuses cvc input when expiration date is fully entered`, done => {
             inputCardPO.focus();
             inputCardPO.sendText(`563693784073`);
             inputExpirePO.sendText(`12/21`);
 
-            expect(inputCVCPO.focused).toBe(true);
+            setTimeout(() => {
+                expect(inputCVCPO.focused).toBe(true);
+                done();
+            }, 100);
         });
     });
 

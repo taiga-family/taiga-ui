@@ -25,7 +25,9 @@
                 translate="no"
                 automation-id="tui-input-card-grouped__card"
                 tuiInputMode="numeric"
+                tuiAutoFocus
                 class="t-input t-input_card"
+                [autoFocus]="false"
                 [class.t-input_inert]="cardPrefilled"
                 [class.t-input_hidden]="!card.length && focused"
                 [attr.id]="idCard"
@@ -75,7 +77,9 @@
                 placeholder="00/00"
                 automation-id="tui-input-card-grouped__expire"
                 tuiInputMode="numeric"
+                tuiAutoFocus
                 class="t-input"
+                [autoFocus]="false"
                 [class.t-input_inert]="!expireFocusable"
                 [attr.id]="idExpire"
                 [attr.name]="name"
@@ -107,7 +111,9 @@
                 translate="no"
                 automation-id="tui-input-card-grouped__cvc"
                 tuiInputMode="numeric"
+                tuiAutoFocus
                 class="t-input"
+                [autoFocus]="false"
                 [class.t-input_prefilled]="cvcPrefilled"
                 [placeholder]="cvcPrefilled ? '•••' : exampleTextCVC"
                 [attr.id]="idCVC"

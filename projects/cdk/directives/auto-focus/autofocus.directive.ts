@@ -16,12 +16,17 @@ export class TuiAutoFocusDirective implements AfterViewInit {
     autoFocus = true;
 
     constructor(
-        @Inject(TUI_AUTOFOCUS_HANDLER) private readonly handler: TuiAutofocusHandler,
+        @Inject(TUI_AUTOFOCUS_HANDLER)
+        private readonly handler: TuiAutofocusHandler,
     ) {}
 
     ngAfterViewInit(): void {
         if (this.autoFocus) {
-            this.handler.setFocus();
+            this.focus();
         }
+    }
+
+    focus(): void {
+        void Promise.resolve().then(() => this.handler.setFocus());
     }
 }
