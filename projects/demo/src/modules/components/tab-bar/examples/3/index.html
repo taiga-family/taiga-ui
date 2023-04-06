@@ -1,0 +1,12 @@
+<nav
+    tuiTabBar
+    class="tabs"
+>
+    <button
+        *ngFor="let item of items"
+        tuiTabBarItem
+        [icon]="item.icon"
+    >
+        {{ item.text }}
+    </button>
+</nav>
