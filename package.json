@@ -54,7 +54,7 @@
     },
     "lint-staged": {
         "*.{js,ts,html,md,less,json}": [
-            "npm run lint -- --fix",
+            "eslint --fix",
             "prettier --write"
         ],
         "*.less": [
