@@ -1,4 +1,4 @@
-import {Project} from '@stackblitz/sdk/typings/interfaces';
+import type {Project} from '@stackblitz/sdk';
 
 import {TsFileComponentParser, TsFileModuleParser, TsFileParser} from '../classes';
 import {isLess, isPrimaryComponentFile, isTS} from '../utils';
