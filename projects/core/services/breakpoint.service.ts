@@ -3,7 +3,7 @@ import {WINDOW} from '@ng-web-apis/common';
 import {TuiMedia} from '@taiga-ui/core/interfaces';
 import {TUI_MEDIA} from '@taiga-ui/core/tokens';
 import {fromEvent, merge, Observable} from 'rxjs';
-import {map, share, startWith} from 'rxjs/operators';
+import {map, shareReplay, startWith} from 'rxjs/operators';
 
 /**
  * Service to provide the current breakpoint based on Taiga UI's media queries
@@ -20,7 +20,7 @@ export class TuiBreakpointService extends Observable<MediaKey | null> {
         const media$ = merge(...events$).pipe(
             map(() => currentBreakpoint(breakpoints, windowRef.innerWidth).name),
             startWith(currentBreakpoint(breakpoints, windowRef.innerWidth).name),
-            share(),
+            shareReplay({bufferSize: 1, refCount: true}),
         );
 
         super(subscriber => media$.subscribe(subscriber));
