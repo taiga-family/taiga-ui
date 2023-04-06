@@ -1,8 +1,11 @@
 import {Clipboard} from '@angular/cdk/clipboard';
 import {Component, ContentChild, Inject, Input} from '@angular/core';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TUI_DEFAULT_MATCHER, tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiAlertService, TuiNotification} from '@taiga-ui/core';
+import {Observable} from 'rxjs';
+import {debounceTime, distinctUntilChanged, filter, share} from 'rxjs/operators';
 
 import {IconsGroupDirective} from './icons-group.directive';
 
@@ -21,7 +24,15 @@ export class IconsGroupComponent {
     icons: Record<string, readonly string[]> = {};
 
     matcher = TUI_DEFAULT_MATCHER;
-    search = '';
+
+    control = new FormControl('');
+
+    search$: Observable<string> = this.control.valueChanges.pipe(
+        debounceTime(500),
+        filter((search: string) => search.length > 2 || search.length === 0),
+        distinctUntilChanged(),
+        share(),
+    );
 
     constructor(
         @Inject(Clipboard) private readonly clipboard: Clipboard,
