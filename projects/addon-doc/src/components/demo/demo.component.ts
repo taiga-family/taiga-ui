@@ -122,7 +122,7 @@ export class TuiDocDemoComponent implements OnInit {
         const clamped = Math.round(tuiClamp(safe, MIN_WIDTH, total)) - this.delta;
         const validated = safe < total ? clamped : NaN;
 
-        this.resizer.nativeElement.textContent = String(clamped);
+        this.resizer.nativeElement.textContent = String(clamped || '-');
         this.resizeable.nativeElement.style.width = validated ? tuiPx(safe) : '';
         this.sandboxWidth = validated;
     }
