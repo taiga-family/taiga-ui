@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import {TuiSwipeService} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
+import {distinctUntilChanged, map, share, startWith} from 'rxjs/operators';
 
 import {TuiThemeService} from '../../services/theme.service';
 import {TuiThemeNightService} from '../../services/theme-night.service';
@@ -29,15 +30,22 @@ import {TuiThemeNightService} from '../../services/theme-night.service';
     ],
 })
 export class TuiDocMainComponent {
-    readonly change$ = this.nightService;
+    readonly change$ = this.night;
+
+    readonly night$ = this.change$.pipe(
+        startWith(null),
+        map(() => this.night.value),
+        distinctUntilChanged(),
+        share(),
+    );
 
     constructor(
-        @Inject(TuiThemeService) readonly themeService: TuiThemeService,
-        @Inject(TuiThemeNightService) readonly nightService: TuiThemeNightService,
+        @Inject(TuiThemeService) readonly theme: TuiThemeService,
+        @Inject(TuiThemeNightService) readonly night: TuiThemeNightService,
     ) {}
 
     @HostBinding('attr.data-mode')
     get mode(): TuiBrightness | null {
-        return this.nightService.value ? 'onDark' : null;
+        return this.night.value ? 'onDark' : null;
     }
 }

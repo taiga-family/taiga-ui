@@ -2,7 +2,10 @@ import {Inject, Injectable} from '@angular/core';
 import {LOCAL_STORAGE, WINDOW} from '@ng-web-apis/common';
 import {BehaviorSubject} from 'rxjs';
 
-import {TUI_THEME_NIGHT_STORAGE_KEY} from './theme-night.options';
+import {
+    TUI_THEME_NIGHT_STORAGE_KEY,
+    TUI_USE_DEFAULT_NIGHT_THEME,
+} from './theme-night.options';
 
 @Injectable({
     providedIn: `root`,
@@ -12,6 +15,7 @@ export class TuiThemeNightService extends BehaviorSubject<boolean> {
         @Inject(WINDOW) readonly windowRef: Window,
         @Inject(LOCAL_STORAGE) readonly storage: Storage,
         @Inject(TUI_THEME_NIGHT_STORAGE_KEY) readonly key: string,
+        @Inject(TUI_USE_DEFAULT_NIGHT_THEME) readonly useDefaultNightTheme: boolean,
     ) {
         super(
             storage.getItem(key) === `true` ||

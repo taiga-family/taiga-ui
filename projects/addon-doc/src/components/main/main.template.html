@@ -1,4 +1,4 @@
-<tui-theme-night *ngIf="nightService.value && themeService.isDefaultTheme"></tui-theme-night>
+<tui-theme-night *ngIf="theme.isDefaultTheme && night.useDefaultNightTheme && (night$ | async)"></tui-theme-night>
 <tui-root>
     <div class="tui-doc-page">
         <tui-doc-navigation class="tui-doc-navigation">
@@ -18,8 +18,8 @@
             shape="rounded"
             type="button"
             class="tui-doc-night-mode-switch"
-            [icon]="nightService.value ? 'tuiIconSunLarge' : 'tuiIconMoonLarge'"
-            (click)="nightService.toggle()"
+            [icon]="night.value ? 'tuiIconSunLarge' : 'tuiIconMoonLarge'"
+            (click)="night.toggle()"
         ></button>
     </header>
     <ng-container ngProjectAs="tuiOverContent">
