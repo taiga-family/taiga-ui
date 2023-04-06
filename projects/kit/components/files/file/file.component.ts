@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import {DomSanitizer, SafeValue} from '@angular/platform-browser';
 import {
-    TUI_IS_MOBILE,
     tuiDefaultProp,
     TuiInjectionTokenType,
     tuiIsObserved,
@@ -64,8 +63,6 @@ export class TuiFileComponent {
     focused = false;
 
     constructor(
-        @Inject(TUI_IS_MOBILE)
-        readonly isMobile: TuiInjectionTokenType<typeof TUI_IS_MOBILE>,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(TUI_FILE_TEXTS)
         readonly fileTexts$: TuiInjectionTokenType<typeof TUI_FILE_TEXTS>,

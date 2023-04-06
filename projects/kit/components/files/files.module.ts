@@ -1,6 +1,11 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiFocusVisibleModule, TuiItemDirective, TuiItemModule} from '@taiga-ui/cdk';
+import {
+    TuiFocusVisibleModule,
+    TuiItemDirective,
+    TuiItemModule,
+    TuiPreventDefaultModule,
+} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiExpandModule,
@@ -25,6 +30,7 @@ import {TuiFilesComponent} from './files.component';
         TuiButtonModule,
         TuiItemModule,
         TuiExpandModule,
+        TuiPreventDefaultModule,
     ],
     exports: [TuiFilesComponent, TuiFileComponent, TuiItemDirective],
 })
