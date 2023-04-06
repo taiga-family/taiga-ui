@@ -120,13 +120,6 @@ export class TuiStepperComponent  {
     }
 
     @tuiPure
-    private getNativeElements(
-        queryList: QueryList<ElementRef<HTMLElement>>,
-    ): HTMLElement[] {
-        return queryList.map(({nativeElement}) => nativeElement);
-    }
-
-    @tuiPure
     private scrollIntoView(index: number): void {
         const step = this.getNativeElements(this.steps)[index];
 
@@ -148,6 +141,13 @@ export class TuiStepperComponent  {
         this.scrollService
             .scroll$(nativeElement, Math.max(0, top), Math.max(0, left), 100)
             .subscribe();
+    }
+
+    @tuiPure
+    private getNativeElements(
+        queryList: QueryList<ElementRef<HTMLElement>>,
+    ): HTMLElement[] {
+        return queryList.map(({nativeElement}) => nativeElement);
     }
 
     private get initialized(): boolean {
