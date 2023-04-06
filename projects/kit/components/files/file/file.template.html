@@ -66,9 +66,9 @@
             size="xs"
             icon="tuiIconCloseLarge"
             appearance="icon"
+            tuiPreventDefault="mousedown"
             class="t-remove"
             [title]="texts.remove"
-            [class.t-remove_mobile]="isMobile"
             (click.prevent)="onRemoveClick()"
         ></button>
     </ng-container>
