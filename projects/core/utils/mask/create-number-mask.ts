@@ -24,9 +24,9 @@ export function tuiCreateNumberMask({
     allowNegative = false,
     integerLimit = 0,
 }: TuiNumberMaskOptions = {}): TuiTextMaskListHandler {
-    tuiAssert.assert(decimalLimit >= 0);
-    tuiAssert.assert(Number.isInteger(integerLimit));
-    tuiAssert.assert(integerLimit >= 0);
+    ngDevMode && tuiAssert.assert(decimalLimit >= 0);
+    ngDevMode && tuiAssert.assert(Number.isInteger(integerLimit));
+    ngDevMode && tuiAssert.assert(integerLimit >= 0);
 
     // eslint-disable-next-line max-statements
     return (rawValue, {previousConformedValue}) => {

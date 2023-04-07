@@ -16,7 +16,7 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      */
     constructor(year: number, readonly month: number) {
         super(year);
-        tuiAssert.assert(TuiMonth.isValidMonth(year, month));
+        ngDevMode && tuiAssert.assert(TuiMonth.isValidMonth(year, month));
     }
 
     /**
@@ -30,7 +30,7 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      * Returns number of days in a month
      */
     static getMonthDaysCount(month: number, isLeapYear: boolean): number {
-        tuiAssert.assert(TuiMonth.isValidMonthPart(month));
+        ngDevMode && tuiAssert.assert(TuiMonth.isValidMonthPart(month));
 
         switch (month) {
             case TuiMonthNumber.February:

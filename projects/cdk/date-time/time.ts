@@ -22,14 +22,15 @@ export class TuiTime implements TuiTimeLike {
         readonly seconds: number = 0,
         readonly ms: number = 0,
     ) {
-        tuiAssert.assert(
-            TuiTime.isValidTime(hours, minutes, seconds, ms),
-            `Time must be real, but got:`,
-            hours,
-            minutes,
-            seconds,
-            ms,
-        );
+        ngDevMode &&
+            tuiAssert.assert(
+                TuiTime.isValidTime(hours, minutes, seconds, ms),
+                `Time must be real, but got:`,
+                hours,
+                minutes,
+                seconds,
+                ms,
+            );
     }
 
     /**
@@ -76,11 +77,12 @@ export class TuiTime implements TuiTimeLike {
      * Calculates TuiTime from milliseconds
      */
     static fromAbsoluteMilliseconds(milliseconds: number): TuiTime {
-        tuiAssert.assert(Number.isInteger(milliseconds));
-        tuiAssert.assert(
-            tuiInRange(milliseconds, 0, MILLISECONDS_IN_DAY),
-            `Milliseconds must be below ${MILLISECONDS_IN_DAY} (milliseconds in a day).`,
-        );
+        ngDevMode && tuiAssert.assert(Number.isInteger(milliseconds));
+        ngDevMode &&
+            tuiAssert.assert(
+                tuiInRange(milliseconds, 0, MILLISECONDS_IN_DAY),
+                `Milliseconds must be below ${MILLISECONDS_IN_DAY} (milliseconds in a day).`,
+            );
 
         const hours = Math.floor(milliseconds / MILLISECONDS_IN_HOUR);
         const minutes = Math.floor(

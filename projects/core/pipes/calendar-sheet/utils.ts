@@ -45,10 +45,10 @@ export const getDayFromMonthRowCol = ({
      */
     firstDayOfWeek: TuiDayOfWeek;
 }): TuiDay => {
-    tuiAssert.assert(Number.isInteger(rowIndex));
-    tuiAssert.assert(tuiInRange(rowIndex, 0, 6));
-    tuiAssert.assert(Number.isInteger(colIndex));
-    tuiAssert.assert(tuiInRange(colIndex, 0, DAYS_IN_WEEK));
+    ngDevMode && tuiAssert.assert(Number.isInteger(rowIndex));
+    ngDevMode && tuiAssert.assert(tuiInRange(rowIndex, 0, 6));
+    ngDevMode && tuiAssert.assert(Number.isInteger(colIndex));
+    ngDevMode && tuiAssert.assert(tuiInRange(colIndex, 0, DAYS_IN_WEEK));
 
     let day =
         rowIndex * DAYS_IN_WEEK +

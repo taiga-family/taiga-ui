@@ -86,7 +86,7 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
                     metrika?.hit(event.urlAfterRedirects, {referer: event.url});
                 });
         } catch {
-            console.error('You forgot to import MetrikaModule!');
+            ngDevMode && console.error('You forgot to import MetrikaModule!');
         }
     }
 

@@ -48,7 +48,7 @@ export class TuiSvgService {
         const parsed = this.parseSrc(name, src);
 
         if (!parsed) {
-            tuiAssert.assert(false, `Unable to parse given SVG src`);
+            ngDevMode && tuiAssert.assert(false, `Unable to parse given SVG src`);
 
             return;
         }

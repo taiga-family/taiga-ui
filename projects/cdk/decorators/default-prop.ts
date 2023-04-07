@@ -13,24 +13,24 @@ export function tuiDefaultProp<T extends Record<string, any>, K extends keyof T>
 ): PropertyDecorator {
     return (target, key) => {
         const {name} = target.constructor;
-        const errorGetDefaultMessage = errorGetDefault(key, name);
-        const errorSetDefaultMessage = errorSetDefault(key, name);
+        const errorGetDefaultMessage = ngDevMode && errorGetDefault(key, name);
+        const errorSetDefaultMessage = ngDevMode && errorSetDefault(key, name);
 
         Object.defineProperty(target, key, {
             configurable: true,
             get(): undefined {
-                tuiAssert.assert(false, errorGetDefaultMessage);
+                ngDevMode && tuiAssert.assert(false, errorGetDefaultMessage);
 
                 return undefined;
             },
             set(this: T, initialValue: T[K]) {
                 const isValid = initialValue !== undefined;
-                const errorMessage = errorSetDefaultInitial(key, name);
+                const errorMessage = ngDevMode && errorSetDefaultInitial(key, name);
                 let currentValue = initialValue;
 
-                tuiAssert.assert(isValid, errorMessage);
+                ngDevMode && tuiAssert.assert(isValid, errorMessage);
 
-                if (isValid && assertion) {
+                if (ngDevMode && isValid && assertion && tuiAssert) {
                     tuiAssert.assert(
                         assertion.call(this, initialValue),
                         `${String(key)} in ${name} received:`,
@@ -48,13 +48,14 @@ export function tuiDefaultProp<T extends Record<string, any>, K extends keyof T>
                         const isValid = value !== undefined;
                         const backupValue = initialValue;
 
-                        tuiAssert.assert(
-                            isValid,
-                            errorSetDefaultMessage,
-                            String(backupValue),
-                        );
+                        ngDevMode &&
+                            tuiAssert.assert(
+                                isValid,
+                                errorSetDefaultMessage,
+                                String(backupValue),
+                            );
 
-                        if (isValid && assertion) {
+                        if (ngDevMode && isValid && assertion && tuiAssert) {
                             tuiAssert.assert(
                                 assertion.call(this, value),
                                 `${String(key)} in ${name} received:`,

@@ -16,10 +16,11 @@ export class TuiFormatPhonePipe implements PipeTransform {
         countryCode: string = `${CHAR_PLUS}7`,
         phoneMask: string = `(###) ###-##-##`,
     ): string {
-        tuiAssert.assert(
-            value !== undefined,
-            `Undefined was passed to tuiFormatPhone pipe`,
-        );
+        ngDevMode &&
+            tuiAssert.assert(
+                value !== undefined,
+                `Undefined was passed to tuiFormatPhone pipe`,
+            );
 
         return tuiFormatPhone(value, countryCode, phoneMask);
     }

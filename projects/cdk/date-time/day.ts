@@ -21,7 +21,7 @@ import {TuiYear} from './year';
 export class TuiDay extends TuiMonth {
     constructor(year: number, month: number, readonly day: number) {
         super(year, month);
-        tuiAssert.assert(TuiDay.isValidDay(year, month, day));
+        ngDevMode && tuiAssert.assert(TuiDay.isValidDay(year, month, day));
     }
 
     /**
@@ -113,10 +113,11 @@ export class TuiDay extends TuiMonth {
         date: string,
         dateMode: TuiDateMode = `DMY`,
     ): {day: number; month: number; year: number} {
-        tuiAssert.assert(
-            date.length === DATE_FILLER_LENGTH,
-            `[parseRawDateString]: wrong date string length`,
-        );
+        ngDevMode &&
+            tuiAssert.assert(
+                date.length === DATE_FILLER_LENGTH,
+                `[parseRawDateString]: wrong date string length`,
+            );
 
         switch (dateMode) {
             case `YMD`:
@@ -189,7 +190,7 @@ export class TuiDay extends TuiMonth {
     }
 
     protected static normalizeDayPart(day: number, month: number, year: number): number {
-        tuiAssert.assert(TuiMonth.isValidMonth(year, month));
+        ngDevMode && tuiAssert.assert(TuiMonth.isValidMonth(year, month));
 
         const monthDaysCount = TuiMonth.getMonthDaysCount(
             month,
@@ -339,10 +340,11 @@ export class TuiDay extends TuiMonth {
      * Returns formatted whole date
      */
     getFormattedDay(dateFormat: TuiDateMode, separator: string): string {
-        tuiAssert.assert(
-            separator.length === 1,
-            `Separator should consist of only 1 symbol`,
-        );
+        ngDevMode &&
+            tuiAssert.assert(
+                separator.length === 1,
+                `Separator should consist of only 1 symbol`,
+            );
 
         const dd = this.formattedDayPart;
         const mm = this.formattedMonthPart;

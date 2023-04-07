@@ -79,7 +79,7 @@ export class TuiSvgComponent {
     set src(src: SafeHtml | string) {
         const deprecated = this.options.deprecated(String(src));
 
-        tuiAssert.assert(!deprecated, deprecated);
+        ngDevMode && tuiAssert.assert(!deprecated, deprecated);
         this.icon = this.options.srcProcessor(src);
         this.src$.next();
     }
@@ -149,7 +149,7 @@ export class TuiSvgComponent {
             },
         });
 
-        tuiAssert.assert(false, message, icon);
+        ngDevMode && tuiAssert.assert(false, message, icon);
         this.el.nativeElement.dispatchEvent(event);
     }
 

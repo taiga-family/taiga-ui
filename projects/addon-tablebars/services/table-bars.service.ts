@@ -18,7 +18,7 @@ export class TuiTableBarsService {
 
     open(content: PolymorpheusContent, options?: TuiTableBarOptions): Observable<never> {
         return new Observable(observer => {
-            tuiAssert.assert(tuiIsObserved(this.bar$), NO_HOST);
+            ngDevMode && tuiAssert.assert(tuiIsObserved(this.bar$), NO_HOST);
 
             const tableBar = new TuiTableBar(observer, content, options);
 

@@ -16,7 +16,8 @@ export function tuiCreateCorrectionMask(
         const mask = rawValue.split(``).reduce<TuiTextMaskList>((result, char, index) => {
             const corrected = correctionHandler(char, index);
 
-            tuiAssert.assert(corrected === null || corrected.length === 1, ASSERTION);
+            ngDevMode &&
+                tuiAssert.assert(corrected === null || corrected.length === 1, ASSERTION);
 
             if (!allowed.test(char) && !corrected) {
                 return result;
