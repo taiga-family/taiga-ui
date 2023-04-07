@@ -231,7 +231,11 @@ export class TuiToolbarComponent {
             return;
         }
 
-        tuiAssert.assert(!!this.filesLoader, 'Please provide TUI_ATTACH_FILES_LOADER');
+        ngDevMode &&
+            tuiAssert.assert(
+                !!this.filesLoader,
+                'Please provide TUI_ATTACH_FILES_LOADER',
+            );
 
         this.filesLoader?.(files)
             .pipe(take(1))

@@ -7,10 +7,11 @@ export function tuiCreateDateRangeMask(
     dateMode: TuiDateMode,
     dateSeparator: string,
 ): TuiTextMaskList {
-    tuiAssert.assert(
-        dateSeparator.length === 1,
-        `Separator should consist of only 1 symbol`,
-    );
+    ngDevMode &&
+        tuiAssert.assert(
+            dateSeparator.length === 1,
+            `Separator should consist of only 1 symbol`,
+        );
 
     const dateMask = tuiCreateDateMask(dateMode, dateSeparator);
 

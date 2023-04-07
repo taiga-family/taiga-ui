@@ -5,7 +5,11 @@ const TWO_DIGITS = new Array(2).fill(TUI_DIGIT_REGEXP);
 const FOUR_DIGITS = new Array(4).fill(TUI_DIGIT_REGEXP);
 
 export function tuiCreateDateMask(mode: TuiDateMode, separator: string): TuiTextMaskList {
-    tuiAssert.assert(separator.length === 1, `Separator should consist of only 1 symbol`);
+    ngDevMode &&
+        tuiAssert.assert(
+            separator.length === 1,
+            `Separator should consist of only 1 symbol`,
+        );
 
     switch (mode) {
         case `YMD`:

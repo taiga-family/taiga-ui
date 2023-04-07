@@ -7,7 +7,6 @@
         "sourceMap": true,
         "inlineSourceMap": true,
         "inlineSources": true,
-        "types": [],
         "paths": {
             "@taiga-ui/cdk/*": ["./dist/cdk/*"],
             "@taiga-ui/cdk": ["./dist/cdk/index"],

@@ -87,10 +87,11 @@ export class TuiSliderKeyStepsDirective
 
         const clampedControlValue = tuiClamp(controlValue, this.min, this.max);
 
-        tuiAssert.assert(
-            controlValue === clampedControlValue,
-            '\n[SliderKeySteps]: You cannot programmatically set value which is less/more than min/max',
-        );
+        ngDevMode &&
+            tuiAssert.assert(
+                controlValue === clampedControlValue,
+                '\n[SliderKeySteps]: You cannot programmatically set value which is less/more than min/max',
+            );
 
         this.slider.value = this.transformToNativeValue(clampedControlValue);
     }

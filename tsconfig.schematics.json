@@ -10,7 +10,7 @@
         "composite": false,
         "incremental": false,
         "tsBuildInfoFile": null,
-        "types": ["jasmine", "node", "webpack-env"]
+        "types": ["jasmine", "node", "webpack-env", "ng-dev-mode"]
     },
     "include": [
         "projects/cdk/constants/version.ts",

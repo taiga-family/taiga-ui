@@ -13,7 +13,7 @@ export class TuiDayRange extends TuiMonthRange {
     constructor(override readonly from: TuiDay, override readonly to: TuiDay) {
         super(from, to);
 
-        tuiAssert.assert(from.daySameOrBefore(to));
+        ngDevMode && tuiAssert.assert(from.daySameOrBefore(to));
     }
 
     /**

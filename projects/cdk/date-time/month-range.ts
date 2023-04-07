@@ -8,7 +8,7 @@ import {TuiMonth} from './month';
  */
 export class TuiMonthRange {
     constructor(readonly from: TuiMonth, readonly to: TuiMonth) {
-        tuiAssert.assert(from.monthSameOrBefore(to));
+        ngDevMode && tuiAssert.assert(from.monthSameOrBefore(to));
     }
 
     static sort(month1: TuiMonth, month2: TuiMonth): TuiMonthRange {

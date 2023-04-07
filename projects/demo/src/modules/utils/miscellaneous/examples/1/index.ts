@@ -14,7 +14,7 @@ export class TuiMiscellaneousExample1 {
         const dayOfWeek = new Date().getDay();
         const isFriday = dayOfWeek === 5;
 
-        tuiAssert.assert(isFriday, 'Today is not a friday');
+        ngDevMode && tuiAssert.assert(isFriday, 'Today is not a friday');
 
         return isFriday
             ? 'Nothing in console'

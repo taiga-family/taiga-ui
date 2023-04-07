@@ -7,11 +7,11 @@ export function tuiToFlatMapPages(pages: TuiDocPages): Map<string, TuiDocPage> {
     for (const page of pages) {
         if (`subPages` in page) {
             for (const subPage of page.subPages) {
-                tuiPageCheckUniqueTitle(subPage, map);
+                ngDevMode && assertTitle(subPage, map);
                 map.set(subPage.title, subPage);
             }
         } else {
-            tuiPageCheckUniqueTitle(page, map);
+            ngDevMode && assertTitle(page, map);
             map.set(page.title, page);
         }
     }
@@ -19,7 +19,7 @@ export function tuiToFlatMapPages(pages: TuiDocPages): Map<string, TuiDocPage> {
     return map;
 }
 
-function tuiPageCheckUniqueTitle(page: TuiDocPage, map: Map<string, TuiDocPage>): void {
+function assertTitle(page: TuiDocPage, map: Map<string, TuiDocPage>): void {
     if (map.has(page.title) && map.get(page.title)?.route !== page.route) {
         console.error(
             `Title for page should be unique for prevent inconsistent page names`,

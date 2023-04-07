@@ -23,7 +23,7 @@ export function tuiRequiredSetter<T extends Record<string, any>, K extends keyof
             enumerable,
             get,
             set(this: T, value: T[K]) {
-                if (value !== undefined && assertion) {
+                if (ngDevMode && value !== undefined && assertion && tuiAssert) {
                     tuiAssert.assert(
                         assertion.call(this, value),
                         `${String(key)} in ${name} received:`,
@@ -33,7 +33,8 @@ export function tuiRequiredSetter<T extends Record<string, any>, K extends keyof
                 }
 
                 if (!set || value === undefined) {
-                    tuiAssert.assert(value !== undefined, errorSet(key, name));
+                    ngDevMode &&
+                        tuiAssert.assert(value !== undefined, errorSet(key, name));
 
                     return;
                 }

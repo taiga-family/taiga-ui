@@ -58,13 +58,15 @@ export abstract class AbstractTuiControl<T>
     ) {
         super();
 
-        if (this.ngControl === null) {
+        if (ngDevMode && this.ngControl === null) {
             tuiAssert.assert(
                 false,
                 `NgControl not injected in ${this.constructor.name}!\n`,
                 `Use [(ngModel)] or [formControl] or formControlName for correct work.`,
             );
-        } else {
+        }
+
+        if (this.ngControl) {
             this.ngControl.valueAccessor = this;
         }
     }
