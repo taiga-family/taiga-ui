@@ -10,18 +10,16 @@ import {TuiDialogService} from '@taiga-ui/core';
     encapsulation,
 })
 export class TuiDialogExampleComponent1 {
-    constructor(
-        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
-    ) {}
+    constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) {}
 
     showDialog(): void {
-        this.dialogService
+        this.dialogs
             .open('This is a plain string dialog', {label: 'Heading', size: 's'})
             .subscribe();
     }
 
     showDialogWithCustomButton(): void {
-        this.dialogService
+        this.dialogs
             .open('Good, Anakin, Good!', {
                 label: 'Star wars. Episode III',
                 size: 's',

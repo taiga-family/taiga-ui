@@ -53,7 +53,7 @@ class TuiNodeView extends NodeView<
 
     override mount(): void {
         const injector = this.options.injector;
-        const documentRef = injector.get(DOCUMENT);
+        const doc = injector.get(DOCUMENT);
 
         const props: NodeViewProps = {
             editor: this.editor,
@@ -71,14 +71,14 @@ class TuiNodeView extends NodeView<
 
         // Register drag handler
         if (this.extension.config.draggable) {
-            this.renderer.elementRef.nativeElement.ondragstart = (e: DragEvent) => {
+            this.renderer.el.nativeElement.ondragstart = (e: DragEvent) => {
                 this.onDragStart(e);
             };
         }
 
         this.contentDOMElement = this.node.isLeaf
             ? null
-            : documentRef.createElement(this.node.isInline ? `span` : `div`);
+            : doc.createElement(this.node.isInline ? `span` : `div`);
 
         if (this.contentDOMElement) {
             // For some reason the whiteSpace prop is not inherited properly in Chrome and Safari

@@ -23,13 +23,11 @@ export class TuiTabsDirective implements AfterViewChecked {
     @Output()
     readonly activeItemIndexChange = new EventEmitter<number>();
 
-    constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-    ) {}
+    constructor(@Inject(ElementRef) private readonly el: ElementRef<HTMLElement>) {}
 
     get tabs(): readonly HTMLElement[] {
         return Array.from(
-            this.elementRef.nativeElement.querySelectorAll<HTMLElement>('[tuiTab]'),
+            this.el.nativeElement.querySelectorAll<HTMLElement>('[tuiTab]'),
         );
     }
 

@@ -15,12 +15,11 @@ export class TuiSheetCloseDirective {
     @Output()
     // eslint-disable-next-line @angular-eslint/no-output-native
     readonly close: Observable<unknown> = merge(
-        tuiTypedFromEvent(this.elementRef.nativeElement, TUI_SHEET_CLOSE),
+        tuiTypedFromEvent(this.el.nativeElement, TUI_SHEET_CLOSE),
         this.dragged$.pipe(
             startWith(false),
             tuiIfMap(
-                () =>
-                    this.scroll$.pipe(startWith(this.elementRef.nativeElement.scrollTop)),
+                () => this.scroll$.pipe(startWith(this.el.nativeElement.scrollTop)),
                 tuiIsFalsy,
             ),
             filter(y => this.sheet.item?.closeable && this.shouldClose(y)),
@@ -33,15 +32,15 @@ export class TuiSheetCloseDirective {
         @Inject(NgZone) private readonly ngZone: NgZone,
         @Inject(TUI_SHEET_DRAGGED) private readonly dragged$: Observable<boolean>,
         @Inject(TUI_SHEET_SCROLL) private readonly scroll$: Observable<number>,
-        @Inject(WINDOW) private readonly windowRef: Window,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(WINDOW) private readonly win: Window,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TuiSheetComponent) private readonly sheet: TuiSheetComponent<unknown>,
     ) {}
 
     private shouldClose(scrollTop: number): boolean {
         const height = Math.min(
-            this.windowRef.innerHeight,
-            this.elementRef.nativeElement.scrollHeight - this.windowRef.innerHeight,
+            this.win.innerHeight,
+            this.el.nativeElement.scrollHeight - this.win.innerHeight,
         );
         const min = Math.min(height, this.sheet.stops[0] || Infinity);
 

@@ -13,7 +13,7 @@ import {tuiIsEdge, tuiIsEdgeOlderThan, tuiIsFirefox, tuiIsSafari} from '@taiga-u
 export class TuiBrowserExample1 {
     constructor(
         @Inject(USER_AGENT) private readonly userAgent: string,
-        @Inject(ElementRef) private readonly elementRef: ElementRef,
+        @Inject(ElementRef) private readonly el: ElementRef,
     ) {}
 
     get aboutMyBrowser(): string {
@@ -27,7 +27,7 @@ export class TuiBrowserExample1 {
             return 'Okay, you have Firefox!';
         }
 
-        if (tuiIsSafari(this.elementRef.nativeElement)) {
+        if (tuiIsSafari(this.el.nativeElement)) {
             return 'Okay, you have Safari!';
         }
 

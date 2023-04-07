@@ -116,14 +116,14 @@ export class TuiInputRangeComponent
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_IS_MOBILE)
         private readonly isMobile: boolean,
-        @Inject(ElementRef) private readonly elementRef: ElementRef,
+        @Inject(ElementRef) private readonly el: ElementRef,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     get leftFocusableElement(): HTMLInputElement | null {
@@ -141,7 +141,7 @@ export class TuiInputRangeComponent
     }
 
     get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.el.nativeElement);
     }
 
     get appearance(): string {

@@ -58,13 +58,13 @@ export class TuiTabsComponent implements AfterViewChecked {
 
     constructor(
         @Inject(TUI_TABS_OPTIONS) private readonly options: TuiTabsOptions,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TuiTabsDirective) private readonly tabs: TuiTabsDirective,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TuiResizeService) resize$: Observable<void>,
     ) {
         resize$.pipe(filter(() => this.underline)).subscribe(() => {
-            changeDetectorRef.detectChanges();
+            cdr.detectChanges();
         });
     }
 
@@ -101,7 +101,7 @@ export class TuiTabsComponent implements AfterViewChecked {
         }
 
         const {offsetLeft, offsetWidth} = element;
-        const {nativeElement} = this.elementRef;
+        const {nativeElement} = this.el;
 
         if (offsetLeft < nativeElement.scrollLeft) {
             nativeElement.scrollLeft = offsetLeft;

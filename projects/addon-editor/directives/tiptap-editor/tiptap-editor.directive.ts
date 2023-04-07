@@ -41,7 +41,7 @@ export class TuiTiptapEditorDirective {
     readonly stateChange = this.editor.stateChange$;
 
     constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
         @Inject(INITIALIZATION_TIPTAP_CONTAINER) readonly editorContainer: HTMLElement,
@@ -49,10 +49,7 @@ export class TuiTiptapEditorDirective {
         @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         this.editorLoaded$.pipe(takeUntil(destroy$)).subscribe(() => {
-            this.renderer.appendChild(
-                this.elementRef.nativeElement,
-                this.editorContainer,
-            );
+            this.renderer.appendChild(this.el.nativeElement, this.editorContainer);
         });
     }
 }

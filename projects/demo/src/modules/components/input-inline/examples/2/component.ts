@@ -16,7 +16,7 @@ export class TuiInputInlineExample2 {
 
     constructor(
         @Inject(TuiAlertService)
-        private readonly alertService: TuiAlertService,
+        private readonly alerts: TuiAlertService,
     ) {}
 
     toggle(): void {
@@ -31,6 +31,6 @@ export class TuiInputInlineExample2 {
     }
 
     private saveHeading(newHeading: string): void {
-        this.alertService.open(newHeading, {label: `New heading`}).subscribe();
+        this.alerts.open(newHeading, {label: `New heading`}).subscribe();
     }
 }

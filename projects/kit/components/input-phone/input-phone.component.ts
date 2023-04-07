@@ -125,13 +125,13 @@ export class TuiInputPhoneComponent
     constructor(
         @Optional() @Self() @Inject(NgControl) control: NgControl | null,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_SELECTION_STREAM) selection$: Observable<unknown>,
         @Inject(TUI_TEXTFIELD_CLEANER)
         private readonly textfieldCleaner: TuiTextfieldCleanerDirective,
         @Inject(TUI_INPUT_PHONE_OPTIONS) private readonly options: TuiInputPhoneOptions,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
 
         selection$.pipe(takeUntil(destroy$)).subscribe(() => {
             this.setCaretPosition();

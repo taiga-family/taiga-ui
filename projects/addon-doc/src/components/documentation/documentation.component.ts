@@ -58,7 +58,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     activeItemIndex = 0;
 
     constructor(
-        @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
         @Inject(TUI_DOC_DOCUMENTATION_TEXTS)
         readonly texts: [string, string, string, string, string],
         @Inject(TUI_DOC_EXCLUDED_PROPERTIES)
@@ -76,7 +76,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         tuiQueryListChanges(this.propertiesConnectors)
             .pipe(
                 switchMap(items => merge(...items.map(({changed$}) => changed$))),
-                tuiWatch(this.changeDetectorRef),
+                tuiWatch(this.cdr),
                 takeUntil(this.destroy$),
             )
             .subscribe();

@@ -7,13 +7,13 @@ import {TuiDialogService} from '@taiga-ui/core';
 export class MyComponent {
   constructor(
     @Inject(TuiDialogService)
-    private readonly dialogService: TuiDialogService,
+    private readonly dialogs: TuiDialogService,
   ) {}
 
   // ...
 
   open() {
-    this.dialogService.open('Hello!').subscribe();
+    this.dialogs.open('Hello!').subscribe();
   }
 }
 ```

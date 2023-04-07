@@ -23,13 +23,13 @@ export const TUI_INPUT_CARD_GROUPED_TEXTS = new InjectionToken<
     Observable<TuiCardGroupedTexts>
 >(`[TUI_INPUT_CARD_GROUPED_TEXTS]`, {
     factory: () => {
-        const windowRef = inject(WINDOW);
+        const win = inject(WINDOW);
         const cardNumberTexts = inject(TUI_CARD_NUMBER_TEXTS);
         const expiryTexts = inject(TUI_CARD_EXPIRY_TEXTS);
         const cvcTexts = inject(TUI_CARD_CVC_TEXTS);
         const {desktopSmall} = inject(TUI_MEDIA);
 
-        const media = windowRef.matchMedia(
+        const media = win.matchMedia(
             `screen and (min-width: ${(desktopSmall - 1) / 16}em)`,
         );
 

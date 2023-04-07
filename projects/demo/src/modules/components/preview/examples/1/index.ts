@@ -27,7 +27,7 @@ export class TuiPreviewExample1 {
         @Inject(TuiPreviewDialogService)
         private readonly previewService: TuiPreviewDialogService,
         @Inject(TuiAlertService)
-        private readonly alertService: TuiAlertService,
+        private readonly alerts: TuiAlertService,
     ) {}
 
     get title(): string {
@@ -47,11 +47,11 @@ export class TuiPreviewExample1 {
     }
 
     download(): void {
-        this.alertService.open('Downloading...').subscribe();
+        this.alerts.open('Downloading...').subscribe();
     }
 
     delete(): void {
-        this.alertService.open('Deleting...').subscribe();
+        this.alerts.open('Deleting...').subscribe();
     }
 
     onSwipe(swipe: TuiSwipe): void {

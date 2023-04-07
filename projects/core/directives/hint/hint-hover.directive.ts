@@ -50,7 +50,7 @@ export class TuiHintHoverDirective extends TuiDriver {
     constructor(
         @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
         @Inject(TUI_HINT_OPTIONS) private readonly options: TuiHintOptions,
-        @Inject(ElementRef) readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) readonly el: ElementRef<HTMLElement>,
     ) {
         super(subscriber => this.stream$.subscribe(subscriber));
     }

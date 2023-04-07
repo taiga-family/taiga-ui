@@ -79,19 +79,17 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
         @Inject(TUI_CALENDAR_DATE_STREAM)
         @Optional()
         valueChanges: Observable<TuiDayRange | null> | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         if (!valueChanges) {
             return;
         }
 
-        valueChanges
-            .pipe(tuiWatch(changeDetectorRef), takeUntil(destroy$))
-            .subscribe(value => {
-                this.value = value;
-                this.updateViewedMonths();
-            });
+        valueChanges.pipe(tuiWatch(cdr), takeUntil(destroy$)).subscribe(value => {
+            this.value = value;
+            this.updateViewedMonths();
+        });
     }
 
     get cappedUserViewedMonthSecond(): TuiMonth {

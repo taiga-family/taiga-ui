@@ -116,10 +116,10 @@ export class ExampleTuiCalendarComponent {
 
     constructor(
         @Inject(TuiAlertService)
-        private readonly alertService: TuiAlertService,
+        private readonly alerts: TuiAlertService,
     ) {}
 
     onDayClick(day: TuiDay): void {
-        this.alertService.open(String(day)).subscribe();
+        this.alerts.open(String(day)).subscribe();
     }
 }

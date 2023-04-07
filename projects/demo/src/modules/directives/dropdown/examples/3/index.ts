@@ -22,10 +22,10 @@ export class TuiDropdownExample3 {
 
     constructor(
         @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
     ) {
         interval(3000)
-            .pipe(tuiWatch(changeDetectorRef), takeUntil(destroy$))
+            .pipe(tuiWatch(cdr), takeUntil(destroy$))
             .subscribe(() => {
                 this.showBigText = !this.showBigText;
             });

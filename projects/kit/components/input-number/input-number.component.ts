@@ -96,12 +96,12 @@ export class TuiInputNumberComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef)
-        changeDetectorRef: ChangeDetectorRef,
+        cdr: ChangeDetectorRef,
         @Inject(TUI_NUMBER_FORMAT)
         private readonly numberFormat: TuiNumberFormatSettings,
         @Inject(TUI_IS_IOS) private readonly isIOS: boolean,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

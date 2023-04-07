@@ -65,7 +65,7 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
             TUI_TEXTFIELD_FILLER,
         ],
         useFactory: (
-            changeDetectorRef: ChangeDetectorRef,
+            cdr: ChangeDetectorRef,
             destroy$: Observable<void>,
             options: TuiTextfieldOptions,
             legacyAppearance: string,
@@ -84,7 +84,7 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
         ) => {
             const change$ = merge(
                 ...controllers.map(({change$}) => change$ || NEVER),
-            ).pipe(tuiWatch(changeDetectorRef), takeUntil(destroy$));
+            ).pipe(tuiWatch(cdr), takeUntil(destroy$));
 
             change$.subscribe();
 

@@ -26,12 +26,12 @@ export class TuiElasticContainerDirective {
     @Output()
     readonly tuiElasticContainer = merge(this.resize$, this.mutation$).pipe(
         debounceTime(0),
-        map(() => this.elementRef.nativeElement.clientHeight),
+        map(() => this.el.nativeElement.clientHeight),
         distinctUntilChanged(),
     );
 
     constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(ResizeObserverService) private readonly resize$: Observable<unknown>,
         @Inject(MutationObserverService) private readonly mutation$: Observable<unknown>,
     ) {}

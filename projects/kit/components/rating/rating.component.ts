@@ -62,11 +62,11 @@ export class TuiRatingComponent
         @Inject(NgControl)
         ngControl: NgControl | null,
         @Inject(ChangeDetectorRef)
-        changeDetectorRef: ChangeDetectorRef,
+        cdr: ChangeDetectorRef,
         @Inject(TUI_RATING_OPTIONS)
         private readonly options: TuiRatingOptions,
     ) {
-        super(ngControl, changeDetectorRef);
+        super(ngControl, cdr);
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

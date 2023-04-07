@@ -29,10 +29,10 @@ export abstract class AbstractTuiDialogDirective<T> extends PolymorpheusTemplate
     constructor(
         @Inject(TemplateRef)
         templateRef: TemplateRef<TuiDialog<T, void>>,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(AbstractTuiDialogService)
         private readonly service: AbstractTuiDialogService<T>,
     ) {
-        super(templateRef, changeDetectorRef);
+        super(templateRef, cdr);
     }
 }

@@ -9,26 +9,23 @@ import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs/operators';
 })
 export class TuiResizedDirective {
     @Output()
-    readonly tuiResized = tuiTypedFromEvent(
-        this.elementRef.nativeElement,
-        'mousedown',
-    ).pipe(
+    readonly tuiResized = tuiTypedFromEvent(this.el.nativeElement, 'mousedown').pipe(
         tuiPreventDefault(),
         switchMap(() => {
             const {width, right} = this.parentRef.nativeElement.getBoundingClientRect();
 
-            return tuiTypedFromEvent(this.documentRef, 'mousemove').pipe(
+            return tuiTypedFromEvent(this.doc, 'mousemove').pipe(
                 distinctUntilChanged(),
                 map(({clientX}) => width + clientX - right),
-                takeUntil(tuiTypedFromEvent(this.documentRef, 'mouseup')),
+                takeUntil(tuiTypedFromEvent(this.doc, 'mouseup')),
             );
         }),
     );
 
     constructor(
-        @Inject(DOCUMENT) private readonly documentRef: Document,
+        @Inject(DOCUMENT) private readonly doc: Document,
         @Inject(ElementRef)
-        private readonly elementRef: ElementRef<HTMLElement>,
+        private readonly el: ElementRef<HTMLElement>,
         @Inject(TUI_ELEMENT_REF)
         private readonly parentRef: ElementRef<HTMLTableHeaderCellElement>,
     ) {}

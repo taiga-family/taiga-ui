@@ -45,7 +45,7 @@ export class TuiTabComponent implements OnDestroy {
         @Optional()
         @Inject(RouterLinkActive)
         private readonly routerLinkActive: RouterLinkActive | null,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_TAB_EVENT) readonly event$: Observable<Event>,
         @Inject(TUI_TAB_MARGIN) readonly margin: number,
@@ -62,8 +62,8 @@ export class TuiTabComponent implements OnDestroy {
     }
 
     ngOnDestroy(): void {
-        if (tuiIsNativeFocused(this.elementRef.nativeElement)) {
-            this.elementRef.nativeElement.blur();
+        if (tuiIsNativeFocused(this.el.nativeElement)) {
+            this.el.nativeElement.blur();
         }
     }
 }

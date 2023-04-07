@@ -27,7 +27,7 @@ xdescribe(`Range`, () => {
         component!: TuiRangeComponent;
 
         @ViewChild(TuiRangeComponent, {static: true, read: ElementRef})
-        elementRef!: ElementRef<HTMLElement>;
+        el!: ElementRef<HTMLElement>;
 
         testValue = new FormControl([3, 5]);
         max = 11;
@@ -57,7 +57,7 @@ xdescribe(`Range`, () => {
     }
 
     function getFilledRangeOffeset(): {left: string; right: string} {
-        const computedStyles = testComponent.elementRef.nativeElement;
+        const computedStyles = testComponent.el.nativeElement;
 
         return {
             left: getComputedStyle(computedStyles).getPropertyValue(`--left`),

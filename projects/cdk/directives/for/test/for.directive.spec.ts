@@ -17,7 +17,7 @@ describe(`TuiFor directive`, () => {
     class TestComponent {
         readonly items$ = new Subject<string[]>();
 
-        constructor(@Inject(ElementRef) readonly elementRef: ElementRef<HTMLElement>) {}
+        constructor(@Inject(ElementRef) readonly el: ElementRef<HTMLElement>) {}
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -55,6 +55,6 @@ describe(`TuiFor directive`, () => {
     });
 
     function text(): string {
-        return testComponent.elementRef.nativeElement.textContent?.trim() || ``;
+        return testComponent.el.nativeElement.textContent?.trim() || ``;
     }
 });

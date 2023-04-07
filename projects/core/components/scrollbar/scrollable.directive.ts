@@ -5,15 +5,13 @@ import {TUI_SCROLLABLE} from '@taiga-ui/core/constants';
     selector: '[tuiScrollable]',
 })
 export class TuiScrollableDirective implements OnInit {
-    constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-    ) {}
+    constructor(@Inject(ElementRef) private readonly el: ElementRef<HTMLElement>) {}
 
     ngOnInit(): void {
-        this.elementRef.nativeElement.dispatchEvent(
+        this.el.nativeElement.dispatchEvent(
             new CustomEvent(TUI_SCROLLABLE, {
                 bubbles: true,
-                detail: this.elementRef.nativeElement,
+                detail: this.el.nativeElement,
             }),
         );
     }

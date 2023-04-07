@@ -136,10 +136,10 @@ export class TuiInputDateRangeComponent
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(Injector) private readonly injector: Injector,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+        @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
         @Optional()
         @Inject(TUI_MOBILE_CALENDAR)
         private readonly mobileCalendar: Type<Record<string, any>> | null,
@@ -155,7 +155,7 @@ export class TuiInputDateRangeComponent
         @Inject(TUI_INPUT_DATE_OPTIONS)
         private readonly options: TuiInputDateOptions,
     ) {
-        super(control, changeDetectorRef, valueTransformer);
+        super(control, cdr, valueTransformer);
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -258,7 +258,7 @@ export class TuiInputDateRangeComponent
             return;
         }
 
-        this.dialogService
+        this.dialogs
             .open<TuiDayRange>(
                 new PolymorpheusComponent(this.mobileCalendar, this.injector),
                 {

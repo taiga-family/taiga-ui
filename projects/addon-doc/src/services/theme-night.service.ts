@@ -12,7 +12,7 @@ import {
 })
 export class TuiThemeNightService extends BehaviorSubject<boolean> {
     constructor(
-        @Inject(WINDOW) readonly windowRef: Window,
+        @Inject(WINDOW) readonly win: Window,
         @Inject(LOCAL_STORAGE) readonly storage: Storage,
         @Inject(TUI_THEME_NIGHT_STORAGE_KEY) readonly key: string,
         @Inject(TUI_USE_DEFAULT_NIGHT_THEME) readonly useDefaultNightTheme: boolean,
@@ -20,7 +20,7 @@ export class TuiThemeNightService extends BehaviorSubject<boolean> {
         super(
             storage.getItem(key) === `true` ||
                 (storage.getItem(key) === null &&
-                    windowRef.matchMedia(`(prefers-color-scheme: dark)`).matches),
+                    win.matchMedia(`(prefers-color-scheme: dark)`).matches),
         );
     }
 

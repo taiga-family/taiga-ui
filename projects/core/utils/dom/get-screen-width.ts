@@ -1,6 +1,6 @@
-export function tuiGetScreenWidth(documentRef: Document): number {
+export function tuiGetScreenWidth(doc: Document): number {
     return Math.max(
-        documentRef.documentElement.clientWidth,
-        documentRef.defaultView ? documentRef.defaultView.innerWidth : 0,
+        doc.documentElement.clientWidth,
+        doc.defaultView ? doc.defaultView.innerWidth : 0,
     );
 }

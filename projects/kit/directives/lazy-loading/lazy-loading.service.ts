@@ -10,7 +10,7 @@ export class TuiLazyLoadingService extends Observable<SafeResourceUrl | string> 
     private readonly src$ = new Subject<SafeResourceUrl | string>();
 
     constructor(
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Inject(IntersectionObserverService)
         intersections$: Observable<IntersectionObserverEntry[]>,
@@ -23,7 +23,7 @@ export class TuiLazyLoadingService extends Observable<SafeResourceUrl | string> 
                             filter(([{isIntersecting}]) => isIntersecting),
                             map(() => src),
                             catchError(() => of(src)),
-                            tuiWatch(changeDetectorRef),
+                            tuiWatch(cdr),
                             take(1),
                         ),
                     ),

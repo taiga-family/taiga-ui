@@ -31,15 +31,11 @@ export class TuiDropdownContextExample2 {
 
     readonly moreOptions = ['Option 1', 'Option 2', 'Option 3'];
 
-    constructor(
-        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
-    ) {}
+    constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) {}
 
     getObjectValues = (obj: Record<string, unknown>): unknown[] => Object.values(obj);
 
     printToConsole(action: string, contextInfo: unknown): void {
-        this.dialogService
-            .open(`[${action}]: ${JSON.stringify(contextInfo)}`)
-            .subscribe();
+        this.dialogs.open(`[${action}]: ${JSON.stringify(contextInfo)}`).subscribe();
     }
 }

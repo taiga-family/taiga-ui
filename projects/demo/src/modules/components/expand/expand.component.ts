@@ -27,9 +27,7 @@ export class ExampleTuiExpandComponent {
 
     delayed = false;
 
-    constructor(
-        @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
-    ) {}
+    constructor(@Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef) {}
 
     onExpandedChange(expanded: boolean): void {
         this.expanded = expanded;
@@ -43,7 +41,7 @@ export class ExampleTuiExpandComponent {
             const event = new CustomEvent(TUI_EXPAND_LOADED, {bubbles: true});
 
             this.delayed = false;
-            this.changeDetectorRef.detectChanges();
+            this.cdr.detectChanges();
 
             if (this.expand) {
                 this.expand.nativeElement.dispatchEvent(event);

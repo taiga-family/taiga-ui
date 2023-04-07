@@ -11,13 +11,11 @@ import {
     selector: '[tuiToolbarNavigationManager]',
 })
 export class TuiToolbarNavigationManagerDirective {
-    constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-    ) {}
+    constructor(@Inject(ElementRef) private readonly el: ElementRef<HTMLElement>) {}
 
     private get toolsContainers(): readonly HTMLElement[] {
         return Array.from(
-            this.elementRef.nativeElement.querySelectorAll<HTMLElement>('[tuiItem]'),
+            this.el.nativeElement.querySelectorAll<HTMLElement>('[tuiItem]'),
         );
     }
 
@@ -75,7 +73,7 @@ export class TuiToolbarNavigationManagerDirective {
             lookedInside ||
             tuiGetClosestFocusable({
                 initial: wrapper,
-                root: this.elementRef.nativeElement,
+                root: this.el.nativeElement,
                 previous: true,
                 keyboard: false,
             })
@@ -87,7 +85,7 @@ export class TuiToolbarNavigationManagerDirective {
             ? wrapper
             : tuiGetClosestFocusable({
                   initial: wrapper,
-                  root: this.elementRef.nativeElement,
+                  root: this.el.nativeElement,
                   keyboard: false,
               });
     }

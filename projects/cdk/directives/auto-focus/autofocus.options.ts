@@ -29,27 +29,17 @@ export const TUI_AUTOFOCUS_PROVIDERS = [
     {
         provide: TUI_AUTOFOCUS_HANDLER,
         useFactory: (
-            tuiFocusableComponent: TuiFocusableElementAccessor | null,
-            elementRef: ElementRef<HTMLElement>,
+            focusable: TuiFocusableElementAccessor | null,
+            el: ElementRef<HTMLElement>,
             animationFrame$: Observable<number>,
             renderer: Renderer2,
             ngZone: NgZone,
-            windowRef: Window,
+            win: Window,
             isIos: boolean,
         ) =>
             isIos
-                ? new TuiIosAutofocusHandler(
-                      tuiFocusableComponent,
-                      elementRef,
-                      renderer,
-                      ngZone,
-                      windowRef,
-                  )
-                : new TuiDefaultAutofocusHandler(
-                      tuiFocusableComponent,
-                      elementRef,
-                      animationFrame$,
-                  ),
+                ? new TuiIosAutofocusHandler(focusable, el, renderer, ngZone, win)
+                : new TuiDefaultAutofocusHandler(focusable, el, animationFrame$),
         deps: [
             [new Optional(), new Self(), TUI_FOCUSABLE_ITEM_ACCESSOR],
             ElementRef,

@@ -50,7 +50,7 @@ export class TuiPaginationComponent
     implements TuiFocusableElementAccessor
 {
     @ViewChildren('element', {read: TUI_FOCUSABLE_ITEM_ACCESSOR})
-    private readonly elements: QueryList<TuiFocusableElementAccessor> = EMPTY_QUERY;
+    private readonly els: QueryList<TuiFocusableElementAccessor> = EMPTY_QUERY;
 
     @Input()
     @tuiDefaultProp(nonNegativeInteger, 'Must be non-negative integer')
@@ -96,7 +96,7 @@ export class TuiPaginationComponent
     readonly indexChange = new EventEmitter<number>();
 
     constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Optional()
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
@@ -125,15 +125,13 @@ export class TuiPaginationComponent
             }
         }
 
-        const activeElement = this.elements.find(
-            (_, index) => index === activeElementIndex,
-        );
+        const activeElement = this.els.find((_, index) => index === activeElementIndex);
 
         return activeElement ? activeElement.nativeFocusableElement : null;
     }
 
     get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.el.nativeElement);
     }
 
     /**
@@ -218,13 +216,11 @@ export class TuiPaginationComponent
     }
 
     onElementKeyDownArrowLeft(element: TuiButtonComponent): void {
-        if (element === this.elements.first) {
+        if (element === this.els.first) {
             return;
         }
 
-        const previous = this.elements.find(
-            (_, index, array) => array[index + 1] === element,
-        );
+        const previous = this.els.find((_, index, array) => array[index + 1] === element);
 
         if (previous?.nativeFocusableElement) {
             previous.nativeFocusableElement.focus();
@@ -232,13 +228,11 @@ export class TuiPaginationComponent
     }
 
     onElementKeyDownArrowRight(element: TuiButtonComponent): void {
-        if (element === this.elements.last) {
+        if (element === this.els.last) {
             return;
         }
 
-        const next = this.elements.find(
-            (_, index, array) => array[index - 1] === element,
-        );
+        const next = this.els.find((_, index, array) => array[index - 1] === element);
 
         if (next?.nativeFocusableElement) {
             next.nativeFocusableElement.focus();

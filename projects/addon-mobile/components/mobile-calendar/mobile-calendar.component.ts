@@ -119,7 +119,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     constructor(
         @Inject(TUI_IS_IOS) readonly isIOS: boolean,
         @Inject(TUI_IS_CYPRESS) readonly isCypress: boolean,
-        @Inject(DOCUMENT) private readonly documentRef: Document,
+        @Inject(DOCUMENT) private readonly doc: Document,
         @Self()
         @Inject(TuiDestroyService)
         private readonly destroy$: TuiDestroyService,
@@ -139,7 +139,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     }
 
     get yearWidth(): number {
-        return this.documentRef.documentElement.clientWidth / YEARS_IN_ROW;
+        return this.doc.documentElement.clientWidth / YEARS_IN_ROW;
     }
 
     ngAfterViewInit(): void {

@@ -11,8 +11,8 @@ export class TuiAccordionItemContentDirective extends PolymorpheusTemplate<
         @Inject(TemplateRef)
         @Self()
         templateRef: TemplateRef<Record<string, unknown>>,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
     ) {
-        super(templateRef, changeDetectorRef);
+        super(templateRef, cdr);
     }
 }

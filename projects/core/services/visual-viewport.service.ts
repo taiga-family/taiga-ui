@@ -8,7 +8,7 @@ import {TuiPoint} from '@taiga-ui/core/types';
 })
 export class TuiVisualViewportService {
     constructor(
-        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(WINDOW) private readonly win: Window,
         @Inject(TUI_IS_WEBKIT) private readonly isWebkit: boolean,
     ) {}
 
@@ -16,8 +16,8 @@ export class TuiVisualViewportService {
     correct(point: TuiPoint): TuiPoint {
         return this.isWebkit
             ? [
-                  point[0] + (this.windowRef.visualViewport?.offsetTop ?? 0),
-                  point[1] + (this.windowRef.visualViewport?.offsetLeft ?? 0),
+                  point[0] + (this.win.visualViewport?.offsetTop ?? 0),
+                  point[1] + (this.win.visualViewport?.offsetLeft ?? 0),
               ]
             : point;
     }

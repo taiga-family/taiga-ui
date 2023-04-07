@@ -21,10 +21,10 @@ export const TUI_DOC_CUSTOMIZATION_PROVIDERS: Provider[] = [
         provide: TUI_DOC_CUSTOMIZATION_VARS,
         deps: [WINDOW, CSS_VARS],
         useFactory: (
-            windowRef: Window,
+            win: Window,
             variables: readonly string[],
         ): Record<string, string> => {
-            const styles = windowRef.getComputedStyle(windowRef.document.documentElement);
+            const styles = win.getComputedStyle(win.document.documentElement);
 
             return variables.reduce(
                 (dictionary, variable) => ({

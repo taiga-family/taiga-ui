@@ -45,12 +45,12 @@ export class TuiScrollbarComponent {
     @tuiDefaultProp()
     hidden = false;
 
-    readonly browserScrollRef = new ElementRef(this.elementRef.nativeElement);
+    readonly browserScrollRef = new ElementRef(this.el.nativeElement);
 
     constructor(
         @Inject(CSS_TOKEN)
         private readonly cssRef: TuiInjectionTokenType<typeof CSS_TOKEN>,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(USER_AGENT) private readonly userAgent: string,
         @Inject(TUI_IS_IOS) private readonly isIos: boolean,
     ) {}

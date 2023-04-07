@@ -15,9 +15,7 @@ import {Color} from '../colors.constants';
     changeDetection,
 })
 export class TableComponent {
-    private readonly styles = this.windowRef.getComputedStyle(
-        this.documentRef.documentElement,
-    );
+    private readonly styles = this.win.getComputedStyle(this.doc.documentElement);
 
     @Input()
     colors: readonly Color[] = [];
@@ -30,8 +28,8 @@ export class TableComponent {
 
     constructor(
         @Inject(TuiThemeService) private readonly themeService: Observable<string>,
-        @Inject(DOCUMENT) private readonly documentRef: Document,
-        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(DOCUMENT) private readonly doc: Document,
+        @Inject(WINDOW) private readonly win: Window,
     ) {}
 
     getValue(variable: string): string {

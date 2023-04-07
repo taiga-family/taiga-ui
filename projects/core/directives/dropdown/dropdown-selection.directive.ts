@@ -58,7 +58,7 @@ export class TuiDropdownSelectionDirective
         ),
     ]).pipe(
         map(([handler, range]) => {
-            const contained = this.elementRef.nativeElement.contains(
+            const contained = this.el.nativeElement.contains(
                 range.commonAncestorContainer,
             );
 
@@ -88,10 +88,10 @@ export class TuiDropdownSelectionDirective
 
     constructor(
         @Inject(TUI_RANGE) private range: Range,
-        @Inject(DOCUMENT) private readonly documentRef: Document,
+        @Inject(DOCUMENT) private readonly doc: Document,
         @Inject(TUI_SELECTION_STREAM) private readonly selection$: Observable<unknown>,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(ViewContainerRef) private readonly viewContainerRef: ViewContainerRef,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
+        @Inject(ViewContainerRef) private readonly vcr: ViewContainerRef,
         @Inject(TuiDropdownDirective) private readonly dropdown: TuiDropdownDirective,
     ) {
         super(subscriber => this.stream$.subscribe(subscriber));
@@ -118,16 +118,15 @@ export class TuiDropdownSelectionDirective
 
     ngOnDestroy(): void {
         if (this.ghost) {
-            this.viewContainerRef.element.nativeElement.removeChild(this.ghost);
+            this.vcr.element.nativeElement.removeChild(this.ghost);
         }
     }
 
     private getRange(): Range {
-        const {nativeElement} = this.elementRef;
-        const active = tuiGetNativeFocused(this.documentRef);
-        const selection = this.documentRef.getSelection();
+        const active = tuiGetNativeFocused(this.doc);
+        const selection = this.doc.getSelection();
 
-        if (active && tuiIsTextfield(active) && nativeElement.contains(active)) {
+        if (active && tuiIsTextfield(active) && this.el.nativeElement.contains(active)) {
             return this.veryVerySadInputFix(active);
         }
 
@@ -146,7 +145,7 @@ export class TuiDropdownSelectionDirective
      */
     private inDropdown(range: Range): boolean {
         const {startContainer, endContainer} = range;
-        const {nativeElement} = this.elementRef;
+        const {nativeElement} = this.el;
         const inDropdown = this.boxContains(range.commonAncestorContainer);
         const hostToDropdown =
             this.boxContains(endContainer) && nativeElement.contains(startContainer);
@@ -160,8 +159,8 @@ export class TuiDropdownSelectionDirective
         const {ghost = this.initGhost(element)} = this;
         const {top, left, width, height} = element.getBoundingClientRect();
         const {selectionStart, selectionEnd, value} = element;
-        const range = this.documentRef.createRange();
-        const hostRect = this.elementRef.nativeElement.getBoundingClientRect();
+        const range = this.doc.createRange();
+        const hostRect = this.el.nativeElement.getBoundingClientRect();
 
         ghost.style.top = tuiPx(top - hostRect.top);
         ghost.style.left = tuiPx(left - hostRect.left);
@@ -179,8 +178,7 @@ export class TuiDropdownSelectionDirective
      * Create an invisible DIV styled exactly like input/textarea element inside directive
      */
     private initGhost(element: HTMLInputElement | HTMLTextAreaElement): HTMLElement {
-        const ghost = this.documentRef.createElement('div');
-        const {nativeElement} = this.viewContainerRef.element;
+        const ghost = this.doc.createElement('div');
         const {font, letterSpacing, textTransform, padding} = getComputedStyle(element);
 
         ghost.style.position = 'absolute';
@@ -192,7 +190,7 @@ export class TuiDropdownSelectionDirective
         ghost.style.textTransform = textTransform;
         ghost.style.padding = padding;
 
-        nativeElement.appendChild(ghost);
+        this.vcr.element.nativeElement.appendChild(ghost);
         this.ghost = ghost;
 
         return ghost;

@@ -21,12 +21,12 @@ export class TuiDialogExampleComponent9 {
     readonly amountControl = new FormControl(100);
 
     constructor(
-        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+        @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
     ) {}
 
     payByCard(): void {
-        this.dialogService
+        this.dialogs
             .open(new PolymorpheusComponent(PayModalComponent), {
                 size: 'auto',
                 closeable: true,

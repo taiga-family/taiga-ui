@@ -12,10 +12,10 @@ import {TuiAlertService} from '@taiga-ui/core';
 export class TuiAlertsExampleComponent1 {
     constructor(
         @Inject(TuiAlertService)
-        private readonly alertService: TuiAlertService,
+        private readonly alerts: TuiAlertService,
     ) {}
 
     showNotification(): void {
-        this.alertService.open('A simple option', {label: 'With a heading!'}).subscribe();
+        this.alerts.open('A simple option', {label: 'With a heading!'}).subscribe();
     }
 }

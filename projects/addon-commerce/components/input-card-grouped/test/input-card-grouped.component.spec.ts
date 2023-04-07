@@ -16,7 +16,6 @@ import {
     TUI_AUTOFOCUS_HANDLER,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiAutoFocusDirective,
-    TuiFocusableElementAccessor,
     TuiSynchronousAutofocusHandler,
 } from '@taiga-ui/cdk';
 import {TuiSvgModule} from '@taiga-ui/core';
@@ -60,14 +59,7 @@ describe(`InputCardGrouped`, () => {
                 providers: [
                     {
                         provide: TUI_AUTOFOCUS_HANDLER,
-                        useFactory: (
-                            tuiFocusableComponent: TuiFocusableElementAccessor | null,
-                            elementRef: ElementRef<HTMLElement>,
-                        ) =>
-                            new TuiSynchronousAutofocusHandler(
-                                tuiFocusableComponent,
-                                elementRef,
-                            ),
+                        useClass: TuiSynchronousAutofocusHandler,
                         deps: [
                             [new Optional(), new Self(), TUI_FOCUSABLE_ITEM_ACCESSOR],
                             ElementRef,

@@ -66,11 +66,11 @@ export class TuiDropdownComponent implements OnDestroy {
         @Inject(TuiPositionService) position$: Observable<TuiPoint>,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Inject(TuiDropdownDirective) readonly directive: TuiDropdownDirective,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(AbstractTuiPortalHostComponent)
         private readonly host: AbstractTuiPortalHostComponent,
         @Inject(TuiRectAccessor) private readonly accessor: TuiRectAccessor,
-        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(WINDOW) private readonly win: Window,
         @Inject(TUI_ANIMATION_OPTIONS)
         private readonly animationOptions: AnimationOptions,
         @Inject(TUI_DROPDOWN_OPTIONS) private readonly options: TuiDropdownOptions,
@@ -114,10 +114,10 @@ export class TuiDropdownComponent implements OnDestroy {
     }
 
     private update(top: number, left: number): void {
-        const {style} = this.elementRef.nativeElement;
-        const {right} = this.elementRef.nativeElement.getBoundingClientRect();
+        const {style} = this.el.nativeElement;
+        const {right} = this.el.nativeElement.getBoundingClientRect();
         const {maxHeight, offset} = this.options;
-        const {innerHeight} = this.windowRef;
+        const {innerHeight} = this.win;
         const {clientRect} = this.host;
         const {position} = this.directive;
         const rect = this.accessor.getClientRect();
@@ -144,7 +144,7 @@ export class TuiDropdownComponent implements OnDestroy {
     }
 
     private updateWidth(): void {
-        const {style} = this.elementRef.nativeElement;
+        const {style} = this.el.nativeElement;
         const rect = this.accessor.getClientRect();
         const {limitWidth} = this.options;
 
@@ -161,7 +161,7 @@ export class TuiDropdownComponent implements OnDestroy {
     }
 
     private moveFocusOutside(previous: boolean): void {
-        const {nativeElement} = this.directive.elementRef;
+        const {nativeElement} = this.directive.el;
         const {ownerDocument} = nativeElement;
         const root = ownerDocument ? ownerDocument.body : nativeElement;
         let focusable = tuiGetClosestFocusable({initial: nativeElement, root, previous});

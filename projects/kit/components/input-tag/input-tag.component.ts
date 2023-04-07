@@ -200,9 +200,9 @@ export class TuiInputTagComponent
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TuiScrollService) private readonly tuiScrollService: TuiScrollService,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Optional()
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
@@ -219,7 +219,7 @@ export class TuiInputTagComponent
         @Inject(TuiHostedDropdownComponent)
         private readonly parentHostedDropdown?: TuiHostedDropdownComponent,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -230,8 +230,7 @@ export class TuiInputTagComponent
 
     get focused(): boolean {
         return (
-            tuiIsNativeFocusedIn(this.elementRef.nativeElement) ||
-            !!this.hostedDropdown?.focused
+            tuiIsNativeFocusedIn(this.el.nativeElement) || !!this.hostedDropdown?.focused
         );
     }
 

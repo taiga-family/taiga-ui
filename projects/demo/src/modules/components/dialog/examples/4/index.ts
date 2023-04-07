@@ -18,7 +18,7 @@ export class TuiDialogExampleComponent4 {
     scale = 1;
 
     constructor(
-        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+        @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
         @Inject(TuiDropdownPortalService)
         private readonly portalService: TuiDropdownPortalService,
     ) {}
@@ -37,7 +37,7 @@ export class TuiDialogExampleComponent4 {
 
     onFilterClick(): void {
         this.filters = true;
-        this.dialogService.open('Dialog with filters').subscribe({
+        this.dialogs.open('Dialog with filters').subscribe({
             complete: () => {
                 this.filters = false;
             },
@@ -50,7 +50,7 @@ export class TuiDialogExampleComponent4 {
     ): void {
         const templateRef = this.portalService.addTemplate(button);
 
-        this.dialogService.open(content).subscribe({
+        this.dialogs.open(content).subscribe({
             complete: () => {
                 this.portalService.removeTemplate(templateRef);
             },

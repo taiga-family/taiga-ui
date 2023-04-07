@@ -45,7 +45,7 @@ export class TuiActiveZoneDirective implements OnDestroy {
         @Inject(TUI_ACTIVE_ELEMENT)
         private readonly active$: Observable<Element | null>,
         @Inject(NgZone) private readonly ngZone: NgZone,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<Element>,
+        @Inject(ElementRef) private readonly el: ElementRef<Element>,
         @Optional()
         @SkipSelf()
         @Inject(TuiActiveZoneDirective)
@@ -68,7 +68,7 @@ export class TuiActiveZoneDirective implements OnDestroy {
 
     contains(node: Node): boolean {
         return (
-            this.elementRef.nativeElement.contains(node) ||
+            this.el.nativeElement.contains(node) ||
             this.subActiveZones.some(
                 (item, index, array) =>
                     array.indexOf(item) === index && item.contains(node),

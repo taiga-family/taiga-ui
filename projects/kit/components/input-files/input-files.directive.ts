@@ -15,7 +15,7 @@ import {TUI_INPUT_FILES_OPTIONS, TuiInputFilesOptions} from './input-files.optio
 export class TuiInputFilesDirective {
     constructor(
         @Inject(TuiInputFilesComponent) readonly host: TuiInputFilesComponent,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLInputElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLInputElement>,
         @Inject(TuiIdService) private readonly idService: TuiIdService,
         @Inject(TUI_INPUT_FILES_OPTIONS) private readonly options: TuiInputFilesOptions,
     ) {}
@@ -27,24 +27,24 @@ export class TuiInputFilesDirective {
 
     @HostBinding('id')
     get id(): string {
-        return this.elementRef.nativeElement.id || this.idService.generate();
+        return this.el.nativeElement.id || this.idService.generate();
     }
 
     @HostBinding('accept')
     get accept(): TuiInputFilesOptions['accepts'] {
-        return this.elementRef.nativeElement.accept ?? this.options.accepts;
+        return this.el.nativeElement.accept ?? this.options.accepts;
     }
 
     @HostBinding('multiple')
     get multiple(): TuiInputFilesOptions['multiple'] {
-        return this.elementRef.nativeElement.multiple ?? this.options.multiple;
+        return this.el.nativeElement.multiple ?? this.options.multiple;
     }
 
     @HostBinding('capture')
     get capture(): TuiInputFilesOptions['capture'] {
         return (
             (
-                this.elementRef.nativeElement as HTMLInputElement & {
+                this.el.nativeElement as HTMLInputElement & {
                     capture: TuiInputFilesOptions['capture'];
                 }
             ).capture ?? this.options.capture
@@ -52,6 +52,6 @@ export class TuiInputFilesDirective {
     }
 
     get input(): HTMLInputElement {
-        return this.elementRef.nativeElement;
+        return this.el.nativeElement;
     }
 }

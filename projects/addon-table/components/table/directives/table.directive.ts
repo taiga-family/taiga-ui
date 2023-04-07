@@ -56,7 +56,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
         readonly entries$: Observable<IntersectionObserverEntry[]>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_STUCK) readonly stuck$: Observable<boolean>,
-        @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
     ) {
         super();
     }
@@ -75,7 +75,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     }
 
     ngAfterViewInit(): void {
-        this.changeDetectorRef.detectChanges();
+        this.cdr.detectChanges();
     }
 
     updateSorter(sorter: TuiComparator<T> | null): void {

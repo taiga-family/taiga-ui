@@ -55,17 +55,16 @@ export class TuiProgressCircleComponent {
         }
 
         const strokeWidth = parseInt(
-            this.windowRef.getComputedStyle(this.progressCircle.nativeElement)
-                .strokeWidth,
+            this.win.getComputedStyle(this.progressCircle.nativeElement).strokeWidth,
             10,
         );
 
-        return (this.elementRef.nativeElement.offsetWidth - strokeWidth) / 2;
+        return (this.el.nativeElement.offsetWidth - strokeWidth) / 2;
     }
 
     constructor(
         @Inject(USER_AGENT) private readonly userAgent: string,
-        @Inject(WINDOW) private readonly windowRef: Window,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(WINDOW) private readonly win: Window,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
     ) {}
 }

@@ -20,10 +20,10 @@ export class TuiTooltipExample1 {
 
     constructor(
         @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
     ) {
         interval(2000)
-            .pipe(tuiWatch(changeDetectorRef), takeUntil(destroy$))
+            .pipe(tuiWatch(cdr), takeUntil(destroy$))
             .subscribe(() => {
                 this.loader = !this.loader;
                 this.text = this.text ? '' : 'Error 502: Bad Gateway';

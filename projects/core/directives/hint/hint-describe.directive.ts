@@ -22,14 +22,14 @@ import {
     providers: [tuiAsDriver(TuiHintDescribeDirective)],
 })
 export class TuiHintDescribeDirective extends TuiDriver {
-    private readonly stream$ = tuiTypedFromEvent(this.documentRef, 'keydown', {
+    private readonly stream$ = tuiTypedFromEvent(this.doc, 'keydown', {
         capture: true,
     }).pipe(
         switchMap(() =>
             this.focused
                 ? of(false)
                 : merge(
-                      tuiTypedFromEvent(this.documentRef, 'keyup'),
+                      tuiTypedFromEvent(this.doc, 'keyup'),
                       tuiTypedFromEvent(this.element, 'blur'),
                   ).pipe(map(() => this.focused)),
         ),
@@ -47,8 +47,8 @@ export class TuiHintDescribeDirective extends TuiDriver {
 
     constructor(
         @Inject(NgZone) private readonly ngZone: NgZone,
-        @Inject(DOCUMENT) private readonly documentRef: Document,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(DOCUMENT) private readonly doc: Document,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
     ) {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
@@ -59,9 +59,6 @@ export class TuiHintDescribeDirective extends TuiDriver {
 
     @tuiPure
     private get element(): HTMLElement {
-        return (
-            this.documentRef.getElementById(this.tuiHintDescribe) ||
-            this.elementRef.nativeElement
-        );
+        return this.doc.getElementById(this.tuiHintDescribe) || this.el.nativeElement;
     }
 }

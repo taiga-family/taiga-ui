@@ -12,7 +12,7 @@ describe(`TuiForAsync directive`, () => {
     abstract class AbstractTuiTestComponent {
         readonly items$ = new Subject<string[] | null | undefined>();
 
-        constructor(readonly elementRef: ElementRef<HTMLElement>) {}
+        constructor(readonly el: ElementRef<HTMLElement>) {}
     }
 
     describe(`Basic`, () => {
@@ -177,6 +177,6 @@ describe(`TuiForAsync directive`, () => {
     });
 
     function text(): string {
-        return testComponent.elementRef.nativeElement.textContent?.trim() || ``;
+        return testComponent.el.nativeElement.textContent?.trim() || ``;
     }
 });

@@ -23,8 +23,7 @@ export class TuiCheckedDirective {
     readonly tuiCheckedChange = new EventEmitter<boolean>();
 
     constructor(
-        @Inject(ElementRef)
-        private readonly element: ElementRef<HTMLInputElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLInputElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
     ) {
         this.updateProperty('checked', false);
@@ -37,6 +36,6 @@ export class TuiCheckedDirective {
     }
 
     private updateProperty(property: 'checked' | 'indeterminate', value: boolean): void {
-        this.renderer.setProperty(this.element.nativeElement, property, value);
+        this.renderer.setProperty(this.el.nativeElement, property, value);
     }
 }

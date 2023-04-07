@@ -25,12 +25,12 @@ export class IconsGroupComponent {
 
     constructor(
         @Inject(Clipboard) private readonly clipboard: Clipboard,
-        @Inject(TuiAlertService) private readonly alertService: TuiAlertService,
+        @Inject(TuiAlertService) private readonly alerts: TuiAlertService,
     ) {}
 
     copyPath = (name: string): void => {
         this.clipboard.copy(name);
-        this.alertService
+        this.alerts
             .open(`The name ${name} copied`, {status: TuiNotification.Success})
             .subscribe();
     };

@@ -12,12 +12,12 @@ import {MyDialogComponent} from './my-dialog.component.ts';
 export class MyComponent {
   constructor(
     @Inject(Injector) private readonly injector: Injector,
-    @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+    @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
   ) {}
 
   // ...
   open() {
-    this.dialogService
+    this.dialogs
       .open(
         // this.injector is optional
         new PolymorpheusComponent(MyDialogComponent, this.injector),

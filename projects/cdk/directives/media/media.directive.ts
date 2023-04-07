@@ -41,34 +41,34 @@ export class TuiMediaDirective {
 
     constructor(
         @Inject(ElementRef)
-        private readonly elementRef: ElementRef<HTMLMediaElement>,
+        private readonly el: ElementRef<HTMLMediaElement>,
     ) {}
 
     @Input()
     @tuiRequiredSetter(nonNegativeFiniteAssertion)
     set currentTime(currentTime: number) {
         if (Math.abs(currentTime - this.currentTime) > 0.05) {
-            this.elementRef.nativeElement.currentTime = currentTime;
+            this.el.nativeElement.currentTime = currentTime;
         }
     }
 
     get currentTime(): number {
-        return this.elementRef.nativeElement.currentTime;
+        return this.el.nativeElement.currentTime;
     }
 
     @Input()
     set paused(paused: boolean) {
         if (paused) {
-            this.elementRef.nativeElement.pause();
+            this.el.nativeElement.pause();
         } else {
             // eslint-disable-next-line @typescript-eslint/no-floating-promises
-            this.elementRef.nativeElement.play();
+            this.el.nativeElement.play();
             this.updatePlaybackRate(this.playbackRate);
         }
     }
 
     get paused(): boolean {
-        return this.elementRef.nativeElement.paused;
+        return this.el.nativeElement.paused;
     }
 
     // @bad TODO: Make sure no other events can affect this like network issues etc.
@@ -82,7 +82,7 @@ export class TuiMediaDirective {
 
     @HostListener('volumechange')
     onVolumeChange(): void {
-        this.volume = this.elementRef.nativeElement.volume;
+        this.volume = this.el.nativeElement.volume;
         this.volumeChange.emit(this.volume);
     }
 
@@ -100,7 +100,7 @@ export class TuiMediaDirective {
 
     private updatePlaybackRate(playbackRate: number): void {
         this.playbackRate = playbackRate;
-        this.elementRef.nativeElement.playbackRate = this.playbackRate;
+        this.el.nativeElement.playbackRate = this.playbackRate;
     }
 }
 

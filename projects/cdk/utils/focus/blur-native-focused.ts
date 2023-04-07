@@ -5,8 +5,8 @@ import {tuiGetNativeFocused} from './get-native-focused';
 /**
  * Finds and blurs current active element, including shadow DOM
  */
-export function tuiBlurNativeFocused(documentRef: Document): void {
-    const activeElement = tuiGetNativeFocused(documentRef);
+export function tuiBlurNativeFocused(doc: Document): void {
+    const activeElement = tuiGetNativeFocused(doc);
 
     if (tuiIsHTMLElement(activeElement)) {
         activeElement.blur();

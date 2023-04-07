@@ -40,13 +40,13 @@ interface TuiVisitOptions {
 }
 
 const setBeforeLoadOptions = (
-    windowRef: Window,
+    win: Window,
     {inIframe}: Pick<Required<TuiVisitOptions>, 'inIframe'>,
 ): void => {
     if (!inIframe) {
         // @ts-ignore window.parent is readonly property
         // eslint-disable-next-line @typescript-eslint/dot-notation
-        windowRef[`parent`] = windowRef;
+        win[`parent`] = win;
     }
 };
 

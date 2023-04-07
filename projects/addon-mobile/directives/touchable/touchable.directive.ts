@@ -35,7 +35,7 @@ export class TuiTouchableDirective {
     tuiTouchable: TuiTouchMode | '' = '';
 
     constructor(
-        @Optional() @Inject(TUI_ELEMENT_REF) elementRef: ElementRef<HTMLElement> | null,
+        @Optional() @Inject(TUI_ELEMENT_REF) el: ElementRef<HTMLElement> | null,
         @Inject(TUI_IS_IOS) isIos: boolean,
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(Renderer2) renderer: Renderer2,
@@ -45,7 +45,7 @@ export class TuiTouchableDirective {
             return;
         }
 
-        const element = elementRef ? elementRef.nativeElement : nativeElement;
+        const element = el?.nativeElement || nativeElement;
 
         tuiTypedFromEvent(element, 'touchstart', {passive: true})
             .pipe(

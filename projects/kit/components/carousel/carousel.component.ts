@@ -55,8 +55,8 @@ export class TuiCarouselComponent {
     transitioned = true;
 
     constructor(
-        @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
     ) {}
 
@@ -118,7 +118,7 @@ export class TuiCarouselComponent {
             return;
         }
 
-        const {clientWidth} = this.elementRef.nativeElement;
+        const {clientWidth} = this.el.nativeElement;
         const min = 1 - this.items.length / this.itemsCount;
 
         this.translate = tuiClamp(x / clientWidth + this.translate, min, 0);
@@ -147,6 +147,6 @@ export class TuiCarouselComponent {
     private updateIndex(index: number): void {
         this.index = tuiClamp(index, 0, this.items.length - 1);
         this.indexChange.emit(this.index);
-        this.changeDetectorRef.markForCheck();
+        this.cdr.markForCheck();
     }
 }

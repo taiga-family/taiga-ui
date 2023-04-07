@@ -9,10 +9,10 @@ import {CustomNotificationComponent} from './custom-notification.component';
 export class MyComponent {
   constructor(
     @Inject(Injector) private injector: Injector,
-    @Inject(TuiAlertService) private readonly alertService: TuiAlertService,
+    @Inject(TuiAlertService) private readonly alerts: TuiAlertService,
   ) {
     //...
-    this.alertService
+    this.alerts
       .open(new PolymorpheusComponent(CustomNotificationComponent, this.injector), {label: 'Heading'})
       .subscribe();
   }

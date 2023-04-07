@@ -48,8 +48,8 @@ export class TuiSvgComponent {
     readonly innerHTML$: Observable<SafeHtml>;
 
     constructor(
-        @Inject(DOCUMENT) private readonly documentRef: Document,
-        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(DOCUMENT) private readonly doc: Document,
+        @Inject(WINDOW) private readonly win: Window,
         @Inject(TUI_SVG_OPTIONS) private readonly options: TuiSvgOptions,
         @Optional()
         @Inject(TUI_SANITIZER)
@@ -58,7 +58,7 @@ export class TuiSvgComponent {
         @Inject(TuiStaticRequestService)
         private readonly staticRequestService: TuiStaticRequestService,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<Element>,
+        @Inject(ElementRef) private readonly el: ElementRef<Element>,
     ) {
         this.innerHTML$ = this.src$.pipe(
             switchMap(() => {
@@ -108,9 +108,7 @@ export class TuiSvgComponent {
     }
 
     private get isShadowDOM(): boolean {
-        return (
-            tuiGetDocumentOrShadowRoot(this.elementRef.nativeElement) !== this.documentRef
-        );
+        return tuiGetDocumentOrShadowRoot(this.el.nativeElement) !== this.doc;
     }
 
     private get isUse(): boolean {
@@ -134,13 +132,10 @@ export class TuiSvgComponent {
     }
 
     private get isCrossDomain(): boolean {
-        const {use, isUse, windowRef} = this;
+        const {use, isUse, win} = this;
 
         return (
-            isUse &&
-            use.startsWith('http') &&
-            !!windowRef.origin &&
-            !use.startsWith(windowRef.origin)
+            isUse && use.startsWith('http') && !!win.origin && !use.startsWith(win.origin)
         );
     }
 
@@ -155,7 +150,7 @@ export class TuiSvgComponent {
         });
 
         tuiAssert.assert(false, message, icon);
-        this.elementRef.nativeElement.dispatchEvent(event);
+        this.el.nativeElement.dispatchEvent(event);
     }
 
     @tuiPure

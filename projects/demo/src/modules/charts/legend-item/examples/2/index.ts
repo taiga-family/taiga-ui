@@ -20,7 +20,7 @@ export class TuiLegendItemExample2 {
 
     constructor(
         @Inject(TuiAlertService)
-        private readonly alertService: TuiAlertService,
+        private readonly alerts: TuiAlertService,
     ) {}
 
     get value(): readonly number[] {
@@ -37,7 +37,7 @@ export class TuiLegendItemExample2 {
 
     onClick(index: number): void {
         if (this.isEnabled(index)) {
-            this.alertService
+            this.alerts
                 .open(`Category spendings: ${tuiFormatNumber(this.data[index])} ₽`, {
                     label: this.labels[index],
                 })

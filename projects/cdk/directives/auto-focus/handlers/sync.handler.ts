@@ -12,10 +12,10 @@ export class TuiSynchronousAutofocusHandler extends AbstractTuiAutofocusHandler 
         @Optional()
         @Self()
         @Inject(TUI_FOCUSABLE_ITEM_ACCESSOR)
-        tuiFocusableComponent: TuiFocusableElementAccessor | null,
-        @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,
+        focusable: TuiFocusableElementAccessor | null,
+        @Inject(ElementRef) el: ElementRef<HTMLElement>,
     ) {
-        super(tuiFocusableComponent, elementRef);
+        super(focusable, el);
     }
 
     setFocus(): void {

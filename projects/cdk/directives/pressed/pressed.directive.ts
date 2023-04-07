@@ -7,12 +7,12 @@ import {TUI_TAKE_ONLY_TRUSTED_EVENTS} from '@taiga-ui/cdk/tokens';
 })
 export class TuiPressedDirective {
     @Output()
-    readonly tuiPressedChange = tuiPressedObservable(this.elementRef.nativeElement, {
+    readonly tuiPressedChange = tuiPressedObservable(this.el.nativeElement, {
         onlyTrusted: this.takeOnlyTrustedEvents,
     });
 
     constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<Element>,
+        @Inject(ElementRef) private readonly el: ElementRef<Element>,
         @Inject(TUI_TAKE_ONLY_TRUSTED_EVENTS)
         private readonly takeOnlyTrustedEvents: boolean,
     ) {}

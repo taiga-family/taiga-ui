@@ -29,7 +29,7 @@ export class TuiMobileCalendarExample1 {
     );
 
     constructor(
-        @Inject(TuiDialogService) dialogService: TuiDialogService,
+        @Inject(TuiDialogService) dialogs: TuiDialogService,
         @Inject(Injector) injector: Injector,
         @Inject(TUI_MONTHS) private readonly months: Observable<string[]>,
     ) {
@@ -48,7 +48,7 @@ export class TuiMobileCalendarExample1 {
             computedInjector,
         );
 
-        this.dialog$ = dialogService.open(content, {
+        this.dialog$ = dialogs.open(content, {
             size: 'fullscreen',
             closeable: false,
             data: {

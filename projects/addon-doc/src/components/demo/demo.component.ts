@@ -73,7 +73,7 @@ export class TuiDocDemoComponent implements OnInit {
 
     constructor(
         @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(Location) private readonly locationRef: Location,
         @Inject(UrlSerializer) private readonly urlSerializer: UrlSerializer,
         @Inject(TUI_DOC_DEMO_TEXTS) readonly texts: [string, string, string],
@@ -118,7 +118,7 @@ export class TuiDocDemoComponent implements OnInit {
         }
 
         const safe = width || this.resizeable.nativeElement.clientWidth;
-        const total = this.elementRef.nativeElement.clientWidth;
+        const total = this.el.nativeElement.clientWidth;
         const clamped = Math.round(tuiClamp(safe, MIN_WIDTH, total)) - this.delta;
         const validated = safe < total ? clamped : NaN;
 

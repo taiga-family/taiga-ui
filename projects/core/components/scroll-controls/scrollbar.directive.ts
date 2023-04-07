@@ -42,15 +42,15 @@ export class TuiScrollbarDirective {
         @Optional()
         @Inject(TUI_SCROLL_REF)
         private readonly container: ElementRef<HTMLElement> | null,
-        @Inject(DOCUMENT) private readonly documentRef: Document,
-        @Inject(WINDOW) private readonly windowRef: Window,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(DOCUMENT) private readonly doc: Document,
+        @Inject(WINDOW) private readonly win: Window,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(ViewportScroller) private readonly viewportScroller: ViewportScroller,
     ) {
-        const {nativeElement} = this.elementRef;
+        const {nativeElement} = this.el;
         const mousedown$ = tuiTypedFromEvent(nativeElement, 'mousedown');
-        const mousemove$ = tuiTypedFromEvent(this.documentRef, 'mousemove');
-        const mouseup$ = tuiTypedFromEvent(this.documentRef, 'mouseup');
+        const mousemove$ = tuiTypedFromEvent(this.doc, 'mousemove');
+        const mouseup$ = tuiTypedFromEvent(this.doc, 'mouseup');
         const mousedownWrapper$ = tuiTypedFromEvent(wrapper.nativeElement, 'mousedown');
 
         merge(
@@ -102,10 +102,7 @@ export class TuiScrollbarDirective {
             });
 
         merge(
-            fromEvent(
-                this.container ? this.container.nativeElement : this.windowRef,
-                'scroll',
-            ),
+            fromEvent(this.container ? this.container.nativeElement : this.win, 'scroll'),
             animationFrame$.pipe(throttleTime(POLLING_TIME)),
         )
             .pipe(tuiZonefree(ngZone), takeUntil(destroy$))
@@ -169,7 +166,7 @@ export class TuiScrollbarDirective {
     }
 
     private get computedContainer(): Element {
-        return this.container?.nativeElement || this.documentRef.documentElement;
+        return this.container?.nativeElement || this.doc.documentElement;
     }
 
     private getScrolled(
@@ -177,7 +174,7 @@ export class TuiScrollbarDirective {
         offsetVertical: number,
         offsetHorizontal: number,
     ): [number, number] {
-        const {offsetHeight, offsetWidth} = this.elementRef.nativeElement;
+        const {offsetHeight, offsetWidth} = this.el.nativeElement;
         const {top, left, width, height} =
             this.wrapper.nativeElement.getBoundingClientRect();
 

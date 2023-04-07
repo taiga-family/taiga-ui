@@ -69,17 +69,17 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     focusVisible = false;
 
     readonly focusedChange = merge(
-        tuiTypedFromEvent(this.elementRef.nativeElement, 'focusin').pipe(
+        tuiTypedFromEvent(this.el.nativeElement, 'focusin').pipe(
             map(ALWAYS_TRUE_HANDLER),
         ),
-        tuiTypedFromEvent(this.elementRef.nativeElement, 'focusout').pipe(
+        tuiTypedFromEvent(this.el.nativeElement, 'focusout').pipe(
             map(ALWAYS_FALSE_HANDLER),
         ),
     );
 
     constructor(
         @Inject(ElementRef)
-        private readonly elementRef: ElementRef<TuiNativeFocusableElement>,
+        private readonly el: ElementRef<TuiNativeFocusableElement>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TuiFocusVisibleService)
         focusVisible$: TuiFocusVisibleService,
@@ -90,7 +90,7 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement {
-        return this.elementRef.nativeElement;
+        return this.el.nativeElement;
     }
 
     get focused(): boolean {

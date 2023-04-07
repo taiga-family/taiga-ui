@@ -2,7 +2,6 @@ import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     Inject,
     ViewEncapsulation,
 } from '@angular/core';
@@ -40,7 +39,6 @@ export class TuiRootComponent {
 
     constructor(
         @Inject(TUI_ANIMATIONS_DURATION) readonly duration: number,
-        @Inject(ElementRef) readonly elementRef: ElementRef<HTMLElement>,
         @Inject(TUI_DIALOGS)
         readonly dialogs: ReadonlyArray<Observable<readonly unknown[]>>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,

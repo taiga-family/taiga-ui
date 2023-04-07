@@ -63,7 +63,7 @@ export class TuiDocExampleComponent {
     constructor(
         @Inject(Clipboard) private readonly clipboard: Clipboard,
         @Inject(TuiAlertService)
-        private readonly alertService: TuiAlertService,
+        private readonly alerts: TuiAlertService,
         @Inject(LOCATION) private readonly location: Location,
         @Inject(TUI_COPY_TEXTS) private readonly copyTexts$: Observable<[string, string]>,
         @Inject(TUI_DOC_EXAMPLE_TEXTS) readonly texts: [string, string, string],
@@ -97,7 +97,7 @@ export class TuiDocExampleComponent {
 
         this.setFragmentWithoutRedirect(this.id);
         this.clipboard.copy(url);
-        this.alertService
+        this.alerts
             .open(this.texts[1], {
                 label: this.texts[2],
                 status: TuiNotification.Success,

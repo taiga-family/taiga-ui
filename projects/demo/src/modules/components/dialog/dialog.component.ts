@@ -143,17 +143,17 @@ export class ExampleTuiDialogComponent {
 
     constructor(
         @Inject(TuiAlertService)
-        private readonly alertService: TuiAlertService,
+        private readonly alerts: TuiAlertService,
         @Inject(TuiDialogService)
-        private readonly dialogService: TuiDialogService,
+        private readonly dialogs: TuiDialogService,
     ) {}
 
     showDialog(content: TemplateRef<TuiDialogContext<number, number>>): void {
         const {data, label, required, closeable, dismissible, size} = this;
 
-        this.dialogService
+        this.dialogs
             .open(content, {data, label, required, closeable, dismissible, size})
-            .pipe(switchMap(response => this.alertService.open(String(response))))
+            .pipe(switchMap(response => this.alerts.open(String(response))))
             .subscribe();
     }
 }

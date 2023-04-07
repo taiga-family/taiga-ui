@@ -40,7 +40,7 @@ export class TuiActionComponent extends AbstractTuiInteractive {
 
     constructor(
         @Inject(TuiFocusVisibleService) focusVisible$: TuiFocusVisibleService,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
     ) {
         super();
 
@@ -50,7 +50,7 @@ export class TuiActionComponent extends AbstractTuiInteractive {
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        return this.elementRef.nativeElement;
+        return this.el.nativeElement;
     }
 
     get focused(): boolean {

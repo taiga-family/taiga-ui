@@ -23,14 +23,12 @@ export class TuiMultiSelectExample9 {
         'Yoda',
     ];
 
-    constructor(
-        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
-    ) {}
+    constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) {}
 
     showDialog(
         content: PolymorpheusContent<TuiDialogContext>,
         textFieldSize: TuiSizeL | TuiSizeS,
     ): void {
-        this.dialogService.open(content, {data: {textFieldSize}}).subscribe();
+        this.dialogs.open(content, {data: {textFieldSize}}).subscribe();
     }
 }

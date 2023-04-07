@@ -61,8 +61,8 @@ export class TuiStepperComponent {
     activeItemIndex = 0;
 
     constructor(
-        @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TuiScrollService) private readonly scrollService: TuiScrollService,
         @Inject(TuiResizeService) resize$: Observable<void>,
     ) {
@@ -115,7 +115,7 @@ export class TuiStepperComponent {
 
         this.activeItemIndex = index;
         this.activeItemIndexChange.emit(index);
-        this.changeDetectorRef.markForCheck();
+        this.cdr.markForCheck();
         this.scrollIntoView(index);
     }
 
@@ -144,7 +144,7 @@ export class TuiStepperComponent {
             return;
         }
 
-        const {nativeElement} = this.elementRef;
+        const {nativeElement} = this.el;
         const {clientHeight, clientWidth, offsetTop, offsetLeft} = nativeElement;
         const {
             offsetHeight,

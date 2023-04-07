@@ -36,7 +36,7 @@ export class TuiLazyLoadingDirective {
         @Inject(TuiLazyLoadingService)
         private readonly src$: TuiLazyLoadingService,
         @Inject(ElementRef)
-        private readonly elementRef: ElementRef<HTMLImageElement>,
+        private readonly el: ElementRef<HTMLImageElement>,
     ) {
         if (!this.supported) {
             this.src$.subscribe(src => {
@@ -46,7 +46,7 @@ export class TuiLazyLoadingDirective {
     }
 
     private get supported(): boolean {
-        return 'loading' in this.elementRef.nativeElement;
+        return 'loading' in this.el.nativeElement;
     }
 
     @HostListener('load')

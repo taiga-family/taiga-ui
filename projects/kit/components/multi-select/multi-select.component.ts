@@ -143,7 +143,7 @@ export class TuiMultiSelectComponent<T>
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_ARROW_MODE)
         private readonly arrowMode: TuiArrowMode,
         @Inject(TUI_ITEMS_HANDLERS)
@@ -155,7 +155,7 @@ export class TuiMultiSelectComponent<T>
         @Inject(TUI_IS_MOBILE)
         readonly isMobile: boolean,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     @HostBinding('attr.data-size')

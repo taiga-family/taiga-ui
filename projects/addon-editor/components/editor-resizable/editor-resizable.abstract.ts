@@ -16,13 +16,10 @@ export abstract class AbstractTuiEditorResizable<
     protected _height = 0;
     protected _width = 0;
 
-    constructor(documentRef: Document, destroy$: TuiDestroyService) {
+    constructor(doc: Document, destroy$: TuiDestroyService) {
         super();
 
-        merge(
-            tuiTypedFromEvent(documentRef, `touchend`),
-            tuiTypedFromEvent(documentRef, `mouseup`),
-        )
+        merge(tuiTypedFromEvent(doc, `touchend`), tuiTypedFromEvent(doc, `mouseup`))
             .pipe(takeUntil(destroy$))
             .subscribe(() =>
                 this.updateAttributes({width: this.width, height: this.height}),

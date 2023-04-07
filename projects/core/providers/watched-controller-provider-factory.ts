@@ -5,10 +5,10 @@ import {takeUntil} from 'rxjs/operators';
 
 export function tuiWatchedControllerFactory(
     controller: AbstractTuiController,
-    changeDetectorRef: ChangeDetectorRef,
+    cdr: ChangeDetectorRef,
     destroy$: Observable<void>,
 ): AbstractTuiController {
-    controller.change$.pipe(tuiWatch(changeDetectorRef), takeUntil(destroy$)).subscribe();
+    controller.change$.pipe(tuiWatch(cdr), takeUntil(destroy$)).subscribe();
 
     return controller;
 }

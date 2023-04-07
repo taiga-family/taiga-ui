@@ -19,7 +19,7 @@ import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 })
 export class TuiSheetStopDirective {
     constructor(
-        @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) el: ElementRef<HTMLElement>,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(TUI_SHEET_DRAGGED) dragged$: Observable<boolean>,
         @Inject(TUI_SHEET_SCROLL) scroll$: Observable<number>,
@@ -27,7 +27,7 @@ export class TuiSheetStopDirective {
     ) {
         scroll$
             .pipe(
-                map(y => Math.floor(y) > elementRef.nativeElement.offsetTop),
+                map(y => Math.floor(y) > el.nativeElement.offsetTop),
                 distinctUntilChanged(),
                 withLatestFrom(dragged$),
                 map(([above, dragged]) => !above && !dragged),
@@ -38,7 +38,7 @@ export class TuiSheetStopDirective {
             .subscribe(() => {
                 nativeElement.style.overflow = 'hidden';
                 nativeElement.classList.remove('_stuck'); // iOS
-                nativeElement.scrollTop = elementRef.nativeElement.offsetTop;
+                nativeElement.scrollTop = el.nativeElement.offsetTop;
 
                 setTimeout(() => {
                     nativeElement.style.overflow = '';

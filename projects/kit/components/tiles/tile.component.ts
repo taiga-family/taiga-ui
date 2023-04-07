@@ -56,7 +56,7 @@ export class TuiTileComponent {
 
     constructor(
         @Inject(NgZone) private readonly ngZone: NgZone,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TuiTilesComponent) private readonly tiles: TuiTilesComponent,
         @Inject(TuiResizeService) private readonly resize$: Observable<unknown>,
         @Inject(MutationObserverService) private readonly mutation$: Observable<unknown>,
@@ -73,7 +73,7 @@ export class TuiTileComponent {
     }
 
     get element(): HTMLElement {
-        return this.elementRef.nativeElement;
+        return this.el.nativeElement;
     }
 
     @HostListener('pointerenter')

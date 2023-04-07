@@ -74,7 +74,7 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInter
 
     constructor(
         @Inject(TuiAlertService)
-        private readonly alertService: TuiAlertService,
+        private readonly alerts: TuiAlertService,
     ) {
         super();
     }
@@ -98,7 +98,7 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInter
     }
 
     onBinChange(bin: string | null): void {
-        this.alertService.open(`bin: ${bin}`).subscribe();
+        this.alerts.open(`bin: ${bin}`).subscribe();
     }
 
     getContentVariants(

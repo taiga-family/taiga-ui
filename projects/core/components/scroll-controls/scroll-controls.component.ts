@@ -45,7 +45,7 @@ export class TuiScrollControlsComponent {
     constructor(
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
         @Inject(NgZone) private readonly ngZone: NgZone,
-        @Inject(DOCUMENT) private readonly documentRef: Document,
+        @Inject(DOCUMENT) private readonly doc: Document,
         @Optional()
         @Inject(TUI_SCROLL_REF)
         private readonly scrollRef: ElementRef<HTMLElement> | null,
@@ -56,7 +56,7 @@ export class TuiScrollControlsComponent {
     private get scrollbars(): [boolean, boolean] {
         const {clientHeight, scrollHeight, clientWidth, scrollWidth} = this.scrollRef
             ? this.scrollRef.nativeElement
-            : this.documentRef.documentElement;
+            : this.doc.documentElement;
 
         return [
             Math.ceil((clientHeight / scrollHeight) * 100) < 100,

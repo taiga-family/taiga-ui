@@ -16,13 +16,13 @@ export class TuiFocusVisibleService extends Observable<boolean> {
 
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<Element>,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
     ) {
         super(subscriber => this.focusVisible$.subscribe(subscriber));
 
         this.focusVisible$ = tuiFocusVisibleObservable(nativeElement).pipe(
-            tuiWatch(changeDetectorRef),
+            tuiWatch(cdr),
             takeUntil(destroy$),
         );
     }

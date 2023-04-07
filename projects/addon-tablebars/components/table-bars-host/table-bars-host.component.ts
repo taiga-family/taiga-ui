@@ -35,11 +35,11 @@ export class TuiTableBarsHostComponent {
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
         @Inject(TUI_MEDIA) private readonly media: TuiMedia,
-        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(WINDOW) private readonly win: Window,
     ) {}
 
     get isMobile(): boolean {
-        return tuiIsMobile(this.windowRef, this.media);
+        return tuiIsMobile(this.win, this.media);
     }
 
     get closeIcon(): string {

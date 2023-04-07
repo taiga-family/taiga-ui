@@ -30,11 +30,11 @@ export class TuiPushAlertDirective extends PolymorpheusTemplate {
 
     constructor(
         @Inject(TemplateRef) template: TemplateRef<any>,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(forwardRef(() => TuiPushService)) push: TuiPushService,
     ) {
-        super(template, changeDetectorRef);
+        super(template, cdr);
 
         this.show$
             .pipe(

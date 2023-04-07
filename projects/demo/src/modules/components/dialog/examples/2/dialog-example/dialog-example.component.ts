@@ -15,7 +15,7 @@ export class DialogExampleComponent {
     items = [10, 50, 100];
 
     constructor(
-        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+        @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
         @Inject(POLYMORPHEUS_CONTEXT)
         private readonly context: TuiDialogContext<number, number>,
     ) {}
@@ -35,6 +35,6 @@ export class DialogExampleComponent {
     }
 
     showDialog(content: TemplateRef<TuiDialogContext>): void {
-        this.dialogService.open(content, {dismissible: true}).subscribe();
+        this.dialogs.open(content, {dismissible: true}).subscribe();
     }
 }

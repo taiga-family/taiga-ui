@@ -19,11 +19,11 @@ export class TuiAlertsExampleComponent4 {
     readonly notification: Observable<void>;
 
     constructor(
-        @Inject(TuiAlertService) alertService: TuiAlertService,
+        @Inject(TuiAlertService) alerts: TuiAlertService,
         @Inject(Router) router: Router,
         @Inject(Injector) private readonly injector: Injector,
     ) {
-        this.notification = alertService
+        this.notification = alerts
             .open<number>(
                 new PolymorpheusComponent(AlertExampleWithDataComponent, this.injector),
                 {
@@ -35,7 +35,7 @@ export class TuiAlertsExampleComponent4 {
             )
             .pipe(
                 switchMap(response =>
-                    alertService.open(`Got a value — ${response}`, {
+                    alerts.open(`Got a value — ${response}`, {
                         label: 'Information',
                     }),
                 ),

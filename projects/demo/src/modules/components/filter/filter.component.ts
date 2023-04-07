@@ -86,10 +86,10 @@ export class ExampleTuiFilterComponent {
 
     constructor(
         @Inject(TuiAlertService)
-        private readonly alertService: TuiAlertService,
+        private readonly alerts: TuiAlertService,
     ) {}
 
     onToggledItemChange(item: unknown): void {
-        this.alertService.open(String(item)).subscribe();
+        this.alerts.open(String(item)).subscribe();
     }
 }

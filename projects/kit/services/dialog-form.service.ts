@@ -7,9 +7,7 @@ import {defer, Observable, of} from 'rxjs';
 export class TuiDialogFormService {
     private dirty = false;
 
-    constructor(
-        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
-    ) {}
+    constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) {}
 
     markAsDirty(): void {
         this.dirty = true;
@@ -22,7 +20,7 @@ export class TuiDialogFormService {
     withPrompt(options: Partial<TuiDialogOptions<TuiPromptData>>): Observable<boolean> {
         return defer(() =>
             this.dirty
-                ? this.dialogService.open<boolean>(TUI_PROMPT, {
+                ? this.dialogs.open<boolean>(TUI_PROMPT, {
                       size: `s`,
                       ...options,
                   })

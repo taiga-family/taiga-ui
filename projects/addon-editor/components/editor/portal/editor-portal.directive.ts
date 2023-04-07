@@ -14,13 +14,11 @@ import {TuiEditorPortalService} from './editor-portal.service';
 export class TuiEditorPortalDirective extends TuiRectAccessor {
     readonly type = 'viewport';
 
-    constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-    ) {
+    constructor(@Inject(ElementRef) private readonly el: ElementRef<HTMLElement>) {
         super();
     }
 
     getClientRect(): ClientRect {
-        return this.elementRef.nativeElement.getBoundingClientRect();
+        return this.el.nativeElement.getBoundingClientRect();
     }
 }

@@ -38,12 +38,12 @@ export class TuiSheetTopDirective {
         @Inject(TUI_SHEET_SCROLL) private readonly scroll$: Observable<number>,
         @Inject(TUI_SHEET)
         private readonly component: TuiSheetRequiredProps,
-        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(WINDOW) private readonly win: Window,
     ) {}
 
     private getY(scrollTop: number): number {
         const value = scrollTop - this.stop;
-        const total = this.windowRef.innerHeight - this.component.item.offset - this.stop;
+        const total = this.win.innerHeight - this.component.item.offset - this.stop;
 
         return this.stop && tuiClamp(100 - (value / total) * 100, 0, 100);
     }

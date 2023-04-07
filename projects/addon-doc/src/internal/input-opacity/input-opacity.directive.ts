@@ -7,7 +7,7 @@ import {TUI_FOCUSABLE_ITEM_ACCESSOR, TuiFocusableElementAccessor} from '@taiga-u
 export class TuiInputOpacityDirective {
     @Input()
     set tuiInputOpacity(opacity: number) {
-        const {nativeFocusableElement} = this.tuiFocusableComponent;
+        const {nativeFocusableElement} = this.focusable;
 
         if (nativeFocusableElement) {
             this.renderer.setStyle(nativeFocusableElement, 'opacity', opacity / 100);
@@ -17,6 +17,6 @@ export class TuiInputOpacityDirective {
     constructor(
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(TUI_FOCUSABLE_ITEM_ACCESSOR)
-        private readonly tuiFocusableComponent: TuiFocusableElementAccessor,
+        private readonly focusable: TuiFocusableElementAccessor,
     ) {}
 }

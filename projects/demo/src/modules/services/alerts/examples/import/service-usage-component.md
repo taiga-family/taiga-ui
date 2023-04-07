@@ -5,10 +5,10 @@ import {CustomNotificationComponent} from './custom-notification.component';
 //...
 
 export class MyComponent {
-  constructor(@Inject(TuiAlertService) private readonly alertService: TuiAlertService) {
+  constructor(@Inject(TuiAlertService) private readonly alerts: TuiAlertService) {
     //...
 
-    this.alertService.open(new PolymorpheusComponent(CustomNotificationComponent)).subscribe({
+    this.alerts.open(new PolymorpheusComponent(CustomNotificationComponent)).subscribe({
       complete: () => {
         console.log('Notification is closed');
       },

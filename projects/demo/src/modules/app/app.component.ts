@@ -52,7 +52,7 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
         @Inject(LOCAL_STORAGE) protected readonly storage: Storage,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
         @Inject(Injector) private readonly injector: Injector,
-        @Inject(DOCUMENT) private readonly documentRef: Document,
+        @Inject(DOCUMENT) private readonly doc: Document,
         @Inject(APP_BASE_HREF) private readonly appBaseHref: string,
     ) {
         super(isCypress, pageLoaded$, selectedVersion);
@@ -96,13 +96,13 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
      * we use fallback for correct processing of routing
      */
     private setBaseHrefIfNotPresent(): void {
-        if (this.documentRef.getElementsByTagName('base')?.[0]?.href) {
+        if (this.doc.getElementsByTagName('base')?.[0]?.href) {
             return;
         }
 
-        const base = this.documentRef.createElement('base');
+        const base = this.doc.createElement('base');
 
         base.href = this.appBaseHref;
-        this.documentRef.getElementsByTagName('head')?.[0]?.appendChild(base);
+        this.doc.getElementsByTagName('head')?.[0]?.appendChild(base);
     }
 }

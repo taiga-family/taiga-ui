@@ -108,7 +108,7 @@ export class TuiInputFilesComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef)
-        changeDetectorRef: ChangeDetectorRef,
+        cdr: ChangeDetectorRef,
         @Inject(TUI_IS_MOBILE)
         readonly isMobile: boolean,
         @Inject(TUI_INPUT_FILE_TEXTS)
@@ -128,7 +128,7 @@ export class TuiInputFilesComponent
         @Inject(TUI_INPUT_FILES_OPTIONS)
         readonly options: TuiInputFilesOptions,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     get computedMultiple(): boolean {

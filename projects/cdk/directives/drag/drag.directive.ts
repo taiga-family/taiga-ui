@@ -10,7 +10,7 @@ import {filter, map} from 'rxjs/operators';
     selector: '[tuiDragStart], [tuiDragContinues], [tuiDragEnd]',
 })
 export class TuiDragDirective {
-    private readonly dragAndDropFrom$ = tuiDragAndDropFrom(this.elementRef.nativeElement);
+    private readonly dragAndDropFrom$ = tuiDragAndDropFrom(this.el.nativeElement);
 
     @Output('tuiDragStart')
     // eslint-disable-next-line @angular-eslint/no-output-native
@@ -32,5 +32,5 @@ export class TuiDragDirective {
         map(({event}) => event),
     );
 
-    constructor(@Inject(ElementRef) private readonly elementRef: ElementRef<Element>) {}
+    constructor(@Inject(ElementRef) private readonly el: ElementRef<Element>) {}
 }

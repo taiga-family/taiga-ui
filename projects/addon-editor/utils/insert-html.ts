@@ -6,23 +6,23 @@ import {TuiDocumentSelectionException} from '@taiga-ui/cdk';
  *
  * @throws Will throw an error if selection could not be retrieved
  *
- * @param documentRef document to execute on
+ * @param doc document to execute on
  * @param html html to be inserted
  */
-export function tuiInsertHtml(documentRef: Document, html: string): void {
-    if (documentRef.queryCommandSupported(`insertHTML`)) {
-        documentRef.execCommand(`insertHTML`, false, html);
+export function tuiInsertHtml(doc: Document, html: string): void {
+    if (doc.queryCommandSupported(`insertHTML`)) {
+        doc.execCommand(`insertHTML`, false, html);
 
         return;
     }
 
-    const selection = documentRef.getSelection();
+    const selection = doc.getSelection();
 
     if (!selection) {
         throw new TuiDocumentSelectionException();
     }
 
-    documentRef.execCommand(`ms-beginUndoUnit`);
+    doc.execCommand(`ms-beginUndoUnit`);
 
     const range = selection.getRangeAt(0);
     const documentFragment = range.createContextualFragment(html);
@@ -30,5 +30,5 @@ export function tuiInsertHtml(documentRef: Document, html: string): void {
     range.deleteContents();
     range.insertNode(documentFragment);
 
-    documentRef.execCommand(`ms-endUndoUnit`);
+    doc.execCommand(`ms-endUndoUnit`);
 }

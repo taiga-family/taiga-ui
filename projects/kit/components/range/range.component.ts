@@ -84,10 +84,10 @@ export class TuiRangeComponent
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
@@ -110,7 +110,7 @@ export class TuiRangeComponent
     }
 
     get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.el.nativeElement);
     }
 
     get fractionStep(): number {
@@ -151,7 +151,7 @@ export class TuiRangeComponent
         const rightThumbElement = sliderRightRef.nativeElement;
 
         const isRightThumb =
-            target === this.elementRef.nativeElement
+            target === this.el.nativeElement
                 ? this.lastActiveThumb === 'right'
                 : target === rightThumbElement;
         const activeThumbElement = isRightThumb ? rightThumbElement : leftThumbElement;

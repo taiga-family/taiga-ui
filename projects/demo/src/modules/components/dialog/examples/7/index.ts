@@ -14,12 +14,12 @@ import {SearchDialogExampleComponent} from './search-example/search-dialog-examp
 })
 export class TuiDialogExampleComponent7 {
     constructor(
-        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+        @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
         @Inject(Injector) private readonly injector: Injector,
     ) {}
 
     showDialog(): void {
-        this.dialogService
+        this.dialogs
             .open(
                 new PolymorpheusComponent(SearchDialogExampleComponent, this.injector),
                 {
