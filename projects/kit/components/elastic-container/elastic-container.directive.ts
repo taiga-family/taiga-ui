@@ -26,7 +26,7 @@ export class TuiElasticContainerDirective {
     @Output()
     readonly tuiElasticContainer = merge(this.resize$, this.mutation$).pipe(
         debounceTime(0),
-        map(() => this.el.nativeElement.clientHeight),
+        map(() => this.el.nativeElement.clientHeight - 1),
         distinctUntilChanged(),
     );
 

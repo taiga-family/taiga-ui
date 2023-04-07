@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, HostBinding} from '@angular/core';
+import {shouldCall} from '@tinkoff/ng-event-plugins';
 
 @Component({
     selector: 'tui-elastic-container',
@@ -9,4 +10,12 @@ import {ChangeDetectionStrategy, Component, HostBinding} from '@angular/core';
 export class TuiElasticContainerComponent {
     @HostBinding('style.height.px')
     height = NaN;
+
+    @HostBinding('class._transitioning')
+    transitions = 0;
+
+    @shouldCall(name => name === 'height')
+    onAnimation(_name: string, count: number): void {
+        this.transitions += count;
+    }
 }
