@@ -198,7 +198,7 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: `components/block-status`,
+        path: `layout/block-status`,
         loadChildren: async () =>
             (await import(`../components/block-status/block-status.module`))
                 .ExampleTuiBlockStatusModule,

@@ -1,9 +1,6 @@
-<div
-    *ngIf="buttonSize$ | async as size"
-    class="container"
->
+<div class="container">
     <tui-block-status
-        class="block"
+        class="card"
         [card]="true"
     >
         <img
@@ -12,20 +9,18 @@
             class="image"
         />
 
-        <span class="text">Hide the unwanted block</span>
+        We hide the unwanted block
 
-        <div class="actions">
-            <button
-                tuiButton
-                appearance="secondary"
-                [size]="size"
-            >
-                Return
-            </button>
-        </div>
+        <button
+            tuiButton
+            tuiItem
+            appearance="secondary"
+        >
+            Return
+        </button>
     </tui-block-status>
     <tui-block-status
-        class="block"
+        class="card"
         [card]="true"
     >
         <img
@@ -34,16 +29,14 @@
             class="image"
         />
 
-        <span class="text">Something happened in this block</span>
+        Something happened in this block
 
-        <div class="actions">
-            <button
-                tuiButton
-                appearance="secondary"
-                [size]="size"
-            >
-                Try again
-            </button>
-        </div>
+        <button
+            tuiButton
+            tuiItem
+            appearance="secondary"
+        >
+            Try again
+        </button>
     </tui-block-status>
 </div>

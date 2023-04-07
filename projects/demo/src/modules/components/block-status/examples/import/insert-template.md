@@ -1,8 +1,13 @@
 ```html
 <tui-block-status [card]="card">
-  <img class="image" />
-  <h4 class="title">Title</h4>
-  <span class="text"></span>
-  <div class="actions"></div>
+  <img src="src" />
+  <h4>Title</h4>
+  Description
+  <button
+    tuiButton
+    tuiItem
+  >
+    Button
+  </button>
 </tui-block-status>
 ```

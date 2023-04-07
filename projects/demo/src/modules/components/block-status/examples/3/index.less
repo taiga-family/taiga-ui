@@ -1,7 +1,6 @@
 .container {
     display: flex;
     gap: 1rem;
-    height: 20rem;
 
     :host-context(tui-root._mobile) & {
         flex-direction: column;
@@ -13,23 +12,7 @@
     height: 5.5rem;
 }
 
-.title {
-    margin: 0;
-}
-
-.block {
+.card {
     background-color: var(--tui-base-02);
-}
-
-.actions {
-    display: flex;
-    flex-direction: column;
-
-    & > *:not(:last-child) {
-        margin-bottom: 0.75rem;
-    }
-
-    :host-context(tui-root._mobile) & > *:not(:last-child) {
-        margin-right: 0.5rem;
-    }
+    height: auto;
 }

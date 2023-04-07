@@ -1,7 +1,7 @@
 <!-- eslint-disable @html-eslint/no-inline-styles -->
 <tui-doc-page
     header="BlockStatus"
-    package="KIT"
+    package="LAYOUT"
     type="components"
 >
     <ng-template pageTab>
@@ -30,6 +30,14 @@
         >
             <tui-block-status-example-3></tui-block-status-example-3>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="customization"
+            heading="customization"
+            [content]="example4"
+        >
+            <tui-block-status-example-4></tui-block-status-example-4>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -38,25 +46,15 @@
                 <img
                     alt="hidden content"
                     src="./assets/images/camping.svg"
-                    height="144"
-                    width="144"
-                    class="image"
                 />
-                <h4
-                    style="margin: 0"
-                    class="title"
+                <h4>Title</h4>
+                Description
+                <button
+                    tuiButton
+                    appearance="secondary"
                 >
-                    Title
-                </h4>
-                <span class="text">Description</span>
-                <div class="actions">
-                    <button
-                        tuiButton
-                        appearance="secondary"
-                    >
-                        Action
-                    </button>
-                </div>
+                    Action
+                </button>
             </tui-block-status>
         </tui-doc-demo>
         <tui-doc-documentation>

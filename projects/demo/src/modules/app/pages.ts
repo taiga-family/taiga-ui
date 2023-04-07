@@ -173,10 +173,10 @@ export const pages: TuiDocPages = [
         ],
     },
     {
-        section: `Components`,
+        section: `Layout`,
         title: `BlockStatus`,
-        keywords: `блок, статус, block, status, block-status, blockstatus`,
-        route: `/components/block-status`,
+        keywords: `блок, статус, block, status, block-status, blockstatus, layout`,
+        route: `/layout/block-status`,
     },
     {
         section: `Components`,
@@ -1211,7 +1211,7 @@ export const pages: TuiDocPages = [
                 route: `/directives/lazy-loading`,
             },
             {
-                section: $localize`Tools`,
+                section: `Tools`,
                 title: `Let`,
                 keywords: `let, переменная, шаблон, геттер, getter, pipe, пайп, async, подписка`,
                 route: `/directives/let`,
@@ -1229,19 +1229,19 @@ export const pages: TuiDocPages = [
                 route: `/directives/mode`,
             },
             {
-                section: $localize`Tools`,
+                section: `Tools`,
                 title: `Overscroll`,
                 keywords: `overscroll, scroll, скролл`,
                 route: `/directives/overscroll`,
             },
             {
-                section: $localize`Tools`,
+                section: `Tools`,
                 title: `Pan`,
                 keywords: `pan, panning, панарамирование, пан`,
                 route: `/directives/pan`,
             },
             {
-                section: $localize`Tools`,
+                section: `Tools`,
                 title: `Portal`,
                 keywords: `template, шаблон, портал`,
                 route: `/directives/portal`,
@@ -1253,13 +1253,13 @@ export const pages: TuiDocPages = [
                 route: `/directives/present`,
             },
             {
-                section: $localize`Tools`,
+                section: `Tools`,
                 title: `Resizer`,
                 keywords: `scale, drag, размер, ресайз`,
                 route: `/directives/resizer`,
             },
             {
-                section: $localize`Tools`,
+                section: `Tools`,
                 title: `Ripple`,
                 keywords: `touch, mobile, смартфон, pwa, native, hybrid, android`,
                 route: `/directives/ripple`,
@@ -1271,13 +1271,13 @@ export const pages: TuiDocPages = [
                 route: `/directives/sidebar`,
             },
             {
-                section: $localize`Tools`,
+                section: `Tools`,
                 title: `Swipe`,
                 keywords: `swipe, свайп`,
                 route: `/directives/swipe`,
             },
             {
-                section: $localize`Tools`,
+                section: `Tools`,
                 title: `TextfieldController`,
                 keywords:
                     `контроллер, ввод, параметры, настройка, cleaner, autocomplete, exampleText, inputMode, ` +
@@ -1297,13 +1297,13 @@ export const pages: TuiDocPages = [
                 route: `/directives/validator`,
             },
             {
-                section: $localize`Tools`,
+                section: `Tools`,
                 title: `ValueChanges`,
                 keywords: `control, form, output, emit, value, changes`,
                 route: `/directives/value-changes`,
             },
             {
-                section: $localize`Tools`,
+                section: `Tools`,
                 title: `Zoom`,
                 keywords: `zoom, scale, pinch, зум, масштаб`,
                 route: `/directives/zoom`,
