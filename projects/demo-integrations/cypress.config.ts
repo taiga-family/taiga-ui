@@ -31,9 +31,12 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
      * @description:
      * Number of times to retry a failed test.
      * If a number is set, tests will retry in both runMode and openMode.
+     *
+     * the problem is that on the second try,
+     * it may start comparing images that already exist
      */
     retries: {
-        runMode: 1, // Configure retry attempts for `cypress run`
+        runMode: 0, // Configure retry attempts for `cypress run`
         openMode: 0, // Configure retry attempts for `cypress open`
     },
 

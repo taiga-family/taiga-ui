@@ -4,44 +4,37 @@ describe(`ComboBox`, () => {
             it(`search shouldn't be reset if an exact match is entered when strict is ${strict}`, () => {
                 visitBy(strict);
                 openFormValue();
-                cy.matchImageSnapshot(`search-should-not-be-reset-strict-${strict}`, {
-                    capture: `viewport`,
-                });
+                cy.tuiWaitBeforeScreenshot().matchImageSnapshot(
+                    `search-should-not-be-reset-strict-${strict}`,
+                    {capture: `viewport`},
+                );
 
                 getInput().type(`Rubles (500)`);
                 waitCheckmark();
-                cy.matchImageSnapshot(
+                cy.tuiWaitBeforeScreenshot().matchImageSnapshot(
                     `search-should-not-be-reset-strict-waited-mark-${strict}`,
-                    {
-                        capture: `viewport`,
-                    },
+                    {capture: `viewport`},
                 );
 
                 clickFirstOption();
                 focusWrapper();
-                cy.matchImageSnapshot(
+                cy.tuiWaitBeforeScreenshot().matchImageSnapshot(
                     `search-should-not-be-reset-strict-focused-${strict}`,
-                    {
-                        capture: `viewport`,
-                    },
+                    {capture: `viewport`},
                 );
 
                 getInput().type(`{backspace}`);
                 focusWrapper();
-                cy.matchImageSnapshot(
+                cy.tuiWaitBeforeScreenshot().matchImageSnapshot(
                     `search-should-not-be-reset-strict-backspaced-${strict}`,
-                    {
-                        capture: `viewport`,
-                    },
+                    {capture: `viewport`},
                 );
 
                 getInput().type(`{selectall}{backspace}`);
                 focusWrapper();
-                cy.matchImageSnapshot(
+                cy.tuiWaitBeforeScreenshot().matchImageSnapshot(
                     `search-should-not-be-reset-strict-remove-all-${strict}`,
-                    {
-                        capture: `viewport`,
-                    },
+                    {capture: `viewport`},
                 );
             });
 
@@ -51,9 +44,10 @@ describe(`ComboBox`, () => {
 
                 getInput().type(`dOlLaRs (237)`);
                 waitCheckmark();
-                cy.matchImageSnapshot(`correct-word-match-when-strict-${strict}`, {
-                    capture: `viewport`,
-                });
+                cy.tuiWaitBeforeScreenshot().matchImageSnapshot(
+                    `correct-word-match-when-strict-${strict}`,
+                    {capture: `viewport`},
+                );
 
                 getInput()
                     .type(`{backspace}`, {force: true})
@@ -62,35 +56,27 @@ describe(`ComboBox`, () => {
                     .wait(200)
                     .type(`{backspace}`, {force: true});
 
-                cy.matchImageSnapshot(
+                cy.tuiWaitBeforeScreenshot().matchImageSnapshot(
                     `correct-word-match-when-strict-backspaced-${strict}`,
-                    {
-                        capture: `viewport`,
-                    },
+                    {capture: `viewport`},
                 );
 
                 focusWrapper();
-                cy.matchImageSnapshot(
+                cy.tuiWaitBeforeScreenshot().matchImageSnapshot(
                     `correct-word-match-when-strict-focused-${strict}`,
-                    {
-                        capture: `viewport`,
-                    },
+                    {capture: `viewport`},
                 );
 
                 getInput().type(`{selectall}{backspace}`, {force: true});
-                cy.matchImageSnapshot(
+                cy.tuiWaitBeforeScreenshot().matchImageSnapshot(
                     `correct-word-match-when-strict-remove-all-${strict}`,
-                    {
-                        capture: `viewport`,
-                    },
+                    {capture: `viewport`},
                 );
 
                 focusWrapper();
-                cy.matchImageSnapshot(
+                cy.tuiWaitBeforeScreenshot().matchImageSnapshot(
                     `correct-word-match-when-strict-focused-2-${strict}`,
-                    {
-                        capture: `viewport`,
-                    },
+                    {capture: `viewport`},
                 );
             });
         }

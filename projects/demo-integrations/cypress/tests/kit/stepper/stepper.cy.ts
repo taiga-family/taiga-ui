@@ -12,9 +12,16 @@ describe(`Stepper`, () => {
                 cy.get(`#demo-content [tuiStep]`).should(`exist`).as(`steps`);
 
                 cy.get(`@steps`).eq(1).click();
-                cy.get(`#demo-content`).matchImageSnapshot(`0-horizontal-scroll-step2`);
+
+                cy.get(`#demo-content`)
+                    .wait(5000) // wait flaky
+                    .matchImageSnapshot(`0-horizontal-scroll-step2`);
+
                 cy.get(`@steps`).eq(2).click();
-                cy.get(`#demo-content`).matchImageSnapshot(`0-horizontal-scroll-step3`);
+
+                cy.get(`#demo-content`)
+                    .wait(5000) // wait flaky
+                    .matchImageSnapshot(`0-horizontal-scroll-step3`);
             });
 
             it(`vertical`, () => {
@@ -26,13 +33,18 @@ describe(`Stepper`, () => {
                 cy.get(`#demo-content [tuiStep]`).should(`exist`).as(`steps`);
 
                 cy.get(`@steps`).eq(1).click();
-                cy.matchImageSnapshot(`1-vertical-scroll-step2`, {
-                    capture: `viewport`,
-                });
+
+                cy.wait(5000) // wait flaky
+                    .matchImageSnapshot(`1-vertical-scroll-step2`, {
+                        capture: `viewport`,
+                    });
+
                 cy.get(`@steps`).eq(2).click();
-                cy.matchImageSnapshot(`1-vertical-scroll-step3`, {
-                    capture: `viewport`,
-                });
+
+                cy.wait(5000) // wait flaky
+                    .matchImageSnapshot(`1-vertical-scroll-step3`, {
+                        capture: `viewport`,
+                    });
             });
         },
     );
