@@ -10,11 +10,20 @@ env:
   NX_BRANCH: ${{ github.event.number }}
   NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
   NG_SERVER_PORT: 3333
+  # Cypress
+  SNAPSHOTS_KEY: e2e-${{ github.sha }}-${{ github.run_id }}-${{ github.event.number }}
+  SNAPSHOTS_PATH: ./projects/demo-integrations/cypress/snapshots
+  CYPRESS_API_URL: http://localhost:1234/
+  CYPRESS_failOnSnapshotDiff: 0
+  QT_X11_NO_MITSHM: 1
+  _X11_NO_MITSHM: 1
+  _MITSHM: 0
+  DISPLAY: ':99'
 
 jobs:
   build-demo:
     if: ${{ !contains(github.head_ref , 'release/') }}
-    name: Build demo # for reuse in e2e jobs
+    name: Build demo
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -35,7 +44,7 @@ jobs:
           key: ${{ env.CACHE_DIST_KEY }}
 
       - name: Building demo-app of git-branch without cache
-        run: npx nx build demo --skip-nx-cache -c next --output-path dist/demo/browser
+        run: npx nx build demo -c next --output-path dist/demo/browser
 
   cypress:
     if: ${{ !contains(github.head_ref , 'release/') }}
@@ -71,11 +80,9 @@ jobs:
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
-      - name: Setup Cypress and Sorry Cypress
-        uses: ./.github/actions/cypress
-        with:
-          cypress-api-url: http://localhost:1234/
-          snapshot-path: ./projects/demo-integrations/cypress/snapshots
+      - name: Ignore running parallel Xvfb servers
+        shell: bash
+        run: Xvfb :99 &
 
       - name: Download ${{ env.LOCAL_REF_DEMO }} for serve locally
         uses: actions/cache@v3
@@ -104,13 +111,32 @@ jobs:
 
       - name: Run screenshot tests on ${{ env.BASE_REF_DEMO }}
         continue-on-error: true
-        env: # note: need to collect all
-          # diff files for lumberjack bot
-          CYPRESS_failOnSnapshotDiff: 0
         run: npx nx e2e demo-integrations --key next --folder ${{ matrix.project }}
 
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
+
+      - name: Update artifacts / ${{ env.SNAPSHOTS_KEY }}
+        uses: actions/upload-artifact@v3
+        with:
+          path: ${{ env.SNAPSHOTS_PATH }}/**/*.diff.png
+          name: ${{ env.SNAPSHOTS_KEY }}
+          if-no-files-found: ignore
+          retention-days: 1
+
+  result:
+    if: ${{ !contains(github.head_ref , 'release/') }}
+    name: result
+    needs: [cypress]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Download artifacts / ${{ env.SNAPSHOTS_KEY }}
+        continue-on-error: true
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ env.SNAPSHOTS_KEY }}
+          path: ${{ env.SNAPSHOTS_PATH }}
 
       - name: Check if diff-output exists
         id: diff-checker
@@ -122,15 +148,6 @@ jobs:
         run: |
           find ${{ env.SNAPSHOTS_PATH }} -regex '.*\.diff\.png$' -exec echo "{}" \;
           exit 1
-
-      - name: Update artifacts / ${{ env.SNAPSHOTS_KEY }}
-        uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          path: ${{ env.SNAPSHOTS_PATH }}/**/*.diff.png
-          name: ${{ env.SNAPSHOTS_KEY }}
-          if-no-files-found: ignore
-          retention-days: 1
 
 concurrency:
   group: e2e-${{ github.workflow }}-${{ github.ref }}
