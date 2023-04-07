@@ -39,10 +39,10 @@
         tuiPreventDefault="mousedown"
         automation-id="tui-dialog__close"
         size="s"
-        appearance=""
         icon="tuiIconCloseLarge"
         shape="rounded"
         class="t-close"
+        [appearance]="fullscreen ? 'secondary' : ''"
         [title]="closeWord$ | async"
         (click)="close$.next()"
     ></button>
