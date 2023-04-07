@@ -149,14 +149,14 @@
     top: 1.5rem;
     right: 1.5rem;
     color: var(--tui-base-01);
-    background: rgba(104, 104, 104, 0.96);
 
-    &:hover {
-        background: rgba(159, 159, 159, 0.86);
-    }
-
-    :host:not([data-size='fullscreen']) & {
+    :host:not([data-size='fullscreen']):not([data-size='page']) & {
         animation: tuiFadeIn var(--tui-duration);
+        background: rgba(104, 104, 104, 0.96);
+
+        &:hover {
+            background: rgba(159, 159, 159, 0.86);
+        }
     }
 
     :host:not([data-size='fullscreen']).ng-animating & {
@@ -167,7 +167,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        background: transparent;
+        background: transparent !important;
         color: var(--tui-base-06);
 
         &:hover {

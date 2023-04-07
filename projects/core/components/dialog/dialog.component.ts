@@ -86,9 +86,13 @@ export class TuiDialogComponent<O, I> {
     @HostBinding('@tuiSlideInTop')
     @HostBinding('@tuiFadeIn')
     get slideInTop(): TuiAnimationOptions {
-        return this.size === 'fullscreen' || this.size === 'page' || this.isMobile
+        return this.fullscreen || this.isMobile
             ? this.fullscreenAnimation
             : this.animation;
+    }
+
+    get fullscreen(): boolean {
+        return this.size === 'fullscreen' || this.size === 'page';
     }
 
     private close(): void {
