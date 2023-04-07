@@ -16,11 +16,14 @@ import {
 import {
     EMPTY_QUERY,
     tuiDefaultProp,
+    TuiDestroyService,
     tuiGetOriginalArrayFromQueryList,
     tuiIsElement,
     tuiMoveFocus,
     tuiPure,
     tuiQueryListChanges,
+    TuiResizeService,
+    TuiScrollService,
 } from '@taiga-ui/cdk';
 import {TuiOrientation} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
@@ -30,21 +33,12 @@ import {delay} from 'rxjs/operators';
 // eslint-disable-next-line import/no-cycle
 import {TuiStepComponent} from './step/step.component';
 
-const ONLY_HORIZONTAL_SCROLL: ScrollIntoViewOptions = {
-    block: 'nearest',
-    inline: 'center',
-};
-
-const ONLY_VERTICAL_SCROLL: ScrollIntoViewOptions = {
-    block: 'center',
-    inline: 'nearest',
-};
-
 @Component({
     selector: 'tui-stepper, nav[tuiStepper]',
     templateUrl: './stepper.template.html',
     styleUrls: ['./stepper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [TuiResizeService, TuiDestroyService],
 })
 export class TuiStepperComponent {
     @ContentChildren(forwardRef(() => TuiStepComponent), {read: ElementRef})
@@ -68,7 +62,12 @@ export class TuiStepperComponent {
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
-    ) {}
+        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(TuiScrollService) private readonly scrollService: TuiScrollService,
+        @Inject(TuiResizeService) resize$: Observable<void>,
+    ) {
+        resize$.subscribe(() => this.scrollIntoView(this.activeItemIndex));
+    }
 
     @tuiPure
     get changes$(): Observable<unknown> {
@@ -138,11 +137,26 @@ export class TuiStepperComponent {
         tuiMoveFocus(index, stepElements, step);
     }
 
-    private scrollIntoView(targetStepIndex: number): void {
-        this.getNativeElements(this.steps)[targetStepIndex]?.scrollIntoView(
-            this.orientation === 'vertical'
-                ? ONLY_VERTICAL_SCROLL
-                : ONLY_HORIZONTAL_SCROLL,
-        );
+    private scrollIntoView(index: number): void {
+        const step = this.getNativeElements(this.steps)[index];
+
+        if (!step) {
+            return;
+        }
+
+        const {nativeElement} = this.elementRef;
+        const {clientHeight, clientWidth, offsetTop, offsetLeft} = nativeElement;
+        const {
+            offsetHeight,
+            offsetWidth,
+            offsetTop: stepOffsetTop,
+            offsetLeft: stepOffsetLeft,
+        } = step;
+        const top = stepOffsetTop - offsetTop - clientHeight / 2 + offsetHeight / 2;
+        const left = stepOffsetLeft - offsetLeft - clientWidth / 2 + offsetWidth / 2;
+
+        this.scrollService
+            .scroll$(nativeElement, Math.max(0, top), Math.max(0, left), 100)
+            .subscribe();
     }
 }
