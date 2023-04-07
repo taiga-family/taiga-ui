@@ -25,7 +25,7 @@ import {
     TuiResizeService,
     TuiScrollService,
 } from '@taiga-ui/cdk';
-import {TuiOrientation} from '@taiga-ui/core';
+import {TUI_ANIMATIONS_DURATION, TuiOrientation} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {delay} from 'rxjs/operators';
 
@@ -65,6 +65,7 @@ export class TuiStepperComponent {
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TuiScrollService) private readonly scrollService: TuiScrollService,
         @Inject(TuiResizeService) resize$: Observable<void>,
+        @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
     ) {
         resize$.subscribe(() => this.scrollIntoView(this.activeItemIndex));
     }
@@ -156,7 +157,12 @@ export class TuiStepperComponent {
         const left = stepOffsetLeft - offsetLeft - clientWidth / 2 + offsetWidth / 2;
 
         this.scrollService
-            .scroll$(nativeElement, Math.max(0, top), Math.max(0, left), 100)
+            .scroll$(
+                nativeElement,
+                Math.max(0, top),
+                Math.max(0, left),
+                this.duration / 3,
+            )
             .subscribe();
     }
 }
