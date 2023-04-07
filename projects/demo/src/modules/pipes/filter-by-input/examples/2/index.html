@@ -19,14 +19,7 @@
         <tui-data-list-wrapper
             *tuiDataList
             [items]="users | tuiFilterByInput : matcherUser"
-            [itemContent]="content"
+            [itemContent]="stringify | tuiStringifyContent"
         ></tui-data-list-wrapper>
-
-        <ng-template
-            #content
-            let-item
-        >
-            <span>{{ item.name }}</span>
-        </ng-template>
     </tui-combo-box>
 </form>

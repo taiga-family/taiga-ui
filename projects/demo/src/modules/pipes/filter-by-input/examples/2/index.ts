@@ -37,7 +37,7 @@ export class TuiFilterByInputExample2 {
         user2: new FormControl(),
     });
 
-    readonly stringify = (item: User): string => `${item.name}`;
+    readonly stringify = ({name}: User): string => name;
 
     readonly matcherString = (name: string, search: string): boolean =>
         name.split(' ').pop()!.toLowerCase().startsWith(search.toLowerCase());

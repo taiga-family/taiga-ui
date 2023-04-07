@@ -9,11 +9,11 @@ import {
     TuiDataListWrapperModule,
     TuiFilterByInputPipeModule,
     TuiInputModule,
+    TuiStringifyContentPipeModule,
 } from '@taiga-ui/kit';
 
 import {TuiFilterByInputExample1} from './examples/1';
 import {TuiFilterByInputExample2} from './examples/2';
-import {TuiFilterByInputExample3} from './examples/3';
 import {ExampleTuiFilterByInputComponent} from './filter-by-input.component';
 
 @NgModule({
@@ -26,13 +26,13 @@ import {ExampleTuiFilterByInputComponent} from './filter-by-input.component';
         TuiDataListModule,
         TuiDataListWrapperModule,
         TuiComboBoxModule,
+        TuiStringifyContentPipeModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiFilterByInputComponent)),
     ],
     declarations: [
         ExampleTuiFilterByInputComponent,
         TuiFilterByInputExample1,
         TuiFilterByInputExample2,
-        TuiFilterByInputExample3,
     ],
     exports: [ExampleTuiFilterByInputComponent],
 })
