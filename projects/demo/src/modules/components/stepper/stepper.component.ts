@@ -23,6 +23,11 @@ export class ExampleTuiStepperComponent {
         HTML: import('!!raw-loader!./examples/2/index.html'),
     };
 
+    readonly example3: TuiDocExample = {
+        TypeScript: import('!!raw-loader!./examples/3/index.ts'),
+        HTML: import('!!raw-loader!./examples/3/index.html'),
+    };
+
     activeItemIndex = 0;
 
     readonly orientationVariants: readonly TuiOrientationT[] = ['horizontal', 'vertical'];

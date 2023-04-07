@@ -1,0 +1,12 @@
+<tui-stepper
+    orientation="vertical"
+    class="stepper"
+    [activeItemIndex]="5"
+>
+    <button
+        *ngFor="let step of steps"
+        tuiStep
+    >
+        {{ step }}
+    </button>
+</tui-stepper>
