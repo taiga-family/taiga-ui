@@ -2,35 +2,42 @@
 <tui-input
     tuiHintContent="You can copy icon's name with a click"
     tuiTextfieldSize="m"
+    [formControl]="control"
     [tuiTextfieldLabelOutside]="true"
-    [(ngModel)]="search"
 >
     Input icon name to highlight
 </tui-input>
 
-<ng-container *tuiForAsync="let key of icons | tuiKeys">
-    <ng-container *ngIf="icons[key] | tuiFilter : matcher : search as filtered">
-        <div class="header-group">
-            <h2 class="title">
-                {{ key }}
-            </h2>
+<ng-container
+    *tuiLet="{
+        search: (search$ | async) ?? '',
+        timeout: (search$ | async)?.length ?? 0 > 0 ? 0 : 10
+    } as options"
+>
+    <ng-container *tuiForAsync="let key of icons | tuiKeys; timeout: options.timeout">
+        <ng-container *ngIf="icons[key] | tuiFilter : matcher : options.search as filtered">
+            <div class="header-group">
+                <h2 class="title">
+                    {{ key }}
+                </h2>
 
-            <tui-badge
-                size="m"
-                class="badge"
-                [hoverable]="true"
-                [value]="filtered.length.toString()"
-                [status]="filtered.length ? 'success' : 'error'"
-            ></tui-badge>
-        </div>
-        <p *ngIf="!filtered.length">Nothing found</p>
+                <tui-badge
+                    size="m"
+                    class="badge"
+                    [hoverable]="true"
+                    [value]="filtered.length.toString()"
+                    [status]="filtered.length ? 'success' : 'error'"
+                ></tui-badge>
+            </div>
+            <p *ngIf="!filtered.length">Nothing found</p>
 
-        <div class="icons">
-            <ng-container
-                *tuiForAsync="let icon of filtered"
-                [ngTemplateOutlet]="iconGroup?.template || null"
-                [ngTemplateOutletContext]="{icon: icon, group: key, copyPath: copyPath}"
-            ></ng-container>
-        </div>
+            <div class="icons">
+                <ng-container
+                    *tuiForAsync="let icon of filtered; timeout: options.timeout"
+                    [ngTemplateOutlet]="iconGroup?.template || null"
+                    [ngTemplateOutletContext]="{icon: icon, group: key, copyPath: copyPath}"
+                ></ng-container>
+            </div>
+        </ng-container>
     </ng-container>
 </ng-container>
