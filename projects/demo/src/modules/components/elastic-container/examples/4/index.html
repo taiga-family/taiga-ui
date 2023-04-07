@@ -1,0 +1,46 @@
+<button
+    tuiButton
+    size="s"
+    (click)="add()"
+>
+    Add item
+</button>
+<tui-elastic-container class="b-form tui-space_top-4">
+    <div
+        *ngFor="let item of items; let index = index"
+        class="wrapper"
+    >
+        <h3 class="title">
+            <button
+                tuiIconButton
+                appearance="secondary"
+                size="s"
+                icon="tuiIconChevronDown"
+                shape="rounded"
+                title="Expand"
+                class="expand"
+                [class.expand_open]="item.expanded"
+                (click)="item.expanded = !item.expanded"
+            ></button>
+            Nested form
+            <button
+                tuiIconButton
+                appearance="flat"
+                size="s"
+                icon="tuiIconTrash"
+                shape="rounded"
+                title="Remove"
+                class="remove"
+                (click)="remove(index)"
+            ></button>
+        </h3>
+        <tui-expand [expanded]="item.expanded">
+            <tui-input
+                class="tui-space_top-4"
+                [(ngModel)]="item.value"
+            >
+                Some input
+            </tui-input>
+        </tui-expand>
+    </div>
+</tui-elastic-container>

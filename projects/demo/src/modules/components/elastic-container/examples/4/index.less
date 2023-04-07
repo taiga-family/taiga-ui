@@ -1,0 +1,24 @@
+@import 'taiga-ui-local';
+
+.wrapper:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.expand {
+    .transition(transform);
+    margin-right: 0.5rem;
+
+    &_open {
+        transform: rotate(180deg);
+    }
+}
+
+.remove {
+    margin-left: auto;
+}
