@@ -12,14 +12,14 @@ import {map, shareReplay, startWith} from 'rxjs/operators';
     providedIn: `root`,
 })
 export class TuiBreakpointService extends Observable<MediaKey | null> {
-    constructor(@Inject(TUI_MEDIA) media: TuiMedia, @Inject(WINDOW) windowRef: Window) {
+    constructor(@Inject(TUI_MEDIA) media: TuiMedia, @Inject(WINDOW) win: Window) {
         const breakpoints = getBreakpoints(media);
         const events$ = breakpoints.map(({query}) =>
-            fromEvent<MediaQueryListEvent>(windowRef.matchMedia(query), `change`),
+            fromEvent<MediaQueryListEvent>(win.matchMedia(query), `change`),
         );
         const media$ = merge(...events$).pipe(
-            map(() => currentBreakpoint(breakpoints, windowRef.innerWidth).name),
-            startWith(currentBreakpoint(breakpoints, windowRef.innerWidth).name),
+            map(() => currentBreakpoint(breakpoints, win.innerWidth).name),
+            startWith(currentBreakpoint(breakpoints, win.innerWidth).name),
             shareReplay({bufferSize: 1, refCount: true}),
         );
 

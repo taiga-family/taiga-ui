@@ -12,13 +12,11 @@ export class TuiProjectClassDirective implements AfterViewChecked {
     @tuiDefaultProp()
     classNames: readonly string[] = [];
 
-    constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-    ) {}
+    constructor(@Inject(ElementRef) private readonly el: ElementRef<HTMLElement>) {}
 
     ngAfterViewChecked(): void {
         this.classNames.forEach(className => {
-            const hostElement = this.elementRef.nativeElement;
+            const hostElement = this.el.nativeElement;
 
             hostElement.classList.toggle(
                 className,

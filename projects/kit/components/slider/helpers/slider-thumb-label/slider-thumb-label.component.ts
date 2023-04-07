@@ -32,7 +32,7 @@ export class TuiSliderThumbLabelComponent implements AfterContentInit {
     }
 
     get ghostLeft(): number {
-        return this.ratio * (this.slider?.elementRef.nativeElement.offsetWidth || 0);
+        return this.ratio * (this.slider?.el.nativeElement.offsetWidth || 0);
     }
 
     ngAfterContentInit(): void {

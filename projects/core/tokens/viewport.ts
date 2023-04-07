@@ -7,7 +7,7 @@ import {TuiRectAccessor} from '@taiga-ui/core/abstract';
  */
 export const TUI_VIEWPORT = new InjectionToken<TuiRectAccessor>(`[TUI_VIEWPORT]`, {
     factory: () => {
-        const windowRef = inject(WINDOW);
+        const win = inject(WINDOW);
 
         return {
             type: `viewport`,
@@ -15,10 +15,10 @@ export const TUI_VIEWPORT = new InjectionToken<TuiRectAccessor>(`[TUI_VIEWPORT]`
                 return {
                     top: 0,
                     left: 0,
-                    right: windowRef.innerWidth,
-                    bottom: windowRef.innerHeight,
-                    width: windowRef.innerWidth,
-                    height: windowRef.innerHeight,
+                    right: win.innerWidth,
+                    bottom: win.innerHeight,
+                    width: win.innerWidth,
+                    height: win.innerHeight,
                 };
             },
         };

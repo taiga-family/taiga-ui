@@ -93,7 +93,7 @@ export class TuiInputCountComponent
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         private readonly textfieldController: TuiTextfieldController,
         @Inject(TUI_PLUS_MINUS_TEXTS)
@@ -104,7 +104,7 @@ export class TuiInputCountComponent
         @Inject(TUI_NUMBER_FORMAT)
         private readonly numberFormat: TuiNumberFormatSettings,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     @tuiPure

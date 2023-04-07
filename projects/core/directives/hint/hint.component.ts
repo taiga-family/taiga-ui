@@ -70,7 +70,7 @@ export class TuiHintComponent<C = any> {
         @Inject(TuiPositionService) position$: Observable<TuiPoint>,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Inject(TuiRectAccessor) protected readonly accessor: TuiRectAccessor,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
         @Inject(POLYMORPHEUS_CONTEXT)
         private readonly polymorpheus: TuiContextWithImplicit<TuiPortalItem<C>>,
@@ -105,8 +105,8 @@ export class TuiHintComponent<C = any> {
     @HostListener('document:click', ['$event.target'])
     onClick(target: HTMLElement): void {
         if (
-            !this.elementRef.nativeElement.contains(target) &&
-            !this.hover.elementRef.nativeElement.contains(target)
+            !this.el.nativeElement.contains(target) &&
+            !this.hover.el.nativeElement.contains(target)
         ) {
             this.hover.toggle(false);
         }
@@ -114,9 +114,8 @@ export class TuiHintComponent<C = any> {
 
     @tuiPure
     private update(top: number, left: number): void {
-        const {nativeElement} = this.elementRef;
-        const {height, width} = nativeElement.getBoundingClientRect();
-        const {style} = nativeElement;
+        const {height, width} = this.el.nativeElement.getBoundingClientRect();
+        const {style} = this.el.nativeElement;
         const rect = this.accessor.getClientRect();
         const safeLeft = Math.max(left, 4);
         const [beakTop, beakLeft] = this.visualViewportService.correct([

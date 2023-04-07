@@ -63,7 +63,7 @@ export class TuiEditorUploadingImagesExample1 {
     control = new FormControl('');
 
     constructor(
-        @Inject(DOCUMENT) readonly documentRef: Document,
+        @Inject(DOCUMENT) readonly doc: Document,
         @Inject(ImgbbService) readonly imgbbService: ImgbbService,
     ) {
         this.control.patchValue(
@@ -77,7 +77,7 @@ export class TuiEditorUploadingImagesExample1 {
     readonly validator = ({value}: AbstractControl): ValidationErrors | null =>
         this.editor.focused ||
         this.imgbbService.isLoading ||
-        !this.documentRef.hasFocus() || // possible that file dialog is open
+        !this.doc.hasFocus() || // possible that file dialog is open
         value.length
             ? null
             : {

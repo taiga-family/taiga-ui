@@ -23,18 +23,18 @@ export class TuiSheetHeadingComponent implements AfterViewInit {
 
     constructor(
         @Inject(TuiIdService) private readonly idService: TuiIdService,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
     ) {}
 
     ngAfterViewInit(): void {
-        this.elementRef.nativeElement.dispatchEvent(
+        this.el.nativeElement.dispatchEvent(
             new CustomEvent(TUI_SHEET_ID, {bubbles: true, detail: this.id}),
         );
     }
 
     onClick(): void {
-        this.elementRef.nativeElement.dispatchEvent(
+        this.el.nativeElement.dispatchEvent(
             new CustomEvent(TUI_SHEET_CLOSE, {bubbles: true}),
         );
     }

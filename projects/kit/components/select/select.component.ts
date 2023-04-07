@@ -94,7 +94,7 @@ export class TuiSelectComponent<T>
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_TEXTFIELD_CLEANER)
         private readonly textfieldCleaner: TuiTextfieldCleanerDirective,
         @Inject(TUI_ARROW_MODE)
@@ -106,7 +106,7 @@ export class TuiSelectComponent<T>
         @Inject(TUI_IS_MOBILE)
         readonly isMobile: boolean,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     get arrow(): PolymorpheusContent<

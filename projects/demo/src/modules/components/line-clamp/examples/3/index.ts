@@ -11,10 +11,10 @@ import {WINDOW} from '@ng-web-apis/common';
     encapsulation,
 })
 export class TuiLineClampExample3 {
-    constructor(@Inject(WINDOW) private readonly windowRef: Window) {}
+    constructor(@Inject(WINDOW) private readonly win: Window) {}
 
     getDynamicLineHeight(element: HTMLDivElement): number {
-        return parseInt(this.windowRef.getComputedStyle(element).lineHeight, 10);
+        return parseInt(this.win.getComputedStyle(element).lineHeight, 10);
     }
 
     getDynamicLineLimit(element: HTMLDivElement): number {

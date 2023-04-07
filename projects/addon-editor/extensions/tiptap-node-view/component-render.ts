@@ -33,12 +33,12 @@ export class TuiComponentRenderer<C, P> {
         return this.componentRef.instance;
     }
 
-    get elementRef(): ElementRef {
+    get el(): ElementRef {
         return this.componentRef.injector.get(ElementRef);
     }
 
     get dom(): HTMLElement {
-        return this.elementRef.nativeElement;
+        return this.el.nativeElement;
     }
 
     updateProps<T extends P>(props: Partial<T>): void {

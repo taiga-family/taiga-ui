@@ -31,18 +31,18 @@ export class TuiTextfieldComponent {
         @Inject(TUI_TEXTFIELD_HOST) readonly host: TuiTextfieldHost,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLInputElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLInputElement>,
         @Inject(TuiIdService)
         private readonly idService: TuiIdService,
     ) {
-        this.host.process(this.elementRef.nativeElement);
+        this.host.process(this.el.nativeElement);
     }
 
     get id(): string {
-        return this.elementRef.nativeElement.id || this.idService.generate();
+        return this.el.nativeElement.id || this.idService.generate();
     }
 
     get inputMode(): string {
-        return this.elementRef.nativeElement.inputMode || this.host.inputMode;
+        return this.el.nativeElement.inputMode || this.host.inputMode;
     }
 }

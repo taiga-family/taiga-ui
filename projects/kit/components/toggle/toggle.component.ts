@@ -72,14 +72,14 @@ export class TuiToggleComponent
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Optional()
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
         @Inject(TUI_TOGGLE_OPTIONS)
         readonly options: TuiToggleOptions,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     get iconOn(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> {

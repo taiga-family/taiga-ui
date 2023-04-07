@@ -51,7 +51,7 @@ export abstract class AbstractTuiControl<T>
     constructor(
         @Optional()
         private readonly ngControl: NgControl | null,
-        protected readonly changeDetectorRef: ChangeDetectorRef,
+        protected readonly cdr: ChangeDetectorRef,
         @Optional()
         @Inject(AbstractTuiValueTransformer)
         protected readonly valueTransformer?: TuiControlValueTransformer<T> | null,
@@ -159,7 +159,7 @@ export abstract class AbstractTuiControl<T>
     }
 
     checkControlUpdate(): void {
-        this.changeDetectorRef.markForCheck();
+        this.cdr.markForCheck();
     }
 
     registerOnChange(onChange: (value: T | unknown) => void): void {

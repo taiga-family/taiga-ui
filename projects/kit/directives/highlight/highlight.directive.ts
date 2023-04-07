@@ -20,8 +20,8 @@ import {Observable} from 'rxjs';
 export class TuiHighlightDirective implements OnChanges {
     private readonly highlight: HTMLElement = this.setUpHighlight();
 
-    private readonly treeWalker = this.documentRef.createTreeWalker(
-        this.elementRef.nativeElement,
+    private readonly treeWalker = this.doc.createTreeWalker(
+        this.el.nativeElement,
         NodeFilter.SHOW_TEXT,
         svgNodeFilter,
     );
@@ -34,8 +34,8 @@ export class TuiHighlightDirective implements OnChanges {
     tuiHighlightColor = 'var(--tui-selection)';
 
     constructor(
-        @Inject(DOCUMENT) private readonly documentRef: Document,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(DOCUMENT) private readonly doc: Document,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(TuiResizeService) resize$: Observable<unknown>,
     ) {
@@ -45,7 +45,7 @@ export class TuiHighlightDirective implements OnChanges {
     }
 
     get match(): boolean {
-        return this.indexOf(this.elementRef.nativeElement.textContent) !== -1;
+        return this.indexOf(this.el.nativeElement.textContent) !== -1;
     }
 
     ngOnChanges(): void {
@@ -59,7 +59,7 @@ export class TuiHighlightDirective implements OnChanges {
             return;
         }
 
-        this.treeWalker.currentNode = this.elementRef.nativeElement;
+        this.treeWalker.currentNode = this.el.nativeElement;
 
         do {
             const index = this.indexOf(this.treeWalker.currentNode.nodeValue);
@@ -68,12 +68,12 @@ export class TuiHighlightDirective implements OnChanges {
                 continue;
             }
 
-            const range = this.documentRef.createRange();
+            const range = this.doc.createRange();
 
             range.setStart(this.treeWalker.currentNode, index);
             range.setEnd(this.treeWalker.currentNode, index + this.tuiHighlight.length);
 
-            const hostRect = this.elementRef.nativeElement.getBoundingClientRect();
+            const hostRect = this.el.nativeElement.getBoundingClientRect();
             const {left, top, width, height} = range.getBoundingClientRect();
             const {style} = this.highlight;
 
@@ -101,7 +101,7 @@ export class TuiHighlightDirective implements OnChanges {
         style.background = this.tuiHighlightColor;
         style.zIndex = '-1';
         style.position = 'absolute';
-        this.renderer.appendChild(this.elementRef.nativeElement, highlight);
+        this.renderer.appendChild(this.el.nativeElement, highlight);
 
         return highlight;
     }

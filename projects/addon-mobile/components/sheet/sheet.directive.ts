@@ -40,10 +40,10 @@ export class TuiSheetDirective extends PolymorpheusTemplate<TuiSheet<never>> {
     );
 
     constructor(
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TemplateRef) templateRef: TemplateRef<TuiSheet<never>>,
         @Inject(TuiSheetService) private readonly service: TuiSheetService,
     ) {
-        super(templateRef, changeDetectorRef);
+        super(templateRef, cdr);
     }
 }

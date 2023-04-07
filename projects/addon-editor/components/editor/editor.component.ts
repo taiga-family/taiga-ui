@@ -51,7 +51,7 @@ export class TuiEditorComponent
     implements OnDestroy, TuiFocusableElementAccessor
 {
     @ViewChild(TuiTiptapEditorDirective, {read: ElementRef})
-    private readonly element?: ElementRef<HTMLElement>;
+    private readonly el?: ElementRef<HTMLElement>;
 
     @Input()
     @tuiDefaultProp()
@@ -74,19 +74,19 @@ export class TuiEditorComponent
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TIPTAP_EDITOR) readonly editorLoaded$: Observable<Editor | null>,
         @Inject(TuiTiptapEditorService) readonly editorService: AbstractTuiEditor,
         @Inject(TUI_EDITOR_CONTENT_PROCESSOR)
         private readonly contentProcessor: TuiStringHandler<string>,
         @Inject(DOCUMENT)
-        private readonly documentRef: Document,
+        private readonly doc: Document,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     get nativeFocusableElement(): HTMLElement | null {
-        return this.computedDisabled ? null : this.element?.nativeElement || null;
+        return this.computedDisabled ? null : this.el?.nativeElement || null;
     }
 
     get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
@@ -173,7 +173,7 @@ export class TuiEditorComponent
     private currentFocusedNodeIsAnchor(range: Range): boolean {
         return !!range.startContainer.parentElement
             ?.closest('a')
-            ?.contains(this.documentRef.getSelection()?.focusNode || null);
+            ?.contains(this.doc.getSelection()?.focusNode || null);
     }
 
     private get hasValue(): boolean {

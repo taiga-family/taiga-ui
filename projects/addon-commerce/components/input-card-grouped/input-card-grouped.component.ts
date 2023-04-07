@@ -185,15 +185,15 @@ export class TuiInputCardGroupedComponent
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_INPUT_CARD_GROUPED_TEXTS)
         readonly cardGroupedTexts$: Observable<TuiCardGroupedTexts>,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -201,7 +201,7 @@ export class TuiInputCardGroupedComponent
     }
 
     get focused(): boolean {
-        return this.open || tuiIsNativeFocusedIn(this.elementRef.nativeElement);
+        return this.open || tuiIsNativeFocusedIn(this.el.nativeElement);
     }
 
     get appearance(): string {
@@ -322,7 +322,7 @@ export class TuiInputCardGroupedComponent
     @HostListener('keydown.arrowUp.prevent', ['$event.target', '-1'])
     onArrow(element: HTMLElement, step: number): void {
         this.open = this.hasDropdown;
-        this.changeDetectorRef.detectChanges();
+        this.cdr.detectChanges();
         this.datalist?.onKeyDownArrow(element, step);
     }
 

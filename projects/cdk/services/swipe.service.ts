@@ -12,12 +12,12 @@ export class TuiSwipeService extends Observable<TuiSwipe> {
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<Element>,
         @Inject(TUI_SWIPE_OPTIONS) {timeout, threshold}: TuiSwipeOptions,
-        @Inject(DOCUMENT) documentRef: Document,
+        @Inject(DOCUMENT) doc: Document,
     ) {
         super(subscriber => {
             merge(
                 tuiTypedFromEvent(nativeElement, `touchstart`, {passive: true}),
-                tuiTypedFromEvent(documentRef, `touchend`),
+                tuiTypedFromEvent(doc, `touchend`),
             )
                 .pipe(
                     pairwise(),

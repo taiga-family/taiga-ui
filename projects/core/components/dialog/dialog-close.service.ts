@@ -20,7 +20,7 @@ export class TuiDialogCloseService extends Observable<unknown> {
         filter(tuiIsCurrentTarget),
     );
 
-    private readonly esc$ = tuiTypedFromEvent(this.documentRef, `keydown`).pipe(
+    private readonly esc$ = tuiTypedFromEvent(this.doc, `keydown`).pipe(
         filter(event => {
             const key = event.key;
             const target = tuiGetActualTarget(event);
@@ -34,19 +34,19 @@ export class TuiDialogCloseService extends Observable<unknown> {
         }),
     );
 
-    private readonly mousedown$ = tuiTypedFromEvent(this.documentRef, `mousedown`).pipe(
+    private readonly mousedown$ = tuiTypedFromEvent(this.doc, `mousedown`).pipe(
         filter(event => {
             const target = tuiGetActualTarget(event);
             const clientX = event.clientX;
 
             return (
                 tuiIsElement(target) &&
-                tuiGetViewportWidth(this.windowRef) - clientX > SCROLLBAR_PLACEHOLDER &&
+                tuiGetViewportWidth(this.win) - clientX > SCROLLBAR_PLACEHOLDER &&
                 !tuiContainsOrAfter(this.element, target)
             );
         }),
         switchMap(() =>
-            tuiTypedFromEvent(this.documentRef, `mouseup`).pipe(
+            tuiTypedFromEvent(this.doc, `mouseup`).pipe(
                 take(1),
                 map(tuiGetActualTarget),
                 filter(
@@ -58,9 +58,9 @@ export class TuiDialogCloseService extends Observable<unknown> {
     );
 
     constructor(
-        @Inject(WINDOW) private readonly windowRef: Window,
-        @Inject(DOCUMENT) private readonly documentRef: Document,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(WINDOW) private readonly win: Window,
+        @Inject(DOCUMENT) private readonly doc: Document,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
     ) {
         super(subscriber =>
             merge(this.click$, this.esc$, this.mousedown$).subscribe(subscriber),
@@ -68,6 +68,6 @@ export class TuiDialogCloseService extends Observable<unknown> {
     }
 
     private get element(): HTMLElement {
-        return this.elementRef.nativeElement;
+        return this.el.nativeElement;
     }
 }

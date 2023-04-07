@@ -11,16 +11,16 @@ export class TuiPickerService extends Observable<TuiPoint> {
     constructor(
         @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
-        @Inject(DOCUMENT) documentRef: Document,
+        @Inject(DOCUMENT) doc: Document,
     ) {
         const point$ = tuiTypedFromEvent(nativeElement, `mousedown`).pipe(
             tuiPreventDefault(),
             switchMap(event => {
-                const mouseMove$ = tuiTypedFromEvent(documentRef, `mousemove`).pipe(
+                const mouseMove$ = tuiTypedFromEvent(doc, `mousemove`).pipe(
                     map(({clientX, clientY}) =>
                         tuiGetElementPoint(clientX, clientY, nativeElement),
                     ),
-                    takeUntil(tuiTypedFromEvent(documentRef, `mouseup`)),
+                    takeUntil(tuiTypedFromEvent(doc, `mouseup`)),
                 );
 
                 return event.target === nativeElement

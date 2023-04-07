@@ -13,6 +13,6 @@ export class TuiTokensExample3 {
     constructor(
         @Optional()
         @Inject(TUI_FOCUSABLE_ITEM_ACCESSOR)
-        readonly tuiFocusableComponent: TuiFocusableElementAccessor | null,
+        readonly focusable: TuiFocusableElementAccessor | null,
     ) {}
 }

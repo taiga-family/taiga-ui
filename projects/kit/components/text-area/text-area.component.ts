@@ -87,7 +87,7 @@ export class TuiTextAreaComponent
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_IS_IOS) readonly isIOS: boolean,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
@@ -96,7 +96,7 @@ export class TuiTextAreaComponent
         @Inject(TuiHintOptionsDirective)
         readonly hintOptions: TuiHintOptionsDirective | null,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     @HostBinding('class._label-outside')

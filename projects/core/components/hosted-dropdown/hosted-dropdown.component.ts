@@ -117,7 +117,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         @Optional()
         @Inject(TuiDropdownHoverDirective)
         private readonly hover$: TuiDropdownHoverDirective | null,
-        @Inject(ElementRef) private readonly elementRef: ElementRef,
+        @Inject(ElementRef) private readonly el: ElementRef,
     ) {}
 
     @Input()
@@ -131,14 +131,14 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     }
 
     get host(): HTMLElement {
-        return this.dropdownHost?.nativeElement || this.elementRef.nativeElement;
+        return this.dropdownHost?.nativeElement || this.el.nativeElement;
     }
 
     get computedHost(): HTMLElement {
         return (
             this.dropdownHost?.nativeElement ||
             this.nativeFocusableElement ||
-            this.elementRef.nativeElement
+            this.el.nativeElement
         );
     }
 
@@ -151,7 +151,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
             ? this.host
             : tuiGetClosestFocusable({
                   initial: this.host,
-                  root: this.elementRef.nativeElement,
+                  root: this.el.nativeElement,
               });
     }
 

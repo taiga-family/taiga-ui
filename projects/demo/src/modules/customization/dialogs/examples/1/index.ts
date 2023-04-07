@@ -15,7 +15,7 @@ import {PromptService} from './prompt/prompt.service';
 export class TuiDialogsExample1 {
     constructor(
         @Inject(TuiAlertService)
-        private readonly alertService: TuiAlertService,
+        private readonly alerts: TuiAlertService,
         @Inject(PromptService) private readonly promptService: PromptService,
     ) {}
 
@@ -32,10 +32,10 @@ export class TuiDialogsExample1 {
             .pipe(
                 switchMap(response =>
                     response
-                        ? this.alertService.open(wisely, {
+                        ? this.alerts.open(wisely, {
                               status: TuiNotification.Success,
                           })
-                        : this.alertService.open(poorly, {
+                        : this.alerts.open(poorly, {
                               status: TuiNotification.Error,
                           }),
                 ),

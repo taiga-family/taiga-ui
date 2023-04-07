@@ -17,7 +17,7 @@ export class TuiDialogExampleComponent8 {
 
     constructor(
         @Inject(TuiDialogFormService) private readonly dialogForm: TuiDialogFormService,
-        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+        @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
     ) {}
 
     onModelChange(value: string): void {
@@ -33,7 +33,7 @@ export class TuiDialogExampleComponent8 {
             },
         });
 
-        this.dialogService.open(content, {closeable, dismissible: closeable}).subscribe({
+        this.dialogs.open(content, {closeable, dismissible: closeable}).subscribe({
             complete: () => {
                 this.value = '';
                 this.dialogForm.markAsPristine();

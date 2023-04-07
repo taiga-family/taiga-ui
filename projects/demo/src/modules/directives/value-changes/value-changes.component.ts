@@ -21,6 +21,4 @@ export class ExampleTuiValueChangesComponent {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
-
-    readonly elementRefText = '{read: ElementRef}';
 }

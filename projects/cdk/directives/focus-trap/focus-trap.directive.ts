@@ -21,12 +21,12 @@ import {
     },
 })
 export class TuiFocusTrapDirective implements OnDestroy {
-    private readonly activeElement = tuiGetNativeFocused(this.documentRef);
+    private readonly activeElement = tuiGetNativeFocused(this.doc);
 
     constructor(
-        @Inject(DOCUMENT) private readonly documentRef: Document,
+        @Inject(DOCUMENT) private readonly doc: Document,
         @Inject(ElementRef)
-        private readonly elementRef: ElementRef<HTMLElement>,
+        private readonly el: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
     ) {
         /**
@@ -36,18 +36,18 @@ export class TuiFocusTrapDirective implements OnDestroy {
          */
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
         Promise.resolve().then(() => {
-            this.elementRef.nativeElement.focus();
+            this.el.nativeElement.focus();
         });
     }
 
     @HostListener('blur')
     onBlur(): void {
-        this.renderer.removeAttribute(this.elementRef.nativeElement, 'tabIndex');
+        this.renderer.removeAttribute(this.el.nativeElement, 'tabIndex');
     }
 
     @HostListener('window:focusin.silent', ['$event.target'])
     onFocusIn(node: Node): void {
-        const {nativeElement} = this.elementRef;
+        const {nativeElement} = this.el;
 
         if (tuiContainsOrAfter(nativeElement, node)) {
             return;
@@ -64,7 +64,7 @@ export class TuiFocusTrapDirective implements OnDestroy {
     }
 
     ngOnDestroy(): void {
-        tuiBlurNativeFocused(this.documentRef);
+        tuiBlurNativeFocused(this.doc);
 
         /**
          * HostListeners are triggered even after ngOnDestroy

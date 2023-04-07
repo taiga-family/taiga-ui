@@ -82,15 +82,15 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         @Inject(TUI_TABS_OPTIONS) private readonly options: TuiTabsOptions,
         @Inject(TUI_TAB_MARGIN) private readonly margin: number,
         @Inject(TUI_TABS_REFRESH) private readonly refresh$: Observable<unknown>,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
-        @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
+        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
         @Inject(TUI_MORE_WORD) readonly moreWord$: Observable<string>,
     ) {}
 
     // TODO: Improve performance
     get tabs(): readonly HTMLElement[] {
         return Array.from<HTMLElement>(
-            this.elementRef.nativeElement.querySelectorAll('[tuiTab]'),
+            this.el.nativeElement.querySelectorAll('[tuiTab]'),
         );
     }
 
@@ -143,7 +143,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
             )
             .subscribe(maxIndex => {
                 this.maxIndex = maxIndex;
-                this.changeDetectorRef.detectChanges();
+                this.cdr.detectChanges();
             });
     }
 
@@ -209,7 +209,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         }
 
         const {exposeActive, minMoreWidth} = this.options;
-        const {clientWidth} = this.elementRef.nativeElement;
+        const {clientWidth} = this.el.nativeElement;
         const activeWidth = tabs[activeItemIndex] ? tabs[activeItemIndex].scrollWidth : 0;
         const moreWidth = Math.max(tabs[tabs.length - 1].scrollWidth, minMoreWidth);
         let maxIndex = tabs.length - 2;

@@ -16,10 +16,10 @@ export class TuiTabBarItemDirective {
         @Inject(TuiRouterLinkActiveService) active$: Observable<boolean>,
         @Inject(TuiTabBarComponent) tabs: TuiTabBarComponent,
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
     ) {
         active$
-            .pipe(filter(Boolean), tuiWatch(changeDetectorRef), takeUntil(destroy$))
+            .pipe(filter(Boolean), tuiWatch(cdr), takeUntil(destroy$))
             .subscribe(() => {
                 tabs.setActive(nativeElement);
             });

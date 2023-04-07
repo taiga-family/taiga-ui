@@ -39,12 +39,9 @@ export const TUI_TABS_PROVIDERS: Provider[] = [
             destroy$: Observable<unknown>,
             {body}: Document,
             {nativeElement}: ElementRef<Node>,
-            changeDetectorRef: ChangeDetectorRef,
+            cdr: ChangeDetectorRef,
         ): Observable<unknown> => {
-            return merge(
-                resize$,
-                mutations$.pipe(tap(() => changeDetectorRef.detectChanges())),
-            ).pipe(
+            return merge(resize$, mutations$.pipe(tap(() => cdr.detectChanges()))).pipe(
                 // Ignoring cases when host is detached from DOM
                 filter(() => body.contains(nativeElement)),
                 debounceTime(0),

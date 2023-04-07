@@ -121,7 +121,7 @@ export class TuiInputDateTimeComponent
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
@@ -138,7 +138,7 @@ export class TuiInputDateTimeComponent
         @Inject(TUI_INPUT_DATE_OPTIONS)
         private readonly options: TuiInputDateOptions,
     ) {
-        super(control, changeDetectorRef, valueTransformer);
+        super(control, cdr, valueTransformer);
     }
 
     get fillerLength(): number {

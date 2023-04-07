@@ -71,10 +71,10 @@ export class ExampleTuiCalendarMonthComponent {
 
     constructor(
         @Inject(TuiAlertService)
-        private readonly alertService: TuiAlertService,
+        private readonly alerts: TuiAlertService,
     ) {}
 
     onMonthClick(month: TuiMonth): void {
-        this.alertService.open(String(month)).subscribe();
+        this.alerts.open(String(month)).subscribe();
     }
 }

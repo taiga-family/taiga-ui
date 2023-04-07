@@ -70,9 +70,7 @@ export class TuiExpandComponent {
     @HostBinding('attr.aria-expanded')
     expanded: boolean | null = null;
 
-    constructor(
-        @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
-    ) {}
+    constructor(@Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef) {}
 
     @HostBinding('class._overflow')
     get overflow(): boolean {
@@ -140,7 +138,7 @@ export class TuiExpandComponent {
             }
 
             this.state = state;
-            this.changeDetectorRef.markForCheck();
+            this.cdr.markForCheck();
         });
     }
 }

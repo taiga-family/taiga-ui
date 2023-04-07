@@ -60,33 +60,33 @@ export class TuiSliderComponent {
     segments = 1;
 
     get min(): number {
-        return Number(this.elementRef.nativeElement.min);
+        return Number(this.el.nativeElement.min);
     }
 
     get max(): number {
-        return Number(this.elementRef.nativeElement.max || 100);
+        return Number(this.el.nativeElement.max || 100);
     }
 
     get step(): number {
-        return Number(this.elementRef.nativeElement.step) || 1;
+        return Number(this.el.nativeElement.step) || 1;
     }
 
     get value(): number {
-        const {elementRef, control, hasKeySteps} = this;
+        const {el, control, hasKeySteps} = this;
 
         if (!hasKeySteps && control instanceof NgModel) {
             /**
              * If developer uses `[(ngModel)]` and programmatically change value,
-             * the `elementRef.nativeElement.value` is equal to the previous value at this moment.
+             * the `el.nativeElement.value` is equal to the previous value at this moment.
              */
             return control.viewModel;
         }
 
-        return Number(elementRef.nativeElement.value) || 0;
+        return Number(el.nativeElement.value) || 0;
     }
 
     set value(newValue: number) {
-        this.elementRef.nativeElement.value = `${newValue}`;
+        this.el.nativeElement.value = `${newValue}`;
     }
 
     @HostBinding('style.--tui-slider-fill-percentage.%')
@@ -115,9 +115,9 @@ export class TuiSliderComponent {
         @Self()
         @Inject(NgControl)
         private readonly control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_SLIDER_OPTIONS) readonly options: TuiSliderOptions,
-        @Inject(ElementRef) readonly elementRef: ElementRef<HTMLInputElement>,
+        @Inject(ElementRef) readonly el: ElementRef<HTMLInputElement>,
         @Inject(USER_AGENT) private readonly userAgent: string,
         @Inject(Injector) private readonly injector: Injector,
     ) {
@@ -129,7 +129,7 @@ export class TuiSliderComponent {
              * ___
              * See this {@link https://github.com/angular/angular/issues/14988 issue}
              */
-            control.valueChanges?.pipe(tuiWatch(changeDetectorRef), take(1)).subscribe();
+            control.valueChanges?.pipe(tuiWatch(cdr), take(1)).subscribe();
         }
     }
 }

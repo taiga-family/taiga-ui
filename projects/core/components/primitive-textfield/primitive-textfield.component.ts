@@ -126,7 +126,7 @@ export class TuiPrimitiveTextfieldComponent
         readonly hintOptions: TuiHintOptionsDirective | null,
         @Inject(TUI_TEXTFIELD_OPTIONS)
         readonly options: TuiTextfieldOptions,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
     ) {
         super();
     }
@@ -155,7 +155,7 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.el.nativeElement);
     }
 
     get appearance(): string {

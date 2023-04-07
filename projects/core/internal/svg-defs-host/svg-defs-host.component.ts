@@ -26,7 +26,7 @@ export class TuiSvgDefsHostComponent implements OnInit {
 
     constructor(
         @Inject(TuiSvgService) private readonly svgService: TuiSvgService,
-        @Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
         @Self()
         @Inject(TuiDestroyService)
         private readonly destroy$: TuiDestroyService,
@@ -39,7 +39,7 @@ export class TuiSvgDefsHostComponent implements OnInit {
     ngOnInit(): void {
         this.svgService.items$.pipe(takeUntil(this.destroy$)).subscribe(defsMap => {
             this.items = defsMap.values();
-            this.changeDetectorRef.detectChanges();
+            this.cdr.detectChanges();
         });
     }
 }

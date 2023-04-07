@@ -26,7 +26,7 @@ export class TuiElasticStickyService extends Observable<number> {
         scrollRef: ElementRef<HTMLElement> | null,
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(NgZone) ngZone: NgZone,
-        @Inject(WINDOW) windowRef: Window,
+        @Inject(WINDOW) win: Window,
         @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         super(subscriber =>
@@ -38,19 +38,17 @@ export class TuiElasticStickyService extends Observable<number> {
                         const host = scrollRef?.nativeElement || closest;
                         const {offsetHeight} = nativeElement;
                         const offsetTop = this.getInitialOffset(
-                            host || windowRef,
+                            host || win,
                             nativeElement,
                         );
 
-                        return tuiTypedFromEvent(host || windowRef, `scroll`).pipe(
+                        return tuiTypedFromEvent(host || win, `scroll`).pipe(
                             map(() =>
                                 Math.max(
                                     1 -
                                         Math.max(
                                             Math.round(
-                                                host
-                                                    ? host.scrollTop
-                                                    : windowRef.pageYOffset,
+                                                host ? host.scrollTop : win.pageYOffset,
                                             ) - offsetTop,
                                             0,
                                         ) /

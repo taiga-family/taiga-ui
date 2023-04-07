@@ -35,7 +35,7 @@ export class TuiTableSizeSelectorComponent {
         cols: 1,
     };
 
-    constructor(@Inject(WINDOW) private readonly windowRef: Window) {}
+    constructor(@Inject(WINDOW) private readonly win: Window) {}
 
     get columnsNumber(): number {
         return Math.min(Math.max(3, this.tableSize.cols + 1), MAX_COLS_NUMBER);
@@ -50,7 +50,7 @@ export class TuiTableSizeSelectorComponent {
     }
 
     updateCurrentSize(rows: number, cols: number, event: MouseEvent): void {
-        if (tuiGetViewportWidth(this.windowRef) - event.clientX > MIN_DISTANCE_PX) {
+        if (tuiGetViewportWidth(this.win) - event.clientX > MIN_DISTANCE_PX) {
             this.tableSize = {rows, cols};
         }
     }

@@ -21,15 +21,15 @@ import {switchMap} from 'rxjs/operators';
 export class TuiMobileDialogExample1 {
     constructor(
         @Inject(TuiMobileDialogService)
-        private readonly dialogService: TuiMobileDialogService,
+        private readonly dialogs: TuiMobileDialogService,
         @Inject(TuiAlertService)
-        private readonly alertService: TuiAlertService,
+        private readonly alerts: TuiAlertService,
     ) {}
 
     show(): void {
         const actions = ['No thanks', 'Remind me later', 'Rate now'];
 
-        this.dialogService
+        this.dialogs
             .open(
                 'If you like this app, please take a moment to leave a positive rating.',
                 {
@@ -37,9 +37,7 @@ export class TuiMobileDialogExample1 {
                     actions,
                 },
             )
-            .pipe(
-                switchMap(index => this.alertService.open(`Selected: ${actions[index]}`)),
-            )
+            .pipe(switchMap(index => this.alerts.open(`Selected: ${actions[index]}`)))
             .subscribe();
     }
 }

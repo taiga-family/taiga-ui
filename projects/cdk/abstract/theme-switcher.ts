@@ -11,14 +11,14 @@ import {Directive, Inject, OnDestroy} from '@angular/core';
 export abstract class AbstractTuiThemeSwitcher implements OnDestroy {
     static style: HTMLStyleElement | null = null;
 
-    constructor(@Inject(DOCUMENT) private readonly documentRef: Document) {
+    constructor(@Inject(DOCUMENT) private readonly doc: Document) {
         if (this.style !== null) {
             this.addTheme();
 
             return;
         }
 
-        const styles = this.documentRef.head.querySelectorAll(`style`);
+        const styles = this.doc.head.querySelectorAll(`style`);
 
         (this.constructor as typeof AbstractTuiThemeSwitcher).style =
             styles[styles.length - 1];
@@ -34,13 +34,13 @@ export abstract class AbstractTuiThemeSwitcher implements OnDestroy {
 
     private addTheme(): void {
         if (this.style) {
-            this.documentRef.head.appendChild(this.style);
+            this.doc.head.appendChild(this.style);
         }
     }
 
     private removeTheme(): void {
-        if (this.style && this.documentRef.head.contains(this.style)) {
-            this.documentRef.head.removeChild(this.style);
+        if (this.style && this.doc.head.contains(this.style)) {
+            this.doc.head.removeChild(this.style);
         }
     }
 }

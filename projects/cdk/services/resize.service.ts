@@ -23,14 +23,14 @@ import {TuiDestroyService} from './destroy.service';
 @Injectable()
 export class TuiResizeService extends ResizeObserverService {
     constructor(
-        @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) el: ElementRef<HTMLElement>,
         @Inject(NgZone) ngZone: NgZone,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Inject(RESIZE_OBSERVER_SUPPORT) support: boolean,
         @Inject(RESIZE_OPTION_BOX) box: ResizeObserverBoxOptions,
         @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
     ) {
-        super(elementRef, ngZone, support, box);
+        super(el, ngZone, support, box);
 
         return this.pipe(
             catchError(() =>
@@ -42,7 +42,7 @@ export class TuiResizeService extends ResizeObserverService {
                     throttleTime(POLLING_TIME),
                     map(
                         () =>
-                            `${elementRef.nativeElement.clientWidth} ${elementRef.nativeElement.clientHeight}`,
+                            `${el.nativeElement.clientWidth} ${el.nativeElement.clientHeight}`,
                     ),
                     distinctUntilChanged(),
                     map(() => EMPTY_ARRAY),

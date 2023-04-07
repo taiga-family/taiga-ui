@@ -111,7 +111,7 @@ export class TuiTagComponent {
     }
 
     constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_TAG_OPTIONS) private readonly options: TuiTagOptions,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
@@ -185,7 +185,7 @@ export class TuiTagComponent {
             case 'esc':
                 event.preventDefault();
                 this.stopEditing();
-                this.elementRef.nativeElement.focus();
+                this.el.nativeElement.focus();
                 break;
             default:
                 break;

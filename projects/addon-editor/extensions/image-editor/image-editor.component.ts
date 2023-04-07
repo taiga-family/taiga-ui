@@ -51,13 +51,13 @@ export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEdita
         @Inject(TUI_EDITOR_MIN_IMAGE_WIDTH) readonly minWidth: number | null,
         @Inject(TUI_EDITOR_MAX_IMAGE_WIDTH) readonly maxWidth: number | null,
         @Inject(TUI_IMAGE_EDITOR_OPTIONS) readonly options: TuiImageEditorOptions,
-        @Inject(DOCUMENT) documentRef: Document,
+        @Inject(DOCUMENT) doc: Document,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Self()
         @Inject(TuiDestroyService)
         destroy$: TuiDestroyService,
     ) {
-        super(documentRef, destroy$);
+        super(doc, destroy$);
     }
 
     updateSize([width]: readonly [width: number, height: number]): void {

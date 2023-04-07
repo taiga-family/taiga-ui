@@ -60,7 +60,7 @@ export class TuiDropdownDirective
     readonly component = new PolymorpheusComponent(this.hapica, this.injector);
 
     constructor(
-        @Inject(ElementRef) readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) readonly el: ElementRef<HTMLElement>,
         @Inject(TUI_DROPDOWN_COMPONENT) private readonly hapica: Type<unknown>,
         @Inject(INJECTOR) private readonly injector: Injector,
         @Inject(TuiDropdownPortalService)
@@ -69,9 +69,7 @@ export class TuiDropdownDirective
 
     @tuiPure
     get position(): 'absolute' | 'fixed' {
-        return tuiCheckFixedPosition(this.elementRef.nativeElement)
-            ? 'fixed'
-            : 'absolute';
+        return tuiCheckFixedPosition(this.el.nativeElement) ? 'fixed' : 'absolute';
     }
 
     ngAfterViewChecked(): void {
@@ -90,7 +88,7 @@ export class TuiDropdownDirective
     }
 
     getClientRect(): ClientRect {
-        return this.elementRef.nativeElement.getBoundingClientRect();
+        return this.el.nativeElement.getBoundingClientRect();
     }
 
     toggle(show: boolean): void {

@@ -19,11 +19,11 @@ export class TuiDefaultAutofocusHandler extends AbstractTuiAutofocusHandler {
         @Optional()
         @Self()
         @Inject(TUI_FOCUSABLE_ITEM_ACCESSOR)
-        tuiFocusableComponent: TuiFocusableElementAccessor | null,
-        @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,
+        focusable: TuiFocusableElementAccessor | null,
+        @Inject(ElementRef) el: ElementRef<HTMLElement>,
         @Inject(ANIMATION_FRAME) private readonly animationFrame$: Observable<number>,
     ) {
-        super(tuiFocusableComponent, elementRef);
+        super(focusable, el);
     }
 
     setFocus(): void {

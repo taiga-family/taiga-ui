@@ -24,17 +24,17 @@ export class TuiScrollIntoViewDirective {
         timer(0)
             .pipe(takeUntil(this.destroy$))
             .subscribe(() => {
-                this.elementRef.nativeElement.dispatchEvent(
+                this.el.nativeElement.dispatchEvent(
                     new CustomEvent<Element>(TUI_SCROLL_INTO_VIEW, {
                         bubbles: true,
-                        detail: this.elementRef.nativeElement,
+                        detail: this.el.nativeElement,
                     }),
                 );
             });
     }
 
     constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<Element>,
+        @Inject(ElementRef) private readonly el: ElementRef<Element>,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
     ) {}
 }

@@ -19,11 +19,11 @@ export class ImagePreviewExampleComponent {
 
     constructor(
         @Inject(TuiPreviewDialogService)
-        private readonly dialogService: TuiPreviewDialogService,
+        private readonly dialogs: TuiPreviewDialogService,
     ) {}
 
     showImage(image: HTMLImageElement): void {
         this.image = image;
-        this.dialogService.open(this.template || '').subscribe();
+        this.dialogs.open(this.template || '').subscribe();
     }
 }

@@ -15,12 +15,9 @@ export class TuiTabsExample6 {
 
     readonly steps = ['Sales', 'Settings', 'News'];
 
-    constructor(
-        @Inject(TuiAlertService)
-        private readonly notifications: TuiAlertService,
-    ) {}
+    constructor(@Inject(TuiAlertService) private readonly alerts: TuiAlertService) {}
 
     onClick(item: string): void {
-        this.notifications.open(item).subscribe();
+        this.alerts.open(item).subscribe();
     }
 }

@@ -73,7 +73,7 @@ export class TuiRadioComponent<T>
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_ANIMATION_OPTIONS)
         private readonly animationOptions: AnimationOptions,
         @Inject(TUI_RADIO_OPTIONS)
@@ -82,7 +82,7 @@ export class TuiRadioComponent<T>
         @Inject(TuiRadioGroupComponent)
         private readonly radioGroup: TuiRadioGroupComponent | null,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     get appearance(): string {

@@ -13,7 +13,7 @@ import {DialogExampleComponent} from './dialog-example/dialog-example.component'
     encapsulation,
 })
 export class TuiDialogExampleComponent2 {
-    private readonly dialog = this.dialogService.open<number>(
+    private readonly dialog = this.dialogs.open<number>(
         new PolymorpheusComponent(DialogExampleComponent, this.injector),
         {
             data: 237,
@@ -23,7 +23,7 @@ export class TuiDialogExampleComponent2 {
     );
 
     constructor(
-        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+        @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
         @Inject(Injector) private readonly injector: Injector,
     ) {}
 

@@ -18,13 +18,13 @@ export class TuiPreventDefaultDirective implements OnInit {
     eventName = '';
 
     constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(NgZone) private readonly ngZone: NgZone,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
     ) {}
 
     ngOnInit(): void {
-        fromEvent(this.elementRef.nativeElement, this.eventName, {passive: false})
+        fromEvent(this.el.nativeElement, this.eventName, {passive: false})
             .pipe(tuiZonefree(this.ngZone), tuiPreventDefault(), takeUntil(this.destroy$))
             .subscribe();
     }

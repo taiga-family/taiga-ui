@@ -47,14 +47,14 @@ export class TuiProgressColorSegmentsDirective {
                     ? this.colors[0]
                     : calculateColorSegments(
                           this.colors,
-                          this.elementRef.nativeElement.offsetWidth,
+                          this.el.nativeElement.offsetWidth,
                       ),
             ),
         );
     }
 
     constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLProgressElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLProgressElement>,
         @Inject(TuiResizeService) private readonly resize$: Observable<unknown>,
         @Inject(USER_AGENT) private readonly userAgent: string,
     ) {}

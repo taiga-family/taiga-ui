@@ -38,11 +38,11 @@ export const TUI_SHEET_PROVIDERS: Provider[] = [
         useFactory: (
             {nativeElement}: ElementRef<HTMLElement>,
             ngZone: NgZone,
-            documentRef: Document,
+            doc: Document,
             isIos: boolean,
         ): Observable<number> => {
             return isIos
-                ? iosScrollFactory(nativeElement, documentRef, ngZone)
+                ? iosScrollFactory(nativeElement, doc, ngZone)
                 : merge(
                       tuiTypedFromEvent(nativeElement, `scroll`),
                       tuiTypedFromEvent(nativeElement, `load`, {capture: true}),

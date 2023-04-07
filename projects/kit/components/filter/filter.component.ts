@@ -60,10 +60,10 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     @Input()
@@ -76,7 +76,7 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     badgeHandler: TuiHandler<T, number> = item => Number(item);
 
     get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.el.nativeElement);
     }
 
     onCheckbox(value: boolean, item: T): void {

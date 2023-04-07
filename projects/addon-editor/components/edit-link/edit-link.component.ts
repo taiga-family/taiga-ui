@@ -49,7 +49,7 @@ export class TuiEditLinkComponent {
 
     constructor(
         @Inject(DOCUMENT)
-        private readonly documentRef: Document,
+        private readonly doc: Document,
         @Inject(TUI_EDITOR_LINK_TEXTS)
         readonly texts$: TuiInjectionTokenType<typeof TUI_EDITOR_LINK_TEXTS>,
         @Inject(TuiTiptapEditorService) private readonly editor: AbstractTuiEditor,
@@ -168,7 +168,7 @@ export class TuiEditLinkComponent {
     }
 
     private getFocusedParentElement(): HTMLElement | null {
-        return this.documentRef.getSelection()?.focusNode?.parentElement || null;
+        return this.doc.getSelection()?.focusNode?.parentElement || null;
     }
 
     private getAnchorElement(): HTMLAnchorElement | null {

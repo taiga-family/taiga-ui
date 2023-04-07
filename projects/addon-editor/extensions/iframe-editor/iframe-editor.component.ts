@@ -24,13 +24,13 @@ export class TuiIframeEditorComponent extends AbstractTuiEditorResizable<TuiEdit
 
     constructor(
         @Inject(TUI_IFRAME_EDITOR_OPTIONS) readonly options: TuiEditableIframeOptions,
-        @Inject(DOCUMENT) documentRef: Document,
+        @Inject(DOCUMENT) doc: Document,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Self()
         @Inject(TuiDestroyService)
         destroy$: TuiDestroyService,
     ) {
-        super(documentRef, destroy$);
+        super(doc, destroy$);
     }
 
     updateSize([width, height]: readonly [width: number, height: number]): void {

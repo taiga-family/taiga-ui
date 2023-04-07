@@ -52,7 +52,7 @@ export class TuiHintDirective<C>
     readonly type = 'hint';
 
     constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(PolymorpheusComponent)
         readonly component: PolymorpheusComponent<unknown, any>,
         @Inject(TuiHintService) private readonly hintService: TuiHintService,
@@ -77,7 +77,7 @@ export class TuiHintDirective<C>
     }
 
     getClientRect(): ClientRect {
-        return this.elementRef.nativeElement.getBoundingClientRect();
+        return this.el.nativeElement.getBoundingClientRect();
     }
 
     toggle(show: boolean): void {

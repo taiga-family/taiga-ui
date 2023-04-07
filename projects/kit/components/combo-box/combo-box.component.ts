@@ -112,13 +112,13 @@ export class TuiComboBoxComponent<T>
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_ARROW_MODE)
         private readonly arrowMode: TuiArrowMode,
         @Inject(TUI_ITEMS_HANDLERS)
         private readonly itemsHandlers: TuiItemsHandlers<T>,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     get arrow(): PolymorpheusContent<

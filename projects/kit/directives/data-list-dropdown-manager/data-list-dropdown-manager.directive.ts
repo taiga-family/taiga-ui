@@ -38,7 +38,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
     private readonly dropdowns: QueryList<TuiDropdownDirective> = EMPTY_QUERY;
 
     @ContentChildren(TuiDropdownDirective, {read: ElementRef, descendants: true})
-    private readonly elements: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+    private readonly els: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     constructor(
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
@@ -56,7 +56,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                         dropdown.toggle(index === active);
                     });
 
-                    const element = this.elements.get(active);
+                    const element = this.els.get(active);
                     const dropdown = this.dropdowns.get(active);
 
                     if (!element || !dropdown?.dropdownBoxRef) {
@@ -91,7 +91,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
 
     @tuiPure
     private get elements$(): Observable<readonly HTMLElement[]> {
-        return tuiQueryListChanges(this.elements).pipe(
+        return tuiQueryListChanges(this.els).pipe(
             map(array => array.map(({nativeElement}) => nativeElement)),
             shareReplay({bufferSize: 1, refCount: true}),
         );

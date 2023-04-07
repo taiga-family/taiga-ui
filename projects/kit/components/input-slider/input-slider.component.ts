@@ -111,11 +111,11 @@ export class TuiInputSliderComponent
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     get prefix(): string {

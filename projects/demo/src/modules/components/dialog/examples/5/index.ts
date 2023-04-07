@@ -12,16 +12,14 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     encapsulation,
 })
 export class TuiDialogExampleComponent5 {
-    constructor(
-        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
-    ) {}
+    constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) {}
 
     onClick(
         content: PolymorpheusContent<TuiDialogContext>,
         header: PolymorpheusContent,
         size: TuiDialogSize,
     ): void {
-        this.dialogService
+        this.dialogs
             .open(content, {
                 label: 'What a cool library set',
                 header,

@@ -79,7 +79,7 @@ export class TuiInputPasswordComponent
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_PASSWORD_TEXTS)
@@ -92,7 +92,7 @@ export class TuiInputPasswordComponent
         @Inject(TUI_MODE)
         private readonly mode$: Observable<TuiBrightness | null>,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {

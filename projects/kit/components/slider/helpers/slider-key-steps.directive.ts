@@ -43,7 +43,7 @@ export class TuiSliderKeyStepsDirective
     keySteps!: TuiKeySteps;
 
     get nativeFocusableElement(): HTMLInputElement | null {
-        return this.computedDisabled ? null : this.elementRef.nativeElement;
+        return this.computedDisabled ? null : this.el.nativeElement;
     }
 
     get focused(): boolean {
@@ -63,12 +63,12 @@ export class TuiSliderKeyStepsDirective
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLInputElement>,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLInputElement>,
         @Inject(forwardRef(() => TuiSliderComponent))
         private readonly slider: TuiSliderComponent,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     @HostListener('input')

@@ -7,8 +7,8 @@ import {map, share, startWith} from 'rxjs/operators';
     providedIn: `root`,
 })
 export class TuiNightThemeService extends Observable<boolean> {
-    constructor(@Inject(WINDOW) windowRef: Window) {
-        const media = windowRef.matchMedia(`(prefers-color-scheme: dark)`);
+    constructor(@Inject(WINDOW) win: Window) {
+        const media = win.matchMedia(`(prefers-color-scheme: dark)`);
         const media$ = fromEvent(media, `change`).pipe(
             startWith(null),
             map(() => media.matches),

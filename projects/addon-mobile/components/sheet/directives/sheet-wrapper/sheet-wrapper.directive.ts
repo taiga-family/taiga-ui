@@ -43,13 +43,13 @@ export class TuiSheetWrapperDirective {
 
     constructor(
         @Inject(NgZone) private readonly ngZone: NgZone,
-        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(WINDOW) private readonly win: Window,
     ) {}
 
     @tuiPure
     get overlay$(): Observable<boolean> {
         return this.scroll$.pipe(
-            map(y => y + 16 > this.windowRef.innerHeight - this.tuiSheetWrapper),
+            map(y => y + 16 > this.win.innerHeight - this.tuiSheetWrapper),
             distinctUntilChanged(),
             tuiZonefull(this.ngZone),
         );
@@ -71,11 +71,7 @@ export class TuiSheetWrapperDirective {
     private getHeight(value: number): number | null {
         return this.sheet?.context.overlay
             ? null
-            : tuiClamp(
-                  this.withImage(value) + OFFSET,
-                  OFFSET,
-                  this.windowRef.innerHeight,
-              );
+            : tuiClamp(this.withImage(value) + OFFSET, OFFSET, this.win.innerHeight);
     }
 
     private withImage(value: number): number {

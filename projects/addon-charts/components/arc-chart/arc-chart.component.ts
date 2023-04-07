@@ -93,12 +93,12 @@ export class TuiArcChartComponent {
 
     constructor(
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
     ) {
         // So initial animation works
         setTimeout(() => {
             this.initialized = true;
-            changeDetectorRef.markForCheck();
+            cdr.markForCheck();
         });
     }
 

@@ -9,15 +9,12 @@ import type {TuiAutofocusHandler} from '../autofocus.options';
 @Directive()
 export abstract class AbstractTuiAutofocusHandler implements TuiAutofocusHandler {
     constructor(
-        protected readonly tuiFocusableComponent: TuiFocusableElementAccessor | null,
-        protected readonly elementRef: ElementRef<HTMLElement>,
+        protected readonly focusable: TuiFocusableElementAccessor | null,
+        protected readonly el: ElementRef<HTMLElement>,
     ) {}
 
     protected get element(): TuiNativeFocusableElement {
-        return (
-            this.tuiFocusableComponent?.nativeFocusableElement ||
-            this.elementRef.nativeElement
-        );
+        return this.focusable?.nativeFocusableElement || this.el.nativeElement;
     }
 
     protected get isTextFieldElement(): boolean {

@@ -2,10 +2,8 @@ import {ChangeDetectorRef} from '@angular/core';
 import {MonoTypeOperatorFunction} from 'rxjs';
 import {tap} from 'rxjs/operators';
 
-export function tuiWatch<T>(
-    changeDetectorRef: ChangeDetectorRef,
-): MonoTypeOperatorFunction<T> {
+export function tuiWatch<T>(cdr: ChangeDetectorRef): MonoTypeOperatorFunction<T> {
     return tap(() => {
-        changeDetectorRef.markForCheck();
+        cdr.markForCheck();
     });
 }

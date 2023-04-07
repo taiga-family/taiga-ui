@@ -88,7 +88,7 @@ export class TuiToolbarComponent {
     constructor(
         @Optional()
         @Inject(ElementRef)
-        private readonly elementRef: ElementRef<HTMLElement>,
+        private readonly el: ElementRef<HTMLElement>,
         @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
         @Inject(TUI_IMAGE_LOADER)
         private readonly imageLoader: TuiHandler<File, Observable<string>>,
@@ -107,7 +107,7 @@ export class TuiToolbarComponent {
 
     get focused(): boolean {
         return (
-            tuiIsNativeFocusedIn(this.elementRef.nativeElement) ||
+            tuiIsNativeFocusedIn(this.el.nativeElement) ||
             !!this.dropdowns.find(({nativeElement}) =>
                 tuiIsNativeFocusedIn(nativeElement),
             )

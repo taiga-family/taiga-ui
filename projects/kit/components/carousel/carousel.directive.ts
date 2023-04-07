@@ -16,16 +16,16 @@ export class TuiCarouselDirective extends Observable<unknown> {
     private readonly duration$ = new BehaviorSubject(0);
 
     private readonly running$ = merge(
-        tuiTypedFromEvent(this.elementRef.nativeElement, 'mouseenter').pipe(
+        tuiTypedFromEvent(this.el.nativeElement, 'mouseenter').pipe(
             map(ALWAYS_FALSE_HANDLER),
         ),
-        tuiTypedFromEvent(this.elementRef.nativeElement, 'touchstart').pipe(
+        tuiTypedFromEvent(this.el.nativeElement, 'touchstart').pipe(
             map(ALWAYS_FALSE_HANDLER),
         ),
-        tuiTypedFromEvent(this.elementRef.nativeElement, 'touchend').pipe(
+        tuiTypedFromEvent(this.el.nativeElement, 'touchend').pipe(
             map(ALWAYS_TRUE_HANDLER),
         ),
-        tuiTypedFromEvent(this.elementRef.nativeElement, 'mouseleave').pipe(
+        tuiTypedFromEvent(this.el.nativeElement, 'mouseleave').pipe(
             map(ALWAYS_TRUE_HANDLER),
         ),
         this.visible$,
@@ -49,7 +49,7 @@ export class TuiCarouselDirective extends Observable<unknown> {
     }
 
     constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(PAGE_VISIBILITY) private readonly visible$: Observable<boolean>,
     ) {
         super(subscriber => this.output$.subscribe(subscriber));

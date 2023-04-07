@@ -26,11 +26,11 @@ export class TuiSelectExample4 {
 
     constructor(
         @Inject(TuiAlertService)
-        private readonly alertService: TuiAlertService,
+        private readonly alerts: TuiAlertService,
     ) {}
 
     addMore(select: TuiSelectComponent<unknown>): void {
         select.handleOption(select.value);
-        this.alertService.open('Add more is clicked').subscribe();
+        this.alerts.open('Add more is clicked').subscribe();
     }
 }

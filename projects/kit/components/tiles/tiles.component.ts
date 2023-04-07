@@ -36,7 +36,7 @@ import {debounce, filter, map} from 'rxjs/operators';
     ],
 })
 export class TuiTilesComponent {
-    private readonly element$ = new Subject<Element | undefined>();
+    private readonly el$ = new Subject<Element | undefined>();
 
     @Input()
     @tuiDefaultProp()
@@ -53,7 +53,7 @@ export class TuiTilesComponent {
     }
 
     @Output()
-    readonly orderChange = this.element$.pipe(
+    readonly orderChange = this.el$.pipe(
         debounce(() => timer(this.debounce)),
         filter(this.filter.bind(this)),
         map(element => this.reorder(element)),
@@ -64,11 +64,11 @@ export class TuiTilesComponent {
 
     readonly order$ = new BehaviorSubject(new Map<number, number>());
 
-    constructor(@Inject(ElementRef) private readonly elementRef: ElementRef<Element>) {}
+    constructor(@Inject(ElementRef) private readonly el: ElementRef<Element>) {}
 
     @HostListener('pointerleave.silent')
     rearrange(element?: Element): void {
-        this.element$.next(element);
+        this.el$.next(element);
     }
 
     private filter(element?: Element): element is Element {
@@ -76,7 +76,7 @@ export class TuiTilesComponent {
     }
 
     private reorder(element: Element): Map<number, number> {
-        const elements = Array.from(this.elementRef.nativeElement.children);
+        const elements = Array.from(this.el.nativeElement.children);
         const currentIndex = elements.indexOf(this.element || element);
         const newIndex = elements.indexOf(element);
         const order = this.order.size

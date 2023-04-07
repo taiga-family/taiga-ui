@@ -13,11 +13,11 @@ export class TuiCopyProcessorDirective {
     @tuiDefaultProp()
     tuiCopyProcessor: TuiStringHandler<string> = identity;
 
-    constructor(@Inject(WINDOW) private readonly windowRef: Window) {}
+    constructor(@Inject(WINDOW) private readonly win: Window) {}
 
     @HostListener('copy.prevent', ['$event'])
     onCopy(event: ClipboardEvent): void {
-        const text = tuiGetSelectedText(this.windowRef);
+        const text = tuiGetSelectedText(this.win);
 
         if (text) {
             event.clipboardData?.setData('text/plain', this.tuiCopyProcessor(text));

@@ -22,11 +22,11 @@ export class TuiAlertsExampleComponent5 {
     readonly notificationWithCustomLabel: Observable<void>;
 
     constructor(
-        @Inject(TuiAlertService) alertService: TuiAlertService,
+        @Inject(TuiAlertService) alerts: TuiAlertService,
         @Inject(Router) router: Router,
         @Inject(Injector) private readonly injector: Injector,
     ) {
-        this.notification = alertService
+        this.notification = alerts
             .open(
                 new PolymorpheusComponent(
                     AlertExampleWithCustomLabelComponent,
@@ -43,7 +43,7 @@ export class TuiAlertsExampleComponent5 {
             )
             .pipe(takeUntil(router.events));
 
-        this.notificationWithCustomLabel = alertService
+        this.notificationWithCustomLabel = alerts
             .open(
                 new PolymorpheusComponent(
                     AlertExampleWithCustomLabelComponent,

@@ -27,13 +27,13 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
     {
         factory: () => {
             const removedElement$ = inject(TUI_REMOVED_ELEMENT);
-            const windowRef = inject(WINDOW);
-            const documentRef = inject(DOCUMENT);
-            const focusout$ = tuiTypedFromEvent(windowRef, `focusout`);
-            const focusin$ = tuiTypedFromEvent(windowRef, `focusin`);
-            const blur$ = tuiTypedFromEvent(windowRef, `blur`);
-            const mousedown$ = tuiTypedFromEvent(windowRef, `mousedown`);
-            const mouseup$ = tuiTypedFromEvent(windowRef, `mouseup`);
+            const win = inject(WINDOW);
+            const doc = inject(DOCUMENT);
+            const focusout$ = tuiTypedFromEvent(win, `focusout`);
+            const focusin$ = tuiTypedFromEvent(win, `focusin`);
+            const blur$ = tuiTypedFromEvent(win, `blur`);
+            const mousedown$ = tuiTypedFromEvent(win, `mousedown`);
+            const mouseup$ = tuiTypedFromEvent(win, `mouseup`);
 
             return merge(
                 focusout$.pipe(
@@ -53,7 +53,7 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
                     map(([{relatedTarget}]) => relatedTarget),
                 ),
                 blur$.pipe(
-                    map(() => documentRef.activeElement),
+                    map(() => doc.activeElement),
                     filter(element => !!element?.matches(`iframe`)),
                 ),
                 focusin$.pipe(
@@ -61,7 +61,7 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
                         const target = tuiGetActualTarget(event);
                         const root = tuiGetDocumentOrShadowRoot(target) as Document;
 
-                        return root === documentRef
+                        return root === doc
                             ? of(target)
                             : shadowRootActiveElement(root).pipe(startWith(target));
                     }),
@@ -70,8 +70,7 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
                     switchMap(event => {
                         const actualTargetInCurrentTime = tuiGetActualTarget(event);
 
-                        return !documentRef.activeElement ||
-                            documentRef.activeElement === documentRef.body
+                        return !doc.activeElement || doc.activeElement === doc.body
                             ? of(actualTargetInCurrentTime)
                             : focusout$.pipe(
                                   take(1),

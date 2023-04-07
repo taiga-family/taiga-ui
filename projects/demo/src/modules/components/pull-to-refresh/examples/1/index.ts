@@ -31,11 +31,11 @@ const loaded$ = new Subject<void>();
 export class TuiPullToRefreshExample1 {
     constructor(
         @Inject(TuiAlertService)
-        private readonly alertService: TuiAlertService,
+        private readonly alerts: TuiAlertService,
     ) {}
 
     onPull(): void {
-        this.alertService.open('Loading...').subscribe();
+        this.alerts.open('Loading...').subscribe();
     }
 
     finishLoading(): void {

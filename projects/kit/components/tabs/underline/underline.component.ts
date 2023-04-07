@@ -25,9 +25,9 @@ import {debounceTime, map, share, switchMap} from 'rxjs/operators';
     },
 })
 export class TuiUnderlineComponent {
-    private readonly element$ = new ReplaySubject<HTMLElement | null>(1);
+    private readonly el$ = new ReplaySubject<HTMLElement | null>(1);
 
-    private readonly refresh$ = this.element$.pipe(
+    private readonly refresh$ = this.el$.pipe(
         switchMap(element =>
             element
                 ? this.animationFrame$.pipe(
@@ -42,12 +42,12 @@ export class TuiUnderlineComponent {
     @Input()
     @tuiDefaultProp()
     set element(element: HTMLElement | null) {
-        this.element$.next(element);
+        this.el$.next(element);
     }
 
     @HostListener('$.style.transitionProperty')
     readonly transition$ = asCallable(
-        this.element$.pipe(
+        this.el$.pipe(
             map(element => element && 'all'),
             debounceTime(50),
         ),

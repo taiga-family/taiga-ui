@@ -13,10 +13,10 @@ import {TuiAlertService} from '@taiga-ui/core';
 export class TuiActionExample1 {
     constructor(
         @Inject(TuiAlertService)
-        private readonly alertService: TuiAlertService,
+        private readonly alerts: TuiAlertService,
     ) {}
 
     onClick(result: string): void {
-        this.alertService.open(result).subscribe();
+        this.alerts.open(result).subscribe();
     }
 }

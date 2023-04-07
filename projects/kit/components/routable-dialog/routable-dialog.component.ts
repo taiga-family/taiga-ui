@@ -15,11 +15,11 @@ export class TuiRoutableDialogComponent {
     constructor(
         @Inject(ActivatedRoute) private readonly route: ActivatedRoute,
         @Inject(Router) private readonly router: Router,
-        @Inject(TuiDialogService) dialogService: TuiDialogService,
+        @Inject(TuiDialogService) dialogs: TuiDialogService,
         @Inject(Injector) injector: Injector,
         @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
-        dialogService
+        dialogs
             .open(
                 new PolymorpheusComponent(this.route.snapshot.data['dialog'], injector),
                 this.route.snapshot.data['dialogOptions'],

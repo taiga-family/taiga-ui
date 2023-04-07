@@ -22,7 +22,7 @@ export abstract class AbstractTuiNativeSelect<T = TuiTextfieldHost> {
     constructor(
         @Inject(TUI_TEXTFIELD_HOST) readonly host: T,
         @Inject(AbstractTuiControl) readonly control: AbstractTuiControl<unknown>,
-        @Inject(ElementRef) protected readonly elementRef: ElementRef<HTMLSelectElement>,
+        @Inject(ElementRef) protected readonly el: ElementRef<HTMLSelectElement>,
         @Inject(TuiIdService)
         private readonly idService: TuiIdService,
         @Inject(TUI_ITEMS_HANDLERS)
@@ -31,6 +31,6 @@ export abstract class AbstractTuiNativeSelect<T = TuiTextfieldHost> {
 
     @HostBinding(`id`)
     get id(): string {
-        return this.elementRef.nativeElement.id || this.idService.generate();
+        return this.el.nativeElement.id || this.idService.generate();
     }
 }

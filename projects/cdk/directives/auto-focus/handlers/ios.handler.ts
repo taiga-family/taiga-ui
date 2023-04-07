@@ -22,13 +22,13 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         @Optional()
         @Self()
         @Inject(TUI_FOCUSABLE_ITEM_ACCESSOR)
-        tuiFocusableComponent: TuiFocusableElementAccessor | null,
-        @Inject(ElementRef) elementRef: ElementRef<HTMLElement>,
+        focusable: TuiFocusableElementAccessor | null,
+        @Inject(ElementRef) el: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(NgZone) private readonly ngZone: NgZone,
-        @Inject(WINDOW) private readonly windowRef: Window,
+        @Inject(WINDOW) private readonly win: Window,
     ) {
-        super(tuiFocusableComponent, elementRef);
+        super(focusable, el);
         this.patchCssStyles();
     }
 
@@ -50,13 +50,13 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         const focusHandler = (): void => {
             clearTimeout(fakeFocusTimeoutId);
 
-            fakeFocusTimeoutId = this.windowRef.setTimeout(() => {
+            fakeFocusTimeoutId = this.win.setTimeout(() => {
                 clearTimeout(elementFocusTimeoutId);
 
                 fakeInput.removeEventListener(`blur`, blurHandler);
                 fakeInput.removeEventListener(`focus`, focusHandler);
 
-                elementFocusTimeoutId = this.windowRef.setTimeout(() => {
+                elementFocusTimeoutId = this.win.setTimeout(() => {
                     this.element.focus({preventScroll: false});
                     fakeInput.remove();
                 }, duration);
@@ -67,7 +67,7 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         fakeInput.addEventListener(`focus`, focusHandler);
 
         if (this.insideDialog()) {
-            this.windowRef.document.body.appendChild(fakeInput);
+            this.win.document.body.appendChild(fakeInput);
         } else {
             this.element.parentElement?.appendChild(fakeInput);
         }
@@ -108,7 +108,7 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
     private getDurationTimeBeforeFocus(): number {
         return (
             parseFloat(
-                this.windowRef
+                this.win
                     .getComputedStyle(this.element)
                     .getPropertyValue(`--tui-duration`),
             ) || 0
@@ -135,9 +135,9 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
      * so that when focusing the dialogs don't shake
      */
     private patchCssStyles(): void {
-        const documentRef = this.windowRef.document;
+        const doc = this.win.document;
 
-        for (const element of [documentRef.documentElement, documentRef.body]) {
+        for (const element of [doc.documentElement, doc.body]) {
             element.style.setProperty(`overflow`, `auto`);
             element.style.setProperty(`height`, `100%`);
         }

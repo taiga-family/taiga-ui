@@ -42,7 +42,7 @@ export class TuiAlertComponent<O, I> implements OnInit {
     readonly animation = {value: '', ...this.animationOptions} as const;
 
     constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(TUI_NOTIFICATION_OPTIONS)
         private readonly options: TuiNotificationDefaultOptions,
@@ -70,17 +70,17 @@ export class TuiAlertComponent<O, I> implements OnInit {
                 : this.options.defaultAutoCloseTime,
         )
             .pipe(
-                takeUntil(fromEvent(this.elementRef.nativeElement, 'mouseenter')),
+                takeUntil(fromEvent(this.el.nativeElement, 'mouseenter')),
                 /**
                  * TODO: replace to
                  * repeat({
-                 *    delay: () => fromEvent(this.elementRef.nativeElement, 'mouseleave'),
+                 *    delay: () => fromEvent(this.el.nativeElement, 'mouseleave'),
                  * })
                  *
                  * in RxJS 7
                  */
                 // eslint-disable-next-line rxjs/no-ignored-notifier
-                repeatWhen(() => fromEvent(this.elementRef.nativeElement, 'mouseleave')),
+                repeatWhen(() => fromEvent(this.el.nativeElement, 'mouseleave')),
                 takeUntil(this.destroy$),
             )
             .subscribe(() => this.closeNotification());

@@ -1,9 +1,9 @@
 ```ts
-constructor(private readonly dialogsService: TuiMobileDialogService) {}
+constructor(private readonly dialogs: TuiMobileDialogService) {}
 
 // ...
 
-this.dialogsService
+this.dialogs
     .open(
         'Text',
         {

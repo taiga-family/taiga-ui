@@ -39,7 +39,7 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
     readonly selected$ = merge(
         this.changeDetection$,
         this.control.valueChanges || EMPTY,
-        tuiTypedFromEvent(this.elementRef.nativeElement, 'animationstart'),
+        tuiTypedFromEvent(this.el.nativeElement, 'animationstart'),
     ).pipe(
         startWith(null),
         map(() => this.selected),
@@ -51,7 +51,7 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
         readonly context: TuiContextWithImplicit<TemplateRef<Record<string, unknown>>>,
         @Inject(TUI_DATA_LIST_HOST)
         private readonly host: TuiDataListHost<T>,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TuiOptionComponent) protected readonly option: TuiOptionComponent<T>,
         @Optional()
         @Inject(TuiDataListComponent)

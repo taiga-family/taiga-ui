@@ -101,7 +101,7 @@ export class TuiInputPhoneInternationalComponent
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_COUNTRIES)
         readonly countriesNames$: Observable<Record<TuiCountryIsoCode, string>>,
         @Inject(TUI_COUNTRIES_MASKS)
@@ -111,7 +111,7 @@ export class TuiInputPhoneInternationalComponent
         @Inject(TuiFlagPipe)
         private readonly flagPipe: TuiFlagPipe,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     get nativeFocusableElement(): HTMLElement | null {
@@ -185,7 +185,7 @@ export class TuiInputPhoneInternationalComponent
         this.open = false;
         this.updateCountryIsoCode(isoCode);
         // recalculates mask inside inputPhone to prevent isoCode conflict
-        this.changeDetectorRef.detectChanges();
+        this.cdr.detectChanges();
 
         const maxLength = this.getMaxAllowedLength(isoCode);
 

@@ -71,10 +71,10 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
     ) {
-        super(control, changeDetectorRef);
+        super(control, cdr);
     }
 
     // @bad TODO: Remove & { index: number }
@@ -93,7 +93,7 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     }
 
     get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.elementRef.nativeElement);
+        return tuiIsNativeFocusedIn(this.el.nativeElement);
     }
 
     computeId(index: number): string {

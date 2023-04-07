@@ -12,7 +12,7 @@
     <!-- Content over dialogs -->
   </ng-container>
   <ng-container ngProjectAs="tuiOverAlerts">
-    <!-- Content over notifications -->
+    <!-- Content over alerts -->
   </ng-container>
   <ng-container ngProjectAs="tuiOverPortals">
     <!-- Content over dropdowns -->

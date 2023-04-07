@@ -28,7 +28,7 @@ export type Buttons = ReadonlyArray<
 export class TuiPdfViewerExample2 {
     constructor(
         @Inject(TuiAlertService)
-        private readonly alertService: TuiAlertService,
+        private readonly alerts: TuiAlertService,
         @Inject(TuiPdfViewerService) private readonly pdfService: TuiPdfViewerService,
     ) {}
 
@@ -50,7 +50,7 @@ export class TuiPdfViewerExample2 {
 
         this.pdfService
             .open<string>(new PolymorpheusComponent(PdfContentComponent), options)
-            .pipe(switchMap(response => this.alertService.open(response)))
+            .pipe(switchMap(response => this.alerts.open(response)))
             .subscribe();
     }
 }

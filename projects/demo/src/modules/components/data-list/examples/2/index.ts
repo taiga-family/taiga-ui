@@ -16,12 +16,10 @@ export class TuiDataListExample2 {
     readonly burgers = ['Classic', 'Cheeseburger', 'Royal Cheeseburger'];
     readonly drinks = ['Cola', 'Tea', 'Coffee', 'Slurm'];
 
-    constructor(
-        @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
-    ) {}
+    constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) {}
 
     selectOption(item: string): void {
         this.dropdownOpen = false;
-        this.dialogService.open(`You selected ${item}`).subscribe();
+        this.dialogs.open(`You selected ${item}`).subscribe();
     }
 }

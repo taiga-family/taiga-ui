@@ -131,7 +131,7 @@ export class ExampleTuiAlertsComponent {
 
     constructor(
         @Inject(TuiAlertService)
-        private readonly alertService: TuiAlertService,
+        private readonly alerts: TuiAlertService,
         @Inject(Injector) injector: Injector,
     ) {
         this.component = new PolymorpheusComponent(
@@ -147,7 +147,7 @@ export class ExampleTuiAlertsComponent {
     }
 
     showNotification(): void {
-        this.alertService
+        this.alerts
             .open(this.selectedContent, {
                 label: this.label,
                 data: this.data,
@@ -158,7 +158,7 @@ export class ExampleTuiAlertsComponent {
             })
             .pipe(
                 switchMap(response =>
-                    this.alertService.open(response, {
+                    this.alerts.open(response, {
                         label: 'Notification responded with:',
                     }),
                 ),

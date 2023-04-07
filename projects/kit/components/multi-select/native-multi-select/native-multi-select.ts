@@ -10,10 +10,8 @@ export abstract class AbstractTuiNativeMultiSelect extends AbstractTuiNativeSele
         value.includes(option);
 
     onValueChange(): void {
-        const {selectedOptions} = this.elementRef.nativeElement;
-
         this.host.onSelectionChange(
-            Array.from(selectedOptions).map(option => option.value),
+            Array.from(this.el.nativeElement.selectedOptions).map(option => option.value),
         );
     }
 }

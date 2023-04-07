@@ -50,9 +50,9 @@ export class TuiSidebarDirective<T = Record<string, unknown>>
         @Inject(Injector) private readonly injector: Injector,
         @Inject(TuiDropdownPortalService)
         private readonly portalService: TuiDropdownPortalService,
-        @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
     ) {
-        super(content, changeDetectorRef);
+        super(content, cdr);
     }
 
     ngOnDestroy(): void {

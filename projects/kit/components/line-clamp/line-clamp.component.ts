@@ -86,7 +86,7 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
         switchMap(([prev, next]) =>
             next >= prev
                 ? of(next)
-                : tuiTypedFromEvent(this.elementRef.nativeElement, 'transitionend').pipe(
+                : tuiTypedFromEvent(this.el.nativeElement, 'transitionend').pipe(
                       filter(tuiIsCurrentTarget),
                       map(() => next),
                   ),
@@ -94,7 +94,7 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
     );
 
     constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(ChangeDetectorRef) private readonly cd: ChangeDetectorRef,
         @Inject(NgZone) private readonly ngZone: NgZone,
@@ -109,7 +109,7 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
         }
 
         const {scrollHeight, scrollWidth} = this.outlet.nativeElement;
-        const {clientHeight, clientWidth} = this.elementRef.nativeElement;
+        const {clientHeight, clientWidth} = this.el.nativeElement;
 
         // 4px buffer for IE/Edge incorrectly rounding scrollHeight
         return scrollHeight - clientHeight > 4 || scrollWidth - clientWidth > 0;
@@ -137,7 +137,7 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
         timer(0)
             .pipe(tuiZonefree(this.ngZone))
             .subscribe(() => {
-                this.renderer.addClass(this.elementRef.nativeElement, '_initialized');
+                this.renderer.addClass(this.el.nativeElement, '_initialized');
                 this.cd.detectChanges();
             });
     }
