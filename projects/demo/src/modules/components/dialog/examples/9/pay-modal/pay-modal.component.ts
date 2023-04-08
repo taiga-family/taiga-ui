@@ -12,7 +12,7 @@ import {
     tuiDefaultCardValidator,
     TuiInputCardGroupedComponent,
 } from '@taiga-ui/addon-commerce';
-import {TuiDestroyService} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiDialogContext} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject} from 'rxjs';
@@ -56,6 +56,7 @@ export class PayModalComponent implements OnInit {
     constructor(
         @Inject(POLYMORPHEUS_CONTEXT)
         readonly context: TuiDialogContext<void, DataForPayCardModal>,
+        @Inject(TUI_IS_IOS) readonly iOS: boolean,
         @Inject(PayService) private readonly payService: PayService,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
     ) {}

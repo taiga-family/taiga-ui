@@ -10,11 +10,24 @@ import {
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk/tokens';
-import {tuiPx} from '@taiga-ui/cdk/utils';
+import {tuiIsPresent, tuiPx} from '@taiga-ui/cdk/utils';
 
 // TODO: find the best way for prevent cycle
 // eslint-disable-next-line import/no-cycle
 import {AbstractTuiAutofocusHandler} from './abstract.handler';
+
+const TEXTFIELD_ATTRS = [
+    `type`,
+    `inputMode`,
+    `autocomplete`,
+    `accept`,
+    `min`,
+    `max`,
+    `step`,
+    `pattern`,
+    `size`,
+    `maxlength`,
+] as const;
 
 @Directive()
 export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
@@ -79,15 +92,26 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
      * @note:
      * emulate textfield position in layout with cursor
      * before focus to real textfield element
+     *
+     * required note:
+     * [fakeInput.readOnly = true] ~
+     * don't use {readOnly: true} value, it's doesn't work for emulate autofill
+     *
+     * [fakeInput.style.opacity = 0] ~
+     * don't use {opacity: 0}, sometimes it's doesn't work for emulate real input
+     *
+     * [fakeInput.style.fontSize = 16px] ~
+     * disable possible auto zoom
+     *
+     * [fakeInput.style.top/left] ~
+     * emulate position cursor before focus to real textfield element
      */
     private makeFakeInput(): HTMLInputElement {
         const fakeInput: HTMLInputElement = this.renderer.createElement(`input`);
         const rect: DOMRect = this.element.getBoundingClientRect();
 
-        fakeInput.setAttribute(`maxlength`, `0`);
+        this.patchFakeInputFromFocusableElement(fakeInput);
 
-        // @note: don't use opacity: 0,
-        // sometimes it's doesn't work for emulate real input
         fakeInput.style.height = tuiPx(rect.height);
         fakeInput.style.width = tuiPx(rect.width / 2);
         fakeInput.style.position = `fixed`;
@@ -95,10 +119,7 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         fakeInput.style.caretColor = `transparent`;
         fakeInput.style.color = `transparent`;
         fakeInput.style.cursor = `none`;
-        fakeInput.style.fontSize = tuiPx(16); // disable possible auto zoom
-        fakeInput.readOnly = true; // prevent keyboard for fake input
-
-        // @note: emulate position cursor before focus to real textfield element
+        fakeInput.style.fontSize = tuiPx(16);
         fakeInput.style.top = tuiPx(rect.top);
         fakeInput.style.left = tuiPx(rect.left);
 
@@ -141,5 +162,21 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
             element.style.setProperty(`overflow`, `auto`);
             element.style.setProperty(`height`, `100%`);
         }
+    }
+
+    /**
+     * @note:
+     * inherit basic attributes values from real input
+     * for help iOS detect what do you want see on keyboard,
+     * for example [inputMode=numeric, autocomplete=cc-number]
+     */
+    private patchFakeInputFromFocusableElement(fakeInput: HTMLInputElement): void {
+        TEXTFIELD_ATTRS.forEach(attr => {
+            const value = this.element.getAttribute(attr);
+
+            if (tuiIsPresent(value)) {
+                fakeInput.setAttribute(attr, value);
+            }
+        });
     }
 }
