@@ -1,7 +1,7 @@
 <div
     *polymorpheusOutlet="context.data?.content as text"
     class="t-content"
-    [innerText]="text"
+    [innerHTML]="text"
 ></div>
 <div
     *ngIf="words$ | async as words"

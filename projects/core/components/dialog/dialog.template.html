@@ -15,7 +15,7 @@
     <section>
         <!-- TODO: Polymorpheus fix type -->
         <ng-container *polymorpheusOutlet="$any(context.content) as text; context: context">
-            {{ text }}
+            <div [innerHTML]="text"></div>
             <div class="t-buttons">
                 <button
                     type="button"
