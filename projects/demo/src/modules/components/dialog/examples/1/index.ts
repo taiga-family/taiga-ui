@@ -14,7 +14,10 @@ export class TuiDialogExampleComponent1 {
 
     showDialog(): void {
         this.dialogs
-            .open('This is a plain string dialog', {label: 'Heading', size: 's'})
+            .open(
+                '<div>This is a plain string dialog.</div>It supports basic <strong>HTML</strong>',
+                {label: 'Heading', size: 's'},
+            )
             .subscribe();
     }
 

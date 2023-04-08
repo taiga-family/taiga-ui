@@ -29,7 +29,7 @@ export class TuiDialogExampleComponent8 {
         const closeable = this.dialogForm.withPrompt({
             label: 'Are you sure?',
             data: {
-                content: 'Your data will be lost',
+                content: 'Your data will be <strong>lost</strong>',
             },
         });
 
