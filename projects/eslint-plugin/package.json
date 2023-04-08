@@ -9,8 +9,8 @@
         "@angular-eslint/template-parser": "15.2.1",
         "@html-eslint/eslint-plugin": "0.17.2",
         "@html-eslint/parser": "0.17.1",
-        "@tinkoff/eslint-config": "1.50.1",
-        "@tinkoff/eslint-config-angular": "1.51.0",
+        "@tinkoff/eslint-config": "1.52.1",
+        "@tinkoff/eslint-config-angular": "1.52.1",
         "eslint-plugin-unicorn": "45.0.2"
     },
     "peerDependencies": {
