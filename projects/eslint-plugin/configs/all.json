@@ -12,6 +12,7 @@
                 "ignoreImports": ["\\?raw", "@taiga-ui/testing/cypress", "@taiga-ui/testing/setup-jest"]
             }
         ],
-        "@taiga-ui/strict-tui-doc-example": "error"
+        "@taiga-ui/strict-tui-doc-example": "error",
+        "@taiga-ui/no-assert-without-ng-dev-mode": "error"
     }
 }
