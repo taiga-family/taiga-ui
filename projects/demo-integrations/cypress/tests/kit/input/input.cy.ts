@@ -45,7 +45,7 @@ describe(`Input`, () => {
 
         it(`input overflow due to placeholder`, () => {
             cy.viewport(400, 812).tuiVisit(
-                `components/input/API?tuiMode=null&icon=tuiIconSearch&iconAlign=left&pseudoFocused=true&placeholder=Lorem%20ipsum%20dolor%20sit%20amet,%20consectetur%20adipiscing%20elit,%20sed%20do%20eiusmod%20tempor%20incididunt%20ut%20labore`,
+                `components/input/API?tuiMode=null&tuiTextfieldIconLeft=tuiIconSearch&pseudoFocus=true&placeholder=Lorem%20ipsum%20dolor%20sit%20amet,%20consectetur%20adipiscing%20elit,%20sed%20do%20eiusmod%20tempor%20incididunt%20ut%20labore`,
             );
 
             cy.get(`.t-input-wrapper`)
@@ -66,7 +66,7 @@ describe(`Input`, () => {
         const characters = `big, placeholder, qwerty, jackson, yellow and more`;
 
         cy.viewport(450, 300).tuiVisit(
-            `components/input/API?tuiMode=null&pseudoFocused=true&placeholder=${characters}`,
+            `components/input/API?tuiMode=null&pseudoFocus=true&placeholder=${characters}`,
         );
 
         cy.get(`#demo-content`)
