@@ -886,9 +886,9 @@ export const pages: TuiDocPages = [
     // Editor
     {
         section: $localize`Editor`,
-        title: `Setup and API`,
-        keywords: `editor, setup, wysiwyg, редактор, текст, html, rich, text`,
-        route: `/editor/setup`,
+        title: `Starter Kit`,
+        keywords: `editor, setup, starter kit, wysiwyg, редактор, текст, html, rich, text`,
+        route: `/editor/API`,
     },
     {
         section: $localize`Editor`,
