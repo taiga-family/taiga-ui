@@ -34,15 +34,26 @@
         </ng-container>
 
         <div class="form-block">
-            <ng-container *tuiLet="(loading$ | async) ?? false as loading">
-                <p *ngIf="loading">Please wait, we are loading fake cards...</p>
-
-                <!-- hack: open keyboard on iOS before focus target input -->
+            <ng-container *ngIf="iOS">
+                <!-- hack: open keyboard on iOS before focus target card input -->
+                <!-- hack: use autocomplete/inputmode attrs if you want autofill in keyboard  -->
                 <input
                     tuiAutoFocus
                     maxlength="0"
+                    inputmode="numeric"
+                    autocomplete="cc-number"
                     class="fake-input"
                 />
+                <!-- required:
+                    You don't need to use this hack for iOS if your input-card elements
+                    already exist in DOM, because you don't need to wait for them asynchronously.
+
+                    In our example we wait loading$ state before focus real card number / card cvc.
+                -->
+            </ng-container>
+
+            <ng-container *tuiLet="(loading$ | async) ?? false as loading">
+                <p *ngIf="loading">Please wait, we are loading fake cards...</p>
 
                 <tui-loader
                     [overlay]="true"
@@ -51,6 +62,7 @@
                     <tui-input-card-grouped
                         #cardGroupedInput
                         formControlName="card"
+                        [autocompleteEnabled]="true"
                         [cardValidator]="cardValidator"
                         [class.without-date]="paymentMode === PAYMENT_MODE.BySavedCard"
                         [tuiTextfieldCleaner]="paymentMode === PAYMENT_MODE.ByNewCard"
