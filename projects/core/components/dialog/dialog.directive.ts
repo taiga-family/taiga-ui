@@ -1,6 +1,6 @@
 import {Directive} from '@angular/core';
 import {AbstractTuiDialogDirective, AbstractTuiDialogService} from '@taiga-ui/cdk';
-import {TuiDialogOptions} from '@taiga-ui/core/interfaces';
+import {TuiDialogOptions} from './dialog.interfaces';
 
 import {TuiDialogService} from './dialog.service';
 

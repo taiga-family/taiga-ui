@@ -12,13 +12,13 @@ import {
     TuiDialog,
 } from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
-import {TuiAnimationOptions, TuiDialogOptions} from '@taiga-ui/core/interfaces';
+import {TuiAnimationOptions} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATIONS_DURATION, TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
-import {TuiDialogSize} from '@taiga-ui/core/types';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {isObservable, merge, Observable, of, Subject} from 'rxjs';
 import {filter, map, switchMap, takeUntil} from 'rxjs/operators';
 
+import {TuiDialogOptions, TuiDialogSize} from './dialog.interfaces';
 import {TUI_DIALOGS_CLOSE} from './dialog.tokens';
 import {TuiDialogCloseService} from './dialog-close.service';
 

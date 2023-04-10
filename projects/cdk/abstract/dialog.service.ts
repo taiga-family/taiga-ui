@@ -1,8 +1,12 @@
-import {Inject, Injectable} from '@angular/core';
+import {Inject, Injectable, TemplateRef} from '@angular/core';
 import {TuiBaseDialogContext} from '@taiga-ui/cdk/interfaces';
 import {TuiIdService} from '@taiga-ui/cdk/services';
 import {TuiDialog} from '@taiga-ui/cdk/types';
-import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {
+    PolymorpheusComponent,
+    PolymorpheusContent,
+    PolymorpheusTemplate,
+} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable()
@@ -21,16 +25,19 @@ export abstract class AbstractTuiDialogService<T, K = void> extends Observable<
         super(observer => this.dialogs$.subscribe(observer));
     }
 
-    open<G = void>(
-        content: PolymorpheusContent<T & TuiBaseDialogContext<K extends void ? G : K>>,
-        options: Partial<T> = {},
-    ): Observable<K extends void ? G : K> {
+    open<O = void, I extends T = T>(
+        content:
+            | PolymorpheusContent<I & TuiBaseDialogContext<K extends void ? O : K>>
+            | PolymorpheusTemplate<I & TuiBaseDialogContext<K extends void ? O : K>>
+            | TemplateRef<I & TuiBaseDialogContext<K extends void ? O : K>>,
+        options: Partial<I> = {},
+    ): Observable<K extends void ? O : K> {
         return new Observable(observer => {
-            const completeWith = (result: K extends void ? G : K): void => {
+            const completeWith = (result: K extends void ? O : K): void => {
                 observer.next(result);
                 observer.complete();
             };
-            const dialog = {
+            const dialog: TuiDialog<any, any> = {
                 ...this.defaultOptions,
                 ...options,
                 content,
