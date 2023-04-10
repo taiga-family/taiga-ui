@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {TuiReplacePipeModule} from '@taiga-ui/cdk';
 import {TuiTabsModule, TuiTagModule} from '@taiga-ui/kit';
 
 import {TuiDocSeeAlsoModule} from '../../internal/see-also/see-also.module';
@@ -16,6 +17,7 @@ import {TuiDocPageTabConnectorDirective} from './page-tab.directive';
         TuiTabsModule,
         TuiTagModule,
         TuiDocSourceCodeModule,
+        TuiReplacePipeModule,
     ],
     declarations: [TuiDocPageComponent, TuiDocPageTabConnectorDirective],
     exports: [TuiDocPageComponent, TuiDocPageTabConnectorDirective],
