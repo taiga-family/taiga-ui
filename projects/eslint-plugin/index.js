@@ -14,5 +14,6 @@ module.exports = {
         'prefer-self-destroy-service': require('./rules/prefer-self-destroy-service'),
         'no-typeof': require('./rules/no-typeof'),
         'strict-tui-doc-example': require('./rules/strict-tui-doc-example'),
+        'no-assert-without-ng-dev-mode': require('./rules/no-assert-without-ng-dev-mode'),
     },
 };
