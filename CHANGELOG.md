@@ -20,8 +20,7 @@ All notable changes to this project will be documented in this file. See
   ([531e322](https://github.com/tinkoff/taiga-ui/commit/531e32291985a94890d900f900b2146136b1db64))
 - **cdk:** `ValueChanges` add new directive ([#4128](https://github.com/tinkoff/taiga-ui/issues/4128))
   ([6c3a293](https://github.com/tinkoff/taiga-ui/commit/6c3a293a4a791d22ba6d080fc14a763753068fff))
-- **cdk:** add `[@tui](https://github.com/tui)ParentStop` animation
-  ([#4143](https://github.com/tinkoff/taiga-ui/issues/4143))
+- **cdk:** add `@tuiParentStop` animation ([#4143](https://github.com/tinkoff/taiga-ui/issues/4143))
   ([6576bc0](https://github.com/tinkoff/taiga-ui/commit/6576bc0f754f9f24813518bad3845b27a727438f))
 - **cdk:** clear timeout for `tuiForAsync` ([#4139](https://github.com/tinkoff/taiga-ui/issues/4139))
   ([33c6224](https://github.com/tinkoff/taiga-ui/commit/33c6224c63e763f7f7221a629dbf4bafd1cc616f))
