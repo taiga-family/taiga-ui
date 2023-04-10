@@ -1,10 +1,10 @@
-const traverseLogicalExpression = require('../utils/traverse-logical-expression');
+const getNodeByNameFromLogicalExpression = require('../utils/get-node-by-name-from-logical-expression');
 
 const MESSAGE_ID = `no-assert-without-ng-dev-mode`;
 const ERROR_MESSAGE = `callee.assert must be used along with ngDevMode`;
 
 const DEFAULT_OPTIONS = {
-    callee: ['tuiAssert'],
+    callee: ['tuiAssert', 'console'],
 };
 
 const requiredIdentifierName = 'ngDevMode';
@@ -61,9 +61,9 @@ module.exports = {
 
                 /**
                  * There are 3 cases, the goal is to find a required identifier in any of them.
-                 * 1. ngDevMode && callee.assert()
-                 * 2. if (ngDevMode && isUser) { callee.assert() }
-                 * 3. ngDevMode ? callee.assert() : null
+                 * 1. required && callee.assert()
+                 * 2. if (required && isUser) { callee.assert() }
+                 * 3. required ? callee.assert() : null
                  */
                 const isValid =
                     validateLogicalExpressions(logicalExpressions) ||
@@ -102,36 +102,19 @@ const getLogicalExpressions = ancestors => {
 };
 
 /**
- * Tries to find a required identifier in the provided logical expression.
- * @param expression {import('@types/estree').LogicalExpression}
- * @returns {import('@types/estree').Identifier | null}
- */
-const getRequiredIdentifierFromLogicalExpression = expression => {
-    let requiredIdentifier = null;
-
-    traverseLogicalExpression(expression, leaf => {
-        if (leaf.name === requiredIdentifierName) {
-            requiredIdentifier = leaf;
-        }
-    });
-
-    return requiredIdentifier;
-};
-
-/**
  * Validates that a required identifier is presented in the provided expressions.
- * Handles `ngDevMode && callee.assert()` expression.
+ * Handles `required && callee.assert()` expression.
  * @param expressions {import('@types/estree').LogicalExpression[]}
  * @returns {boolean}
  */
 const validateLogicalExpressions = expressions =>
     expressions.some(expression =>
-        Boolean(getRequiredIdentifierFromLogicalExpression(expression)),
+        Boolean(getNodeByNameFromLogicalExpression(expression, requiredIdentifierName)),
     );
 
 /**
  * Validates that a required identifier is presented in the provided ancestors.
- * Handles `if (ngDevMode && isUser) { callee.assert() }` expression.
+ * Handles `if (required && isUser) { callee.assert() }` expression.
  * @param ancestors {import('@types/estree').Node[]}
  * @returns {boolean}
  */
@@ -144,7 +127,7 @@ const validateIfExpressions = ancestors => {
     const logicalExpressions = [];
 
     for (const {test} of statements) {
-        if (test.type === 'Identifier' && test.name === 'ngDevMode') {
+        if (test.type === 'Identifier' && test.name === requiredIdentifierName) {
             return true;
         }
 
@@ -158,7 +141,7 @@ const validateIfExpressions = ancestors => {
 
 /**
  * Validates that a required identifier is presented in the provided ancestors.
- * Handles `ngDevMode ? callee.assert() : null` expression.
+ * Handles `required ? callee.assert() : null` expression.
  * @param ancestors {import('@types/estree').Node[]}
  * @returns {boolean}
  */
@@ -171,7 +154,7 @@ const validateConditionalExpressions = ancestors => {
     const logicalExpressions = [];
 
     for (const {test} of statements) {
-        if (test.type === 'Identifier' && test.name === 'ngDevMode') {
+        if (test.type === 'Identifier' && test.name === requiredIdentifierName) {
             return true;
         }
 
