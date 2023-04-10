@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/eslint-plugin",
-    "version": "3.23.1",
+    "version": "3.24.0",
     "description": "An ESLint plugin to enforce a consistent code styles across taiga-ui projects",
     "main": "index.js",
     "devDependencies": {
