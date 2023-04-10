@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.83.0](https://github.com/tinkoff/taiga-ui/compare/v2.82.0...v2.83.0) (2023-04-10)
+
+### Bug Fixes
+
+- **addon-commerce:** emulate focus on iOS by `tuiAutoFocus` ([#4122](https://github.com/tinkoff/taiga-ui/issues/4122))
+  ([7769279](https://github.com/tinkoff/taiga-ui/commit/776927931ab5466f193d5f6b439dc7fd3416855e))
+- **cdk:** class constructor `ElementRef` cannot be invoked without `new`
+  ([#4174](https://github.com/tinkoff/taiga-ui/issues/4174))
+  ([adefcfa](https://github.com/tinkoff/taiga-ui/commit/adefcfa972e5e9c9813cbec270ed3ca08e82f10a))
+- **core:** `Scrollbar` fix height in Firefox ([#4148](https://github.com/tinkoff/taiga-ui/issues/4148))
+  ([14589d1](https://github.com/tinkoff/taiga-ui/commit/14589d13863e01c5c86559515ae6af55dcb3263d))
+- **kit:** `Stepper` use `TuiScrollService` instead of scrollIntoView
+  ([#4153](https://github.com/tinkoff/taiga-ui/issues/4153))
+  ([d256504](https://github.com/tinkoff/taiga-ui/commit/d256504cafe4cb8c04f03eb018f0461fed86f61e))
+
 ## [2.82.0](https://github.com/tinkoff/taiga-ui/compare/v2.81.0...v2.82.0) (2023-04-03)
 
 ### Features
