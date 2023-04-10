@@ -1,5 +1,5 @@
 import {
-    AfterContentInit,
+    AfterViewInit,
     ContentChildren,
     Directive,
     ElementRef,
@@ -42,7 +42,7 @@ import {TuiLineChartComponent} from './line-chart.component';
     selector: '[tuiLineChartHint]',
     providers: [TuiDestroyService, TuiHoveredService],
 })
-export class TuiLineChartHintDirective implements AfterContentInit {
+export class TuiLineChartHintDirective implements AfterViewInit {
     @ContentChildren(forwardRef(() => TuiLineChartComponent))
     private readonly charts: QueryList<TuiLineChartComponent> = EMPTY_QUERY;
 
@@ -60,7 +60,7 @@ export class TuiLineChartHintDirective implements AfterContentInit {
         @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
     ) {}
 
-    ngAfterContentInit(): void {
+    ngAfterViewInit(): void {
         combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
             .pipe(
                 filter(result => !result.some(Boolean)),
