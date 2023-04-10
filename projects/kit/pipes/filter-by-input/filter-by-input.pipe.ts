@@ -6,6 +6,7 @@ import {
     TuiFocusableElementAccessor,
     TuiStringMatcher,
 } from '@taiga-ui/cdk';
+import {TUI_DATA_LIST_HOST, TuiDataListHost} from '@taiga-ui/core';
 
 import {AbstractTuiFilterByInput, ArrayElement} from './filter-by-input.base';
 
@@ -20,6 +21,8 @@ export class TuiFilterByInputPipe
     constructor(
         @Inject(TUI_FOCUSABLE_ITEM_ACCESSOR)
         protected readonly accessor: TuiFocusableElementAccessor,
+        @Inject(TUI_DATA_LIST_HOST)
+        private readonly host: TuiDataListHost<unknown>,
     ) {
         super();
     }
@@ -29,6 +32,11 @@ export class TuiFilterByInputPipe
         items: ReadonlyArray<readonly T[]> | readonly T[] | null,
         matcher: TuiStringMatcher<T> = TUI_DEFAULT_MATCHER,
     ): ReadonlyArray<readonly T[]> | readonly T[] | null {
-        return this.filter(items, matcher, TUI_DEFAULT_STRINGIFY, this.query);
+        return this.filter(
+            items,
+            matcher,
+            this.host.stringify || TUI_DEFAULT_STRINGIFY,
+            this.query,
+        );
     }
 }

@@ -8,6 +8,9 @@ import {
 
 import {AbstractTuiFilterByInput, ArrayElement} from './filter-by-input.base';
 
+/**
+ * @deprecated Use {@link TuiFilterByInputPipe} instead
+ */
 @Pipe({
     name: `tuiFilterByInputWith`,
     pure: false,
