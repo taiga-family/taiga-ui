@@ -968,6 +968,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: $localize`Editor`,
+                title: `Cleanup html`,
+                keywords: `editor, processing, content, cleanup html, wysiwyg, редактор, текст, html, rich, text`,
+                route: `/editor/processing/cleanup-html`,
+            },
+            {
+                section: $localize`Editor`,
                 title: `Markdown`,
                 keywords: `editor, markdown, wysiwyg, редактор, текст, html, rich, text`,
                 route: `/editor/processing/markdown`,

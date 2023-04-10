@@ -23,10 +23,15 @@ import {
 } from '@taiga-ui/addon-editor/directives';
 import {TuiEditorTool} from '@taiga-ui/addon-editor/enums';
 import {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
-import {TIPTAP_EDITOR, TUI_EDITOR_CONTENT_PROCESSOR} from '@taiga-ui/addon-editor/tokens';
+import {
+    TIPTAP_EDITOR,
+    TUI_EDITOR_CONTENT_PROCESSOR,
+    TUI_EDITOR_VALUE_TRANSFORMER,
+} from '@taiga-ui/addon-editor/tokens';
 import {tuiIsSafeLinkRange} from '@taiga-ui/addon-editor/utils';
 import {
     AbstractTuiControl,
+    AbstractTuiValueTransformer,
     ALWAYS_FALSE_HANDLER,
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
@@ -81,8 +86,11 @@ export class TuiEditorComponent
         private readonly contentProcessor: TuiStringHandler<string>,
         @Inject(DOCUMENT)
         private readonly doc: Document,
+        @Optional()
+        @Inject(TUI_EDITOR_VALUE_TRANSFORMER)
+        transformer: AbstractTuiValueTransformer<string> | null,
     ) {
-        super(control, cdr);
+        super(control, cdr, transformer);
     }
 
     get nativeFocusableElement(): HTMLElement | null {

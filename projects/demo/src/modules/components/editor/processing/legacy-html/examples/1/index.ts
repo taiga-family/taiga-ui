@@ -4,23 +4,23 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     defaultEditorExtensions,
-    TUI_EDITOR_CONTENT_PROCESSOR,
     TUI_EDITOR_EXTENSIONS,
-    tuiLegacyEditorConverter,
+    TUI_EDITOR_VALUE_TRANSFORMER,
 } from '@taiga-ui/addon-editor';
+
+import {ExampleEditorConvertLegacyHtmlTransformer} from './transformer';
 
 @Component({
     selector: 'tui-editor-legacy-html-example-1',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: defaultEditorExtensions,
         },
         {
-            provide: TUI_EDITOR_CONTENT_PROCESSOR,
-            useValue: tuiLegacyEditorConverter,
+            provide: TUI_EDITOR_VALUE_TRANSFORMER,
+            useClass: ExampleEditorConvertLegacyHtmlTransformer,
         },
     ],
     changeDetection,

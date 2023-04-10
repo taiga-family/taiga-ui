@@ -1108,6 +1108,18 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `editor/processing/cleanup-html`,
+        loadChildren: async () =>
+            (
+                await import(
+                    `../components/editor/processing/cleanup-html/editor-cleanup-html.module`
+                )
+            ).ExampleTuiEditorCleanupHtmlModule,
+        data: {
+            title: `Editor — Cleanup html`,
+        },
+    },
+    {
         path: `editor/processing/markdown`,
         loadChildren: async () =>
             (
