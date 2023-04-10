@@ -33,7 +33,7 @@ describe(`PortalService`, () => {
 
     it(`throws an error with no host`, () => {
         let actual = ``;
-        const a = null as unknown as PolymorpheusComponent<unknown, any>;
+        const a = null as unknown as PolymorpheusComponent<unknown>;
 
         try {
             service.add(a);

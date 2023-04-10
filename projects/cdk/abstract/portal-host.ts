@@ -37,7 +37,7 @@ export abstract class AbstractTuiPortalHostComponent {
         return this.el.nativeElement.getBoundingClientRect();
     }
 
-    addComponentChild<C>(component: PolymorpheusComponent<C, any>): ComponentRef<C> {
+    addComponentChild<C>(component: PolymorpheusComponent<C>): ComponentRef<C> {
         const parent = component.createInjector(this.injector);
         const resolver = parent.get(ComponentFactoryResolver);
         const factory = resolver.resolveComponentFactory(component.component);
