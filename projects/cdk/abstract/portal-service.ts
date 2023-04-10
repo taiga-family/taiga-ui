@@ -25,7 +25,7 @@ export abstract class AbstractTuiPortalService {
         this.host = host;
     }
 
-    add<C>(component: PolymorpheusComponent<C, any>): ComponentRef<C> {
+    add<C>(component: PolymorpheusComponent<C>): ComponentRef<C> {
         return this.safeHost.addComponentChild(component);
     }
 
