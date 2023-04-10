@@ -1,4 +1,4 @@
-import {TuiBaseDialogContext} from "@taiga-ui/cdk";
+import {TuiBaseDialogContext} from '@taiga-ui/cdk';
 
 export interface TuiMobileDialogOptions<I> {
     readonly label: string;
