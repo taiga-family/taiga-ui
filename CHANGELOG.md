@@ -3,6 +3,73 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.24.0](https://github.com/tinkoff/taiga-ui/compare/v3.23.1...v3.24.0) (2023-04-10)
+
+### Features
+
+- **addon-doc:** add `TUI_USE_DEFAULT_NIGHT_THEME` token for ignore dark theme styles
+  ([#4118](https://github.com/tinkoff/taiga-ui/issues/4118))
+  ([ef0e160](https://github.com/tinkoff/taiga-ui/commit/ef0e160b9942a09448258b75d0db94d608f4f709))
+- **addon-editor:** decompose `editor-socket` styles ([#4104](https://github.com/tinkoff/taiga-ui/issues/4104))
+  ([17bc204](https://github.com/tinkoff/taiga-ui/commit/17bc204d03bd701d503712a7abb63bb870612e08))
+- **addon-mobile:** `TabBar` add new component ([#4120](https://github.com/tinkoff/taiga-ui/issues/4120))
+  ([1091098](https://github.com/tinkoff/taiga-ui/commit/1091098d8e7ac4782e8fd4aa275fc383af226710))
+- **cdk:** `Control` add new directive ([#4127](https://github.com/tinkoff/taiga-ui/issues/4127))
+  ([6a1ddc4](https://github.com/tinkoff/taiga-ui/commit/6a1ddc477c5132389abfb9575252d423c2c96aa5))
+- **cdk:** `Replace` add new pipe ([#4138](https://github.com/tinkoff/taiga-ui/issues/4138))
+  ([531e322](https://github.com/tinkoff/taiga-ui/commit/531e32291985a94890d900f900b2146136b1db64))
+- **cdk:** `ValueChanges` add new directive ([#4128](https://github.com/tinkoff/taiga-ui/issues/4128))
+  ([6c3a293](https://github.com/tinkoff/taiga-ui/commit/6c3a293a4a791d22ba6d080fc14a763753068fff))
+- **cdk:** add `@tuiParentStop` animation ([#4143](https://github.com/tinkoff/taiga-ui/issues/4143))
+  ([6576bc0](https://github.com/tinkoff/taiga-ui/commit/6576bc0f754f9f24813518bad3845b27a727438f))
+- **cdk:** clear timeout for `tuiForAsync` ([#4139](https://github.com/tinkoff/taiga-ui/issues/4139))
+  ([33c6224](https://github.com/tinkoff/taiga-ui/commit/33c6224c63e763f7f7221a629dbf4bafd1cc616f))
+- **cdk:** help to tree-shake away the code unneeded for production bundles
+  ([#4149](https://github.com/tinkoff/taiga-ui/issues/4149))
+  ([f5617cf](https://github.com/tinkoff/taiga-ui/commit/f5617cf23ddeac8daf9ff434ede4249f288ed829))
+- **core:** `Alert` support basic HTML as string` ([#4163](https://github.com/tinkoff/taiga-ui/issues/4163))
+  ([4f5a827](https://github.com/tinkoff/taiga-ui/commit/4f5a82762ce5e16430617f6dbcafe6ada19cadd4))
+- **core:** `Dialog` support basic HTML as string ([#4159](https://github.com/tinkoff/taiga-ui/issues/4159))
+  ([013eeac](https://github.com/tinkoff/taiga-ui/commit/013eeac994176449f9ee83d6efbcd6e7fb35da99))
+- **eslint-plugin:** implement `no-assert-without-ng-dev-mode` rule
+  ([#4161](https://github.com/tinkoff/taiga-ui/issues/4161))
+  ([b91a8dc](https://github.com/tinkoff/taiga-ui/commit/b91a8dc14cad0e05f37d99d575226755b087aa7b))
+- **kit:** `InputNumber` allow untouched decimal part ([#4114](https://github.com/tinkoff/taiga-ui/issues/4114))
+  ([f005445](https://github.com/tinkoff/taiga-ui/commit/f005445ec5e7f7634a1ba80d2107b0809f02e0ae))
+- **kit:** `Prompt` add autofocus on OK button ([#4155](https://github.com/tinkoff/taiga-ui/issues/4155))
+  ([ba19ce0](https://github.com/tinkoff/taiga-ui/commit/ba19ce06f501d149899b2d1a8b32f73c4d9e1f39))
+
+### Bug Fixes
+
+- **addon-doc:** resizer shows `NaN` during SSR ([#4140](https://github.com/tinkoff/taiga-ui/issues/4140))
+  ([43b49b2](https://github.com/tinkoff/taiga-ui/commit/43b49b2a7bd65811d326a9cb047a90a9ecd560e5))
+- **addon-editor:** prevent override all paragraph styles inside list
+  ([#4115](https://github.com/tinkoff/taiga-ui/issues/4115))
+  ([9c35f55](https://github.com/tinkoff/taiga-ui/commit/9c35f55ef79d7c607a783060f7de8c5fd1afb122))
+- **cdk:** make `AbstractTuiControl` constructor DI compatible
+  ([#4113](https://github.com/tinkoff/taiga-ui/issues/4113))
+  ([d8b7500](https://github.com/tinkoff/taiga-ui/commit/d8b7500430bafa8ebebb43d7bcb11d8b012b3b8f))
+- **cdk:** support `autofill` values when trigger autofocus on `iOS`
+  ([#4160](https://github.com/tinkoff/taiga-ui/issues/4160))
+  ([f696de6](https://github.com/tinkoff/taiga-ui/commit/f696de6b39e304adf13d0401cfe828514fe2e5d7))
+- **core:** `BreakpointService` replay value for new subscribers
+  ([#4131](https://github.com/tinkoff/taiga-ui/issues/4131))
+  ([a2a804a](https://github.com/tinkoff/taiga-ui/commit/a2a804a729ede5f5310095a0152261d4070aa51c))
+- **core:** `Dialog` fix close button appearance ([#4141](https://github.com/tinkoff/taiga-ui/issues/4141))
+  ([b4705c6](https://github.com/tinkoff/taiga-ui/commit/b4705c6db642842222846fc8be476e5cee8409a2))
+- **core:** `Scrollbar` fix height in Firefox ([#4147](https://github.com/tinkoff/taiga-ui/issues/4147))
+  ([93dad55](https://github.com/tinkoff/taiga-ui/commit/93dad553c897f5141198e802b29f4c7044fd3831))
+- **kit:** `ElasticContainer` handle nested height transitions
+  ([#4146](https://github.com/tinkoff/taiga-ui/issues/4146))
+  ([543e7f4](https://github.com/tinkoff/taiga-ui/commit/543e7f4838ee687b58df649d828ed7e2a1f1a995))
+- **kit:** `File` show keyboard focus ([#4126](https://github.com/tinkoff/taiga-ui/issues/4126))
+  ([fd56a5e](https://github.com/tinkoff/taiga-ui/commit/fd56a5eecf733493208a36ba454e37f1970a18cb))
+- **kit:** `Stepper` use `TuiScrollService` instead of scrollIntoView
+  ([#4123](https://github.com/tinkoff/taiga-ui/issues/4123))
+  ([3eef359](https://github.com/tinkoff/taiga-ui/commit/3eef3595f15799fe332b34b99b3f78769f14ebe1))
+- **kit:** use hosts `stringify` in `FilterByInput` pipe ([#4067](https://github.com/tinkoff/taiga-ui/issues/4067))
+  ([4762063](https://github.com/tinkoff/taiga-ui/commit/47620634b81891c1f8c12f456a0602d799dcde46))
+
 ### [3.23.1](https://github.com/tinkoff/taiga-ui/compare/v3.23.0...v3.23.1) (2023-04-04)
 
 ### Bug Fixes
