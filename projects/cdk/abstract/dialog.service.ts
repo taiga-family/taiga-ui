@@ -1,4 +1,5 @@
 import {Inject, Injectable, TemplateRef} from '@angular/core';
+import {SafeValue} from '@angular/platform-browser';
 import {TuiBaseDialogContext} from '@taiga-ui/cdk/interfaces';
 import {TuiIdService} from '@taiga-ui/cdk/services';
 import {TuiDialog} from '@taiga-ui/cdk/types';
@@ -29,6 +30,7 @@ export abstract class AbstractTuiDialogService<T, K = void> extends Observable<
         content:
             | PolymorpheusContent<I & TuiBaseDialogContext<K extends void ? O : K>>
             | PolymorpheusTemplate<I & TuiBaseDialogContext<K extends void ? O : K>>
+            | SafeValue
             | TemplateRef<I & TuiBaseDialogContext<K extends void ? O : K>>,
         options: Partial<I> = {},
     ): Observable<K extends void ? O : K> {
