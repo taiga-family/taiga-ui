@@ -109,7 +109,9 @@ function main(options: TuiSchema): Rule {
 
 function addTaigaStyles(options: TuiSchema): Rule {
     return async (tree: Tree, context) => {
-        const taigaStyles = [TAIGA_THEME_FONTS];
+        const proprietary = getPackageJsonDependency(tree, `@taiga-ui/proprietary-core`);
+
+        const taigaStyles = proprietary ? [] : [TAIGA_THEME_FONTS];
         const stylesToReplace = {
             from: TAIGA_GLOBAL_OLD_STYLE,
             to: [TAIGA_GLOBAL_NEW_STYLE],

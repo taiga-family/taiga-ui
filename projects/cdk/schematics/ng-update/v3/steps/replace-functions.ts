@@ -20,6 +20,10 @@ export function replaceFunctions(options: TuiSchema): void {
     replaceFallbackValue(getNamedImportReferences(`fallbackValue`, `@taiga-ui/cdk`));
     replaceCustomEvent(getNamedImportReferences(`tuiCustomEvent`, `@taiga-ui/cdk`));
     replaceClosestElement(getNamedImportReferences(`getClosestElement`, `@taiga-ui/cdk`));
+    replaceNativeFocused([
+        ...getNamedImportReferences(`tuiSetNativeFocused`, `@taiga-ui/cdk`),
+        ...getNamedImportReferences(`setNativeFocused`, `@taiga-ui/cdk`),
+    ]);
     replaceDeprecatedFunction();
     modifyFormatNumberArgs();
     modifyClosestFocusable();
@@ -63,6 +67,27 @@ function replacePadStart(references: Node[]): void {
                     pad?.getText() ?? `" "`
                 })`,
             );
+        }
+    });
+}
+
+function replaceNativeFocused(references: Node[]): void {
+    references.forEach(ref => {
+        const parent = ref.getParent();
+
+        if (Node.isImportSpecifier(parent)) {
+            removeImport(parent);
+        } else if (Node.isCallExpression(parent)) {
+            const [targetString, focusedArg, preventScroll] = parent.getArguments();
+
+            const setFocused = !focusedArg || focusedArg.getText() === `true`;
+
+            const focus = `${targetString.getText()}.focus(${
+                preventScroll?.getText() ? `{preventScroll: true}` : ``
+            })`;
+            const blur = `${targetString.getText()}.blur()`;
+
+            parent.replaceWithText(setFocused ? focus : blur);
         }
     });
 }
