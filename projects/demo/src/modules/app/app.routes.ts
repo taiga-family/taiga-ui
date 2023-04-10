@@ -997,12 +997,12 @@ export const ROUTES: Routes = [
     },
     // EDITOR
     {
-        path: `editor/setup`,
+        path: `editor/API`,
         loadChildren: async () =>
             (await import(`../components/editor/setup/editor-setup.module`))
                 .ExampleTuiEditorSetupModule,
         data: {
-            title: `Editor  — Setup and API`,
+            title: `Editor  — Starter Kit`,
         },
     },
     {

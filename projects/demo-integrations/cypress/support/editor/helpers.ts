@@ -12,9 +12,9 @@ export function tuiVisitEditorApiPage({
     skipDecodingUrl: boolean;
 }> = {}): void {
     cy.viewport(1850, 1600).tuiVisit(
-        `editor/setup/API?ngModel=${
-            content ?? HTML_EDITOR_BASIC_EXAMPLE
-        }&style.maxHeight.px=${maxHeight ?? 600}`,
+        `editor/API?ngModel=${content ?? HTML_EDITOR_BASIC_EXAMPLE}&style.maxHeight.px=${
+            maxHeight ?? 600
+        }`,
         {
             skipExpectUrl: true,
             enableNightMode: enableNightMode ?? false,
@@ -71,7 +71,7 @@ export function tuiFocusToStartInEditor(): void {
 }
 
 export function tuiClearHint(): void {
-    cy.get(`body`).click();
+    cy.get(`body`).click({force: true});
 }
 
 export function tuiInsertLink(): void {

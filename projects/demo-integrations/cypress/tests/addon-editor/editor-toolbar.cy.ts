@@ -17,8 +17,8 @@ describe(`Editor's toolbar`, () => {
         tuiGetDemoContent()
             .findByAutomationId(`toolbar__hilite-button`)
             .should(`be.visible`)
-            .click()
-            .trigger(`mouseleave`);
+            .click({force: true})
+            .trigger(`mouseleave`, {force: true});
 
         tuiGetDemoContent()
             .tuiWaitBeforeScreenshot()

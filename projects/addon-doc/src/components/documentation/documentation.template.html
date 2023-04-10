@@ -5,179 +5,185 @@
     {{ heading }}
 </h1>
 <ng-content></ng-content>
-<table class="t-table">
-    <tr class="t-row t-row_header">
-        <th class="t-th t-cell t-cell_prop">{{ texts[2] }}</th>
-        <th class="t-th">{{ type }}</th>
-        <th
-            *ngIf="showValues && !isAPI"
-            class="t-th t-cell t-th_value"
-        >
-            {{ texts[3] }}
-        </th>
-    </tr>
-    <tr
-        *ngFor="let propertyConnector of $any(propertiesConnectors) | tuiFilter : matcher : excludedProperties"
-        class="t-row"
-        [class.t-deprecated]="propertyConnector.documentationPropertyDeprecated"
+<ng-container *ngIf="$any(propertiesConnectors) | tuiFilter : matcher : excludedProperties as properties">
+    <table
+        *ngIf="properties.length"
+        class="t-table"
     >
-        <td class="t-cell">
-            <div
-                automation-id="tui-documentation__property-name"
-                class="t-property"
+        <tr class="t-row t-row_header">
+            <th class="t-th t-cell t-cell_prop">{{ texts[2] }}</th>
+            <th class="t-th">{{ type }}</th>
+            <th
+                *ngIf="showValues && !isAPI"
+                class="t-th t-cell t-th_value"
             >
-                {{ propertyConnector.attrName | tuiStripOptionalPipe }}
-                <tui-badge
-                    *ngIf="propertyConnector.attrName | tuiIsOptionalPipe"
-                    size="s"
-                    value="Optional"
-                ></tui-badge>
-            </div>
-            <span
-                *ngIf="propertyConnector.documentationPropertyDeprecated"
-                class="t-deprecated-label"
-            >
-                deprecated
-            </span>
-            <ng-container [ngTemplateOutlet]="propertyConnector.template"></ng-container>
-        </td>
-        <td class="t-cell">
-            <span class="type">
-                {{ propertyConnector.documentationPropertyType }}
-                <tui-tooltip
-                    *ngIf="propertyConnector.documentationPropertyType | tuiShowContentTooltip"
-                    [describeId]="propertyConnector.attrName"
-                    [content]="content"
-                >
-                    <ng-template #content>
-                        {{ texts[4] }}
-                        <a
-                            tuiLink
-                            tuiMode="onDark"
-                            target="_blank"
-                            rel="noreferrer"
-                            href="https://github.com/tinkoff/ng-polymorpheus"
-                        >
-                            <code>ng-polymorpheus</code>
-                        </a>
-                    </ng-template>
-                </tui-tooltip>
-            </span>
-        </td>
-        <td
-            *ngIf="showValues"
-            class="t-cell t-cell_value"
+                {{ texts[3] }}
+            </th>
+        </tr>
+        <tr
+            *ngFor="let propertyConnector of properties"
+            class="t-row"
+            [class.t-deprecated]="propertyConnector.documentationPropertyDeprecated"
         >
-            <ng-container *ngIf="propertyConnector.shouldShowValues; else elseEmitter">
-                <tui-select
-                    *ngIf="propertyConnector.hasItems; else noItems"
-                    tuiTextfieldSize="m"
-                    tuiDropdownLimitWidth="min"
-                    [tuiTextfieldCleaner]="propertyConnector.documentationPropertyType | tuiShowCleanerPipe"
-                    [tuiTextfieldLabelOutside]="true"
-                    [nativeId]="propertyConnector.attrName"
-                    [valueContent]="selectContent"
-                    [ngModel]="propertyConnector.documentationPropertyValue"
-                    (ngModelChange)="propertyConnector.onValueChange($event)"
+            <td class="t-cell">
+                <div
+                    automation-id="tui-documentation__property-name"
+                    class="t-property"
                 >
-                    <code class="t-exception">null</code>
-                    <tui-data-list-wrapper
-                        *tuiDataList
-                        [items]="propertyConnector.documentationPropertyValues"
-                        [itemContent]="selectContent"
-                    ></tui-data-list-wrapper>
-                </tui-select>
-                <ng-template
-                    #selectContent
-                    let-data
+                    {{ propertyConnector.attrName | tuiStripOptionalPipe }}
+                    <tui-badge
+                        *ngIf="propertyConnector.attrName | tuiIsOptionalPipe"
+                        size="s"
+                        value="Optional"
+                    ></tui-badge>
+                </div>
+                <span
+                    *ngIf="propertyConnector.documentationPropertyDeprecated"
+                    class="t-deprecated-label"
                 >
-                    <code>{{ data | tuiInspectAny }}</code>
-                </ng-template>
-
-                <ng-template #noItems>
-                    <ng-container [ngSwitch]="propertyConnector.documentationPropertyType">
-                        <tui-toggle
-                            *ngSwitchCase="'boolean'"
-                            size="l"
-                            [nativeId]="propertyConnector.attrName"
-                            [showIcons]="true"
-                            [ngModel]="propertyConnector.documentationPropertyValue"
-                            (ngModelChange)="propertyConnector.onValueChange($event)"
-                        ></tui-toggle>
-
-                        <tui-primitive-textfield
-                            *ngSwitchCase="'string'"
-                            tuiTextfieldSize="m"
-                            [nativeId]="propertyConnector.attrName"
-                            [tuiTextfieldLabelOutside]="true"
-                            [tuiTextfieldCleaner]="true"
-                            [value]="propertyConnector.documentationPropertyValue || ''"
-                            (valueChange)="propertyConnector.onValueChange($event)"
-                        ></tui-primitive-textfield>
-
-                        <div
-                            *ngSwitchCase="'color'"
-                            tuiGroup
-                        >
-                            <tui-primitive-textfield
-                                tuiTextfieldSize="m"
-                                [attr.id]="propertyConnector.attrName"
-                                [tuiTextfieldLabelOutside]="true"
-                                [tuiInputOpacity]="propertyConnector.documentationPropertyValue | tuiGetOpacity"
-                                [value]="propertyConnector.documentationPropertyValue | tuiGetColorPipe"
-                                (valueChange)="onColorChange(propertyConnector, $event)"
+                    deprecated
+                </span>
+                <ng-container [ngTemplateOutlet]="propertyConnector.template"></ng-container>
+            </td>
+            <td class="t-cell">
+                <span class="type">
+                    {{ propertyConnector.documentationPropertyType }}
+                    <tui-tooltip
+                        *ngIf="propertyConnector.documentationPropertyType | tuiShowContentTooltip"
+                        [describeId]="propertyConnector.attrName"
+                        [content]="content"
+                    >
+                        <ng-template #content>
+                            {{ texts[4] }}
+                            <a
+                                tuiLink
+                                tuiMode="onDark"
+                                target="_blank"
+                                rel="noreferrer"
+                                href="https://github.com/tinkoff/ng-polymorpheus"
                             >
-                                <input
-                                    tuiTextfield
-                                    type="text"
-                                />
-                            </tui-primitive-textfield>
-                            <tui-input-count
-                                tuiTextfieldSize="m"
-                                [max]="100"
-                                [ngModel]="propertyConnector.documentationPropertyValue | tuiGetOpacity"
-                                (ngModelChange)="onOpacityChange(propertyConnector, $event)"
-                            >
-                                Opacity
-                            </tui-input-count>
-                        </div>
+                                <code>ng-polymorpheus</code>
+                            </a>
+                        </ng-template>
+                    </tui-tooltip>
+                </span>
+            </td>
+            <td
+                *ngIf="showValues"
+                class="t-cell t-cell_value"
+            >
+                <ng-container *ngIf="propertyConnector.shouldShowValues; else elseEmitter">
+                    <tui-select
+                        *ngIf="propertyConnector.hasItems; else noItems"
+                        tuiTextfieldSize="m"
+                        tuiDropdownLimitWidth="min"
+                        [tuiTextfieldCleaner]="propertyConnector.documentationPropertyType | tuiShowCleanerPipe"
+                        [tuiTextfieldLabelOutside]="true"
+                        [nativeId]="propertyConnector.attrName"
+                        [valueContent]="selectContent"
+                        [ngModel]="propertyConnector.documentationPropertyValue"
+                        (ngModelChange)="propertyConnector.onValueChange($event)"
+                    >
+                        <code class="t-exception">null</code>
+                        <tui-data-list-wrapper
+                            *tuiDataList
+                            [items]="propertyConnector.documentationPropertyValues"
+                            [itemContent]="selectContent"
+                        ></tui-data-list-wrapper>
+                    </tui-select>
+                    <ng-template
+                        #selectContent
+                        let-data
+                    >
+                        <code>{{ data | tuiInspectAny }}</code>
+                    </ng-template>
 
-                        <tui-input-count
-                            *ngSwitchCase="'number'"
-                            tuiTextfieldSize="m"
-                            [nativeId]="propertyConnector.attrName"
-                            [tuiTextfieldLabelOutside]="true"
-                            [ngModel]="propertyConnector.documentationPropertyValue"
-                            (ngModelChange)="propertyConnector.onValueChange($event)"
-                        ></tui-input-count>
+                    <ng-template #noItems>
+                        <ng-container [ngSwitch]="propertyConnector.documentationPropertyType">
+                            <tui-toggle
+                                *ngSwitchCase="'boolean'"
+                                size="l"
+                                [nativeId]="propertyConnector.attrName"
+                                [showIcons]="true"
+                                [ngModel]="propertyConnector.documentationPropertyValue"
+                                (ngModelChange)="propertyConnector.onValueChange($event)"
+                            ></tui-toggle>
 
-                        <ng-container *ngSwitchCase="'PolymorpheusContent'">
                             <tui-primitive-textfield
-                                *ngIf="
-                                    propertyConnector.documentationPropertyValue | tuiIsPrimitivePolymorpheusContentPipe
-                                "
+                                *ngSwitchCase="'string'"
                                 tuiTextfieldSize="m"
                                 [nativeId]="propertyConnector.attrName"
                                 [tuiTextfieldLabelOutside]="true"
                                 [tuiTextfieldCleaner]="true"
-                                [value]="propertyConnector.documentationPropertyValue.toString()"
+                                [value]="propertyConnector.documentationPropertyValue || ''"
                                 (valueChange)="propertyConnector.onValueChange($event)"
-                            >
-                                Default content
-                            </tui-primitive-textfield>
-                        </ng-container>
-                    </ng-container>
-                </ng-template>
-            </ng-container>
+                            ></tui-primitive-textfield>
 
-            <ng-template #elseEmitter>
-                <tui-notification
-                    class="t-output"
-                    [@emitEvent]="propertyConnector.emits$ | async"
-                >
-                    Emit!
-                </tui-notification>
-            </ng-template>
-        </td>
-    </tr>
-</table>
+                            <div
+                                *ngSwitchCase="'color'"
+                                tuiGroup
+                            >
+                                <tui-primitive-textfield
+                                    tuiTextfieldSize="m"
+                                    [attr.id]="propertyConnector.attrName"
+                                    [tuiTextfieldLabelOutside]="true"
+                                    [tuiInputOpacity]="propertyConnector.documentationPropertyValue | tuiGetOpacity"
+                                    [value]="propertyConnector.documentationPropertyValue | tuiGetColorPipe"
+                                    (valueChange)="onColorChange(propertyConnector, $event)"
+                                >
+                                    <input
+                                        tuiTextfield
+                                        type="text"
+                                    />
+                                </tui-primitive-textfield>
+                                <tui-input-count
+                                    tuiTextfieldSize="m"
+                                    [max]="100"
+                                    [ngModel]="propertyConnector.documentationPropertyValue | tuiGetOpacity"
+                                    (ngModelChange)="onOpacityChange(propertyConnector, $event)"
+                                >
+                                    Opacity
+                                </tui-input-count>
+                            </div>
+
+                            <tui-input-count
+                                *ngSwitchCase="'number'"
+                                tuiTextfieldSize="m"
+                                [nativeId]="propertyConnector.attrName"
+                                [tuiTextfieldLabelOutside]="true"
+                                [ngModel]="propertyConnector.documentationPropertyValue"
+                                (ngModelChange)="propertyConnector.onValueChange($event)"
+                            ></tui-input-count>
+
+                            <ng-container *ngSwitchCase="'PolymorpheusContent'">
+                                <tui-primitive-textfield
+                                    *ngIf="
+                                        propertyConnector.documentationPropertyValue
+                                            | tuiIsPrimitivePolymorpheusContentPipe
+                                    "
+                                    tuiTextfieldSize="m"
+                                    [nativeId]="propertyConnector.attrName"
+                                    [tuiTextfieldLabelOutside]="true"
+                                    [tuiTextfieldCleaner]="true"
+                                    [value]="propertyConnector.documentationPropertyValue.toString()"
+                                    (valueChange)="propertyConnector.onValueChange($event)"
+                                >
+                                    Default content
+                                </tui-primitive-textfield>
+                            </ng-container>
+                        </ng-container>
+                    </ng-template>
+                </ng-container>
+
+                <ng-template #elseEmitter>
+                    <tui-notification
+                        class="t-output"
+                        [@emitEvent]="propertyConnector.emits$ | async"
+                    >
+                        Emit!
+                    </tui-notification>
+                </ng-template>
+            </td>
+        </tr>
+    </table>
+</ng-container>
