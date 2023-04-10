@@ -39,6 +39,10 @@ export class TuiNotificationComponent {
     @tuiDefaultProp()
     status: 'error' | 'info' | 'success' | 'warning' = this.options.status;
 
+    @Input()
+    @tuiDefaultProp()
+    hideClose = false;
+
     @Output()
     // eslint-disable-next-line @angular-eslint/no-output-native
     readonly close = new EventEmitter<void>();
@@ -55,6 +59,6 @@ export class TuiNotificationComponent {
 
     @HostBinding('class._has-close-button')
     get hasClose(): boolean {
-        return tuiIsObserved(this.close);
+        return !this.hideClose && tuiIsObserved(this.close);
     }
 }

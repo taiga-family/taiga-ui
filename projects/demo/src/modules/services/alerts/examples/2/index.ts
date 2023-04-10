@@ -19,10 +19,7 @@ export class TuiAlertsExampleComponent2 {
 
     money = 1000;
 
-    constructor(
-        @Inject(TuiAlertService)
-        private readonly alerts: TuiAlertService,
-    ) {}
+    constructor(@Inject(TuiAlertService) private readonly alerts: TuiAlertService) {}
 
     showWithdrawAlert(): void {
         this.alerts

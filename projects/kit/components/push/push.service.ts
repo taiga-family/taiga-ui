@@ -1,7 +1,6 @@
 import {inject, Injectable} from '@angular/core';
-import {AbstractTuiDialogService, TuiBaseDialogContext} from '@taiga-ui/cdk';
-import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import {AbstractTuiDialogService} from '@taiga-ui/cdk';
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiPushOptions} from './push.options';
 import {TUI_PUSH_OPTIONS} from './push.tokens';
@@ -13,11 +12,4 @@ import {TuiPushAlertComponent} from './push-alert.component';
 export class TuiPushService extends AbstractTuiDialogService<TuiPushOptions, string> {
     protected readonly component = new PolymorpheusComponent(TuiPushAlertComponent);
     protected readonly defaultOptions = inject(TUI_PUSH_OPTIONS);
-
-    override open(
-        content: PolymorpheusContent<TuiBaseDialogContext<string> & TuiPushOptions>,
-        options: Partial<TuiPushOptions> = {},
-    ): Observable<string> {
-        return super.open(content, options);
-    }
 }

@@ -19,7 +19,7 @@ export class TuiPushExample2 {
 
     onClick(): void {
         this.push
-            .open('This is heavy!', {
+            .open('This is <strong>heavy</strong>!', {
                 heading: 'Great Scott!',
                 type: 'Quote',
                 icon: 'tuiIconVideoLarge',
