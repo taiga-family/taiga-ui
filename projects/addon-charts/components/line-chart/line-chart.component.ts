@@ -24,7 +24,7 @@ import {
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
 import {
-    TuiDriver,
+    TuiHintHoverDirective,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
     TuiPoint,
@@ -49,7 +49,7 @@ export class TuiLineChartComponent {
 
     private readonly autoIdString: string;
 
-    @ViewChildren(TuiDriver)
+    @ViewChildren(TuiHintHoverDirective)
     readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
     @Input('value')
