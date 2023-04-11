@@ -1,8 +1,13 @@
 import {tuiIsObject} from '@taiga-ui/cdk';
+import TerserPlugin from 'terser-webpack-plugin';
 import {Configuration} from 'webpack';
 import {merge} from 'webpack-merge';
 
-console.info(`\nNODE_OPTIONS=${process.env[`NODE_OPTIONS`]}`);
+const NODE_OPTIONS = process.env[`NODE_OPTIONS`];
+const CI_MODE = process.env[`TUI_CI`] === `true`;
+
+console.info(`\nCI_MODE=${CI_MODE}`);
+console.info(`\nNODE_OPTIONS=${NODE_OPTIONS}`);
 
 /**
  * We can't just import TS-file to get its content
@@ -69,6 +74,28 @@ const config: Configuration = {
             },
         ],
     },
+    ...(CI_MODE
+        ? {
+              mode: `production`,
+              plugins: [
+                  new TerserPlugin({
+                      parallel: true,
+                      extractComments: false,
+                      terserOptions: {
+                          compress: {
+                              passes: 2,
+                          },
+                          format: {
+                              comments: false,
+                          },
+                      },
+                  }),
+              ],
+              optimization: {
+                  minimize: true,
+              },
+          }
+        : {}),
 };
 
 // noinspection JSUnusedGlobalSymbols
