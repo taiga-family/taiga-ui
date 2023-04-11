@@ -1,6 +1,6 @@
 import {TemplateRef} from '@angular/core';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {TuiDialogContext, TuiDialogService} from '@taiga-ui/core';
+import {TuiBaseDialogContext, TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TuiPushOptions, TuiPushService} from '@taiga-ui/kit';
 import {
     PolymorpheusComponent,
     PolymorpheusContent,
@@ -8,16 +8,17 @@ import {
 } from '@tinkoff/ng-polymorpheus';
 import {Observer, Subject} from 'rxjs';
 
-describe(`Dialog type inference tests`, () => {
+interface TuiPushContext extends TuiBaseDialogContext<string>, TuiPushOptions {}
+
+describe(`Push type inference tests`, () => {
     class Test {}
     const any: any = null;
-    const service: TuiDialogService = new Subject() as any;
+    const service: TuiPushService = new Subject() as any;
 
-    const input: boolean = any;
     const output: string = any;
-    const context: TuiDialogContext<typeof output, typeof input> = any;
+    const context: TuiPushContext = any;
     const callback: (v: typeof output) => void = any;
-    const options = {size: `s`} as const;
+    const options = {timestamp: 1234} as const;
 
     const str: string = any;
     const handler: (c: typeof context) => string = any;
@@ -31,31 +32,31 @@ describe(`Dialog type inference tests`, () => {
     });
 
     describe(`proper use`, () => {
-        it(`manual type works`, () => {
-            expect(service.open<string>(str, options).subscribe(callback)).toBeDefined();
+        it(`automatic type works`, () => {
+            expect(service.open(str, options).subscribe(callback)).toBeDefined();
         });
 
-        it(`typed handler properly sets types`, () => {
+        it(`typed handler works`, () => {
             expect(service.open(handler, options).subscribe(callback)).toBeDefined();
         });
 
-        it(`typed template properly sets types`, () => {
+        it(`typed template works`, () => {
             expect(service.open(template, options).subscribe(callback)).toBeDefined();
         });
 
         it(`template can use less context`, () => {
-            const limited: TemplateRef<TuiContextWithImplicit<Observer<string>>> = any;
+            const limited: TemplateRef<TuiContextWithImplicit<Observer<number>>> = any;
 
             expect(service.open(limited, options).subscribe(callback)).toBeDefined();
         });
 
-        it(`typed directive properly sets types`, () => {
+        it(`typed directive works`, () => {
             expect(service.open(directive, options).subscribe(callback)).toBeDefined();
         });
 
         it(`directive can use less context`, () => {
             const limited: PolymorpheusTemplate<
-                TuiContextWithImplicit<Observer<string>>
+                TuiContextWithImplicit<Observer<number>>
             > = any;
 
             expect(service.open(limited, options).subscribe(callback)).toBeDefined();
@@ -74,55 +75,30 @@ describe(`Dialog type inference tests`, () => {
         it(`blanket type works`, () => {
             expect(service.open(content, options).subscribe(callback)).toBeDefined();
         });
+
+        it(`return type is ignored if service provides it`, () => {
+            const limited: TemplateRef<TuiContextWithImplicit<Observer<string>>> = any;
+
+            expect(service.open(limited, options).subscribe(callback)).toBeDefined();
+        });
     });
 
     describe(`errors`, () => {
-        it(`string without typed output`, () => {
-            // @ts-expect-error Type 'void' is not assignable to type 'string'
-            expect(service.open(str).subscribe(callback)).toBeDefined();
-        });
-
-        it(`wrong data type`, () => {
-            // @ts-expect-error Type 'number' is not assignable to type 'boolean'
-            expect(service.open(handler, {data: 42}).subscribe(callback)).toBeDefined();
-        });
-
         it(`wrong option key`, () => {
             // @ts-expect-error Argument of type '{ test: number; }' is not assignable to parameter
             expect(service.open(template, {test: 42}).subscribe(callback)).toBeDefined();
         });
 
         it(`wrong option value`, () => {
-            // @ts-expect-error Type '"huge"' is not assignable to type 'TuiDialogSize'
-            expect(service.open(template, {size: `huge`}).subscribe()).toBeDefined();
-        });
-
-        it(`untyped component retains default options interface`, () => {
-            // @ts-expect-error Type '{ test: string; }' has no properties in common with type
-            expect(service.open(component, {size: `huge`}).subscribe()).toBeDefined();
+            // @ts-expect-error Type 'number' is not assignable to type 'string'
+            expect(service.open(template, {type: 42}).subscribe(callback)).toBeDefined();
         });
 
         it(`wrong output type`, () => {
             expect(
-                // @ts-expect-error Property 'toFixed' does not exist on type 'string'
+                // @ts-expect-error Property 'at' does not exist on type 'number'
                 service.open(content, options).subscribe(a => a.toFixed(2)),
             ).toBeDefined();
-        });
-
-        it(`template with less context of wrong type`, () => {
-            const limited: TemplateRef<TuiContextWithImplicit<Observer<number>>> = any;
-
-            // @ts-expect-error Type 'number' is not assignable to type 'string'
-            expect(service.open(limited, options).subscribe(callback)).toBeDefined();
-        });
-
-        it(`directive with less context of wrong type`, () => {
-            const limited: PolymorpheusTemplate<
-                TuiContextWithImplicit<Observer<number>>
-            > = any;
-
-            // @ts-expect-error Type 'number' is not assignable to type 'string'
-            expect(service.open(limited, options).subscribe(callback)).toBeDefined();
         });
 
         it(`template with wrong context`, () => {
