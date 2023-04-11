@@ -94,7 +94,6 @@ import {
   isNativeKeyboardFocusable,
   isNativeMouseFocusable,
   moveFocus,
-  setNativeFocused,
   setNativeMouseFocused,
   px,
   clamp,
@@ -241,7 +240,6 @@ isNativeFocused(...args);
 isNativeKeyboardFocusable(...args);
 isNativeMouseFocusable(...args);
 moveFocus(...args);
-setNativeFocused(...args);
 setNativeMouseFocused(...args);
 px(...args);
 clamp(...args);
@@ -384,7 +382,6 @@ class Component {
     isNativeKeyboardFocusable();
     isNativeMouseFocusable();
     moveFocus();
-    setNativeFocused();
     setNativeMouseFocused();
     px();
     clamp();
@@ -488,7 +485,7 @@ import {
   tuiToGradient,
 } from '@taiga-ui/addon-editor';
 import {tuiDefaultSort} from '@taiga-ui/addon-table';
-import { tuiMockCurrentDate, tuiRestoreRealDate, tuiMockDateInside, tuiPendingIfNotMoscowTimeZone, tuiDragAndDropFrom, tuiFocusVisibleObservable, tuiQueryListChanges, tuiMouseDragFinishFrom, tuiMustBePresent, tuiPressedObservable, tuiPreventDefault, tuiStopPropagation, tuiTypedFromEvent, tuiWatch, tuiIsEdgeOlderThan, tuiIsEdge, tuiIsFirefox, tuiIsIE, tuiIsSafari, tuiCanScroll, tuiContainsOrAfter, tuiGetActualTarget, tuiGetClipboardDataText, tuiGetDocumentOrShadowRoot, tuiGetElementObscures, tuiGetElementOffset, tuiGetScrollParent, tuiIsCurrentTarget, tuiIsInsideIframe, tuiIsNodeIn, tuiBlurNativeFocused, tuiGetNativeFocused, tuiIsNativeFocusedIn, tuiIsNativeFocused, tuiIsNativeKeyboardFocusable, tuiIsNativeMouseFocusable, tuiMoveFocus, tuiSetNativeFocused, tuiSetNativeMouseFocused, tuiPx, tuiClamp, tuiInRange, tuiNormalizeToIntNumber, tuiQuantize, tuiRound, tuiCeil, tuiFloor, tuiSum, tuiToInt, tuiToRadians, tuiDistanceBetweenTouches, tuiEaseInOutQuad, tuiFlatLength, tuiGetOriginalArrayFromQueryList, tuiGetSwipeDirection, tuiIsElementEditable, tuiIsNumber, tuiIsPresent, tuiMarkControlAsTouchedAndValidate, tuiNullableSame, tuiUniqBy, tuiIsApplePlatform, tuiIsApple, tuiIsIos, tuiSvgLinearGradientProcessor, tuiGetClosestFocusable, tuiHexToRgb, tuiHsvToRgb, tuiParseColor, tuiRgbToHex, tuiRgbToHsv } from '@taiga-ui/cdk';
+import { tuiMockCurrentDate, tuiRestoreRealDate, tuiMockDateInside, tuiPendingIfNotMoscowTimeZone, tuiDragAndDropFrom, tuiFocusVisibleObservable, tuiQueryListChanges, tuiMouseDragFinishFrom, tuiMustBePresent, tuiPressedObservable, tuiPreventDefault, tuiStopPropagation, tuiTypedFromEvent, tuiWatch, tuiIsEdgeOlderThan, tuiIsEdge, tuiIsFirefox, tuiIsIE, tuiIsSafari, tuiCanScroll, tuiContainsOrAfter, tuiGetActualTarget, tuiGetClipboardDataText, tuiGetDocumentOrShadowRoot, tuiGetElementObscures, tuiGetElementOffset, tuiGetScrollParent, tuiIsCurrentTarget, tuiIsInsideIframe, tuiIsNodeIn, tuiBlurNativeFocused, tuiGetNativeFocused, tuiIsNativeFocusedIn, tuiIsNativeFocused, tuiIsNativeKeyboardFocusable, tuiIsNativeMouseFocusable, tuiMoveFocus, tuiSetNativeMouseFocused, tuiPx, tuiClamp, tuiInRange, tuiNormalizeToIntNumber, tuiQuantize, tuiRound, tuiCeil, tuiFloor, tuiSum, tuiToInt, tuiToRadians, tuiDistanceBetweenTouches, tuiEaseInOutQuad, tuiFlatLength, tuiGetOriginalArrayFromQueryList, tuiGetSwipeDirection, tuiIsElementEditable, tuiIsNumber, tuiIsPresent, tuiMarkControlAsTouchedAndValidate, tuiNullableSame, tuiUniqBy, tuiIsApplePlatform, tuiIsApple, tuiIsIos, tuiSvgLinearGradientProcessor, tuiGetClosestFocusable, tuiHexToRgb, tuiHsvToRgb, tuiParseColor, tuiRgbToHex, tuiRgbToHsv } from '@taiga-ui/cdk';
 import {
   tuiTextfieldWatchedControllerFactory,
   tuiSmartSearch,
@@ -607,7 +604,6 @@ tuiIsNativeFocused(...args);
 tuiIsNativeKeyboardFocusable(...args);
 tuiIsNativeMouseFocusable(...args);
 tuiMoveFocus(...args);
-tuiSetNativeFocused(...args);
 tuiSetNativeMouseFocused(...args);
 tuiPx(...args);
 tuiClamp(...args);
@@ -750,7 +746,6 @@ class Component {
     tuiIsNativeKeyboardFocusable();
     tuiIsNativeMouseFocusable();
     tuiMoveFocus();
-    tuiSetNativeFocused();
     tuiSetNativeMouseFocused();
     tuiPx();
     tuiClamp();

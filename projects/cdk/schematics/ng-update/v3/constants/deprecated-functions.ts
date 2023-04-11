@@ -357,11 +357,6 @@ export const DEPRECATED_FUNCTIONS: readonly TypeToRename[] = [
         moduleSpecifier: [`@taiga-ui/cdk`],
     },
     {
-        from: `setNativeFocused`,
-        to: `tuiSetNativeFocused`,
-        moduleSpecifier: [`@taiga-ui/cdk`],
-    },
-    {
         from: `setNativeMouseFocused`,
         to: `tuiSetNativeMouseFocused`,
         moduleSpecifier: [`@taiga-ui/cdk`],

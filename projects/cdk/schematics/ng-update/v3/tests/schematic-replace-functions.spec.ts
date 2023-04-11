@@ -23,6 +23,12 @@ import {
     TuiNumberFormatSettings,
 } from '@taiga-ui/core';
 
+element.focus();
+element.focus();
+element.focus();
+element.blur();
+element.focus({preventScroll: true});
+
 tuiFormatNumber(1000);
 tuiFormatNumber(1.234, {decimalLimit: 2, decimalSeparator: ',', thousandSeparator: ' ', zeroPadding: true});
 tuiFormatNumber(123.45, {decimalLimit: 3, decimalSeparator: '.', thousandSeparator: ' ', zeroPadding: true});
@@ -82,12 +88,18 @@ const event = new CustomEvent("hello", {
 `;
 
 const BEFORE = `import {Component} from '@angular/core';
-import { fallbackValue, tuiCustomEvent, getClosestElement, padStart, tuiGetClosestFocusable } from '@taiga-ui/cdk';
+import { fallbackValue, tuiCustomEvent, getClosestElement, padStart, tuiGetClosestFocusable, tuiSetNativeFocused, setNativeFocused } from '@taiga-ui/cdk';
 import {
     TUI_NUMBER_FORMAT,
     tuiFormatNumber,
     TuiNumberFormatSettings,
 } from '@taiga-ui/core';
+
+setNativeFocused(element);
+tuiSetNativeFocused(element);
+tuiSetNativeFocused(element, true);
+tuiSetNativeFocused(element, false);
+tuiSetNativeFocused(element, true, true);
 
 tuiFormatNumber(1000);
 tuiFormatNumber(1.234, 2);
