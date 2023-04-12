@@ -7,10 +7,10 @@
         "package-lock.json": "*",
         ".eslintrc.js": "*",
         "nx.json": "*",
-        "jest.config.ts": "*",
         "setup-jest.ts": "*",
         "tsconfig.*.json": "*",
         "tsconfig.json": "*",
+        "*.config.ts": "*",
         "scripts/**/*": "*",
         "*.md": "*"
     },

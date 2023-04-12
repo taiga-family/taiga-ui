@@ -1,3 +1,4 @@
+import {GLOBAL_DEFS_FOR_TERSER_WITH_AOT} from '@angular/compiler-cli';
 import {tuiIsObject} from '@taiga-ui/cdk';
 import TerserPlugin from 'terser-webpack-plugin';
 import {Configuration} from 'webpack';
@@ -54,6 +55,27 @@ const fallbackCreateHash = crypto.createHash;
 crypto.createHash = (algorithm: string) =>
     fallbackCreateHash(algorithm === `md4` ? `sha256` : algorithm);
 
+const TERSER_PLUGIN = new TerserPlugin({
+    parallel: true,
+    extractComments: false,
+    terserOptions: {
+        ecma: 2015,
+        mangle: true,
+        module: true,
+        sourceMap: false,
+        compress: {
+            passes: 3,
+            keep_fnames: false,
+            keep_classnames: false,
+            pure_funcs: [`forwardRef`],
+            global_defs: GLOBAL_DEFS_FOR_TERSER_WITH_AOT,
+        },
+        format: {
+            comments: false,
+        },
+    },
+});
+
 const config: Configuration = {
     resolve: {
         fallback: {
@@ -77,23 +99,8 @@ const config: Configuration = {
     ...(CI_MODE
         ? {
               mode: `production`,
-              plugins: [
-                  new TerserPlugin({
-                      parallel: true,
-                      extractComments: false,
-                      terserOptions: {
-                          compress: {
-                              passes: 2,
-                          },
-                          format: {
-                              comments: false,
-                          },
-                      },
-                  }),
-              ],
-              optimization: {
-                  minimize: true,
-              },
+              plugins: [TERSER_PLUGIN],
+              optimization: {minimize: true, minimizer: [TERSER_PLUGIN]},
           }
         : {}),
 };

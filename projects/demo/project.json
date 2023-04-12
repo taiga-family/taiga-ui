@@ -96,14 +96,7 @@
                     "namedChunks": false,
                     "buildOptimizer": true,
                     "statsJson": false,
-                    "progress": false,
-                    "budgets": [
-                        {
-                            "type": "initial",
-                            "maximumWarning": "2mb",
-                            "maximumError": "5mb"
-                        }
-                    ]
+                    "progress": false
                 },
                 "next": {
                     "fileReplacements": [
@@ -126,7 +119,6 @@
                 },
                 "def": {
                     "baseHref": "/",
-                    "budgets": [],
                     "fileReplacements": [
                         {
                             "replace": "projects/demo/src/emulate/change-detection-strategy.ts",
@@ -136,7 +128,6 @@
                 },
                 "shadow": {
                     "baseHref": "/",
-                    "budgets": [],
                     "fileReplacements": [
                         {
                             "replace": "projects/demo/src/emulate/view-encapsulation.ts",
@@ -148,8 +139,7 @@
                     "baseHref": "/",
                     "sourceMap": false,
                     "namedChunks": false,
-                    "statsJson": false,
-                    "budgets": []
+                    "statsJson": false
                 },
                 "coalescing": {
                     "baseHref": "/",
