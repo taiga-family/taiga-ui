@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[88176],{22323:(e,s,n)=>{n.r(s),n.d(s,{TUI_POLISH_LANGUAGE_ADDON_TABLE:()=>a});const a={showHideText:"Pokaż/Ukryj",paginationTexts:{pages:"Strony",linesPerPage:"Wierszy na stronę",of:"z"}}}}]);
