@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[56688],{56688:s=>{s.exports='<tui-svg\n    class="example"\n    [src]="svg"\n></tui-svg>\n'}}]);

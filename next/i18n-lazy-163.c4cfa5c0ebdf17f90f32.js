@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[35847],{55008:(e,s,a)=>{a.r(s),a.d(s,{TUI_PORTUGUESE_LANGUAGE_ADDON_TABLE:()=>n});const n={showHideText:"Mostrar/Esconder",paginationTexts:{pages:"Páginas",linesPerPage:"Linhas por página",of:"de"}}}}]);

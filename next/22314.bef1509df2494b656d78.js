@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[22314],{22314:n=>{n.exports=".input {\n    max-width: 20rem;\n}\n"}}]);

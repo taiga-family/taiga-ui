@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[85871],{97846:(_,a,c)=>{c.r(a),c.d(a,{TUI_UKRAINIAN_LANGUAGE_ADDON_COMMERCE:()=>e});const e={cardNumber:["Номер","Номер карти"],cardExpiry:["Термін","Термін дії"]}}}]);

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[36104],{12417:(e,a,n)=>{n.r(a),n.d(a,{TUI_TURKISH_LANGUAGE_ADDON_TABLE:()=>s});const s={showHideText:"Göster/Hizle",paginationTexts:{pages:"Sayfa",linesPerPage:"Görüntülenen",of:"toplam"}}}}]);
