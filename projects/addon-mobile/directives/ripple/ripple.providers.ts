@@ -4,6 +4,7 @@ import {
     TUI_TOUCH_SUPPORTED,
     TuiDestroyService,
     tuiIsPresent,
+    tuiPx,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {EMPTY, Observable} from 'rxjs';
@@ -54,13 +55,11 @@ export const TUI_RIPPLE_PROVIDERS: Provider[] = [
                           renderer.setAttribute(
                               ripple,
                               `style`,
-                              `
-                        width: ${dimension}px;
-                        height: ${dimension}px;
-                        left: ${x}px;
-                        top: ${y}px;
-                        animation-name: ${RIPPLE_ON};
-                    `,
+                              `width: ${tuiPx(dimension)}; height: ${tuiPx(
+                                  dimension,
+                              )}; left: ${tuiPx(x)}; top: ${tuiPx(
+                                  y,
+                              )}; animation-name: ${RIPPLE_ON};`,
                           );
 
                           return ripple;

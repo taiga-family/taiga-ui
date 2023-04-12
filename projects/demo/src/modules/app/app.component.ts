@@ -65,7 +65,7 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
     }
 
     private enableYandexMetrika(): void {
-        if (!environment.production || this.isCypress) {
+        if (ngDevMode && (!environment.production || this.isCypress)) {
             console.info('Yandex.Metrika disabled for non-production mode.');
 
             return;

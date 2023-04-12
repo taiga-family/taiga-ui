@@ -1,5 +1,5 @@
 export class TuiInvalidYearException extends Error {
     constructor(year: number) {
-        super(`Invalid year: ${year}`);
+        super(ngDevMode ? `Invalid year: ${year}` : ``);
     }
 }
