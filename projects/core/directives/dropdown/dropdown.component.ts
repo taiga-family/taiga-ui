@@ -92,7 +92,7 @@ export class TuiDropdownComponent implements OnDestroy {
                 this.update(top, left);
             });
 
-        this.updateWidth();
+        this.updateWidth(this.accessor.getClientRect().width);
     }
 
     ngOnDestroy(): void {
@@ -140,20 +140,18 @@ export class TuiDropdownComponent implements OnDestroy {
         style.width = '';
         style.minWidth = '';
 
-        this.updateWidth();
+        this.updateWidth(rect.width);
     }
 
-    private updateWidth(): void {
+    private updateWidth(width: number): void {
         const {style} = this.el.nativeElement;
-        const rect = this.accessor.getClientRect();
-        const {limitWidth} = this.options;
 
-        switch (limitWidth) {
+        switch (this.options.limitWidth) {
             case 'min':
-                style.minWidth = tuiPx(rect.width);
+                style.minWidth = tuiPx(width);
                 break;
             case 'fixed':
-                style.width = tuiPx(rect.width);
+                style.width = tuiPx(width);
                 break;
             case 'auto':
                 break;
