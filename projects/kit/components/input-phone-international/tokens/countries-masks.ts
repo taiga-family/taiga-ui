@@ -44,7 +44,7 @@ export const TUI_COUNTRIES_MASKS: InjectionToken<Record<TuiCountryIsoCode, strin
             [TuiCountryIsoCode.CH]: `+41##-###-####`,
             [TuiCountryIsoCode.CI]: `+225##-###-###`,
             [TuiCountryIsoCode.CL]: `+56#-####-####`,
-            [TuiCountryIsoCode.CM]: `+237####-####`,
+            [TuiCountryIsoCode.CM]: `+237#####-####`,
             [TuiCountryIsoCode.CN]: `+86(###) ####-####`,
             [TuiCountryIsoCode.CO]: `+57(###) ###-####`,
             [TuiCountryIsoCode.CR]: `+506####-####`,
