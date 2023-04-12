@@ -20,7 +20,7 @@ jobs:
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
-      - run: npx nx build demo -c next --skip-nx-cache
+      - run: npx nx build demo -c next
       - run: tree ${{ env.DIST }} -P '*.html'
       - name: Publish snapshots
         uses: s0/git-publish-subdir-action@v2.6.0
@@ -40,7 +40,7 @@ jobs:
         uses: ./.github/actions/nodejs
         id: nodejs-workspace
 
-      - run: npx nx build demo --skip-nx-cache --configuration production
+      - run: npx nx build demo --configuration production
       - run: tree ${{ env.DIST }} -P '*.html'
       - name: Publish snapshots
         uses: s0/git-publish-subdir-action@v2.6.0
