@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[44499],{32008:(t,e,o)=>{o.r(e),o.d(e,{TUI_VIETNAMESE_LANGUAGE_ADDON_PREVIEW:()=>s});const s={previewTexts:{rotate:"Xoay"},zoomTexts:{zoomOut:"Thu nhỏ",zoomIn:"Phóng to",reset:"Đặt lại"}}}}]);

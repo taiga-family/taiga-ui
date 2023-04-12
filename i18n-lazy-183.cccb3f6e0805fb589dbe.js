@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[990],{6597:(e,t,o)=>{o.r(t),o.d(t,{TUI_RUSSIAN_LANGUAGE_ADDON_PREVIEW:()=>s});const s={previewTexts:{rotate:"Повернуть"},zoomTexts:{zoomIn:"Увеличить масштаб",zoomOut:"Уменьшить масштаб",reset:"Сбросить масштаб"}}}}]);

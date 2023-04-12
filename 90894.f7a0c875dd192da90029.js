@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[90894],{90894:e=>{e.exports='<tui-tree [value]="data"></tui-tree>\n'}}]);
