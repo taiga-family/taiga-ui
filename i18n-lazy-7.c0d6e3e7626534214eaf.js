@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[32195],{96839:(e,t,o)=>{o.r(t),o.d(t,{TUI_CHINESE_LANGUAGE_ADDON_PREVIEW:()=>s});const s={previewTexts:{rotate:"旋转"},zoomTexts:{zoomOut:"缩小",zoomIn:"放大",reset:"重置"}}}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[15784],{56437:(n,e,s)=>{s.r(e),s.d(e,{TUI_VIETNAMESE_LANGUAGE_ADDON_TABLE:()=>t});const t={showHideText:"Hiện/Ẩn",paginationTexts:{pages:"Tổng số trang",linesPerPage:"Số dòng mỗi trang",of:"trên"}}}}]);
