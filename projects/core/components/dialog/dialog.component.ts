@@ -92,7 +92,7 @@ export class TuiDialogComponent<O, I> {
     }
 
     get fullscreen(): boolean {
-        return this.size === 'fullscreen' || this.size === 'page';
+        return !this.isMobile && (this.size === 'fullscreen' || this.size === 'page');
     }
 
     private close(): void {
