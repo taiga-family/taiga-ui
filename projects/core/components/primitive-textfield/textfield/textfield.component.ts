@@ -42,7 +42,7 @@ export class TuiTextfieldComponent {
         private readonly idService: TuiIdService,
         @Optional()
         @Inject(TUI_LEGACY_MASK)
-        readonly legacyMask: boolean,
+        readonly legacyMask: boolean | null,
     ) {
         this.host.process(this.el.nativeElement);
     }
