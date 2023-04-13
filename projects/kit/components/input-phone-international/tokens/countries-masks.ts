@@ -70,7 +70,7 @@ export const TUI_COUNTRIES_MASKS: InjectionToken<Record<TuiCountryIsoCode, strin
             [TuiCountryIsoCode.FK]: `+500#####`,
             [TuiCountryIsoCode.FM]: `+691###-####`,
             [TuiCountryIsoCode.FR]: `+33 ## ## ## ## ##`,
-            [TuiCountryIsoCode.GA]: `+241#-##-##-##`,
+            [TuiCountryIsoCode.GA]: `+241##-##-##-##`,
             [TuiCountryIsoCode.GB]: `+44##-####-####`,
             [TuiCountryIsoCode.GD]: `+1(473) ###-####`,
             [TuiCountryIsoCode.GE]: `+995(###) ###-###`,
