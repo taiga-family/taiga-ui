@@ -1,5 +1,5 @@
 export class TuiInvalidDayException extends Error {
     constructor(day: number) {
-        super(`Invalid day: ${day}`);
+        super(ngDevMode ? `Invalid day: ${day}` : ``);
     }
 }
