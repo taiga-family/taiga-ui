@@ -11,7 +11,7 @@ export interface TuiTextfieldOptions {
 
 /** Default values for primitive textfield options */
 export const TUI_TEXTFIELD_DEFAULT_OPTIONS: TuiTextfieldOptions = {
-    iconCleaner: `tuiIconCloseLarge`,
+    iconCleaner: `tuiIconClose`,
 };
 
 /**
