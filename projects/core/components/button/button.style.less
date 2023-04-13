@@ -108,6 +108,8 @@
 .t-icon {
     display: block;
 
+    // TODO: maybe remove it,
+    // because that style not affected any elements
     :host[data-size='s'] &,
     :host[data-size='xs'] & {
         width: 1rem;
@@ -124,6 +126,18 @@
         height: 100%;
         align-items: center;
         justify-content: center;
+    }
+
+    :host[tuiIconButton][data-size='s'] &,
+    :host[tuiIconButton][data-size='xs'] & {
+        max-width: 1rem;
+        max-height: 1rem;
+    }
+
+    :host[tuiIconButton][data-size='l'] &,
+    :host[tuiIconButton][data-size='m'] & {
+        max-width: 1.5rem;
+        max-height: 1.5rem;
     }
 }
 
