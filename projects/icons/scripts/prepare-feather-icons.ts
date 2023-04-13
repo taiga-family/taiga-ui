@@ -9,7 +9,7 @@ const fs = require(`fs`);
         `dist`,
         `icons`,
     );
-    const dest = path.join(process.cwd(), `projects`, `icons`, `src`);
+    const dest = process.argv[2] || path.join(process.cwd(), `projects`, `icons`, `src`);
 
     fs.readdirSync(src).forEach((filename: string) => {
         if (filename === `check-circle.svg`) {
