@@ -7,10 +7,10 @@
         "@angular-eslint/eslint-plugin": "15.2.1",
         "@angular-eslint/eslint-plugin-template": "15.2.1",
         "@angular-eslint/template-parser": "15.2.1",
-        "@html-eslint/eslint-plugin": "0.17.2",
-        "@html-eslint/parser": "0.17.1",
+        "@html-eslint/eslint-plugin": "0.18.0",
+        "@html-eslint/parser": "0.18.0",
         "@tinkoff/eslint-config": "1.52.1",
-        "@tinkoff/eslint-config-angular": "1.52.1",
+        "@tinkoff/eslint-config-angular": "1.53.2",
         "eslint-plugin-unicorn": "45.0.2"
     },
     "peerDependencies": {
