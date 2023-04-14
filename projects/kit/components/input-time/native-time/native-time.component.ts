@@ -4,7 +4,6 @@ import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core';
 
 import type {TuiInputTimeDirective} from '../input-time.directive';
 
-/* eslint-disable  @angular-eslint/component-max-inline-declarations */
 @Component({
     selector: 'input[tuiTime]',
     template: `
