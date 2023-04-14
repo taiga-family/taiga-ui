@@ -8,32 +8,21 @@ on:
 env:
   NX_BRANCH: ${{ github.event.number }}
   NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
-  IS_MAIN_BRANCH: ${{ github.ref == 'refs/heads/main' }}
 
 jobs:
   build:
     if: ${{ !contains(github.head_ref, 'release/') }}
     name: Packages
     runs-on: ubuntu-latest
-    env:
-      FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
-      - name: Run affected builds for libraries based on main branch
-        if: ${{ env.IS_MAIN_BRANCH == 'false' }}
+      - name: Run build libraries and check it
         run: |
-          npm run affected:build:libs
+          npm run run-many:build:libs
           npx ts-node ./scripts/check-dist.ts
-
-      - name: Run all builds for libraries only in main branch
-        if: ${{ env.IS_MAIN_BRANCH == 'true' }}
-        run: npm run run-many:build:libs
 
 concurrency:
   group: build-${{ github.workflow }}-${{ github.ref }}
