@@ -32,8 +32,8 @@ module.exports = {
                 '@angular-eslint/use-lifecycle-interface': 'error',
                 '@angular-eslint/use-pipe-transform-interface': 'error',
                 '@angular-eslint/no-lifecycle-call': 'error',
-                '@angular-eslint/component-max-inline-declarations': 'error',
                 // Off / Specific rules of Taiga UI
+                '@angular-eslint/component-max-inline-declarations': 'off',
                 '@angular-eslint/no-pipe-impure': 'off',
                 '@angular-eslint/no-host-metadata-property': 'off',
                 '@angular-eslint/use-component-view-encapsulation': 'off',
