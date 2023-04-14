@@ -141,6 +141,24 @@ describe(`InputPhoneInternational`, () => {
             expect(component.countryIsoCode).toBe(TuiCountryIsoCode.RU);
         });
 
+        describe(`should set KZ country code on paste event`, () => {
+            for (const phone of [`+7(600)555-3535`, `+7 7272 588300`]) {
+                it(phone, () => {
+                    const data = new DataTransfer();
+
+                    data.setData(`text/plain`, phone);
+
+                    const pasteEvent = new ClipboardEvent(`paste`, {
+                        clipboardData: data as unknown as DataTransfer,
+                    });
+
+                    component.onPaste(pasteEvent);
+
+                    expect(component.countryIsoCode).toBe(TuiCountryIsoCode.KZ);
+                });
+            }
+        });
+
         it(`should replace code 8 on paste event`, () => {
             const data = new DataTransfer();
 
