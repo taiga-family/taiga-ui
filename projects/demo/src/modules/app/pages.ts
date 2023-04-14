@@ -877,8 +877,14 @@ export const pages: TuiDocPages = [
     },
     {
         section: $localize`Navigation`,
+        title: `TabBar`,
+        keywords: `mobile, ios, android, шаги, таб, tab, tabs, bar, navigation`,
+        route: `/navigation/tab-bar`,
+    },
+    {
+        section: $localize`Navigation`,
         title: `Tabs`,
-        keywords: `mobile, ios, android, шаги, таб, tab, tabs`,
+        keywords: `mobile, ios, android, шаги, таб, tab, tabs, vertical, navigation`,
         route: `/navigation/tabs`,
     },
     // Customization
