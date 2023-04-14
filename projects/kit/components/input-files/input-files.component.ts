@@ -5,6 +5,7 @@ import {
     ContentChild,
     ElementRef,
     EventEmitter,
+    forwardRef,
     HostListener,
     Inject,
     Input,
@@ -57,7 +58,7 @@ export class TuiInputFilesComponent
 
     private dataTransfer: DataTransfer | null = null;
 
-    @ContentChild(TuiInputFilesDirective, {read: TuiInputFilesDirective})
+    @ContentChild(forwardRef(() => TuiInputFilesDirective))
     readonly nativeInput?: TuiInputFilesDirective;
 
     @ContentChild(TemplateRef)
