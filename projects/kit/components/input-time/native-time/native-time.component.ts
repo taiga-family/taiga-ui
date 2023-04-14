@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {TuiIdService, TuiMapper, TuiTime} from '@taiga-ui/cdk';
+import {TuiIdService} from '@taiga-ui/cdk';
 import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core';
 
 import type {TuiInputTimeDirective} from '../input-time.directive';
@@ -23,7 +23,7 @@ import type {TuiInputTimeDirective} from '../input-time.directive';
         '[tabIndex]': '-1',
         '[value]': 'value',
         '[step]': 'step',
-        '(input.stop.silent)': 'onChange($event.target.value)',
+        '(change.stop.silent)': 'onChange($event.target.value)',
         '(click.stop.silent)': '0',
         '(mousedown.stop.silent)': '0',
     },
@@ -35,24 +35,17 @@ export class TuiNativeTimeComponent {
     constructor(
         @Inject(TUI_TEXTFIELD_HOST) readonly host: TuiInputTimeDirective,
         @Inject(TuiIdService)
-        readonly idService: TuiIdService,
+        idService: TuiIdService,
     ) {
         this.autoIdString = idService.generate();
     }
-
-    map: TuiMapper<readonly TuiTime[], string[]> = items =>
-        items.map(item => item.toString(this.host.mode));
 
     get items(): string[] {
         return this.host.items.map(item => item.toString(this.host.mode));
     }
 
     get value(): string {
-        if (this.host.value.length !== this.host.mode.length) {
-            return '';
-        }
-
-        return this.host.value;
+        return this.host.value.length === this.host.mode.length ? this.host.value : '';
     }
 
     get step(): number {
