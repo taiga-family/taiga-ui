@@ -13,7 +13,7 @@ interface WrappedContent {
 
 type ContentInterceptor = (src: string) => string;
 
-export function processIcons(files: string[], interceptor?: ContentInterceptor): void {
+export function tuiProcessIcons(files: string[], interceptor?: ContentInterceptor): void {
     for (const file of files) {
         const baseContent = String(fs.readFileSync(file));
         const src = interceptor ? interceptor(baseContent) : baseContent;
@@ -88,3 +88,9 @@ function wrapIcon(source: string, name: string): WrappedContent | string {
         </g>`.trim(),
     };
 }
+
+/**
+ * @deprecated:
+ * use @{link tuiProcessIcons}
+ */
+export const processIcons = tuiProcessIcons;

@@ -1,10 +1,16 @@
 import {readFileSync, writeFileSync} from 'fs';
-import prettier from 'prettier';
+import prettier, {Options as PrettierOptions} from 'prettier';
 
-export function postPrettierFormat(filePath: string, prettierConfig?: string): void {
-    const bundledBody = readFileSync(filePath, `utf8`);
-    const options = prettier.resolveConfig.sync(prettierConfig ?? `prettier.config.js`);
-    const formatted = prettier.format(bundledBody, {...options, parser: `typescript`});
+interface Options {
+    file: string;
+    config: PrettierOptions;
+}
 
-    writeFileSync(filePath, formatted);
+export function tuiPostPrettierFormat({file, config}: Options): void {
+    console.info(`\x1B[36m%s\x1B[0m`, `format: ${file} by parser - ${config.parser}`);
+
+    const bundledBody = readFileSync(file, `utf8`);
+    const formatted = prettier.format(bundledBody, config);
+
+    writeFileSync(file, formatted);
 }

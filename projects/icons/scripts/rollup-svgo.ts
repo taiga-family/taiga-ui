@@ -12,7 +12,7 @@ export interface TuiRollupSvgoConfig {
     readonly options?: OptimizeOptions;
 }
 
-export function rollupSvgo({
+export function tuiRollupSvgo({
     include = `**/*.svg`,
     exclude,
     options,

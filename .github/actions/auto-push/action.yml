@@ -1,6 +1,12 @@
 name: Taiga-UI auto-push action
 description: Taiga-UI auto-push action
 
+inputs:
+  message:
+    description: commit message
+    required: false
+    default: apply changes after linting
+
 runs:
   using: composite
   steps:
@@ -16,7 +22,7 @@ runs:
         commit_user_name: 'tinkoff-bot'
         commit_user_email: 'tinkoff-bot@users.noreply.github.com'
         commit_author: 'tinkoff-bot <tinkoff-bot@users.noreply.github.com>'
-        commit_message: 'chore: apply changes after linting [tinkoff-bot]'
+        commit_message: 'chore: ${{ inputs.message }} [tinkoff-bot]'
         status_options: '--untracked-files=no'
         commit_options: '--no-verify'
         skip_fetch: true

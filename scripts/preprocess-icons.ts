@@ -1,6 +1,6 @@
 import glob from 'glob';
 
-import {processIcons} from '../projects/icons/scripts';
+import {tuiProcessIcons} from '../projects/icons/scripts';
 
 (function main(): void {
     const baseDir = process.argv[2] || `./projects/icons`;
@@ -9,5 +9,5 @@ import {processIcons} from '../projects/icons/scripts';
     console.info(`\x1B[35m%s\x1B[0m`, `[cwd]:`, process.cwd());
     console.info(`\x1B[35m%s\x1B[0m`, `[match]:`, pattern);
 
-    glob(pattern, {}, (_err: Error | null, files: string[]) => processIcons(files));
+    glob(pattern, {}, (_err: Error | null, files: string[]) => tuiProcessIcons(files));
 })();

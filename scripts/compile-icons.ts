@@ -1,10 +1,10 @@
-import {unlinkSync} from 'fs';
+import {readdirSync, unlinkSync} from 'fs';
 import * as path from 'path';
 
 import {
-    convertAllCompileFileToAllFile,
-    postPrettierFormat,
-    prepareAllToCompileFile,
+    tuiConvertAllCompileFileToAllFile,
+    tuiPostPrettierFormat,
+    tuiPrepareAllToCompileFile,
 } from '../projects/icons/scripts';
 
 (async function main(): Promise<void> {
@@ -12,15 +12,34 @@ import {
     const iconsSrc = path.resolve(`${projectPath}/src/`);
     const allToCompilePath = path.resolve(`${projectPath}/all-to-compile.ts`);
     const resultAllFile = path.resolve(`${projectPath}/all.ts`);
+    const prettier = require(path.resolve(`./prettier.config.js`));
 
-    prepareAllToCompileFile(iconsSrc, allToCompilePath);
+    tuiPrepareAllToCompileFile(iconsSrc, allToCompilePath);
 
-    await convertAllCompileFileToAllFile({
+    await tuiConvertAllCompileFileToAllFile({
         from: allToCompilePath,
         to: resultAllFile,
+        include: `**/icons/src/**/*.svg`,
+        prt2Options: {
+            include: [`${projectPath}/**`],
+            exclude: [`${projectPath}/**/*.svg`],
+        },
     });
 
-    postPrettierFormat(resultAllFile);
+    tuiPostPrettierFormat({
+        file: resultAllFile,
+        config: {...prettier, parser: `typescript`},
+    });
+
+    const icons = readdirSync(iconsSrc)
+        .filter(file => file.endsWith(`.svg`))
+        .map(file => `${iconsSrc}/${file}`);
+
+    for (const file of icons) {
+        // @note: double format for pretty output new lines
+        tuiPostPrettierFormat({file, config: {printWidth: 120, parser: `angular`}});
+        tuiPostPrettierFormat({file, config: {...prettier, parser: `xml`}});
+    }
 
     try {
         unlinkSync(allToCompilePath);
