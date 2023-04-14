@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {TuiIdService, TuiMapper, TuiTime} from '@taiga-ui/cdk';
 import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core';
 
-import {TuiInputTimeDirective} from '../input-time.directive';
+import type {TuiInputTimeDirective} from '../input-time.directive';
 
 /* eslint-disable  @angular-eslint/component-max-inline-declarations */
 @Component({
