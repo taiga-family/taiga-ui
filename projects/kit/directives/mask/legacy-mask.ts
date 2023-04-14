@@ -24,7 +24,7 @@ import {
     NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import {ɵgetDOM as getDOM} from '@angular/platform-browser';
-import {TuiTextMaskOptions} from '@taiga-ui/core';
+import {TUI_LEGACY_MASK, TuiTextMaskOptions} from '@taiga-ui/core';
 import {createTextMaskInputElement} from 'text-mask-core';
 
 /**
@@ -56,6 +56,10 @@ function _isAndroid(): boolean {
             provide: NG_VALUE_ACCESSOR,
             useExisting: forwardRef(() => MaskedInputDirective),
             multi: true,
+        },
+        {
+            provide: TUI_LEGACY_MASK,
+            useExisting: forwardRef(() => MaskedInputDirective),
         },
     ],
 })

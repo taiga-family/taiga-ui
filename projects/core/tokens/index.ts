@@ -12,6 +12,7 @@ export * from './icon-place';
 export * from './icons';
 export * from './icons-path';
 export * from './is-mobile-resolution';
+export * from './legacy-mask';
 export * from './media';
 export * from './mode';
 export * from './notification-options';
