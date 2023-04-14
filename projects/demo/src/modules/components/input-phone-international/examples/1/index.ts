@@ -13,7 +13,7 @@ import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 })
 export class TuiInputPhoneExample1 {
     readonly testForm = new FormGroup({
-        testValue: new FormControl('+77777777777', Validators.required),
+        testValue: new FormControl('+79777777777', Validators.required),
     });
 
     readonly countries: readonly TuiCountryIsoCode[] = [
