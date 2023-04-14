@@ -3,7 +3,6 @@ name: 🤖 Auto update dependencies by Renovate
 on:
   workflow_dispatch:
   schedule:
-    # every day 8am
     - cron: '0 8 * * *'
 
 jobs:
@@ -11,9 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
       - name: Self-hosted Renovate
-        uses: renovatebot/github-action@v34.159.2
+        uses: renovatebot/github-action@v36.0.2
         with:
           token: ${{ secrets.TINKOFF_BOT_PAT }}
           configurationFile: renovate.json
