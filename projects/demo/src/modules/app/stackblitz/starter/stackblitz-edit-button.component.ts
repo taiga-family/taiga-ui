@@ -2,7 +2,6 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
     selector: 'stackblitz-edit-button',
-    // eslint-disable-next-line @angular-eslint/component-max-inline-declarations
     template: `
         <button
             tuiButton

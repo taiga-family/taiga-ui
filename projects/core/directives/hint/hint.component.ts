@@ -39,7 +39,6 @@ import {TuiHintPointerDirective} from './hint-pointer.directive';
 
 @Component({
     selector: 'tui-hint',
-    // eslint-disable-next-line @angular-eslint/component-max-inline-declarations
     template: `
         <span
             *polymorpheusOutlet="content as text; context: context"
