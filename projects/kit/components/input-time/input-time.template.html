@@ -1,6 +1,6 @@
 <tui-hosted-dropdown
     class="t-wrapper"
-    [canOpen]="canOpen && !nativePicker"
+    [canOpen]="canOpen && !nativeDatalist"
     [content]="dropdownContent"
     [open]="canOpen && open"
     (openChange)="onOpen($event)"
@@ -55,11 +55,10 @@
         *polymorpheusOutlet="icon as src; context: {$implicit: size}"
         tuiWrapper
         appearance="icon"
-        [class.t-icon]="!computedDisabled"
         [src]="src"
     ></tui-svg>
     <input
-        *ngIf="isMobile && nativePicker"
+        *ngIf="nativePicker && (!isIos || mode === 'HH:MM')"
         tuiTime
     />
 </ng-template>

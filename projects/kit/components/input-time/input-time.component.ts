@@ -13,6 +13,7 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
+    TUI_IS_IOS,
     TUI_IS_MOBILE,
     TUI_STRICT_MATCHER,
     tuiAsControl,
@@ -111,6 +112,7 @@ export class TuiInputTimeComponent
         @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
+        @Inject(TUI_IS_IOS) readonly isIos: boolean,
     ) {
         super(control, cdr);
     }
@@ -132,7 +134,11 @@ export class TuiInputTimeComponent
     }
 
     get nativePicker(): boolean {
-        return !!this.options.nativePicker;
+        return !!this.options.nativePicker && this.isMobile;
+    }
+
+    get nativeDatalist(): boolean {
+        return this.nativePicker && !this.isIos;
     }
 
     get size(): TuiSizeL | TuiSizeS {

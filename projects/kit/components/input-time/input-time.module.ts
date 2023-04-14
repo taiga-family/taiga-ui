@@ -10,11 +10,11 @@ import {
 } from '@taiga-ui/core';
 import {TuiSelectOptionModule} from '@taiga-ui/kit/components/select-option';
 import {TextMaskModule, TuiValueAccessorModule} from '@taiga-ui/kit/directives';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputTimeComponent} from './input-time.component';
-import {TuiNativeTimeComponent} from '@taiga-ui/kit/components/input-time/native-time/native-time.component';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {TuiInputTimeDirective} from '@taiga-ui/kit/components/input-time/input-time.directive';
+import {TuiInputTimeDirective} from './input-time.directive';
+import {TuiNativeTimeComponent} from './native-time/native-time.component';
 
 @NgModule({
     imports: [
