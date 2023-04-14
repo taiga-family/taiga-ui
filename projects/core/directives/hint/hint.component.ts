@@ -39,10 +39,12 @@ import {TuiHintPointerDirective} from './hint-pointer.directive';
 
 @Component({
     selector: 'tui-hint',
+    // eslint-disable-next-line @angular-eslint/component-max-inline-declarations
     template: `
-        <ng-container *polymorpheusOutlet="content as text; context: context">
-            {{ text }}
-        </ng-container>
+        <span
+            *polymorpheusOutlet="content as text; context: context"
+            [innerHTML]="text"
+        ></span>
     `,
     styleUrls: ['./hint.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
