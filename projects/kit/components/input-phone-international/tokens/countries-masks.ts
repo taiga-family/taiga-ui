@@ -42,7 +42,7 @@ export const TUI_COUNTRIES_MASKS: InjectionToken<Record<TuiCountryIsoCode, strin
             [TuiCountryIsoCode.CF]: `+236-##-##-####`,
             [TuiCountryIsoCode.CG]: `+242##-###-####`,
             [TuiCountryIsoCode.CH]: `+41##-###-####`,
-            [TuiCountryIsoCode.CI]: `+225##-###-###`,
+            [TuiCountryIsoCode.CI]: `+225##-##-###-###`,
             [TuiCountryIsoCode.CL]: `+56#-####-####`,
             [TuiCountryIsoCode.CM]: `+237#####-####`,
             [TuiCountryIsoCode.CN]: `+86(###) ####-####`,
