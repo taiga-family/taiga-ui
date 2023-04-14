@@ -1,0 +1,20 @@
+@import 'taiga-ui-local';
+
+:host {
+    --tui-active-color: var(--tui-primary);
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    font: normal 0.625rem/0.75rem -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Segoe UI', sans-serif;
+    height: var(--tui-height-l);
+    color: var(--tui-text-03);
+    backdrop-filter: blur(0.25rem);
+
+    &:before {
+        .fullsize();
+        content: '';
+        background: var(--tui-elevation-01);
+        box-shadow: inset 0 1px var(--tui-base-04);
+        opacity: 0.9;
+    }
+}
