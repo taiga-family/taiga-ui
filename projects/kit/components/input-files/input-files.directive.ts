@@ -31,22 +31,18 @@ export class TuiInputFilesDirective {
     }
 
     @HostBinding('accept')
-    get accept(): TuiInputFilesOptions['accepts'] {
+    get accept(): string {
         return this.el.nativeElement.accept ?? this.options.accepts;
     }
 
     @HostBinding('multiple')
-    get multiple(): TuiInputFilesOptions['multiple'] {
+    get multiple(): boolean {
         return this.el.nativeElement.multiple ?? this.options.multiple;
     }
 
     @HostBinding('attr.capture')
-    get capture(): TuiInputFilesOptions['capture'] {
-        return (
-            (this.el.nativeElement.getAttribute('capture') as
-                | TuiInputFilesOptions['capture']
-                | null) ?? this.options.capture
-        );
+    get capture(): string | null {
+        return this.el.nativeElement.getAttribute('capture') ?? this.options.capture;
     }
 
     get input(): HTMLInputElement {
