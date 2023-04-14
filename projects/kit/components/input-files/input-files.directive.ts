@@ -43,8 +43,10 @@ export class TuiInputFilesDirective {
     @HostBinding('attr.capture')
     get capture(): TuiInputFilesOptions['capture'] {
         return (
-            this.el.nativeElement.getAttribute('capture') as TuiInputFilesOptions['capture'] | null
-        ) ?? this.options.capture;
+            (this.el.nativeElement.getAttribute('capture') as
+                | TuiInputFilesOptions['capture']
+                | null) ?? this.options.capture
+        );
     }
 
     get input(): HTMLInputElement {
