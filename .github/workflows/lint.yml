@@ -41,7 +41,7 @@ jobs:
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
       - name: Run prettier
-        run: npm run prettier ${{ env.RUN_AUTOFIX == 'true' && '-- --write' || '' }}
+        run: npm run prettier ${{ env.RUN_AUTOFIX == 'true' && '-- --write' || '-- --check' }}
       - name: Apply changes after linting
         if: ${{ env.RUN_AUTOFIX == 'true' }}
         uses: ./.github/actions/auto-push
