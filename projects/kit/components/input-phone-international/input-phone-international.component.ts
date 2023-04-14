@@ -47,7 +47,8 @@ import {
     TuiInputPhoneInternationalOptions,
 } from './input-phone-international.options';
 import {TUI_COUNTRIES_MASKS} from './tokens/countries-masks';
-import {extractValueFromEvent} from './utils/extract-value-from-event';
+import {tuiExtractValueFromEvent} from './utils/extract-value-from-event';
+import {tuiNotKzRegion} from './utils/not-kz-region';
 
 // @dynamic
 @Component({
@@ -247,13 +248,16 @@ export class TuiInputPhoneInternationalComponent
                 /^(?!880[1-9 ])/.test(value) &&
                 value.length + 1 === this.getMaxAllowedLength(TuiCountryIsoCode.RU);
 
-            return (
+            const matched =
                 ruCodeTest ||
                 (value.startsWith(
                     this.isoToCountryCode(countryIsoCode).replace(CHAR_PLUS, ''),
                 ) &&
-                    value.length + 1 === this.getMaxAllowedLength(countryIsoCode))
-            );
+                    value.length + 1 === this.getMaxAllowedLength(countryIsoCode));
+
+            return matched && countryIsoCode === TuiCountryIsoCode.RU
+                ? tuiNotKzRegion(value)
+                : matched;
         });
     }
 }

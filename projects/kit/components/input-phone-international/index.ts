@@ -6,3 +6,4 @@ export * from './input-phone-international.options';
 export * from './interfaces/country';
 export * from './tokens/countries-masks';
 export * from './utils/extract-value-from-event';
+export * from './utils/not-kz-region';
