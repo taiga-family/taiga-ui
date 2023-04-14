@@ -12,6 +12,7 @@
         "tsconfig.json": "*",
         "*.config.ts": "*",
         "scripts/**/*": "*",
+        "*.yml": "*",
         "*.md": "*"
     },
     "tasksRunnerOptions": {
