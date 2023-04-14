@@ -25,4 +25,14 @@ describe(`TuiPrimitiveTextfield`, () => {
             .should(`be.visible`)
             .matchImageSnapshot(`02-prefix-postfix`);
     });
+
+    it(`label should not be visible in focused state with filler`, () => {
+        cy.tuiVisit(
+            `components/primitive-textfield/API?filler=&tuiTextfieldFiller=filler&tuiTextfieldLabelOutside=true`,
+        );
+        cy.get(`#demo-content input`)
+            .click()
+            .tuiWaitBeforeScreenshot()
+            .matchImageSnapshot(`03-label-filler`);
+    });
 });
