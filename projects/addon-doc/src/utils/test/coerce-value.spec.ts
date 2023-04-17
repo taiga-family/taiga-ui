@@ -1,4 +1,4 @@
-import {tuiCoerceValue} from '@taiga-ui/addon-doc';
+import {tuiCoerceValue, tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc';
 
 describe(`coercing values`, () => {
     it(`string -> string`, () => {
@@ -65,5 +65,12 @@ describe(`coercing values`, () => {
         expect(tuiCoerceValue(`{message: "No quotes for key"`)).toBe(
             `{message: "No quotes for key"`,
         );
+    });
+
+    it(`tuiCoerceValueIsTrue`, () => {
+        expect(tuiCoerceValueIsTrue(true)).toBe(true);
+        expect(tuiCoerceValueIsTrue(false)).toBe(false);
+        expect(tuiCoerceValueIsTrue(`true`)).toBe(true);
+        expect(tuiCoerceValueIsTrue(`false`)).toBe(false);
     });
 });

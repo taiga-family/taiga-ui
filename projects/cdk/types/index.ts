@@ -1,5 +1,6 @@
 export * from './autocomplete';
 export * from './date-mode';
+export * from './deep-partial';
 export * from './dialog';
 export * from './event-with';
 export * from './handler';
