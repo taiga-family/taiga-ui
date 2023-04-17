@@ -867,6 +867,14 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `navigation/app-bar`,
+        loadChildren: async () =>
+            (await import(`../components/app-bar/app-bar.module`)).ExampleTuiAppBarModule,
+        data: {
+            title: `AppBar`,
+        },
+    },
+    {
         path: `navigation/tab-bar`,
         loadChildren: async () =>
             (await import(`../components/tab-bar/tab-bar.module`)).ExampleTuiTabBarModule,
