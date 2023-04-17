@@ -35,7 +35,6 @@ import {
     TuiSizeS,
     TuiTextfieldController,
     TuiTextMaskOptions,
-    TuiUpdateControlValueOnFocus,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiInputNumberComponent} from '@taiga-ui/kit/components/input-number';
@@ -58,10 +57,7 @@ import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from './input-count-optio
 })
 export class TuiInputCountComponent
     extends AbstractTuiNullableControl<number>
-    implements
-        TuiWithOptionalMinMax<number>,
-        TuiFocusableElementAccessor,
-        TuiUpdateControlValueOnFocus
+    implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor
 {
     @ViewChild(TuiInputNumberComponent)
     private readonly inputNumber?: TuiInputNumberComponent;
