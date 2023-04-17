@@ -143,7 +143,7 @@ describe(`expand`, () => {
 
     /**
      * @note:
-     * JDOM doesn't support native transitionend
+     * JSDOM doesn't support native transitionend
      */
     function transitionend(): void {
         const event = new Event(`transitionend.self`);

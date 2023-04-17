@@ -10,7 +10,7 @@ export const NgZoneOptionsCoalescing = {
      *
      * When button is clicked, because of the event bubbling, both
      * event handlers will be called and 2 change detections will be
-     * triggered. We can colesce such kind of events to only trigger
+     * triggered. We can coalesce such kind of events to only trigger
      * change detection only once.
      *
      * By default, this option will be false. So the events will not be

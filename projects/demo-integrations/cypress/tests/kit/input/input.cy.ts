@@ -2,7 +2,7 @@ describe(`Input`, () => {
     describe(`macbook-13`, () => {
         beforeEach(() => cy.viewport(`macbook-13`));
 
-        it(`has custom content (text) + cleaner + hint which dont overlapping each others`, () => {
+        it(`has custom content (text) + cleaner + hint which don't overlapping each others`, () => {
             cy.tuiVisit(
                 `components/input/API?tuiMode=null&tuiTextfieldCustomContent=<span>LongTextContent<%2Fspan>&tuiHintContent=Some%20content`,
                 {skipExpectUrl: true},
@@ -23,7 +23,7 @@ describe(`Input`, () => {
                 .matchImageSnapshot(`02-custom-large-icon-content`);
         });
 
-        it(`custom content (as large icon) + cleaner + hint dont overlapping each others`, () => {
+        it(`custom content (as large icon) + cleaner + hint don't overlapping each others`, () => {
             cy.tuiVisit(
                 `components/input/API?tuiTextfieldCleaner=true&tuiTextfieldCustomContent=tuiIconSearchLarge&tuiHintContent=Some%20content`,
             );
@@ -33,7 +33,7 @@ describe(`Input`, () => {
                 .matchImageSnapshot(`03-custom-large-icon-content-cleaner-hint`);
         });
 
-        it(`custom content (as normal-size icon) + cleaner + hint dont overlapping each others`, () => {
+        it(`custom content (as normal-size icon) + cleaner + hint don't overlapping each others`, () => {
             cy.tuiVisit(
                 `components/input/API?tuiTextfieldCleaner=true&tuiTextfieldCustomContent=tuiIconVisaMono&tuiHintContent=Some%20content`,
             );

@@ -34,7 +34,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
-import {TemplateResource} from '../../interfaces/template-resourse';
+import {TemplateResource} from '../../interfaces/template-resource';
 import {
     ATTR_TO_DIRECTIVE,
     ATTRS_TO_REPLACE,

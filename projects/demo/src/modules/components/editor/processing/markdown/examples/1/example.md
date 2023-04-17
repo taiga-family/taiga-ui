@@ -126,7 +126,7 @@ Right aligned columns
 
 [link with title](http://nodeca.github.io/pica/demo/ 'title text!')
 
-Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
+Auto converted link https://github.com/nodeca/pica (enable linkify to see)
 
 ## Images
 
@@ -139,7 +139,7 @@ Like links, Images also have a footnote style syntax
 The killer feature of `markdown-it` is very effective support of
 [syntax plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin).
 
-### [Emojies](https://github.com/markdown-it/markdown-it-emoji)
+### [Emoji](https://github.com/markdown-it/markdown-it-emoji)
 
 > Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:
 >

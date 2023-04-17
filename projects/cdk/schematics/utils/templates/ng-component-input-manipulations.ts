@@ -1,7 +1,7 @@
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {Element} from 'parse5';
 
-import {TemplateResource} from '../../ng-update/interfaces/template-resourse';
+import {TemplateResource} from '../../ng-update/interfaces/template-resource';
 import {addImportToClosestModule} from '../add-import-to-closest-module';
 import {
     findAttributeOnElementWithAttrs,

@@ -25,6 +25,16 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
+  cspell:
+    if: ${{ !contains(github.head_ref, 'release/') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js and Cache
+        uses: ./.github/actions/nodejs
+      - name: Spell checks code
+        run: npm run cspell
+
   prettier:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest

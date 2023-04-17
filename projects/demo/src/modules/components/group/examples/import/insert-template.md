@@ -40,10 +40,10 @@
   <div>
     <tui-input
       formControlName="testValue3"
-      tuiHintContent="Write an apartament number only"
+      tuiHintContent="Write an apartment number only"
       class="tui-group__inherit-item"
     >
-      Apartament
+      Apartment
       <input
         tuiTextfield
         placeholder="Apartment number"

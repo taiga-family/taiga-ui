@@ -4,12 +4,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
 
-interface Orerations {
+interface Operations {
     title: string;
-    operations: readonly Oreration[];
+    operations: readonly Operation[];
 }
 
-interface Oreration {
+interface Operation {
     amount: number;
 }
 
@@ -41,7 +41,7 @@ export class TuiFilterExample2 {
         ]),
     });
 
-    items: readonly Orerations[] = [
+    items: readonly Operations[] = [
         COMPLETED,
         {
             title: 'Drafts',
@@ -89,10 +89,10 @@ export class TuiFilterExample2 {
         },
     ];
 
-    identityMatcher: TuiIdentityMatcher<Orerations> = (
-        item1: Orerations,
-        item2: Orerations,
+    identityMatcher: TuiIdentityMatcher<Operations> = (
+        item1: Operations,
+        item2: Operations,
     ) => item1.title === item2.title;
 
-    badgeHandler: TuiHandler<Orerations, number> = item => item.operations.length;
+    badgeHandler: TuiHandler<Operations, number> = item => item.operations.length;
 }

@@ -1,0 +1,80 @@
+{
+    "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json",
+    "caseSensitive": false,
+    "ignoreWords": [
+        "benji",
+        "meowtec",
+        "hapica",
+        "happo",
+        "osno",
+        "eshn",
+        "envd",
+        "envd",
+        "UI's",
+        "replicant",
+        "incoice",
+        "timecop",
+        "babelfish",
+        "lightskyblue",
+        "Warhammer",
+        "Dogecoins",
+        "popularised",
+        "Letraset",
+        "Aldus"
+    ],
+    "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
+    "ignorePaths": ["**/addon-commerce/enums/currency-code.ts", "**/addon-commerce/utils/get-currency-symbol.ts"],
+    "overrides": [
+        {
+            "filename": ["**/components/loader/loader.template.html"],
+            "ignoreWords": ["protestin", "spittin", "callin", "yellin"]
+        },
+        {
+            "filename": ["**/i18n/README.md"],
+            "ignoreWords": ["odzumiraj", "zumiraj", "rotiraj"]
+        },
+        {
+            "filename": ["**/example.md"],
+            "ignoreWords": ["xxxHTMLyyy"]
+        },
+        {
+            "filename": ["**/highlight/test/highlight.directive.spec.ts"],
+            "ignoreWords": ["aaabbb"]
+        },
+        {
+            "filename": ["**/CHANGELOG.md"],
+            "ignoreWords": ["Marfil"]
+        },
+        {
+            "filename": ["**/tests/kit/input-tag/input-tag.cy.ts"],
+            "ignoreWords": ["looooooooooooooooooooooooong"]
+        },
+        {
+            "filename": "**/test/dropdown.directive.spec.ts",
+            "ignoreWords": ["Hosty", "Droppy"]
+        },
+        {
+            "filename": [
+                "**/test/format-currency.spec.ts",
+                "**/test/money.component.spec.ts",
+                "**/test/get-currency-symbol.spec.ts",
+                "**/test/input-card-grouped.component.spec.ts"
+            ],
+            "ignoreWords": ["CSTM", "CVCPO"]
+        },
+        {
+            "filename": ["**/tests/schematic-replace-consts.spec.ts", "**/constants/constants.ts"],
+            "ignoreWords": ["Comands"]
+        },
+        {
+            "languageId": "ts",
+            "filename": ["**/replace.pipe.spec.ts"],
+            "ignoreWords": ["abcdeabcde", "fbcdefbcde"]
+        },
+        {
+            "languageId": "ts",
+            "filename": ["**/tests/schematic-migrate-sliders.spec.ts"],
+            "ignoreWords": ["Maxxxxx"]
+        }
+    ]
+}

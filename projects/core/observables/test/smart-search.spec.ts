@@ -51,6 +51,7 @@ describe(`tuiSmartSearch`, () => {
                 result = value;
             });
 
+        // cspell:disable-next-line
         expect(result).toEqual([`searchresult`]);
     });
 
@@ -64,6 +65,7 @@ describe(`tuiSmartSearch`, () => {
             return of([`${search}result`]);
         });
 
+        // cspell:disable-next-line
         source = from([`search`, `searchhh`]);
 
         operator(source).subscribe({

@@ -26,7 +26,7 @@ export class TuiCalendarExample3 {
     hoveredItem: TuiDay | null = null;
 
     readonly markerHandler: TuiMarkerHandler = (day: TuiDay) =>
-        // Attention: do not create new arrays in handler, use constants intead
+        // Attention: do not create new arrays in handler, use constants instead
         day.day % 2 === 0 ? TWO_DOTS : ONE_DOT;
 
     onDayClick(day: TuiDay): void {

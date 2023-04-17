@@ -26,8 +26,8 @@ import {merge} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
 
 import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
+import {TuiGetColorPipe} from './pipes/color.pipe';
 import {TuiGetOpacityPipe} from './pipes/opacity.pipe';
-import {TuiGetColorPipe} from './pipes/сolor.pipe';
 
 // @bad TODO subscribe propertiesConnectors changes
 // @bad TODO refactor to make more flexible

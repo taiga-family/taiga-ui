@@ -170,7 +170,7 @@ describe(`PrimitiveCalendar`, () => {
             expect(component.getItemRange(day2)).toBe(TuiRangeState.End);
         });
 
-        it(`returns single if value is single day and item eqauls this`, () => {
+        it(`returns single if value is single day and item equals this`, () => {
             const day1 = new TuiDay(2019, 4, 24);
             const range = new TuiDayRange(day1, day1);
 

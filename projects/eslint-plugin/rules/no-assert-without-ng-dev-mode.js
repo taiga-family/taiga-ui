@@ -29,7 +29,7 @@ module.exports = {
                         items: {
                             type: 'string',
                         },
-                        description: 'An array of callees that will be checked.',
+                        description: 'An array of callers that will be checked.',
                     },
                 },
                 additionalProperties: false,

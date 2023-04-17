@@ -583,7 +583,7 @@ export const pages: TuiDocPages = [
     {
         section: $localize`Components`,
         title: `Push`,
-        keywords: `push, пуш, нотификаци, notification, alert`,
+        keywords: `push, пуш, нотификация, notification, alert`,
         route: `/components/push`,
     },
     {
@@ -1430,7 +1430,7 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Tools`,
                 title: $localize`Math`,
-                keywords: `Инструменты, утилиты, математические, utils, utilits, math,
+                keywords: `Инструменты, утилиты, математические, utils, utility, math,
                            round, clamp, inRange, normalizeToIntNumber, quantize`,
                 route: `/utils/math`,
             },

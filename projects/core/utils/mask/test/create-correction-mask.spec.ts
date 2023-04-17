@@ -7,7 +7,7 @@ const HANDLER: TuiTextMaskCorrectionHandler = char => (char === `q` ? `3` : null
 const MASK = tuiCreateCorrectionMask(REGEXP, HANDLER);
 
 describe(`tuiCreateCorrectionMask return`, () => {
-    it(`regexes if characters are valid`, () => {
+    it(`regex if characters are valid`, () => {
         expect(MASK(`123`, {rawValue: `123`})).toEqual([REGEXP, REGEXP, REGEXP]);
     });
 

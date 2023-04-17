@@ -5,7 +5,7 @@ import {tuiFormatPhone} from '@taiga-ui/core/utils/format';
 @Pipe({name: `tuiFormatPhone`})
 export class TuiFormatPhonePipe implements PipeTransform {
     /**
-     * Formats phone number string of +7XXXXXXXXXX fomrat with adding separator symbols
+     * Formats phone number string of +7XXXXXXXXXX format with adding separator symbols
      * @param value
      * @param countryCode
      * @param phoneMask

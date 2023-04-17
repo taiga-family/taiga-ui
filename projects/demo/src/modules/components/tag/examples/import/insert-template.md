@@ -3,7 +3,7 @@
 <!--Use can use tag as link-->
 <a
   tuiTag
-  href="//somesite.com"
+  href="https://somesite.com"
   target="_blank"
   [value]="tag"
 ></a>

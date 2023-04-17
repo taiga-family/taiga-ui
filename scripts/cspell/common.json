@@ -1,0 +1,27 @@
+{
+    "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json",
+    "caseSensitive": false,
+    "import": [
+        "node_modules/@cspell/dict-public-licenses/cspell-ext.json",
+        "node_modules/@cspell/dict-scientific-terms-us/cspell-ext.json"
+    ],
+    "words": [
+        "nevermind",
+        "clearbtn",
+        "chainer",
+        "quasis",
+        "fnames",
+        "pinapples",
+        "raquo",
+        "laquo",
+        "luhn",
+        "unkillable",
+        "coef",
+        "macbook",
+        "behaviour",
+        "huck",
+        "inet",
+        "snapshotting",
+        "screenshotting"
+    ]
+}

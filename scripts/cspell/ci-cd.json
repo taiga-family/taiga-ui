@@ -1,0 +1,33 @@
+{
+    "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json",
+    "caseSensitive": false,
+    "words": [
+        "postbuild",
+        "prebuild",
+        "postchangelog",
+        "commitlint",
+        "precommit",
+        "postbump",
+        "autofix",
+        "autorebase",
+        "codeql",
+        "codeowners",
+        "metrika",
+        "datasources",
+        "stylelint",
+        "bundlphobia",
+        "autoprefixer",
+        "pullreminders",
+        "ssim",
+        "shellcheck",
+        "xvfb",
+        "MITSHM",
+        "ncipollo",
+        "peaceiris",
+        "agoldis",
+        "toshimaru",
+        "imba",
+        "stefanzweifel",
+        "subdir"
+    ]
+}

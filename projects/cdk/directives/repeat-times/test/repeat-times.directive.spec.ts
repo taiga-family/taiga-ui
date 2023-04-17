@@ -76,7 +76,7 @@ describe(`TuiRepeatTimes directive`, () => {
             expect(debugElements.length).toBe(DEFAULT_TEST_COUNT);
         });
 
-        it(`passes index as implicity context`, () => {
+        it(`passes index as implicit context`, () => {
             expect(debugElements[0].nativeElement.title).toBe(`0`);
             expect(debugElements[1].nativeElement.title).toBe(`1`);
             expect(debugElements[2].nativeElement.title).toBe(`2`);

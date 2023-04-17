@@ -46,7 +46,7 @@ describe(`Matcher functions`, () => {
             expect(defaultMatcher(item, search)).toBe(true);
         });
 
-        it(`returns false if requested string is not found in stingified version`, () => {
+        it(`returns false if requested string is not found in stringified version`, () => {
             expect(defaultMatcher(item, `Brian`, defaultStringify)).toBe(false);
         });
 

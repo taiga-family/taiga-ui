@@ -181,18 +181,22 @@ export const ENUMS_TO_REPLACE: ReplacementEnum[] = [
             Bittersweet: `support-06`,
             Pinkie: `support-07`,
             Charm: `support-08`,
+            // cspell:disable-next-line
             Amethist: `support-09`,
             Helio: `support-10`,
             Lilac: `support-11`,
             Malibu: `support-12`,
             Havelock: `support-13`,
+            // cspell:disable-next-line
             Picton: `support-14`,
             Mint: `support-15`,
             Fountain: `support-16`,
+            // cspell:disable-next-line
             Puertorico: `support-17`,
             Bay: `support-18`,
             Forest: `support-19`,
             York: `support-20`,
+            // cspell:disable-next-line
             Feijoa: `support-21`,
         },
         keepAsType: false,

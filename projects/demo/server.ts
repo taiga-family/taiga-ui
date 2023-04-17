@@ -77,7 +77,11 @@ declare const __non_webpack_require__: NodeRequire;
 const mainModule = __non_webpack_require__.main;
 const moduleFilename = mainModule?.filename || ``;
 
-if (moduleFilename === __filename || moduleFilename.includes(`iisnode`)) {
+if (
+    moduleFilename === __filename ||
+    // cspell:disable-next-line
+    moduleFilename.includes(`iisnode`)
+) {
     run();
 }
 

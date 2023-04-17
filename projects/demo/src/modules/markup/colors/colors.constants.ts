@@ -80,7 +80,7 @@ export const BASE: readonly Color[] = [
     },
     {
         name: `--tui-clear`,
-        desc: $localize`Filling color of interface elements on colored background: tages, badges, buttons`,
+        desc: $localize`Filling color of interface elements on colored background: tags, badges, buttons`,
     },
     {
         name: `--tui-clear-hover`,
@@ -103,7 +103,7 @@ export const BASE: readonly Color[] = [
 export const BASE_NIGHT: readonly Color[] = [
     {
         name: `--tui-clear-inverse`,
-        desc: $localize`Filling color of interface elements on dark background: tages, badges, buttons`,
+        desc: $localize`Filling color of interface elements on dark background: tags, badges, buttons`,
     },
     {
         name: `--tui-clear-inverse-hover`,

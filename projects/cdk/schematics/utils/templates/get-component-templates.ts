@@ -10,7 +10,7 @@ import {
 } from 'ng-morph';
 import * as path from 'path';
 
-import {TemplateResource} from '../../ng-update/interfaces/template-resourse';
+import {TemplateResource} from '../../ng-update/interfaces/template-resource';
 
 export function getComponentTemplates(
     pattern: Pattern,

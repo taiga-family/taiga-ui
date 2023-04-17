@@ -1,3 +1,4 @@
+// cspell:disable
 import {TuiCurrency, TuiCurrencyCode} from '@taiga-ui/addon-commerce/enums';
 
 export const TUI_CURRENCY_DICTIONARY: Record<TuiCurrencyCode, TuiCurrency> = {

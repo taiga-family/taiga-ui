@@ -131,7 +131,7 @@ describe(`ng-update`, () => {
         saveActiveProject();
     });
 
-    it(`should replace consts`, async () => {
+    it(`should replace constants`, async () => {
         const tree = await runner
             .runSchematicAsync(
                 `updateToV3`,

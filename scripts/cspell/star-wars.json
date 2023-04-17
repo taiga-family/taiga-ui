@@ -1,0 +1,5 @@
+{
+    "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json",
+    "caseSensitive": false,
+    "words": ["starwars", "sith", "stormtrooper", "lightsaber", "Skywalker", "Leia", "Kenobi", "Anakin"]
+}

@@ -25,7 +25,7 @@ const RAW_TS_QUERY = /raw/;
  * Default Angular configurations have rules to compile (uglify) ts/less-files.
  * We don't need any transformations for RAW loading of these files.
  */
-const DONT_MUTATE_RAW_FILE_CONTENTS = [`*.ts`, `*.less`, `*.html`];
+const DO_NOT_MUTATE_RAW_FILE_CONTENTS = [`*.ts`, `*.less`, `*.html`];
 
 /**
  * [Fixed bug in Node.js 18]
@@ -106,7 +106,7 @@ export default (ngConfigs: Configuration): Configuration => {
     const ngRules = [...(ngConfigs.module?.rules || [])].map(rule => {
         if (
             tuiIsObject(rule) &&
-            DONT_MUTATE_RAW_FILE_CONTENTS.some(
+            DO_NOT_MUTATE_RAW_FILE_CONTENTS.some(
                 pattern => rule.test instanceof RegExp && rule.test?.test(pattern),
             )
         ) {

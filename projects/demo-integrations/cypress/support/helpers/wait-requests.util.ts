@@ -1,22 +1,22 @@
 const getNotLoadedRequests = (alias: string): Cypress.Chainable =>
     cy
         .get<Array<{state: string}>>(`${alias}.all`, {log: false})
-        .then(reqs => reqs.filter(req => req.state !== `Complete`));
+        .then(requests => requests.filter(req => req.state !== `Complete`));
 
 export const waitAllRequests = (alias: string): void => {
     getNotLoadedRequests(alias)
-        .then(reqs => {
-            return reqs.length ? cy.wait(alias, {log: false}) : cy.tuiWaitBeforeAction();
-        })
+        .then(requests =>
+            requests.length ? cy.wait(alias, {log: false}) : cy.tuiWaitBeforeAction(),
+        )
         .then(() => getNotLoadedRequests(alias))
-        .then(reqs => {
-            return reqs.length
+        .then(requests =>
+            requests.length
                 ? waitAllRequests(alias)
                 : cy
                       .tuiWaitBeforeAction()
                       .then(() => getNotLoadedRequests(alias))
-                      .then(async reqs =>
-                          reqs.length ? waitAllRequests(alias) : Promise.resolve(),
-                      );
-        });
+                      .then(async request =>
+                          request.length ? waitAllRequests(alias) : Promise.resolve(),
+                      ),
+        );
 };

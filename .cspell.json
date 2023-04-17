@@ -1,0 +1,34 @@
+{
+    "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json",
+    "language": "en,ru,ar,lorem",
+    "caseSensitive": false,
+    "useGitignore": true,
+    "files": ["*/*.*"],
+    "import": [
+        "scripts/cspell/locales/latin.json",
+        "scripts/cspell/locales/dutch.json",
+        "scripts/cspell/locales/arabic.json",
+        "scripts/cspell/locales/ru.json",
+        "scripts/cspell/common.json",
+        "scripts/cspell/names.json",
+        "scripts/cspell/countries.json",
+        "scripts/cspell/web-keywords.json",
+        "scripts/cspell/software.json",
+        "scripts/cspell/taiga-ui.json",
+        "scripts/cspell/angular.json",
+        "scripts/cspell/resources.json",
+        "scripts/cspell/star-wars.json",
+        "scripts/cspell/ci-cd.json",
+        "scripts/cspell/ignore.json"
+    ],
+    "ignorePaths": [
+        ".git",
+        ".cspell.json",
+        "**/dist/**",
+        "**/cspell/**",
+        "**/assets/**",
+        "**/node_modules/**",
+        "*.{log,svg,snap,png,ogv,yml}",
+        "**/projects/i18n/languages/**"
+    ]
+}

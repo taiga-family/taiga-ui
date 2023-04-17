@@ -18,7 +18,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
-import {TemplateResource} from '../../interfaces/template-resourse';
+import {TemplateResource} from '../../interfaces/template-resource';
 
 export function migrateExpandTemplates(
     fileSystem: DevkitFileSystem,

@@ -99,7 +99,7 @@ export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiControl 
 
     readonly itemsVariants = [
         [],
-        [new TuiNamedDay(TUI_LAST_DAY.append({year: -1}), 'Unill today')],
+        [new TuiNamedDay(TUI_LAST_DAY.append({year: -1}), 'Until today')],
     ];
 
     items = this.itemsVariants[0];

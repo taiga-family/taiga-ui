@@ -89,10 +89,10 @@ function addTuiRootComponent(
 }
 
 function getAppTemplatePath(mainPath: string): string | undefined {
-    const stansdaloneBootstrapFunction = getStandaloneBootstrapFunction(mainPath);
+    const standaloneBootstrapFunction = getStandaloneBootstrapFunction(mainPath);
 
-    if (stansdaloneBootstrapFunction) {
-        const [componentIdentifier] = stansdaloneBootstrapFunction.getArguments();
+    if (standaloneBootstrapFunction) {
+        const [componentIdentifier] = standaloneBootstrapFunction.getArguments();
         const component = getComponentFromIdentifier(componentIdentifier);
 
         return component && getTemplatePathFromComponent(component);

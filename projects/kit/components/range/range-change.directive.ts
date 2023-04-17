@@ -14,7 +14,7 @@ import {TuiRangeComponent} from './range.component';
 export class TuiRangeChangeDirective {
     /**
      * TODO replace with pointer events (when all supported browsers can handle them).
-     * Dont forget to use setPointerCapture instead of listening all doc events
+     * Don't forget to use setPointerCapture instead of listening all doc events
      */
     private readonly pointerDown$ = merge(
         tuiTypedFromEvent(this.el.nativeElement, 'touchstart', {

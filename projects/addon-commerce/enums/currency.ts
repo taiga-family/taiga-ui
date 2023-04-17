@@ -1,3 +1,4 @@
+// cspell:disable
 /**
  * **Active ISO 4217 alphabetic currency codes**
  *

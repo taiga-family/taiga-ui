@@ -26,13 +26,13 @@ import {TuiInputOpacityModule} from '../internal/input-opacity/input-opacity.mod
 import {TuiDocDocumentationComponent} from './documentation.component';
 import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
 import {TuiShowCleanerPipe} from './pipes/cleaner.pipe';
+import {TuiGetColorPipe} from './pipes/color.pipe';
 import {TuiShowContentTooltip} from './pipes/content-tooltip.pipe';
 import {TuiInspectPipe} from './pipes/inspect.pipe';
 import {TuiGetOpacityPipe} from './pipes/opacity.pipe';
 import {TuiIsOptionalPipe} from './pipes/optional.pipe';
 import {TuiIsPrimitivePolymorpheusContentPipe} from './pipes/primitive-polymorpheus-content.pipe';
 import {TuiStripOptionalPipe} from './pipes/strip-optional.pipe';
-import {TuiGetColorPipe} from './pipes/сolor.pipe';
 
 @NgModule({
     imports: [
