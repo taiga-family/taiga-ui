@@ -35,6 +35,7 @@ import {
     TuiSizeS,
     TuiTextfieldController,
     TuiTextMaskOptions,
+    TuiUpdateControlValueOnFocus,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiInputNumberComponent} from '@taiga-ui/kit/components/input-number';
@@ -57,7 +58,10 @@ import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from './input-count-optio
 })
 export class TuiInputCountComponent
     extends AbstractTuiNullableControl<number>
-    implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor
+    implements
+        TuiWithOptionalMinMax<number>,
+        TuiFocusableElementAccessor,
+        TuiUpdateControlValueOnFocus
 {
     @ViewChild(TuiInputNumberComponent)
     private readonly inputNumber?: TuiInputNumberComponent;
@@ -167,6 +171,14 @@ export class TuiInputCountComponent
         this.nativeFocusableElement.focus();
     }
 
+    onFocused(focused: boolean): void {
+        this.updateFocused(focused);
+    }
+
+    /**
+     * @deprecated
+     * TODO: drop in v4.0 as unused method
+     */
     onInputNumberChange(value: number | null): void {
         this.value = value;
     }

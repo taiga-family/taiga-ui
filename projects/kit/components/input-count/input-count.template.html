@@ -15,6 +15,7 @@
     [nativeId]="nativeId"
     [(ngModel)]="value"
     (keydown)="onKeydown($event)"
+    (focusedChange)="onFocused($event)"
 >
     <ng-content></ng-content>
     <ng-content

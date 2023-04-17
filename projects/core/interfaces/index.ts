@@ -9,5 +9,6 @@ export * from './media';
 export * from './number-format-settings';
 export * from './portal-item';
 export * from './textfield-host';
+export * from './update-on-focus';
 export * from './value-content-context';
 export * from './with-optional-min-max';
