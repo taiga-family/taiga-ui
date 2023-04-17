@@ -208,7 +208,10 @@ export class TuiPrimitiveTextfieldComponent
 
     get placeholderVisible(): boolean {
         const hasDecor =
-            this.nativeFocusableElement?.placeholder || this.prefix || this.postfix;
+            this.nativeFocusableElement?.placeholder ||
+            this.prefix ||
+            this.postfix ||
+            this.filler;
         const showDecor = hasDecor && !this.readOnly && this.computedFocused;
 
         return !this.hasValue && !showDecor;
