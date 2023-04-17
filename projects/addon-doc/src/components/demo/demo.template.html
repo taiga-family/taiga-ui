@@ -77,7 +77,8 @@
     <tui-checkbox-labeled
         size="m"
         class="t-checkbox"
-        [(ngModel)]="opaque"
+        [ngModel]="opaque"
+        (ngModelChange)="changeOpaque($event)"
     >
         {{ texts[1] }}
     </tui-checkbox-labeled>

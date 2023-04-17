@@ -13,21 +13,25 @@ import {
     ViewChild,
 } from '@angular/core';
 import {AbstractControl, FormGroup} from '@angular/forms';
-import {UrlSerializer, UrlTree} from '@angular/router';
+import {Params, UrlSerializer, UrlTree} from '@angular/router';
 import {
     TUI_IS_MOBILE,
     tuiClamp,
+    tuiCleanObject,
     TuiDestroyService,
     tuiPure,
     tuiPx,
     TuiResizeableDirective,
     TuiStringHandler,
+    tuiToInteger,
 } from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
+import {TuiDemoParams} from '../../interfaces/demo-params';
 import {TUI_DOC_DEMO_TEXTS} from '../../tokens/i18n';
 import {TUI_DOC_URL_STATE_HANDLER} from '../../tokens/url-state-handler';
+import {tuiCoerceValueIsTrue} from '../../utils/coerce-boolean';
 
 const MIN_WIDTH = 160;
 
@@ -61,12 +65,16 @@ export class TuiDocDemoComponent implements OnInit {
     readonly template: TemplateRef<Record<string, unknown>> | null = null;
 
     testForm?: FormGroup;
+
     readonly updateOnVariants = ['change', 'blur', 'submit'] as const;
-    updateOn: 'blur' | 'change' | 'submit' = this.updateOnVariants[0];
-    expanded = false;
-    opaque = true;
-    mode: TuiBrightness | null = this.getUrlTree().queryParams.tuiMode || null;
-    sandboxWidth = parseInt(this.getUrlTree().queryParams.sandboxWidth, 10);
+
+    updateOn: 'blur' | 'change' | 'submit' =
+        this.params.updateOn || this.updateOnVariants[0];
+
+    opaque = tuiCoerceValueIsTrue(this.params.sandboxOpaque ?? true);
+    expanded = tuiCoerceValueIsTrue(this.params.sandboxExpanded ?? false);
+    mode: TuiBrightness | null = this.params.tuiMode || null;
+    sandboxWidth = tuiToInteger(this.params.sandboxWidth);
 
     readonly change$ = new Subject<void>();
     readonly items: readonly TuiBrightness[] = ['onLight', 'onDark'];
@@ -89,7 +97,7 @@ export class TuiDocDemoComponent implements OnInit {
 
     @HostListener('document:mouseup.silent')
     onMouseUp(): void {
-        this.updateUrl(this.mode, this.sandboxWidth);
+        this.updateUrl({sandboxWidth: this.sandboxWidth});
     }
 
     ngOnInit(): void {
@@ -98,17 +106,24 @@ export class TuiDocDemoComponent implements OnInit {
     }
 
     onModeChange(mode: TuiBrightness | null): void {
-        this.updateUrl(mode, this.sandboxWidth);
         this.mode = mode;
+        this.updateUrl({sandboxWidth: this.sandboxWidth});
         this.change$.next();
     }
 
     toggleDetails(): void {
         this.expanded = !this.expanded;
+        this.updateUrl({sandboxExpanded: this.expanded});
+    }
+
+    changeOpaque(opaque: boolean): void {
+        this.opaque = opaque;
+        this.updateUrl({sandboxOpaque: this.opaque});
     }
 
     updateOnChange(updateOn: 'blur' | 'change' | 'submit'): void {
         this.updateOn = updateOn;
+        this.updateUrl({updateOn});
         this.createForm();
     }
 
@@ -135,19 +150,16 @@ export class TuiDocDemoComponent implements OnInit {
     }
 
     @tuiPure
-    private updateUrl(tuiMode: TuiBrightness | null, sandboxWidth: number): void {
+    private updateUrl(params: TuiDemoParams): void {
         const tree = this.getUrlTree();
         const {queryParams} = tree;
-        const modeParam = tuiMode ? {tuiMode} : {};
-        const resizeParam = !Number.isNaN(sandboxWidth) ? {sandboxWidth} : {};
 
         delete queryParams.sandboxWidth;
         delete queryParams.tuiMode;
 
         tree.queryParams = {
             ...queryParams,
-            ...modeParam,
-            ...resizeParam,
+            ...tuiCleanObject({tuiMode: this.mode, ...params}),
         };
 
         this.locationRef.go(this.urlStateHandler(tree));
@@ -163,5 +175,9 @@ export class TuiDocDemoComponent implements OnInit {
 
     private getUrlTree(): UrlTree {
         return this.urlSerializer.parse(this.locationRef.path());
+    }
+
+    private get params(): Params | TuiDemoParams {
+        return this.getUrlTree().queryParams;
     }
 }

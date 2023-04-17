@@ -35,6 +35,7 @@ export * from './directives/scroll-into-view/scroll-into-view.module';
 
 /* Interfaces */
 export * from './interfaces/code-editor';
+export * from './interfaces/demo-params';
 export * from './interfaces/page';
 export * from './interfaces/source-code-path-options';
 
@@ -68,6 +69,7 @@ export * from './services/theme-night.service';
 
 /* Utils */
 export * from './addon-doc.module';
+export * from './utils/coerce-boolean';
 export * from './utils/coerce-value';
 export * from './utils/generate-routes';
 export * from './utils/raw-load';
