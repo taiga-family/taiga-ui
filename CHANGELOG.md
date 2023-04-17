@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.84.0](https://github.com/tinkoff/taiga-ui/compare/v2.83.0...v2.84.0) (2023-04-17)
+
+### Features
+
+- **addon-mobile:** `TabBar` add new component ([#4222](https://github.com/tinkoff/taiga-ui/issues/4222))
+  ([1217f20](https://github.com/tinkoff/taiga-ui/commit/1217f20d8bc8058c95ebf74e1ab27b9ef350459a))
+
 ## [2.83.0](https://github.com/tinkoff/taiga-ui/compare/v2.82.0...v2.83.0) (2023-04-10)
 
 ### Bug Fixes
