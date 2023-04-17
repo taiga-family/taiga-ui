@@ -1,6 +1,6 @@
 @import '../../styles/taiga-ui-local.less';
 
-@padding-xs: 0.5rem;
+@padding-xs: 0.375rem;
 @padding-s: 0.75rem;
 @padding-m: 1.5rem;
 @padding-l: 2.25rem;
@@ -89,11 +89,21 @@
 }
 
 .t-left {
-    margin: 0 0.5rem 0 -0.25rem;
+    margin-right: 0.5rem;
+
+    :host[data-size='s'] &,
+    :host[data-size='xs'] & {
+        margin-right: 0.25rem;
+    }
 }
 
 .t-right {
-    margin: 0 -0.5rem 0 0.25rem;
+    margin: 0 -0.25rem 0 0.25rem;
+
+    :host[data-size='s'] &,
+    :host[data-size='xs'] & {
+        margin-right: 0 -0.125rem 0 0.125rem;
+    }
 }
 
 .t-icon {
@@ -106,6 +116,9 @@
 
 .t-left,
 .t-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 1.5rem;
     height: 1.5rem;
 
