@@ -52,7 +52,7 @@
                 <span
                     #ghost
                     class="t-ghost"
-                    [innerText]="formattedCard.slice(-tailLength)"
+                    [innerHTML]="formattedCard | tuiSlice : -tailLength"
                 ></span>
 
                 <span class="t-collapsed-wrapper">
