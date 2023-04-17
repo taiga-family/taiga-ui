@@ -167,6 +167,14 @@ export class TuiInputCountComponent
         this.nativeFocusableElement.focus();
     }
 
+    onFocused(focused: boolean): void {
+        this.updateFocused(focused);
+    }
+
+    /**
+     * @deprecated
+     * TODO: drop in v4.0 as unused method
+     */
     onInputNumberChange(value: number | null): void {
         this.value = value;
     }
