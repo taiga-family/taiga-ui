@@ -58,7 +58,7 @@
         [src]="src"
     ></tui-svg>
     <input
-        *ngIf="nativePicker && (!isIos || mode === 'HH:MM')"
+        *ngIf="showNativePicker"
         tuiTime
     />
 </ng-template>

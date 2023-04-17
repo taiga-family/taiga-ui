@@ -133,8 +133,11 @@ export class TuiInputTimeComponent
         return this.filter(this.items, this.mode, this.computedSearch);
     }
 
-    get nativePicker(): boolean {
-        return !!this.options.nativePicker && this.isMobile;
+    get showNativePicker(): boolean {
+        return (
+            this.nativePicker &&
+            (!this.isIos || (this.mode === 'HH:MM' && !this.items.length))
+        );
     }
 
     get nativeDatalist(): boolean {
@@ -270,6 +273,10 @@ export class TuiInputTimeComponent
     override writeValue(value: TuiTime | null): void {
         super.writeValue(value);
         this.nativeValue = value ? this.computedValue : '';
+    }
+
+    private get nativePicker(): boolean {
+        return !!this.options.nativePicker && this.isMobile;
     }
 
     @tuiPure
