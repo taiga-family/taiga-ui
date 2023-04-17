@@ -1,22 +1,22 @@
 <svg focusable="false" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-    <g id="tuiIconCheckCircle" xmlns="http://www.w3.org/2000/svg">
-        <svg fill="none" height="1em" overflow="visible" viewBox="0 0 24 24" width="1em" x="50%" y="50%">
-            <svg x="-12" xmlns="http://www.w3.org/2000/svg" y="-12">
-                <path
+  <g id="tuiIconCheckCircle" xmlns="http://www.w3.org/2000/svg">
+    <svg fill="none" height="1em" overflow="visible" viewBox="0 0 24 24" width="1em" x="50%" y="50%">
+      <svg x="-12" xmlns="http://www.w3.org/2000/svg" y="-12">
+        <path
                     d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"
                     stroke="currentColor"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="3"
                 />
-                <path
+        <path
                     d="M15.5 9.5l-4.5 5-2.5-2.273"
                     stroke="currentColor"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="3"
                 />
-            </svg>
-        </svg>
-    </g>
+      </svg>
+    </svg>
+  </g>
 </svg>
