@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.25.0](https://github.com/tinkoff/taiga-ui/compare/v3.24.0...v3.25.0) (2023-04-18)
+
+### Features
+
+- **addon-doc:** support `updateOn` and `sandboxExpanded` in query params
+  ([#4231](https://github.com/tinkoff/taiga-ui/issues/4231))
+  ([7ece066](https://github.com/tinkoff/taiga-ui/commit/7ece06640ba6f420d1ada4de32468626a6a0ed76))
+- **addon-editor:** add `TUI_EDITOR_VALUE_TRANSFORMER` token ([#4173](https://github.com/tinkoff/taiga-ui/issues/4173))
+  ([754be1b](https://github.com/tinkoff/taiga-ui/commit/754be1beb23d98c4ef41143c0df4cdc6c2acf474))
+- **addon-mobile:** `AppBar` add new component ([#4228](https://github.com/tinkoff/taiga-ui/issues/4228))
+  ([e12a15e](https://github.com/tinkoff/taiga-ui/commit/e12a15e567a37685bfa65388e4274b4e193685cf))
+- **core:** `Hint` support basic HTML ([#4214](https://github.com/tinkoff/taiga-ui/issues/4214))
+  ([b19bb48](https://github.com/tinkoff/taiga-ui/commit/b19bb48848c18074866bc1149e1abf46ead10d8c))
+- **core:** change default size for icon ([#4206](https://github.com/tinkoff/taiga-ui/issues/4206))
+  ([92e82ac](https://github.com/tinkoff/taiga-ui/commit/92e82aca95849f502ff6c381a967375306bbd48d))
+- **kit:** `InputTime` add ability to use native picker on mobile
+  ([#4207](https://github.com/tinkoff/taiga-ui/issues/4207))
+  ([df9ad7d](https://github.com/tinkoff/taiga-ui/commit/df9ad7d456fb459ffba5ec475e10dc43920a286c))
+
+### Bug Fixes
+
+- **addon-charts:** `LineDaysChart` fix hint circle not disappearing, fix wrong hover index
+  ([#4178](https://github.com/tinkoff/taiga-ui/issues/4178))
+  ([ae7edc9](https://github.com/tinkoff/taiga-ui/commit/ae7edc9db53345c45d604ab8ec3968c74bc011e9))
+- **addon-editor:** use `paragraph` type for correct detect empty
+  ([#4232](https://github.com/tinkoff/taiga-ui/issues/4232))
+  ([b130a52](https://github.com/tinkoff/taiga-ui/commit/b130a52c1a149f8658c142edcf4b26a10e4f8261))
+- **cdk:** `schematics` fix incorrectly processing `setNativeFocused`
+  ([#4171](https://github.com/tinkoff/taiga-ui/issues/4171))
+  ([cf04d14](https://github.com/tinkoff/taiga-ui/commit/cf04d1429daa5028820a1e82889f9353b7273ce3))
+- **core:** `Dialog` fix close button appearance on mobile ([#4204](https://github.com/tinkoff/taiga-ui/issues/4204))
+  ([7f13930](https://github.com/tinkoff/taiga-ui/commit/7f13930b15688bf874bf8dcf41b13b53da308c59))
+- **core:** `Dropdown` fix scroll getting stuck ([#4191](https://github.com/tinkoff/taiga-ui/issues/4191))
+  ([7c996e0](https://github.com/tinkoff/taiga-ui/commit/7c996e002ef11aa072e345b4824c961b90d5340a))
+- **core:** `PrimitiveTextfield` label should not be visible when filler used and input focused
+  ([#4224](https://github.com/tinkoff/taiga-ui/issues/4224))
+  ([40b5276](https://github.com/tinkoff/taiga-ui/commit/40b52761e8868181595c5d5b83077e73bd48552c))
+- **core:** `tuiTextfield` don't handle input inside legacy mask
+  ([#4203](https://github.com/tinkoff/taiga-ui/issues/4203))
+  ([b109261](https://github.com/tinkoff/taiga-ui/commit/b109261279e792d705e66a4d565cd82c6adf574f))
+- **core:** fix label margin ([#4172](https://github.com/tinkoff/taiga-ui/issues/4172))
+  ([0287ad1](https://github.com/tinkoff/taiga-ui/commit/0287ad177953f93f7a98b55dc2e1e5ea5d851202))
+- **core:** use `tuiIconClose` for icon cleaner ([#4202](https://github.com/tinkoff/taiga-ui/issues/4202))
+  ([ac35966](https://github.com/tinkoff/taiga-ui/commit/ac359666b485ad5e58f398b468b19189c7a176d6))
+- **kit:** `input-count` should update value after blur event ([#4230](https://github.com/tinkoff/taiga-ui/issues/4230))
+  ([4f825b5](https://github.com/tinkoff/taiga-ui/commit/4f825b5c8554c19d5a205a15d007d52f3080c051))
+- **kit:** `InputFiles` fix incorrectly adding `capture` on mobile devices
+  ([#4216](https://github.com/tinkoff/taiga-ui/issues/4216))
+  ([2c40931](https://github.com/tinkoff/taiga-ui/commit/2c40931d3639301fbf74330ec3bb6ea1f78ed2bd))
+- **kit:** `InputPhoneInternational` change `Gabon` phone pattern
+  ([#4210](https://github.com/tinkoff/taiga-ui/issues/4210))
+  ([c3fa9f6](https://github.com/tinkoff/taiga-ui/commit/c3fa9f62fe6a2ffc0924acbdb3a72edada1692e4))
+- **kit:** `InputPhoneInternational` change `Ivory Coast` (`Costa de Marfil`) phone pattern
+  ([#4209](https://github.com/tinkoff/taiga-ui/issues/4209))
+  ([eb4252e](https://github.com/tinkoff/taiga-ui/commit/eb4252e6637db142dbe14316fc406becb4b9580f))
+- **kit:** `InputPhoneInternational` change Cameroon phone pattern
+  ([#4195](https://github.com/tinkoff/taiga-ui/issues/4195))
+  ([94bed77](https://github.com/tinkoff/taiga-ui/commit/94bed77f5881b9c9b79283842399cd689eb327a5))
+- **kit:** correct detect iso code for `Kazakhstan` when phone number start with `+7`
+  ([#4217](https://github.com/tinkoff/taiga-ui/issues/4217))
+  ([0080ac8](https://github.com/tinkoff/taiga-ui/commit/0080ac8bc65abcede1eafd47a02fa5b7eaadb245))
+
 ## [3.24.0](https://github.com/tinkoff/taiga-ui/compare/v3.23.1...v3.24.0) (2023-04-10)
 
 ### Features
