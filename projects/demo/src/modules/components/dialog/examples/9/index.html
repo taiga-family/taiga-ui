@@ -15,26 +15,13 @@
     <button
         tuiButton
         class="pay-button"
-        [icon]="paySystems"
         (click)="payByCard()"
     >
+        <div class="icon-group">
+            <tui-svg src="tuiIconVisa"></tui-svg>
+            <tui-svg src="tuiIconMaestro"></tui-svg>
+            <tui-svg src="tuiIconMir"></tui-svg>
+        </div>
         Pay
     </button>
 </div>
-
-<ng-template #paySystems>
-    <div class="icon-group">
-        <tui-svg
-            src="tuiIconVisa"
-            class="icon"
-        ></tui-svg>
-        <tui-svg
-            src="tuiIconMaestro"
-            class="icon"
-        ></tui-svg>
-        <tui-svg
-            src="tuiIconMir"
-            class="icon"
-        ></tui-svg>
-    </div>
-</ng-template>

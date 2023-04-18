@@ -12,7 +12,7 @@ export class TuiSvgHarness extends TuiComponentHarness {
     }
 
     async isInnerHTML(): Promise<boolean> {
-        return !!(await this.locatorForOptional(`.t-src`)());
+        return !!(await this.locatorForOptional(`div`)());
     }
 
     async getUse(): Promise<string | null> {
