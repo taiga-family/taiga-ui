@@ -62,6 +62,14 @@
             </tui-notification>
             <tui-avatar-example-5></tui-avatar-example-5>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="fallback"
+            heading="Fallback"
+            [content]="example6"
+        >
+            <tui-avatar-example-6></tui-avatar-example-6>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -73,6 +81,7 @@
                 [rounded]="rounded"
                 [size]="size"
                 [autoColor]="autoColor"
+                [fallback]="fallback"
                 [style.--tui-avatar-color]="color"
                 [style.--tui-avatar-background]="background"
             ></tui-avatar>
@@ -84,7 +93,7 @@
                 documentationPropertyMode="input"
                 [(documentationPropertyValue)]="autoColor"
             >
-                Autocolor if there is no image
+                Auto color if there is no image
             </ng-template>
             <ng-template
                 documentationPropertyName="avatarUrl"
@@ -92,6 +101,15 @@
                 documentationPropertyMode="input"
                 [documentationPropertyValues]="avatarUrlVariants"
                 [(documentationPropertyValue)]="avatarUrl"
+            >
+                Avatar URL or Taiga UI icon name
+            </ng-template>
+            <ng-template
+                documentationPropertyName="fallback"
+                documentationPropertyType="string | SafeHtml | null"
+                documentationPropertyMode="input"
+                [documentationPropertyValues]="fallbackVariants"
+                [(documentationPropertyValue)]="fallback"
             >
                 Avatar URL or Taiga UI icon name
             </ng-template>
