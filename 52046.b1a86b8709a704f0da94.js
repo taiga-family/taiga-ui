@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[52046],{52046:n=>{n.exports=":host {\n    ::ng-deep tui-editor-socket [data-type='group'] {\n        flex-direction: column;\n        padding: 0.5rem;\n        margin: 0.5rem 0;\n        border: 1px solid var(--tui-base-04);\n    }\n}\n"}}]);

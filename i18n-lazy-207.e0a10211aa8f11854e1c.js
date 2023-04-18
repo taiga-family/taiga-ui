@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[6911],{36978:(n,s,a)=>{a.r(s),a.d(s,{TUI_SPANISH_LANGUAGE_ADDON_TABLE:()=>e});const e={showHideText:"Mostrar/Ocultar",paginationTexts:{pages:"P\xe1ginas",linesPerPage:"Lineas por p\xe1gina",of:"de"}}}}]);
