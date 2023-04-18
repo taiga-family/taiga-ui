@@ -53,12 +53,15 @@
         "run-many:publish:libs": "nx run-many --target publish --all --output-style=stream"
     },
     "lint-staged": {
-        "*.{js,ts,html,md,less,json}": [
+        "*.less": [
+            "stylelint --fix"
+        ],
+        "*.{js,ts,html}": [
             "eslint --fix",
             "prettier --write"
         ],
-        "*.less": [
-            "stylelint --fix"
+        "*.{svg,yml,js,ts,html,md,less,json}": [
+            "prettier --write"
         ]
     },
     "dependencies": {
