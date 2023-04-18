@@ -2,7 +2,10 @@
     class="card"
     [card]="true"
 >
-    <div class="tui-block-content tui-avatar-stack reversed">
+    <div
+        tuiSlot="top"
+        class="tui-avatar-stack reversed"
+    >
         <tui-avatar
             *ngFor="let user of users"
             size="l"

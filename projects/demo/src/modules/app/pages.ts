@@ -1037,7 +1037,6 @@ export const pages: TuiDocPages = [
     // Navigation
     {
         section: `Navigation`,
-        section: `Navigation`,
         title: `AppBar`,
         keywords: `mobile, ios, android, header, bar, navigation`,
         route: `/navigation/app-bar`,
