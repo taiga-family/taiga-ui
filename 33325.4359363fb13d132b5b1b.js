@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[33325],{33325:s=>{s.exports="```less\n@import '@taiga-ui/core/styles/taiga-ui-local.scss';\n\n// other styles\n```\n"}}]);
