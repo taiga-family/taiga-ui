@@ -60,6 +60,11 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
         HTML: import('./examples/5/index.html?raw'),
     };
 
+    readonly example6: TuiDocExample = {
+        TypeScript: import('./examples/6/index.ts?raw'),
+        HTML: import('./examples/6/index.html?raw'),
+    };
+
     override cleaner = false;
 
     control = new FormControl(TuiTime.currentLocal(), Validators.required);
