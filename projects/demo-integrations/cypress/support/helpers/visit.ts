@@ -2,7 +2,7 @@ import {waitAllRequests} from '@demo-integrations/support/helpers/wait-requests.
 import {stubExternalIcons} from '@demo-integrations/support/stubs/stub-external-icons.util';
 import {stubMetrics} from '@demo-integrations/support/stubs/stub-metrics';
 
-import {TUI_THEME_NIGHT_STORAGE_DEFAULT_KEY} from '../../../../addon-doc/src/services/theme-night.options';
+import {TUI_THEME_NIGHT_STORAGE_DEFAULT_KEY} from '../../../../addon-doc/services/theme-night.options';
 
 const NEXT_URL_STORAGE_KEY = `env`;
 const REPEATED_SLASH_REG = new RegExp(`//`, `g`);

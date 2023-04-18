@@ -5,7 +5,7 @@
     ],
     "dest": "../../dist/addon-doc",
     "lib": {
-        "entryFile": "src/public-api.ts",
+        "entryFile": "index.ts",
         "styleIncludePaths": [
             "../core/styles"
         ]

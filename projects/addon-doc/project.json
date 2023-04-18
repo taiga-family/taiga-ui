@@ -2,7 +2,7 @@
     "name": "addon-doc",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "root": "projects/addon-doc",
-    "sourceRoot": "projects/addon-doc/src",
+    "sourceRoot": "projects/addon-doc",
     "projectType": "library",
     "prefix": "tui",
     "implicitDependencies": ["!testing"],
@@ -38,7 +38,7 @@
             "executor": "nx:run-commands",
             "outputs": ["coverage/addon-doc"],
             "options": {
-                "command": "jest --testMatch \"**/projects/addon-doc/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/addon-doc/src/**/*.ts\" --coverage-directory=coverage/addon-doc"
+                "command": "jest --testMatch \"**/projects/addon-doc/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/addon-doc/**/*.ts\" --coverage-directory=coverage/addon-doc"
             }
         },
         "publish": {
