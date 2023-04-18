@@ -1,4 +1,4 @@
-<tui-block-status>
+<tui-block-status *ngIf="size$ | async as size">
     <img
         tuiSlot="top"
         alt="survived"
@@ -13,15 +13,15 @@
 
     <button
         tuiButton
-        tuiItem
         appearance="secondary"
+        [size]="size"
     >
         Do
     </button>
     <button
         tuiButton
-        tuiItem
         appearance="mono"
+        [size]="size"
     >
         Not to do
     </button>

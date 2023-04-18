@@ -1,4 +1,7 @@
-<div class="container">
+<div
+    *ngIf="size$ | async as size"
+    class="container"
+>
     <tui-block-status
         class="card"
         [card]="true"
@@ -14,8 +17,8 @@
 
         <button
             tuiButton
-            tuiItem
             appearance="secondary"
+            [size]="size"
         >
             Return
         </button>
@@ -35,8 +38,8 @@
 
         <button
             tuiButton
-            tuiItem
             appearance="secondary"
+            [size]="size"
         >
             Try again
         </button>
