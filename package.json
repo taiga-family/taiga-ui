@@ -60,7 +60,7 @@
             "eslint --fix",
             "prettier --write"
         ],
-        "*.{svg,yml,js,ts,html,md,less,json}": [
+        "*.{svg,yml,md,less,json}": [
             "prettier --write"
         ]
     },
