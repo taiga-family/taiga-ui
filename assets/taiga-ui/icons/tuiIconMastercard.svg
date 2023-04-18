@@ -1,13 +1,18 @@
-<svg focusable="false" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg">
+<svg
+    focusable="false"
+    style="width: inherit; height: inherit; max-width: 2rem; max-height: 2rem"
+    preserveAspectRatio="xMidYMid meet"
+    xmlns="http://www.w3.org/2000/svg"
+>
   <g id="tuiIconMastercard" xmlns="http://www.w3.org/2000/svg">
     <svg
-            height="2em"
             overflow="visible"
             viewBox="0 0 32 32"
-            width="2em"
             x="50%"
             xmlns="http://www.w3.org/2000/svg"
             y="50%"
+            style="width: inherit; height: inherit; max-width: 2rem; max-height: 2rem"
+            preserveAspectRatio="xMidYMid meet"
         >
       <svg x="-16" y="-16">
         <g transform="translate(3, 8)">
