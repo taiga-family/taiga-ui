@@ -23,7 +23,7 @@ import type {TuiInputTimeDirective} from '../input-time.directive';
         '[tabIndex]': '-1',
         '[value]': 'value',
         '[step]': 'step',
-        '(change.stop.silent)': 'onChange($event.target.value)',
+        '(change.stop)': 'onChange($event.target.value)',
         '(click.stop.silent)': '0',
         '(mousedown.stop.silent)': '0',
     },
@@ -34,8 +34,7 @@ export class TuiNativeTimeComponent {
     autoIdString: string;
     constructor(
         @Inject(TUI_TEXTFIELD_HOST) readonly host: TuiInputTimeDirective,
-        @Inject(TuiIdService)
-        idService: TuiIdService,
+        @Inject(TuiIdService) idService: TuiIdService,
     ) {
         this.autoIdString = idService.generate();
     }

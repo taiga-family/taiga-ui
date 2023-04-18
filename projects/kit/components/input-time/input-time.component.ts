@@ -109,10 +109,10 @@ export class TuiInputTimeComponent
         private readonly timeTexts$: Observable<Record<TuiTimeMode, string>>,
         @Inject(TUI_INPUT_TIME_OPTIONS)
         private readonly options: TuiInputTimeOptions,
-        @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
+        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
-        @Inject(TUI_IS_IOS) readonly isIos: boolean,
+        @Inject(TUI_IS_IOS) private readonly isIos: boolean,
     ) {
         super(control, cdr);
     }
