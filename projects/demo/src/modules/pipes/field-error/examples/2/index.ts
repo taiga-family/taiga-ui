@@ -4,16 +4,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsFalsy} from '@taiga-ui/cdk';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
-import {interval} from 'rxjs';
+import {interval, of} from 'rxjs';
 import {map, scan, startWith} from 'rxjs/operators';
-
-export function maxLengthValidator(context: {requiredLength: string}): string {
-    return `Maximum length — ${context.requiredLength}`;
-}
-
-export function minLengthValidator(context: {requiredLength: string}): string {
-    return `Minimum length — ${context.requiredLength}`;
-}
 
 @Component({
     selector: 'tui-field-error-pipe-example-2',
@@ -26,8 +18,10 @@ export function minLengthValidator(context: {requiredLength: string}): string {
             useValue: {
                 required: 'Enter this!',
                 email: 'Enter a valid email',
-                maxlength: maxLengthValidator,
-                minlength: minLengthValidator,
+                maxlength: ({requiredLength}: {requiredLength: string}) =>
+                    `Maximum length — ${requiredLength}`,
+                minlength: ({requiredLength}: {requiredLength: string}) =>
+                    of(`Minimum length — ${requiredLength}`),
                 min: interval(2000).pipe(
                     scan(tuiIsFalsy, false),
                     map(val => (val ? 'Fix please' : 'Min number 3')),

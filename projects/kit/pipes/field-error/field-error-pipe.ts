@@ -107,23 +107,45 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
 
     @tuiPure
     private getError(
-        firstError: any,
-        errorContent?: Observable<PolymorpheusContent> | PolymorpheusContent,
+        context: any,
+        content?: Observable<PolymorpheusContent> | PolymorpheusContent,
     ): Observable<TuiValidationError> {
-        if (firstError instanceof TuiValidationError) {
-            return of(firstError);
+        if (context instanceof TuiValidationError) {
+            return of(context);
         }
 
-        if (errorContent === undefined && tuiIsString(firstError)) {
-            return of(new TuiValidationError(firstError));
+        if (content === undefined && tuiIsString(context)) {
+            return of(new TuiValidationError(context));
         }
 
-        if (isObservable(errorContent)) {
-            return errorContent.pipe(
-                map(error => new TuiValidationError(error || ``, firstError)),
-            );
+        if (isObservable(content)) {
+            return unwrapObservable(content, context);
         }
 
-        return of(new TuiValidationError(errorContent || ``, firstError));
+        if (content instanceof Function) {
+            const message = content(context) as
+                | Observable<PolymorpheusContent>
+                | PolymorpheusContent;
+
+            return isObservable(message)
+                ? unwrapObservable(message, context)
+                : defaultError(message, context);
+        }
+
+        return defaultError(content, context);
     }
+}
+
+function unwrapObservable(
+    content: Observable<PolymorpheusContent>,
+    context: any,
+): Observable<TuiValidationError> {
+    return content.pipe(map(error => new TuiValidationError(error || ``, context)));
+}
+
+function defaultError(
+    content: PolymorpheusContent,
+    context: any,
+): Observable<TuiValidationError> {
+    return of(new TuiValidationError(content || ``, context));
 }
