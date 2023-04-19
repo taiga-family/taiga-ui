@@ -98,15 +98,19 @@
 }
 
 .t-icon {
-    width: 3rem;
-    height: 3rem;
+    width: 1.5rem;
+    height: 1.5rem;
 
     :host[data-size='xs'] & {
-        transform: scale(0.667);
+        transform: scale(1);
+    }
+
+    :host[data-size='s'] & {
+        transform: scale(1);
     }
 
     :host[data-size='m'] & {
-        transform: scale(1.333);
+        transform: scale(1.33);
     }
 
     :host[data-size='l'] & {
@@ -114,6 +118,6 @@
     }
 
     :host[data-size='xl'] & {
-        transform: scale(2.667);
+        transform: scale(2.67);
     }
 }
