@@ -9,20 +9,21 @@ import {
 
 (async function main(): Promise<void> {
     const projectPath = process.argv[2] || `projects/icons`;
+    const prettierPath = process.argv[3] || `prettier.config.js`;
     const iconsSrc = path.resolve(`${projectPath}/src/`);
     const allToCompilePath = path.resolve(`${projectPath}/all-to-compile.ts`);
     const resultAllFile = path.resolve(`${projectPath}/all.ts`);
-    const prettier = require(path.resolve(`./prettier.config.js`));
+    const prettier = require(path.resolve(prettierPath));
 
     tuiPrepareAllToCompileFile(iconsSrc, allToCompilePath);
 
     await tuiConvertAllCompileFileToAllFile({
         from: allToCompilePath,
         to: resultAllFile,
-        include: `**/icons/src/**/*.svg`,
+        include: `**/${projectPath}/src/**/*.svg`,
         prt2Options: {
-            include: [`${projectPath}/**`],
-            exclude: [`${projectPath}/**/*.svg`],
+            include: [`**/${projectPath}/**`],
+            exclude: [`**/*.svg`],
         },
     });
 
