@@ -31,7 +31,7 @@ import {Observable} from 'rxjs';
 import {TUI_TAG_OPTIONS, TuiTagOptions} from './tag-options';
 
 @Component({
-    selector: 'tui-tag, a[tuiTag]',
+    selector: 'tui-tag, a[tuiTag], button[tuiTag]',
     templateUrl: './tag.template.html',
     styleUrls: ['./tag.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

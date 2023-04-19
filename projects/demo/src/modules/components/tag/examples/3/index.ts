@@ -9,6 +9,4 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
     encapsulation,
 })
-export class TuiTagExample3 {
-    tag = 'Hey there';
-}
+export class TuiTagExample3 {}
