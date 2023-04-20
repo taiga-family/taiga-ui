@@ -3,16 +3,15 @@ export interface ImportingModule {
     packageName: string;
 }
 
-export const MAIN_MODULES: readonly ImportingModule[] = [
-    {
-        name: `BrowserAnimationsModule`,
-        packageName: `@angular/platform-browser/animations`,
-    },
-    {
-        name: `TuiRootModule`,
-        packageName: `@taiga-ui/core`,
-    },
-];
+export const MAIN_MODULE: ImportingModule = {
+    name: `TuiRootModule`,
+    packageName: `@taiga-ui/core`,
+};
+
+export const BROWSER_ANIMATION_MODULE = {
+    name: `BrowserAnimationsModule`,
+    packageName: `@angular/platform-browser/animations`,
+};
 
 export const DIALOG_MODULES: readonly ImportingModule[] = [
     {

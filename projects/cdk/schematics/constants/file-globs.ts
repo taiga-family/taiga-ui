@@ -1,6 +1,7 @@
 import {Pattern} from 'ng-morph';
 
 const EXCLUDE_DIRECTORIES = [
+    `e2e`,
     // compiled
     `scripts`,
     `dist`,

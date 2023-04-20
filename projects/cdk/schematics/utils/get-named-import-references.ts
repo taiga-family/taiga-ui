@@ -5,8 +5,9 @@ import {ALL_TS_FILES} from '../constants';
 export function getNamedImportReferences(
     namedImport: string,
     moduleSpecifier: string[] | string = `**/**`,
+    files = ALL_TS_FILES,
 ): Node[] {
-    const importDeclarations = getImports(ALL_TS_FILES, {
+    const importDeclarations = getImports(files, {
         namedImports: [namedImport],
         moduleSpecifier,
     });
