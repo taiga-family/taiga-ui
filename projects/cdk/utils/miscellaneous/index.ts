@@ -13,6 +13,7 @@ export * from './is-number';
 export * from './is-object';
 export * from './is-present';
 export * from './is-string';
+export * from './is-valid-url';
 export * from './mark-control-as-touched-and-validate';
 export * from './nullable-same';
 export * from './object-from-entries';

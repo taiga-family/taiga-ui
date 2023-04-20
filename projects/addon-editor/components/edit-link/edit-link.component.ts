@@ -11,7 +11,6 @@ import {
 import {AbstractTuiEditor} from '@taiga-ui/addon-editor/abstract';
 import {
     TUI_EDITOR_LINK_HASH_PREFIX,
-    TUI_EDITOR_LINK_HTTP_PREFIX,
     TUI_EDITOR_LINK_HTTPS_PREFIX,
     TuiEditorLinkPrefix,
     TuiEditorLinkProtocol,
@@ -23,6 +22,8 @@ import {
     TuiEditorOptions,
 } from '@taiga-ui/addon-editor/tokens';
 import {tuiDefaultProp, TuiInjectionTokenType, tuiIsElement} from '@taiga-ui/cdk';
+
+import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
 
 @Component({
     selector: 'tui-edit-link',
@@ -150,15 +151,18 @@ export class TuiEditLinkComponent {
 
     private makeDefaultPrefix(): TuiEditorLinkPrefix {
         const a = this.getAnchorElement();
+        const defaultPrefix =
+            (tuiEditLinkParseUrl(a?.getAttribute('href') ?? '')
+                .prefix as TuiEditorLinkPrefix) || this.defaultProtocol;
 
         if (a) {
             return (!a.getAttribute('href') && a.getAttribute('id')) ||
                 a.getAttribute('href')?.startsWith(TUI_EDITOR_LINK_HASH_PREFIX)
                 ? TUI_EDITOR_LINK_HASH_PREFIX
-                : this.defaultProtocol;
+                : defaultPrefix;
         }
 
-        return this.defaultProtocol;
+        return defaultPrefix;
     }
 
     private detectAnchorMode(): boolean {
@@ -184,29 +188,26 @@ export class TuiEditLinkComponent {
     }
 
     private removePrefix(url: string): string {
-        if (url.startsWith(TUI_EDITOR_LINK_HTTP_PREFIX)) {
-            this.prefix = this.isOnlyAnchorMode
-                ? TUI_EDITOR_LINK_HASH_PREFIX
-                : TUI_EDITOR_LINK_HTTP_PREFIX;
+        const fullPath =
+            url.startsWith(TUI_EDITOR_LINK_HASH_PREFIX) ||
+            this.prefix === TUI_EDITOR_LINK_HASH_PREFIX
+                ? url
+                : `${this.prefix}${url}`;
+        const {prefix, path} = tuiEditLinkParseUrl(fullPath);
+        const expectAnchorMode =
+            this.isOnlyAnchorMode ||
+            prefix === TUI_EDITOR_LINK_HASH_PREFIX ||
+            (prefix === '' && this.prefix === TUI_EDITOR_LINK_HASH_PREFIX);
 
-            return url.replace(TUI_EDITOR_LINK_HTTP_PREFIX, '');
-        }
-
-        if (url.startsWith(TUI_EDITOR_LINK_HTTPS_PREFIX)) {
-            this.prefix = this.isOnlyAnchorMode
-                ? TUI_EDITOR_LINK_HASH_PREFIX
-                : TUI_EDITOR_LINK_HTTPS_PREFIX;
-
-            return url.replace(TUI_EDITOR_LINK_HTTPS_PREFIX, '');
-        }
-
-        if (url.startsWith(TUI_EDITOR_LINK_HASH_PREFIX)) {
+        if (expectAnchorMode) {
             this.prefix = TUI_EDITOR_LINK_HASH_PREFIX;
-
-            return url.replace(TUI_EDITOR_LINK_HASH_PREFIX, '');
+        } else if (prefix === '') {
+            this.prefix = this.defaultProtocol;
+        } else {
+            this.prefix = prefix as TuiEditorLinkPrefix;
         }
 
-        return url;
+        return path;
     }
 
     private getAllAnchorsIds(): string[] {
