@@ -1,11 +1,12 @@
 @import 'taiga-ui-local';
 
 :host {
+    .clearbtn();
     .transition(background);
     position: relative;
     display: inline-block;
     font: var(--tui-font-text-s);
-    line-height: 1;
+    line-height: 1.25rem;
     border-radius: var(--tui-radius-s);
     max-width: 100%;
     cursor: default;
@@ -34,7 +35,7 @@
 
     &[data-size='s'] {
         font: var(--tui-font-text-xs);
-        line-height: 1;
+        line-height: 1.25rem;
         border-radius: var(--tui-radius-xs);
     }
 
