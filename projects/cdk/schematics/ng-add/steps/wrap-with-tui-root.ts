@@ -11,8 +11,11 @@ import {
     setActiveProject,
 } from 'ng-morph';
 
+import {ALL_FILES} from '../../constants';
+import {getComponentFromIdentifier} from '../../utils/get-component-from-identifier';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {getProjects} from '../../utils/get-projects';
+import {getStandaloneBootstrapFunction} from '../../utils/get-standalone-bootstrap-function';
 import {TuiSchema} from '../schema';
 
 export function wrapWithTuiRootComponent(options: TuiSchema): Rule {
@@ -26,7 +29,10 @@ export function wrapWithTuiRootComponent(options: TuiSchema): Rule {
 
         const buildOptions = getProjectTargetOptions(project, `build`);
 
-        const appTemplatePath = getAppTemplatePath(tree, buildOptions.main as string);
+        setActiveProject(createProject(tree, `/`, ALL_FILES));
+        const appTemplatePath = getAppTemplatePath(buildOptions.main as string);
+
+        saveActiveProject();
 
         if (!appTemplatePath) {
             context.logger.error(
@@ -82,11 +88,22 @@ function addTuiRootComponent(
     );
 }
 
-function getAppTemplatePath(tree: Tree, mainPath: string): string | undefined {
-    setActiveProject(createProject(tree, `/`, [`**/*.ts`, `**/*.json`]));
+function getAppTemplatePath(mainPath: string): string | undefined {
+    const stansdaloneBootstrapFunction = getStandaloneBootstrapFunction(mainPath);
+
+    if (stansdaloneBootstrapFunction) {
+        const [componentIdentifier] = stansdaloneBootstrapFunction.getArguments();
+        const component = getComponentFromIdentifier(componentIdentifier);
+
+        return component && getTemplatePathFromComponent(component);
+    }
 
     const mainModule = getMainModule(mainPath);
-    const mainInitializer = getInitializer(mainModule, `NgModule`, `declarations`);
+    const mainInitializer = getTemplateInitializer(
+        mainModule,
+        `NgModule`,
+        `declarations`,
+    );
 
     if (!Node.isArrayLiteralExpression(mainInitializer)) {
         return;
@@ -95,20 +112,28 @@ function getAppTemplatePath(tree: Tree, mainPath: string): string | undefined {
     const appIdentifier = mainInitializer.getElements()[0] as Identifier;
     const appComponent = appIdentifier.getDefinitionNodes()[0] as ClassDeclaration;
 
-    const templateInitializer = getInitializer(appComponent, `Component`, `templateUrl`);
+    const templateUrlPath = getTemplatePathFromComponent(appComponent);
 
-    const appComponentPath = appComponent.getSourceFile().getFilePath().split(`/`);
+    return templateUrlPath;
+}
+
+function getTemplatePathFromComponent(component: ClassDeclaration): string {
+    const templateInitializer = getTemplateInitializer(
+        component,
+        `Component`,
+        `templateUrl`,
+    );
+
+    const appComponentPath = component.getSourceFile().getFilePath().split(`/`);
 
     const templateUrlPath = `${appComponentPath
         .splice(0, appComponentPath.length - 1)
         .join(`/`)}/${templateInitializer?.getText().replace(/['"]/g, ``)}`;
 
-    saveActiveProject();
-
     return templateUrlPath;
 }
 
-function getInitializer(
+function getTemplateInitializer(
     classDeclaration: ClassDeclaration,
     decoratorName: string,
     propertyName: string,
