@@ -19,6 +19,7 @@ import {TuiInputCardGroupedExample1} from './examples/1';
 import {TuiInputCardGroupedExample2} from './examples/2';
 import {TuiInputCardGroupedExample3} from './examples/3';
 import {TuiInputCardGroupedExample4} from './examples/4';
+import {TuiInputCardGroupedExample5} from './examples/5';
 import {ExampleTuiInputCardGroupedComponent} from './input-card-grouped.component';
 
 @NgModule({
@@ -44,6 +45,7 @@ import {ExampleTuiInputCardGroupedComponent} from './input-card-grouped.componen
         TuiInputCardGroupedExample2,
         TuiInputCardGroupedExample3,
         TuiInputCardGroupedExample4,
+        TuiInputCardGroupedExample5,
     ],
     exports: [ExampleTuiInputCardGroupedComponent],
 })
