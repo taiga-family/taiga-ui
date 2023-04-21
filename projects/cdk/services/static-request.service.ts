@@ -1,12 +1,20 @@
-import {Injectable} from '@angular/core';
-import {Observable, Observer} from 'rxjs';
-import {shareReplay} from 'rxjs/operators';
+import {isPlatformServer} from '@angular/common';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
+import {WINDOW} from '@ng-web-apis/common';
+import {defer, from, Observable} from 'rxjs';
+import {fromFetch} from 'rxjs/fetch';
+import {shareReplay, switchMap} from 'rxjs/operators';
 
 @Injectable({
     providedIn: `root`,
 })
 export class TuiStaticRequestService {
     private readonly cache = new Map<string, Observable<string>>();
+
+    constructor(
+        @Inject(WINDOW) private readonly win: Window,
+        @Inject(PLATFORM_ID) private readonly platformId: Record<string, unknown>,
+    ) {}
 
     request(url: string): Observable<string> {
         const cache = this.cache.get(url);
@@ -15,30 +23,19 @@ export class TuiStaticRequestService {
             return cache;
         }
 
-        const observable = new Observable((observer: Observer<string>) => {
-            const xhr = new XMLHttpRequest();
+        const response$ =
+            `AbortController` in this.win || isPlatformServer(this.platformId)
+                ? fromFetch(url)
+                : /**
+                   * Fallback for Firefox 55 and 56
+                   * TODO: drop after browser support bump
+                   */
+                  defer(() => from(fetch(url)));
 
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState === 4) {
-                    const response = xhr.responseType ? xhr.response : xhr.responseText;
-
-                    if (xhr.status === 200) {
-                        observer.next(response);
-                        observer.complete();
-                    } else {
-                        observer.error(response);
-                    }
-                }
-            };
-
-            xhr.open(`GET`, url);
-            xhr.send();
-
-            return () => {
-                xhr.abort();
-            };
-        });
-        const piped = observable.pipe(shareReplay({bufferSize: 1, refCount: false}));
+        const piped = response$.pipe(
+            switchMap(async res => res.text()),
+            shareReplay({bufferSize: 1, refCount: false}),
+        );
 
         this.cache.set(url, piped);
 
