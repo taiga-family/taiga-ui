@@ -22,16 +22,16 @@ export class I18nComponent {
 
     example1: TuiDocExample = {
         'language-switcher.component.html': import(
-            '../../../../../addon-doc/src/components/language-switcher/language-switcher.component.html?raw'
+            '../../../../../addon-doc/components/language-switcher/language-switcher.component.html?raw'
         ),
         'language-switcher.component.ts': import(
-            '../../../../../addon-doc/src/components/language-switcher/language-switcher.component.ts?raw'
+            '../../../../../addon-doc/components/language-switcher/language-switcher.component.ts?raw'
         ),
         'language-switcher.module.ts': import(
-            '../../../../../addon-doc/src/components/language-switcher/language-switcher.module.ts?raw'
+            '../../../../../addon-doc/components/language-switcher/language-switcher.module.ts?raw'
         ),
         'language-switcher.module.less': import(
-            '../../../../../addon-doc/src/components/language-switcher/language-switcher.component.less?raw'
+            '../../../../../addon-doc/components/language-switcher/language-switcher.component.less?raw'
         ),
     };
 }
