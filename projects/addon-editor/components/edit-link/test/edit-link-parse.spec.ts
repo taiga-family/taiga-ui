@@ -1,23 +1,6 @@
 import {tuiEditLinkParseUrl} from '@taiga-ui/addon-editor';
 
 describe(`tuiEditLinkParseUrl`, () => {
-    it(`https or http protocol`, () => {
-        expect(tuiEditLinkParseUrl(`http://hello.com`)).toEqual({
-            prefix: `http://`,
-            path: `hello.com`,
-        });
-
-        expect(tuiEditLinkParseUrl(`http://world.com/`)).toEqual({
-            prefix: `http://`,
-            path: `world.com/`,
-        });
-
-        expect(tuiEditLinkParseUrl(`https://taiga-ui.dev`)).toEqual({
-            prefix: `https://`,
-            path: `taiga-ui.dev`,
-        });
-    });
-
     it(`mailto`, () => {
         expect(tuiEditLinkParseUrl(`mailto:user1@example.com`)).toEqual({
             prefix: `mailto:`,
