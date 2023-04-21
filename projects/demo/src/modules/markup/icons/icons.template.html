@@ -48,6 +48,7 @@
                     appearance="icon"
                     class="icon"
                     [attr.aria-label]="icon"
+                    [class.t-wrapper-icons_dark]="(mode$ | async) === 'onDark'"
                     [icon]="icon"
                     (click)="copyPath(icon)"
                 ></button>
