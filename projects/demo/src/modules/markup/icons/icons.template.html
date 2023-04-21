@@ -35,6 +35,24 @@
         </p>
 
         <icons-group [icons]="icons[key]">
+            <div class="icons-customization">
+                <tui-checkbox-labeled
+                    size="m"
+                    class="t-checkbox"
+                    [(ngModel)]="background"
+                >
+                    Background
+                </tui-checkbox-labeled>
+
+                <tui-checkbox-labeled
+                    size="m"
+                    class="t-checkbox tui-space_right-3"
+                    [(ngModel)]="appearance"
+                >
+                    Icon appearance
+                </tui-checkbox-labeled>
+            </div>
+
             <ng-template
                 iconGroup
                 let-icon="icon"
@@ -48,6 +66,8 @@
                     appearance="icon"
                     class="icon"
                     [attr.aria-label]="icon"
+                    [class.t-appearance]="appearance"
+                    [class.t-background]="background"
                     [class.t-wrapper-icons_dark]="(mode$ | async) === 'onDark'"
                     [icon]="icon"
                     (click)="copyPath(icon)"

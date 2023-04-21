@@ -16,6 +16,9 @@ import {DemoTuiIconsTabs, TUI_DEMO_ICONS} from './icons.tokens';
 export class IconsComponent {
     readonly keys = Object.keys(this.icons);
 
+    appearance = false;
+    background = true;
+
     readonly mode$: Observable<TuiBrightness> = this.mode.change$.pipe(
         startWith(null),
         map(() => this.mode.mode || 'onLight'),
