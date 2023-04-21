@@ -8,6 +8,11 @@
     (error)="onError()"
 />
 <tui-svg
+    *ngIf="useFallback"
+    class="t-icon"
+    [src]="fallback!"
+></tui-svg>
+<tui-svg
     *ngIf="stringAvatar"
     class="t-icon"
     [src]="stringAvatar"
