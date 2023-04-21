@@ -9,6 +9,7 @@ import {
     TUI_DOC_SOURCE_CODE_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
 
+// TODO: drop in v4.0
 export const TUI_DOC_RUSSIAN: Provider[] = [
     {
         provide: TUI_DOC_DEMO_TEXTS,
