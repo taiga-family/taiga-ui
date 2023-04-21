@@ -16,7 +16,10 @@
 >
     <ng-container *tuiForAsync="let key of icons | tuiKeys; timeout: options.timeout">
         <ng-container *ngIf="icons[key] | tuiFilter : matcher : options.search as filtered">
-            <div class="header-group">
+            <div
+                class="header-group"
+                [attr.data-heading]="key"
+            >
                 <h2 class="title">
                     {{ key }}
                 </h2>
