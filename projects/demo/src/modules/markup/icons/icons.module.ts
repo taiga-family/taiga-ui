@@ -1,5 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
@@ -8,6 +9,7 @@ import {
     TuiNotificationModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
+import {TuiCheckboxLabeledModule} from '@taiga-ui/kit';
 
 import {IconsCustomizationComponent} from './customization/customization-icons.component';
 import {IconsComponent} from './icons.component';
@@ -17,6 +19,7 @@ import {InlineSvgExampleComponent} from './inline-svg/inline-svg.component';
 @NgModule({
     imports: [
         CommonModule,
+        FormsModule,
         TuiNotificationModule,
         TuiLinkModule,
         TuiSvgModule,
@@ -24,6 +27,7 @@ import {InlineSvgExampleComponent} from './inline-svg/inline-svg.component';
         TuiAddonDocModule,
         IconsGroupModule,
         RouterModule.forChild(tuiGenerateRoutes(IconsComponent)),
+        TuiCheckboxLabeledModule,
     ],
     declarations: [
         IconsComponent,
