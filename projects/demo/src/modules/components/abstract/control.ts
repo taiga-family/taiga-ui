@@ -3,8 +3,8 @@ import {TuiAutofillFieldName, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import {
     TUI_DROPDOWN_DEFAULT_OPTIONS,
     TUI_HINT_DIRECTIONS,
+    TuiDropdownAlign,
     TuiDropdownWidth,
-    TuiHorizontalDirection,
     TuiSizeL,
     TuiSizeS,
     TuiVerticalDirection,
@@ -118,7 +118,11 @@ export abstract class AbstractExampleTuiControl
 
     hintAppearance = this.hintAppearanceVariants[0];
 
-    readonly dropdownAlignVariants: readonly TuiHorizontalDirection[] = [`left`, `right`];
+    readonly dropdownAlignVariants: readonly TuiDropdownAlign[] = [
+        `left`,
+        `right`,
+        `center`,
+    ];
 
     dropdownAlign = TUI_DROPDOWN_DEFAULT_OPTIONS.align;
 
