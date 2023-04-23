@@ -117,7 +117,7 @@
         "lint-staged": "13.2.1",
         "ng-packagr": "12.2.7",
         "postcss": "8.4.23",
-        "prettier": "2.8.7",
+        "prettier": "2.8.8",
         "rollup": "2.79.1",
         "standard-version": "8.0.2",
         "ts-loader": "9.4.2",
