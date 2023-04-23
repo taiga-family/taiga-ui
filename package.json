@@ -99,7 +99,7 @@
         "@tinkoff/prettier-config": "1.52.1",
         "@tinkoff/stylelint-config": "1.52.1",
         "@types/glob": "8.1.0",
-        "@types/node": "18.15.13",
+        "@types/node": "18.16.0",
         "@types/parse5": "6.0.3",
         "@types/webpack-env": "1.18.0",
         "angular-http-server": "1.11.1",
