@@ -15,20 +15,16 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {TUI_CARD_MASK, tuiDefaultCardValidator} from '@taiga-ui/addon-commerce/constants';
+import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
 import {TuiCard} from '@taiga-ui/addon-commerce/interfaces';
 import {TuiCodeCVCLength, TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
-import {
-    tuiCreateAutoCorrectedExpirePipe,
-    tuiGetPaymentSystem,
-} from '@taiga-ui/addon-commerce/utils';
+import {tuiCreateAutoCorrectedExpirePipe} from '@taiga-ui/addon-commerce/utils';
 import {
     AbstractTuiNullableControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiAutofillFieldName,
     TuiAutoFocusDirective,
-    TuiBooleanHandler,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsElement,
@@ -57,22 +53,11 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
 import {
+    TUI_INPUT_CARD_GROUPED_OPTIONS,
     TUI_INPUT_CARD_GROUPED_TEXTS,
     TuiCardGroupedTexts,
+    TuiInputCardGroupedOptions,
 } from './input-card-grouped.providers';
-
-const STUB: TuiCard = {
-    card: '',
-    expire: '',
-    cvc: '',
-};
-const ICONS: Record<TuiPaymentSystem, string> = {
-    mir: 'tuiIconMir',
-    visa: 'tuiIconVisa',
-    electron: 'tuiIconElectron',
-    mastercard: 'tuiIconMastercard',
-    maestro: 'tuiIconMaestro',
-};
 
 @Component({
     selector: 'tui-input-card-grouped',
@@ -117,7 +102,7 @@ export class TuiInputCardGroupedComponent
 
     @Input()
     @tuiDefaultProp()
-    autocompleteEnabled = false;
+    autocompleteEnabled = this.options.autocompleteEnabled;
 
     @Input()
     @tuiDefaultProp()
@@ -125,11 +110,11 @@ export class TuiInputCardGroupedComponent
 
     @Input()
     @tuiDefaultProp()
-    exampleText = '0000 0000 0000 0000';
+    exampleText = this.options.exampleText;
 
     @Input()
     @tuiDefaultProp()
-    cardValidator: TuiBooleanHandler<string> = tuiDefaultCardValidator;
+    cardValidator = this.options.cardValidator;
 
     @Input()
     @tuiRequiredSetter()
@@ -153,7 +138,7 @@ export class TuiInputCardGroupedComponent
     @ContentChild(TuiDataListComponent)
     readonly datalist?: TuiDataListComponent<TuiCard>;
 
-    exampleTextCVC = '000';
+    exampleTextCVC = this.options.exampleTextCVC;
 
     maskCVC: TuiTextMaskOptions = {
         mask: new Array(3).fill(TUI_DIGIT_REGEXP),
@@ -192,6 +177,8 @@ export class TuiInputCardGroupedComponent
         readonly cardGroupedTexts$: Observable<TuiCardGroupedTexts>,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
+        @Inject(TUI_INPUT_CARD_GROUPED_OPTIONS)
+        private readonly options: TuiInputCardGroupedOptions,
     ) {
         super(control, cdr);
     }
@@ -231,7 +218,7 @@ export class TuiInputCardGroupedComponent
     get defaultIcon(): string | null {
         const {paymentSystem} = this;
 
-        return paymentSystem && ICONS[paymentSystem];
+        return paymentSystem && this.options.icons[paymentSystem];
     }
 
     get icon(): PolymorpheusContent {
@@ -442,11 +429,16 @@ export class TuiInputCardGroupedComponent
     }
 
     private get paymentSystem(): TuiPaymentSystem | null {
-        return this.value && tuiGetPaymentSystem(this.value.card);
+        return this.value && this.getPaymentSystem(this.value.card);
     }
 
     private get hasExtraSpace(): boolean {
         return this.card.length % 4 > 0;
+    }
+
+    @tuiPure
+    private getPaymentSystem(cardNumber: string): TuiPaymentSystem | null {
+        return this.options.paymentSystemHandler(cardNumber);
     }
 
     @tuiPure
@@ -462,15 +454,11 @@ export class TuiInputCardGroupedComponent
         }
     }
 
-    private updateProperty(propValue: string, propName: 'card' | 'cvc' | 'expire'): void {
-        const {card, expire, cvc} = this.value || STUB;
-        const newValue: TuiCard = {
-            card,
-            expire,
-            cvc,
-        };
+    private updateProperty(value: string, propName: 'card' | 'cvc' | 'expire'): void {
+        const {card = '', expire = '', cvc = ''} = this.value || {};
+        const newValue: TuiCard = {card, expire, cvc};
 
-        newValue[propName] = propValue;
+        newValue[propName] = value;
 
         this.value = newValue.expire || newValue.cvc || newValue.card ? newValue : null;
     }
