@@ -4,11 +4,7 @@ import TerserPlugin from 'terser-webpack-plugin';
 import {Configuration} from 'webpack';
 import {merge} from 'webpack-merge';
 
-const NODE_OPTIONS = process.env[`NODE_OPTIONS`];
 const CI_MODE = process.env[`TUI_CI`] === `true`;
-
-console.info(`\nCI_MODE=${CI_MODE}`);
-console.info(`\nNODE_OPTIONS=${NODE_OPTIONS}`);
 
 /**
  * We can't just import TS-file to get its content
