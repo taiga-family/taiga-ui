@@ -14,5 +14,6 @@
       title="settings"
       tuiSlot="right"
     ></button>
+  </tui-app-bar>
 </header>
 ```
