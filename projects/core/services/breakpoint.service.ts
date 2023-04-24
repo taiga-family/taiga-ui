@@ -48,6 +48,9 @@ function getBreakpoints(media: TuiMedia): TuiBreakpoint[] {
     }));
 }
 
-function currentBreakpoint(breakpoints: TuiBreakpoint[], innerWidth: number): TuiBreakpoint {
+function currentBreakpoint(
+    breakpoints: TuiBreakpoint[],
+    innerWidth: number,
+): TuiBreakpoint {
     return breakpoints.find(({width}) => innerWidth < width) ?? breakpoints.slice(-1)[0];
 }
