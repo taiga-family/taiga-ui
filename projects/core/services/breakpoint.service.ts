@@ -5,13 +5,21 @@ import {TUI_MEDIA} from '@taiga-ui/core/tokens';
 import {fromEvent, merge, Observable} from 'rxjs';
 import {map, shareReplay, startWith} from 'rxjs/operators';
 
+export type TuiBreakpointMediaKey = keyof Omit<TuiMedia, 'tablet'>;
+
+export interface TuiBreakpoint {
+    name: TuiBreakpointMediaKey;
+    query: string;
+    width: number;
+}
+
 /**
  * Service to provide the current breakpoint based on Taiga UI's media queries
  */
 @Injectable({
     providedIn: `root`,
 })
-export class TuiBreakpointService extends Observable<MediaKey | null> {
+export class TuiBreakpointService extends Observable<TuiBreakpointMediaKey | null> {
     constructor(@Inject(TUI_MEDIA) media: TuiMedia, @Inject(WINDOW) win: Window) {
         const breakpoints = getBreakpoints(media);
         const events$ = breakpoints.map(({query}) =>
@@ -27,17 +35,9 @@ export class TuiBreakpointService extends Observable<MediaKey | null> {
     }
 }
 
-type MediaKey = Omit<keyof TuiMedia, 'tablet'>;
-
-interface Breakpoint {
-    name: MediaKey;
-    query: string;
-    width: number;
-}
-
-function getBreakpoints(media: TuiMedia): Breakpoint[] {
+function getBreakpoints(media: TuiMedia): TuiBreakpoint[] {
     return Object.entries(media).map(([name, width]) => ({
-        name: name as MediaKey,
+        name: name as TuiBreakpointMediaKey,
         /**
          * @note:
          * min-width query in css is inclusive, but in window.matchMedia it is exclusive
@@ -48,6 +48,9 @@ function getBreakpoints(media: TuiMedia): Breakpoint[] {
     }));
 }
 
-function currentBreakpoint(breakpoints: Breakpoint[], innerWidth: number): Breakpoint {
+function currentBreakpoint(
+    breakpoints: TuiBreakpoint[],
+    innerWidth: number,
+): TuiBreakpoint {
     return breakpoints.find(({width}) => innerWidth < width) ?? breakpoints.slice(-1)[0];
 }
