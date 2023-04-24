@@ -1,11 +1,14 @@
-import {inject, InjectionToken} from '@angular/core';
+import {inject, InjectionToken, ValueProvider} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
+import {tuiDefaultCardValidator} from '@taiga-ui/addon-commerce/constants';
 import {
     TUI_CARD_CVC_TEXTS,
     TUI_CARD_EXPIRY_TEXTS,
     TUI_CARD_NUMBER_TEXTS,
 } from '@taiga-ui/addon-commerce/tokens';
-import {tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';
+import {TuiBooleanHandler, TuiHandler, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TUI_MEDIA} from '@taiga-ui/core';
 import {combineLatest, Observable, of} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
@@ -50,4 +53,40 @@ export const TUI_INPUT_CARD_GROUPED_TEXTS = new InjectionToken<
             })),
         );
     },
+});
+
+export interface TuiInputCardGroupedOptions {
+    readonly exampleText: string;
+    readonly exampleTextCVC: string;
+    readonly autocompleteEnabled: boolean;
+    readonly icons: Record<TuiPaymentSystem, string>;
+    readonly cardValidator: TuiBooleanHandler<string>;
+    readonly paymentSystemHandler: TuiHandler<string, TuiPaymentSystem | null>;
+}
+
+export const TUI_INPUT_CARD_GROUPED_DEFAULT_OPTIONS: TuiInputCardGroupedOptions = {
+    icons: {
+        mir: `tuiIconMir`,
+        visa: `tuiIconVisa`,
+        electron: `tuiIconElectron`,
+        mastercard: `tuiIconMastercard`,
+        maestro: `tuiIconMaestro`,
+    },
+    exampleText: `0000 0000 0000 0000`,
+    exampleTextCVC: `000`,
+    cardValidator: tuiDefaultCardValidator,
+    paymentSystemHandler: tuiGetPaymentSystem,
+    autocompleteEnabled: false,
+};
+
+export const TUI_INPUT_CARD_GROUPED_OPTIONS =
+    new InjectionToken<TuiInputCardGroupedOptions>(`[TUI_INPUT_CARD_GROUPED_OPTIONS]`, {
+        factory: () => TUI_INPUT_CARD_GROUPED_DEFAULT_OPTIONS,
+    });
+
+export const tuiInputCardGroupedOptionsProvider: (
+    options: Partial<TuiInputCardGroupedOptions>,
+) => ValueProvider = (options: Partial<TuiInputCardGroupedOptions>) => ({
+    provide: TUI_INPUT_CARD_GROUPED_OPTIONS,
+    useValue: {...TUI_INPUT_CARD_GROUPED_DEFAULT_OPTIONS, ...options},
 });
