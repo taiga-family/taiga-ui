@@ -68,16 +68,16 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
 
 ## Core team
 
-<table width="900">
+<table>
     <tr>
-       <td align="center" width="180">
+       <td align="center">
             <a href="https://twitter.com/waterplea"
                 ><img
                     src="https://github.com/waterplea.png?size=200"
                     width="100"
                     style="margin-bottom: -4px; border-radius: 8px;"
                     alt="Alex Inkin"
-                /><br /><b>Alex Inkin</b></a
+                /><br /><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alex&nbsp;Inkin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></a
             >
             <div style="margin-top: 4px">
                 <a
@@ -101,14 +101,14 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
                 /></a>
             </div>
         </td>
-        <td align="center" width="180">
+        <td align="center">
             <a href="http://marsibarsi.me"
                 ><img
                     src="https://github.com/marsibarsi.png?size=200"
                     width="100"
                     style="margin-bottom: -4px; border-radius: 8px;"
                     alt="Roman Sedov"
-                /><br /><b>Roman Sedov</b></a
+                /><br /><b>&nbsp;Roman&nbsp;Sedov&nbsp;</b></a
             >
             <div style="margin-top: 4px">
                 <a
@@ -134,14 +134,14 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
                 /></a>
             </div>
         </td>
-        <td align="center" width="180">
+        <td align="center">
             <a href="https://github.com/vladimirpotekhin"
                 ><img
                     src="https://github.com/vladimirpotekhin.png?size=200"
                     width="100"
                     style="margin-bottom: -4px; border-radius: 8px;"
                     alt="Vladimir Potekhin"
-                /><br /><b>Vladimir Potekhin</b></a
+                /><br /><b>Vladimir&nbsp;Potekhin</b></a
             >
             <div style="margin-top: 4px">
                 <a
@@ -167,14 +167,14 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
                 /></a>
             </div>
         </td>
-        <td align="center" width="180">
+        <td align="center">
             <a href="https://www.linkedin.com/in/nsbarsukov/"
                 ><img
                     src="https://github.com/nsbarsukov.png?size=200"
                     width="100"
                     style="margin-bottom: -4px; border-radius: 8px;"
                     alt="Nikita Barsukov"
-                /><br /><b>Nikita Barsukov</b></a
+                /><br /><b>Nikita&nbsp;Barsukov</b></a
             >
             <div style="margin-top: 4px">
                 <a
@@ -200,14 +200,14 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
                 /></a>
             </div>
         </td>
-        <td align="center" width="180">
+        <td align="center">
             <a href="https://github.com/splincode"
                 ><img
                     src="https://github.com/splincode.png?size=200"
                     width="100"
                     style="margin-bottom: -4px; border-radius: 8px;"
                     alt="Maksim Ivanov"
-                /><br /><b>Maksim Ivanov</b></a
+                /><br /><b>Maksim&nbsp;Ivanov</b></a
             >
             <div style="margin-top: 4px">
                 <a
