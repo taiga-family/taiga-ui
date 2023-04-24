@@ -43,6 +43,7 @@
                         formControlName="testValue1"
                         class="tui-space_all-1"
                         [contentAlign]="contentAlign"
+                        [checkboxPosition]="checkboxPosition"
                         [focusable]="focusable"
                         [hideCheckbox]="hideCheckbox"
                         [pseudoInvalid]="pseudoInvalid"
@@ -58,6 +59,7 @@
                         formControlName="testValue2"
                         class="tui-space_all-1"
                         [contentAlign]="contentAlign"
+                        [checkboxPosition]="checkboxPosition"
                         [focusable]="focusable"
                         [hideCheckbox]="hideCheckbox"
                         [pseudoInvalid]="pseudoInvalid"
@@ -73,6 +75,7 @@
                         formControlName="testValue3"
                         class="tui-space_all-1"
                         [contentAlign]="contentAlign"
+                        [checkboxPosition]="checkboxPosition"
                         [focusable]="focusable"
                         [hideCheckbox]="hideCheckbox"
                         [pseudoInvalid]="pseudoInvalid"
@@ -82,7 +85,13 @@
                         [readOnly]="readOnly"
                         [size]="size"
                     >
-                        Other
+                        <div class="inner">
+                            Heading
+                            <div class="text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi atque incidunt itaque
+                                iusto natus quaerat quia similique veniam?
+                            </div>
+                        </div>
                     </tui-checkbox-block>
                 </form>
             </ng-template>
@@ -105,6 +114,15 @@
                 [(documentationPropertyValue)]="contentAlign"
             >
                 Left/right content align
+            </ng-template>
+            <ng-template
+                documentationPropertyName="checkboxPosition"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiVerticalDirection | null"
+                [documentationPropertyValues]="checkboxPositionVariants"
+                [(documentationPropertyValue)]="checkboxPosition"
+            >
+                Top/bottom checkbox position
             </ng-template>
             <ng-template
                 documentationPropertyName="hideCheckbox"

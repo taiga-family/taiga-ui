@@ -1,5 +1,9 @@
 @import 'taiga-ui-local';
 
+@margin-l: 1rem;
+@margin-m: 0.875rem;
+@margin-s: 0.5rem;
+
 :host {
     .text-basic();
     display: inline-block;
@@ -44,6 +48,7 @@
 .t-content {
     display: flex;
     align-items: center;
+    align-content: center;
     min-height: inherit;
 
     :host[data-align='right'] & {
@@ -84,9 +89,16 @@
 }
 
 .t-view {
-    margin-top: 0.75rem;
     margin-right: 0.75rem;
-    align-self: flex-start;
+    align-self: center;
+
+    :host[data-checkbox-position='top'] & {
+        align-self: start;
+    }
+
+    :host[data-checkbox-position='bottom'] & {
+        align-self: end;
+    }
 
     :host[data-align='right'] & {
         margin-left: 0.75rem;
@@ -94,20 +106,35 @@
     }
 
     :host[data-size='s'] & {
-        margin-top: 0.5rem;
         margin-right: 0.5rem;
+    }
+
+    :host[data-size='s'][data-checkbox-position='top'] & {
+        margin-top: var(--tui-margin, @margin-s);
+    }
+
+    :host[data-size='s'][data-checkbox-position='bottom'] & {
+        margin-bottom: var(--tui-margin, @margin-s);
     }
 
     :host[data-size='s'][data-align='right'] & {
         margin-left: 0.5rem;
     }
 
-    :host[data-size='m'] & {
-        margin-top: 0.875rem;
+    :host[data-size='m'][data-checkbox-position='top'] & {
+        margin-top: var(--tui-margin, @margin-m);
     }
 
-    :host[data-size='l'] & {
-        margin-top: 1rem;
+    :host[data-size='m'][data-checkbox-position='bottom'] & {
+        margin-bottom: var(--tui-margin, @margin-m);
+    }
+
+    :host[data-size='l'][data-checkbox-position='top'] & {
+        margin-top: var(--tui-margin, @margin-l);
+    }
+
+    :host[data-size='l'][data-checkbox-position='bottom'] & {
+        margin-bottom: var(--tui-margin, @margin-l);
     }
 
     :host._hidden_checkbox & {

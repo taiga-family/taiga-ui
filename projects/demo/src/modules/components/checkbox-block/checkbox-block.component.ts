@@ -2,7 +2,12 @@ import {Component, forwardRef} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiHorizontalDirection, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {
+    TuiHorizontalDirection,
+    TuiSizeL,
+    TuiSizeS,
+    TuiVerticalDirection,
+} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -43,6 +48,14 @@ export class ExampleTuiCheckboxBlockComponent extends AbstractExampleTuiControl 
     readonly contentAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
 
     contentAlign: TuiHorizontalDirection = this.contentAlignVariants[1];
+
+    readonly checkboxPositionVariants: Array<TuiVerticalDirection | null> = [
+        null,
+        'top',
+        'bottom',
+    ];
+
+    checkboxPosition: TuiVerticalDirection | null = this.checkboxPositionVariants[1];
 
     hideCheckbox = false;
 

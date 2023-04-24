@@ -25,6 +25,7 @@ import {
     TuiModeDirective,
     TuiSizeL,
     TuiSizeS,
+    TuiVerticalDirection,
 } from '@taiga-ui/core';
 import {TuiCheckboxComponent} from '@taiga-ui/kit/components/checkbox';
 
@@ -49,6 +50,11 @@ export class TuiCheckboxBlockComponent
     @HostBinding('attr.data-align')
     @tuiDefaultProp()
     contentAlign: TuiHorizontalDirection = 'right';
+
+    @Input()
+    @HostBinding('attr.data-checkbox-position')
+    @tuiDefaultProp()
+    checkboxPosition: TuiVerticalDirection | null = 'top';
 
     @Input()
     @HostBinding('class._hidden_checkbox')
