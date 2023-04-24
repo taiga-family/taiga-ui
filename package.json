@@ -16,7 +16,10 @@
     "license": "Apache-2.0",
     "maintainers": [
         "Alex Inkin <alexander@inkin.ru>",
-        "Roman Sedov <79601794011@ya.ru>"
+        "Roman Sedov <79601794011@ya.ru>",
+        "Maksim Ivanov <splincodewd@yandex.ru>",
+        "Vladimir Potekhin <vladimir.potekh@gmail.com>",
+        "Nikita Barsukov <nikita.s.barsukov@gmail.com>"
     ],
     "workspaces": [
         "projects/*"

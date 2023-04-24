@@ -10,7 +10,7 @@
 #  More info: https://help.github.com/articles/about-codeowners/
 #
 
-* @waterplea @MarsiBarsi @vladimirpotekhin @nsbarsukov
+* @waterplea @MarsiBarsi @vladimirpotekhin @nsbarsukov @splincode
 # will be requested for review when someone opens a pull request
 
 # i18n languages contributors:
