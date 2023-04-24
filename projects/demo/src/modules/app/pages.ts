@@ -1394,7 +1394,7 @@ export const pages: TuiDocPages = [
             {
                 section: $localize`Tools`,
                 title: `BreakpointService`,
-                keywords: `breakpoint`,
+                keywords: `breakpoint, breakpoints, media, query, брейкпоинты, responsive, adaptive, адаптив`,
                 route: `/services/breakpoint-service`,
             },
             {
