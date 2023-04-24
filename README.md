@@ -68,12 +68,12 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
 
 ## Core team
 
-<table>
+<table width="900">
     <tr>
-       <td align="center">
+       <td align="center" width="180">
             <a href="https://twitter.com/waterplea"
                 ><img
-                    src="https://github.com/waterplea.png?size=100"
+                    src="https://github.com/waterplea.png?size=200"
                     width="100"
                     style="margin-bottom: -4px; border-radius: 8px;"
                     alt="Alex Inkin"
@@ -101,10 +101,10 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
                 /></a>
             </div>
         </td>
-        <td align="center">
+        <td align="center" width="180">
             <a href="http://marsibarsi.me"
                 ><img
-                    src="https://github.com/marsibarsi.png?size=100"
+                    src="https://github.com/marsibarsi.png?size=200"
                     width="100"
                     style="margin-bottom: -4px; border-radius: 8px;"
                     alt="Roman Sedov"
@@ -134,10 +134,10 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
                 /></a>
             </div>
         </td>
-        <td align="center">
+        <td align="center" width="180">
             <a href="https://github.com/vladimirpotekhin"
                 ><img
-                    src="https://github.com/vladimirpotekhin.png?size=100"
+                    src="https://github.com/vladimirpotekhin.png?size=200"
                     width="100"
                     style="margin-bottom: -4px; border-radius: 8px;"
                     alt="Vladimir Potekhin"
@@ -167,10 +167,10 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
                 /></a>
             </div>
         </td>
-        <td align="center">
+        <td align="center" width="180">
             <a href="https://www.linkedin.com/in/nsbarsukov/"
                 ><img
-                    src="https://github.com/nsbarsukov.png?size=100"
+                    src="https://github.com/nsbarsukov.png?size=200"
                     width="100"
                     style="margin-bottom: -4px; border-radius: 8px;"
                     alt="Nikita Barsukov"
@@ -200,10 +200,10 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
                 /></a>
             </div>
         </td>
-        <td align="center">
+        <td align="center" width="180">
             <a href="https://github.com/splincode"
                 ><img
-                    src="https://github.com/splincode.png?size=100"
+                    src="https://github.com/splincode.png?size=200"
                     width="100"
                     style="margin-bottom: -4px; border-radius: 8px;"
                     alt="Maksim Ivanov"
