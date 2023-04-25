@@ -168,10 +168,6 @@ export class TuiComboBoxComponent<T>
         this.close();
         this.updateSearch(null);
         this.value = item;
-
-        if (this.value) {
-            this.setNativeValue(this.stringify(item));
-        }
     }
 
     onFieldKeyDownEnter(event: Event): void {
@@ -233,12 +229,6 @@ export class TuiComboBoxComponent<T>
 
         this.search = search;
         this.searchChange.emit(search);
-    }
-
-    private setNativeValue(value: string): void {
-        if (this.nativeFocusableElement) {
-            this.nativeFocusableElement.value = value;
-        }
     }
 
     private focusInput(preventScroll: boolean = false): void {
