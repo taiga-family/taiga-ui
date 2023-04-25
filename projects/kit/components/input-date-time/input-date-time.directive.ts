@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import {TuiDay, TuiTime, TuiTimeMode} from '@taiga-ui/cdk';
+import {TuiDay, TuiTime} from '@taiga-ui/cdk';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
 import {TuiInputDateTimeComponent} from './input-date-time.component';
@@ -11,10 +11,6 @@ import {TuiInputDateTimeComponent} from './input-date-time.component';
 export class TuiInputDateTimeDirective extends AbstractTuiTextfieldHost<TuiInputDateTimeComponent> {
     override get value(): string {
         return this.host.computedValue;
-    }
-
-    get mode(): TuiTimeMode {
-        return this.host.timeMode;
     }
 
     get rawValue(): [TuiDay | null, TuiTime | null] {

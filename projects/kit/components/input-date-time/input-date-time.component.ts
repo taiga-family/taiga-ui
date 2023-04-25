@@ -177,7 +177,7 @@ export class TuiInputDateTimeComponent
     }
 
     get showNativePicker(): boolean {
-        return this.nativePicker && (!this.isIos || this.timeMode === 'HH:MM');
+        return this.nativePicker && this.timeMode === 'HH:MM';
     }
 
     get computedValue(): string {
@@ -249,7 +249,6 @@ export class TuiInputDateTimeComponent
         }
 
         const [date, time] = value.split(DATE_TIME_SEPARATOR);
-
         const parsedDate = TuiDay.normalizeParse(date, this.dateFormat);
         const parsedTime =
             time && time.length === this.timeMode.length

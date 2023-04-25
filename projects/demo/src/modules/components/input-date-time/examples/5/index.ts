@@ -15,6 +15,5 @@ import {tuiInputDateOptionsProvider} from '@taiga-ui/kit';
 export class TuiInputDateTimeExample5 {
     readonly testForm = new FormGroup({
         testValue: new FormControl([new TuiDay(2017, 2, 15), new TuiTime(12, 30)]),
-        testValue2: new FormControl([new TuiDay(2017, 2, 15), new TuiTime(12, 30, 0)]),
     });
 }
