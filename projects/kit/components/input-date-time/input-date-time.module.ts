@@ -16,6 +16,7 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputDateTimeComponent} from './input-date-time.component';
 import {TuiInputDateTimeDirective} from './input-date-time.directive';
+import {TuiNativeDateTimeComponent} from './native-date-time/native-date-time.component';
 
 @NgModule({
     imports: [
@@ -32,7 +33,11 @@ import {TuiInputDateTimeDirective} from './input-date-time.directive';
         TuiValueAccessorModule,
         TuiTextfieldControllerModule,
     ],
-    declarations: [TuiInputDateTimeComponent, TuiInputDateTimeDirective],
+    declarations: [
+        TuiInputDateTimeComponent,
+        TuiInputDateTimeDirective,
+        TuiNativeDateTimeComponent,
+    ],
     exports: [
         TuiInputDateTimeComponent,
         TuiInputDateTimeDirective,

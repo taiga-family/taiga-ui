@@ -1,6 +1,6 @@
 <tui-hosted-dropdown
     class="t-hosted"
-    [canOpen]="interactive"
+    [canOpen]="interactive && !showNativePicker"
     [content]="dropdown"
     [open]="open && interactive"
     (openChange)="onOpenChange($event)"
@@ -37,6 +37,10 @@
             [class.t-icon]="!computedDisabled"
             [src]="src"
         ></tui-svg>
+        <input
+            *ngIf="showNativePicker"
+            tuiDateTime
+        />
     </ng-template>
 
     <ng-template

@@ -16,6 +16,7 @@ import {TuiInputDateTimeExample1} from './examples/1';
 import {TuiInputDateTimeExample2} from './examples/2';
 import {TuiInputDateTimeExample3} from './examples/3';
 import {TuiInputDateTimeExample4} from './examples/4';
+import {TuiInputDateTimeExample5} from './examples/5';
 import {ExampleTuiInputDateTimeComponent} from './input-date-time.component';
 
 @NgModule({
@@ -38,6 +39,7 @@ import {ExampleTuiInputDateTimeComponent} from './input-date-time.component';
         TuiInputDateTimeExample2,
         TuiInputDateTimeExample3,
         TuiInputDateTimeExample4,
+        TuiInputDateTimeExample5,
     ],
     exports: [ExampleTuiInputDateTimeComponent],
 })
