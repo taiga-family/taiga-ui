@@ -1,4 +1,4 @@
-name: ⚙️ Bundle size check
+name: ⚙️ Bundle size
 
 on:
   push:
@@ -7,9 +7,8 @@ on:
     types: [synchronize, opened, reopened]
 
 jobs:
-  build_and_check:
+  tracking:
     if: ${{ !contains(github.head_ref, 'release/') }}
-    name: Bundlemon
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
