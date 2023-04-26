@@ -18,6 +18,8 @@ import {
     DATE_FILLER_LENGTH,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
+    TUI_IS_IOS,
+    TUI_IS_MOBILE,
     TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
@@ -137,6 +139,8 @@ export class TuiInputDateTimeComponent
         > | null,
         @Inject(TUI_INPUT_DATE_OPTIONS)
         private readonly options: TuiInputDateOptions,
+        @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
+        @Inject(TUI_IS_IOS) readonly isIos: boolean,
     ) {
         super(control, cdr, valueTransformer);
     }
@@ -166,6 +170,14 @@ export class TuiInputDateTimeComponent
 
     get calendarIcon(): TuiInputDateOptions['icon'] {
         return this.options.icon;
+    }
+
+    private get nativePicker(): boolean {
+        return !!this.options.nativePicker && this.isMobile;
+    }
+
+    get showNativePicker(): boolean {
+        return this.nativePicker && this.timeMode === 'HH:MM';
     }
 
     get computedValue(): string {
@@ -237,7 +249,6 @@ export class TuiInputDateTimeComponent
         }
 
         const [date, time] = value.split(DATE_TIME_SEPARATOR);
-
         const parsedDate = TuiDay.normalizeParse(date, this.dateFormat);
         const parsedTime =
             time && time.length === this.timeMode.length

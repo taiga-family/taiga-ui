@@ -1,10 +1,9 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {Directive, Inject} from '@angular/core';
 import {DATE_FILLER_LENGTH, TUI_DATE_FORMAT, TuiDateMode, TuiDay} from '@taiga-ui/cdk';
 import {TUI_TEXTFIELD_HOST, TuiTextfieldHost} from '@taiga-ui/core';
 
-@Component({
+@Directive({
     selector: 'input[tuiDate]',
-    template: '',
     host: {
         type: 'date',
         '[tabIndex]': '-1',
@@ -14,10 +13,8 @@ import {TUI_TEXTFIELD_HOST, TuiTextfieldHost} from '@taiga-ui/core';
         '(input.stop.silent)': '0',
         '(mousedown.stop.silent)': '0',
     },
-    styleUrls: ['./native-date.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiNativeDateComponent {
+export class TuiNativeDateDirective {
     constructor(
         @Inject(TUI_TEXTFIELD_HOST) readonly host: TuiTextfieldHost,
         @Inject(TUI_DATE_FORMAT) private readonly dateFormat: TuiDateMode,
