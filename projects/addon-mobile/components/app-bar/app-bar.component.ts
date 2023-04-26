@@ -3,25 +3,59 @@ import {
     Component,
     ElementRef,
     Inject,
+    Provider,
     QueryList,
     ViewChildren,
 } from '@angular/core';
-import {MutationObserverService} from '@ng-web-apis/mutation-observer';
-import {EMPTY_QUERY, TuiResizeService} from '@taiga-ui/cdk';
+import {
+    MUTATION_OBSERVER_INIT,
+    MutationObserverService,
+} from '@ng-web-apis/mutation-observer';
+import {EMPTY_QUERY, TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
+import {TUI_BUTTON_DEFAULT_OPTIONS, TUI_BUTTON_OPTIONS} from '@taiga-ui/core';
 import {merge, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
+// note: fix problem for strange behavior in viewEngine with export { ɵ_0, ɵ_1 };
+export function tuiProvideMutationOptionsForAppBar(): Provider {
+    return {
+        provide: TUI_BUTTON_OPTIONS,
+        useValue: {
+            characterData: true,
+            childList: true,
+            subtree: true,
+        },
+    };
+}
 
+// note: fix problem for strange behavior in viewEngine with export { ɵ_0, ɵ_1 };
+export function tuiProvideButtonOptionsForAppBar(): Provider {
+    return {
+        provide: MUTATION_OBSERVER_INIT,
+        useValue: {
+            ...TUI_BUTTON_DEFAULT_OPTIONS,
+            size: 'm',
+            appearance: '',
+        },
+    };
+}
+
+// @dynamic
 @Component({
     selector: 'tui-app-bar',
     templateUrl: './app-bar.template.html',
     styleUrls: ['./app-bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_APP_BAR_PROVIDERS,
+    providers: [
+        TuiDestroyService,
+        TuiResizeService,
+        MutationObserverService,
+        tuiProvideMutationOptionsForAppBar(),
+        tuiProvideButtonOptionsForAppBar(),
+    ],
 })
 export class TuiAppBarComponent {
-    @ViewChildren('side')
+    @ViewChildren('sideLeft, sideRight')
     private readonly side: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     readonly width$ = merge(this.resize$, this.mutation$).pipe(
