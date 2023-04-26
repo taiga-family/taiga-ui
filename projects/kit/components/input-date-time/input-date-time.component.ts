@@ -289,7 +289,8 @@ export class TuiInputDateTimeComponent
     writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
         super.writeValue(value);
 
-        this.nativeValue = value && (value[0] || value[1]) ? this.computedValue : '';
+        this.nativeValue =
+            this.value && (this.value[0] || this.value[1]) ? this.computedValue : '';
     }
 
     protected getFallbackValue(): [TuiDay | null, TuiTime | null] {
