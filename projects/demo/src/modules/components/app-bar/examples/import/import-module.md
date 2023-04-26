@@ -1,12 +1,12 @@
 ```ts
-import {TuiTabBarModule} from '@taiga-ui/addon-mobile';
+import {TuiAppBarModule} from '@taiga-ui/addon-mobile';
 
 // ...
 
 @NgModule({
   imports: [
     // ...
-    TuiTabBarModule,
+    TuiAppBarModule,
   ],
   // ...
 })
