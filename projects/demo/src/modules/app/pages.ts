@@ -859,12 +859,6 @@ export const pages: TuiDocPages = [
     // Navigation
     {
         section: $localize`Navigation`,
-        title: `AppBar`,
-        keywords: `mobile, ios, android, header, bar, navigation`,
-        route: `/navigation/app-bar`,
-    },
-    {
-        section: $localize`Navigation`,
         title: `Breadcrumbs`,
         keywords: `шаги, навигация, nav, хлебные, крошки, breadcrumbs`,
         route: `/navigation/breadcrumbs`,

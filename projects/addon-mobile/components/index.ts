@@ -1,4 +1,3 @@
-export * from '@taiga-ui/addon-mobile/components/app-bar';
 export * from '@taiga-ui/addon-mobile/components/mobile-calendar';
 export * from '@taiga-ui/addon-mobile/components/mobile-calendar-dialog';
 export * from '@taiga-ui/addon-mobile/components/mobile-dialog';
