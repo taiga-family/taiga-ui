@@ -9,6 +9,7 @@ import {
     TuiLetModule,
     TuiMapperPipeModule,
     TuiPreventDefaultModule,
+    TuiResizeModule,
 } from '@taiga-ui/cdk';
 import {TuiDropdownModule, TuiSvgModule, TuiWrapperModule} from '@taiga-ui/core';
 import {TextMaskModule} from '@taiga-ui/kit';
@@ -30,6 +31,7 @@ import {TuiInputCardGroupedComponent} from './input-card-grouped.component';
         TuiPreventDefaultModule,
         PolymorpheusModule,
         TuiLetModule,
+        TuiResizeModule,
         TuiFormatCardModule,
         TuiAutoFocusModule,
     ],
