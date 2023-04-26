@@ -6,10 +6,6 @@
             "maxPercentIncrease": 10
         },
         {
-            "path": "demo/browser/vendor.<hash>.js",
-            "maxPercentIncrease": 10
-        },
-        {
             "path": "demo/browser/runtime.<hash>.js",
             "maxPercentIncrease": 10
         },
@@ -22,7 +18,11 @@
             "maxPercentIncrease": 10
         },
         {
-            "path": "demo/browser/style.<hash>.js",
+            "path": "demo/browser/styles.<hash>.css",
+            "maxPercentIncrease": 10
+        },
+        {
+            "path": "demo/browser/vendor.<hash>.js",
             "maxPercentIncrease": 10
         }
     ],
