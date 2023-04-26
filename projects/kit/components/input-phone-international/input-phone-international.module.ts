@@ -15,6 +15,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiArrowModule} from '@taiga-ui/kit/components/arrow';
 import {TuiInputPhoneModule} from '@taiga-ui/kit/components/input-phone';
+import {TuiExtractCountryCodeModule} from '@taiga-ui/kit/pipes';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputPhoneInternationalComponent} from './input-phone-international.component';
@@ -38,6 +39,7 @@ import {TuiInputPhoneInternationalComponent} from './input-phone-international.c
         TuiMapperPipeModule,
         TuiActiveZoneModule,
         TuiFlagPipeModule,
+        TuiExtractCountryCodeModule,
     ],
     declarations: [TuiInputPhoneInternationalComponent],
     exports: [TuiInputPhoneInternationalComponent],

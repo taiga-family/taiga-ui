@@ -35,19 +35,18 @@ import {
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_ARROW} from '@taiga-ui/kit/components/arrow';
 import {TuiInputPhoneComponent} from '@taiga-ui/kit/components/input-phone';
+import {TuiExtractCountryCodePipe, TuiIsoToCountryCodePipe} from '@taiga-ui/kit/pipes';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
+import {TUI_COUNTRIES, TUI_COUNTRIES_MASKS} from '@taiga-ui/kit/tokens';
+import {tuiGetMaxAllowedPhoneLength} from '@taiga-ui/kit/utils';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
-import {MASK_AFTER_CODE_REGEXP} from './const/mask-after-code-regexp';
 import {
     TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS,
     TuiInputPhoneInternationalOptions,
 } from './input-phone-international.options';
-import {TUI_COUNTRIES_MASKS} from './tokens/countries-masks';
 import {tuiExtractValueFromEvent} from './utils/extract-value-from-event';
-import {tuiNotKzRegion} from './utils/not-kz-region';
 
 @Component({
     selector: 'tui-input-phone-international',
@@ -111,6 +110,10 @@ export class TuiInputPhoneInternationalComponent
         private readonly options: TuiInputPhoneInternationalOptions,
         @Inject(TuiFlagPipe)
         private readonly flagPipe: TuiFlagPipe,
+        @Inject(TuiExtractCountryCodePipe)
+        private readonly extractCountryCodePipe: TuiExtractCountryCodePipe,
+        @Inject(TuiIsoToCountryCodePipe)
+        private readonly isoToCountryCodePipe: TuiIsoToCountryCodePipe,
     ) {
         super(control, cdr);
     }
@@ -129,11 +132,11 @@ export class TuiInputPhoneInternationalComponent
     }
 
     get inputPhoneCountryCode(): string {
-        return this.isoToCountryCode(this.countryIsoCode);
+        return this.isoToCountryCodePipe.transform(this.countryIsoCode);
     }
 
     get phoneMaskAfterCountryCode(): string {
-        const countryCode = this.isoToCountryCode(this.countryIsoCode);
+        const countryCode = this.isoToCountryCodePipe.transform(this.countryIsoCode);
 
         return this.calculateMaskAfterCountryCode(
             this.countriesMasks[this.countryIsoCode],
@@ -153,12 +156,18 @@ export class TuiInputPhoneInternationalComponent
     @HostListener('drop.capture.prevent.stop', ['$event'])
     onPaste(event: ClipboardEvent | DragEvent): void {
         let value = tuiExtractValueFromEvent(event).replace(TUI_NON_DIGITS_REGEXP, '');
-        const countryIsoCode = this.extractCountryCode(value);
+        const countryIsoCode = this.extractCountryCodePipe.transform(
+            value,
+            this.countries,
+        );
 
         if (!countryIsoCode) {
             this.value = `${this.inputPhoneCountryCode}${value}`
                 .replace(TUI_MASK_SYMBOLS_REGEXP, '')
-                .slice(0, this.getMaxAllowedLength(this.countryIsoCode));
+                .slice(
+                    0,
+                    tuiGetMaxAllowedPhoneLength(this.countriesMasks, this.countryIsoCode),
+                );
 
             return;
         }
@@ -172,7 +181,7 @@ export class TuiInputPhoneInternationalComponent
     }
 
     readonly isoToCountryCodeMapper: TuiMapper<TuiCountryIsoCode, string> = item =>
-        this.isoToCountryCode(item);
+        this.isoToCountryCodePipe.transform(item);
 
     /**
      * @deprecated use `<img [src]="countryIsoCode | tuiFlagPipe" />`
@@ -188,7 +197,7 @@ export class TuiInputPhoneInternationalComponent
         // recalculates mask inside inputPhone to prevent isoCode conflict
         this.cdr.detectChanges();
 
-        const maxLength = this.getMaxAllowedLength(isoCode);
+        const maxLength = tuiGetMaxAllowedPhoneLength(this.countriesMasks, isoCode);
 
         if (this.value.length > maxLength) {
             this.value = this.value.slice(0, maxLength);
@@ -204,8 +213,12 @@ export class TuiInputPhoneInternationalComponent
         this.close();
     }
 
+    /**
+     * @deprecated use `{{ countryIsoCode | tuiIsoToCountryCode }}`
+     * TODO drop in v4.0
+     */
     isoToCountryCode(isoCode: TuiCountryIsoCode): string {
-        return this.countriesMasks[isoCode].replace(MASK_AFTER_CODE_REGEXP, '');
+        return this.isoToCountryCodePipe.transform(isoCode);
     }
 
     /** @deprecated use 'value' setter */
@@ -230,33 +243,8 @@ export class TuiInputPhoneInternationalComponent
         this.open = false;
     }
 
-    private getMaxAllowedLength(isoCode: TuiCountryIsoCode): number {
-        return this.countriesMasks[isoCode].replace(/[()\- ]/g, '').length;
-    }
-
     private updateCountryIsoCode(code: TuiCountryIsoCode): void {
         this.countryIsoCode = code;
         this.countryIsoCodeChange.emit(code);
-    }
-
-    private extractCountryCode(value: string): TuiCountryIsoCode | undefined {
-        return this.countries.find(countryIsoCode => {
-            const ruCodeTest =
-                countryIsoCode === TuiCountryIsoCode.RU &&
-                /^[7 | 8]/.test(value) &&
-                /^(?!880[1-9 ])/.test(value) &&
-                value.length + 1 === this.getMaxAllowedLength(TuiCountryIsoCode.RU);
-
-            const matched =
-                ruCodeTest ||
-                (value.startsWith(
-                    this.isoToCountryCode(countryIsoCode).replace(CHAR_PLUS, ''),
-                ) &&
-                    value.length + 1 === this.getMaxAllowedLength(countryIsoCode));
-
-            return matched && countryIsoCode === TuiCountryIsoCode.RU
-                ? tuiNotKzRegion(value)
-                : matched;
-        });
     }
 }

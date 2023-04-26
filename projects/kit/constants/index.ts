@@ -1,6 +1,7 @@
 export * from './date-time-separator';
 export * from './empty-mask';
 export * from './group-class-names';
+export * from './mask-after-code-regexp';
 export * from './masks';
 export * from './math';
 export * from './max-day-range-length-mapper';
