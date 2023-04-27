@@ -38,6 +38,8 @@ const path = getValueByFlag<string>(`--path`, ``);
     execute(`npm publish ${path} ${tag} ${dry} --access public`);
 
     successLog(`+${packageJson.name}@${version} is published successfully`);
+
+    process.env[`TUI_MARKED_AS_PUBLISHED`] = `true`;
 })();
 
 function makeTag(version: string, versions: string[]): string {
