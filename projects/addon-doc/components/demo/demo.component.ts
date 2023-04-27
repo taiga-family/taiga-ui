@@ -5,6 +5,7 @@ import {
     ContentChild,
     ElementRef,
     forwardRef,
+    HostBinding,
     HostListener,
     Inject,
     Input,
@@ -21,6 +22,7 @@ import {
     TUI_IS_MOBILE,
     tuiClamp,
     tuiCleanObject,
+    tuiDefaultProp,
     TuiDestroyService,
     tuiPure,
     tuiPx,
@@ -58,6 +60,11 @@ export class TuiDocDemoComponent implements OnInit {
 
     @Input()
     control: AbstractControl | null = null;
+
+    @Input()
+    @HostBinding('class._sticky')
+    @tuiDefaultProp()
+    sticky = true;
 
     @ContentChild(TemplateRef)
     readonly template: TemplateRef<Record<string, unknown>> | null = null;

@@ -1007,8 +1007,8 @@ export const ROUTES: Routes = [
     {
         path: `editor/API`,
         loadChildren: async () =>
-            (await import(`../components/editor/setup/editor-setup.module`))
-                .ExampleTuiEditorSetupModule,
+            (await import(`../components/editor/starter/editor-starter.module`))
+                .ExampleTuiEditorStarterModule,
         data: {
             title: `Editor  — Starter Kit`,
         },
