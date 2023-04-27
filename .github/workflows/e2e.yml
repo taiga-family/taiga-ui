@@ -26,7 +26,7 @@ jobs:
     name: Build demo
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.2
         with:
           fetch-depth: 10
 
@@ -38,7 +38,7 @@ jobs:
         uses: ./.github/actions/nodejs
 
       - name: Mark demo-app directory for persist in cache
-        uses: actions/cache@v3
+        uses: actions/cache@v3.3.1
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
@@ -76,7 +76,7 @@ jobs:
           ]
     name: ${{ matrix.project }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.2
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
@@ -85,7 +85,7 @@ jobs:
         run: Xvfb :99 &
 
       - name: Download ${{ env.LOCAL_REF_DEMO }} for serve locally
-        uses: actions/cache@v3
+        uses: actions/cache@v3.3.1
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
@@ -117,7 +117,7 @@ jobs:
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
 
       - name: Update artifacts / ${{ env.SNAPSHOTS_KEY }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.1.2
         with:
           path: ${{ env.SNAPSHOTS_PATH }}/**/*.diff.png
           name: ${{ env.SNAPSHOTS_KEY }}
@@ -130,10 +130,10 @@ jobs:
     needs: [cypress]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.2
       - name: Download artifacts / ${{ env.SNAPSHOTS_KEY }}
         continue-on-error: true
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v3.0.2
         with:
           name: ${{ env.SNAPSHOTS_KEY }}
           path: ${{ env.SNAPSHOTS_PATH }}

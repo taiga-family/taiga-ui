@@ -39,14 +39,14 @@ runs:
         echo "github.event.pull_request.head.repo.full_name: ${{ github.event.pull_request.head.repo.full_name }}"
 
     - name: Use Node.js ${{ inputs.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v3.6.0
       with:
         node-version: ${{ inputs.node-version }}
         registry-url: 'https://registry.npmjs.org'
 
     - name: Restore node_modules from cache
       id: cache-node-modules
-      uses: actions/cache@v3
+      uses: actions/cache@v3.3.1
       with:
         path: |
           **/node_modules/
@@ -55,7 +55,7 @@ runs:
 
     - name: Restore from global NPM cache
       if: steps.cache-node-modules.outputs.cache-hit != 'true'
-      uses: actions/cache@v3
+      uses: actions/cache@v3.3.1
       with:
         path: ~/.npm
         key: npm-cache__nodejs-${{ inputs.node-version }}__${{ hashFiles('**/package-lock.json') }}

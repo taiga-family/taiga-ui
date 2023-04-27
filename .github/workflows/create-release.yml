@@ -27,7 +27,7 @@ jobs:
       IS_RRE_RELEASE_MODE: ${{ contains(github.event.inputs.mode, 'prerelease') }}
     steps:
       - name: Fetch from origin repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.2
         with:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
@@ -97,7 +97,7 @@ jobs:
 
       - name: Create GitHub Release
         if: ${{ env.IS_DRY_MODE == 'false' && env.IS_RRE_RELEASE_MODE == 'false' }}
-        uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@v1.12.0
         with:
           name: Release ${{ steps.generate_body.outputs.tag_name }}
           tag: ${{ steps.generate_body.outputs.tag_name }}

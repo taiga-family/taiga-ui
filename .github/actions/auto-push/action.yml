@@ -17,7 +17,7 @@ runs:
         git status
 
     - name: Push
-      uses: stefanzweifel/git-auto-commit-action@v4
+      uses: stefanzweifel/git-auto-commit-action@v4.16.0
       with:
         commit_user_name: 'tinkoff-bot'
         commit_user_email: 'tinkoff-bot@users.noreply.github.com'

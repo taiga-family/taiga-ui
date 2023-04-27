@@ -21,7 +21,7 @@ jobs:
     if: ${{ !contains(github.event.workflow_run.head_branch, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.2
       - name: Prepare demo before deploy from snapshots
         run: |
           git clone --depth 1 --branch snapshots/demo/v3.x ${{ env.REPO }} ${{ env.DIST }}

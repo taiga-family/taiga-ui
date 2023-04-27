@@ -15,10 +15,10 @@ jobs:
   bundling:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.2
         if: ${{ env.SUPPORT_AUTO_UPDATE != 'true' }}
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.2
         if: ${{ env.SUPPORT_AUTO_UPDATE == 'true' }}
         with:
           ref: ${{ github.head_ref }}

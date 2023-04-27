@@ -19,7 +19,7 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.2
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
       - name: Typecheck
@@ -31,13 +31,13 @@ jobs:
     steps:
       - name: Fetch from origin repo
         if: ${{ env.RUN_AUTOFIX == 'true' }}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.2
         with:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TINKOFF_BOT_PAT }}
       - name: Fetch from forked repo
         if: ${{ env.RUN_AUTOFIX == 'false' }}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.2
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
       - name: Run prettier
@@ -52,13 +52,13 @@ jobs:
     steps:
       - name: Fetch from origin repo
         if: ${{ env.RUN_AUTOFIX == 'true' }}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.2
         with:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TINKOFF_BOT_PAT }}
       - name: Fetch from forked repo
         if: ${{ env.RUN_AUTOFIX == 'false' }}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.2
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
       - name: Run stylelint
@@ -73,13 +73,13 @@ jobs:
     steps:
       - name: Fetch from origin repo
         if: ${{ env.RUN_AUTOFIX == 'true' }}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.2
         with:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TINKOFF_BOT_PAT }}
       - name: Fetch from forked repo
         if: ${{ env.RUN_AUTOFIX == 'false' }}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.2
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
       - name: Run eslint
