@@ -1,12 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    HostBinding,
-    HostListener,
-    Inject,
-    Input,
-} from '@angular/core';
+
 import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
@@ -16,6 +8,18 @@ import {
     tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
+
+
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ElementRef,
+    HostBinding,
+    HostListener,
+    Inject,
+    Input,
+} from '@angular/core';
+
 
 @Component({
     selector: 'button[tuiAction], a[tuiAction]',
