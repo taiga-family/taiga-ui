@@ -27,6 +27,10 @@ export function miscellaneousMigrations(options: TuiSchema): void {
     });
     replaceEnumProperty({
         enumName: `TuiCreditCardAutofillName`,
+        /**
+         * Do not mark `mounth` as incorrect.
+         * cspell:ignore mounth
+         */
         from: `CcExp_mounth`,
         to: `CcExpMonth`,
     });

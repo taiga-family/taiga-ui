@@ -1,5 +1,6 @@
 import {tuiLegacyEditorConverter} from '@taiga-ui/addon-editor';
 
+// cspell:disable
 describe(`tuiLegacyEditorConverter`, () => {
     it(`works`, () => {
         const before = `WYSIWYG (What you see is what you get) — Rich Text Editor for using with Angular forms.

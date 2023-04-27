@@ -83,7 +83,7 @@ describe(`Calendar`, () => {
         expect(await calendar.primitiveCalendarShown()).toBe(true);
     });
 
-    it(`onPaginationYearClick shows primtive year picker component`, async () => {
+    it(`onPaginationYearClick shows primitive year picker component`, async () => {
         const calendar = await loader.getHarness(TuiCalendarHarness);
 
         await calendar.clickPaginationYear();

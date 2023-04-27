@@ -18,7 +18,7 @@ import {
     removeInputProperty,
     replaceInputProperty,
 } from '../../../../utils/templates/ng-component-input-manipulations';
-import {TemplateResource} from '../../../interfaces/template-resourse';
+import {TemplateResource} from '../../../interfaces/template-resource';
 
 export function migrateInputSlider(
     fileSystem: DevkitFileSystem,

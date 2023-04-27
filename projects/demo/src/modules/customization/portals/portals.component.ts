@@ -26,7 +26,7 @@ export class PortalsComponent {
             './examples/1/portal/custom-host.template.html?raw'
         ),
         'portal/custom-host.module.ts': import(
-            './examples/1/portal/сustom-host.module.ts?raw'
+            './examples/1/portal/custom-host.module.ts?raw'
         ),
         'portal/custom-host.style.less': import(
             './examples/1/portal/custom-host.style.less?raw'

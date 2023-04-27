@@ -56,7 +56,7 @@ xdescribe(`Range`, () => {
         return pageObject.getByAutomationId(`${testContext.prefix}right`)!.nativeElement;
     }
 
-    function getFilledRangeOffeset(): {left: string; right: string} {
+    function getFilledRangeOffset(): {left: string; right: string} {
         const computedStyles = testComponent.el.nativeElement;
 
         return {
@@ -78,8 +78,8 @@ xdescribe(`Range`, () => {
     });
 
     it(`The bar is filled from 20% to 40%`, () => {
-        expect(getFilledRangeOffeset().left).toBe(`20%`);
-        expect(getFilledRangeOffeset().right).toBe(`60%`);
+        expect(getFilledRangeOffset().left).toBe(`20%`);
+        expect(getFilledRangeOffset().right).toBe(`60%`);
     });
 
     describe(`Changing values`, () => {
@@ -102,16 +102,16 @@ xdescribe(`Range`, () => {
                 getLeft().dispatchEvent(keydownArrowLeft);
                 fixture.detectChanges();
 
-                expect(getFilledRangeOffeset().left).toBe(`10%`);
-                expect(getFilledRangeOffeset().right).toBe(`60%`);
+                expect(getFilledRangeOffset().left).toBe(`10%`);
+                expect(getFilledRangeOffset().right).toBe(`60%`);
             });
 
             it(`Pressing the right arrow correctly paints the strip`, () => {
                 getLeft().dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
-                expect(getFilledRangeOffeset().left).toBe(`30%`);
-                expect(getFilledRangeOffeset().right).toBe(`60%`);
+                expect(getFilledRangeOffset().left).toBe(`30%`);
+                expect(getFilledRangeOffset().right).toBe(`60%`);
             });
         });
 
@@ -134,16 +134,16 @@ xdescribe(`Range`, () => {
                 getRight().dispatchEvent(keydownArrowLeft);
                 fixture.detectChanges();
 
-                expect(getFilledRangeOffeset().left).toBe(`20%`);
-                expect(getFilledRangeOffeset().right).toBe(`70%`);
+                expect(getFilledRangeOffset().left).toBe(`20%`);
+                expect(getFilledRangeOffset().right).toBe(`70%`);
             });
 
             it(`Pressing the right arrow correctly paints the strip`, () => {
                 getRight().dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
-                expect(getFilledRangeOffeset().left).toBe(`20%`);
-                expect(getFilledRangeOffeset().right).toBe(`50%`);
+                expect(getFilledRangeOffset().left).toBe(`20%`);
+                expect(getFilledRangeOffset().right).toBe(`50%`);
             });
         });
 
@@ -286,8 +286,8 @@ xdescribe(`Range`, () => {
                     testComponent.testValue.setValue(value);
                     fixture.detectChanges();
 
-                    expect(getFilledRangeOffeset().left).toBe(leftOffset);
-                    expect(getFilledRangeOffeset().right).toBe(rightOffset);
+                    expect(getFilledRangeOffset().left).toBe(leftOffset);
+                    expect(getFilledRangeOffset().right).toBe(rightOffset);
                 });
             }
         });

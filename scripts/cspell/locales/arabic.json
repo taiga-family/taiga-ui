@@ -1,0 +1,26 @@
+{
+    "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json",
+    "import": ["node_modules/@cspell/dict-ar/cspell-ext.json"],
+    "caseSensitive": false,
+    "words": [
+        "کلیز",
+        "گراهام",
+        "مونتی",
+        "پایتون",
+        "چپمن",
+        "(گیلیام",
+        "اریک",
+        "آیدل",
+        "جونز",
+        "مایکل",
+        "پیلین",
+        "گراهام",
+        "مونتى",
+        "بايثون",
+        "مونتى",
+        "پايثون",
+        "پايثونز",
+        "كانو",
+        "گیلیام"
+    ]
+}

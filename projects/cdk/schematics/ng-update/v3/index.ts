@@ -24,7 +24,7 @@ import {replaceServices} from '../steps/replace-services';
 import {showWarnings} from '../steps/show-warnings';
 import {getFileSystem} from '../utils/get-file-system';
 import {migrateExpandTemplates} from '../v3-5/steps/migrate-expand-templates';
-import {CONSTS_TO_REPLACE} from './constants/consts';
+import {CONSTANTS_TO_REPLACE} from './constants/constants';
 import {ENUMS_TO_REPLACE} from './constants/enums';
 import {REMOVED_MODULES} from './constants/modules';
 import {SERVICES_TO_REPLACE} from './constants/services';
@@ -87,7 +87,7 @@ function main(options: TuiSchema): Rule {
         replaceDeepImports(options);
         replaceEnums(options, ENUMS_TO_REPLACE);
         renameTypes(options, TYPES_TO_RENAME);
-        replaceConstants(options, CONSTS_TO_REPLACE);
+        replaceConstants(options, CONSTANTS_TO_REPLACE);
         replaceServices(options, SERVICES_TO_REPLACE);
         replaceStyles();
         showWarnings(context, MIGRATION_WARNINGS);

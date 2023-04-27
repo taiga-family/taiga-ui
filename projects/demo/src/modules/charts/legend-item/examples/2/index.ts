@@ -38,7 +38,7 @@ export class TuiLegendItemExample2 {
     onClick(index: number): void {
         if (this.isEnabled(index)) {
             this.alerts
-                .open(`Category spendings: ${tuiFormatNumber(this.data[index])} ₽`, {
+                .open(`Category spending: ${tuiFormatNumber(this.data[index])} ₽`, {
                     label: this.labels[index],
                 })
                 .subscribe();

@@ -9,7 +9,7 @@ describe(`InputTime`, () => {
             `dropdown`,
             `options`,
             `options-max`,
-            `options-ampm`,
+            `options-max-and-postfix`,
         ].entries()) {
             it(id, () => {
                 cy.get(`#${id}`)

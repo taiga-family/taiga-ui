@@ -75,8 +75,8 @@ describe(`InputDateRangeComponent`, () => {
         declarations: [TestComponent],
     };
 
-    function initializeEnvironment(clazz: Type<TestComponent> = TestComponent): void {
-        fixture = TestBed.createComponent(clazz);
+    function initializeEnvironment(type: Type<TestComponent> = TestComponent): void {
+        fixture = TestBed.createComponent(type);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

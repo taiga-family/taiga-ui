@@ -87,7 +87,7 @@ describe(`TuiHostedDropdown`, () => {
         mode: 'can-not-open' | 'default' | 'input' | 'targeted' = `default`;
         canOpen = true;
 
-        escCatched = false;
+        escCaught = false;
 
         get input(): boolean {
             return this.mode === `input`;
@@ -106,7 +106,7 @@ describe(`TuiHostedDropdown`, () => {
         }
 
         onEsc(): void {
-            this.escCatched = true;
+            this.escCaught = true;
         }
     }
 
@@ -270,7 +270,7 @@ describe(`TuiHostedDropdown`, () => {
             testComponent.tuiTextfield.nativeFocusableElement?.focus();
             tuiDispatchOnActive(`escape`, fixture);
 
-            expect(testComponent.escCatched).toBe(true);
+            expect(testComponent.escCaught).toBe(true);
         });
     });
 

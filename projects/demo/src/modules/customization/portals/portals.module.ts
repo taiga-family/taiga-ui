@@ -6,7 +6,7 @@ import {TuiButtonModule, TuiSvgModule} from '@taiga-ui/core';
 import {TuiAvatarModule} from '@taiga-ui/kit';
 
 import {TuiPortalsExample1} from './examples/1';
-import {CustomHostModule} from './examples/1/portal/сustom-host.module';
+import {CustomHostModule} from './examples/1/portal/custom-host.module';
 import {PortalsComponent} from './portals.component';
 
 @NgModule({

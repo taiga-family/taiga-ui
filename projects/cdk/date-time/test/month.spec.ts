@@ -194,7 +194,7 @@ describe(`TuiMonth`, () => {
                         expect(new TuiMonth(2000, 4).formattedMonthPart).toBe(`05`);
                     });
                 });
-                describe(`month withouth padded '0' if it is a two digit month`, () => {
+                describe(`month without padded '0' if it is a two digit month`, () => {
                     it(`'10' if month is 9`, () => {
                         expect(new TuiMonth(2000, 9).formattedMonthPart).toBe(`10`);
                     });

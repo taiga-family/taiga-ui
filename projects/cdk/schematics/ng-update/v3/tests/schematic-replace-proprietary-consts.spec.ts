@@ -81,7 +81,7 @@ export class TuiAccountExample1 extends TuiAccountComponent {
 export class ExampleTuiAccountModule {}
 `;
 
-describe(`ng-update proprietary consts`, () => {
+describe(`ng-update proprietary constants`, () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
@@ -96,7 +96,7 @@ describe(`ng-update proprietary consts`, () => {
         saveActiveProject();
     });
 
-    it(`should replace proprietary consts`, async () => {
+    it(`should replace proprietary constants`, async () => {
         const tree = await runner
             .runSchematicAsync(
                 `updateToV3`,

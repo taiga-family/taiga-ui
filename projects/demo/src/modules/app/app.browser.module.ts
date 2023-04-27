@@ -18,7 +18,7 @@ import {MetrikaModule} from 'ng-yandex-metrika';
 import {MarkdownModule} from 'ngx-markdown';
 
 import {environment} from '../../environments/environment';
-import {CustomHostModule} from '../customization/portals/examples/1/portal/сustom-host.module';
+import {CustomHostModule} from '../customization/portals/examples/1/portal/custom-host.module';
 import {AppComponent} from './app.component';
 import {APP_PROVIDERS} from './app.providers';
 import {AppRoutingModule} from './app.routes';

@@ -1,0 +1,30 @@
+{
+    "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json",
+    "caseSensitive": false,
+    "words": [
+        "angularjs",
+        "ngFor",
+        "ngIf",
+        "nativeElement",
+        "elementRef",
+        "ngModule",
+        "ngSummary",
+        "ngFactory",
+        "ngStyle",
+        "compat",
+        "ngcc",
+        "dompurify",
+        "nguniversal",
+        "packagr",
+        "nrwl",
+        "treeshakable",
+        "takeuntil",
+        "nosideeffects",
+        "titlecase",
+        "dasherize",
+        "buildable",
+        "cacheable",
+        "prerender",
+        "routable"
+    ]
+}

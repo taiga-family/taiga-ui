@@ -284,7 +284,7 @@ All notable changes to this project will be documented in this file. See
 
 ### Bug Fixes
 
-- **addon-charts:** `dot` dont shrink to fit own width for `legend-item`
+- **addon-charts:** `dot` don't shrink to fit own width for `legend-item`
   ([#3905](https://github.com/tinkoff/taiga-ui/issues/3905))
   ([4109764](https://github.com/tinkoff/taiga-ui/commit/4109764c38ff2614da325d8f90bee262657ee39d))
 - **addon-commerce:** emulate focus on iOS by `tuiAutoFocus` ([#3799](https://github.com/tinkoff/taiga-ui/issues/3799))
@@ -315,7 +315,7 @@ All notable changes to this project will be documented in this file. See
   ([47eb6ae](https://github.com/tinkoff/taiga-ui/commit/47eb6ae653fe88f803710171da3b137dd8c95bd6))
 - **kit:** `InputTag`, `Multiselect` fix placeholder ([#3832](https://github.com/tinkoff/taiga-ui/issues/3832))
   ([75d4b6e](https://github.com/tinkoff/taiga-ui/commit/75d4b6efbe5bc9f607b74b711352c592e358b006))
-- **kit:** `InputTime` fix wrong preudofocus state ([#3896](https://github.com/tinkoff/taiga-ui/issues/3896))
+- **kit:** `InputTime` fix wrong pseudofocus state ([#3896](https://github.com/tinkoff/taiga-ui/issues/3896))
   ([dea3de7](https://github.com/tinkoff/taiga-ui/commit/dea3de782d622b9e14597c9eabd898733ca15bf1))
 - **kit:** use ellipsis for label in `pdf-viewer` when overflow text
   ([#3845](https://github.com/tinkoff/taiga-ui/issues/3845))
@@ -923,7 +923,7 @@ All notable changes to this project will be documented in this file. See
   ([0264b38](https://github.com/tinkoff/taiga-ui/commit/0264b388a43c916a1409ec187ba77754257188c5))
 - **kit:** `Avatar` allow Taiga UI icons ([#2824](https://github.com/tinkoff/taiga-ui/issues/2824))
   ([cfa5ead](https://github.com/tinkoff/taiga-ui/commit/cfa5ead78c2c60c6bb469843b0272a3a882eaed6))
-- **kit:** `Badge` add overflow elipsis and title ([#2806](https://github.com/tinkoff/taiga-ui/issues/2806))
+- **kit:** `Badge` add overflow ellipsis and title ([#2806](https://github.com/tinkoff/taiga-ui/issues/2806))
   ([02713d6](https://github.com/tinkoff/taiga-ui/commit/02713d63ebfd7290420df66d37b5919db9138c3c))
 - **kit:** `Carousel` allow vertical alignment control ([#2814](https://github.com/tinkoff/taiga-ui/issues/2814))
   ([36d3c6f](https://github.com/tinkoff/taiga-ui/commit/36d3c6f019e61203e021d6c7854c9cdc7559286b))

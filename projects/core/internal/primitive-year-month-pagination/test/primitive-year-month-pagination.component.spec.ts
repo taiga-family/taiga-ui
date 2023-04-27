@@ -116,7 +116,7 @@ describe(`PrimitiveYearMonthPaginationComponent`, () => {
         });
 
         describe(`onNextMonthClick`, () => {
-            describe(`inscreases value if`, () => {
+            describe(`increases value if`, () => {
                 it(`date in value is bigger than max`, () => {
                     component.onNextMonthClick();
                     expect(testComponent.value.toJSON()).toBe(`2000-08`);

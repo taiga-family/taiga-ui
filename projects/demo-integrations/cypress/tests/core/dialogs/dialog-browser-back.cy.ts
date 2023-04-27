@@ -58,7 +58,7 @@ describe(`Dialogs + browser back navigation`, () => {
             cy.url().should(`equal`, getFullUrl(`/`));
         });
 
-        it(`doesnt break browser back navigation after closing dialog in the usual way (without back button)`, () => {
+        it(`doesn't break browser back navigation after closing dialog in the usual way (without back button)`, () => {
             /* open dialog */
             cy.getByAutomationId(`tui-doc-example`)
                 .first()

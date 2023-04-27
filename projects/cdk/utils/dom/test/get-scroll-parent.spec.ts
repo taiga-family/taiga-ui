@@ -23,7 +23,7 @@ describe(`tuiGetScrollParent`, () => {
         expect(tuiGetScrollParent(element, false)).toEqual(element);
     });
 
-    it(`Shoul return parent element`, () => {
+    it(`Should return parent element`, () => {
         const parentElement = document.createElement(`div`);
         const childElement = document.createElement(`div`);
 

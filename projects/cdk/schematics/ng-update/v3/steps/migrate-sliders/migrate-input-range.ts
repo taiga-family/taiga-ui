@@ -14,7 +14,7 @@ import {setupProgressLogger} from '../../../../utils/progress';
 import {projectRoot} from '../../../../utils/project-root';
 import {getComponentTemplates} from '../../../../utils/templates/get-component-templates';
 import {replaceInputProperty} from '../../../../utils/templates/ng-component-input-manipulations';
-import {TemplateResource} from '../../../interfaces/template-resourse';
+import {TemplateResource} from '../../../interfaces/template-resource';
 
 const MIN_LABELS_MIGRATION_METHOD_NAME = `tuiMigrationInputRangeMinLabel`;
 const MAX_LABELS_MIGRATION_METHOD_NAME = `tuiMigrationInputRangeMaxLabel`;

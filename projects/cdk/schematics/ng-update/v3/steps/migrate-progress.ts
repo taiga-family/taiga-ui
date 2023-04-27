@@ -23,7 +23,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
-import {TemplateResource} from '../../interfaces/template-resourse';
+import {TemplateResource} from '../../interfaces/template-resource';
 
 export const DEPRECATED_PROGRESS_PIPES_REG =
     // eslint-disable-next-line unicorn/no-unsafe-regex

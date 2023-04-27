@@ -40,7 +40,7 @@ describe(`Portal directive`, () => {
         fixture.detectChanges();
     });
 
-    it(`doesnt show template initially`, () => {
+    it(`doesn't show template initially`, () => {
         expect(getPortal()).toBeNull();
     });
 
