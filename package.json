@@ -117,7 +117,7 @@
         "http-server": "0.13.0",
         "husky": "8.0.3",
         "kill-port": "2.0.1",
-        "lint-staged": "13.2.1",
+        "lint-staged": "13.2.2",
         "ng-packagr": "12.2.7",
         "postcss": "8.4.23",
         "prettier": "2.8.8",
