@@ -15,10 +15,6 @@ env:
   SNAPSHOTS_PATH: ./projects/demo-integrations/cypress/snapshots
   CYPRESS_API_URL: http://localhost:1234/
   CYPRESS_failOnSnapshotDiff: 0
-  QT_X11_NO_MITSHM: 1
-  _X11_NO_MITSHM: 1
-  _MITSHM: 0
-  DISPLAY: ':99'
 
 jobs:
   build-demo:
@@ -79,10 +75,6 @@ jobs:
       - uses: actions/checkout@v3.5.2
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
-
-      - name: Ignore running parallel Xvfb servers
-        shell: bash
-        run: Xvfb :99 &
 
       - name: Download ${{ env.LOCAL_REF_DEMO }} for serve locally
         uses: actions/cache@v3.3.1
