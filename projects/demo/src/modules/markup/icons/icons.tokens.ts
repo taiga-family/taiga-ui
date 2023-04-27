@@ -20,6 +20,13 @@ export const COMMERCE: DemoTuiIcon[] = [
     `tuiIconMirMono`,
     `tuiIconVisa`,
     `tuiIconVisaMono`,
+    `tuiIconUnionPay`,
+    `tuiIconApplePay`,
+    `tuiIconGooglePay`,
+    `tuiIconJCB`,
+    `tuiIconPayPal`,
+    `tuiIconSamsungPay`,
+    `tuiIconWorldPay`,
 ];
 
 // TODO: remove in 4.0
@@ -36,10 +43,10 @@ const {LARGE, NORMAL} = ensureIcons();
 
 export const ICONS = (deprecated: TuiStringHandler<string>): DemoTuiIconsTabs => ({
     'Description and examples': {
-        [`Normal interface icons / 16px`]: NORMAL.filter(
+        [`Normal / 16px`]: NORMAL.filter(
             icon => !deprecated(icon) && !DEPRECATED.includes(icon),
         ),
-        [`Large interface icons / 24px`]: LARGE.filter(
+        [`Large / 24px`]: LARGE.filter(
             icon => !deprecated(icon) && !DEPRECATED.includes(icon),
         ),
         [`Payment systems`]: COMMERCE,
