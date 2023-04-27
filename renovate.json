@@ -91,10 +91,15 @@
         {
             "groupName": "tiptap",
             "matchUpdateTypes": ["minor", "patch"],
-            "matchPackagePatterns": ["^@tiptap/.*", "^prosemirror.*"]
+            "matchPackagePatterns": ["^@tiptap/.*"]
         },
         {
-            "groupName": "types",
+            "groupName": "prosemirror",
+            "matchUpdateTypes": ["minor", "patch"],
+            "matchPackagePatterns": ["^prosemirror.*"]
+        },
+        {
+            "groupName": "definitely typed",
             "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["^@types/.*"]
         },
@@ -104,12 +109,12 @@
             "matchPackagePatterns": ["^prettier"]
         },
         {
-            "groupName": "nrwl",
+            "groupName": "nrwl toolset",
             "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["^@nrwl/.*"]
         },
         {
-            "groupName": "cypress",
+            "groupName": "cypress toolset",
             "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["cypress", "cy2", "@types/cypress-image-snapshot", "cypress-image-snapshot"]
         },
@@ -124,37 +129,61 @@
             "matchPackagePatterns": ["^@tinkoff/.*"]
         },
         {
-            "groupName": "icons",
+            "groupName": "rollup",
             "matchUpdateTypes": ["minor", "patch"],
-            "matchPackagePatterns": ["^rollup.*", "@types/svgo", "@rollup/pluginutils", "svgo"]
+            "matchPackagePatterns": ["^rollup.*", "@rollup/pluginutils"]
         },
         {
-            "groupName": "tools",
+            "groupName": "svgo",
+            "matchUpdateTypes": ["minor", "patch"],
+            "matchPackagePatterns": ["@types/svgo", "svgo"]
+        },
+        {
+            "groupName": "firebase",
+            "matchUpdateTypes": ["minor", "patch"],
+            "matchPackagePatterns": ["firebase-tools"]
+        },
+        {
+            "groupName": "stackblitz sdk",
+            "matchUpdateTypes": ["minor", "patch"],
+            "matchPackagePatterns": ["^@stackblitz/.*"]
+        },
+        {
+            "groupName": "nodejs toolset",
             "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": [
                 "find-in-files",
-                "ts-loader",
                 "ts-node",
                 "wait-on",
                 "kill-port",
                 "http-server",
-                "firebase-tools",
                 "husky",
-                "postcss",
                 "standard-version",
-                "angular-http-server",
                 "bundlemon",
-                "parse5",
-                "core-js",
-                "date-fns",
                 "cpy-cli",
+                "express",
+                "showdown"
+            ]
+        },
+        {
+            "groupName": "webpack toolset",
+            "matchUpdateTypes": ["minor", "patch"],
+            "matchPackagePatterns": ["ts-loader", "less-plugin-npm-import", "postcss"]
+        },
+        {
+            "groupName": "javascript toolset",
+            "matchUpdateTypes": ["minor", "patch"],
+            "matchPackagePatterns": ["core-js", "date-fns", "parse5"]
+        },
+        {
+            "groupName": "angular toolset",
+            "matchUpdateTypes": ["minor", "patch"],
+            "matchPackagePatterns": [
+                "angular-http-server",
                 "ng-yandex-metrika",
                 "ngx-markdown",
-                "dompurify",
-                "^@stackblitz/.*",
-                "express",
-                "less-plugin-npm-import",
-                "showdown"
+                "ng-morph",
+                "dompurify"
             ]
         },
         {
@@ -163,6 +192,7 @@
             "matchPackagePatterns": [
                 "^eslint.*",
                 "^@types/eslint$",
+                "^@types/eslint-.*",
                 "^@angular-eslint/.*",
                 "^@html-eslint/.*",
                 "^@typescript-eslint/.*",
@@ -181,10 +211,30 @@
             "matchPackagePatterns": ["^jasmine.*"]
         },
         {
-            "groupName": "renovate",
+            "groupName": "Github actions",
             "matchDatasources": ["github-tags"],
             "matchUpdateTypes": ["minor", "patch"],
-            "matchPackageNames": ["renovatebot/github-action"]
+            "matchPackageNames": [
+                "actions/cache",
+                "actions/checkout",
+                "actions/setup-node",
+                "actions/upload-artifact",
+                "actions/add-to-project",
+                "actions/download-artifact",
+                "peter-evans/rebase",
+                "ncipollo/release-action",
+                "github/codeql-action/init",
+                "s0/git-publish-subdir-action",
+                "renovatebot/github-action",
+                "codecov/codecov-action",
+                "peaceiris/actions-gh-pages",
+                "github/codeql-action/analyze",
+                "agoldis/sorry-cypress-director",
+                "toshimaru/auto-author-assign",
+                "imba-tjd/rebase-upstream-action",
+                "stefanzweifel/git-auto-commit-action",
+                "actions-ecosystem/action-remove-labels"
+            ]
         }
     ]
 }

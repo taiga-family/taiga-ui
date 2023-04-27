@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Autorebase from main branch
-        uses: peter-evans/rebase@v2
+        uses: peter-evans/rebase@v2.0.1
         with:
           base: main
           token: ${{ secrets.TINKOFF_BOT_PAT }}
