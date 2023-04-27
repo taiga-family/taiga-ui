@@ -19,7 +19,7 @@ import {map} from 'rxjs/operators';
 // note: fix problem for strange behavior in viewEngine with export { ɵ_0, ɵ_1 };
 export function tuiProvideMutationOptionsForAppBar(): Provider {
     return {
-        provide: TUI_BUTTON_OPTIONS,
+        provide: MUTATION_OBSERVER_INIT,
         useValue: {
             characterData: true,
             childList: true,
@@ -31,7 +31,7 @@ export function tuiProvideMutationOptionsForAppBar(): Provider {
 // note: fix problem for strange behavior in viewEngine with export { ɵ_0, ɵ_1 };
 export function tuiProvideButtonOptionsForAppBar(): Provider {
     return {
-        provide: MUTATION_OBSERVER_INIT,
+        provide: TUI_BUTTON_OPTIONS,
         useValue: {
             ...TUI_BUTTON_DEFAULT_OPTIONS,
             size: 'm',
