@@ -1,4 +1,3 @@
-
 import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
@@ -9,7 +8,6 @@ import {
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 
-
 import {
     ChangeDetectionStrategy,
     Component,
@@ -19,7 +17,6 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-
 
 @Component({
     selector: 'button[tuiAction], a[tuiAction]',
