@@ -15,7 +15,8 @@ describe(`Editor API fonts`, () => {
         tuiOpenFontTool()
             .findByAutomationId(`tui_font__title`)
             .tuiWaitBeforeScreenshot()
-            .click();
+            .click({force: true});
+
         tuiGetContentEditable().type(`Hello world`).tuiWaitBeforeScreenshot();
         tuiGetScreenshotArea().matchImageSnapshot(`01-editor-font`);
 
@@ -24,7 +25,8 @@ describe(`Editor API fonts`, () => {
         tuiOpenFontTool()
             .findByAutomationId(`tui_font__normal`)
             .tuiWaitBeforeScreenshot()
-            .click();
+            .click({force: true});
+
         tuiGetScreenshotArea().matchImageSnapshot(`02-editor-font`);
 
         // step 3
@@ -32,7 +34,8 @@ describe(`Editor API fonts`, () => {
         tuiOpenFontTool()
             .findByAutomationId(`tui_font__title`)
             .tuiWaitBeforeScreenshot()
-            .click();
+            .click({force: true});
+
         tuiGetScreenshotArea().matchImageSnapshot(`03-editor-font`);
     });
 });

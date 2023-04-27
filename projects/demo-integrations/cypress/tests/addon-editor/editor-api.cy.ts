@@ -53,7 +53,7 @@ describe(`Editor API`, () => {
                     tuiOpenFontTool()
                         .findByAutomationId(`tui_font__${type.toLowerCase()}`)
                         .tuiWaitBeforeScreenshot()
-                        .click();
+                        .click({force: true});
 
                     tuiGetContentEditable()
                         .type(`${type}{enter}`)

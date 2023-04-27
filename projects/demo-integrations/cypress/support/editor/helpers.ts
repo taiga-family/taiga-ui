@@ -77,7 +77,7 @@ export function tuiClearHint(): void {
 export function tuiInsertLink(): void {
     tuiGetDemoContent()
         .find(`tui-toolbar button[icon=tuiIconLinkLarge]`)
-        .click()
+        .click({force: true})
         .tuiWaitBeforeScreenshot();
 
     cy.get(`body`).then($body => {
@@ -100,7 +100,7 @@ export function tuiOpenFontTool(): Cypress.Chainable<JQuery> {
 
     cy.get(`body`).then($body => {
         if ($body.find(`tui-data-list[role="listbox"]`).length === 0) {
-            cy.get(`@iconFontLargeTool`).click();
+            cy.get(`@iconFontLargeTool`).click({force: true});
         }
     });
 
