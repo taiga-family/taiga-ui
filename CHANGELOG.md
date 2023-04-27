@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.85.0](https://github.com/tinkoff/taiga-ui/compare/v2.84.0...v2.85.0) (2023-04-27)
+
+### Features
+
+- **addon-mobile:** `AppBar` add new component
+  ([f19d092](https://github.com/tinkoff/taiga-ui/commit/f19d092616a380159ee028e4d8083b1017504ffe))
+- **addon-mobile:** `AppBar` add new component ([#4303](https://github.com/tinkoff/taiga-ui/issues/4303))
+  ([7791a9b](https://github.com/tinkoff/taiga-ui/commit/7791a9b84a96eb8e1a1c6aaa108090ee4077a243))
+
+### Bug Fixes
+
+- **kit:** `Combobox` fix immediate reset after value change ([#4271](https://github.com/tinkoff/taiga-ui/issues/4271))
+  ([52a5319](https://github.com/tinkoff/taiga-ui/commit/52a53196b4cb2f84f751f73fe7008e631e1044ad))
+- **kit:** `InputDateTime` fix value setting when using valueTransformer
+  ([#4298](https://github.com/tinkoff/taiga-ui/issues/4298))
+  ([a8fd33f](https://github.com/tinkoff/taiga-ui/commit/a8fd33fe7ac2052cf0affaa22ebd9c974bfbc3eb))
+
 ## [2.84.0](https://github.com/tinkoff/taiga-ui/compare/v2.83.0...v2.84.0) (2023-04-17)
 
 ### Features
