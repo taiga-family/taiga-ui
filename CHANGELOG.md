@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.86.0](https://github.com/tinkoff/taiga-ui/compare/v2.85.0...v2.86.0) (2023-04-27)
+
+### Bug Fixes
+
+- **addon-mobile:** invalid mutation observer options
+  ([e16dd41](https://github.com/tinkoff/taiga-ui/commit/e16dd41f6bdc555e0fb9c2dffae32dcfd580cf39))
+
 ## [2.85.0](https://github.com/tinkoff/taiga-ui/compare/v2.84.0...v2.85.0) (2023-04-27)
 
 ### Features
