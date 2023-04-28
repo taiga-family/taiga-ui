@@ -1,6 +1,5 @@
 import {DOCUMENT} from '@angular/common';
 import {
-    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -34,19 +33,15 @@ import {
     AbstractTuiControl,
     AbstractTuiValueTransformer,
     ALWAYS_FALSE_HANDLER,
-    tuiAsAutofocusHandler,
     tuiAsFocusableItemAccessor,
-    TuiAutofocusHandler,
     TuiBooleanHandler,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {Editor} from '@tiptap/core';
-import {combineLatest, Observable, Subject} from 'rxjs';
-import {delay, takeUntil} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
-import {TUI_PROSEMIRROR_SELECTOR} from './editor.constants';
 import {TUI_EDITOR_PROVIDERS} from './editor.providers';
 
 @Component({
@@ -54,20 +49,14 @@ import {TUI_EDITOR_PROVIDERS} from './editor.providers';
     templateUrl: './editor.component.html',
     styleUrls: ['./editor.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        tuiAsFocusableItemAccessor(TuiEditorComponent),
-        tuiAsAutofocusHandler(TuiEditorComponent),
-        TUI_EDITOR_PROVIDERS,
-    ],
+    providers: [tuiAsFocusableItemAccessor(TuiEditorComponent), TUI_EDITOR_PROVIDERS],
 })
 export class TuiEditorComponent
     extends AbstractTuiControl<string>
-    implements AfterViewInit, OnDestroy, TuiFocusableElementAccessor, TuiAutofocusHandler
+    implements OnDestroy, TuiFocusableElementAccessor
 {
     @ViewChild(TuiTiptapEditorDirective, {read: ElementRef})
     private readonly el?: ElementRef<HTMLElement>;
-
-    private readonly focused$ = new Subject<void>();
 
     @Input()
     @tuiDefaultProp()
@@ -106,12 +95,6 @@ export class TuiEditorComponent
 
     get nativeFocusableElement(): HTMLElement | null {
         return this.computedDisabled ? null : this.el?.nativeElement || null;
-    }
-
-    get contentEditableElement(): HTMLDivElement | null {
-        return this.el?.nativeElement.querySelector(
-            TUI_PROSEMIRROR_SELECTOR,
-        ) as HTMLDivElement | null;
     }
 
     get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
@@ -176,16 +159,6 @@ export class TuiEditorComponent
 
     removeLink(): void {
         this.editor?.unsetLink();
-    }
-
-    setFocus(): void {
-        this.focused$.next();
-    }
-
-    ngAfterViewInit(): void {
-        combineLatest([this.focused$, this.editorLoaded$])
-            .pipe(delay(0), takeUntil(this.destroy$))
-            .subscribe(() => this.contentEditableElement?.focus());
     }
 
     override ngOnDestroy(): void {
