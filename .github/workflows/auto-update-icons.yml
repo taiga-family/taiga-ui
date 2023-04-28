@@ -1,7 +1,9 @@
 name: 🤖 Auto update bundled icons
 
 on:
-  pull_request:
+  push:
+    branches:
+      - '!release/**'
   workflow_dispatch:
 
 env:

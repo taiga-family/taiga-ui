@@ -1,6 +1,10 @@
 name: 🚀 Deploy / preview
 
-on: pull_request
+on:
+  push:
+    branches:
+      - !main
+      - 'release/*'
 
 env:
   IS_FORK: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
@@ -8,7 +12,6 @@ env:
 
 jobs:
   build_and_preview:
-    if: ${{ !contains(github.head_ref, 'release/') }}
     name: Firebase
     runs-on: ubuntu-latest
     steps:

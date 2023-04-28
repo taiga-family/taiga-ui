@@ -2,15 +2,13 @@ name: ⚙️ CodeQL
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - main
   schedule:
     - cron: '40 7 * * 6'
 
 jobs:
   analyze:
-    if: ${{ !contains(github.head_ref, 'release/') }}
     name: Analyze
     runs-on: ubuntu-latest
     permissions:

@@ -1,18 +1,8 @@
 name: ⚙️ Unit tests
 
 on:
-  pull_request:
-    paths:
-      - 'projects/**'
-      - '!projects/demo/**'
-      - '!projects/icons/**'
-      - '**/test.yml'
-      - 'angular.json'
-      - 'package.json'
-      - 'tsconfig*'
   push:
     branches:
-      - main
       - '!release/**'
 
 env:
@@ -23,7 +13,6 @@ env:
 
 jobs:
   test:
-    if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
