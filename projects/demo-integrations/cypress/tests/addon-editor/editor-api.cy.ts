@@ -8,6 +8,7 @@ import {
     tuiGetEditorScrollbarArea,
     tuiGetNgModelValue,
     tuiGetScreenshotArea,
+    tuiGetTipTapContentSelector,
     tuiInsertLink,
     tuiOpenAnchorDropdown,
     tuiOpenFontTool,
@@ -27,8 +28,6 @@ import {
     HTML_EDITOR_EXAMPLE_UL,
     HTML_EDITOR_EXAMPLE_WITH_DETAILS_INSIDE_LIST,
 } from '@demo-integrations/support/editor/html';
-
-import {TUI_PROSEMIRROR_SELECTOR} from '../../../../addon-editor/components/editor/editor.constants';
 
 describe(`Editor API`, () => {
     describe(`Check fonts in light and dark mode`, () => {
@@ -170,7 +169,7 @@ describe(`Editor API`, () => {
             tuiVisitEditorApiPage({content: ``});
             tuiGetDemoContent().as(`wrapper`);
 
-            cy.get(`@wrapper`).find(TUI_PROSEMIRROR_SELECTOR).as(`editor`);
+            cy.get(`@wrapper`).find(tuiGetTipTapContentSelector()).as(`editor`);
 
             toggleBullet(`tuiIconListLarge`);
 
@@ -208,7 +207,7 @@ describe(`Editor API`, () => {
             tuiVisitEditorApiPage({content: ``});
             tuiGetDemoContent().as(`wrapper`);
 
-            cy.get(`@wrapper`).find(TUI_PROSEMIRROR_SELECTOR).as(`editor`);
+            cy.get(`@wrapper`).find(tuiGetTipTapContentSelector()).as(`editor`);
 
             toggleBullet(`tuiIconListLarge`);
             cy.get(`@editor`).type(`1{enter}`);

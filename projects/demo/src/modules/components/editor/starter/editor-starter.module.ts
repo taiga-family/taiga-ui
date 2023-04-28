@@ -4,7 +4,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiEditorModule, TuiEditorSocketModule} from '@taiga-ui/addon-editor';
-import {TuiAutoFocusModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiLinkModule,
@@ -31,7 +30,6 @@ import {ExampleEditorStarterComponent} from './editor-starter.component';
         TuiSvgModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleEditorStarterComponent)),
         TuiLoaderModule,
-        TuiAutoFocusModule,
     ],
     declarations: [ExampleEditorStarterComponent],
     exports: [ExampleEditorStarterComponent],
