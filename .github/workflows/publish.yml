@@ -29,6 +29,7 @@ jobs:
         run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
       - name: Announce
+        if: ${{ env.TUI_MARKED_AS_PUBLISHED == 'true' }}
         uses: ./.github/actions/announce
         with:
           version: ${{ steps.info.outputs.version }}
