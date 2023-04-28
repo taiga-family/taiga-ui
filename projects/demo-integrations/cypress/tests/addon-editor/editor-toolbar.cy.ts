@@ -1,8 +1,9 @@
 import {
     tuiGetDemoContent,
-    tuiGetTipTapContentSelector,
     tuiVisitEditorApiPage,
 } from '@demo-integrations/support/editor/helpers';
+
+import {TUI_PROSEMIRROR_SELECTOR} from '../../../../addon-editor/components/editor/editor.constants';
 
 describe(`Editor's toolbar`, () => {
     beforeEach(() => tuiVisitEditorApiPage());
@@ -51,7 +52,7 @@ describe(`Editor's toolbar`, () => {
             .tuiScrollIntoView()
             .as(`wrapper`);
 
-        cy.get(`@wrapper`).find(tuiGetTipTapContentSelector()).as(`input`);
+        cy.get(`@wrapper`).find(TUI_PROSEMIRROR_SELECTOR).as(`input`);
 
         cy.get(`.smiles`).should(`not.exist`);
         cy.get(`@input`).should(`not.be.focused`);
@@ -92,7 +93,7 @@ describe(`Editor's toolbar`, () => {
     it(`make a html table by 2x2`, () => {
         tuiGetDemoContent().as(`wrapper`);
 
-        cy.get(`@wrapper`).find(tuiGetTipTapContentSelector()).as(`input`);
+        cy.get(`@wrapper`).find(TUI_PROSEMIRROR_SELECTOR).as(`input`);
 
         cy.get(`@input`).type(`\n`, {force: true}).blur().tuiWaitBeforeAction();
 
@@ -123,7 +124,7 @@ describe(`Editor's toolbar`, () => {
 
     it(`set table without style inheritance`, () => {
         tuiGetDemoContent().as(`wrapper`);
-        cy.get(`@wrapper`).find(tuiGetTipTapContentSelector()).as(`input`);
+        cy.get(`@wrapper`).find(TUI_PROSEMIRROR_SELECTOR).as(`input`);
 
         cy.get(`@input`)
             .type(`{selectall}{backspace}`, {force: true})
