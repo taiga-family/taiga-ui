@@ -2,7 +2,8 @@ name: 🤖 Auto rebase from main branch
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   rebase:

@@ -2,7 +2,10 @@ name: 🚀 Snapshots
 
 on:
   push:
-    branches: [main, 'v[0-9]+.x', 'release/**']
+    branches:
+      - main
+      - 'v[0-9]+.x'
+      - 'release/**'
 
 env:
   NX_BRANCH: ${{ github.event.number }}

@@ -1,9 +1,10 @@
 name: ⚙️ Build
 
 on:
-  pull_request:
   push:
-    branches: [main]
+    branches:
+      - '**'
+      - '!release/**'
 
 env:
   NX_BRANCH: ${{ github.event.number }}
@@ -11,7 +12,6 @@ env:
 
 jobs:
   build:
-    if: ${{ !contains(github.head_ref, 'release/') }}
     name: Packages
     runs-on: ubuntu-latest
     steps:

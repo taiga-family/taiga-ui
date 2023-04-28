@@ -1,10 +1,9 @@
 name: ⚙️ Lint
 
 on:
-  pull_request:
   push:
     branches:
-      - main
+      - '**'
       - '!release/**'
 
 env:
@@ -16,7 +15,6 @@ env:
 
 jobs:
   typecheck:
-    if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.2
@@ -26,7 +24,6 @@ jobs:
         run: npm run typecheck
 
   cspell:
-    if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -36,7 +33,6 @@ jobs:
         run: npm run cspell -- --no-progress
 
   prettier:
-    if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
       - name: Fetch from origin repo
@@ -57,7 +53,6 @@ jobs:
         uses: ./.github/actions/auto-push
 
   stylelint:
-    if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
       - name: Fetch from origin repo
@@ -78,7 +73,6 @@ jobs:
         uses: ./.github/actions/auto-push
 
   eslint:
-    if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
       - name: Fetch from origin repo

@@ -1,7 +1,11 @@
 name: ⚙️ E2E tests
 
 on:
-  pull_request:
+  push:
+    branches:
+      - '**'
+      - '!main'
+      - '!release/**'
 
 env:
   CACHE_DIST_KEY: dist-${{ github.head_ref }}-${{ github.ref }}-${{ github.sha }}
@@ -18,7 +22,6 @@ env:
 
 jobs:
   build-demo:
-    if: ${{ !contains(github.head_ref , 'release/') }}
     name: Build demo
     runs-on: ubuntu-latest
     steps:
@@ -43,7 +46,6 @@ jobs:
         run: npx nx build demo -c next --output-path dist/demo/browser
 
   cypress:
-    if: ${{ !contains(github.head_ref , 'release/') }}
     needs: [build-demo]
     runs-on: ubuntu-latest
     services:
@@ -117,7 +119,6 @@ jobs:
           retention-days: 1
 
   result:
-    if: ${{ !contains(github.head_ref , 'release/') }}
     name: result
     needs: [cypress]
     runs-on: ubuntu-latest
