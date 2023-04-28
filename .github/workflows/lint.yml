@@ -33,7 +33,7 @@ jobs:
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
       - name: Spell checks code
-        run: npm run cspell
+        run: npm run cspell -- --no-progress
 
   prettier:
     if: ${{ !contains(github.head_ref, 'release/') }}
