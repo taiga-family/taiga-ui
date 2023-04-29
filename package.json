@@ -107,7 +107,7 @@
         "@tinkoff/prettier-config": "1.52.1",
         "@tinkoff/stylelint-config": "1.52.1",
         "@types/glob": "8.1.0",
-        "@types/node": "18.16.2",
+        "@types/node": "18.16.3",
         "@types/parse5": "6.0.3",
         "@types/webpack-env": "1.18.0",
         "angular-http-server": "1.11.1",
