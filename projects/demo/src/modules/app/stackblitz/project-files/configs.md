@@ -69,7 +69,7 @@
     "module": "es2020",
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es5",
     "typeRoots": ["node_modules/@types"],
     "lib": ["esnext", "dom"]
   },

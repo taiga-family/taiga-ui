@@ -8,7 +8,7 @@ import {
     TUI_IMAGE_LOADER,
     TuiEditorTool,
 } from '@taiga-ui/addon-editor';
-import {TuiDestroyService, TuiHandler} from '@taiga-ui/cdk';
+import {TUI_IS_STACKBLITZ, TuiDestroyService, TuiHandler} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
 
@@ -35,10 +35,12 @@ import {switchMap, takeUntil} from 'rxjs/operators';
     encapsulation,
 })
 export class TuiEditorResizableEditorExample1 {
+    private readonly relativePath = this.isStackblitz ? 'https://taiga-ui.dev/' : '';
+
     readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
 
     base64Image$ = this.http
-        .get('assets/images/lumberjack.png', {responseType: 'blob'})
+        .get(`${this.relativePath}assets/images/lumberjack.png`, {responseType: 'blob'})
         .pipe(switchMap(file => this.imageLoader(file)));
 
     control = new FormControl('');
@@ -48,6 +50,7 @@ export class TuiEditorResizableEditorExample1 {
         private readonly imageLoader: TuiHandler<Blob, Observable<string>>,
         @Inject(HttpClient) private readonly http: HttpClient,
         @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
+        @Inject(TUI_IS_STACKBLITZ) private readonly isStackblitz: boolean,
     ) {
         this.base64Image$.pipe(takeUntil(destroy$)).subscribe(src => {
             this.control.patchValue(

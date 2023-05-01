@@ -7,6 +7,7 @@ import {
     NodeViewProps,
     NodeViewRenderer,
     NodeViewRendererOptions,
+    NodeViewRendererProps,
 } from '@tiptap/core';
 import type {Node as ProseMirrorNode} from 'prosemirror-model';
 import type {Decoration} from 'prosemirror-view';
@@ -29,7 +30,7 @@ export class TuiNodeViewNgComponent implements NodeViewProps {
     deleteNode!: NodeViewProps['deleteNode'];
 }
 
-interface TuiNodeViewRendererOptions extends NodeViewRendererOptions {
+export interface TuiNodeViewRendererOptions extends NodeViewRendererOptions {
     update?: (node: ProseMirrorNode, decorations: Decoration[]) => boolean;
     injector: Injector;
 }
@@ -43,7 +44,7 @@ interface TuiNodeViewRendererOptions extends NodeViewRendererOptions {
  * It was copied from
  * {@link https://github.com/sibiraj-s/ngx-tiptap/blob/master/projects/ngx-tiptap/src/lib/NodeViewRenderer.ts ngx-tiptap}
  */
-class TuiNodeView extends NodeView<
+export class TuiNodeView extends NodeView<
     Type<TuiNodeViewNgComponent>,
     Editor,
     TuiNodeViewRendererOptions
@@ -149,10 +150,10 @@ class TuiNodeView extends NodeView<
     }
 }
 
-export const TuiNodeViewRenderer =
-    (
-        component: Type<TuiNodeViewNgComponent>,
-        options: Partial<TuiNodeViewRendererOptions>,
-    ): NodeViewRenderer =>
-    props =>
-        new TuiNodeView(component, props, options);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export function TuiNodeViewRenderer(
+    component: Type<TuiNodeViewNgComponent>,
+    options: Partial<TuiNodeViewRendererOptions>,
+): NodeViewRenderer {
+    return (props: NodeViewRendererProps) => new TuiNodeView(component, props, options);
+}

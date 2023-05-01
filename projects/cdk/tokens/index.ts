@@ -11,6 +11,7 @@ export * from './is-cypress';
 export * from './is-firefox';
 export * from './is-ios';
 export * from './is-mobile';
+export * from './is-stackblitz';
 export * from './is-webkit';
 export * from './range';
 export * from './removed-element';
