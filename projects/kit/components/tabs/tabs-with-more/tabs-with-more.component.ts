@@ -49,13 +49,10 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     private maxIndex = Infinity;
 
     @Input()
-    @tuiDefaultProp()
-    moreContent: PolymorpheusContent = '';
+    moreContent: PolymorpheusContent;
 
     @Input()
-    @tuiDefaultProp()
-    dropdownContent: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>> =
-        '';
+    dropdownContent: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>>;
 
     @Input()
     @HostBinding('class._underline')

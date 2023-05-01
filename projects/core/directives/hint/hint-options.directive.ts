@@ -62,8 +62,7 @@ export class TuiHintOptionsDirective
     implements TuiHintOptions
 {
     @Input('tuiHintContent')
-    @tuiDefaultProp()
-    content: PolymorpheusContent = '';
+    content: PolymorpheusContent;
 
     @Input('tuiHintDirection')
     @tuiDefaultProp()

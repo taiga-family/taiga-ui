@@ -31,10 +31,10 @@ export function innValidator(field: AbstractControl): unknown {
 })
 export class TuiFieldErrorPipeExample3 implements OnInit {
     @ViewChild('errorContent')
-    errorContent: PolymorpheusContent = '';
+    errorContent: PolymorpheusContent;
 
     @ViewChild('bigErrorContent')
-    bigErrorContent: PolymorpheusContent = '';
+    bigErrorContent: PolymorpheusContent;
 
     readonly testValue2 = new FormControl('');
 

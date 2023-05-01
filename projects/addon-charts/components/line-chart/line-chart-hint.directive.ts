@@ -15,7 +15,6 @@ import {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
 import {
     EMPTY_QUERY,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiDestroyService,
     TuiHoveredService,
     tuiPure,
@@ -50,7 +49,6 @@ export class TuiLineChartHintDirective implements AfterViewInit {
     private readonly chartsRef: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     @Input('tuiLineChartHint')
-    @tuiDefaultProp()
     hint: PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> = '';
 
     constructor(

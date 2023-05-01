@@ -53,8 +53,7 @@ export class TuiFileComponent {
     showSize = true;
 
     @Input()
-    @tuiDefaultProp()
-    leftContent: PolymorpheusContent = '';
+    leftContent: PolymorpheusContent;
 
     @Output()
     readonly removed = new EventEmitter<void>();

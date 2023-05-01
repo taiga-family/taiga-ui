@@ -22,7 +22,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
 })
 export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {
     @ViewChild('customTemplate')
-    customTemplate: PolymorpheusContent = '';
+    customTemplate: PolymorpheusContent;
 
     readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),

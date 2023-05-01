@@ -98,7 +98,7 @@ const USERS = [
 })
 export class TuiInputExample4 {
     @ViewChild('avatar')
-    private readonly avatar: PolymorpheusContent = '';
+    private readonly avatar: PolymorpheusContent;
 
     private readonly user = new FormControl('');
 

@@ -71,12 +71,10 @@ export class TuiInputFilesComponent
     readonly maxSizeRejection!: PolymorpheusContent;
 
     @Input()
-    @tuiDefaultProp()
-    link: PolymorpheusContent = '';
+    link: PolymorpheusContent;
 
     @Input()
-    @tuiDefaultProp()
-    label: PolymorpheusContent = '';
+    label: PolymorpheusContent;
 
     /**
      * @deprecated: use `<input tuiInputFiles accept="image/*" />`

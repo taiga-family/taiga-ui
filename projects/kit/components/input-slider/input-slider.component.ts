@@ -93,8 +93,7 @@ export class TuiInputSliderComponent
     keySteps: TuiKeySteps | null = null;
 
     @Input()
-    @tuiDefaultProp()
-    valueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = '';
+    valueContent: PolymorpheusContent<TuiContextWithImplicit<number>>;
 
     /** @deprecated use `tuiTextfieldPrefix` from {@link TuiTextfieldControllerModule} instead */
     @Input('prefix')

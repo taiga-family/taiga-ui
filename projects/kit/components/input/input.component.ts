@@ -58,7 +58,7 @@ export class TuiInputComponent
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent<
         TuiContextWithImplicit<TuiActiveZoneDirective>
-    > = '';
+    >;
 
     open = false;
 

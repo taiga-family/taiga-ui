@@ -39,7 +39,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
     @ViewChild('interactiveContent')
     private readonly interactiveIcon: PolymorpheusContent<
         TuiContextWithImplicit<TuiSizeL | TuiSizeS>
-    > = '';
+    >;
 
     readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),

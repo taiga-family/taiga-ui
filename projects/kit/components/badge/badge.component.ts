@@ -29,8 +29,7 @@ import {Observable} from 'rxjs';
 })
 export class TuiBadgeComponent {
     @Input()
-    @tuiDefaultProp()
-    value: PolymorpheusContent = '';
+    value: PolymorpheusContent;
 
     @Input()
     @HostBinding('attr.data-size')

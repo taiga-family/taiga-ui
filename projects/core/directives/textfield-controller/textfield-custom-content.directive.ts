@@ -21,5 +21,5 @@ export const TUI_TEXTFIELD_CUSTOM_CONTENT =
 })
 export class TuiTextfieldCustomContentDirective extends AbstractTuiController {
     @Input('tuiTextfieldCustomContent')
-    customContent: PolymorpheusContent = '';
+    customContent: PolymorpheusContent;
 }

@@ -26,7 +26,6 @@ import {Observable} from 'rxjs';
 })
 export class TuiLabelComponent<T> {
     @Input()
-    @tuiDefaultProp()
     tuiLabel: PolymorpheusContent<TuiContextWithImplicit<T | null>> = '';
 
     @Input()

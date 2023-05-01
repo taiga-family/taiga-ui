@@ -79,7 +79,6 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
 
     // @bad TODO: Remove & { index: number }
     @Input()
-    @tuiDefaultProp()
     itemContent: PolymorpheusContent<TuiValueContentContext<T> & {index: number}> = ({
         $implicit,
     }) => String($implicit);

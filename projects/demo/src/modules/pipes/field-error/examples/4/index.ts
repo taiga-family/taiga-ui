@@ -22,7 +22,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 })
 export class TuiFieldErrorPipeExample4 {
     @ViewChild('phoneErrorContent')
-    phoneErrorContent: PolymorpheusContent = '';
+    phoneErrorContent: PolymorpheusContent;
 
     testForm = new FormGroup({
         phones: new FormArray(

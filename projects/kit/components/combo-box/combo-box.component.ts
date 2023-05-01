@@ -86,7 +86,6 @@ export class TuiComboBoxComponent<T>
         this.itemsHandlers.identityMatcher;
 
     @Input()
-    @tuiDefaultProp()
     valueContent: PolymorpheusContent<TuiValueContentContext<T>> = '';
 
     @Input()
@@ -103,7 +102,7 @@ export class TuiComboBoxComponent<T>
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent<
         TuiContextWithImplicit<TuiActiveZoneDirective>
-    > = '';
+    >;
 
     open = false;
 

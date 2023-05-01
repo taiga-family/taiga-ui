@@ -42,7 +42,7 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
     @ViewChild('valueTemplateContent')
     private readonly valueTemplateRef: PolymorpheusContent<
         TuiValueContentContext<Account>
-    > = '';
+    >;
 
     readonly exampleForm = import('./examples/import/declare-form.md?raw');
 

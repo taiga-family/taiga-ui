@@ -53,8 +53,7 @@ export class TuiInputCopyComponent
     private readonly copy$ = new Subject<void>();
 
     @Input()
-    @tuiDefaultProp()
-    successMessage: PolymorpheusContent = '';
+    successMessage: PolymorpheusContent;
 
     @Input()
     @tuiDefaultProp()

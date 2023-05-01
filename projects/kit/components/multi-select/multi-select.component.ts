@@ -134,7 +134,7 @@ export class TuiMultiSelectComponent<T>
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent<
         TuiContextWithImplicit<TuiActiveZoneDirective>
-    > = '';
+    >;
 
     open = false;
 
