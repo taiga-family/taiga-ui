@@ -7,7 +7,7 @@
         "@stackblitz/sdk": "1.9.0",
         "@tinkoff/angular-contenteditable-accessor": "1.2.0",
         "@tinkoff/ng-dompurify": "3.0.0",
-        "date-fns": "2.29.3",
+        "date-fns": "2.30.0",
         "dompurify": "2.4.5",
         "ng-yandex-metrika": "4.0.0",
         "ngx-markdown": "10.1.1"
