@@ -1,5 +1,7 @@
 import {HTML_EDITOR_BASIC_EXAMPLE} from '@demo-integrations/support/editor/html';
 
+import {TUI_PROSEMIRROR_SELECTOR} from '../../../../addon-editor/components/editor/editor.constants';
+
 export function tuiVisitEditorApiPage({
     content,
     maxHeight,
@@ -49,7 +51,7 @@ export function tuiTrashValueByEditLink(): void {
 }
 
 export function tuiFocusToStartInEditor(): void {
-    cy.get(`.ProseMirror[contenteditable]`).type(`{moveToStart}`);
+    cy.get(TUI_PROSEMIRROR_SELECTOR).type(`{moveToStart}`);
 
     tuiGetContentEditable()
         .focus()
@@ -107,12 +109,8 @@ export function tuiOpenFontTool(): Cypress.Chainable<JQuery> {
     return cy.get(`tui-data-list[role="listbox"]`);
 }
 
-export function tuiGetTipTapContentSelector(): string {
-    return `.ProseMirror[contenteditable]`;
-}
-
 export function tuiGetContentEditable(): Cypress.Chainable<JQuery> {
-    return tuiGetDemoContent().find(tuiGetTipTapContentSelector());
+    return tuiGetDemoContent().find(TUI_PROSEMIRROR_SELECTOR);
 }
 
 export function tuiSelectTag(selector: Cypress.Chainable<JQuery>): void {

@@ -1,4 +1,4 @@
-import {tuiGetTipTapContentSelector} from '@demo-integrations/support/editor/helpers';
+import {TUI_PROSEMIRROR_SELECTOR} from '../../../../addon-editor/components/editor/editor.constants';
 
 describe(`Examples with groups in editor`, () => {
     beforeEach(() => cy.tuiVisit(`editor/groups`));
@@ -48,6 +48,6 @@ describe(`Examples with groups in editor`, () => {
             .tuiWaitBeforeScreenshot()
             .as(`wrapper`);
 
-        cy.get(`@wrapper`).find(tuiGetTipTapContentSelector()).as(`editor`);
+        cy.get(`@wrapper`).find(TUI_PROSEMIRROR_SELECTOR).as(`editor`);
     }
 });
