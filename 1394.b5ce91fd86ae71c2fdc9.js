@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1394],{b9lO:function(n,t,i){"use strict";i.r(t),t.default='<nav\n    tuiTabBar\n    class="tabs"\n>\n    <button\n        *ngFor="let item of items"\n        tuiTabBarItem\n        [icon]="item.icon"\n    >\n        {{ item.text }}\n    </button>\n</nav>\n'}}]);
