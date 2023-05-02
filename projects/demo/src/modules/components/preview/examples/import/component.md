@@ -11,7 +11,7 @@ export class SomeComponent {
   @ViewChild('preview')
   readonly preview: TemplateRef<TuiDialogContext<void>>;
 
-  constructor(@Inject(PreviewDialogService) private readonly previewDialogService: PreviewDialogService) {}
+  constructor(@Inject(TuiPreviewDialogService) private readonly previewDialogService: TuiPreviewDialogService) {}
 
   show() {
     this.previewDialogService.open(this.preview).subscribe();

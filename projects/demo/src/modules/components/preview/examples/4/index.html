@@ -1,0 +1,42 @@
+<button
+    tuiButton
+    size="m"
+    type="button"
+    (click)="showDialog(dialog)"
+>
+    Open dialog
+</button>
+
+<ng-template #dialog>
+    <button
+        tuiButton
+        size="m"
+        type="button"
+        class="tui-space_bottom-4"
+        (click)="show()"
+    >
+        Show simple preview
+    </button>
+</ng-template>
+
+<ng-template
+    #preview
+    let-preview
+>
+    <tui-preview>
+        <img
+            alt="logo"
+            width="512"
+            height="512"
+            src="https://ng-web-apis.github.io/dist/assets/images/web-api.svg"
+        />
+
+        <button
+            tuiIconButton
+            tuiPreviewAction
+            icon="tuiIconCloseLarge"
+            title="Close"
+            (click)="preview.complete()"
+        ></button>
+    </tui-preview>
+</ng-template>
