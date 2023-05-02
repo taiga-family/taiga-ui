@@ -1,9 +1,9 @@
-import {Component, Injector} from '@angular/core';
+import {Component, Inject, Injector} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@taiga-ui/addon-editor';
-import {TuiDestroyService} from '@taiga-ui/cdk';
+import {TUI_IS_STACKBLITZ, TuiDestroyService} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tui-editor-preview-images-example-1',
@@ -28,13 +28,15 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
     encapsulation,
 })
 export class TuiEditorPreviewImagesExample1 {
+    private readonly relativePath = this.isStackblitz ? 'https://taiga-ui.dev/' : '';
+
     readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
 
     control = new FormControl('');
 
-    constructor() {
+    constructor(@Inject(TUI_IS_STACKBLITZ) private readonly isStackblitz: boolean) {
         this.control.patchValue(
-            '<p>Small image</p><img data-type="image-editor" src="assets/images/lumberjack.png" width="300"><p>Big image</p><img data-type="image-editor" src="assets/images/big-wallpaper.jpg" width="500">',
+            `<p>Small image</p><img data-type="image-editor" src="${this.relativePath}assets/images/lumberjack.png" width="300"><p>Big image</p><img data-type="image-editor" src="${this.relativePath}assets/images/big-wallpaper.jpg" width="500">`,
         );
     }
 }

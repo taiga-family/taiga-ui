@@ -20,7 +20,7 @@ export class ExampleTuiEditorUploadingImagesComponent {
     readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
-        './image-loader.ts': import('./examples/1/image-loader.ts?raw'),
-        './imgbb.service.ts': import('./examples/1/imgbb.service.ts?raw'),
+        'image-loader.ts': import('./examples/1/image-loader.ts?raw'),
+        'imgbb.service.ts': import('./examples/1/imgbb.service.ts?raw'),
     };
 }

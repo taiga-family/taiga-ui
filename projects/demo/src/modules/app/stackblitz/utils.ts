@@ -153,6 +153,7 @@ import {
 } from '@taiga-ui/addon-tablebars';
 
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -163,6 +164,7 @@ ${additionalModulesImports}
 export const ALL_TAIGA_UI_MODULES = [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     ScrollingModule,

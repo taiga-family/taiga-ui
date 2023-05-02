@@ -2,7 +2,16 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, from, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {environment} from '../../../../../../../environments/environment';
+/**
+ * @description:
+ * You can get your credentials for testing API on:
+ * https://api.imgbb.com/
+ */
+const imgbb = {
+    host: `https://api.imgbb.com`,
+    apiKey: `3c1615980dcf693b282c4b0fb608b28a`,
+    expiration: 300, // 5min lifetime
+};
 
 interface ImgbbResponse {
     data: {
@@ -38,14 +47,15 @@ export class ImgbbService {
     }
 
     save(base64: string): Observable<string> {
-        const {host, apiKey, expiration} = environment.imgbb;
-
         return from(
-            fetch(`${host}/1/upload?key=${apiKey}&expiration=${expiration}`, {
-                method: `POST`,
-                body: ImgbbService.createBody(base64),
-                headers: {'Content-Type': `application/x-www-form-urlencoded`},
-            }).then(async (response: Response) => response.json()),
+            fetch(
+                `${imgbb.host}/1/upload?key=${imgbb.apiKey}&expiration=${imgbb.expiration}`,
+                {
+                    method: `POST`,
+                    body: ImgbbService.createBody(base64),
+                    headers: {'Content-Type': `application/x-www-form-urlencoded`},
+                },
+            ).then(async (response: Response) => response.json()),
         ).pipe(map((response: ImgbbResponse) => response.data.url));
     }
 }
