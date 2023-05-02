@@ -1,7 +1,7 @@
 import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 
 export function tuiGetPaymentSystem(cardNumber?: string | null): TuiPaymentSystem | null {
-    if (!cardNumber || cardNumber === ``) {
+    if (!cardNumber) {
         return null;
     }
 
