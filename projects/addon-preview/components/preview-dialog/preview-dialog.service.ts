@@ -15,11 +15,18 @@ export class PreviewDialogService extends AbstractTuiDialogService<unknown> {
     readonly component = new PolymorpheusComponent(TuiPreviewDialogComponent);
 }
 
-export const PREVIEW_DIALOG_PROVIDER: Provider = {
-    provide: TUI_DIALOGS,
-    useExisting: PreviewDialogService,
-    multi: true,
-};
-
 @Injectable({providedIn: `root`})
 export class TuiPreviewDialogService extends PreviewDialogService {}
+
+export const PREVIEW_DIALOG_PROVIDER: Provider[] = [
+    {
+        provide: TUI_DIALOGS,
+        useExisting: TuiPreviewDialogService,
+        multi: true,
+    },
+    {
+        provide: TUI_DIALOGS,
+        useExisting: PreviewDialogService,
+        multi: true,
+    },
+];
