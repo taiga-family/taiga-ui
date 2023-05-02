@@ -69,7 +69,7 @@ export class TuiBadgeComponent {
 
     @HostBinding('class._empty-value')
     get isEmpty(): boolean {
-        return this.value === '';
+        return !this.value && this.value !== 0;
     }
 
     titleText({offsetWidth, scrollWidth}: HTMLElement): string {
