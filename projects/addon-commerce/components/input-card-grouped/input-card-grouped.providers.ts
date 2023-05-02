@@ -1,14 +1,16 @@
 import {inject, InjectionToken, ValueProvider} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
+import {
+    TUI_INPUT_CARD_DEFAULT_OPTIONS,
+    TuiInputCardOptions,
+} from '@taiga-ui/addon-commerce/components/input-card';
 import {tuiDefaultCardValidator} from '@taiga-ui/addon-commerce/constants';
 import {
     TUI_CARD_CVC_TEXTS,
     TUI_CARD_EXPIRY_TEXTS,
     TUI_CARD_NUMBER_TEXTS,
 } from '@taiga-ui/addon-commerce/tokens';
-import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
-import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';
-import {TuiBooleanHandler, TuiHandler, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {TuiBooleanHandler, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TUI_MEDIA} from '@taiga-ui/core';
 import {combineLatest, Observable, of} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
@@ -55,28 +57,17 @@ export const TUI_INPUT_CARD_GROUPED_TEXTS = new InjectionToken<
     },
 });
 
-export interface TuiInputCardGroupedOptions {
+export interface TuiInputCardGroupedOptions extends TuiInputCardOptions {
+    readonly cardValidator: TuiBooleanHandler<string>;
     readonly exampleText: string;
     readonly exampleTextCVC: string;
-    readonly autocompleteEnabled: boolean;
-    readonly icons: Record<TuiPaymentSystem, string>;
-    readonly cardValidator: TuiBooleanHandler<string>;
-    readonly paymentSystemHandler: TuiHandler<string, TuiPaymentSystem | null>;
 }
 
 export const TUI_INPUT_CARD_GROUPED_DEFAULT_OPTIONS: TuiInputCardGroupedOptions = {
-    icons: {
-        mir: `tuiIconMir`,
-        visa: `tuiIconVisa`,
-        electron: `tuiIconElectron`,
-        mastercard: `tuiIconMastercard`,
-        maestro: `tuiIconMaestro`,
-    },
+    ...TUI_INPUT_CARD_DEFAULT_OPTIONS,
+    cardValidator: tuiDefaultCardValidator,
     exampleText: `0000 0000 0000 0000`,
     exampleTextCVC: `000`,
-    cardValidator: tuiDefaultCardValidator,
-    paymentSystemHandler: tuiGetPaymentSystem,
-    autocompleteEnabled: false,
 };
 
 export const TUI_INPUT_CARD_GROUPED_OPTIONS =

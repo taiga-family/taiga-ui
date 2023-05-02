@@ -15,12 +15,12 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {AbstractTuiInputCard} from '@taiga-ui/addon-commerce/components/input-card';
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
 import {TuiCard} from '@taiga-ui/addon-commerce/interfaces';
-import {TuiCodeCVCLength, TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
 import {tuiCreateAutoCorrectedExpirePipe} from '@taiga-ui/addon-commerce/utils';
 import {
-    AbstractTuiNullableControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiAutofillFieldName,
@@ -77,7 +77,7 @@ import {
     },
 })
 export class TuiInputCardGroupedComponent
-    extends AbstractTuiNullableControl<TuiCard>
+    extends AbstractTuiInputCard<TuiCard, TuiInputCardGroupedOptions>
     implements TuiFocusableElementAccessor, TuiDataListHost<Partial<TuiCard>>
 {
     @ViewChild('inputCard')
@@ -102,14 +102,6 @@ export class TuiInputCardGroupedComponent
 
     @Input()
     @tuiDefaultProp()
-    autocompleteEnabled = this.options.autocompleteEnabled;
-
-    @Input()
-    @tuiDefaultProp()
-    cardSrc: PolymorpheusContent = '';
-
-    @Input()
-    @tuiDefaultProp()
     exampleText = this.options.exampleText;
 
     @Input()
@@ -128,9 +120,6 @@ export class TuiInputCardGroupedComponent
 
     @Output()
     readonly autofilledChange = new EventEmitter<boolean>();
-
-    @Output()
-    readonly binChange = new EventEmitter<string | null>();
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly dropdown: PolymorpheusContent = '';
@@ -177,10 +166,9 @@ export class TuiInputCardGroupedComponent
         readonly cardGroupedTexts$: Observable<TuiCardGroupedTexts>,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
-        @Inject(TUI_INPUT_CARD_GROUPED_OPTIONS)
-        private readonly options: TuiInputCardGroupedOptions,
+        @Inject(TUI_INPUT_CARD_GROUPED_OPTIONS) options: TuiInputCardGroupedOptions,
     ) {
-        super(control, cdr);
+        super(control, cdr, options);
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -215,22 +203,6 @@ export class TuiInputCardGroupedComponent
         return !!this.dropdown;
     }
 
-    get defaultIcon(): string | null {
-        const {paymentSystem} = this;
-
-        return paymentSystem && this.options.icons[paymentSystem];
-    }
-
-    get icon(): PolymorpheusContent {
-        return this.cardSrc || this.defaultIcon;
-    }
-
-    get bin(): string | null {
-        return !this.value || this.value.card.length < 6
-            ? null
-            : this.value.card.slice(0, 6);
-    }
-
     get placeholderRaised(): boolean {
         return (this.computedFocused && !this.readOnly) || this.hasCardNumber;
     }
@@ -253,10 +225,6 @@ export class TuiInputCardGroupedComponent
 
     get isCardCollapsed(): boolean {
         return this.isFocusable(this.card) && !this.cardFocused;
-    }
-
-    get autocompleteCard(): TuiAutofillFieldName {
-        return this.autocompleteEnabled ? 'cc-number' : 'off';
     }
 
     get autocompleteExpire(): TuiAutofillFieldName {
@@ -428,17 +396,8 @@ export class TuiInputCardGroupedComponent
         return !!this.inputCard && tuiIsNativeFocused(this.inputCard.nativeElement);
     }
 
-    private get paymentSystem(): TuiPaymentSystem | null {
-        return this.value && this.getPaymentSystem(this.value.card);
-    }
-
     private get hasExtraSpace(): boolean {
         return this.card.length % 4 > 0;
-    }
-
-    @tuiPure
-    private getPaymentSystem(cardNumber: string): TuiPaymentSystem | null {
-        return this.options.paymentSystemHandler(cardNumber);
     }
 
     @tuiPure
