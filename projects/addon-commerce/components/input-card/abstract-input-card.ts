@@ -70,8 +70,16 @@ export abstract class AbstractTuiInputCard<
         return this.cardSrc || this.defaultIcon;
     }
 
-    get autocompleteCard(): TuiAutofillFieldName {
+    get autocomplete(): TuiAutofillFieldName {
         return this.autocompleteEnabled ? `cc-number` : `off`;
+    }
+
+    /**
+     * @deprecated: drop in v4.0
+     * use {@link autocomplete}
+     */
+    get autocompleteCard(): TuiAutofillFieldName {
+        return this.autocomplete;
     }
 
     get bin(): string | null {
