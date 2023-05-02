@@ -1,10 +1,11 @@
 import {Injector} from '@angular/core';
-import {TuiNodeViewRenderer} from '@taiga-ui/addon-editor/extensions/tiptap-node-view';
+import {TuiNodeView} from '@taiga-ui/addon-editor/extensions/tiptap-node-view';
 import {
     Attribute,
     mergeAttributes,
     Node,
     NodeViewRenderer,
+    NodeViewRendererProps,
     RawCommands,
 } from '@tiptap/core';
 import {DOMOutputSpec, NodeSpec} from 'prosemirror-model';
@@ -69,7 +70,8 @@ export const createIframeEditorExtension = (injector: Injector): Node => {
         },
 
         addNodeView(): NodeViewRenderer {
-            return TuiNodeViewRenderer(TuiIframeEditorComponent, {injector});
+            return (props: NodeViewRendererProps) =>
+                new TuiNodeView(TuiIframeEditorComponent, props, {injector});
         },
 
         addCommands(): Partial<RawCommands> {

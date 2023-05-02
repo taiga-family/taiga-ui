@@ -64,7 +64,7 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": false,
     "declaration": false,
-    "downlevelIteration": false,
+    "downlevelIteration": true,
     "experimentalDecorators": true,
     "module": "es2020",
     "moduleResolution": "node",
