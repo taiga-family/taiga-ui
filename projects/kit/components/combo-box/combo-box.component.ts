@@ -86,7 +86,7 @@ export class TuiComboBoxComponent<T>
         this.itemsHandlers.identityMatcher;
 
     @Input()
-    valueContent: PolymorpheusContent<TuiValueContentContext<T>> = '';
+    valueContent: PolymorpheusContent<TuiValueContentContext<T>>;
 
     @Input()
     @tuiDefaultProp()

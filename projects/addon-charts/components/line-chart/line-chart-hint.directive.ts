@@ -49,7 +49,7 @@ export class TuiLineChartHintDirective implements AfterViewInit {
     private readonly chartsRef: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     @Input('tuiLineChartHint')
-    hint: PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> = '';
+    hint: PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>>;
 
     constructor(
         @Inject(Renderer2) private readonly renderer: Renderer2,

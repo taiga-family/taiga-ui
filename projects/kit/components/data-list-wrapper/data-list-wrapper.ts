@@ -32,7 +32,7 @@ export abstract class AbstractTuiDataListWrapper<T> {
         this.itemsHandlers.disabledItemHandler;
 
     @Input()
-    emptyContent: PolymorpheusContent = ``;
+    emptyContent: PolymorpheusContent;
 
     @Input()
     @tuiDefaultProp()

@@ -81,7 +81,7 @@ export class TuiPaginationComponent
     /**
      * Customization for page number display.
      */
-    @tuiDefaultProp()
+    @Input()
     content: PolymorpheusContent<TuiContextWithImplicit<number>>;
 
     /**

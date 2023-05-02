@@ -31,8 +31,7 @@ export abstract class AbstractTuiInputCard<
     implements TuiFocusableElementAccessor
 {
     @Input()
-    @tuiDefaultProp()
-    cardSrc: PolymorpheusContent = ``;
+    cardSrc: PolymorpheusContent;
 
     @Input()
     @tuiDefaultProp()

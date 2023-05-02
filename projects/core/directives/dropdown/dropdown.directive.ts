@@ -49,7 +49,7 @@ export class TuiDropdownDirective
         TuiVehicle
 {
     @Input('tuiDropdown')
-    content: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>> = '';
+    content: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>>;
 
     dropdownBoxRef: ComponentRef<unknown> | null = null;
 

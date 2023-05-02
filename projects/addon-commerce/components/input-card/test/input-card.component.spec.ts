@@ -49,13 +49,13 @@ describe(`InputCard`, () => {
         it(`enabled`, () => {
             testComponent.component.autocompleteEnabled = true;
 
-            expect(testComponent.component.autocomplete).toEqual(`cc-number`);
+            expect(testComponent.component.autocompleteCard).toEqual(`cc-number`);
         });
 
         it(`disabled`, () => {
             testComponent.component.autocompleteEnabled = false;
 
-            expect(testComponent.component.autocomplete).toEqual(`off`);
+            expect(testComponent.component.autocompleteCard).toEqual(`off`);
         });
     });
 

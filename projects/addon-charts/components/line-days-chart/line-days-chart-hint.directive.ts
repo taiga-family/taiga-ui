@@ -38,7 +38,7 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
     private readonly charts: QueryList<TuiLineDaysChartComponent> = EMPTY_QUERY;
 
     @Input('tuiLineChartHint')
-    hint: PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> = '';
+    hint: PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>>;
 
     constructor(
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
