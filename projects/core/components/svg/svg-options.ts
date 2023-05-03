@@ -1,4 +1,4 @@
-import {inject, InjectionToken, ValueProvider} from '@angular/core';
+import {FactoryProvider, inject, InjectionToken, Optional, SkipSelf} from '@angular/core';
 import {SafeHtml} from '@angular/platform-browser';
 import {
     TuiHandler,
@@ -51,13 +51,14 @@ export const tuiSvgOptionsProvider: (
     options: Partial<Omit<TuiSvgOptions, 'path'>> & {
         path?: TuiSvgOptions['path'] | string;
     },
-) => ValueProvider = options => ({
+) => FactoryProvider = options => ({
     provide: TUI_SVG_OPTIONS,
-    useValue: {
-        ...TUI_SVG_DEFAULT_OPTIONS,
+    deps: [[new SkipSelf(), new Optional(), TUI_SVG_OPTIONS]],
+    useFactory: (fallback: TuiSvgOptions | null) => ({
+        ...(fallback || TUI_SVG_DEFAULT_OPTIONS),
         ...options,
         path: tuiIsString(options.path)
             ? tuiIconsPathFactory(options.path)
             : options.path || TUI_SVG_DEFAULT_OPTIONS.path,
-    },
+    }),
 });
