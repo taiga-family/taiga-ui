@@ -14,6 +14,7 @@ env:
 jobs:
   bundling:
     runs-on: ubuntu-latest
+    if: ${{ !contains(github.head_ref , 'release/') }}
     steps:
       - uses: actions/checkout@v3.5.2
         if: ${{ env.SUPPORT_AUTO_UPDATE != 'true' }}

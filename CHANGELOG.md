@@ -3,6 +3,88 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.26.0](https://github.com/tinkoff/taiga-ui/compare/v3.25.0...v3.26.0) (2023-05-03)
+
+### Features
+
+- **addon-commerce:** add `TUI_INPUT_CARD_GROUPED_OPTIONS` token
+  ([#4284](https://github.com/tinkoff/taiga-ui/issues/4284))
+  ([9e04d58](https://github.com/tinkoff/taiga-ui/commit/9e04d58815da5050da436a4a143abcec7ca3f23c))
+- **addon-commerce:** add `TUI_INPUT_CARD_OPTIONS` ([#4325](https://github.com/tinkoff/taiga-ui/issues/4325))
+  ([5d19ded](https://github.com/tinkoff/taiga-ui/commit/5d19ded402f2620d10276680cb111d025b9eea7b))
+- **addon-doc:** add new parameter `tabTitles` to `TUI_DOC_EXAMPLE_OPTIONS`
+  ([#4360](https://github.com/tinkoff/taiga-ui/issues/4360))
+  ([201dcc2](https://github.com/tinkoff/taiga-ui/commit/201dcc2770862ae15ba1112330a228e2e4cb7e00))
+- **addon-doc:** support disable sticky position for demo ([#4310](https://github.com/tinkoff/taiga-ui/issues/4310))
+  ([456130e](https://github.com/tinkoff/taiga-ui/commit/456130e77b0802e5ffb5ca8babd1d61b16884591))
+- **addon-doc:** tree-shakable entry points ([#4240](https://github.com/tinkoff/taiga-ui/issues/4240))
+  ([212b670](https://github.com/tinkoff/taiga-ui/commit/212b67007e071f1e77824b57243f508b6fe1770e))
+- **addon-editor:** support any protocols in `link` component ([#4260](https://github.com/tinkoff/taiga-ui/issues/4260))
+  ([9caed62](https://github.com/tinkoff/taiga-ui/commit/9caed6295ce7027a43253bd476a618ce398f6aa9))
+- **cdk:** `ng-add` support apps bootstrapped using a standalone component
+  ([#4257](https://github.com/tinkoff/taiga-ui/issues/4257))
+  ([41b5824](https://github.com/tinkoff/taiga-ui/commit/41b5824cd18e98608f64c7b5c13a670916196a43))
+- **core:** `Svg` inherit options through DI hierarchy ([#4363](https://github.com/tinkoff/taiga-ui/issues/4363))
+  ([dbd9f58](https://github.com/tinkoff/taiga-ui/commit/dbd9f585bfd246df71cfa6e92e3ace2d695ca8ef))
+- **core:** add ability to align dropdown to center ([#4277](https://github.com/tinkoff/taiga-ui/issues/4277))
+  ([bed3cb4](https://github.com/tinkoff/taiga-ui/commit/bed3cb44b752ef765bde18284cd1941e1beb05e5))
+- **core:** support cache busting for `tuiIcon...` icons ([#4369](https://github.com/tinkoff/taiga-ui/issues/4369))
+  ([710ca62](https://github.com/tinkoff/taiga-ui/commit/710ca62dec810df7e75d3548bc649e3959df911d))
+- **icons:** improve quality `tuiIconAliPay` ([#4361](https://github.com/tinkoff/taiga-ui/issues/4361))
+  ([a69beae](https://github.com/tinkoff/taiga-ui/commit/a69beaef31c135344798d5a4f2ddfcb15e1b90c4))
+- **icons:** new payments system and service icons ([#4328](https://github.com/tinkoff/taiga-ui/issues/4328))
+  ([39585dc](https://github.com/tinkoff/taiga-ui/commit/39585dc541925fadd2fe0f73419dd436f0c7de73))
+- **icons:** new payments system icons ([#4306](https://github.com/tinkoff/taiga-ui/issues/4306))
+  ([1caad1c](https://github.com/tinkoff/taiga-ui/commit/1caad1c27dc7e4183e4fd6d11e7a0aa86d6fa835))
+- **kit:** `BlockStatus` add new component ([#4111](https://github.com/tinkoff/taiga-ui/issues/4111))
+  ([f5a4461](https://github.com/tinkoff/taiga-ui/commit/f5a446158b878a92f9a4b15eb53d20a705ca64c9))
+- **kit:** `CheckboxBlock` support center alignment with `align-items` CSS
+  ([#4370](https://github.com/tinkoff/taiga-ui/issues/4370))
+  ([0426055](https://github.com/tinkoff/taiga-ui/commit/0426055b852c8691742f425a768960bbef0a4ed7))
+- **kit:** `InputDateTime` add ability to use native picker on mobile
+  ([#4295](https://github.com/tinkoff/taiga-ui/issues/4295))
+  ([1616ddd](https://github.com/tinkoff/taiga-ui/commit/1616ddd8ec8b9271f90c3942662643ea29955799))
+- **kit:** `Tag` add button selector ([#4251](https://github.com/tinkoff/taiga-ui/issues/4251))
+  ([856bc57](https://github.com/tinkoff/taiga-ui/commit/856bc574815a7749e86f405b777cc95d686fe55f))
+- **kit:** catch `Observable` instead of `PolymorpheusPrimitive` from `PolymorpheusHandler` in `fieldError`
+  ([#4241](https://github.com/tinkoff/taiga-ui/issues/4241))
+  ([ef9e771](https://github.com/tinkoff/taiga-ui/commit/ef9e7719f24eb661da975d355caa106148dbed41))
+- **kit:** support `fallback` for `avatar` when img not found by `avatarUrl`
+  ([#4243](https://github.com/tinkoff/taiga-ui/issues/4243))
+  ([68f4922](https://github.com/tinkoff/taiga-ui/commit/68f4922724f7aeb5d651dc6cc833f6e98e9263e7))
+
+### Bug Fixes
+
+- **addon-commerce:** `InputCardGrouped` fix incorrect initial value display
+  ([#4304](https://github.com/tinkoff/taiga-ui/issues/4304))
+  ([b815bb8](https://github.com/tinkoff/taiga-ui/commit/b815bb83eaebf0ddd6d1e5a0edc654b8943f850e))
+- **addon-editor:** class constructor `NodeView` cannot be invoked without `new`
+  ([#4340](https://github.com/tinkoff/taiga-ui/issues/4340))
+  ([6e071fa](https://github.com/tinkoff/taiga-ui/commit/6e071faff83b6362952256a41779f018dc0289bc))
+- **core:** `Dialog` fix closing fullscreen dismissible dialog
+  ([#4359](https://github.com/tinkoff/taiga-ui/issues/4359))
+  ([a41cf76](https://github.com/tinkoff/taiga-ui/commit/a41cf76412812f4387544718341db0c1e2ab09d4))
+- **core:** `Root` fix display extra scrollbar when using different dialogs
+  ([#4351](https://github.com/tinkoff/taiga-ui/issues/4351))
+  ([9791dd9](https://github.com/tinkoff/taiga-ui/commit/9791dd9df9a8f2ca9d3c25fa216315b8201aa1d8))
+- **core:** expose `TuiBreakpointMediaKey` ([#4285](https://github.com/tinkoff/taiga-ui/issues/4285))
+  ([5ecf38c](https://github.com/tinkoff/taiga-ui/commit/5ecf38ce883af7c6e01800c2f251bf22815d0920))
+- **core:** improve message about deprecated icons ([#4365](https://github.com/tinkoff/taiga-ui/issues/4365))
+  ([b681897](https://github.com/tinkoff/taiga-ui/commit/b681897b61a73a5703d6044ecced781c6c2d7ce8))
+- **core:** skip import if cannot load fonts from `googleapis.com`
+  ([#4366](https://github.com/tinkoff/taiga-ui/issues/4366))
+  ([2ccf57a](https://github.com/tinkoff/taiga-ui/commit/2ccf57a189713511f5f18e3781db5ad67f953e05))
+- **kit:** `Combobox` fix immediate reset after value change ([#4270](https://github.com/tinkoff/taiga-ui/issues/4270))
+  ([36ffa55](https://github.com/tinkoff/taiga-ui/commit/36ffa55a117ab2262af42334abc46672dba260ca))
+- **kit:** `InputDateTime` fix value setting when using valueTransformer
+  ([#4299](https://github.com/tinkoff/taiga-ui/issues/4299))
+  ([7547cea](https://github.com/tinkoff/taiga-ui/commit/7547cea45e960e1a0c68b51b81d4e5d72dbeff8e))
+- **kit:** `Multiselect` update dropdown on search ([#4371](https://github.com/tinkoff/taiga-ui/issues/4371))
+  ([ee3f4b9](https://github.com/tinkoff/taiga-ui/commit/ee3f4b97dbcaa23bf07b214a58dc8ed466f1c1ef))
+- **kit:** `RadioBlock` properly handle `identityMatcher` in `hideRadio` mode
+  ([#4362](https://github.com/tinkoff/taiga-ui/issues/4362))
+  ([0240bea](https://github.com/tinkoff/taiga-ui/commit/0240bea72e4aeb3a456bf958ecd7acf8189cfb99))
+
 ## [3.25.0](https://github.com/tinkoff/taiga-ui/compare/v3.24.0...v3.25.0) (2023-04-18)
 
 ### Features
