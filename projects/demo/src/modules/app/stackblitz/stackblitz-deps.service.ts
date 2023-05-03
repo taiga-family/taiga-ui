@@ -56,6 +56,7 @@ export class StackblitzDepsService {
             '@taiga-ui/addon-preview': version,
             '@taiga-ui/addon-table': version,
             '@taiga-ui/addon-tablebars': version,
+            '@taiga-ui/layout': version,
         };
     }
 
