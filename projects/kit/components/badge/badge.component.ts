@@ -5,7 +5,7 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {tuiDefaultProp, tuiIsNumber} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiIsNumber, tuiIsPresent} from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
     TUI_MODE,
@@ -29,8 +29,7 @@ import {Observable} from 'rxjs';
 })
 export class TuiBadgeComponent {
     @Input()
-    @tuiDefaultProp()
-    value: PolymorpheusContent = '';
+    value: PolymorpheusContent;
 
     @Input()
     @HostBinding('attr.data-size')
@@ -65,12 +64,12 @@ export class TuiBadgeComponent {
             return '99+';
         }
 
-        return String(this.value);
+        return tuiIsPresent(this.value) ? String(this.value) : '';
     }
 
     @HostBinding('class._empty-value')
     get isEmpty(): boolean {
-        return this.value === '';
+        return !this.value && this.value !== 0;
     }
 
     titleText({offsetWidth, scrollWidth}: HTMLElement): string {

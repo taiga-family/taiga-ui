@@ -95,8 +95,7 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
     smoothingFactor = 0;
 
     @Input()
-    @tuiDefaultProp()
-    hintContent: PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>> = '';
+    hintContent: PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>>;
 
     @Input()
     @tuiDefaultProp()

@@ -33,10 +33,10 @@ export class TuiDocExampleComponent {
     id: string | null = null;
 
     @Input()
-    heading: PolymorpheusContent = '';
+    heading: PolymorpheusContent;
 
     @Input()
-    description: PolymorpheusContent = '';
+    description: PolymorpheusContent;
 
     @Input()
     set content(content: TuiDocExample) {

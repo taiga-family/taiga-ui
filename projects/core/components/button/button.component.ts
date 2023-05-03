@@ -51,12 +51,10 @@ export class TuiButtonComponent
     disabled = false;
 
     @Input()
-    @tuiDefaultProp()
-    icon: PolymorpheusContent = '';
+    icon: PolymorpheusContent;
 
     @Input()
-    @tuiDefaultProp()
-    iconRight: PolymorpheusContent = '';
+    iconRight: PolymorpheusContent;
 
     @Input()
     @HostBinding('attr.data-shape')

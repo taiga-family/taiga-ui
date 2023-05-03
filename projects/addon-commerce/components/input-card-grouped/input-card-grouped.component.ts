@@ -122,7 +122,7 @@ export class TuiInputCardGroupedComponent
     readonly autofilledChange = new EventEmitter<boolean>();
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly dropdown: PolymorpheusContent = '';
+    readonly dropdown: PolymorpheusContent;
 
     @ContentChild(TuiDataListComponent)
     readonly datalist?: TuiDataListComponent<TuiCard>;

@@ -22,13 +22,11 @@ const BADGE_SIZE: {[key: string]: TuiSizeL | TuiSizeXS} = {
 export class TuiBadgedContentComponent {
     @Input()
     @HostBinding('class._with-top')
-    @tuiDefaultProp()
-    contentTop: PolymorpheusContent = '';
+    contentTop: PolymorpheusContent;
 
     @Input()
     @HostBinding('class._with-bottom')
-    @tuiDefaultProp()
-    contentBottom: PolymorpheusContent = '';
+    contentBottom: PolymorpheusContent;
 
     @Input()
     @HostBinding('attr.data-size')

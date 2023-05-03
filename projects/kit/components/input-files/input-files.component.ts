@@ -71,12 +71,10 @@ export class TuiInputFilesComponent
     readonly maxSizeRejection!: PolymorpheusContent;
 
     @Input()
-    @tuiDefaultProp()
-    link: PolymorpheusContent = '';
+    link: PolymorpheusContent;
 
     @Input()
-    @tuiDefaultProp()
-    label: PolymorpheusContent = '';
+    label: PolymorpheusContent;
 
     /**
      * @deprecated: use `<input tuiInputFiles accept="image/*" />`
@@ -216,7 +214,7 @@ export class TuiInputFilesComponent
             ? of('')
             : this.inputFileTexts$.pipe(
                   map(texts =>
-                      multiple && link === ''
+                      multiple && !link
                           ? texts.defaultLinkMultiple
                           : link || texts.defaultLinkSingle,
                   ),
@@ -242,7 +240,7 @@ export class TuiInputFilesComponent
 
         return this.inputFileTexts$.pipe(
             map(texts =>
-                multiple && label === ''
+                multiple && !label
                     ? texts.defaultLabelMultiple
                     : label || texts.defaultLabelSingle,
             ),

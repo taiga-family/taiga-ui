@@ -14,7 +14,7 @@ import {Subscription} from 'rxjs';
 })
 export class TuiTableBarExampleComponent1 {
     @ViewChild('tableBarTemplate')
-    tableBarTemplate: PolymorpheusContent = '';
+    tableBarTemplate: PolymorpheusContent;
 
     subscription = new Subscription();
 

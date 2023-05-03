@@ -14,7 +14,6 @@ import {
 import {
     TuiActiveZoneDirective,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiDropdownPortalService,
     tuiPure,
 } from '@taiga-ui/cdk';
@@ -50,8 +49,7 @@ export class TuiDropdownDirective
         TuiVehicle
 {
     @Input('tuiDropdown')
-    @tuiDefaultProp()
-    content: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>> = '';
+    content: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>>;
 
     dropdownBoxRef: ComponentRef<unknown> | null = null;
 

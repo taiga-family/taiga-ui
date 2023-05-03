@@ -17,7 +17,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 })
 export class ExampleTuiSheetComponent {
     @ViewChild('template')
-    readonly templateRef: PolymorpheusContent<TuiSheet<unknown>> = '';
+    readonly templateRef: PolymorpheusContent<TuiSheet<unknown>>;
 
     readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),

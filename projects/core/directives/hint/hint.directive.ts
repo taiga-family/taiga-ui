@@ -39,8 +39,7 @@ export class TuiHintDirective<C>
     implements OnDestroy, OnChanges, TuiPortalItem<C>, TuiRectAccessor, TuiVehicle
 {
     @Input('tuiHint')
-    @tuiDefaultProp()
-    content: PolymorpheusContent<C> = '';
+    content: PolymorpheusContent<C>;
 
     @Input('tuiHintContext')
     context?: C;

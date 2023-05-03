@@ -12,7 +12,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 })
 export class ExampleTuiLoaderComponent {
     @ViewChild('textTemplate')
-    readonly textTemplate: PolymorpheusContent = '';
+    readonly textTemplate: PolymorpheusContent;
 
     readonly exampleOptions = import('./examples/import/define-options.md?raw');
     readonly exampleModule = import('./examples/import/import-module.md?raw');

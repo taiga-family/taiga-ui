@@ -63,8 +63,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     role: TuiDataListRole = 'listbox';
 
     @Input()
-    @tuiDefaultProp()
-    emptyContent: PolymorpheusContent = '';
+    emptyContent: PolymorpheusContent;
 
     @Input()
     @HostBinding('attr.data-list-size')

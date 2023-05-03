@@ -34,8 +34,7 @@ export class TuiTbodyComponent<T extends Partial<Record<keyof T, any>>> {
     data: readonly T[] = [];
 
     @Input()
-    @tuiDefaultProp()
-    heading: PolymorpheusContent = '';
+    heading: PolymorpheusContent;
 
     @Input()
     @tuiDefaultProp()
