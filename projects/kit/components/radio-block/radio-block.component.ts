@@ -32,7 +32,7 @@ import {TuiRadioComponent} from '@taiga-ui/kit/components/radio';
 @Component({
     selector: 'tui-radio-block',
     templateUrl: './radio-block.template.html',
-    styleUrls: ['./radio-block.style.less'],
+    styleUrls: ['../checkbox-block/checkbox-block.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiRadioBlockComponent),
@@ -64,7 +64,7 @@ export class TuiRadioBlockComponent<T>
     size: TuiSizeL | TuiSizeS = 'l';
 
     @Input()
-    @HostBinding('class._hidden_radio')
+    @HostBinding('class._hidden_input')
     @tuiDefaultProp()
     hideRadio = false;
 
