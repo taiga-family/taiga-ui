@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/layout",
-    "version": "3.23.1",
+    "version": "3.26.0",
     "description": "A package with Taiga UI layout components",
     "keywords": [
         "angular",
