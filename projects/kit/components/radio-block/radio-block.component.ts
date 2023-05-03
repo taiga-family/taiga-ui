@@ -100,7 +100,7 @@ export class TuiRadioBlockComponent<T>
 
     @HostBinding('class._active')
     get checked(): boolean {
-        return this.value === this.item && this.hideRadio;
+        return !!this.radio?.checked && this.hideRadio;
     }
 
     get checkboxSize(): TuiSizeL {
