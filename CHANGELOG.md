@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.87.0](https://github.com/tinkoff/taiga-ui/compare/v2.86.0...v2.87.0) (2023-05-03)
+
+### Bug Fixes
+
+- **core:** `Preview` add missed providers, `Root` fix display extra scrollbar
+  ([#4349](https://github.com/tinkoff/taiga-ui/issues/4349))
+  ([fa3205f](https://github.com/tinkoff/taiga-ui/commit/fa3205fa5a68f39708ec19a86d2cc6101dec54f7))
+
 ## [2.86.0](https://github.com/tinkoff/taiga-ui/compare/v2.85.0...v2.86.0) (2023-04-27)
 
 ### Bug Fixes
