@@ -17,7 +17,7 @@ import {
 import {
     TuiBadgeModule,
     TuiDataListWrapperModule,
-    TuiInputCountModule,
+    TuiInputNumberModule,
     TuiSelectModule,
     TuiToggleModule,
 } from '@taiga-ui/kit';
@@ -44,7 +44,7 @@ import {TuiStripOptionalPipe} from './pipes/strip-optional.pipe';
         TuiToggleModule,
         TuiTooltipModule,
         TuiLinkModule,
-        TuiInputCountModule,
+        TuiInputNumberModule,
         TuiModeModule,
         TuiGroupModule,
         TuiInputOpacityModule,

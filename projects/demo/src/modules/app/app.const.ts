@@ -10,7 +10,7 @@ export const SEE_ALSO_GROUPS: ReadonlyArray<readonly string[]> = [
         `InputDateTime`,
         `InputTime`,
     ],
-    [`InputNumber`, `InputCount`, `InputSlider`, `InputRange`, `Range`, `Slider`],
+    [`InputNumber`, `InputSlider`, `InputRange`, `Range`, `Slider`],
     [`InputCard`, `InputCardGrouped`],
     [`Calendar`, `CalendarRange`, `MobileCalendar`, `CalendarMonth`],
     [`Error`, `FieldError`],

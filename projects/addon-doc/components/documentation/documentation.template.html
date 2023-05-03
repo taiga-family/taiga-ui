@@ -136,24 +136,38 @@
                                         type="text"
                                     />
                                 </tui-primitive-textfield>
-                                <tui-input-count
+                                <tui-input-number
                                     tuiTextfieldSize="m"
+                                    [step]="1"
+                                    [min]="0"
                                     [max]="100"
                                     [ngModel]="propertyConnector.documentationPropertyValue | tuiGetOpacity"
                                     (ngModelChange)="onOpacityChange(propertyConnector, $event)"
                                 >
                                     Opacity
-                                </tui-input-count>
+                                </tui-input-number>
                             </div>
 
-                            <tui-input-count
+                            <tui-input-number
                                 *ngSwitchCase="'number'"
                                 tuiTextfieldSize="m"
                                 [nativeId]="propertyConnector.attrName"
                                 [tuiTextfieldLabelOutside]="true"
+                                [step]="1"
+                                [ngModel]="propertyConnector.documentationPropertyValue"
+                                (ngModelChange)="propertyConnector.onValueChange($event || 0)"
+                            ></tui-input-number>
+
+                            <tui-input-number
+                                *ngSwitchCase="'number | null'"
+                                tuiTextfieldSize="m"
+                                [nativeId]="propertyConnector.attrName"
+                                [tuiTextfieldLabelOutside]="true"
+                                [tuiTextfieldCleaner]="true"
+                                [step]="1"
                                 [ngModel]="propertyConnector.documentationPropertyValue"
                                 (ngModelChange)="propertyConnector.onValueChange($event)"
-                            ></tui-input-count>
+                            ></tui-input-number>
 
                             <ng-container *ngSwitchCase="'PolymorpheusContent'">
                                 <tui-primitive-textfield

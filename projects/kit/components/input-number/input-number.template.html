@@ -1,4 +1,5 @@
 <tui-primitive-textfield
+    #textfield
     tuiValueAccessor
     class="t-textfield"
     [pseudoHover]="pseudoHover"
@@ -31,6 +32,40 @@
         </ng-container>
     </div>
 </tui-primitive-textfield>
+
+<section
+    *ngIf="step"
+    class="t-buttons"
+>
+    <button
+        tuiIconButton
+        type="button"
+        size="s"
+        class="t-button"
+        [icon]="options.icons.up"
+        [appearance]="textfield.appearance"
+        [disabled]="!canIncrement"
+        [focusable]="false"
+        (mousedown.prevent)="nativeFocusableElement?.focus()"
+        (click.prevent)="onArrow(step)"
+    >
+        +
+    </button>
+    <button
+        tuiIconButton
+        type="button"
+        size="s"
+        class="t-button"
+        [icon]="options.icons.down"
+        [appearance]="textfield.appearance"
+        [disabled]="!canDecrement"
+        [focusable]="false"
+        (mousedown.prevent)="nativeFocusableElement?.focus()"
+        (click.prevent)="onArrow(-step)"
+    >
+        -
+    </button>
+</section>
 
 <ng-container *ngIf="polymorpheusValueContent.changes | async"></ng-container>
 

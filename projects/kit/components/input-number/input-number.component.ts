@@ -18,6 +18,7 @@ import {
     TUI_IS_IOS,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
+    tuiClamp,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiInputMode,
@@ -39,6 +40,8 @@ import {
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
+
+import {TUI_INPUT_NUMBER_OPTIONS, TuiInputNumberOptions} from './input-number-options';
 
 const DEFAULT_MAX_LENGTH = 18;
 
@@ -63,19 +66,22 @@ export class TuiInputNumberComponent
 
     @Input()
     @tuiDefaultProp()
-    min = Number.MIN_SAFE_INTEGER;
+    min = this.options.min;
 
     @Input()
     @tuiDefaultProp()
-    max = Number.MAX_SAFE_INTEGER;
+    max = this.options.max;
 
     @Input()
     @tuiDefaultProp()
-    decimal: TuiDecimal = 'not-zero';
+    decimal = this.options.decimal;
 
     @Input()
     @tuiDefaultProp()
-    precision = 2;
+    precision = this.options.precision;
+
+    @Input()
+    step = this.options.step;
 
     /** @deprecated use `tuiTextfieldPrefix` from {@link TuiTextfieldControllerModule} instead */
     @Input()
@@ -97,6 +103,8 @@ export class TuiInputNumberComponent
         control: NgControl | null,
         @Inject(ChangeDetectorRef)
         cdr: ChangeDetectorRef,
+        @Inject(TUI_INPUT_NUMBER_OPTIONS)
+        readonly options: TuiInputNumberOptions,
         @Inject(TUI_NUMBER_FORMAT)
         private readonly numberFormat: TuiNumberFormatSettings,
         @Inject(TUI_IS_IOS) private readonly isIOS: boolean,
@@ -149,6 +157,30 @@ export class TuiInputNumberComponent
         return this.value === null ? '' : this.formattedValue;
     }
 
+    get showButtons(): boolean {
+        return !!this.step;
+    }
+
+    get canDecrement(): boolean {
+        return this.interactive && (this.value || 0) > this.min;
+    }
+
+    get canIncrement(): boolean {
+        return this.interactive && (this.value || 0) < this.max;
+    }
+
+    @HostListener('keydown.arrowDown', ['-step'])
+    @HostListener('keydown.arrowUp', ['step'])
+    onArrow(step: number | null): void {
+        if (!step) {
+            return;
+        }
+
+        this.value = tuiClamp((this.value || 0) + step, this.min, this.max);
+        this.nativeValue = this.formattedValue;
+    }
+
+    // TODO: Review if it's still necessary with maskito
     @HostListener('keydown.0', ['$event'])
     onZero(event: KeyboardEvent): void {
         const decimal =

@@ -12,15 +12,6 @@
                 <li class="tui-list__item">
                     <a
                         tuiLink
-                        routerLink="/components/input-count"
-                    >
-                        <strong>InputCount</strong>
-                    </a>
-                    (integers only)
-                </li>
-                <li class="tui-list__item">
-                    <a
-                        tuiLink
                         routerLink="/components/slider"
                     >
                         <strong>Slider</strong>
@@ -145,6 +136,14 @@
         >
             <tui-input-number-example-5></tui-input-number-example-5>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="options"
+            heading="Default options override"
+            [content]="example6"
+        >
+            <tui-input-number-example-6></tui-input-number-example-6>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -173,6 +172,7 @@
                     [precision]="precision"
                     [readOnly]="readOnly"
                     [decimal]="decimal"
+                    [step]="step"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
                     [tuiHintAppearance]="hintAppearance"
@@ -247,11 +247,19 @@
             <ng-template
                 documentationPropertyName="decimal"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiDecimalT"
+                documentationPropertyType="TuiDecimal"
                 [documentationPropertyValues]="decimalVariants"
                 [(documentationPropertyValue)]="decimal"
             >
                 Show/hide decimal
+            </ng-template>
+            <ng-template
+                documentationPropertyName="step"
+                documentationPropertyMode="input"
+                documentationPropertyType="number | null"
+                [(documentationPropertyValue)]="step"
+            >
+                Step to increase/decrease value with keyboard and buttons on the side
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>

@@ -115,11 +115,11 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
 
     onOpacityChange(
         connector: TuiDocDocumentationPropertyConnectorDirective<string>,
-        opacity: number,
+        opacity: number | null,
     ): void {
         const hex = this.getColor.transform(connector.documentationPropertyValue || '');
         const rgb = tuiHexToRgb(hex);
-        const result = `rgba(${rgb}, ${opacity / 100})`;
+        const result = `rgba(${rgb}, ${(opacity || 0) / 100})`;
 
         connector.onValueChange(result);
     }
