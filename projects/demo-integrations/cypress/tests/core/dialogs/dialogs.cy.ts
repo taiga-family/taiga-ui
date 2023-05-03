@@ -160,5 +160,17 @@ describe(`Dialogs`, () => {
 
             cy.tuiWaitBeforeAction().get(`tui-dialog`).should(`not.exist`);
         });
+
+        it(`dismissible = true, fullscreen`, () => {
+            cy.tuiVisit(`components/dialog/API?size=fullscreen&dismissible=true`);
+
+            cy.get(`tui-doc-page .t-content button`).first().click();
+            cy.tuiWaitBeforeAction()
+                .get(`tui-dialog`)
+                .should(`exist`)
+                .trigger(`click`, {x: 100, y: 600})
+                .tuiWaitBeforeAction();
+            cy.get(`tui-dialog`).should(`be.visible`);
+        });
     });
 });
