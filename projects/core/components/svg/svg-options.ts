@@ -27,12 +27,14 @@ export const TUI_SVG_DEFAULT_OPTIONS: TuiSvgOptions = {
     path: tuiIconsPathFactory(`assets/taiga-ui/icons`),
     srcProcessor: identity,
     contentProcessor: tuiSvgLinearGradientProcessor,
-    deprecated: src =>
-        TUI_DEPRECATED_ICONS[src.replace(`Large`, ``).replace(`Outline`, ``)]
-            ? `${src} is deprecated, use ${
-                  TUI_DEPRECATED_ICONS[src.replace(`Large`, ``)]
-              }/Large instead`
-            : ``,
+    deprecated: src => {
+        const oldIcon = src.replace(`Large`, ``).replace(`Outline`, ``);
+        const newIcon = TUI_DEPRECATED_ICONS[oldIcon];
+
+        return newIcon
+            ? `${oldIcon}/(Large|Outline) is deprecated, use ${newIcon}/(Large|Outline) instead`
+            : ``;
+    },
 };
 
 /**
