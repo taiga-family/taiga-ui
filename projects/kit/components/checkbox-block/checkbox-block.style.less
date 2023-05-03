@@ -26,40 +26,31 @@
     border-radius: inherit;
     cursor: pointer;
     user-select: none;
+    padding: 0 1rem 0 0;
 
     :host[data-align='right'] & {
         flex-direction: row-reverse;
+        padding: 0 0 0 1rem;
     }
 
     :host[data-size='s'] & {
         min-height: var(--tui-height-s);
-        padding: 0 1rem 0 0.5rem;
     }
 
-    :host[data-size='s'][data-align='right'] & {
-        padding: 0 0.5rem 0 1rem;
+    :host[data-size='m'] & {
+        min-height: var(--tui-height-m);
+    }
+
+    :host[data-size='l'] & {
+        min-height: var(--tui-height-l);
     }
 
     :host[data-size='s']._hidden_input & {
         padding: 0 1rem;
     }
 
-    :host[data-size='m'] & {
-        min-height: var(--tui-height-m);
-        padding: 0 1rem 0 0.75rem;
-    }
-
-    :host[data-size='m'][data-align='right'] & {
-        padding: 0 0.75rem 0 1rem;
-    }
-
     :host[data-size='m']._hidden_input & {
         padding: 0 1.5rem;
-    }
-
-    :host[data-size='l'] & {
-        min-height: var(--tui-height-l);
-        padding: 0 1rem;
     }
 
     :host[data-size='l']._hidden_input & {
@@ -68,29 +59,16 @@
 }
 
 .t-view {
-    margin-right: 0.75rem;
-    transform: translateY(-50%);
-
-    :host[data-align='right'] & {
-        margin-left: 0.75rem;
-        margin-right: 0;
-    }
-
-    :host[data-size='s'][data-align='right'] & {
-        margin-left: 0.5rem;
-    }
-
     :host[data-size='s'] & {
-        margin-top: calc(var(--tui-height-s) / 2);
-        margin-right: 0.5rem;
+        margin: calc(var(--tui-height-s) / 2 - 0.5rem) 0.5rem;
     }
 
     :host[data-size='m'] & {
-        margin-top: calc(var(--tui-height-m) / 2);
+        margin: calc(var(--tui-height-m) / 2 - 0.5rem) 0.75rem;
     }
 
     :host[data-size='l'] & {
-        margin-top: calc(var(--tui-height-l) / 2);
+        margin: calc(var(--tui-height-l) / 2 - 0.75rem) 1rem;
     }
 
     :host._hidden_input & {

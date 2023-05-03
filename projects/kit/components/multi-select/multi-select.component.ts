@@ -229,7 +229,7 @@ export class TuiMultiSelectComponent<T>
         }
 
         if (!this.readOnly) {
-            this.open = true;
+            this.hostedDropdown?.updateOpen(true);
         }
     }
 
@@ -283,7 +283,7 @@ export class TuiMultiSelectComponent<T>
 
     override setDisabledState(): void {
         super.setDisabledState();
-        this.open = false;
+        this.hostedDropdown?.updateOpen(false);
     }
 
     private updateSearch(search: string | null): void {
