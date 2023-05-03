@@ -88,6 +88,10 @@ export class TuiDocExampleComponent {
     readonly visible = (files: Record<string, string>): boolean =>
         Boolean(this.codeEditor && this.options.codeEditorVisibilityHandler(files));
 
+    getTabTitle(fileName: string): PolymorpheusContent {
+        return this.options.tabTitles.get(fileName) || fileName;
+    }
+
     copyExampleLink(): void {
         const hashPosition = this.location.href.indexOf('#');
         const currentUrl =
