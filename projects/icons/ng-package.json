@@ -8,6 +8,6 @@
     ],
     "dest": "../../dist/icons",
     "lib": {
-        "entryFile": "./public-api.ts"
+        "entryFile": "./index.ts"
     }
 }
