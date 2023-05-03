@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[30630],{30630:n=>{n.exports=".logo {\n    color: #fff;\n    background-color: var(--tui-primary-hover);\n    margin: 1rem 0;\n}\n"}}]);
