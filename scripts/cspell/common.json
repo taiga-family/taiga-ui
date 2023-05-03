@@ -22,6 +22,7 @@
         "huck",
         "inet",
         "snapshotting",
-        "screenshotting"
+        "screenshotting",
+        "callees"
     ]
 }
