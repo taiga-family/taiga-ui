@@ -4,6 +4,7 @@
     .text-basic();
     display: inline-block;
     vertical-align: top;
+    align-items: flex-start;
     border-radius: var(--tui-radius-m);
 
     &[data-size='m'],
@@ -19,14 +20,18 @@
 
 .t-wrapper {
     position: relative;
+    display: flex;
+    align-items: inherit;
+    box-sizing: border-box;
     border-radius: inherit;
     cursor: pointer;
     user-select: none;
-}
+    padding: 0 1rem 0 0;
 
-.t-content-wrapper {
-    display: flex;
-    flex-direction: column;
+    :host[data-align='right'] & {
+        flex-direction: row-reverse;
+        padding: 0 0 0 1rem;
+    }
 
     :host[data-size='s'] & {
         min-height: var(--tui-height-s);
@@ -39,78 +44,34 @@
     :host[data-size='l'] & {
         min-height: var(--tui-height-l);
     }
-}
 
-.t-content {
-    display: flex;
-    align-items: center;
-    min-height: inherit;
-
-    :host[data-align='right'] & {
-        flex-direction: row-reverse;
-    }
-
-    :host[data-size='s'] & {
-        padding: 0 1rem 0 0.5rem;
-    }
-
-    :host[data-size='s'][data-align='right'] & {
-        padding: 0 0.5rem 0 1rem;
-    }
-
-    :host[data-size='s']._hidden_checkbox & {
+    :host[data-size='s']._hidden_input & {
         padding: 0 1rem;
     }
 
-    :host[data-size='m'] & {
-        padding: 0 1rem 0 0.75rem;
-    }
-
-    :host[data-size='m'][data-align='right'] & {
-        padding: 0 0.75rem 0 1rem;
-    }
-
-    :host[data-size='m']._hidden_checkbox & {
+    :host[data-size='m']._hidden_input & {
         padding: 0 1.5rem;
     }
 
-    :host[data-size='l'] & {
-        padding: 0 1rem;
-    }
-
-    :host[data-size='l']._hidden_checkbox & {
+    :host[data-size='l']._hidden_input & {
         padding: 0 2.25rem;
     }
 }
 
 .t-view {
-    margin-top: 0.75rem;
-    margin-right: 0.75rem;
-    align-self: flex-start;
-
-    :host[data-align='right'] & {
-        margin-left: 0.75rem;
-        margin-right: 0;
-    }
-
     :host[data-size='s'] & {
-        margin-top: 0.5rem;
-        margin-right: 0.5rem;
-    }
-
-    :host[data-size='s'][data-align='right'] & {
-        margin-left: 0.5rem;
+        margin: calc(var(--tui-height-s) / 2 - 0.5rem) 0.5rem;
     }
 
     :host[data-size='m'] & {
-        margin-top: 0.875rem;
+        margin: calc(var(--tui-height-m) / 2 - 0.5rem) 0.75rem;
     }
 
     :host[data-size='l'] & {
-        margin-top: 1rem;
+        margin: calc(var(--tui-height-l) / 2 - 0.75rem) 1rem;
     }
 
-    :host._hidden_checkbox & {
+    :host._hidden_input & {
         .visually-hidden();
     }
 }
@@ -118,8 +79,9 @@
 .t-label {
     .text-overflow();
     flex-grow: 1;
+    align-self: center;
 
-    :host._hidden_checkbox & {
+    :host._hidden_input & {
         text-align: center;
     }
 }

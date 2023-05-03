@@ -52,6 +52,18 @@ export class TuiNodeView extends NodeView<
     renderer!: TuiComponentRenderer<TuiNodeViewNgComponent, NodeViewProps>;
     contentDOMElement: HTMLElement | null = null;
 
+    /**
+     * @caretaker note:
+     * Class constructor NodeView cannot be invoked without 'new'
+     */
+    constructor(
+        component: Type<TuiNodeViewNgComponent>,
+        props: NodeViewRendererProps,
+        options?: Partial<TuiNodeViewRendererOptions>,
+    ) {
+        super(component, props, options);
+    }
+
     override mount(): void {
         const injector = this.options.injector;
         const doc = injector.get(DOCUMENT);
@@ -150,6 +162,9 @@ export class TuiNodeView extends NodeView<
     }
 }
 
+/**
+ * @deprecated
+ */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function TuiNodeViewRenderer(
     component: Type<TuiNodeViewNgComponent>,

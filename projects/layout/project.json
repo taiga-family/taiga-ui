@@ -1,0 +1,51 @@
+{
+    "name": "layout",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "root": "projects/layout",
+    "sourceRoot": "projects/layout",
+    "projectType": "library",
+    "prefix": "tui",
+    "implicitDependencies": ["!testing"],
+    "targets": {
+        "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "eslint --no-error-on-unmatched-pattern \"**/projects/layout/**/*\""
+            }
+        },
+        "stylelint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "stylelint \"**/layout/**/*.{css,less}\" --allow-empty-input"
+            }
+        },
+        "build": {
+            "executor": "@angular-devkit/build-angular:ng-packagr",
+            "outputs": ["dist/layout"],
+            "options": {
+                "tsConfig": "tsconfig.build.json",
+                "project": "projects/layout/ng-package.json"
+            },
+            "dependsOn": [
+                {
+                    "target": "build",
+                    "projects": "dependencies",
+                    "params": "forward"
+                }
+            ]
+        },
+        "test": {
+            "executor": "nx:run-commands",
+            "outputs": ["coverage/layout"],
+            "options": {
+                "command": "jest --testMatch \"**/projects/layout/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/layout/**/*.ts\" --coverage-directory=coverage/layout"
+            }
+        },
+        "publish": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "ts-node ./scripts/publish.ts --path ./dist/layout --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
+            }
+        }
+    }
+}

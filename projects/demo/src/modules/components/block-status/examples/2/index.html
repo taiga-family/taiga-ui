@@ -1,0 +1,28 @@
+<tui-block-status *ngIf="size$ | async as size">
+    <img
+        tuiSlot="top"
+        alt="survived"
+        src="./assets/images/going-up.svg"
+    />
+
+    <h4>Something has been achieved</h4>
+
+    <span class="text">
+        You can do something with it, or you can not do it. And the description text can be quite long.
+    </span>
+
+    <button
+        tuiButton
+        appearance="secondary"
+        [size]="size"
+    >
+        Do
+    </button>
+    <button
+        tuiButton
+        appearance="mono"
+        [size]="size"
+    >
+        Not to do
+    </button>
+</tui-block-status>

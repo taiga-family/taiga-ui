@@ -1,4 +1,4 @@
-import {inject, InjectionToken, ValueProvider} from '@angular/core';
+import {FactoryProvider, inject, InjectionToken, Optional, SkipSelf} from '@angular/core';
 import {SafeHtml} from '@angular/platform-browser';
 import {
     TuiHandler,
@@ -27,12 +27,14 @@ export const TUI_SVG_DEFAULT_OPTIONS: TuiSvgOptions = {
     path: tuiIconsPathFactory(`assets/taiga-ui/icons`),
     srcProcessor: identity,
     contentProcessor: tuiSvgLinearGradientProcessor,
-    deprecated: src =>
-        TUI_DEPRECATED_ICONS[src.replace(`Large`, ``).replace(`Outline`, ``)]
-            ? `${src} is deprecated, use ${
-                  TUI_DEPRECATED_ICONS[src.replace(`Large`, ``)]
-              }/Large instead`
-            : ``,
+    deprecated: src => {
+        const oldIcon = src.replace(`Large`, ``).replace(`Outline`, ``);
+        const newIcon = TUI_DEPRECATED_ICONS[oldIcon];
+
+        return newIcon
+            ? `${oldIcon}/(Large|Outline) is deprecated, use ${newIcon}/(Large|Outline) instead`
+            : ``;
+    },
 };
 
 /**
@@ -51,13 +53,14 @@ export const tuiSvgOptionsProvider: (
     options: Partial<Omit<TuiSvgOptions, 'path'>> & {
         path?: TuiSvgOptions['path'] | string;
     },
-) => ValueProvider = options => ({
+) => FactoryProvider = options => ({
     provide: TUI_SVG_OPTIONS,
-    useValue: {
-        ...TUI_SVG_DEFAULT_OPTIONS,
+    deps: [[new SkipSelf(), new Optional(), TUI_SVG_OPTIONS]],
+    useFactory: (fallback: TuiSvgOptions | null) => ({
+        ...(fallback || TUI_SVG_DEFAULT_OPTIONS),
         ...options,
         path: tuiIsString(options.path)
             ? tuiIconsPathFactory(options.path)
-            : options.path || TUI_SVG_DEFAULT_OPTIONS.path,
-    },
+            : options.path || fallback?.path || TUI_SVG_DEFAULT_OPTIONS.path,
+    }),
 });

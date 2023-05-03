@@ -89,9 +89,11 @@
             "@taiga-ui/core/*": ["projects/core/*"],
             "@taiga-ui/i18n": ["projects/i18n/index"],
             "@taiga-ui/i18n/*": ["projects/i18n/*"],
-            "@taiga-ui/icons": ["projects/icons/public-api"],
+            "@taiga-ui/icons": ["projects/icons/index"],
             "@taiga-ui/kit": ["projects/kit/index"],
             "@taiga-ui/kit/*": ["projects/kit/*"],
+            "@taiga-ui/layout": ["projects/layout/index"],
+            "@taiga-ui/layout/*": ["projects/layout/*"],
             "@taiga-ui/testing": ["projects/testing/index"],
             "@taiga-ui/testing/*": ["projects/testing/*"]
         }

@@ -72,8 +72,7 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
     lineHeight = 24;
 
     @Input()
-    @tuiDefaultProp()
-    content: PolymorpheusContent = '';
+    content: PolymorpheusContent;
 
     @Output()
     readonly overflownChange: Observable<boolean> = this.isOverflown$.pipe(

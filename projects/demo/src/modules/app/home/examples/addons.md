@@ -7,4 +7,5 @@ npm i @taiga-ui/addon-tablebars // Group action sliding toolbar
 npm i @taiga-ui/addon-editor    // Rich text editor extension with related components
 npm i @taiga-ui/addon-preview   // Custom fullscreen dialog to preview various content such as documents, images etc.
 npm i @taiga-ui/addon-doc       // Taiga UI based library for developing documentation portals for Angular libraries
+npm i @taiga-ui/layout          // Layout components
 ```

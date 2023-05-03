@@ -134,7 +134,7 @@ export class TuiMultiSelectComponent<T>
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent<
         TuiContextWithImplicit<TuiActiveZoneDirective>
-    > = '';
+    >;
 
     open = false;
 
@@ -178,7 +178,7 @@ export class TuiMultiSelectComponent<T>
     }
 
     get nativeDropdownMode(): boolean {
-        return !!this.nativeSelect && this.isMobile;
+        return !!this.nativeSelect && this.isMobile && !this.editable;
     }
 
     get computedValue(): readonly T[] {
@@ -229,7 +229,7 @@ export class TuiMultiSelectComponent<T>
         }
 
         if (!this.readOnly) {
-            this.open = true;
+            this.hostedDropdown?.updateOpen(true);
         }
     }
 
@@ -274,6 +274,7 @@ export class TuiMultiSelectComponent<T>
     }
 
     onSearch(search: string | null): void {
+        this.hostedDropdown?.updateOpen(true);
         this.updateSearch(search);
     }
 
@@ -283,7 +284,7 @@ export class TuiMultiSelectComponent<T>
 
     override setDisabledState(): void {
         super.setDisabledState();
-        this.open = false;
+        this.hostedDropdown?.updateOpen(false);
     }
 
     private updateSearch(search: string | null): void {

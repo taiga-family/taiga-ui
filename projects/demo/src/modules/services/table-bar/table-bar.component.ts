@@ -17,7 +17,7 @@ export class ExampleTuiTableBarComponent implements OnDestroy {
     private readonly destroy$ = new Subject<void>();
 
     @ViewChild('tableBarTemplate')
-    readonly tableBarTemplate: PolymorpheusContent = '';
+    readonly tableBarTemplate: PolymorpheusContent;
 
     readonly exampleServiceUsage = import('./examples/import/service-usage.md?raw');
 

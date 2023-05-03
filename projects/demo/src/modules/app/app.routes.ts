@@ -198,6 +198,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `layout/block-status`,
+        loadChildren: async () =>
+            (await import(`../components/block-status/block-status.module`))
+                .ExampleTuiBlockStatusModule,
+        data: {
+            title: `BlockStatus`,
+        },
+    },
+    {
         path: `navigation/breadcrumbs`,
         loadChildren: async () =>
             (await import(`../components/breadcrumbs/breadcrumbs.module`))

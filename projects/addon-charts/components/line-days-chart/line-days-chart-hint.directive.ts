@@ -14,7 +14,6 @@ import {
     EMPTY_QUERY,
     TuiContextWithImplicit,
     TuiDay,
-    tuiDefaultProp,
     TuiDestroyService,
     TuiHoveredService,
     tuiPure,
@@ -39,8 +38,7 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
     private readonly charts: QueryList<TuiLineDaysChartComponent> = EMPTY_QUERY;
 
     @Input('tuiLineChartHint')
-    @tuiDefaultProp()
-    hint: PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> = '';
+    hint: PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>>;
 
     constructor(
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,

@@ -44,6 +44,10 @@ export class TuiDropdownPositionDirective extends TuiPositionAccessor {
             top: hostRect.top - offset - height,
             bottom: hostRect.bottom + offset,
             right,
+            center:
+                hostRect.left + hostRect.width / 2 + width / 2 < viewport.right - offset
+                    ? hostRect.left + hostRect.width / 2 - width / 2
+                    : right,
             left: hostRect.left + width < viewport.right - offset ? hostRect.left : right,
         } as const;
         const better = available.top > available.bottom ? 'top' : 'bottom';

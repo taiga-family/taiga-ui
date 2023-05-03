@@ -8,10 +8,7 @@ import {configureTestSuite, TuiTagHarness} from '@taiga-ui/testing';
 describe(`Tag`, () => {
     @Component({
         template: `
-            <tui-tag
-                id="default"
-                [value]="tag"
-            ></tui-tag>
+            <tui-tag id="default"></tui-tag>
             <tui-tag
                 id="changed"
                 [value]="'Tag'"

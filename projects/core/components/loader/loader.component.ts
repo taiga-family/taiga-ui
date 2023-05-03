@@ -40,8 +40,7 @@ export class TuiLoaderComponent {
     overlay = this.options.overlay;
 
     @Input()
-    @tuiDefaultProp()
-    textContent: PolymorpheusContent = '';
+    textContent: PolymorpheusContent;
 
     @Input()
     @tuiRequiredSetter()

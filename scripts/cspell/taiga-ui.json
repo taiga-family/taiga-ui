@@ -51,6 +51,7 @@
         "subpages",
         "hilite",
         "starterKit",
-        "tuiaction"
+        "tuiaction",
+        "blockstatus"
     ]
 }

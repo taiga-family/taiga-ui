@@ -1,9 +1,11 @@
 import {InjectionToken, ValueProvider} from '@angular/core';
 import {TUI_EXAMPLE_PRIMARY_FILE_NAME} from '@taiga-ui/addon-doc/interfaces';
 import {TuiBooleanHandler} from '@taiga-ui/cdk';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiDocExampleOptions {
     codeEditorVisibilityHandler: TuiBooleanHandler<Record<string, string>>;
+    tabTitles: Map<unknown, PolymorpheusContent>;
 }
 
 export const TUI_DOC_EXAMPLE_DEFAULT_OPTIONS: TuiDocExampleOptions = {
@@ -12,6 +14,7 @@ export const TUI_DOC_EXAMPLE_DEFAULT_OPTIONS: TuiDocExampleOptions = {
             files[TUI_EXAMPLE_PRIMARY_FILE_NAME.TS] &&
                 files[TUI_EXAMPLE_PRIMARY_FILE_NAME.HTML],
         ),
+    tabTitles: new Map(),
 };
 
 /**

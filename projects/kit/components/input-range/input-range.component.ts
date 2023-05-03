@@ -98,12 +98,10 @@ export class TuiInputRangeComponent
     keySteps: TuiKeySteps | null = null;
 
     @Input()
-    @tuiDefaultProp()
-    leftValueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = '';
+    leftValueContent: PolymorpheusContent<TuiContextWithImplicit<number>>;
 
     @Input()
-    @tuiDefaultProp()
-    rightValueContent: PolymorpheusContent<TuiContextWithImplicit<number>> = '';
+    rightValueContent: PolymorpheusContent<TuiContextWithImplicit<number>>;
 
     @Input()
     @tuiDefaultProp()

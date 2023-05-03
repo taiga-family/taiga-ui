@@ -1,37 +1,32 @@
-<label class="t-wrapper">
-    <div
-        tuiWrapper
-        [appearance]="appearance"
-        [disabled]="computedDisabled"
-        [focus]="computedFocusVisible"
-        [hover]="pseudoHover"
-        [active]="pseudoActive"
-        [invalid]="computedInvalid"
-    >
-        <div class="t-content-wrapper">
-            <div class="t-content">
-                <tui-radio
-                    class="t-view"
-                    [focusable]="focusable"
-                    [identityMatcher]="identityMatcher"
-                    [item]="item"
-                    [name]="computedName || ''"
-                    [nativeId]="nativeId"
-                    [readOnly]="readOnly"
-                    [pseudoDisabled]="computedDisabled"
-                    [pseudoInvalid]="computedInvalid"
-                    [pseudoFocus]="false"
-                    [pseudoHover]="pseudoHover"
-                    [pseudoActive]="pseudoActive"
-                    [size]="checkboxSize"
-                    [(ngModel)]="value"
-                    (focusedChange)="onFocused($event)"
-                    (focusVisibleChange)="onFocusVisible($event)"
-                ></tui-radio>
-                <div class="t-label">
-                    <ng-content></ng-content>
-                </div>
-            </div>
-        </div>
+<label
+    tuiWrapper
+    class="t-wrapper"
+    [appearance]="appearance"
+    [disabled]="computedDisabled"
+    [focus]="computedFocusVisible"
+    [hover]="pseudoHover"
+    [active]="pseudoActive"
+    [invalid]="computedInvalid"
+>
+    <tui-radio
+        class="t-view"
+        [focusable]="focusable"
+        [identityMatcher]="identityMatcher"
+        [item]="item"
+        [name]="computedName || ''"
+        [nativeId]="nativeId"
+        [readOnly]="readOnly"
+        [pseudoDisabled]="computedDisabled"
+        [pseudoInvalid]="computedInvalid"
+        [pseudoFocus]="false"
+        [pseudoHover]="pseudoHover"
+        [pseudoActive]="pseudoActive"
+        [size]="checkboxSize"
+        [(ngModel)]="value"
+        (focusedChange)="onFocused($event)"
+        (focusVisibleChange)="onFocusVisible($event)"
+    ></tui-radio>
+    <div class="t-label">
+        <ng-content></ng-content>
     </div>
 </label>

@@ -12,7 +12,7 @@ import {
     TUI_IS_MOBILE_RES,
     TUI_THEME,
 } from '@taiga-ui/core/tokens';
-import {merge, Observable, of} from 'rxjs';
+import {combineLatest, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
@@ -33,7 +33,9 @@ import {map} from 'rxjs/operators';
 export class TuiRootComponent {
     readonly scrollbars$: Observable<boolean> =
         this.dialogs.length && !this.isMobile
-            ? merge(...this.dialogs).pipe(map(({length}) => !length))
+            ? combineLatest([...this.dialogs]).pipe(
+                  map(dialogs => !dialogs.some(({length}) => length)),
+              )
             : of(!this.isMobile);
 
     constructor(

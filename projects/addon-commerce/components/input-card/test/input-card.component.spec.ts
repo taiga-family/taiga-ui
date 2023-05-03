@@ -1,10 +1,8 @@
 import {Component, TemplateRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiInputCardComponent, TuiInputCardModule} from '@taiga-ui/addon-commerce';
 import {configureTestSuite} from '@taiga-ui/testing';
-
-import {TuiInputCardComponent} from '../input-card.component';
-import {TuiInputCardModule} from '../input-card.module';
 
 describe(`InputCard`, () => {
     @Component({
@@ -47,6 +45,32 @@ describe(`InputCard`, () => {
         fixture.detectChanges();
     });
 
+    describe(`autocomplete`, () => {
+        it(`enabled`, () => {
+            testComponent.component.autocompleteEnabled = true;
+
+            expect(testComponent.component.autocompleteCard).toEqual(`cc-number`);
+        });
+
+        it(`disabled`, () => {
+            testComponent.component.autocompleteEnabled = false;
+
+            expect(testComponent.component.autocompleteCard).toEqual(`off`);
+        });
+    });
+
+    describe(`focusable`, () => {
+        it(`touched`, () => {
+            testComponent.component.onFocused(true);
+
+            expect(testComponent.component.control?.touched).toEqual(false);
+
+            testComponent.component.onFocused(false);
+
+            expect(testComponent.component.control?.touched).toEqual(true);
+        });
+    });
+
     describe(`binChange`, () => {
         it(`Less than 6 characters`, () => {
             testComponent.control.setValue(`12345`);
@@ -58,6 +82,20 @@ describe(`InputCard`, () => {
             testComponent.control.setValue(`123456789`);
 
             expect(testComponent.onBinChange).toHaveBeenCalledWith(`123456`);
+        });
+
+        it(`trigger onBinChange only when bin has changed`, () => {
+            testComponent.component.onValueChange(`1234 5678 1111 2222`);
+
+            expect(testComponent.onBinChange).toHaveBeenCalledWith(`123456`);
+            expect(testComponent.component.value).toEqual(`1234567811112222`);
+            expect(testComponent.component.bin).toEqual(`123456`);
+
+            testComponent.component.onValueChange(`2222 4444 5555 6666`);
+            expect(testComponent.onBinChange).toHaveBeenCalledTimes(2);
+
+            testComponent.component.onValueChange(`2222 4444 5555 6666`);
+            expect(testComponent.onBinChange).toHaveBeenCalledTimes(2);
         });
 
         it(`The value has changed, the first 6 characters are unchanged`, () => {
