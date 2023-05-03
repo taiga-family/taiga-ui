@@ -1,3 +1,4 @@
+export * from './cache-basting-payload';
 export * from './decimal-symbols';
 export * from './default-icons-path';
 export * from './default-marker-handler';
