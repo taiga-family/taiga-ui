@@ -24,9 +24,6 @@ All notable changes to this project will be documented in this file. See
 - **cdk:** `ng-add` support apps bootstrapped using a standalone component
   ([#4257](https://github.com/tinkoff/taiga-ui/issues/4257))
   ([41b5824](https://github.com/tinkoff/taiga-ui/commit/41b5824cd18e98608f64c7b5c13a670916196a43))
-- **cdk:** add `TUI_AUTOFOCUS_CUSTOM_HANDLER` for individual focus control
-  ([#4320](https://github.com/tinkoff/taiga-ui/issues/4320))
-  ([8fafff3](https://github.com/tinkoff/taiga-ui/commit/8fafff3b02068489ae9d6522a4dbed5b9b687d31))
 - **core:** `Svg` inherit options through DI hierarchy ([#4363](https://github.com/tinkoff/taiga-ui/issues/4363))
   ([dbd9f58](https://github.com/tinkoff/taiga-ui/commit/dbd9f585bfd246df71cfa6e92e3ace2d695ca8ef))
 - **core:** add ability to align dropdown to center ([#4277](https://github.com/tinkoff/taiga-ui/issues/4277))
