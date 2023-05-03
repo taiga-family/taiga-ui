@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3.5.2
       - name: Self-hosted Renovate
-        uses: renovatebot/github-action@v36.0.3
+        uses: renovatebot/github-action@v36.0.4
         with:
           token: ${{ secrets.TINKOFF_BOT_PAT }}
           configurationFile: renovate.json
