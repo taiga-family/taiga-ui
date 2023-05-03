@@ -4,6 +4,7 @@ export * from './decimal';
 export * from './decimal-symbol';
 export * from './dialog-size';
 export * from './direction';
+export * from './dropdown-align';
 export * from './dropdown-width';
 export * from './hint-direction';
 export * from './marker-handler';
