@@ -214,7 +214,7 @@ export class TuiInputFilesComponent
             ? of('')
             : this.inputFileTexts$.pipe(
                   map(texts =>
-                      multiple && link === ''
+                      multiple && !link
                           ? texts.defaultLinkMultiple
                           : link || texts.defaultLinkSingle,
                   ),
