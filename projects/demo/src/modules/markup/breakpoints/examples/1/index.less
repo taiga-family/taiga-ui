@@ -26,7 +26,7 @@
 @breakpoints: tui-mobile, tui-mobile-min, tui-mobile-interval, tui-tablet, tui-tablet-min, tui-tablet-interval,
     tui-desktop, tui-desktop-min, tui-desktop-interval, tui-desktop-lg-min;
 
-each(@breakpoints, {
+.tui-for(@breakpoints, {
     .@{value} {
         @media @@value {
             background: var(--tui-primary);
