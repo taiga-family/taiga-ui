@@ -1,5 +1,5 @@
 ```ts
-import {TuiBlockStatusModule} from '@taiga-ui/kit';
+import {TuiBlockStatusModule} from '@taiga-ui/layout';
 
 // ...
 
