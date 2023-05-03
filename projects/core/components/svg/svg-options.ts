@@ -59,6 +59,6 @@ export const tuiSvgOptionsProvider: (
         ...options,
         path: tuiIsString(options.path)
             ? tuiIconsPathFactory(options.path)
-            : options.path || TUI_SVG_DEFAULT_OPTIONS.path,
+            : options.path || fallback?.path || TUI_SVG_DEFAULT_OPTIONS.path,
     }),
 });
