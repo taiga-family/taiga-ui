@@ -42,7 +42,9 @@
                         *tuiItem
                         tuiTab
                     >
-                        {{ tab }}
+                        <ng-container *polymorpheusOutlet="getTabTitle(tab) as text">
+                            {{ text }}
+                        </ng-container>
                     </button>
                 </ng-container>
             </tui-tabs-with-more>
