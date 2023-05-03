@@ -51,7 +51,7 @@ export class TuiCheckboxBlockComponent
     contentAlign: TuiHorizontalDirection = 'right';
 
     @Input()
-    @HostBinding('class._hidden_checkbox')
+    @HostBinding('class._hidden_input')
     @tuiDefaultProp()
     hideCheckbox = false;
 
