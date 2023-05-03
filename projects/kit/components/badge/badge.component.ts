@@ -5,7 +5,7 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {tuiDefaultProp, tuiIsNumber} from '@taiga-ui/cdk';
+import {tuiDefaultProp, tuiIsNumber, tuiIsPresent} from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
     TUI_MODE,
@@ -64,7 +64,7 @@ export class TuiBadgeComponent {
             return '99+';
         }
 
-        return String(this.value);
+        return tuiIsPresent(this.value) ? String(this.value) : '';
     }
 
     @HostBinding('class._empty-value')

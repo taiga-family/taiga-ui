@@ -240,7 +240,7 @@ export class TuiInputFilesComponent
 
         return this.inputFileTexts$.pipe(
             map(texts =>
-                multiple && label === ''
+                multiple && !label
                     ? texts.defaultLabelMultiple
                     : label || texts.defaultLabelSingle,
             ),
