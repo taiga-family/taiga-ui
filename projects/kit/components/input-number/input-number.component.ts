@@ -157,10 +157,6 @@ export class TuiInputNumberComponent
         return this.value === null ? '' : this.formattedValue;
     }
 
-    get showButtons(): boolean {
-        return !!this.step;
-    }
-
     get canDecrement(): boolean {
         return this.interactive && (this.value || 0) > this.min;
     }
