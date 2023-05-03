@@ -4,6 +4,7 @@
     .text-basic();
     display: inline-block;
     vertical-align: top;
+    align-items: flex-start;
     border-radius: var(--tui-radius-m);
 
     &[data-size='m'],
@@ -19,38 +20,19 @@
 
 .t-wrapper {
     position: relative;
+    display: flex;
+    align-items: inherit;
+    box-sizing: border-box;
     border-radius: inherit;
     cursor: pointer;
     user-select: none;
-}
-
-.t-content-wrapper {
-    display: flex;
-    flex-direction: column;
-
-    :host[data-size='s'] & {
-        min-height: var(--tui-height-s);
-    }
-
-    :host[data-size='m'] & {
-        min-height: var(--tui-height-m);
-    }
-
-    :host[data-size='l'] & {
-        min-height: var(--tui-height-l);
-    }
-}
-
-.t-content {
-    display: flex;
-    align-items: center;
-    min-height: inherit;
 
     :host[data-align='right'] & {
         flex-direction: row-reverse;
     }
 
     :host[data-size='s'] & {
+        min-height: var(--tui-height-s);
         padding: 0 1rem 0 0.5rem;
     }
 
@@ -63,6 +45,7 @@
     }
 
     :host[data-size='m'] & {
+        min-height: var(--tui-height-m);
         padding: 0 1rem 0 0.75rem;
     }
 
@@ -75,6 +58,7 @@
     }
 
     :host[data-size='l'] & {
+        min-height: var(--tui-height-l);
         padding: 0 1rem;
     }
 
@@ -84,30 +68,29 @@
 }
 
 .t-view {
-    margin-top: 0.75rem;
     margin-right: 0.75rem;
-    align-self: flex-start;
+    transform: translateY(-50%);
 
     :host[data-align='right'] & {
         margin-left: 0.75rem;
         margin-right: 0;
     }
 
-    :host[data-size='s'] & {
-        margin-top: 0.5rem;
-        margin-right: 0.5rem;
-    }
-
     :host[data-size='s'][data-align='right'] & {
         margin-left: 0.5rem;
     }
 
+    :host[data-size='s'] & {
+        margin-top: calc(var(--tui-height-s) / 2);
+        margin-right: 0.5rem;
+    }
+
     :host[data-size='m'] & {
-        margin-top: 0.875rem;
+        margin-top: calc(var(--tui-height-m) / 2);
     }
 
     :host[data-size='l'] & {
-        margin-top: 1rem;
+        margin-top: calc(var(--tui-height-l) / 2);
     }
 
     :host._hidden_checkbox & {
@@ -118,6 +101,7 @@
 .t-label {
     .text-overflow();
     flex-grow: 1;
+    align-self: center;
 
     :host._hidden_checkbox & {
         text-align: center;
