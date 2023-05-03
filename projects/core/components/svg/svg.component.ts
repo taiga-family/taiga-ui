@@ -20,7 +20,7 @@ import {
     TuiStaticRequestService,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {TUI_ICON_ERROR} from '@taiga-ui/core/constants';
+import {TUI_CACHE_BUSTING_PAYLOAD, TUI_ICON_ERROR} from '@taiga-ui/core/constants';
 import {TuiIconError} from '@taiga-ui/core/interfaces';
 import {TuiSvgService} from '@taiga-ui/core/services';
 import {TUI_SANITIZER} from '@taiga-ui/core/tokens';
@@ -112,7 +112,7 @@ export class TuiSvgComponent {
     }
 
     private get isUse(): boolean {
-        return this.use.includes('.svg#');
+        return this.use.replace(TUI_CACHE_BUSTING_PAYLOAD, '').includes('.svg#');
     }
 
     private get isExternal(): boolean {

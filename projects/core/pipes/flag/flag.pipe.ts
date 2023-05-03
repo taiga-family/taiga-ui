@@ -1,12 +1,14 @@
 import {Inject, Pipe, PipeTransform} from '@angular/core';
 import {TUI_SVG_OPTIONS, TuiSvgOptions} from '@taiga-ui/core/components/svg';
+import {TUI_CACHE_BUSTING_PAYLOAD} from '@taiga-ui/core/constants';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 
 @Pipe({name: `tuiFlag`})
 export class TuiFlagPipe implements PipeTransform {
     private readonly staticPath = this.svgOptions
         .path(`tuiIcon`)
-        .replace(`tuiIcon.svg#tuiIcon`, ``);
+        .replace(`tuiIcon.svg#tuiIcon`, ``)
+        .replace(`tuiIcon.svg${TUI_CACHE_BUSTING_PAYLOAD}#tuiIcon`, ``);
 
     constructor(@Inject(TUI_SVG_OPTIONS) private readonly svgOptions: TuiSvgOptions) {}
 
