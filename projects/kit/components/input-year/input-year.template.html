@@ -15,7 +15,7 @@
         [pseudoFocus]="pseudoFocus"
         [pseudoHover]="pseudoHover"
         [invalid]="computedInvalid"
-        [textMask]="textMaskOptions"
+        [maskito]="getMaskOptions(max)"
         [value]="value?.toString() || ''"
         (valueChange)="onValueChange($event)"
         (focusedChange)="onFocused($event)"
