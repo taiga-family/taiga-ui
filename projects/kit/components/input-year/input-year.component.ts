@@ -86,14 +86,13 @@ export class TuiInputYearComponent
 
     @tuiPure
     getMaskOptions(max: number): MaskitoOptions {
-        const numberOptions = maskitoNumberOptionsGenerator({
-            max,
-            precision: 0,
-            isNegativeAllowed: false,
-            thousandSeparator: '',
-        });
-
-        return {...numberOptions, mask: UP_TO_4_DIGITS_REG};
+        return {
+            ...maskitoNumberOptionsGenerator({
+                max,
+                thousandSeparator: '',
+            }),
+            mask: UP_TO_4_DIGITS_REG,
+        };
     }
 
     onValueChange(value: string): void {
