@@ -107,6 +107,10 @@ export class TuiInputYearComponent
 
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
+
+        if (!focused && this.value && this.value < this.min) {
+            this.value = this.min;
+        }
     }
 
     onOpenChange(open: boolean): void {

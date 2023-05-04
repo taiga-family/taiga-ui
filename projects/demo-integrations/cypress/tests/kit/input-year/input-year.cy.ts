@@ -1,10 +1,14 @@
 describe(`InputYear`, () => {
-    beforeEach(() => {
-        cy.tuiVisit(`components/input-year/API?max=2020`);
-        cy.get(`#demo-content input`).should(`be.visible`).first().focus().as(`input`);
-    });
-
     describe(`Does not allow incorrect year entry`, () => {
+        beforeEach(() => {
+            cy.tuiVisit(`components/input-year/API?max=2020`);
+            cy.get(`#demo-content input`)
+                .should(`be.visible`)
+                .first()
+                .focus()
+                .as(`input`);
+        });
+
         it(`12345 => 1234`, () => {
             cy.get(`@input`)
                 .type(`123456789`)
@@ -35,6 +39,25 @@ describe(`InputYear`, () => {
                 .should(`have.value`, `40`)
                 .should(`have.prop`, `selectionStart`, `40`.length)
                 .should(`have.prop`, `selectionEnd`, `40`.length);
+        });
+    });
+
+    describe(`Value validation on blur`, () => {
+        beforeEach(() => {
+            cy.tuiVisit(`components/input-year/API?max=2020&min=2007`);
+            cy.get(`#demo-content input`)
+                .should(`be.visible`)
+                .first()
+                .focus()
+                .as(`input`);
+        });
+
+        it(`can not be less than min`, () => {
+            cy.get(`@input`)
+                .type(`2005`)
+                .should(`have.value`, `2005`)
+                .blur()
+                .should(`have.value`, `2007`);
         });
     });
 });
