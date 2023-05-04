@@ -1,6 +1,9 @@
 ```html
 <tui-block-status [card]="card">
-  <img src="src" />
+  <img
+    tuiSlot="top"
+    src="src"
+  />
   <h4>Title</h4>
   Description
   <button
