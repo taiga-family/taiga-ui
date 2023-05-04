@@ -38,7 +38,7 @@ function _isAndroid(): boolean {
 
 /**
  * @internal
- * @deprecated
+ * @deprecated Use {@link https://github.com/Tinkoff/maskito Maskito}
  * Don't use it! It can be deleted at any time (even in minor releases).
  * Use {@link https://github.com/text-mask/text-mask/tree/master/angular2 angular2-text-mask} instead.
  */
