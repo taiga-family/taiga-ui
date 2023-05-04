@@ -41,9 +41,18 @@ export class TuiExtractCountryCodePipe implements PipeTransform {
                     value.length + 1 ===
                         tuiGetMaxAllowedPhoneLength(this.countriesMasks, countryIsoCode));
 
-            return matched && countryIsoCode === TuiCountryIsoCode.RU
-                ? tuiNotKzRegion(value)
-                : matched;
+            if (matched) {
+                switch (countryIsoCode) {
+                    case TuiCountryIsoCode.RU:
+                        return tuiNotKzRegion(value);
+                    case TuiCountryIsoCode.KZ:
+                        return !tuiNotKzRegion(value);
+                    default:
+                        return true;
+                }
+            }
+
+            return false;
         });
     }
 }

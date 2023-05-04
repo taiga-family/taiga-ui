@@ -30,6 +30,40 @@ describe(`TuiExtractCountryCodePipe`, () => {
             countries: [TuiCountryIsoCode.DE],
             expected: undefined,
         },
+
+        // RU or KZ phones cases
+
+        {
+            input: `79123456789`,
+            countries: [TuiCountryIsoCode.KZ],
+            expected: undefined,
+        },
+        {
+            input: `76861234568`,
+            countries: [TuiCountryIsoCode.RU],
+            expected: undefined,
+        },
+
+        {
+            input: `79123456789`,
+            countries: [TuiCountryIsoCode.RU, TuiCountryIsoCode.KZ],
+            expected: TuiCountryIsoCode.RU,
+        },
+        {
+            input: `79123456789`,
+            countries: [TuiCountryIsoCode.KZ, TuiCountryIsoCode.RU],
+            expected: TuiCountryIsoCode.RU,
+        },
+        {
+            input: `76861234568`,
+            countries: [TuiCountryIsoCode.KZ, TuiCountryIsoCode.RU],
+            expected: TuiCountryIsoCode.KZ,
+        },
+        {
+            input: `76861234568`,
+            countries: [TuiCountryIsoCode.RU, TuiCountryIsoCode.KZ],
+            expected: TuiCountryIsoCode.KZ,
+        },
     ];
 
     beforeEach(() => {
