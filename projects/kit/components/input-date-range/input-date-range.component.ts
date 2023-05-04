@@ -32,6 +32,7 @@ import {
     TuiDayRange,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiIsPresent,
     TuiMapper,
     TuiMonth,
     tuiNullableSame,
@@ -62,7 +63,7 @@ import {
     tuiCreateAutoCorrectedDateRangePipe,
     tuiCreateDateRangeMask,
 } from '@taiga-ui/kit/utils/mask';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
@@ -212,6 +213,14 @@ export class TuiInputDateRangeComponent
         return value
             ? value.getFormattedDayRange(this.dateFormat, this.dateSeparator)
             : nativeValue;
+    }
+
+    get showValueTemplate(): boolean {
+        return tuiIsPresent(this.value) && !this.focused;
+    }
+
+    get computedContent(): PolymorpheusContent {
+        return this.activePeriod?.content || this.computedValue;
     }
 
     get innerPseudoFocused(): boolean | null {

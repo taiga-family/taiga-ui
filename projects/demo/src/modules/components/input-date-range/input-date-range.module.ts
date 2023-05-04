@@ -18,6 +18,7 @@ import {TuiInputDateRangeExample1} from './examples/1';
 import {TuiInputDateRangeExample2} from './examples/2';
 import {TuiInputDateRangeExample3} from './examples/3';
 import {TuiInputDateRangeExample4} from './examples/4';
+import {TuiInputDateRangeExample5} from './examples/5';
 import {ExampleTuiInputDateRangeComponent} from './input-date-range.component';
 
 @NgModule({
@@ -42,6 +43,7 @@ import {ExampleTuiInputDateRangeComponent} from './input-date-range.component';
         TuiInputDateRangeExample2,
         TuiInputDateRangeExample3,
         TuiInputDateRangeExample4,
+        TuiInputDateRangeExample5,
     ],
     exports: [ExampleTuiInputDateRangeComponent],
 })
