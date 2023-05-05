@@ -15,11 +15,12 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {MaskitoOptions} from '@maskito/core';
+import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {AbstractTuiInputCard} from '@taiga-ui/addon-commerce/components/input-card';
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
 import {TuiCard} from '@taiga-ui/addon-commerce/interfaces';
 import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
-import {tuiCreateAutoCorrectedExpirePipe} from '@taiga-ui/addon-commerce/utils';
 import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
@@ -47,7 +48,6 @@ import {
     TuiDataListDirective,
     TuiDataListHost,
     TuiTextfieldController,
-    TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -58,6 +58,8 @@ import {
     TuiCardGroupedTexts,
     TuiInputCardGroupedOptions,
 } from './input-card-grouped.providers';
+
+const EXPIRE_COMPLETE_LENGTH = 5; // MM/YY
 
 @Component({
     selector: 'tui-input-card-grouped',
@@ -114,7 +116,6 @@ export class TuiInputCardGroupedComponent
         this.exampleTextCVC = '0'.repeat(length);
         this.maskCVC = {
             mask: new Array(length).fill(TUI_DIGIT_REGEXP),
-            guide: false,
         };
     }
 
@@ -129,28 +130,18 @@ export class TuiInputCardGroupedComponent
 
     exampleTextCVC = this.options.exampleTextCVC;
 
-    maskCVC: TuiTextMaskOptions = {
+    maskCVC: MaskitoOptions = {
         mask: new Array(3).fill(TUI_DIGIT_REGEXP),
-        guide: false,
     };
 
-    readonly maskCard: TuiTextMaskOptions = {
+    readonly maskCard: MaskitoOptions = {
         mask: TUI_CARD_MASK,
-        guide: false,
-        pipe: conformedValue => conformedValue.trim(),
     };
 
-    readonly maskExpire: TuiTextMaskOptions = {
-        mask: [
-            TUI_DIGIT_REGEXP,
-            TUI_DIGIT_REGEXP,
-            '/',
-            TUI_DIGIT_REGEXP,
-            TUI_DIGIT_REGEXP,
-        ],
-        pipe: tuiCreateAutoCorrectedExpirePipe(),
-        guide: false,
-    };
+    readonly maskExpire: MaskitoOptions = maskitoDateOptionsGenerator({
+        mode: 'mm/yy',
+        separator: '/',
+    });
 
     open = false;
 
@@ -268,6 +259,10 @@ export class TuiInputCardGroupedComponent
         return this.cardPrefilled ? `*${this.card.slice(-4)}` : '*';
     }
 
+    get expireSelectionStart(): number {
+        return this.inputExpire?.nativeElement.selectionStart || 0;
+    }
+
     @HostListener('keydown.esc')
     onEsc(): void {
         this.open = false;
@@ -312,24 +307,12 @@ export class TuiInputCardGroupedComponent
     }
 
     onExpireChange(expire: string): void {
-        // @bad TODO: Workaround until mask pipe can replace chars and keep caret position
-        // @bad TODO: Think about a solution without mask at all
-        if (!this.inputExpire) {
-            return;
-        }
-
-        if (parseInt(expire.slice(0, 2), 10) > 12) {
-            expire = `12${expire.slice(2)}`;
-        }
-
-        if (expire.startsWith('00')) {
-            expire = `01${expire.slice(2)}`;
-        }
-
-        this.inputExpire.nativeElement.value = expire;
         this.updateProperty(expire, 'expire');
 
-        if (expire.length === 5) {
+        if (
+            expire.length === EXPIRE_COMPLETE_LENGTH &&
+            this.expireSelectionStart >= EXPIRE_COMPLETE_LENGTH
+        ) {
             this.focusCVC();
         }
     }

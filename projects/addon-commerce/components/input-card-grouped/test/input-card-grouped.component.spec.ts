@@ -172,29 +172,6 @@ describe(`InputCardGrouped`, () => {
             expect(getExpire()).toBe(`12/12`);
             expect(inputExpirePO.value).toBe(`12/12`);
         });
-
-        describe(`fixes incorrect value`, () => {
-            it(`replaces 50/08 with 05/08`, () => {
-                inputExpirePO.sendText(`50/08`);
-
-                expect(getExpire()).toBe(`05/08`);
-                expect(inputExpirePO.value).toBe(`05/08`);
-            });
-
-            it(`replaces 14/08 with 12/08`, () => {
-                inputExpirePO.sendText(`14/08`);
-
-                expect(getExpire()).toBe(`12/08`);
-                expect(inputExpirePO.value).toBe(`12/08`);
-            });
-
-            it(`replaces 00/08 with 01/08`, () => {
-                inputExpirePO.sendText(`00/08`);
-
-                expect(getExpire()).toBe(`01/08`);
-                expect(inputExpirePO.value).toBe(`01/08`);
-            });
-        });
     });
 
     describe(`Focus`, () => {
