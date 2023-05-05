@@ -1,9 +1,9 @@
 import {ComponentRef, EmbeddedViewRef, TemplateRef} from '@angular/core';
 import {AbstractTuiPortalHostComponent} from '@taiga-ui/cdk';
+import {tuiSwitchNgDevMode} from '@taiga-ui/testing';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiDropdownPortalService} from '../dropdown-portal.service';
-import {tuiSwitchNgDevMode} from '@taiga-ui/testing';
 
 describe(`PortalService`, () => {
     let service: TuiDropdownPortalService;

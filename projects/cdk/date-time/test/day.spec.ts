@@ -1,7 +1,7 @@
 import {TuiDay} from '@taiga-ui/cdk';
+import {tuiSwitchNgDevMode} from '@taiga-ui/testing';
 
 import {tuiMockDateInside} from './helpers';
-import {tuiSwitchNgDevMode} from '@taiga-ui/testing';
 
 describe(`TuiDay`, () => {
     describe(`static method`, () => {
