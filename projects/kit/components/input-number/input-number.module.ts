@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {
+    TuiButtonModule,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,
     TuiTextfieldControllerModule,
@@ -21,6 +22,7 @@ import {TuiInputNumberDirective} from './input-number.directive';
         TuiTextfieldControllerModule,
         TuiValueAccessorModule,
         PolymorpheusModule,
+        TuiButtonModule,
     ],
     declarations: [TuiInputNumberComponent, TuiInputNumberDirective],
     exports: [TuiInputNumberComponent, TuiInputNumberDirective, TuiTextfieldComponent],

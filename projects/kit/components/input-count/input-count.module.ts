@@ -14,6 +14,9 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TuiInputCountComponent} from './input-count.component';
 import {TuiInputCountDirective} from './input-count.directive';
 
+/**
+ * @deprecated use {@link TuiInputNumberComponent} with [step] instead
+ */
 @NgModule({
     imports: [
         CommonModule,

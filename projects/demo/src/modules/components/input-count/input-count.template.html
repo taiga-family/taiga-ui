@@ -1,10 +1,25 @@
 <tui-doc-page
+    deprecated
     header="InputCount"
     package="KIT"
     type="components"
 >
     <ng-template pageTab>
-        <div class="tui-space_bottom-3">
+        <tui-notification status="error">
+            <strong>Deprecated</strong>
+            . Use
+            <a
+                tuiLink
+                routerLink="/components/input-number"
+            >
+                InputNumber
+            </a>
+            with
+            <code>step</code>
+            input instead.
+        </tui-notification>
+
+        <div class="tui-space_vertical-3">
             <code>InputCount</code>
             is a good choice to input integer positive numbers under 999
         </div>

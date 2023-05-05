@@ -1,14 +1,64 @@
 :host {
-    display: block;
+    display: flex;
     border-radius: var(--tui-radius-m);
     text-align: left;
 }
 
 .t-textfield {
+    flex: 1;
+    max-width: 100%;
     border-radius: inherit;
     text-align: inherit;
+
+    &:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
 }
 
 .t-value-content {
     width: 100%;
+}
+
+.t-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-left: 0.125rem;
+
+    [data-size='s'] + & {
+        flex-direction: row-reverse;
+
+        & .t-button:first-child {
+            margin: 0 0 0 0.125rem;
+            border-radius: 0 var(--tui-radius-m) var(--tui-radius-m) 0;
+        }
+
+        & .t-button:last-child {
+            border-radius: 0;
+        }
+    }
+
+    [data-size='m'] + & .t-button {
+        width: calc(var(--tui-height-m) * 0.75);
+    }
+
+    [data-size='l'] + & .t-button {
+        width: calc(var(--tui-height-l) * 0.75);
+    }
+}
+
+.t-button {
+    display: flex;
+    flex: 1;
+    height: auto;
+
+    &:first-child {
+        margin-bottom: 0.125rem;
+        border-radius: 0 var(--tui-radius-m) 0 0;
+    }
+
+    &:last-child {
+        border-radius: 0 0 var(--tui-radius-m);
+    }
 }
