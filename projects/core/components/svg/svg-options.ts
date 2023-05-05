@@ -55,12 +55,34 @@ export const tuiSvgOptionsProvider: (
     },
 ) => FactoryProvider = options => ({
     provide: TUI_SVG_OPTIONS,
-    deps: [[new SkipSelf(), new Optional(), TUI_SVG_OPTIONS]],
-    useFactory: (fallback: TuiSvgOptions | null) => ({
-        ...(fallback || TUI_SVG_DEFAULT_OPTIONS),
-        ...options,
+    deps: [
+        [new SkipSelf(), new Optional(), TUI_SVG_OPTIONS],
+        [new Optional(), TUI_ICONS_PATH],
+        [new Optional(), TUI_SVG_SRC_PROCESSOR],
+        [new Optional(), TUI_SVG_CONTENT_PROCESSOR],
+    ],
+    useFactory: (
+        fallback: TuiSvgOptions | null,
+        path: TuiSvgOptions['path'] | null,
+        srcProcessor: TuiSvgOptions['srcProcessor'] | null,
+        contentProcessor: TuiSvgOptions['contentProcessor'] | null,
+    ): TuiSvgOptions => ({
         path: tuiIsString(options.path)
             ? tuiIconsPathFactory(options.path)
-            : options.path || fallback?.path || TUI_SVG_DEFAULT_OPTIONS.path,
+            : options.path ?? fallback?.path ?? path ?? TUI_SVG_DEFAULT_OPTIONS.path,
+        deprecated:
+            options.deprecated ??
+            fallback?.deprecated ??
+            TUI_SVG_DEFAULT_OPTIONS.deprecated,
+        srcProcessor:
+            options.srcProcessor ??
+            fallback?.srcProcessor ??
+            srcProcessor ??
+            TUI_SVG_DEFAULT_OPTIONS.srcProcessor,
+        contentProcessor:
+            options.contentProcessor ??
+            fallback?.contentProcessor ??
+            contentProcessor ??
+            TUI_SVG_DEFAULT_OPTIONS.contentProcessor,
     }),
 });
