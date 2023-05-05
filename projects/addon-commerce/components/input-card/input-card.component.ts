@@ -58,7 +58,7 @@ export class TuiInputCardComponent extends AbstractTuiInputCard<string> {
     }
 
     get formattedCard(): string {
-        return this.getFormattedCard(this.card);
+        return this.getFormattedCard(this.card, this.maskOptions);
     }
 
     onValueChange(value: string): void {
@@ -95,7 +95,7 @@ export class TuiInputCardComponent extends AbstractTuiInputCard<string> {
     }
 
     @tuiPure
-    private getFormattedCard(cardNumber: string): string {
-        return maskitoTransform(cardNumber, this.maskOptions);
+    private getFormattedCard(cardNumber: string, maskOptions: MaskitoOptions): string {
+        return maskitoTransform(cardNumber, maskOptions);
     }
 }
