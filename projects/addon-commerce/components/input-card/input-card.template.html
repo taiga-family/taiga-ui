@@ -11,7 +11,7 @@
     [pseudoActive]="pseudoActive"
     [pseudoFocus]="pseudoFocus"
     [maskito]="maskOptions"
-    [value]="formattedCard"
+    [value]="card | maskito : maskOptions"
     (valueChange)="onValueChange($event)"
     (focusedChange)="onFocused($event)"
 >

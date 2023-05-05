@@ -8,9 +8,9 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {MaskitoOptions, maskitoTransform} from '@maskito/core';
+import {MaskitoOptions} from '@maskito/core';
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
-import {tuiAsControl, tuiAsFocusableItemAccessor, tuiPure} from '@taiga-ui/cdk';
+import {tuiAsControl, tuiAsFocusableItemAccessor} from '@taiga-ui/cdk';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
 
 import {AbstractTuiInputCard} from './abstract-input-card';
@@ -57,10 +57,6 @@ export class TuiInputCardComponent extends AbstractTuiInputCard<string> {
         return !!this.input && this.input.focused;
     }
 
-    get formattedCard(): string {
-        return this.getFormattedCard(this.card, this.maskOptions);
-    }
-
     onValueChange(value: string): void {
         const parsed = value.split(' ').join('');
         const currentBin = this.bin;
@@ -92,10 +88,5 @@ export class TuiInputCardComponent extends AbstractTuiInputCard<string> {
 
     protected override getFallbackValue(): string {
         return '';
-    }
-
-    @tuiPure
-    private getFormattedCard(cardNumber: string, maskOptions: MaskitoOptions): string {
-        return maskitoTransform(cardNumber, maskOptions);
     }
 }
