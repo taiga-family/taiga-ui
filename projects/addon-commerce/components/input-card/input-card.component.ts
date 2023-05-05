@@ -8,9 +8,10 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {MaskitoOptions, maskitoTransform} from '@maskito/core';
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
 import {tuiAsControl, tuiAsFocusableItemAccessor, tuiPure} from '@taiga-ui/cdk';
-import {TuiPrimitiveTextfieldComponent, TuiTextMaskOptions} from '@taiga-ui/core';
+import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
 
 import {AbstractTuiInputCard} from './abstract-input-card';
 import {TUI_INPUT_CARD_OPTIONS, TuiInputCardOptions} from './input-card.providers';
@@ -29,10 +30,8 @@ export class TuiInputCardComponent extends AbstractTuiInputCard<string> {
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly input?: TuiPrimitiveTextfieldComponent;
 
-    readonly textMaskOptions: TuiTextMaskOptions = {
+    readonly maskOptions: MaskitoOptions = {
         mask: TUI_CARD_MASK,
-        guide: false,
-        pipe: conformedValue => conformedValue.trim(),
     };
 
     constructor(
@@ -97,9 +96,6 @@ export class TuiInputCardComponent extends AbstractTuiInputCard<string> {
 
     @tuiPure
     private getFormattedCard(cardNumber: string): string {
-        return cardNumber
-            .split('')
-            .map((char, index) => (index && index % 4 === 0 ? ` ${char}` : char))
-            .join('');
+        return maskitoTransform(cardNumber, this.maskOptions);
     }
 }
