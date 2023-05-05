@@ -84,5 +84,5 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
 
     readonly control = new FormControl(6432, Validators.required);
 
-    step: number | null = null;
+    step = 0;
 }

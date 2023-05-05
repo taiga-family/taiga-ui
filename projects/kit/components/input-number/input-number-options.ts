@@ -9,7 +9,7 @@ export interface TuiInputNumberOptions {
     }>;
     readonly min: number;
     readonly max: number;
-    readonly step: number | null;
+    readonly step: number;
     readonly decimal: TuiDecimal;
     readonly precision: number;
 }
@@ -22,7 +22,7 @@ export const TUI_INPUT_NUMBER_DEFAULT_OPTIONS: TuiInputNumberOptions = {
     },
     min: Number.MIN_SAFE_INTEGER,
     max: Number.MAX_SAFE_INTEGER,
-    step: null,
+    step: 0,
     decimal: `not-zero`,
     precision: 2,
 };
