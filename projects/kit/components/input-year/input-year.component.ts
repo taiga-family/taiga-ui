@@ -9,6 +9,8 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {MaskitoOptions} from '@maskito/core';
+import {maskitoNumberOptionsGenerator} from '@maskito/kit';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
@@ -17,14 +19,13 @@ import {
     TuiBooleanHandler,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
+    tuiPure,
     TuiYear,
 } from '@taiga-ui/cdk';
-import {
-    TUI_DIGIT_REGEXP,
-    TuiPrimitiveTextfieldComponent,
-    TuiWithOptionalMinMax,
-} from '@taiga-ui/core';
+import {TuiPrimitiveTextfieldComponent, TuiWithOptionalMinMax} from '@taiga-ui/core';
 import {TUI_INPUT_DATE_OPTIONS, TuiInputDateOptions} from '@taiga-ui/kit/tokens';
+
+const UP_TO_4_DIGITS_REG = /^\d{0,4}$/;
 
 @Component({
     selector: 'tui-input-year',
@@ -59,11 +60,6 @@ export class TuiInputYearComponent
 
     readonly initialItem = new Date().getFullYear();
 
-    readonly textMaskOptions = {
-        mask: new Array(4).fill(TUI_DIGIT_REGEXP),
-        guide: false,
-    };
-
     constructor(
         @Optional()
         @Self()
@@ -88,8 +84,19 @@ export class TuiInputYearComponent
         return this.options.icon;
     }
 
+    @tuiPure
+    getMaskOptions(max: number): MaskitoOptions {
+        return {
+            ...maskitoNumberOptionsGenerator({
+                max,
+                thousandSeparator: '',
+            }),
+            mask: UP_TO_4_DIGITS_REG,
+        };
+    }
+
     onValueChange(value: string): void {
-        this.value = value ? Number(value.slice(0, 4)) : null;
+        this.value = value ? Number(value) : null;
     }
 
     onYearClick({year}: TuiYear): void {
@@ -99,6 +106,10 @@ export class TuiInputYearComponent
 
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
+
+        if (!focused && this.value && this.value < this.min) {
+            this.value = this.min;
+        }
     }
 
     onOpenChange(open: boolean): void {
