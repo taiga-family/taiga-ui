@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {TUI_VERSION, tuiIsString, TuiStringHandler} from '@taiga-ui/cdk';
+import {TUI_VERSION, tuiIsString, TuiSafeHtml, TuiStringHandler} from '@taiga-ui/cdk';
 import {
     TUI_ICONS_PATH,
     TUI_ICONS_PLACE,
@@ -9,6 +9,7 @@ import {
     TuiSvgComponent,
     TuiSvgModule,
     tuiSvgOptionsProvider,
+    tuiSvgSrcInterceptors,
 } from '@taiga-ui/core';
 import {configureTestSuite} from '@taiga-ui/testing';
 
@@ -259,6 +260,54 @@ describe(`SVG options`, () => {
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
             expect(testComponent?.svgComponent.src).toBe(`https://google.com/test.svg`);
+        });
+    });
+
+    describe(`multiple source processors`, () => {
+        configureTestSuite(() => {
+            TestBed.configureTestingModule({
+                imports: [TuiSvgModule],
+                declarations: [TestComponent],
+                providers: [
+                    tuiSvgOptionsProvider({path: `assets/default-path-to-icons/`}),
+                    tuiSvgSrcInterceptors((src: TuiSafeHtml) =>
+                        String(src).startsWith(`icons8::`)
+                            ? `assets/icons8/${String(src).replace(`icons8::`, ``)}.svg`
+                            : src,
+                    ),
+                    tuiSvgSrcInterceptors((src: TuiSafeHtml) =>
+                        String(src).startsWith(`tuiIconTds`)
+                            ? `assets/design-tokens/${String(src)}.svg`
+                            : src,
+                    ),
+                ],
+            });
+        });
+
+        it(`tuiIconMyDefault`, () => {
+            testComponent!.icon = `tuiIconMyDefault`;
+            fixture?.detectChanges();
+
+            expect(testComponent?.svgComponent.isInnerHTML).toBe(false);
+            expect(testComponent?.svgComponent.src).toBe(`tuiIconMyDefault`);
+        });
+
+        it(`icons8`, () => {
+            testComponent!.icon = `icons8::android`;
+            fixture?.detectChanges();
+
+            expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
+            expect(testComponent?.svgComponent.src).toBe(`assets/icons8/android.svg`);
+        });
+
+        it(`tuiIconTdsSuperToken`, () => {
+            testComponent!.icon = `tuiIconTdsSuperToken`;
+            fixture?.detectChanges();
+
+            expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
+            expect(testComponent?.svgComponent.src).toBe(
+                `assets/design-tokens/tuiIconTdsSuperToken.svg`,
+            );
         });
     });
 

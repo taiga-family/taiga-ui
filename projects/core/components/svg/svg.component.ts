@@ -14,9 +14,11 @@ import {WINDOW} from '@ng-web-apis/common';
 import {
     tuiAssert,
     tuiGetDocumentOrShadowRoot,
+    TuiHandler,
     tuiIsString,
     tuiPure,
     tuiRequiredSetter,
+    TuiSafeHtml,
     TuiStaticRequestService,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
@@ -28,7 +30,7 @@ import {tuiIsPresumedHTMLString} from '@taiga-ui/core/utils/miscellaneous';
 import {Observable, of, ReplaySubject} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 
-import {TUI_SVG_OPTIONS, TuiSvgOptions} from './svg-options';
+import {TUI_SVG_OPTIONS, TUI_SVG_SRC_INTERCEPTORS, TuiSvgOptions} from './svg-options';
 
 const UNDEFINED_NAMED_ICON = 'Attempted to use undefined named icon';
 const MISSING_EXTERNAL_ICON = 'External icon is missing on the given URL';
@@ -43,7 +45,7 @@ const FAILED_EXTERNAL_ICON = 'Failed to load external SVG';
 })
 export class TuiSvgComponent {
     private readonly src$ = new ReplaySubject<void>(1);
-    private icon: SafeHtml | string = '';
+    private icon: TuiSafeHtml = '';
 
     readonly innerHTML$: Observable<SafeHtml>;
 
@@ -51,6 +53,11 @@ export class TuiSvgComponent {
         @Inject(DOCUMENT) private readonly doc: Document,
         @Inject(WINDOW) private readonly win: Window,
         @Inject(TUI_SVG_OPTIONS) private readonly options: TuiSvgOptions,
+        @Optional()
+        @Inject(TUI_SVG_SRC_INTERCEPTORS)
+        private readonly srcInterceptors: Array<
+            TuiHandler<TuiSafeHtml, TuiSafeHtml>
+        > | null,
         @Optional()
         @Inject(TUI_SANITIZER)
         private readonly tuiSanitizer: Sanitizer | null,
@@ -76,15 +83,20 @@ export class TuiSvgComponent {
 
     @Input()
     @tuiRequiredSetter()
-    set src(src: SafeHtml | string) {
+    set src(src: TuiSafeHtml) {
         const deprecated = this.options.deprecated(String(src));
 
         ngDevMode && tuiAssert.assert(!deprecated, deprecated);
-        this.icon = this.options.srcProcessor(src);
+
+        this.icon = (this.srcInterceptors ?? []).reduce(
+            (newSrc: TuiSafeHtml, interceptor) => interceptor(newSrc),
+            this.options.srcProcessor(src),
+        );
+
         this.src$.next();
     }
 
-    get src(): SafeHtml | string {
+    get src(): TuiSafeHtml {
         return this.icon;
     }
 
@@ -173,7 +185,7 @@ export class TuiSvgComponent {
         return !this.isShadowDOM || !this.isName ? '' : this.sanitize(icon || '');
     }
 
-    private sanitize(src: SafeHtml | string): SafeHtml | string {
+    private sanitize(src: TuiSafeHtml): TuiSafeHtml {
         src = this.options.contentProcessor(src);
 
         return this.tuiSanitizer && tuiIsString(src)

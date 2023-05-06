@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TUI_SANITIZER, tuiSvgOptionsProvider} from '@taiga-ui/core';
+import {TuiSafeHtml} from '@taiga-ui/cdk';
+import {TUI_SANITIZER, tuiSvgSrcInterceptors} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 
 @Component({
@@ -15,15 +16,19 @@ import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
             provide: TUI_SANITIZER,
             useClass: NgDompurifySanitizer,
         },
-        tuiSvgOptionsProvider({
-            srcProcessor: src => {
-                const myCustomPrefix = 'icons8::';
-
-                return String(src).startsWith(myCustomPrefix)
-                    ? `assets/icons8/${String(src).replace(myCustomPrefix, '')}.svg`
-                    : src;
-            },
-        }),
+        /**
+         * @note:
+         * Be careful, component has its own injector which doesn't inherit providers from parent injector.
+         * https://angular.io/guide/providers#providing-services-in-modules-versus-components
+         *
+         * If you want to keep previous interceptors then best to keep it global,
+         * provide all necessary interceptors at the top level of your app (e.g. AppModule).
+         */
+        tuiSvgSrcInterceptors((src: TuiSafeHtml) =>
+            String(src).startsWith('icons8::')
+                ? `assets/icons8/${String(src).replace('icons8::', '')}.svg`
+                : src,
+        ),
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
