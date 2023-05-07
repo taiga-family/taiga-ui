@@ -1,41 +1,42 @@
 import {
     Directive,
-    ElementRef,
     EventEmitter,
+    HostBinding,
     HostListener,
-    Inject,
     Input,
     Output,
-    Renderer2,
 } from '@angular/core';
 
 @Directive({
     selector: 'input[tuiChecked], input[tuiCheckedChange]',
 })
 export class TuiCheckedDirective {
+    private indeterminate = false;
+    private checked = false;
+
+    @HostBinding('checked')
+    get isChecked(): boolean {
+        return this.checked;
+    }
+
+    @HostBinding('indeterminate')
+    get isIndeterminate(): boolean {
+        return this.indeterminate;
+    }
+
     @Input()
     set tuiChecked(checked: boolean | null) {
-        this.updateProperty('checked', checked || false);
-        this.updateProperty('indeterminate', checked === null);
+        this.checked = checked || false;
+        this.indeterminate = checked === null;
     }
 
     @Output()
     readonly tuiCheckedChange = new EventEmitter<boolean>();
 
-    constructor(
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLInputElement>,
-        @Inject(Renderer2) private readonly renderer: Renderer2,
-    ) {
-        this.updateProperty('checked', false);
-    }
-
     @HostListener('change', ['$event.target'])
     onChange({checked}: HTMLInputElement): void {
-        this.updateProperty('indeterminate', false);
+        this.checked = checked;
+        this.indeterminate = false;
         this.tuiCheckedChange.emit(checked);
-    }
-
-    private updateProperty(property: 'checked' | 'indeterminate', value: boolean): void {
-        this.renderer.setProperty(this.el.nativeElement, property, value);
     }
 }

@@ -18,4 +18,17 @@ describe(`tuiContainsOrAfter`, () => {
 
         expect(tuiContainsOrAfter(child, parent)).toEqual(false);
     });
+
+    it(`catch error`, () => {
+        expect(
+            tuiContainsOrAfter(
+                {
+                    contains(_: Node | null): boolean {
+                        throw new Error(`something`);
+                    },
+                } as unknown as Node,
+                document.createElement(`button`),
+            ),
+        ).toEqual(false);
+    });
 });
