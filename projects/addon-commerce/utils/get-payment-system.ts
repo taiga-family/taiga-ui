@@ -1,33 +1,64 @@
 import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 
-export function tuiGetPaymentSystem(cardNumber?: string | null): TuiPaymentSystem | null {
+// https://en.wikipedia.org/wiki/Payment_card_number#Issuer_identification_number_(IIN)
+export const TUI_BIN_TABLE: ReadonlyArray<
+    [start: number, end: number | null, paymentSystem: TuiPaymentSystem]
+> = [
+    [2200, 2204, `mir`],
+    [2221, 2720, `mastercard`],
+    [4026, null, `electron`],
+    [4175, null, `electron`],
+    [4405, null, `electron`],
+    [4508, null, `electron`],
+    [4844, null, `electron`],
+    [4913, null, `electron`],
+    [4917, null, `electron`],
+    [4, null, `visa`],
+    [5018, null, `maestro`],
+    [5020, null, `maestro`],
+    [5038, null, `maestro`],
+    [5090, null, `maestro`],
+    [5890, null, `maestro`],
+    [5893, null, `maestro`],
+    [50, null, `maestro`],
+    [51, 55, `mastercard`],
+    [56, null, `maestro`],
+    [58, null, `maestro`],
+    [5, null, `mastercard`],
+    [6304, null, `maestro`],
+    [6759, 6763, `maestro`],
+    [676770, null, `maestro`],
+    [676774, null, `maestro`],
+    // Mir-UnionPay cobranded
+    [629157, null, `mir`],
+    [6, null, `maestro`],
+];
+
+export function tuiGetPaymentSystem(
+    cardNumber?: string | null,
+    supported?: TuiPaymentSystem[],
+): TuiPaymentSystem | null {
     if (!cardNumber) {
         return null;
     }
 
-    const one = Number.parseInt(cardNumber[0], 10);
-    const two = Number.parseInt(cardNumber.slice(0, 2), 10);
-    const three = Number.parseInt(cardNumber.slice(0, 3), 10);
-    const four = Number.parseInt(cardNumber.slice(0, 4), 10);
+    for (const [start, end, paymentSystem] of TUI_BIN_TABLE) {
+        const cardNumberNumeric = Number.parseInt(
+            cardNumber.slice(0, start.toString().length),
+            10,
+        );
 
-    if (tuiIsMaestro(three, two, one)) {
-        return `maestro`;
-    }
+        const matches = cardNumberNumeric >= start && cardNumberNumeric <= (end || start);
 
-    if (tuiIsMastercard(four, two, one)) {
-        return `mastercard`;
-    }
+        if (!matches) {
+            continue;
+        }
 
-    if (tuiIsMir(four)) {
-        return `mir`;
-    }
+        if (supported && supported.length > 0 && !supported.includes(paymentSystem)) {
+            continue;
+        }
 
-    if (tuiIsElectron(four)) {
-        return `electron`;
-    }
-
-    if (tuiIsVisa(one)) {
-        return `visa`;
+        return paymentSystem;
     }
 
     return null;
