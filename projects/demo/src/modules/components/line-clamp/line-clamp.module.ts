@@ -6,6 +6,7 @@ import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
+    TuiHintModule,
     TuiHostedDropdownModule,
     TuiLinkModule,
     TuiNotificationModule,
@@ -21,6 +22,7 @@ import {TuiLineClampExample1} from './examples/1';
 import {TuiLineClampExample2} from './examples/2';
 import {TuiLineClampExample3} from './examples/3';
 import {TuiLineClampExample4} from './examples/4';
+import {TuiLineClampExample5} from './examples/5';
 import {ExampleTuiLineClampComponent} from './line-clamp.component';
 
 @NgModule({
@@ -38,6 +40,7 @@ import {ExampleTuiLineClampComponent} from './line-clamp.component';
         TuiActiveZoneModule,
         TuiDataListModule,
         TuiSvgModule,
+        TuiHintModule,
     ],
     declarations: [
         ExampleTuiLineClampComponent,
@@ -45,6 +48,7 @@ import {ExampleTuiLineClampComponent} from './line-clamp.component';
         TuiLineClampExample2,
         TuiLineClampExample3,
         TuiLineClampExample4,
+        TuiLineClampExample5,
     ],
     exports: [ExampleTuiLineClampComponent],
 })
