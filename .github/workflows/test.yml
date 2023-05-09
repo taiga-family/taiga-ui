@@ -2,18 +2,9 @@ name: ⚙️ Unit tests
 
 on:
   pull_request:
-    paths:
-      - 'projects/**'
-      - '!projects/demo/**'
-      - '!projects/icons/**'
-      - '**/test.yml'
-      - 'angular.json'
-      - 'package.json'
-      - 'tsconfig*'
   push:
     branches:
       - main
-      - '!release/**'
 
 env:
   NX_BRANCH: ${{ github.event.number }}
@@ -50,77 +41,20 @@ jobs:
         uses: ./.github/actions/nodejs
 
       - name: Run tests for ${{ matrix.project }}
-        run: npx nx test ${{ matrix.project }}
-
-      - name: Archive coverage artifacts
-        uses: actions/upload-artifact@v3.1.2
-        with:
-          name: coverage-${{ github.workflow }}-${{ github.run_id }}
-          path: coverage
-
-  codecov:
-    needs: [test]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3.5.2
-      - uses: actions/download-artifact@v3.0.2
-        with:
-          name: coverage-${{ github.workflow }}-${{ github.run_id }}
-          path: coverage
+        run: npx nx test ${{ matrix.project }} --skip-nx-cache
 
       - name: Display structure of coverage files
+        if: ${{ !contains(matrix.project, 'demo') }}
         run: tree -L 2 ./coverage -P 'lcov.info'
 
-      - uses: codecov/codecov-action@v3.1.3
+      - name: Generate coverage report
+        if: ${{ !contains(matrix.project, 'demo') }}
+        uses: codecov/codecov-action@v3.1.3
         with:
-          directory: ./coverage/kit/
-          flags: summary,kit
-          name: kit
-      - uses: codecov/codecov-action@v3.1.3
-        with:
-          directory: ./coverage/core/
-          flags: summary,core
-          name: core
-      - uses: codecov/codecov-action@v3.1.3
-        with:
-          directory: ./coverage/cdk/
-          flags: summary,cdk
-          name: cdk
-      - uses: codecov/codecov-action@v3.1.3
-        with:
-          directory: ./coverage/addon-tablebars/
-          flags: summary,addon-tablebars
-          name: addon-tablebars
-      - uses: codecov/codecov-action@v3.1.3
-        with:
-          directory: ./coverage/addon-table/
-          flags: summary,addon-table
-          name: addon-table
-      - uses: codecov/codecov-action@v3.1.3
-        with:
-          directory: ./coverage/addon-mobile/
-          flags: summary,addon-mobile
-          name: addon-mobile
-      - uses: codecov/codecov-action@v3.1.3
-        with:
-          directory: ./coverage/addon-editor/
-          flags: summary,addon-editor
-          name: addon-editor
-      - uses: codecov/codecov-action@v3.1.3
-        with:
-          directory: ./coverage/addon-doc/
-          flags: summary,addon-doc
-          name: addon-doc
-      - uses: codecov/codecov-action@v3.1.3
-        with:
-          directory: ./coverage/addon-commerce/
-          flags: summary,addon-charts
-          name: addon-commerce
-      - uses: codecov/codecov-action@v3.1.3
-        with:
-          directory: ./coverage/addon-charts/
-          flags: summary,addon-charts
-          name: addon-charts
+          directory: ./coverage/${{ matrix.project }}/
+          flags: summary,${{ matrix.project }}
+          name: ${{ matrix.project }}
+          verbose: true
 
 concurrency:
   group: test-${{ github.workflow }}-${{ github.ref }}
