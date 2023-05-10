@@ -95,8 +95,8 @@ function isValidFocusout(target: any, removedElement: Element | null = null): bo
     return (
         // Not due to switching tabs/going to DevTools
         tuiGetDocumentOrShadowRoot(target).activeElement !== target &&
-        // Not due to button/input becoming disabled
-        !target.disabled &&
+        // Not due to button/input becoming disabled or under disabled fieldset
+        !target.matches(`:disabled`) &&
         // Not due to element being removed from DOM
         !removedElement?.contains(target)
     );
