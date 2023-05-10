@@ -10,8 +10,8 @@
     [pseudoHover]="pseudoHover"
     [pseudoActive]="pseudoActive"
     [pseudoFocus]="pseudoFocus"
-    [textMask]="textMaskOptions"
-    [value]="formattedCard"
+    [maskito]="maskOptions"
+    [value]="card | maskito : maskOptions"
     (valueChange)="onValueChange($event)"
     (focusedChange)="onFocused($event)"
 >

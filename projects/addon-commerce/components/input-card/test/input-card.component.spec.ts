@@ -156,6 +156,22 @@ describe(`InputCard`, () => {
     });
 
     describe(`Formatting`, () => {
+        it(`4`, async () => {
+            await testFormat(`1234`, `1234`);
+        });
+
+        it(`7`, async () => {
+            await testFormat(`1234567`, `1234 567`);
+        });
+
+        it(`10`, async () => {
+            await testFormat(`1234567890`, `1234 5678 90`);
+        });
+
+        it(`12`, async () => {
+            await testFormat(`123456789012`, `1234 5678 9012`);
+        });
+
         it(`13`, async () => {
             await testFormat(`4000000000000`, `4000 0000 0000 0`);
         });
