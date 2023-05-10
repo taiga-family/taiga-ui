@@ -71,11 +71,19 @@ module.exports = {
      * coverage information will be collected for it even if no tests exist for this file and
      * it's never required in the test suite.
      */
-    collectCoverageFrom: [
-        `<rootDir>/projects/**/*.ts`,
-        `!<rootDir>/projects/**/*.spec.ts`,
-        `!<rootDir>/projects/**/schematics/*.ts`,
-        `!<rootDir>/projects/**/load-assets.ts`, // @note: cannot resolve import.meta.url
+    collectCoverageFrom: [`<rootDir>/projects/**/*.ts`],
+
+    /**
+     * An array of regexp pattern strings that are matched against
+     * all file paths before executing the test. If the file path matches
+     * any of the patterns, coverage information will be skipped.
+     */
+    coveragePathIgnorePatterns: [
+        `node_modules`,
+        `schematics`,
+        `load-assets.ts`,
+        `.spec.ts`,
+        `.cy.ts`,
     ],
 
     /**
