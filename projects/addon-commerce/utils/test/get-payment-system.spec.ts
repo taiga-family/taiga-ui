@@ -98,8 +98,102 @@ describe(`getPaymentSystem`, () => {
             expect(tuiGetPaymentSystem(`2200`)).toBe(`mir`);
         });
 
+        it(`2203`, () => {
+            expect(tuiGetPaymentSystem(`2203`)).toBe(`mir`);
+        });
+
         it(`2204`, () => {
             expect(tuiGetPaymentSystem(`2204`)).toBe(`mir`);
+        });
+    });
+
+    describe(`JCB`, () => {
+        it(`3528`, () => {
+            expect(tuiGetPaymentSystem(`3528`)).toBe(`jcb`);
+        });
+
+        it(`3589`, () => {
+            expect(tuiGetPaymentSystem(`3589`)).toBe(`jcb`);
+        });
+    });
+
+    describe(`American Express`, () => {
+        it(`34`, () => {
+            expect(tuiGetPaymentSystem(`34`)).toBe(`amex`);
+        });
+
+        it(`37`, () => {
+            expect(tuiGetPaymentSystem(`37`)).toBe(`amex`);
+        });
+    });
+
+    describe(`Verve`, () => {
+        it(`506099`, () => {
+            expect(tuiGetPaymentSystem(`506099`)).toBe(`verve`);
+        });
+
+        it(`507865`, () => {
+            expect(tuiGetPaymentSystem(`507865`)).toBe(`verve`);
+        });
+
+        it(`650002`, () => {
+            expect(tuiGetPaymentSystem(`650002`)).toBe(`verve`);
+        });
+    });
+
+    describe(`RuPay`, () => {
+        it(`508`, () => {
+            expect(tuiGetPaymentSystem(`508`)).toBe(`rupay`);
+        });
+
+        it(`60`, () => {
+            expect(tuiGetPaymentSystem(`60`)).toBe(`rupay`);
+        });
+
+        it(`81`, () => {
+            expect(tuiGetPaymentSystem(`81`)).toBe(`rupay`);
+        });
+    });
+
+    describe(`Diners Club`, () => {
+        it(`36`, () => {
+            expect(tuiGetPaymentSystem(`36`)).toBe(`dinersclub`);
+        });
+
+        it(`54`, () => {
+            expect(tuiGetPaymentSystem(`54`)).toBe(`dinersclub`);
+        });
+    });
+
+    describe(`Discover`, () => {
+        it(`6011`, () => {
+            expect(tuiGetPaymentSystem(`6011`)).toBe(`discover`);
+        });
+
+        it(`644`, () => {
+            expect(tuiGetPaymentSystem(`644`)).toBe(`discover`);
+        });
+
+        it(`65`, () => {
+            expect(tuiGetPaymentSystem(`65`)).toBe(`discover`);
+        });
+    });
+
+    describe(`Union Pay`, () => {
+        it(`62`, () => {
+            expect(tuiGetPaymentSystem(`62`)).toBe(`unionpay`);
+        });
+    });
+
+    describe(`UzCard`, () => {
+        it(`8600`, () => {
+            expect(tuiGetPaymentSystem(`8600`)).toBe(`uzcard`);
+        });
+    });
+
+    describe(`Humo`, () => {
+        it(`9860`, () => {
+            expect(tuiGetPaymentSystem(`9860`)).toBe(`humo`);
         });
     });
 });
