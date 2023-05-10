@@ -35,6 +35,9 @@
         "prismjs",
         "filesio",
         "collab",
-        "jsowl"
+        "jsowl",
+        "dinersclub",
+        "rupay",
+        "unionpay"
     ]
 }
