@@ -29,7 +29,6 @@ export const TUI_BIN_TABLE: ReadonlyArray<
     [6759, 6763, `maestro`],
     [676770, null, `maestro`],
     [676774, null, `maestro`],
-    // Mir-UnionPay cobranded
     [629157, null, `mir`],
     [6, null, `maestro`],
 ];
