@@ -2,52 +2,52 @@ import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 
 // https://en.wikipedia.org/wiki/Payment_card_number#Issuer_identification_number_(IIN)
 export const TUI_BIN_TABLE: ReadonlyArray<
-    [start: number, end: number | null, paymentSystem: TuiPaymentSystem]
+    [paymentSystem: TuiPaymentSystem, start: number, end?: number]
 > = [
-    [2200, 2204, `mir`],
-    [2221, 2720, `mastercard`],
-    [3528, 3589, `jcb`],
-    [34, null, `amex`],
-    [37, null, `amex`],
-    [36, null, `dinersclub`],
-    [4026, null, `electron`],
-    [4175, null, `electron`],
-    [4405, null, `electron`],
-    [4508, null, `electron`],
-    [4844, null, `electron`],
-    [4913, null, `electron`],
-    [4917, null, `electron`],
-    [4, null, `visa`],
-    [506099, 506198, `verve`],
-    [507865, 507964, `verve`],
-    [5018, null, `maestro`],
-    [5020, null, `maestro`],
-    [5038, null, `maestro`],
-    [5090, null, `maestro`],
-    [5890, null, `maestro`],
-    [5893, null, `maestro`],
-    [508, null, `rupay`],
-    [50, null, `maestro`],
-    [54, null, `dinersclub`],
-    [51, 55, `mastercard`],
-    [56, null, `maestro`],
-    [58, null, `maestro`],
-    [5, null, `mastercard`],
-    [6000, null, `maestro`],
-    [6304, null, `maestro`],
-    [6759, 6763, `maestro`],
-    [650002, 650027, `verve`],
-    [676770, null, `maestro`],
-    [676774, null, `maestro`],
-    [644, 649, `discover`],
-    [6011, null, `discover`],
-    [60, null, `rupay`],
-    [62, null, `unionpay`],
-    [65, null, `discover`],
-    [6, null, `maestro`],
-    [81, 82, `rupay`],
-    [8600, null, `uzcard`],
-    [9860, null, `humo`],
+    [`mir`, 2200, 2204],
+    [`mastercard`, 2221, 2720],
+    [`jcb`, 3528, 3589],
+    [`amex`, 34],
+    [`amex`, 37],
+    [`dinersclub`, 36],
+    [`electron`, 4026],
+    [`electron`, 4175],
+    [`electron`, 4405],
+    [`electron`, 4508],
+    [`electron`, 4844],
+    [`electron`, 4913],
+    [`electron`, 4917],
+    [`visa`, 4],
+    [`verve`, 506099, 506198],
+    [`verve`, 507865, 507964],
+    [`maestro`, 5018],
+    [`maestro`, 5020],
+    [`maestro`, 5038],
+    [`maestro`, 5090],
+    [`maestro`, 5890],
+    [`maestro`, 5893],
+    [`rupay`, 508],
+    [`maestro`, 50],
+    [`dinersclub`, 54],
+    [`mastercard`, 51, 55],
+    [`maestro`, 56],
+    [`maestro`, 58],
+    [`mastercard`, 5],
+    [`maestro`, 6000],
+    [`maestro`, 6304],
+    [`maestro`, 6759, 6763],
+    [`verve`, 650002, 650027],
+    [`maestro`, 676770],
+    [`maestro`, 676774],
+    [`discover`, 644, 649],
+    [`discover`, 6011],
+    [`rupay`, 60],
+    [`unionpay`, 62],
+    [`discover`, 65],
+    [`maestro`, 6],
+    [`rupay`, 81, 82],
+    [`uzcard`, 8600],
+    [`humo`, 9860],
 ];
 
 export function tuiGetPaymentSystem(
@@ -58,26 +58,18 @@ export function tuiGetPaymentSystem(
         return null;
     }
 
-    for (const [start, end, paymentSystem] of TUI_BIN_TABLE) {
+    const row = TUI_BIN_TABLE.find(([paymentSystem, start, end = start]) => {
         const cardNumberNumeric = Number.parseInt(
-            cardNumber.slice(0, start.toString().length),
+            cardNumber.slice(0, String(start).length),
             10,
         );
 
-        const matches = cardNumberNumeric >= start && cardNumberNumeric <= (end || start);
+        const match = cardNumberNumeric >= start && cardNumberNumeric <= end;
 
-        if (!matches) {
-            continue;
-        }
+        return match && (!supported?.length || supported.includes(paymentSystem));
+    });
 
-        if (supported && supported.length > 0 && !supported.includes(paymentSystem)) {
-            continue;
-        }
-
-        return paymentSystem;
-    }
-
-    return null;
+    return row?.[0] ?? null;
 }
 
 export function tuiIsMaestro(three: number, two: number, one: number): boolean {
