@@ -22,6 +22,11 @@ export function tuiGetElementObscures(element: Element): readonly Element[] | nu
     const {innerWidth, innerHeight} = ownerDocument.defaultView;
     const doc = tuiGetDocumentOrShadowRoot(element);
     const rect = element.getBoundingClientRect();
+
+    if (rect.width === 0 && rect.height === 0) {
+        return null;
+    }
+
     const left = tuiClamp(Math.round(rect.left) + 2, 0, innerWidth);
     const top = tuiClamp(Math.round(rect.top) + 2, 0, innerHeight);
     const right = tuiClamp(Math.round(rect.right) - 2, 0, innerWidth);
