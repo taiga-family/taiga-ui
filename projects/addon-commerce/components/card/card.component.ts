@@ -9,6 +9,15 @@ const icons: Record<TuiPaymentSystem, string> = {
     electron: 'tuiIconElectronMono',
     mastercard: 'tuiIconMastercard',
     maestro: 'tuiIconMaestro',
+    amex: 'tuiIconAmex',
+    dinersclub: 'tuiIconDinersClub',
+    discover: 'tuiIconDiscover',
+    humo: 'tuiIconHumo',
+    jcb: 'tuiIconJCB',
+    rupay: 'tuiIconRuPay',
+    unionpay: 'tuiIconUnionPay',
+    uzcard: 'tuiIconUzcard',
+    verve: 'tuiIconVerve',
 };
 
 @Component({

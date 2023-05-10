@@ -1,1 +1,15 @@
-export type TuiPaymentSystem = 'electron' | 'maestro' | 'mastercard' | 'mir' | 'visa';
+export type TuiPaymentSystem =
+    | 'amex'
+    | 'dinersclub'
+    | 'discover'
+    | 'electron'
+    | 'humo'
+    | 'jcb'
+    | 'maestro'
+    | 'mastercard'
+    | 'mir'
+    | 'rupay'
+    | 'unionpay'
+    | 'uzcard'
+    | 'verve'
+    | 'visa';
