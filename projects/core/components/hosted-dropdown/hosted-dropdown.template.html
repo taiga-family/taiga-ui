@@ -1,5 +1,5 @@
 <div
-    *tuiLet="!!(open$ | async) as isOpen"
+    *tuiLet="(open$ | async) ?? openChange.value as isOpen"
     #activeZone="tuiActiveZone"
     tuiAccessorProxy
     class="t-wrapper"
