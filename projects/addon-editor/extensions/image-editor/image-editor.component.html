@@ -1,15 +1,30 @@
 <!-- eslint-disable @html-eslint/require-img-alt -->
+<!--
+    <p class="t-emulate-inline-node"></p>
+    is used to be able to select fake empty paragraph
+    (text node) around the image, which will be a link
+-->
+<p
+    contenteditable="false"
+    class="t-emulate-inline-node"
+></p>
 <tui-editor-resizable
     [width]="width"
     [autoHeight]="true"
     (sizeChange)="updateSize($event)"
 >
     <img
+        contenteditable="false"
         [src]="src"
         [width]="width"
         [alt]="alt"
         [title]="title"
+        [class.ProseMirror-selectednode]="focused"
         [style.min-width.px]="options.minWidth"
         [style.max-width.px]="options.maxWidth"
     />
 </tui-editor-resizable>
+<p
+    contenteditable="false"
+    class="t-emulate-inline-node"
+></p>

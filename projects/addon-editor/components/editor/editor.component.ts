@@ -182,7 +182,8 @@ export class TuiEditorComponent
     }
 
     private readonly isSelectionLink = (range: Range): boolean =>
-        this.currentFocusedNodeIsAnchor(range) && tuiIsSafeLinkRange(range);
+        this.currentFocusedNodeIsTextAnchor(range) ||
+        this.currentFocusedNodeIsImageAnchor;
 
     /**
      * @description:
@@ -190,13 +191,26 @@ export class TuiEditorComponent
      * so the focusNode is used for the correct behaviour from the selection,
      * which is the actual element at the moment
      */
-    private currentFocusedNodeIsAnchor(range: Range): boolean {
-        return !!range.startContainer.parentElement
-            ?.closest('a')
-            ?.contains(this.doc.getSelection()?.focusNode || null);
+    private currentFocusedNodeIsTextAnchor(range: Range): boolean {
+        return (
+            !!range.startContainer.parentElement
+                ?.closest('a')
+                ?.contains(this.focusNode) && tuiIsSafeLinkRange(range)
+        );
+    }
+
+    private get focusNode(): Node | null {
+        return this.doc.getSelection()?.focusNode ?? null;
     }
 
     private get hasValue(): boolean {
         return !!this.value;
+    }
+
+    private get currentFocusedNodeIsImageAnchor(): boolean {
+        return (
+            this.focusNode?.nodeName === 'A' &&
+            ['IMG', 'TUI-IMAGE-EDITOR'].includes(this.focusNode?.childNodes[0]?.nodeName)
+        );
     }
 }

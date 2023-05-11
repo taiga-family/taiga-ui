@@ -16,7 +16,10 @@ export abstract class AbstractTuiEditorResizable<
     protected _height = 0;
     protected _width = 0;
 
-    constructor(doc: Document, destroy$: TuiDestroyService) {
+    protected constructor(
+        protected readonly doc: Document,
+        protected readonly destroy$: TuiDestroyService,
+    ) {
         super();
 
         merge(tuiTypedFromEvent(doc, `touchend`), tuiTypedFromEvent(doc, `mouseup`))
