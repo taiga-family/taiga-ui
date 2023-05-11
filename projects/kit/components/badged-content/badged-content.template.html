@@ -25,7 +25,7 @@
             [status]="getStatus(colorTop)"
             [style.backgroundColor]="colorTop"
             [size]="badgeSize"
-            [value]="contentTop"
+            [value]="content"
         ></tui-badge>
         <tui-svg
             *ngIf="contentIsString(content)"
@@ -47,7 +47,7 @@
             [status]="getStatus(colorBottom)"
             [style.backgroundColor]="colorBottom"
             [size]="badgeSize"
-            [value]="contentBottom"
+            [value]="content"
         ></tui-badge>
         <tui-svg
             *ngIf="contentIsString(content)"

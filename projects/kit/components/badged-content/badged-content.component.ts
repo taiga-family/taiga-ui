@@ -15,9 +15,9 @@ const BADGE_SIZE: {[key: string]: TuiSizeL | TuiSizeXS} = {
 
 @Component({
     selector: 'tui-badged-content',
-    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './badged-content.template.html',
     styleUrls: ['./badged-content.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiBadgedContentComponent {
     @Input()
