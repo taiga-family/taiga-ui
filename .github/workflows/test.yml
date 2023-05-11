@@ -2,14 +2,6 @@ name: ⚙️ Unit tests
 
 on:
   pull_request:
-    paths:
-      - 'projects/**'
-      - '!projects/demo/**'
-      - '!projects/icons/**'
-      - '**/test.yml'
-      - 'angular.json'
-      - 'package.json'
-      - 'tsconfig*'
   push:
     branches:
       - main

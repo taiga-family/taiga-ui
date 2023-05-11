@@ -1,6 +1,7 @@
 import {fakeAsync} from '@angular/core/testing';
 import {AbstractControl, FormControl} from '@angular/forms';
 import {tuiControlValue} from '@taiga-ui/cdk';
+import {tuiSwitchNgDevMode} from '@taiga-ui/testing';
 import {skip} from 'rxjs/operators';
 
 describe(`tuiControlValue`, () => {
@@ -30,16 +31,37 @@ describe(`tuiControlValue`, () => {
         expect(actual).toBe(`test`);
     }));
 
-    it(`throws an error if there is no valueChanges`, fakeAsync(() => {
-        let actual = ``;
+    describe(`dev mode`, () => {
+        beforeEach(() => tuiSwitchNgDevMode(true));
 
-        tuiControlValue({} as AbstractControl).subscribe({
-            next: () => {},
-            error: (err: unknown) => {
-                actual = (err as Error).message;
-            },
-        });
+        it(`throws an error if there is no valueChanges`, fakeAsync(() => {
+            let actual = ``;
 
-        expect(actual).toBe(`Control does not have valueChanges`);
-    }));
+            tuiControlValue({} as AbstractControl).subscribe({
+                next: () => {},
+                error: (err: unknown) => {
+                    actual = (err as Error).message;
+                },
+            });
+
+            expect(actual).toBe(`Control does not have valueChanges`);
+        }));
+
+        afterEach(() => tuiSwitchNgDevMode(false));
+    });
+
+    describe(`production mode`, () => {
+        it(`throws an error if there is no valueChanges`, fakeAsync(() => {
+            let actual = ``;
+
+            tuiControlValue({} as AbstractControl).subscribe({
+                next: () => {},
+                error: (err: unknown) => {
+                    actual = (err as Error).message;
+                },
+            });
+
+            expect(actual).toBe(``);
+        }));
+    });
 });

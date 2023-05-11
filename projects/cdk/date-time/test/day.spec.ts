@@ -1,4 +1,5 @@
 import {TuiDay} from '@taiga-ui/cdk';
+import {tuiSwitchNgDevMode} from '@taiga-ui/testing';
 
 import {tuiMockDateInside} from './helpers';
 
@@ -289,28 +290,52 @@ describe(`TuiDay`, () => {
                 });
             });
             describe(`throws an exception`, () => {
-                it(`'2018-aa-20'`, () => {
-                    expect(() => TuiDay.jsonParse(`2018-aa-20`)).toThrowError(
-                        `Invalid month: NaN`,
-                    );
+                describe(`dev mode`, () => {
+                    beforeEach(() => tuiSwitchNgDevMode(true));
+
+                    it(`'2018-aa-20'`, () => {
+                        expect(() => TuiDay.jsonParse(`2018-aa-20`)).toThrowError(
+                            `Invalid month: NaN`,
+                        );
+                    });
+
+                    it(`'2018-99-20'`, () => {
+                        expect(() => TuiDay.jsonParse(`2018-99-20`)).toThrowError(
+                            `Invalid month: 98`,
+                        );
+                    });
+
+                    it(`'2001-02-29'`, () => {
+                        expect(() => TuiDay.jsonParse(`2001-02-29`)).toThrowError(
+                            `Invalid day: 29`,
+                        );
+                    });
+
+                    it(`'test'`, () => {
+                        expect(() => TuiDay.jsonParse(`test`)).toThrowError(
+                            `Invalid year: NaN`,
+                        );
+                    });
+
+                    afterEach(() => tuiSwitchNgDevMode(false));
                 });
 
-                it(`'2018-99-20'`, () => {
-                    expect(() => TuiDay.jsonParse(`2018-99-20`)).toThrowError(
-                        `Invalid month: 98`,
-                    );
-                });
+                describe(`production mode`, () => {
+                    it(`'2018-aa-20'`, () => {
+                        expect(() => TuiDay.jsonParse(`2018-aa-20`)).toThrowError(``);
+                    });
 
-                it(`'2001-02-29'`, () => {
-                    expect(() => TuiDay.jsonParse(`2001-02-29`)).toThrowError(
-                        `Invalid day: 29`,
-                    );
-                });
+                    it(`'2018-99-20'`, () => {
+                        expect(() => TuiDay.jsonParse(`2018-99-20`)).toThrowError(``);
+                    });
 
-                it(`'test'`, () => {
-                    expect(() => TuiDay.jsonParse(`test`)).toThrowError(
-                        `Invalid year: NaN`,
-                    );
+                    it(`'2001-02-29'`, () => {
+                        expect(() => TuiDay.jsonParse(`2001-02-29`)).toThrowError(``);
+                    });
+
+                    it(`'test'`, () => {
+                        expect(() => TuiDay.jsonParse(`test`)).toThrowError(``);
+                    });
                 });
             });
         });
