@@ -15,7 +15,7 @@ export function replaceStyles(): void {
         .forEach(sourceFile => {
             let fullText = sourceFile.getFullText();
 
-            if (fullText.includes(`taiga-ui-local`)) {
+            if (fullText.includes(`taiga-ui`)) {
                 DEPRECATED_BREAKPOINTS.forEach(({from, to}) => {
                     fullText = fullText.replace(
                         new RegExp(`(?<=@media.*)(${from})(?=[\\s,{])`, `g`),
@@ -30,6 +30,7 @@ export function replaceStyles(): void {
                 .replace(`&[data-state='pressed']`, `&[data-state='active']`)
                 .replace(`tui-portal-host`, `tui-dropdown-host`)
                 .replace(`tui-dropdown-box`, `tui-dropdown`)
+                .replace(`--tui-color-link`, `--tui-link`)
                 .replace(/@import '~@taiga-ui/g, `@import '@taiga-ui`)
                 .replace(
                     `@import '@taiga-ui/core/styles/taiga-ui-global';`,
