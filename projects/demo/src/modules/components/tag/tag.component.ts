@@ -54,6 +54,11 @@ export class ExampleTuiTagComponent {
         HTML: import('./examples/5/index.html?raw'),
     };
 
+    readonly example6: TuiDocExample = {
+        TypeScript: import('./examples/6/index.ts?raw'),
+        HTML: import('./examples/6/index.html?raw'),
+    };
+
     removable = false;
 
     disabled = false;
