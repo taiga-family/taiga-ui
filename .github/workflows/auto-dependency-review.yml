@@ -1,0 +1,18 @@
+name: 🤖 Auto dependency review
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  dependency-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v3.0.4
+        with:
+          fail-on-severity: critical
+          allow-licenses: GPL-3.0, BSD-3-Clause, MIT
