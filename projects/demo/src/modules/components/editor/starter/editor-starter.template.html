@@ -6,6 +6,7 @@
     <ng-template pageTab="API">
         <tui-doc-demo [sticky]="false">
             <tui-editor
+                [style.minHeight.px]="minHeight"
                 [style.maxHeight.px]="maxHeight"
                 [formControl]="control"
                 [focusable]="focusable"
@@ -66,6 +67,14 @@
             </ng-template>
         </tui-doc-documentation>
         <tui-doc-documentation heading="CSS customization">
+            <ng-template
+                documentationPropertyName="style.minHeight.px"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="minHeight"
+            >
+                Value of CSS-property "min-height"
+            </ng-template>
             <ng-template
                 documentationPropertyName="style.maxHeight.px"
                 documentationPropertyMode="input"

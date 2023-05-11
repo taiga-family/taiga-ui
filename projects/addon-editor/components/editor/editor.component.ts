@@ -47,7 +47,7 @@ import {TUI_EDITOR_PROVIDERS} from './editor.providers';
 @Component({
     selector: 'tui-editor',
     templateUrl: './editor.component.html',
-    styleUrls: ['./editor.style.less'],
+    styleUrls: ['./editor.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsFocusableItemAccessor(TuiEditorComponent), TUI_EDITOR_PROVIDERS],
 })
@@ -93,8 +93,11 @@ export class TuiEditorComponent
         super(control, cdr, transformer);
     }
 
-    get nativeFocusableElement(): HTMLElement | null {
-        return this.computedDisabled ? null : this.el?.nativeElement || null;
+    get nativeFocusableElement(): HTMLDivElement | null {
+        return this.computedDisabled
+            ? null
+            : this.el?.nativeElement?.querySelector('[contenteditable].ProseMirror') ||
+                  null;
     }
 
     get dropdownSelectionHandler(): TuiBooleanHandler<Range> {

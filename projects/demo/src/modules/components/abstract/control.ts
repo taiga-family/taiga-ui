@@ -106,6 +106,8 @@ export abstract class AbstractExampleTuiControl
 
     filler = ``;
 
+    minHeight: number | null = null;
+
     maxHeight: number | null = null;
 
     readonly iconLeftVariants = [``, `tuiIconMailLarge`, `tuiIconPieChartLarge`];
