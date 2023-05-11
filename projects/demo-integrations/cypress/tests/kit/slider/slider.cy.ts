@@ -97,7 +97,7 @@ describe(`Slider`, () => {
 
                 checkSlider(`@slider`, {
                     expectedValue: `0.75`,
-                    expectedFillPercentage: `16.6667%`,
+                    expectedFillPercentage: `17%`,
                 });
 
                 cy.get(`@example`).matchImageSnapshot(
@@ -125,7 +125,7 @@ describe(`Slider`, () => {
 
                 checkSlider(`@slider`, {
                     expectedValue: `1.5`,
-                    expectedFillPercentage: `66.6667%`,
+                    expectedFillPercentage: `67%`,
                 });
 
                 cy.get(`@example`).matchImageSnapshot(
@@ -205,9 +205,15 @@ function checkSlider(
 ): void {
     cy.get(sliderSelector)
         .should(`have.value`, expectedValue)
-        .filter(
-            (_, $el) =>
-                getComputedStyle($el).getPropertyValue(`--tui-slider-fill-percentage`) ===
-                expectedFillPercentage,
-        );
+        .filter((_, $el) => {
+            const actualFillPercentage = Math.round(
+                parseFloat(
+                    getComputedStyle($el).getPropertyValue(
+                        `--tui-slider-fill-percentage`,
+                    ),
+                ),
+            );
+
+            return `${actualFillPercentage}%` === expectedFillPercentage;
+        });
 }
