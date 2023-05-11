@@ -129,6 +129,11 @@
             "matchPackagePatterns": ["^@tinkoff/.*"]
         },
         {
+            "groupName": "maskito",
+            "matchUpdateTypes": ["minor", "patch"],
+            "matchPackagePatterns": ["^@maskito/.*"]
+        },
+        {
             "groupName": "rollup",
             "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["^rollup.*", "@rollup/pluginutils"]
