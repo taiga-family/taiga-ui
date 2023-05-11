@@ -259,7 +259,7 @@ export class TuiInputCardGroupedComponent
         return this.cardPrefilled ? `*${this.card.slice(-4)}` : '*';
     }
 
-    get expireSelectionStart(): number {
+    private get expireSelectionStart(): number {
         return this.inputExpire?.nativeElement.selectionStart || 0;
     }
 
