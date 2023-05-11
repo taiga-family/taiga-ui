@@ -1,14 +1,14 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/utils';
 import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 
 const icons: Record<TuiPaymentSystem, string> = {
+    ...TUI_PAYMENT_SYSTEM_ICONS,
     mir: 'tuiIconMirMono',
     visa: 'tuiIconVisaMono',
     electron: 'tuiIconElectronMono',
-    mastercard: 'tuiIconMastercard',
-    maestro: 'tuiIconMaestro',
 };
 
 @Component({

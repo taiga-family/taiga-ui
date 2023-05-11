@@ -1,6 +1,9 @@
 import {InjectionToken, ValueProvider} from '@angular/core';
 import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
-import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';
+import {
+    TUI_PAYMENT_SYSTEM_ICONS,
+    tuiGetPaymentSystem,
+} from '@taiga-ui/addon-commerce/utils';
 import {TuiHandler} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -15,13 +18,7 @@ export interface TuiInputCardOptions {
 }
 
 export const TUI_INPUT_CARD_DEFAULT_OPTIONS: TuiInputCardOptions = {
-    icons: {
-        mir: `tuiIconMir`,
-        visa: `tuiIconVisa`,
-        electron: `tuiIconElectron`,
-        mastercard: `tuiIconMastercard`,
-        maestro: `tuiIconMaestro`,
-    },
+    icons: TUI_PAYMENT_SYSTEM_ICONS,
     cardSrc: ``,
     paymentSystemHandler: tuiGetPaymentSystem,
     autocompleteEnabled: false,
