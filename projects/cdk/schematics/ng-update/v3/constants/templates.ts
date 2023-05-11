@@ -1,43 +1,12 @@
-import {Element} from 'parse5';
-
 import {hasElementAttribute} from '../../../utils/templates/elements';
+import {AttributeToDirective} from '../interfaces/attribute-to-directive';
+import {RemovableInput} from '../interfaces/removable-input';
+import {ReplaceableAttribute} from '../interfaces/replaceable-attribute';
+import {ReplaceableAttributeValue} from '../interfaces/replaceable-attribute-value';
+import {ReplaceableTag} from '../interfaces/replaceable-tag';
 import {TUI_INTERACTIVE_SELECTORS} from './tui-interactive-selectors';
 
-export interface ReplacementAttributes {
-    readonly from: {
-        readonly attrName: string;
-        readonly withTagNames?: string[];
-        readonly withAttrsNames?: string[];
-        readonly filterFn?: (element: Element) => boolean;
-    };
-    readonly to: {
-        readonly attrName: string;
-    };
-}
-
-export interface ReplacementTags {
-    readonly from: string;
-    readonly to: string;
-    readonly addAttributes: string[];
-}
-
-export interface AttributeToDirective {
-    readonly componentSelector: string[] | string;
-    readonly filterFn?: (element: Element) => boolean;
-    readonly inputProperty: string;
-    readonly directive: string;
-    readonly directiveModule: {
-        readonly name: string;
-        readonly moduleSpecifier: string;
-    };
-}
-
-export interface InputToRemove {
-    readonly inputName: string;
-    readonly tags: string[];
-}
-
-export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
+export const ATTRS_TO_REPLACE: ReplaceableAttribute[] = [
     {
         from: {attrName: `tuiResizableColumn`, withAttrsNames: [`tuiResizableColumn`]},
         to: {attrName: `tuiTh [resizable]="true"`},
@@ -524,7 +493,7 @@ export const ATTRS_TO_REPLACE: ReplacementAttributes[] = [
     },
 ];
 
-export const INPUTS_TO_REMOVE: InputToRemove[] = [
+export const INPUTS_TO_REMOVE: RemovableInput[] = [
     {
         inputName: `iconAlign`,
         tags: [`tui-input`, `tui-primitive-textfield`, `tui-input-tag`],
@@ -535,7 +504,7 @@ export const INPUTS_TO_REMOVE: InputToRemove[] = [
     },
 ];
 
-export const TAGS_TO_REPLACE: ReplacementTags[] = [
+export const TAGS_TO_REPLACE: ReplaceableTag[] = [
     {
         from: `tui-group`,
         to: `div`,
@@ -755,4 +724,31 @@ export const TEMPLATE_COMMENTS = [
         withAttr: `allowSpaces`,
         comment: `Use property [separator] to forbid spaces. See example: https://taiga-ui.dev/components/input-tag#no-spaces-inside-tags`,
     },
+    {
+        tag: `tui-preview-pagination`,
+        withAttr: `lastIndex`,
+        comment: `Use property [length] instead. See example: https://taiga-ui.dev/components/preview`,
+    },
 ] as const;
+
+export const REPLACE_ATTR_VALUE: ReplaceableAttributeValue[] = [
+    {
+        attrName: `tuiHintDirection`,
+        values: [
+            {from: `bottom-middle`, to: `bottom`},
+            {from: `top-middle`, to: `top`},
+        ],
+    },
+    {
+        attrName: `ngProjectAs`,
+        values: [{from: `tuiOverNotifications`, to: `tuiOverAlerts`}],
+    },
+    {
+        attrName: `direction`,
+        withTagNames: [`tui-tooltip`],
+        values: [
+            {from: `bottom-middle`, to: `bottom`},
+            {from: `top-middle`, to: `top`},
+        ],
+    },
+];

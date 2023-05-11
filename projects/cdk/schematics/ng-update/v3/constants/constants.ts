@@ -334,6 +334,26 @@ export const CONSTANTS_TO_REPLACE: ReplacementConst[] = [
     },
     {
         from: {
+            name: `TuiPreviewService`,
+            moduleSpecifier: `@taiga-ui/proprietary-banking`,
+        },
+        to: {
+            name: `TuiPreviewService`,
+            moduleSpecifier: `@taiga-ui/addon-preview`,
+        },
+    },
+    {
+        from: {
+            name: `TuiPreviewModule`,
+            moduleSpecifier: `@taiga-ui/proprietary-banking`,
+        },
+        to: {
+            name: `TuiPreviewModule`,
+            moduleSpecifier: `@taiga-ui/addon-preview`,
+        },
+    },
+    {
+        from: {
             name: `TuiAccountModule`,
             moduleSpecifier: `@taiga-ui/proprietary-core`,
         },

@@ -61,6 +61,24 @@ export function findElementsWithAttribute(
 }
 
 /**
+ * Parses a HTML fragment and traverses all AST nodes in order find elements that include the specified attribute and tag name.
+ * @param html
+ * @param attributeName
+ */
+export function findElementsWithAttributeOnTag(
+    html: string,
+    attributeName: string,
+    tagNames: string[] = [],
+): Element[] {
+    return findElementsInTemplateByFn(
+        html,
+        el =>
+            el.attrs?.some(attr => attr.name === attributeName.toLowerCase()) &&
+            (tagNames.includes(el.tagName) || !tagNames.length),
+    );
+}
+
+/**
  * Finds elements with explicit tag names that also contain the specified attribute. Returns the
  * attribute start offset based on the specified HTML.
  */

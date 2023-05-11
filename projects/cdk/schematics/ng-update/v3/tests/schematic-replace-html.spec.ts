@@ -37,6 +37,8 @@ export class TestComponent {}
 `;
 
 const TEMPLATE_BEFORE = `
+<tui-table-bars-host ngProjectAs="tuiOverNotifications"></tui-table-bars-host>
+<tui-tooltip direction="top-middle"></tui-tooltip>
 <tui-svg
     src="tuiIconSettingsLarge"
     class="icon"
@@ -249,6 +251,8 @@ const TEMPLATE_BEFORE = `
 `;
 
 const TEMPLATE_AFTER = `<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe has new API. See https://taiga-ui.dev/pipes/format-number -->
+<tui-table-bars-host ngProjectAs="tuiOverAlerts"></tui-table-bars-host>
+<tui-tooltip direction="top"></tui-tooltip>
 <tui-svg
     src="tuiIconSettingsLarge"
     class="icon"

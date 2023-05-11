@@ -22,6 +22,7 @@ import {
     findElementsByTagName,
     findElementsInTemplateByFn,
     findElementsWithAttribute,
+    findElementsWithAttributeOnTag,
     hasElementAttribute,
 } from '../../../utils/templates/elements';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
@@ -39,6 +40,7 @@ import {
     ATTR_TO_DIRECTIVE,
     ATTRS_TO_REPLACE,
     INPUTS_TO_REMOVE,
+    REPLACE_ATTR_VALUE,
     TAGS_TO_REPLACE,
     TEMPLATE_COMMENTS,
     TRUTHY_BOOLEAN_INPUT_TO_HTML_BINARY_ATTRIBUTE,
@@ -440,19 +442,10 @@ function replaceInputValues({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    const ATTR_VALUES = [
-        {
-            attrName: `tuiHintDirection`,
-            values: [
-                {from: `bottom-middle`, to: `bottom`},
-                {from: `top-middle`, to: `top`},
-            ],
-        },
-    ] as const;
-
-    ATTR_VALUES.forEach(({attrName, values}) => {
-        const elements = [...findElementsWithAttribute(template, attrName)];
+    REPLACE_ATTR_VALUE.forEach(({attrName, values, withTagNames}) => {
+        const elements = [
+            ...findElementsWithAttributeOnTag(template, attrName, withTagNames),
+        ];
 
         elements.forEach(element => {
             const {name, value} =
