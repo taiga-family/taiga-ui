@@ -27,22 +27,27 @@ export class TuiInputFilesDirective {
 
     @HostBinding('id')
     get id(): string {
-        return this.el.nativeElement.id || this.idService.generate();
+        return this.input.id || this.idService.generate();
     }
 
     @HostBinding('accept')
     get accept(): string {
-        return this.el.nativeElement.accept ?? this.options.accepts;
+        return this.input.accept ?? this.options.accepts;
     }
 
     @HostBinding('multiple')
     get multiple(): boolean {
-        return this.el.nativeElement.multiple ?? this.options.multiple;
+        return this.input.multiple ?? this.options.multiple;
+    }
+
+    @HostBinding('title')
+    get title(): string {
+        return this.input.getAttribute('title') ?? this.options.title;
     }
 
     @HostBinding('attr.capture')
     get capture(): string | null {
-        return this.el.nativeElement.getAttribute('capture') ?? this.options.capture;
+        return this.input.getAttribute('capture') ?? this.options.capture;
     }
 
     get input(): HTMLInputElement {
