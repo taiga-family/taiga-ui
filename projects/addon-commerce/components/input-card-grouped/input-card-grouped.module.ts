@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {MaskitoModule} from '@maskito/angular';
 import {TuiFormatCardModule} from '@taiga-ui/addon-commerce/pipes';
 import {
     TuiActiveZoneModule,
@@ -12,7 +13,6 @@ import {
     TuiResizeModule,
 } from '@taiga-ui/cdk';
 import {TuiDropdownModule, TuiSvgModule, TuiWrapperModule} from '@taiga-ui/core';
-import {TextMaskModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputCardGroupedComponent} from './input-card-grouped.component';
@@ -21,7 +21,7 @@ import {TuiInputCardGroupedComponent} from './input-card-grouped.component';
     imports: [
         CommonModule,
         FormsModule,
-        TextMaskModule,
+        MaskitoModule,
         TuiFocusableModule,
         TuiSvgModule,
         TuiWrapperModule,
