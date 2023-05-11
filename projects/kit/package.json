@@ -13,7 +13,7 @@
     "repository": "https://github.com/tinkoff/taiga-ui",
     "license": "Apache-2.0",
     "dependencies": {
-        "@maskito/angular": "0.11.0",
+        "@maskito/angular": "0.11.1",
         "@maskito/core": "0.11.0",
         "@maskito/kit": "0.11.0",
         "@ng-web-apis/intersection-observer": "3.0.0",
