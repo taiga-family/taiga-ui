@@ -18,8 +18,9 @@
             <div [innerHTML]="text"></div>
             <div class="t-buttons">
                 <button
-                    type="button"
                     tuiButton
+                    tuiAutoFocus
+                    type="button"
                     size="m"
                     (click)="context.$implicit.complete()"
                 >
@@ -37,7 +38,6 @@
     <button
         type="button"
         tuiIconButton
-        tuiPreventDefault="mousedown"
         automation-id="tui-dialog__close"
         size="s"
         icon="tuiIconCloseLarge"
@@ -46,5 +46,6 @@
         [appearance]="fullscreen ? 'secondary' : ''"
         [title]="closeWord$ | async"
         (click)="close$.next()"
+        (mousedown.prevent.silent)="(0)"
     ></button>
 </div>

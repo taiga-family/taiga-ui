@@ -12,9 +12,11 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {
+    TUI_LINE_CHART_OPTIONS,
     TuiLineChartComponent,
     tuiLineChartDrivers,
     TuiLineChartHintDirective,
+    TuiLineChartOptions,
 } from '@taiga-ui/addon-charts/components/line-chart';
 import {
     EMPTY_ARRAY,
@@ -92,7 +94,7 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
 
     @Input()
     @tuiDefaultProp()
-    smoothingFactor = 0;
+    smoothingFactor = this.options.smoothingFactor;
 
     @Input()
     hintContent: PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>>;
@@ -107,7 +109,7 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
 
     @Input()
     @tuiDefaultProp()
-    dots = false;
+    dots = this.options.dots;
 
     @HostBinding('style.zIndex')
     zIndex = 0;
@@ -121,6 +123,7 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(NgZone) private readonly ngZone: NgZone,
         @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
+        @Inject(TUI_LINE_CHART_OPTIONS) private readonly options: TuiLineChartOptions,
     ) {}
 
     get months(): ReadonlyArray<readonly TuiPoint[]> {

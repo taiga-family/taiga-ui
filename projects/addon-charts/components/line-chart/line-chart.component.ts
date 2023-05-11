@@ -36,6 +36,7 @@ import {distinctUntilChanged} from 'rxjs/operators';
 // TODO: find the best way for prevent cycle
 // eslint-disable-next-line import/no-cycle
 import {TuiLineChartHintDirective} from './line-chart-hint.directive';
+import {TUI_LINE_CHART_OPTIONS, TuiLineChartOptions} from './line-chart-options';
 
 @Component({
     selector: 'tui-line-chart',
@@ -79,7 +80,7 @@ export class TuiLineChartComponent {
         (smoothingFactor: number) => tuiInRange(smoothingFactor, 0, 100),
         'smoothingFactor must be between 0 and 100',
     )
-    smoothingFactor = 0;
+    smoothingFactor = this.options.smoothingFactor;
 
     @Input()
     @tuiDefaultProp()
@@ -91,11 +92,11 @@ export class TuiLineChartComponent {
 
     @Input()
     @tuiDefaultProp()
-    filled = false;
+    filled = this.options.filled;
 
     @Input()
     @tuiDefaultProp()
-    dots = false;
+    dots = this.options.dots;
 
     value: readonly TuiPoint[] = [];
 
@@ -110,6 +111,7 @@ export class TuiLineChartComponent {
         @Optional()
         @Inject(TuiHintOptionsDirective)
         readonly hintOptions: TuiHintOptionsDirective | null,
+        @Inject(TUI_LINE_CHART_OPTIONS) private readonly options: TuiLineChartOptions,
     ) {
         this.autoIdString = idService.generate();
     }
