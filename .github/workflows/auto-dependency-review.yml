@@ -15,4 +15,4 @@ jobs:
         uses: actions/dependency-review-action@v3.0.4
         with:
           fail-on-severity: critical
-          allow-licenses: GPL-3.0, BSD-3-Clause, MIT
+          allow-licenses: GPL-3.0, BSD-3-Clause, Apache-2.0, MIT
