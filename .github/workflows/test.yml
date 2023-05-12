@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - main
-      - '!release/**'
 
 env:
   NX_BRANCH: ${{ github.event.number }}
@@ -42,7 +41,7 @@ jobs:
         uses: ./.github/actions/nodejs
 
       - name: Run tests for ${{ matrix.project }}
-        run: npx nx test ${{ matrix.project }}
+        run: npx nx test ${{ matrix.project }} --skip-nx-cache
 
       - name: Archive coverage artifacts
         uses: actions/upload-artifact@v3.1.2
