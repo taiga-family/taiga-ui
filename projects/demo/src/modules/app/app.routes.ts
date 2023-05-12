@@ -971,6 +971,14 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `components/prompt`,
+        loadChildren: async () =>
+            (await import(`../components/prompt/prompt.module`)).ExampleTuiPromptModule,
+        data: {
+            title: `Prompt`,
+        },
+    },
+    {
         path: `components/theme-switcher`,
         loadChildren: async () =>
             (await import(`../components/theme-switcher/theme-switcher.module`))

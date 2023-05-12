@@ -1,0 +1,110 @@
+<tui-doc-page
+    header="Prompt"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>
+            Prompt is a ready to use
+            <a
+                tuiLink
+                routerLink="/components/dialog"
+            >
+                Dialog
+            </a>
+            to ask user to confirm an action
+        </p>
+
+        <tui-notification>
+            See
+            <a
+                tuiLink
+                routerLink="/components/dialog"
+                fragment="prompt"
+            >
+                this example
+            </a>
+            to learn how to use prompt to prevent data loss on forms inside other modals
+        </tui-notification>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [content]="example1"
+        >
+            <tui-prompt-example-1></tui-prompt-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <button
+                tuiButton
+                (click)="onClick()"
+            >
+                Show
+            </button>
+        </tui-doc-demo>
+        <p>
+            You can pass
+            <code>data: TuiPromptData</code>
+            when opening a dialog to customize it
+        </p>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="content"
+                documentationPropertyType="PolymorpheusContent"
+            >
+                Content of the prompt
+            </ng-template>
+            <ng-template
+                documentationPropertyName="no"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="no"
+            >
+                Text on
+                <code>false</code>
+                button
+            </ng-template>
+            <ng-template
+                documentationPropertyName="yes"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="yes"
+            >
+                Text on
+                <code>true</code>
+                button
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                <p>
+                    Import
+                    <code>TuiPromptModule</code>
+                    into a module where you want to use our component
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p>
+                    Open with
+                    <code>DialogService</code>
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.component.ts"
+                    [code]="exampleService"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>
