@@ -1,4 +1,4 @@
-import {Directive, Inject, Input, OnDestroy, Optional} from '@angular/core';
+import {Directive, Inject, Input, OnDestroy, OnInit, Optional} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiHeadDirective} from '@taiga-ui/addon-table/components';
 import {defer, EMPTY, merge} from 'rxjs';
@@ -11,7 +11,7 @@ import {TuiTableFiltersDirective} from './table-filters.directive';
 @Directive({
     selector: '[tuiTableFilter]',
 })
-export class TuiTableFilterDirective<T> implements OnDestroy, TuiTableFilter<T> {
+export class TuiTableFilterDirective<T> implements OnInit, OnDestroy, TuiTableFilter<T> {
     @Input()
     tuiTableFilter?: keyof T;
 
@@ -30,7 +30,9 @@ export class TuiTableFilterDirective<T> implements OnDestroy, TuiTableFilter<T> 
         private readonly delegate: AbstractTuiTableFilter<T[keyof T], any>,
         @Inject(NgControl) private readonly control: NgControl,
         @Inject(TuiTableFiltersDirective) readonly filters: TuiTableFiltersDirective<T>,
-    ) {
+    ) {}
+
+    ngOnInit(): void {
         this.filters.register(this);
     }
 
