@@ -33,18 +33,6 @@
         padding: 0 0 0 1rem;
     }
 
-    :host[data-size='s'] & {
-        min-height: var(--tui-height-s);
-    }
-
-    :host[data-size='m'] & {
-        min-height: var(--tui-height-m);
-    }
-
-    :host[data-size='l'] & {
-        min-height: var(--tui-height-l);
-    }
-
     :host[data-size='s']._hidden_input & {
         padding: 0 1rem;
     }
@@ -77,11 +65,29 @@
 }
 
 .t-label {
-    .text-overflow();
+    display: flex;
     flex-grow: 1;
-    align-self: center;
+    align-self: flex-start;
+    align-items: center;
+    overflow: hidden;
+
+    :host[data-size='s'] & {
+        min-height: var(--tui-height-s);
+    }
+
+    :host[data-size='m'] & {
+        min-height: var(--tui-height-m);
+    }
+
+    :host[data-size='l'] & {
+        min-height: var(--tui-height-l);
+    }
 
     :host._hidden_input & {
         text-align: center;
     }
+}
+
+.t-content {
+    .text-overflow();
 }
