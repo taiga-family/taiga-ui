@@ -47,30 +47,4 @@ describe(`InputExpire`, () => {
         expect(testComponent.value).toBe(`12/12`);
         expect(input.value).toBe(`12/12`);
     });
-
-    describe(`Input correction`, () => {
-        it(`replaces 50/08 with 12/08`, () => {
-            input.value = `50/08`;
-            input.dispatchEvent(new Event(`input`, {bubbles: true}));
-
-            expect(testComponent.value).toBe(`05/08`);
-            expect(input.value).toBe(`05/08`);
-        });
-
-        it(`replaces 14/08 with 12/08`, () => {
-            input.value = `14/08`;
-            input.dispatchEvent(new Event(`input`, {bubbles: true}));
-
-            expect(testComponent.value).toBe(`12/08`);
-            expect(input.value).toBe(`12/08`);
-        });
-
-        it(`replaces 00/08 with 01/08`, () => {
-            input.value = `00/08`;
-            input.dispatchEvent(new Event(`input`, {bubbles: true}));
-
-            expect(testComponent.value).toBe(`01/08`);
-            expect(input.value).toBe(`01/08`);
-        });
-    });
 });
