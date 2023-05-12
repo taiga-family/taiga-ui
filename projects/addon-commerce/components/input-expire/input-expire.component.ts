@@ -9,7 +9,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {tuiCreateAutoCorrectedExpirePipe} from '@taiga-ui/addon-commerce/utils';
+import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {
     AbstractTuiControl,
     tuiAsControl,
@@ -18,11 +18,7 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
-import {
-    TUI_DIGIT_REGEXP,
-    TuiPrimitiveTextfieldComponent,
-    TuiTextMaskOptions,
-} from '@taiga-ui/core';
+import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-input-expire',
@@ -45,17 +41,10 @@ export class TuiInputExpireComponent
     @tuiDefaultProp()
     autocompleteEnabled = false;
 
-    readonly textMaskOptions: TuiTextMaskOptions = {
-        mask: [
-            TUI_DIGIT_REGEXP,
-            TUI_DIGIT_REGEXP,
-            '/',
-            TUI_DIGIT_REGEXP,
-            TUI_DIGIT_REGEXP,
-        ],
-        pipe: tuiCreateAutoCorrectedExpirePipe(),
-        guide: false,
-    };
+    readonly maskOptions = maskitoDateOptionsGenerator({
+        mode: 'mm/yy',
+        separator: '/',
+    });
 
     constructor(
         @Optional()
@@ -77,25 +66,6 @@ export class TuiInputExpireComponent
 
     get autocomplete(): TuiAutofillFieldName {
         return this.autocompleteEnabled ? 'cc-exp' : 'off';
-    }
-
-    onValueChange(value: string): void {
-        // @bad TODO: Workaround until mask pipe can replace chars and keep caret position
-        // @bad TODO: Think about a solution without mask at all
-        if (!this.input?.nativeFocusableElement) {
-            return;
-        }
-
-        if (parseInt(value.slice(0, 2), 10) > 12) {
-            value = `12${value.slice(2)}`;
-        }
-
-        if (value.startsWith('00')) {
-            value = `01${value.slice(2)}`;
-        }
-
-        this.input.nativeFocusableElement.value = value;
-        this.value = value;
     }
 
     onFocused(focused: boolean): void {

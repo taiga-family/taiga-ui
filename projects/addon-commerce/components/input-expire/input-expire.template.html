@@ -3,14 +3,13 @@
     class="t-input"
     [nativeId]="nativeId"
     [disabled]="disabled"
-    [textMask]="textMaskOptions"
+    [maskito]="maskOptions"
     [readOnly]="readOnly"
     [invalid]="computedInvalid"
     [pseudoHover]="pseudoHover"
     [pseudoActive]="pseudoActive"
     [pseudoFocus]="pseudoFocus"
-    [value]="value"
-    (valueChange)="onValueChange($event)"
+    [(value)]="value"
     (focusedChange)="onFocused($event)"
 >
     <input
