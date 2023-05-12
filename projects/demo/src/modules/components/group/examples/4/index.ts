@@ -6,6 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 @Component({
     selector: 'tui-group-example-4',
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
