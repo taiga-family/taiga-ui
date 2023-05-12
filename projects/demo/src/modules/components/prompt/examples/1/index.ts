@@ -8,7 +8,6 @@ import {switchMap} from 'rxjs/operators';
 @Component({
     selector: 'tui-prompt-example-1',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
