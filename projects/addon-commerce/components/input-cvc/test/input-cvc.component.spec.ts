@@ -50,10 +50,9 @@ describe(`InputCVC`, () => {
             expect(testComponent.default.exampleText).toBe(`000`);
         });
 
-        it(`textMaskOptions`, () => {
-            expect(testComponent.default.textMaskOptions).toEqual({
+        it(`MaskOptions`, () => {
+            expect(testComponent.default.maskOptions).toEqual({
                 mask: [TUI_DIGIT_REGEXP, TUI_DIGIT_REGEXP, TUI_DIGIT_REGEXP],
-                guide: false,
             });
         });
     });
@@ -63,15 +62,14 @@ describe(`InputCVC`, () => {
             expect(testComponent.custom.exampleText).toBe(`0000`);
         });
 
-        it(`textMaskOptions`, () => {
-            expect(testComponent.custom.textMaskOptions).toEqual({
+        it(`MaskOptions`, () => {
+            expect(testComponent.custom.maskOptions).toEqual({
                 mask: [
                     TUI_DIGIT_REGEXP,
                     TUI_DIGIT_REGEXP,
                     TUI_DIGIT_REGEXP,
                     TUI_DIGIT_REGEXP,
                 ],
-                guide: false,
             });
         });
     });

@@ -4,7 +4,7 @@
     [disabled]="disabled"
     [readOnly]="readOnly"
     [nativeId]="nativeId"
-    [textMask]="textMaskOptions"
+    [maskito]="maskOptions"
     [invalid]="computedInvalid"
     [focusable]="focusable"
     [pseudoHover]="pseudoHover"
@@ -12,7 +12,7 @@
     [pseudoFocus]="pseudoFocus"
     [(value)]="value"
     (focusedChange)="onFocused($event)"
-    (copy.prevent)="onCopy()"
+    (copy.prevent)="(0)"
 >
     <ng-content></ng-content>
     <input
