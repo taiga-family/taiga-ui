@@ -35,10 +35,10 @@ import {
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_ARROW} from '@taiga-ui/kit/components/arrow';
 import {TuiInputPhoneComponent} from '@taiga-ui/kit/components/input-phone';
-import {TuiExtractCountryCodePipe, TuiIsoToCountryCodePipe} from '@taiga-ui/kit/pipes';
+import {TuiToCountryCodePipe} from '@taiga-ui/kit/pipes';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_COUNTRIES, TUI_COUNTRIES_MASKS} from '@taiga-ui/kit/tokens';
-import {tuiGetMaxAllowedPhoneLength} from '@taiga-ui/kit/utils';
+import {tuiGetMaxAllowedPhoneLength, tuiIsoToCountryCode} from '@taiga-ui/kit/utils';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
@@ -58,6 +58,7 @@ import {tuiExtractValueFromEvent} from './utils/extract-value-from-event';
         tuiAsControl(TuiInputPhoneInternationalComponent),
         // TODO: for backward compatibility only. Drop in v4.0
         TuiFlagPipe,
+        TuiToCountryCodePipe,
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
@@ -110,10 +111,8 @@ export class TuiInputPhoneInternationalComponent
         private readonly options: TuiInputPhoneInternationalOptions,
         @Inject(TuiFlagPipe)
         private readonly flagPipe: TuiFlagPipe,
-        @Inject(TuiExtractCountryCodePipe)
-        private readonly extractCountryCodePipe: TuiExtractCountryCodePipe,
-        @Inject(TuiIsoToCountryCodePipe)
-        private readonly isoToCountryCodePipe: TuiIsoToCountryCodePipe,
+        @Inject(TuiToCountryCodePipe)
+        private readonly extractCountryCodePipe: TuiToCountryCodePipe,
     ) {
         super(control, cdr);
     }
@@ -132,11 +131,11 @@ export class TuiInputPhoneInternationalComponent
     }
 
     get inputPhoneCountryCode(): string {
-        return this.isoToCountryCodePipe.transform(this.countryIsoCode);
+        return tuiIsoToCountryCode(this.countriesMasks, this.countryIsoCode);
     }
 
     get phoneMaskAfterCountryCode(): string {
-        const countryCode = this.isoToCountryCodePipe.transform(this.countryIsoCode);
+        const countryCode = this.inputPhoneCountryCode;
 
         return this.calculateMaskAfterCountryCode(
             this.countriesMasks[this.countryIsoCode],
@@ -181,7 +180,7 @@ export class TuiInputPhoneInternationalComponent
     }
 
     readonly isoToCountryCodeMapper: TuiMapper<TuiCountryIsoCode, string> = item =>
-        this.isoToCountryCodePipe.transform(item);
+        tuiIsoToCountryCode(this.countriesMasks, item);
 
     /**
      * @deprecated use `<img [src]="countryIsoCode | tuiFlagPipe" />`
@@ -218,7 +217,7 @@ export class TuiInputPhoneInternationalComponent
      * TODO drop in v4.0
      */
     isoToCountryCode(isoCode: TuiCountryIsoCode): string {
-        return this.isoToCountryCodePipe.transform(isoCode);
+        return tuiIsoToCountryCode(this.countriesMasks, isoCode);
     }
 
     /** @deprecated use 'value' setter */

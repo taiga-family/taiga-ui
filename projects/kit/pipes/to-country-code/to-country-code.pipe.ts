@@ -1,19 +1,20 @@
 import {Inject, Pipe, PipeTransform} from '@angular/core';
 import {CHAR_PLUS} from '@taiga-ui/cdk';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TuiIsoToCountryCodePipe} from '@taiga-ui/kit/pipes/iso-to-country-code';
 import {TUI_COUNTRIES_MASKS} from '@taiga-ui/kit/tokens';
-import {tuiGetMaxAllowedPhoneLength, tuiNotKzRegion} from '@taiga-ui/kit/utils';
+import {
+    tuiGetMaxAllowedPhoneLength,
+    tuiIsoToCountryCode,
+    tuiNotKzRegion,
+} from '@taiga-ui/kit/utils';
 
 @Pipe({
-    name: `tuiExtractCountryCode`,
+    name: `tuiToCountryCode`,
 })
-export class TuiExtractCountryCodePipe implements PipeTransform {
+export class TuiToCountryCodePipe implements PipeTransform {
     constructor(
         @Inject(TUI_COUNTRIES_MASKS)
-        readonly countriesMasks: Record<TuiCountryIsoCode, string>,
-        @Inject(TuiIsoToCountryCodePipe)
-        private readonly isoToCountryCodePipe: TuiIsoToCountryCodePipe,
+        private readonly countriesMasks: Record<TuiCountryIsoCode, string>,
     ) {}
 
     transform(
@@ -34,9 +35,10 @@ export class TuiExtractCountryCodePipe implements PipeTransform {
             const matched =
                 ruCodeTest ||
                 (value.startsWith(
-                    this.isoToCountryCodePipe
-                        .transform(countryIsoCode)
-                        .replace(CHAR_PLUS, ``),
+                    tuiIsoToCountryCode(this.countriesMasks, countryIsoCode).replace(
+                        CHAR_PLUS,
+                        ``,
+                    ),
                 ) &&
                     value.length + 1 ===
                         tuiGetMaxAllowedPhoneLength(this.countriesMasks, countryIsoCode));

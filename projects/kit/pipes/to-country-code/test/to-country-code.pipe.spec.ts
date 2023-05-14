@@ -1,9 +1,9 @@
 import {TestBed} from '@angular/core/testing';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TuiExtractCountryCodePipe, TuiIsoToCountryCodePipe} from '@taiga-ui/kit';
+import {TuiIsoToCountryCodePipe, TuiToCountryCodePipe} from '@taiga-ui/kit';
 
-describe(`TuiExtractCountryCodePipe`, () => {
-    let pipe: TuiExtractCountryCodePipe;
+describe(`TuiToCountryCodePipe`, () => {
+    let pipe: TuiToCountryCodePipe;
 
     const testCases: Array<{
         input: string;
@@ -68,10 +68,10 @@ describe(`TuiExtractCountryCodePipe`, () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [TuiIsoToCountryCodePipe, TuiExtractCountryCodePipe],
+            providers: [TuiIsoToCountryCodePipe, TuiToCountryCodePipe],
         });
 
-        pipe = TestBed.inject(TuiExtractCountryCodePipe);
+        pipe = TestBed.inject(TuiToCountryCodePipe);
     });
 
     testCases.forEach(({input, countries, expected}) => {
