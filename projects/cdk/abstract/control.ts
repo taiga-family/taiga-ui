@@ -15,8 +15,17 @@ import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
 import {TuiControlValueTransformer} from '@taiga-ui/cdk/interfaces';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils';
 import {merge, Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {
+    delay,
+    distinctUntilChanged,
+    filter,
+    map,
+    startWith,
+    switchMap,
+    takeUntil,
+} from 'rxjs/operators';
 
 import {AbstractTuiInteractive} from './interactive';
 import {AbstractTuiValueTransformer} from './value-transformer';
@@ -30,6 +39,7 @@ export abstract class AbstractTuiControl<T>
     implements OnDestroy, OnInit, ControlValueAccessor
 {
     private previousInternalValue?: T | null;
+    private readonly refresh$ = new Subject();
 
     private onTouched = EMPTY_FUNCTION;
 
@@ -146,13 +156,19 @@ export abstract class AbstractTuiControl<T>
     }
 
     ngOnInit(): void {
-        if (!this.ngControl?.valueChanges || !this.ngControl?.statusChanges) {
-            return;
-        }
-
-        merge(this.ngControl.valueChanges, this.ngControl.statusChanges)
-            .pipe(takeUntil(this.destroy$))
-            .subscribe(() => this.refreshLocalValue(this.safeCurrentValue));
+        this.refresh$
+            .pipe(
+                delay(0),
+                startWith(null),
+                map(() => this.ngControl?.control),
+                filter(tuiIsPresent),
+                distinctUntilChanged(),
+                switchMap(control => merge(control.valueChanges, control.statusChanges)),
+                takeUntil(this.destroy$),
+            )
+            .subscribe(() => {
+                this.refreshLocalValue(this.safeCurrentValue);
+            });
     }
 
     ngOnDestroy(): void {
@@ -168,6 +184,8 @@ export abstract class AbstractTuiControl<T>
         this.onChange = (componentValue: T) => {
             onChange(this.toControlValue(componentValue));
         };
+
+        this.refresh$.next();
     }
 
     registerOnTouched(onTouched: () => void): void {
