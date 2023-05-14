@@ -2,7 +2,11 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {
+    TuiAddonDocModule,
+    tuiGenerateRoutes,
+    TuiTextCodeModule,
+} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
     TuiHintModule,
@@ -33,6 +37,7 @@ import {ExampleTuiSliderComponent} from './slider.component';
         TuiButtonModule,
         TuiHintModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSliderComponent)),
+        TuiTextCodeModule,
     ],
     declarations: [
         ExampleTuiSliderComponent,

@@ -2,7 +2,11 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {
+    TuiAddonDocModule,
+    tuiGenerateRoutes,
+    TuiTextCodeModule,
+} from '@taiga-ui/addon-doc';
 import {TuiEditorModule, TuiEditorSocketModule} from '@taiga-ui/addon-editor';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
@@ -31,6 +35,7 @@ import {ExampleTuiPasteImageToolModule} from './examples/1/image-tool/image-tool
         ExampleTuiPasteImageToolModule,
         TuiEditorSocketModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiEditorPasteImageToolComponent)),
+        TuiTextCodeModule,
     ],
     declarations: [
         TuiEditorPasteImageToolExample1,
