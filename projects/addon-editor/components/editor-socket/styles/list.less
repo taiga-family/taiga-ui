@@ -21,6 +21,15 @@ ul li > p {
     display: inline-block;
 }
 
+li:before {
+    unicode-bidi: isolate;
+    font-variant-numeric: tabular-nums;
+    text-transform: none;
+    text-indent: 0;
+    text-align: start;
+    text-align-last: start;
+}
+
 ul > li:before {
     content: '';
     display: inline-block;

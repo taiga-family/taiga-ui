@@ -95,6 +95,7 @@
         "ponyfill",
         "nbsp",
         "blockquotes",
-        "datetime"
+        "datetime",
+        "nums"
     ]
 }
