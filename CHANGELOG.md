@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.27.0](https://github.com/tinkoff/taiga-ui/compare/v3.26.0...v3.27.0) (2023-05-15)
+
+### Features
+
+- **addon-charts:** `LineChart` add configuration through DI ([#4427](https://github.com/tinkoff/taiga-ui/issues/4427))
+  ([a40ee2a](https://github.com/tinkoff/taiga-ui/commit/a40ee2aaa4241ec86dde3294ea354fae6934db62))
+- **addon-commerce:** `InputCard` uses `Maskito` instead of legacy `text-mask`
+  ([#4385](https://github.com/tinkoff/taiga-ui/issues/4385))
+  ([717e96c](https://github.com/tinkoff/taiga-ui/commit/717e96c49224e1e3dd50a3ff23b7571fba286ad3))
+- **addon-commerce:** `InputCardGrouped` uses `Maskito` instead of legacy `text-mask`
+  ([#4391](https://github.com/tinkoff/taiga-ui/issues/4391))
+  ([d28c01b](https://github.com/tinkoff/taiga-ui/commit/d28c01b9f9d051325f93c48ee8ef3112e327272e))
+- **addon-commerce:** `InputExpire` & `InputCVC` use `Maskito` instead of legacy `text-mask`
+  ([#4442](https://github.com/tinkoff/taiga-ui/issues/4442))
+  ([6826b8c](https://github.com/tinkoff/taiga-ui/commit/6826b8cda1fee4a8395dd2c48247741ca53589bc))
+- **addon-commerce:** add flexible payment system detection ([#4410](https://github.com/tinkoff/taiga-ui/issues/4410))
+  ([365a136](https://github.com/tinkoff/taiga-ui/commit/365a136e118367bb9246ab742d8d4cd285043b43))
+- **addon-doc:** add `TuiTextCodeDirective` for escaped brackets in code
+  ([#4451](https://github.com/tinkoff/taiga-ui/issues/4451))
+  ([654745f](https://github.com/tinkoff/taiga-ui/commit/654745f4552e847814560d6d810782ebd8e8c21f))
+- **kit:** `InputDateRange` allow to use custom value content when using period
+  ([#4383](https://github.com/tinkoff/taiga-ui/issues/4383))
+  ([6e69988](https://github.com/tinkoff/taiga-ui/commit/6e699885aefc9ae3784435a6ee27e6b758d7c339))
+- **kit:** `InputNumber` add `step` input and deprecate `InputCount`
+  ([#4368](https://github.com/tinkoff/taiga-ui/issues/4368))
+  ([8bb0b4b](https://github.com/tinkoff/taiga-ui/commit/8bb0b4be48bcac606c1bbede19948b9cb4dcce2f))
+- **kit:** `InputYear` uses `Maskito` instead of legacy `text-mask`
+  ([#4382](https://github.com/tinkoff/taiga-ui/issues/4382))
+  ([a3183c8](https://github.com/tinkoff/taiga-ui/commit/a3183c84d2567d5d0f31dddec332ba363023618e))
+- **kit:** set dark text color for autocolored tags regardless of theme
+  ([#4384](https://github.com/tinkoff/taiga-ui/issues/4384))
+  ([3fc5ef5](https://github.com/tinkoff/taiga-ui/commit/3fc5ef5ef5c952a4cac4658a97635f78448451fd))
+
+### Bug Fixes
+
+- **addon-editor:** vertical alignment of content in a list ([#4452](https://github.com/tinkoff/taiga-ui/issues/4452))
+  ([2f224a1](https://github.com/tinkoff/taiga-ui/commit/2f224a173095e820f7f0bb8c7b6dba5e3bf0fc5c))
+- **addon-table:** `TableFilters` fix registering when using structural directives
+  ([#4435](https://github.com/tinkoff/taiga-ui/issues/4435))
+  ([e7e8198](https://github.com/tinkoff/taiga-ui/commit/e7e81983d3169f8eb30c36e07c34eea7fa104107))
+- **cdk:** `ActiveZone` ignore disabling through fieldset ([#4420](https://github.com/tinkoff/taiga-ui/issues/4420))
+  ([30cf133](https://github.com/tinkoff/taiga-ui/commit/30cf13361e5b4bfe28624e5f6d401ec6b8ede975))
+- **cdk:** `Schematics` add some missed migrations ([#4430](https://github.com/tinkoff/taiga-ui/issues/4430))
+  ([a79f48f](https://github.com/tinkoff/taiga-ui/commit/a79f48f155009c6c41d45995ec33f344c9718851))
+- **core:** `Control` refresh subscription after control change
+  ([#4446](https://github.com/tinkoff/taiga-ui/issues/4446))
+  ([b9c3cb0](https://github.com/tinkoff/taiga-ui/commit/b9c3cb0fc7b91ca4e745226c389600cd6fd72d4c))
+- **core:** `Dropdown` fix initial open state ([#4417](https://github.com/tinkoff/taiga-ui/issues/4417))
+  ([10c1e43](https://github.com/tinkoff/taiga-ui/commit/10c1e43f8e626f57b2be564ffa413b21f8662f28))
+- **core:** explicit override svg options ([#4394](https://github.com/tinkoff/taiga-ui/issues/4394))
+  ([bfd88f8](https://github.com/tinkoff/taiga-ui/commit/bfd88f8a7995ceccd58c8257ec55491e9239cebd))
+- **kit:** `InputFiles` fix disabled state in Safari ([#4454](https://github.com/tinkoff/taiga-ui/issues/4454))
+  ([01cd661](https://github.com/tinkoff/taiga-ui/commit/01cd661db2ad959a78d2448d9212460c0070244b))
+- **kit:** `Prompt` wrap buttons to the new line if they do not fit
+  ([#4443](https://github.com/tinkoff/taiga-ui/issues/4443))
+  ([63ed120](https://github.com/tinkoff/taiga-ui/commit/63ed120dc733dd4d7f6728c091cc830a3931dd2b))
+- **kit:** `RadioBlock`, `CheckboxBlock` properly align in `Group`
+  ([#4445](https://github.com/tinkoff/taiga-ui/issues/4445))
+  ([eca1ec4](https://github.com/tinkoff/taiga-ui/commit/eca1ec44ec76566964aa63fa0f0c803a20a87a58))
+- **kit:** `Tag` remove mixin messing with background ([#4419](https://github.com/tinkoff/taiga-ui/issues/4419))
+  ([c05abb0](https://github.com/tinkoff/taiga-ui/commit/c05abb0ce6973c1ed09d268a94745950224112de))
+- **kit:** downgrade type of value in badge ([#4431](https://github.com/tinkoff/taiga-ui/issues/4431))
+  ([1f6b2b7](https://github.com/tinkoff/taiga-ui/commit/1f6b2b785620449c7256ff79075ab09d461a8a45))
+
 ## [3.26.0](https://github.com/tinkoff/taiga-ui/compare/v3.25.0...v3.26.0) (2023-05-03)
 
 ### Features
