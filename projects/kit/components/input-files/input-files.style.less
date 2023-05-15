@@ -24,16 +24,20 @@ tui-input-files {
         width: 100%;
         text-align: center;
     }
+
+    .t-description {
+        .fullsize();
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 /* stylelint-disable order/order */
 [tuiWrapper][data-appearance='input-file'] {
-    display: flex;
     background: transparent;
     word-wrap: break-word;
     color: var(--tui-text-02);
-    justify-content: center;
-    align-items: center;
     min-height: inherit;
     border-radius: inherit;
     padding: 0 0.5rem;
@@ -49,9 +53,6 @@ tui-input-files {
     }
 
     .wrapper-disabled({
-        opacity: var(--tui-disabled-opacity);
-        pointer-events: none;
-
         &:after {
             color: var(--tui-text-03);
         }
