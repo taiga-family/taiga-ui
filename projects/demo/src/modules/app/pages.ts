@@ -648,6 +648,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Components`,
+        title: `Prompt`,
+        keywords: `попап, модал, popup, dialog, диалог, modal, окно, confirm, approve, подтверждение`,
+        route: `/components/prompt`,
+    },
+    {
+        section: `Components`,
         title: `Radio`,
         subPages: [
             {

@@ -15,6 +15,7 @@ export interface TuiPromptData {
     readonly no?: string;
 }
 
+// TODO: Rename to tui-confirm in 4.0
 @Component({
     selector: 'tui-prompt',
     templateUrl: './prompt.template.html',
