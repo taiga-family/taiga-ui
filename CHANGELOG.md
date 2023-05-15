@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.88.0](https://github.com/tinkoff/taiga-ui/compare/v2.87.0...v2.88.0) (2023-05-15)
+
+### Bug Fixes
+
+- **addon-table:** `TableFilters` fix registering when using structural directives
+  ([#4435](https://github.com/tinkoff/taiga-ui/issues/4435)) ([#4447](https://github.com/tinkoff/taiga-ui/issues/4447))
+  ([1add846](https://github.com/tinkoff/taiga-ui/commit/1add84626544c61a1d88c33d3b7cd2c7c5489e99))
+
 ## [2.87.0](https://github.com/tinkoff/taiga-ui/compare/v2.86.0...v2.87.0) (2023-05-03)
 
 ### Bug Fixes
