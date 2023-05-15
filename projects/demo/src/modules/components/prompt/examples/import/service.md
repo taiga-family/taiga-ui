@@ -1,5 +1,5 @@
 ```ts
-import {TUI_PROMPT} from './prompt.component';
+import {TUI_PROMPT} from '@taiga-ui/kit';
 
 // ...
 export class MyComponent {
