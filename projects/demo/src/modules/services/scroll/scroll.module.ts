@@ -2,7 +2,11 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {
+    TuiAddonDocModule,
+    tuiGenerateRoutes,
+    TuiTextCodeModule,
+} from '@taiga-ui/addon-doc';
 import {TuiElementModule, TuiScrollService} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiScrollbarModule} from '@taiga-ui/core';
 import {TuiInputCountModule} from '@taiga-ui/kit';
@@ -20,6 +24,7 @@ import {ExampleTuiScrollComponent} from './scroll.component';
         TuiScrollbarModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiScrollComponent)),
+        TuiTextCodeModule,
     ],
     declarations: [ExampleTuiScrollComponent, TuiScrollExample1],
     exports: [ExampleTuiScrollComponent],

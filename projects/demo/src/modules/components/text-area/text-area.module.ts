@@ -2,7 +2,11 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {
+    TuiAddonDocModule,
+    tuiGenerateRoutes,
+    TuiTextCodeModule,
+} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
     TuiErrorModule,
@@ -47,6 +51,7 @@ import {ExampleTuiTextAreaComponent} from './text-area.component';
         TuiErrorModule,
         TuiFieldErrorPipeModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTextAreaComponent)),
+        TuiTextCodeModule,
     ],
     declarations: [
         ExampleTuiTextAreaComponent,

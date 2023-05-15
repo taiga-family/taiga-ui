@@ -2,7 +2,11 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {
+    TuiAddonDocModule,
+    tuiGenerateRoutes,
+    TuiTextCodeModule,
+} from '@taiga-ui/addon-doc';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiInputCountModule} from '@taiga-ui/kit';
 
@@ -16,6 +20,7 @@ import {ExampleTuiRequiredSetterDemoComponent} from './required-setter-demo.comp
         TuiInputCountModule,
         TuiButtonModule,
         TuiAddonDocModule,
+        TuiTextCodeModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiRequiredSetterComponent)),
     ],
     declarations: [

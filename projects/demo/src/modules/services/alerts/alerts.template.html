@@ -126,7 +126,8 @@
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="data"
             >
-                Input data of notification, type &lt;I&gt;
+                Input data of notification, type:
+                <code tuiText="<I>"></code>
             </ng-template>
             <ng-template
                 documentationPropertyName="autoClose"
@@ -198,7 +199,7 @@
                     You can also customize notification logic with a component. Use
                     <code>POLYMORPHEUS_CONTEXT</code>
                     into the component to get context input data and to output results. It has the following interface:
-                    <code>TuiDialog&lt;TuiAlertOptions&lt;I&gt;, O&gt;</code>
+                    <code tuiText="TuiDialog<TuiAlertOptions<I>, O>"></code>
                     , where
                     <code>O</code>
                     is output data type and

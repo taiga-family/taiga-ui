@@ -3,7 +3,11 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {
+    TuiAddonDocModule,
+    tuiGenerateRoutes,
+    TuiTextCodeModule,
+} from '@taiga-ui/addon-doc';
 import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';
 import {TuiAutoFocusModule, TuiPreventDefaultModule} from '@taiga-ui/cdk';
 import {
@@ -67,6 +71,7 @@ import {PayExampleModalModule} from './examples/9/pay-modal/pay-modal.module';
         TuiInputNumberModule,
         PayExampleModalModule,
         TuiTextfieldControllerModule,
+        TuiTextCodeModule,
     ],
     declarations: [
         ExampleTuiDialogComponent,
