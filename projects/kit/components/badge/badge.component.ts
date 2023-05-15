@@ -14,7 +14,7 @@ import {
     TuiSizeXS,
 } from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusPrimitive} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -29,7 +29,7 @@ import {Observable} from 'rxjs';
 })
 export class TuiBadgeComponent {
     @Input()
-    value: PolymorpheusContent;
+    value: PolymorpheusPrimitive;
 
     @Input()
     @HostBinding('attr.data-size')
