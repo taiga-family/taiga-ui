@@ -1254,7 +1254,7 @@ export const pages: TuiDocPages = [
             {
                 section: `Tools`,
                 title: `HoveredChange`,
-                keywords: `DOM, директива, появление, наличие, присутствие`,
+                keywords: `DOM, директива, наведение, курсор, pointer, mouse`,
                 route: `/directives/hovered-change`,
             },
             {
