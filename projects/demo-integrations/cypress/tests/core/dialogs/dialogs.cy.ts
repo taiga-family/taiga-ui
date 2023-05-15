@@ -173,4 +173,17 @@ describe(`Dialogs`, () => {
             cy.get(`tui-dialog`).should(`be.visible`);
         });
     });
+
+    describe(`confirmation`, () => {
+        it(`buttons wrap`, () => {
+            cy.tuiVisit(
+                `components/prompt/API?no=Very%20Long%20long%20text&yes=Long%20long%20text`,
+            );
+
+            cy.get(`tui-doc-page .t-content button`).first().click();
+            cy.get(`tui-dialog`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`1-confirmation`);
+        });
+    });
 });
