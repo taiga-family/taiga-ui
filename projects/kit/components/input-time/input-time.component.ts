@@ -10,6 +10,8 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {MaskitoOptions} from '@maskito/core';
+import {maskitoTimeOptionsGenerator} from '@maskito/kit';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
@@ -38,15 +40,10 @@ import {
     TuiSizeL,
     TuiSizeS,
     TuiTextfieldSizeDirective,
-    TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
-import {
-    tuiCreateAutoCorrectedTimePipe,
-    tuiCreateTimeMask,
-} from '@taiga-ui/kit/utils/mask';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -148,7 +145,7 @@ export class TuiInputTimeComponent
         return this.textfieldSize.size;
     }
 
-    get textMaskOptions(): TuiTextMaskOptions {
+    get maskOptions(): MaskitoOptions {
         return this.calculateMask(this.mode);
     }
 
@@ -280,12 +277,18 @@ export class TuiInputTimeComponent
     }
 
     @tuiPure
-    private calculateMask(mode: TuiTimeMode): TuiTextMaskOptions {
-        return {
-            mask: tuiCreateTimeMask(mode, this.options.maxValues),
-            pipe: tuiCreateAutoCorrectedTimePipe(mode, this.options.maxValues),
-            guide: false,
-        };
+    private calculateMask(mode: TuiTimeMode): MaskitoOptions {
+        const {HH, MM, SS, MS} = this.options.maxValues;
+
+        return maskitoTimeOptionsGenerator({
+            mode,
+            timeSegmentMaxValues: {
+                hours: HH,
+                minutes: MM,
+                seconds: SS,
+                milliseconds: MS,
+            },
+        });
     }
 
     @tuiPure
