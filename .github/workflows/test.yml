@@ -62,52 +62,52 @@ jobs:
       - name: Display structure of coverage files
         run: tree -L 2 ./coverage -P 'lcov.info'
 
-      - uses: codecov/codecov-action@v3.1.3
+      - uses: codecov/codecov-action@v3.1.4
         with:
           directory: ./coverage/kit/
           flags: summary,kit
           name: kit
-      - uses: codecov/codecov-action@v3.1.3
+      - uses: codecov/codecov-action@v3.1.4
         with:
           directory: ./coverage/core/
           flags: summary,core
           name: core
-      - uses: codecov/codecov-action@v3.1.3
+      - uses: codecov/codecov-action@v3.1.4
         with:
           directory: ./coverage/cdk/
           flags: summary,cdk
           name: cdk
-      - uses: codecov/codecov-action@v3.1.3
+      - uses: codecov/codecov-action@v3.1.4
         with:
           directory: ./coverage/addon-tablebars/
           flags: summary,addon-tablebars
           name: addon-tablebars
-      - uses: codecov/codecov-action@v3.1.3
+      - uses: codecov/codecov-action@v3.1.4
         with:
           directory: ./coverage/addon-table/
           flags: summary,addon-table
           name: addon-table
-      - uses: codecov/codecov-action@v3.1.3
+      - uses: codecov/codecov-action@v3.1.4
         with:
           directory: ./coverage/addon-mobile/
           flags: summary,addon-mobile
           name: addon-mobile
-      - uses: codecov/codecov-action@v3.1.3
+      - uses: codecov/codecov-action@v3.1.4
         with:
           directory: ./coverage/addon-editor/
           flags: summary,addon-editor
           name: addon-editor
-      - uses: codecov/codecov-action@v3.1.3
+      - uses: codecov/codecov-action@v3.1.4
         with:
           directory: ./coverage/addon-doc/
           flags: summary,addon-doc
           name: addon-doc
-      - uses: codecov/codecov-action@v3.1.3
+      - uses: codecov/codecov-action@v3.1.4
         with:
           directory: ./coverage/addon-commerce/
           flags: summary,addon-charts
           name: addon-commerce
-      - uses: codecov/codecov-action@v3.1.3
+      - uses: codecov/codecov-action@v3.1.4
         with:
           directory: ./coverage/addon-charts/
           flags: summary,addon-charts
