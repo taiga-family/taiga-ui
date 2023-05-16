@@ -1,8 +1,15 @@
-import {FactoryProvider, inject, InjectionToken, Optional, SkipSelf} from '@angular/core';
-import {SafeHtml} from '@angular/platform-browser';
+import {
+    FactoryProvider,
+    inject,
+    InjectionToken,
+    Optional,
+    Provider,
+    SkipSelf,
+} from '@angular/core';
 import {
     TuiHandler,
     tuiIsString,
+    TuiSafeHtml,
     TuiStringHandler,
     tuiSvgLinearGradientProcessor,
 } from '@taiga-ui/cdk';
@@ -19,8 +26,8 @@ import {TUI_DEPRECATED_ICONS} from './deprecated-icons';
 export interface TuiSvgOptions {
     readonly path: TuiStringHandler<string>;
     readonly deprecated: TuiStringHandler<string>;
-    readonly srcProcessor: TuiHandler<SafeHtml | string, SafeHtml | string>;
-    readonly contentProcessor: TuiHandler<SafeHtml | string, SafeHtml | string>;
+    readonly srcProcessor: TuiHandler<TuiSafeHtml, TuiSafeHtml>;
+    readonly contentProcessor: TuiHandler<TuiSafeHtml, TuiSafeHtml>;
 }
 
 export const TUI_SVG_DEFAULT_OPTIONS: TuiSvgOptions = {
@@ -48,6 +55,20 @@ export const TUI_SVG_OPTIONS = new InjectionToken<TuiSvgOptions>(`[TUI_SVG_OPTIO
         contentProcessor: inject(TUI_SVG_CONTENT_PROCESSOR),
     }),
 });
+
+export const TUI_SVG_SRC_INTERCEPTORS = new InjectionToken<
+    TuiHandler<TuiSafeHtml, TuiSafeHtml>
+>(`[TUI_SVG_SRC_INTERCEPTORS]`);
+
+export function tuiSvgSrcInterceptors(
+    interceptor: TuiHandler<TuiSafeHtml, TuiSafeHtml>,
+): Provider {
+    return {
+        provide: TUI_SVG_SRC_INTERCEPTORS,
+        useValue: interceptor,
+        multi: true,
+    };
+}
 
 export const tuiSvgOptionsProvider: (
     options: Partial<Omit<TuiSvgOptions, 'path'>> & {

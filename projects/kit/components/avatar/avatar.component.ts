@@ -5,8 +5,14 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {SafeHtml, SafeResourceUrl} from '@angular/platform-browser';
-import {tuiDefaultProp, tuiIsString, tuiPure, tuiRequiredSetter} from '@taiga-ui/cdk';
+import {SafeResourceUrl} from '@angular/platform-browser';
+import {
+    tuiDefaultProp,
+    tuiIsString,
+    tuiPure,
+    tuiRequiredSetter,
+    TuiSafeHtml,
+} from '@taiga-ui/cdk';
 import {tuiSizeBigger, TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 import {tuiStringHashToHsl} from '@taiga-ui/kit/utils/format';
 
@@ -37,7 +43,7 @@ export class TuiAvatarComponent {
 
     @Input()
     @tuiDefaultProp()
-    fallback: SafeHtml | string | null = null;
+    fallback: TuiSafeHtml | null = null;
 
     @Input()
     @tuiDefaultProp()

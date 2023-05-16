@@ -1,4 +1,4 @@
-import {SafeHtml} from '@angular/platform-browser';
+import {TuiSafeHtml} from '@taiga-ui/cdk/interfaces';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**
@@ -16,9 +16,9 @@ import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
  *
  */
 export function tuiSvgLinearGradientProcessor(
-    svg: SafeHtml | string,
+    svg: TuiSafeHtml,
     salt?: number | string,
-): SafeHtml | string {
+): TuiSafeHtml {
     if (tuiIsString(svg)) {
         const uniqueIds = extractLinearGradientIdsFromSvg(svg);
 
