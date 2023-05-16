@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
+    TuiComboBoxModule,
     TuiDataListWrapperModule,
     TuiFilterByInputPipeModule,
     TuiInputModule,
@@ -22,6 +23,7 @@ import {TuiDataListWrapperExample3} from './examples/3';
         ReactiveFormsModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiDataListWrapperComponent)),
         TuiAddonDocModule,
+        TuiComboBoxModule,
         TuiDataListWrapperModule,
         TuiFilterByInputPipeModule,
         TuiInputModule,
