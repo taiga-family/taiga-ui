@@ -32,7 +32,7 @@ All notable changes to this project will be documented in this file. See
 - **kit:** `InputYear` uses `Maskito` instead of legacy `text-mask`
   ([#4382](https://github.com/tinkoff/taiga-ui/issues/4382))
   ([a3183c8](https://github.com/tinkoff/taiga-ui/commit/a3183c84d2567d5d0f31dddec332ba363023618e))
-- **kit:** set dark text color for autocolored tags regardless of theme
+- **kit:** set dark text color for auto colored tags regardless of theme
   ([#4384](https://github.com/tinkoff/taiga-ui/issues/4384))
   ([3fc5ef5](https://github.com/tinkoff/taiga-ui/commit/3fc5ef5ef5c952a4cac4658a97635f78448451fd))
 
