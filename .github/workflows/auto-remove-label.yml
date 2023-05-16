@@ -1,5 +1,4 @@
 name: 🤖 Auto remove label on closed issue
-
 on:
   issues:
     types: [closed]
@@ -8,7 +7,7 @@ jobs:
   remove_label:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3.5.2
       - uses: actions-ecosystem/action-remove-labels@v1.3.0
         with:
           labels: 'state: need triage'

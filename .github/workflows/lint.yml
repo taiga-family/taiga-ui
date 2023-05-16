@@ -1,18 +1,8 @@
 name: ⚙️ Lint
-
 on:
   pull_request:
   push:
-    branches:
-      - main
-      - '!release/**'
-
-env:
-  NX_BRANCH: ${{ github.event.number }}
-  NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
-  RUN_AUTOFIX:
-    ${{ github.event.pull_request.head.repo.full_name == github.repository && github.ref != 'refs/heads/main' &&
-    (github.actor != 'dependabot[bot]' || github.actor != 'dependabot-preview[bot]') }}
+    branches: [main]
 
 jobs:
   typecheck:
@@ -29,7 +19,7 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.2
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
       - name: Spell checks code
@@ -39,63 +29,72 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch from origin repo
-        if: ${{ env.RUN_AUTOFIX == 'true' }}
-        uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3.5.2
+      - name: Setup global variables
+        uses: ./.github/actions/variables
+
+      - uses: actions/checkout@v3.5.2
+        if: env.SUPPORT_AUTO_PUSH == 'true'
         with:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TINKOFF_BOT_PAT }}
-      - name: Fetch from forked repo
-        if: ${{ env.RUN_AUTOFIX == 'false' }}
-        uses: actions/checkout@v3.5.2
+
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
+
       - name: Run prettier
-        run: npm run prettier ${{ env.RUN_AUTOFIX == 'true' && '-- --write' || '-- --check' }}
+        run: npm run prettier ${{ env.SUPPORT_AUTO_PUSH == 'true' && '-- --write' || '-- --check' }}
+
       - name: Apply changes after linting
-        if: ${{ env.RUN_AUTOFIX == 'true' }}
+        if: env.SUPPORT_AUTO_PUSH == 'true'
         uses: ./.github/actions/auto-push
 
   stylelint:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch from origin repo
-        if: ${{ env.RUN_AUTOFIX == 'true' }}
-        uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3.5.2
+      - name: Setup global variables
+        uses: ./.github/actions/variables
+
+      - uses: actions/checkout@v3.5.2
+        if: env.SUPPORT_AUTO_PUSH == 'true'
         with:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TINKOFF_BOT_PAT }}
-      - name: Fetch from forked repo
-        if: ${{ env.RUN_AUTOFIX == 'false' }}
-        uses: actions/checkout@v3.5.2
+
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
+
       - name: Run stylelint
-        run: npm run stylelint ${{ env.RUN_AUTOFIX == 'true' && '-- --fix' || '' }}
+        run: npm run stylelint ${{ env.SUPPORT_AUTO_PUSH == 'true' && '-- --fix' || '' }}
+
       - name: Apply changes after linting
-        if: ${{ env.RUN_AUTOFIX == 'true' }}
+        if: env.SUPPORT_AUTO_PUSH == 'true'
         uses: ./.github/actions/auto-push
 
   eslint:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch from origin repo
-        if: ${{ env.RUN_AUTOFIX == 'true' }}
-        uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3.5.2
+      - name: Setup global variables
+        uses: ./.github/actions/variables
+
+      - uses: actions/checkout@v3.5.2
+        if: env.SUPPORT_AUTO_PUSH == 'true'
         with:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TINKOFF_BOT_PAT }}
-      - name: Fetch from forked repo
-        if: ${{ env.RUN_AUTOFIX == 'false' }}
-        uses: actions/checkout@v3.5.2
+
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
+
       - name: Run eslint
         run: npm run lint ${{ env.RUN_AUTOFIX == 'true' && '-- --fix' || '' }}
+
       - name: Apply changes after linting
-        if: ${{ env.RUN_AUTOFIX == 'true' }}
+        if: env.SUPPORT_AUTO_PUSH == 'true'
         uses: ./.github/actions/auto-push
 
 concurrency:

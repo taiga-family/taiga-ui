@@ -1,5 +1,4 @@
 name: ⚠️ Create release
-
 on:
   workflow_dispatch:
     inputs:

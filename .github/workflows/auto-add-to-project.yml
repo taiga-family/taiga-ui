@@ -1,5 +1,4 @@
 name: 🤖 Auto move new issues into Triage
-
 on:
   issues:
     types: [opened]

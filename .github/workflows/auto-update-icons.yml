@@ -1,38 +1,31 @@
 name: 🤖 Auto update bundled icons
-
 on:
   pull_request:
   workflow_dispatch:
 
-env:
-  NX_BRANCH: ${{ github.event.number }}
-  NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
-  SUPPORT_AUTO_UPDATE:
-    ${{ github.event.pull_request.head.repo.full_name == github.repository && github.ref != 'refs/heads/main' &&
-    (github.actor != 'dependabot[bot]' || github.actor != 'dependabot-preview[bot]') }}
-
 jobs:
   bundling:
-    runs-on: ubuntu-latest
     if: ${{ !contains(github.head_ref , 'release/') }}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.2
-        if: ${{ env.SUPPORT_AUTO_UPDATE != 'true' }}
+      - name: Setup global variables
+        uses: ./.github/actions/variables
 
       - uses: actions/checkout@v3.5.2
-        if: ${{ env.SUPPORT_AUTO_UPDATE == 'true' }}
+        if: env.SUPPORT_AUTO_PUSH == 'true'
         with:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TINKOFF_BOT_PAT }}
 
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
-
       - run: |
           npx nx prebuild icons
           npx nx build icons
 
-      - uses: ./.github/actions/auto-push
-        if: ${{ env.SUPPORT_AUTO_UPDATE == 'true' }}
+      - name: Auto update bundled icons
+        if: env.SUPPORT_AUTO_PUSH == 'true'
+        uses: ./.github/actions/auto-push
         with:
           message: icons have changed

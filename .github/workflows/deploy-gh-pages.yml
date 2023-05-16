@@ -1,5 +1,4 @@
 name: 🚀 Deploy to Github Pages (taiga-ui.dev)
-
 on:
   workflow_run:
     workflows: ['🚀 Snapshots']
@@ -12,16 +11,15 @@ on:
         required: false
         description: --dry-run
 
-env:
-  REPO: https://github.com/Tinkoff/taiga-ui.git
-  DIST: dist/demo/browser
-
 jobs:
   deploy-gh-pages:
     if: ${{ !contains(github.event.workflow_run.head_branch, 'release/') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.2
+      - name: Setup global variables
+        uses: ./.github/actions/variables
+
       - name: Prepare demo before deploy from snapshots
         run: |
           git clone --depth 1 --branch snapshots/demo/v3.x ${{ env.REPO }} ${{ env.DIST }}

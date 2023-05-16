@@ -1,20 +1,18 @@
 name: ⚠️ Publish Taiga UI packages
-
 on:
   push:
     branches: ['release/*']
 
 env:
-  NX_BRANCH: ${{ github.event.number }}
-  NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-  FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.2
+      - name: Setup global variables
+        uses: ./.github/actions/variables
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
@@ -24,7 +22,7 @@ jobs:
       - name: Publish libraries
         run: npm run run-many:publish:libs
 
-      - name: Get version
+      - name: Get new version
         id: info
         run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 

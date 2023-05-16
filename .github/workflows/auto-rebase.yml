@@ -1,5 +1,4 @@
 name: 🤖 Auto rebase from main branch
-
 on:
   push:
     branches: [main]

@@ -1,10 +1,5 @@
 name: 🚀 Deploy / preview
-
 on: pull_request
-
-env:
-  IS_FORK: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
-  IS_DEPENDABOT: ${{ github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' }}
 
 jobs:
   build_and_preview:
@@ -13,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.2
+      - name: Setup global variables
+        uses: ./.github/actions/variables
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
@@ -23,7 +20,7 @@ jobs:
 
       - name: Deploy preview
         uses: FirebaseExtended/action-hosting-deploy@v0
-        if: ${{ env.IS_FORK == 'false' && env.IS_DEPENDABOT == 'false' }}
+        if: env.IS_OWNER_MODE == 'true'
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TAIGA_UI }}
