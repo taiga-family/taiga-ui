@@ -1565,6 +1565,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `directives/hovered-change`,
+        loadChildren: async () =>
+            (await import(`../directives/hovered-change/hovered-change.module`))
+                .ExampleTuiHoveredChangeModule,
+        data: {
+            title: `HoveredChange`,
+        },
+    },
+    {
         path: `components/reorder`,
         loadChildren: async () =>
             (await import(`../tables/reorder/reorder.module`)).ExampleTuiReorderModule,

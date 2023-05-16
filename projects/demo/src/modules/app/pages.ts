@@ -1259,6 +1259,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: `Tools`,
+                title: `HoveredChange`,
+                keywords: `DOM, директива, наведение, курсор, pointer, mouse`,
+                route: `/directives/hovered-change`,
+            },
+            {
+                section: `Tools`,
                 title: `Resizer`,
                 keywords: `scale, drag, размер, ресайз`,
                 route: `/directives/resizer`,
