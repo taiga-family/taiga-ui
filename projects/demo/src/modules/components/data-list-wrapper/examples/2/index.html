@@ -1,9 +1,12 @@
-<tui-input [formControl]="control">
+<tui-combo-box
+    [formControl]="control"
+    [stringify]="stringify"
+>
     Account
 
     <tui-data-list-wrapper
         *tuiDataList
-        [items]="items | tuiFilterByInputWith : stringify"
+        [items]="items | tuiFilterByInputWith: stringify"
         [itemContent]="stringify | tuiStringifyContent"
     ></tui-data-list-wrapper>
-</tui-input>
+</tui-combo-box>
