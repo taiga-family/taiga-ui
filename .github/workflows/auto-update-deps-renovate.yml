@@ -1,5 +1,4 @@
 name: 🤖 Auto update dependencies by Renovate
-
 on:
   workflow_dispatch:
   schedule:

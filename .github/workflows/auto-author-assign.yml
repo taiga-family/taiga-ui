@@ -1,19 +1,19 @@
 name: 🤖 Auto assign
-
 on:
   pull_request:
     types: [opened, reopened]
-
-env:
-  IS_FORK: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
-  IS_DEPENDABOT: ${{ github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' }}
 
 jobs:
   assign-author:
     name: PR author as an assignee
     runs-on: ubuntu-latest
     steps:
-      - uses: toshimaru/auto-author-assign@v1.6.2
-        if: ${{ env.IS_FORK == 'false' && env.IS_DEPENDABOT == 'false' }}
+      - uses: actions/checkout@v3.5.2
+      - name: Setup global variables
+        uses: ./.github/actions/variables
+
+      - name: Auto assign
+        if: env.IS_OWNER_MODE == 'true'
+        uses: toshimaru/auto-author-assign@v1.6.2
         with:
           repo-token: ${{ secrets.TINKOFF_BOT_PAT }}

@@ -1,13 +1,8 @@
 name: ⚙️ Build
-
 on:
   pull_request:
   push:
     branches: [main]
-
-env:
-  NX_BRANCH: ${{ github.event.number }}
-  NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
 
 jobs:
   build:
@@ -16,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.2
+      - name: Setup global variables
+        uses: ./.github/actions/variables
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 

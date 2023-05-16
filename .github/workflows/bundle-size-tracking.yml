@@ -1,5 +1,4 @@
 name: ⚙️ Bundle size
-
 on:
   push:
     branches: [main]
@@ -12,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.2
+      - name: Setup global variables
+        uses: ./.github/actions/variables
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
@@ -21,4 +22,4 @@ jobs:
         continue-on-error: true
         run: npx bundlemon
         env:
-          CI_COMMIT_SHA: ${{github.event.pull_request.head.sha || github.sha}}
+          CI_COMMIT_SHA: ${{ env.CI_COMMIT_SHA }}

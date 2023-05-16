@@ -1,5 +1,4 @@
 name: ⚙️ Validate release tag
-
 on:
   push:
     branches: [main, 'release/*']
