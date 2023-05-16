@@ -5,12 +5,15 @@
     display: block;
     font: var(--tui-font-text-m);
     border-radius: var(--tui-radius-m);
+    max-height: inherit;
+    min-height: 10rem;
+    box-sizing: border-box;
 }
 
 .t-wrapper {
     display: flex;
     max-height: inherit;
-    min-height: 10rem;
+    min-height: inherit;
     cursor: text;
     overflow: hidden;
     flex-direction: column;
@@ -49,8 +52,8 @@
 
 .t-scrollbar {
     display: flex;
-    max-height: inherit;
     border-top: 1.625rem solid transparent;
     border-bottom: 1px solid transparent;
     box-sizing: border-box;
+    flex: 1;
 }
