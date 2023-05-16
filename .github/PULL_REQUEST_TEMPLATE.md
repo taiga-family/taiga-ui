@@ -13,8 +13,3 @@ What kind of change does this PR introduce?
 Closes # <!-- link to a relevant issue. -->
 
 ## What is the new behavior?
-
-## Does this PR introduce a breaking change?
-
-- [ ] Yes
-- [ ] No
