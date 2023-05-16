@@ -37,7 +37,7 @@
         *ngIf="editorLoaded"
         tuiEditorPortal
         class="t-scrollbar"
-        (mousedown.prevent)="nativeFocusableElement?.focus()"
+        (mousedown)="focus($event)"
     >
         <div
             tuiDropdownLimitWidth="auto"
