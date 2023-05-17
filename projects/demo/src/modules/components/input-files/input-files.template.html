@@ -81,7 +81,11 @@
                     [attr.capture]="capture"
                 />
             </tui-input-files>
-            <tui-files class="tui-space_top-2">
+            <tui-files
+                class="tui-space_top-2"
+                [max]="maxFilesCount"
+                [(expanded)]="expanded"
+            >
                 <ng-container *ngIf="multiple; else single">
                     <ng-container *ngFor="let file of control.valueChanges | async">
                         <tui-file
@@ -193,6 +197,25 @@
                 documentationPropertyType="TuiFileLike"
             >
                 Emits file that was rejected.
+            </ng-template>
+        </tui-doc-documentation>
+
+        <tui-doc-documentation heading="TuiFiles">
+            <ng-template
+                documentationPropertyName="max"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="maxFilesCount"
+            >
+                Maximum number of displayed files
+            </ng-template>
+            <ng-template
+                documentationPropertyName="expanded"
+                documentationPropertyMode="input-output"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="expanded"
+            >
+                Expanded/collapsed state for multiple files that are limited by the max property
             </ng-template>
         </tui-doc-documentation>
 

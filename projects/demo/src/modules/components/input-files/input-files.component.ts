@@ -60,6 +60,8 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
     multiple = true;
     showSize = true;
     showDelete = true;
+    expanded = false;
+    maxFilesCount = 3;
     accept = '';
     acceptVariants = ['image/*', 'application/pdf', 'image/*,application/pdf'];
     capture: TuiInputFilesOptions['capture'] = null;
