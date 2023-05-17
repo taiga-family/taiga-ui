@@ -2,8 +2,10 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
+    EventEmitter,
     Inject,
     Input,
+    Output,
     QueryList,
     TemplateRef,
     ViewEncapsulation,
@@ -27,7 +29,11 @@ export class TuiFilesComponent {
     @tuiDefaultProp()
     max = 0;
 
-    hidden = true;
+    @Input()
+    expanded = false;
+
+    @Output()
+    readonly expandedChange = new EventEmitter<boolean>();
 
     constructor(
         @Inject(TUI_HIDE_TEXT) readonly hideText$: Observable<string>,
@@ -39,6 +45,7 @@ export class TuiFilesComponent {
     }
 
     toggle(): void {
-        this.hidden = !this.hidden;
+        this.expanded = !this.expanded;
+        this.expandedChange.emit(this.expanded);
     }
 }
