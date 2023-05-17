@@ -6,6 +6,7 @@ What kind of change does this PR introduce?
 - [ ] Feature
 - [ ] Refactoring
 - [ ] Build or CI related changes
+- [ ] Tests related changes
 - [ ] Documentation content changes
 
 ## What is the current behavior?
