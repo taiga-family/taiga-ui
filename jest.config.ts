@@ -6,7 +6,7 @@ process.env.TZ = `Europe/Moscow`;
 process.env.FORCE_COLOR = `true`;
 process.env.TS_JEST_DISABLE_VER_CHECKER = `true`;
 
-const {compilerOptions} = require(resolve(`./tsconfig.json`));
+const {compilerOptions} = require(resolve(__dirname, `tsconfig.json`));
 const maxParallel = require(`os`).cpus().length / 2;
 
 module.exports = {
@@ -26,7 +26,7 @@ module.exports = {
      */
     globals: {
         'ts-jest': {
-            tsconfig: resolve(`./tsconfig.spec.json`),
+            tsconfig: resolve(__dirname, `tsconfig.spec.json`),
             isolatedModules: true,
         },
     },
