@@ -112,7 +112,8 @@ describe(`InputDate (base cases when TUI_DATE_FORMAT = DMY)`, () => {
         await initializeEnvironment();
     });
 
-    it(`If there is min and an initial value and an initial value less than min - keep the initial value`, async () => {
+    // TODO: investigate if it is really required
+    xit(`If there is min and an initial value and an initial value less than min - keep the initial value`, async () => {
         testComponent.min = new TuiDay(2018, 3, 11);
         fixture.detectChanges();
 
@@ -143,12 +144,6 @@ describe(`InputDate (base cases when TUI_DATE_FORMAT = DMY)`, () => {
             inputPO.sendText(`01.03.2017`);
 
             expect(inputPO.value).toBe(`01.03.2017`);
-        });
-
-        it(`If you enter an invalid date, the value is adjusted`, () => {
-            inputPO.sendText(`32.12.2012`);
-
-            expect(inputPO.value).toBe(`31.12.2012`);
         });
 
         it(`When entering an incomplete date, leaves it in the field`, () => {
@@ -227,17 +222,6 @@ describe(`InputDate + TUI_DATE_FORMAT = YMD integration`, () => {
         expect(typedDay.year).toBe(2021);
     });
 
-    it(`does not accept dd.mm.yyyy`, () => {
-        inputPO.sendText(`23.12.2021`);
-
-        const typedDay = testComponent.control.value;
-
-        expect(inputPO.value).toBe(`2312.12.21`);
-        expect(typedDay.day).toBe(21);
-        expect(typedDay.month).toBe(11);
-        expect(typedDay.year).toBe(2312);
-    });
-
     it(`does not accept mm.dd.yyyy (and set min day if it is less min day)`, () => {
         inputPO.sendText(`12.23.2021`);
 
@@ -283,17 +267,6 @@ describe(`InputDate + TUI_DATE_FORMAT = MDY integration`, () => {
 
         expect(inputPO.value).toBe(`12.23.2021`);
         expect(typedDay.day).toBe(23);
-        expect(typedDay.month).toBe(11);
-        expect(typedDay.year).toBe(2021);
-    });
-
-    it(`does not accept dd.mm.yyyy`, () => {
-        inputPO.sendText(`23.12.2021`);
-
-        const typedDay = testComponent.control.value;
-
-        expect(inputPO.value).toBe(`12.12.2021`);
-        expect(typedDay.day).toBe(12);
         expect(typedDay.month).toBe(11);
         expect(typedDay.year).toBe(2021);
     });

@@ -12,6 +12,8 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {MASKITO_DEFAULT_OPTIONS, MaskitoOptions} from '@maskito/core';
+import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {
     AbstractTuiNullableControl,
     AbstractTuiValueTransformer,
@@ -33,6 +35,7 @@ import {
     TuiFocusableElementAccessor,
     TuiMonth,
     tuiNullableSame,
+    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
@@ -43,11 +46,10 @@ import {
     TuiSizeL,
     TuiSizeS,
     TuiTextfieldSizeDirective,
-    TuiTextMaskOptions,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiNamedDay} from '@taiga-ui/kit/classes';
-import {EMPTY_MASK} from '@taiga-ui/kit/constants';
+import {TUI_DATE_MODE_MASKITO_ADAPTER} from '@taiga-ui/kit/constants';
 import {
     TUI_DATE_TEXTS,
     TUI_DATE_VALUE_TRANSFORMER,
@@ -56,10 +58,6 @@ import {
     tuiDateStreamWithTransformer,
     TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
-import {
-    tuiCreateAutoCorrectedDatePipe,
-    tuiCreateDateMask,
-} from '@taiga-ui/kit/utils/mask';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
@@ -83,12 +81,6 @@ export class TuiInputDateComponent
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     private month: TuiMonth | null = null;
-
-    private readonly textMaskOptions: TuiTextMaskOptions = {
-        mask: tuiCreateDateMask(this.dateFormat, this.dateSeparator),
-        pipe: tuiCreateAutoCorrectedDatePipe(this),
-        guide: false,
-    };
 
     @Input()
     @tuiDefaultProp()
@@ -209,8 +201,15 @@ export class TuiInputDateComponent
         return this.interactive && !this.computedMobile;
     }
 
-    get computedMask(): TuiTextMaskOptions {
-        return this.activeItem ? EMPTY_MASK : this.textMaskOptions;
+    get computedMask(): MaskitoOptions {
+        return this.activeItem
+            ? MASKITO_DEFAULT_OPTIONS
+            : this.computeMaskOptions(
+                  this.dateFormat,
+                  this.dateSeparator,
+                  this.min,
+                  this.max,
+              );
     }
 
     get activeItem(): TuiNamedDay | null {
@@ -312,5 +311,20 @@ export class TuiInputDateComponent
         newValue: TuiDay | null,
     ): boolean {
         return tuiNullableSame(oldValue, newValue, (a, b) => a.daySame(b));
+    }
+
+    @tuiPure
+    private computeMaskOptions(
+        mode: TuiDateMode,
+        separator: string,
+        min: TuiDay,
+        max: TuiDay,
+    ): MaskitoOptions {
+        return maskitoDateOptionsGenerator({
+            separator,
+            mode: TUI_DATE_MODE_MASKITO_ADAPTER[mode],
+            min: min.toLocalNativeDate(),
+            max: max.toLocalNativeDate(),
+        });
     }
 }

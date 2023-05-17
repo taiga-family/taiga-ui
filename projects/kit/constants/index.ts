@@ -1,3 +1,4 @@
+export * from './date-mode-maskito-adapter';
 export * from './date-time-separator';
 export * from './empty-mask';
 export * from './group-class-names';

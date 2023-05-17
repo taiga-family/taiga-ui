@@ -1,4 +1,8 @@
 describe(`InputDate`, () => {
+    beforeEach(() => {
+        cy.viewport(400, 500);
+    });
+
     describe(`Examples`, () => {
         for (const size of [`s`, `m`, `l`]) {
             it(`correct filler display for size ${size.toUpperCase()}`, () => {
@@ -58,6 +62,40 @@ describe(`InputDate`, () => {
 
             getInput().click();
             matchImageSnapshot(`input-date-minimum-month`);
+        });
+
+        describe(`Invalid date cases`, () => {
+            it(`does not accept day >31`, () => {
+                cy.tuiVisit(`components/input-date/API`);
+
+                getInput()
+                    .type(`35`)
+                    .should(`have.value`, `3`)
+                    .should(`have.prop`, `selectionStart`, 1)
+                    .should(`have.prop`, `selectionEnd`, 1);
+            });
+
+            it(`does not accept month >12`, () => {
+                cy.tuiVisit(`components/input-date/API`);
+
+                getInput()
+                    .type(`1715`)
+                    .should(`have.value`, `17.1`)
+                    .should(`have.prop`, `selectionStart`, `17.1`.length)
+                    .should(`have.prop`, `selectionEnd`, `17.1`.length);
+            });
+
+            it(`Type 999999 => 09.09.9999`, () => {
+                cy.tuiVisit(`components/input-date/API`);
+
+                getInput()
+                    .type(`999999`)
+                    .should(`have.value`, `09.09.9999`)
+                    .should(`have.prop`, `selectionStart`, `09.09.9999`.length)
+                    .should(`have.prop`, `selectionEnd`, `09.09.9999`.length);
+
+                matchImageSnapshot(`input-date-type-999999`);
+            });
         });
 
         function getInput(): Cypress.Chainable<JQuery> {

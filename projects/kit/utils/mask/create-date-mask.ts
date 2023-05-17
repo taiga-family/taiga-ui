@@ -4,6 +4,9 @@ import {TUI_DIGIT_REGEXP, TuiTextMaskList} from '@taiga-ui/core';
 const TWO_DIGITS = new Array(2).fill(TUI_DIGIT_REGEXP);
 const FOUR_DIGITS = new Array(4).fill(TUI_DIGIT_REGEXP);
 
+/**
+ * @deprecated Use {@link https://tinkoff.github.io/maskito/kit/date Date} from {@link https://github.com/Tinkoff/maskito Maskito} instead
+ */
 export function tuiCreateDateMask(mode: TuiDateMode, separator: string): TuiTextMaskList {
     ngDevMode &&
         tuiAssert.assert(
