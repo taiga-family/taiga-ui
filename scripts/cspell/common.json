@@ -23,6 +23,7 @@
         "inet",
         "snapshotting",
         "screenshotting",
-        "callees"
+        "callees",
+        "subpage"
     ]
 }
