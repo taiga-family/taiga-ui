@@ -89,12 +89,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Foundations`,
-        title: `Icons`,
-        keywords: `img, layout, markup, icons, image, картинка, свг, svg, графика`,
-        route: `/icons`,
-    },
-    {
-        section: `Foundations`,
         title: `Styles`,
         subPages: [
             {
@@ -381,12 +375,6 @@ export const pages: TuiDocPages = [
                 route: `/directives/hint-pointer`,
             },
         ],
-    },
-    {
-        section: `Components`,
-        title: `MarkerIcon`,
-        keywords: `icon, картинка, свг, иконка, svg, графика`,
-        route: `/components/marker-icon`,
     },
     {
         section: `Components`,
@@ -764,12 +752,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Components`,
-        title: `Svg`,
-        keywords: `icon, картинка, свг, иконка, svg, графика`,
-        route: `/components/svg`,
-    },
-    {
-        section: `Components`,
         title: `Table`,
         subPages: [
             {
@@ -1040,6 +1022,37 @@ export const pages: TuiDocPages = [
             },
         ],
     },
+    // Icons
+    {
+        section: `Icons`,
+        title: `Overview`,
+        keywords: `icons, icon, free, pack, markup, icons, image, картинка, свг, svg, графика`,
+        route: `/icons/overview`,
+    },
+    {
+        section: `Icons`,
+        title: `Mapping`,
+        keywords: `icons, icon, mapping, mapped, mapper, material, svg, иконки, картинка, свг, иконка, графика`,
+        route: `/icons/mapping`,
+    },
+    {
+        section: `Icons`,
+        title: `Bundled`,
+        keywords: `icons, icon, bundled, svg, SvgService, define, иконки, картинка, свг, иконка, графика`,
+        route: `/icons/bundled`,
+    },
+    {
+        section: `Icons`,
+        title: `Customization`,
+        keywords: `icons, icon, svg, customization, стили, иконки, картинка, свг, иконка, графика`,
+        route: `/icons/customization`,
+    },
+    {
+        section: `Icons`,
+        title: `MarkerIcon`,
+        keywords: `icons, icon, marker, иконки, картинка, свг, иконка, графика`,
+        route: `/icons/marker-icon`,
+    },
     // Navigation
     {
         section: `Navigation`,
@@ -1125,12 +1138,6 @@ export const pages: TuiDocPages = [
         title: `Portals`,
         keywords: `portal, custom, theme, style`,
         route: `portals`,
-    },
-    {
-        section: `Customization`,
-        title: `Icon set`,
-        keywords: `icons, svg, theme, custom, style, sanitizer`,
-        route: `icon-set`,
     },
     // Tools
     {
@@ -1426,12 +1433,6 @@ export const pages: TuiDocPages = [
                 title: `ScrollService`,
                 keywords: `scroll, прокрутка, скролл`,
                 route: `/services/scroll-service`,
-            },
-            {
-                section: `Tools`,
-                title: `SvgService`,
-                keywords: `svg, иконки, картинка, свг, иконка, графика`,
-                route: `/services/svg-service`,
             },
             {
                 section: `Tools`,

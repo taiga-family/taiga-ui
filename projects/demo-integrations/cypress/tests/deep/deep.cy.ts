@@ -12,7 +12,7 @@ const DEEP_PATHS = [
     `components/calendar-month`,
     `components/filter`,
     `components/island`,
-    `components/marker-icon`,
+    `icons/marker-icon`,
     `navigation/stepper`,
     `components/toggle`,
 ];

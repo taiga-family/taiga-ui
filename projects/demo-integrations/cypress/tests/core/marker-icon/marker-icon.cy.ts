@@ -1,6 +1,6 @@
 describe(`tuiMarkerIcon`, () => {
     it(`link`, () => {
-        cy.tuiVisit(`components/marker-icon#modes`);
+        cy.tuiVisit(`icons/marker-icon#modes`);
 
         cy.get(`tui-doc-example[heading="modes"]`)
             .findByAutomationId(`tui-doc-example`)

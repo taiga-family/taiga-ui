@@ -1,0 +1,129 @@
+<tui-doc-page header="Icons">
+    <ng-template
+        *ngFor="let key of keys"
+        [pageTab]="key"
+    >
+        <tui-notification>
+            Open source theme for Taiga UI uses processed
+            <a
+                tuiLink
+                target="_blank"
+                rel="noreferrer"
+                href="https://feathericons.com/"
+            >
+                Feather Icons
+            </a>
+            as its icon pack with some custom made icons.
+        </tui-notification>
+        <p>
+            These icons can be used by name in
+            <a
+                tuiLink
+                routerLink="/icons/pack"
+            >
+                Svg
+            </a>
+            component and all Taiga UI component accepting icons as input. If you use unsafe icons or inline SVG with
+            linear gradient you need to provide
+            <a
+                tuiLink
+                routerLink="/icons/bundled"
+                fragment="sanitizer"
+            >
+                TUI_SANITIZER
+            </a>
+            token, which is responsible for removing malicious code from the svg.
+        </p>
+
+        <icons-group [icons]="icons[key]">
+            <div class="icons-customization">
+                <tui-checkbox-labeled
+                    size="m"
+                    class="t-checkbox"
+                    [(ngModel)]="transparent"
+                >
+                    Transparent
+                </tui-checkbox-labeled>
+
+                <tui-checkbox-labeled
+                    size="m"
+                    class="t-checkbox tui-space_right-3"
+                    [(ngModel)]="appearance"
+                >
+                    Icon appearance
+                </tui-checkbox-labeled>
+            </div>
+
+            <ng-template
+                iconGroup
+                let-icon="icon"
+                let-copyPath="copyPath"
+            >
+                <button
+                    tuiIconButton
+                    type="button"
+                    size="m"
+                    title="Copy"
+                    appearance="icon"
+                    class="icon"
+                    [attr.aria-label]="icon"
+                    [class.t-appearance]="appearance"
+                    [class.t-background]="transparent"
+                    [class.t-wrapper-icons_dark]="(mode$ | async) === 'onDark'"
+                    [icon]="icon"
+                    (click)="copyPath(icon)"
+                ></button>
+            </ng-template>
+        </icons-group>
+    </ng-template>
+
+    <ng-template pageTab="Component">
+        <div class="b-full-width">
+            <tui-svg [src]="icon"></tui-svg>
+        </div>
+
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="src"
+                documentationPropertyMode="input"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="iconVariants"
+                [(documentationPropertyValue)]="icon"
+            >
+                SVG image code, link to a file, link to a segment or icon name. If you use name or segment, set icon
+                size with CSS
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tui-icon-error"
+                documentationPropertyMode="output"
+                documentationPropertyType="CustomEvent<TuiIconError>"
+            >
+                CustomEvent of loading error
+            </ng-template>
+        </tui-doc-documentation>
+
+        <ol class="b-demo-steps tui-space_top-12">
+            <li>
+                <p>
+                    Import
+                    <code>TuiSvgModule</code>
+                    into a module where you want to use our component
+                </p>
+
+                <tui-doc-code
+                    filename="my.module.ts"
+                    [code]="exampleModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p>Add to the template:</p>
+
+                <tui-doc-code
+                    filename="my.component.html"
+                    [code]="exampleHtml"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

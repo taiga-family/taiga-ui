@@ -96,6 +96,7 @@
         "nbsp",
         "blockquotes",
         "datetime",
-        "nums"
+        "nums",
+        "viewbox"
     ]
 }

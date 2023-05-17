@@ -1,15 +1,10 @@
 describe(`Icons`, () => {
     it(`display icons that are easily customizable`, () => {
-        cy.tuiVisit(`icons/SVG_Tips`);
+        cy.tuiVisit(`icons/customization`);
 
         cy.get(`#base`)
             .tuiFindByExampleId()
             .tuiWaitBeforeScreenshot()
             .matchImageSnapshot(`customize-icons8`);
-
-        cy.get(`#inline`)
-            .tuiFindByExampleId()
-            .tuiWaitBeforeScreenshot()
-            .matchImageSnapshot(`inline-text`);
     });
 });

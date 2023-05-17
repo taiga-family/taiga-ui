@@ -1,0 +1,41 @@
+<h2>Named icon from ShadowDOM</h2>
+<tui-svg
+    src="customTuiIconMaestro"
+    class="icon"
+></tui-svg>
+
+<ng-container *ngIf="timeout$ | async">
+    <h2>Custom named icon</h2>
+    <tui-svg
+        src="customTuiIconMastercard"
+        class="icon"
+    ></tui-svg>
+
+    <h2>Named icon</h2>
+    <tui-svg
+        src="tuiIconThumbsUpLarge"
+        class="icon"
+    ></tui-svg>
+
+    <h2>Source code</h2>
+    <tui-svg [src]="tuiIconClockLarge"></tui-svg>
+
+    <br />
+
+    <tui-svg
+        class="source"
+        [src]="svg"
+    ></tui-svg>
+
+    <h2>External link</h2>
+    <tui-svg
+        src="https://ng-web-apis.github.io/dist/assets/images/web-api.svg"
+        class="external-icon"
+    ></tui-svg>
+
+    <h2>External segment link</h2>
+    <tui-svg
+        class="icon"
+        [src]="imageUrl"
+    ></tui-svg>
+</ng-container>

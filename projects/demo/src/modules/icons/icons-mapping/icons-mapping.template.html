@@ -1,0 +1,137 @@
+<tui-doc-page header="Icons mapping">
+    <p>
+        Taiga UI uses
+        <a
+            tuiLink
+            routerLink="/icons/pack"
+        >
+            <code>tui-svg</code>
+        </a>
+        component to display SVG icons. It can show icons by name, link or source code. Several icon names are hardcoded
+        into kit components.
+    </p>
+
+    <p>
+        <button
+            tuiButton
+            size="xs"
+            type="button"
+            (click)="toggle()"
+        >
+            Show predefined names
+        </button>
+    </p>
+
+    <tui-expand [expanded]="expanded">
+        <div class="wrapper">
+            <tui-doc-copy
+                *ngFor="let name of names"
+                [cdkCopyToClipboard]="name"
+            >
+                <code>{{ name }}</code>
+            </tui-doc-copy>
+        </div>
+    </tui-expand>
+
+    <p>
+        These predefined names are in
+        <code>tuiKitIcons</code>
+        (included
+        <code>tuiCoreIcons</code>
+        ) dictionary. It is not required to provide all those icons, you can gradually add the ones you need depending
+        on components you use. So if you want to switch to a different icon set you would need to provide own mapping,
+        for example Material icons:
+    </p>
+
+    <tui-doc-example
+        id="material"
+        heading="Material icons"
+        [content]="example1"
+    >
+        <tui-icons-mapping-example-1></tui-icons-mapping-example-1>
+    </tui-doc-example>
+
+    <tui-doc-example
+        id="processing"
+        heading="Reusable SVG"
+        [content]="example2"
+    >
+        <img
+            width="100%"
+            src="assets/images/mapping.jpg"
+            alt="info"
+            class="tui-space_bottom-4"
+        />
+
+        <br />
+
+        By default all icons from the
+        <a
+            tuiLink
+            routerLink="/icons/pack"
+        >
+            icons pack
+        </a>
+        are already reusable. But if you use your icons, as you can see in the previous example with the
+        <code>keyboard_arrow_right-24px.svg</code>
+        icon, then you need to prepare svg file especially. In order to prepare such svg files, you can use our
+        preprocessing script from
+        <code>@taiga-ui/icons/scripts</code>
+        . In
+        <code>tui-svg</code>
+        we use tag
+        <code>use</code>
+        . The
+        <code>use</code>
+        element takes nodes from within the SVG document, and duplicates them somewhere else. The effect is the same as
+        if the nodes were deeply cloned into a non-exposed DOM, then pasted where the use element is, much like cloned
+        template elements. This approach allows can help browser fast rendering with effectively reuse of cached svg.
+    </tui-doc-example>
+
+    <tui-doc-example
+        id="gradient"
+        heading="Gradients in SVG"
+        [content]="example3"
+    >
+        <tui-icons-mapping-example-3></tui-icons-mapping-example-3>
+    </tui-doc-example>
+
+    <tui-doc-example
+        id="bundled"
+        heading="Bundled icons"
+    >
+        <p>
+            There are two ways to add icons:
+            <code>bundled</code>
+            and as
+            <code>assets</code>
+            (default). Bundled icons have the benefit of immediate display but increase your app size. Assets work like
+            regular
+            <code>img src="xxx"</code>
+            with all the benefits of network caching. In both cases you can control color with CSS
+            <code>color</code>
+            style. Hardcoded icons into a js bundle can be useful if your application does not have access to the
+            network.
+        </p>
+
+        <p>
+            <a
+                tuiLink
+                routerLink="/icons/bundled"
+            >
+                If you want to embed icons in a js bundle use
+                <code>SvgService</code>
+            </a>
+        </p>
+    </tui-doc-example>
+
+    <tui-doc-example
+        id="di"
+        heading="DI options"
+    >
+        <tui-doc-code
+            filename="app.module.ts"
+            [code]="options"
+        ></tui-doc-code>
+    </tui-doc-example>
+</tui-doc-page>
