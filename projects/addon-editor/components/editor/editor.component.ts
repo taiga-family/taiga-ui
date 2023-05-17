@@ -164,6 +164,15 @@ export class TuiEditorComponent
         this.editor?.unsetLink();
     }
 
+    focus(event: MouseEvent): void {
+        if (this.nativeFocusableElement?.contains(event.target as Node | null)) {
+            return;
+        }
+
+        event.preventDefault();
+        this.nativeFocusableElement?.focus();
+    }
+
     override ngOnDestroy(): void {
         this.editor?.destroy();
     }
