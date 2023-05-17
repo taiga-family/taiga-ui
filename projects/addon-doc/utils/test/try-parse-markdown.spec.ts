@@ -32,7 +32,7 @@ ${codeSection}\nContent without type\n${codeSection}
 ${codeSection}html\n${htmlCode}\n${codeSection}
         `,
             ),
-        ).toEqual([`${tsCode}\n`, `Content without type\n`, `${htmlCode}\n`]);
+        ).toEqual([tsCode.trim(), `Content without type`, htmlCode]);
     });
 
     it(`should correct parse plain text`, () => {
@@ -87,7 +87,7 @@ ${codeSection}
         `;
 
         expect(tuiTryParseMarkdownCodeBlock(code)).toEqual([
-            `const a = "\`\`\`#Title\`\`\`";\n`,
+            `const a = "\`\`\`#Title\`\`\`";`,
         ]);
     });
 });
