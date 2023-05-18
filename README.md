@@ -3,6 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk.svg)](https://npmjs.com/package/@taiga-ui/cdk)
 [![codecov](https://codecov.io/gh/tinkoff/taiga-ui/branch/main/graphs/badge.svg)](https://app.codecov.io/gh/Tinkoff/taiga-ui/tree/main/projects)
 [![All packages CI](https://github.com/tinkoff/taiga-ui/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/tinkoff/taiga-ui/actions/workflows/build.yml)
+[![Deploy](https://github.com/tinkoff/taiga-ui/actions/workflows/deploy-gh-pages.yml/badge.svg?branch=main)](https://github.com/tinkoff/taiga-ui/actions/workflows/deploy-gh-pages.yml)
 [![Downloads per month](https://img.shields.io/npm/dm/@taiga-ui/cdk?color=dark-green)](https://www.npmjs.com/package/@taiga-ui/cdk)
 [![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white)](https://discord.gg/Us8d8JVaTg)
 [![angular-open-source-starter](https://img.shields.io/badge/made%20with-angular--open--source--starter-d81676?logo=angular)](https://github.com/tinkoff/angular-open-source-starter)
