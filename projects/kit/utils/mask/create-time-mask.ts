@@ -17,6 +17,9 @@ function tuiCreateTimePartMask(
     return regExp;
 }
 
+/**
+ * @deprecated Use {@link https://tinkoff.github.io/maskito/kit/time Time} from {@link https://github.com/Tinkoff/maskito Maskito} instead
+ */
 export function tuiCreateTimeMask(
     mode: TuiTimeMode,
     maxValues: Partial<Record<TuiTimeFormatParts, number>> = {},

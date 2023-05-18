@@ -241,7 +241,7 @@ describe(`InputTime`, () => {
         });
 
         it(`Input filters items`, () => {
-            inputPO.sendText(`3`);
+            inputPO.sendText(`03`);
 
             expect(pageObject.getAllByAutomationId(`tui-input-time__item`).length).toBe(
                 1,
@@ -249,7 +249,7 @@ describe(`InputTime`, () => {
         });
 
         it(`The value is substituted when selecting an item from the dropdown`, () => {
-            inputPO.sendText(`3`);
+            inputPO.sendText(`03`);
             pageObject.getByAutomationId(`tui-input-time__item`)!.nativeElement.click();
 
             expect(testComponent.control.value.toString().trim()).toBe(
@@ -259,7 +259,7 @@ describe(`InputTime`, () => {
 
         describe(`strict mode`, () => {
             it(`by default it is false, and the entered value is freely exposed in the control`, () => {
-                inputPO.sendText(`1111`);
+                inputPO.sendText(`11:11`);
 
                 expect(testComponent.control.value.toString().trim()).toBe(`11:11`);
             });
@@ -267,7 +267,7 @@ describe(`InputTime`, () => {
             it(`with strict = true, the entered value is not set if it is absent in items`, () => {
                 testComponent.strict = true;
                 fixture.detectChanges();
-                inputPO.sendText(`1111`);
+                inputPO.sendText(`11:11`);
                 fixture.detectChanges();
 
                 expect(testComponent.control.value.toString().trim()).not.toBe(`11:11`);
@@ -276,7 +276,7 @@ describe(`InputTime`, () => {
             it(`with strict = true, the entered value is added if present in items`, () => {
                 testComponent.strict = true;
                 fixture.detectChanges();
-                inputPO.sendText(`0130`);
+                inputPO.sendText(`01:30`);
                 fixture.detectChanges();
 
                 expect(testComponent.control.value.toString().trim()).toBe(`01:30`);
@@ -285,7 +285,7 @@ describe(`InputTime`, () => {
             it(`with strict = true, the entered value is rounded to the nearest in items`, () => {
                 testComponent.strict = true;
                 fixture.detectChanges();
-                inputPO.sendText(`0120`);
+                inputPO.sendText(`01:20`);
                 fixture.detectChanges();
 
                 expect(testComponent.control.value.toString().trim()).toBe(`01:30`);

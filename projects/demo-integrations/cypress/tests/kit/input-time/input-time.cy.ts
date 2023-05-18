@@ -1,5 +1,8 @@
 describe(`InputTime`, () => {
-    beforeEach(() => cy.clock(Date.UTC(2021, 10, 10, 15, 30, 0, 0), [`Date`]));
+    beforeEach(() => {
+        cy.viewport(`iphone-8`);
+        cy.clock(Date.UTC(2021, 10, 10, 15, 30, 0, 0), [`Date`]);
+    });
 
     describe(`Examples`, () => {
         beforeEach(() => cy.tuiVisit(`components/input-time`));
@@ -76,6 +79,46 @@ describe(`InputTime`, () => {
                     .clear()
                     .type(`07:55`, {force: true})
                     .should(`have.value`, `08:00`);
+            });
+        });
+
+        describe(`Basic typing from keyboard`, () => {
+            beforeEach(() => {
+                visitBy(`mode=HH:MM`);
+
+                getInput().clear().should(`have.value`, ``);
+            });
+
+            it(`3 => 03`, () => {
+                getInput()
+                    .type(`3`)
+                    .should(`have.value`, `03`)
+                    .should(`have.prop`, `selectionStart`, 2)
+                    .should(`have.prop`, `selectionEnd`, 2);
+            });
+
+            it(`1111 => 11:11`, () => {
+                getInput()
+                    .type(`1111`)
+                    .should(`have.value`, `11:11`)
+                    .should(`have.prop`, `selectionStart`, `11:11`.length)
+                    .should(`have.prop`, `selectionEnd`, `11:11`.length);
+            });
+
+            it(`0130 => 01:30`, () => {
+                getInput()
+                    .type(`0130`)
+                    .should(`have.value`, `01:30`)
+                    .should(`have.prop`, `selectionStart`, `01:30`.length)
+                    .should(`have.prop`, `selectionEnd`, `01:30`.length);
+            });
+
+            it(`99 => 09:09`, () => {
+                getInput()
+                    .type(`99`)
+                    .should(`have.value`, `09:09`)
+                    .should(`have.prop`, `selectionStart`, `09:09`.length)
+                    .should(`have.prop`, `selectionEnd`, `09:09`.length);
             });
         });
 

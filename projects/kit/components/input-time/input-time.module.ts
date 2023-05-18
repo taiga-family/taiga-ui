@@ -1,5 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {MaskitoModule} from '@maskito/angular';
 import {
     TuiDataListModule,
     TuiHostedDropdownModule,
@@ -9,7 +10,7 @@ import {
     TuiWrapperModule,
 } from '@taiga-ui/core';
 import {TuiSelectOptionModule} from '@taiga-ui/kit/components/select-option';
-import {TextMaskModule, TuiValueAccessorModule} from '@taiga-ui/kit/directives';
+import {TuiValueAccessorModule} from '@taiga-ui/kit/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputTimeComponent} from './input-time.component';
@@ -19,7 +20,7 @@ import {TuiNativeTimeComponent} from './native-time/native-time.component';
 @NgModule({
     imports: [
         CommonModule,
-        TextMaskModule,
+        MaskitoModule,
         TuiSelectOptionModule,
         TuiDataListModule,
         TuiWrapperModule,

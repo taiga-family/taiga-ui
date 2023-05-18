@@ -4,6 +4,7 @@ import {MAX_TIME_VALUES} from '@taiga-ui/kit/constants';
 import {TuiTimeFormatParts} from '@taiga-ui/kit/types';
 
 /**
+ * @deprecated Use {@link https://tinkoff.github.io/maskito/kit/time Time} from {@link https://github.com/Tinkoff/maskito Maskito} instead
  * Adjusts the entered time by omitting only suitable values for hours and minutes
  * @returns time as a string
  */
