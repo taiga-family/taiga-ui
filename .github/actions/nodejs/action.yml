@@ -5,7 +5,7 @@ inputs:
   node-version:
     description: Node.js version
     required: false
-    default: 18.15
+    default: 18.15.0
 
 outputs:
   root-package-version:
@@ -45,6 +45,9 @@ runs:
         restore-keys: npm-cache-hash__
 
     - shell: bash
+      run: echo "CYPRESS_CACHE_FOLDER=./node_modules/cache-cypress" >> $GITHUB_ENV
+
+    - shell: bash
       run: |
         echo "Show environment Node.js, npm ..."
         node -v
@@ -54,6 +57,13 @@ runs:
       if: steps.cache-node-modules.outputs.cache-hit != 'true'
       run: npm ci
       shell: bash
+
+    - name: Verify that Cypress is installed correctly and is executable.
+      shell: bash
+      run: |
+        npx cypress cache path
+        npx cypress cache list
+        npx cypress verify
 
     - id: output
       shell: bash

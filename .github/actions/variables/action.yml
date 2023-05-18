@@ -32,7 +32,6 @@ runs:
         export DIST="dist/demo/browser"
         export DIST_NEXT="dist/demo/browser/${{ github.base_ref }}"
         export REPO="https://github.com/Tinkoff/taiga-ui.git"
-        export CYPRESS_CACHE_FOLDER="node_modules/cache-cypress"
         export IS_MAIN_BRANCH="${{ github.ref == 'refs/heads/main' }}"
         export IS_RELEASE_BRANCH="${{ contains(github.head_ref, 'release/') }}"
         export CI_COMMIT_SHA="${{ github.event.pull_request.head.sha || github.sha }}"
@@ -72,6 +71,5 @@ runs:
         echo "SUPPORT_AUTO_PUSH=$SUPPORT_AUTO_PUSH" >> $GITHUB_ENV
         echo "CYPRESS_failOnSnapshotDiff=$CYPRESS_failOnSnapshotDiff" >> $GITHUB_ENV
         echo "CYPRESS_API_URL=$CYPRESS_API_URL" >> $GITHUB_ENV
-        echo "CYPRESS_CACHE_FOLDER=$CYPRESS_CACHE_FOLDER" >> $GITHUB_ENV
         echo "SNAPSHOTS_PATH=$SNAPSHOTS_PATH" >> $GITHUB_ENV
         echo "SNAPSHOTS_KEY=$SNAPSHOTS_KEY" >> $GITHUB_ENV
