@@ -4,6 +4,7 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiTextfieldOptions {
+    readonly hintOnDisabled: boolean;
     readonly iconCleaner: PolymorpheusContent<
         TuiContextWithImplicit<TuiSizeL | TuiSizeS>
     >;
@@ -12,6 +13,7 @@ export interface TuiTextfieldOptions {
 /** Default values for primitive textfield options */
 export const TUI_TEXTFIELD_DEFAULT_OPTIONS: TuiTextfieldOptions = {
     iconCleaner: `tuiIconClose`,
+    hintOnDisabled: false,
 };
 
 /**

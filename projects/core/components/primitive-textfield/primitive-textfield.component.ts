@@ -256,6 +256,13 @@ export class TuiPrimitiveTextfieldComponent
         return this.controller.iconLeft;
     }
 
+    get showHint(): boolean {
+        return (
+            !!this.hintOptions?.content &&
+            (this.options.hintOnDisabled || !this.computedDisabled)
+        );
+    }
+
     // Safari expiration date autofill workaround
     get name(): 'ccexpiryyear' | null {
         return this.nativeFocusableElement?.autocomplete === 'cc-exp'

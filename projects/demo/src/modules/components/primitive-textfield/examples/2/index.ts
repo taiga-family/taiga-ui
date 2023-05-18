@@ -20,7 +20,9 @@ import {
     templateUrl: './index.html',
     changeDetection,
     encapsulation,
-    providers: [tuiTextfieldOptionsProvider({iconCleaner: 'tuiIconChevronUp'})],
+    providers: [
+        tuiTextfieldOptionsProvider({iconCleaner: 'tuiIconEdit2', hintOnDisabled: true}),
+    ],
 })
 export class TuiPrimitiveTextfieldExample2 extends AbstractTuiControl<string> {
     @ViewChild(TuiPrimitiveTextfieldComponent)
