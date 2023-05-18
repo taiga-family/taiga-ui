@@ -112,19 +112,6 @@ describe(`InputDate (base cases when TUI_DATE_FORMAT = DMY)`, () => {
         await initializeEnvironment();
     });
 
-    // TODO: investigate if it is really required
-    xit(`If there is min and an initial value and an initial value less than min - keep the initial value`, async () => {
-        testComponent.min = new TuiDay(2018, 3, 11);
-        fixture.detectChanges();
-
-        await fixture.whenStable();
-
-        fixture.detectChanges();
-        await fixture.whenStable();
-
-        expect(inputPO.value).toBe(`01.03.2017`);
-    });
-
     it(`sets valid day if date selected via calendar`, async () => {
         mouseDownOnTextfield();
 

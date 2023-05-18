@@ -105,6 +105,32 @@ describe(`InputDate`, () => {
                 .tuiScrollIntoView();
         }
     });
+
+    describe(`Cypress component testing`, () => {
+        it(`If there is min and an initial value and an initial value less than min - keep the initial value`, () => {
+            cy.tuiVisit(`cypress`);
+
+            const id = `#input-date-initialization`;
+
+            cy.get(`${id} input`).first().should(`be.visible`).as(`input`);
+
+            cy.get(`@input`)
+                .should(`have.value`, `17.05.2023`)
+                .focus()
+                .should(`have.value`, `17.05.2023`)
+                .blur()
+                .should(`have.value`, `17.05.2023`)
+                .focus()
+                .should(`have.value`, `17.05.2023`);
+
+            cy.get(id).contains(`Minimum value 18.05.2023`);
+
+            cy.get(`@input`)
+                .clear()
+                .type(`17.05.2023`)
+                .should(`have.value`, `18.05.2023`);
+        });
+    });
 });
 
 function matchImageSnapshot(name: string): void {
