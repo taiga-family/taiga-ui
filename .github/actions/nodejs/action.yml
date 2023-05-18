@@ -55,10 +55,7 @@ runs:
 
     - name: Clean install dependencies
       if: steps.cache-node-modules.outputs.cache-hit != 'true'
-      run: |
-        npm ci
-        npx cypress install --force
-        npx cypress verify
+      run: npm ci
       shell: bash
 
     - name: Verify that Cypress is installed correctly and is executable.
