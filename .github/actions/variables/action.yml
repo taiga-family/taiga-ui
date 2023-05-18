@@ -61,6 +61,7 @@ runs:
         echo "IS_FORK=$IS_FORK" >> $GITHUB_ENV
         echo "DIST=$DIST" >> $GITHUB_ENV
         echo "DIST_NEXT=$DIST_NEXT" >> $GITHUB_ENV
+        echo "REPO=$REPO" >> $GITHUB_ENV
         echo "NG_SERVER_PORT=$NG_SERVER_PORT" >> $GITHUB_ENV
         echo "IS_MAIN_BRANCH=$IS_MAIN_BRANCH" >> $GITHUB_ENV
         echo "CI_COMMIT_SHA=$CI_COMMIT_SHA" >> $GITHUB_ENV
