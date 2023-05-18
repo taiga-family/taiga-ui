@@ -1935,6 +1935,14 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `cypress`,
+        loadChildren: async () =>
+            import(`../cypress/cypress.module`).then(m => m.CypressDocPageModule),
+        data: {
+            title: `Cypress tests 🤫`,
+        },
+    },
+    {
         path: `**`,
         redirectTo: ``,
     },
