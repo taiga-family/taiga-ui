@@ -10,6 +10,8 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {MaskitoOptions} from '@maskito/core';
+import {maskitoDateTimeOptionsGenerator} from '@maskito/kit';
 import {
     AbstractTuiControl,
     AbstractTuiValueTransformer,
@@ -43,10 +45,12 @@ import {
     TuiSizeL,
     TuiSizeS,
     TuiTextfieldSizeDirective,
-    TuiTextMaskOptions,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {DATE_TIME_SEPARATOR} from '@taiga-ui/kit/constants';
+import {
+    DATE_TIME_SEPARATOR,
+    TUI_DATE_MODE_MASKITO_ADAPTER,
+} from '@taiga-ui/kit/constants';
 import {
     TUI_DATE_TEXTS,
     TUI_DATE_TIME_VALUE_TRANSFORMER,
@@ -55,11 +59,6 @@ import {
     tuiDateStreamWithTransformer,
     TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
-import {
-    tuiCreateAutoCorrectedDateTimePipe,
-    tuiCreateDateMask,
-    tuiCreateTimeMask,
-} from '@taiga-ui/kit/utils/mask';
 import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -149,11 +148,10 @@ export class TuiInputDateTimeComponent
         return DATE_FILLER_LENGTH + DATE_TIME_SEPARATOR.length + this.timeMode.length;
     }
 
-    get textMaskOptions(): TuiTextMaskOptions {
+    get maskOptions(): MaskitoOptions {
         return this.calculateMask(
-            this.value[0],
-            this.calendarMinDay,
-            this.calendarMaxDay,
+            this.min,
+            this.max,
             this.timeMode,
             this.dateFormat,
             this.dateSeparator,
@@ -252,7 +250,7 @@ export class TuiInputDateTimeComponent
         const parsedDate = TuiDay.normalizeParse(date, this.dateFormat);
         const parsedTime =
             time && time.length === this.timeMode.length
-                ? this.clampTime(TuiTime.fromString(time), parsedDate)
+                ? TuiTime.fromString(time)
                 : null;
 
         this.open = false;
@@ -278,8 +276,15 @@ export class TuiInputDateTimeComponent
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
 
+        if (focused) {
+            return;
+        }
+
+        setTimeout(() => {
+            this.nativeValue = this.trimTrailingSeparator(this.nativeValue);
+        });
+
         if (
-            focused ||
             this.value[0] === null ||
             this.value[1] !== null ||
             this.nativeValue.length <= this.fillerLength + DATE_TIME_SEPARATOR.length ||
@@ -297,12 +302,6 @@ export class TuiInputDateTimeComponent
         const parsedTime = TuiTime.fromString(time);
 
         this.value = [this.value[0], parsedTime];
-
-        setTimeout(() => {
-            if (this.nativeValue.endsWith('.') || this.nativeValue.endsWith(':')) {
-                this.nativeValue = this.nativeValue.slice(0, -1);
-            }
-        });
     }
 
     override setDisabledState(): void {
@@ -333,30 +332,19 @@ export class TuiInputDateTimeComponent
 
     @tuiPure
     private calculateMask(
-        day: TuiDay | null,
-        min: TuiDay,
-        max: TuiDay,
+        min: TuiDay | [TuiDay, TuiTime],
+        max: TuiDay | [TuiDay, TuiTime],
         timeMode: TuiTimeMode,
         dateFormat: TuiDateMode,
         dateSeparator: string,
-    ): TuiTextMaskOptions {
-        return {
-            mask: [
-                ...tuiCreateDateMask(dateFormat, dateSeparator),
-                ',',
-                ' ',
-                ...tuiCreateTimeMask(timeMode),
-            ],
-            pipe: tuiCreateAutoCorrectedDateTimePipe({
-                value: day,
-                min,
-                max,
-                dateFormat,
-                dateSeparator,
-                timeMode,
-            }),
-            guide: false,
-        };
+    ): MaskitoOptions {
+        return maskitoDateTimeOptionsGenerator({
+            timeMode,
+            dateSeparator,
+            dateMode: TUI_DATE_MODE_MASKITO_ADAPTER[dateFormat],
+            min: this.toNativeDate(min),
+            max: this.toNativeDate(max),
+        });
     }
 
     @tuiPure
@@ -371,7 +359,9 @@ export class TuiInputDateTimeComponent
                 : date;
         const timeString = time instanceof TuiTime ? time.toString(timeMode) : time || '';
 
-        return `${dateString}${DATE_TIME_SEPARATOR}${timeString}`;
+        return timeString
+            ? `${dateString}${DATE_TIME_SEPARATOR}${timeString}`
+            : dateString;
     }
 
     private updateNativeValue(day: TuiDay): void {
@@ -392,5 +382,22 @@ export class TuiInputDateTimeComponent
                 : Infinity;
 
         return TuiTime.fromAbsoluteMilliseconds(tuiClamp(ms, min, max));
+    }
+
+    private trimTrailingSeparator(value: string): string {
+        return value.replace(
+            new RegExp(`(\\${this.dateSeparator}|${DATE_TIME_SEPARATOR}|\\.)$`),
+            '',
+        );
+    }
+
+    private toNativeDate(value: TuiDay | [TuiDay, TuiTime]): Date {
+        if (!Array.isArray(value)) {
+            return value.toLocalNativeDate();
+        }
+
+        const [{year, month, day}, {hours, minutes, seconds, ms}] = value;
+
+        return new Date(year, month, day, hours, minutes, seconds, ms);
     }
 }
