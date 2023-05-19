@@ -187,6 +187,13 @@ export class TuiTextAreaComponent
         return this.value.slice(this.maxLength || Infinity);
     }
 
+    get showHint(): boolean {
+        return (
+            !!this.hintOptions?.content &&
+            (this.controller.options.hintOnDisabled || !this.computedDisabled)
+        );
+    }
+
     @HostListener('focusin', ['true'])
     @HostListener('focusout', ['false'])
     onFocused(focused: boolean): void {

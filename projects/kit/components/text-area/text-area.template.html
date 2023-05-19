@@ -76,15 +76,11 @@
                 ></tui-svg>
             </ng-container>
             <tui-tooltip
-                *ngIf="hintOptions && hintOptions.content && !computedDisabled"
+                *ngIf="showHint"
                 automation-id="tui-text-area__tooltip"
                 class="t-tooltip"
                 [describeId]="id"
-                [direction]="hintOptions.direction"
-                [appearance]="hintOptions.appearance"
-                [content]="hintOptions.content"
-                [showDelay]="hintOptions.showDelay"
-                [hideDelay]="hintOptions.hideDelay"
+                [content]="hintOptions?.content"
             ></tui-tooltip>
         </div>
     </label>

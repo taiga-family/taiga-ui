@@ -96,7 +96,7 @@
             ></tui-svg>
         </span>
         <tui-tooltip
-            *ngIf="hintOptions?.content && !computedDisabled"
+            *ngIf="showHint"
             automation-id="tui-primitive-textfield__tooltip"
             class="t-tooltip"
             [describeId]="computedId"

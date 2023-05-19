@@ -22,7 +22,9 @@
         class="tui-space_top-4"
     >
         <tui-primitive-textfield
-            [iconCleaner]="iconCleaner"
+            iconCleaner="tuiIconEdit2"
+            tuiHintContent="Hint is shown for disabled control"
+            [disabled]="true"
             [(value)]="value"
             (focusedChange)="onFocused($event)"
         >
@@ -34,7 +36,3 @@
         </tui-primitive-textfield>
     </label>
 </form>
-
-<ng-template #iconCleaner>
-    <tui-svg src="tuiIconEdit2"></tui-svg>
-</ng-template>

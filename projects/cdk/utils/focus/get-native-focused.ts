@@ -3,12 +3,12 @@
  *
  * @return element or null
  */
-export function tuiGetNativeFocused(doc: Document): Element | null {
-    if (!doc.activeElement?.shadowRoot) {
-        return doc.activeElement;
+export function tuiGetNativeFocused({activeElement}: Document): Element | null {
+    if (!activeElement?.shadowRoot) {
+        return activeElement;
     }
 
-    let element = doc.activeElement.shadowRoot.activeElement;
+    let element = activeElement.shadowRoot.activeElement;
 
     while (element?.shadowRoot) {
         element = element.shadowRoot.activeElement;

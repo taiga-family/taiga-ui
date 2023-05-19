@@ -305,6 +305,13 @@ export class TuiInputTagComponent
         );
     }
 
+    get showHint(): boolean {
+        return (
+            !!this.hintOptions?.content &&
+            (this.controller.options.hintOnDisabled || !this.computedDisabled)
+        );
+    }
+
     get status(): TuiStatus {
         return this.modeDirective?.mode ? 'default' : this.options.tagStatus;
     }
