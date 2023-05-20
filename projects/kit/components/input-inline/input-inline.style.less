@@ -9,9 +9,10 @@
 }
 
 .t-before {
+    display: block;
     padding-right: 0.02em; // to prevent caret shaking
     margin-left: 1px; // to prevent hiding characters in safari
-    visibility: hidden;
+    overflow: hidden;
     white-space: pre;
 }
 
@@ -26,7 +27,8 @@
     background-color: transparent;
     padding: inherit;
     font: inherit;
-    color: inherit;
+    color: transparent;
+    caret-color: rgb(125, 125, 125);
     box-sizing: border-box;
     width: 100%;
     height: 100%;
@@ -36,4 +38,5 @@
     text-indent: inherit;
     text-transform: inherit;
     outline: none;
+    mix-blend-mode: difference;
 }
