@@ -1,9 +1,8 @@
 <span
     class="t-before"
     [style.text-indent.px]="indent"
->
-    {{ value }}
-</span>
+    [textContent]="value"
+></span>
 
 <span
     *ngIf="!hasValue"
