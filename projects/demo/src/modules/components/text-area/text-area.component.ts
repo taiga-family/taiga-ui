@@ -67,6 +67,10 @@ export class ExampleTuiTextAreaComponent extends AbstractExampleTuiControl {
 
     override maxLength: number | null = null;
 
+    readonly iconVariants = ['', 'tuiIconSearchLarge', 'tuiIconCalendarLarge'];
+
+    icon = this.iconVariants[0];
+
     readonly rowsVariants: readonly number[] = [8, 15, 30];
 
     rows: number = this.rowsVariants[0];

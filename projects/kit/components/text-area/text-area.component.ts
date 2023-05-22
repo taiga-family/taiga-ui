@@ -127,9 +127,19 @@ export class TuiTextAreaComponent
         return this.controller.size;
     }
 
+    @HostBinding('style.--border-start.rem')
+    get borderStart(): number {
+        return this.iconLeftContent ? 1.75 : 0;
+    }
+
     @HostBinding('style.--border-end.rem')
-    get border(): number {
-        return tuiGetBorder(false, this.hasCleaner, this.hasTooltip);
+    get borderEnd(): number {
+        return tuiGetBorder(
+            !!this.iconContent,
+            this.hasCleaner,
+            this.hasTooltip,
+            this.hasCustomContent,
+        );
     }
 
     get hasCleaner(): boolean {
@@ -138,7 +148,10 @@ export class TuiTextAreaComponent
 
     @HostBinding('class._has-tooltip')
     get hasTooltip(): boolean {
-        return !!this.hintOptions?.content && !this.computedDisabled;
+        return (
+            !!this.hintOptions?.content &&
+            (this.controller.options.hintOnDisabled || !this.computedDisabled)
+        );
     }
 
     @HostBinding('class._has-value')
@@ -153,6 +166,20 @@ export class TuiTextAreaComponent
 
     get hasPlaceholder(): boolean {
         return this.placeholderRaisable || (!this.hasValue && !this.hasExampleText);
+    }
+
+    get hasCustomContent(): boolean {
+        return !!this.controller.customContent;
+    }
+
+    get iconLeftContent(): PolymorpheusContent<
+        TuiContextWithImplicit<TuiSizeL | TuiSizeS>
+    > {
+        return this.controller.iconLeft;
+    }
+
+    get iconContent(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
+        return this.controller.icon;
     }
 
     get iconCleaner(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
@@ -185,13 +212,6 @@ export class TuiTextAreaComponent
 
     get extraContent(): string {
         return this.value.slice(this.maxLength || Infinity);
-    }
-
-    get showHint(): boolean {
-        return (
-            !!this.hintOptions?.content &&
-            (this.controller.options.hintOnDisabled || !this.computedDisabled)
-        );
     }
 
     @HostListener('focusin', ['true'])
