@@ -6,23 +6,21 @@ $line-height-l: 1.25rem;
     display: block;
     border-radius: var(--tui-radius-m);
     text-align: left;
+    height: var(--tui-height);
+    min-height: var(--tui-height);
+    max-height: var(--tui-height);
 
     &[data-size='s'] {
-        height: var(--tui-height-s);
-        min-height: var(--tui-height-s);
-        max-height: var(--tui-height-s);
+        --tui-height: var(--tui-height-s);
     }
 
     &[data-size='m'] {
-        height: var(--tui-height-m);
-        min-height: var(--tui-height-m);
-        max-height: var(--tui-height-m);
+        --tui-height: var(--tui-height-m);
     }
 
     &[data-size='l'] {
-        height: var(--tui-height-l);
-        min-height: var(--tui-height-l);
-        max-height: var(--tui-height-l);
+        --tui-height: var(--tui-height-l);
+
         font: var(--tui-font-text-m);
         line-height: $line-height-l;
     }
@@ -73,9 +71,8 @@ $line-height-l: 1.25rem;
     resize: none;
     text-overflow: ellipsis;
 
-    :host[data-mode='onDark'] &,
-    :host-context(tui-primitive-textfield[data-mode='onDark']),
-    :host-context(tui-text-area[data-mode='onDark']) {
+    [tuiWrapper][data-mode='onDark'] &,
+    :host-context([tuiWrapper][data-mode='onDark']) {
         @include autofill(dark);
     }
 
@@ -111,7 +108,7 @@ $line-height-l: 1.25rem;
 
     :host[data-size='m']:not(._label-outside) &,
     :host-context(tui-primitive-textfield[data-size='m']:not(._label-outside)):not(tui-primitive-textfield) {
-        padding-top: 1.125rem;
+        padding-top: 1rem;
 
         // Workaround for raising placeholder in temporary autofill
         &:-webkit-autofill + .t-content .t-placeholder {
@@ -157,6 +154,7 @@ $line-height-l: 1.25rem;
 
         :host[data-size='m'] & {
             font: var(--tui-font-text-xs);
+            line-height: 1.25rem;
             transform: translateY(-0.5rem);
             letter-spacing: 0.025rem;
         }
@@ -166,8 +164,8 @@ $line-height-l: 1.25rem;
             color: var(--tui-error-fill);
         }
 
-        :host[data-mode='onDark']._invalid:not(._focused) &,
-        :host[data-mode='onDark']._invalid:not(._focused):hover & {
+        :host._invalid:not(._focused) [tuiWrapper][data-mode='onDark'] &,
+        :host._invalid:not(._focused):hover [tuiWrapper][data-mode='onDark'] & {
             color: var(--tui-error-fill-night);
         }
     }
@@ -193,18 +191,18 @@ $line-height-l: 1.25rem;
 
     /* stylelint-disable selector-max-specificity */
     // textfield-light
-    :host[data-mode='onDark'] & {
+    [tuiWrapper][data-mode='onDark'] & {
         color: var(--tui-text-02-night);
     }
 
-    :host[data-size='m'][data-mode='onDark']._focused:not(._label-outside) &,
-    :host[data-size='l'][data-mode='onDark']._focused:not(._label-outside) & {
+    :host[data-size='m']._focused:not(._label-outside) [tuiWrapper][data-mode='onDark'] &,
+    :host[data-size='l']._focused:not(._label-outside) [tuiWrapper][data-mode='onDark'] & {
         color: var(--tui-text-01-night);
     }
 
-    :host[data-mode='onDark']._focused &,
-    :host[data-size='m'][data-mode='onDark']._focused._label-outside &,
-    :host[data-size='l'][data-mode='onDark']._focused._label-outside & {
+    :host._focused [tuiWrapper][data-mode='onDark'] &,
+    :host[data-size='m']._focused._label-outside [tuiWrapper][data-mode='onDark'] &,
+    :host[data-size='l']._focused._label-outside [tuiWrapper][data-mode='onDark'] & {
         color: var(--tui-text-02-night);
     }
     /* stylelint-enable selector-max-specificity */

@@ -1,11 +1,12 @@
 :host {
     position: absolute;
-    display: block;
-    height: 1.25rem;
-    line-height: 1;
+    /* stylelint-disable-next-line meowtec/no-px */
+    top: 0.5px;
+    display: flex;
+    align-items: center;
     width: 100%;
-    margin: -1.25rem 0;
-    padding: 0.625rem 0;
+    height: var(--tui-height);
+    margin-top: calc(var(--tui-height) / -2);
     box-sizing: content-box;
     color: var(--tui-text-01);
     animation: tuiPresent 1s;
@@ -15,15 +16,12 @@
         position: static;
     }
 
-    :host-context(tui-textfield[data-mode='onDark']) & {
+    :host-context(tui-primitive-textfield[data-mode='onDark']) & {
         color: var(--tui-text-01-night);
     }
 
-    &:after {
-        content: '';
-        display: inline-block;
-        vertical-align: middle;
-        height: 100%;
+    :host-context(tui-primitive-textfield[data-size='m']:not(._label-outside)) & {
+        height: calc(var(--tui-height) - 0.25rem);
     }
 }
 
@@ -45,12 +43,7 @@
     max-width: 100%;
     white-space: nowrap;
 
-    :host-context(tui-textfield[data-mode='onDark']) & {
+    :host-context(tui-primitive-textfield[data-mode='onDark']) & {
         color: var(--tui-text-03-night);
     }
-}
-
-.t-inline {
-    display: inline-block;
-    vertical-align: middle;
 }
