@@ -41,6 +41,8 @@ export class TuiInputInlineComponent
     @tuiDefaultProp()
     maxLength: number | null = null;
 
+    indent = -1;
+
     constructor(
         @Optional()
         @Self()
@@ -70,6 +72,13 @@ export class TuiInputInlineComponent
 
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
+    }
+
+    onScroll(): void {
+        const indent = this.native?.nativeElement.scrollLeft || 0;
+
+        // -1 for Safari (see styles)
+        this.indent = -1 - indent;
     }
 
     protected getFallbackValue(): string {
