@@ -16,7 +16,7 @@
         position: static;
     }
 
-    :host-context(tui-primitive-textfield[data-mode='onDark']) & {
+    :host-context(tui-primitive-textfield [tuiWrapper][data-mode='onDark']) & {
         color: var(--tui-text-01-night);
     }
 
@@ -43,7 +43,7 @@
     max-width: 100%;
     white-space: nowrap;
 
-    :host-context(tui-primitive-textfield[data-mode='onDark']) & {
+    :host-context(tui-primitive-textfield [tuiWrapper][data-mode='onDark']) & {
         color: var(--tui-text-03-night);
     }
 }
