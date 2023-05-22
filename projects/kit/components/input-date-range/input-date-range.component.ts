@@ -12,6 +12,8 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {MASKITO_DEFAULT_OPTIONS, MaskitoOptions} from '@maskito/core';
+import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
 import {
     AbstractTuiNullableControl,
     AbstractTuiValueTransformer,
@@ -36,6 +38,7 @@ import {
     TuiMapper,
     TuiMonth,
     tuiNullableSame,
+    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
@@ -46,11 +49,13 @@ import {
     TuiSizeL,
     TuiSizeS,
     TuiTextfieldSizeDirective,
-    TuiTextMaskOptions,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
-import {EMPTY_MASK, MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
+import {
+    MAX_DAY_RANGE_LENGTH_MAPPER,
+    TUI_DATE_MODE_MASKITO_ADAPTER,
+} from '@taiga-ui/kit/constants';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_TEXTS,
@@ -59,10 +64,6 @@ import {
     tuiDateStreamWithTransformer,
     TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
-import {
-    tuiCreateAutoCorrectedDateRangePipe,
-    tuiCreateDateRangeMask,
-} from '@taiga-ui/kit/utils/mask';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
@@ -84,12 +85,6 @@ export class TuiInputDateRangeComponent
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
-
-    private readonly textMaskOptions: TuiTextMaskOptions = {
-        mask: tuiCreateDateRangeMask(this.dateFormat, this.dateSeparator),
-        pipe: tuiCreateAutoCorrectedDateRangePipe(this),
-        guide: false,
-    };
 
     @Input()
     @tuiDefaultProp()
@@ -185,8 +180,17 @@ export class TuiInputDateRangeComponent
             : '';
     }
 
-    get computedMask(): TuiTextMaskOptions {
-        return this.activePeriod ? EMPTY_MASK : this.textMaskOptions;
+    get computedMask(): MaskitoOptions {
+        return this.activePeriod
+            ? MASKITO_DEFAULT_OPTIONS
+            : this.calculateMask(
+                  this.dateFormat,
+                  this.dateSeparator,
+                  this.min,
+                  this.max,
+                  this.minLength || {},
+                  this.maxLength || {},
+              );
     }
 
     get activePeriod(): TuiDayRangePeriod | null {
@@ -310,18 +314,10 @@ export class TuiInputDateRangeComponent
             this.onOpenChange(true);
         }
 
-        if (value.length !== DATE_RANGE_FILLER_LENGTH) {
-            this.value = null;
-
-            return;
-        }
-
-        const parsedValue = TuiDayRange.normalizeParse(value, this.dateFormat);
-
         this.value =
-            !this.minLength && !this.maxLength
-                ? parsedValue
-                : this.clampValue(parsedValue);
+            value.length === DATE_RANGE_FILLER_LENGTH
+                ? TuiDayRange.normalizeParse(value, this.dateFormat)
+                : null;
     }
 
     onRangeChange(range: TuiDayRange | null): void {
@@ -379,6 +375,25 @@ export class TuiInputDateRangeComponent
         return tuiNullableSame(oldValue, newValue, (a, b) => a.daySame(b));
     }
 
+    @tuiPure
+    private calculateMask(
+        dateFormat: TuiDateMode,
+        separator: string,
+        min: TuiDay,
+        max: TuiDay,
+        minLength: TuiDayLike,
+        maxLength: TuiDayLike,
+    ): MaskitoOptions {
+        return maskitoDateRangeOptionsGenerator({
+            separator,
+            mode: TUI_DATE_MODE_MASKITO_ADAPTER[dateFormat],
+            min: min.toLocalNativeDate(),
+            max: max.toLocalNativeDate(),
+            minLength,
+            maxLength,
+        });
+    }
+
     private get itemSelected(): boolean {
         return this.items.findIndex(item => String(item) === this.nativeValue) !== -1;
     }
@@ -391,24 +406,6 @@ export class TuiInputDateRangeComponent
         if (this.nativeFocusableElement) {
             this.nativeFocusableElement.focus({preventScroll});
         }
-    }
-
-    private clampValue(value: TuiDayRange): TuiDayRange {
-        const clampedBottom =
-            this.minLength && value.from.append(this.minLength).dayAfter(value.to)
-                ? new TuiDayRange(
-                      value.from,
-                      value.from.append(this.minLength).append({day: -1}),
-                  )
-                : value;
-
-        const availableMax = this.maxLength
-            ? clampedBottom.from.append(this.maxLength).append({day: -1})
-            : this.max;
-
-        return clampedBottom.to.dayAfter(availableMax)
-            ? new TuiDayRange(clampedBottom.from, availableMax)
-            : clampedBottom;
     }
 
     private getDateRangeFiller(dateFiller: string): string {

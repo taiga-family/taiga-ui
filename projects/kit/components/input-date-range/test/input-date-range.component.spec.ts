@@ -141,12 +141,6 @@ describe(`InputDateRangeComponent`, () => {
                 fixture.detectChanges();
             });
 
-            it(`If you enter an invalid date, the value is adjusted`, () => {
-                inputPO.sendText(`32.12.2012`);
-
-                expect(inputPO.value).toBe(`31.12.2012`);
-            });
-
             it(`When entering the first date, the control value is null`, () => {
                 inputPO.sendText(`31.12.2012`);
 
@@ -199,12 +193,6 @@ describe(`InputDateRangeComponent`, () => {
             expect(inputPO.value).toBe(`12/01/2021 – 02/14/2022`);
         });
 
-        it(`corrects date of month > 12 or day > 31`, () => {
-            inputPO.sendTextAndBlur(`9999200099992010`);
-
-            expect(inputPO.value).toBe(`12/31/2000 – 12/31/2010`);
-        });
-
         it(`correctly sets stringify selected range via calendar`, async () => {
             inputPO.sendTextAndBlur(`12/01/2021-02/14/2022`);
 
@@ -241,12 +229,6 @@ describe(`InputDateRangeComponent`, () => {
         it(`accepts dd.mm.yyyy format`, () => {
             inputPO.sendTextAndBlur(`2021120120220214`);
             expect(inputPO.value).toBe(`2021-12-01 – 2022-02-14`);
-        });
-
-        it(`corrects date of month > 12 or day > 31`, () => {
-            inputPO.sendTextAndBlur(`2000999920109999`);
-
-            expect(inputPO.value).toBe(`2000-12-31 – 2010-12-31`);
         });
 
         it(`correctly sets stringify selected range via calendar`, () => {

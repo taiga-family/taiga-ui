@@ -3,6 +3,10 @@ import {TuiTextMaskList} from '@taiga-ui/core';
 
 import {tuiCreateDateMask} from './create-date-mask';
 
+/**
+ * @deprecated Use {@link https://tinkoff.github.io/maskito/kit/date-range DateRange} from {@link https://github.com/Tinkoff/maskito Maskito} instead
+ * TODO: delete in v4.0
+ */
 export function tuiCreateDateRangeMask(
     dateMode: TuiDateMode,
     dateSeparator: string,
