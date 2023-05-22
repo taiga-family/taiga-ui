@@ -314,13 +314,10 @@ export class TuiInputDateRangeComponent
             this.onOpenChange(true);
         }
 
-        if (value.length !== DATE_RANGE_FILLER_LENGTH) {
-            this.value = null;
-
-            return;
-        }
-
-        this.value = TuiDayRange.normalizeParse(value, this.dateFormat);
+        this.value =
+            value.length === DATE_RANGE_FILLER_LENGTH
+                ? TuiDayRange.normalizeParse(value, this.dateFormat)
+                : null;
     }
 
     onRangeChange(range: TuiDayRange | null): void {
