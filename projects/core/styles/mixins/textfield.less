@@ -110,7 +110,7 @@
 
     :host[data-size='m']:not(._label-outside) &,
     :host-context(tui-primitive-textfield[data-size='m']:not(._label-outside)):not(tui-primitive-textfield) {
-        padding-top: 1.125rem;
+        padding-top: 1rem;
 
         // Workaround for raising placeholder in temporary autofill
         &:-webkit-autofill + .t-content .t-placeholder {
@@ -156,6 +156,7 @@
 
         :host[data-size='m'] & {
             font: var(--tui-font-text-xs);
+            line-height: 1.25rem;
             transform: translateY(-0.5rem);
             letter-spacing: 0.025rem;
         }

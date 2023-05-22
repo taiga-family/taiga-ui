@@ -7,9 +7,8 @@
     position: relative;
     z-index: 0;
     display: flex;
-    font: var(--tui-font-text-m);
     flex-direction: column;
-    min-height: var(--tui-textarea-height, @height);
+    min-height: var(--tui-height);
     border-radius: var(--tui-radius-m);
     color: var(--tui-text-01);
 
@@ -18,13 +17,21 @@
     }
 
     &[data-size='s'] {
+        --tui-height: var(--tui-height-s);
         --tui-textarea-height: 4.5625rem;
         font: var(--tui-font-text-s);
     }
 
     &[data-size='m'] {
+        --tui-height: var(--tui-height-m);
         --tui-textarea-height: 5.5rem;
         font: var(--tui-font-text-s);
+    }
+
+    &[data-size='l'] {
+        --tui-height: var(--tui-height-l);
+        --tui-textarea-height: @height;
+        font: var(--tui-font-text-m);
     }
 
     &[data-size='m']._has-counter {
@@ -73,27 +80,19 @@
     width: 100%;
     height: 100%;
     min-height: inherit;
-    padding-bottom: 0.4375rem;
     box-sizing: border-box;
-
-    :host[data-size='s'] & {
-        padding-top: 0.375rem;
-    }
-
-    :host[data-size='m']._label-outside & {
-        padding-top: 0.75rem;
-    }
+    padding: calc((var(--tui-height) - 1.25rem) / 2) 0;
 
     :host[data-size='l']._label-outside & {
-        padding-top: 1rem;
+        padding: calc((var(--tui-height) - 1.5rem) / 2) 0;
     }
 
     :host[data-size='m']:not(._label-outside) & {
-        padding-top: 1.25rem;
+        padding: calc((var(--tui-height) - 2.25rem) / 2) 0;
     }
 
     :host[data-size='l']:not(._label-outside) & {
-        padding-top: 1.625rem;
+        padding: calc((var(--tui-height) - 2.625rem) / 2) 0;
     }
 }
 
@@ -118,15 +117,24 @@
 
 .t-box {
     display: flex;
-    min-height: 100%;
+    min-height: calc(100% - 1rem);
     width: 100%;
 
     :host:not(._expandable) & {
-        height: 100%;
+        height: calc(100% - 1rem);
     }
 
     :host._has-counter._expandable & {
         margin-bottom: 1.25rem;
+    }
+
+    // For placeholder
+    :host[data-size='m']:not(._label-outside) & {
+        top: 1rem;
+    }
+
+    :host[data-size='l']:not(._label-outside) & {
+        top: 1.25rem;
     }
 }
 
@@ -141,6 +149,7 @@
     border-inline-start-width: var(--border-start, 0);
     border-inline-end-width: var(--border-end, 0);
 
+    :host[data-size='s'] &,
     :host[data-size='m'] & {
         padding: 0 0.75rem;
     }
@@ -187,6 +196,7 @@
         opacity: 1;
     }
 
+    :host[data-size='s'] &,
     :host[data-size='m'] & {
         padding: 0 0.75rem;
     }
@@ -210,9 +220,9 @@
 .t-placeholder {
     .textfield-placeholder();
     position: absolute;
+    top: calc(var(--tui-height) / 2 - 0.625rem);
     left: 0;
     max-width: 100%;
-    padding: 0 1rem;
     border: solid transparent;
     border-width: 0 var(--border-end, 0) 0 var(--border-start, 0);
     border-inline-start-width: var(--border-start, 0);
@@ -220,17 +230,15 @@
     box-sizing: border-box;
 
     :host[data-size='s'] & {
-        top: 0.375rem;
         padding: 0 0.75rem;
     }
 
     :host[data-size='m'] & {
-        top: 0.75rem;
         padding: 0 0.75rem;
     }
 
     :host[data-size='l'] & {
-        top: 1.12rem;
+        padding: 0 1rem;
     }
 
     :host._label-outside & {
@@ -245,10 +253,16 @@
     display: flex;
     justify-content: flex-end;
     pointer-events: none;
-    padding: 1rem 0.75rem;
+    padding: calc((var(--tui-height) - 1.5rem) / 2) 0.75rem;
+}
 
-    :host[data-size='m'] & {
-        padding: 0.75rem;
+.t-icon {
+    .input-icon();
+
+    &_left {
+        margin: 0 auto 0 0;
+        margin-inline-start: 0;
+        margin-inline-end: auto;
     }
 }
 

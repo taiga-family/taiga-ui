@@ -71,6 +71,9 @@
                 [tuiTextfieldCleaner]="cleaner"
                 [tuiTextfieldLabelOutside]="labelOutside"
                 [tuiTextfieldSize]="size"
+                [tuiTextfieldIcon]="icon"
+                [tuiTextfieldIconLeft]="iconLeft"
+                [tuiTextfieldCustomContent]="customContent"
                 [maxLength]="maxLength"
                 [expandable]="expandable"
                 [pseudoInvalid]="pseudoInvalid"
@@ -127,6 +130,15 @@
                 A number of visible rows in
                 <code>expandable</code>
                 mode
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiTextfieldIcon"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="iconVariants"
+                [(documentationPropertyValue)]="icon"
+            >
+                Icon content. If content is a string, it is used as stringified svg or a name of an icon
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
