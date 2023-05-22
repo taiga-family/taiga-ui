@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.28.0](https://github.com/tinkoff/taiga-ui/compare/v3.27.0...v3.28.0) (2023-05-22)
+
+### Features
+
+- **addon-doc:** remove redundant empty spaces after parse markdown
+  ([#4475](https://github.com/tinkoff/taiga-ui/issues/4475))
+  ([8572840](https://github.com/tinkoff/taiga-ui/commit/8572840916cdb6d1ed5296007a5e5741f7a5607b))
+- **addon-editor:** add pretty bottom indent for content editable area
+  ([#4460](https://github.com/tinkoff/taiga-ui/issues/4460))
+  ([2f5d2a8](https://github.com/tinkoff/taiga-ui/commit/2f5d2a8c18ad461a9013bc18b540d5421ddbd124))
+- **addon-editor:** support focus on editable area ([#4436](https://github.com/tinkoff/taiga-ui/issues/4436))
+  ([eae42c9](https://github.com/tinkoff/taiga-ui/commit/eae42c9e8bc72af0d394c66cb9bf442879772efb))
+- **core:** `Textfield` allow showing hints for disabled control
+  ([#4500](https://github.com/tinkoff/taiga-ui/issues/4500))
+  ([c1f73d1](https://github.com/tinkoff/taiga-ui/commit/c1f73d1ac22f4709e9750a280a1748fe0230be5c))
+- **core:** add `tuiSvgSrcInterceptors` for multiple source processing
+  ([#4402](https://github.com/tinkoff/taiga-ui/issues/4402))
+  ([722a66f](https://github.com/tinkoff/taiga-ui/commit/722a66f08ef07924d5929b5fbbda7beae5f35b8b))
+- **kit:** `Files` add `expanded` input-output ([#4479](https://github.com/tinkoff/taiga-ui/issues/4479))
+  ([90d8efe](https://github.com/tinkoff/taiga-ui/commit/90d8efe79539f3f646332c58880ba37d1901feac))
+- **kit:** `InputDate` uses `Maskito` instead of legacy `text-mask`
+  ([#4486](https://github.com/tinkoff/taiga-ui/issues/4486))
+  ([c558277](https://github.com/tinkoff/taiga-ui/commit/c558277b74b6eb60ca30ac379e5cb3b322452e2c))
+- **kit:** `InputDateRange` uses `Maskito` instead of legacy `text-mask`
+  ([#4510](https://github.com/tinkoff/taiga-ui/issues/4510))
+  ([fede061](https://github.com/tinkoff/taiga-ui/commit/fede061dac5505646f9c0e4103612c5fd20eb8b0))
+- **kit:** `InputTime` uses `Maskito` instead of legacy `text-mask`
+  ([#4484](https://github.com/tinkoff/taiga-ui/issues/4484))
+  ([1d7cf4b](https://github.com/tinkoff/taiga-ui/commit/1d7cf4bc93a564b635f3c2932954ea5ac281dcff))
+- **kit:** `TextArea` enable icons ([#4512](https://github.com/tinkoff/taiga-ui/issues/4512))
+  ([c6f6a7e](https://github.com/tinkoff/taiga-ui/commit/c6f6a7eb6889372af88faa4ba85bb7a461619b33))
+- **kit:** ability to change tag list paddings in `input-tag` ([#4487](https://github.com/tinkoff/taiga-ui/issues/4487))
+  ([4488eab](https://github.com/tinkoff/taiga-ui/commit/4488eabb3daa1aa7dd751c00ada614bbb464f346))
+- **kit:** add `TuiExtractCountryCodePipe`, `TuiIsoToCountryCodePipe`
+  ([#4297](https://github.com/tinkoff/taiga-ui/issues/4297))
+  ([a86b4aa](https://github.com/tinkoff/taiga-ui/commit/a86b4aab5f04fe6d78c878b08c3f3e330c47f4de))
+
+### Bug Fixes
+
+- **addon-doc:** anchor and theme mode buttons get proper size of svg icons
+  ([#4499](https://github.com/tinkoff/taiga-ui/issues/4499))
+  ([aafa41b](https://github.com/tinkoff/taiga-ui/commit/aafa41b2700b20b76e6fabf3cc25a18ce4a4ad62))
+- **addon-doc:** increasing css cascade priority for active state
+  ([#4493](https://github.com/tinkoff/taiga-ui/issues/4493))
+  ([e61e47d](https://github.com/tinkoff/taiga-ui/commit/e61e47dee1e8946433a8aa094cbc9787b28a1ea5))
+- **addon-editor:** focus should trigger only for outside contenteditable area
+  ([#4471](https://github.com/tinkoff/taiga-ui/issues/4471))
+  ([6da026e](https://github.com/tinkoff/taiga-ui/commit/6da026edeffd8ad848c0981d8996f4574c53102e))
+- **kit:** `InputInline` fix alignment with other elements ([#4505](https://github.com/tinkoff/taiga-ui/issues/4505))
+  ([a8ba7ed](https://github.com/tinkoff/taiga-ui/commit/a8ba7ed6fa39c43b76a37ef4a2ce550b883d51d3))
+- **kit:** `InputTag` fix vertical jumps on multi line size="m" and label inside
+  ([#4506](https://github.com/tinkoff/taiga-ui/issues/4506))
+  ([b1a9a65](https://github.com/tinkoff/taiga-ui/commit/b1a9a659e340a233b9d6c0214cef93638a8f6ba0))
+- **kit:** `MultiSelect` properly react to height variables change
+  ([#4513](https://github.com/tinkoff/taiga-ui/issues/4513))
+  ([559e709](https://github.com/tinkoff/taiga-ui/commit/559e7098e99f84f638838aea86e1ff11e1954e0c))
+
 ## [3.27.0](https://github.com/tinkoff/taiga-ui/compare/v3.26.0...v3.27.0) (2023-05-15)
 
 ### Features
