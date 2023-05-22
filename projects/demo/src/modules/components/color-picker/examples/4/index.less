@@ -1,0 +1,19 @@
+@import 'taiga-ui-local';
+
+input {
+    .fullsize();
+    opacity: 0;
+    pointer-events: auto;
+
+    &:hover + tui-svg {
+        opacity: 0.65;
+    }
+}
+
+hr {
+    position: absolute;
+    width: 1.4rem;
+    height: 0.3rem;
+    bottom: 0.1rem;
+    border-radius: 0.125rem;
+}
