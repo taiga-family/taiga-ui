@@ -29,6 +29,12 @@
 .t-scrollbar {
     margin: 0 -0.25rem;
     min-width: 100%;
+
+    :host[data-size='m']:not(._label-outside) & {
+        // Compensating different vertical alignment of plain HTML
+        // elements and inputs to align with other controls
+        top: 1px;
+    }
 }
 
 .t-tags {
@@ -143,11 +149,11 @@
     }
 
     :host[data-size='m']:not(._label-outside) & {
-        padding: 1.1875rem 0 0;
+        padding: 1.25rem 0 0.25rem;
     }
 
     :host[data-size='l']:not(._label-outside) & {
-        padding: 1.6875rem 0 0.5625rem;
+        padding: 1.75rem 0 0.5rem;
     }
 }
 
