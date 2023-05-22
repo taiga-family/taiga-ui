@@ -19,6 +19,10 @@
     &._readonly {
         cursor: default;
     }
+
+    &[data-size='m'] {
+        line-height: 1rem;
+    }
 }
 
 .t-hosted {
@@ -30,10 +34,13 @@
     margin: 0 -0.25rem;
     min-width: 100%;
 
+    // For placeholder
     :host[data-size='m']:not(._label-outside) & {
-        // Compensating different vertical alignment of plain HTML
-        // elements and inputs to align with other controls
-        top: 1px;
+        border-top: 1rem solid transparent;
+    }
+
+    :host[data-size='l']:not(._label-outside) & {
+        border-top: 1.25rem solid transparent;
     }
 }
 
@@ -69,6 +76,18 @@
 
 .t-content {
     align-items: flex-start;
+
+    :host[data-size='s'] & {
+        min-height: var(--tui-height-s);
+    }
+
+    :host[data-size='m'] & {
+        min-height: var(--tui-height-m);
+    }
+
+    :host[data-size='l'] & {
+        min-height: var(--tui-height-l);
+    }
 }
 
 .t-icons {
@@ -149,11 +168,11 @@
     }
 
     :host[data-size='m']:not(._label-outside) & {
-        padding: 1.25rem 0 0.25rem;
+        padding: calc((var(--tui-height-m) - 2rem) / 2) 0;
     }
 
     :host[data-size='l']:not(._label-outside) & {
-        padding: 1.75rem 0 0.5rem;
+        padding: calc((var(--tui-height-l) - 2.5rem) / 2) 0;
     }
 }
 
@@ -212,7 +231,7 @@
     }
 
     :host:not(._label-outside) & {
-        min-height: 1.25rem;
+        min-height: 1rem;
     }
 }
 
