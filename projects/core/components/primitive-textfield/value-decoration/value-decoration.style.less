@@ -1,7 +1,5 @@
 :host {
     position: absolute;
-    /* stylelint-disable-next-line meowtec/no-px */
-    top: 0.5px;
     display: flex;
     align-items: center;
     width: 100%;
@@ -14,6 +12,8 @@
 
     &._table {
         position: static;
+        height: auto;
+        margin-top: 0;
     }
 
     :host-context(tui-primitive-textfield [tuiWrapper][data-mode='onDark']) & {

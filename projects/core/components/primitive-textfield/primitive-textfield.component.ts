@@ -193,14 +193,6 @@ export class TuiPrimitiveTextfieldComponent
         return !!this.controller.customContent;
     }
 
-    get showOnlyPlaceholder(): boolean {
-        return (
-            this.focused &&
-            this.placeholderVisible &&
-            (this.size === 's' || (this.size === 'm' && !this.placeholderRaisable))
-        );
-    }
-
     get placeholderVisible(): boolean {
         const hasDecor =
             this.nativeFocusableElement?.placeholder ||
@@ -213,10 +205,7 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     get hasPlaceholder(): boolean {
-        return (
-            !this.showOnlyPlaceholder &&
-            (this.placeholderRaisable || this.placeholderVisible)
-        );
+        return this.placeholderRaisable || this.placeholderVisible;
     }
 
     get placeholderRaised(): boolean {
