@@ -31,11 +31,11 @@ export class TuiNativeDateDirective {
     }
 
     get max(): string {
-        return this.host.max.toString('YMD', '-');
+        return this.host.max.toJSON();
     }
 
     get min(): string {
-        return this.host.min.toString('YMD', '-');
+        return this.host.min.toJSON();
     }
 
     onChange(value: string): void {
