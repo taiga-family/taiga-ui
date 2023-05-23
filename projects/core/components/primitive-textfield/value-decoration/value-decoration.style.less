@@ -1,9 +1,8 @@
 :host {
     position: absolute;
-    display: flex;
-    align-items: center;
+    display: block;
     width: 100%;
-    height: var(--tui-height);
+    line-height: var(--tui-height);
     margin-top: calc(var(--tui-height) / -2);
     box-sizing: content-box;
     color: var(--tui-text-01);
@@ -12,7 +11,6 @@
 
     &._table {
         position: static;
-        height: auto;
         margin-top: 0;
     }
 
@@ -21,7 +19,7 @@
     }
 
     :host-context(tui-primitive-textfield[data-size='m']:not(._label-outside)) & {
-        height: calc(var(--tui-height) - 0.25rem);
+        line-height: calc(var(--tui-height) - 0.25rem);
     }
 }
 
