@@ -1,6 +1,8 @@
 import {Directive, Inject} from '@angular/core';
 import {DATE_FILLER_LENGTH, TUI_DATE_FORMAT, TuiDateMode, TuiDay} from '@taiga-ui/cdk';
-import {TUI_TEXTFIELD_HOST, TuiTextfieldHost} from '@taiga-ui/core';
+import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core';
+
+import type {TuiInputDateDirective} from '../input-date.directive';
 
 @Directive({
     selector: 'input[tuiDate]',
@@ -9,6 +11,8 @@ import {TUI_TEXTFIELD_HOST, TuiTextfieldHost} from '@taiga-ui/core';
         '[tabIndex]': '-1',
         '[value]': 'value',
         '(change)': 'onChange($event.target.value)',
+        '[max]': 'max',
+        '[min]': 'min',
         '(click.stop.silent)': '0',
         '(input.stop.silent)': '0',
         '(mousedown.stop.silent)': '0',
@@ -16,7 +20,7 @@ import {TUI_TEXTFIELD_HOST, TuiTextfieldHost} from '@taiga-ui/core';
 })
 export class TuiNativeDateDirective {
     constructor(
-        @Inject(TUI_TEXTFIELD_HOST) readonly host: TuiTextfieldHost,
+        @Inject(TUI_TEXTFIELD_HOST) readonly host: TuiInputDateDirective,
         @Inject(TUI_DATE_FORMAT) private readonly dateFormat: TuiDateMode,
     ) {}
 
@@ -24,6 +28,14 @@ export class TuiNativeDateDirective {
         return this.host.value.length === DATE_FILLER_LENGTH
             ? TuiDay.normalizeParse(this.host.value, this.dateFormat).toString('YMD', '-')
             : '';
+    }
+
+    get max(): string {
+        return this.host.max.toString('YMD', '-');
+    }
+
+    get min(): string {
+        return this.host.min.toString('YMD', '-');
     }
 
     onChange(value: string): void {
