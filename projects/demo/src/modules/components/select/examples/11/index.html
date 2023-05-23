@@ -1,5 +1,5 @@
 <form class="b-form">
-    <tui-select [formControl]="itemControl">
+    <tui-select [formControl]="itemStringControl">
         Character
         <select
             tuiSelect
@@ -24,5 +24,17 @@
             tuiTextfield
             placeholder="Make a choice"
         />
+    </tui-select>
+
+    <tui-select
+        class="tui-space_top-4"
+        [formControl]="itemControl"
+        [stringify]="stringify"
+    >
+        Character
+        <select
+            tuiSelect
+            [items]="customItems"
+        ></select>
     </tui-select>
 </form>

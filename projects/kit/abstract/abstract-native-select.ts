@@ -12,21 +12,21 @@ import {TUI_TEXTFIELD_HOST, TuiDataListDirective, TuiTextfieldHost} from '@taiga
 import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 
 @Directive()
-export abstract class AbstractTuiNativeSelect<T = TuiTextfieldHost> {
+export abstract class AbstractTuiNativeSelect<H = TuiTextfieldHost, T = string> {
     @Input()
-    disabledItemHandler: TuiBooleanHandler<string> | null = null;
+    disabledItemHandler: TuiBooleanHandler<T> | null = null;
 
     @ViewChild(TuiDataListDirective, {read: TemplateRef, static: true})
     readonly datalist: TemplateRef<any> | null = null;
 
     constructor(
-        @Inject(TUI_TEXTFIELD_HOST) readonly host: T,
+        @Inject(TUI_TEXTFIELD_HOST) readonly host: H,
         @Inject(AbstractTuiControl) readonly control: AbstractTuiControl<unknown>,
         @Inject(ElementRef) protected readonly el: ElementRef<HTMLSelectElement>,
         @Inject(TuiIdService)
         private readonly idService: TuiIdService,
         @Inject(TUI_ITEMS_HANDLERS)
-        readonly itemsHandlers: TuiItemsHandlers<string>,
+        readonly itemsHandlers: TuiItemsHandlers<T>,
     ) {}
 
     @HostBinding(`id`)

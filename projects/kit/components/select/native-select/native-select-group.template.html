@@ -9,10 +9,11 @@
     [label]="labels[index]"
 >
     <option
-        *ngFor="let option of group"
-        [value]="option"
+        *ngFor="let option of group; let i = index"
+        [value]="stringify(option)"
+        [selected]="selected(option)"
         [disabled]="disabledItemHandler ? disabledItemHandler(option) : itemsHandlers.disabledItemHandler(option)"
     >
-        {{ option }}
+        {{ stringify(option) }}
     </option>
 </optgroup>
