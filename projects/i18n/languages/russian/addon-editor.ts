@@ -14,7 +14,7 @@ export const TUI_RUSSIAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
         strikeThrough: `Зачеркнутый`,
         justify: `Выравнивание`,
         justifyLeft: `Выровнять текст по левому краю`,
-        justifyCenter: `Выровнять тект по центру`,
+        justifyCenter: `Выровнять текст по центру`,
         justifyRight: `Выровнять текст по правому краю`,
         justifyFull: `Выровнять по ширине`,
         list: `Списки`,
