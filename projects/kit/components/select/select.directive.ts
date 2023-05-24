@@ -19,10 +19,6 @@ export class TuiSelectDirective extends AbstractTuiTextfieldHost<
         return this.host.computedValue;
     }
 
-    get rawValue(): unknown {
-        return this.host.value;
-    }
-
     get stringify(): TuiItemsHandlers<unknown>['stringify'] {
         return this.host.stringify;
     }

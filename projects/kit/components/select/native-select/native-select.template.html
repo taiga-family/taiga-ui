@@ -2,6 +2,7 @@
     *tuiDataList
     [items]="items"
     [disabledItemHandler]="disabledItemHandler || itemsHandlers.disabledItemHandler"
+    [itemContent]="itemContent"
 ></tui-data-list-wrapper>
 <option
     *ngFor="let option of items; let index = index"

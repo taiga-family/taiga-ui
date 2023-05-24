@@ -1,7 +1,8 @@
 import {ChangeDetectionStrategy, Component, Input, TemplateRef} from '@angular/core';
-import {tuiAsDataList} from '@taiga-ui/core';
+import {tuiAsDataList, TuiValueContentContext} from '@taiga-ui/core';
 import {AbstractTuiNativeSelect} from '@taiga-ui/kit/abstract';
 import {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import type {TuiSelectDirective} from '../select.directive';
 
@@ -37,12 +38,15 @@ export class TuiNativeSelectComponent<T> extends AbstractTuiNativeSelect<
     @Input()
     items: readonly T[] | null = [];
 
+    itemContent: PolymorpheusContent<TuiValueContentContext<T>> = ({$implicit}) =>
+        this.stringify($implicit);
+
     get stringify(): TuiItemsHandlers<T>['stringify'] {
         return this.host.stringify;
     }
 
     selected(option: T): boolean {
-        return this.host.rawValue === option;
+        return this.control.value === option;
     }
 
     onValueChange(index: number): void {
