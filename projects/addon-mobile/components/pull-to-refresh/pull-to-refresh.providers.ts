@@ -1,56 +1,35 @@
-import {ElementRef, InjectionToken, Provider} from '@angular/core';
-import {TUI_LOADED} from '@taiga-ui/addon-mobile/tokens';
-import {TUI_IS_IOS, tuiTypedFromEvent} from '@taiga-ui/cdk';
-import {merge, Observable} from 'rxjs';
-import {endWith, filter, map, scan, switchMap, takeUntil} from 'rxjs/operators';
+import {inject, InjectionToken} from '@angular/core';
+import {TUI_IS_IOS, TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {EMPTY, Observable} from 'rxjs';
 
-export const MICRO_OFFSET = 10 ** -6;
-export const PULLED_DISTANCE = 50;
+import {TUI_ANDROID_LOADER} from './loader-android/loader-android.component';
+import {TUI_IOS_LOADER} from './loader-ios/loader-ios.component';
 
 /**
- * Stream that emits content pulling
+ * Stream that emits when loading is over
  */
-export const TUI_PULLING = new InjectionToken<Observable<number>>(`[TUI_PULLING]`);
-
-export const TUI_PULL_TO_REFRESH_PROVIDERS: Provider[] = [
+export const TUI_PULL_TO_REFRESH_LOADED = new InjectionToken<Observable<unknown>>(
+    `[TUI_PULL_TO_REFRESH_LOADED]`,
     {
-        provide: TUI_PULLING,
-        deps: [TUI_IS_IOS, TUI_LOADED, ElementRef],
-        useFactory: (
-            isIOS: boolean,
-            loaded$: Observable<unknown>,
-            {nativeElement}: ElementRef<HTMLElement>,
-        ): Observable<number> => {
-            return merge(
-                tuiTypedFromEvent(nativeElement, `touchstart`, {passive: true}).pipe(
-                    filter(() => nativeElement.scrollTop === 0),
-                    switchMap(touchStart =>
-                        tuiTypedFromEvent(nativeElement, `touchmove`).pipe(
-                            map(
-                                touchMove =>
-                                    touchMove.touches[0].clientY -
-                                    touchStart.touches[0].clientY,
-                            ),
-                            takeUntil(tuiTypedFromEvent(nativeElement, `touchend`)),
-                            endWith(0),
-                        ),
-                    ),
-                ),
-                loaded$.pipe(map(() => NaN)),
-            ).pipe(
-                scan((max, current) => {
-                    if (Number.isNaN(current)) {
-                        return 0;
-                    }
-
-                    const androidLoading = !isIOS && max === PULLED_DISTANCE;
-                    const dropped = current === 0 && max > PULLED_DISTANCE;
-
-                    return androidLoading || dropped
-                        ? PULLED_DISTANCE
-                        : current + MICRO_OFFSET;
-                }, 0),
-            );
-        },
+        factory: () => EMPTY,
     },
-];
+);
+
+export const TUI_PULL_TO_REFRESH_THRESHOLD = new InjectionToken<number>(
+    `[TUI_PULL_TO_REFRESH_THRESHOLD]`,
+    {
+        factory: () => 50,
+    },
+);
+
+export const TUI_PULL_TO_REFRESH_COMPONENT = new InjectionToken<
+    PolymorpheusContent<TuiContextWithImplicit<number>>
+>(`[TUI_PULL_TO_REFRESH_COMPONENT]`, {
+    factory: () => (inject(TUI_IS_IOS) ? TUI_IOS_LOADER : TUI_ANDROID_LOADER),
+});
+
+/**
+ * @deprecated renamed to {@link TUI_PULL_TO_REFRESH_LOADED}
+ */
+export const TUI_LOADED = TUI_PULL_TO_REFRESH_LOADED;

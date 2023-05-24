@@ -1,6 +1,10 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
+import {TUI_PULL_TO_REFRESH_THRESHOLD} from '@taiga-ui/addon-mobile/components';
+import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
-const HIDDEN_DISTANCE = 2;
+import {MICRO_OFFSET} from '../pull-to-refresh.service';
+
 const ROTATE_X_DEFAULT = 180;
 const ROTATE_X_MAX = 500;
 const ROTATE_X_MULTIPLIER = 2.3;
@@ -12,20 +16,44 @@ const ROTATE_X_MULTIPLIER = 2.3;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMobileLoaderAndroidComponent {
-    @Input()
-    pulled = 0;
+    constructor(
+        @Inject(POLYMORPHEUS_CONTEXT)
+        private readonly context: TuiContextWithImplicit<number>,
+        @Inject(TUI_PULL_TO_REFRESH_THRESHOLD) private readonly threshold: number,
+    ) {}
 
     get transform(): string {
         const rotateX = Math.min(
-            ROTATE_X_DEFAULT + this.pulled * ROTATE_X_MULTIPLIER,
+            ROTATE_X_DEFAULT + this.percent * ROTATE_X_MULTIPLIER,
             ROTATE_X_MAX,
         );
 
         return `rotate(${rotateX} 0 0)`;
     }
 
-    @HostBinding('class._hidden')
-    get hidden(): boolean {
-        return this.pulled < HIDDEN_DISTANCE;
+    @HostBinding('class._visible')
+    get percent(): number {
+        return (this.context.$implicit * 100) / this.threshold;
+    }
+
+    get opacity(): number {
+        return this.context.$implicit / (this.threshold * 1.5);
+    }
+
+    @HostBinding('class._dropped')
+    get dropped(): boolean {
+        return (
+            this.context.$implicit <= MICRO_OFFSET ||
+            this.context.$implicit === this.threshold
+        );
+    }
+
+    @HostBinding('style.transform')
+    get hostTransform(): string {
+        return `translateY(${Math.min(this.context.$implicit, this.threshold * 1.5)}px)`;
     }
 }
+
+export const TUI_ANDROID_LOADER = new PolymorpheusComponent(
+    TuiMobileLoaderAndroidComponent,
+);

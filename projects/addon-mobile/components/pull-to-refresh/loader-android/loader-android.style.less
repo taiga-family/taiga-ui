@@ -2,17 +2,27 @@
 
 :host {
     .shadow(2);
+    .transition(opacity);
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
     display: flex;
     height: 2.25rem;
     width: 2.25rem;
-    background-color: #fff;
+    background-color: var(--tui-secondary);
     border-radius: 6.25rem;
     align-items: center;
     justify-content: center;
+    margin-left: -1.125rem;
+    opacity: 0;
 
-    &._hidden {
-        visibility: hidden;
-        transition: 0s;
+    &._visible {
+        opacity: 1;
+    }
+
+    &._dropped {
+        transition: transform var(--tui-duration) cubic-bezier(0.4, 0, 0.2, 1),
+            opacity var(--tui-duration) var(--tui-duration);
     }
 }
 
