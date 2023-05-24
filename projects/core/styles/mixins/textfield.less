@@ -6,23 +6,20 @@
     display: block;
     border-radius: var(--tui-radius-m);
     text-align: left;
+    height: var(--tui-height);
+    min-height: var(--tui-height);
+    max-height: var(--tui-height);
 
     &[data-size='s'] {
-        height: var(--tui-height-s);
-        min-height: var(--tui-height-s);
-        max-height: var(--tui-height-s);
+        --tui-height: var(--tui-height-s);
     }
 
     &[data-size='m'] {
-        height: var(--tui-height-m);
-        min-height: var(--tui-height-m);
-        max-height: var(--tui-height-m);
+        --tui-height: var(--tui-height-m);
     }
 
     &[data-size='l'] {
-        height: var(--tui-height-l);
-        min-height: var(--tui-height-l);
-        max-height: var(--tui-height-l);
+        --tui-height: var(--tui-height-l);
         font: var(--tui-font-text-m);
         line-height: @line-height-l;
     }
@@ -72,10 +69,43 @@
     text-transform: inherit;
     resize: none;
 
-    :host[data-mode='onDark'] &,
-    :host-context(tui-primitive-textfield[data-mode='onDark']),
-    :host-context(tui-text-area[data-mode='onDark']) {
+    /* stylelint-disable */
+    /* Safari autofill icons */
+    //noinspection CssInvalidPseudoSelector
+    &:-webkit-autofill,
+    &:-webkit-autofill::first-line {
+        font-size: inherit;
+        line-height: inherit;
+    }
+    /* stylelint-enable */
+
+    //noinspection ALL
+    &::-webkit-caps-lock-indicator,
+    &::-webkit-contacts-auto-fill-button,
+    &::-webkit-credit-card-auto-fill-button,
+    &::-webkit-credentials-auto-fill-button,
+    &::-webkit-strong-password-auto-fill-button {
+        .webkit-auto-fill-button-hidden();
+    }
+
+    &::placeholder {
+        color: var(--tui-text-03);
+        opacity: 0;
+    }
+
+    :host._focused:not(._readonly) &::placeholder,
+    :host-context(tui-primitive-textfield._focused:not(._readonly)) &::placeholder,
+    :host-context(tui-text-area._focused:not(._readonly)) &::placeholder {
+        opacity: 1;
+    }
+
+    [tuiWrapper][data-mode='onDark'] &,
+    :host-context([tuiWrapper][data-mode='onDark']) {
         .autofill(dark);
+
+        &::placeholder {
+            color: var(--tui-text-03-night);
+        }
     }
 
     :host[data-size='s'] &,
@@ -166,8 +196,8 @@
             color: var(--tui-error-fill);
         }
 
-        :host[data-mode='onDark']._invalid:not(._focused) &,
-        :host[data-mode='onDark']._invalid:not(._focused):hover & {
+        :host._invalid:not(._focused) [tuiWrapper][data-mode='onDark'] &,
+        :host._invalid:not(._focused):hover [tuiWrapper][data-mode='onDark'] & {
             color: var(--tui-error-fill-night);
         }
     }
@@ -193,18 +223,18 @@
 
     /* stylelint-disable selector-max-specificity */
     // textfield-light
-    :host[data-mode='onDark'] & {
+    [tuiWrapper][data-mode='onDark'] & {
         color: var(--tui-text-02-night);
     }
 
-    :host[data-size='m'][data-mode='onDark']._focused:not(._label-outside) &,
-    :host[data-size='l'][data-mode='onDark']._focused:not(._label-outside) & {
+    :host[data-size='m']._focused:not(._label-outside) [tuiWrapper][data-mode='onDark'] &,
+    :host[data-size='l']._focused:not(._label-outside) [tuiWrapper][data-mode='onDark'] & {
         color: var(--tui-text-01-night);
     }
 
-    :host[data-mode='onDark']._focused &,
-    :host[data-size='m'][data-mode='onDark']._focused._label-outside &,
-    :host[data-size='l'][data-mode='onDark']._focused._label-outside & {
+    :host._focused [tuiWrapper][data-mode='onDark'] &,
+    :host[data-size='m']._focused._label-outside [tuiWrapper][data-mode='onDark'] &,
+    :host[data-size='l']._focused._label-outside [tuiWrapper][data-mode='onDark'] & {
         color: var(--tui-text-02-night);
     }
     /* stylelint-enable selector-max-specificity */

@@ -29,9 +29,7 @@ import {
     TuiTextfieldController,
     TuiTextfieldOptions,
 } from '@taiga-ui/core/directives/textfield-controller';
-import {MODE_PROVIDER} from '@taiga-ui/core/providers';
-import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiBrightness, TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {tuiGetBorder} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent, PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 import {fromEvent, Observable} from 'rxjs';
@@ -50,10 +48,8 @@ const ICON_PADDING = 1.625;
     providers: [
         tuiAsFocusableItemAccessor(TuiPrimitiveTextfieldComponent),
         TEXTFIELD_CONTROLLER_PROVIDER,
-        MODE_PROVIDER,
     ],
     host: {
-        '($.data-mode.attr)': 'mode$',
         '[class._autofilled]': 'autofilled',
         '[class._label-outside]': 'controller.labelOutside',
     },
@@ -118,7 +114,6 @@ export class TuiPrimitiveTextfieldComponent
     autofilled = false;
 
     constructor(
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
         @Optional()
@@ -198,14 +193,6 @@ export class TuiPrimitiveTextfieldComponent
         return !!this.controller.customContent;
     }
 
-    get showOnlyPlaceholder(): boolean {
-        return (
-            this.focused &&
-            this.placeholderVisible &&
-            (this.size === 's' || (this.size === 'm' && !this.placeholderRaisable))
-        );
-    }
-
     get placeholderVisible(): boolean {
         const hasDecor =
             this.nativeFocusableElement?.placeholder ||
@@ -218,10 +205,7 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     get hasPlaceholder(): boolean {
-        return (
-            !this.showOnlyPlaceholder &&
-            (this.placeholderRaisable || this.placeholderVisible)
-        );
+        return this.placeholderRaisable || this.placeholderVisible;
     }
 
     get placeholderRaised(): boolean {
