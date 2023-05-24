@@ -17,18 +17,17 @@
     >
         <div class="t-description">
             <ng-container *ngTemplateOutlet="template || null; context: {$implicit: fileDragged}"></ng-container>
-            <ng-container *ngIf="!template">
+            <div *ngIf="!template">
                 <a tuiLink>
                     <ng-container *polymorpheusOutlet="computedLink$ | async as text">
                         {{ text }}
                     </ng-container>
                 </a>
-                &nbsp;
                 <span
                     *polymorpheusOutlet="computedLabel$ | async as text"
                     [textContent]="text"
                 ></span>
-            </ng-container>
+            </div>
         </div>
         <ng-container *ngIf="!readOnly && !computedDisabled">
             <ng-content select="input"></ng-content>
