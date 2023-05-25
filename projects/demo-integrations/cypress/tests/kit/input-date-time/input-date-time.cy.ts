@@ -18,6 +18,83 @@ describe(`InputDateTime`, () => {
             matchImageSnapshot(`input-date-time-minimum-month`);
         });
 
+        it(
+            `[max] property cannot be bypassed via selection`,
+            {browser: `!firefox`}, // Cypress Real Events works only in the Chromium-based browser
+            () => {
+                // max = [{year: 2018, month: 10, day: 2}, {hours: 16, minutes: 20, seconds: 0, ms: 0}]
+                cy.tuiVisit(`components/input-date-time/API?max$=4`);
+
+                const maxValue = `02.11.2018, 16:20`;
+
+                getInput()
+                    .focus()
+                    .type(maxValue)
+                    .should(`have.value`, maxValue)
+                    .realPress([`Shift`, `ArrowLeft`]);
+
+                getInput()
+                    .type(`5`)
+                    .should(`have.value`, maxValue)
+                    .realPress([
+                        ...new Array(`:20`.length).fill(`ArrowLeft`),
+                        `Shift`,
+                        `ArrowLeft`,
+                    ]);
+
+                // valid case
+                getInput()
+                    .type(`2`)
+                    .should(`have.value`, `02.11.2018, 12:20`)
+                    .should(`have.prop`, `selectionStart`, `02.11.2018, 12:`.length)
+                    .should(`have.prop`, `selectionEnd`, `02.11.2018, 12:`.length);
+
+                getInput().realPress([`Shift`, `ArrowLeft`, `ArrowLeft`]);
+
+                // invalid case
+                getInput().type(`9`).should(`have.value`, maxValue);
+            },
+        );
+
+        it(
+            `[min] property cannot be bypassed via selection`,
+            {browser: `!firefox`}, // Cypress Real Events works only in the Chromium-based browser
+            () => {
+                // min = [{year: 2018, month: 9, day: 31}, {hours: 12, minutes: 20, seconds: 0, ms: 0}]
+                cy.tuiVisit(`components/input-date-time/API?min$=4`);
+
+                const minValue = `31.10.2018, 12:20`;
+
+                getInput()
+                    .focus()
+                    .type(minValue)
+                    .should(`have.value`, minValue)
+                    .realPress([`ArrowLeft`, `Shift`, `ArrowLeft`]); // 31.10.2018, 12:|2|0
+
+                getInput()
+                    .type(`1`)
+                    .should(`have.value`, minValue)
+                    .type(`{moveToEnd}`)
+                    .realPress([
+                        ...new Array(`:20`.length).fill(`ArrowLeft`),
+                        `Shift`,
+                        `ArrowLeft`,
+                    ]); // 31.10.2018, 1|2|:20
+
+                // valid case
+                getInput()
+                    .type(`5`)
+                    .should(`have.value`, `31.10.2018, 15:20`)
+                    .should(`have.prop`, `selectionStart`, `31.10.2018, 15:`.length)
+                    .should(`have.prop`, `selectionEnd`, `31.10.2018, 15:`.length);
+
+                getInput().realPress([`Shift`, `ArrowLeft`, `ArrowLeft`]); // 31.10.2018, 1|5|:20
+
+                // invalid case
+                getInput().type(`1`).should(`have.value`, minValue);
+            },
+        );
+
         function getInput(): Cypress.Chainable<JQuery> {
             return cy
                 .get(`#demo-content`)
