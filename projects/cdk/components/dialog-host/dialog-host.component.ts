@@ -15,15 +15,13 @@ import {TuiDialog} from '@taiga-ui/cdk/types';
 import {combineLatest, Observable, of} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
-const defaultClosesOnBack = false;
-
 /**
  * Is closing dialog on browser backward navigation enabled
  */
 export const TUI_DIALOG_CLOSES_ON_BACK = new InjectionToken<Observable<boolean>>(
     '[TUI_DIALOG_CLOSES_ON_BACK]',
     {
-        factory: () => of(defaultClosesOnBack),
+        factory: () => of(false),
     },
 );
 
@@ -43,12 +41,11 @@ const isFakeHistoryState = (
     animations: [TUI_PARENT_ANIMATION],
 })
 export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
-    public dialogs: readonly T[] = [];
-    public isDialogClosesOnBack = defaultClosesOnBack;
+    dialogs: readonly T[] = [];
 
     constructor(
         @Inject(TUI_DIALOG_CLOSES_ON_BACK)
-        isDialogClosesOnBack$: Observable<boolean>,
+        readonly isDialogClosesOnBack$: Observable<boolean>,
         @Inject(TUI_DIALOGS)
         dialogsByType: Array<Observable<readonly T[]>>,
         @Inject(HISTORY) private readonly historyRef: History,
@@ -69,13 +66,6 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
             )
             .subscribe(dialogs => {
                 this.dialogs = dialogs;
-                cdr.detectChanges();
-            });
-
-        isDialogClosesOnBack$
-            .pipe(takeUntil(destroy$))
-            .subscribe(isDialogClosesOnBack => {
-                this.isDialogClosesOnBack = isDialogClosesOnBack;
                 cdr.detectChanges();
             });
     }

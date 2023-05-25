@@ -9,9 +9,10 @@ import {
 import {TUI_WINDOW_HEIGHT, TuiDestroyService} from '@taiga-ui/cdk';
 import {TUI_ANIMATION_OPTIONS, tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
+
 import {TuiSheet} from '../../sheet';
 import {TuiSheetService} from '../../sheet.service';
-import {takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-sheets-host',
@@ -21,7 +22,7 @@ import {takeUntil} from 'rxjs/operators';
     animations: [tuiSlideInTop, tuiFadeIn],
 })
 export class TuiSheetsHostComponent {
-    public sheets: readonly TuiSheet<any>[] = [];
+    sheets: ReadonlyArray<TuiSheet<any>> = [];
 
     constructor(
         @Inject(TUI_ANIMATION_OPTIONS) readonly options: AnimationOptions,

@@ -27,7 +27,7 @@ import {takeUntil} from 'rxjs/operators';
     encapsulation: ViewEncapsulation.None,
 })
 export class TuiAlertHostComponent<T extends TuiDialog<unknown, unknown>> {
-    public alerts: readonly (readonly T[])[] = [];
+    alerts: ReadonlyArray<readonly T[]> = [];
 
     constructor(
         @Inject(TUI_ALERTS) allAlerts: Array<Observable<readonly T[]>>,

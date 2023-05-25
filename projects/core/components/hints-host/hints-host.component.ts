@@ -24,7 +24,7 @@ import {takeUntil} from 'rxjs/operators';
     },
 })
 export class TuiHintsHostComponent {
-    public hints: readonly TuiPortalItem[] = [];
+    hints: readonly TuiPortalItem[] = [];
 
     constructor(
         @Inject(TuiHintService) hints$: Observable<readonly TuiPortalItem[]>,
