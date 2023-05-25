@@ -1,11 +1,21 @@
-import {ChangeDetectionStrategy, Component, Inject, InjectionToken} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    Inject,
+    InjectionToken,
+    Self,
+} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {HISTORY} from '@ng-web-apis/common';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
+import {TuiDestroyService} from '@taiga-ui/cdk/services/destroy.service';
 import {TUI_DIALOGS} from '@taiga-ui/cdk/tokens';
 import {TuiDialog} from '@taiga-ui/cdk/types';
 import {combineLatest, Observable, of} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, takeUntil} from 'rxjs/operators';
+
+const defaultClosesOnBack = false;
 
 /**
  * Is closing dialog on browser backward navigation enabled
@@ -13,7 +23,7 @@ import {map} from 'rxjs/operators';
 export const TUI_DIALOG_CLOSES_ON_BACK = new InjectionToken<Observable<boolean>>(
     '[TUI_DIALOG_CLOSES_ON_BACK]',
     {
-        factory: () => of(false),
+        factory: () => of(defaultClosesOnBack),
     },
 );
 
@@ -33,22 +43,38 @@ const isFakeHistoryState = (
     animations: [TUI_PARENT_ANIMATION],
 })
 export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
-    readonly dialogs$ = combineLatest(this.dialogsByType).pipe(
-        map(allTypesDialogs =>
-            new Array<T>()
-                .concat(...allTypesDialogs)
-                .sort((a, b) => a.createdAt - b.createdAt),
-        ),
-    );
+    public dialogs: readonly T[] = [];
+    public isDialogClosesOnBack = defaultClosesOnBack;
 
     constructor(
         @Inject(TUI_DIALOG_CLOSES_ON_BACK)
-        readonly isDialogClosesOnBack$: Observable<boolean>,
+        isDialogClosesOnBack$: Observable<boolean>,
         @Inject(TUI_DIALOGS)
-        private readonly dialogsByType: Array<Observable<readonly T[]>>,
+        dialogsByType: Array<Observable<readonly T[]>>,
         @Inject(HISTORY) private readonly historyRef: History,
         @Inject(Title) private readonly titleService: Title,
-    ) {}
+        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
+    ) {
+        // Due to this view being parallel to app content, `markForCheck` from `async` pipe
+        // can happen after view was checked, so calling `detectChanges` instead
+        combineLatest(dialogsByType)
+            .pipe(
+                map(arr => arr.flat().sort((a, b) => a.createdAt - b.createdAt)),
+                takeUntil(destroy$),
+            )
+            .subscribe(dialogs => {
+                this.dialogs = dialogs;
+                cdr.detectChanges();
+            });
+
+        isDialogClosesOnBack$
+            .pipe(takeUntil(destroy$))
+            .subscribe(isDialogClosesOnBack => {
+                this.isDialogClosesOnBack = isDialogClosesOnBack;
+                cdr.detectChanges();
+            });
+    }
 
     closeLast(dialogs: readonly T[], isDialogClosesOnBack: boolean): void {
         if (!isDialogClosesOnBack) {

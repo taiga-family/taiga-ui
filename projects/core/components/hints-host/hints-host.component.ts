@@ -1,8 +1,15 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    Inject,
+    Self,
+} from '@angular/core';
+import {TUI_PARENT_ANIMATION, TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiHintService} from '@taiga-ui/core/services';
 import {Observable} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-hints-host',
@@ -17,7 +24,18 @@ import {Observable} from 'rxjs';
     },
 })
 export class TuiHintsHostComponent {
+    public hints: readonly TuiPortalItem[] = [];
+
     constructor(
-        @Inject(TuiHintService) readonly hints$: Observable<readonly TuiPortalItem[]>,
-    ) {}
+        @Inject(TuiHintService) hints$: Observable<readonly TuiPortalItem[]>,
+        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
+        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
+    ) {
+        // Due to this view being parallel to app content, `markForCheck` from `async` pipe
+        // can happen after view was checked, so calling `detectChanges` instead
+        hints$.pipe(takeUntil(destroy$)).subscribe(hints => {
+            this.hints = hints;
+            cdr.detectChanges();
+        });
+    }
 }
