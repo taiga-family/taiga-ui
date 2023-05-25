@@ -1,6 +1,6 @@
-<ng-container *ngIf="service.sheets$ | async as items">
+<ng-container *ngIf="sheets.length > 0">
     <div
-        *ngFor="let item of items"
+        *ngFor="let item of sheets"
         #wrapper="tuiSheetWrapper"
         class="t-wrapper"
         [@tuiSlideInTop]="options"
@@ -22,6 +22,6 @@
     </div>
     <div
         class="t-overlay"
-        (click)="close(items[0])"
+        (click)="close(sheets[0])"
     ></div>
 </ng-container>
