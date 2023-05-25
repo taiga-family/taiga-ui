@@ -60,7 +60,11 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
         // can happen after view was checked, so calling `detectChanges` instead
         combineLatest(dialogsByType)
             .pipe(
-                map(arr => arr.flat().sort((a, b) => a.createdAt - b.createdAt)),
+                map(arr =>
+                    new Array<T>()
+                        .concat(...arr)
+                        .sort((a, b) => a.createdAt - b.createdAt),
+                ),
                 takeUntil(destroy$),
             )
             .subscribe(dialogs => {
