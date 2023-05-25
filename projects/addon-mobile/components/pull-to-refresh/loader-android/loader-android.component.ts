@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
-import {TUI_PULL_TO_REFRESH_THRESHOLD} from '@taiga-ui/addon-mobile/components';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
+import {TUI_PULL_TO_REFRESH_THRESHOLD} from '../pull-to-refresh.providers';
 import {MICRO_OFFSET} from '../pull-to-refresh.service';
 
 const ROTATE_X_DEFAULT = 180;
