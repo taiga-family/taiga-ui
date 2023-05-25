@@ -2,7 +2,7 @@
     *tuiDataList
     [items]="items"
     [labels]="labels"
-    [itemContent]="itemContent"
+    [itemContent]="stringify | tuiStringifyContent"
     [disabledItemHandler]="disabledItemHandler || itemsHandlers.disabledItemHandler"
 ></tui-data-list-wrapper>
 <optgroup

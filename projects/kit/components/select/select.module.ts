@@ -12,6 +12,7 @@ import {
 import {TuiArrowModule} from '@taiga-ui/kit/components/arrow';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiSelectOptionModule} from '@taiga-ui/kit/components/select-option';
+import {TuiStringifyContentPipeModule} from '@taiga-ui/kit/pipes';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiNativeSelectComponent} from './native-select/native-select.component';
@@ -32,6 +33,7 @@ import {TuiSelectDirective} from './select.directive';
         TuiTextfieldControllerModule,
         TuiDataListWrapperModule,
         TuiDataListModule,
+        TuiStringifyContentPipeModule,
     ],
     declarations: [
         TuiSelectComponent,
