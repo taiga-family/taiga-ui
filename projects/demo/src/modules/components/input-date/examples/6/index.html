@@ -3,18 +3,5 @@
     [formGroup]="testForm"
     [tuiTextfieldCleaner]="true"
 >
-    <tui-input-date
-        formControlName="testValue"
-        class="tui-space_bottom-4"
-    >
-        Choose a date
-    </tui-input-date>
-
-    <tui-input-date
-        formControlName="testValue2"
-        [max]="max"
-        [min]="min"
-    >
-        Choose a date
-    </tui-input-date>
+    <tui-input-date formControlName="testValue">Choose a date</tui-input-date>
 </form>
