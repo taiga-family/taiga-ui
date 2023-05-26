@@ -1,5 +1,6 @@
 import {Directive} from '@angular/core';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
+import {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 
 import {TuiSelectComponent} from './select.component';
 
@@ -18,7 +19,11 @@ export class TuiSelectDirective extends AbstractTuiTextfieldHost<
         return this.host.computedValue;
     }
 
-    onValueChange(value: string): void {
+    get stringify(): TuiItemsHandlers<unknown>['stringify'] {
+        return this.host.stringify;
+    }
+
+    onValueChange(value: unknown): void {
         this.host.onValueChange(value);
     }
 }
