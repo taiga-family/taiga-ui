@@ -16,6 +16,9 @@ export const TUI_PULL_TO_REFRESH_LOADED = new InjectionToken<Observable<unknown>
     },
 );
 
+/**
+ * Pull threshold in pixels until loading starts
+ */
 export const TUI_PULL_TO_REFRESH_THRESHOLD = new InjectionToken<number>(
     `[TUI_PULL_TO_REFRESH_THRESHOLD]`,
     {
@@ -23,6 +26,9 @@ export const TUI_PULL_TO_REFRESH_THRESHOLD = new InjectionToken<number>(
     },
 );
 
+/**
+ * Loading indicator component that gets current pull distance in pixels as context
+ */
 export const TUI_PULL_TO_REFRESH_COMPONENT = new InjectionToken<
     PolymorpheusContent<TuiContextWithImplicit<number>>
 >(`[TUI_PULL_TO_REFRESH_COMPONENT]`, {
