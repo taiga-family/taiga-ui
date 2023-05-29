@@ -1,3 +1,4 @@
+import {TuiRounding} from '@taiga-ui/cdk';
 import {TuiDecimalSymbol} from '@taiga-ui/core/types';
 
 /**
@@ -23,4 +24,8 @@ export interface TuiNumberFormatSettings {
      * Enable zeros at the end of decimal part.
      */
     readonly zeroPadding: boolean;
+    /**
+     * Rounding method.
+     */
+    readonly rounding: TuiRounding;
 }
