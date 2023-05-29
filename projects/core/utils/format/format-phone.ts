@@ -1,6 +1,7 @@
 import {CHAR_PLUS} from '@taiga-ui/cdk';
 
 /**
+ * TODO: Guys, should we mark this function as deprecated?
  * Formats a string with the phone format +7XXXXXXXXXXXX or XXXXXXXXXXXX,
  * adding parentheses and hyphens.
  *

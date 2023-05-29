@@ -14,7 +14,7 @@ export class TuiInputPhoneDirective
     input?: HTMLInputElement;
 
     override get value(): string {
-        return this.host.computedValue;
+        return this.host.nativeValue;
     }
 
     onValueChange(value: string): void {
