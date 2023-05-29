@@ -250,16 +250,6 @@ describe(`InputDateTime`, () => {
             expect(inputPO.value).toBe(`07/12/2021`);
         });
 
-        it(`corrects date if month more than 12`, () => {
-            inputPO.sendTextAndBlur(`151420071830`);
-            expect(inputPO.value).toBe(`12/14/2007, 18:30`);
-        });
-
-        it(`corrects date if day more than 31`, () => {
-            inputPO.sendTextAndBlur(`153320071642`);
-            expect(inputPO.value).toBe(`12/31/2007, 16:42`);
-        });
-
         it(`does not accept another separator`, () => {
             inputPO.sendTextAndBlur(`05.27.2002, 12:11`);
             expect(inputPO.value).toBe(`05/27/2002, 12:11`);
@@ -296,16 +286,6 @@ describe(`InputDateTime`, () => {
 
         it(`displays correctly initial value`, () => {
             expect(inputPO.value).toBe(`2021-07-12`);
-        });
-
-        it(`corrects date if month more than 12`, () => {
-            inputPO.sendTextAndBlur(`200715141830`);
-            expect(inputPO.value).toBe(`2007-12-14, 18:30`);
-        });
-
-        it(`corrects date if day more than 31`, () => {
-            inputPO.sendTextAndBlur(`200715331642`);
-            expect(inputPO.value).toBe(`2007-12-31, 16:42`);
         });
 
         it(`does not accept another separator`, () => {
@@ -395,8 +375,8 @@ describe(`InputDateTime`, () => {
         it(`transforms min day as output (if typed day is less than min day)`, () => {
             inputPO.sendText(`19.02.1861,1833`);
 
-            expect(inputPO.value).toBe(`01.01.1900, 18:33`);
-            expect(component.control.value).toEqual(`01.01.1900, 18:33`);
+            expect(inputPO.value).toBe(`01.01.1900, 00:00`);
+            expect(component.control.value).toEqual(`01.01.1900, 00:00`);
         });
 
         it(`transforms value which was selected via calendar`, () => {

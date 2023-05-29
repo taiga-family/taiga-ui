@@ -1,5 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {MaskitoModule} from '@maskito/angular';
 import {TuiPreventDefaultModule} from '@taiga-ui/cdk';
 import {
     TuiCalendarModule,
@@ -11,7 +12,7 @@ import {
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
-import {TextMaskModule, TuiValueAccessorModule} from '@taiga-ui/kit/directives';
+import {TuiValueAccessorModule} from '@taiga-ui/kit/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputDateTimeComponent} from './input-date-time.component';
@@ -21,7 +22,7 @@ import {TuiNativeDateTimeDirective} from './native-date-time/native-date-time.di
 @NgModule({
     imports: [
         CommonModule,
-        TextMaskModule,
+        MaskitoModule,
         PolymorpheusModule,
         TuiWrapperModule,
         TuiPreventDefaultModule,

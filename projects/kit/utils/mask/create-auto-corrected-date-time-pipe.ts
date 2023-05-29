@@ -16,6 +16,10 @@ interface TuiAutoCorrectedDateTimePipeConfigs extends TuiAutoCorrectedDatePipeCo
     timeMode: TuiTimeMode;
 }
 
+/**
+ * @deprecated Use {@link https://tinkoff.github.io/maskito/kit/date-time DateTime} from {@link https://github.com/Tinkoff/maskito Maskito} instead
+ * TODO: delete in v4.0
+ */
 export function tuiCreateAutoCorrectedDateTimePipe(
     configs: TuiAutoCorrectedDateTimePipeConfigs,
 ): TuiTextMaskPipeHandler {

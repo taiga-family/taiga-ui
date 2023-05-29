@@ -4,6 +4,8 @@ const TUI_EXP_YEAR_MONTH = /^\d{2}[/|.]\d{4}$/;
 const TUI_EXP_SAFARI = /^\d{1,4}.\d{1,2}.\d{1,4}$/;
 
 /**
+ * @deprecated Use {@link https://tinkoff.github.io/maskito/kit/date Date} from {@link https://github.com/Tinkoff/maskito Maskito} instead
+ * TODO: delete in v4.0
  * Correct expiration date text allowing only valid months
  * @internal
  *

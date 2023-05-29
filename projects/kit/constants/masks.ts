@@ -19,6 +19,11 @@ export const TUI_PHONE_MASK: TuiTextMaskList = [
     TUI_DIGIT_REGEXP,
     TUI_DIGIT_REGEXP,
 ];
+
+/**
+ * @deprecated Use {@link https://tinkoff.github.io/maskito/kit/time Time} from {@link https://github.com/Tinkoff/maskito Maskito} instead
+ * TODO: delete in v4.0
+ */
 export const TUI_TIME_MASK: TuiTextMaskList = [
     TUI_DIGIT_REGEXP,
     TUI_DIGIT_REGEXP,
