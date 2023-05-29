@@ -9,7 +9,7 @@ import {
 import {Title} from '@angular/platform-browser';
 import {HISTORY} from '@ng-web-apis/common';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
-import {TuiDestroyService} from '@taiga-ui/cdk/services/destroy.service';
+import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TUI_DIALOGS} from '@taiga-ui/cdk/tokens';
 import {TuiDialog} from '@taiga-ui/cdk/types';
 import {combineLatest, Observable, of} from 'rxjs';

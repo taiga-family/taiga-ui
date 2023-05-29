@@ -9,7 +9,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
-import {TuiDestroyService} from '@taiga-ui/cdk/services/destroy.service';
+import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TUI_ALERTS} from '@taiga-ui/cdk/tokens';
 import {TuiDialog, TuiMapper} from '@taiga-ui/cdk/types';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
