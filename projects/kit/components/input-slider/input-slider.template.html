@@ -36,7 +36,7 @@
     [max]="computedSteps"
     [segments]="segments"
     [keySteps]="computeKeySteps(keySteps, min, max)"
-    [attr.disabled]="readOnly || computedDisabled || null"
+    [disabled]="readOnly || computedDisabled"
     [ngModel]="value"
     (ngModelChange)="onSliderChange($event)"
     (click)="focusTextInput()"

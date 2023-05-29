@@ -33,6 +33,7 @@ import {TuiSliderComponent} from '../slider.component';
         '[attr.aria-valuenow]': 'safeCurrentValue',
         '[attr.aria-valuemin]': 'min',
         '[attr.aria-valuemax]': 'max',
+        '[disabled]': 'computedDisabled',
     },
 })
 export class TuiSliderKeyStepsDirective

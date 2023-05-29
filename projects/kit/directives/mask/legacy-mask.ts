@@ -118,11 +118,7 @@ export class MaskedInputDirective implements ControlValueAccessor, OnChanges {
     }
 
     setDisabledState(isDisabled: boolean): void {
-        this._renderer.setProperty(
-            this._elementRef.nativeElement,
-            'disabled',
-            isDisabled,
-        );
+        this._renderer.setProperty(this.inputElement, 'disabled', isDisabled);
     }
 
     _handleInput(value: any) {
