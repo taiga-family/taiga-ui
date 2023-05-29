@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.29.0](https://github.com/tinkoff/taiga-ui/compare/v3.28.0...v3.29.0) (2023-05-29)
+
+### Features
+
+- **addon-mobile:** `PullToRefresh` allow customization ([#4530](https://github.com/tinkoff/taiga-ui/issues/4530))
+  ([f592993](https://github.com/tinkoff/taiga-ui/commit/f592993c2a54a73b539a9faefed412bd80f9ea1e))
+- **kit:** `InputDate` add min/max support for native input date
+  ([#4519](https://github.com/tinkoff/taiga-ui/issues/4519))
+  ([d09a603](https://github.com/tinkoff/taiga-ui/commit/d09a60366c3ef836b63e34d1a328dd774e6d09d6))
+- **kit:** `InputDateTime` uses `Maskito` instead of legacy `text-mask`
+  ([#4528](https://github.com/tinkoff/taiga-ui/issues/4528))
+  ([464682a](https://github.com/tinkoff/taiga-ui/commit/464682a58aab2998f82ce1064bebe6a629781e63))
+- **kit:** `Select` add ability to use objects in native select
+  ([#4522](https://github.com/tinkoff/taiga-ui/issues/4522))
+  ([58c4303](https://github.com/tinkoff/taiga-ui/commit/58c4303a5ff71331b24e27a349061770f6b626f5))
+
+### Bug Fixes
+
+- **addon-editor:** fix typo in the description of toolbar tool `justifyCenter`
+  ([#4526](https://github.com/tinkoff/taiga-ui/issues/4526))
+  ([5b1dd88](https://github.com/tinkoff/taiga-ui/commit/5b1dd881c130eee80c75815b5f4897ba39e6c9f4))
+- **core:** `Dialog` fix closing by accident mouseup outside of content
+  ([#4543](https://github.com/tinkoff/taiga-ui/issues/4543))
+  ([b1d627d](https://github.com/tinkoff/taiga-ui/commit/b1d627d68b337795a8512150df43aea096f08bba))
+- **core:** `PrimitiveTextfield` fix input disabled state [ng 15+]
+  ([#4538](https://github.com/tinkoff/taiga-ui/issues/4538))
+  ([e425847](https://github.com/tinkoff/taiga-ui/commit/e4258475ea41dd3de1b57b26c086167990f4726d))
+- **kit:** `InputFiles` fix description padding ([#4529](https://github.com/tinkoff/taiga-ui/issues/4529))
+  ([5b9544d](https://github.com/tinkoff/taiga-ui/commit/5b9544d56bbd342a05461681804618ea90841ce2))
+- **kit:** `MultiSelect` fix placeholder in dark mode ([#4516](https://github.com/tinkoff/taiga-ui/issues/4516))
+  ([e702e2f](https://github.com/tinkoff/taiga-ui/commit/e702e2ff4452a3dd9748d789a41a85946d9074f3))
+
 ## [3.28.0](https://github.com/tinkoff/taiga-ui/compare/v3.27.0...v3.28.0) (2023-05-22)
 
 ### Features
