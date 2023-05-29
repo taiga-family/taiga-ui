@@ -17,7 +17,7 @@ import {
     tuiSum,
 } from '@taiga-ui/cdk';
 import {
-    TuiDriver,
+    TuiHintHoverDirective,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
     TuiSizeL,
@@ -44,7 +44,7 @@ const VALUE_ERROR = 'All arrays must be of the same length';
 export class TuiBarChartComponent {
     private readonly autoIdString: string;
 
-    @ViewChildren(TuiDriver)
+    @ViewChildren(TuiHintHoverDirective)
     readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
     @Input()
