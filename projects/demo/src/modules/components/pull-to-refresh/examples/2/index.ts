@@ -1,12 +1,14 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_LOADED} from '@taiga-ui/addon-mobile';
+import {
+    TUI_IOS_LOADER,
+    TUI_PULL_TO_REFRESH_COMPONENT,
+    TUI_PULL_TO_REFRESH_LOADED,
+} from '@taiga-ui/addon-mobile';
 import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
-
-const loaded$ = new Subject<void>();
 
 @Component({
     selector: 'tui-pull-to-refresh-example-2',
@@ -23,8 +25,12 @@ const loaded$ = new Subject<void>();
             useValue: false,
         },
         {
-            provide: TUI_LOADED,
-            useValue: loaded$.asObservable(),
+            provide: TUI_PULL_TO_REFRESH_COMPONENT,
+            useValue: TUI_IOS_LOADER,
+        },
+        {
+            provide: TUI_PULL_TO_REFRESH_LOADED,
+            useClass: Subject,
         },
     ],
 })
@@ -32,6 +38,8 @@ export class TuiPullToRefreshExample2 {
     constructor(
         @Inject(TuiAlertService)
         private readonly alerts: TuiAlertService,
+        @Inject(TUI_PULL_TO_REFRESH_LOADED)
+        private readonly loaded$: Subject<void>,
     ) {}
 
     onPull(): void {
@@ -39,6 +47,6 @@ export class TuiPullToRefreshExample2 {
     }
 
     finishLoading(): void {
-        loaded$.next();
+        this.loaded$.next();
     }
 }
