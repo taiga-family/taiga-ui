@@ -18,6 +18,7 @@ import {takeUntil} from 'rxjs/operators';
     // So that we do not force OnPush on custom hints
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
+    providers: [TuiDestroyService],
     animations: [TUI_PARENT_ANIMATION],
     host: {
         'aria-live': 'polite',

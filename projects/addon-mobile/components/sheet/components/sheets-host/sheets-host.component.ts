@@ -19,6 +19,7 @@ import {TuiSheetService} from '../../sheet.service';
     templateUrl: './sheets-host.template.html',
     styleUrls: ['./sheets-host.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [TuiDestroyService],
     animations: [tuiSlideInTop, tuiFadeIn],
 })
 export class TuiSheetsHostComponent {
