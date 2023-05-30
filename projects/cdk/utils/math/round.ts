@@ -14,6 +14,10 @@ export function tuiFloor(value: number, precision: number = 0): number {
     return calculate(value, precision, Math.floor);
 }
 
+export function tuiTrunc(value: number, precision: number = 0): number {
+    return calculate(value, precision, Math.trunc);
+}
+
 /**
  * Rounding number to the set precision
  *

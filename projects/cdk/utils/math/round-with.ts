@@ -1,6 +1,6 @@
 import {TuiRounding} from '@taiga-ui/cdk/types';
 
-import {tuiCeil, tuiFloor, tuiRound} from './round';
+import {tuiCeil, tuiFloor, tuiRound, tuiTrunc} from './round';
 
 export function tuiRoundWith({
     value,
@@ -19,6 +19,6 @@ export function tuiRoundWith({
         case `floor`:
             return tuiFloor(value, precision);
         default:
-            return value;
+            return tuiTrunc(value, precision);
     }
 }
