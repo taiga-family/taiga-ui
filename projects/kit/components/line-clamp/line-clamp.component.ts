@@ -5,7 +5,6 @@ import {
     Component,
     DoCheck,
     ElementRef,
-    HostBinding,
     HostListener,
     Inject,
     Input,
@@ -17,6 +16,7 @@ import {
 import {
     tuiDefaultProp,
     tuiIsCurrentTarget,
+    tuiPx,
     tuiTypedFromEvent,
     tuiZonefree,
 } from '@taiga-ui/cdk';
@@ -54,12 +54,6 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
     private readonly linesLimit$ = new BehaviorSubject(1);
     private readonly isOverflown$ = new Subject<boolean>();
     private initialized = false;
-
-    @HostBinding('style.maxHeight.px')
-    maxHeight: number | null = null;
-
-    @HostBinding('style.height.px')
-    height = 0;
 
     @Input()
     @tuiDefaultProp()
@@ -128,7 +122,7 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
     }
 
     ngDoCheck(): void {
-        this.updateStaticallyHostBinding();
+        this.update();
         this.isOverflown$.next(this.overflown);
     }
 
@@ -141,13 +135,21 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
             });
     }
 
-    private updateStaticallyHostBinding(): void {
+    private update(): void {
         if (this.outlet) {
-            this.height = this.outlet.nativeElement.scrollHeight + 4;
+            this.renderer.setStyle(
+                this.el.nativeElement,
+                'height',
+                tuiPx(this.outlet.nativeElement.scrollHeight + 4),
+            );
         }
 
         if (this.initialized) {
-            this.maxHeight = this.lineHeight * this.linesLimit$.value;
+            this.renderer.setStyle(
+                this.el.nativeElement,
+                'max-height',
+                tuiPx(this.lineHeight * this.linesLimit$.value),
+            );
         }
     }
 }
