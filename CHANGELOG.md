@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.29.1](https://github.com/tinkoff/taiga-ui/compare/v3.29.0...v3.29.1) (2023-05-30)
+
+### Bug Fixes
+
+- **addon-charts:** `BarChart` fix hover effect ([#4547](https://github.com/tinkoff/taiga-ui/issues/4547))
+  ([a03aa4f](https://github.com/tinkoff/taiga-ui/commit/a03aa4fe276d6728fbcda2eb66e0ec31ade12ff4))
+- **kit:** `InputNumber` fix cutting by min value ([#4553](https://github.com/tinkoff/taiga-ui/issues/4553))
+  ([ab5cad0](https://github.com/tinkoff/taiga-ui/commit/ab5cad0ea2d6e1e15b08125b672473330649d382))
+- **kit:** `LineClamp` fix `overflownChange` false positives ([#4549](https://github.com/tinkoff/taiga-ui/issues/4549))
+  ([633ce65](https://github.com/tinkoff/taiga-ui/commit/633ce65f2aa1c8ffbf4210425197d48848a5e472))
+
 ## [3.29.0](https://github.com/tinkoff/taiga-ui/compare/v3.28.0...v3.29.0) (2023-05-29)
 
 ### Features
