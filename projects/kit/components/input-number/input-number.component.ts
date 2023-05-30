@@ -225,6 +225,8 @@ export class TuiInputNumberComponent
     });
 
     onValueChange(value: string): void {
+        this.unfinishedValue = null;
+
         if (tuiMaskedMoneyValueIsEmpty(value)) {
             this.value = null;
 
@@ -237,7 +239,6 @@ export class TuiInputNumberComponent
             return;
         }
 
-        this.unfinishedValue = null;
         const capped = this.absoluteCapInputValue(value);
 
         if (capped === null || Number.isNaN(capped)) {
