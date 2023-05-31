@@ -51,6 +51,7 @@ const TEMPLATE_BEFORE = `
     src="tuiIconErrorMarker"
     [size]="iconSize"
 ></tui-marker-icon>
+<custom-component [customAttr]="tuiIconErrorMarker"></custom-component>
 `;
 
 const TEMPLATE_AFTER = `
@@ -60,6 +61,7 @@ const TEMPLATE_AFTER = `
     src="tuiIconTdsCrossMedium"
     [size]="iconSize"
 ></tui-marker-icon>
+<custom-component [customAttr]="tuiIconTdsCrossMedium"></custom-component>
 `;
 
 describe(`ng-update`, () => {

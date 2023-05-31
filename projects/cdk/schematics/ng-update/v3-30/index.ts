@@ -2,12 +2,17 @@ import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {getPackageJsonDependency, saveActiveProject} from 'ng-morph';
 
 import {TuiSchema} from '../../ng-add/schema';
-import {FINISH_SYMBOL, titleLog} from '../../utils/colored-log';
+import {
+    FINISH_SYMBOL,
+    infoLog,
+    REPLACE_SYMBOL,
+    SMALL_TAB_SYMBOL,
+    titleLog,
+} from '../../utils/colored-log';
 import {replaceConstants} from '../steps/replace-const';
 import {getFileSystem} from '../utils/get-file-system';
 import {ICONS_TS} from './constants/constants';
 import {ICONS} from './constants/icons';
-import {migrateIcons} from './steps/migrate-icons';
 import {replaceText} from './steps/replace-text';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -22,8 +27,10 @@ export function updateToV3_30(options: TuiSchema): Rule {
 
         const fileSystem = getFileSystem(tree);
 
-        migrateIcons(fileSystem, options);
         replaceConstants(options, ICONS_TS);
+
+        !options[`skip-logs`] &&
+            infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing strings...`);
         replaceText(ICONS);
 
         fileSystem.commitEdits();
