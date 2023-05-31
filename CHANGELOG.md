@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.29.2](https://github.com/tinkoff/taiga-ui/compare/v3.29.1...v3.29.2) (2023-05-31)
+
+### Features
+
+- **core:** add rounding mode to `TUI_NUMBER_FORMAT` ([#4548](https://github.com/tinkoff/taiga-ui/issues/4548))
+  ([11a192a](https://github.com/tinkoff/taiga-ui/commit/11a192ad3110874671968280498b686fe39b2842))
+
 ### [3.29.1](https://github.com/tinkoff/taiga-ui/compare/v3.29.0...v3.29.1) (2023-05-30)
 
 ### Bug Fixes
