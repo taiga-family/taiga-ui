@@ -17,7 +17,7 @@ export const TUI_REMOVED_ELEMENT = new InjectionToken<Observable<Element | null>
 
             engine.onRemovalComplete = (element, context) => {
                 element$.next(element);
-                onRemovalComplete(element, context);
+                onRemovalComplete.call(engine, element, context);
             };
 
             return element$.pipe(

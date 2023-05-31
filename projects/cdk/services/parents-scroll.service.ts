@@ -11,6 +11,7 @@ export class TuiParentsScrollService extends Observable<Event> {
     private readonly callback$: Observable<Event>;
 
     constructor(
+        // Destructuring here causes memory leak
         @Inject(ElementRef) el: ElementRef<Element>,
         @Inject(WINDOW) win: Window,
     ) {

@@ -22,7 +22,6 @@ import {
     tuiRectAccessorFor,
 } from '@taiga-ui/core/abstract';
 import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
-import {TuiDropdownAnimation} from '@taiga-ui/core/enums';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
 import {TuiPoint} from '@taiga-ui/core/types';
@@ -57,10 +56,7 @@ import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.direc
 })
 export class TuiDropdownComponent implements OnDestroy {
     @HostBinding('@tuiDropdownAnimation')
-    readonly dropdownAnimation = {
-        value: TuiDropdownAnimation.FadeInTop,
-        ...this.animationOptions,
-    };
+    readonly dropdownAnimation = this.animationOptions;
 
     constructor(
         @Inject(TuiPositionService) position$: Observable<TuiPoint>,
