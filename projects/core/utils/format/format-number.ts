@@ -1,4 +1,4 @@
-import {CHAR_HYPHEN} from '@taiga-ui/cdk';
+import {CHAR_HYPHEN, tuiRoundWith} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_NUMBER_FORMAT} from '@taiga-ui/core/constants';
 import {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
 
@@ -16,13 +16,15 @@ export function tuiFormatNumber(
     value: number,
     settings: Partial<TuiNumberFormatSettings> = {},
 ): string {
-    const {decimalLimit, decimalSeparator, thousandSeparator, zeroPadding} = {
+    const {decimalLimit, decimalSeparator, thousandSeparator, zeroPadding, rounding} = {
         ...TUI_DEFAULT_NUMBER_FORMAT,
         ...settings,
     };
-    const integerPartString = String(Math.floor(Math.abs(value)));
 
-    let fractionPartPadded = tuiGetFractionPartPadded(value, decimalLimit);
+    const rounded = tuiRoundWith({value, precision: decimalLimit, method: rounding});
+    const integerPartString = String(Math.floor(Math.abs(rounded)));
+
+    let fractionPartPadded = tuiGetFractionPartPadded(rounded, decimalLimit);
 
     if (Number.isFinite(decimalLimit)) {
         if (zeroPadding) {

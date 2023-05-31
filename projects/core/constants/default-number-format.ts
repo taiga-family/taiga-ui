@@ -6,4 +6,5 @@ export const TUI_DEFAULT_NUMBER_FORMAT: TuiNumberFormatSettings = {
     decimalSeparator: `,`,
     thousandSeparator: CHAR_NO_BREAK_SPACE,
     zeroPadding: true,
+    rounding: `truncate`,
 };

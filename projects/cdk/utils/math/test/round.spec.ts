@@ -1,4 +1,4 @@
-import {tuiCeil, tuiFloor, tuiRound} from '@taiga-ui/cdk';
+import {tuiCeil, tuiFloor, tuiRound, tuiTrunc} from '@taiga-ui/cdk';
 
 describe(`round`, () => {
     describe(`round - rounds up and down`, () => {
@@ -76,6 +76,19 @@ describe(`round`, () => {
 
         it(`rounds the last digit to the precision`, () => {
             expect(tuiCeil(200.123456789, 4)).toBe(200.1235);
+        });
+    });
+
+    describe(`truncate - cut without rounding`, () => {
+        it(`to the closest integer`, () => {
+            expect(tuiTrunc(200.987)).toBe(200);
+        });
+
+        it(`truncate the last digit to the precision`, () => {
+            expect(tuiTrunc(200.123456789, 4)).toBe(200.1234);
+            expect(tuiTrunc(1.999, 1)).toBe(1.9);
+            expect(tuiTrunc(14.1121, 2)).toBe(14.11);
+            expect(tuiTrunc(-13.9899, 3)).toBe(-13.989);
         });
     });
 });
