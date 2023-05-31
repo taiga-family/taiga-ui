@@ -1,3 +1,4 @@
+// cspell:disable
 import {TUI_CARD_HOLDER_MASK} from '@taiga-ui/addon-commerce';
 
 describe(`TUI_CARD_HOLDER_MASK`, () => {
