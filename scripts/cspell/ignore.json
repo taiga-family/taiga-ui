@@ -77,6 +77,23 @@
             "languageId": "ts",
             "filename": ["**/tests/schematic-migrate-sliders.spec.ts"],
             "ignoreWords": ["Maxxxxx"]
+        },
+        {
+            "languageId": "ts",
+            "filename": ["**/constants/icons.ts"],
+            "ignoreWords": [
+                "Frontside",
+                "Coffeeshop",
+                "Docflow",
+                "Encashment",
+                "Eshop",
+                "Fastfood",
+                "Icecream",
+                "Mortage",
+                "Noicon",
+                "Paypass",
+                "Gamepad"
+            ]
         }
     ]
 }
