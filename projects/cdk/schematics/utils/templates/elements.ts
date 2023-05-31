@@ -67,13 +67,15 @@ export function findElementsWithAttribute(
  */
 export function findElementsWithAttributeOnTag(
     html: string,
-    attributeName: string,
+    attributeNames: string[],
     tagNames: string[] = [],
 ): Element[] {
     return findElementsInTemplateByFn(
         html,
         el =>
-            el.attrs?.some(attr => attr.name === attributeName.toLowerCase()) &&
+            el.attrs?.some(attr =>
+                attributeNames.map(name => name.toLowerCase()).includes(attr.name),
+            ) &&
             (tagNames.includes(el.tagName) || !tagNames.length),
     );
 }

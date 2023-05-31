@@ -22,7 +22,6 @@ import {
     findElementsByTagName,
     findElementsInTemplateByFn,
     findElementsWithAttribute,
-    findElementsWithAttributeOnTag,
     hasElementAttribute,
 } from '../../../utils/templates/elements';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
@@ -36,6 +35,7 @@ import {
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
 import {TemplateResource} from '../../interfaces/template-resource';
+import {replaceAttrValues} from '../../utils/templates/replace-attr-values';
 import {
     ATTR_TO_DIRECTIVE,
     ATTRS_TO_REPLACE,
@@ -439,39 +439,11 @@ function replaceInputValues({
     recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
 }): void {
-    const template = getTemplateFromTemplateResource(resource, fileSystem);
-    const templateOffset = getTemplateOffset(resource);
-
-    REPLACE_ATTR_VALUE.forEach(({attrName, values, withTagNames}) => {
-        const elements = [
-            ...findElementsWithAttributeOnTag(template, attrName, withTagNames),
-        ];
-
-        elements.forEach(element => {
-            const {name, value} =
-                element.attrs.find(attr => attr.name === attrName.toLowerCase()) || {};
-
-            if (!name || !value) {
-                return;
-            }
-
-            values.forEach(({from, to}) => {
-                if (value === from) {
-                    const {startOffset, endOffset} = element.sourceCodeLocation?.attrs?.[
-                        name
-                    ] || {startOffset: 0, endOffset: 0};
-
-                    recorder.remove(
-                        templateOffset + startOffset,
-                        endOffset - startOffset,
-                    );
-                    recorder.insertRight(
-                        templateOffset + startOffset,
-                        `${attrName}="${to}"`,
-                    );
-                }
-            });
-        });
+    replaceAttrValues({
+        resource,
+        recorder,
+        fileSystem,
+        replaceableItems: REPLACE_ATTR_VALUE,
     });
 }
 

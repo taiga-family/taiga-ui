@@ -1,7 +1,7 @@
 import {hasElementAttribute} from '../../../utils/templates/elements';
+import {ReplaceableAttribute} from '../../interfaces/replaceable-attribute';
 import {AttributeToDirective} from '../interfaces/attribute-to-directive';
 import {RemovableInput} from '../interfaces/removable-input';
-import {ReplaceableAttribute} from '../interfaces/replaceable-attribute';
 import {ReplaceableAttributeValue} from '../interfaces/replaceable-attribute-value';
 import {ReplaceableTag} from '../interfaces/replaceable-tag';
 import {TUI_INTERACTIVE_SELECTORS} from './tui-interactive-selectors';
@@ -733,18 +733,18 @@ export const TEMPLATE_COMMENTS = [
 
 export const REPLACE_ATTR_VALUE: ReplaceableAttributeValue[] = [
     {
-        attrName: `tuiHintDirection`,
+        attrNames: [`tuiHintDirection`],
         values: [
             {from: `bottom-middle`, to: `bottom`},
             {from: `top-middle`, to: `top`},
         ],
     },
     {
-        attrName: `ngProjectAs`,
+        attrNames: [`ngProjectAs`],
         values: [{from: `tuiOverNotifications`, to: `tuiOverAlerts`}],
     },
     {
-        attrName: `direction`,
+        attrNames: [`direction`],
         withTagNames: [`tui-tooltip`],
         values: [
             {from: `bottom-middle`, to: `bottom`},
