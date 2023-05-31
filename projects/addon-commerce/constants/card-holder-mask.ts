@@ -1,3 +1,4 @@
+import {MaskitoOptions} from '@maskito/core';
 import {tuiCreateCorrectionMask, TuiTextMaskListHandler} from '@taiga-ui/core';
 
 const ALLOWED_REGEXP = /[A-Z]| /;
@@ -30,14 +31,42 @@ const MAP: Record<string, string> = {
     Я: `Z`,
 };
 
-function toEnglishUppercase(char: string): string | null {
+// TODO: delete in v4.0
+function toEnglishUppercaseLegacy(char: string): string | null {
     const uppercase = char.toUpperCase();
     const result = ALLOWED_REGEXP.test(uppercase) ? uppercase : MAP[uppercase];
 
     return result || null;
 }
 
+function toEnglishUppercase(value: string): string {
+    return value
+        .toUpperCase()
+        .split(``)
+        .map(char => MAP[char] || char)
+        .join(``);
+}
+
+export const TUI_CARD_HOLDER_MASK: MaskitoOptions = {
+    mask: /^[a-z\s]+$/i,
+    preprocessor: ({elementState, data}) => {
+        const {value, selection} = elementState;
+
+        return {
+            elementState: {
+                selection,
+                value: toEnglishUppercase(value),
+            },
+            data: toEnglishUppercase(data),
+        };
+    },
+};
+
+/**
+ * @deprecated Use {@link TUI_CARD_HOLDER_MASK} with {@link https://github.com/Tinkoff/maskito Maskito}
+ * TODO: delete in v4.0
+ */
 export const cardHolderMask: TuiTextMaskListHandler = tuiCreateCorrectionMask(
     ALLOWED_REGEXP,
-    toEnglishUppercase,
+    toEnglishUppercaseLegacy,
 );
