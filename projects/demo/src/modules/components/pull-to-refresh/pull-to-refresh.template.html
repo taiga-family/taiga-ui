@@ -6,22 +6,26 @@
     <ng-template pageTab>
         <p>Component to refresh content after pull top. It emulates appearance of native iOS and Android components</p>
 
-        <tui-notification class="tui-space_top-4">
-            <div>
-                It emits
-                <code>(pulled)</code>
-                event when the pull threshold is reached.
-            </div>
-            <div class="tui-space_top-2">
-                You can set that threshold in pixels by
-                <code>TUI_PULL_TO_REFRESH_THRESHOLD</code>
-                DI token.
-            </div>
-            <div class="tui-space_top-2">
-                You can finish loading with
-                <code>TUI_PULL_TO_REFRESH_LOADED</code>
-                stream token that can be provided in DI.
-            </div>
+        <p>
+            It emits
+            <code>(pulled)</code>
+            event when the pull threshold is reached.
+        </p>
+        <p>
+            You can set that threshold in pixels by
+            <code>TUI_PULL_TO_REFRESH_THRESHOLD</code>
+            DI token.
+        </p>
+        <p>
+            You can finish loading with
+            <code>TUI_PULL_TO_REFRESH_LOADED</code>
+            stream token that can be provided in DI.
+        </p>
+
+        <tui-notification>
+            Use
+            <code>overscroll-behavior: none;</code>
+            CSS on your scrolling container to stop elastic scrolling on iOS
         </tui-notification>
 
         <tui-doc-example
