@@ -178,13 +178,13 @@ export class TuiInputPhoneComponent
             return;
         }
 
-        if (!active && !this.allowText && this.nativeFocusableElement) {
-            this.nativeValue = this.nativeValue.replace(/\D$/, '');
-        }
-
         if (this.nativeValue === this.nonRemovablePrefix || this.isTextValue) {
             this.updateSearch('');
             this.nativeValue = '';
+        }
+
+        if (!active && !this.allowText && this.nativeFocusableElement) {
+            this.nativeValue = this.nativeValue.replace(/\D$/, '');
         }
     }
 
