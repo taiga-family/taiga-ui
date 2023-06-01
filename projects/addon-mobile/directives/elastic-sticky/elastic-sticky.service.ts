@@ -1,5 +1,4 @@
-import {ElementRef, Inject, Injectable, NgZone, Optional, Self} from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
+import {ElementRef, Inject, Injectable, NgZone, Self} from '@angular/core';
 import {
     TuiDestroyService,
     tuiGetElementOffset,
@@ -21,12 +20,9 @@ import {
 @Injectable()
 export class TuiElasticStickyService extends Observable<number> {
     constructor(
-        @Optional()
-        @Inject(TUI_SCROLL_REF)
-        scrollRef: ElementRef<HTMLElement> | null,
+        @Inject(TUI_SCROLL_REF) scrollRef: ElementRef<HTMLElement>,
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(NgZone) ngZone: NgZone,
-        @Inject(WINDOW) win: Window,
         @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         super(subscriber =>
@@ -34,22 +30,23 @@ export class TuiElasticStickyService extends Observable<number> {
                 .pipe(
                     take(1),
                     switchMap(() => {
-                        const closest = nativeElement.closest(SCROLL_REF_SELECTOR);
-                        const host = scrollRef?.nativeElement || closest;
+                        const host =
+                            nativeElement.closest(SCROLL_REF_SELECTOR) ||
+                            scrollRef.nativeElement;
                         const {offsetHeight} = nativeElement;
-                        const offsetTop = this.getInitialOffset(
-                            host || win,
-                            nativeElement,
-                        );
+                        const {offsetTop} = tuiGetElementOffset(host, nativeElement);
 
-                        return tuiTypedFromEvent(host || win, `scroll`).pipe(
+                        return tuiTypedFromEvent(
+                            host === host.ownerDocument.documentElement
+                                ? host.ownerDocument
+                                : host,
+                            `scroll`,
+                        ).pipe(
                             map(() =>
                                 Math.max(
                                     1 -
                                         Math.max(
-                                            Math.round(
-                                                host ? host.scrollTop : win.pageYOffset,
-                                            ) - offsetTop,
+                                            Math.round(host.scrollTop) - offsetTop,
                                             0,
                                         ) /
                                             offsetHeight,
@@ -66,11 +63,5 @@ export class TuiElasticStickyService extends Observable<number> {
                 )
                 .subscribe(subscriber),
         );
-    }
-
-    private getInitialOffset(host: Element | Window, element: HTMLElement): number {
-        return `nodeType` in host
-            ? tuiGetElementOffset(host, element).offsetTop
-            : element.getBoundingClientRect().top;
     }
 }

@@ -1,12 +1,10 @@
 import {AnimationOptions} from '@angular/animations';
-import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
     Inject,
     NgZone,
-    Optional,
 } from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {tuiZoneOptimized} from '@taiga-ui/cdk';
@@ -45,18 +43,14 @@ export class TuiScrollControlsComponent {
     constructor(
         @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
         @Inject(NgZone) private readonly ngZone: NgZone,
-        @Inject(DOCUMENT) private readonly doc: Document,
-        @Optional()
-        @Inject(TUI_SCROLL_REF)
-        private readonly scrollRef: ElementRef<HTMLElement> | null,
+        @Inject(TUI_SCROLL_REF) private readonly scrollRef: ElementRef<HTMLElement>,
         @Inject(ANIMATION_FRAME) private readonly animationFrame$: Observable<number>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
     ) {}
 
     private get scrollbars(): [boolean, boolean] {
-        const {clientHeight, scrollHeight, clientWidth, scrollWidth} = this.scrollRef
-            ? this.scrollRef.nativeElement
-            : this.doc.documentElement;
+        const {clientHeight, scrollHeight, clientWidth, scrollWidth} =
+            this.scrollRef.nativeElement;
 
         return [
             Math.ceil((clientHeight / scrollHeight) * 100) < 100,
