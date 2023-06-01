@@ -1,7 +1,16 @@
 import {CHAR_PLUS} from '@taiga-ui/cdk';
 
 /**
- * TODO: Guys, should we mark this function as deprecated?
+ * TODO: delete in v4.0
+ * @deprecated Use {@link https://tinkoff.github.io/maskito/core-concepts/transformer maskitoTransform} instead<br/>
+ * @example
+ * import {maskitoTransform} from '@maskito/core';
+ *
+ * const mask = {
+ *     mask: ['+', '1', ' ', /\d/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
+ * };
+ * maskitoTransform('12125552368', mask); // +1 (212) 555-2368
+ * ___
  * Formats a string with the phone format +7XXXXXXXXXXXX or XXXXXXXXXXXX,
  * adding parentheses and hyphens.
  *

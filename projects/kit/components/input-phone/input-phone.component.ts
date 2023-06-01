@@ -140,11 +140,9 @@ export class TuiInputPhoneComponent
     }
 
     set nativeValue(value: string) {
-        if (!this.nativeFocusableElement) {
-            return;
+        if (this.nativeFocusableElement) {
+            this.nativeFocusableElement.value = value;
         }
-
-        this.nativeFocusableElement.value = value;
     }
 
     get inputMode(): TuiInputMode {
@@ -181,7 +179,7 @@ export class TuiInputPhoneComponent
         }
 
         if (!active && !this.allowText && this.nativeFocusableElement) {
-            this.nativeValue = this.nativeValue.replace(/-$/, '');
+            this.nativeValue = this.nativeValue.replace(/\D$/, '');
         }
 
         if (this.nativeValue === this.nonRemovablePrefix || this.isTextValue) {
@@ -267,6 +265,10 @@ export class TuiInputPhoneComponent
         allowText: boolean,
     ): MaskitoOptions {
         const mask = tuiCreatePhoneMaskExpression(countryCode, phoneMaskAfterCountryCode);
+        const preprocessor = tuiCreateCompletePhoneInsertionPreprocessor(
+            countryCode,
+            phoneMaskAfterCountryCode,
+        );
 
         return allowText
             ? {
@@ -274,13 +276,11 @@ export class TuiInputPhoneComponent
                       isText(value) && value !== '+'
                           ? (MASKITO_DEFAULT_OPTIONS.mask as RegExp)
                           : mask,
+                  preprocessor,
               }
             : {
                   mask,
-                  preprocessor: tuiCreateCompletePhoneInsertionPreprocessor(
-                      countryCode,
-                      phoneMaskAfterCountryCode,
-                  ),
+                  preprocessor,
                   postprocessor: maskitoPrefixPostprocessorGenerator(nonRemovablePrefix),
               };
     }
