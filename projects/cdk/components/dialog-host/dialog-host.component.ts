@@ -4,6 +4,7 @@ import {
     Component,
     Inject,
     InjectionToken,
+    OnInit,
     Self,
 } from '@angular/core';
 import {Title} from '@angular/platform-browser';
@@ -41,33 +42,37 @@ const isFakeHistoryState = (
     providers: [TuiDestroyService],
     animations: [TUI_PARENT_ANIMATION],
 })
-export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
+export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>>
+    implements OnInit
+{
     dialogs: readonly T[] = [];
 
     constructor(
         @Inject(TUI_DIALOG_CLOSES_ON_BACK)
         readonly isDialogClosesOnBack$: Observable<boolean>,
         @Inject(TUI_DIALOGS)
-        dialogsByType: Array<Observable<readonly T[]>>,
+        private readonly dialogsByType: Array<Observable<readonly T[]>>,
         @Inject(HISTORY) private readonly historyRef: History,
         @Inject(Title) private readonly titleService: Title,
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-    ) {
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
+        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
+    ) {}
+
+    ngOnInit(): void {
         // Due to this view being parallel to app content, `markForCheck` from `async` pipe
         // can happen after view was checked, so calling `detectChanges` instead
-        combineLatest(dialogsByType)
+        combineLatest(this.dialogsByType)
             .pipe(
                 map(arr =>
                     new Array<T>()
                         .concat(...arr)
                         .sort((a, b) => a.createdAt - b.createdAt),
                 ),
-                takeUntil(destroy$),
+                takeUntil(this.destroy$),
             )
             .subscribe(dialogs => {
                 this.dialogs = dialogs;
-                cdr.detectChanges();
+                this.cdr.detectChanges();
             });
     }
 

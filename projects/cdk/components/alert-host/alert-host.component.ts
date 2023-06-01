@@ -5,6 +5,7 @@ import {
     Inject,
     INJECTOR,
     Injector,
+    OnInit,
     Self,
     ViewEncapsulation,
 } from '@angular/core';
@@ -27,22 +28,26 @@ import {takeUntil} from 'rxjs/operators';
     animations: [TUI_PARENT_ANIMATION],
     encapsulation: ViewEncapsulation.None,
 })
-export class TuiAlertHostComponent<T extends TuiDialog<unknown, unknown>> {
+export class TuiAlertHostComponent<T extends TuiDialog<unknown, unknown>>
+    implements OnInit
+{
     alerts: ReadonlyArray<readonly T[]> = [];
 
     constructor(
-        @Inject(TUI_ALERTS) allAlerts: Array<Observable<readonly T[]>>,
+        @Inject(TUI_ALERTS) private readonly allAlerts: Array<Observable<readonly T[]>>,
         @Inject(INJECTOR) private readonly injector: Injector,
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-    ) {
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
+        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
+    ) {}
+
+    ngOnInit(): void {
         // Due to this view being parallel to app content, `markForCheck` from `async` pipe
         // can happen after view was checked, so calling `detectChanges` instead
-        combineLatest(allAlerts)
-            .pipe(takeUntil(destroy$))
+        combineLatest(this.allAlerts)
+            .pipe(takeUntil(this.destroy$))
             .subscribe(alerts => {
                 this.alerts = alerts;
-                cdr.detectChanges();
+                this.cdr.detectChanges();
             });
     }
 
