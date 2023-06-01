@@ -58,11 +58,12 @@
 
     /* stylelint-disable */
     ::ng-deep *[tuiTab] {
-        width: 100%;
+        width: calc(100% - 1rem);
         height: 2.75rem;
         justify-content: flex-start;
-        margin: 0;
-        padding: 0 1rem;
+        margin: 0 0.5rem;
+        border-radius: var(--tui-radius-s);
+        padding: 0 0.625rem;
         color: var(--tui-text-02);
 
         &:before {
@@ -74,7 +75,7 @@
         &._active {
             box-shadow: none;
             color: var(--tui-base-08);
-            background: var(--tui-base-02);
+            background: var(--tui-clear);
         }
     }
     /* stylelint-enable */
