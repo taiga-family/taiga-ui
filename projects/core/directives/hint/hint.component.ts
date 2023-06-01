@@ -55,28 +55,26 @@ import {TuiHintPointerDirective} from './hint-pointer.directive';
         tuiRectAccessorFor('hint', TuiHintDirective),
     ],
     animations: [tuiFadeIn],
+    host: {
+        '[@tuiFadeIn]': 'animation',
+        '[class._untouchable]': 'pointer',
+    },
 })
 export class TuiHintComponent<C = any> {
-    @HostBinding('@tuiFadeIn')
-    readonly animation = {value: '', ...this.options} as const;
-
     @HostBinding('attr.data-appearance')
     readonly appearance = this.polymorpheus.$implicit.appearance || this.mode?.mode;
-
-    @HostBinding('class._untouchable')
-    readonly untouchable = !!this.pointer;
 
     constructor(
         @Inject(TuiHoveredService) hovered$: Observable<boolean>,
         @Inject(TuiPositionService) position$: Observable<TuiPoint>,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
+        @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
+        @Optional() @Inject(TuiHintPointerDirective) readonly pointer: unknown,
         @Inject(TuiRectAccessor) protected readonly accessor: TuiRectAccessor,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
         @Inject(POLYMORPHEUS_CONTEXT)
         private readonly polymorpheus: TuiContextWithImplicit<TuiPortalItem<C>>,
         @Inject(TuiHintHoverDirective) private readonly hover: TuiHintHoverDirective,
-        @Optional() @Inject(TuiHintPointerDirective) private readonly pointer: unknown,
         @Optional()
         @Inject(TuiModeDirective)
         private readonly mode: TuiModeDirective | null,

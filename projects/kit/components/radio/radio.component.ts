@@ -66,18 +66,14 @@ export class TuiRadioComponent<T>
     @tuiDefaultProp()
     pseudoDisabled = false;
 
-    readonly animation = {value: '', ...this.animationOptions} as const;
-
     constructor(
         @Optional()
         @Self()
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_ANIMATION_OPTIONS)
-        private readonly animationOptions: AnimationOptions,
-        @Inject(TUI_RADIO_OPTIONS)
-        private readonly options: TuiRadioOptions,
+        @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
+        @Inject(TUI_RADIO_OPTIONS) private readonly options: TuiRadioOptions,
         @Optional()
         @Inject(TuiRadioGroupComponent)
         private readonly radioGroup: TuiRadioGroupComponent | null,

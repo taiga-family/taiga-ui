@@ -55,11 +55,11 @@ export class TuiDropdownDirective
 
     readonly type = 'dropdown';
 
-    readonly component = new PolymorpheusComponent(this.hapica, this.injector);
+    readonly component = new PolymorpheusComponent(this.dropdown, this.injector);
 
     constructor(
         @Inject(ElementRef) readonly el: ElementRef<HTMLElement>,
-        @Inject(TUI_DROPDOWN_COMPONENT) private readonly hapica: Type<unknown>,
+        @Inject(TUI_DROPDOWN_COMPONENT) private readonly dropdown: Type<unknown>,
         @Inject(INJECTOR) private readonly injector: Injector,
         @Inject(TuiDropdownPortalService)
         private readonly dropdownService: TuiDropdownPortalService,
