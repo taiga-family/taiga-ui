@@ -12,7 +12,7 @@
 }
 
 :host {
-    .transition(all);
+    .transition(~'color, box-shadow, opacity, background');
     .clearbtn();
     position: relative;
     display: flex;
@@ -26,7 +26,6 @@
     outline: none;
     text-decoration: none;
     color: inherit;
-    transition-property: color, box-shadow, opacity;
     margin-left: var(--tui-tab-margin, 1.5rem);
 
     &:disabled {
