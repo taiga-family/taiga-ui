@@ -19,7 +19,9 @@
     .wrapper-focus({
         box-shadow: none;
 
-        --tui-focus: var(--tui-primary);
+        &:after {
+            --tui-focus: var(--tui-primary);
+        }
     });
 
     .wrapper-readonly({
@@ -35,10 +37,9 @@
     });
 
     .wrapper-invalid({
-        --tui-focus: var(--tui-error-fill);
-
         &:after {
             color: var(--tui-error-fill);
+            --tui-focus: var(--tui-error-fill);
         }
     });
 }
@@ -63,16 +64,17 @@
     .wrapper-focus({
         background: rgba(255, 255, 255, 0.08);
 
-        --tui-focus: var(--tui-primary);
-
         &:after {
             transition: none;
             opacity: 1;
+            --tui-focus: var(--tui-primary);
         }
     });
 
     .wrapper-invalid({
-        --tui-focus: var(--tui-error-fill-night);
+        &:after {
+            --tui-focus: var(--tui-error-fill-night);
+        }
     });
 }
 
@@ -95,7 +97,5 @@
 
     .wrapper-focus({
         background: transparent;
-
-        --tui-focus: var(--tui-text-01);
     });
 }
