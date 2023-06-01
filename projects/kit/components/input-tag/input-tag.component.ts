@@ -163,8 +163,8 @@ export class TuiInputTagComponent
 
     @Input('pseudoFocused')
     set pseudoFocusedSetter(value: boolean | null) {
-        if (!value && !this.focused && this.scrollBar) {
-            this.scrollBar.nativeElement.scrollLeft = 0;
+        if (!value && !this.focused) {
+            this.scrollTo(0);
         }
 
         this.pseudoFocus = value;
@@ -329,8 +329,8 @@ export class TuiInputTagComponent
         this.addTag();
         this.updateFocused(active);
 
-        if (!active && !this.computedFocused && this.scrollBar) {
-            this.scrollBar.nativeElement.scrollLeft = 0;
+        if (!active && !this.computedFocused) {
+            this.scrollTo(0);
         }
     }
 
@@ -372,7 +372,7 @@ export class TuiInputTagComponent
 
     onFieldKeyDownEnter(): void {
         this.addTag();
-        this.scrollToEnd();
+        this.scrollTo();
     }
 
     onTagKeyDownArrowLeft(currentIndex: number): void {
@@ -413,7 +413,7 @@ export class TuiInputTagComponent
         this.updateSearch('');
         this.value = this.filterValue(this.value.concat(item));
         this.open = false;
-        this.scrollToEnd();
+        this.scrollTo();
     }
 
     onInput(value: string): void {
@@ -455,12 +455,11 @@ export class TuiInputTagComponent
         return tag.toString();
     }
 
-    private scrollToEnd(): void {
+    private scrollTo(scrollLeft = this.scrollBar?.nativeElement.scrollWidth): void {
         // Allow change detection to run and add new tag to DOM
         setTimeout(() => {
             if (this.scrollBar) {
-                this.scrollBar.nativeElement.scrollLeft =
-                    this.scrollBar.nativeElement.scrollWidth;
+                this.scrollBar.nativeElement.scrollLeft = scrollLeft || 0;
             }
         });
     }
