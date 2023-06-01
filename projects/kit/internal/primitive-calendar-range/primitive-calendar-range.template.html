@@ -15,7 +15,7 @@
     class="t-border"
     [min]="min"
     [max]="max"
-    [month]="userViewedMonthSecond"
+    [month]="userViewedMonthSecond.monthSameOrBefore(min) ? (min | tuiMapper : monthOffset : 1) : userViewedMonthSecond"
     [markerHandler]="markerHandler"
     [minViewedMonth]="cappedUserViewedMonthFirst | tuiMapper : monthOffset : 1"
     [value]="value"
