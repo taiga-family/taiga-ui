@@ -16,12 +16,7 @@ export class TuiTabBarItemComponent {
     @Input()
     badge?: number | null = null;
 
-    readonly animation = {value: '', ...this.animationOptions} as const;
-
-    constructor(
-        @Inject(TUI_ANIMATION_OPTIONS)
-        private readonly animationOptions: AnimationOptions,
-    ) {}
+    constructor(@Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions) {}
 
     format(value: number): string {
         return value > 999 ? '999+' : String(value);

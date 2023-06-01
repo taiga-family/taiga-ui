@@ -1,11 +1,5 @@
 import {AnimationOptions} from '@angular/animations';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    HostListener,
-    Inject,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostListener, Inject} from '@angular/core';
 import {TuiDialog} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATION_OPTIONS,
@@ -24,14 +18,14 @@ import {TuiPdfViewerOptions} from './pdf-viewer-options';
     styleUrls: ['./pdf-viewer.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop, tuiFadeIn],
+    host: {
+        '[@tuiFadeIn]': 'animation',
+        '[@tuiSlideInTop]': 'animation',
+    },
 })
 export class TuiPdfViewerComponent<I, O> {
-    @HostBinding('@tuiSlideInTop')
-    @HostBinding('@tuiFadeIn')
-    readonly animation = {value: '', ...this.options} as const;
-
     constructor(
-        @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
+        @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
         @Inject(POLYMORPHEUS_CONTEXT)
         readonly context: TuiDialog<TuiPdfViewerOptions<I>, O>,
