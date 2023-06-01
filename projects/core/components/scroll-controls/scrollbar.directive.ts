@@ -13,13 +13,14 @@ import {
     POLLING_TIME,
     TuiDestroyService,
     tuiPreventDefault,
+    tuiScrollFrom,
     tuiStopPropagation,
     tuiTypedFromEvent,
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {TuiOrientation} from '@taiga-ui/core/types';
-import {fromEvent, merge, Observable} from 'rxjs';
+import {merge, Observable} from 'rxjs';
 import {map, switchMap, takeUntil, throttleTime} from 'rxjs/operators';
 
 const MIN_WIDTH = 24;
@@ -82,10 +83,7 @@ export class TuiScrollbarDirective {
 
         merge(
             animationFrame$.pipe(throttleTime(POLLING_TIME)),
-            fromEvent(
-                this.element === this.doc.documentElement ? this.doc : this.element,
-                'scroll',
-            ),
+            tuiScrollFrom(this.element),
         )
             .pipe(tuiZonefree(ngZone), takeUntil(destroy$))
             .subscribe(() => {

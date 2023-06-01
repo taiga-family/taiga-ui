@@ -9,6 +9,7 @@ export * from './mouse-drag-finish-from';
 export * from './must-be-present';
 export * from './pressed-observable';
 export * from './prevent-default';
+export * from './scroll-from';
 export * from './stop-propagation';
 export * from './typed-from-event';
 export * from './watch';

@@ -1,10 +1,25 @@
-import {ChangeDetectionStrategy, Component, Inject, Output} from '@angular/core';
-import {TUI_IS_IOS, TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ElementRef,
+    Inject,
+    Input,
+    Output,
+    Self,
+} from '@angular/core';
+import {
+    TUI_IS_IOS,
+    TuiContextWithImplicit,
+    tuiDefaultProp,
+    TuiDestroyService,
+    TuiHandler,
+    tuiScrollFrom,
+} from '@taiga-ui/cdk';
+import {TUI_SCROLL_REF} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable, of} from 'rxjs';
-import {distinctUntilChanged, filter, map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {distinctUntilChanged, filter, map, startWith, takeUntil} from 'rxjs/operators';
 
-import {TUI_IOS_LOADER} from './loader-ios/loader-ios.component';
 import {
     TUI_PULL_TO_REFRESH_COMPONENT,
     TUI_PULL_TO_REFRESH_THRESHOLD,
@@ -16,31 +31,43 @@ import {MICRO_OFFSET, TuiPullToRefreshService} from './pull-to-refresh.service';
     templateUrl: './pull-to-refresh.template.html',
     styleUrls: ['./pull-to-refresh.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiPullToRefreshService],
+    providers: [TuiPullToRefreshService, TuiDestroyService],
 })
 export class TuiPullToRefreshComponent {
+    @Input()
+    @tuiDefaultProp()
+    styleHandler: TuiHandler<number, Record<string, any> | null> = this.isIOS
+        ? distance => ({transform: `translateY(${distance / 2}px)`})
+        : () => null;
+
     @Output()
     readonly pulled: Observable<unknown> = this.pulling$.pipe(
-        distinctUntilChanged(),
         filter(distance => distance === this.threshold),
     );
 
-    // TODO: Move to iOS loader somehow, like contentTransform$ below
     readonly dropped$: Observable<boolean> = this.pulling$.pipe(
         map(distance => distance <= MICRO_OFFSET || distance === this.threshold),
         distinctUntilChanged(),
     );
 
-    readonly contentTransform$: Observable<string | null> =
-        this.isIOS && this.component === TUI_IOS_LOADER
-            ? this.pulling$.pipe(map(distance => `translateY(${distance / 2}px)`))
-            : of(null);
-
     constructor(
+        @Inject(TuiDestroyService) @Self() destroy$: Observable<unknown>,
+        @Inject(TUI_SCROLL_REF) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(TUI_IS_IOS) private readonly isIOS: boolean,
         @Inject(TUI_PULL_TO_REFRESH_THRESHOLD) private readonly threshold: number,
         @Inject(TUI_PULL_TO_REFRESH_COMPONENT)
         readonly component: PolymorpheusContent<TuiContextWithImplicit<number>>,
         @Inject(TuiPullToRefreshService) readonly pulling$: Observable<number>,
-    ) {}
+    ) {
+        // Ensure scrolling down is impossible while pulling
+        tuiScrollFrom(nativeElement)
+            .pipe(startWith(null), takeUntil(destroy$))
+            .subscribe(() => {
+                if (nativeElement.scrollTop) {
+                    nativeElement.style.touchAction = '';
+                } else {
+                    nativeElement.style.touchAction = 'pan-down';
+                }
+            });
+    }
 }
