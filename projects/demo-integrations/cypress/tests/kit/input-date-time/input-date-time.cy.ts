@@ -1,3 +1,5 @@
+import {BROWSER_SUPPORTS_REAL_EVENTS} from '@demo-integrations/support/constants';
+
 describe(`InputDateTime`, () => {
     beforeEach(() => {
         cy.viewport(400, 500);
@@ -20,7 +22,7 @@ describe(`InputDateTime`, () => {
 
         it(
             `[max] property cannot be bypassed via selection`,
-            {browser: `!firefox`}, // Cypress Real Events works only in the Chromium-based browser
+            BROWSER_SUPPORTS_REAL_EVENTS,
             () => {
                 // max = [{year: 2018, month: 10, day: 2}, {hours: 16, minutes: 20, seconds: 0, ms: 0}]
                 cy.tuiVisit(`components/input-date-time/API?max$=4`);
@@ -58,7 +60,7 @@ describe(`InputDateTime`, () => {
 
         it(
             `[min] property cannot be bypassed via selection`,
-            {browser: `!firefox`}, // Cypress Real Events works only in the Chromium-based browser
+            BROWSER_SUPPORTS_REAL_EVENTS,
             () => {
                 // min = [{year: 2018, month: 9, day: 31}, {hours: 12, minutes: 20, seconds: 0, ms: 0}]
                 cy.tuiVisit(`components/input-date-time/API?min$=4`);

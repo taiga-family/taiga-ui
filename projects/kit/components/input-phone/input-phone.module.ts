@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+import {MaskitoModule} from '@maskito/angular';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
     TuiHostedDropdownModule,
@@ -6,14 +7,14 @@ import {
     TuiTextfieldComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TextMaskModule, TuiValueAccessorModule} from '@taiga-ui/kit/directives';
+import {TuiValueAccessorModule} from '@taiga-ui/kit/directives';
 
 import {TuiInputPhoneComponent} from './input-phone.component';
 import {TuiInputPhoneDirective} from './input-phone.directive';
 
 @NgModule({
     imports: [
-        TextMaskModule,
+        MaskitoModule,
         TuiPrimitiveTextfieldModule,
         TuiHostedDropdownModule,
         TuiTextfieldControllerModule,
