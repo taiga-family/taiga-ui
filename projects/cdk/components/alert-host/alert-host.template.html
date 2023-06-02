@@ -1,10 +1,10 @@
 <div
-    *ngFor="let alert$ of alerts"
+    *ngFor="let alert of alerts"
     class="t-wrapper"
     @tuiParentAnimation
 >
     <ng-container
-        *ngFor="let item of alert$ | async"
+        *ngFor="let item of alert"
         [ngComponentOutlet]="item.component.component"
         [ngComponentOutletInjector]="item | tuiMapper : mapper"
     ></ng-container>
