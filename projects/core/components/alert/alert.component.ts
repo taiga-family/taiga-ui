@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    HostBinding,
     Inject,
     OnInit,
     Self,
@@ -28,7 +27,12 @@ import {repeatWhen, takeUntil} from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
     animations: [tuiFadeIn, tuiSlideInRight, tuiHeightCollapse],
-    host: {role: 'alert'},
+    host: {
+        role: 'alert',
+        '[@tuiFadeIn]': 'animation',
+        '[@tuiSlideInRight]': 'animation',
+        '[@tuiHeightCollapse]': 'animation',
+    },
 })
 export class TuiAlertComponent<O, I> implements OnInit {
     private readonly autoClose =
@@ -36,18 +40,12 @@ export class TuiAlertComponent<O, I> implements OnInit {
             ? this.item.autoClose(this.item.status)
             : this.item.autoClose;
 
-    @HostBinding('@tuiFadeIn')
-    @HostBinding('@tuiSlideInRight')
-    @HostBinding('@tuiHeightCollapse')
-    readonly animation = {value: '', ...this.animationOptions} as const;
-
     constructor(
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(TUI_NOTIFICATION_OPTIONS)
         private readonly options: TuiNotificationDefaultOptions,
-        @Inject(TUI_ANIMATION_OPTIONS)
-        private readonly animationOptions: AnimationOptions,
+        @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
         @Inject(POLYMORPHEUS_CONTEXT) readonly item: TuiDialog<TuiAlertOptions<I>, O>,
     ) {}
 

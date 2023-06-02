@@ -9,7 +9,8 @@ import {map} from 'rxjs/operators';
 @Injectable()
 export class TuiPositionService extends Observable<TuiPoint> {
     constructor(
-        @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
+        // Destructuring here causes memory leak
+        @Inject(ElementRef) el: ElementRef<HTMLElement>,
         @Inject(ANIMATION_FRAME) animationFrame: Observable<unknown>,
         @Inject(NgZone) ngZone: NgZone,
         @Inject(TuiPositionAccessor) accessor: TuiPositionAccessor,
@@ -17,7 +18,7 @@ export class TuiPositionService extends Observable<TuiPoint> {
         super(subscriber =>
             animationFrame
                 .pipe(
-                    map(() => nativeElement.getBoundingClientRect()),
+                    map(() => el.nativeElement.getBoundingClientRect()),
                     map(rect => accessor.getPosition(rect)),
                     tuiZonefree(ngZone),
                 )

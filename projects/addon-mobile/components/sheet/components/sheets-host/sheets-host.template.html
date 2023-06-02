@@ -1,27 +1,25 @@
-<ng-container *ngIf="service.sheets$ | async as items">
-    <div
-        *ngFor="let item of items"
-        #wrapper="tuiSheetWrapper"
-        class="t-wrapper"
-        [@tuiSlideInTop]="options"
-        [@tuiFadeIn]="options"
-        [tuiSheetWrapper]="item.offset"
-        [class.t-wrapper_closeable]="item.closeable"
-        [class.t-wrapper_overlay]="item.overlay || (wrapper.overlay$ | async)"
-        [class.t-wrapper_visible]="wrapper.visible$ | async"
-        [style.height.px]="wrapper.height$ | async"
-        (click.self)="close(item)"
-    >
-        <tui-sheet
-            tuiScrollRef
-            tuiOverscroll="all"
-            [style.height.px]="((height$ | async) || 0) - item.offset"
-            [item]="item"
-            (close)="close(item)"
-        ></tui-sheet>
-    </div>
-    <div
-        class="t-overlay"
-        (click)="close(items[0])"
-    ></div>
-</ng-container>
+<div
+    *ngFor="let item of sheets"
+    #wrapper="tuiSheetWrapper"
+    class="t-wrapper"
+    [@tuiSlideInTop]="options"
+    [@tuiFadeIn]="options"
+    [tuiSheetWrapper]="item.offset"
+    [class.t-wrapper_closeable]="item.closeable"
+    [class.t-wrapper_overlay]="item.overlay || (wrapper.overlay$ | async)"
+    [class.t-wrapper_visible]="wrapper.visible$ | async"
+    [style.height.px]="wrapper.height$ | async"
+    (click.self)="close(item)"
+>
+    <tui-sheet
+        tuiScrollRef
+        tuiOverscroll="all"
+        [style.height.px]="((height$ | async) || 0) - item.offset"
+        [item]="item"
+        (close)="close(item)"
+    ></tui-sheet>
+</div>
+<div
+    class="t-overlay"
+    (click)="close(sheets[0])"
+></div>

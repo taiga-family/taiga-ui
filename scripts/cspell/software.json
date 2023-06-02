@@ -20,6 +20,8 @@
         "instanceof",
         "pluginutils",
         "xdescribe",
-        "toolset"
+        "toolset",
+        "preprocessor",
+        "postprocessor"
     ]
 }

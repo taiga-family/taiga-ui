@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    HostBinding,
     Inject,
     OnDestroy,
     Optional,
@@ -22,7 +21,6 @@ import {
     tuiRectAccessorFor,
 } from '@taiga-ui/core/abstract';
 import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
-import {TuiDropdownAnimation} from '@taiga-ui/core/enums';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
 import {TuiPoint} from '@taiga-ui/core/types';
@@ -51,33 +49,27 @@ import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.direc
         tuiRectAccessorFor('dropdown', TuiDropdownDirective),
     ],
     animations: [tuiDropdownAnimation],
+    host: {'[@tuiDropdownAnimation]': 'animation'},
     // @bad TODO: OnPush
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
 })
 export class TuiDropdownComponent implements OnDestroy {
-    @HostBinding('@tuiDropdownAnimation')
-    readonly dropdownAnimation = {
-        value: TuiDropdownAnimation.FadeInTop,
-        ...this.animationOptions,
-    };
-
     constructor(
+        @Inject(TuiVisualViewportService) visualViewportService: TuiVisualViewportService,
         @Inject(TuiPositionService) position$: Observable<TuiPoint>,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Inject(TuiDropdownDirective) readonly directive: TuiDropdownDirective,
+        @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(AbstractTuiPortalHostComponent)
         private readonly host: AbstractTuiPortalHostComponent,
         @Inject(TuiRectAccessor) private readonly accessor: TuiRectAccessor,
         @Inject(WINDOW) private readonly win: Window,
-        @Inject(TUI_ANIMATION_OPTIONS)
-        private readonly animationOptions: AnimationOptions,
         @Inject(TUI_DROPDOWN_OPTIONS) private readonly options: TuiDropdownOptions,
         @Optional()
         @Inject(TuiDropdownHoverDirective)
         private readonly hoverDirective: TuiDropdownHoverDirective | null,
-        @Inject(TuiVisualViewportService) visualViewportService: TuiVisualViewportService,
     ) {
         position$
             .pipe(

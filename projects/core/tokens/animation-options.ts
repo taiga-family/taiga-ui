@@ -10,6 +10,7 @@ export const TUI_ANIMATION_OPTIONS = new InjectionToken<AnimationOptions>(
     `[TUI_ANIMATION_OPTIONS]`,
     {
         factory: () => ({
+            value: ``,
             params: {
                 duration: inject(TUI_ANIMATIONS_DURATION),
             },

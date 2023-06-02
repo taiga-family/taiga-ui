@@ -8,6 +8,10 @@ import {
 
 const ASSERTION = `Correction function must return single char or null`;
 
+/**
+ * TODO: delete in v4.0
+ * @deprecated Use {@link https://tinkoff.github.io/maskito/core-concepts/processors processors} from {@link https://github.com/Tinkoff/maskito Maskito}
+ */
 export function tuiCreateCorrectionMask(
     allowed: RegExp,
     correctionHandler: TuiTextMaskCorrectionHandler,

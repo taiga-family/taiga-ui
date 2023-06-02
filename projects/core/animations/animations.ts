@@ -1,5 +1,4 @@
 import {animate, query, stagger, style, transition, trigger} from '@angular/animations';
-import {TuiDropdownAnimation} from '@taiga-ui/core/enums';
 
 const TRANSITION = `{{duration}}ms ease-in-out`;
 const DURATION = {params: {duration: 300}};
@@ -176,7 +175,7 @@ export const tuiFadeInBottom = trigger(`tuiFadeInBottom`, [
 
 export const tuiDropdownAnimation = trigger(`tuiDropdownAnimation`, [
     transition(
-        `* => ${TuiDropdownAnimation.FadeInTop}`,
+        `:enter`,
         [
             style({transform: `translateY(-10px)`, opacity: 0}),
             animate(TRANSITION, style({transform: `translateY(0)`, opacity: 1})),
@@ -184,23 +183,7 @@ export const tuiDropdownAnimation = trigger(`tuiDropdownAnimation`, [
         DURATION,
     ),
     transition(
-        `* => ${TuiDropdownAnimation.FadeInBottom}`,
-        [
-            style({transform: `translateY(10px)`, opacity: 0}),
-            animate(TRANSITION, style({transform: `translateY(0)`, opacity: 1})),
-        ],
-        DURATION,
-    ),
-    transition(
-        `${TuiDropdownAnimation.FadeInBottom} => *`,
-        [
-            style({transform: `translateY(0)`, opacity: 1}),
-            animate(TRANSITION, style({transform: `translateY(10px)`, opacity: 0})),
-        ],
-        DURATION,
-    ),
-    transition(
-        `${TuiDropdownAnimation.FadeInTop} => *`,
+        `:leave`,
         [
             style({transform: `translateY(0)`, opacity: 1}),
             animate(TRANSITION, style({transform: `translateY(-10px)`, opacity: 0})),

@@ -1,5 +1,5 @@
 <div
-    *ngFor="let hint of hints$ | async"
+    *ngFor="let hint of hints"
     role="tooltip"
     @tuiParentAnimation
     [tuiActiveZoneParent]="hint.activeZone || null"

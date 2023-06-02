@@ -35,13 +35,8 @@ export class TuiScrollControlsComponent {
         tuiZoneOptimized(this.ngZone),
     );
 
-    readonly animation = {
-        value: '',
-        ...this.options,
-    } as const;
-
     constructor(
-        @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
+        @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
         @Inject(NgZone) private readonly ngZone: NgZone,
         @Inject(TUI_SCROLL_REF) private readonly scrollRef: ElementRef<HTMLElement>,
         @Inject(ANIMATION_FRAME) private readonly animationFrame$: Observable<number>,

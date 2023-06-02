@@ -34,9 +34,6 @@ import {
     tuiGetClipboardDataText,
     tuiIsElement,
     tuiIsNativeFocusedIn,
-    tuiPreventDefault,
-    TuiScrollService,
-    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
@@ -59,12 +56,11 @@ import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TuiStatus} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {merge, Observable, Subject} from 'rxjs';
-import {filter, map, switchMap, takeUntil} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 import {TUI_INPUT_TAG_OPTIONS, TuiInputTagOptions} from './input-tag-options';
 
-const EVENT_Y_TO_X_COEFFICIENT = 3;
 const TAG_SIZE_REM = {
     s: 1.25,
     m: 1.5,
@@ -112,9 +108,6 @@ export class TuiInputTagComponent
 
     @ViewChild(TuiScrollbarComponent, {read: ElementRef})
     private readonly scrollBar?: ElementRef<HTMLElement>;
-
-    private readonly scrollToStart$ = new Subject<void>();
-    private readonly scrollToEnd$ = new Subject<void>();
 
     @Input()
     @tuiDefaultProp()
@@ -171,7 +164,7 @@ export class TuiInputTagComponent
     @Input('pseudoFocused')
     set pseudoFocusedSetter(value: boolean | null) {
         if (!value && !this.focused) {
-            this.scrollToStart$.next();
+            this.scrollTo(0);
         }
 
         this.pseudoFocus = value;
@@ -186,11 +179,6 @@ export class TuiInputTagComponent
     @ViewChild('errorIcon')
     readonly errorIconTemplate?: TemplateRef<Record<string, unknown>>;
 
-    @ViewChild(TuiScrollbarComponent)
-    set scrollerSetter(scroller: TuiScrollbarComponent | null) {
-        this.initScrollerSubscription(scroller);
-    }
-
     status$: Observable<TuiStatus> = this.mode$.pipe(map(() => this.status));
 
     open = false;
@@ -201,7 +189,6 @@ export class TuiInputTagComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TuiScrollService) private readonly tuiScrollService: TuiScrollService,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Optional()
         @Inject(TuiModeDirective)
@@ -343,7 +330,7 @@ export class TuiInputTagComponent
         this.updateFocused(active);
 
         if (!active && !this.computedFocused) {
-            this.scrollToStart$.next();
+            this.scrollTo(0);
         }
     }
 
@@ -385,7 +372,7 @@ export class TuiInputTagComponent
 
     onFieldKeyDownEnter(): void {
         this.addTag();
-        this.scrollToEnd$.next();
+        this.scrollTo();
     }
 
     onTagKeyDownArrowLeft(currentIndex: number): void {
@@ -426,7 +413,7 @@ export class TuiInputTagComponent
         this.updateSearch('');
         this.value = this.filterValue(this.value.concat(item));
         this.open = false;
-        this.scrollToEnd$.next();
+        this.scrollTo();
     }
 
     onInput(value: string): void {
@@ -468,6 +455,15 @@ export class TuiInputTagComponent
         return tag.toString();
     }
 
+    private scrollTo(scrollLeft = this.scrollBar?.nativeElement.scrollWidth): void {
+        // Allow change detection to run and add new tag to DOM
+        setTimeout(() => {
+            if (this.scrollBar) {
+                this.scrollBar.nativeElement.scrollLeft = scrollLeft || 0;
+            }
+        });
+    }
+
     private filterValue(value: string[]): string[] {
         const seen = new Set();
 
@@ -499,37 +495,6 @@ export class TuiInputTagComponent
         }
     }
 
-    private initScrollerSubscription(scroller: TuiScrollbarComponent | null): void {
-        if (!scroller?.browserScrollRef) {
-            return;
-        }
-
-        const {nativeElement} = scroller.browserScrollRef;
-
-        const wheel$ = tuiTypedFromEvent(nativeElement, 'wheel', {passive: false}).pipe(
-            filter(event => event.deltaX === 0 && this.shouldScroll(nativeElement)),
-            tuiPreventDefault(),
-            map(({deltaY}) =>
-                Math.max(nativeElement.scrollLeft + deltaY * EVENT_Y_TO_X_COEFFICIENT, 0),
-            ),
-        );
-        const start$ = this.scrollToStart$.pipe(map(() => 0));
-        const end$ = this.scrollToEnd$.pipe(map(() => nativeElement.scrollWidth));
-
-        merge(wheel$, start$, end$)
-            .pipe(
-                switchMap(left =>
-                    this.tuiScrollService.scroll$(
-                        nativeElement,
-                        nativeElement.scrollHeight,
-                        left,
-                    ),
-                ),
-                takeUntil(this.destroy$),
-            )
-            .subscribe();
-    }
-
     private updateSearch(value: string): void {
         if (this.focusableElement) {
             this.focusableElement.nativeElement.value = value;
@@ -537,10 +502,6 @@ export class TuiInputTagComponent
 
         this.search = value;
         this.searchChange.emit(value);
-    }
-
-    private shouldScroll({scrollWidth, offsetWidth}: HTMLElement): boolean {
-        return scrollWidth > offsetWidth;
     }
 
     private addTag(): void {
