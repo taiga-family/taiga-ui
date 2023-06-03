@@ -15,6 +15,7 @@
         "tsbuildinfo",
         "estree",
         "keyof",
+        "takewhile",
         "typeof",
         "typecheck",
         "instanceof",
