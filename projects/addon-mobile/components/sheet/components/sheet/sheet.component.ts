@@ -14,8 +14,8 @@ import {
 import {EMPTY_QUERY, TUI_IS_IOS, tuiPure, tuiZonefull} from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {TUI_MORE_WORD} from '@taiga-ui/kit';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {Observable, timer} from 'rxjs';
+import {map, take, takeWhile} from 'rxjs/operators';
 
 import {fakeSmoothScroll} from '../../ios.hacks';
 import {TuiSheet} from '../../sheet';
@@ -90,9 +90,21 @@ export class TuiSheetComponent<T> implements AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        const stops = [...this.stops, this.sheetTop, this.contentTop];
+        const {nativeElement} = this.el;
+        const scrollTop = [...this.stops, this.sheetTop, this.contentTop][
+            this.item.initial
+        ];
 
-        this.elementRef.nativeElement.scrollTop = stops[this.item.initial];
+        // Sometimes on iOS it ignores initial scroll, so we try it 5 times over the course of 200ms
+        timer(0, 50)
+            .pipe(
+                take(5),
+                // eslint-disable-next-line rxjs/no-ignored-takewhile-value
+                takeWhile(() => nativeElement.scrollTop !== scrollTop),
+            )
+            .subscribe(() => {
+                nativeElement.scrollTop = scrollTop;
+            });
     }
 
     scrollTo(top: number = this.sheetTop): void {
