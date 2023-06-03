@@ -90,7 +90,7 @@ export class TuiSheetComponent<T> implements AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        const {nativeElement} = this.el;
+        const {nativeElement} = this.elementRef;
         const scrollTop = [...this.stops, this.sheetTop, this.contentTop][
             this.item.initial
         ];
