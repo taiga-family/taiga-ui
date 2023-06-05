@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.30.0](https://github.com/tinkoff/taiga-ui/compare/v3.29.2...v3.30.0) (2023-06-05)
+
+### Features
+
+- **addon-editor:** support image as anchor ([#4428](https://github.com/tinkoff/taiga-ui/issues/4428))
+  ([76845b4](https://github.com/tinkoff/taiga-ui/commit/76845b41dfc9f2c761c14143c57a09ab2a70ae09))
+- **addon-mobile:** `PullToRefresh` use `TUI_SCROLL_REF` ([#4571](https://github.com/tinkoff/taiga-ui/issues/4571))
+  ([2a207b6](https://github.com/tinkoff/taiga-ui/commit/2a207b668196b81c2dd8c6ce8066a3b9ed2d745d))
+- **kit:** `InputPhone` uses `Maskito` instead of legacy `text-mask`
+  ([#4555](https://github.com/tinkoff/taiga-ui/issues/4555))
+  ([5f6b484](https://github.com/tinkoff/taiga-ui/commit/5f6b48433097b9aa41857ad7282cd714ac25dad1))
+- **kit:** `ProgressCircle` design improvements ([#4577](https://github.com/tinkoff/taiga-ui/issues/4577))
+  ([2b94f6f](https://github.com/tinkoff/taiga-ui/commit/2b94f6f0e233c2c74cbf9e454d93767a1f886236))
+
+### Bug Fixes
+
+- **addon-editor:** immediately unsubscribe streams when toolbar is destroyed
+  ([#4588](https://github.com/tinkoff/taiga-ui/issues/4588))
+  ([db84ded](https://github.com/tinkoff/taiga-ui/commit/db84dedec7bfea31f4a1b50b1b5bcd9e7978c0d3))
+- **addon-editor:** prevent paste redundant break line ([#4587](https://github.com/tinkoff/taiga-ui/issues/4587))
+  ([4c71bad](https://github.com/tinkoff/taiga-ui/commit/4c71bad71ac6f02493143d1ccc55e783b8268f99))
+- **addon-mobile:** `Sheet` remove focus from under sheet with overlay
+  ([#4567](https://github.com/tinkoff/taiga-ui/issues/4567))
+  ([28396c8](https://github.com/tinkoff/taiga-ui/commit/28396c8936e50b1000c58e185539fbb7e61222ce))
+- **core:** `PositionService` eliminate memory leak ([#4561](https://github.com/tinkoff/taiga-ui/issues/4561))
+  ([b50bd1e](https://github.com/tinkoff/taiga-ui/commit/b50bd1e48a105effd0537e0593e957226182f933))
+- **core:** `TUI_SCROLL_REF` fallback to `documentElement` ([#4566](https://github.com/tinkoff/taiga-ui/issues/4566))
+  ([a3c7399](https://github.com/tinkoff/taiga-ui/commit/a3c7399953ee4d9cdd8dd85e9b13a8c0c2b6e13f))
+- hosts of portals can throw `ExpressionChangedAfterItHasBeenCheckedError`
+  ([#4533](https://github.com/tinkoff/taiga-ui/issues/4533))
+  ([677b0d1](https://github.com/tinkoff/taiga-ui/commit/677b0d18d235cde23d725751ebe4969034b82f97))
+- **kit:** `InputDateRange` fix showing same month twice when `min` is later than given month
+  ([#4569](https://github.com/tinkoff/taiga-ui/issues/4569))
+  ([0573b29](https://github.com/tinkoff/taiga-ui/commit/0573b29ac2eab78b3db23eba550e64b835275ba3))
+- **kit:** `InputTag` fix scrolling ([#4570](https://github.com/tinkoff/taiga-ui/issues/4570))
+  ([1674f69](https://github.com/tinkoff/taiga-ui/commit/1674f696c00481b0ca2b80ba25f28215c13a1390))
+- **kit:** `Tabs` align dropdown design with datalist ([#4568](https://github.com/tinkoff/taiga-ui/issues/4568))
+  ([fe2e810](https://github.com/tinkoff/taiga-ui/commit/fe2e810e745a28fe82a9b5d8be1fe02f48bffe15))
+- **testing:** support node.js 18.16, jest 26+ ships jsdom out of the box
+  ([#4590](https://github.com/tinkoff/taiga-ui/issues/4590))
+  ([ad13df9](https://github.com/tinkoff/taiga-ui/commit/ad13df9960714b351eefe2d62e0a986e9172532b))
+
+### Deprecations
+
+- **addon-commerce:** use new `TUI_CARD_HOLDER_MASK` instead of deprecated `cardHolderMask`
+  ([#4560](https://github.com/tinkoff/taiga-ui/issues/4560))
+  ([ef8bc40](https://github.com/tinkoff/taiga-ui/commit/ef8bc4063bfc3f2191bc88b2dc0acf62cfb4a427))
+
 ### [3.29.2](https://github.com/tinkoff/taiga-ui/compare/v3.29.1...v3.29.2) (2023-05-31)
 
 ### Features
