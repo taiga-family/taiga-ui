@@ -10,6 +10,7 @@ import {
     Optional,
     Output,
     QueryList,
+    Self,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
@@ -30,6 +31,7 @@ import {
     EMPTY_QUERY,
     tuiAssert,
     tuiDefaultProp,
+    TuiDestroyService,
     TuiHandler,
     TuiInjectionTokenType,
     tuiIsNativeFocusedIn,
@@ -37,7 +39,7 @@ import {
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';
-import {take} from 'rxjs/operators';
+import {take, takeUntil} from 'rxjs/operators';
 
 import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager.directive';
 
@@ -46,6 +48,7 @@ import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager
     templateUrl: './toolbar.template.html',
     styleUrls: ['./toolbar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [TuiDestroyService],
     host: {
         role: 'toolbar',
     },
@@ -103,6 +106,9 @@ export class TuiToolbarComponent {
         readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
         @Inject(TUI_EDITOR_OPTIONS)
         private readonly defaultOptions: TuiEditorOptions,
+        @Self()
+        @Inject(TuiDestroyService)
+        private readonly destroy$: TuiDestroyService,
     ) {}
 
     get focused(): boolean {
@@ -216,10 +222,8 @@ export class TuiToolbarComponent {
         }
 
         this.imageLoader(file)
-            .pipe(take(1))
-            .subscribe(image => {
-                this.addImage(image);
-            });
+            .pipe(take(1), takeUntil(this.destroy$))
+            .subscribe(image => this.addImage(image));
     }
 
     onAttach(input: HTMLInputElement): void {
@@ -238,7 +242,7 @@ export class TuiToolbarComponent {
             );
 
         this.filesLoader?.(files)
-            .pipe(take(1))
+            .pipe(take(1), takeUntil(this.destroy$))
             .subscribe(attachedFiles => this.fileAttached.emit(attachedFiles));
     }
 
