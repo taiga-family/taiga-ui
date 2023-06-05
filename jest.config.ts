@@ -21,6 +21,13 @@ module.exports = {
     preset: `jest-preset-angular`,
 
     /**
+     * The test environment that will be used for testing.
+     * The default environment in Jest is a Node.js environment.
+     * If you are building a web app, you can use a browser-like environment through jsdom instead.
+     */
+    testEnvironment: `jsdom`,
+
+    /**
      * A set of global variables that need
      * to be available in all test environments.
      */

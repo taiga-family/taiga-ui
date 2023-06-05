@@ -5,19 +5,6 @@ const {TextEncoder: TextEncoderMock, TextDecoder: TextDecoderMock} = require(`ut
 global.TextEncoder = TextEncoderMock;
 global.TextDecoder = TextDecoderMock;
 
-const jsdom = require(`jsdom`);
-const {JSDOM} = jsdom;
-
-const dom = new JSDOM(`<!DOCTYPE html><html><head></head><body></body></html>`, {
-    url: `https://localhost:3333`,
-});
-
-// noinspection JSConstantReassignment
-global.window = dom.window;
-
-// noinspection JSConstantReassignment
-global.document = dom.window.document;
-
 // @ts-ignore
 global.document.execCommand = function execCommandMock() {};
 
