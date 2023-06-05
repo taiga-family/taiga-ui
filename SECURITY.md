@@ -2,10 +2,10 @@
 
 ## Supported Versions
 
-| Version | Supported  | Angular |
-| ------- | ---------- | ------- |
-| 2.x.y   | ☑️ LTS     | 9.0.0+  |
-| 3.x.y   | ✅ Current | 12.0.0+ |
+| Version | Supported  | Angular          |
+| ------- | ---------- | ---------------- |
+| 2.x.y   | ☑️ LTS     | ^9.0.0 - ^15.0.0 |
+| 3.x.y   | ✅ Current | ^12.0.0 - latest |
 
 ## Reporting a Vulnerability
 
