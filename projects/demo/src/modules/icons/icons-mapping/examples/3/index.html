@@ -1,0 +1,25 @@
+There are two types of SVG gradients:
+<code>linear</code>
+and
+<code>radial</code>
+. They are defined separately from where they are used, which promotes reusability. But you should remember that such
+svg files can't be reusable with tui-svg inside
+<code>use</code>
+tag. For workaround you need to provide (or
+<a
+    tuiLink
+    routerLink="/icons/customization"
+>
+    override
+</a>
+) src full path to svg file.
+
+<br />
+<br />
+
+non gradient icon:
+<tui-svg src="tuiIconPhone"></tui-svg>
+
+<br />
+gradient icon:
+<tui-svg src="assets/icons/polygon.svg"></tui-svg>

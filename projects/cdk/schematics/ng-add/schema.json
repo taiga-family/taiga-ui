@@ -34,7 +34,7 @@
             "type": "boolean",
             "default": true,
             "x-prompt": {
-                "message": "Do you plan on using custom SVGs/icons or addon-editor? If `Yes` we will include ng-dompurify as sanitizer, read more: https://taiga-ui.dev/icon-set#sanitizer",
+                "message": "Do you plan on using custom SVGs/icons or addon-editor? If `Yes` we will include ng-dompurify as sanitizer, read more: https://taiga-ui.dev/icons/bundled#sanitizer",
                 "type": "confirmation"
             }
         },

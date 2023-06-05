@@ -146,14 +146,6 @@ export const ROUTES: Routes = [
             title: `Portals`,
         },
     },
-    {
-        path: `icon-set`,
-        loadChildren: async () =>
-            (await import(`../customization/icon-set/icon-set.module`)).IconSetModule,
-        data: {
-            title: `Icon set`,
-        },
-    },
     // COMPONENTS
     {
         path: `components/accordion`,
@@ -659,16 +651,6 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: `components/marker-icon`,
-        loadChildren: async () =>
-            (await import(`../components/marker-icon/marker-icon.module`))
-                .ExampleTuiMarkerIconModule,
-        data: {
-            path: `tui-marker-icon`,
-            title: `MarkerIcon`,
-        },
-    },
-    {
         path: `mobile-themes`,
         loadChildren: async () =>
             (await import(`../components/mobile-themes/mobile-themes.module`))
@@ -865,14 +847,6 @@ export const ROUTES: Routes = [
                 .ExampleTuiPreviewModule,
         data: {
             title: `Preview`,
-        },
-    },
-    {
-        path: `components/svg`,
-        loadChildren: async () =>
-            (await import(`../components/svg/svg.module`)).ExampleTuiSvgModule,
-        data: {
-            title: `Svg`,
         },
     },
     {
@@ -1222,6 +1196,51 @@ export const ROUTES: Routes = [
             title: `Editor — HTML5`,
         },
     },
+    // ICONS
+    {
+        path: `icons/overview`,
+        loadChildren: async () => (await import(`../icons/icons.module`)).IconsModule,
+        data: {
+            title: `Overview`,
+        },
+    },
+    {
+        path: `icons/mapping`,
+        loadChildren: async () =>
+            (await import(`../icons/icons-mapping/icons-mapping.module`))
+                .IconsMappingModule,
+        data: {
+            title: `Icons mapping`,
+        },
+    },
+    {
+        path: `icons/bundled`,
+        loadChildren: async () =>
+            (await import(`../icons/icons-bundled/icons-bundled.module`))
+                .IconsBundledModule,
+        data: {
+            title: `Icons bundled`,
+        },
+    },
+    {
+        path: `icons/customization`,
+        loadChildren: async () =>
+            (await import(`../icons/customization/icons-customization.module`))
+                .IconsCustomizationModule,
+        data: {
+            title: `Icons customization`,
+        },
+    },
+    {
+        path: `icons/marker-icon`,
+        loadChildren: async () =>
+            (await import(`../icons/marker-icon/marker-icon.module`))
+                .ExampleTuiMarkerIconModule,
+        data: {
+            path: `tui-marker-icon`,
+            title: `MarkerIcon`,
+        },
+    },
     // FILTER
     {
         path: `components/filter`,
@@ -1333,14 +1352,6 @@ export const ROUTES: Routes = [
         loadChildren: async () => (await import(`../markup/form/form.module`)).FormModule,
         data: {
             title: `Form`,
-        },
-    },
-    {
-        path: `icons`,
-        loadChildren: async () =>
-            (await import(`../markup/icons/icons.module`)).IconsModule,
-        data: {
-            title: `Icons`,
         },
     },
     {
@@ -1805,14 +1816,6 @@ export const ROUTES: Routes = [
             (await import(`../services/scroll/scroll.module`)).ExampleTuiScrollModule,
         data: {
             title: `ScrollService`,
-        },
-    },
-    {
-        path: `services/svg-service`,
-        loadChildren: async () =>
-            (await import(`../services/svg/svg.module`)).ExampleTuiSvgModule,
-        data: {
-            title: `SvgService`,
         },
     },
     {
