@@ -20,6 +20,7 @@ module.exports = {
                 '@typescript-eslint/ban-ts-comment': 'off',
                 'eslint-comments/no-unlimited-disable': 'off',
                 'eslint-comments/disable-enable-pair': 'off',
+                'rxjs/no-ignored-takewhile-value': 'off',
                 'import/no-dynamic-require': 'off',
                 'promise/catch-or-return': 'off',
                 'prettier/prettier': 'off',
