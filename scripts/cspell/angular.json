@@ -25,6 +25,7 @@
         "buildable",
         "cacheable",
         "prerender",
-        "routable"
+        "routable",
+        "takewhile"
     ]
 }
