@@ -119,7 +119,6 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
 
                     setImage({src});
                     commands.setTextSelection(anchor);
-                    commands.insertContent(`<p></p>`);
 
                     return true;
                 }
