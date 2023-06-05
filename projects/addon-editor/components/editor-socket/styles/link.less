@@ -15,7 +15,6 @@ a:not([data-type='jump-anchor']) {
     }
 }
 
-/* stylelint-disable-next-line */
 .ProseMirror {
     a[data-type='jump-anchor'] {
         text-decoration: underline;
@@ -28,5 +27,10 @@ a:not([data-type='jump-anchor']) {
         &:hover {
             color: var(--tui-link);
         }
+    }
+
+    a:hover img[contenteditable='false'] {
+        cursor: pointer;
+        outline: 0.25rem solid var(--tui-link);
     }
 }

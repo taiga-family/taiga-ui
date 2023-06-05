@@ -11,6 +11,7 @@ import {
     tuiTrashValueByEditLink,
     tuiVisitEditorApiPage,
 } from '@demo-integrations/support/editor/helpers';
+import {HTML_EDITOR_EXAMPLE_LINK_WITH_FORMATTED_TEXT} from '@demo-integrations/support/editor/html';
 
 describe(`Editing links in Editor`, () => {
     beforeEach(() => {
@@ -119,5 +120,18 @@ describe(`Editing links in Editor`, () => {
         tuiGetScreenshotArea().matchImageSnapshot(
             `word-should-not-overlap-by-link-modal`,
         );
+    });
+
+    it(`revisit with highlighted text`, () => {
+        tuiVisitEditorApiPage({
+            content: HTML_EDITOR_EXAMPLE_LINK_WITH_FORMATTED_TEXT,
+            skipDecodingUrl: true,
+        });
+
+        tuiFocusToStartInEditor();
+
+        tuiOpenAnchorDropdown({containHref: `https://wysiwyg.com`});
+
+        tuiGetScreenshotArea().matchImageSnapshot(`link-with-formatted-nested-content`);
     });
 });

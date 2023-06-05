@@ -58,8 +58,11 @@ export function createImageEditorExtension<T, K>(
 
     return Image.extend({
         name: `imageEditor`,
-        group: `block`,
+        group: `inline`,
+        inline: true,
         atom: true,
+        priority: 0,
+        selectable: true,
         draggable: enableDraggable,
 
         parseHTML(): NodeSpec['parseDOM'] {
@@ -85,7 +88,7 @@ export function createImageEditorExtension<T, K>(
 
         addNodeView(): NodeViewRenderer {
             return (props: NodeViewRendererProps) =>
-                new TuiNodeView(TuiImageEditorComponent, props, {injector});
+                new TuiNodeView(TuiImageEditorComponent, props, {injector, ...props});
         },
 
         addCommands(): Partial<RawCommands> {

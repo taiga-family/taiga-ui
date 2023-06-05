@@ -3,7 +3,8 @@ module.exports = {
     ignoreFiles: ['**/demo/**', '**/dist/**', '**/coverage/**', '**/node_modules/**'],
     rules: {
         'function-url-quotes': null,
-        'selector-class-pattern': '^(_.*)|(t-.*)|(tui-.*)|(ng-.*)|(hljs.*)$',
+        'selector-class-pattern':
+            '^(_.*)|(t-.*)|(ProseMirror.*)|(tui-.*)|(ng-.*)|(hljs.*)$',
         'unit-allowed-list': [
             'px',
             'rem',

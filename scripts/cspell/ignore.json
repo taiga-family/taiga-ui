@@ -22,7 +22,8 @@
         "Letraset",
         "Aldus",
         "humo",
-        "uzcard"
+        "uzcard",
+        "selectednode"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "ignorePaths": ["**/addon-commerce/enums/currency-code.ts", "**/addon-commerce/utils/get-currency-symbol.ts"],

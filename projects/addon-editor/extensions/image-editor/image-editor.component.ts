@@ -2,11 +2,14 @@ import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    ElementRef,
     HostBinding,
+    HostListener,
     Inject,
     Self,
 } from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {WINDOW} from '@ng-web-apis/common';
 import {AbstractTuiEditorResizable} from '@taiga-ui/addon-editor/components/editor-resizable';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 
@@ -26,6 +29,11 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEditableImage> {
+    @HostBinding('attr.contenteditable')
+    contenteditable = true;
+
+    focused = false;
+
     @HostBinding('attr.data-drag-handle')
     get dragHandle(): '' | null {
         return this.attrs.draggable ?? null;
@@ -56,8 +64,19 @@ export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEdita
         @Self()
         @Inject(TuiDestroyService)
         destroy$: TuiDestroyService,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLDivElement>,
+        @Inject(WINDOW) private readonly win: Window,
     ) {
         super(doc, destroy$);
+    }
+
+    @HostListener('document:click.silent', ['$event.target'])
+    currentTargetIsFocused(node: Node): void {
+        this.focused = this.el.nativeElement.contains(node);
+
+        if (this.focused) {
+            this.selectFakeText();
+        }
     }
 
     updateSize([width]: readonly [width: number, height: number]): void {
@@ -65,5 +84,15 @@ export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEdita
         const maxWidth = this.maxWidth ?? this.options.maxWidth;
 
         this._width = Math.max(minWidth, Math.min(maxWidth, width));
+    }
+
+    private selectFakeText(): void {
+        const range = this.doc.createRange();
+
+        this.el.nativeElement.querySelector('p')?.focus();
+
+        range.selectNode(this.el.nativeElement);
+        this.win.getSelection()?.removeAllRanges();
+        this.win.getSelection()?.addRange(range);
     }
 }

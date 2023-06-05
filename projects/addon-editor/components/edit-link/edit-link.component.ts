@@ -176,7 +176,13 @@ export class TuiEditLinkComponent {
     }
 
     private getAnchorElement(): HTMLAnchorElement | null {
-        return this.getFocusedParentElement()?.closest('a') || null;
+        const focusable = this.getFocusedParentElement();
+
+        return (
+            focusable?.closest('a') ??
+            focusable?.querySelector('img')?.closest('a') ??
+            null
+        );
     }
 
     private getHrefOrAnchorId(): string {

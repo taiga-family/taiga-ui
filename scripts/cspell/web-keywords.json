@@ -97,6 +97,9 @@
         "blockquotes",
         "datetime",
         "nums",
+        "noopener",
+        "noreferrer",
+        "nofollow",
         "viewbox"
     ]
 }
