@@ -11,6 +11,7 @@ import {
 
 export const MICRO_OFFSET = 10 ** -6;
 
+// @dynamic
 @Injectable()
 export class TuiPullToRefreshService extends Observable<number> {
     private readonly pulling$ = merge(
