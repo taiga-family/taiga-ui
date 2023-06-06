@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_PULL_TO_REFRESH_THRESHOLD} from '../pull-to-refresh.providers';
+import {TUI_PULL_TO_REFRESH_THRESHOLD} from '../pull-to-refresh.tokens';
 
 const LOADED_STEP = 8;
 const ROTATE_X_STEP = 30;

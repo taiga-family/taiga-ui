@@ -5,11 +5,9 @@ import {Observable, of} from 'rxjs';
 import {distinctUntilChanged, filter, map} from 'rxjs/operators';
 
 import {TUI_IOS_LOADER} from './loader-ios/loader-ios.component';
-import {
-    TUI_PULL_TO_REFRESH_COMPONENT,
-    TUI_PULL_TO_REFRESH_THRESHOLD,
-} from './pull-to-refresh.providers';
+import {TUI_PULL_TO_REFRESH_COMPONENT} from './pull-to-refresh.providers';
 import {MICRO_OFFSET, TuiPullToRefreshService} from './pull-to-refresh.service';
+import {TUI_PULL_TO_REFRESH_THRESHOLD} from './pull-to-refresh.tokens';
 
 @Component({
     selector: 'tui-pull-to-refresh',

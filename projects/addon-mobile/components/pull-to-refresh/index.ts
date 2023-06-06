@@ -4,3 +4,4 @@ export * from './pull-to-refresh.component';
 export * from './pull-to-refresh.module';
 export * from './pull-to-refresh.providers';
 export * from './pull-to-refresh.service';
+export * from './pull-to-refresh.tokens';

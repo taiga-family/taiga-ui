@@ -6,8 +6,8 @@ import {endWith, filter, map, scan, switchMap, takeUntil} from 'rxjs/operators';
 import {
     TUI_PULL_TO_REFRESH_COMPONENT,
     TUI_PULL_TO_REFRESH_LOADED,
-    TUI_PULL_TO_REFRESH_THRESHOLD,
 } from './pull-to-refresh.providers';
+import {TUI_PULL_TO_REFRESH_THRESHOLD} from './pull-to-refresh.tokens';
 
 export const MICRO_OFFSET = 10 ** -6;
 
