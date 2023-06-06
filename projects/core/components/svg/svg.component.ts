@@ -14,7 +14,6 @@ import {WINDOW} from '@ng-web-apis/common';
 import {
     tuiAssert,
     tuiGetDocumentOrShadowRoot,
-    TuiHandler,
     tuiIsString,
     tuiPure,
     tuiRequiredSetter,
@@ -30,7 +29,12 @@ import {tuiIsPresumedHTMLString} from '@taiga-ui/core/utils/miscellaneous';
 import {Observable, of, ReplaySubject} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 
-import {TUI_SVG_OPTIONS, TUI_SVG_SRC_INTERCEPTORS, TuiSvgOptions} from './svg-options';
+import {
+    TUI_SVG_OPTIONS,
+    TUI_SVG_SRC_INTERCEPTORS,
+    TuiSvgInterceptorHandler,
+    TuiSvgOptions,
+} from './svg-options';
 
 const UNDEFINED_NAMED_ICON = 'Attempted to use undefined named icon';
 const MISSING_EXTERNAL_ICON = 'External icon is missing on the given URL';
@@ -55,9 +59,7 @@ export class TuiSvgComponent {
         @Inject(TUI_SVG_OPTIONS) private readonly options: TuiSvgOptions,
         @Optional()
         @Inject(TUI_SVG_SRC_INTERCEPTORS)
-        private readonly srcInterceptors: Array<
-            TuiHandler<TuiSafeHtml, TuiSafeHtml>
-        > | null,
+        private readonly srcInterceptors: readonly TuiSvgInterceptorHandler[] | null,
         @Optional()
         @Inject(TUI_SANITIZER)
         private readonly tuiSanitizer: Sanitizer | null,
@@ -89,7 +91,7 @@ export class TuiSvgComponent {
         ngDevMode && tuiAssert.assert(!deprecated, deprecated);
 
         this.icon = (this.srcInterceptors ?? []).reduce(
-            (newSrc: TuiSafeHtml, interceptor) => interceptor(newSrc),
+            (newSrc, interceptor) => interceptor(newSrc, this.options),
             this.options.srcProcessor(src),
         );
 
