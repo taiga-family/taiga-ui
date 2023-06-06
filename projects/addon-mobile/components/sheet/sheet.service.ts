@@ -1,6 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import {Inject, Injectable} from '@angular/core';
-import {tuiGetNativeFocused, tuiIsHTMLElement} from '@taiga-ui/cdk';
+import {tuiGetNativeFocused} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, EMPTY, Observable} from 'rxjs';
 
@@ -37,7 +37,7 @@ export class TuiSheetService {
             };
             const focused = tuiGetNativeFocused(this.doc);
 
-            if (tuiIsHTMLElement(focused) && sheet.overlay) {
+            if (focused instanceof HTMLElement && sheet.overlay) {
                 focused.blur();
             }
 
