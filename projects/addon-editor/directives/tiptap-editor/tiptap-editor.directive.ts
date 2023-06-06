@@ -3,6 +3,7 @@ import {
     ElementRef,
     Inject,
     Input,
+    NgZone,
     Output,
     Renderer2,
     Self,
@@ -12,10 +13,10 @@ import {
     INITIALIZATION_TIPTAP_CONTAINER,
     TIPTAP_EDITOR,
 } from '@taiga-ui/addon-editor/tokens';
-import {TuiDestroyService} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiZonefree} from '@taiga-ui/cdk';
 import {Editor} from '@tiptap/core';
-import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {Observable, of, timer} from 'rxjs';
+import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs/operators';
 
 import {TuiTiptapEditorService} from './tiptap-editor.service';
 
@@ -35,8 +36,23 @@ export class TuiTiptapEditorDirective {
     }
 
     @Output()
-    readonly valueChange = this.editor.valueChange$;
+    readonly valueChange = this.editor.valueChange$.pipe(
+        switchMap((value, index) =>
+            /**
+             * @note:
+             * for the initial setting of the value,
+             * we shouldn't make a delay so that the changes have time to take effect
+             */
+            index && !!value ? timer(300).pipe(map(() => value)) : of(value),
+        ),
+        tuiZonefree(this.ngZone),
+        distinctUntilChanged(),
+    );
 
+    /**
+     * @deprecated:
+     * will be removed in v4.0
+     */
     @Output()
     readonly stateChange = this.editor.stateChange$;
 
@@ -46,6 +62,7 @@ export class TuiTiptapEditorDirective {
         @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
         @Inject(INITIALIZATION_TIPTAP_CONTAINER) readonly editorContainer: HTMLElement,
         @Inject(TIPTAP_EDITOR) private readonly editorLoaded$: Observable<Editor>,
+        @Inject(NgZone) private readonly ngZone: NgZone,
         @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
         this.editorLoaded$.pipe(takeUntil(destroy$)).subscribe(() => {
