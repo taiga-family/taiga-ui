@@ -5,7 +5,13 @@ import {
     Inject,
     ViewEncapsulation,
 } from '@angular/core';
-import {TUI_DIALOGS, TUI_IS_MOBILE, TUI_VERSION} from '@taiga-ui/cdk';
+import {
+    TUI_DIALOGS,
+    TUI_IS_ANDROID,
+    TUI_IS_IOS,
+    TUI_IS_MOBILE,
+    TUI_VERSION,
+} from '@taiga-ui/cdk';
 import {TUI_IS_MOBILE_RES_PROVIDER} from '@taiga-ui/core/providers';
 import {
     TUI_ANIMATIONS_DURATION,
@@ -27,6 +33,8 @@ import {map} from 'rxjs/operators';
     host: {
         'data-tui-version': TUI_VERSION,
         '[style.--tui-duration.ms]': 'duration',
+        '[class._ios]': 'isIOS',
+        '[class._android]': 'isAndroid',
         '($.class._mobile)': 'isMobileRes$',
     },
 })
@@ -44,6 +52,8 @@ export class TuiRootComponent {
         readonly dialogs: ReadonlyArray<Observable<readonly unknown[]>>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(TUI_IS_MOBILE_RES) readonly isMobileRes$: Observable<boolean>,
+        @Inject(TUI_IS_IOS) readonly isIOS: boolean,
+        @Inject(TUI_IS_ANDROID) readonly isAndroid: boolean,
         @Inject(DOCUMENT) {body}: Document,
         @Inject(TUI_THEME) theme: string,
     ) {
