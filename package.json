@@ -118,7 +118,7 @@
         "cy2": "4.0.6",
         "cypress": "12.13.0",
         "cypress-real-events": "1.8.1",
-        "eslint": "8.41.0",
+        "eslint": "8.42.0",
         "find-in-files": "0.5.0",
         "http-server": "0.13.0",
         "husky": "8.0.3",
