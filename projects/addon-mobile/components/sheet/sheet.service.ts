@@ -7,6 +7,7 @@ import {BehaviorSubject, EMPTY, Observable} from 'rxjs';
 import {TuiSheet} from './sheet';
 import {TUI_SHEET_OPTIONS, TuiSheetOptions} from './sheet-options';
 
+// @dynamic
 @Injectable({
     providedIn: `root`,
 })
