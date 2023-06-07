@@ -15,12 +15,17 @@
             <div>
                 It emits
                 <code>(pulled)</code>
-                event when user wants to start loading.
+                event when the pull threshold is reached.
+            </div>
+            <div class="tui-space_top-2">
+                You can set that threshold in pixels by
+                <code>TUI_PULL_TO_REFRESH_THRESHOLD</code>
+                DI token.
             </div>
             <div class="tui-space_top-2">
                 You can finish loading with
-                <code>TUI_LOADED</code>
-                stream token that can be provided in DI
+                <code>TUI_PULL_TO_REFRESH_LOADED</code>
+                stream token that can be provided in DI.
             </div>
         </tui-notification>
 

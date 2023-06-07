@@ -1,55 +1,31 @@
-import {ElementRef, InjectionToken, Provider} from '@angular/core';
-import {TUI_LOADED} from '@taiga-ui/addon-mobile/tokens';
-import {TUI_IS_IOS, typedFromEvent} from '@taiga-ui/cdk';
-import {merge, Observable} from 'rxjs';
-import {endWith, filter, map, mapTo, scan, switchMap, takeUntil} from 'rxjs/operators';
+import {inject, InjectionToken} from '@angular/core';
+import {TUI_IS_IOS, TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {EMPTY, Observable} from 'rxjs';
 
-export const MICRO_OFFSET = 10 ** -6;
-export const PULLED_DISTANCE = 50;
+import {TUI_ANDROID_LOADER} from './loader-android/loader-android.component';
+import {TUI_IOS_LOADER} from './loader-ios/loader-ios.component';
 
-export const TUI_PULLING = new InjectionToken<Observable<number>>(
-    `Stream that emits content pulling`,
+/**
+ * Stream that emits when loading is over
+ */
+export const TUI_PULL_TO_REFRESH_LOADED = new InjectionToken<Observable<unknown>>(
+    `[TUI_PULL_TO_REFRESH_LOADED]`,
+    {
+        factory: () => EMPTY,
+    },
 );
 
-export const TUI_PULL_TO_REFRESH_PROVIDERS: Provider[] = [
-    {
-        provide: TUI_PULLING,
-        deps: [TUI_IS_IOS, TUI_LOADED, ElementRef],
-        useFactory: pullingFactory,
-    },
-];
+/**
+ * Loading indicator component that gets current pull distance in pixels as context
+ */
+export const TUI_PULL_TO_REFRESH_COMPONENT = new InjectionToken<
+    PolymorpheusContent<TuiContextWithImplicit<number>>
+>(`[TUI_PULL_TO_REFRESH_COMPONENT]`, {
+    factory: () => (inject(TUI_IS_IOS) ? TUI_IOS_LOADER : TUI_ANDROID_LOADER),
+});
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function pullingFactory(
-    isIOS: boolean,
-    loaded$: Observable<unknown>,
-    {nativeElement}: ElementRef<HTMLElement>,
-): Observable<number> {
-    return merge(
-        typedFromEvent(nativeElement, `touchstart`, {passive: true}).pipe(
-            filter(() => nativeElement.scrollTop === 0),
-            switchMap(touchStart =>
-                typedFromEvent(nativeElement, `touchmove`).pipe(
-                    map(
-                        touchMove =>
-                            touchMove.touches[0].clientY - touchStart.touches[0].clientY,
-                    ),
-                    takeUntil(typedFromEvent(nativeElement, `touchend`)),
-                    endWith(0),
-                ),
-            ),
-        ),
-        loaded$.pipe(mapTo(NaN)),
-    ).pipe(
-        scan((max, current) => {
-            if (Number.isNaN(current)) {
-                return 0;
-            }
-
-            const androidLoading = !isIOS && max === PULLED_DISTANCE;
-            const dropped = current === 0 && max > PULLED_DISTANCE;
-
-            return androidLoading || dropped ? PULLED_DISTANCE : current + MICRO_OFFSET;
-        }, 0),
-    );
-}
+/**
+ * @deprecated renamed to {@link TUI_PULL_TO_REFRESH_LOADED}
+ */
+export const TUI_LOADED = TUI_PULL_TO_REFRESH_LOADED;

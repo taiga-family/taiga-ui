@@ -1,5 +1,8 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {TuiDestroyService} from '@taiga-ui/cdk';
+import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+
+import {TUI_PULL_TO_REFRESH_THRESHOLD} from '../pull-to-refresh.tokens';
 
 const LOADED_STEP = 8;
 const ROTATE_X_STEP = 30;
@@ -7,21 +10,28 @@ const ROTATE_X_STEP = 30;
 @Component({
     selector: 'tui-mobile-ios-loader',
     templateUrl: './loader-ios.template.html',
+    styleUrls: ['./loader-ios.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService],
 })
 export class TuiMobileLoaderIOSComponent {
-    @Input()
-    pulled = 0;
-
     readonly steps = 12;
 
+    constructor(
+        @Inject(POLYMORPHEUS_CONTEXT)
+        private readonly context: TuiContextWithImplicit<number>,
+        @Inject(TUI_PULL_TO_REFRESH_THRESHOLD) private readonly threshold: number,
+    ) {}
+
     get finished(): boolean {
-        return this.pulled >= 100;
+        return this.percent >= 100;
+    }
+
+    get percent(): number {
+        return (this.context.$implicit * 100) / this.threshold;
     }
 
     isShown(index: number): boolean {
-        return this.pulled > (index + 1) * LOADED_STEP;
+        return this.percent > (index + 1) * LOADED_STEP;
     }
 
     calculateTransform(index: number): string {
@@ -32,3 +42,5 @@ export class TuiMobileLoaderIOSComponent {
         return `${(index * LOADED_STEP) / 100}s`;
     }
 }
+
+export const TUI_IOS_LOADER = new PolymorpheusComponent(TuiMobileLoaderIOSComponent);
