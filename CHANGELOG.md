@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.89.0](https://github.com/tinkoff/taiga-ui/compare/v2.88.0...v2.89.0) (2023-06-07)
+
+### Features
+
+- **addon-mobile:** `PullToRefresh` allow customization ([#4530](https://github.com/tinkoff/taiga-ui/issues/4530))
+  ([#4603](https://github.com/tinkoff/taiga-ui/issues/4603))
+  ([61acec1](https://github.com/tinkoff/taiga-ui/commit/61acec192ec60a9c85c37e3f41b028c836cf0d26))
+- **addon-mobile:** `PullToRefresh` use `TUI_SCROLL_REF` ([#4607](https://github.com/tinkoff/taiga-ui/issues/4607))
+  ([840526f](https://github.com/tinkoff/taiga-ui/commit/840526fa64b0fdb5c795bb11d427e533076b8386))
+
+### Bug Fixes
+
+- **addon-mobile:** `Sheet` remove focus from under sheet with overlay
+  ([#4601](https://github.com/tinkoff/taiga-ui/issues/4601))
+  ([5c92a19](https://github.com/tinkoff/taiga-ui/commit/5c92a19d5aee2ab6086ed70e61573f1f64f5b6ea))
+- **core:** `TUI_SCROLL_REF` fallback to documentElement ([#4604](https://github.com/tinkoff/taiga-ui/issues/4604))
+  ([1e6e1a4](https://github.com/tinkoff/taiga-ui/commit/1e6e1a428cf553430cf3e5c400ffda893233c4ed))
+
 ## [2.88.0](https://github.com/tinkoff/taiga-ui/compare/v2.87.0...v2.88.0) (2023-05-15)
 
 ### Bug Fixes
