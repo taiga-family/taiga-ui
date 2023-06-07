@@ -116,7 +116,7 @@
         "cpy-cli": "4.2.0",
         "cspell": "6.31.1",
         "cy2": "4.0.6",
-        "cypress": "12.13.0",
+        "cypress": "12.14.0",
         "cypress-real-events": "1.8.1",
         "eslint": "8.42.0",
         "find-in-files": "0.5.0",
