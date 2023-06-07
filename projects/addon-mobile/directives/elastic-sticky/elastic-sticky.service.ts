@@ -2,7 +2,7 @@ import {ElementRef, Inject, Injectable, NgZone, Self} from '@angular/core';
 import {
     TuiDestroyService,
     tuiGetElementOffset,
-    tuiTypedFromEvent,
+    tuiScrollFrom,
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
 import {SCROLL_REF_SELECTOR, TUI_SCROLL_REF} from '@taiga-ui/core';
@@ -37,12 +37,7 @@ export class TuiElasticStickyService extends Observable<number> {
                         const {offsetHeight} = nativeElement;
                         const {offsetTop} = tuiGetElementOffset(host, nativeElement);
 
-                        return tuiTypedFromEvent(
-                            host === host.ownerDocument?.documentElement
-                                ? host.ownerDocument
-                                : host,
-                            `scroll`,
-                        ).pipe(
+                        return tuiScrollFrom(host).pipe(
                             map(() =>
                                 Math.max(
                                     1 -

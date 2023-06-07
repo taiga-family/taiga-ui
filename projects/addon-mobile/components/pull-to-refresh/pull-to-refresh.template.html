@@ -1,13 +1,12 @@
 <div
-    tuiOverscroll
-    [class.t-drop-animation]="dropped$ | async"
-    [style.transform]="contentTransform$ | async"
->
-    <ng-content></ng-content>
-</div>
-
-<div
     polymorpheus-outlet
     [content]="component"
     [context]="{$implicit: (pulling$ | async) || 0}"
 ></div>
+
+<div
+    [class.t-drop]="dropped$ | async"
+    [ngStyle]="styleHandler((pulling$ | async) || 0)"
+>
+    <ng-content></ng-content>
+</div>

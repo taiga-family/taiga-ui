@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {generateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TuiPullToRefreshModule} from '@taiga-ui/addon-mobile';
-import {TuiButtonModule, TuiNotificationModule} from '@taiga-ui/core';
+import {TuiButtonModule, TuiNotificationModule, TuiScrollbarModule} from '@taiga-ui/core';
 
 import {TuiPullToRefreshExample1} from './examples/1';
 import {TuiPullToRefreshExample2} from './examples/2';
@@ -15,6 +15,7 @@ import {ExampleTuiPullToRefreshComponent} from './pull-to-refresh.component';
         TuiPullToRefreshModule,
         TuiButtonModule,
         TuiNotificationModule,
+        TuiScrollbarModule,
         TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiPullToRefreshComponent)),
     ],
