@@ -8,6 +8,7 @@ export * from './must-be-present';
 export * from './pressed-observable';
 export * from './prevent-default';
 export * from './replay-control-value-changes';
+export * from './scroll-from';
 export * from './stop-propagation';
 export * from './typed-from-event';
 export * from './watch';

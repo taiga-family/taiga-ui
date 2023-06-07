@@ -5,6 +5,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 @Component({
     selector: 'example-mobile-pull-to-refresh-page',
     templateUrl: './pull-to-refresh.template.html',
+    styleUrls: ['./pull-to-refresh.style.less'],
     changeDetection,
 })
 export class ExampleTuiPullToRefreshComponent {
