@@ -1,4 +1,5 @@
 <tui-input-number
+    decimal="never"
     class="t-textfield"
     [pseudoFocus]="pseudoFocus"
     [pseudoHover]="pseudoHover"
@@ -11,7 +12,6 @@
     [postfix]="postfix"
     [disabled]="computedDisabled"
     [readOnly]="readOnly"
-    [textMask]="getMask(min < 0)"
     [nativeId]="nativeId"
     [(ngModel)]="value"
     (keydown)="onKeydown($event)"
