@@ -1,7 +1,7 @@
 export const defaultEditorExtensions = [
     import(`@taiga-ui/addon-editor/extensions/starter-kit`)
         .then(({StarterKit}) => StarterKit)
-        .then(extension => extension.configure({heading: {levels: [1, 2]}})),
+        .then(extension => extension.configure({heading: {levels: [1, 2, 3, 4, 5, 6]}})),
     import(`@tiptap/extension-text-align`).then(({default: TextAlign}) =>
         TextAlign.configure({types: [`heading`, `paragraph`]}),
     ),
