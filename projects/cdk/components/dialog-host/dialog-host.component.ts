@@ -14,7 +14,7 @@ import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TUI_DIALOGS} from '@taiga-ui/cdk/tokens';
 import {TuiDialog} from '@taiga-ui/cdk/types';
 import {combineLatest, Observable, of} from 'rxjs';
-import {debounceTime, map, takeUntil} from 'rxjs/operators';
+import {map, takeUntil} from 'rxjs/operators';
 
 /**
  * Is closing dialog on browser backward navigation enabled
@@ -63,7 +63,6 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>>
         // can happen after view was checked, so calling `detectChanges` instead
         combineLatest(this.dialogsByType)
             .pipe(
-                debounceTime(0),
                 map(arr =>
                     new Array<T>()
                         .concat(...arr)
@@ -73,7 +72,7 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>>
             )
             .subscribe(dialogs => {
                 this.dialogs = dialogs;
-                this.cdr.detectChanges();
+                this.cdr.markForCheck();
             });
     }
 

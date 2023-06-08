@@ -52,12 +52,12 @@ describe(`Pdf Viewer with TUI_PDF_VIEWER_OPTIONS`, () => {
     });
 
     describe(`label`, () => {
-        it(`correctly shows label option data`, async () => {
+        it(`correctly shows label option data`, () => {
             tuiPdfViewerService
                 .open(sanitizer.bypassSecurityTrustResourceUrl(``))
                 .subscribe();
             fixture.detectChanges();
-            await fixture.whenStable();
+
             expect(getLabelElement()!.nativeElement.textContent.trim()).toBe(label);
         });
     });
