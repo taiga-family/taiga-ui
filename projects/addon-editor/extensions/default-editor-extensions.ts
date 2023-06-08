@@ -59,5 +59,5 @@ export function defaultExtractor<T>(importedExtension: {
 export function starterKitConfigurator(
     extension: Extension<StarterKitOptions>,
 ): Extension<StarterKitOptions> {
-    return extension.configure({heading: {levels: [1, 2]}});
+    return extension.configure({heading: {levels: [1, 2, 3, 4, 5, 6]}});
 }
