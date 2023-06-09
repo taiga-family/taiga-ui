@@ -30,6 +30,10 @@ export function replaceConst({from, to}: ReplacementConst): void {
     const references = getNamedImportReferences(from.name, from.moduleSpecifier);
 
     references.forEach(ref => {
+        if (ref.wasForgotten()) {
+            return;
+        }
+
         const parent = ref.getParent();
 
         if (Node.isImportSpecifier(parent)) {
