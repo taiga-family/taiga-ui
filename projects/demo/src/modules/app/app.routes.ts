@@ -1041,6 +1041,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `editor/font`,
+        loadChildren: async () =>
+            (await import(`../components/editor/font/editor-font.module`))
+                .ExampleTuiEditorFontModule,
+        data: {
+            title: `Editor — Font`,
+        },
+    },
+    {
         path: `editor/groups`,
         loadChildren: async () =>
             (await import(`../components/editor/groups/editor-groups.module`))

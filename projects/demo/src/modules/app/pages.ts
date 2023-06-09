@@ -886,6 +886,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Editor`,
+        title: `Font`,
+        keywords: `editor, font, wysiwyg, редактор, текст, html, rich, text`,
+        route: `/editor/font`,
+    },
+    {
+        section: `Editor`,
         title: `Anchors`,
         keywords: `editor, anchors, wysiwyg, редактор, текст, html, rich, text`,
         route: `/editor/anchors`,
