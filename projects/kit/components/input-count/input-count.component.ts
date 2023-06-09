@@ -20,21 +20,17 @@ import {
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     tuiIsPresent,
-    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_NUMBER_FORMAT,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    tuiCreateNumberMask,
-    tuiEnableAutoCorrectDecimalSymbol,
     tuiFormatNumber,
     tuiMaskedNumberStringToNumber,
     TuiNumberFormatSettings,
     TuiSizeL,
     TuiSizeS,
     TuiTextfieldController,
-    TuiTextMaskOptions,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiInputNumberComponent} from '@taiga-ui/kit/components/input-number';
@@ -108,21 +104,6 @@ export class TuiInputCountComponent
         private readonly numberFormat: TuiNumberFormatSettings,
     ) {
         super(control, cdr);
-    }
-
-    @tuiPure
-    getMask(allowNegative: boolean): TuiTextMaskOptions {
-        return {
-            mask: tuiCreateNumberMask({
-                allowNegative,
-                decimalSymbol: this.numberFormat.decimalSeparator,
-                thousandSymbol: this.numberFormat.thousandSeparator,
-                autoCorrectDecimalSymbol: tuiEnableAutoCorrectDecimalSymbol(
-                    this.numberFormat,
-                ),
-            }),
-            guide: false,
-        };
     }
 
     @HostBinding('class._hide-buttons')

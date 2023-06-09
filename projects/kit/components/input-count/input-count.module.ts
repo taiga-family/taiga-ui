@@ -8,8 +8,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputNumberModule} from '@taiga-ui/kit/components/input-number';
-import {TextMaskModule, TuiValueAccessorModule} from '@taiga-ui/kit/directives';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {TuiValueAccessorModule} from '@taiga-ui/kit/directives';
 
 import {TuiInputCountComponent} from './input-count.component';
 import {TuiInputCountDirective} from './input-count.directive';
@@ -20,13 +19,11 @@ import {TuiInputCountDirective} from './input-count.directive';
 @NgModule({
     imports: [
         CommonModule,
-        TextMaskModule,
         FormsModule,
         TuiButtonModule,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiValueAccessorModule,
-        PolymorpheusModule,
         TuiInputNumberModule,
     ],
     declarations: [TuiInputCountComponent, TuiInputCountDirective],
