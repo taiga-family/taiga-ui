@@ -134,7 +134,10 @@ export class TuiSvgComponent {
     }
 
     private get isUrl(): boolean {
-        return tuiIsString(this.icon) && this.icon.replace(TUI_CACHE_BUSTING_PAYLOAD, '').endsWith('.svg');
+        return (
+            tuiIsString(this.icon) &&
+            this.icon.replace(TUI_CACHE_BUSTING_PAYLOAD, '').endsWith('.svg')
+        );
     }
 
     private get isSrc(): boolean {
