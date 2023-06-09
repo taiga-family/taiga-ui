@@ -72,7 +72,7 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>>
             )
             .subscribe(dialogs => {
                 this.dialogs = dialogs;
-                this.cdr.detectChanges();
+                this.cdr.markForCheck();
             });
     }
 
