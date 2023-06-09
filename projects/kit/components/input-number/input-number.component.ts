@@ -12,8 +12,12 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {MaskitoOptions} from '@maskito/core';
+import {maskitoNumberOptionsGenerator, maskitoParseNumber} from '@maskito/kit';
 import {
     AbstractTuiNullableControl,
+    CHAR_HYPHEN,
+    CHAR_MINUS,
     EMPTY_QUERY,
     TUI_IS_IOS,
     tuiAsControl,
@@ -22,22 +26,16 @@ import {
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiInputMode,
-    TuiMapper,
+    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     TUI_DECIMAL_SYMBOLS,
     TUI_NUMBER_FORMAT,
-    tuiCreateAutoCorrectedNumberPipe,
-    tuiCreateNumberMask,
     TuiDecimal,
-    tuiEnableAutoCorrectDecimalSymbol,
     tuiFormatNumber,
     tuiGetFractionPartPadded,
-    tuiMaskedMoneyValueIsEmpty,
-    tuiMaskedNumberStringToNumber,
     TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
-    TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 
@@ -146,15 +144,11 @@ export class TuiInputNumberComponent
     }
 
     get formattedValue(): string {
-        return this.getFormattedValue(this.value || 0);
+        return this.value !== null ? this.getFormattedValue(this.value) : '';
     }
 
     get computedValue(): string {
-        if (this.focused) {
-            return this.nativeValue;
-        }
-
-        return this.value === null ? '' : this.formattedValue;
+        return this.focused ? this.nativeValue : this.formattedValue;
     }
 
     get canDecrement(): boolean {
@@ -163,6 +157,17 @@ export class TuiInputNumberComponent
 
     get canIncrement(): boolean {
         return this.interactive && (this.value || 0) < this.max;
+    }
+
+    get mask(): MaskitoOptions {
+        return this.calculateMask(
+            this.precision,
+            this.decimal,
+            this.numberFormat.decimalSeparator,
+            this.numberFormat.thousandSeparator,
+            this.min,
+            this.max,
+        );
     }
 
     @HostListener('keydown.arrowDown', ['-step'])
@@ -176,101 +181,39 @@ export class TuiInputNumberComponent
         this.nativeValue = this.formattedValue;
     }
 
-    // TODO: Review if it's still necessary with maskito
-    @HostListener('keydown.0', ['$event'])
-    onZero(event: KeyboardEvent): void {
-        const decimal =
-            this.nativeValue.split(this.numberFormat.decimalSeparator)[1] || '';
-        const {nativeFocusableElement} = this;
-
-        if (
-            decimal.length < this.precision ||
-            !nativeFocusableElement ||
-            !nativeFocusableElement.selectionStart ||
-            this.nativeValue[nativeFocusableElement.selectionStart] !== '0'
-        ) {
-            return;
-        }
-
-        event.preventDefault();
-        nativeFocusableElement.selectionStart++;
-    }
-
-    mask: TuiMapper<boolean, TuiTextMaskOptions> = (
-        allowNegative: boolean,
-        decimal: TuiDecimal,
-        decimalLimit: number,
-        nativeFocusableElement: HTMLInputElement | null,
-    ) => ({
-        mask: tuiCreateNumberMask({
-            allowNegative,
-            decimalLimit,
-            allowDecimal: decimal !== 'never',
-            requireDecimal: decimal === 'always',
-            decimalSymbol: this.numberFormat.decimalSeparator,
-            thousandSymbol: this.numberFormat.thousandSeparator,
-            autoCorrectDecimalSymbol: tuiEnableAutoCorrectDecimalSymbol(
-                this.numberFormat,
-            ),
-        }),
-        pipe: tuiCreateAutoCorrectedNumberPipe(
-            decimal === 'always' ? decimalLimit : 0,
+    onValueChange(nativeValue: string): void {
+        const parsedValue = maskitoParseNumber(
+            nativeValue,
             this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
-            nativeFocusableElement,
-            allowNegative,
-            this.isIOS,
-        ),
-        guide: false,
-    });
+        );
 
-    onValueChange(value: string): void {
         this.unfinishedValue = null;
 
-        if (tuiMaskedMoneyValueIsEmpty(value)) {
+        if (Number.isNaN(parsedValue)) {
             this.value = null;
 
             return;
         }
 
         if (this.isNativeValueNotFinished) {
-            this.unfinishedValue = value;
+            this.unfinishedValue = nativeValue;
 
             return;
         }
 
-        const capped = this.absoluteCapInputValue(value);
-
-        if (capped === null || Number.isNaN(capped)) {
+        if (parsedValue < this.min || parsedValue > this.max) {
             return;
         }
 
-        this.value = capped;
-
-        if (
-            capped !==
-            tuiMaskedNumberStringToNumber(
-                value,
-                this.numberFormat.decimalSeparator,
-                this.numberFormat.thousandSeparator,
-            )
-        ) {
-            this.nativeValue = this.formattedValue;
-        }
+        this.value = parsedValue;
     }
 
+    // TODO: delete this method after fix: https://github.com/Tinkoff/maskito/issues/330
     onKeyDown(event: KeyboardEvent): void {
-        if (!TUI_DECIMAL_SYMBOLS.includes(event.key)) {
-            return;
-        }
-
-        if (this.decimal === 'never') {
-            event.preventDefault();
-
-            return;
-        }
-
-        if (this.nativeValue.includes(this.numberFormat.decimalSeparator)) {
+        if (
+            TUI_DECIMAL_SYMBOLS.includes(event.key) &&
+            this.nativeValue.includes(this.numberFormat.decimalSeparator)
+        ) {
             event.preventDefault();
             this.setCaretAfterComma();
         }
@@ -284,11 +227,7 @@ export class TuiInputNumberComponent
         }
 
         const nativeNumberValue = this.unfinishedValue
-            ? tuiMaskedNumberStringToNumber(
-                  this.unfinishedValue,
-                  this.numberFormat.decimalSeparator,
-                  this.numberFormat.thousandSeparator,
-              )
+            ? maskitoParseNumber(this.unfinishedValue, this.numberFormat.decimalSeparator)
             : this.nativeNumberValue;
 
         this.unfinishedValue = null;
@@ -299,7 +238,7 @@ export class TuiInputNumberComponent
             return;
         }
 
-        this.value = Math.min(this.max, Math.max(this.min, nativeNumberValue));
+        this.value = nativeNumberValue;
         this.nativeValue = this.formattedValue;
     }
 
@@ -322,7 +261,7 @@ export class TuiInputNumberComponent
         return tuiFormatNumber(value, {
             ...this.numberFormat,
             decimalLimit,
-        });
+        }).replace(CHAR_HYPHEN, CHAR_MINUS);
     }
 
     private get isNativeValueNotFinished(): boolean {
@@ -346,12 +285,32 @@ export class TuiInputNumberComponent
         this.nativeFocusableElement.value = value;
     }
 
+    override writeValue(value: number | null): void {
+        super.writeValue(value);
+        this.nativeValue = this.formattedValue;
+    }
+
     private get nativeNumberValue(): number {
-        return tuiMaskedNumberStringToNumber(
-            this.nativeValue,
-            this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
-        );
+        return maskitoParseNumber(this.nativeValue, this.numberFormat.decimalSeparator);
+    }
+
+    @tuiPure
+    private calculateMask(
+        precision: number,
+        decimalMode: TuiDecimal,
+        decimalSeparator: string,
+        thousandSeparator: string,
+        min: number,
+        max: number,
+    ): MaskitoOptions {
+        return maskitoNumberOptionsGenerator({
+            decimalSeparator,
+            thousandSeparator,
+            min,
+            max,
+            precision: decimalMode === 'never' ? 0 : precision,
+            decimalZeroPadding: decimalMode === 'always',
+        });
     }
 
     private clear(): void {
@@ -359,22 +318,7 @@ export class TuiInputNumberComponent
         this.value = null;
     }
 
-    private absoluteCapInputValue(inputValue: string): number | null {
-        const value = tuiMaskedNumberStringToNumber(
-            inputValue,
-            this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
-        );
-        const capped =
-            value < 0
-                ? Math.max(Math.max(this.min, Number.MIN_SAFE_INTEGER), value)
-                : Math.min(value, Math.min(this.max, Number.MAX_SAFE_INTEGER));
-        const ineligibleValue =
-            Number.isNaN(capped) || capped < this.min || capped > this.max;
-
-        return ineligibleValue ? null : capped;
-    }
-
+    // TODO: delete this method after fix: https://github.com/Tinkoff/maskito/issues/330
     private setCaretAfterComma(): void {
         if (!this.nativeFocusableElement) {
             return;
