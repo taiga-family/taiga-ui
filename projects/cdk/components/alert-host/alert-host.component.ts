@@ -7,6 +7,7 @@ import {
     Injector,
     OnInit,
     Self,
+    TrackByFunction,
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
@@ -39,6 +40,8 @@ export class TuiAlertHostComponent<T extends TuiDialog<unknown, unknown>>
         @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
         @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
     ) {}
+
+    readonly trackBy: TrackByFunction<readonly T[]> = (index: number) => index;
 
     ngOnInit(): void {
         // Due to this view being parallel to app content, `markForCheck` from `async` pipe
