@@ -245,7 +245,9 @@ describe(`Editor API`, () => {
             toggleBullet(`tuiIconOutdentLarge`);
             cy.get(`@editor`).type(`5`);
 
-            cy.get(`@wrapper`).matchImageSnapshot(`7-6-nested-list`);
+            cy.get(`@wrapper`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`7-6-nested-list`);
         });
 
         function toggleBullet(iconType: string): void {
