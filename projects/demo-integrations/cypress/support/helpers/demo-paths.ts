@@ -17,6 +17,7 @@ export const isTilesPage = (path: string): boolean => path === `components/tiles
 export const isScrollbarPage = (path: string): boolean => path === `components/scrollbar`;
 export const isInputNumberPage = (path: string): boolean =>
     path === `components/input-number`;
+export const isIconsPage = (path: string): boolean => path.startsWith(`icons/`);
 
 function flatPages(pages: TuiDocPages): readonly TuiDocPage[] {
     return pages.reduce(
