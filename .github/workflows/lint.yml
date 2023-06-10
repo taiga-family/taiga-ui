@@ -9,7 +9,7 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3.5.3
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
       - name: Typecheck
@@ -19,7 +19,7 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3.5.3
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
       - name: Spell checks code
@@ -29,11 +29,11 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3.5.3
       - name: Setup global variables
         uses: ./.github/actions/variables
 
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3.5.3
         if: env.SUPPORT_AUTO_PUSH == 'true'
         with:
           ref: ${{ github.head_ref }}
@@ -53,11 +53,11 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3.5.3
       - name: Setup global variables
         uses: ./.github/actions/variables
 
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3.5.3
         if: env.SUPPORT_AUTO_PUSH == 'true'
         with:
           ref: ${{ github.head_ref }}
@@ -77,11 +77,11 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3.5.3
       - name: Setup global variables
         uses: ./.github/actions/variables
 
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3.5.3
         if: env.SUPPORT_AUTO_PUSH == 'true'
         with:
           ref: ${{ github.head_ref }}
