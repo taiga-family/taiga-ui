@@ -13,9 +13,9 @@
     "repository": "https://github.com/tinkoff/taiga-ui",
     "license": "Apache-2.0",
     "dependencies": {
-        "@maskito/angular": "0.14.0",
-        "@maskito/core": "0.14.0",
-        "@maskito/kit": "0.14.0",
+        "@maskito/angular": "0.12.1",
+        "@maskito/core": "0.12.1",
+        "@maskito/kit": "0.12.1",
         "@ng-web-apis/intersection-observer": "3.0.1",
         "text-mask-core": "5.1.2"
     },
