@@ -198,7 +198,8 @@ export class TuiEditLinkComponent {
             url.startsWith(TUI_EDITOR_LINK_HASH_PREFIX) ||
             this.prefix === TUI_EDITOR_LINK_HASH_PREFIX
                 ? url
-                : `${this.prefix}${url}`;
+                : `${this.prefix ?? ''}${url}`;
+
         const {prefix, path} = tuiEditLinkParseUrl(fullPath);
         const expectAnchorMode =
             this.isOnlyAnchorMode ||
