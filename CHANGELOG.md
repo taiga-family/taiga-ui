@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.90.0](https://github.com/tinkoff/taiga-ui/compare/v2.89.0...v2.90.0) (2023-06-13)
+
+### Features
+
+- **addon-editor:** support all heading levels by default ([#4616](https://github.com/tinkoff/taiga-ui/issues/4616))
+  ([3d3139c](https://github.com/tinkoff/taiga-ui/commit/3d3139c9435638d4d940e28b356ab8c2a2703ec0))
+
 ## [2.89.0](https://github.com/tinkoff/taiga-ui/compare/v2.88.0...v2.89.0) (2023-06-07)
 
 ### Features
