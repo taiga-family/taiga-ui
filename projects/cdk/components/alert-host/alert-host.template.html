@@ -1,5 +1,5 @@
 <div
-    *ngFor="let alert of alerts"
+    *ngFor="let alert of alerts; trackBy: trackBy"
     class="t-wrapper"
     @tuiParentAnimation
 >
