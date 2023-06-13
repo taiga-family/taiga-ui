@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.31.0](https://github.com/tinkoff/taiga-ui/compare/v3.30.0...v3.31.0) (2023-06-13)
+
+### Features
+
+- **addon-doc:** upgrade `ngx-highlightjs` ([#4608](https://github.com/tinkoff/taiga-ui/issues/4608))
+  ([63cef10](https://github.com/tinkoff/taiga-ui/commit/63cef1023c201224ccd8db27a7bc0b492376d4c4))
+- **addon-editor:** support all heading levels by default ([#4615](https://github.com/tinkoff/taiga-ui/issues/4615))
+  ([59a30c2](https://github.com/tinkoff/taiga-ui/commit/59a30c2e42771a71ebf31f74d56dbf903da40cae))
+- **addon-editor:** support any font-size in editor ([#4624](https://github.com/tinkoff/taiga-ui/issues/4624))
+  ([eb19c62](https://github.com/tinkoff/taiga-ui/commit/eb19c62d89895c401e96d4d9e9e9ef165e8de82a))
+- **addon-editor:** use `icon` for preview type of links in edit mode
+  ([#4646](https://github.com/tinkoff/taiga-ui/issues/4646))
+  ([a735d54](https://github.com/tinkoff/taiga-ui/commit/a735d5461d1cbdec43a19338181359a058934e7e))
+- **core:** svg source interceptor should accept svg global options
+  ([#4597](https://github.com/tinkoff/taiga-ui/issues/4597))
+  ([7e6e17f](https://github.com/tinkoff/taiga-ui/commit/7e6e17fc572f5bb6bccd05f378d5ab85c1fa8e3d))
+
+### Bug Fixes
+
+- **addon-editor:** prevent paste `undefined` in url ([#4645](https://github.com/tinkoff/taiga-ui/issues/4645))
+  ([a6c8e2e](https://github.com/tinkoff/taiga-ui/commit/a6c8e2efba69d43a6cb0215b174f4f5d891c7af2))
+- **cdk:** fix change detection issue in `DialogHost` ([#4622](https://github.com/tinkoff/taiga-ui/issues/4622))
+  ([bd0762a](https://github.com/tinkoff/taiga-ui/commit/bd0762a473eb9032cdb13583ec3553e1c3d74618))
+- **cdk:** fix icons migration, improve performance ([#4620](https://github.com/tinkoff/taiga-ui/issues/4620))
+  ([37e51dd](https://github.com/tinkoff/taiga-ui/commit/37e51dd5e6f738af44c84987f6d70b5a3b8fce27))
+- **cdk:** using trackBy for re-order animations ([#4632](https://github.com/tinkoff/taiga-ui/issues/4632))
+  ([29d039e](https://github.com/tinkoff/taiga-ui/commit/29d039e47df5eb130677fd182d7aa48f73d60c42))
+- **core:** clear `cache string` when checking `source` path is `url` path
+  ([#4623](https://github.com/tinkoff/taiga-ui/issues/4623))
+  ([ec65348](https://github.com/tinkoff/taiga-ui/commit/ec6534833e619c99039b5e7d70c22cbae0b7d3d4))
+- **kit:** pack items around the center in checkbox ([#4644](https://github.com/tinkoff/taiga-ui/issues/4644))
+  ([eceb6f9](https://github.com/tinkoff/taiga-ui/commit/eceb6f9d6af379d7f99a4ac1dfceff198663cb1a))
+
 ## [3.30.0](https://github.com/tinkoff/taiga-ui/compare/v3.29.2...v3.30.0) (2023-06-05)
 
 ### Features
