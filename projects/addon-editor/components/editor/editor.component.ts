@@ -34,11 +34,13 @@ import {
     AbstractTuiValueTransformer,
     ALWAYS_FALSE_HANDLER,
     tuiAsFocusableItemAccessor,
+    tuiAutoFocusOptionsProvider,
     TuiBooleanHandler,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
+import {TUI_ANIMATIONS_DEFAULT_DURATION} from '@taiga-ui/core';
 import {Editor} from '@tiptap/core';
 import {Observable} from 'rxjs';
 
@@ -49,7 +51,11 @@ import {TUI_EDITOR_PROVIDERS} from './editor.providers';
     templateUrl: './editor.component.html',
     styleUrls: ['./editor.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsFocusableItemAccessor(TuiEditorComponent), TUI_EDITOR_PROVIDERS],
+    providers: [
+        tuiAsFocusableItemAccessor(TuiEditorComponent),
+        tuiAutoFocusOptionsProvider({delay: TUI_ANIMATIONS_DEFAULT_DURATION}),
+        TUI_EDITOR_PROVIDERS,
+    ],
 })
 export class TuiEditorComponent
     extends AbstractTuiControl<string>

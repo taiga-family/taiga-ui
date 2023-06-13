@@ -5,9 +5,11 @@ import {
     Optional,
     Renderer2,
     Self,
+    ValueProvider,
 } from '@angular/core';
 import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
 import {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
+import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {Observable} from 'rxjs';
 
@@ -19,6 +21,30 @@ import {TuiIosAutofocusHandler} from './handlers/ios.handler';
 
 export interface TuiAutofocusHandler {
     setFocus(): void;
+}
+
+export interface TuiAutofocusOptions {
+    readonly delay: number;
+}
+
+export const TUI_AUTOFOCUS_DEFAULT_OPTIONS: TuiAutofocusOptions = {
+    delay: NaN, // NaN = no delay/sync
+};
+
+export const TUI_AUTOFOCUS_OPTIONS = new InjectionToken<TuiAutofocusOptions>(
+    `[TUI_AUTOFOCUS_OPTIONS]`,
+    {
+        factory: () => TUI_AUTOFOCUS_DEFAULT_OPTIONS,
+    },
+);
+
+export function tuiAutoFocusOptionsProvider(
+    options: Partial<TuiAutofocusOptions>,
+): ValueProvider {
+    return {
+        provide: TUI_AUTOFOCUS_OPTIONS,
+        useValue: {...TUI_AUTOFOCUS_DEFAULT_OPTIONS, ...options},
+    };
 }
 
 export const TUI_AUTOFOCUS_HANDLER = new InjectionToken<TuiAutofocusHandler>(
@@ -50,4 +76,5 @@ export const TUI_AUTOFOCUS_PROVIDERS = [
             TUI_IS_IOS,
         ],
     },
+    TuiDestroyService,
 ];

@@ -8,7 +8,7 @@ import type {TuiAutofocusHandler} from '../autofocus.options';
 
 @Directive()
 export abstract class AbstractTuiAutofocusHandler implements TuiAutofocusHandler {
-    constructor(
+    protected constructor(
         protected readonly focusable: TuiFocusableElementAccessor | null,
         protected readonly el: ElementRef<HTMLElement>,
     ) {}
@@ -18,7 +18,7 @@ export abstract class AbstractTuiAutofocusHandler implements TuiAutofocusHandler
     }
 
     protected get isTextFieldElement(): boolean {
-        return this.element.matches(`input, textarea`);
+        return this.element.matches(`input, textarea, [contenteditable]`);
     }
 
     abstract setFocus(): void;
