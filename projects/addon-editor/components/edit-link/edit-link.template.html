@@ -49,10 +49,12 @@
         <a
             tuiLink
             target="_blank"
+            iconAlign="left"
             class="t-link"
             [href]="href"
+            [icon]="prefixIsHashMode ? 'tuiIconHash' : 'tuiIconExternalLink'"
         >
-            {{ anchorMode ? '#' : '' }}{{ url | tuiShortUrl }}
+            {{ url | tuiShortUrl }}
         </a>
         <button
             tuiIconButton
