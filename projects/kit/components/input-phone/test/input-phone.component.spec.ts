@@ -142,6 +142,7 @@ describe(`InputPhone`, () => {
         it(`New mask`, async () => {
             testComponent.countryCode = `+850`;
             testComponent.phoneMaskAfterCountryCode = `#### ## ##-##`;
+            fixture.detectChanges();
             testComponent.control.setValue(`+8501234567890`);
             fixture.detectChanges();
             await fixture.whenStable();
@@ -152,6 +153,7 @@ describe(`InputPhone`, () => {
         it(`Invalid characters passed to the mask`, async () => {
             testComponent.countryCode = `+850`;
             testComponent.phoneMaskAfterCountryCode = `(####)+___?$_:-##-@##-!##`;
+            fixture.detectChanges();
             testComponent.control.setValue(`+8501234567890`);
             fixture.detectChanges();
             await fixture.whenStable();
