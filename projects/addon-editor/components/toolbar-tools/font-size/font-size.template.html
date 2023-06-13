@@ -24,6 +24,7 @@
                 [style.fontSize.px]="item.px"
                 [style.fontWeight]="item.weight"
                 [ngClass]="item?.ngClass || {}"
+                [ngStyle]="item?.ngStyle || {}"
                 (click)="setFontOption(item)"
             >
                 {{ item.name }}

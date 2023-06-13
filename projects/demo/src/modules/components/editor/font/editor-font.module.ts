@@ -7,6 +7,7 @@ import {TuiEditorModule, TuiEditorSocketModule} from '@taiga-ui/addon-editor';
 
 import {ExampleTuiEditorFontComponent} from './editor-font.component';
 import {TuiEditorFontExample1} from './examples/1';
+import {TuiEditorFontExample2} from './examples/2';
 
 @NgModule({
     imports: [
@@ -17,6 +18,10 @@ import {TuiEditorFontExample1} from './examples/1';
         TuiEditorSocketModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiEditorFontComponent)),
     ],
-    declarations: [TuiEditorFontExample1, ExampleTuiEditorFontComponent],
+    declarations: [
+        TuiEditorFontExample1,
+        TuiEditorFontExample2,
+        ExampleTuiEditorFontComponent,
+    ],
 })
 export class ExampleTuiEditorFontModule {}
