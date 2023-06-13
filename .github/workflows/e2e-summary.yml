@@ -1,0 +1,52 @@
+name: ⚙️ E2E Summary report
+on:
+  pull_request:
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.5.3
+      - name: Setup global variables
+        uses: ./.github/actions/variables
+
+      - name: Wait for e2e tests to succeed
+        uses: codex-/await-local-workflow-run@v1
+        with:
+          token: ${{ github.token }}
+          workflow: e2e.yml
+          timeout_mins: 120
+          poll_interval_ms: 60000
+
+      - name: Download cache / ${{ env.SNAPSHOTS_CACHE_KEY }}
+        uses: actions/cache/restore@v3.3.1
+        with:
+          path: ${{ env.SNAPSHOTS_PATH }}
+          key: ${{ env.SNAPSHOTS_CACHE_KEY }}
+
+      - name: Debug output
+        continue-on-error: true
+        run: tree ${{ env.SNAPSHOTS_PATH }}
+
+      - name: Check if diff-output exists
+        id: diff-checker
+        run: |
+          echo "diff_exist=$(find ${{ env.SNAPSHOTS_PATH }} -regex '.*\.diff\.png$' | wc -l | sed -e 's/^[[:space:]]*//')" >> $GITHUB_OUTPUT
+
+      - name: Upload artifacts / ${{ env.SNAPSHOTS_ARTIFACTS_KEY }}
+        if: ${{ steps.diff-checker.outputs.diff_exist != '0' }}
+        continue-on-error: true
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: ${{ env.SNAPSHOTS_ARTIFACTS_KEY }}
+          path: ${{ env.SNAPSHOTS_PATH }}
+
+      - name: Fall with an error if diff-output exists
+        if: ${{ steps.diff-checker.outputs.diff_exist != '0' }}
+        run: |
+          find ${{ env.SNAPSHOTS_PATH }} -regex '.*\.diff\.png$' -exec echo "{}" \;
+          exit 1
+
+concurrency:
+  group: e2e-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
