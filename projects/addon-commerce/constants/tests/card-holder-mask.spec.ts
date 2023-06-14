@@ -1,4 +1,5 @@
 // cspell:disable
+import {maskitoPipe} from '@maskito/core';
 import {TUI_CARD_HOLDER_MASK} from '@taiga-ui/addon-commerce';
 
 describe(`TUI_CARD_HOLDER_MASK`, () => {
@@ -18,10 +19,12 @@ describe(`TUI_CARD_HOLDER_MASK`, () => {
         });
     });
 
-    describe(`preprocessor property`, () => {
+    describe(`preprocessors property`, () => {
         const preprocessor = (value: string): string => {
+            const process = maskitoPipe(...(TUI_CARD_HOLDER_MASK.preprocessors || []));
+
             return (
-                TUI_CARD_HOLDER_MASK.preprocessor?.(
+                process(
                     {elementState: {value: ``, selection: [0, 0]}, data: value},
                     `insert`,
                 ).data || ``

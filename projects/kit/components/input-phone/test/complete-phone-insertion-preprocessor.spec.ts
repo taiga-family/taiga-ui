@@ -12,10 +12,12 @@ describe(`tuiCreateCompletePhoneInsertionPreprocessor + browser autofill`, () =>
 
         const maskOptions: MaskitoOptions = {
             mask: tuiCreatePhoneMaskExpression(countryCode, phoneMaskAfterCountryCode),
-            preprocessor: tuiCreateCompletePhoneInsertionPreprocessor(
-                countryCode,
-                phoneMaskAfterCountryCode,
-            ),
+            preprocessors: [
+                tuiCreateCompletePhoneInsertionPreprocessor(
+                    countryCode,
+                    phoneMaskAfterCountryCode,
+                ),
+            ],
         };
 
         const tests = [
@@ -42,10 +44,12 @@ describe(`tuiCreateCompletePhoneInsertionPreprocessor + browser autofill`, () =>
 
         const maskOptions: MaskitoOptions = {
             mask: tuiCreatePhoneMaskExpression(countryCode, phoneMaskAfterCountryCode),
-            preprocessor: tuiCreateCompletePhoneInsertionPreprocessor(
-                countryCode,
-                phoneMaskAfterCountryCode,
-            ),
+            preprocessors: [
+                tuiCreateCompletePhoneInsertionPreprocessor(
+                    countryCode,
+                    phoneMaskAfterCountryCode,
+                ),
+            ],
         };
 
         const tests = [
