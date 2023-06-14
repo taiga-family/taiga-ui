@@ -10,9 +10,9 @@
 
 @track-stroke: {
     @s: 0.5em;
-    @m: 0.25em;
-    @l: 0.25em;
-    @xl: 0.25em;
+    @m: 0.375em;
+    @l: 0.375em;
+    @xl: 0.375em;
 };
 
 @progress-stroke: {
@@ -81,6 +81,7 @@
 .t-progress {
     fill: transparent;
     stroke: var(--tui-progress-color, currentColor);
+    stroke-linecap: round;
     transition: stroke-dashoffset var(--tui-duration) linear;
 }
 
