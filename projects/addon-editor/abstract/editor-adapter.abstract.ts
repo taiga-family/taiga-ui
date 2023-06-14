@@ -24,6 +24,8 @@ export abstract class AbstractTuiEditor {
     abstract undoDisabled(): boolean;
     abstract redoDisabled(): boolean;
     abstract getFontColor(): string;
+    abstract getFontSize(): number;
+    abstract setFontSize(size: number): void;
     abstract getBackgroundColor(): string;
     abstract getCellColor(): string;
     abstract getGroupColor(): string;

@@ -9,6 +9,7 @@ import type {TuiYoutubeOptions} from '@taiga-ui/addon-editor/extensions/youtube'
 import {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
 import {TIPTAP_EDITOR} from '@taiga-ui/addon-editor/tokens';
 import {tuiGetMarkRange, tuiParseStyle} from '@taiga-ui/addon-editor/utils';
+import {tuiPx} from '@taiga-ui/cdk';
 import type {Editor, Range} from '@tiptap/core';
 import {MarkType} from 'prosemirror-model';
 import type {EditorState} from 'prosemirror-state';
@@ -77,6 +78,17 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
 
     getFontColor(): string {
         return this.editor.getAttributes(`textStyle`).fontColor || EDITOR_BLANK_COLOR;
+    }
+
+    getFontSize(): number {
+        return parseInt(this.editor.getAttributes(`textStyle`).fontSize, 10);
+    }
+
+    setFontSize(size: number): void {
+        this.editor
+            .chain()
+            .setMark(`textStyle`, {fontSize: tuiPx(size)})
+            .run();
     }
 
     getBackgroundColor(): string {

@@ -1,0 +1,42 @@
+<button
+    tuiIconButton
+    type="button"
+    appearance="flat"
+    icon="tuiIconMinus"
+    size="s"
+    (click)="decrease()"
+></button>
+
+<tui-hosted-dropdown
+    #fonts
+    [content]="fontsDropdown"
+>
+    <button
+        tuiButton
+        size="s"
+        appearance="flat"
+    >
+        {{ size$ | async }}
+    </button>
+
+    <ng-template #fontsDropdown>
+        <tui-data-list>
+            <button
+                *ngFor="let size of sizes"
+                tuiOption
+                (click)="setFontSize(size); fonts.close()"
+            >
+                {{ size }}
+            </button>
+        </tui-data-list>
+    </ng-template>
+</tui-hosted-dropdown>
+
+<button
+    tuiIconButton
+    type="button"
+    appearance="flat"
+    icon="tuiIconPlus"
+    size="s"
+    (click)="increase()"
+></button>

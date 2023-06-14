@@ -936,6 +936,13 @@ export const pages: TuiDocPages = [
                 keywords: `editor, custom color picker, color picker, tool, wysiwyg, редактор, выбрать цвет, html, rich, text`,
                 route: `/editor/custom-tool/color-picker`,
             },
+            {
+                section: `Editor`,
+                title: `Font size tool`,
+                keywords: `editor, custom font size tool, tool, wysiwyg, редактор, выбрать размер, html, rich, text`,
+                route: `/editor/font`,
+                fragment: `custom-size-tool`,
+            },
         ],
     },
     {

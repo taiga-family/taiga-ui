@@ -8,6 +8,8 @@ import {TuiEditorModule, TuiEditorSocketModule} from '@taiga-ui/addon-editor';
 import {ExampleTuiEditorFontComponent} from './editor-font.component';
 import {TuiEditorFontExample1} from './examples/1';
 import {TuiEditorFontExample2} from './examples/2';
+import {TuiEditorFontExample3} from './examples/3';
+import {ExampleTuiFontSizeToolModule} from './examples/3/font-size-tool/font-size-tool.module';
 
 @NgModule({
     imports: [
@@ -17,10 +19,12 @@ import {TuiEditorFontExample2} from './examples/2';
         TuiEditorModule,
         TuiEditorSocketModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiEditorFontComponent)),
+        ExampleTuiFontSizeToolModule,
     ],
     declarations: [
         TuiEditorFontExample1,
         TuiEditorFontExample2,
+        TuiEditorFontExample3,
         ExampleTuiEditorFontComponent,
     ],
 })
