@@ -22,6 +22,8 @@
         "xdescribe",
         "toolset",
         "preprocessor",
-        "postprocessor"
+        "preprocessors",
+        "postprocessor",
+        "postprocessors"
     ]
 }

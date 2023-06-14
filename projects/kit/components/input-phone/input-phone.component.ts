@@ -265,10 +265,12 @@ export class TuiInputPhoneComponent
         allowText: boolean,
     ): MaskitoOptions {
         const mask = tuiCreatePhoneMaskExpression(countryCode, phoneMaskAfterCountryCode);
-        const preprocessor = tuiCreateCompletePhoneInsertionPreprocessor(
-            countryCode,
-            phoneMaskAfterCountryCode,
-        );
+        const preprocessors = [
+            tuiCreateCompletePhoneInsertionPreprocessor(
+                countryCode,
+                phoneMaskAfterCountryCode,
+            ),
+        ];
 
         return allowText
             ? {
@@ -276,12 +278,14 @@ export class TuiInputPhoneComponent
                       isText(value) && value !== '+'
                           ? (MASKITO_DEFAULT_OPTIONS.mask as RegExp)
                           : mask,
-                  preprocessor,
+                  preprocessors,
               }
             : {
                   mask,
-                  preprocessor,
-                  postprocessor: maskitoPrefixPostprocessorGenerator(nonRemovablePrefix),
+                  preprocessors,
+                  postprocessors: [
+                      maskitoPrefixPostprocessorGenerator(nonRemovablePrefix),
+                  ],
               };
     }
 
