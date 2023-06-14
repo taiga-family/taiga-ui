@@ -21,7 +21,9 @@ export function tuiFormatNumber(
         ...settings,
     };
 
-    const rounded = tuiRoundWith({value, precision: decimalLimit, method: rounding});
+    const rounded = Number.isFinite(decimalLimit)
+        ? tuiRoundWith({value, precision: decimalLimit, method: rounding})
+        : value;
     const integerPartString = String(Math.floor(Math.abs(rounded)));
 
     let fractionPartPadded = tuiGetFractionPartPadded(rounded, decimalLimit);
