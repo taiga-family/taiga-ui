@@ -12,6 +12,7 @@ import {TuiMoneyExample2} from './examples/2';
 import {TuiMoneyExample3} from './examples/3';
 import {TuiMoneyExample4} from './examples/4';
 import {TuiMoneyExample5} from './examples/5';
+import {TuiMoneyExample6} from './examples/6';
 import {ExampleTuiMoneyComponent} from './money.component';
 
 @NgModule({
@@ -32,6 +33,7 @@ import {ExampleTuiMoneyComponent} from './money.component';
         TuiMoneyExample3,
         TuiMoneyExample4,
         TuiMoneyExample5,
+        TuiMoneyExample6,
     ],
     exports: [ExampleTuiMoneyComponent],
 })
