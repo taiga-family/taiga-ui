@@ -1,4 +1,5 @@
 import {Inject, Pipe, PipeTransform} from '@angular/core';
+import {tuiRoundWith} from '@taiga-ui/cdk';
 import {
     TUI_NUMBER_FORMAT,
     tuiFormatNumber,
@@ -11,10 +12,17 @@ export class TuiIntegerPartPipe implements PipeTransform {
         @Inject(TUI_NUMBER_FORMAT) private readonly numberFormat: TuiNumberFormatSettings,
     ) {}
 
-    transform(value: number): string {
-        return tuiFormatNumber(Math.abs(Number(value)), {
+    transform(value: number, precision = 2): string {
+        const rounded = tuiRoundWith({
+            value: Math.abs(Number(value)),
+            precision,
+            method: this.numberFormat.rounding,
+        });
+
+        return tuiFormatNumber(rounded, {
             ...this.numberFormat,
             decimalLimit: 0,
+            rounding: `truncate`,
         });
     }
 }
