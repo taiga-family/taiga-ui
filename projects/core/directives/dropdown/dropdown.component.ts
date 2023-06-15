@@ -27,8 +27,6 @@ import {TuiPoint} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
-// TODO: find the best way for prevent cycle
-// eslint-disable-next-line import/no-cycle
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TuiDropdownHoverDirective} from './dropdown-hover.directive';
 import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.directive';

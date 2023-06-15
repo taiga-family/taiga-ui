@@ -29,8 +29,6 @@ import {TUI_ANIMATIONS_DURATION, TuiOrientation} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {delay} from 'rxjs/operators';
 
-// TODO: find the best way for prevent cycle
-// eslint-disable-next-line import/no-cycle
 import {TuiStepComponent} from './step/step.component';
 
 @Component({

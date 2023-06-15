@@ -12,8 +12,6 @@ import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
-// TODO: find the best way for prevent cycle
-// eslint-disable-next-line import/no-cycle
 import {TuiPushService} from './push.service';
 
 @Directive({

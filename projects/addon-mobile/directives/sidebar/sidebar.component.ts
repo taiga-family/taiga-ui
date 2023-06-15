@@ -14,8 +14,6 @@ import {
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-// TODO: find the best way for prevent cycle
-// eslint-disable-next-line import/no-cycle
 import {TuiSidebarDirective} from './sidebar.directive';
 
 @Component({

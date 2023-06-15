@@ -10,8 +10,6 @@ import {
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 import {TuiPushOptions} from './push.options';
-// TODO: find the best way for prevent cycle
-// eslint-disable-next-line import/no-cycle
 import {TuiPushAlertDirective} from './push-alert.directive';
 
 @Component({

@@ -13,8 +13,6 @@ import {map, share} from 'rxjs/operators';
 
 import {iosScrollFactory} from '../../ios.hacks';
 import {TUI_SHEET, TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
-// TODO: find the best way for prevent cycle
-// eslint-disable-next-line import/no-cycle
 import {TuiSheetComponent} from './sheet.component';
 
 export const TUI_SHEET_PROVIDERS: Provider[] = [

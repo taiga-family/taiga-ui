@@ -38,8 +38,6 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, Observable} from 'rxjs';
 import {filter, takeUntil} from 'rxjs/operators';
 
-// TODO: find the best way for prevent cycle
-// eslint-disable-next-line import/no-cycle
 import {TuiLineDaysChartHintDirective} from './line-days-chart-hint.directive';
 
 const DUMMY: TuiPoint = [NaN, NaN];
