@@ -195,17 +195,33 @@ describe(`MultiSelect`, () => {
         });
     });
 
-    it(`multi-select with data list`, () => {
+    it(`multi-select with data list with label`, () => {
         cy.tuiVisit(`components/multi-select#datalist`);
 
         cy.get(`tui-doc-example[heading="DataList"]`)
             .tuiScrollIntoView()
             .findByAutomationId(`tui-multi-select__arrow`)
+            .first()
             .click({force: true});
 
         cy.get(`tui-dropdown`)
             .find(`tui-data-list[role="listbox"]`)
             .tuiWaitBeforeScreenshot()
             .matchImageSnapshot(`multi-select-with-data-list`);
+    });
+
+    it(`multi-select with data list without label`, () => {
+        cy.tuiVisit(`components/multi-select#datalist`);
+
+        cy.get(`tui-doc-example[heading="DataList"]`)
+            .tuiScrollIntoView()
+            .findByAutomationId(`tui-multi-select__arrow`)
+            .eq(1)
+            .click({force: true});
+
+        cy.get(`tui-dropdown`)
+            .find(`tui-data-list[role="listbox"]`)
+            .tuiWaitBeforeScreenshot()
+            .matchImageSnapshot(`multi-select-with-data-list-without-label`);
     });
 });

@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
+    HostBinding,
     Inject,
     Input,
     QueryList,
@@ -40,6 +41,7 @@ export class TuiMultiSelectGroupComponent<T> {
     @ContentChildren(TuiOptionComponent)
     private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
 
+    @HostBinding('class._label')
     @Input()
     @tuiDefaultProp()
     label = '';
