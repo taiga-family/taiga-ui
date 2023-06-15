@@ -188,8 +188,8 @@ export class TuiInputDateRangeComponent
                   this.dateSeparator,
                   this.min,
                   this.max,
-                  this.minLength || {},
-                  this.maxLength || {},
+                  this.minLength,
+                  this.maxLength,
               );
     }
 
@@ -381,16 +381,16 @@ export class TuiInputDateRangeComponent
         separator: string,
         min: TuiDay,
         max: TuiDay,
-        minLength: TuiDayLike,
-        maxLength: TuiDayLike,
+        minLength: TuiDayLike | null,
+        maxLength: TuiDayLike | null,
     ): MaskitoOptions {
         return maskitoDateRangeOptionsGenerator({
             separator,
             mode: TUI_DATE_MODE_MASKITO_ADAPTER[dateFormat],
             min: min.toLocalNativeDate(),
             max: max.toLocalNativeDate(),
-            minLength,
-            maxLength,
+            minLength: minLength || {},
+            maxLength: maxLength || {},
         });
     }
 

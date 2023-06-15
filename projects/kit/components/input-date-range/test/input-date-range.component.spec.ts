@@ -174,8 +174,7 @@ describe(`InputDateRangeComponent`, () => {
         });
     });
 
-    // TODO: CPU 100% in maskitoDateRangeOptionsGenerator
-    xdescribe(`InputDateRangeComponent + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR="/"`, () => {
+    describe(`InputDateRangeComponent + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR="/"`, () => {
         configureTestSuite(() => {
             TestBed.configureTestingModule({
                 ...defaultTestingModuleMeta,
@@ -214,8 +213,7 @@ describe(`InputDateRangeComponent`, () => {
         });
     });
 
-    // TODO: CPU 100% in maskitoDateRangeOptionsGenerator
-    xdescribe(`InputDateRangeComponent + TUI_DATE_FORMAT="YMD" + TUI_DATE_SEPARATOR="-"`, () => {
+    describe(`InputDateRangeComponent + TUI_DATE_FORMAT="YMD" + TUI_DATE_SEPARATOR="-"`, () => {
         configureTestSuite(() => {
             TestBed.configureTestingModule({
                 ...defaultTestingModuleMeta,
@@ -254,7 +252,7 @@ describe(`InputDateRangeComponent`, () => {
         });
     });
 
-    xdescribe(`InputDateRangeComponent + TUI_DATE_RANGE_VALUE_TRANSFORMER`, () => {
+    describe(`InputDateRangeComponent + TUI_DATE_RANGE_VALUE_TRANSFORMER`, () => {
         class TestDateTransformer extends AbstractTuiValueTransformer<
             TuiDay | null,
             Date | null
