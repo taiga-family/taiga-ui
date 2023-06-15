@@ -43,9 +43,9 @@
                     />
                 </tui-input-date>
                 <tui-calendar
-                    tuiPreventDefault="mousedown"
                     class="calendar"
                     [value]="date"
+                    (event.prevent.silent)="(0)"
                     (dayClick)="onDay($event)"
                 ></tui-calendar>
             </div>
@@ -243,6 +243,7 @@
     </a>
     <a
         tuiButton
+        tuiAutoFocus
         appearance="accent"
         routerLink="/getting-started"
         class="browse browse_desktop"

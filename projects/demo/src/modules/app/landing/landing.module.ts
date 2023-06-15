@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
-import {TuiPreventDefaultModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {TuiAutoFocusModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiCalendarModule,
@@ -33,10 +33,10 @@ import {LandingComponent} from './landing.component';
         TuiCalendarModule,
         TuiTextfieldControllerModule,
         TuiHintModule,
-        TuiPreventDefaultModule,
         TuiCheckboxLabeledModule,
         TuiToggleModule,
         TuiSliderModule,
+        TuiAutoFocusModule,
     ],
     declarations: [LandingComponent],
     exports: [LandingComponent],
