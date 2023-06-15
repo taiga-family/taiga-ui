@@ -24,7 +24,9 @@ const EXCLUDE_DIRECTORIES = [
 ].join(`|`);
 
 const EXCLUDE_FILE_PATTERNS = [
-    `*__name@dasherize__*`, // schematics templates
+    `*__name@dasherize__*`,
+    `*__name@camelize__*`, // schematics templates
+    `*__name@underscore__*`,
     `*.d`, // typings
 ].join(`|`);
 
