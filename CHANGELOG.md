@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.31.1](https://github.com/tinkoff/taiga-ui/compare/v3.31.0...v3.31.1) (2023-06-15)
+
+### Bug Fixes
+
+- **addon-commerce:** `Money` fix integer part rounding ([#4659](https://github.com/tinkoff/taiga-ui/issues/4659))
+  ([95207c2](https://github.com/tinkoff/taiga-ui/commit/95207c253f321251be462d222e55db2471677c20))
+- **core:** `NumberFormat` fix assertion warning ([#4665](https://github.com/tinkoff/taiga-ui/issues/4665))
+  ([8d483ce](https://github.com/tinkoff/taiga-ui/commit/8d483ce1c92448f28487d6a0653eea2d6860042b))
+- **kit:** `InputDateRange` freezes UI if `[minLength]`/`[maxLength]` are ommited
+  ([#4671](https://github.com/tinkoff/taiga-ui/issues/4671))
+  ([c41d568](https://github.com/tinkoff/taiga-ui/commit/c41d5688bb7c20639012338423250e0bf9c62a00))
+- **kit:** `MultiSelectGroup` fix padding when used without label
+  ([#4648](https://github.com/tinkoff/taiga-ui/issues/4648))
+  ([b8967b1](https://github.com/tinkoff/taiga-ui/commit/b8967b134290f6a3a0f53bb331b91c6e39037dea))
+
 ## [3.31.0](https://github.com/tinkoff/taiga-ui/compare/v3.30.0...v3.31.0) (2023-06-13)
 
 ### Features
