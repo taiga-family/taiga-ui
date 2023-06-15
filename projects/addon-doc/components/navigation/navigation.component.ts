@@ -99,6 +99,10 @@ export class TuiDocNavigationComponent {
         return this.items[this.items.length - 1];
     }
 
+    $pages(pages: any): readonly TuiDocPage[] {
+        return pages as TuiDocPage[];
+    }
+
     isActive(route: string): boolean {
         return route === this.active;
     }
