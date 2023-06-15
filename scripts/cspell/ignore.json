@@ -45,10 +45,6 @@
             "ignoreWords": ["aaabbb"]
         },
         {
-            "filename": ["**/CHANGELOG.md"],
-            "ignoreWords": ["Marfil"]
-        },
-        {
             "filename": ["**/tests/kit/input-tag/input-tag.cy.ts"],
             "ignoreWords": ["looooooooooooooooooooooooong"]
         },

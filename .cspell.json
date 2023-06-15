@@ -23,6 +23,7 @@
     ],
     "ignorePaths": [
         ".git",
+        "CHANGELOG.md",
         ".cspell.json",
         "**/dist/**",
         "**/cspell/**",
