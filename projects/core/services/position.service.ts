@@ -4,7 +4,7 @@ import {tuiZonefree} from '@taiga-ui/cdk';
 import {TuiPositionAccessor} from '@taiga-ui/core/abstract';
 import {TuiPoint} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {distinctUntilChanged, map} from 'rxjs/operators';
 
 @Injectable()
 export class TuiPositionService extends Observable<TuiPoint> {
@@ -19,6 +19,11 @@ export class TuiPositionService extends Observable<TuiPoint> {
             animationFrame
                 .pipe(
                     map(() => el.nativeElement.getBoundingClientRect()),
+                    distinctUntilChanged(
+                        (prev, next) =>
+                            JSON.stringify(prev.toJSON()) !==
+                            JSON.stringify(next.toJSON()),
+                    ),
                     map(rect => accessor.getPosition(rect)),
                     tuiZonefree(ngZone),
                 )
