@@ -26,6 +26,7 @@ import {
     TUI_ENSURE_BASE_HREF,
     TUI_IS_CYPRESS,
     TUI_TAKE_ONLY_TRUSTED_EVENTS,
+    tuiAssert,
 } from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_DURATION,
@@ -81,20 +82,26 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_DOC_SOURCE_CODE,
-        useValue: (context: TuiDocSourceCodePathOptions) => {
+        useValue: ({type, path, header, package: pkg}: TuiDocSourceCodePathOptions) => {
             const link = `https://github.com/tinkoff/taiga-ui/tree/main/projects`;
 
-            if (!context.package) {
+            if (!pkg) {
                 return null;
             }
 
-            if (context.type) {
-                return `${link}/${context.package.toLowerCase()}/${context.type.toLowerCase()}/${(
-                    context.header[0].toLowerCase() + context.header.slice(1)
+            ngDevMode &&
+                tuiAssert.assert(
+                    !(type && path),
+                    `Don't use "type" and "path" input params together in tui-doc-page`,
+                );
+
+            if (type) {
+                return `${link}/${pkg.toLowerCase()}/${type.toLowerCase()}/${(
+                    header[0].toLowerCase() + header.slice(1)
                 ).replace(/[A-Z]/g, m => `-${m.toLowerCase()}`)}`;
             }
 
-            return `${link}/${context.path}`;
+            return `${link}/${path}`;
         },
     },
     {
