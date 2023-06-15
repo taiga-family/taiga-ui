@@ -33,8 +33,6 @@ import {
     takeUntil,
 } from 'rxjs/operators';
 
-// TODO: find the best way for prevent cycle
-// eslint-disable-next-line import/no-cycle
 import {TuiLineChartComponent} from './line-chart.component';
 
 @Directive({

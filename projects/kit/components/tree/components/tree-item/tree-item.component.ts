@@ -15,8 +15,6 @@ import {Subject} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
 import type {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interfaces';
-// TODO: find the best way for prevent cycle
-// eslint-disable-next-line import/no-cycle
 import {
     TUI_TREE_CONTENT,
     TUI_TREE_CONTROLLER,

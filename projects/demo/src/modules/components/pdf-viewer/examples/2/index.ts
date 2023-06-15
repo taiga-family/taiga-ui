@@ -7,8 +7,6 @@ import {TuiPdfViewerOptions, TuiPdfViewerService} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs/operators';
 
-// TODO: find the best way for prevent cycle
-// eslint-disable-next-line import/no-cycle
 import {ActionsContentComponent} from './actions-content.component';
 import {PdfContentComponent} from './pdf-content.component';
 

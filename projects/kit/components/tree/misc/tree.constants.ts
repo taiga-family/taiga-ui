@@ -1,8 +1,6 @@
 import {ALWAYS_TRUE_HANDLER, EMPTY_FUNCTION} from '@taiga-ui/cdk';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
-// TODO: find the best way for prevent cycle
-// eslint-disable-next-line import/no-cycle
 import {TuiTreeItemContentComponent} from '../components/tree-item-content/tree-item-content.component';
 import type {TuiTreeController} from './tree.interfaces';
 
