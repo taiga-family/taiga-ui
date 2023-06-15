@@ -14,6 +14,8 @@ import {
     tuiIsEdgeOlderThan,
 } from '@taiga-ui/cdk';
 import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
+import {of} from 'rxjs';
+import {delay} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-progress-circle',
@@ -47,6 +49,8 @@ export class TuiProgressCircleComponent {
     get progressPercentage(): number {
         return this.value / this.max;
     }
+
+    animationDelay$ = of(true).pipe(delay(0));
 
     // TODO: drop support of legacy Edge (EdgeHTML) in v4.x
     get oldEdgeRadiusFallback(): number | null {
