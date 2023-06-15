@@ -16,6 +16,7 @@ import {
     TUI_AUTOFOCUS_HANDLER,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiAutoFocusDirective,
+    TuiDestroyService,
     TuiSynchronousAutofocusHandler,
 } from '@taiga-ui/cdk';
 import {TuiSvgModule} from '@taiga-ui/core';
@@ -65,6 +66,7 @@ describe(`InputCardGrouped`, () => {
                             ElementRef,
                         ],
                     },
+                    TuiDestroyService,
                 ],
             },
         }).configureTestingModule({

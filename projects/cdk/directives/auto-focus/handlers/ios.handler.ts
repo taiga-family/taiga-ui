@@ -115,7 +115,10 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         fakeInput.style.position = `fixed`;
         fakeInput.style.zIndex = `-99999999`;
         fakeInput.style.caretColor = `transparent`;
+        fakeInput.style.border = `none`;
+        fakeInput.style.outline = `none`;
         fakeInput.style.color = `transparent`;
+        fakeInput.style.background = `transparent`;
         fakeInput.style.cursor = `none`;
         fakeInput.style.fontSize = tuiPx(16);
         fakeInput.style.top = tuiPx(rect.top);

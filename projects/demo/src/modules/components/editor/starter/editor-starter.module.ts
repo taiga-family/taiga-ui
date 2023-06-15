@@ -8,6 +8,7 @@ import {
     TuiTextCodeModule,
 } from '@taiga-ui/addon-doc';
 import {TuiEditorModule, TuiEditorSocketModule} from '@taiga-ui/addon-editor';
+import {TuiAutoFocusModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiLinkModule,
@@ -35,6 +36,7 @@ import {ExampleEditorStarterComponent} from './editor-starter.component';
         RouterModule.forChild(tuiGenerateRoutes(ExampleEditorStarterComponent)),
         TuiLoaderModule,
         TuiTextCodeModule,
+        TuiAutoFocusModule,
     ],
     declarations: [ExampleEditorStarterComponent],
     exports: [ExampleEditorStarterComponent],
