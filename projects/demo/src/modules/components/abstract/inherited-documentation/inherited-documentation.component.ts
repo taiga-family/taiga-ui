@@ -17,6 +17,12 @@ export class InheritedDocumentationComponent {
     @Input()
     dropdown = false;
 
+    @Input()
+    withHint = true;
+
+    @Input()
+    withTextFieldController = true;
+
     readonly booleanVariants: readonly boolean[] = [false, true];
 
     readonly directionVariants = TUI_HINT_DIRECTIONS;
