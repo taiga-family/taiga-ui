@@ -5,6 +5,7 @@ export interface TuiDocPageBase {
 
 export interface TuiDocPage extends TuiDocPageBase {
     readonly route: string;
+    readonly fragment?: string;
     readonly keywords?: string;
 }
 

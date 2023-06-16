@@ -19,6 +19,7 @@
                     *ngFor="let item of group"
                     tuiOption
                     [routerLink]="item.route"
+                    [fragment]="item.fragment"
                     (click)="onClick(input)"
                 >
                     {{ item.title }}
@@ -71,7 +72,7 @@
             let-index="index"
         >
             <a
-                *ngIf="!item.subPages; else subPages"
+                *ngIf="!item.subPages; else subPagesTemplate"
                 tuiLink
                 routerLinkActive="t-sublink_active"
                 class="t-sublink"
@@ -81,7 +82,7 @@
             >
                 {{ item.title }}
             </a>
-            <ng-template #subPages>
+            <ng-template #subPagesTemplate>
                 <div
                     routerLinkActive
                     class="t-subsection"
@@ -107,11 +108,12 @@
                     >
                         <div class="t-section t-section_bordered">
                             <a
-                                *ngFor="let subPage of item.subPages"
+                                *ngFor="let subPage of $pages(item.subPages)"
                                 tuiLink
                                 routerLinkActive="t-sublink_active"
                                 class="t-sublink t-sublink_small"
                                 [routerLink]="subPage.route"
+                                [fragment]="subPage.fragment"
                                 [tuiScrollIntoViewLink]="isActive(subPage.route)"
                                 (click)="closeMenu()"
                             >
