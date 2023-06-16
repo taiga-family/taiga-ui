@@ -41,7 +41,8 @@ runs:
         export CYPRESS_failOnSnapshotDiff="0"
         export CYPRESS_API_URL="http://localhost:1234/"
         export SNAPSHOTS_PATH="./projects/demo-integrations/cypress/snapshots"
-        export SNAPSHOTS_KEY="e2e-${{ github.event.pull_request.head.sha || github.sha }}-${{ github.run_id }}-${{ github.event.number }}"
+        export SNAPSHOTS_CACHE_KEY="e2e--${{ github.event.number }}__workflow_cache"
+        export SNAPSHOTS_ARTIFACTS_KEY="e2e-${{ github.event.pull_request.head.sha || github.sha }}-${{ github.run_id }}-${{ github.event.number }}"
 
         if [[ "$IS_FORK" == "false" && "$IS_DEPENDABOT" == "false" ]]; then
             export IS_OWNER_MODE="true"
@@ -73,4 +74,5 @@ runs:
         echo "CYPRESS_failOnSnapshotDiff=$CYPRESS_failOnSnapshotDiff" >> $GITHUB_ENV
         echo "CYPRESS_API_URL=$CYPRESS_API_URL" >> $GITHUB_ENV
         echo "SNAPSHOTS_PATH=$SNAPSHOTS_PATH" >> $GITHUB_ENV
-        echo "SNAPSHOTS_KEY=$SNAPSHOTS_KEY" >> $GITHUB_ENV
+        echo "SNAPSHOTS_ARTIFACTS_KEY=$SNAPSHOTS_ARTIFACTS_KEY" >> $GITHUB_ENV
+        echo "SNAPSHOTS_CACHE_KEY=$SNAPSHOTS_CACHE_KEY" >> $GITHUB_ENV
