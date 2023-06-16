@@ -94,7 +94,13 @@ export class TuiRatingComponent
     }
 
     setRateByReverseIndex(index: number): void {
-        this.value = this.max - index;
+        const reversedIndex = this.max - index;
+
+        if (reversedIndex <= this.min) {
+            return;
+        }
+
+        this.value = reversedIndex;
     }
 
     setRate(value: number): void {
