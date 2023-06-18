@@ -1,4 +1,4 @@
-export const enum TuiAppearance {
+export enum TuiAppearance {
     Icon = `icon`,
     Primary = `primary`,
     Accent = `accent`,

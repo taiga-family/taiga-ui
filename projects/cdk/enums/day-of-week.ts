@@ -1,4 +1,4 @@
-export const enum TuiDayOfWeek {
+export enum TuiDayOfWeek {
     Sunday,
     Monday,
     Tuesday,

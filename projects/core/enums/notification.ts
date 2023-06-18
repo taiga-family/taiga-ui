@@ -1,4 +1,4 @@
-export const enum TuiNotification {
+export enum TuiNotification {
     Info = `info`,
     Warning = `warning`,
     Success = `success`,

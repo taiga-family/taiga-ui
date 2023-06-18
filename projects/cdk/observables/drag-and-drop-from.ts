@@ -6,7 +6,7 @@ import {endWith, map, repeat, take, takeWhile} from 'rxjs/operators';
 import {tuiMouseDragFinishFrom} from './mouse-drag-finish-from';
 import {tuiTypedFromEvent} from './typed-from-event';
 
-export const enum TuiDragStage {
+export enum TuiDragStage {
     Start,
     Continues,
     End,
