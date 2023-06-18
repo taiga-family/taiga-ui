@@ -1,7 +1,7 @@
 <dropdown-documentation *ngIf="dropdown"></dropdown-documentation>
 <ng-container *ngIf="isTuiReactiveControl(documentedComponent)">
-    <hint-controller-documentation></hint-controller-documentation>
-    <textfield-controller-documentation></textfield-controller-documentation>
+    <hint-controller-documentation *ngIf="withHint"></hint-controller-documentation>
+    <textfield-controller-documentation *ngIf="withTextFieldController"></textfield-controller-documentation>
 
     <h6 class="tui-text_h6">
         Inherited from
