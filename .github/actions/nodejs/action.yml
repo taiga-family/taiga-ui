@@ -59,6 +59,7 @@ runs:
       shell: bash
 
     - name: Verify that Cypress is installed correctly and is executable.
+      if: github.ref == 'refs/heads/main'
       shell: bash
       run: |
         npx cypress cache path
