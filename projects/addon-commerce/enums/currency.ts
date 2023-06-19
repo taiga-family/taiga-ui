@@ -7,7 +7,7 @@
  *
  * @link https://en.wikipedia.org/wiki/ISO_4217
  */
-export const enum TuiCurrency {
+export enum TuiCurrency {
     /**
      * Russian ruble
      *

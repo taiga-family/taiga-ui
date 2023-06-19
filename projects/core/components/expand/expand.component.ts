@@ -17,7 +17,7 @@ import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
 
 import {TuiExpandContentDirective} from './expand-content.directive';
 
-const enum State {
+enum State {
     Idle,
     Loading,
     Prepared,

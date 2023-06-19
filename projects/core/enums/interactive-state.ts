@@ -1,7 +1,7 @@
 /**
  * @internal used in calendar, year picker and wrapper
  */
-export const enum TuiInteractiveState {
+export enum TuiInteractiveState {
     Disabled = `disabled`,
     Readonly = `readonly`,
     Active = `active`,
