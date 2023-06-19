@@ -44,7 +44,12 @@
         /* clean-css ignore:end */
         stroke-width: @progress-stroke[ @@size];
         stroke-dasharray: @circumference;
-        stroke-dashoffset: calc(@circumference - var(--progress-percentage) * @circumference);
+        stroke-dashoffset: @circumference;
+
+        &_filled {
+            transition: stroke-dashoffset var(--tui-duration) linear;
+            stroke-dashoffset: calc(@circumference - var(--progress-percentage) * @circumference);
+        }
     }
 }
 
@@ -82,7 +87,6 @@
     fill: transparent;
     stroke: var(--tui-progress-color, currentColor);
     stroke-linecap: round;
-    transition: stroke-dashoffset var(--tui-duration) linear;
 }
 
 .t-hidden-progress {

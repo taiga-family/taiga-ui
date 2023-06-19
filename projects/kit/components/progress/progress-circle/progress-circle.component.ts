@@ -10,10 +10,12 @@ import {
 import {USER_AGENT, WINDOW} from '@ng-web-apis/common';
 import {
     CHROMIUM_EDGE_START_VERSION,
-    isEdgeOlderThan,
     tuiDefaultProp,
+    tuiIsEdgeOlderThan,
 } from '@taiga-ui/cdk';
 import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
+import {of} from 'rxjs';
+import {delay} from 'rxjs/operators';
 
 // @dynamic
 @Component({
@@ -49,23 +51,24 @@ export class TuiProgressCircleComponent {
         return this.value / this.max;
     }
 
+    animationDelay$ = of(true).pipe(delay(0));
+
     get oldEdgeRadiusFallback(): number | null {
-        if (!isEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent)) {
+        if (!tuiIsEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent)) {
             return null;
         }
 
         const strokeWidth = parseInt(
-            this.windowRef.getComputedStyle(this.progressCircle.nativeElement)
-                .strokeWidth,
+            this.win.getComputedStyle(this.progressCircle.nativeElement).strokeWidth,
             10,
         );
 
-        return (this.elementRef.nativeElement.offsetWidth - strokeWidth) / 2;
+        return (this.el.nativeElement.offsetWidth - strokeWidth) / 2;
     }
 
     constructor(
         @Inject(USER_AGENT) private readonly userAgent: string,
-        @Inject(WINDOW) private readonly windowRef: Window,
-        @Inject(ElementRef) private readonly elementRef: ElementRef<HTMLElement>,
+        @Inject(WINDOW) private readonly win: Window,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
     ) {}
 }
