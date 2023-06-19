@@ -10,6 +10,7 @@ import {
     Self,
 } from '@angular/core';
 import {
+    EMPTY_CLIENT_RECT,
     tuiClamp,
     TuiContextWithImplicit,
     TuiDestroyService,
@@ -116,6 +117,11 @@ export class TuiHintComponent<C = any> {
         const {height, width} = this.el.nativeElement.getBoundingClientRect();
         const {style} = this.el.nativeElement;
         const rect = this.accessor.getClientRect();
+
+        if (rect === EMPTY_CLIENT_RECT) {
+            return;
+        }
+
         const safeLeft = Math.max(left, 4);
         const [beakTop, beakLeft] = this.visualViewportService.correct([
             rect.top + rect.height / 2 - top,
