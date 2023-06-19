@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.92.0](https://github.com/tinkoff/taiga-ui/compare/v2.91.0...v2.92.0) (2023-06-19)
+
+### Bug Fixes
+
+- **kit:** ProgressCircle fix initial animation ([#4698](https://github.com/tinkoff/taiga-ui/issues/4698))
+  ([cae6a8f](https://github.com/tinkoff/taiga-ui/commit/cae6a8f1d63542354fc6087994e3f4d5959f7228))
+
 ## [2.91.0](https://github.com/tinkoff/taiga-ui/compare/v2.90.0...v2.91.0) (2023-06-15)
 
 ### Features
