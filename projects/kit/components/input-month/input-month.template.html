@@ -24,6 +24,13 @@
             select="input"
             ngProjectAs="input"
         ></ng-content>
+        <input
+            *ngIf="nativePicker"
+            type="month"
+            class="t-mobile"
+            [ngModel]="nativeValue"
+            (ngModelChange)="onNativeChange($event)"
+        />
     </tui-primitive-textfield>
 
     <ng-template #dropdown>

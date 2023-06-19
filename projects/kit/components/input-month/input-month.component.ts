@@ -12,6 +12,7 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
+    TUI_IS_MOBILE,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
@@ -83,14 +84,14 @@ export class TuiInputMonthComponent
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_MONTH_FORMATTER)
         readonly formatter: TuiHandler<TuiMonth | null, Observable<string>>,
-        @Inject(TUI_INPUT_DATE_OPTIONS)
-        private readonly options: TuiInputDateOptions,
+        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
+        @Inject(TUI_INPUT_DATE_OPTIONS) private readonly options: TuiInputDateOptions,
     ) {
         super(control, cdr);
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
-        return this.textfield ? this.textfield.nativeFocusableElement : null;
+        return this.textfield?.nativeFocusableElement || null;
     }
 
     get computedDefaultActiveYear(): TuiYear {
@@ -109,8 +110,22 @@ export class TuiInputMonthComponent
         return this.options.icon;
     }
 
+    get nativePicker(): boolean {
+        return this.isMobile && this.options.nativePicker;
+    }
+
+    get nativeValue(): string {
+        return this.value?.toJSON() || '';
+    }
+
+    onNativeChange(value: string): void {
+        const [year, month] = value.split('-').map(Number);
+
+        this.value = value ? new TuiMonth(year, month - 1) : null;
+    }
+
     onValueChange(value: string): void {
-        if (value) {
+        if (value || this.nativePicker) {
             return;
         }
 

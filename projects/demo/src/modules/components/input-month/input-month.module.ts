@@ -9,6 +9,7 @@ import {TuiInputMonthModule} from '@taiga-ui/kit';
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {InputMonthExample1} from './examples/1';
 import {InputMonthExample2} from './examples/2';
+import {InputMonthExample3} from './examples/3';
 import {ExampleInputMonthComponent} from './input-month.component';
 
 @NgModule({
@@ -17,12 +18,17 @@ import {ExampleInputMonthComponent} from './input-month.component';
         ReactiveFormsModule,
         TuiAddonDocModule,
         InheritedDocumentationModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleInputMonthComponent)),
         TuiInputMonthModule,
         TuiTextfieldControllerModule,
         TuiNotificationModule,
+        RouterModule.forChild(tuiGenerateRoutes(ExampleInputMonthComponent)),
     ],
-    declarations: [ExampleInputMonthComponent, InputMonthExample1, InputMonthExample2],
+    declarations: [
+        ExampleInputMonthComponent,
+        InputMonthExample1,
+        InputMonthExample2,
+        InputMonthExample3,
+    ],
     exports: [ExampleInputMonthComponent],
 })
 export class ExampleInputMonthModule {}
