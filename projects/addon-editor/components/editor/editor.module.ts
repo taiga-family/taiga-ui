@@ -4,7 +4,7 @@ import {TuiEditLinkModule} from '@taiga-ui/addon-editor/components/edit-link';
 import {TuiEditorSocketModule} from '@taiga-ui/addon-editor/components/editor-socket';
 import {TuiToolbarModule} from '@taiga-ui/addon-editor/components/toolbar';
 import {TuiTiptapEditorModule} from '@taiga-ui/addon-editor/directives';
-import {TuiActiveZoneModule, TuiItemDirective, TuiLetModule} from '@taiga-ui/cdk';
+import {TuiActiveZoneModule, TuiItemDirective} from '@taiga-ui/cdk';
 import {TuiDropdownModule, TuiScrollbarModule, TuiWrapperModule} from '@taiga-ui/core';
 
 import {TuiEditorComponent} from './editor.component';
@@ -27,7 +27,6 @@ import {TuiEditorPortalHostComponent} from './portal/editor-portal-host.componen
         TuiDropdownModule,
         TuiTiptapEditorModule,
         TuiEditorSocketModule,
-        TuiLetModule,
     ],
     exports: [TuiEditorComponent, TuiItemDirective],
 })

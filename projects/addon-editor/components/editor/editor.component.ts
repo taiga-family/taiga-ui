@@ -26,7 +26,9 @@ import {TuiEditorAttachedFile} from '@taiga-ui/addon-editor/interfaces';
 import {
     TIPTAP_EDITOR,
     TUI_EDITOR_CONTENT_PROCESSOR,
+    TUI_EDITOR_OPTIONS,
     TUI_EDITOR_VALUE_TRANSFORMER,
+    TuiEditorOptions,
 } from '@taiga-ui/addon-editor/tokens';
 import {tuiIsSafeLinkRange} from '@taiga-ui/addon-editor/utils';
 import {
@@ -43,6 +45,7 @@ import {
 import {TUI_ANIMATIONS_DEFAULT_DURATION} from '@taiga-ui/core';
 import {Editor} from '@tiptap/core';
 import {Observable} from 'rxjs';
+import {delay, takeUntil} from 'rxjs/operators';
 
 import {TUI_EDITOR_PROVIDERS} from './editor.providers';
 
@@ -95,8 +98,13 @@ export class TuiEditorComponent
         @Optional()
         @Inject(TUI_EDITOR_VALUE_TRANSFORMER)
         transformer: AbstractTuiValueTransformer<string> | null,
+        @Inject(TUI_EDITOR_OPTIONS) private readonly options: TuiEditorOptions,
     ) {
         super(control, cdr, transformer);
+
+        this.editorLoaded$
+            .pipe(delay(0), takeUntil(this.destroy$))
+            .subscribe(() => this.patchContentEditableElement());
     }
 
     get nativeFocusableElement(): HTMLDivElement | null {
@@ -217,6 +225,14 @@ export class TuiEditorComponent
         return (
             this.focusNode?.nodeName === 'A' &&
             ['IMG', 'TUI-IMAGE-EDITOR'].includes(this.focusNode?.childNodes[0]?.nodeName)
+        );
+    }
+
+    private patchContentEditableElement(): void {
+        this.nativeFocusableElement?.setAttribute('translate', this.options.translate);
+        this.nativeFocusableElement?.setAttribute(
+            'spellcheck',
+            String(this.options.spellcheck),
         );
     }
 }

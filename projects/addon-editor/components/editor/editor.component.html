@@ -1,5 +1,5 @@
 <div
-    *tuiLet="editorLoaded$ | async as editorLoaded"
+    *ngIf="editorLoaded$ | async as editorLoaded"
     tuiWrapper
     appearance="textfield"
     class="t-wrapper"
@@ -47,7 +47,6 @@
         >
             <tui-editor-socket
                 tuiTiptapEditor
-                spellcheck="false"
                 class="tui-editor-socket"
                 [value]="value"
                 [editable]="interactive"
