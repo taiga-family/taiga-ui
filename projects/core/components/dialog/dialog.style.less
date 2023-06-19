@@ -152,7 +152,12 @@
     position: fixed;
     top: 1.5rem;
     right: 1.5rem;
+    display: none;
     color: var(--tui-base-01);
+
+    :host-context(.t-dialog:last-of-type) & {
+        display: block;
+    }
 
     :host:not([data-size='fullscreen']):not([data-size='page']) & {
         animation: tuiFadeIn var(--tui-duration);
