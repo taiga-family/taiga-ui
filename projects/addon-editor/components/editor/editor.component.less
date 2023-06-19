@@ -22,14 +22,17 @@
 
 .t-placeholder {
     .textfield-placeholder();
-    position: absolute;
-    left: 1rem;
-    margin-top: 1rem;
+    margin: 1rem 1rem -1rem;
+    min-height: 1.625rem;
     width: 95%;
     font-size: 0.9375rem;
 
     &_raised {
         width: 110%;
+    }
+
+    &:empty {
+        min-height: 0.8rem;
     }
 }
 
@@ -52,7 +55,6 @@
 
 .t-scrollbar {
     display: flex;
-    border-top: 1.625rem solid transparent;
     border-bottom: 0.3125rem solid transparent;
     padding-bottom: 1.3125rem;
     box-sizing: border-box;
