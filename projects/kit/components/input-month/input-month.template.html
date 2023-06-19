@@ -30,6 +30,7 @@
             class="t-mobile"
             [ngModel]="nativeValue"
             (ngModelChange)="onNativeChange($event)"
+            (click.stop)="(0)"
         />
     </tui-primitive-textfield>
 
