@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.32.0](https://github.com/tinkoff/taiga-ui/compare/v3.31.1...v3.32.0) (2023-06-19)
+
+### Features
+
+- **addon-doc:** support `fragment` in navigation links ([#4673](https://github.com/tinkoff/taiga-ui/issues/4673))
+  ([ecb1c11](https://github.com/tinkoff/taiga-ui/commit/ecb1c117235463b162d3a3747cd2bd51fa8f96f4))
+- **addon-editor:** support `translate/spellcheck` option in editor DI
+  ([#4688](https://github.com/tinkoff/taiga-ui/issues/4688))
+  ([98df5c5](https://github.com/tinkoff/taiga-ui/commit/98df5c533b2b947a10f8aebb540943bc7ae991c7))
+- **addon-editor:** support custom fontSize tool ([#4670](https://github.com/tinkoff/taiga-ui/issues/4670))
+  ([74d1efe](https://github.com/tinkoff/taiga-ui/commit/74d1efecfe7126db13753095812efaefd107d138))
+- **cdk:** do not overlap close buttons in nested dialogs ([#4640](https://github.com/tinkoff/taiga-ui/issues/4640))
+  ([e174fe2](https://github.com/tinkoff/taiga-ui/commit/e174fe2b2e23d9b66f63a4e33ada1757a9bc6601))
+- **cdk:** support `TUI_AUTOFOCUS_OPTIONS` ([#4650](https://github.com/tinkoff/taiga-ui/issues/4650))
+  ([e1a3013](https://github.com/tinkoff/taiga-ui/commit/e1a30130a71be08be8bad71dd1530a7281010bfb))
+
+### Bug Fixes
+
+- **cdk:** `schematics` add schematic templates to exclusion patterns
+  ([#4675](https://github.com/tinkoff/taiga-ui/issues/4675))
+  ([51a2535](https://github.com/tinkoff/taiga-ui/commit/51a25351c47c6cb476e57516eb58365a045fff5e))
+- **kit:** `MultiSelectGroup` fix label alignment ([#4686](https://github.com/tinkoff/taiga-ui/issues/4686))
+  ([1e3aba8](https://github.com/tinkoff/taiga-ui/commit/1e3aba813f4a1087876ec26bf07425348ab8d370))
+- **kit:** `ProgressCircle` fix initial animation ([#4682](https://github.com/tinkoff/taiga-ui/issues/4682))
+  ([efdf144](https://github.com/tinkoff/taiga-ui/commit/efdf144c3dd15cf7c1a89cfb737530e1ffee9089))
+- **kit:** prevent min rate star selection ([#4680](https://github.com/tinkoff/taiga-ui/issues/4680))
+  ([c29e0e8](https://github.com/tinkoff/taiga-ui/commit/c29e0e8cb428c234586b2a098193ccbd0cdb8c96))
+- **kit:** prevent overflow first character inside `InputInlineComponent`
+  ([#4647](https://github.com/tinkoff/taiga-ui/issues/4647))
+  ([d82dbd7](https://github.com/tinkoff/taiga-ui/commit/d82dbd7d39918a5c093a5d958e1bebed6f66d97c))
+
 ### [3.31.1](https://github.com/tinkoff/taiga-ui/compare/v3.31.0...v3.31.1) (2023-06-15)
 
 ### Bug Fixes
