@@ -5,6 +5,7 @@ on:
 jobs:
   report:
     runs-on: ubuntu-latest
+    if: ${{ !contains(github.head_ref , 'release/') }}
     steps:
       - uses: actions/checkout@v3.5.3
       - name: Setup global variables
