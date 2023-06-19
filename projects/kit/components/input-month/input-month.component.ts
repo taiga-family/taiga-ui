@@ -130,7 +130,7 @@ export class TuiInputMonthComponent
         }
 
         this.value = null;
-        this.onOpenChange(true);
+        this.onOpenChange(!this.nativePicker);
     }
 
     onMonthClick(month: TuiMonth): void {
