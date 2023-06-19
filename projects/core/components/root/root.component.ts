@@ -19,7 +19,7 @@ import {
     TUI_THEME,
 } from '@taiga-ui/core/tokens';
 import {combineLatest, Observable, of} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {debounceTime, map} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-root',
@@ -43,6 +43,7 @@ export class TuiRootComponent {
         this.dialogs.length && !this.isMobile
             ? combineLatest([...this.dialogs]).pipe(
                   map(dialogs => !dialogs.some(({length}) => length)),
+                  debounceTime(0),
               )
             : of(!this.isMobile);
 

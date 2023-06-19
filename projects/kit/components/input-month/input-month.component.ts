@@ -125,7 +125,7 @@ export class TuiInputMonthComponent
     }
 
     onValueChange(value: string): void {
-        if (value || this.nativePicker) {
+        if (value) {
             return;
         }
 
