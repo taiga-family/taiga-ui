@@ -28,6 +28,8 @@
             *ngIf="nativePicker"
             type="month"
             class="t-mobile"
+            [min]="min.toJSON()"
+            [max]="max.toJSON()"
             [ngModel]="nativeValue"
             (ngModelChange)="onNativeChange($event)"
             (mousedown.stop.silent)="(0)"

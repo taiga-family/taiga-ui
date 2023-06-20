@@ -121,7 +121,9 @@ export class TuiInputMonthComponent
     onNativeChange(value: string): void {
         const [year, month] = value.split('-').map(Number);
 
-        this.value = value ? new TuiMonth(year, month - 1) : null;
+        this.value = value
+            ? tuiDateClamp(new TuiMonth(year, month - 1), this.min, this.max)
+            : null;
     }
 
     onValueChange(value: string): void {
