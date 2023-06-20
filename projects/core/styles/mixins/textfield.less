@@ -171,11 +171,11 @@
 
 .textfield-placeholder() {
     .transition(~'transform, font-size, color, letter-spacing');
-    .text-basic();
     .text-overflow();
     display: block;
     width: 100%;
     user-select: none;
+    font: var(--tui-font-text-s);
     color: var(--tui-text-02);
     pointer-events: none;
     will-change: transform;
@@ -209,7 +209,7 @@
     }
 
     :host[data-size='l'] & {
-        font-size: 0.9375rem;
+        font: var(--tui-font-text-m);
 
         &_raised {
             font-size: 0.8156rem;
