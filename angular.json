@@ -12,6 +12,7 @@
         "addon-preview": "projects/addon-preview",
         "addon-table": "projects/addon-table",
         "addon-tablebars": "projects/addon-tablebars",
+        "layout": "projects/layout",
         "cdk": "projects/cdk",
         "core": "projects/core",
         "demo": "projects/demo",

@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    gap: 1rem;
+
+    :host-context(tui-root._mobile) & {
+        flex-direction: column;
+    }
+}
+
+.image {
+    width: 5.5rem;
+    height: 5.5rem;
+}
+
+.card {
+    background-color: var(--tui-base-02);
+    height: auto;
+}

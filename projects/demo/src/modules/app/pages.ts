@@ -179,6 +179,12 @@ export const pages: TuiDocPages = [
         ],
     },
     {
+        section: `Layout`,
+        title: `BlockStatus`,
+        keywords: `блок, статус, block, status, block-status, blockstatus, layout`,
+        route: `/layout/block-status`,
+    },
+    {
         section: $localize`Components`,
         title: `Button`,
         keywords: `кнопка, button, icon-button, иконка`,

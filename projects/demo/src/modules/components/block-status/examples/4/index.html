@@ -1,0 +1,30 @@
+<tui-block-status
+    class="card"
+    [card]="true"
+>
+    <div
+        tuiSlot="top"
+        class="tui-avatar-stack reversed"
+    >
+        <tui-avatar
+            *ngFor="let user of users"
+            size="l"
+            [rounded]="true"
+            [autoColor]="true"
+            [text]="user"
+        ></tui-avatar>
+    </div>
+
+    You can put other content instead of image using
+    <code>tui-block-content</code>
+    css class
+
+    <button
+        tuiButton
+        appearance="primary"
+        size="s"
+        shape="rounded"
+    >
+        Got it
+    </button>
+</tui-block-status>

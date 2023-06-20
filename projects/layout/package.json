@@ -1,0 +1,22 @@
+{
+    "name": "@taiga-ui/layout",
+    "version": "2.92.0",
+    "description": "A package with Taiga UI layout components",
+    "keywords": [
+        "angular",
+        "component",
+        "layout"
+    ],
+    "homepage": "https://github.com/tinkoff/taiga-ui",
+    "repository": "https://github.com/tinkoff/taiga-ui",
+    "license": "Apache-2.0",
+    "peerDependencies": {
+        "@angular/common": ">=9.0.0",
+        "@angular/core": ">=9.0.0",
+        "@taiga-ui/cdk": ">=2.92.0",
+        "@taiga-ui/core": ">=2.92.0",
+        "@tinkoff/ng-polymorpheus": ">=3.1.12 < 4",
+        "rxjs": ">=6.0.0",
+        "tslib": ">=2.0.0"
+    }
+}

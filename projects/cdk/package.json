@@ -52,7 +52,8 @@
             "@taiga-ui/proprietary-banking",
             "@taiga-ui/proprietary-core",
             "@taiga-ui/proprietary-icons",
-            "@taiga-ui/proprietary-navigation"
+            "@taiga-ui/proprietary-navigation",
+            "@taiga-ui/layout"
         ]
     },
     "schematics": "./schematics/collection.json"

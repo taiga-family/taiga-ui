@@ -67,6 +67,8 @@
             "@taiga-ui/core/*": ["projects/core/*"],
             "@taiga-ui/kit": ["projects/kit/index"],
             "@taiga-ui/kit/*": ["projects/kit/*"],
+            "@taiga-ui/layout": ["projects/layout/index"],
+            "@taiga-ui/layout/*": ["projects/layout/*"],
             "@taiga-ui/i18n": ["projects/i18n/index"],
             "@taiga-ui/i18n/*": ["projects/i18n/*"],
             "@taiga-ui/addon-doc": ["projects/addon-doc/src/public-api"],
