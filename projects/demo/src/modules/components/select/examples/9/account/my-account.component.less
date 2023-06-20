@@ -6,13 +6,9 @@
     flex: 1;
     align-items: center;
     max-width: 100%;
-    height: var(--tui-height-l);
+    height: var(--tui-height-s);
     box-sizing: border-box;
     outline: none;
-
-    &[data-size='m'] {
-        height: var(--tui-height-m);
-    }
 }
 
 :host-context(*:focus) {
@@ -23,16 +19,12 @@
 }
 
 .icon {
-    margin: 0 @space * 2 0 calc(-1px - @space);
-
-    :host[data-size='m'] & {
-        transform: scale(0.75);
-    }
+    margin: 0 0.5rem 0 -0.25rem;
 }
 
 .info {
     min-width: 0;
-    margin-right: @space * 2;
+    margin-right: 0.5rem;
     overflow: hidden;
 }
 
@@ -53,16 +45,8 @@
     font: var(--tui-font-text-s);
     color: var(--tui-text-02);
     margin-bottom: -0.125rem;
-
-    :host[data-size='m'] & {
-        font: var(--tui-font-text-xs);
-    }
 }
 
 .value {
     font: var(--tui-font-text-m);
-
-    :host[data-size='m'] & {
-        font: var(--tui-font-text-s);
-    }
 }
