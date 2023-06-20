@@ -13,7 +13,13 @@ import {
     Renderer2,
     ViewChild,
 } from '@angular/core';
-import { isCurrentTarget, tuiDefaultProp, tuiPure, tuiPx, typedFromEvent } from '@taiga-ui/cdk';
+import {
+    isCurrentTarget,
+    tuiDefaultProp,
+    tuiPure,
+    tuiPx,
+    typedFromEvent,
+} from '@taiga-ui/cdk';
 import {PolymorpheusContent, PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {
