@@ -15,19 +15,13 @@
         "metrika",
         "datasources",
         "stylelint",
-        "bundlphobia",
         "autoprefixer",
-        "pullreminders",
         "ssim",
         "shellcheck",
         "xvfb",
         "MITSHM",
-        "ncipollo",
-        "peaceiris",
-        "agoldis",
-        "toshimaru",
-        "imba",
-        "stefanzweifel",
-        "subdir"
+        "subdir",
+        "bundlphobia",
+        "gitlabci"
     ]
 }
