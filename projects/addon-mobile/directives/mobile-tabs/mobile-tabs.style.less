@@ -1,7 +1,9 @@
 @import 'taiga-ui-local';
 
 tui-tabs[tuiMobileTabs],
-[tuiMobileTabs] tui-tabs {
+[tuiTabs][tuiMobileTabs],
+[tuiMobileTabs] tui-tabs,
+[tuiMobileTabs] [tuiTabs] {
     &[data-platform='android'] {
         height: auto;
 
@@ -38,8 +40,9 @@ tui-tabs[tuiMobileTabs],
         height: auto;
         border: 2px solid transparent;
         border-radius: 0.5625rem;
-        background: var(--tui-link);
+        background: var(--tui-clear);
         box-shadow: none;
+        overflow: visible;
 
         tui-underline {
             border-radius: 0.4375rem;
@@ -52,21 +55,15 @@ tui-tabs[tuiMobileTabs],
             flex: 1;
             flex-shrink: 0;
             justify-content: center;
-            color: var(--tui-base-01);
+            color: var(--tui-text-01);
             opacity: 1;
             font-size: 0.8125rem;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: -0.005rem;
             font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
 
             &:hover {
                 box-shadow: none;
-            }
-
-            &._active {
-                font-size: 0.875rem;
-                font-weight: 600;
-                color: var(--tui-link);
             }
         }
     }
