@@ -1,6 +1,6 @@
 <tui-hosted-dropdown
     class="t-hosted"
-    [canOpen]="interactive"
+    [canOpen]="interactive && !nativePicker"
     [content]="dropdown"
     [open]="open && interactive"
     (openChange)="onOpenChange($event)"
