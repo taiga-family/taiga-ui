@@ -1,0 +1,47 @@
+<div
+    *ngIf="size$ | async as size"
+    class="container"
+>
+    <tui-block-status
+        class="card"
+        [card]="true"
+    >
+        <img
+            tuiSlot="top"
+            alt="hidden content"
+            src="./assets/images/camping.svg"
+            class="image"
+        />
+
+        We hide the unwanted block
+
+        <button
+            tuiButton
+            appearance="secondary"
+            [size]="size"
+        >
+            Return
+        </button>
+    </tui-block-status>
+    <tui-block-status
+        class="card"
+        [card]="true"
+    >
+        <img
+            tuiSlot="top"
+            alt="something wrong"
+            src="./assets/images/cancel.svg"
+            class="image"
+        />
+
+        Something happened in this block
+
+        <button
+            tuiButton
+            appearance="secondary"
+            [size]="size"
+        >
+            Try again
+        </button>
+    </tui-block-status>
+</div>
