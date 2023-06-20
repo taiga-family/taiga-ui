@@ -1,7 +1,7 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "baseBranches": ["main"],
-    "enabledManagers": ["npm", "github-actions", "gitlabci-include", "dockerfile"],
+    "enabledManagers": ["npm", "github-actions"],
     "fetchReleaseNotes": false,
     "internalChecksFilter": "strict",
     "branchConcurrentLimit": 4,
