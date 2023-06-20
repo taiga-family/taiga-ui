@@ -7,7 +7,7 @@
     },
     "devDependencies": {
         "@types/cypress-image-snapshot": "3.1.6",
-        "@types/jasmine": "3.10.9",
+        "@types/jasmine": "3.10.10",
         "@types/jest": "29.5.2",
         "jasmine": "4.6.0",
         "jasmine-spec-reporter": "4.2.1",
