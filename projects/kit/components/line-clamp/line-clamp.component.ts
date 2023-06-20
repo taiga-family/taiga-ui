@@ -5,7 +5,6 @@ import {
     Component,
     DoCheck,
     ElementRef,
-    HostBinding,
     HostListener,
     Inject,
     Input,
@@ -14,7 +13,7 @@ import {
     Renderer2,
     ViewChild,
 } from '@angular/core';
-import {isCurrentTarget, tuiDefaultProp, tuiPure, typedFromEvent} from '@taiga-ui/cdk';
+import { isCurrentTarget, tuiDefaultProp, tuiPure, tuiPx, typedFromEvent } from '@taiga-ui/cdk';
 import {PolymorpheusContent, PolymorpheusOutletComponent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {
@@ -103,16 +102,6 @@ export class TuiLineClampComponent implements AfterViewInit, DoCheck {
         return this.options.showHint && this.overflown ? this.content : '';
     }
 
-    @HostBinding('style.maxHeight.px')
-    get maxHeight(): number | null {
-        return this.initialized ? this.lineHeight * this.linesLimit$.value : null;
-    }
-
-    @HostBinding('style.height.px')
-    get height(): number | null {
-        return !this.outlet ? 0 : this.outlet.nativeElement.scrollHeight + 4 || null;
-    }
-
     @HostListener('transitionend')
     updateView(): void {
         this.cd.detectChanges();
@@ -123,6 +112,7 @@ export class TuiLineClampComponent implements AfterViewInit, DoCheck {
     }
 
     ngDoCheck(): void {
+        this.update();
         this.isOverflown$.next(this.overflown);
     }
 
@@ -133,5 +123,23 @@ export class TuiLineClampComponent implements AfterViewInit, DoCheck {
                 this.cd.detectChanges();
             });
         });
+    }
+
+    private update(): void {
+        if (this.outlet) {
+            this.renderer.setStyle(
+                this.elementRef.nativeElement,
+                'height',
+                tuiPx(this.outlet.nativeElement.scrollHeight + 4),
+            );
+        }
+
+        if (this.initialized) {
+            this.renderer.setStyle(
+                this.elementRef.nativeElement,
+                'max-height',
+                tuiPx(this.lineHeight * this.linesLimit$.value),
+            );
+        }
     }
 }
