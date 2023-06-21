@@ -12,7 +12,7 @@ import {tuiGetMarkRange, tuiParseStyle} from '@taiga-ui/addon-editor/utils';
 import {tuiPx} from '@taiga-ui/cdk';
 import type {Editor, Range} from '@tiptap/core';
 import {MarkType} from 'prosemirror-model';
-import type {EditorState} from 'prosemirror-state';
+import {EditorState} from 'prosemirror-state';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
@@ -314,9 +314,20 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     setValue(value: string): void {
-        if (value !== this.html) {
-            this.editor.commands.setContent(value);
+        if (value === this.html || (value === `` && this.html === `<p></p>`)) {
+            return;
         }
+
+        this.editor.commands.setContent(value);
+        this.editor.view.updateState(
+            EditorState.create({
+                schema: this.editor.state.schema,
+                doc: this.editor.state.doc,
+                selection: this.editor.state.selection,
+                storedMarks: this.editor.state.storedMarks,
+                plugins: this.editor.state.plugins,
+            }),
+        );
     }
 
     destroy(): void {

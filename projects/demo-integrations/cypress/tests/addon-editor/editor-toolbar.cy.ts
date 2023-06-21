@@ -1,4 +1,5 @@
 import {
+    tuiClearEditor,
     tuiGetDemoContent,
     tuiGetTipTapContentSelector,
     tuiVisitEditorApiPage,
@@ -193,6 +194,8 @@ describe(`Editor's toolbar`, () => {
         it(`skips disabled tools and selects next tool after disabled`, () => {
             tuiGetDemoContent().as(`wrapper`);
 
+            tuiClearEditor();
+
             cy.get(`@wrapper`)
                 .find(`button[icon="tuiIconUndoLarge"]`)
                 .as(`leftActiveTool`);
@@ -226,6 +229,10 @@ describe(`Editor's toolbar`, () => {
                 .findByAutomationId(`tui-doc-example`)
                 .tuiScrollIntoView()
                 .as(`wrapper`);
+
+            cy.get(`@wrapper`)
+                .find(tuiGetTipTapContentSelector())
+                .type(`123`, {force: true});
 
             cy.get(`@wrapper`)
                 .find(`button[icon="tuiIconUndoLarge"]`)

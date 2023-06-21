@@ -29,7 +29,8 @@ export class ExampleTuiFontSizeToolComponent {
     get fontSize(): number {
         return (
             this.editor.getFontSize() ||
-            this.getDefaultFontSize(this.editor.getOriginTiptapEditor()?.view?.dom)
+            this.getDefaultFontSize(this.editor.getOriginTiptapEditor()?.view?.dom) ||
+            16
         );
     }
 

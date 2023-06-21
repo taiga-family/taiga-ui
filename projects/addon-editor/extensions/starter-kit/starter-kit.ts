@@ -90,7 +90,13 @@ export const StarterKit = Extension.create<TuiStarterKitOptions>({
         }
 
         if (options?.history !== false) {
-            extensions.push(History.configure(options?.history));
+            extensions.push(
+                History.configure({
+                    depth: 10,
+                    newGroupDelay: 100,
+                    ...options?.history,
+                }),
+            );
         }
 
         if (options?.horizontalRule !== false) {
