@@ -6,7 +6,7 @@ import {
     Output,
 } from '@angular/core';
 import {MaskitoOptions} from '@maskito/core';
-import {tuiDefaultProp, tuiHexToRgb, tuiRgbToHex} from '@taiga-ui/cdk';
+import {tuiHexToRgb, tuiRgbToHex} from '@taiga-ui/cdk';
 
 const HEX_MODE_LENGTH = 6;
 
@@ -18,7 +18,6 @@ const HEX_MODE_LENGTH = 6;
 })
 export class TuiColorEditComponent {
     @Input()
-    @tuiDefaultProp()
     color: [number, number, number, number] = [0, 0, 0, 1];
 
     @Output()

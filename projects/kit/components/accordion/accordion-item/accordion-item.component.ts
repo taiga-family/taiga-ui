@@ -14,7 +14,6 @@ import {
 import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     TuiNativeFocusableElement,
@@ -44,39 +43,31 @@ export class TuiAccordionItemComponent
 
     @Input()
     @HostBinding('class._no-padding')
-    @tuiDefaultProp()
     noPadding = false;
 
     @Input()
     @HostBinding('class._has-arrow')
-    @tuiDefaultProp()
     showArrow = true;
 
     @Input()
     @HostBinding('attr.data-borders')
-    @tuiDefaultProp()
     borders: 'all' | 'top-bottom' | null = 'all';
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeS = 'm';
 
     @Input()
     @HostBinding('class._disabled')
-    @tuiDefaultProp()
     disabled = false;
 
     @Input()
-    @tuiDefaultProp()
     disableHover = false;
 
     @Input()
-    @tuiDefaultProp()
     open = false;
 
     @Input()
-    @tuiDefaultProp()
     async = false;
 
     @Output()

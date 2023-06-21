@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, Inject, Input, Optional} from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
@@ -22,7 +21,6 @@ import {AbstractTuiDataListWrapper} from './data-list-wrapper';
 })
 export class TuiDataListWrapperComponent<T> extends AbstractTuiDataListWrapper<T> {
     @Input()
-    @tuiDefaultProp()
     items: readonly T[] | null = [];
 
     constructor(

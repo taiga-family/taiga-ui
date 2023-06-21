@@ -4,7 +4,6 @@ import {
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
     tuiCoerceBooleanProperty,
-    tuiDefaultProp,
     TuiDestroyService,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
@@ -32,7 +31,6 @@ const SLIDER_INTERACTION_KEYS = new Set([
 })
 export class TuiSliderReadonlyDirective {
     @Input()
-    @tuiDefaultProp()
     readonly: boolean | string = true;
 
     constructor(

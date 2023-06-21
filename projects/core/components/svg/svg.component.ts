@@ -16,7 +16,6 @@ import {
     tuiGetDocumentOrShadowRoot,
     tuiIsString,
     tuiPure,
-    tuiRequiredSetter,
     TuiSafeHtml,
     TuiStaticRequestService,
     TuiStringHandler,
@@ -84,7 +83,6 @@ export class TuiSvgComponent {
     }
 
     @Input()
-    @tuiRequiredSetter()
     set src(src: TuiSafeHtml) {
         const deprecated = this.options.deprecated(String(src));
 

@@ -31,7 +31,6 @@ import {
     tuiDateClamp,
     TuiDateMode,
     TuiDay,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiMonth,
     tuiNullableSame,
@@ -85,23 +84,18 @@ export class TuiInputDateTimeComponent
     private month: TuiMonth | null = null;
 
     @Input()
-    @tuiDefaultProp()
     min: TuiDay | [TuiDay, TuiTime] = this.options.min;
 
     @Input()
-    @tuiDefaultProp()
     max: TuiDay | [TuiDay, TuiTime] = this.options.max;
 
     @Input()
-    @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
     @Input()
-    @tuiDefaultProp()
     defaultActiveYearMonth = TuiMonth.currentLocal();
 
     @Input()
-    @tuiDefaultProp()
     timeMode: TuiTimeMode = 'HH:MM';
 
     open = false;

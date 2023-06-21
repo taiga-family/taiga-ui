@@ -18,7 +18,6 @@ import {
     TuiBooleanHandler,
     tuiDateClamp,
     TuiDay,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiHandler,
     TuiMonth,
@@ -57,19 +56,15 @@ export class TuiInputMonthComponent
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     @Input()
-    @tuiDefaultProp()
     min: TuiMonth = this.options.min;
 
     @Input()
-    @tuiDefaultProp()
     max: TuiMonth = this.options.max;
 
     @Input()
-    @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiMonth> = ALWAYS_FALSE_HANDLER;
 
     @Input()
-    @tuiDefaultProp()
     defaultActiveYear: TuiYear = TuiDay.currentLocal();
 
     activeYear?: TuiYear;

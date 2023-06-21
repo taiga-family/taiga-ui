@@ -17,7 +17,6 @@ import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     tuiIsNativeFocusedIn,
     tuiPure,
 } from '@taiga-ui/cdk';
@@ -62,12 +61,10 @@ export class TuiPrimitiveTextfieldComponent
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
     @Input()
-    @tuiDefaultProp()
     editable = true;
 
     /** @deprecated use `tuiTextfieldFiller` from {@link TuiTextfieldControllerModule} instead */
     @Input('filler')
-    @tuiDefaultProp()
     textfieldFiller = '';
 
     /**
@@ -75,34 +72,27 @@ export class TuiPrimitiveTextfieldComponent
      * use `tuiTextfieldOptionsProvider({iconCleaner: `tuiIconChevronUp`})`
      */
     @Input()
-    @tuiDefaultProp()
     iconCleaner = this.options.iconCleaner;
 
     @Input()
     @HostBinding('class._readonly')
-    @tuiDefaultProp()
     readOnly = false;
 
     @Input()
-    @tuiDefaultProp()
     invalid = false;
 
     @Input()
-    @tuiDefaultProp()
     disabled = false;
 
     /** @deprecated use `tuiTextfieldPrefix` from {@link TuiTextfieldControllerModule} instead */
     @Input('prefix')
-    @tuiDefaultProp()
     textfieldPrefix = '';
 
     /** @deprecated use `tuiTextfieldPostfix` from {@link TuiTextfieldControllerModule} instead */
     @Input('postfix')
-    @tuiDefaultProp()
     textfieldPostfix = '';
 
     @Input()
-    @tuiDefaultProp()
     value = '';
 
     @Output()

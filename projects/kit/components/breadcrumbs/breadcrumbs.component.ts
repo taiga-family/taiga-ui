@@ -8,7 +8,7 @@ import {
     QueryList,
     TemplateRef,
 } from '@angular/core';
-import {EMPTY_QUERY, tuiDefaultProp, TuiItemDirective} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiItemDirective} from '@taiga-ui/cdk';
 import {TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
 
 @Component({
@@ -26,7 +26,6 @@ import {TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
 export class TuiBreadcrumbsComponent extends TuiModeDirective {
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeL = 'm';
 
     @ContentChildren(TuiItemDirective, {read: TemplateRef})

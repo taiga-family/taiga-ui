@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
@@ -13,21 +12,17 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 })
 export class TuiIslandComponent {
     @Input()
-    @tuiDefaultProp()
     size: TuiSizeL | TuiSizeS = 'm';
 
     @Input()
-    @tuiDefaultProp()
     textAlign: 'center' | 'left' | 'right' = 'left';
 
     @Input()
     @HostBinding('class.tui-island_hoverable')
-    @tuiDefaultProp()
     hoverable = false;
 
     @Input()
     @HostBinding('class.tui-island_transparent')
-    @tuiDefaultProp()
     transparent = false;
 
     @HostBinding('class.tui-island_size_s')

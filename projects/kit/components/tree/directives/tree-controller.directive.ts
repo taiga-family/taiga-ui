@@ -1,5 +1,5 @@
 import {Directive, EventEmitter, Input, Output} from '@angular/core';
-import {tuiDefaultProp, tuiIsPresent} from '@taiga-ui/cdk';
+import {tuiIsPresent} from '@taiga-ui/cdk';
 
 import {TuiTreeItemComponent} from '../components/tree-item/tree-item.component';
 import {TuiTreeAccessor, TuiTreeController} from '../misc/tree.interfaces';
@@ -23,11 +23,9 @@ export class TuiTreeControllerDirective<T>
     implements TuiTreeController, TuiTreeAccessor<T>
 {
     @Input('tuiTreeController')
-    @tuiDefaultProp()
     fallback = true;
 
     @Input()
-    @tuiDefaultProp()
     map = new Map<T, boolean>();
 
     @Output()

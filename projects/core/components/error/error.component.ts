@@ -6,7 +6,7 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {tuiDefaultProp, tuiIsString, TuiValidationError} from '@taiga-ui/cdk';
+import {tuiIsString, TuiValidationError} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse} from '@taiga-ui/core/animations';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {
@@ -27,7 +27,6 @@ import {Observable} from 'rxjs';
 })
 export class TuiErrorComponent {
     @Input('error')
-    @tuiDefaultProp()
     set errorSetter(error: TuiValidationError | string | null) {
         this.error = tuiIsString(error) ? new TuiValidationError(error) : error;
     }

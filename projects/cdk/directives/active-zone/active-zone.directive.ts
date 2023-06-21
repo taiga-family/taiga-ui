@@ -9,7 +9,7 @@ import {
     Output,
     SkipSelf,
 } from '@angular/core';
-import {tuiDefaultProp, tuiPure} from '@taiga-ui/cdk/decorators';
+import {tuiPure} from '@taiga-ui/cdk/decorators';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_ACTIVE_ELEMENT} from '@taiga-ui/cdk/tokens';
 import {tuiArrayRemove} from '@taiga-ui/cdk/utils';
@@ -27,7 +27,6 @@ export class TuiActiveZoneDirective implements OnDestroy {
     private tuiActiveZoneParent: TuiActiveZoneDirective | null = null;
 
     @Input('tuiActiveZoneParent')
-    @tuiDefaultProp()
     set tuiActiveZoneParentSetter(zone: TuiActiveZoneDirective | null) {
         this.setZone(zone);
     }

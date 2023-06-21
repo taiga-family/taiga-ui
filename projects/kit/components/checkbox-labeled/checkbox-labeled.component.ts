@@ -14,7 +14,6 @@ import {
     AbstractTuiNullableControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     TuiNativeFocusableElement,
@@ -47,7 +46,6 @@ export class TuiCheckboxLabeledComponent
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeL = this.options.size;
 
     constructor(

@@ -12,12 +12,7 @@ import {
     Self,
     TemplateRef,
 } from '@angular/core';
-import {
-    TuiContextWithImplicit,
-    tuiDefaultProp,
-    TuiEventWith,
-    tuiIsNativeFocused,
-} from '@taiga-ui/cdk';
+import {TuiContextWithImplicit, TuiEventWith, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiDataListHost} from '@taiga-ui/core/interfaces';
 import {TUI_DATA_LIST_HOST, TUI_OPTION_CONTENT} from '@taiga-ui/core/tokens';
@@ -47,16 +42,13 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
     /** @deprecated use size on {@link TuiDataListComponent} instead */
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeL | TuiSizeXS | null = null;
 
     @Input()
     @HostBinding('attr.role')
-    @tuiDefaultProp()
     role: TuiOptionRole = 'option';
 
     @Input()
-    @tuiDefaultProp()
     disabled = false;
 
     @Input()

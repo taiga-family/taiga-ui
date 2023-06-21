@@ -21,7 +21,7 @@ import {
     TUI_EDITOR_OPTIONS,
     TuiEditorOptions,
 } from '@taiga-ui/addon-editor/tokens';
-import {tuiDefaultProp, TuiInjectionTokenType, tuiIsElement} from '@taiga-ui/cdk';
+import {TuiInjectionTokenType, tuiIsElement} from '@taiga-ui/cdk';
 
 import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
 
@@ -63,7 +63,6 @@ export class TuiEditLinkComponent {
     }
 
     @Input()
-    @tuiDefaultProp()
     set anchorMode(mode: boolean) {
         this.isOnlyAnchorMode = mode;
         this.prefix = mode ? TUI_EDITOR_LINK_HASH_PREFIX : this.makeDefaultPrefix();

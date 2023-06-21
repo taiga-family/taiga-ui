@@ -6,12 +6,7 @@ import {
     QueryList,
     ViewChildren,
 } from '@angular/core';
-import {
-    EMPTY_QUERY,
-    tuiDefaultProp,
-    tuiIsNativeFocused,
-    tuiIsPresent,
-} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, tuiIsNativeFocused, tuiIsPresent} from '@taiga-ui/cdk';
 import {
     TuiOptionComponent,
     TuiSizeL,
@@ -27,7 +22,6 @@ export abstract class AbstractTuiDataListWrapper<T> {
     protected readonly optionsQuery: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
 
     @Input()
-    @tuiDefaultProp()
     disabledItemHandler: TuiItemsHandlers<T>['disabledItemHandler'] =
         this.itemsHandlers.disabledItemHandler;
 
@@ -35,7 +29,6 @@ export abstract class AbstractTuiDataListWrapper<T> {
     emptyContent: PolymorpheusContent;
 
     @Input()
-    @tuiDefaultProp()
     size: TuiSizeL | TuiSizeXS = this.defaultSize;
 
     constructor(

@@ -1,5 +1,5 @@
 import {Directive, Inject, Input} from '@angular/core';
-import {tuiDefaultProp, TuiHoveredService} from '@taiga-ui/cdk';
+import {TuiHoveredService} from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {merge, Observable, of, Subject} from 'rxjs';
 import {delay, share, switchMap, tap} from 'rxjs/operators';
@@ -26,11 +26,9 @@ export class TuiDropdownHoverDirective extends TuiDriver {
     );
 
     @Input('tuiDropdownShowDelay')
-    @tuiDefaultProp()
     showDelay = this.options.showDelay;
 
     @Input('tuiDropdownHideDelay')
-    @tuiDefaultProp()
     hideDelay = this.options.hideDelay;
 
     hovered = false;

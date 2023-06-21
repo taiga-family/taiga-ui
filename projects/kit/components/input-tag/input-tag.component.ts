@@ -28,7 +28,6 @@ import {
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiGetActualTarget,
     tuiGetClipboardDataText,
@@ -110,19 +109,15 @@ export class TuiInputTagComponent
     private readonly scrollBar?: ElementRef<HTMLElement>;
 
     @Input()
-    @tuiDefaultProp()
     separator: RegExp | string = this.options.separator;
 
     @Input()
-    @tuiDefaultProp()
     search = '';
 
     @Input()
-    @tuiDefaultProp()
     editable = true;
 
     @Input()
-    @tuiDefaultProp()
     tagValidator:
         | TuiBooleanHandler<string>
         | TuiBooleanHandler<TuiStringifiableItem<unknown> | string> = ALWAYS_TRUE_HANDLER;
@@ -130,34 +125,27 @@ export class TuiInputTagComponent
     // TODO: 4.0 Consider removing and use rows = 1 instead
     @Input()
     @HostBinding('class._expandable')
-    @tuiDefaultProp()
     expandable = true;
 
     @Input()
     rows = Infinity;
 
     @Input()
-    @tuiDefaultProp()
     inputHidden = false;
 
     @Input()
-    @tuiDefaultProp()
     uniqueTags = this.options.uniqueTags;
 
     @Input()
-    @tuiDefaultProp()
     maxLength: number | null = null;
 
     @Input()
-    @tuiDefaultProp()
     placeholder = '';
 
     @Input()
-    @tuiDefaultProp()
     removable = true;
 
     @Input()
-    @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiStringifiableItem<any> | string> =
         ALWAYS_FALSE_HANDLER;
 

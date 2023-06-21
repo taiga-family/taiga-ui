@@ -8,7 +8,6 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
 import {tuiPx} from '@taiga-ui/cdk/utils/format';
 
 import {TuiResizeableDirective} from './resizeable.directive';
@@ -20,7 +19,6 @@ import {TuiResizeableDirective} from './resizeable.directive';
 })
 export class TuiResizerDirective {
     @Input()
-    @tuiDefaultProp()
     tuiResizer: readonly [x: number, y: number] = [0, 0];
 
     @Output()

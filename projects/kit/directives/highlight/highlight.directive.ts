@@ -1,12 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, Inject, Input, OnChanges, Renderer2} from '@angular/core';
-import {
-    svgNodeFilter,
-    tuiDefaultProp,
-    TuiDestroyService,
-    tuiPx,
-    TuiResizeService,
-} from '@taiga-ui/cdk';
+import {svgNodeFilter, TuiDestroyService, tuiPx, TuiResizeService} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 
 @Directive({
@@ -27,7 +21,6 @@ export class TuiHighlightDirective implements OnChanges {
     );
 
     @Input()
-    @tuiDefaultProp()
     tuiHighlight = '';
 
     @Input()

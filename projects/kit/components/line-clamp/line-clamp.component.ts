@@ -13,13 +13,7 @@ import {
     Renderer2,
     ViewChild,
 } from '@angular/core';
-import {
-    tuiDefaultProp,
-    tuiIsCurrentTarget,
-    tuiPx,
-    tuiTypedFromEvent,
-    tuiZonefree,
-} from '@taiga-ui/cdk';
+import {tuiIsCurrentTarget, tuiPx, tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
 import {TUI_HINT_COMPONENT, TuiHintDirective} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable, of, Subject, timer} from 'rxjs';
@@ -56,13 +50,11 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
     private initialized = false;
 
     @Input()
-    @tuiDefaultProp()
     set linesLimit(linesLimit: number) {
         this.linesLimit$.next(linesLimit);
     }
 
     @Input()
-    @tuiDefaultProp()
     lineHeight = 24;
 
     @Input()

@@ -6,7 +6,6 @@ import {
     TUI_EDITOR_TOOLBAR_TEXTS,
     TuiEditorOptions,
 } from '@taiga-ui/addon-editor/tokens';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {combineLatest, Observable} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
@@ -19,7 +18,6 @@ import {distinctUntilChanged, map} from 'rxjs/operators';
 })
 export class TuiTableCellColorComponent {
     @Input()
-    @tuiDefaultProp()
     colors: ReadonlyMap<string, string> = this.defaultOptions.colors;
 
     readonly colorText$ = this.texts$.pipe(

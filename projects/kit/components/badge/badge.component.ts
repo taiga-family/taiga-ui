@@ -5,7 +5,7 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {tuiDefaultProp, tuiIsNumber, tuiIsPresent} from '@taiga-ui/cdk';
+import {tuiIsNumber, tuiIsPresent} from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
     TUI_MODE,
@@ -33,17 +33,14 @@ export class TuiBadgeComponent {
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeL | TuiSizeXS = 'm';
 
     @Input()
     @HostBinding('attr.data-status')
-    @tuiDefaultProp()
     status: TuiStatus = 'default';
 
     @Input()
     @HostBinding('class._hoverable')
-    @tuiDefaultProp()
     hoverable = false;
 
     constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}

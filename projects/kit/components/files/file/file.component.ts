@@ -8,12 +8,7 @@ import {
     Output,
 } from '@angular/core';
 import {DomSanitizer, SafeValue} from '@angular/platform-browser';
-import {
-    tuiDefaultProp,
-    TuiInjectionTokenType,
-    tuiIsObserved,
-    tuiPure,
-} from '@taiga-ui/cdk';
+import {TuiInjectionTokenType, tuiIsObserved, tuiPure} from '@taiga-ui/cdk';
 import {TuiSizeL} from '@taiga-ui/core';
 import {TuiLanguage} from '@taiga-ui/i18n';
 import {TuiFileLike} from '@taiga-ui/kit/interfaces';
@@ -33,23 +28,18 @@ import {TUI_FILE_OPTIONS} from './file-options';
 })
 export class TuiFileComponent {
     @Input()
-    @tuiDefaultProp()
     file: TuiFileLike = {name: ''};
 
     @Input()
-    @tuiDefaultProp()
     state: TuiFileState = 'normal';
 
     @Input()
-    @tuiDefaultProp()
     size: TuiSizeL = 'm';
 
     @Input()
-    @tuiDefaultProp()
     showDelete = true;
 
     @Input()
-    @tuiDefaultProp()
     showSize = true;
 
     @Input()

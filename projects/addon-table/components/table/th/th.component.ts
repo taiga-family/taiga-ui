@@ -9,7 +9,7 @@ import {
     Optional,
 } from '@angular/core';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
-import {tuiDefaultProp, tuiDefaultSort, TuiTableSortKeyException} from '@taiga-ui/cdk';
+import {tuiDefaultSort, TuiTableSortKeyException} from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 
 import {TuiHeadDirective} from '../directives/head.directive';
@@ -29,18 +29,15 @@ import {TuiTableDirective} from '../directives/table.directive';
 })
 export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
     @Input()
-    @tuiDefaultProp()
     sorter: TuiComparator<T> | null = this.head
         ? (a, b) => tuiDefaultSort(a[this.key], b[this.key])
         : null;
 
     @Input()
-    @tuiDefaultProp()
     resizable = false;
 
     @Input()
     @HostBinding('class._sticky')
-    @tuiDefaultProp()
     sticky = false;
 
     @HostBinding('style.width.px')

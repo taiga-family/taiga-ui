@@ -8,7 +8,7 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import {AbstractTuiInteractive, tuiDefaultProp, tuiIsNativeFocused} from '@taiga-ui/cdk';
+import {AbstractTuiInteractive, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core/enums';
 import {TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 import {Observable} from 'rxjs';
@@ -24,19 +24,15 @@ export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
     private readonly wrapper?: ElementRef<HTMLElement>;
 
     @Input()
-    @tuiDefaultProp()
     disabled = false;
 
     @Input()
-    @tuiDefaultProp()
     mode: TuiAppearance = TuiAppearance.Flat;
 
     @Input()
-    @tuiDefaultProp()
     leftDisabled = false;
 
     @Input()
-    @tuiDefaultProp()
     rightDisabled = false;
 
     @Output()

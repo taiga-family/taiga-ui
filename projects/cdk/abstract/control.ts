@@ -13,7 +13,6 @@ import {
 import {AbstractControl, ControlValueAccessor, NgControl, NgModel} from '@angular/forms';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
-import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
 import {TuiControlValueTransformer} from '@taiga-ui/cdk/interfaces';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils';
 import {merge, Subject} from 'rxjs';
@@ -51,11 +50,9 @@ export abstract class AbstractTuiControl<T>
 
     @Input()
     @HostBinding(`class._readonly`)
-    @tuiDefaultProp()
     readOnly = false;
 
     @Input()
-    @tuiDefaultProp()
     pseudoInvalid: boolean | null = null;
 
     constructor(

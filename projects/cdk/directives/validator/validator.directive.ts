@@ -8,7 +8,6 @@ import {
     Validators,
 } from '@angular/forms';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
-import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
 
 @Directive({
     selector: '[tuiValidator]',
@@ -24,7 +23,6 @@ export class TuiValidatorDirective implements Validator, OnChanges, OnDestroy {
     private onChange = EMPTY_FUNCTION;
 
     @Input()
-    @tuiDefaultProp()
     tuiValidator: ValidatorFn = Validators.nullValidator;
 
     validate(control: AbstractControl): ValidationErrors | null {

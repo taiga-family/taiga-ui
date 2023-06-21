@@ -1,5 +1,4 @@
 import {Directive, EventEmitter, HostBinding, Input, Output} from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk/decorators';
 
 const TUI = `tui_interactive_`;
 
@@ -17,26 +16,21 @@ export abstract class AbstractTuiInteractive {
     private readonly autoIdString: string;
 
     @Input()
-    @tuiDefaultProp()
     pseudoHover: boolean | null = null;
 
     @Input()
-    @tuiDefaultProp()
     pseudoActive: boolean | null = null;
 
     @Input()
-    @tuiDefaultProp()
     pseudoFocus: boolean | null = null;
 
     /**
      * Determines if component is focusable with keyboard.
      */
     @Input()
-    @tuiDefaultProp()
     focusable = true;
 
     @Input()
-    @tuiDefaultProp()
     nativeId = ``;
 
     /**

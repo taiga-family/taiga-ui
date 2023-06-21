@@ -19,7 +19,6 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiInputMode,
     TuiMapper,
@@ -65,19 +64,15 @@ export class TuiInputNumberComponent
     private unfinishedValue: string | null = '';
 
     @Input()
-    @tuiDefaultProp()
     min = this.options.min;
 
     @Input()
-    @tuiDefaultProp()
     max = this.options.max;
 
     @Input()
-    @tuiDefaultProp()
     decimal = this.options.decimal;
 
     @Input()
-    @tuiDefaultProp()
     precision = this.options.precision;
 
     @Input()
@@ -85,12 +80,10 @@ export class TuiInputNumberComponent
 
     /** @deprecated use `tuiTextfieldPrefix` from {@link TuiTextfieldControllerModule} instead */
     @Input()
-    @tuiDefaultProp()
     prefix = '';
 
     /** @deprecated use `tuiTextfieldPostfix` from {@link TuiTextfieldControllerModule} instead */
     @Input()
-    @tuiDefaultProp()
     postfix = '';
 
     @ContentChildren(PolymorpheusOutletDirective, {descendants: true})

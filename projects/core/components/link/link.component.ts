@@ -10,7 +10,6 @@ import {
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
     tuiAsFocusableItemAccessor,
-    tuiDefaultProp,
     TuiDestroyService,
     TuiFocusableElementAccessor,
     TuiFocusVisibleService,
@@ -44,25 +43,20 @@ import {map} from 'rxjs/operators';
 export class TuiLinkComponent implements TuiFocusableElementAccessor {
     @Input()
     @HostBinding('class._pseudo')
-    @tuiDefaultProp()
     pseudo = false;
 
     @Input()
-    @tuiDefaultProp()
     icon = '';
 
     @Input()
-    @tuiDefaultProp()
     iconAlign: TuiHorizontalDirection = 'right';
 
     @Input()
     @HostBinding('class._icon-rotated')
-    @tuiDefaultProp()
     iconRotated = false;
 
     @Input()
     @HostBinding('attr.data-host-mode')
-    @tuiDefaultProp()
     mode: 'negative' | 'positive' | null = null;
 
     @HostBinding('class._focus-visible')

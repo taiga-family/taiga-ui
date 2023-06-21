@@ -16,7 +16,6 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     tuiIsPresent,
@@ -62,29 +61,23 @@ export class TuiInputCountComponent
     private readonly inputNumber?: TuiInputNumberComponent;
 
     @Input()
-    @tuiDefaultProp()
     step = this.options.step;
 
     @Input()
-    @tuiDefaultProp()
     min = this.options.min;
 
     @Input()
-    @tuiDefaultProp()
     max = this.options.max;
 
     @Input()
-    @tuiDefaultProp()
     hideButtons = this.options.hideButtons;
 
     /** @deprecated use `tuiTextfieldPrefix` from {@link TuiTextfieldControllerModule} instead */
     @Input()
-    @tuiDefaultProp()
     prefix = '';
 
     /** @deprecated use `tuiTextfieldPostfix` from {@link TuiTextfieldControllerModule} instead */
     @Input()
-    @tuiDefaultProp()
     postfix = this.options.postfix;
 
     constructor(

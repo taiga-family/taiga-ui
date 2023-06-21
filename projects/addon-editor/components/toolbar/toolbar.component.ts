@@ -30,7 +30,6 @@ import {
 import {
     EMPTY_QUERY,
     tuiAssert,
-    tuiDefaultProp,
     TuiDestroyService,
     TuiHandler,
     TuiInjectionTokenType,
@@ -61,12 +60,10 @@ export class TuiToolbarComponent {
     private readonly navigationManager?: TuiToolbarNavigationManagerDirective;
 
     @Input()
-    @tuiDefaultProp()
     colors: ReadonlyMap<string, string> = this.defaultOptions.colors;
 
     @Input()
     @HostBinding('class._disabled')
-    @tuiDefaultProp()
     disabled = false;
 
     @Output()
@@ -83,7 +80,6 @@ export class TuiToolbarComponent {
     toolsSet = new Set<TuiEditorTool>(defaultEditorTools);
 
     @Input()
-    @tuiDefaultProp(toolsAssertion, 'Attach and TeX are not yet implemented in Editor')
     set tools(value: readonly TuiEditorTool[]) {
         this.toolsSet = new Set(value);
     }
@@ -326,8 +322,4 @@ export class TuiToolbarComponent {
             lastButton.focus();
         }
     }
-}
-
-function toolsAssertion(tools: readonly TuiEditorTool[]): boolean {
-    return !tools.includes(TuiEditorTool.Tex) && !tools.includes(TuiEditorTool.Attach);
 }

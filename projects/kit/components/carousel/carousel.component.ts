@@ -17,7 +17,6 @@ import {
     EMPTY_QUERY,
     TUI_IS_MOBILE,
     tuiClamp,
-    tuiDefaultProp,
     TuiItemDirective,
     tuiPure,
     TuiSwipeDirection,
@@ -34,15 +33,12 @@ export class TuiCarouselComponent {
 
     @Input()
     @HostBinding('class._draggable')
-    @tuiDefaultProp()
     draggable = false;
 
     @Input()
-    @tuiDefaultProp()
     itemsCount = 1;
 
     @Input()
-    @tuiDefaultProp()
     index = 0;
 
     @Output()

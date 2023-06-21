@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/utils';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 
 const icons: Record<TuiPaymentSystem, string> = {
@@ -20,27 +19,19 @@ const icons: Record<TuiPaymentSystem, string> = {
 export class TuiCardComponent {
     @Input()
     @HostBinding('class._active')
-    @tuiDefaultProp()
     active = false;
 
     @Input()
-    @tuiDefaultProp()
     brandLogo = '';
 
     @Input()
-    @tuiDefaultProp(
-        ({length}: string) => !length || length === 4,
-        'cardNumber should contain 4 symbols',
-    )
     cardNumber = '';
 
     @Input()
-    @tuiDefaultProp()
     paymentSystem: TuiPaymentSystem | null = null;
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeS = 'm';
 
     get hasBrandLogo(): boolean {

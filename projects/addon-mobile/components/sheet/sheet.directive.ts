@@ -6,7 +6,7 @@ import {
     Output,
     TemplateRef,
 } from '@angular/core';
-import {tuiDefaultProp, tuiIfMap, tuiRequiredSetter} from '@taiga-ui/cdk';
+import {tuiIfMap} from '@taiga-ui/cdk';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {Subject} from 'rxjs';
 import {endWith, ignoreElements, share} from 'rxjs/operators';
@@ -22,11 +22,9 @@ export class TuiSheetDirective extends PolymorpheusTemplate<TuiSheet<never>> {
     private readonly open$ = new Subject<boolean>();
 
     @Input('tuiSheetOptions')
-    @tuiDefaultProp()
     options: Partial<TuiSheetOptions> = {};
 
     @Input()
-    @tuiRequiredSetter()
     set tuiSheet(open: boolean) {
         this.open$.next(open);
     }

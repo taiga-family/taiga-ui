@@ -8,7 +8,7 @@ import {
     NgZone,
 } from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
-import {tuiDefaultProp, tuiZonefree} from '@taiga-ui/cdk';
+import {tuiZonefree} from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
 import {asCallable} from '@tinkoff/ng-event-plugins';
 import {Observable, of, ReplaySubject} from 'rxjs';
@@ -40,7 +40,6 @@ export class TuiUnderlineComponent {
     );
 
     @Input()
-    @tuiDefaultProp()
     set element(element: HTMLElement | null) {
         this.el$.next(element);
     }

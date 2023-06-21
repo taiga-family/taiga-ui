@@ -20,7 +20,6 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
-    tuiDefaultProp,
     TuiIdentityMatcher,
     tuiIsNativeFocusedIn,
     TuiNativeFocusableElement,
@@ -45,25 +44,20 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
         EMPTY_QUERY;
 
     @Input()
-    @tuiDefaultProp()
     items: readonly T[] = [];
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeL = 'm';
 
     @Input()
-    @tuiDefaultProp()
     identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
 
     @Input()
     @HostBinding('attr.data-orientation')
-    @tuiDefaultProp()
     orientation: TuiOrientation = 'vertical';
 
     @Input()
-    @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<T> = ALWAYS_FALSE_HANDLER;
 
     constructor(

@@ -10,7 +10,7 @@ import {
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
-import {EMPTY_QUERY, tuiDefaultProp, TuiItemDirective} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiItemDirective} from '@taiga-ui/cdk';
 import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 
@@ -26,7 +26,6 @@ export class TuiFilesComponent {
     readonly items: QueryList<TemplateRef<Record<string, unknown>>> = EMPTY_QUERY;
 
     @Input()
-    @tuiDefaultProp()
     max = 0;
 
     @Input()

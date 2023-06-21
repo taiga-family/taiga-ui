@@ -9,12 +9,7 @@ import {
 } from '@angular/core';
 import {TuiTouchMode} from '@taiga-ui/addon-mobile/types';
 import {tuiFindTouchIndex} from '@taiga-ui/addon-mobile/utils';
-import {
-    TUI_IS_IOS,
-    tuiDefaultProp,
-    TuiDestroyService,
-    tuiTypedFromEvent,
-} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, TuiDestroyService, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 import {race} from 'rxjs';
 import {filter, map, switchMap, take, takeUntil, tap} from 'rxjs/operators';
@@ -31,7 +26,6 @@ const STYLE = {
 })
 export class TuiTouchableDirective {
     @Input()
-    @tuiDefaultProp()
     tuiTouchable: TuiTouchMode | '' = '';
 
     constructor(

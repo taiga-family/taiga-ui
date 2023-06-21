@@ -1,5 +1,4 @@
 import {Directive, Input} from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
 
 import {TuiTreeItemComponent} from '../components/tree-item/tree-item.component';
 import {TuiTreeController} from '../misc/tree.interfaces';
@@ -19,7 +18,6 @@ export class TuiTreeItemControllerDirective implements TuiTreeController {
     private readonly map = new WeakMap<TuiTreeItemComponent, boolean>();
 
     @Input('tuiTreeController')
-    @tuiDefaultProp()
     fallback = true;
 
     isExpanded(item: TuiTreeItemComponent): boolean {

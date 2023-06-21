@@ -11,7 +11,6 @@ import {
 import {SafeValue} from '@angular/platform-browser';
 import {
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiIdService,
     tuiPure,
     tuiSum,
@@ -52,20 +51,16 @@ export class TuiPieChartComponent {
     private readonly autoIdString: string;
 
     @Input()
-    @tuiDefaultProp()
     value: readonly number[] = [];
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeXL | TuiSizeXS = 'm';
 
     @Input()
-    @tuiDefaultProp()
     masked = false;
 
     @Input()
-    @tuiDefaultProp()
     activeItemIndex = NaN;
 
     @Output()

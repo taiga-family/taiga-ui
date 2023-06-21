@@ -17,7 +17,6 @@ import {
     AbstractTuiControl,
     EMPTY_QUERY,
     tuiClamp,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocusedIn,
     TuiNativeFocusableElement,
@@ -47,31 +46,22 @@ export class TuiRangeComponent
     implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor
 {
     @Input()
-    @tuiDefaultProp()
     min = 0;
 
     @Input()
-    @tuiDefaultProp()
     max = 100;
 
     @Input()
-    @tuiDefaultProp(s => s > 0, 'Step must be a non-negative number')
     step = 1;
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeS = 'm';
 
     @Input()
-    @tuiDefaultProp(
-        s => s > 0 && Number.isInteger(s),
-        'Segments must be positive integer',
-    )
     segments = 1;
 
     @Input()
-    @tuiDefaultProp()
     keySteps: TuiKeySteps | null = null;
 
     @ViewChildren(TuiSliderComponent, {read: ElementRef})

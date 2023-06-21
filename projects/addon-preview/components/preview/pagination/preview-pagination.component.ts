@@ -7,7 +7,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiClamp, tuiDefaultProp} from '@taiga-ui/cdk';
+import {tuiClamp} from '@taiga-ui/cdk';
 import {TuiLanguageKit} from '@taiga-ui/i18n';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
@@ -20,11 +20,9 @@ import {Observable} from 'rxjs';
 })
 export class TuiPreviewPaginationComponent {
     @Input()
-    @tuiDefaultProp()
     length = 1;
 
     @Input()
-    @tuiDefaultProp()
     index = 0;
 
     @Output()

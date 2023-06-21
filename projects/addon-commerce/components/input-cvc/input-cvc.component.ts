@@ -16,10 +16,8 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiAutofillFieldName,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
-    tuiRequiredSetter,
 } from '@taiga-ui/cdk';
 import {
     TUI_DIGIT_REGEXP,
@@ -46,11 +44,9 @@ export class TuiInputCVCComponent
     private readonly input?: TuiPrimitiveTextfieldComponent;
 
     @Input()
-    @tuiDefaultProp()
     autocompleteEnabled = false;
 
     @Input()
-    @tuiRequiredSetter()
     set length(length: TuiCodeCVCLength) {
         this.exampleText = '0'.repeat(length);
         this.maskOptions = {

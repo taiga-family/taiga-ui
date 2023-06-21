@@ -14,7 +14,6 @@ import {
     EMPTY_CLIENT_RECT,
     TUI_RANGE,
     TuiBooleanHandler,
-    tuiDefaultProp,
     tuiGetNativeFocused,
     tuiIsElement,
     tuiIsString,
@@ -74,7 +73,6 @@ export class TuiDropdownSelectionDirective
     private ghost?: HTMLElement;
 
     @Input('tuiDropdownSelectionPosition')
-    @tuiDefaultProp()
     position: 'selection' | 'tag' | 'word' = 'selection';
 
     @Input()
