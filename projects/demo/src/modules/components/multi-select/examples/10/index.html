@@ -1,6 +1,8 @@
+<span class="tui-text_body-l">Strings:</span>
+
 <tui-multi-select
-    class="b-form"
-    [formControl]="itemControl"
+    class="b-form tui-space_top-5"
+    [formControl]="itemStringControl"
     [tuiTextfieldLabelOutside]="true"
     [tuiTextfieldCleaner]="true"
     [tuiHintContent]="'hint'"
@@ -16,8 +18,8 @@
 </tui-multi-select>
 
 <tui-multi-select
-    class="b-form tui-space_top-5"
-    [formControl]="itemGroupControl"
+    class="b-form tui-space_vertical-5"
+    [formControl]="itemStringGroupControl"
     [tuiTextfieldLabelOutside]="true"
     [editable]="false"
     [disabledItemHandler]="disableHandler"
@@ -28,6 +30,43 @@
         tuiSelect
         multiple
         [items]="groupItems"
+        [labels]="labels"
+    ></select>
+</tui-multi-select>
+
+<span class="tui-text_body-l">Objects (stringify):</span>
+<tui-multi-select
+    class="b-form tui-space_top-5"
+    [stringify]="stringify"
+    [formControl]="itemControl"
+    [tuiTextfieldLabelOutside]="true"
+    [tuiTextfieldCleaner]="true"
+    [tuiHintContent]="'hint'"
+    [editable]="false"
+>
+    Star Wars persons
+
+    <select
+        tuiSelect
+        multiple
+        [items]="customItems"
+    ></select>
+</tui-multi-select>
+
+<tui-multi-select
+    class="b-form tui-space_top-5"
+    [stringify]="stringify"
+    [formControl]="itemGroupControl"
+    [tuiTextfieldLabelOutside]="true"
+    [editable]="false"
+    [disabledItemHandler]="disableItemHandler"
+>
+    Star Wars persons
+
+    <select
+        tuiSelect
+        multiple
+        [items]="customGroupItems"
         [labels]="labels"
     ></select>
 </tui-multi-select>
