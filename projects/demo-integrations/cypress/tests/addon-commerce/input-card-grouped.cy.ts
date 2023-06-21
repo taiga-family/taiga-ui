@@ -187,4 +187,31 @@ describe(`InputCardGrouped`, () => {
                 .matchImageSnapshot(`17-default-prefilled-state-input-card`);
         });
     });
+
+    it(`expired field should be clickable after reset of prefilled value`, () => {
+        cy.tuiVisit(`components/input-card-grouped#custom-labels`);
+
+        cy.get(`tui-doc-example[heading="Custom labels"]`)
+            .tuiScrollIntoView()
+            .as(`wrapper`);
+
+        cy.get(`@wrapper`).find(`tui-input-card-grouped`).as(`input-card-grouped`);
+
+        cy.get(`@input-card-grouped`)
+            .findByAutomationId(`tui-input-card-grouped__expire`)
+            .should(`have.css`, `pointer-events`, `none`);
+
+        cy.get(`@input-card-grouped`)
+            .find(`[src="tuiIconCloseLarge"]`)
+            .click({force: true});
+
+        cy.get(`@input-card-grouped`)
+            .findByAutomationId(`tui-input-card-grouped__card`)
+            .type(`5586200071492158`);
+
+        cy.get(`@input-card-grouped`)
+            .findByAutomationId(`tui-input-card-grouped__expire`)
+            .should(`have.css`, `pointer-events`, `auto`)
+            .type(`12/25`);
+    });
 });
