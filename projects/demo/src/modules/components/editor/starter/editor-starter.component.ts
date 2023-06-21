@@ -1,4 +1,4 @@
-import {Component, forwardRef} from '@angular/core';
+import {Component, forwardRef, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -8,6 +8,7 @@ import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditorTool,
 } from '@taiga-ui/addon-editor';
+import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
 
 import {AbstractExampleTuiControl} from '../../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../abstract/inherited-documentation/abstract-props-accessor';
@@ -48,4 +49,8 @@ export class ExampleEditorStarterComponent extends AbstractExampleTuiControl {
     ];
 
     tools = this.toolsVariants[0];
+
+    constructor(@Inject(TUI_IS_CYPRESS) readonly isCypress: boolean) {
+        super();
+    }
 }
