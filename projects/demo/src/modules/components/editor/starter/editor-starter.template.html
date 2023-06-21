@@ -6,7 +6,7 @@
     <ng-template pageTab="API">
         <tui-doc-demo [sticky]="false">
             <tui-editor
-                tuiAutoFocus
+                [tuiAutoFocus]="!isCypress"
                 [style.minHeight.px]="minHeight"
                 [style.maxHeight.px]="maxHeight"
                 [formControl]="control"
