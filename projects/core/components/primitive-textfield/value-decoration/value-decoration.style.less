@@ -1,11 +1,14 @@
+@import '../../../styles/taiga-ui-local.less';
+
 :host {
+    .text-overflow();
     position: absolute;
     display: block;
     width: 100%;
     line-height: var(--tui-height);
     margin-top: calc(var(--tui-height) / -2);
     box-sizing: content-box;
-    color: var(--tui-text-01);
+    color: var(--tui-text-03);
     animation: tuiPresent 1s;
     white-space: nowrap;
 
@@ -15,7 +18,7 @@
     }
 
     :host-context(tui-primitive-textfield [tuiWrapper][data-mode='onDark']) & {
-        color: var(--tui-text-01-night);
+        color: var(--tui-text-03-night);
     }
 
     :host-context(tui-primitive-textfield[data-size='m']:not(._label-outside)) & {
@@ -32,16 +35,16 @@
 .t-prefix,
 .t-postfix {
     white-space: pre;
+    color: var(--tui-text-01);
+
+    :host-context(tui-primitive-textfield [tuiWrapper][data-mode='onDark']) & {
+        color: var(--tui-text-01-night);
+    }
 }
 
 .t-filler {
     overflow: hidden;
-    color: var(--tui-text-03);
     text-overflow: ellipsis;
     max-width: 100%;
     white-space: nowrap;
-
-    :host-context(tui-primitive-textfield [tuiWrapper][data-mode='onDark']) & {
-        color: var(--tui-text-03-night);
-    }
 }
