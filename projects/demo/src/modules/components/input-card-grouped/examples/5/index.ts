@@ -21,8 +21,7 @@ import {of} from 'rxjs';
 })
 export class TuiInputCardGroupedExample5 {
     readonly control = new FormControl({
-        card: '22222222222222222',
-        expire: '02/22',
-        cvc: '222',
+        card: '558620******2158',
+        expire: '12/25',
     });
 }
