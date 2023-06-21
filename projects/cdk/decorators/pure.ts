@@ -58,7 +58,7 @@ function decorateGetter(
  *
  * @throws error if used not on getter or function
  *
- * CAUTION: `this` is not available inside such functions/getters, they must be pure.
+ * CAUTION: they must be pure.
  */
 export function tuiPure<T>(
     target: object,
@@ -71,7 +71,7 @@ export function tuiPure<T>(
  * Replaces getter with its calculated value upon first call or keeps track of last call arguments and returned
  * value for function, skipping calculation when arguments are strictly the same.
  *
- * CAUTION: `this` is not available inside such functions/getters, they must be pure.
+ * CAUTION: they must be pure.
  */
 export function tuiPure<A extends unknown[], R>(
     target: (...args: A) => R,
