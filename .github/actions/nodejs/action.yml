@@ -45,12 +45,6 @@ runs:
         node -v
         npm -v
 
-    - name: Purge old cache if package lock files are rebuilt
-      if: github.ref == 'refs/heads/main' && steps.cache-node-modules.outputs.cache-hit != 'true'
-      uses: ./.github/actions/cleanup-cache
-      with:
-        branch-name: ${{ github.ref }}
-
     - name: Clean install dependencies
       if: steps.cache-node-modules.outputs.cache-hit != 'true'
       run: npm ci
