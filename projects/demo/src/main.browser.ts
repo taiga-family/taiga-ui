@@ -1,4 +1,4 @@
-import {enableProdMode, NgModuleRef} from '@angular/core';
+import {enableProdMode} from '@angular/core';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {NgZoneOptionsCoalescing} from '@demo/emulate/ng-zone-options';
 
@@ -9,11 +9,6 @@ if (environment.production) {
     enableProdMode();
 }
 
-const bootstrap = async (): Promise<NgModuleRef<AppBrowserModule>> =>
-    platformBrowserDynamic().bootstrapModule(AppBrowserModule, NgZoneOptionsCoalescing);
-
-document.addEventListener(`DOMContentLoaded`, () => {
-    setTimeout(() => {
-        bootstrap().catch(err => console.error(err));
-    });
-});
+platformBrowserDynamic()
+    .bootstrapModule(AppBrowserModule, NgZoneOptionsCoalescing)
+    .catch(err => console.error(err));
