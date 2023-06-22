@@ -60,14 +60,16 @@ export class TuiPullToRefreshComponent {
         @Inject(TuiPullToRefreshService) readonly pulling$: Observable<number>,
     ) {
         // Ensure scrolling down is impossible while pulling
-        tuiScrollFrom(nativeElement)
-            .pipe(startWith(null), takeUntil(destroy$))
-            .subscribe(() => {
-                if (nativeElement.scrollTop) {
-                    nativeElement.style.touchAction = '';
-                } else {
-                    nativeElement.style.touchAction = 'pan-down';
-                }
-            });
+        if (this.component) {
+            tuiScrollFrom(nativeElement)
+                .pipe(startWith(null), takeUntil(destroy$))
+                .subscribe(() => {
+                    if (nativeElement.scrollTop) {
+                        nativeElement.style.touchAction = '';
+                    } else {
+                        nativeElement.style.touchAction = 'pan-down';
+                    }
+                });
+        }
     }
 }
