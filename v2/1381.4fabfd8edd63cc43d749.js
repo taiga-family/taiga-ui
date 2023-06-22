@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1381],{"7B80":function(n,t,e){"use strict";e.r(t),t.default='<tui-stepper\n    orientation="vertical"\n    class="stepper"\n    [activeItemIndex]="5"\n>\n    <button\n        *ngFor="let step of steps"\n        tuiStep\n    >\n        {{ step }}\n    </button>\n</tui-stepper>\n'}}]);
