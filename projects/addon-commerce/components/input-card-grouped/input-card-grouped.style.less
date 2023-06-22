@@ -117,8 +117,10 @@
         color: var(--tui-text-03-night);
     }
 
-    &_card,
-    :host[data-mode='onDark'] &_card {
+    &&&_card,
+    :host[data-mode='onDark'] &&&_card {
+        // @note: (&&&_) it's increasing css cascade priority
+        /* stylelint-disable selector-max-specificity */
         &:not(.t-input_hidden),
         &:not(.t-input_hidden)::placeholder,
         &:not(.t-input_hidden):-webkit-autofill {
