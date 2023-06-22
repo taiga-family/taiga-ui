@@ -4,6 +4,7 @@ import {
     ElementRef,
     Inject,
     Input,
+    NgZone,
     Output,
     Self,
 } from '@angular/core';
@@ -14,6 +15,7 @@ import {
     TuiDestroyService,
     TuiHandler,
     tuiScrollFrom,
+    tuiZonefree,
 } from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -51,6 +53,7 @@ export class TuiPullToRefreshComponent {
     );
 
     constructor(
+        @Inject(NgZone) ngZone: NgZone,
         @Inject(TuiDestroyService) @Self() destroy$: Observable<unknown>,
         @Inject(TUI_SCROLL_REF) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(TUI_IS_IOS) private readonly isIOS: boolean,
@@ -62,7 +65,7 @@ export class TuiPullToRefreshComponent {
         // Ensure scrolling down is impossible while pulling
         if (this.component) {
             tuiScrollFrom(nativeElement)
-                .pipe(startWith(null), takeUntil(destroy$))
+                .pipe(startWith(null), tuiZonefree(ngZone), takeUntil(destroy$))
                 .subscribe(() => {
                     if (nativeElement.scrollTop) {
                         nativeElement.style.touchAction = '';
