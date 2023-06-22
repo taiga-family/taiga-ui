@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.93.0](https://github.com/tinkoff/taiga-ui/compare/v2.92.0...v2.93.0) (2023-06-22)
+
+### Features
+
+- **layout:** `BlockStatus` add new component ([#4719](https://github.com/tinkoff/taiga-ui/issues/4719))
+  ([cd6fc80](https://github.com/tinkoff/taiga-ui/commit/cd6fc807e32d682f790e66ac428b7737fba28278))
+
+### Bug Fixes
+
+- **addon-mobile:** `PullToRefresh` properly disable when no component was provided
+  ([#4746](https://github.com/tinkoff/taiga-ui/issues/4746))
+  ([ebdc823](https://github.com/tinkoff/taiga-ui/commit/ebdc82335cd33c27a64c3dcd2a3b29e18323ad18))
+- **kit:** `LineClamp` fix `overflownChange` false positives ([#4724](https://github.com/tinkoff/taiga-ui/issues/4724))
+  ([923c59b](https://github.com/tinkoff/taiga-ui/commit/923c59b11343dedc2be14d01da17935dae0bc792))
+
 ## [2.92.0](https://github.com/tinkoff/taiga-ui/compare/v2.91.0...v2.92.0) (2023-06-19)
 
 ### Bug Fixes
