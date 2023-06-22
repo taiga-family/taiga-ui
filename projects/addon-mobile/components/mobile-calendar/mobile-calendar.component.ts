@@ -78,8 +78,8 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     private readonly monthsScrollRef?: CdkVirtualScrollViewport;
 
     private readonly today = TuiDay.currentLocal();
-    private activeYear = this.initialYear;
-    private activeMonth = this.initialMonth;
+    private activeYear = 0;
+    private activeMonth = 0;
 
     @Input()
     @tuiDefaultProp()
@@ -143,6 +143,9 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     }
 
     ngAfterViewInit(): void {
+        this.activeYear = this.initialYear;
+        this.activeMonth = this.initialMonth;
+
         // Virtual scroll has not yet rendered items even in ngAfterViewInit
         this.waitScrolledChange();
     }
