@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.33.0](https://github.com/tinkoff/taiga-ui/compare/v3.32.0...v3.33.0) (2023-06-22)
+
+### Features
+
+- **kit:** `InputMonth` add ability to use native picker on mobile
+  ([#4709](https://github.com/tinkoff/taiga-ui/issues/4709))
+  ([9827b6b](https://github.com/tinkoff/taiga-ui/commit/9827b6bbb09cebc1017332042218cccfd6efd9e9))
+
+### Bug Fixes
+
+- **addon-commerce:** expired field should be clickable after reset of prefilled value
+  ([#4740](https://github.com/tinkoff/taiga-ui/issues/4740))
+  ([9734127](https://github.com/tinkoff/taiga-ui/commit/973412711871843aa59af462202bd250771d3e47))
+- **addon-editor:** fix distance between toolbar and content without label
+  ([#4701](https://github.com/tinkoff/taiga-ui/issues/4701))
+  ([6f63bb8](https://github.com/tinkoff/taiga-ui/commit/6f63bb824959350dc7975b71d79d49a34a944bb3))
+- **addon-editor:** prevent erasing history on empty value ([#4721](https://github.com/tinkoff/taiga-ui/issues/4721))
+  ([7b77e9e](https://github.com/tinkoff/taiga-ui/commit/7b77e9e0d1076ce56db8d498a4cf8bb4bcc00cbe))
+- **addon-mobile:** `MobileTabs` update iOS design ([#4722](https://github.com/tinkoff/taiga-ui/issues/4722))
+  ([77a03fe](https://github.com/tinkoff/taiga-ui/commit/77a03fec2bc03c03f728ec53760b1bff27e812a3))
+- **addon-mobile:** `PullToRefresh` properly disable when no component was provided
+  ([#4745](https://github.com/tinkoff/taiga-ui/issues/4745))
+  ([f58c623](https://github.com/tinkoff/taiga-ui/commit/f58c623cb090523270816a40118d52a947eabe45))
+- **core:** `Dropdown` fix cyclic freeze ([#4750](https://github.com/tinkoff/taiga-ui/issues/4750))
+  ([4d8e6c9](https://github.com/tinkoff/taiga-ui/commit/4d8e6c9997e80e512b20bcf873c2990a1196a5a2))
+- **core:** `HintPointer` fix initial position ([#4708](https://github.com/tinkoff/taiga-ui/issues/4708))
+  ([b65208a](https://github.com/tinkoff/taiga-ui/commit/b65208af5e84f14012ab7475c11ce0b532e604f5))
+- **core:** `Textfield` fix label font size ([#4727](https://github.com/tinkoff/taiga-ui/issues/4727))
+  ([82bbd49](https://github.com/tinkoff/taiga-ui/commit/82bbd494f601518b072141f7f00e0a79e55d978b))
+- **kit:** `DataListWrapper` extend content to full width ([#4718](https://github.com/tinkoff/taiga-ui/issues/4718))
+  ([36656e6](https://github.com/tinkoff/taiga-ui/commit/36656e654449f8701ef4434778b0d39796693b58))
+
 ## [3.32.0](https://github.com/tinkoff/taiga-ui/compare/v3.31.1...v3.32.0) (2023-06-19)
 
 ### Features
