@@ -33,8 +33,11 @@
             </div>
         </ng-container>
 
-        <div class="form-block">
-            <ng-container *ngIf="iOS">
+        <div
+            *tuiLet="(loading$ | async) ?? false as loading"
+            class="form-block"
+        >
+            <ng-container *ngIf="iOS && loading">
                 <!-- hack: open keyboard on iOS before focus target card input -->
                 <!-- hack: use autocomplete/inputmode attrs if you want autofill in keyboard  -->
                 <input
@@ -47,28 +50,25 @@
                 <!-- required:
                     You don't need to use this hack for iOS if your input-card elements
                     already exist in DOM, because you don't need to wait for them asynchronously.
-
                     In our example we wait loading$ state before focus real card number / card cvc.
                 -->
             </ng-container>
 
-            <ng-container *tuiLet="(loading$ | async) ?? false as loading">
-                <p *ngIf="loading">Please wait, we are loading fake cards...</p>
+            <p *ngIf="loading">Please wait, we are loading fake cards...</p>
 
-                <tui-loader
-                    [overlay]="true"
-                    [showLoader]="loading"
-                >
-                    <tui-input-card-grouped
-                        #cardGroupedInput
-                        formControlName="card"
-                        [autocompleteEnabled]="true"
-                        [cardValidator]="cardValidator"
-                        [class.without-date]="paymentMode === PAYMENT_MODE.BySavedCard"
-                        [tuiTextfieldCleaner]="paymentMode === PAYMENT_MODE.ByNewCard"
-                    ></tui-input-card-grouped>
-                </tui-loader>
-            </ng-container>
+            <tui-loader
+                [overlay]="true"
+                [showLoader]="loading"
+            >
+                <tui-input-card-grouped
+                    #cardGroupedInput
+                    formControlName="card"
+                    [autocompleteEnabled]="true"
+                    [cardValidator]="cardValidator"
+                    [class.without-date]="paymentMode === PAYMENT_MODE.BySavedCard"
+                    [tuiTextfieldCleaner]="paymentMode === PAYMENT_MODE.ByNewCard"
+                ></tui-input-card-grouped>
+            </tui-loader>
         </div>
 
         <ng-container *ngIf="paymentMode === PAYMENT_MODE.ByNewCard">

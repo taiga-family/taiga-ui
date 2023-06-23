@@ -19,6 +19,7 @@ import {TuiIosAutofocusHandler} from './handlers/ios.handler';
 
 export interface TuiAutofocusHandler {
     setFocus(): void;
+    destroy?(): void;
 }
 
 export interface TuiAutofocusOptions {

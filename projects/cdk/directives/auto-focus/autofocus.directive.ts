@@ -1,4 +1,4 @@
-import {AfterViewInit, Directive, Inject, Input, Self} from '@angular/core';
+import {AfterViewInit, Directive, Inject, Input, OnDestroy, Self} from '@angular/core';
 import {tuiCoerceBooleanProperty} from '@taiga-ui/cdk/coercion';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {timer} from 'rxjs';
@@ -16,7 +16,7 @@ import {
     selector: '[tuiAutoFocus]',
     providers: TUI_AUTOFOCUS_PROVIDERS,
 })
-export class TuiAutoFocusDirective implements AfterViewInit {
+export class TuiAutoFocusDirective implements AfterViewInit, OnDestroy {
     @Input('tuiAutoFocus')
     autoFocus: boolean | '' = true;
 
@@ -34,6 +34,10 @@ export class TuiAutoFocusDirective implements AfterViewInit {
         if (tuiCoerceBooleanProperty(this.autoFocus)) {
             this.focus();
         }
+    }
+
+    ngOnDestroy(): void {
+        this.handler.destroy?.();
     }
 
     focus(): void {

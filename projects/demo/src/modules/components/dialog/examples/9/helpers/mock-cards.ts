@@ -3,8 +3,8 @@ import {AccountCard} from './models';
 export const MOCK_CARDS: AccountCard[] = [
     {
         cardId: `1`,
-        firstSix: `4242`,
-        lastFour: `4242`,
+        firstSix: `4263`,
+        lastFour: `9299`,
         cardType: `Visa`,
     },
     {

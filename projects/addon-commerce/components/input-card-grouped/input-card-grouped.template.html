@@ -20,12 +20,14 @@
             *tuiLet="value?.card | tuiFormatCard : cardPrefilled as formattedCard"
             tuiPreventDefault="click"
         >
+            <!-- Amazon/Netflix hack using name="addCreditCardNumber" for Safari -->
             <input
                 #inputCard
                 type="text"
                 automation-id="tui-input-card-grouped__card"
                 inputmode="numeric"
                 translate="no"
+                name="addCreditCardNumber"
                 class="t-input t-input_card"
                 [tuiAutoFocus]="false"
                 [class.t-input_inert]="cardPrefilled"

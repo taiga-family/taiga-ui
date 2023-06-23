@@ -29,6 +29,10 @@ const TEXTFIELD_ATTRS = [
 
 @Directive()
 export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
+    protected fakeEl?: HTMLInputElement;
+    protected fakeFocusTimeoutId = 0;
+    protected elementFocusTimeoutId = 0;
+
     constructor(
         @Optional()
         @Self()
@@ -51,39 +55,67 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         }
     }
 
+    destroy(): void {
+        this.fakeEl?.remove();
+        clearTimeout(this.fakeFocusTimeoutId);
+        clearTimeout(this.elementFocusTimeoutId);
+    }
+
     private iosWebkitAutofocus(): void {
-        const fakeInput: HTMLInputElement = this.makeFakeInput();
-        const duration = this.getDurationTimeBeforeFocus();
-        let fakeFocusTimeoutId = 0;
-        let elementFocusTimeoutId = 0;
+        this.destroy();
 
-        const blurHandler = (): void => fakeInput.focus({preventScroll: true});
+        this.fakeEl = this.makeFakeInput();
+
+        const blurHandler = (): void => this.fakeEl?.focus({preventScroll: true});
+
+        const inputHandler = (): void => {
+            const value = this.fakeEl?.value;
+
+            if (!value) {
+                return;
+            }
+
+            (this.element as HTMLInputElement).value = value;
+            this.element.dispatchEvent(new Event(`input`));
+            this.fakeEl?.remove();
+        };
+
+        const localDestroyHandler = (): void => {
+            this.fakeEl?.removeEventListener(`input`, inputHandler);
+            this.fakeEl?.remove();
+
+            this.element.removeEventListener(`blur`, localDestroyHandler);
+            this.element.removeEventListener(`input`, localDestroyHandler);
+        };
+
         const focusHandler = (): void => {
-            clearTimeout(fakeFocusTimeoutId);
+            clearTimeout(this.fakeFocusTimeoutId);
 
-            fakeFocusTimeoutId = this.win.setTimeout(() => {
-                clearTimeout(elementFocusTimeoutId);
+            this.fakeFocusTimeoutId = this.win.setTimeout(() => {
+                clearTimeout(this.elementFocusTimeoutId);
 
-                fakeInput.removeEventListener(`blur`, blurHandler);
-                fakeInput.removeEventListener(`focus`, focusHandler);
+                this.fakeEl?.removeEventListener(`blur`, blurHandler);
+                this.fakeEl?.removeEventListener(`focus`, focusHandler);
 
-                elementFocusTimeoutId = this.win.setTimeout(() => {
+                this.elementFocusTimeoutId = this.win.setTimeout(() => {
+                    this.element.addEventListener(`blur`, localDestroyHandler);
                     this.element.focus({preventScroll: false});
-                    fakeInput.remove();
-                }, duration);
+                }, this.getDurationTimeBeforeFocus());
             });
         };
 
-        fakeInput.addEventListener(`blur`, blurHandler, {once: true});
-        fakeInput.addEventListener(`focus`, focusHandler);
+        this.fakeEl.addEventListener(`blur`, blurHandler, {once: true});
+        this.fakeEl.addEventListener(`focus`, focusHandler);
+        this.fakeEl.addEventListener(`input`, inputHandler);
+        this.element.addEventListener(`input`, localDestroyHandler);
 
         if (this.insideDialog()) {
-            this.win.document.body.appendChild(fakeInput);
+            this.win.document.body.appendChild(this.fakeEl);
         } else {
-            this.element.parentElement?.appendChild(fakeInput);
+            this.element.parentElement?.appendChild(this.fakeEl);
         }
 
-        fakeInput.focus({preventScroll: true});
+        this.fakeEl.focus({preventScroll: true});
     }
 
     /**
