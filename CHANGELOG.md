@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.33.1](https://github.com/tinkoff/taiga-ui/compare/v3.33.0...v3.33.1) (2023-06-23)
+
+### Features
+
+- **kit:** `Multiselect` add ability to use objects in native select
+  ([#4733](https://github.com/tinkoff/taiga-ui/issues/4733))
+  ([88bc03d](https://github.com/tinkoff/taiga-ui/commit/88bc03d6e83633d8c839669faa030bd3dcb6b41a))
+
+### Bug Fixes
+
+- **addon-commerce:** hide input filler in dark mode ([#4756](https://github.com/tinkoff/taiga-ui/issues/4756))
+  ([f03187a](https://github.com/tinkoff/taiga-ui/commit/f03187a3794a014c41d91cbf20a62bf4358a41ae))
+- **addon-mobile:** `MobileCalendar` fix initial view ([#4755](https://github.com/tinkoff/taiga-ui/issues/4755))
+  ([aa0887c](https://github.com/tinkoff/taiga-ui/commit/aa0887c463640789acd293242b05c3fb9ccb43c3))
+
 ## [3.33.0](https://github.com/tinkoff/taiga-ui/compare/v3.32.0...v3.33.0) (2023-06-22)
 
 ### Features
