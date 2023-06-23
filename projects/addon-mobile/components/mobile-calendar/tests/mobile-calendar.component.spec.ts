@@ -1,5 +1,11 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {
+    ComponentFixture,
+    discardPeriodicTasks,
+    fakeAsync,
+    TestBed,
+    tick,
+} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     TuiMobileCalendarComponent,
@@ -12,6 +18,7 @@ import {
     TuiDay,
     TuiDayRange,
 } from '@taiga-ui/cdk';
+import {TUI_ANIMATIONS_DURATION} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 import {of} from 'rxjs';
@@ -36,6 +43,10 @@ describe(`MobileCalendar`, () => {
             {
                 provide: TUI_CALENDAR_DATA_STREAM,
                 useValue: of(tomorrow),
+            },
+            {
+                provide: TUI_ANIMATIONS_DURATION,
+                useValue: 0,
             },
         ],
     })
@@ -69,6 +80,7 @@ describe(`MobileCalendar`, () => {
         fixture.autoDetectChanges();
 
         tick(100);
+        discardPeriodicTasks();
     }));
 
     function getToday(): HTMLElement {

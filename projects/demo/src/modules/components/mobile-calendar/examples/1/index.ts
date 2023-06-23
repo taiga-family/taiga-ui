@@ -7,8 +7,8 @@ import {TuiDay, tuiReplayedValueChangesFrom} from '@taiga-ui/cdk';
 import {TUI_MONTHS, TuiDialogService} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATA_STREAM} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
-import {map, startWith, withLatestFrom} from 'rxjs/operators';
+import {combineLatest, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 // @dynamic
 @Component({
@@ -19,20 +19,19 @@ import {map, startWith, withLatestFrom} from 'rxjs/operators';
     encapsulation,
 })
 export class TuiMobileCalendarExample1 {
-    private readonly control = new FormControl(new TuiDay(2020, 9, 3));
+    private readonly control = new FormControl(new TuiDay(2024, 9, 3));
 
     private readonly dialog$: Observable<TuiDay>;
 
-    readonly date$ = this.control.valueChanges.pipe(
-        startWith(this.control.value),
-        withLatestFrom(this.months),
-        map(([value, months]) => this.getParsed(value, months)),
-    );
+    readonly date$ = combineLatest([
+        tuiReplayedValueChangesFrom<TuiDay>(this.control),
+        this.months$,
+    ]).pipe(map(([value, months]) => this.getParsed(value, months)));
 
     constructor(
         @Inject(TuiDialogService) dialogService: TuiDialogService,
         @Inject(Injector) injector: Injector,
-        @Inject(TUI_MONTHS) private readonly months: Observable<string[]>,
+        @Inject(TUI_MONTHS) private readonly months$: Observable<string[]>,
     ) {
         const dataStream = tuiReplayedValueChangesFrom(this.control);
         const computedInjector = Injector.create({

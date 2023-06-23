@@ -24,7 +24,11 @@ import {
     TuiMonth,
     typedFromEvent,
 } from '@taiga-ui/cdk';
-import {TUI_CLOSE_WORD, TUI_ORDERED_SHORT_WEEK_DAYS} from '@taiga-ui/core';
+import {
+    TUI_ANIMATIONS_DURATION,
+    TUI_CLOSE_WORD,
+    TUI_ORDERED_SHORT_WEEK_DAYS,
+} from '@taiga-ui/core';
 import {
     TUI_CANCEL_WORD,
     TUI_CHOOSE_DAY_OR_RANGE_TEXTS,
@@ -72,8 +76,8 @@ export class TuiMobileCalendarComponent {
     private readonly monthsScrollRef?: CdkVirtualScrollViewport;
 
     private readonly today = TuiDay.currentLocal();
-    private activeYear = this.initialYear;
-    private activeMonth = this.initialMonth;
+    private activeYear = 0;
+    private activeMonth = 0;
 
     @Input()
     @tuiDefaultProp()
@@ -125,6 +129,7 @@ export class TuiMobileCalendarComponent {
         >,
         @Inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS)
         readonly chooseDayOrRangeTexts$: Observable<[string, string]>,
+        @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
     ) {
         valueChanges.pipe(takeUntil(this.destroy$)).subscribe(value => {
             this.value = value;
@@ -136,6 +141,9 @@ export class TuiMobileCalendarComponent {
     }
 
     ngAfterViewInit(): void {
+        this.activeYear = this.initialYear;
+        this.activeMonth = this.initialMonth;
+
         // Virtual scroll has not yet rendered items even in ngAfterViewInit
         this.waitScrolledChange();
     }
@@ -269,7 +277,12 @@ export class TuiMobileCalendarComponent {
         this.updateViewportDimension();
 
         this.monthsScrollRef?.scrolledIndexChange
-            .pipe(this.lateInit(), take(1), takeUntil(this.destroy$))
+            .pipe(
+                delay(this.duration),
+                this.lateInit(),
+                take(1),
+                takeUntil(this.destroy$),
+            )
             .subscribe(() => {
                 this.updateViewportDimension();
                 this.initYearScroll();
