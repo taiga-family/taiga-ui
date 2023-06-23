@@ -19,6 +19,7 @@ import {TuiArrowModule} from '@taiga-ui/kit/components/arrow';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiInputTagModule} from '@taiga-ui/kit/components/input-tag';
 import {TuiMultiSelectOptionModule} from '@taiga-ui/kit/components/multi-select-option';
+import {TuiStringifyContentPipeModule} from '@taiga-ui/kit/pipes';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiHideSelectedPipe} from './hide-selected.pipe';
@@ -49,6 +50,7 @@ import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-m
         TuiLinkModule,
         TuiDataListModule,
         TuiTextfieldControllerModule,
+        TuiStringifyContentPipeModule,
     ],
     declarations: [
         TuiMultiSelectComponent,

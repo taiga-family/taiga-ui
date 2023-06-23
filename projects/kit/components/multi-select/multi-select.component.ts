@@ -78,7 +78,7 @@ export class TuiMultiSelectComponent<T>
     private readonly accessor?: TuiDataListAccessor<T>;
 
     @ContentChild(AbstractTuiNativeMultiSelect, {static: true})
-    private readonly nativeSelect?: AbstractTuiNativeMultiSelect;
+    private readonly nativeSelect?: AbstractTuiNativeMultiSelect<T>;
 
     @ViewChild(TuiHostedDropdownComponent)
     private readonly hostedDropdown?: TuiHostedDropdownComponent;
