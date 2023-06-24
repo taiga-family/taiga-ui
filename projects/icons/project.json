@@ -1,7 +1,6 @@
 {
     "name": "icons",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "root": "projects/icons",
     "sourceRoot": "projects/icons/src",
     "projectType": "library",
     "prefix": "tui",
@@ -21,7 +20,7 @@
         },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["dist/icons"],
+            "outputs": ["{workspaceRoot}/dist/icons"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "projects/icons/ng-package.json"
@@ -41,14 +40,13 @@
             "dependsOn": [
                 {
                     "target": "preprocess",
-                    "projects": "self",
                     "params": "forward"
                 }
             ]
         },
         "test": {
             "executor": "nx:run-commands",
-            "outputs": ["coverage/icons"],
+            "outputs": ["{workspaceRoot}/coverage/icons"],
             "options": {
                 "command": "jest --testMatch \"**/projects/icons/**/*.spec.ts\"",
                 "forwardAllArgs": true

@@ -1,7 +1,6 @@
 {
     "name": "testing",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "root": "projects/testing",
     "sourceRoot": "projects/testing",
     "projectType": "library",
     "prefix": "tui",
@@ -20,7 +19,7 @@
         },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["dist/testing"],
+            "outputs": ["{workspaceRoot}/dist/testing"],
             "options": {
                 "tsConfig": "projects/testing/tsconfig.build.json",
                 "project": "projects/testing/ng-package.json"
@@ -28,14 +27,14 @@
             "dependsOn": [
                 {
                     "target": "build",
-                    "projects": "dependencies",
-                    "params": "forward"
+                    "params": "forward",
+                    "dependencies": true
                 }
             ]
         },
         "test": {
             "executor": "nx:run-commands",
-            "outputs": ["coverage/testing"],
+            "outputs": ["{workspaceRoot}/coverage/testing"],
             "options": {
                 "command": "jest --testMatch \"**/projects/testing/**/*.spec.ts\"",
                 "forwardAllArgs": true

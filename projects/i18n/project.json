@@ -1,7 +1,6 @@
 {
     "name": "i18n",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "root": "projects/i18n",
     "sourceRoot": "projects/i18n",
     "projectType": "library",
     "prefix": "tui",
@@ -21,7 +20,7 @@
         },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["dist/i18n"],
+            "outputs": ["{workspaceRoot}/dist/i18n"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "projects/i18n/ng-package.json"
@@ -29,14 +28,14 @@
             "dependsOn": [
                 {
                     "target": "build",
-                    "projects": "dependencies",
-                    "params": "forward"
+                    "params": "forward",
+                    "dependencies": true
                 }
             ]
         },
         "test": {
             "executor": "nx:run-commands",
-            "outputs": ["coverage/i18n"],
+            "outputs": ["{workspaceRoot}/coverage/i18n"],
             "options": {
                 "command": "jest --testMatch \"**/projects/i18n/**/*.spec.ts\"",
                 "forwardAllArgs": true

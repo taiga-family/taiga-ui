@@ -1,7 +1,6 @@
 {
     "name": "styles",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "root": "projects/styles",
     "sourceRoot": "projects/styles",
     "projectType": "library",
     "prefix": "tui",
@@ -15,7 +14,7 @@
         },
         "build": {
             "executor": "nx:run-commands",
-            "outputs": ["dist/styles"],
+            "outputs": ["{workspaceRoot}/dist/styles"],
             "options": {
                 "command": "npx cpy . \"!project.json\"  \"../../dist/styles\" --cwd=projects/styles"
             }

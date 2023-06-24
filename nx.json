@@ -1,23 +1,45 @@
 {
-    "implicitDependencies": {
-        "package.json": {
-            "dependencies": "*",
-            "devDependencies": "*"
+    "$schema": "./node_modules/nx/schemas/nx-schema.json",
+    "defaultProject": "demo",
+    "namedInputs": {
+        "sharedGlobals": [
+            "{workspaceRoot}/nx.json",
+            "{workspaceRoot}/package-lock.json",
+            "{workspaceRoot}/tsconfig.*.json",
+            "{workspaceRoot}/tsconfig.json",
+            "{workspaceRoot}/scripts/**/*",
+            "{workspaceRoot}/*.yml",
+            "{workspaceRoot}/*.md"
+        ],
+        "default": ["{projectRoot}/**/*", "sharedGlobals"],
+        "production": ["!{projectRoot}/**/*.spec.ts", "!{projectRoot}/**/*.cy.ts", "sharedGlobals"]
+    },
+    "targetDefaults": {
+        "stylelint": {
+            "inputs": ["default", "production", "^production", "{workspaceRoot}/stylelint.config.js"]
         },
-        "package-lock.json": "*",
-        ".eslintrc.js": "*",
-        "nx.json": "*",
-        "setup-jest.ts": "*",
-        "tsconfig.*.json": "*",
-        "tsconfig.json": "*",
-        "*.config.ts": "*",
-        "scripts/**/*": "*",
-        "*.yml": "*",
-        "*.md": "*"
+        "lint": {
+            "inputs": ["default", "production", "^production", "{workspaceRoot}/.eslintrc.js"]
+        },
+        "build": {
+            "inputs": ["default", "production", "^production"]
+        },
+        "test": {
+            "inputs": [
+                "default",
+                "production",
+                "^production",
+                "{workspaceRoot}/setup-jest.ts",
+                "{workspaceRoot}/jest.config.ts"
+            ]
+        },
+        "e2e": {
+            "inputs": ["default", "production", "^production"]
+        }
     },
     "tasksRunnerOptions": {
         "default": {
-            "runner": "@nrwl/nx-cloud",
+            "runner": "nx-cloud",
             "options": {
                 "cacheableOperations": ["stylelint", "lint", "test", "build", "e2e"],
                 "parallel": 1
