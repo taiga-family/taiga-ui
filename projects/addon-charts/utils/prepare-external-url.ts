@@ -1,5 +1,6 @@
 import {Location as NgLocation} from '@angular/common';
 
+/** @deprecated */
 export function tuiPrepareExternalUrl(
     locationNg: NgLocation,
     locationRef: Location,
