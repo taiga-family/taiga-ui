@@ -1,4 +1,3 @@
-import {Location as NgLocation} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -10,9 +9,8 @@ import {
     QueryList,
     ViewChildren,
 } from '@angular/core';
-import {LOCATION} from '@ng-web-apis/common';
 import {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
-import {tuiDraw, tuiPrepareExternalUrl} from '@taiga-ui/addon-charts/utils';
+import {tuiDraw} from '@taiga-ui/addon-charts/utils';
 import {
     EMPTY_QUERY,
     tuiDefaultProp,
@@ -101,8 +99,6 @@ export class TuiLineChartComponent {
     constructor(
         @Inject(TuiIdService) idService: TuiIdService,
         @Inject(NgZone) private readonly ngZone: NgZone,
-        @Inject(NgLocation) private readonly ngLocation: NgLocation,
-        @Inject(LOCATION) private readonly locationRef: Location,
         @Optional()
         @Inject(TuiLineChartHintDirective)
         readonly hintDirective: TuiLineChartHintDirective | null,
@@ -128,9 +124,7 @@ export class TuiLineChartComponent {
     }
 
     get fill(): string {
-        return this.filled
-            ? tuiPrepareExternalUrl(this.ngLocation, this.locationRef, this.fillId)
-            : 'none';
+        return this.filled ? `url(#${this.fillId})` : 'none';
     }
 
     get viewBox(): string {
