@@ -8,7 +8,7 @@ import {
     OnDestroy,
     Optional,
 } from '@angular/core';
-import {TuiActiveZoneDirective, tuiDefaultProp} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     tuiAsRectAccessor,
     tuiAsVehicle,
@@ -45,7 +45,6 @@ export class TuiHintDirective<C>
     context?: C;
 
     @Input()
-    @tuiDefaultProp()
     tuiHintAppearance: string | null = null;
 
     readonly type = 'hint';

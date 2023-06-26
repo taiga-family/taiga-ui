@@ -15,7 +15,6 @@ import {
     TUI_DEFAULT_IDENTITY_MATCHER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiIdentityMatcher,
     TuiNativeFocusableElement,
@@ -50,26 +49,21 @@ export class TuiRadioBlockComponent<T>
     item?: T;
 
     @Input()
-    @tuiDefaultProp()
     identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
 
     @Input()
     @HostBinding('attr.data-align')
-    @tuiDefaultProp()
     contentAlign: TuiHorizontalDirection = 'right';
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeL | TuiSizeS = 'l';
 
     @Input()
     @HostBinding('class._hidden_input')
-    @tuiDefaultProp()
     hideRadio = false;
 
     @Input()
-    @tuiDefaultProp()
     pseudoDisabled = false;
 
     constructor(

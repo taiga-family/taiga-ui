@@ -17,7 +17,6 @@ import {
     TuiActiveZoneDirective,
     tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiGetClosestFocusable,
     tuiIsElement,
@@ -94,11 +93,9 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     content: PolymorpheusContent<TuiHostedDropdownContext>;
 
     @Input()
-    @tuiDefaultProp()
     sided = false;
 
     @Input()
-    @tuiDefaultProp()
     canOpen = true;
 
     @Output('openChange')
@@ -120,7 +117,6 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     ) {}
 
     @Input()
-    @tuiDefaultProp()
     set open(open: boolean) {
         this.openChange.next(open);
     }

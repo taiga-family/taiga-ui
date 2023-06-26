@@ -11,7 +11,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {DomSanitizer, SafeValue} from '@angular/platform-browser';
-import {tuiDefaultProp, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TuiSizeXL} from '@taiga-ui/core';
 import {merge, Observable, ReplaySubject} from 'rxjs';
 import {map, startWith, switchMap, tap} from 'rxjs/operators';
@@ -52,28 +52,22 @@ export class TuiArcChartComponent {
     }
 
     @Input()
-    @tuiDefaultProp()
     value: readonly number[] = [];
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeXL = 'm';
 
     @Input()
-    @tuiDefaultProp()
     max = 100;
 
     @Input()
-    @tuiDefaultProp()
     minLabel = '0%';
 
     @Input()
-    @tuiDefaultProp()
     maxLabel = '100%';
 
     @Input()
-    @tuiDefaultProp()
     activeItemIndex = NaN;
 
     @Output()

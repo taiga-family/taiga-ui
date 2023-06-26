@@ -9,12 +9,7 @@ import {
     NgZone,
 } from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
-import {
-    tuiArrayShallowEquals,
-    tuiDefaultProp,
-    TuiResizeService,
-    tuiZonefull,
-} from '@taiga-ui/cdk';
+import {tuiArrayShallowEquals, TuiResizeService, tuiZonefull} from '@taiga-ui/cdk';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
@@ -27,11 +22,9 @@ import {TuiTilesComponent} from './tiles.component';
 })
 export class TuiTileComponent {
     @Input()
-    @tuiDefaultProp()
     width = 1;
 
     @Input()
-    @tuiDefaultProp()
     height = 1;
 
     @HostBinding('class._dragged')

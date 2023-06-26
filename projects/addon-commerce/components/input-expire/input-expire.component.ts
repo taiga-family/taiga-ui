@@ -15,7 +15,6 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiAutofillFieldName,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
@@ -38,7 +37,6 @@ export class TuiInputExpireComponent
     private readonly input?: TuiPrimitiveTextfieldComponent;
 
     @Input()
-    @tuiDefaultProp()
     autocompleteEnabled = false;
 
     readonly maskOptions = maskitoDateOptionsGenerator({

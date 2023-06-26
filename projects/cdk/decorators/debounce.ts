@@ -1,3 +1,7 @@
+/**
+ * @deprecated:
+ * not compatible with TypeScript 5
+ */
 export function tuiDebounce(timeout: number): MethodDecorator {
     let timeoutRef: ReturnType<typeof setTimeout> | undefined;
 

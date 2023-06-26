@@ -11,7 +11,6 @@ import {
 import {
     TUI_IS_IOS,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiDestroyService,
     TuiHandler,
     tuiScrollFrom,
@@ -37,7 +36,6 @@ import {MICRO_OFFSET, TuiPullToRefreshService} from './pull-to-refresh.service';
 })
 export class TuiPullToRefreshComponent {
     @Input()
-    @tuiDefaultProp()
     styleHandler: TuiHandler<number, Record<string, any> | null> = this.isIOS
         ? distance => ({transform: `translateY(${distance / 2}px)`})
         : () => null;

@@ -17,7 +17,6 @@ import {
     TUI_DEFAULT_IDENTITY_MATCHER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiIdentityMatcher,
     tuiIsNativeFocused,
@@ -50,20 +49,16 @@ export class TuiRadioComponent<T>
     item?: T | null;
 
     @Input()
-    @tuiDefaultProp()
     identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
 
     @Input()
-    @tuiDefaultProp()
     name: string | null = null;
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeL = this.options.size;
 
     @Input()
-    @tuiDefaultProp()
     pseudoDisabled = false;
 
     constructor(

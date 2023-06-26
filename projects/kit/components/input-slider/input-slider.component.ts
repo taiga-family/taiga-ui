@@ -16,7 +16,6 @@ import {
     tuiAsFocusableItemAccessor,
     tuiClamp,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     TuiNativeFocusableElement,
@@ -63,33 +62,21 @@ export class TuiInputSliderComponent
     private readonly sliderRef?: ElementRef<HTMLInputElement>;
 
     @Input()
-    @tuiDefaultProp()
     min = 0;
 
     @Input()
-    @tuiDefaultProp()
     max = 100;
 
     @Input()
-    @tuiDefaultProp(q => q > 0, 'Quantum must be positive')
     quantum = 1;
 
     @Input()
-    @tuiDefaultProp(
-        s => s >= 0 && Number.isInteger(s),
-        'Steps must be non-negative integer',
-    )
     steps = 0;
 
     @Input()
-    @tuiDefaultProp(
-        s => s > 0 && Number.isInteger(s),
-        'Segments must be positive integer',
-    )
     segments = 1;
 
     @Input()
-    @tuiDefaultProp()
     keySteps: TuiKeySteps | null = null;
 
     @Input()
@@ -97,12 +84,10 @@ export class TuiInputSliderComponent
 
     /** @deprecated use `tuiTextfieldPrefix` from {@link TuiTextfieldControllerModule} instead */
     @Input('prefix')
-    @tuiDefaultProp()
     textfieldPrefix = '';
 
     /** @deprecated use `tuiTextfieldPostfix` from {@link TuiTextfieldControllerModule} instead */
     @Input('postfix')
-    @tuiDefaultProp()
     textfieldPostfix = '';
 
     constructor(

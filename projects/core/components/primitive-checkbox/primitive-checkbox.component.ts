@@ -5,7 +5,7 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {TuiContextWithImplicit, tuiDefaultProp} from '@taiga-ui/cdk';
+import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TuiSizeL} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -20,31 +20,24 @@ import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions} from './checkbox-options';
 export class TuiPrimitiveCheckboxComponent {
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeL = this.options.size;
 
     @Input()
-    @tuiDefaultProp()
     disabled = false;
 
     @Input()
-    @tuiDefaultProp()
     focused = false;
 
     @Input()
-    @tuiDefaultProp()
     hovered: boolean | null = false;
 
     @Input()
-    @tuiDefaultProp()
     pressed: boolean | null = false;
 
     @Input()
-    @tuiDefaultProp()
     invalid = false;
 
     @Input('value')
-    @tuiDefaultProp()
     set valueSetter(value: boolean | null) {
         if (value !== false) {
             this.setCurrentIcon(value);

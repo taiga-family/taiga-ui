@@ -18,7 +18,6 @@ import {
     TuiDay,
     TuiDayLike,
     TuiDayRange,
-    tuiDefaultProp,
     TuiDestroyService,
     tuiIsString,
     TuiMapper,
@@ -48,39 +47,30 @@ import {takeUntil} from 'rxjs/operators';
 })
 export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> {
     @Input()
-    @tuiDefaultProp()
     defaultViewedMonth: TuiMonth = TuiMonth.currentLocal();
 
     @Input()
-    @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
     @Input()
-    @tuiDefaultProp()
     markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
 
     @Input()
-    @tuiDefaultProp()
     items: readonly TuiDayRangePeriod[] = [];
 
     @Input()
-    @tuiDefaultProp()
     min: TuiDay = TUI_FIRST_DAY;
 
     @Input()
-    @tuiDefaultProp()
     max: TuiDay = TUI_LAST_DAY;
 
     @Input()
-    @tuiDefaultProp()
     minLength: TuiDayLike | null = null;
 
     @Input()
-    @tuiDefaultProp()
     maxLength: TuiDayLike | null = null;
 
     @Input()
-    @tuiDefaultProp()
     value: TuiDayRange | null = null;
 
     @Output()

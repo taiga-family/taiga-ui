@@ -10,7 +10,7 @@ import {
     TuiMoneySign,
     TuiMoneySignSymbol,
 } from '@taiga-ui/addon-commerce/types';
-import {CHAR_MINUS, CHAR_PLUS, tuiDefaultProp} from '@taiga-ui/cdk';
+import {CHAR_MINUS, CHAR_PLUS} from '@taiga-ui/cdk';
 import {TuiDecimal} from '@taiga-ui/core';
 
 import {TUI_MONEY_OPTIONS, TuiMoneyOptions} from './money-options';
@@ -24,31 +24,24 @@ import {tuiFormatSignSymbol} from './utils/format-sign-symbol';
 })
 export class TuiMoneyComponent {
     @Input()
-    @tuiDefaultProp()
     value = NaN;
 
     @Input()
-    @tuiDefaultProp()
     decimal: TuiDecimal = this.options.decimal;
 
     @Input()
-    @tuiDefaultProp()
     currency: TuiCurrencyVariants = this.options.currency;
 
     @Input()
-    @tuiDefaultProp()
     sign: TuiMoneySign = this.options.sign;
 
     @Input()
-    @tuiDefaultProp()
     colored = this.options.colored;
 
     @Input()
-    @tuiDefaultProp()
     precision = this.options.precision;
 
     @Input()
-    @tuiDefaultProp()
     singleColor = this.options.singleColor;
 
     get signSymbol(): TuiMoneySignSymbol {

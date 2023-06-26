@@ -12,7 +12,6 @@ import {
     TuiBooleanHandler,
     TuiDay,
     TuiDayRange,
-    tuiDefaultProp,
     TuiHandler,
     TuiInjectionTokenType,
     TuiMonth,
@@ -34,27 +33,21 @@ export class TuiPrimitiveCalendarComponent {
     private readonly today = TuiDay.currentLocal();
 
     @Input()
-    @tuiDefaultProp()
     month: TuiMonth = TuiMonth.currentLocal();
 
     @Input()
-    @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
     @Input()
-    @tuiDefaultProp()
     markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
 
     @Input()
-    @tuiDefaultProp()
     value: TuiDay | TuiDayRange | null = null;
 
     @Input()
-    @tuiDefaultProp()
     hoveredItem: TuiDay | null = null;
 
     @Input()
-    @tuiDefaultProp()
     showAdjacent = true;
 
     @Output()

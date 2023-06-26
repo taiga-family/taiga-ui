@@ -10,7 +10,6 @@ import {
 import {CSS as CSS_TOKEN, USER_AGENT} from '@ng-web-apis/common';
 import {
     TUI_IS_IOS,
-    tuiDefaultProp,
     tuiGetElementOffset,
     TuiInjectionTokenType,
     tuiIsFirefox,
@@ -42,7 +41,6 @@ export class TuiScrollbarComponent {
             !this.cssRef.supports('scrollbar-width', 'none'));
 
     @Input()
-    @tuiDefaultProp()
     hidden = false;
 
     readonly browserScrollRef = new ElementRef(this.el.nativeElement);

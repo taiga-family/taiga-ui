@@ -6,13 +6,7 @@ import {
     Input,
 } from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
-import {
-    tuiDefaultProp,
-    tuiIsString,
-    tuiPure,
-    tuiRequiredSetter,
-    TuiSafeHtml,
-} from '@taiga-ui/cdk';
+import {tuiIsString, tuiPure, TuiSafeHtml} from '@taiga-ui/cdk';
 import {tuiSizeBigger, TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 import {tuiStringHashToHsl} from '@taiga-ui/kit/utils/format';
 
@@ -27,31 +21,25 @@ import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar-options';
 export class TuiAvatarComponent {
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size = this.options.size;
 
     @Input('avatarUrl')
-    @tuiRequiredSetter()
     set avatarUrlSetter(avatarUrl: SafeResourceUrl | string | null) {
         this.avatarUrl = avatarUrl;
         this.isUrlValid = !!avatarUrl && !this.iconAvatar;
     }
 
     @Input()
-    @tuiDefaultProp()
     text = '';
 
     @Input()
-    @tuiDefaultProp()
     fallback: TuiSafeHtml | null = null;
 
     @Input()
-    @tuiDefaultProp()
     autoColor: boolean = this.options.autoColor;
 
     @Input()
     @HostBinding('class._rounded')
-    @tuiDefaultProp()
     rounded: boolean = this.options.rounded;
 
     avatarUrl: SafeResourceUrl | string | null = null;

@@ -13,7 +13,6 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     tuiAsFocusableItemAccessor,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     TuiNativeFocusableElement,
@@ -38,7 +37,6 @@ export class TuiInputInlineComponent
     private readonly native?: ElementRef<HTMLInputElement>;
 
     @Input()
-    @tuiDefaultProp()
     maxLength: number | null = null;
 
     indent = -1;

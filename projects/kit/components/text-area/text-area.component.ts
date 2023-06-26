@@ -19,7 +19,6 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
@@ -70,16 +69,13 @@ export class TuiTextAreaComponent
     private readonly textfield?: ElementRef<HTMLTextAreaElement>;
 
     @Input()
-    @tuiDefaultProp()
     rows = DEFAULT_ROWS;
 
     @Input()
-    @tuiDefaultProp()
     maxLength: number | null = null;
 
     @Input()
     @HostBinding('class._expandable')
-    @tuiDefaultProp()
     expandable = false;
 
     constructor(

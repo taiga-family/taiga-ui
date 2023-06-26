@@ -32,7 +32,6 @@ import {
     TuiDay,
     TuiDayLike,
     TuiDayRange,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsPresent,
     TuiMapper,
@@ -87,35 +86,27 @@ export class TuiInputDateRangeComponent
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     @Input()
-    @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
     @Input()
-    @tuiDefaultProp()
     markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
 
     @Input()
-    @tuiDefaultProp()
     defaultViewedMonth = TuiMonth.currentLocal();
 
     @Input()
-    @tuiDefaultProp()
     items: readonly TuiDayRangePeriod[] = [];
 
     @Input()
-    @tuiDefaultProp()
     min = this.options.min;
 
     @Input()
-    @tuiDefaultProp()
     max = this.options.max;
 
     @Input()
-    @tuiDefaultProp()
     minLength: TuiDayLike | null = null;
 
     @Input()
-    @tuiDefaultProp()
     maxLength: TuiDayLike | null = null;
 
     open = false;

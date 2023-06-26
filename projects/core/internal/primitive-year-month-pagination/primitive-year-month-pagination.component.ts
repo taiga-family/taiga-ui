@@ -8,7 +8,6 @@ import {
 import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    tuiDefaultProp,
     TuiMonth,
     TuiMonthLike,
     TuiYear,
@@ -25,15 +24,12 @@ export class TuiPrimitiveYearMonthPaginationComponent
     implements TuiWithOptionalMinMax<TuiMonth>
 {
     @Input()
-    @tuiDefaultProp()
     value = TuiMonth.currentLocal();
 
     @Input()
-    @tuiDefaultProp()
     min: TuiMonth = TUI_FIRST_DAY;
 
     @Input()
-    @tuiDefaultProp()
     max: TuiMonth = TUI_LAST_DAY;
 
     @Output()

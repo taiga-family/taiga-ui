@@ -10,7 +10,7 @@ import {
     Output,
     QueryList,
 } from '@angular/core';
-import {EMPTY_QUERY, tuiDefaultProp} from '@taiga-ui/cdk';
+import {EMPTY_QUERY} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiRowDirective} from '../directives/row.directive';
@@ -28,14 +28,12 @@ import {TuiTrComponent} from '../tr/tr.component';
 })
 export class TuiTbodyComponent<T extends Partial<Record<keyof T, any>>> {
     @Input()
-    @tuiDefaultProp()
     data: readonly T[] = [];
 
     @Input()
     heading: PolymorpheusContent;
 
     @Input()
-    @tuiDefaultProp()
     open = true;
 
     @Output()

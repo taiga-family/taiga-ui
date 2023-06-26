@@ -1,5 +1,4 @@
 import {Directive, HostListener, Inject, Input} from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
 
 import {TuiComboBoxComponent} from './combo-box.component';
 
@@ -8,7 +7,6 @@ import {TuiComboBoxComponent} from './combo-box.component';
 })
 export class TuiComboBoxStrictDirective<T> {
     @Input()
-    @tuiDefaultProp()
     strict = true;
 
     constructor(

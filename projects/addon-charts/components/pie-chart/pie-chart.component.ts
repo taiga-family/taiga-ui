@@ -9,13 +9,7 @@ import {
     Output,
 } from '@angular/core';
 import {SafeValue} from '@angular/platform-browser';
-import {
-    TuiContextWithImplicit,
-    tuiDefaultProp,
-    TuiIdService,
-    tuiPure,
-    tuiSum,
-} from '@taiga-ui/cdk';
+import {TuiContextWithImplicit, TuiIdService, tuiPure, tuiSum} from '@taiga-ui/cdk';
 import {
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
@@ -52,20 +46,16 @@ export class TuiPieChartComponent {
     private readonly autoIdString: string;
 
     @Input()
-    @tuiDefaultProp()
     value: readonly number[] = [];
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeXL | TuiSizeXS = 'm';
 
     @Input()
-    @tuiDefaultProp()
     masked = false;
 
     @Input()
-    @tuiDefaultProp()
     activeItemIndex = NaN;
 
     @Output()

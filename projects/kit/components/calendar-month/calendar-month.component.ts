@@ -13,7 +13,6 @@ import {
     TUI_LAST_DAY,
     TuiBooleanHandler,
     TuiDay,
-    tuiDefaultProp,
     TuiMonth,
     TuiMonthRange,
     tuiNullableSame,
@@ -36,24 +35,19 @@ const TODAY = TuiDay.currentLocal();
 })
 export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth> {
     @Input()
-    @tuiDefaultProp()
     value: TuiMonth | TuiMonthRange | null = null;
 
     @Input()
-    @tuiDefaultProp()
     year: TuiYear = TODAY;
 
     @Input()
-    @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext> =
         ALWAYS_FALSE_HANDLER;
 
     @Input()
-    @tuiDefaultProp()
     min: TuiMonth = TUI_FIRST_DAY;
 
     @Input()
-    @tuiDefaultProp()
     max: TuiMonth = TUI_LAST_DAY;
 
     @Output()

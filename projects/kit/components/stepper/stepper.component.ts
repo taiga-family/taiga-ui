@@ -15,7 +15,6 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    tuiDefaultProp,
     TuiDestroyService,
     tuiGetOriginalArrayFromQueryList,
     tuiIsElement,
@@ -44,7 +43,6 @@ export class TuiStepperComponent {
 
     @Input()
     @HostBinding('attr.data-orientation')
-    @tuiDefaultProp()
     orientation: TuiOrientation = 'horizontal';
 
     @Input('activeItemIndex')

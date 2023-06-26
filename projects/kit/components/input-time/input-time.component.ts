@@ -21,7 +21,6 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsElement,
     tuiIsInput,
@@ -70,28 +69,22 @@ export class TuiInputTimeComponent
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     @Input()
-    @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiTime> = ALWAYS_FALSE_HANDLER;
 
     @Input()
-    @tuiDefaultProp()
     items: readonly TuiTime[] = [];
 
     @Input()
-    @tuiDefaultProp()
     itemSize: TuiInputTimeOptions['itemSize'] = this.options.itemSize;
 
     @Input()
-    @tuiDefaultProp()
     strict = false;
 
     @Input()
-    @tuiDefaultProp()
     mode: TuiInputTimeOptions['mode'] = this.options.mode;
 
     /** @deprecated use `tuiTextfieldPostfix` from {@link TuiTextfieldControllerModule} instead */
     @Input()
-    @tuiDefaultProp()
     postfix: TuiInputTimeOptions['postfix'] = this.options.postfix;
 
     open = false;

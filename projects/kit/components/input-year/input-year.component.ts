@@ -17,7 +17,6 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiPure,
     TuiYear,
@@ -45,15 +44,12 @@ export class TuiInputYearComponent
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     @Input()
-    @tuiDefaultProp()
     min = this.options.min.year;
 
     @Input()
-    @tuiDefaultProp()
     max = this.options.max.year;
 
     @Input()
-    @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<number> = ALWAYS_FALSE_HANDLER;
 
     open = false;

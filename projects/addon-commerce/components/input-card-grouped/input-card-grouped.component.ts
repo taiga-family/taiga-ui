@@ -26,14 +26,12 @@ import {
     tuiAsFocusableItemAccessor,
     TuiAutofillFieldName,
     TuiAutoFocusDirective,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsElement,
     tuiIsInput,
     tuiIsNativeFocused,
     tuiIsNativeFocusedIn,
     tuiPure,
-    tuiRequiredSetter,
 } from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
@@ -103,15 +101,12 @@ export class TuiInputCardGroupedComponent
     private expireInert = false;
 
     @Input()
-    @tuiDefaultProp()
     exampleText = this.options.exampleText;
 
     @Input()
-    @tuiDefaultProp()
     cardValidator = this.options.cardValidator;
 
     @Input()
-    @tuiRequiredSetter()
     set codeLength(length: TuiCodeCVCLength) {
         this.exampleTextCVC = '0'.repeat(length);
         this.maskCVC = {

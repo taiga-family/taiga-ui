@@ -16,7 +16,6 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     TuiNativeFocusableElement,
@@ -51,20 +50,16 @@ export class TuiToggleComponent
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
 
     @Input()
-    @tuiDefaultProp()
     singleColor = this.options.singleColor;
 
     @Input()
-    @tuiDefaultProp()
     showIcons = this.options.showIcons;
 
     @Input()
-    @tuiDefaultProp()
     showLoader = false;
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeL = this.options.size;
 
     constructor(

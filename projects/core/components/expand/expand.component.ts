@@ -12,7 +12,7 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {TUI_PARENT_ANIMATION, tuiDefaultProp, tuiRequiredSetter} from '@taiga-ui/cdk';
+import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
 
 import {TuiExpandContentDirective} from './expand-content.directive';
@@ -40,11 +40,9 @@ export class TuiExpandComponent {
     private state = State.Idle;
 
     @Input()
-    @tuiDefaultProp()
     async = false;
 
     @Input('expanded')
-    @tuiRequiredSetter()
     set expandedSetter(expanded: boolean | null) {
         if (this.expanded === null) {
             this.expanded = expanded;

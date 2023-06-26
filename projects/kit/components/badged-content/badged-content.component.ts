@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {tuiDefaultProp, tuiIsNumber, tuiIsString, tuiPx} from '@taiga-ui/cdk';
+import {tuiIsNumber, tuiIsString, tuiPx} from '@taiga-ui/cdk';
 import {tuiSizeBigger, TuiSizeL, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -30,20 +30,16 @@ export class TuiBadgedContentComponent {
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeXS | TuiSizeXXL = 'm';
 
     @Input()
-    @tuiDefaultProp()
     colorTop = '';
 
     @Input()
-    @tuiDefaultProp()
     colorBottom = '';
 
     @Input()
     @HostBinding('class._rounded')
-    @tuiDefaultProp()
     rounded = false;
 
     get topNotification(): string {

@@ -23,7 +23,6 @@ import {
     EMPTY_QUERY,
     TuiContextWithImplicit,
     TuiDay,
-    tuiDefaultProp,
     TuiDestroyService,
     TuiHoveredService,
     tuiIsNumber,
@@ -61,7 +60,6 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
     readonly charts: QueryList<TuiLineChartComponent> = EMPTY_QUERY;
 
     @Input('value')
-    @tuiDefaultProp()
     set valueSetter(value: ReadonlyArray<[TuiDay, number]>) {
         if (!value.length) {
             this.value = [];
@@ -83,30 +81,24 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
     }
 
     @Input()
-    @tuiDefaultProp()
     y = 0;
 
     @Input()
-    @tuiDefaultProp()
     height = 0;
 
     @Input()
-    @tuiDefaultProp()
     smoothingFactor = this.options.smoothingFactor;
 
     @Input()
     hintContent: PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>>;
 
     @Input()
-    @tuiDefaultProp()
     xStringify: TuiStringHandler<TuiDay> | null = null;
 
     @Input()
-    @tuiDefaultProp()
     yStringify: TuiStringHandler<number> | null = null;
 
     @Input()
-    @tuiDefaultProp()
     dots = this.options.dots;
 
     @HostBinding('style.zIndex')

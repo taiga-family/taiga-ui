@@ -10,7 +10,6 @@ import {
 import {
     EMPTY_QUERY,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiIdService,
     TuiMapper,
     tuiPure,
@@ -26,14 +25,6 @@ import {
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
-function valueAssertion(value: ReadonlyArray<readonly number[]>): boolean {
-    const valid = value.every(array => array.length === value[0].length);
-
-    return valid;
-}
-
-const VALUE_ERROR = 'All arrays must be of the same length';
-
 @Component({
     selector: 'tui-bar-chart',
     templateUrl: './bar-chart.template.html',
@@ -48,19 +39,15 @@ export class TuiBarChartComponent {
     readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
     @Input()
-    @tuiDefaultProp(valueAssertion, VALUE_ERROR)
     value: ReadonlyArray<readonly number[]> = [];
 
     @Input()
-    @tuiDefaultProp()
     max = NaN;
 
     @Input()
-    @tuiDefaultProp()
     size: TuiSizeL | TuiSizeS | null = 'm';
 
     @Input()
-    @tuiDefaultProp()
     collapsed = false;
 
     constructor(

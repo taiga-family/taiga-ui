@@ -5,7 +5,7 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
+import {TuiDestroyService} from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
     TUI_MODE,
@@ -29,16 +29,13 @@ import {Observable} from 'rxjs';
 export class TuiMarkerIconComponent {
     @Input()
     @HostBinding('attr.data-marker-mode')
-    @tuiDefaultProp()
     mode: TuiMarkerIconMode | null = null;
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeXXL | TuiSizeXXS = 'm';
 
     @Input()
-    @tuiDefaultProp()
     src = '';
 
     constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}

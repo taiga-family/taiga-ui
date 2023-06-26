@@ -6,7 +6,6 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tui-palette',
@@ -16,7 +15,6 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 })
 export class TuiPaletteComponent {
     @Input()
-    @tuiDefaultProp()
     colors: ReadonlyMap<string, string> = new Map<string, string>();
 
     @Output()

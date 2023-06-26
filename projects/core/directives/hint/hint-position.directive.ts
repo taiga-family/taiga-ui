@@ -1,5 +1,5 @@
 import {Directive, Inject, Input} from '@angular/core';
-import {EMPTY_CLIENT_RECT, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
+import {EMPTY_CLIENT_RECT, tuiPure} from '@taiga-ui/cdk';
 import {
     tuiAsPositionAccessor,
     tuiFallbackRectAccessor,
@@ -30,7 +30,6 @@ export class TuiHintPositionDirective extends TuiPositionAccessor {
         );
 
     @Input('tuiHintDirection')
-    @tuiDefaultProp()
     direction: TuiHintOptions['direction'] = this.options.direction;
 
     readonly type = 'hint';

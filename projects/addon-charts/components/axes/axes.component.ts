@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import {TUI_ALWAYS_DASHED, TUI_ALWAYS_SOLID} from '@taiga-ui/addon-charts/constants';
 import {TuiLineHandler, TuiLineType} from '@taiga-ui/addon-charts/types';
-import {CHAR_NO_BREAK_SPACE, tuiDefaultProp} from '@taiga-ui/cdk';
+import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
@@ -23,55 +23,42 @@ import {Observable} from 'rxjs';
 })
 export class TuiAxesComponent {
     @Input()
-    @tuiDefaultProp()
     axisX: TuiLineType = 'solid';
 
     @Input()
-    @tuiDefaultProp()
     axisXLabels: ReadonlyArray<string | null> = [];
 
     @Input()
-    @tuiDefaultProp()
     axisY: TuiLineType = 'solid';
 
     @Input()
-    @tuiDefaultProp()
     axisYInset = false;
 
     @Input()
-    @tuiDefaultProp()
     axisYLabels: readonly string[] = [];
 
     @Input()
-    @tuiDefaultProp()
     axisYName = '';
 
     @Input()
-    @tuiDefaultProp()
     axisYSecondaryInset = false;
 
     @Input()
-    @tuiDefaultProp()
     axisYSecondaryLabels: readonly string[] = [];
 
     @Input()
-    @tuiDefaultProp()
     axisYSecondaryName = '';
 
     @Input()
-    @tuiDefaultProp()
     horizontalLines = 0;
 
     @Input()
-    @tuiDefaultProp()
     horizontalLinesHandler: TuiLineHandler = TUI_ALWAYS_SOLID;
 
     @Input()
-    @tuiDefaultProp()
     verticalLines = 0;
 
     @Input()
-    @tuiDefaultProp()
     verticalLinesHandler: TuiLineHandler = TUI_ALWAYS_DASHED;
 
     @HostBinding('class._centered')

@@ -14,7 +14,6 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    tuiDefaultProp,
     tuiIsElement,
     tuiIsNativeFocusedIn,
     tuiIsPresent,
@@ -57,7 +56,6 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
 
     @Input()
     @HostBinding('attr.role')
-    @tuiDefaultProp()
     role: TuiDataListRole = 'listbox';
 
     @Input()
@@ -65,7 +63,6 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
 
     @Input()
     @HostBinding('attr.data-list-size')
-    @tuiDefaultProp()
     size = this.controller?.size || 'm';
 
     constructor(

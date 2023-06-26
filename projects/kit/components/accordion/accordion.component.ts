@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    tuiDefaultProp,
     TuiDestroyService,
     tuiIsPresent,
     tuiQueryListChanges,
@@ -29,11 +28,9 @@ import {TuiAccordionItemComponent} from './accordion-item/accordion-item.compone
 })
 export class TuiAccordionComponent implements AfterContentInit {
     @Input()
-    @tuiDefaultProp()
     closeOthers = true;
 
     @Input()
-    @tuiDefaultProp()
     rounded = true;
 
     @ContentChildren(TuiAccordionItemComponent)

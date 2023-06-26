@@ -1,5 +1,4 @@
 import {Directive, Inject, Input, Optional, Output, Self} from '@angular/core';
-import {tuiRequiredSetter} from '@taiga-ui/cdk/decorators';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiIfMap} from '@taiga-ui/cdk/observables';
 import {
@@ -21,7 +20,6 @@ export class TuiObscuredDirective {
     private readonly enabled$ = new Subject<boolean>();
 
     @Input()
-    @tuiRequiredSetter()
     set tuiObscuredEnabled(enabled: boolean) {
         this.enabled$.next(enabled);
     }

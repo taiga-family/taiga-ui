@@ -10,13 +10,7 @@ import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 import {TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES} from '@taiga-ui/addon-editor/tokens';
 import {TuiGradientDirection} from '@taiga-ui/addon-editor/types';
 import {tuiGetGradientData, tuiParseGradient} from '@taiga-ui/addon-editor/utils';
-import {
-    tuiDefaultProp,
-    tuiDefaultSort,
-    tuiParseColor,
-    tuiPure,
-    tuiRequiredSetter,
-} from '@taiga-ui/cdk';
+import {tuiDefaultSort, tuiParseColor, tuiPure} from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 
 const EMPTY_STOP: [number, number, number, number] = [0, 0, 0, 0];
@@ -47,11 +41,9 @@ export class TuiColorSelectorComponent {
     private direction: TuiGradientDirection = 'to bottom';
 
     @Input()
-    @tuiDefaultProp()
     colors: ReadonlyMap<string, string> = new Map<string, string>();
 
     @Input('color')
-    @tuiRequiredSetter()
     set colorSetter(color: string) {
         this.parse(color);
     }

@@ -13,7 +13,6 @@ import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {
     AbstractTuiNullableControl,
     TuiAutofillFieldName,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
     tuiPure,
@@ -34,7 +33,6 @@ export abstract class AbstractTuiInputCard<
     cardSrc: PolymorpheusContent;
 
     @Input()
-    @tuiDefaultProp()
     autocompleteEnabled = this.options.autocompleteEnabled;
 
     @Output()

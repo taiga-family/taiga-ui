@@ -16,13 +16,7 @@ import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
-import {
-    EMPTY_QUERY,
-    tuiDefaultProp,
-    TuiDestroyService,
-    tuiPure,
-    TuiResizeService,
-} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiDestroyService, tuiPure, TuiResizeService} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
@@ -53,7 +47,6 @@ export class TuiTabsComponent implements AfterViewChecked {
 
     @Input()
     @HostBinding('class._underline')
-    @tuiDefaultProp()
     underline = this.options.underline;
 
     constructor(

@@ -18,7 +18,6 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
@@ -72,16 +71,13 @@ export class TuiSelectComponent<T>
     private readonly nativeSelect?: AbstractTuiNativeSelect;
 
     @Input()
-    @tuiDefaultProp()
     stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
 
     @Input()
-    @tuiDefaultProp()
     identityMatcher: TuiItemsHandlers<T>['identityMatcher'] =
         this.itemsHandlers.identityMatcher;
 
     @Input()
-    @tuiDefaultProp()
     valueContent: TuiSelectOptions<T>['valueContent'] = this.options.valueContent;
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})

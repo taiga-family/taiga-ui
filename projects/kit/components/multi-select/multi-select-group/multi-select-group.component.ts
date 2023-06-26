@@ -12,7 +12,6 @@ import {
     EMPTY_QUERY,
     TUI_DEFAULT_IDENTITY_MATCHER,
     tuiControlValue,
-    tuiDefaultProp,
     tuiGetOriginalArrayFromQueryList,
     TuiIdentityMatcher,
     TuiInjectionTokenType,
@@ -43,7 +42,6 @@ export class TuiMultiSelectGroupComponent<T> {
 
     @HostBinding('class._label')
     @Input()
-    @tuiDefaultProp()
     label = '';
 
     constructor(

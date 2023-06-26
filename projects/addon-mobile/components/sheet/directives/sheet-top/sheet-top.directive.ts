@@ -1,6 +1,6 @@
 import {Directive, Inject, Input} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {tuiClamp, tuiDefaultProp} from '@taiga-ui/cdk';
+import {tuiClamp} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -23,7 +23,6 @@ const OFFSET = 10;
 })
 export class TuiSheetTopDirective {
     @Input('tuiSheetTop')
-    @tuiDefaultProp()
     stop = 0;
 
     readonly transform$ = this.scroll$.pipe(

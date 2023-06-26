@@ -20,7 +20,6 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     tuiIsPresent,
@@ -73,15 +72,12 @@ export class TuiComboBoxComponent<T>
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     @Input()
-    @tuiDefaultProp()
     stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
 
     @Input()
-    @tuiDefaultProp()
     strictMatcher: TuiStringMatcher<T> = TUI_STRICT_MATCHER;
 
     @Input()
-    @tuiDefaultProp()
     identityMatcher: TuiItemsHandlers<T>['identityMatcher'] =
         this.itemsHandlers.identityMatcher;
 
@@ -89,11 +85,9 @@ export class TuiComboBoxComponent<T>
     valueContent: PolymorpheusContent<TuiValueContentContext<T>>;
 
     @Input()
-    @tuiDefaultProp()
     strict = true;
 
     @Input()
-    @tuiDefaultProp()
     search: string | null = null;
 
     @Output()

@@ -18,7 +18,6 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiMapper,
     tuiPure,
@@ -73,7 +72,6 @@ export class TuiInputPhoneInternationalComponent
     private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;
 
     @Input('countryIsoCode')
-    @tuiDefaultProp()
     set isoCode(code: TuiCountryIsoCode) {
         if (this.countryIsoCode === code) {
             return;

@@ -21,7 +21,6 @@ import {
     TuiBooleanHandler,
     TuiDay,
     TuiDayRange,
-    tuiDefaultProp,
     TuiDestroyService,
     TuiInjectionTokenType,
     TuiMapper,
@@ -82,19 +81,15 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     private activeMonth = 0;
 
     @Input()
-    @tuiDefaultProp()
     single = true;
 
     @Input()
-    @tuiDefaultProp()
     min = TUI_FIRST_DAY;
 
     @Input()
-    @tuiDefaultProp()
     max = TUI_LAST_DAY;
 
     @Input()
-    @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
     @Output()

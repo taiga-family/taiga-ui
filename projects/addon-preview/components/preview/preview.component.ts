@@ -9,7 +9,6 @@ import {TUI_PREVIEW_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import {
     ALWAYS_FALSE_HANDLER,
     tuiClamp,
-    tuiDefaultProp,
     tuiDragAndDropFrom,
     TuiDragStage,
     tuiPx,
@@ -35,11 +34,9 @@ const ROTATION_ANGLE = 90;
 })
 export class TuiPreviewComponent {
     @Input()
-    @tuiDefaultProp()
     zoomable = true;
 
     @Input()
-    @tuiDefaultProp()
     rotatable = false;
 
     minZoom = 1;

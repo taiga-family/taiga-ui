@@ -23,7 +23,6 @@ import {
     TUI_IS_MOBILE,
     tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     TuiNativeFocusableElement,
@@ -80,22 +79,18 @@ export class TuiInputFilesComponent
      * @deprecated: use `<input tuiInputFiles accept="image/*" />`
      */
     @Input()
-    @tuiDefaultProp()
     accept = this.options.accepts;
 
     /**
      * @deprecated: use `<input tuiInputFiles multiple />`
      */
     @Input()
-    @tuiDefaultProp()
     multiple = this.options.multiple;
 
     @Input()
-    @tuiDefaultProp()
     size: TuiSizeL = this.options.size;
 
     @Input()
-    @tuiDefaultProp()
     maxFileSize = this.options.maxFileSize;
 
     @Output()

@@ -2,6 +2,9 @@ import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 
 /**
+ * @deprecated:
+ * not compatible with TypeScript 5
+ *
  * Decorator for checking input values for undefined. You can also pass
  * optional assertion to check input against.
  *

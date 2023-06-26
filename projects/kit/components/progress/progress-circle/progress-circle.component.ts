@@ -8,11 +8,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {USER_AGENT, WINDOW} from '@ng-web-apis/common';
-import {
-    CHROMIUM_EDGE_START_VERSION,
-    tuiDefaultProp,
-    tuiIsEdgeOlderThan,
-} from '@taiga-ui/cdk';
+import {CHROMIUM_EDGE_START_VERSION, tuiIsEdgeOlderThan} from '@taiga-ui/cdk';
 import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
 import {of} from 'rxjs';
 import {delay} from 'rxjs/operators';
@@ -28,21 +24,17 @@ export class TuiProgressCircleComponent {
     private readonly progressCircle!: ElementRef<SVGCircleElement>;
 
     @Input()
-    @tuiDefaultProp()
     value = 0;
 
     @Input()
-    @tuiDefaultProp()
     max = 1;
 
     @Input()
     @HostBinding('style.--tui-progress-color')
-    @tuiDefaultProp()
     color: string | null = null;
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeS | TuiSizeXL = 'm';
 
     @HostBinding('style.--progress-percentage')

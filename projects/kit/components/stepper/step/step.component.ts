@@ -7,7 +7,7 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {tuiDefaultProp, TuiDestroyService, TuiFocusVisibleService} from '@taiga-ui/cdk';
+import {TuiDestroyService, TuiFocusVisibleService} from '@taiga-ui/cdk';
 import {TuiRouterLinkActiveService} from '@taiga-ui/core';
 import {identity, Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
@@ -28,11 +28,9 @@ import {TuiStepperComponent} from '../stepper.component';
 export class TuiStepComponent {
     @Input()
     @HostBinding('attr.data-state')
-    @tuiDefaultProp()
     stepState: 'error' | 'normal' | 'pass' = 'normal';
 
     @Input()
-    @tuiDefaultProp()
     icon = '';
 
     @HostBinding('class._focus-visible')

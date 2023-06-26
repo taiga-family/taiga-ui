@@ -18,7 +18,6 @@ import {
 } from '@taiga-ui/addon-editor/utils';
 import {
     AbstractTuiControl,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
     tuiPure,
@@ -47,7 +46,6 @@ export class TuiInputColorComponent
     private readonly dropdown?: TuiHostedDropdownComponent;
 
     @Input()
-    @tuiDefaultProp()
     colors: ReadonlyMap<string, string> = new Map<string, string>();
 
     open = false;

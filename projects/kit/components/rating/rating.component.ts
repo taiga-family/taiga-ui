@@ -16,7 +16,6 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
@@ -41,19 +40,15 @@ export class TuiRatingComponent
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
     @Input()
-    @tuiDefaultProp()
     min = this.options.min;
 
     @Input()
-    @tuiDefaultProp()
     max = this.options.max;
 
     @Input()
-    @tuiDefaultProp()
     iconNormal = this.options.iconNormal;
 
     @Input()
-    @tuiDefaultProp()
     iconFilled = this.options.iconFilled;
 
     constructor(
