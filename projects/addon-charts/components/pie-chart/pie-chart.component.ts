@@ -9,12 +9,7 @@ import {
     Output,
 } from '@angular/core';
 import {SafeValue} from '@angular/platform-browser';
-import {
-    TuiContextWithImplicit,
-    TuiIdService,
-    tuiPure,
-    tuiSum,
-} from '@taiga-ui/cdk';
+import {TuiContextWithImplicit, TuiIdService, tuiPure, tuiSum} from '@taiga-ui/cdk';
 import {
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
