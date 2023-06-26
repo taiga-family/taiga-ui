@@ -23,16 +23,11 @@
     *ngIf="isHex; else rgb"
     tuiValueAccessor
     tuiTextfieldSize="m"
-    [textMask]="hexMask"
+    [maskito]="hexMask"
     [tuiTextfieldLabelOutside]="true"
     [value]="hex"
     (valueChange)="onHexChange($event)"
->
-    <input
-        tuiTextfield
-        maxlength="6"
-    />
-</tui-primitive-textfield>
+></tui-primitive-textfield>
 <ng-template #rgb>
     <tui-input-count
         tuiTextfieldSize="m"
