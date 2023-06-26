@@ -144,7 +144,7 @@ export class TuiInputNumberComponent
     }
 
     get formattedValue(): string {
-        return this.value !== null ? this.getFormattedValue(this.value) : '';
+        return this.value !== null ? this.getFormattedValue(this.value || 0) : '';
     }
 
     get computedValue(): string {
