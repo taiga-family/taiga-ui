@@ -4,12 +4,15 @@ import {
     ContentChildren,
     forwardRef,
     HostBinding,
+    Inject,
     Input,
     QueryList,
     TemplateRef,
 } from '@angular/core';
 import {EMPTY_QUERY, TuiItemDirective} from '@taiga-ui/cdk';
-import {TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
+import {TuiModeDirective} from '@taiga-ui/core';
+
+import {TUI_BREADCRUMBS_OPTIONS, TuiBreadcrumbsOptions} from './breadcrumbs.options';
 
 @Component({
     selector: 'tui-breadcrumbs',
@@ -26,10 +29,16 @@ import {TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
 export class TuiBreadcrumbsComponent extends TuiModeDirective {
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeL = 'm';
+    size = this.options.size;
 
     @ContentChildren(TuiItemDirective, {read: TemplateRef})
     readonly items: QueryList<TemplateRef<Record<string, unknown>>> = EMPTY_QUERY;
 
-    override readonly mode = 'onLight';
+    override readonly mode = this.options.mode;
+
+    constructor(
+        @Inject(TUI_BREADCRUMBS_OPTIONS) readonly options: TuiBreadcrumbsOptions,
+    ) {
+        super();
+    }
 }

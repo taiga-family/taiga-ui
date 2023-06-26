@@ -1,0 +1,45 @@
+<tui-breadcrumbs [style.color]="'red'">
+    <tui-hosted-dropdown
+        *tuiItem
+        [content]="content"
+    >
+        <button
+            tuiIconButton
+            icon="tuiIconMoreHorizontal"
+            size="xs"
+            appearance="secondary"
+            title="More"
+        ></button>
+        <ng-template #content>
+            <tui-data-list>
+                <a
+                    *tuiRepeatTimes="let index of items.length - max"
+                    tuiOption
+                    [href]="items[index].link"
+                >
+                    {{ items[index].caption }}
+                </a>
+            </tui-data-list>
+        </ng-template>
+    </tui-hosted-dropdown>
+    <ng-container *tuiRepeatTimes="let index of max">
+        <a
+            *tuiItem
+            tuiLink
+            [routerLink]="items[index + items.length - max].link"
+        >
+            {{ items[index + items.length - max].caption }}
+        </a>
+    </ng-container>
+</tui-breadcrumbs>
+<p>
+    <tui-input-number
+        class="b-form"
+        [min]="2"
+        [max]="4"
+        [step]="1"
+        [(ngModel)]="max"
+    >
+        Max tabs
+    </tui-input-number>
+</p>
