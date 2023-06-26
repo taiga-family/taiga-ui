@@ -1,7 +1,6 @@
 {
     "name": "cdk",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "root": "projects/cdk",
     "sourceRoot": "projects/cdk",
     "projectType": "library",
     "prefix": "tui",
@@ -28,14 +27,14 @@
             "dependsOn": [
                 {
                     "target": "build",
-                    "projects": "dependencies",
-                    "params": "forward"
+                    "params": "forward",
+                    "dependencies": true
                 }
             ]
         },
         "build": {
             "executor": "nx:run-commands",
-            "outputs": ["dist/cdk"],
+            "outputs": ["{workspaceRoot}/dist/cdk"],
             "options": {
                 "parallel": false,
                 "commands": ["nx prebuild cdk", "nx postbuild cdk"]
@@ -49,7 +48,7 @@
         },
         "test": {
             "executor": "nx:run-commands",
-            "outputs": ["coverage/cdk"],
+            "outputs": ["{workspaceRoot}/coverage/cdk"],
             "options": {
                 "command": "jest --testMatch \"**/projects/cdk/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/cdk/**/*.ts\" --coverage-directory=coverage/cdk",
                 "forwardAllArgs": true
@@ -57,7 +56,6 @@
             "dependsOn": [
                 {
                     "target": "test-schematics",
-                    "projects": "self",
                     "params": "forward"
                 }
             ]
@@ -74,7 +72,6 @@
             "dependsOn": [
                 {
                     "target": "postbuild",
-                    "projects": "self",
                     "params": "forward"
                 }
             ]

@@ -1,7 +1,6 @@
 {
     "name": "core",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "root": "projects/core",
     "sourceRoot": "projects/core",
     "projectType": "library",
     "prefix": "tui",
@@ -21,7 +20,7 @@
         },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["dist/core"],
+            "outputs": ["{workspaceRoot}/dist/core"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "projects/core/ng-package.json"
@@ -29,14 +28,14 @@
             "dependsOn": [
                 {
                     "target": "build",
-                    "projects": "dependencies",
-                    "params": "forward"
+                    "params": "forward",
+                    "dependencies": true
                 }
             ]
         },
         "test": {
             "executor": "nx:run-commands",
-            "outputs": ["coverage/core"],
+            "outputs": ["{workspaceRoot}/coverage/core"],
             "options": {
                 "command": "jest --testMatch \"**/projects/core/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/core/**/*.ts\" --coverage-directory=coverage/core"
             }

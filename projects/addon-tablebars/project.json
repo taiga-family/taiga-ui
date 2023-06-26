@@ -1,7 +1,6 @@
 {
     "name": "addon-tablebars",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "root": "projects/addon-tablebars",
     "sourceRoot": "projects/addon-tablebars/src",
     "projectType": "library",
     "prefix": "tui",
@@ -21,7 +20,7 @@
         },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["dist/addon-tablebars"],
+            "outputs": ["{workspaceRoot}/dist/addon-tablebars"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "projects/addon-tablebars/ng-package.json"
@@ -29,14 +28,14 @@
             "dependsOn": [
                 {
                     "target": "build",
-                    "projects": "dependencies",
-                    "params": "forward"
+                    "params": "forward",
+                    "dependencies": true
                 }
             ]
         },
         "test": {
             "executor": "nx:run-commands",
-            "outputs": ["coverage/addon-tablebars"],
+            "outputs": ["{workspaceRoot}/coverage/addon-tablebars"],
             "options": {
                 "command": "jest --testMatch \"**/projects/addon-tablebars/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/addon-tablebars/**/*.ts\" --coverage-directory=coverage/addon-tablebars",
                 "forwardAllArgs": true

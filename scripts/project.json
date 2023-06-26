@@ -1,7 +1,6 @@
 {
     "name": "scripts",
     "$schema": "../node_modules/nx/schemas/project-schema.json",
-    "root": "projects/scripts",
     "sourceRoot": "projects/scripts",
     "projectType": "application",
     "targets": {

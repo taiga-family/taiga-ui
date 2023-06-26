@@ -1,7 +1,6 @@
 {
     "name": "addon-editor",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "root": "projects/addon-editor",
     "sourceRoot": "projects/addon-editor",
     "projectType": "library",
     "prefix": "tui",
@@ -28,7 +27,7 @@
         },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["dist/addon-editor"],
+            "outputs": ["{workspaceRoot}/dist/addon-editor"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "projects/addon-editor/ng-package.json"
@@ -36,14 +35,14 @@
             "dependsOn": [
                 {
                     "target": "build",
-                    "projects": "dependencies",
-                    "params": "forward"
+                    "params": "forward",
+                    "dependencies": true
                 }
             ]
         },
         "test": {
             "executor": "nx:run-commands",
-            "outputs": ["coverage/addon-editor"],
+            "outputs": ["{workspaceRoot}/coverage/addon-editor"],
             "options": {
                 "command": "jest --testMatch \"**/projects/addon-editor/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/addon-editor/**/*.ts\" --coverage-directory=coverage/addon-editor"
             }

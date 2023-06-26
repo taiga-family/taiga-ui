@@ -1,7 +1,6 @@
 {
     "name": "layout",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "root": "projects/layout",
     "sourceRoot": "projects/layout",
     "projectType": "library",
     "prefix": "tui",
@@ -21,7 +20,7 @@
         },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["dist/layout"],
+            "outputs": ["{workspaceRoot}/dist/layout"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "projects/layout/ng-package.json"
@@ -29,14 +28,14 @@
             "dependsOn": [
                 {
                     "target": "build",
-                    "projects": "dependencies",
-                    "params": "forward"
+                    "params": "forward",
+                    "dependencies": true
                 }
             ]
         },
         "test": {
             "executor": "nx:run-commands",
-            "outputs": ["coverage/layout"],
+            "outputs": ["{workspaceRoot}/coverage/layout"],
             "options": {
                 "command": "jest --testMatch \"**/projects/layout/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/layout/**/*.ts\" --coverage-directory=coverage/layout"
             }

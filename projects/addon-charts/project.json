@@ -1,7 +1,6 @@
 {
     "name": "addon-charts",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "root": "projects/addon-charts",
     "sourceRoot": "projects/addon-charts",
     "projectType": "library",
     "prefix": "tui",
@@ -21,7 +20,7 @@
         },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["dist/addon-charts"],
+            "outputs": ["{workspaceRoot}/dist/addon-charts"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "projects/addon-charts/ng-package.json"
@@ -29,14 +28,14 @@
             "dependsOn": [
                 {
                     "target": "build",
-                    "projects": "dependencies",
-                    "params": "forward"
+                    "params": "forward",
+                    "dependencies": true
                 }
             ]
         },
         "test": {
             "executor": "nx:run-commands",
-            "outputs": ["coverage/addon-charts"],
+            "outputs": ["{workspaceRoot}/coverage/addon-charts"],
             "options": {
                 "command": "jest --testMatch \"**/projects/addon-charts/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/addon-charts/**/*.ts\" --coverage-directory=coverage/addon-charts"
             }
