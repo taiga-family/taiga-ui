@@ -5,8 +5,10 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import {MaskitoOptions} from '@maskito/core';
 import {tuiDefaultProp, tuiHexToRgb, tuiRgbToHex} from '@taiga-ui/cdk';
-import {TuiTextMaskOptions} from '@taiga-ui/core';
+
+const HEX_MODE_LENGTH = 6;
 
 @Component({
     selector: 'tui-color-edit',
@@ -22,9 +24,8 @@ export class TuiColorEditComponent {
     @Output()
     readonly colorChange = new EventEmitter<[number, number, number, number]>();
 
-    readonly hexMask: TuiTextMaskOptions = {
-        mask: ({length}) => Array.from({length}, () => /\d|[a-f]|[A-F]/),
-        guide: false,
+    readonly hexMask: MaskitoOptions = {
+        mask: new RegExp(`^[A-F\\d]{0,${HEX_MODE_LENGTH}}$`, 'gi'),
     };
 
     readonly modes = ['HEX', 'RGB'];
@@ -44,7 +45,7 @@ export class TuiColorEditComponent {
     }
 
     onHexChange(hex: string): void {
-        if (hex.length !== 6) {
+        if (hex.length !== HEX_MODE_LENGTH) {
             return;
         }
 
