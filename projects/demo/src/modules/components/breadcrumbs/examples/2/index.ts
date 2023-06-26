@@ -40,7 +40,7 @@ export class TuiBreadcrumbsExample2 {
         },
         {
             caption: 'Breadcrumbs',
-            link: 'https://taiga-ui.dev/components/breadcrumbs',
+            link: 'https://taiga-ui.dev/navigation/breadcrumbs',
         },
     ];
 
