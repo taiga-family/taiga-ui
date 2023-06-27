@@ -33,7 +33,13 @@ export class TuiStaticRequestService {
                   defer(() => from(fetch(url)));
 
         const piped = response$.pipe(
-            switchMap(async res => res.text()),
+            switchMap(async response => {
+                if (response.ok) {
+                    return response.text();
+                }
+
+                throw new Error(`Failed to load ${url} (${response.statusText})`);
+            }),
             shareReplay({bufferSize: 1, refCount: false}),
         );
 

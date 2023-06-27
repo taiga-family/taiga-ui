@@ -34,6 +34,7 @@ export class IconsComponent {
                 s3,1.3,3,3v0.1c2.3,0.6,4,3,4,5.9v3.8l1.4,4.2h-4.5c-0.4,1.8-2,3-3.9,3c-1.8,0-3.4-1.2-3.9-3H3.6z"/>
         </svg>`,
         assets`/images/ts.svg#ts`,
+        assets`/images/undefined.svg`,
     ];
 
     icon = this.iconVariants[0];
