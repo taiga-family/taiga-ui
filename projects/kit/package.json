@@ -16,7 +16,7 @@
         "@maskito/angular": "1.1.0",
         "@maskito/core": "1.1.0",
         "@maskito/kit": "1.1.0",
-        "@ng-web-apis/intersection-observer": "3.1.0",
+        "@ng-web-apis/intersection-observer": "3.1.1",
         "text-mask-core": "5.1.2"
     },
     "peerDependencies": {
