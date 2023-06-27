@@ -23,6 +23,7 @@ import {
     HTML_EDITOR_EXAMPLE_LONG_WORD_UL,
     HTML_EDITOR_EXAMPLE_NESTED_OL_UL,
     HTML_EDITOR_EXAMPLE_NESTED_UL,
+    HTML_EDITOR_EXAMPLE_NESTED_UL_OL,
     HTML_EDITOR_EXAMPLE_PRE_CODE,
     HTML_EDITOR_EXAMPLE_TABLE,
     HTML_EDITOR_EXAMPLE_UL,
@@ -145,6 +146,15 @@ describe(`Editor API`, () => {
                 .find(`tui-editor-socket.tui-example`)
                 .tuiWaitBeforeScreenshot()
                 .matchImageSnapshot(`5-1-bullet-and-ordered-nested-list`);
+        });
+
+        it(`nested ul and ol`, () => {
+            tuiVisitEditorApiPage({content: HTML_EDITOR_EXAMPLE_NESTED_UL_OL});
+
+            tuiGetDemoContent()
+                .find(`tui-editor-socket.tui-example`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`5-1-bullet-and-ordered-nested--ol-ul-list`);
         });
 
         it(`long words`, () => {
