@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.34.0](https://github.com/tinkoff/taiga-ui/compare/v3.33.1...v3.34.0) (2023-06-27)
+
+### Features
+
+- **addon-editor:** `ColorSelector` uses `Maskito` instead of legacy `text-mask`
+  ([#4774](https://github.com/tinkoff/taiga-ui/issues/4774))
+  ([6f4528c](https://github.com/tinkoff/taiga-ui/commit/6f4528cdf0ea13133c29f12942f20955ea13325c))
+- **cdk:** adding support ECMA Decorators for `[@tui](https://github.com/tui)Pure`
+  ([#4730](https://github.com/tinkoff/taiga-ui/issues/4730))
+  ([a0b275c](https://github.com/tinkoff/taiga-ui/commit/a0b275c6980779a8bb86b756bb422d08afbf9923))
+- **core:** deprecate `[@tui](https://github.com/tui)DefaultProp`, `[@tui](https://github.com/tui)RequiredSetter`,
+  `[@tui](https://github.com/tui)Debounce` ([#4737](https://github.com/tinkoff/taiga-ui/issues/4737))
+  ([11fb027](https://github.com/tinkoff/taiga-ui/commit/11fb027cefeee9b1839efc91cbdfb7df0c2eb695))
+- **kit:** `Breadcrumbs` add DI customization ([#4771](https://github.com/tinkoff/taiga-ui/issues/4771))
+  ([7e01b6e](https://github.com/tinkoff/taiga-ui/commit/7e01b6e16994f2b7200d775b28aca3bb1a8931d7))
+
+### Bug Fixes
+
+- `tuiSlot` extend type with a string ([#4779](https://github.com/tinkoff/taiga-ui/issues/4779))
+  ([1c112e8](https://github.com/tinkoff/taiga-ui/commit/1c112e8578e2ca13fbe66a6621465e6650f70883))
+- **addon-charts:** `RingChart` fix mask url ([#4777](https://github.com/tinkoff/taiga-ui/issues/4777))
+  ([d33887b](https://github.com/tinkoff/taiga-ui/commit/d33887b4a883813356d54ed9ea9370246c672c70))
+
 ### [3.33.1](https://github.com/tinkoff/taiga-ui/compare/v3.33.0...v3.33.1) (2023-06-23)
 
 ### Features
