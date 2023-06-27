@@ -16,7 +16,7 @@ describe(`TablePagination`, () => {
         });
 
         it(`With very long option name`, () => {
-            const longNumber = 10000000000000000000;
+            const longNumber = Number.MAX_SAFE_INTEGER;
 
             cy.tuiVisit(
                 `/components/table-pagination/API?items=[0, ${longNumber}]&size=${longNumber}&total=${longNumber}&page=0`,

@@ -1,3 +1,6 @@
+// eslint-disable-next-line @taiga-ui/no-deep-imports
+import {CHAR_MINUS} from '@taiga-ui/cdk/constants';
+
 describe(`InputSlider`, () => {
     describe(`examples page`, () => {
         beforeEach(() => {
@@ -81,6 +84,72 @@ describe(`InputSlider`, () => {
             cy.get(`#demo-content`)
                 .should(`be.visible`)
                 .matchImageSnapshot(`4-value-content-not-overlapped`);
+        });
+    });
+
+    describe(`[min] prop`, () => {
+        describe(`positive numbers`, () => {
+            beforeEach(() => {
+                cy.viewport(`iphone-x`);
+                cy.tuiVisit(
+                    `components/input-slider/API?min=10&max=100&quantum=0.001&steps=90`,
+                );
+                initializeAliases(`#demo-content tui-input-slider`);
+                cy.get(`@textInput`).clear();
+            });
+
+            it(`cannot type number less than [min] property`, () => {
+                cy.get(`@textInput`).type(`9.999`).blur().should(`have.value`, `10`);
+            });
+
+            it(`cannot even type minus if [min] is positive`, () => {
+                cy.get(`@textInput`).type(`-11`).should(`have.value`, `11`);
+            });
+
+            it(`cannot set value less than min using ArrowDown`, () => {
+                cy.get(`@textInput`)
+                    .type(`11`)
+                    .type(`{downArrow}`)
+                    .should(`have.value`, `10`)
+                    .type(`{downArrow}`)
+                    .should(`have.value`, `10`);
+            });
+        });
+
+        describe(`negative numbers`, () => {
+            beforeEach(() => {
+                cy.viewport(`iphone-x`);
+                cy.tuiVisit(
+                    `components/input-slider/API?min=-10&max=100&quantum=0.001&steps=90`,
+                );
+                initializeAliases(`#demo-content tui-input-slider`);
+                cy.get(`@textInput`).clear();
+            });
+
+            it(`can type negative number more than [min]`, () => {
+                cy.get(`@textInput`).type(`-5`).should(`have.value`, `${CHAR_MINUS}5`);
+            });
+
+            it(`cannot type negative number less than [min]`, () => {
+                cy.get(`@textInput`).type(`-11`).should(`have.value`, `${CHAR_MINUS}10`);
+            });
+        });
+
+        describe(`if [min]-property equals to [max]-property`, () => {
+            beforeEach(() => {
+                cy.viewport(`iphone-x`);
+                cy.tuiVisit(`components/input-slider/API?min=25&max=25&quantum=1`);
+                initializeAliases(`#demo-content tui-input-slider`);
+                cy.get(`@textInput`).clear().type(`25`);
+            });
+
+            it(`pressing ArrowUp does not change value`, () => {
+                cy.get(`@textInput`).type(`{upArrow}`).should(`have.value`, `25`);
+            });
+
+            it(`pressing ArrowDown does not change value`, () => {
+                cy.get(`@textInput`).type(`{downArrow}`).should(`have.value`, `25`);
+            });
         });
     });
 

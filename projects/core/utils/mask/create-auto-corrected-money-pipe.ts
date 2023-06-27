@@ -10,6 +10,8 @@ import {TuiTextMaskPipeHandler} from '@taiga-ui/core/mask';
 import {TuiDecimalSymbol} from '@taiga-ui/core/types';
 
 /**
+ * TODO: delete in v4.0
+ * @deprecated Use {@link https://tinkoff.github.io/maskito/kit/number Number} from {@link https://github.com/Tinkoff/maskito Maskito} instead <br/>
  * Used to finish a number with zeros to a given precision
  */
 export function tuiCreateAutoCorrectedNumberPipe(

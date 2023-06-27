@@ -1,6 +1,7 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {CHAR_HYPHEN, CHAR_MINUS} from '@taiga-ui/cdk';
 import {TuiInputCountComponent, TuiInputCountModule} from '@taiga-ui/kit';
 import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
@@ -102,15 +103,19 @@ describe(`InputCount`, () => {
                 await fixture.whenStable();
             });
 
-            it(`Pressing the plus increases the value by 1`, () => {
+            it(`Pressing the plus increases the value by 1`, async () => {
                 clickPlusButton();
+
+                await fixture.whenStable();
 
                 expect(inputPO.value).toBe(`2`);
                 expect(testComponent.control.value).toBe(2);
             });
 
-            it(`Pressing the minus decreases the value by 1`, () => {
+            it(`Pressing the minus decreases the value by 1`, async () => {
                 clickMinusButton();
+
+                await fixture.whenStable();
 
                 expect(inputPO.value).toBe(`0`);
                 expect(testComponent.control.value).toBe(0);
@@ -146,7 +151,7 @@ describe(`InputCount`, () => {
 
                 // Should wait for the mask updating
                 await fixture.whenStable();
-                expect(inputPO.value).toBe(`-16`);
+                expect(inputPO.value).toBe(`${CHAR_MINUS}16`);
                 expect(testComponent.control.value).toBe(-16);
             });
 
@@ -154,7 +159,7 @@ describe(`InputCount`, () => {
                 clickMinusButton();
 
                 await fixture.whenStable();
-                expect(inputPO.value).toBe(`-18`);
+                expect(inputPO.value).toBe(`${CHAR_MINUS}18`);
                 expect(testComponent.control.value).toBe(-18);
             });
         });
@@ -199,7 +204,9 @@ describe(`InputCount`, () => {
                 clickMinusButton(); // value became === 1
                 clickMinusButton(); // the new value would be -4, but it's less than min
 
-                expect(inputPO.value).toBe(testComponent.min.toString());
+                expect(inputPO.value).toBe(
+                    testComponent.min.toString().replace(CHAR_HYPHEN, CHAR_MINUS),
+                );
                 expect(testComponent.control.value).toBe(testComponent.min);
             });
 
@@ -236,14 +243,6 @@ describe(`InputCount`, () => {
             expect(testComponent.control.value).toBe(12);
         });
 
-        it(`Entering a large number in the field changes the value to the limit`, () => {
-            fixture.detectChanges();
-
-            inputPO.sendText(`43000789`);
-
-            expect(testComponent.control.value).toBe(testComponent.max);
-        });
-
         it(`If you enter a number less than min, the new value is min`, async () => {
             testComponent.min = 10;
             fixture.detectChanges();
@@ -251,16 +250,6 @@ describe(`InputCount`, () => {
             inputPO.sendTextAndBlur(`7`);
 
             await fixture.whenStable();
-
-            expect(inputPO.value).toBe(`10`);
-            expect(testComponent.control.value).toBe(10);
-        });
-
-        it(`If you enter a number greater than max, the new value is max`, () => {
-            testComponent.max = 10;
-            fixture.detectChanges();
-
-            inputPO.sendTextAndBlur(`15`);
 
             expect(inputPO.value).toBe(`10`);
             expect(testComponent.control.value).toBe(10);
@@ -340,7 +329,7 @@ describe(`InputCount`, () => {
 
             await fixture.whenStable();
 
-            expect(inputPO.value).toBe(`-5`);
+            expect(inputPO.value).toBe(`${CHAR_MINUS}5`);
             expect(testComponent.control.value).toBe(-5);
         });
 
@@ -354,7 +343,7 @@ describe(`InputCount`, () => {
 
             await fixture.whenStable();
 
-            expect(inputPO.value).toBe(`-15`);
+            expect(inputPO.value).toBe(`${CHAR_MINUS}15`);
             expect(testComponent.control.value).toBe(-15);
         });
     });

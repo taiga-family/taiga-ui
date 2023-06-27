@@ -1,11 +1,11 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {TuiDecimal, tuiNumberFormatProvider} from '@taiga-ui/core';
 import {TuiInputNumberComponent, TuiInputNumberModule} from '@taiga-ui/kit';
-import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiNativeInputPO} from '@taiga-ui/testing';
 
 describe(`InputNumber - backward compatibility for separators`, () => {
     @Component({
@@ -33,8 +33,7 @@ describe(`InputNumber - backward compatibility for separators`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiInputNumberComponent;
-    let pageObject: TuiPageObject<TestComponent>;
-    let nativeInput: HTMLInputElement;
+    let inputPO: TuiNativeInputPO;
 
     describe(`Format - {d d d,d}`, () => {
         configureTestSuite(() => {
@@ -50,26 +49,27 @@ describe(`InputNumber - backward compatibility for separators`, () => {
 
         beforeEach(() => {
             fixture = TestBed.createComponent(TestComponent);
-            pageObject = new TuiPageObject(fixture);
             testComponent = fixture.componentInstance;
             fixture.detectChanges();
             component = testComponent.component;
-            nativeInput = getNativeInput()!.nativeElement;
             fixture.detectChanges();
+
+            inputPO = new TuiNativeInputPO(
+                fixture,
+                `tui-primitive-textfield__native-input`,
+            );
         });
 
         it(`comma usage`, () => {
-            nativeInput.value = `55666,7777`;
-            nativeInput.focus();
-            fixture.detectChanges();
+            inputPO.sendText(`55666,7777`);
+            inputPO.focus();
 
             expect(component.computedValue).toBe(`55${CHAR_NO_BREAK_SPACE}666,77`);
         });
 
         it(`dot usage`, () => {
-            nativeInput.value = `55666.7777`;
-            nativeInput.focus();
-            fixture.detectChanges();
+            inputPO.sendText(`55666.7777`);
+            inputPO.focus();
 
             expect(component.computedValue).toBe(`55${CHAR_NO_BREAK_SPACE}666,77`);
         });
@@ -89,26 +89,26 @@ describe(`InputNumber - backward compatibility for separators`, () => {
 
         beforeEach(() => {
             fixture = TestBed.createComponent(TestComponent);
-            pageObject = new TuiPageObject(fixture);
             testComponent = fixture.componentInstance;
             fixture.detectChanges();
             component = testComponent.component;
-            nativeInput = getNativeInput()!.nativeElement;
             fixture.detectChanges();
+            inputPO = new TuiNativeInputPO(
+                fixture,
+                `tui-primitive-textfield__native-input`,
+            );
         });
 
         it(`comma usage`, () => {
-            nativeInput.value = `55666,7777`;
-            nativeInput.focus();
-            fixture.detectChanges();
+            inputPO.sendText(`55666,7777`);
+            inputPO.focus();
 
             expect(component.computedValue).toBe(`55${CHAR_NO_BREAK_SPACE}666,77`);
         });
 
         it(`dot usage`, () => {
-            nativeInput.value = `55666.7777`;
-            nativeInput.focus();
-            fixture.detectChanges();
+            inputPO.sendText(`55666.7777`);
+            inputPO.focus();
 
             expect(component.computedValue).toBe(`55${CHAR_NO_BREAK_SPACE}666,77`);
         });
@@ -134,32 +134,28 @@ describe(`InputNumber - backward compatibility for separators`, () => {
 
         beforeEach(() => {
             fixture = TestBed.createComponent(TestComponent);
-            pageObject = new TuiPageObject(fixture);
             testComponent = fixture.componentInstance;
             fixture.detectChanges();
             component = testComponent.component;
-            nativeInput = getNativeInput()!.nativeElement;
             fixture.detectChanges();
+            inputPO = new TuiNativeInputPO(
+                fixture,
+                `tui-primitive-textfield__native-input`,
+            );
         });
 
         it(`comma usage`, () => {
-            nativeInput.value = `556,667,777`;
-            nativeInput.focus();
-            fixture.detectChanges();
+            inputPO.sendText(`556,667,777`);
+            inputPO.focus();
 
             expect(component.computedValue).toBe(`556,667,777.00`);
         });
 
         it(`dot usage`, () => {
-            nativeInput.value = `556,667,777.99`;
-            nativeInput.focus();
-            fixture.detectChanges();
+            inputPO.sendText(`556,667,777.99`);
+            inputPO.focus();
 
             expect(component.computedValue).toBe(`556,667,777.99`);
         });
     });
-
-    function getNativeInput(): DebugElement | null {
-        return pageObject.getByAutomationId(`tui-primitive-textfield__native-input`);
-    }
 });

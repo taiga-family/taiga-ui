@@ -1,3 +1,6 @@
+// eslint-disable-next-line @taiga-ui/no-deep-imports
+import {CHAR_MINUS} from '@taiga-ui/cdk/constants';
+
 describe(`InputRange`, () => {
     beforeEach(() => {
         cy.viewport(`macbook-13`);
@@ -15,12 +18,12 @@ describe(`InputRange`, () => {
             cy.get(`body`).type(`{downarrow}`);
 
             cy.get(`@leftSlider`).should(`have.value`, -5);
-            cy.get(`@leftTextInput`).should(`have.value`, -5);
+            cy.get(`@leftTextInput`).should(`have.value`, `${CHAR_MINUS}5`);
 
             cy.get(`body`).type(`{downarrow}`);
 
             cy.get(`@leftSlider`).should(`have.value`, -10);
-            cy.get(`@leftTextInput`).should(`have.value`, -10);
+            cy.get(`@leftTextInput`).should(`have.value`, `${CHAR_MINUS}10`);
         });
 
         it(`pressing Arrow Down decreases RIGHT value when RIGHT text input is focused`, () => {
@@ -174,7 +177,9 @@ describe(`InputRange`, () => {
                 cy.get(`@rightSlider`).should(`have.value`, 10);
                 cy.get(`@rightTextInput`).should(`have.value`, 10);
 
-                cy.get(`@leftTextInput`).should(`have.value`, -100).should(`be.focused`);
+                cy.get(`@leftTextInput`)
+                    .should(`have.value`, `${CHAR_MINUS}100`)
+                    .should(`be.focused`);
             });
         });
 
@@ -260,7 +265,9 @@ describe(`InputRange`, () => {
                     .click(`left`, {force: true})
                     .should(`have.value`, -20);
 
-                cy.get(`@leftTextInput`).should(`have.value`, -20).should(`be.focused`);
+                cy.get(`@leftTextInput`)
+                    .should(`have.value`, `${CHAR_MINUS}20`)
+                    .should(`be.focused`);
             });
 
             it(`does not focus anything if no text input was focused before`, () => {
@@ -272,7 +279,7 @@ describe(`InputRange`, () => {
                     .should(`have.value`, -20);
 
                 cy.get(`@leftTextInput`)
-                    .should(`have.value`, -20)
+                    .should(`have.value`, `${CHAR_MINUS}20`)
                     .should(`not.be.focused`);
                 cy.get(`@rightTextInput`)
                     .should(`have.value`, 10)
@@ -283,7 +290,7 @@ describe(`InputRange`, () => {
                     .should(`have.value`, 20);
 
                 cy.get(`@leftTextInput`)
-                    .should(`have.value`, -20)
+                    .should(`have.value`, `${CHAR_MINUS}20`)
                     .should(`not.be.focused`);
                 cy.get(`@rightTextInput`)
                     .should(`have.value`, 20)
