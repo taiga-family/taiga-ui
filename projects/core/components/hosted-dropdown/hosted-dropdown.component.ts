@@ -77,7 +77,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @ContentChild(TuiHostedDropdownConnectorDirective, {read: ElementRef})
     private readonly dropdownHost?: ElementRef<HTMLElement>;
 
-    @ViewChild('wrapper', {read: ElementRef})
+    @ViewChild('wrapper', {read: ElementRef, static: true})
     private readonly wrapper?: ElementRef<HTMLDivElement>;
 
     @ViewChild(TuiDropdownDirective)
