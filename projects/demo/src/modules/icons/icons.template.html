@@ -79,7 +79,10 @@
 
     <ng-template pageTab="Component">
         <div class="b-full-width">
-            <tui-svg [src]="icon"></tui-svg>
+            <tui-svg
+                [src]="icon"
+                (tui-icon-error)="documentationPropertyIconErrorChange.emitEvent($event)"
+            ></tui-svg>
         </div>
 
         <tui-doc-documentation>
@@ -94,6 +97,7 @@
                 size with CSS
             </ng-template>
             <ng-template
+                #documentationPropertyIconErrorChange="documentationProperty"
                 documentationPropertyName="tui-icon-error"
                 documentationPropertyMode="output"
                 documentationPropertyType="CustomEvent<TuiIconError>"
