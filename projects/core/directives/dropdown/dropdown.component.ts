@@ -21,9 +21,10 @@ import {
     tuiRectAccessorFor,
 } from '@taiga-ui/core/abstract';
 import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
+import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
-import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
-import {TuiPoint} from '@taiga-ui/core/types';
+import {TUI_ANIMATION_OPTIONS, TUI_MODE} from '@taiga-ui/core/tokens';
+import {TuiBrightness, TuiPoint} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
@@ -45,9 +46,14 @@ import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.direc
         TuiPositionService,
         tuiPositionAccessorFor('dropdown'),
         tuiRectAccessorFor('dropdown', TuiDropdownDirective),
+        MODE_PROVIDER,
     ],
     animations: [tuiDropdownAnimation],
-    host: {'[@tuiDropdownAnimation]': 'animation'},
+    host: {
+        '[@tuiDropdownAnimation]': 'animation',
+        '[attr.data-appearance]': 'options.appearance',
+        '($.data-mode.attr)': 'mode$',
+    },
     // @bad TODO: OnPush
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
@@ -64,7 +70,8 @@ export class TuiDropdownComponent implements OnDestroy {
         private readonly host: AbstractTuiPortalHostComponent,
         @Inject(TuiRectAccessor) private readonly accessor: TuiRectAccessor,
         @Inject(WINDOW) private readonly win: Window,
-        @Inject(TUI_DROPDOWN_OPTIONS) private readonly options: TuiDropdownOptions,
+        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
+        @Inject(TUI_DROPDOWN_OPTIONS) readonly options: TuiDropdownOptions,
         @Optional()
         @Inject(TuiDropdownHoverDirective)
         private readonly hoverDirective: TuiDropdownHoverDirective | null,

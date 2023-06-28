@@ -1,16 +1,15 @@
-<span (tuiActiveZoneChange)="onActiveZone($event)">
-    <button
-        tuiButton
-        type="button"
-        iconRight="tuiIconChevronDown"
-        [tuiDropdown]="dropdownContent"
-        [tuiDropdownManual]="open"
-        (tuiObscured)="onObscured($event)"
-        (click)="onClick()"
-    >
-        Choose
-    </button>
+<button
+    tuiButton
+    type="button"
+    iconRight="tuiIconChevronDown"
+    [tuiDropdown]="dropdownContent"
+    [tuiDropdownManual]="open"
+    (tuiObscured)="onObscured($event)"
+    (click)="onClick()"
+    (tuiActiveZoneChange)="onActiveZone($event)"
+>
+    Choose
     <ng-template #dropdownContent>
         <div class="dropdown">But there is nothing to choose...</div>
     </ng-template>
-</span>
+</button>
