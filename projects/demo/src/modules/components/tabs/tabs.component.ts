@@ -8,7 +8,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiTabsComponent {
-    buttons = ['button 1', 'button 2', 'button 3', 'button 4'];
+    buttons = ['Button 1', 'Button 2', 'Button 3', 'Button 4'];
 
     readonly exampleModule = import('./examples/import/import-module.md?raw');
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
