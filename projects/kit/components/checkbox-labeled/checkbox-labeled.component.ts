@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    HostBinding,
     Inject,
     Input,
     Optional,
@@ -19,13 +18,15 @@ import {
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
+    MODE_PROVIDER,
     TUI_CHECKBOX_OPTIONS,
+    TUI_MODE,
     TuiBrightness,
     TuiCheckboxOptions,
-    TuiModeDirective,
     TuiSizeL,
 } from '@taiga-ui/core';
 import {TuiCheckboxComponent} from '@taiga-ui/kit/components/checkbox';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-checkbox-labeled',
@@ -35,7 +36,12 @@ import {TuiCheckboxComponent} from '@taiga-ui/kit/components/checkbox';
     providers: [
         tuiAsFocusableItemAccessor(TuiCheckboxLabeledComponent),
         tuiAsControl(TuiCheckboxLabeledComponent),
+        MODE_PROVIDER,
     ],
+    host: {
+        '($.data-mode.attr)': 'mode$',
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiCheckboxLabeledComponent
     extends AbstractTuiNullableControl<boolean>
@@ -45,7 +51,6 @@ export class TuiCheckboxLabeledComponent
     private readonly checkbox?: TuiCheckboxComponent;
 
     @Input()
-    @HostBinding('attr.data-size')
     size: TuiSizeL = this.options.size;
 
     constructor(
@@ -54,9 +59,7 @@ export class TuiCheckboxLabeledComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Optional()
-        @Inject(TuiModeDirective)
-        private readonly modeDirective: TuiModeDirective | null,
+        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_CHECKBOX_OPTIONS)
         private readonly options: TuiCheckboxOptions,
     ) {
@@ -69,11 +72,6 @@ export class TuiCheckboxLabeledComponent
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.checkbox ? this.checkbox.nativeFocusableElement : null;
-    }
-
-    @HostBinding('attr.data-mode')
-    get hostMode(): TuiBrightness | null {
-        return this.modeDirective ? this.modeDirective.mode : null;
     }
 
     onFocused(focused: boolean): void {
