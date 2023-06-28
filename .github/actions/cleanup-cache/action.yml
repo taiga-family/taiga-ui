@@ -1,0 +1,32 @@
+name: Taiga-UI auto-cleanup cache from branch
+description: Taiga-UI auto-cleanup cache from branch
+
+inputs:
+  branch-name:
+    description: Branch name
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Git status
+      shell: bash
+      run: |
+        gh extension install actions/gh-actions-cache
+
+        REPO=${{ github.repository }}
+        BRANCH="${{ inputs.branch-name }}"
+
+        echo "Fetching list of cache key"
+        cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH | cut -f 1)
+
+        ## Setting this to not fail the workflow while deleting cache keys.
+        set +e
+        echo "Deleting caches..."
+
+        for cacheKey in $cacheKeysForPR
+        do
+          echo "Delete: $cacheKey"
+          gh actions-cache delete $cacheKey -R $REPO -B $BRANCH --confirm
+        done
+        echo "Done"

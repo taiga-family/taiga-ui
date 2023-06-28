@@ -1,6 +1,7 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {CHAR_HYPHEN, CHAR_MINUS} from '@taiga-ui/cdk';
 import {TuiInputRangeComponent, TuiInputRangeModule} from '@taiga-ui/kit';
 import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
@@ -134,7 +135,7 @@ describe(`InputRange`, () => {
         it(`Rounds the left value of an input field to the nearest quantum when focus is lost`, () => {
             inputPOLeft.sendTextAndBlur(`-7`);
 
-            expect(inputPOLeft.value).toBe(`-5`);
+            expect(inputPOLeft.value).toBe(`${CHAR_MINUS}5`);
         });
 
         it(`Rounds the right value to the nearest quantum on loss of focus`, () => {
@@ -158,7 +159,7 @@ describe(`InputRange`, () => {
             inputPOLeft.sendTextAndBlur(``);
 
             expect(testComponent.control.value[0]).toBe(-5);
-            expect(inputPOLeft.value).toBe(`-5`);
+            expect(inputPOLeft.value).toBe(`${CHAR_MINUS}5`);
         });
 
         it(`Doesn't change value when deleting right content`, () => {
@@ -188,7 +189,11 @@ describe(`InputRange`, () => {
             inputPORight.sendTextAndBlur(`-10`);
 
             expect(testComponent.control.value[1]).toBe(testComponent.control.value[0]);
-            expect(inputPORight.value).toBe(testComponent.control.value[0].toString());
+            expect(inputPORight.value).toBe(
+                testComponent.control.value[0]
+                    .toString()
+                    .replace(CHAR_HYPHEN, CHAR_MINUS),
+            );
         });
     });
 
@@ -353,7 +358,7 @@ describe(`InputRange`, () => {
                 testComponent.min = -10;
                 inputPOLeft.sendText(`-123`);
 
-                expect(inputPOLeft.value).toBe(`-10`);
+                expect(inputPOLeft.value).toBe(`${CHAR_MINUS}10`);
             });
 
             it(`Keyboard input does not go beyond value[1]`, () => {

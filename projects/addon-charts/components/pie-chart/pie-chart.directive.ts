@@ -1,13 +1,7 @@
 import {Directive, ElementRef, Inject, Input, NgZone, Self} from '@angular/core';
 import {ANIMATION_FRAME, PERFORMANCE} from '@ng-web-apis/common';
 import {tuiDescribeSector} from '@taiga-ui/addon-charts/utils';
-import {
-    tuiClamp,
-    tuiDefaultProp,
-    TuiDestroyService,
-    tuiEaseInOutQuad,
-    tuiZonefree,
-} from '@taiga-ui/cdk';
+import {tuiClamp, TuiDestroyService, tuiEaseInOutQuad, tuiZonefree} from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DURATION} from '@taiga-ui/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map, pairwise, switchMap, takeUntil, takeWhile} from 'rxjs/operators';
@@ -20,7 +14,6 @@ export class TuiPieChartDirective {
     private readonly sector$ = new BehaviorSubject<readonly [number, number]>([0, 0]);
 
     @Input()
-    @tuiDefaultProp()
     set tuiPieChart(sector: readonly [number, number]) {
         this.sector$.next(sector);
     }

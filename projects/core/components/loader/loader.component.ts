@@ -10,10 +10,8 @@ import {
 import {
     TUI_IS_IOS,
     tuiBlurNativeFocused,
-    tuiDefaultProp,
     tuiIsNativeFocusedIn,
     tuiIsSafari,
-    tuiRequiredSetter,
 } from '@taiga-ui/cdk';
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -28,22 +26,18 @@ import {TUI_LOADER_OPTIONS, TuiLoaderOptions} from './loader-options';
 })
 export class TuiLoaderComponent {
     @Input()
-    @tuiDefaultProp()
     size = this.options.size;
 
     @Input()
-    @tuiDefaultProp()
     inheritColor = this.options.inheritColor;
 
     @Input()
-    @tuiDefaultProp()
     overlay = this.options.overlay;
 
     @Input()
     textContent: PolymorpheusContent;
 
     @Input()
-    @tuiRequiredSetter()
     set showLoader(value: boolean) {
         // @bad TODO: https://github.com/angular/angular/issues/32083 think of a better way
         if (value && this.focused) {

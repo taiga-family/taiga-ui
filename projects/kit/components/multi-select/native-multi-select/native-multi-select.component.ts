@@ -11,7 +11,7 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select';
         {
             provide: TemplateRef,
             deps: [TuiNativeMultiSelectComponent],
-            useFactory: ({datalist}: TuiNativeMultiSelectComponent) => datalist,
+            useFactory: ({datalist}: TuiNativeMultiSelectComponent<unknown>) => datalist,
         },
         {
             provide: AbstractTuiNativeMultiSelect,
@@ -22,14 +22,21 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select';
         '[attr.aria-invalid]': 'host.invalid',
         '[disabled]': 'host.disabled || control.readOnly',
         '[tabIndex]': 'host.focusable ? 0 : -1',
-        '(change)': 'onValueChange()',
+        '(change)': 'onValueChange($event.target.selectedOptions)',
         '(click.stop.silent)': '0',
         '(mousedown.stop.silent)': '0',
     },
     styleUrls: ['./native-multi-select.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiNativeMultiSelectComponent extends AbstractTuiNativeMultiSelect {
+export class TuiNativeMultiSelectComponent<T> extends AbstractTuiNativeMultiSelect<T> {
     @Input()
-    items: readonly string[] | null = [];
+    items: readonly T[] | null = [];
+
+    onValueChange(selectedOptions: HTMLSelectElement['selectedOptions']): void {
+        const selected = Array.from(selectedOptions).map(option => option.index);
+        const value = this.items?.filter((_, index) => selected.includes(index)) || [];
+
+        this.host.onSelectionChange(value);
+    }
 }

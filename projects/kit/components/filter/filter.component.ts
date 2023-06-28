@@ -19,7 +19,6 @@ import {
     TUI_DEFAULT_STRINGIFY,
     TuiBooleanHandler,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiHandler,
     TuiIdentityMatcher,
     tuiIsNativeFocusedIn,
@@ -36,20 +35,16 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 })
 export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     @Input()
-    @tuiDefaultProp()
     identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
 
     @Input()
-    @tuiDefaultProp()
     items: readonly T[] = [];
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeL | TuiSizeS = 'm';
 
     @Input()
-    @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<T> = ALWAYS_FALSE_HANDLER;
 
     @Output()
@@ -71,7 +66,6 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
         TUI_DEFAULT_STRINGIFY($implicit);
 
     @Input()
-    @tuiDefaultProp()
     badgeHandler: TuiHandler<T, number> = item => Number(item);
 
     get focused(): boolean {

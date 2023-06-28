@@ -1,4 +1,3 @@
-import {Location as NgLocation} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -10,14 +9,11 @@ import {
     QueryList,
     ViewChildren,
 } from '@angular/core';
-import {LOCATION} from '@ng-web-apis/common';
 import {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
-import {tuiDraw, tuiPrepareExternalUrl} from '@taiga-ui/addon-charts/utils';
+import {tuiDraw} from '@taiga-ui/addon-charts/utils';
 import {
     EMPTY_QUERY,
-    tuiDefaultProp,
     TuiIdService,
-    tuiInRange,
     tuiIsPresent,
     tuiPure,
     TuiStringHandler,
@@ -52,48 +48,35 @@ export class TuiLineChartComponent {
     readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
     @Input('value')
-    @tuiDefaultProp()
     set valueSetter(value: readonly TuiPoint[]) {
         this.value = value.filter(item => !item.some(Number.isNaN));
     }
 
     @Input()
-    @tuiDefaultProp()
     x = 0;
 
     @Input()
-    @tuiDefaultProp()
     y = 0;
 
     @Input()
-    @tuiDefaultProp()
     width = 0;
 
     @Input()
-    @tuiDefaultProp()
     height = 0;
 
     @Input()
-    @tuiDefaultProp(
-        (smoothingFactor: number) => tuiInRange(smoothingFactor, 0, 100),
-        'smoothingFactor must be between 0 and 100',
-    )
     smoothingFactor = this.options.smoothingFactor;
 
     @Input()
-    @tuiDefaultProp()
     xStringify: TuiStringHandler<number> | null = null;
 
     @Input()
-    @tuiDefaultProp()
     yStringify: TuiStringHandler<number> | null = null;
 
     @Input()
-    @tuiDefaultProp()
     filled = this.options.filled;
 
     @Input()
-    @tuiDefaultProp()
     dots = this.options.dots;
 
     value: readonly TuiPoint[] = [];
@@ -101,8 +84,6 @@ export class TuiLineChartComponent {
     constructor(
         @Inject(TuiIdService) idService: TuiIdService,
         @Inject(NgZone) private readonly ngZone: NgZone,
-        @Inject(NgLocation) private readonly ngLocation: NgLocation,
-        @Inject(LOCATION) private readonly locationRef: Location,
         @Optional()
         @Inject(TuiLineChartHintDirective)
         readonly hintDirective: TuiLineChartHintDirective | null,
@@ -128,9 +109,7 @@ export class TuiLineChartComponent {
     }
 
     get fill(): string {
-        return this.filled
-            ? tuiPrepareExternalUrl(this.ngLocation, this.locationRef, this.fillId)
-            : 'none';
+        return this.filled ? `url(#${this.fillId})` : 'none';
     }
 
     get viewBox(): string {

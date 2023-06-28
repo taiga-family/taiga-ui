@@ -1,7 +1,6 @@
 {
     "name": "addon-commerce",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "root": "projects/addon-commerce",
     "sourceRoot": "projects/addon-commerce",
     "projectType": "library",
     "prefix": "tui",
@@ -21,7 +20,7 @@
         },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["dist/addon-commerce"],
+            "outputs": ["{workspaceRoot}/dist/addon-commerce"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "projects/addon-commerce/ng-package.json"
@@ -29,14 +28,14 @@
             "dependsOn": [
                 {
                     "target": "build",
-                    "projects": "dependencies",
-                    "params": "forward"
+                    "params": "forward",
+                    "dependencies": true
                 }
             ]
         },
         "test": {
             "executor": "nx:run-commands",
-            "outputs": ["coverage/addon-commerce"],
+            "outputs": ["{workspaceRoot}/coverage/addon-commerce"],
             "options": {
                 "command": "jest --testMatch \"**/projects/addon-commerce/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/addon-commerce/**/*.ts\" --coverage-directory=coverage/addon-commerce"
             }

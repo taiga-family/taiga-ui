@@ -22,7 +22,6 @@ import {
     TUI_IS_MOBILE,
     tuiClamp,
     tuiCleanObject,
-    tuiDefaultProp,
     TuiDestroyService,
     tuiPure,
     tuiPx,
@@ -63,7 +62,6 @@ export class TuiDocDemoComponent implements OnInit {
 
     @Input()
     @HostBinding('class._sticky')
-    @tuiDefaultProp()
     sticky = true;
 
     @ContentChild(TemplateRef)

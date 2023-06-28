@@ -1,4 +1,3 @@
-import {Location as NgLocation} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -10,15 +9,7 @@ import {
     Output,
 } from '@angular/core';
 import {SafeValue} from '@angular/platform-browser';
-import {LOCATION} from '@ng-web-apis/common';
-import {tuiPrepareExternalUrl} from '@taiga-ui/addon-charts/utils';
-import {
-    TuiContextWithImplicit,
-    tuiDefaultProp,
-    TuiIdService,
-    tuiPure,
-    tuiSum,
-} from '@taiga-ui/cdk';
+import {TuiContextWithImplicit, TuiIdService, tuiPure, tuiSum} from '@taiga-ui/cdk';
 import {
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
@@ -55,20 +46,16 @@ export class TuiPieChartComponent {
     private readonly autoIdString: string;
 
     @Input()
-    @tuiDefaultProp()
     value: readonly number[] = [];
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeXL | TuiSizeXS = 'm';
 
     @Input()
-    @tuiDefaultProp()
     masked = false;
 
     @Input()
-    @tuiDefaultProp()
     activeItemIndex = NaN;
 
     @Output()
@@ -76,8 +63,6 @@ export class TuiPieChartComponent {
 
     constructor(
         @Inject(TuiIdService) idService: TuiIdService,
-        @Inject(NgLocation) private readonly ngLocation: NgLocation,
-        @Inject(LOCATION) private readonly locationRef: Location,
         @Optional()
         @Inject(TuiHintOptionsDirective)
         private readonly hintOptions: TuiHintOptionsDirective | null,
@@ -104,9 +89,7 @@ export class TuiPieChartComponent {
     }
 
     get mask(): string | null {
-        return this.masked
-            ? tuiPrepareExternalUrl(this.ngLocation, this.locationRef, this.maskId)
-            : null;
+        return this.masked ? `url(#${this.maskId})` : null;
     }
 
     get radius(): string {

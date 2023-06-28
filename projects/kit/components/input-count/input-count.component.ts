@@ -10,13 +10,13 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {maskitoParseNumber} from '@maskito/kit';
 import {
     AbstractTuiNullableControl,
     TUI_IS_MOBILE,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     tuiIsPresent,
@@ -25,8 +25,6 @@ import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_NUMBER_FORMAT,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    tuiFormatNumber,
-    tuiMaskedNumberStringToNumber,
     TuiNumberFormatSettings,
     TuiSizeL,
     TuiSizeS,
@@ -62,29 +60,23 @@ export class TuiInputCountComponent
     private readonly inputNumber?: TuiInputNumberComponent;
 
     @Input()
-    @tuiDefaultProp()
     step = this.options.step;
 
     @Input()
-    @tuiDefaultProp()
     min = this.options.min;
 
     @Input()
-    @tuiDefaultProp()
     max = this.options.max;
 
     @Input()
-    @tuiDefaultProp()
     hideButtons = this.options.hideButtons;
 
     /** @deprecated use `tuiTextfieldPrefix` from {@link TuiTextfieldControllerModule} instead */
     @Input()
-    @tuiDefaultProp()
     prefix = '';
 
     /** @deprecated use `tuiTextfieldPostfix` from {@link TuiTextfieldControllerModule} instead */
     @Input()
-    @tuiDefaultProp()
     postfix = this.options.postfix;
 
     constructor(
@@ -165,11 +157,7 @@ export class TuiInputCountComponent
 
     /** @deprecated */
     onValueChange(value: string): void {
-        this.value = tuiMaskedNumberStringToNumber(
-            value,
-            this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
-        );
+        this.value = maskitoParseNumber(value, this.numberFormat.decimalSeparator);
     }
 
     decreaseValue(): void {
@@ -209,26 +197,7 @@ export class TuiInputCountComponent
         }
     }
 
-    private set nativeValue(value: string) {
-        if (!this.nativeFocusableElement) {
-            return;
-        }
-
-        this.nativeFocusableElement.value = value;
-    }
-
     private safeUpdateValue(newValue: number): void {
-        const value = tuiClamp(newValue, this.min, this.max);
-
-        this.value = value;
-        this.nativeValue = this.formatNumber(value);
-    }
-
-    private formatNumber(value: number | null): string {
-        return this.isNotNumber(value) ? '' : tuiFormatNumber(value, this.numberFormat);
-    }
-
-    private isNotNumber(value: number | null): value is null {
-        return Number.isNaN(value) || !tuiIsPresent(value);
+        this.value = tuiClamp(newValue, this.min, this.max);
     }
 }

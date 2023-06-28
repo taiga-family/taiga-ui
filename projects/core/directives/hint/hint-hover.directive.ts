@@ -1,6 +1,6 @@
 /* eslint-disable rxjs/no-unsafe-takeuntil */
 import {Directive, ElementRef, Inject, Input} from '@angular/core';
-import {tuiDefaultProp, TuiHoveredService} from '@taiga-ui/cdk';
+import {TuiHoveredService} from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {merge, Observable, of, Subject} from 'rxjs';
 import {delay, filter, repeat, switchMap, takeUntil, tap} from 'rxjs/operators';
@@ -36,11 +36,9 @@ export class TuiHintHoverDirective extends TuiDriver {
     );
 
     @Input('tuiHintShowDelay')
-    @tuiDefaultProp()
     showDelay: TuiHintOptions['showDelay'] = this.options.showDelay;
 
     @Input('tuiHintHideDelay')
-    @tuiDefaultProp()
     hideDelay: TuiHintOptions['hideDelay'] = this.options.hideDelay;
 
     readonly type = 'hint';

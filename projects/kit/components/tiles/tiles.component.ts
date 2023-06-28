@@ -13,7 +13,7 @@ import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
-import {tuiDefaultProp, TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
+import {TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
 import {BehaviorSubject, Subject, timer} from 'rxjs';
 import {debounce, filter, map} from 'rxjs/operators';
 
@@ -39,11 +39,9 @@ export class TuiTilesComponent {
     private readonly el$ = new Subject<Element | undefined>();
 
     @Input()
-    @tuiDefaultProp()
     debounce = 0;
 
     @Input()
-    @tuiDefaultProp()
     set order(map: Map<number, number>) {
         this.order$.next(map);
     }

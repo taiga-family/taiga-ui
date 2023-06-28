@@ -12,7 +12,6 @@ import {
     TuiBooleanHandler,
     TuiDay,
     TuiDayRange,
-    tuiDefaultProp,
     TuiMapper,
     TuiMonth,
     tuiNullableSame,
@@ -32,43 +31,33 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     private _value: TuiDay | TuiDayRange | null = null;
 
     @Input()
-    @tuiDefaultProp()
     month: TuiMonth = TuiMonth.currentLocal();
 
     @Input()
-    @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
     @Input()
-    @tuiDefaultProp()
     min = TUI_FIRST_DAY;
 
     @Input()
-    @tuiDefaultProp()
     max = TUI_LAST_DAY;
 
     @Input()
-    @tuiDefaultProp()
     minViewedMonth: TuiMonth = TUI_FIRST_DAY;
 
     @Input()
-    @tuiDefaultProp()
     maxViewedMonth: TuiMonth = TUI_LAST_DAY;
 
     @Input()
-    @tuiDefaultProp()
     hoveredItem: TuiDay | null = null;
 
     @Input()
-    @tuiDefaultProp()
     showAdjacent = true;
 
     @Input()
-    @tuiDefaultProp()
     markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
 
     @Input()
-    @tuiDefaultProp()
     set value(value: TuiDay | TuiDayRange | null) {
         this._value = value;
 

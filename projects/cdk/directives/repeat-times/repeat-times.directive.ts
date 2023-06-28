@@ -1,5 +1,4 @@
 import {Directive, Inject, Input, TemplateRef, ViewContainerRef} from '@angular/core';
-import {tuiRequiredSetter} from '@taiga-ui/cdk/decorators';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk/interfaces';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 
@@ -21,7 +20,6 @@ export class TuiRepeatTimesContext implements TuiContextWithImplicit<number> {
 })
 export class TuiRepeatTimesDirective {
     @Input()
-    @tuiRequiredSetter()
     set tuiRepeatTimesOf(count: number) {
         const safeCount = Math.floor(tuiClamp(count, 0, MAX_VALUE));
 

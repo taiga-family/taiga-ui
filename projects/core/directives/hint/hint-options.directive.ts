@@ -8,7 +8,7 @@ import {
     Optional,
     SkipSelf,
 } from '@angular/core';
-import {AbstractTuiController, tuiDefaultProp} from '@taiga-ui/cdk';
+import {AbstractTuiController} from '@taiga-ui/cdk';
 import {TuiHintDirection} from '@taiga-ui/core/types';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -65,19 +65,15 @@ export class TuiHintOptionsDirective
     content: PolymorpheusContent;
 
     @Input('tuiHintDirection')
-    @tuiDefaultProp()
     direction = this.options.direction;
 
     @Input('tuiHintAppearance')
-    @tuiDefaultProp()
     appearance = this.options.appearance;
 
     @Input('tuiHintShowDelay')
-    @tuiDefaultProp()
     showDelay = this.options.showDelay;
 
     @Input('tuiHintHideDelay')
-    @tuiDefaultProp()
     hideDelay = this.options.hideDelay;
 
     icon = this.options.icon;

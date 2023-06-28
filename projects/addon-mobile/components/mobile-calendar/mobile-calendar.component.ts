@@ -21,7 +21,6 @@ import {
     TuiBooleanHandler,
     TuiDay,
     TuiDayRange,
-    tuiDefaultProp,
     TuiDestroyService,
     TuiInjectionTokenType,
     TuiMapper,
@@ -78,23 +77,19 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     private readonly monthsScrollRef?: CdkVirtualScrollViewport;
 
     private readonly today = TuiDay.currentLocal();
-    private activeYear = this.initialYear;
-    private activeMonth = this.initialMonth;
+    private activeYear = 0;
+    private activeMonth = 0;
 
     @Input()
-    @tuiDefaultProp()
     single = true;
 
     @Input()
-    @tuiDefaultProp()
     min = TUI_FIRST_DAY;
 
     @Input()
-    @tuiDefaultProp()
     max = TUI_LAST_DAY;
 
     @Input()
-    @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
     @Output()
@@ -143,6 +138,9 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     }
 
     ngAfterViewInit(): void {
+        this.activeYear = this.initialYear;
+        this.activeMonth = this.initialMonth;
+
         // Virtual scroll has not yet rendered items even in ngAfterViewInit
         this.waitScrolledChange();
     }

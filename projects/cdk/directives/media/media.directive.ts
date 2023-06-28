@@ -8,7 +8,6 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiDefaultProp, tuiRequiredSetter} from '@taiga-ui/cdk/decorators';
 
 @Directive({
     selector: 'video[tuiMedia], audio[tuiMedia]',
@@ -19,13 +18,9 @@ export class TuiMediaDirective {
 
     @Input()
     @HostBinding('volume')
-    @tuiDefaultProp(
-        (volume: number) => Number.isFinite(volume) && volume >= 0 && volume <= 1,
-    )
     volume = 1;
 
     @Input('playbackRate')
-    @tuiRequiredSetter(nonNegativeFiniteAssertion)
     set playbackRateSetter(playbackRate: number) {
         this.updatePlaybackRate(playbackRate);
     }
@@ -45,7 +40,6 @@ export class TuiMediaDirective {
     ) {}
 
     @Input()
-    @tuiRequiredSetter(nonNegativeFiniteAssertion)
     set currentTime(currentTime: number) {
         if (Math.abs(currentTime - this.currentTime) > 0.05) {
             this.el.nativeElement.currentTime = currentTime;
@@ -102,8 +96,4 @@ export class TuiMediaDirective {
         this.playbackRate = playbackRate;
         this.el.nativeElement.playbackRate = this.playbackRate;
     }
-}
-
-function nonNegativeFiniteAssertion(value: number): boolean {
-    return Number.isFinite(value) && value >= 0;
 }

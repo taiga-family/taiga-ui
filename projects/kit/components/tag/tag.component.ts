@@ -10,7 +10,7 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import {TuiContextWithImplicit, tuiDefaultProp} from '@taiga-ui/cdk';
+import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
@@ -43,52 +43,41 @@ import {TUI_TAG_OPTIONS, TuiTagOptions} from './tag-options';
 export class TuiTagComponent {
     // TODO: Possibly implement standard focus mechanisms and outline
     @Input()
-    @tuiDefaultProp()
     value = '';
 
     @Input()
-    @tuiDefaultProp()
     editable = false;
 
     @Input()
-    @tuiDefaultProp()
     separator: RegExp | string = ',';
 
     @Input()
-    @tuiDefaultProp()
     maxLength: number | null = null;
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeL | TuiSizeS = this.options.size;
 
     @Input()
-    @tuiDefaultProp()
     showLoader = false;
 
     @Input()
     @HostBinding('attr.data-status')
-    @tuiDefaultProp()
     status: TuiStatus = this.options.status;
 
     @Input()
     @HostBinding('class._hoverable')
-    @tuiDefaultProp()
     hoverable = false;
 
     @Input()
-    @tuiDefaultProp()
     removable = false;
 
     @Input()
     @HostBinding('class._disabled')
-    @tuiDefaultProp()
     disabled = false;
 
     @Input()
     @HostBinding('class._autocolor')
-    @tuiDefaultProp()
     autoColor: boolean = this.options.autoColor;
 
     @Input()

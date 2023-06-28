@@ -7,7 +7,7 @@ import {
     QueryList,
 } from '@angular/core';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
-import {EMPTY_QUERY, tuiDefaultProp} from '@taiga-ui/cdk';
+import {EMPTY_QUERY} from '@taiga-ui/cdk';
 import {filter, map} from 'rxjs/operators';
 
 import {TuiSortableDirective} from './sortable.directive';
@@ -21,7 +21,6 @@ export class TuiSortByDirective<T extends Partial<Record<keyof T, any>>> {
     private readonly sortables: QueryList<TuiSortableDirective<T>> = EMPTY_QUERY;
 
     @Input()
-    @tuiDefaultProp()
     tuiSortBy: string | keyof T | null = null;
 
     @Output()

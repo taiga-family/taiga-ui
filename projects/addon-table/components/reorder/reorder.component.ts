@@ -8,7 +8,6 @@ import {
     Output,
 } from '@angular/core';
 import {TUI_TABLE_SHOW_HIDE_MESSAGE} from '@taiga-ui/addon-table/tokens';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -21,7 +20,6 @@ export class TuiReorderComponent<T> {
     private dragging = false;
 
     @Input()
-    @tuiDefaultProp()
     set items(items: readonly T[]) {
         if (
             items.length !== this.unsortedItems.length ||
@@ -32,7 +30,6 @@ export class TuiReorderComponent<T> {
     }
 
     @Input()
-    @tuiDefaultProp()
     enabled: readonly T[] = [];
 
     @Output()

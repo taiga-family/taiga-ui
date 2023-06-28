@@ -6,7 +6,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiDefaultProp, tuiIsObserved} from '@taiga-ui/cdk';
+import {tuiIsObserved} from '@taiga-ui/cdk';
 import {TUI_CLOSE_WORD} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
@@ -18,15 +18,12 @@ import {Observable} from 'rxjs';
 })
 export class TuiPushComponent {
     @Input()
-    @tuiDefaultProp()
     heading = '';
 
     @Input()
-    @tuiDefaultProp()
     type = '';
 
     @Input()
-    @tuiDefaultProp()
     timestamp = 0;
 
     @Output()

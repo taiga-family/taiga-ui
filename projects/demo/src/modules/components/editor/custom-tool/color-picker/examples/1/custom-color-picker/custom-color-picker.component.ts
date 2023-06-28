@@ -5,7 +5,6 @@ import {
     TuiEditorOptions,
     TuiTiptapEditorService,
 } from '@taiga-ui/addon-editor';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {distinctUntilChanged, map, share} from 'rxjs/operators';
 
 @Component({
@@ -16,7 +15,6 @@ import {distinctUntilChanged, map, share} from 'rxjs/operators';
 })
 export class CustomColorPickerComponent {
     @Input()
-    @tuiDefaultProp()
     colors: ReadonlyMap<string, string> = this.defaultOptions.colors;
 
     @Input()

@@ -8,7 +8,7 @@ import {
     Self,
     ViewChild,
 } from '@angular/core';
-import {TUI_IS_MOBILE, tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, TuiDestroyService} from '@taiga-ui/cdk';
 import {
     TUI_HINT_OPTIONS,
     TuiHintHoverDirective,
@@ -36,7 +36,6 @@ export class TuiTooltipComponent extends TuiHintOptionsDirective {
     readonly driver$?: TuiHintHoverDirective;
 
     @Input()
-    @tuiDefaultProp()
     describeId = '';
 
     constructor(

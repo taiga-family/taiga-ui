@@ -1,6 +1,6 @@
 <tui-hosted-dropdown
     class="t-hosted"
-    [canOpen]="interactive"
+    [canOpen]="interactive && !nativePicker"
     [content]="dropdown"
     [open]="open && interactive"
     (openChange)="onOpenChange($event)"
@@ -24,6 +24,17 @@
             select="input"
             ngProjectAs="input"
         ></ng-content>
+        <input
+            *ngIf="nativePicker"
+            type="month"
+            class="t-mobile"
+            [min]="min.toJSON()"
+            [max]="max.toJSON()"
+            [ngModel]="nativeValue"
+            (ngModelChange)="onNativeChange($event)"
+            (mousedown.stop.silent)="(0)"
+            (click.stop.silent)="(0)"
+        />
     </tui-primitive-textfield>
 
     <ng-template #dropdown>

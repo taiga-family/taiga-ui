@@ -10,7 +10,6 @@ import {
 import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
-    tuiDefaultProp,
     TuiDestroyService,
     TuiFocusVisibleService,
     tuiIsNativeFocused,
@@ -33,7 +32,6 @@ import {
 })
 export class TuiActionComponent extends AbstractTuiInteractive {
     @Input()
-    @tuiDefaultProp()
     icon = '';
 
     readonly disabled = false;

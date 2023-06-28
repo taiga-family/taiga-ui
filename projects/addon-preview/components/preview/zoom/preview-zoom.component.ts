@@ -7,7 +7,7 @@ import {
     Output,
 } from '@angular/core';
 import {TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/addon-preview/tokens';
-import {ALWAYS_FALSE_HANDLER, tuiClamp, tuiDefaultProp} from '@taiga-ui/cdk';
+import {ALWAYS_FALSE_HANDLER, tuiClamp} from '@taiga-ui/cdk';
 import {TuiLanguagePreview} from '@taiga-ui/i18n';
 import {merge, Observable, of, timer} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
@@ -22,15 +22,12 @@ const STEP = 0.5;
 })
 export class TuiPreviewZoomComponent {
     @Input()
-    @tuiDefaultProp()
     min = 0.5;
 
     @Input()
-    @tuiDefaultProp()
     max = 2;
 
     @Input()
-    @tuiDefaultProp()
     value = 1;
 
     @Output()

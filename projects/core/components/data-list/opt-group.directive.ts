@@ -1,5 +1,4 @@
 import {Directive, HostBinding, Input} from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
 
 @Directive({
     selector: 'tui-opt-group',
@@ -10,6 +9,5 @@ import {tuiDefaultProp} from '@taiga-ui/cdk';
 export class TuiOptGroupDirective {
     @Input()
     @HostBinding('attr.data-label')
-    @tuiDefaultProp()
     label = '';
 }

@@ -25,7 +25,9 @@
         "enabled": false
     },
     "pinDigests": false,
+    "cloneSubmodules": true,
     "includePaths": ["package.json", "**/package.json", "!node_modules/**"],
+    "suppressNotifications": ["configErrorIssue", "deprecationWarningIssues"],
     "prBodyTemplate": "{{{table}}}{{{notes}}}{{{changelogs}}}{{{controls}}}{{{footer}}}",
     "prBodyColumns": ["Package", "Type", "Change"],
     "packageRules": [
@@ -80,82 +82,66 @@
         },
         {
             "groupName": "ng-web-apis",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["^@ng-web-apis/.*"]
         },
         {
             "groupName": "taiga-ui",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["^@taiga-ui/.*"]
         },
         {
             "groupName": "tiptap",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["^@tiptap/.*"]
         },
         {
             "groupName": "prosemirror",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["^prosemirror.*"]
         },
         {
             "groupName": "definitely typed",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["^@types/.*"]
         },
         {
             "groupName": "prettier",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["^prettier"]
         },
         {
             "groupName": "nrwl toolset",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["^@nrwl/.*"]
         },
         {
             "groupName": "cypress toolset",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["cypress", "cy2", "@types/cypress-image-snapshot", "cypress-image-snapshot"]
         },
         {
             "groupName": "commitlint",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["^@commitlint/.*"]
         },
         {
             "groupName": "tinkoff",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["^@tinkoff/.*"]
         },
         {
             "groupName": "maskito",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["^@maskito/.*"]
         },
         {
             "groupName": "rollup",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["^rollup.*", "@rollup/pluginutils"]
         },
         {
             "groupName": "svgo",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["@types/svgo", "svgo"]
         },
         {
             "groupName": "firebase",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["firebase-tools"]
         },
         {
             "groupName": "stackblitz sdk",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["^@stackblitz/.*"]
         },
         {
             "groupName": "nodejs toolset",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": [
                 "find-in-files",
                 "ts-node",
@@ -172,17 +158,14 @@
         },
         {
             "groupName": "webpack toolset",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["ts-loader", "less-plugin-npm-import", "postcss"]
         },
         {
             "groupName": "javascript toolset",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["core-js", "date-fns", "parse5"]
         },
         {
             "groupName": "angular toolset",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": [
                 "angular-http-server",
                 "ng-yandex-metrika",
@@ -193,7 +176,6 @@
         },
         {
             "groupName": "eslint",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": [
                 "^eslint.*",
                 "^@types/eslint$",
@@ -207,39 +189,11 @@
         },
         {
             "groupName": "jest",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["^@types/jest$", "^@types/jsdom$", "^jest.*", "^ts-jest$", "^jest-preset-angular$"]
         },
         {
             "groupName": "jasmine",
-            "matchUpdateTypes": ["minor", "patch"],
             "matchPackagePatterns": ["^jasmine.*"]
-        },
-        {
-            "groupName": "Github actions",
-            "matchDatasources": ["github-tags"],
-            "matchUpdateTypes": ["minor", "patch"],
-            "matchPackageNames": [
-                "actions/cache",
-                "actions/checkout",
-                "actions/setup-node",
-                "actions/upload-artifact",
-                "actions/add-to-project",
-                "actions/download-artifact",
-                "peter-evans/rebase",
-                "ncipollo/release-action",
-                "github/codeql-action/init",
-                "s0/git-publish-subdir-action",
-                "renovatebot/github-action",
-                "codecov/codecov-action",
-                "peaceiris/actions-gh-pages",
-                "github/codeql-action/analyze",
-                "agoldis/sorry-cypress-director",
-                "toshimaru/auto-author-assign",
-                "imba-tjd/rebase-upstream-action",
-                "stefanzweifel/git-auto-commit-action",
-                "actions-ecosystem/action-remove-labels"
-            ]
         }
     ]
 }

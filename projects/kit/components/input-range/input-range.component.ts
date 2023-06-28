@@ -20,7 +20,6 @@ import {
     tuiAsFocusableItemAccessor,
     tuiClamp,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     tuiIsNativeFocusedIn,
@@ -68,33 +67,21 @@ export class TuiInputRangeComponent
     private readonly rangeRef: TuiRangeComponent | null = null;
 
     @Input()
-    @tuiDefaultProp()
     min = 0;
 
     @Input()
-    @tuiDefaultProp()
     max = 100;
 
     @Input()
-    @tuiDefaultProp(q => q > 0, '[quantum] must be positive')
     quantum = 1;
 
     @Input()
-    @tuiDefaultProp(
-        s => s >= 0 && Number.isInteger(s),
-        '[steps] must be non-negative integer',
-    )
     steps = 0;
 
     @Input()
-    @tuiDefaultProp(
-        s => s > 0 && Number.isInteger(s),
-        '[segments] must be positive integer',
-    )
     segments = 1;
 
     @Input()
-    @tuiDefaultProp()
     keySteps: TuiKeySteps | null = null;
 
     @Input()
@@ -104,7 +91,6 @@ export class TuiInputRangeComponent
     rightValueContent: PolymorpheusContent<TuiContextWithImplicit<number>>;
 
     @Input()
-    @tuiDefaultProp()
     pluralize: Record<string, string> | null = null;
 
     lastActiveSide: 'left' | 'right' = 'left';

@@ -7,7 +7,7 @@ import {
     Output,
 } from '@angular/core';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
-import {tuiDefaultProp, tuiHsvToRgb, tuiPure, tuiRgbToHsv, tuiRound} from '@taiga-ui/cdk';
+import {tuiHsvToRgb, tuiPure, tuiRgbToHsv, tuiRound} from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
 
 @Component({
@@ -18,7 +18,6 @@ import {TuiPoint} from '@taiga-ui/core';
 })
 export class TuiColorPickerComponent {
     @Input()
-    @tuiDefaultProp()
     set color(color: [h: number, s: number, v: number, opacity: number]) {
         if (
             this.currentColor.every((item, index) => item === color[index]) &&

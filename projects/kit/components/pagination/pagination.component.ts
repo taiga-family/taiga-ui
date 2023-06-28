@@ -17,7 +17,6 @@ import {
     tuiAsFocusableItemAccessor,
     tuiClamp,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocusedIn,
     TuiNativeFocusableElement,
@@ -53,29 +52,24 @@ export class TuiPaginationComponent
     private readonly els: QueryList<TuiFocusableElementAccessor> = EMPTY_QUERY;
 
     @Input()
-    @tuiDefaultProp(nonNegativeInteger, 'Must be non-negative integer')
     length = 1;
 
     @Input()
-    @tuiDefaultProp()
     size: TuiSizeS = 'm';
 
     @Input()
-    @tuiDefaultProp()
     readonly disabled = false;
 
     /**
      * Amount of visible pages around active page
      */
     @Input()
-    @tuiDefaultProp()
     activePadding = 1;
 
     /**
      * Amount of visible pages at the edges
      */
     @Input()
-    @tuiDefaultProp()
     sidePadding = 1;
 
     /**
@@ -88,7 +82,6 @@ export class TuiPaginationComponent
      * Active page index
      */
     @Input()
-    @tuiDefaultProp(nonNegativeInteger, 'Must be non-negative integer')
     index = 0;
 
     @Output()
@@ -318,8 +311,4 @@ export class TuiPaginationComponent
         this.index = index;
         this.indexChange.emit(index);
     }
-}
-
-function nonNegativeInteger(length: number): boolean {
-    return Number.isInteger(length) && length >= 0;
 }

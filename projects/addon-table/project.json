@@ -1,7 +1,6 @@
 {
     "name": "addon-table",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "root": "projects/addon-table",
     "sourceRoot": "projects/addon-table",
     "projectType": "library",
     "prefix": "tui",
@@ -21,7 +20,7 @@
         },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["dist/addon-table"],
+            "outputs": ["{workspaceRoot}/dist/addon-table"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "projects/addon-table/ng-package.json"
@@ -29,14 +28,14 @@
             "dependsOn": [
                 {
                     "target": "build",
-                    "projects": "dependencies",
-                    "params": "forward"
+                    "params": "forward",
+                    "dependencies": true
                 }
             ]
         },
         "test": {
             "executor": "nx:run-commands",
-            "outputs": ["coverage/addon-table"],
+            "outputs": ["{workspaceRoot}/coverage/addon-table"],
             "options": {
                 "command": "jest --testMatch \"**/projects/addon-table/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/addon-table/**/*.ts\" --coverage-directory=coverage/addon-table"
             }

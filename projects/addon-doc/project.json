@@ -1,7 +1,6 @@
 {
     "name": "addon-doc",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "root": "projects/addon-doc",
     "sourceRoot": "projects/addon-doc",
     "projectType": "library",
     "prefix": "tui",
@@ -21,7 +20,7 @@
         },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["dist/addon-doc"],
+            "outputs": ["{workspaceRoot}/dist/addon-doc"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "projects/addon-doc/ng-package.json"
@@ -29,14 +28,14 @@
             "dependsOn": [
                 {
                     "target": "build",
-                    "projects": "dependencies",
-                    "params": "forward"
+                    "params": "forward",
+                    "dependencies": true
                 }
             ]
         },
         "test": {
             "executor": "nx:run-commands",
-            "outputs": ["coverage/addon-doc"],
+            "outputs": ["{workspaceRoot}/coverage/addon-doc"],
             "options": {
                 "command": "jest --testMatch \"**/projects/addon-doc/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/addon-doc/**/*.ts\" --coverage-directory=coverage/addon-doc"
             }

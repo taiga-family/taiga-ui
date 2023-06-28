@@ -15,7 +15,6 @@ import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
     tuiPure,
@@ -56,11 +55,9 @@ export class TuiInputCopyComponent
     successMessage: PolymorpheusContent;
 
     @Input()
-    @tuiDefaultProp()
     messageDirection: TuiHintDirection = 'bottom-left';
 
     @Input()
-    @tuiDefaultProp()
     messageAppearance = '';
 
     constructor(

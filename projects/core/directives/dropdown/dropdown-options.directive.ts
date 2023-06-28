@@ -8,7 +8,6 @@ import {
     Optional,
     SkipSelf,
 } from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {
     TuiDropdownAlign,
     TuiDropdownWidth,
@@ -68,27 +67,21 @@ export const tuiDropdownOptionsProvider: (
 })
 export class TuiDropdownOptionsDirective implements TuiDropdownOptions {
     @Input('tuiDropdownAlign')
-    @tuiDefaultProp()
     align = this.options.align;
 
     @Input('tuiDropdownDirection')
-    @tuiDefaultProp()
     direction = this.options.direction;
 
     @Input('tuiDropdownLimitWidth')
-    @tuiDefaultProp()
     limitWidth = this.options.limitWidth;
 
     @Input('tuiDropdownMinHeight')
-    @tuiDefaultProp()
     minHeight = this.options.minHeight;
 
     @Input('tuiDropdownMaxHeight')
-    @tuiDefaultProp()
     maxHeight = this.options.maxHeight;
 
     @Input('tuiDropdownOffset')
-    @tuiDefaultProp()
     offset = this.options.offset;
 
     constructor(

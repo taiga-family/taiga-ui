@@ -1,12 +1,11 @@
 import {Directive, Input} from '@angular/core';
-import {EMPTY_ARRAY, tuiDefaultProp, TuiHandler} from '@taiga-ui/cdk';
+import {EMPTY_ARRAY, TuiHandler} from '@taiga-ui/cdk';
 
 @Directive({
     selector: 'tui-tree[childrenHandler]',
 })
 export class TuiTreeChildrenDirective<T> {
     @Input()
-    @tuiDefaultProp()
     childrenHandler: TuiHandler<T, readonly T[]> =
         TuiTreeChildrenDirective.defaultHandler;
 

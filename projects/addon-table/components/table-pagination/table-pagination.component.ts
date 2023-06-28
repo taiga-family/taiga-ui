@@ -7,7 +7,6 @@ import {
     Output,
 } from '@angular/core';
 import {TUI_TABLE_PAGINATION_TEXTS} from '@taiga-ui/addon-table/tokens';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TUI_SPIN_TEXTS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
@@ -25,19 +24,15 @@ import {
 })
 export class TuiTablePaginationComponent {
     @Input()
-    @tuiDefaultProp()
     items: readonly number[] = this.options.items;
 
     @Input()
-    @tuiDefaultProp()
     total = 0;
 
     @Input()
-    @tuiDefaultProp()
     page = 0;
 
     @Input()
-    @tuiDefaultProp()
     size = this.options.size;
 
     /**

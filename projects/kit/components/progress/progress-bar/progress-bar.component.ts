@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 
 @Component({
@@ -15,6 +14,5 @@ export class TuiProgressBarComponent {
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeS = 'm';
 }

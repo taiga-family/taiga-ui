@@ -21,13 +21,11 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiDestroyService,
     TuiFocusableElementAccessor,
     TuiInputMode,
     tuiIsNativeFocused,
     tuiPure,
-    tuiRequiredSetter,
 } from '@taiga-ui/cdk';
 import {
     TUI_MASK_SYMBOLS_REGEXP,
@@ -74,7 +72,6 @@ export class TuiInputPhoneComponent
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     @Input('countryCode')
-    @tuiRequiredSetter()
     set countryCodeSetter(newCountryCode: string) {
         const prevCountryCode = this.countryCode;
 
@@ -83,15 +80,12 @@ export class TuiInputPhoneComponent
     }
 
     @Input()
-    @tuiDefaultProp()
     phoneMaskAfterCountryCode = this.options.phoneMaskAfterCountryCode;
 
     @Input()
-    @tuiDefaultProp()
     allowText = this.options.allowText;
 
     @Input()
-    @tuiDefaultProp()
     search = '';
 
     @Output()

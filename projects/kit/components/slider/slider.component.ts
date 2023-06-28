@@ -14,7 +14,6 @@ import {NgControl, NgModel} from '@angular/forms';
 import {USER_AGENT} from '@ng-web-apis/common';
 import {
     CHROMIUM_EDGE_START_VERSION,
-    tuiDefaultProp,
     tuiIsEdgeOlderThan,
     tuiPure,
     tuiWatch,
@@ -50,11 +49,9 @@ import {TUI_SLIDER_OPTIONS, TuiSliderOptions} from './slider-options';
 export class TuiSliderComponent {
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeS = this.options.size;
 
     @Input()
-    @tuiDefaultProp()
     segments = 1;
 
     get min(): number {

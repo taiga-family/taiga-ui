@@ -1,7 +1,6 @@
 {
     "name": "taiga-schematics",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "root": "projects/taiga-schematics",
     "sourceRoot": "projects/taiga-schematics",
     "projectType": "library",
     "implicitDependencies": ["!testing"],
@@ -14,7 +13,7 @@
         },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["dist/taiga-schematics"],
+            "outputs": ["{workspaceRoot}/dist/taiga-schematics"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "projects/taiga-schematics/ng-package.json"
@@ -22,8 +21,8 @@
             "dependsOn": [
                 {
                     "target": "build",
-                    "projects": "dependencies",
-                    "params": "forward"
+                    "params": "forward",
+                    "dependencies": true
                 }
             ]
         },

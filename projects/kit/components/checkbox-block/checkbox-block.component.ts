@@ -14,7 +14,6 @@ import {
     AbstractTuiNullableControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     TuiNativeFocusableElement,
@@ -47,17 +46,14 @@ export class TuiCheckboxBlockComponent
 
     @Input()
     @HostBinding('attr.data-align')
-    @tuiDefaultProp()
     contentAlign: TuiHorizontalDirection = 'right';
 
     @Input()
     @HostBinding('class._hidden_input')
-    @tuiDefaultProp()
     hideCheckbox = false;
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeL | TuiSizeS = 'l';
 
     constructor(

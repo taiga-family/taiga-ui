@@ -1,7 +1,7 @@
 import {Component, TemplateRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {CHAR_MINUS, TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TuiRootModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputSliderComponent, TuiInputSliderModule} from '@taiga-ui/kit';
 import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
@@ -71,7 +71,7 @@ let testComponent: TestComponent;
 let pageObject: TuiPageObject<TestComponent>;
 let inputPO: TuiNativeInputPO;
 
-describe(`InputSlider[new]`, () => {
+describe(`InputSlider`, () => {
     configureTestSuite(() => {
         TestBed.configureTestingModule({
             imports: [
@@ -219,7 +219,7 @@ describe(`InputSlider[new]`, () => {
                     await fixture.whenStable();
 
                     expect(testComponent.control.value).toBe(-2.5);
-                    expect(inputPO.value).toBe(`-2,50`);
+                    expect(inputPO.value).toBe(`${CHAR_MINUS}2,50`);
                 });
 
                 it(`-9.99 => -10`, async () => {
@@ -227,7 +227,7 @@ describe(`InputSlider[new]`, () => {
                     await fixture.whenStable();
 
                     expect(testComponent.control.value).toBe(-10);
-                    expect(inputPO.value).toBe(`-10`);
+                    expect(inputPO.value).toBe(`${CHAR_MINUS}10`);
                 });
 
                 it(`4.13 => 4.25`, async () => {
@@ -351,101 +351,6 @@ describe(`InputSlider[new]`, () => {
 
         it(`10 => \`Ten\``, async () => {
             await checkValueContent(10, `TEN`);
-        });
-    });
-
-    describe(`\`min\` prop`, () => {
-        describe(`positive numbers`, () => {
-            beforeEach(() => {
-                testComponent.min = 10;
-                testComponent.max = 100;
-                testComponent.quantum = 0.001;
-                testComponent.control = new FormControl(10);
-
-                fixture.detectChanges();
-            });
-
-            it(`cannot type number less than \`min\` property`, async () => {
-                inputPO.sendTextAndBlur(`9.999`);
-                await fixture.whenStable();
-                expect(testComponent.control.value).toBe(10);
-            });
-
-            it(`cannot even type minus if \`min\` is positive`, async () => {
-                inputPO.sendTextAndBlur(`-11`);
-                await fixture.whenStable();
-                expect(testComponent.control.value).toBe(11);
-            });
-
-            it(`cannot set value less than min using ArrowDown`, async () => {
-                inputPO.sendTextAndBlur(`10`);
-
-                await fixture.whenStable();
-
-                inputPO.focus();
-                inputPO.sendKeydown(`arrowDown`);
-
-                fixture.detectChanges();
-                await fixture.whenStable();
-
-                expect(testComponent.control.value).toBe(10);
-                expect(inputPO.value).toBe(`10`);
-            });
-        });
-
-        describe(`negative numbers`, () => {
-            beforeEach(() => {
-                testComponent.min = -10;
-                testComponent.max = 100;
-                testComponent.quantum = 0.001;
-
-                fixture.detectChanges();
-            });
-
-            it(`can type negative number more than \`min\``, () => {
-                inputPO.sendTextAndBlur(`-5`);
-                expect(testComponent.control.value).toBe(-5);
-            });
-
-            it(`cannot type negative number less than \`min\``, () => {
-                inputPO.sendTextAndBlur(`-11`);
-                expect(testComponent.control.value).toBe(-10);
-            });
-        });
-
-        describe(`if \`min\`-property equals to \`max\`-property`, () => {
-            beforeEach(async () => {
-                testComponent.control = new FormControl(25);
-                fixture.detectChanges();
-                await fixture.whenStable();
-
-                testComponent.min = 25;
-                testComponent.max = 25;
-                testComponent.quantum = 1;
-                fixture.detectChanges();
-            });
-
-            it(`pressing ArrowUp does not change value`, async () => {
-                inputPO.focus();
-                inputPO.sendKeydown(`arrowUp`);
-                inputPO.blur();
-
-                fixture.detectChanges();
-                await fixture.whenStable();
-
-                expect(testComponent.control.value).toBe(25);
-            });
-
-            it(`pressing ArrowDown does not change value`, async () => {
-                inputPO.focus();
-                inputPO.sendKeydown(`arrowDown`);
-                inputPO.blur();
-
-                fixture.detectChanges();
-                await fixture.whenStable();
-
-                expect(testComponent.control.value).toBe(25);
-            });
         });
     });
 

@@ -3,7 +3,7 @@
     <ng-container [ngTemplateOutlet]="item"></ng-container>
     <tui-svg
         *ngIf="!last"
-        src="tuiIconChevronRight"
         class="t-icon"
+        [src]="options.icon"
     ></tui-svg>
 </ng-container>

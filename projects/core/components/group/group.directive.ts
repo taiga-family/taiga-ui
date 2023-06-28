@@ -1,5 +1,5 @@
 import {Directive, HostBinding, Inject, Input} from '@angular/core';
-import {tuiDefaultProp, TuiDirectiveStylesService} from '@taiga-ui/cdk';
+import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
 import {TuiOrientation, TuiSizeL} from '@taiga-ui/core/types';
 
 import {TuiGroupStylesComponent} from './group-styles.component';
@@ -13,26 +13,21 @@ import {TuiGroupStylesComponent} from './group-styles.component';
 })
 export class TuiGroupDirective {
     @Input()
-    @tuiDefaultProp()
     orientation: TuiOrientation = 'horizontal';
 
     @Input()
     @HostBinding('class.tui-group_adaptive')
-    @tuiDefaultProp()
     adaptive = false;
 
     @Input()
     @HostBinding('class.tui-group_collapsed')
-    @tuiDefaultProp()
     collapsed = false;
 
     @Input()
     @HostBinding('class.tui-group_rounded')
-    @tuiDefaultProp()
     rounded = true;
 
     @Input()
-    @tuiDefaultProp()
     size: TuiSizeL = 'm';
 
     constructor(

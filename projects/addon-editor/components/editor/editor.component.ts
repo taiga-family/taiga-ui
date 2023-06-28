@@ -38,7 +38,6 @@ import {
     tuiAsFocusableItemAccessor,
     tuiAutoFocusOptionsProvider,
     TuiBooleanHandler,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
@@ -68,11 +67,9 @@ export class TuiEditorComponent
     private readonly el?: ElementRef<HTMLElement>;
 
     @Input()
-    @tuiDefaultProp()
     exampleText = '';
 
     @Input()
-    @tuiDefaultProp()
     tools: readonly TuiEditorTool[] = defaultEditorTools;
 
     @Output()

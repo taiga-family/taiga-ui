@@ -9,11 +9,13 @@ import {
     Input,
     OnChanges,
     OnDestroy,
+    Self,
     Type,
 } from '@angular/core';
 import {
     TuiActiveZoneDirective,
     TuiContextWithImplicit,
+    TuiDestroyService,
     TuiDropdownPortalService,
     tuiPure,
 } from '@taiga-ui/cdk';
@@ -26,6 +28,8 @@ import {
 import {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {Observable, Subject} from 'rxjs';
+import {takeUntil, throttleTime} from 'rxjs/operators';
 
 import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
 
@@ -33,6 +37,7 @@ import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
     selector: '[tuiDropdown]:not(ng-container)',
     exportAs: 'tuiDropdown',
     providers: [
+        TuiDestroyService,
         tuiAsRectAccessor(TuiDropdownDirective),
         tuiAsVehicle(TuiDropdownDirective),
     ],
@@ -46,6 +51,8 @@ export class TuiDropdownDirective
         TuiRectAccessor,
         TuiVehicle
 {
+    private readonly refresh$ = new Subject<void>();
+
     @Input('tuiDropdown')
     content: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>>;
 
@@ -56,12 +63,19 @@ export class TuiDropdownDirective
     readonly component = new PolymorpheusComponent(this.dropdown, this.injector);
 
     constructor(
+        @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(ElementRef) readonly el: ElementRef<HTMLElement>,
         @Inject(TUI_DROPDOWN_COMPONENT) private readonly dropdown: Type<unknown>,
         @Inject(INJECTOR) private readonly injector: Injector,
         @Inject(TuiDropdownPortalService)
         private readonly dropdownService: TuiDropdownPortalService,
-    ) {}
+    ) {
+        // Ignore multiple change detection triggers at the same frame
+        this.refresh$.pipe(throttleTime(0), takeUntil(destroy$)).subscribe(() => {
+            this.dropdownBoxRef?.changeDetectorRef.detectChanges();
+            this.dropdownBoxRef?.changeDetectorRef.markForCheck();
+        });
+    }
 
     @tuiPure
     get position(): 'absolute' | 'fixed' {
@@ -69,8 +83,7 @@ export class TuiDropdownDirective
     }
 
     ngAfterViewChecked(): void {
-        this.dropdownBoxRef?.changeDetectorRef.detectChanges();
-        this.dropdownBoxRef?.changeDetectorRef.markForCheck();
+        this.refresh$.next();
     }
 
     ngOnChanges(): void {

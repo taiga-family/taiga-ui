@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {SafeValue} from '@angular/platform-browser';
-import {tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
+import {tuiPure} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 const PERCENT = 100;
@@ -15,15 +15,12 @@ const FILLER_ARRAY: readonly number[] = [1];
 })
 export class TuiBarSetComponent {
     @Input()
-    @tuiDefaultProp()
     value: readonly number[] = [];
 
     @Input()
-    @tuiDefaultProp()
     size: TuiSizeL | TuiSizeS | null = 'm';
 
     @Input()
-    @tuiDefaultProp()
     collapsed = false;
 
     get computedValue(): readonly number[] {

@@ -25,7 +25,6 @@ import {
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     tuiIsString,
@@ -78,7 +77,7 @@ export class TuiMultiSelectComponent<T>
     private readonly accessor?: TuiDataListAccessor<T>;
 
     @ContentChild(AbstractTuiNativeMultiSelect, {static: true})
-    private readonly nativeSelect?: AbstractTuiNativeMultiSelect;
+    private readonly nativeSelect?: AbstractTuiNativeMultiSelect<T>;
 
     @ViewChild(TuiHostedDropdownComponent)
     private readonly hostedDropdown?: TuiHostedDropdownComponent;
@@ -87,42 +86,33 @@ export class TuiMultiSelectComponent<T>
     private readonly input?: TuiInputTagComponent;
 
     @Input()
-    @tuiDefaultProp()
     stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
 
     @Input()
-    @tuiDefaultProp()
     identityMatcher: TuiItemsHandlers<T>['identityMatcher'] =
         this.itemsHandlers.identityMatcher;
 
     @Input()
-    @tuiDefaultProp()
     expandable: TuiMultiSelectOptions<T>['expandable'] = this.options.expandable;
 
     @Input()
-    @tuiDefaultProp()
     search: string | null = '';
 
     @Input()
-    @tuiDefaultProp()
     placeholder = '';
 
     @Input()
     @HostBinding('class._editable')
-    @tuiDefaultProp()
     editable = true;
 
     @Input()
-    @tuiDefaultProp()
     disabledItemHandler: TuiItemsHandlers<T>['disabledItemHandler'] =
         this.itemsHandlers.disabledItemHandler;
 
     @Input()
-    @tuiDefaultProp()
     valueContent: TuiMultiSelectOptions<T>['valueContent'] = this.options.valueContent;
 
     @Input()
-    @tuiDefaultProp()
     tagValidator: TuiBooleanHandler<T> = ALWAYS_TRUE_HANDLER;
 
     @Input()

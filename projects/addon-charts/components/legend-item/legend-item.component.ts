@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 
 @Component({
@@ -10,20 +9,16 @@ import {TuiSizeS} from '@taiga-ui/core';
 })
 export class TuiLegendItemComponent {
     @Input()
-    @tuiDefaultProp()
     active = false;
 
     @Input()
-    @tuiDefaultProp()
     color = '';
 
     @Input()
-    @tuiDefaultProp()
     text = '';
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeS = 'm';
 
     @Input()

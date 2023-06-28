@@ -12,7 +12,6 @@ import {
     TUI_LAST_DAY,
     TuiBooleanHandler,
     TuiDayRange,
-    tuiDefaultProp,
     tuiInRange,
     TuiMonth,
     TuiMonthRange,
@@ -35,23 +34,18 @@ export class TuiPrimitiveYearPickerComponent {
     private readonly currentYear = TuiMonth.currentLocal().year;
 
     @Input()
-    @tuiDefaultProp()
     value: TuiDayRange | TuiMonthRange | TuiYear | null = null;
 
     @Input()
-    @tuiDefaultProp()
     initialItem: TuiYear = TuiMonth.currentLocal();
 
     @Input()
-    @tuiDefaultProp()
     min: TuiYear = TUI_FIRST_DAY;
 
     @Input()
-    @tuiDefaultProp()
     max: TuiYear = TUI_LAST_DAY;
 
     @Input()
-    @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<number> = ALWAYS_FALSE_HANDLER;
 
     @Output()

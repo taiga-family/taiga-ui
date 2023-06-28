@@ -17,7 +17,6 @@ import {
     TuiBooleanHandler,
     TuiDay,
     TuiDayRange,
-    tuiDefaultProp,
     TuiDestroyService,
     TuiMapper,
     TuiMonth,
@@ -40,31 +39,24 @@ import {takeUntil} from 'rxjs/operators';
 })
 export class TuiPrimitiveCalendarRangeComponent implements OnInit {
     @Input()
-    @tuiDefaultProp()
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
     @Input()
-    @tuiDefaultProp()
     markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
 
     @Input()
-    @tuiDefaultProp()
     defaultViewedMonthFirst = TuiMonth.currentLocal();
 
     @Input()
-    @tuiDefaultProp()
     defaultViewedMonthSecond = TuiMonth.currentLocal().append({month: 1});
 
     @Input()
-    @tuiDefaultProp()
     min = TUI_FIRST_DAY;
 
     @Input()
-    @tuiDefaultProp()
     max = TUI_LAST_DAY;
 
     @Input()
-    @tuiDefaultProp()
     value: TuiDayRange | null = null;
 
     @Output()

@@ -8,7 +8,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiDefaultProp, tuiMoveFocus} from '@taiga-ui/cdk';
+import {tuiMoveFocus} from '@taiga-ui/cdk';
 
 import {TUI_TAB_ACTIVATE} from './tab/tab.providers';
 
@@ -17,7 +17,6 @@ import {TUI_TAB_ACTIVATE} from './tab/tab.providers';
 })
 export class TuiTabsDirective implements AfterViewChecked {
     @Input()
-    @tuiDefaultProp()
     activeItemIndex = 0;
 
     @Output()

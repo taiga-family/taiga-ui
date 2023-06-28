@@ -7,7 +7,7 @@ import {
     Output,
 } from '@angular/core';
 import {TuiPickerService} from '@taiga-ui/addon-editor/services';
-import {tuiDefaultProp, TuiDestroyService} from '@taiga-ui/cdk';
+import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
@@ -20,7 +20,6 @@ import {Observable} from 'rxjs';
 })
 export class TuiFlatPickerComponent {
     @Input()
-    @tuiDefaultProp()
     value: TuiPoint = [0, 0];
 
     @Output()

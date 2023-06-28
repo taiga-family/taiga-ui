@@ -7,7 +7,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiDefaultProp, tuiIsObserved} from '@taiga-ui/cdk';
+import {tuiIsObserved} from '@taiga-ui/cdk';
 import {
     TUI_CLOSE_WORD,
     TUI_NOTIFICATION_OPTIONS,
@@ -31,16 +31,13 @@ export const STATUS_ICON = {
 export class TuiNotificationComponent {
     @Input()
     @HostBinding('class._has-icon')
-    @tuiDefaultProp()
     hasIcon = this.options.hasIcon;
 
     @Input()
     @HostBinding('attr.data-status')
-    @tuiDefaultProp()
     status: 'error' | 'info' | 'success' | 'warning' = this.options.status;
 
     @Input()
-    @tuiDefaultProp()
     hideClose = false;
 
     @Output()

@@ -6,7 +6,6 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
 
 @Component({
@@ -17,16 +16,13 @@ import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
 })
 export class TuiRingChartComponent {
     @Input()
-    @tuiDefaultProp()
     value: readonly number[] = [];
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size: TuiSizeS | TuiSizeXL = 'm';
 
     @Input()
-    @tuiDefaultProp()
     activeItemIndex = NaN;
 
     @Output()

@@ -36,14 +36,6 @@ runs:
           !**/node_modules/.cache
         key: modules-cache__nodejs-${{ inputs.node-version }}__${{ hashFiles('**/package-lock.json') }}
 
-    - name: Restore from global NPM cache
-      if: steps.cache-node-modules.outputs.cache-hit != 'true'
-      uses: actions/cache@v3.3.1
-      with:
-        path: ~/.npm
-        key: npm-cache__nodejs-${{ inputs.node-version }}__${{ hashFiles('**/package-lock.json') }}
-        restore-keys: npm-cache-hash__
-
     - shell: bash
       run: echo "CYPRESS_CACHE_FOLDER=./node_modules/cache-cypress" >> $GITHUB_ENV
 

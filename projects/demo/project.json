@@ -1,7 +1,6 @@
 {
     "name": "demo",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "root": "projects/demo/",
     "sourceRoot": "projects/demo/src",
     "projectType": "application",
     "prefix": "app",
@@ -27,11 +26,10 @@
         },
         "build": {
             "executor": "@angular-builders/custom-webpack:browser",
-            "outputs": ["dist/demo"],
+            "outputs": ["{workspaceRoot}/dist/demo"],
             "dependsOn": [
                 {
                     "target": "i18n",
-                    "projects": "self",
                     "params": "ignore"
                 }
             ],
@@ -172,7 +170,6 @@
             "dependsOn": [
                 {
                     "target": "i18n",
-                    "projects": "self",
                     "params": "ignore"
                 }
             ],
@@ -229,7 +226,6 @@
             "dependsOn": [
                 {
                     "target": "i18n",
-                    "projects": "self",
                     "params": "ignore"
                 }
             ],
@@ -280,7 +276,7 @@
         },
         "test": {
             "executor": "nx:run-commands",
-            "outputs": ["coverage/demo"],
+            "outputs": ["{workspaceRoot}/coverage/demo"],
             "options": {
                 "command": "jest --testMatch \"**/projects/demo/**/*.spec.ts\"",
                 "forwardAllArgs": true

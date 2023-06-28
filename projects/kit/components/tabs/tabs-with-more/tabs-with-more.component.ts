@@ -19,7 +19,6 @@ import {
     TuiActiveZoneDirective,
     tuiClamp,
     TuiContextWithImplicit,
-    tuiDefaultProp,
     tuiGetClosestFocusable,
     tuiIsElement,
     tuiIsNativeFocused,
@@ -56,15 +55,12 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
 
     @Input()
     @HostBinding('class._underline')
-    @tuiDefaultProp()
     underline = this.options.underline;
 
     @Input()
-    @tuiDefaultProp()
     activeItemIndex = 0;
 
     @Input()
-    @tuiDefaultProp()
     itemsLimit = this.options.itemsLimit;
 
     @Output()

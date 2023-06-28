@@ -11,7 +11,6 @@ import {
 import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
-    tuiDefaultProp,
     TuiDestroyService,
     TuiFocusableElementAccessor,
     TuiFocusVisibleService,
@@ -43,11 +42,9 @@ export class TuiButtonComponent
     private readonly mode$: Observable<unknown> = this.mode?.change$ || EMPTY;
 
     @Input()
-    @tuiDefaultProp()
     appearance: TuiButtonOptions['appearance'] = null;
 
     @Input()
-    @tuiDefaultProp()
     disabled = false;
 
     @Input()
@@ -58,17 +55,14 @@ export class TuiButtonComponent
 
     @Input()
     @HostBinding('attr.data-shape')
-    @tuiDefaultProp()
     shape = this.options.shape;
 
     @Input()
     @HostBinding('class._loading')
-    @tuiDefaultProp()
     showLoader = false;
 
     @Input()
     @HostBinding('attr.data-size')
-    @tuiDefaultProp()
     size = this.options.size;
 
     readonly appearance$ = this.mode$.pipe(

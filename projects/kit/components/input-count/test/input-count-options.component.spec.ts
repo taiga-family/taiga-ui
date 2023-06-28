@@ -69,31 +69,43 @@ describe(`InputCount with TUI_INPUT_COUNT_OPTIONS`, () => {
             fixture.detectChanges();
         });
 
-        it(`Increase the value by the specified step`, () => {
+        it(`Increase the value by the specified step`, async () => {
             testComponent.component.increaseValue();
+
+            fixture.detectChanges();
+            await fixture.whenStable();
 
             expect(inputPO.value).toBe(`11`);
             expect(testComponent.control.value).toBe(11);
         });
 
-        it(`Decrease the value by a given step`, () => {
+        it(`Decrease the value by a given step`, async () => {
             testComponent.component.decreaseValue();
+
+            fixture.detectChanges();
+            await fixture.whenStable();
 
             expect(inputPO.value).toBe(`1`);
             expect(testComponent.control.value).toBe(1);
         });
 
-        it(`Cannot make value greater than maxValue`, () => {
+        it(`Cannot make value greater than maxValue`, async () => {
             testComponent.component.increaseValue(); // the new value is 11
             testComponent.component.increaseValue(); // the new value would be 16, but it is greater than maxValue
+
+            fixture.detectChanges();
+            await fixture.whenStable();
 
             expect(inputPO.value).toBe(max.toString());
             expect(testComponent.control.value).toBe(max);
         });
 
-        it(`Cannot make value less than min`, () => {
+        it(`Cannot make value less than min`, async () => {
             testComponent.component.decreaseValue(); // value became === 1
             testComponent.component.decreaseValue(); // the new value would be -4, but it's less than min
+
+            fixture.detectChanges();
+            await fixture.whenStable();
 
             expect(inputPO.value).toBe(min.toString());
             expect(testComponent.control.value).toBe(min);

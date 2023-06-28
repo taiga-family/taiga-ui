@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, Inject, Input, Optional} from '@angular/core';
-import {tuiDefaultProp} from '@taiga-ui/cdk';
 import {tuiAsDataListAccessor, TuiTextfieldSizeDirective} from '@taiga-ui/core';
 import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 
@@ -14,11 +13,9 @@ import {AbstractTuiDataListWrapper} from './data-list-wrapper';
 })
 export class TuiDataListGroupWrapperComponent<T> extends AbstractTuiDataListWrapper<T> {
     @Input()
-    @tuiDefaultProp()
     items: readonly T[][] | null = [];
 
     @Input()
-    @tuiDefaultProp()
     labels: readonly string[] = [];
 
     constructor(

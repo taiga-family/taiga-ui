@@ -1,7 +1,6 @@
 {
     "name": "demo-integrations",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "root": "projects/demo-integrations/",
     "sourceRoot": "projects/demo-integrations/cypress",
     "projectType": "application",
     "prefix": "app",
@@ -30,7 +29,7 @@
         },
         "e2e": {
             "executor": "nx:run-commands",
-            "outputs": ["projects/demo-integrations/cypress/snapshots"],
+            "outputs": ["{projectRoot}/cypress/snapshots"],
             "options": {
                 "command": "npx cy2 run --parallel --record --key {args.key} --ci-build-id {args.key} --env ci=true --browser chrome --headless --project ./projects/demo-integrations --spec '**/{args.folder}/**/*.cy.ts'"
             }

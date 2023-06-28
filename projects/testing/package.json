@@ -1,13 +1,13 @@
 {
     "name": "@taiga-ui/testing",
-    "version": "3.32.0",
+    "version": "3.34.0",
     "description": "Utils functions for testing Taiga UI packages",
     "dependencies": {
         "cypress-image-snapshot": "4.0.1"
     },
     "devDependencies": {
         "@types/cypress-image-snapshot": "3.1.6",
-        "@types/jasmine": "3.10.9",
+        "@types/jasmine": "3.10.10",
         "@types/jest": "29.5.2",
         "jasmine": "4.6.0",
         "jasmine-spec-reporter": "4.2.1",
@@ -16,7 +16,7 @@
         "ts-jest": "29.1.0"
     },
     "peerDependencies": {
-        "@taiga-ui/cdk": ">=3.32.0",
+        "@taiga-ui/cdk": ">=3.34.0",
         "tslib": ">=2.0.0"
     }
 }

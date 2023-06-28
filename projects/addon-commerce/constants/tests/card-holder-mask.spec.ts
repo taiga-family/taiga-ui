@@ -21,7 +21,7 @@ describe(`TUI_CARD_HOLDER_MASK`, () => {
 
     describe(`preprocessors property`, () => {
         const preprocessor = (value: string): string => {
-            const process = maskitoPipe(...(TUI_CARD_HOLDER_MASK.preprocessors || []));
+            const process = maskitoPipe(TUI_CARD_HOLDER_MASK.preprocessors);
 
             return (
                 process(
