@@ -13,6 +13,7 @@ import {
     TuiContextWithImplicit,
     TuiDestroyService,
     TuiHandler,
+    tuiPx,
     tuiScrollFrom,
     tuiZonefree,
 } from '@taiga-ui/cdk';
@@ -37,7 +38,7 @@ import {MICRO_OFFSET, TuiPullToRefreshService} from './pull-to-refresh.service';
 export class TuiPullToRefreshComponent {
     @Input()
     styleHandler: TuiHandler<number, Record<string, any> | null> = this.isIOS
-        ? distance => ({transform: `translateY(${distance / 2}px)`})
+        ? distance => ({top: tuiPx(distance / 2)})
         : () => null;
 
     @Output()
