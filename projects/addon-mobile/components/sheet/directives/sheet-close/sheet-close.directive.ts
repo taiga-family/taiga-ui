@@ -20,7 +20,6 @@ export class TuiSheetCloseDirective {
     readonly close: Observable<unknown> = merge(
         typedFromEvent(this.elementRef.nativeElement, TUI_SHEET_CLOSE),
         this.dragged$.pipe(
-            startWith(false),
             switchMap(dragged =>
                 dragged
                     ? EMPTY
