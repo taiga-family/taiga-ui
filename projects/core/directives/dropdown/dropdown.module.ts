@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {TuiActiveZoneModule, TuiHoveredModule, TuiOverscrollModule} from '@taiga-ui/cdk';
 import {TuiScrollbarModule} from '@taiga-ui/core/components/scrollbar';
-import {TuiModeModule} from '@taiga-ui/core/directives/mode';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiDropdownComponent} from './dropdown.component';
@@ -22,7 +21,6 @@ import {TuiDropdownSelectionDirective} from './dropdown-selection.directive';
         TuiActiveZoneModule,
         TuiOverscrollModule,
         TuiScrollbarModule,
-        TuiModeModule,
         TuiHoveredModule,
     ],
     declarations: [

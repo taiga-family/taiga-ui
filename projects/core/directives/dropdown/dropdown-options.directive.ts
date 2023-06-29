@@ -22,6 +22,7 @@ export interface TuiDropdownOptions {
     readonly minHeight: number;
     readonly maxHeight: number;
     readonly offset: number;
+    readonly appearance: string;
 }
 
 /** Default values for dropdown options */
@@ -32,6 +33,7 @@ export const TUI_DROPDOWN_DEFAULT_OPTIONS: TuiDropdownOptions = {
     maxHeight: 400,
     minHeight: 80,
     offset: 4,
+    appearance: '',
 };
 
 /**
@@ -57,7 +59,7 @@ export const tuiDropdownOptionsProvider: (
 
 @Directive({
     selector:
-        '[tuiDropdownAlign], [tuiDropdownDirection], [tuiDropdownLimitWidth], [tuiDropdownMinHeight], [tuiDropdownMaxHeight], [tuiDropdownOffset]',
+        '[tuiDropdownAlign], [tuiDropdownAppearance], [tuiDropdownDirection], [tuiDropdownLimitWidth], [tuiDropdownMinHeight], [tuiDropdownMaxHeight], [tuiDropdownOffset]',
     providers: [
         {
             provide: TUI_DROPDOWN_OPTIONS,
@@ -68,6 +70,9 @@ export const tuiDropdownOptionsProvider: (
 export class TuiDropdownOptionsDirective implements TuiDropdownOptions {
     @Input('tuiDropdownAlign')
     align = this.options.align;
+
+    @Input('tuiDropdownAppearance')
+    appearance = this.options.appearance;
 
     @Input('tuiDropdownDirection')
     direction = this.options.direction;

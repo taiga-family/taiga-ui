@@ -1,0 +1,17 @@
+<label
+    tuiDropdownDirection="top"
+    tuiDropdownAlign="center"
+    tuiDropdownAppearance="round"
+    [tuiDropdown]="content"
+    [tuiDropdownManual]="open"
+>
+    <tui-toggle
+        size="l"
+        class="tui-space_right-2"
+        [(ngModel)]="open"
+    ></tui-toggle>
+    Show dropdown
+    <ng-template #content>
+        <blockquote>I'm a customized dropdown!</blockquote>
+    </ng-template>
+</label>

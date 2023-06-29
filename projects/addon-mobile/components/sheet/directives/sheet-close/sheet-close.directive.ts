@@ -1,8 +1,9 @@
 import {Directive, ElementRef, Inject, NgZone, Output} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiIfMap, tuiIsFalsy, tuiTypedFromEvent, tuiZonefull} from '@taiga-ui/cdk';
-import {merge, Observable} from 'rxjs';
-import {distinctUntilChanged, filter, startWith} from 'rxjs/operators';
+import {TUI_ANIMATIONS_DURATION} from '@taiga-ui/core';
+import {merge, Observable, timer} from 'rxjs';
+import {distinctUntilChanged, filter, startWith, switchMap} from 'rxjs/operators';
 
 import {TuiSheetComponent} from '../../components/sheet/sheet.component';
 import {TUI_SHEET_CLOSE} from '../../components/sheet-heading/sheet-heading.component';
@@ -16,7 +17,8 @@ export class TuiSheetCloseDirective {
     // eslint-disable-next-line @angular-eslint/no-output-native
     readonly close: Observable<unknown> = merge(
         tuiTypedFromEvent(this.el.nativeElement, TUI_SHEET_CLOSE),
-        this.dragged$.pipe(
+        timer(this.duration).pipe(
+            switchMap(() => this.dragged$),
             startWith(false),
             tuiIfMap(
                 () => this.scroll$.pipe(startWith(this.el.nativeElement.scrollTop)),
@@ -30,6 +32,7 @@ export class TuiSheetCloseDirective {
 
     constructor(
         @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
         @Inject(TUI_SHEET_DRAGGED) private readonly dragged$: Observable<boolean>,
         @Inject(TUI_SHEET_SCROLL) private readonly scroll$: Observable<number>,
         @Inject(WINDOW) private readonly win: Window,
