@@ -9,11 +9,13 @@ import {
     ClassDeclaration,
     createProject,
     getMainModule,
+    Identifier,
     Node,
     ObjectLiteralExpression,
     PropertyAssignment,
     saveActiveProject,
     setActiveProject,
+    SyntaxKind,
 } from 'ng-morph';
 
 import {ALL_FILES} from '../../constants';
@@ -145,9 +147,13 @@ function addTuiEntitiesToStandalone({
 
     const mainClass = getComponentFromIdentifier(rootComponentIdentifier);
 
+    const optionsObject = getOptionsObject(
+        bootstrapOptions as Identifier | ObjectLiteralExpression,
+    );
+
     if (mainClass) {
         addMainModuleToRootComponent({mainClass, options, context});
-        addRootTuiProvidersToBootstrapFn(bootstrapOptions as ObjectLiteralExpression);
+        addRootTuiProvidersToBootstrapFn(optionsObject);
         addExtraTuiProvidersToRootComponent({mainClass, options, standalone: true});
     }
 }
@@ -229,4 +235,16 @@ function getModules(
         ...(options.addDialogsModule ? DIALOG_MODULES : []),
         ...(options.addAlertModule ? ALERT_MODULES : []),
     ];
+}
+
+function getOptionsObject(
+    options: Identifier | ObjectLiteralExpression,
+): ObjectLiteralExpression {
+    if (Node.isObjectLiteralExpression(options)) {
+        return options;
+    }
+
+    const definition = options.getDefinitionNodes()[0];
+
+    return definition.getChildrenOfKind(SyntaxKind.ObjectLiteralExpression)[0];
 }

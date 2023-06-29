@@ -29,6 +29,7 @@
         "**/cspell/**",
         "**/assets/**",
         "**/node_modules/**",
+        "**/support/editor/html.ts",
         "*.{log,svg,snap,png,ogv,yml}",
         "**/projects/i18n/languages/**"
     ]

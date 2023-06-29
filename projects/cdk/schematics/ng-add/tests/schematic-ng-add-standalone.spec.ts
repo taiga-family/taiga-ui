@@ -334,6 +334,34 @@ bootstrapApplication(AppComponent, {
 `);
     });
 
+    it(`[Standalone] Should add main providers to bootstrap fn (appConfig)`, async () => {
+        createMainWithConfig();
+        saveActiveProject();
+
+        const tree = await runner
+            .runSchematicAsync(
+                `ng-add-setup-project`,
+                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                host,
+            )
+            .toPromise();
+
+        expect(tree.readContent(`test/app/app.config.ts`))
+            .toEqual(`import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { TuiRootModule } from "@taiga-ui/core";
+
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import {
+  provideRouter,
+  withEnabledBlockingInitialNavigation,
+} from '@angular/router';
+import { appRoutes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), importProvidersFrom(TuiRootModule, BrowserAnimationsModule)],
+};`);
+    });
+
     afterEach(() => {
         resetActiveProject();
     });
@@ -374,4 +402,37 @@ export class AppComponent {
     );
 
     createSourceFile(`test/app/app.template.html`, `<app></app>`);
+}
+
+function createMainWithConfig(): void {
+    createSourceFile(
+        `test/main.ts`,
+        `import { bootstrapApplication } from '@angular/platform-browser';
+import {
+  provideRouter,
+  withEnabledBlockingInitialNavigation,
+} from '@angular/router';
+import { appRoutes } from './app/app.routes';
+import { AppComponent } from './app/app.component';
+import { appConfig } from './app/app.config';
+
+bootstrapApplication(AppComponent, appConfig).catch((err) => console.error(err));
+`,
+        {overwrite: true},
+    );
+
+    createSourceFile(
+        `test/app/app.config.ts`,
+        `
+import { ApplicationConfig } from '@angular/core';
+import {
+  provideRouter,
+  withEnabledBlockingInitialNavigation,
+} from '@angular/router';
+import { appRoutes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation())],
+};`,
+    );
 }

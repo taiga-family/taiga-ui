@@ -18,7 +18,7 @@ li > p {
 }
 
 ul li > p {
-    display: inline-block;
+    display: block;
 }
 
 li:before {
@@ -40,6 +40,7 @@ ul > li:before {
     background-color: var(--tui-primary);
     vertical-align: top;
     box-sizing: border-box;
+    float: left;
 }
 
 li ul > li:before {
@@ -60,9 +61,11 @@ ol {
 
 ol > li:before {
     content: counters(item, '.') '.';
-    width: 1.5rem;
+    display: block;
     margin: 0 0.75rem 0 -1.5rem;
     counter-increment: item;
     color: var(--tui-base-05);
     vertical-align: top;
+    float: left;
+    white-space: nowrap;
 }

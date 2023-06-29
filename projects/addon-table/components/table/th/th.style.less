@@ -20,7 +20,8 @@
         border-left: none;
     }
 
-    &._sticky {
+    &._sticky,
+    :host-context(._stuck) &._sticky {
         position: sticky;
         z-index: 30;
 
