@@ -5,6 +5,7 @@
 ></div>
 
 <div
+    [style.position]="'relative'"
     [class.t-drop]="dropped$ | async"
     [ngStyle]="styleHandler((pulling$ | async) || 0)"
 >
