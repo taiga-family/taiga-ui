@@ -28,7 +28,6 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
-    TUI_DECIMAL_SYMBOLS,
     TUI_NUMBER_FORMAT,
     TuiDecimal,
     tuiFormatNumber,
@@ -201,17 +200,6 @@ export class TuiInputNumberComponent
         this.value = parsedValue;
     }
 
-    // TODO: delete this method after fix: https://github.com/Tinkoff/maskito/issues/330
-    onKeyDown(event: KeyboardEvent): void {
-        if (
-            TUI_DECIMAL_SYMBOLS.includes(event.key) &&
-            this.nativeValue.includes(this.numberFormat.decimalSeparator)
-        ) {
-            event.preventDefault();
-            this.setCaretAfterComma();
-        }
-    }
-
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
 
@@ -309,19 +297,5 @@ export class TuiInputNumberComponent
     private clear(): void {
         this.nativeValue = '';
         this.value = null;
-    }
-
-    // TODO: delete this method after fix: https://github.com/Tinkoff/maskito/issues/330
-    private setCaretAfterComma(): void {
-        if (!this.nativeFocusableElement) {
-            return;
-        }
-
-        const afterCommaPosition = this.nativeValue.length - this.precision;
-
-        this.nativeFocusableElement.setSelectionRange(
-            afterCommaPosition,
-            afterCommaPosition,
-        );
     }
 }
