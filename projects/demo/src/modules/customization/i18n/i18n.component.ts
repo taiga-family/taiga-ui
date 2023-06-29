@@ -19,6 +19,7 @@ export class I18nComponent {
     ).pipe(map(readme => readme.default.split('Supported languages:')[1]));
 
     exampleModule = import('./app.module.md?raw');
+    exampleEsbuildModule = import('./app.esbuild.module.md?raw');
 
     example1: TuiDocExample = {
         'language-switcher.component.html': import(

@@ -15,5 +15,22 @@
         >
             <tui-language-switcher>Language</tui-language-switcher>
         </tui-doc-example>
+
+        <h2 class="tui-space_top-10">CLI's esbuild-based build system</h2>
+        <p>
+            Dynamic import expressions that do not contain static values will be kept in their original form and not
+            processed at build time. This is a limitation of the underlying bundler but is
+            <a
+                href="https://github.com/evanw/esbuild/pull/2508"
+                tuiLink
+            >
+                planned
+            </a>
+            to be implemented in the future. In many cases, application code can be made to work by changing the import
+            expressions into static strings with some form of conditional statement such as an if or switch for the
+            known potential files.
+        </p>
+
+        <tui-doc-code [code]="exampleEsbuildModule"></tui-doc-code>
     </ng-template>
 </tui-doc-page>
