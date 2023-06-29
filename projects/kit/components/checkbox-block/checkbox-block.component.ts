@@ -64,7 +64,7 @@ export class TuiCheckboxBlockComponent
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Optional()
         @Inject(TuiModeDirective)
-        private readonly modeDirective: TuiModeDirective | null,
+        readonly modeDirective: TuiModeDirective | null,
     ) {
         super(control, cdr);
     }

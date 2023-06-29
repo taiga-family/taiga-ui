@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    HostBinding,
     Inject,
     Input,
     Optional,
@@ -19,12 +18,13 @@ import {
     TuiIdentityMatcher,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TuiBrightness, TuiModeDirective, TuiSizeL} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeL} from '@taiga-ui/core';
 import {
     TUI_RADIO_OPTIONS,
     TuiRadioComponent,
     TuiRadioOptions,
 } from '@taiga-ui/kit/components/radio';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-radio-labeled',
@@ -34,7 +34,12 @@ import {
     providers: [
         tuiAsFocusableItemAccessor(TuiRadioLabeledComponent),
         tuiAsControl(TuiRadioLabeledComponent),
+        MODE_PROVIDER,
     ],
+    host: {
+        '($.data-mode.attr)': 'mode$',
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiRadioLabeledComponent<T>
     extends AbstractTuiNullableControl<T>
@@ -47,7 +52,6 @@ export class TuiRadioLabeledComponent<T>
     item?: T;
 
     @Input()
-    @HostBinding('attr.data-size')
     size: TuiSizeL = this.options.size;
 
     @Input()
@@ -62,9 +66,7 @@ export class TuiRadioLabeledComponent<T>
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Optional()
-        @Inject(TuiModeDirective)
-        private readonly modeDirective: TuiModeDirective | null,
+        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_RADIO_OPTIONS)
         private readonly options: TuiRadioOptions,
     ) {
@@ -79,14 +81,8 @@ export class TuiRadioLabeledComponent<T>
         return !!this.radio && this.radio.focused;
     }
 
-    @HostBinding('class._disabled')
     override get computedDisabled(): boolean {
         return this.disabled || this.pseudoDisabled;
-    }
-
-    @HostBinding('attr.data-mode')
-    get mode(): TuiBrightness | null {
-        return this.modeDirective ? this.modeDirective.mode : null;
     }
 
     onFocused(focused: boolean): void {
