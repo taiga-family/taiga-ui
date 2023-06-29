@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.94.1](https://github.com/tinkoff/taiga-ui/compare/v2.94.0...v2.94.1) (2023-06-29)
+
+### Bug Fixes
+
+- **addon-mobile:** `Sheet` fix premature closing ([#4807](https://github.com/tinkoff/taiga-ui/issues/4807))
+  ([043d1ef](https://github.com/tinkoff/taiga-ui/commit/043d1ef425152ac589951a8e239791b72cb349d7))
+
 ## [2.94.0](https://github.com/tinkoff/taiga-ui/compare/v2.93.0...v2.94.0) (2023-06-29)
 
 ### Bug Fixes
