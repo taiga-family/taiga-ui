@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.94.0](https://github.com/tinkoff/taiga-ui/compare/v2.93.0...v2.94.0) (2023-06-29)
+
+### Bug Fixes
+
+- **addon-mobile:** `MobileCalendar` fix initial view ([#4754](https://github.com/tinkoff/taiga-ui/issues/4754))
+  ([5770071](https://github.com/tinkoff/taiga-ui/commit/57700716419f7da179a285519a07741ef9b8c57c))
+- **addon-mobile:** `PullToRefresh` remove transform CSS ([#4799](https://github.com/tinkoff/taiga-ui/issues/4799))
+  ([#4801](https://github.com/tinkoff/taiga-ui/issues/4801))
+  ([bc0abec](https://github.com/tinkoff/taiga-ui/commit/bc0abec7959e0d93fc35c478859d3c02185695f9))
+
 ## [2.93.0](https://github.com/tinkoff/taiga-ui/compare/v2.92.0...v2.93.0) (2023-06-22)
 
 ### Features
