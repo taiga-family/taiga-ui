@@ -14,6 +14,7 @@ import {
     tuiDefaultProp,
     TuiDestroyService,
     TuiHandler,
+    tuiPx,
     tuiScrollFrom,
     tuiZonefree,
 } from '@taiga-ui/cdk';
@@ -37,7 +38,7 @@ export class TuiPullToRefreshComponent {
     @Input()
     @tuiDefaultProp()
     styleHandler: TuiHandler<number, Record<string, any> | null> = this.isIOS
-        ? distance => ({transform: `translateY(${distance / 2}px)`})
+        ? distance => ({top: tuiPx(distance / 2)})
         : () => null;
 
     @Output()
