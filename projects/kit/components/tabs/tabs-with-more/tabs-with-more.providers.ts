@@ -5,6 +5,7 @@ import {
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
+import {tuiDropdownOptionsProvider} from '@taiga-ui/core';
 import {merge, Observable} from 'rxjs';
 import {debounceTime, filter, startWith, takeUntil, tap} from 'rxjs/operators';
 
@@ -15,6 +16,7 @@ export const TUI_TABS_PROVIDERS: Provider[] = [
     TuiResizeService,
     TuiDestroyService,
     MutationObserverService,
+    tuiDropdownOptionsProvider({align: `right`}),
     {
         provide: MUTATION_OBSERVER_INIT,
         useValue: {
