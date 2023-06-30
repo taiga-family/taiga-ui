@@ -12,9 +12,14 @@
             "factory": "./ng-update/v3-5/index#updateToV3_5"
         },
         "updateToV3_30": {
-            "description": "Proprietary icons migration",
+            "description": "Proprietary marker icons migration",
             "version": "3.30.0",
             "factory": "./ng-update/v3-30/index#updateToV3_30"
+        },
+        "updateToV3_35": {
+            "description": "Proprietary all icons migration",
+            "version": "3.35.0",
+            "factory": "./ng-update/v3-35/index#updateToV3_35"
         },
         "updateToV4": {
             "description": "Updates Taiga UI packages to v4",

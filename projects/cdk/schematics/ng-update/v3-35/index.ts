@@ -16,7 +16,7 @@ import {ICONS_TS} from './constants/constants';
 import {ICONS} from './constants/icons';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export function updateToV3_30(options: TuiSchema): Rule {
+export function updateToV3_35(options: TuiSchema): Rule {
     return (tree: Tree, _: SchematicContext) => {
         if (!hasProprietaryIcons(tree)) {
             !options[`skip-logs`] &&
