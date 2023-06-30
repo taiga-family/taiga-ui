@@ -45,11 +45,10 @@
             ]
         },
         "test": {
-            "executor": "nx:run-commands",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/icons"],
             "options": {
-                "command": "jest --testMatch \"**/projects/icons/**/*.spec.ts\"",
-                "forwardAllArgs": true
+                "jestConfig": "projects/icons/jest.config.ts"
             }
         },
         "publish": {

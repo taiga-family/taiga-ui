@@ -34,11 +34,10 @@
             ]
         },
         "test": {
-            "executor": "nx:run-commands",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/i18n"],
             "options": {
-                "command": "jest --testMatch \"**/projects/i18n/**/*.spec.ts\"",
-                "forwardAllArgs": true
+                "jestConfig": "projects/i18n/jest.config.ts"
             }
         },
         "publish": {

@@ -33,11 +33,10 @@
             ]
         },
         "test": {
-            "executor": "nx:run-commands",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/testing"],
             "options": {
-                "command": "jest --testMatch \"**/projects/testing/**/*.spec.ts\"",
-                "forwardAllArgs": true
+                "jestConfig": "projects/testing/jest.config.ts"
             }
         },
         "publish": {

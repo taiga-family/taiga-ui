@@ -19,11 +19,10 @@
             }
         },
         "test": {
-            "executor": "nx:run-commands",
-            "outputs": ["{workspaceRoot}/coverage/i18n"],
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/eslint-plugin"],
             "options": {
-                "command": "jest --testMatch \"**/projects/eslint-plugin/**/*.spec.ts\"",
-                "forwardAllArgs": true
+                "jestConfig": "projects/eslint-plugin/jest.config.ts"
             }
         },
         "publish": {
