@@ -77,6 +77,11 @@
         },
         {
             "languageId": "ts",
+            "filename": ["**/schematics/ng-update/v3-35/constants/icons.ts"],
+            "ignoreWords": ["Barchart", "Hangoff", "Piechart", "Userpic", "Odnoklassniki", "Tiktok", "Tcrm"]
+        },
+        {
+            "languageId": "ts",
             "filename": ["**/constants/icons.ts"],
             "ignoreWords": [
                 "Frontside",
