@@ -99,6 +99,11 @@ export class ExampleTuiAlertsComponent {
             ),
     };
 
+    readonly example6: TuiDocExample = {
+        TypeScript: import('./examples/6/index.ts?raw'),
+        HTML: import('./examples/6/index.html?raw'),
+    };
+
     data = 100;
 
     label = 'Heading';

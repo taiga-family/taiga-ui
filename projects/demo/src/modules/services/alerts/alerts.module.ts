@@ -8,7 +8,12 @@ import {
     tuiGenerateRoutes,
     TuiTextCodeModule,
 } from '@taiga-ui/addon-doc';
-import {TuiButtonModule, TuiLinkModule, TuiModeModule} from '@taiga-ui/core';
+import {
+    TuiAlertModule,
+    TuiButtonModule,
+    TuiLinkModule,
+    TuiModeModule,
+} from '@taiga-ui/core';
 import {TuiInputModule, TuiRadioListModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -22,14 +27,18 @@ import {AlertExampleWithDataModule} from './examples/4/alert-example-with-data/a
 import {TuiAlertsExampleComponent5} from './examples/5';
 import {AlertExampleWithCustomLabelModule} from './examples/5/alert-example-with-custom-label/alert-example-with-custom-label.module';
 import {CustomLabelModule} from './examples/5/custom-label/custom-label.module';
+import {TuiAlertsExampleComponent6} from './examples/6';
 
 @NgModule({
     imports: [
         CommonModule,
+        FormsModule,
+        PolymorpheusModule,
+        TuiTextCodeModule,
+        TuiAlertModule,
         TuiButtonModule,
         TuiModeModule,
         TuiMoneyModule,
-        PolymorpheusModule,
         AlertExampleWithCustomLabelModule,
         AlertExampleWithDataModule,
         AlertExampleModule,
@@ -37,10 +46,8 @@ import {CustomLabelModule} from './examples/5/custom-label/custom-label.module';
         TuiRadioListModule,
         TuiInputModule,
         TuiLinkModule,
-        FormsModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiAlertsComponent)),
-        TuiTextCodeModule,
     ],
     declarations: [
         ExampleTuiAlertsComponent,
@@ -49,6 +56,7 @@ import {CustomLabelModule} from './examples/5/custom-label/custom-label.module';
         TuiAlertsExampleComponent3,
         TuiAlertsExampleComponent4,
         TuiAlertsExampleComponent5,
+        TuiAlertsExampleComponent6,
     ],
     exports: [ExampleTuiAlertsComponent],
 })
