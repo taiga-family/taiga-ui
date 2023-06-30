@@ -23,7 +23,14 @@
         "Aldus",
         "humo",
         "uzcard",
-        "selectednode"
+        "selectednode",
+        "Barchart",
+        "Hangoff",
+        "Piechart",
+        "Userpic",
+        "Odnoklassniki",
+        "Tiktok",
+        "Tcrm"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "ignorePaths": ["**/addon-commerce/enums/currency-code.ts", "**/addon-commerce/utils/get-currency-symbol.ts"],
@@ -74,11 +81,6 @@
             "languageId": "ts",
             "filename": ["**/tests/schematic-migrate-sliders.spec.ts"],
             "ignoreWords": ["Maxxxxx"]
-        },
-        {
-            "languageId": "ts",
-            "filename": ["**/schematics/ng-update/v3-35/constants/icons.ts"],
-            "ignoreWords": ["Barchart", "Hangoff", "Piechart", "Userpic", "Odnoklassniki", "Tiktok", "Tcrm"]
         },
         {
             "languageId": "ts",
