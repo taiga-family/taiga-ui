@@ -224,34 +224,30 @@ describe(`InputRange`, () => {
         });
 
         describe(`readOnly`, () => {
-            it(`The up arrow on the left margin does not increase the value`, () => {
+            beforeEach(() => {
                 testComponent.readOnly = true;
+                fixture.detectChanges();
+            });
 
+            it(`The up arrow on the left margin does not increase the value`, () => {
                 inputPOLeft.sendKeydown(`arrowUp`);
 
                 expect(testComponent.control.value[0]).toBe(2);
             });
 
             it(`Down arrow on left margin does not decrease value`, () => {
-                testComponent.readOnly = true;
-
                 inputPOLeft.sendKeydown(`arrowDown`);
 
                 expect(testComponent.control.value[0]).toBe(2);
             });
 
             it(`The up arrow on the right margin does not increase the value`, () => {
-                testComponent.readOnly = true;
-
                 inputPORight.sendKeydown(`arrowUp`);
 
                 expect(testComponent.control.value[1]).toBe(6);
             });
 
             it(`Down arrow on right margin does not decrease value`, () => {
-                testComponent.readOnly = true;
-                fixture.detectChanges();
-
                 inputPORight.sendKeydown(`arrowDown`);
 
                 expect(testComponent.control.value[1]).toBe(6);
