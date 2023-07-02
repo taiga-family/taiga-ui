@@ -12,17 +12,17 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk';
+import {TUI_PARENT_ANIMATION, TuiValuesOf} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
 
 import {TuiExpandContentDirective} from './expand-content.directive';
 
-enum State {
-    Idle,
-    Loading,
-    Prepared,
-    Animated,
-}
+const State = {
+    Idle: 0,
+    Loading: 1,
+    Prepared: 2,
+    Animated: 3,
+} as const;
 
 const LOADER_HEIGHT = 48;
 
@@ -37,7 +37,7 @@ export class TuiExpandComponent {
     @ViewChild('wrapper')
     private readonly contentWrapper?: ElementRef<HTMLDivElement>;
 
-    private state = State.Idle;
+    private state: TuiValuesOf<typeof State> = State.Idle;
 
     @Input()
     async = false;
@@ -126,7 +126,7 @@ export class TuiExpandComponent {
         }
     }
 
-    private retrigger(state: State): void {
+    private retrigger(state: TuiValuesOf<typeof State>): void {
         this.state = State.Prepared;
 
         // We need delay to re-trigger CSS height transition from the correct number

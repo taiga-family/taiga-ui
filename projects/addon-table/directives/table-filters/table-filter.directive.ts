@@ -1,6 +1,7 @@
 import {Directive, Inject, Input, OnDestroy, OnInit, Optional} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiHeadDirective} from '@taiga-ui/addon-table/components';
+import {TuiValuesOf} from '@taiga-ui/cdk';
 import {defer, EMPTY, merge} from 'rxjs';
 import {distinctUntilChanged} from 'rxjs/operators';
 
@@ -27,7 +28,7 @@ export class TuiTableFilterDirective<T> implements OnInit, OnDestroy, TuiTableFi
         @Inject(TuiHeadDirective)
         private readonly head: TuiHeadDirective<T> | null,
         @Inject(AbstractTuiTableFilter)
-        private readonly delegate: AbstractTuiTableFilter<T[keyof T], any>,
+        private readonly delegate: AbstractTuiTableFilter<TuiValuesOf<T>, any>,
         @Inject(NgControl) private readonly control: NgControl,
         @Inject(TuiTableFiltersDirective) readonly filters: TuiTableFiltersDirective<T>,
     ) {}

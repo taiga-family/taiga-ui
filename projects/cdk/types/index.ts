@@ -12,3 +12,4 @@ export * from './matcher';
 export * from './overscroll-mode';
 export * from './rounding';
 export * from './time-mode';
+export * from './values-of';
