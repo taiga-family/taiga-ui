@@ -12,7 +12,7 @@ import {
     tuiDefaultCardValidator,
     TuiInputCardGroupedComponent,
 } from '@taiga-ui/addon-commerce';
-import {TUI_IS_IOS, TuiDestroyService} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, TuiDestroyService, TuiValuesOf} from '@taiga-ui/cdk';
 import {TuiDialogContext} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject} from 'rxjs';
@@ -47,7 +47,7 @@ export class PayModalComponent implements OnInit {
     });
 
     cards: AccountCard[] = [];
-    paymentMode: PaymentMode = PaymentMode.ByNewCard;
+    paymentMode: TuiValuesOf<typeof PaymentMode> = PaymentMode.ByNewCard;
     loading$ = new BehaviorSubject(false);
     payProcessing$ = new BehaviorSubject(false);
     amount: number = this.context?.data?.amount ?? 0;
