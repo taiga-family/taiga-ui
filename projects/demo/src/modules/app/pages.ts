@@ -1045,7 +1045,7 @@ export const pages: TuiDocPages = [
     {
         section: `Icons`,
         title: `Mapping`,
-        keywords: `icons, icon, mapping, mapped, mapper, material, svg, иконки, картинка, свг, иконка, графика`,
+        keywords: `icons, icon, mapping, mapped, mapper, material, svg, TUI_SVG_OPTIONS, tuiSvgOptionsProvider, иконки, картинка, свг, иконка, графика`,
         route: `/icons/mapping`,
     },
     {
