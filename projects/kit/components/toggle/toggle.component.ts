@@ -20,13 +20,7 @@ import {
     tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {
-    TuiAppearance,
-    TuiBrightness,
-    TuiModeDirective,
-    TuiSizeL,
-    TuiSizeXS,
-} from '@taiga-ui/core';
+import {TuiBrightness, TuiModeDirective, TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_TOGGLE_OPTIONS, TuiToggleOptions} from './toggle-options';
@@ -93,10 +87,10 @@ export class TuiToggleComponent
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    get appearance(): TuiAppearance {
+    get appearance(): string {
         return this.singleColor || this.value
-            ? TuiAppearance.Primary
-            : TuiAppearance.Secondary;
+            ? this.options.appearances.checked
+            : this.options.appearances.unchecked;
     }
 
     get sizeM(): boolean {
