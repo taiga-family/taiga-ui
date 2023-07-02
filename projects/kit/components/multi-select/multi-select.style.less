@@ -23,48 +23,38 @@
     }
 }
 
-.t-wrapper {
-    .fullsize();
-    display: flex;
+.t-content {
+    .fullsize(absolute, inset);
+    .text-overflow();
+    top: 44%;
     pointer-events: none;
-    justify-content: flex-end;
-
-    &_disabled {
-        opacity: var(--tui-disabled-opacity);
-    }
+    box-sizing: border-box;
+    font: var(--tui-font-text-s);
 
     :host[data-size='s'] & {
-        height: var(--tui-height-s);
+        top: 0;
+        line-height: var(--tui-height-s);
     }
 
     :host[data-size='m'] & {
-        height: var(--tui-height-m);
+        line-height: calc(var(--tui-height-m) / 2);
     }
 
     :host[data-size='l'] & {
-        height: var(--tui-height-l);
+        font: var(--tui-font-text-m);
+        line-height: calc(var(--tui-height-l) / 2);
     }
-}
-
-.t-group {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    padding: 1.6875rem 0 0.5625rem 1rem;
-    overflow: hidden;
 
     &_fullsize {
-        padding-top: 0.0625rem;
-        padding-bottom: 0;
+        top: 0;
 
-        :host[data-size='m'] && {
-            padding-top: 0;
+        :host[data-size='m'] & {
+            line-height: var(--tui-height-m);
         }
-    }
 
-    :host[data-size='m'] & {
-        padding: 1.1875rem 0 0 0.75rem;
-        font-size: 0.8125rem;
+        :host[data-size='l'] & {
+            line-height: var(--tui-height-l);
+        }
     }
 }
 

@@ -44,35 +44,31 @@
             *ngTemplateOutlet="select"
             ngProjectAs="select"
         ></ng-container>
-    </tui-input-tag>
 
-    <div
-        class="t-wrapper"
-        [class.t-wrapper_disabled]="disabled"
-    >
         <div
             *ngIf="computedGroup"
-            class="t-group"
-            [class.t-group_fullsize]="inputTag.labelOutside"
+            ngProjectAs="tuiContent"
+            class="t-content"
+            [class.t-content_fullsize]="inputTag.labelOutside"
         >
             <ng-container *polymorpheusOutlet="valueContent as text; context: {$implicit: value}">
                 {{ text }}
             </ng-container>
         </div>
+    </tui-input-tag>
 
-        <ng-template #icon>
-            <div
-                tuiWrapper
-                appearance="icon"
-                automation-id="tui-multi-select__arrow"
-                tuiPreventDefault="mousedown"
-                class="t-arrow"
-                [class.t-arrow_native-dropdown]="nativeDropdownMode"
-            >
-                <ng-container *polymorpheusOutlet="arrow as text">
-                    {{ text }}
-                </ng-container>
-            </div>
-        </ng-template>
-    </div>
+    <ng-template #icon>
+        <div
+            tuiWrapper
+            appearance="icon"
+            automation-id="tui-multi-select__arrow"
+            tuiPreventDefault="mousedown"
+            class="t-arrow"
+            [class.t-arrow_native-dropdown]="nativeDropdownMode"
+        >
+            <ng-container *polymorpheusOutlet="arrow as text">
+                {{ text }}
+            </ng-container>
+        </div>
+    </ng-template>
 </tui-hosted-dropdown>
