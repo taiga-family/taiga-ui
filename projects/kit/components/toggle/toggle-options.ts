@@ -1,12 +1,16 @@
 import {InjectionToken, ValueProvider} from '@angular/core';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
-import {TuiSizeL} from '@taiga-ui/core';
+import {TuiAppearance, TuiSizeL} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiToggleOptions {
     readonly icons: Readonly<{
         toggleOff: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>>;
         toggleOn: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>>;
+    }>;
+    readonly appearances: Readonly<{
+        unchecked: string;
+        checked: string;
     }>;
     readonly singleColor: boolean;
     readonly showIcons: boolean;
@@ -22,6 +26,10 @@ export const TUI_TOGGLE_DEFAULT_OPTIONS: TuiToggleOptions = {
         toggleOn({$implicit}: TuiContextWithImplicit<TuiSizeL>): string {
             return $implicit === `m` ? `tuiIconToggleOn` : `tuiIconToggleOnLarge`;
         },
+    },
+    appearances: {
+        checked: TuiAppearance.Primary,
+        unchecked: TuiAppearance.Secondary,
     },
     singleColor: false,
     showIcons: false,
