@@ -105,8 +105,8 @@
             "matchPackagePatterns": ["^prettier"]
         },
         {
-            "groupName": "nrwl toolset",
-            "matchPackagePatterns": ["^@nrwl/.*"]
+            "groupName": "Nx toolset",
+            "matchPackagePatterns": ["^@nrwl/.*", "^@nx/.*", "nx", "nx-cloud"]
         },
         {
             "groupName": "cypress toolset",
