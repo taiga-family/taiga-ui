@@ -110,6 +110,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     readonly context!: TuiContextWithImplicit<TuiActiveZoneDirective>;
 
     constructor(
+        @Self()
         @Optional()
         @Inject(TuiDropdownHoverDirective)
         private readonly hover$: TuiDropdownHoverDirective | null,
