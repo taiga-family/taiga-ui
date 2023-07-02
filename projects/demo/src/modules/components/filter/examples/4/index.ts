@@ -6,12 +6,12 @@ import {TuiAppearance} from '@taiga-ui/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-enum Department {
-    IT = 'IT',
-    HR = 'HR',
-    HeadOffice = 'Heads',
-    Delivery = 'Delivery',
-}
+const Department = {
+    IT: 'IT',
+    HR: 'HR',
+    HeadOffice: 'Heads',
+    Delivery: 'Delivery',
+} as const;
 
 @Component({
     selector: 'tui-filter-example-4',
