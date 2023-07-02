@@ -5,6 +5,7 @@ import {
     Inject,
     Input,
     Optional,
+    TrackByFunction,
     ViewChild,
 } from '@angular/core';
 import {TuiHandler} from '@taiga-ui/cdk';
@@ -55,6 +56,9 @@ export class TuiTreeComponent<T> implements DoCheck {
         @Inject(TuiTreeChildrenDirective)
         readonly directive: TuiTreeChildrenDirective<T> | null,
     ) {}
+
+    @Input()
+    trackBy: TrackByFunction<T> = (_: number, item: T) => item;
 
     @Input()
     content: PolymorpheusContent<TuiTreeContext<T>> = ({$implicit}) => String($implicit);
