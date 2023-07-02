@@ -25,37 +25,25 @@
 
 .t-content {
     .fullsize(absolute, inset);
-    .text-overflow();
-    top: 44%;
+    top: 38%;
+    display: flex;
+    align-items: center;
     pointer-events: none;
     box-sizing: border-box;
     font: var(--tui-font-text-s);
 
+    &_fullsize,
     :host[data-size='s'] & {
         top: 0;
-        line-height: var(--tui-height-s);
-    }
-
-    :host[data-size='m'] & {
-        line-height: calc(var(--tui-height-m) / 2);
     }
 
     :host[data-size='l'] & {
         font: var(--tui-font-text-m);
-        line-height: calc(var(--tui-height-l) / 2);
     }
+}
 
-    &_fullsize {
-        top: 0;
-
-        :host[data-size='m'] & {
-            line-height: var(--tui-height-m);
-        }
-
-        :host[data-size='l'] & {
-            line-height: var(--tui-height-l);
-        }
-    }
+.t-primitive {
+    .text-overflow();
 }
 
 .t-arrow {

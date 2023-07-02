@@ -51,9 +51,12 @@
             class="t-content"
             [class.t-content_fullsize]="inputTag.labelOutside"
         >
-            <ng-container *polymorpheusOutlet="valueContent as text; context: {$implicit: value}">
+            <span
+                *polymorpheusOutlet="valueContent as text; context: {$implicit: value}"
+                class="t-primitive"
+            >
                 {{ text }}
-            </ng-container>
+            </span>
         </div>
     </tui-input-tag>
 
