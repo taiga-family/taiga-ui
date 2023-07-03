@@ -109,14 +109,14 @@ export class TuiEditorEmbedHtml5Example1 {
 
             <video controls="controls" width="100%" preload="${
                 this.isCypress ? 'none' : 'auto'
-            }">
+            }" controlsList="nodownload">
                 <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
             </video>
 
             <p>Here is audio: </p>
             <audio controls style="width: 100%" preload="${
                 this.isCypress ? 'none' : 'auto'
-            }">
+            }" controlsList="nodownload">
               <source src="https://www.w3docs.com/build/audios/audio.mp3" type="audio/mp3">
             </audio>
 
