@@ -8,6 +8,10 @@ module.exports = {
                 'no-restricted-syntax': [
                     'error',
                     {
+                        selector: 'TSEnumDeclaration',
+                        message: `Don't declare enums, please use "const MyEnumType = { ... } as const;"`,
+                    },
+                    {
                         selector: "CallExpression[callee.name='mapTo']",
                         message:
                             'Use `map(() => value)` instead of `mapTo(value)`, the operator is deprecated',

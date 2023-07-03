@@ -1,7 +1,7 @@
-export enum PaymentMode {
-    ByNewCard = 0,
-    BySavedCard = 1,
-}
+export const PaymentMode = {
+    ByNewCard: 0,
+    BySavedCard: 1,
+} as const;
 
 export interface FetchedCards {
     cards: AccountCard[];

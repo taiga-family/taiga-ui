@@ -6,6 +6,8 @@
  *
  * @link https://en.wikipedia.org/wiki/ISO_4217
  */
+// TODO: change type in v4.0
+// eslint-disable-next-line no-restricted-syntax
 export enum TuiCurrencyCode {
     /**
      * Russian ruble
