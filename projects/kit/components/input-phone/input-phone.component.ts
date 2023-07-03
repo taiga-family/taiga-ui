@@ -14,14 +14,13 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {MASKITO_DEFAULT_OPTIONS, MaskitoOptions, maskitoTransform} from '@maskito/core';
-import {maskitoPrefixPostprocessorGenerator} from '@maskito/kit';
+import {maskitoCaretGuard, maskitoPrefixPostprocessorGenerator} from '@maskito/kit';
 import {
     AbstractTuiControl,
     TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
-    TuiDestroyService,
     TuiFocusableElementAccessor,
     TuiInputMode,
     tuiIsNativeFocused,
@@ -29,7 +28,6 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_MASK_SYMBOLS_REGEXP,
-    TUI_SELECTION_STREAM,
     TUI_TEXTFIELD_CLEANER,
     tuiAsDataListHost,
     TuiDataListDirective,
@@ -39,8 +37,6 @@ import {
     TuiTextfieldCleanerDirective,
 } from '@taiga-ui/core';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
 
 import {TUI_INPUT_PHONE_OPTIONS, TuiInputPhoneOptions} from './input-phone.options';
 import {
@@ -54,7 +50,6 @@ import {
     styleUrls: ['./input-phone.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        TuiDestroyService,
         tuiAsFocusableItemAccessor(TuiInputPhoneComponent),
         tuiAsControl(TuiInputPhoneComponent),
         tuiAsDataListHost(TuiInputPhoneComponent),
@@ -100,18 +95,12 @@ export class TuiInputPhoneComponent
 
     constructor(
         @Optional() @Self() @Inject(NgControl) control: NgControl | null,
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_SELECTION_STREAM) selection$: Observable<unknown>,
         @Inject(TUI_TEXTFIELD_CLEANER)
         private readonly textfieldCleaner: TuiTextfieldCleanerDirective,
         @Inject(TUI_INPUT_PHONE_OPTIONS) private readonly options: TuiInputPhoneOptions,
     ) {
         super(control, cdr);
-
-        selection$.pipe(takeUntil(destroy$)).subscribe(() => {
-            this.setCaretPosition();
-        });
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -215,29 +204,8 @@ export class TuiInputPhoneComponent
         return '';
     }
 
-    private get caretIsInForbiddenArea(): boolean {
-        const {nativeFocusableElement} = this;
-
-        if (!nativeFocusableElement) {
-            return false;
-        }
-
-        const {selectionStart, selectionEnd} = nativeFocusableElement;
-
-        return (
-            tuiIsNativeFocused(nativeFocusableElement) &&
-            selectionStart !== null &&
-            selectionStart < this.nonRemovableLength &&
-            selectionStart === selectionEnd
-        );
-    }
-
     private get nonRemovablePrefix(): string {
         return `${this.countryCode} `;
-    }
-
-    private get nonRemovableLength(): number {
-        return this.isTextValue ? 0 : this.nonRemovablePrefix.length;
     }
 
     private get maxPhoneLength(): number {
@@ -280,16 +248,13 @@ export class TuiInputPhoneComponent
                   postprocessors: [
                       maskitoPrefixPostprocessorGenerator(nonRemovablePrefix),
                   ],
+                  plugins: [
+                      maskitoCaretGuard((value, [from, to]) => [
+                          from === to ? nonRemovablePrefix.length : 0,
+                          value.length,
+                      ]),
+                  ],
               };
-    }
-
-    private setCaretPosition(): void {
-        if (this.caretIsInForbiddenArea && !!this.nativeFocusableElement) {
-            this.nativeFocusableElement.setSelectionRange(
-                this.nonRemovableLength,
-                this.nonRemovableLength,
-            );
-        }
     }
 
     private focusInput(): void {
