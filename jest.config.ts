@@ -9,7 +9,7 @@ process.env.TS_JEST_DISABLE_VER_CHECKER = `true`;
 const {compilerOptions} = require(resolve(__dirname, `tsconfig.json`));
 const maxParallel = require(`os`).cpus().length / 2;
 
-module.exports = {
+const config: Config = {
     rootDir: __dirname,
 
     /**
@@ -153,4 +153,17 @@ module.exports = {
      * Run tests with specified reporters
      */
     reporters: [`default`],
-} as unknown as Config;
+
+    /**
+     * Allows the test suite to pass when no files are found.
+     */
+    passWithNoTests: true,
+
+    /**
+     * Indicates that test coverage information should be collected and reported in the output.
+     * Optionally pass <boolean> to override option set in configuration.
+     */
+    collectCoverage: true,
+};
+
+export default config;

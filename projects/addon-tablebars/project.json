@@ -34,11 +34,10 @@
             ]
         },
         "test": {
-            "executor": "nx:run-commands",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/addon-tablebars"],
             "options": {
-                "command": "jest --testMatch \"**/projects/addon-tablebars/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/addon-tablebars/**/*.ts\" --coverage-directory=coverage/addon-tablebars",
-                "forwardAllArgs": true
+                "jestConfig": "projects/addon-tablebars/jest.config.ts"
             }
         },
         "publish": {

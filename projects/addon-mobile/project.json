@@ -34,10 +34,10 @@
             ]
         },
         "test": {
-            "executor": "nx:run-commands",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/addon-mobile"],
             "options": {
-                "command": "jest --testMatch \"**/projects/addon-mobile/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/addon-mobile/**/*.ts\" --coverage-directory=coverage/addon-mobile"
+                "jestConfig": "projects/addon-mobile/jest.config.ts"
             }
         },
         "publish": {

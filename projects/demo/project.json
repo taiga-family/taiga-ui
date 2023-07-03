@@ -275,11 +275,10 @@
             }
         },
         "test": {
-            "executor": "nx:run-commands",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/demo"],
             "options": {
-                "command": "jest --testMatch \"**/projects/demo/**/*.spec.ts\"",
-                "forwardAllArgs": true
+                "jestConfig": "projects/demo/jest.config.ts"
             }
         }
     }

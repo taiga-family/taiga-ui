@@ -34,10 +34,10 @@
             ]
         },
         "test": {
-            "executor": "nx:run-commands",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/addon-doc"],
             "options": {
-                "command": "jest --testMatch \"**/projects/addon-doc/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/addon-doc/**/*.ts\" --coverage-directory=coverage/addon-doc"
+                "jestConfig": "projects/addon-doc/jest.config.ts"
             }
         },
         "publish": {

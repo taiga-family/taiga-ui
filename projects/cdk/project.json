@@ -47,11 +47,10 @@
             }
         },
         "test": {
-            "executor": "nx:run-commands",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/cdk"],
             "options": {
-                "command": "jest --testMatch \"**/projects/cdk/**/*.spec.ts\" --collect-coverage --collect-coverage-from \"**/projects/cdk/**/*.ts\" --coverage-directory=coverage/cdk",
-                "forwardAllArgs": true
+                "jestConfig": "projects/cdk/jest.config.ts"
             },
             "dependsOn": [
                 {
