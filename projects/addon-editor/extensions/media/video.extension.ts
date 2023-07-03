@@ -1,3 +1,4 @@
+import {TUI_DEFAULT_HTML5_MEDIA_ATTRIBUTES} from '@taiga-ui/addon-editor/constants';
 import {tuiGetNestedNodes, tuiParseNodeAttributes} from '@taiga-ui/addon-editor/utils';
 import {Node} from '@tiptap/core';
 import {MarkSpec} from 'prosemirror-model';
@@ -8,19 +9,7 @@ export const TuiVideo = Node.create({
     content: `source+`,
 
     addAttributes() {
-        return tuiParseNodeAttributes([
-            `id`,
-            `class`,
-            `src`,
-            `style`,
-            `controls`,
-            `loop`,
-            `muted`,
-            `preload`,
-            `autoplay`,
-            `width`,
-            `height`,
-        ]);
+        return tuiParseNodeAttributes(TUI_DEFAULT_HTML5_MEDIA_ATTRIBUTES);
     },
 
     parseHTML(): MarkSpec['parseDOM'] {
