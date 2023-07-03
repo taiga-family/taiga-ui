@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.35.0](https://github.com/tinkoff/taiga-ui/compare/v3.34.0...v3.35.0) (2023-07-03)
+
+### Features
+
+- **addon-editor:** support `controlList` in `video/audio` ([#4827](https://github.com/tinkoff/taiga-ui/issues/4827))
+  ([ee5fd65](https://github.com/tinkoff/taiga-ui/commit/ee5fd652b8c6eadb080b9858caa73c860b25bcb0))
+- **cdk:** `schematics` add proprietary-icons migration ([#4811](https://github.com/tinkoff/taiga-ui/issues/4811))
+  ([0b7d2de](https://github.com/tinkoff/taiga-ui/commit/0b7d2de2698e7acb5478f149807f7eb73e106aa1))
+- **core:** `Alert` add new directive ([#4815](https://github.com/tinkoff/taiga-ui/issues/4815))
+  ([816759f](https://github.com/tinkoff/taiga-ui/commit/816759f75b47fbc3e28e98df3fae2f13f50ecb92))
+- **core:** `Dropdown` add appearance option ([#4795](https://github.com/tinkoff/taiga-ui/issues/4795))
+  ([0bb3d0c](https://github.com/tinkoff/taiga-ui/commit/0bb3d0c220957427df322b9aa2a08aaa453c7f08))
+- **kit:** `InputNumber` uses `Maskito` instead of legacy `text-mask`
+  ([#4725](https://github.com/tinkoff/taiga-ui/issues/4725))
+  ([7518431](https://github.com/tinkoff/taiga-ui/commit/7518431ec61cefb55bbef2172b63d5b243e1f496))
+- **kit:** `Toggle` add `appearances` to options ([#4818](https://github.com/tinkoff/taiga-ui/issues/4818))
+  ([a5e1574](https://github.com/tinkoff/taiga-ui/commit/a5e157470501c08580fb2a41c4ea5625ccf31015))
+- **kit:** `Tree` add trackBy input ([#4626](https://github.com/tinkoff/taiga-ui/issues/4626))
+  ([#4821](https://github.com/tinkoff/taiga-ui/issues/4821))
+  ([9fd8d61](https://github.com/tinkoff/taiga-ui/commit/9fd8d610f6160477c11f760c75b6250411edb496))
+
+### Bug Fixes
+
+- **addon-editor:** blinking caret doesn't appear in first item in list
+  ([#4785](https://github.com/tinkoff/taiga-ui/issues/4785))
+  ([c8df8d8](https://github.com/tinkoff/taiga-ui/commit/c8df8d89cf6a8afc2138c25ab06973976debecc0))
+- **addon-mobile:** `PullToRefresh` remove transform CSS ([#4799](https://github.com/tinkoff/taiga-ui/issues/4799))
+  ([26bc6aa](https://github.com/tinkoff/taiga-ui/commit/26bc6aa0db23dd6698e97ad1adbfd719ba8ba7bf))
+- **addon-mobile:** `Sheet` fix premature closing ([#4806](https://github.com/tinkoff/taiga-ui/issues/4806))
+  ([3dd042a](https://github.com/tinkoff/taiga-ui/commit/3dd042a37b1e065380405001c93da7eb2aae61a9))
+- **addon-table:** fix z-index for 2-dimensional sticky tables
+  ([#4796](https://github.com/tinkoff/taiga-ui/issues/4796))
+  ([c294c82](https://github.com/tinkoff/taiga-ui/commit/c294c82c6d6ab9ddc93a0f5c444c6f8ee7d05ba8))
+- **cdk:** `ng-add` fix adding providers in standalone app with config (nx 16+ default)
+  ([#4794](https://github.com/tinkoff/taiga-ui/issues/4794))
+  ([c0d2bfb](https://github.com/tinkoff/taiga-ui/commit/c0d2bfb5a362f5cb5c76eb5e7f3c7e87f69a13dd))
+- **cdk:** `TuiStaticRequestService` should be throw error when response code is not `200`
+  ([#4787](https://github.com/tinkoff/taiga-ui/issues/4787))
+  ([df27b27](https://github.com/tinkoff/taiga-ui/commit/df27b27650718a472777312d612b4796e321a08d))
+- **core:** `DropdownHover` allow nested `HostedDropdown` ([#4823](https://github.com/tinkoff/taiga-ui/issues/4823))
+  ([105c0fc](https://github.com/tinkoff/taiga-ui/commit/105c0fc0cfc6597cb3ae3a423bdbbcff9e6028ca))
+- **kit:** `Checkbox`/`Radio` properly react to mode ([#4797](https://github.com/tinkoff/taiga-ui/issues/4797))
+  ([565ad88](https://github.com/tinkoff/taiga-ui/commit/565ad8830df9e64603316920fb974bba1ed2acd6))
+- **kit:** `MultiSelect` fix `valueContent` overflow ([#4824](https://github.com/tinkoff/taiga-ui/issues/4824))
+  ([57239e2](https://github.com/tinkoff/taiga-ui/commit/57239e2c239cc818363fec0cadcd145d913b06d3))
+- **kit:** `Tabs` fix dropdown styles ([#4814](https://github.com/tinkoff/taiga-ui/issues/4814))
+  ([3c0ce9d](https://github.com/tinkoff/taiga-ui/commit/3c0ce9dd2b83f27d37fc8b3fd8c3d809135c39b2))
+
 ## [3.34.0](https://github.com/tinkoff/taiga-ui/compare/v3.33.1...v3.34.0) (2023-06-27)
 
 ### Features
