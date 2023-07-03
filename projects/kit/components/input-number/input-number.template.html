@@ -1,6 +1,8 @@
 <tui-primitive-textfield
     #textfield
     tuiValueAccessor
+    tuiTextfieldPrefix=""
+    tuiTextfieldPostfix=""
     class="t-textfield"
     [pseudoHover]="pseudoHover"
     [pseudoFocus]="computedFocused"
@@ -10,8 +12,6 @@
     [disabled]="computedDisabled"
     [maskito]="mask"
     [value]="computedValue"
-    [prefix]="prefix"
-    [postfix]="postfix"
     [focusable]="focusable"
     (valueChange)="onValueChange($event)"
     (focusedChange)="onFocused($event)"
