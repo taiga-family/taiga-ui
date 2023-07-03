@@ -121,7 +121,7 @@
         "http-server": "0.13.0",
         "husky": "8.0.3",
         "kill-port": "2.0.1",
-        "lint-staged": "13.2.2",
+        "lint-staged": "13.2.3",
         "ng-packagr": "12.2.7",
         "nx": "16.4.2",
         "nx-cloud": "16.0.5",
