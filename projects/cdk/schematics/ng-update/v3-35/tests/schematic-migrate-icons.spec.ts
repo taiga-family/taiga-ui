@@ -16,52 +16,52 @@ import {createAngularJson} from '../../../utils/create-angular-json';
 const collectionPath = join(__dirname, `../../../migration.json`);
 
 const COMPONENT_BEFORE = `
-import { tuiIconEyeClosedMarker, tuiIconCrowdMarker } from '@taiga-ui/proprietary-icons';
+import { tuiIconAlertCircleOutline, tuiIconAlertLarge } from '@taiga-ui/proprietary-icons';
 
 @Component({templateUrl: './test.template.html'})
 export class TestComponent {
     account = {
-            icon: 'tuiIconCrowdMarker',
+            icon: 'tuiIconAlertLarge',
             color: 'white',
             background: 'var(--tui-support-12)',
         };
 
-    icon = tuiIconEyeClosedMarker;
-    icon2 = tuiIconCrowdMarker;
+    icon = tuiIconAlertCircleOutline;
+    icon2 = tuiIconAlertLarge;
 }`;
 
-const COMPONENT_AFTER = `import { tuiIconTdsEyeOffMedium, tuiIconTdsUsersMedium } from "@taiga-ui/proprietary-tds-icons";
+const COMPONENT_AFTER = `import { tuiIconTdsAlertSmallPragmatic, tuiIconTdsAlertMediumPragmatic } from "@taiga-ui/proprietary-tds-icons";
 
 @Component({templateUrl: './test.template.html'})
 export class TestComponent {
     account = {
-            icon: 'tuiIconTdsUsersMedium',
+            icon: 'tuiIconTdsAlertMediumPragmatic',
             color: 'white',
             background: 'var(--tui-support-12)',
         };
 
-    icon = tuiIconTdsEyeOffMedium;
-    icon2 = tuiIconTdsUsersMedium;
+    icon = tuiIconTdsAlertSmallPragmatic;
+    icon2 = tuiIconTdsAlertMediumPragmatic;
 }`;
 
 const TEMPLATE_BEFORE = `
 <tui-marker-icon
     new
     mode="error"
-    src="tuiIconErrorMarker"
+    src="tuiIconAlertLarge"
     [size]="iconSize"
 ></tui-marker-icon>
-<custom-component [customAttr]="tuiIconErrorMarker"></custom-component>
+<custom-component [customAttr]="tuiIconArrowDown"></custom-component>
 `;
 
 const TEMPLATE_AFTER = `
 <tui-marker-icon
     new
     mode="error"
-    src="tuiIconTdsCrossMedium"
+    src="tuiIconTdsAlertMediumPragmatic"
     [size]="iconSize"
 ></tui-marker-icon>
-<custom-component [customAttr]="tuiIconTdsCrossMedium"></custom-component>
+<custom-component [customAttr]="tuiIconTdsArrowDownSmallPragmatic"></custom-component>
 `;
 
 describe(`ng-update`, () => {
@@ -82,7 +82,7 @@ describe(`ng-update`, () => {
     it(`should migrate icons in template`, async () => {
         const tree = await runner
             .runSchematicAsync(
-                `updateToV3_30`,
+                `updateToV3_35`,
                 {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                 host,
             )
@@ -94,7 +94,7 @@ describe(`ng-update`, () => {
     it(`should migrate icons in ts files`, async () => {
         const tree = await runner
             .runSchematicAsync(
-                `updateToV3_30`,
+                `updateToV3_35`,
                 {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
                 host,
             )

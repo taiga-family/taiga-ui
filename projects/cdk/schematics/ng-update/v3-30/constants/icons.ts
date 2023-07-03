@@ -987,4 +987,4 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconWorldMarker`,
         to: `tuiIconTdsGlobeMedium`,
     },
-];
+].sort((prev, next) => next.from.length - prev.from.length);

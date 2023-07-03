@@ -23,7 +23,14 @@
         "Aldus",
         "humo",
         "uzcard",
-        "selectednode"
+        "selectednode",
+        "Barchart",
+        "Hangoff",
+        "Piechart",
+        "Userpic",
+        "Odnoklassniki",
+        "Tiktok",
+        "Tcrm"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "ignorePaths": ["**/addon-commerce/enums/currency-code.ts", "**/addon-commerce/utils/get-currency-symbol.ts"],
