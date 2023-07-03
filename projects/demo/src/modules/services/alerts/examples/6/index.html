@@ -1,0 +1,22 @@
+<button
+    tuiButton
+    size="m"
+    (click)="show = true"
+>
+    Show
+</button>
+<ng-template
+    [tuiAlertOptions]="{label: 'Directive', autoClose: false, hasCloseButton: false}"
+    [(tuiAlert)]="show"
+>
+    This is a declarative directive alert
+    <button
+        tuiButton
+        size="s"
+        appearance="mono"
+        class="tui-space_top-2"
+        (click)="show = false"
+    >
+        Close
+    </button>
+</ng-template>

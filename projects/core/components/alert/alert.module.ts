@@ -5,12 +5,13 @@ import {TuiNotificationModule} from '@taiga-ui/core/components/notification';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiAlertComponent} from './alert.component';
+import {TuiAlertDirective} from './alert.directive';
 import {TuiAlertService} from './alert.service';
 
 @NgModule({
     imports: [CommonModule, PolymorpheusModule, TuiNotificationModule],
-    declarations: [TuiAlertComponent],
-    exports: [TuiAlertComponent],
+    declarations: [TuiAlertComponent, TuiAlertDirective],
+    exports: [TuiAlertComponent, TuiAlertDirective],
     providers: [tuiAsAlerts(TuiAlertService)],
 })
 export class TuiAlertModule {}

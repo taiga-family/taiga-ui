@@ -27,9 +27,7 @@ export class TuiMobileCalendarDialogComponent {
     ) {}
 
     get single(): boolean {
-        return !this.context.data || this.context.data.single === undefined
-            ? true
-            : this.context.data.single;
+        return this.context.data?.single !== false;
     }
 
     get min(): TuiDay {
