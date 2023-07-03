@@ -6,7 +6,6 @@
     display: inline-block;
     font: var(--tui-font-text-s);
     line-height: 1.25rem;
-    border-radius: var(--tui-radius-s);
     max-width: 100%;
     cursor: default;
     outline: none;
@@ -38,6 +37,14 @@
         font: var(--tui-font-text-xs);
         line-height: 1.25rem;
         border-radius: var(--tui-radius-xs);
+    }
+
+    &[data-size='m'] {
+        border-radius: var(--tui-radius-xs);
+    }
+
+    &[data-size='l'] {
+        border-radius: var(--tui-radius-s);
     }
 
     &[data-status='primary'] {
@@ -187,7 +194,6 @@
     display: flex;
     width: auto; // @note: fix problem in Safari
     align-items: center;
-    gap: 0.25rem;
     font: inherit;
     border-radius: inherit;
 
@@ -242,9 +248,19 @@
     cursor: pointer;
     pointer-events: all;
     opacity: var(--tui-disabled-opacity);
+    margin-inline-start: 0.25rem;
+    margin-inline-end: -0.25rem;
 
     &:hover {
         opacity: 1;
+    }
+
+    :host[data-size='s'] & {
+        margin-inline-start: 0;
+
+        ::ng-deep svg {
+            transform: scale(0.75);
+        }
     }
 }
 
