@@ -110,7 +110,7 @@
         "@types/webpack-env": "1.18.1",
         "angular-http-server": "1.11.3",
         "babel-loader": "9.1.2",
-        "bundlemon": "2.0.1",
+        "bundlemon": "2.0.2",
         "cpy-cli": "4.2.0",
         "cspell": "6.31.1",
         "cy2": "4.0.6",
