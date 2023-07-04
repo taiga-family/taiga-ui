@@ -1,0 +1,43 @@
+@import '../../styles/taiga-ui-local.less';
+
+:host {
+    .createStackingContext();
+    position: relative;
+    display: block;
+
+    &:not(._legacy) .t-content {
+        /* stylelint-disable*/
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        /* stylelint-enable*/
+
+        &::-webkit-scrollbar,
+        &::-webkit-scrollbar-thumb {
+            background: transparent;
+            width: 0;
+            height: 0;
+        }
+    }
+
+    &._legacy .t-content {
+        .customize-scroll();
+        overflow: overlay;
+    }
+}
+
+.t-content {
+    .createStackingContext();
+    flex: 1;
+    flex-basis: auto;
+    width: 100%;
+    height: max-content;
+    overflow: auto;
+    // In order to be able to override from the project
+    margin-bottom: var(--tui-content-margin, 1rem);
+}
+
+.t-horizontal-stuck-scrollbar-controls {
+    bottom: 0;
+    // In order to be able to override from the project
+    background: var(--tui-controls-background, unset);
+}

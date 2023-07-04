@@ -1,0 +1,43 @@
+<div class="box">
+    <div class="content">Content before</div>
+
+    <tui-horizontal-stuck-scrollbar>
+        <table class="tui-table">
+            <tr class="tui-table__tr">
+                <th class="tui-table__th">First name</th>
+                <th class="tui-table__th">Last name</th>
+                <th class="tui-table__th">Description</th>
+            </tr>
+            <tr
+                *ngFor="let item of items"
+                class="tui-table__tr"
+            >
+                <td class="tui-table__td">{{ item.firstName }}</td>
+                <td class="tui-table__td">{{ item.lastName }}</td>
+                <td class="tui-table__td">{{ item.description }}</td>
+            </tr>
+        </table>
+    </tui-horizontal-stuck-scrollbar>
+
+    <div class="content">Content between</div>
+
+    <tui-horizontal-stuck-scrollbar>
+        <table class="tui-table">
+            <tr class="tui-table__tr">
+                <th class="tui-table__th">First name</th>
+                <th class="tui-table__th">Last name</th>
+                <th class="tui-table__th">Description</th>
+            </tr>
+            <tr
+                *ngFor="let item of items"
+                class="tui-table__tr"
+            >
+                <td class="tui-table__td">{{ item.firstName }}</td>
+                <td class="tui-table__td">{{ item.lastName }}</td>
+                <td class="tui-table__td">{{ item.description }}</td>
+            </tr>
+        </table>
+    </tui-horizontal-stuck-scrollbar>
+
+    <div class="content">Content after</div>
+</div>

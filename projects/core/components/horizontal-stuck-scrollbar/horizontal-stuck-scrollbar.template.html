@@ -1,0 +1,10 @@
+<div
+    #scrollRef
+    class="t-content"
+>
+    <ng-content></ng-content>
+</div>
+<tui-scroll-controls
+    *ngIf="showScrollbars"
+    class="t-horizontal-stuck-scrollbar-controls"
+></tui-scroll-controls>

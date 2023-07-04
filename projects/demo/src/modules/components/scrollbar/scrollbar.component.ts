@@ -44,4 +44,10 @@ export class ExampleTuiScrollbarComponent {
         HTML: import('./examples/6/template.html?raw'),
         LESS: import('./examples/6/style.less?raw'),
     };
+
+    readonly example7: TuiDocExample = {
+        TypeScript: import('./examples/7/component.ts?raw'),
+        HTML: import('./examples/7/template.html?raw'),
+        LESS: import('./examples/7/style.less?raw'),
+    };
 }

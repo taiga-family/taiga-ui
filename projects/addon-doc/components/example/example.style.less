@@ -54,10 +54,13 @@
     flex-grow: 1;
 }
 
+:host:not(.t-no-overflow-demo) .t-demo {
+    overflow-x: auto;
+}
+
 .t-demo {
     .customize-scroll();
     padding: 2rem;
-    overflow-x: auto;
 
     :host-context(tui-root._mobile) & {
         padding: 1rem;
