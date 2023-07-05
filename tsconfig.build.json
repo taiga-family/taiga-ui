@@ -1,6 +1,6 @@
 {
     "extends": "./tsconfig.json",
-    "exclude": ["projects/**/test.ts", "**/*.spec.ts"],
+    "exclude": ["**/*.spec.ts"],
     "compilerOptions": {
         "outDir": "./dist/out-tsc/lib",
         "declaration": true,
