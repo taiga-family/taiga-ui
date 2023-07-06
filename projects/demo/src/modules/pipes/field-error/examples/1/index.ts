@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {distinctUntilChanged} from 'rxjs/operators';
 
 const latinChars = /^[a-zA-Z]+$/;
 
@@ -47,7 +48,7 @@ export class TuiFieldErrorPipeExample1 {
     );
 
     constructor() {
-        this.testValue1.valueChanges.subscribe(() => {
+        this.testValue1.valueChanges.pipe(distinctUntilChanged()).subscribe(() => {
             this.testValue1.markAsTouched();
         });
     }
