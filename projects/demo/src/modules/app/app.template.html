@@ -55,20 +55,15 @@
                 class="link stackblitz"
             ></a>
         </ng-container>
-        <tui-language-switcher
-            tuiTextfieldSize="m"
+        <div
             ngProjectAs="tuiDocNavigation"
-            class="language-switcher"
-        >
-            Language of components
-        </tui-language-switcher>
-        <version-manager
             tuiTextfieldSize="m"
-            ngProjectAs="tuiDocNavigation"
-            class="app-version"
+            tuiTextfieldAppearance="none"
+            class="selects"
         >
-            Version
-        </version-manager>
+            <tui-language-switcher>Language of components</tui-language-switcher>
+            <version-manager>Version</version-manager>
+        </div>
         <tui-sheets-host ngProjectAs="tuiOverContent"></tui-sheets-host>
         <custom-host ngProjectAs="tuiOverContent"></custom-host>
         <tui-table-bars-host ngProjectAs="tuiOverAlerts"></tui-table-bars-host>
