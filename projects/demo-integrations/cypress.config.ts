@@ -1,6 +1,8 @@
+/// <reference types="node" />
 import {defineConfig} from 'cypress';
 
 import {
+    TUI_BLOCK_HOSTS as blockHosts,
     TUI_CYPRESS_DESKTOP_VIEWPORT_HEIGHT as viewportHeight,
     TUI_CYPRESS_DESKTOP_VIEWPORT_WIDTH as viewportWidth,
 } from './cypress/cypress.options';
@@ -8,6 +10,7 @@ import {
 export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
     projectId: `sorry-cypress`,
     video: false,
+    blockHosts,
     viewportWidth,
     viewportHeight,
     fixturesFolder: `cypress/fixtures`,
