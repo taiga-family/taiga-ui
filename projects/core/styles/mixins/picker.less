@@ -28,6 +28,10 @@
             z-index: -1;
             border-radius: var(--tui-radius-m);
         }
+
+        &:after {
+            border-radius: 0.5rem;
+        }
     }
 
     .t-cell {
@@ -41,7 +45,7 @@
         cursor: pointer;
         background-clip: content-box;
         box-sizing: border-box;
-        border: 2px solid transparent;
+        border: 0.125rem solid transparent;
 
         &:before {
             content: '';
@@ -74,7 +78,14 @@
             }
 
             &:not(:last-child):before {
-                right: -@itemSize;
+                right: -0.25rem;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            &:not([data-range='start']):not(:first-child):before {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
             }
 
             &:last-child:first-child:before {
@@ -121,28 +132,51 @@
             }
         }
 
+        &[data-range='end'] {
+            &:before {
+                background: var(--tui-base-02);
+
+                :host._single & {
+                    background: var(--tui-secondary-hover);
+                }
+            }
+
+            &:not(:first-child):before {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+
         &[data-range='end'] > .t-item {
             &:before {
-                left: 0.25rem;
+                left: 0.625rem;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
             }
 
             &:after {
                 left: -2rem;
                 right: 100%;
-                transform: translateX(1.4375rem) scaleY(0.6) scaleX(0.4) rotate(45deg);
+                transform: translateX(1.6rem) scaleY(0.83) scaleX(0.5) rotate(45deg);
             }
         }
 
         &[data-range='start'] > .t-item {
             &:before {
-                right: 0.25rem;
+                right: 0.625rem;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
             }
 
             &:after {
                 left: 100%;
                 right: -2rem;
-                transform: translateX(-1.4375rem) scaleY(0.6) scaleX(0.4) rotate(45deg);
+                transform: translateX(-1.6rem) scaleY(0.83) scaleX(0.5) rotate(45deg);
             }
+        }
+
+        &[data-range='single'] > .t-item:after {
+            display: none;
         }
 
         &[data-state='disabled'] {
