@@ -12,7 +12,7 @@
             "{workspaceRoot}/*.md"
         ],
         "default": ["{projectRoot}/**/*", "sharedGlobals"],
-        "production": ["!{projectRoot}/**/*.spec.ts", "!{projectRoot}/**/*.cy.ts", "sharedGlobals"]
+        "production": ["default", "!{projectRoot}/**/*.spec.ts", "!{projectRoot}/**/*.cy.ts", "sharedGlobals"]
     },
     "targetDefaults": {
         "stylelint": {

@@ -2,6 +2,9 @@ name: ⚙️ E2E Summary report
 on:
   pull_request:
 
+env:
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+
 jobs:
   report:
     runs-on: ubuntu-latest
