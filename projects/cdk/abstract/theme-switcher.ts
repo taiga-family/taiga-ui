@@ -39,8 +39,6 @@ export abstract class AbstractTuiThemeSwitcher implements OnDestroy {
     }
 
     private removeTheme(): void {
-        if (this.style && this.doc.head.contains(this.style)) {
-            this.doc.head.removeChild(this.style);
-        }
+        this.style?.remove();
     }
 }
