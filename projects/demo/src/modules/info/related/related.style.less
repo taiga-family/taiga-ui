@@ -1,7 +1,68 @@
+@import 'taiga-ui-local.less';
+
 :host {
     display: block;
 }
 
 .cell {
     width: 21.25rem;
+}
+
+.img {
+    display: block;
+    margin: auto;
+    width: 100%;
+    max-width: 400px;
+}
+
+.img-min {
+    height: 5rem;
+}
+
+.title {
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-gap: 20px;
+}
+
+.grid-container {
+    grid-template-columns: repeat(3, 2fr);
+    grid-auto-rows: max-content;
+
+    @media @tui-desktop {
+        grid-template-columns: repeat(1, 2fr);
+    }
+}
+
+.preview {
+    grid-column: 1 / -1;
+    background: #b3bdc8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+    overflow: hidden;
+
+    .title {
+        margin-top: 2.1875rem;
+    }
+
+    [tuiaction] {
+        display: inline;
+        box-shadow: none;
+        border: 1px solid var(--tui-base-03);
+        border-bottom: none;
+        border-radius-right-bottom: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        background: #fff;
+        transform: translateY(2.5rem);
+    }
+
+    &:hover [tuiaction] {
+        transform: translateY(0);
+    }
 }

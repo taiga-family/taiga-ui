@@ -34,7 +34,7 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Documentation`,
-        title: `Friendly libraries`,
+        title: `Taiga UI family`,
         keywords: `related, libraries, other, friendly, npm, packages`,
         route: `related`,
     },

@@ -1,148 +1,208 @@
-<tui-doc-page header="Friendly libraries">
-    <p>We maintain these projects ourselves and highly recommend them for modern Angular apps</p>
+<tui-doc-page header="Taiga UI family">
+    <div class="grid-container grid">
+        <a
+            tuiIsland
+            target="_blank"
+            rel="noreferrer"
+            href="https://medium.com/its-tinkoff/taiga-ui-more-than-ui-kit-8867a52a63c6"
+            size="l"
+            class="preview"
+            [hoverable]="true"
+        >
+            <img
+                src="assets/images/taiga-family.png"
+                alt="taiga-family"
+                class="img"
+            />
 
-    <table class="tui-table">
-        <tbody>
-            <tr class="tui-table__tr">
-                <th class="tui-table__th">Library</th>
-                <th class="tui-table__th">About</th>
-            </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td cell">
-                    <a
-                        tuiLink
-                        href="https://github.com/tinkoff/ng-polymorpheus"
-                    >
-                        @tinkoff/ng-polymorpheus
-                    </a>
-                </td>
-                <td class="tui-table__td">
-                    A tiny library that abstracts over different ways of view customization in Angular with one simple
-                    attribute component.
-                    <strong>
-                        Included with
-                        <code>@taiga-ui/cdk</code>
-                    </strong>
-                </td>
-            </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td cell">
-                    <a
-                        tuiLink
-                        href="https://github.com/tinkoff/ng-event-plugins"
-                    >
-                        @tinkoff/ng-event-plugins
-                    </a>
-                </td>
-                <td class="tui-table__td">
-                    Angular event plugins library for optimizing change detection cycles for performance sensitive
-                    events (such as
-                    <code>touchmove</code>
-                    ,
-                    <code>scroll</code>
-                    ,
-                    <code>drag</code>
-                    etc.) and declarative
-                    <code>preventDefault()</code>
-                    and
-                    <code>stopPropagation()</code>
-                    as well as capture phase listeners.
-                    <strong>
-                        Included with
-                        <code>@taiga-ui/cdk</code>
-                    </strong>
-                    and enabled by
-                    <code>TuiRootModule</code>
-                </td>
-            </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td cell">
-                    <a
-                        tuiLink
-                        href="https://github.com/tinkoff/ng-dompurify"
-                    >
-                        @tinkoff/ng-dompurify
-                    </a>
-                </td>
-                <td class="tui-table__td">
+            <button
+                tuiAction
+                class="action"
+            >
+                Taiga UI is a huge Angular UI kit and a components library that you should definitely try out. But it’s
+                not just that. We’ve been working on it for over 5 years, starting as far back as Angular 4. And being
+                fascinated by decomposition, we’ve spawned a multitude of independently helpful isolated libraries that
+                allow us to build impressive Angular apps. While you might not be interested in using Taiga UI itself,
+                these separate projects could definitely improve your Angular DX and provide you with amazingly useful
+                tools. So in this article, let’s explore the Taiga UI family and see what makes it great.
+                <br />
+                <br />
+                <a tuiLink>Read more...</a>
+            </button>
+        </a>
+
+        <a
+            tuiIsland
+            target="_blank"
+            rel="noreferrer"
+            href="https://github.com/tinkoff/ng-event-plugins"
+            size="l"
+            [hoverable]="true"
+        >
+            <h3 class="title">@tinkoff/ng-event-plugins</h3>
+
+            <p>
+                Angular event plugins library for optimizing change detection cycles for performance sensitive events
+                (such as
+                <code>touchmove</code>
+                ,
+                <code>scroll</code>
+                ,
+                <code>drag</code>
+                etc.) and declarative
+                <code>preventDefault()</code>
+                and
+                <code>stopPropagation()</code>
+                as well as capture phase listeners.
+                <strong>
+                    Included with
+                    <code>@taiga-ui/cdk</code>
+                </strong>
+                and enabled by
+                <code>TuiRootModule</code>
+            </p>
+        </a>
+
+        <div class="grid">
+            <a
+                tuiIsland
+                target="_blank"
+                rel="noreferrer"
+                href="@tinkoff/ng-dompurify"
+                size="l"
+                [hoverable]="true"
+            >
+                <h3 class="title">@tinkoff/ng-dompurify</h3>
+
+                <p>
                     This library implements DOMPurify as Angular Sanitizer or Pipe. It delegates sanitizing to DOMPurify
-                    and supports the same configuration. See
-                    <a
-                        tuiLink
-                        href="https://github.com/cure53/DOMPurify"
-                    >
-                        DOMPurify
-                    </a>
-                </td>
-            </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td cell">
-                    <a
-                        tuiLink
-                        href="https://github.com/tinkoff/angular-contenteditable-accessor"
-                    >
-                        @tinkoff/angular-contenteditable-accessor
-                    </a>
-                </td>
-                <td class="tui-table__td">
+                    and supports the same configuration.
+                </p>
+            </a>
+
+            <a
+                tuiIsland
+                target="_blank"
+                rel="noreferrer"
+                href="https://github.com/tinkoff/angular-contenteditable-accessor"
+                size="l"
+                [hoverable]="true"
+            >
+                <h3 class="title">Angular contenteditable accessor</h3>
+
+                <p>
                     This accessor allows you to use Angular forms with contenteditable elements with ease. It has zero
                     dependencies, other than Angular itself as peer and works with Angular 4+ in all modern browsers,
                     including Internet Explorer 11
-                </td>
-            </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td cell">
-                    <a
-                        tuiLink
-                        href="http://ng-web-apis.github.io"
-                    >
-                        Web APIs for Angular
-                    </a>
-                </td>
-                <td class="tui-table__td">
-                    High quality lightweight wrappers for native Web APIs for idiomatic use with Angular.
-                    <strong>
-                        <code>@ng-web-apis/common</code>
-                        ,
-                        <code>@ng-web-apis/mutation-observer</code>
-                        and
-                        <code>@ng-web-apis/resize-observer</code>
-                        are included with
-                        <code>@taiga-ui/cdk</code>
-                    </strong>
-                </td>
-            </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td cell">
-                    <a
-                        tuiLink
-                        target="_blank"
-                        rel="noreferrer"
-                        href="https://github.com/Tinkoff/maskito"
-                    >
-                        Maskito
-                    </a>
-                </td>
-                <td class="tui-table__td">
-                    Collection of libraries to create an input mask which ensures that user types value according to
-                    predefined format
-                </td>
-            </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td cell">
-                    <a
-                        tuiLink
-                        target="_blank"
-                        [href]="screenshotBotLink"
-                    >
-                        Github App {{ screenshotBotName }}
-                    </a>
-                </td>
-                <td class="tui-table__td">
+                </p>
+            </a>
+        </div>
+
+        <a
+            tuiIsland
+            size="l"
+            href="https://github.com/tinkoff/ng-polymorpheus"
+            target="_blank"
+            rel="noreferrer"
+            [hoverable]="true"
+        >
+            <img
+                alt="Taiga"
+                src="https://raw.githubusercontent.com/Tinkoff/ng-polymorpheus/master/projects/demo/assets/logo.svg"
+                class="img"
+            />
+            <h3 class="title title_size_s">@tinkoff/ng-polymorpheus</h3>
+            <p class="text">
+                A tiny library that abstracts over different ways of view customization in Angular with one simple
+                attribute component.
+                <strong>
+                    Included with
+                    <code>@taiga-ui/cdk</code>
+                </strong>
+            </p>
+        </a>
+
+        <a
+            tuiIsland
+            size="l"
+            href="http://tinkoff.github.io/ng-web-apis"
+            target="_blank"
+            rel="noreferrer"
+            [hoverable]="true"
+        >
+            <img
+                alt="Taiga"
+                src="https://tinkoff.github.io/ng-web-apis/assets/images/web-api.svg"
+                class="img img-min"
+            />
+            <h3 class="title title_size_s">Web APIs for Angular</h3>
+            <p class="text">
+                High quality lightweight wrappers for native Web APIs for idiomatic use with Angular.
+                <strong>
+                    <code>@ng-web-apis/common</code>
+                    ,
+                    <code>@ng-web-apis/mutation-observer</code>
+                    and
+                    <code>@ng-web-apis/resize-observer</code>
+                    are included with
+                    <code>@taiga-ui/cdk</code>
+                </strong>
+            </p>
+        </a>
+
+        <a
+            tuiIsland
+            size="l"
+            href="https://github.com/Tinkoff/maskito"
+            target="_blank"
+            rel="noreferrer"
+            [hoverable]="true"
+        >
+            <img
+                alt="Taiga"
+                src="https://raw.githubusercontent.com/Tinkoff/maskito/main/projects/demo/src/assets/icons/maskito.svg"
+                class="img img-min"
+            />
+            <h3 class="title title_size_s">Maskito</h3>
+            <p class="text">
+                Collection of libraries to create an input mask which ensures that user types value according to
+                predefined format
+            </p>
+        </a>
+
+        <div class="grid">
+            <a
+                tuiIsland
+                target="_blank"
+                rel="noreferrer"
+                size="l"
+                [href]="screenshotBotLink"
+                [hoverable]="true"
+            >
+                <h3 class="title">Github App {{ screenshotBotName }}</h3>
+
+                <p>
                     GitHub App to watch for repository's workflows with tests and pin screenshots differences images to
                     bot's comment of pull request
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                </p>
+            </a>
+
+            <a
+                tuiIsland
+                size="l"
+                href="https://github.com/tinkoff/tui-editor"
+                target="_blank"
+                rel="noreferrer"
+                [hoverable]="true"
+            >
+                <img
+                    alt="Taiga"
+                    src="https://raw.githubusercontent.com/Tinkoff/tui-editor/main/apps/demo/src/assets/icons/logo.svg"
+                    class="img"
+                />
+                <h3 class="title title_size_s">@tinkoff/tui-editor</h3>
+                <p class="text">TUI Editor is a rich text editor extension with related Taiga UI components.</p>
+            </a>
+        </div>
+    </div>
 </tui-doc-page>
