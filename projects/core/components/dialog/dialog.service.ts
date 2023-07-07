@@ -1,9 +1,9 @@
 import {inject, Injectable} from '@angular/core';
 import {AbstractTuiDialogService} from '@taiga-ui/cdk';
-import type {TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiDialogComponent} from './dialog.component';
+import {TuiDialogOptions} from './dialog.interfaces';
 import {TUI_DIALOG_OPTIONS} from './dialog.tokens';
 
 const DIALOG = new PolymorpheusComponent(TuiDialogComponent);

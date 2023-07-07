@@ -1,6 +1,6 @@
 import {InjectionToken, ValueProvider} from '@angular/core';
 
-import {TuiMobileDialogOptions} from './mobile-dialog-options';
+import {TuiMobileDialogOptions} from './mobile-dialog.interfaces';
 
 type TuiMobileDialogDefaultOptions = Omit<TuiMobileDialogOptions<unknown>, 'data'>;
 

@@ -20,7 +20,7 @@ export class TuiDialogFormService {
     withPrompt(options: Partial<TuiDialogOptions<TuiPromptData>>): Observable<boolean> {
         return defer(() =>
             this.dirty
-                ? this.dialogs.open<boolean>(TUI_PROMPT, {
+                ? this.dialogs.open(TUI_PROMPT, {
                       size: `s`,
                       ...options,
                   })

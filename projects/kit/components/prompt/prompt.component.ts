@@ -35,4 +35,5 @@ export class TuiPromptComponent {
     }
 }
 
-export const TUI_PROMPT = new PolymorpheusComponent(TuiPromptComponent);
+export const TUI_PROMPT: PolymorpheusContent<TuiDialogContext<boolean, TuiPromptData>> =
+    new PolymorpheusComponent(TuiPromptComponent);

@@ -2,7 +2,6 @@ export * from './brightness';
 export * from './data-list-role';
 export * from './decimal';
 export * from './decimal-symbol';
-export * from './dialog-size';
 export * from './direction';
 export * from './dropdown-align';
 export * from './dropdown-width';

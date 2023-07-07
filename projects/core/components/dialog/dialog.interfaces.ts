@@ -1,7 +1,9 @@
-import {TuiDialog} from '@taiga-ui/cdk';
-import {TuiDialogSize} from '@taiga-ui/core/types';
+import {TuiBaseDialogContext, TuiDialog} from '@taiga-ui/cdk';
+import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
+
+export type TuiDialogSize = TuiSizeL | TuiSizeS | 'auto' | 'fullscreen' | 'page';
 
 /**
  * Options for a dialog
@@ -23,3 +25,7 @@ export interface TuiDialogOptions<I> {
     readonly header: PolymorpheusContent<TuiDialog<TuiDialogOptions<I>, any>>;
     readonly data: I;
 }
+
+export interface TuiDialogContext<O = void, I = any>
+    extends TuiBaseDialogContext<O>,
+        TuiDialogOptions<I> {}
