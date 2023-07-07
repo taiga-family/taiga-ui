@@ -3,13 +3,19 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiDataListModule} from '@taiga-ui/core';
-import {TuiDataListWrapperModule, TuiSelectModule} from '@taiga-ui/kit';
+import {TuiDataListModule, TuiErrorModule} from '@taiga-ui/core';
+import {
+    TuiDataListWrapperModule,
+    TuiFieldErrorPipeModule,
+    TuiInputModule,
+    TuiSelectModule,
+} from '@taiga-ui/kit';
 
 import {TuiMiscellaneousExample1} from './examples/1';
 import {TuiMiscellaneousExample2} from './examples/2';
 import {TuiMiscellaneousExample4} from './examples/4';
 import {TuiMiscellaneousExample5} from './examples/5';
+import {TuiMiscellaneousExample6} from './examples/6';
 import {ExampleMiscellaneousComponent} from './miscellaneous.component';
 
 @NgModule({
@@ -20,6 +26,9 @@ import {ExampleMiscellaneousComponent} from './miscellaneous.component';
         TuiSelectModule,
         TuiDataListModule,
         TuiDataListWrapperModule,
+        TuiInputModule,
+        TuiErrorModule,
+        TuiFieldErrorPipeModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleMiscellaneousComponent)),
     ],
@@ -29,6 +38,7 @@ import {ExampleMiscellaneousComponent} from './miscellaneous.component';
         TuiMiscellaneousExample2,
         TuiMiscellaneousExample4,
         TuiMiscellaneousExample5,
+        TuiMiscellaneousExample6,
     ],
     exports: [ExampleMiscellaneousComponent],
 })

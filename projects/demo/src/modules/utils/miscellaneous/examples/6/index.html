@@ -1,0 +1,42 @@
+<form
+    class="b-form"
+    [formGroup]="userDetailsForm"
+>
+    <p>
+        <tui-input formControlName="name">Name</tui-input>
+
+        <tui-error
+            formControlName="name"
+            [error]="[] | tuiFieldError | async"
+        ></tui-error>
+    </p>
+
+    <div formGroupName="address">
+        <p>
+            <tui-input formControlName="street">Street</tui-input>
+
+            <tui-error
+                formControlName="street"
+                [error]="[] | tuiFieldError | async"
+            ></tui-error>
+        </p>
+
+        <p>
+            <tui-input formControlName="zipCode">Zip code</tui-input>
+
+            <tui-error
+                formControlName="zipCode"
+                [error]="[] | tuiFieldError | async"
+            ></tui-error>
+        </p>
+
+        <p>
+            <tui-input formControlName="city">City</tui-input>
+
+            <tui-error
+                formControlName="city"
+                [error]="[] | tuiFieldError | async"
+            ></tui-error>
+        </p>
+    </div>
+</form>
