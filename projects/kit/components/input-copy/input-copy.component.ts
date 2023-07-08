@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    HostBinding,
     Inject,
     Input,
     Optional,
@@ -21,8 +20,9 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_SIZE,
-    TuiHintDirection,
     TuiPrimitiveTextfieldComponent,
+    TuiSizeL,
+    TuiSizeS,
     TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit/providers';
@@ -30,6 +30,8 @@ import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Observable, of, Subject, timer} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
+
+import {TUI_INPUT_COPY_OPTIONS, TuiInputCopyOptions} from './input-copy.options';
 
 @Component({
     selector: 'tui-input-copy',
@@ -52,13 +54,13 @@ export class TuiInputCopyComponent
     private readonly copy$ = new Subject<void>();
 
     @Input()
-    successMessage: PolymorpheusContent;
+    successMessage = this.options.successMessage;
 
     @Input()
-    messageDirection: TuiHintDirection = 'bottom-left';
+    messageDirection = this.options.messageDirection;
 
     @Input()
-    messageAppearance = '';
+    messageAppearance = this.options.messageAppearance;
 
     constructor(
         @Optional()
@@ -70,13 +72,9 @@ export class TuiInputCopyComponent
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_COPY_TEXTS) private readonly copyTexts$: Observable<[string, string]>,
+        @Inject(TUI_INPUT_COPY_OPTIONS) private readonly options: TuiInputCopyOptions,
     ) {
         super(control, cdr);
-    }
-
-    @HostBinding('class._has-value')
-    get hasValue(): boolean {
-        return !!this.value;
     }
 
     @tuiPure
@@ -106,8 +104,12 @@ export class TuiInputCopyComponent
         return !!this.textfield && this.textfield.focused;
     }
 
-    get icon(): string {
-        return this.textfieldSize.size === 's' ? 'tuiIconCopy' : 'tuiIconCopyLarge';
+    get size(): TuiSizeS | TuiSizeL {
+        return this.textfieldSize.size;
+    }
+
+    get icon(): TuiInputCopyOptions['icon'] {
+        return this.options.icon;
     }
 
     onValueChange(value: string): void {

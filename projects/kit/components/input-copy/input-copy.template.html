@@ -21,14 +21,16 @@
 
 <ng-template #iconContent>
     <tui-svg
+        *polymorpheusOutlet="icon as src; context: { $implicit: size }"
         tuiWrapper
         appearance="icon"
         automation-id="tui-copy__icon"
         class="t-icon"
+        [disabled]="!value"
         [tuiHint]="hint"
         [tuiHintDirection]="messageDirection"
         [tuiHintAppearance]="messageAppearance"
-        [src]="icon"
+        [src]="src"
         (click)="copy()"
     ></tui-svg>
 </ng-template>
