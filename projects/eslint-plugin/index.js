@@ -1,11 +1,19 @@
-const all = require('./configs/all.json');
-
 /**
  * @type {import('eslint').Linter.Config}
  */
 module.exports = {
     configs: {
-        all,
+        off: require('./configs/off.json'),
+        ng: require('./configs/ng.json'),
+        typescript: require('./configs/typescript.json'),
+        cypress: require('./configs/cypress.json'),
+        taiga: require('./configs/taiga.json'),
+        'naming-convention': require('./configs/naming-convention.json'),
+        'no-restricted-syntax': require('./configs/no-restricted-syntax.json'),
+        /**
+         * @deprecated, use taiga ruleset
+         */
+        all: require('./configs/taiga.json'),
     },
     rules: {
         'injection-token-description': require('./rules/injection-token-description'),
