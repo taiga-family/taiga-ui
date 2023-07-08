@@ -256,7 +256,9 @@ export class TuiPrimitiveTextfieldComponent
 
     @tuiPure
     getIndent$(element: HTMLElement): Observable<number> {
-        return fromEvent(element, 'scroll').pipe(map(() => -1 * element.scrollLeft));
+        return fromEvent(element, 'scroll').pipe(
+            map(() => -1 * Math.max(element.scrollLeft, 0)),
+        );
     }
 
     clear(): void {
