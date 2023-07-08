@@ -9,7 +9,7 @@
                     "error",
                     {
                         "selector": "TSEnumDeclaration",
-                        "message": "Dont declare enums, please use \"const MyEnumType = { ... } as const;\""
+                        "message": "Don't declare enums, please use \"const MyEnumType = { ... } as const;\""
                     },
                     {
                         "selector": "CallExpression[callee.name='mapTo']",
