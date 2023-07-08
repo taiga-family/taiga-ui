@@ -10,8 +10,8 @@ import {
     titleLog,
 } from '../../utils/colored-log';
 import {replaceImports} from '../steps/icons/replace-imports';
-import {replaceText} from '../steps/icons/replace-text';
 import {getFileSystem} from '../utils/get-file-system';
+import {replaceText} from '../utils/replace-text';
 import {ICONS_TS} from './constants/constants';
 import {ICONS} from './constants/icons';
 

@@ -10,7 +10,7 @@ import {
     titleLog,
 } from '../../utils/colored-log';
 import {replaceImports} from '../steps/icons/replace-imports';
-import {replaceText} from '../steps/icons/replace-text';
+import {replaceText} from '../utils/replace-text';
 import {getFileSystem} from '../utils/get-file-system';
 import {ICONS_TS} from './constants/constants';
 import {ICONS} from './constants/icons';

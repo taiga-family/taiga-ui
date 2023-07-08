@@ -1,9 +1,12 @@
 import {getSourceFiles} from 'ng-morph';
 
-import {ALL_FILES} from '../../../constants';
+import {ALL_FILES} from '../../constants';
 
-export function replaceText(replaceable: Array<{from: string; to: string}>): void {
-    const sourceFiles = getSourceFiles(ALL_FILES);
+export function replaceText(
+    replaceable: Array<{from: string; to: string}>,
+    pattern = ALL_FILES,
+): void {
+    const sourceFiles = getSourceFiles(pattern);
 
     sourceFiles.forEach(file => {
         let text = file.getFullText();
