@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.36.0](https://github.com/tinkoff/taiga-ui/compare/v3.35.0...v3.36.0) (2023-07-10)
+
+### Features
+
+- **cdk:** add schematics for migrate `@taiga-ui/addon-editor` to `@tinkoff/tui-editor`
+  ([#4870](https://github.com/tinkoff/taiga-ui/issues/4870))
+  ([5f40437](https://github.com/tinkoff/taiga-ui/commit/5f40437ecb6e0dbc7ad560b0430615b57c83e4d6))
+- **core:** support nullability in `src` property ([#4877](https://github.com/tinkoff/taiga-ui/issues/4877))
+  ([8b0667f](https://github.com/tinkoff/taiga-ui/commit/8b0667fc5002c97051926649543af5e89fe6c842))
+- **eslint-config:** add custom configs for reuse in another projects
+  ([#4869](https://github.com/tinkoff/taiga-ui/issues/4869))
+  ([c228895](https://github.com/tinkoff/taiga-ui/commit/c228895642f625b2e6a4a4f40a0d4737ba368639))
+- **kit:** `InputCopy` add DI options ([#4868](https://github.com/tinkoff/taiga-ui/issues/4868))
+  ([f0a2f83](https://github.com/tinkoff/taiga-ui/commit/f0a2f8393bc0020dff9f37bf48ed495f70fe616b))
+- **kit:** `Tag` update styles ([#4830](https://github.com/tinkoff/taiga-ui/issues/4830))
+  ([ef37091](https://github.com/tinkoff/taiga-ui/commit/ef37091287d9659253f61090997319d736ed176b))
+- **kit:** fix circular dependency error `TuiInputFilesDirective` and `TuiInputFilesComponent` with UMD bundle
+  ([#4880](https://github.com/tinkoff/taiga-ui/issues/4880))
+  ([691109f](https://github.com/tinkoff/taiga-ui/commit/691109f9f8d28bf3a4ee63d752e8131c70b25583))
+
+### Bug Fixes
+
+- **core:** `DataList` properly size `emptyContent` ([#4856](https://github.com/tinkoff/taiga-ui/issues/4856))
+  ([a0208cf](https://github.com/tinkoff/taiga-ui/commit/a0208cfb65f02f5ba9d5ccca5f506f07dc34224d))
+- **core:** `Root` set body background ([#4867](https://github.com/tinkoff/taiga-ui/issues/4867))
+  ([e831296](https://github.com/tinkoff/taiga-ui/commit/e8312960d024a448419791404dfa62e7ac07c44e))
+- **kit:** `InputInline` fix width calculation ([#4878](https://github.com/tinkoff/taiga-ui/issues/4878))
+  ([7518bf8](https://github.com/tinkoff/taiga-ui/commit/7518bf81e87181a4042acd86e29c232a2af335c4))
+- **testing:** export `tuiAddSnapshotPlugin` by default ([#4846](https://github.com/tinkoff/taiga-ui/issues/4846))
+  ([0d632ee](https://github.com/tinkoff/taiga-ui/commit/0d632ee27c9a70e7bbfba65269bb6254d08e1a0b))
+
+### Deprecations
+
+- **addon-editor:** replace to `@tinkoff/tui-editor` ([#4883](https://github.com/tinkoff/taiga-ui/issues/4883))
+  ([27fcf52](https://github.com/tinkoff/taiga-ui/commit/27fcf526414f7aa896fd91022518beb5e40e336c))
+
 ## [3.35.0](https://github.com/tinkoff/taiga-ui/compare/v3.34.0...v3.35.0) (2023-07-03)
 
 ### Features
