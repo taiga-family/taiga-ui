@@ -104,7 +104,7 @@ export class TuiInputCopyComponent
         return !!this.textfield && this.textfield.focused;
     }
 
-    get size(): TuiSizeS | TuiSizeL {
+    get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
 

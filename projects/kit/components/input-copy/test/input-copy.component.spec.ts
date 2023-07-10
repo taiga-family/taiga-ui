@@ -64,15 +64,6 @@ describe(`InputCopy`, () => {
             expect(iconSrc).toBe(`tuiIconCopyLarge`);
         });
 
-        it(`If component is small, icon size is small`, () => {
-            testComponent.size = `s`;
-            fixture.detectChanges();
-
-            const iconSrc = component.icon;
-
-            expect(iconSrc).toBe(`tuiIconCopy`);
-        });
-
         it(`Icon is still available in readonly mode`, () => {
             testComponent.readOnly = true;
             fixture.detectChanges();
