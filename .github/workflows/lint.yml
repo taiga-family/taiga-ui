@@ -94,7 +94,7 @@ jobs:
         uses: ./.github/actions/nodejs
 
       - name: Run eslint
-        run: npm run lint ${{ env.RUN_AUTOFIX == 'true' && '-- --fix' || '' }}
+        run: npm run lint ${{ env.SUPPORT_AUTO_PUSH == 'true' && '-- --fix' || '' }}
 
       - name: Apply changes after linting
         if: env.SUPPORT_AUTO_PUSH == 'true'

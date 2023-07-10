@@ -1,7 +1,7 @@
 import {InjectionToken, ValueProvider} from '@angular/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {TuiHintDirection, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TuiHintDirection, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputCopyOptions {
     readonly successMessage: PolymorpheusContent;
