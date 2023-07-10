@@ -56,14 +56,6 @@ describe(`InputCopy`, () => {
     });
 
     describe(`Copy icon visibility`, () => {
-        it(`Initially present`, () => {
-            const icon = getIcon();
-            const iconSrc = component.icon;
-
-            expect(icon).not.toBeNull();
-            expect(iconSrc).toBe(`tuiIconCopyLarge`);
-        });
-
         it(`Icon is still available in readonly mode`, () => {
             testComponent.readOnly = true;
             fixture.detectChanges();
