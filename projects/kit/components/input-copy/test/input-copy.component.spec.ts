@@ -27,7 +27,6 @@ describe(`InputCopy`, () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
-    let component: TuiInputCopyComponent;
     let pageObject: TuiPageObject<TestComponent>;
 
     function getIcon(): DebugElement | null {
@@ -50,7 +49,6 @@ describe(`InputCopy`, () => {
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
-        component = testComponent.component;
 
         fixture.detectChanges();
     });
