@@ -71,8 +71,6 @@
             "@taiga-ui/addon-commerce/*": ["projects/addon-commerce/*"],
             "@taiga-ui/addon-doc": ["projects/addon-doc/index"],
             "@taiga-ui/addon-doc/*": ["projects/addon-doc/*"],
-            "@taiga-ui/addon-editor": ["projects/addon-editor/index"],
-            "@taiga-ui/addon-editor/*": ["projects/addon-editor/*"],
             "@taiga-ui/addon-mobile": ["projects/addon-mobile/index"],
             "@taiga-ui/addon-mobile/*": ["projects/addon-mobile/*"],
             "@taiga-ui/addon-preview": ["projects/addon-preview/index"],
