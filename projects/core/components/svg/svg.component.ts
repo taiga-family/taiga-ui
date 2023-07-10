@@ -83,14 +83,15 @@ export class TuiSvgComponent {
     }
 
     @Input()
-    set src(src: TuiSafeHtml) {
+    set src(src: TuiSafeHtml | null | undefined) {
         const deprecated = this.options.deprecated(String(src));
 
         ngDevMode && tuiAssert.assert(!deprecated, deprecated);
 
         this.icon = (this.srcInterceptors ?? []).reduce(
-            (newSrc, interceptor) => interceptor(newSrc, this.options),
-            this.options.srcProcessor(src),
+            (newSrc, interceptor: TuiSvgInterceptorHandler) =>
+                interceptor(newSrc, this.options),
+            this.options.srcProcessor(src || ''),
         );
 
         this.src$.next();
