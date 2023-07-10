@@ -1,7 +1,6 @@
 @import '../../../styles/taiga-ui-local.less';
 
 :host {
-    .text-overflow();
     position: absolute;
     display: block;
     width: 100%;
@@ -15,6 +14,10 @@
     &._table {
         position: static;
         margin-top: 0;
+    }
+
+    &._filler {
+        .text-overflow();
     }
 
     :host-context(tui-primitive-textfield [tuiWrapper][data-mode='onDark']) & {
@@ -43,8 +46,6 @@
 }
 
 .t-filler {
-    overflow: hidden;
-    text-overflow: ellipsis;
     max-width: 100%;
     white-space: nowrap;
 }

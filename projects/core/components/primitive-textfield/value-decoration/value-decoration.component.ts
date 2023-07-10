@@ -50,6 +50,7 @@ export class TuiValueDecorationComponent implements DoCheck {
         return this.textfield.value;
     }
 
+    @HostBinding('class._filler')
     get filler(): string {
         const {focused, placeholder, exampleText, value, textfield} = this;
 
