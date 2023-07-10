@@ -114,7 +114,7 @@ describe(`ng-update`, () => {
         saveActiveProject();
     });
 
-    it(`should migrate icons in ts files`, async () => {
+    it(`should migrate addon-editor`, async () => {
         const tree = await runner
             .runSchematicAsync(
                 `updateToV3_36`,
