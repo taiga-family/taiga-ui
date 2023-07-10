@@ -36,6 +36,9 @@ export class TuiInputInlineComponent
     @ViewChild('native')
     private readonly native?: ElementRef<HTMLInputElement>;
 
+    @ViewChild('text')
+    private readonly text?: ElementRef<HTMLElement>;
+
     @Input()
     maxLength: number | null = null;
 
@@ -63,8 +66,14 @@ export class TuiInputInlineComponent
         return this.value !== '';
     }
 
-    /** @deprecated use 'value' setter */
     onValueChange(value: string): void {
+        if (!this.text) {
+            return;
+        }
+
+        // Sync update so width is calculated immediately
+        this.text.nativeElement.textContent = value;
+        this.text.nativeElement.style.textIndent = '';
         this.value = value;
     }
 

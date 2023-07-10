@@ -1,4 +1,5 @@
 <span
+    #text
     class="t-before"
     [style.text-indent.px]="indent"
     [textContent]="value"
@@ -23,7 +24,8 @@
     [disabled]="computedDisabled"
     [readOnly]="readOnly"
     [tuiFocusable]="focusable"
-    [(ngModel)]="value"
+    [ngModel]="value"
+    (ngModelChange)="onValueChange($event)"
     (scroll)="onScroll()"
     (tuiFocusedChange)="onFocused($event)"
 />
