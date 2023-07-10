@@ -34,7 +34,7 @@
             "type": "boolean",
             "default": true,
             "x-prompt": {
-                "message": "Do you plan on using custom SVGs/icons or addon-editor? If `Yes` we will include ng-dompurify as sanitizer, read more: https://taiga-ui.dev/icons/bundled#sanitizer",
+                "message": "Do you plan on using custom SVGs/icons or TUI editor? If `Yes` we will include ng-dompurify as sanitizer, read more: https://taiga-ui.dev/icons/bundled#sanitizer",
                 "type": "confirmation"
             }
         },
@@ -78,10 +78,6 @@
                     {
                         "value": "addon-tablebars",
                         "label": "addon-tablebars   Group action sliding toolbar"
-                    },
-                    {
-                        "value": "addon-editor",
-                        "label": "addon-editor      Rich text editor extension with related components"
                     },
                     {
                         "value": "addon-preview",
