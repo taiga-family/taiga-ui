@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostBinding, Inject} from '@angular/core';
+import {Directive, ElementRef, forwardRef, HostBinding, Inject} from '@angular/core';
 import {TuiIdService} from '@taiga-ui/cdk';
 
 // eslint-disable-next-line import/no-cycle
@@ -14,7 +14,8 @@ import {TUI_INPUT_FILES_OPTIONS, TuiInputFilesOptions} from './input-files.optio
 })
 export class TuiInputFilesDirective {
     constructor(
-        @Inject(TuiInputFilesComponent) readonly host: TuiInputFilesComponent,
+        @Inject(forwardRef(() => TuiInputFilesComponent))
+        readonly host: TuiInputFilesComponent,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLInputElement>,
         @Inject(TuiIdService) private readonly idService: TuiIdService,
         @Inject(TUI_INPUT_FILES_OPTIONS) private readonly options: TuiInputFilesOptions,
