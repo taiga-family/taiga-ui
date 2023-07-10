@@ -1,0 +1,24 @@
+{
+    "overrides": [
+        {
+            "files": ["*.ts"],
+            "parser": "@typescript-eslint/parser",
+            "plugins": ["@typescript-eslint", "@taiga-ui"],
+            "rules": {
+                "@taiga-ui/injection-token-description": "error",
+                "@taiga-ui/prefer-inject-decorator": "error",
+                "@taiga-ui/prefer-self-destroy-service": "error",
+                "@taiga-ui/no-typeof": "error",
+                "@taiga-ui/no-deep-imports": [
+                    "error",
+                    {
+                        "currentProject": "(?<=projects/)([-\\w]+)",
+                        "ignoreImports": ["\\?raw", "@taiga-ui/testing/cypress", "@taiga-ui/testing/setup-jest"]
+                    }
+                ],
+                "@taiga-ui/strict-tui-doc-example": "error",
+                "@taiga-ui/no-assert-without-ng-dev-mode": "error"
+            }
+        }
+    ]
+}

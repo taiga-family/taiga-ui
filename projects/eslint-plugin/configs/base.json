@@ -1,4 +1,0 @@
-{
-    "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint", "@taiga-ui"]
-}
