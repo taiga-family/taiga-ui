@@ -8,14 +8,14 @@
     color: var(--tui-text-01);
     opacity: 0.5;
 
-    [tuiWrapper]:not([data-state='readonly']):hover .t-textfield-icon & {
+    [tuiWrapper]:not([data-state='readonly']):hover .t-textfield-icon &:not([data-state='disabled']) {
         opacity: 0.65;
     }
 
     &[data-mode='onDark'] {
         color: var(--tui-text-01-night);
 
-        [tuiWrapper]:not([data-state='readonly']):hover .t-textfield-icon & {
+        [tuiWrapper]:not([data-state='readonly']):hover .t-textfield-icon &:not([data-state='disabled']) {
             opacity: 1;
         }
 
