@@ -50,7 +50,6 @@ jobs:
             addon-doc,
             addon-charts,
             addon-commerce,
-            addon-editor,
             addon-mobile,
             addon-preview,
             addon-table,

@@ -20,7 +20,6 @@ jobs:
             addon-charts,
             addon-commerce,
             addon-doc,
-            addon-editor,
             addon-mobile,
             addon-preview,
             addon-table,
@@ -88,11 +87,6 @@ jobs:
           directory: ./coverage/addon-mobile/
           flags: summary,addon-mobile
           name: addon-mobile
-      - uses: codecov/codecov-action@v3.1.4
-        with:
-          directory: ./coverage/addon-editor/
-          flags: summary,addon-editor
-          name: addon-editor
       - uses: codecov/codecov-action@v3.1.4
         with:
           directory: ./coverage/addon-doc/

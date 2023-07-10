@@ -12,7 +12,6 @@ export class StackblitzDepsService {
             ...(await this.getAngularPackages()),
             ...this.getTaigaPackages(),
             ...(await this.getCommonPackages()),
-            ...(await this.getEditorPackagesOrEmpty()),
         };
     }
 
@@ -51,7 +50,6 @@ export class StackblitzDepsService {
             '@taiga-ui/styles': version,
             '@taiga-ui/addon-charts': version,
             '@taiga-ui/addon-commerce': version,
-            '@taiga-ui/addon-editor': version,
             '@taiga-ui/addon-mobile': version,
             '@taiga-ui/addon-preview': version,
             '@taiga-ui/addon-table': version,
@@ -86,11 +84,5 @@ export class StackblitzDepsService {
             rxjs: rootDeps.rxjs,
             typescript: rootDevDeps.typescript,
         };
-    }
-
-    private async getEditorPackagesOrEmpty(): Promise<Record<string, string>> {
-        return this.location.pathname.includes(`/editor/`)
-            ? (await import(`@taiga-ui/addon-editor/package.json`)).dependencies
-            : {};
     }
 }

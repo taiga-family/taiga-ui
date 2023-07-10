@@ -49,7 +49,6 @@
             "@taiga-ui/addon-preview",
             "@taiga-ui/addon-tablebars",
             "@taiga-ui/addon-table",
-            "@taiga-ui/addon-editor",
             "@taiga-ui/addon-mobile",
             "@taiga-ui/proprietary-banking",
             "@taiga-ui/proprietary-core",
