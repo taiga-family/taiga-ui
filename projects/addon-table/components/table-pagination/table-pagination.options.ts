@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {tuiCreateOptions, tuiProvideOptions, TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TuiContextWithImplicit,tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiTablePaginationOptions {

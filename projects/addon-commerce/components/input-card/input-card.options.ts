@@ -4,7 +4,7 @@ import {
     TUI_PAYMENT_SYSTEM_ICONS,
     tuiGetPaymentSystem,
 } from '@taiga-ui/addon-commerce/utils';
-import {TuiHandler, tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateOptions, TuiHandler, tuiProvideOptions} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputCardOptions {

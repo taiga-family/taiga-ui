@@ -6,8 +6,8 @@ import {TuiRootModule} from '@taiga-ui/core';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiMobileDialogModule} from '../mobile-dialog.module';
-import {TuiMobileDialogService} from '../mobile-dialog.service';
 import {tuiMobileDialogOptionsProvider} from '../mobile-dialog.options';
+import {TuiMobileDialogService} from '../mobile-dialog.service';
 
 describe(`Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS`, () => {
     @Component({

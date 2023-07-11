@@ -1,6 +1,6 @@
 import {Provider} from '@angular/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputCountOptions {
     readonly icons: Readonly<{

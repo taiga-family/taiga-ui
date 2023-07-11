@@ -21,9 +21,13 @@ module.exports = {
                     tokenDescriptionNode.value || // simple string
                     tokenDescriptionNode.quasis?.[0].value?.raw || // TemplateLiteral (backtick string)
                     '';
-                const tokenName = node.parent.id.name;
+                const tokenName = node.parent.id?.name;
 
-                if (tokenDescription && !tokenDescription.includes(tokenName)) {
+                if (
+                    tokenName &&
+                    tokenDescription &&
+                    !tokenDescription.includes(tokenName)
+                ) {
                     context.report({
                         node: tokenDescriptionNode,
                         messageId: MESSAGE_ID,

@@ -1,9 +1,9 @@
 import {Provider} from '@angular/core';
 import {
     TuiContextWithImplicit,
-    TuiTimeMode,
-    tuiProvideOptions,
     tuiCreateOptions,
+    tuiProvideOptions,
+    TuiTimeMode,
 } from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {MAX_TIME_VALUES} from '@taiga-ui/kit/constants';

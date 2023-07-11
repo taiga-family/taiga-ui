@@ -1,6 +1,6 @@
 import {Provider} from '@angular/core';
-import {TuiBrightness, TuiSizeL} from '@taiga-ui/core';
 import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {TuiBrightness, TuiSizeL} from '@taiga-ui/core';
 
 export interface TuiBreadcrumbsOptions {
     readonly icon: string;
