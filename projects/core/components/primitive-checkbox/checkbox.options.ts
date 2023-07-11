@@ -3,7 +3,6 @@ import {tuiCreateOptions, tuiProvideOptions, TuiContextWithImplicit} from '@taig
 import {TuiAppearance} from '@taiga-ui/core/enums';
 import {TuiSizeL} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {} from '@taiga-ui/core/utils';
 
 export interface TuiCheckboxOptions {
     readonly size: TuiSizeL;
