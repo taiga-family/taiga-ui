@@ -43,9 +43,9 @@ export const tuiHintOptionsProvider: (
     provide: TUI_HINT_OPTIONS,
     deps: [
         [new Optional(), TuiHintOptionsDirective],
-        [new SkipSelf(), TUI_HINT_OPTIONS],
+        [new Optional(), new SkipSelf(), TUI_HINT_OPTIONS],
     ],
-    useFactory: tuiOverrideOptions(override),
+    useFactory: tuiOverrideOptions(override, TUI_HINT_DEFAULT_OPTIONS),
 });
 
 @Directive({

@@ -52,9 +52,9 @@ export const tuiDropdownOptionsProvider: (
     provide: TUI_DROPDOWN_OPTIONS,
     deps: [
         [new Optional(), TuiDropdownOptionsDirective],
-        [new SkipSelf(), TUI_DROPDOWN_OPTIONS],
+        [new Optional(), new SkipSelf(), TUI_DROPDOWN_OPTIONS],
     ],
-    useFactory: tuiOverrideOptions(override),
+    useFactory: tuiOverrideOptions(override, TUI_DROPDOWN_DEFAULT_OPTIONS),
 });
 
 @Directive({

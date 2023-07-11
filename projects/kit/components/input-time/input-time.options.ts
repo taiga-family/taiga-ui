@@ -1,6 +1,6 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
+import {InjectionToken, Provider} from '@angular/core';
 import {TuiContextWithImplicit, TuiTimeMode} from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {tuiProvideOptions, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {MAX_TIME_VALUES} from '@taiga-ui/kit/constants';
 import {TuiTimeFormatParts} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -33,9 +33,12 @@ export const TUI_INPUT_TIME_OPTIONS = new InjectionToken<TuiInputTimeOptions>(
     },
 );
 
-export const tuiInputTimeOptionsProvider: (
+export function tuiInputTimeOptionsProvider(
     options: Partial<TuiInputTimeOptions>,
-) => ValueProvider = (options: Partial<TuiInputTimeOptions>) => ({
-    provide: TUI_INPUT_TIME_OPTIONS,
-    useValue: {...TUI_INPUT_TIME_DEFAULT_OPTIONS, ...options},
-});
+): Provider {
+    return tuiProvideOptions(
+        TUI_INPUT_TIME_OPTIONS,
+        options,
+        TUI_INPUT_TIME_DEFAULT_OPTIONS,
+    );
+}

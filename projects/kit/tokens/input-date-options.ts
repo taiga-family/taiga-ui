@@ -1,6 +1,6 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
+import {InjectionToken, Provider} from '@angular/core';
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiContextWithImplicit, TuiDay} from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {tuiProvideOptions, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputDateOptions {
@@ -28,9 +28,12 @@ export const TUI_INPUT_DATE_OPTIONS = new InjectionToken<TuiInputDateOptions>(
     },
 );
 
-export const tuiInputDateOptionsProvider: (
+export function tuiInputDateOptionsProvider(
     options: Partial<TuiInputDateOptions>,
-) => ValueProvider = (options: Partial<TuiInputDateOptions>) => ({
-    provide: TUI_INPUT_DATE_OPTIONS,
-    useValue: {...TUI_INPUT_DATE_DEFAULT_OPTIONS, ...options},
-});
+): Provider {
+    return tuiProvideOptions(
+        TUI_INPUT_DATE_OPTIONS,
+        options,
+        TUI_INPUT_DATE_DEFAULT_OPTIONS,
+    );
+}
