@@ -4,7 +4,7 @@ import {
     TuiInputCardOptions,
 } from '@taiga-ui/addon-commerce/components/input-card';
 import {tuiDefaultCardValidator} from '@taiga-ui/addon-commerce/constants';
-import {TuiBooleanHandler,tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {TuiBooleanHandler, tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiInputCardGroupedOptions extends TuiInputCardOptions {
     readonly cardValidator: TuiBooleanHandler<string>;
