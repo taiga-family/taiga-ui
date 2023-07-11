@@ -42,7 +42,7 @@ import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_SELECT_OPTIONS, TuiSelectOptions} from './select-options';
+import {TUI_SELECT_OPTIONS, TuiSelectOptions} from './select.options';
 
 @Component({
     selector: 'tui-select',

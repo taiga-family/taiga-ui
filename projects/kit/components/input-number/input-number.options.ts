@@ -1,4 +1,5 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
+import {Provider} from '@angular/core';
+import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiDecimal} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -30,16 +31,16 @@ export const TUI_INPUT_NUMBER_DEFAULT_OPTIONS: TuiInputNumberOptions = {
 /**
  * Default parameters for input count component
  */
-export const TUI_INPUT_NUMBER_OPTIONS = new InjectionToken<TuiInputNumberOptions>(
-    `[TUI_INPUT_NUMBER_OPTIONS]`,
-    {
-        factory: () => TUI_INPUT_NUMBER_DEFAULT_OPTIONS,
-    },
+export const TUI_INPUT_NUMBER_OPTIONS = tuiCreateOptions(
+    TUI_INPUT_NUMBER_DEFAULT_OPTIONS,
 );
 
-export const tuiInputNumberOptionsProvider: (
+export function tuiInputNumberOptionsProvider(
     options: Partial<TuiInputNumberOptions>,
-) => ValueProvider = (options: Partial<TuiInputNumberOptions>) => ({
-    provide: TUI_INPUT_NUMBER_OPTIONS,
-    useValue: {...TUI_INPUT_NUMBER_DEFAULT_OPTIONS, ...options},
-});
+): Provider {
+    return tuiProvideOptions(
+        TUI_INPUT_NUMBER_OPTIONS,
+        options,
+        TUI_INPUT_NUMBER_DEFAULT_OPTIONS,
+    );
+}

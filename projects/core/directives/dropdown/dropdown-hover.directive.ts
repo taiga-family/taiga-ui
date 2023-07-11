@@ -7,7 +7,7 @@ import {delay, share, switchMap, tap} from 'rxjs/operators';
 import {
     TUI_DROPDOWN_HOVER_OPTIONS,
     TuiDropdownHoverOptions,
-} from './dropdown-hover-options.directive';
+} from './dropdown-hover.options.directive';
 
 @Directive({
     selector: '[tuiDropdownHover]:not(ng-container)',

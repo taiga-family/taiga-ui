@@ -1,10 +1,10 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
+import {Provider} from '@angular/core';
 import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {
     TUI_PAYMENT_SYSTEM_ICONS,
     tuiGetPaymentSystem,
 } from '@taiga-ui/addon-commerce/utils';
-import {TuiHandler} from '@taiga-ui/cdk';
+import {TuiHandler, tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputCardOptions {
@@ -24,14 +24,14 @@ export const TUI_INPUT_CARD_DEFAULT_OPTIONS: TuiInputCardOptions = {
     autocompleteEnabled: false,
 };
 
-export const TUI_INPUT_CARD_OPTIONS = new InjectionToken<TuiInputCardOptions>(
-    `[TUI_INPUT_CARD_OPTIONS]`,
-    {factory: () => TUI_INPUT_CARD_DEFAULT_OPTIONS},
-);
+export const TUI_INPUT_CARD_OPTIONS = tuiCreateOptions(TUI_INPUT_CARD_DEFAULT_OPTIONS);
 
-export const tuiInputCardOptionsProvider: (
+export function tuiInputCardOptionsProvider(
     options: Partial<TuiInputCardOptions>,
-) => ValueProvider = (options: Partial<TuiInputCardOptions>) => ({
-    provide: TUI_INPUT_CARD_OPTIONS,
-    useValue: {...TUI_INPUT_CARD_DEFAULT_OPTIONS, ...options},
-});
+): Provider {
+    return tuiProvideOptions(
+        TUI_INPUT_CARD_OPTIONS,
+        options,
+        TUI_INPUT_CARD_DEFAULT_OPTIONS,
+    );
+}

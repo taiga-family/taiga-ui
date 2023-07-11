@@ -14,7 +14,7 @@ import {TuiTablePagination} from './table-pagination';
 import {
     TUI_TABLE_PAGINATION_OPTIONS,
     TuiTablePaginationOptions,
-} from './table-pagination-options';
+} from './table-pagination.options';
 
 @Component({
     selector: 'tui-table-pagination',

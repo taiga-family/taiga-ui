@@ -22,7 +22,7 @@ import {TuiSizeS} from '@taiga-ui/core';
 import {take} from 'rxjs/operators';
 
 import {TuiSliderKeyStepsDirective} from './helpers/slider-key-steps.directive';
-import {TUI_SLIDER_OPTIONS, TuiSliderOptions} from './slider-options';
+import {TUI_SLIDER_OPTIONS, TuiSliderOptions} from './slider.options';
 
 @Component({
     /**

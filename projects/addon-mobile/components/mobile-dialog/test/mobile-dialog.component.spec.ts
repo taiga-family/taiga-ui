@@ -7,7 +7,7 @@ import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiMobileDialogModule} from '../mobile-dialog.module';
 import {TuiMobileDialogService} from '../mobile-dialog.service';
-import {tuiMobileDialogOptionsProvider} from '../mobile-dialog.tokens';
+import {tuiMobileDialogOptionsProvider} from '../mobile-dialog.options';
 
 describe(`Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS`, () => {
     @Component({

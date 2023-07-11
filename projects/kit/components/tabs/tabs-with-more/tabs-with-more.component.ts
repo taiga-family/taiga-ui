@@ -31,7 +31,7 @@ import {Observable} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
 
 import {TuiTabComponent} from '../tab/tab.component';
-import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs-options';
+import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs.options';
 import {TUI_TABS_PROVIDERS, TUI_TABS_REFRESH} from './tabs-with-more.providers';
 
 @Component({

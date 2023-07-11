@@ -7,7 +7,7 @@ import {
 } from '@taiga-ui/core';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_ARROW_OPTIONS, TuiArrowOptions} from './arrow-options';
+import {TUI_ARROW_OPTIONS, TuiArrowOptions} from './arrow.options';
 
 @Component({
     selector: 'tui-arrow',

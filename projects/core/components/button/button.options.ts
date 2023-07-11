@@ -1,4 +1,5 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
+import {Provider} from '@angular/core';
+import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core/enums';
 import {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core/types';
 
@@ -21,16 +22,8 @@ export const TUI_BUTTON_DEFAULT_OPTIONS: TuiButtonOptions = {
 /**
  * Default parameters for button component
  */
-export const TUI_BUTTON_OPTIONS = new InjectionToken<TuiButtonOptions>(
-    `[TUI_BUTTON_OPTIONS]`,
-    {
-        factory: () => TUI_BUTTON_DEFAULT_OPTIONS,
-    },
-);
+export const TUI_BUTTON_OPTIONS = tuiCreateOptions(TUI_BUTTON_DEFAULT_OPTIONS);
 
-export const tuiButtonOptionsProvider: (
-    options: Partial<TuiButtonOptions>,
-) => ValueProvider = (options: Partial<TuiButtonOptions>) => ({
-    provide: TUI_BUTTON_OPTIONS,
-    useValue: {...TUI_BUTTON_DEFAULT_OPTIONS, ...options},
-});
+export function tuiButtonOptionsProvider(options: Partial<TuiButtonOptions>): Provider {
+    return tuiProvideOptions(TUI_BUTTON_OPTIONS, options, TUI_BUTTON_DEFAULT_OPTIONS);
+}

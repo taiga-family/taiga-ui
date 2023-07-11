@@ -19,7 +19,7 @@ export * from './example/example.component';
 export * from './example/example.module';
 export * from './example/example-capitalize.pipe';
 export * from './example/example-get-tabs.pipe';
-export * from './example/example-options';
+export * from './example/example.options';
 export * from './internal/header/header.component';
 export * from './internal/header/header.module';
 export * from './internal/input-opacity/input-opacity.directive';

@@ -28,7 +28,7 @@ import {tuiStringHashToHsl} from '@taiga-ui/kit/utils/format';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
-import {TUI_TAG_OPTIONS, TuiTagOptions} from './tag-options';
+import {TUI_TAG_OPTIONS, TuiTagOptions} from './tag.options';
 
 @Component({
     selector: 'tui-tag, a[tuiTag], button[tuiTag]',

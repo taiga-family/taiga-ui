@@ -4,7 +4,7 @@ import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorphe
 import {Observable} from 'rxjs';
 
 import {TuiMobileDialogComponent} from './mobile-dialog.component';
-import {TUI_MOBILE_DIALOG_OPTIONS} from './mobile-dialog.tokens';
+import {TUI_MOBILE_DIALOG_OPTIONS} from './mobile-dialog.options';
 import {TuiMobileDialogOptions} from './mobile-dialog-options';
 
 const DIALOG = new PolymorpheusComponent(TuiMobileDialogComponent);
