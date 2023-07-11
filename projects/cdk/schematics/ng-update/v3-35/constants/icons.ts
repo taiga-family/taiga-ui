@@ -8,7 +8,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconAddRowLarge`,
     },
     {
-        to: `tuiIconTdsAlertSmallPragmatic`,
+        to: `tuiIconTdsExclamationSmallPragmatic`,
         from: `tuiIconAlert`,
     },
     {
@@ -16,7 +16,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconAlertCircle`,
     },
     {
-        to: `tuiIconTdsAlertMediumPragmatic`,
+        to: `tuiIconTdsAlertMedium`,
         from: `tuiIconAlertCircleLarge`,
     },
     {
@@ -28,7 +28,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconAlertCircleOutline`,
     },
     {
-        to: `tuiIconTdsAlertMediumPragmatic`,
+        to: `tuiIconTdsExclamationMediumPragmatic`,
         from: `tuiIconAlertLarge`,
     },
     {
@@ -72,7 +72,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconArrowLeft`,
     },
     {
-        to: `tuiIconTdsArrowLeftCircleSmallPragmatic`,
+        to: `tuiIconTdsArrowLeftCircleMediumPragmatic`,
         from: `tuiIconArrowLeftCircle`,
     },
     {
@@ -172,7 +172,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconBellOutline`,
     },
     {
-        to: `tuiIconTdsBellMediumPragmatic`,
+        to: `tuiIconTdsReceiptMediumPragmatic`,
         from: `tuiIconBillOutLarge`,
     },
     {
@@ -180,7 +180,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconBookmark`,
     },
     {
-        to: `tuiIconTdsBookmarkMediumPragmatic`,
+        to: `tuiIconTdsBookmarkFilledMedium`,
         from: `tuiIconBookmarkLarge`,
     },
     {
@@ -300,7 +300,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconCameraOutline`,
     },
     {
-        to: `tuiIconTdsCardsSmallPragmatic`,
+        to: `tuiIconTdsCardsMediumPragmatic`,
         from: `tuiIconCardsLarge`,
     },
     {
@@ -368,11 +368,11 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconChatLarge`,
     },
     {
-        to: `tuiIconTdsChatsSmallPragmatic`,
+        to: `tuiIconTdsChatsMediumPragmatic`,
         from: `tuiIconChatLargeOutline`,
     },
     {
-        to: `tuiIconTdsChatsMediumPragmatic`,
+        to: `tuiIconTdsChatsSmallPragmatic`,
         from: `tuiIconChatOutline`,
     },
     {
@@ -384,7 +384,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconCheckCircle`,
     },
     {
-        to: `tuiIconTdsCheckCircleMediumPragmatic`,
+        to: `tuiIconTdsCheckCircleMedium`,
         from: `tuiIconCheckCircleLarge`,
     },
     {
@@ -448,11 +448,11 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconChevronUpLarge`,
     },
     {
-        to: `tuiIconTdsChevronDownMediumPragmatic`,
+        to: `tuiIconTdsChevronDoubleDownMediumPragmatic`,
         from: `tuiIconChevronsDownLarge`,
     },
     {
-        to: `tuiIconTdsChevronLeftMediumPragmatic`,
+        to: `tuiIconTdsChevronDoubleLeftMediumPragmatic`,
         from: `tuiIconChevronsLeftLarge`,
     },
     {
@@ -460,7 +460,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconChevronsRightLarge`,
     },
     {
-        to: `tuiIconTdsPriorityMediumSmallPragmatic`,
+        to: `tuiIconTdsChevronDoubleUpSmallPragmatic`,
         from: `tuiIconChevronsUp`,
     },
     {
@@ -584,7 +584,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconDelete`,
     },
     {
-        to: `tuiIconTdsTrashMediumPragmatic`,
+        to: `tuiIconTdsBackspaceMediumPragmatic`,
         from: `tuiIconDeleteLarge`,
     },
     {
@@ -636,7 +636,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconEdit2`,
     },
     {
-        to: `tuiIconTdsEditMediumPragmatic`,
+        to: `tuiIconTdsPencilMediumPragmatic`,
         from: `tuiIconEdit2Large`,
     },
     {
@@ -864,11 +864,11 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconHeadsetLarge`,
     },
     {
-        to: `tuiIconTdsHeartSmallPragmatic`,
+        to: `tuiIconTdsHeartFilledSmall`,
         from: `tuiIconHeart`,
     },
     {
-        to: `tuiIconTdsHeartMediumPragmatic`,
+        to: `tuiIconTdsHeartFilledOpaqueMedium`,
         from: `tuiIconHeartLarge`,
     },
     {
@@ -880,11 +880,11 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconHeartOutline`,
     },
     {
-        to: `tuiIconTdsQuestionSmallPragmatic`,
+        to: `tuiIconTdsQuestionCircleSmall`,
         from: `tuiIconHelp`,
     },
     {
-        to: `tuiIconTdsQuestionCircleSmallPragmatic`,
+        to: `tuiIconTdsQuestionCircleSmall`,
         from: `tuiIconHelpCircle`,
     },
     {
@@ -900,7 +900,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconHelpCircleOutline`,
     },
     {
-        to: `tuiIconTdsQuestionSmallPragmatic`,
+        to: `tuiIconTdsQuestionCircleSmallPragmatic`,
         from: `tuiIconHelpOutline`,
     },
     {
@@ -928,7 +928,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconHomeOutline`,
     },
     {
-        to: `tuiIconTdsMinusMediumPragmatic`,
+        to: `tuiIconTdsWysiwygDividerMediumPragmatic`,
         from: `tuiIconHrLarge`,
     },
     {
@@ -936,15 +936,11 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconImage`,
     },
     {
-        to: `\u0426\u0412\u0415\u0422\u041D\u0410\u042F`,
-        from: `tuiIconImageDocLarge`,
-    },
-    {
         to: `tuiIconTdsImageMediumPragmatic`,
         from: `tuiIconImageLarge`,
     },
     {
-        to: `tuiIconTdsImageMediumPragmatic`,
+        to: `tuiIconTdsImageSmallPragmatic`,
         from: `tuiIconImageOutline`,
     },
     {
@@ -952,11 +948,11 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconIndentLarge`,
     },
     {
-        to: `tuiIconTdsInfoSmallPragmatic`,
+        to: `tuiIconTdsInfoCircleMedium`,
         from: `tuiIconInfo`,
     },
     {
-        to: `tuiIconTdsInfoCircleMediumPragmatic`,
+        to: `tuiIconTdsInfoCircleMedium`,
         from: `tuiIconInfoCircleLarge`,
     },
     {
@@ -968,15 +964,15 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconInfoLarge`,
     },
     {
-        to: `tuiIconTdsInfoMediumPragmatic`,
+        to: `tuiIconTdsInfoCircleMediumPragmatic`,
         from: `tuiIconInfoLargeOutline`,
     },
     {
-        to: `tuiIconTdsInfoSmallPragmatic`,
+        to: `tuiIconTdsInfoCircleSmallPragmatic`,
         from: `tuiIconInfoOutline`,
     },
     {
-        to: `Invoice`,
+        to: `tuiIconTdsDocMediumPragmatic`,
         from: `tuiIconInvoiceLarge`,
     },
     {
@@ -1288,10 +1284,6 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconMusic`,
     },
     {
-        to: `\u0426\u0412\u0415\u0422\u041D\u0410\u042F`,
-        from: `tuiIconMusicDocLarge`,
-    },
-    {
         to: `tuiIconTdsMusicMediumPragmatic`,
         from: `tuiIconMusicLarge`,
     },
@@ -1384,10 +1376,6 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconPauseLarge`,
     },
     {
-        to: `\u0426\u0412\u0415\u0422\u041D\u0410\u042F`,
-        from: `tuiIconPdfDocLarge`,
-    },
-    {
         to: `tuiIconTdsPercentSmallPragmatic`,
         from: `tuiIconPercent`,
     },
@@ -1424,7 +1412,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconPhoneOutgoingLarge`,
     },
     {
-        to: ``,
+        to: `tuiIconTdsImageSmallPragmatic`,
         from: `tuiIconPictureOutline`,
     },
     {
@@ -1472,7 +1460,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconPlusCircleLarge`,
     },
     {
-        to: `tuiIconTdsPlusMediumPragmatic`,
+        to: `tuiIconTdsPlusCircleMediumPragmatic`,
         from: `tuiIconPlusCircleLargeOutline`,
     },
     {
@@ -1486,10 +1474,6 @@ export const ICONS: Array<{from: string; to: string}> = [
     {
         to: `tuiIconTdsPlus2SmallPragmatic`,
         from: `tuiIconPlusSmall`,
-    },
-    {
-        to: `\u0426\u0412\u0415\u0422\u041D\u0410\u042F`,
-        from: `tuiIconPresentDocLarge`,
     },
     {
         to: `tuiIconTdsPrinterSmallPragmatic`,
@@ -1740,10 +1724,6 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconSplitLarge`,
     },
     {
-        to: `\u0426\u0412\u0415\u0422\u041D\u0410\u042F`,
-        from: `tuiIconSpreadSheetDocLarge`,
-    },
-    {
         to: `tuiIconTdsStopSmallPragmatic`,
         from: `tuiIconSquare`,
     },
@@ -1752,11 +1732,11 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconSquareLarge`,
     },
     {
-        to: `tuiIconTdsStarSmallPragmatic`,
+        to: `tuiIconTdsStarSmall`,
         from: `tuiIconStar`,
     },
     {
-        to: `tuiIconTdsStarSmallPragmatic`,
+        to: `tuiIconTdsStarSmall`,
         from: `tuiIconStarFilled`,
     },
     {
@@ -1818,10 +1798,6 @@ export const ICONS: Array<{from: string; to: string}> = [
     {
         to: `tuiIconTdsTagSmallPragmatic`,
         from: `tuiIconTagOutline`,
-    },
-    {
-        to: `\u0426\u0412\u0415\u0422\u041D\u0410\u042F`,
-        from: `tuiIconTextDocLarge`,
     },
     {
         to: `tuiIconTdsThumbDownMediumPragmatic`,
@@ -1900,7 +1876,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconUnlockLarge`,
     },
     {
-        to: `tuiIconTdsLockOpenSmallPragmatic`,
+        to: `tuiIconTdsLockOpenMediumPragmatic`,
         from: `tuiIconUnlockLargeOutline`,
     },
     {
@@ -1920,11 +1896,11 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconUploadLarge`,
     },
     {
-        to: `tuiIconUserpicCircleLarge`,
+        to: `tuiIconTdsUserImpersonalSmallPragmatic`,
         from: `tuiIconUser`,
     },
     {
-        to: `tuiIconUserpicCircleLarge`,
+        to: `tuiIconTdsUserImpersonalSmallPragmatic`,
         from: `tuiIconUserOutline`,
     },
     {
@@ -2148,20 +2124,16 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconCreditCard`,
     },
     {
-        to: `tuiIconTdsCardBacksideMediumPragmatic`,
+        to: `tuiIconTdsCardsMediumPragmatic`,
         from: `tuiIconCreditCardLarge`,
     },
     {
-        to: `tuiIconTdsCardBacksideMediumPragmatic`,
+        to: `tuiIconTdsCardsMediumPragmatic`,
         from: `tuiIconCreditCardLargeOutline`,
     },
     {
         to: `tuiIconTdsCardBacksideSmallPragmatic`,
         from: `tuiIconCreditCardOutline`,
-    },
-    {
-        to: `tuiIconTdsChevronDownMediumPragmatic`,
-        from: `tuiIconDropLarge`,
     },
     {
         to: `tuiIconTdsLogoFacebookMedium`,
@@ -2192,7 +2164,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconMapLarge`,
     },
     {
-        to: `tuiIconTdsPaymentMastercardLogoSquare`,
+        to: `tuiIconTdsPaymentMastercardLogo`,
         from: `tuiIconMastercard`,
     },
     {
@@ -2200,11 +2172,11 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconMastercardMono`,
     },
     {
-        to: `tuiIconTdsPaymentMirLogoSquare`,
+        to: `tuiIconTdsPaymentMirLogo`,
         from: `tuiIconMir`,
     },
     {
-        to: `tuiIconTdsPaymentMirMonochromeLogoSquare`,
+        to: `tuiIconTdsPaymentMirMonochromeLogo`,
         from: `tuiIconMirMono`,
     },
     {
@@ -2308,7 +2280,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconTwitterLarge`,
     },
     {
-        to: `tuiIconTdsPaymentUnionpayLogoSquare`,
+        to: `tuiIconTdsPaymentUnionpayLogo`,
         from: `tuiIconUnionPay`,
     },
     {
@@ -2320,7 +2292,7 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconUsersOutline`,
     },
     {
-        to: `tuiIconTdsPaymentVisaLogoSquare`,
+        to: `tuiIconTdsPaymentVisaLogo`,
         from: `tuiIconVisa`,
     },
     {
@@ -2346,9 +2318,5 @@ export const ICONS: Array<{from: string; to: string}> = [
     {
         to: `tuiIconTdsAnchorMediumPragmatic`,
         from: `tuiIconAnchorLarge`,
-    },
-    {
-        to: `tuiIconTdsDocArchiveMedium`,
-        from: `tuiIconArchiveDocLarge`,
     },
 ].sort((prev, next) => next.from.length - prev.from.length);

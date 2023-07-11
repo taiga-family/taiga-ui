@@ -30,18 +30,18 @@ export class TestComponent {
     icon2 = tuiIconAlertLarge;
 }`;
 
-const COMPONENT_AFTER = `import { tuiIconTdsAlertSmallPragmatic, tuiIconTdsAlertMediumPragmatic } from "@taiga-ui/proprietary-tds-icons";
+const COMPONENT_AFTER = `import { tuiIconTdsAlertSmallPragmatic, tuiIconTdsExclamationMediumPragmatic } from "@taiga-ui/proprietary-tds-icons";
 
 @Component({templateUrl: './test.template.html'})
 export class TestComponent {
     account = {
-            icon: 'tuiIconTdsAlertMediumPragmatic',
+            icon: 'tuiIconTdsExclamationMediumPragmatic',
             color: 'white',
             background: 'var(--tui-support-12)',
         };
 
     icon = tuiIconTdsAlertSmallPragmatic;
-    icon2 = tuiIconTdsAlertMediumPragmatic;
+    icon2 = tuiIconTdsExclamationMediumPragmatic;
 }`;
 
 const TEMPLATE_BEFORE = `
@@ -58,7 +58,7 @@ const TEMPLATE_AFTER = `
 <tui-marker-icon
     new
     mode="error"
-    src="tuiIconTdsAlertMediumPragmatic"
+    src="tuiIconTdsExclamationMediumPragmatic"
     [size]="iconSize"
 ></tui-marker-icon>
 <custom-component [customAttr]="tuiIconTdsArrowDownSmallPragmatic"></custom-component>
