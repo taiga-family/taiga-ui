@@ -1,6 +1,6 @@
 import {Provider} from '@angular/core';
-import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 
 export interface TuiInputPhoneInternationalOptions {
     readonly countries: readonly TuiCountryIsoCode[];

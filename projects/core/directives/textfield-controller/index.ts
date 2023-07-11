@@ -1,4 +1,5 @@
 export * from './textfield.controller';
+export * from './textfield.options';
 export * from './textfield-appearance.directive';
 export * from './textfield-cleaner.directive';
 export * from './textfield-controller.module';
@@ -8,7 +9,6 @@ export * from './textfield-filler.directive';
 export * from './textfield-icon.directive';
 export * from './textfield-icon-left.directive';
 export * from './textfield-label-outside.directive';
-export * from './textfield.options';
 export * from './textfield-postfix.directive';
 export * from './textfield-prefix.directive';
 export * from './textfield-size.directive';

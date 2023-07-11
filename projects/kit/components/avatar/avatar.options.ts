@@ -1,6 +1,6 @@
 import {Provider} from '@angular/core';
-import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 
 export interface TuiAvatarOptions {
     readonly size: TuiSizeXXL | TuiSizeXXS;

@@ -1,11 +1,11 @@
 import {Provider} from '@angular/core';
 import {
-    tuiProvideOptions,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiContextWithImplicit,
-    TuiDay,
     tuiCreateOptions,
+    TuiDay,
+    tuiProvideOptions,
 } from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';

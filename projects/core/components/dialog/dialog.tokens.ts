@@ -1,7 +1,7 @@
 import {InjectionToken, Provider} from '@angular/core';
+import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
 import type {TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {EMPTY, Observable} from 'rxjs';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
 
 type TuiDialogDefaultOptions = Omit<TuiDialogOptions<unknown>, 'data'>;
 
