@@ -7,12 +7,13 @@ import {
     Optional,
     SkipSelf,
 } from '@angular/core';
+import {tuiCreateOptions} from '@taiga-ui/cdk';
 import {
     TuiDropdownAlign,
     TuiDropdownWidth,
     TuiVerticalDirection,
 } from '@taiga-ui/core/types';
-import {tuiCreateOptions, tuiOverrideOptions} from '@taiga-ui/core/utils';
+import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 
 export interface TuiDropdownOptions {
     readonly align: TuiDropdownAlign;

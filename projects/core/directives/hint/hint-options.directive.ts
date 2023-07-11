@@ -7,9 +7,9 @@ import {
     Optional,
     SkipSelf,
 } from '@angular/core';
-import {AbstractTuiController} from '@taiga-ui/cdk';
+import {AbstractTuiController, tuiCreateOptions} from '@taiga-ui/cdk';
 import {TuiHintDirection} from '@taiga-ui/core/types';
-import {tuiCreateOptions, tuiOverrideOptions} from '@taiga-ui/core/utils';
+import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiHintOptions {
