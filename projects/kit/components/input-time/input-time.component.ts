@@ -46,7 +46,7 @@ import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {TUI_INPUT_TIME_OPTIONS, TuiInputTimeOptions} from './input-time-options';
+import {TUI_INPUT_TIME_OPTIONS, TuiInputTimeOptions} from './input-time.options';
 
 @Component({
     selector: 'tui-input-time',

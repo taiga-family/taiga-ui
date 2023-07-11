@@ -36,7 +36,7 @@ import {TUI_PLUS_MINUS_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
-import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from './input-count-options';
+import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from './input-count.options';
 
 /**
  * @deprecated use {@link TuiInputNumberComponent} with [step] instead

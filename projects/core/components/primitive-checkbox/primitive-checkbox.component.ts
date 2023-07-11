@@ -9,7 +9,7 @@ import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TuiSizeL} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions} from './checkbox-options';
+import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions} from './checkbox.options';
 
 @Component({
     selector: 'tui-primitive-checkbox',

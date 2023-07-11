@@ -1,8 +1,8 @@
 import {Directive} from '@angular/core';
 import {AbstractTuiDialogDirective, AbstractTuiDialogService} from '@taiga-ui/cdk';
 
+import {TuiPdfViewerOptions} from './pdf-viewer.options';
 import {TuiPdfViewerService} from './pdf-viewer.service';
-import {TuiPdfViewerOptions} from './pdf-viewer-options';
 
 @Directive({
     selector: 'ng-template[tuiPdfViewer]',

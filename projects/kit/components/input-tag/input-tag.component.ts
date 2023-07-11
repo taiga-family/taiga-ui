@@ -58,7 +58,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {TUI_INPUT_TAG_OPTIONS, TuiInputTagOptions} from './input-tag-options';
+import {TUI_INPUT_TAG_OPTIONS, TuiInputTagOptions} from './input-tag.options';
 
 const TAG_SIZE_REM = {
     s: 1.25,

@@ -1,3 +1,3 @@
 export * from './button.component';
 export * from './button.module';
-export * from './button-options';
+export * from './button.options';

@@ -2,12 +2,7 @@ import {Component, forwardRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiContextWithImplicit, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
-import {
-    TUI_HINT_DIRECTIONS,
-    TuiHorizontalDirection,
-    TuiSizeL,
-    TuiSizeS,
-} from '@taiga-ui/core';
+import {TUI_HINT_DIRECTIONS, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -64,10 +59,6 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     readonly iconLeftVariants = ['', 'tuiIconPieChartLarge', 'tuiIconCreditCardLarge'];
     iconLeft = '';
-
-    readonly iconAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
-
-    iconAlign: TuiHorizontalDirection = this.iconAlignVariants[1];
 
     readonly typeVariants: readonly TuiInputType[] = [
         'text',

@@ -30,7 +30,7 @@ import {
     TUI_TEXTFIELD_LABEL_OUTSIDE,
     TuiTextfieldLabelOutsideDirective,
 } from './textfield-label-outside.directive';
-import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptions} from './textfield-options';
+import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptions} from './textfield.options';
 import {
     TUI_TEXTFIELD_POSTFIX,
     TuiTextfieldPostfixDirective,

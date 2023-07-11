@@ -25,6 +25,7 @@ import {identity} from 'rxjs';
 
 import {TUI_DEPRECATED_ICONS} from './deprecated-icons';
 
+// TODO: Refactor it all in 4.0 and remove deprecated backward compatibility hacks
 export interface TuiSvgOptions {
     readonly iconsPlace: string;
     readonly path: TuiStringHandler<string>;

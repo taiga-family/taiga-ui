@@ -1,6 +1,6 @@
 export * from './money.component';
 export * from './money.module';
-export * from './money-options';
+export * from './money.options';
 export * from './pipes/fraction-part.pipe';
 export * from './pipes/integer-part.pipe';
 export * from './pipes/sign-symbol.pipe';

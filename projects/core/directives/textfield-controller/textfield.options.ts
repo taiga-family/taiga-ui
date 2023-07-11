@@ -1,5 +1,5 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {Provider} from '@angular/core';
+import {tuiCreateOptions, tuiProvideOptions, TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -19,14 +19,14 @@ export const TUI_TEXTFIELD_DEFAULT_OPTIONS: TuiTextfieldOptions = {
 /**
  * Default parameters for textfield
  */
-export const TUI_TEXTFIELD_OPTIONS = new InjectionToken<TuiTextfieldOptions>(
-    `[TUI_TEXTFIELD_OPTIONS]`,
-    {factory: () => TUI_TEXTFIELD_DEFAULT_OPTIONS},
-);
+export const TUI_TEXTFIELD_OPTIONS = tuiCreateOptions(TUI_TEXTFIELD_DEFAULT_OPTIONS);
 
-export const tuiTextfieldOptionsProvider: (
+export function tuiTextfieldOptionsProvider(
     options: Partial<TuiTextfieldOptions>,
-) => ValueProvider = (options: Partial<TuiTextfieldOptions>) => ({
-    provide: TUI_TEXTFIELD_OPTIONS,
-    useValue: {...TUI_TEXTFIELD_DEFAULT_OPTIONS, ...options},
-});
+): Provider {
+    return tuiProvideOptions(
+        TUI_TEXTFIELD_OPTIONS,
+        options,
+        TUI_TEXTFIELD_DEFAULT_OPTIONS,
+    );
+}

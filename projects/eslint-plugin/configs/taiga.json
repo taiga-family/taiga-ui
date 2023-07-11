@@ -5,7 +5,6 @@
             "parser": "@typescript-eslint/parser",
             "plugins": ["@typescript-eslint", "@taiga-ui"],
             "rules": {
-                "@taiga-ui/injection-token-description": "error",
                 "@taiga-ui/prefer-inject-decorator": "error",
                 "@taiga-ui/prefer-self-destroy-service": "error",
                 "@taiga-ui/no-typeof": "error",
