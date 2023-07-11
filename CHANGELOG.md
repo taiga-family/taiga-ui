@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.36.1](https://github.com/tinkoff/taiga-ui/compare/v3.36.0...v3.36.1) (2023-07-11)
+
+### Bug Fixes
+
+- **cdk:** fix some icons in icon migration ([#4888](https://github.com/tinkoff/taiga-ui/issues/4888))
+  ([8b9105c](https://github.com/tinkoff/taiga-ui/commit/8b9105c34661a18c1fca25c2c56f7947bd66c849))
+
 ## [3.36.0](https://github.com/tinkoff/taiga-ui/compare/v3.35.0...v3.36.0) (2023-07-10)
 
 ### Features
