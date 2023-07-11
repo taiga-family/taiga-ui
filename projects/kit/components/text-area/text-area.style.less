@@ -145,7 +145,6 @@
     color: transparent;
     overflow: hidden;
     border: solid transparent;
-    border-width: 0 var(--border-end, 0) 0 var(--border-start, 0);
     border-inline-start-width: var(--border-start, 0);
     border-inline-end-width: var(--border-end, 0);
 
@@ -175,7 +174,6 @@
     overflow: hidden;
     outline: none;
     border: solid transparent;
-    border-width: 0 var(--border-end, 0) 0 var(--border-start, 0);
     border-inline-start-width: var(--border-start, 0);
     border-inline-end-width: var(--border-end, 0);
 
@@ -224,7 +222,6 @@
     left: 0;
     max-width: 100%;
     border: solid transparent;
-    border-width: 0 var(--border-end, 0) 0 var(--border-start, 0);
     border-inline-start-width: var(--border-start, 0);
     border-inline-end-width: var(--border-end, 0);
     box-sizing: border-box;
@@ -253,15 +250,21 @@
     display: flex;
     justify-content: flex-end;
     pointer-events: none;
-    padding: calc((var(--tui-height) - 1.5rem) / 2) 0.75rem;
+    padding: calc((var(--tui-height) - 1.5rem) / 2) 1rem;
+
+    :host[data-size='m'] & {
+        padding: calc((var(--tui-height) - 1.5rem) / 2) 0.625rem;
+    }
+
+    & > :not(:first-child) {
+        margin-inline-start: 0.25rem;
+    }
 }
 
 .t-icon {
     .input-icon();
 
     &_left {
-        margin: 0 auto 0 0;
-        margin-inline-start: 0;
         margin-inline-end: auto;
     }
 }
@@ -269,13 +272,6 @@
 .t-cleaner {
     .icon-button();
     pointer-events: auto;
-}
-
-.t-tooltip {
-    pointer-events: auto;
-    margin: 0 0 0 0.25rem;
-    margin-inline-start: 0.25rem;
-    margin-inline-end: 0;
 }
 
 .t-counter {

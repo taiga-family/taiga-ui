@@ -41,6 +41,8 @@ import {Observable} from 'rxjs';
 export const DEFAULT_ROWS = 20;
 export const LINE_HEIGHT_M = 20;
 export const LINE_HEIGHT_L = 24;
+const ICON_PADDING_L = 2.25;
+const ICON_PADDING_M = 1.75;
 
 @Component({
     selector: 'tui-text-area',
@@ -125,7 +127,11 @@ export class TuiTextAreaComponent
 
     @HostBinding('style.--border-start.rem')
     get borderStart(): number {
-        return this.iconLeftContent ? 1.75 : 0;
+        if (!this.iconLeftContent) {
+            return 0;
+        }
+
+        return this.size === 'l' ? ICON_PADDING_L : ICON_PADDING_M;
     }
 
     @HostBinding('style.--border-end.rem')
@@ -135,6 +141,7 @@ export class TuiTextAreaComponent
             this.hasCleaner,
             this.hasTooltip,
             this.hasCustomContent,
+            this.size,
         );
     }
 

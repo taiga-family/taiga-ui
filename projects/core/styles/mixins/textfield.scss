@@ -59,7 +59,6 @@ $line-height-l: 1.25rem;
     @include fullsize();
     padding: 0 var(--tui-padding-m);
     border: solid transparent;
-    border-width: 0 var(--border-end, 0) 0 var(--border-start, 0);
     border-inline-start-width: var(--border-start, 0);
     border-inline-end-width: var(--border-end, 0);
     text-indent: var(--text-indent);
@@ -128,9 +127,7 @@ $line-height-l: 1.25rem;
 @mixin textfield-wrapper() {
     flex: 1;
     min-width: 0;
-    padding-right: 0.25rem;
     padding-inline-end: 0.25rem;
-    padding-inline-start: 0;
 
     & + * {
         margin: 0;
@@ -220,7 +217,6 @@ $line-height-l: 1.25rem;
     display: flex;
     width: 1.5rem;
     height: 1.5rem;
-    margin: 0 0 0 0.25rem;
     margin-inline-start: 0.25rem;
     margin-inline-end: 0;
     align-items: center;
@@ -268,12 +264,10 @@ $line-height-l: 1.25rem;
         @include input-icon();
 
         &_left {
-            margin: 0 2 * $space 0 -$space;
             margin-inline-start: -$space;
             margin-inline-end: 2 * $space;
 
             :host[data-size='s'] & {
-                margin-right: $space;
                 margin-inline-end: $space;
             }
         }
