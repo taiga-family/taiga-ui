@@ -72,6 +72,51 @@ export function tuiGetCurrencySymbol(currency: TuiCurrencyVariants): string | nu
         case TuiCurrency.Dirham:
         case TuiCurrencyCode.Dirham:
             return `Dh`;
+        case TuiCurrency.TajikistaniSomoni:
+        case TuiCurrencyCode.TajikistaniSomoni:
+            return `SM`;
+        case TuiCurrency.MalaysianRinggit:
+        case TuiCurrencyCode.MalaysianRinggit:
+            return `RM`;
+        case TuiCurrency.BelarusianRuble:
+        case TuiCurrencyCode.BelarusianRuble:
+            return `Rbl`;
+        case TuiCurrency.GeorgianLari:
+        case TuiCurrencyCode.GeorgianLari:
+            return `₾`;
+        case TuiCurrency.AzerbaijaniManat:
+        case TuiCurrencyCode.AzerbaijaniManat:
+            return `₼`;
+        case TuiCurrency.SriLankanRupee:
+        case TuiCurrencyCode.SriLankanRupee:
+            return `Rs.`;
+        case TuiCurrency.SerbianDinar:
+        case TuiCurrencyCode.SerbianDinar:
+            return `DIN`;
+        case TuiCurrency.SaudiRiyal:
+        case TuiCurrencyCode.SaudiRiyal:
+            return `SR`;
+        case TuiCurrency.MongolianTugrik:
+        case TuiCurrencyCode.MongolianTugrik:
+            return `₮`;
+        case TuiCurrency.SouthAfricanRand:
+        case TuiCurrencyCode.SouthAfricanRand:
+            return `R`;
+        case TuiCurrency.IranianRial:
+        case TuiCurrencyCode.IranianRial:
+            return `IR`;
+        case TuiCurrency.IndonesianRupiah:
+        case TuiCurrencyCode.IndonesianRupiah:
+            return `Rp`;
+        case TuiCurrency.VietnameseDong:
+        case TuiCurrencyCode.VietnameseDong:
+            return `đ`;
+        case TuiCurrency.NewTurkmenManat:
+        case TuiCurrencyCode.NewTurkmenManat:
+            return `TMT`;
+        case TuiCurrency.BrazilianReal:
+        case TuiCurrencyCode.BrazilianReal:
+            return `R$`;
         default:
             return null;
     }
