@@ -1,4 +1,5 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import {
     addPackageJsonDependency,
     getPackageJsonDependency,
@@ -24,7 +25,7 @@ const NEW_PACKAGE_VERSION = `^1.0.1`;
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function updateToV3_36(options: TuiSchema): Rule {
-    return (tree: Tree, _: SchematicContext) => {
+    return (tree: Tree, context: SchematicContext) => {
         if (!getPackageJsonDependency(tree, OLD_PACKAGE)) {
             !options[`skip-logs`] &&
                 titleLog(`${FINISH_SYMBOL} No migrations required for ${OLD_PACKAGE}\n`);
@@ -41,7 +42,9 @@ export function updateToV3_36(options: TuiSchema): Rule {
 
         replaceText([{from: OLD_PACKAGE, to: NEW_PACKAGE}], ALL_TS_FILES);
         removePackageJsonDependency(tree, OLD_PACKAGE);
+
         addPackageJsonDependency(tree, {name: NEW_PACKAGE, version: NEW_PACKAGE_VERSION});
+        context.addTask(new NodePackageInstallTask());
 
         fileSystem.commitEdits();
         saveActiveProject();
