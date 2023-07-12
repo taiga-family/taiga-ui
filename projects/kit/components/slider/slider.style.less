@@ -12,6 +12,8 @@
 @track-color: var(--tui-slider-track-color);
 @thumb-color: currentColor;
 
+@thumb-hitbox: 1rem;
+
 .customize-track(@progress-filling, @thumb-width) {
     height: @track-height;
     border-radius: inherit;
@@ -57,20 +59,26 @@
 .customize-thumb(@size) {
     appearance: none;
     background-color: @thumb-color;
-    border: none;
     border-radius: 50%;
+    box-sizing: content-box;
     height: @thumb-diameters[@@size];
     width: @thumb-diameters[@@size];
+
+    /* Increase vertical hitbox by transparent borders */
+    background-clip: padding-box;
+    border: ((@thumb-hitbox - @thumb-diameters[@@size]) / 2) solid transparent;
+    border-left-width: 0;
+    border-right-width: 0;
 
     :not(:disabled)& {
         cursor: ew-resize;
 
         &:hover {
-            background: var(--tui-primary-hover);
+            background-color: var(--tui-primary-hover);
         }
 
         &:active {
-            background: var(--tui-primary-active);
+            background-color: var(--tui-primary-active);
         }
     }
 
@@ -80,8 +88,8 @@
 }
 
 /* Vertically centers thumb on the track (webkit only) */
-.vertically-align-thumb(@size) {
-    margin-top: (@track-height / 2) - (@thumb-diameters[@@size] / 2);
+.vertically-align-thumb() {
+    margin-top: (@track-height / 2) - (@thumb-hitbox / 2);
 }
 
 :host {
@@ -133,12 +141,12 @@
 
     &[data-size='m']::-webkit-slider-thumb {
         .customize-thumb(m);
-        .vertically-align-thumb(m);
+        .vertically-align-thumb();
     }
 
     &[data-size='s']::-webkit-slider-thumb {
         .customize-thumb(s);
-        .vertically-align-thumb(s);
+        .vertically-align-thumb();
     }
 
     &[data-size='m']::-moz-range-thumb {
