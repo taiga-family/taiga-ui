@@ -24,6 +24,7 @@
         "snapshotting",
         "screenshotting",
         "callees",
-        "subpage"
+        "subpage",
+        "hitbox"
     ]
 }
