@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.36.2](https://github.com/tinkoff/taiga-ui/compare/v3.36.1...v3.36.2) (2023-07-12)
+
+### Features
+
+- **core:** allow hierarchical DI options for components ([#4892](https://github.com/tinkoff/taiga-ui/issues/4892))
+  ([01e7067](https://github.com/tinkoff/taiga-ui/commit/01e7067b3ed514c7e138613846da2235b4cdb619))
+
+### Bug Fixes
+
+- **cdk:** `ScrollService` fix final position ([#4887](https://github.com/tinkoff/taiga-ui/issues/4887))
+  ([fb1946d](https://github.com/tinkoff/taiga-ui/commit/fb1946dddf16c43f79fe4020423883e9809389e2))
+- **schematics:** `@tinkoff/tui-editor` should be installed after migration
+  ([#4900](https://github.com/tinkoff/taiga-ui/issues/4900))
+  ([7755254](https://github.com/tinkoff/taiga-ui/commit/77552542edf3afb6b5848efd483b86a50cd5a1bf))
+
 ### [3.36.1](https://github.com/tinkoff/taiga-ui/compare/v3.36.0...v3.36.1) (2023-07-11)
 
 ### Bug Fixes
