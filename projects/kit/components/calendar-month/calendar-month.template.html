@@ -3,8 +3,8 @@
     class="t-scrollbar"
 >
     <tui-primitive-year-picker
-        [min]="min"
-        [max]="max"
+        [min]="computedMin"
+        [max]="computedMax"
         [initialItem]="year"
         [value]="value"
         (yearClick)="onPickerYearClick($event)"

@@ -27,10 +27,10 @@ export class TuiPrimitiveYearMonthPaginationComponent
     value = TuiMonth.currentLocal();
 
     @Input()
-    min: TuiMonth = TUI_FIRST_DAY;
+    min: TuiMonth | null = TUI_FIRST_DAY;
 
     @Input()
-    max: TuiMonth = TUI_LAST_DAY;
+    max: TuiMonth | null = TUI_LAST_DAY;
 
     @Output()
     readonly valueChange = new EventEmitter<TuiMonth>();
@@ -38,16 +38,26 @@ export class TuiPrimitiveYearMonthPaginationComponent
     @Output()
     readonly yearClick = new EventEmitter<TuiYear>();
 
+    get computedMin(): TuiMonth {
+        return this.min ?? TUI_FIRST_DAY;
+    }
+
+    get computedMax(): TuiMonth {
+        return this.max ?? TUI_LAST_DAY;
+    }
+
     get prevMonthDisabled(): boolean {
-        return this.value.monthSameOrBefore(this.min);
+        return this.value.monthSameOrBefore(this.computedMin);
     }
 
     get nextMonthDisabled(): boolean {
-        return this.value.monthSameOrAfter(this.max);
+        return this.value.monthSameOrAfter(this.computedMax);
     }
 
     get oneYear(): boolean {
-        return this.min.year === this.max.year;
+        const {computedMin, computedMax} = this;
+
+        return computedMin.year === computedMax.year;
     }
 
     onYearClick(): void {
@@ -64,14 +74,17 @@ export class TuiPrimitiveYearMonthPaginationComponent
 
     private appendValueWithLimit(date: TuiMonthLike): void {
         const newMonth: TuiMonth = this.value.append(date);
+        const {computedMin, computedMax} = this;
 
-        if (this.min.monthSameOrAfter(newMonth)) {
-            this.updateValue(this.min);
+        if (computedMin.monthSameOrAfter(newMonth)) {
+            this.updateValue(computedMin);
 
             return;
         }
 
-        this.updateValue(this.max.monthSameOrBefore(newMonth) ? this.max : newMonth);
+        this.updateValue(
+            computedMax.monthSameOrBefore(newMonth) ? computedMax : newMonth,
+        );
     }
 
     private updateValue(value: TuiMonth): void {

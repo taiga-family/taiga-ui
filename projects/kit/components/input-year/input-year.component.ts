@@ -52,10 +52,10 @@ export class TuiInputYearComponent
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     @Input()
-    min = this.options.min.year;
+    min: number | null = this.options.min.year;
 
     @Input()
-    max = this.options.max.year;
+    max: number | null = this.options.max.year;
 
     @Input()
     disabledItemHandler: TuiBooleanHandler<number> = ALWAYS_FALSE_HANDLER;
@@ -82,6 +82,14 @@ export class TuiInputYearComponent
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
+    }
+
+    get computedMin(): number {
+        return this.min ?? this.options.min.year;
+    }
+
+    get computedMax(): number {
+        return this.max ?? this.options.max.year;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

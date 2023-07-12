@@ -76,7 +76,7 @@ import {map} from 'rxjs/operators';
 export class TuiInputDateTimeComponent
     extends AbstractTuiControl<[TuiDay | null, TuiTime | null]>
     implements
-        TuiWithOptionalMinMax<TuiDay | [TuiDay, TuiTime]>,
+        TuiWithOptionalMinMax<TuiDay | [TuiDay | null, TuiTime | null] | null>,
         TuiFocusableElementAccessor
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
@@ -85,10 +85,10 @@ export class TuiInputDateTimeComponent
     private month: TuiMonth | null = null;
 
     @Input()
-    min: TuiDay | [TuiDay, TuiTime] = this.options.min;
+    min: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.min;
 
     @Input()
-    max: TuiDay | [TuiDay, TuiTime] = this.options.max;
+    max: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.max;
 
     @Input()
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
@@ -143,14 +143,22 @@ export class TuiInputDateTimeComponent
         return this.textfieldSize.size;
     }
 
+    get computedMin(): TuiDay | [TuiDay, TuiTime] {
+        return this.toTuiDay(this.min, this.options.min);
+    }
+
+    get computedMax(): TuiDay | [TuiDay, TuiTime] {
+        return this.toTuiDay(this.max, this.options.max);
+    }
+
     get fillerLength(): number {
         return DATE_FILLER_LENGTH + DATE_TIME_SEPARATOR.length + this.timeMode.length;
     }
 
     get maskOptions(): MaskitoOptions {
         return this.calculateMask(
-            this.min,
-            this.max,
+            this.computedMin,
+            this.computedMax,
             this.timeMode,
             this.dateFormat,
             this.dateSeparator,
@@ -194,21 +202,27 @@ export class TuiInputDateTimeComponent
     }
 
     get calendarMinDay(): TuiDay {
-        return Array.isArray(this.min) ? this.min[0] : this.min;
+        const min = this.computedMin;
+
+        return Array.isArray(min) ? min[0] : min;
     }
 
     get calendarMaxDay(): TuiDay {
-        return Array.isArray(this.max) ? this.max[0] : this.max;
+        const max = this.computedMax;
+
+        return Array.isArray(max) ? max[0] : max;
     }
 
     get computedActiveYearMonth(): TuiMonth {
+        const {computedMin, computedMax} = this;
+
         return (
             this.month ||
             this.value[0] ||
             tuiDateClamp(
                 this.defaultActiveYearMonth,
-                Array.isArray(this.min) ? this.min[0] : this.min,
-                Array.isArray(this.max) ? this.max[0] : this.max,
+                Array.isArray(computedMin) ? computedMin[0] : computedMin,
+                Array.isArray(computedMax) ? computedMax[0] : computedMax,
             )
         );
     }
@@ -368,14 +382,16 @@ export class TuiInputDateTimeComponent
     }
 
     private clampTime(time: TuiTime, day: TuiDay): TuiTime {
+        const {computedMin, computedMax} = this;
+
         const ms = time.toAbsoluteMilliseconds();
         const min =
-            Array.isArray(this.min) && day.daySame(this.calendarMinDay)
-                ? this.min[1].toAbsoluteMilliseconds()
+            Array.isArray(computedMin) && day.daySame(this.calendarMinDay)
+                ? computedMin[1].toAbsoluteMilliseconds()
                 : -Infinity;
         const max =
-            Array.isArray(this.max) && day.daySame(this.calendarMaxDay)
-                ? this.max[1].toAbsoluteMilliseconds()
+            Array.isArray(computedMax) && day.daySame(this.calendarMaxDay)
+                ? computedMax[1].toAbsoluteMilliseconds()
                 : Infinity;
 
         return TuiTime.fromAbsoluteMilliseconds(tuiClamp(ms, min, max));
@@ -396,5 +412,30 @@ export class TuiInputDateTimeComponent
         const [{year, month, day}, {hours, minutes, seconds, ms}] = value;
 
         return new Date(year, month, day, hours, minutes, seconds, ms);
+    }
+
+    private toTuiDay(
+        value: TuiDay | [TuiDay | null, TuiTime | null] | null,
+        fallback: TuiDay,
+    ): TuiDay | [TuiDay, TuiTime] {
+        if (!value) {
+            return fallback;
+        }
+
+        if (!Array.isArray(value)) {
+            return value;
+        }
+
+        const [tuiDay, tuiTime] = value;
+
+        if (!tuiDay) {
+            return fallback;
+        }
+
+        if (!tuiTime) {
+            return tuiDay;
+        }
+
+        return [tuiDay, tuiTime];
     }
 }
