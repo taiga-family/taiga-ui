@@ -36,7 +36,7 @@ import {map} from 'rxjs/operators';
 
 import {TuiPrimitiveTextfield} from './primitive-textfield-types';
 
-export const TUI_ICON_PADDINGS: Record<TuiSizeS | TuiSizeL, number> = {
+export const TUI_ICON_PADDINGS: Record<TuiSizeL | TuiSizeS, number> = {
     s: 1.25,
     m: 1.75,
     l: 2.25,

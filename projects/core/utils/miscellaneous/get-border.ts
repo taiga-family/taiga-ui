@@ -8,9 +8,9 @@ export function tuiGetBorder(
     hasCleaner: boolean = false,
     hasTooltip: boolean = false,
     hasContent: boolean = false,
-    size: TuiSizeS | TuiSizeL = 'm',
+    size: TuiSizeL | TuiSizeS = `m`,
 ): number {
-    const offset = size === 's' ? 0 : 0.25;
+    const offset = size === `s` ? 0 : 0.25;
     let border = 0;
 
     if (hasIcon) {

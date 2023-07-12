@@ -6,6 +6,6 @@ describe(`getBorder`, () => {
     });
 
     it(`calculates all options for small size`, () => {
-        expect(tuiGetBorder(true, true, true, true, 's')).toBe(1.5 * 3 + 2.5);
+        expect(tuiGetBorder(true, true, true, true, `s`)).toBe(1.5 * 3 + 2.5);
     });
 });
