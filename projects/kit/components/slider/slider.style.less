@@ -59,16 +59,15 @@
 .customize-thumb(@size) {
     appearance: none;
     background-color: @thumb-color;
+    border: none;
     border-radius: 50%;
     box-sizing: content-box;
     height: @thumb-diameters[@@size];
     width: @thumb-diameters[@@size];
 
-    /* Increase vertical hitbox by transparent borders */
-    background-clip: padding-box;
-    border: ((@thumb-hitbox - @thumb-diameters[@@size]) / 2) solid transparent;
-    border-left-width: 0;
-    border-right-width: 0;
+    /* Increase vertical hitbox by trasparent paddings */
+    background-clip: content-box;
+    padding: ((@thumb-hitbox - @thumb-diameters[@@size]) / 2) 0;
 
     :not(:disabled)& {
         cursor: ew-resize;
