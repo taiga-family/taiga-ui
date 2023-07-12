@@ -25,6 +25,7 @@ import {
 import {
     MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
+    TUI_ICON_PADDINGS,
     TUI_MODE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiBrightness,
@@ -41,8 +42,6 @@ import {Observable} from 'rxjs';
 export const DEFAULT_ROWS = 20;
 export const LINE_HEIGHT_M = 20;
 export const LINE_HEIGHT_L = 24;
-const ICON_PADDING_L = 2.25;
-const ICON_PADDING_M = 1.75;
 
 @Component({
     selector: 'tui-text-area',
@@ -127,11 +126,7 @@ export class TuiTextAreaComponent
 
     @HostBinding('style.--border-start.rem')
     get borderStart(): number {
-        if (!this.iconLeftContent) {
-            return 0;
-        }
-
-        return this.size === 'l' ? ICON_PADDING_L : ICON_PADDING_M;
+        return this.iconLeftContent ? TUI_ICON_PADDINGS[this.size] : 0;
     }
 
     @HostBinding('style.--border-end.rem')
