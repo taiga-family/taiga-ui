@@ -1,0 +1,46 @@
+import {TuiCurrencyCode} from '@taiga-ui/addon-commerce';
+
+const iconsMap: Record<TuiCurrencyCode, string> = {
+    [TuiCurrencyCode.Ruble]: `tuiIconTdsCurrencyRubMedium`,
+    [TuiCurrencyCode.Dollar]: `tuiIconTdsCurrencyUsdMedium`,
+    [TuiCurrencyCode.Euro]: `tuiIconTdsCurrencyEurMedium`,
+    [TuiCurrencyCode.Pound]: `tuiIconTdsCurrencyGbpMedium`,
+    [TuiCurrencyCode.YuanRenminbi]: `tuiIconTdsCurrencyCnyMedium`,
+    [TuiCurrencyCode.Tenge]: `tuiIconTdsCurrencyKztMedium`,
+    [TuiCurrencyCode.Dirham]: `tuiIconTdsCurrencyAedMedium`,
+    [TuiCurrencyCode.TurkishLira]: `tuiIconTdsCurrencyTryMedium`,
+    [TuiCurrencyCode.SwissFranc]: `tuiIconTdsCurrencyChfMedium`,
+    [TuiCurrencyCode.Yen]: `tuiIconTdsCurrencyJpyMedium`,
+    [TuiCurrencyCode.KyrgyzstanSom]: `tuiIconTdsCurrencyKgsMedium`,
+    [TuiCurrencyCode.UzbekSum]: `tuiIconTdsCurrencyUzsMedium`,
+    [TuiCurrencyCode.HongKongDollar]: `tuiIconTdsCurrencyHkdMedium`,
+    [TuiCurrencyCode.ArmenianDram]: `tuiIconTdsCurrencyAmdMedium`,
+    [TuiCurrencyCode.IndianRupee]: `tuiIconTdsCurrencyInrMedium`,
+    [TuiCurrencyCode.MexicanPeso]: `tuiIconTdsCurrencyMxnMedium`,
+    [TuiCurrencyCode.SingaporeDollar]: `tuiIconTdsCurrencySgdMedium`,
+    [TuiCurrencyCode.AustralianDollar]: `tuiIconTdsCurrencyAudMedium`,
+    [TuiCurrencyCode.CanadianDollar]: `tuiIconTdsCurrencyCadMedium`,
+    [TuiCurrencyCode.Baht]: `tuiIconTdsCurrencyThbMedium`,
+    [TuiCurrencyCode.IsraeliShekel]: `tuiIconTdsCurrencyIlsMedium`,
+    [TuiCurrencyCode.Won]: `tuiIconTdsCurrencyKrwMedium`,
+    [TuiCurrencyCode.Hryvnia]: `tuiIconTdsCurrencyUahMedium`,
+    [TuiCurrencyCode.TajikistaniSomoni]: `tuiIconTdsCurrencyTjsMedium`,
+    [TuiCurrencyCode.MalaysianRinggit]: `tuiIconTdsCurrencyMyrMedium`,
+    [TuiCurrencyCode.BelarusianRuble]: `tuiIconTdsCurrencyBynMedium`,
+    [TuiCurrencyCode.GeorgianLari]: `tuiIconTdsCurrencyGelMedium`,
+    [TuiCurrencyCode.AzerbaijaniManat]: `tuiIconTdsCurrencyAznMedium`,
+    [TuiCurrencyCode.SriLankanRupee]: `tuiIconTdsCurrencyLkrMedium`,
+    [TuiCurrencyCode.SerbianDinar]: `tuiIconTdsCurrencyRsdMedium`,
+    [TuiCurrencyCode.SaudiRiyal]: `tuiIconTdsCurrencySarMedium`,
+    [TuiCurrencyCode.MongolianTugrik]: `tuiIconTdsCurrencyMntMedium`,
+    [TuiCurrencyCode.SouthAfricanRand]: `tuiIconTdsCurrencyZarMedium`,
+    [TuiCurrencyCode.IranianRial]: `tuiIconTdsCurrencyIrrMedium`,
+    [TuiCurrencyCode.IndonesianRupiah]: `tuiIconTdsCurrencyIdrMedium`,
+    [TuiCurrencyCode.VietnameseDong]: `tuiIconTdsCurrencyVndMedium`,
+    [TuiCurrencyCode.NewTurkmenManat]: `tuiIconTdsCurrencyTmtMedium`,
+    [TuiCurrencyCode.BrazilianReal]: `tuiIconTdsCurrencyBrlMedium`,
+};
+
+export function tuiGetIconByCurrencyCode(currency: TuiCurrencyCode): string {
+    return iconsMap[currency] || `tuiIconTdsGlobeMedium`;
+}
