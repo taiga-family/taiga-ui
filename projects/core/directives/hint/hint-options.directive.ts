@@ -3,12 +3,11 @@ import {
     FactoryProvider,
     forwardRef,
     Inject,
-    InjectionToken,
     Input,
     Optional,
     SkipSelf,
 } from '@angular/core';
-import {AbstractTuiController} from '@taiga-ui/cdk';
+import {AbstractTuiController, tuiCreateOptions} from '@taiga-ui/cdk';
 import {TuiHintDirection} from '@taiga-ui/core/types';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -33,9 +32,7 @@ export const TUI_HINT_DEFAULT_OPTIONS: TuiHintOptions = {
 /**
  * Default parameters for hint directive
  */
-export const TUI_HINT_OPTIONS = new InjectionToken<TuiHintOptions>('[TUI_HINT_OPTIONS]', {
-    factory: () => TUI_HINT_DEFAULT_OPTIONS,
-});
+export const TUI_HINT_OPTIONS = tuiCreateOptions(TUI_HINT_DEFAULT_OPTIONS);
 
 export const tuiHintOptionsProvider: (
     options: Partial<TuiHintOptions>,
@@ -43,9 +40,9 @@ export const tuiHintOptionsProvider: (
     provide: TUI_HINT_OPTIONS,
     deps: [
         [new Optional(), TuiHintOptionsDirective],
-        [new SkipSelf(), TUI_HINT_OPTIONS],
+        [new Optional(), new SkipSelf(), TUI_HINT_OPTIONS],
     ],
-    useFactory: tuiOverrideOptions(override),
+    useFactory: tuiOverrideOptions(override, TUI_HINT_DEFAULT_OPTIONS),
 });
 
 @Directive({

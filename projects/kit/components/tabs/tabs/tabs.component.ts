@@ -22,7 +22,7 @@ import {filter} from 'rxjs/operators';
 
 import {TuiTabComponent} from '../tab/tab.component';
 import {TuiTabsDirective} from '../tabs.directive';
-import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs-options';
+import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs.options';
 
 @Component({
     selector: 'tui-tabs:not([vertical]), nav[tuiTabs]:not([vertical])',

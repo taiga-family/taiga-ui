@@ -1,5 +1,5 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {Provider} from '@angular/core';
+import {TuiContextWithImplicit, tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiAppearance, TuiSizeL} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -39,16 +39,8 @@ export const TUI_TOGGLE_DEFAULT_OPTIONS: TuiToggleOptions = {
 /**
  * Default parameters for Toggle component
  */
-export const TUI_TOGGLE_OPTIONS = new InjectionToken<TuiToggleOptions>(
-    `[TUI_TOGGLE_OPTIONS]`,
-    {
-        factory: () => TUI_TOGGLE_DEFAULT_OPTIONS,
-    },
-);
+export const TUI_TOGGLE_OPTIONS = tuiCreateOptions(TUI_TOGGLE_DEFAULT_OPTIONS);
 
-export const tuiToggleOptionsProvider: (
-    options: Partial<TuiToggleOptions>,
-) => ValueProvider = (options: Partial<TuiToggleOptions>) => ({
-    provide: TUI_TOGGLE_OPTIONS,
-    useValue: {...TUI_TOGGLE_DEFAULT_OPTIONS, ...options},
-});
+export function tuiToggleOptionsProvider(options: Partial<TuiToggleOptions>): Provider {
+    return tuiProvideOptions(TUI_TOGGLE_OPTIONS, options, TUI_TOGGLE_DEFAULT_OPTIONS);
+}

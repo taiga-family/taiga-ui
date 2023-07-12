@@ -37,7 +37,7 @@ import {map, startWith} from 'rxjs/operators';
 import {
     TUI_INPUT_PASSWORD_OPTIONS,
     TuiInputPasswordOptions,
-} from './input-password-options';
+} from './input-password.options';
 
 @Component({
     selector: 'tui-input-password',

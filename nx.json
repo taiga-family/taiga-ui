@@ -41,7 +41,7 @@
         "default": {
             "runner": "nx-cloud",
             "options": {
-                "cacheableOperations": ["stylelint", "lint", "test", "build", "e2e"],
+                "cacheableOperations": ["test", "build"],
                 "parallel": 1
             }
         }

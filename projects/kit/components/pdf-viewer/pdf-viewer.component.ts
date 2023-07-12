@@ -10,7 +10,7 @@ import {
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
-import {TuiPdfViewerOptions} from './pdf-viewer-options';
+import {TuiPdfViewerOptions} from './pdf-viewer.options';
 
 @Component({
     selector: 'tui-pdf-viewer',

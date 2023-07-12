@@ -2,7 +2,6 @@ import {Component, forwardRef, TemplateRef, ViewChild} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiHorizontalDirection} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -92,10 +91,6 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
 
     icon = this.iconVariants[0];
     override iconLeft = this.iconVariants[0];
-
-    readonly iconAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
-
-    iconAlign: TuiHorizontalDirection = this.iconAlignVariants[1];
 
     readonly control = new FormControl('111', Validators.required);
 

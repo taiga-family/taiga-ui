@@ -10,7 +10,7 @@ import {tuiIsString, tuiPure, TuiSafeHtml} from '@taiga-ui/cdk';
 import {tuiSizeBigger, TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 import {tuiStringHashToHsl} from '@taiga-ui/kit/utils/format';
 
-import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar-options';
+import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar.options';
 
 @Component({
     selector: 'tui-avatar',

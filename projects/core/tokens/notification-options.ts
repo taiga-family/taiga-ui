@@ -1,4 +1,5 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
+import {Provider} from '@angular/core';
+import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiNotification} from '@taiga-ui/core/enums';
 import {TuiAlertOptions} from '@taiga-ui/core/interfaces';
 
@@ -20,18 +21,16 @@ export const TUI_NOTIFICATION_DEFAULT_OPTIONS: TuiNotificationDefaultOptions = {
 /**
  * Default parameters for notification alert component
  */
-export const TUI_NOTIFICATION_OPTIONS = new InjectionToken<TuiNotificationDefaultOptions>(
-    `[TUI_NOTIFICATION_OPTIONS]`,
-    {
-        factory: () => TUI_NOTIFICATION_DEFAULT_OPTIONS,
-    },
+export const TUI_NOTIFICATION_OPTIONS = tuiCreateOptions(
+    TUI_NOTIFICATION_DEFAULT_OPTIONS,
 );
 
 export function tuiNotificationOptionsProvider(
     options: Partial<TuiNotificationDefaultOptions>,
-): ValueProvider {
-    return {
-        provide: TUI_NOTIFICATION_OPTIONS,
-        useValue: {...TUI_NOTIFICATION_DEFAULT_OPTIONS, ...options},
-    };
+): Provider {
+    return tuiProvideOptions(
+        TUI_NOTIFICATION_OPTIONS,
+        options,
+        TUI_NOTIFICATION_DEFAULT_OPTIONS,
+    );
 }

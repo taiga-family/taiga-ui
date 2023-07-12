@@ -19,7 +19,7 @@ import {
 } from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TuiInputCardOptions} from './input-card.providers';
+import {TuiInputCardOptions} from './input-card.options';
 
 @Directive()
 export abstract class AbstractTuiInputCard<

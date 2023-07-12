@@ -20,7 +20,7 @@ import {
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 
-import {TUI_RATING_OPTIONS, TuiRatingOptions} from './rating-options';
+import {TUI_RATING_OPTIONS, TuiRatingOptions} from './rating.options';
 
 @Component({
     selector: 'tui-rating',

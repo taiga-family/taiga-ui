@@ -53,7 +53,7 @@ import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_MULTI_SELECT_OPTIONS, TuiMultiSelectOptions} from './multi-select-options';
+import {TUI_MULTI_SELECT_OPTIONS, TuiMultiSelectOptions} from './multi-select.options';
 import {AbstractTuiNativeMultiSelect} from './native-multi-select/native-multi-select';
 
 @Component({

@@ -7,7 +7,7 @@ import {
     ALWAYS_TRUE_HANDLER,
     TuiBooleanHandler,
 } from '@taiga-ui/cdk';
-import {TuiHorizontalDirection, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiStringifiableItem} from '@taiga-ui/kit';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -94,10 +94,6 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
     readonly iconVariants: readonly string[] = ['tuiIconSearchLarge'];
 
     icon = '';
-
-    readonly iconAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
-
-    iconAlign: TuiHorizontalDirection = this.iconAlignVariants[1];
 
     override maxLengthVariants: number[] = [10, 20];
 

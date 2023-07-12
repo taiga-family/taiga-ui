@@ -16,7 +16,7 @@ import {
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_LOADER_OPTIONS, TuiLoaderOptions} from './loader-options';
+import {TUI_LOADER_OPTIONS, TuiLoaderOptions} from './loader.options';
 
 @Component({
     selector: 'tui-loader',

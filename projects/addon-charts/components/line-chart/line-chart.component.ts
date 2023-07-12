@@ -29,8 +29,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, Subject} from 'rxjs';
 import {distinctUntilChanged} from 'rxjs/operators';
 
+import {TUI_LINE_CHART_OPTIONS, TuiLineChartOptions} from './line-chart.options';
 import {TuiLineChartHintDirective} from './line-chart-hint.directive';
-import {TUI_LINE_CHART_OPTIONS, TuiLineChartOptions} from './line-chart-options';
 
 @Component({
     selector: 'tui-line-chart',

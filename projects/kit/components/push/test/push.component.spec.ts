@@ -6,8 +6,8 @@ import {TuiRootModule} from '@taiga-ui/core';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiPushModule} from '../push.module';
+import {tuiPushOptionsProvider} from '../push.options';
 import {TuiPushService} from '../push.service';
-import {tuiPushOptionsProvider} from '../push.tokens';
 
 describe(`Push with TUI_PUSH_OPTIONS`, () => {
     @Component({
