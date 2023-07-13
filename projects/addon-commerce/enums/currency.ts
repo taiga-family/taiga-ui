@@ -239,4 +239,155 @@ export enum TuiCurrency {
      * @description Currency symbol: Dh
      */
     Dirham = `AED`,
+
+    /**
+     * Tajikistani somoni
+     *
+     * @description Numeric code: 972
+     * @description Alphabetic code: TJS
+     * @description Countries and territories: Tajikistan
+     * @description Currency symbol: SM
+     */
+    TajikistaniSomoni = `TJS`,
+
+    /**
+     * Malaysian ringgit
+     *
+     * @description Numeric code: 458
+     * @description Alphabetic code: MYR
+     * @description Countries and territories: Malaysia
+     * @description Currency symbol: RM
+     */
+
+    MalaysianRinggit = `MYR`,
+    /**
+     *
+     * Belarusian ruble
+     *
+     * @description Numeric code: 933
+     * @description Alphabetic code: BYN
+     * @description Countries and territories: Belarus
+     * @description Currency symbol: Rbl
+     */
+
+    BelarusianRuble = `BYN`,
+    /**
+     * Georgian lari
+     *
+     * @description Numeric code: 981
+     * @description Alphabetic code: GEL
+     * @description Countries and territories: Georgia
+     * @description Currency symbol: ₾
+     */
+
+    GeorgianLari = `GEL`,
+    /**
+     * Azerbaijani manat
+     *
+     * @description Numeric code: 944
+     * @description Alphabetic code: AZN
+     * @description Countries and territories: Azerbaijan
+     * @description Currency symbol: ₼
+     */
+
+    AzerbaijaniManat = `AZN`,
+    /**
+     * Sri Lankan rupee
+     *
+     * @description Numeric code: 144
+     * @description Alphabetic code: LKR
+     * @description Countries and territories: Sri Lanka
+     * @description Currency symbol: Rs.
+     */
+
+    SriLankanRupee = `LKR`,
+    /**
+     * Serbian dinar
+     *
+     * @description Numeric code: 941
+     * @description Alphabetic code: RSD
+     * @description Countries and territories: Serbia
+     * @description Currency symbol: DIN
+     */
+
+    SerbianDinar = `RSD`,
+    /**
+     * Saudi Riyal
+     *
+     * @description Numeric code: 682
+     * @description Alphabetic code: SAR
+     * @description Countries and territories: Saudi Arabia
+     * @description Currency symbol: SR
+     */
+
+    SaudiRiyal = `SAR`,
+    /**
+     * Mongolian tugrik
+     *
+     * @description Numeric code: 496
+     * @description Alphabetic code: MNT
+     * @description Countries and territories: Mongolia
+     * @description Currency symbol: ₮
+     */
+
+    MongolianTugrik = `MNT`,
+    /**
+     * South African rand
+     *
+     * @description Numeric code: 710
+     * @description Alphabetic code: ZAR
+     * @description Countries and territories: South Africa
+     * @description Currency symbol: R
+     */
+
+    SouthAfricanRand = `ZAR`,
+    /**
+     * Iranian rial
+     *
+     * @description Numeric code: 364
+     * @description Alphabetic code: IRR
+     * @description Countries and territories: Iran
+     * @description Currency symbol: IR
+     */
+
+    IranianRial = `IRR`,
+    /**
+     * Indonesian rupiah
+     *
+     * @description Numeric code: 360
+     * @description Alphabetic code: IDR
+     * @description Countries and territories: Indonesia
+     * @description Currency symbol: Rp
+     */
+
+    IndonesianRupiah = `IDR`,
+    /**
+     * Vietnamese dong
+     *
+     * @description Numeric code: 704
+     * @description Alphabetic code: VND
+     * @description Countries and territories: Vietnam
+     * @description Currency symbol: đ
+     */
+
+    VietnameseDong = `VND`,
+    /**
+     * New Turkmen manat
+     *
+     * @description Numeric code: 934
+     * @description Alphabetic code: TMT
+     * @description Countries and territories: Turkmenistan
+     * @description Currency symbol: TMT
+     */
+
+    NewTurkmenManat = `TMT`,
+    /**
+     * Brazilian Real
+     *
+     * @description Numeric code: 986
+     * @description Alphabetic code: BRL
+     * @description Countries and territories: Brazilia
+     * @description Currency symbol: R$
+     */
+    BrazilianReal = `BRL`,
 }

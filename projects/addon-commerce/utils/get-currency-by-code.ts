@@ -27,6 +27,21 @@ export const TUI_CURRENCY_DICTIONARY: Record<TuiCurrencyCode, TuiCurrency> = {
     [TuiCurrencyCode.UzbekSum]: TuiCurrency.UzbekSum,
     [TuiCurrencyCode.KyrgyzstanSom]: TuiCurrency.KyrgyzstanSom,
     [TuiCurrencyCode.Dirham]: TuiCurrency.Dirham,
+    [TuiCurrencyCode.TajikistaniSomoni]: TuiCurrency.TajikistaniSomoni,
+    [TuiCurrencyCode.MalaysianRinggit]: TuiCurrency.MalaysianRinggit,
+    [TuiCurrencyCode.BelarusianRuble]: TuiCurrency.BelarusianRuble,
+    [TuiCurrencyCode.GeorgianLari]: TuiCurrency.GeorgianLari,
+    [TuiCurrencyCode.AzerbaijaniManat]: TuiCurrency.AzerbaijaniManat,
+    [TuiCurrencyCode.SriLankanRupee]: TuiCurrency.SriLankanRupee,
+    [TuiCurrencyCode.SerbianDinar]: TuiCurrency.SerbianDinar,
+    [TuiCurrencyCode.SaudiRiyal]: TuiCurrency.SaudiRiyal,
+    [TuiCurrencyCode.MongolianTugrik]: TuiCurrency.MongolianTugrik,
+    [TuiCurrencyCode.SouthAfricanRand]: TuiCurrency.SouthAfricanRand,
+    [TuiCurrencyCode.IranianRial]: TuiCurrency.IranianRial,
+    [TuiCurrencyCode.IndonesianRupiah]: TuiCurrency.IndonesianRupiah,
+    [TuiCurrencyCode.VietnameseDong]: TuiCurrency.VietnameseDong,
+    [TuiCurrencyCode.NewTurkmenManat]: TuiCurrency.NewTurkmenManat,
+    [TuiCurrencyCode.BrazilianReal]: TuiCurrency.BrazilianReal,
 };
 
 export function tuiGetCurrencyByCode(currency: TuiCurrencyCode): TuiCurrency | null {
