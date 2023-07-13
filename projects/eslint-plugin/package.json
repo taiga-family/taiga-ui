@@ -14,6 +14,8 @@
         "eslint-plugin-unicorn": "45.0.2"
     },
     "peerDependencies": {
-        "eslint": "*"
+        "@taiga-ui/cdk": ">=3.36.2",
+        "eslint": "*",
+        "tslib": ">=2.0.0"
     }
 }
