@@ -27,7 +27,6 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
     readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         TypeScript: import('./examples/1/index.ts?raw'),
-        LESS: import('./examples/1/index.less?raw'),
     };
 
     readonly example2: TuiDocExample = {

@@ -20,18 +20,22 @@
 >
     Add
 </button>
-<button
-    tuiButton
-    type="button"
-    size="m"
-    class="tui-space_right-3"
-    (click)="withdraw()"
->
-    Withdraw&nbsp;
-    <tui-money [value]="100"></tui-money>
-</button>
+<p>
+    <button
+        tuiButton
+        type="button"
+        size="m"
+        (click)="withdraw()"
+    >
+        Withdraw&nbsp;
+        <tui-money [value]="100"></tui-money>
+    </button>
+</p>
 
-<ng-template #withdrawTemplate>
+<ng-template
+    #withdrawTemplate="polymorpheus"
+    polymorpheus
+>
     <p>Notifications can be shown with template</p>
     <p>
         Your balance:
@@ -50,7 +54,10 @@
     </button>
 </ng-template>
 
-<ng-template #depositTemplate>
+<ng-template
+    #depositTemplate="polymorpheus"
+    polymorpheus
+>
     <p>
         If there are many templates, you can use
         <code>ViewChildren</code>

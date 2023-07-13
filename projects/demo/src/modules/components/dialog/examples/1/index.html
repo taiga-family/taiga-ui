@@ -2,18 +2,18 @@
     tuiButton
     type="button"
     size="m"
-    class="tui-space_right-3 tui-space_bottom-3"
     (click)="showDialog()"
 >
-    Show
+    Default button
 </button>
 
-<button
-    tuiButton
-    type="button"
-    size="m"
-    class="tui-space_right-3 tui-space_bottom-3"
-    (click)="showDialogWithCustomButton()"
->
-    Show (custom button text)
-</button>
+<p>
+    <button
+        tuiButton
+        type="button"
+        size="m"
+        (click)="showDialogWithCustomButton()"
+    >
+        Custom button
+    </button>
+</p>
