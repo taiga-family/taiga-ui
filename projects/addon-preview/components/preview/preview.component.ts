@@ -124,6 +124,13 @@ export class TuiPreviewComponent {
         this.coordinates$.next(EMPTY_COORDINATES);
     }
 
+    setZoom(zoom: number): void {
+        this.zoom$.next(zoom);
+        const [x, y] = this.coordinates$.value;
+
+        this.coordinates$.next(this.getGuardedCoordinates(x, y));
+    }
+
     private get offsets(): {offsetX: number; offsetY: number} {
         const offsetX = ((this.zoom$.value - this.minZoom) * this.width) / 2;
         const offsetY = ((this.zoom$.value - this.minZoom) * this.height) / 2;
