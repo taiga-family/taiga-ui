@@ -39,15 +39,18 @@
     }
 
     [tuiaction] {
+        cursor: default;
         box-shadow: none;
         border: 1px solid var(--tui-base-03);
         border-bottom: none;
+        will-change: tranform;
         border-radius-right-bottom: 0;
         border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
+    }
 
-        &:hover {
-            transform: translateY(-1.6rem);
-        }
+    &:hover [tuiaction] {
+        transition-delay: 250ms;
+        transform: translateY(-1.6rem);
     }
 }
