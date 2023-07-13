@@ -14,7 +14,7 @@ import {tuiAsControl, tuiAsFocusableItemAccessor} from '@taiga-ui/cdk';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
 
 import {AbstractTuiInputCard} from './abstract-input-card';
-import {TUI_INPUT_CARD_OPTIONS, TuiInputCardOptions} from './input-card.providers';
+import {TUI_INPUT_CARD_OPTIONS, TuiInputCardOptions} from './input-card.options';
 
 @Component({
     selector: 'tui-input-card',

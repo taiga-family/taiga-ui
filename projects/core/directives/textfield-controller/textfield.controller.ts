@@ -3,6 +3,7 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
+import {TuiTextfieldOptions} from './textfield.options';
 import {TuiTextfieldAppearanceDirective} from './textfield-appearance.directive';
 import {TuiTextfieldCleanerDirective} from './textfield-cleaner.directive';
 import {TuiTextfieldCustomContentDirective} from './textfield-custom-content.directive';
@@ -10,7 +11,6 @@ import {TuiTextfieldFillerDirective} from './textfield-filler.directive';
 import {TuiTextfieldIconDirective} from './textfield-icon.directive';
 import {TuiTextfieldIconLeftDirective} from './textfield-icon-left.directive';
 import {TuiTextfieldLabelOutsideDirective} from './textfield-label-outside.directive';
-import {TuiTextfieldOptions} from './textfield-options';
 import {TuiTextfieldPostfixDirective} from './textfield-postfix.directive';
 import {TuiTextfieldPrefixDirective} from './textfield-prefix.directive';
 import {TuiTextfieldSizeDirective} from './textfield-size.directive';

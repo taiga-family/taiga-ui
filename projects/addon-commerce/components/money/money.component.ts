@@ -13,7 +13,7 @@ import {
 import {CHAR_MINUS, CHAR_PLUS} from '@taiga-ui/cdk';
 import {TuiDecimal} from '@taiga-ui/core';
 
-import {TUI_MONEY_OPTIONS, TuiMoneyOptions} from './money-options';
+import {TUI_MONEY_OPTIONS, TuiMoneyOptions} from './money.options';
 import {tuiFormatSignSymbol} from './utils/format-sign-symbol';
 
 @Component({

@@ -1,4 +1,5 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
+import {Provider} from '@angular/core';
+import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiInputPhoneOptions {
     readonly phoneMaskAfterCountryCode: string;
@@ -15,16 +16,14 @@ export const TUI_INPUT_PHONE_DEFAULT_OPTIONS: TuiInputPhoneOptions = {
 /**
  * Default parameters for input phone component
  */
-export const TUI_INPUT_PHONE_OPTIONS = new InjectionToken<TuiInputPhoneOptions>(
-    `[TUI_INPUT_PHONE_OPTIONS]`,
-    {
-        factory: () => TUI_INPUT_PHONE_DEFAULT_OPTIONS,
-    },
-);
+export const TUI_INPUT_PHONE_OPTIONS = tuiCreateOptions(TUI_INPUT_PHONE_DEFAULT_OPTIONS);
 
-export const tuiInputPhoneOptionsProvider: (
+export function tuiInputPhoneOptionsProvider(
     options: Partial<TuiInputPhoneOptions>,
-) => ValueProvider = (options: Partial<TuiInputPhoneOptions>) => ({
-    provide: TUI_INPUT_PHONE_OPTIONS,
-    useValue: {...TUI_INPUT_PHONE_DEFAULT_OPTIONS, ...options},
-});
+): Provider {
+    return tuiProvideOptions(
+        TUI_INPUT_PHONE_OPTIONS,
+        options,
+        TUI_INPUT_PHONE_DEFAULT_OPTIONS,
+    );
+}

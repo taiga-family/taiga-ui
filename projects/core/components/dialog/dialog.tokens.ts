@@ -1,4 +1,5 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
+import {InjectionToken, Provider} from '@angular/core';
+import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
 import type {TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {EMPTY, Observable} from 'rxjs';
 
@@ -26,18 +27,10 @@ export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
 /**
  * Default parameters for dialog component
  */
-export const TUI_DIALOG_OPTIONS = new InjectionToken<TuiDialogDefaultOptions>(
-    `[TUI_DIALOG_OPTIONS]`,
-    {
-        factory: () => TUI_DIALOG_DEFAULT_OPTIONS,
-    },
-);
+export const TUI_DIALOG_OPTIONS = tuiCreateOptions(TUI_DIALOG_DEFAULT_OPTIONS);
 
 export function tuiDialogOptionsProvider(
     options: Partial<TuiDialogDefaultOptions>,
-): ValueProvider {
-    return {
-        provide: TUI_DIALOG_OPTIONS,
-        useValue: {...TUI_DIALOG_DEFAULT_OPTIONS, ...options},
-    };
+): Provider {
+    return tuiProvideOptions(TUI_DIALOG_OPTIONS, options, TUI_DIALOG_DEFAULT_OPTIONS);
 }

@@ -5,8 +5,7 @@ import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorphe
 import {Observable} from 'rxjs';
 
 import {TuiPdfViewerComponent} from './pdf-viewer.component';
-import {TUI_PDF_VIEWER_OPTIONS} from './pdf-viewer.tokens';
-import {TuiPdfViewerOptions} from './pdf-viewer-options';
+import {TUI_PDF_VIEWER_OPTIONS, TuiPdfViewerOptions} from './pdf-viewer.options';
 
 const DIALOG = new PolymorpheusComponent(TuiPdfViewerComponent);
 

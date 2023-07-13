@@ -52,9 +52,11 @@ import {Observable} from 'rxjs';
 
 import {
     TUI_INPUT_CARD_GROUPED_OPTIONS,
+    TuiInputCardGroupedOptions,
+} from './input-card-grouped.options';
+import {
     TUI_INPUT_CARD_GROUPED_TEXTS,
     TuiCardGroupedTexts,
-    TuiInputCardGroupedOptions,
 } from './input-card-grouped.providers';
 
 const EXPIRE_COMPLETE_LENGTH = 5; // MM/YY

@@ -1,4 +1,5 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
+import {Provider} from '@angular/core';
+import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiStatus} from '@taiga-ui/kit/types';
 
 export interface TuiInputTagOptions {
@@ -16,18 +17,14 @@ export const TUI_INPUT_TAG_DEFAULT_OPTIONS: TuiInputTagOptions = {
 /**
  * Default parameters for InputTag component
  */
-export const TUI_INPUT_TAG_OPTIONS = new InjectionToken<TuiInputTagOptions>(
-    `[TUI_INPUT_TAG_OPTIONS]`,
-    {
-        factory: () => TUI_INPUT_TAG_DEFAULT_OPTIONS,
-    },
-);
+export const TUI_INPUT_TAG_OPTIONS = tuiCreateOptions(TUI_INPUT_TAG_DEFAULT_OPTIONS);
 
 export function tuiInputTagOptionsProvider(
     options: Partial<TuiInputTagOptions>,
-): ValueProvider {
-    return {
-        provide: TUI_INPUT_TAG_OPTIONS,
-        useValue: {...TUI_INPUT_TAG_DEFAULT_OPTIONS, ...options},
-    };
+): Provider {
+    return tuiProvideOptions(
+        TUI_INPUT_TAG_OPTIONS,
+        options,
+        TUI_INPUT_TAG_DEFAULT_OPTIONS,
+    );
 }

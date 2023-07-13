@@ -1,4 +1,5 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
+import {Provider} from '@angular/core';
+import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiAppearance, TuiSizeL} from '@taiga-ui/core';
 
 export interface TuiRadioOptions {
@@ -21,16 +22,8 @@ export const TUI_RADIO_DEFAULT_OPTIONS: TuiRadioOptions = {
 /**
  * Default parameters for Radio component
  */
-export const TUI_RADIO_OPTIONS = new InjectionToken<TuiRadioOptions>(
-    `[TUI_RADIO_OPTIONS]`,
-    {
-        factory: () => TUI_RADIO_DEFAULT_OPTIONS,
-    },
-);
+export const TUI_RADIO_OPTIONS = tuiCreateOptions(TUI_RADIO_DEFAULT_OPTIONS);
 
-export const tuiRadioOptionsProvider: (
-    options: Partial<TuiRadioOptions>,
-) => ValueProvider = (options: Partial<TuiRadioOptions>) => ({
-    provide: TUI_RADIO_OPTIONS,
-    useValue: {...TUI_RADIO_DEFAULT_OPTIONS, ...options},
-});
+export function tuiRadioOptionsProvider(options: Partial<TuiRadioOptions>): Provider {
+    return tuiProvideOptions(TUI_RADIO_OPTIONS, options, TUI_RADIO_DEFAULT_OPTIONS);
+}

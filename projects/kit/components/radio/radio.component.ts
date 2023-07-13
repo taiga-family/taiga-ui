@@ -25,7 +25,7 @@ import {
 import {TUI_ANIMATION_OPTIONS, tuiScaleIn, TuiSizeL} from '@taiga-ui/core';
 import {TuiRadioGroupComponent} from '@taiga-ui/kit/components/radio-group';
 
-import {TUI_RADIO_OPTIONS, TuiRadioOptions} from './radio-options';
+import {TUI_RADIO_OPTIONS, TuiRadioOptions} from './radio.options';
 
 @Component({
     selector: 'tui-radio',

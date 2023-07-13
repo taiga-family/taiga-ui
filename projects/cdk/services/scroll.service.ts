@@ -4,7 +4,7 @@ import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiEaseInOutQuad} from '@taiga-ui/cdk/utils/miscellaneous';
 import {defer, Observable, of, timer} from 'rxjs';
-import {map, switchMap, takeUntil, tap} from 'rxjs/operators';
+import {endWith, map, switchMap, takeUntil, tap} from 'rxjs/operators';
 
 const SCROLL_TIME = 300;
 
@@ -22,7 +22,7 @@ export class TuiScrollService {
         scrollTop: number,
         scrollLeft: number = getX(elementOrWindow),
         duration: number = SCROLL_TIME,
-    ): Observable<[number, number]> {
+    ): Observable<readonly [number, number]> {
         ngDevMode && tuiAssert.assert(duration >= 0, `Duration cannot be negative`);
         ngDevMode && tuiAssert.assert(scrollTop >= 0, `scrollTop cannot be negative`);
         ngDevMode && tuiAssert.assert(scrollLeft >= 0, `scrollLeft cannot be negative`);
@@ -41,8 +41,9 @@ export class TuiScrollService {
                           [
                               initialTop + deltaTop * percent,
                               initialLeft + deltaLeft * percent,
-                          ] as [number, number],
+                          ] as const,
                   ),
+                  endWith([scrollTop, scrollLeft] as const),
                   takeUntil(timer(duration)),
               );
 

@@ -7,8 +7,8 @@ import {TuiRootModule} from '@taiga-ui/core';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiPdfViewerModule} from '../pdf-viewer.module';
+import {tuiPdfViewerOptionsProvider} from '../pdf-viewer.options';
 import {TuiPdfViewerService} from '../pdf-viewer.service';
-import {tuiPdfViewerOptionsProvider} from '../pdf-viewer.tokens';
 
 describe(`Pdf Viewer with TUI_PDF_VIEWER_OPTIONS`, () => {
     @Component({

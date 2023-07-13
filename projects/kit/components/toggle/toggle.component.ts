@@ -23,7 +23,7 @@ import {
 import {TuiBrightness, TuiModeDirective, TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_TOGGLE_OPTIONS, TuiToggleOptions} from './toggle-options';
+import {TUI_TOGGLE_OPTIONS, TuiToggleOptions} from './toggle.options';
 
 @Component({
     selector: 'tui-toggle',

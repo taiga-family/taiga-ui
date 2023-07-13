@@ -1,5 +1,5 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {Provider} from '@angular/core';
+import {TuiContextWithImplicit, tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiHintDirection, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -17,16 +17,14 @@ export const TUI_INPUT_COPY_DEFAULT_OPTIONS: TuiInputCopyOptions = {
     icon: ({$implicit}) => ($implicit === `s` ? `tuiIconCopy` : `tuiIconCopyLarge`),
 };
 
-export const TUI_INPUT_COPY_OPTIONS = new InjectionToken<TuiInputCopyOptions>(
-    `[TUI_INPUT_COPY_OPTIONS]`,
-    {
-        factory: () => TUI_INPUT_COPY_DEFAULT_OPTIONS,
-    },
-);
+export const TUI_INPUT_COPY_OPTIONS = tuiCreateOptions(TUI_INPUT_COPY_DEFAULT_OPTIONS);
 
-export const tuiInputCopyOptionsProvider: (
+export function tuiInputCopyOptionsProvider(
     options: Partial<TuiInputCopyOptions>,
-) => ValueProvider = (options: Partial<TuiInputCopyOptions>) => ({
-    provide: TUI_INPUT_COPY_OPTIONS,
-    useValue: {...TUI_INPUT_COPY_DEFAULT_OPTIONS, ...options},
-});
+): Provider {
+    return tuiProvideOptions(
+        TUI_INPUT_COPY_OPTIONS,
+        options,
+        TUI_INPUT_COPY_DEFAULT_OPTIONS,
+    );
+}

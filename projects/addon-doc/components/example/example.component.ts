@@ -18,7 +18,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
 
-import {TUI_DOC_EXAMPLE_OPTIONS, TuiDocExampleOptions} from './example-options';
+import {TUI_DOC_EXAMPLE_OPTIONS, TuiDocExampleOptions} from './example.options';
 
 @Component({
     selector: 'tui-doc-example',

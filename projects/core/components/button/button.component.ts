@@ -22,7 +22,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
-import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button-options';
+import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button.options';
 
 @Component({
     selector: 'button[tuiButton], button[tuiIconButton], a[tuiButton], a[tuiIconButton]',

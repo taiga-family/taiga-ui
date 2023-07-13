@@ -1,10 +1,12 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
+import {Provider} from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_DEFAULT_STRINGIFY,
     TuiBooleanHandler,
+    tuiCreateOptions,
     TuiIdentityMatcher,
+    tuiProvideOptions,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 
@@ -23,16 +25,10 @@ export const TUI_DEFAULT_ITEMS_HANDLERS: TuiItemsHandlers<unknown> = {
 /**
  * Default items handlers for components
  */
-export const TUI_ITEMS_HANDLERS = new InjectionToken<TuiItemsHandlers<unknown>>(
-    `[TUI_ITEMS_HANDLERS]`,
-    {
-        factory: () => TUI_DEFAULT_ITEMS_HANDLERS,
-    },
-);
+export const TUI_ITEMS_HANDLERS = tuiCreateOptions(TUI_DEFAULT_ITEMS_HANDLERS);
 
-export const tuiItemsHandlersProvider: <T>(
+export function tuiItemsHandlersProvider<T>(
     options: Partial<TuiItemsHandlers<T>>,
-) => ValueProvider = <T>(options: Partial<TuiItemsHandlers<T>>) => ({
-    provide: TUI_ITEMS_HANDLERS,
-    useValue: {...TUI_DEFAULT_ITEMS_HANDLERS, ...options},
-});
+): Provider {
+    return tuiProvideOptions(TUI_ITEMS_HANDLERS, options, TUI_DEFAULT_ITEMS_HANDLERS);
+}

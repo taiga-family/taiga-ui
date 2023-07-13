@@ -3,11 +3,11 @@ import {
     FactoryProvider,
     forwardRef,
     Inject,
-    InjectionToken,
     Input,
     Optional,
     SkipSelf,
 } from '@angular/core';
+import {tuiCreateOptions} from '@taiga-ui/cdk';
 import {
     TuiDropdownAlign,
     TuiDropdownWidth,
@@ -39,12 +39,7 @@ export const TUI_DROPDOWN_DEFAULT_OPTIONS: TuiDropdownOptions = {
 /**
  * Default parameters for dropdown directive
  */
-export const TUI_DROPDOWN_OPTIONS = new InjectionToken<TuiDropdownOptions>(
-    '[TUI_DROPDOWN_OPTIONS]',
-    {
-        factory: () => TUI_DROPDOWN_DEFAULT_OPTIONS,
-    },
-);
+export const TUI_DROPDOWN_OPTIONS = tuiCreateOptions(TUI_DROPDOWN_DEFAULT_OPTIONS);
 
 export const tuiDropdownOptionsProvider: (
     options: Partial<TuiDropdownOptions>,
@@ -52,9 +47,9 @@ export const tuiDropdownOptionsProvider: (
     provide: TUI_DROPDOWN_OPTIONS,
     deps: [
         [new Optional(), TuiDropdownOptionsDirective],
-        [new SkipSelf(), TUI_DROPDOWN_OPTIONS],
+        [new Optional(), new SkipSelf(), TUI_DROPDOWN_OPTIONS],
     ],
-    useFactory: tuiOverrideOptions(override),
+    useFactory: tuiOverrideOptions(override, TUI_DROPDOWN_DEFAULT_OPTIONS),
 });
 
 @Directive({

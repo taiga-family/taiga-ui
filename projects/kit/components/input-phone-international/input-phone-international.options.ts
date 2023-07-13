@@ -1,4 +1,5 @@
-import {InjectionToken, ValueProvider} from '@angular/core';
+import {Provider} from '@angular/core';
+import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 
 export interface TuiInputPhoneInternationalOptions {
@@ -15,17 +16,16 @@ export const TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS: TuiInputPhoneInterna
 /**
  * Default parameters for input phone international component
  */
-export const TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS =
-    new InjectionToken<TuiInputPhoneInternationalOptions>(
-        `[TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS]`,
-        {
-            factory: () => TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS,
-        },
-    );
+export const TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS = tuiCreateOptions(
+    TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS,
+);
 
-export const tuiInputPhoneInternationalOptionsProvider: (
+export function tuiInputPhoneInternationalOptionsProvider(
     options: Partial<TuiInputPhoneInternationalOptions>,
-) => ValueProvider = (options: Partial<TuiInputPhoneInternationalOptions>) => ({
-    provide: TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS,
-    useValue: {...TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS, ...options},
-});
+): Provider {
+    return tuiProvideOptions(
+        TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS,
+        options,
+        TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS,
+    );
+}

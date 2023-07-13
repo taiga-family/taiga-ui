@@ -37,7 +37,7 @@ import {
 } from '@taiga-ui/core';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_INPUT_NUMBER_OPTIONS, TuiInputNumberOptions} from './input-number-options';
+import {TUI_INPUT_NUMBER_OPTIONS, TuiInputNumberOptions} from './input-number.options';
 
 const DEFAULT_MAX_LENGTH = 18;
 

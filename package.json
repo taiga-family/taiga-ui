@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/components",
-    "version": "3.35.0",
+    "version": "3.36.2",
     "description": "Taiga UI by Tinkoff is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "keywords": [
         "angular",
@@ -114,7 +114,7 @@
         "cpy-cli": "4.2.0",
         "cspell": "6.31.1",
         "cy2": "4.0.6",
-        "cypress": "12.17.0",
+        "cypress": "12.17.1",
         "cypress-real-events": "1.8.1",
         "eslint": "8.44.0",
         "find-in-files": "0.5.0",
