@@ -1257,6 +1257,10 @@ export const ICONS: Array<{from: string; to: string}> = [
     },
     {
         to: `tuiIconTdsMoreMediumPragmatic`,
+        from: `tuiIconMoreHorLarge`,
+    },
+    {
+        to: `tuiIconTdsMoreMediumPragmatic`,
         from: `tuiIconMoreHorizontalLarge`,
     },
     {
