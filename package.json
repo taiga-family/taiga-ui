@@ -125,7 +125,7 @@
         "ng-packagr": "12.2.7",
         "nx": "16.5.0",
         "nx-cloud": "16.0.5",
-        "postcss": "8.4.25",
+        "postcss": "8.4.26",
         "prettier": "2.8.8",
         "rollup": "2.79.1",
         "standard-version": "8.0.2",
