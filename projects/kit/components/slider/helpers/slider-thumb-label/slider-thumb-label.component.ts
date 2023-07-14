@@ -28,7 +28,7 @@ export class TuiSliderThumbLabelComponent implements AfterContentInit {
     }
 
     get ratio(): number {
-        return (this.slider?.valuePercentage || 0) / 100;
+        return this.slider?.valueRatio || 0;
     }
 
     get ghostLeft(): number {

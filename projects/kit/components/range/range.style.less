@@ -124,22 +124,15 @@
     right: 0;
     z-index: 1;
     transform: translate(0, -50%);
+    // TODO: drop in v4.0 (it will be already done inside Slider)
     margin: 0; /* Drop browser default margins */
 
-    &:last-of-type::-webkit-slider-thumb {
-        transform: translate(50%, 0);
+    &:last-of-type {
+        --slider-thumb-transform: translateX(50%) translateX(1px);
     }
 
-    &:first-of-type::-webkit-slider-thumb {
-        transform: translate(-50%, 0);
-    }
-
-    &:last-of-type::-moz-range-thumb {
-        transform: translate(50%, 0);
-    }
-
-    &:first-of-type::-moz-range-thumb {
-        transform: translate(-50%, 0);
+    &:first-of-type {
+        --slider-thumb-transform: translateX(-50%) translateX(-1px);
     }
 
     :host._disabled & {
