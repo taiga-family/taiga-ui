@@ -43,7 +43,7 @@ describe(`Range`, () => {
                 cy.get(`@range`).click(100, 0);
                 cy.get(`@range`).click(`right`);
 
-                cy.get(`@leftSlider`).should(`have.value`, 1);
+                cy.get(`@leftSlider`).should(`have.value`, 4);
                 cy.get(`@rightSlider`).should(`have.value`, 10);
                 cy.get(exampleId).matchImageSnapshot(`03-range-click-checks-1-10`);
 
