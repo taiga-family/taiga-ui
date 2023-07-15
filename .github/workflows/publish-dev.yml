@@ -2,7 +2,7 @@ name: ⚠️ Nightly publish
 on:
   workflow_dispatch:
   schedule:
-    - cron: '00 00 * * *'
+    - cron: '00 20 * * *' # UTC 20:00, MSK 23:00pm
 
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
