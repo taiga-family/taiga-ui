@@ -19,7 +19,6 @@
         "@taiga-ui/cdk": ">=3.36.2",
         "@taiga-ui/core": ">=3.36.2",
         "@taiga-ui/i18n": ">=3.36.2",
-        "@taiga-ui/icons": ">=3.36.2",
         "@taiga-ui/kit": ">=3.36.2",
         "@tinkoff/ng-polymorpheus": ">=4.0.0",
         "rxjs": ">=6.0.0",

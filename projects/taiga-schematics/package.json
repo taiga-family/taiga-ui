@@ -18,6 +18,7 @@
         "@taiga-ui/cdk": "^3.36.2"
     },
     "peerDependencies": {
+        "@taiga-ui/cdk": ">=3.36.2",
         "tslib": ">=2.0.0"
     },
     "schematics": "../@taiga-ui/cdk/schematics/collection.json"

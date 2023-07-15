@@ -19,5 +19,9 @@
         "rollup-plugin-typescript2": "0.35.0",
         "svgo": "2.8.0",
         "tslib": "2.6.0"
+    },
+    "peerDependencies": {
+        "@taiga-ui/cdk": ">=3.36.2",
+        "tslib": ">=2.0.0"
     }
 }
