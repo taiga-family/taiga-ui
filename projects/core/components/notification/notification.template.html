@@ -1,9 +1,12 @@
-<tui-svg
-    *ngIf="hasIcon"
-    automation-id="tui-notification__icon"
-    class="t-icon"
-    [src]="icon"
-></tui-svg>
+<ng-container *ngIf="icon">
+    <tui-svg
+        *polymorpheusOutlet="icon as iconName; context: {$implicit: statusValue}"
+        automation-id="tui-notification__icon"
+        class="t-icon"
+        [src]="iconName"
+    ></tui-svg>
+</ng-container>
+
 <div class="t-content">
     <ng-content></ng-content>
 </div>
