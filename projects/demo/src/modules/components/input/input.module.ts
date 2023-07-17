@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {MaskitoModule} from '@maskito/angular';
 import {TuiInputCardModule, TuiMoneyModule} from '@taiga-ui/addon-commerce';
 import {
     TuiAddonDocModule,
@@ -86,6 +87,7 @@ import {ExampleTuiInputComponent} from './input.component';
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputComponent)),
         TextMaskModule,
         TuiTextCodeModule,
+        MaskitoModule,
     ],
     declarations: [
         ExampleTuiInputComponent,
