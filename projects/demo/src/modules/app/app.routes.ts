@@ -1628,33 +1628,6 @@ export const ROUTES: Routes = [
             title: `TextfieldController`,
         },
     },
-    // DECORATORS
-    {
-        path: `decorators/default-prop`,
-        loadChildren: async () =>
-            (await import(`../decorators/default-prop/default-prop.module`))
-                .ExampleTuiDefaultPropModule,
-        data: {
-            title: `DefaultProp`,
-        },
-    },
-    {
-        path: `decorators/pure`,
-        loadChildren: async () =>
-            (await import(`../decorators/pure/pure.module`)).ExampleTuiPureModule,
-        data: {
-            title: `Pure`,
-        },
-    },
-    {
-        path: `decorators/required-setter`,
-        loadChildren: async () =>
-            (await import(`../decorators/required-setter/required-setter.module`))
-                .ExampleTuiRequiredSetterModule,
-        data: {
-            title: `RequiredSetter`,
-        },
-    },
 
     // UTILS
     {
@@ -1704,6 +1677,14 @@ export const ROUTES: Routes = [
             (await import(`../utils/tokens/tokens.module`)).ExampleTokensModule,
         data: {
             title: `Tokens`,
+        },
+    },
+    {
+        path: `utils/pure`,
+        loadChildren: async () =>
+            (await import(`../utils/pure/pure.module`)).ExampleTuiPureModule,
+        data: {
+            title: `Pure`,
         },
     },
 

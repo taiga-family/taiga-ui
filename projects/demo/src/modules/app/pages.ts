@@ -997,30 +997,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Tools`,
-        title: `Decorators`,
-        subPages: [
-            {
-                section: `Tools`,
-                title: `DefaultProp`,
-                keywords: `декоратор, decorator, guard, undefined, type, check, contact, assert, контракт`,
-                route: `/decorators/default-prop`,
-            },
-            {
-                section: `Tools`,
-                title: `Pure`,
-                keywords: `декоратор, decorator, lazy, calculation, optimization, pipe, memoization`,
-                route: `/decorators/pure`,
-            },
-            {
-                section: `Tools`,
-                title: `RequiredSetter`,
-                keywords: `декоратор, decorator, guard, undefined, type, check, contact, assert, контракт`,
-                route: `/decorators/required-setter`,
-            },
-        ],
-    },
-    {
-        section: `Tools`,
         title: `Directives`,
         subPages: [
             {
@@ -1335,6 +1311,12 @@ export const pages: TuiDocPages = [
                 title: `Tokens`,
                 keywords: `токены tokens`,
                 route: `/utils/tokens`,
+            },
+            {
+                section: `Tools`,
+                title: `Pure`,
+                keywords: `Инструменты, утилиты, lazy, calculation, optimization, pipe, memoization`,
+                route: `/utils/pure`,
             },
         ],
     },
