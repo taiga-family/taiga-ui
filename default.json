@@ -4,7 +4,7 @@
     "enabledManagers": ["npm", "github-actions"],
     "fetchReleaseNotes": false,
     "internalChecksFilter": "strict",
-    "branchConcurrentLimit": 4,
+    "branchConcurrentLimit": 0,
     "prHourlyLimit": 0,
     "prConcurrentLimit": 0,
     "labels": ["renovate"],
