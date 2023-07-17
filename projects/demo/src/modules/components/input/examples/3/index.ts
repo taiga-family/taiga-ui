@@ -16,11 +16,11 @@ export class TuiInputExample3 {
         testValue2: new FormControl(''),
     });
 
-    readonly textMaskOptions1: MaskitoOptions = {
+    readonly maskOptions1: MaskitoOptions = {
         mask: [/\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/],
     };
 
-    readonly textMaskOptions2: MaskitoOptions = {
+    readonly maskOptions2: MaskitoOptions = {
         mask: [
             /\d/,
             /\d/,

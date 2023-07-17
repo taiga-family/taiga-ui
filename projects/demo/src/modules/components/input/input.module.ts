@@ -25,7 +25,6 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
-    TextMaskModule,
     TuiAvatarModule,
     TuiDataListWrapperModule,
     TuiInputCountModule,
@@ -85,7 +84,6 @@ import {ExampleTuiInputComponent} from './input.component';
         PolymorpheusModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputComponent)),
-        TextMaskModule,
         TuiTextCodeModule,
         MaskitoModule,
     ],
