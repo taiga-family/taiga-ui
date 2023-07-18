@@ -1,11 +1,12 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
 
 @Component({
     selector: 'example-tui-tabs',
     templateUrl: './tabs.template.html',
     changeDetection,
+    providers: [tuiDocExampleOptionsProvider({fullsize: true})],
 })
 export class ExampleTuiTabsComponent {
     buttons = ['Button 1', 'Button 2', 'Button 3', 'Button 4'];

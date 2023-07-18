@@ -1,14 +1,12 @@
-<div class="flex">
-    <tui-input [(ngModel)]="value">Changes propagate both ways</tui-input>
-    <label
-        class="flex"
-        [tuiDropdown]="dropdownContent"
-        [tuiDropdownManual]="open"
-    >
-        <tui-toggle [(ngModel)]="open"></tui-toggle>
-        Open dropdown
-    </label>
-</div>
+<tui-input [(ngModel)]="value">Changes propagate both ways</tui-input>
+<label
+    class="flex"
+    [tuiDropdown]="dropdownContent"
+    [tuiDropdownManual]="open"
+>
+    <tui-toggle [(ngModel)]="open"></tui-toggle>
+    Open dropdown
+</label>
 
 <ng-template
     #dropdownContent="polymorpheus"

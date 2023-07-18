@@ -1,7 +1,4 @@
-<form
-    class="b-form"
-    [formGroup]="testForm"
->
+<form [formGroup]="testForm">
     <tui-input formControlName="testValue">
         Type an email
         <input
@@ -27,15 +24,12 @@
     </a>
 </h4>
 
-<tui-notification class="tui-space_top-4 tui-space_bottom-4 b-form">
+<tui-notification class="tui-space_vertical-4">
     <code>autocomplete=off</code>
     is largely ignored in modern browsers - primarily due to password managers etc.
 </tui-notification>
 
-<form
-    class="b-form"
-    [formGroup]="testForm"
->
+<form [formGroup]="testForm">
     <tui-input formControlName="testValue">
         Type an email
         <input
@@ -47,25 +41,8 @@
     </tui-input>
 </form>
 
-<p>
+<tui-notification class="tui-space_top-4">
     This is a hint, which browsers are not required to comply with. However modern browsers have stopped autofilling
-    <code>input</code>
     elements with
     <code>autocomplete="new-password"</code>
-    We could use
-    <code>new-password</code>
-    which should tell the browser, that this is like a new password and autofill is therefore not useful here.
-</p>
-
-<p>
-    Another way you can use this combination of html attributes:
-    <code tuiText='<input role="presentation" autocomplete="off" />'></code>
-    -
-    <a
-        tuiLink
-        rel="noreferrer"
-        href="https://gist.github.com/niksumeiko/360164708c3b326bd1c8?permalink_comment_id=3925346#gistcomment-3925346"
-    >
-        Reference
-    </a>
-</p>
+</tui-notification>

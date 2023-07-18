@@ -8,7 +8,7 @@ const MAPPER: Record<string, string> = {
     tuiIconCalendarLarge: 'date_range-24px',
     tuiIconHelpCircle: 'help-24px',
     tuiIconInfo: 'info-16px',
-    tuiIconXLarge: 'clear-24px',
+    tuiIconClose: 'clear-24px',
     tuiIconChevronLeftLarge: 'keyboard_arrow_left-24px',
     tuiIconChevronRightLarge: 'keyboard_arrow_right-24px',
 };

@@ -11,64 +11,61 @@
             [code]="injectService"
         ></tui-doc-code>
 
-        <tui-doc-example
-            id="sanitizer"
-            heading="Sanitizer"
-        >
-            <p>
-                If you use unsafe icons or
-                <a
-                    tuiLink
-                    href="https://tinkoff.github.io/tui-editor"
-                >
-                    Editor component
-                </a>
-                you need to provide
-                <code>TUI_SANITIZER</code>
-                token, which is responsible for removing malicious code from the svg. We recommend to use
-                <a
-                    tuiLink
-                    rel="noreferrer"
-                    href="https://github.com/tinkoff/ng-dompurify"
-                    target="_blank"
-                >
-                    NgDompurify
-                </a>
-                as a sanitizer. This library implements
-                <a
-                    tuiLink
-                    rel="noreferrer"
-                    href="https://github.com/cure53/DOMPurify"
-                    target="_blank"
-                >
-                    DOMPurify
-                </a>
-                as Angular Sanitizer or Pipe. It delegates sanitizing to DOMPurify and supports the same configuration.
-            </p>
+        <h2 class="tui-space_top-12">Sanitizer</h2>
 
-            <h4 class="tui-space_top-0">
-                Don't forget
-                <a
-                    tuiLink
-                    routerLink="/icons/bundled"
-                    fragment="sanitizer"
-                >
-                    provide TUI_SANITIZER
-                </a>
-                if you want to use
-                <code>Svg</code>
-                -component with:
-            </h4>
-            <ul class="tui-list tui-list_small">
-                <li class="tui-list__item">icon which was imported from source code</li>
-                <li class="tui-list__item">custom icons that you don't trust</li>
-            </ul>
+        <p>
+            If you use unsafe icons or
+            <a
+                tuiLink
+                href="https://tinkoff.github.io/tui-editor"
+            >
+                Editor component
+            </a>
+            you need to provide
+            <code>TUI_SANITIZER</code>
+            token, which is responsible for removing malicious code from the svg. We recommend to use
+            <a
+                tuiLink
+                rel="noreferrer"
+                href="https://github.com/tinkoff/ng-dompurify"
+                target="_blank"
+            >
+                NgDompurify
+            </a>
+            as a sanitizer. This library implements
+            <a
+                tuiLink
+                rel="noreferrer"
+                href="https://github.com/cure53/DOMPurify"
+                target="_blank"
+            >
+                DOMPurify
+            </a>
+            as Angular Sanitizer or Pipe. It delegates sanitizing to DOMPurify and supports the same configuration.
+        </p>
 
-            <tui-doc-code
-                filename="app.module.ts"
-                [code]="exampleSanitizer"
-            ></tui-doc-code>
-        </tui-doc-example>
+        <h4 class="tui-space_top-0">
+            Don't forget
+            <a
+                tuiLink
+                routerLink="/icons/bundled"
+                fragment="sanitizer"
+            >
+                provide TUI_SANITIZER
+            </a>
+            if you want to use
+            <code>Svg</code>
+            -component with:
+        </h4>
+        <ul class="tui-list tui-list_small">
+            <li class="tui-list__item">icon which was imported from source code</li>
+            <li class="tui-list__item">custom icons that you don't trust</li>
+        </ul>
+
+        <tui-doc-code
+            filename="app.module.ts"
+            [code]="exampleSanitizer"
+        ></tui-doc-code>
 
         <tui-doc-example
             id="all"

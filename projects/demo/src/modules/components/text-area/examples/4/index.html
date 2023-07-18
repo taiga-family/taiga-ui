@@ -14,14 +14,8 @@
     </ul>
 </div>
 
-<form
-    class="form tui-row"
-    [formGroup]="testForm"
->
-    <label
-        tuiLabel="Write a wise thought"
-        class="tui-col_md-6"
-    >
+<form [formGroup]="testForm">
+    <label tuiLabel="Write a wise thought">
         <tui-text-area
             formControlName="testValue1"
             tuiHintContent="it's just a joke"

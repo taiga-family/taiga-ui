@@ -4,8 +4,8 @@ describe(`Tree`, () => {
     });
 
     it(`Programmatic control`, () => {
-        cy.get(`#programmatic p button`).eq(0).click();
-        cy.get(`#programmatic p button`).eq(1).click();
+        cy.get(`#programmatic button.programmatic`).eq(0).click();
+        cy.get(`#programmatic button.programmatic`).eq(1).click();
 
         cy.get(`#programmatic`)
             .tuiWaitBeforeScreenshot()

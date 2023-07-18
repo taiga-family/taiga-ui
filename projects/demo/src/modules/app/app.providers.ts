@@ -19,6 +19,7 @@ import {
     TUI_DOC_SOURCE_CODE,
     TUI_DOC_TITLE,
     TUI_DOC_URL_STATE_HANDLER,
+    tuiDocExampleOptionsProvider,
     TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
 import {
@@ -174,6 +175,7 @@ export const APP_PROVIDERS: Provider[] = [
         useFactory: (baseHref: string) => (tree: UrlTree) =>
             String(tree).replace(baseHref, ``),
     },
+    tuiDocExampleOptionsProvider({fullsize: false}),
     tuiLanguageSwitcher(
         async (language: TuiLanguageName): Promise<unknown> =>
             import(

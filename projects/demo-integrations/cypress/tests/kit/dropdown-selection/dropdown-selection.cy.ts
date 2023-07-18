@@ -20,7 +20,7 @@ describe(`dropdown-selection`, () => {
         cy.get(`@example`).matchImageSnapshot(`1-2-dropdown-selection`);
 
         // step 3
-        cy.get(`@example`).type(`{selectall}{backspace}`).type(`@`);
+        cy.get(`@example`).find(`textarea`).type(`{selectall}{backspace}`).type(`@`);
         cy.get(`button[tuioption]`).eq(1).click({force: true});
         cy.get(`@example`).matchImageSnapshot(`1-3-dropdown-selection`);
     });
