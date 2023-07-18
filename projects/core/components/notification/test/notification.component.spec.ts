@@ -1,15 +1,12 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {
-    TUI_NOTIFICATION_DEFAULT_OPTIONS,
-    TUI_NOTIFICATION_OPTIONS,
-} from '@taiga-ui/core/tokens';
+import {TUI_NOTIFICATION_DEFAULT_OPTIONS, TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiNotification} from '../../../enums/notification';
 import {TuiSvgService} from '../../../services/svg.service';
-import {STATUS_ICON, TuiNotificationComponent} from '../notification.component';
+import {TuiNotificationComponent} from '../notification.component';
 import {TuiNotificationModule} from '../notification.module';
 
 describe(`Notification`, () => {
@@ -17,7 +14,6 @@ describe(`Notification`, () => {
         template: `
             <tui-notification
                 *ngIf="hasCloseButton; else noClose"
-                [hasIcon]="hasIcon"
                 [status]="status"
                 (close)="onClose()"
             >
@@ -25,7 +21,6 @@ describe(`Notification`, () => {
             </tui-notification>
             <ng-template #noClose>
                 <tui-notification
-                    [hasIcon]="hasIcon"
                     [status]="status"
                 >
                     Short simple informational message
@@ -38,10 +33,10 @@ describe(`Notification`, () => {
         component!: TuiNotificationComponent;
 
         hasCloseButton = true;
-        hasIcon = true;
         status: TuiNotification = TuiNotification.Info;
 
-        onClose(): void {}
+        onClose(): void {
+        }
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -75,29 +70,6 @@ describe(`Notification`, () => {
         it(`present by default`, () => {
             expect(getIcon()).not.toBeNull();
         });
-
-        it(`chosen correctly depending on the status`, () => {
-            expect(testComponent.component.icon).toBe(STATUS_ICON[testComponent.status]);
-
-            testComponent.status = TuiNotification.Success;
-            fixture.detectChanges();
-            expect(testComponent.component.icon).toBe(STATUS_ICON[testComponent.status]);
-
-            testComponent.status = TuiNotification.Error;
-            fixture.detectChanges();
-            expect(testComponent.component.icon).toBe(STATUS_ICON[testComponent.status]);
-
-            testComponent.status = TuiNotification.Warning;
-            fixture.detectChanges();
-            expect(testComponent.component.icon).toBe(STATUS_ICON[testComponent.status]);
-        });
-
-        it(`when hasIcon = false is absent`, () => {
-            testComponent.hasIcon = false;
-            fixture.detectChanges();
-
-            expect(getIcon()).toBeNull();
-        });
     });
 
     describe(`closing cross`, () => {
@@ -126,10 +98,8 @@ describe(`Notification with TUI_NOTIFICATION_OPTIONS`, () => {
     }
 
     const status = TuiNotification.Error;
-    const hasIcon = false;
 
     let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
     let pageObject: TuiPageObject<TestComponent>;
 
     function getIcon(): DebugElement {
@@ -147,7 +117,7 @@ describe(`Notification with TUI_NOTIFICATION_OPTIONS`, () => {
                     useValue: {
                         ...TUI_NOTIFICATION_DEFAULT_OPTIONS,
                         status,
-                        hasIcon,
+                        icon: null
                     },
                 },
             ],
@@ -157,16 +127,11 @@ describe(`Notification with TUI_NOTIFICATION_OPTIONS`, () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new TuiPageObject(fixture);
-        testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });
 
     describe(`icon`, () => {
-        it(`chosen correctly depending on the status`, () => {
-            expect(testComponent.component.icon).toBe(STATUS_ICON[status]);
-        });
-
-        it(`when hasIcon = false is absent`, () => {
+        it(`when icon = null is absent`, () => {
             expect(getIcon()).toBeNull();
         });
     });

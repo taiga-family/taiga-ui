@@ -8,3 +8,4 @@ export * from './events';
 export * from './hint-directions';
 export * from './mask-caret-trap';
 export * from './regexp';
+export * from './notification-status-icons';

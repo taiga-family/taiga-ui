@@ -1,19 +1,8 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    HostBinding,
-    Inject,
-    Input,
-    Output,
-} from '@angular/core';
-import {tuiIsObserved} from '@taiga-ui/cdk';
+import {ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Inject, Input, Output} from '@angular/core';
+import {TuiContextWithImplicit, tuiIsObserved, tuiIsPresent} from '@taiga-ui/cdk';
 import {TuiNotification} from '@taiga-ui/core/enums';
-import {
-    TUI_CLOSE_WORD,
-    TUI_NOTIFICATION_OPTIONS,
-    TuiNotificationDefaultOptions,
-} from '@taiga-ui/core/tokens';
+import {TUI_CLOSE_WORD, TUI_NOTIFICATION_OPTIONS, TuiNotificationDefaultOptions,} from '@taiga-ui/core/tokens';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -24,15 +13,13 @@ import {Observable} from 'rxjs';
 })
 export class TuiNotificationComponent {
     /**
-     * @deprecated
+     * @deprecated Use {@link TuiNotificationComponent.icon} input or TUI_NOTIFICATION_OPTIONS instead
      */
     @Input()
-    // @HostBinding('class._has-icon')
-    hasIcon = this.options.hasIcon;
+    hasIcon: boolean = true;
 
     @Input()
-    @HostBinding('class._has-icon')
-    icon = this.options.icon;
+    icon: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>> | null = this.options.icon;
 
     @Input()
     @HostBinding('attr.data-status')
@@ -45,15 +32,17 @@ export class TuiNotificationComponent {
     // eslint-disable-next-line @angular-eslint/no-output-native
     readonly close = new EventEmitter<void>();
 
-    get statusValue(): TuiNotification {
-        return this.status as TuiNotification;
-    }
-
     constructor(
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
         @Inject(TUI_NOTIFICATION_OPTIONS)
         readonly options: TuiNotificationDefaultOptions,
-    ) {}
+    ) {
+    }
+
+    @HostBinding('class._has-icon')
+    get isIconExists(): boolean {
+        return tuiIsPresent(this.icon) && this.hasIcon;
+    }
 
     @HostBinding('class._has-close-button')
     get hasClose(): boolean {

@@ -7,17 +7,17 @@
         <p>An inline message with a type (info, success, warning, error) that does not interrupt user actions</p>
 
         <tui-doc-example
-            id="base"
-            heading="Basic"
             [content]="example1"
+            heading="Basic"
+            id="base"
         >
             <tui-notification-example-1></tui-notification-example-1>
         </tui-doc-example>
 
         <tui-doc-example
-            id="options"
-            heading="Options"
             [content]="example2"
+            heading="Options"
+            id="options"
         >
             <tui-notification-example-2></tui-notification-example-2>
         </tui-doc-example>
@@ -26,35 +26,45 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-notification
+                (close)="documentationPropertyClose.emitEvent($event)"
                 [hasIcon]="hasIcon"
                 [status]="status"
-                (close)="documentationPropertyClose.emitEvent($event)"
             >
                 A short simple informative message
             </tui-notification>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                [(documentationPropertyValue)]="hasIcon"
+                [documentationPropertyDeprecated]="true"
+                documentationPropertyMode="input"
                 documentationPropertyName="hasIcon"
                 documentationPropertyType="boolean"
-                documentationPropertyMode="input"
-                [(documentationPropertyValue)]="hasIcon"
             >
-                A small icon with status
+                A small icon with status. Use
+                <code>icon</code>
+                input instead
             </ng-template>
             <ng-template
-                documentationPropertyName="status"
-                documentationPropertyMode="input"
-                documentationPropertyType="TuiNotification"
-                [documentationPropertyValues]="statusVariants"
                 [(documentationPropertyValue)]="status"
+                [documentationPropertyValues]="statusVariants"
+                documentationPropertyMode="input"
+                documentationPropertyName="status"
+                documentationPropertyType="TuiNotification"
             >
                 Status changes color of notification
             </ng-template>
             <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="icon"
+                documentationPropertyType="PolymorpheusContent"
+            >
+                Icon content. Specify <code>null</code> to hide icon.
+            </ng-template>
+            <ng-template
                 #documentationPropertyClose="documentationProperty"
-                documentationPropertyName="close"
                 documentationPropertyMode="output"
+                documentationPropertyName="close"
                 documentationPropertyType="void"
             >
                 Emits click on close cross. When subscribed to, close button appears.
@@ -72,8 +82,8 @@
                 </p>
 
                 <tui-doc-code
-                    filename="myComponent.module.ts"
                     [code]="exampleModule"
+                    filename="myComponent.module.ts"
                 ></tui-doc-code>
             </li>
 
@@ -81,8 +91,8 @@
                 <p>Add to the template:</p>
 
                 <tui-doc-code
-                    filename="myComponent.template.html"
                     [code]="exampleHtml"
+                    filename="myComponent.template.html"
                 ></tui-doc-code>
             </li>
 
@@ -94,8 +104,8 @@
                 </p>
 
                 <tui-doc-code
-                    filename="myModule.module.ts"
                     [code]="exampleOptions"
+                    filename="myModule.module.ts"
                 ></tui-doc-code>
             </li>
         </ol>

@@ -1,5 +1,6 @@
 import {Provider} from '@angular/core';
 import {TuiContextWithImplicit, tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {STATUS_ICONS} from '@taiga-ui/core/constants';
 import {TuiNotification} from '@taiga-ui/core/enums';
 import {TuiAlertOptions} from '@taiga-ui/core/interfaces';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -9,7 +10,7 @@ export interface TuiNotificationDefaultOptions
     /** @deprecated */
     readonly hasIcon: boolean;
     readonly defaultAutoCloseTime: number;
-    readonly icon: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>>;
+    readonly icon: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>> | null;
 }
 
 /** Default values for the notification options. */
@@ -21,14 +22,7 @@ export const TUI_NOTIFICATION_DEFAULT_OPTIONS: TuiNotificationDefaultOptions = {
     hasCloseButton: true,
     defaultAutoCloseTime: 3000,
     icon: ({$implicit}) => {
-        const statusIcons = {
-            info: `tuiIconInfo`,
-            success: `tuiIconCheckCircle`,
-            error: `tuiIconXCircle`,
-            warning: `tuiIconAlertCircle`,
-        } as const;
-
-        return statusIcons[$implicit];
+        return STATUS_ICONS[$implicit];
     },
 };
 
