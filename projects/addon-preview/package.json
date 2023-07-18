@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/addon-preview",
-    "version": "3.36.2",
+    "version": "3.37.0",
     "description": "A library to show a modal with custom content preview",
     "keywords": [
         "angular",
@@ -16,10 +16,10 @@
         "@angular/common": ">=12.0.0",
         "@angular/core": ">=12.0.0",
         "@ng-web-apis/mutation-observer": ">=3.0.0",
-        "@taiga-ui/cdk": ">=3.36.2",
-        "@taiga-ui/core": ">=3.36.2",
-        "@taiga-ui/i18n": ">=3.36.2",
-        "@taiga-ui/kit": ">=3.36.2",
+        "@taiga-ui/cdk": ">=3.37.0",
+        "@taiga-ui/core": ">=3.37.0",
+        "@taiga-ui/i18n": ">=3.37.0",
+        "@taiga-ui/kit": ">=3.37.0",
         "@tinkoff/ng-polymorpheus": ">=4.0.0",
         "rxjs": ">=6.0.0",
         "tslib": ">=2.0.0"
