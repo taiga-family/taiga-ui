@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[26472],{26472:n=>{n.exports="@import 'taiga-ui-local';\n\n.label-wrapper {\n    width: 50%;\n    text-shadow: 0 0 0.25rem #000;\n    color: var(--tui-primary-text);\n\n    @media @tui-mobile {\n        width: 100%;\n    }\n}\n"}}]);
