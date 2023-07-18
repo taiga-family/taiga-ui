@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.37.0](https://github.com/tinkoff/taiga-ui/compare/v3.36.2...v3.37.0) (2023-07-18)
+
+### Features
+
+- **addon-commerce:** add currencies ([#4910](https://github.com/tinkoff/taiga-ui/issues/4910))
+  ([405314e](https://github.com/tinkoff/taiga-ui/commit/405314e4c19540b81cbe2770b6d6425ab1f539e0))
+
+### Bug Fixes
+
+- **addon-preview:** fix centering when zooming with slider ([#4893](https://github.com/tinkoff/taiga-ui/issues/4893))
+  ([a268064](https://github.com/tinkoff/taiga-ui/commit/a26806424dfeecaeba1ebacf81db0d7c0e832e6d))
+- **kit:** `LineClamp` recalculate size on hover ([#4906](https://github.com/tinkoff/taiga-ui/issues/4906))
+  ([2debc55](https://github.com/tinkoff/taiga-ui/commit/2debc555f328c6cd2ce676ac09ba6ea9ec0bbeee))
+- **kit:** change button appearance for `Files` ([#4926](https://github.com/tinkoff/taiga-ui/issues/4926))
+  ([1e15be5](https://github.com/tinkoff/taiga-ui/commit/1e15be5198f56ba2b74dfa76d0c9d346c21288d9))
+- **kit:** update `TUI_COUNTRIES_MASKS` (`InputPhoneInternational`) for Argentina
+  ([#4891](https://github.com/tinkoff/taiga-ui/issues/4891))
+  ([1d931df](https://github.com/tinkoff/taiga-ui/commit/1d931dfead6346ab2eb3365578dea202c5504635))
+
 ### [3.36.2](https://github.com/tinkoff/taiga-ui/compare/v3.36.1...v3.36.2) (2023-07-12)
 
 ### Features
