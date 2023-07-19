@@ -25,20 +25,20 @@ describe(`InputYear`, () => {
                 .should(`have.prop`, `selectionEnd`, `2020`.length);
         });
 
-        it(`0000 => 0`, () => {
+        it(`0000 => blur => 0`, () => {
             cy.get(`@input`)
                 .type(`0000`)
-                .should(`have.value`, `0`)
-                .should(`have.prop`, `selectionStart`, 1)
-                .should(`have.prop`, `selectionEnd`, 1);
+                .should(`have.value`, `0000`)
+                .blur()
+                .should(`have.value`, `0`);
         });
 
-        it(`0040 => 40`, () => {
+        it(`0040 => blur => 40`, () => {
             cy.get(`@input`)
                 .type(`0040`)
-                .should(`have.value`, `40`)
-                .should(`have.prop`, `selectionStart`, `40`.length)
-                .should(`have.prop`, `selectionEnd`, `40`.length);
+                .should(`have.value`, `0040`)
+                .blur()
+                .should(`have.value`, `40`);
         });
     });
 

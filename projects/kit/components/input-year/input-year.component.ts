@@ -53,6 +53,7 @@ export class TuiInputYearComponent
     disabledItemHandler: TuiBooleanHandler<number> = ALWAYS_FALSE_HANDLER;
 
     open = false;
+    nativeValue = '';
 
     readonly initialItem = new Date().getFullYear();
 
@@ -111,5 +112,10 @@ export class TuiInputYearComponent
 
     toggle(): void {
         this.open = !this.open;
+    }
+
+    override writeValue(value: number | null): void {
+        super.writeValue(value);
+        this.nativeValue = value?.toString() || '';
     }
 }
