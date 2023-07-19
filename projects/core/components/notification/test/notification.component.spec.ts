@@ -20,9 +20,7 @@ describe(`Notification`, () => {
                 Short simple informational message
             </tui-notification>
             <ng-template #noClose>
-                <tui-notification
-                    [status]="status"
-                >
+                <tui-notification [status]="status">
                     Short simple informational message
                 </tui-notification>
             </ng-template>
@@ -35,8 +33,7 @@ describe(`Notification`, () => {
         hasCloseButton = true;
         status: TuiNotification = TuiNotification.Info;
 
-        onClose(): void {
-        }
+        onClose(): void {}
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -117,7 +114,7 @@ describe(`Notification with TUI_NOTIFICATION_OPTIONS`, () => {
                     useValue: {
                         ...TUI_NOTIFICATION_DEFAULT_OPTIONS,
                         status,
-                        icon: null
+                        icon: null,
                     },
                 },
             ],
