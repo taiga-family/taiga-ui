@@ -7,10 +7,10 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiNotificationDefaultOptions
     extends Omit<TuiAlertOptions<unknown>, 'data'> {
-    /** @deprecated */
+    /** @deprecated Use {@link TuiNotificationDefaultOptions.icon} instead */
     readonly hasIcon: boolean;
     readonly defaultAutoCloseTime: number;
-    readonly icon: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>> | null;
+    readonly icon: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>>;
 }
 
 /** Default values for the notification options. */
@@ -21,9 +21,7 @@ export const TUI_NOTIFICATION_DEFAULT_OPTIONS: TuiNotificationDefaultOptions = {
     hasIcon: true,
     hasCloseButton: true,
     defaultAutoCloseTime: 3000,
-    icon: ({$implicit}) => {
-        return STATUS_ICONS[$implicit];
-    },
+    icon: ({$implicit}) => STATUS_ICONS[$implicit],
 };
 
 /**
