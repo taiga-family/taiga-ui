@@ -225,16 +225,17 @@ export class TuiInputTagComponent
         return size === 's' || labelOutside;
     }
 
+    @HostBinding('class._icon-left')
+    get iconLeft(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
+        return this.controller.iconLeft;
+    }
+
     get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
         return this.controller.icon;
     }
 
     get iconCleaner(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
         return this.controller.options.iconCleaner;
-    }
-
-    get iconLeft(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
-        return this.controller.iconLeft;
     }
 
     get hasCleaner(): boolean {
