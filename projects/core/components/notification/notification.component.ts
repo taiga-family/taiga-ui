@@ -1,7 +1,19 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Inject, Input, Output} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    HostBinding,
+    Inject,
+    Input,
+    Output,
+} from '@angular/core';
 import {TuiContextWithImplicit, tuiIsObserved, tuiIsPresent} from '@taiga-ui/cdk';
 import {TuiNotification} from '@taiga-ui/core/enums';
-import {TUI_CLOSE_WORD, TUI_NOTIFICATION_OPTIONS, TuiNotificationDefaultOptions,} from '@taiga-ui/core/tokens';
+import {
+    TUI_CLOSE_WORD,
+    TUI_NOTIFICATION_OPTIONS,
+    TuiNotificationDefaultOptions,
+} from '@taiga-ui/core/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
@@ -16,10 +28,11 @@ export class TuiNotificationComponent {
      * @deprecated Use {@link TuiNotificationComponent.icon} input or TUI_NOTIFICATION_OPTIONS instead
      */
     @Input()
-    hasIcon: boolean = true;
+    hasIcon = true;
 
     @Input()
-    icon: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>> | null = this.options.icon;
+    icon: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>> | null =
+        this.options.icon;
 
     @Input()
     @HostBinding('attr.data-status')
@@ -36,8 +49,7 @@ export class TuiNotificationComponent {
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
         @Inject(TUI_NOTIFICATION_OPTIONS)
         readonly options: TuiNotificationDefaultOptions,
-    ) {
-    }
+    ) {}
 
     @HostBinding('class._has-icon')
     get isIconExists(): boolean {
