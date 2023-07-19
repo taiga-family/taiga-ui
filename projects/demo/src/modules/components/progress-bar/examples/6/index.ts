@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 @Component({
     selector: 'tui-progress-bar-example-6',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
