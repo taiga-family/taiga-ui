@@ -2,7 +2,7 @@ import {BROWSER_SUPPORTS_REAL_EVENTS} from '@demo-integrations/support/constants
 
 describe(`InputDateTime`, () => {
     beforeEach(() => {
-        cy.viewport(400, 500);
+        cy.viewport(400, 600);
     });
 
     describe(`API`, () => {
@@ -97,10 +97,36 @@ describe(`InputDateTime`, () => {
             },
         );
 
+        it(`should place caret before time after selection of a new date via calendar`, () => {
+            cy.tuiVisit(`components/input-date-time/API`);
+
+            getInput()
+                .type(`191120181235`)
+                .should(`have.value`, `19.11.2018, 12:35`)
+                .click()
+                .should(`have.prop`, `selectionStart`, `19.11.2018, 12:35`.length)
+                .should(`have.prop`, `selectionEnd`, `19.11.2018, 12:35`.length);
+
+            selectDayViaCalendar(15);
+
+            getInput()
+                .should(`have.value`, `15.11.2018, 12:35`)
+                .should(`have.prop`, `selectionStart`, `15.11.2018, `.length)
+                .should(`have.prop`, `selectionEnd`, `15.11.2018, `.length);
+        });
+
         function getInput(): Cypress.Chainable<JQuery> {
             return cy
                 .get(`#demo-content`)
                 .findByAutomationId(`tui-primitive-textfield__native-input`);
+        }
+
+        function selectDayViaCalendar(day: number): Cypress.Chainable<JQuery> {
+            return cy
+                .get(`tui-calendar`)
+                .getByAutomationId(`tui-primitive-calendar__cell`)
+                .contains(`${day}`)
+                .click();
         }
 
         function matchImageSnapshot(name: string): void {

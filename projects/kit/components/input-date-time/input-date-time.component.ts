@@ -253,9 +253,11 @@ export class TuiInputDateTimeComponent
 
     onDayClick(day: TuiDay): void {
         const modifiedTime = this.value[1] && this.clampTime(this.value[1], day);
+        const newCaretIndex = DATE_FILLER_LENGTH + DATE_TIME_SEPARATOR.length;
 
         this.value = [day, modifiedTime];
         this.updateNativeValue(day);
+        this.nativeFocusableElement?.setSelectionRange(newCaretIndex, newCaretIndex);
         this.open = false;
     }
 
