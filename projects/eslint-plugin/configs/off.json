@@ -4,6 +4,7 @@
             "files": ["*"],
             "rules": {
                 "@angular-eslint/component-max-inline-declarations": "off",
+                "@angular-eslint/component-selector": "off",
                 "@angular-eslint/no-pipe-impure": "off",
                 "@angular-eslint/no-host-metadata-property": "off",
                 "@angular-eslint/use-component-view-encapsulation": "off",
