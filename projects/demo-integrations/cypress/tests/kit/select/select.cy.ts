@@ -8,8 +8,10 @@ describe(`Select`, () => {
         cy.get(`#base tui-select`)
             .last()
             .tuiWaitBeforeScreenshot()
-            .trigger(`click`, {x: 300, y: 30});
+            .trigger(`click`, {x: 200, y: 30});
 
-        cy.get(`#base`).tuiWaitBeforeScreenshot().matchImageSnapshot(`01-click-arrow`);
+        cy.get(`tui-dropdown`)
+            .tuiWaitBeforeScreenshot()
+            .matchImageSnapshot(`01-click-arrow`);
     });
 });

@@ -18,7 +18,6 @@ export class TuiMiscellaneousExample1 {
 
         return isFriday
             ? 'Nothing in console'
-            : // eslint-disable-next-line @typescript-eslint/quotes
-              "There is a console assert: 'Today is not a friday'";
+            : 'There is a console assert: <br> "Today is not a friday"';
     }
 }

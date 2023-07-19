@@ -13,7 +13,7 @@ export class TuiLineClampExample2 {
     linesLimit = 2;
 
     toggle(): void {
-        this.linesLimit = this.collapsed ? 10 : 2;
+        this.linesLimit = this.collapsed ? 12 : 2;
     }
 
     private get collapsed(): boolean {

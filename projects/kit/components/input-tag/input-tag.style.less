@@ -31,9 +31,18 @@
 }
 
 .t-scrollbar {
-    margin: 0 -0.25rem;
+    margin-inline-start: -0.25rem;
     min-width: 100%;
     scroll-behavior: smooth;
+
+    :host:not(._label-outside) &,
+    :host._label-outside._icon-left & {
+        margin: 0;
+    }
+
+    :host[data-size='s']._icon-left & {
+        margin-inline-start: 0.25rem;
+    }
 
     // For placeholder
     :host[data-size='m']:not(._label-outside) & {
@@ -47,10 +56,7 @@
 
 .t-tags {
     display: flex;
-    padding-left: 0.25rem;
     padding-inline-start: 0.25rem;
-    padding-right: 0.5rem;
-    padding-inline-end: 0.5rem;
 
     &_expandable {
         overflow: hidden;
@@ -59,19 +65,16 @@
     :host._expandable & {
         flex-wrap: wrap;
         white-space: normal;
+        overflow: hidden;
     }
 
     :host._readonly & {
         pointer-events: none;
     }
 
-    :host[data-size] {
-        padding-inline-start: 0;
-        padding-inline-end: 0.25rem;
-    }
-
-    :host[data-size]:not(._label-outside) & {
-        padding-inline-end: 1rem;
+    :host[data-size='m']:not(._label-outside) &,
+    :host[data-size='l']:not(._label-outside) & {
+        padding: 0;
     }
 }
 
@@ -91,24 +94,7 @@
     }
 }
 
-.t-icons {
-    display: flex;
-    align-items: center;
-
-    &_left {
-        margin: 0 0.75rem 0 -0.5rem;
-        margin-inline-start: -0.5rem;
-        margin-inline-end: 0.75rem;
-    }
-
-    &_right {
-        :host._expandable & {
-            margin: 0 0 0 -0.625rem;
-            margin-inline-start: -0.625rem;
-            margin-inline-end: 0;
-        }
-    }
-
+.t-icon-wrapper {
     :host[data-size='s'] & {
         height: var(--tui-height-s);
     }
@@ -120,12 +106,6 @@
     :host[data-size='l'] & {
         height: var(--tui-height-l);
     }
-}
-
-.t-tooltip {
-    margin: 0 0 0 0.25rem;
-    margin-inline-start: 0.25rem;
-    margin-inline-end: 0;
 }
 
 .t-absolute-wrapper {
@@ -179,6 +159,11 @@
     margin-inline-end: 0.5rem;
     max-width: 100%;
     flex-shrink: 0;
+
+    :host[data-size='m'] & {
+        margin-inline-start: -0.125rem;
+        margin-inline-end: 0.375rem;
+    }
 }
 
 .t-text {
@@ -210,9 +195,7 @@
 
     &_collapsed {
         flex: 0;
-        margin: 0 0 0 -0.5rem;
         margin-inline-start: -0.5rem;
-        margin-inline-end: 0;
     }
 
     :host[data-size='s'] & {

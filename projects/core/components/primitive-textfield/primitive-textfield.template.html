@@ -71,47 +71,52 @@
                 ></tui-value-decoration>
             </div>
         </div>
-        <div
-            *ngIf="hasCustomContent"
-            automation-id="tui-primitive-textfield__custom-content"
-            class="t-custom-content"
-        >
-            <tui-svg
-                *polymorpheusOutlet="controller.customContent as src"
-                class="t-custom-icon"
-                [src]="src"
-            ></tui-svg>
-        </div>
-        <span
-            *ngIf="hasCleaner"
-            tuiWrapper
-            appearance="icon"
-            automation-id="tui-primitive-textfield__cleaner"
-            class="t-cleaner"
-            (click.stop)="clear()"
-        >
-            <tui-svg
-                *polymorpheusOutlet="iconCleaner || controller.options.iconCleaner as src; context: {$implicit: size}"
-                [src]="src"
-            ></tui-svg>
-        </span>
-        <tui-tooltip
-            *ngIf="showHint"
-            automation-id="tui-primitive-textfield__tooltip"
-            class="t-tooltip"
-            [describeId]="computedId"
-            [content]="hintOptions?.content"
-        ></tui-tooltip>
-        <div
-            *ngIf="iconContent"
-            class="t-icon t-textfield-icon"
-        >
-            <tui-svg
-                *polymorpheusOutlet="iconContent as src; context: {$implicit: size}"
+        <div class="t-icons">
+            <div
+                *ngIf="hasCustomContent"
+                automation-id="tui-primitive-textfield__custom-content"
+                class="t-custom-content"
+            >
+                <tui-svg
+                    *polymorpheusOutlet="controller.customContent as src"
+                    class="t-custom-icon"
+                    [src]="src"
+                ></tui-svg>
+            </div>
+            <span
+                *ngIf="hasCleaner"
                 tuiWrapper
                 appearance="icon"
-                [src]="src"
-            ></tui-svg>
+                automation-id="tui-primitive-textfield__cleaner"
+                class="t-cleaner"
+                (click.stop)="clear()"
+            >
+                <tui-svg
+                    *polymorpheusOutlet="
+                        iconCleaner || controller.options.iconCleaner as src;
+                        context: {$implicit: size}
+                    "
+                    [src]="src"
+                ></tui-svg>
+            </span>
+            <tui-tooltip
+                *ngIf="showHint"
+                automation-id="tui-primitive-textfield__tooltip"
+                class="t-tooltip"
+                [describeId]="computedId"
+                [content]="hintOptions?.content"
+            ></tui-tooltip>
+            <div
+                *ngIf="iconContent"
+                class="t-icon t-textfield-icon"
+            >
+                <tui-svg
+                    *polymorpheusOutlet="iconContent as src; context: {$implicit: size}"
+                    tuiWrapper
+                    appearance="icon"
+                    [src]="src"
+                ></tui-svg>
+            </div>
         </div>
     </div>
 </div>

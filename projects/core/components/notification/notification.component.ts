@@ -28,7 +28,7 @@ export class TuiNotificationComponent {
      * @deprecated Use {@link TuiNotificationComponent.icon} input or TUI_NOTIFICATION_OPTIONS instead
      */
     @Input()
-    hasIcon = true;
+    hasIcon = this.options.hasIcon;
 
     @Input()
     icon: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>> | null =

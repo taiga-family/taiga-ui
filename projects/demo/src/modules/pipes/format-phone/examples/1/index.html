@@ -1,6 +1,5 @@
-<p>Formatted number by default: {{ phone | tuiFormatPhone }}</p>
+<div>Formatted number by default:</div>
+{{ phone | tuiFormatPhone }}
 
-<p>
-    Formatted number with custom params:
-    {{ phone | tuiFormatPhone : undefined : '###-###-##-##' }}
-</p>
+<div class="tui-space_top-4">Formatted number with custom params:</div>
+{{ phone | tuiFormatPhone : undefined : '###-###-##-##' }}

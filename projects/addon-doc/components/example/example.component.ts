@@ -1,6 +1,13 @@
 import {Clipboard} from '@angular/cdk/clipboard';
 import {Location as NgLocation} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Inject, Input, Optional} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    Inject,
+    Input,
+    Optional,
+} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LOCATION} from '@ng-web-apis/common';
 import {TuiCodeEditor, TuiDocExample} from '@taiga-ui/addon-doc/interfaces';
@@ -42,6 +49,10 @@ export class TuiDocExampleComponent {
     set content(content: TuiDocExample) {
         this.rawLoader$$.next(content);
     }
+
+    @Input()
+    @HostBinding('class._fullsize')
+    fullsize = this.options.fullsize;
 
     @Input()
     componentName: string = this.location.pathname.slice(1);

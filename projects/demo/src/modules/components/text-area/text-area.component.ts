@@ -27,7 +27,6 @@ export class ExampleTuiTextAreaComponent extends AbstractExampleTuiControl {
     readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
     };
 
     readonly example2: TuiDocExample = {
@@ -39,7 +38,6 @@ export class ExampleTuiTextAreaComponent extends AbstractExampleTuiControl {
     readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
-        LESS: import('./examples/3/index.less?raw'),
     };
 
     readonly example4: TuiDocExample = {

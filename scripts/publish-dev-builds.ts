@@ -8,7 +8,7 @@ import {execute} from './shared/execute';
     const [major, minor, patch] = version.split(/[.-]/);
 
     // construct new version from base version x.y.z to become x.y.z-{dev}.{shortSha}
-    const newVersion = `${major}.${minor}.${patch}-dev.${branch}-${commit}`;
+    const newVersion = `${major}.${minor}.${patch}-dev.${branch}.${commit}`;
 
     infoLog(`New dev version - ${newVersion}`);
 

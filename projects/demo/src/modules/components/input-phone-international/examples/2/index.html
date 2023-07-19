@@ -1,7 +1,6 @@
 <form [formGroup]="testForm">
     <tui-input-phone-international
         formControlName="testValue"
-        class="input"
         [countries]="(countries | tuiSortCountries | async) || []"
         [(countryIsoCode)]="countryIsoCode"
     >

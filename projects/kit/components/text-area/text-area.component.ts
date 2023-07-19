@@ -25,6 +25,7 @@ import {
 import {
     MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
+    TUI_ICON_PADDINGS,
     TUI_MODE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiBrightness,
@@ -125,7 +126,7 @@ export class TuiTextAreaComponent
 
     @HostBinding('style.--border-start.rem')
     get borderStart(): number {
-        return this.iconLeftContent ? 1.75 : 0;
+        return this.iconLeftContent ? TUI_ICON_PADDINGS[this.size] : 0;
     }
 
     @HostBinding('style.--border-end.rem')
@@ -135,6 +136,7 @@ export class TuiTextAreaComponent
             this.hasCleaner,
             this.hasTooltip,
             this.hasCustomContent,
+            this.size,
         );
     }
 
