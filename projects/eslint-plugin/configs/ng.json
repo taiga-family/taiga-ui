@@ -26,7 +26,6 @@
                 "@angular-eslint/prefer-on-push-component-change-detection": "error",
                 "@angular-eslint/prefer-output-readonly": "error",
                 "@angular-eslint/relative-url-prefix": "error",
-                "@angular-eslint/use-component-selector": "error",
                 "@angular-eslint/use-lifecycle-interface": "error",
                 "@angular-eslint/use-pipe-transform-interface": "error",
                 "@angular-eslint/no-lifecycle-call": "error"

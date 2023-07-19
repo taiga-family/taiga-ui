@@ -3,6 +3,7 @@
         {
             "files": ["*"],
             "rules": {
+                "@angular-eslint/use-component-selector": "off",
                 "@angular-eslint/component-max-inline-declarations": "off",
                 "@angular-eslint/component-selector": "off",
                 "@angular-eslint/no-pipe-impure": "off",
