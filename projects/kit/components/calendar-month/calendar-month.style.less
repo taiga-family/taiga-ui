@@ -1,11 +1,13 @@
 @import 'taiga-ui-local';
 
-.picker(3.6875rem);
+@itemSize: 3.9375rem;
+
+.picker(@itemSize);
 
 :host {
     display: block;
     height: 13.625rem;
-    width: 15.75rem;
+    width: @itemSize * 4;
     padding: 1.125rem;
     box-sizing: content-box;
 }
@@ -16,8 +18,6 @@
 }
 
 .t-cell {
-    box-sizing: content-box;
-
     &:nth-child(n + 5) {
         margin-top: 1.75rem;
     }

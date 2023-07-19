@@ -55,6 +55,7 @@
         id="processing"
         heading="Reusable SVG"
         [content]="example2"
+        [fullsize]="true"
     >
         <img
             width="100%"
@@ -92,6 +93,7 @@
         id="gradient"
         heading="Gradients in SVG"
         [content]="example3"
+        [fullsize]="true"
     >
         <tui-icons-mapping-example-3></tui-icons-mapping-example-3>
     </tui-doc-example>
@@ -99,6 +101,7 @@
     <tui-doc-example
         id="bundled"
         heading="Bundled icons"
+        [fullsize]="true"
     >
         <p>
             There are two ways to add icons:
@@ -125,13 +128,10 @@
         </p>
     </tui-doc-example>
 
-    <tui-doc-example
-        id="di"
-        heading="DI options"
-    >
-        <tui-doc-code
-            filename="app.module.ts"
-            [code]="options"
-        ></tui-doc-code>
-    </tui-doc-example>
+    <h2 class="tui-space_top-8">DI options</h2>
+
+    <tui-doc-code
+        filename="app.module.ts"
+        [code]="options"
+    ></tui-doc-code>
 </tui-doc-page>

@@ -12,7 +12,7 @@ export const TUI_COUNTRIES_MASKS: InjectionToken<Record<TuiCountryIsoCode, strin
             [TuiCountryIsoCode.AL]: `+355(###) ###-###`,
             [TuiCountryIsoCode.AM]: `+374##-###-###`,
             [TuiCountryIsoCode.AO]: `+244(###) ###-###`,
-            [TuiCountryIsoCode.AR]: `+54(###) ###-####`,
+            [TuiCountryIsoCode.AR]: `+54(###) ####-####`,
             [TuiCountryIsoCode.AT]: `+43(###) ###-####`,
             [TuiCountryIsoCode.AU]: `+61#-####-####`,
             [TuiCountryIsoCode.AW]: `+297###-####`,

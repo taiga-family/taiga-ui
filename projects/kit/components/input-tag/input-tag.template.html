@@ -19,13 +19,12 @@
         <div class="t-content">
             <div
                 *ngIf="iconLeft"
-                class="t-icons t-icons_left t-textfield-icon"
+                class="t-icon t-icon_left t-textfield-icon t-icon-wrapper"
             >
                 <tui-svg
                     *polymorpheusOutlet="iconLeft as src; context: {$implicit: size}"
                     tuiWrapper
                     appearance="icon"
-                    class="t-icon"
                     [src]="src"
                 ></tui-svg>
             </div>
@@ -45,10 +44,7 @@
                     [hidden]="!expandable"
                     [style.maxHeight.rem]="computeMaxHeight"
                 >
-                    <div
-                        class="t-tags"
-                        [class.t-tags_expandable]="expandable"
-                    >
+                    <div class="t-tags">
                         <ng-container *ngIf="labelOutside; else text">
                             <tui-tag
                                 *ngFor="let item of value; index as index; trackBy: trackByFn"
@@ -114,7 +110,7 @@
             <ng-content select="select"></ng-content>
             <div
                 *ngIf="hasRightIcons"
-                class="t-icons t-icons_right"
+                class="t-icons t-icon-wrapper"
             >
                 <ng-container *ngIf="hasCleaner">
                     <tui-svg

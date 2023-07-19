@@ -57,10 +57,17 @@
 .t-demo {
     .customize-scroll();
     padding: 2rem;
+    max-width: 100%;
+    box-sizing: border-box;
     overflow-x: auto;
 
     :host-context(tui-root._mobile) & {
         padding: 1rem;
+    }
+
+    :host:not(._fullsize) & {
+        width: min-content;
+        min-width: 20rem;
     }
 }
 

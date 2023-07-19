@@ -15,7 +15,7 @@ export class TuiLegendItemExample1 {
 
     readonly value = [13769, 12367, 10172, 3018, 2592];
     readonly sum = tuiSum(...this.value);
-    readonly labels = ['Food', 'Cafe', 'Open Source', 'Taxi', 'Other'];
+    readonly labels = ['Food', 'Cafe', 'OSS', 'Taxi', 'Other'];
 
     isItemActive(index: number): boolean {
         return this.activeItemIndex === index;
