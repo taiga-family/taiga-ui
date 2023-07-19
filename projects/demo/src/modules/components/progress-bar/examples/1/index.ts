@@ -8,7 +8,6 @@ import {map, startWith} from 'rxjs/operators';
 @Component({
     selector: 'tui-progress-bar-example-1',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })

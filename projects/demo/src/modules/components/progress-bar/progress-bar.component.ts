@@ -29,7 +29,6 @@ export class ExampleProgressBarComponent {
     readonly basicExample: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         TypeScript: import('./examples/1/index.ts?raw'),
-        LESS: import('./examples/1/index.less?raw'),
     };
 
     readonly multiColorExample: TuiDocExample = {
@@ -40,8 +39,8 @@ export class ExampleProgressBarComponent {
 
     readonly sizesExample: TuiDocExample = {
         HTML: import('./examples/3/index.html?raw'),
-        TypeScript: import('./examples/3/index.ts?raw'),
         LESS: import('./examples/3/index.less?raw'),
+        TypeScript: import('./examples/3/index.ts?raw'),
     };
 
     readonly labelExample: TuiDocExample = {
@@ -52,14 +51,13 @@ export class ExampleProgressBarComponent {
 
     readonly stackedExample: TuiDocExample = {
         HTML: import('./examples/5/index.html?raw'),
-        TypeScript: import('./examples/5/index.ts?raw'),
         LESS: import('./examples/5/index.less?raw'),
+        TypeScript: import('./examples/5/index.ts?raw'),
     };
 
     readonly indeterminateExample: TuiDocExample = {
         HTML: import('./examples/6/index.html?raw'),
         TypeScript: import('./examples/6/index.ts?raw'),
-        LESS: import('./examples/6/index.less?raw'),
     };
 
     readonly exampleModule = import('./examples/import/import-module.md?raw');
