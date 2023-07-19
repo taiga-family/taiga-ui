@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
 })
 export class TuiProgressSegmentedExample3 {
-    arrayColors = [
+    readonly arrayColors = [
         '#39b54a',
         '#ffd450',
         '#ffd450',
