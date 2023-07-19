@@ -6,7 +6,6 @@
             "plugins": ["@angular-eslint/eslint-plugin", "@taiga-ui"],
             "rules": {
                 "@angular-eslint/component-class-suffix": "error",
-                "@angular-eslint/component-selector": "error",
                 "@angular-eslint/contextual-decorator": "error",
                 "@angular-eslint/contextual-lifecycle": "error",
                 "@angular-eslint/directive-class-suffix": "error",
