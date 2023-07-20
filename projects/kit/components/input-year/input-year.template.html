@@ -16,7 +16,7 @@
         [pseudoHover]="pseudoHover"
         [invalid]="computedInvalid"
         [maskito]="getMaskOptions(min, max)"
-        [value]="value?.toString() || ''"
+        [(value)]="nativeValue"
         (valueChange)="onValueChange($event)"
         (focusedChange)="onFocused($event)"
     >

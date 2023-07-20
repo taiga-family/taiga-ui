@@ -262,11 +262,11 @@ describe(`InputNumber`, () => {
         });
 
         it(`The given value from the form is correctly converted to a string with 0's at start`, () => {
-            inputPO.sendText(`00 002 025`);
+            inputPO.sendTextAndBlur(`00 002 025`);
 
             expect(component.computedValue).toBe(`2${CHAR_NO_BREAK_SPACE}025`);
 
-            inputPO.sendText(` 005`);
+            inputPO.sendTextAndBlur(` 005`);
 
             expect(component.computedValue).toBe(`5`);
         });
