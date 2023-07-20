@@ -6,8 +6,8 @@ import {
     TUI_CYPRESS_DESKTOP_VIEWPORT_HEIGHT as viewportHeight,
     TUI_CYPRESS_DESKTOP_VIEWPORT_WIDTH as viewportWidth,
 } from './cypress/cypress.options';
+import {DEEP_PATHS} from './cypress/support/helpers/deep-paths';
 import {DEMO_PATHS} from './cypress/support/helpers/demo-paths';
-import {DEEP_PATHS} from './cypress/tests/deep/deep.cy';
 
 export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
     projectId: `sorry-cypress`,

@@ -1,50 +1,8 @@
-export const DEEP_PATHS = [
-    /* CORE */
-    `components/button`,
-    `components/calendar`,
-    `components/group`,
-    `components/link`,
-    `components/notification`,
-    /* KIT */
-    `components/avatar`,
-    `components/badge`,
-    `components/badged-content`,
-    `components/calendar-month`,
-    `components/filter`,
-    `components/island`,
-    `icons/marker-icon`,
-    `navigation/stepper`,
-    `components/toggle`,
-];
-
-const toggleExclusions: Record<string, readonly number[]> = {
-    'components/button': [1],
-    'components/group': [0], // [adaptive]
-    'components/toggle': [2, 4], // [showLoader], [focusable]
-};
-
-const selectExclusions: Record<string, readonly number[]> = {
-    'components/calendar': [4, 5], // not visible for test props: [min], [minViewedMonth]
-    'components/calendar-month': [2], // not visible for test props: [min]
-};
-
-const makeDemoSnapshot = (
-    path: string,
-    stepIndex: number,
-    $input: JQuery,
-    optionIndex: number,
-): void => {
-    cy.wrap($input, {log: false})
-        .parents(`table.t-table tr`)
-        .find(`[automation-id="tui-documentation__property-name"]`)
-        .then(propertyName$ => propertyName$.text().trim())
-        .then(property => {
-            return cy
-                .get(`#demo-content`)
-                .first()
-                .matchImageSnapshot(`${path}/${stepIndex}-${property}-${optionIndex}`);
-        });
-};
+import {
+    selectExclusions,
+    toggleExclusions,
+    tuiMakeCypressDemoSnapshot,
+} from '@demo-integrations/support/helpers/deep-paths';
 
 describe(`Deep`, () => {
     for (const path of Cypress.env(`DEEP_PATHS`) ?? []) {
@@ -76,7 +34,12 @@ describe(`Deep`, () => {
                             .eq(optionIndex)
                             .click({force: true});
 
-                        return makeDemoSnapshot(path, counter++, $select, optionIndex);
+                        return tuiMakeCypressDemoSnapshot(
+                            path,
+                            counter++,
+                            $select,
+                            optionIndex,
+                        );
                     })
                     .wrap($select, {log: false})
                     .click()
@@ -98,7 +61,7 @@ describe(`Deep`, () => {
 
                     cy.wrap(toggle$, {log: false}).click();
 
-                    return makeDemoSnapshot(path, counter++, toggle$, 0);
+                    return tuiMakeCypressDemoSnapshot(path, counter++, toggle$, 0);
                 });
         });
     }
