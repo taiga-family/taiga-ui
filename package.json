@@ -94,7 +94,7 @@
         "@angular/language-service": "12.2.17",
         "@commitlint/cli": "17.6.6",
         "@commitlint/config-conventional": "17.6.6",
-        "@cspell/dict-ar": "1.0.3",
+        "@cspell/dict-ar": "1.1.0",
         "@cspell/dict-lorem-ipsum": "3.0.0",
         "@cspell/dict-ru_ru": "2.0.5",
         "@cspell/dict-scientific-terms-us": "2.0.0",
