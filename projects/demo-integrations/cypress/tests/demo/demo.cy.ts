@@ -1,6 +1,5 @@
 import {tuiComponentsExcluded} from '@demo-integrations/support/helpers/components-excluded';
 import {
-    DEMO_PATHS,
     isEmbedPage,
     isIconsPage,
     isInputNumberPage,
@@ -9,7 +8,7 @@ import {
 } from '@demo-integrations/support/helpers/demo-paths';
 
 describe(`Demo`, () => {
-    for (const path of DEMO_PATHS) {
+    for (const path of Cypress.env(`DEMO_PATHS`) ?? []) {
         it(path, () => {
             cy.tuiVisit(path, {hideScrollbar: !isScrollbarPage(path)});
 

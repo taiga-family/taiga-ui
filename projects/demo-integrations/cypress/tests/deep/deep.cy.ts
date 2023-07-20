@@ -1,4 +1,4 @@
-const DEEP_PATHS = [
+export const DEEP_PATHS = [
     /* CORE */
     `components/button`,
     `components/calendar`,
@@ -47,7 +47,7 @@ const makeDemoSnapshot = (
 };
 
 describe(`Deep`, () => {
-    for (const path of DEEP_PATHS) {
+    for (const path of Cypress.env(`DEEP_PATHS`) ?? []) {
         it(path, () => {
             let counter = 1;
 
