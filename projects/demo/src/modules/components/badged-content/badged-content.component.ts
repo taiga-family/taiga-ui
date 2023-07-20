@@ -46,6 +46,8 @@ export class ExampleTuiBadgedContentComponent {
 
     colorBottom = '';
 
+    styles = {height: 'min-content'};
+
     contentTop: PolymorpheusContent = '';
 
     contentBottom: PolymorpheusContent = '';
