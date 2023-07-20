@@ -79,6 +79,10 @@
             "matchPackagePatterns": ["^@tiptap/.*"]
         },
         {
+            "groupName": "cspell",
+            "matchPackagePatterns": ["^@cspell/.*"]
+        },
+        {
             "groupName": "prosemirror",
             "matchPackagePatterns": ["^prosemirror.*"]
         },
