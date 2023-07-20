@@ -6,6 +6,8 @@ import {
     TUI_CYPRESS_DESKTOP_VIEWPORT_HEIGHT as viewportHeight,
     TUI_CYPRESS_DESKTOP_VIEWPORT_WIDTH as viewportWidth,
 } from './cypress/cypress.options';
+import {DEMO_PATHS} from './cypress/support/helpers/demo-paths';
+import {DEEP_PATHS} from './cypress/tests/deep/deep.cy';
 
 export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
     projectId: `sorry-cypress`,
@@ -49,6 +51,8 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
     numTestsKeptInMemory: 0,
 
     env: {
+        DEMO_PATHS,
+        DEEP_PATHS,
         componentsExclusion: [
             [`components/select`, [5]],
             [`components/multi-select`, [4]],
