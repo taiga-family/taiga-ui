@@ -1,20 +1,24 @@
-<tui-svg
-    *ngIf="hasIcon"
-    automation-id="tui-notification__icon"
-    class="t-icon"
-    [src]="icon"
-></tui-svg>
+<ng-container *ngIf="isIconExists">
+    <!-- FIX: types of status input -->
+    <tui-svg
+        *polymorpheusOutlet="icon as iconName; context: {$implicit: $any(status)}"
+        automation-id="tui-notification__icon"
+        class="t-icon"
+        [src]="iconName"
+    ></tui-svg>
+</ng-container>
+
 <div class="t-content">
     <ng-content></ng-content>
 </div>
 <button
     *ngIf="hasClose"
+    appearance="icon"
+    automation-id="tui-notification__close"
+    icon="tuiIconCloseLarge"
+    size="xs"
     tuiIconButton
     type="button"
-    automation-id="tui-notification__close"
-    size="xs"
-    icon="tuiIconCloseLarge"
-    appearance="icon"
     class="t-close"
     [title]="closeWord$ | async"
     (click)="close.emit()"

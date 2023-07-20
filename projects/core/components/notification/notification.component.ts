@@ -7,20 +7,15 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiIsObserved} from '@taiga-ui/cdk';
+import {TuiContextWithImplicit, tuiIsObserved, tuiIsPresent} from '@taiga-ui/cdk';
+import {TuiNotification} from '@taiga-ui/core/enums';
 import {
     TUI_CLOSE_WORD,
     TUI_NOTIFICATION_OPTIONS,
     TuiNotificationDefaultOptions,
 } from '@taiga-ui/core/tokens';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
-
-export const STATUS_ICON = {
-    info: 'tuiIconInfo',
-    success: 'tuiIconCheckCircle',
-    error: 'tuiIconXCircle',
-    warning: 'tuiIconAlertCircle',
-} as const;
 
 @Component({
     selector: 'tui-notification',
@@ -29,9 +24,15 @@ export const STATUS_ICON = {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiNotificationComponent {
+    /**
+     * @deprecated Use {@link TuiNotificationComponent.icon} input or TUI_NOTIFICATION_OPTIONS instead
+     */
     @Input()
-    @HostBinding('class._has-icon')
     hasIcon = this.options.hasIcon;
+
+    @Input()
+    icon: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>> | null =
+        this.options.icon;
 
     @Input()
     @HostBinding('attr.data-status')
@@ -50,8 +51,9 @@ export class TuiNotificationComponent {
         readonly options: TuiNotificationDefaultOptions,
     ) {}
 
-    get icon(): string {
-        return STATUS_ICON[this.status];
+    @HostBinding('class._has-icon')
+    get isIconExists(): boolean {
+        return tuiIsPresent(this.icon) && this.hasIcon;
     }
 
     @HostBinding('class._has-close-button')
