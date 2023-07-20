@@ -27,6 +27,12 @@ export class HomeComponent {
     readonly addons = import('./examples/addons.md?raw');
     readonly nxAdd = import('./examples/nx-add.md?raw');
     readonly nxMigrate = import('./examples/nx-migrate.md?raw');
+    readonly standalone = import('./examples/app-standalone.md?raw');
+    readonly standaloneOptional = import('./examples/app-standalone-optional.md?raw');
+    readonly standaloneMain = import('./examples/main-standalone.md?raw');
+    readonly standaloneMainOptional = import(
+        './examples/main-standalone-optional.md?raw'
+    );
 
     readonly customGlobalStyle = import(
         '../../../../../styles/taiga-ui-global.less?raw'

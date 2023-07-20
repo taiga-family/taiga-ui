@@ -186,16 +186,49 @@
                     filename="app.component.html"
                     [code]="appTemplate"
                 ></tui-doc-code>
+
+                <p>
+                    If you're using
+                    <code>standalone</code>
+                    components:
+                </p>
+
+                <tui-doc-code
+                    filename="app.component.ts"
+                    [code]="standalone"
+                ></tui-doc-code>
+
+                <tui-doc-code
+                    filename="main.ts"
+                    [code]="standaloneMain"
+                ></tui-doc-code>
             </li>
 
             <li id="options">
-                Taiga UI also has optional modules for dialogs and notifications. If you need these features, add
-                modules into your app.module.ts
+                <p>
+                    Taiga UI also has optional modules for dialogs and notifications. If you need these features, add
+                    modules into your app.module.ts
+                </p>
 
                 <tui-doc-code
                     filename="app.module.ts"
-                    class="tui-space_bottom-4"
                     [code]="appModuleOptional"
+                ></tui-doc-code>
+
+                <p>
+                    or for
+                    <code>standalone</code>
+                    components:
+                </p>
+
+                <tui-doc-code
+                    filename="app.component.ts"
+                    [code]="standaloneOptional"
+                ></tui-doc-code>
+
+                <tui-doc-code
+                    filename="main.ts"
+                    [code]="standaloneMainOptional"
                 ></tui-doc-code>
             </li>
 
