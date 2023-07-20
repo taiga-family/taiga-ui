@@ -28,6 +28,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_DATA_LIST_ACCESSOR,
+    TUI_TEXTFIELD_SIZE,
     tuiAsDataListHost,
     tuiAsOptionContent,
     TuiDataListAccessor,
@@ -38,6 +39,7 @@ import {
     TuiSizeL,
     TuiSizeM,
     TuiSizeS,
+    TuiTextfieldSizeDirective,
     TuiValueContentContext,
 } from '@taiga-ui/core';
 import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
@@ -109,13 +111,15 @@ export class TuiComboBoxComponent<T>
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_ARROW_MODE) private readonly arrowMode: TuiArrowMode,
         @Inject(TUI_ITEMS_HANDLERS) private readonly itemsHandlers: TuiItemsHandlers<T>,
+        @Inject(TUI_TEXTFIELD_SIZE)
+        private readonly textfieldSize: TuiTextfieldSizeDirective,
     ) {
         super(control, cdr);
     }
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {
-        return this.textfield?.size || 'l';
+        return this.textfieldSize.size;
     }
 
     get arrow(): PolymorpheusContent<

@@ -23,10 +23,12 @@ import {
 import {
     TUI_DIGIT_REGEXP,
     TUI_TEXTFIELD_LABEL_OUTSIDE,
+    TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
     TuiTextfieldLabelOutsideDirective,
+    TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 
 @Component({
@@ -71,13 +73,15 @@ export class TuiInputCVCComponent
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_TEXTFIELD_LABEL_OUTSIDE)
         private readonly textfieldLabelOutside: TuiTextfieldLabelOutsideDirective,
+        @Inject(TUI_TEXTFIELD_SIZE)
+        private readonly textfieldSize: TuiTextfieldSizeDirective,
     ) {
         super(control, cdr);
     }
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {
-        return this.input?.size || 'l';
+        return this.textfieldSize.size;
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {

@@ -25,10 +25,12 @@ import {
     TuiYear,
 } from '@taiga-ui/cdk';
 import {
+    TUI_TEXTFIELD_SIZE,
     TuiMonthPipe,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
+    TuiTextfieldSizeDirective,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TUI_MONTH_FORMATTER_PROVIDER} from '@taiga-ui/kit/providers';
@@ -84,13 +86,15 @@ export class TuiInputMonthComponent
         readonly formatter: TuiHandler<TuiMonth | null, Observable<string>>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(TUI_INPUT_DATE_OPTIONS) private readonly options: TuiInputDateOptions,
+        @Inject(TUI_TEXTFIELD_SIZE)
+        private readonly textfieldSize: TuiTextfieldSizeDirective,
     ) {
         super(control, cdr);
     }
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {
-        return this.textfield?.size || 'l';
+        return this.textfieldSize.size;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

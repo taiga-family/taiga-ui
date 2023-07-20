@@ -35,6 +35,7 @@ import {
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_NUMBER_FORMAT,
+    TUI_TEXTFIELD_SIZE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiDecimal,
     tuiFormatNumber,
@@ -44,6 +45,7 @@ import {
     TuiSizeL,
     TuiSizeS,
     TuiTextfieldController,
+    TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 
@@ -107,6 +109,8 @@ export class TuiInputNumberComponent
         @Inject(TUI_INPUT_NUMBER_OPTIONS) readonly options: TuiInputNumberOptions,
         @Inject(TUI_NUMBER_FORMAT) private readonly numberFormat: TuiNumberFormatSettings,
         @Inject(TUI_IS_IOS) private readonly isIOS: boolean,
+        @Inject(TUI_TEXTFIELD_SIZE)
+        private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
     ) {
@@ -115,7 +119,7 @@ export class TuiInputNumberComponent
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {
-        return this.textfield?.size || 'l';
+        return this.textfieldSize.size;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

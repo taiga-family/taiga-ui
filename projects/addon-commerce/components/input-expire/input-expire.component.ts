@@ -18,7 +18,13 @@ import {
     TuiAutofillFieldName,
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
-import {TuiPrimitiveTextfieldComponent, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {
+    TUI_TEXTFIELD_SIZE,
+    TuiPrimitiveTextfieldComponent,
+    TuiSizeL,
+    TuiSizeS,
+    TuiTextfieldSizeDirective,
+} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-input-expire',
@@ -51,13 +57,15 @@ export class TuiInputExpireComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
+        @Inject(TUI_TEXTFIELD_SIZE)
+        private readonly textfieldSize: TuiTextfieldSizeDirective,
     ) {
         super(control, cdr);
     }
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {
-        return this.input?.size || 'l';
+        return this.textfieldSize.size;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

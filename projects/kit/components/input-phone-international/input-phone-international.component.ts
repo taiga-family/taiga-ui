@@ -26,11 +26,13 @@ import {
 import {
     TUI_MASK_SYMBOLS_REGEXP,
     TUI_NON_DIGITS_REGEXP,
+    TUI_TEXTFIELD_SIZE,
     TuiFlagPipe,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeM,
     TuiSizeS,
+    TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_ARROW} from '@taiga-ui/kit/components/arrow';
@@ -112,13 +114,15 @@ export class TuiInputPhoneInternationalComponent
         private readonly flagPipe: TuiFlagPipe,
         @Inject(TuiToCountryCodePipe)
         private readonly extractCountryCodePipe: TuiToCountryCodePipe,
+        @Inject(TUI_TEXTFIELD_SIZE)
+        private readonly textfieldSize: TuiTextfieldSizeDirective,
     ) {
         super(control, cdr);
     }
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {
-        return this.inputPhoneComponent?.size || 'l';
+        return this.textfieldSize.size;
     }
 
     get nativeFocusableElement(): HTMLElement | null {

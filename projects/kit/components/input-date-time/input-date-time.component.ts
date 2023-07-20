@@ -40,9 +40,11 @@ import {
     TuiTimeMode,
 } from '@taiga-ui/cdk';
 import {
+    TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
+    TuiTextfieldSizeDirective,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {
@@ -130,13 +132,15 @@ export class TuiInputDateTimeComponent
         @Inject(TUI_INPUT_DATE_OPTIONS) private readonly options: TuiInputDateOptions,
         @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
         @Inject(TUI_IS_IOS) readonly isIos: boolean,
+        @Inject(TUI_TEXTFIELD_SIZE)
+        private readonly textfieldSize: TuiTextfieldSizeDirective,
     ) {
         super(control, cdr, valueTransformer);
     }
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {
-        return this.textfield?.size || 'l';
+        return this.textfieldSize.size;
     }
 
     get fillerLength(): number {

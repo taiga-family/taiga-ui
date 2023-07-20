@@ -42,11 +42,13 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
+    TUI_TEXTFIELD_SIZE,
     TuiDialogService,
     TuiMarkerHandler,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
+    TuiTextfieldSizeDirective,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
@@ -137,13 +139,15 @@ export class TuiInputDateRangeComponent
         @Inject(TUI_DATE_RANGE_VALUE_TRANSFORMER)
         override readonly valueTransformer: AbstractTuiValueTransformer<TuiDayRange | null> | null,
         @Inject(TUI_INPUT_DATE_OPTIONS) private readonly options: TuiInputDateOptions,
+        @Inject(TUI_TEXTFIELD_SIZE)
+        private readonly textfieldSize: TuiTextfieldSizeDirective,
     ) {
         super(control, cdr, valueTransformer);
     }
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {
-        return this.textfield?.size || 'l';
+        return this.textfieldSize.size;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -236,11 +240,9 @@ export class TuiInputDateRangeComponent
     }
 
     set nativeValue(value: string) {
-        if (!this.nativeFocusableElement) {
-            return;
+        if (this.nativeFocusableElement) {
+            this.nativeFocusableElement.value = value;
         }
-
-        this.nativeFocusableElement.value = value;
     }
 
     @HostListener('click')
