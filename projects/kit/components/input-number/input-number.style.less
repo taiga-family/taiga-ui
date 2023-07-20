@@ -25,13 +25,15 @@
     flex-direction: column;
     align-items: stretch;
     margin-left: 0.125rem;
+    border-radius: inherit;
 
     [data-size='s'] + & {
         flex-direction: row-reverse;
 
         & .t-button:first-child {
             margin: 0 0 0 0.125rem;
-            border-radius: 0 var(--tui-radius-m) var(--tui-radius-m) 0;
+            border-top-right-radius: inherit;
+            border-bottom-right-radius: inherit;
         }
 
         & .t-button:last-child {
@@ -55,10 +57,12 @@
 
     &:first-child {
         margin-bottom: 0.125rem;
-        border-radius: 0 var(--tui-radius-m) 0 0;
+        border-radius: 0;
+        border-top-right-radius: inherit;
     }
 
     &:last-child {
-        border-radius: 0 0 var(--tui-radius-m);
+        border-radius: 0;
+        border-bottom-right-radius: inherit;
     }
 }

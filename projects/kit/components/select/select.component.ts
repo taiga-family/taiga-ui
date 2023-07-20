@@ -3,6 +3,7 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChild,
+    HostBinding,
     Inject,
     Input,
     Optional,
@@ -93,16 +94,17 @@ export class TuiSelectComponent<T>
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_TEXTFIELD_CLEANER)
         private readonly textfieldCleaner: TuiTextfieldCleanerDirective,
-        @Inject(TUI_ARROW_MODE)
-        private readonly arrowMode: TuiArrowMode,
-        @Inject(TUI_ITEMS_HANDLERS)
-        private readonly itemsHandlers: TuiItemsHandlers<T>,
-        @Inject(TUI_SELECT_OPTIONS)
-        private readonly options: TuiSelectOptions<T>,
-        @Inject(TUI_IS_MOBILE)
-        readonly isMobile: boolean,
+        @Inject(TUI_ARROW_MODE) private readonly arrowMode: TuiArrowMode,
+        @Inject(TUI_ITEMS_HANDLERS) private readonly itemsHandlers: TuiItemsHandlers<T>,
+        @Inject(TUI_SELECT_OPTIONS) private readonly options: TuiSelectOptions<T>,
+        @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
     ) {
         super(control, cdr);
+    }
+
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfield?.size || 'l';
     }
 
     get arrow(): PolymorpheusContent<

@@ -3,6 +3,7 @@ import {
     ChangeDetectorRef,
     Component,
     EventEmitter,
+    HostBinding,
     HostListener,
     Inject,
     Input,
@@ -113,6 +114,11 @@ export class TuiInputPhoneInternationalComponent
         private readonly extractCountryCodePipe: TuiToCountryCodePipe,
     ) {
         super(control, cdr);
+    }
+
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.inputPhoneComponent?.size || 'l';
     }
 
     get nativeFocusableElement(): HTMLElement | null {

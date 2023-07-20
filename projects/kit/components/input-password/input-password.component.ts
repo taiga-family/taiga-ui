@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    HostBinding,
     Inject,
     Optional,
     Self,
@@ -93,6 +94,11 @@ export class TuiInputPasswordComponent
         private readonly mode$: Observable<TuiBrightness | null>,
     ) {
         super(control, cdr);
+    }
+
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfield?.size || 'l';
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {

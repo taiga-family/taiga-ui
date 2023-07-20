@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    HostBinding,
     Inject,
     Optional,
     Self,
@@ -11,7 +12,7 @@ import {NgControl} from '@angular/forms';
 import {MaskitoOptions} from '@maskito/core';
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
 import {tuiAsControl, tuiAsFocusableItemAccessor} from '@taiga-ui/cdk';
-import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
+import {TuiPrimitiveTextfieldComponent, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 import {AbstractTuiInputCard} from './abstract-input-card';
 import {TUI_INPUT_CARD_OPTIONS, TuiInputCardOptions} from './input-card.options';
@@ -43,6 +44,11 @@ export class TuiInputCardComponent extends AbstractTuiInputCard<string> {
         @Inject(TUI_INPUT_CARD_OPTIONS) options: TuiInputCardOptions,
     ) {
         super(control, cdr, options);
+    }
+
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.input?.size || 'l';
     }
 
     get card(): string {

@@ -22,7 +22,7 @@ export class TuiScrollService {
         scrollTop: number,
         scrollLeft: number = getX(elementOrWindow),
         duration: number = SCROLL_TIME,
-    ): Observable<readonly [number, number]> {
+    ): Observable<[number, number]> {
         ngDevMode && tuiAssert.assert(duration >= 0, `Duration cannot be negative`);
         ngDevMode && tuiAssert.assert(scrollTop >= 0, `scrollTop cannot be negative`);
         ngDevMode && tuiAssert.assert(scrollLeft >= 0, `scrollLeft cannot be negative`);
@@ -32,18 +32,15 @@ export class TuiScrollService {
         const deltaTop = scrollTop - initialTop;
         const deltaLeft = scrollLeft - initialLeft;
         const observable = !duration
-            ? of([scrollTop, scrollLeft] as [number, number])
+            ? of<[number, number]>([scrollTop, scrollLeft])
             : defer(() => of(this.performanceRef.now())).pipe(
                   switchMap(start => this.animationFrame$.pipe(map(now => now - start))),
                   map(elapsed => tuiEaseInOutQuad(tuiClamp(elapsed / duration, 0, 1))),
-                  map(
-                      percent =>
-                          [
-                              initialTop + deltaTop * percent,
-                              initialLeft + deltaLeft * percent,
-                          ] as const,
-                  ),
-                  endWith([scrollTop, scrollLeft] as const),
+                  map<number, [number, number]>(percent => [
+                      initialTop + deltaTop * percent,
+                      initialLeft + deltaLeft * percent,
+                  ]),
+                  endWith<[number, number]>([scrollTop, scrollLeft]),
                   takeUntil(timer(duration)),
               );
 

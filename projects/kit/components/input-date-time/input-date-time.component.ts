@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    HostBinding,
     HostListener,
     Inject,
     Input,
@@ -39,11 +40,9 @@ import {
     TuiTimeMode,
 } from '@taiga-ui/cdk';
 import {
-    TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTextfieldSizeDirective,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {
@@ -117,8 +116,6 @@ export class TuiInputDateTimeComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
         @Inject(TUI_DATE_SEPARATOR) readonly dateSeparator: string,
         @Inject(TUI_TIME_TEXTS)
@@ -130,12 +127,16 @@ export class TuiInputDateTimeComponent
         override readonly valueTransformer: AbstractTuiValueTransformer<
             [TuiDay | null, TuiTime | null]
         > | null,
-        @Inject(TUI_INPUT_DATE_OPTIONS)
-        private readonly options: TuiInputDateOptions,
+        @Inject(TUI_INPUT_DATE_OPTIONS) private readonly options: TuiInputDateOptions,
         @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
         @Inject(TUI_IS_IOS) readonly isIos: boolean,
     ) {
         super(control, cdr, valueTransformer);
+    }
+
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfield?.size || 'l';
     }
 
     get fillerLength(): number {
@@ -218,10 +219,6 @@ export class TuiInputDateTimeComponent
         }
 
         this.nativeFocusableElement.value = value;
-    }
-
-    get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
     }
 
     @HostListener('click')

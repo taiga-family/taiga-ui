@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    HostBinding,
     Inject,
     Input,
     Optional,
@@ -17,7 +18,7 @@ import {
     TuiAutofillFieldName,
     TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
-import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
+import {TuiPrimitiveTextfieldComponent, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-input-expire',
@@ -52,6 +53,11 @@ export class TuiInputExpireComponent
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
     ) {
         super(control, cdr);
+    }
+
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.input?.size || 'l';
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

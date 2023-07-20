@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    HostBinding,
     Inject,
     Input,
     Optional,
@@ -26,6 +27,8 @@ import {
 import {
     TuiMonthPipe,
     TuiPrimitiveTextfieldComponent,
+    TuiSizeL,
+    TuiSizeS,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiMonthContext} from '@taiga-ui/kit/interfaces';
@@ -84,6 +87,11 @@ export class TuiInputMonthRangeComponent
         private readonly options: TuiInputDateOptions,
     ) {
         super(control, cdr);
+    }
+
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfield?.size || 'l';
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

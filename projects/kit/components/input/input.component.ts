@@ -3,6 +3,7 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChild,
+    HostBinding,
     Inject,
     Optional,
     Self,
@@ -25,6 +26,8 @@ import {
     TuiDataListHost,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
+    TuiSizeL,
+    TuiSizeS,
 } from '@taiga-ui/core';
 import {
     FIXED_DROPDOWN_CONTROLLER_PROVIDER,
@@ -70,6 +73,11 @@ export class TuiInputComponent
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
     ) {
         super(control, cdr);
+    }
+
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfield?.size || 'l';
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

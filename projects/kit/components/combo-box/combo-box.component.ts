@@ -4,6 +4,7 @@ import {
     Component,
     ContentChild,
     EventEmitter,
+    HostBinding,
     Inject,
     Input,
     Optional,
@@ -106,12 +107,15 @@ export class TuiComboBoxComponent<T>
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_ARROW_MODE)
-        private readonly arrowMode: TuiArrowMode,
-        @Inject(TUI_ITEMS_HANDLERS)
-        private readonly itemsHandlers: TuiItemsHandlers<T>,
+        @Inject(TUI_ARROW_MODE) private readonly arrowMode: TuiArrowMode,
+        @Inject(TUI_ITEMS_HANDLERS) private readonly itemsHandlers: TuiItemsHandlers<T>,
     ) {
         super(control, cdr);
+    }
+
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfield?.size || 'l';
     }
 
     get arrow(): PolymorpheusContent<

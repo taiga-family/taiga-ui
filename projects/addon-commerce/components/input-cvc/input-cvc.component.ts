@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    HostBinding,
     Inject,
     Input,
     Optional,
@@ -23,6 +24,8 @@ import {
     TUI_DIGIT_REGEXP,
     TUI_TEXTFIELD_LABEL_OUTSIDE,
     TuiPrimitiveTextfieldComponent,
+    TuiSizeL,
+    TuiSizeS,
     TuiTextfieldLabelOutsideDirective,
 } from '@taiga-ui/core';
 
@@ -70,6 +73,11 @@ export class TuiInputCVCComponent
         private readonly textfieldLabelOutside: TuiTextfieldLabelOutsideDirective,
     ) {
         super(control, cdr);
+    }
+
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.input?.size || 'l';
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {

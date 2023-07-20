@@ -4,6 +4,7 @@ import {
     Component,
     ContentChild,
     EventEmitter,
+    HostBinding,
     Inject,
     Input,
     Optional,
@@ -34,6 +35,8 @@ import {
     TuiDataListHost,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
+    TuiSizeL,
+    TuiSizeS,
     TuiTextfieldCleanerDirective,
 } from '@taiga-ui/core';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
@@ -101,6 +104,11 @@ export class TuiInputPhoneComponent
         @Inject(TUI_INPUT_PHONE_OPTIONS) private readonly options: TuiInputPhoneOptions,
     ) {
         super(control, cdr);
+    }
+
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfield?.size || 'l';
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

@@ -3,6 +3,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    HostBinding,
     Inject,
     Input,
     Optional,
@@ -18,13 +19,7 @@ import {
     TuiNativeFocusableElement,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {
-    TUI_TEXTFIELD_SIZE,
-    TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeS,
-    TuiTextfieldSizeDirective,
-} from '@taiga-ui/core';
+import {TuiPrimitiveTextfieldComponent, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -69,12 +64,15 @@ export class TuiInputCopyComponent
         control: NgControl | null,
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(DOCUMENT) private readonly doc: Document,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_COPY_TEXTS) private readonly copyTexts$: Observable<[string, string]>,
         @Inject(TUI_INPUT_COPY_OPTIONS) private readonly options: TuiInputCopyOptions,
     ) {
         super(control, cdr);
+    }
+
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfield?.size || 'l';
     }
 
     @tuiPure
@@ -102,10 +100,6 @@ export class TuiInputCopyComponent
 
     get focused(): boolean {
         return !!this.textfield && this.textfield.focused;
-    }
-
-    get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
     }
 
     get icon(): TuiInputCopyOptions['icon'] {

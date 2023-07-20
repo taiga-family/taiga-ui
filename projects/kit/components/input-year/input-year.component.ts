@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    HostBinding,
     Inject,
     Input,
     Optional,
@@ -21,7 +22,12 @@ import {
     tuiPure,
     TuiYear,
 } from '@taiga-ui/cdk';
-import {TuiPrimitiveTextfieldComponent, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import {
+    TuiPrimitiveTextfieldComponent,
+    TuiSizeL,
+    TuiSizeS,
+    TuiWithOptionalMinMax,
+} from '@taiga-ui/core';
 import {TUI_INPUT_DATE_OPTIONS, TuiInputDateOptions} from '@taiga-ui/kit/tokens';
 
 const UP_TO_4_DIGITS_REG = /^\d{0,4}$/;
@@ -67,6 +73,11 @@ export class TuiInputYearComponent
         private readonly options: TuiInputDateOptions,
     ) {
         super(control, cdr);
+    }
+
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfield?.size || 'l';
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
