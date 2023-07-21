@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    HostBinding,
     HostListener,
     Inject,
     Injector,
@@ -121,8 +122,6 @@ export class TuiInputDateComponent
         @Optional()
         @Inject(TUI_MOBILE_CALENDAR)
         private readonly mobileCalendar: Type<Record<string, any>> | null,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
         @Inject(TUI_DATE_SEPARATOR) readonly dateSeparator: string,
         @Inject(TUI_DATE_TEXTS)
@@ -130,10 +129,16 @@ export class TuiInputDateComponent
         @Optional()
         @Inject(TUI_DATE_VALUE_TRANSFORMER)
         override readonly valueTransformer: AbstractTuiValueTransformer<TuiDay | null> | null,
-        @Inject(TUI_INPUT_DATE_OPTIONS)
-        private readonly options: TuiInputDateOptions,
+        @Inject(TUI_INPUT_DATE_OPTIONS) private readonly options: TuiInputDateOptions,
+        @Inject(TUI_TEXTFIELD_SIZE)
+        private readonly textfieldSize: TuiTextfieldSizeDirective,
     ) {
         super(control, cdr, valueTransformer);
+    }
+
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -209,10 +214,6 @@ export class TuiInputDateComponent
         const {value} = this;
 
         return (value && this.items.find(item => item.day.daySame(value))) || null;
-    }
-
-    get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
     }
 
     @HostListener('click')

@@ -3,6 +3,7 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChildren,
+    HostBinding,
     HostListener,
     Inject,
     Input,
@@ -34,13 +35,17 @@ import {
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_NUMBER_FORMAT,
+    TUI_TEXTFIELD_SIZE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiDecimal,
     tuiFormatNumber,
     tuiGetFractionPartPadded,
     TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
+    TuiSizeL,
+    TuiSizeS,
     TuiTextfieldController,
+    TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 
@@ -64,7 +69,7 @@ export class TuiInputNumberComponent
     implements TuiFocusableElementAccessor
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;
+    private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     private unfinishedValue: string | null = '';
 
@@ -101,25 +106,30 @@ export class TuiInputNumberComponent
         control: NgControl | null,
         @Inject(ChangeDetectorRef)
         cdr: ChangeDetectorRef,
-        @Inject(TUI_INPUT_NUMBER_OPTIONS)
-        readonly options: TuiInputNumberOptions,
-        @Inject(TUI_NUMBER_FORMAT)
-        private readonly numberFormat: TuiNumberFormatSettings,
+        @Inject(TUI_INPUT_NUMBER_OPTIONS) readonly options: TuiInputNumberOptions,
+        @Inject(TUI_NUMBER_FORMAT) private readonly numberFormat: TuiNumberFormatSettings,
         @Inject(TUI_IS_IOS) private readonly isIOS: boolean,
+        @Inject(TUI_TEXTFIELD_SIZE)
+        private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
     ) {
         super(control, cdr);
     }
 
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+
     get nativeFocusableElement(): HTMLInputElement | null {
-        return !this.primitiveTextfield || this.computedDisabled
+        return !this.textfield || this.computedDisabled
             ? null
-            : this.primitiveTextfield.nativeFocusableElement;
+            : this.textfield.nativeFocusableElement;
     }
 
     get focused(): boolean {
-        return !!this.primitiveTextfield && this.primitiveTextfield.focused;
+        return !!this.textfield?.focused;
     }
 
     get isNegativeAllowed(): boolean {
@@ -283,11 +293,11 @@ export class TuiInputNumberComponent
     }
 
     set nativeValue(value: string) {
-        if (!this.primitiveTextfield || !this.nativeFocusableElement) {
+        if (!this.textfield || !this.nativeFocusableElement) {
             return;
         }
 
-        this.primitiveTextfield.value = value;
+        this.textfield.value = value;
         this.nativeFocusableElement.value = value;
     }
 

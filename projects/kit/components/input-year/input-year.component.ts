@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    HostBinding,
     Inject,
     Input,
     Optional,
@@ -21,7 +22,14 @@ import {
     tuiPure,
     TuiYear,
 } from '@taiga-ui/cdk';
-import {TuiPrimitiveTextfieldComponent, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import {
+    TUI_TEXTFIELD_SIZE,
+    TuiPrimitiveTextfieldComponent,
+    TuiSizeL,
+    TuiSizeS,
+    TuiTextfieldSizeDirective,
+    TuiWithOptionalMinMax,
+} from '@taiga-ui/core';
 import {TUI_INPUT_DATE_OPTIONS, TuiInputDateOptions} from '@taiga-ui/kit/tokens';
 
 const UP_TO_4_DIGITS_REG = /^\d{0,4}$/;
@@ -65,16 +73,23 @@ export class TuiInputYearComponent
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_INPUT_DATE_OPTIONS)
         private readonly options: TuiInputDateOptions,
+        @Inject(TUI_TEXTFIELD_SIZE)
+        private readonly textfieldSize: TuiTextfieldSizeDirective,
     ) {
         super(control, cdr);
     }
 
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+
     get nativeFocusableElement(): HTMLInputElement | null {
-        return this.textfield ? this.textfield.nativeFocusableElement : null;
+        return this.textfield?.nativeFocusableElement || null;
     }
 
     get focused(): boolean {
-        return !!this.textfield && this.textfield.focused;
+        return !!this.textfield?.focused;
     }
 
     get calendarIcon(): TuiInputDateOptions['icon'] {

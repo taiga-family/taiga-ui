@@ -36,20 +36,22 @@
     flex-direction: column;
     margin-left: 0.125rem;
     height: 100%;
+    border-radius: inherit;
 }
 
 .t-buttons .t-button {
     display: flex;
     width: calc(var(--tui-height-m) * 0.75);
     height: calc(50% - 0.0625rem);
+    border-radius: 0;
 
     &_plus {
         margin-bottom: 0.125rem;
-        border-radius: 0 var(--tui-radius-m) 0 0;
+        border-top-right-radius: inherit;
     }
 
     &_minus {
-        border-radius: 0 0 var(--tui-radius-m);
+        border-bottom-right-radius: inherit;
     }
 
     :host[data-size='l'] & {

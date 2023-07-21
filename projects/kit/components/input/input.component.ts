@@ -3,6 +3,7 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChild,
+    HostBinding,
     Inject,
     Optional,
     Self,
@@ -20,11 +21,15 @@ import {
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {
+    TUI_TEXTFIELD_SIZE,
     tuiAsDataListHost,
     TuiDataListDirective,
     TuiDataListHost,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
+    TuiSizeL,
+    TuiSizeS,
+    TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 import {
     FIXED_DROPDOWN_CONTROLLER_PROVIDER,
@@ -68,8 +73,15 @@ export class TuiInputComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
+        @Inject(TUI_TEXTFIELD_SIZE)
+        private readonly textfieldSize: TuiTextfieldSizeDirective,
     ) {
         super(control, cdr);
+    }
+
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
