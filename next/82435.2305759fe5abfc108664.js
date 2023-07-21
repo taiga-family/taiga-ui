@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[82435],{82435:e=>{e.exports='<tui-input-number\n    tuiTextfieldPrefix="¥ "\n    decimal="never"\n    class="b-form"\n    [tuiTextfieldPostfix]="value ? \',00\' : \' ,00\'"\n    [(ngModel)]="value"\n>\n    Type a sum\n</tui-input-number>\n'}}]);
