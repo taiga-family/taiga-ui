@@ -22,6 +22,7 @@
         "MITSHM",
         "subdir",
         "bundlphobia",
-        "gitlabci"
+        "gitlabci",
+        "automerge"
     ]
 }
