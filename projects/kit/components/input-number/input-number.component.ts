@@ -13,7 +13,11 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {MaskitoOptions} from '@maskito/core';
-import {maskitoNumberOptionsGenerator, maskitoParseNumber} from '@maskito/kit';
+import {
+    maskitoCaretGuard,
+    maskitoNumberOptionsGenerator,
+    maskitoParseNumber,
+} from '@maskito/kit';
 import {
     AbstractTuiNullableControl,
     CHAR_HYPHEN,
@@ -28,12 +32,15 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
+    TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_NUMBER_FORMAT,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiDecimal,
     tuiFormatNumber,
     tuiGetFractionPartPadded,
     TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
+    TuiTextfieldController,
 } from '@taiga-ui/core';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 
@@ -49,6 +56,7 @@ const DEFAULT_MAX_LENGTH = 18;
     providers: [
         tuiAsFocusableItemAccessor(TuiInputNumberComponent),
         tuiAsControl(TuiInputNumberComponent),
+        TEXTFIELD_CONTROLLER_PROVIDER,
     ],
 })
 export class TuiInputNumberComponent
@@ -98,6 +106,8 @@ export class TuiInputNumberComponent
         @Inject(TUI_NUMBER_FORMAT)
         private readonly numberFormat: TuiNumberFormatSettings,
         @Inject(TUI_IS_IOS) private readonly isIOS: boolean,
+        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
+        readonly controller: TuiTextfieldController,
     ) {
         super(control, cdr);
     }
@@ -151,6 +161,16 @@ export class TuiInputNumberComponent
         return this.interactive && (this.value || 0) < this.max;
     }
 
+    get computedPrefix(): string {
+        return this.prefix || this.controller.prefix;
+    }
+
+    get computedPostfix(): string {
+        const postfix = this.postfix || this.controller.postfix;
+
+        return postfix && ` ${postfix}`;
+    }
+
     get mask(): MaskitoOptions {
         return this.calculateMask(
             this.precision,
@@ -159,6 +179,8 @@ export class TuiInputNumberComponent
             this.numberFormat.thousandSeparator,
             this.min,
             this.max,
+            this.computedPrefix,
+            this.computedPostfix,
         );
     }
 
@@ -203,10 +225,6 @@ export class TuiInputNumberComponent
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
 
-        if (focused) {
-            return;
-        }
-
         const nativeNumberValue = this.unfinishedValue
             ? maskitoParseNumber(this.unfinishedValue, this.numberFormat.decimalSeparator)
             : this.nativeNumberValue;
@@ -214,13 +232,16 @@ export class TuiInputNumberComponent
         this.unfinishedValue = null;
 
         if (Number.isNaN(nativeNumberValue)) {
-            this.clear();
+            this.nativeValue = focused ? this.computedPrefix + this.computedPostfix : '';
+            this.value = null;
 
             return;
         }
 
-        this.value = nativeNumberValue;
-        this.nativeValue = this.formattedValue;
+        if (!focused) {
+            this.value = nativeNumberValue;
+            this.nativeValue = this.formattedValue;
+        }
     }
 
     getFormattedValue(value: number): string {
@@ -239,10 +260,14 @@ export class TuiInputNumberComponent
             decimalLimit = fraction.length;
         }
 
-        return tuiFormatNumber(value, {
-            ...this.numberFormat,
-            decimalLimit,
-        }).replace(CHAR_HYPHEN, CHAR_MINUS);
+        return (
+            this.computedPrefix +
+            tuiFormatNumber(value, {
+                ...this.numberFormat,
+                decimalLimit,
+            }).replace(CHAR_HYPHEN, CHAR_MINUS) +
+            this.computedPostfix
+        );
     }
 
     private get isNativeValueNotFinished(): boolean {
@@ -283,19 +308,29 @@ export class TuiInputNumberComponent
         thousandSeparator: string,
         min: number,
         max: number,
+        prefix: string,
+        postfix: string,
     ): MaskitoOptions {
-        return maskitoNumberOptionsGenerator({
+        const {plugins, ...options} = maskitoNumberOptionsGenerator({
             decimalSeparator,
             thousandSeparator,
             min,
             max,
+            prefix,
+            postfix,
             precision: decimalMode === 'never' ? 0 : precision,
             decimalZeroPadding: decimalMode === 'always',
         });
-    }
 
-    private clear(): void {
-        this.nativeValue = '';
-        this.value = null;
+        return {
+            ...options,
+            plugins: [
+                ...plugins,
+                maskitoCaretGuard(value => [
+                    prefix.length,
+                    value.length - postfix.length,
+                ]),
+            ],
+        };
     }
 }

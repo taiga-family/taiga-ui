@@ -8,6 +8,10 @@ import {
 } from '@taiga-ui/cdk/constants';
 
 describe(`InputNumber`, () => {
+    beforeEach(() => {
+        cy.viewport(500, 300);
+    });
+
     describe(`API`, () => {
         it(`Infinite precision`, () => {
             cy.tuiVisit(`components/input-number/API?tuiMode=null&precision=Infinity`);
@@ -346,6 +350,33 @@ describe(`InputNumber`, () => {
                 .blur()
                 .should(`have.value`, `42,00`);
         });
+
+        it(`text field does not contain any digit (only prefix + postfix) => clear text field's value on blur`, () => {
+            cy.tuiVisit(`components/input-number/API?prefix=$&postfix=kg`);
+            initializeAliases(`#demo-content tui-input-number`);
+
+            cy.get(`@input`)
+                .type(`{selectall}`)
+                .type(`{del}`)
+                .should(`have.value`, `$ kg`)
+                .blur()
+                .should(`have.value`, ``);
+        });
+    });
+
+    it(`adds prefix & postfix on focus`, () => {
+        cy.tuiVisit(`components/input-number/API?prefix=$&postfix=kg`);
+        initializeAliases(`#demo-content tui-input-number`);
+
+        cy.get(`@input`)
+            .type(`{selectall}`)
+            .type(`{del}`)
+            .blur()
+            .should(`have.value`, ``)
+            .focus()
+            .should(`have.value`, `$ kg`)
+            .should(`have.prop`, `selectionStart`, 1)
+            .should(`have.prop`, `selectionEnd`, 1);
     });
 
     function initializeAliases(selector: string): void {

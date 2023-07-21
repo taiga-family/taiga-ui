@@ -135,7 +135,7 @@ describe(`InputRange`, () => {
         it(`Rounds the left value of an input field to the nearest quantum when focus is lost`, () => {
             inputPOLeft.sendTextAndBlur(`-7`);
 
-            expect(inputPOLeft.value).toBe(`${CHAR_MINUS}5`);
+            expect(inputPOLeft.value).toBe(`${CHAR_MINUS}5 лет`);
         });
 
         it(`Rounds the right value to the nearest quantum on loss of focus`, () => {
@@ -159,7 +159,7 @@ describe(`InputRange`, () => {
             inputPOLeft.sendTextAndBlur(``);
 
             expect(testComponent.control.value[0]).toBe(-5);
-            expect(inputPOLeft.value).toBe(`${CHAR_MINUS}5`);
+            expect(inputPOLeft.value).toBe(`${CHAR_MINUS}5 лет`);
         });
 
         it(`Doesn't change value when deleting right content`, () => {
@@ -179,7 +179,9 @@ describe(`InputRange`, () => {
             inputPOLeft.sendTextAndBlur(`123`);
 
             expect(testComponent.control.value[0]).toBe(testComponent.control.value[1]);
-            expect(inputPOLeft.value).toBe(testComponent.control.value[1].toString());
+            expect(inputPOLeft.value).toBe(
+                `${testComponent.control.value[1].toString()} лет`,
+            );
         });
 
         it(`Prevents the right value from becoming less than the left value when leaving the field`, () => {
@@ -354,13 +356,13 @@ describe(`InputRange`, () => {
                 testComponent.min = -10;
                 inputPOLeft.sendText(`-123`);
 
-                expect(inputPOLeft.value).toBe(`${CHAR_MINUS}10`);
+                expect(inputPOLeft.value).toBe(`${CHAR_MINUS}10 лет`);
             });
 
             it(`Keyboard input does not go beyond value[1]`, () => {
                 inputPOLeft.sendText(`12345`);
 
-                expect(inputPOLeft.value).toBe(`6`);
+                expect(inputPOLeft.value).toBe(`6 лет`);
             });
 
             it(`Keyboard input does not output value[1] beyond value[0]`, () => {
