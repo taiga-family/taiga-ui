@@ -111,7 +111,7 @@ describe(`InputRange`, () => {
 
         it(`Plural signature is present`, () => {
             expect(getLeftValueDecoration()).toContain(`лет`);
-            expect(getRightValueDecoration()).toBe(`год`);
+            expect(getRightValueDecoration()).toContain(`год`);
         });
 
         it(`[rightValueContent] missing on focus`, () => {
@@ -119,7 +119,7 @@ describe(`InputRange`, () => {
             inputPORight.focus();
 
             expect(getRightValueContent()).toBeNull();
-            expect(getRightValueDecoration()).toBe(`лет`);
+            expect(getRightValueDecoration()).toBe(`10 лет`);
         });
     });
 
@@ -147,7 +147,7 @@ describe(`InputRange`, () => {
         it(`Rounds the right value of an input field to the nearest quantum on loss of focus`, () => {
             inputPORight.sendTextAndBlur(`7`);
 
-            expect(inputPORight.value).toBe(`5`);
+            expect(inputPORight.value).toBe(`5 лет`);
         });
     });
 
@@ -167,7 +167,7 @@ describe(`InputRange`, () => {
             inputPORight.sendTextAndBlur(``);
 
             expect(testComponent.control.value[1]).toBe(5);
-            expect(inputPORight.value).toBe(`5`);
+            expect(inputPORight.value).toBe(`5 лет`);
         });
     });
 
@@ -192,9 +192,9 @@ describe(`InputRange`, () => {
 
             expect(testComponent.control.value[1]).toBe(testComponent.control.value[0]);
             expect(inputPORight.value).toBe(
-                testComponent.control.value[0]
+                `${testComponent.control.value[0]
                     .toString()
-                    .replace(CHAR_HYPHEN, CHAR_MINUS),
+                    .replace(CHAR_HYPHEN, CHAR_MINUS)} лет`,
             );
         });
     });
@@ -208,7 +208,7 @@ describe(`InputRange`, () => {
         });
 
         it(`Formats input`, () => {
-            expect(inputPORight.value).toBe(`12 345,67`);
+            expect(inputPORight.value).toBe(`12 345,67 лет`);
         });
 
         it(`Doesn't format the value`, () => {
@@ -349,7 +349,7 @@ describe(`InputRange`, () => {
             it(`Keyboard input does not exceed max`, () => {
                 inputPORight.sendText(`12345`);
 
-                expect(inputPORight.value).toBe(`10`);
+                expect(inputPORight.value).toBe(`10 лет`);
             });
 
             it(`Keyboard input does not exceed min`, () => {
@@ -368,7 +368,9 @@ describe(`InputRange`, () => {
             it(`Keyboard input does not output value[1] beyond value[0]`, () => {
                 inputPORight.sendText(`1`);
 
-                expect(inputPORight.value).toBe(`1`);
+                expect(inputPORight.value).toBe(
+                    `1 лет`, // this plural form is expected because it is intermediate state and form control is not updated yet
+                );
                 expect(testComponent.control.value[1]).toBe(6);
             });
         });
@@ -401,7 +403,7 @@ describe(`InputRange`, () => {
 
     function getRightValueDecoration(): string {
         return pageObject
-            .getByAutomationId(`${testContext.prefix}pluralize-right`)
+            .getByAutomationId(testContext.valueDecorationAutoId, rightInputWrapper)
             ?.nativeElement.textContent.trim()
             .replace(`\n `, ``);
     }
