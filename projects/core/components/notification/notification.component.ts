@@ -7,15 +7,15 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {TuiContextWithImplicit, tuiIsObserved, tuiIsPresent} from '@taiga-ui/cdk';
-import {TuiNotification} from '@taiga-ui/core/enums';
+import {tuiIsObserved} from '@taiga-ui/cdk';
 import {
     TUI_CLOSE_WORD,
     TUI_NOTIFICATION_OPTIONS,
     TuiNotificationDefaultOptions,
 } from '@taiga-ui/core/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {TuiNotificationT} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
+import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptions} from '@taiga-ui/core/directives';
 
 @Component({
     selector: 'tui-notification',
@@ -31,12 +31,15 @@ export class TuiNotificationComponent {
     hasIcon = this.options.hasIcon;
 
     @Input()
-    icon: PolymorpheusContent<TuiContextWithImplicit<TuiNotification>> | null =
-        this.options.icon;
+    icon = this.options.icon;
 
     @Input()
     @HostBinding('attr.data-status')
-    status: 'error' | 'info' | 'success' | 'warning' = this.options.status;
+    status: TuiNotificationT = this.options.status;
+
+    @Input()
+    @HostBinding('attr.data-size')
+    size = this.options.size;
 
     @Input()
     hideClose = false;
@@ -47,16 +50,10 @@ export class TuiNotificationComponent {
 
     constructor(
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
-        @Inject(TUI_NOTIFICATION_OPTIONS)
-        readonly options: TuiNotificationDefaultOptions,
+        @Inject(TUI_NOTIFICATION_OPTIONS) readonly options: TuiNotificationDefaultOptions,
+        @Inject(TUI_TEXTFIELD_OPTIONS) readonly textfieldOptions: TuiTextfieldOptions,
     ) {}
 
-    @HostBinding('class._has-icon')
-    get isIconExists(): boolean {
-        return tuiIsPresent(this.icon) && this.hasIcon;
-    }
-
-    @HostBinding('class._has-close-button')
     get hasClose(): boolean {
         return !this.hideClose && tuiIsObserved(this.close);
     }

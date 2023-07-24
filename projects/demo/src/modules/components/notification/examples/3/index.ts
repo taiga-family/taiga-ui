@@ -3,9 +3,10 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-notification-example-1',
+    selector: 'tui-notification-example-3',
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
-export class TuiNotificationExample1 {}
+export class TuiNotificationExample3 {}

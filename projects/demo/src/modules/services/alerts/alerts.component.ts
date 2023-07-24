@@ -2,7 +2,7 @@ import {Component, Inject, Injector} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiBaseDialogContext} from '@taiga-ui/cdk';
-import {TuiAlertOptions, TuiAlertService, TuiNotification} from '@taiga-ui/core';
+import {TuiAlertOptions, TuiAlertService, TuiNotificationT} from '@taiga-ui/core';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs/operators';
 
@@ -108,12 +108,7 @@ export class ExampleTuiAlertsComponent {
 
     label = 'Heading';
 
-    readonly statusVariants: readonly TuiNotification[] = [
-        TuiNotification.Info,
-        TuiNotification.Success,
-        TuiNotification.Error,
-        TuiNotification.Warning,
-    ];
+    readonly statusVariants: TuiNotificationT[] = ['info', 'success', 'error', 'warning'];
 
     status = this.statusVariants[0];
 

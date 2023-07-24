@@ -19,7 +19,7 @@ import {
 } from '@taiga-ui/addon-doc/tokens';
 import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
 import {TUI_IS_CYPRESS, TuiContextWithImplicit, TuiHandler} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiNotification} from '@taiga-ui/core';
+import {TuiAlertService} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
@@ -116,7 +116,7 @@ export class TuiDocExampleComponent {
         this.alerts
             .open(this.texts[1], {
                 label: this.texts[2],
-                status: TuiNotification.Success,
+                status: 'success',
             })
             .subscribe();
     }

@@ -1,10 +1,13 @@
 import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TUI_NOTIFICATION_DEFAULT_OPTIONS, TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core';
+import {
+    TUI_NOTIFICATION_DEFAULT_OPTIONS,
+    TUI_NOTIFICATION_OPTIONS,
+    TuiNotificationT,
+} from '@taiga-ui/core';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
-import {TuiNotification} from '../../../enums/notification';
 import {TuiSvgService} from '../../../services/svg.service';
 import {TuiNotificationComponent} from '../notification.component';
 import {TuiNotificationModule} from '../notification.module';
@@ -31,7 +34,7 @@ describe(`Notification`, () => {
         component!: TuiNotificationComponent;
 
         hasCloseButton = true;
-        status: TuiNotification = TuiNotification.Info;
+        status: TuiNotificationT = 'info';
 
         onClose(): void {}
     }
@@ -94,7 +97,7 @@ describe(`Notification with TUI_NOTIFICATION_OPTIONS`, () => {
         component!: TuiNotificationComponent;
     }
 
-    const status = TuiNotification.Error;
+    const status = 'error';
 
     let fixture: ComponentFixture<TestComponent>;
     let pageObject: TuiPageObject<TestComponent>;
