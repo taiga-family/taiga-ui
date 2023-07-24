@@ -5,10 +5,10 @@ import {tuiNotificationOptionsProvider} from '@taiga-ui/core';
 
 @NgModule({
   providers: [
-      tuiNotificationOptionsProvider({
-          icon: 'tuiIconHelpCircle',
-          status: 'warning',
-      }),
+    tuiNotificationOptionsProvider({
+      icon: 'tuiIconHelpCircle',
+      status: 'warning',
+    }),
   ],
   // ...
 })
