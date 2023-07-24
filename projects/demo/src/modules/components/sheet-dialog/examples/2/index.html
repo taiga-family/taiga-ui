@@ -1,0 +1,57 @@
+<button
+    tuiButton
+    type="button"
+    (click)="open = true"
+>
+    Show
+</button>
+<ng-template
+    let-observer
+    [tuiSheetDialogOptions]="options"
+    [(tuiSheetDialog)]="open"
+>
+    <a
+        tuiIconButton
+        size="m"
+        appearance="secondary"
+        icon="tuiIconMailLarge"
+        title="Email"
+        href="mailto:alexander@inkin.ru"
+        class="tui-space_right-2"
+    ></a>
+    <a
+        tuiIconButton
+        size="m"
+        appearance="secondary"
+        icon="tuiIconPhoneForwardedLarge"
+        title="Telegram"
+        href="https://t.me/waterplea"
+        class="tui-space_right-2"
+    ></a>
+    <a
+        tuiIconButton
+        size="m"
+        appearance="secondary"
+        icon="tuiIconMusicLarge"
+        title="Music"
+        href="https://waterplea.bandcamp.com/"
+    ></a>
+    <p>Passionate Angular dev, musician and OSS author.</p>
+    <footer class="footer">
+        <button
+            tuiButton
+            size="m"
+            (click)="observer.complete()"
+        >
+            Give a raise
+        </button>
+        <button
+            tuiButton
+            size="m"
+            appearance="secondary"
+            (click)="observer.complete()"
+        >
+            Fire
+        </button>
+    </footer>
+</ng-template>

@@ -708,6 +708,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Components`,
+        title: `SheetDialog`,
+        keywords: `mobile, dialog, popup, map, details, шторка`,
+        route: `/components/sheet-dialog`,
+    },
+    {
+        section: `Components`,
         title: `Sliders`,
         subPages: [
             {

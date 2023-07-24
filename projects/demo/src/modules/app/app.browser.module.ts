@@ -3,7 +3,11 @@ import {NgModule, SecurityContext} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiDocMainModule, TuiLanguageSwitcherModule} from '@taiga-ui/addon-doc';
-import {TuiMobileDialogModule, TuiSheetModule} from '@taiga-ui/addon-mobile';
+import {
+    TuiMobileDialogModule,
+    TuiSheetDialogModule,
+    TuiSheetModule,
+} from '@taiga-ui/addon-mobile';
 import {TuiPreviewModule} from '@taiga-ui/addon-preview';
 import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
 import {
@@ -47,6 +51,7 @@ const PRODUCTION_MODULES = environment.production
         TuiPreviewModule,
         TuiPdfViewerModule,
         TuiSheetModule,
+        TuiSheetDialogModule,
         TuiAlertModule,
         TuiPushModule,
         TuiMobileDialogModule,

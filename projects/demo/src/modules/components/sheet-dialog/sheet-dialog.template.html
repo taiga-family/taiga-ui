@@ -1,21 +1,11 @@
 <tui-doc-page
-    header="Sheet"
+    header="SheetDialog"
     package="ADDON-MOBILE"
     type="components"
 >
     <ng-template pageTab>
-        <tui-notification status="warning">
-            If you need overlay and do not need image related functionality, it is recommended to use
-            <a
-                tuiLink
-                routerLink="components/sheet-dialog"
-            >
-                SheetDialog
-            </a>
-            .
-            <code>Sheet</code>
-            component is on track to be deprecated.
-        </tui-notification>
+        <p id="loh"></p>
+        A mobile draggable sheet dialog
 
         <tui-notification
             *ngIf="!isMobile"
@@ -29,7 +19,7 @@
             heading="String"
             [content]="example1"
         >
-            <tui-sheet-example-1></tui-sheet-example-1>
+            <tui-sheet-dialog-example-1></tui-sheet-dialog-example-1>
         </tui-doc-example>
 
         <tui-doc-example
@@ -37,12 +27,7 @@
             heading="Basic"
             [content]="example2"
         >
-            <tui-sheet-example-2></tui-sheet-example-2>
-            <tui-notification class="tui-space_top-4">
-                Note
-                <code>SheetHeading</code>
-                component that styles the heading and adds close button if sheet is closeable.
-            </tui-notification>
+            <tui-sheet-dialog-example-2></tui-sheet-dialog-example-2>
         </tui-doc-example>
 
         <tui-doc-example
@@ -50,43 +35,7 @@
             heading="Advanced"
             [content]="example3"
         >
-            <tui-sheet-example-3></tui-sheet-example-3>
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="elastic"
-            heading="Elastic sticky"
-            [content]="example4"
-        >
-            <tui-sheet-example-4></tui-sheet-example-4>
-            <tui-notification class="tui-space_top-4">
-                Using
-                <a
-                    tuiLink
-                    routerLink="directives/elastic-sticky"
-                >
-                    <code>ElasticSticky</code>
-                </a>
-                directive.
-            </tui-notification>
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="scroll"
-            heading="Scroll"
-            description="Modifying content using scroll stream from the context"
-            [content]="example5"
-        >
-            <tui-sheet-example-5></tui-sheet-example-5>
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="intersection"
-            heading="IntersectionObserver"
-            description="Modifying content with IntersectionObserver"
-            [content]="example6"
-        >
-            <tui-sheet-example-6></tui-sheet-example-6>
+            <tui-sheet-dialog-example-3></tui-sheet-dialog-example-3>
         </tui-doc-example>
     </ng-template>
 
@@ -100,18 +49,23 @@
                 Toggle
             </button>
             <ng-template #template>
-                <div class="top">
+                <div class="label">
                     <tui-avatar
                         text="Karl Gambolputty"
-                        size="l"
+                        size="m"
                         [rounded]="true"
                     ></tui-avatar>
-                    <h2>Karl Gambolputty</h2>
+                    <label tuiLabel="Terry Jones">Karl Gambolputty</label>
                 </div>
             </ng-template>
             <ng-template
-                [tuiSheetOptions]="options"
-                [(tuiSheet)]="open"
+                [tuiSheetDialogOptions]="{
+                    label: label === 'Template' ? template : label,
+                    closeable: closeable,
+                    stops: stops,
+                    initial: initial
+                }"
+                [(tuiSheetDialog)]="open"
             >
                 Karl Gambolputty de von
                 Ausfern-schplenden-schlitter-crasscrenbon-fried-digger-dingle-dangle-dongle-dungle-burstein-von-knacker-thrasher-apple-banger-horowitz-ticolensic-grander-knotty-spelltinkle-grandlich-grumblemeyer-spelterwasser-kurstlich-himbleeisen-bahnwagen-gutenabend-bitte-ein-nürnburger-bratwustle-gerspurten-mitzweimache-luber-hundsfut-gumberaber-shönendanker-kalbsfleisch-mittler-aucher
@@ -144,19 +98,12 @@
                 Optional data to be passed to the sheet.
             </ng-template>
             <ng-template
-                documentationPropertyName="image"
-                documentationPropertyType="PolymorpheusContent<TuiSheetOptions<I>>"
-                [documentationPropertyValues]="imageVariants"
-                [(documentationPropertyValue)]="image"
+                documentationPropertyName="label"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="labelVariants"
+                [(documentationPropertyValue)]="label"
             >
-                A content to show above the sheet.
-            </ng-template>
-            <ng-template
-                documentationPropertyName="imageSlide"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="imageSlide"
-            >
-                Should image slide as the sheet is dragged.
+                Sheet label.
             </ng-template>
             <ng-template
                 documentationPropertyName="stops"
@@ -171,16 +118,9 @@
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="initial"
             >
-                Initial stop index to open on. Indices exceeding
+                Initial stop index to open on. Index exceeding
                 <code>stops</code>
-                are treated as stop on image then stop on top of the sheet's content.
-            </ng-template>
-            <ng-template
-                documentationPropertyName="overlay"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="overlay"
-            >
-                Show overlay under the sheet.
+                means to stop on top of the sheet's content.
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -190,8 +130,9 @@
             <li>
                 <p>
                     Import
-                    <code>TuiSheetModule</code>
-                    into main module of your app
+                    <code>TuiSheetDialogModule</code>
+                    to your
+                    <code>AppModule</code>
                 </p>
 
                 <tui-doc-code
@@ -201,20 +142,12 @@
             </li>
 
             <li>
-                <p>
-                    Add
-                    <code>tui-sheets-host</code>
-                    to the main template like this:
-                </p>
+                <p>Use it in component</p>
 
                 <tui-doc-code
                     filename="myComponent.template.html"
-                    [code]="exampleHtml"
+                    [code]="exampleComponent"
                 ></tui-doc-code>
-            </li>
-
-            <li>
-                <p>Use directive or service as shown in examples.</p>
             </li>
         </ol>
     </ng-template>
