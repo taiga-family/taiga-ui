@@ -10,7 +10,7 @@
     scroll-snap-type: y mandatory;
 }
 
-@-moz-document url-prefix() {
+@supports (-moz-appearance: none) {
     :host {
         overscroll-behavior: none;
         scroll-snap-type: none;

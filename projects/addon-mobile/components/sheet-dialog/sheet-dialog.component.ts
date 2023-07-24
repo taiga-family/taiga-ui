@@ -66,9 +66,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     @HostListener('scroll.silent', ['0'])
     onPointerChange(delta: number): void {
         this.pointers += delta;
-        document.querySelector(
-            '#loh',
-        )!.textContent = `${this.el.nativeElement.scrollTop.toString()} ${this.pointers.toString()}`;
 
         if (
             this.context.closeable &&
