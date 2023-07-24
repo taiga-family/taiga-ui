@@ -2,7 +2,7 @@ import {Component, Inject, TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertContext} from '@taiga-ui/cdk';
-import {TuiAlertOptions, TuiAlertService, TuiNotification} from '@taiga-ui/core';
+import {TuiAlertOptions, TuiAlertService} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-alerts-example-2',
@@ -25,7 +25,7 @@ export class TuiAlertsExampleComponent2 {
         this.alerts
             .open(this.withdrawTemplate || '', {
                 label: 'A template sample',
-                status: TuiNotification.Warning,
+                status: 'warning',
                 autoClose: false,
             })
             .subscribe();
@@ -35,7 +35,7 @@ export class TuiAlertsExampleComponent2 {
         this.alerts
             .open(this.depositTemplate || '', {
                 label: 'A template sample',
-                status: TuiNotification.Success,
+                status: 'success',
                 autoClose: false,
             })
             .subscribe();

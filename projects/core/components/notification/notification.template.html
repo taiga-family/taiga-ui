@@ -1,7 +1,6 @@
-<ng-container *ngIf="isIconExists">
-    <!-- FIX: types of status input -->
+<ng-container *ngIf="icon && hasIcon">
     <tui-svg
-        *polymorpheusOutlet="icon as iconName; context: {$implicit: $any(status)}"
+        *polymorpheusOutlet="icon as iconName; context: {$implicit: status}"
         automation-id="tui-notification__icon"
         class="t-icon"
         [src]="iconName"
@@ -15,11 +14,11 @@
     *ngIf="hasClose"
     appearance="icon"
     automation-id="tui-notification__close"
-    icon="tuiIconCloseLarge"
     size="xs"
     tuiIconButton
     type="button"
     class="t-close"
+    [icon]="textfieldOptions.iconCleaner"
     [title]="closeWord$ | async"
     (click)="close.emit()"
 ></button>

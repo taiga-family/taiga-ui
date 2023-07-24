@@ -7,5 +7,4 @@ export * from './editing-keys';
 export * from './events';
 export * from './hint-directions';
 export * from './mask-caret-trap';
-export * from './notification-status-icons';
 export * from './regexp';

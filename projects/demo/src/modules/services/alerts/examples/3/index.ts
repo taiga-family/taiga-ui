@@ -2,7 +2,7 @@ import {Component, Inject, Injector} from '@angular/core';
 import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiNotification} from '@taiga-ui/core';
+import {TuiAlertService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
@@ -28,7 +28,7 @@ export class TuiAlertsExampleComponent3 {
                 new PolymorpheusComponent(AlertExampleComponent, this.injector),
                 {
                     label: 'Question',
-                    status: TuiNotification.Error,
+                    status: 'error',
                     autoClose: false,
                 },
             )

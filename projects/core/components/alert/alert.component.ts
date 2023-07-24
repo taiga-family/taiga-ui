@@ -10,11 +10,7 @@ import {
 import {TuiDestroyService, TuiDialog, tuiIsNumber} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse, tuiSlideInRight} from '@taiga-ui/core/animations';
 import {TuiAlertOptions} from '@taiga-ui/core/interfaces';
-import {
-    TUI_ANIMATION_OPTIONS,
-    TUI_NOTIFICATION_OPTIONS,
-    TuiNotificationDefaultOptions,
-} from '@taiga-ui/core/tokens';
+import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {fromEvent, timer} from 'rxjs';
 import {repeatWhen, takeUntil} from 'rxjs/operators';
@@ -43,8 +39,6 @@ export class TuiAlertComponent<O, I> implements OnInit {
     constructor(
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
-        @Inject(TUI_NOTIFICATION_OPTIONS)
-        private readonly options: TuiNotificationDefaultOptions,
         @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
         @Inject(POLYMORPHEUS_CONTEXT) readonly item: TuiDialog<TuiAlertOptions<I>, O>,
     ) {}
@@ -62,11 +56,7 @@ export class TuiAlertComponent<O, I> implements OnInit {
             return;
         }
 
-        timer(
-            tuiIsNumber(this.autoClose)
-                ? this.autoClose
-                : this.options.defaultAutoCloseTime,
-        )
+        timer(tuiIsNumber(this.autoClose) ? this.autoClose : 3000)
             .pipe(
                 takeUntil(fromEvent(this.el.nativeElement, 'mouseenter')),
                 /**

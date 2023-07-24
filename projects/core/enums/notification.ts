@@ -1,4 +1,6 @@
-// TODO: change type in v4.0
+/**
+ * @deprecated use union type TuiNotificationT instead
+ */
 // eslint-disable-next-line no-restricted-syntax
 export enum TuiNotification {
     Info = `info`,
