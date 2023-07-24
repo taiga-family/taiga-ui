@@ -1,11 +1,13 @@
-export function tuiIsExpireValid(expire: string): boolean {
-    const today = new Date();
-    const currentMonth = today.getMonth();
-    const currentYear = today.getFullYear() - 2000;
-    // eslint-disable-next-line radix
-    const month = parseInt(expire.slice(0, 2), 0);
-    // eslint-disable-next-line radix
-    const year = parseInt(expire.slice(-2), 0);
+import {tuiClamp} from '@taiga-ui/cdk';
 
-    return year > currentYear || (year === currentYear && month >= currentMonth);
+export function tuiIsExpireValid(expire: string, today = new Date()): boolean {
+    const currentMonth = today.getMonth() + 1;
+    const currentYear = today.getFullYear() - 2000;
+    const expireMonth = tuiClamp(parseInt(expire.slice(0, 2), 10), 1, 12);
+    const expireYear = tuiClamp(parseInt(expire.slice(-2), 10), 0, 99);
+
+    return (
+        expireYear > currentYear ||
+        (currentYear === expireYear && expireMonth >= currentMonth)
+    );
 }
