@@ -8,6 +8,7 @@ import {
     Output,
 } from '@angular/core';
 import {tuiIsObserved} from '@taiga-ui/cdk';
+import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptions} from '@taiga-ui/core/directives';
 import {
     TUI_CLOSE_WORD,
     TUI_NOTIFICATION_OPTIONS,
@@ -15,7 +16,6 @@ import {
 } from '@taiga-ui/core/tokens';
 import {TuiNotificationT} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
-import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptions} from '@taiga-ui/core/directives';
 
 @Component({
     selector: 'tui-notification',

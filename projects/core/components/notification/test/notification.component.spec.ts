@@ -34,7 +34,7 @@ describe(`Notification`, () => {
         component!: TuiNotificationComponent;
 
         hasCloseButton = true;
-        status: TuiNotificationT = 'info';
+        status: TuiNotificationT = `info`;
 
         onClose(): void {}
     }
@@ -97,7 +97,7 @@ describe(`Notification with TUI_NOTIFICATION_OPTIONS`, () => {
         component!: TuiNotificationComponent;
     }
 
-    const status = 'error';
+    const status = `error`;
 
     let fixture: ComponentFixture<TestComponent>;
     let pageObject: TuiPageObject<TestComponent>;
