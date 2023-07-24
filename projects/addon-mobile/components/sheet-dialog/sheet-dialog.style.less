@@ -5,15 +5,14 @@
     right: -1rem;
     clip-path: inset(0 1rem 0 0 round 0.75rem 0.75rem 0 0);
     font: var(--tui-font-text-m);
-    overscroll-behavior: contain;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
 }
 
 @supports (-moz-appearance: none) {
     :host {
-        overscroll-behavior: none;
-        scroll-snap-type: none;
+        right: 0;
+        clip-path: none;
     }
 }
 
@@ -67,10 +66,14 @@
 }
 
 .t-heading {
-    .createStackingContext();
+    position: sticky;
+    top: 1.5rem;
+    z-index: 1;
     display: flex;
-    margin: 0 0 0.5rem;
+    margin: 0;
+    padding-bottom: 0.5rem;
     font: var(--tui-font-heading-6);
+    background: var(--tui-elevation-01);
     overflow: hidden;
 }
 
