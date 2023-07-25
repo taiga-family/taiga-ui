@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.95.0](https://github.com/tinkoff/taiga-ui/compare/v2.94.1...v2.95.0) (2023-07-25)
+
+### Bug Fixes
+
+- **kit:** align center badge content display ([#4989](https://github.com/tinkoff/taiga-ui/issues/4989))
+  ([0635d9c](https://github.com/tinkoff/taiga-ui/commit/0635d9c70207adfd5ffbc6c95e5176cc12346a17))
+
 ### [2.94.1](https://github.com/tinkoff/taiga-ui/compare/v2.94.0...v2.94.1) (2023-06-29)
 
 ### Bug Fixes
