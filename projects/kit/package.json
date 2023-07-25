@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/kit",
-    "version": "3.37.0",
+    "version": "3.38.0",
     "description": "Taiga UI Angular main components kit",
     "keywords": [
         "angular",
@@ -27,9 +27,9 @@
         "@ng-web-apis/common": ">=3.0.0",
         "@ng-web-apis/mutation-observer": ">=3.0.0",
         "@ng-web-apis/resize-observer": ">=3.0.0",
-        "@taiga-ui/cdk": ">=3.37.0",
-        "@taiga-ui/core": ">=3.37.0",
-        "@taiga-ui/i18n": ">=3.37.0",
+        "@taiga-ui/cdk": ">=3.38.0",
+        "@taiga-ui/core": ">=3.38.0",
+        "@taiga-ui/i18n": ">=3.38.0",
         "@tinkoff/ng-polymorpheus": ">=4.0.0",
         "rxjs": ">=6.0.0",
         "tslib": ">=2.0.0"

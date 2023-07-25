@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.38.0](https://github.com/tinkoff/taiga-ui/compare/v3.37.0...v3.38.0) (2023-07-25)
+
+### Features
+
+- **core:** `Notification` add sizes ([#4971](https://github.com/tinkoff/taiga-ui/issues/4971))
+  ([6250adf](https://github.com/tinkoff/taiga-ui/commit/6250adfc7314fc7381555979f7145a78415eb2a8))
+
+### Bug Fixes
+
+- **core:** `Textfield` straighten up icons spacings ([#4898](https://github.com/tinkoff/taiga-ui/issues/4898))
+  ([939769c](https://github.com/tinkoff/taiga-ui/commit/939769c18969ddf39d5169a6528087719660059b))
+- **eslint-plugin:** disable `@angular-eslint/component-selector` rule
+  ([#4943](https://github.com/tinkoff/taiga-ui/issues/4943))
+  ([c0e2b87](https://github.com/tinkoff/taiga-ui/commit/c0e2b8720c0468a9d40e9538349f1ddde81d7fa8))
+- **eslint-plugin:** disable `@angular-eslint/use-component-selector` rule
+  ([#4948](https://github.com/tinkoff/taiga-ui/issues/4948))
+  ([13e7314](https://github.com/tinkoff/taiga-ui/commit/13e731422281c4f87a99870e1aee3668f1dd681a))
+- **kit:** `InputDateTime` should place caret before time after selection of a new date via calendar
+  ([#4942](https://github.com/tinkoff/taiga-ui/issues/4942))
+  ([89ec469](https://github.com/tinkoff/taiga-ui/commit/89ec469ab843ff54376214e48cd3d52290efac60))
+- **kit:** BadgedContent badge misaligned inside flex parent ([#4961](https://github.com/tinkoff/taiga-ui/issues/4961))
+  ([1688eaa](https://github.com/tinkoff/taiga-ui/commit/1688eaaf6bc4d889e0fdd8c79cbb560c510d91c9))
+
 ## [3.37.0](https://github.com/tinkoff/taiga-ui/compare/v3.36.2...v3.37.0) (2023-07-18)
 
 ### Features
