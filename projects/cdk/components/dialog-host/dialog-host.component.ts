@@ -1,3 +1,4 @@
+import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -56,6 +57,7 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>>
         @Inject(Title) private readonly titleService: Title,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
         @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
+        @Inject(DOCUMENT) private readonly doc: Document,
     ) {}
 
     ngOnInit(): void {
@@ -73,6 +75,12 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>>
             .subscribe(dialogs => {
                 this.dialogs = dialogs;
                 this.cdr.markForCheck();
+
+                // TODO: Hack for mobile Firefox: https://bugzilla.mozilla.org/show_bug.cgi?id=1845264
+                this.doc.documentElement.classList.toggle(
+                    't-overscroll-none',
+                    !!dialogs.length,
+                );
             });
     }
 

@@ -61,8 +61,13 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         return this.context.offset;
     }
 
+    get isSmall(): boolean {
+        return this.sheetTop > (this.sheet?.nativeElement.clientHeight || Infinity);
+    }
+
     @HostListener('document:touchstart.passive.silent', ['1'])
     @HostListener('document:touchend.silent', ['-1'])
+    @HostListener('document:touchcancel.silent', ['-1'])
     @HostListener('scroll.silent', ['0'])
     onPointerChange(delta: number): void {
         this.pointers += delta;

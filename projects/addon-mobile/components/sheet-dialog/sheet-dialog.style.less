@@ -7,13 +7,7 @@
     font: var(--tui-font-text-m);
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
-}
-
-@supports (-moz-appearance: none) {
-    :host {
-        right: 0;
-        clip-path: none;
-    }
+    overscroll-behavior: contain;
 }
 
 .t-stops {
@@ -43,6 +37,12 @@
     scroll-snap-align: start;
     box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.12), 0 3rem var(--tui-elevation-01), 0 6rem var(--tui-elevation-01),
         0 9rem var(--tui-elevation-01), 0 12rem var(--tui-elevation-01), 0 15rem var(--tui-elevation-01);
+}
+
+@supports (-moz-appearance: none) {
+    .t-sheet_small {
+        scroll-snap-align: end;
+    }
 }
 
 .t-top {
