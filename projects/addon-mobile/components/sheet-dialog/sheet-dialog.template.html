@@ -11,9 +11,13 @@
 </div>
 <div
     #sheet
+    waIntersectionObserver
+    waIntersectionThreshold="1"
+    waIntersectionRootMargin="10000px 0px 50px 0px"
     class="t-sheet"
     [class.t-sheet_small]="isSmall"
     (tuiClickOutside)="close()"
+    (waIntersectionObservee)="onIntersection($event)"
 >
     <div class="t-top"></div>
     <h2
