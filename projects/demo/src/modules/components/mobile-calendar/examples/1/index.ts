@@ -18,7 +18,7 @@ import {map} from 'rxjs/operators';
     encapsulation,
 })
 export class TuiMobileCalendarExample1 {
-    private readonly control = new FormControl(new TuiDay(2024, 9, 3));
+    private readonly control = new FormControl(new TuiDay(2024, 10, 3));
 
     private readonly dialog$: Observable<TuiDay>;
 

@@ -1,0 +1,33 @@
+{
+    "name": "demo-playwright",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "projects/demo-playwright/cypress",
+    "projectType": "application",
+    "prefix": "app",
+    "targets": {
+        "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "eslint --no-error-on-unmatched-pattern \"**/projects/demo-playwright/**/*\""
+            }
+        },
+        "stylelint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "stylelint \"**/demo-playwright/**/*.{css,less}\" --allow-empty-input"
+            }
+        },
+        "e2e": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "playwright test --config projects/demo-playwright/playwright.config.ts"
+            }
+        },
+        "e2e-ui": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "nx e2e demo-playwright -- --ui"
+            }
+        }
+    }
+}
