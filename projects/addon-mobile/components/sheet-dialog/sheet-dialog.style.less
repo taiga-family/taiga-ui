@@ -20,13 +20,13 @@
         display: block;
 
         .t-stops {
-            display: none;
+            display: flex;
         }
     }
 }
 
 .t-stops {
-    display: flex;
+    display: none;
     height: 100%;
 }
 
@@ -42,6 +42,7 @@
     width: calc(100% - 1rem);
     border-radius: 0.75rem 0.75rem 0 0;
     padding: 0 1rem 1rem;
+    margin-top: auto;
     background: var(--tui-elevation-01);
     box-sizing: border-box;
     scroll-snap-stop: always;
