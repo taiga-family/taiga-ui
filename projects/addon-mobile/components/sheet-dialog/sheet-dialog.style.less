@@ -3,26 +3,31 @@
 :host {
     .fullsize(fixed, inset);
     right: -1rem;
+    display: flex;
+    flex-direction: column;
     clip-path: inset(0 1rem 0 0 round 0.75rem 0.75rem 0 0);
     font: var(--tui-font-text-m);
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
-    overscroll-behavior: contain;
+    overscroll-behavior: none;
     box-shadow: 0 20rem var(--tui-elevation-01);
 
     &._stuck {
         scroll-snap-type: none;
+    }
+
+    &._closeable {
+        display: block;
+
+        .t-stops {
+            display: none;
+        }
     }
 }
 
 .t-stops {
     display: flex;
     height: 100%;
-
-    &_closeable {
-        scroll-snap-stop: always;
-        scroll-snap-align: start;
-    }
 }
 
 .t-stop {
