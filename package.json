@@ -104,7 +104,7 @@
         "@testing-library/cypress": "9.0.0",
         "@tinkoff/prettier-config": "1.52.1",
         "@tinkoff/stylelint-config": "1.52.1",
-        "@tinkoff/tui-editor": "1.0.1",
+        "@tinkoff/tui-editor": "1.1.0",
         "@types/glob": "8.1.0",
         "@types/node": "18.17.0",
         "@types/parse5": "6.0.3",
