@@ -17,10 +17,24 @@
 }
 
 .t-heading {
-    font: var(--tui-font-text-m);
-    line-height: 1.25rem;
-    font-weight: bold;
     margin: 0;
+
+    [data-size='s'] & {
+        font: var(--tui-font-text-s);
+        font-weight: bold;
+    }
+
+    [data-size='m'] & {
+        font: var(--tui-font-text-m);
+        line-height: 1.25rem;
+        font-weight: bold;
+    }
+
+    [data-size='l'] & {
+        font: var(--tui-font-text-l);
+        line-height: 1.5rem;
+        font-weight: bold;
+    }
 }
 
 .t-content {
