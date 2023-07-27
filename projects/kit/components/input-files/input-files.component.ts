@@ -33,7 +33,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-const DEFAULT_MAX_SIZE = 30 * 1000 * 1000; // 30 MB
+const DEFAULT_MAX_SIZE = 30 * 1024 * 1024; // 30 MiB
 
 // @dynamic
 @Component({
