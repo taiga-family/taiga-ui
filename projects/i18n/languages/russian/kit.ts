@@ -20,7 +20,7 @@ export const TUI_RUSSIAN_LANGUAGE_KIT: TuiLanguageKit = {
         MDY: `мм.дд.гггг`,
         YMD: `гггг.мм.дд`,
     },
-    digitalInformationUnits: [`Б`, `КБ`, `МБ`],
+    digitalInformationUnits: [`Б`, `КиБ`, `МиБ`],
     passwordTexts: [`Показать пароль`, `Скрыть пароль`],
     copyTexts: [`Копировать`, `Скопировано`],
     shortCalendarMonths: [

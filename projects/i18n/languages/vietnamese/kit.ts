@@ -20,7 +20,7 @@ export const TUI_VIETNAMESE_LANGUAGE_KIT: TuiLanguageKit = {
         MDY: `mm.dd.yyyy`,
         YMD: `yyyy.mm.dd`,
     },
-    digitalInformationUnits: [`B`, `KB`, `MB`],
+    digitalInformationUnits: [`B`, `KiB`, `MiB`],
     passwordTexts: [`Hiện mật khẩu`, `Ẩn mật khẩu`],
     copyTexts: [`Sao chép`, `Đã sao chép`],
     shortCalendarMonths: [

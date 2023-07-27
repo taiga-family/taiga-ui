@@ -1,6 +1,6 @@
 import {tuiFormatSize} from '@taiga-ui/kit';
 
-const units: [string, string, string] = [`B`, `KB`, `MB`];
+const units: [string, string, string] = [`B`, `KiB`, `MiB`];
 
 describe(`File size formatting`, () => {
     it(`Size in bytes less than 1KB is output in bytes`, () => {
