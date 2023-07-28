@@ -13,7 +13,7 @@
     box-shadow: 0 20rem var(--tui-elevation-01);
 
     &._stuck {
-        scroll-snap-type: none;
+        scroll-snap-type: y proximity;
     }
 
     &._closeable {
@@ -28,6 +28,8 @@
 .t-stops {
     display: none;
     height: 100%;
+    scroll-snap-stop: always;
+    scroll-snap-align: start;
 }
 
 .t-stop {
