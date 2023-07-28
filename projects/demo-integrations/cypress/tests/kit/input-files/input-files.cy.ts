@@ -36,13 +36,13 @@ describe(`InputFiles`, () => {
             );
 
             cy.get(`#demoContent tui-file`)
-                .should(`contain.text`, `File is too large 2 KB`)
+                .should(`contain.text`, `File is too large 2 KiB`)
                 .matchImageSnapshot(`02-01-input-files-[english]-file-too-large`);
 
             cy.tuiSetLanguage(`dutch`);
 
             cy.get(`#demoContent tui-file`)
-                .should(`contain.text`, `Bestandsgrootte overschreden 2 KB`)
+                .should(`contain.text`, `Bestandsgrootte overschreden 2 KiB`)
                 .matchImageSnapshot(`02-02-input-files-[dutch]-file-too-large`);
         });
     });
