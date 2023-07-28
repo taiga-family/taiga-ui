@@ -735,7 +735,13 @@ export const pages: TuiDocPages = [
         route: `/components/sheet`,
     },
     {
-        section: $localize`Components`,
+        section: `Components`,
+        title: `SheetDialog`,
+        keywords: `mobile, dialog, popup, map, details, шторка`,
+        route: `/components/sheet-dialog`,
+    },
+    {
+        section: `Components`,
         title: `Sliders`,
         subPages: [
             {

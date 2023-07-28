@@ -5,9 +5,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiDocMainModule, TuiLanguageSwitcherModule} from '@taiga-ui/addon-doc';
 import {
     TuiMobileDialogModule,
+    TuiSheetDialogModule,
     TuiSheetModule,
-    TuiThemeAndroidModule,
-    TuiThemeIosModule,
 } from '@taiga-ui/addon-mobile';
 import {TuiPreviewModule} from '@taiga-ui/addon-preview';
 import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
@@ -54,6 +53,7 @@ const PRODUCTION_MODULES = environment.production
         TuiPreviewModule,
         TuiPdfViewerModule,
         TuiSheetModule,
+        TuiSheetDialogModule,
         TuiAlertModule,
         TuiPushModule,
         TuiMobileDialogModule,

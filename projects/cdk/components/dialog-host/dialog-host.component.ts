@@ -1,4 +1,13 @@
-import {ChangeDetectionStrategy, Component, Inject, InjectionToken} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    Inject,
+    InjectionToken,
+    OnInit,
+    Self,
+} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {HISTORY} from '@ng-web-apis/common';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
@@ -46,7 +55,34 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>> {
         private readonly dialogsByType: Array<Observable<readonly T[]>>,
         @Inject(HISTORY) private readonly historyRef: History,
         @Inject(Title) private readonly titleService: Title,
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
+        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
+        @Inject(DOCUMENT) private readonly doc: Document,
     ) {}
+
+    ngOnInit(): void {
+        // Due to this view being parallel to app content, `markForCheck` from `async` pipe
+        // can happen after view was checked, so calling `detectChanges` instead
+        combineLatest(this.dialogsByType)
+            .pipe(
+                map(arr =>
+                    new Array<T>()
+                        .concat(...arr)
+                        .sort((a, b) => a.createdAt - b.createdAt),
+                ),
+                takeUntil(this.destroy$),
+            )
+            .subscribe(dialogs => {
+                this.dialogs = dialogs;
+                this.cdr.markForCheck();
+
+                // TODO: Hack for mobile Firefox: https://bugzilla.mozilla.org/show_bug.cgi?id=1845264
+                this.doc.documentElement.classList.toggle(
+                    't-overscroll-none',
+                    !!dialogs.length,
+                );
+            });
+    }
 
     closeLast(dialogs: readonly T[], isDialogClosesOnBack: boolean): void {
         if (!isDialogClosesOnBack) {
