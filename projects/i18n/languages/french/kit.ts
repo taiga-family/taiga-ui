@@ -20,7 +20,7 @@ export const TUI_FRENCH_LANGUAGE_KIT: LanguageKit = {
         MDY: `mm.dd.yyyy`,
         YMD: `yyyy.mm.dd`,
     },
-    digitalInformationUnits: [`B`, `KB`, `MB`],
+    digitalInformationUnits: [`B`, `KiB`, `MiB`],
     passwordTexts: [`Afficher le mot de passe`, `Cacher le mot de passe`],
     copyTexts: [`Copier`, `Copié`],
     shortCalendarMonths: [

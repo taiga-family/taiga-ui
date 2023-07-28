@@ -20,7 +20,7 @@ export const TUI_CHINESE_LANGUAGE_KIT: TuiLanguageKit = {
         MDY: `mm.dd.yyyy`,
         YMD: `yyyy.mm.dd`,
     },
-    digitalInformationUnits: [`B`, `KB`, `MB`],
+    digitalInformationUnits: [`B`, `KiB`, `MiB`],
     passwordTexts: [`显示密码`, `隐藏密码`],
     copyTexts: [`复制`, `已复制`],
     shortCalendarMonths: [
