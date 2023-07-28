@@ -60,8 +60,9 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
         readonly content: PolymorpheusContent<
             TuiContextWithImplicit<TemplateRef<Record<string, unknown>>>
         > | null,
+        @Optional()
         @Inject(forwardRef(() => TuiDataListComponent))
-        private readonly dataList: TuiDataListComponent<T>,
+        private readonly dataList: TuiDataListComponent<T> | null,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Optional()
         @Inject(TUI_DATA_LIST_HOST)
@@ -93,6 +94,6 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
 
     // Preventing focus loss upon focused option removal
     ngOnDestroy(): void {
-        this.dataList.handleFocusLossIfNecessary(this.el.nativeElement);
+        this.dataList?.handleFocusLossIfNecessary(this.el.nativeElement);
     }
 }

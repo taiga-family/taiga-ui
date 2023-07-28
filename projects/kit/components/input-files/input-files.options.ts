@@ -20,7 +20,7 @@ export const TUI_INPUT_FILES_DEFAULT_OPTIONS: TuiInputFilesOptions = {
     accepts: ``,
     multiple: false,
     size: `m`,
-    maxFileSize: 30 * 1000 * 1000, // 30 MB
+    maxFileSize: 30 * 1024 * 1024, // 30 MiB
 };
 
 /**

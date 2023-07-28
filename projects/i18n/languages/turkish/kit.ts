@@ -20,7 +20,7 @@ export const TUI_TURKISH_LANGUAGE_KIT: TuiLanguageKit = {
         MDY: `mm.dd.yyyy`,
         YMD: `yyyy.mm.dd`,
     },
-    digitalInformationUnits: [`B`, `KB`, `MB`],
+    digitalInformationUnits: [`B`, `KiB`, `MiB`],
     passwordTexts: [`Göster`, `Gizle`],
     copyTexts: [`Kopyala`, `Kopyalandı`],
     shortCalendarMonths: [
