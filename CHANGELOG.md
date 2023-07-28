@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.96.0](https://github.com/tinkoff/taiga-ui/compare/v2.95.0...v2.96.0) (2023-07-28)
+
+### Features
+
+- **i18n:** switch to power of 2 for file size display ([#4997](https://github.com/tinkoff/taiga-ui/issues/4997))
+  ([347450b](https://github.com/tinkoff/taiga-ui/commit/347450b5dce604109d28499cf62072d10a063c38))
+
 ## [2.95.0](https://github.com/tinkoff/taiga-ui/compare/v2.94.1...v2.95.0) (2023-07-25)
 
 ### Bug Fixes
