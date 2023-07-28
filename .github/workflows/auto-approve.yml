@@ -1,0 +1,13 @@
+name: 🤖 Auto approve
+on: pull_request
+
+jobs:
+  automated-pull-request:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    if: github.actor == 'tinkoff-bot'
+    steps:
+      - uses: hmarr/auto-approve-action@v3.2.1
+        with:
+          review-message: 'Auto approved automated PR for Tinkoff[bot]'
