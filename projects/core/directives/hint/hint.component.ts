@@ -27,7 +27,7 @@ import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
 import {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
-import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
+import {TUI_ANIMATION_OPTIONS, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {TuiPoint} from '@taiga-ui/core/types';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -37,6 +37,8 @@ import {map, takeUntil} from 'rxjs/operators';
 import {TuiHintDirective} from './hint.directive';
 import {TuiHintHoverDirective} from './hint-hover.directive';
 import {TuiHintPointerDirective} from './hint-pointer.directive';
+
+const GAP = 4;
 
 @Component({
     selector: 'tui-hint',
@@ -81,6 +83,7 @@ export class TuiHintComponent<C = any> {
         private readonly mode: TuiModeDirective | null,
         @Inject(TuiVisualViewportService)
         private readonly visualViewportService: TuiVisualViewportService,
+        @Inject(TUI_VIEWPORT) private readonly viewport: TuiRectAccessor,
     ) {
         position$
             .pipe(
@@ -117,12 +120,13 @@ export class TuiHintComponent<C = any> {
         const {height, width} = this.el.nativeElement.getBoundingClientRect();
         const {style} = this.el.nativeElement;
         const rect = this.accessor.getClientRect();
+        const viewport = this.viewport.getClientRect();
 
         if (rect === EMPTY_CLIENT_RECT) {
             return;
         }
 
-        const safeLeft = Math.max(left, 4);
+        const safeLeft = tuiClamp(left, GAP, viewport.width - width - GAP);
         const [beakTop, beakLeft] = this.visualViewportService.correct([
             rect.top + rect.height / 2 - top,
             rect.left + rect.width / 2 - safeLeft,
