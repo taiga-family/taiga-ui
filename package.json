@@ -31,7 +31,7 @@
         "start:default": "nx serve demo -c def",
         "start:coalescing": "nx serve demo -c coalescing",
         "start:shadow": "nx serve demo -c shadow",
-        "start:ip": "nx serve-ip demo",
+        "start:host": "nx serve demo --open --host 0.0.0.0 --disable-host-check",
         "build:ssr": "nx build demo && nx run demo:server:production",
         "prerender": "nx run demo:prerender",
         "test": "nx run-many --target test --all --output-style=stream --parallel=1",

@@ -1,0 +1,47 @@
+<div class="t-stops">
+    <div
+        *ngFor="let stop of context.stops"
+        #stops
+        class="t-stop"
+        [style.margin-top]="stop"
+    ></div>
+</div>
+<div
+    #sheet
+    waIntersectionObserver
+    waIntersectionRootMargin="0px 0px -100% 0px"
+    class="t-sheet"
+    [class.t-sheet_small]="isSmall"
+    (tuiClickOutside)="close()"
+    (waIntersectionObservee)="onIntersection($event)"
+>
+    <div class="t-top"></div>
+    <h2
+        *ngIf="context.label"
+        class="t-heading"
+        [id]="context.id"
+    >
+        <ng-container *polymorpheusOutlet="context.label as label">
+            {{ label }}
+        </ng-container>
+        <button
+            *ngIf="context.closeable"
+            tuiIconButton
+            icon="tuiIconClose"
+            size="xs"
+            appearance="icon"
+            class="t-close"
+            (click)="close()"
+        >
+            {{ closeWord$ | async }}
+        </button>
+    </h2>
+    <div
+        *ngIf="context.content"
+        class="t-content"
+    >
+        <ng-container *polymorpheusOutlet="context.content as text; context: context">
+            {{ text }}
+        </ng-container>
+    </div>
+</div>

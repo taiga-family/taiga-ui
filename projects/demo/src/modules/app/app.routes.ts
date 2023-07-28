@@ -815,6 +815,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `components/sheet-dialog`,
+        loadChildren: async () =>
+            (await import(`../components/sheet-dialog/sheet-dialog.module`))
+                .ExampleTuiSheetDialogModule,
+        data: {
+            title: `SheetDialog`,
+        },
+    },
+    {
         path: `components/slider`,
         loadChildren: async () =>
             (await import(`../components/slider/slider.module`)).ExampleTuiSliderModule,
