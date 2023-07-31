@@ -1,4 +1,4 @@
-<tui-text-area
+<tui-textarea
     #textarea
     tuiDropdownSelectionPosition="word"
     [tuiDropdown]="dropdown"
@@ -9,7 +9,7 @@
     (keydown.arrowDown)="onArrow($event, 'first')"
 >
     Type a message
-</tui-text-area>
+</tui-textarea>
 <ng-template #dropdown>
     <tui-data-list
         *ngIf="textarea.nativeFocusableElement"
