@@ -1,6 +1,8 @@
+/// <reference types="node" />
 import {clearLine, cursorTo} from 'readline';
 
 import {SMALL_TAB_SYMBOL, SUCCESS_SYMBOL} from './colored-log';
+import {tuiIsCI} from './is-ci';
 
 export function setupProgressLogger({
     total,
@@ -14,6 +16,10 @@ export function setupProgressLogger({
     let i = 1;
 
     return (message: string, incrementIndex = true): void => {
+        if (tuiIsCI()) {
+            return;
+        }
+
         const isLast = i === total;
         const progressLog = `(${i} / ${total}) ${prefix} ${
             isLast ? SUCCESS_SYMBOL : message
