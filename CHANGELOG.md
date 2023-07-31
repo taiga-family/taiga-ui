@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.39.0](https://github.com/tinkoff/taiga-ui/compare/v3.37.0...v3.39.0) (2023-07-31)
+
+### Features
+
+- **addon-mobile:** `SheetDialog` add new dialog ([#4975](https://github.com/tinkoff/taiga-ui/issues/4975))
+  ([39d1b62](https://github.com/tinkoff/taiga-ui/commit/39d1b62ba94dad012d46573f8a8273c81b737c36))
+- **i18n:** switch to power of 2 for file size display ([#4998](https://github.com/tinkoff/taiga-ui/issues/4998))
+  ([65c3e66](https://github.com/tinkoff/taiga-ui/commit/65c3e66f0f92c9546e82c976a13feeb1f03b921d))
+- **kit:** add alias `tui-textarea` for `tui-text-area` ([#4876](https://github.com/tinkoff/taiga-ui/issues/4876))
+  ([bd8a319](https://github.com/tinkoff/taiga-ui/commit/bd8a319c17c5427ed7e802fdbacd728e270abec2))
+- **schematics:** include `*.sass,scss,css` files for replace string
+  ([#4979](https://github.com/tinkoff/taiga-ui/issues/4979))
+  ([0d89620](https://github.com/tinkoff/taiga-ui/commit/0d89620d2448054bf40f1175ca74216ac69d5190))
+
+### Bug Fixes
+
+- **addon-commerce:** correct comparison of months for expiry date
+  ([#4974](https://github.com/tinkoff/taiga-ui/issues/4974))
+  ([eb5887f](https://github.com/tinkoff/taiga-ui/commit/eb5887f23a634d3350f0b5ed76d7849b1a7153f5))
+- **core:** `Hint` fix positioning near the right edge of the viewport
+  ([#5001](https://github.com/tinkoff/taiga-ui/issues/5001))
+  ([6fcb214](https://github.com/tinkoff/taiga-ui/commit/6fcb214e239be1aff366a35043bf4662f7b464f9))
+- **core:** pinned `i18n` dependency ([#4970](https://github.com/tinkoff/taiga-ui/issues/4970))
+  ([001ccdd](https://github.com/tinkoff/taiga-ui/commit/001ccdd87ebbcedeb238cf04c06ed22ddf242c46))
+- **kit:** `InputDateTime`'s min/max inputs should receive null
+  ([#4847](https://github.com/tinkoff/taiga-ui/issues/4847)) ([#4848](https://github.com/tinkoff/taiga-ui/issues/4848))
+  ([00b3ce3](https://github.com/tinkoff/taiga-ui/commit/00b3ce3122e7c547c138b614202714f52b8fb79c))
+
 ## [3.38.0](https://github.com/tinkoff/taiga-ui/compare/v3.37.0...v3.38.0) (2023-07-25)
 
 ### Features
