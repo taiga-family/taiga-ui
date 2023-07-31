@@ -37,16 +37,16 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
     @Input()
-    min = TUI_FIRST_DAY;
+    min: TuiDay | null = TUI_FIRST_DAY;
 
     @Input()
-    max = TUI_LAST_DAY;
+    max: TuiDay | null = TUI_LAST_DAY;
 
     @Input()
-    minViewedMonth: TuiMonth = TUI_FIRST_DAY;
+    minViewedMonth: TuiMonth | null = TUI_FIRST_DAY;
 
     @Input()
-    maxViewedMonth: TuiMonth = TUI_LAST_DAY;
+    maxViewedMonth: TuiMonth | null = TUI_LAST_DAY;
 
     @Input()
     hoveredItem: TuiDay | null = null;
@@ -87,16 +87,26 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     > = (disabledItemHandler, min: TuiDay, max: TuiDay) => item =>
         item.dayBefore(min) || item.dayAfter(max) || disabledItemHandler(item);
 
+    get computedMin(): TuiMonth {
+        return this.min ?? TUI_FIRST_DAY;
+    }
+
+    get computedMax(): TuiMonth {
+        return this.max ?? TUI_LAST_DAY;
+    }
+
     get computedMinViewedMonth(): TuiMonth {
-        return this.minViewedMonth.monthSameOrAfter(this.min)
-            ? this.minViewedMonth
-            : this.min;
+        const min = this.computedMin;
+        const minViewed = this.minViewedMonth ?? TUI_FIRST_DAY;
+
+        return minViewed.monthSameOrAfter(min) ? minViewed : min;
     }
 
     get computedMaxViewedMonth(): TuiMonth {
-        return this.maxViewedMonth.monthSameOrBefore(this.max)
-            ? this.maxViewedMonth
-            : this.max;
+        const max = this.computedMax;
+        const maxViewed = this.maxViewedMonth ?? TUI_LAST_DAY;
+
+        return maxViewed.monthSameOrBefore(max) ? maxViewed : max;
     }
 
     onPaginationYearClick(year: TuiYear): void {

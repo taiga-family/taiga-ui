@@ -55,8 +55,8 @@
         <tui-calendar
             tuiPreventDefault="mousedown"
             automation-id="tui-input-date__calendar"
-            [min]="min"
-            [max]="max"
+            [min]="computedMin"
+            [max]="computedMax"
             [markerHandler]="markerHandler"
             [disabledItemHandler]="disabledItemHandler"
             [month]="computedActiveYearMonth"

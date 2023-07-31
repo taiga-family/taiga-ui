@@ -83,10 +83,10 @@ export class TuiInputDateComponent
     private month: TuiMonth | null = null;
 
     @Input()
-    min = this.options.min;
+    min: TuiDay | null = this.options.min;
 
     @Input()
-    max = this.options.max;
+    max: TuiDay | null = this.options.max;
 
     @Input()
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
@@ -141,6 +141,14 @@ export class TuiInputDateComponent
         return this.textfieldSize.size;
     }
 
+    get computedMin(): TuiDay {
+        return this.min ?? this.options.min;
+    }
+
+    get computedMax(): TuiDay {
+        return this.max ?? this.options.max;
+    }
+
     get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield ? this.textfield.nativeFocusableElement : null;
     }
@@ -179,7 +187,7 @@ export class TuiInputDateComponent
         return (
             this.month ||
             this.value ||
-            tuiDateClamp(this.defaultActiveYearMonth, this.min, this.max)
+            tuiDateClamp(this.defaultActiveYearMonth, this.computedMin, this.computedMax)
         );
     }
 
@@ -205,8 +213,8 @@ export class TuiInputDateComponent
             : this.computeMaskOptions(
                   this.dateFormat,
                   this.dateSeparator,
-                  this.min,
-                  this.max,
+                  this.computedMin,
+                  this.computedMax,
               );
     }
 

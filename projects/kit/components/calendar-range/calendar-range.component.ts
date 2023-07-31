@@ -59,10 +59,10 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     items: readonly TuiDayRangePeriod[] = [];
 
     @Input()
-    min: TuiDay = TUI_FIRST_DAY;
+    min: TuiDay | null = TUI_FIRST_DAY;
 
     @Input()
-    max: TuiDay = TUI_LAST_DAY;
+    max: TuiDay | null = TUI_LAST_DAY;
 
     @Input()
     minLength: TuiDayLike | null = null;
@@ -79,6 +79,14 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     previousValue: TuiDayRange | null = null;
 
     readonly maxLengthMapper: TuiMapper<TuiDay, TuiDay> = MAX_DAY_RANGE_LENGTH_MAPPER;
+
+    get computedMin(): TuiDay {
+        return this.min ?? TUI_FIRST_DAY;
+    }
+
+    get computedMax(): TuiDay {
+        return this.max ?? TUI_LAST_DAY;
+    }
 
     constructor(
         @Optional()

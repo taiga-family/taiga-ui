@@ -61,10 +61,10 @@ export class TuiInputMonthComponent
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     @Input()
-    min: TuiMonth = this.options.min;
+    min: TuiMonth | null = this.options.min;
 
     @Input()
-    max: TuiMonth = this.options.max;
+    max: TuiMonth | null = this.options.max;
 
     @Input()
     disabledItemHandler: TuiBooleanHandler<TuiMonth> = ALWAYS_FALSE_HANDLER;
@@ -97,6 +97,14 @@ export class TuiInputMonthComponent
         return this.textfieldSize.size;
     }
 
+    get computedMin(): TuiMonth {
+        return this.min ?? this.options.min;
+    }
+
+    get computedMax(): TuiMonth {
+        return this.max ?? this.options.max;
+    }
+
     get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement || null;
     }
@@ -105,7 +113,7 @@ export class TuiInputMonthComponent
         return (
             this.activeYear ||
             this.value ||
-            tuiDateClamp(this.defaultActiveYear, this.min, this.max)
+            tuiDateClamp(this.defaultActiveYear, this.computedMin, this.computedMax)
         );
     }
 
@@ -121,6 +129,14 @@ export class TuiInputMonthComponent
         return this.isMobile && this.options.nativePicker;
     }
 
+    get nativePickerMin(): string {
+        return this.computedMin.toJSON();
+    }
+
+    get nativePickerMax(): string {
+        return this.computedMax.toJSON();
+    }
+
     get nativeValue(): string {
         return this.value?.toJSON() || '';
     }
@@ -129,7 +145,11 @@ export class TuiInputMonthComponent
         const [year, month] = value.split('-').map(Number);
 
         this.value = value
-            ? tuiDateClamp(new TuiMonth(year, month - 1), this.min, this.max)
+            ? tuiDateClamp(
+                  new TuiMonth(year, month - 1),
+                  this.computedMin,
+                  this.computedMax,
+              )
             : null;
     }
 

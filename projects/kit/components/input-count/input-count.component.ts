@@ -63,10 +63,10 @@ export class TuiInputCountComponent
     step = this.options.step;
 
     @Input()
-    min = this.options.min;
+    min: number | null = this.options.min;
 
     @Input()
-    max = this.options.max;
+    max: number | null = this.options.max;
 
     @Input()
     hideButtons = this.options.hideButtons;
@@ -98,6 +98,14 @@ export class TuiInputCountComponent
         super(control, cdr);
     }
 
+    get computedMin(): number {
+        return this.min ?? this.options.min;
+    }
+
+    get computedMax(): number {
+        return this.max ?? this.options.max;
+    }
+
     @HostBinding('class._hide-buttons')
     get buttonsHidden(): boolean {
         return this.hideButtons || this.textfieldController.appearance === 'table';
@@ -127,11 +135,17 @@ export class TuiInputCountComponent
     }
 
     get minusButtonDisabled(): boolean {
-        return !this.interactive || (tuiIsPresent(this.value) && this.value <= this.min);
+        return (
+            !this.interactive ||
+            (tuiIsPresent(this.value) && this.value <= this.computedMin)
+        );
     }
 
     get plusButtonDisabled(): boolean {
-        return !this.interactive || (tuiIsPresent(this.value) && this.value >= this.max);
+        return (
+            !this.interactive ||
+            (tuiIsPresent(this.value) && this.value >= this.computedMax)
+        );
     }
 
     onButtonMouseDown(event: MouseEvent, disabled: boolean = false): void {
@@ -198,6 +212,6 @@ export class TuiInputCountComponent
     }
 
     private safeUpdateValue(newValue: number): void {
-        this.value = tuiClamp(newValue, this.min, this.max);
+        this.value = tuiClamp(newValue, this.computedMin, this.computedMax);
     }
 }

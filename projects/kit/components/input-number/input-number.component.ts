@@ -74,10 +74,10 @@ export class TuiInputNumberComponent
     private unfinishedValue: string | null = '';
 
     @Input()
-    min = this.options.min;
+    min: number | null = this.options.min;
 
     @Input()
-    max = this.options.max;
+    max: number | null = this.options.max;
 
     @Input()
     decimal = this.options.decimal;
@@ -122,6 +122,14 @@ export class TuiInputNumberComponent
         return this.textfieldSize.size;
     }
 
+    get computedMin(): number {
+        return this.min ?? this.options.min;
+    }
+
+    get computedMax(): number {
+        return this.max ?? this.options.max;
+    }
+
     get nativeFocusableElement(): HTMLInputElement | null {
         return !this.textfield || this.computedDisabled
             ? null
@@ -133,7 +141,7 @@ export class TuiInputNumberComponent
     }
 
     get isNegativeAllowed(): boolean {
-        return this.min < 0;
+        return this.computedMin < 0;
     }
 
     get inputMode(): TuiInputMode {
@@ -164,11 +172,11 @@ export class TuiInputNumberComponent
     }
 
     get canDecrement(): boolean {
-        return this.interactive && (this.value || 0) > this.min;
+        return this.interactive && (this.value || 0) > this.computedMin;
     }
 
     get canIncrement(): boolean {
-        return this.interactive && (this.value || 0) < this.max;
+        return this.interactive && (this.value || 0) < this.computedMax;
     }
 
     get computedPrefix(): string {
@@ -187,8 +195,8 @@ export class TuiInputNumberComponent
             this.decimal,
             this.numberFormat.decimalSeparator,
             this.numberFormat.thousandSeparator,
-            this.min,
-            this.max,
+            this.computedMin,
+            this.computedMax,
             this.computedPrefix,
             this.computedPostfix,
         );
@@ -201,7 +209,11 @@ export class TuiInputNumberComponent
             return;
         }
 
-        this.value = tuiClamp((this.value || 0) + step, this.min, this.max);
+        this.value = tuiClamp(
+            (this.value || 0) + step,
+            this.computedMin,
+            this.computedMax,
+        );
         this.nativeValue = this.formattedValue;
     }
 
@@ -225,7 +237,7 @@ export class TuiInputNumberComponent
             return;
         }
 
-        if (parsedValue < this.min || parsedValue > this.max) {
+        if (parsedValue < this.computedMin || parsedValue > this.computedMax) {
             return;
         }
 
@@ -284,8 +296,8 @@ export class TuiInputNumberComponent
         const nativeNumberValue = this.nativeNumberValue;
 
         return nativeNumberValue < 0
-            ? nativeNumberValue > this.max
-            : nativeNumberValue < this.min;
+            ? nativeNumberValue > this.computedMax
+            : nativeNumberValue < this.computedMin;
     }
 
     get nativeValue(): string {

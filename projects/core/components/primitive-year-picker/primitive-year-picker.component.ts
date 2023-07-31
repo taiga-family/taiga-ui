@@ -40,16 +40,24 @@ export class TuiPrimitiveYearPickerComponent {
     initialItem: TuiYear = TuiMonth.currentLocal();
 
     @Input()
-    min: TuiYear = TUI_FIRST_DAY;
+    min: TuiYear | null = TUI_FIRST_DAY;
 
     @Input()
-    max: TuiYear = TUI_LAST_DAY;
+    max: TuiYear | null = TUI_LAST_DAY;
 
     @Input()
     disabledItemHandler: TuiBooleanHandler<number> = ALWAYS_FALSE_HANDLER;
 
     @Output()
     readonly yearClick = new EventEmitter<TuiYear>();
+
+    get computedMin(): TuiYear {
+        return this.min ?? TUI_FIRST_DAY;
+    }
+
+    get computedMax(): TuiYear {
+        return this.max ?? TUI_LAST_DAY;
+    }
 
     @HostBinding('class._single')
     get isSingle(): boolean {
@@ -64,14 +72,16 @@ export class TuiPrimitiveYearPickerComponent {
 
     get calculatedMin(): number {
         const initial = this.initialItem.year - LIMIT;
+        const min = this.computedMin;
 
-        return this.min.year > initial ? this.min.year : initial;
+        return min.year > initial ? min.year : initial;
     }
 
     get calculatedMax(): number {
         const initial = this.initialItem.year + LIMIT;
+        const max = this.computedMax;
 
-        return this.max.year < initial ? this.max.year + 1 : initial;
+        return max.year < initial ? max.year + 1 : initial;
     }
 
     isRange(item: TuiMonthRange | TuiYear): item is TuiMonthRange {
@@ -87,7 +97,8 @@ export class TuiPrimitiveYearPickerComponent {
     }
 
     getItemState(item: number): TuiInteractiveState | null {
-        const {disabledItemHandler, max, pressedItem, hoveredItem} = this;
+        const {disabledItemHandler, pressedItem, hoveredItem} = this;
+        const max = this.computedMax;
 
         if (
             max.year < item ||

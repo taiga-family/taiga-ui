@@ -15,7 +15,7 @@
         [pseudoFocus]="pseudoFocus"
         [pseudoHover]="pseudoHover"
         [invalid]="computedInvalid"
-        [maskito]="getMaskOptions(min, max)"
+        [maskito]="getMaskOptions(computedMin, computedMax)"
         [(value)]="nativeValue"
         (valueChange)="onValueChange($event)"
         (focusedChange)="onFocused($event)"
@@ -30,8 +30,8 @@
     <ng-template #dropdown>
         <tui-primitive-year-picker
             tuiPreventDefault="mousedown"
-            [min]="min | tuiToYear"
-            [max]="max | tuiToYear"
+            [min]="computedMin | tuiToYear"
+            [max]="computedMax | tuiToYear"
             [initialItem]="value || initialItem | tuiToYear"
             [disabledItemHandler]="disabledItemHandler"
             [value]="value === null ? null : (value | tuiToYear)"
