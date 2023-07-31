@@ -1,4 +1,4 @@
-name: 🤖 Auto update bundled icons
+name: 🤖 Auto update bundled & used icons
 on:
   pull_request:
   workflow_dispatch:
@@ -24,7 +24,11 @@ jobs:
           npx nx prebuild icons
           npx nx build icons
 
-      - name: Auto update bundled icons
+          npx ts-node ./scripts/generate-used-icons.ts
+          npx eslint ./projects/cdk/constants/used-icons.ts --fix
+          npx prettier ./projects/cdk/constants/used-icons.ts --write
+
+      - name: Auto update bundled & used icons
         if: env.SUPPORT_AUTO_PUSH == 'true'
         uses: ./.github/actions/auto-push
         with:
