@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    HostBinding,
     HostListener,
     Inject,
     Input,
@@ -100,11 +101,16 @@ export class TuiInputTimeComponent
         @Inject(TUI_INPUT_TIME_OPTIONS)
         private readonly options: TuiInputTimeOptions,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
+        @Inject(TUI_IS_IOS) private readonly isIos: boolean,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
-        @Inject(TUI_IS_IOS) private readonly isIos: boolean,
     ) {
         super(control, cdr);
+    }
+
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -132,10 +138,6 @@ export class TuiInputTimeComponent
 
     get nativeDatalist(): boolean {
         return this.nativePicker && !this.isIos;
-    }
-
-    get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
     }
 
     get maskOptions(): MaskitoOptions {

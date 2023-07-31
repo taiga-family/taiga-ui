@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    HostBinding,
     HostListener,
     Inject,
     Injector,
@@ -82,10 +83,10 @@ export class TuiInputDateComponent
     private month: TuiMonth | null = null;
 
     @Input()
-    min = this.options.min;
+    min: TuiDay | null = this.options.min;
 
     @Input()
-    max = this.options.max;
+    max: TuiDay | null = this.options.max;
 
     @Input()
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
@@ -121,8 +122,6 @@ export class TuiInputDateComponent
         @Optional()
         @Inject(TUI_MOBILE_CALENDAR)
         private readonly mobileCalendar: Type<Record<string, any>> | null,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
         @Inject(TUI_DATE_SEPARATOR) readonly dateSeparator: string,
         @Inject(TUI_DATE_TEXTS)
@@ -130,10 +129,24 @@ export class TuiInputDateComponent
         @Optional()
         @Inject(TUI_DATE_VALUE_TRANSFORMER)
         override readonly valueTransformer: AbstractTuiValueTransformer<TuiDay | null> | null,
-        @Inject(TUI_INPUT_DATE_OPTIONS)
-        private readonly options: TuiInputDateOptions,
+        @Inject(TUI_INPUT_DATE_OPTIONS) private readonly options: TuiInputDateOptions,
+        @Inject(TUI_TEXTFIELD_SIZE)
+        private readonly textfieldSize: TuiTextfieldSizeDirective,
     ) {
         super(control, cdr, valueTransformer);
+    }
+
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+
+    get computedMin(): TuiDay {
+        return this.min ?? this.options.min;
+    }
+
+    get computedMax(): TuiDay {
+        return this.max ?? this.options.max;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -174,7 +187,7 @@ export class TuiInputDateComponent
         return (
             this.month ||
             this.value ||
-            tuiDateClamp(this.defaultActiveYearMonth, this.min, this.max)
+            tuiDateClamp(this.defaultActiveYearMonth, this.computedMin, this.computedMax)
         );
     }
 
@@ -200,8 +213,8 @@ export class TuiInputDateComponent
             : this.computeMaskOptions(
                   this.dateFormat,
                   this.dateSeparator,
-                  this.min,
-                  this.max,
+                  this.computedMin,
+                  this.computedMax,
               );
     }
 
@@ -209,10 +222,6 @@ export class TuiInputDateComponent
         const {value} = this;
 
         return (value && this.items.find(item => item.day.daySame(value))) || null;
-    }
-
-    get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
     }
 
     @HostListener('click')

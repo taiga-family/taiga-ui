@@ -7,7 +7,6 @@
 [![Downloads per month](https://img.shields.io/npm/dm/@taiga-ui/cdk?color=dark-green)](https://www.npmjs.com/package/@taiga-ui/cdk)
 [![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white)](https://discord.gg/Us8d8JVaTg)
 [![angular-open-source-starter](https://img.shields.io/badge/made%20with-angular--open--source--starter-d81676?logo=angular)](https://github.com/tinkoff/angular-open-source-starter)
-[![Codeflow](https://img.shields.io/badge/codeflow-pr.new-blue)](https://pr.new/github.com/tinkoff/taiga-ui)
 
 [Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) • [Core team](#core-team) •
 [Figma](https://www.figma.com/community/file/1220308188005380608)
@@ -103,7 +102,7 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
             </div>
         </td>
         <td align="center">
-            <a href="http://marsibarsi.me"
+            <a href="https://twitter.com/marsibarsi"
                 ><img
                     src="https://github.com/marsibarsi.png?size=200"
                     width="100"

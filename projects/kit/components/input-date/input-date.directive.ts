@@ -14,11 +14,11 @@ export class TuiInputDateDirective extends AbstractTuiTextfieldHost<TuiInputDate
     }
 
     get max(): TuiDay {
-        return this.host.max;
+        return this.host.computedMax;
     }
 
     get min(): TuiDay {
-        return this.host.min;
+        return this.host.computedMin;
     }
 
     onValueChange(value: string): void {

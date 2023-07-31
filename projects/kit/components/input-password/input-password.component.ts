@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    HostBinding,
     Inject,
     Optional,
     Self,
@@ -16,7 +17,6 @@ import {
     TuiFocusableElementAccessor,
     TuiInputType,
     TuiNativeFocusableElement,
-    tuiPure,
 } from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
@@ -95,6 +95,11 @@ export class TuiInputPasswordComponent
         super(control, cdr);
     }
 
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.computedDisabled || !this.textfield
             ? null
@@ -107,10 +112,6 @@ export class TuiInputPasswordComponent
 
     get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
         return this.isPasswordHidden ? this.options.icons.hide : this.options.icons.show;
-    }
-
-    get context(): TuiContextWithImplicit<TuiSizeL | TuiSizeS> {
-        return this.getContext(this.textfieldSize.size);
     }
 
     get inputType(): TuiInputType {
@@ -131,12 +132,5 @@ export class TuiInputPasswordComponent
 
     protected getFallbackValue(): string {
         return '';
-    }
-
-    @tuiPure
-    private getContext(
-        $implicit: TuiSizeL | TuiSizeS,
-    ): TuiContextWithImplicit<TuiSizeL | TuiSizeS> {
-        return {$implicit};
     }
 }

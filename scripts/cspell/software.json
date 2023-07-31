@@ -24,6 +24,9 @@
         "preprocessor",
         "preprocessors",
         "postprocessor",
-        "postprocessors"
+        "postprocessors",
+        "loglevel",
+        "codespaces",
+        "kibibytes"
     ]
 }

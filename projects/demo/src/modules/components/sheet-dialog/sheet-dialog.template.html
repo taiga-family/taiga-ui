@@ -1,0 +1,153 @@
+<tui-doc-page
+    header="SheetDialog"
+    package="ADDON-MOBILE"
+    type="components"
+>
+    <ng-template pageTab>
+        A mobile draggable sheet dialog
+
+        <tui-notification
+            *ngIf="!isMobile"
+            class="tui-space_top-4"
+        >
+            This component only works on mobile devices. Enable emulation in DevTools
+        </tui-notification>
+
+        <tui-doc-example
+            id="string"
+            heading="String"
+            [content]="example1"
+        >
+            <tui-sheet-dialog-example-1></tui-sheet-dialog-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="basic"
+            heading="Basic"
+            [content]="example2"
+        >
+            <tui-sheet-dialog-example-2></tui-sheet-dialog-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="advanced"
+            heading="Advanced"
+            [content]="example3"
+        >
+            <tui-sheet-dialog-example-3></tui-sheet-dialog-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <button
+                tuiButton
+                type="button"
+                (click)="toggle()"
+            >
+                Toggle
+            </button>
+            <ng-template #template>
+                <div class="label">
+                    <tui-avatar
+                        text="Karl Gambolputty"
+                        size="m"
+                        [rounded]="true"
+                    ></tui-avatar>
+                    <label tuiLabel="Terry Jones">Karl Gambolputty</label>
+                </div>
+            </ng-template>
+            <ng-template
+                [tuiSheetDialogOptions]="{
+                    label: label === 'Template' ? template : label,
+                    closeable: closeable,
+                    stops: stops,
+                    initial: initial
+                }"
+                [(tuiSheetDialog)]="open"
+            >
+                Karl Gambolputty de von
+                Ausfern-schplenden-schlitter-crasscrenbon-fried-digger-dingle-dangle-dongle-dungle-burstein-von-knacker-thrasher-apple-banger-horowitz-ticolensic-grander-knotty-spelltinkle-grandlich-grumblemeyer-spelterwasser-kurstlich-himbleeisen-bahnwagen-gutenabend-bitte-ein-nürnburger-bratwustle-gerspurten-mitzweimache-luber-hundsfut-gumberaber-shönendanker-kalbsfleisch-mittler-aucher
+                von Hautkopft of Ulm was the last-surviving relative of Johann Gambolputty de von
+                Ausfern-schplenden-schlitter-crasscrenbon-fried-digger-dingle-dangle-dongle-dungle-burstein-von-knacker-thrasher-apple-banger-horowitz-ticolensic-grander-knotty-spelltinkle-grandlich-grumblemeyer-spelterwasser-kurstlich-himbleeisen-bahnwagen-gutenabend-bitte-ein-nürnburger-bratwustle-gerspurten-mitzweimache-luber-hundsfut-gumberaber-shönendanker-kalbsfleisch-mittler-aucher
+                von Hautkopft of Ulm.
+                <div class="tui-space_top-4">
+                    <button
+                        tuiButton
+                        type="button"
+                        (click)="toggle()"
+                    >
+                        Close
+                    </button>
+                </div>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="closeable"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="closeable"
+            >
+                Whether or not a sheet can be closed by user.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="data"
+                documentationPropertyType="I"
+            >
+                Optional data to be passed to the sheet.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="label"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="labelVariants"
+                [(documentationPropertyValue)]="label"
+            >
+                Sheet label.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="stops"
+                documentationPropertyType="string[]"
+                [documentationPropertyValues]="stopsVariants"
+                [(documentationPropertyValue)]="stops"
+            >
+                An array of stop points in any units for the sheet.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="initial"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="initial"
+            >
+                Initial stop index to open on. Index exceeding
+                <code>stops</code>
+                means to stop on top of the sheet's content.
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                <p>
+                    Import
+                    <code>TuiSheetDialogModule</code>
+                    to your
+                    <code>AppModule</code>
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p>Use it in component</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleComponent"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

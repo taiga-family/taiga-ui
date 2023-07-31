@@ -3,6 +3,7 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChildren,
+    HostBinding,
     HostListener,
     Inject,
     Input,
@@ -13,7 +14,11 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {MaskitoOptions} from '@maskito/core';
-import {maskitoNumberOptionsGenerator, maskitoParseNumber} from '@maskito/kit';
+import {
+    maskitoCaretGuard,
+    maskitoNumberOptionsGenerator,
+    maskitoParseNumber,
+} from '@maskito/kit';
 import {
     AbstractTuiNullableControl,
     CHAR_HYPHEN,
@@ -28,12 +33,19 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
+    TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_NUMBER_FORMAT,
+    TUI_TEXTFIELD_SIZE,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiDecimal,
     tuiFormatNumber,
     tuiGetFractionPartPadded,
     TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
+    TuiSizeL,
+    TuiSizeS,
+    TuiTextfieldController,
+    TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 
@@ -49,6 +61,7 @@ const DEFAULT_MAX_LENGTH = 18;
     providers: [
         tuiAsFocusableItemAccessor(TuiInputNumberComponent),
         tuiAsControl(TuiInputNumberComponent),
+        TEXTFIELD_CONTROLLER_PROVIDER,
     ],
 })
 export class TuiInputNumberComponent
@@ -56,15 +69,15 @@ export class TuiInputNumberComponent
     implements TuiFocusableElementAccessor
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;
+    private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     private unfinishedValue: string | null = '';
 
     @Input()
-    min = this.options.min;
+    min: number | null = this.options.min;
 
     @Input()
-    max = this.options.max;
+    max: number | null = this.options.max;
 
     @Input()
     decimal = this.options.decimal;
@@ -93,27 +106,42 @@ export class TuiInputNumberComponent
         control: NgControl | null,
         @Inject(ChangeDetectorRef)
         cdr: ChangeDetectorRef,
-        @Inject(TUI_INPUT_NUMBER_OPTIONS)
-        readonly options: TuiInputNumberOptions,
-        @Inject(TUI_NUMBER_FORMAT)
-        private readonly numberFormat: TuiNumberFormatSettings,
+        @Inject(TUI_INPUT_NUMBER_OPTIONS) readonly options: TuiInputNumberOptions,
+        @Inject(TUI_NUMBER_FORMAT) private readonly numberFormat: TuiNumberFormatSettings,
         @Inject(TUI_IS_IOS) private readonly isIOS: boolean,
+        @Inject(TUI_TEXTFIELD_SIZE)
+        private readonly textfieldSize: TuiTextfieldSizeDirective,
+        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
+        readonly controller: TuiTextfieldController,
     ) {
         super(control, cdr);
     }
 
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+
+    get computedMin(): number {
+        return this.min ?? this.options.min;
+    }
+
+    get computedMax(): number {
+        return this.max ?? this.options.max;
+    }
+
     get nativeFocusableElement(): HTMLInputElement | null {
-        return !this.primitiveTextfield || this.computedDisabled
+        return !this.textfield || this.computedDisabled
             ? null
-            : this.primitiveTextfield.nativeFocusableElement;
+            : this.textfield.nativeFocusableElement;
     }
 
     get focused(): boolean {
-        return !!this.primitiveTextfield && this.primitiveTextfield.focused;
+        return !!this.textfield?.focused;
     }
 
     get isNegativeAllowed(): boolean {
-        return this.min < 0;
+        return this.computedMin < 0;
     }
 
     get inputMode(): TuiInputMode {
@@ -144,11 +172,21 @@ export class TuiInputNumberComponent
     }
 
     get canDecrement(): boolean {
-        return this.interactive && (this.value || 0) > this.min;
+        return this.interactive && (this.value || 0) > this.computedMin;
     }
 
     get canIncrement(): boolean {
-        return this.interactive && (this.value || 0) < this.max;
+        return this.interactive && (this.value || 0) < this.computedMax;
+    }
+
+    get computedPrefix(): string {
+        return this.prefix || this.controller.prefix;
+    }
+
+    get computedPostfix(): string {
+        const postfix = this.postfix || this.controller.postfix;
+
+        return postfix && ` ${postfix}`;
     }
 
     get mask(): MaskitoOptions {
@@ -157,8 +195,10 @@ export class TuiInputNumberComponent
             this.decimal,
             this.numberFormat.decimalSeparator,
             this.numberFormat.thousandSeparator,
-            this.min,
-            this.max,
+            this.computedMin,
+            this.computedMax,
+            this.computedPrefix,
+            this.computedPostfix,
         );
     }
 
@@ -169,7 +209,11 @@ export class TuiInputNumberComponent
             return;
         }
 
-        this.value = tuiClamp((this.value || 0) + step, this.min, this.max);
+        this.value = tuiClamp(
+            (this.value || 0) + step,
+            this.computedMin,
+            this.computedMax,
+        );
         this.nativeValue = this.formattedValue;
     }
 
@@ -193,7 +237,7 @@ export class TuiInputNumberComponent
             return;
         }
 
-        if (parsedValue < this.min || parsedValue > this.max) {
+        if (parsedValue < this.computedMin || parsedValue > this.computedMax) {
             return;
         }
 
@@ -203,10 +247,6 @@ export class TuiInputNumberComponent
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
 
-        if (focused) {
-            return;
-        }
-
         const nativeNumberValue = this.unfinishedValue
             ? maskitoParseNumber(this.unfinishedValue, this.numberFormat.decimalSeparator)
             : this.nativeNumberValue;
@@ -214,13 +254,16 @@ export class TuiInputNumberComponent
         this.unfinishedValue = null;
 
         if (Number.isNaN(nativeNumberValue)) {
-            this.clear();
+            this.nativeValue = focused ? this.computedPrefix + this.computedPostfix : '';
+            this.value = null;
 
             return;
         }
 
-        this.value = nativeNumberValue;
-        this.nativeValue = this.formattedValue;
+        if (!focused) {
+            this.value = nativeNumberValue;
+            this.nativeValue = this.formattedValue;
+        }
     }
 
     getFormattedValue(value: number): string {
@@ -239,18 +282,22 @@ export class TuiInputNumberComponent
             decimalLimit = fraction.length;
         }
 
-        return tuiFormatNumber(value, {
-            ...this.numberFormat,
-            decimalLimit,
-        }).replace(CHAR_HYPHEN, CHAR_MINUS);
+        return (
+            this.computedPrefix +
+            tuiFormatNumber(value, {
+                ...this.numberFormat,
+                decimalLimit,
+            }).replace(CHAR_HYPHEN, CHAR_MINUS) +
+            this.computedPostfix
+        );
     }
 
     private get isNativeValueNotFinished(): boolean {
         const nativeNumberValue = this.nativeNumberValue;
 
         return nativeNumberValue < 0
-            ? nativeNumberValue > this.max
-            : nativeNumberValue < this.min;
+            ? nativeNumberValue > this.computedMax
+            : nativeNumberValue < this.computedMin;
     }
 
     get nativeValue(): string {
@@ -258,11 +305,11 @@ export class TuiInputNumberComponent
     }
 
     set nativeValue(value: string) {
-        if (!this.primitiveTextfield || !this.nativeFocusableElement) {
+        if (!this.textfield || !this.nativeFocusableElement) {
             return;
         }
 
-        this.primitiveTextfield.value = value;
+        this.textfield.value = value;
         this.nativeFocusableElement.value = value;
     }
 
@@ -283,19 +330,29 @@ export class TuiInputNumberComponent
         thousandSeparator: string,
         min: number,
         max: number,
+        prefix: string,
+        postfix: string,
     ): MaskitoOptions {
-        return maskitoNumberOptionsGenerator({
+        const {plugins, ...options} = maskitoNumberOptionsGenerator({
             decimalSeparator,
             thousandSeparator,
             min,
             max,
+            prefix,
+            postfix,
             precision: decimalMode === 'never' ? 0 : precision,
             decimalZeroPadding: decimalMode === 'always',
         });
-    }
 
-    private clear(): void {
-        this.nativeValue = '';
-        this.value = null;
+        return {
+            ...options,
+            plugins: [
+                ...plugins,
+                maskitoCaretGuard(value => [
+                    prefix.length,
+                    value.length - postfix.length,
+                ]),
+            ],
+        };
     }
 }

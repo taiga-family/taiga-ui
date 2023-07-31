@@ -3,7 +3,7 @@
 :host {
     .text-basic();
     position: relative;
-    display: block;
+    display: flex;
     padding: 0.75rem 1rem;
     border-radius: var(--tui-radius-m);
     background: #fff; // fallback for IE
@@ -11,18 +11,44 @@
     box-sizing: border-box;
     overflow: hidden;
 
-    &:after {
-        .fullsize();
-        content: '';
-        pointer-events: none;
+    &[data-size='s'] {
+        padding: 0.375rem 0.625rem;
+
+        .t-icon {
+            width: 1rem;
+            height: 1.25rem;
+            margin: 0 0.375rem 0 -0.125rem;
+        }
+
+        .t-close {
+            margin: -0.125rem -0.375rem -0.125rem 0.75rem;
+        }
     }
 
-    &._has-close-button {
-        padding-right: 2rem;
+    &[data-size='m'] {
+        padding: 0.75rem;
+
+        .t-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-right: 0.5rem;
+        }
+
+        .t-close {
+            margin: -0.125rem -0.125rem -0.125rem 1rem;
+        }
     }
 
-    &._has-icon {
-        padding-left: 2.75rem;
+    &[data-size='l'] {
+        padding: 1rem;
+        font: var(--tui-font-text-m);
+        border-radius: var(--tui-radius-l);
+
+        .t-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.5rem;
+        }
     }
 
     &[data-status='info'] {
@@ -47,23 +73,7 @@
 }
 
 .t-content {
+    flex: 1;
     word-wrap: break-word;
     color: var(--tui-text-01);
-}
-
-.t-icon {
-    position: absolute;
-    top: 0;
-    left: 1rem;
-    display: flex;
-    width: 1rem;
-    height: 100%;
-    max-height: 3rem;
-    align-items: center;
-}
-
-.t-close {
-    position: absolute;
-    top: 0.625rem;
-    right: 0.5rem;
 }

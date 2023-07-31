@@ -88,13 +88,13 @@
                     tuiTd
                     [colSpan]="item.price > 1000 ? 2 : 0"
                 >
-                    <tui-text-area
+                    <tui-textarea
                         class="textarea"
                         [expandable]="true"
                         [ngModel]="item.name"
                         [ngModelOptions]="options"
                         (ngModelChange)="onValueChange($event, 'name', item, pythons)"
-                    ></tui-text-area>
+                    ></tui-textarea>
                 </th>
                 <ng-container *tuiCell="'price'">
                     <th
@@ -171,13 +171,13 @@
                     *tuiCell="'name'"
                     tuiTd
                 >
-                    <tui-text-area
+                    <tui-textarea
                         class="textarea"
                         [expandable]="true"
                         [ngModel]="item.name"
                         [ngModelOptions]="options"
                         (ngModelChange)="onValueChange($event, 'name', item, starwars)"
-                    ></tui-text-area>
+                    ></tui-textarea>
                 </th>
                 <th
                     *tuiCell="'price'"

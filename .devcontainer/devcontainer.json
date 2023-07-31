@@ -1,0 +1,24 @@
+{
+    "name": "taiga ui dev container",
+    "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:18",
+    "hostRequirements": {
+        "memory": "8gb",
+        "cpus": 4
+    },
+    "waitFor": "onCreateCommand",
+    "updateContentCommand": "npm ci --force --loglevel silent --audit false --ignore-engines --ignore-platform --no-fund",
+    "postCreateCommand": "",
+    "postAttachCommand": "npm start -- --host 0.0.0.0 --disable-host-check",
+    "customizations": {
+        "codespaces": {
+            "openFiles": ["CONTRIBUTING.md"]
+        }
+    },
+    "portsAttributes": {
+        "3333": {
+            "label": "Demo",
+            "onAutoForward": "notify"
+        }
+    },
+    "forwardPorts": [3333]
+}

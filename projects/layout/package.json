@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/layout",
-    "version": "3.37.0",
+    "version": "3.39.0",
     "description": "A package with Taiga UI layout components",
     "keywords": [
         "angular",
@@ -13,8 +13,8 @@
     "peerDependencies": {
         "@angular/common": ">=12.0.0",
         "@angular/core": ">=12.0.0",
-        "@taiga-ui/cdk": ">=3.37.0",
-        "@taiga-ui/core": ">=3.37.0",
+        "@taiga-ui/cdk": ">=3.39.0",
+        "@taiga-ui/core": ">=3.39.0",
         "@tinkoff/ng-polymorpheus": ">=4.0.0",
         "rxjs": ">=6.0.0",
         "tslib": ">=2.0.0"

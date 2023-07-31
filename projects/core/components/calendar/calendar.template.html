@@ -5,8 +5,8 @@
 >
     <tui-primitive-year-picker
         automation-id="tui-calendar__year"
-        [min]="min"
-        [max]="max"
+        [min]="computedMin"
+        [max]="computedMax"
         [initialItem]="year"
         [value]="value"
         (yearClick)="onPickerYearClick($event)"
@@ -27,7 +27,7 @@
         [showAdjacent]="showAdjacent"
         [value]="value"
         [month]="month"
-        [disabledItemHandler]="disabledItemHandler | tuiMapper : disabledItemHandlerMapper : min : max"
+        [disabledItemHandler]="disabledItemHandler | tuiMapper : disabledItemHandlerMapper : computedMin : computedMax"
         [markerHandler]="markerHandler"
         [hoveredItem]="hoveredItem"
         (hoveredItemChange)="onHoveredItemChange($event)"
