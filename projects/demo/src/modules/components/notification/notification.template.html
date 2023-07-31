@@ -21,6 +21,14 @@
         >
             <tui-notification-example-2></tui-notification-example-2>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="sizes"
+            heading="Sizes"
+            [content]="example3"
+        >
+            <tui-notification-example-3></tui-notification-example-3>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -35,16 +43,19 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="hasIcon"
                 documentationPropertyType="boolean"
-                documentationPropertyMode="input"
+                [documentationPropertyDeprecated]="true"
                 [(documentationPropertyValue)]="hasIcon"
             >
-                A small icon with status
+                A small icon with status. Use
+                <code>icon</code>
+                input instead
             </ng-template>
             <ng-template
-                documentationPropertyName="status"
                 documentationPropertyMode="input"
+                documentationPropertyName="status"
                 documentationPropertyType="TuiNotification"
                 [documentationPropertyValues]="statusVariants"
                 [(documentationPropertyValue)]="status"
@@ -52,9 +63,18 @@
                 Status changes color of notification
             </ng-template>
             <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="icon"
+                documentationPropertyType="PolymorpheusContent"
+            >
+                Icon content. Specify
+                <code>null</code>
+                to hide icon.
+            </ng-template>
+            <ng-template
                 #documentationPropertyClose="documentationProperty"
-                documentationPropertyName="close"
                 documentationPropertyMode="output"
+                documentationPropertyName="close"
                 documentationPropertyType="void"
             >
                 Emits click on close cross. When subscribed to, close button appears.

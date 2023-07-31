@@ -4,7 +4,18 @@
     type="components"
 >
     <ng-template pageTab>
-        A mobile draggable sheet popup
+        <tui-notification status="warning">
+            If you need overlay and do not need image related functionality, it is recommended to use
+            <a
+                tuiLink
+                routerLink="/components/sheet-dialog"
+            >
+                SheetDialog
+            </a>
+            .
+            <code>Sheet</code>
+            component is on track to be deprecated.
+        </tui-notification>
 
         <tui-notification
             *ngIf="!isMobile"

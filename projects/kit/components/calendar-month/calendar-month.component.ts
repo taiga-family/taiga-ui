@@ -45,10 +45,10 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         ALWAYS_FALSE_HANDLER;
 
     @Input()
-    min: TuiMonth = TUI_FIRST_DAY;
+    min: TuiMonth | null = TUI_FIRST_DAY;
 
     @Input()
-    max: TuiMonth = TUI_LAST_DAY;
+    max: TuiMonth | null = TUI_LAST_DAY;
 
     @Output()
     readonly monthClick = new EventEmitter<TuiMonth>();
@@ -76,12 +76,20 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         );
     }
 
+    get computedMin(): TuiMonth {
+        return this.min ?? TUI_FIRST_DAY;
+    }
+
+    get computedMax(): TuiMonth {
+        return this.max ?? TUI_LAST_DAY;
+    }
+
     get previousYearDisabled(): boolean {
-        return this.year.yearSameOrBefore(this.min);
+        return this.year.yearSameOrBefore(this.computedMin);
     }
 
     get nextYearDisabled(): boolean {
-        return this.year.yearSameOrAfter(this.max);
+        return this.year.yearSameOrAfter(this.computedMax);
     }
 
     getItemState(item: TuiMonth): TuiInteractiveState | null {
@@ -229,8 +237,8 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         return this.calculateDisabledItemHandlerWithMinMax(
             this.disabledItemHandler,
             this.value,
-            this.min,
-            this.max,
+            this.computedMin,
+            this.computedMax,
         );
     }
 

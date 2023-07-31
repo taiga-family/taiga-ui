@@ -1,21 +1,24 @@
-<tui-svg
-    *ngIf="hasIcon"
-    automation-id="tui-notification__icon"
-    class="t-icon"
-    [src]="icon"
-></tui-svg>
+<ng-container *ngIf="icon && hasIcon">
+    <tui-svg
+        *polymorpheusOutlet="icon as iconName; context: {$implicit: status}"
+        automation-id="tui-notification__icon"
+        class="t-icon"
+        [src]="iconName"
+    ></tui-svg>
+</ng-container>
+
 <div class="t-content">
     <ng-content></ng-content>
 </div>
 <button
     *ngIf="hasClose"
-    tuiIconButton
-    type="button"
+    appearance="icon"
     automation-id="tui-notification__close"
     size="xs"
-    icon="tuiIconCloseLarge"
-    appearance="icon"
+    tuiIconButton
+    type="button"
     class="t-close"
+    [icon]="textfieldOptions.iconCleaner"
     [title]="closeWord$ | async"
     (click)="close.emit()"
 ></button>

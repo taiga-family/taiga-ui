@@ -95,6 +95,8 @@ describe(`InputSlider`, () => {
     describe(`\`quantum\` prop`, () => {
         beforeEach(async () => {
             testComponent.control = new FormControl(0);
+            testComponent.prefix = ``;
+            testComponent.postfix = ``;
             testComponent.quantum = 10;
             testComponent.steps = 0;
 
@@ -390,7 +392,7 @@ describe(`InputSlider`, () => {
             await fixture.whenStable();
 
             expect(testComponent.control.value).toBe(100);
-            expect(inputPO.value).toBe(`100`);
+            expect(inputPO.value).toBe(`$100 things`);
         });
     });
 

@@ -15,12 +15,12 @@ import {DemoTuiIconsTabs, TUI_DEMO_ICONS} from './icons.tokens';
 })
 export class IconsComponent {
     readonly keys = Object.keys(this.icons);
-
     readonly exampleModule = import('./import/import-module.md?raw');
     readonly exampleHtml = import('./import/insert-template.md?raw');
 
     appearance = false;
     transparent = false;
+    color: string | null = null;
 
     readonly iconVariants: readonly string[] = [
         'https://ng-web-apis.github.io/dist/assets/images/web-api.svg',

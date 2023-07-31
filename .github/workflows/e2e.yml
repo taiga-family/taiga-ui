@@ -2,9 +2,6 @@ name: ⚙️ E2E tests
 on:
   pull_request:
 
-env:
-  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
-
 jobs:
   build-demo:
     if: ${{ !contains(github.head_ref , 'release/') }}

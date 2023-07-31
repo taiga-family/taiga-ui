@@ -70,6 +70,7 @@
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
+                [documentationPropertyDeprecated]="true"
                 [(documentationPropertyValue)]="size"
             >
                 Items/Lines per page.
@@ -79,16 +80,22 @@
                     <code>items</code>
                     by default.
                 </p>
+                Use
+                <code>paginationChange</code>
+                instead
             </ng-template>
             <ng-template
                 documentationPropertyName="page"
                 documentationPropertyMode="input"
                 documentationPropertyType="number"
+                [documentationPropertyDeprecated]="true"
                 [(documentationPropertyValue)]="page"
             >
                 Current page.
-
                 <p>Indexing starts at zero.</p>
+                Use
+                <code>paginationChange</code>
+                instead
             </ng-template>
             <ng-template
                 documentationPropertyName="items"
@@ -104,18 +111,25 @@
                 documentationPropertyName="pageChange"
                 documentationPropertyMode="output"
                 documentationPropertyType="number"
+                [documentationPropertyDeprecated]="true"
             >
                 Emits the selected page when user navigates by spin&nbsp;buttons or selects new size of items per page.
+                Use
+                <code>paginationChange</code>
+                instead
             </ng-template>
             <ng-template
                 #documentationPropertySizeChange="documentationProperty"
                 documentationPropertyName="sizeChange"
                 documentationPropertyMode="output"
                 documentationPropertyType="number"
+                [documentationPropertyDeprecated]="true"
             >
                 Emits the new
                 <code>size</code>
-                -property (user selects new amount of lines per page).
+                -property (user selects new amount of lines per page). Use
+                <code>paginationChange</code>
+                instead
             </ng-template>
             <ng-template
                 #documentationPropertyPaginationChange="documentationProperty"

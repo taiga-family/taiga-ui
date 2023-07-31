@@ -4,9 +4,6 @@ on:
   push:
     branches: [main]
 
-env:
-  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
-
 jobs:
   typecheck:
     if: ${{ !contains(github.head_ref, 'release/') }}

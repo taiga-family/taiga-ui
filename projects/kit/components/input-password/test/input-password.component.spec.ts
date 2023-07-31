@@ -2,10 +2,8 @@ import {Component, DebugElement, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
-import {PolymorpheusHandler} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputPasswordComponent} from '../input-password.component';
 import {TuiInputPasswordModule} from '../input-password.module';
@@ -38,14 +36,6 @@ describe(`InputPassword`, () => {
         return pageObject.getByAutomationId(`tui-password__icon`);
     }
 
-    function getIconScr(): string {
-        return (
-            component.icon as PolymorpheusHandler<
-                TuiContextWithImplicit<TuiSizeL | TuiSizeS>
-            >
-        )(component.context) as string;
-    }
-
     configureTestSuite(() => {
         TestBed.configureTestingModule({
             imports: [
@@ -65,58 +55,6 @@ describe(`InputPassword`, () => {
         component = testComponent.component;
 
         fixture.detectChanges();
-    });
-
-    describe(`Behavior of the Show Password icon"`, () => {
-        it(`It is initially present and represents the "Closed Eye"`, () => {
-            const icon = getIcon();
-            const iconSrc = getIconScr();
-
-            expect(icon).not.toBeNull();
-            expect(iconSrc).toBe(`tuiIconEyeOffLarge`);
-        });
-
-        it(`When you click on it, the icon represents "Open eye"`, () => {
-            const icon = getIcon();
-
-            icon?.nativeElement.click();
-
-            const iconSrc = getIconScr();
-
-            expect(icon).not.toBeNull();
-            expect(iconSrc).toBe(`tuiIconEyeLarge`);
-        });
-
-        it(`Small icons are small`, () => {
-            testComponent.size = `s`;
-            fixture.detectChanges();
-
-            const icon = getIcon();
-            let iconSrc = getIconScr();
-
-            expect(iconSrc).toBe(`tuiIconEyeOff`);
-
-            icon?.nativeElement.click();
-
-            iconSrc = getIconScr();
-
-            expect(icon).not.toBeNull();
-            expect(iconSrc).toBe(`tuiIconEye`);
-        });
-
-        it(`If readOnly - no icon`, () => {
-            testComponent.readOnly = true;
-            fixture.detectChanges();
-
-            expect(getIcon()).toBeNull();
-        });
-
-        it(`If disabled - no icon`, () => {
-            testComponent.control.disable();
-            fixture.detectChanges();
-
-            expect(getIcon()).toBeNull();
-        });
     });
 
     describe(`Field visibility`, () => {

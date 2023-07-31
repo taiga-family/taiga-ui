@@ -1,0 +1,104 @@
+@import 'taiga-ui-local';
+
+:host {
+    .fullsize(fixed, inset);
+    right: -1rem;
+    display: flex;
+    flex-direction: column;
+    clip-path: inset(0 1rem 0 0 round 0.75rem 0.75rem 0 0);
+    font: var(--tui-font-text-m);
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    overscroll-behavior: none;
+    box-shadow: 0 20rem var(--tui-elevation-01);
+
+    &._stuck {
+        scroll-snap-type: y proximity;
+    }
+
+    &._closeable {
+        display: block;
+
+        .t-stops {
+            display: flex;
+        }
+    }
+}
+
+.t-stops {
+    display: none;
+    height: 100%;
+    scroll-snap-stop: always;
+    scroll-snap-align: start;
+}
+
+.t-stop {
+    scroll-snap-stop: always;
+    scroll-snap-align: start;
+    height: 1rem;
+    width: 1rem;
+}
+
+.t-sheet {
+    .shadow();
+    width: calc(100% - 1rem);
+    border-radius: 0.75rem 0.75rem 0 0;
+    padding: 0 1rem 1rem;
+    margin-top: auto;
+    background: var(--tui-elevation-01);
+    box-sizing: border-box;
+    scroll-snap-stop: always;
+    scroll-snap-align: start;
+}
+
+@supports (-moz-appearance: none) {
+    .t-sheet_small {
+        scroll-snap-align: end;
+    }
+}
+
+.t-top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    height: 1.5rem;
+    background: var(--tui-elevation-01);
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0.5rem;
+        left: 50%;
+        width: 2rem;
+        height: 0.25rem;
+        transform: translateX(-50%);
+        background: var(--tui-base-05);
+        border-radius: 1rem;
+    }
+}
+
+.t-heading {
+    position: sticky;
+    top: 1.5rem;
+    z-index: 1;
+    display: flex;
+    margin: 0;
+    padding-bottom: 0.5rem;
+    font: var(--tui-font-heading-6);
+    background: var(--tui-elevation-01);
+    overflow: hidden;
+}
+
+.t-close {
+    right: -0.25rem;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.t-content {
+    .createStackingContext();
+
+    &:nth-child(3) {
+        margin-top: 1rem;
+    }
+}

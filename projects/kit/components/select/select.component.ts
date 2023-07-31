@@ -3,6 +3,7 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChild,
+    HostBinding,
     Inject,
     Input,
     Optional,
@@ -23,6 +24,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_CLEANER,
+    TUI_TEXTFIELD_SIZE,
     tuiAsDataListHost,
     tuiAsOptionContent,
     TuiDataListDirective,
@@ -33,6 +35,7 @@ import {
     TuiSizeM,
     TuiSizeS,
     TuiTextfieldCleanerDirective,
+    TuiTextfieldSizeDirective,
     TuiValueContentContext,
 } from '@taiga-ui/core';
 import {AbstractTuiNativeSelect} from '@taiga-ui/kit/abstract';
@@ -93,16 +96,19 @@ export class TuiSelectComponent<T>
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_TEXTFIELD_CLEANER)
         private readonly textfieldCleaner: TuiTextfieldCleanerDirective,
-        @Inject(TUI_ARROW_MODE)
-        private readonly arrowMode: TuiArrowMode,
-        @Inject(TUI_ITEMS_HANDLERS)
-        private readonly itemsHandlers: TuiItemsHandlers<T>,
-        @Inject(TUI_SELECT_OPTIONS)
-        private readonly options: TuiSelectOptions<T>,
-        @Inject(TUI_IS_MOBILE)
-        readonly isMobile: boolean,
+        @Inject(TUI_TEXTFIELD_SIZE)
+        private readonly textfieldSize: TuiTextfieldSizeDirective,
+        @Inject(TUI_ARROW_MODE) private readonly arrowMode: TuiArrowMode,
+        @Inject(TUI_ITEMS_HANDLERS) private readonly itemsHandlers: TuiItemsHandlers<T>,
+        @Inject(TUI_SELECT_OPTIONS) private readonly options: TuiSelectOptions<T>,
+        @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
     ) {
         super(control, cdr);
+    }
+
+    @HostBinding('attr.data-size')
+    get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
     }
 
     get arrow(): PolymorpheusContent<

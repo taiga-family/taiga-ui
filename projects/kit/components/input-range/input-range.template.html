@@ -12,12 +12,12 @@
     <tui-input-number
         tuiTextfieldAppearance="none"
         automation-id="tui-input-range__left-input"
-        class="t-left t-text-input"
-        [min]="min"
+        class="t-left"
+        [min]="computedMin"
         [max]="value[1]"
         [precision]="precision"
         [decimal]="decimal"
-        [postfix]="pluralize && !showLeftValueContent ? (value[0] | i18nPlural : pluralize) : ''"
+        [tuiTextfieldPostfix]="pluralize && !showLeftValueContent ? (value[0] | i18nPlural : pluralize) : ''"
         [disabled]="computedDisabled"
         [readOnly]="readOnly"
         [ngModel]="value[0]"
@@ -37,50 +37,40 @@
         </div>
     </tui-input-number>
 
-    <div class="t-right">
-        <tui-input-number
-            tuiTextfieldAppearance="none"
-            automation-id="tui-input-range__right-input"
-            class="t-text-input"
-            [min]="value[0]"
-            [max]="max"
-            [precision]="precision"
-            [decimal]="decimal"
-            [disabled]="computedDisabled"
-            [readOnly]="readOnly"
-            [ngModel]="value[1]"
-            (ngModelChange)="onInputRight($event)"
-            (focusedChange)="onTextInputFocused($event, true)"
-            (keydown.arrowUp)="changeByStep($event, [0, 1])"
-            (keydown.arrowDown)="changeByStep($event, [0, -1])"
+    <tui-input-number
+        tuiTextfieldAppearance="none"
+        automation-id="tui-input-range__right-input"
+        class="t-right"
+        [min]="value[0]"
+        [max]="computedMax"
+        [precision]="precision"
+        [decimal]="decimal"
+        [disabled]="computedDisabled"
+        [tuiTextfieldPostfix]="pluralize && !showRightValueContent ? (value[1] | i18nPlural : pluralize) : ''"
+        [readOnly]="readOnly"
+        [ngModel]="value[1]"
+        (ngModelChange)="onInputRight($event)"
+        (focusedChange)="onTextInputFocused($event, true)"
+        (keydown.arrowUp)="changeByStep($event, [0, 1])"
+        (keydown.arrowDown)="changeByStep($event, [0, -1])"
+    >
+        <div
+            *ngIf="showRightValueContent"
+            ngProjectAs="tuiContent"
         >
-            <div
-                *ngIf="showRightValueContent"
-                ngProjectAs="tuiContent"
-            >
-                <ng-container *polymorpheusOutlet="rightValueContent as text; context: {$implicit: value[1]}">
-                    {{ text }}
-                </ng-container>
-            </div>
-        </tui-input-number>
-
-        <!-- TODO replace by postfix of the right InputNumber (after fix https://github.com/Tinkoff/taiga-ui/issues/1193) -->
-        <span
-            *ngIf="!showRightValueContent && pluralize"
-            automation-id="tui-input-range__pluralize-right"
-            class="t-pluralize-right"
-        >
-            &nbsp;{{ value[1] | i18nPlural : pluralize }}
-        </span>
-    </div>
+            <ng-container *polymorpheusOutlet="rightValueContent as text; context: {$implicit: value[1]}">
+                {{ text }}
+            </ng-container>
+        </div>
+    </tui-input-number>
 
     <tui-range
         class="t-range"
-        [min]="min"
-        [max]="max"
+        [min]="computedMin"
+        [max]="computedMax"
         [step]="step"
         [segments]="segments"
-        [keySteps]="computeKeySteps(keySteps, min, max)"
+        [keySteps]="computeKeySteps(keySteps, computedMin, computedMax)"
         [focusable]="false"
         [disabled]="readOnly || disabled"
         [ngModel]="value"

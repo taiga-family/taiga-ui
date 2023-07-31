@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiAlertService, TuiNotification} from '@taiga-ui/core';
+import {TuiAlertService} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs/operators';
 
@@ -33,10 +33,10 @@ export class TuiDialogsExample1 {
                 switchMap(response =>
                     response
                         ? this.alerts.open(wisely, {
-                              status: TuiNotification.Success,
+                              status: 'success',
                           })
                         : this.alerts.open(poorly, {
-                              status: TuiNotification.Error,
+                              status: 'error',
                           }),
                 ),
             )

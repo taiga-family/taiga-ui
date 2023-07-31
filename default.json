@@ -9,9 +9,10 @@
     "prConcurrentLimit": 0,
     "labels": ["renovate"],
     "repositories": ["tinkoff/taiga-ui"],
-    "username": "renovate",
-    "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
+    "rebaseWhen": "behind-base-branch",
+    "automerge": true,
     "platform": "github",
+    "autoApprove": true,
     "masterIssueApproval": false,
     "separateMajorMinor": true,
     "separateMinorPatch": false,
@@ -34,6 +35,7 @@
     "packageRules": [
         {
             "enabled": false,
+            "matchManagers": ["npm"],
             "matchUpdateTypes": ["major"]
         },
         {
@@ -57,6 +59,15 @@
             "matchUpdateTypes": ["major", "minor"],
             "matchPackageNames": ["typescript"],
             "enabled": false
+        },
+        {
+            "enabled": true,
+            "matchManagers": ["github-actions"],
+            "matchUpdateTypes": ["major"]
+        },
+        {
+            "matchUpdateTypes": ["major"],
+            "labels": ["renovate", "major"]
         },
         {
             "matchUpdateTypes": ["minor"],

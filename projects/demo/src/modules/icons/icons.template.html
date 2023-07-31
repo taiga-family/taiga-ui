@@ -37,9 +37,34 @@
 
         <icons-group [icons]="icons[key]">
             <div class="icons-customization">
+                <tui-hosted-dropdown
+                    tuiDropdownAlign="left"
+                    class="tui-space_right-2"
+                    [content]="picker"
+                    [tuiDropdownMaxHeight]="999"
+                >
+                    <div class="icons-color">
+                        <div
+                            class="color-picker"
+                            [style.background-color]="color || 'var(--tui-text-01)'"
+                        ></div>
+                        <div>Icon color</div>
+                    </div>
+                </tui-hosted-dropdown>
+                <ng-template
+                    #picker
+                    let-activeZone
+                >
+                    <tui-color-selector
+                        [tuiActiveZoneParent]="activeZone"
+                        [color]="color || ''"
+                        (colorChange)="color = $event"
+                    ></tui-color-selector>
+                </ng-template>
+
                 <tui-checkbox-labeled
                     size="m"
-                    class="t-checkbox"
+                    class="t-checkbox tui-space_right-3"
                     [(ngModel)]="transparent"
                 >
                     Transparent
@@ -67,6 +92,8 @@
                     appearance="icon"
                     class="icon"
                     [attr.aria-label]="icon"
+                    [style.--tui-text-01]="color"
+                    [style.--tui-text-01-night]="color"
                     [class.t-appearance]="appearance"
                     [class.t-background]="transparent"
                     [class.t-wrapper-icons_dark]="(mode$ | async) === 'onDark'"
