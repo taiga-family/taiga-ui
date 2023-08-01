@@ -1,23 +1,14 @@
 :host {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     font: var(--tui-font-text-l);
     text-align: center;
     font-weight: bold;
 }
 
-.t-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    outline: none;
-}
-
-.t-arrow {
-    margin: 0 0.25rem;
-
-    &_hidden {
-        visibility: hidden;
-    }
+.t-hidden {
+    visibility: hidden;
 }
 
 .t-content {
