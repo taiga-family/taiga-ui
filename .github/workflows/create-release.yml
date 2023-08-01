@@ -76,7 +76,7 @@ jobs:
           echo "${{ steps.get-pr-body.outputs.body }}"
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         if: ${{ env.IS_DRY_MODE == 'false' }}
         with:
           delete-branch: true
