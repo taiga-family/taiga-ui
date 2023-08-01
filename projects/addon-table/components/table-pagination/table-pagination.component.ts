@@ -7,7 +7,7 @@ import {
     Output,
 } from '@angular/core';
 import {TUI_TABLE_PAGINATION_TEXTS} from '@taiga-ui/addon-table/tokens';
-import {TUI_SPIN_TEXTS} from '@taiga-ui/core';
+import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS, TuiSpinIcons} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
 import {TuiTablePagination} from './table-pagination';
@@ -55,6 +55,7 @@ export class TuiTablePaginationComponent {
     open = false;
 
     constructor(
+        @Inject(TUI_SPIN_ICONS) readonly icons: TuiSpinIcons,
         @Inject(TUI_SPIN_TEXTS) readonly spinTexts$: Observable<[string, string]>,
         @Inject(TUI_TABLE_PAGINATION_TEXTS)
         readonly texts$: Observable<Record<'linesPerPage' | 'of' | 'pages', string>>,

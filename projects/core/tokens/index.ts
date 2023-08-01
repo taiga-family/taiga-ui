@@ -22,6 +22,7 @@ export * from './ordered-short-week-days';
 export * from './sanitizer';
 export * from './scroll-ref';
 export * from './selection-stream';
+export * from './spin-icons';
 export * from './svg-content-processor';
 export * from './svg-src-processor';
 export * from './textfield-appearance';

@@ -19,6 +19,7 @@ import {
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeS} from '@taiga-ui/core';
+import {TUI_ARROW_OPTIONS, TuiArrowOptions} from '@taiga-ui/kit/components/arrow';
 import {Observable} from 'rxjs';
 
 import {TuiAccordionItemContentDirective} from './accordion-item-content.directive';
@@ -82,6 +83,7 @@ export class TuiAccordionItemComponent
     constructor(
         @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
+        @Inject(TUI_ARROW_OPTIONS) readonly options: TuiArrowOptions,
     ) {
         super();
     }

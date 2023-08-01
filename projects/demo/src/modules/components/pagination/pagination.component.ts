@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiSizeS} from '@taiga-ui/core';
+import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-tui-pagination',
@@ -38,8 +38,8 @@ export class ExampleTuiPaginationComponent {
     focusable = true;
     index = 0;
     length = 8;
-    readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
-    size: TuiSizeS = this.sizeVariants[1];
+    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
+    size = this.sizeVariants[2];
     activePadding = 1;
     sidePadding = 1;
 }

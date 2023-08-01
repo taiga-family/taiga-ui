@@ -22,17 +22,22 @@ import {
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
+    TUI_SPIN_ICONS,
     TuiAppearance,
     TuiBrightness,
     TuiButtonComponent,
     TuiHorizontalDirection,
     TuiModeDirective,
+    TuiSizeL,
     TuiSizeS,
+    TuiSizeXS,
+    TuiSpinIcons,
 } from '@taiga-ui/core';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiHorizontalDirectionToNumber} from '@taiga-ui/kit/utils/math';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import {EMPTY, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 const DOTS_LENGTH = 1;
 const ACTIVE_ITEM_LENGTH = 1;
@@ -55,7 +60,7 @@ export class TuiPaginationComponent
     length = 1;
 
     @Input()
-    size: TuiSizeS = 'm';
+    size: TuiSizeL | TuiSizeS = 'l';
 
     @Input()
     readonly disabled = false;
@@ -87,12 +92,17 @@ export class TuiPaginationComponent
     @Output()
     readonly indexChange = new EventEmitter<number>();
 
+    readonly mode$ = this.modeDirective
+        ? this.modeDirective.change$.pipe(map(() => this.modeDirective?.mode || null))
+        : EMPTY;
+
     constructor(
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Optional()
         @Inject(TuiModeDirective)
         private readonly modeDirective: TuiModeDirective | null,
         @Inject(TUI_PAGINATION_TEXTS) readonly texts$: Observable<[string, string]>,
+        @Inject(TUI_SPIN_ICONS) readonly icons: TuiSpinIcons,
     ) {
         super();
     }
@@ -133,12 +143,8 @@ export class TuiPaginationComponent
         return this.itemsFit ? this.length : this.maxElementsLength;
     }
 
-    get sizeM(): boolean {
-        return this.size === 'm';
-    }
-
-    get mode(): TuiBrightness | null {
-        return this.modeDirective ? this.modeDirective.mode : null;
+    get buttonSize(): TuiSizeXS {
+        return this.size === 'm' ? 'xs' : 's';
     }
 
     get arrowIsDisabledLeft(): boolean {
@@ -159,7 +165,7 @@ export class TuiPaginationComponent
      * @returns index or null (for '…')
      */
     getItemIndexByElementIndex(elementIndex: number): number | null {
-        if (!this.sizeM) {
+        if (this.size === 's') {
             return elementIndex;
         }
 
