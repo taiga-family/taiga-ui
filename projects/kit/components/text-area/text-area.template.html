@@ -1,0 +1,114 @@
+<ng-container *ngIf="hintOptions?.change$ | async"></ng-container>
+<div
+    tuiWrapper
+    automation-id="tui-text-area__wrapper"
+    class="t-outline"
+    [appearance]="appearance"
+    [disabled]="disabled"
+    [focus]="computedFocused"
+    [hover]="pseudoHover"
+    [readOnly]="readOnly"
+    [invalid]="computedInvalid"
+>
+    <div
+        *ngIf="hasCounter"
+        automation-id="tui-text-area__counter"
+        class="t-counter"
+    >
+        {{ value.length }}/{{ maxLength }}
+    </div>
+
+    <label
+        class="t-content"
+        (mousedown)="onMouseDown($event)"
+    >
+        <div class="t-wrapper">
+            <div
+                *ngIf="hasPlaceholder"
+                automation-id="tui-text-area__placeholder"
+                class="t-placeholder"
+                [class.t-placeholder_raised]="placeholderRaised"
+            >
+                <ng-content></ng-content>
+            </div>
+            <tui-scrollbar
+                automation-id="tui-text-area__scrollbar"
+                class="t-box"
+                [style.maxHeight.px]="computeMaxHeight"
+            >
+                <div class="t-input-wrapper">
+                    <div class="t-relative">
+                        <div
+                            aria-hidden="true"
+                            class="t-pseudo-content"
+                        >
+                            <span [textContent]="fittedContent || nativeFocusableElement?.placeholder"></span>
+                            <span
+                                class="t-pseudo-content__extra"
+                                [textContent]="extraContent"
+                            ></span>
+                            &nbsp;
+                        </div>
+                        <textarea
+                            #focusableElement
+                            automation-id="tui-text-area__native"
+                            class="t-input"
+                            [id]="id"
+                            [tuiFocusable]="computedFocusable"
+                            [disabled]="computedDisabled"
+                            [readOnly]="readOnly"
+                            [(ngModel)]="value"
+                        ></textarea>
+                        <ng-content select="textarea"></ng-content>
+                    </div>
+                </div>
+            </tui-scrollbar>
+        </div>
+        <div class="t-icons">
+            <div
+                *ngIf="iconLeftContent"
+                class="t-icon t-icon_left t-textfield-icon"
+            >
+                <tui-svg
+                    *polymorpheusOutlet="iconLeftContent as src; context: {$implicit: size}"
+                    tuiWrapper
+                    appearance="icon"
+                    [src]="src"
+                ></tui-svg>
+            </div>
+            <ng-container *ngIf="hasCustomContent">
+                <tui-svg
+                    *polymorpheusOutlet="controller.customContent as src"
+                    [src]="src"
+                ></tui-svg>
+            </ng-container>
+            <ng-container *ngIf="hasCleaner">
+                <tui-svg
+                    *polymorpheusOutlet="iconCleaner as src; context: {$implicit: size}"
+                    tuiWrapper
+                    appearance="icon"
+                    class="t-cleaner"
+                    [src]="src"
+                    (click.stop)="onValueChange('')"
+                ></tui-svg>
+            </ng-container>
+            <tui-tooltip
+                *ngIf="hasTooltip"
+                automation-id="tui-text-area__tooltip"
+                [describeId]="id"
+                [content]="hintOptions?.content"
+            ></tui-tooltip>
+            <div
+                *ngIf="iconContent"
+                class="t-icon t-textfield-icon"
+            >
+                <tui-svg
+                    *polymorpheusOutlet="iconContent as src; context: {$implicit: size}"
+                    tuiWrapper
+                    appearance="icon"
+                    [src]="src"
+                ></tui-svg>
+            </div>
+        </div>
+    </label>
+</div>

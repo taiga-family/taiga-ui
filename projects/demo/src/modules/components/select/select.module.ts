@@ -26,7 +26,7 @@ import {
     TuiMultiSelectModule,
     TuiRadioListModule,
     TuiSelectModule,
-    TuiTextareaModule,
+    TuiTextAreaModule,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -54,7 +54,7 @@ import {ExampleTuiSelectComponent} from './select.component';
         ScrollingModule,
         TuiScrollbarModule,
         TuiDataListModule,
-        TuiTextareaModule,
+        TuiTextAreaModule,
         TuiSelectModule,
         TuiCardModule,
         TuiRadioListModule,
