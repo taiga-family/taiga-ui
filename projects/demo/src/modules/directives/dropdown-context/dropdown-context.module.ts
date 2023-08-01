@@ -12,7 +12,7 @@ import {
     TuiLinkModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
-import {TuiDataListDropdownManagerModule, TuiTextareaModule} from '@taiga-ui/kit';
+import {TuiDataListDropdownManagerModule, TuiTextAreaModule} from '@taiga-ui/kit';
 
 import {DropdownDocumentationModule} from '../../components/abstract/dropdown-documentation/dropdown-documentation.module';
 import {ExampleTuiDropdownContextComponent} from './dropdown-context.component';
@@ -28,7 +28,7 @@ import {TuiDropdownContextExample3} from './examples/3';
         TuiSvgModule,
         TuiTableModule,
         TuiDataListDropdownManagerModule,
-        TuiTextareaModule,
+        TuiTextAreaModule,
         TuiButtonModule,
         TuiLinkModule,
         TuiDropdownModule,
