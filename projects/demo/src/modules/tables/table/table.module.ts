@@ -33,7 +33,7 @@ import {
     TuiInputNumberModule,
     TuiSelectModule,
     TuiTagModule,
-    TuiTextareaModule,
+    TuiTextAreaModule,
 } from '@taiga-ui/kit';
 
 import {TuiTableExample1} from './examples/1';
@@ -55,7 +55,7 @@ import {ExampleTuiTableComponent} from './table.component';
         TuiScrollbarModule,
         TuiTableModule,
         TuiInputModule,
-        TuiTextareaModule,
+        TuiTextAreaModule,
         TuiInputNumberModule,
         TuiInputCountModule,
         TuiSelectModule,

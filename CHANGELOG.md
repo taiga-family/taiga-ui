@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.39.1](https://github.com/tinkoff/taiga-ui/compare/v3.39.0...v3.39.1) (2023-08-01)
+
+### Features
+
+- **cdk:** add array of icons, used in taiga components ([#5005](https://github.com/tinkoff/taiga-ui/issues/5005))
+  ([c989f60](https://github.com/tinkoff/taiga-ui/commit/c989f60613de3213f334d992a209bdae7a15178d))
+
+### Bug Fixes
+
+- **kit:** revert alias `tui-textarea` for `tui-text-area` ([#5015](https://github.com/tinkoff/taiga-ui/issues/5015))
+  ([b801d59](https://github.com/tinkoff/taiga-ui/commit/b801d5941160f71e643ee9affe9c0c59c6b2cd93))
+
 ## [3.39.0](https://github.com/tinkoff/taiga-ui/compare/v3.37.0...v3.39.0) (2023-07-31)
 
 ### Features

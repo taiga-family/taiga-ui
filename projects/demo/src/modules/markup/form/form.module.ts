@@ -31,7 +31,7 @@ import {
     TuiRadioListModule,
     TuiSelectModule,
     TuiStepperModule,
-    TuiTextareaModule,
+    TuiTextAreaModule,
 } from '@taiga-ui/kit';
 
 import {StylesInfoModule} from '../../app/styles-info/styles-info.module';
@@ -48,7 +48,7 @@ import {FormComponent} from './form.component';
         TuiStepperModule,
         TuiInputDateModule,
         TuiInputTimeModule,
-        TuiTextareaModule,
+        TuiTextAreaModule,
         TuiInputSliderModule,
         TuiInputRangeModule,
         TuiCheckboxLabeledModule,

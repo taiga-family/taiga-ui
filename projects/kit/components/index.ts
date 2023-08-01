@@ -60,7 +60,7 @@ export * from '@taiga-ui/kit/components/slider';
 export * from '@taiga-ui/kit/components/stepper';
 export * from '@taiga-ui/kit/components/tabs';
 export * from '@taiga-ui/kit/components/tag';
-export * from '@taiga-ui/kit/components/textarea';
+export * from '@taiga-ui/kit/components/text-area';
 export * from '@taiga-ui/kit/components/tiles';
 export * from '@taiga-ui/kit/components/toggle';
 export * from '@taiga-ui/kit/components/tree';
