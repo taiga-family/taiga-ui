@@ -14,12 +14,25 @@ import {basename, join} from 'path';
         `icons`,
         `schematics`,
     ];
+    const excludedFiles = [`deprecated-icons.ts`, `used-icons.ts`];
+    const excludedNames = [`tuiIconButton`];
 
-    generateUsedIcons(rootDirectory, excludedFolders);
+    generateUsedIcons(rootDirectory, {excludedFolders, excludedNames, excludedFiles});
 })();
 
-function generateUsedIcons(rootDirectory: string, excludedFolders: string[]): void {
-    const tuiIconNames = findTuiIconNames(rootDirectory, excludedFolders);
+function generateUsedIcons(
+    rootDirectory: string,
+    {
+        excludedFolders,
+        excludedNames,
+        excludedFiles,
+    }: {excludedFolders: string[]; excludedNames: string[]; excludedFiles: string[]},
+): void {
+    const tuiIconNames = findTuiIconNames(rootDirectory, {
+        excludedFolders,
+        excludedNames,
+        excludedFiles,
+    });
 
     writeFileSync(
         `./projects/cdk/constants/used-icons.ts`,
@@ -33,7 +46,14 @@ function generateUsedIcons(rootDirectory: string, excludedFolders: string[]): vo
     );
 }
 
-function findTuiIconNames(rootDir: string, excludedFolders: string[]): string[] {
+function findTuiIconNames(
+    rootDir: string,
+    {
+        excludedFolders,
+        excludedNames,
+        excludedFiles,
+    }: {excludedFolders: string[]; excludedNames: string[]; excludedFiles: string[]},
+): string[] {
     const tuiIconNames = new Set<string>();
 
     function traverseDirectory(directory: string): void {
@@ -50,12 +70,20 @@ function findTuiIconNames(rootDir: string, excludedFolders: string[]): string[] 
                     traverseDirectory(filePath);
                 }
             } else if (stat.isFile()) {
+                const fileName = basename(filePath);
+
+                if (excludedFiles.includes(fileName)) {
+                    return;
+                }
+
                 const fileContents = readFileSync(filePath, `utf-8`);
-                const tuiIconMatches = fileContents.match(/\btuiIcon\w+(?=\s|'|")/g);
+                const tuiIconMatches = fileContents.match(/\btuiIcon\w+(?=\s|'|"|`)/g);
 
                 if (tuiIconMatches) {
                     tuiIconMatches.forEach(match => {
-                        tuiIconNames.add(match);
+                        if (!excludedNames.includes(match)) {
+                            tuiIconNames.add(match);
+                        }
                     });
                 }
             }
