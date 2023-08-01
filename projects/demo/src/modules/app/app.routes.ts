@@ -891,12 +891,12 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: `components/text-area`,
+        path: `components/textarea`,
         loadChildren: async () =>
-            (await import(`../components/text-area/text-area.module`))
-                .ExampleTuiTextAreaModule,
+            (await import(`../components/textarea/textarea.module`))
+                .ExampleTuiTextareaModule,
         data: {
-            title: `TextArea`,
+            title: `Textarea`,
         },
     },
     {

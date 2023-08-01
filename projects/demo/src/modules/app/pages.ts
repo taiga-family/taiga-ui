@@ -508,9 +508,9 @@ export const pages: TuiDocPages = [
             },
             {
                 section: `Components`,
-                title: `TextArea`,
-                keywords: `поле, инпут, форма, ввод, text-area, area`,
-                route: `/components/text-area`,
+                title: `Textarea`,
+                keywords: `поле, инпут, форма, ввод, textarea, area`,
+                route: `/components/textarea`,
             },
             {
                 section: `Components`,
