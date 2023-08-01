@@ -6,13 +6,13 @@ export class TuiPrimitiveYearMonthPaginationHarness extends TuiComponentHarness 
     static hostSelector = `tui-primitive-year-month-pagination`;
 
     private readonly buttonLeft = this.locatorForOptional(
-        `button[icon=tuiIconChevronLeftLarge]`,
+        `button[tuiIconButton]:first-child`,
     );
 
     private readonly content = this.locatorForOptional(`.t-calendar-title`);
 
     private readonly buttonRight = this.locatorForOptional(
-        `button[icon=tuiIconChevronRightLarge]`,
+        `button[tuiIconButton]:last-child`,
     );
 
     private readonly button = this.locatorForOptional(`#year-btn`);

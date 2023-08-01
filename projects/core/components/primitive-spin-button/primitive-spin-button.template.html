@@ -1,12 +1,12 @@
 <div
     *ngIf="spinTexts$ | async as texts"
     #wrapper
-    tuiPreventDefault="mousedown"
     class="t-wrapper"
     (focusin)="onFocused(true)"
     (focusout)="onFocused(false)"
     (keydown.arrowLeft)="onLeftClick()"
     (keydown.arrowRight)="onRightClick()"
+    (mousedown.silent.prevent)="(0)"
 >
     <button
         tuiIconButton
