@@ -67,10 +67,10 @@ export class TuiInputRangeComponent
     private readonly rangeRef: TuiRangeComponent | null = null;
 
     @Input()
-    min: number | null = 0;
+    min = 0;
 
     @Input()
-    max: number | null = 100;
+    max = 100;
 
     @Input()
     quantum = 1;
@@ -108,14 +108,6 @@ export class TuiInputRangeComponent
         readonly controller: TuiTextfieldController,
     ) {
         super(control, cdr);
-    }
-
-    get computedMin(): number {
-        return this.min ?? 0;
-    }
-
-    get computedMax(): number {
-        return this.max ?? 100;
     }
 
     get leftFocusableElement(): HTMLInputElement | null {
@@ -165,11 +157,11 @@ export class TuiInputRangeComponent
     }
 
     get computedSteps(): number {
-        return this.steps || (this.computedMax - this.computedMin) / this.quantum;
+        return this.steps || (this.max - this.min) / this.quantum;
     }
 
     get step(): number {
-        return (this.computedMax - this.computedMin) / this.computedSteps;
+        return (this.max - this.min) / this.computedSteps;
     }
 
     @tuiPure
@@ -284,15 +276,13 @@ export class TuiInputRangeComponent
             TUI_FLOATING_PRECISION,
         );
 
-        return tuiClamp(roundedValue, this.computedMin, this.computedMax);
+        return tuiClamp(roundedValue, this.min, this.max);
     }
 
     private updateTextInputValue(value: number, right: boolean): void {
         const [leftInputRef, rightInputRef] = this.inputNumberRefs;
         const textInputRef = right ? rightInputRef : leftInputRef;
 
-        if (textInputRef) {
-            textInputRef.nativeValue = textInputRef.getFormattedValue(value);
-        }
+        textInputRef?.writeValue(value);
     }
 }
