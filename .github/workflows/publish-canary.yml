@@ -1,4 +1,4 @@
-name: ⚠️ Nightly publish
+name: ⚠️ Publish canary
 on:
   workflow_dispatch:
   schedule:
@@ -16,12 +16,9 @@ jobs:
       - uses: actions/checkout@v3.5.3
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
-
       - run: npm run run-many:build:libs
-
-      - name: Publish dev builds
-        run: npx ts-node ./scripts/publish-dev-builds.ts
+      - run: npx ts-node ./scripts/publish-canary.ts
 
 concurrency:
-  group: publish-dev-${{ github.workflow }}-${{ github.ref }}
+  group: publish-canary-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
