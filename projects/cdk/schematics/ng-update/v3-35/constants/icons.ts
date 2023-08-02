@@ -2129,6 +2129,10 @@ export const ICONS: Array<{from: string; to: string}> = [
     },
     {
         to: `tuiIconTdsCrossSmallPragmatic`,
+        from: `tuiIconCancelOutline`,
+    },
+    {
+        to: `tuiIconTdsCrossSmallPragmatic`,
         from: `tuiIconX`,
     },
     {
