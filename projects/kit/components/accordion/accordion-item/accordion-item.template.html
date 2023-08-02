@@ -22,13 +22,15 @@
         >
             <ng-content></ng-content>
         </span>
-        <tui-svg
-            *ngIf="showArrow"
-            automation-id="tui-accordion__item-arrow"
-            src="tuiIconChevronDownLarge"
-            class="t-icon"
-            [class.t-icon_open]="open"
-        ></tui-svg>
+        <ng-container *ngIf="showArrow">
+            <tui-svg
+                *polymorpheusOutlet="options.iconLarge as src"
+                automation-id="tui-accordion__item-arrow"
+                class="t-icon"
+                [class.t-icon_open]="open"
+                [src]="src"
+            ></tui-svg>
+        </ng-container>
     </button>
     <tui-expand
         [async]="async"

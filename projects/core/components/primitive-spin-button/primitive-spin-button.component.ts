@@ -3,14 +3,13 @@ import {
     Component,
     ElementRef,
     EventEmitter,
+    HostListener,
     Inject,
     Input,
     Output,
-    ViewChild,
 } from '@angular/core';
-import {AbstractTuiInteractive, tuiIsNativeFocused} from '@taiga-ui/cdk';
-import {TuiAppearance} from '@taiga-ui/core/enums';
-import {TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
+import {AbstractTuiInteractive, tuiIsNativeFocusedIn} from '@taiga-ui/cdk';
+import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS, TuiSpinIcons} from '@taiga-ui/core/tokens';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -18,16 +17,13 @@ import {Observable} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './primitive-spin-button.template.html',
     styleUrls: ['./primitive-spin-button.style.less'],
+    host: {
+        '(mousedown.silent.prevent)': '(0)',
+    },
 })
 export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
-    @ViewChild('wrapper')
-    private readonly wrapper?: ElementRef<HTMLElement>;
-
     @Input()
     disabled = false;
-
-    @Input()
-    mode: TuiAppearance = TuiAppearance.Flat;
 
     @Input()
     leftDisabled = false;
@@ -42,13 +38,15 @@ export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
     readonly rightClick = new EventEmitter<void>();
 
     constructor(
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
+        @Inject(TUI_SPIN_ICONS) readonly icons: TuiSpinIcons,
         @Inject(TUI_SPIN_TEXTS) readonly spinTexts$: Observable<[string, string]>,
     ) {
         super();
     }
 
     get focused(): boolean {
-        return !!this.wrapper && tuiIsNativeFocused(this.wrapper.nativeElement);
+        return tuiIsNativeFocusedIn(this.el.nativeElement);
     }
 
     get leftComputedDisabled(): boolean {
@@ -59,18 +57,22 @@ export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
         return this.computedDisabled || this.rightDisabled;
     }
 
+    @HostListener('keydown.arrowLeft.prevent')
     onLeftClick(): void {
         if (!this.leftComputedDisabled) {
             this.leftClick.emit();
         }
     }
 
+    @HostListener('keydown.arrowRight.prevent')
     onRightClick(): void {
         if (!this.rightComputedDisabled) {
             this.rightClick.emit();
         }
     }
 
+    @HostListener('focusin', ['true'])
+    @HostListener('focusout', ['false'])
     onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
