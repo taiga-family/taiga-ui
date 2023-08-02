@@ -4,6 +4,14 @@
     display: none;
 }
 
+:host:not(:first-of-type) .t-label:not(:empty) {
+    padding-top: 1.25rem;
+}
+
+:host:not(:first-of-type) .t-button {
+    margin-top: 1.25rem;
+}
+
 .t-wrapper {
     display: flex;
     align-items: flex-start;
@@ -14,6 +22,6 @@
     padding: 0.75rem 1rem 0.25rem 0.625rem;
 }
 
-.t-button {
+.t-button:not(:empty) {
     margin: 0.75rem 1rem 0 auto;
 }
