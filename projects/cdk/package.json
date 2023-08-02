@@ -50,11 +50,13 @@
             "@taiga-ui/addon-tablebars",
             "@taiga-ui/addon-table",
             "@taiga-ui/addon-mobile",
+            "@taiga-ui/layout",
             "@taiga-ui/proprietary-banking",
             "@taiga-ui/proprietary-core",
             "@taiga-ui/proprietary-icons",
             "@taiga-ui/proprietary-navigation",
-            "@taiga-ui/layout"
+            "@taiga-ui/proprietary-tds-icons",
+            "@taiga-ui/proprietary-tds-palette"
         ]
     },
     "schematics": "./schematics/collection.json"
