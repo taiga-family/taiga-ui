@@ -6,6 +6,7 @@ import {
     HostBinding,
     HostListener,
     Inject,
+    InjectionToken,
     Input,
     Optional,
     QueryList,
@@ -21,6 +22,7 @@ import {
 } from '@maskito/kit';
 import {
     AbstractTuiNullableControl,
+    AbstractTuiValueTransformer,
     CHAR_HYPHEN,
     CHAR_MINUS,
     EMPTY_QUERY,
@@ -52,6 +54,10 @@ import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 import {TUI_INPUT_NUMBER_OPTIONS, TuiInputNumberOptions} from './input-number.options';
 
 const DEFAULT_MAX_LENGTH = 18;
+
+export const TUI_NUMBER_VALUE_TRANSFORMER = new InjectionToken<
+    AbstractTuiValueTransformer<number | null>
+>('');
 
 @Component({
     selector: 'tui-input-number',
@@ -106,6 +112,9 @@ export class TuiInputNumberComponent
         control: NgControl | null,
         @Inject(ChangeDetectorRef)
         cdr: ChangeDetectorRef,
+        @Optional()
+        @Inject(TUI_NUMBER_VALUE_TRANSFORMER)
+        transformer: AbstractTuiValueTransformer<number | null>,
         @Inject(TUI_INPUT_NUMBER_OPTIONS) readonly options: TuiInputNumberOptions,
         @Inject(TUI_NUMBER_FORMAT) private readonly numberFormat: TuiNumberFormatSettings,
         @Inject(TUI_IS_IOS) private readonly isIOS: boolean,
@@ -114,7 +123,7 @@ export class TuiInputNumberComponent
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
     ) {
-        super(control, cdr);
+        super(control, cdr, transformer);
     }
 
     @HostBinding('attr.data-size')
@@ -123,11 +132,11 @@ export class TuiInputNumberComponent
     }
 
     get computedMin(): number {
-        return this.min ?? this.options.min;
+        return this.computeMin(this.min, this.max);
     }
 
     get computedMax(): number {
-        return this.max ?? this.options.max;
+        return this.computeMax(this.min, this.max);
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -320,6 +329,22 @@ export class TuiInputNumberComponent
 
     private get nativeNumberValue(): number {
         return maskitoParseNumber(this.nativeValue, this.numberFormat.decimalSeparator);
+    }
+
+    @tuiPure
+    private computeMin(min: number | null, max: number | null): number {
+        return Math.min(
+            this.valueTransformer?.fromControlValue(min) ?? min ?? this.options.min,
+            this.valueTransformer?.fromControlValue(max) ?? max ?? this.options.max,
+        );
+    }
+
+    @tuiPure
+    private computeMax(min: number | null, max: number | null): number {
+        return Math.max(
+            this.valueTransformer?.fromControlValue(min) ?? min ?? this.options.min,
+            this.valueTransformer?.fromControlValue(max) ?? max ?? this.options.max,
+        );
     }
 
     @tuiPure

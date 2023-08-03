@@ -1,0 +1,15 @@
+<tui-input-range
+    absTransformer
+    class="tui-space_bottom-8"
+    [min]="-30"
+    [max]="0"
+    [leftValueContent]="control.value[0] ? '' : 'Today'"
+    [rightValueContent]="control.value[1] ? '' : 'Today'"
+    [pluralize]="pluralize"
+    [formControl]="control"
+>
+    How far back to look
+</tui-input-range>
+
+Control value:
+<code>{{ control.value | json }}</code>
