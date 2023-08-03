@@ -112,6 +112,7 @@
         "angular-http-server": "1.11.3",
         "babel-loader": "9.1.3",
         "bundlemon": "2.0.2",
+        "canvas": "2.11.2",
         "cpy-cli": "4.2.0",
         "cspell": "6.31.3",
         "cy2": "4.0.6",

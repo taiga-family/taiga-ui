@@ -8,7 +8,7 @@ workflowWithTests = [
 # which shows difference between two screenshot and which will be added to bot report comment
 screenshotsDiffsPaths = [
     '.*__diff_output__.*', # it is default cypress folder name into which snapshot diffs are put
-    '.*-diff.png'
+    '.*\\.diff\\.png'
 ]
 
 # RegExp string to match images inside artifacts (by their path or file name)
