@@ -62,3 +62,38 @@
         </tui-opt-group>
     </tui-data-list>
 </tui-multi-select>
+
+<tui-multi-select
+    class="b-form tui-space_top-5"
+    [editable]="false"
+    [expandable]="false"
+    [tuiTextfieldLabelOutside]="true"
+    [(ngModel)]="value"
+>
+    <tui-data-list *tuiDataList>
+        <tui-opt-group
+            tuiMultiSelectGroup
+            label="Jedi, may the force be with them blah blah blah"
+        >
+            <button
+                *ngFor="let item of jedi"
+                tuiOption
+                [value]="item"
+            >
+                {{ item }}
+            </button>
+        </tui-opt-group>
+        <tui-opt-group
+            tuiMultiSelectGroup
+            label="Jedi, may the force be with them blah blah blah (second time)"
+        >
+            <button
+                *ngFor="let item of sith"
+                tuiOption
+                [value]="item"
+            >
+                {{ item }}
+            </button>
+        </tui-opt-group>
+    </tui-data-list>
+</tui-multi-select>
