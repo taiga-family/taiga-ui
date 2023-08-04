@@ -2,6 +2,12 @@ name: ⚙️ E2E tests
 on:
   pull_request:
 
+env:
+  CYPRESS_failOnSnapshotDiff: 0
+  CYPRESS_API_URL: http://localhost:1234/
+  PLAYWRIGHT_SNAPSHOTS_PATH: /projects/demo-playwright/tests-results
+  CYPRESS_SNAPSHOTS_PATH: /projects/demo-cypress/cypress/snapshots
+
 jobs:
   build-demo:
     if: ${{ !contains(github.head_ref , 'release/') }}
@@ -11,15 +17,10 @@ jobs:
       - uses: actions/checkout@v3.5.3
         with:
           fetch-depth: 10
-      - name: Setup global variables
-        uses: ./.github/actions/variables
-
-      - name: Try rebase locally for check affected e2e
-        uses: ./.github/actions/rebase
+      - uses: taiga-family/ci/actions/variables@1.5.1
+      - uses: taiga-family/ci/actions/rebase@1.5.1
         continue-on-error: true
-
-      - name: Setup Node.js and Cache
-        uses: ./.github/actions/nodejs
+      - uses: taiga-family/ci/actions/setup-node@1.5.1
 
       - name: Building demo-app of git-branch without cache
         run: npx nx build demo -c next --output-path ${{ env.DIST }} --base-href='/'
@@ -60,10 +61,8 @@ jobs:
     name: ${{ matrix.project }}
     steps:
       - uses: actions/checkout@v3.5.3
-      - name: Setup global variables
-        uses: ./.github/actions/variables
-      - name: Setup Node.js and Cache
-        uses: ./.github/actions/nodejs
+      - uses: taiga-family/ci/actions/variables@1.5.1
+      - uses: taiga-family/ci/actions/setup-node@1.5.1
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/restore@v3.3.1
@@ -115,10 +114,8 @@ jobs:
     needs: [build-demo]
     steps:
       - uses: actions/checkout@v3.5.3
-      - name: Setup global variables
-        uses: ./.github/actions/variables
-      - name: Setup Node.js and Cache
-        uses: ./.github/actions/nodejs
+      - uses: taiga-family/ci/actions/variables@1.5.1
+      - uses: taiga-family/ci/actions/setup-node@1.5.1
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
@@ -182,8 +179,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - name: Setup global variables
-        uses: ./.github/actions/variables
+      - uses: taiga-family/ci/actions/variables@1.5.1
 
       - name: Download artifacts / ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
         continue-on-error: true

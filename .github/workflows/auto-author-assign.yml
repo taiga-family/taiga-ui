@@ -1,19 +1,16 @@
-name: 🤖 Auto assign
+name: 🤖 Auto cleanup caches by a branch
 on:
   pull_request:
-    types: [opened, reopened]
+    types:
+      - closed
 
 jobs:
-  assign-author:
-    name: PR author as an assignee
+  cleanup:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v3.5.3
-      - name: Setup global variables
-        uses: ./.github/actions/variables
-
-      - name: Auto assign
-        if: env.IS_OWNER_MODE == 'true'
-        uses: toshimaru/auto-author-assign@v1.6.2
+      - uses: taiga-family/ci/actions/cleanup-cache@1.5.1
         with:
-          repo-token: ${{ secrets.TINKOFF_BOT_PAT }}
+          branch-name: refs/pull/${{ github.event.pull_request.number }}/merge

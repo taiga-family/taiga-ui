@@ -17,8 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - name: Setup global variables
-        uses: ./.github/actions/variables
+      - uses: taiga-family/ci/actions/variables@1.5.1
 
       - name: Prepare demo before deploy from snapshots
         run: |

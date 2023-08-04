@@ -11,8 +11,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js and Cache
-        uses: ./.github/actions/nodejs
+      - uses: taiga-family/ci/actions/setup-node@1.5.1
         id: nodejs-workspace
 
       - name: Get last tag
