@@ -30,6 +30,8 @@ export class ExampleTuiStepperComponent {
 
     activeItemIndex = 0;
 
+    activeItemAutoscroll = true;
+
     readonly orientationVariants: readonly TuiOrientation[] = ['horizontal', 'vertical'];
 
     orientation: TuiOrientation = this.orientationVariants[0];

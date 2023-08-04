@@ -36,6 +36,7 @@
         <tui-doc-demo>
             <tui-stepper
                 [orientation]="orientation"
+                [activeItemAutoscroll]="activeItemAutoscroll"
                 [(activeItemIndex)]="activeItemIndex"
             >
                 <button tuiStep>Simple step</button>
@@ -68,6 +69,14 @@
                 [(documentationPropertyValue)]="activeItemIndex"
             >
                 Active step index
+            </ng-template>
+            <ng-template
+                documentationPropertyName="activeItemAutoscroll"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="activeItemAutoscroll"
+            >
+                Autoscroll to active step index
             </ng-template>
         </tui-doc-documentation>
         <tui-doc-documentation heading="Step">

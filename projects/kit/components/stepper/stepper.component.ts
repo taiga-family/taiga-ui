@@ -45,6 +45,9 @@ export class TuiStepperComponent {
     @HostBinding('attr.data-orientation')
     orientation: TuiOrientation = 'horizontal';
 
+    @Input('activeItemAutoscroll')
+    autoscroll = true;
+
     @Input('activeItemIndex')
     set activeIndex(index: number) {
         this.activeItemIndex = index;
@@ -135,6 +138,10 @@ export class TuiStepperComponent {
     }
 
     private scrollIntoView(index: number): void {
+        if (!this.autoscroll) {
+            return;
+        }
+
         const step = this.getNativeElements(this.steps)[index];
 
         if (!step) {
