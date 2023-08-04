@@ -34,3 +34,7 @@ dist
 RELEASE_BODY.md
 *tsbuildinfo
 .angular
+/projects/demo-playwright/tests-results/
+/projects/demo-playwright/tests-report/
+/projects/demo-playwright/snapshots/
+/projects/demo-playwright/playwright/.cache/

@@ -101,6 +101,7 @@
         "@nx/jest": "16.6.0",
         "@nx/node": "16.6.0",
         "@nx/workspace": "16.6.0",
+        "@playwright/test": "^1.36.2",
         "@testing-library/cypress": "9.0.0",
         "@tinkoff/prettier-config": "1.52.1",
         "@tinkoff/stylelint-config": "1.52.1",
