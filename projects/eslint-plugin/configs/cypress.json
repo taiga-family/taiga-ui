@@ -1,7 +1,7 @@
 {
     "overrides": [
         {
-            "files": ["**/projects/demo-integrations/**/**.cy.ts"],
+            "files": ["**/projects/demo-cypress/**/**.cy.ts"],
             "parser": "@typescript-eslint/parser",
             "plugins": ["@typescript-eslint"],
             "rules": {

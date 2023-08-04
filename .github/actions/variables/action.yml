@@ -41,7 +41,7 @@ runs:
         export IS_DEPENDABOT="${{ github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' }}"
         export CYPRESS_failOnSnapshotDiff="0"
         export CYPRESS_API_URL="http://localhost:1234/"
-        export CYPRESS_SNAPSHOTS_PATH="./projects/demo-integrations/cypress/snapshots"
+        export CYPRESS_SNAPSHOTS_PATH="./projects/demo-cypress/cypress/snapshots"
         export PLAYWRIGHT_SNAPSHOTS_PATH="./projects/demo-playwright/tests-results"
         export SNAPSHOTS_CACHE_KEY="e2e-cache--${{ github.event.pull_request.head.sha || github.sha }}-${{ github.event.number }}"
         export CYPRESS_SNAPSHOTS_ARTIFACTS_KEY="cypress-e2e-artifacts--${{ github.event.pull_request.head.sha || github.sha }}-${{ github.run_id }}-${{ github.event.number }}"

@@ -35,7 +35,7 @@
         "build:ssr": "nx build demo && nx run demo:server:production",
         "prerender": "nx run demo:prerender",
         "test": "nx run-many --target test --all --output-style=stream --parallel=1",
-        "test:e2e": "nx e2e-ui demo-integrations",
+        "test:e2e": "nx e2e-ui demo-cypress",
         "*** Workflow ***": "",
         "stylelint": "nx run-many --target stylelint --all --output-style=stream --parallel=1",
         "lint": "nx run-many --target lint --all --output-style=stream --parallel=1",
