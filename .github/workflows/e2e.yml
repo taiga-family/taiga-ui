@@ -5,8 +5,8 @@ on:
 env:
   CYPRESS_failOnSnapshotDiff: 0
   CYPRESS_API_URL: http://localhost:1234/
-  PLAYWRIGHT_SNAPSHOTS_PATH: /projects/demo-playwright/tests-results
-  CYPRESS_SNAPSHOTS_PATH: /projects/demo-cypress/cypress/snapshots
+  PLAYWRIGHT_SNAPSHOTS_PATH: ./projects/demo-playwright/tests-results
+  CYPRESS_SNAPSHOTS_PATH: ./projects/demo-cypress/cypress/snapshots
 
 jobs:
   build-demo:
