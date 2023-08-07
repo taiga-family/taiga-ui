@@ -70,7 +70,7 @@ export class TuiTablePaginationComponent {
         @Inject(TUI_TABLE_PAGINATION_TEXTS)
         readonly texts$: Observable<Record<'linesPerPage' | 'of' | 'pages', string>>,
         @Inject(TUI_TABLE_PAGINATION_OPTIONS) readonly options: TuiTablePaginationOptions,
-        @Inject(TUI_COMMON_ICONS) readonly commmonIcons: TuiCommonIcons,
+        @Inject(TUI_COMMON_ICONS) readonly commonIcons: TuiCommonIcons,
     ) {}
 
     get pages(): number {
