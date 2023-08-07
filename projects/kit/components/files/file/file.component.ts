@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {DomSanitizer, SafeValue} from '@angular/platform-browser';
 import {TuiInjectionTokenType, tuiIsObserved, tuiPure} from '@taiga-ui/cdk';
-import {TuiSizeL} from '@taiga-ui/core';
+import {TUI_COMMON_ICONS, TuiCommonIcons, TuiSizeL} from '@taiga-ui/core';
 import {TuiLanguage} from '@taiga-ui/i18n';
 import {TuiFileLike} from '@taiga-ui/kit/interfaces';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
@@ -53,6 +53,7 @@ export class TuiFileComponent {
 
     constructor(
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
+        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
         @Inject(TUI_FILE_TEXTS)
         readonly fileTexts$: TuiInjectionTokenType<typeof TUI_FILE_TEXTS>,
         @Inject(TUI_FILE_OPTIONS)

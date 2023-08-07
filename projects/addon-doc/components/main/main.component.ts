@@ -7,6 +7,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiThemeNightService, TuiThemeService} from '@taiga-ui/addon-doc/services';
+import {TUI_DOC_ICONS, TuiDocIcons} from '@taiga-ui/addon-doc/tokens';
 import {TuiSwipeService} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {distinctUntilChanged, map, share, startWith} from 'rxjs/operators';
@@ -38,6 +39,7 @@ export class TuiDocMainComponent {
     );
 
     constructor(
+        @Inject(TUI_DOC_ICONS) private readonly icons: TuiDocIcons,
         @Inject(TuiThemeService) readonly theme: TuiThemeService,
         @Inject(TuiThemeNightService) readonly night: TuiThemeNightService,
     ) {}
@@ -45,5 +47,9 @@ export class TuiDocMainComponent {
     @HostBinding('attr.data-mode')
     get mode(): TuiBrightness | null {
         return this.night.value ? 'onDark' : null;
+    }
+
+    get icon(): string {
+        return this.night.value ? this.icons.day : this.icons.night;
     }
 }

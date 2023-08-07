@@ -1,6 +1,11 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {Router} from '@angular/router';
-import {TUI_DOC_LOGO, TUI_DOC_MENU_TEXT} from '@taiga-ui/addon-doc/tokens';
+import {
+    TUI_DOC_ICONS,
+    TUI_DOC_LOGO,
+    TUI_DOC_MENU_TEXT,
+    TuiDocIcons,
+} from '@taiga-ui/addon-doc/tokens';
 import {ALWAYS_FALSE_HANDLER, TuiSwipeService} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {merge, Subject} from 'rxjs';
@@ -25,6 +30,7 @@ export class TuiDocHeaderComponent {
     ).pipe(startWith(false), distinctUntilChanged());
 
     constructor(
+        @Inject(TUI_DOC_ICONS) readonly icons: TuiDocIcons,
         @Inject(TUI_DOC_LOGO) readonly logo: PolymorpheusContent,
         @Inject(TUI_DOC_MENU_TEXT) readonly menu: string,
         @Inject(Router) private readonly router: Router,

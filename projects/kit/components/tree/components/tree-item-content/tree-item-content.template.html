@@ -3,11 +3,11 @@
     tuiIconButton
     size="xs"
     appearance="flat"
-    icon="tuiIconChevronRight"
     shape="rounded"
     type="button"
     class="t-button"
     [class.t-button_expanded]="isExpanded"
+    [icon]="icons.more"
     (click)="onClick()"
 ></button>
 <ng-container [ngTemplateOutlet]="context.template"></ng-container>

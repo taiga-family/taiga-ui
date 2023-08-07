@@ -4,7 +4,7 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 /**
- * TODO: replace with close icon token and drop hintOnDisabled, switching it to true in v.4
+ * TODO: replace with TUI_CLOSE_ICON and drop hintOnDisabled, switching it to true in v.4
  */
 export interface TuiTextfieldOptions {
     readonly hintOnDisabled: boolean;

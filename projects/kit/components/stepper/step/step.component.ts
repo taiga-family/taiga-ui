@@ -8,7 +8,11 @@ import {
     Input,
 } from '@angular/core';
 import {TuiDestroyService, TuiFocusVisibleService} from '@taiga-ui/cdk';
-import {TuiRouterLinkActiveService} from '@taiga-ui/core';
+import {
+    TUI_COMMON_ICONS,
+    TuiCommonIcons,
+    TuiRouterLinkActiveService,
+} from '@taiga-ui/core';
 import {identity, Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
@@ -41,6 +45,7 @@ export class TuiStepComponent {
         @Inject(TuiRouterLinkActiveService) routerLinkActive$: Observable<boolean>,
         @Inject(TuiStepperComponent) private readonly stepper: TuiStepperComponent,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
+        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
     ) {
         routerLinkActive$.pipe(filter(identity)).subscribe(() => {
             this.activate();

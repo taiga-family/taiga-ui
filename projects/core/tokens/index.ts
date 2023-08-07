@@ -1,6 +1,7 @@
 export * from './animation-options';
 export * from './animations-duration';
 export * from './assert-enabled';
+export * from './common-icon';
 export * from './data-list-accessor';
 export * from './data-list-host';
 export * from './day-type-handler';

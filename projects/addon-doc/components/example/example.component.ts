@@ -93,7 +93,7 @@ export class TuiDocExampleComponent {
         @Inject(Router) private readonly router: Router,
         @Inject(ActivatedRoute) private readonly route: ActivatedRoute,
         @Inject(NgLocation) private readonly ngLocation: NgLocation,
-        @Inject(TUI_DOC_EXAMPLE_OPTIONS) private readonly options: TuiDocExampleOptions,
+        @Inject(TUI_DOC_EXAMPLE_OPTIONS) readonly options: TuiDocExampleOptions,
     ) {}
 
     readonly visible = (files: Record<string, string>): boolean =>

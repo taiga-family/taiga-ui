@@ -11,9 +11,9 @@
         tuiIconButton
         type="button"
         size="xs"
-        icon="tuiIconLink"
         appearance="icon"
         class="t-link-icon"
+        [icon]="options.linkIcon"
         [title]="copy$ | async"
         (click)="copyExampleLink()"
     ></button>

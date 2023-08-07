@@ -3,11 +3,11 @@
         tuiIconButton
         type="button"
         automation-id="tui-mobile-calendar__cancel"
-        icon="tuiIconXLarge"
         shape="rounded"
         appearance=""
         tuiRipple
         class="t-close"
+        [icon]="icons.close"
         [title]="closeWord$ | async"
         (click)="onClose()"
     ></button>

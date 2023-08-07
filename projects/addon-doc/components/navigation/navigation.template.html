@@ -1,12 +1,12 @@
 <tui-input
     #input
     tuiTextfieldSize="m"
-    tuiTextfieldIconLeft="tuiIconSearch"
     class="t-input"
     [formControl]="search"
     [tuiAutoFocus]="!!sidebar"
     [tuiTextfieldCleaner]="true"
     [tuiTextfieldLabelOutside]="true"
+    [tuiTextfieldIconLeft]="docIcons.search"
 >
     {{ searchText }}
     <ng-container *ngIf="canOpen">
@@ -96,9 +96,9 @@
                         (click)="onGroupClick(index)"
                     >
                         <tui-svg
-                            src="tuiIconChevronRight"
                             class="t-chevron"
                             [class.t-chevron_active]="!!openPagesGroupsArr[index]"
+                            [src]="icons.more"
                         ></tui-svg>
                         {{ item.title }}
                     </button>

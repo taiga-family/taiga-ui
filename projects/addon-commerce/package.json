@@ -24,6 +24,7 @@
         "@taiga-ui/cdk": ">=3.39.1",
         "@taiga-ui/core": ">=3.39.1",
         "@taiga-ui/i18n": ">=3.39.1",
+        "@taiga-ui/kit": ">=3.39.1",
         "@tinkoff/ng-polymorpheus": ">=4.0.0",
         "rxjs": ">=6.0.0",
         "tslib": ">=2.0.0"

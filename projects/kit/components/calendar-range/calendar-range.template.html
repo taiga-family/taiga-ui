@@ -43,8 +43,8 @@
                 <tui-svg
                     *ngIf="isItemActive(item)"
                     automation-id="tui-calendar-range__checkmark"
-                    src="tuiIconCheck"
                     class="t-checkmark"
+                    [src]="icons.check"
                 ></tui-svg>
             </button>
         </tui-data-list>

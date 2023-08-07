@@ -18,7 +18,7 @@ describe(`InputCardGrouped`, () => {
                 .tuiWaitBeforeScreenshot()
                 .matchImageSnapshot(`01-input-card-grouped-filled`);
 
-            cy.get(`@wrapper`).find(`[src="tuiIconCloseLarge"]`).click({force: true});
+            cy.get(`@wrapper`).find(`[src="tuiIconClose"]`).click({force: true});
 
             cy.get(`@wrapper`)
                 .tuiWaitBeforeScreenshot()
@@ -124,9 +124,7 @@ describe(`InputCardGrouped`, () => {
                 .tuiWaitBeforeScreenshot()
                 .matchImageSnapshot(`10-input-card-with-value-cvc-filled`);
 
-            cy.get(`@example`)
-                .find(`tui-svg[src=tuiIconCloseLarge]`)
-                .click({force: true});
+            cy.get(`@example`).find(`tui-svg[src=tuiIconClose]`).click({force: true});
 
             cy.get(`@example`)
                 .tuiWaitBeforeScreenshot()
@@ -172,9 +170,7 @@ describe(`InputCardGrouped`, () => {
                 .tuiWaitBeforeScreenshot()
                 .matchImageSnapshot(`15-input-card-with-value-cvc-filled`);
 
-            cy.get(`@example`)
-                .find(`tui-svg[src=tuiIconCloseLarge]`)
-                .click({force: true});
+            cy.get(`@example`).find(`tui-svg[src=tuiIconClose]`).click({force: true});
 
             cy.get(`@example`)
                 .tuiWaitBeforeScreenshot()
@@ -201,9 +197,7 @@ describe(`InputCardGrouped`, () => {
             .findByAutomationId(`tui-input-card-grouped__expire`)
             .should(`have.css`, `pointer-events`, `none`);
 
-        cy.get(`@input-card-grouped`)
-            .find(`[src="tuiIconCloseLarge"]`)
-            .click({force: true});
+        cy.get(`@input-card-grouped`).find(`[src="tuiIconClose"]`).click({force: true});
 
         cy.get(`@input-card-grouped`)
             .findByAutomationId(`tui-input-card-grouped__card`)

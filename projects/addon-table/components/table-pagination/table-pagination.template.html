@@ -35,8 +35,8 @@
                             </ng-container>
                             <tui-svg
                                 *ngIf="item === size; else fakeIcon"
-                                src="tuiIconCheckLarge"
                                 class="t-checkmark"
+                                [src]="commmonIcons.check"
                             ></tui-svg>
 
                             <ng-template #fakeIcon>

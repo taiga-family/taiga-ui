@@ -7,6 +7,7 @@ export interface TuiDocExampleOptions {
     codeEditorVisibilityHandler: TuiBooleanHandler<Record<string, string>>;
     tabTitles: Map<unknown, PolymorpheusContent>;
     fullsize: boolean;
+    linkIcon: string;
 }
 
 export const TUI_DOC_EXAMPLE_DEFAULT_OPTIONS: TuiDocExampleOptions = {
@@ -17,6 +18,7 @@ export const TUI_DOC_EXAMPLE_DEFAULT_OPTIONS: TuiDocExampleOptions = {
         ),
     tabTitles: new Map(),
     fullsize: true,
+    linkIcon: `tuiIconLink`,
 };
 
 /**

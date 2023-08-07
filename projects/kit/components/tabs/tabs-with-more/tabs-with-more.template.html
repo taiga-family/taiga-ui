@@ -39,9 +39,9 @@
         <ng-template #more>
             {{ moreWord$ | async }}
             <tui-svg
-                src="tuiIconChevronDown"
                 class="t-icon"
                 [class.t-icon_rotated]="open"
+                [src]="arrowOptions.iconSmall"
             ></tui-svg>
         </ng-template>
     </tui-hosted-dropdown>

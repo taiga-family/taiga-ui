@@ -155,17 +155,17 @@
             *ngIf="hasCleaner"
             tuiWrapper
             appearance="icon"
-            src="tuiIconCloseLarge"
             class="t-icon"
+            [src]="icons.close"
             (click)="clear()"
         ></tui-svg>
         <tui-svg
             *ngIf="hasDropdown"
             tuiWrapper
             appearance="icon"
-            src="tuiIconChevronDownLarge"
             class="t-icon"
             [class.t-icon_rotated]="open"
+            [src]="arrowOptions.iconLarge"
             (click)="toggle()"
         ></tui-svg>
     </div>

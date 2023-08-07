@@ -43,6 +43,10 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     selector: 'tui-input-slider',
     templateUrl: './input-slider.template.html',
     styleUrls: ['./input-slider.style.less'],
+    host: {
+        '[attr.data-size]': 'controller.size',
+        '[class._label-outside]': 'controller.labelOutside',
+    },
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputSliderComponent),

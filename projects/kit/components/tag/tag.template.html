@@ -22,16 +22,14 @@
         [inheritColor]="true"
         [size]="loaderSize"
     ></tui-loader>
-    <ng-container *ngIf="canRemove">
-        <tui-svg
-            *polymorpheusOutlet="iconCleaner as src; context: {$implicit: size}"
-            tuiPreventDefault="mousedown"
-            automation-id="tui-tag__remove"
-            class="t-icon"
-            [src]="src"
-            (click)="remove($event)"
-        ></tui-svg>
-    </ng-container>
+    <tui-svg
+        *ngIf="canRemove"
+        automation-id="tui-tag__remove"
+        class="t-icon"
+        [src]="icons.close"
+        (click)="remove($event)"
+        (mousedown.prevent.silent)="(0)"
+    ></tui-svg>
 </div>
 <input
     *ngIf="editing"

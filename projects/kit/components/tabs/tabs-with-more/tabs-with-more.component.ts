@@ -25,6 +25,7 @@ import {
     TuiItemDirective,
     tuiToInt,
 } from '@taiga-ui/cdk';
+import {TUI_ARROW_OPTIONS, TuiArrowOptions} from '@taiga-ui/kit/components';
 import {TUI_MORE_WORD, TUI_TAB_MARGIN} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -78,6 +79,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
         @Inject(TUI_MORE_WORD) readonly moreWord$: Observable<string>,
+        @Inject(TUI_ARROW_OPTIONS) readonly arrowOptions: TuiArrowOptions,
     ) {}
 
     // TODO: Improve performance

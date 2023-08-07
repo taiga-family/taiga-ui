@@ -5,7 +5,11 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {TUI_PREVIEW_TEXTS} from '@taiga-ui/addon-preview/tokens';
+import {
+    TUI_PREVIEW_ICONS,
+    TUI_PREVIEW_TEXTS,
+    TuiPreviewIcons,
+} from '@taiga-ui/addon-preview/tokens';
 import {
     ALWAYS_FALSE_HANDLER,
     tuiClamp,
@@ -80,6 +84,7 @@ export class TuiPreviewComponent {
 
     constructor(
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
+        @Inject(TUI_PREVIEW_ICONS) readonly icons: TuiPreviewIcons,
         @Inject(TUI_PREVIEW_TEXTS)
         readonly texts$: Observable<TuiLanguagePreview['previewTexts']>,
     ) {}

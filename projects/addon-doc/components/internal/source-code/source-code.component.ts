@@ -1,6 +1,11 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {TuiDocSourceCodePathOptions} from '@taiga-ui/addon-doc/interfaces';
-import {TUI_DOC_SOURCE_CODE, TUI_DOC_SOURCE_CODE_TEXT} from '@taiga-ui/addon-doc/tokens';
+import {
+    TUI_DOC_ICONS,
+    TUI_DOC_SOURCE_CODE,
+    TUI_DOC_SOURCE_CODE_TEXT,
+    TuiDocIcons,
+} from '@taiga-ui/addon-doc/tokens';
 import {tuiPure} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -23,6 +28,7 @@ export class TuiDocSourceCodeComponent {
     path = '';
 
     constructor(
+        @Inject(TUI_DOC_ICONS) readonly icons: TuiDocIcons,
         @Inject(TUI_DOC_SOURCE_CODE)
         readonly sourceCode: PolymorpheusContent<TuiDocSourceCodePathOptions>,
         @Inject(TUI_DOC_SOURCE_CODE_TEXT) readonly text: string,

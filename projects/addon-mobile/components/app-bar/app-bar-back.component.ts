@@ -2,8 +2,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
     selector: 'button[tuiAppBarBack], a[tuiAppBarBack]',
-    template:
-        '<tui-svg src="tuiIconChevronLeftLarge"></tui-svg><ng-content></ng-content>',
+    templateUrl: './app-bar-back.template.html',
     styleUrls: ['./app-bar-back.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

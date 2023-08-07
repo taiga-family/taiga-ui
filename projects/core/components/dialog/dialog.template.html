@@ -40,9 +40,9 @@
         tuiIconButton
         automation-id="tui-dialog__close"
         size="s"
-        icon="tuiIconCloseLarge"
         shape="rounded"
         class="t-close"
+        [icon]="icons.close"
         [appearance]="fullscreen ? 'secondary' : ''"
         [title]="closeWord$ | async"
         (click)="close$.next()"

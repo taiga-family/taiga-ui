@@ -4,6 +4,8 @@ import {TuiDialog} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATION_OPTIONS,
     TUI_CLOSE_WORD,
+    TUI_COMMON_ICONS,
+    TuiCommonIcons,
     tuiFadeIn,
     tuiSlideInTop,
 } from '@taiga-ui/core';
@@ -27,6 +29,7 @@ export class TuiPdfViewerComponent<I, O> {
     constructor(
         @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
+        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
         @Inject(POLYMORPHEUS_CONTEXT)
         readonly context: TuiDialog<TuiPdfViewerOptions<I>, O>,
     ) {}
