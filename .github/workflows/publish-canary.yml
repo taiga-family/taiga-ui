@@ -14,9 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - name: Setup Node.js and Cache
-        uses: ./.github/actions/nodejs
-      - run: npm run run-many:build:libs
+      - uses: taiga-family/ci/actions/variables@1.6.0
+      - uses: taiga-family/ci/actions/setup-node@1.6.0
       - run: npx ts-node ./scripts/publish-canary.ts
 
 concurrency:

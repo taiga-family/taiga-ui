@@ -29,8 +29,7 @@ jobs:
     name: ${{ matrix.project }}
     steps:
       - uses: actions/checkout@v3.5.3
-      - name: Setup Node.js and Cache
-        uses: ./.github/actions/nodejs
+      - uses: taiga-family/ci/actions/setup-node@1.6.0
 
       - name: Run tests for ${{ matrix.project }}
         run: npx nx test ${{ matrix.project }} --skip-nx-cache
