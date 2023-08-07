@@ -25,7 +25,7 @@ import {
     TuiItemDirective,
     tuiToInt,
 } from '@taiga-ui/cdk';
-import {TUI_ARROW_OPTIONS, TuiArrowOptions} from '@taiga-ui/kit/components';
+import {TUI_ARROW_OPTIONS, TuiArrowOptions} from '@taiga-ui/kit/components/arrow';
 import {TUI_MORE_WORD, TUI_TAB_MARGIN} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
