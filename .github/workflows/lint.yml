@@ -10,28 +10,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - name: Setup Node.js and Cache
-        uses: ./.github/actions/nodejs
-      - name: Typecheck
-        run: npm run typecheck
+      - uses: taiga-family/ci/actions/setup-node@1.5.1
+      - run: npm run typecheck
 
   cspell:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - name: Setup Node.js and Cache
-        uses: ./.github/actions/nodejs
-      - name: Spell checks code
-        run: npm run cspell -- --no-progress
+      - uses: taiga-family/ci/actions/setup-node@1.5.1
+      - run: npm run cspell -- --no-progress
 
   prettier:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - name: Setup global variables
-        uses: ./.github/actions/variables
+      - uses: taiga-family/ci/actions/variables@1.5.1
 
       - uses: actions/checkout@v3.5.3
         if: env.SUPPORT_AUTO_PUSH == 'true'
@@ -39,23 +34,20 @@ jobs:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TINKOFF_BOT_PAT }}
 
-      - name: Setup Node.js and Cache
-        uses: ./.github/actions/nodejs
+      - uses: taiga-family/ci/actions/setup-node@1.5.1
 
-      - name: Run prettier
-        run: npm run prettier ${{ env.SUPPORT_AUTO_PUSH == 'true' && '-- --write' || '-- --check' }}
+      - run: npm run prettier ${{ env.SUPPORT_AUTO_PUSH == 'true' && '-- --write' || '-- --check' }}
 
       - name: Apply changes after linting
         if: env.SUPPORT_AUTO_PUSH == 'true'
-        uses: ./.github/actions/auto-push
+        uses: taiga-family/ci/actions/auto-push@1.5.1
 
   stylelint:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - name: Setup global variables
-        uses: ./.github/actions/variables
+      - uses: taiga-family/ci/actions/variables@1.5.1
 
       - uses: actions/checkout@v3.5.3
         if: env.SUPPORT_AUTO_PUSH == 'true'
@@ -63,23 +55,19 @@ jobs:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TINKOFF_BOT_PAT }}
 
-      - name: Setup Node.js and Cache
-        uses: ./.github/actions/nodejs
-
-      - name: Run stylelint
-        run: npm run stylelint ${{ env.SUPPORT_AUTO_PUSH == 'true' && '-- --fix' || '' }}
+      - uses: taiga-family/ci/actions/setup-node@1.5.1
+      - run: npm run stylelint ${{ env.SUPPORT_AUTO_PUSH == 'true' && '-- --fix' || '' }}
 
       - name: Apply changes after linting
         if: env.SUPPORT_AUTO_PUSH == 'true'
-        uses: ./.github/actions/auto-push
+        uses: taiga-family/ci/actions/auto-push@1.5.1
 
   eslint:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - name: Setup global variables
-        uses: ./.github/actions/variables
+      - uses: taiga-family/ci/actions/variables@1.5.1
 
       - uses: actions/checkout@v3.5.3
         if: env.SUPPORT_AUTO_PUSH == 'true'
@@ -87,15 +75,12 @@ jobs:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TINKOFF_BOT_PAT }}
 
-      - name: Setup Node.js and Cache
-        uses: ./.github/actions/nodejs
-
-      - name: Run eslint
-        run: npm run lint ${{ env.SUPPORT_AUTO_PUSH == 'true' && '-- --fix' || '' }}
+      - uses: taiga-family/ci/actions/setup-node@1.5.1
+      - run: npm run lint ${{ env.SUPPORT_AUTO_PUSH == 'true' && '-- --fix' || '' }}
 
       - name: Apply changes after linting
         if: env.SUPPORT_AUTO_PUSH == 'true'
-        uses: ./.github/actions/auto-push
+        uses: taiga-family/ci/actions/auto-push@1.5.1
 
 concurrency:
   group: lint-${{ github.workflow }}-${{ github.ref }}

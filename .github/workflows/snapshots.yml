@@ -10,10 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - name: Setup global variables
-        uses: ./.github/actions/variables
-      - name: Setup Node.js and Cache
-        uses: ./.github/actions/nodejs
+      - uses: taiga-family/ci/actions/variables@1.5.1
+      - uses: taiga-family/ci/actions/setup-node@1.5.1
 
       - run: npx nx build demo -c next
       - run: tree ${{ env.DIST }} -P '*.html'
@@ -31,10 +29,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - name: Setup global variables
-        uses: ./.github/actions/variables
-      - name: Setup Node.js and Cache
-        uses: ./.github/actions/nodejs
+      - uses: taiga-family/ci/actions/variables@1.5.1
+      - uses: taiga-family/ci/actions/setup-node@1.5.1
         id: nodejs-workspace
 
       - run: npx nx build demo --configuration production
