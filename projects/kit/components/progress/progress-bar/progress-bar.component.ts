@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {TuiSizeS} from '@taiga-ui/core';
+import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 
 @Component({
     selector: 'progress[tuiProgressBar]',
@@ -14,5 +14,5 @@ export class TuiProgressBarComponent {
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeS = 'm';
+    size: TuiSizeXS | TuiSizeXXL = 'm';
 }
