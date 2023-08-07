@@ -48,7 +48,7 @@
 
         &_filled {
             transition: stroke-dashoffset var(--tui-duration) linear;
-            stroke-dashoffset: calc(@circumference - var(--progress-percentage) * @circumference);
+            stroke-dashoffset: calc(@circumference - var(--progress-ratio) * @circumference);
         }
     }
 }

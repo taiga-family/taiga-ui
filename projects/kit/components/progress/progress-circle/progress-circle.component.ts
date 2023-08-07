@@ -37,9 +37,11 @@ export class TuiProgressCircleComponent {
     @HostBinding('attr.data-size')
     size: TuiSizeS | TuiSizeXL = 'm';
 
-    @HostBinding('style.--progress-percentage')
-    get progressPercentage(): number {
-        return this.value / this.max;
+    @HostBinding('style.--progress-ratio')
+    get progressRatio(): number {
+        const ratio = this.value / this.max;
+
+        return Number.isFinite(ratio) ? ratio : 0;
     }
 
     animationDelay$ = of(true).pipe(delay(0));
