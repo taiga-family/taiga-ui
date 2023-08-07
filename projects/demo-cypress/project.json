@@ -1,0 +1,38 @@
+{
+    "name": "demo-cypress",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "projects/demo-cypress/cypress",
+    "projectType": "application",
+    "prefix": "app",
+    "targets": {
+        "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "eslint --no-error-on-unmatched-pattern \"**/projects/demo-cypress/**/*\""
+            }
+        },
+        "stylelint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "stylelint \"**/demo-cypress/**/*.{css,less}\" --allow-empty-input"
+            }
+        },
+        "e2e-ui": {
+            "executor": "nx:run-commands",
+            "options": {
+                "parallel": false,
+                "commands": [
+                    "npx wait-on http://localhost:3333 --timeout 1000",
+                    "cypress open --browser chrome --project ./projects/demo-cypress"
+                ]
+            }
+        },
+        "e2e": {
+            "executor": "nx:run-commands",
+            "outputs": ["{projectRoot}/cypress/snapshots"],
+            "options": {
+                "command": "npx cy2 run --parallel --record --key {args.key} --ci-build-id {args.key} --env ci=true --browser chrome --headless --project ./projects/demo-cypress --spec '**/{args.folder}/**/*.cy.ts'"
+            }
+        }
+    }
+}

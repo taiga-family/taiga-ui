@@ -5,7 +5,7 @@ import {basename, join} from 'path';
     const rootDirectory = process.env.ROOT_FOLDER || `./projects`;
     const excludedFolders = [
         `demo`,
-        `demo-integrations`,
+        `demo-cypress`,
         `eslint-plugin`,
         `taiga-schematics`,
         `testing`,

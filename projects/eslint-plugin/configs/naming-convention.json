@@ -82,7 +82,7 @@
             }
         },
         {
-            "files": ["**/projects/*demo/**/*.ts", "**/scripts/**/*.ts", "**/schematics/**/*.ts"],
+            "files": ["**/projects/*demo/**/*.ts", "**/scripts/**/*.ts", "**/schematics/**/*.ts", "**/apps/**/*.ts"],
             "parser": "@typescript-eslint/parser",
             "plugins": ["@typescript-eslint"],
             "rules": {
