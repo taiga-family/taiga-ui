@@ -75,7 +75,7 @@ jobs:
         run: npx nx serve-compiled demo --path ${{ env.DIST }} --port ${{ env.NG_SERVER_PORT }}
 
       - name: Run screenshot tests on ${{ env.DIST }}
-        run: npx nx e2e demo-integrations --key localhost --folder ${{ matrix.project }}
+        run: npx nx e2e demo-cypress --key localhost --folder ${{ matrix.project }}
 
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
@@ -92,7 +92,7 @@ jobs:
 
       - name: Run screenshot tests on ${{ env.DIST_NEXT }}
         continue-on-error: true
-        run: npx nx e2e demo-integrations --key next --folder ${{ matrix.project }}
+        run: npx nx e2e demo-cypress --key next --folder ${{ matrix.project }}
 
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}

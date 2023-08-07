@@ -1,7 +1,7 @@
 {
     "compileOnSave": false,
     "include": ["projects/**/*"],
-    "exclude": ["projects/**/*.spec.ts", "projects/demo-integrations", "**/schematics/**/*"],
+    "exclude": ["projects/**/*.spec.ts", "projects/demo-cypress", "**/schematics/**/*"],
     "angularCompilerOptions": {
         "enableIvy": true,
         "compilationMode": "partial",
@@ -58,7 +58,7 @@
         "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo",
         "noImplicitOverride": true,
         "paths": {
-            "@demo-integrations/*": ["projects/demo-integrations/cypress/*"],
+            "@demo-cypress/*": ["projects/demo-cypress/cypress/*"],
             "@demo/emulate/change-detection": ["projects/demo/src/emulate/change-detection-strategy.ts"],
             "@demo/emulate/encapsulation": ["projects/demo/src/emulate/view-encapsulation.ts"],
             "@demo/emulate/ng-zone-options": ["projects/demo/src/emulate/ng-zone-options.ts"],
