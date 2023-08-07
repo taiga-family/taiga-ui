@@ -2,6 +2,7 @@ name: ⚙️ Validate release tag
 on:
   push:
     branches: [main, 'release/*']
+  pull_request:
 
 jobs:
   validate-tag:
@@ -17,6 +18,12 @@ jobs:
       - name: Get last tag
         id: info
         run: echo "tag=$(git describe HEAD --abbrev=0)" >> $GITHUB_OUTPUT
+
+      - name: Debug
+        run: |
+          echo "Version from package.json: ${{ steps.nodejs-workspace.outputs.root-package-version }}"
+          echo "Version from package.json: ${{ steps.nodejs-workspace.outputs.root-package-major-version }}"
+          echo "Last git tag: ${{ steps.info.outputs.tag }}"
 
       - name: Show an error if the tag does not match
         if:
