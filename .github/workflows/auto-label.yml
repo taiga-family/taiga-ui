@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - uses: taiga-family/ci/actions/variables@1.6.0
+      - uses: taiga-family/ci/actions/variables@1.7.1
 
       - name: Label when approved
         if: env.IS_OWNER_MODE == 'true'
