@@ -2,11 +2,13 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
+import {tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
     selector: 'example-tui-progress-circle',
     templateUrl: './progress-circle.template.html',
     styleUrls: ['./progress-circle.style.less'],
+    providers: [tuiInputNumberOptionsProvider({min: 0})],
     changeDetection,
 })
 export class ExampleProgressCircleComponent {
