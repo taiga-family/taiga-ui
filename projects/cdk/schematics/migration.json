@@ -26,6 +26,11 @@
             "version": "3.36.0",
             "factory": "./ng-update/v3-36/index#updateToV3_36"
         },
+        "updateToV3_40": {
+            "description": "Rename tui-text-area to tui-textarea",
+            "version": "3.40.0",
+            "factory": "./ng-update/v3-40/index#updateToV3_40"
+        },
         "updateToV4": {
             "description": "Updates Taiga UI packages to v4",
             "version": "4.0.0",

@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiButtonModule, TuiDataListModule, TuiDropdownModule} from '@taiga-ui/core';
-import {TuiAvatarModule, TuiTextAreaModule} from '@taiga-ui/kit';
+import {TuiAvatarModule, TuiTextareaModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {DropdownDocumentationModule} from '../../components/abstract/dropdown-documentation/dropdown-documentation.module';
@@ -19,7 +19,7 @@ import {TuiDropdownSelectionExample2} from './examples/2';
         PolymorpheusModule,
         TuiDropdownModule,
         TuiButtonModule,
-        TuiTextAreaModule,
+        TuiTextareaModule,
         TuiAvatarModule,
         TuiDataListModule,
         TuiAddonDocModule,
