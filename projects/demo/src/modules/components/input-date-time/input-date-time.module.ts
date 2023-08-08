@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
+    TuiDropdownModule,
     TuiHintModule,
     TuiLinkModule,
     TuiNotificationModule,
@@ -32,6 +33,7 @@ import {ExampleTuiInputDateTimeComponent} from './input-date-time.component';
         TuiTextfieldControllerModule,
         TuiNotificationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputDateTimeComponent)),
+        TuiDropdownModule,
     ],
     declarations: [
         ExampleTuiInputDateTimeComponent,

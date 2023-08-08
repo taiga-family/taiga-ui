@@ -9,6 +9,7 @@ import {
     Input,
     OnChanges,
     OnDestroy,
+    Optional,
     Self,
     Type,
 } from '@angular/core';
@@ -32,6 +33,7 @@ import {Observable, Subject} from 'rxjs';
 import {takeUntil, throttleTime} from 'rxjs/operators';
 
 import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
+import {TuiDropdownOpenDirective} from './dropdown-open.directive';
 
 @Directive({
     selector: '[tuiDropdown]:not(ng-container)',
@@ -69,7 +71,16 @@ export class TuiDropdownDirective
         @Inject(INJECTOR) private readonly injector: Injector,
         @Inject(TuiDropdownPortalService)
         private readonly dropdownService: TuiDropdownPortalService,
+        @Optional()
+        @Inject(TuiDropdownOpenDirective)
+        private readonly open: TuiDropdownOpenDirective | null,
     ) {
+        if (this.open && !this.open.dropdown) {
+            this.open.dropdown = this;
+        } else {
+            this.open = null;
+        }
+
         // Ignore multiple change detection triggers at the same frame
         this.refresh$.pipe(throttleTime(0), takeUntil(destroy$)).subscribe(() => {
             this.dropdownBoxRef?.changeDetectorRef.detectChanges();
@@ -94,6 +105,10 @@ export class TuiDropdownDirective
 
     ngOnDestroy(): void {
         this.toggle(false);
+
+        if (this.open) {
+            this.open.dropdown = undefined;
+        }
     }
 
     getClientRect(): ClientRect {
@@ -103,9 +118,11 @@ export class TuiDropdownDirective
     toggle(show: boolean): void {
         if (show && this.content && !this.dropdownBoxRef) {
             this.dropdownBoxRef = this.dropdownService.add(this.component);
+            this.open?.tuiDropdownOpenChange.emit(true);
         } else if (!show && this.dropdownBoxRef) {
             this.dropdownService.remove(this.dropdownBoxRef);
             this.dropdownBoxRef = null;
+            this.open?.tuiDropdownOpenChange.emit(false);
         }
     }
 }

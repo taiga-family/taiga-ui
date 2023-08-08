@@ -1,3 +1,4 @@
+/** @deprecated remove in 4.0 */
 export type TuiAutofillFieldName =
     | 'additional-name'
     | 'bday'

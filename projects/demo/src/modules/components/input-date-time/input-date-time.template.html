@@ -131,6 +131,8 @@
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
                     [style.text-align]="textAlign"
+                    [tuiDropdownOpen]="(dropdownOpen | async)!!"
+                    (tuiDropdownOpenChange)="dropdownOpen.next($event)"
                 >
                     Choose date and time
                 </tui-input-date-time>

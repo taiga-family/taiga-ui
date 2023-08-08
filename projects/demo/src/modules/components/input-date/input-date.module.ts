@@ -6,6 +6,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiMobileCalendarDialogModule} from '@taiga-ui/addon-mobile';
 import {
     TuiButtonModule,
+    TuiDropdownModule,
     TuiErrorModule,
     TuiHintModule,
     TuiLinkModule,
@@ -48,6 +49,7 @@ import {ExampleTuiInputDateComponent} from './input-date.component';
         TuiFieldErrorPipeModule,
         TuiNotificationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputDateComponent)),
+        TuiDropdownModule,
     ],
     declarations: [
         ExampleTuiInputDateComponent,
