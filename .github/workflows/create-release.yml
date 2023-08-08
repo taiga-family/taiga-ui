@@ -32,8 +32,8 @@ jobs:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TINKOFF_BOT_PAT }}
 
-      - uses: taiga-family/ci/actions/variables@1.7.3
-      - uses: taiga-family/ci/actions/setup-node@1.7.3
+      - uses: taiga-family/ci/actions/variables@1.7.4
+      - uses: taiga-family/ci/actions/setup-node@1.7.4
 
       - name: Run release
         id: run-release
@@ -105,7 +105,7 @@ jobs:
 
       - name: Announce
         if: ${{ env.IS_DRY_MODE == 'true' }}
-        uses: taiga-family/ci/actions/announce@1.7.3
+        uses: taiga-family/ci/actions/announce@1.7.4
         with:
           version: ${{ steps.run-release.outputs.new_version }}
           url: ${{ secrets.ANNOUNCE_WEBHOOK_TEST }}
