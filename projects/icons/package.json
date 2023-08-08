@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/icons",
-    "version": "3.39.1",
+    "version": "3.40.0",
     "description": "Feather icons for Taiga UI",
     "keywords": [
         "angular",
@@ -21,7 +21,7 @@
         "tslib": "2.6.1"
     },
     "peerDependencies": {
-        "@taiga-ui/cdk": ">=3.39.1",
+        "@taiga-ui/cdk": ">=3.40.0",
         "tslib": ">=2.0.0"
     }
 }
