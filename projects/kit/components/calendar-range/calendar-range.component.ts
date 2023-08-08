@@ -28,7 +28,9 @@ import {
     tuiWatch,
 } from '@taiga-ui/cdk';
 import {
+    TUI_COMMON_ICONS,
     TUI_DEFAULT_MARKER_HANDLER,
+    TuiCommonIcons,
     TuiMarkerHandler,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
@@ -95,6 +97,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
         @Inject(TUI_OTHER_DATE_TEXT) readonly otherDateText$: Observable<string>,
+        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
     ) {
         if (!valueChanges) {
             return;

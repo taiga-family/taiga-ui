@@ -5,6 +5,7 @@ import {
     HostBinding,
     Inject,
 } from '@angular/core';
+import {TUI_COMMON_ICONS, TuiCommonIcons} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_DEFAULT_TREE_CONTROLLER} from '../../misc/tree.constants';
@@ -20,6 +21,7 @@ import {TUI_TREE_CONTROLLER} from '../../misc/tree.tokens';
 })
 export class TuiTreeItemContentComponent {
     constructor(
+        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
         @Inject(POLYMORPHEUS_CONTEXT) readonly context: TuiTreeItemContext,
         @Inject(forwardRef(() => TUI_TREE_CONTROLLER))
         private readonly controller: TuiTreeController,

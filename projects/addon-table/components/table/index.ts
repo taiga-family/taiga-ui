@@ -12,6 +12,7 @@ export * from './providers/stuck.provider';
 export * from './providers/table.provider';
 export * from './providers/table.providers';
 export * from './table.module';
+export * from './table.options';
 export * from './tbody/tbody.component';
 export * from './td/td.component';
 export * from './th/th.component';

@@ -1,6 +1,7 @@
 export * from './code-actions';
 export * from './code-editor';
 export * from './default-tabs';
+export * from './doc-icons';
 export * from './example-content-processor';
 export * from './excluded-properties';
 export * from './i18n';

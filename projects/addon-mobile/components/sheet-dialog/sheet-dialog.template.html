@@ -27,10 +27,10 @@
         <button
             *ngIf="context.closeable"
             tuiIconButton
-            icon="tuiIconClose"
             size="xs"
             appearance="icon"
             class="t-close"
+            [icon]="icons.close"
             (click)="close()"
         >
             {{ closeWord$ | async }}

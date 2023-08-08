@@ -8,10 +8,11 @@ import {
     Output,
 } from '@angular/core';
 import {tuiIsObserved} from '@taiga-ui/cdk';
-import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptions} from '@taiga-ui/core/directives';
 import {
     TUI_CLOSE_WORD,
+    TUI_COMMON_ICONS,
     TUI_NOTIFICATION_OPTIONS,
+    TuiCommonIcons,
     TuiNotificationDefaultOptions,
 } from '@taiga-ui/core/tokens';
 import {TuiNotificationT} from '@taiga-ui/core/types';
@@ -50,8 +51,8 @@ export class TuiNotificationComponent {
 
     constructor(
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
+        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
         @Inject(TUI_NOTIFICATION_OPTIONS) readonly options: TuiNotificationDefaultOptions,
-        @Inject(TUI_TEXTFIELD_OPTIONS) readonly textfieldOptions: TuiTextfieldOptions,
     ) {}
 
     get hasClose(): boolean {

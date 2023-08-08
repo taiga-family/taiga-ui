@@ -63,6 +63,7 @@ export abstract class AbstractTuiInputCard<
         return this.getPaymentSystem(this.card);
     }
 
+    /** @deprecated remove in 4.0 */
     get icon(): PolymorpheusContent {
         return this.cardSrc || this.defaultIcon;
     }

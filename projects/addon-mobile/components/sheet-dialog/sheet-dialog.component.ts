@@ -12,7 +12,13 @@ import {
 } from '@angular/core';
 import {INTERSECTION_ROOT} from '@ng-web-apis/intersection-observer';
 import {EMPTY_QUERY, TuiDialog, tuiPure} from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_DURATION, TUI_CLOSE_WORD, tuiSlideInTop} from '@taiga-ui/core';
+import {
+    TUI_ANIMATIONS_DURATION,
+    TUI_CLOSE_WORD,
+    TUI_COMMON_ICONS,
+    TuiCommonIcons,
+    tuiSlideInTop,
+} from '@taiga-ui/core';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -61,6 +67,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     constructor(
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
+        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
         @Inject(POLYMORPHEUS_CONTEXT)
         readonly context: TuiDialog<TuiSheetDialogOptions<I>, any>,

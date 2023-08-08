@@ -3,11 +3,12 @@ describe(`InputCardGrouped`, () => {
         beforeEach(() => {
             cy.viewport(`macbook-13`);
             cy.tuiVisit(`components/input-card-grouped/API`);
+
+            cy.get(`#demo-content`).should(`be.visible`).as(`wrapper`);
+            cy.get(`@wrapper`).find(`tui-svg`).first().as(`clearIcon`);
         });
 
         it(`set value and clear after`, () => {
-            cy.get(`#demo-content`).should(`be.visible`).as(`wrapper`);
-
             cy.get(`@wrapper`)
                 .findByAutomationId(`tui-input-card-grouped__card`)
                 .type(`1234 4567 8910 1112`);
@@ -18,7 +19,7 @@ describe(`InputCardGrouped`, () => {
                 .tuiWaitBeforeScreenshot()
                 .matchImageSnapshot(`01-input-card-grouped-filled`);
 
-            cy.get(`@wrapper`).find(`[src="tuiIconCloseLarge"]`).click({force: true});
+            cy.get(`@clearIcon`).click({force: true});
 
             cy.get(`@wrapper`)
                 .tuiWaitBeforeScreenshot()
@@ -32,8 +33,6 @@ describe(`InputCardGrouped`, () => {
         });
 
         it(`set value and disable`, () => {
-            cy.get(`#demo-content`).should(`be.visible`).as(`wrapper`);
-
             cy.get(`@wrapper`)
                 .findByAutomationId(`tui-input-card-grouped__card`)
                 .type(`1234 4567 1000 1112`);
@@ -124,9 +123,8 @@ describe(`InputCardGrouped`, () => {
                 .tuiWaitBeforeScreenshot()
                 .matchImageSnapshot(`10-input-card-with-value-cvc-filled`);
 
-            cy.get(`@example`)
-                .find(`tui-svg[src=tuiIconCloseLarge]`)
-                .click({force: true});
+            cy.get(`@example`).find(`tui-svg`).eq(1).as(`clearIcon`);
+            cy.get(`@clearIcon`).click({force: true});
 
             cy.get(`@example`)
                 .tuiWaitBeforeScreenshot()
@@ -172,9 +170,8 @@ describe(`InputCardGrouped`, () => {
                 .tuiWaitBeforeScreenshot()
                 .matchImageSnapshot(`15-input-card-with-value-cvc-filled`);
 
-            cy.get(`@example`)
-                .find(`tui-svg[src=tuiIconCloseLarge]`)
-                .click({force: true});
+            cy.get(`@example`).find(`tui-svg`).eq(1).as(`clearIcon`);
+            cy.get(`@clearIcon`).click({force: true});
 
             cy.get(`@example`)
                 .tuiWaitBeforeScreenshot()
@@ -197,13 +194,13 @@ describe(`InputCardGrouped`, () => {
 
         cy.get(`@wrapper`).find(`tui-input-card-grouped`).as(`input-card-grouped`);
 
+        cy.get(`@input-card-grouped`).find(`tui-svg`).eq(1).as(`clearIcon`);
+
         cy.get(`@input-card-grouped`)
             .findByAutomationId(`tui-input-card-grouped__expire`)
             .should(`have.css`, `pointer-events`, `none`);
 
-        cy.get(`@input-card-grouped`)
-            .find(`[src="tuiIconCloseLarge"]`)
-            .click({force: true});
+        cy.get(`@clearIcon`).click({force: true});
 
         cy.get(`@input-card-grouped`)
             .findByAutomationId(`tui-input-card-grouped__card`)

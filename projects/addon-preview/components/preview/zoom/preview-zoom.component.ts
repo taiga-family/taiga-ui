@@ -6,7 +6,11 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/addon-preview/tokens';
+import {
+    TUI_PREVIEW_ICONS,
+    TUI_PREVIEW_ZOOM_TEXTS,
+    TuiPreviewIcons,
+} from '@taiga-ui/addon-preview/tokens';
 import {ALWAYS_FALSE_HANDLER, tuiClamp} from '@taiga-ui/cdk';
 import {TuiLanguagePreview} from '@taiga-ui/i18n';
 import {merge, Observable, of, timer} from 'rxjs';
@@ -43,6 +47,7 @@ export class TuiPreviewZoomComponent {
     );
 
     constructor(
+        @Inject(TUI_PREVIEW_ICONS) readonly icons: TuiPreviewIcons,
         @Inject(TUI_PREVIEW_ZOOM_TEXTS)
         readonly zoomTexts$: Observable<TuiLanguagePreview['zoomTexts']>,
     ) {}

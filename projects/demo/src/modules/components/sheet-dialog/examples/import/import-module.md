@@ -1,5 +1,5 @@
 ```ts
-import {TuiSheetModule} from '@taiga-ui/addon-mobile';
+import {TuiSheetDialogModule} from '@taiga-ui/addon-mobile';
 
 // ...
 

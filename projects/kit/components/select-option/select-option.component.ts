@@ -18,7 +18,9 @@ import {
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {
+    TUI_COMMON_ICONS,
     TUI_DATA_LIST_HOST,
+    TuiCommonIcons,
     TuiDataListComponent,
     TuiDataListHost,
     TuiOptionComponent,
@@ -47,6 +49,7 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
     );
 
     constructor(
+        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
         @Inject(POLYMORPHEUS_CONTEXT)
         readonly context: TuiContextWithImplicit<TemplateRef<Record<string, unknown>>>,
         @Inject(TUI_DATA_LIST_HOST)

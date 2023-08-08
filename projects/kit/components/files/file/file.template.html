@@ -64,10 +64,10 @@
             tuiIconButton
             type="button"
             size="xs"
-            icon="tuiIconCloseLarge"
             appearance="icon"
             tuiPreventDefault="mousedown"
             class="t-remove"
+            [icon]="icons.close"
             [title]="texts.remove"
             (click.prevent)="onRemoveClick()"
         ></button>

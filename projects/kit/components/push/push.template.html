@@ -5,11 +5,11 @@
     *ngIf="closeable"
     type="button"
     tuiIconButton
-    icon="tuiIconCloseLarge"
     size="xs"
     appearance=""
     shape="rounded"
     class="t-close"
+    [icon]="icons.close"
     [title]="closeWord$ | async"
     (click)="close.emit()"
 ></button>

@@ -13,7 +13,12 @@ import {
 } from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiAnimationOptions, TuiDialogOptions} from '@taiga-ui/core/interfaces';
-import {TUI_ANIMATIONS_DURATION, TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
+import {
+    TUI_ANIMATIONS_DURATION,
+    TUI_CLOSE_WORD,
+    TUI_COMMON_ICONS,
+    TuiCommonIcons,
+} from '@taiga-ui/core/tokens';
 import {TuiDialogSize} from '@taiga-ui/core/types';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {isObservable, merge, Observable, of, Subject} from 'rxjs';
@@ -61,6 +66,7 @@ export class TuiDialogComponent<O, I> {
         @Inject(TuiDialogCloseService) dialogClose$: Observable<unknown>,
         @Inject(TUI_DIALOGS_CLOSE) close$: Observable<unknown>,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
+        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
     ) {
         merge(
             this.close$.pipe(switchMap(() => toObservable(context.closeable))),

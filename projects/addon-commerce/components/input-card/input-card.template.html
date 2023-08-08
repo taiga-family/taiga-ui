@@ -1,7 +1,7 @@
 <tui-primitive-textfield
     tuiValueAccessor
     class="t-input"
-    [tuiTextfieldCustomContent]="icon"
+    [tuiTextfieldCustomContent]="cardSrc || (defaultIcon && logo)"
     [readOnly]="readOnly"
     [disabled]="disabled"
     [focusable]="focusable"
@@ -21,3 +21,9 @@
         ngProjectAs="input"
     ></ng-content>
 </tui-primitive-textfield>
+<ng-template #logo>
+    <tui-svg
+        class="t-payment-system"
+        [src]="defaultIcon"
+    ></tui-svg>
+</ng-template>

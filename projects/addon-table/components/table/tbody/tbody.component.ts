@@ -11,12 +11,14 @@ import {
     QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
+import {TUI_ARROW_OPTIONS, TuiArrowOptions} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiRowDirective} from '../directives/row.directive';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TuiTableSortPipe} from '../pipes/table-sort.pipe';
 import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
+import {TUI_TABLE_OPTIONS, TuiTableOptions} from '../table.options';
 import {TuiTrComponent} from '../tr/tr.component';
 
 @Component({
@@ -34,7 +36,7 @@ export class TuiTbodyComponent<T extends Partial<Record<keyof T, any>>> {
     heading: PolymorpheusContent;
 
     @Input()
-    open = true;
+    open = this.options.open;
 
     @Output()
     readonly openChange = new EventEmitter<boolean>();
@@ -47,6 +49,8 @@ export class TuiTbodyComponent<T extends Partial<Record<keyof T, any>>> {
 
     constructor(
         @Inject(TuiTableSortPipe) private readonly pipe: TuiTableSortPipe<T>,
+        @Inject(TUI_TABLE_OPTIONS) private readonly options: TuiTableOptions,
+        @Inject(TUI_ARROW_OPTIONS) readonly arrowOptions: TuiArrowOptions,
         @Inject(forwardRef(() => TuiTableDirective))
         readonly table: TuiTableDirective<T>,
     ) {}

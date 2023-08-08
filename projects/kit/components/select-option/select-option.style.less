@@ -18,8 +18,16 @@
 }
 
 .t-checkmark {
-    margin: 0 -0.375rem 0 auto;
-    border-left: 5px solid transparent;
+    margin-inline-start: auto;
+    border-inline-start: 0.25rem solid transparent;
+
+    :host-context(tui-data-list[data-list-size='s']) & {
+        margin-inline-end: -0.375rem;
+    }
+
+    :host-context(tui-data-list[data-list-size='m']) & {
+        margin-inline-end: -0.125rem;
+    }
 }
 
 .t-dummy {
