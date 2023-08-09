@@ -7,6 +7,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import {TUI_PREVIEW_ICONS, TuiPreviewIcons} from '@taiga-ui/addon-preview/tokens';
 import {tuiClamp} from '@taiga-ui/cdk';
 import {TuiLanguageKit} from '@taiga-ui/i18n';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit';
@@ -29,6 +30,7 @@ export class TuiPreviewPaginationComponent {
     readonly indexChange = new EventEmitter<number>();
 
     constructor(
+        @Inject(TUI_PREVIEW_ICONS) readonly icons: TuiPreviewIcons,
         @Inject(TUI_PAGINATION_TEXTS)
         readonly texts$: Observable<TuiLanguageKit['pagination']>,
     ) {}

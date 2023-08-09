@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.40.0](https://github.com/tinkoff/taiga-ui/compare/v3.39.1...v3.40.0) (2023-08-08)
+
+### Features
+
+- **icons:** make the rest of components icons customizable ([#5046](https://github.com/tinkoff/taiga-ui/issues/5046))
+  ([cc0828e](https://github.com/tinkoff/taiga-ui/commit/cc0828ec82bf2c1a5fcad7f415d381a3091a6800))
+- **kit:** `InputNumber` add value transformer token ([#5033](https://github.com/tinkoff/taiga-ui/issues/5033))
+  ([96c3b67](https://github.com/tinkoff/taiga-ui/commit/96c3b677cb38f01aff834a204298caf9cf7f79f4))
+- **kit:** `Pagination` add smaller size ([#5021](https://github.com/tinkoff/taiga-ui/issues/5021))
+  ([18ac180](https://github.com/tinkoff/taiga-ui/commit/18ac180fba420314d8f05e81e6658e98a528de1f))
+- **kit:** add alias `tui-textarea` for `tui-text-area` ([#5020](https://github.com/tinkoff/taiga-ui/issues/5020))
+  ([70f4a9d](https://github.com/tinkoff/taiga-ui/commit/70f4a9df194740c84f9cfc421a8bd10f708c4861))
+
+### Bug Fixes
+
+- **cdk:** include `tds` packages for update ([#5034](https://github.com/tinkoff/taiga-ui/issues/5034))
+  ([f1f5d6d](https://github.com/tinkoff/taiga-ui/commit/f1f5d6d7ab96f137fd6e55434f0b6ff6f629e5f7))
+- **eslint-plugin:** ignore naming convention for apps directory
+  ([#5042](https://github.com/tinkoff/taiga-ui/issues/5042))
+  ([7fb156c](https://github.com/tinkoff/taiga-ui/commit/7fb156ca1b783f52118a27e9723853eaea07f71f))
+- **kit:** `ProgressCircle` should show empty circle if `max=0`
+  ([#5050](https://github.com/tinkoff/taiga-ui/issues/5050))
+  ([aa2f133](https://github.com/tinkoff/taiga-ui/commit/aa2f133a4d7f6f0ecfacab43cecaba4d40351665))
+
 ### [3.39.1](https://github.com/tinkoff/taiga-ui/compare/v3.39.0...v3.39.1) (2023-08-01)
 
 ### Features

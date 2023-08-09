@@ -1,14 +1,16 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    Inject,
+    Input,
+} from '@angular/core';
+import {
+    TUI_INPUT_CARD_OPTIONS,
+    TuiInputCardOptions,
+} from '@taiga-ui/addon-commerce/components/input-card';
 import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
-import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/utils';
 import {TuiSizeS} from '@taiga-ui/core';
-
-const icons: Record<TuiPaymentSystem, string> = {
-    ...TUI_PAYMENT_SYSTEM_ICONS,
-    mir: 'tuiIconMirMono',
-    visa: 'tuiIconVisaMono',
-    electron: 'tuiIconElectronMono',
-};
 
 @Component({
     selector: 'tui-card',
@@ -34,11 +36,15 @@ export class TuiCardComponent {
     @HostBinding('attr.data-size')
     size: TuiSizeS = 'm';
 
+    constructor(
+        @Inject(TUI_INPUT_CARD_OPTIONS) private readonly options: TuiInputCardOptions,
+    ) {}
+
     get hasBrandLogo(): boolean {
         return !!this.brandLogo && this.size === 'm';
     }
 
     get paymentSystemLogo(): string {
-        return this.paymentSystem ? icons[this.paymentSystem] : '';
+        return this.paymentSystem ? this.options.icons[this.paymentSystem] : '';
     }
 }

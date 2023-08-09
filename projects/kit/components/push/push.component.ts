@@ -7,7 +7,7 @@ import {
     Output,
 } from '@angular/core';
 import {tuiIsObserved} from '@taiga-ui/cdk';
-import {TUI_CLOSE_WORD} from '@taiga-ui/core';
+import {TUI_CLOSE_WORD, TUI_COMMON_ICONS, TuiCommonIcons} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -30,7 +30,10 @@ export class TuiPushComponent {
     // eslint-disable-next-line @angular-eslint/no-output-native
     readonly close = new EventEmitter<void>();
 
-    constructor(@Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>) {}
+    constructor(
+        @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
+        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
+    ) {}
 
     get closeable(): boolean {
         return tuiIsObserved(this.close);

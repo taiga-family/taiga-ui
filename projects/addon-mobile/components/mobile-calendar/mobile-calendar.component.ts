@@ -30,7 +30,9 @@ import {
 import {
     TUI_ANIMATIONS_DURATION,
     TUI_CLOSE_WORD,
+    TUI_COMMON_ICONS,
     TUI_SHORT_WEEK_DAYS,
+    TuiCommonIcons,
 } from '@taiga-ui/core';
 import {
     TUI_CANCEL_WORD,
@@ -119,6 +121,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         @Inject(TuiDestroyService)
         private readonly destroy$: TuiDestroyService,
         @Inject(TUI_VALUE_STREAM) valueChanges: Observable<TuiDayRange | null>,
+        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
         @Inject(TUI_CANCEL_WORD) readonly cancelWord$: Observable<string>,
         @Inject(TUI_DONE_WORD) readonly doneWord$: Observable<string>,

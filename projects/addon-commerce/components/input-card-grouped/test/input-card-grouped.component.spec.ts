@@ -213,8 +213,8 @@ describe(`InputCardGrouped`, () => {
 
         it(`input-card-grouped have a default icon`, () => {
             expect(testComponent.control.valid).toEqual(true);
-            expect(testComponent.component.defaultIcon).toEqual(`tuiIconVisa`);
-            expect(testComponent.component.icon).toEqual(`tuiIconVisa`);
+            expect(testComponent.component.defaultIcon).toEqual(`tuiIconVisaMono`);
+            expect(testComponent.component.icon).toEqual(`tuiIconVisaMono`);
             expect(testComponent.control.value).toEqual({card: `4111 1111 1111 1111`});
 
             expect(expectCardOutlet()).toBeFalsy();
@@ -226,7 +226,7 @@ describe(`InputCardGrouped`, () => {
             testComponent.component.cardSrc = `tuiIconMastercard`;
 
             expect(testComponent.control.valid).toEqual(true);
-            expect(testComponent.component.defaultIcon).toEqual(`tuiIconVisa`);
+            expect(testComponent.component.defaultIcon).toEqual(`tuiIconVisaMono`);
             expect(testComponent.component.icon).toEqual(`tuiIconMastercard`);
             expect(testComponent.control.value).toEqual({card: `4111 1111 1111 1111`});
 
@@ -240,7 +240,7 @@ describe(`InputCardGrouped`, () => {
                 fixture.componentInstance.customIconTemplate;
 
             expect(testComponent.control.valid).toEqual(true);
-            expect(testComponent.component.defaultIcon).toEqual(`tuiIconVisa`);
+            expect(testComponent.component.defaultIcon).toEqual(`tuiIconVisaMono`);
             expect(testComponent.component.icon).toBeInstanceOf(TemplateRef);
             expect(testComponent.control.value).toEqual({card: `4111 1111 1111 1111`});
 

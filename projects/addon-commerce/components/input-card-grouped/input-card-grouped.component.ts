@@ -36,17 +36,20 @@ import {
 import {
     MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
+    TUI_COMMON_ICONS,
     TUI_DIGIT_REGEXP,
     TUI_MODE,
     TUI_NON_DIGIT_REGEXP,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiAsDataListHost,
     TuiBrightness,
+    TuiCommonIcons,
     TuiDataListComponent,
     TuiDataListDirective,
     TuiDataListHost,
     TuiTextfieldController,
 } from '@taiga-ui/core';
+import {TUI_ARROW_OPTIONS, TuiArrowOptions} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
@@ -154,6 +157,8 @@ export class TuiInputCardGroupedComponent
         readonly cardGroupedTexts$: Observable<TuiCardGroupedTexts>,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,
+        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
+        @Inject(TUI_ARROW_OPTIONS) readonly arrowOptions: TuiArrowOptions,
         @Inject(TUI_INPUT_CARD_GROUPED_OPTIONS) options: TuiInputCardGroupedOptions,
     ) {
         super(control, cdr, options);

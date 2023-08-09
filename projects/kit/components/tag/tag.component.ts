@@ -10,18 +10,16 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
-    TEXTFIELD_CONTROLLER_PROVIDER,
+    TUI_COMMON_ICONS,
     TUI_MODE,
-    TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiBrightness,
+    TuiCommonIcons,
     tuiSizeBigger,
     TuiSizeL,
     TuiSizeS,
     TuiSizeXS,
-    TuiTextfieldController,
 } from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit/types';
 import {tuiStringHashToHsl} from '@taiga-ui/kit/utils/format';
@@ -35,7 +33,7 @@ import {TUI_TAG_OPTIONS, TuiTagOptions} from './tag.options';
     templateUrl: './tag.template.html',
     styleUrls: ['./tag.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TEXTFIELD_CONTROLLER_PROVIDER, MODE_PROVIDER],
+    providers: [MODE_PROVIDER],
     host: {
         '($.data-mode.attr)': 'mode$',
     },
@@ -102,8 +100,7 @@ export class TuiTagComponent {
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_TAG_OPTIONS) private readonly options: TuiTagOptions,
-        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
-        readonly controller: TuiTextfieldController,
+        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
     ) {}
 
     get backgroundColor(): string | null {
@@ -120,10 +117,6 @@ export class TuiTagComponent {
 
     get loaderSize(): TuiSizeXS {
         return tuiSizeBigger(this.size) ? 's' : 'xs';
-    }
-
-    get iconCleaner(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
-        return this.controller.options.iconCleaner;
     }
 
     @HostListener('keydown.enter', ['$event'])

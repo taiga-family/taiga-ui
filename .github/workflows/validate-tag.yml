@@ -11,7 +11,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: taiga-family/ci/actions/setup-node@1.6.0
+      - uses: taiga-family/ci/actions/setup-node@1.7.4
         id: nodejs-workspace
 
       - name: Get last tag

@@ -3,8 +3,8 @@
     size="xs"
     appearance="icon"
     type="button"
-    icon="tuiIconCloseLarge"
     class="t-close"
+    [icon]="icons.close"
     [title]="closeWord$ | async"
     (click)="onClick()"
 ></button>

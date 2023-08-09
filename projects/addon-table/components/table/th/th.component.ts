@@ -14,6 +14,7 @@ import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 
 import {TuiHeadDirective} from '../directives/head.directive';
 import {TuiTableDirective} from '../directives/table.directive';
+import {TUI_TABLE_OPTIONS, TuiTableOptions} from '../table.options';
 
 @Component({
     selector: 'th[tuiTh]',
@@ -34,16 +35,17 @@ export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
         : null;
 
     @Input()
-    resizable = false;
+    resizable = this.options.resizable;
 
     @Input()
     @HostBinding('class._sticky')
-    sticky = false;
+    sticky = this.options.sticky;
 
     @HostBinding('style.width.px')
     width: number | null = null;
 
     constructor(
+        @Inject(TUI_TABLE_OPTIONS) private readonly options: TuiTableOptions,
         @Optional()
         @Inject(TuiHeadDirective)
         private readonly head: TuiHeadDirective<T> | null,
@@ -67,11 +69,11 @@ export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
     get icon(): string {
         if (this.isCurrent) {
             return this.table?.direction === 1
-                ? 'tuiIconSortDescending'
-                : 'tuiIconSortAscending';
+                ? this.options.sortIcons.desc
+                : this.options.sortIcons.asc;
         }
 
-        return 'tuiIconSortOff';
+        return this.options.sortIcons.off;
     }
 
     onResized(width: number): void {

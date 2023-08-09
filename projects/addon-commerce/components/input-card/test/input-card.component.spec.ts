@@ -206,7 +206,7 @@ describe(`InputCard`, () => {
 
         it(`input-card component has a default icon`, () => {
             expect(testComponent.control.valid).toEqual(true);
-            expect(testComponent.component.icon).toEqual(`tuiIconVisa`);
+            expect(testComponent.component.icon).toEqual(`tuiIconVisaMono`);
             expect(testComponent.control.value).toEqual(`4111 1111 1111 1111`);
         });
 

@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {MaskitoModule} from '@maskito/angular';
 import {
     TuiPrimitiveTextfieldModule,
+    TuiSvgModule,
     TuiTextfieldComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -16,6 +17,7 @@ import {TuiInputCardDirective} from './input-card.directive';
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiValueAccessorModule,
+        TuiSvgModule,
     ],
     declarations: [TuiInputCardComponent, TuiInputCardDirective],
     exports: [TuiInputCardComponent, TuiInputCardDirective, TuiTextfieldComponent],

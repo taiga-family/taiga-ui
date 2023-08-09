@@ -30,6 +30,7 @@ import {
     tuiToInteger,
 } from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
+import {TUI_ARROW_OPTIONS, TuiArrowOptions} from '@taiga-ui/kit';
 import {Subject} from 'rxjs';
 
 const MIN_WIDTH = 160;
@@ -83,6 +84,7 @@ export class TuiDocDemoComponent implements OnInit {
     readonly items: readonly TuiBrightness[] = ['onLight', 'onDark'];
 
     constructor(
+        @Inject(TUI_ARROW_OPTIONS) readonly options: TuiArrowOptions,
         @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(Location) private readonly locationRef: Location,

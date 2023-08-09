@@ -2,9 +2,9 @@
     <button
         tuiIconButton
         tuiPreviewAction
-        icon="tuiIconArrowLeft"
         type="button"
         class="t-arrow_left"
+        [icon]="icons.prev"
         [title]="texts[0]"
         [disabled]="leftButtonDisabled"
         (click)="onArrowClick(-1)"
@@ -13,9 +13,9 @@
     <button
         tuiIconButton
         tuiPreviewAction
-        icon="tuiIconArrowRight"
         type="button"
         class="t-arrow_right"
+        [icon]="icons.next"
         [title]="texts[1]"
         [disabled]="rightButtonDisabled"
         (click)="onArrowClick(1)"

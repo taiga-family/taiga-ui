@@ -5,8 +5,10 @@ import {TUI_PARENT_ANIMATION, TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATION_OPTIONS,
     TUI_CLOSE_WORD,
+    TUI_COMMON_ICONS,
     TUI_MEDIA,
     TuiBrightness,
+    TuiCommonIcons,
     tuiIsMobile,
     TuiMedia,
     tuiSlideInTop,
@@ -28,6 +30,7 @@ export class TuiTableBarsHostComponent {
     constructor(
         @Inject(TuiTableBarsService) readonly service: TuiTableBarsService,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
+        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
         @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
         @Inject(TUI_MEDIA) private readonly media: TuiMedia,
         @Inject(WINDOW) private readonly win: Window,
@@ -35,10 +38,6 @@ export class TuiTableBarsHostComponent {
 
     get isMobile(): boolean {
         return tuiIsMobile(this.win, this.media);
-    }
-
-    get closeIcon(): string {
-        return this.isMobile ? 'tuiIconX' : 'tuiIconXLarge';
     }
 
     getMode(mode: TuiBrightness): TuiBrightness | null {

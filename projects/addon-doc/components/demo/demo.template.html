@@ -116,9 +116,9 @@
                 </button>
                 <ng-template #icon>
                     <tui-svg
-                        src="tuiIconChevronDown"
                         class="t-icon"
                         [class.t-icon_rotated]="expanded"
+                        [src]="options.iconSmall"
                     ></tui-svg>
                 </ng-template>
                 <tui-expand

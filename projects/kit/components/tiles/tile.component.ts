@@ -7,6 +7,7 @@ import {
     Inject,
     Input,
     NgZone,
+    OnDestroy,
 } from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {tuiArrayShallowEquals, TuiResizeService, tuiZonefull} from '@taiga-ui/cdk';
@@ -20,7 +21,7 @@ import {TuiTilesComponent} from './tiles.component';
     templateUrl: './tile.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiTileComponent {
+export class TuiTileComponent implements OnDestroy {
     @Input()
     width = 1;
 
@@ -81,5 +82,11 @@ export class TuiTileComponent {
 
     onTransitionEnd(): void {
         this.dragged = false;
+    }
+
+    ngOnDestroy(): void {
+        if (this.tiles.element === this.element) {
+            this.tiles.element = null;
+        }
     }
 }

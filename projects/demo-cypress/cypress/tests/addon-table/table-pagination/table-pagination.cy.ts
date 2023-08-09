@@ -63,7 +63,7 @@ describe(`TablePagination`, () => {
 
     function waitForCheckmarkIcon(): void {
         cy.get(`tui-dropdown`)
-            .find(`tui-svg[src=tuiIconCheckLarge] use`)
+            .find(`tui-svg.t-checkmark use`)
             .should(`be.visible`)
             .invoke(`height`)
             .should(`be.greaterThan`, 0);

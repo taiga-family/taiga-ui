@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - uses: taiga-family/ci/actions/variables@1.6.0
-      - uses: taiga-family/ci/actions/setup-node@1.6.0
+      - uses: taiga-family/ci/actions/variables@1.7.4
+      - uses: taiga-family/ci/actions/setup-node@1.7.4
 
-      - run: npx nx build demo -c next
+      - run: npx nx build demo -c next --output-path ${{ env.DIST }}/next
       - run: tree ${{ env.DIST }} -P '*.html'
       - name: Publish snapshots
         uses: s0/git-publish-subdir-action@v2.6.0
@@ -29,8 +29,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - uses: taiga-family/ci/actions/variables@1.6.0
-      - uses: taiga-family/ci/actions/setup-node@1.6.0
+      - uses: taiga-family/ci/actions/variables@1.7.4
+      - uses: taiga-family/ci/actions/setup-node@1.7.4
         id: nodejs-workspace
 
       - run: npx nx build demo --configuration production
