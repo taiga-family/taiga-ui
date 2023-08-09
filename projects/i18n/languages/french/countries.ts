@@ -19,7 +19,7 @@ export const TUI_FRENCH_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> = 
     [TuiCountryIsoCode.BD]: `Bangladesh`,
     [TuiCountryIsoCode.BE]: `Belgique`,
     [TuiCountryIsoCode.BF]: `Burkina Faso`,
-    [TuiCountryIsoCode.BG]: `Belgique`,
+    [TuiCountryIsoCode.BG]: `Bulgarie`,
     [TuiCountryIsoCode.BH]: `Bahrein`,
     [TuiCountryIsoCode.BI]: `Burundi`,
     [TuiCountryIsoCode.BJ]: `Bénin`,
