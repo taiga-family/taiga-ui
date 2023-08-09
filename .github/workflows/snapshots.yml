@@ -22,7 +22,7 @@ jobs:
           REPO: self
           FOLDER: ${{ env.DIST }}/next
           BRANCH: snapshots/demo/next/${{ github.head_ref || github.ref_name }}
-          GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
+          GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
   snapshots-of-release:
     if: ${{ contains(github.head_ref || github.ref_name, 'release/') }}
@@ -42,7 +42,7 @@ jobs:
           REPO: self
           FOLDER: ${{ env.DIST }}
           BRANCH: snapshots/demo/v${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
-          GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
+          GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
 concurrency:
   group: snapshots-${{ github.workflow }}-${{ github.head_ref || github.ref_name }}

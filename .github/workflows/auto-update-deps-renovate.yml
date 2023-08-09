@@ -12,7 +12,7 @@ jobs:
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v39.0.1
         with:
-          token: ${{ secrets.TINKOFF_BOT_PAT }}
+          token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
           configurationFile: renovate.json
         env:
           LOG_LEVEL: 'debug'

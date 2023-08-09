@@ -32,7 +32,7 @@ jobs:
         if: env.SUPPORT_AUTO_PUSH == 'true'
         with:
           ref: ${{ github.head_ref }}
-          token: ${{ secrets.TINKOFF_BOT_PAT }}
+          token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
       - uses: taiga-family/ci/actions/setup-node@1.7.5
 
@@ -53,7 +53,7 @@ jobs:
         if: env.SUPPORT_AUTO_PUSH == 'true'
         with:
           ref: ${{ github.head_ref }}
-          token: ${{ secrets.TINKOFF_BOT_PAT }}
+          token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
       - uses: taiga-family/ci/actions/setup-node@1.7.5
       - run: npm run stylelint ${{ env.SUPPORT_AUTO_PUSH == 'true' && '-- --fix' || '' }}
@@ -73,7 +73,7 @@ jobs:
         if: env.SUPPORT_AUTO_PUSH == 'true'
         with:
           ref: ${{ github.head_ref }}
-          token: ${{ secrets.TINKOFF_BOT_PAT }}
+          token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
       - uses: taiga-family/ci/actions/setup-node@1.7.5
       # - run: npm run lint ${{ env.SUPPORT_AUTO_PUSH == 'true' && '-- --fix' || '' }}
