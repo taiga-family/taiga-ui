@@ -2,6 +2,7 @@ name: 🚀 Snapshots
 on:
   push:
     branches: [main, 'v[0-9]+.x', 'release/**']
+  workflow_dispatch:
 
 jobs:
   snapshots-next:
@@ -10,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - uses: taiga-family/ci/actions/variables@1.7.4
-      - uses: taiga-family/ci/actions/setup-node@1.7.4
+      - uses: taiga-family/ci/actions/variables@1.7.5
+      - uses: taiga-family/ci/actions/setup-node@1.7.5
 
-      - run: npx nx build demo -c next --output-path ${{ env.DIST }}/next
+      - run: npx nx build demo -c next
       - run: tree ${{ env.DIST }} -P '*.html'
       - name: Publish snapshots
         uses: s0/git-publish-subdir-action@v2.6.0
@@ -21,7 +22,7 @@ jobs:
           REPO: self
           FOLDER: ${{ env.DIST }}/next
           BRANCH: snapshots/demo/next/${{ github.head_ref || github.ref_name }}
-          GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
+          GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
   snapshots-of-release:
     if: ${{ contains(github.head_ref || github.ref_name, 'release/') }}
@@ -29,8 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - uses: taiga-family/ci/actions/variables@1.7.4
-      - uses: taiga-family/ci/actions/setup-node@1.7.4
+      - uses: taiga-family/ci/actions/variables@1.7.5
+      - uses: taiga-family/ci/actions/setup-node@1.7.5
         id: nodejs-workspace
 
       - run: npx nx build demo --configuration production
@@ -41,7 +42,7 @@ jobs:
           REPO: self
           FOLDER: ${{ env.DIST }}
           BRANCH: snapshots/demo/v${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
-          GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
+          GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
 concurrency:
   group: snapshots-${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
