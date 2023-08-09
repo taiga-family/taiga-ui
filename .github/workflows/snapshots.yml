@@ -2,6 +2,7 @@ name: 🚀 Snapshots
 on:
   push:
     branches: [main, 'v[0-9]+.x', 'release/**']
+  workflow_dispatch:
 
 jobs:
   snapshots-next:
