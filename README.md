@@ -61,8 +61,8 @@ See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
 
 ## Status
 
-| Version | Status                                                                                       | Latest tag (npm)                                                                            |
-| ------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Version | Status                                                                                            | Latest tag (npm)                                                                            |
+| ------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | v3.x    | ![v3](https://github.com/taiga-family/taiga-ui/actions/workflows/build.yml/badge.svg?branch=main) | ![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk?label=%40taiga-ui%2Fcdk%20~%20v3) |
 | v2.x    | ![v2](https://github.com/taiga-family/taiga-ui/actions/workflows/build.yml/badge.svg?branch=v2.x) | ![v2](https://img.shields.io/npm/v/@taiga-ui/cdk/v2-lts?label=%40taiga-ui%2Fcdk%20~%20v2)   |
 

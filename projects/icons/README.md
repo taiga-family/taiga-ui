@@ -9,8 +9,8 @@
 
 > A set of vector icons used by Taiga UI
 
-It's a part of [**Taiga UI**](https://github.com/taiga-family/taiga-ui) that is fully-treeshakable Angular UI Kit consisting
-of multiple base libraries and several add-ons
+It's a part of [**Taiga UI**](https://github.com/taiga-family/taiga-ui) that is fully-treeshakable Angular UI Kit
+consisting of multiple base libraries and several add-ons
 
 ## How to install
 
