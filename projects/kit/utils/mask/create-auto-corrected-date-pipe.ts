@@ -2,7 +2,7 @@ import {DATE_FILLER_LENGTH, TuiDateMode, TuiDay} from '@taiga-ui/cdk';
 import {TuiTextMaskPipeHandler, TuiWithOptionalMinMaxWithValue} from '@taiga-ui/core';
 
 /**
- * @deprecated Use {@link https://tinkoff.github.io/maskito/kit/date Date} from {@link https://github.com/taiga-family/maskito Maskito} instead
+ * @deprecated Use {@link https://maskito.dev/kit/date Date} from {@link https://github.com/taiga-family/maskito Maskito} instead
  * TODO: delete in v4.0
  */
 export interface TuiAutoCorrectedDatePipeConfigs
@@ -12,7 +12,7 @@ export interface TuiAutoCorrectedDatePipeConfigs
 }
 
 /**
- * @deprecated Use {@link https://tinkoff.github.io/maskito/kit/date Date} from {@link https://github.com/taiga-family/maskito Maskito} instead
+ * @deprecated Use {@link https://maskito.dev/kit/date Date} from {@link https://github.com/taiga-family/maskito Maskito} instead
  * TODO: delete in v4.0
  */
 export function tuiNormalizeDateValue(
@@ -27,7 +27,7 @@ export function tuiNormalizeDateValue(
 }
 
 /**
- * @deprecated Use {@link https://tinkoff.github.io/maskito/kit/date Date} from {@link https://github.com/taiga-family/maskito Maskito} instead
+ * @deprecated Use {@link https://maskito.dev/kit/date Date} from {@link https://github.com/taiga-family/maskito Maskito} instead
  * TODO: delete in v4.0
  */
 export function tuiCreateAutoCorrectedDatePipe(
