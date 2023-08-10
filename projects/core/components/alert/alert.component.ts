@@ -8,12 +8,14 @@ import {
     Self,
 } from '@angular/core';
 import {TuiDestroyService, TuiDialog, tuiIsNumber} from '@taiga-ui/cdk';
-import {tuiFadeIn, tuiHeightCollapse, tuiSlideInRight} from '@taiga-ui/core/animations';
+import {tuiFadeIn, tuiHeightCollapse, tuiSlideIn} from '@taiga-ui/core/animations';
 import {TuiAlertOptions} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {fromEvent, timer} from 'rxjs';
 import {repeatWhen, takeUntil} from 'rxjs/operators';
+
+import {TUI_ALERT_POSITION} from './alert.providers';
 
 // TODO: get rid of $any in template
 @Component({
@@ -22,11 +24,12 @@ import {repeatWhen, takeUntil} from 'rxjs/operators';
     styleUrls: ['./alert.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
-    animations: [tuiFadeIn, tuiSlideInRight, tuiHeightCollapse],
+    animations: [tuiFadeIn, tuiSlideIn, tuiHeightCollapse],
     host: {
         role: 'alert',
-        '[@tuiFadeIn]': 'animation',
-        '[@tuiSlideInRight]': 'animation',
+        '[style.margin]': 'position',
+        '[@tuiFadeIn]': 'options',
+        '[@tuiSlideIn]': 'animation',
         '[@tuiHeightCollapse]': 'animation',
     },
 })
@@ -36,10 +39,21 @@ export class TuiAlertComponent<O, I> implements OnInit {
             ? this.item.autoClose(this.item.status)
             : this.item.autoClose;
 
+    readonly animation = this.position.endsWith('auto')
+        ? {
+              ...this.options,
+              value: 'right',
+          }
+        : {
+              ...this.options,
+              value: 'left',
+          };
+
     constructor(
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
-        @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
+        @Inject(TUI_ALERT_POSITION) readonly position: string,
+        @Inject(TUI_ANIMATION_OPTIONS) readonly options: AnimationOptions,
         @Inject(POLYMORPHEUS_CONTEXT) readonly item: TuiDialog<TuiAlertOptions<I>, O>,
     ) {}
 
@@ -47,7 +61,7 @@ export class TuiAlertComponent<O, I> implements OnInit {
         this.initAutoClose();
     }
 
-    closeNotification(): void {
+    close(): void {
         this.item.$implicit.complete();
     }
 
@@ -71,6 +85,6 @@ export class TuiAlertComponent<O, I> implements OnInit {
                 repeatWhen(() => fromEvent(this.el.nativeElement, 'mouseleave')),
                 takeUntil(this.destroy$),
             )
-            .subscribe(() => this.closeNotification());
+            .subscribe(() => this.close());
     }
 }
