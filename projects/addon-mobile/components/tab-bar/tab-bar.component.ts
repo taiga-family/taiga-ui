@@ -17,7 +17,7 @@ import {TuiTabBarItemComponent} from './tab-bar-item.component';
 
 @Component({
     selector: 'nav[tuiTabBar]',
-    template: '<ng-content></ng-content>',
+    templateUrl: './tab-bar.template.html',
     styleUrls: ['./tab-bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
