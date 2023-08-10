@@ -26,6 +26,9 @@ export class TuiTabBarComponent {
     private readonly tabs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     @Input()
+    quantity = 4;
+
+    @Input()
     activeItemIndex = NaN;
 
     @Output()
