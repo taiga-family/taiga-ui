@@ -1,5 +1,5 @@
 /**
- * Create {@link https://tinkoff.github.io/maskito/core-concepts/mask-expression pattern mask expression} for phone number
+ * Create {@link https://maskito.dev/core-concepts/mask-expression pattern mask expression} for phone number
  *
  * @example
  * tuiCreatePhoneMaskExpression('+1', '(###) ###-####');

@@ -2,7 +2,7 @@ import {CHAR_PLUS} from '@taiga-ui/cdk';
 
 /**
  * TODO: delete in v4.0
- * @deprecated Use {@link https://tinkoff.github.io/maskito/core-concepts/transformer maskitoTransform} instead<br/>
+ * @deprecated Use {@link https://maskito.dev/core-concepts/transformer maskitoTransform} instead<br/>
  * @example
  * import {maskitoTransform} from '@maskito/core';
  *

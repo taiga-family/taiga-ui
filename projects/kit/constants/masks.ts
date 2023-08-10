@@ -21,7 +21,7 @@ export const TUI_PHONE_MASK: TuiTextMaskList = [
 ];
 
 /**
- * @deprecated Use {@link https://tinkoff.github.io/maskito/kit/time Time} from {@link https://github.com/taiga-family/maskito Maskito} instead
+ * @deprecated Use {@link https://maskito.dev/kit/time Time} from {@link https://github.com/taiga-family/maskito Maskito} instead
  * TODO: delete in v4.0
  */
 export const TUI_TIME_MASK: TuiTextMaskList = [

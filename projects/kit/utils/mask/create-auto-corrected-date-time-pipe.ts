@@ -17,7 +17,7 @@ interface TuiAutoCorrectedDateTimePipeConfigs extends TuiAutoCorrectedDatePipeCo
 }
 
 /**
- * @deprecated Use {@link https://tinkoff.github.io/maskito/kit/date-time DateTime} from {@link https://github.com/taiga-family/maskito Maskito} instead
+ * @deprecated Use {@link https://maskito.dev/kit/date-time DateTime} from {@link https://github.com/taiga-family/maskito Maskito} instead
  * TODO: delete in v4.0
  */
 export function tuiCreateAutoCorrectedDateTimePipe(
