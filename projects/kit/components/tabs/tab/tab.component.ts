@@ -27,7 +27,7 @@ import {TUI_TAB_EVENT, TUI_TAB_PROVIDERS} from './tab.providers';
         /**
          * SSR hack - problem with the Domino renderer that Angular uses for its server-side DOM implementation.
          * Domino doesn't support CSS variables and some CSS properties like clip-path.
-         * Read more: https://github.com/Tinkoff/taiga-ui/issues/3210#issuecomment-1375788017
+         * Read more: https://github.com/taiga-family/taiga-ui/issues/3210#issuecomment-1375788017
          * ___
          * TODO: drop this line after Angular team switch over to a new JavaScript DOM API
          * https://github.com/angular/angular/issues/42170

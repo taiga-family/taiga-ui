@@ -13,7 +13,7 @@ const NON_ZERO_DIGIT = /[1-9]/;
 
 /**
  * TODO: delete in v4.0
- * @deprecated Use {@link https://tinkoff.github.io/maskito/kit/number Number} from {@link https://github.com/Tinkoff/maskito Maskito} instead <br/>
+ * @deprecated Use {@link https://tinkoff.github.io/maskito/kit/number Number} from {@link https://github.com/taiga-family/maskito Maskito} instead <br/>
  * Adaptation for {@link https://github.com/text-mask/text-mask/tree/master/addons#createnumbermask `createNumberMask`}
  */
 export function tuiCreateNumberMask({

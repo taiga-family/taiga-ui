@@ -84,7 +84,7 @@ export const APP_PROVIDERS: Provider[] = [
     {
         provide: TUI_DOC_SOURCE_CODE,
         useValue: ({type, path, header, package: pkg}: TuiDocSourceCodePathOptions) => {
-            const link = `https://github.com/tinkoff/taiga-ui/tree/main/projects`;
+            const link = `https://github.com/taiga-family/taiga-ui/tree/main/projects`;
 
             if (!pkg) {
                 return null;
@@ -165,7 +165,7 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_DIALOG_CLOSES_ON_BACK,
-        // TODO: change it back after solving https://github.com/Tinkoff/taiga-ui/issues/3270
+        // TODO: change it back after solving https://github.com/taiga-family/taiga-ui/issues/3270
         // useFactory: () => of(!tuiIsInsideIframe(inject(WINDOW))), // for cypress tests
         useFactory: () => of(inject(TUI_IS_CYPRESS)),
     },

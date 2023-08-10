@@ -65,7 +65,7 @@ export const TUI_CARD_HOLDER_MASK: MaskitoOptions = {
 };
 
 /**
- * @deprecated Use {@link TUI_CARD_HOLDER_MASK} with {@link https://github.com/Tinkoff/maskito Maskito}
+ * @deprecated Use {@link TUI_CARD_HOLDER_MASK} with {@link https://github.com/taiga-family/maskito Maskito}
  * TODO: delete in v4.0
  */
 export const cardHolderMask: TuiTextMaskListHandler = tuiCreateCorrectionMask(

@@ -22,7 +22,7 @@ import {AppComponent} from './app.component';
     /**
      * If you use unsafe icons or TuiEditor in your app
      *
-     * Take a look at: https://github.com/tinkoff/ng-dompurify
+     * Take a look at: https://github.com/taiga-family/ng-dompurify
      *
      * This library implements DOMPurify as Angular Sanitizer or Pipe.
      * It delegates sanitizing to DOMPurify and supports the same configuration.

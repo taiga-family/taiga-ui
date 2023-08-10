@@ -5,12 +5,12 @@
 [![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white)](https://discord.gg/Us8d8JVaTg)
 
 [Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) •
-[Core team](https://github.com/tinkoff/taiga-ui/#core-team)
+[Core team](https://github.com/taiga-family/taiga-ui/#core-team)
 
 > A set of components and utils related to payment systems, currencies, money and card UI elements etc.
 
-It's a part of [**Taiga UI**](https://github.com/tinkoff/taiga-ui) that is fully-treeshakable Angular UI Kit consisting
-of multiple base libraries and several add-ons
+It's a part of [**Taiga UI**](https://github.com/taiga-family/taiga-ui) that is fully-treeshakable Angular UI Kit
+consisting of multiple base libraries and several add-ons
 
 ## How to install
 

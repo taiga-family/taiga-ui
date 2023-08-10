@@ -5,7 +5,7 @@
  * ___
  * "angular2-text-mask" is a legacy not-maintained library. It is published using legacy View Engine distribution.
  * Stackblitz fails to run "View Engine"-libraries in Ivy application.
- * See {@link https://github.com/Tinkoff/taiga-ui/issues/2541#issuecomment-1235516443 this comment}.
+ * See {@link https://github.com/taiga-family/taiga-ui/issues/2541#issuecomment-1235516443 this comment}.
  */
 import {
     Directive,
@@ -38,7 +38,7 @@ function _isAndroid(): boolean {
 
 /**
  * @internal
- * @deprecated Use {@link https://github.com/Tinkoff/maskito Maskito}
+ * @deprecated Use {@link https://github.com/taiga-family/maskito Maskito}
  * Don't use it!
  * TODO: delete in v4.0
  */
@@ -166,7 +166,7 @@ export class MaskedInputDirective implements ControlValueAccessor, OnChanges {
 
 /**
  * @internal
- * @deprecated Use {@link https://github.com/Tinkoff/maskito Maskito}
+ * @deprecated Use {@link https://github.com/taiga-family/maskito Maskito}
  * Don't use it!
  * TODO: delete in v4.0
  */
