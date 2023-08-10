@@ -90,27 +90,27 @@ export function dateTimeMigrations(options: TuiSchema): void {
         {
             namedImport: `TuiDay`,
             field: `getDayFromMonthRowCol`,
-            message: `getDayFromMonthRowCol has been removed in 3.0. If you need this utils check out this pipe https://github.com/Tinkoff/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
+            message: `getDayFromMonthRowCol has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
         },
         {
             namedImport: `TuiMonth`,
             field: `monthStartDaysOffset`,
-            message: `monthStartDaysOffset has been removed in 3.0. If you need this utils check out this pipe https://github.com/Tinkoff/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
+            message: `monthStartDaysOffset has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
         },
         {
             namedImport: `TuiMonth`,
             field: `weeksRowsCount`,
-            message: `weeksRowsCount has been removed in 3.0. If you need this utils check out this pipe https://github.com/Tinkoff/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
+            message: `weeksRowsCount has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
         },
         {
             namedImport: `TuiYear`,
             field: `getYearStartDaysOffset`,
-            message: `getYearStartDaysOffset has been removed in 3.0. If you need this utils check out this pipe https://github.com/Tinkoff/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
+            message: `getYearStartDaysOffset has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
         },
         {
             namedImport: `TuiYear`,
             field: `weeksRowsCount`,
-            message: `weeksRowsCount has been removed in 3.0. If you need this utils check out this pipe https://github.com/Tinkoff/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
+            message: `weeksRowsCount has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
         },
     ].forEach(({namedImport, field, message}) => {
         start = performance.now();

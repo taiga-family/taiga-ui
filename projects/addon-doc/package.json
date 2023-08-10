@@ -10,8 +10,8 @@
         "documentation",
         "storybook"
     ],
-    "homepage": "https://github.com/tinkoff/taiga-ui",
-    "repository": "https://github.com/tinkoff/taiga-ui",
+    "homepage": "https://github.com/taiga-family/taiga-ui",
+    "repository": "https://github.com/taiga-family/taiga-ui",
     "license": "Apache-2.0",
     "dependencies": {
         "@angular-devkit/schematics": "12.2.18",

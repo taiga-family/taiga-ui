@@ -19,7 +19,7 @@ export class TuiElementDirective<T extends Element = HTMLElement>
          * in your constructor method.
          *
          * ERROR TypeError: Class constructor ElementRef cannot be invoked without 'new'
-         * https://github.com/Tinkoff/taiga-ui/issues/3072
+         * https://github.com/taiga-family/taiga-ui/issues/3072
          *
          * This way we can instantiate object creation
          * without additional prototype chain for possible fix bug.

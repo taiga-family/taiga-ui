@@ -32,7 +32,7 @@ export class TuiBreadcrumbsExample2 {
         },
         {
             caption: 'Taiga UI',
-            link: 'https://github.com/tinkoff/taiga-ui',
+            link: 'https://github.com/taiga-family/taiga-ui',
         },
         {
             caption: 'Components',

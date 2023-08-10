@@ -3,7 +3,7 @@ import type {TuiTextMaskListHandler} from './text-mask-list-handler';
 import type {TuiTextMaskPipeHandler} from './text-mask-pipe-handler';
 
 /**
- * @deprecated Use {@link https://github.com/Tinkoff/maskito Maskito}
+ * @deprecated Use {@link https://github.com/taiga-family/maskito Maskito}
  * {@link https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md}
  */
 export interface TuiTextMaskOptions {

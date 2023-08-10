@@ -5,7 +5,7 @@ const TWO_DIGITS = new Array(2).fill(TUI_DIGIT_REGEXP);
 const FOUR_DIGITS = new Array(4).fill(TUI_DIGIT_REGEXP);
 
 /**
- * @deprecated Use {@link https://tinkoff.github.io/maskito/kit/date Date} from {@link https://github.com/Tinkoff/maskito Maskito} instead
+ * @deprecated Use {@link https://tinkoff.github.io/maskito/kit/date Date} from {@link https://github.com/taiga-family/maskito Maskito} instead
  * TODO: delete in v4.0
  */
 export function tuiCreateDateMask(mode: TuiDateMode, separator: string): TuiTextMaskList {

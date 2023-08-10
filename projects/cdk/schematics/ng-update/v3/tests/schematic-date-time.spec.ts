@@ -79,7 +79,7 @@ export class AppComponent {
 
        this.other.getFormattedDay("DMY", ".");
 
-// TODO: (Taiga UI migration) getDayFromMonthRowCol has been removed in 3.0. If you need this utils check out this pipe https://github.com/Tinkoff/taiga-ui/tree/main/projects/core/pipes/calendar-sheet
+// TODO: (Taiga UI migration) getDayFromMonthRowCol has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet
        this.other.getDayFromMonthRowCol(1, 2, 3);
 
 // TODO: (Taiga UI migration) formattedMonth has been removed in 3.0. Please use TUI_MONTH_FORMATTER from @taiga-ui/kit

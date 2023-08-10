@@ -12,5 +12,5 @@ export const SCREENSHOT_BOT_LINK = 'https://github.com/apps/lumberjack-bot';
 export class ScreenshotGithubBotComponent {
     readonly botName = SCREENSHOT_BOT_NAME;
     readonly botAppLink = SCREENSHOT_BOT_LINK;
-    readonly botRepoLink = 'https://github.com/tinkoff/argus';
+    readonly botRepoLink = 'https://github.com/taiga-family/argus';
 }
