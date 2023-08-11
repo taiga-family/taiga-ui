@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
-import {tuiAsDialog, TuiClickOutsideModule} from '@taiga-ui/cdk';
+import {TuiClickOutsideModule} from '@taiga-ui/cdk';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -19,6 +19,6 @@ import {TuiSheetDialogService} from './sheet-dialog.service';
     ],
     declarations: [TuiSheetDialogComponent, TuiSheetDialogDirective],
     exports: [TuiSheetDialogComponent, TuiSheetDialogDirective],
-    providers: [tuiAsDialog(TuiSheetDialogService)],
+    providers: [TuiSheetDialogService],
 })
 export class TuiSheetDialogModule {}

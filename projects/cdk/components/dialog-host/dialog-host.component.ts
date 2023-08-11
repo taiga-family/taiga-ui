@@ -11,10 +11,11 @@ import {
 import {Title} from '@angular/platform-browser';
 import {HISTORY} from '@ng-web-apis/common';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
+import { TuiDestroyService } from '@taiga-ui/cdk/services';
 import {TUI_DIALOGS} from '@taiga-ui/cdk/tokens';
 import {TuiDialog} from '@taiga-ui/cdk/types';
 import {combineLatest, Observable, of} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, takeUntil} from 'rxjs/operators';
 
 export const TUI_DIALOG_CLOSES_ON_BACK = new InjectionToken<Observable<boolean>>(
     'Is closing dialog on browser backward navigation enabled',
