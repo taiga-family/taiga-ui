@@ -16,6 +16,7 @@ jobs:
       - uses: actions/checkout@v3.5.3
       - uses: taiga-family/ci/actions/variables@1.7.6
       - uses: taiga-family/ci/actions/setup-node@1.7.6
+      - run: npm run run-many:build:libs
       - run: npx ts-node ./scripts/publish-canary.ts
 
 concurrency:
