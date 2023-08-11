@@ -126,7 +126,7 @@
         "lint-staged": "13.2.3",
         "ng-packagr": "12.2.7",
         "nx": "16.6.0",
-        "nx-cloud": "16.2.0",
+        "nx-cloud": "16.3.0",
         "postcss": "8.4.27",
         "prettier": "2.8.8",
         "rollup": "2.79.1",
