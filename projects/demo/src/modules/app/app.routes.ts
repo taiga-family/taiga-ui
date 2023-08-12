@@ -199,6 +199,14 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/avatar`,
+        loadChildren: async () =>
+            (await import(`../experimental/avatar/avatar.module`)).ExampleTuiAvatarModule,
+        data: {
+            title: `Avatar`,
+        },
+    },
+    {
         path: `navigation/breadcrumbs`,
         loadChildren: async () =>
             (await import(`../components/breadcrumbs/breadcrumbs.module`))

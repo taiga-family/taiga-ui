@@ -1,0 +1,23 @@
+{
+    "name": "@taiga-ui/experimental",
+    "version": "3.40.0",
+    "description": "A package with Taiga UI experimental components",
+    "keywords": [
+        "angular",
+        "component",
+        "layout"
+    ],
+    "homepage": "https://github.com/taiga-family/taiga-ui",
+    "repository": "https://github.com/taiga-family/taiga-ui",
+    "license": "Apache-2.0",
+    "peerDependencies": {
+        "@angular/common": ">=12.0.0",
+        "@angular/core": ">=12.0.0",
+        "@taiga-ui/cdk": ">=3.40.0",
+        "@taiga-ui/core": ">=3.40.0",
+        "@taiga-ui/kit": ">=3.40.0",
+        "@tinkoff/ng-polymorpheus": ">=4.0.0",
+        "rxjs": ">=6.0.0",
+        "tslib": ">=2.0.0"
+    }
+}

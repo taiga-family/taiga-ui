@@ -1,0 +1,11 @@
+:host {
+    mask-size: 100% var(--line-height), 100% calc(100% - var(--line-height));
+    mask-position: bottom, top;
+    mask-repeat: no-repeat;
+    overflow: hidden;
+    line-height: var(--line-height) !important;
+
+    &._overflown {
+        mask-image: linear-gradient(to left, transparent, #000 var(--fade-size)), linear-gradient(#000, #000);
+    }
+}

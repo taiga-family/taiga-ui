@@ -20,6 +20,7 @@ import {
 
 import {TuiDestroyService} from './destroy.service';
 
+// TODO: Remove in 4.0 when Safari is bumped to 13
 @Injectable()
 export class TuiResizeService extends ResizeObserverService {
     constructor(

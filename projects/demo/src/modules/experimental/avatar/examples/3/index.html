@@ -1,0 +1,30 @@
+<tui-avatar-stack>
+    <tui-avatar
+        *ngFor="let name of names"
+        size="l"
+        [src]="name | tuiInitials"
+        [style.background]="name | tuiAutoColor"
+    ></tui-avatar>
+    <tui-avatar size="l">99+</tui-avatar>
+</tui-avatar-stack>
+<tui-avatar-stack
+    direction="left"
+    class="tui-space_vertical-4"
+>
+    <tui-avatar
+        *ngFor="let name of names"
+        [round]="true"
+        [src]="name | tuiInitials"
+        [style.background]="name | tuiAutoColor"
+    ></tui-avatar>
+    <tui-avatar [round]="true">99+</tui-avatar>
+</tui-avatar-stack>
+<tui-avatar-stack>
+    <tui-avatar
+        *ngFor="let name of names"
+        size="s"
+        [src]="name | tuiInitials"
+        [style.background]="name | tuiAutoColor"
+    ></tui-avatar>
+    <tui-avatar size="s">99+</tui-avatar>
+</tui-avatar-stack>
