@@ -1,5 +1,5 @@
 module.exports = {
-    extends: ['@tinkoff/stylelint-config/angular-less'],
+    extends: ['@taiga-ui/stylelint-config/angular-less'],
     ignoreFiles: ['**/demo/**', '**/dist/**', '**/coverage/**', '**/node_modules/**'],
     rules: {
         'function-url-quotes': null,
