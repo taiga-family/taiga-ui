@@ -1,5 +1,6 @@
 import {readdirSync, unlinkSync} from 'fs';
 import * as path from 'path';
+import {Config} from 'prettier';
 
 import {
     tuiConvertAllCompileFileToAllFile,
@@ -9,11 +10,13 @@ import {
 
 (async function main(): Promise<void> {
     const projectPath = process.argv[2] || `projects/icons`;
-    const prettierPath = process.argv[3] || `prettier.config.js`;
     const iconsSrc = path.resolve(`${projectPath}/src/`);
     const allToCompilePath = path.resolve(`${projectPath}/all-to-compile.ts`);
     const resultAllFile = path.resolve(`${projectPath}/all.ts`);
-    const prettier = require(path.resolve(prettierPath));
+    const config = require(require.resolve(`@taiga-ui/prettier-config`)) as Config;
+    const svg = require(require.resolve(
+        `@taiga-ui/prettier-config/options/svg`,
+    )) as Config;
 
     tuiPrepareAllToCompileFile(iconsSrc, allToCompilePath);
 
@@ -29,7 +32,7 @@ import {
 
     tuiPostPrettierFormat({
         file: resultAllFile,
-        config: {...prettier, parser: `typescript`},
+        config: {...config, parser: `typescript`},
     });
 
     const icons = readdirSync(iconsSrc)
@@ -37,9 +40,14 @@ import {
         .map(file => `${iconsSrc}/${file}`);
 
     for (const file of icons) {
-        // @note: double format for pretty output new lines
-        tuiPostPrettierFormat({file, config: {printWidth: 120, parser: `angular`}});
-        tuiPostPrettierFormat({file, config: {...prettier, parser: `xml`}});
+        tuiPostPrettierFormat({
+            file,
+            config: {...config, ...svg, parser: `angular`},
+        });
+        tuiPostPrettierFormat({
+            file,
+            config: {...config, ...svg, parser: `xml`},
+        });
     }
 
     try {

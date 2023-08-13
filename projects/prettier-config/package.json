@@ -1,0 +1,25 @@
+{
+    "name": "@taiga-ui/prettier-config",
+    "version": "3.40.0",
+    "description": "Taiga-ui prettier config",
+    "keywords": [
+        "prettier",
+        "prettier-config"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/taiga-family/taiga-ui.git"
+    },
+    "license": "Apache-2.0",
+    "main": "index.js",
+    "dependencies": {
+        "@prettier/plugin-xml": "2.2.0",
+        "@types/prettier": "2.7.3",
+        "prettier-package-json": "2.8.0",
+        "prettier-plugin-organize-attributes": "0.0.5",
+        "sort-package-json": "1.57.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

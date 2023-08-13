@@ -33,6 +33,7 @@
         "topromise",
         "switchmap",
         "plusplus",
-        "camelcase"
+        "camelcase",
+        "stylelintrc"
     ]
 }
