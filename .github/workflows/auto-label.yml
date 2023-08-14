@@ -7,12 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - uses: taiga-family/ci/actions/variables@1.7.6
-
-      - name: Label when approved
-        if: env.IS_OWNER_MODE == 'true'
-        uses: pullreminders/label-when-approved-action@master
-        env:
-          APPROVALS: '2'
-          ADD_LABEL: 'ready to merge'
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: taiga-family/ci/actions/variables@1.9.0
+      - uses: taiga-family/ci/actions/label-when-approved@1.9.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}

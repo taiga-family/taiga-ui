@@ -9,7 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - name: Dependency Review
-        uses: actions/dependency-review-action@v3.0.7
-        with:
-          fail-on-severity: critical
+      - uses: taiga-family/ci/actions/dependency-review@1.9.0
