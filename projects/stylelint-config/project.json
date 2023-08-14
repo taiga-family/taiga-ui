@@ -11,12 +11,6 @@
             "options": {
                 "command": "eslint --no-error-on-unmatched-pattern \"**/projects/stylelint-config/**/*\""
             }
-        },
-        "publish": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "ts-node ./scripts/publish.ts --path ./projects/stylelint-config --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
-            }
         }
     }
 }
