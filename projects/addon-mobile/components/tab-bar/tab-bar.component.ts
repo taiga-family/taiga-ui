@@ -17,13 +17,16 @@ import {TuiTabBarItemComponent} from './tab-bar-item.component';
 
 @Component({
     selector: 'nav[tuiTabBar]',
-    template: '<ng-content></ng-content>',
+    templateUrl: './tab-bar.template.html',
     styleUrls: ['./tab-bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTabBarComponent {
     @ContentChildren(forwardRef(() => TuiTabBarItemComponent), {read: ElementRef})
     private readonly tabs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+
+    @Input()
+    quantity = 4;
 
     @Input()
     activeItemIndex = NaN;

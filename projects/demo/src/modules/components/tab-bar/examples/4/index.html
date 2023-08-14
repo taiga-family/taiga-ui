@@ -1,0 +1,18 @@
+<p>
+    <button
+        tuiButton
+        size="m"
+        (click)="load$.next()"
+    >
+        Reload
+    </button>
+</p>
+<nav tuiTabBar>
+    <button
+        *ngFor="let item of items$ | async"
+        tuiTabBarItem
+        [icon]="item.icon"
+    >
+        {{ item.text }}
+    </button>
+</nav>
