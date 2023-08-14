@@ -7,8 +7,8 @@ import {TuiHintModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
     DEFAULT_ROWS,
     LINE_HEIGHT_L,
-    TuiTextareaComponent,
-    TuiTextareaModule,
+    TuiTextAreaComponent,
+    TuiTextAreaModule,
 } from '@taiga-ui/kit';
 import {
     configureTestSuite,
@@ -19,22 +19,23 @@ import {
 
 const DEFAULT_HEIGHT = 108;
 
-describe(`Textarea`, () => {
+// TODO: remove in v4.0
+describe(`TextArea`, () => {
     @Component({
         template: `
-            <tui-textarea
+            <tui-text-area
                 [expandable]="expandable"
                 [formControl]="control"
                 [maxLength]="maxLength"
                 [readOnly]="readOnly"
                 [rows]="rows"
                 [tuiHintContent]="hintContent"
-            ></tui-textarea>
+            ></tui-text-area>
         `,
     })
     class TestComponent {
-        @ViewChild(TuiTextareaComponent, {static: true})
-        component!: TuiTextareaComponent;
+        @ViewChild(TuiTextAreaComponent, {static: true})
+        component!: TuiTextAreaComponent;
 
         control = new FormControl();
 
@@ -53,7 +54,7 @@ describe(`Textarea`, () => {
     let testComponent: TestComponent;
     let pageObject: TuiPageObject<TestComponent>;
     let inputPO: TuiNativeInputPO;
-    let component: TuiTextareaComponent;
+    let component: TuiTextAreaComponent;
 
     const testContext = {
         get pageObject() {
@@ -95,7 +96,7 @@ describe(`Textarea`, () => {
             imports: [
                 NoopAnimationsModule,
                 ReactiveFormsModule,
-                TuiTextareaModule,
+                TuiTextAreaModule,
                 TuiTextfieldControllerModule,
                 TuiHintModule,
             ],
