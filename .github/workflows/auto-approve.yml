@@ -7,10 +7,11 @@ jobs:
     permissions:
       pull-requests: write
     if:
-      github.actor == 'tinkoff-bot' && (contains(github.head_ref, 'release/') || contains(github.head_ref, 'renovate/'))
+      github.actor == 'taiga-family-bot' && (contains(github.head_ref, 'release/') || contains(github.head_ref,
+      'renovate/'))
     steps:
       - uses: actions/checkout@v3
-      - uses: taiga-family/ci/actions/two-approve@1.7.6
+      - uses: taiga-family/ci/actions/two-approve@1.9.0
         with:
           token1: ${{ secrets.GITHUB_TOKEN }}
           token2: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}

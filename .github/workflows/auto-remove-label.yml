@@ -8,6 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - uses: actions-ecosystem/action-remove-labels@v1.3.0
-        with:
-          labels: 'state: need triage'
+      - uses: taiga-family/ci/actions/auto-remove-label@1.9.0
