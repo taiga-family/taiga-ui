@@ -122,6 +122,7 @@ export class TuiInputYearComponent
 
     onYearClick({year}: TuiYear): void {
         this.value = year;
+        this.updateNativeValue(year);
         this.onOpenChange(false);
     }
 
@@ -139,6 +140,10 @@ export class TuiInputYearComponent
 
     override writeValue(value: number | null): void {
         super.writeValue(value);
+        this.updateNativeValue(value);
+    }
+
+    private updateNativeValue(value: number | null): void {
         this.nativeValue = value?.toString() || '';
     }
 }

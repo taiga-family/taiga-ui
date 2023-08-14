@@ -60,4 +60,37 @@ describe(`InputYear`, () => {
                 .should(`have.value`, `2007`);
         });
     });
+
+    describe(`select date from dropdown`, () => {
+        beforeEach(() => {
+            cy.tuiVisit(`components/input-year/API`);
+            cy.get(`#demo-content input`)
+                .should(`be.visible`)
+                .first()
+                .focus()
+                .as(`input`);
+        });
+
+        it(`empty input => select date via calendar => new date inside text field`, () => {
+            cy.get(`@input`).click();
+
+            cy.get(`tui-dropdown`)
+                .findByAutomationId(`tui-primitive-year-picker__cell`)
+                .contains(`2020`)
+                .click({force: true});
+
+            cy.get(`@input`).should(`have.value`, `2020`);
+        });
+
+        it(`type 2020 => select new date via calendar => new date inside text field`, () => {
+            cy.get(`@input`).click().type(`2020`);
+
+            cy.get(`tui-dropdown`)
+                .findByAutomationId(`tui-primitive-year-picker__cell`)
+                .contains(`2030`)
+                .click({force: true});
+
+            cy.get(`@input`).should(`have.value`, `2030`);
+        });
+    });
 });
