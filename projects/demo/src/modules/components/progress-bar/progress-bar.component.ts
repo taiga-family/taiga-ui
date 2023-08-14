@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiSizeS} from '@taiga-ui/core';
+import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-tui-progress-bar',
@@ -13,8 +13,16 @@ export class ExampleProgressBarComponent {
     value = 6;
     max = 10;
 
-    readonly sizeVariants: readonly TuiSizeS[] = ['m', 's'];
-    size: TuiSizeS = this.sizeVariants[0];
+    readonly sizeVariants: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [
+        'xs',
+        's',
+        'm',
+        'l',
+        'xl',
+        'xxl',
+    ];
+
+    size: TuiSizeXS | TuiSizeXXL = this.sizeVariants[2];
 
     readonly colorVariants: readonly string[] = [
         'var(--tui-primary)',

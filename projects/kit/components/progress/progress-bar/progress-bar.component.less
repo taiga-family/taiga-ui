@@ -72,6 +72,41 @@
         height: 0.5rem;
     }
 
+    // TODO: drop new attribute in v4.0
+    &[new] {
+        &[data-size='xs'],
+        &[data-size='s'],
+        &[data-size='m'] {
+            .progressValue({
+                border-radius: var(--tui-radius-xs);
+            });
+        }
+
+        &[data-size='xs'] {
+            height: 0.25rem;
+        }
+
+        &[data-size='s'] {
+            height: 0.5rem;
+        }
+
+        &[data-size='m'] {
+            height: 0.75rem;
+        }
+
+        &[data-size='l'] {
+            height: 1rem;
+        }
+
+        &[data-size='xl'] {
+            height: 1.25rem;
+        }
+
+        &[data-size='xxl'] {
+            height: 1.5rem;
+        }
+    }
+
     &:indeterminate {
         .progressContainer({
             background: transparent;

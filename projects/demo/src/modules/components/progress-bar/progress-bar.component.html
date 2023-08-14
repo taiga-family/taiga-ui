@@ -41,6 +41,9 @@
             heading="Sizes"
             [content]="sizesExample"
         >
+            <tui-notification class="tui-space_bottom-4">
+                Sizes were updated. To prevent breaking changes "new" attribute has to be added to enable new sizes.
+            </tui-notification>
             <tui-progress-bar-example-3></tui-progress-bar-example-3>
         </tui-doc-example>
 
@@ -134,7 +137,7 @@
             <ng-template
                 documentationPropertyName="size"
                 documentationPropertyMode="input"
-                documentationPropertyType="TuiSizeS"
+                documentationPropertyType="TuiSizeXS | TuiSizeXXL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
