@@ -4,6 +4,7 @@ import {
     TuiDropdownWidth,
     TuiVerticalDirection,
 } from '@taiga-ui/core';
+import {BehaviorSubject} from 'rxjs';
 
 export abstract class AbstractExampleTuiDropdown {
     readonly dropdownAlignVariants: readonly TuiDropdownAlign[] = [
@@ -29,4 +30,5 @@ export abstract class AbstractExampleTuiDropdown {
     dropdownMinHeight = TUI_DROPDOWN_DEFAULT_OPTIONS.minHeight;
     dropdownMaxHeight = TUI_DROPDOWN_DEFAULT_OPTIONS.maxHeight;
     dropdownOffset = TUI_DROPDOWN_DEFAULT_OPTIONS.offset;
+    dropdownOpen = new BehaviorSubject(false);
 }

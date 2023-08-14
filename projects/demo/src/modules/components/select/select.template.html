@@ -157,6 +157,8 @@
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
                     [tuiHintAppearance]="hintAppearance"
+                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                    (tuiDropdownOpenChange)="dropdownOpen.next($event)"
                 >
                     Choose an account
                     <tui-data-list-wrapper

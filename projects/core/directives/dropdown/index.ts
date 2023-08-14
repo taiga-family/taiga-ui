@@ -8,6 +8,7 @@ export * from './dropdown-host.directive';
 export * from './dropdown-hover.directive';
 export * from './dropdown-hover.options.directive';
 export * from './dropdown-manual.directive';
+export * from './dropdown-open.directive';
 export * from './dropdown-options.directive';
 export * from './dropdown-position.directive';
 export * from './dropdown-position-sided.directive';

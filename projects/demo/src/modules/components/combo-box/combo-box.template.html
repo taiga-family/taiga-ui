@@ -113,6 +113,7 @@
                     [tuiDropdownMinHeight]="dropdownMinHeight"
                     [tuiDropdownMaxHeight]="dropdownMaxHeight"
                     [tuiDropdownOffset]="dropdownOffset"
+                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
                     [tuiHintAppearance]="hintAppearance"
@@ -122,6 +123,7 @@
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
                     [(search)]="search"
+                    (tuiDropdownOpenChange)="dropdownOpen.next($event)"
                 >
                     Choose an account
                     <tui-data-list-wrapper

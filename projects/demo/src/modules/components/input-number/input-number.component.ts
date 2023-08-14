@@ -2,7 +2,6 @@ import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiAutofillFieldName} from '@taiga-ui/cdk';
 import {TuiDecimal} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -64,13 +63,6 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
     readonly maxVariants: readonly number[] = [Infinity, 10, 500];
 
     max = this.maxVariants[0];
-
-    override readonly autocompleteVariants: TuiAutofillFieldName[] = [
-        'off',
-        'transaction-amount',
-    ];
-
-    override autocomplete: TuiAutofillFieldName | '' = '';
 
     readonly decimalVariants: readonly TuiDecimal[] = ['not-zero', 'always', 'never'];
 

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiAutofillFieldName, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
+import {TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
@@ -39,25 +39,6 @@ export class ExampleTuiTextfieldControllerComponent {
 
     customContentSelected = this.customContentVariants[0];
 
-    autocompleteVariants: Array<TuiAutofillFieldName | ''> = [
-        '',
-        'off',
-        'cc-name',
-        'cc-number',
-        'cc-exp-month',
-        'cc-exp-year',
-        'cc-type',
-        'given-name',
-        'additional-name',
-        'family-name',
-        'username',
-        'email',
-        'street-address',
-        'postal-code',
-        'country-name',
-    ];
-
-    autocomplete = this.autocompleteVariants[0];
     cleaner = false;
     exampleText = '';
     labelOutside = false;

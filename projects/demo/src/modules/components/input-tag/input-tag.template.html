@@ -97,6 +97,7 @@
                     [tuiDropdownMinHeight]="dropdownMinHeight"
                     [tuiDropdownMaxHeight]="dropdownMaxHeight"
                     [tuiDropdownOffset]="dropdownOffset"
+                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
                     [tuiHintAppearance]="hintAppearance"
@@ -123,6 +124,7 @@
                     [pseudoInvalid]="pseudoInvalid"
                     [style.text-align]="textAlign"
                     [(search)]="search"
+                    (tuiDropdownOpenChange)="dropdownOpen.next($event)"
                 >
                     Please enter Pythons' names
                 </tui-input-tag>

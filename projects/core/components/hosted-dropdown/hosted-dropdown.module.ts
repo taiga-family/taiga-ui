@@ -8,6 +8,7 @@ import {
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiAccessorProxyDirective} from './accessor-proxy.directive';
+import {TuiDropdownOpenMonitorDirective} from './dropdown-open-monitor.directive';
 import {TuiHostedDropdownComponent} from './hosted-dropdown.component';
 import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.directive';
 
@@ -22,6 +23,7 @@ import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.d
     ],
     declarations: [
         TuiAccessorProxyDirective,
+        TuiDropdownOpenMonitorDirective,
         TuiHostedDropdownComponent,
         TuiHostedDropdownConnectorDirective,
     ],

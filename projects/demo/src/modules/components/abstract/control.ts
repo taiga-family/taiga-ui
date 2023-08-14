@@ -1,5 +1,5 @@
 import {AbstractControl} from '@angular/forms';
-import {TuiAutofillFieldName, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
+import {TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import {
     TUI_DROPDOWN_DEFAULT_OPTIONS,
     TUI_HINT_DIRECTIONS,
@@ -10,6 +10,7 @@ import {
     TuiVerticalDirection,
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {BehaviorSubject} from 'rxjs';
 
 import {AbstractExampleTuiDropdown} from './dropdown';
 import {AbstractExampleTuiInteractive} from './interactive';
@@ -51,24 +52,6 @@ export abstract class AbstractExampleTuiControl
 
     readonly maxLengthVariants: readonly TuiPossibleGenericType[] = [10];
 
-    readonly autocompleteVariants: Array<TuiAutofillFieldName | ''> = [
-        ``,
-        `off`,
-        `cc-name`,
-        `cc-number`,
-        `cc-exp-month`,
-        `cc-exp-year`,
-        `cc-type`,
-        `given-name`,
-        `additional-name`,
-        `family-name`,
-        `username`,
-        `email`,
-        `street-address`,
-        `postal-code`,
-        `country-name`,
-    ];
-
     readonly inputModeVariants: readonly TuiInputMode[] = [`text`, `numeric`];
 
     readonly customContentVariants: PolymorpheusContent[] = [
@@ -83,8 +66,6 @@ export abstract class AbstractExampleTuiControl
     customContentSelected = this.customContentVariants[0];
 
     inputMode = this.inputModeVariants[0];
-
-    autocomplete: TuiAutofillFieldName | '' = ``;
 
     maxLength: TuiPossibleGenericType | null = null;
 
@@ -119,6 +100,8 @@ export abstract class AbstractExampleTuiControl
     hintDirection = this.hintDirectionVariants[0];
 
     hintAppearance = this.hintAppearanceVariants[0];
+
+    dropdownOpen = new BehaviorSubject(false);
 
     readonly dropdownAlignVariants: readonly TuiDropdownAlign[] = [
         `left`,

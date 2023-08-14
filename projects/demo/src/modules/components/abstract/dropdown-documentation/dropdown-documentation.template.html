@@ -16,6 +16,15 @@
 
 <tui-doc-documentation>
     <ng-template
+        documentationPropertyName="tuiDropdownOpen"
+        documentationPropertyMode="input-output"
+        documentationPropertyType="boolean"
+        [documentationPropertyValue]="(documentedComponent.dropdownOpen | async)!!"
+        (documentationPropertyValueChange)="documentedComponent.dropdownOpen.next($event)"
+    >
+        Hard control/monitor for the dropdown being visible
+    </ng-template>
+    <ng-template
         documentationPropertyName="tuiDropdownAlign"
         documentationPropertyMode="input"
         documentationPropertyType="TuiDropdownAlign"
