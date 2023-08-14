@@ -3,15 +3,14 @@
     [hasIcon]="item.hasIcon"
     [icon]="item.icon"
     [hideClose]="!item.hasCloseButton"
-    (close)="closeNotification()"
+    (close)="close()"
 >
     <label
         *ngIf="item.label"
         automation-id="tui-notification-alert__heading"
         class="t-heading"
     >
-        <!-- TODO: Polymorpheus fix type -->
-        <ng-container *polymorpheusOutlet="$any(item.label) as text; context: item">
+        <ng-container *polymorpheusOutlet="item.label as text; context: item">
             {{ text }}
         </ng-container>
     </label>
@@ -19,9 +18,8 @@
         automation-id="tui-notification-alert__content"
         class="t-content"
     >
-        <!-- TODO: Polymorpheus fix type -->
         <div
-            *polymorpheusOutlet="item.content as text; context: $any(item)"
+            *polymorpheusOutlet="item.content as text; context: item"
             [innerHTML]="text"
         ></div>
     </div>
