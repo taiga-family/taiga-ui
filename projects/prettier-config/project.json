@@ -1,0 +1,22 @@
+{
+    "name": "prettier-config",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "projects/prettier-config",
+    "projectType": "library",
+    "prefix": "tui",
+    "implicitDependencies": ["!testing"],
+    "targets": {
+        "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "eslint --no-error-on-unmatched-pattern \"**/projects/prettier-config/**/*\""
+            }
+        },
+        "publish": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "ts-node ./scripts/publish.ts --path ./projects/prettier-config --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
+            }
+        }
+    }
+}
