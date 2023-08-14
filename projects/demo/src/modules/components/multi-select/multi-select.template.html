@@ -119,7 +119,7 @@
                     [tuiDropdownMinHeight]="dropdownMinHeight"
                     [tuiDropdownMaxHeight]="dropdownMaxHeight"
                     [tuiDropdownOffset]="dropdownOffset"
-                    [tuiDropdownOpen]="(dropdownOpen | async)!!"
+                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"

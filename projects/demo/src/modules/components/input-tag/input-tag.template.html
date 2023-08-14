@@ -97,7 +97,7 @@
                     [tuiDropdownMinHeight]="dropdownMinHeight"
                     [tuiDropdownMaxHeight]="dropdownMaxHeight"
                     [tuiDropdownOffset]="dropdownOffset"
-                    [tuiDropdownOpen]="(dropdownOpen | async)!!"
+                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
                     [tuiHintAppearance]="hintAppearance"

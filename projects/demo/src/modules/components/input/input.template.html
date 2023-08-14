@@ -240,7 +240,7 @@
                     [tuiHintDirection]="hintDirection"
                     [tuiHintAppearance]="hintAppearance"
                     [style.text-align]="textAlign"
-                    [tuiDropdownOpen]="(dropdownOpen | async)!!"
+                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
                     (tuiDropdownOpenChange)="dropdownOpen.next($event)"
                 >
                     Label

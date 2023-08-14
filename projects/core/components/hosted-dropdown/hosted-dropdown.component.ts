@@ -38,6 +38,7 @@ import {BehaviorSubject, EMPTY, merge} from 'rxjs';
 import {distinctUntilChanged, skip} from 'rxjs/operators';
 
 import {TuiAccessorProxyDirective} from './accessor-proxy.directive';
+import {TUI_HOSTED_DROPDOWN_COMPONENT} from './hosted-dropdown.token';
 import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.directive';
 
 export interface TuiHostedDropdownContext
@@ -70,6 +71,10 @@ function shouldClose(
             provide: TuiAccessorProxyDirective,
             deps: [[new Optional(), new Self(), TuiPositionAccessor]],
             useFactory: (position: TuiPositionAccessor[] | null) => position?.[0],
+        },
+        {
+            provide: TUI_HOSTED_DROPDOWN_COMPONENT,
+            useExisting: TuiHostedDropdownComponent,
         },
     ],
 })
