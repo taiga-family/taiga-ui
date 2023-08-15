@@ -165,7 +165,7 @@ export class TuiInputNumberComponent
     get calculatedMaxLength(): number {
         const nativeMaxLength = Number(this.textfield?.nativeFocusableElement?.maxLength);
 
-        if (nativeMaxLength !== -1) {
+        if (nativeMaxLength !== -1 && !Number.isNaN(nativeMaxLength)) {
             return nativeMaxLength;
         }
 
