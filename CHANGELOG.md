@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.41.0](https://github.com/taiga-family/taiga-ui/compare/v3.40.0...v3.41.0) (2023-08-15)
+
+### Features
+
+- **addon-mobile:** `TabBar` add skeletons for empty state
+  ([#5073](https://github.com/taiga-family/taiga-ui/issues/5073))
+  ([ccf2a81](https://github.com/taiga-family/taiga-ui/commit/ccf2a81bab29fbbab7f24d8ce804401f13efafcd))
+- **core:** `Alerts` customize position ([#5072](https://github.com/taiga-family/taiga-ui/issues/5072))
+  ([9bd8221](https://github.com/taiga-family/taiga-ui/commit/9bd822136cf2b1cf62d9ab513774a8bfea2a4260))
+- **core:** `Dropdown` add directive to force control and monitor open state
+  ([#5059](https://github.com/taiga-family/taiga-ui/issues/5059))
+  ([b4643a8](https://github.com/taiga-family/taiga-ui/commit/b4643a8eb432daf9fde46482deec27c6582059e4))
+- **kit:** new sizes for `ProgressBar` ([#5051](https://github.com/taiga-family/taiga-ui/issues/5051))
+  ([926eadb](https://github.com/taiga-family/taiga-ui/commit/926eadbc55d880b83191f5037e00e1dec705fd7f))
+
+### Bug Fixes
+
+- **addon-commerce:** move `tuiGetCodeByCurrency` to public API
+  ([#5075](https://github.com/taiga-family/taiga-ui/issues/5075))
+  ([fda819a](https://github.com/taiga-family/taiga-ui/commit/fda819a667e8ee33d9a2d72e2817b30cdd397c2f))
+- **i18n:** incorrect french translation for Bulgaria country name
+  ([#5063](https://github.com/taiga-family/taiga-ui/issues/5063))
+  ([c77e6b0](https://github.com/taiga-family/taiga-ui/commit/c77e6b0345f2b7a8e5de5ed9a8f990d20176760e))
+- **kit:** `InputYear` should update text field value after selection from dropdown
+  ([#5100](https://github.com/taiga-family/taiga-ui/issues/5100))
+  ([70c4778](https://github.com/taiga-family/taiga-ui/commit/70c47784de1c140410876fff2b7951719c77ddf4))
+- **kit:** paddings in MultiSelectGroups with lable ([#5026](https://github.com/taiga-family/taiga-ui/issues/5026))
+  ([b8d15d7](https://github.com/taiga-family/taiga-ui/commit/b8d15d7a43d13b4c1c1195246c6c8689c07d6a61))
+- **kit:** wrong compilation for `tui-text-area` ([#5104](https://github.com/taiga-family/taiga-ui/issues/5104))
+  ([f82bb42](https://github.com/taiga-family/taiga-ui/commit/f82bb42b0e6c67d27f03e8dab40ae8d8ae8897c9))
+
 ## [3.40.0](https://github.com/taiga-family/taiga-ui/compare/v3.39.1...v3.40.0) (2023-08-08)
 
 ### Features
