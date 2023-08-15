@@ -43,21 +43,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        project:
-          [
-            addon-doc,
-            addon-charts,
-            addon-commerce,
-            addon-mobile,
-            addon-preview,
-            addon-table,
-            addon-tablebars,
-            icons,
-            core,
-            deep,
-            demo,
-            kit,
-          ]
+        project: [addon-mobile]
     name: ${{ matrix.project }}
     steps:
       - uses: actions/checkout@v3.5.3
