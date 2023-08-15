@@ -160,6 +160,9 @@ jobs:
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
 
+      - name: Combine images to get diff reports
+        run: npx ts-node ./scripts/combine-playwright-failed-screenshots.ts
+
       - name: Debug output
         continue-on-error: true
         run: tree ${{ env.PLAYWRIGHT_SNAPSHOTS_PATH }}
@@ -167,7 +170,7 @@ jobs:
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@v3.1.2
         with:
-          path: ${{ env.PLAYWRIGHT_SNAPSHOTS_PATH }}/**/*-diff.png
+          path: ${{ env.PLAYWRIGHT_SNAPSHOTS_PATH }}/**/*.diff.png
           name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
           if-no-files-found: ignore
           retention-days: 1
