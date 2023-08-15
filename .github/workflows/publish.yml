@@ -4,7 +4,7 @@ on:
     branches: ['release/*']
 
 env:
-  NODE_AUTH_TOKEN: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
+  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
   publish:
