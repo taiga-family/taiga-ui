@@ -163,6 +163,12 @@ export class TuiInputNumberComponent
     }
 
     get calculatedMaxLength(): number {
+        const nativeMaxLength = Number(this.textfield?.nativeFocusableElement?.maxLength);
+
+        if (nativeMaxLength !== -1) {
+            return nativeMaxLength;
+        }
+
         const decimalPart =
             this.decimal !== 'never' &&
             this.nativeValue.includes(this.numberFormat.decimalSeparator);
