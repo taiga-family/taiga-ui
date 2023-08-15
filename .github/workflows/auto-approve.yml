@@ -14,4 +14,4 @@ jobs:
       - uses: taiga-family/ci/actions/two-approve@1.9.0
         with:
           token1: ${{ secrets.GITHUB_TOKEN }}
-          token2: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+          token2: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
