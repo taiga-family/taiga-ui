@@ -160,6 +160,9 @@ jobs:
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
 
+      - name: Combine images to get diff reports
+        run: npx ts-node ./scripts/combine-playwright-failed-screenshots.ts
+
       - name: Debug output
         continue-on-error: true
         run: tree ${{ env.PLAYWRIGHT_SNAPSHOTS_PATH }}
