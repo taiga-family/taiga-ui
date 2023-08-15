@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - uses: taiga-family/ci/actions/variables@1.9.0
+      - uses: taiga-family/ci/actions/variables@1.9.1
 
       - uses: actions/checkout@v3.5.3
         if: env.SUPPORT_AUTO_PUSH == 'true'
@@ -17,7 +17,7 @@ jobs:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
-      - uses: taiga-family/ci/actions/setup-node@1.9.0
+      - uses: taiga-family/ci/actions/setup-node@1.9.1
       - run: |
           npx nx prebuild icons
           npx nx build icons
@@ -28,6 +28,6 @@ jobs:
 
       - name: Auto update bundled & used icons
         if: env.SUPPORT_AUTO_PUSH == 'true'
-        uses: taiga-family/ci/actions/auto-push@1.9.0
+        uses: taiga-family/ci/actions/auto-push@1.9.1
         with:
           message: icons have changed
