@@ -73,6 +73,10 @@
     :host._has-counter:not(._expandable) & {
         bottom: 1.6875rem;
     }
+
+    :host._label-outside._has-counter:not(._expandable) & {
+        bottom: 1rem;
+    }
 }
 
 .t-wrapper {
@@ -124,6 +128,10 @@
         height: calc(100% - 1rem);
     }
 
+    :host:not(._expandable)._label-outside & {
+        height: 100%;
+    }
+
     :host._has-counter._expandable & {
         margin-bottom: 1.25rem;
     }
@@ -145,6 +153,8 @@
     color: transparent;
     overflow: hidden;
     border: solid transparent;
+    border-top: 0;
+    border-bottom: 0;
     border-inline-start-width: var(--border-start, 0);
     border-inline-end-width: var(--border-end, 0);
 
@@ -272,6 +282,12 @@
 .t-cleaner {
     .icon-button();
     pointer-events: auto;
+}
+
+.t-caret {
+    display: inline-block;
+    height: 1rem;
+    width: 0;
 }
 
 .t-counter {
