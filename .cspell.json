@@ -1,26 +1,7 @@
 {
     "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json",
-    "language": "en,ru,ar,lorem",
-    "caseSensitive": false,
-    "useGitignore": true,
+    "import": ["node_modules/@taiga-ui/cspell-config/cspell.config.js"],
     "files": ["*/*.*"],
-    "import": [
-        "scripts/cspell/locales/latin.json",
-        "scripts/cspell/locales/dutch.json",
-        "scripts/cspell/locales/arabic.json",
-        "scripts/cspell/locales/ru.json",
-        "scripts/cspell/common.json",
-        "scripts/cspell/names.json",
-        "scripts/cspell/countries.json",
-        "scripts/cspell/web-keywords.json",
-        "scripts/cspell/software.json",
-        "scripts/cspell/taiga-ui.json",
-        "scripts/cspell/angular.json",
-        "scripts/cspell/resources.json",
-        "scripts/cspell/star-wars.json",
-        "scripts/cspell/ci-cd.json",
-        "scripts/cspell/ignore.json"
-    ],
     "ignorePaths": [
         ".git",
         "CHANGELOG.md",
@@ -31,6 +12,106 @@
         "**/node_modules/**",
         "**/support/editor/html.ts",
         "*.{log,svg,snap,png,ogv,yml}",
-        "**/projects/i18n/languages/**"
+        "**/projects/i18n/languages/**",
+        "**/addon-commerce/enums/currency-code.ts",
+        "**/addon-commerce/utils/get-currency-symbol.ts"
+    ],
+    "ignoreWords": [
+        "benji",
+        "meowtec",
+        "hapica",
+        "happo",
+        "osno",
+        "eshn",
+        "envd",
+        "envd",
+        "UI's",
+        "replicant",
+        "incoice",
+        "timecop",
+        "babelfish",
+        "lightskyblue",
+        "Warhammer",
+        "Dogecoins",
+        "popularised",
+        "Letraset",
+        "Aldus",
+        "humo",
+        "uzcard",
+        "selectednode",
+        "Barchart",
+        "Hangoff",
+        "Piechart",
+        "Userpic",
+        "Odnoklassniki",
+        "Tiktok",
+        "Tcrm"
+    ],
+    "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
+    "overrides": [
+        {
+            "filename": ["**/components/loader/loader.template.html"],
+            "ignoreWords": ["protestin", "spittin", "callin", "yellin"]
+        },
+        {
+            "filename": ["**/i18n/README.md"],
+            "ignoreWords": ["odzumiraj", "zumiraj", "rotiraj"]
+        },
+        {
+            "filename": ["**/example.md"],
+            "ignoreWords": ["xxxHTMLyyy"]
+        },
+        {
+            "filename": ["**/highlight/test/highlight.directive.spec.ts"],
+            "ignoreWords": ["aaabbb"]
+        },
+        {
+            "filename": ["**/tests/kit/input-tag/input-tag.cy.ts"],
+            "ignoreWords": ["looooooooooooooooooooooooong"]
+        },
+        {
+            "filename": "**/test/dropdown.directive.spec.ts",
+            "ignoreWords": ["Hosty", "Droppy"]
+        },
+        {
+            "filename": [
+                "**/test/format-currency.spec.ts",
+                "**/test/money.component.spec.ts",
+                "**/test/get-currency-symbol.spec.ts",
+                "**/test/input-card-grouped.component.spec.ts"
+            ],
+            "ignoreWords": ["CSTM", "CVCPO"]
+        },
+        {
+            "filename": ["**/tests/schematic-replace-consts.spec.ts", "**/constants/constants.ts"],
+            "ignoreWords": ["Comands"]
+        },
+        {
+            "languageId": "ts",
+            "filename": ["**/replace.pipe.spec.ts"],
+            "ignoreWords": ["abcdeabcde", "fbcdefbcde"]
+        },
+        {
+            "languageId": "ts",
+            "filename": ["**/tests/schematic-migrate-sliders.spec.ts"],
+            "ignoreWords": ["Maxxxxx"]
+        },
+        {
+            "languageId": "ts",
+            "filename": ["**/constants/icons.ts"],
+            "ignoreWords": [
+                "Frontside",
+                "Coffeeshop",
+                "Docflow",
+                "Encashment",
+                "Eshop",
+                "Fastfood",
+                "Icecream",
+                "Mortage",
+                "Noicon",
+                "Paypass",
+                "Gamepad"
+            ]
+        }
     ]
 }
