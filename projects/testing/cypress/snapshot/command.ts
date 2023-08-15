@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-// eslint-disable-next-line @taiga-ui/no-deep-imports
+// eslint-disable-next-line @taiga-ui/experience/no-deep-imports
 import {tuiIsObject, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {Options} from 'cypress-image-snapshot';
 import {matchImageSnapshotCommand} from 'cypress-image-snapshot/command';

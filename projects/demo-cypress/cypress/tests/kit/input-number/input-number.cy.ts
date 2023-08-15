@@ -1,5 +1,5 @@
 /* eslint-disable no-irregular-whitespace */
-/* eslint-disable @taiga-ui/no-deep-imports */
+/* eslint-disable @taiga-ui/experience/no-deep-imports */
 import {
     CHAR_EM_DASH,
     CHAR_EN_DASH,

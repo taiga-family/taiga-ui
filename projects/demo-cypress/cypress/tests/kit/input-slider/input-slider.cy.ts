@@ -1,4 +1,4 @@
-// eslint-disable-next-line @taiga-ui/no-deep-imports
+// eslint-disable-next-line @taiga-ui/experience/no-deep-imports
 import {CHAR_MINUS} from '@taiga-ui/cdk/constants';
 
 describe(`InputSlider`, () => {

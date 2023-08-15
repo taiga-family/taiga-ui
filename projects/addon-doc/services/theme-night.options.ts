@@ -1,5 +1,5 @@
 import {InjectionToken} from '@angular/core';
-// eslint-disable-next-line @taiga-ui/no-deep-imports
+// eslint-disable-next-line @taiga-ui/experience/no-deep-imports
 import {ALWAYS_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 
 export const TUI_THEME_NIGHT_STORAGE_DEFAULT_KEY = `tuiNight` as const;
