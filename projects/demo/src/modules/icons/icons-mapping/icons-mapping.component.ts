@@ -15,23 +15,23 @@ export class IconsMappingComponent {
     readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         TypeScript: import('./examples/1/index.ts?raw'),
-        // eslint-disable-next-line @taiga-ui/strict-tui-doc-example
+        // eslint-disable-next-line @taiga-ui/experience/strict-tui-doc-example
         './assets/icons/keyboard_arrow_right-24px.svg': import(
             '../../../assets/icons/keyboard_arrow_right-24px.svg?raw'
         ),
     };
 
     readonly example2: TuiDocExample = {
-        // eslint-disable-next-line @taiga-ui/strict-tui-doc-example
+        // eslint-disable-next-line @taiga-ui/experience/strict-tui-doc-example
         'process-icons.js': import('./examples/2/process-icons.js.md?raw'),
-        // eslint-disable-next-line @taiga-ui/strict-tui-doc-example
+        // eslint-disable-next-line @taiga-ui/experience/strict-tui-doc-example
         'process-icons.ts': import('./examples/2/process-icons.ts.md?raw'),
     };
 
     readonly example3: TuiDocExample = {
         HTML: import('./examples/3/index.html?raw'),
         TypeScript: import('./examples/3/index.ts?raw'),
-        // eslint-disable-next-line @taiga-ui/strict-tui-doc-example
+        // eslint-disable-next-line @taiga-ui/experience/strict-tui-doc-example
         './assets/icons/polygon.svg': import('../../../assets/icons/polygon.svg?raw'),
     };
 

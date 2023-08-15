@@ -28,7 +28,7 @@ export function tuiProcessIcons(files: string[], interceptor?: ContentIntercepto
         const wrapped = wrapIcon(src, name);
 
         const final =
-            // eslint-disable-next-line @taiga-ui/no-typeof
+            // eslint-disable-next-line @taiga-ui/experience/no-typeof
             typeof wrapped === `string`
                 ? `${wrapped.replace(
                       START,
