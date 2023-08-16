@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.41.1](https://github.com/taiga-family/taiga-ui/compare/v3.41.0...v3.41.1) (2023-08-16)
+
+### Bug Fixes
+
+- **addon-preview:** export tokens as public api ([#5118](https://github.com/taiga-family/taiga-ui/issues/5118))
+  ([4e34eb6](https://github.com/taiga-family/taiga-ui/commit/4e34eb625627effea2459c4c6da8380cb27cda1e))
+
 ## [3.41.0](https://github.com/taiga-family/taiga-ui/compare/v3.40.0...v3.41.0) (2023-08-15)
 
 ### Features
