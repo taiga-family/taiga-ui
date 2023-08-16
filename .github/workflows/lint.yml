@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - uses: taiga-family/ci/actions/setup-node@1.9.1
+      - uses: taiga-family/ci/actions/setup-node@1.9.2
       - run: npm run typecheck
 
   cspell:
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - uses: taiga-family/ci/actions/setup-node@1.9.1
+      - uses: taiga-family/ci/actions/setup-node@1.9.2
       - run: npm run cspell -- --no-progress
 
   prettier:
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - uses: taiga-family/ci/actions/variables@1.9.1
+      - uses: taiga-family/ci/actions/variables@1.9.2
 
       - uses: actions/checkout@v3.5.3
         if: env.SUPPORT_AUTO_PUSH == 'true'
@@ -34,20 +34,20 @@ jobs:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
-      - uses: taiga-family/ci/actions/setup-node@1.9.1
+      - uses: taiga-family/ci/actions/setup-node@1.9.2
 
       - run: npm run prettier ${{ env.SUPPORT_AUTO_PUSH == 'true' && '-- --write' || '-- --check' }}
 
       - name: Apply changes after linting
         if: env.SUPPORT_AUTO_PUSH == 'true'
-        uses: taiga-family/ci/actions/auto-push@1.9.1
+        uses: taiga-family/ci/actions/auto-push@1.9.2
 
   stylelint:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - uses: taiga-family/ci/actions/variables@1.9.1
+      - uses: taiga-family/ci/actions/variables@1.9.2
 
       - uses: actions/checkout@v3.5.3
         if: env.SUPPORT_AUTO_PUSH == 'true'
@@ -55,19 +55,19 @@ jobs:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
-      - uses: taiga-family/ci/actions/setup-node@1.9.1
+      - uses: taiga-family/ci/actions/setup-node@1.9.2
       - run: npm run stylelint ${{ env.SUPPORT_AUTO_PUSH == 'true' && '-- --fix' || '' }}
 
       - name: Apply changes after linting
         if: env.SUPPORT_AUTO_PUSH == 'true'
-        uses: taiga-family/ci/actions/auto-push@1.9.1
+        uses: taiga-family/ci/actions/auto-push@1.9.2
 
   eslint:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - uses: taiga-family/ci/actions/variables@1.9.1
+      - uses: taiga-family/ci/actions/variables@1.9.2
 
       - uses: actions/checkout@v3.5.3
         if: env.SUPPORT_AUTO_PUSH == 'true'
@@ -75,12 +75,12 @@ jobs:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
-      - uses: taiga-family/ci/actions/setup-node@1.9.1
+      - uses: taiga-family/ci/actions/setup-node@1.9.2
       - run: npm run lint ${{ env.SUPPORT_AUTO_PUSH == 'true' && '-- --fix' || '' }}
 
       - name: Apply changes after linting
         if: env.SUPPORT_AUTO_PUSH == 'true'
-        uses: taiga-family/ci/actions/auto-push@1.9.1
+        uses: taiga-family/ci/actions/auto-push@1.9.2
 
 concurrency:
   group: lint-${{ github.workflow }}-${{ github.ref }}

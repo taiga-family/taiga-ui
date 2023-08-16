@@ -11,7 +11,7 @@ jobs:
       'renovate/'))
     steps:
       - uses: actions/checkout@v3
-      - uses: taiga-family/ci/actions/two-approve@1.9.1
+      - uses: taiga-family/ci/actions/two-approve@1.9.2
         with:
           token1: ${{ secrets.GITHUB_TOKEN }}
           token2: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
