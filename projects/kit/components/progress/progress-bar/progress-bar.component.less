@@ -74,12 +74,17 @@
 
     // TODO: drop new attribute in v4.0
     &[new] {
+        &[data-size='xxs'],
         &[data-size='xs'],
         &[data-size='s'],
         &[data-size='m'] {
             .progressValue({
                 border-radius: var(--tui-radius-xs);
             });
+        }
+
+        &[data-size='xxs'] {
+            height: 0.125rem;
         }
 
         &[data-size='xs'] {
