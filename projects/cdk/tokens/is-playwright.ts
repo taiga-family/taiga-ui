@@ -1,5 +1,5 @@
 import {InjectionToken} from '@angular/core';
-import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk';
+import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 
 /**
  * Detect if app is running under Playwright
