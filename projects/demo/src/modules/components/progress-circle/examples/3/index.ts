@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
+import {TUI_IS_E2E} from '@taiga-ui/cdk';
 import {of, timer} from 'rxjs';
 import {map, startWith, takeWhile} from 'rxjs/operators';
 
@@ -14,7 +14,7 @@ import {map, startWith, takeWhile} from 'rxjs/operators';
 })
 export class TuiProgressCircleExample3 {
     readonly max = 100;
-    readonly value$ = this.isCypress
+    readonly value$ = this.isE2E
         ? of(30)
         : timer(300, 200).pipe(
               map(i => i + 30),
@@ -22,5 +22,5 @@ export class TuiProgressCircleExample3 {
               takeWhile(value => value <= this.max),
           );
 
-    constructor(@Inject(TUI_IS_CYPRESS) private readonly isCypress: boolean) {}
+    constructor(@Inject(TUI_IS_E2E) private readonly isE2E: boolean) {}
 }

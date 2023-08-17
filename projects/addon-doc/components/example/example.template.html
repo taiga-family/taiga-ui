@@ -78,7 +78,7 @@
         <div
             *ngFor="let tab of tabs; let index = index"
             class="t-content"
-            [class.t-content_animated]="!isCypress"
+            [class.t-content_animated]="!isE2E"
             [class.t-content_visible]="activeItemIndex === index"
         >
             <ng-container
