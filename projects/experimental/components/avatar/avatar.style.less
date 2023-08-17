@@ -1,0 +1,68 @@
+:host {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: var(--tui-radius-l);
+    background: var(--tui-secondary);
+    color: var(--tui-text-02);
+
+    &[data-size='s'] {
+        width: 2.5rem;
+        height: 2.5rem;
+        font: var(--tui-font-text-l);
+        font-weight: 500;
+
+        .t-content {
+            font: var(--tui-font-text-m);
+            font-weight: 500;
+        }
+    }
+
+    &[data-size='m'] {
+        width: 3.5rem;
+        height: 3.5rem;
+        font: var(--tui-font-heading-5);
+        font-weight: 500;
+
+        .t-content {
+            font: var(--tui-font-text-l);
+            font-weight: 500;
+        }
+    }
+
+    &[data-size='l'] {
+        width: 5rem;
+        height: 5rem;
+        font: var(--tui-font-heading-3);
+        font-weight: 500;
+
+        .t-content {
+            font: var(--tui-font-heading-4);
+            font-weight: 500;
+        }
+    }
+
+    &._round {
+        border-radius: 100%;
+    }
+
+    &._img {
+        background: transparent;
+    }
+}
+
+.t-icon {
+    width: 60%;
+    height: 60%;
+}
+
+.t-img {
+    width: 100%;
+    height: 100%;
+}
+
+.t-content {
+    margin: 0.25rem;
+    white-space: nowrap;
+}

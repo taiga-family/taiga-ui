@@ -1,0 +1,61 @@
+/* stylelint-disable */
+// prettier-ignore
+tui-avatar-stack {
+    display: flex;
+    --gap: 0.125rem;
+    --radius: var(--tui-radius-l);
+
+    tui-avatar {
+        mask-size:
+            calc(var(--radius) + var(--gap)) calc(var(--radius) + var(--gap)),
+            calc(var(--radius) + var(--gap)) calc(var(--radius) + var(--gap)),
+            100%;
+        mask-repeat: no-repeat;
+    }
+
+    &[data-direction='left'] tui-avatar:not(:first-child) {
+        mask-image:
+            radial-gradient(circle at 0% 100%, transparent calc(var(--radius) + var(--gap)), #000 calc(var(--radius) + var(--gap) + 0.2px)),
+            radial-gradient(circle at 0% 0%, transparent calc(var(--radius) + var(--gap)), #000 calc(var(--radius) + var(--gap) + 0.2px)),
+            linear-gradient(to right, transparent calc(50% + var(--gap)), #000 calc(50% + var(--gap)));
+        mask-position:
+            calc(50% - (var(--radius) - var(--gap)) / 2) calc(-1 * var(--gap)),
+            calc(50% - (var(--radius) - var(--gap)) / 2) calc(100% + var(--gap)),
+            bottom;
+    }
+
+    &[data-direction='right'] tui-avatar:not(:last-child) {
+        mask-image:
+            radial-gradient(circle at 150% 100%, transparent calc(var(--radius) + var(--gap)), #000 calc(var(--radius) + var(--gap) + 0.2px)),
+            radial-gradient(circle at 150% 0%, transparent calc(var(--radius) + var(--gap)), #000 calc(var(--radius) + var(--gap) + 0.2px)),
+            linear-gradient(to left, transparent calc(50% + var(--gap)), #000 calc(50% + var(--gap)));
+        mask-position:
+            calc(50% - var(--gap)) calc(-1 * var(--gap)),
+            calc(50% - var(--gap)) calc(100% + var(--gap)),
+            bottom;
+    }
+
+    tui-avatar[data-size='s'] {
+        margin-right: -1.25rem;
+
+        &._round {
+            --radius: 1.25rem;
+        }
+    }
+
+    tui-avatar[data-size='m'] {
+        margin-right: -1.75rem;
+
+        &._round {
+            --radius: 1.75rem;
+        }
+    }
+
+    tui-avatar[data-size='l'] {
+        margin-right: -2.5rem;
+
+        &._round {
+            --radius: 2.5rem;
+        }
+    }
+}

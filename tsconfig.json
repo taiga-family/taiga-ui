@@ -83,6 +83,8 @@
             "@taiga-ui/cdk/*": ["projects/cdk/*"],
             "@taiga-ui/core": ["projects/core/index"],
             "@taiga-ui/core/*": ["projects/core/*"],
+            "@taiga-ui/experimental": ["projects/experimental/index"],
+            "@taiga-ui/experimental/*": ["projects/experimental/*"],
             "@taiga-ui/i18n": ["projects/i18n/index"],
             "@taiga-ui/i18n/*": ["projects/i18n/*"],
             "@taiga-ui/icons": ["projects/icons/index"],

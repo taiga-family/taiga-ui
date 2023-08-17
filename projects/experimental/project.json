@@ -1,0 +1,50 @@
+{
+    "name": "experimental",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "projects/experimental",
+    "projectType": "library",
+    "prefix": "tui",
+    "implicitDependencies": ["!testing"],
+    "targets": {
+        "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "eslint --no-error-on-unmatched-pattern \"**/projects/experimental/**/*\""
+            }
+        },
+        "stylelint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "stylelint \"**/experimental/**/*.{css,less}\" --allow-empty-input"
+            }
+        },
+        "build": {
+            "executor": "@angular-devkit/build-angular:ng-packagr",
+            "outputs": ["{workspaceRoot}/dist/experimental"],
+            "options": {
+                "tsConfig": "tsconfig.build.json",
+                "project": "projects/experimental/ng-package.json"
+            },
+            "dependsOn": [
+                {
+                    "target": "build",
+                    "params": "forward",
+                    "dependencies": true
+                }
+            ]
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/experimental"],
+            "options": {
+                "jestConfig": "projects/experimental/jest.config.ts"
+            }
+        },
+        "publish": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "ts-node ./scripts/publish.ts --path ./dist/experimental --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
+            }
+        }
+    }
+}

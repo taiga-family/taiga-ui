@@ -1,0 +1,27 @@
+<ng-container [ngSwitch]="type">
+    <tui-svg
+        *ngSwitchCase="'icon'"
+        class="t-icon"
+        [src]="value"
+    ></tui-svg>
+    <span
+        *ngSwitchCase="'text'"
+        class="t-text"
+    >
+        {{ value }}
+    </span>
+    <img
+        *ngSwitchCase="'img'"
+        alt=""
+        loading="lazy"
+        class="t-img"
+        [src]="value"
+    />
+    <tui-text
+        *ngSwitchDefault
+        lineHeight="2.5rem"
+        class="t-content"
+    >
+        <ng-content></ng-content>
+    </tui-text>
+</ng-container>

@@ -814,6 +814,13 @@ export const pages = [
         keywords: `tree, view, multi, recursive, folders, рекурсия, дерево, папки`,
         route: `/components/tree`,
     },
+    // Experimental
+    {
+        section: `Experimental`,
+        title: `Avatar`,
+        keywords: `аватар, image, pic, icon, картинка, изображение, avatar, stack`,
+        route: `/experimental/avatar`,
+    },
     // Charts
     {
         section: `Charts`,
