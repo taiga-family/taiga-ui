@@ -26,7 +26,13 @@
             id="stacking"
             heading="Stacking"
             [content]="example3"
+            [description]="importModuleDescription"
         >
+            <ng-template #importModuleDescription>
+                This example requires import of
+                <code>TuiAvatarStackModule</code>
+                .
+            </ng-template>
             <tui-avatar-example-3></tui-avatar-example-3>
         </tui-doc-example>
     </ng-template>
