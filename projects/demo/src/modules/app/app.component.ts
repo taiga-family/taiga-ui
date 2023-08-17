@@ -12,7 +12,7 @@ import {NavigationEnd, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
-import {TUI_IS_CYPRESS, TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
 import {Metrika} from 'ng-yandex-metrika';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, filter, map, takeUntil} from 'rxjs/operators';
@@ -45,7 +45,7 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
     );
 
     constructor(
-        @Inject(TUI_IS_CYPRESS) isCypress: boolean,
+        @Inject(TUI_IS_E2E) isE2E: boolean,
         @Inject(TUI_DOC_PAGE_LOADED) pageLoaded$: Observable<boolean>,
         @Inject(TUI_SELECTED_VERSION_META) selectedVersion: TuiVersionMeta | null,
         @Inject(Router) protected readonly router: Router,
@@ -55,7 +55,7 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
         @Inject(DOCUMENT) private readonly doc: Document,
         @Inject(APP_BASE_HREF) private readonly appBaseHref: string,
     ) {
-        super(isCypress, pageLoaded$, selectedVersion);
+        super(isE2E, pageLoaded$, selectedVersion);
     }
 
     override async ngOnInit(): Promise<void> {
@@ -65,7 +65,7 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
     }
 
     private enableYandexMetrika(): void {
-        if (ngDevMode && (!environment.production || this.isCypress)) {
+        if (ngDevMode && (!environment.production || this.isE2E)) {
             console.info('Yandex.Metrika disabled for non-production mode.');
 
             return;

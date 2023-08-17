@@ -1,13 +1,13 @@
 import {Inject, Pipe, PipeTransform} from '@angular/core';
 import {tuiInspectAny} from '@taiga-ui/addon-doc/utils';
-import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
+import {TUI_IS_E2E} from '@taiga-ui/cdk';
 
 @Pipe({name: `tuiInspectAny`})
 export class TuiInspectPipe implements PipeTransform {
-    constructor(@Inject(TUI_IS_CYPRESS) private readonly isCypress: boolean) {}
+    constructor(@Inject(TUI_IS_E2E) private readonly isE2E: boolean) {}
 
     transform(value: unknown, depth: number = 2): string {
-        if (this.isCypress && typeof value === `function`) {
+        if (this.isE2E && typeof value === `function`) {
             /**
              * @description:
              * When developing in production mode the webpack bundler minify

@@ -1,12 +1,7 @@
 import {ChangeDetectorRef, Component, Inject, NgZone, OnInit, Self} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TUI_IS_CYPRESS,
-    TuiDestroyService,
-    tuiWatch,
-    tuiZoneOptimized,
-} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, TuiDestroyService, tuiWatch, tuiZoneOptimized} from '@taiga-ui/cdk';
 import {Observable, timer} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -25,11 +20,11 @@ export class TuiInputInlineExample3 implements OnInit {
         @Inject(ChangeDetectorRef) private readonly cd: ChangeDetectorRef,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<unknown>,
         @Inject(NgZone) private readonly zone: NgZone,
-        @Inject(TUI_IS_CYPRESS) readonly isCypress: boolean,
+        @Inject(TUI_IS_E2E) readonly isE2E: boolean,
     ) {}
 
     ngOnInit(): void {
-        if (this.isCypress) {
+        if (this.isE2E) {
             return;
         }
 

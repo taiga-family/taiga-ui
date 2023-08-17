@@ -14,7 +14,7 @@
     ></tui-file>
 
     <tui-file
-        *ngIf="loadingFile && !isCypress"
+        *ngIf="loadingFile && !isE2E"
         state="loading"
         [file]="loadingFile"
         [showDelete]="control.enabled"

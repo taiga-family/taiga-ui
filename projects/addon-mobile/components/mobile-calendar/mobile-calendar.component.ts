@@ -15,7 +15,7 @@ import {
     ALWAYS_FALSE_HANDLER,
     MONTHS_IN_YEAR,
     TUI_FIRST_DAY,
-    TUI_IS_CYPRESS,
+    TUI_IS_E2E,
     TUI_IS_IOS,
     TUI_LAST_DAY,
     TuiBooleanHandler,
@@ -115,7 +115,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
 
     constructor(
         @Inject(TUI_IS_IOS) readonly isIOS: boolean,
-        @Inject(TUI_IS_CYPRESS) readonly isCypress: boolean,
+        @Inject(TUI_IS_E2E) readonly isE2E: boolean,
         @Inject(DOCUMENT) private readonly doc: Document,
         @Self()
         @Inject(TuiDestroyService)
@@ -396,14 +396,14 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     private scrollToActiveYear(behavior: ScrollBehavior = 'auto'): void {
         this.yearsScrollRef?.scrollToIndex(
             Math.max(this.activeYear - STARTING_YEAR - 2, 0),
-            this.isCypress ? 'auto' : behavior,
+            this.isE2E ? 'auto' : behavior,
         );
     }
 
     private scrollToActiveMonth(behavior: ScrollBehavior = 'auto'): void {
         this.monthsScrollRef?.scrollToIndex(
             this.activeMonth,
-            this.isCypress ? 'auto' : behavior,
+            this.isE2E ? 'auto' : behavior,
         );
     }
 

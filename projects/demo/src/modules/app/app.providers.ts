@@ -25,7 +25,7 @@ import {
 import {
     TUI_DIALOG_CLOSES_ON_BACK,
     TUI_ENSURE_BASE_HREF,
-    TUI_IS_CYPRESS,
+    TUI_IS_E2E,
     TUI_TAKE_ONLY_TRUSTED_EVENTS,
     tuiAssert,
 } from '@taiga-ui/cdk';
@@ -139,35 +139,35 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_ANIMATIONS_DURATION,
-        useFactory: () => (inject(TUI_IS_CYPRESS) ? 0 : 300),
+        useFactory: () => (inject(TUI_IS_E2E) ? 0 : 300),
     },
     {
         provide: TUI_HINT_OPTIONS,
         useFactory: () =>
-            inject(TUI_IS_CYPRESS)
+            inject(TUI_IS_E2E)
                 ? {...TUI_HINT_DEFAULT_OPTIONS, showDelay: 0, hideDelay: 0}
                 : TUI_HINT_DEFAULT_OPTIONS,
     },
     {
         provide: TUI_DROPDOWN_HOVER_OPTIONS,
         useFactory: () =>
-            inject(TUI_IS_CYPRESS)
+            inject(TUI_IS_E2E)
                 ? {...TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS, showDelay: 0, hideDelay: 0}
                 : TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
     },
     {
         provide: TUI_DOC_SCROLL_BEHAVIOR,
-        useFactory: () => (inject(TUI_IS_CYPRESS) ? `auto` : `smooth`), // https://github.com/cypress-io/cypress/issues/4640
+        useFactory: () => (inject(TUI_IS_E2E) ? `auto` : `smooth`), // https://github.com/cypress-io/cypress/issues/4640
     },
     {
         provide: TUI_TAKE_ONLY_TRUSTED_EVENTS,
-        useFactory: () => !inject(TUI_IS_CYPRESS),
+        useFactory: () => !inject(TUI_IS_E2E),
     },
     {
         provide: TUI_DIALOG_CLOSES_ON_BACK,
         // TODO: change it back after solving https://github.com/taiga-family/taiga-ui/issues/3270
         // useFactory: () => of(!tuiIsInsideIframe(inject(WINDOW))), // for cypress tests
-        useFactory: () => of(inject(TUI_IS_CYPRESS)),
+        useFactory: () => of(inject(TUI_IS_E2E)),
     },
     {
         provide: TUI_DOC_URL_STATE_HANDLER,
