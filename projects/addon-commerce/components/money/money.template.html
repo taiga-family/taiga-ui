@@ -1,19 +1,28 @@
 <span
     automation-id="tui-money__sign"
-    [textContent]="value | tuiSignSymbol: sign"
+    [textContent]="value | tuiSignSymbol : sign"
 ></span>
+
 <span
-    automation-id="tui-money__integer-part"
-    [textContent]="value | tuiIntegerPart: precision"
-></span>
-<span class="t-lighter">
-    <span
-        automation-id="tui-money__fraction-part"
-        [textContent]="value | tuiFractionPart: decimal : precision"
-    ></span>
+    *tuiLet="currency | tuiCurrency as currencySymbol"
+    class="t-container"
+    [class.t-container_reverse]="!alignRight"
+>
+    <span>
+        <span
+            automation-id="tui-money__integer-part"
+            [textContent]="value | tuiIntegerPart : precision"
+        ></span>
+        <span
+            automation-id="tui-money__fraction-part"
+            class="t-lighter"
+            [textContent]="value | tuiFractionPart : decimal : precision"
+        ></span>
+    </span>
+    <span *ngIf="alignRight || currencySymbol.length > 1">&nbsp;</span>
     <span
         automation-id="tui-money__currency"
-        class="t-currency"
-        [textContent]="currency | tuiCurrency"
+        class="t-lighter"
+        [textContent]="currencySymbol"
     ></span>
 </span>

@@ -20,9 +20,9 @@
         <p>
             Number formatting can be customized by using
             <a
-                fragment="number-format"
-                routerLink="/utils/tokens"
                 tuiLink
+                routerLink="/utils/tokens"
+                fragment="number-format"
             >
                 TUI_NUMBER_FORMAT
             </a>
@@ -80,19 +80,20 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-money
-                [colored]="colored"
-                [currency]="currency"
-                [decimal]="decimal"
-                [precision]="precision"
-                [sign]="sign"
-                [singleColor]="singleColor"
                 [value]="value"
+                [decimal]="decimal"
+                [currency]="currency"
+                [currencyAlign]="currencyAlign"
+                [sign]="sign"
+                [precision]="precision"
+                [singleColor]="singleColor"
+                [colored]="colored"
             ></tui-money>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyMode="input"
                 documentationPropertyName="colored"
+                documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="colored"
             >
@@ -100,8 +101,8 @@
             </ng-template>
 
             <ng-template
-                documentationPropertyMode="input"
                 documentationPropertyName="currency"
+                documentationPropertyMode="input"
                 documentationPropertyType="TuiCurrencyVariants"
                 [documentationPropertyValues]="currencyVariants"
                 [(documentationPropertyValue)]="currency"
@@ -110,8 +111,18 @@
             </ng-template>
 
             <ng-template
+                documentationPropertyName="currencyAlign"
                 documentationPropertyMode="input"
+                documentationPropertyType="TuiHorizontalDirection"
+                [documentationPropertyValues]="currencyAlignVariants"
+                [(documentationPropertyValue)]="currencyAlign"
+            >
+                Position of currency symbol
+            </ng-template>
+
+            <ng-template
                 documentationPropertyName="decimal"
+                documentationPropertyMode="input"
                 documentationPropertyType="TuiDecimal"
                 [documentationPropertyValues]="decimalVariants"
                 [(documentationPropertyValue)]="decimal"
@@ -133,8 +144,8 @@
             </ng-template>
 
             <ng-template
-                documentationPropertyMode="input"
                 documentationPropertyName="precision"
+                documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="precisionVariants"
                 [(documentationPropertyValue)]="precision"
@@ -143,8 +154,8 @@
             </ng-template>
 
             <ng-template
-                documentationPropertyMode="input"
                 documentationPropertyName="sign"
+                documentationPropertyMode="input"
                 documentationPropertyType="TuiMoneySign"
                 [documentationPropertyValues]="signVariants"
                 [(documentationPropertyValue)]="sign"
@@ -174,8 +185,8 @@
             </ng-template>
 
             <ng-template
-                documentationPropertyMode="input"
                 documentationPropertyName="singleColor"
+                documentationPropertyMode="input"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="singleColor"
             >
@@ -183,8 +194,8 @@
             </ng-template>
 
             <ng-template
-                documentationPropertyMode="input"
                 documentationPropertyName="value"
+                documentationPropertyMode="input"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"
