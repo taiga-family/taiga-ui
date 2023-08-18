@@ -26,21 +26,20 @@ jobs:
       IS_DRY_MODE: ${{ github.event.inputs.dryRun == 'true' }}
       IS_RRE_RELEASE_MODE: ${{ contains(github.event.inputs.mode, 'prerelease') }}
     steps:
-      - name: Fetch from origin repo
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.3
         with:
           fetch-depth: 0
+          persist-credentials: false
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-
-      - name: Setup Node.js and Cache
-        uses: ./.github/actions/nodejs
+      - uses: taiga-family/ci/actions/setup-node@1.9.2
+      - uses: taiga-family/ci/actions/setup-git@1.9.2
+        with:
+          token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
       - name: Run release
         id: run-release
         run: |
-          git config user.name "tinkoff-bot"
-          git config --global push.followTags true
           npx ts-node ./scripts/release.ts \
                 --ci-mode \
                 --release-as ${{ github.event.inputs.mode }} \
