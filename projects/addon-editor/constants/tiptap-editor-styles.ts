@@ -40,7 +40,7 @@ export const tiptapEditorStyles = `
 }
 
 .tui-editor-socket li {
-    margin: 16px 0;
+    margin: 12px 0;
 }
 
 .tui-editor-socket li p {
