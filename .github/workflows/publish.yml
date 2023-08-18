@@ -3,9 +3,6 @@ on:
   push:
     branches: ['release/*']
 
-env:
-  NODE_AUTH_TOKEN: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
-
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -13,6 +10,9 @@ jobs:
       - uses: actions/checkout@v3.5.3
       - uses: taiga-family/ci/actions/variables@1.9.2
       - uses: taiga-family/ci/actions/setup-node@1.9.2
+      - uses: taiga-family/ci/actions/setup-npm@1.9.2
+        with:
+          token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
 
       - name: Build publishable libraries
         run: npm run run-many:build:libs

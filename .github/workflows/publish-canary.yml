@@ -4,9 +4,6 @@ on:
   schedule:
     - cron: '0 20 * * 1-5' # At UTC 20:00 (MSK 23:00) on every day-of-week from Monday through Friday
 
-env:
-  NODE_AUTH_TOKEN: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
-
 jobs:
   build:
     if: ${{ !contains(github.head_ref, 'release/') }}
@@ -16,6 +13,9 @@ jobs:
       - uses: actions/checkout@v3.5.3
       - uses: taiga-family/ci/actions/variables@1.9.2
       - uses: taiga-family/ci/actions/setup-node@1.9.2
+      - uses: taiga-family/ci/actions/setup-npm@1.9.2
+        with:
+          token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
       - run: npm run run-many:build:libs
       - run: npx ts-node ./scripts/publish-canary.ts
 
