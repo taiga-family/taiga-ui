@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.97.0](https://github.com/tinkoff/taiga-ui/compare/v2.96.0...v2.97.0) (2023-08-18)
+
+### Features
+
+- **addon-editor:** change margin for list ([#5133](https://github.com/tinkoff/taiga-ui/issues/5133))
+  ([d3e7ca1](https://github.com/tinkoff/taiga-ui/commit/d3e7ca15104dc67ced97059a0e1ca54dc9fbf74d))
+
+### Bug Fixes
+
+- **addon-mobile:** `MobileTabs` update iOS design ([#4722](https://github.com/tinkoff/taiga-ui/issues/4722))
+  ([#5131](https://github.com/tinkoff/taiga-ui/issues/5131))
+  ([40876c2](https://github.com/tinkoff/taiga-ui/commit/40876c2ce29a4c304a4f1103e363c0e7d25d76d4))
+
 ## [2.96.0](https://github.com/tinkoff/taiga-ui/compare/v2.95.0...v2.96.0) (2023-07-28)
 
 ### Features
