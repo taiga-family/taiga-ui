@@ -103,7 +103,7 @@
         "@nx/jest": "16.7.1",
         "@nx/node": "16.7.1",
         "@nx/workspace": "16.7.1",
-        "@playwright/test": "1.37.0",
+        "@playwright/test": "1.37.1",
         "@taiga-ui/cspell-config": "0.3.0",
         "@taiga-ui/eslint-plugin-experience": "0.2.0",
         "@taiga-ui/prettier-config": "0.1.3",
