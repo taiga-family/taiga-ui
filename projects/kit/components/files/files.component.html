@@ -1,8 +1,8 @@
 <ng-container *ngIf="items?.changes | async"></ng-container>
 
 <section
-    tuiGroup
     orientation="vertical"
+    tuiGroup
     class="t-files"
     [collapsed]="true"
 >
@@ -28,9 +28,9 @@
     </tui-expand>
     <button
         *ngIf="hasExtraItems"
-        tuiButton
         appearance="whiteblock"
         size="m"
+        tuiButton
         type="button"
         class="t-button"
         [class.t-button_collapsed]="!expanded"

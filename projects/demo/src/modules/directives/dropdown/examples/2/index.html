@@ -9,16 +9,16 @@
 </p>
 You can ask any questions about
 <code
-    tuiDropdownDirection="bottom"
     tuiDropdown="A directive to show content in a dropdown"
+    tuiDropdownDirection="bottom"
     [textContent]="'tuiDropdown'"
     [tuiDropdownManual]="open"
 ></code>
 and
 <button
+    tuiDropdownDirection="top"
     tuiLink
     type="button"
-    tuiDropdownDirection="top"
     [tuiDropdown]="dropdownContent"
     [tuiDropdownManual]="open"
 >
@@ -30,8 +30,8 @@ will gladly answer!
     <div class="dropdown">
         <tui-avatar
             size="l"
-            [rounded]="true"
             [avatarUrl]="avatarUrl"
+            [rounded]="true"
         ></tui-avatar>
         <div class="text">
             <div class="label">Taiga UI developer</div>

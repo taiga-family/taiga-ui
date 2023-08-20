@@ -9,28 +9,28 @@
         #inputTag
         automation-id="tui-multi-select__input"
         class="t-input"
-        [nativeId]="nativeId"
-        [tuiTextfieldIcon]="arrow ? icon : ''"
         [disabled]="disabled"
-        [disabledItemHandler]="disabledItemHandler | tuiMapper : disabledItemHandlerWrapper"
-        [readOnly]="readOnly"
-        [inputHidden]="!editable"
-        [pseudoHover]="pseudoHover"
-        [placeholder]="placeholder"
-        [pseudoFocus]="computedFocused"
-        [pseudoInvalid]="computedInvalid"
+        [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledItemHandlerWrapper"
         [editable]="false"
         [expandable]="expandable"
+        [inputHidden]="!editable"
+        [nativeId]="nativeId"
+        [ngModel]="computedValue | tuiMapper: valueMapper : stringify"
+        [placeholder]="placeholder"
+        [pseudoFocus]="computedFocused"
+        [pseudoHover]="pseudoHover"
+        [pseudoInvalid]="computedInvalid"
+        [readOnly]="readOnly"
         [removable]="!nativeDropdownMode"
-        [search]="searchOrSpace"
-        [tagValidator]="tagValidator | tuiMapper : disabledItemHandlerWrapper"
         [rows]="rows"
-        [ngModel]="computedValue | tuiMapper : valueMapper : stringify"
+        [search]="searchOrSpace"
+        [tagValidator]="tagValidator | tuiMapper: disabledItemHandlerWrapper"
+        [tuiTextfieldIcon]="arrow ? icon : ''"
+        (click.prevent)="onClick(inputTag)"
+        (keydown.enter)="onEnter($event)"
+        (keydown.space)="onSpace($event)"
         (ngModelChange)="onInput($event)"
         (searchChange)="onSearch($event)"
-        (keydown.space)="onSpace($event)"
-        (keydown.enter)="onEnter($event)"
-        (click.prevent)="onClick(inputTag)"
     >
         <ng-content></ng-content>
         <ng-template #select>
@@ -62,10 +62,10 @@
 
     <ng-template #icon>
         <div
-            tuiWrapper
             appearance="icon"
             automation-id="tui-multi-select__arrow"
             tuiPreventDefault="mousedown"
+            tuiWrapper
             class="t-arrow"
             [class.t-arrow_native-dropdown]="nativeDropdownMode"
         >

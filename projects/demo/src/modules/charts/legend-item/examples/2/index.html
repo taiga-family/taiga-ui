@@ -16,8 +16,8 @@
             #item
             class="item"
             [color]="getColor(index)"
-            [text]="label"
             [disabled]="!isEnabled(index)"
+            [text]="label"
             (click)="onClick(index)"
             (keydown.delete)="toggle(index)"
         >

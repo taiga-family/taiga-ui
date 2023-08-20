@@ -1,19 +1,19 @@
 <div
-    tuiWrapper
     appearance="input-file"
+    tuiWrapper
     class="t-wrapper"
+    [active]="pseudoActive"
     [class._mobile]="isMobile"
+    [disabled]="computedDisabled"
     [focus]="computedFocused"
     [hover]="pseudoHover || fileDragged || null"
-    [active]="pseudoActive"
-    [disabled]="computedDisabled"
 >
     <label
         automation-id="tui-input-file__label"
         class="t-label"
-        (tuiDroppableDropped)="onDropped($event)"
-        (tuiDroppableDragOverChange)="onDragOver($event)"
         (mousedown.prevent.silent)="(0)"
+        (tuiDroppableDragOverChange)="onDragOver($event)"
+        (tuiDroppableDropped)="onDropped($event)"
     >
         <div class="t-description">
             <ng-container *ngTemplateOutlet="template || null; context: {$implicit: fileDragged}"></ng-container>
@@ -33,11 +33,11 @@
             <ng-content select="input"></ng-content>
             <input
                 #input
-                type="file"
                 title=""
+                type="file"
                 class="t-native"
-                [id]="id"
                 [accept]="accept"
+                [id]="id"
                 [multiple]="multiple"
                 [tuiFocusable]="focusable"
             />

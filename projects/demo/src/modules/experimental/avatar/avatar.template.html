@@ -40,33 +40,33 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-avatar
-                [src]="src"
                 [round]="round"
                 [size]="size"
+                [src]="src"
             ></tui-avatar>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="round"
                 documentationPropertyType="boolean"
-                documentationPropertyMode="input"
                 [(documentationPropertyValue)]="round"
             >
                 Use round shape
             </ng-template>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="size"
                 documentationPropertyType="TuiSizeS | TuiSizeL"
-                documentationPropertyMode="input"
                 [documentationPropertyValues]="sizes"
                 [(documentationPropertyValue)]="size"
             >
                 Size
             </ng-template>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="src"
                 documentationPropertyType="string"
-                documentationPropertyMode="input"
                 [documentationPropertyValues]="srcVariants"
                 [(documentationPropertyValue)]="src"
             >

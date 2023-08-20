@@ -18,7 +18,10 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 class Account {
-    constructor(readonly name: string, readonly balance: number) {}
+    constructor(
+        readonly name: string,
+        readonly balance: number,
+    ) {}
 
     toString(): string {
         return `${this.name} (${this.balance})`;

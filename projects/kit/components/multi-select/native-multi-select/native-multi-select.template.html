@@ -3,15 +3,15 @@
 <tui-data-list-wrapper
     *tuiDataList
     tuiMultiSelectGroup
-    [items]="items"
-    [itemContent]="stringify | tuiStringifyContent"
     [disabledItemHandler]="disabledItemHandler || host.disableItemHandler"
+    [itemContent]="stringify | tuiStringifyContent"
+    [items]="items"
 ></tui-data-list-wrapper>
 <option
     *ngFor="let option of items"
-    [selected]="option | tuiMapper : selectedMapper : control.value"
-    [value]="stringify(option)"
     [disabled]="disabledItemHandler ? disabledItemHandler(option) : host.disableItemHandler(option)"
+    [selected]="option | tuiMapper: selectedMapper : control.value"
+    [value]="stringify(option)"
 >
     {{ stringify(option) }}
 </option>

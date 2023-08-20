@@ -77,16 +77,16 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="hoverable"
                 documentationPropertyType="boolean"
-                documentationPropertyMode="input"
                 [(documentationPropertyValue)]="hoverable"
             >
                 Enable hovered state
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
@@ -94,8 +94,8 @@
                 Size
             </ng-template>
             <ng-template
-                documentationPropertyName="status"
                 documentationPropertyMode="input"
+                documentationPropertyName="status"
                 documentationPropertyType="TuiStatus"
                 [documentationPropertyValues]="statusVariants"
                 [(documentationPropertyValue)]="status"
@@ -103,8 +103,8 @@
                 Status changes badge color
             </ng-template>
             <ng-template
-                documentationPropertyName="value"
                 documentationPropertyMode="input"
+                documentationPropertyName="value"
                 documentationPropertyType="string | number"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"

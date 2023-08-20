@@ -33,8 +33,8 @@ describe(`rangeCalendarComponent`, () => {
             <tui-root>
                 <tui-calendar-range
                     [items]="items"
-                    [min]="min"
                     [max]="max"
+                    [min]="min"
                     (valueChange)="onRangeChange($event)"
                 ></tui-calendar-range>
             </tui-root>

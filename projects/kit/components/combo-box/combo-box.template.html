@@ -8,28 +8,28 @@
     <tui-primitive-textfield
         automation-id="tui-combo-box__textfield"
         class="t-textfield"
-        [pseudoFocus]="computedFocused"
-        [pseudoHover]="pseudoHover"
-        [invalid]="computedInvalid"
-        [nativeId]="nativeId"
-        [readOnly]="readOnly"
-        [tuiTextfieldIcon]="arrow ? icon : ''"
         [disabled]="computedDisabled"
         [focusable]="computedFocusable"
+        [invalid]="computedInvalid"
+        [nativeId]="nativeId"
+        [pseudoFocus]="computedFocused"
+        [pseudoHover]="pseudoHover"
+        [readOnly]="readOnly"
+        [tuiTextfieldIcon]="arrow ? icon : ''"
         [value]="nativeValue"
-        (valueChange)="onValueChange($event)"
         (click)="toggle()"
         (keydown.enter)="onFieldKeyDownEnter($event)"
+        (valueChange)="onValueChange($event)"
     >
         <ng-content></ng-content>
         <ng-content
-            select="input"
             ngProjectAs="input"
+            select="input"
         ></ng-content>
         <div
             *ngIf="showValueTemplate"
-            ngProjectAs="tuiContent"
             automation-id="tui-combo-box__template"
+            ngProjectAs="tuiContent"
             class="t-value"
         >
             <ng-container
@@ -42,8 +42,8 @@
 
     <ng-template #icon>
         <div
-            tuiWrapper
             appearance="icon"
+            tuiWrapper
             class="t-icon"
         >
             <ng-container *polymorpheusOutlet="arrow"></ng-container>

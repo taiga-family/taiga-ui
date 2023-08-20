@@ -1,9 +1,9 @@
 <h6 class="tui-text_h6">
     Can be expanded with
     <a
-        tuiLink
-        target="_blank"
         routerLink="/directives/dropdown"
+        target="_blank"
+        tuiLink
     >
         TuiDropdown
     </a>
@@ -16,8 +16,8 @@
 
 <tui-doc-documentation>
     <ng-template
-        documentationPropertyName="tuiDropdownOpen"
         documentationPropertyMode="input-output"
+        documentationPropertyName="tuiDropdownOpen"
         documentationPropertyType="boolean"
         [documentationPropertyValue]="(documentedComponent.dropdownOpen | async)!!"
         (documentationPropertyValueChange)="documentedComponent.dropdownOpen.next($event)"
@@ -25,8 +25,8 @@
         Hard control/monitor for the dropdown being visible
     </ng-template>
     <ng-template
-        documentationPropertyName="tuiDropdownAlign"
         documentationPropertyMode="input"
+        documentationPropertyName="tuiDropdownAlign"
         documentationPropertyType="TuiDropdownAlign"
         [documentationPropertyValues]="documentedComponent.dropdownAlignVariants"
         [(documentationPropertyValue)]="documentedComponent.dropdownAlign"
@@ -36,8 +36,8 @@
         )
     </ng-template>
     <ng-template
-        documentationPropertyName="tuiDropdownDirection"
         documentationPropertyMode="input"
+        documentationPropertyName="tuiDropdownDirection"
         documentationPropertyType="TuiVerticalDirection | null"
         [documentationPropertyValues]="documentedComponent.dropdownDirectionVariants"
         [(documentationPropertyValue)]="documentedComponent.dropdownDirection"
@@ -45,8 +45,8 @@
         Set a vertical direction of dropdown
     </ng-template>
     <ng-template
-        documentationPropertyName="tuiDropdownLimitWidth"
         documentationPropertyMode="input"
+        documentationPropertyName="tuiDropdownLimitWidth"
         documentationPropertyType="TuiDropdownWidth"
         [documentationPropertyValues]="documentedComponent.dropdownLimitWidthVariants"
         [(documentationPropertyValue)]="documentedComponent.dropdownLimitWidth"
@@ -54,8 +54,8 @@
         Limit width of dropdown
     </ng-template>
     <ng-template
-        documentationPropertyName="tuiDropdownMinHeight"
         documentationPropertyMode="input"
+        documentationPropertyName="tuiDropdownMinHeight"
         documentationPropertyType="number"
         [(documentationPropertyValue)]="documentedComponent.dropdownMinHeight"
     >
@@ -63,16 +63,16 @@
         <code>tuiDropdownDirection</code>
     </ng-template>
     <ng-template
-        documentationPropertyName="tuiDropdownMaxHeight"
         documentationPropertyMode="input"
+        documentationPropertyName="tuiDropdownMaxHeight"
         documentationPropertyType="number"
         [(documentationPropertyValue)]="documentedComponent.dropdownMaxHeight"
     >
         Maximum height of dropdown
     </ng-template>
     <ng-template
-        documentationPropertyName="tuiDropdownOffset"
         documentationPropertyMode="input"
+        documentationPropertyName="tuiDropdownOffset"
         documentationPropertyType="number"
         [(documentationPropertyValue)]="documentedComponent.dropdownOffset"
     >

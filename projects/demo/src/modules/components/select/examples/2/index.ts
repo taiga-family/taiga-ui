@@ -5,7 +5,10 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCurrency} from '@taiga-ui/addon-commerce';
 
 class Card {
-    constructor(readonly cardName: string, readonly cardNumber: string) {}
+    constructor(
+        readonly cardName: string,
+        readonly cardNumber: string,
+    ) {}
 }
 
 class Account {

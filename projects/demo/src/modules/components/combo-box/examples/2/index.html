@@ -7,8 +7,8 @@
 >
     Find the best employees
     <input
-        tuiTextfield
         placeholder="Type a name"
+        tuiTextfield
     />
     <ng-template
         #value
@@ -27,8 +27,8 @@
             <button
                 *ngFor="let item of filtered"
                 tuiOption
-                [value]="item"
                 [disabled]="item.disabled"
+                [value]="item"
             >
                 <tui-avatar
                     size="xs"

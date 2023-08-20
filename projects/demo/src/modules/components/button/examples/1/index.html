@@ -1,8 +1,8 @@
 <ng-template #icon>
     <tui-avatar
         size="xs"
-        [rounded]="true"
         [avatarUrl]="avatarUrl"
+        [rounded]="true"
     ></tui-avatar>
 </ng-template>
 <h3>button[tuiButton]</h3>
@@ -18,9 +18,9 @@
     </button>
 
     <button
+        iconRight="tuiIconSearch"
         tuiButton
         type="button"
-        iconRight="tuiIconSearch"
         class="tui-space_right-3 tui-space_bottom-3"
         [disabled]="true"
         (click)="onClick($event)"
@@ -64,9 +64,9 @@
     ></button>
 
     <button
+        icon="tuiIconSearch"
         tuiIconButton
         type="button"
-        icon="tuiIconSearch"
         class="tui-space_right-3 tui-space_bottom-3"
         [disabled]="true"
         (click)="onClick($event)"
@@ -96,9 +96,9 @@
 <h3>a[tuiButton]</h3>
 <p>
     <a
+        href="http://google.com"
         tuiButton
         type="button"
-        href="http://google.com"
         class="tui-space_right-3 tui-space_bottom-3"
         [icon]="icon"
     >
@@ -124,8 +124,8 @@
             size="s"
             [inheritColor]="true"
             [showLoader]="true"
-            [style.width.px]="30"
             [style.height.px]="30"
+            [style.width.px]="30"
         ></tui-loader>
     </ng-template>
 </p>
@@ -140,9 +140,9 @@
     ></a>
 
     <a
+        icon="tuiIconSearch"
         tuiIconButton
         type="button"
-        icon="tuiIconSearch"
         class="tui-space_right-3 tui-space_bottom-3"
         [disabled]="true"
         [routerLink]=""
@@ -153,25 +153,25 @@
         tuiIconButton
         type="button"
         class="tui-space_right-3 tui-space_bottom-3"
-        [showLoader]="true"
         [routerLink]=""
+        [showLoader]="true"
         [tuiFocusable]="false"
     ></a>
 
     <a
         tuiIconButton
         type="button"
+        [icon]="loader4"
         [routerLink]=""
         [tuiFocusable]="false"
-        [icon]="loader4"
     ></a>
     <ng-template #loader4>
         <tui-loader
             size="s"
             [inheritColor]="true"
             [showLoader]="true"
-            [style.width.px]="30"
             [style.height.px]="30"
+            [style.width.px]="30"
         ></tui-loader>
     </ng-template>
 </p>

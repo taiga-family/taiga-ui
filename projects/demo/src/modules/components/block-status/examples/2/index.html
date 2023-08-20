@@ -1,8 +1,8 @@
 <tui-block-status *ngIf="size$ | async as size">
     <img
-        tuiSlot="top"
         alt="survived"
         src="./assets/images/going-up.svg"
+        tuiSlot="top"
     />
 
     <h4>Something has been achieved</h4>
@@ -12,15 +12,15 @@
     </span>
 
     <button
-        tuiButton
         appearance="secondary"
+        tuiButton
         [size]="size"
     >
         Do
     </button>
     <button
-        tuiButton
         appearance="mono"
+        tuiButton
         [size]="size"
     >
         Not to do

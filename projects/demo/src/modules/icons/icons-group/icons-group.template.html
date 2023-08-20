@@ -17,7 +17,7 @@
     } as options"
 >
     <ng-container *tuiForAsync="let key of icons | tuiKeys; timeout: options.timeout">
-        <ng-container *ngIf="icons[key] | tuiFilter : matcher : options.search as filtered">
+        <ng-container *ngIf="icons[key] | tuiFilter: matcher : options.search as filtered">
             <div
                 class="header-group"
                 [attr.data-heading]="key"
@@ -30,8 +30,8 @@
                     size="m"
                     class="badge"
                     [hoverable]="true"
-                    [value]="filtered.length.toString()"
                     [status]="filtered.length ? 'success' : 'error'"
+                    [value]="filtered.length.toString()"
                 ></tui-badge>
             </div>
             <p *ngIf="!filtered.length">Nothing found</p>

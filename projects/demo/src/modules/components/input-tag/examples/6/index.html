@@ -1,17 +1,17 @@
 <div
-    tuiGroup
     orientation="vertical"
-    tuiTextfieldIconLeft="tuiIconSearchLarge"
+    tuiGroup
     tuiHintContent="Just here to test icons alignment"
+    tuiTextfieldIconLeft="tuiIconSearchLarge"
     class="input"
     [collapsed]="true"
     [tuiTextfieldCleaner]="true"
 >
     <tui-input [(ngModel)]="customSeparator">Custom separator</tui-input>
     <tui-input-tag
-        [uniqueTags]="false"
         [separator]="customSeparator"
         [tuiTextfieldLabelOutside]="true"
+        [uniqueTags]="false"
         [(ngModel)]="value"
     ></tui-input-tag>
 </div>

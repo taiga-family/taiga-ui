@@ -91,12 +91,12 @@
                     [appearance]="appearance"
                     [disabled]="disabled"
                     [icon]="icon"
+                    [pseudoActive]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
                     [shape]="shape"
                     [showLoader]="showLoader"
                     [size]="size"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoActive]="pseudoPressed"
                 ></button>
                 <ng-template #button>
                     <button
@@ -107,12 +107,12 @@
                         [disabled]="disabled"
                         [icon]="icon"
                         [iconRight]="iconRight"
+                        [pseudoActive]="pseudoPressed"
+                        [pseudoFocus]="pseudoFocused"
+                        [pseudoHover]="pseudoHovered"
                         [shape]="shape"
                         [showLoader]="showLoader"
                         [size]="size"
-                        [pseudoFocus]="pseudoFocused"
-                        [pseudoHover]="pseudoHovered"
-                        [pseudoActive]="pseudoPressed"
                     >
                         Content
                     </button>
@@ -136,8 +136,8 @@
         </ng-template>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="appearance"
                 documentationPropertyMode="input"
+                documentationPropertyName="appearance"
                 documentationPropertyType="TuiAppearance | string"
                 [documentationPropertyValues]="appearanceVariants"
                 [(documentationPropertyValue)]="appearance"
@@ -145,16 +145,16 @@
                 Appearance mode
             </ng-template>
             <ng-template
-                documentationPropertyName="disabled"
                 documentationPropertyMode="input"
+                documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
                 disabled state
             </ng-template>
             <ng-template
-                documentationPropertyName="icon"
                 documentationPropertyMode="input"
+                documentationPropertyName="icon"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="getContentVariants(template)"
                 [(documentationPropertyValue)]="icon"
@@ -162,8 +162,8 @@
                 Left content
             </ng-template>
             <ng-template
-                documentationPropertyName="iconRight"
                 documentationPropertyMode="input"
+                documentationPropertyName="iconRight"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="getContentVariants(template)"
                 [(documentationPropertyValue)]="iconRight"
@@ -171,8 +171,8 @@
                 Right content
             </ng-template>
             <ng-template
-                documentationPropertyName="shape"
                 documentationPropertyMode="input"
+                documentationPropertyName="shape"
                 documentationPropertyType="'square'
                 | 'rounded' | null"
                 [documentationPropertyValues]="shapeVariants"
@@ -181,16 +181,16 @@
                 Button shape
             </ng-template>
             <ng-template
-                documentationPropertyName="showLoader"
                 documentationPropertyMode="input"
+                documentationPropertyName="showLoader"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="showLoader"
             >
                 Adds loader inside
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeXS | TuiSizeXL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"

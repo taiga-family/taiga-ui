@@ -57,9 +57,9 @@
             <ng-template #localizationDescription>
                 Use
                 <a
-                    tuiLink
-                    routerLink="/utils/tokens"
                     fragment="first-day-of-week"
+                    routerLink="/utils/tokens"
+                    tuiLink
                 >
                     TUI_FIRST_DAY_OF_WEEK
                 </a>
@@ -82,8 +82,8 @@
 
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
+                documentationPropertyName="disabledItemHandler"
                 documentationPropertyType="TuiBooleanHandler<TuiDay>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
@@ -93,8 +93,8 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="max"
                 documentationPropertyMode="input"
+                documentationPropertyName="max"
                 documentationPropertyType="TuiDay"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
@@ -102,8 +102,8 @@
                 Max date
             </ng-template>
             <ng-template
-                documentationPropertyName="min"
                 documentationPropertyMode="input"
+                documentationPropertyName="min"
                 documentationPropertyType="TuiDay"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
@@ -111,23 +111,23 @@
                 Min date
             </ng-template>
             <ng-template
-                documentationPropertyName="single"
                 documentationPropertyMode="input"
+                documentationPropertyName="single"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="single"
             >
                 Single date or a range
             </ng-template>
             <ng-template
-                documentationPropertyName="cancel"
                 documentationPropertyMode="output"
+                documentationPropertyName="cancel"
                 documentationPropertyType="void"
             >
                 "Cancel" clicked
             </ng-template>
             <ng-template
-                documentationPropertyName="confirm"
                 documentationPropertyMode="output"
+                documentationPropertyName="confirm"
                 documentationPropertyType="TuiDayRange | TuiDay"
             >
                 "Confirm" button clicked

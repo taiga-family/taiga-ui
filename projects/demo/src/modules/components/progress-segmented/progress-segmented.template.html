@@ -50,17 +50,17 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-progress-segmented
-                [max]="max"
-                [value]="value"
-                [size]="size"
                 [colors]="color"
+                [max]="max"
+                [size]="size"
+                [value]="value"
             ></tui-progress-segmented>
         </tui-doc-demo>
 
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="value"
                 documentationPropertyMode="input"
+                documentationPropertyName="value"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="value"
             >
@@ -75,8 +75,8 @@
             </ng-template>
 
             <ng-template
-                documentationPropertyName="max"
                 documentationPropertyMode="input"
+                documentationPropertyName="max"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="max"
             >
@@ -91,8 +91,8 @@
             </ng-template>
 
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeS"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
@@ -101,8 +101,8 @@
             </ng-template>
 
             <ng-template
-                documentationPropertyName="colors"
                 documentationPropertyMode="input"
+                documentationPropertyName="colors"
                 documentationPropertyType="string | string[]"
                 [documentationPropertyValues]="colorVariants"
                 [(documentationPropertyValue)]="color"

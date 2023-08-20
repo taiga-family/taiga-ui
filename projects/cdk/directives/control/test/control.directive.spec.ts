@@ -11,8 +11,8 @@ describe(`TuiControlDirective`, () => {
             <form [formGroup]="form">
                 <input
                     #control="ngControl"
-                    tuiControl
                     formControlName="control"
+                    tuiControl
                 />
                 <p>{{ control.control.value }}</p>
             </form>

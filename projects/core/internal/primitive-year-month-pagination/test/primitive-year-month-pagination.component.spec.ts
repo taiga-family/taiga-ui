@@ -10,8 +10,8 @@ describe(`PrimitiveYearMonthPaginationComponent`, () => {
     @Component({
         template: `
             <tui-primitive-year-month-pagination
-                [min]="min"
                 [max]="max"
+                [min]="min"
                 [(value)]="value"
             ></tui-primitive-year-month-pagination>
         `,

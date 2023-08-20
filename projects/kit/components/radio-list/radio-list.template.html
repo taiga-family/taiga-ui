@@ -2,13 +2,13 @@
     <tui-radio-labeled
         *ngFor="let item of items; index as index"
         class="t-item"
-        [readOnly]="readOnly"
-        [nativeId]="computeId(index)"
         [disabled]="disabled"
         [item]="item"
-        [size]="size"
-        [pseudoInvalid]="computedInvalid"
+        [nativeId]="computeId(index)"
         [pseudoDisabled]="itemIsDisabled(item)"
+        [pseudoInvalid]="computedInvalid"
+        [readOnly]="readOnly"
+        [size]="size"
         [(ngModel)]="value"
     >
         <ng-container

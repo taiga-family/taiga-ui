@@ -1,25 +1,25 @@
 <tui-primitive-textfield
     #textfield
-    tuiValueAccessor
-    tuiTextfieldPrefix=""
     tuiTextfieldPostfix=""
+    tuiTextfieldPrefix=""
+    tuiValueAccessor
     class="t-textfield"
-    [pseudoHover]="pseudoHover"
-    [pseudoFocus]="computedFocused"
-    [pseudoActive]="pseudoActive"
-    [invalid]="computedInvalid"
-    [readOnly]="readOnly"
     [disabled]="computedDisabled"
-    [maskito]="mask"
-    [value]="computedValue"
     [focusable]="focusable"
-    (valueChange)="onValueChange($event)"
+    [invalid]="computedInvalid"
+    [maskito]="mask"
+    [pseudoActive]="pseudoActive"
+    [pseudoFocus]="computedFocused"
+    [pseudoHover]="pseudoHover"
+    [readOnly]="readOnly"
+    [value]="computedValue"
     (focusedChange)="onFocused($event)"
+    (valueChange)="onValueChange($event)"
 >
     <ng-content></ng-content>
     <ng-content
-        select="input"
         ngProjectAs="input"
+        select="input"
     ></ng-content>
     <div
         *ngIf="polymorpheusValueContent.length"
@@ -37,30 +37,30 @@
     class="t-buttons"
 >
     <button
+        size="s"
         tuiIconButton
         type="button"
-        size="s"
         class="t-button"
-        [icon]="options.icons.up"
         [appearance]="textfield.appearance"
         [disabled]="!canIncrement"
         [focusable]="false"
-        (mousedown.prevent)="nativeFocusableElement?.focus()"
+        [icon]="options.icons.up"
         (click.prevent)="onArrow(step)"
+        (mousedown.prevent)="nativeFocusableElement?.focus()"
     >
         +
     </button>
     <button
+        size="s"
         tuiIconButton
         type="button"
-        size="s"
         class="t-button"
-        [icon]="options.icons.down"
         [appearance]="textfield.appearance"
         [disabled]="!canDecrement"
         [focusable]="false"
-        (mousedown.prevent)="nativeFocusableElement?.focus()"
+        [icon]="options.icons.down"
         (click.prevent)="onArrow(-step)"
+        (mousedown.prevent)="nativeFocusableElement?.focus()"
     >
         -
     </button>

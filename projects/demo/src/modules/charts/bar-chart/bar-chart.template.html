@@ -48,31 +48,31 @@
             <tui-bar-chart
                 class="chart"
                 [collapsed]="collapsed"
-                [value]="value"
                 [max]="max"
                 [size]="size"
+                [value]="value"
             ></tui-bar-chart>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="collapsed"
                 documentationPropertyMode="input"
+                documentationPropertyName="collapsed"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="collapsed"
             >
                 Shows data set in a single bar
             </ng-template>
             <ng-template
-                documentationPropertyName="max"
                 documentationPropertyMode="input"
+                documentationPropertyName="max"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="max"
             >
                 Sets chart max manually
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeS | TuiSizeL | null"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
@@ -82,8 +82,8 @@
                 for autosize)
             </ng-template>
             <ng-template
-                documentationPropertyName="value"
                 documentationPropertyMode="input"
+                documentationPropertyName="value"
                 documentationPropertyType="ReadonlyArray<readonly number[]>"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"

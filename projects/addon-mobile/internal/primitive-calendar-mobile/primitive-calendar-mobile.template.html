@@ -9,10 +9,10 @@
             automation-id="tui-primitive-calendar-mobile__cell"
             tuiRipple
             class="t-cell"
-            [class.t-cell_today]="itemIsToday(sheet[rowIndex][colIndex])"
-            [class.t-cell_interval]="itemIsInterval(sheet[rowIndex][colIndex])"
-            [attr.data-state]="getItemState(sheet[rowIndex][colIndex])"
             [attr.data-range]="getItemRange(sheet[rowIndex][colIndex])"
+            [attr.data-state]="getItemState(sheet[rowIndex][colIndex])"
+            [class.t-cell_interval]="itemIsInterval(sheet[rowIndex][colIndex])"
+            [class.t-cell_today]="itemIsToday(sheet[rowIndex][colIndex])"
             (click)="onItemClick(sheet[rowIndex][colIndex])"
         >
             {{ sheet[rowIndex][colIndex].day }}

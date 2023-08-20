@@ -10,7 +10,10 @@ import {TuiMonthRange} from './month-range';
  * An immutable range of two {@link TuiDay} objects
  */
 export class TuiDayRange extends TuiMonthRange {
-    constructor(override readonly from: TuiDay, override readonly to: TuiDay) {
+    constructor(
+        override readonly from: TuiDay,
+        override readonly to: TuiDay,
+    ) {
         super(from, to);
 
         ngDevMode && tuiAssert.assert(from.daySameOrBefore(to));

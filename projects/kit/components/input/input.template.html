@@ -8,20 +8,20 @@
     <tui-primitive-textfield
         automation-id="tui-input__textfield"
         class="t-textfield"
-        [pseudoFocus]="computedFocused"
-        [pseudoHover]="pseudoHover"
-        [invalid]="computedInvalid"
-        [nativeId]="nativeId"
-        [readOnly]="readOnly"
         [disabled]="computedDisabled"
         [focusable]="computedFocusable"
+        [invalid]="computedInvalid"
+        [nativeId]="nativeId"
+        [pseudoFocus]="computedFocused"
+        [pseudoHover]="pseudoHover"
+        [readOnly]="readOnly"
         [value]="value"
         (valueChange)="onValueChange($event)"
     >
         <ng-content></ng-content>
         <ng-content
-            select="input"
             ngProjectAs="input"
+            select="input"
         ></ng-content>
     </tui-primitive-textfield>
 </tui-hosted-dropdown>

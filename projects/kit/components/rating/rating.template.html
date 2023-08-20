@@ -33,11 +33,11 @@
 
         <input
             #focusableElement
-            type="range"
             step="1"
+            type="range"
             class="t-input"
-            [min]="min"
             [max]="max"
+            [min]="min"
             [ngModel]="value"
             [tuiFocusable]="isFocusable"
             (ngModelChange)="setRate($event)"

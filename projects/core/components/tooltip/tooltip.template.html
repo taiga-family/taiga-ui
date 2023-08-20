@@ -1,16 +1,16 @@
 <span
     #driver="tuiHintHover"
+    appearance="icon"
     automation-id="tui-tooltip__icon"
     tuiWrapper
-    appearance="icon"
     class="t-tooltip-icon"
     [hover]="(driver | async) || null"
     [tuiHint]="content"
+    [tuiHintAppearance]="computedAppearance"
     [tuiHintDescribe]="describeId"
     [tuiHintDirection]="direction"
-    [tuiHintShowDelay]="showDelay"
     [tuiHintHideDelay]="hideDelay"
-    [tuiHintAppearance]="computedAppearance"
+    [tuiHintShowDelay]="showDelay"
 >
     <tui-svg
         *polymorpheusOutlet="icon as src"

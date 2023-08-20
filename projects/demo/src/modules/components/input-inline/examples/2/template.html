@@ -7,20 +7,20 @@
         tuiAutoFocus
         [(ngModel)]="heading"
         (focusedChange)="onFocusedChange($event)"
-        (keydown.esc.prevent)="toggle()"
         (keydown.enter.prevent)="toggle()"
+        (keydown.esc.prevent)="toggle()"
     >
         Type a heading
     </tui-input-inline>
     <ng-template #text>
         <span>{{ heading }}</span>
         <button
-            tuiIconButton
-            type="button"
-            title="Edit heading"
-            size="xs"
             appearance="icon"
             icon="tuiIconEdit2Large"
+            size="xs"
+            title="Edit heading"
+            tuiIconButton
+            type="button"
             class="tui-space_left-1"
             (click)="toggle()"
         ></button>

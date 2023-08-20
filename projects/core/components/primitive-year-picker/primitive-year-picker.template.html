@@ -8,14 +8,14 @@
             *tuiLet="getItem(rowIndex, colIndex) as item"
             automation-id="tui-primitive-year-picker__cell"
             class="t-cell"
-            [class.t-cell_today]="itemIsToday(item)"
-            [class.t-cell_interval]="itemIsInterval(item)"
             [attr.data-range]="getItemRange(item)"
             [attr.data-state]="getItemState(item)"
+            [class.t-cell_interval]="itemIsInterval(item)"
+            [class.t-cell_today]="itemIsToday(item)"
             [tuiScrollIntoView]="scrollItemIntoView(item)"
+            (click)="onItemClick(item)"
             (tuiHoveredChange)="onItemHovered($event, item)"
             (tuiPressedChange)="onItemPressed($event, item)"
-            (click)="onItemClick(item)"
         >
             <div class="t-item">{{ item }}</div>
         </div>

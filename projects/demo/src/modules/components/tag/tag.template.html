@@ -66,17 +66,17 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-tag
-                [value]="value"
                 [autoColor]="autoColor"
                 [disabled]="disabled"
                 [editable]="editable"
                 [hoverable]="hoverable"
-                [removable]="removable"
                 [leftContent]="leftContent"
                 [maxLength]="maxLength"
-                [size]="size"
+                [removable]="removable"
                 [showLoader]="showLoader"
+                [size]="size"
                 [status]="status"
+                [value]="value"
                 (edited)="editTag($event)"
             ></tui-tag>
             <ng-template #errorIcon>
@@ -88,40 +88,40 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="autoColor"
                 documentationPropertyType="boolean"
-                documentationPropertyMode="input"
                 [(documentationPropertyValue)]="autoColor"
             >
                 Autocolor for tag
             </ng-template>
             <ng-template
-                documentationPropertyName="disabled"
                 documentationPropertyMode="input"
+                documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
                 Disabled state
             </ng-template>
             <ng-template
-                documentationPropertyName="editable"
                 documentationPropertyMode="input"
+                documentationPropertyName="editable"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="editable"
             >
                 Tag can be edited
             </ng-template>
             <ng-template
-                documentationPropertyName="hoverable"
                 documentationPropertyMode="input"
+                documentationPropertyName="hoverable"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="hoverable"
             >
                 Enable hovered state
             </ng-template>
             <ng-template
-                documentationPropertyName="leftContent"
                 documentationPropertyMode="input"
+                documentationPropertyName="leftContent"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="leftContentVariants"
                 [(documentationPropertyValue)]="leftContentSelected"
@@ -129,8 +129,8 @@
                 Content left to text
             </ng-template>
             <ng-template
-                documentationPropertyName="maxLength"
                 documentationPropertyMode="input"
+                documentationPropertyName="maxLength"
                 documentationPropertyType="number | null"
                 [documentationPropertyValues]="maxLengthVariants"
                 [(documentationPropertyValue)]="maxLength"
@@ -138,24 +138,24 @@
                 Max length of tag (when editing)
             </ng-template>
             <ng-template
-                documentationPropertyName="removable"
                 documentationPropertyMode="input"
+                documentationPropertyName="removable"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="removable"
             >
                 Tag can be removed
             </ng-template>
             <ng-template
-                documentationPropertyName="showLoader"
                 documentationPropertyMode="input"
+                documentationPropertyName="showLoader"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="showLoader"
             >
                 Show loader
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
@@ -163,8 +163,8 @@
                 Size
             </ng-template>
             <ng-template
-                documentationPropertyName="status"
                 documentationPropertyMode="input"
+                documentationPropertyName="status"
                 documentationPropertyType="TuiStatus"
                 [documentationPropertyValues]="statusVariants"
                 [(documentationPropertyValue)]="status"
@@ -172,16 +172,16 @@
                 Changes color
             </ng-template>
             <ng-template
-                documentationPropertyName="value"
                 documentationPropertyMode="input"
+                documentationPropertyName="value"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="value"
             >
                 String value of tag
             </ng-template>
             <ng-template
-                documentationPropertyName="edited"
                 documentationPropertyMode="output"
+                documentationPropertyName="edited"
                 documentationPropertyType="string"
             >
                 Emits tag change (if it was edited to space or empty string, it emits delete)

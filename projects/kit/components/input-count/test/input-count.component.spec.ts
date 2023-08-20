@@ -11,16 +11,16 @@ describe(`InputCount`, () => {
             <tui-input-count
                 *ngIf="defaultStep"
                 [formControl]="control"
-                [min]="min"
                 [max]="max"
+                [min]="min"
                 [readOnly]="readOnly"
             ></tui-input-count>
             <tui-input-count
                 *ngIf="customStep"
                 [formControl]="control"
-                [step]="step"
-                [min]="min"
                 [max]="max"
+                [min]="min"
+                [step]="step"
             ></tui-input-count>
         `,
     })

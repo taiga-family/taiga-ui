@@ -27,9 +27,9 @@
         <tui-doc-demo>
             <tui-toggle
                 [formControl]="control"
+                [pseudoActive]="pseudoPressed"
                 [pseudoFocus]="pseudoFocused"
                 [pseudoHover]="pseudoHovered"
-                [pseudoActive]="pseudoPressed"
                 [showIcons]="showIcons"
                 [showLoader]="showLoader"
                 [singleColor]="singleColor"
@@ -47,32 +47,32 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="showIcons"
                 documentationPropertyMode="input"
+                documentationPropertyName="showIcons"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="showIcons"
             >
                 Show icons
             </ng-template>
             <ng-template
-                documentationPropertyName="showLoader"
                 documentationPropertyMode="input"
+                documentationPropertyName="showLoader"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="showLoader"
             >
                 Show loader. If icons are also enabled, show loader anyway.
             </ng-template>
             <ng-template
-                documentationPropertyName="singleColor"
                 documentationPropertyMode="input"
+                documentationPropertyName="singleColor"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="singleColor"
             >
                 All states have the same color
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"

@@ -4,12 +4,12 @@
     tuiAccessorProxy
     tuiDropdownOpenMonitor
     class="t-wrapper"
-    [tuiDropdownSided]="sided"
     [tuiDropdown]="dropdown"
     [tuiDropdownManual]="isOpen && canOpen"
+    [tuiDropdownSided]="sided"
     [tuiObscuredEnabled]="isOpen"
-    (tuiObscured)="onHostObscured($event)"
     (tuiActiveZoneChange)="onActiveZone($event)"
+    (tuiObscured)="onHostObscured($event)"
 >
     <ng-content></ng-content>
     <ng-template

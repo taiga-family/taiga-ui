@@ -1,32 +1,32 @@
 <div class="tui-player">
     <audio
         #audio
-        tuiMedia
         src="assets/media/strays.mp3"
+        tuiMedia
         [(currentTime)]="currentTime"
         [(paused)]="paused"
     ></audio>
     <button
+        appearance="secondary"
+        shape="rounded"
+        title="Play/Pause"
         tuiIconButton
         type="button"
-        shape="rounded"
-        appearance="secondary"
-        title="Play/Pause"
         [icon]="icon"
         (click)="toggleState()"
     ></button>
     <div>
         <a
-            tuiLink
             href="https://waterplea.bandcamp.com/"
+            tuiLink
         >
             Waterplea
         </a>
         — Strays
         <input
+            step="any"
             tuiSlider
             type="range"
-            step="any"
             class="slider"
             [max]="audio.duration"
             [(ngModel)]="currentTime"

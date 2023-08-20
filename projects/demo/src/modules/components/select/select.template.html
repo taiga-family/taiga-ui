@@ -85,10 +85,10 @@
                 <code>ScrollingModule</code>
                 from
                 <a
-                    tuiLink
                     href="https://material.angular.io/cdk/scrolling/overview"
                     rel="noreferrer"
                     target="_blank"
+                    tuiLink
                 >
                     @angular/cdk/scrolling
                 </a>
@@ -133,31 +133,31 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-select
-                    [formControl]="control"
                     [focusable]="focusable"
-                    [valueContent]="valueContent"
+                    [formControl]="control"
                     [identityMatcher]="identityMatcher"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [readOnly]="readOnly"
-                    [pseudoInvalid]="pseudoInvalid"
+                    [pseudoActive]="pseudoPressed"
                     [pseudoFocus]="pseudoFocused"
                     [pseudoHover]="pseudoHovered"
-                    [pseudoActive]="pseudoPressed"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
                     [tuiDropdownAlign]="dropdownAlign"
                     [tuiDropdownDirection]="dropdownDirection"
                     [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                    [tuiDropdownMinHeight]="dropdownMinHeight"
                     [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
                     [tuiDropdownOffset]="dropdownOffset"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldCustomContent]="customContent"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldSize]="size"
-                    [tuiTextfieldFiller]="filler"
+                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                    [tuiHintAppearance]="hintAppearance"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintAppearance]="hintAppearance"
-                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldCustomContent]="customContent"
+                    [tuiTextfieldFiller]="filler"
+                    [tuiTextfieldIconLeft]="iconLeft"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                    [valueContent]="valueContent"
                     (tuiDropdownOpenChange)="dropdownOpen.next($event)"
                 >
                     Choose an account
@@ -187,9 +187,9 @@
             </p>
 
             <button
+                size="m"
                 tuiButton
                 type="button"
-                size="m"
                 (click)="setValue()"
             >
                 Set
@@ -207,8 +207,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="identityMatcher"
                 documentationPropertyMode="input"
+                documentationPropertyName="identityMatcher"
                 documentationPropertyType="TuiIdentityMatcher"
                 [documentationPropertyValues]="identityMatcherVariants"
                 [(documentationPropertyValue)]="identityMatcher"
@@ -220,8 +220,8 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="valueContent"
                 documentationPropertyMode="input"
+                documentationPropertyName="valueContent"
                 documentationPropertyType="PolymorpheusContent<TuiValueContentContext<T>>"
                 [documentationPropertyValues]="valueTemplateVariants"
                 [(documentationPropertyValue)]="selectedValueTemplate"

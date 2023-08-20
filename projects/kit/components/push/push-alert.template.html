@@ -1,8 +1,8 @@
 <tui-push
     *ngIf="!isDirective; else $any(context.content).template"
     [heading]="context.heading"
-    [type]="context.type"
     [timestamp]="context.timestamp"
+    [type]="context.type"
     (close)="context.$implicit.complete()"
 >
     <img
@@ -12,8 +12,8 @@
     />
     <tui-svg
         *ngIf="context.icon"
-        [style.color]="context.iconColor"
         [src]="context.icon"
+        [style.color]="context.iconColor"
     ></tui-svg>
     <div
         *polymorpheusOutlet="context.content as text"
@@ -21,8 +21,8 @@
     ></div>
     <button
         *ngIf="context.buttons.length > 1"
-        type="button"
         tuiButton
+        type="button"
         (click)="context.$implicit.next(context.buttons[0])"
     >
         {{ context.buttons[0] }}

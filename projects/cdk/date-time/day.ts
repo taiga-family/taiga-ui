@@ -19,7 +19,11 @@ import {TuiYear} from './year';
  * Immutable date object, consisting of day, month and year
  */
 export class TuiDay extends TuiMonth {
-    constructor(year: number, month: number, readonly day: number) {
+    constructor(
+        year: number,
+        month: number,
+        readonly day: number,
+    ) {
         super(year, month);
         ngDevMode && tuiAssert.assert(TuiDay.isValidDay(year, month, day));
     }

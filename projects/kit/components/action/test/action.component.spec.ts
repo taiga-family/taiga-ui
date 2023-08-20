@@ -17,9 +17,9 @@ describe(`Action`, () => {
                 {{ text ?? 'Some action' }}
             </button>
             <a
-                tuiAction
-                target="_blank"
                 href="http://www.montypython.com/"
+                target="_blank"
+                tuiAction
                 [icon]="icon"
             >
                 {{ text ?? 'Some action' }}

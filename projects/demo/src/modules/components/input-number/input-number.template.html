@@ -11,16 +11,16 @@
             <ul class="tui-list tui-list_small">
                 <li class="tui-list__item">
                     <a
-                        tuiLink
                         routerLink="/components/slider"
+                        tuiLink
                     >
                         <strong>Slider</strong>
                     </a>
                 </li>
                 <li class="tui-list__item">
                     <a
-                        tuiLink
                         routerLink="/components/input-slider"
+                        tuiLink
                     >
                         <strong>InputSlider</strong>
                     </a>
@@ -30,8 +30,8 @@
                 </li>
                 <li class="tui-list__item">
                     <a
-                        tuiLink
                         routerLink="/components/input-range"
+                        tuiLink
                     >
                         <strong>InputRange</strong>
                     </a>
@@ -45,9 +45,9 @@
         <p>
             Number formatting can be customized with
             <a
-                tuiLink
-                routerLink="/utils/tokens"
                 fragment="number-format"
+                routerLink="/utils/tokens"
+                tuiLink
             >
                 TUI_NUMBER_FORMAT
             </a>
@@ -68,8 +68,8 @@
                     <code>[prefix]</code>
                     . To get currency symbol use pipe
                     <a
-                        tuiLink
                         routerLink="/pipes/currency"
+                        tuiLink
                     >
                         tuiCurrency
                     </a>
@@ -88,8 +88,8 @@
             <ng-template #textFieldControllerDescription>
                 Customize input via
                 <a
-                    tuiLink
                     routerLink="/directives/textfield-controller"
+                    tuiLink
                 >
                     TextfieldControllers
                 </a>
@@ -122,8 +122,8 @@
 
         <tui-doc-example
             id="align"
-            heading="Align to the right"
             description="With currency symbol as prefix and custom format"
+            heading="Align to the right"
             [content]="example4"
         >
             <tui-input-number-example-4></tui-input-number-example-4>
@@ -150,32 +150,32 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-number
-                    [formControl]="control"
+                    [decimal]="decimal"
                     [focusable]="focusable"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldCustomContent]="customContent"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldSize]="size"
-                    [tuiTextfieldPrefix]="prefix"
-                    [tuiTextfieldPostfix]="postfix"
-                    [tuiTextfieldFiller]="filler"
-                    [prefix]="prefix"
-                    [postfix]="postfix"
-                    [min]="min"
+                    [formControl]="control"
                     [max]="max"
-                    [style.text-align]="textAlign"
-                    [pseudoInvalid]="pseudoInvalid"
+                    [min]="min"
+                    [postfix]="postfix"
+                    [precision]="precision"
+                    [prefix]="prefix"
+                    [pseudoActive]="pseudoPressed"
                     [pseudoFocus]="pseudoFocused"
                     [pseudoHover]="pseudoHovered"
-                    [pseudoActive]="pseudoPressed"
-                    [precision]="precision"
+                    [pseudoInvalid]="pseudoInvalid"
                     [readOnly]="readOnly"
-                    [decimal]="decimal"
                     [step]="step"
+                    [style.text-align]="textAlign"
+                    [tuiHintAppearance]="hintAppearance"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintAppearance]="hintAppearance"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldCustomContent]="customContent"
+                    [tuiTextfieldFiller]="filler"
+                    [tuiTextfieldIconLeft]="iconLeft"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldPostfix]="postfix"
+                    [tuiTextfieldPrefix]="prefix"
+                    [tuiTextfieldSize]="size"
                 >
                     Type a sum
                 </tui-input-number>
@@ -192,8 +192,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="min"
                 documentationPropertyMode="input"
+                documentationPropertyName="min"
                 documentationPropertyType="number | null"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
@@ -201,8 +201,8 @@
                 Min value
             </ng-template>
             <ng-template
-                documentationPropertyName="max"
                 documentationPropertyMode="input"
+                documentationPropertyName="max"
                 documentationPropertyType="number | null"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
@@ -210,8 +210,8 @@
                 Max value
             </ng-template>
             <ng-template
-                documentationPropertyName="prefix"
                 documentationPropertyMode="input"
+                documentationPropertyName="prefix"
                 documentationPropertyType="string"
                 [documentationPropertyDeprecated]="true"
                 [documentationPropertyValues]="prefixVariants"
@@ -222,8 +222,8 @@
                 instead
             </ng-template>
             <ng-template
-                documentationPropertyName="postfix"
                 documentationPropertyMode="input"
+                documentationPropertyName="postfix"
                 documentationPropertyType="string"
                 [documentationPropertyDeprecated]="true"
                 [documentationPropertyValues]="prefixVariants"
@@ -234,8 +234,8 @@
                 instead
             </ng-template>
             <ng-template
-                documentationPropertyName="precision"
                 documentationPropertyMode="input"
+                documentationPropertyName="precision"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="precisionVariants"
                 [(documentationPropertyValue)]="precision"
@@ -245,8 +245,8 @@
                 for an untouched decimal part)
             </ng-template>
             <ng-template
-                documentationPropertyName="decimal"
                 documentationPropertyMode="input"
+                documentationPropertyName="decimal"
                 documentationPropertyType="TuiDecimal"
                 [documentationPropertyValues]="decimalVariants"
                 [(documentationPropertyValue)]="decimal"
@@ -254,8 +254,8 @@
                 Show/hide decimal
             </ng-template>
             <ng-template
-                documentationPropertyName="step"
                 documentationPropertyMode="input"
+                documentationPropertyName="step"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="step"
             >
@@ -266,8 +266,8 @@
         <tui-doc-documentation heading="CSS customization">
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyType="string"
                 documentationPropertyName="style.text-align"
+                documentationPropertyType="string"
                 [documentationPropertyValues]="textAlignVariants"
                 [(documentationPropertyValue)]="textAlign"
             >

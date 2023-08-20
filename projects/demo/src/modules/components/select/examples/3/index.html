@@ -32,16 +32,16 @@
     <ng-container *ngIf="signatureVisible">
         <tui-textarea
             formControlName="signature"
-            tuiTextfieldSize="m"
             tuiAutoFocus
+            tuiTextfieldSize="m"
             class="tui-space_bottom-4"
         >
             Type a signature
         </tui-textarea>
         <button
+            size="m"
             tuiButton
             type="button"
-            size="m"
             (click)="toggle()"
         >
             Hide signature

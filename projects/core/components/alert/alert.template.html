@@ -1,8 +1,8 @@
 <tui-notification
-    [status]="item.status"
     [hasIcon]="item.hasIcon"
-    [icon]="item.icon"
     [hideClose]="!item.hasCloseButton"
+    [icon]="item.icon"
+    [status]="item.status"
     (close)="close()"
 >
     <label

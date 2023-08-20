@@ -3,15 +3,15 @@
     class="t-wrapper"
     [class.t-wrapper_hoverable]="!!hintContent"
     [class.t-wrapper_hovered]="drivers.get(index) | async"
-    [tuiHintHost]="hintHost"
     [tuiHint]="hintContent"
     [tuiHintContext]="{$implicit: index}"
     [tuiHintDescribe]="getHintId(index)"
+    [tuiHintHost]="hintHost"
     (mouseenter.once)="(0)"
 >
     <div
         class="t-container"
-        [style.height.%]="set | tuiMapper : percentMapper : collapsed : computedMax"
+        [style.height.%]="set | tuiMapper: percentMapper : collapsed : computedMax"
     >
         <div
             #hintHost
@@ -19,11 +19,11 @@
         ></div>
         <tui-bar-set
             class="t-set"
+            [collapsed]="collapsed"
             [id]="getHintId(index)"
+            [size]="size"
             [tuiFocusable]="!!hintContent"
             [value]="set"
-            [size]="size"
-            [collapsed]="collapsed"
         ></tui-bar-set>
     </div>
 </div>

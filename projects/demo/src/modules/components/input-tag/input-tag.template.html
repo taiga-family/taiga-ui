@@ -90,39 +90,39 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-tag
-                    [formControl]="control"
-                    [tuiDropdownAlign]="dropdownAlign"
-                    [tuiDropdownDirection]="dropdownDirection"
-                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                    [tuiDropdownMinHeight]="dropdownMinHeight"
-                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                    [tuiDropdownOffset]="dropdownOffset"
-                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hintDirection"
-                    [tuiHintAppearance]="hintAppearance"
-                    [tuiTextfieldIcon]="icon"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldSize]="size"
-                    [placeholder]="exampleText"
-                    [maxLength]="maxLength"
-                    [rows]="rows"
-                    [focusable]="focusable"
                     [disabledItemHandler]="disabledItemHandler"
                     [editable]="editable"
                     [expandable]="expandable"
-                    [uniqueTags]="uniqueTags"
-                    [separator]="separator"
-                    [readOnly]="readOnly"
-                    [tagValidator]="tagValidator"
+                    [focusable]="focusable"
+                    [formControl]="control"
                     [inputHidden]="inputHidden"
-                    [pseudoHover]="pseudoHovered"
+                    [maxLength]="maxLength"
+                    [placeholder]="exampleText"
                     [pseudoActive]="pseudoPressed"
                     [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
                     [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
+                    [rows]="rows"
+                    [separator]="separator"
                     [style.text-align]="textAlign"
+                    [tagValidator]="tagValidator"
+                    [tuiDropdownAlign]="dropdownAlign"
+                    [tuiDropdownDirection]="dropdownDirection"
+                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
+                    [tuiDropdownOffset]="dropdownOffset"
+                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                    [tuiHintAppearance]="hintAppearance"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldIcon]="icon"
+                    [tuiTextfieldIconLeft]="iconLeft"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                    [uniqueTags]="uniqueTags"
                     [(search)]="search"
                     (tuiDropdownOpenChange)="dropdownOpen.next($event)"
                 >
@@ -141,8 +141,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="search"
                 documentationPropertyMode="input-output"
+                documentationPropertyName="search"
                 documentationPropertyType="string | null"
                 [(documentationPropertyValue)]="search"
             >
@@ -151,16 +151,16 @@
                 when item from list selected)
             </ng-template>
             <ng-template
-                documentationPropertyName="maxLength"
                 documentationPropertyMode="input"
+                documentationPropertyName="maxLength"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="maxLength"
             >
                 Max length of tag
             </ng-template>
             <ng-template
-                documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
+                documentationPropertyName="disabledItemHandler"
                 documentationPropertyType="TuiBooleanHandler<string>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
@@ -168,40 +168,40 @@
                 Handler for deactivation some tags
             </ng-template>
             <ng-template
-                documentationPropertyName="placeholder"
                 documentationPropertyMode="input"
+                documentationPropertyName="placeholder"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="exampleText"
             >
                 Placeholder
             </ng-template>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="uniqueTags"
                 documentationPropertyType="boolean"
-                documentationPropertyMode="input"
                 [(documentationPropertyValue)]="uniqueTags"
             >
                 Ability to enter unique or non-unique tags
             </ng-template>
             <ng-template
-                documentationPropertyName="editable"
                 documentationPropertyMode="input"
+                documentationPropertyName="editable"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="editable"
             >
                 Tags are editable
             </ng-template>
             <ng-template
-                documentationPropertyName="expandable"
                 documentationPropertyMode="input"
+                documentationPropertyName="expandable"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="expandable"
             >
                 Control height can be expanded to show all tags
             </ng-template>
             <ng-template
-                documentationPropertyName="separator"
                 documentationPropertyMode="input"
+                documentationPropertyName="separator"
                 documentationPropertyType="string | RegExp"
                 [documentationPropertyValues]="separatorVariants"
                 [(documentationPropertyValue)]="separator"
@@ -209,8 +209,8 @@
                 String or RegExp to separate tags
             </ng-template>
             <ng-template
-                documentationPropertyName="rows"
                 documentationPropertyMode="input"
+                documentationPropertyName="rows"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="rows"
             >
@@ -219,16 +219,16 @@
                 mode
             </ng-template>
             <ng-template
-                documentationPropertyName="inputHidden"
                 documentationPropertyMode="input"
+                documentationPropertyName="inputHidden"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="inputHidden"
             >
                 Hide input field. For example, to prevent adding new tags
             </ng-template>
             <ng-template
-                documentationPropertyName="tagValidator"
                 documentationPropertyMode="input"
+                documentationPropertyName="tagValidator"
                 documentationPropertyType="TuiBooleanHandler<string>"
                 [documentationPropertyValues]="tagValidatorVariants"
                 [(documentationPropertyValue)]="tagValidator"
@@ -236,16 +236,16 @@
                 A function that checks that tag is valid
             </ng-template>
             <ng-template
-                documentationPropertyName="tuiTextfieldIcon"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiTextfieldIcon"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="icon"
             >
                 Icon content. If content is a string, it is used as stringified svg or a name of icon registered in
                 <a
-                    tuiLink
                     routerLink="/services/svg-service"
+                    tuiLink
                 >
                     <code>SvgService</code>
                 </a>
@@ -255,8 +255,8 @@
         <tui-doc-documentation heading="CSS customization">
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyType="string"
                 documentationPropertyName="style.text-align"
+                documentationPropertyType="string"
                 [documentationPropertyValues]="textAlignVariants"
                 [(documentationPropertyValue)]="textAlign"
             >

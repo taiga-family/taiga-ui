@@ -25,22 +25,22 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-input-copy
-                [formControl]="control"
                 [focusable]="focusable"
-                [tuiTextfieldLabelOutside]="labelOutside"
-                [tuiTextfieldSize]="size"
-                [tuiTextfieldCleaner]="cleaner"
-                [tuiTextfieldFiller]="filler"
-                [tuiTextfieldIconLeft]="iconLeft"
-                [tuiTextfieldCustomContent]="customContent"
-                [successMessage]="notificationTemplate"
-                [messageDirection]="hintDirection"
+                [formControl]="control"
                 [messageAppearance]="hintAppearance"
-                [readOnly]="readOnly"
-                [pseudoInvalid]="pseudoInvalid"
+                [messageDirection]="hintDirection"
                 [pseudoFocus]="pseudoFocused"
                 [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
                 [style.text-align]="textAlign"
+                [successMessage]="notificationTemplate"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldCustomContent]="customContent"
+                [tuiTextfieldFiller]="filler"
+                [tuiTextfieldIconLeft]="iconLeft"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldSize]="size"
             >
                 Type a text
             </tui-input-copy>
@@ -56,8 +56,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="successMessage"
                 documentationPropertyMode="input"
+                documentationPropertyName="successMessage"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="successMessageVariants"
                 [(documentationPropertyValue)]="successMessage"
@@ -65,8 +65,8 @@
                 Tooltip message after successful copy
             </ng-template>
             <ng-template
-                documentationPropertyName="messageDirection"
                 documentationPropertyMode="input"
+                documentationPropertyName="messageDirection"
                 documentationPropertyType="TuiDirection"
                 [documentationPropertyValues]="hintDirectionVariants"
                 [(documentationPropertyValue)]="messageDirection"
@@ -74,8 +74,8 @@
                 Message tooltip direction
             </ng-template>
             <ng-template
-                documentationPropertyName="messageMode"
                 documentationPropertyMode="input"
+                documentationPropertyName="messageMode"
                 documentationPropertyType="TuiHintModeT | null"
                 [documentationPropertyValues]="hintAppearanceVariants"
                 [(documentationPropertyValue)]="messageMode"
@@ -87,8 +87,8 @@
         <tui-doc-documentation heading="CSS customization">
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyType="string"
                 documentationPropertyName="style.text-align"
+                documentationPropertyType="string"
                 [documentationPropertyValues]="textAlignVariants"
                 [(documentationPropertyValue)]="textAlign"
             >

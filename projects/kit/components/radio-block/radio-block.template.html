@@ -2,11 +2,11 @@
 <label
     tuiWrapper
     class="t-wrapper"
+    [active]="pseudoActive"
     [appearance]="appearance"
     [disabled]="computedDisabled"
     [focus]="computedFocusVisible"
     [hover]="pseudoHover"
-    [active]="pseudoActive"
     [invalid]="computedInvalid"
 >
     <tui-radio
@@ -16,12 +16,12 @@
         [item]="item"
         [name]="computedName || ''"
         [nativeId]="nativeId"
-        [readOnly]="readOnly"
+        [pseudoActive]="pseudoActive"
         [pseudoDisabled]="computedDisabled"
-        [pseudoInvalid]="computedInvalid"
         [pseudoFocus]="false"
         [pseudoHover]="pseudoHover"
-        [pseudoActive]="pseudoActive"
+        [pseudoInvalid]="computedInvalid"
+        [readOnly]="readOnly"
         [size]="checkboxSize"
         [(ngModel)]="value"
         (focusedChange)="onFocused($event)"

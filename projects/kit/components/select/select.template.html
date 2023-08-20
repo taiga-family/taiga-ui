@@ -7,25 +7,25 @@
     <tui-primitive-textfield
         automation-id="tui-select__textfield"
         class="t-textfield"
-        [tuiTextfieldIcon]="arrow ? icon : ''"
+        [disabled]="computedDisabled"
         [editable]="false"
-        [pseudoFocus]="computedFocused"
-        [pseudoHover]="pseudoHover"
-        [pseudoActive]="pseudoActive"
+        [focusable]="computedFocusable"
         [invalid]="computedInvalid"
         [nativeId]="nativeId"
+        [pseudoActive]="pseudoActive"
+        [pseudoFocus]="computedFocused"
+        [pseudoHover]="pseudoHover"
         [readOnly]="readOnly"
-        [disabled]="computedDisabled"
-        [focusable]="computedFocusable"
+        [tuiTextfieldIcon]="arrow ? icon : ''"
         [value]="computedValue"
-        (valueChange)="onValueChange($any($event))"
-        (keydown.delete.prevent)="onKeyDownDelete()"
         (keydown.backspace.prevent)="onKeyDownDelete()"
+        (keydown.delete.prevent)="onKeyDownDelete()"
+        (valueChange)="onValueChange($any($event))"
     >
         <ng-content></ng-content>
         <ng-content
-            select="input"
             ngProjectAs="input"
+            select="input"
         ></ng-content>
 
         <ng-template #select>
@@ -42,8 +42,8 @@
 
         <div
             *ngIf="value !== null"
-            ngProjectAs="tuiContent"
             automation-id="tui-select__value"
+            ngProjectAs="tuiContent"
             class="t-value"
         >
             <div
@@ -56,8 +56,8 @@
 
     <ng-template #icon>
         <div
-            tuiWrapper
             appearance="icon"
+            tuiWrapper
             class="t-icon"
         >
             <ng-container *polymorpheusOutlet="arrow"></ng-container>

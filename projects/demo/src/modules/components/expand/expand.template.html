@@ -19,8 +19,8 @@
         Darth Vader is (spoilers below):
         <tui-expand
             class="b-full-width"
-            [expanded]="expanded"
             [async]="async"
+            [expanded]="expanded"
         >
             <ng-template tuiExpandContent>
                 <div *ngIf="!delayed">
@@ -49,8 +49,8 @@
         </tui-expand>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="async"
                 documentationPropertyMode="input"
+                documentationPropertyName="async"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="async"
             >
@@ -59,8 +59,8 @@
                 before opening. Content is initialized when opening starts
             </ng-template>
             <ng-template
-                documentationPropertyName="expanded"
                 documentationPropertyMode="input"
+                documentationPropertyName="expanded"
                 documentationPropertyType="boolean"
                 [documentationPropertyValue]="expanded"
                 (documentationPropertyValueChange)="onExpandedChange($event)"

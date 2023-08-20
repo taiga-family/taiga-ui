@@ -36,8 +36,8 @@
 <tui-files>
     <tui-file
         *ngFor="let file of removedFiles"
-        state="deleted"
         size="l"
+        state="deleted"
         [file]="file"
         [showDelete]="control.enabled"
     >
@@ -51,8 +51,8 @@
     </tui-file>
     <tui-file
         *ngFor="let file of restoredFiles"
-        state="normal"
         size="l"
+        state="normal"
         [file]="file"
         [leftContent]="icon"
         [showDelete]="control.enabled"

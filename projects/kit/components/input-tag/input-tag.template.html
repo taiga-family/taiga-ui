@@ -9,11 +9,11 @@
     <div
         tuiWrapper
         [appearance]="appearance"
-        [readOnly]="readOnly"
+        [disabled]="computedDisabled"
         [focus]="computedFocused"
         [hover]="pseudoHover"
-        [disabled]="computedDisabled"
         [invalid]="computedInvalid"
+        [readOnly]="readOnly"
         (mousedown)="onMouseDown($event)"
     >
         <div class="t-content">
@@ -23,8 +23,8 @@
             >
                 <tui-svg
                     *polymorpheusOutlet="iconLeft as src; context: {$implicit: size}"
-                    tuiWrapper
                     appearance="icon"
+                    tuiWrapper
                     [src]="src"
                 ></tui-svg>
             </div>
@@ -51,16 +51,16 @@
                                 #tag
                                 automation-id="tui-input-tag__tag"
                                 class="t-tag"
-                                [status]="(status$ | async)!"
-                                [leftContent]="getLeftContent(item)"
-                                [tuiFocusable]="false"
                                 [disabled]="computedDisabled || disabledItemHandler(item)"
                                 [editable]="editable && !readOnly"
                                 [hoverable]="!readOnly"
+                                [leftContent]="getLeftContent(item)"
+                                [maxLength]="maxLength"
                                 [removable]="!readOnly && removable"
                                 [separator]="separator"
-                                [maxLength]="maxLength"
                                 [size]="controller.size"
+                                [status]="(status$ | async)!"
+                                [tuiFocusable]="false"
                                 [value]="item.toString()"
                                 (edited)="onTagEdited($event, index)"
                                 (keydown.arrowLeft.prevent)="onTagKeyDownArrowLeft(index)"
@@ -84,23 +84,23 @@
                             <div class="t-ghost">{{ search }}</div>
                             <input
                                 #focusableElement
-                                type="text"
                                 automation-id="tui-input-tag__native"
+                                type="text"
                                 class="t-native"
-                                [placeholder]="placeholder"
-                                [class.t-native_hidden]="inputHidden"
                                 [attr.maxLength]="maxLength"
-                                [id]="id"
+                                [class.t-native_hidden]="inputHidden"
                                 [disabled]="computedDisabled"
+                                [id]="id"
+                                [ngModel]="search"
+                                [placeholder]="placeholder"
                                 [readOnly]="readOnly || inputHidden"
                                 [tuiFocusable]="computedFocusable"
-                                [ngModel]="search"
-                                (ngModelChange)="onInput($event)"
-                                (paste.prevent)="onPaste($event)"
                                 (drop.prevent)="onDrop($any($event))"
                                 (keydown.arrowLeft)="onFieldKeyDownArrowLeft($event)"
                                 (keydown.backspace)="onFieldKeyDownBackspace($event)"
                                 (keydown.enter.prevent)="onFieldKeyDownEnter()"
+                                (ngModelChange)="onInput($event)"
+                                (paste.prevent)="onPaste($event)"
                             />
                         </div>
                     </div>
@@ -116,9 +116,9 @@
                     <tui-svg
                         *polymorpheusOutlet="iconCleaner as src; context: {$implicit: size}"
                         #cleaner
-                        tuiWrapper
                         appearance="icon"
                         automation-id="tui-input-tag__cleaner"
+                        tuiWrapper
                         class="t-cleaner"
                         [src]="src"
                         (click.stop)="onCleanerClick()"
@@ -128,8 +128,8 @@
                     *ngIf="showHint"
                     automation-id="tui-input-tag__tooltip"
                     class="t-tooltip"
-                    [describeId]="id"
                     [content]="hintOptions?.content"
+                    [describeId]="id"
                 ></tui-tooltip>
                 <div
                     *ngIf="icon"
@@ -137,8 +137,8 @@
                 >
                     <tui-svg
                         *polymorpheusOutlet="icon as src; context: {$implicit: size}"
-                        tuiWrapper
                         appearance="icon"
+                        tuiWrapper
                         [src]="src"
                     ></tui-svg>
                 </div>

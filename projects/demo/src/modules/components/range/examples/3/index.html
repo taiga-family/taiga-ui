@@ -2,17 +2,17 @@
     id="range-with-segments"
     size="m"
     class="range"
-    [min]="min"
     [max]="max"
-    [step]="step"
+    [min]="min"
     [segments]="segments"
+    [step]="step"
     [(ngModel)]="value"
 ></tui-range>
 
 <div class="ticks-labels">
     <div *ngFor="let label of labels">
         <ng-container *ngIf="label !== 750; else labelWithIcon">
-            {{ label | i18nPlural : pluralMap }}
+            {{ label | i18nPlural: pluralMap }}
         </ng-container>
     </div>
 

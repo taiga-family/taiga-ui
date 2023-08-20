@@ -30,15 +30,15 @@
         <tui-doc-demo>
             <p
                 tuiDropdownHover
-                [tuiDropdownShowDelay]="showDelay"
-                [tuiDropdownHideDelay]="hideDelay"
                 [tuiDropdown]="dropdownContent"
-                [tuiDropdownMinHeight]="dropdownMinHeight"
-                [tuiDropdownMaxHeight]="dropdownMaxHeight"
                 [tuiDropdownAlign]="dropdownAlign"
                 [tuiDropdownDirection]="dropdownDirection"
+                [tuiDropdownHideDelay]="hideDelay"
                 [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                [tuiDropdownMinHeight]="dropdownMinHeight"
                 [tuiDropdownOffset]="dropdownOffset"
+                [tuiDropdownShowDelay]="showDelay"
             >
                 Hover pointer over
                 <strong>to see a dropdown</strong>
@@ -58,16 +58,16 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="tuiDropdownShowDelay"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiDropdownShowDelay"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="showDelay"
             >
                 Show delay for dropdown appearance after hover
             </ng-template>
             <ng-template
-                documentationPropertyName="tuiDropdownHideDelay"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiDropdownHideDelay"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="hideDelay"
             >

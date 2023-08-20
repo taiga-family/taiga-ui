@@ -1,36 +1,36 @@
 <tui-primitive-textfield
     class="t-textfield"
-    [tuiTextfieldIcon]="!disabled ? iconContent : ''"
+    [disabled]="computedDisabled"
+    [focusable]="focusable"
+    [invalid]="computedInvalid"
+    [nativeId]="nativeId"
+    [pseudoActive]="pseudoActive"
     [pseudoFocus]="pseudoFocus"
     [pseudoHover]="pseudoHover"
-    [pseudoActive]="pseudoActive"
-    [invalid]="computedInvalid"
-    [focusable]="focusable"
-    [nativeId]="nativeId"
-    [disabled]="computedDisabled"
     [readOnly]="readOnly"
+    [tuiTextfieldIcon]="!disabled ? iconContent : ''"
     [(value)]="value"
     (focusedChange)="onFocused($event)"
 >
     <ng-content></ng-content>
     <ng-content
-        select="input"
         ngProjectAs="input"
+        select="input"
     ></ng-content>
 </tui-primitive-textfield>
 
 <ng-template #iconContent>
     <tui-svg
         *polymorpheusOutlet="icon as src; context: {$implicit: size}"
-        tuiWrapper
         appearance="icon"
         automation-id="tui-copy__icon"
+        tuiWrapper
         class="t-icon"
         [disabled]="!value"
-        [tuiHint]="hint"
-        [tuiHintDirection]="messageDirection"
-        [tuiHintAppearance]="messageAppearance"
         [src]="src"
+        [tuiHint]="hint"
+        [tuiHintAppearance]="messageAppearance"
+        [tuiHintDirection]="messageDirection"
         (click)="copy()"
     ></tui-svg>
 </ng-template>

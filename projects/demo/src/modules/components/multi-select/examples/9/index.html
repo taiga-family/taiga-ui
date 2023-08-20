@@ -1,7 +1,7 @@
 ﻿<button
+    size="m"
     tuiButton
     type="button"
-    size="m"
     class="tui-space_right-3"
     (click)="showDialog(template, 's')"
 >
@@ -10,9 +10,9 @@
 
 <p>
     <button
+        size="m"
         tuiButton
         type="button"
-        size="m"
         class="tui-space_right-3"
         (click)="showDialog(template, 'm')"
     >
@@ -21,9 +21,9 @@
 </p>
 
 <button
+    size="m"
     tuiButton
     type="button"
-    size="m"
     (click)="showDialog(template, 'l')"
 >
     Show 'l' size
@@ -41,11 +41,11 @@
             >
                 <tui-multi-select
                     class="b-form"
-                    [tuiTextfieldCleaner]="true"
                     [expandable]="false"
-                    [tuiTextfieldSize]="data.textFieldSize"
                     [formControl]="testValue"
+                    [tuiTextfieldCleaner]="true"
                     [tuiTextfieldLabelOutside]="true"
+                    [tuiTextfieldSize]="data.textFieldSize"
                 >
                     <tui-data-list-wrapper
                         *tuiDataList

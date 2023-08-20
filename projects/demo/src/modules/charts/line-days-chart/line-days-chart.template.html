@@ -28,34 +28,34 @@
         <tui-doc-demo>
             <tui-axes
                 class="axes"
-                [verticalLines]="3"
-                [horizontalLines]="4"
                 [axisXLabels]="(labels$ | async) || []"
+                [horizontalLines]="4"
+                [verticalLines]="3"
             >
                 <tui-line-days-chart
-                    [value]="value"
-                    [y]="y"
+                    [dots]="dots"
                     [height]="height"
                     [hintContent]="hintContent"
-                    [xStringify]="xStringify"
-                    [yStringify]="yStringify"
                     [smoothingFactor]="smoothingFactor"
-                    [dots]="dots"
+                    [value]="value"
+                    [xStringify]="xStringify"
+                    [y]="y"
+                    [yStringify]="yStringify"
                 ></tui-line-days-chart>
             </tui-axes>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="dots"
                 documentationPropertyMode="input"
+                documentationPropertyName="dots"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="dots"
             >
                 Show dots on chart
             </ng-template>
             <ng-template
-                documentationPropertyName="hintContent"
                 documentationPropertyMode="input"
+                documentationPropertyName="hintContent"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="hintContentVariants$ | async"
                 [(documentationPropertyValue)]="hintContent"
@@ -66,32 +66,32 @@
                 <code>[TuiDay, number]</code>
             </ng-template>
             <ng-template
-                documentationPropertyName="height"
                 documentationPropertyMode="input"
+                documentationPropertyName="height"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="height"
             >
                 Axis Y range, pixel scale is 1:1
             </ng-template>
             <ng-template
-                documentationPropertyName="y"
                 documentationPropertyMode="input"
+                documentationPropertyName="y"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="y"
             >
                 Start of Y axis
             </ng-template>
             <ng-template
-                documentationPropertyName="smoothingFactor"
                 documentationPropertyMode="input"
+                documentationPropertyName="smoothingFactor"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="smoothingFactor"
             >
                 Smoothing factor from 0 to 99
             </ng-template>
             <ng-template
-                documentationPropertyName="value"
                 documentationPropertyMode="input"
+                documentationPropertyName="value"
                 documentationPropertyType="[TuiDay, number][]"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"
@@ -99,8 +99,8 @@
                 Array of data
             </ng-template>
             <ng-template
-                documentationPropertyName="xStringify"
                 documentationPropertyMode="input"
+                documentationPropertyName="xStringify"
                 documentationPropertyType="TuiStringHandler<TuiDay> | null"
                 [documentationPropertyValues]="xStringifyVariants$ | async"
                 [(documentationPropertyValue)]="xStringify"
@@ -108,8 +108,8 @@
                 Function to stringify a value number to a string in axis X hint
             </ng-template>
             <ng-template
-                documentationPropertyName="yStringify"
                 documentationPropertyMode="input"
+                documentationPropertyName="yStringify"
                 documentationPropertyType="TuiStringHandler<number> | null"
                 [documentationPropertyValues]="yStringifyVariants"
                 [(documentationPropertyValue)]="yStringify"

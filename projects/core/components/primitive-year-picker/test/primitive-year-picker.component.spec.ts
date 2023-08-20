@@ -13,10 +13,10 @@ describe(`TuiPrimitiveYearPickerComponent`, () => {
     @Component({
         template: `
             <tui-primitive-year-picker
-                [initialItem]="initialItem"
                 [disabledItemHandler]="disabledItemHandler"
-                [min]="min"
+                [initialItem]="initialItem"
                 [max]="max"
+                [min]="min"
                 [value]="value"
             ></tui-primitive-year-picker>
         `,

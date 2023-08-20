@@ -19,7 +19,9 @@
 
 .t-value {
     pointer-events: auto;
-    transition: stroke-dashoffset var(--tui-duration) ease-in-out, opacity var(--tui-duration) ease-in-out 0.1s;
+    transition:
+        stroke-dashoffset var(--tui-duration) ease-in-out,
+        opacity var(--tui-duration) ease-in-out 0.1s;
 
     &_inactive {
         .transition(~'stroke-dashoffset, opacity');

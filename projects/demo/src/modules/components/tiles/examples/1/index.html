@@ -6,9 +6,9 @@
     <tui-tile
         *ngFor="let item of items; let index = index"
         class="tile"
+        [height]="item.h"
         [style.order]="order.get(index)"
         [width]="item.w"
-        [height]="item.h"
     >
         <div
             class="content"
@@ -16,21 +16,21 @@
         >
             <iframe
                 *ngIf="item.content === 'rick'; else default"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?modestbranding=1&autohide=1&showinfo=0&controls=0"
-                title="YouTube video player"
-                frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
+                frameborder="0"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ?modestbranding=1&autohide=1&showinfo=0&controls=0"
+                title="YouTube video player"
                 class="rick"
             ></iframe>
             <tui-svg
-                tuiTileHandle
                 src="tuiIconDragLarge"
+                tuiTileHandle
                 class="handle"
             ></tui-svg>
             <tui-svg
-                tuiTileHandle
                 src="tuiIconDragLarge"
+                tuiTileHandle
                 class="handle"
             ></tui-svg>
             <ng-template #default>

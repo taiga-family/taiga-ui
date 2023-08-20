@@ -7,8 +7,8 @@ describe(`TuiDirectionOrder directive`, () => {
     @Component({
         template: `
             <table
-                tuiTable
                 tuiDirectionOrder
+                tuiTable
                 class="table"
                 [directionOrder]="directionOrder"
                 (directionOrderChange)="directionOrderChange($event)"

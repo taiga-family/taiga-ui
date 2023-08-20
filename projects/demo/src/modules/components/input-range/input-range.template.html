@@ -9,9 +9,9 @@
         <p>
             Number formatting can be customized by using
             <a
-                tuiLink
-                routerLink="/utils/tokens"
                 fragment="number-format"
+                routerLink="/utils/tokens"
+                tuiLink
             >
                 TUI_NUMBER_FORMAT
             </a>
@@ -57,9 +57,9 @@
                 <p>
                     Number formatting can be customized by using
                     <a
-                        tuiLink
-                        routerLink="/utils/tokens"
                         fragment="number-format"
+                        routerLink="/utils/tokens"
+                        tuiLink
                     >
                         TUI_NUMBER_FORMAT
                     </a>
@@ -118,18 +118,18 @@
             <ng-template>
                 <tui-input-range
                     [formControl]="control"
-                    [min]="min"
-                    [max]="max"
-                    [segments]="segments"
                     [keySteps]="keySteps"
-                    [pluralize]="pluralize"
-                    [steps]="steps"
-                    [quantum]="quantum"
                     [leftValueContent]="leftValueContent"
+                    [max]="max"
+                    [min]="min"
+                    [pluralize]="pluralize"
+                    [quantum]="quantum"
+                    [readOnly]="readOnly"
                     [rightValueContent]="rightValueContent"
+                    [segments]="segments"
+                    [steps]="steps"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
-                    [readOnly]="readOnly"
                 >
                     Just a very long label. Don't afraid it does not overflow the wrapper, the label is just cut off
                     with ellipsis when it does not fit the wrapper.
@@ -147,8 +147,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="min"
                 documentationPropertyMode="input"
+                documentationPropertyName="min"
                 documentationPropertyType="number | null"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
@@ -156,8 +156,8 @@
                 Min value
             </ng-template>
             <ng-template
-                documentationPropertyName="max"
                 documentationPropertyMode="input"
+                documentationPropertyName="max"
                 documentationPropertyType="number | null"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
@@ -165,8 +165,8 @@
                 Max value
             </ng-template>
             <ng-template
-                documentationPropertyName="quantum"
                 documentationPropertyMode="input"
+                documentationPropertyName="quantum"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="quantumVariants"
                 [(documentationPropertyValue)]="quantum"
@@ -174,24 +174,24 @@
                 Minimum indivisible value
             </ng-template>
             <ng-template
-                documentationPropertyName="steps"
                 documentationPropertyMode="input"
+                documentationPropertyName="steps"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="steps"
             >
                 Number of actual discrete slider steps
             </ng-template>
             <ng-template
-                documentationPropertyName="segments"
                 documentationPropertyMode="input"
+                documentationPropertyName="segments"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="segments"
             >
                 A number of visual segments
             </ng-template>
             <ng-template
-                documentationPropertyName="keySteps"
                 documentationPropertyMode="input"
+                documentationPropertyName="keySteps"
                 documentationPropertyType="TuiKeySteps"
                 [documentationPropertyValues]="keyStepsVariants"
                 [(documentationPropertyValue)]="keySteps"
@@ -199,8 +199,8 @@
                 Anchor points of non-uniform format between value and position
             </ng-template>
             <ng-template
-                documentationPropertyName="leftValueContent"
                 documentationPropertyMode="input"
+                documentationPropertyName="leftValueContent"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="valueContentVariants"
                 [(documentationPropertyValue)]="leftValueContent"
@@ -208,8 +208,8 @@
                 A template for custom view of the left selected value.
             </ng-template>
             <ng-template
-                documentationPropertyName="rightValueContent"
                 documentationPropertyMode="input"
+                documentationPropertyName="rightValueContent"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="valueContentVariants"
                 [(documentationPropertyValue)]="rightValueContent"
@@ -217,8 +217,8 @@
                 A template for custom view of the right selected value.
             </ng-template>
             <ng-template
-                documentationPropertyName="pluralize"
                 documentationPropertyMode="input"
+                documentationPropertyName="pluralize"
                 documentationPropertyType="Record<string, string>"
                 [documentationPropertyValues]="pluralizeVariants"
                 [(documentationPropertyValue)]="pluralize"
@@ -228,8 +228,8 @@
                 <p>
                     Use object that mimics the
                     <a
-                        tuiLink
                         href="https://unicode-org.github.io/icu/userguide/format_parse/messages/"
+                        tuiLink
                     >
                         ICU format
                     </a>
@@ -237,8 +237,8 @@
                 </p>
             </ng-template>
             <ng-template
-                documentationPropertyName="readOnly"
                 documentationPropertyMode="input"
+                documentationPropertyName="readOnly"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="readOnly"
             >
@@ -249,9 +249,9 @@
         <h6 class="tui-text_h6">
             Can be expanded with
             <a
-                tuiLink
-                target="_blank"
                 routerLink="/directives/textfield-controller"
+                target="_blank"
+                tuiLink
             >
                 TuiTextfieldController
             </a>
@@ -264,23 +264,23 @@
 
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="tuiTextfieldLabelOutside"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiTextfieldLabelOutside"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="labelOutside"
             >
                 Label is outside a component and made with
                 <a
-                    tuiLink
                     routerLink="/components/label"
+                    tuiLink
                 >
                     <code>Label</code>
                 </a>
             </ng-template>
 
             <ng-template
-                documentationPropertyName="tuiTextfieldSize"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiTextfieldSize"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"

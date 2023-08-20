@@ -42,24 +42,24 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-month-range
-                    [formControl]="control"
-                    [min]="min"
-                    [max]="max"
+                    [disabledItemHandler]="disabledItemHandler"
                     [focusable]="focusable"
+                    [formControl]="control"
+                    [max]="max"
+                    [min]="min"
+                    [pseudoActive]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
+                    [style.text-align]="textAlign"
+                    [tuiHintAppearance]="hintAppearance"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldIconLeft]="iconLeft"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [readOnly]="readOnly"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoActive]="pseudoPressed"
-                    [disabledItemHandler]="disabledItemHandler"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hintDirection"
-                    [tuiHintAppearance]="hintAppearance"
-                    [style.text-align]="textAlign"
                 >
                     Months
                 </tui-input-month-range>
@@ -76,8 +76,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
+                documentationPropertyName="disabledItemHandler"
                 documentationPropertyType="TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
@@ -87,8 +87,8 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="min"
                 documentationPropertyMode="input"
+                documentationPropertyName="min"
                 documentationPropertyType="TuiMonth | null"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
@@ -96,8 +96,8 @@
                 Minimum date
             </ng-template>
             <ng-template
-                documentationPropertyName="max"
                 documentationPropertyMode="input"
+                documentationPropertyName="max"
                 documentationPropertyType="TuiMonth | null"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
@@ -109,8 +109,8 @@
         <tui-doc-documentation heading="CSS customization">
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyType="string"
                 documentationPropertyName="style.text-align"
+                documentationPropertyType="string"
                 [documentationPropertyValues]="textAlignVariants"
                 [(documentationPropertyValue)]="textAlign"
             >

@@ -7,7 +7,10 @@ import {
 } from '@taiga-ui/cdk';
 
 class Item {
-    constructor(readonly name: string, readonly price: number) {}
+    constructor(
+        readonly name: string,
+        readonly price: number,
+    ) {}
 
     toString(): string {
         return this.name;

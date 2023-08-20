@@ -1,27 +1,27 @@
 <tui-input-number
-    [min]="min"
-    [max]="max"
-    [precision]="precision"
     [decimal]="decimal"
-    [tuiTextfieldPrefix]="showValueContent ? '' : prefix"
-    [tuiTextfieldPostfix]="showValueContent ? '' : postfix"
     [disabled]="computedDisabled"
-    [readOnly]="readOnly"
+    [max]="max"
+    [min]="min"
+    [ngModel]="value"
+    [precision]="precision"
+    [pseudoActive]="pseudoActive"
     [pseudoFocus]="computedFocused"
     [pseudoHover]="pseudoHover"
-    [pseudoActive]="pseudoActive"
     [pseudoInvalid]="pseudoInvalid"
-    [ngModel]="value"
-    (ngModelChange)="safelyUpdateValue($event)"
+    [readOnly]="readOnly"
+    [tuiTextfieldPostfix]="showValueContent ? '' : postfix"
+    [tuiTextfieldPrefix]="showValueContent ? '' : prefix"
     (focusedChange)="onFocused($event)"
-    (keydown.arrowUp.prevent)="onVerticalArrowKeyDown(1)"
     (keydown.arrowDown.prevent)="onVerticalArrowKeyDown(-1)"
+    (keydown.arrowUp.prevent)="onVerticalArrowKeyDown(1)"
+    (ngModelChange)="safelyUpdateValue($event)"
 >
     <ng-content></ng-content>
     <div
         *ngIf="showValueContent"
-        ngProjectAs="tuiContent"
         automation-id="tui-input-slider__value-content"
+        ngProjectAs="tuiContent"
     >
         <ng-container *polymorpheusOutlet="valueContent as text; context: {$implicit: value}">
             {{ text }}
@@ -32,12 +32,12 @@
 <input
     tuiSlider
     type="range"
-    [tuiFocusable]="false"
-    [max]="computedSteps"
-    [segments]="segments"
-    [keySteps]="computeKeySteps(keySteps, min, max)"
     [disabled]="readOnly || computedDisabled"
+    [keySteps]="computeKeySteps(keySteps, min, max)"
+    [max]="computedSteps"
     [ngModel]="value"
-    (ngModelChange)="onSliderChange($event)"
+    [segments]="segments"
+    [tuiFocusable]="false"
     (click)="focusTextInput()"
+    (ngModelChange)="onSliderChange($event)"
 />

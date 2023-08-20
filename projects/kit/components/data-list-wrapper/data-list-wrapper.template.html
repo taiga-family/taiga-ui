@@ -7,11 +7,11 @@
     <button
         *ngFor="let item of items"
         #elementRef="elementRef"
+        automation-id="tui-data-list-wrapper__option"
         tuiElement
         tuiOption
-        automation-id="tui-data-list-wrapper__option"
-        [value]="item"
         [disabled]="disabledItemHandler(item)"
+        [value]="item"
     >
         <span class="t-content">
             <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">

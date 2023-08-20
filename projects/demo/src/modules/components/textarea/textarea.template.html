@@ -66,52 +66,52 @@
         <tui-doc-demo>
             <tui-textarea
                 class="b-form"
-                [formControl]="control"
-                [focusable]="focusable"
-                [tuiTextfieldCleaner]="cleaner"
-                [tuiTextfieldLabelOutside]="labelOutside"
-                [tuiTextfieldSize]="size"
-                [tuiTextfieldIcon]="icon"
-                [tuiTextfieldIconLeft]="iconLeft"
-                [tuiTextfieldCustomContent]="customContent"
-                [maxLength]="maxLength"
                 [expandable]="expandable"
-                [pseudoInvalid]="pseudoInvalid"
+                [focusable]="focusable"
+                [formControl]="control"
+                [maxLength]="maxLength"
                 [pseudoFocus]="pseudoFocused"
                 [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
                 [readOnly]="readOnly"
                 [rows]="rows"
+                [tuiHintAppearance]="hintAppearance"
                 [tuiHintContent]="hintContent"
                 [tuiHintDirection]="hintDirection"
-                [tuiHintAppearance]="hintAppearance"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldCustomContent]="customContent"
+                [tuiTextfieldIcon]="icon"
+                [tuiTextfieldIconLeft]="iconLeft"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldSize]="size"
             >
                 Textfield for multiline input. It can grow with its content.
                 <textarea
-                    tuiTextfield
                     placeholder="Placeholder"
+                    tuiTextfield
                 ></textarea>
             </tui-textarea>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="disabled"
                 documentationPropertyMode="input"
+                documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
                 Disabled state (formControl.disable())
             </ng-template>
             <ng-template
-                documentationPropertyName="expandable"
                 documentationPropertyMode="input"
+                documentationPropertyName="expandable"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="expandable"
             >
                 Control height can be expanded to show all content
             </ng-template>
             <ng-template
-                documentationPropertyName="maxLength"
                 documentationPropertyMode="input"
+                documentationPropertyName="maxLength"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="maxLengthVariants"
                 [(documentationPropertyValue)]="maxLength"
@@ -121,8 +121,8 @@
                 with native maxlength attribute.
             </ng-template>
             <ng-template
-                documentationPropertyName="rows"
                 documentationPropertyMode="input"
+                documentationPropertyName="rows"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="rowsVariants"
                 [(documentationPropertyValue)]="rows"
@@ -132,8 +132,8 @@
                 mode
             </ng-template>
             <ng-template
-                documentationPropertyName="tuiTextfieldIcon"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiTextfieldIcon"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="icon"

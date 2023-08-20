@@ -5,8 +5,8 @@
     [formControl]="search"
     [tuiAutoFocus]="!!sidebar"
     [tuiTextfieldCleaner]="true"
-    [tuiTextfieldLabelOutside]="true"
     [tuiTextfieldIconLeft]="docIcons.search"
+    [tuiTextfieldLabelOutside]="true"
 >
     {{ searchText }}
     <ng-container *ngIf="canOpen">
@@ -18,8 +18,8 @@
                 <a
                     *ngFor="let item of group"
                     tuiOption
-                    [routerLink]="item.route"
                     [fragment]="item.fragment"
+                    [routerLink]="item.route"
                     (click)="onClick(input)"
                 >
                     {{ item.title }}
@@ -68,13 +68,13 @@
 
         <ng-template
             #pages
-            let-item="item"
             let-index="index"
+            let-item="item"
         >
             <a
                 *ngIf="!item.subPages; else subPagesTemplate"
-                tuiLink
                 routerLinkActive="t-sublink_active"
+                tuiLink
                 class="t-sublink"
                 [routerLink]="item.route"
                 [tuiScrollIntoViewLink]="isActive(item.route)"
@@ -109,11 +109,11 @@
                         <div class="t-section t-section_bordered">
                             <a
                                 *ngFor="let subPage of $pages(item.subPages)"
-                                tuiLink
                                 routerLinkActive="t-sublink_active"
+                                tuiLink
                                 class="t-sublink t-sublink_small"
-                                [routerLink]="subPage.route"
                                 [fragment]="subPage.fragment"
+                                [routerLink]="subPage.route"
                                 [tuiScrollIntoViewLink]="isActive(subPage.route)"
                                 (click)="closeMenu()"
                             >

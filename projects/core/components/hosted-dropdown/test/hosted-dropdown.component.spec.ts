@@ -50,8 +50,8 @@ describe(`TuiHostedDropdown`, () => {
                         <button tuiButton>Button</button>
                         <button
                             #host="elementRef"
-                            tuiElement
                             tuiButton
+                            tuiElement
                             tuiHostedDropdownHost
                         >
                             Arrow
@@ -62,8 +62,8 @@ describe(`TuiHostedDropdown`, () => {
                     <tui-data-list>
                         <button
                             *ngFor="let item of items"
-                            tuiOption
                             automation-id="tui-menu-items__item"
+                            tuiOption
                         >
                             {{ item }}
                         </button>

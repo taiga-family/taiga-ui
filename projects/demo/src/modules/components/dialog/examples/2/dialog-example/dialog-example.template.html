@@ -4,8 +4,8 @@
 </p>
 
 <tui-input
-    tuiTextfieldSize="m"
     tuiAutoFocus
+    tuiTextfieldSize="m"
     [(ngModel)]="name"
 >
     Type a name
@@ -25,17 +25,17 @@
 </tui-select>
 
 <input
-    type="range"
     tuiSlider
+    type="range"
     class="tui-space_bottom-5"
-    [ngModel]="5"
     [max]="10"
+    [ngModel]="5"
 />
 
 <button
+    size="m"
     tuiButton
     type="button"
-    size="m"
     [disabled]="!hasValue"
     (click)="submit()"
 >
@@ -44,9 +44,9 @@
 
 <p>
     <button
+        size="m"
         tuiButton
         type="button"
-        size="m"
         (click)="showDialog(template)"
     >
         Show one more dialog

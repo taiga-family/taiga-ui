@@ -346,8 +346,9 @@ function migrateTuiHideSelectedPipe({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    const elementsWithPipe = findElementsInTemplateByFn(template, el =>
-        el.attrs?.some(attr => attr.value.match(HIDE_SELECTED_PIPE_WITH_ARGS_REG)),
+    const elementsWithPipe = findElementsInTemplateByFn(
+        template,
+        el => el.attrs?.some(attr => attr.value.match(HIDE_SELECTED_PIPE_WITH_ARGS_REG)),
     );
 
     elementsWithPipe.forEach(el => {
@@ -386,11 +387,14 @@ function migrateBinaryAttributes({
     const templateOffset = getTemplateOffset(resource);
 
     TRUTHY_BOOLEAN_INPUT_TO_HTML_BINARY_ATTRIBUTE.forEach(attrName => {
-        const elements = findElementsInTemplateByFn(template, el =>
-            el.attrs?.some(
-                attr =>
-                    attr.value === `true` && attr.name.includes(attrName.toLowerCase()),
-            ),
+        const elements = findElementsInTemplateByFn(
+            template,
+            el =>
+                el.attrs?.some(
+                    attr =>
+                        attr.value === `true` &&
+                        attr.name.includes(attrName.toLowerCase()),
+                ),
         );
 
         elements.forEach(el => {

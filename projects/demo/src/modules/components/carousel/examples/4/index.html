@@ -1,6 +1,6 @@
 <button
-    tuiButton
     size="m"
+    tuiButton
     type="button"
     (click)="onClick()"
 >
@@ -23,10 +23,10 @@
         (touchstart.passive.stop)="(0)"
     >
         <button
+            icon="tuiIconChevronLeftLarge"
             tuiIconButton
             tuiMode="onDark"
             type="button"
-            icon="tuiIconChevronLeftLarge"
             class="tui-space_right-4"
             (click)="navigate(-1)"
         ></button>
@@ -40,8 +40,8 @@
                 <p>
                     You can use
                     <a
-                        tuiLink
                         routerLink="/components/pagination"
+                        tuiLink
                     >
                         Pagination
                     </a>
@@ -58,10 +58,10 @@
             </div>
         </tui-carousel>
         <button
+            icon="tuiIconChevronRightLarge"
             tuiIconButton
             tuiMode="onDark"
             type="button"
-            icon="tuiIconChevronRightLarge"
             class="tui-space_left-4"
             (click)="navigate(1)"
         ></button>
@@ -74,9 +74,9 @@
     ></tui-pagination>
     <div class="tui-space_top-4">
         <button
+            appearance="primary"
             tuiButton
             type="button"
-            appearance="primary"
             (click)="open = false"
         >
             Got it!

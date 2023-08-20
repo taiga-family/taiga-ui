@@ -9,16 +9,16 @@
     </h6>
     <tui-doc-documentation>
         <ng-template
-            documentationPropertyName="readOnly"
             documentationPropertyMode="input"
+            documentationPropertyName="readOnly"
             documentationPropertyType="boolean"
             [(documentationPropertyValue)]="documentedComponent.readOnly"
         >
             Component is read only
         </ng-template>
         <ng-template
-            documentationPropertyName="pseudoInvalid"
             documentationPropertyMode="input"
+            documentationPropertyName="pseudoInvalid"
             documentationPropertyType="boolean | null"
             [documentationPropertyValues]="booleanVariants"
             [(documentationPropertyValue)]="documentedComponent.pseudoInvalid"
@@ -34,23 +34,23 @@
     </h6>
     <tui-doc-documentation>
         <ng-template
-            documentationPropertyName="focusable"
             documentationPropertyMode="input"
+            documentationPropertyName="focusable"
             documentationPropertyType="boolean"
             [(documentationPropertyValue)]="documentedComponent.focusable"
         >
             Element can be focused
         </ng-template>
         <ng-template
-            documentationPropertyName="nativeId"
             documentationPropertyMode="input"
+            documentationPropertyName="nativeId"
             documentationPropertyType="string"
         >
             Native ID attribute for element. It helps users with Screen Readers to use a page
         </ng-template>
         <ng-template
-            documentationPropertyName="pseudoHover"
             documentationPropertyMode="input"
+            documentationPropertyName="pseudoHover"
             documentationPropertyType="boolean | null"
             [documentationPropertyValues]="booleanVariants"
             [(documentationPropertyValue)]="documentedComponent.pseudoHovered"
@@ -58,8 +58,8 @@
             Visual hovered state
         </ng-template>
         <ng-template
-            documentationPropertyName="pseudoFocus"
             documentationPropertyMode="input"
+            documentationPropertyName="pseudoFocus"
             documentationPropertyType="boolean | null"
             [documentationPropertyValues]="booleanVariants"
             [(documentationPropertyValue)]="documentedComponent.pseudoFocused"
@@ -67,8 +67,8 @@
             Visual focused state
         </ng-template>
         <ng-template
-            documentationPropertyName="pseudoActive"
             documentationPropertyMode="input"
+            documentationPropertyName="pseudoActive"
             documentationPropertyType="boolean | null"
             [documentationPropertyValues]="booleanVariants"
             [(documentationPropertyValue)]="documentedComponent.pseudoPressed"
@@ -76,8 +76,8 @@
             Visual pressed state
         </ng-template>
         <ng-template
-            documentationPropertyName="focusedChange"
             documentationPropertyMode="output"
+            documentationPropertyName="focusedChange"
             documentationPropertyType="boolean"
         >
             Emits on focus and blur
@@ -87,8 +87,8 @@
 <!-- TODO: Do we need this? -->
 <tui-doc-documentation *ngIf="isTuiHint(documentedComponent)">
     <ng-template
-        documentationPropertyName="tuiHintDirection"
         documentationPropertyMode="input"
+        documentationPropertyName="tuiHintDirection"
         documentationPropertyType="TuiHintDirection"
         [documentationPropertyValues]="directionVariants"
         [(documentationPropertyValue)]="documentedComponent.direction"
@@ -96,8 +96,8 @@
         Hint direction
     </ng-template>
     <ng-template
-        documentationPropertyName="tuiHintAppearance"
         documentationPropertyMode="input"
+        documentationPropertyName="tuiHintAppearance"
         documentationPropertyType="string"
         [documentationPropertyValues]="appearanceVariants"
         [(documentationPropertyValue)]="documentedComponent.appearance"

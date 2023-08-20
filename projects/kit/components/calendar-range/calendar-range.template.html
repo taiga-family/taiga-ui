@@ -2,11 +2,11 @@
     *ngIf="!items.length; else presets"
     automation-id="tui-calendar-range__calendars"
     tuiPreventDefault="mousedown"
-    [markerHandler]="markerHandler"
-    [min]="computedMin | tuiMapper : maxLengthMapper : value : maxLength : true"
-    [max]="computedMax | tuiMapper : maxLengthMapper : value : maxLength : false"
     [defaultViewedMonthFirst]="defaultViewedMonth"
     [disabledItemHandler]="calculatedDisabledItemHandler"
+    [markerHandler]="markerHandler"
+    [max]="computedMax | tuiMapper: maxLengthMapper : value : maxLength : false"
+    [min]="computedMin | tuiMapper: maxLengthMapper : value : maxLength : true"
     [value]="value"
     (dayClick)="onDayClick($event)"
 ></tui-primitive-calendar-range>
@@ -15,29 +15,29 @@
         <tui-calendar
             automation-id="tui-calendar-range__calendar"
             tuiPreventDefault="mousedown"
-            [value]="value"
-            [markerHandler]="markerHandler"
-            [min]="computedMin | tuiMapper : maxLengthMapper : value : maxLength : true"
-            [max]="computedMax | tuiMapper : maxLengthMapper : value : maxLength : false"
-            [month]="computedMonth"
             [disabledItemHandler]="calculatedDisabledItemHandler"
+            [markerHandler]="markerHandler"
+            [max]="computedMax | tuiMapper: maxLengthMapper : value : maxLength : false"
+            [min]="computedMin | tuiMapper: maxLengthMapper : value : maxLength : true"
+            [month]="computedMonth"
+            [value]="value"
             (dayClick)="onDayClick($event)"
         ></tui-calendar>
         <tui-data-list
-            role="menu"
             automation-id="tui-calendar-range__menu"
+            role="menu"
             class="t-menu"
         >
             <button
-                *ngFor="let item of items | tuiMapper : mapper : min : max : minLength : (otherDateText$ | async)"
+                *ngFor="let item of items | tuiMapper: mapper : min : max : minLength : (otherDateText$ | async)"
+                automation-id="tui-calendar-range__menu__item"
+                role="menuitemradio"
                 tuiOption
                 tuiPreventDefault="mousedown"
-                role="menuitemradio"
-                automation-id="tui-calendar-range__menu__item"
                 [attr.aria-checked]="isItemActive(item)"
+                (click)="onItemSelect(item)"
                 (keydown.enter.prevent)="onItemSelect(item)"
                 (keydown.space.prevent)="onItemSelect(item)"
-                (click)="onItemSelect(item)"
             >
                 {{ item }}
                 <tui-svg

@@ -25,15 +25,15 @@
         <tui-doc-demo>
             <tui-ring-chart
                 class="chart"
-                [value]="value"
                 [size]="size"
+                [value]="value"
                 [(activeItemIndex)]="activeItemIndex"
             ></tui-ring-chart>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="activeItemIndex"
                 documentationPropertyMode="input-output"
+                documentationPropertyName="activeItemIndex"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="activeItemIndexVariants"
                 [(documentationPropertyValue)]="activeItemIndex"
@@ -41,8 +41,8 @@
                 Active fragment
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeS | TuiSizeXL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
@@ -50,8 +50,8 @@
                 Size
             </ng-template>
             <ng-template
-                documentationPropertyName="value"
                 documentationPropertyMode="input"
+                documentationPropertyName="value"
                 documentationPropertyType="readonly number[]"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"

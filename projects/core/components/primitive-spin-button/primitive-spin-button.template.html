@@ -1,29 +1,29 @@
 <ng-container *ngIf="spinTexts$ | async as texts">
     <button
-        tuiIconButton
-        type="button"
-        size="xs"
         appearance="flat"
         automation-id="tui-primitive-spin-button__left"
+        size="xs"
+        tuiIconButton
+        type="button"
         [class.t-hidden]="leftComputedDisabled"
+        [focusable]="computedFocusable"
         [icon]="icons.decrement"
         [title]="texts[0]"
-        [focusable]="computedFocusable"
         (click)="onLeftClick()"
     ></button>
     <span class="t-content t-calendar-title">
         <ng-content></ng-content>
     </span>
     <button
-        tuiIconButton
-        type="button"
-        size="xs"
         appearance="flat"
         automation-id="tui-primitive-spin-button__right"
+        size="xs"
+        tuiIconButton
+        type="button"
         [class.t-hidden]="rightComputedDisabled"
+        [focusable]="computedFocusable"
         [icon]="icons.increment"
         [title]="texts[1]"
-        [focusable]="computedFocusable"
         (click)="onRightClick()"
     ></button>
 </ng-container>

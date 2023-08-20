@@ -2,8 +2,8 @@
     *ngIf="error && visible"
     automation-id="tui-error__text"
     class="t-message-text"
-    [@tuiHeightCollapse]="animation"
     [@tuiFadeIn]="animation"
+    [@tuiHeightCollapse]="animation"
     [class.t-message-text_light]="(mode$ | async) === 'onDark'"
 >
     <ng-container

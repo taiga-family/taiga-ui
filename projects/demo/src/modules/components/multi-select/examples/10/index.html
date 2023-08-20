@@ -2,33 +2,33 @@
 
 <tui-multi-select
     class="b-form tui-space_top-5"
-    [formControl]="itemStringControl"
-    [tuiTextfieldLabelOutside]="true"
-    [tuiTextfieldCleaner]="true"
-    [tuiHintContent]="'hint'"
     [editable]="false"
+    [formControl]="itemStringControl"
+    [tuiHintContent]="'hint'"
+    [tuiTextfieldCleaner]="true"
+    [tuiTextfieldLabelOutside]="true"
 >
     Star Wars persons
 
     <select
-        tuiSelect
         multiple
+        tuiSelect
         [items]="items"
     ></select>
 </tui-multi-select>
 
 <tui-multi-select
     class="b-form tui-space_vertical-5"
+    [disabledItemHandler]="disableHandler"
+    [editable]="false"
     [formControl]="itemStringGroupControl"
     [tuiTextfieldLabelOutside]="true"
-    [editable]="false"
-    [disabledItemHandler]="disableHandler"
 >
     Star Wars persons
 
     <select
-        tuiSelect
         multiple
+        tuiSelect
         [items]="groupItems"
         [labels]="labels"
     ></select>
@@ -37,35 +37,35 @@
 <span class="tui-text_body-l">Objects (stringify):</span>
 <tui-multi-select
     class="b-form tui-space_top-5"
-    [stringify]="stringify"
-    [formControl]="itemControl"
-    [tuiTextfieldLabelOutside]="true"
-    [tuiTextfieldCleaner]="true"
-    [tuiHintContent]="'hint'"
     [editable]="false"
+    [formControl]="itemControl"
+    [stringify]="stringify"
+    [tuiHintContent]="'hint'"
+    [tuiTextfieldCleaner]="true"
+    [tuiTextfieldLabelOutside]="true"
 >
     Star Wars persons
 
     <select
-        tuiSelect
         multiple
+        tuiSelect
         [items]="customItems"
     ></select>
 </tui-multi-select>
 
 <tui-multi-select
     class="b-form tui-space_top-5"
-    [stringify]="stringify"
-    [formControl]="itemGroupControl"
-    [tuiTextfieldLabelOutside]="true"
-    [editable]="false"
     [disabledItemHandler]="disableItemHandler"
+    [editable]="false"
+    [formControl]="itemGroupControl"
+    [stringify]="stringify"
+    [tuiTextfieldLabelOutside]="true"
 >
     Star Wars persons
 
     <select
-        tuiSelect
         multiple
+        tuiSelect
         [items]="customGroupItems"
         [labels]="labels"
     ></select>

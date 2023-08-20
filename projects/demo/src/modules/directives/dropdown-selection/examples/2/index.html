@@ -1,12 +1,12 @@
 <tui-textarea
     #textarea
     tuiDropdownSelectionPosition="word"
+    [pseudoFocus]="(driver | async) || null"
     [tuiDropdown]="dropdown"
     [tuiDropdownSelection]="predicate"
-    [pseudoFocus]="(driver | async) || null"
     [(ngModel)]="value"
-    (keydown.arrowUp)="onArrow($event, 'last')"
     (keydown.arrowDown)="onArrow($event, 'first')"
+    (keydown.arrowUp)="onArrow($event, 'last')"
 >
     Type a message
 </tui-textarea>
@@ -24,8 +24,8 @@
             {{ item.name }}
             <tui-avatar
                 size="s"
-                [rounded]="true"
                 [avatarUrl]="item.avatar"
+                [rounded]="true"
                 [text]="item.name"
             ></tui-avatar>
         </button>

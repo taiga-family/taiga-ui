@@ -6,7 +6,10 @@ import {ALWAYS_FALSE_HANDLER, TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk
 import {TuiAlertService, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 class ItemWithBadge {
-    constructor(readonly text: string, readonly badgeValue?: number) {}
+    constructor(
+        readonly text: string,
+        readonly badgeValue?: number,
+    ) {}
 
     toString(): string {
         return this.text;

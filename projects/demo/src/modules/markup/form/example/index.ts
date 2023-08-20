@@ -5,7 +5,10 @@ import {TuiCurrency} from '@taiga-ui/addon-commerce';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
 
 class User {
-    constructor(readonly firstName: string, readonly lastName: string) {}
+    constructor(
+        readonly firstName: string,
+        readonly lastName: string,
+    ) {}
 
     toString(): string {
         return `${this.firstName} ${this.lastName}`;

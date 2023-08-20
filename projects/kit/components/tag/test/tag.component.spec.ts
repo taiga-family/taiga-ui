@@ -11,10 +11,10 @@ describe(`Tag`, () => {
             <tui-tag id="default"></tui-tag>
             <tui-tag
                 id="changed"
-                [value]="'Tag'"
-                [removable]="true"
-                [editable]="true"
                 [autoColor]="false"
+                [editable]="true"
+                [removable]="true"
+                [value]="'Tag'"
                 (edited)="editedSpy($event)"
             ></tui-tag>
         `,

@@ -4,7 +4,10 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 class Account {
-    constructor(readonly name: string, readonly balance: number) {}
+    constructor(
+        readonly name: string,
+        readonly balance: number,
+    ) {}
 
     toString(): string {
         return `${this.name} (${this.balance})`;

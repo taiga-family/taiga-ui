@@ -9,8 +9,8 @@
         Choose a card
         <tui-data-list-wrapper
             *tuiDataList
-            [items]="cards"
             [itemContent]="cardContent"
+            [items]="cards"
         ></tui-data-list-wrapper>
     </tui-select>
     <tui-select
@@ -22,8 +22,8 @@
         Choose a card
         <tui-data-list-wrapper
             *tuiDataList
-            [items]="cards"
             [itemContent]="cardContent"
+            [items]="cards"
         ></tui-data-list-wrapper>
     </tui-select>
     <tui-select
@@ -34,8 +34,8 @@
         Choose an account
         <tui-data-list-wrapper
             *tuiDataList
-            [items]="accounts"
             [itemContent]="accountContent"
+            [items]="accounts"
         ></tui-data-list-wrapper>
     </tui-select>
     <ng-template
@@ -44,8 +44,8 @@
     >
         <div class="card-item">
             <tui-card
-                size="s"
                 paymentSystem="mastercard"
+                size="s"
                 class="card"
                 [cardNumber]="item.cardNumber.slice(1)"
             ></tui-card>

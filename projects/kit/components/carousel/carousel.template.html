@@ -4,18 +4,18 @@
     (tuiCarouselScroll)="onScroll($event)"
 >
     <div
-        waIntersectionRoot
         waIntersectionObserver
-        waIntersectionThreshold="0,1"
+        waIntersectionRoot
         waIntersectionRootMargin="100px 1000000px 100px -51%"
+        waIntersectionThreshold="0,1"
         class="t-wrapper"
     >
         <div
             class="t-items"
             [style.transform]="transform"
+            (tuiCarouselAutoscroll)="onAutoscroll()"
             (tuiPan)="onPan($event[0])"
             (tuiSwipe)="onSwipe($event.direction)"
-            (tuiCarouselAutoscroll)="onAutoscroll()"
         >
             <fieldset
                 *ngFor="let item of items; let i = index"

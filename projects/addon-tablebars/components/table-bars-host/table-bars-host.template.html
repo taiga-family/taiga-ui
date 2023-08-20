@@ -23,15 +23,15 @@
 
                 <button
                     *ngIf="item.hasCloseButton"
-                    tuiIconButton
-                    type="button"
+                    appearance="icon"
                     automation-id="tui-table-bar__close-button"
                     size="xs"
-                    appearance="icon"
+                    tuiIconButton
+                    type="button"
                     class="t-close-button"
                     [icon]="icons.close"
-                    [tuiMode]="getMode(item.mode)"
                     [title]="closeWord$ | async"
+                    [tuiMode]="getMode(item.mode)"
                     (click)="onCloseClick(item)"
                 ></button>
             </div>

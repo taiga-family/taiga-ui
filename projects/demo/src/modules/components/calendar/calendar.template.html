@@ -54,9 +54,9 @@
             <ng-template #localizationDescription>
                 Use
                 <a
-                    tuiLink
-                    routerLink="/utils/tokens"
                     fragment="first-day-of-week"
+                    routerLink="/utils/tokens"
+                    tuiLink
                 >
                     TUI_FIRST_DAY_OF_WEEK
                 </a>
@@ -84,23 +84,23 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-calendar
-                [value]="value"
                 [disabledItemHandler]="disabledItemHandler"
-                [min]="min"
-                [max]="max"
                 [markerHandler]="markerHandler"
-                [minViewedMonth]="minViewedMonth"
+                [max]="max"
                 [maxViewedMonth]="maxViewedMonth"
+                [min]="min"
+                [minViewedMonth]="minViewedMonth"
                 [showAdjacent]="showAdjacent"
-                [(month)]="month"
+                [value]="value"
                 [(hoveredItem)]="hoveredItem"
+                [(month)]="month"
                 (dayClick)="onDayClick($event)"
             ></tui-calendar>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
+                documentationPropertyName="disabledItemHandler"
                 documentationPropertyType="TuiBooleanHandler<TuiDay>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
@@ -110,24 +110,24 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="showAdjacent"
                 documentationPropertyMode="input"
+                documentationPropertyName="showAdjacent"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="showAdjacent"
             >
                 Show adjacent months days
             </ng-template>
             <ng-template
-                documentationPropertyName="hoveredItem"
                 documentationPropertyMode="input-output"
+                documentationPropertyName="hoveredItem"
                 documentationPropertyType="TuiDay | null"
                 [(documentationPropertyValue)]="hoveredItem"
             >
                 Hovered date
             </ng-template>
             <ng-template
-                documentationPropertyName="markerHandler"
                 documentationPropertyMode="input"
+                documentationPropertyName="markerHandler"
                 documentationPropertyType="TuiMarkerHandler"
                 [documentationPropertyValues]="markerHandlerVariants"
                 [(documentationPropertyValue)]="markerHandler"
@@ -135,8 +135,8 @@
                 A handler that gets date and returns null or a tuple with circled marker colors
             </ng-template>
             <ng-template
-                documentationPropertyName="max"
                 documentationPropertyMode="input"
+                documentationPropertyName="max"
                 documentationPropertyType="TuiDay | null"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
@@ -144,8 +144,8 @@
                 Maximal date to choose
             </ng-template>
             <ng-template
-                documentationPropertyName="maxViewedMonth"
                 documentationPropertyMode="input"
+                documentationPropertyName="maxViewedMonth"
                 documentationPropertyType="TuiMonth | null"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
@@ -153,8 +153,8 @@
                 Maximal month to access
             </ng-template>
             <ng-template
-                documentationPropertyName="min"
                 documentationPropertyMode="input"
+                documentationPropertyName="min"
                 documentationPropertyType="TuiDay | null"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
@@ -162,8 +162,8 @@
                 Minimum date to choose
             </ng-template>
             <ng-template
-                documentationPropertyName="minViewedMonth"
                 documentationPropertyMode="input"
+                documentationPropertyName="minViewedMonth"
                 documentationPropertyType="TuiMonth | null"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
@@ -171,16 +171,16 @@
                 Minimum month to access
             </ng-template>
             <ng-template
-                documentationPropertyName="month"
                 documentationPropertyMode="input-output"
+                documentationPropertyName="month"
                 documentationPropertyType="TuiMonth"
                 [(documentationPropertyValue)]="month"
             >
                 Current month
             </ng-template>
             <ng-template
-                documentationPropertyName="value"
                 documentationPropertyMode="input"
+                documentationPropertyName="value"
                 documentationPropertyType="TuiDay | TuiDayRange | null"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"
@@ -188,8 +188,8 @@
                 Selected day or range
             </ng-template>
             <ng-template
-                documentationPropertyName="dayClick"
                 documentationPropertyMode="output"
+                documentationPropertyName="dayClick"
                 documentationPropertyType="TuiDay"
             >
                 Date click

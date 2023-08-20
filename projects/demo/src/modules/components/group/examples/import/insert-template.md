@@ -1,13 +1,13 @@
 ```html
 <div
-  tuiGroup
   class="group"
+  tuiGroup
 >
   <div>
     <tui-input
+      class="tui-group__inherit-item"
       formControlName="testValue"
       tuiHintContent="Write a number"
-      class="tui-group__inherit-item"
     >
       House
       <input
@@ -22,9 +22,9 @@
   </div>
   <div>
     <tui-input
+      class="tui-group__inherit-item"
       formControlName="testValue2"
       tuiHintContent="Write house building"
-      class="tui-group__inherit-item"
     >
       House building
       <input
@@ -39,9 +39,9 @@
   </div>
   <div>
     <tui-input
+      class="tui-group__inherit-item"
       formControlName="testValue3"
       tuiHintContent="Write an apartment number only"
-      class="tui-group__inherit-item"
     >
       Apartment
       <input

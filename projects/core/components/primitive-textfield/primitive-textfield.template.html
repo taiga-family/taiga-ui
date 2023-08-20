@@ -1,34 +1,34 @@
 <ng-container *ngIf="content?.changes | async"></ng-container>
 <ng-container *ngIf="hintOptions?.change$ | async"></ng-container>
 <div
-    tuiWrapper
     automation-id="tui-primitive-textfield__wrapper"
+    tuiWrapper
+    [active]="pseudoActive"
     [appearance]="appearance"
-    [readOnly]="readOnly"
     [disabled]="disabled"
     [focus]="computedFocused"
     [hover]="pseudoHover"
-    [active]="pseudoActive"
     [invalid]="computedInvalid"
+    [readOnly]="readOnly"
     [style.--text-indent.px]="decor.pre$ | async"
-    (mousedown)="onMouseDown($event)"
     (click.prevent.silent)="(0)"
+    (mousedown)="onMouseDown($event)"
     (tuiAutofilledChange)="onAutofilled($event)"
 >
     <ng-content select="input"></ng-content>
     <ng-content select="select"></ng-content>
     <input
         #focusableElement
-        tuiMaskAccessor
         automation-id="tui-primitive-textfield__native-input"
+        tuiMaskAccessor
         class="t-input"
-        [disabled]="computedDisabled"
-        [attr.name]="name"
         [attr.aria-invalid]="computedInvalid"
+        [attr.name]="name"
+        [disabled]="computedDisabled"
         [id]="id"
+        [ngModel]="value"
         [readOnly]="readOnly || !editable"
         [tuiFocusable]="computedFocusable"
-        [ngModel]="value"
         (ngModelChange)="onModelChange($event)"
     />
     <div
@@ -45,8 +45,8 @@
         >
             <tui-svg
                 *polymorpheusOutlet="iconLeftContent as src; context: {$implicit: size}"
-                tuiWrapper
                 appearance="icon"
+                tuiWrapper
                 [src]="src"
             ></tui-svg>
         </div>
@@ -63,8 +63,8 @@
             <div class="t-wrapper-value-decoration">
                 <tui-value-decoration
                     #decor
-                    automation-id="tui-primitive-textfield__value-decoration"
                     aria-hidden="true"
+                    automation-id="tui-primitive-textfield__value-decoration"
                     class="t-value-decoration"
                     [class.t-has-value]="value"
                     [style.textIndent.px]="getIndent$(focusableElement) | async"
@@ -85,9 +85,9 @@
             </div>
             <span
                 *ngIf="hasCleaner"
-                tuiWrapper
                 appearance="icon"
                 automation-id="tui-primitive-textfield__cleaner"
+                tuiWrapper
                 class="t-cleaner"
                 (click.stop)="clear()"
             >
@@ -103,8 +103,8 @@
                 *ngIf="showHint"
                 automation-id="tui-primitive-textfield__tooltip"
                 class="t-tooltip"
-                [describeId]="computedId"
                 [content]="hintOptions?.content"
+                [describeId]="computedId"
             ></tui-tooltip>
             <div
                 *ngIf="iconContent"
@@ -112,8 +112,8 @@
             >
                 <tui-svg
                     *polymorpheusOutlet="iconContent as src; context: {$implicit: size}"
-                    tuiWrapper
                     appearance="icon"
+                    tuiWrapper
                     [src]="src"
                 ></tui-svg>
             </div>

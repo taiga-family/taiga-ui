@@ -4,11 +4,11 @@
         [content]="content"
     >
         <button
-            tuiIconButton
+            appearance="secondary"
             icon="tuiIconMoreHorizontal"
             size="xs"
-            appearance="secondary"
             title="More"
+            tuiIconButton
         ></button>
         <ng-template #content>
             <tui-data-list>
@@ -35,8 +35,8 @@
 <p>
     <tui-input-number
         class="b-form"
-        [min]="2"
         [max]="4"
+        [min]="2"
         [step]="1"
         [(ngModel)]="max"
     >

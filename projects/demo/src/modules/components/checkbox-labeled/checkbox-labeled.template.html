@@ -10,8 +10,8 @@
             <code>Checkbox</code>
             with a label. Click on label changes checkbox state. If you do not need a label, see
             <a
-                tuiLink
                 routerLink="/components/checkbox"
+                tuiLink
             >
                 <code>Checkbox</code>
             </a>
@@ -42,10 +42,10 @@
                     <tui-checkbox-labeled
                         formControlName="testValue1"
                         [focusable]="focusable"
-                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoActive]="pseudoPressed"
                         [pseudoFocus]="pseudoFocused"
                         [pseudoHover]="pseudoHovered"
-                        [pseudoActive]="pseudoPressed"
+                        [pseudoInvalid]="pseudoInvalid"
                         [readOnly]="readOnly"
                         [size]="size"
                     >
@@ -55,10 +55,10 @@
                         formControlName="testValue2"
                         class="tui-space_top-2"
                         [focusable]="focusable"
-                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoActive]="pseudoPressed"
                         [pseudoFocus]="pseudoFocused"
                         [pseudoHover]="pseudoHovered"
-                        [pseudoActive]="pseudoPressed"
+                        [pseudoInvalid]="pseudoInvalid"
                         [readOnly]="readOnly"
                         [size]="size"
                     >
@@ -68,10 +68,10 @@
                         formControlName="testValue3"
                         class="tui-space_top-2"
                         [focusable]="focusable"
-                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoActive]="pseudoPressed"
                         [pseudoFocus]="pseudoFocused"
                         [pseudoHover]="pseudoHovered"
-                        [pseudoActive]="pseudoPressed"
+                        [pseudoInvalid]="pseudoInvalid"
                         [readOnly]="readOnly"
                         [size]="size"
                     >
@@ -91,8 +91,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"

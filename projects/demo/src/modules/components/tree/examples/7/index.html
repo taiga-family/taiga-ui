@@ -1,9 +1,9 @@
 <tui-tree
-    [tuiTreeController]="false"
-    [map]="map"
-    [value]="service.data$ | async"
     [childrenHandler]="childrenHandler"
     [content]="content"
+    [map]="map"
+    [tuiTreeController]="false"
+    [value]="service.data$ | async"
     (toggled)="onToggled($event)"
 ></tui-tree>
 

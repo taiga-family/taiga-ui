@@ -40,14 +40,14 @@ describe(`InputTag`, () => {
                 <tui-input-tag
                     *ngIf="!defaultInputs"
                     [formControl]="control"
+                    [placeholder]="placeholder"
                     [readOnly]="readOnly"
                     [separator]="separator"
                     [tagValidator]="tagValidator"
-                    [placeholder]="placeholder"
+                    [tuiHintContent]="hintContent"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
-                    [tuiHintContent]="hintContent"
                 >
                     Placeholder
                 </tui-input-tag>

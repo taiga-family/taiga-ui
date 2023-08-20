@@ -6,7 +6,7 @@
         Search by last name
         <tui-data-list-wrapper
             *tuiDataList
-            [items]="items | tuiFilterByInput : matcherString"
+            [items]="items | tuiFilterByInput: matcherString"
         ></tui-data-list-wrapper>
     </tui-combo-box>
 
@@ -18,8 +18,8 @@
         With ids
         <tui-data-list-wrapper
             *tuiDataList
-            [items]="users | tuiFilterByInput : matcherUser"
             [itemContent]="stringify | tuiStringifyContent"
+            [items]="users | tuiFilterByInput: matcherUser"
         ></tui-data-list-wrapper>
     </tui-combo-box>
 </form>

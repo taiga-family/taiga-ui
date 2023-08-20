@@ -5,9 +5,9 @@
     >
         <tui-line-clamp
             class="line-clamp"
+            [content]="content"
             [lineHeight]="getDynamicLineHeight(parent)"
             [linesLimit]="getDynamicLineLimit(parent)"
-            [content]="content"
         ></tui-line-clamp>
 
         <ng-template #content>

@@ -1,14 +1,14 @@
 <ng-container *ngIf="hintOptions?.change$ | async"></ng-container>
 <div
-    tuiWrapper
     automation-id="tui-text-area__wrapper"
+    tuiWrapper
     class="t-outline"
     [appearance]="appearance"
     [disabled]="disabled"
     [focus]="computedFocused"
     [hover]="pseudoHover"
-    [readOnly]="readOnly"
     [invalid]="computedInvalid"
+    [readOnly]="readOnly"
 >
     <div
         *ngIf="hasCounter"
@@ -53,10 +53,10 @@
                             #focusableElement
                             automation-id="tui-text-area__native"
                             class="t-input"
-                            [id]="id"
-                            [tuiFocusable]="computedFocusable"
                             [disabled]="computedDisabled"
+                            [id]="id"
                             [readOnly]="readOnly"
+                            [tuiFocusable]="computedFocusable"
                             [(ngModel)]="value"
                         ></textarea>
                         <ng-content select="textarea"></ng-content>
@@ -71,8 +71,8 @@
             >
                 <tui-svg
                     *polymorpheusOutlet="iconLeftContent as src; context: {$implicit: size}"
-                    tuiWrapper
                     appearance="icon"
+                    tuiWrapper
                     [src]="src"
                 ></tui-svg>
             </div>
@@ -85,8 +85,8 @@
             <ng-container *ngIf="hasCleaner">
                 <tui-svg
                     *polymorpheusOutlet="iconCleaner as src; context: {$implicit: size}"
-                    tuiWrapper
                     appearance="icon"
+                    tuiWrapper
                     class="t-cleaner"
                     [src]="src"
                     (click.stop)="onValueChange('')"
@@ -95,8 +95,8 @@
             <tui-tooltip
                 *ngIf="hasTooltip"
                 automation-id="tui-text-area__tooltip"
-                [describeId]="id"
                 [content]="hintOptions?.content"
+                [describeId]="id"
             ></tui-tooltip>
             <div
                 *ngIf="iconContent"
@@ -104,8 +104,8 @@
             >
                 <tui-svg
                     *polymorpheusOutlet="iconContent as src; context: {$implicit: size}"
-                    tuiWrapper
                     appearance="icon"
+                    tuiWrapper
                     [src]="src"
                 ></tui-svg>
             </div>

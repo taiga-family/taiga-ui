@@ -19,11 +19,12 @@ function showWarning(
         moduleSpecifier,
         namedImports: [name],
     })
-        .map(i =>
-            i
-                .getNamedImports()
-                .find(namedImport => namedImport.getName() === name)
-                ?.getNameNode(),
+        .map(
+            i =>
+                i
+                    .getNamedImports()
+                    .find(namedImport => namedImport.getName() === name)
+                    ?.getNameNode(),
         )
         .filter(<T>(namedImport?: T): namedImport is T => Boolean(namedImport));
 

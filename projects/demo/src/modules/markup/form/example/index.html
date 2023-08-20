@@ -33,8 +33,8 @@
                     >
                         Textfield
                         <input
-                            tuiTextfield
                             placeholder="Field placeholder"
+                            tuiTextfield
                         />
                         <span class="tui-required"></span>
                     </tui-input>
@@ -47,8 +47,8 @@
                     <tui-input-date formControlName="periodValue">
                         Input date
                         <input
-                            tuiTextfield
                             placeholder="Placeholder"
+                            tuiTextfield
                         />
                         <span class="tui-required"></span>
                     </tui-input-date>
@@ -82,8 +82,8 @@
                     <tui-input-slider
                         formControlName="quantityValue"
                         tuiTextfieldPostfix="₽"
-                        [min]="50000"
                         [max]="3000000"
+                        [min]="50000"
                         [segments]="1"
                     >
                         Some slider
@@ -212,8 +212,8 @@
                             Choose an account
                             <tui-data-list-wrapper
                                 *tuiDataList
-                                [items]="accounts"
                                 [itemContent]="accountContent"
+                                [items]="accounts"
                             ></tui-data-list-wrapper>
                         </tui-select>
                     </label>
@@ -229,8 +229,8 @@
                             Choose an account
                             <tui-data-list-wrapper
                                 *tuiDataList
-                                [items]="accounts"
                                 [itemContent]="accountContent"
+                                [items]="accounts"
                             ></tui-data-list-wrapper>
                         </tui-select>
                     </label>
@@ -243,8 +243,8 @@
                     >
                         Textfield
                         <input
-                            tuiTextfield
                             placeholder="Placeholder"
+                            tuiTextfield
                         />
                     </tui-input>
                     <div class="tui-form__field-checkbox">
@@ -258,18 +258,18 @@
                 </div>
                 <div class="tui-form__buttons">
                     <button
-                        tuiButton
                         size="l"
+                        tuiButton
                         type="submit"
                         class="tui-form__button"
                     >
                         Submit
                     </button>
                     <button
-                        tuiButton
-                        type="button"
                         appearance="flat"
                         size="l"
+                        tuiButton
+                        type="button"
                         class="tui-form__button"
                     >
                         Cancel

@@ -30,7 +30,7 @@ import {
         },
     });
 
-    tuiPostPrettierFormat({
+    await tuiPostPrettierFormat({
         file: resultAllFile,
         config: {...config, parser: `typescript`},
     });
@@ -40,13 +40,19 @@ import {
         .map(file => `${iconsSrc}/${file}`);
 
     for (const file of icons) {
-        tuiPostPrettierFormat({
+        await tuiPostPrettierFormat({
             file,
             config: {...config, ...svg, parser: `angular`},
         });
-        tuiPostPrettierFormat({
+
+        await tuiPostPrettierFormat({
             file,
-            config: {...config, ...svg, parser: `xml`},
+            config: {
+                ...config,
+                ...svg,
+                parser: `xml`,
+                plugins: [require.resolve(`@prettier/plugin-xml`)],
+            },
         });
     }
 

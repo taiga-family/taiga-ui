@@ -17,10 +17,10 @@
         <p>
             Read more about current input's type in
             <a
-                tuiLink
-                target="_blank"
-                rel="noreferrer"
                 href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input/range"
+                rel="noreferrer"
+                target="_blank"
+                tuiLink
             >
                 MDN Docs
             </a>
@@ -113,12 +113,12 @@
                 <input
                     tuiSlider
                     type="range"
+                    [formControl]="control"
                     [max]="max"
                     [min]="min"
-                    [step]="step"
-                    [formControl]="control"
-                    [size]="size"
                     [segments]="segments"
+                    [size]="size"
+                    [step]="step"
                 />
             </ng-template>
         </tui-doc-demo>
@@ -133,17 +133,17 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="max"
                 documentationPropertyMode="input"
+                documentationPropertyName="max"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="max"
             >
                 Native attribute
                 <a
-                    tuiLink
-                    rel="noreferrer"
                     href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#max"
+                    rel="noreferrer"
                     target="_blank"
+                    tuiLink
                 >
                     max
                 </a>
@@ -151,17 +151,17 @@
                 <code tuiText='<input type="range" />'></code>
             </ng-template>
             <ng-template
-                documentationPropertyName="min"
                 documentationPropertyMode="input"
+                documentationPropertyName="min"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="min"
             >
                 Native attribute
                 <a
-                    tuiLink
-                    rel="noreferrer"
                     href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#min"
+                    rel="noreferrer"
                     target="_blank"
+                    tuiLink
                 >
                     min
                 </a>
@@ -169,17 +169,17 @@
                 <code tuiText='<input type="range" />'></code>
             </ng-template>
             <ng-template
-                documentationPropertyName="step"
                 documentationPropertyMode="input"
+                documentationPropertyName="step"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="step"
             >
                 Native attribute
                 <a
-                    tuiLink
-                    rel="noreferrer"
                     href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#step"
+                    rel="noreferrer"
                     target="_blank"
+                    tuiLink
                 >
                     step
                 </a>
@@ -187,8 +187,8 @@
                 <code tuiText='<input type="range" />'></code>
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeS"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
@@ -196,8 +196,8 @@
                 Size
             </ng-template>
             <ng-template
-                documentationPropertyName="segments"
                 documentationPropertyMode="input"
+                documentationPropertyName="segments"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="segments"
             >

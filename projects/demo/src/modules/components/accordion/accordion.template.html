@@ -50,10 +50,10 @@
                 <tui-accordion-item
                     [borders]="borders"
                     [disabled]="disabled"
-                    [noPadding]="noPadding"
-                    [size]="size"
-                    [showArrow]="showArrow"
                     [disableHover]="disableHover"
+                    [noPadding]="noPadding"
+                    [showArrow]="showArrow"
+                    [size]="size"
                 >
                     Taiga UI cdk
                     <ng-template tuiAccordionItemContent>
@@ -62,14 +62,14 @@
                     </ng-template>
                 </tui-accordion-item>
                 <tui-accordion-item
+                    [async]="async"
                     [borders]="borders"
                     [disabled]="disabled"
-                    [noPadding]="noPadding"
-                    [size]="size"
-                    [showArrow]="showArrow"
                     [disableHover]="disableHover"
-                    [async]="async"
+                    [noPadding]="noPadding"
                     [open]="open"
+                    [showArrow]="showArrow"
+                    [size]="size"
                     (openChange)="onOpenChange($event)"
                 >
                     Taiga UI core
@@ -92,16 +92,16 @@
                 <ng-template tuiAccordionItemContent>
                     <tui-doc-documentation>
                         <ng-template
-                            documentationPropertyName="closeOthers"
                             documentationPropertyMode="input"
+                            documentationPropertyName="closeOthers"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="closeOthers"
                         >
                             Other sections are closed when user opens one
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="rounded"
                             documentationPropertyMode="input"
+                            documentationPropertyName="rounded"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="rounded"
                         >
@@ -115,8 +115,8 @@
                 <ng-template tuiAccordionItemContent>
                     <tui-doc-documentation>
                         <ng-template
-                            documentationPropertyName="async"
                             documentationPropertyMode="input"
+                            documentationPropertyName="async"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="async"
                         >
@@ -125,8 +125,8 @@
                             before opening. Content is initialized when opening starts
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="borders"
                             documentationPropertyMode="input"
+                            documentationPropertyName="borders"
                             documentationPropertyType="'all' | 'top-bottom' | null"
                             [documentationPropertyValues]="bordersVariants"
                             [(documentationPropertyValue)]="borders"
@@ -134,32 +134,32 @@
                             Borders variants
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="disabled"
                             documentationPropertyMode="input"
+                            documentationPropertyName="disabled"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="disabled"
                         >
                             Disabled state for an item
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="noPadding"
                             documentationPropertyMode="input"
+                            documentationPropertyName="noPadding"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="noPadding"
                         >
                             Removes default paddings
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="disableHover"
                             documentationPropertyMode="input"
+                            documentationPropertyName="disableHover"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="disableHover"
                         >
                             Disabled header hover state
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="open"
                             documentationPropertyMode="input-output"
+                            documentationPropertyName="open"
                             documentationPropertyType="boolean"
                             [documentationPropertyValue]="open"
                             (documentationPropertyValueChange)="onOpenChange($event)"
@@ -167,8 +167,8 @@
                             Open / close state of section
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="size"
                             documentationPropertyMode="input"
+                            documentationPropertyName="size"
                             documentationPropertyType="TuiSizeS"
                             [documentationPropertyValues]="sizeVariants"
                             [(documentationPropertyValue)]="size"
@@ -176,8 +176,8 @@
                             Size of an accordion item
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="showArrow"
                             documentationPropertyMode="input"
+                            documentationPropertyName="showArrow"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="showArrow"
                         >

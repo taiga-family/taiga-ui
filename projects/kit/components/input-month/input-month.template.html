@@ -7,33 +7,33 @@
 >
     <tui-primitive-textfield
         class="t-textfield"
-        [editable]="false"
         [disabled]="computedDisabled"
+        [editable]="false"
+        [invalid]="computedInvalid"
         [nativeId]="nativeId"
-        [readOnly]="readOnly"
-        [tuiTextfieldIcon]="calendarIcon"
         [pseudoFocus]="pseudoFocus"
         [pseudoHover]="pseudoHover"
-        [invalid]="computedInvalid"
-        [value]="(value | tuiMapper : formatter | async) || ''"
-        (valueChange)="onValueChange($event)"
+        [readOnly]="readOnly"
+        [tuiTextfieldIcon]="calendarIcon"
+        [value]="(value | tuiMapper: formatter | async) || ''"
         (focusedChange)="onFocused($event)"
+        (valueChange)="onValueChange($event)"
     >
         <ng-content></ng-content>
         <ng-content
-            select="input"
             ngProjectAs="input"
+            select="input"
         ></ng-content>
         <input
             *ngIf="nativePicker"
             type="month"
             class="t-mobile"
-            [min]="nativePickerMin"
             [max]="nativePickerMax"
+            [min]="nativePickerMin"
             [ngModel]="nativeValue"
-            (ngModelChange)="onNativeChange($event)"
-            (mousedown.stop.silent)="(0)"
             (click.stop.silent)="(0)"
+            (mousedown.stop.silent)="(0)"
+            (ngModelChange)="onNativeChange($event)"
         />
     </tui-primitive-textfield>
 
@@ -41,12 +41,12 @@
         <tui-calendar-month
             tuiPreventDefault="mousedown"
             [disabledItemHandler]="disabledItemHandler"
-            [min]="computedMin"
             [max]="computedMax"
+            [min]="computedMin"
             [value]="value"
             [year]="computedDefaultActiveYear"
-            (yearChange)="activeYear = $event"
             (monthClick)="onMonthClick($event)"
+            (yearChange)="activeYear = $event"
         ></tui-calendar-month>
     </ng-template>
 </tui-hosted-dropdown>

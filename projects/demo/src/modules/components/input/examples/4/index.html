@@ -9,8 +9,8 @@
     >
         User
         <input
-            tuiTextfield
             placeholder="Type your name or surname"
+            tuiTextfield
         />
         <ng-container *ngIf="users?.length">
             <tui-data-list *tuiDataList>
@@ -34,8 +34,8 @@
         <tui-avatar
             *ngIf="lastUser"
             size="s"
-            [rounded]="true"
             [avatarUrl]="lastUser.avatarUrl || null"
+            [rounded]="true"
             [text]="lastUser.toString()"
         ></tui-avatar>
     </ng-template>
@@ -46,8 +46,8 @@
         Account
         <tui-data-list-wrapper
             *tuiDataList
-            [items]="accounts"
             [itemContent]="accountContent"
+            [items]="accounts"
         ></tui-data-list-wrapper>
         <ng-template
             #accountContent
@@ -61,8 +61,8 @@
     </tui-input>
     <tui-input-card
         formControlName="card"
-        [tuiTextfieldCleaner]="true"
         [cardSrc]="card"
+        [tuiTextfieldCleaner]="true"
     >
         Card number
     </tui-input-card>

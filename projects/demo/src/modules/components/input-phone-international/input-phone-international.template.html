@@ -34,26 +34,26 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-phone-international
-                    [formControl]="control"
-                    [focusable]="focusable"
                     [countries]="countries"
+                    [focusable]="focusable"
+                    [formControl]="control"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
                     [readOnly]="readOnly"
-                    [tuiTextfieldSize]="size"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldPrefix]="prefix"
-                    [tuiTextfieldPostfix]="postfix"
-                    [tuiTextfieldFiller]="filler"
                     [tuiDropdownDirection]="dropdownDirection"
-                    [tuiDropdownMinHeight]="dropdownMinHeight"
                     [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
                     [tuiDropdownOffset]="dropdownOffset"
+                    [tuiHintAppearance]="hintAppearance"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintAppearance]="hintAppearance"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoInvalid]="pseudoInvalid"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldFiller]="filler"
                     [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldPostfix]="postfix"
+                    [tuiTextfieldPrefix]="prefix"
+                    [tuiTextfieldSize]="size"
                     [(countryIsoCode)]="countryIsoCode"
                 >
                     Type a phone number
@@ -71,8 +71,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="countries"
                 documentationPropertyMode="input"
+                documentationPropertyName="countries"
                 documentationPropertyType="ReadonlyArray<TuiCountryIsoCode>"
                 [documentationPropertyValues]="countriesVariants"
                 [(documentationPropertyValue)]="countries"
@@ -80,8 +80,8 @@
                 Array of ISO-codes of countries to choose
             </ng-template>
             <ng-template
-                documentationPropertyName="countryIsoCode"
                 documentationPropertyMode="input-output"
+                documentationPropertyName="countryIsoCode"
                 documentationPropertyType="TuiCountryIsoCode"
                 [documentationPropertyValues]="countryIsoCodeVariants"
                 [(documentationPropertyValue)]="countryIsoCode"

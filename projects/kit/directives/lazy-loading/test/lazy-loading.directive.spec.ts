@@ -15,9 +15,9 @@ xdescribe(`TuiLazyLoading directive`, () => {
         template: `
             <img
                 id="image"
+                alt="picsum"
                 loading="lazy"
                 src="${image}"
-                alt="picsum"
                 style="--tui-clear-hover: rgba(0, 0, 0, 0.16)"
             />
         `,

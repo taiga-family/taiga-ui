@@ -131,9 +131,8 @@ export class TuiStackblitzService implements TuiCodeEditor {
 
         return {
             [stackblitzPrefix`README.md`]: stackblitzReadMe,
-            [stackblitzPrefix`all-taiga-modules.ts`]: await getAllTaigaUIModulesFile(
-                additionalModules,
-            ),
+            [stackblitzPrefix`all-taiga-modules.ts`]:
+                await getAllTaigaUIModulesFile(additionalModules),
         };
     }
 

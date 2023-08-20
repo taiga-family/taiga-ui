@@ -6,10 +6,10 @@
         <tui-notification>
             Open source theme for Taiga UI uses processed
             <a
-                tuiLink
-                target="_blank"
-                rel="noreferrer"
                 href="https://feathericons.com/"
+                rel="noreferrer"
+                target="_blank"
+                tuiLink
             >
                 Feather Icons
             </a>
@@ -18,17 +18,17 @@
         <p>
             These icons can be used by name in
             <a
-                tuiLink
                 routerLink="/icons/overview"
+                tuiLink
             >
                 Svg
             </a>
             component and all Taiga UI component accepting icons as input. If you use unsafe icons or inline SVG with
             linear gradient you need to provide
             <a
-                tuiLink
-                routerLink="/icons/bundled"
                 fragment="sanitizer"
+                routerLink="/icons/bundled"
+                tuiLink
             >
                 TUI_SANITIZER
             </a>
@@ -56,8 +56,8 @@
                     let-activeZone
                 >
                     <tui-color-selector
-                        [tuiActiveZoneParent]="activeZone"
                         [color]="color || ''"
+                        [tuiActiveZoneParent]="activeZone"
                         (colorChange)="color = $event"
                     ></tui-color-selector>
                 </ng-template>
@@ -81,23 +81,23 @@
 
             <ng-template
                 iconGroup
-                let-icon="icon"
                 let-copyPath="copyPath"
+                let-icon="icon"
             >
                 <button
-                    tuiIconButton
-                    type="button"
+                    appearance="icon"
                     size="m"
                     title="Copy"
-                    appearance="icon"
+                    tuiIconButton
+                    type="button"
                     class="icon"
                     [attr.aria-label]="icon"
-                    [style.--tui-text-01]="color"
-                    [style.--tui-text-01-night]="color"
                     [class.t-appearance]="appearance"
                     [class.t-background]="transparent"
                     [class.t-wrapper-icons_dark]="(mode$ | async) === 'onDark'"
                     [icon]="icon"
+                    [style.--tui-text-01-night]="color"
+                    [style.--tui-text-01]="color"
                     (click)="copyPath(icon)"
                 ></button>
             </ng-template>
@@ -114,8 +114,8 @@
 
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="src"
                 documentationPropertyMode="input"
+                documentationPropertyName="src"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="icon"
@@ -125,8 +125,8 @@
             </ng-template>
             <ng-template
                 #documentationPropertyIconErrorChange="documentationProperty"
-                documentationPropertyName="tui-icon-error"
                 documentationPropertyMode="output"
+                documentationPropertyName="tui-icon-error"
                 documentationPropertyType="CustomEvent<TuiIconError>"
             >
                 CustomEvent of loading error

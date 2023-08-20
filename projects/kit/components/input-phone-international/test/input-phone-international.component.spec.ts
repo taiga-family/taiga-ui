@@ -23,10 +23,10 @@ describe(`InputPhoneInternational`, () => {
         template: `
             <tui-root>
                 <tui-input-phone-international
+                    [countries]="countries"
+                    [countryIsoCode]="countryIsoCode"
                     [formControl]="control"
                     [readOnly]="readOnly"
-                    [countryIsoCode]="countryIsoCode"
-                    [countries]="countries"
                 ></tui-input-phone-international>
             </tui-root>
         `,
@@ -332,8 +332,8 @@ describe(`InputPhoneInternational`, () => {
         const countryNameContainers =
             fixture.debugElement.queryAll(By.css(`.t-country-item-name`)) || [];
 
-        return countryNameContainers.map(container =>
-            container.nativeElement.textContent?.trim(),
+        return countryNameContainers.map(
+            container => container.nativeElement.textContent?.trim(),
         );
     }
 

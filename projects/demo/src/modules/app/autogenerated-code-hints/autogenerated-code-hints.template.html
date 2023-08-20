@@ -1,14 +1,14 @@
 <tui-hosted-dropdown
     *ngIf="shouldShowIcon(code)"
-    tuiDropdownHover
     tuiDropdownDirection="top"
+    tuiDropdownHover
     [content]="content"
 >
     <button
-        tuiIconButton
         appearance=""
-        size="s"
         icon="tuiIconAlertCircleLarge"
+        size="s"
+        tuiIconButton
         type="button"
         class="icon"
     ></button>
@@ -22,8 +22,8 @@
         >
             Don't forget to import
             <a
-                tuiLink
                 routerLink="/directives/hint"
+                tuiLink
             >
                 TuiHintModule
             </a>
@@ -38,8 +38,8 @@
         >
             Don't forget to import
             <a
-                tuiLink
                 routerLink="/directives/textfield-controller"
+                tuiLink
             >
                 TuiTextfieldControllerModule
             </a>
@@ -54,8 +54,8 @@
         >
             Don't forget to import
             <a
-                tuiLink
                 routerLink="/directives/dropdown-controller"
+                tuiLink
             >
                 TuiDropdownModule
             </a>

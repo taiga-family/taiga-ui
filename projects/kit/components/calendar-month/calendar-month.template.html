@@ -3,9 +3,9 @@
     class="t-scrollbar"
 >
     <tui-primitive-year-picker
-        [min]="computedMin"
-        [max]="computedMax"
         [initialItem]="year"
+        [max]="computedMax"
+        [min]="computedMin"
         [value]="value"
         (yearClick)="onPickerYearClick($event)"
     ></tui-primitive-year-picker>
@@ -19,9 +19,9 @@
         (rightClick)="onNextYear()"
     >
         <button
+            automation-id="tui-calendar-month__active-year"
             tuiLink
             type="button"
-            automation-id="tui-calendar-month__active-year"
             [tuiFocusable]="false"
             (click)="onYearClick()"
         >
@@ -33,13 +33,13 @@
             <div
                 *tuiLet="getTuiMonth(index, year.year) as item"
                 class="t-cell"
-                [class.t-cell_today]="isItemToday(item)"
-                [class.t-cell_interval]="isItemInsideRange(item)"
                 [attr.data-range]="getItemRange(item)"
                 [attr.data-state]="getItemState(item)"
+                [class.t-cell_interval]="isItemInsideRange(item)"
+                [class.t-cell_today]="isItemToday(item)"
+                (click)="onItemClick(item)"
                 (tuiHoveredChange)="onItemHovered($event, item)"
                 (tuiPressedChange)="onItemHovered($event, item)"
-                (click)="onItemClick(item)"
             >
                 <div class="t-item">{{ month }}</div>
             </div>

@@ -1,10 +1,10 @@
 <tui-input-range
-    [min]="0"
-    [max]="10"
-    [leftValueContent]="valueContent"
-    [rightValueContent]="valueContent"
-    [pluralize]="pluralize"
     [formControl]="control"
+    [leftValueContent]="valueContent"
+    [max]="10"
+    [min]="0"
+    [pluralize]="pluralize"
+    [rightValueContent]="valueContent"
 >
     Desired departure day
 </tui-input-range>
@@ -17,6 +17,6 @@
         <span *ngSwitchCase="0">Today</span>
         <span *ngSwitchCase="1">Tomorrow</span>
         <span *ngSwitchCase="7">In a week</span>
-        <span *ngSwitchDefault>{{ value }}&nbsp;{{ value | i18nPlural : pluralize }}</span>
+        <span *ngSwitchDefault>{{ value }}&nbsp;{{ value | i18nPlural: pluralize }}</span>
     </ng-container>
 </ng-template>

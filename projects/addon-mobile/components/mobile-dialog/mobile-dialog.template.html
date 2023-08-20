@@ -14,11 +14,11 @@
 </div>
 <button
     *ngFor="let action of context.actions; let index = index"
+    appearance="flat"
+    size="s"
     tuiButton
     tuiRipple
     type="button"
-    size="s"
-    appearance="flat"
     class="t-button"
     [class.t-button_column]="context.actions.length > 2"
     (click)="onAction(index)"

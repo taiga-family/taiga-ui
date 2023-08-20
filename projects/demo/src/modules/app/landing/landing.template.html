@@ -1,6 +1,6 @@
 <img
-    src="assets/images/taiga.svg"
     alt=""
+    src="assets/images/taiga.svg"
     class="taiga"
 />
 
@@ -11,8 +11,8 @@
 >
     <div class="topography">
         <img
-            src="assets/images/topography.svg"
             alt=""
+            src="assets/images/topography.svg"
         />
     </div>
     <div class="container">
@@ -32,21 +32,21 @@
                 <tui-input-date
                     required
                     [(ngModel)]="date"
-                    (mousedown.capture.stop)="(0)"
                     (click.capture.stop)="(0)"
                     (keydown.capture.stop)="(0)"
+                    (mousedown.capture.stop)="(0)"
                 >
                     Choose date
                     <input
-                        tuiTextfield
                         placeholder="dd.mm.yyyy"
+                        tuiTextfield
                     />
                 </tui-input-date>
                 <tui-calendar
                     class="calendar"
                     [value]="date"
-                    (event.prevent.silent)="(0)"
                     (dayClick)="onDay($event)"
+                    (event.prevent.silent)="(0)"
                 ></tui-calendar>
             </div>
             <div>
@@ -64,46 +64,46 @@
                     <tui-toggle
                         size="l"
                         class="tui-space_right-3"
-                        [showIcons]="true"
                         [ngModel]="true"
+                        [showIcons]="true"
                     ></tui-toggle>
                     Push notifications
                 </label>
                 <input
+                    size="m"
+                    step="any"
                     tuiSlider
                     type="range"
-                    step="any"
-                    size="m"
                     class="tui-space_vertical-6"
                     [max]="140"
                     [ngModel]="80"
                 />
                 <div class="icons">
                     <button
-                        tuiIconButton
                         appearance=""
                         icon="tuiIconVolumeXLarge"
-                        title="Mute speaker"
                         shape="rounded"
+                        title="Mute speaker"
+                        tuiIconButton
                         type="button"
                         class="button"
                     ></button>
                     <button
-                        tuiIconButton
                         appearance=""
                         icon="tuiIconMicOffLarge"
-                        title="Mute microphone"
                         shape="rounded"
+                        title="Mute microphone"
+                        tuiIconButton
                         type="button"
                         class="button"
                     ></button>
                     <button
-                        tuiIconButton
                         appearance=""
-                        type="button"
                         icon="tuiIconPhoneForwardedLarge"
-                        title="Forward call"
                         shape="rounded"
+                        title="Forward call"
+                        tuiIconButton
+                        type="button"
                         class="error"
                     ></button>
                 </div>
@@ -112,10 +112,10 @@
     </div>
     <div class="make">
         <svg
-            width="285"
+            fill="none"
             height="20"
             viewBox="0 0 285 20"
-            fill="none"
+            width="285"
             xmlns="http://www.w3.org/2000/svg"
             class="width"
         >
@@ -124,11 +124,11 @@
                 fill="white"
             />
             <rect
-                x="116.904"
-                width="35"
+                fill="white"
                 height="20"
                 rx="10"
-                fill="white"
+                width="35"
+                x="116.904"
             />
             <path
                 d="M125.292 14V12.5425H121.651V11.613L124.264 6.08H125.375L122.762 11.613H125.292V9.3855H126.282V11.613H127.107V12.5425H126.282V14H125.292ZM131.299 14.165C130.793 14.165 130.346 14.0642 129.957 13.8625C129.568 13.6572 129.264 13.373 129.044 13.01C128.824 12.647 128.714 12.2235 128.714 11.7395C128.714 11.2665 128.826 10.8393 129.05 10.458C129.277 10.0767 129.618 9.78333 130.073 9.578L130.056 9.9355C129.686 9.75583 129.402 9.50283 129.204 9.1765C129.006 8.8465 128.907 8.48167 128.907 8.082C128.907 7.63467 129.009 7.24967 129.215 6.927C129.42 6.60433 129.702 6.355 130.062 6.179C130.421 6.003 130.833 5.915 131.299 5.915C131.765 5.915 132.177 6.003 132.537 6.179C132.896 6.355 133.178 6.60433 133.384 6.927C133.589 7.24967 133.692 7.63467 133.692 8.082C133.692 8.48167 133.598 8.84467 133.411 9.171C133.224 9.49367 132.936 9.7485 132.548 9.9355L132.526 9.5835C132.98 9.7815 133.321 10.073 133.549 10.458C133.78 10.8393 133.895 11.2665 133.895 11.7395C133.895 12.2235 133.783 12.647 133.56 13.01C133.34 13.373 133.033 13.6572 132.641 13.8625C132.252 14.0642 131.805 14.165 131.299 14.165ZM131.299 13.23C131.761 13.23 132.135 13.1035 132.421 12.8505C132.711 12.5938 132.856 12.2235 132.856 11.7395C132.856 11.2518 132.713 10.8815 132.427 10.6285C132.144 10.3718 131.768 10.2435 131.299 10.2435C130.833 10.2435 130.458 10.3718 130.172 10.6285C129.889 10.8815 129.748 11.2518 129.748 11.7395C129.748 12.2235 129.891 12.5938 130.177 12.8505C130.463 13.1035 130.837 13.23 131.299 13.23ZM131.299 9.303C131.702 9.303 132.029 9.20217 132.278 9.0005C132.527 8.79517 132.652 8.489 132.652 8.082C132.652 7.675 132.527 7.37067 132.278 7.169C132.029 6.96367 131.702 6.861 131.299 6.861C130.899 6.861 130.573 6.96367 130.32 7.169C130.071 7.37067 129.946 7.675 129.946 8.082C129.946 8.489 130.071 8.79517 130.32 9.0005C130.573 9.20217 130.899 9.303 131.299 9.303ZM138.451 14.165C137.894 14.165 137.425 14.0275 137.043 13.7525C136.662 13.4738 136.372 13.098 136.174 12.625C135.98 12.1483 135.883 11.6148 135.883 11.0245C135.883 10.4268 135.98 9.8915 136.174 9.4185C136.372 8.9455 136.662 8.57333 137.043 8.302C137.428 8.03067 137.899 7.895 138.457 7.895C139.007 7.895 139.48 8.0325 139.876 8.3075C140.275 8.57883 140.582 8.951 140.794 9.424C141.007 9.897 141.113 10.4305 141.113 11.0245C141.113 11.6185 141.007 12.152 140.794 12.625C140.582 13.098 140.275 13.4738 139.876 13.7525C139.48 14.0275 139.005 14.165 138.451 14.165ZM135.718 16.64V8.06H136.592V12.4325H136.702V16.64H135.718ZM138.33 13.2685C138.723 13.2685 139.047 13.1695 139.304 12.9715C139.56 12.7735 139.753 12.5058 139.881 12.1685C140.01 11.8275 140.074 11.4462 140.074 11.0245C140.074 10.6065 140.01 10.2288 139.881 9.8915C139.757 9.55417 139.562 9.2865 139.298 9.0885C139.038 8.8905 138.706 8.7915 138.303 8.7915C137.918 8.7915 137.599 8.88683 137.346 9.0775C137.093 9.2645 136.904 9.52667 136.779 9.864C136.655 10.1977 136.592 10.5845 136.592 11.0245C136.592 11.4572 136.653 11.844 136.774 12.185C136.898 12.5223 137.089 12.7882 137.346 12.9825C137.602 13.1732 137.931 13.2685 138.33 13.2685ZM141.919 14L144.191 10.997L141.969 8.06H143.135L144.763 10.238L146.374 8.06H147.54L145.318 10.997L147.595 14H146.424L144.763 11.756L143.091 14H141.919Z"
@@ -140,10 +140,10 @@
     <div class="customize">
         Customize design the way you like it
         <svg
-            width="100"
+            fill="none"
             height="110"
             viewBox="0 0 100 110"
-            fill="none"
+            width="100"
             xmlns="http://www.w3.org/2000/svg"
             class="arrow"
         >
@@ -167,10 +167,10 @@
             </a>
         </p>
         <svg
-            width="286"
+            fill="none"
             height="412"
             viewBox="0 0 286 412"
-            fill="none"
+            width="286"
             xmlns="http://www.w3.org/2000/svg"
             class="os"
         >
@@ -184,10 +184,10 @@
                 fill="#3DC67C"
             />
             <path
-                fill-rule="evenodd"
                 clip-rule="evenodd"
                 d="M240 412L172.5 295L105 412H153.717L169.478 387H150L171.5 355L193 387H174.522L190.283 412H240Z"
                 fill="white"
+                fill-rule="evenodd"
             />
         </svg>
     </div>
@@ -199,8 +199,8 @@
 >
     <div class="map">
         <img
-            src="assets/images/topography.svg"
             alt=""
+            src="assets/images/topography.svg"
         />
     </div>
     <h1
@@ -211,8 +211,8 @@
             Taiga UI
             <span class="dash">——</span>
             <img
-                src="assets/images/taiga.svg"
                 alt=""
+                src="assets/images/taiga.svg"
                 class="logo"
             />
         </span>
@@ -234,18 +234,18 @@
 
 <footer class="footer">
     <a
-        tuiButton
         appearance="accent"
         routerLink="/getting-started"
+        tuiButton
         class="browse browse_mobile"
     >
         Browse
     </a>
     <a
-        tuiButton
-        tuiAutoFocus
         appearance="accent"
         routerLink="/getting-started"
+        tuiAutoFocus
+        tuiButton
         class="browse browse_desktop"
         [pseudoFocus]="false"
     >
@@ -258,8 +258,8 @@
         (click)="onClick()"
     ></button>
     <img
-        src="assets/images/by.svg"
         alt="by Tinkoff"
+        src="assets/images/by.svg"
         class="by"
     />
 </footer>

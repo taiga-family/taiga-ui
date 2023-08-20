@@ -5,9 +5,9 @@
 >
     <tui-primitive-year-picker
         automation-id="tui-calendar__year"
-        [min]="computedMin"
-        [max]="computedMax"
         [initialItem]="year"
+        [max]="computedMax"
+        [min]="computedMin"
         [value]="value"
         (yearClick)="onPickerYearClick($event)"
     ></tui-primitive-year-picker>
@@ -16,21 +16,21 @@
     <tui-primitive-year-month-pagination
         automation-id="tui-calendar__pagination"
         class="t-pagination"
-        [min]="computedMinViewedMonth"
         [max]="computedMaxViewedMonth"
+        [min]="computedMinViewedMonth"
         [value]="month"
         (valueChange)="onPaginationValueChange($event)"
         (yearClick)="onPaginationYearClick($event)"
     ></tui-primitive-year-month-pagination>
     <tui-primitive-calendar
         automation-id="tui-calendar__calendar"
+        [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledItemHandlerMapper : computedMin : computedMax"
+        [hoveredItem]="hoveredItem"
+        [markerHandler]="markerHandler"
+        [month]="month"
         [showAdjacent]="showAdjacent"
         [value]="value"
-        [month]="month"
-        [disabledItemHandler]="disabledItemHandler | tuiMapper : disabledItemHandlerMapper : computedMin : computedMax"
-        [markerHandler]="markerHandler"
-        [hoveredItem]="hoveredItem"
-        (hoveredItemChange)="onHoveredItemChange($event)"
         (dayClick)="onDayClick($event)"
+        (hoveredItemChange)="onHoveredItemChange($event)"
     ></tui-primitive-calendar>
 </ng-template>

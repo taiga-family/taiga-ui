@@ -2,11 +2,11 @@
 <div
     tuiWrapper
     class="t-wrapper"
-    [appearance]="computedAppearance"
-    [hover]="pseudoHover"
     [active]="pseudoActive"
+    [appearance]="computedAppearance"
     [disabled]="computedDisabled"
     [focus]="computedFocusVisible"
+    [hover]="pseudoHover"
 >
     <span class="t-content">
         <span
@@ -34,7 +34,7 @@
     <tui-loader
         *ngIf="showLoader"
         class="t-loader"
-        [size]="loaderSize"
         [inheritColor]="true"
+        [size]="loaderSize"
     ></tui-loader>
 </div>

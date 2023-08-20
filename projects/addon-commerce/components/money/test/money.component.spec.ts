@@ -16,12 +16,12 @@ describe(`Money`, () => {
     @Component({
         template: `
             <tui-money
-                [value]="value"
-                [decimal]="decimal"
+                [colored]="colored"
                 [currency]="currency"
+                [decimal]="decimal"
                 [precision]="precision"
                 [sign]="sign"
-                [colored]="colored"
+                [value]="value"
             ></tui-money>
         `,
     })

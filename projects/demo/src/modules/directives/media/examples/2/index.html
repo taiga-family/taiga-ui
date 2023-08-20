@@ -18,19 +18,19 @@
         class="controls"
     >
         <button
+            appearance="flat"
+            shape="rounded"
+            size="s"
+            title="Play/Pause"
             tuiIconButton
             type="button"
-            title="Play/Pause"
-            size="s"
-            shape="rounded"
-            appearance="flat"
             [icon]="icon"
             (click)="toggleState()"
         ></button>
         <input
+            step="any"
             tuiSlider
             type="range"
-            step="any"
             class="slider"
             [max]="video.duration"
             [(ngModel)]="currentTime"

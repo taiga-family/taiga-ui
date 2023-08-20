@@ -54,17 +54,17 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-card-grouped
-                    [formControl]="control"
                     [autocompleteEnabled]="autocompleteEnabled"
                     [cardSrc]="cardSrc"
                     [codeLength]="codeLength"
                     [exampleText]="exampleText"
-                    [readOnly]="readOnly"
                     [focusable]="focusable"
-                    [pseudoInvalid]="pseudoInvalid"
+                    [formControl]="control"
+                    [pseudoActive]="pseudoPressed"
                     [pseudoFocus]="pseudoFocused"
                     [pseudoHover]="pseudoHovered"
-                    [pseudoActive]="pseudoPressed"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
                     (binChange)="onBinChange($event)"
                 ></tui-input-card-grouped>
             </ng-template>
@@ -97,16 +97,16 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="autocompleteEnabled"
                 documentationPropertyMode="input"
+                documentationPropertyName="autocompleteEnabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="autocompleteEnabled"
             >
                 Browser autocomplete of card
             </ng-template>
             <ng-template
-                documentationPropertyName="cardSrc"
                 documentationPropertyMode="input"
+                documentationPropertyName="cardSrc"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="getContentVariants(template)"
                 [(documentationPropertyValue)]="cardSrcSelected"
@@ -114,16 +114,16 @@
                 SVG card icon
             </ng-template>
             <ng-template
-                documentationPropertyName="exampleText"
                 documentationPropertyMode="input"
+                documentationPropertyName="exampleText"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="exampleText"
             >
                 An example of input
             </ng-template>
             <ng-template
-                documentationPropertyName="codeLength"
                 documentationPropertyMode="input"
+                documentationPropertyName="codeLength"
                 documentationPropertyType="3 | 4"
                 [documentationPropertyValues]="codeLengthVariants"
                 [(documentationPropertyValue)]="codeLength"
@@ -131,8 +131,8 @@
                 Code length
             </ng-template>
             <ng-template
-                documentationPropertyName="binChange"
                 documentationPropertyMode="output"
+                documentationPropertyName="binChange"
                 documentationPropertyType="string | null"
             >
                 BIN value (card first 6 symbols)

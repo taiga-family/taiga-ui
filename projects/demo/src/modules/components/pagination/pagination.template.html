@@ -42,42 +42,42 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-pagination
+                [activePadding]="activePadding"
                 [focusable]="focusable"
                 [length]="length"
-                [size]="size"
-                [activePadding]="activePadding"
                 [sidePadding]="sidePadding"
+                [size]="size"
                 [(index)]="index"
             ></tui-pagination>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="focusable"
                 documentationPropertyMode="input"
+                documentationPropertyName="focusable"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="focusable"
             >
                 Accepts focus with keyboard
             </ng-template>
             <ng-template
-                documentationPropertyName="index"
                 documentationPropertyMode="input-output"
+                documentationPropertyName="index"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="index"
             >
                 Active page index
             </ng-template>
             <ng-template
-                documentationPropertyName="length"
                 documentationPropertyMode="input"
+                documentationPropertyName="length"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="length"
             >
                 Total pages count
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeS | TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
@@ -85,16 +85,16 @@
                 Size
             </ng-template>
             <ng-template
-                documentationPropertyName="activePadding"
                 documentationPropertyMode="input"
+                documentationPropertyName="activePadding"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="activePadding"
             >
                 Amount of visible pages around active page
             </ng-template>
             <ng-template
-                documentationPropertyName="sidePadding"
                 documentationPropertyMode="input"
+                documentationPropertyName="sidePadding"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="sidePadding"
             >

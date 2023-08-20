@@ -1,22 +1,22 @@
 <tui-primitive-textfield
     tuiValueAccessor
     class="t-input"
-    [nativeId]="nativeId"
     [disabled]="disabled"
-    [maskito]="maskOptions"
-    [readOnly]="readOnly"
     [invalid]="computedInvalid"
-    [pseudoHover]="pseudoHover"
+    [maskito]="maskOptions"
+    [nativeId]="nativeId"
     [pseudoActive]="pseudoActive"
     [pseudoFocus]="pseudoFocus"
+    [pseudoHover]="pseudoHover"
+    [readOnly]="readOnly"
     [(value)]="value"
     (focusedChange)="onFocused($event)"
 >
     <input
-        tuiTextfield
         inputmode="numeric"
         placeholder="00/00"
         translate="no"
+        tuiTextfield
         type=""
         [attr.autocomplete]="autocomplete"
     />

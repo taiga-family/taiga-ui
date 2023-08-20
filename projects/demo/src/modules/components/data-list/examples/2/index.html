@@ -4,9 +4,9 @@
     [(open)]="dropdownOpen"
 >
     <button
-        tuiIconButton
         appearance="flat"
         icon="tuiIconMoreVertical"
+        tuiIconButton
         type="button"
         [pseudoHover]="dropdown.open || null"
     ></button>
@@ -17,8 +17,8 @@
 >
     <tui-data-list
         tuiDataListDropdownManager
-        [tuiActiveZoneParent]="activeZone"
         [size]="size"
+        [tuiActiveZoneParent]="activeZone"
     >
         <button
             *tuiLet="'French Fries' as item"
@@ -28,20 +28,20 @@
             {{ item }}
         </button>
         <button
-            tuiOption
-            tuiDropdownSided
             tuiDropdownAlign="right"
-            [tuiDropdownManual]="false"
+            tuiDropdownSided
+            tuiOption
             [tuiDropdown]="burgersTmp"
+            [tuiDropdownManual]="false"
         >
             Burgers
         </button>
         <button
-            tuiOption
-            tuiDropdownSided
             tuiDropdownAlign="right"
-            [tuiDropdownManual]="false"
+            tuiDropdownSided
+            tuiOption
             [tuiDropdown]="drinksTmp"
+            [tuiDropdownManual]="false"
         >
             Drinks
         </button>
@@ -66,11 +66,11 @@
                 {{ burger }}
             </button>
             <button
-                tuiOption
-                tuiDropdownSided
                 tuiDropdownAlign="right"
-                [tuiDropdownManual]="false"
+                tuiDropdownSided
+                tuiOption
                 [tuiDropdown]="drinksTmp"
+                [tuiDropdownManual]="false"
             >
                 Nested menu
             </button>

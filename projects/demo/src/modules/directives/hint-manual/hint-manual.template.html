@@ -19,11 +19,11 @@
         <tui-doc-demo>
             <button
                 tuiButton
-                type="button"
                 tuiHint="It says 'Hi all!' into console"
-                [tuiHintManual]="show"
+                type="button"
                 [tuiHintAppearance]="appearance"
                 [tuiHintDirection]="direction"
+                [tuiHintManual]="show"
                 (click)="sayHi()"
             >
                 A strange button
@@ -31,15 +31,15 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="tuiHint"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiHint"
                 documentationPropertyType="PolymorpheusContent"
             >
                 Content
             </ng-template>
             <ng-template
-                documentationPropertyName="tuiHintManual"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiHintManual"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="show"
             >

@@ -15,9 +15,9 @@
             *ngFor="let label of labels; let index = index"
             size="s"
             class="item"
+            [active]="isItemActive(index)"
             [color]="getColor(index)"
             [text]="label"
-            [active]="isItemActive(index)"
             (tuiHoveredChange)="onHover(index, $event)"
         >
             <tui-money

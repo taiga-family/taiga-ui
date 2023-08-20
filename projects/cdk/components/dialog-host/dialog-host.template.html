@@ -1,10 +1,10 @@
 <section
     *ngFor="let item of dialogs"
-    tuiFocusTrap
-    tuiScrollRef
-    tuiOverscroll="all"
-    role="dialog"
     aria-modal="true"
+    role="dialog"
+    tuiFocusTrap
+    tuiOverscroll="all"
+    tuiScrollRef
     class="t-dialog"
     @tuiParentAnimation
     [attr.aria-labelledby]="item.id"
@@ -15,6 +15,6 @@
     *tuiLet="isDialogClosesOnBack$ | async as isDialogClosesOnBack"
     class="t-overlay"
     [class.t-overlay_visible]="dialogs.length"
-    (window:popstate)="closeLast(dialogs, !!isDialogClosesOnBack)"
     (transitionend)="onDialog($event, !!dialogs.length, !!isDialogClosesOnBack)"
+    (window:popstate)="closeLast(dialogs, !!isDialogClosesOnBack)"
 ></div>

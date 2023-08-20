@@ -5,7 +5,7 @@
     {{ heading }}
 </h1>
 <ng-content></ng-content>
-<ng-container *ngIf="$any(propertiesConnectors) | tuiFilter : matcher : excludedProperties as properties">
+<ng-container *ngIf="$any(propertiesConnectors) | tuiFilter: matcher : excludedProperties as properties">
     <table
         *ngIf="properties.length"
         class="t-table"
@@ -50,17 +50,17 @@
                     {{ propertyConnector.documentationPropertyType }}
                     <tui-tooltip
                         *ngIf="propertyConnector.documentationPropertyType | tuiShowContentTooltip"
-                        [describeId]="propertyConnector.attrName"
                         [content]="content"
+                        [describeId]="propertyConnector.attrName"
                     >
                         <ng-template #content>
                             {{ texts[4] }}
                             <a
+                                href="https://github.com/taiga-family/ng-polymorpheus"
+                                rel="noreferrer"
+                                target="_blank"
                                 tuiLink
                                 tuiMode="onDark"
-                                target="_blank"
-                                rel="noreferrer"
-                                href="https://github.com/taiga-family/ng-polymorpheus"
                             >
                                 <code>ng-polymorpheus</code>
                             </a>
@@ -75,20 +75,20 @@
                 <ng-container *ngIf="propertyConnector.shouldShowValues; else elseEmitter">
                     <tui-select
                         *ngIf="propertyConnector.hasItems; else noItems"
-                        tuiTextfieldSize="m"
                         tuiDropdownLimitWidth="min"
+                        tuiTextfieldSize="m"
+                        [nativeId]="propertyConnector.attrName"
+                        [ngModel]="propertyConnector.documentationPropertyValue"
                         [tuiTextfieldCleaner]="propertyConnector.documentationPropertyType | tuiShowCleanerPipe"
                         [tuiTextfieldLabelOutside]="true"
-                        [nativeId]="propertyConnector.attrName"
                         [valueContent]="selectContent"
-                        [ngModel]="propertyConnector.documentationPropertyValue"
                         (ngModelChange)="propertyConnector.onValueChange($event)"
                     >
                         <code class="t-exception">null</code>
                         <tui-data-list-wrapper
                             *tuiDataList
-                            [items]="propertyConnector.documentationPropertyValues"
                             [itemContent]="selectContent"
+                            [items]="propertyConnector.documentationPropertyValues"
                         ></tui-data-list-wrapper>
                     </tui-select>
                     <ng-template
@@ -104,8 +104,8 @@
                                 *ngSwitchCase="'boolean'"
                                 size="l"
                                 [nativeId]="propertyConnector.attrName"
-                                [showIcons]="true"
                                 [ngModel]="propertyConnector.documentationPropertyValue"
+                                [showIcons]="true"
                                 (ngModelChange)="propertyConnector.onValueChange($event)"
                             ></tui-toggle>
 
@@ -113,8 +113,8 @@
                                 *ngSwitchCase="'string'"
                                 tuiTextfieldSize="m"
                                 [nativeId]="propertyConnector.attrName"
-                                [tuiTextfieldLabelOutside]="true"
                                 [tuiTextfieldCleaner]="true"
+                                [tuiTextfieldLabelOutside]="true"
                                 [value]="propertyConnector.documentationPropertyValue || ''"
                                 (valueChange)="propertyConnector.onValueChange($event)"
                             ></tui-primitive-textfield>
@@ -126,8 +126,8 @@
                                 <tui-primitive-textfield
                                     tuiTextfieldSize="m"
                                     [attr.id]="propertyConnector.attrName"
-                                    [tuiTextfieldLabelOutside]="true"
                                     [tuiInputOpacity]="propertyConnector.documentationPropertyValue | tuiGetOpacity"
+                                    [tuiTextfieldLabelOutside]="true"
                                     [value]="propertyConnector.documentationPropertyValue | tuiGetColorPipe"
                                     (valueChange)="onColorChange(propertyConnector, $event)"
                                 >
@@ -138,10 +138,10 @@
                                 </tui-primitive-textfield>
                                 <tui-input-number
                                     tuiTextfieldSize="m"
-                                    [step]="1"
-                                    [min]="0"
                                     [max]="100"
+                                    [min]="0"
                                     [ngModel]="propertyConnector.documentationPropertyValue | tuiGetOpacity"
+                                    [step]="1"
                                     (ngModelChange)="onOpacityChange(propertyConnector, $event)"
                                 >
                                     Opacity
@@ -152,9 +152,9 @@
                                 *ngSwitchCase="'number'"
                                 tuiTextfieldSize="m"
                                 [nativeId]="propertyConnector.attrName"
-                                [tuiTextfieldLabelOutside]="true"
-                                [step]="1"
                                 [ngModel]="propertyConnector.documentationPropertyValue"
+                                [step]="1"
+                                [tuiTextfieldLabelOutside]="true"
                                 (ngModelChange)="propertyConnector.onValueChange($event || 0)"
                             ></tui-input-number>
 
@@ -166,8 +166,8 @@
                                     "
                                     tuiTextfieldSize="m"
                                     [nativeId]="propertyConnector.attrName"
-                                    [tuiTextfieldLabelOutside]="true"
                                     [tuiTextfieldCleaner]="true"
+                                    [tuiTextfieldLabelOutside]="true"
                                     [value]="propertyConnector.documentationPropertyValue.toString()"
                                     (valueChange)="propertyConnector.onValueChange($event)"
                                 >

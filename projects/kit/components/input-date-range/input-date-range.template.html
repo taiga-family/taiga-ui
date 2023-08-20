@@ -11,23 +11,23 @@
         automation-id="tui-input-date-range__textfield"
         tuiValueAccessor
         class="t-textfield"
-        [tuiTextfieldIcon]="calendarIcon && iconContent"
-        [tuiTextfieldFiller]="getComputedRangeFiller(dateFiller || '')"
+        [disabled]="computedDisabled"
+        [invalid]="computedInvalid"
+        [maskito]="computedMask"
+        [nativeId]="nativeId"
+        [pseudoActive]="pseudoActive"
         [pseudoFocus]="innerPseudoFocused"
         [pseudoHover]="pseudoHover"
-        [pseudoActive]="pseudoActive"
-        [invalid]="computedInvalid"
-        [nativeId]="nativeId"
         [readOnly]="readOnly"
-        [disabled]="computedDisabled"
-        [maskito]="computedMask"
+        [tuiTextfieldFiller]="getComputedRangeFiller(dateFiller || '')"
+        [tuiTextfieldIcon]="calendarIcon && iconContent"
         [value]="computedValue"
         (valueChange)="onValueChange($event)"
     >
         <ng-content></ng-content>
         <ng-content
-            select="input"
             ngProjectAs="input"
+            select="input"
         ></ng-content>
 
         <div
@@ -44,9 +44,9 @@
     <ng-template #iconContent>
         <tui-svg
             *polymorpheusOutlet="calendarIcon as src; context: {$implicit: size}"
-            tuiWrapper
             appearance="icon"
             automation-id="tui-input-date-range__icon"
+            tuiWrapper
             [class.t-icon]="!computedDisabled"
             [src]="src"
             (click)="onIconClick()"
@@ -58,11 +58,11 @@
             [defaultViewedMonth]="defaultViewedMonth"
             [disabledItemHandler]="disabledItemHandler"
             [items]="items"
-            [min]="computedMin"
-            [max]="computedMax"
             [markerHandler]="markerHandler"
-            [minLength]="minLength"
+            [max]="computedMax"
             [maxLength]="maxLength"
+            [min]="computedMin"
+            [minLength]="minLength"
             [value]="value"
             (valueChange)="onRangeChange($event)"
         ></tui-calendar-range>

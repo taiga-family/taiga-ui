@@ -24,12 +24,12 @@ import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/tes
         <tui-root>
             <tui-input-date
                 [formControl]="control"
-                [readOnly]="readOnly"
                 [min]="min"
+                [readOnly]="readOnly"
+                [tuiHintContent]="hintContent"
                 [tuiTextfieldCleaner]="cleaner"
                 [tuiTextfieldLabelOutside]="labelOutside"
                 [tuiTextfieldSize]="size"
-                [tuiHintContent]="hintContent"
             >
                 Select date
             </tui-input-date>

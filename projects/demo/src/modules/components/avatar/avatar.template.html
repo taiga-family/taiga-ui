@@ -51,8 +51,8 @@
             <tui-notification class="tui-space_bottom-4">
                 Sizes were updated and synced with
                 <a
-                    tuiLink
                     routerLink="/icons/marker-icon"
+                    tuiLink
                 >
                     <code>MarkerIcon</code>
                 </a>
@@ -76,64 +76,64 @@
         <tui-doc-demo>
             <tui-avatar
                 new
+                [autoColor]="autoColor"
                 [avatarUrl]="avatarUrl"
-                [text]="text"
+                [fallback]="fallback"
                 [rounded]="rounded"
                 [size]="size"
-                [autoColor]="autoColor"
-                [fallback]="fallback"
-                [style.--tui-avatar-color]="color"
                 [style.--tui-avatar-background]="background"
+                [style.--tui-avatar-color]="color"
+                [text]="text"
             ></tui-avatar>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="autoColor"
                 documentationPropertyType="boolean"
-                documentationPropertyMode="input"
                 [(documentationPropertyValue)]="autoColor"
             >
                 Auto color if there is no image
             </ng-template>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="avatarUrl"
                 documentationPropertyType="string | SafeResourceUrl | null"
-                documentationPropertyMode="input"
                 [documentationPropertyValues]="avatarUrlVariants"
                 [(documentationPropertyValue)]="avatarUrl"
             >
                 Avatar URL or Taiga UI icon name
             </ng-template>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="fallback"
                 documentationPropertyType="string | SafeHtml | null"
-                documentationPropertyMode="input"
                 [documentationPropertyValues]="fallbackVariants"
                 [(documentationPropertyValue)]="fallback"
             >
                 Avatar URL or Taiga UI icon name
             </ng-template>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="rounded"
                 documentationPropertyType="boolean"
-                documentationPropertyMode="input"
                 [(documentationPropertyValue)]="rounded"
             >
                 Rounded mode
             </ng-template>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="size"
                 documentationPropertyType="TuiSizeXXS | TuiSizeXXL"
-                documentationPropertyMode="input"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
                 Size
             </ng-template>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="text"
                 documentationPropertyType="string"
-                documentationPropertyMode="input"
                 [(documentationPropertyValue)]="text"
             >
                 Name (Avatar shows first letters of name if there is no image)

@@ -16,15 +16,15 @@
 <input
     #native
     automation-id="tui-input-inline__native"
-    type="text"
     tuiMaskAccessor
+    type="text"
     class="t-native"
     [attr.maxLength]="maxLength"
-    [id]="id"
     [disabled]="computedDisabled"
+    [id]="id"
+    [ngModel]="value"
     [readOnly]="readOnly"
     [tuiFocusable]="focusable"
-    [ngModel]="value"
     (ngModelChange)="onValueChange($event)"
     (scroll)="onScroll()"
     (tuiFocusedChange)="onFocused($event)"

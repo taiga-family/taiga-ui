@@ -1,17 +1,17 @@
 <p>
     <button
+        size="xs"
         tuiButton
         type="button"
-        size="xs"
         class="tui-space_right-2"
         (click)="showSkeleton()"
     >
         Show/hide skeleton
     </button>
     <button
+        size="xs"
         tuiButton
         type="button"
-        size="xs"
         (click)="toggleLight()"
     >
         Light mode
@@ -28,10 +28,10 @@
                 >
                     <h3
                         class="tui-form__header tui-form__header_margin-top_none"
-                        [class.tui-skeleton]="skeletonVisible"
+                        [class.tui-skeleton_light]="lightMode"
                         [class.tui-skeleton_short]="skeletonVisible"
                         [class.tui-skeleton_text]="skeletonVisible"
-                        [class.tui-skeleton_light]="lightMode"
+                        [class.tui-skeleton]="skeletonVisible"
                     >
                         A header
                     </h3>
@@ -39,13 +39,13 @@
                         <tui-input
                             formControlName="nameValue"
                             tuiHintContent="With a hint"
-                            [class.tui-skeleton]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton]="skeletonVisible"
                         >
                             Some input
                             <input
-                                tuiTextfield
                                 placeholder="Name Surname"
+                                tuiTextfield
                             />
                         </tui-input>
                     </div>
@@ -53,8 +53,8 @@
                         <div class="tui-form__multi-field">
                             <tui-input-password
                                 formControlName="passwordValue"
-                                [class.tui-skeleton]="skeletonVisible"
                                 [class.tui-skeleton_light]="lightMode"
+                                [class.tui-skeleton]="skeletonVisible"
                             >
                                 Some password input
                             </tui-input-password>
@@ -62,8 +62,8 @@
                         <div class="tui-form__multi-field">
                             <tui-input-number
                                 formControlName="moneyValue"
-                                [class.tui-skeleton]="skeletonVisible"
                                 [class.tui-skeleton_light]="lightMode"
+                                [class.tui-skeleton]="skeletonVisible"
                             >
                                 Some number input
                             </tui-input-number>
@@ -72,8 +72,8 @@
                     <div class="tui-form__row tui-form__row_half-width">
                         <tui-input-time
                             formControlName="timeValue"
-                            [class.tui-skeleton]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton]="skeletonVisible"
                         >
                             Some textfield
                         </tui-input-time>
@@ -83,8 +83,8 @@
                             formControlName="osnoValue"
                             size="l"
                             class="tui-form__checkbox"
-                            [class.tui-skeleton]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton]="skeletonVisible"
                         >
                             First option
                         </tui-checkbox-labeled>
@@ -92,8 +92,8 @@
                             formControlName="usnValue"
                             size="l"
                             class="tui-form__checkbox"
-                            [class.tui-skeleton]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton]="skeletonVisible"
                         >
                             Cool option
                         </tui-checkbox-labeled>
@@ -101,8 +101,8 @@
                             formControlName="eshnValue"
                             size="l"
                             class="tui-form__checkbox"
-                            [class.tui-skeleton]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton]="skeletonVisible"
                         >
                             Boring option
                         </tui-checkbox-labeled>
@@ -110,32 +110,32 @@
                             formControlName="envdValue"
                             size="l"
                             class="tui-form__checkbox"
-                            [class.tui-skeleton]="skeletonVisible"
-                            [class.tui-skeleton_short]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton_short]="skeletonVisible"
+                            [class.tui-skeleton]="skeletonVisible"
                         >
                             Interesting option
                         </tui-checkbox-labeled>
                     </div>
                     <div class="tui-form__buttons">
                         <button
-                            tuiButton
                             size="l"
+                            tuiButton
                             type="submit"
                             class="tui-form__button"
-                            [class.tui-skeleton]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton]="skeletonVisible"
                         >
                             Submit
                         </button>
                         <button
-                            tuiButton
-                            type="button"
                             appearance="flat"
                             size="l"
+                            tuiButton
+                            type="button"
                             class="tui-form__button"
-                            [class.tui-skeleton]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton]="skeletonVisible"
                         >
                             Cancel
                         </button>

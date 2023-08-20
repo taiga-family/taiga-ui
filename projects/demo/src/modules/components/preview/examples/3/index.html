@@ -1,6 +1,6 @@
 <button
-    tuiButton
     size="m"
+    tuiButton
     type="button"
     class="tui-space_bottom-4"
     (click)="show()"
@@ -18,25 +18,25 @@
     >
         <tui-preview-title>{{ title$ | async }}</tui-preview-title>
         <tui-preview-pagination
-            [length]="items.length"
             [index]="index$$.value"
+            [length]="items.length"
             (indexChange)="index$$.next($event)"
         ></tui-preview-pagination>
 
         <button
-            tuiIconButton
-            tuiPreviewAction
             icon="tuiIconDownload"
             title="Download"
+            tuiIconButton
+            tuiPreviewAction
             type="button"
             (click)="download()"
         ></button>
 
         <button
-            tuiIconButton
-            tuiPreviewAction
             icon="tuiIconClose"
             title="Close"
+            tuiIconButton
+            tuiPreviewAction
             type="button"
             (click)="preview.complete()"
         ></button>
@@ -53,9 +53,9 @@
 
         <img
             *ngIf="imageSrc$ | async as src"
-            width="512"
-            height="512"
             alt="img source"
+            height="512"
+            width="512"
             [src]="src"
         />
 

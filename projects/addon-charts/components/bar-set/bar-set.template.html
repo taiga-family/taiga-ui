@@ -18,19 +18,19 @@
 </ng-template>
 <ng-template
     #bar
-    let-item
-    let-index="index"
     let-flexible="flexible"
+    let-index="index"
+    let-item
 >
     <tui-bar
         automation-id="tui-bar-set__bar"
         class="t-bar"
         [class.t-bar_flexible]="flexible"
         [class.t-bar_negative]="item < 0"
-        [style.height.%]="getHeight(item)"
-        [style.background]="getColor(index)"
-        [value]="computedSegments"
         [size]="computedSize"
+        [style.background]="getColor(index)"
+        [style.height.%]="getHeight(item)"
+        [value]="computedSegments"
     ></tui-bar>
 </ng-template>
 <span class="t-label">

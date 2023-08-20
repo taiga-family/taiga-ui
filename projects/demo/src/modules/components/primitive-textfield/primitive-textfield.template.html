@@ -19,8 +19,8 @@
             <tui-notification class="tui-space_bottom-4 b-form">
                 Simplified version of
                 <a
-                    tuiLink
                     routerLink="/components/input-password"
+                    tuiLink
                 >
                     <code>InputPassword</code>
                 </a>
@@ -52,28 +52,28 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-primitive-textfield
-                [focusable]="focusable"
-                [tuiTextfieldCleaner]="cleaner"
-                [tuiTextfieldCustomContent]="customContent"
-                [tuiTextfieldLabelOutside]="labelOutside"
-                [tuiTextfieldSize]="size"
-                [tuiTextfieldFiller]="filler"
-                [pseudoActive]="pseudoPressed"
-                [pseudoFocus]="pseudoFocused"
-                [pseudoHover]="pseudoHovered"
                 [disabled]="disabled"
                 [editable]="editable"
                 [filler]="filler"
-                [tuiTextfieldIcon]="iconContent"
-                [tuiTextfieldIconLeft]="iconLeft"
-                [readOnly]="readOnly"
-                [tuiTextfieldPrefix]="prefix"
-                [tuiTextfieldPostfix]="postfix"
+                [focusable]="focusable"
                 [invalid]="invalid"
+                [pseudoActive]="pseudoPressed"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [readOnly]="readOnly"
+                [style.text-align]="textAlign"
+                [tuiHintAppearance]="hintAppearance"
                 [tuiHintContent]="hintContent"
                 [tuiHintDirection]="hintDirection"
-                [tuiHintAppearance]="hintAppearance"
-                [style.text-align]="textAlign"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldCustomContent]="customContent"
+                [tuiTextfieldFiller]="filler"
+                [tuiTextfieldIcon]="iconContent"
+                [tuiTextfieldIconLeft]="iconLeft"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldPostfix]="postfix"
+                [tuiTextfieldPrefix]="prefix"
+                [tuiTextfieldSize]="size"
                 [(value)]="value"
             >
                 Component label
@@ -99,24 +99,24 @@
         </ng-template>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="disabled"
                 documentationPropertyMode="input"
+                documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
                 Disabled state
             </ng-template>
             <ng-template
-                documentationPropertyName="editable"
                 documentationPropertyMode="input"
+                documentationPropertyName="editable"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="editable"
             >
                 Native input allows inputting
             </ng-template>
             <ng-template
-                documentationPropertyName="filler"
                 documentationPropertyMode="input"
+                documentationPropertyName="filler"
                 documentationPropertyType="string"
                 [documentationPropertyDeprecated]="true"
                 [(documentationPropertyValue)]="filler"
@@ -126,16 +126,16 @@
                 instead
             </ng-template>
             <ng-template
-                documentationPropertyName="tuiTextfieldIcon"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiTextfieldIcon"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="selectedIcon"
             >
                 Icon content. If content is a string, it is used as stringified svg or a name of icon registered in
                 <a
-                    tuiLink
                     routerLink="/services/svg-service"
+                    tuiLink
                 >
                     <code>SvgService</code>
                 </a>
@@ -145,56 +145,56 @@
                 </p>
             </ng-template>
             <ng-template
-                documentationPropertyName="prefix"
                 documentationPropertyMode="input"
+                documentationPropertyName="prefix"
                 documentationPropertyType="string"
                 [documentationPropertyDeprecated]="true"
                 [(documentationPropertyValue)]="prefix"
             >
                 Uneditable text before value. For example, currency symbol in
                 <a
-                    tuiLink
                     routerLink="/components/input-number"
+                    tuiLink
                 >
                     <code>InputNumber</code>
                 </a>
                 .
             </ng-template>
             <ng-template
-                documentationPropertyName="postfix"
                 documentationPropertyMode="input"
+                documentationPropertyName="postfix"
                 documentationPropertyType="string"
                 [documentationPropertyDeprecated]="true"
                 [(documentationPropertyValue)]="postfix"
             >
                 Uneditable text after value. For example, currency symbol in
                 <a
-                    tuiLink
                     routerLink="/components/input-number"
+                    tuiLink
                 >
                     <code>InputNumber</code>
                 </a>
                 .
             </ng-template>
             <ng-template
-                documentationPropertyName="readOnly"
                 documentationPropertyMode="input"
+                documentationPropertyName="readOnly"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="readOnly"
             >
                 Component is read only
             </ng-template>
             <ng-template
-                documentationPropertyName="invalid"
                 documentationPropertyMode="input"
+                documentationPropertyName="invalid"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="invalid"
             >
                 Invalid state
             </ng-template>
             <ng-template
-                documentationPropertyName="value"
                 documentationPropertyMode="input-output"
+                documentationPropertyName="value"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="value"
             >
@@ -207,8 +207,8 @@
         <tui-doc-documentation heading="CSS customization">
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyType="string"
                 documentationPropertyName="style.text-align"
+                documentationPropertyType="string"
                 [documentationPropertyValues]="textAlignVariants"
                 [(documentationPropertyValue)]="textAlign"
             >

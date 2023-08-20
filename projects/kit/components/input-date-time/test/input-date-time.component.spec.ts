@@ -25,8 +25,8 @@ describe(`InputDateTime`, () => {
             <tui-root>
                 <tui-input-date-time
                     [formControl]="control"
-                    [min]="min"
                     [max]="max"
+                    [min]="min"
                 ></tui-input-date-time>
             </tui-root>
         `,

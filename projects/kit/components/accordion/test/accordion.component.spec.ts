@@ -23,7 +23,10 @@ import {
 } from '@taiga-ui/testing';
 
 class Account {
-    constructor(readonly name: string, readonly balance: number) {}
+    constructor(
+        readonly name: string,
+        readonly balance: number,
+    ) {}
 
     toString(): string {
         return `${this.name} (${this.balance})`;
@@ -74,18 +77,18 @@ describe(`Accordion`, () => {
                         <div>
                             <form [formGroup]="testForm">
                                 <tui-input
-                                    tuiTextfieldSize="l"
                                     formControlName="name"
+                                    tuiTextfieldSize="l"
                                 >
                                     Enter your full name
                                     <input
-                                        tuiTextfield
                                         placeholder="Ivanov Ivan Ivanovich"
+                                        tuiTextfield
                                     />
                                 </tui-input>
                                 <tui-select
-                                    tuiTextfieldSize="l"
                                     formControlName="accounts"
+                                    tuiTextfieldSize="l"
                                 >
                                     Select account
                                     <tui-data-list-wrapper

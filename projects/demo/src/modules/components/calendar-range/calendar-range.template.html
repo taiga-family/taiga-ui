@@ -39,9 +39,9 @@
             <ng-template #localizationDescription>
                 Use
                 <a
-                    tuiLink
-                    routerLink="/utils/tokens"
                     fragment="first-day-of-week"
+                    routerLink="/utils/tokens"
+                    tuiLink
                 >
                     TUI_FIRST_DAY_OF_WEEK
                 </a>
@@ -58,17 +58,17 @@
                 [disabledItemHandler]="disabledItemHandler"
                 [items]="items"
                 [markerHandler]="markerHandler"
-                [min]="min"
                 [max]="max"
-                [minLength]="minLength"
                 [maxLength]="maxLength"
+                [min]="min"
+                [minLength]="minLength"
                 (valueChange)="documentationPropertyRangeChange.emitEvent($event)"
             ></tui-calendar-range>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="defaultViewedMonth"
                 documentationPropertyMode="input"
+                documentationPropertyName="defaultViewedMonth"
                 documentationPropertyType="TuiMonth"
                 [documentationPropertyValues]="defaultViewedMonthVariants"
                 [(documentationPropertyValue)]="defaultViewedMonth"
@@ -76,8 +76,8 @@
                 Default month to show
             </ng-template>
             <ng-template
-                documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
+                documentationPropertyName="disabledItemHandler"
                 documentationPropertyType="TuiBooleanHandler<TuiDay>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
@@ -87,8 +87,8 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="items"
                 documentationPropertyMode="input"
+                documentationPropertyName="items"
                 documentationPropertyType="TuiDayRangePeriod[]"
                 [documentationPropertyValues]="itemsVariants"
                 [(documentationPropertyValue)]="items"
@@ -96,8 +96,8 @@
                 Fixed intervals (shows 2 calendars with empty array)
             </ng-template>
             <ng-template
-                documentationPropertyName="markerHandler"
                 documentationPropertyMode="input"
+                documentationPropertyName="markerHandler"
                 documentationPropertyType="TuiMarkerHandler"
                 [documentationPropertyValues]="markerHandlerVariants"
                 [(documentationPropertyValue)]="markerHandler"
@@ -105,8 +105,8 @@
                 A handler that gets date and returns null or a tuple with circled marker colors
             </ng-template>
             <ng-template
-                documentationPropertyName="min"
                 documentationPropertyMode="input"
+                documentationPropertyName="min"
                 documentationPropertyType="TuiDay | null"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
@@ -114,8 +114,8 @@
                 Min date
             </ng-template>
             <ng-template
-                documentationPropertyName="max"
                 documentationPropertyMode="input"
+                documentationPropertyName="max"
                 documentationPropertyType="TuiDay | null"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
@@ -123,8 +123,8 @@
                 Max date
             </ng-template>
             <ng-template
-                documentationPropertyName="minLength"
                 documentationPropertyMode="input"
+                documentationPropertyName="minLength"
                 documentationPropertyType="TuiDayLike | null"
                 [documentationPropertyValues]="minLengthVariants"
                 [(documentationPropertyValue)]="minLength"
@@ -132,8 +132,8 @@
                 Minimal length of range
             </ng-template>
             <ng-template
-                documentationPropertyName="maxLength"
                 documentationPropertyMode="input"
+                documentationPropertyName="maxLength"
                 documentationPropertyType="TuiDayLike | null"
                 [documentationPropertyValues]="maxLengthVariants"
                 [(documentationPropertyValue)]="maxLength"
@@ -142,8 +142,8 @@
             </ng-template>
             <ng-template
                 #documentationPropertyRangeChange="documentationProperty"
-                documentationPropertyName="rangeChange"
                 documentationPropertyMode="output"
+                documentationPropertyName="rangeChange"
                 documentationPropertyType="TuiDayRange"
             >
                 Selected date range

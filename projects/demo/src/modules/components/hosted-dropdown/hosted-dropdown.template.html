@@ -65,14 +65,14 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-hosted-dropdown
-                [content]="template ? dropdown : content"
                 [canOpen]="canOpen"
+                [content]="template ? dropdown : content"
                 [sided]="sided"
                 [tuiDropdownAlign]="dropdownAlign"
                 [tuiDropdownDirection]="dropdownDirection"
                 [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                [tuiDropdownMinHeight]="dropdownMinHeight"
                 [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                [tuiDropdownMinHeight]="dropdownMinHeight"
                 [tuiDropdownOffset]="dropdownOffset"
                 [(open)]="open"
             >
@@ -90,19 +90,19 @@
                 <div>Do you like using Taiga UI?</div>
                 <p class="buttons">
                     <button
+                        size="m"
                         tuiButton
                         type="button"
-                        size="m"
                         class="button"
                         (click)="onClick()"
                     >
                         Yes
                     </button>
                     <button
-                        tuiButton
-                        type="button"
                         appearance="secondary"
                         size="m"
+                        tuiButton
+                        type="button"
                         class="button"
                         (click)="onClick()"
                     >
@@ -113,16 +113,16 @@
         </ng-template>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="open"
                 documentationPropertyMode="input-output"
+                documentationPropertyName="open"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="open"
             >
                 Open/close state
             </ng-template>
             <ng-template
-                documentationPropertyName="canOpen"
                 documentationPropertyMode="input"
+                documentationPropertyName="canOpen"
                 documentationPropertyType="boolean"
                 [documentationPropertyValues]="canOpenVariants"
                 [(documentationPropertyValue)]="canOpenSelected"
@@ -130,8 +130,8 @@
                 A handler to enable/disable opening
             </ng-template>
             <ng-template
-                documentationPropertyName="content"
                 documentationPropertyMode="input"
+                documentationPropertyName="content"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="contentVariants"
                 [(documentationPropertyValue)]="content"
@@ -139,8 +139,8 @@
                 Content inside a dropdown
             </ng-template>
             <ng-template
-                documentationPropertyName="sided"
                 documentationPropertyMode="input"
+                documentationPropertyName="sided"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="sided"
             >

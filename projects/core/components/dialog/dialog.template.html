@@ -18,10 +18,10 @@
             <div [innerHTML]="text"></div>
             <div class="t-buttons">
                 <button
-                    tuiButton
-                    tuiAutoFocus
-                    type="button"
                     size="m"
+                    tuiAutoFocus
+                    tuiButton
+                    type="button"
                     (click)="context.$implicit.complete()"
                 >
                     {{ $any(context.data)?.button || 'OK' }}
@@ -36,14 +36,14 @@
     class="t-wrapper"
 >
     <button
-        type="button"
-        tuiIconButton
         automation-id="tui-dialog__close"
-        size="s"
         shape="rounded"
+        size="s"
+        tuiIconButton
+        type="button"
         class="t-close"
-        [icon]="icons.close"
         [appearance]="fullscreen ? 'secondary' : ''"
+        [icon]="icons.close"
         [title]="closeWord$ | async"
         (click)="close$.next()"
         (mousedown.prevent.silent)="(0)"

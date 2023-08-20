@@ -48,11 +48,11 @@ describe(`Input`, () => {
                 <form [formGroup]="group">
                     <tui-input
                         formControlName="control"
+                        [readOnly]="readOnly"
+                        [tuiHintContent]="hintContent"
                         [tuiTextfieldCleaner]="cleaner"
                         [tuiTextfieldLabelOutside]="labelOutside"
                         [tuiTextfieldSize]="size"
-                        [tuiHintContent]="hintContent"
-                        [readOnly]="readOnly"
                     >
                         <tui-data-list-wrapper
                             *tuiDataList

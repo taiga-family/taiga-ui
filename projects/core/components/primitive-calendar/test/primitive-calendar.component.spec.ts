@@ -26,8 +26,8 @@ import {
 @Component({
     template: `
         <tui-primitive-calendar
-            [month]="month"
             [disabledItemHandler]="disabledItemHandler"
+            [month]="month"
             [value]="value"
             (dayClick)="onDayClick($event)"
         ></tui-primitive-calendar>

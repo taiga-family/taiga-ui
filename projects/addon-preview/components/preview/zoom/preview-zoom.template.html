@@ -1,13 +1,13 @@
 <ng-container *ngIf="zoomTexts$ | async as texts">
     <section class="t-zoom">
         <button
-            type="button"
             tuiIconButton
             tuiPreviewAction
+            type="button"
             class="t-sign_minus"
+            [disabled]="leftButtonDisabled"
             [icon]="icons.zoomOut"
             [title]="texts.zoomOut"
-            [disabled]="leftButtonDisabled"
             (click)="onMinus()"
         ></button>
         <label tuiSliderThumbLabel>
@@ -23,39 +23,39 @@
             </ng-template>
 
             <input
+                step="any"
                 tuiSlider
                 type="range"
-                step="any"
                 class="t-slider"
-                [min]="min"
                 [max]="max"
+                [min]="min"
                 [ngModel]="value"
                 (ngModelChange)="onModelChange($event)"
             />
         </label>
         <button
-            type="button"
             tuiIconButton
             tuiPreviewAction
+            type="button"
             class="t-sign_plus"
+            [disabled]="rightButtonDisabled"
             [icon]="icons.zoomIn"
             [title]="texts.zoomIn"
-            [disabled]="rightButtonDisabled"
             (click)="onPlus()"
         ></button>
     </section>
 
     <button
-        type="button"
-        tuiIconButton
-        tuiPreviewAction
-        tuiHintDirection="top-right"
         tuiHintAppearance="onDark"
         tuiHintDescribe
+        tuiHintDirection="top-right"
+        tuiIconButton
+        tuiPreviewAction
+        type="button"
         class="t-reset-button"
+        [class.t-invisible]="!collapseVisible"
         [icon]="icons.zoomReset"
         [tuiHint]="texts.reset"
-        [class.t-invisible]="!collapseVisible"
         (click)="onReset()"
     ></button>
 </ng-container>

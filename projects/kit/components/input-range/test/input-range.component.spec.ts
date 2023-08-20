@@ -18,9 +18,9 @@ describe(`InputRange`, () => {
                 [max]="max"
                 [min]="min"
                 [pluralize]="pluralize"
+                [quantum]="quantum"
                 [readOnly]="readOnly"
                 [steps]="steps"
-                [quantum]="quantum"
             ></tui-input-range>
         `,
     })
