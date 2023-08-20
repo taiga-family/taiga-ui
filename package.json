@@ -135,7 +135,7 @@
         "prettier": "2.8.8",
         "rollup": "2.79.1",
         "standard-version": "8.0.2",
-        "stylelint": "15.10.2",
+        "stylelint": "15.10.3",
         "ts-loader": "9.4.4",
         "ts-mockito": "2.6.1",
         "ts-node": "10.9.1",
