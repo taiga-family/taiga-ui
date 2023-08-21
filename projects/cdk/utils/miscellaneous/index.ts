@@ -3,6 +3,7 @@ export * from './array-shallow-equals';
 export * from './array-toggle';
 export * from './clean-object';
 export * from './create-options';
+export * from './create-token';
 export * from './default-sort';
 export * from './distance-between-touches';
 export * from './ease-in-out-quad';

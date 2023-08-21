@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 export interface TuiTableOptions {
@@ -28,7 +28,7 @@ export const TUI_TABLE_DEFAULT_OPTIONS: TuiTableOptions = {
     },
 };
 
-export const TUI_TABLE_OPTIONS = tuiCreateOptions(TUI_TABLE_DEFAULT_OPTIONS);
+export const TUI_TABLE_OPTIONS = tuiCreateToken(TUI_TABLE_DEFAULT_OPTIONS);
 
 export function tuiTableOptionsProvider(options: Partial<TuiTableOptions>): Provider {
     return tuiProvideOptions(TUI_TABLE_OPTIONS, options, TUI_TABLE_DEFAULT_OPTIONS);

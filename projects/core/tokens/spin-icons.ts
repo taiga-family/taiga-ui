@@ -1,4 +1,4 @@
-import {InjectionToken} from '@angular/core';
+import {tuiCreateToken} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiSpinIcons {
@@ -6,9 +6,7 @@ export interface TuiSpinIcons {
     readonly increment: PolymorpheusContent;
 }
 
-export const TUI_SPIN_ICONS = new InjectionToken<TuiSpinIcons>(``, {
-    factory: () => ({
-        decrement: `tuiIconChevronLeft`,
-        increment: `tuiIconChevronRight`,
-    }),
+export const TUI_SPIN_ICONS = tuiCreateToken<TuiSpinIcons>({
+    decrement: `tuiIconChevronLeft`,
+    increment: `tuiIconChevronRight`,
 });

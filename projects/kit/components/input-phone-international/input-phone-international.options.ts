@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 
 export interface TuiInputPhoneInternationalOptions {
@@ -16,7 +16,7 @@ export const TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS: TuiInputPhoneInterna
 /**
  * Default parameters for input phone international component
  */
-export const TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS = tuiCreateOptions(
+export const TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS = tuiCreateToken(
     TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS,
 );
 

@@ -1,8 +1,3 @@
-import {InjectionToken} from '@angular/core';
+import {tuiCreateToken} from '@taiga-ui/cdk';
 
-export const CSS_VARS = new InjectionToken<readonly string[]>(
-    `[CSS_VARS]: CSS vars list for customization`,
-    {
-        factory: () => [],
-    },
-);
+export const CSS_VARS = tuiCreateToken<readonly string[]>([]);

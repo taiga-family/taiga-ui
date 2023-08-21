@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiPreviewIcons {
     readonly rotate: string;
@@ -19,7 +19,7 @@ export const TUI_PREVIEW_ICONS_DEFAULT: TuiPreviewIcons = {
     zoomReset: `tuiIconMinimize`,
 };
 
-export const TUI_PREVIEW_ICONS = tuiCreateOptions(TUI_PREVIEW_ICONS_DEFAULT);
+export const TUI_PREVIEW_ICONS = tuiCreateToken(TUI_PREVIEW_ICONS_DEFAULT);
 
 export function tuiPreviewIconsProvider(icons: Partial<TuiPreviewIcons>): Provider {
     return tuiProvideOptions(TUI_PREVIEW_ICONS, icons, TUI_PREVIEW_ICONS_DEFAULT);

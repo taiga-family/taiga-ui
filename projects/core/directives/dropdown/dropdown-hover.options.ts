@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiDropdownHoverOptions {
     readonly showDelay: number;
@@ -15,7 +15,7 @@ export const TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS: TuiDropdownHoverOptions = {
 /**
  * Default parameters for dropdown hover directive
  */
-export const TUI_DROPDOWN_HOVER_OPTIONS = tuiCreateOptions(
+export const TUI_DROPDOWN_HOVER_OPTIONS = tuiCreateToken(
     TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
 );
 

@@ -1,5 +1,5 @@
 import {inject, InjectionToken} from '@angular/core';
-import {TUI_IS_IOS, TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, TuiContextWithImplicit, tuiCreateToken} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, Observable} from 'rxjs';
 
@@ -9,22 +9,12 @@ import {TUI_IOS_LOADER} from './loader-ios/loader-ios.component';
 /**
  * Stream that emits when loading is over
  */
-export const TUI_PULL_TO_REFRESH_LOADED = new InjectionToken<Observable<unknown>>(
-    `[TUI_PULL_TO_REFRESH_LOADED]`,
-    {
-        factory: () => EMPTY,
-    },
-);
+export const TUI_PULL_TO_REFRESH_LOADED = tuiCreateToken<Observable<unknown>>(EMPTY);
 
 /**
  * Pull threshold in pixels until loading starts
  */
-export const TUI_PULL_TO_REFRESH_THRESHOLD = new InjectionToken<number>(
-    `[TUI_PULL_TO_REFRESH_THRESHOLD]`,
-    {
-        factory: () => 50,
-    },
-);
+export const TUI_PULL_TO_REFRESH_THRESHOLD = tuiCreateToken(50);
 
 /**
  * Loading indicator component that gets current pull distance in pixels as context

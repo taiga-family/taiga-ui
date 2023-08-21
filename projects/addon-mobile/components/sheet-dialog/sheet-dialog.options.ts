@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiSheetDialogOptions<I = never> {
@@ -24,9 +24,7 @@ export const TUI_SHEET_DIALOG_DEFAULT_OPTIONS: TuiSheetDialogDefaultOptions = {
 /**
  * Default parameters for mobile dialog component
  */
-export const TUI_SHEET_DIALOG_OPTIONS = tuiCreateOptions(
-    TUI_SHEET_DIALOG_DEFAULT_OPTIONS,
-);
+export const TUI_SHEET_DIALOG_OPTIONS = tuiCreateToken(TUI_SHEET_DIALOG_DEFAULT_OPTIONS);
 
 export function tuiSheetDialogOptionsProvider(
     options: Partial<TuiSheetDialogDefaultOptions>,

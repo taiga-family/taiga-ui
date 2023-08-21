@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {TuiContextWithImplicit, tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {TuiContextWithImplicit, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core/enums';
 import {TuiSizeL} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -36,7 +36,7 @@ export const TUI_CHECKBOX_DEFAULT_OPTIONS: TuiCheckboxOptions = {
 /**
  * Default parameters for checkbox component
  */
-export const TUI_CHECKBOX_OPTIONS = tuiCreateOptions(TUI_CHECKBOX_DEFAULT_OPTIONS);
+export const TUI_CHECKBOX_OPTIONS = tuiCreateToken(TUI_CHECKBOX_DEFAULT_OPTIONS);
 
 export function tuiCheckboxOptionsProvider(
     options: Partial<TuiCheckboxOptions>,

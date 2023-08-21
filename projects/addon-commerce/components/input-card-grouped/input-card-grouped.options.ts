@@ -4,7 +4,7 @@ import {
     TuiInputCardOptions,
 } from '@taiga-ui/addon-commerce/components/input-card';
 import {tuiDefaultCardValidator} from '@taiga-ui/addon-commerce/constants';
-import {TuiBooleanHandler, tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {TuiBooleanHandler, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiInputCardGroupedOptions extends TuiInputCardOptions {
     readonly cardValidator: TuiBooleanHandler<string>;
@@ -19,7 +19,7 @@ export const TUI_INPUT_CARD_GROUPED_DEFAULT_OPTIONS: TuiInputCardGroupedOptions 
     exampleTextCVC: `000`,
 };
 
-export const TUI_INPUT_CARD_GROUPED_OPTIONS = tuiCreateOptions(
+export const TUI_INPUT_CARD_GROUPED_OPTIONS = tuiCreateToken(
     TUI_INPUT_CARD_GROUPED_DEFAULT_OPTIONS,
 );
 

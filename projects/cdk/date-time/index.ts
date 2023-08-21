@@ -1,3 +1,4 @@
+export * from './date-clamp';
 export * from './date-fillers';
 export * from './date-format';
 export * from './date-separator';

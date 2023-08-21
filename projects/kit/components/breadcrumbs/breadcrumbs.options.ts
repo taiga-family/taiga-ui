@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiSizeL} from '@taiga-ui/core';
 
 export interface TuiBreadcrumbsOptions {
@@ -14,7 +14,7 @@ export const TUI_BREADCRUMBS_DEFAULT_OPTIONS: TuiBreadcrumbsOptions = {
     mode: `onLight`,
 };
 
-export const TUI_BREADCRUMBS_OPTIONS = tuiCreateOptions(TUI_BREADCRUMBS_DEFAULT_OPTIONS);
+export const TUI_BREADCRUMBS_OPTIONS = tuiCreateToken(TUI_BREADCRUMBS_DEFAULT_OPTIONS);
 
 export function tuiBreadcrumbsOptionsProvider(
     options: Partial<TuiBreadcrumbsOptions>,

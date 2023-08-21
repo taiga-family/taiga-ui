@@ -1,7 +1,7 @@
 import {Provider} from '@angular/core';
 import {TuiCurrency} from '@taiga-ui/addon-commerce/enums';
 import {TuiCurrencyVariants, TuiMoneySign} from '@taiga-ui/addon-commerce/types';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiDecimal} from '@taiga-ui/core';
 
 export interface TuiMoneyOptions {
@@ -27,7 +27,7 @@ export const TUI_MONEY_DEFAULT_OPTIONS: TuiMoneyOptions = {
  */
 export const TUI_MONEY_DEFAULT_DEFAULT_OPTIONS = TUI_MONEY_DEFAULT_OPTIONS;
 
-export const TUI_MONEY_OPTIONS = tuiCreateOptions(TUI_MONEY_DEFAULT_OPTIONS);
+export const TUI_MONEY_OPTIONS = tuiCreateToken(TUI_MONEY_DEFAULT_OPTIONS);
 
 export function tuiMoneyOptionsProvider(options: Partial<TuiMoneyOptions>): Provider {
     return tuiProvideOptions(TUI_MONEY_OPTIONS, options, TUI_MONEY_DEFAULT_OPTIONS);

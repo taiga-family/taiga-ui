@@ -1,11 +1,6 @@
-import {InjectionToken} from '@angular/core';
+import {tuiCreateToken} from '@taiga-ui/cdk';
 
 /**
  * Array of arrays of related pages
  */
-export const TUI_DOC_SEE_ALSO = new InjectionToken<ReadonlyArray<readonly string[]>>(
-    `[TUI_DOC_SEE_ALSO]`,
-    {
-        factory: () => [],
-    },
-);
+export const TUI_DOC_SEE_ALSO = tuiCreateToken<ReadonlyArray<readonly string[]>>([]);

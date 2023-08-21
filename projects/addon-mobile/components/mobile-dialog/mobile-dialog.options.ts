@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 import {TuiMobileDialogOptions} from './mobile-dialog-options';
 
@@ -13,7 +13,7 @@ export const TUI_MOBILE_DIALOG_DEFAULT_OPTIONS: TuiMobileDialogDefaultOptions = 
 /**
  * Default parameters for mobile dialog component
  */
-export const TUI_MOBILE_DIALOG_OPTIONS = tuiCreateOptions(
+export const TUI_MOBILE_DIALOG_OPTIONS = tuiCreateToken(
     TUI_MOBILE_DIALOG_DEFAULT_OPTIONS,
 );
 

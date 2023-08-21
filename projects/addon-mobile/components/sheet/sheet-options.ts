@@ -1,4 +1,4 @@
-import {InjectionToken} from '@angular/core';
+import {tuiCreateToken} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiSheet} from './sheet';
@@ -27,9 +27,6 @@ export const TUI_SHEET_DEFAULT_OPTIONS: Omit<TuiSheetOptions, 'data'> = {
 /**
  * Default parameters for sheet component
  */
-export const TUI_SHEET_OPTIONS = new InjectionToken<Omit<TuiSheetOptions, 'data'>>(
-    `[TUI_SHEET_OPTIONS]`,
-    {
-        factory: () => ({...TUI_SHEET_DEFAULT_OPTIONS}),
-    },
-);
+export const TUI_SHEET_OPTIONS = tuiCreateToken<Omit<TuiSheetOptions, 'data'>>({
+    ...TUI_SHEET_DEFAULT_OPTIONS,
+});

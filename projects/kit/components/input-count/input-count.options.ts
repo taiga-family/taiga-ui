@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputCountOptions {
@@ -32,7 +32,7 @@ export const TUI_INPUT_COUNT_DEFAULT_OPTIONS: TuiInputCountOptions = {
 /**
  * Default parameters for input count component
  */
-export const TUI_INPUT_COUNT_OPTIONS = tuiCreateOptions(TUI_INPUT_COUNT_DEFAULT_OPTIONS);
+export const TUI_INPUT_COUNT_OPTIONS = tuiCreateToken(TUI_INPUT_COUNT_DEFAULT_OPTIONS);
 
 export function tuiInputCountOptionsProvider(
     options: Partial<TuiInputCountOptions>,

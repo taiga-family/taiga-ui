@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {TuiContextWithImplicit, tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {TuiContextWithImplicit, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiHintDirection, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -17,7 +17,7 @@ export const TUI_INPUT_COPY_DEFAULT_OPTIONS: TuiInputCopyOptions = {
     icon: ({$implicit}) => ($implicit === `s` ? `tuiIconCopy` : `tuiIconCopyLarge`),
 };
 
-export const TUI_INPUT_COPY_OPTIONS = tuiCreateOptions(TUI_INPUT_COPY_DEFAULT_OPTIONS);
+export const TUI_INPUT_COPY_OPTIONS = tuiCreateToken(TUI_INPUT_COPY_DEFAULT_OPTIONS);
 
 export function tuiInputCopyOptionsProvider(
     options: Partial<TuiInputCopyOptions>,

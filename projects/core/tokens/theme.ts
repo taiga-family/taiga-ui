@@ -1,5 +1,3 @@
-import {InjectionToken} from '@angular/core';
+import {tuiCreateToken} from '@taiga-ui/cdk';
 
-export const TUI_THEME = new InjectionToken<string>(`[TUI_THEME]`, {
-    factory: () => `Taiga`,
-});
+export const TUI_THEME = tuiCreateToken(`Taiga`);

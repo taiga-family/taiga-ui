@@ -1,7 +1,7 @@
 import {Provider} from '@angular/core';
 import {
     TuiContextWithImplicit,
-    tuiCreateOptions,
+    tuiCreateToken,
     tuiProvideOptions,
     TuiTimeMode,
 } from '@taiga-ui/cdk';
@@ -31,7 +31,7 @@ export const TUI_INPUT_TIME_DEFAULT_OPTIONS: TuiInputTimeOptions = {
 /**
  * Default parameters for InputTime component
  */
-export const TUI_INPUT_TIME_OPTIONS = tuiCreateOptions(TUI_INPUT_TIME_DEFAULT_OPTIONS);
+export const TUI_INPUT_TIME_OPTIONS = tuiCreateToken(TUI_INPUT_TIME_DEFAULT_OPTIONS);
 
 export function tuiInputTimeOptionsProvider(
     options: Partial<TuiInputTimeOptions>,

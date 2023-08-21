@@ -1,8 +1,6 @@
-import {InjectionToken} from '@angular/core';
+import {tuiCreateToken} from '@taiga-ui/cdk';
 
 /**
  * Page title prefix
  */
-export const TUI_DOC_TITLE = new InjectionToken<string>(`[TUI_DOC_TITLE]`, {
-    factory: () => ``,
-});
+export const TUI_DOC_TITLE = tuiCreateToken(``);

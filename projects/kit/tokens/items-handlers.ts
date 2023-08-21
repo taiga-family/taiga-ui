@@ -4,7 +4,7 @@ import {
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_DEFAULT_STRINGIFY,
     TuiBooleanHandler,
-    tuiCreateOptions,
+    tuiCreateToken,
     TuiIdentityMatcher,
     tuiProvideOptions,
     TuiStringHandler,
@@ -25,7 +25,7 @@ export const TUI_DEFAULT_ITEMS_HANDLERS: TuiItemsHandlers<unknown> = {
 /**
  * Default items handlers for components
  */
-export const TUI_ITEMS_HANDLERS = tuiCreateOptions(TUI_DEFAULT_ITEMS_HANDLERS);
+export const TUI_ITEMS_HANDLERS = tuiCreateToken(TUI_DEFAULT_ITEMS_HANDLERS);
 
 export function tuiItemsHandlersProvider<T>(
     options: Partial<TuiItemsHandlers<T>>,

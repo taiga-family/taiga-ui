@@ -1,18 +1,13 @@
-import {TuiDay} from '@taiga-ui/cdk/date-time';
-
 import {tuiIsString} from './is-string';
 
 export function tuiDefaultSort<T>(x: T, y: T): number {
-    const a = x instanceof TuiDay ? Number(x.toUtcNativeDate()) : x;
-    const b = y instanceof TuiDay ? Number(y.toUtcNativeDate()) : y;
-
-    if (a === b) {
+    if (x === y) {
         return 0;
     }
 
-    if (tuiIsString(a) && tuiIsString(b)) {
-        return a.localeCompare(b);
+    if (tuiIsString(x) && tuiIsString(y)) {
+        return x.localeCompare(y);
     }
 
-    return a > b ? 1 : -1;
+    return x > y ? 1 : -1;
 }

@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {TuiContextWithImplicit, tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {TuiContextWithImplicit, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiMultiSelectOptions<T> {
@@ -15,9 +15,7 @@ export const TUI_MULTI_SELECT_DEFAULT_OPTIONS: TuiMultiSelectOptions<unknown> = 
 /**
  * Default parameters for MultiSelect component
  */
-export const TUI_MULTI_SELECT_OPTIONS = tuiCreateOptions(
-    TUI_MULTI_SELECT_DEFAULT_OPTIONS,
-);
+export const TUI_MULTI_SELECT_OPTIONS = tuiCreateToken(TUI_MULTI_SELECT_DEFAULT_OPTIONS);
 
 export function tuiMultiSelectOptionsProvider<T>(
     options: Partial<TuiMultiSelectOptions<T>>,

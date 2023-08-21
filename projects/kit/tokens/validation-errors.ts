@@ -1,12 +1,10 @@
-import {InjectionToken} from '@angular/core';
+import {tuiCreateToken} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
 /**
  * Validation errors
  */
-export const TUI_VALIDATION_ERRORS = new InjectionToken<
+export const TUI_VALIDATION_ERRORS = tuiCreateToken<
     Record<string, Observable<PolymorpheusContent> | PolymorpheusContent>
->(`[TUI_VALIDATION_ERRORS]`, {
-    factory: () => ({}),
-});
+>({});

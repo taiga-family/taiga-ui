@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiPdfViewerOptions<I = undefined> {
@@ -18,7 +18,7 @@ export const TUI_PDF_VIEWER_DEFAULT_OPTIONS: TuiPdfViewerDefaultOptions = {
 /**
  * Default parameters for PdfViewer component
  */
-export const TUI_PDF_VIEWER_OPTIONS = tuiCreateOptions(TUI_PDF_VIEWER_DEFAULT_OPTIONS);
+export const TUI_PDF_VIEWER_OPTIONS = tuiCreateToken(TUI_PDF_VIEWER_DEFAULT_OPTIONS);
 
 export function tuiPdfViewerOptionsProvider(
     options: Partial<TuiPdfViewerDefaultOptions>,
