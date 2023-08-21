@@ -31,7 +31,7 @@
         "module": "es2020",
         "lib": ["es2017", "es2018.asynciterable", "dom"],
         "typeRoots": ["node_modules/@types", "scripts/types"],
-        "types": ["ng-dev-mode"],
+        "types": ["ng-dev-mode", "node"],
         "skipLibCheck": true,
         "downlevelIteration": true,
         "skipDefaultLibCheck": true,
