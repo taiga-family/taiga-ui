@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[33788],{33788:a=>{a.exports='<tui-avatar src="tuiIconUserLarge"></tui-avatar>\n<tui-avatar\n    [src]="\'https://avatars.githubusercontent.com/u/11832552\' | tuiFallbackSrc: \'tuiIconUserLarge\' | async"\n></tui-avatar>\n<tui-avatar src="AI"></tui-avatar>\n<tui-avatar>99+</tui-avatar>\n'}}]);
