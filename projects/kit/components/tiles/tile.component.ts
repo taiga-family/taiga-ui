@@ -1,4 +1,5 @@
 import {
+    AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
@@ -6,22 +7,23 @@ import {
     HostListener,
     Inject,
     Input,
-    NgZone,
     OnDestroy,
+    ViewChild,
 } from '@angular/core';
-import {MutationObserverService} from '@ng-web-apis/mutation-observer';
-import {tuiArrayShallowEquals, TuiResizeService, tuiZonefull} from '@taiga-ui/cdk';
-import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
-import {debounceTime, distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
+import {TuiTileService} from './tile.service';
 import {TuiTilesComponent} from './tiles.component';
 
 @Component({
     selector: 'tui-tile',
     templateUrl: './tile.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [TuiTileService],
 })
-export class TuiTileComponent implements OnDestroy {
+export class TuiTileComponent implements OnDestroy, AfterViewInit {
+    @ViewChild('wrapper')
+    private readonly wrapper?: ElementRef<HTMLElement>;
+
     @Input()
     width = 1;
 
@@ -31,29 +33,10 @@ export class TuiTileComponent implements OnDestroy {
     @HostBinding('class._dragged')
     dragged = false;
 
-    readonly offset$ = new BehaviorSubject<[number, number]>([0, 0]);
-
-    readonly position$ = combineLatest([
-        this.offset$.pipe(distinctUntilChanged(tuiArrayShallowEquals)),
-        this.resize$.pipe(startWith(null)),
-        this.mutation$.pipe(startWith(null)),
-        this.tiles.order$.pipe(debounceTime(0)),
-    ]).pipe(
-        map(([[left, top]]) => ({
-            top: top || this.element.offsetTop,
-            left: left || this.element.offsetLeft,
-            width: this.element.clientWidth,
-            height: this.element.clientHeight,
-        })),
-        tuiZonefull(this.zone),
-    );
-
     constructor(
-        @Inject(NgZone) private readonly zone: NgZone,
+        @Inject(TuiTileService) private readonly service: TuiTileService,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TuiTilesComponent) private readonly tiles: TuiTilesComponent,
-        @Inject(TuiResizeService) private readonly resize$: Observable<unknown>,
-        @Inject(MutationObserverService) private readonly mutation$: Observable<unknown>,
     ) {}
 
     @HostBinding('style.gridColumn')
@@ -82,6 +65,12 @@ export class TuiTileComponent implements OnDestroy {
 
     onTransitionEnd(): void {
         this.dragged = false;
+    }
+
+    ngAfterViewInit(): void {
+        if (this.wrapper) {
+            this.service.init(this.wrapper.nativeElement);
+        }
     }
 
     ngOnDestroy(): void {
