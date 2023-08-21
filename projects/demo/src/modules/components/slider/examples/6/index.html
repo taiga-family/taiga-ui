@@ -1,10 +1,10 @@
 <article class="zoom-controller">
     <button
-        tuiIconButton
         appearance="flat"
-        tuiMode="onDark"
-        size="s"
         icon="tuiIconMinus"
+        size="s"
+        tuiIconButton
+        tuiMode="onDark"
         type="button"
         class="minus"
         (click)="change(-0.25)"
@@ -25,20 +25,20 @@
         </ng-template>
 
         <input
+            step="any"
             tuiSlider
             type="range"
-            step="any"
-            [min]="min"
             [max]="max"
+            [min]="min"
             [(ngModel)]="value"
         />
     </label>
     <button
-        tuiIconButton
         appearance="flat"
-        tuiMode="onDark"
-        size="s"
         icon="tuiIconPlus"
+        size="s"
+        tuiIconButton
+        tuiMode="onDark"
         type="button"
         class="plus"
         (click)="change(+0.25)"

@@ -47,9 +47,9 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-filter
-                    [formControl]="control"
                     [badgeHandler]="badgeHandler"
                     [disabledItemHandler]="disabledItemHandler"
+                    [formControl]="control"
                     [items]="items"
                     [size]="size"
                     (toggledItem)="onToggledItemChange($event)"
@@ -58,8 +58,8 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="badgeHandler"
                 documentationPropertyMode="input"
+                documentationPropertyName="badgeHandler"
                 documentationPropertyType="TuiHandler<T>"
                 [documentationPropertyValues]="badgeHandlerVariants"
                 [(documentationPropertyValue)]="badgeHandler"
@@ -69,15 +69,15 @@
                 to get a number to show by default
             </ng-template>
             <ng-template
-                documentationPropertyName="content"
                 documentationPropertyMode="input"
+                documentationPropertyName="content"
                 documentationPropertyType="PolymorpheusContent"
             >
                 Template for custom content in filter
             </ng-template>
             <ng-template
-                documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
+                documentationPropertyName="disabledItemHandler"
                 documentationPropertyType="TuiBooleanHandler<T>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
@@ -87,8 +87,8 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="identityMatcher"
                 documentationPropertyMode="input"
+                documentationPropertyName="identityMatcher"
                 documentationPropertyType="TuiIdentityMatcher"
             >
                 Function that matches value and items, e.g. if objects are copied. Uses
@@ -98,8 +98,8 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="items"
                 documentationPropertyMode="input"
+                documentationPropertyName="items"
                 documentationPropertyType="T[]"
                 [documentationPropertyValues]="itemsVariants"
                 [(documentationPropertyValue)]="items"
@@ -109,8 +109,8 @@
                 for view
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeS | TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
@@ -118,8 +118,8 @@
                 Size
             </ng-template>
             <ng-template
-                documentationPropertyName="toggledItem"
                 documentationPropertyMode="output"
+                documentationPropertyName="toggledItem"
                 documentationPropertyType="T"
             >
                 toggled event of item

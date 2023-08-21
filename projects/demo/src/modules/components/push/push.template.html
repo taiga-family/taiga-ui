@@ -34,13 +34,13 @@
         <tui-doc-demo>
             <tui-push
                 [heading]="heading"
-                [type]="type"
                 [timestamp]="timestamp"
+                [type]="type"
                 (close)="onClose()"
             >
                 <img
-                    src="assets/images/roy.jpg"
                     alt=""
+                    src="assets/images/roy.jpg"
                 />
                 <tui-svg src="tuiIconSettingsLarge"></tui-svg>
                 I’ve seen things you people wouldn't believe. Attack ships on fire off The Shoulder Of Orion. I watched
@@ -83,16 +83,16 @@
             >
                 Timestamp of the arrival. Formatted with
                 <a
-                    tuiLink
                     routerLink="/pipes/format-date"
+                    tuiLink
                 >
                     <code>FormatDate</code>
                 </a>
                 pipe.
             </ng-template>
             <ng-template
-                documentationPropertyName="close"
                 documentationPropertyMode="output"
+                documentationPropertyName="close"
                 documentationPropertyType="void"
             >
                 Output for close button clicks. If you do not listen to this output, close button is hidden.

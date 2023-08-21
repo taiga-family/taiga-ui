@@ -13,11 +13,11 @@ xdescribe(`Range`, () => {
             <tui-root>
                 <tui-range
                     [formControl]="testValue"
+                    [keySteps]="keySteps"
                     [max]="max"
                     [min]="min"
                     [segments]="segments"
                     [step]="step"
-                    [keySteps]="keySteps"
                 ></tui-range>
             </tui-root>
         `,

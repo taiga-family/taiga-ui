@@ -1,6 +1,6 @@
 <button
-    tuiButton
     size="m"
+    tuiButton
     type="button"
     class="tui-space_bottom-4"
     (click)="show()"
@@ -17,19 +17,19 @@
         [zoomable]="false"
     >
         <iframe
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-            frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
+            frameborder="0"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
             title="Youtube"
             class="content"
         ></iframe>
 
         <button
-            tuiIconButton
-            tuiPreviewAction
             icon="tuiIconClose"
             title="Close"
+            tuiIconButton
+            tuiPreviewAction
             type="button"
             (click)="preview.complete()"
         ></button>

@@ -30,17 +30,17 @@
 <tui-axes
     *ngIf="show | labels | async as labels"
     class="axes"
-    [verticalLines]="labels.length"
-    [horizontalLines]="4"
     [axisXLabels]="labels"
+    [horizontalLines]="4"
     [tuiLineChartHint]="hint"
+    [verticalLines]="labels.length"
 >
     <ng-container *ngIf="getWidth(show) > 90; else line">
         <tui-line-days-chart
             *ngFor="let chart of days"
             class="chart"
             [height]="200"
-            [value]="chart | tuiFilter : filter : range"
+            [value]="chart | tuiFilter: filter : range"
         ></tui-line-days-chart>
     </ng-container>
     <ng-template #line>
@@ -48,8 +48,8 @@
             *ngFor="let chart of days"
             class="chart"
             [height]="200"
+            [value]="chart | tuiFilter: filter : range | tuiMapper: toNumbers : range"
             [width]="getWidth(range)"
-            [value]="chart | tuiFilter : filter : range | tuiMapper : toNumbers : range"
         ></tui-line-chart>
     </ng-template>
 </tui-axes>

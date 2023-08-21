@@ -1,11 +1,11 @@
 <header class="t-header">
     <button
-        tuiIconButton
-        type="button"
+        appearance=""
         automation-id="tui-mobile-calendar__cancel"
         shape="rounded"
-        appearance=""
+        tuiIconButton
         tuiRipple
+        type="button"
         class="t-close"
         [icon]="icons.close"
         [title]="closeWord$ | async"
@@ -28,10 +28,10 @@
         {{ single ? texts[0] : texts[1] }}
     </h2>
     <button
+        automation-id="tui-mobile-calendar__confirm"
         tuiLink
         tuiTouchable="opacity"
         type="button"
-        automation-id="tui-mobile-calendar__confirm"
         class="t-link"
         (click)="onConfirm()"
     >
@@ -76,9 +76,9 @@
         <h2 class="t-month">{{ month | tuiMonth | async }}</h2>
         <tui-primitive-calendar-mobile
             class="t-calendar"
+            [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledItemHandlerMapper : min : max"
             [month]="month"
             [value]="value"
-            [disabledItemHandler]="disabledItemHandler | tuiMapper : disabledItemHandlerMapper : min : max"
             (dayClick)="onDayClick($event)"
         ></tui-primitive-calendar-mobile>
     </section>

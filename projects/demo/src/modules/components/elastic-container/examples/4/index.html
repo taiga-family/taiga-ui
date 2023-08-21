@@ -1,6 +1,6 @@
 <button
-    tuiButton
     size="s"
+    tuiButton
     (click)="add()"
 >
     Add item
@@ -12,24 +12,24 @@
     >
         <h3 class="title">
             <button
-                tuiIconButton
                 appearance="secondary"
-                size="s"
                 icon="tuiIconChevronDown"
                 shape="rounded"
+                size="s"
                 title="Expand"
+                tuiIconButton
                 class="expand"
                 [class.expand_open]="item.expanded"
                 (click)="item.expanded = !item.expanded"
             ></button>
             Nested form
             <button
-                tuiIconButton
                 appearance="flat"
-                size="s"
                 icon="tuiIconTrash"
                 shape="rounded"
+                size="s"
                 title="Remove"
+                tuiIconButton
                 class="remove"
                 (click)="remove(index)"
             ></button>

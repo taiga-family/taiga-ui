@@ -2,22 +2,22 @@
     tuiValueAccessor
     class="t-input"
     [disabled]="disabled"
-    [readOnly]="readOnly"
-    [nativeId]="nativeId"
-    [maskito]="maskOptions"
-    [invalid]="computedInvalid"
     [focusable]="focusable"
-    [pseudoHover]="pseudoHover"
+    [invalid]="computedInvalid"
+    [maskito]="maskOptions"
+    [nativeId]="nativeId"
     [pseudoActive]="pseudoActive"
     [pseudoFocus]="pseudoFocus"
+    [pseudoHover]="pseudoHover"
+    [readOnly]="readOnly"
     [(value)]="value"
-    (focusedChange)="onFocused($event)"
     (copy.prevent)="(0)"
+    (focusedChange)="onFocused($event)"
 >
     <ng-content></ng-content>
     <input
-        tuiTextfield
         inputmode="numeric"
+        tuiTextfield
         [autocomplete]="autocomplete"
         [placeholder]="computedPlaceholder"
     />

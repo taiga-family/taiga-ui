@@ -2,8 +2,8 @@
 <div class="t-wrapper">
     <tui-tabs
         class="t-tabs"
-        [underline]="false"
         [activeItemIndex]="activeItemIndex"
+        [underline]="false"
         (activeItemIndexChange)="onActiveItemIndexChange($event)"
         (keydown.arrowRight)="onArrowRight($event)"
     >
@@ -49,8 +49,8 @@
         <div
             #element
             class="t-dropdown"
-            (keydown.arrowUp.prevent)="onWrapperArrow($event, element, true)"
             (keydown.arrowDown.prevent)="onWrapperArrow($event, element, false)"
+            (keydown.arrowUp.prevent)="onWrapperArrow($event, element, true)"
         >
             <div
                 *ngFor="let item of items; let index = index"

@@ -2,9 +2,9 @@
     *tuiLet="lineClamp$ | async as lineClamp"
     tuiHintCustomPosition
     class="t-wrapper"
-    [tuiHint]="computedContent"
     [style.-webkit-line-clamp]="lineClamp"
     [style.word-break]="(lineClamp || 0) > 1 ? 'break-word' : 'break-all'"
+    [tuiHint]="computedContent"
     (mouseenter)="updateView()"
     (tuiResize)="updateView()"
 >

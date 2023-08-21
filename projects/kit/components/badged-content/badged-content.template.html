@@ -22,16 +22,16 @@
     <ng-container *polymorpheusOutlet="contentTop as content">
         <tui-badge
             *ngIf="contentIsNumber(content)"
+            [size]="badgeSize"
             [status]="getStatus(colorTop)"
             [style.backgroundColor]="colorTop"
-            [size]="badgeSize"
             [value]="content"
         ></tui-badge>
         <tui-svg
             *ngIf="contentIsString(content)"
             class="t-icon"
-            [style.color]="colorTop"
             [src]="content"
+            [style.color]="colorTop"
         ></tui-svg>
     </ng-container>
 </div>
@@ -44,16 +44,16 @@
     <ng-container *polymorpheusOutlet="contentBottom as content">
         <tui-badge
             *ngIf="contentIsNumber(content)"
+            [size]="badgeSize"
             [status]="getStatus(colorBottom)"
             [style.backgroundColor]="colorBottom"
-            [size]="badgeSize"
             [value]="content"
         ></tui-badge>
         <tui-svg
             *ngIf="contentIsString(content)"
             class="t-icon"
-            [style.color]="colorBottom"
             [src]="content"
+            [style.color]="colorBottom"
         ></tui-svg>
     </ng-container>
 </div>

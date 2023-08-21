@@ -18,24 +18,24 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <input
+                placeholder="My id is 'qwerty'"
                 tuiHint="I will be visible upon keyboard focus"
                 tuiHintDescribe="qwerty"
-                placeholder="My id is 'qwerty'"
                 [tuiHintAppearance]="appearance"
                 [tuiHintDirection]="direction"
             />
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="tuiHint"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiHint"
                 documentationPropertyType="PolymorpheusContent"
             >
                 Content
             </ng-template>
             <ng-template
-                documentationPropertyName="tuiHintDescribe"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiHintDescribe"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="id"
             >

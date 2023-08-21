@@ -8,8 +8,8 @@
             *tuiLet="countries | tuiFilterByInput as items"
             tuiScrollable
             class="scroll"
-            [style.height.px]="items.length * 44"
             [itemSize]="44"
+            [style.height.px]="items.length * 44"
             (indexChange)="list.handleFocusLossIfNecessary()"
         >
             <tui-data-list #list>

@@ -7,8 +7,8 @@
         <p>
             Month picker component. If you want a textfield, see
             <a
-                tuiLink
                 routerLink="/components/input-month-range"
+                tuiLink
             >
                 InputMonthRange
             </a>
@@ -35,17 +35,17 @@
         <tui-doc-demo>
             <tui-calendar-month
                 [disabledItemHandler]="disabledItemHandler"
-                [min]="min"
                 [max]="max"
-                [year]="year"
+                [min]="min"
                 [value]="value"
+                [year]="year"
                 (monthClick)="onMonthClick($event)"
             ></tui-calendar-month>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
+                documentationPropertyName="disabledItemHandler"
                 documentationPropertyType="TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
@@ -55,8 +55,8 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="max"
                 documentationPropertyMode="input"
+                documentationPropertyName="max"
                 documentationPropertyType="TuiMonth | null"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
@@ -64,8 +64,8 @@
                 Maximal month
             </ng-template>
             <ng-template
-                documentationPropertyName="min"
                 documentationPropertyMode="input"
+                documentationPropertyName="min"
                 documentationPropertyType="TuiMonth | null"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
@@ -73,8 +73,8 @@
                 Minimal month
             </ng-template>
             <ng-template
-                documentationPropertyName="value"
                 documentationPropertyMode="input"
+                documentationPropertyName="value"
                 documentationPropertyType="TuiMonth | TuiMonthRange | null"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"
@@ -82,8 +82,8 @@
                 A single month or a range of months
             </ng-template>
             <ng-template
-                documentationPropertyName="year"
                 documentationPropertyMode="input-output"
+                documentationPropertyName="year"
                 documentationPropertyType="TuiYear"
                 [documentationPropertyValues]="yearVariants"
                 [(documentationPropertyValue)]="year"
@@ -91,8 +91,8 @@
                 Current year
             </ng-template>
             <ng-template
-                documentationPropertyName="monthClick"
                 documentationPropertyMode="output"
+                documentationPropertyName="monthClick"
                 documentationPropertyType="TuiMonth"
             >
                 Selected month

@@ -10,15 +10,15 @@
         >
             Requires
             <a
-                tuiLink
                 href="https://caniuse.com/intersectionobserver"
+                tuiLink
             >
                 IntersectionObserver
             </a>
             support or a
             <a
-                tuiLink
                 href="https://github.com/w3c/IntersectionObserver/tree/main/polyfill"
+                tuiLink
             >
                 polyfill
             </a>
@@ -85,9 +85,9 @@
                     >
                         {{ item }}
                         <button
+                            size="s"
                             tuiButton
                             type="button"
-                            size="s"
                             class="button"
                         >
                             I'm focusable
@@ -98,16 +98,16 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="draggable"
                 documentationPropertyMode="input"
+                documentationPropertyName="draggable"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="draggable"
             >
                 Whether or not slider can be dragged by clicking and holding
             </ng-template>
             <ng-template
-                documentationPropertyName="duration"
                 documentationPropertyMode="input"
+                documentationPropertyName="duration"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="durationVariants"
                 [(documentationPropertyValue)]="duration"
@@ -115,17 +115,17 @@
                 Duration in milliseconds for each slide for automatic rotation (use 0 to disable automatic rotation)
             </ng-template>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="itemsCount"
                 documentationPropertyType="number"
-                documentationPropertyMode="input"
                 [(documentationPropertyValue)]="itemsCount"
             >
                 Number of slides shown at the same time
             </ng-template>
             <ng-template
+                documentationPropertyMode="input-output"
                 documentationPropertyName="index"
                 documentationPropertyType="number"
-                documentationPropertyMode="input-output"
                 [(documentationPropertyValue)]="index"
             >
                 Current index
@@ -134,8 +134,8 @@
         <tui-doc-documentation heading="CSS customization">
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyType="string"
                 documentationPropertyName="style.--tui-carousel-padding"
+                documentationPropertyType="string"
                 [documentationPropertyValues]="itemPaddingVariants"
                 [(documentationPropertyValue)]="itemPadding"
             >

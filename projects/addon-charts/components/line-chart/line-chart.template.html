@@ -1,10 +1,10 @@
 <ng-container *tuiLet="hovered$ | async as hovered">
     <svg
-        xmlns="http://www.w3.org/2000/svg"
         focusable="false"
+        height="100%"
         preserveAspectRatio="none"
         width="100%"
-        height="100%"
+        xmlns="http://www.w3.org/2000/svg"
         class="t-svg"
         [attr.viewBox]="viewBox"
     >
@@ -17,27 +17,27 @@
                 [attr.id]="fillId"
             >
                 <stop
-                    stop-color="currentColor"
                     offset="0%"
+                    stop-color="currentColor"
                     stop-opacity="0.5"
                 />
                 <stop
-                    stop-color="currentColor"
                     offset="100%"
+                    stop-color="currentColor"
                     stop-opacity="0"
                 />
             </linearGradient>
         </defs>
         <path
             stroke="none"
-            [attr.fill]="fill"
             [attr.d]="fillD"
+            [attr.fill]="fill"
         />
         <path
             fill="none"
             stroke="currentColor"
-            vector-effect="non-scaling-stroke"
             stroke-width="2"
+            vector-effect="non-scaling-stroke"
             [attr.d]="d"
         />
     </svg>
@@ -45,8 +45,8 @@
         <div
             *ngFor="let point of value"
             class="t-dot"
-            [style.left.%]="getLeft(point[0])"
             [style.bottom.%]="getBottom(point[1])"
+            [style.left.%]="getLeft(point[0])"
         ></div>
     </ng-container>
     <ng-container *ngIf="hasHints">
@@ -55,14 +55,14 @@
             <div
                 *ngIf="value.length > 1 || dots"
                 class="t-column"
-                [class.t-column_hovered]="hovered === index"
                 [class.t-column_hint_hovered]="drivers.get(index) | async"
-                [tuiHintHost]="hintHost"
+                [class.t-column_hovered]="hovered === index"
+                [style.left.%]="getLeft(getX(index))"
+                [style.width.%]="getWidth(index)"
                 [tuiHint]="$any(hintDirective?.hint || hintContent)"
                 [tuiHintContext]="getContentContext(point, index)"
                 [tuiHintDescribe]="getHintId(index)"
-                [style.left.%]="getLeft(getX(index))"
-                [style.width.%]="getWidth(index)"
+                [tuiHintHost]="hintHost"
                 (mouseenter)="onMouseEnter(index)"
             >
                 <div
@@ -72,10 +72,10 @@
                 <div
                     #hintHost
                     class="t-host"
-                    [style.left.%]="getOffset(index)"
-                    [style.bottom.%]="getBottom(point[1])"
-                    [tuiFocusable]="isFocusable"
                     [id]="getHintId(index)"
+                    [style.bottom.%]="getBottom(point[1])"
+                    [style.left.%]="getOffset(index)"
+                    [tuiFocusable]="isFocusable"
                 ></div>
             </div>
             <div

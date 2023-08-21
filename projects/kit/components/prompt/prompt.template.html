@@ -8,9 +8,9 @@
     class="t-buttons"
 >
     <button
+        size="m"
         tuiButton
         type="button"
-        size="m"
         class="t-button"
         [appearance]="appearance"
         (click)="context.completeWith(false)"
@@ -18,10 +18,10 @@
         {{ context.data?.no || words.no }}
     </button>
     <button
-        tuiButton
-        tuiAutoFocus
-        type="button"
         size="m"
+        tuiAutoFocus
+        tuiButton
+        type="button"
         class="t-button"
         (click)="context.completeWith(true)"
     >

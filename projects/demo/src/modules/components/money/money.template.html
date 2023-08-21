@@ -20,9 +20,9 @@
         <p>
             Number formatting can be customized by using
             <a
-                tuiLink
-                routerLink="/utils/tokens"
                 fragment="number-format"
+                routerLink="/utils/tokens"
+                tuiLink
             >
                 TUI_NUMBER_FORMAT
             </a>
@@ -80,19 +80,19 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-money
-                [value]="value"
-                [decimal]="decimal"
-                [currency]="currency"
-                [sign]="sign"
-                [precision]="precision"
-                [singleColor]="singleColor"
                 [colored]="colored"
+                [currency]="currency"
+                [decimal]="decimal"
+                [precision]="precision"
+                [sign]="sign"
+                [singleColor]="singleColor"
+                [value]="value"
             ></tui-money>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="colored"
                 documentationPropertyMode="input"
+                documentationPropertyName="colored"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="colored"
             >
@@ -100,8 +100,8 @@
             </ng-template>
 
             <ng-template
-                documentationPropertyName="currency"
                 documentationPropertyMode="input"
+                documentationPropertyName="currency"
                 documentationPropertyType="TuiCurrencyVariants"
                 [documentationPropertyValues]="currencyVariants"
                 [(documentationPropertyValue)]="currency"
@@ -110,8 +110,8 @@
             </ng-template>
 
             <ng-template
-                documentationPropertyName="decimal"
                 documentationPropertyMode="input"
+                documentationPropertyName="decimal"
                 documentationPropertyType="TuiDecimal"
                 [documentationPropertyValues]="decimalVariants"
                 [(documentationPropertyValue)]="decimal"
@@ -133,8 +133,8 @@
             </ng-template>
 
             <ng-template
-                documentationPropertyName="precision"
                 documentationPropertyMode="input"
+                documentationPropertyName="precision"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="precisionVariants"
                 [(documentationPropertyValue)]="precision"
@@ -143,8 +143,8 @@
             </ng-template>
 
             <ng-template
-                documentationPropertyName="sign"
                 documentationPropertyMode="input"
+                documentationPropertyName="sign"
                 documentationPropertyType="TuiMoneySign"
                 [documentationPropertyValues]="signVariants"
                 [(documentationPropertyValue)]="sign"
@@ -174,8 +174,8 @@
             </ng-template>
 
             <ng-template
-                documentationPropertyName="singleColor"
                 documentationPropertyMode="input"
+                documentationPropertyName="singleColor"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="singleColor"
             >
@@ -183,8 +183,8 @@
             </ng-template>
 
             <ng-template
-                documentationPropertyName="value"
                 documentationPropertyMode="input"
+                documentationPropertyName="value"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"

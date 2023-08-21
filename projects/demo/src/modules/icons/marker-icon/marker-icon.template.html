@@ -35,8 +35,8 @@
             <tui-notification class="tui-space_bottom-4">
                 Sizes were updated and synced with
                 <a
-                    tuiLink
                     routerLink="/components/avatar"
+                    tuiLink
                 >
                     <code>Avatar</code>
                 </a>
@@ -53,14 +53,14 @@
             <tui-marker-icon
                 new
                 [mode]="mode"
-                [src]="selectedIcon"
                 [size]="size"
+                [src]="selectedIcon"
             ></tui-marker-icon>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="mode"
                 documentationPropertyMode="input"
+                documentationPropertyName="mode"
                 documentationPropertyType="TuiMarkerIconModeT | null"
                 [documentationPropertyValues]="modeVariants"
                 [(documentationPropertyValue)]="mode"
@@ -68,8 +68,8 @@
                 Mode
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeXXS | TuiSizeXXL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
@@ -77,16 +77,16 @@
                 Size
             </ng-template>
             <ng-template
-                documentationPropertyName="src"
                 documentationPropertyMode="input"
+                documentationPropertyName="src"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="icons"
                 [(documentationPropertyValue)]="selectedIcon"
             >
                 An icon. It can be stringified svg or a name of icon registered in
                 <a
-                    tuiLink
                     routerLink="/services/svg-service"
+                    tuiLink
                 >
                     <code>SvgService</code>
                 </a>

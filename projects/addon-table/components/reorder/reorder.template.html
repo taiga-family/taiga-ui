@@ -14,17 +14,17 @@
             ></tui-svg>
             {{ item }}
             <button
-                type="button"
-                tuiIconButton
                 appearance="icon"
                 size="xs"
+                tuiIconButton
+                type="button"
                 class="t-button"
                 [class.t-button_hidden]="!isEnabled(item)"
-                [title]="showHideText$ | async"
                 [icon]="getIcon(item)"
+                [title]="showHideText$ | async"
                 (click)="toggle(item)"
-                (keydown.arrowUp.prevent)="move(index, -1)"
                 (keydown.arrowDown.prevent)="move(index, 1)"
+                (keydown.arrowUp.prevent)="move(index, -1)"
             ></button>
         </div>
     </tui-tile>

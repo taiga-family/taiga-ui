@@ -2,8 +2,8 @@
     <tui-multi-select
         tuiTextfieldSize="s"
         [formControl]="control"
-        [stringify]="stringify"
         [identityMatcher]="identityMatcher"
+        [stringify]="stringify"
         [tuiTextfieldCleaner]="true"
     >
         Choose your heroes
@@ -25,10 +25,10 @@
         class="tui-space_top-2"
         [editable]="false"
         [formControl]="control"
-        [stringify]="stringify"
         [identityMatcher]="identityMatcher"
-        [tuiTextfieldLabelOutside]="true"
+        [stringify]="stringify"
         [tuiTextfieldCleaner]="true"
+        [tuiTextfieldLabelOutside]="true"
     >
         Choose your heroes
         <tui-data-list
@@ -48,16 +48,16 @@
         class="tui-space_top-2"
         [editable]="false"
         [formControl]="control"
-        [stringify]="stringify"
         [identityMatcher]="identityMatcher"
+        [stringify]="stringify"
         [tuiTextfieldCleaner]="true"
     >
         Choose your heroes
         <tui-data-list-wrapper
             *tuiDataList
             tuiMultiSelectGroup
-            [items]="items"
             [itemContent]="stringify"
+            [items]="items"
         ></tui-data-list-wrapper>
     </tui-multi-select>
 </form>

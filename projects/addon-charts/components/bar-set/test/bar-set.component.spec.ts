@@ -8,8 +8,8 @@ describe(`BarSet`, () => {
     @Component({
         template: `
             <tui-bar-set
-                [value]="value"
                 [collapsed]="collapsed"
+                [value]="value"
             ></tui-bar-set>
         `,
     })

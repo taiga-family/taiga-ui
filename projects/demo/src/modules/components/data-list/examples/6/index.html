@@ -1,13 +1,13 @@
 <tui-hosted-dropdown
     tuiDropdownAlign="left"
+    [content]="content"
     [tuiDropdownLimitWidth]="isMobile ? 'fixed' : 'min'"
     [tuiDropdownMaxHeight]="700"
-    [content]="content"
     [(open)]="open"
 >
     <button
-        tuiButton
         appearance="flat"
+        tuiButton
         type="button"
         [iconRight]="arrow"
     >

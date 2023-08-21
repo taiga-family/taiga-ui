@@ -33,43 +33,43 @@
 
     <ng-template pageTab>
         <audio
-            tuiMedia
             controls
             src="assets/media/strays.mp3"
+            tuiMedia
             [playbackRate]="playbackRate"
-            [(paused)]="paused"
             [(currentTime)]="currentTime"
+            [(paused)]="paused"
             [(volume)]="volume"
         ></audio>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input-output"
                 documentationPropertyName="currentTime"
                 documentationPropertyType="number"
-                documentationPropertyMode="input-output"
                 [(documentationPropertyValue)]="currentTime"
             >
                 Current time
             </ng-template>
             <ng-template
+                documentationPropertyMode="input-output"
                 documentationPropertyName="paused"
                 documentationPropertyType="boolean"
-                documentationPropertyMode="input-output"
                 [(documentationPropertyValue)]="paused"
             >
                 Paused state
             </ng-template>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="playbackRate"
                 documentationPropertyType="number"
-                documentationPropertyMode="input"
                 [(documentationPropertyValue)]="playbackRate"
             >
                 Playback speed
             </ng-template>
             <ng-template
+                documentationPropertyMode="input-output"
                 documentationPropertyName="volume"
                 documentationPropertyType="number"
-                documentationPropertyMode="input-output"
                 [documentationPropertyValues]="volumeVariants"
                 [(documentationPropertyValue)]="volume"
             >

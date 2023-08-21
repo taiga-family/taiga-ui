@@ -41,9 +41,9 @@
         <tui-doc-demo>
             <div class="example">
                 <tui-loader
-                    [showLoader]="showLoader"
                     [inheritColor]="inheritColor"
                     [overlay]="overlay"
+                    [showLoader]="showLoader"
                     [size]="size"
                     [textContent]="template"
                 >
@@ -65,8 +65,8 @@
                     <div>
                         You can use a template with
                         <a
-                            tuiLink
                             routerLink="/components/notification"
+                            tuiLink
                         >
                             HTML
                         </a>
@@ -77,32 +77,32 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="showLoader"
                 documentationPropertyMode="input"
+                documentationPropertyName="showLoader"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="showLoader"
             >
                 Show/hide loader
             </ng-template>
             <ng-template
-                documentationPropertyName="inheritColor"
                 documentationPropertyMode="input"
+                documentationPropertyName="inheritColor"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="inheritColor"
             >
                 Inherit parent color
             </ng-template>
             <ng-template
-                documentationPropertyName="overlay"
                 documentationPropertyMode="input"
+                documentationPropertyName="overlay"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="overlay"
             >
                 Content overlay when loader is showed
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeXS | TuiSizeXL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
@@ -110,8 +110,8 @@
                 Size
             </ng-template>
             <ng-template
-                documentationPropertyName="textContent"
                 documentationPropertyMode="input"
+                documentationPropertyName="textContent"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="textVariants"
                 [(documentationPropertyValue)]="selectedTemplate"

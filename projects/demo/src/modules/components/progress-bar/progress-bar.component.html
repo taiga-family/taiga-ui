@@ -66,8 +66,8 @@
         <tui-doc-example
             id="indeterminate"
             heading="Indeterminate"
-            [description]="indeterminateStateDescription"
             [content]="indeterminateExample"
+            [description]="indeterminateStateDescription"
         >
             <ng-template #indeterminateStateDescription>
                 <p>Indeterminate state expresses an unspecified amount of wait time.</p>
@@ -88,26 +88,26 @@
             <progress
                 tuiProgressBar
                 class="api-progress"
-                [value]="value"
+                [color]="color"
                 [max]="max"
                 [size]="size"
-                [color]="color"
+                [value]="value"
             ></progress>
         </tui-doc-demo>
 
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="value"
                 documentationPropertyMode="input"
+                documentationPropertyName="value"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="value"
             >
                 Native attribute
                 <a
-                    tuiLink
                     href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#attributes"
                     rel="noreferrer"
                     target="_blank"
+                    tuiLink
                 >
                     value
                 </a>
@@ -116,17 +116,17 @@
             </ng-template>
 
             <ng-template
-                documentationPropertyName="max"
                 documentationPropertyMode="input"
+                documentationPropertyName="max"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="max"
             >
                 Native attribute
                 <a
-                    tuiLink
-                    rel="noreferrer"
                     href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#attributes"
+                    rel="noreferrer"
                     target="_blank"
+                    tuiLink
                 >
                     max
                 </a>
@@ -135,8 +135,8 @@
             </ng-template>
 
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeXS | TuiSizeXXL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
@@ -145,8 +145,8 @@
             </ng-template>
 
             <ng-template
-                documentationPropertyName="color"
                 documentationPropertyMode="input"
+                documentationPropertyName="color"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="colorVariants"
                 [(documentationPropertyValue)]="color"

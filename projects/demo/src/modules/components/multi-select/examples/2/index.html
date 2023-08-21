@@ -2,16 +2,16 @@
     *tuiLet="items$ | async as items"
     placeholder="Find by ..."
     class="b-form"
+    [expandable]="false"
     [formControl]="testValue"
     [tuiTextfieldLabelOutside]="true"
-    [expandable]="false"
     (searchChange)="onSearchChange($event)"
 >
     Rock Star Frontend Developers
     <tui-data-list-wrapper
         *tuiDataList
-        [items]="items | tuiHideSelected"
         [itemContent]="itemContent"
+        [items]="items | tuiHideSelected"
     ></tui-data-list-wrapper>
 </tui-multi-select>
 

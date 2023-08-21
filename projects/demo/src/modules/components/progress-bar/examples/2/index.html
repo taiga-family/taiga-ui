@@ -8,8 +8,8 @@
 </p>
 
 <progress
-    tuiProgressBar
     max="100"
+    tuiProgressBar
     class="progress"
     [value]="fastValue$ | async"
 ></progress>
@@ -22,9 +22,9 @@
 </p>
 
 <progress
-    tuiProgressBar
-    max="100"
     color="linear-gradient(to right, var(--tui-support-02), var(--tui-support-14), var(--tui-support-12))"
+    max="100"
+    tuiProgressBar
     class="progress"
     [value]="fastValue$ | async"
 ></progress>
@@ -37,17 +37,17 @@
 </p>
 
 <progress
-    tuiProgressBar
     max="100"
+    tuiProgressBar
     class="progress"
-    [value]="fastValue$ | async"
     [tuiProgressColorSegments]="colors"
+    [value]="fastValue$ | async"
 ></progress>
 
 <progress
     tuiProgressBar
     class="progress"
-    [value]="slowValue$ | async"
     [max]="colors.length"
     [tuiProgressColorSegments]="colors"
+    [value]="slowValue$ | async"
 ></progress>

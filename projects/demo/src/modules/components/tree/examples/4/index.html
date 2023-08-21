@@ -1,9 +1,9 @@
 <tui-tree
-    [tuiTreeController]="false"
-    [map]="map"
-    [value]="data"
-    [content]="content"
     [childrenHandler]="handler"
+    [content]="content"
+    [map]="map"
+    [tuiTreeController]="false"
+    [value]="data"
 ></tui-tree>
 
 <ng-template
@@ -15,8 +15,8 @@
 
 <p>
     <button
-        tuiButton
         size="s"
+        tuiButton
         type="button"
         class="programmatic tui-space_right-2"
         (click)="toggleTopmost()"
@@ -25,8 +25,8 @@
     </button>
 </p>
 <button
-    tuiButton
     size="s"
+    tuiButton
     type="button"
     class="programmatic"
     (click)="toggleLevel()"

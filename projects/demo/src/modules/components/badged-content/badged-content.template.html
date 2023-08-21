@@ -34,11 +34,11 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-badged-content
-                [contentTop]="contentTop === 'Template' ? example : contentTop"
-                [contentBottom]="contentBottom === 'Template' ? example : contentBottom"
-                [rounded]="rounded"
-                [colorTop]="colorTop"
                 [colorBottom]="colorBottom"
+                [colorTop]="colorTop"
+                [contentBottom]="contentBottom === 'Template' ? example : contentBottom"
+                [contentTop]="contentTop === 'Template' ? example : contentTop"
+                [rounded]="rounded"
                 [size]="size"
             >
                 <tui-avatar
@@ -50,9 +50,9 @@
             </tui-badged-content>
             <ng-template #example>
                 <tui-avatar
-                    text="Example"
-                    size="s"
                     avatarUrl="https://ng-web-apis.github.io/dist/assets/images/web-api.svg"
+                    size="s"
+                    text="Example"
                     [rounded]="true"
                 ></tui-avatar>
             </ng-template>
@@ -60,8 +60,8 @@
 
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="contentBottom"
                 documentationPropertyMode="input"
+                documentationPropertyName="contentBottom"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="contentVariants"
                 [(documentationPropertyValue)]="contentBottom"
@@ -71,8 +71,8 @@
                 use big icons for all sizes except 'xs'.
             </ng-template>
             <ng-template
-                documentationPropertyName="contentTop"
                 documentationPropertyMode="input"
+                documentationPropertyName="contentTop"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="contentVariants"
                 [(documentationPropertyValue)]="contentTop"
@@ -82,34 +82,34 @@
                 use big icons for all sizes except 'xs'.
             </ng-template>
             <ng-template
-                documentationPropertyName="colorBottom"
                 documentationPropertyMode="input"
+                documentationPropertyName="colorBottom"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="colorBottom"
             >
                 Bottom right content color. If there is no content, shows a small circle of this color.
             </ng-template>
             <ng-template
-                documentationPropertyName="colorTop"
                 documentationPropertyMode="input"
+                documentationPropertyName="colorTop"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="colorTop"
             >
                 Top right content color. If there is no content, shows a small circle of this color.
             </ng-template>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="size"
                 documentationPropertyType="TuiSizeXS | TuiSizeXXL"
-                documentationPropertyMode="input"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
                 Size
             </ng-template>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="rounded"
                 documentationPropertyType="boolean"
-                documentationPropertyMode="input"
                 [(documentationPropertyValue)]="rounded"
             >
                 Rounded mode

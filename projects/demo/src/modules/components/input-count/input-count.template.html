@@ -9,8 +9,8 @@
             <strong>Deprecated</strong>
             . Use
             <a
-                tuiLink
                 routerLink="/components/input-number"
+                tuiLink
             >
                 InputNumber
             </a>
@@ -30,9 +30,9 @@
         <p>
             Number formatting can be customized by using
             <a
-                tuiLink
-                routerLink="/utils/tokens"
                 fragment="number-format"
+                routerLink="/utils/tokens"
+                tuiLink
             >
                 TUI_NUMBER_FORMAT
             </a>
@@ -74,28 +74,28 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-count
-                    [formControl]="control"
                     [focusable]="focusable"
-                    [min]="min"
-                    [max]="max"
+                    [formControl]="control"
                     [hideButtons]="hideButtons"
-                    [step]="step"
-                    [prefix]="prefix"
+                    [max]="max"
+                    [min]="min"
                     [postfix]="postfix"
-                    [readOnly]="readOnly"
-                    [pseudoInvalid]="pseudoInvalid"
+                    [prefix]="prefix"
+                    [pseudoActive]="pseudoPressed"
                     [pseudoFocus]="pseudoFocused"
                     [pseudoHover]="pseudoHovered"
-                    [pseudoActive]="pseudoPressed"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldFiller]="filler"
-                    [tuiTextfieldSize]="size"
-                    [tuiTextfieldCustomContent]="customContent"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
+                    [step]="step"
+                    [style.text-align]="textAlign"
+                    [tuiHintAppearance]="hintAppearance"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintAppearance]="hintAppearance"
-                    [style.text-align]="textAlign"
+                    [tuiTextfieldCustomContent]="customContent"
+                    [tuiTextfieldFiller]="filler"
+                    [tuiTextfieldIconLeft]="iconLeft"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
                 >
                     Number of accounts
                 </tui-input-count>
@@ -112,24 +112,24 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="hideButtons"
                 documentationPropertyMode="input"
+                documentationPropertyName="hideButtons"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="hideButtons"
             >
                 Hide icon buttons
             </ng-template>
             <ng-template
-                documentationPropertyName="min"
                 documentationPropertyMode="input"
+                documentationPropertyName="min"
                 documentationPropertyType="number | null"
                 [(documentationPropertyValue)]="min"
             >
                 Minimum value
             </ng-template>
             <ng-template
-                documentationPropertyName="max"
                 documentationPropertyMode="input"
+                documentationPropertyName="max"
                 documentationPropertyType="number | null"
                 [(documentationPropertyValue)]="max"
             >
@@ -138,8 +138,8 @@
                 by default)
             </ng-template>
             <ng-template
-                documentationPropertyName="prefix"
                 documentationPropertyMode="input"
+                documentationPropertyName="prefix"
                 documentationPropertyType="string"
                 [documentationPropertyDeprecated]="true"
                 [(documentationPropertyValue)]="prefix"
@@ -149,8 +149,8 @@
                 instead
             </ng-template>
             <ng-template
-                documentationPropertyName="postfix"
                 documentationPropertyMode="input"
+                documentationPropertyName="postfix"
                 documentationPropertyType="string"
                 [documentationPropertyDeprecated]="true"
                 [(documentationPropertyValue)]="postfix"
@@ -160,8 +160,8 @@
                 instead
             </ng-template>
             <ng-template
-                documentationPropertyName="step"
                 documentationPropertyMode="input"
+                documentationPropertyName="step"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="stepValues"
                 [(documentationPropertyValue)]="step"
@@ -173,8 +173,8 @@
         <tui-doc-documentation heading="CSS customization">
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyType="string"
                 documentationPropertyName="style.text-align"
+                documentationPropertyType="string"
                 [documentationPropertyValues]="textAlignVariants"
                 [(documentationPropertyValue)]="textAlign"
             >

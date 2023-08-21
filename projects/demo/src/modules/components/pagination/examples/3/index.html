@@ -1,17 +1,17 @@
 <tui-input-slider
     tuiTextfieldSize="m"
     class="slider"
-    [tuiTextfieldCustomContent]="inputCustomContent"
-    [tuiTextfieldLabelOutside]="true"
     [max]="6"
     [quantum]="1"
+    [tuiTextfieldCustomContent]="inputCustomContent"
+    [tuiTextfieldLabelOutside]="true"
     [(ngModel)]="sidePadding"
 ></tui-input-slider>
 
 <ng-template #inputCustomContent>sidePadding</ng-template>
 
 <tui-pagination
-    [sidePadding]="sidePadding"
-    [length]="64"
     [index]="10"
+    [length]="64"
+    [sidePadding]="sidePadding"
 ></tui-pagination>

@@ -3,33 +3,33 @@
     [canOpen]="canOpen && !nativeDatalist"
     [content]="dropdownContent"
     [open]="canOpen && open"
-    (openChange)="onOpen($event)"
     (focusedChange)="onFocused($event)"
+    (openChange)="onOpen($event)"
 >
     <tui-primitive-textfield
         tuiValueAccessor
         class="t-textfield"
-        [tuiTextfieldFiller]="(getFiller$(mode) | async) || ''"
+        [disabled]="disabled"
+        [focusable]="focusable"
+        [invalid]="computedInvalid"
+        [maskito]="maskOptions"
         [nativeId]="nativeId"
+        [postfix]="postfix"
+        [pseudoActive]="pseudoActive"
         [pseudoFocus]="innerPseudoFocused"
         [pseudoHover]="pseudoHover"
-        [pseudoActive]="pseudoActive"
-        [invalid]="computedInvalid"
-        [focusable]="focusable"
-        [disabled]="disabled"
         [readOnly]="readOnly"
-        [maskito]="maskOptions"
+        [tuiTextfieldFiller]="(getFiller$(mode) | async) || ''"
         [tuiTextfieldIcon]="iconContent"
         [value]="computedValue"
-        [postfix]="postfix"
-        (valueChange)="onValueChange($event)"
-        (keydown.arrowUp)="onArrowUp($event)"
         (keydown.arrowDown)="onArrowDown($event)"
+        (keydown.arrowUp)="onArrowUp($event)"
+        (valueChange)="onValueChange($event)"
     >
         <ng-content></ng-content>
         <input
-            tuiTextfield
             inputmode="numeric"
+            tuiTextfield
         />
     </tui-primitive-textfield>
 </tui-hosted-dropdown>
@@ -40,8 +40,8 @@
     >
         <button
             *ngFor="let item of filtered"
-            tuiOption
             automation-id="tui-input-time__item"
+            tuiOption
             [disabled]="disabledItemHandler(item)"
             [value]="item"
         >
@@ -53,8 +53,8 @@
 <ng-template #iconContent>
     <tui-svg
         *polymorpheusOutlet="icon as src; context: {$implicit: size}"
-        tuiWrapper
         appearance="icon"
+        tuiWrapper
         [src]="src"
     ></tui-svg>
     <input

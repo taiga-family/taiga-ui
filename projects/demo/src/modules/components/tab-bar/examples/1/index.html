@@ -5,8 +5,8 @@
     <button
         *ngFor="let item of items"
         tuiTabBarItem
-        [icon]="item.icon"
         [badge]="item.badge"
+        [icon]="item.icon"
         (click)="onClick(item)"
     >
         {{ item.text }}

@@ -8,15 +8,15 @@
         directive
     </p>
     <tui-input-date-range
-        tuiUnfinishedValidator="Finish filling the field"
         formControlName="testValue"
-        [min]="min"
+        tuiUnfinishedValidator="Finish filling the field"
         [max]="max"
+        [min]="min"
     >
         Choose dates
         <input
-            tuiTextfield
             placeholder="From - To"
+            tuiTextfield
         />
     </tui-input-date-range>
 </form>

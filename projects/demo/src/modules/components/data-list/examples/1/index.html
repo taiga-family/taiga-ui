@@ -16,9 +16,9 @@
             <a
                 *ngFor="let item of group.items"
                 #rla="routerLinkActive"
-                tuiOption
                 role="menuitemradio"
                 routerLinkActive
+                tuiOption
                 [attr.aria-checked]="rla.isActive"
                 [routerLink]="item.routerLink"
             >

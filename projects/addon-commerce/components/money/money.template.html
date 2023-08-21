@@ -1,15 +1,15 @@
 <span
     automation-id="tui-money__sign"
-    [textContent]="value | tuiSignSymbol : sign"
+    [textContent]="value | tuiSignSymbol: sign"
 ></span>
 <span
     automation-id="tui-money__integer-part"
-    [textContent]="value | tuiIntegerPart : precision"
+    [textContent]="value | tuiIntegerPart: precision"
 ></span>
 <span class="t-lighter">
     <span
         automation-id="tui-money__fraction-part"
-        [textContent]="value | tuiFractionPart : decimal : precision"
+        [textContent]="value | tuiFractionPart: decimal : precision"
     ></span>
     <span
         automation-id="tui-money__currency"

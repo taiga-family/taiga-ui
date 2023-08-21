@@ -10,7 +10,10 @@ import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 const BADGE_VALUE = 10;
 
 class ItemWithBadge {
-    constructor(readonly text: string, readonly badgeValue?: number) {}
+    constructor(
+        readonly text: string,
+        readonly badgeValue?: number,
+    ) {}
 
     toString(): string {
         return this.text;

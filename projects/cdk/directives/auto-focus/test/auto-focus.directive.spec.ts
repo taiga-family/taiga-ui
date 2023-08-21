@@ -17,8 +17,8 @@ describe(`TuiAutoFocus directive`, () => {
         @Component({
             template: `
                 <div
-                    tuiAutoFocus
                     tabindex="0"
+                    tuiAutoFocus
                 ></div>
             `,
             changeDetection: ChangeDetectionStrategy.OnPush,

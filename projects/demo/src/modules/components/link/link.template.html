@@ -44,10 +44,10 @@
             <ng-container *ngIf="!pseudo; else pseudoLink">
                 <a
                     tuiLink
-                    [mode]="mode"
                     [icon]="icon"
                     [iconAlign]="iconAlign"
                     [iconRotated]="iconRotated"
+                    [mode]="mode"
                     [style.--tui-link-icon-size]="size"
                 >
                     Link example
@@ -57,11 +57,11 @@
                 <button
                     tuiLink
                     type="button"
-                    [mode]="mode"
                     [icon]="icon"
                     [iconAlign]="iconAlign"
-                    [pseudo]="true"
                     [iconRotated]="iconRotated"
+                    [mode]="mode"
+                    [pseudo]="true"
                     [style.--tui-link-icon-size]="size"
                 >
                     It is a pseudo-link because it is actually a button
@@ -70,8 +70,8 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="mode"
                 documentationPropertyMode="input"
+                documentationPropertyName="mode"
                 documentationPropertyType="'positive'
                 | 'negative' | null"
                 [documentationPropertyValues]="modeValues"
@@ -80,8 +80,8 @@
                 Link mode
             </ng-template>
             <ng-template
-                documentationPropertyName="icon"
                 documentationPropertyMode="input"
+                documentationPropertyName="icon"
                 documentationPropertyType="string |
                 null"
                 [documentationPropertyValues]="iconVariants"
@@ -89,15 +89,15 @@
             >
                 An icon. It can be stringified svg or a name of icon registered in
                 <a
-                    tuiLink
                     routerLink="/services/svg-service"
+                    tuiLink
                 >
                     <code>SvgService</code>
                 </a>
             </ng-template>
             <ng-template
-                documentationPropertyName="iconAlign"
                 documentationPropertyMode="input"
+                documentationPropertyName="iconAlign"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="iconAlignValues"
                 [(documentationPropertyValue)]="iconAlign"
@@ -107,17 +107,17 @@
                 by default
             </ng-template>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="iconRotated"
                 documentationPropertyType="boolean"
-                documentationPropertyMode="input"
                 [(documentationPropertyValue)]="iconRotated"
             >
                 Rotate icon 180 deg (for dropdowns)
             </ng-template>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="pseudo"
                 documentationPropertyType="boolean"
-                documentationPropertyMode="input"
                 [(documentationPropertyValue)]="pseudo"
             >
                 Pseudo-link

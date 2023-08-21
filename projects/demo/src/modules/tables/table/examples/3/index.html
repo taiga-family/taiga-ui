@@ -4,8 +4,8 @@
     [hidden]="true"
 >
     <table
-        tuiTable
         size="l"
+        tuiTable
         class="table"
         [columns]="columns"
     >
@@ -13,8 +13,8 @@
             <tr tuiThGroup>
                 <th
                     *tuiHead="'name'"
-                    tuiTh
                     rowspan="2"
+                    tuiTh
                     class="first"
                     [sorter]="null"
                     [sticky]="true"
@@ -23,8 +23,8 @@
                 </th>
                 <th
                     *tuiHead="'price'"
-                    tuiTh
                     rowspan="2"
+                    tuiTh
                     class="number second"
                     [sticky]="true"
                 >
@@ -32,8 +32,8 @@
                 </th>
                 <th
                     *tuiHead="'quantity'"
-                    tuiTh
                     colspan="2"
+                    tuiTh
                     [sorter]="null"
                 >
                     Purchase
@@ -41,15 +41,15 @@
                 <ng-container *tuiHead="'unit'"></ng-container>
                 <th
                     *tuiHead="'date'"
-                    tuiTh
                     rowspan="2"
+                    tuiTh
                 >
                     Date
                 </th>
                 <th
                     *tuiHead="'total'"
-                    tuiTh
                     rowspan="2"
+                    tuiTh
                     class="number"
                     [sorter]="totalSorter"
                 >
@@ -75,8 +75,8 @@
 
         <tbody
             *tuiLet="pythons | tuiTableSort as sortedPythons"
-            tuiTbody
             heading="Monty Python"
+            tuiTbody
             [data]="sortedPythons"
         >
             <tr
@@ -104,9 +104,9 @@
                     >
                         <tui-input-number
                             class="number"
-                            [tuiValidator]="minPrice"
                             [ngModel]="item.price"
                             [ngModelOptions]="options"
+                            [tuiValidator]="minPrice"
                             (ngModelChange)="onValueChange($event, 'price', item, pythons)"
                         ></tui-input-number>
                     </th>
@@ -160,8 +160,8 @@
         <tbody
             *tuiLet="starwars | tuiTableSort as sortedStarwars"
             tuiTbody
-            [heading]="template"
             [data]="sortedStarwars"
+            [heading]="template"
         >
             <tr
                 *ngFor="let item of sortedStarwars; trackBy: trackByIndex"
@@ -185,9 +185,9 @@
                     class="second"
                 >
                     <tui-input-number
-                        [tuiValidator]="minPrice"
                         [ngModel]="item.price"
                         [ngModelOptions]="options"
+                        [tuiValidator]="minPrice"
                         (ngModelChange)="onValueChange($event, 'price', item, starwars)"
                     ></tui-input-number>
                 </th>

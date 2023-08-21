@@ -11,10 +11,10 @@ describe(`CalendarMonth`, () => {
     @Component({
         template: `
             <tui-calendar-month
-                [value]="value"
                 [disabledItemHandler]="disabledItemHandler"
-                [min]="min"
                 [max]="max"
+                [min]="min"
+                [value]="value"
                 [(year)]="year"
             ></tui-calendar-month>
         `,

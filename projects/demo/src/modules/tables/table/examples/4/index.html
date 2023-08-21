@@ -17,8 +17,8 @@
     </tui-input-count>
     <tui-hosted-dropdown [content]="dropdown">
         <button
-            tuiButton
             size="m"
+            tuiButton
             type="button"
             [iconRight]="arrow"
         >
@@ -45,29 +45,29 @@
         [columns]="columns"
         [direction]="(direction$ | async) || 1"
         [tuiSortBy]="sorter$ | async"
-        (tuiSortByChange)="sorter$.next($event!)"
         (directionChange)="direction$.next($event)"
+        (tuiSortByChange)="sorter$.next($event!)"
     >
         <thead>
             <tr tuiThGroup>
                 <th
                     *tuiHead="'name'"
-                    tuiTh
                     tuiSortable
+                    tuiTh
                 >
                     Name
                 </th>
                 <th
                     *tuiHead="'dob'"
-                    tuiTh
                     tuiSortable
+                    tuiTh
                 >
                     Date of Birth
                 </th>
                 <th
                     *tuiHead="'age'"
-                    tuiTh
                     tuiSortable
+                    tuiTh
                 >
                     Age
                 </th>

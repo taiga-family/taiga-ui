@@ -28,15 +28,15 @@
             <ng-template>
                 <tui-rating
                     #rating
-                    [min]="min"
-                    [max]="max"
-                    [style.color]="color"
-                    [readOnly]="readOnly"
-                    [iconNormal]="iconNormal"
-                    [iconFilled]="iconFilled"
                     [formControl]="control"
-                    [style.--tui-rating-size]="size"
+                    [iconFilled]="iconFilled"
+                    [iconNormal]="iconNormal"
+                    [max]="max"
+                    [min]="min"
+                    [readOnly]="readOnly"
                     [style.--tui-rating-gap]="gap"
+                    [style.--tui-rating-size]="size"
+                    [style.color]="color"
                 >
                     <p class="label">Current rating - {{ rating.value }}</p>
                 </tui-rating>
@@ -45,8 +45,8 @@
         <tui-doc-documentation>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyType="boolean"
                 documentationPropertyName="readOnly"
+                documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="readOnly"
             >
                 Component is read only
@@ -61,25 +61,25 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyType="number"
                 documentationPropertyMode="input"
                 documentationPropertyName="min"
+                documentationPropertyType="number"
                 [(documentationPropertyValue)]="min"
             >
                 Min value
             </ng-template>
             <ng-template
-                documentationPropertyType="number"
                 documentationPropertyMode="input"
                 documentationPropertyName="max"
+                documentationPropertyType="number"
                 [(documentationPropertyValue)]="max"
             >
                 Max value
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyType="string"
                 documentationPropertyName="iconNormal"
+                documentationPropertyType="string"
                 [documentationPropertyValues]="iconNormalVariants"
                 [(documentationPropertyValue)]="iconNormal"
             >
@@ -87,8 +87,8 @@
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyType="string"
                 documentationPropertyName="iconFilled"
+                documentationPropertyType="string"
                 [documentationPropertyValues]="iconFilledVariants"
                 [(documentationPropertyValue)]="iconFilled"
             >
@@ -98,8 +98,8 @@
         <tui-doc-documentation heading="CSS customization">
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyType="string"
                 documentationPropertyName="style.color"
+                documentationPropertyType="string"
                 [documentationPropertyValues]="colorVariants"
                 [(documentationPropertyValue)]="color"
             >
@@ -107,8 +107,8 @@
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyType="string"
                 documentationPropertyName="style.--tui-rating-size"
+                documentationPropertyType="string"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
@@ -116,8 +116,8 @@
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyType="string"
                 documentationPropertyName="style.--tui-rating-gap"
+                documentationPropertyType="string"
                 [documentationPropertyValues]="gapVariants"
                 [(documentationPropertyValue)]="gap"
             >

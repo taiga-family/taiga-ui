@@ -24,9 +24,9 @@ describe(`MobileCalendar`, () => {
         template: `
             <tui-mobile-calendar
                 style="height: 500px;"
-                [min]="min"
-                [max]="max"
                 [disabledItemHandler]="disabledItemHandler"
+                [max]="max"
+                [min]="min"
                 [single]="single"
                 (cancel)="onCancel()"
                 (confirm)="onConfirm($event)"

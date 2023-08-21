@@ -16,9 +16,9 @@ describe(`Slider`, () => {
                 #controller
                 tuiSlider
                 type="range"
+                [formControl]="formController"
                 [max]="max"
                 [min]="min"
-                [formControl]="formController"
             />
             <input
                 #model

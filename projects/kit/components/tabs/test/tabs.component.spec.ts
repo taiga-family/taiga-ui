@@ -24,8 +24,8 @@ xdescribe(`Tabs`, () => {
                 </button>
                 <button
                     id="calls"
-                    tuiTab
                     disabled
+                    tuiTab
                 >
                     Challenges
                 </button>

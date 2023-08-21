@@ -1,8 +1,8 @@
 <div
     class="t-wrapper"
-    (transitionstart.silent)="onAnimation($any($event).propertyName, 1)"
-    (transitionend.silent)="onAnimation($any($event).propertyName, -1)"
     (transitioncancel.silent)="onAnimation($any($event).propertyName, -1)"
+    (transitionend.silent)="onAnimation($any($event).propertyName, -1)"
+    (transitionstart.silent)="onAnimation($any($event).propertyName, 1)"
     (tuiElasticContainer)="height = $event"
 >
     <ng-content></ng-content>

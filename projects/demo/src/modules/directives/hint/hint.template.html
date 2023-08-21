@@ -20,8 +20,8 @@
             <ng-template #hint>
                 To be accessible, hint should be set to a focusable element. See
                 <a
-                    tuiLink
                     routerLink="/directives/hint-describe"
+                    tuiLink
                 >
                     <code>HintDescribe</code>
                 </a>
@@ -29,10 +29,10 @@
             <span
                 [tuiHint]="hint"
                 [tuiHintAppearance]="appearance"
-                [tuiHintDirection]="direction"
-                [tuiHintShowDelay]="showDelay"
-                [tuiHintHideDelay]="hideDelay"
                 [tuiHintDescribe]="'qwerty'"
+                [tuiHintDirection]="direction"
+                [tuiHintHideDelay]="hideDelay"
+                [tuiHintShowDelay]="showDelay"
             >
                 Hover it!
             </span>
@@ -40,23 +40,23 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="tuiHint"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiHint"
                 documentationPropertyType="PolymorpheusContent"
             >
                 Content
             </ng-template>
             <ng-template
-                documentationPropertyName="tuiHintShowDelay"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiHintShowDelay"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="showDelay"
             >
                 Show Delay
             </ng-template>
             <ng-template
-                documentationPropertyName="tuiHintHideDelay"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiHintHideDelay"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="hideDelay"
             >

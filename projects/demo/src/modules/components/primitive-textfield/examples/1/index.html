@@ -1,9 +1,9 @@
 <tui-primitive-textfield
-    [tuiTextfieldIcon]="iconContent"
-    [invalid]="computedInvalid"
-    [focusable]="focusable"
     [disabled]="disabled"
+    [focusable]="focusable"
+    [invalid]="computedInvalid"
     [readOnly]="readOnly"
+    [tuiTextfieldIcon]="iconContent"
     [(value)]="value"
     (focusedChange)="onFocused($event)"
 >
@@ -16,11 +16,11 @@
 
 <ng-template #iconContent>
     <tui-svg
-        tuiWrapper
         appearance="icon"
+        tuiWrapper
         class="icon"
-        [tuiHint]="hintContent"
         [src]="icon"
+        [tuiHint]="hintContent"
         (click)="togglePasswordVisibility()"
     ></tui-svg>
 </ng-template>

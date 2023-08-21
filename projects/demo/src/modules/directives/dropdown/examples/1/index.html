@@ -1,12 +1,12 @@
 <button
+    iconRight="tuiIconChevronDown"
     tuiButton
     type="button"
-    iconRight="tuiIconChevronDown"
     [tuiDropdown]="dropdownContent"
     [tuiDropdownManual]="open"
-    (tuiObscured)="onObscured($event)"
     (click)="onClick()"
     (tuiActiveZoneChange)="onActiveZone($event)"
+    (tuiObscured)="onObscured($event)"
 >
     Choose
     <ng-template #dropdownContent>

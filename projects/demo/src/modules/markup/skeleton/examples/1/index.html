@@ -1,17 +1,17 @@
 <div class="header">
     <button
+        size="xs"
         tuiButton
         type="button"
-        size="xs"
         class="tui-space_right-2"
         (click)="showSkeleton()"
     >
         Show/hide skeleton
     </button>
     <button
+        size="xs"
         tuiButton
         type="button"
-        size="xs"
         class="tui-space_right-2"
         (click)="toggleLight()"
     >
@@ -32,8 +32,8 @@
 <div
     class="container"
     [class.container_dark]="lightMode"
-    [tuiMode]="lightMode ? 'onDark' : null"
     [style.--tui-skeleton-radius.px]="radius"
+    [tuiMode]="lightMode ? 'onDark' : null"
 >
     <div class="tui-row">
         <div class="tui-col_md-4 tui-col_stretch">
@@ -46,47 +46,47 @@
                     <div class="tui-island__figure">
                         <form [formGroup]="testForm">
                             <tui-toggle
-                                size="l"
                                 formControlName="testValue"
-                                [class.tui-skeleton]="skeletonVisible"
+                                size="l"
                                 [class.tui-skeleton_light]="lightMode"
+                                [class.tui-skeleton]="skeletonVisible"
                             ></tui-toggle>
                         </form>
                     </div>
                     <div class="island-content">
                         <p
                             class="tui-island__category"
-                            [class.tui-skeleton]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton]="skeletonVisible"
                         >
                             A category
                         </p>
                         <h3
                             class="tui-island__title"
-                            [class.tui-skeleton]="skeletonVisible"
-                            [class.tui-skeleton_text]="skeletonVisible"
-                            [class.tui-skeleton_short]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton_short]="skeletonVisible"
+                            [class.tui-skeleton_text]="skeletonVisible"
+                            [class.tui-skeleton]="skeletonVisible"
                         >
                             {{ skeletonVisible ? '' : 'Title' }}
                         </h3>
                         <p
                             class="tui-island__paragraph"
-                            [class.tui-skeleton]="skeletonVisible"
-                            [class.tui-skeleton_text]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton_text]="skeletonVisible"
+                            [class.tui-skeleton]="skeletonVisible"
                         >
                             {{ skeletonVisible ? '' : placeholder }}
                         </p>
                         <p
                             class="tui-island__paragraph tui-island__paragraph_link"
-                            [class.tui-skeleton]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton]="skeletonVisible"
                         >
                             <a
                                 href="https://github.com/taiga-family/taiga-ui"
-                                target="_blank"
                                 rel="noreferrer"
+                                target="_blank"
                                 tuiLink
                             >
                                 Link
@@ -98,11 +98,11 @@
         </div>
         <div class="tui-col_md-4 tui-col_stretch">
             <a
-                size="l"
                 href="https://ng-web-apis.github.io/dist/assets/images/web-api.svg"
-                tuiIsland
                 rel="noreferrer"
+                size="l"
                 target="_blank"
+                tuiIsland
                 class="island"
                 [hoverable]="true"
                 [transparent]="true"
@@ -111,26 +111,26 @@
                     <figure class="tui-island__figure">
                         <div
                             class="some-figure"
-                            [class.tui-skeleton]="skeletonVisible"
-                            [class.tui-skeleton_rounded]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton_rounded]="skeletonVisible"
+                            [class.tui-skeleton]="skeletonVisible"
                         ></div>
                     </figure>
                     <div class="island-content">
                         <h3
                             class="tui-island__title"
-                            [class.tui-skeleton]="skeletonVisible"
-                            [class.tui-skeleton_text]="skeletonVisible"
-                            [class.tui-skeleton_short]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton_short]="skeletonVisible"
+                            [class.tui-skeleton_text]="skeletonVisible"
+                            [class.tui-skeleton]="skeletonVisible"
                         >
                             {{ skeletonVisible ? '' : 'Another title' }}
                         </h3>
                         <p
                             class="tui-island__paragraph"
-                            [class.tui-skeleton]="skeletonVisible"
-                            [class.tui-skeleton_text]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton_text]="skeletonVisible"
+                            [class.tui-skeleton]="skeletonVisible"
                         >
                             {{ skeletonVisible ? '' : 'And some new text again' }}
                         </p>
@@ -149,26 +149,26 @@
                     <figure class="tui-island__figure">
                         <div
                             class="some-figure"
-                            [class.tui-skeleton]="skeletonVisible"
-                            [class.tui-skeleton_rounded]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton_rounded]="skeletonVisible"
+                            [class.tui-skeleton]="skeletonVisible"
                         ></div>
                     </figure>
                     <div class="island-content">
                         <h3
                             class="tui-island__title"
-                            [class.tui-skeleton]="skeletonVisible"
-                            [class.tui-skeleton_text]="skeletonVisible"
                             [class.tui-skeleton_center]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton_text]="skeletonVisible"
+                            [class.tui-skeleton]="skeletonVisible"
                         >
                             {{ skeletonVisible ? '' : 'One more title' }}
                         </h3>
                         <p
                             class="tui-island__paragraph"
-                            [class.tui-skeleton]="skeletonVisible"
-                            [class.tui-skeleton_text]="skeletonVisible"
                             [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton_text]="skeletonVisible"
+                            [class.tui-skeleton]="skeletonVisible"
                         >
                             {{ skeletonVisible ? '' : 'All right, I get it' }}
                         </p>

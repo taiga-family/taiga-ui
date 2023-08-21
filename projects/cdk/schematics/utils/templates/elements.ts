@@ -55,8 +55,9 @@ export function findElementsWithAttribute(
     html: string,
     attributeName: string,
 ): Element[] {
-    return findElementsInTemplateByFn(html, el =>
-        el.attrs?.some(attr => attr.name === attributeName.toLowerCase()),
+    return findElementsInTemplateByFn(
+        html,
+        el => el.attrs?.some(attr => attr.name === attributeName.toLowerCase()),
     );
 }
 

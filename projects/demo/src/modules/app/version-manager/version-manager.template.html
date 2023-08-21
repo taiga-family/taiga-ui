@@ -8,8 +8,8 @@
         <a
             *ngFor="let version of versions"
             tuiOption
-            [value]="version"
             [href]="getVersionHref(version)"
+            [value]="version"
         >
             {{ version.label }}
         </a>

@@ -37,8 +37,8 @@
 <h3 class="title">Vertical group</h3>
 <form [formGroup]="testForm">
     <div
-        tuiGroup
         orientation="vertical"
+        tuiGroup
         class="group"
         [collapsed]="true"
     >
@@ -80,11 +80,11 @@
     >
         <tui-radio-block
             *ngFor="let fruit of fruits"
-            formControlName="testValue"
             contentAlign="right"
+            formControlName="testValue"
             size="l"
-            [item]="fruit"
             [hideRadio]="true"
+            [item]="fruit"
         >
             {{ fruit }}
         </tui-radio-block>

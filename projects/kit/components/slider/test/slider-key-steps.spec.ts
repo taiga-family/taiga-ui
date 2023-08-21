@@ -11,10 +11,10 @@ describe(`TuiSliderKeyStepsDirective`, () => {
                 #slider
                 tuiSlider
                 type="range"
+                [formControl]="control"
                 [keySteps]="keySteps"
                 [max]="max"
                 [min]="min"
-                [formControl]="control"
             />
         `,
     })

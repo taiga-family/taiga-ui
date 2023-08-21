@@ -8,25 +8,25 @@
 >
     <tui-primitive-textfield
         class="t-textfield"
-        [editable]="false"
         [disabled]="computedDisabled"
+        [editable]="false"
+        [invalid]="computedInvalid"
         [nativeId]="nativeId"
-        [readOnly]="readOnly"
-        [tuiTextfieldIcon]="calendarIcon"
         [pseudoFocus]="pseudoFocus"
         [pseudoHover]="pseudoHover"
-        [invalid]="computedInvalid"
+        [readOnly]="readOnly"
+        [tuiTextfieldIcon]="calendarIcon"
         [value]="
             value
-                ? computeValue(value.from | tuiMapper : formatter | async, value.to | tuiMapper : formatter | async)
+                ? computeValue(value.from | tuiMapper: formatter | async, value.to | tuiMapper: formatter | async)
                 : ''
         "
         (valueChange)="onValueChange($event)"
     >
         <ng-content></ng-content>
         <ng-content
-            select="input"
             ngProjectAs="input"
+            select="input"
         ></ng-content>
     </tui-primitive-textfield>
 
@@ -34,8 +34,8 @@
         <tui-calendar-month
             tuiPreventDefault="mousedown"
             [disabledItemHandler]="disabledItemHandler"
-            [min]="min"
             [max]="max"
+            [min]="min"
             [value]="value"
             [year]="computedDefaultActiveYear"
             (monthClick)="onMonthClick($event)"

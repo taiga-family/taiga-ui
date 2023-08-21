@@ -1,8 +1,8 @@
 <h2 class="tui-text_h4">Taiga UI usage experience</h2>
 <p class="b-form">
     <tui-input-date
-        [min]="min"
         [max]="max"
+        [min]="min"
         [(ngModel)]="from"
     >
         Start
@@ -10,8 +10,8 @@
 </p>
 <p class="b-form">
     <tui-input-date
-        [min]="from || min"
         [items]="items"
+        [min]="from || min"
         [(ngModel)]="to"
     >
         Finish

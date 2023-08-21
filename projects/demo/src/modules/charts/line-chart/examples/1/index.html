@@ -1,17 +1,17 @@
 <tui-axes
     class="axes"
-    [verticalLines]="4"
     [horizontalLines]="2"
     [tuiLineChartHint]="hintContent"
+    [verticalLines]="4"
 >
     <tui-line-chart
-        [x]="0"
-        [y]="0"
-        [width]="400"
-        [height]="200"
         [dots]="true"
+        [height]="200"
         [value]="value"
+        [width]="400"
+        [x]="0"
         [xStringify]="stringify"
+        [y]="0"
         [yStringify]="stringify"
     ></tui-line-chart>
 </tui-axes>

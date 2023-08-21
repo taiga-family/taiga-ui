@@ -3,16 +3,16 @@
         {{ header }}
         <tui-tag
             *ngIf="!!deprecated || deprecated === ''"
-            value="deprecated"
             status="custom"
+            value="deprecated"
             class="t-tag t-tag_deprecated"
         ></tui-tag>
         <tui-tag
             *ngIf="package"
             status="custom"
             class="t-tag t-tag_package"
-            [value]="package"
             [autoColor]="true"
+            [value]="package"
         ></tui-tag>
     </h1>
     <tui-tabs-with-more
@@ -24,10 +24,10 @@
             <ng-container *ngIf="tab.pageTab || defaultTabs[index] as tabName">
                 <a
                     *tuiItem
-                    tuiTab
                     routerLinkActive
+                    tuiTab
+                    [routerLink]="first ? './' : (tabName | tuiReplace: from : to)"
                     [routerLinkActiveOptions]="{exact: first}"
-                    [routerLink]="first ? './' : (tabName | tuiReplace : from : to)"
                 >
                     {{ tabName }}
                 </a>
@@ -38,8 +38,8 @@
         class="t-source-code"
         [header]="header"
         [package]="package"
-        [type]="type"
         [path]="path"
+        [type]="type"
     ></tui-doc-source-code>
 </header>
 <div class="t-content">

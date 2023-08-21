@@ -1,18 +1,18 @@
 <ng-container *ngIf="texts$ | async as texts">
     <section
         #contentWrapper
-        subtree
-        childList
-        characterData
         attributeFilter="src"
+        characterData
+        childList
+        subtree
         class="t-wrapper"
         [class.t-not-interactive-content]="zoomable"
         [class.t-transitive]="transitioned$ | async"
-        [style.transform]="wrapperTransform$ | async"
         [style.cursor]="cursor$ | async"
+        [style.transform]="wrapperTransform$ | async"
         (tuiPan)="onPan($event)"
-        (tuiZoom)="onZoom($event)"
         (tuiResize)="onResize($event)"
+        (tuiZoom)="onZoom($event)"
         (waMutationObserver)="onMutation(contentWrapper)"
     >
         <ng-content></ng-content>
@@ -33,12 +33,12 @@
     <footer class="t-footer">
         <button
             *ngIf="rotatable"
+            tuiHintAppearance="onDark"
+            tuiHintDescribe
+            tuiHintDirection="top-right"
             tuiIconButton
             tuiPreviewAction
             type="button"
-            tuiHintDirection="top-right"
-            tuiHintAppearance="onDark"
-            tuiHintDescribe
             class="t-rotate-button"
             [icon]="icons.rotate"
             [tuiHint]="texts.rotate"
@@ -49,8 +49,8 @@
             *ngIf="zoomable"
             [min]="minZoom"
             [value]="(zoom$ | async) || 1"
-            (valueChange)="setZoom($event)"
             (reset)="reset()"
+            (valueChange)="setZoom($event)"
         ></tui-preview-zoom>
     </footer>
 </ng-container>

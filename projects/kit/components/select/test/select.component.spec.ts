@@ -17,7 +17,11 @@ import {
 import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 class Beast {
-    constructor(readonly species: string, readonly trait: string, readonly id: string) {}
+    constructor(
+        readonly species: string,
+        readonly trait: string,
+        readonly id: string,
+    ) {}
 
     toString(): string {
         return `${this.trait} ${this.species}`;
@@ -38,9 +42,9 @@ describe(`Select`, () => {
         template: `
             <tui-root>
                 <tui-select
-                    [tuiTextfieldCleaner]="cleaner"
                     [formControl]="control"
                     [identityMatcher]="identityMatcher"
+                    [tuiTextfieldCleaner]="cleaner"
                 >
                     Who stole the ball?
                     <tui-data-list-wrapper

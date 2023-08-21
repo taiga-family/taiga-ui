@@ -5,15 +5,15 @@
     <ng-container *ngIf="size !== 's'; else smallButtons">
         <ng-container *ngIf="texts$ | async as texts">
             <button
+                appearance="flat"
                 tuiIconButton
                 type="button"
-                appearance="flat"
                 class="t-button"
+                [disabled]="arrowIsDisabledLeft"
+                [focusable]="false"
                 [icon]="icons.decrement"
                 [size]="buttonSize"
                 [title]="texts[0]"
-                [disabled]="arrowIsDisabledLeft"
-                [focusable]="false"
                 (click)="onArrowClick('left')"
                 (mousedown.silent.prevent)="(0)"
             ></button>
@@ -22,15 +22,15 @@
                     <button
                         *ngIf="index !== null; else dotsTemplate"
                         #element
-                        tuiButton
-                        type="button"
                         automation-id="tui-pagination__element"
                         shape="square"
+                        tuiButton
+                        type="button"
                         class="t-button"
-                        [size]="buttonSize"
+                        [appearance]="getElementMode(index)"
                         [disabled]="disabled"
                         [focusable]="elementIsFocusable(index)"
-                        [appearance]="getElementMode(index)"
+                        [size]="buttonSize"
                         (click)="onElementClick(index)"
                         (keydown.arrowLeft.prevent)="onElementKeyDownArrowLeft(element)"
                         (keydown.arrowRight.prevent)="onElementKeyDownArrowRight(element)"
@@ -42,15 +42,15 @@
                 </ng-container>
             </ng-container>
             <button
+                appearance="flat"
                 tuiIconButton
                 type="button"
-                appearance="flat"
                 class="t-button"
+                [disabled]="arrowIsDisabledRight"
+                [focusable]="false"
                 [icon]="icons.increment"
                 [size]="buttonSize"
                 [title]="texts[1]"
-                [disabled]="arrowIsDisabledRight"
-                [focusable]="false"
                 (click)="onArrowClick('right')"
                 (mousedown.silent.prevent)="(0)"
             ></button>
@@ -60,14 +60,14 @@
         <button
             *tuiRepeatTimes="let indexItem of length"
             #element
+            shape="square"
             tuiButton
             type="button"
-            shape="square"
             class="t-button t-button_small"
+            [appearance]="getSmallElementMode(indexItem, mode$ | async)"
             [class.t-button_active]="indexItem === index"
             [disabled]="disabled"
             [focusable]="elementIsFocusable(indexItem)"
-            [appearance]="getSmallElementMode(indexItem, mode$ | async)"
             (click)="onElementClick(indexItem)"
             (keydown.arrowLeft.prevent)="onElementKeyDownArrowLeft(element)"
             (keydown.arrowRight.prevent)="onElementKeyDownArrowRight(element)"

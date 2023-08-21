@@ -13,10 +13,10 @@
                 <ng-template tuiAccordionItemContent>
                     <a
                         *ngFor="let link of webApis"
-                        tuiLink
+                        href="https://github.com/ng-web-apis/{{ link }}"
                         rel="noreferrer"
                         target="_blank"
-                        href="https://github.com/ng-web-apis/{{ link }}"
+                        tuiLink
                         class="link"
                     >
                         {{ link }}
@@ -28,10 +28,10 @@
                 <ng-template tuiAccordionItemContent>
                     <a
                         *ngFor="let link of tinkoff"
-                        tuiLink
-                        target="_blank"
                         href="https://github.com/taiga-family/{{ link }}"
                         rel="noreferrer"
+                        target="_blank"
+                        tuiLink
                         class="link"
                     >
                         {{ link }}

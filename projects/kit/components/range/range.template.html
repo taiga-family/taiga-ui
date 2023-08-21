@@ -1,36 +1,36 @@
 <div
     class="t-track"
-    [style.--segment-width.%]="segmentWidthRatio * 100"
     [style.--bg-size-ratio]="1 - segmentWidthRatio"
+    [style.--segment-width.%]="segmentWidthRatio * 100"
 >
     <input
-        tuiSlider
-        readonly
-        type="range"
-        step="any"
         automation-id="tui-range__left"
+        readonly
+        step="any"
+        tuiSlider
+        type="range"
         class="t-thumb"
-        [min]="min"
+        [disabled]="computedDisabled"
+        [keySteps]="computedKeySteps"
         [max]="max"
+        [min]="min"
         [ngModel]="value[0]"
         [size]="size"
-        [keySteps]="computedKeySteps"
         [tuiFocusable]="focusable"
-        [disabled]="computedDisabled"
     />
     <input
-        tuiSlider
-        readonly
-        type="range"
-        step="any"
         automation-id="tui-range__right"
+        readonly
+        step="any"
+        tuiSlider
+        type="range"
         class="t-thumb"
-        [min]="min"
+        [disabled]="computedDisabled"
+        [keySteps]="computedKeySteps"
         [max]="max"
+        [min]="min"
         [ngModel]="value[1]"
         [size]="size"
-        [keySteps]="computedKeySteps"
         [tuiFocusable]="focusable"
-        [disabled]="computedDisabled"
     />
 </div>

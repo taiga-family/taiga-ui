@@ -12,8 +12,8 @@ describe(`Axes`, () => {
                 #customValues
                 [axisXLabels]="axisXLabels"
                 [axisYLabels]="axisYLabels"
-                [axisYSecondaryLabels]="axisYSecondaryLabels"
                 [axisYName]="axisYName"
+                [axisYSecondaryLabels]="axisYSecondaryLabels"
                 [axisYSecondaryName]="axisYSecondaryName"
             ></tui-axes>
         `,

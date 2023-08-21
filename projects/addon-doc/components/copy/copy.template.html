@@ -1,9 +1,9 @@
 <button
     *ngIf="texts$ | async as texts"
-    tuiButton
-    type="button"
     appearance=""
     size="s"
+    tuiButton
+    type="button"
     class="t-copy"
     [title]="texts[0]"
     (click)="onClick()"

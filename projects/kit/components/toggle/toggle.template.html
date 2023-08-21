@@ -1,20 +1,20 @@
 <div
     tuiWrapper
+    [active]="pseudoActive"
     [appearance]="appearance"
-    [readOnly]="readOnly"
     [disabled]="computedDisabled"
     [focus]="computedFocusVisible"
     [hover]="pseudoHover"
-    [active]="pseudoActive"
     [invalid]="computedInvalid"
+    [readOnly]="readOnly"
 >
     <div class="t-toggle">
         <tui-loader
             *ngIf="showLoader"
             class="t-loader"
-            [size]="loaderSize"
             [inheritColor]="true"
             [showLoader]="value"
+            [size]="loaderSize"
         ></tui-loader>
         <span
             *ngIf="showIcons && !showLoader"
@@ -31,9 +31,9 @@
         <tui-loader
             *ngIf="showLoader"
             class="t-loader"
-            [size]="loaderSize"
             [inheritColor]="true"
             [showLoader]="!value"
+            [size]="loaderSize"
         ></tui-loader>
         <span
             *ngIf="showIcons && !showLoader"
@@ -49,13 +49,13 @@
     </div>
     <input
         #focusableElement
-        type="checkbox"
-        role="switch"
         automation-id="tui-toggle__checkbox"
+        role="switch"
+        type="checkbox"
         class="t-checkbox"
         [attr.aria-checked]="value"
-        [id]="id"
         [disabled]="disabled"
+        [id]="id"
         [tuiFocusable]="focusable"
         [(tuiChecked)]="value"
         (tuiFocusedChange)="onFocused($event)"

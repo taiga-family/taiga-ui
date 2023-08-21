@@ -9,15 +9,15 @@
 <tui-axes
     *ngIf="computeLabels$(range) | async as labels"
     class="axes"
-    [verticalLines]="labels.length"
-    [horizontalLines]="4"
     [axisXLabels]="labels"
+    [horizontalLines]="4"
+    [verticalLines]="labels.length"
 >
     <tui-line-days-chart
         class="chart"
         [height]="200"
         [value]="value"
-        [yStringify]="yStringify"
         [xStringify]="xStringify$ | async"
+        [yStringify]="yStringify"
     ></tui-line-days-chart>
 </tui-axes>

@@ -12,10 +12,10 @@ describe(`InputPhone`, () => {
         template: `
             <tui-root>
                 <tui-input-phone
-                    [formControl]="control"
-                    [readOnly]="readOnly"
                     [countryCode]="countryCode"
+                    [formControl]="control"
                     [phoneMaskAfterCountryCode]="phoneMaskAfterCountryCode"
+                    [readOnly]="readOnly"
                 ></tui-input-phone>
             </tui-root>
         `,

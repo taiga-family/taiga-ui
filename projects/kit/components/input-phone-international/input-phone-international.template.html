@@ -1,42 +1,42 @@
 <tui-hosted-dropdown
     *ngIf="countriesNames$ | async as countriesNames"
     class="t-hosted-dropdown"
-    [content]="dropdown"
     [canOpen]="!readOnly"
+    [content]="dropdown"
     [(open)]="open"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <div tuiGroup>
         <tui-primitive-textfield
             tuiHintContent=""
-            tuiTextfieldPrefix=""
             tuiTextfieldPostfix=""
+            tuiTextfieldPrefix=""
             class="t-country-select tui-group__auto-width-item"
-            [tuiTextfieldCustomContent]="countryValueContent"
-            [tuiTextfieldLabelOutside]="true"
-            [tuiTextfieldIcon]="icon"
             [disabled]="disabled"
-            [focusable]="focusable"
             [editable]="false"
+            [focusable]="focusable"
             [pseudoFocus]="open || null"
             [readOnly]="readOnly"
+            [tuiTextfieldCustomContent]="countryValueContent"
+            [tuiTextfieldIcon]="icon"
+            [tuiTextfieldLabelOutside]="true"
         ></tui-primitive-textfield>
         <tui-input-phone
             class="t-input-phone tui-group__auto-width-item"
+            [countryCode]="inputPhoneCountryCode"
             [disabled]="disabled"
             [focusable]="focusable"
-            [countryCode]="inputPhoneCountryCode"
             [phoneMaskAfterCountryCode]="phoneMaskAfterCountryCode"
-            [readOnly]="readOnly"
-            [pseudoInvalid]="computedInvalid"
             [pseudoFocus]="pseudoFocus"
             [pseudoHover]="pseudoHover"
+            [pseudoInvalid]="computedInvalid"
+            [readOnly]="readOnly"
             [(ngModel)]="value"
         >
             <ng-content></ng-content>
             <input
-                tuiTextfield
                 autocomplete="new-password"
+                tuiTextfield
             />
         </tui-input-phone>
     </div>
@@ -57,7 +57,7 @@
                     {{ countriesNames[item] }}
                 </span>
                 <span class="t-country-item-code">
-                    {{ item | tuiMapper : isoToCountryCodeMapper }}
+                    {{ item | tuiMapper: isoToCountryCodeMapper }}
                 </span>
             </button>
         </tui-data-list>
@@ -74,8 +74,8 @@
 
     <ng-template #icon>
         <div
-            tuiWrapper
             appearance="icon"
+            tuiWrapper
         >
             <ng-container *polymorpheusOutlet="arrow"></ng-container>
         </div>

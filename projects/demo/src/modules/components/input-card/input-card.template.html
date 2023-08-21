@@ -36,17 +36,17 @@
                         [autocompleteEnabled]="autocompleteEnabledCard"
                         [cardSrc]="cardSrc"
                         [focusable]="focusable"
-                        [readOnly]="readOnly"
-                        [tuiTextfieldSize]="size"
-                        [tuiTextfieldCleaner]="cleaner"
-                        [tuiTextfieldLabelOutside]="labelOutside"
-                        [pseudoInvalid]="pseudoInvalid"
-                        [pseudoHover]="pseudoHovered"
                         [pseudoActive]="pseudoPressed"
                         [pseudoFocus]="pseudoFocused"
+                        [pseudoHover]="pseudoHovered"
+                        [pseudoInvalid]="pseudoInvalid"
+                        [readOnly]="readOnly"
+                        [tuiHintAppearance]="hintAppearance"
                         [tuiHintContent]="hintContent"
                         [tuiHintDirection]="hintDirection"
-                        [tuiHintAppearance]="hintAppearance"
+                        [tuiTextfieldCleaner]="cleaner"
+                        [tuiTextfieldLabelOutside]="labelOutside"
+                        [tuiTextfieldSize]="size"
                         (binChange)="onBinChange($event)"
                     >
                         Card number
@@ -56,13 +56,13 @@
                         class="control"
                         [autocompleteEnabled]="autocompleteEnabledExpire"
                         [focusable]="focusable"
-                        [readOnly]="readOnly"
-                        [tuiTextfieldSize]="size"
-                        [tuiTextfieldLabelOutside]="labelOutside"
-                        [pseudoInvalid]="pseudoInvalid"
-                        [pseudoHover]="pseudoHovered"
                         [pseudoActive]="pseudoPressed"
                         [pseudoFocus]="pseudoFocused"
+                        [pseudoHover]="pseudoHovered"
+                        [pseudoInvalid]="pseudoInvalid"
+                        [readOnly]="readOnly"
+                        [tuiTextfieldLabelOutside]="labelOutside"
+                        [tuiTextfieldSize]="size"
                     >
                         Expire date
                     </tui-input-expire>
@@ -72,16 +72,16 @@
                         [autocompleteEnabled]="autocompleteEnabledCVC"
                         [focusable]="focusable"
                         [length]="length"
-                        [readOnly]="readOnly"
-                        [tuiTextfieldSize]="size"
-                        [tuiTextfieldLabelOutside]="labelOutside"
-                        [pseudoInvalid]="pseudoInvalid"
-                        [pseudoHover]="pseudoHovered"
                         [pseudoActive]="pseudoPressed"
                         [pseudoFocus]="pseudoFocused"
+                        [pseudoHover]="pseudoHovered"
+                        [pseudoInvalid]="pseudoInvalid"
+                        [readOnly]="readOnly"
+                        [tuiHintAppearance]="hintAppearanceCVC"
                         [tuiHintContent]="hintContentCVC"
                         [tuiHintDirection]="hintDirectionCVC"
-                        [tuiHintAppearance]="hintAppearanceCVC"
+                        [tuiTextfieldLabelOutside]="labelOutside"
+                        [tuiTextfieldSize]="size"
                     >
                         CVC/CVV
                     </tui-input-cvc>
@@ -118,16 +118,16 @@
                             )
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="autocompleteEnabled"
                             documentationPropertyMode="input"
+                            documentationPropertyName="autocompleteEnabled"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="autocompleteEnabledCard"
                         >
                             Browser autocomplete of card
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="cardSrc"
                             documentationPropertyMode="input"
+                            documentationPropertyName="cardSrc"
                             documentationPropertyType="PolymorpheusContent"
                             [documentationPropertyValues]="cardSrcVariants"
                             [(documentationPropertyValue)]="cardSrcSelected"
@@ -135,8 +135,8 @@
                             SVG card icon
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="binChange"
                             documentationPropertyMode="output"
+                            documentationPropertyName="binChange"
                             documentationPropertyType="string | null"
                         >
                             BIN value (card first 6 symbols)
@@ -160,8 +160,8 @@
                             )
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="autocompleteEnabled"
                             documentationPropertyMode="input"
+                            documentationPropertyName="autocompleteEnabled"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="autocompleteEnabledExpire"
                         >
@@ -186,16 +186,16 @@
                             )
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="autocompleteEnabled"
                             documentationPropertyMode="input"
+                            documentationPropertyName="autocompleteEnabled"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="autocompleteEnabledCVC"
                         >
                             Browser autocomplete of card
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="length"
                             documentationPropertyMode="input"
+                            documentationPropertyName="length"
                             documentationPropertyType="3 | 4"
                             [documentationPropertyValues]="lengthVariants"
                             [(documentationPropertyValue)]="length"

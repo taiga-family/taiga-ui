@@ -1,8 +1,8 @@
 <h3>Long mobile dialog with filters</h3>
 <button
+    size="m"
     tuiButton
     type="button"
-    size="m"
     class="tui-space_right-3 tui-space_bottom-2"
     (click)="showDialog(long, button)"
 >
@@ -13,8 +13,8 @@
     <button
         *ngIf="!filters"
         tuiButton
-        type="button"
         tuiPreventDefault="touchmove"
+        type="button"
         class="portal"
         (click)="onFilterClick()"
     >

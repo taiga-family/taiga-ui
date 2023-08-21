@@ -34,8 +34,8 @@
 
         <tui-doc-example
             id="autocomplete"
-            heading="With autocomplete"
             description="By number and by name"
+            heading="With autocomplete"
             [content]="example3"
         >
             <tui-input-phone-example-3></tui-input-phone-example-3>
@@ -46,33 +46,33 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-phone
-                    [formControl]="control"
-                    [focusable]="focusable"
-                    [readOnly]="readOnly"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldCustomContent]="customContent"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldSize]="size"
-                    [tuiTextfieldFiller]="filler"
-                    [tuiTextfieldPrefix]="prefix"
-                    [tuiTextfieldPostfix]="postfix"
                     [countryCode]="countryCode"
+                    [focusable]="focusable"
+                    [formControl]="control"
                     [phoneMaskAfterCountryCode]="phoneMaskAfterCountryCode"
-                    [pseudoInvalid]="pseudoInvalid"
                     [pseudoFocus]="pseudoFocused"
                     [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
+                    [style.text-align]="textAlign"
                     [tuiDropdownAlign]="dropdownAlign"
                     [tuiDropdownDirection]="dropdownDirection"
                     [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                    [tuiDropdownMinHeight]="dropdownMinHeight"
                     [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
                     [tuiDropdownOffset]="dropdownOffset"
+                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                    [tuiHintAppearance]="hintAppearance"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintAppearance]="hintAppearance"
-                    [style.text-align]="textAlign"
-                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldCustomContent]="customContent"
+                    [tuiTextfieldFiller]="filler"
+                    [tuiTextfieldIconLeft]="iconLeft"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldPostfix]="postfix"
+                    [tuiTextfieldPrefix]="prefix"
+                    [tuiTextfieldSize]="size"
                     (tuiDropdownOpenChange)="dropdownOpen.next($event)"
                 >
                     Type a phone number
@@ -90,8 +90,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="countryCode"
                 documentationPropertyMode="input"
+                documentationPropertyName="countryCode"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="countryCodes"
                 [(documentationPropertyValue)]="countryCode"
@@ -99,8 +99,8 @@
                 Country code
             </ng-template>
             <ng-template
-                documentationPropertyName="phoneMaskAfterCountryCode"
                 documentationPropertyMode="input"
+                documentationPropertyName="phoneMaskAfterCountryCode"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="phoneMasksAfterCountryCode"
                 [(documentationPropertyValue)]="phoneMaskAfterCountryCode"
@@ -112,8 +112,8 @@
                 and spaces as a template symbol
             </ng-template>
             <ng-template
-                documentationPropertyName="search"
                 documentationPropertyMode="input-output"
+                documentationPropertyName="search"
                 documentationPropertyType="string"
             >
                 Textfield value to subscribe on input or setting it from the outside
@@ -123,8 +123,8 @@
         <tui-doc-documentation heading="CSS customization">
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyType="string"
                 documentationPropertyName="style.text-align"
+                documentationPropertyType="string"
                 [documentationPropertyValues]="textAlignVariants"
                 [(documentationPropertyValue)]="textAlign"
             >

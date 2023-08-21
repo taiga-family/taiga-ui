@@ -76,8 +76,8 @@
                 <tui-tag
                     *ngFor="let tag of item.tags"
                     class="tui-space_right-1"
-                    [value]="tag"
                     [autoColor]="true"
+                    [value]="tag"
                 ></tui-tag>
             </td>
             <td
@@ -85,12 +85,12 @@
                 tuiTd
             >
                 <button
-                    tuiIconButton
                     appearance="flat"
-                    size="s"
                     icon="tuiIconTrash"
-                    title="Remove"
                     shape="rounded"
+                    size="s"
+                    title="Remove"
+                    tuiIconButton
                     type="button"
                     class="remove"
                     (click)="remove(item)"

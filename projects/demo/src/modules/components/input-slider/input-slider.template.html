@@ -9,9 +9,9 @@
         <p>
             Number formatting can be customized by using
             <a
-                tuiLink
-                routerLink="/utils/tokens"
                 fragment="number-format"
+                routerLink="/utils/tokens"
+                tuiLink
             >
                 TUI_NUMBER_FORMAT
             </a>
@@ -80,8 +80,8 @@
                 <p>
                     Pass
                     <a
-                        tuiLink
                         href="https://github.com/taiga-family/ng-polymorpheus"
+                        tuiLink
                     >
                         PolymorpheusContent
                     </a>
@@ -98,32 +98,32 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-slider
-                    [formControl]="control"
-                    [min]="min"
-                    [max]="max"
-                    [quantum]="quantum"
-                    [steps]="steps"
-                    [segments]="segments"
-                    [keySteps]="keySteps"
-                    [valueContent]="valueContent"
-                    [prefix]="prefix"
-                    [postfix]="postfix"
                     [focusable]="focusable"
-                    [readOnly]="readOnly"
-                    [pseudoInvalid]="pseudoInvalid"
+                    [formControl]="control"
+                    [keySteps]="keySteps"
+                    [max]="max"
+                    [min]="min"
+                    [postfix]="postfix"
+                    [prefix]="prefix"
+                    [pseudoActive]="pseudoPressed"
                     [pseudoFocus]="pseudoFocused"
                     [pseudoHover]="pseudoHovered"
-                    [pseudoActive]="pseudoPressed"
-                    [tuiTextfieldPrefix]="prefix"
-                    [tuiTextfieldPostfix]="postfix"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [quantum]="quantum"
+                    [readOnly]="readOnly"
+                    [segments]="segments"
+                    [steps]="steps"
+                    [tuiHintAppearance]="hintAppearance"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldCustomContent]="customContentSelected"
                     [tuiTextfieldIconLeft]="iconLeft"
                     [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldPostfix]="postfix"
+                    [tuiTextfieldPrefix]="prefix"
                     [tuiTextfieldSize]="size"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hintDirection"
-                    [tuiHintAppearance]="hintAppearance"
+                    [valueContent]="valueContent"
                 >
                     Range
                 </tui-input-slider>
@@ -140,8 +140,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="min"
                 documentationPropertyMode="input"
+                documentationPropertyName="min"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
@@ -149,8 +149,8 @@
                 Min value
             </ng-template>
             <ng-template
-                documentationPropertyName="max"
                 documentationPropertyMode="input"
+                documentationPropertyName="max"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
@@ -158,8 +158,8 @@
                 Max value
             </ng-template>
             <ng-template
-                documentationPropertyName="quantum"
                 documentationPropertyMode="input"
+                documentationPropertyName="quantum"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="quantumVariants"
                 [(documentationPropertyValue)]="quantum"
@@ -167,8 +167,8 @@
                 Minimum indivisible value
             </ng-template>
             <ng-template
-                documentationPropertyName="steps"
                 documentationPropertyMode="input"
+                documentationPropertyName="steps"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="steps"
             >
@@ -182,8 +182,8 @@
                 </p>
             </ng-template>
             <ng-template
-                documentationPropertyName="segments"
                 documentationPropertyMode="input"
+                documentationPropertyName="segments"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="segments"
             >
@@ -192,8 +192,8 @@
                 for no ticks)
             </ng-template>
             <ng-template
-                documentationPropertyName="keySteps"
                 documentationPropertyMode="input"
+                documentationPropertyName="keySteps"
                 documentationPropertyType="TuiKeySteps"
                 [documentationPropertyValues]="keyStepsVariants"
                 [(documentationPropertyValue)]="keySteps"
@@ -201,8 +201,8 @@
                 Key steps to bind slider position and value
             </ng-template>
             <ng-template
-                documentationPropertyName="valueContent"
                 documentationPropertyMode="input"
+                documentationPropertyName="valueContent"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="valueContentVariants"
                 [(documentationPropertyValue)]="valueContent"
@@ -210,8 +210,8 @@
                 A template for custom view of selected value.
             </ng-template>
             <ng-template
-                documentationPropertyName="prefix"
                 documentationPropertyMode="input"
+                documentationPropertyName="prefix"
                 documentationPropertyType="string"
                 [documentationPropertyDeprecated]="true"
                 [(documentationPropertyValue)]="prefix"
@@ -221,8 +221,8 @@
                 instead
             </ng-template>
             <ng-template
-                documentationPropertyName="postfix"
                 documentationPropertyMode="input"
+                documentationPropertyName="postfix"
                 documentationPropertyType="string"
                 [documentationPropertyDeprecated]="true"
                 [(documentationPropertyValue)]="postfix"

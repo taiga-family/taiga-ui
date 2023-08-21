@@ -1,14 +1,14 @@
 <tui-tree
+    [childrenHandler]="handler"
+    [content]="content"
     [tuiTreeController]="true"
     [value]="data"
-    [content]="content"
-    [childrenHandler]="handler"
 ></tui-tree>
 
 <ng-template
     #content
-    let-value
     let-node="node"
+    let-value
 >
     <div
         class="wrapper"

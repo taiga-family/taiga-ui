@@ -7,7 +7,10 @@ import {TuiMonth} from './month';
  * An immutable range of two {@link TuiMonth} objects
  */
 export class TuiMonthRange {
-    constructor(readonly from: TuiMonth, readonly to: TuiMonth) {
+    constructor(
+        readonly from: TuiMonth,
+        readonly to: TuiMonth,
+    ) {
         ngDevMode && tuiAssert.assert(from.monthSameOrBefore(to));
     }
 

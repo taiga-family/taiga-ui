@@ -15,8 +15,8 @@
             <ul>
                 <li>
                     <a
-                        tuiLink
                         routerLink="/components/textarea"
+                        tuiLink
                     >
                         <code>Textarea</code>
                     </a>
@@ -24,8 +24,8 @@
                 </li>
                 <li>
                     <a
-                        tuiLink
                         routerLink="/components/input-date"
+                        tuiLink
                     >
                         <code>InputDate</code>
                     </a>
@@ -33,8 +33,8 @@
                 </li>
                 <li>
                     <a
-                        tuiLink
                         routerLink="/components/input-date-range"
+                        tuiLink
                     >
                         <code>InputDateRange</code>
                     </a>
@@ -42,8 +42,8 @@
                 </li>
                 <li>
                     <a
-                        tuiLink
                         routerLink="/components/input-number"
+                        tuiLink
                     >
                         <code>InputNumber</code>
                     </a>
@@ -51,8 +51,8 @@
                 </li>
                 <li>
                     <a
-                        tuiLink
                         routerLink="/components/input-password"
+                        tuiLink
                     >
                         <code>InputPassword</code>
                     </a>
@@ -60,8 +60,8 @@
                 </li>
                 <li>
                     <a
-                        tuiLink
                         routerLink="/components/input-phone"
+                        tuiLink
                     >
                         <code>InputPhone</code>
                     </a>
@@ -69,8 +69,8 @@
                 </li>
                 <li>
                     <a
-                        tuiLink
                         routerLink="/components/input-tag"
+                        tuiLink
                     >
                         <code>InputTag</code>
                     </a>
@@ -78,15 +78,15 @@
                 </li>
                 <li>
                     <a
-                        tuiLink
                         routerLink="/components/input-range"
+                        tuiLink
                     >
                         <code>InputRange</code>
                     </a>
                     ,
                     <a
-                        tuiLink
                         routerLink="/components/input-slider"
+                        tuiLink
                     >
                         <code>InputSlider</code>
                     </a>
@@ -94,15 +94,15 @@
                 </li>
                 <li>
                     <a
-                        tuiLink
                         routerLink="/components/slider"
+                        tuiLink
                     >
                         <code>Slider</code>
                     </a>
                     ,
                     <a
-                        tuiLink
                         routerLink="/components/range"
+                        tuiLink
                     >
                         <code>Range</code>
                     </a>
@@ -142,10 +142,10 @@
             <tui-notification class="b-form">
                 Taiga UI input is compatible with
                 <a
-                    tuiLink
-                    rel="noreferrer"
                     href="https://maskito.dev"
+                    rel="noreferrer"
                     target="_blank"
+                    tuiLink
                 >
                     Maskito
                 </a>
@@ -179,8 +179,8 @@
 
         <tui-doc-example
             id="success"
-            heading="Check"
             description="A check mark by success validation"
+            heading="Check"
             [content]="example7"
         >
             <tui-input-example-7></tui-input-example-7>
@@ -215,32 +215,32 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input
-                    [formControl]="control"
                     [focusable]="focusable"
-                    [pseudoInvalid]="pseudoInvalid"
+                    [formControl]="control"
                     [pseudoFocus]="pseudoFocused"
                     [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
                     [readOnly]="readOnly"
-                    [tuiTextfieldIcon]="icon"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldCustomContent]="customContent"
-                    [tuiTextfieldSize]="size"
-                    [tuiTextfieldPrefix]="prefix"
-                    [tuiTextfieldPostfix]="postfix"
-                    [tuiTextfieldFiller]="filler"
-                    [tuiTextfieldCleaner]="cleaner"
+                    [style.text-align]="textAlign"
                     [tuiDropdownAlign]="dropdownAlign"
                     [tuiDropdownDirection]="dropdownDirection"
                     [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                    [tuiDropdownMinHeight]="dropdownMinHeight"
                     [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
                     [tuiDropdownOffset]="dropdownOffset"
+                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                    [tuiHintAppearance]="hintAppearance"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintAppearance]="hintAppearance"
-                    [style.text-align]="textAlign"
-                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldCustomContent]="customContent"
+                    [tuiTextfieldFiller]="filler"
+                    [tuiTextfieldIcon]="icon"
+                    [tuiTextfieldIconLeft]="iconLeft"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldPostfix]="postfix"
+                    [tuiTextfieldPrefix]="prefix"
+                    [tuiTextfieldSize]="size"
                     (tuiDropdownOpenChange)="dropdownOpen.next($event)"
                 >
                     Label
@@ -272,8 +272,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="tuiTextfieldIcon"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiTextfieldIcon"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="icon"
@@ -281,8 +281,8 @@
                 Icon content. If content is a string, it is used as stringified svg or a name of an icon
             </ng-template>
             <ng-template
-                documentationPropertyName="placeholder"
                 documentationPropertyMode="input"
+                documentationPropertyName="placeholder"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="placeholder"
             >
@@ -295,8 +295,8 @@
         <tui-doc-documentation heading="CSS customization">
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyType="string"
                 documentationPropertyName="style.text-align"
+                documentationPropertyType="string"
                 [documentationPropertyValues]="textAlignVariants"
                 [(documentationPropertyValue)]="textAlign"
             >

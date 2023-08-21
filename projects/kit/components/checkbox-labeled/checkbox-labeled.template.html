@@ -1,13 +1,13 @@
 <label class="t-wrapper">
     <tui-checkbox
         [disabled]="computedDisabled"
-        [readOnly]="readOnly"
         [focusable]="focusable"
         [nativeId]="nativeId"
-        [pseudoInvalid]="computedInvalid"
+        [pseudoActive]="pseudoActive"
         [pseudoFocus]="pseudoFocus"
         [pseudoHover]="pseudoHover"
-        [pseudoActive]="pseudoActive"
+        [pseudoInvalid]="computedInvalid"
+        [readOnly]="readOnly"
         [size]="size"
         [(ngModel)]="value"
         (focusedChange)="onFocused($event)"

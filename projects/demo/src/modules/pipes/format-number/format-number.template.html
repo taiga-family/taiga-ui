@@ -9,9 +9,9 @@
         <p>
             Number formatting can be customized by using
             <a
-                tuiLink
-                routerLink="/utils/tokens"
                 fragment="number-format"
+                routerLink="/utils/tokens"
+                tuiLink
             >
                 TUI_NUMBER_FORMAT
             </a>
@@ -29,14 +29,14 @@
     <ng-template pageTab>
         <p class="text b-full-width">
             Formatted number:
-            {{ value | tuiFormatNumber : {decimalLimit, decimalSeparator} }}
+            {{ value | tuiFormatNumber: {decimalLimit, decimalSeparator} }}
         </p>
         <tui-input-slider
             tuiTextfieldSize="m"
             class="slider"
-            [tuiTextfieldLabelOutside]="true"
             [max]="10000000"
             [quantum]="0.111"
+            [tuiTextfieldLabelOutside]="true"
             [(ngModel)]="value"
         ></tui-input-slider>
         <tui-doc-documentation>

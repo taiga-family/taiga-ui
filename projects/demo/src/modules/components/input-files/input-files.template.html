@@ -64,21 +64,21 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-input-files
-                [formControl]="control"
-                [link]="link"
-                [label]="label"
-                [maxFileSize]="maxFileSize"
                 [focusable]="focusable"
+                [formControl]="control"
+                [label]="label"
+                [link]="link"
+                [maxFileSize]="maxFileSize"
+                [pseudoActive]="pseudoPressed"
                 [pseudoFocus]="pseudoFocused"
                 [pseudoHover]="pseudoHovered"
-                [pseudoActive]="pseudoPressed"
                 (reject)="updateRejected($event)"
             >
                 <input
                     tuiInputFiles
-                    [multiple]="multiple"
                     [accept]="accept"
                     [attr.capture]="capture"
+                    [multiple]="multiple"
                 />
             </tui-input-files>
             <tui-files
@@ -91,9 +91,9 @@
                         <tui-file
                             *tuiItem
                             [file]="file"
-                            [size]="size"
-                            [showSize]="showSize"
                             [showDelete]="showDelete"
+                            [showSize]="showSize"
+                            [size]="size"
                             (removed)="removeFile(file)"
                         ></tui-file>
                     </ng-container>
@@ -104,9 +104,9 @@
                         <tui-file
                             *tuiItem
                             [file]="file"
-                            [size]="size"
-                            [showSize]="showSize"
                             [showDelete]="showDelete"
+                            [showSize]="showSize"
+                            [size]="size"
                         ></tui-file>
                     </ng-container>
                 </ng-template>
@@ -116,9 +116,9 @@
                         *tuiItem
                         state="error"
                         [file]="file"
-                        [size]="size"
-                        [showSize]="showSize"
                         [showDelete]="showDelete"
+                        [showSize]="showSize"
+                        [size]="size"
                         (removed)="removeRejected(file)"
                     ></tui-file>
                 </ng-container>
@@ -135,8 +135,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="capture"
                 documentationPropertyMode="input"
+                documentationPropertyName="capture"
                 documentationPropertyType="'user' | 'environment' | null"
                 [documentationPropertyValues]="captureVariants"
                 [(documentationPropertyValue)]="capture"
@@ -146,8 +146,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="accept"
                 documentationPropertyMode="input"
+                documentationPropertyName="accept"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="acceptVariants"
                 [(documentationPropertyValue)]="accept"
@@ -157,16 +157,16 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="label"
                 documentationPropertyMode="input"
+                documentationPropertyName="label"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="label"
             >
                 Label text
             </ng-template>
             <ng-template
-                documentationPropertyName="link"
                 documentationPropertyMode="input"
+                documentationPropertyName="link"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="link"
             >
@@ -174,8 +174,8 @@
             </ng-template>
 
             <ng-template
-                documentationPropertyName="maxFileSize"
                 documentationPropertyMode="input"
+                documentationPropertyName="maxFileSize"
                 documentationPropertyType="number"
                 [documentationPropertyValues]="maxFileSizeVariants"
                 [(documentationPropertyValue)]="maxFileSize"
@@ -183,8 +183,8 @@
                 Max file size in bytes (30 MB by default — 30 * 1000 * 1000)
             </ng-template>
             <ng-template
-                documentationPropertyName="multiple"
                 documentationPropertyMode="input"
+                documentationPropertyName="multiple"
                 documentationPropertyType="boolean"
                 [documentationPropertyValue]="multiple"
                 (documentationPropertyValueChange)="multipleChange($event)"
@@ -192,8 +192,8 @@
                 Allows to upload several files
             </ng-template>
             <ng-template
-                documentationPropertyName="reject"
                 documentationPropertyMode="output"
+                documentationPropertyName="reject"
                 documentationPropertyType="TuiFileLike"
             >
                 Emits file that was rejected.
@@ -202,16 +202,16 @@
 
         <tui-doc-documentation heading="TuiFiles">
             <ng-template
-                documentationPropertyName="max"
                 documentationPropertyMode="input"
+                documentationPropertyName="max"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="maxFilesCount"
             >
                 Maximum number of displayed files
             </ng-template>
             <ng-template
-                documentationPropertyName="expanded"
                 documentationPropertyMode="input-output"
+                documentationPropertyName="expanded"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="expanded"
             >
@@ -221,38 +221,38 @@
 
         <tui-doc-documentation heading="TuiFile">
             <ng-template
-                documentationPropertyName="showDelete"
                 documentationPropertyMode="input"
+                documentationPropertyName="showDelete"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="showDelete"
             >
                 Allow to delete file after attach it
             </ng-template>
             <ng-template
-                documentationPropertyName="file"
                 documentationPropertyMode="input"
+                documentationPropertyName="file"
                 documentationPropertyType="TuiFileLike"
             >
                 File
             </ng-template>
             <ng-template
-                documentationPropertyName="state"
                 documentationPropertyMode="input"
+                documentationPropertyName="state"
                 documentationPropertyType="TuiFileState"
             >
                 State of the file
             </ng-template>
             <ng-template
-                documentationPropertyName="showSize"
                 documentationPropertyMode="input"
+                documentationPropertyName="showSize"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="showSize"
             >
                 Show file size
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
@@ -260,8 +260,8 @@
                 Component size
             </ng-template>
             <ng-template
-                documentationPropertyName="removed"
                 documentationPropertyMode="output"
+                documentationPropertyName="removed"
                 documentationPropertyType="TuiFileLike"
             >
                 Emits file on click on close button. When subscribed to, close button appears.

@@ -12,15 +12,15 @@
 
 <div class="tui-space_top-5">
     <tui-badged-content
-        [contentTop]="contentTop"
-        [contentBottom]="contentTop === 50 ? customBadge : ''"
         [colorTop]="color"
+        [contentBottom]="contentTop === 50 ? customBadge : ''"
+        [contentTop]="contentTop"
     >
         <button
-            tuiButton
-            type="button"
             appearance="secondary"
             size="xl"
+            tuiButton
+            type="button"
             [disabled]="contentTop === 50"
             (click)="onClick()"
         >

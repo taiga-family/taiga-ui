@@ -13,8 +13,8 @@
 >
   Link
   <tui-marker-icon
-    size="m"
     class="tui-island__marker"
+    size="m"
     [src]="icon"
     [style.color]="'red'"
   ></tui-marker-icon>

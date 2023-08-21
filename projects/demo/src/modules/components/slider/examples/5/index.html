@@ -1,10 +1,10 @@
 <input
     tuiSlider
     type="range"
+    [formControl]="formControl"
     [keySteps]="keySteps"
     [max]="10 * segments"
     [segments]="segments"
-    [formControl]="formControl"
 />
 
 <div class="ticks-labels">

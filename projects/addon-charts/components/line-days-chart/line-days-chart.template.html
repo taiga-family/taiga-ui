@@ -1,17 +1,17 @@
 <tui-line-chart
     *ngFor="let month of months; let first = first"
     class="t-chart"
-    [style.zIndex]="zIndex"
     [dots]="dots"
-    [x]="first ? 0 : getX(month[0][0])"
-    [y]="y"
-    [width]="first ? firstWidth : getWidth(month[0][0])"
     [height]="height"
-    [value]="month"
     [smoothingFactor]="smoothingFactor"
+    [style.zIndex]="zIndex"
     [tuiHintContent]="hintContent ? hint : ''"
-    [yStringify]="yStringify"
+    [value]="month"
+    [width]="first ? firstWidth : getWidth(month[0][0])"
+    [x]="first ? 0 : getX(month[0][0])"
     [xStringify]="xStringify ? daysStringify : null"
+    [y]="y"
+    [yStringify]="yStringify"
 ></tui-line-chart>
 <ng-template
     #hint

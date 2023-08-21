@@ -26,7 +26,11 @@ import {
 import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 class Beast {
-    constructor(readonly species: string, readonly trait: string, readonly id: string) {}
+    constructor(
+        readonly species: string,
+        readonly trait: string,
+        readonly id: string,
+    ) {}
 
     toString(): string {
         return `${this.trait} ${this.species}`;
@@ -53,12 +57,12 @@ describe(`ComboBox`, () => {
             <tui-root>
                 <tui-combo-box
                     [formControl]="control"
-                    [stringify]="stringify"
                     [identityMatcher]="identityMatcher"
                     [readOnly]="readOnly"
-                    [tuiTextfieldSize]="size"
-                    [tuiTextfieldCleaner]="cleaner"
+                    [stringify]="stringify"
                     [tuiHintContent]="hintContent"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldSize]="size"
                 >
                     Who stole the ball?
                     <tui-data-list-wrapper

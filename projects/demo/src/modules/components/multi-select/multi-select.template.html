@@ -70,10 +70,10 @@
                 <code>ScrollingModule</code>
                 from
                 <a
-                    tuiLink
                     href="https://material.angular.io/cdk/scrolling/overview"
                     rel="noreferrer"
                     target="_blank"
+                    tuiLink
                 >
                     @angular/cdk/scrolling
                 </a>
@@ -111,35 +111,35 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-multi-select
-                    [formControl]="control"
-                    [tuiDropdownAlign]="dropdownAlign"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [tuiDropdownDirection]="dropdownDirection"
-                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                    [tuiDropdownMinHeight]="dropdownMinHeight"
-                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                    [tuiDropdownOffset]="dropdownOffset"
-                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldSize]="size"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hintDirection"
-                    [tuiHintAppearance]="hintAppearance"
-                    [focusable]="focusable"
                     [disabledItemHandler]="disabledItemHandler"
                     [editable]="editable"
                     [expandable]="expandable"
-                    [rows]="rows"
+                    [focusable]="focusable"
+                    [formControl]="control"
                     [identityMatcher]="identityMatcher"
-                    [readOnly]="readOnly"
-                    [stringify]="stringify"
-                    [tagValidator]="tagValidator"
                     [placeholder]="exampleText"
-                    [pseudoInvalid]="pseudoInvalid"
+                    [pseudoActive]="pseudoPressed"
                     [pseudoFocus]="pseudoFocused"
                     [pseudoHover]="pseudoHovered"
-                    [pseudoActive]="pseudoPressed"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
+                    [rows]="rows"
+                    [stringify]="stringify"
+                    [tagValidator]="tagValidator"
+                    [tuiDropdownAlign]="dropdownAlign"
+                    [tuiDropdownDirection]="dropdownDirection"
+                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
+                    [tuiDropdownOffset]="dropdownOffset"
+                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                    [tuiHintAppearance]="hintAppearance"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldIconLeft]="iconLeft"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
                     [valueContent]="valueContent"
                     [(search)]="search"
                     (tuiDropdownOpenChange)="dropdownOpen.next($event)"
@@ -162,9 +162,9 @@
             </p>
 
             <button
+                size="m"
                 tuiButton
                 type="button"
-                size="m"
                 (click)="setValue()"
             >
                 Set
@@ -182,8 +182,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="search"
                 documentationPropertyMode="input-output"
+                documentationPropertyName="search"
                 documentationPropertyType="string | null"
                 [(documentationPropertyValue)]="search"
             >
@@ -192,8 +192,8 @@
                 when item from list selected)
             </ng-template>
             <ng-template
-                documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
+                documentationPropertyName="disabledItemHandler"
                 documentationPropertyType="TuiBooleanHandler<T>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
@@ -201,24 +201,24 @@
                 Handler for deactivation some items
             </ng-template>
             <ng-template
-                documentationPropertyName="editable"
                 documentationPropertyMode="input"
+                documentationPropertyName="editable"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="editable"
             >
                 Textfield can be use for typing
             </ng-template>
             <ng-template
-                documentationPropertyName="expandable"
                 documentationPropertyMode="input"
+                documentationPropertyName="expandable"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="expandable"
             >
                 Control height can be expanded to show all tags
             </ng-template>
             <ng-template
-                documentationPropertyName="rows"
                 documentationPropertyMode="input"
+                documentationPropertyName="rows"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="rows"
             >
@@ -227,8 +227,8 @@
                 mode
             </ng-template>
             <ng-template
-                documentationPropertyName="identityMatcher"
                 documentationPropertyMode="input"
+                documentationPropertyName="identityMatcher"
                 documentationPropertyType="TuiIdentityMatcher"
                 [documentationPropertyValues]="identityMatcherVariants"
                 [(documentationPropertyValue)]="identityMatcher"
@@ -237,8 +237,8 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="stringify"
                 documentationPropertyMode="input"
+                documentationPropertyName="stringify"
                 documentationPropertyType="TuiStringHandler"
                 [documentationPropertyValues]="stringifyVariants"
                 [(documentationPropertyValue)]="stringify"
@@ -249,8 +249,8 @@
                 <strong>Should be a pure function</strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="valueContent"
                 documentationPropertyMode="input"
+                documentationPropertyName="valueContent"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="valueContentVariants"
                 [(documentationPropertyValue)]="valueContent"
@@ -258,8 +258,8 @@
                 A template for custom view of selected value
             </ng-template>
             <ng-template
-                documentationPropertyName="tagValidator"
                 documentationPropertyMode="input"
+                documentationPropertyName="tagValidator"
                 documentationPropertyType="TuiBooleanHandler<T>"
                 [documentationPropertyValues]="tagValidatorVariants"
                 [(documentationPropertyValue)]="tagValidator"
@@ -267,8 +267,8 @@
                 A function that checks that tag is valid
             </ng-template>
             <ng-template
-                documentationPropertyName="placeholder"
                 documentationPropertyMode="input"
+                documentationPropertyName="placeholder"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="exampleText"
             >

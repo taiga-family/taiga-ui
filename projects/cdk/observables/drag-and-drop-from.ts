@@ -15,7 +15,10 @@ export enum TuiDragStage {
 }
 
 export class TuiDragState {
-    constructor(readonly stage: TuiDragStage, readonly event: MouseEvent) {}
+    constructor(
+        readonly stage: TuiDragStage,
+        readonly event: MouseEvent,
+    ) {}
 }
 
 export function tuiDragAndDropFrom(element: Element): Observable<TuiDragState> {

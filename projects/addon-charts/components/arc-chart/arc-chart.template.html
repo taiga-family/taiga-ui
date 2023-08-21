@@ -1,22 +1,22 @@
 <svg
     *tuiRepeatTimes="let index of value.length"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="-100 -100 200 200"
     focusable="false"
+    viewBox="-100 -100 200 200"
+    xmlns="http://www.w3.org/2000/svg"
     class="t-svg"
-    [style.top.em]="getInset(index)"
-    [style.left.em]="getInset(index)"
-    [style.width.em]="getDiameter(index)"
     [style.height.em]="getDiameter(index)"
+    [style.left.em]="getInset(index)"
+    [style.top.em]="getInset(index)"
+    [style.width.em]="getDiameter(index)"
 >
     <path
-        vector-effect="non-scaling-stroke"
         d="M -70 70 A 100 100 0 1 1 70 70"
+        vector-effect="non-scaling-stroke"
     />
     <path
         #arc
-        vector-effect="non-scaling-stroke"
         d="M -70 70 A 100 100 0 1 1 70 70"
+        vector-effect="non-scaling-stroke"
         class="t-value"
         [class.t-value_inactive]="isInactive(index)"
         [style.stroke]="getColor(index)"

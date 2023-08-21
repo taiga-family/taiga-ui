@@ -5,9 +5,9 @@
     <ng-template #tooltip>
         {{ texts[0] }}
         <a
+            routerLink="/directives/mode"
             tuiLink
             tuiMode="onDark"
-            routerLink="/directives/mode"
         >
             <code>tuiMode</code>
         </a>
@@ -16,9 +16,9 @@
         <tui-select
             tuiTextfieldSize="s"
             class="t-mode"
-            [tuiTextfieldCleaner]="true"
-            [tuiHintContent]="tooltip"
             [ngModel]="mode"
+            [tuiHintContent]="tooltip"
+            [tuiTextfieldCleaner]="true"
             (ngModelChange)="onModeChange($event)"
         >
             tuiMode
@@ -40,11 +40,11 @@
             [collapsed]="true"
         >
             <tui-radio-block
-                size="s"
                 nativeId="form"
+                size="s"
                 class="tui-group__auto-width-item"
-                [item]="null"
                 [hideRadio]="true"
+                [item]="null"
                 [ngModel]="mode"
                 (ngModelChange)="onModeChange($event)"
             >
@@ -52,8 +52,8 @@
             </tui-radio-block>
             <tui-radio-block
                 item="onDark"
-                size="s"
                 nativeId="form"
+                size="s"
                 class="tui-group__auto-width-item"
                 [hideRadio]="true"
                 [ngModel]="mode"
@@ -63,8 +63,8 @@
             </tui-radio-block>
             <tui-radio-block
                 item="onLight"
-                size="s"
                 nativeId="form"
+                size="s"
                 class="tui-group__auto-width-item"
                 [hideRadio]="true"
                 [ngModel]="mode"
@@ -104,10 +104,10 @@
                     <ng-container [ngTemplateOutlet]="template"></ng-container>
                 </div>
                 <button
+                    automation-id="tui-demo-button__toggle-details"
+                    size="s"
                     tuiButton
                     type="button"
-                    size="s"
-                    automation-id="tui-demo-button__toggle-details"
                     class="t-button"
                     [iconRight]="icon"
                     (click)="toggleDetails()"
@@ -132,8 +132,8 @@
                             class="t-form-controls"
                         >
                             <tui-select
-                                tuiTextfieldSize="s"
                                 automation-id="tui-demo-select__expand-update-on"
+                                tuiTextfieldSize="s"
                                 class="t-select"
                                 [ngModel]="updateOn"
                                 [ngModelOptions]="{standalone: true}"
@@ -146,19 +146,19 @@
                                 ></tui-data-list-wrapper>
                             </tui-select>
                             <button
+                                automation-id="tui-demo-button__reset-state"
+                                size="s"
                                 tuiButton
                                 type="reset"
-                                size="s"
-                                automation-id="tui-demo-button__reset-state"
                                 class="tui-group__auto-width-item"
                             >
                                 Reset
                             </button>
                             <button
+                                automation-id="tui-demo-button__submit-state"
+                                size="s"
                                 tuiButton
                                 type="submit"
-                                size="s"
-                                automation-id="tui-demo-button__submit-state"
                                 class="tui-group__auto-width-item"
                             >
                                 Submit

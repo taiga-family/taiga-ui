@@ -2,29 +2,29 @@
     tuiWrapper
     class="t-wrapper"
     [appearance]="appearance"
-    [readOnly]="readOnly"
     [disabled]="disabled"
     [focus]="computedFocused"
     [hover]="pseudoHover"
     [invalid]="computedInvalid"
+    [readOnly]="readOnly"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <tui-input-number
-        tuiTextfieldAppearance="none"
         automation-id="tui-input-range__left-input"
+        tuiTextfieldAppearance="none"
         class="t-left"
-        [min]="min"
-        [max]="value[1]"
-        [precision]="precision"
         [decimal]="decimal"
-        [tuiTextfieldPostfix]="pluralize && !showLeftValueContent ? (value[0] | i18nPlural : pluralize) : ''"
         [disabled]="computedDisabled"
-        [readOnly]="readOnly"
+        [max]="value[1]"
+        [min]="min"
         [ngModel]="value[0]"
-        (ngModelChange)="onInputLeft($event)"
+        [precision]="precision"
+        [readOnly]="readOnly"
+        [tuiTextfieldPostfix]="pluralize && !showLeftValueContent ? (value[0] | i18nPlural: pluralize) : ''"
         (focusedChange)="onTextInputFocused($event, false)"
-        (keydown.arrowUp)="changeByStep($event, [1, 0])"
         (keydown.arrowDown)="changeByStep($event, [-1, 0])"
+        (keydown.arrowUp)="changeByStep($event, [1, 0])"
+        (ngModelChange)="onInputLeft($event)"
     >
         <ng-content></ng-content>
         <div
@@ -38,21 +38,21 @@
     </tui-input-number>
 
     <tui-input-number
-        tuiTextfieldAppearance="none"
         automation-id="tui-input-range__right-input"
+        tuiTextfieldAppearance="none"
         class="t-right"
-        [min]="value[0]"
-        [max]="max"
-        [precision]="precision"
         [decimal]="decimal"
         [disabled]="computedDisabled"
-        [tuiTextfieldPostfix]="pluralize && !showRightValueContent ? (value[1] | i18nPlural : pluralize) : ''"
-        [readOnly]="readOnly"
+        [max]="max"
+        [min]="value[0]"
         [ngModel]="value[1]"
-        (ngModelChange)="onInputRight($event)"
+        [precision]="precision"
+        [readOnly]="readOnly"
+        [tuiTextfieldPostfix]="pluralize && !showRightValueContent ? (value[1] | i18nPlural: pluralize) : ''"
         (focusedChange)="onTextInputFocused($event, true)"
-        (keydown.arrowUp)="changeByStep($event, [0, 1])"
         (keydown.arrowDown)="changeByStep($event, [0, -1])"
+        (keydown.arrowUp)="changeByStep($event, [0, 1])"
+        (ngModelChange)="onInputRight($event)"
     >
         <div
             *ngIf="showRightValueContent"
@@ -66,16 +66,16 @@
 
     <tui-range
         class="t-range"
-        [min]="min"
-        [max]="max"
-        [step]="step"
-        [segments]="segments"
-        [keySteps]="computeKeySteps(keySteps, min, max)"
-        [focusable]="false"
         [disabled]="readOnly || disabled"
+        [focusable]="false"
+        [keySteps]="computeKeySteps(keySteps, min, max)"
+        [max]="max"
+        [min]="min"
         [ngModel]="value"
+        [segments]="segments"
+        [step]="step"
+        (activeThumbChange)="onActiveThumbChange($event)"
         (ngModelChange)="onRangeValue($event)"
         (tuiPressedChange)="focusToTextInput()"
-        (activeThumbChange)="onActiveThumbChange($event)"
     ></tui-range>
 </div>

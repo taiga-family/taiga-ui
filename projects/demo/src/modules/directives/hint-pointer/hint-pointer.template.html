@@ -18,35 +18,35 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <div
-                tuiHintPointer
                 tuiHint="Some information"
+                tuiHintPointer
                 [tuiHintAppearance]="appearance"
                 [tuiHintDirection]="direction"
-                [tuiHintShowDelay]="showDelay"
                 [tuiHintHideDelay]="hideDelay"
+                [tuiHintShowDelay]="showDelay"
             >
                 It is followed inside the block
             </div>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="tuiHint"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiHint"
                 documentationPropertyType="PolymorpheusContent"
             >
                 Hint content
             </ng-template>
             <ng-template
-                documentationPropertyName="tuiHintShowDelay"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiHintShowDelay"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="showDelay"
             >
                 Show Delay
             </ng-template>
             <ng-template
-                documentationPropertyName="tuiHintHideDelay"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiHintHideDelay"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="hideDelay"
             >

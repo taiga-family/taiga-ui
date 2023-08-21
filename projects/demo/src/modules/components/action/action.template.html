@@ -12,9 +12,9 @@
             optional package with
             <code>@taiga-ui/styles/taiga-ui-global</code>
             <a
-                tuiLink
-                routerLink="/getting-started"
                 fragment="styles"
+                routerLink="/getting-started"
+                tuiLink
             >
                 added to your global styles
             </a>
@@ -68,8 +68,8 @@
                 tuiAction
                 type="button"
                 [icon]="icon"
-                [style.--tui-action-color]="color"
                 [style.--tui-action-background]="background"
+                [style.--tui-action-color]="color"
             >
                 It's not pining, it's passed on! This parrot is no more! It has ceased to be! It's expired and gone to
                 meet its maker! This is a late parrot! It's a stiff! Bereft of life, it rests in peace! If you hadn't
@@ -79,9 +79,9 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="icon"
                 documentationPropertyType="string"
-                documentationPropertyMode="input"
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="icon"
             >

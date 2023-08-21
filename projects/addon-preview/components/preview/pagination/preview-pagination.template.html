@@ -4,9 +4,9 @@
         tuiPreviewAction
         type="button"
         class="t-arrow_left"
+        [disabled]="leftButtonDisabled"
         [icon]="icons.prev"
         [title]="texts[0]"
-        [disabled]="leftButtonDisabled"
         (click)="onArrowClick(-1)"
     ></button>
     {{ index + 1 }}/{{ length }}
@@ -15,9 +15,9 @@
         tuiPreviewAction
         type="button"
         class="t-arrow_right"
+        [disabled]="rightButtonDisabled"
         [icon]="icons.next"
         [title]="texts[1]"
-        [disabled]="rightButtonDisabled"
         (click)="onArrowClick(1)"
     ></button>
 </ng-container>

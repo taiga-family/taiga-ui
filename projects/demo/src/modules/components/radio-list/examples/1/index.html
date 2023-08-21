@@ -3,8 +3,8 @@
         <form [formGroup]="testForm">
             <tui-radio-list
                 formControlName="tariff"
-                [items]="items"
                 [itemContent]="tariff1ItemContent"
+                [items]="items"
             ></tui-radio-list>
             <ng-template
                 #tariff1ItemContent
@@ -20,8 +20,8 @@
             <tui-radio-list
                 formControlName="tariff"
                 orientation="horizontal"
-                [items]="items"
                 [itemContent]="tariff2ItemContent"
+                [items]="items"
             ></tui-radio-list>
             <ng-template
                 #tariff2ItemContent

@@ -1,8 +1,8 @@
 <tui-mobile-calendar
-    [single]="single"
-    [min]="min"
-    [max]="max"
     [disabledItemHandler]="disabledItemHandler"
+    [max]="max"
+    [min]="min"
+    [single]="single"
     (cancel)="context.$implicit.complete()"
     (confirm)="context.completeWith($event)"
 ></tui-mobile-calendar>

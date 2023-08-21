@@ -30,18 +30,18 @@
             <ng-template>
                 <tui-radio-list
                     class="tui-space_bottom-3"
-                    [formControl]="control"
-                    [items]="items"
-                    [orientation]="orientation"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoActive]="pseudoPressed"
-                    [size]="size"
-                    [itemContent]="itemContent"
                     [disabledItemHandler]="disabledItemHandler"
                     [focusable]="focusable"
+                    [formControl]="control"
+                    [itemContent]="itemContent"
+                    [items]="items"
+                    [orientation]="orientation"
+                    [pseudoActive]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
                     [readOnly]="readOnly"
+                    [size]="size"
                 ></tui-radio-list>
             </ng-template>
         </tui-doc-demo>
@@ -63,8 +63,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
+                documentationPropertyName="disabledItemHandler"
                 documentationPropertyType="TuiBooleanHandler<T>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
@@ -74,8 +74,8 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="orientation"
                 documentationPropertyMode="input"
+                documentationPropertyName="orientation"
                 documentationPropertyType="TuiOrientation"
                 [documentationPropertyValues]="orientationVariants"
                 [(documentationPropertyValue)]="orientation"
@@ -83,8 +83,8 @@
                 Direction of group
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"

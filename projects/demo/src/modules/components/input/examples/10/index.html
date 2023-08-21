@@ -2,10 +2,10 @@
     <tui-input formControlName="testValue">
         Type an email
         <input
+            autocomplete="email"
+            translate="no"
             tuiTextfield
             type="email"
-            translate="no"
-            autocomplete="email"
         />
     </tui-input>
 </form>
@@ -15,10 +15,10 @@
 <h4>
     Preventing autofilling -
     <a
-        tuiLink
+        href="https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion#preventing_autofilling_with_autocompletenew-password"
         rel="noreferrer"
         target="_blank"
-        href="https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion#preventing_autofilling_with_autocompletenew-password"
+        tuiLink
     >
         MDN
     </a>
@@ -33,10 +33,10 @@
     <tui-input formControlName="testValue">
         Type an email
         <input
+            autocomplete="new-password"
+            translate="no"
             tuiTextfield
             type="email"
-            translate="no"
-            autocomplete="new-password"
         />
     </tui-input>
 </form>

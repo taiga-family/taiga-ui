@@ -14,7 +14,10 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      * @param year
      * @param month (starting with 0)
      */
-    constructor(year: number, readonly month: number) {
+    constructor(
+        year: number,
+        readonly month: number,
+    ) {
         super(year);
         ngDevMode && tuiAssert.assert(TuiMonth.isValidMonth(year, month));
     }

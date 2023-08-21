@@ -11,15 +11,15 @@
             <code>null</code>
             as value. If you need a labeled checkbox, see
             <a
-                tuiLink
                 routerLink="/components/checkbox-labeled"
+                tuiLink
             >
                 <code>CheckboxLabeled</code>
             </a>
             . If you need a checkbox inside a button, see
             <a
-                tuiLink
                 routerLink="/components/checkbox-block"
+                tuiLink
             >
                 <code>CheckboxBlock</code>
             </a>
@@ -50,32 +50,32 @@
                     <tui-checkbox
                         formControlName="testValue1"
                         class="tui-space_bottom-3"
-                        [readOnly]="readOnly"
                         [focusable]="focusable"
-                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoActive]="pseudoPressed"
                         [pseudoFocus]="pseudoFocused"
                         [pseudoHover]="pseudoHovered"
-                        [pseudoActive]="pseudoPressed"
+                        [pseudoInvalid]="pseudoInvalid"
+                        [readOnly]="readOnly"
                         [size]="size"
                     ></tui-checkbox>
                     <tui-checkbox
                         formControlName="testValue2"
                         class="tui-space_bottom-3"
-                        [readOnly]="readOnly"
-                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoActive]="pseudoPressed"
                         [pseudoFocus]="pseudoFocused"
                         [pseudoHover]="pseudoHovered"
-                        [pseudoActive]="pseudoPressed"
+                        [pseudoInvalid]="pseudoInvalid"
+                        [readOnly]="readOnly"
                         [size]="size"
                     ></tui-checkbox>
                     <tui-checkbox
                         formControlName="testValue3"
                         class="tui-space_bottom-3"
-                        [readOnly]="readOnly"
-                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoActive]="pseudoPressed"
                         [pseudoFocus]="pseudoFocused"
                         [pseudoHover]="pseudoHovered"
-                        [pseudoActive]="pseudoPressed"
+                        [pseudoInvalid]="pseudoInvalid"
+                        [readOnly]="readOnly"
                         [size]="size"
                     ></tui-checkbox>
                 </form>
@@ -92,8 +92,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"

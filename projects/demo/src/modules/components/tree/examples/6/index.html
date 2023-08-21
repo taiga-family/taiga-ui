@@ -1,9 +1,9 @@
 <tui-tree
     *ngFor="let item of data.children"
+    [childrenHandler]="handler"
+    [content]="content"
     [tuiTreeController]="true"
     [value]="item"
-    [content]="content"
-    [childrenHandler]="handler"
 ></tui-tree>
 
 <ng-template
@@ -12,7 +12,7 @@
 >
     <tui-checkbox-labeled
         class="tui-space_vertical-2 tui-space_left-1"
-        [ngModel]="item | tuiMapper : getValue : map"
+        [ngModel]="item | tuiMapper: getValue : map"
         (ngModelChange)="onChecked(item, $event)"
     >
         {{ item.text }}

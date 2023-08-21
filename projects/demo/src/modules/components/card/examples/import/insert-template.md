@@ -1,6 +1,6 @@
 ```html
 <tui-card
-  cardNumber="1234"
   class="logo"
+  cardNumber="1234"
 ></tui-card>
 ```

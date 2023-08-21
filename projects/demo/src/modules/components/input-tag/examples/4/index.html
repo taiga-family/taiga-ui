@@ -3,8 +3,8 @@
 <tui-input-tag
     class="b-form"
     [formControl]="control"
-    [tuiTextfieldLabelOutside]="true"
     [tagValidator]="tagValidator"
+    [tuiTextfieldLabelOutside]="true"
     [(search)]="search"
 >
     Try it
@@ -22,6 +22,6 @@
 </tui-input-tag>
 
 <tui-error
-    [formControl]="control"
     [error]="[] | tuiFieldError | async"
+    [formControl]="control"
 ></tui-error>

@@ -1,15 +1,15 @@
 <tui-hosted-dropdown
     tuiDropdownAlign="right"
-    [sided]="true"
     [content]="dropdown"
+    [sided]="true"
     [(open)]="open"
 >
     <button
+        appearance="flat"
+        iconRight="tuiIconChevronRight"
+        size="m"
         tuiButton
         type="button"
-        appearance="flat"
-        size="m"
-        iconRight="tuiIconChevronRight"
         [pseudoActive]="open || null"
     >
         Button

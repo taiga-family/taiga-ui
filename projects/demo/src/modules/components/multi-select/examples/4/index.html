@@ -2,14 +2,14 @@
     *tuiLet="items$ | async as items"
     class="b-form"
     [formControl]="control"
-    [tuiTextfieldLabelOutside]="true"
     [stringify]="(stringify$ | async)!"
+    [tuiTextfieldLabelOutside]="true"
     (searchChange)="onSearch($event)"
 >
     <tui-data-list-wrapper
         *tuiDataList
         tuiMultiSelectGroup
-        [items]="items"
         [itemContent]="(stringify$ | async)!"
+        [items]="items"
     ></tui-data-list-wrapper>
 </tui-multi-select>

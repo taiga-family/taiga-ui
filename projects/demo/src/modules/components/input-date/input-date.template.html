@@ -26,9 +26,9 @@
         </dl>
         <p class="tui-space_bottom-9">
             <a
-                tuiLink
-                routerLink="."
                 fragment="date-localization"
+                routerLink="."
+                tuiLink
             >
                 See example
             </a>
@@ -43,28 +43,28 @@
             <dd>
                 custom format of control output (
                 <a
-                    tuiLink
-                    target="_blank"
-                    rel="noreferrer"
                     href="https://github.com/taiga-family/taiga-ui/blob/main/projects/cdk/date-time/day.ts"
+                    rel="noreferrer"
+                    target="_blank"
+                    tuiLink
                 >
                     TuiDay
                 </a>
                 is default).
                 <p>
                     <a
-                        tuiLink
-                        routerLink="."
                         fragment="native-date-output"
+                        routerLink="."
+                        tuiLink
                     >
                         See example
                     </a>
                     with built-in
                     <a
-                        tuiLink
-                        target="_blank"
-                        rel="noreferrer"
                         href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date"
+                        rel="noreferrer"
+                        target="_blank"
+                        tuiLink
                     >
                         Date
                     </a>
@@ -126,26 +126,26 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-date
-                    [formControl]="control"
+                    [disabledItemHandler]="disabledItemHandler"
                     [focusable]="focusable"
-                    [min]="min"
-                    [max]="max"
+                    [formControl]="control"
+                    [items]="items"
                     [markerHandler]="markerHandler"
+                    [max]="max"
+                    [min]="min"
                     [pseudoFocus]="pseudoFocused"
                     [pseudoHover]="pseudoHovered"
                     [pseudoInvalid]="pseudoInvalid"
                     [readOnly]="readOnly"
-                    [disabledItemHandler]="disabledItemHandler"
-                    [items]="items"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldSize]="size"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hintDirection"
-                    [tuiHintAppearance]="hintAppearance"
                     [style.text-align]="textAlign"
                     [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                    [tuiHintAppearance]="hintAppearance"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldIconLeft]="iconLeft"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
                     (tuiDropdownOpenChange)="dropdownOpen.next($event)"
                 >
                     Choose a date
@@ -163,8 +163,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="disabledItemHandler"
                 documentationPropertyMode="input"
+                documentationPropertyName="disabledItemHandler"
                 documentationPropertyType="TuiBooleanHandler<TuiDay>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
@@ -174,8 +174,8 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="items"
                 documentationPropertyMode="input"
+                documentationPropertyName="items"
                 documentationPropertyType="TuiNamedDay[]"
                 [documentationPropertyValues]="itemsVariants"
                 [(documentationPropertyValue)]="items"
@@ -183,8 +183,8 @@
                 A list of preset dates for dropdown
             </ng-template>
             <ng-template
-                documentationPropertyName="markerHandler"
                 documentationPropertyMode="input"
+                documentationPropertyName="markerHandler"
                 documentationPropertyType="TuiMarkerHandler"
                 [documentationPropertyValues]="markerHandlerVariants"
                 [(documentationPropertyValue)]="markerHandler"
@@ -192,8 +192,8 @@
                 A handler that gets date and returns null or a tuple with circled marker colors
             </ng-template>
             <ng-template
-                documentationPropertyName="min"
                 documentationPropertyMode="input"
+                documentationPropertyName="min"
                 documentationPropertyType="TuiDay | null"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
@@ -201,8 +201,8 @@
                 Minimum date
             </ng-template>
             <ng-template
-                documentationPropertyName="max"
                 documentationPropertyMode="input"
+                documentationPropertyName="max"
                 documentationPropertyType="TuiDay | null"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
@@ -214,8 +214,8 @@
         <tui-doc-documentation heading="CSS customization">
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyType="string"
                 documentationPropertyName="style.text-align"
+                documentationPropertyType="string"
                 [documentationPropertyValues]="textAlignVariants"
                 [(documentationPropertyValue)]="textAlign"
             >
@@ -229,8 +229,8 @@
             Mobile calendar does not use the same dropdown with calendar as desktop uses. It uses digital keyboard. If
             you want to open
             <a
-                tuiLink
                 routerLink="/components/mobile-calendar"
+                tuiLink
             >
                 mobile calendar
             </a>
@@ -240,8 +240,8 @@
             <code>TuiDialogModule</code>
             into your root module. Also, check that you did not forget about
             <a
-                tuiLink
                 routerLink="/getting-started"
+                tuiLink
             >
                 tui-root
             </a>

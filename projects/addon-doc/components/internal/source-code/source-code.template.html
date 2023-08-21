@@ -1,11 +1,11 @@
 <a
     *polymorpheusOutlet="sourceCode as link; context: pathOptions"
+    appearance="icon"
+    size="s"
+    target="_blank"
     tuiIconButton
     type="button"
-    appearance="icon"
-    target="_blank"
-    size="s"
+    [href]="link"
     [icon]="icons.code"
     [title]="text"
-    [href]="link"
 ></a>

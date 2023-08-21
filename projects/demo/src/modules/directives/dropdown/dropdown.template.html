@@ -69,15 +69,15 @@
                     tuiButton
                     type="button"
                     [tuiDropdown]="dropdownContent"
-                    [tuiDropdownMinHeight]="dropdownMinHeight"
-                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
                     [tuiDropdownAlign]="dropdownAlign"
                     [tuiDropdownDirection]="dropdownDirection"
                     [tuiDropdownLimitWidth]="dropdownLimitWidth"
                     [tuiDropdownManual]="open"
+                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
                     [tuiDropdownOffset]="dropdownOffset"
-                    (tuiObscured)="onObscured($event)"
                     (click)="onClick()"
+                    (tuiObscured)="onObscured($event)"
                 >
                     PRESS!
                     <i>* There is also a pretty long text to check its width limitations</i>
@@ -100,16 +100,16 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="tuiDropdownManual"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiDropdownManual"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="open"
             >
                 Show dropdown (basic manual implementation, see related pages for other options)
             </ng-template>
             <ng-template
-                documentationPropertyName="tuiDropdown"
                 documentationPropertyMode="input"
+                documentationPropertyName="tuiDropdown"
                 documentationPropertyType="PolymorpheusContent"
             >
                 Content

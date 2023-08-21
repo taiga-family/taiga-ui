@@ -7,15 +7,15 @@
         <p>
             Radio button without a label. If you want to use it with a label, see
             <a
-                tuiLink
                 routerLink="/components/radio-labeled"
+                tuiLink
             >
                 <code>RadioLabeled</code>
             </a>
             , and inside button — see
             <a
-                tuiLink
                 routerLink="/components/radio-block"
+                tuiLink
             >
                 <code>RadioBlock</code>
             </a>
@@ -44,52 +44,52 @@
             <ng-template>
                 <tui-radio
                     class="tui-space_bottom-3"
+                    [focusable]="focusable"
                     [formControl]="control"
+                    [identityMatcher]="identityMatcher"
                     [item]="null"
-                    [identityMatcher]="identityMatcher"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
                     [pseudoActive]="pseudoPressed"
                     [pseudoDisabled]="pseudoDisabled"
-                    [size]="size"
-                    [focusable]="focusable"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
                     [readOnly]="readOnly"
+                    [size]="size"
                 ></tui-radio>
                 <tui-radio
                     class="tui-space_bottom-3"
+                    [focusable]="focusable"
                     [formControl]="control"
+                    [identityMatcher]="identityMatcher"
                     [item]="items[1]"
-                    [identityMatcher]="identityMatcher"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
                     [pseudoActive]="pseudoPressed"
                     [pseudoDisabled]="pseudoDisabled"
-                    [size]="size"
-                    [focusable]="focusable"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
                     [readOnly]="readOnly"
+                    [size]="size"
                 ></tui-radio>
                 <tui-radio
                     class="tui-space_bottom-3"
+                    [focusable]="focusable"
                     [formControl]="control"
-                    [item]="items[2]"
                     [identityMatcher]="identityMatcher"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
+                    [item]="items[2]"
                     [pseudoActive]="pseudoPressed"
                     [pseudoDisabled]="pseudoDisabled"
-                    [size]="size"
-                    [focusable]="focusable"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
                     [readOnly]="readOnly"
+                    [size]="size"
                 ></tui-radio>
             </ng-template>
         </tui-doc-demo>
         <button
+            size="m"
             tuiButton
             type="button"
-            size="m"
             (click)="onClick()"
         >
             Set a value with a copy
@@ -105,8 +105,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="identityMatcher"
                 documentationPropertyMode="input"
+                documentationPropertyName="identityMatcher"
                 documentationPropertyType="TuiIdentityMatcher"
                 [documentationPropertyValues]="identityMatcherVariants"
                 [(documentationPropertyValue)]="identityMatcher"
@@ -118,16 +118,16 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="pseudoDisabled"
                 documentationPropertyMode="input"
+                documentationPropertyName="pseudoDisabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="pseudoDisabled"
             >
                 Emulates disabled state without disabling a form
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"

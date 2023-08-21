@@ -40,8 +40,8 @@
 
         <tui-doc-example
             id="collapsed"
-            heading="Collapsed"
             description="With value label"
+            heading="Collapsed"
             [content]="example5"
         >
             <tui-bar-set-example-5></tui-bar-set-example-5>
@@ -53,22 +53,22 @@
             <tui-bar-set
                 class="bars"
                 [collapsed]="collapsed"
-                [value]="value"
                 [size]="size"
+                [value]="value"
             ></tui-bar-set>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="collapsed"
                 documentationPropertyMode="input"
+                documentationPropertyName="collapsed"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="collapsed"
             >
                 Shows data set in a single bar
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeS | TuiSizeL | null"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
@@ -78,8 +78,8 @@
                 for autosize)
             </ng-template>
             <ng-template
-                documentationPropertyName="value"
                 documentationPropertyMode="input"
+                documentationPropertyName="value"
                 documentationPropertyType="readonly number[]"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"

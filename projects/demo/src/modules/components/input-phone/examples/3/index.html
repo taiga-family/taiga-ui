@@ -1,8 +1,8 @@
 <tui-input-phone
     *tuiLet="items$ | async as items"
     class="b-form"
-    [tuiTextfieldCustomContent]="avatar"
     [allowText]="true"
+    [tuiTextfieldCustomContent]="avatar"
     [(ngModel)]="value"
     (searchChange)="onSearch($event)"
 >
@@ -12,8 +12,8 @@
             <button
                 *ngFor="let item of items"
                 tuiOption
-                [value]="item.phone"
                 [disabled]="item.disabled"
+                [value]="item.phone"
                 (click)="onClick(item)"
             >
                 <tui-avatar
@@ -34,8 +34,8 @@
     <tui-avatar
         *ngIf="user$ | async as user"
         size="s"
-        [rounded]="true"
         [avatarUrl]="user.avatarUrl || null"
+        [rounded]="true"
         [text]="user.firstName"
     ></tui-avatar>
 </ng-template>

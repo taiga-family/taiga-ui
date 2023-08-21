@@ -90,9 +90,9 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-tabs-with-more
-                [underline]="underline"
-                [moreContent]="moreContent"
                 [itemsLimit]="itemsLimit"
+                [moreContent]="moreContent"
+                [underline]="underline"
                 [(activeItemIndex)]="activeItemIndex"
             >
                 <ng-container *ngFor="let button of buttons">
@@ -107,8 +107,8 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="itemsLimit"
                 documentationPropertyMode="input"
+                documentationPropertyName="itemsLimit"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="itemsLimit"
             >
@@ -120,8 +120,8 @@
                 </strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="dropdownContent"
                 documentationPropertyMode="input"
+                documentationPropertyName="dropdownContent"
                 documentationPropertyType="PolymorpheusContent"
             >
                 "More" button dropdown content
@@ -132,8 +132,8 @@
                 </strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="moreContent"
                 documentationPropertyMode="input"
+                documentationPropertyName="moreContent"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="moreContentVariants"
                 [(documentationPropertyValue)]="moreContent"
@@ -146,16 +146,16 @@
                 </strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="underline"
                 documentationPropertyMode="input"
+                documentationPropertyName="underline"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="underline"
             >
                 Enable active item underline
             </ng-template>
             <ng-template
-                documentationPropertyName="activeItemIndex"
                 documentationPropertyMode="input-output"
+                documentationPropertyName="activeItemIndex"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="activeItemIndex"
             >

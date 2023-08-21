@@ -13,12 +13,12 @@ import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/tes
                 [formControl]="control"
                 [max]="max"
                 [min]="min"
+                [postfix]="postfix"
+                [prefix]="prefix"
                 [quantum]="quantum"
                 [steps]="steps"
-                [valueContent]="valueContent"
-                [prefix]="prefix"
-                [postfix]="postfix"
                 [tuiTextfieldCustomContent]="textfieldCustomContent"
+                [valueContent]="valueContent"
             ></tui-input-slider>
 
             <ng-template #progressPercent>{{ percent }}%</ng-template>

@@ -9,8 +9,8 @@
             <button
                 *ngFor="let item of items"
                 tuiOption
-                [value]="item"
                 [disabled]="item.disabled"
+                [value]="item"
                 (click)="onClick(item)"
             >
                 <tui-avatar

@@ -25,8 +25,8 @@ describe(`TuiFieldErrorContentPipe`, () => {
                     id="hint-host"
                     tuiHintDirection="top"
                     class="host"
-                    [tuiHint]="[] | tuiFieldErrorContent"
                     [formControl]="control"
+                    [tuiHint]="[] | tuiFieldErrorContent"
                 >
                     Tooltip host
                 </tui-input>

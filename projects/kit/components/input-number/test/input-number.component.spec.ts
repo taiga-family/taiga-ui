@@ -20,11 +20,11 @@ describe(`InputNumber`, () => {
                 <tui-input-number
                     *ngIf="!defaultValues"
                     formControlName="control"
-                    [readOnly]="readOnly"
                     [decimal]="decimal"
+                    [readOnly]="readOnly"
+                    [tuiHintContent]="hintContent"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldSize]="size"
-                    [tuiHintContent]="hintContent"
                 >
                     Enter the amount
                 </tui-input-number>

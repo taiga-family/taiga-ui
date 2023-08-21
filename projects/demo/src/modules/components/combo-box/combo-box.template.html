@@ -35,8 +35,8 @@
 
         <tui-doc-example
             id="wrapper"
-            heading="DataListWrapper"
             description="With filtering through tuiFilterByInput pipe"
+            heading="DataListWrapper"
             [content]="example3"
         >
             <tui-combo-box-example-3></tui-combo-box-example-3>
@@ -44,8 +44,8 @@
 
         <tui-doc-example
             id="stringify"
-            heading="Stringify"
             description="With filtering through tuiFilterByInputWith pipe using custom stringify handler"
+            heading="Stringify"
             [content]="example4"
         >
             <tui-combo-box-example-4></tui-combo-box-example-4>
@@ -64,10 +64,10 @@
                 <code>ScrollingModule</code>
                 from
                 <a
-                    tuiLink
-                    rel="noreferrer"
                     href="https://material.angular.io/cdk/scrolling/overview"
+                    rel="noreferrer"
                     target="_blank"
+                    tuiLink
                 >
                     @angular/cdk/scrolling
                 </a>
@@ -95,33 +95,33 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-combo-box
-                    [formControl]="control"
                     [focusable]="focusable"
-                    [valueContent]="valueContent"
+                    [formControl]="control"
                     [identityMatcher]="identityMatcher"
-                    [readOnly]="readOnly"
-                    [strict]="strict"
-                    [stringify]="stringify"
-                    [strictMatcher]="strictMatcher"
-                    [pseudoInvalid]="pseudoInvalid"
+                    [pseudoActive]="pseudoPressed"
                     [pseudoFocus]="pseudoFocused"
                     [pseudoHover]="pseudoHovered"
-                    [pseudoActive]="pseudoPressed"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
+                    [strict]="strict"
+                    [strictMatcher]="strictMatcher"
+                    [stringify]="stringify"
                     [tuiDropdownAlign]="dropdownAlign"
                     [tuiDropdownDirection]="dropdownDirection"
                     [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                    [tuiDropdownMinHeight]="dropdownMinHeight"
                     [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
                     [tuiDropdownOffset]="dropdownOffset"
                     [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                    [tuiHintAppearance]="hintAppearance"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
-                    [tuiHintAppearance]="hintAppearance"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [tuiTextfieldFiller]="filler"
                     [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldFiller]="filler"
+                    [tuiTextfieldIconLeft]="iconLeft"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
+                    [valueContent]="valueContent"
                     [(search)]="search"
                     (tuiDropdownOpenChange)="dropdownOpen.next($event)"
                 >
@@ -153,9 +153,9 @@
             </p>
 
             <button
+                size="m"
                 tuiButton
                 type="button"
-                size="m"
                 (click)="setValue()"
             >
                 Set
@@ -173,8 +173,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="search"
                 documentationPropertyMode="input-output"
+                documentationPropertyName="search"
                 documentationPropertyType="string | null"
                 [(documentationPropertyValue)]="search"
             >
@@ -183,8 +183,8 @@
                 when item from list selected)
             </ng-template>
             <ng-template
-                documentationPropertyName="identityMatcher"
                 documentationPropertyMode="input"
+                documentationPropertyName="identityMatcher"
                 documentationPropertyType="TuiIdentityMatcher"
                 [documentationPropertyValues]="identityMatcherVariants"
                 [(documentationPropertyValue)]="identityMatcher"
@@ -193,8 +193,8 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="strict"
                 documentationPropertyMode="input"
+                documentationPropertyName="strict"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="strict"
             >
@@ -215,8 +215,8 @@
                 </p>
             </ng-template>
             <ng-template
-                documentationPropertyName="strictMatcher"
                 documentationPropertyMode="input"
+                documentationPropertyName="strictMatcher"
                 documentationPropertyType="TuiStringMatcher | null"
                 [documentationPropertyValues]="strictMatcherVariants"
                 [(documentationPropertyValue)]="strictMatcher"
@@ -226,8 +226,8 @@
                 <strong>Should be a pure function</strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="stringify"
                 documentationPropertyMode="input"
+                documentationPropertyName="stringify"
                 documentationPropertyType="TuiStringHandler"
                 [documentationPropertyValues]="stringifyVariants"
                 [(documentationPropertyValue)]="stringify"
@@ -238,8 +238,8 @@
                 <strong>Should be a pure function</strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="valueContent"
                 documentationPropertyMode="input"
+                documentationPropertyName="valueContent"
                 documentationPropertyType="PolymorpheusContent"
                 [documentationPropertyValues]="valueTemplateVariants"
                 [(documentationPropertyValue)]="selectedValueTemplate"

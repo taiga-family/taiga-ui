@@ -5,11 +5,11 @@
     [(open)]="dropdownOpen"
 >
     <button
-        tuiButton
         appearance="outline"
         icon="tuiIconMoreVertical"
-        type="button"
         size="m"
+        tuiButton
+        type="button"
         class="example"
     >
         List of components
@@ -25,43 +25,43 @@
         [tuiActiveZoneParent]="activeZone"
     >
         <button
-            tuiOption
-            tuiDropdownSided
             tuiDropdownAlign="right"
             tuiDropdownDirection="top"
-            [tuiDropdownManual]="true"
+            tuiDropdownSided
+            tuiOption
             [tuiDropdown]="money"
+            [tuiDropdownManual]="true"
         >
             💰 Money:
         </button>
         <button
             automation-id="tui-data-list-calendar-option"
-            tuiOption
-            tuiDropdownSided
             tuiDropdownAlign="right"
-            [tuiDropdownManual]="false"
+            tuiDropdownSided
+            tuiOption
             [tuiDropdown]="calendar"
+            [tuiDropdownManual]="false"
         >
             📅 Calendar: {{ dateValue }}
         </button>
         <button
             automation-id="tui-data-list-email-option"
-            tuiOption
-            tuiDropdownSided
             tuiDropdownAlign="right"
-            [tuiDropdownManual]="false"
+            tuiDropdownSided
+            tuiOption
             [tuiDropdown]="input"
+            [tuiDropdownManual]="false"
         >
             📧 Email: {{ testValue }}
         </button>
         <button
             automation-id="tui-data-list-range-option"
-            tuiOption
-            tuiDropdownSided
             tuiDropdownAlign="right"
             tuiDropdownDirection="top"
-            [tuiDropdownManual]="false"
+            tuiDropdownSided
+            tuiOption
             [tuiDropdown]="range"
+            [tuiDropdownManual]="false"
         >
             ⌛ Range: {{ rangeValue }}
         </button>
@@ -85,12 +85,12 @@
             [tuiActiveZoneParent]="activeZone"
         >
             <button
-                tuiOption
-                tuiDropdownSided
-                tuiDropdownDirection="bottom"
                 tuiDropdownAlign="right"
-                [tuiDropdownManual]="true"
+                tuiDropdownDirection="bottom"
+                tuiDropdownSided
+                tuiOption
                 [tuiDropdown]="currency"
+                [tuiDropdownManual]="true"
             >
                 Exchange Rates:
             </button>
@@ -100,8 +100,8 @@
     <ng-template #calendar>
         <tui-calendar
             [value]="dateValue"
-            (mousedown.silent.prevent)="(0)"
             (dayClick)="onDayClick($event)"
+            (mousedown.silent.prevent)="(0)"
         ></tui-calendar>
     </ng-template>
 

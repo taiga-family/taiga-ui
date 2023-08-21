@@ -52,23 +52,23 @@
     </span>
     <ng-container *ngIf="spinTexts$ | async as spinTexts">
         <button
+            appearance="icon"
+            size="xs"
             tuiIconButton
             type="button"
-            size="xs"
-            appearance="icon"
             class="t-back"
-            [icon]="icons.decrement"
             [disabled]="leftDisabled"
+            [icon]="icons.decrement"
             [title]="spinTexts[0]"
             (click)="back()"
         ></button>
         <button
+            appearance="icon"
+            size="xs"
             tuiIconButton
             type="button"
-            size="xs"
-            appearance="icon"
-            [icon]="icons.increment"
             [disabled]="rightDisabled"
+            [icon]="icons.increment"
             [title]="spinTexts[1]"
             (click)="forth()"
         ></button>

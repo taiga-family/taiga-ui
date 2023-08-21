@@ -50,10 +50,10 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-line-clamp
-                [style.maxWidth.px]="maxWidth"
                 [content]="content || defaultExampleContent"
-                [linesLimit]="linesLimit"
                 [lineHeight]="lineHeight"
+                [linesLimit]="linesLimit"
+                [style.maxWidth.px]="maxWidth"
             ></tui-line-clamp>
             <ng-template #defaultExampleContent>
                 Lorem ipsum
@@ -67,32 +67,32 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="content"
                 documentationPropertyMode="input"
+                documentationPropertyName="content"
                 documentationPropertyType="PolymorpheusContent"
                 [(documentationPropertyValue)]="content"
             >
                 Content
             </ng-template>
             <ng-template
-                documentationPropertyName="lineHeight"
                 documentationPropertyMode="input"
+                documentationPropertyName="lineHeight"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="lineHeight"
             >
                 Height of single line. It used to limit component's height.
             </ng-template>
             <ng-template
-                documentationPropertyName="linesLimit"
                 documentationPropertyMode="input"
+                documentationPropertyName="linesLimit"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="linesLimit"
             >
                 Number of visible lines
             </ng-template>
             <ng-template
-                documentationPropertyName="overflownChange"
                 documentationPropertyMode="output"
+                documentationPropertyName="overflownChange"
                 documentationPropertyType="boolean"
             >
                 Emits
@@ -104,8 +104,8 @@
         </tui-doc-documentation>
         <tui-doc-documentation heading="CSS customization">
             <ng-template
-                documentationPropertyName="style.maxWidth.px"
                 documentationPropertyMode="input"
+                documentationPropertyName="style.maxWidth.px"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="maxWidth"
             >

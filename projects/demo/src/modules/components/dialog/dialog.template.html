@@ -8,8 +8,8 @@
         <p>
             If you want custom dialogs see
             <a
-                tuiLink
                 routerLink="/dialog/custom"
+                tuiLink
             >
                 this link
             </a>
@@ -56,8 +56,8 @@
 
         <tui-doc-example
             id="data"
-            heading="Component dialog"
             description="Using two-way data transfer"
+            heading="Component dialog"
             [content]="example2"
         >
             <tui-dialog-example-2></tui-dialog-example-2>
@@ -97,8 +97,8 @@
 
         <tui-doc-example
             id="prompt"
-            heading="Prompt"
             description="Confirming closing of the dialog"
+            heading="Prompt"
             [content]="example8"
         >
             <tui-dialog-example-8></tui-dialog-example-8>
@@ -106,9 +106,9 @@
 
         <tui-doc-example
             id="pay"
-            i18n-heading
-            heading="Pay"
             description="Example with pay from modal"
+            heading="Pay"
+            i18n-heading
             [content]="example9"
         >
             <tui-dialog-example-9></tui-dialog-example-9>
@@ -118,9 +118,9 @@
     <ng-template pageTab>
         <div>
             <button
+                size="m"
                 tuiButton
                 type="button"
-                size="m"
                 (click)="showDialog(template)"
             >
                 Show
@@ -128,10 +128,10 @@
         </div>
         <ng-template
             #template
+            let-completeWith="completeWith"
+            let-data="data"
             let-observer
             let-size="size"
-            let-data="data"
-            let-completeWith="completeWith"
         >
             <h2 *ngIf="size === 'xl'">Template can be customized</h2>
             <p>
@@ -167,27 +167,27 @@
                 </tui-accordion-item>
             </tui-accordion>
             <button
+                size="m"
                 tuiButton
                 type="button"
-                size="m"
                 class="tui-space_top-2 tui-space_right-1"
                 (click)="observer.complete()"
             >
                 Close
             </button>
             <button
+                size="m"
                 tuiButton
                 type="button"
-                size="m"
                 class="tui-space_top-2 tui-space_right-1"
                 (click)="observer.next('Hi')"
             >
                 Say "Hi"
             </button>
             <button
+                size="m"
                 tuiButton
                 type="button"
-                size="m"
                 class="tui-space_top-2 tui-space_right-1"
                 (click)="completeWith('Hi and bye!')"
             >
@@ -331,8 +331,8 @@
             <li>
                 You can also use a
                 <a
-                    routerLink="/components/dialog"
                     fragment="template"
+                    routerLink="/components/dialog"
                     tuiLink
                 >
                     template
@@ -412,8 +412,8 @@
         <p>
             See example of custom dialog
             <a
-                tuiLink
                 routerLink="/dialog/custom"
+                tuiLink
             >
                 here
             </a>

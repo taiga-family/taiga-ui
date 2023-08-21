@@ -28,10 +28,10 @@ describe(`InputDateRangeComponent`, () => {
                 <tui-input-date-range
                     [formControl]="control"
                     [items]="items"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [readOnly]="readOnly"
-                    [min]="min"
                     [max]="max"
+                    [min]="min"
+                    [readOnly]="readOnly"
+                    [tuiTextfieldCleaner]="cleaner"
                 ></tui-input-date-range>
             </tui-root>
         `,

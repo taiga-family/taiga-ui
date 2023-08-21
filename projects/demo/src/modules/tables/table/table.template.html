@@ -32,8 +32,8 @@
 
         <tui-doc-example
             id="server"
-            heading="Server sorting"
             description="With tuiSortBy directive to work with column titles instead of sorters"
+            heading="Server sorting"
             [content]="example4"
         >
             <tui-table-example-4></tui-table-example-4>
@@ -53,10 +53,10 @@
                 <code>ScrollingModule</code>
                 from
                 <a
-                    tuiLink
-                    rel="noreferrer"
                     href="https://material.angular.io/cdk/scrolling/overview"
+                    rel="noreferrer"
                     target="_blank"
+                    tuiLink
                 >
                     @angular/cdk/scrolling
                 </a>
@@ -84,29 +84,29 @@
                     <p>Parent directive that sets the table up.</p>
                     <tui-doc-documentation [showValues]="false">
                         <ng-template
-                            documentationPropertyName="columns"
                             documentationPropertyMode="input"
+                            documentationPropertyName="columns"
                             documentationPropertyType="readonly string[]"
                         >
                             An array of keys to set up columns order
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="size"
                             documentationPropertyMode="input"
+                            documentationPropertyName="size"
                             documentationPropertyType="TuiSizeS | TuiSizeL"
                         >
                             Cells size
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="sorter"
                             documentationPropertyMode="input-output"
+                            documentationPropertyName="sorter"
                             documentationPropertyType="TuiComparator<T>"
                         >
                             Sort function (basic JavaScript array sort API)
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="direction"
                             documentationPropertyMode="input-output"
+                            documentationPropertyName="direction"
                             documentationPropertyType="-1 | 1"
                         >
                             Direction for sorting
@@ -145,22 +145,22 @@
                     </p>
                     <tui-doc-documentation [showValues]="false">
                         <ng-template
-                            documentationPropertyName="resizable"
                             documentationPropertyMode="input"
+                            documentationPropertyName="resizable"
                             documentationPropertyType="boolean"
                         >
                             Makes this column resizable
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="sorter"
                             documentationPropertyMode="input"
+                            documentationPropertyName="sorter"
                             documentationPropertyType="TuiComparator<T> | null"
                         >
                             Sorter function for this column
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="sticky"
                             documentationPropertyMode="input"
+                            documentationPropertyName="sticky"
                             documentationPropertyType="boolean"
                         >
                             Makes heading cell horizontally sticky
@@ -177,22 +177,22 @@
                     </p>
                     <tui-doc-documentation [showValues]="false">
                         <ng-template
-                            documentationPropertyName="data"
                             documentationPropertyMode="input"
+                            documentationPropertyName="data"
                             documentationPropertyType="readonly T[]"
                         >
                             Data to display
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="heading"
                             documentationPropertyMode="input"
+                            documentationPropertyName="heading"
                             documentationPropertyType="PolymorpheusContent"
                         >
                             Optional heading content for the group that makes it collapsable
                         </ng-template>
                         <ng-template
-                            documentationPropertyName="open"
                             documentationPropertyMode="input-output"
+                            documentationPropertyName="open"
                             documentationPropertyType="boolean"
                         >
                             Open/collapsed state of the group

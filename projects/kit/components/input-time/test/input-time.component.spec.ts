@@ -35,13 +35,13 @@ describe(`InputTime`, () => {
             <tui-root>
                 <tui-input-time
                     [formControl]="control"
-                    [readOnly]="readOnly"
                     [items]="items"
+                    [readOnly]="readOnly"
                     [strict]="strict"
+                    [tuiHintContent]="hintContent"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
-                    [tuiHintContent]="hintContent"
                 ></tui-input-time>
             </tui-root>
         `,

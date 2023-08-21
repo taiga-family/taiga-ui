@@ -60,12 +60,12 @@
     <ng-container *ngIf="allowDelete">
         <button
             *ngIf="fileTexts$ | async as texts"
-            automation-id="tui-file__remove"
-            tuiIconButton
-            type="button"
-            size="xs"
             appearance="icon"
+            automation-id="tui-file__remove"
+            size="xs"
+            tuiIconButton
             tuiPreventDefault="mousedown"
+            type="button"
             class="t-remove"
             [icon]="icons.close"
             [title]="texts.remove"
@@ -77,8 +77,8 @@
 <ng-template #defaultLeftContent>
     <img
         *ngIf="preview; else loader"
-        automation-id="tui-file__preview"
         alt="file preview"
+        automation-id="tui-file__preview"
         class="t-image"
         [src]="preview"
     />

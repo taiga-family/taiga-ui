@@ -3,37 +3,37 @@
     [canOpen]="interactive"
     [content]="dropdown"
     [open]="open && interactive"
-    (openChange)="onOpenChange($event)"
     (click)="toggle()"
+    (openChange)="onOpenChange($event)"
 >
     <tui-primitive-textfield
         class="t-textfield"
         [disabled]="computedDisabled"
-        [nativeId]="nativeId"
-        [readOnly]="readOnly"
-        [tuiTextfieldIcon]="calendarIcon"
-        [pseudoFocus]="pseudoFocus"
-        [pseudoHover]="pseudoHover"
         [invalid]="computedInvalid"
         [maskito]="getMaskOptions(computedMin, computedMax)"
+        [nativeId]="nativeId"
+        [pseudoFocus]="pseudoFocus"
+        [pseudoHover]="pseudoHover"
+        [readOnly]="readOnly"
+        [tuiTextfieldIcon]="calendarIcon"
         [(value)]="nativeValue"
-        (valueChange)="onValueChange($event)"
         (focusedChange)="onFocused($event)"
+        (valueChange)="onValueChange($event)"
     >
         <ng-content></ng-content>
         <ng-content
-            select="input"
             ngProjectAs="input"
+            select="input"
         ></ng-content>
     </tui-primitive-textfield>
 
     <ng-template #dropdown>
         <tui-primitive-year-picker
             tuiPreventDefault="mousedown"
-            [min]="computedMin | tuiToYear"
-            [max]="computedMax | tuiToYear"
-            [initialItem]="value || initialItem | tuiToYear"
             [disabledItemHandler]="disabledItemHandler"
+            [initialItem]="value || initialItem | tuiToYear"
+            [max]="computedMax | tuiToYear"
+            [min]="computedMin | tuiToYear"
             [value]="value === null ? null : (value | tuiToYear)"
             (yearClick)="onYearClick($event)"
         ></tui-primitive-year-picker>

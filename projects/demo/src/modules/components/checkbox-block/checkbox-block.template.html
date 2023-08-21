@@ -45,10 +45,10 @@
                         [contentAlign]="contentAlign"
                         [focusable]="focusable"
                         [hideCheckbox]="hideCheckbox"
-                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoActive]="pseudoPressed"
                         [pseudoFocus]="pseudoFocused"
                         [pseudoHover]="pseudoHovered"
-                        [pseudoActive]="pseudoPressed"
+                        [pseudoInvalid]="pseudoInvalid"
                         [readOnly]="readOnly"
                         [size]="size"
                     >
@@ -60,10 +60,10 @@
                         [contentAlign]="contentAlign"
                         [focusable]="focusable"
                         [hideCheckbox]="hideCheckbox"
-                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoActive]="pseudoPressed"
                         [pseudoFocus]="pseudoFocused"
                         [pseudoHover]="pseudoHovered"
-                        [pseudoActive]="pseudoPressed"
+                        [pseudoInvalid]="pseudoInvalid"
                         [readOnly]="readOnly"
                         [size]="size"
                     >
@@ -75,10 +75,10 @@
                         [contentAlign]="contentAlign"
                         [focusable]="focusable"
                         [hideCheckbox]="hideCheckbox"
-                        [pseudoInvalid]="pseudoInvalid"
+                        [pseudoActive]="pseudoPressed"
                         [pseudoFocus]="pseudoFocused"
                         [pseudoHover]="pseudoHovered"
-                        [pseudoActive]="pseudoPressed"
+                        [pseudoInvalid]="pseudoInvalid"
                         [readOnly]="readOnly"
                         [size]="size"
                     >
@@ -98,8 +98,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="contentAlign"
                 documentationPropertyMode="input"
+                documentationPropertyName="contentAlign"
                 documentationPropertyType="TuiHorizontalDirection"
                 [documentationPropertyValues]="contentAlignVariants"
                 [(documentationPropertyValue)]="contentAlign"
@@ -107,16 +107,16 @@
                 Left/right content align
             </ng-template>
             <ng-template
-                documentationPropertyName="hideCheckbox"
                 documentationPropertyMode="input"
+                documentationPropertyName="hideCheckbox"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="hideCheckbox"
             >
                 Hide checkbox
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeS | TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"

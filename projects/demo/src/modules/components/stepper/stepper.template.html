@@ -42,8 +42,8 @@
                 <button tuiStep>Simple step</button>
                 <button
                     tuiStep
-                    [stepState]="state"
                     [icon]="icon"
+                    [stepState]="state"
                 >
                     Simple step
                 </button>
@@ -53,8 +53,8 @@
         </tui-doc-demo>
         <tui-doc-documentation heading="Stepper">
             <ng-template
-                documentationPropertyName="orientation"
                 documentationPropertyMode="input"
+                documentationPropertyName="orientation"
                 documentationPropertyType="TuiOrientation"
                 [documentationPropertyValues]="orientationVariants"
                 [(documentationPropertyValue)]="orientation"
@@ -62,8 +62,8 @@
                 Steps direction
             </ng-template>
             <ng-template
-                documentationPropertyName="activeItemIndex"
                 documentationPropertyMode="input-output"
+                documentationPropertyName="activeItemIndex"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="activeItemIndex"
             >
@@ -72,8 +72,8 @@
         </tui-doc-documentation>
         <tui-doc-documentation heading="Step">
             <ng-template
-                documentationPropertyName="state"
                 documentationPropertyMode="input"
+                documentationPropertyName="state"
                 documentationPropertyType="'normal' | 'pass' | 'error'"
                 [documentationPropertyValues]="stateVariants"
                 [(documentationPropertyValue)]="state"
@@ -81,8 +81,8 @@
                 Step state
             </ng-template>
             <ng-template
-                documentationPropertyName="icon"
                 documentationPropertyMode="input"
+                documentationPropertyName="icon"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="iconVariants"
                 [(documentationPropertyValue)]="icon"

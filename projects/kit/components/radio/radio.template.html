@@ -1,10 +1,10 @@
 <div
     tuiWrapper
+    [active]="pseudoActive"
     [appearance]="appearance"
     [disabled]="computedDisabled"
     [focus]="computedFocusVisible"
     [hover]="pseudoHover"
-    [active]="pseudoActive"
     [invalid]="computedInvalid"
 >
     <div
@@ -16,13 +16,13 @@
         #focusableElement
         type="radio"
         class="t-native"
-        [id]="id"
         [attr.name]="computedName"
         [disabled]="computedDisabled"
+        [id]="id"
         [tuiChecked]="checked"
         [tuiFocusable]="isFocusable"
-        (tuiFocusedChange)="onFocused($event)"
         (tuiCheckedChange)="onChecked($event)"
+        (tuiFocusedChange)="onFocused($event)"
         (tuiFocusVisibleChange)="onFocusVisible($event)"
     />
 </div>

@@ -1,9 +1,9 @@
 <tui-tree
     *ngFor="let item of data.children"
+    [childrenHandler]="handler"
+    [content]="content"
     [tuiTreeController]="true"
     [value]="item"
-    [content]="content"
-    [childrenHandler]="handler"
 ></tui-tree>
 
 <ng-template

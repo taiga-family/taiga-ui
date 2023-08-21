@@ -1,8 +1,8 @@
 <tui-hosted-dropdown
     class="t-hosted"
     [canOpen]="canOpen"
-    [open]="open && canOpen"
     [content]="dropdown"
+    [open]="open && canOpen"
     (openChange)="onOpenChange($event)"
 >
     <tui-primitive-textfield
@@ -10,33 +10,33 @@
         automation-id="tui-input-date-range__textfield"
         tuiValueAccessor
         class="t-textfield"
-        [tuiTextfieldIcon]="calendarIcon && iconContent"
-        [tuiTextfieldFiller]="getComputedFiller(filler || '')"
+        [disabled]="computedDisabled"
+        [focusable]="computedFocusable"
+        [invalid]="computedInvalid"
+        [maskito]="computedMask"
+        [nativeId]="nativeId"
         [pseudoFocus]="pseudoFocus"
         [pseudoHover]="pseudoHover"
-        [invalid]="computedInvalid"
-        [nativeId]="nativeId"
         [readOnly]="readOnly"
-        [focusable]="computedFocusable"
-        [disabled]="computedDisabled"
-        [maskito]="computedMask"
+        [tuiTextfieldFiller]="getComputedFiller(filler || '')"
+        [tuiTextfieldIcon]="calendarIcon && iconContent"
         [value]="computedValue"
-        (valueChange)="onValueChange($event)"
         (focusedChange)="onFocused($event)"
+        (valueChange)="onValueChange($event)"
     >
         <ng-content></ng-content>
         <ng-content
-            select="input"
             ngProjectAs="input"
+            select="input"
         ></ng-content>
     </tui-primitive-textfield>
 
     <ng-template #iconContent>
         <tui-svg
             *polymorpheusOutlet="calendarIcon as src; context: {$implicit: size}"
-            tuiWrapper
             appearance="icon"
             automation-id="tui-input-date-range__icon"
+            tuiWrapper
             [class.t-icon]="!computedDisabled"
             [src]="src"
             (click)="onIconClick()"
@@ -53,12 +53,12 @@
         [polymorpheus]="type"
     >
         <tui-calendar
-            tuiPreventDefault="mousedown"
             automation-id="tui-input-date__calendar"
-            [min]="computedMin"
-            [max]="computedMax"
-            [markerHandler]="markerHandler"
+            tuiPreventDefault="mousedown"
             [disabledItemHandler]="disabledItemHandler"
+            [markerHandler]="markerHandler"
+            [max]="computedMax"
+            [min]="computedMin"
             [month]="computedActiveYearMonth"
             [value]="value"
             (dayClick)="onDayClick($event)"

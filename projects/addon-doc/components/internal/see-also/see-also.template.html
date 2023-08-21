@@ -2,8 +2,8 @@
 <ng-container *ngFor="let item of seeAlso; last as last">
     <a
         tuiLink
-        [routerLink]="getRouterLink(item)"
         [innerText]="item"
+        [routerLink]="getRouterLink(item)"
     ></a>
     <ng-container *ngIf="!last">{{ ', ' }}</ng-container>
 </ng-container>

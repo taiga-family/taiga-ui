@@ -17,10 +17,10 @@ describe(`PrimitiveTextfield`, () => {
             <tui-primitive-textfield id="test1"></tui-primitive-textfield>
             <tui-primitive-textfield
                 id="test2"
+                [pseudoFocus]="true"
                 [tuiTextfieldFiller]="'filler'"
                 [tuiTextfieldPostfix]="'post'"
                 [value]="'value'"
-                [pseudoFocus]="true"
             ></tui-primitive-textfield>
             <tui-primitive-textfield
                 id="test3"

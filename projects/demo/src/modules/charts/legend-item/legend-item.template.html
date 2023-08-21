@@ -27,14 +27,14 @@
         <tui-doc-demo>
             <tui-legend-item
                 [active]="active"
-                [disabled]="disabled"
                 [color]="color"
-                [text]="text"
+                [disabled]="disabled"
                 [size]="size"
+                [text]="text"
             >
                 <tui-money
-                    [value]="123456"
                     [singleColor]="true"
+                    [value]="123456"
                 ></tui-money>
             </tui-legend-item>
             <p>
@@ -44,16 +44,16 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="active"
                 documentationPropertyMode="input"
+                documentationPropertyName="active"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="active"
             >
                 Active state from outside
             </ng-template>
             <ng-template
-                documentationPropertyName="color"
                 documentationPropertyMode="input"
+                documentationPropertyName="color"
                 documentationPropertyType="TuiColor | string | null"
                 [documentationPropertyValues]="colorVariants"
                 [(documentationPropertyValue)]="color"
@@ -61,16 +61,16 @@
                 Indicator color
             </ng-template>
             <ng-template
-                documentationPropertyName="disabled"
                 documentationPropertyMode="input"
+                documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
             >
                 Disabled item (i.e. hidden from the related chart)
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeS"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
@@ -78,8 +78,8 @@
                 Size
             </ng-template>
             <ng-template
-                documentationPropertyName="value"
                 documentationPropertyMode="input"
+                documentationPropertyName="value"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="text"
             >

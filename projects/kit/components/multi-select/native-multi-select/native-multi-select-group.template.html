@@ -3,10 +3,10 @@
 <tui-data-list-wrapper
     *tuiDataList
     tuiMultiSelectGroup
-    [items]="items"
-    [itemContent]="stringify | tuiStringifyContent"
-    [labels]="labels"
     [disabledItemHandler]="disabledItemHandler || host.disableItemHandler"
+    [itemContent]="stringify | tuiStringifyContent"
+    [items]="items"
+    [labels]="labels"
 ></tui-data-list-wrapper>
 <optgroup
     *ngFor="let group of items; let index = index"
@@ -14,9 +14,9 @@
 >
     <option
         *ngFor="let option of group"
-        [selected]="option | tuiMapper : selectedMapper : control.value"
-        [value]="stringify(option)"
         [disabled]="disabledItemHandler ? disabledItemHandler(option) : host.disableItemHandler(option)"
+        [selected]="option | tuiMapper: selectedMapper : control.value"
+        [value]="stringify(option)"
     >
         {{ stringify(option) }}
     </option>

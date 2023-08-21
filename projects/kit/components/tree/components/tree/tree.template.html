@@ -10,8 +10,8 @@
     </ng-container>
     <tui-tree
         *ngFor="let child of children; trackBy: trackBy"
-        [value]="child"
         [content]="content"
         [trackBy]="trackBy"
+        [value]="child"
     ></tui-tree>
 </tui-tree-item>

@@ -18,8 +18,8 @@
         <tui-doc-example
             id="custom-size-option-content"
             heading="Custom size-option content"
-            [description]="tokenDescription"
             [content]="example2"
+            [description]="tokenDescription"
             [fullsize]="true"
         >
             <ng-template #tokenDescription>
@@ -59,16 +59,16 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
-                documentationPropertyName="total"
                 documentationPropertyMode="input"
+                documentationPropertyName="total"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="total"
             >
                 Total amount of items/lines in the table.
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="number"
                 [documentationPropertyDeprecated]="true"
                 [(documentationPropertyValue)]="size"
@@ -85,8 +85,8 @@
                 instead
             </ng-template>
             <ng-template
-                documentationPropertyName="page"
                 documentationPropertyMode="input"
+                documentationPropertyName="page"
                 documentationPropertyType="number"
                 [documentationPropertyDeprecated]="true"
                 [(documentationPropertyValue)]="page"
@@ -98,8 +98,8 @@
                 instead
             </ng-template>
             <ng-template
-                documentationPropertyName="items"
                 documentationPropertyMode="input"
+                documentationPropertyName="items"
                 documentationPropertyType="readonly number[]"
                 [documentationPropertyValues]="itemsVariants"
                 [(documentationPropertyValue)]="items"
@@ -108,8 +108,8 @@
             </ng-template>
             <ng-template
                 #documentationPropertyPageChange="documentationProperty"
-                documentationPropertyName="pageChange"
                 documentationPropertyMode="output"
+                documentationPropertyName="pageChange"
                 documentationPropertyType="number"
                 [documentationPropertyDeprecated]="true"
             >
@@ -120,8 +120,8 @@
             </ng-template>
             <ng-template
                 #documentationPropertySizeChange="documentationProperty"
-                documentationPropertyName="sizeChange"
                 documentationPropertyMode="output"
+                documentationPropertyName="sizeChange"
                 documentationPropertyType="number"
                 [documentationPropertyDeprecated]="true"
             >
@@ -133,8 +133,8 @@
             </ng-template>
             <ng-template
                 #documentationPropertyPaginationChange="documentationProperty"
-                documentationPropertyName="paginationChange"
                 documentationPropertyMode="output"
+                documentationPropertyName="paginationChange"
                 documentationPropertyType="TuiTablePagination"
             >
                 Event emits when

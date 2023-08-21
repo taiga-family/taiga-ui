@@ -8,8 +8,8 @@
             <code>RadioLabeled</code>
             is a radio and a label. Label click changes form value. Without label:
             <a
-                tuiLink
                 routerLink="/components/radio"
+                tuiLink
             >
                 <code>Radio</code>
             </a>
@@ -46,46 +46,46 @@
             <ng-template>
                 <tui-radio-labeled
                     class="tui-space_bottom-3"
+                    [focusable]="focusable"
                     [formControl]="control"
                     [item]="items[0]"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
                     [pseudoActive]="pseudoPressed"
                     [pseudoDisabled]="pseudoDisabled"
-                    [size]="size"
-                    [focusable]="focusable"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
                     [readOnly]="readOnly"
+                    [size]="size"
                 >
                     One
                 </tui-radio-labeled>
                 <tui-radio-labeled
                     class="tui-space_bottom-3"
+                    [focusable]="focusable"
                     [formControl]="control"
                     [item]="items[1]"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
                     [pseudoActive]="pseudoPressed"
                     [pseudoDisabled]="pseudoDisabled"
-                    [size]="size"
-                    [focusable]="focusable"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
                     [readOnly]="readOnly"
+                    [size]="size"
                 >
                     Two
                 </tui-radio-labeled>
                 <tui-radio-labeled
                     class="tui-space_bottom-3"
+                    [focusable]="focusable"
                     [formControl]="control"
                     [item]="items[2]"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
                     [pseudoActive]="pseudoPressed"
                     [pseudoDisabled]="pseudoDisabled"
-                    [size]="size"
-                    [focusable]="focusable"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
                     [readOnly]="readOnly"
+                    [size]="size"
                 >
                     Three
                 </tui-radio-labeled>
@@ -102,8 +102,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="identityMatcher"
                 documentationPropertyMode="input"
+                documentationPropertyName="identityMatcher"
                 documentationPropertyType="TuiIdentityMatcher"
             >
                 Function that matches value and items, e.g. if objects are copied. Uses
@@ -113,16 +113,16 @@
                 <strong>Must be a pure function</strong>
             </ng-template>
             <ng-template
-                documentationPropertyName="pseudoDisabled"
                 documentationPropertyMode="input"
+                documentationPropertyName="pseudoDisabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="pseudoDisabled"
             >
                 Emulates disabled state without disabling a form
             </ng-template>
             <ng-template
-                documentationPropertyName="size"
                 documentationPropertyMode="input"
+                documentationPropertyName="size"
                 documentationPropertyType="TuiSizeL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
