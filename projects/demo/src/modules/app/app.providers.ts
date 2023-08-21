@@ -8,6 +8,7 @@ import {
 import {inject, PLATFORM_ID, Provider} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {UrlTree} from '@angular/router';
+import {SESSION_STORAGE} from '@ng-web-apis/common';
 import {
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
@@ -26,6 +27,7 @@ import {
     TUI_DIALOG_CLOSES_ON_BACK,
     TUI_ENSURE_BASE_HREF,
     TUI_IS_E2E,
+    TUI_IS_PLAYWRIGHT,
     TUI_TAKE_ONLY_TRUSTED_EVENTS,
     tuiAssert,
 } from '@taiga-ui/cdk';
@@ -57,6 +59,10 @@ export const APP_PROVIDERS: Provider[] = [
         provide: APP_BASE_HREF,
         // @note: By default, on webcontainer.io will not be provided APP_BASE_HREF, we use fallback
         useFactory: () => inject(DOCUMENT).getElementsByTagName(`base`)?.[0]?.href || `/`,
+    },
+    {
+        provide: TUI_IS_PLAYWRIGHT,
+        useFactory: () => Boolean(inject(SESSION_STORAGE).getItem(`playwright`)),
     },
     {
         provide: HIGHLIGHT_OPTIONS,
