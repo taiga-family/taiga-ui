@@ -12,11 +12,17 @@ export async function tuiGoto(
     url: string,
     {date = new Date(2020, 8, 25, 19, 19), ...playwrightGotoOptions}: TuiGotoOptions = {},
 ): ReturnType<Page['goto']> {
+    await page.addInitScript(() => {
+        globalThis.Math.random = () => 0.42;
+    });
+    await page.addInitScript(() =>
+        globalThis.sessionStorage.setItem(`playwright`, `true`),
+    );
     await tuiMockDate(page, date);
 
     const response = await page.goto(url, playwrightGotoOptions);
 
-    await expect(page.locator(`app`)).toHaveClass(`_loaded`);
+    await expect(page.locator(`app`)).toHaveClass(/_loaded/);
     await tuiWaitForFonts(page);
 
     return response;

@@ -1,7 +1,7 @@
 import {defineConfig, devices} from '@playwright/test';
 import {ViewportSize} from 'playwright-core';
 
-const DEFAULT_VIEWPORT: ViewportSize = {width: 700, height: 700};
+const DEFAULT_VIEWPORT: ViewportSize = {width: 750, height: 700};
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -16,6 +16,7 @@ export default defineConfig({
     /* Fail the build on CI if you accidentally left test.only in the source code. */
     forbidOnly: !!process.env.CI,
     retries: process.env.CI ? 0 : 0,
+    workers: process.env.CI ? `100%` : `50%`,
     use: {
         baseURL: `http://localhost:${process.env.NG_SERVER_PORT || 3333}`,
         trace: `on-first-retry`,
