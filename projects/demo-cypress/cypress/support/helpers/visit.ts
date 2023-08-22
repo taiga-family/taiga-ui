@@ -2,8 +2,6 @@ import {waitAllRequests} from '@demo-cypress/support/helpers/wait-requests.util'
 import {stubExternalIcons} from '@demo-cypress/support/stubs/stub-external-icons.util';
 import {stubMetrics} from '@demo-cypress/support/stubs/stub-metrics';
 
-import {TUI_THEME_NIGHT_STORAGE_DEFAULT_KEY} from '../../../../addon-doc/services/theme-night.options';
-
 const NEXT_URL_STORAGE_KEY = `env`;
 const REPEATED_SLASH_REG = new RegExp(`//`, `g`);
 
@@ -108,10 +106,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
             setBeforeLoadOptions(window, {inIframe});
 
             window.localStorage.setItem(NEXT_URL_STORAGE_KEY, nextUrl);
-            window.localStorage.setItem(
-                TUI_THEME_NIGHT_STORAGE_DEFAULT_KEY,
-                enableNightMode.toString(),
-            );
+            window.localStorage.setItem(`tuiNight`, enableNightMode.toString());
 
             if (pseudoMobile) {
                 Object.defineProperty(window.navigator, `userAgent`, {
