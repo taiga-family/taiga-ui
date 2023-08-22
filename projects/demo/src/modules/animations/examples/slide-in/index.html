@@ -1,0 +1,71 @@
+<button
+    appearance="outline"
+    tuiButton
+    type="button"
+    class="button"
+    (click)="isLeft = !isLeft"
+>
+    {{ isLeft ? 'Hide' : 'Show in left' }}
+</button>
+
+<div
+    *ngIf="isLeft"
+    class="popup"
+    [@tuiSlideInLeft]="getAnimation(speed)"
+>
+    <h3>Your favorite add from west</h3>
+</div>
+
+<button
+    appearance="outline"
+    tuiButton
+    type="button"
+    class="button"
+    (click)="isRight = !isRight"
+>
+    {{ isRight ? 'Hide' : 'Show in right' }}
+</button>
+
+<div
+    *ngIf="isRight"
+    class="popup"
+    [@tuiSlideInRight]="getAnimation(speed)"
+>
+    <h3>Your favorite add from east</h3>
+</div>
+
+<button
+    appearance="outline"
+    tuiButton
+    type="button"
+    class="button"
+    (click)="isTop = !isTop"
+>
+    {{ isTop ? 'Hide' : 'Show in top' }}
+</button>
+
+<div
+    *ngIf="isTop"
+    class="popup"
+    [@tuiSlideInTop]="getAnimation(speed)"
+>
+    <h3>Your favorite add from north</h3>
+</div>
+
+<button
+    appearance="outline"
+    tuiButton
+    type="button"
+    class="button"
+    (click)="isBottom = !isBottom"
+>
+    {{ isBottom ? 'Hide' : 'Show in bottom' }}
+</button>
+
+<div
+    *ngIf="isBottom"
+    class="popup"
+    [@tuiSlideInBottom]="getAnimation(speed)"
+>
+    <h3>Your favorite add from south</h3>
+</div>

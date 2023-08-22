@@ -35,4 +35,16 @@ export class ExampleAnimationsComponent {
         TypeScript: import('./examples/scale-in/index.ts?raw'),
         LESS: import('./examples/scale-in/index.less?raw'),
     };
+
+    readonly slideInExample: TuiDocExample = {
+        HTML: import('./examples/slide-in/index.html?raw'),
+        TypeScript: import('./examples/slide-in/index.ts?raw'),
+        LESS: import('./examples/slide-in/index.less?raw'),
+    };
+
+    readonly dropdownExample: TuiDocExample = {
+        HTML: import('./examples/dropdown/index.html?raw'),
+        TypeScript: import('./examples/dropdown/index.ts?raw'),
+        LESS: import('./examples/dropdown/index.less?raw'),
+    };
 }

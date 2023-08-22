@@ -1,0 +1,44 @@
+import {Component, Input} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {tuiPure} from '@taiga-ui/cdk';
+import {
+    TuiDurationOptions,
+    tuiSlideInBottom,
+    tuiSlideInLeft,
+    tuiSlideInLeftList,
+    tuiSlideInRight,
+    tuiSlideInTop,
+} from '@taiga-ui/core';
+
+@Component({
+    selector: 'tui-slide-in-example',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    changeDetection,
+    encapsulation,
+    animations: [
+        tuiSlideInLeft,
+        tuiSlideInTop,
+        tuiSlideInBottom,
+        tuiSlideInRight,
+        tuiSlideInLeftList,
+    ],
+})
+export class TuiSlideInLeftExample {
+    @Input()
+    speed = 0;
+
+    isLeft = false;
+
+    isTop = false;
+
+    isRight = false;
+
+    isBottom = false;
+
+    @tuiPure
+    getAnimation(duration: number): TuiDurationOptions {
+        return {value: '', params: {duration}};
+    }
+}
