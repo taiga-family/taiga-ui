@@ -37,7 +37,7 @@ export class TuiHintDescribeDirective extends TuiDriver {
         startWith(false),
         distinctUntilChanged(),
         skip(1),
-        tuiZoneOptimized(this.ngZone),
+        tuiZoneOptimized(this.zone),
     );
 
     @Input()
@@ -46,7 +46,7 @@ export class TuiHintDescribeDirective extends TuiDriver {
     readonly type = 'hint';
 
     constructor(
-        @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(NgZone) private readonly zone: NgZone,
         @Inject(DOCUMENT) private readonly doc: Document,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
     ) {

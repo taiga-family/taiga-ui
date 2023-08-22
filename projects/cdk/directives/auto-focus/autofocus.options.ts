@@ -54,12 +54,12 @@ export const TUI_AUTOFOCUS_PROVIDERS = [
             el: ElementRef<HTMLElement>,
             animationFrame$: Observable<number>,
             renderer: Renderer2,
-            ngZone: NgZone,
+            zone: NgZone,
             win: Window,
             isIos: boolean,
         ) =>
             isIos
-                ? new TuiIosAutofocusHandler(focusable, el, renderer, ngZone, win)
+                ? new TuiIosAutofocusHandler(focusable, el, renderer, zone, win)
                 : new TuiDefaultAutofocusHandler(focusable, el, animationFrame$),
         deps: [
             [new Optional(), new Self(), TUI_FOCUSABLE_ITEM_ACCESSOR],

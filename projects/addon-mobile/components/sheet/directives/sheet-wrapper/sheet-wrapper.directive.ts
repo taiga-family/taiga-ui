@@ -42,7 +42,7 @@ export class TuiSheetWrapperDirective {
     tuiSheetWrapper = 16;
 
     constructor(
-        @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(NgZone) private readonly zone: NgZone,
         @Inject(WINDOW) private readonly win: Window,
     ) {}
 
@@ -51,7 +51,7 @@ export class TuiSheetWrapperDirective {
         return this.scroll$.pipe(
             map(y => y + 16 > this.win.innerHeight - this.tuiSheetWrapper),
             distinctUntilChanged(),
-            tuiZonefull(this.ngZone),
+            tuiZonefull(this.zone),
         );
     }
 
@@ -59,7 +59,7 @@ export class TuiSheetWrapperDirective {
     get visible$(): Observable<boolean> {
         return processDragged(this.dragged$, this.scroll$).pipe(
             distinctUntilChanged(),
-            tuiZonefull(this.ngZone),
+            tuiZonefull(this.zone),
         );
     }
 

@@ -12,7 +12,7 @@ export class TuiPositionService extends Observable<TuiPoint> {
         // Destructuring here causes memory leak
         @Inject(ElementRef) el: ElementRef<HTMLElement>,
         @Inject(ANIMATION_FRAME) animationFrame: Observable<unknown>,
-        @Inject(NgZone) ngZone: NgZone,
+        @Inject(NgZone) zone: NgZone,
         @Inject(TuiPositionAccessor) accessor: TuiPositionAccessor,
     ) {
         super(subscriber =>
@@ -20,7 +20,7 @@ export class TuiPositionService extends Observable<TuiPoint> {
                 .pipe(
                     map(() => el.nativeElement.getBoundingClientRect()),
                     map(rect => accessor.getPosition(rect)),
-                    tuiZonefree(ngZone),
+                    tuiZonefree(zone),
                 )
                 .subscribe(subscriber),
         );

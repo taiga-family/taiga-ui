@@ -27,13 +27,13 @@ export class TuiOverscrollDirective {
 
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
-        @Inject(NgZone) ngZone: NgZone,
+        @Inject(NgZone) zone: NgZone,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
     ) {
         tuiTypedFromEvent(nativeElement, 'wheel', {passive: false})
             .pipe(
                 filter(() => this.enabled),
-                tuiZonefree(ngZone),
+                tuiZonefree(zone),
                 takeUntil(destroy$),
             )
             .subscribe(event => {
@@ -77,7 +77,7 @@ export class TuiOverscrollDirective {
                         }),
                     );
                 }),
-                tuiZonefree(ngZone),
+                tuiZonefree(zone),
                 takeUntil(destroy$),
             )
             .subscribe();

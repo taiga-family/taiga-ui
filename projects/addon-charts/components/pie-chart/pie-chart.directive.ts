@@ -20,7 +20,7 @@ export class TuiPieChartDirective {
 
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<SVGPathElement>,
-        @Inject(NgZone) ngZone: NgZone,
+        @Inject(NgZone) zone: NgZone,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(PERFORMANCE) performance: Performance,
         @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
@@ -47,7 +47,7 @@ export class TuiPieChartDirective {
                         ]),
                     );
                 }),
-                tuiZonefree(ngZone),
+                tuiZonefree(zone),
                 takeUntil(destroy$),
             )
             .subscribe(([start, end]) => {

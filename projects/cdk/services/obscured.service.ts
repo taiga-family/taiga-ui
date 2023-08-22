@@ -31,7 +31,7 @@ export class TuiObscuredService extends Observable<readonly Element[] | null> {
         @Self()
         parentsScroll$: TuiParentsScrollService,
         @Inject(ElementRef) {nativeElement}: ElementRef<Element>,
-        @Inject(NgZone) ngZone: NgZone,
+        @Inject(NgZone) zone: NgZone,
         @Inject(WINDOW) win: Window,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
@@ -46,7 +46,7 @@ export class TuiObscuredService extends Observable<readonly Element[] | null> {
             map(() => tuiGetElementObscures(nativeElement)),
             startWith(null),
             distinctUntilChanged(),
-            tuiZoneOptimized(ngZone),
+            tuiZoneOptimized(zone),
             takeUntil(destroy$),
         );
     }

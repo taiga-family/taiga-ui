@@ -32,12 +32,12 @@ export class TuiScrollControlsComponent {
         map(() => this.scrollbars),
         startWith([false, false]),
         distinctUntilChanged((a, b) => a[0] === b[0] && a[1] === b[1]),
-        tuiZoneOptimized(this.ngZone),
+        tuiZoneOptimized(this.zone),
     );
 
     constructor(
         @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
-        @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(NgZone) private readonly zone: NgZone,
         @Inject(TUI_SCROLL_REF) private readonly scrollRef: ElementRef<HTMLElement>,
         @Inject(ANIMATION_FRAME) private readonly animationFrame$: Observable<number>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,

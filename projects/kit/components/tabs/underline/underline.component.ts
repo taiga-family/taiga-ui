@@ -32,7 +32,7 @@ export class TuiUnderlineComponent {
             element
                 ? this.animationFrame$.pipe(
                       map(() => element),
-                      tuiZonefree(this.ngZone),
+                      tuiZonefree(this.zone),
                   )
                 : of(null),
         ),
@@ -68,7 +68,7 @@ export class TuiUnderlineComponent {
 
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef,
-        @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(NgZone) private readonly zone: NgZone,
         @Inject(ANIMATION_FRAME) private readonly animationFrame$: Observable<number>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
     ) {

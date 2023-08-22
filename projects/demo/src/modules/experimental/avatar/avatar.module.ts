@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiNotificationModule} from '@taiga-ui/core';
 import {
     TuiAutoColorModule,
     TuiAvatarModule,
@@ -21,8 +22,9 @@ import {TuiAvatarExample3} from './examples/3';
         TuiAvatarStackModule,
         TuiAutoColorModule,
         TuiAddonDocModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiAvatarComponent)),
         TuiInitialsModule,
+        TuiNotificationModule,
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiAvatarComponent)),
     ],
     declarations: [
         ExampleTuiAvatarComponent,

@@ -35,18 +35,18 @@ export const TUI_SHEET_PROVIDERS: Provider[] = [
         deps: [ElementRef, NgZone, DOCUMENT, TUI_IS_IOS],
         useFactory: (
             {nativeElement}: ElementRef<HTMLElement>,
-            ngZone: NgZone,
+            zone: NgZone,
             doc: Document,
             isIos: boolean,
         ): Observable<number> => {
             return isIos
-                ? iosScrollFactory(nativeElement, doc, ngZone)
+                ? iosScrollFactory(nativeElement, doc, zone)
                 : merge(
                       tuiTypedFromEvent(nativeElement, `scroll`),
                       tuiTypedFromEvent(nativeElement, `load`, {capture: true}),
                   ).pipe(
                       map(() => nativeElement.scrollTop),
-                      tuiZonefree(ngZone),
+                      tuiZonefree(zone),
                       share(),
                   );
         },

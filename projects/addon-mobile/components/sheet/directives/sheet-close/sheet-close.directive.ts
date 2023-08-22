@@ -23,12 +23,12 @@ export class TuiSheetCloseDirective {
             ),
             filter(y => this.sheet.item?.closeable && this.shouldClose(y)),
             distinctUntilChanged(),
-            tuiZonefull(this.ngZone),
+            tuiZonefull(this.zone),
         ),
     );
 
     constructor(
-        @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(NgZone) private readonly zone: NgZone,
         @Inject(TUI_SHEET_DRAGGED) private readonly dragged$: Observable<boolean>,
         @Inject(TUI_SHEET_SCROLL) private readonly scroll$: Observable<number>,
         @Inject(WINDOW) private readonly win: Window,

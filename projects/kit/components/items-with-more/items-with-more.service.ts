@@ -12,12 +12,12 @@ export class TuiItemsWithMoreService extends Observable<number> {
         throttleTime(0),
         map(() => this.getOverflowIndex()),
         distinctUntilChanged(),
-        tuiZoneOptimized(this.ngZone),
+        tuiZoneOptimized(this.zone),
         share(),
     );
 
     constructor(
-        @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(NgZone) private readonly zone: NgZone,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(MutationObserverService) private readonly mutation$: Observable<unknown>,
         @Inject(TuiResizeService) private readonly resize$: Observable<unknown>,

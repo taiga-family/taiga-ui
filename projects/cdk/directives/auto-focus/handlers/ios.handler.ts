@@ -36,7 +36,7 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         focusable: TuiFocusableElementAccessor | null,
         @Inject(ElementRef) el: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
-        @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(NgZone) private readonly zone: NgZone,
         @Inject(WINDOW) private readonly win: Window,
     ) {
         super(focusable, el);
@@ -45,7 +45,7 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
 
     setFocus(): void {
         if (this.isTextFieldElement) {
-            this.ngZone.runOutsideAngular(() => this.iosWebkitAutofocus());
+            this.zone.runOutsideAngular(() => this.iosWebkitAutofocus());
         } else {
             this.element.focus();
         }

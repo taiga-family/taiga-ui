@@ -82,7 +82,7 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(ChangeDetectorRef) private readonly cd: ChangeDetectorRef,
-        @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(NgZone) private readonly zone: NgZone,
         @Inject(TUI_LINE_CLAMP_OPTIONS) private readonly options: TuiLineClampOptions,
     ) {
         this.skipInitialTransition();
@@ -120,7 +120,7 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
 
     private skipInitialTransition(): void {
         timer(0)
-            .pipe(tuiZonefree(this.ngZone))
+            .pipe(tuiZonefree(this.zone))
             .subscribe(() => {
                 this.renderer.addClass(this.el.nativeElement, '_initialized');
                 this.cd.detectChanges();
