@@ -61,12 +61,18 @@ export class TestComponent {
 
 const TEMPLATE_BEFORE = `
 <tui-text-area class="tui-text-area"></tui-text-area>
+<tui-text-area
+    class="tui-text-area">
+</tui-text-area>
 <tui-text-area class="tui-text-area" />
 `;
 
 const TEMPLATE_AFTER = `
-<tui-textarea  class="tui-text-area"></tui-textarea>
-<tui-textarea  class="tui-text-area" />
+<tui-textarea class="tui-text-area"></tui-textarea>
+<tui-textarea
+    class="tui-text-area">
+</tui-textarea>
+<tui-textarea class="tui-text-area" />
 `;
 
 describe(`ng-update`, () => {
