@@ -1,6 +1,6 @@
 <span
     automation-id="tui-money__sign"
-    [textContent]="value | tuiSignSymbol : sign"
+    [textContent]="value | tuiSignSymbol: sign"
 ></span>
 
 <span
@@ -11,12 +11,12 @@
     <span>
         <span
             automation-id="tui-money__integer-part"
-            [textContent]="value | tuiIntegerPart : precision"
+            [textContent]="value | tuiIntegerPart: precision"
         ></span>
         <span
             automation-id="tui-money__fraction-part"
             class="t-lighter"
-            [textContent]="value | tuiFractionPart : decimal : precision"
+            [textContent]="value | tuiFractionPart: decimal : precision"
         ></span>
     </span>
     <span *ngIf="alignRight || currencySymbol.length > 1">&nbsp;</span>
