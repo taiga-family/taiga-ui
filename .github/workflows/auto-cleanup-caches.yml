@@ -1,5 +1,7 @@
-name: 🤖 Auto cleanup caches by a branch
+name: 🤖 Auto cleanup caches
 on:
+  push:
+    branches: [main, 'v[0-9]+.x']
   pull_request:
     types:
       - closed
@@ -12,5 +14,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3.5.3
       - uses: taiga-family/ci/actions/cleanup-cache@1.9.2
+        if: github.event_name == 'push'
+        with:
+          branch-name: ${{ github.head_ref || github.ref_name }}
+      - uses: taiga-family/ci/actions/cleanup-cache@1.9.2
+        if: github.event_name == 'pull_request'
         with:
           branch-name: refs/pull/${{ github.event.pull_request.number }}/merge
