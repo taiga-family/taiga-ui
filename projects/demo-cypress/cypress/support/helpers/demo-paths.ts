@@ -4,8 +4,8 @@ import {TuiDocPage, TuiDocPages} from '@taiga-ui/addon-doc';
 
 import {pages as PUBLIC_PAGES} from '../../../../demo/src/modules/app/pages';
 
-export const EXCLUSION_SECTIONS = [`Documentation`, `Foundations`, `Tools`, `Testing`];
-export const EXCLUSION_ROUTES = [`i18n`, `PrimitiveCheckbox`, `ThemeNight`, `Markdown`];
+const EXCLUSION_SECTIONS = [`Documentation`, `Foundations`, `Tools`, `Testing`];
+const EXCLUSION_ROUTES = [`i18n`, `PrimitiveCheckbox`, `ThemeNight`, `Markdown`];
 export const DEMO_PATHS = tuiMakeCypressDemoPath(
     PUBLIC_PAGES,
     EXCLUSION_SECTIONS,
