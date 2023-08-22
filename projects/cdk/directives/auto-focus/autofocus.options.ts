@@ -11,7 +11,7 @@ import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
 import {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import {Observable} from 'rxjs';
 
 import {TuiDefaultAutofocusHandler} from './handlers/default.handler';
@@ -30,7 +30,7 @@ export const TUI_AUTOFOCUS_DEFAULT_OPTIONS: TuiAutofocusOptions = {
     delay: NaN, // NaN = no delay/sync
 };
 
-export const TUI_AUTOFOCUS_OPTIONS = tuiCreateOptions(TUI_AUTOFOCUS_DEFAULT_OPTIONS);
+export const TUI_AUTOFOCUS_OPTIONS = tuiCreateToken(TUI_AUTOFOCUS_DEFAULT_OPTIONS);
 
 export function tuiAutoFocusOptionsProvider(
     options: Partial<TuiAutofocusOptions>,

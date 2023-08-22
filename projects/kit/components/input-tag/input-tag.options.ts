@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiStatus} from '@taiga-ui/kit/types';
 
 export interface TuiInputTagOptions {
@@ -17,7 +17,7 @@ export const TUI_INPUT_TAG_DEFAULT_OPTIONS: TuiInputTagOptions = {
 /**
  * Default parameters for InputTag component
  */
-export const TUI_INPUT_TAG_OPTIONS = tuiCreateOptions(TUI_INPUT_TAG_DEFAULT_OPTIONS);
+export const TUI_INPUT_TAG_OPTIONS = tuiCreateToken(TUI_INPUT_TAG_DEFAULT_OPTIONS);
 
 export function tuiInputTagOptionsProvider(
     options: Partial<TuiInputTagOptions>,

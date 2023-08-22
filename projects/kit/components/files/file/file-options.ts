@@ -1,4 +1,4 @@
-import {InjectionToken} from '@angular/core';
+import {tuiCreateToken} from '@taiga-ui/cdk';
 import {tuiFormatSize} from '@taiga-ui/kit/utils';
 
 export interface TuiFileOptions {
@@ -15,6 +15,4 @@ export const TUI_FILE_DEFAULT_OPTIONS: TuiFileOptions = {
 /**
  * Default parameters for file component
  */
-export const TUI_FILE_OPTIONS = new InjectionToken<TuiFileOptions>(`[TUI_FILE_OPTIONS]`, {
-    factory: () => TUI_FILE_DEFAULT_OPTIONS,
-});
+export const TUI_FILE_OPTIONS = tuiCreateToken(TUI_FILE_DEFAULT_OPTIONS);

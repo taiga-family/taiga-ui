@@ -1,11 +1,9 @@
-import {InjectionToken} from '@angular/core';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils';
 
 /**
  * Date separator for Taiga UI components
  */
-export const TUI_DATE_SEPARATOR = new InjectionToken<string>(`[TUI_DATE_SEPARATOR]`, {
-    factory: () => `.`,
-});
+export const TUI_DATE_SEPARATOR = tuiCreateToken(`.`);
 
 export const changeDateSeparator = (
     dateString: string,

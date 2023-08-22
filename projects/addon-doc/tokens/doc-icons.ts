@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiDocIcons {
     readonly search: string;
@@ -17,7 +17,7 @@ export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {
     menu: `tuiIconMenuLarge`,
 };
 
-export const TUI_DOC_ICONS = tuiCreateOptions(TUI_DOC_DEFAULT_ICONS);
+export const TUI_DOC_ICONS = tuiCreateToken(TUI_DOC_DEFAULT_ICONS);
 
 export function tuiDocIconsProvider(icons: Partial<TuiDocIcons>): Provider {
     return tuiProvideOptions(TUI_DOC_ICONS, icons, TUI_DOC_DEFAULT_ICONS);

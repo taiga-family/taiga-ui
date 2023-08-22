@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiLineChartOptions {
     readonly dots: boolean;
@@ -13,7 +13,7 @@ export const TUI_LINE_CHART_DEFAULT_OPTIONS: TuiLineChartOptions = {
     smoothingFactor: 0,
 };
 
-export const TUI_LINE_CHART_OPTIONS = tuiCreateOptions(TUI_LINE_CHART_DEFAULT_OPTIONS);
+export const TUI_LINE_CHART_OPTIONS = tuiCreateToken(TUI_LINE_CHART_DEFAULT_OPTIONS);
 
 export function tuiLineChartOptionsProvider(
     options: Partial<TuiLineChartOptions>,

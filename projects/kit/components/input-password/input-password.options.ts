@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {TuiContextWithImplicit, tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {TuiContextWithImplicit, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -22,7 +22,7 @@ export const TUI_INPUT_PASSWORD_DEFAULT_OPTIONS: TuiInputPasswordOptions = {
 /**
  * Default parameters for input password component
  */
-export const TUI_INPUT_PASSWORD_OPTIONS = tuiCreateOptions(
+export const TUI_INPUT_PASSWORD_OPTIONS = tuiCreateToken(
     TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
 );
 

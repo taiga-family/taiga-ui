@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 
 export interface TuiAvatarOptions {
@@ -18,7 +18,7 @@ export const TUI_AVATAR_DEFAULT_OPTIONS: TuiAvatarOptions = {
 /**
  * Default parameters for avatar component
  */
-export const TUI_AVATAR_OPTIONS = tuiCreateOptions(TUI_AVATAR_DEFAULT_OPTIONS);
+export const TUI_AVATAR_OPTIONS = tuiCreateToken(TUI_AVATAR_DEFAULT_OPTIONS);
 
 export function tuiAvatarOptionsProvider(options: Partial<TuiAvatarOptions>): Provider {
     return tuiProvideOptions(TUI_AVATAR_OPTIONS, options, TUI_AVATAR_DEFAULT_OPTIONS);

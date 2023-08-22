@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiInputPhoneOptions {
     readonly phoneMaskAfterCountryCode: string;
@@ -16,7 +16,7 @@ export const TUI_INPUT_PHONE_DEFAULT_OPTIONS: TuiInputPhoneOptions = {
 /**
  * Default parameters for input phone component
  */
-export const TUI_INPUT_PHONE_OPTIONS = tuiCreateOptions(TUI_INPUT_PHONE_DEFAULT_OPTIONS);
+export const TUI_INPUT_PHONE_OPTIONS = tuiCreateToken(TUI_INPUT_PHONE_DEFAULT_OPTIONS);
 
 export function tuiInputPhoneOptionsProvider(
     options: Partial<TuiInputPhoneOptions>,

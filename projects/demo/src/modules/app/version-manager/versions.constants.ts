@@ -1,5 +1,4 @@
-import {InjectionToken} from '@angular/core';
-import {TUI_VERSION} from '@taiga-ui/cdk';
+import {TUI_VERSION, tuiCreateToken} from '@taiga-ui/cdk';
 
 export interface TuiVersionMeta {
     label: string;
@@ -32,7 +31,5 @@ export const TUI_VERSIONS_META_MAP = TUI_VERSIONS_META.reduce(
     new Map<string, TuiVersionMeta>(),
 );
 
-export const TUI_VERSIONS_META_OPTIONS = new InjectionToken<readonly TuiVersionMeta[]>(
-    `[TUI_VERSIONS_META_OPTIONS]: list of versions taiga ui kit`,
-    {factory: () => TUI_VERSIONS_META},
-);
+export const TUI_VERSIONS_META_OPTIONS =
+    tuiCreateToken<readonly TuiVersionMeta[]>(TUI_VERSIONS_META);

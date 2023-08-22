@@ -3,7 +3,7 @@ import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiContextWithImplicit,
-    tuiCreateOptions,
+    tuiCreateToken,
     TuiDay,
     tuiProvideOptions,
 } from '@taiga-ui/cdk';
@@ -28,7 +28,7 @@ export const TUI_INPUT_DATE_DEFAULT_OPTIONS: TuiInputDateOptions = {
 /**
  * Default parameters for InputDate component
  */
-export const TUI_INPUT_DATE_OPTIONS = tuiCreateOptions(TUI_INPUT_DATE_DEFAULT_OPTIONS);
+export const TUI_INPUT_DATE_OPTIONS = tuiCreateToken(TUI_INPUT_DATE_DEFAULT_OPTIONS);
 
 export function tuiInputDateOptionsProvider(
     options: Partial<TuiInputDateOptions>,

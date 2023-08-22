@@ -7,7 +7,7 @@ import {
     Optional,
     SkipSelf,
 } from '@angular/core';
-import {tuiCreateOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken} from '@taiga-ui/cdk';
 import {
     TuiDropdownAlign,
     TuiDropdownWidth,
@@ -39,7 +39,7 @@ export const TUI_DROPDOWN_DEFAULT_OPTIONS: TuiDropdownOptions = {
 /**
  * Default parameters for dropdown directive
  */
-export const TUI_DROPDOWN_OPTIONS = tuiCreateOptions(TUI_DROPDOWN_DEFAULT_OPTIONS);
+export const TUI_DROPDOWN_OPTIONS = tuiCreateToken(TUI_DROPDOWN_DEFAULT_OPTIONS);
 
 export const tuiDropdownOptionsProvider: (
     options: Partial<TuiDropdownOptions>,

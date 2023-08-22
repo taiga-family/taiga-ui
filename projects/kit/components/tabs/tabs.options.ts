@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiTabsOptions {
     readonly underline: boolean;
@@ -18,7 +18,7 @@ export const TUI_TABS_DEFAULT_OPTIONS: TuiTabsOptions = {
 /**
  * Default parameters for Tabs component
  */
-export const TUI_TABS_OPTIONS = tuiCreateOptions(TUI_TABS_DEFAULT_OPTIONS);
+export const TUI_TABS_OPTIONS = tuiCreateToken(TUI_TABS_DEFAULT_OPTIONS);
 
 export function tuiTabsOptionsProvider(options: Partial<TuiTabsOptions>): Provider {
     return tuiProvideOptions(TUI_TABS_OPTIONS, options, TUI_TABS_DEFAULT_OPTIONS);

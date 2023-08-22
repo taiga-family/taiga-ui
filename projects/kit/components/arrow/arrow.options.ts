@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiArrowOptions {
@@ -16,7 +16,7 @@ export const TUI_ARROW_DEFAULT_OPTIONS: TuiArrowOptions = {
 /**
  * Default parameters for arrow component
  */
-export const TUI_ARROW_OPTIONS = tuiCreateOptions(TUI_ARROW_DEFAULT_OPTIONS);
+export const TUI_ARROW_OPTIONS = tuiCreateToken(TUI_ARROW_DEFAULT_OPTIONS);
 
 export function tuiArrowOptionsProvider(options: Partial<TuiArrowOptions>): Provider {
     return tuiProvideOptions(TUI_ARROW_OPTIONS, options, TUI_ARROW_DEFAULT_OPTIONS);

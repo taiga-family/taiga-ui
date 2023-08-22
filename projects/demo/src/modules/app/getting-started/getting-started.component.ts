@@ -1,14 +1,10 @@
-import {Component, Inject, InjectionToken, Type} from '@angular/core';
+import {Component, Inject, Type} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {tuiCreateToken} from '@taiga-ui/cdk';
 
 import {HomeComponent} from '../home/home.component';
 
-export const TUI_HOME_COMPONENT = new InjectionToken<Type<unknown>>(
-    '[TUI_HOME_COMPONENT]: Home page',
-    {
-        factory: () => HomeComponent,
-    },
-);
+export const TUI_HOME_COMPONENT = tuiCreateToken<Type<unknown>>(HomeComponent);
 
 @Component({
     selector: 'getting-started',

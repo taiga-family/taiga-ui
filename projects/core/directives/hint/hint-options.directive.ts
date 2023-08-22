@@ -7,7 +7,7 @@ import {
     Optional,
     SkipSelf,
 } from '@angular/core';
-import {AbstractTuiController, tuiCreateOptions} from '@taiga-ui/cdk';
+import {AbstractTuiController, tuiCreateToken} from '@taiga-ui/cdk';
 import {TuiHintDirection} from '@taiga-ui/core/types';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -32,7 +32,7 @@ export const TUI_HINT_DEFAULT_OPTIONS: TuiHintOptions = {
 /**
  * Default parameters for hint directive
  */
-export const TUI_HINT_OPTIONS = tuiCreateOptions(TUI_HINT_DEFAULT_OPTIONS);
+export const TUI_HINT_OPTIONS = tuiCreateToken(TUI_HINT_DEFAULT_OPTIONS);
 
 export const tuiHintOptionsProvider: (
     options: Partial<TuiHintOptions>,

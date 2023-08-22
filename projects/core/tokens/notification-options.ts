@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiAlertOptions} from '@taiga-ui/core/interfaces';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
@@ -31,9 +31,7 @@ export const TUI_NOTIFICATION_DEFAULT_OPTIONS: TuiNotificationDefaultOptions = {
 /**
  * Default parameters for notification alert component
  */
-export const TUI_NOTIFICATION_OPTIONS = tuiCreateOptions(
-    TUI_NOTIFICATION_DEFAULT_OPTIONS,
-);
+export const TUI_NOTIFICATION_OPTIONS = tuiCreateToken(TUI_NOTIFICATION_DEFAULT_OPTIONS);
 
 export function tuiNotificationOptionsProvider(
     options: Partial<TuiNotificationDefaultOptions>,

@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {TuiContextWithImplicit, tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {TuiContextWithImplicit, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiTablePaginationOptions {
@@ -25,7 +25,7 @@ export const TUI_TABLE_PAGINATION_DEFAULT_OPTIONS: TuiTablePaginationOptions = {
 /**
  * Default parameters for TablePagination component
  */
-export const TUI_TABLE_PAGINATION_OPTIONS = tuiCreateOptions(
+export const TUI_TABLE_PAGINATION_OPTIONS = tuiCreateToken(
     TUI_TABLE_PAGINATION_DEFAULT_OPTIONS,
 );
 
