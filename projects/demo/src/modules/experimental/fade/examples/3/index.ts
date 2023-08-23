@@ -9,6 +9,4 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
     encapsulation,
 })
-export class TuiFadeExample3 {
-    readonly names = ['Jason Statham', 'Silvester Stallone', 'Jackie Chan'];
-}
+export class TuiFadeExample3 {}

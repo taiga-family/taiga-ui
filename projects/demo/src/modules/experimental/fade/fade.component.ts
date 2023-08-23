@@ -31,6 +31,7 @@ export class ExampleTuiFadeComponent {
     readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
+        LESS: import('./examples/3/index.less?raw'),
     };
 
     lineHeight = '100%';
