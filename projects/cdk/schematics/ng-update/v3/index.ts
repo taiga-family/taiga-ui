@@ -132,7 +132,10 @@ function addTaigaStyles(options: TuiSchema): Rule {
             context,
             taigaStyles,
             existingStyles =>
-                !!existingStyles?.some(s => String(s).includes(`tinkoff-theme`)),
+                // eslint-disable-next-line @taiga-ui/experience/no-typeof
+                !!existingStyles?.some(
+                    style => typeof style === `string` && style.includes(`tinkoff-theme`),
+                ),
             stylesToReplace,
             tree,
         );

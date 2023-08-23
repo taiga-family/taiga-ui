@@ -19,6 +19,7 @@ const collectionPath = join(__dirname, `../../../migration.json`);
 const BEFORE_GLOBAL_STYLE = `
 @import '~@taiga-ui/core/styles/taiga-ui-fonts';
 @import '~@taiga-ui/core/styles/taiga-ui-global';
+@import '~@taiga-ui/core/styles/taiga-ui-global.less';
 @import '~@taiga-ui/proprietary-core/styles/tinkoff-fonts';
 @import '~@taiga-ui/proprietary-core/styles/theme-tinkoff-v2';
 @import '~@taiga-ui/proprietary-core/styles/theme-tinkoff-mobile';
@@ -26,6 +27,8 @@ const BEFORE_GLOBAL_STYLE = `
 
 const AFTER_GLOBAL_STYLE = `
 @import '@taiga-ui/core/styles/taiga-ui-fonts.less';
+${TUI_WARNING_NORMALIZE}
+@import '@taiga-ui/styles/taiga-ui-global.less';
 ${TUI_WARNING_NORMALIZE}
 @import '@taiga-ui/styles/taiga-ui-global.less';
 @import '@taiga-ui/proprietary-core/styles/tinkoff-fonts.less';
