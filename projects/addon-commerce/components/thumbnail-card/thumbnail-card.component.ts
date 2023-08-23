@@ -13,12 +13,12 @@ import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {TuiSizeS} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-card',
-    templateUrl: './card.template.html',
-    styleUrls: ['./card.style.less'],
+    selector: 'tui-thumbnail-card',
+    templateUrl: './thumbnail-card.template.html',
+    styleUrls: ['./thumbnail-card.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiCardComponent {
+export class TuiThumbnailCardComponent {
     @Input()
     @HostBinding('class._active')
     active = false;

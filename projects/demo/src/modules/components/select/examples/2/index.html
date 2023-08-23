@@ -43,12 +43,12 @@
         let-item
     >
         <div class="card-item">
-            <tui-card
+            <tui-thumbnail-card
                 paymentSystem="mastercard"
                 size="s"
                 class="card"
                 [cardNumber]="item.cardNumber.slice(1)"
-            ></tui-card>
+            ></tui-thumbnail-card>
             <span class="card-name">{{ item.cardName }}</span>
             <span class="card-number">{{ item.cardNumber }}</span>
         </div>

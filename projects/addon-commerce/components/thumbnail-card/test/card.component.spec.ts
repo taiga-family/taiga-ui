@@ -6,7 +6,7 @@ import {TuiCardComponent, TuiCardModule} from '@taiga-ui/addon-commerce';
 import {TuiSizeS} from '@taiga-ui/core';
 import {configureTestSuite, TuiCardHarness} from '@taiga-ui/testing';
 
-describe(`Card`, () => {
+describe(`TuiCard`, () => {
     @Component({
         template: `
             <tui-card

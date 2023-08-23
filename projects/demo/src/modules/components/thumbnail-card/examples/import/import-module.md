@@ -1,12 +1,12 @@
 ```ts
-import {TuiCardModule} from '@taiga-ui/addon-commerce';
+import {TuiThumbnailCardModule} from '@taiga-ui/addon-commerce';
 
 // ...
 
 @NgModule({
   imports: [
     // ...
-    TuiCardModule,
+    TuiThumbnailCardModule,
   ],
   // ...
 })
