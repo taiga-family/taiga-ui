@@ -33,8 +33,8 @@ export function replaceStyles(): void {
                 .replace(`--tui-color-link`, `--tui-link`)
                 .replace(/@import '~@taiga-ui/g, `@import '@taiga-ui`)
                 .replace(
-                    `@import '@taiga-ui/core/styles/taiga-ui-global';`,
-                    `${TUI_WARNING_NORMALIZE}\n@import '@taiga-ui/styles/taiga-ui-global.less';`,
+                    /@import '@taiga-ui\/core\/styles\/taiga-ui-global/g,
+                    `${TUI_WARNING_NORMALIZE}\n@import '@taiga-ui/styles/taiga-ui-global`,
                 )
                 .replace(/@import '@taiga-ui\/.+(.less)?';/g, val =>
                     `${val.replace(`';`, ``)}.less';`.replace(`.less.less`, `.less`),
