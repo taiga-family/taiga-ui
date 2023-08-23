@@ -29,7 +29,7 @@ import {takeUntil} from 'rxjs/operators';
     providers: [TuiDestroyService, MODE_PROVIDER],
     inputs: ['content', 'direction', 'appearance', 'showDelay', 'hideDelay'],
 })
-export class TuiTooltipComponent extends TuiHintOptionsDirective {
+export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     private mode: TuiBrightness | null = null;
 
     @ViewChild(TuiHintHoverDirective)
@@ -37,6 +37,9 @@ export class TuiTooltipComponent extends TuiHintOptionsDirective {
 
     @Input()
     describeId = '';
+
+    @Input()
+    context?: C;
 
     constructor(
         @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
