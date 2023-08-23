@@ -1,12 +1,12 @@
 import {expect, test} from '@playwright/test';
-import {pages as PUBLIC_PAGES} from 'projects/demo/src/modules/app/pages';
 
 import {tuiGoto} from '../../utils';
-import {tuiGetDemoPathsForE2E} from './get-demo-paths';
 import {tuiIsFlakyExample} from './is-flaky-examples';
 
 test.describe(`Demo`, () => {
-    tuiGetDemoPathsForE2E(PUBLIC_PAGES).forEach(path => {
+    const demoPaths: string[] = JSON.parse(process.env[`DEMO_PATHS`]!);
+
+    demoPaths.forEach(path => {
         test(path, async ({page}) => {
             await tuiGoto(page, path);
 

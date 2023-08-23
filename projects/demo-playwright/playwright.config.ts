@@ -1,7 +1,12 @@
 import {defineConfig, devices} from '@playwright/test';
 import {ViewportSize} from 'playwright-core';
+import {pages as PUBLIC_PAGES} from 'projects/demo/src/modules/app/pages';
+
+import {tuiGetDemoPathsForE2E} from './tests/demo/get-demo-paths';
 
 const DEFAULT_VIEWPORT: ViewportSize = {width: 750, height: 700};
+
+process.env[`DEMO_PATHS`] = JSON.stringify(tuiGetDemoPathsForE2E(PUBLIC_PAGES));
 
 /**
  * See https://playwright.dev/docs/test-configuration.
