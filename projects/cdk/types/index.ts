@@ -10,6 +10,7 @@ export * from './input-type';
 export * from './mapper';
 export * from './matcher';
 export * from './overscroll-mode';
+export * from './platform';
 export * from './rounding';
 export * from './time-mode';
 export * from './values-of';
