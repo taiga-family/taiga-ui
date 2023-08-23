@@ -1,7 +1,7 @@
 import {defineConfig, devices} from '@playwright/test';
 import {ViewportSize} from 'playwright-core';
-import {pages as PUBLIC_PAGES} from 'projects/demo/src/modules/app/pages';
 
+import {pages as PUBLIC_PAGES} from '../demo/src/modules/app/pages';
 import {tuiGetDemoPathsForE2E} from './tests/demo/get-demo-paths';
 
 const DEFAULT_VIEWPORT: ViewportSize = {width: 750, height: 700};
