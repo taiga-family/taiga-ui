@@ -4,6 +4,13 @@ const FLAKY_EXAMPLES = new Map<string, number[]>([
     [`/components/table`, [3]], // Imitating server response (delay(3000))
     [`/navigation/tab-bar`, [3]], // Imitating server response (timer(3000))
     [`/components/tiles`, [0]], // YouTube iframe player
+    [
+        `/components/carousel`,
+        [
+            0, // [duration]="4000"
+            3, // just button (to open dialog)
+        ],
+    ],
     [`/icons/customization`, [0]], // TODO: investigate flaky test
 ]);
 

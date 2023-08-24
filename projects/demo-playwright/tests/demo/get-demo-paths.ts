@@ -14,7 +14,6 @@ export const EXCLUDED_ROUTES = [
     `/icons/overview`,
     `/icons/mapping`,
     `/components/mobile-calendar`, // TODO: flaky test, need investigate
-    `/components/carousel`, // TODO: create `TUI_CAROUSEL_OPTIONS` (to set `duration: 0` for E2E tests)
 ];
 
 export function tuiGetDemoPathsForE2E(
