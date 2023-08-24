@@ -52,7 +52,7 @@ export class TuiPullToRefreshComponent {
     );
 
     constructor(
-        @Inject(NgZone) ngZone: NgZone,
+        @Inject(NgZone) zone: NgZone,
         @Inject(TuiDestroyService) @Self() destroy$: Observable<unknown>,
         @Inject(TUI_SCROLL_REF) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(TUI_IS_IOS) private readonly isIOS: boolean,
@@ -64,7 +64,7 @@ export class TuiPullToRefreshComponent {
         // Ensure scrolling down is impossible while pulling
         if (this.component) {
             tuiScrollFrom(nativeElement)
-                .pipe(startWith(null), tuiZonefree(ngZone), takeUntil(destroy$))
+                .pipe(startWith(null), tuiZonefree(zone), takeUntil(destroy$))
                 .subscribe(() => {
                     if (nativeElement.scrollTop) {
                         nativeElement.style.touchAction = '';

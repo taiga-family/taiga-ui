@@ -1,0 +1,27 @@
+@import 'taiga-ui-local';
+
+.wrapper {
+    position: relative;
+}
+
+.fade {
+    .transition(height);
+    height: 3.75rem;
+
+    &_expanded {
+        height: 10rem;
+    }
+}
+
+.expand {
+    .transition(opacity, visibility);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition-delay: var(--tui-duration);
+
+    &_hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+}

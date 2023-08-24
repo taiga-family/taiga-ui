@@ -207,6 +207,14 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/fade`,
+        loadChildren: async () =>
+            (await import(`../experimental/fade/fade.module`)).ExampleTuiFadeModule,
+        data: {
+            title: `Fade`,
+        },
+    },
+    {
         path: `navigation/breadcrumbs`,
         loadChildren: async () =>
             (await import(`../components/breadcrumbs/breadcrumbs.module`))

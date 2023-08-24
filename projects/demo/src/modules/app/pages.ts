@@ -821,6 +821,12 @@ export const pages = [
         keywords: `аватар, image, pic, icon, картинка, изображение, avatar, stack`,
         route: `/experimental/avatar`,
     },
+    {
+        section: `Experimental`,
+        title: `Fade`,
+        keywords: `overflow, ellipsis, gradient, clamp, line`,
+        route: `/experimental/fade`,
+    },
     // Charts
     {
         section: `Charts`,

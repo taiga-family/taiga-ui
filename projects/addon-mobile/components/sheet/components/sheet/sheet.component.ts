@@ -59,7 +59,7 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
     constructor(
         @Inject(TUI_SHEET_SCROLL) private readonly scroll$: Observable<number>,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(NgZone) private readonly zone: NgZone,
         @Inject(TUI_IS_IOS) readonly isIos: boolean,
         @Inject(TUI_MORE_WORD) readonly moreWord$: Observable<string>,
     ) {}
@@ -80,7 +80,7 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
     get context(): TuiSheet<T> {
         return {
             ...this.item,
-            scroll$: this.scroll$.pipe(tuiZonefull(this.ngZone)),
+            scroll$: this.scroll$.pipe(tuiZonefull(this.zone)),
         };
     }
 

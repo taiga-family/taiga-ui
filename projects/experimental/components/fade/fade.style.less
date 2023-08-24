@@ -1,0 +1,68 @@
+@import 'taiga-ui-local';
+
+// prettier-ignore
+:host {
+    .transition(mask-position);
+    display: block;
+    overflow: hidden;
+    mask-repeat: no-repeat;
+
+    &[data-orientation='horizontal'] {
+        line-height: var(--line-height) !important;
+        mask-image:
+            linear-gradient(to right, transparent var(--fade-offset), #000 calc(var(--fade-size) + var(--fade-offset))),
+            linear-gradient(to left, transparent var(--fade-offset), #000 calc(var(--fade-size) + var(--fade-offset))),
+            linear-gradient(#000, #000);
+        mask-position:
+            calc(-1 * var(--fade-size) - var(--fade-offset)) bottom,
+            calc(100% + var(--fade-size) + var(--fade-offset)) bottom,
+            top;
+        mask-size:
+            calc(50% + var(--fade-size) + var(--fade-offset)) var(--line-height),
+            calc(50% + var(--fade-size) + var(--fade-offset)) var(--line-height),
+            100% calc(100% - var(--line-height));
+
+        &._start {
+            mask-position:
+                left bottom,
+                calc(100% + var(--fade-size) + var(--fade-offset)) bottom,
+                top;
+        }
+
+        &._end {
+            mask-position:
+                calc(-1 * var(--fade-size) - var(--fade-offset)) bottom,
+                right bottom,
+                top;
+        }
+
+        &._start._end {
+            mask-position:
+                left bottom,
+                right bottom,
+                top;
+        }
+    }
+
+    &[data-orientation='vertical'] {
+        mask-image:
+            linear-gradient(to bottom, transparent var(--fade-offset), #000 calc(var(--fade-size) + var(--fade-offset))),
+            linear-gradient(to top, transparent var(--fade-offset), #000 calc(var(--fade-size) + var(--fade-offset)));
+        mask-position:
+            left calc(-1 * var(--fade-size) - var(--fade-offset)),
+            left calc(100% + var(--fade-size) + var(--fade-offset));
+        mask-size: 100% calc(50% + var(--fade-size) + var(--fade-offset));
+
+        &._start {
+            mask-position: left top, left calc(100% + var(--fade-size) + var(--fade-offset));
+        }
+
+        &._end {
+            mask-position: left calc(-1 * var(--fade-size) - var(--fade-offset)), left bottom;
+        }
+
+        &._start._end {
+            mask-position: left top, left bottom;
+        }
+    }
+}

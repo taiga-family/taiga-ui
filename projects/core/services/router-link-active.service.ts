@@ -12,7 +12,7 @@ export class TuiRouterLinkActiveService extends Observable<boolean> {
         @Optional()
         @Inject(RouterLinkActive)
         routerLinkActive: RouterLinkActive | null,
-        @Inject(NgZone) ngZone: NgZone,
+        @Inject(NgZone) zone: NgZone,
         @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
         @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
@@ -23,7 +23,7 @@ export class TuiRouterLinkActiveService extends Observable<boolean> {
               ).pipe(
                   map(() => routerLinkActive.isActive),
                   distinctUntilChanged(),
-                  tuiZoneOptimized(ngZone),
+                  tuiZoneOptimized(zone),
                   takeUntil(destroy$),
               )
             : EMPTY;

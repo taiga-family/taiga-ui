@@ -27,11 +27,11 @@ export class TuiHoveredService extends Observable<boolean> {
             filter(movedOut),
             map(ALWAYS_FALSE_HANDLER),
         ),
-    ).pipe(distinctUntilChanged(), tuiZoneOptimized(this.ngZone));
+    ).pipe(distinctUntilChanged(), tuiZoneOptimized(this.zone));
 
     constructor(
         @Inject(ElementRef) private readonly el: ElementRef<Element>,
-        @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(NgZone) private readonly zone: NgZone,
     ) {
         super(subscriber => this.stream$.subscribe(subscriber));
     }

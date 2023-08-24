@@ -7,7 +7,7 @@ import {delay, map, share, switchMap, take, takeUntil} from 'rxjs/operators';
 export function iosScrollFactory(
     element: HTMLElement,
     doc: Document,
-    ngZone: NgZone,
+    zone: NgZone,
 ): Observable<number> {
     const load$ = tuiTypedFromEvent(element, `load`, {capture: true});
     const touchstart$ = tuiTypedFromEvent(element, `touchstart`, {passive: true});
@@ -38,7 +38,7 @@ export function iosScrollFactory(
         ),
     );
 
-    return concat(scroll$.pipe(take(1)), result$).pipe(tuiZonefree(ngZone), share());
+    return concat(scroll$.pipe(take(1)), result$).pipe(tuiZonefree(zone), share());
 }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

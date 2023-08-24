@@ -14,13 +14,13 @@ import {TUI_SHEET, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 })
 export class TuiSheetBarComponent {
     readonly rotate$ = this.scroll$.pipe(
-        tuiZonefulMap(y => tuiClamp(10 - (y - this.stop) / 5, 0, 10), this.ngZone),
+        tuiZonefulMap(y => tuiClamp(10 - (y - this.stop) / 5, 0, 10), this.zone),
     );
 
     constructor(
         @Inject(TUI_SHEET) private readonly sheet: TuiSheetRequiredProps,
         @Inject(TUI_SHEET_SCROLL) private readonly scroll$: Observable<number>,
-        @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(NgZone) private readonly zone: NgZone,
     ) {}
 
     private get stop(): number {

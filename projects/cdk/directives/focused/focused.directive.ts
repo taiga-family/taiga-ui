@@ -19,7 +19,7 @@ export class TuiFocusedDirective {
     constructor(
         @Inject(ElementRef)
         {nativeElement}: ElementRef<HTMLElement>,
-        @Inject(NgZone) ngZone: NgZone,
+        @Inject(NgZone) zone: NgZone,
     ) {
         this.tuiFocusedChange = merge(
             tuiTypedFromEvent(nativeElement, 'focusin'),
@@ -29,7 +29,7 @@ export class TuiFocusedDirective {
             startWith(false),
             distinctUntilChanged(),
             skip(1),
-            tuiZoneOptimized(ngZone),
+            tuiZoneOptimized(zone),
         );
     }
 }

@@ -8,11 +8,11 @@ import {distinctUntilChanged, map} from 'rxjs/operators';
  * and only returns to NgZone if value has changed
  *
  * @param project mapping function
- * @param ngZone NgZone instance
+ * @param zone NgZone instance
  */
 export function tuiZonefulMap<T, R>(
     project: (value: T, index: number) => R,
-    ngZone: NgZone,
+    zone: NgZone,
 ): OperatorFunction<T, R> {
-    return pipe(map(project), distinctUntilChanged(), tuiZonefull(ngZone));
+    return pipe(map(project), distinctUntilChanged(), tuiZonefull(zone));
 }

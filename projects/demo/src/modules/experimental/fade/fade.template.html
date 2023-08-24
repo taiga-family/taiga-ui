@@ -1,5 +1,5 @@
 <tui-doc-page
-    header="Avatar"
+    header="Fade"
     package="EXPERIMENTAL"
     type="components"
 >
@@ -10,75 +10,77 @@
             and is a subject to change. Expect final solution to be shipped in the next major version
         </tui-notification>
 
-        <p>New version for Avatar component following updated design specs for displaying text, pictures and icons.</p>
+        <p>Wrapper that uses masking to fade out overflown content</p>
 
         <tui-doc-example
-            id="base"
+            id="basic"
             heading="Basic"
             [content]="example1"
         >
-            <tui-avatar-example-1></tui-avatar-example-1>
+            <tui-fade-example-1></tui-fade-example-1>
         </tui-doc-example>
 
         <tui-doc-example
-            id="color"
-            heading="Colors"
+            id="multiline"
+            heading="Multiline"
             [content]="example2"
         >
-            <tui-avatar-example-2></tui-avatar-example-2>
+            <tui-fade-example-2></tui-fade-example-2>
         </tui-doc-example>
 
         <tui-doc-example
-            id="stacking"
-            heading="Stacking"
+            id="vertical"
+            heading="Vertical"
             [content]="example3"
-            [description]="importModuleDescription"
         >
-            <ng-template #importModuleDescription>
-                This example requires import of
-                <code>TuiAvatarStackModule</code>
-                .
-            </ng-template>
-            <tui-avatar-example-3></tui-avatar-example-3>
+            <tui-fade-example-3></tui-fade-example-3>
         </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-avatar
-                [round]="round"
+            <tui-fade
+                class="fade"
+                [lineHeight]="lineHeight"
+                [offset]="offset"
                 [size]="size"
-                [src]="src"
-            ></tui-avatar>
+            >
+                I am a very long text with
+                <code>white-space: nowrap</code>
+                that fades
+            </tui-fade>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="round"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="round"
+                documentationPropertyName="lineHeight"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="lineHeight"
             >
-                Use round shape
+                Line height (required for multiline text fade)
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="offset"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="offset"
+            >
+                Offset from the edge for the fade to start
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="size"
-                documentationPropertyType="TuiSizeS | TuiSizeL"
-                [documentationPropertyValues]="sizes"
+                documentationPropertyType="string"
                 [(documentationPropertyValue)]="size"
             >
-                Size
+                Size of the fade
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="src"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="srcVariants"
-                [(documentationPropertyValue)]="src"
+                documentationPropertyName="orientation"
+                documentationPropertyType="TuiOrientation"
             >
-                Initials, image URL, or icon name. Alternatively you can pass text as
-                <code>ng-content</code>
-                which would be styled differently from initials and fade if overflown
+                Orientation of the fade
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -88,7 +90,7 @@
             <li>
                 <p>
                     Import
-                    <code>TuiAvatarModule</code>
+                    <code>TuiFadeModule</code>
                     into a module where you want to use our component
                 </p>
 

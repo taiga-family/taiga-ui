@@ -45,11 +45,11 @@ export class TuiTileComponent implements OnDestroy {
             width: this.element.clientWidth,
             height: this.element.clientHeight,
         })),
-        tuiZonefull(this.ngZone),
+        tuiZonefull(this.zone),
     );
 
     constructor(
-        @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(NgZone) private readonly zone: NgZone,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TuiTilesComponent) private readonly tiles: TuiTilesComponent,
         @Inject(TuiResizeService) private readonly resize$: Observable<unknown>,

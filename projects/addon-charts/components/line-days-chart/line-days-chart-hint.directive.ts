@@ -40,7 +40,7 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
 
     constructor(
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
-        @Inject(NgZone) private readonly ngZone: NgZone,
+        @Inject(NgZone) private readonly zone: NgZone,
         @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
     ) {}
 
@@ -51,7 +51,7 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
         ])
             .pipe(
                 filter(result => !result.some(Boolean)),
-                tuiZonefree(this.ngZone),
+                tuiZonefree(this.zone),
                 takeUntil(this.destroy$),
             )
             .subscribe(() => {
