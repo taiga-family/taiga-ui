@@ -3,6 +3,7 @@ import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_COUNTRIES_MASKS} from '@taiga-ui/kit/tokens';
 import {tuiIsoToCountryCode} from '@taiga-ui/kit/utils';
 
+// @dynamic
 @Pipe({
     name: `tuiIsoToCountryCode`,
 })

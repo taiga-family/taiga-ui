@@ -8,6 +8,7 @@ import {
     tuiNotKzRegion,
 } from '@taiga-ui/kit/utils';
 
+// @dynamic
 @Pipe({
     name: `tuiToCountryCode`,
 })
