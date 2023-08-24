@@ -15,6 +15,7 @@ export * from './is-mobile';
 export * from './is-playwright';
 export * from './is-stackblitz';
 export * from './is-webkit';
+export * from './platform';
 export * from './range';
 export * from './removed-element';
 export * from './swipe-options';
