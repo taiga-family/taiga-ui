@@ -7,7 +7,7 @@ import {
 } from '@angular/common';
 import {inject, PLATFORM_ID, Provider} from '@angular/core';
 import {Title} from '@angular/platform-browser';
-import {UrlTree} from '@angular/router';
+import {UrlSerializer, UrlTree} from '@angular/router';
 import {SESSION_STORAGE} from '@ng-web-apis/common';
 import {
     TUI_DOC_CODE_EDITOR,
@@ -22,6 +22,7 @@ import {
     TUI_DOC_URL_STATE_HANDLER,
     tuiDocExampleOptionsProvider,
     TuiDocSourceCodePathOptions,
+    TuiLowerCaseUrlSerializer,
 } from '@taiga-ui/addon-doc';
 import {
     TUI_DIALOG_CLOSES_ON_BACK,
@@ -180,6 +181,10 @@ export const APP_PROVIDERS: Provider[] = [
         deps: [TUI_ENSURE_BASE_HREF],
         useFactory: (baseHref: string) => (tree: UrlTree) =>
             String(tree).replace(baseHref, ``),
+    },
+    {
+        provide: UrlSerializer,
+        useClass: TuiLowerCaseUrlSerializer,
     },
     tuiDocExampleOptionsProvider({fullsize: false}),
     tuiLanguageSwitcher(

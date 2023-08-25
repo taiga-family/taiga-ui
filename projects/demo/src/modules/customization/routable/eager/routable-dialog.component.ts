@@ -37,7 +37,7 @@ export class RoutableDialogComponent {
      */
     readonly isNamedOutletPage$ = this.router.events.pipe(
         filter(isNavigationEndEvent),
-        map(event => event.url.includes('NamedOutlet')),
+        map(event => event.url.includes('named_outlet')),
         shareReplay({refCount: true, bufferSize: 1}),
     );
 

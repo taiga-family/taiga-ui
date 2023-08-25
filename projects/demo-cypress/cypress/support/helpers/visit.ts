@@ -118,7 +118,9 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         if (skipExpectUrl) {
             cy.tuiWaitBeforeScreenshot();
         } else {
-            cy.url().should(`include`, encodedPath);
+            cy.url().then($url =>
+                expect($url.toLowerCase()).to.include(encodedPath.toLowerCase()),
+            );
         }
     });
 

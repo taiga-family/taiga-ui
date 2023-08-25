@@ -29,25 +29,25 @@ describe(`RoutableDialog`, () => {
     });
 
     it(`should open dialog in named outlet example`, () => {
-        cy.tuiVisit(`/dialog/routable/NamedOutlet`);
+        cy.tuiVisit(`/dialog/routable/Named_outlet`);
 
         cy.findByText(`Open dialog`).click();
         cy.tuiWaitKitDialog();
         cy.url().should(
             `include`,
-            `/dialog/routable/NamedOutlet/(myOutlet:path/to/dialog)`,
+            `/dialog/routable/named_outlet/(myOutlet:path/to/dialog)`,
         );
 
         cy.tuiClickOutside();
         cy.url()
-            .should(`include`, `/dialog/routable/NamedOutlet`)
+            .should(`include`, `/dialog/routable/named_outlet`)
             .should(`not.include`, `(myOutlet:path/to/dialog)`);
     });
 
     it(`should works after switching tabs`, () => {
         cy.tuiVisit(`/dialog/routable`);
 
-        cy.findByText(`NamedOutlet`).click();
+        cy.findByText(`Named outlet`).click();
 
         cy.findByText(`Open dialog`).click();
         cy.tuiWaitKitDialog();

@@ -22,13 +22,13 @@ import {RoutableDialogComponent} from './routable-dialog.component';
                                 .TuiPage1ExampleModule,
                     },
                     {
-                        path: `NamedOutlet`,
+                        path: `named_outlet`,
                         loadChildren: async () =>
                             (await import(`./examples/2/page-2.module`))
                                 .TuiPage2ExampleModule,
                     },
                     {
-                        path: `Setup`,
+                        path: `setup`,
                         component: RoutableDialogComponent,
                     },
                 ],
