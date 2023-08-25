@@ -41,4 +41,14 @@ export class TuiSlideInLeftExample {
     getAnimation(duration: number): TuiDurationOptions {
         return {value: '', params: {duration}};
     }
+
+    reset(): void {
+        this.isLeft = false;
+
+        this.isTop = false;
+
+        this.isRight = false;
+
+        this.isBottom = false;
+    }
 }

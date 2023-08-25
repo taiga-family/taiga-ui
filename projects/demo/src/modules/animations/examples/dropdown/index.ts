@@ -18,8 +18,6 @@ export class TuiDropdownExample {
 
     isOpen = false;
 
-    items = ['Angular', 'React', 'Vue'];
-
     @tuiPure
     getAnimation(duration: number): TuiDurationOptions {
         return {value: '', params: {duration}};
