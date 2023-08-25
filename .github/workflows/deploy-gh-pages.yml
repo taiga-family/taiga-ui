@@ -16,7 +16,7 @@ jobs:
     if: ${{ !contains(github.event.workflow_run.head_branch, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.3
+      - uses: actions/checkout@v3.6.0
       - uses: taiga-family/ci/actions/variables@1.9.2
 
       - name: Prepare demo before deploy from snapshots
