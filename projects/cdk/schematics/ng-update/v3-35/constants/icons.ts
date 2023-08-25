@@ -1652,11 +1652,11 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconReceiptLargeOutline`,
     },
     {
-        to: `tuiIconTdsArrowRewindSmallPragmatic`,
+        to: `tuiIconTdsArrowRepeatSmallPragmatic`,
         from: `tuiIconRedo`,
     },
     {
-        to: `tuiIconTdsArrowRewindMediumPragmatic`,
+        to: `tuiIconTdsArrowRepeatMediumPragmatic`,
         from: `tuiIconRedoLarge`,
     },
     {
@@ -1982,6 +1982,10 @@ export const ICONS: Array<{from: string; to: string}> = [
     {
         to: `tuiIconTdsArrowRewindSmallPragmatic`,
         from: `tuiIconUndo`,
+    },
+    {
+        to: `tuiIconTdsWysiwygFontBoldMediumPragmatic`,
+        from: `tuiIconBoldLarge`,
     },
     {
         to: `tuiIconTdsArrowRewindMediumPragmatic`,
