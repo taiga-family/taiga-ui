@@ -39,6 +39,11 @@ export class TuiDocSourceCodeComponent {
     }
 
     @tuiPure
+    pathIsUrl(path: string): boolean {
+        return path.startsWith('http');
+    }
+
+    @tuiPure
     private getPathOptions(
         header: string,
         packageName: string,
