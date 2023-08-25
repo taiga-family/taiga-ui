@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.6.0
-      - uses: taiga-family/ci/actions/dependency-review@1.9.2
+      - uses: taiga-family/ci/actions/dependency-review@1.10.0
