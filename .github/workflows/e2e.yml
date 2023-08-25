@@ -14,7 +14,7 @@ jobs:
     name: Build demo
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.3
+      - uses: actions/checkout@v3.6.0
         with:
           fetch-depth: 10
       - uses: taiga-family/ci/actions/variables@1.9.2
@@ -59,7 +59,7 @@ jobs:
           ]
     name: ${{ matrix.project }}
     steps:
-      - uses: actions/checkout@v3.5.3
+      - uses: actions/checkout@v3.6.0
       - uses: taiga-family/ci/actions/variables@1.9.2
       - uses: taiga-family/ci/actions/setup-node@1.9.2
 
@@ -112,7 +112,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build-demo]
     steps:
-      - uses: actions/checkout@v3.5.3
+      - uses: actions/checkout@v3.6.0
       - uses: taiga-family/ci/actions/variables@1.9.2
       - uses: taiga-family/ci/actions/setup-node@1.9.2
 
@@ -180,7 +180,7 @@ jobs:
     needs: [cypress, playwright]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.3
+      - uses: actions/checkout@v3.6.0
       - uses: taiga-family/ci/actions/variables@1.9.2
 
       - name: Download artifacts / ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
