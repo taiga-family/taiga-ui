@@ -138,10 +138,10 @@ function migrateProperty({
     from,
     callback,
 }: {
-    namedImport: string;
-    moduleSpecifier: string;
-    from: string;
     callback: (node: Node) => void;
+    from: string;
+    moduleSpecifier: string;
+    namedImport: string;
 }): void {
     const references = getNamedImportReferences(namedImport, moduleSpecifier);
 

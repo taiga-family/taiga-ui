@@ -5,8 +5,8 @@ import {TuiNativeInputPO} from '../native-input.page-object';
 
 interface TestParams {
     fixture: ComponentFixture<unknown>;
-    testComponent: TestComponent;
     inputPO: TuiNativeInputPO;
+    testComponent: TestComponent;
 }
 
 interface TestComponent {

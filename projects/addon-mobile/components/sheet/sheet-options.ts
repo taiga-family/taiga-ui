@@ -4,14 +4,14 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {TuiSheet} from './sheet';
 
 export interface TuiSheetOptions<I = undefined, O = unknown> {
+    readonly closeable: boolean;
+    readonly data: I;
     readonly image: PolymorpheusContent<TuiSheet<O, I>>;
     readonly imageSlide: boolean;
-    readonly stops: readonly string[];
     readonly initial: number;
     readonly offset: number;
-    readonly closeable: boolean;
     readonly overlay: boolean;
-    readonly data: I;
+    readonly stops: readonly string[];
 }
 
 export const TUI_SHEET_DEFAULT_OPTIONS: Omit<TuiSheetOptions, 'data'> = {

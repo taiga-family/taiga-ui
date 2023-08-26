@@ -4,15 +4,15 @@ import {TuiDecimal} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputNumberOptions {
-    readonly icons: Readonly<{
-        up: PolymorpheusContent;
-        down: PolymorpheusContent;
-    }>;
-    readonly min: number;
-    readonly max: number;
-    readonly step: number;
     readonly decimal: TuiDecimal;
+    readonly icons: Readonly<{
+        down: PolymorpheusContent;
+        up: PolymorpheusContent;
+    }>;
+    readonly max: number;
+    readonly min: number;
     readonly precision: number;
+    readonly step: number;
 }
 
 /** Default values for the input number options. */

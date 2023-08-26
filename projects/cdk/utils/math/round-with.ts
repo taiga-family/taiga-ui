@@ -7,9 +7,9 @@ export function tuiRoundWith({
     precision,
     method,
 }: {
-    value: number;
-    precision: number;
     method: TuiRounding;
+    precision: number;
+    value: number;
 }): number {
     switch (method) {
         case `round`:

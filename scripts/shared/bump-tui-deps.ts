@@ -2,11 +2,11 @@ import {tuiIsString} from '../../projects/cdk/utils/miscellaneous/is-string';
 import {isTuiPackageName} from './is-tui-package-name';
 
 export interface TuiBumpDepsOptions {
-    prevVersion: string;
-    newVersion: string;
     deps: Record<string, Record<string, unknown> | string>;
-    isPeerDependency?: boolean;
     ignores: string[];
+    isPeerDependency?: boolean;
+    newVersion: string;
+    prevVersion: string;
 }
 
 export function bumpTuiDeps({

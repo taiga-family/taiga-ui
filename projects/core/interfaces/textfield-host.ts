@@ -1,4 +1,6 @@
 export interface TuiTextfieldHost {
+    readonly disabled: boolean;
+    readonly focusable: boolean;
     readonly inputMode:
         | 'decimal'
         | 'email'
@@ -8,11 +10,9 @@ export interface TuiTextfieldHost {
         | 'tel'
         | 'text'
         | 'url';
-    readonly readOnly: boolean;
-    readonly disabled: boolean;
     readonly invalid: boolean;
-    readonly focusable: boolean;
-    readonly value: string;
     onValueChange(value: string): void;
     process(input: HTMLInputElement): void;
+    readonly readOnly: boolean;
+    readonly value: string;
 }

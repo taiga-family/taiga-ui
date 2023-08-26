@@ -16,6 +16,10 @@ export interface TuiNumberFormatSettings {
      */
     readonly decimalSeparator: TuiDecimalSymbol;
     /**
+     * Rounding method.
+     */
+    readonly rounding: TuiRounding;
+    /**
      * Separator between thousands.
      * @example 360 000 (' ' by default)
      */
@@ -24,8 +28,4 @@ export interface TuiNumberFormatSettings {
      * Enable zeros at the end of decimal part.
      */
     readonly zeroPadding: boolean;
-    /**
-     * Rounding method.
-     */
-    readonly rounding: TuiRounding;
 }

@@ -34,6 +34,7 @@ export enum TuiCountryIsoCode {
     BW = `BW`,
     BY = `BY`,
     BZ = `BZ`,
+    CA = `CA`,
     CD = `CD`,
     CF = `CF`,
     CG = `CG`,
@@ -200,6 +201,7 @@ export enum TuiCountryIsoCode {
     TZ = `TZ`,
     UA = `UA`,
     UG = `UG`,
+    US = `US`,
     UY = `UY`,
     UZ = `UZ`,
     VC = `VC`,
@@ -214,6 +216,4 @@ export enum TuiCountryIsoCode {
     ZA = `ZA`,
     ZM = `ZM`,
     ZW = `ZW`,
-    US = `US`,
-    CA = `CA`,
 }

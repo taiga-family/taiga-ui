@@ -14,9 +14,9 @@ const banner = `
 `;
 
 interface Options {
-    prt2Options: RPT2Options;
-    include: string;
     from: string;
+    include: string;
+    prt2Options: RPT2Options;
     to: string;
 }
 

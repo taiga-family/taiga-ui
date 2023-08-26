@@ -4,9 +4,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService} from '@taiga-ui/core';
 
 interface Item {
-    text: string;
-    icon: string;
     badge?: number;
+    icon: string;
+    text: string;
 }
 
 @Component({

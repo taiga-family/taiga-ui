@@ -5,16 +5,16 @@ import {TuiSizeL} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiCheckboxOptions {
-    readonly size: TuiSizeL;
     readonly appearances: Readonly<{
-        unchecked: string;
         checked: string;
         indeterminate: string;
+        unchecked: string;
     }>;
     readonly icons: Readonly<{
         checked: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>>;
         indeterminate: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>>;
     }>;
+    readonly size: TuiSizeL;
 }
 
 /** Default values for the checkbox options. */

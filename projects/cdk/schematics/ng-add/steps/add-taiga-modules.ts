@@ -84,9 +84,9 @@ function addTuiModules({
     options,
     context,
 }: {
+    context: SchematicContext;
     mainClass: ClassDeclaration;
     options: TuiSchema;
-    context: SchematicContext;
 }): void {
     const modules = getModules(options, [BROWSER_ANIMATION_MODULE]);
     const mainModulePath = mainClass.getSourceFile().getFilePath();
@@ -137,8 +137,8 @@ function addTuiEntitiesToStandalone({
     context,
 }: {
     bootstrapFunction: CallExpression;
-    options: TuiSchema;
     context: SchematicContext;
+    options: TuiSchema;
 }): void {
     const [
         rootComponentIdentifier,
@@ -207,9 +207,9 @@ function addMainModuleToRootComponent({
     options,
     context,
 }: {
+    context: SchematicContext;
     mainClass: ClassDeclaration;
     options: TuiSchema;
-    context: SchematicContext;
 }): void {
     const rootComponentPath = mainClass.getSourceFile().getFilePath();
 

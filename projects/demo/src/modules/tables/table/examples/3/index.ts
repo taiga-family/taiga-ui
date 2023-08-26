@@ -6,11 +6,11 @@ import {TuiComparator} from '@taiga-ui/addon-table';
 import {TuiDay, tuiDefaultSort} from '@taiga-ui/cdk';
 
 interface Item {
+    readonly date: TuiDay;
     readonly name: string;
     readonly price: number;
     readonly quantity: number;
     readonly unit: string;
-    readonly date: TuiDay;
 }
 
 @Component({

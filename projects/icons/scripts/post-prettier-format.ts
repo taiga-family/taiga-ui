@@ -2,8 +2,8 @@ import {readFileSync, writeFileSync} from 'fs';
 import prettier, {Options as PrettierOptions} from 'prettier';
 
 interface Options {
-    file: string;
     config: PrettierOptions;
+    file: string;
 }
 
 export async function tuiPostPrettierFormat({file, config}: Options): Promise<void> {

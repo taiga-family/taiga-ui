@@ -2,9 +2,9 @@ import {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiInputPhoneOptions {
-    readonly phoneMaskAfterCountryCode: string;
     readonly allowText: boolean;
     readonly countryCode: string;
+    readonly phoneMaskAfterCountryCode: string;
 }
 
 export const TUI_INPUT_PHONE_DEFAULT_OPTIONS: TuiInputPhoneOptions = {

@@ -1,10 +1,10 @@
 import {TuiDecimal, tuiFormatNumber, TuiNumberFormatSettings} from '@taiga-ui/core';
 
 export function tuiFormatFractionPart(options: {
-    value: number;
     decimal: TuiDecimal;
-    precision: number;
     numberFormat: TuiNumberFormatSettings;
+    precision: number;
+    value: number;
 }): string {
     const {value, decimal, numberFormat, precision} = options;
     const fraction = tuiFormatNumber(value, {

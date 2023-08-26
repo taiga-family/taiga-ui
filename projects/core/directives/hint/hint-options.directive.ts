@@ -13,11 +13,11 @@ import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiHintOptions {
-    readonly direction: TuiHintDirection;
-    readonly showDelay: number;
-    readonly hideDelay: number;
     readonly appearance: string;
+    readonly direction: TuiHintDirection;
+    readonly hideDelay: number;
     readonly icon: PolymorpheusContent;
+    readonly showDelay: number;
 }
 
 /** Default values for hint options */

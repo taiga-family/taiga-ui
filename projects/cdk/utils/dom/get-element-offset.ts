@@ -12,7 +12,7 @@ import {tuiIsHTMLElement} from './element-checks';
 export function tuiGetElementOffset(
     host: Element,
     element: HTMLElement,
-): {offsetTop: number; offsetLeft: number} {
+): {offsetLeft: number; offsetTop: number} {
     ngDevMode && tuiAssert.assert(host.contains(element), `Host must contain element`);
 
     let {offsetTop, offsetLeft, offsetParent} = element;

@@ -5,18 +5,18 @@ import {FormControl} from '@angular/forms';
 import {TuiPageObject} from '../page-object';
 
 interface TestParams {
-    pageObject: TuiPageObject<unknown>;
     fixture: ComponentFixture<unknown>;
-    testComponent: TestComponent;
+    pageObject: TuiPageObject<unknown>;
     prefix: string;
+    testComponent: TestComponent;
 }
 
 interface TestComponent {
-    readOnly: boolean;
-    hintContent: string | null;
-    size: unknown;
     control?: FormControl;
     disabled?: boolean;
+    hintContent: string | null;
+    readOnly: boolean;
+    size: unknown;
 }
 
 export function tuiTestTooltip(context: TestParams): void {

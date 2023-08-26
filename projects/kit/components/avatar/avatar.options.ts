@@ -3,9 +3,9 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 
 export interface TuiAvatarOptions {
-    readonly size: TuiSizeXXL | TuiSizeXXS;
     readonly autoColor: boolean;
     readonly rounded: boolean;
+    readonly size: TuiSizeXXL | TuiSizeXXS;
 }
 
 /** Default values for the avatar options. */

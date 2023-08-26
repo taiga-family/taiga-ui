@@ -2,11 +2,11 @@ import {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiDocIcons {
-    readonly search: string;
-    readonly day: string;
-    readonly night: string;
     readonly code: string;
+    readonly day: string;
     readonly menu: string;
+    readonly night: string;
+    readonly search: string;
 }
 
 export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {

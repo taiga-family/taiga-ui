@@ -3,9 +3,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 interface User {
-    id: string;
     email: string;
     firstName: string;
+    id: string;
     lastName: string;
 }
 

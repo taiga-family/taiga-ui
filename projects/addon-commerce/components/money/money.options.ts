@@ -5,12 +5,12 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiDecimal, TuiHorizontalDirection} from '@taiga-ui/core';
 
 export interface TuiMoneyOptions {
-    readonly decimal: TuiDecimal;
+    readonly colored: boolean;
     readonly currency: TuiCurrencyVariants;
     readonly currencyAlign: TuiHorizontalDirection;
-    readonly sign: TuiMoneySign;
-    readonly colored: boolean;
+    readonly decimal: TuiDecimal;
     readonly precision: number;
+    readonly sign: TuiMoneySign;
     readonly singleColor: boolean;
 }
 

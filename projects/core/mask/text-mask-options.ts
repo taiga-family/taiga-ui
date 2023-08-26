@@ -8,19 +8,19 @@ import type {TuiTextMaskPipeHandler} from './text-mask-pipe-handler';
  */
 export interface TuiTextMaskOptions {
     /**
-     * {@link https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#mask}
-     */
-    mask: TuiTextMaskList | TuiTextMaskListHandler | false;
-
-    /**
      * {@link https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#guide}
      */
     guide?: boolean;
 
     /**
-     * {@link https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#placeholderchar}
+     * {@link https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#keepcharpositions}
      */
-    placeholderChar?: string;
+    keepCharPositions?: boolean;
+
+    /**
+     * {@link https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#mask}
+     */
+    mask: TuiTextMaskList | TuiTextMaskListHandler | false;
 
     /**
      * {@link https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#pipe}
@@ -28,9 +28,9 @@ export interface TuiTextMaskOptions {
     pipe?: TuiTextMaskPipeHandler;
 
     /**
-     * {@link https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#keepcharpositions}
+     * {@link https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#placeholderchar}
      */
-    keepCharPositions?: boolean;
+    placeholderChar?: string;
 
     /**
      * {@link https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#showmask}

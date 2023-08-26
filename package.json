@@ -70,9 +70,43 @@
     },
     "prettier": "@taiga-ui/prettier-config",
     "eslintConfig": {
+        "plugins": [
+            "perfectionist"
+        ],
         "extends": [
             "plugin:@taiga-ui/experience/all"
-        ]
+        ],
+        "rules": {
+            "perfectionist/sort-enums": [
+                "error",
+                {
+                    "type": "natural",
+                    "order": "asc"
+                }
+            ],
+            "perfectionist/sort-interfaces": [
+                "error",
+                {
+                    "type": "natural",
+                    "order": "asc"
+                }
+            ],
+            "perfectionist/sort-map-elements": [
+                "error",
+                {
+                    "type": "natural",
+                    "order": "asc"
+                }
+            ],
+            "perfectionist/sort-object-types": [
+                "error",
+                {
+                    "ignore-case": false,
+                    "type": "natural",
+                    "order": "asc"
+                }
+            ]
+        }
     },
     "dependencies": {
         "@angular/animations": "12.2.17",
@@ -124,6 +158,7 @@
         "cypress": "12.17.4",
         "cypress-real-events": "1.10.0",
         "eslint": "8.48.0",
+        "eslint-plugin-perfectionist": "1.5.1",
         "find-in-files": "0.5.0",
         "http-server": "0.13.0",
         "husky": "8.0.3",

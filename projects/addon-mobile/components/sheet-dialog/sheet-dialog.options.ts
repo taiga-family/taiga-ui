@@ -3,12 +3,12 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiSheetDialogOptions<I = never> {
-    readonly label: PolymorpheusContent;
-    readonly stops: readonly string[];
-    readonly initial: number;
-    readonly offset: number;
     readonly closeable: boolean;
     readonly data: I;
+    readonly initial: number;
+    readonly label: PolymorpheusContent;
+    readonly offset: number;
+    readonly stops: readonly string[];
 }
 
 type TuiSheetDialogDefaultOptions = Omit<TuiSheetDialogOptions<unknown>, 'data'>;

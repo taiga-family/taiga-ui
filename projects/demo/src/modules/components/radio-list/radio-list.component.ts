@@ -13,8 +13,8 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 interface ItemRadio {
-    name: string;
     description: string;
+    name: string;
 }
 
 @Component({

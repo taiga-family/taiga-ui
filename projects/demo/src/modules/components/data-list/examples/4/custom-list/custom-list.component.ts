@@ -4,8 +4,8 @@ import {EMPTY_ARRAY, TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {TuiDataListComponent, tuiIsEditingKey} from '@taiga-ui/core';
 
 interface Items<T> {
-    readonly name: string;
     readonly items: readonly T[];
+    readonly name: string;
 }
 
 @Component({

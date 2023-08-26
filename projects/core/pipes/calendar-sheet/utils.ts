@@ -31,11 +31,6 @@ export const getDayFromMonthRowCol = ({
     colIndex,
     firstDayOfWeek,
 }: {
-    month: TuiMonth;
-    /**
-     * row in a calendar
-     */
-    rowIndex: number;
     /**
      * column in a calendar
      */
@@ -44,6 +39,11 @@ export const getDayFromMonthRowCol = ({
      * first day of the week index (Sunday - 0, Saturday - 6)
      */
     firstDayOfWeek: TuiDayOfWeek;
+    month: TuiMonth;
+    /**
+     * row in a calendar
+     */
+    rowIndex: number;
 }): TuiDay => {
     ngDevMode && tuiAssert.assert(Number.isInteger(rowIndex));
     ngDevMode && tuiAssert.assert(tuiInRange(rowIndex, 0, 6));

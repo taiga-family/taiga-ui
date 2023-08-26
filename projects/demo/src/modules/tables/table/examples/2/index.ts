@@ -3,8 +3,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 interface User {
-    readonly name: string;
     readonly email: string;
+    readonly name: string;
     readonly status: 'alive' | 'deceased';
     readonly tags: readonly string[];
 }
