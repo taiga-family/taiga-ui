@@ -10,6 +10,7 @@ import {
     TuiHostedDropdownModule,
     TuiModeModule,
     TuiNotificationModule,
+    TuiScrollbarModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {TuiInputCountModule, TuiTabsModule} from '@taiga-ui/kit';
@@ -22,6 +23,7 @@ import {TuiTabsExample5} from './examples/5';
 import {TuiTabsExample6} from './examples/6';
 import {TuiTabsExample7} from './examples/7';
 import {TuiTabsExample8} from './examples/8';
+import {TuiTabsExample9} from './examples/9';
 import {ExampleTuiTabsComponent} from './tabs.component';
 
 @NgModule({
@@ -40,6 +42,7 @@ import {ExampleTuiTabsComponent} from './tabs.component';
         TuiAddonDocModule,
         TuiMobileTabsModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTabsComponent)),
+        TuiScrollbarModule,
     ],
     declarations: [
         ExampleTuiTabsComponent,
@@ -51,6 +54,7 @@ import {ExampleTuiTabsComponent} from './tabs.component';
         TuiTabsExample6,
         TuiTabsExample7,
         TuiTabsExample8,
+        TuiTabsExample9,
     ],
     exports: [ExampleTuiTabsComponent],
 })
