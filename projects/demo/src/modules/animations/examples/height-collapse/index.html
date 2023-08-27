@@ -11,7 +11,7 @@
 <div
     *ngIf="isOpen"
     class="container"
-    [@tuiHeightCollapse]="getAnimation(speed)"
+    [@tuiHeightCollapse]="speed | tuiGetAnimation"
 >
     A long time ago in a galaxy far, far away....
 </div>

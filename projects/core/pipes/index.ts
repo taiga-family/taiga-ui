@@ -1,3 +1,4 @@
+export * from '@taiga-ui/core/pipes/animation';
 export * from '@taiga-ui/core/pipes/calendar-sheet';
 export * from '@taiga-ui/core/pipes/flag';
 export * from '@taiga-ui/core/pipes/format-date';

@@ -12,5 +12,5 @@
 <div
     *ngIf="isOpen"
     class="plasma"
-    [@tuiWidthCollapse]="getAnimation(speed)"
+    [@tuiWidthCollapse]="speed | tuiGetAnimation"
 ></div>

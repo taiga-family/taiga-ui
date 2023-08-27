@@ -1,8 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiPure} from '@taiga-ui/cdk';
-import {TuiDurationOptions, tuiWidthCollapse} from '@taiga-ui/core';
+import {tuiWidthCollapse} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-width-collapse-example',
@@ -17,9 +16,4 @@ export class TuiWidthCollapseExample {
     speed = 0;
 
     isOpen = true;
-
-    @tuiPure
-    getAnimation(duration: number): TuiDurationOptions {
-        return {value: '', params: {duration}};
-    }
 }

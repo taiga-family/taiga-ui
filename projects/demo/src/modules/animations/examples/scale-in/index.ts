@@ -1,8 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiPure} from '@taiga-ui/cdk';
-import {TuiDurationOptions, tuiScaleIn} from '@taiga-ui/core';
+import {tuiScaleIn} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-scale-in-example',
@@ -21,9 +20,4 @@ export class TuiScaleInExample {
         {title: 'Install Taiga UI', completed: false},
         {title: 'Look into "Getting Started"', completed: false},
     ];
-
-    @tuiPure
-    getAnimation(duration: number): TuiDurationOptions {
-        return {value: '', params: {duration}};
-    }
 }
