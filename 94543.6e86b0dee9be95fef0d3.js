@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[94543],{94543:a=>{a.exports='<tui-scrollbar class="scrollbar">\n    <tui-fade\n        tuiScrollable\n        class="fade"\n    >\n        I am a very long text that overflows with a single line fade\n    </tui-fade>\n</tui-scrollbar>\n'}}]);
