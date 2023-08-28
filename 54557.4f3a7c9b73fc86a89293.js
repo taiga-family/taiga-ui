@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[54557],{54557:n=>{n.exports='<tui-pin>\n    <tui-pin-dot\n        #pointer\n        class="pointer"\n    >\n        <tui-pin-cursor></tui-pin-cursor>\n    </tui-pin-dot>\n</tui-pin>\n'}}]);
