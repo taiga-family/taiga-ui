@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[29705],{29705:n=>{n.exports='<input\n    disabled\n    tuiSlider\n    type="range"\n    value="80"\n/>\n'}}]);
