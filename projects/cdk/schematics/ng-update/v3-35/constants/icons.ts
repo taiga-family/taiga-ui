@@ -4,6 +4,26 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconAddProductLarge`,
     },
     {
+        to: `tuiIconTdsTexMediumPragmatic`,
+        from: `tuiIconTeXLarge`,
+    },
+    {
+        to: `tuiIconTdsWysiwygSpoilerMediumPragmatic`,
+        from: `tuiIconSpoilerLarge`,
+    },
+    {
+        to: `tuiIconTdsWysiwygSpoilerRemoveMediumPragmatic`,
+        from: `tuiIconSpoilerDeleteLarge`,
+    },
+    {
+        to: `tuiIconTdsLinkOffMediumPragmatic`,
+        from: `tuiIconUnlinkLarge`,
+    },
+    {
+        to: `tuiIconTdsWysiwygHighlighterMediumPragmatic`,
+        from: `tuiIconHiliteLarge`,
+    },
+    {
         to: `tuiIconTdsWysiwygTableAddRowMediumPragmatic`,
         from: `tuiIconAddRowLarge`,
     },
