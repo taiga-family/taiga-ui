@@ -1,5 +1,5 @@
 import {inject, InjectionToken} from '@angular/core';
-import {TuiStringHandler} from '@taiga-ui/cdk';
+import {TUI_ENSURE_BASE_HREF, TuiStringHandler} from '@taiga-ui/cdk';
 import {tuiIconsPathFactory} from '@taiga-ui/core/utils';
 
 import {TUI_ICONS_PLACE} from './icon-place';
@@ -10,5 +10,8 @@ import {TUI_ICONS_PLACE} from './icon-place';
  */
 export const TUI_ICONS_PATH: InjectionToken<TuiStringHandler<string>> =
     new InjectionToken<TuiStringHandler<string>>(`[TUI_ICONS_PATH]`, {
-        factory: () => tuiIconsPathFactory(inject(TUI_ICONS_PLACE)),
+        factory: () =>
+            tuiIconsPathFactory(
+                `${inject(TUI_ENSURE_BASE_HREF)}${inject(TUI_ICONS_PLACE)}`,
+            ),
     });

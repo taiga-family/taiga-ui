@@ -50,7 +50,7 @@ describe(`SVG options`, () => {
             expect(testComponent?.svgComponent.isInnerHTML).toBe(false);
             expect(testComponent?.svgComponent.src).toBe(`tuiIconMySuperIcon`);
             expect(testComponent?.svgComponent.use).toBe(
-                `assets/taiga-ui/icons/tuiIconMySuperIcon.svg?v=${TUI_VERSION}#tuiIconMySuperIcon`,
+                `/assets/taiga-ui/icons/tuiIconMySuperIcon.svg?v=${TUI_VERSION}#tuiIconMySuperIcon`,
             );
         });
     });
@@ -110,7 +110,7 @@ describe(`SVG options`, () => {
             expect(testComponent?.svgComponent.isInnerHTML).toBe(false);
             expect(testComponent?.svgComponent.src).toBe(`tuiIconMySuperIcon`);
             expect(testComponent?.svgComponent.use).toBe(
-                `assets/taiga-ui/icons/tuiIconMySuperIcon.svg?v=${TUI_VERSION}#tuiIconMySuperIcon`,
+                `/assets/taiga-ui/icons/tuiIconMySuperIcon.svg?v=${TUI_VERSION}#tuiIconMySuperIcon`,
             );
         });
 
