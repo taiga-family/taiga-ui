@@ -19,9 +19,7 @@ import {debounce, filter, map} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-tiles',
-    template: `
-        <ng-content></ng-content>
-    `,
+    template: '<ng-content></ng-content>',
     styleUrls: ['./tiles.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
