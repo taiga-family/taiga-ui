@@ -4,10 +4,10 @@ import {RouterModule} from '@angular/router';
 import {TuiThumbnailCardModule} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 
-import {ExampleTuiThumbnailCardComponent} from './thumbnail-card.component';
 import {TuiThumbnailCardExample1} from './examples/1';
 import {TuiThumbnailCardExample2} from './examples/2';
 import {TuiThumbnailCardExample3} from './examples/3';
+import {ExampleTuiThumbnailCardComponent} from './thumbnail-card.component';
 
 @NgModule({
     imports: [
