@@ -1,6 +1,6 @@
 import {Locator} from '@playwright/test';
 
-export class TuiInputSliderPo {
+export class TuiInputSliderPO {
     readonly textfield = this.host.getByRole(`textbox`);
     readonly slider = this.host.getByRole(`slider`);
 
