@@ -12,8 +12,8 @@ import {map, startWith, switchMap} from 'rxjs/operators';
 
 export interface TuiCardGroupedTexts {
     readonly cardNumberText: string;
-    readonly expiryText: string;
     readonly cvcText: string;
+    readonly expiryText: string;
 }
 
 /**

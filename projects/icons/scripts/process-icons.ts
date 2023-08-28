@@ -7,8 +7,8 @@ const HEIGHT_SEARCH = `height="`;
 
 interface WrappedContent {
     height: string;
-    width: string;
     src: string;
+    width: string;
 }
 
 type ContentInterceptor = (src: string) => string;

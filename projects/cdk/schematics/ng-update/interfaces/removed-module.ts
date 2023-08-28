@@ -1,4 +1,4 @@
 export interface RemovedModule {
-    readonly name: string;
     readonly moduleSpecifier: string;
+    readonly name: string;
 }

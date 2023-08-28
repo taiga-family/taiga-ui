@@ -17,8 +17,8 @@ import {BehaviorSubject, combineLatest, Observable, timer} from 'rxjs';
 import {debounceTime, filter, map, share, startWith, switchMap} from 'rxjs/operators';
 
 interface User {
-    readonly name: string;
     readonly dob: TuiDay;
+    readonly name: string;
 }
 
 const TODAY = TuiDay.currentLocal();

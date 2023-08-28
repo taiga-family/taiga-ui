@@ -3,9 +3,9 @@ import {TuiCurrencyVariants} from '@taiga-ui/addon-commerce';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface MyAccount {
-    name: string;
     amount: number;
     currency: TuiCurrencyVariants;
+    name: string;
     paymentSystem: PolymorpheusContent;
 }
 

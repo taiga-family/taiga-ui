@@ -2,10 +2,10 @@ import {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiTabsOptions {
-    readonly underline: boolean;
     readonly exposeActive: boolean;
     readonly itemsLimit: number;
     readonly minMoreWidth: number;
+    readonly underline: boolean;
 }
 
 export const TUI_TABS_DEFAULT_OPTIONS: TuiTabsOptions = {

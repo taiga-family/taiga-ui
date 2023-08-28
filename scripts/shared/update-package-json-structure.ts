@@ -5,11 +5,11 @@ import {bumpTuiVersionInPackageJson} from './bump-tui-version-in-package-json';
 import {isTuiPackageName} from './is-tui-package-name';
 
 interface UpdatePackageJsonOptions {
+    ignores: string[];
+    isPackageLockFile: boolean;
+    newVersion: string;
     packageJson: Record<string, Record<string, any> | string>;
     prevVersion: string;
-    newVersion: string;
-    isPackageLockFile: boolean;
-    ignores: string[];
 }
 
 export function updatePackageJsonStructure({

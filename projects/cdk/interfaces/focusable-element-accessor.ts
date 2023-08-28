@@ -7,7 +7,7 @@ export interface TuiNativeFocusableElement extends Element, HTMLOrSVGElement {}
  * TODO: shorten `nativeFocusableElement` in 4.0
  */
 export interface TuiFocusableElementAccessor {
-    nativeFocusableElement: TuiNativeFocusableElement | null;
     focused: boolean;
     readonly focusedChange: Observable<boolean>;
+    nativeFocusableElement: TuiNativeFocusableElement | null;
 }

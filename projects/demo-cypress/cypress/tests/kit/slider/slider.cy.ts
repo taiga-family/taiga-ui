@@ -201,7 +201,7 @@ function checkSlider(
     {
         expectedValue,
         expectedFillPercentage,
-    }: {expectedValue: string; expectedFillPercentage: string},
+    }: {expectedFillPercentage: string; expectedValue: string},
 ): void {
     cy.get(sliderSelector)
         .should(`have.value`, expectedValue)

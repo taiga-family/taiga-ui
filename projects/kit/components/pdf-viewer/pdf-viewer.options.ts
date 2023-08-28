@@ -3,9 +3,9 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiPdfViewerOptions<I = undefined> {
-    readonly label: string;
     readonly actions: PolymorpheusContent<TuiPdfViewerOptions<I>>;
     readonly data: I;
+    readonly label: string;
 }
 
 type TuiPdfViewerDefaultOptions = Omit<TuiPdfViewerOptions<unknown>, 'data'>;

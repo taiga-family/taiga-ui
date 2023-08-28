@@ -8,8 +8,8 @@ import {tuiCreateToken, TuiHandler, tuiProvideOptions} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputCardOptions {
-    cardSrc: PolymorpheusContent;
     readonly autocompleteEnabled: boolean;
+    cardSrc: PolymorpheusContent;
     readonly icons: Record<TuiPaymentSystem, string>;
     readonly paymentSystemHandler: TuiHandler<
         string | null | undefined,

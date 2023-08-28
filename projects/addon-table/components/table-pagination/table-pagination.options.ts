@@ -3,12 +3,12 @@ import {TuiContextWithImplicit, tuiCreateToken, tuiProvideOptions} from '@taiga-
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiTablePaginationOptions {
+    readonly items: readonly number[];
+    readonly showPages: boolean;
+    readonly size: number;
     readonly sizeOptionContent: PolymorpheusContent<
         TuiContextWithImplicit<number> & {total: number}
     >;
-    readonly showPages: boolean;
-    readonly items: readonly number[];
-    readonly size: number;
 }
 
 function defaultSizeOptionContent({$implicit}: TuiContextWithImplicit<number>): string {

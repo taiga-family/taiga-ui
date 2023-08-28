@@ -3,16 +3,16 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiSizeL} from '@taiga-ui/core';
 
 export interface TuiInputFilesOptions {
+    accepts: string;
     /**
      * @description:
      * user - The user-facing camera and/or microphone should be used.
      * environment - The outward-facing camera and/or microphone should be used
      */
     capture: 'environment' | 'user' | null;
-    accepts: string;
+    maxFileSize: number;
     multiple: boolean;
     size: TuiSizeL;
-    maxFileSize: number;
 }
 
 export const TUI_INPUT_FILES_DEFAULT_OPTIONS: TuiInputFilesOptions = {

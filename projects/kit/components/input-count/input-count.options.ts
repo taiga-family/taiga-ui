@@ -3,16 +3,16 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputCountOptions {
-    readonly icons: Readonly<{
-        up: PolymorpheusContent<Record<string, unknown>>;
-        down: PolymorpheusContent<Record<string, unknown>>;
-    }>;
     readonly appearance: string;
     readonly hideButtons: boolean;
-    readonly min: number;
+    readonly icons: Readonly<{
+        down: PolymorpheusContent<Record<string, unknown>>;
+        up: PolymorpheusContent<Record<string, unknown>>;
+    }>;
     readonly max: number;
-    readonly step: number;
+    readonly min: number;
     readonly postfix: string;
+    readonly step: number;
 }
 
 /** Default values for the input count options. */

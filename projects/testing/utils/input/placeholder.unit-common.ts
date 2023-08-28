@@ -5,17 +5,17 @@ import {FormControl} from '@angular/forms';
 import {TuiPageObject} from '../page-object';
 
 interface TestParams {
-    pageObject: TuiPageObject<unknown>;
     fixture: ComponentFixture<unknown>;
-    testComponent: TestComponent;
+    pageObject: TuiPageObject<unknown>;
     prefix: string;
+    testComponent: TestComponent;
 }
 
 interface TestComponent {
     control?: FormControl;
-    value?: unknown;
     labelOutside: boolean;
     size: 'l' | 'm' | 's';
+    value?: unknown;
 }
 
 export function tuiTestPlaceholder(

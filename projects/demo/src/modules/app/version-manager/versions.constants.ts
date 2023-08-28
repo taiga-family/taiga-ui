@@ -1,8 +1,8 @@
 import {TUI_VERSION, tuiCreateToken} from '@taiga-ui/cdk';
 
 export interface TuiVersionMeta {
-    label: string;
     baseHref: string;
+    label: string;
     title: string;
 }
 

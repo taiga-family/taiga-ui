@@ -50,7 +50,7 @@ describe(`Viewport`, () => {
     });
 
     describe(`Check fonts`, () => {
-        const fonts: Array<[string, {width: number; font: string}]> = Object.entries(
+        const fonts: Array<[string, {font: string; width: number}]> = Object.entries(
             Cypress.env(`fonts`) ?? [],
         );
 

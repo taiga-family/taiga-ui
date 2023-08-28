@@ -2,13 +2,13 @@ import {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiPushOptions {
+    readonly buttons: readonly string[];
     readonly heading: string;
-    readonly type: string;
-    readonly timestamp: number;
-    readonly image: string;
     readonly icon: string;
     readonly iconColor: string;
-    readonly buttons: readonly string[];
+    readonly image: string;
+    readonly timestamp: number;
+    readonly type: string;
 }
 
 export const TUI_PUSH_DEFAULT_OPTIONS: TuiPushOptions = {

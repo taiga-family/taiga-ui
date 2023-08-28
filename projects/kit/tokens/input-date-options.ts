@@ -12,8 +12,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputDateOptions {
     readonly icon: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>>;
-    readonly min: TuiDay;
     readonly max: TuiDay;
+    readonly min: TuiDay;
     readonly nativePicker: boolean;
 }
 

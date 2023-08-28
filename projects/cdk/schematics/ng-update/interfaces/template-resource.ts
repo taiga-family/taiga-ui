@@ -1,3 +1,7 @@
 export type TemplateResource =
-    | {readonly template: string; readonly componentPath: string; readonly offset: number}
-    | {readonly templatePath: string; componentPath: string};
+    | {
+          readonly componentPath: string;
+          readonly offset: number;
+          readonly template: string;
+      }
+    | {componentPath: string; readonly templatePath: string};

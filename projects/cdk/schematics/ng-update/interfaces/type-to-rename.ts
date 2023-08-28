@@ -1,6 +1,6 @@
 export interface TypeToRename {
     readonly from: string;
-    readonly to?: string;
     readonly moduleSpecifier?: string[] | string;
     readonly preserveGenerics?: boolean;
+    readonly to?: string;
 }

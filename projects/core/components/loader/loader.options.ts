@@ -3,9 +3,9 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core/types';
 
 export interface TuiLoaderOptions {
-    readonly size: TuiSizeXS | TuiSizeXXL;
     readonly inheritColor: boolean;
     readonly overlay: boolean;
+    readonly size: TuiSizeXS | TuiSizeXXL;
 }
 
 /** Default values for the loader options. */

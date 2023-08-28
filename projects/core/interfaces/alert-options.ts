@@ -9,14 +9,14 @@ export type TuiAlertAutoClose =
     | number;
 
 export interface TuiAlertOptions<I> {
-    readonly label: PolymorpheusContent<TuiAlertOptions<I>>;
-    readonly status: TuiNotification | TuiNotificationT;
-    readonly icon: PolymorpheusContent<TuiContextWithImplicit<TuiNotificationT>>;
     readonly autoClose: TuiAlertAutoClose;
-    readonly hasCloseButton: boolean;
     readonly data: I;
-    /** @deprecated use icon instead **/
-    readonly hasIcon: boolean;
     /** @deprecated use autoClose instead **/
     readonly defaultAutoCloseTime: number;
+    readonly hasCloseButton: boolean;
+    /** @deprecated use icon instead **/
+    readonly hasIcon: boolean;
+    readonly icon: PolymorpheusContent<TuiContextWithImplicit<TuiNotificationT>>;
+    readonly label: PolymorpheusContent<TuiAlertOptions<I>>;
+    readonly status: TuiNotification | TuiNotificationT;
 }

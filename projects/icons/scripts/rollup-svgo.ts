@@ -5,9 +5,9 @@ import {optimize, OptimizedError, OptimizedSvg, OptimizeOptions} from 'svgo';
 type SvgoResult = OptimizedError | OptimizedSvg;
 
 export interface TuiRollupSvgoConfig {
-    readonly include?: string;
-
     readonly exclude?: string;
+
+    readonly include?: string;
 
     readonly options?: OptimizeOptions;
 }

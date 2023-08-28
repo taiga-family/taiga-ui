@@ -5,8 +5,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBooleanHandler, TuiStringHandler} from '@taiga-ui/cdk';
 
 interface Item {
-    readonly name: string;
     readonly id: number;
+    readonly name: string;
 }
 @Component({
     selector: 'tui-multi-select-example-10',

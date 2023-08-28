@@ -4,9 +4,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {EMPTY_ARRAY, TuiHandler} from '@taiga-ui/cdk';
 
 interface TreeNode {
-    readonly text: string;
-    readonly icon?: string;
     readonly children?: readonly TreeNode[];
+    readonly icon?: string;
+    readonly text: string;
 }
 
 @Component({

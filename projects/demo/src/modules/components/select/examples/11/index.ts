@@ -5,8 +5,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBooleanHandler, TuiStringHandler} from '@taiga-ui/cdk';
 
 interface Item {
-    name: string;
     id: number;
+    name: string;
 }
 
 @Component({

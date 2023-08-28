@@ -13,9 +13,9 @@ export interface TuiGetClosestFocusableOptions {
 
     /**
      * @description:
-     * top Node limiting the search area
+     * determine if only keyboard focus is of interest
      */
-    root: Node;
+    keyboard?: boolean;
 
     /**
      * @description:
@@ -25,9 +25,9 @@ export interface TuiGetClosestFocusableOptions {
 
     /**
      * @description:
-     * determine if only keyboard focus is of interest
+     * top Node limiting the search area
      */
-    keyboard?: boolean;
+    root: Node;
 }
 
 /**

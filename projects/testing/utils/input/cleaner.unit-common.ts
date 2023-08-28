@@ -8,19 +8,19 @@ import {TuiNativeInputPO} from '../native-input.page-object';
 import {TuiPageObject} from '../page-object';
 
 interface TestParams {
-    pageObject: TuiPageObject<unknown>;
     fixture: ComponentFixture<unknown>;
-    testComponent: TestComponent;
     inputPO: TuiNativeInputPO;
+    pageObject: TuiPageObject<unknown>;
     prefix: string;
+    testComponent: TestComponent;
 }
 
 interface TestComponent {
-    control?: FormControl;
-    value?: unknown;
-    disabled?: boolean;
     cleaner: boolean;
+    control?: FormControl;
+    disabled?: boolean;
     readOnly: boolean;
+    value?: unknown;
 }
 
 export function tuiTestCleaner(

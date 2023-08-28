@@ -10,9 +10,9 @@ export interface FetchedCards {
 
 export interface AccountCard {
     cardId: string;
+    cardType: string;
     firstSix: string;
     lastFour: string;
-    cardType: string;
 }
 
 export interface DataForPayCardModal {

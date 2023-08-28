@@ -11,9 +11,9 @@ import {
 } from '@taiga-ui/cdk';
 
 export interface TuiItemsHandlers<T> {
-    readonly stringify: TuiStringHandler<T>;
-    readonly identityMatcher: TuiIdentityMatcher<T>;
     readonly disabledItemHandler: TuiBooleanHandler<T>;
+    readonly identityMatcher: TuiIdentityMatcher<T>;
+    readonly stringify: TuiStringHandler<T>;
 }
 
 export const TUI_DEFAULT_ITEMS_HANDLERS: TuiItemsHandlers<unknown> = {

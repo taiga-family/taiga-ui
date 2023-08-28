@@ -53,9 +53,9 @@ export function migrateTextfieldController({
     fileSystem,
     recorder,
 }: {
-    resource: TemplateResource;
-    recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
+    recorder: UpdateRecorder;
+    resource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
@@ -95,8 +95,8 @@ function insertTuiTextfieldInput({
     recorder,
     templateOffset,
 }: {
-    element: Element;
     attrs: Attribute[];
+    element: Element;
     recorder: UpdateRecorder;
     templateOffset: number;
 }): void {
@@ -121,8 +121,8 @@ function addAttrToExistingInput({
     recorder,
     templateOffset,
 }: {
-    existingInput: Element;
     attrs: Attribute[];
+    existingInput: Element;
     recorder: UpdateRecorder;
     templateOffset: number;
 }): void {

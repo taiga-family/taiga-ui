@@ -6,9 +6,9 @@ describe(`TuiToCountryCodePipe`, () => {
     let pipe: TuiToCountryCodePipe;
 
     const testCases: Array<{
-        input: string;
         countries: TuiCountryIsoCode[];
         expected: TuiCountryIsoCode | undefined;
+        input: string;
     }> = [
         {
             input: `79123456789`,

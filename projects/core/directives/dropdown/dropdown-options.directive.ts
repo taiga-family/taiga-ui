@@ -17,12 +17,12 @@ import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 
 export interface TuiDropdownOptions {
     readonly align: TuiDropdownAlign;
+    readonly appearance: string;
     readonly direction: TuiVerticalDirection | null;
     readonly limitWidth: TuiDropdownWidth;
-    readonly minHeight: number;
     readonly maxHeight: number;
+    readonly minHeight: number;
     readonly offset: number;
-    readonly appearance: string;
 }
 
 /** Default values for dropdown options */

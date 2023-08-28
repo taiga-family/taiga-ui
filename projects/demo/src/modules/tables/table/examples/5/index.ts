@@ -5,8 +5,8 @@ import {TuiComparator} from '@taiga-ui/addon-table';
 import {TuiDay, tuiToInt} from '@taiga-ui/cdk';
 
 interface User {
-    readonly name: string;
     readonly dob: TuiDay;
+    readonly name: string;
 }
 
 const TODAY = TuiDay.currentLocal();

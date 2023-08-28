@@ -12,8 +12,8 @@ import {PdfContentComponent} from './pdf-content.component';
 
 export type Buttons = ReadonlyArray<
     Readonly<{
-        text: string;
         onClick(context: TuiDialog<TuiPdfViewerOptions<Buttons>, string>): void;
+        text: string;
     }>
 >;
 

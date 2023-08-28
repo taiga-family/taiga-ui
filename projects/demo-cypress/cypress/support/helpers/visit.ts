@@ -6,35 +6,35 @@ const NEXT_URL_STORAGE_KEY = `env`;
 const REPEATED_SLASH_REG = new RegExp(`//`, `g`);
 
 interface TuiVisitOptions {
+    clock?: Date | null;
+    enableNightMode?: boolean;
+    headers?: Record<string, string>;
+    hideCursor?: boolean;
+    hideGetHelpLinks?: boolean;
+    hideHeader?: boolean;
+    hideLanguageSwitcher?: boolean;
+    hideNavigation?: boolean;
+    hideScrollbar?: boolean;
+    hideVersionManager?: boolean;
     /**
      * Cypress runs all tests within an iframe.
      * Sometimes our app can behave differently if it runs under iframe or not (see util {@link isInsideIframe}).
      * This parameter can help to falsify result of {@link isInsideIframe} for certain test run.
      */
     inIframe?: boolean;
-    waitAllIcons?: boolean;
-    enableNightMode?: boolean;
-    hideCursor?: boolean;
-    hideScrollbar?: boolean;
-    hideVersionManager?: boolean;
-    hideLanguageSwitcher?: boolean;
-    hideGetHelpLinks?: boolean;
     noSmoothScroll?: boolean;
-    hideHeader?: boolean;
-    hideNavigation?: boolean;
-    stopAnimation?: boolean;
-    skipDecodingUrl?: boolean;
-    skipExpectUrl?: boolean;
-    waitRenderedFont?: RegExp;
-    rootSelector?: string;
-    clock?: Date | null;
-    headers?: Record<string, string>;
     /**
      * WARNING: this flag does not provide fully emulation of touch mobile device.
      * Cypress can't do it (https://docs.cypress.io/faq/questions/general-questions-faq#Do-you-support-native-mobile-apps).
      * But you can control token `TUI_IS_MOBILE` by this flag.
      */
     pseudoMobile?: boolean;
+    rootSelector?: string;
+    skipDecodingUrl?: boolean;
+    skipExpectUrl?: boolean;
+    stopAnimation?: boolean;
+    waitAllIcons?: boolean;
+    waitRenderedFont?: RegExp;
 }
 
 const setBeforeLoadOptions = (

@@ -27,11 +27,11 @@ import {TUI_DEPRECATED_ICONS} from './deprecated-icons';
 
 // TODO: Refactor it all in 4.0 and remove deprecated backward compatibility hacks
 export interface TuiSvgOptions {
+    readonly contentProcessor: TuiHandler<TuiSafeHtml, TuiSafeHtml>;
+    readonly deprecated: TuiStringHandler<string>;
     readonly iconsPlace: string;
     readonly path: TuiStringHandler<string>;
-    readonly deprecated: TuiStringHandler<string>;
     readonly srcProcessor: TuiHandler<TuiSafeHtml, TuiSafeHtml>;
-    readonly contentProcessor: TuiHandler<TuiSafeHtml, TuiSafeHtml>;
 }
 
 export type TuiSvgInterceptorHandler =

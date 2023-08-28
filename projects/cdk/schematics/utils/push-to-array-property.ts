@@ -7,7 +7,7 @@ export function pushToObjectArrayProperty(
     {
         unique = false,
         forceToArray = false,
-    }: {unique?: boolean; forceToArray?: boolean} = {},
+    }: {forceToArray?: boolean; unique?: boolean} = {},
 ): void {
     const property =
         objectExpression.getProperty(propertyName) ??

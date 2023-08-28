@@ -2,9 +2,9 @@ import {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiPreviewIcons {
-    readonly rotate: string;
-    readonly prev: string;
     readonly next: string;
+    readonly prev: string;
+    readonly rotate: string;
     readonly zoomIn: string;
     readonly zoomOut: string;
     readonly zoomReset: string;

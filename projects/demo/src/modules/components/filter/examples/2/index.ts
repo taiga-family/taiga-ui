@@ -5,8 +5,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
 
 interface Operations {
-    title: string;
     operations: readonly Operation[];
+    title: string;
 }
 
 interface Operation {

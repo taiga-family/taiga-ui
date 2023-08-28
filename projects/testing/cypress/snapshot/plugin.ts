@@ -10,8 +10,8 @@ declare module 'cypress-image-snapshot/plugin' {
 }
 
 export interface TuiSnapshotPluginOptions {
-    newSnapshotMarkFn: (oldSnapshotFileName: string) => string;
     newSnapshotMarkEnabled: boolean;
+    newSnapshotMarkFn: (oldSnapshotFileName: string) => string;
 }
 
 export async function tuiAddSnapshotPlugin(

@@ -8,8 +8,8 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {FoldersComponent} from './content';
 
 interface TreeNode {
-    readonly text: string;
     readonly children?: readonly TreeNode[];
+    readonly text: string;
 }
 
 @Component({

@@ -4,7 +4,7 @@
  * {@link https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#pipe}
  */
 export interface TuiTextMaskConfig {
-    readonly rawValue: string;
-    readonly previousConformedValue?: string;
     readonly currentCaretPosition?: number;
+    readonly previousConformedValue?: string;
+    readonly rawValue: string;
 }

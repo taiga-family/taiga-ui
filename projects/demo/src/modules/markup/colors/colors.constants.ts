@@ -1,6 +1,6 @@
 export interface Color {
-    readonly name: string;
     readonly desc?: string;
+    readonly name: string;
 }
 
 export const BASE: readonly Color[] = [

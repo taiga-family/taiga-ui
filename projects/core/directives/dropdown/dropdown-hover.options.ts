@@ -2,8 +2,8 @@ import {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiDropdownHoverOptions {
-    readonly showDelay: number;
     readonly hideDelay: number;
+    readonly showDelay: number;
 }
 
 /** Default values for hint options */

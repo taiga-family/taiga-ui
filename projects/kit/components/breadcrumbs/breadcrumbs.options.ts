@@ -4,8 +4,8 @@ import {TuiBrightness, TuiSizeL} from '@taiga-ui/core';
 
 export interface TuiBreadcrumbsOptions {
     readonly icon: string;
-    readonly size: TuiSizeL;
     readonly mode: TuiBrightness | null;
+    readonly size: TuiSizeL;
 }
 
 export const TUI_BREADCRUMBS_DEFAULT_OPTIONS: TuiBreadcrumbsOptions = {

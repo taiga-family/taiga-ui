@@ -26,7 +26,7 @@ function generateUsedIcons(
         excludedFolders,
         excludedNames,
         excludedFiles,
-    }: {excludedFolders: string[]; excludedNames: string[]; excludedFiles: string[]},
+    }: {excludedFiles: string[]; excludedFolders: string[]; excludedNames: string[]},
 ): void {
     const tuiIconNames = findTuiIconNames(rootDirectory, {
         excludedFolders,
@@ -52,7 +52,7 @@ function findTuiIconNames(
         excludedFolders,
         excludedNames,
         excludedFiles,
-    }: {excludedFolders: string[]; excludedNames: string[]; excludedFiles: string[]},
+    }: {excludedFiles: string[]; excludedFolders: string[]; excludedNames: string[]},
 ): string[] {
     const tuiIconNames = new Set<string>();
 
