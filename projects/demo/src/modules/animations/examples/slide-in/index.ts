@@ -6,7 +6,6 @@ import {
     TuiDurationOptions,
     tuiSlideInBottom,
     tuiSlideInLeft,
-    tuiSlideInLeftList,
     tuiSlideInRight,
     tuiSlideInTop,
 } from '@taiga-ui/core';
@@ -17,15 +16,9 @@ import {
     styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
-    animations: [
-        tuiSlideInLeft,
-        tuiSlideInTop,
-        tuiSlideInBottom,
-        tuiSlideInRight,
-        tuiSlideInLeftList,
-    ],
+    animations: [tuiSlideInLeft, tuiSlideInTop, tuiSlideInBottom, tuiSlideInRight],
 })
-export class TuiSlideInLeftExample {
+export class TuiSlideInExample {
     @Input()
     speed = 0;
 

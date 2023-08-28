@@ -12,7 +12,7 @@ import {TuiDropdownExample} from './examples/dropdown';
 import {TuiFadeInExample} from './examples/fade-in';
 import {TuiHeightCollapseExample} from './examples/height-collapse';
 import {TuiScaleInExample} from './examples/scale-in';
-import {TuiSlideInLeftExample} from './examples/slide-in';
+import {TuiSlideInExample} from './examples/slide-in';
 import {TuiWidthCollapseExample} from './examples/width-collapse';
 
 @NgModule({
@@ -33,7 +33,7 @@ import {TuiWidthCollapseExample} from './examples/width-collapse';
         TuiWidthCollapseExample,
         TuiFadeInExample,
         TuiScaleInExample,
-        TuiSlideInLeftExample,
+        TuiSlideInExample,
         TuiDropdownExample,
     ],
 })
