@@ -215,14 +215,6 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: `experimental/pin`,
-        loadChildren: async () =>
-            (await import(`../experimental/pin/pin.module`)).ExampleTuiPinModule,
-        data: {
-            title: `Pin`,
-        },
-    },
-    {
         path: `navigation/breadcrumbs`,
         loadChildren: async () =>
             (await import(`../components/breadcrumbs/breadcrumbs.module`))
