@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.99.0](https://github.com/tinkoff/taiga-ui/compare/v2.96.0...v2.99.0) (2023-08-28)
+
+### Features
+
+- **addon-editor:** change margin for list ([#5133](https://github.com/tinkoff/taiga-ui/issues/5133))
+  ([d3e7ca1](https://github.com/tinkoff/taiga-ui/commit/d3e7ca15104dc67ced97059a0e1ca54dc9fbf74d))
+
+### Bug Fixes
+
+- **addon-mobile:** `MobileTabs` update iOS design ([#4722](https://github.com/tinkoff/taiga-ui/issues/4722))
+  ([#5131](https://github.com/tinkoff/taiga-ui/issues/5131))
+  ([40876c2](https://github.com/tinkoff/taiga-ui/commit/40876c2ce29a4c304a4f1103e363c0e7d25d76d4))
+- **core:** `Control` refresh subscription after control change
+  ([#5210](https://github.com/tinkoff/taiga-ui/issues/5210))
+  ([48a4ab8](https://github.com/tinkoff/taiga-ui/commit/48a4ab8e6318a4bbe4e5293fd2ab6e3029c1ef9e))
+- **kit:** correct detect iso code for Kazakhstan & correct limit in the field for entering a phone number
+  ([#5177](https://github.com/tinkoff/taiga-ui/issues/5177))
+  ([73ebf15](https://github.com/tinkoff/taiga-ui/commit/73ebf159a9ce057c7384d744a63eeb194a7ad23d))
+
 ## [2.98.0](https://github.com/tinkoff/taiga-ui/compare/v2.96.0...v2.98.0) (2023-08-28)
 
 ### Features
