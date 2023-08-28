@@ -1,6 +1,5 @@
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
-
-import {Country} from '../interfaces/country';
+import {Country} from '@taiga-ui/kit/interfaces';
 
 /**
  * @deprecated Dont use it (will be deleted soon).
@@ -273,5 +272,3 @@ export const COUNTRIES_MASKS = Object.entries<Country>(COUNTRIES).reduce(
     countriesMasksReducer,
     {} as Record<TuiCountryIsoCode, string>,
 );
-
-export const MASK_AFTER_CODE_REGEXP = /\([#]+\)|[#\- ]/g;
