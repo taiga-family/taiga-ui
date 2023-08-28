@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.6.0
-      - uses: taiga-family/ci/actions/variables@1.10.0
-      - uses: taiga-family/ci/actions/setup-node@1.10.0
-      - uses: taiga-family/ci/actions/setup-npm@1.10.0
+      - uses: taiga-family/ci/actions/variables@1.10.1
+      - uses: taiga-family/ci/actions/setup-node@1.10.1
+      - uses: taiga-family/ci/actions/setup-npm@1.10.1
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
       - run: npm run run-many:build:libs
