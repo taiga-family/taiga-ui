@@ -2,9 +2,9 @@ import * as child_process from 'child_process';
 import * as util from 'util';
 
 interface Options {
-    path: string;
-    includePattern: string;
     excludePattern?: string;
+    includePattern: string;
+    path: string;
 }
 
 export async function grepByPattern(options: Options): Promise<string> {

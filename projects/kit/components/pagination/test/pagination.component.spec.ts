@@ -5,11 +5,11 @@ import {TuiPaginationComponent, TuiPaginationModule} from '@taiga-ui/kit';
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 
 interface TuiPaginationParams {
+    readonly activePadding?: number;
+
     readonly index?: number;
 
     readonly length?: number;
-
-    readonly activePadding?: number;
 
     readonly sidePadding?: number;
 }

@@ -12,8 +12,8 @@ import {
 import {TreeLoader} from './service';
 
 export interface Item {
-    readonly text: string;
     readonly children?: boolean;
+    readonly text: string;
 }
 
 @Component({

@@ -3,16 +3,16 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 export interface TuiTableOptions {
-    readonly sticky: boolean;
-    readonly resizable: boolean;
-    readonly open: boolean;
-    readonly size: TuiSizeL | TuiSizeS;
     readonly direction: -1 | 1;
+    readonly open: boolean;
+    readonly resizable: boolean;
+    readonly size: TuiSizeL | TuiSizeS;
     readonly sortIcons: {
         readonly asc: string;
         readonly desc: string;
         readonly off: string;
     };
+    readonly sticky: boolean;
 }
 
 export const TUI_TABLE_DEFAULT_OPTIONS: TuiTableOptions = {

@@ -7,9 +7,9 @@ import {TuiDriver, tuiGetWordRange, TuiOptionComponent} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
 export interface User {
-    readonly name: string;
     readonly avatar: string;
     readonly login: string;
+    readonly name: string;
 }
 
 @Component({

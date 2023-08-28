@@ -7,8 +7,8 @@ export function tuiVisitEditorApiPage({
     skipDecodingUrl,
 }: Partial<{
     content: string;
-    maxHeight: number;
     enableNightMode: boolean;
+    maxHeight: number;
     skipDecodingUrl: boolean;
 }> = {}): void {
     cy.viewport(1850, 1600).tuiVisit(

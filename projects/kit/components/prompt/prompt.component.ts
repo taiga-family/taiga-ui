@@ -11,8 +11,8 @@ import {Observable} from 'rxjs';
 
 export interface TuiPromptData {
     readonly content?: PolymorpheusContent;
-    readonly yes?: string;
     readonly no?: string;
+    readonly yes?: string;
 }
 
 // TODO: Rename to tui-confirm in 4.0
@@ -24,7 +24,7 @@ export interface TuiPromptData {
 })
 export class TuiPromptComponent {
     constructor(
-        @Inject(TUI_PROMPT_WORDS) readonly words$: Observable<{yes: string; no: string}>,
+        @Inject(TUI_PROMPT_WORDS) readonly words$: Observable<{no: string; yes: string}>,
         @Inject(POLYMORPHEUS_CONTEXT)
         readonly context: TuiDialogContext<boolean, TuiPromptData | undefined>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,

@@ -1,5 +1,5 @@
 <a
-    *polymorpheusOutlet="sourceCode as link; context: pathOptions"
+    *polymorpheusOutlet="pathIsUrl(path) ? path : sourceCode as link; context: pathOptions"
     appearance="icon"
     size="s"
     target="_blank"

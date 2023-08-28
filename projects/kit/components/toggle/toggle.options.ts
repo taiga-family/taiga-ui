@@ -4,16 +4,16 @@ import {TuiAppearance, TuiSizeL} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiToggleOptions {
+    readonly appearances: Readonly<{
+        checked: string;
+        unchecked: string;
+    }>;
     readonly icons: Readonly<{
         toggleOff: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>>;
         toggleOn: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>>;
     }>;
-    readonly appearances: Readonly<{
-        unchecked: string;
-        checked: string;
-    }>;
-    readonly singleColor: boolean;
     readonly showIcons: boolean;
+    readonly singleColor: boolean;
     readonly size: TuiSizeL;
 }
 

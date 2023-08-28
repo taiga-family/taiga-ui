@@ -1,5 +1,5 @@
 export interface MigrationWarning {
-    readonly name: string;
-    readonly moduleSpecifier?: string;
     readonly message: string;
+    readonly moduleSpecifier?: string;
+    readonly name: string;
 }

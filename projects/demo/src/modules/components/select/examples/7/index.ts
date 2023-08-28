@@ -5,8 +5,8 @@ import {EMPTY_ARRAY, TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiValueContentContext} from '@taiga-ui/core';
 
 interface Account {
-    readonly name: string;
     readonly account: string;
+    readonly name: string;
 }
 
 const BANK: readonly Account[] = [

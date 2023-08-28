@@ -3,9 +3,9 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiReorderOptions {
     readonly icons: {
+        readonly drag: string;
         readonly hide: string;
         readonly show: string;
-        readonly drag: string;
     };
 }
 

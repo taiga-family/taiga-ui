@@ -4,8 +4,8 @@ import {TuiStatus} from '@taiga-ui/kit/types';
 
 export interface TuiInputTagOptions {
     readonly separator: RegExp | string;
-    readonly uniqueTags: boolean;
     readonly tagStatus: TuiStatus;
+    readonly uniqueTags: boolean;
 }
 
 export const TUI_INPUT_TAG_DEFAULT_OPTIONS: TuiInputTagOptions = {

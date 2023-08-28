@@ -32,10 +32,12 @@ const DIFF_IMAGE_POSTFIX = `-diff.png`;
 
     let prevWidth = 0;
 
-    images.forEach(image => {
-        ctx.drawImage(image, prevWidth, 0);
-        prevWidth += image.width;
-    });
+    images
+        .reverse() // After <= Diff => Before
+        .forEach(image => {
+            ctx.drawImage(image, prevWidth, 0);
+            prevWidth += image.width;
+        });
 
     const buffer = canvas.toBuffer(`image/png`);
     const diffImageName = diffImage.split(`/`).pop()!.replace(DIFF_IMAGE_POSTFIX, ``);

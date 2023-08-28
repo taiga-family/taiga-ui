@@ -1,3 +1,3 @@
 export type Asset =
     | string
-    | {glob: string; input: string; ignore: string[]; output: string};
+    | {glob: string; ignore: string[]; input: string; output: string};

@@ -48,13 +48,13 @@ export function replaceInputProperty({
     newValue = ``,
     filterFn,
 }: {
-    templateResource: TemplateResource;
-    fileSystem: DevkitFileSystem;
     componentSelector: string[] | string;
-    from: string;
-    to: string;
-    newValue?: string;
+    fileSystem: DevkitFileSystem;
     filterFn?: (element: Element) => boolean;
+    from: string;
+    newValue?: string;
+    templateResource: TemplateResource;
+    to: string;
 }): boolean {
     const template = getTemplateFromTemplateResource(templateResource, fileSystem);
     const path = fileSystem.resolve(getPathFromTemplateResource(templateResource));
@@ -164,13 +164,13 @@ export function replaceInputPropertyByDirective({
     directiveModule,
     filterFn,
 }: {
-    templateResource: TemplateResource;
-    fileSystem: DevkitFileSystem;
     componentSelector: string[] | string;
-    inputProperty: string;
     directive: string;
-    directiveModule?: {name: string; moduleSpecifier: string};
+    directiveModule?: {moduleSpecifier: string; name: string};
+    fileSystem: DevkitFileSystem;
     filterFn?: (element: Element) => boolean;
+    inputProperty: string;
+    templateResource: TemplateResource;
 }): void {
     const wasModified = replaceInputProperty({
         templateResource,
@@ -202,11 +202,11 @@ export function removeInputProperty({
     inputProperty,
     filterFn,
 }: {
-    templateResource: TemplateResource;
-    fileSystem: DevkitFileSystem;
     componentSelector: string;
-    inputProperty: string;
+    fileSystem: DevkitFileSystem;
     filterFn?: (element: Element) => boolean;
+    inputProperty: string;
+    templateResource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(templateResource, fileSystem);
     const templateOffset = getTemplateOffset(templateResource);

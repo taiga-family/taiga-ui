@@ -2,11 +2,11 @@ import {TuiDecimalSymbol} from '@taiga-ui/core/types';
 
 export interface TuiNumberMaskOptions {
     readonly allowDecimal?: boolean;
-    readonly decimalSymbol?: TuiDecimalSymbol;
-    readonly thousandSymbol?: string;
+    readonly allowNegative?: boolean;
     readonly autoCorrectDecimalSymbol?: boolean;
     readonly decimalLimit?: number;
-    readonly requireDecimal?: boolean;
-    readonly allowNegative?: boolean;
+    readonly decimalSymbol?: TuiDecimalSymbol;
     readonly integerLimit?: number;
+    readonly requireDecimal?: boolean;
+    readonly thousandSymbol?: string;
 }

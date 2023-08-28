@@ -15,10 +15,10 @@ export function replaceAttrValues({
     fileSystem,
     replaceableItems,
 }: {
-    resource: TemplateResource;
-    recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
+    recorder: UpdateRecorder;
     replaceableItems: ReplaceableAttributeValue[];
+    resource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);

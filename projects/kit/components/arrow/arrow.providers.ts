@@ -6,10 +6,10 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {TUI_ARROW} from './arrow.component';
 
 export interface TuiArrowMode {
-    readonly interactive: PolymorpheusContent<
+    readonly disabled: PolymorpheusContent<
         TuiContextWithImplicit<TuiSizeL | TuiSizeM | TuiSizeS>
     >;
-    readonly disabled: PolymorpheusContent<
+    readonly interactive: PolymorpheusContent<
         TuiContextWithImplicit<TuiSizeL | TuiSizeM | TuiSizeS>
     >;
 }

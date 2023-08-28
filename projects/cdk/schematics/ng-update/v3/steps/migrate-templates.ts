@@ -94,8 +94,8 @@ function replaceAttrsByDirective({
     resource,
     fileSystem,
 }: {
-    resource: TemplateResource;
     fileSystem: DevkitFileSystem;
+    resource: TemplateResource;
 }): void {
     ATTR_TO_DIRECTIVE.forEach(
         ({componentSelector, directiveModule, directive, inputProperty, filterFn}) => {
@@ -117,9 +117,9 @@ function replaceAttrs({
     recorder,
     fileSystem,
 }: {
-    resource: TemplateResource;
-    recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
+    recorder: UpdateRecorder;
+    resource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
@@ -152,9 +152,9 @@ function replaceTags({
     recorder,
     fileSystem,
 }: {
-    resource: TemplateResource;
-    recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
+    recorder: UpdateRecorder;
+    resource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
@@ -182,9 +182,9 @@ function addHTMLCommentTags({
     recorder,
     fileSystem,
 }: {
-    resource: TemplateResource;
-    recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
+    recorder: UpdateRecorder;
+    resource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
@@ -208,9 +208,9 @@ function replaceBreadcrumbs({
     recorder,
     fileSystem,
 }: {
-    resource: TemplateResource;
-    recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
+    recorder: UpdateRecorder;
+    resource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
@@ -252,9 +252,9 @@ function replaceFieldError({
     recorder,
     fileSystem,
 }: {
-    resource: TemplateResource;
-    recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
+    recorder: UpdateRecorder;
+    resource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
@@ -300,9 +300,9 @@ function addEditorProviders({
     resource,
     fileSystem,
 }: {
-    resource: TemplateResource;
-    recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
+    recorder: UpdateRecorder;
+    resource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const elements = findElementsByTagName(template, `tui-editor`).filter(
@@ -339,9 +339,9 @@ function migrateTuiHideSelectedPipe({
     fileSystem,
     recorder,
 }: {
-    resource: TemplateResource;
-    recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
+    recorder: UpdateRecorder;
+    resource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
@@ -379,9 +379,9 @@ function migrateBinaryAttributes({
     fileSystem,
     recorder,
 }: {
-    resource: TemplateResource;
-    recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
+    recorder: UpdateRecorder;
+    resource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
@@ -419,9 +419,9 @@ function addWarningForFormatNumberPipe({
     fileSystem,
     recorder,
 }: {
-    resource: TemplateResource;
-    recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
+    recorder: UpdateRecorder;
+    resource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
@@ -439,9 +439,9 @@ function replaceInputValues({
     recorder,
     fileSystem,
 }: {
-    resource: TemplateResource;
-    recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
+    recorder: UpdateRecorder;
+    resource: TemplateResource;
 }): void {
     replaceAttrValues({
         resource,
@@ -456,9 +456,9 @@ function removeInputs({
     fileSystem,
     recorder,
 }: {
-    resource: TemplateResource;
-    recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
+    recorder: UpdateRecorder;
+    resource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);

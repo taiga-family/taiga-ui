@@ -22,27 +22,27 @@ import {tuiBeInViewportAssertion, tuiWaitAllImgInside} from '@taiga-ui/testing/c
 declare global {
     namespace Cypress {
         interface Chainable {
-            getByAutomationId(automationId: string): Chainable<JQuery>;
-
             findByAutomationId(automationId: string): Chainable<JQuery>;
 
-            tuiVisit: typeof tuiVisit;
+            getByAutomationId(automationId: string): Chainable<JQuery>;
+
+            tuiClickOutside: typeof tuiClickOutside;
+            tuiFindByExampleId(): Chainable;
+            tuiFocus(): Chainable;
+            tuiGetByExampleId(): Chainable;
             tuiHide: typeof tuiHide;
-            tuiShow: typeof tuiShow;
-            tuiWaitKitDialog: typeof tuiWaitKitDialog;
+            tuiScrollIntoView(): Chainable;
             tuiSetLanguage: typeof tuiSetLanguage;
             tuiSetNightMode: typeof tuiSetNightMode;
-            tuiWaitCodeHighlight: typeof tuiWaitCodeHighlight;
-            tuiClickOutside: typeof tuiClickOutside;
 
+            tuiShow: typeof tuiShow;
             tuiTab(direction: 'backward' | 'forward'): Chainable;
-            tuiGetByExampleId(): Chainable;
-            tuiFindByExampleId(): Chainable;
+            tuiVisit: typeof tuiVisit;
+            tuiWaitAllImgInside(enabled?: boolean): Chainable;
             tuiWaitBeforeAction(): Chainable;
             tuiWaitBeforeScreenshot(): Chainable;
-            tuiScrollIntoView(): Chainable;
-            tuiFocus(): Chainable;
-            tuiWaitAllImgInside(enabled?: boolean): Chainable;
+            tuiWaitCodeHighlight: typeof tuiWaitCodeHighlight;
+            tuiWaitKitDialog: typeof tuiWaitKitDialog;
         }
 
         interface Chainer<Subject> {

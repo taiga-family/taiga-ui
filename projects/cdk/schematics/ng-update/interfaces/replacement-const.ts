@@ -1,11 +1,11 @@
 export interface ReplacementConst {
     readonly from: {
-        readonly name: string;
         readonly moduleSpecifier?: string[] | string;
+        readonly name: string;
     };
     readonly to: {
+        readonly moduleSpecifier: string;
         readonly name: string;
         readonly namedImport?: string;
-        readonly moduleSpecifier: string;
     };
 }

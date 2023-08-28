@@ -4,9 +4,9 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit/types';
 
 export interface TuiTagOptions {
+    readonly autoColor: boolean;
     readonly size: TuiSizeL | TuiSizeS;
     readonly status: TuiStatus;
-    readonly autoColor: boolean;
 }
 
 /** Default values for the tag options. */

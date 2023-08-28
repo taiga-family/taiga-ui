@@ -827,6 +827,12 @@ export const pages = [
         keywords: `overflow, ellipsis, gradient, clamp, line`,
         route: `/experimental/fade`,
     },
+    {
+        section: `Experimental`,
+        title: `Pin`,
+        keywords: `пин, pin`,
+        route: `/experimental/pin`,
+    },
     // Charts
     {
         section: `Charts`,

@@ -3,8 +3,8 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiArrowOptions {
-    readonly iconSmall: PolymorpheusContent;
     readonly iconLarge: PolymorpheusContent;
+    readonly iconSmall: PolymorpheusContent;
 }
 
 /** Default values for arrow options */

@@ -6,46 +6,32 @@ import {TuiLanguageName} from './language-names';
 type MONTHS_ARRAY = [string, string, string, string, string, string, string, string, string, string, string, string];
 
 export interface TuiLanguageCore {
-    months: MONTHS_ARRAY;
     close: string;
-    nothingFoundMessage: string;
+    countries: Record<TuiCountryIsoCode, string>;
     defaultErrorMessage: string;
-    /**
-     * [@string word 'previous', @string word 'next']
-     */
-    spinTexts: [string, string];
+    months: MONTHS_ARRAY;
+    nothingFoundMessage: string;
     /**
      * Tuple with short days of week
      * starts with Mon (Monday)
      */
     shortWeekDays: [string, string, string, string, string, string, string];
-    countries: Record<TuiCountryIsoCode, string>;
+    /**
+     * [@string word 'previous', @string word 'next']
+     */
+    spinTexts: [string, string];
 }
 
 export interface TuiLanguageKit {
     cancel: string;
-    done: string;
-    more: string;
-    showAll: string;
-    hide: string;
-    otherDate: string;
     /**
-     * [@string 'choose day', @param 'choose range']
+     * [@string 'Copy', @param 'Copied']
      */
-    mobileCalendarTexts: [string, string];
-    /**
-     * [@string 'from', @param 'to']
-     */
-    range: [string, string];
+    copyTexts: [string, string];
     /**
      * [@string 'plus', @param 'minus']
      */
     countTexts: [string, string];
-    time: {
-        'HH:MM': string;
-        'HH:MM:SS': string;
-        'HH:MM:SS.MSS': string;
-    };
     dateTexts: {
         DMY: string;
         MDY: string;
@@ -56,128 +42,142 @@ export interface TuiLanguageKit {
      * [@string 'B', @param 'KB', @param 'MB']
      */
     digitalInformationUnits: [string, string, string];
-    /**
-     * [@string 'Show password', @param 'Hide password']
-     */
-    passwordTexts: [string, string];
-    /**
-     * [@string 'Copy', @param 'Copied']
-     */
-    copyTexts: [string, string];
-    shortCalendarMonths: MONTHS_ARRAY;
-    /**
-     * [@string 'Previous page', @param 'Next page']
-     */
-    pagination: [string, string];
+    done: string;
     fileTexts: {
         loadingError: string;
         preview: string;
         remove: string;
     };
+    hide: string;
     inputFileTexts: {
-        defaultLabelSingle: string;
         defaultLabelMultiple: string;
-        defaultLinkSingle: string;
+        defaultLabelSingle: string;
         defaultLinkMultiple: string;
-        maxSizeRejectionReason: string;
-        formatRejectionReason: string;
+        defaultLinkSingle: string;
         drop: string;
         dropMultiple: string;
+        formatRejectionReason: string;
+        maxSizeRejectionReason: string;
     };
+    /**
+     * [@string 'choose day', @param 'choose range']
+     */
+    mobileCalendarTexts: [string, string];
+    more: string;
     multiSelectTexts: {
         all: string;
         none: string;
     };
+    otherDate: string;
+    /**
+     * [@string 'Previous page', @param 'Next page']
+     */
+    pagination: [string, string];
+    /**
+     * [@string 'Show password', @param 'Hide password']
+     */
+    passwordTexts: [string, string];
     prompt: {
-        yes: string;
         no: string;
+        yes: string;
+    };
+    /**
+     * [@string 'from', @param 'to']
+     */
+    range: [string, string];
+    shortCalendarMonths: MONTHS_ARRAY;
+    showAll: string;
+    time: {
+        'HH:MM': string;
+        'HH:MM:SS': string;
+        'HH:MM:SS.MSS': string;
     };
 }
 
 export interface TuiLanguageCommerce {
     /**
-     * Short and full card number text
-     * [@string 'Number', @string 'Card number']
-     */
-    cardNumber: [string, string];
-    /**
      * Short and full expiry text
      * [@string 'Expiry', @string 'Expiry date']
      */
     cardExpiry: [string, string];
+    /**
+     * Short and full card number text
+     * [@string 'Number', @string 'Card number']
+     */
+    cardNumber: [string, string];
 }
 
 export interface TuiLanguageTable {
+    paginationTexts: {
+        linesPerPage: string;
+        of: string;
+        pages: string;
+    };
     /**
      * 'Show/hide' button title
      */
     showHideText: string;
-    paginationTexts: {
-        pages: string;
-        linesPerPage: string;
-        of: string;
-    };
 }
 
 export interface TuiLanguageEditor {
     colorSelectorModeNames: [string, string];
-    toolbarTools: {
-        undo: string;
-        redo: string;
-        font: string;
-        fontStyle: string;
-        fontSize: string;
-        bold: string;
-        italic: string;
-        underline: string;
-        strikeThrough: string;
-        justify: string;
-        justifyLeft: string;
-        justifyCenter: string;
-        justifyRight: string;
-        justifyFull: string;
-        list: string;
-        indent: string;
-        outdent: string;
-        unorderedList: string;
-        orderedList: string;
-        quote: string;
-        foreColor: string;
-        hiliteColor: string;
-        backColor: string;
-        clear: string;
-        link: string;
-        attach: string;
-        tex: string;
-        code: string;
-        image: string;
-        insertHorizontalRule: string;
-        superscript: string;
-        subscript: string;
-        insertTable: string;
-        insertGroup: string;
-        insertAnchor: string;
-        removeGroup: string;
-        hiliteGroup: string;
-        mergeCells: string;
-        splitCells: string;
-        rowsColumnsManaging: string;
-        cellColor: string;
-        setDetails: string;
-        removeDetails: string;
-    };
+    editorCodeOptions: [string, string];
     editorEditLink: {
-        urlExample: string;
         anchorExample: string;
+        urlExample: string;
+    };
+    editorFontOptions: {
+        large: string;
+        normal: string;
+        small: string;
+        subtitle: string;
+        title: string;
     };
     editorTableCommands: [[string, string], [string, string], [string, string]];
-    editorCodeOptions: [string, string];
-    editorFontOptions: {
-        small: string;
-        normal: string;
-        large: string;
-        title: string;
-        subtitle: string;
+    toolbarTools: {
+        attach: string;
+        backColor: string;
+        bold: string;
+        cellColor: string;
+        clear: string;
+        code: string;
+        font: string;
+        fontSize: string;
+        fontStyle: string;
+        foreColor: string;
+        hiliteColor: string;
+        hiliteGroup: string;
+        image: string;
+        indent: string;
+        insertAnchor: string;
+        insertGroup: string;
+        insertHorizontalRule: string;
+        insertTable: string;
+        italic: string;
+        justify: string;
+        justifyCenter: string;
+        justifyFull: string;
+        justifyLeft: string;
+        justifyRight: string;
+        link: string;
+        list: string;
+        mergeCells: string;
+        orderedList: string;
+        outdent: string;
+        quote: string;
+        redo: string;
+        removeDetails: string;
+        removeGroup: string;
+        rowsColumnsManaging: string;
+        setDetails: string;
+        splitCells: string;
+        strikeThrough: string;
+        subscript: string;
+        superscript: string;
+        tex: string;
+        underline: string;
+        undo: string;
+        unorderedList: string;
     };
 }
 
@@ -186,9 +186,9 @@ export interface TuiLanguagePreview {
         rotate: string;
     };
     zoomTexts: {
-        zoomOut: string;
-        zoomIn: string;
         reset: string;
+        zoomIn: string;
+        zoomOut: string;
     };
 }
 

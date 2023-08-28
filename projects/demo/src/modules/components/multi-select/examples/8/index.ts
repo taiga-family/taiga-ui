@@ -10,12 +10,12 @@ import {
 import {tuiItemsHandlersProvider} from '@taiga-ui/kit';
 
 interface Employee {
-    readonly id: number;
-    readonly name: string;
     readonly dept: {
         readonly id: number;
         readonly title: string;
     };
+    readonly id: number;
+    readonly name: string;
 }
 
 const STRINGIFY_EMPLOYEE: TuiStringHandler<

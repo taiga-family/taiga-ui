@@ -2,12 +2,12 @@ import {tuiRawLoad, tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
 
 interface TuiProjectFiles {
     angularJson: string;
-    tsconfig: string;
-    mainTs: string;
-    indexHtml: string;
-    polyfills: string;
     appModuleTs: string;
+    indexHtml: string;
+    mainTs: string;
+    polyfills: string;
     styles: string;
+    tsconfig: string;
 }
 
 export abstract class AbstractTuiStackblitzResourcesLoader {

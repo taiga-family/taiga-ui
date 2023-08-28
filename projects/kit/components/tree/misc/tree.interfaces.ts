@@ -23,6 +23,6 @@ export interface TuiTreeAccessor<T> {
 }
 
 export interface TuiTreeLoader<T> {
-    loadChildren(item: T): Observable<T[]>;
     hasChildren(item: T): boolean;
+    loadChildren(item: T): Observable<T[]>;
 }

@@ -9,9 +9,9 @@ export function setupProgressLogger({
     prefix = ``,
     tabs = 2,
 }: {
-    total: number;
     prefix?: string;
     tabs?: number;
+    total: number;
 }): (message: string, incrementIndex?: boolean) => void {
     let i = 1;
 

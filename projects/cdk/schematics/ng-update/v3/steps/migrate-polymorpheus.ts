@@ -20,9 +20,9 @@ export function migratePolymorpheus({
     fileSystem,
     recorder,
 }: {
-    resource: TemplateResource;
-    recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
+    recorder: UpdateRecorder;
+    resource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
@@ -72,9 +72,9 @@ function insertPolymorpheus({
     recorder,
     templateOffset,
 }: {
-    element: Element;
     contentVal: string;
     contextVal?: string;
+    element: Element;
     recorder: UpdateRecorder;
     templateOffset: number;
 }): void {
@@ -122,12 +122,12 @@ function insertPolymorpheusWithDefault({
     contentVal,
     contextVal,
 }: {
-    template: string;
-    defaultTemplateEl: Element;
-    recorder: UpdateRecorder;
-    templateOffset: number;
     contentVal: string;
     contextVal?: string;
+    defaultTemplateEl: Element;
+    recorder: UpdateRecorder;
+    template: string;
+    templateOffset: number;
 }): void {
     const templateVar = defaultTemplateEl.attrs.find(attr =>
         attr.name.startsWith(`let-`),

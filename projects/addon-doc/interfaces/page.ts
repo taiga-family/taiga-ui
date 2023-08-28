@@ -4,9 +4,9 @@ export interface TuiDocPageBase {
 }
 
 export interface TuiDocPage extends TuiDocPageBase {
-    readonly route: string;
     readonly fragment?: string;
     readonly keywords?: string;
+    readonly route: string;
 }
 
 export interface TuiDocPageGroup extends TuiDocPageBase {
@@ -24,7 +24,7 @@ export const TUI_EXAMPLE_PRIMARY_FILE_NAME = {
 export type TuiDocExample =
     | Record<string, RawLoaderContent>
     | {
-          [TUI_EXAMPLE_PRIMARY_FILE_NAME.TS]?: string;
           [TUI_EXAMPLE_PRIMARY_FILE_NAME.HTML]?: string;
           [TUI_EXAMPLE_PRIMARY_FILE_NAME.LESS]?: string;
+          [TUI_EXAMPLE_PRIMARY_FILE_NAME.TS]?: string;
       };

@@ -5,8 +5,8 @@ const DURATION = {params: {duration: 300}};
 const STAGGER = 300;
 
 export interface TuiDurationOptions {
-    value: string;
     params: {duration: number};
+    value: string;
 }
 
 export const tuiHeightCollapse = trigger(`tuiHeightCollapse`, [

@@ -50,9 +50,9 @@ function migrateExpand({
     recorder,
     fileSystem,
 }: {
-    resource: TemplateResource;
-    recorder: UpdateRecorder;
     fileSystem: DevkitFileSystem;
+    recorder: UpdateRecorder;
+    resource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);

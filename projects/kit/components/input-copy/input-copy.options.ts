@@ -4,10 +4,10 @@ import {TuiHintDirection, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputCopyOptions {
-    readonly successMessage: PolymorpheusContent;
-    readonly messageDirection: TuiHintDirection;
-    readonly messageAppearance: string;
     readonly icon: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>>;
+    readonly messageAppearance: string;
+    readonly messageDirection: TuiHintDirection;
+    readonly successMessage: PolymorpheusContent;
 }
 
 export const TUI_INPUT_COPY_DEFAULT_OPTIONS: TuiInputCopyOptions = {

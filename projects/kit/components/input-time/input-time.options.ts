@@ -12,11 +12,11 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputTimeOptions {
     readonly icon: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>>;
-    readonly mode: TuiTimeMode;
-    readonly postfix: string;
-    readonly maxValues: Record<TuiTimeFormatParts, number>;
     readonly itemSize: TuiSizeL | TuiSizeS;
+    readonly maxValues: Record<TuiTimeFormatParts, number>;
+    readonly mode: TuiTimeMode;
     readonly nativePicker?: boolean;
+    readonly postfix: string;
 }
 
 export const TUI_INPUT_TIME_DEFAULT_OPTIONS: TuiInputTimeOptions = {
