@@ -1,4 +1,6 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
+import {SafeResourceUrl} from '@angular/platform-browser';
+import {tuiIsString} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
@@ -17,18 +19,22 @@ export class TuiAvatarComponent {
     round = false;
 
     @Input()
-    src: string | null = null;
+    src: SafeResourceUrl | string | null = null;
 
     @HostBinding('class._img')
     get img(): boolean {
         return this.type === 'img';
     }
 
-    get value(): string {
+    get value(): SafeResourceUrl | string {
         return this.src || '';
     }
 
     get type(): 'content' | 'icon' | 'img' | 'text' {
+        if (!!this.value && !tuiIsString(this.value)) {
+            return 'img';
+        }
+
         if (this.value.startsWith('tuiIcon') || this.value.endsWith('.svg')) {
             return 'icon';
         }
