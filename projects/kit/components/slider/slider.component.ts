@@ -43,6 +43,9 @@ import {TUI_SLIDER_OPTIONS, TuiSliderOptions} from './slider.options';
          */
         '(input)': '0',
         '[style.--tui-slider-track-color]': 'options.trackColor',
+        '[style.--tui-slider-thumb-color]': 'options.thumbColor',
+        '[style.--tui-slider-thumb-hover-color]': 'options.thumbHoverColor',
+        '[style.--tui-slider-thumb-active-color]': 'options.thumbActiveColor',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

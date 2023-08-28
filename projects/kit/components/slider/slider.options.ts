@@ -5,11 +5,17 @@ import {TuiSizeS} from '@taiga-ui/core';
 export interface TuiSliderOptions {
     readonly size: TuiSizeS;
     readonly trackColor: string;
+    readonly thumbColor: string;
+    readonly thumbHoverColor: string;
+    readonly thumbActiveColor: string;
 }
 
 export const TUI_SLIDER_DEFAULT_OPTIONS: TuiSliderOptions = {
     size: `m`,
     trackColor: `var(--tui-base-03)`,
+    thumbColor: `currentColor`,
+    thumbHoverColor: `var(--tui-primary-hover)`,
+    thumbActiveColor: `var(--tui-primary-active)`,
 };
 
 /**

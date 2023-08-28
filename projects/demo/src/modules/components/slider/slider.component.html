@@ -119,6 +119,10 @@
                     [segments]="segments"
                     [size]="size"
                     [step]="step"
+                    [style.--tui-slider-thumb-active-color]="thumbActiveColor"
+                    [style.--tui-slider-thumb-color]="thumbColor"
+                    [style.--tui-slider-thumb-hover-color]="thumbHoverColor"
+                    [style.--tui-slider-track-color]="trackColor"
                 />
             </ng-template>
         </tui-doc-demo>
@@ -205,6 +209,36 @@
                 (use
                 <code>1</code>
                 for no ticks)
+            </ng-template>
+        </tui-doc-documentation>
+        <tui-doc-documentation heading="CSS customization">
+            <ng-template
+                documentationPropertyName="--tui-slider-track-color"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="trackColor"
+            >
+                Color of slider track line
+            </ng-template>
+            <ng-template
+                documentationPropertyName="--tui-slider-thumb-color"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="thumbColor"
+            >
+                Color of slider thumb
+            </ng-template>
+            <ng-template
+                documentationPropertyName="--tui-slider-thumb-hover-color"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="thumbHoverColor"
+            >
+                Color of slider thumb when that is being hovered by the user
+            </ng-template>
+            <ng-template
+                documentationPropertyName="--tui-slider-thumb-active-color"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="thumbActiveColor"
+            >
+                Color of slider thumb when that is being activated by the user
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

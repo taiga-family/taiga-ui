@@ -1,7 +1,8 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeS} from '@taiga-ui/core';
+import {TUI_SLIDER_OPTIONS, TuiSliderOptions} from '@taiga-ui/kit';
 
 @Component({
     selector: 'example-slider',
@@ -17,6 +18,10 @@ export class ExampleTuiSliderComponent {
     step = 1;
     size: TuiSizeS = this.sizeVariants[1];
     segments = this.max;
+    trackColor = this.options.trackColor;
+    thumbColor = this.options.thumbColor;
+    thumbHoverColor = this.options.thumbHoverColor;
+    thumbActiveColor = this.options.thumbActiveColor;
 
     get disabled(): boolean {
         return this.control.disabled;
@@ -71,4 +76,6 @@ export class ExampleTuiSliderComponent {
         LESS: import('./examples/6/index.less?raw'),
         TypeScript: import('./examples/6/index.ts?raw'),
     };
+
+    constructor(@Inject(TUI_SLIDER_OPTIONS) private readonly options: TuiSliderOptions) {}
 }
