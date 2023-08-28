@@ -82,6 +82,7 @@
             <tui-money
                 [colored]="colored"
                 [currency]="currency"
+                [currencyAlign]="currencyAlign"
                 [decimal]="decimal"
                 [precision]="precision"
                 [sign]="sign"
@@ -107,6 +108,16 @@
                 [(documentationPropertyValue)]="currency"
             >
                 Currency
+            </ng-template>
+
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="currencyAlign"
+                documentationPropertyType="TuiHorizontalDirection"
+                [documentationPropertyValues]="currencyAlignVariants"
+                [(documentationPropertyValue)]="currencyAlign"
+            >
+                Position of currency symbol
             </ng-template>
 
             <ng-template

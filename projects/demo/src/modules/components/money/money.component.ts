@@ -7,7 +7,7 @@ import {
     TuiMoneySign,
 } from '@taiga-ui/addon-commerce';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiDecimal} from '@taiga-ui/core';
+import {TuiDecimal, TuiHorizontalDirection} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-tui-money',
@@ -63,7 +63,10 @@ export class ExampleTuiMoneyComponent {
         'UGX',
     ];
 
+    currencyAlignVariants: TuiHorizontalDirection[] = ['left', 'right'];
+
     currency = this.currencyVariants[0];
+    currencyAlign: TuiHorizontalDirection = 'right';
 
     readonly valueVariants: readonly number[] = [
         -12345.1, 237, 1234, 123123414.0234, 0, 23724.999999999996,

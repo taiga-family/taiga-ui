@@ -33,6 +33,9 @@ export class TuiMoneyComponent {
     currency: TuiCurrencyVariants = this.options.currency;
 
     @Input()
+    currencyAlign = this.options.currencyAlign;
+
+    @Input()
     sign: TuiMoneySign = this.options.sign;
 
     @Input()
@@ -64,6 +67,10 @@ export class TuiMoneyComponent {
             (this.signSymbol === CHAR_PLUS ||
                 (this.value > 0 && this.sign !== 'force-negative'))
         );
+    }
+
+    get alignRight(): boolean {
+        return this.currencyAlign === 'right';
     }
 
     @HostBinding('class._inherit-color')
