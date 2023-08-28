@@ -14,12 +14,12 @@ const BRAND_LOGOS = [
 ];
 
 @Component({
-    selector: 'example-tui-card',
-    templateUrl: './card.template.html',
-    styleUrls: ['./card.style.less'],
+    selector: 'example-tui-thumbnail-card',
+    templateUrl: './thumbnail-card.template.html',
+    styleUrls: ['./thumbnail-card.style.less'],
     changeDetection,
 })
-export class ExampleTuiCardComponent {
+export class ExampleTuiThumbnailCardComponent {
     readonly exampleModule = import('./examples/import/import-module.md?raw');
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
     readonly exampleCustomizeStyles = import('./examples/import/customize-styles.md?raw');

@@ -2,7 +2,10 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiCardModule, TuiInputCardGroupedModule} from '@taiga-ui/addon-commerce';
+import {
+    TuiInputCardGroupedModule,
+    TuiThumbnailCardModule,
+} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiDataListModule,
@@ -29,7 +32,7 @@ import {ExampleTuiInputCardGroupedComponent} from './input-card-grouped.componen
         TuiErrorModule,
         TuiFieldErrorPipeModule,
         TuiDataListModule,
-        TuiCardModule,
+        TuiThumbnailCardModule,
         TuiLabelModule,
         TuiSvgModule,
         CommonModule,

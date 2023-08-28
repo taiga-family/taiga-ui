@@ -252,7 +252,8 @@ export const ROUTES: Routes = [
     {
         path: `components/card`,
         loadChildren: async () =>
-            (await import(`../components/card/card.module`)).ExampleTuiCardModule,
+            (await import(`../components/thumbnail-card/thumbnail-card.module`))
+                .ExampleTuiThumbnailCardModule,
         data: {
             title: `Card`,
         },

@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiCardModule} from '@taiga-ui/addon-commerce';
+import {TuiThumbnailCardModule} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiFocusableModule} from '@taiga-ui/cdk';
 import {
@@ -29,7 +29,7 @@ import {TuiButtonExample6} from './examples/6';
     imports: [
         CommonModule,
         FormsModule,
-        TuiCardModule,
+        TuiThumbnailCardModule,
         TuiAvatarModule,
         TuiSvgModule,
         TuiToggleModule,

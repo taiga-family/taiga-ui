@@ -3,10 +3,10 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-card-example-2',
+    selector: 'tui-thumbnail-card-example-1',
     templateUrl: './index.html',
-    styleUrls: ['index.less'],
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
-export class TuiCardExample2 {}
+export class TuiThumbnailCardExample1 {}
