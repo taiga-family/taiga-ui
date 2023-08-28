@@ -1,0 +1,26 @@
+@import 'taiga-ui-local';
+
+.horizontal {
+    width: 31.25rem;
+}
+
+.vertical {
+    width: 12.5rem;
+    height: 12.5rem;
+}
+
+.vertical,
+.horizontal {
+    .transition(~'box-shadow, background');
+    position: relative;
+    background: var(--tui-base-01);
+    color: var(--tui-text-01);
+    box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--tui-base-03);
+    scroll-behavior: smooth;
+}
+
+.title {
+    font: var(--tui-font-heading-5);
+    margin: 0 0 1rem;
+}
