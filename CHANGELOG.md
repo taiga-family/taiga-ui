@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.42.0](https://github.com/taiga-family/taiga-ui/compare/v2.99.0...v3.42.0) (2023-08-28)
+
+### Features
+
+- **addon-commerce:** rename `tui-card` to `tui-thumbnail-card`
+  ([#5171](https://github.com/taiga-family/taiga-ui/issues/5171))
+  ([331bed1](https://github.com/taiga-family/taiga-ui/commit/331bed1f26ab361f01c847dfdbea2969015b860b))
+- **addon-doc:** support remote url for code source ([#5200](https://github.com/taiga-family/taiga-ui/issues/5200))
+  ([ee528fa](https://github.com/taiga-family/taiga-ui/commit/ee528fa25b0217d4522c9656ad3dce6eb6768649))
+- **core:** load icons relative base url ([#5203](https://github.com/taiga-family/taiga-ui/issues/5203))
+  ([19d3440](https://github.com/taiga-family/taiga-ui/commit/19d3440ed612bfece3c83715a247aa562b996be1))
+- **experimental:** add pin ([#5185](https://github.com/taiga-family/taiga-ui/issues/5185))
+  ([882266f](https://github.com/taiga-family/taiga-ui/commit/882266f2e7e48b708af9f029869ab0f628c35ad3))
+- **kit:** `Tiles` maintain dragged position when page is scrolled
+  ([#5155](https://github.com/taiga-family/taiga-ui/issues/5155))
+  ([7a8a13e](https://github.com/taiga-family/taiga-ui/commit/7a8a13e3ac7ea7d9dcee257fe36015574152c1eb))
+
+### Bug Fixes
+
+- **schematics:** migrate wysiwyg icons ([#5216](https://github.com/taiga-family/taiga-ui/issues/5216))
+  ([b639479](https://github.com/taiga-family/taiga-ui/commit/b639479fc2800fa1a063309eab8e438f5d1ce7f6))
+
 ### [3.41.1](https://github.com/taiga-family/taiga-ui/compare/v3.41.0...v3.41.1) (2023-08-16)
 
 ### Bug Fixes
