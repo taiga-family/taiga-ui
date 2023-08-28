@@ -16,7 +16,7 @@ jobs:
 
       - name: Get last tag
         id: info
-        run: echo "tag=$(git describe HEAD --abbrev=0)" >> $GITHUB_OUTPUT
+        run: echo "tag=$(git tag --list --sort=-authordate --merged | head -n1)" >> $GITHUB_OUTPUT
 
       - name: Show an error if the tag does not match
         if:
