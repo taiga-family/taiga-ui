@@ -1,0 +1,89 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiPin] {
+    .clearbtn();
+
+    --t-pin-size: 2.25rem;
+    --tui-pin-background: var(--tui-primary);
+    position: relative;
+    display: inline-flex;
+    min-width: var(--t-pin-size);
+    min-height: var(--t-pin-size);
+    border-radius: var(--t-pin-size);
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--tui-pin-background);
+    color: var(--tui-accent-text);
+    justify-content: center;
+    text-decoration: none;
+
+    &._open {
+        --t-small-pin: 0.625rem;
+        --t-small-pin-gap: 0.1875rem;
+        background: transparent !important;
+
+        &:before {
+            content: '';
+            position: absolute;
+            bottom: 0.875rem;
+            width: 3.75rem;
+            height: 4.125rem;
+            margin-bottom: calc(var(--t-small-pin) + var(--t-small-pin-gap));
+            background-color: var(--tui-primary);
+            mask-image: url('data:image/svg+xml,<svg fill="none" height="66" viewBox="0 0 60 66" width="60" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M30.0002 0C13.4313 0 0 13.4726 0 30.0917C0 43.5901 9.46433 56.0206 22.6199 59.2986C27.481 60.5551 28.9938 65.275 28.9938 65.275C29.147 65.697 29.5453 66 30.0183 66C30.4909 66 30.8892 65.697 31.0408 65.275C31.0408 65.275 32.5552 60.5551 37.4162 59.2986C50.4927 56.0529 60 44.2105 60 30.0917C60 13.4726 46.5687 0 30.0002 0Z" fill="currentColor" fill-rule="evenodd" /></svg>');
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            display: flex;
+            background: var(--tui-primary);
+            color: inherit;
+            width: var(--t-small-pin);
+            height: var(--t-small-pin);
+            border: 0.125rem solid var(--tui-base-02);
+            box-sizing: border-box;
+            align-self: center;
+            border-radius: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    & > * {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--t-pin-size);
+        height: var(--t-pin-size);
+        border-radius: inherit;
+        box-sizing: border-box;
+        line-height: 0.8rem;
+        background: var(--tui-pin-background);
+        box-shadow: 0 0 0 0.125rem var(--tui-base-02);
+        font-size: 0.75rem;
+
+        svg {
+            max-width: 1.25rem;
+            max-height: 1.25rem;
+        }
+    }
+
+    &._open > * {
+        position: absolute;
+        margin-bottom: 5.625rem;
+        border: none !important;
+        font-size: 1.0625rem;
+        width: 3.25rem;
+        height: 3.25rem;
+
+        svg {
+            max-width: 2.125rem;
+            max-height: 2.125rem;
+        }
+    }
+}

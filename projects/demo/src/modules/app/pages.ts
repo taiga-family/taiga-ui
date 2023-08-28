@@ -987,6 +987,12 @@ export const pages: TuiDocPages = [
         keywords: `card, block, карточка, блок`,
         route: `/experimental/card`,
     },
+    {
+        section: `Experimental`,
+        title: `Pin`,
+        keywords: `пин, pin, map, карта, точка, dot, point`,
+        route: `/experimental/pin`,
+    },
     // Charts
     {
         section: `Charts`,
