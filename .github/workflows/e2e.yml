@@ -117,7 +117,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup-node@1.10.0
 
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install --with-deps chromium
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/restore@v3.3.1
