@@ -23,11 +23,8 @@ export class TuiSlideInExample {
     speed = 0;
 
     isLeft = false;
-
     isTop = false;
-
     isRight = false;
-
     isBottom = false;
 
     @tuiPure
@@ -37,11 +34,8 @@ export class TuiSlideInExample {
 
     reset(): void {
         this.isLeft = false;
-
         this.isTop = false;
-
         this.isRight = false;
-
         this.isBottom = false;
     }
 }
