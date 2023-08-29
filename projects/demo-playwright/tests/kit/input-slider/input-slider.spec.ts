@@ -2,7 +2,7 @@ import {expect, test} from '@playwright/test';
 // eslint-disable-next-line @taiga-ui/experience/no-deep-imports
 import {CHAR_MINUS} from '@taiga-ui/cdk/constants';
 
-import {TuiDocumentationPagePO, tuiGoto, TuiInputSliderPo} from '../../../utils';
+import {TuiDocumentationPagePO, tuiGoto, TuiInputSliderPO} from '../../../utils';
 
 test.describe(`InputSlider`, () => {
     test.use({viewport: {width: 400, height: 500}});
@@ -17,7 +17,7 @@ test.describe(`InputSlider`, () => {
 
         test(`typing new value inside text input also change slider position`, async () => {
             const example = documentationPage.getExample(`#base`);
-            const inputSlider = new TuiInputSliderPo(example.locator(`tui-input-slider`));
+            const inputSlider = new TuiInputSliderPO(example.locator(`tui-input-slider`));
 
             const valueToSliderStep = [
                 {value: 5, step: 0},
@@ -40,7 +40,7 @@ test.describe(`InputSlider`, () => {
 
         test(`pressing ArrowUp/ArrowDown change textInput value and slider position`, async () => {
             const example = documentationPage.getExample(`#right-label`);
-            const inputSlider = new TuiInputSliderPo(example.locator(`tui-input-slider`));
+            const inputSlider = new TuiInputSliderPO(example.locator(`tui-input-slider`));
 
             await inputSlider.textfield.clear();
             await inputSlider.textfield.fill(`0`);
@@ -75,7 +75,7 @@ test.describe(`InputSlider`, () => {
             );
 
             const {apiPageExample} = new TuiDocumentationPagePO(page);
-            const inputSlider = new TuiInputSliderPo(
+            const inputSlider = new TuiInputSliderPO(
                 apiPageExample.locator(`tui-input-slider`),
             );
 
@@ -103,7 +103,7 @@ test.describe(`InputSlider`, () => {
 
     test.describe(`[min] prop`, () => {
         test.describe(`positive numbers`, () => {
-            let inputSlider!: TuiInputSliderPo;
+            let inputSlider!: TuiInputSliderPO;
 
             test.beforeEach(async ({page}) => {
                 await tuiGoto(
@@ -112,7 +112,7 @@ test.describe(`InputSlider`, () => {
                 );
                 const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-                inputSlider = new TuiInputSliderPo(apiPageExample);
+                inputSlider = new TuiInputSliderPO(apiPageExample);
 
                 await inputSlider.textfield.clear();
             });
@@ -140,7 +140,7 @@ test.describe(`InputSlider`, () => {
         });
 
         test.describe(`negative numbers`, () => {
-            let inputSlider!: TuiInputSliderPo;
+            let inputSlider!: TuiInputSliderPO;
 
             test.beforeEach(async ({page}) => {
                 await tuiGoto(
@@ -150,7 +150,7 @@ test.describe(`InputSlider`, () => {
 
                 const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-                inputSlider = new TuiInputSliderPo(apiPageExample);
+                inputSlider = new TuiInputSliderPO(apiPageExample);
 
                 await inputSlider.textfield.clear();
             });
@@ -167,7 +167,7 @@ test.describe(`InputSlider`, () => {
         });
 
         test.describe(`if [min]-property equals to [max]-property`, () => {
-            let inputSlider!: TuiInputSliderPo;
+            let inputSlider!: TuiInputSliderPO;
 
             test.beforeEach(async ({page}) => {
                 await tuiGoto(
@@ -177,7 +177,7 @@ test.describe(`InputSlider`, () => {
 
                 const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-                inputSlider = new TuiInputSliderPo(apiPageExample);
+                inputSlider = new TuiInputSliderPO(apiPageExample);
 
                 await inputSlider.textfield.clear();
                 await inputSlider.textfield.fill(`25`);
