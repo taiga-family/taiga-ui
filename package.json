@@ -132,7 +132,7 @@
         "ng-packagr": "12.2.7",
         "nx": "16.7.4",
         "nx-cloud": "16.3.0",
-        "prettier": "3.0.2",
+        "prettier": "3.0.3",
         "rollup": "2.79.1",
         "standard-version": "8.0.2",
         "stylelint": "15.10.3",
