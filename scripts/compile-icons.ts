@@ -14,9 +14,9 @@ import {
     const allToCompilePath = path.resolve(`${projectPath}/all-to-compile.ts`);
     const resultAllFile = path.resolve(`${projectPath}/all.ts`);
     const config = require(require.resolve(`@taiga-ui/prettier-config`)) as Config;
-    const svg = require(require.resolve(
-        `@taiga-ui/prettier-config/options/svg`,
-    )) as Config;
+    const svg = require(
+        require.resolve(`@taiga-ui/prettier-config/options/svg`),
+    ) as Config;
 
     tuiPrepareAllToCompileFile(iconsSrc, allToCompilePath);
 
