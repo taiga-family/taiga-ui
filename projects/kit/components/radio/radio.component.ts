@@ -32,11 +32,11 @@ import {TUI_RADIO_OPTIONS, TuiRadioOptions} from './radio.options';
     templateUrl: './radio.template.html',
     styleUrls: ['./radio.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [tuiScaleIn],
     providers: [
         tuiAsFocusableItemAccessor(TuiRadioComponent),
         tuiAsControl(TuiRadioComponent),
     ],
-    animations: [tuiScaleIn],
 })
 export class TuiRadioComponent<T>
     extends AbstractTuiNullableControl<T>

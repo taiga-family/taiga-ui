@@ -224,7 +224,7 @@ export class TuiMultiSelectComponent<T>
     }
 
     handleOption(option: T): void {
-        const {value, identityMatcher} = this;
+        const {identityMatcher, value} = this;
         const index = value.findIndex(item => identityMatcher(item, option));
 
         this.value =

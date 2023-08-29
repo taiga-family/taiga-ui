@@ -133,7 +133,7 @@ export class TuiDocExampleComponent {
 
     private setFragmentWithoutRedirect(id: string | null): void {
         const url = this.router
-            .createUrlTree([], {relativeTo: this.route, fragment: id || ''})
+            .createUrlTree([], {fragment: id || '', relativeTo: this.route})
             .toString();
 
         this.ngLocation.go(url);

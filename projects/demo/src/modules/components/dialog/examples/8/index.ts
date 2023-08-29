@@ -8,9 +8,9 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 @Component({
     selector: 'tui-dialog-example-8',
     templateUrl: './index.html',
-    providers: [TuiDialogFormService],
     changeDetection,
     encapsulation,
+    providers: [TuiDialogFormService],
 })
 export class TuiDialogExampleComponent8 {
     value = '';
@@ -27,10 +27,10 @@ export class TuiDialogExampleComponent8 {
 
     onClick(content: PolymorpheusContent): void {
         const closeable = this.dialogForm.withPrompt({
-            label: 'Are you sure?',
             data: {
                 content: 'Your data will be <strong>lost</strong>',
             },
+            label: 'Are you sure?',
         });
 
         this.dialogs.open(content, {closeable, dismissible: closeable}).subscribe({

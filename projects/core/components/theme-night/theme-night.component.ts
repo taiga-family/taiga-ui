@@ -5,7 +5,7 @@ import {AbstractTuiThemeSwitcher} from '@taiga-ui/cdk';
     selector: 'tui-theme-night',
     template: '',
     styleUrls: ['./theme-night.style.less'],
-    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
 })
 export class TuiThemeNightComponent extends AbstractTuiThemeSwitcher {}

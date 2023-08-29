@@ -140,10 +140,10 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
 
     private updateRenderedRange(viewport: CdkVirtualScrollViewport): void {
         const offset = viewport.measureScrollOffset();
-        const {start, end} = viewport.getRenderedRange();
+        const {end, start} = viewport.getRenderedRange();
         const viewportSize = viewport.getViewportSize();
         const dataLength = viewport.getDataLength();
-        const newRange = {start, end};
+        const newRange = {end, start};
         const firstVisibleIndex = this.getIndexForOffset(offset);
         const startBuffer = offset - this.getOffsetForIndex(start);
 

@@ -115,7 +115,7 @@ describe(`ComboBox`, () => {
             providers: [
                 {
                     provide: TUI_ARROW_MODE,
-                    useValue: {interactive: TUI_ARROW, disabled: ``},
+                    useValue: {disabled: ``, interactive: TUI_ARROW},
                 },
             ],
         });

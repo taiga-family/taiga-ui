@@ -68,34 +68,34 @@ xdescribe(`TuiZoom directive`, () => {
         eventType: 'touchend' | 'touchmove' | 'touchstart',
     ): void {
         const touchObj1 = new Touch({
-            identifier: Date.now(),
-            target: element,
             clientX: x,
             clientY: y,
+            force: 0.5,
+            identifier: Date.now(),
             radiusX: 2.5,
             radiusY: 2.5,
             rotationAngle: 10,
-            force: 0.5,
+            target: element,
         });
 
         const touchObj2 = new Touch({
-            identifier: Date.now(),
-            target: element,
             clientX: x2,
             clientY: y2,
+            force: 0.5,
+            identifier: Date.now(),
             radiusX: 2.5,
             radiusY: 2.5,
             rotationAngle: 10,
-            force: 0.5,
+            target: element,
         });
 
         const touchEvent = new TouchEvent(eventType, {
-            cancelable: true,
             bubbles: true,
-            touches: [touchObj1, touchObj2],
-            targetTouches: [],
+            cancelable: true,
             changedTouches: [touchObj1, touchObj2],
             shiftKey: true,
+            targetTouches: [],
+            touches: [touchObj1, touchObj2],
         });
 
         element.dispatchEvent(touchEvent);

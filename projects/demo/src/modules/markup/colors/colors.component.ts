@@ -15,8 +15,8 @@ import {
     selector: 'colors',
     templateUrl: './colors.template.html',
     styleUrls: ['./colors.style.less'],
-    encapsulation: ViewEncapsulation.None,
     changeDetection,
+    encapsulation: ViewEncapsulation.None,
 })
 export class ColorsComponent {
     readonly basicImportsLess = import('./examples/import/basic-imports-less.md?raw');

@@ -116,8 +116,8 @@ describe(`Notification with TUI_NOTIFICATION_OPTIONS`, () => {
                     provide: TUI_NOTIFICATION_OPTIONS,
                     useValue: {
                         ...TUI_NOTIFICATION_DEFAULT_OPTIONS,
-                        status,
                         icon: null,
+                        status,
                     },
                 },
             ],

@@ -14,9 +14,9 @@ export class TuiIntegerPartPipe implements PipeTransform {
 
     transform(value: number, precision = 2): string {
         const rounded = tuiRoundWith({
-            value: Math.abs(Number(value)),
-            precision,
             method: this.numberFormat.rounding,
+            precision,
+            value: Math.abs(Number(value)),
         });
 
         return tuiFormatNumber(rounded, {

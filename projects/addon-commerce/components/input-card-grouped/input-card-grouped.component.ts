@@ -279,12 +279,12 @@ export class TuiInputCardGroupedComponent
     }
 
     handleOption(option: Partial<TuiCard>): void {
-        const {card = '', expire = '', cvc = ''} = option;
+        const {card = '', cvc = '', expire = ''} = option;
         const {bin} = this;
         const element =
             (!expire && this.inputExpire?.nativeElement) || this.inputCVC?.nativeElement;
 
-        this.value = {card, expire, cvc};
+        this.value = {card, cvc, expire};
         this.updateBin(bin);
         this.open = false;
         this.expireInert = !!expire;
@@ -293,7 +293,7 @@ export class TuiInputCardGroupedComponent
     }
 
     onCardChange(card: string): void {
-        const {value, bin} = this;
+        const {bin, value} = this;
         const parsed = card.split(' ').join('');
 
         if (value && value.card === parsed) {
@@ -400,8 +400,8 @@ export class TuiInputCardGroupedComponent
     }
 
     private updateProperty(value: string, propName: 'card' | 'cvc' | 'expire'): void {
-        const {card = '', expire = '', cvc = ''} = this.value || {};
-        const newValue: TuiCard = {card, expire, cvc};
+        const {card = '', cvc = '', expire = ''} = this.value || {};
+        const newValue: TuiCard = {card, cvc, expire};
 
         newValue[propName] = value;
 

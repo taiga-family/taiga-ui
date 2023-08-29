@@ -30,9 +30,9 @@ export class TuiSheetService {
             const sheet: TuiSheet<any> = {
                 ...this.options,
                 ...options,
-                content,
-                completeWith,
                 $implicit,
+                completeWith,
+                content,
                 scroll$: EMPTY,
             };
             const focused = tuiGetNativeFocused(this.doc);

@@ -14,8 +14,8 @@ export class ExampleTuiScrollComponent {
     readonly exampleInjectService = import('./examples/import/inject-service.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 }

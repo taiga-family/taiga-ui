@@ -10,8 +10,8 @@ import {TuiAppearance, tuiButtonOptionsProvider} from '@taiga-ui/core';
     encapsulation,
     providers: [
         tuiButtonOptionsProvider({
-            shape: 'rounded',
             appearance: TuiAppearance.Outline,
+            shape: 'rounded',
             size: 'm',
         }),
     ],

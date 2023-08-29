@@ -12,7 +12,7 @@ export class TuiResizedDirective {
     readonly tuiResized = tuiTypedFromEvent(this.el.nativeElement, 'mousedown').pipe(
         tuiPreventDefault(),
         switchMap(() => {
-            const {width, right} = this.parentRef.nativeElement.getBoundingClientRect();
+            const {right, width} = this.parentRef.nativeElement.getBoundingClientRect();
 
             return tuiTypedFromEvent(this.doc, 'mousemove').pipe(
                 distinctUntilChanged(),

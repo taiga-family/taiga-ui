@@ -16,7 +16,7 @@ export function replaceEnums(options: TuiSchema, enums: ReplacementEnum[]): void
     !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing enums imports...`);
 
-    enums.forEach(({name, replaceValues, keepAsType}) =>
+    enums.forEach(({name, keepAsType, replaceValues}) =>
         replaceEnumWithString(name, replaceValues, keepAsType),
     );
 

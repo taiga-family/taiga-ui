@@ -128,7 +128,7 @@ export class TuiTime implements TuiTimeLike {
     /**
      * Shifts time by hours and minutes
      */
-    shift({hours = 0, minutes = 0, seconds = 0, ms = 0}: TuiTimeLike): TuiTime {
+    shift({hours = 0, minutes = 0, ms = 0, seconds = 0}: TuiTimeLike): TuiTime {
         const newMs = (1000 + this.ms + (ms % 1000)) % 1000;
 
         const secondsInMs = ms < 0 ? Math.ceil(ms / 1000) : Math.floor(ms / 1000);

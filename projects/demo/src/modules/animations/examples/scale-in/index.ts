@@ -17,13 +17,13 @@ export class TuiScaleInExample {
     speed = 0;
 
     readonly todoTasks = [
-        {title: 'Install Angular', completed: true},
-        {title: 'Install Taiga UI', completed: false},
-        {title: 'Look into "Getting Started"', completed: false},
+        {completed: true, title: 'Install Angular'},
+        {completed: false, title: 'Install Taiga UI'},
+        {completed: false, title: 'Look into "Getting Started"'},
     ];
 
     @tuiPure
     getAnimation(duration: number): TuiDurationOptions {
-        return {value: '', params: {duration}};
+        return {params: {duration}, value: ''};
     }
 }

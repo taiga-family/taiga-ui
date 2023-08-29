@@ -273,8 +273,8 @@ describe(`TuiTime`, () => {
             const increasedTime = time.shift({
                 hours: 1,
                 minutes: 1,
-                seconds: 1,
                 ms: 10,
+                seconds: 1,
             });
 
             expect(increasedTime.toString()).toBe(`07:37:02.010`);
@@ -285,8 +285,8 @@ describe(`TuiTime`, () => {
             const increasedTime = time.shift({
                 hours: -1,
                 minutes: -1,
-                seconds: -1,
                 ms: -10,
+                seconds: -1,
             });
 
             expect(increasedTime.toString()).toBe(`05:35:00.010`);
@@ -304,8 +304,8 @@ describe(`TuiTime`, () => {
         it(`with big seconds and ms number adding`, () => {
             const time = new TuiTime(6, 36, 1);
             const increasedTime = time.shift({
-                seconds: 60 * 10 + 5,
                 ms: 1000 * 60 * 60 + 1000 * 60 + 1000 + 10,
+                seconds: 60 * 10 + 5,
             });
 
             expect(increasedTime.toString()).toBe(`07:47:07.010`);
@@ -315,8 +315,8 @@ describe(`TuiTime`, () => {
             const time = new TuiTime(6, 36, 1);
             const increasedTime = time.shift({
                 minutes: 60 * 2 + 2,
-                seconds: 60 * 10 + 5,
                 ms: 1000 * 60 * 60 + 1000 * 60 + 1000 + 10,
+                seconds: 60 * 10 + 5,
             });
 
             expect(increasedTime.toString()).toBe(`09:49:07.010`);
@@ -326,8 +326,8 @@ describe(`TuiTime`, () => {
             const time = new TuiTime(6, 36, 1);
             const increasedTime = time.shift({
                 minutes: -60 * 2 - 2,
-                seconds: -60 * 10 - 5,
                 ms: -1000 * 60 * 60 - 1000 * 60 - 1000 - 10,
+                seconds: -60 * 10 - 5,
             });
 
             expect(increasedTime.toString()).toBe(`03:23:55.990`);

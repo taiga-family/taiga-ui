@@ -86,7 +86,7 @@ export class TuiPrimitiveCalendarComponent {
     };
 
     getItemState(item: TuiDay): TuiInteractiveState | null {
-        const {disabledItemHandler, pressedItem, hoveredItem} = this;
+        const {disabledItemHandler, hoveredItem, pressedItem} = this;
 
         if (disabledItemHandler(item)) {
             return TuiInteractiveState.Disabled;
@@ -104,7 +104,7 @@ export class TuiPrimitiveCalendarComponent {
     }
 
     getItemRange(item: TuiDay): TuiRangeState | null {
-        const {value, hoveredItem} = this;
+        const {hoveredItem, value} = this;
 
         if (!value) {
             return null;
@@ -152,7 +152,7 @@ export class TuiPrimitiveCalendarComponent {
     }
 
     itemIsInterval(day: TuiDay): boolean {
-        const {value, hoveredItem} = this;
+        const {hoveredItem, value} = this;
 
         if (value === null || value instanceof TuiDay) {
             return false;

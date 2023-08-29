@@ -13,12 +13,12 @@ export class IconsMappingComponent {
     readonly options = import('./examples/4/app.module.md?raw');
 
     readonly example1: TuiDocExample = {
-        HTML: import('./examples/1/index.html?raw'),
-        TypeScript: import('./examples/1/index.ts?raw'),
         // eslint-disable-next-line @taiga-ui/experience/strict-tui-doc-example
         './assets/icons/keyboard_arrow_right-24px.svg': import(
             '../../../assets/icons/keyboard_arrow_right-24px.svg?raw'
         ),
+        HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 
     readonly example2: TuiDocExample = {
@@ -29,10 +29,10 @@ export class IconsMappingComponent {
     };
 
     readonly example3: TuiDocExample = {
-        HTML: import('./examples/3/index.html?raw'),
-        TypeScript: import('./examples/3/index.ts?raw'),
         // eslint-disable-next-line @taiga-ui/experience/strict-tui-doc-example
         './assets/icons/polygon.svg': import('../../../assets/icons/polygon.svg?raw'),
+        HTML: import('./examples/3/index.html?raw'),
+        TypeScript: import('./examples/3/index.ts?raw'),
     };
 
     readonly names = Object.keys(tuiKitIcons);

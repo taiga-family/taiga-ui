@@ -1,6 +1,6 @@
 describe(`Navigation`, () => {
     it(`getting started / [light mode]`, () => {
-        cy.tuiVisit(`/getting-started`, {hideNavigation: false, hideHeader: false});
+        cy.tuiVisit(`/getting-started`, {hideHeader: false, hideNavigation: false});
 
         cy.get(`tui-doc-navigation`)
             .tuiWaitBeforeScreenshot()
@@ -9,9 +9,9 @@ describe(`Navigation`, () => {
 
     it(`getting started / [night mode]`, () => {
         cy.tuiVisit(`/getting-started`, {
-            hideNavigation: false,
-            hideHeader: false,
             enableNightMode: true,
+            hideHeader: false,
+            hideNavigation: false,
         });
 
         cy.get(`tui-doc-navigation`)

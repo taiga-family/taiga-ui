@@ -139,16 +139,16 @@ export const tuiFadeInTop = trigger(`tuiFadeInTop`, [
     transition(
         `:enter`,
         [
-            style({transform: `translateY(-10px)`, opacity: 0}),
-            animate(TRANSITION, style({transform: `translateY(0)`, opacity: 1})),
+            style({opacity: 0, transform: `translateY(-10px)`}),
+            animate(TRANSITION, style({opacity: 1, transform: `translateY(0)`})),
         ],
         DURATION,
     ),
     transition(
         `:leave`,
         [
-            style({transform: `translateY(0)`, opacity: 1}),
-            animate(TRANSITION, style({transform: `translateY(-10px)`, opacity: 0})),
+            style({opacity: 1, transform: `translateY(0)`}),
+            animate(TRANSITION, style({opacity: 0, transform: `translateY(-10px)`})),
         ],
         DURATION,
     ),
@@ -158,16 +158,16 @@ export const tuiFadeInBottom = trigger(`tuiFadeInBottom`, [
     transition(
         `:enter`,
         [
-            style({transform: `translateY(10px)`, opacity: 0}),
-            animate(TRANSITION, style({transform: `translateY(0)`, opacity: 1})),
+            style({opacity: 0, transform: `translateY(10px)`}),
+            animate(TRANSITION, style({opacity: 1, transform: `translateY(0)`})),
         ],
         DURATION,
     ),
     transition(
         `:leave`,
         [
-            style({transform: `translateY(0)`, opacity: 1}),
-            animate(TRANSITION, style({transform: `translateY(10px)`, opacity: 0})),
+            style({opacity: 1, transform: `translateY(0)`}),
+            animate(TRANSITION, style({opacity: 0, transform: `translateY(10px)`})),
         ],
         DURATION,
     ),
@@ -177,16 +177,16 @@ export const tuiDropdownAnimation = trigger(`tuiDropdownAnimation`, [
     transition(
         `:enter`,
         [
-            style({transform: `translateY(-10px)`, opacity: 0}),
-            animate(TRANSITION, style({transform: `translateY(0)`, opacity: 1})),
+            style({opacity: 0, transform: `translateY(-10px)`}),
+            animate(TRANSITION, style({opacity: 1, transform: `translateY(0)`})),
         ],
         DURATION,
     ),
     transition(
         `:leave`,
         [
-            style({transform: `translateY(0)`, opacity: 1}),
-            animate(TRANSITION, style({transform: `translateY(-10px)`, opacity: 0})),
+            style({opacity: 1, transform: `translateY(0)`}),
+            animate(TRANSITION, style({opacity: 0, transform: `translateY(-10px)`})),
         ],
         DURATION,
     ),
@@ -378,7 +378,7 @@ export const tuiSlideInTop = trigger(`tuiSlideInTop`, [
             style({transform: `translate3d(0,{{start}},0)`}),
             animate(TRANSITION, style({transform: `translate3d(0,{{end}},0)`})),
         ],
-        {params: {end: 0, start: `100%`, duration: 300}},
+        {params: {duration: 300, end: 0, start: `100%`}},
     ),
     transition(
         `:leave`,
@@ -386,7 +386,7 @@ export const tuiSlideInTop = trigger(`tuiSlideInTop`, [
             style({transform: `translate3d(0,{{end}},0)`}),
             animate(TRANSITION, style({transform: `translate3d(0,{{start}},0)`})),
         ],
-        {params: {end: 0, start: `100%`, duration: 300}},
+        {params: {duration: 300, end: 0, start: `100%`}},
     ),
 ]);
 

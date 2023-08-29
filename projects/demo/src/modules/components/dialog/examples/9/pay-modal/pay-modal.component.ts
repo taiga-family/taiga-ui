@@ -67,7 +67,7 @@ export class PayModalComponent implements OnInit {
 
     payBySelectedCard(card: AccountCard): void {
         this.form.patchValue({
-            card: {card: this.maskedNumber(card), expire: '**/**', cvc: ''},
+            card: {card: this.maskedNumber(card), cvc: '', expire: '**/**'},
         });
 
         this.form.controls.card.removeValidators(tuiCardNumberValidator);
@@ -121,6 +121,7 @@ export class PayModalComponent implements OnInit {
                 takeUntil(this.destroy$),
             )
             .subscribe({
+                complete: () => this.loading$.next(false),
                 next: ([, data]: [number, FetchedCards]) => {
                     this.cards = data.cards;
 
@@ -130,7 +131,6 @@ export class PayModalComponent implements OnInit {
                         this.payByNewCard();
                     }
                 },
-                complete: () => this.loading$.next(false),
             });
     }
 }

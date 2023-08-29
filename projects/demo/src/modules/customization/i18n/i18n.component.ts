@@ -8,8 +8,8 @@ import {map} from 'rxjs/operators';
     selector: 'i18n',
     templateUrl: './i18n.template.html',
     styleUrls: ['./i18n.style.less'],
-    encapsulation: ViewEncapsulation.None,
     changeDetection,
+    encapsulation: ViewEncapsulation.None,
 })
 export class I18nComponent {
     readonly readme = from(
@@ -28,11 +28,11 @@ export class I18nComponent {
         'language-switcher.component.ts': import(
             '../../../../../addon-doc/components/language-switcher/language-switcher.component.ts?raw'
         ),
-        'language-switcher.module.ts': import(
-            '../../../../../addon-doc/components/language-switcher/language-switcher.module.ts?raw'
-        ),
         'language-switcher.module.less': import(
             '../../../../../addon-doc/components/language-switcher/language-switcher.component.less?raw'
+        ),
+        'language-switcher.module.ts': import(
+            '../../../../../addon-doc/components/language-switcher/language-switcher.module.ts?raw'
         ),
     };
 }

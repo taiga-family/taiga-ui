@@ -22,17 +22,17 @@ import {
 
     await tuiConvertAllCompileFileToAllFile({
         from: allToCompilePath,
-        to: resultAllFile,
         include: `**/${projectPath}/src/**/*.svg`,
         prt2Options: {
-            include: [`**/${projectPath}/**`],
             exclude: [`**/*.svg`],
+            include: [`**/${projectPath}/**`],
         },
+        to: resultAllFile,
     });
 
     await tuiPostPrettierFormat({
-        file: resultAllFile,
         config: {...config, parser: `typescript`},
+        file: resultAllFile,
     });
 
     const icons = readdirSync(iconsSrc)
@@ -41,18 +41,18 @@ import {
 
     for (const file of icons) {
         await tuiPostPrettierFormat({
-            file,
             config: {...config, ...svg, parser: `angular`},
+            file,
         });
 
         await tuiPostPrettierFormat({
-            file,
             config: {
                 ...config,
                 ...svg,
                 parser: `xml`,
                 plugins: [require.resolve(`@prettier/plugin-xml`)],
             },
+            file,
         });
     }
 

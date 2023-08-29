@@ -304,7 +304,7 @@ export class TuiDay extends TuiMonth {
      * @param offset
      * @return new date object as a result of offsetting current
      */
-    override append({year = 0, month = 0, day = 0}: TuiDayLike): TuiDay {
+    override append({day = 0, month = 0, year = 0}: TuiDayLike): TuiDay {
         const totalMonths = (this.year + year) * MONTHS_IN_YEAR + this.month + month;
         let years = Math.floor(totalMonths / MONTHS_IN_YEAR);
         let months = totalMonths % MONTHS_IN_YEAR;

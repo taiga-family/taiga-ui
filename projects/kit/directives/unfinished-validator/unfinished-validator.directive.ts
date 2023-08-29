@@ -8,8 +8,8 @@ import {tuiCreateUnfinishedValidator} from '@taiga-ui/kit/validators';
     providers: [
         {
             provide: NG_VALIDATORS,
-            useExisting: TuiUnfinishedValidatorDirective,
             multi: true,
+            useExisting: TuiUnfinishedValidatorDirective,
         },
     ],
 })

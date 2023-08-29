@@ -57,9 +57,9 @@ const DATA: readonly User[] = Array.from({length: 300}, () => ({
     dob: TODAY.append({day: -Math.floor(Math.random() * 4000) - 7500}),
 }));
 const KEYS: Record<string, Key> = {
-    Name: 'name',
     Age: 'age',
     'Date of Birth': 'dob',
+    Name: 'name',
 };
 
 @Component({

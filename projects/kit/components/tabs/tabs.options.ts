@@ -9,10 +9,10 @@ export interface TuiTabsOptions {
 }
 
 export const TUI_TABS_DEFAULT_OPTIONS: TuiTabsOptions = {
-    underline: true,
     exposeActive: true,
     itemsLimit: Infinity,
     minMoreWidth: 0,
+    underline: true,
 };
 
 /**

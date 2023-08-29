@@ -75,7 +75,7 @@ export class TuiScrollbarComponent {
         }
 
         const {nativeElement} = this.browserScrollRef;
-        const {offsetTop, offsetLeft} = tuiGetElementOffset(nativeElement, detail);
+        const {offsetLeft, offsetTop} = tuiGetElementOffset(nativeElement, detail);
         const {clientHeight, clientWidth} = nativeElement;
         const {offsetHeight, offsetWidth} = detail;
         const scrollTop = offsetTop + offsetHeight / 2 - clientHeight / 2;

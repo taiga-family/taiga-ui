@@ -13,8 +13,8 @@ describe(`tuiGetElementOffset`, () => {
         Object.defineProperty(parent, `offsetParent`, {value: grandParent});
 
         expect(tuiGetElementOffset(grandParent, child)).toEqual({
-            offsetTop: 0,
             offsetLeft: 0,
+            offsetTop: 0,
         });
     });
 });

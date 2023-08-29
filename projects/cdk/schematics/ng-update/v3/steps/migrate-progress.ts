@@ -72,7 +72,7 @@ function replaceProgressColorSegmentsPipe(
         const attrLocations = progressEl.sourceCodeLocation?.attrs;
 
         if (attrLocations) {
-            const {startOffset, endOffset} = attrLocations[PROPERTY_FOR_DEPRECATED_PIPES];
+            const {endOffset, startOffset} = attrLocations[PROPERTY_FOR_DEPRECATED_PIPES];
 
             recorder.remove(templateOffset + startOffset, endOffset - startOffset);
             recorder.insertRight(

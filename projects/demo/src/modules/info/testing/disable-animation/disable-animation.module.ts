@@ -7,12 +7,12 @@ import {TuiLinkModule} from '@taiga-ui/core';
 import {DisableAnimationComponent} from './disable-animation.component';
 
 @NgModule({
-    declarations: [DisableAnimationComponent],
     imports: [
         CommonModule,
         TuiAddonDocModule,
         TuiLinkModule,
         RouterModule.forChild(tuiGenerateRoutes(DisableAnimationComponent)),
     ],
+    declarations: [DisableAnimationComponent],
 })
 export class DisableAnimationModule {}

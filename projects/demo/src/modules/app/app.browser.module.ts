@@ -35,12 +35,11 @@ import {VersionManagerModule} from './version-manager/version-manager.module';
 
 const PRODUCTION_MODULES = environment.production
     ? ([
-          MetrikaModule.forRoot({id: environment.ym, webvisor: false, clickmap: false}),
+          MetrikaModule.forRoot({id: environment.ym, clickmap: false, webvisor: false}),
       ] as const)
     : [];
 
 @NgModule({
-    bootstrap: [AppComponent],
     imports: [
         BrowserModule.withServerTransition({appId: `tui-demo`}),
         AppRoutingModule,
@@ -75,5 +74,6 @@ const PRODUCTION_MODULES = environment.production
     ],
     declarations: [AppComponent],
     providers: APP_PROVIDERS,
+    bootstrap: [AppComponent],
 })
 export class AppBrowserModule {}

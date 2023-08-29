@@ -14,7 +14,7 @@ export class TuiSheetDialogExample2 {
     open = false;
 
     readonly options: Partial<TuiSheetDialogOptions> = {
-        label: 'Alexander Inkin',
         closeable: false,
+        label: 'Alexander Inkin',
     };
 }

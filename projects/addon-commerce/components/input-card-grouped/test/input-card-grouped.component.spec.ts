@@ -60,11 +60,11 @@ describe(`InputCardGrouped`, () => {
                 providers: [
                     {
                         provide: TUI_AUTOFOCUS_HANDLER,
-                        useClass: TuiSynchronousAutofocusHandler,
                         deps: [
                             [new Optional(), new Self(), TUI_FOCUSABLE_ITEM_ACCESSOR],
                             ElementRef,
                         ],
+                        useClass: TuiSynchronousAutofocusHandler,
                     },
                     TuiDestroyService,
                 ],
@@ -89,8 +89,8 @@ describe(`InputCardGrouped`, () => {
     it(`Clear resets control to null`, () => {
         testComponent.control.setValue({
             card: `123`,
-            expire: `12/12`,
             cvc: `321`,
+            expire: `12/12`,
         });
         testComponent.component.clear();
 

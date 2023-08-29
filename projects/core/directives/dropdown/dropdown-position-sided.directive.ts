@@ -49,16 +49,16 @@ export class TuiDropdownPositionSidedDirective extends TuiPositionAccessor {
         const {direction, minHeight, offset} = this.options;
         const align = this.options.align === 'center' ? 'left' : this.options.align;
         const available = {
-            top: hostRect.bottom - viewport.top,
+            bottom: viewport.bottom - hostRect.top,
             left: hostRect.left - offset - viewport.left,
             right: viewport.right - hostRect.right - offset,
-            bottom: viewport.bottom - hostRect.top,
+            top: hostRect.bottom - viewport.top,
         } as const;
         const position = {
-            top: hostRect.bottom - height + this.tuiDropdownSidedOffset + 1, // 1 for border
+            bottom: hostRect.top - this.tuiDropdownSidedOffset - 1, // 1 for border
             left: hostRect.left - width - offset,
             right: hostRect.right + offset,
-            bottom: hostRect.top - this.tuiDropdownSidedOffset - 1, // 1 for border
+            top: hostRect.bottom - height + this.tuiDropdownSidedOffset + 1, // 1 for border
         } as const;
         const better = available.top > available.bottom ? 'top' : 'bottom';
         const maxLeft = available.left > available.right ? position.left : position.right;

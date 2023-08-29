@@ -27,10 +27,18 @@ export function tuiCreateCompletePhoneInsertionPreprocessor(
               );
     };
 
-    return ({elementState, data}) => {
-        const {value, selection} = elementState;
+    return ({data, elementState}) => {
+        const {selection, value} = elementState;
 
         return {
+            data:
+                countDigits(data) >= completePhoneLength
+                    ? /**
+                       * User tries to insert/drop the complete phone number (with country prefix).
+                       * We should drop already existing non-removable prefix.
+                       */
+                      trimCountryPrefix(data)
+                    : data,
             elementState: {
                 selection,
                 value:
@@ -45,14 +53,6 @@ export function tuiCreateCompletePhoneInsertionPreprocessor(
                         ? trimCountryPrefix(value)
                         : value,
             },
-            data:
-                countDigits(data) >= completePhoneLength
-                    ? /**
-                       * User tries to insert/drop the complete phone number (with country prefix).
-                       * We should drop already existing non-removable prefix.
-                       */
-                      trimCountryPrefix(data)
-                    : data,
         };
     };
 }

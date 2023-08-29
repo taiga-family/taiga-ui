@@ -14,11 +14,11 @@ export interface TuiSheetDialogOptions<I = never> {
 type TuiSheetDialogDefaultOptions = Omit<TuiSheetDialogOptions<unknown>, 'data'>;
 
 export const TUI_SHEET_DIALOG_DEFAULT_OPTIONS: TuiSheetDialogDefaultOptions = {
-    label: ``,
-    stops: [],
-    initial: 0,
-    offset: 16,
     closeable: true,
+    initial: 0,
+    label: ``,
+    offset: 16,
+    stops: [],
 };
 
 /**

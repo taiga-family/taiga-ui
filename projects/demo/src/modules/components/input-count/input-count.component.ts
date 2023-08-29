@@ -25,18 +25,18 @@ export class ExampleTuiInputCountComponent extends AbstractExampleTuiControl {
     readonly exampleOptions = import('./examples/import/define-options.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
+        TypeScript: import('./examples/2/index.ts?raw'),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
+        TypeScript: import('./examples/3/index.ts?raw'),
     };
 
     min = 0;

@@ -27,9 +27,9 @@ export class TuiAlertsExampleComponent3 {
             .open<boolean>(
                 new PolymorpheusComponent(AlertExampleComponent, this.injector),
                 {
+                    autoClose: false,
                     label: 'Question',
                     status: 'error',
-                    autoClose: false,
                 },
             )
             .pipe(

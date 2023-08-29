@@ -1,9 +1,9 @@
 import {TuiStaticRequestService} from '@taiga-ui/cdk';
 
 const RESPONSE = {
-    status: 200,
     contentType: `text/plain`,
     responseText: `awesome response`,
+    status: 200,
 };
 
 // TODO: need replace jasmine.Ajax
@@ -41,11 +41,11 @@ xdescribe(`TuiStaticRequest service`, () => {
         let completed = false;
 
         service.request(`test`).subscribe({
-            next: response => {
-                result = response;
-            },
             complete: () => {
                 completed = true;
+            },
+            next: response => {
+                result = response;
             },
         });
 
@@ -71,11 +71,11 @@ xdescribe(`TuiStaticRequest service`, () => {
         jasmine.Ajax.requests.mostRecent().respondWith(RESPONSE);
 
         service.request(`test`).subscribe({
-            next: response => {
-                result2 = response;
-            },
             complete: () => {
                 completed = true;
+            },
+            next: response => {
+                result2 = response;
             },
         });
 

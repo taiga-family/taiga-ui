@@ -24,9 +24,9 @@ export class TuiDialogExampleComponent1 {
     showDialogWithCustomButton(): void {
         this.dialogs
             .open('Good, Anakin, Good!', {
+                data: {button: 'Do it!'},
                 label: 'Star wars. Episode III',
                 size: 's',
-                data: {button: 'Do it!'},
             })
             .subscribe();
     }

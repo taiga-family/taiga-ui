@@ -71,15 +71,15 @@ export const APP_PROVIDERS: Provider[] = [
 
             return {
                 coreLibraryLoader: async () => import(`highlight.js/lib/core`),
+                languages: {
+                    less: async () => import(`highlight.js/lib/languages/less`),
+                    typescript: async () =>
+                        import(`highlight.js/lib/languages/typescript`),
+                    xml: async () => import(`highlight.js/lib/languages/xml`),
+                },
                 lineNumbersLoader: async () =>
                     // SSR ReferenceError: window is not defined
                     isBrowser ? import(`highlightjs-line-numbers.js`) : Promise.resolve(),
-                languages: {
-                    typescript: async () =>
-                        import(`highlight.js/lib/languages/typescript`),
-                    less: async () => import(`highlight.js/lib/languages/less`),
-                    xml: async () => import(`highlight.js/lib/languages/xml`),
-                },
             };
         },
     },
@@ -89,7 +89,7 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_DOC_SOURCE_CODE,
-        useValue: ({type, path, header, package: pkg}: TuiDocSourceCodePathOptions) => {
+        useValue: ({header, package: pkg, path, type}: TuiDocSourceCodePathOptions) => {
             const link = `https://github.com/taiga-family/taiga-ui/tree/main/projects`;
 
             if (!pkg) {
@@ -151,14 +151,14 @@ export const APP_PROVIDERS: Provider[] = [
         provide: TUI_HINT_OPTIONS,
         useFactory: () =>
             inject(TUI_IS_E2E)
-                ? {...TUI_HINT_DEFAULT_OPTIONS, showDelay: 0, hideDelay: 0}
+                ? {...TUI_HINT_DEFAULT_OPTIONS, hideDelay: 0, showDelay: 0}
                 : TUI_HINT_DEFAULT_OPTIONS,
     },
     {
         provide: TUI_DROPDOWN_HOVER_OPTIONS,
         useFactory: () =>
             inject(TUI_IS_E2E)
-                ? {...TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS, showDelay: 0, hideDelay: 0}
+                ? {...TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS, hideDelay: 0, showDelay: 0}
                 : TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
     },
     {

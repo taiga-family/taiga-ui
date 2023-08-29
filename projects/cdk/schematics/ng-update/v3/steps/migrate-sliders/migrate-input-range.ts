@@ -30,8 +30,8 @@ export function migrateInputRange(
     const COMPONENTS_WITH_MAX_LABELS = new Set<string>();
 
     let progressLog = setupProgressLogger({
-        total: templateResources.length,
         prefix: `[replaceMinMaxLabel]`,
+        total: templateResources.length,
     });
 
     for (const templateResource of templateResources) {
@@ -43,8 +43,8 @@ export function migrateInputRange(
     save(fileSystem);
 
     progressLog = setupProgressLogger({
-        total: COMPONENTS_WITH_MIN_LABELS.size,
         prefix: `[COMPONENTS_WITH_MIN_LABELS]`,
+        total: COMPONENTS_WITH_MIN_LABELS.size,
     });
 
     for (const componentPath of Array.from(COMPONENTS_WITH_MIN_LABELS)) {
@@ -59,8 +59,8 @@ export function migrateInputRange(
     }
 
     progressLog = setupProgressLogger({
-        total: COMPONENTS_WITH_MAX_LABELS.size,
         prefix: `[COMPONENTS_WITH_MAX_LABELS]`,
+        total: COMPONENTS_WITH_MAX_LABELS.size,
     });
 
     for (const componentPath of Array.from(COMPONENTS_WITH_MAX_LABELS)) {
@@ -81,12 +81,12 @@ function replaceMinLabel(
     modifiedComponentStorage: Set<string>,
 ): void {
     const wasModified = replaceInputProperty({
-        templateResource,
-        fileSystem,
         componentSelector: `tui-input-range`,
+        fileSystem,
         from: `minLabel`,
-        to: `[leftValueContent]`,
         newValue: MIN_LABELS_MIGRATION_METHOD_NAME,
+        templateResource,
+        to: `[leftValueContent]`,
     });
 
     if (wasModified) {
@@ -100,12 +100,12 @@ function replaceMaxLabel(
     modifiedComponentStorage: Set<string>,
 ): void {
     const wasModified = replaceInputProperty({
-        templateResource,
-        fileSystem,
         componentSelector: `tui-input-range`,
+        fileSystem,
         from: `maxLabel`,
-        to: `[rightValueContent]`,
         newValue: MAX_LABELS_MIGRATION_METHOD_NAME,
+        templateResource,
+        to: `[rightValueContent]`,
     });
 
     if (wasModified) {
@@ -129,8 +129,8 @@ function addMinMaxLabelMethod(
 
         addMethods(ngComponent, {
             name: methodName,
-            returnType: `string`,
             parameters: [{name: `context`, type: `TuiContextWithImplicit<number>`}],
+            returnType: `string`,
             statements: methodCode,
         });
     }

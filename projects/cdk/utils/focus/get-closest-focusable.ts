@@ -36,9 +36,9 @@ export interface TuiGetClosestFocusableOptions {
  */
 export function tuiGetClosestFocusable({
     initial,
-    root,
-    previous = false,
     keyboard = true,
+    previous = false,
+    root,
 }: TuiGetClosestFocusableOptions): HTMLElement | null {
     if (!root.ownerDocument) {
         return null;

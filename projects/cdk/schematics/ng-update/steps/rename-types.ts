@@ -17,7 +17,7 @@ export function renameTypes(options: TuiSchema, types: readonly TypeToRename[]):
     !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} renaming types...`);
 
-    types.forEach(({from, to, moduleSpecifier, preserveGenerics}) =>
+    types.forEach(({from, moduleSpecifier, preserveGenerics, to}) =>
         renameType(from, to, moduleSpecifier, preserveGenerics),
     );
 

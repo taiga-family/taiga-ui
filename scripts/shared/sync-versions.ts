@@ -36,11 +36,11 @@ export function syncVersions(
         }
 
         updatePackageJsonStructure({
+            ignores,
             isPackageLockFile: file.endsWith(`-lock.json`),
+            newVersion,
             packageJson,
             prevVersion,
-            newVersion,
-            ignores,
         });
 
         const updatedJSON = `${JSON.stringify(packageJson, null, INDENTATION)}`;

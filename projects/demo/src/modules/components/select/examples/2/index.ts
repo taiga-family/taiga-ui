@@ -43,7 +43,7 @@ export class TuiSelectExample2 {
     ];
 
     testForm = new FormGroup({
-        testValue: new FormControl(this.cards[0]),
         accounts: new FormControl(this.accounts[0]),
+        testValue: new FormControl(this.cards[0]),
     });
 }

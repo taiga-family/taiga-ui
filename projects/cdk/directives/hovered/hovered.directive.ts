@@ -5,8 +5,8 @@ import {TuiHoveredService} from './hovered.service';
 
 @Directive({
     selector: '[tuiHoveredChange]',
-    outputs: ['tuiHoveredChange'],
     providers: [TuiHoveredService],
+    outputs: ['tuiHoveredChange'],
 })
 export class TuiHoveredDirective {
     constructor(

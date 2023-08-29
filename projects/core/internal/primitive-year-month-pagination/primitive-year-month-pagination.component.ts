@@ -55,7 +55,7 @@ export class TuiPrimitiveYearMonthPaginationComponent
     }
 
     get oneYear(): boolean {
-        const {computedMin, computedMax} = this;
+        const {computedMax, computedMin} = this;
 
         return computedMin.year === computedMax.year;
     }
@@ -74,7 +74,7 @@ export class TuiPrimitiveYearMonthPaginationComponent
 
     private appendValueWithLimit(date: TuiMonthLike): void {
         const newMonth: TuiMonth = this.value.append(date);
-        const {computedMin, computedMax} = this;
+        const {computedMax, computedMin} = this;
 
         if (computedMin.monthSameOrAfter(newMonth)) {
             this.updateValue(computedMin);

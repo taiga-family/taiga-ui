@@ -11,7 +11,7 @@ import {TuiAlertService} from './alert.service';
 @NgModule({
     imports: [CommonModule, PolymorpheusModule, TuiNotificationModule],
     declarations: [TuiAlertComponent, TuiAlertDirective],
-    exports: [TuiAlertComponent, TuiAlertDirective],
     providers: [tuiAsAlerts(TuiAlertService)],
+    exports: [TuiAlertComponent, TuiAlertDirective],
 })
 export class TuiAlertModule {}

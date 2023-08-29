@@ -7,7 +7,6 @@ import {TuiPoint} from '@taiga-ui/core/types';
     providers: [
         {
             provide: TuiPositionAccessor,
-            multi: true,
             deps: [
                 [new Optional(), new SkipSelf(), TuiAccessorProxyDirective],
                 TuiAccessorProxyDirective,
@@ -16,6 +15,7 @@ import {TuiPoint} from '@taiga-ui/core/types';
                 accessor: TuiPositionAccessor | null,
                 fallback: TuiPositionAccessor,
             ) => accessor || fallback,
+            multi: true,
         },
     ],
 })

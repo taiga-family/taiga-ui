@@ -25,8 +25,8 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 
     card = '';
@@ -47,11 +47,11 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
 
     readonly cards: Record<string, string> = {
         common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',
-        universal: 'https://ng-web-apis.github.io/dist/assets/images/universal.svg',
         intersection:
             'https://ng-web-apis.github.io/dist/assets/images/intersection-observer.svg',
         mutation:
             'https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg',
+        universal: 'https://ng-web-apis.github.io/dist/assets/images/universal.svg',
     };
 
     cardSrcVariants = Object.keys(this.cards);
@@ -69,8 +69,8 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
             Validators.required,
             tuiCreateLuhnValidator('Invalid card number'),
         ]),
-        expire: new FormControl('', Validators.required),
         cvc: new FormControl('', Validators.required),
+        expire: new FormControl('', Validators.required),
     });
 
     constructor(

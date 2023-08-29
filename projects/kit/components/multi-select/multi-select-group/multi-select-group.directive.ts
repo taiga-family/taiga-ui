@@ -34,12 +34,12 @@ export const TUI_MULTI_SELECT_OPTION = new PolymorpheusComponent(
         },
         {
             provide: NG_VALUE_ACCESSOR,
-            multi: true,
             useValue: {
-                writeValue: EMPTY_FUNCTION,
                 registerOnChange: EMPTY_FUNCTION,
                 registerOnTouched: EMPTY_FUNCTION,
+                writeValue: EMPTY_FUNCTION,
             },
+            multi: true,
         },
     ],
 })

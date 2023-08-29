@@ -40,13 +40,13 @@ import {
  * @return true if something was changed
  */
 export function replaceInputProperty({
-    templateResource,
-    fileSystem,
     componentSelector,
-    from,
-    to,
-    newValue = ``,
+    fileSystem,
     filterFn,
+    from,
+    newValue = ``,
+    templateResource,
+    to,
 }: {
     componentSelector: string[] | string;
     fileSystem: DevkitFileSystem;
@@ -122,7 +122,7 @@ export function getInputPropertyOffsets(
                 filterFn(element),
         )
         .map((element: Element) => {
-            const {startOffset = 0, endOffset = 0} =
+            const {endOffset = 0, startOffset = 0} =
                 element.sourceCodeLocation?.attrs?.[attrName.toLowerCase()] || {};
 
             return [startOffset, endOffset];
@@ -156,13 +156,13 @@ export function getInputPropertyValueOffsets(
 }
 
 export function replaceInputPropertyByDirective({
-    templateResource,
-    fileSystem,
     componentSelector,
-    inputProperty,
     directive,
     directiveModule,
+    fileSystem,
     filterFn,
+    inputProperty,
+    templateResource,
 }: {
     componentSelector: string[] | string;
     directive: string;
@@ -173,12 +173,12 @@ export function replaceInputPropertyByDirective({
     templateResource: TemplateResource;
 }): void {
     const wasModified = replaceInputProperty({
-        templateResource,
-        fileSystem,
         componentSelector,
-        from: inputProperty,
-        to: directive,
+        fileSystem,
         filterFn,
+        from: inputProperty,
+        templateResource,
+        to: directive,
     });
 
     if (wasModified && directiveModule) {
@@ -196,11 +196,11 @@ export function replaceInputPropertyByDirective({
  * TODO: Find a way to fix it
  */
 export function removeInputProperty({
-    templateResource,
-    fileSystem,
     componentSelector,
-    inputProperty,
+    fileSystem,
     filterFn,
+    inputProperty,
+    templateResource,
 }: {
     componentSelector: string;
     fileSystem: DevkitFileSystem;

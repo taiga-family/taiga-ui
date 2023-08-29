@@ -37,8 +37,8 @@ import {
     styleUrls: ['./range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[attr.tabindex]': '-1',
         '[attr.aria-disabled]': 'computedDisabled',
+        '[attr.tabindex]': '-1',
     },
 })
 export class TuiRangeComponent

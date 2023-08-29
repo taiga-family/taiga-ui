@@ -3,6 +3,9 @@ import {TuiLanguageCore} from '@taiga-ui/i18n/interfaces';
 import {TUI_DUTCH_LANGUAGE_COUNTRIES} from './countries';
 
 export const TUI_DUTCH_LANGUAGE_CORE: TuiLanguageCore = {
+    close: `Sluiten`,
+    countries: TUI_DUTCH_LANGUAGE_COUNTRIES,
+    defaultErrorMessage: `Ongeldige waarde`,
     months: [
         `Januari`,
         `Februari`,
@@ -17,10 +20,7 @@ export const TUI_DUTCH_LANGUAGE_CORE: TuiLanguageCore = {
         `November`,
         `December`,
     ],
-    close: `Sluiten`,
     nothingFoundMessage: `Niets gevonden`,
-    defaultErrorMessage: `Ongeldige waarde`,
-    spinTexts: [`Vorige`, `Volgende`],
     shortWeekDays: [`Maa`, `Din`, `Woe`, `Don`, `Vri`, `Zat`, `Zon`],
-    countries: TUI_DUTCH_LANGUAGE_COUNTRIES,
+    spinTexts: [`Vorige`, `Volgende`],
 };

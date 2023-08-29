@@ -20,37 +20,37 @@ export class ExampleTuiSheetComponent {
     readonly templateRef: PolymorpheusContent<TuiSheet<unknown>>;
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
+        TypeScript: import('./examples/2/index.ts?raw'),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
+        TypeScript: import('./examples/3/index.ts?raw'),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
+        TypeScript: import('./examples/4/index.ts?raw'),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
+        TypeScript: import('./examples/5/index.ts?raw'),
     };
 
     readonly example6: TuiDocExample = {
-        TypeScript: import('./examples/6/index.ts?raw'),
         HTML: import('./examples/6/index.html?raw'),
         LESS: import('./examples/6/index.less?raw'),
+        TypeScript: import('./examples/6/index.ts?raw'),
     };
 
     readonly exampleModule = import('./examples/import/import-module.md?raw');
@@ -80,9 +80,9 @@ export class ExampleTuiSheetComponent {
             closeable: this.closeable,
             image: this.computedImage,
             imageSlide: this.imageSlide,
-            stops: this.stops,
             initial: this.initial,
             overlay: this.overlay,
+            stops: this.stops,
         };
     }
 

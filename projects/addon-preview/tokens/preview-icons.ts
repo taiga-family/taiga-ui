@@ -11,9 +11,9 @@ export interface TuiPreviewIcons {
 }
 
 export const TUI_PREVIEW_ICONS_DEFAULT: TuiPreviewIcons = {
-    rotate: `tuiIconRotate`,
-    prev: `tuiIconArrowLeft`,
     next: `tuiIconArrowRight`,
+    prev: `tuiIconArrowLeft`,
+    rotate: `tuiIconRotate`,
     zoomIn: `tuiIconPlus`,
     zoomOut: `tuiIconMinus`,
     zoomReset: `tuiIconMinimize`,

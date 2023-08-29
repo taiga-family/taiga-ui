@@ -15,8 +15,8 @@ export class ExampleTuiPromptComponent implements TuiPromptData {
     readonly exampleService = import('./examples/import/service.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 
     readonly content =
@@ -33,9 +33,9 @@ export class ExampleTuiPromptComponent implements TuiPromptData {
     onClick(): void {
         this.dialogs
             .open<boolean>(TUI_PROMPT, {
+                data: this,
                 label: 'Are you sure?',
                 size: 's',
-                data: this,
             })
             .pipe(switchMap(response => this.alerts.open(String(response))))
             .subscribe();

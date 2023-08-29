@@ -13,13 +13,13 @@ import {tuiInRange} from '@taiga-ui/cdk';
 })
 export class TuiMathExample2 {
     parametersForm = new FormGroup({
-        value: new FormControl(13),
         fromInclude: new FormControl(5),
         toExclude: new FormControl(42),
+        value: new FormControl(13),
     });
 
     get ranged(): boolean {
-        const {value, fromInclude, toExclude} = this.parametersForm.value;
+        const {fromInclude, toExclude, value} = this.parametersForm.value;
 
         return tuiInRange(value ?? 13, fromInclude ?? 5, toExclude ?? 42);
     }

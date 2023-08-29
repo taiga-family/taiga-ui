@@ -5,7 +5,7 @@ import {CHAR_MINUS} from '@taiga-ui/cdk/constants';
 import {TuiDocumentationPagePO, tuiGoto, TuiInputSliderPo} from '../../../utils';
 
 test.describe(`InputSlider`, () => {
-    test.use({viewport: {width: 400, height: 500}});
+    test.use({viewport: {height: 500, width: 400}});
 
     test.describe(`examples page`, () => {
         let documentationPage!: TuiDocumentationPagePO;
@@ -20,14 +20,14 @@ test.describe(`InputSlider`, () => {
             const inputSlider = new TuiInputSliderPo(example.locator(`tui-input-slider`));
 
             const valueToSliderStep = [
-                {value: 5, step: 0},
-                {value: 9, step: 4},
-                {value: 12, step: 7},
-                {value: 18, step: 13},
-                {value: 20, step: 15},
+                {step: 0, value: 5},
+                {step: 4, value: 9},
+                {step: 7, value: 12},
+                {step: 13, value: 18},
+                {step: 15, value: 20},
             ];
 
-            for (const {value, step} of valueToSliderStep) {
+            for (const {step, value} of valueToSliderStep) {
                 await inputSlider.textfield.clear();
                 await inputSlider.textfield.fill(`${value}`);
 

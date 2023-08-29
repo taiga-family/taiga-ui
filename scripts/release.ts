@@ -13,7 +13,7 @@ const mode = getValueByFlag<TuiReleaseMode>(`--release-as`, `minor`);
 const dryRun = getValueByFlag<'false' | 'true'>(`--dry-run`, `false`) === `true`;
 const newVersion = bumpVersion(version, mode);
 
-infoLog(JSON.stringify({ci, mode, newVersion, dryRun}, null, 4));
+infoLog(JSON.stringify({ci, dryRun, mode, newVersion}, null, 4));
 
 (async function main(): Promise<void> {
     if (ci) {

@@ -22,11 +22,11 @@ export interface TuiHintOptions {
 
 /** Default values for hint options */
 export const TUI_HINT_DEFAULT_OPTIONS: TuiHintOptions = {
-    direction: 'bottom-left',
-    showDelay: 500,
-    hideDelay: 200,
     appearance: '',
+    direction: 'bottom-left',
+    hideDelay: 200,
     icon: 'tuiIconHelpCircle',
+    showDelay: 500,
 };
 
 /**

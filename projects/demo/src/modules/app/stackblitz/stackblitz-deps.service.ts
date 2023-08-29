@@ -20,15 +20,15 @@ export class StackblitzDepsService {
         const ngVersion = `${dependencies[`@angular/cdk`]?.split(`.`)?.[0] ?? ``}.x.x`;
 
         return {
+            '@angular/animations': ngVersion,
             '@angular/cdk': ngVersion,
-            '@angular/core': ngVersion,
             '@angular/common': ngVersion,
             '@angular/compiler': ngVersion,
+            '@angular/core': ngVersion,
             '@angular/forms': ngVersion,
             '@angular/localize': ngVersion,
             '@angular/platform-browser': ngVersion,
             '@angular/platform-browser-dynamic': ngVersion,
-            '@angular/animations': ngVersion,
             '@angular/router': ngVersion,
         };
     }
@@ -42,19 +42,19 @@ export class StackblitzDepsService {
                 : `${TUI_VERSION.split(`.`)[0]}.x.x`;
 
         return {
-            '@taiga-ui/cdk': version,
-            '@taiga-ui/i18n': version,
-            '@taiga-ui/core': version,
-            '@taiga-ui/kit': version,
-            '@taiga-ui/icons': version,
-            '@taiga-ui/styles': version,
             '@taiga-ui/addon-charts': version,
             '@taiga-ui/addon-commerce': version,
             '@taiga-ui/addon-mobile': version,
             '@taiga-ui/addon-preview': version,
             '@taiga-ui/addon-table': version,
             '@taiga-ui/addon-tablebars': version,
+            '@taiga-ui/cdk': version,
+            '@taiga-ui/core': version,
+            '@taiga-ui/i18n': version,
+            '@taiga-ui/icons': version,
+            '@taiga-ui/kit': version,
             '@taiga-ui/layout': version,
+            '@taiga-ui/styles': version,
         };
     }
 
@@ -67,22 +67,22 @@ export class StackblitzDepsService {
         );
 
         return {
-            '@tinkoff/ng-dompurify': demoDeps[`@tinkoff/ng-dompurify`],
-            '@tinkoff/ng-polymorpheus': cdkDeps[`@tinkoff/ng-polymorpheus`],
-            '@ng-web-apis/common': cdkDeps[`@ng-web-apis/common`],
-            '@tinkoff/ng-event-plugins': cdkDeps[`@tinkoff/ng-event-plugins`],
-            '@ng-web-apis/intersection-observer':
-                kitDeps[`@ng-web-apis/intersection-observer`],
-            '@ng-web-apis/resize-observer': cdkDeps[`@ng-web-apis/resize-observer`],
-            '@ng-web-apis/mutation-observer': cdkDeps[`@ng-web-apis/mutation-observer`],
             '@maskito/angular': kitDeps[`@maskito/angular`],
             '@maskito/core': kitDeps[`@maskito/core`],
             '@maskito/kit': kitDeps[`@maskito/kit`],
-            'text-mask-core': kitDeps[`text-mask-core`],
-            'zone.js': rootDeps[`zone.js`],
+            '@ng-web-apis/common': cdkDeps[`@ng-web-apis/common`],
+            '@ng-web-apis/intersection-observer':
+                kitDeps[`@ng-web-apis/intersection-observer`],
+            '@ng-web-apis/mutation-observer': cdkDeps[`@ng-web-apis/mutation-observer`],
+            '@ng-web-apis/resize-observer': cdkDeps[`@ng-web-apis/resize-observer`],
+            '@tinkoff/ng-dompurify': demoDeps[`@tinkoff/ng-dompurify`],
+            '@tinkoff/ng-event-plugins': cdkDeps[`@tinkoff/ng-event-plugins`],
+            '@tinkoff/ng-polymorpheus': cdkDeps[`@tinkoff/ng-polymorpheus`],
             dompurify: demoDeps.dompurify,
             rxjs: rootDeps.rxjs,
+            'text-mask-core': kitDeps[`text-mask-core`],
             typescript: rootDevDeps.typescript,
+            'zone.js': rootDeps[`zone.js`],
         };
     }
 }

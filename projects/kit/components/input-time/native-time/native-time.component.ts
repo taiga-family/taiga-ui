@@ -17,18 +17,18 @@ import type {TuiInputTimeDirective} from '../input-time.directive';
             ></option>
         </datalist>
     `,
+    styleUrls: ['./native-time.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        type: 'time',
-        '[attr.list]': 'autoIdString',
-        '[tabIndex]': '-1',
-        '[value]': 'value',
-        '[step]': 'step',
         '(change.stop)': 'onChange($event.target.value)',
         '(click.stop.silent)': '0',
         '(mousedown.stop.silent)': '0',
+        '[attr.list]': 'autoIdString',
+        '[step]': 'step',
+        '[tabIndex]': '-1',
+        '[value]': 'value',
+        type: 'time',
     },
-    styleUrls: ['./native-time.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiNativeTimeComponent {
     autoIdString: string;

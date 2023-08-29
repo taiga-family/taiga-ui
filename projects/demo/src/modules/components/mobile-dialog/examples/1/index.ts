@@ -33,8 +33,8 @@ export class TuiMobileDialogExample1 {
             .open(
                 'If you like this app, please take a moment to leave a positive rating.',
                 {
-                    label: 'What do you think?',
                     actions,
+                    label: 'What do you think?',
                 },
             )
             .pipe(switchMap(index => this.alerts.open(`Selected: ${actions[index]}`)))

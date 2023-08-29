@@ -20,12 +20,12 @@ export class TuiPreviewExample3 {
 
     readonly items = [
         {
-            title: 'some table.xlsx',
             hasPreview: false,
+            title: 'some table.xlsx',
         },
         {
-            title: 'Content #2',
             hasPreview: true,
+            title: 'Content #2',
         },
     ];
 

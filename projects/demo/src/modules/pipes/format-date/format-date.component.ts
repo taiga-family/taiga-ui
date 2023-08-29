@@ -15,8 +15,8 @@ export class ExampleTuiFormatDateComponent {
     readonly exampleTs = import('./examples/import/provide-service.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
         'service.ts': import('./examples/1/service.ts?raw'),
     };
 }

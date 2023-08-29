@@ -10,9 +10,9 @@ export interface TuiAvatarOptions {
 
 /** Default values for the avatar options. */
 export const TUI_AVATAR_DEFAULT_OPTIONS: TuiAvatarOptions = {
-    size: `m`,
     autoColor: false,
     rounded: false,
+    size: `m`,
 };
 
 /**

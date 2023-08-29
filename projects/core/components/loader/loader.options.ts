@@ -10,9 +10,9 @@ export interface TuiLoaderOptions {
 
 /** Default values for the loader options. */
 export const TUI_LOADER_DEFAULT_OPTIONS: TuiLoaderOptions = {
-    size: `m`,
     inheritColor: false,
     overlay: false,
+    size: `m`,
 };
 
 /**

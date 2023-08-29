@@ -21,8 +21,8 @@ import {debounce, filter, map} from 'rxjs/operators';
     selector: 'tui-tiles',
     template: '<ng-content></ng-content>',
     styleUrls: ['./tiles.style.less'],
-    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
     providers: [
         TuiDestroyService,
         TuiResizeService,

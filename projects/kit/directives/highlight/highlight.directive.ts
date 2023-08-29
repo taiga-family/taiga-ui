@@ -5,11 +5,11 @@ import {Observable} from 'rxjs';
 
 @Directive({
     selector: '[tuiHighlight]',
+    providers: [TuiDestroyService, TuiResizeService],
     host: {
         '[style.position]': '"relative"',
         '[style.zIndex]': '0',
     },
-    providers: [TuiDestroyService, TuiResizeService],
 })
 export class TuiHighlightDirective implements OnChanges {
     private readonly highlight: HTMLElement = this.setUpHighlight();
@@ -67,7 +67,7 @@ export class TuiHighlightDirective implements OnChanges {
             range.setEnd(this.treeWalker.currentNode, index + this.tuiHighlight.length);
 
             const hostRect = this.el.nativeElement.getBoundingClientRect();
-            const {left, top, width, height} = range.getBoundingClientRect();
+            const {height, left, top, width} = range.getBoundingClientRect();
             const {style} = this.highlight;
 
             style.background = this.tuiHighlightColor;

@@ -22,13 +22,13 @@ export function dateTimeMigrations(options: TuiSchema): void {
     let start = performance.now();
 
     migrateProperty({
-        namedImport: `TuiDay`,
-        moduleSpecifier: `@taiga-ui/cdk`,
-        from: `formattedDay`,
         callback: node =>
             node.replaceWithText(
                 node.getText().replace(`formattedDay`, `getFormattedDay("DMY", ".")`),
             ),
+        from: `formattedDay`,
+        moduleSpecifier: `@taiga-ui/cdk`,
+        namedImport: `TuiDay`,
     });
 
     !options[`skip-logs`] &&
@@ -39,15 +39,15 @@ export function dateTimeMigrations(options: TuiSchema): void {
 
     start = performance.now();
     migrateProperty({
-        namedImport: `TuiDayRange`,
-        moduleSpecifier: `@taiga-ui/cdk`,
-        from: `formattedDayRange`,
         callback: node =>
             node.replaceWithText(
                 node
                     .getText()
                     .replace(`formattedDayRange`, `getFormattedDayRange("DMY", ".")`),
             ),
+        from: `formattedDayRange`,
+        moduleSpecifier: `@taiga-ui/cdk`,
+        namedImport: `TuiDayRange`,
     });
 
     !options[`skip-logs`] &&
@@ -58,9 +58,6 @@ export function dateTimeMigrations(options: TuiSchema): void {
 
     start = performance.now();
     migrateProperty({
-        namedImport: `TuiDayRange`,
-        moduleSpecifier: `@taiga-ui/cdk`,
-        from: `normalizeParse`,
         callback: node => {
             const parent = node.getParent();
 
@@ -68,6 +65,9 @@ export function dateTimeMigrations(options: TuiSchema): void {
                 changeNormalizeArgs(parent);
             }
         },
+        from: `normalizeParse`,
+        moduleSpecifier: `@taiga-ui/cdk`,
+        namedImport: `TuiDayRange`,
     });
 
     !options[`skip-logs`] &&
@@ -78,47 +78,47 @@ export function dateTimeMigrations(options: TuiSchema): void {
 
     [
         {
-            namedImport: `TuiMonthRange`,
             field: `formattedMonthRange`,
             message: `formattedMonthRange has been removed in 3.0. Please use TUI_MONTH_FORMATTER from @taiga-ui/kit`,
+            namedImport: `TuiMonthRange`,
         },
         {
-            namedImport: `TuiMonth`,
             field: `formattedMonth`,
             message: `formattedMonth has been removed in 3.0. Please use TUI_MONTH_FORMATTER from @taiga-ui/kit`,
+            namedImport: `TuiMonth`,
         },
         {
-            namedImport: `TuiDay`,
             field: `getDayFromMonthRowCol`,
             message: `getDayFromMonthRowCol has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
+            namedImport: `TuiDay`,
         },
         {
-            namedImport: `TuiMonth`,
             field: `monthStartDaysOffset`,
             message: `monthStartDaysOffset has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
+            namedImport: `TuiMonth`,
         },
         {
-            namedImport: `TuiMonth`,
             field: `weeksRowsCount`,
             message: `weeksRowsCount has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
+            namedImport: `TuiMonth`,
         },
         {
-            namedImport: `TuiYear`,
             field: `getYearStartDaysOffset`,
             message: `getYearStartDaysOffset has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
+            namedImport: `TuiYear`,
         },
         {
-            namedImport: `TuiYear`,
             field: `weeksRowsCount`,
             message: `weeksRowsCount has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
+            namedImport: `TuiYear`,
         },
-    ].forEach(({namedImport, field, message}) => {
+    ].forEach(({field, message, namedImport}) => {
         start = performance.now();
         migrateProperty({
-            namedImport,
-            moduleSpecifier: `@taiga-ui/cdk`,
-            from: field,
             callback: node => insertTodoBeforeNode(node, message),
+            from: field,
+            moduleSpecifier: `@taiga-ui/cdk`,
+            namedImport,
         });
 
         !options[`skip-logs`] &&
@@ -133,10 +133,10 @@ export function dateTimeMigrations(options: TuiSchema): void {
 }
 
 function migrateProperty({
-    namedImport,
-    moduleSpecifier,
-    from,
     callback,
+    from,
+    moduleSpecifier,
+    namedImport,
 }: {
     callback: (node: Node) => void;
     from: string;

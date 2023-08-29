@@ -35,7 +35,7 @@ describe(`InputRange`, () => {
         quantum = 5;
         readOnly = false;
         steps = 0;
-        pluralize = {one: `год`, few: `года`, many: `лет`, other: `лет`};
+        pluralize = {few: `года`, many: `лет`, one: `год`, other: `лет`};
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -49,11 +49,11 @@ describe(`InputRange`, () => {
     let inputPORight: TuiNativeInputPO;
 
     const testContext = {
-        get prefix() {
-            return `tui-input-range__`;
-        },
         get nativeInputAutoId() {
             return `tui-primitive-textfield__native-input`;
+        },
+        get prefix() {
+            return `tui-input-range__`;
         },
         get valueContentAutoId() {
             return `tui-primitive-textfield__value`;

@@ -12,8 +12,8 @@ import {tuiCreateTimePeriods, tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
     providers: [
         tuiInputTimeOptionsProvider({
             icon: 'tuiIconCheckCircleLarge',
-            mode: 'HH:MM:SS',
             itemSize: 's',
+            mode: 'HH:MM:SS',
         }),
     ],
 })

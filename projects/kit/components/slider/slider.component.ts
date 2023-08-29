@@ -34,6 +34,7 @@ import {TUI_SLIDER_OPTIONS, TuiSliderOptions} from './slider.options';
     selector: 'input[type=range][tuiSlider]',
     template: '',
     styleUrls: ['./slider.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         /**
          * For change detection.
@@ -44,7 +45,6 @@ import {TUI_SLIDER_OPTIONS, TuiSliderOptions} from './slider.options';
         '(input)': '0',
         '[style.--tui-slider-track-color]': 'options.trackColor',
     },
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSliderComponent {
     @Input()
@@ -67,7 +67,7 @@ export class TuiSliderComponent {
     }
 
     get value(): number {
-        const {el, control, hasKeySteps} = this;
+        const {control, el, hasKeySteps} = this;
 
         if (!hasKeySteps && control instanceof NgModel) {
             /**

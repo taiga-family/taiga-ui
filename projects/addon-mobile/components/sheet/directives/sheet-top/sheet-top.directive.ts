@@ -13,12 +13,12 @@ const OFFSET = 10;
 @Directive({
     selector: '[tuiSheetTop]',
     host: {
-        '[$.style.transform]': 'transform$',
-        '($.style.transform)': 'transform$',
-        '[$.class._rounded]': 'rounded$',
-        '($.class._rounded)': 'rounded$',
-        '[$.class._clickthrough]': 'clickthrough$',
         '($.class._clickthrough)': 'clickthrough$',
+        '($.class._rounded)': 'rounded$',
+        '($.style.transform)': 'transform$',
+        '[$.class._clickthrough]': 'clickthrough$',
+        '[$.class._rounded]': 'rounded$',
+        '[$.style.transform]': 'transform$',
     },
 })
 export class TuiSheetTopDirective {

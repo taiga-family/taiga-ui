@@ -25,19 +25,19 @@ export class ExampleTuiRadioLabeledComponent extends AbstractExampleTuiControl {
     readonly exampleForm = import('./examples/import/declare-form.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
+        TypeScript: import('./examples/2/index.ts?raw'),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
+        TypeScript: import('./examples/3/index.ts?raw'),
     };
 
     readonly items = [{name: 'tariff1'}, {name: 'tariff2'}, {name: 'tariff3'}];

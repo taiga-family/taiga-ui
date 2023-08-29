@@ -5,9 +5,9 @@ export function tuiZonefull<T>(zone: NgZone): MonoTypeOperatorFunction<T> {
     return source =>
         new Observable(subscriber =>
             source.subscribe({
-                next: value => zone.run(() => subscriber.next(value)),
-                error: (error: unknown) => zone.run(() => subscriber.error(error)),
                 complete: () => zone.run(() => subscriber.complete()),
+                error: (error: unknown) => zone.run(() => subscriber.error(error)),
+                next: value => zone.run(() => subscriber.next(value)),
             }),
         );
 }

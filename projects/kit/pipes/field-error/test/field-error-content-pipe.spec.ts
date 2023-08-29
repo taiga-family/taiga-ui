@@ -46,8 +46,8 @@ describe(`TuiFieldErrorContentPipe`, () => {
             {
                 provide: TUI_VALIDATION_ERRORS,
                 useValue: {
-                    min: testError,
                     max: ({max}: {max: number}) => `error ${max}`,
+                    min: testError,
                 },
             },
         ],

@@ -5,8 +5,8 @@ import {Observable} from 'rxjs';
 
 @Directive({
     selector: '[tuiSwipe]',
-    outputs: ['tuiSwipe'],
     providers: [TuiSwipeService],
+    outputs: ['tuiSwipe'],
 })
 export class TuiSwipeDirective {
     constructor(@Inject(TuiSwipeService) readonly tuiSwipe: Observable<TuiSwipe>) {}

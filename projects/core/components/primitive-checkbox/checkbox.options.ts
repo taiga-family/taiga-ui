@@ -19,11 +19,10 @@ export interface TuiCheckboxOptions {
 
 /** Default values for the checkbox options. */
 export const TUI_CHECKBOX_DEFAULT_OPTIONS: TuiCheckboxOptions = {
-    size: `m`,
     appearances: {
-        unchecked: TuiAppearance.Outline,
         checked: TuiAppearance.Primary,
         indeterminate: TuiAppearance.Primary,
+        unchecked: TuiAppearance.Outline,
     },
     icons: {
         checked: ({$implicit}) =>
@@ -31,6 +30,7 @@ export const TUI_CHECKBOX_DEFAULT_OPTIONS: TuiCheckboxOptions = {
         indeterminate: ({$implicit}) =>
             $implicit === `m` ? `tuiIconMinus` : `tuiIconMinusLarge`,
     },
+    size: `m`,
 };
 
 /**

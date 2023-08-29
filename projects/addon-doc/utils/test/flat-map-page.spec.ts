@@ -3,31 +3,31 @@ import {tuiSwitchNgDevMode} from '@taiga-ui/testing';
 
 describe(`tuiToFlatMapPages`, () => {
     const testPage1 = {
-        title: `Test Page 1`,
         route: `test/page1`,
+        title: `Test Page 1`,
     };
     const testPage2 = {
-        title: `Test Page 2`,
         route: `test/page2`,
+        title: `Test Page 2`,
     };
     const testSubPage1 = {
-        title: `Test SubPage 1`,
         route: `test/page1/subpage1`,
+        title: `Test SubPage 1`,
     };
     const testSubPage2 = {
-        title: `Test SubPage 2`,
         route: `test/page1/subpage2`,
+        title: `Test SubPage 2`,
     };
     const testPages = [
         {
-            title: `Test Main Page 1`,
             route: `test/main1`,
             subPages: [testPage1, testPage2],
+            title: `Test Main Page 1`,
         },
         {
-            title: `Test Main Page 2`,
             route: `test/main2`,
             subPages: [testSubPage1, testSubPage2],
+            title: `Test Main Page 2`,
         },
     ];
 
@@ -53,8 +53,8 @@ describe(`tuiToFlatMapPages`, () => {
     it(`should check for duplicate titles`, () => {
         const spy = jest.spyOn(global.console, `error`);
         const duplicatePage = {
-            title: `Test Page 1`,
             route: `test/page3`,
+            title: `Test Page 1`,
         };
         const duplicatePages = [...testPages, {...duplicatePage}];
 

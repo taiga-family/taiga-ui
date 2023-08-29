@@ -43,8 +43,8 @@ function decoratorToTemplateResource(decorator: Decorator): TemplateResource | n
 
     if (template) {
         return {
-            componentPath,
             template: template.getInitializer()?.getText() || ``,
+            componentPath,
             offset: template.getInitializer()?.getStart() || 0,
         };
     }

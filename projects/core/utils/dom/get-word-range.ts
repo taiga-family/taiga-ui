@@ -9,7 +9,7 @@ import {CHAR_NO_BREAK_SPACE, CHAR_ZERO_WIDTH_SPACE, svgNodeFilter} from '@taiga-
 // eslint-disable-next-line max-statements
 export function tuiGetWordRange(currentRange: Range): Range {
     const range = currentRange.cloneRange();
-    const {startContainer, startOffset, endContainer, endOffset} = range;
+    const {endContainer, endOffset, startContainer, startOffset} = range;
     const {ownerDocument} = startContainer;
 
     if (!ownerDocument) {

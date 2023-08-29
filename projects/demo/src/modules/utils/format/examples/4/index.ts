@@ -13,13 +13,13 @@ import {tuiFormatPhone} from '@taiga-ui/core';
 })
 export class TuiFormatExample4 {
     parametersForm = new FormGroup({
-        value: new FormControl('+79991234567'),
         countryCode: new FormControl('+7'),
         phoneMask: new FormControl('### ###-##-##'),
+        value: new FormControl('+79991234567'),
     });
 
     get formattedPhone(): string {
-        const {value, countryCode, phoneMask} = this.parametersForm.value;
+        const {countryCode, phoneMask, value} = this.parametersForm.value;
 
         return tuiFormatPhone(value ?? '', countryCode ?? '', phoneMask ?? '');
     }

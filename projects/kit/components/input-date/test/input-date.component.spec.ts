@@ -61,20 +61,20 @@ let pageObject: TuiPageObject<TestComponent>;
 let inputPO: TuiNativeInputPO;
 
 const testContext = {
-    get pageObject() {
-        return pageObject;
-    },
     get fixture() {
         return fixture;
-    },
-    get testComponent() {
-        return testComponent;
     },
     get inputPO() {
         return inputPO;
     },
+    get pageObject() {
+        return pageObject;
+    },
     get prefix() {
         return `tui-input-date__`;
+    },
+    get testComponent() {
+        return testComponent;
     },
 };
 

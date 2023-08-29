@@ -12,8 +12,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 export class TuiInputCardExample1 {
     readonly form = new FormGroup({
         card: new FormControl(''),
-        expire: new FormControl(''),
         cvc: new FormControl(''),
+        expire: new FormControl(''),
     });
 
     get card(): string | null {

@@ -6,14 +6,14 @@ describe(`tuiGenerateRoutes`, () => {
 
         expect(tuiGenerateRoutes(type)).toEqual([
             {
-                path: ``,
-                component: type,
                 children: [
                     {
-                        path: `:tab`,
                         component: type,
+                        path: `:tab`,
                     },
                 ],
+                component: type,
+                path: ``,
             },
         ]);
     });

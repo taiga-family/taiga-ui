@@ -12,11 +12,11 @@ export interface TuiRadioOptions {
 
 /** Default values for the checkbox options. */
 export const TUI_RADIO_DEFAULT_OPTIONS: TuiRadioOptions = {
-    size: `m`,
     appearances: {
-        unchecked: TuiAppearance.Outline,
         checked: TuiAppearance.Primary,
+        unchecked: TuiAppearance.Outline,
     },
+    size: `m`,
 };
 
 /**

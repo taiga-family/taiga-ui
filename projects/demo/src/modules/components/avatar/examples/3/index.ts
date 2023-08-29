@@ -10,9 +10,9 @@ import {tuiAvatarOptionsProvider} from '@taiga-ui/kit';
     encapsulation,
     providers: [
         tuiAvatarOptionsProvider({
-            size: 'l',
             autoColor: true,
             rounded: true,
+            size: 'l',
         }),
     ],
 })

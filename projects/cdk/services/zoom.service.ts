@@ -28,20 +28,20 @@ export class TuiZoomService extends Observable<TuiZoom> {
                                     const distance = tuiDistanceBetweenTouches(event);
 
                                     return {
-                                        event,
-                                        distance,
                                         delta:
                                             (distance - prev.distance) *
                                             TOUCH_SENSITIVITY,
+                                        distance,
+                                        event,
                                     };
                                 },
                                 {
-                                    event: startEvent,
-                                    distance: tuiDistanceBetweenTouches(startEvent),
                                     delta: 0,
+                                    distance: tuiDistanceBetweenTouches(startEvent),
+                                    event: startEvent,
                                 },
                             ),
-                            map(({event, delta}) => {
+                            map(({delta, event}) => {
                                 const clientX =
                                     (event.touches[0].clientX +
                                         event.touches[1].clientX) /

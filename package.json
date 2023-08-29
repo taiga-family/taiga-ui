@@ -105,6 +105,42 @@
                     "type": "natural",
                     "order": "asc"
                 }
+            ],
+            "perfectionist/sort-objects": [
+                "error",
+                {
+                    "type": "natural",
+                    "order": "asc",
+                    "always-on-top": [
+                        "id",
+                        "name",
+                        "xs",
+                        "s",
+                        "m",
+                        "l",
+                        "xl",
+                        "xxl",
+                        "imports",
+                        "declarations",
+                        "selector",
+                        "template",
+                        "templateUrl",
+                        "styles",
+                        "styleUrls",
+                        "changeDetection",
+                        "encapsulation",
+                        "provide",
+                        "animations",
+                        "providers",
+                        "viewProviders",
+                        "host",
+                        "exports",
+                        "deps",
+                        "useClass",
+                        "useFactory",
+                        "useValue"
+                    ]
+                }
             ]
         }
     },

@@ -5,9 +5,9 @@ import {SMALL_TAB_SYMBOL, SUCCESS_SYMBOL} from './colored-log';
 import {tuiIsCI} from './is-ci';
 
 export function setupProgressLogger({
-    total,
     prefix = ``,
     tabs = 2,
+    total,
 }: {
     prefix?: string;
     tabs?: number;

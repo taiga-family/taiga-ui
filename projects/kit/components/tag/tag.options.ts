@@ -11,9 +11,9 @@ export interface TuiTagOptions {
 
 /** Default values for the tag options. */
 export const TUI_TAG_DEFAULT_OPTIONS: TuiTagOptions = {
+    autoColor: false,
     size: `m`,
     status: `default`,
-    autoColor: false,
 };
 
 /**

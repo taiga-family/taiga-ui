@@ -20,15 +20,15 @@ import {
     selector: 'button[tuiAction], a[tuiAction]',
     templateUrl: './action.template.html',
     styleUrls: ['./action.style.less'],
-    host: {
-        class: 'tui-island tui-island_hoverable',
-    },
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,
         TuiFocusVisibleService,
         tuiAsFocusableItemAccessor(TuiActionComponent),
     ],
+    host: {
+        class: 'tui-island tui-island_hoverable',
+    },
 })
 export class TuiActionComponent extends AbstractTuiInteractive {
     @Input()

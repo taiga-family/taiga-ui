@@ -41,7 +41,7 @@ function getBreakpoints(media: TuiMedia): TuiBreakpoint[] {
         /**
          * @note:
          * min-width query in css is inclusive, but in window.matchMedia it is exclusive
-         * so we need to subtract 1px to get the same result
+         * so, we need to subtract 1px to get the same result
          */
         query: `(max-width: ${width - 1}px)`,
         width,

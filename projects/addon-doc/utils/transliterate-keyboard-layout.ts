@@ -5,7 +5,6 @@ const MAP: Record<string, string> = {
     г: `u`,
     д: `l`,
     е: `t`,
-    ё: `\``,
     ж: `;`,
     з: `p`,
     и: `b`,
@@ -31,6 +30,7 @@ const MAP: Record<string, string> = {
     ь: `m`,
     ю: `.`,
     я: `z`,
+    ё: `\``,
 };
 
 /**

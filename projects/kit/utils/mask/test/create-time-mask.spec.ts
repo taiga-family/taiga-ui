@@ -6,14 +6,14 @@ describe(`tuiCreateTimeMask`, () => {
     const maxValuesRegular: Partial<Record<TuiTimeFormatParts, number>> = {
         HH: 23,
         MM: 59,
-        SS: 59,
         MS: 999,
+        SS: 59,
     };
     const maxValues47h5m: Partial<Record<TuiTimeFormatParts, number>> = {
         HH: 47,
         MM: 5,
-        SS: 59,
         MS: 999,
+        SS: 59,
     };
     const maxValuesPartial: Partial<Record<TuiTimeFormatParts, number>> = {
         HH: 23,

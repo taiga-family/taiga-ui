@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
     selector: 'tui-button-example-4',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    encapsulation: ViewEncapsulation.None,
     changeDetection,
+    encapsulation: ViewEncapsulation.None,
 })
 export class TuiButtonExample4 {}

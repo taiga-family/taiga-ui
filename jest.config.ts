@@ -10,67 +10,23 @@ const {compilerOptions} = require(resolve(__dirname, `tsconfig.json`));
 const maxParallel = require(`os`).cpus().length / 2;
 
 const config: Config = {
-    rootDir: __dirname,
+    /**
+     * By default, Jest runs all tests and produces all errors into the console upon completion.
+     * The bail config option can be used here to have Jest stop running tests after n failures.
+     * Setting bail to true is the same as setting bail to 1
+     */
+    bail: 1,
 
     /**
-     * The preset sets up the environment and is very opinionated
-     * and based on what we found to be useful at Facebook.
-     * All of the configuration options can be overwritten
-     * just as they can be customized when no preset is used.
+     * The directory where Jest should store its cached dependency information.
      */
-    preset: `jest-preset-angular`,
+    cacheDirectory: `<rootDir>/node_modules/.cache/jest`,
 
     /**
-     * The test environment that will be used for testing.
-     * The default environment in Jest is a Node.js environment.
-     * If you are building a web app, you can use a browser-like environment through jsdom instead.
+     * Indicates that test coverage information should be collected and reported in the output.
+     * Optionally pass <boolean> to override option set in configuration.
      */
-    testEnvironment: `jsdom`,
-
-    /**
-     * A set of global variables that need
-     * to be available in all test environments.
-     */
-    globals: {
-        'ts-jest': {
-            tsconfig: resolve(__dirname, `tsconfig.spec.json`),
-            isolatedModules: true,
-        },
-    },
-
-    /**
-     * Jest will run .mjs and .js files with nearest package.json's type
-     * field set to module as ECMAScript Modules. If you have any other files
-     * that should run with native ESM, you need to specify their file extension here.
-     */
-    extensionsToTreatAsEsm: [`.ts`],
-
-    /**
-     * A list of paths to modules that run some code to configure
-     * or to set up the testing framework before each test.
-     */
-    setupFilesAfterEnv: [`<rootDir>/setup-jest.ts`],
-
-    /**
-     * A map from regular expressions to paths to transformers.
-     */
-    transform: {'^.+\\.(ts|js|mjs|html|svg)$': `jest-preset-angular`},
-
-    /**
-     * The glob patterns Jest uses to detect test files.
-     */
-    testMatch: [`<rootDir>/projects/**/*.spec.ts`],
-
-    /**
-     * A single or array of regexp pattern strings that are tested
-     * against all tests paths before executing the test.
-     */
-    testPathIgnorePatterns: [`/demo-cypress/`, `/node_modules/`, `/schematics/`],
-
-    /**
-     * The directory where Jest should output its coverage files.
-     */
-    coverageDirectory: `<rootDir>/coverage`,
+    collectCoverage: true,
 
     /**
      * An array of glob patterns indicating a set of files for which coverage
@@ -79,6 +35,11 @@ const config: Config = {
      * it's never required in the test suite.
      */
     collectCoverageFrom: [`<rootDir>/projects/**/*.ts`],
+
+    /**
+     * The directory where Jest should output its coverage files.
+     */
+    coverageDirectory: `<rootDir>/coverage`,
 
     /**
      * An array of regexp pattern strings that are matched against
@@ -92,6 +53,44 @@ const config: Config = {
         `.spec.ts`,
         `.cy.ts`,
     ],
+
+    /**
+     * A list of reporter names that Jest uses when writing coverage reports.
+     * Any istanbul reporter can be used.
+     */
+    coverageReporters: [`text`, `lcov`, `clover`],
+
+    /**
+     * Jest will run .mjs and .js files with nearest package.json's type
+     * field set to module as ECMAScript Modules. If you have any other files
+     * that should run with native ESM, you need to specify their file extension here.
+     */
+    extensionsToTreatAsEsm: [`.ts`],
+
+    /**
+     * A set of global variables that need
+     * to be available in all test environments.
+     */
+    globals: {
+        'ts-jest': {
+            isolatedModules: true,
+            tsconfig: resolve(__dirname, `tsconfig.spec.json`),
+        },
+    },
+
+    /**
+     * A number limiting the number of tests that are allowed to run at the same time when
+     * using test.concurrent. any test above this limit will be queued and executed once
+     * a slot is released.
+     */
+    maxConcurrency: maxParallel,
+
+    /**
+     * Specifies the maximum number of workers the worker-pool will spawn for running tests.
+     * In single run mode, this defaults to the number of the cores available
+     * on your machine minus one for the main thread.
+     */
+    maxWorkers: maxParallel,
 
     /**
      * A map from regular expressions to module names that allow to stub out resources,
@@ -114,56 +113,57 @@ const config: Config = {
     modulePathIgnorePatterns: [`.cache`, `dist`, `<rootDir>/dist/`],
 
     /**
-     * A list of reporter names that Jest uses when writing coverage reports.
-     * Any istanbul reporter can be used.
-     */
-    coverageReporters: [`text`, `lcov`, `clover`],
-
-    /**
-     * The directory where Jest should store its cached dependency information.
-     */
-    cacheDirectory: `<rootDir>/node_modules/.cache/jest`,
-    /**
-     * A number limiting the number of tests that are allowed to run at the same time when
-     * using test.concurrent. any test above this limit will be queued and executed once
-     * a slot is released.
-     */
-    maxConcurrency: maxParallel,
-
-    /**
-     * Specifies the maximum number of workers the worker-pool will spawn for running tests.
-     * In single run mode, this defaults to the number of the cores available
-     * on your machine minus one for the main thread.
-     */
-    maxWorkers: maxParallel,
-
-    /**
-     * Display individual test results with the test suite hierarchy.
-     */
-    verbose: true,
-
-    /**
-     * By default, Jest runs all tests and produces all errors into the console upon completion.
-     * The bail config option can be used here to have Jest stop running tests after n failures.
-     * Setting bail to true is the same as setting bail to 1
-     */
-    bail: 1,
-
-    /**
-     * Run tests with specified reporters
-     */
-    reporters: [`default`],
-
-    /**
      * Allows the test suite to pass when no files are found.
      */
     passWithNoTests: true,
 
     /**
-     * Indicates that test coverage information should be collected and reported in the output.
-     * Optionally pass <boolean> to override option set in configuration.
+     * The preset sets up the environment and is very opinionated
+     * and based on what we found to be useful at Facebook.
+     * All of the configuration options can be overwritten
+     * just as they can be customized when no preset is used.
      */
-    collectCoverage: true,
+    preset: `jest-preset-angular`,
+
+    /**
+     * Run tests with specified reporters
+     */
+    reporters: [`default`],
+    rootDir: __dirname,
+
+    /**
+     * A list of paths to modules that run some code to configure
+     * or to set up the testing framework before each test.
+     */
+    setupFilesAfterEnv: [`<rootDir>/setup-jest.ts`],
+
+    /**
+     * The test environment that will be used for testing.
+     * The default environment in Jest is a Node.js environment.
+     * If you are building a web app, you can use a browser-like environment through jsdom instead.
+     */
+    testEnvironment: `jsdom`,
+
+    /**
+     * The glob patterns Jest uses to detect test files.
+     */
+    testMatch: [`<rootDir>/projects/**/*.spec.ts`],
+
+    /**
+     * A single or array of regexp pattern strings that are tested
+     * against all tests paths before executing the test.
+     */
+    testPathIgnorePatterns: [`/demo-cypress/`, `/node_modules/`, `/schematics/`],
+
+    /**
+     * A map from regular expressions to paths to transformers.
+     */
+    transform: {'^.+\\.(ts|js|mjs|html|svg)$': `jest-preset-angular`},
+
+    /**
+     * Display individual test results with the test suite hierarchy.
+     */
+    verbose: true,
 };
 
 export default config;

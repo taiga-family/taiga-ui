@@ -38,7 +38,7 @@ export function migrateExpandTemplates(
         const recorder = fileSystem.edit(path);
 
         !options[`skip-logs`] && progressLog(`expand migration`, true);
-        migrateExpand({resource, fileSystem, recorder});
+        migrateExpand({fileSystem, recorder, resource});
     });
 
     !options[`skip-logs`] &&
@@ -46,9 +46,9 @@ export function migrateExpandTemplates(
 }
 
 function migrateExpand({
-    resource,
-    recorder,
     fileSystem,
+    recorder,
+    resource,
 }: {
     fileSystem: DevkitFileSystem;
     recorder: UpdateRecorder;

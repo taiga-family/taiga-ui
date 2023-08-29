@@ -21,7 +21,7 @@ export class TuiHideSelectedPipe implements PipeTransform {
     transform<T>(
         items: ReadonlyArray<readonly T[]> | readonly T[] | null,
     ): ReadonlyArray<readonly T[]> | readonly T[] | null {
-        const {value, identityMatcher} = this.component;
+        const {identityMatcher, value} = this.component;
 
         if (!items) {
             return null;

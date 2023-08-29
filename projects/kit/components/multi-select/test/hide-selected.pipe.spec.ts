@@ -6,8 +6,8 @@ describe(`tuiHideSelected pipe`, () => {
 
     beforeEach(() => {
         multiSelect = {
-            value: [1, 2, 3],
             identityMatcher: (a: unknown, b: unknown) => a === b,
+            value: [1, 2, 3],
         };
         pipe = new TuiHideSelectedPipe(
             multiSelect as unknown as TuiMultiSelectComponent<unknown>,

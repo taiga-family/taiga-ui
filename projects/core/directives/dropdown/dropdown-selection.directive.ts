@@ -142,7 +142,7 @@ export class TuiDropdownSelectionDirective
      * Check if given range is at least partially inside dropdown
      */
     private inDropdown(range: Range): boolean {
-        const {startContainer, endContainer} = range;
+        const {endContainer, startContainer} = range;
         const {nativeElement} = this.el;
         const inDropdown = this.boxContains(range.commonAncestorContainer);
         const hostToDropdown =
@@ -155,8 +155,8 @@ export class TuiDropdownSelectionDirective
 
     private veryVerySadInputFix(element: HTMLInputElement | HTMLTextAreaElement): Range {
         const {ghost = this.initGhost(element)} = this;
-        const {top, left, width, height} = element.getBoundingClientRect();
-        const {selectionStart, selectionEnd, value} = element;
+        const {height, left, top, width} = element.getBoundingClientRect();
+        const {selectionEnd, selectionStart, value} = element;
         const range = this.doc.createRange();
         const hostRect = this.el.nativeElement.getBoundingClientRect();
 
@@ -177,7 +177,7 @@ export class TuiDropdownSelectionDirective
      */
     private initGhost(element: HTMLInputElement | HTMLTextAreaElement): HTMLElement {
         const ghost = this.doc.createElement('div');
-        const {font, letterSpacing, textTransform, padding} = getComputedStyle(element);
+        const {font, letterSpacing, padding, textTransform} = getComputedStyle(element);
 
         ghost.style.position = 'absolute';
         ghost.style.pointerEvents = 'none';

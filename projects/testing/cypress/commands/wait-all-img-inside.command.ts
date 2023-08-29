@@ -14,14 +14,14 @@ export const tuiWaitAllImgInside = (
 
         if (img.length && enabled) {
             const log = Cypress.log({
-                displayName: `Wait all images`,
-                message: `naturalWidth greaterThan 0`,
                 name: `tuiWaitAllImgInside`,
                 autoEnd: false,
                 consoleProps: () => ({
-                    prevSubject,
                     img,
+                    prevSubject,
                 }),
+                displayName: `Wait all images`,
+                message: `naturalWidth greaterThan 0`,
             });
 
             cy.wrap($target, {log: false})
@@ -56,9 +56,9 @@ export const tuiWaitAllImgInside = (
                                 ).to.be.greaterThan(0);
                             } else {
                                 cy.request({
-                                    url,
                                     failOnStatusCode: false,
                                     log: false,
+                                    url,
                                 }).then(resp => {
                                     if (resp.status === 200) {
                                         cy.get(img as any, {log: false}).should(

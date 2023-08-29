@@ -43,7 +43,7 @@ export const TUI_RIPPLE_PROVIDERS: Provider[] = [
                 : tuiTypedFromEvent(nativeElement, `touchstart`).pipe(
                       map(({touches}) => {
                           const {clientX, clientY} = touches[touches.length - 1];
-                          const {width, height, top, left} =
+                          const {height, left, top, width} =
                               nativeElement.getBoundingClientRect();
                           const radius = Math.sqrt(width * width + height * height);
                           const dimension = radius * 2;

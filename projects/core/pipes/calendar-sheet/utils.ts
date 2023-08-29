@@ -26,10 +26,10 @@ const getMonthStartDaysOffset = (
  * @return resulting day on these coordinates (could exceed passed month)
  */
 export const getDayFromMonthRowCol = ({
-    month,
-    rowIndex,
     colIndex,
     firstDayOfWeek,
+    month,
+    rowIndex,
 }: {
     /**
      * column in a calendar

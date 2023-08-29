@@ -8,8 +8,8 @@ export const CONSTANTS_TO_REPLACE: ReplacementConst[] = [
         },
         to: {
             name: `Validators.nullValidator`,
-            namedImport: `Validators`,
             moduleSpecifier: `@angular/forms`,
+            namedImport: `Validators`,
         },
     },
     {

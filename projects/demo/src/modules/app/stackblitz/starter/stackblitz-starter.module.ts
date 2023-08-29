@@ -9,7 +9,7 @@ import {StackblitzStarterComponent} from './stackblitz-starter.component';
     imports: [
         TuiLoaderModule,
         TuiButtonModule,
-        RouterModule.forChild([{path: ``, component: StackblitzStarterComponent}]),
+        RouterModule.forChild([{component: StackblitzStarterComponent, path: ``}]),
     ],
     declarations: [StackblitzStarterComponent, StackblitzEditButtonComponent],
     exports: [StackblitzStarterComponent],

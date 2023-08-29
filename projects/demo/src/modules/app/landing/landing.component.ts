@@ -70,9 +70,9 @@ export class LandingComponent implements OnInit {
 
     private async clearQueryParams(): Promise<void> {
         await this.router.navigate([], {
-            relativeTo: this.activatedRoute,
-            queryParamsHandling: '',
             queryParams: {},
+            queryParamsHandling: '',
+            relativeTo: this.activatedRoute,
         });
     }
 }

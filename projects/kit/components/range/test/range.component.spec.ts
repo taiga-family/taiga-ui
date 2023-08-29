@@ -26,7 +26,7 @@ xdescribe(`Range`, () => {
         @ViewChild(TuiRangeComponent, {static: true})
         component!: TuiRangeComponent;
 
-        @ViewChild(TuiRangeComponent, {static: true, read: ElementRef})
+        @ViewChild(TuiRangeComponent, {read: ElementRef, static: true})
         el!: ElementRef<HTMLElement>;
 
         testValue = new FormControl([3, 5]);
@@ -240,48 +240,48 @@ xdescribe(`Range`, () => {
 
             const testsContexts = [
                 {
-                    value: [0, 10_000],
                     leftOffset: `0%`,
                     rightOffset: `75%`,
+                    value: [0, 10_000],
                 },
                 {
-                    value: [10_000, 10_000],
                     leftOffset: `25%`,
                     rightOffset: `75%`,
+                    value: [10_000, 10_000],
                 },
                 {
-                    value: [10_000, 100_000],
                     leftOffset: `25%`,
                     rightOffset: `50%`,
+                    value: [10_000, 100_000],
                 },
                 {
-                    value: [100_000, 100_000],
                     leftOffset: `50%`,
                     rightOffset: `50%`,
+                    value: [100_000, 100_000],
                 },
                 {
-                    value: [100_000, 500_000],
                     leftOffset: `50%`,
                     rightOffset: `25%`,
+                    value: [100_000, 500_000],
                 },
                 {
-                    value: [500_000, 500_000],
                     leftOffset: `75%`,
                     rightOffset: `25%`,
+                    value: [500_000, 500_000],
                 },
                 {
-                    value: [500_000, 750_000],
                     leftOffset: `75%`,
                     rightOffset: `12.5%`,
+                    value: [500_000, 750_000],
                 },
                 {
-                    value: [750_000, 1_000_000],
                     leftOffset: `87.5%`,
                     rightOffset: `0%`,
+                    value: [750_000, 1_000_000],
                 },
             ] as const;
 
-            for (const {value, leftOffset, rightOffset} of testsContexts) {
+            for (const {leftOffset, rightOffset, value} of testsContexts) {
                 it(`${JSON.stringify(value)}`, () => {
                     testComponent.testValue.setValue(value);
                     fixture.detectChanges();

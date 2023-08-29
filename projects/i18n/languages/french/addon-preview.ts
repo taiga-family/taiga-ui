@@ -5,8 +5,8 @@ export const TUI_FRENCH_LANGUAGE_ADDON_PREVIEW: TuiLanguagePreview = {
         rotate: `Faire pivoter`,
     },
     zoomTexts: {
-        zoomOut: `Zoomer`,
-        zoomIn: `Dézoomer`,
         reset: `Réinitialiser`,
+        zoomIn: `Dézoomer`,
+        zoomOut: `Zoomer`,
     },
 };

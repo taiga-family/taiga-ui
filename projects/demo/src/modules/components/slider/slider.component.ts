@@ -62,8 +62,8 @@ export class ExampleTuiSliderComponent {
 
     readonly example5: TuiDocExample = {
         HTML: import('./examples/5/index.html?raw'),
-        TypeScript: import('./examples/5/index.ts?raw'),
         LESS: import('./examples/5/index.less?raw'),
+        TypeScript: import('./examples/5/index.ts?raw'),
     };
 
     readonly example6: TuiDocExample = {

@@ -12,16 +12,16 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 export class TuiTabBarExample3 {
     readonly items = [
         {
-            text: 'Home',
             icon: 'tuiIconHomeLarge',
+            text: 'Home',
         },
         {
-            text: 'Photos',
             icon: 'tuiIconImageLarge',
+            text: 'Photos',
         },
         {
-            text: 'Navigation',
             icon: 'tuiIconMapPinLarge',
+            text: 'Navigation',
         },
     ];
 }

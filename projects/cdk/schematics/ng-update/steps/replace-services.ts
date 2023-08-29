@@ -29,7 +29,7 @@ export function replaceServices(
 }
 
 function replaceService(
-    {from, to, replaceMethods}: ReplacementService,
+    {from, replaceMethods, to}: ReplacementService,
     options: TuiSchema,
 ): void {
     !options[`skip-logs`] &&

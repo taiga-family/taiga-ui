@@ -34,24 +34,24 @@ const TEXTFIELDS = [
 ];
 
 const ATTRS_MAP: Record<string, string> = {
-    tuitextfieldautocomplete: `autocomplete`,
-    tuitextfieldinputmode: `inputmode`,
-    tuitextfieldmaxlength: `maxlength`,
-    tuitextfieldtype: `type`,
-    tuitextfieldexampletext: `placeholder`,
     '[tuitextfieldautocomplete]': `[attr.autocomplete]`,
+    '[tuitextfieldexampletext]': `[attr.placeholder]`,
     '[tuitextfieldinputmode]': `[attr.inputmode]`,
     '[tuitextfieldmaxlength]': `[attr.maxlength]`,
     '[tuitextfieldtype]': `[attr.type]`,
-    '[tuitextfieldexampletext]': `[attr.placeholder]`,
+    tuitextfieldautocomplete: `autocomplete`,
+    tuitextfieldexampletext: `placeholder`,
+    tuitextfieldinputmode: `inputmode`,
+    tuitextfieldmaxlength: `maxlength`,
+    tuitextfieldtype: `type`,
 };
 
 const CONTROLLER_ITEMS = Object.keys(ATTRS_MAP).map(attr => attr.toLowerCase());
 
 export function migrateTextfieldController({
-    resource,
     fileSystem,
     recorder,
+    resource,
 }: {
     fileSystem: DevkitFileSystem;
     recorder: UpdateRecorder;
@@ -80,9 +80,9 @@ export function migrateTextfieldController({
         )[0];
 
         if (existingInput) {
-            addAttrToExistingInput({existingInput, attrs, recorder, templateOffset});
+            addAttrToExistingInput({attrs, existingInput, recorder, templateOffset});
         } else {
-            insertTuiTextfieldInput({element, attrs, recorder, templateOffset});
+            insertTuiTextfieldInput({attrs, element, recorder, templateOffset});
         }
     });
 
@@ -90,8 +90,8 @@ export function migrateTextfieldController({
 }
 
 function insertTuiTextfieldInput({
-    element,
     attrs,
+    element,
     recorder,
     templateOffset,
 }: {
@@ -116,8 +116,8 @@ function insertTuiTextfieldInput({
 }
 
 function addAttrToExistingInput({
-    existingInput,
     attrs,
+    existingInput,
     recorder,
     templateOffset,
 }: {

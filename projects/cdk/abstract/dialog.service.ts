@@ -33,12 +33,12 @@ export abstract class AbstractTuiDialogService<T, K = void> extends Observable<
             const dialog = {
                 ...this.defaultOptions,
                 ...options,
-                content,
-                completeWith,
-                $implicit: observer,
-                component: this.component,
-                createdAt: Date.now(),
                 id: this.idService.generate(),
+                $implicit: observer,
+                completeWith,
+                component: this.component,
+                content,
+                createdAt: Date.now(),
             };
 
             this.dialogs$.next([...this.dialogs$.value, dialog]);

@@ -38,9 +38,9 @@ function shouldFocus({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>): bo
     styleUrls: ['./option.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        '[attr.disabled]': 'disabled || null',
         tabIndex: '-1',
         type: 'button',
-        '[attr.disabled]': 'disabled || null',
     },
 })
 export class TuiOptionComponent<T = unknown> implements OnDestroy {

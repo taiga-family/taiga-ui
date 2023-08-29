@@ -22,9 +22,9 @@ describe(`Tag component options`, () => {
             declarations: [TestComponent],
             providers: [
                 tuiTagOptionsProvider({
+                    autoColor: true,
                     size: `l`,
                     status: `error`,
-                    autoColor: true,
                 }),
             ],
         });

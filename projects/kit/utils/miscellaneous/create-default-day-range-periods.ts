@@ -16,7 +16,7 @@ export function tuiCreateDefaultDayRangePeriods(
     const startOfWeek = today.append({day: -today.dayOfWeek()});
     const endOfWeek = startOfWeek.append({day: 6});
     const startOfMonth = today.append({day: 1 - today.day});
-    const endOfMonth = startOfMonth.append({month: 1, day: -1});
+    const endOfMonth = startOfMonth.append({day: -1, month: 1});
     const startOfLastMonth = startOfMonth.append({month: -1});
 
     return [

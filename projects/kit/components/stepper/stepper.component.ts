@@ -142,12 +142,12 @@ export class TuiStepperComponent {
         }
 
         const {nativeElement} = this.el;
-        const {clientHeight, clientWidth, offsetTop, offsetLeft} = nativeElement;
+        const {clientHeight, clientWidth, offsetLeft, offsetTop} = nativeElement;
         const {
             offsetHeight,
-            offsetWidth,
-            offsetTop: stepOffsetTop,
             offsetLeft: stepOffsetLeft,
+            offsetTop: stepOffsetTop,
+            offsetWidth,
         } = step;
         const top = stepOffsetTop - offsetTop - clientHeight / 2 + offsetHeight / 2;
         const left = stepOffsetLeft - offsetLeft - clientWidth / 2 + offsetWidth / 2;

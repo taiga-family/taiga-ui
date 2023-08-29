@@ -5,8 +5,8 @@ export const TUI_CHINESE_LANGUAGE_ADDON_PREVIEW: TuiLanguagePreview = {
         rotate: `旋转`,
     },
     zoomTexts: {
-        zoomOut: `缩小`,
-        zoomIn: `放大`,
         reset: `重置`,
+        zoomIn: `放大`,
+        zoomOut: `缩小`,
     },
 };

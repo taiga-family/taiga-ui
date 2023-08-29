@@ -41,8 +41,8 @@ export class ExampleProgressBarComponent {
 
     readonly multiColorExample: TuiDocExample = {
         HTML: import('./examples/2/index.html?raw'),
-        TypeScript: import('./examples/2/index.ts?raw'),
         LESS: import('./examples/2/index.less?raw'),
+        TypeScript: import('./examples/2/index.ts?raw'),
     };
 
     readonly sizesExample: TuiDocExample = {
@@ -53,8 +53,8 @@ export class ExampleProgressBarComponent {
 
     readonly labelExample: TuiDocExample = {
         HTML: import('./examples/4/index.html?raw'),
-        TypeScript: import('./examples/4/index.ts?raw'),
         LESS: import('./examples/4/index.less?raw'),
+        TypeScript: import('./examples/4/index.ts?raw'),
     };
 
     readonly stackedExample: TuiDocExample = {

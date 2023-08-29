@@ -27,7 +27,7 @@ export class TuiTileHandleDirective {
     @HostListener('pointerdown.silent.prevent', ['$event'])
     onStart(event: PointerEvent): void {
         const target = tuiGetActualTarget(event);
-        const {x, y, pointerId} = event;
+        const {pointerId, x, y} = event;
 
         if (tuiIsElement(target)) {
             target.releasePointerCapture(pointerId);

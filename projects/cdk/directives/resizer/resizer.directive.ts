@@ -65,7 +65,7 @@ export class TuiResizerDirective {
     }
 
     @HostListener('document:mousemove.silent', ['$event'])
-    onMouseMove({x, y, buttons}: MouseEvent): void {
+    onMouseMove({buttons, x, y}: MouseEvent): void {
         if (!buttons) {
             this.onMouseUp();
         } else {

@@ -14,9 +14,9 @@ import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
         {
             provide: TUI_VALIDATION_ERRORS,
             useValue: {
-                required: 'Enter this!',
                 max: (context: {max: number}): string =>
                     `Too expensive, max ${context.max}`,
+                required: 'Enter this!',
             },
         },
     ],

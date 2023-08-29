@@ -69,9 +69,9 @@ describe(`TUI_IS_MOBILE`, () => {
                         {
                             provide: NAVIGATOR,
                             useValue: {
-                                userAgent: `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36`,
-                                platform: `MacIntel`,
                                 maxTouchPoints: 0,
+                                platform: `MacIntel`,
+                                userAgent: `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36`,
                             },
                         },
                     ],
@@ -111,13 +111,13 @@ describe(`TUI_IS_MOBILE`, () => {
                         {
                             provide: NAVIGATOR,
                             useValue: {
+                                maxTouchPoints: 5,
+                                platform: `Linux i686`,
                                 userAgent:
                                     `Mozilla/5.0 (Linux; Android 11; Android SDK built for x86` +
                                     ` Build/RSR1.210210.001.A1;wv)` +
                                     ` AppleWebKit/537.36` +
                                     ` (KHTML, like Gecko) Version 4.0 Chrome/83.0.4103.106 Mobile Safari/537.36`,
-                                platform: `Linux i686`,
-                                maxTouchPoints: 5,
                             },
                         },
                     ],

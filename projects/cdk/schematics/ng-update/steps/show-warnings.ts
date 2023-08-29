@@ -32,8 +32,8 @@ function showWarning(
         const sourceFile = ref.getSourceFile();
 
         return {
-            sourceFile,
             filePath: sourceFile.getFilePath().toString(),
+            sourceFile,
             startLinePos: ref.getStartLinePos(),
         } as const;
     });
@@ -43,7 +43,7 @@ function showWarning(
      * > Attempted to get information from a node that was removed or forgotten.
      * See this {@link https://ts-morph.com/manipulation/#strongwarningstrong warning}
      */
-    referencesMeta.forEach(({sourceFile, filePath, startLinePos}) => {
+    referencesMeta.forEach(({filePath, sourceFile, startLinePos}) => {
         logger.warn(`[WARNING] in ${filePath}: ${message}`);
         sourceFile.insertText(startLinePos, `// TODO: (Taiga UI migration) ${message}\n`);
     });

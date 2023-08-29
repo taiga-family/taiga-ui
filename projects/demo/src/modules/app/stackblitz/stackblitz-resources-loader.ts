@@ -37,7 +37,7 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
         const [styles] = tuiTryParseMarkdownCodeBlock(stylesContent);
         const [appModuleTs] = tuiTryParseMarkdownCodeBlock(appModuleTsContent);
 
-        return {angularJson, tsconfig, mainTs, indexHtml, polyfills, appModuleTs, styles};
+        return {styles, angularJson, appModuleTs, indexHtml, mainTs, polyfills, tsconfig};
     }
 
     static async getReadMeFiles(): Promise<{stackblitzReadMe: string}> {

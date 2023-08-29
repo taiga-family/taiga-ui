@@ -186,7 +186,7 @@ export class TuiInputDateTimeComponent
     }
 
     get computedValue(): string {
-        const {value, nativeValue, timeMode} = this;
+        const {nativeValue, timeMode, value} = this;
         const [date, time] = value;
         const hasTimeInputChars = nativeValue.length > DATE_FILLER_LENGTH;
 
@@ -214,7 +214,7 @@ export class TuiInputDateTimeComponent
     }
 
     get computedActiveYearMonth(): TuiMonth {
-        const {computedMin, computedMax} = this;
+        const {computedMax, computedMin} = this;
 
         return (
             this.month ||
@@ -350,11 +350,11 @@ export class TuiInputDateTimeComponent
         dateSeparator: string,
     ): MaskitoOptions {
         return maskitoDateTimeOptionsGenerator({
-            timeMode,
-            dateSeparator,
             dateMode: TUI_DATE_MODE_MASKITO_ADAPTER[dateFormat],
-            min: this.toNativeDate(min),
+            dateSeparator,
             max: this.toNativeDate(max),
+            min: this.toNativeDate(min),
+            timeMode,
         });
     }
 
@@ -382,7 +382,7 @@ export class TuiInputDateTimeComponent
     }
 
     private clampTime(time: TuiTime, day: TuiDay): TuiTime {
-        const {computedMin, computedMax} = this;
+        const {computedMax, computedMin} = this;
 
         const ms = time.toAbsoluteMilliseconds();
         const min =
@@ -409,7 +409,7 @@ export class TuiInputDateTimeComponent
             return value.toLocalNativeDate();
         }
 
-        const [{year, month, day}, {hours, minutes, seconds, ms}] = value;
+        const [{day, month, year}, {hours, minutes, ms, seconds}] = value;
 
         return new Date(year, month, day, hours, minutes, seconds, ms);
     }

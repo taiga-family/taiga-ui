@@ -8,9 +8,9 @@ import {TUI_IS_E2E} from '@taiga-ui/cdk';
     selector: 'tui-button-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    host: {'[class._e2e]': 'isE2E'},
     changeDetection,
     encapsulation,
+    host: {'[class._e2e]': 'isE2E'},
 })
 export class TuiButtonExample1 {
     readonly avatarUrl = assets`/images/avatar.jpg`;

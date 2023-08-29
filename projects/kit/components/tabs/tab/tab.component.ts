@@ -24,6 +24,7 @@ import {TUI_TAB_EVENT, TUI_TAB_PROVIDERS} from './tab.providers';
     providers: TUI_TAB_PROVIDERS,
     host: {
         '($.data-mode.attr)': 'mode$',
+        '[style.--tui-tab-margin.px]': 'margin',
         /**
          * SSR hack - problem with the Domino renderer that Angular uses for its server-side DOM implementation.
          * Domino doesn't support CSS variables and some CSS properties like clip-path.
@@ -33,7 +34,6 @@ import {TUI_TAB_EVENT, TUI_TAB_PROVIDERS} from './tab.providers';
          * https://github.com/angular/angular/issues/42170
          */
         '[style.cursor]': '"pointer"',
-        '[style.--tui-tab-margin.px]': 'margin',
         type: 'button',
     },
 })

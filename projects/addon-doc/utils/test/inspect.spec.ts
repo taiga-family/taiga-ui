@@ -29,7 +29,7 @@ describe(`tuiInspectAny`, () => {
 
     describe(`object`, () => {
         it(`returns an empty object string when depth is zero`, () => {
-            const object = {foo: `bar`, baz: 42};
+            const object = {baz: 42, foo: `bar`};
             const depth = 0;
 
             expect(tuiInspectAny(object, depth)).toBe(`{…}`);

@@ -26,9 +26,9 @@ describe(`Avatar component options`, () => {
             declarations: [TestComponent],
             providers: [
                 tuiAvatarOptionsProvider({
-                    size: `l`,
                     autoColor: true,
                     rounded: true,
+                    size: `l`,
                 }),
             ],
         });

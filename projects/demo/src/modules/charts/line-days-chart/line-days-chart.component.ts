@@ -18,15 +18,15 @@ export class ExampleTuiLineDaysChartComponent {
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
+        TypeScript: import('./examples/2/index.ts?raw'),
         'pipe.ts': import('./examples/2/pipe.ts?raw'),
     };
 
@@ -64,7 +64,7 @@ export class ExampleTuiLineDaysChartComponent {
     ];
 
     readonly xStringifyVariants$: Observable<ReadonlyArray<TuiStringHandler<TuiDay>>> =
-        this.months$.pipe(map(months => [({month, day}) => `${months[month]}, ${day}`]));
+        this.months$.pipe(map(months => [({day, month}) => `${months[month]}, ${day}`]));
 
     readonly hintContentVariants$: Observable<
         ReadonlyArray<PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>>>

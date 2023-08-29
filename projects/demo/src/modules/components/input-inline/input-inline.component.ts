@@ -16,21 +16,21 @@ export class ExampleTuiInputInlineComponent extends AbstractExampleTuiControl {
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/component.ts?raw'),
         HTML: import('./examples/1/template.html?raw'),
         LESS: import('./examples/1/style.less?raw'),
+        TypeScript: import('./examples/1/component.ts?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/component.ts?raw'),
         HTML: import('./examples/2/template.html?raw'),
         LESS: import('./examples/2/style.less?raw'),
+        TypeScript: import('./examples/2/component.ts?raw'),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/component.ts?raw'),
         HTML: import('./examples/3/template.html?raw'),
         LESS: import('./examples/3/style.less?raw'),
+        TypeScript: import('./examples/3/component.ts?raw'),
     };
 
     control = new FormControl('111', Validators.required);

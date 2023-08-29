@@ -3,9 +3,9 @@ import {AbstractTuiThemeSwitcher} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tui-theme-ios',
-    styleUrls: ['./theme-ios.style.less'],
     template: '',
-    encapsulation: ViewEncapsulation.None,
+    styleUrls: ['./theme-ios.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
 })
 export class TuiThemeIosComponent extends AbstractTuiThemeSwitcher {}

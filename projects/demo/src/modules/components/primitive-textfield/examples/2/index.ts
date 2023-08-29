@@ -21,7 +21,7 @@ import {
     changeDetection,
     encapsulation,
     providers: [
-        tuiTextfieldOptionsProvider({iconCleaner: 'tuiIconEdit2', hintOnDisabled: true}),
+        tuiTextfieldOptionsProvider({hintOnDisabled: true, iconCleaner: 'tuiIconEdit2'}),
     ],
 })
 export class TuiPrimitiveTextfieldExample2 extends AbstractTuiControl<string> {

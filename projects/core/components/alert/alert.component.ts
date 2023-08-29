@@ -23,14 +23,14 @@ import {TUI_ALERT_POSITION} from './alert.providers';
     templateUrl: './alert.template.html',
     styleUrls: ['./alert.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService],
     animations: [tuiFadeIn, tuiSlideIn, tuiHeightCollapse],
+    providers: [TuiDestroyService],
     host: {
-        role: 'alert',
-        '[style.margin]': 'position',
         '[@tuiFadeIn]': 'options',
-        '[@tuiSlideIn]': 'animation',
         '[@tuiHeightCollapse]': 'animation',
+        '[@tuiSlideIn]': 'animation',
+        '[style.margin]': 'position',
+        role: 'alert',
     },
 })
 export class TuiAlertComponent<O, I> implements OnInit {

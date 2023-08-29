@@ -37,7 +37,7 @@ export class TuiDroppableDirective {
             nativeElement,
             'dragenter',
         ).pipe(
-            switchMap(({target, dataTransfer}) =>
+            switchMap(({dataTransfer, target}) =>
                 merge(
                     tuiTypedFromEvent(nativeElement, 'dragleave').pipe(
                         filter(event => event.target === target),

@@ -11,8 +11,8 @@ export default async (
     config: Cypress.PluginConfigOptions,
 ): Promise<void> => {
     await tuiAddSnapshotPlugin(on, config, {
-        newSnapshotMarkFn: oldFileName => `==new==${oldFileName}`,
         newSnapshotMarkEnabled: config.baseUrl === `http://localhost:3333/`,
+        newSnapshotMarkFn: oldFileName => `==new==${oldFileName}`,
     });
 
     on(`before:browser:launch`, (browser, launchOptions) => {

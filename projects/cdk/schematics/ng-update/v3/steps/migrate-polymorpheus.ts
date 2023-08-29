@@ -16,9 +16,9 @@ import {
 import {TemplateResource} from '../../interfaces/template-resource';
 
 export function migratePolymorpheus({
-    resource,
     fileSystem,
     recorder,
+    resource,
 }: {
     fileSystem: DevkitFileSystem;
     recorder: UpdateRecorder;
@@ -45,17 +45,17 @@ export function migratePolymorpheus({
         if (defaultTemplateEl) {
             insertPolymorpheusWithDefault({
                 template,
+                contentVal,
+                contextVal,
                 defaultTemplateEl,
                 recorder,
                 templateOffset,
-                contentVal,
-                contextVal,
             });
         } else {
             insertPolymorpheus({
-                element,
                 contentVal,
                 contextVal,
+                element,
                 recorder,
                 templateOffset,
             });
@@ -66,9 +66,9 @@ export function migratePolymorpheus({
 }
 
 function insertPolymorpheus({
-    element,
     contentVal,
     contextVal,
+    element,
     recorder,
     templateOffset,
 }: {
@@ -116,11 +116,11 @@ function removeOldInputs(
 
 function insertPolymorpheusWithDefault({
     template,
+    contentVal,
+    contextVal,
     defaultTemplateEl,
     recorder,
     templateOffset,
-    contentVal,
-    contextVal,
 }: {
     contentVal: string;
     contextVal?: string;

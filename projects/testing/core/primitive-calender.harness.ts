@@ -10,7 +10,7 @@ export class TuiPrimitiveCalendarHarness extends TuiComponentHarness {
 
     async clickDay(day: number): Promise<void> {
         const dayCell = await this.locatorFor(
-            TuiDayCellHarness.with({day, ancestor: `#date-rows`}),
+            TuiDayCellHarness.with({ancestor: `#date-rows`, day}),
         )();
 
         return dayCell.click();
@@ -18,7 +18,7 @@ export class TuiPrimitiveCalendarHarness extends TuiComponentHarness {
 
     async hoverDay(day: number): Promise<void> {
         const dayCell = await this.locatorFor(
-            TuiDayCellHarness.with({day, ancestor: `#date-rows`}),
+            TuiDayCellHarness.with({ancestor: `#date-rows`, day}),
         )();
 
         return dayCell.hover();

@@ -43,8 +43,8 @@ export function tuiCreateAutoCorrectedTimePipe(
         return isInvalid
             ? false
             : {
-                  value: conformedValueArr.join(``),
                   indexesOfPipedChars,
+                  value: conformedValueArr.join(``),
               };
     };
 }

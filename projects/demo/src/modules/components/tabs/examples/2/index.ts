@@ -23,16 +23,16 @@ import {TuiAlertService} from '@taiga-ui/core';
 export class TuiTabsExample2 {
     readonly items = [
         {
-            text: 'Maps',
             icon: 'tuiIconCreditCard',
+            text: 'Maps',
         },
         {
-            text: 'Calls',
             icon: 'tuiIconPhone',
+            text: 'Calls',
         },
         {
-            text: 'Settings',
             icon: 'tuiIconSettings',
+            text: 'Settings',
         },
     ];
 

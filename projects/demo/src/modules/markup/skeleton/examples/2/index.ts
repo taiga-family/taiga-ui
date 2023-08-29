@@ -13,14 +13,14 @@ import {TuiTime} from '@taiga-ui/cdk';
 })
 export class TuiSkeletonExample2 {
     testForm = new FormGroup({
-        nameValue: new FormControl('', Validators.required),
-        passwordValue: new FormControl('', Validators.required),
-        moneyValue: new FormControl('100', Validators.required),
-        timeValue: new FormControl(new TuiTime(12, 30), Validators.required),
-        osnoValue: new FormControl(false),
-        usnValue: new FormControl(false),
-        eshnValue: new FormControl(false),
         envdValue: new FormControl(false),
+        eshnValue: new FormControl(false),
+        moneyValue: new FormControl('100', Validators.required),
+        nameValue: new FormControl('', Validators.required),
+        osnoValue: new FormControl(false),
+        passwordValue: new FormControl('', Validators.required),
+        timeValue: new FormControl(new TuiTime(12, 30), Validators.required),
+        usnValue: new FormControl(false),
     });
 
     skeletonVisible = false;

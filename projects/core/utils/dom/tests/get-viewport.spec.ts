@@ -29,8 +29,8 @@ describe(`viewport`, () => {
             expect(
                 tuiIsMobile(
                     {
-                        innerWidth: logicalIphoneWidth,
                         document: {documentElement: {clientWidth: emulatedDesktopWidth}},
+                        innerWidth: logicalIphoneWidth,
                     } as unknown as Window,
                     {mobile: mobileBreakPoint} as unknown as TuiMedia,
                 ),
@@ -41,8 +41,8 @@ describe(`viewport`, () => {
             expect(
                 tuiIsMobile(
                     {
-                        innerWidth: logicalIphoneWidth,
                         document: {documentElement: {clientWidth: logicalIphoneWidth}},
+                        innerWidth: logicalIphoneWidth,
                     } as unknown as Window,
                     {mobile: mobileBreakPoint} as unknown as TuiMedia,
                 ),
@@ -53,8 +53,8 @@ describe(`viewport`, () => {
             expect(
                 tuiIsMobile(
                     {
-                        innerWidth: 768 /* px */,
                         document: {documentElement: {clientWidth: 768 /* px */}},
+                        innerWidth: 768 /* px */,
                     } as unknown as Window,
                     {mobile: mobileBreakPoint} as unknown as TuiMedia,
                 ),
@@ -65,8 +65,8 @@ describe(`viewport`, () => {
             expect(
                 tuiIsMobile(
                     {
-                        innerWidth: 767 /* px */,
                         document: {documentElement: {clientWidth: 767 /* px */}},
+                        innerWidth: 767 /* px */,
                     } as unknown as Window,
                     {mobile: mobileBreakPoint} as unknown as TuiMedia,
                 ),

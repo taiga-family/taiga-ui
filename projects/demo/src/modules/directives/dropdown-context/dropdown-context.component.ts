@@ -21,20 +21,20 @@ export class ExampleTuiDropdownContextComponent extends AbstractExampleTuiDropdo
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
     readonly exampleBasic: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 
     readonly exampleContextMenu: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
+        TypeScript: import('./examples/2/index.ts?raw'),
     };
 
     readonly exampleReportMistakeForm: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
+        TypeScript: import('./examples/3/index.ts?raw'),
     };
 }

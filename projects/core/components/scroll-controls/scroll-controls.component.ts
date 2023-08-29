@@ -44,7 +44,7 @@ export class TuiScrollControlsComponent {
     ) {}
 
     private get scrollbars(): [boolean, boolean] {
-        const {clientHeight, scrollHeight, clientWidth, scrollWidth} =
+        const {clientHeight, clientWidth, scrollHeight, scrollWidth} =
             this.scrollRef.nativeElement;
 
         return [

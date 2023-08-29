@@ -12,7 +12,7 @@ export class ExampleTuiIsPresentComponent {
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/component.ts?raw'),
         HTML: import('./examples/1/template.html?raw'),
+        TypeScript: import('./examples/1/component.ts?raw'),
     };
 }

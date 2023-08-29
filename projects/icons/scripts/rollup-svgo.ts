@@ -13,8 +13,8 @@ export interface TuiRollupSvgoConfig {
 }
 
 export function tuiRollupSvgo({
-    include = `**/*.svg`,
     exclude,
+    include = `**/*.svg`,
     options,
 }: TuiRollupSvgoConfig = {}): Plugin {
     const filter = createFilter(include, exclude);

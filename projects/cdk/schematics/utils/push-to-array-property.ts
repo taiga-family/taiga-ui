@@ -5,8 +5,8 @@ export function pushToObjectArrayProperty(
     propertyName: string,
     initializer: string,
     {
-        unique = false,
         forceToArray = false,
+        unique = false,
     }: {forceToArray?: boolean; unique?: boolean} = {},
 ): void {
     const property =

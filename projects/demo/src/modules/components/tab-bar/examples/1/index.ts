@@ -20,27 +20,27 @@ export class TuiTabBarExample1 {
 
     readonly items = [
         {
-            text: 'Favorites',
-            icon: 'tuiIconHeartLarge',
             badge: 3,
+            icon: 'tuiIconHeartLarge',
+            text: 'Favorites',
         },
         {
-            text: 'Calls',
-            icon: 'tuiIconPhoneLarge',
             badge: 1234,
+            icon: 'tuiIconPhoneLarge',
+            text: 'Calls',
         },
         {
-            text: 'Profile',
             icon: 'tuiIconUserLarge',
+            text: 'Profile',
         },
         {
-            text: 'Settings and configuration',
-            icon: 'tuiIconSettingsLarge',
             badge: 100,
+            icon: 'tuiIconSettingsLarge',
+            text: 'Settings and configuration',
         },
         {
-            text: 'More',
             icon: 'tuiIconMoreHorizontalLarge',
+            text: 'More',
         },
     ];
 

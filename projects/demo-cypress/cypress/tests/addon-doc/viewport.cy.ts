@@ -54,7 +54,7 @@ describe(`Viewport`, () => {
             Cypress.env(`fonts`) ?? [],
         );
 
-        for (const [breakpoint, {width, font}] of fonts) {
+        for (const [breakpoint, {font, width}] of fonts) {
             it(breakpoint, () => {
                 cy.viewport(width, 900).tuiVisit(`/breakpoints`, {
                     waitRenderedFont: new RegExp(font),

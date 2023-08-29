@@ -2,8 +2,8 @@ import {HTML_EDITOR_BASIC_EXAMPLE} from '@demo-cypress/support/editor/html';
 
 export function tuiVisitEditorApiPage({
     content,
-    maxHeight,
     enableNightMode,
+    maxHeight,
     skipDecodingUrl,
 }: Partial<{
     content: string;
@@ -16,9 +16,9 @@ export function tuiVisitEditorApiPage({
             maxHeight ?? 600
         }`,
         {
-            skipExpectUrl: true,
             enableNightMode: enableNightMode ?? false,
             skipDecodingUrl: skipDecodingUrl ?? false,
+            skipExpectUrl: true,
         },
     );
 

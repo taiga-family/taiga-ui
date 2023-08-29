@@ -17,9 +17,9 @@ export interface TuiItemsHandlers<T> {
 }
 
 export const TUI_DEFAULT_ITEMS_HANDLERS: TuiItemsHandlers<unknown> = {
-    stringify: TUI_DEFAULT_STRINGIFY,
-    identityMatcher: TUI_DEFAULT_IDENTITY_MATCHER,
     disabledItemHandler: ALWAYS_FALSE_HANDLER,
+    identityMatcher: TUI_DEFAULT_IDENTITY_MATCHER,
+    stringify: TUI_DEFAULT_STRINGIFY,
 };
 
 /**

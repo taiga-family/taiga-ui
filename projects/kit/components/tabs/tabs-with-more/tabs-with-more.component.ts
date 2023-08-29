@@ -175,7 +175,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
 
     onWrapperArrow(event: Event, wrapper: HTMLElement, previous: boolean): void {
         const button: HTMLButtonElement = event.target as HTMLButtonElement;
-        const target = tuiGetClosestFocusable({initial: button, root: wrapper, previous});
+        const target = tuiGetClosestFocusable({initial: button, previous, root: wrapper});
 
         if (target) {
             target.focus();
@@ -197,7 +197,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     }
 
     private getMaxIndex(): number {
-        const {tabs, activeItemIndex, margin} = this;
+        const {activeItemIndex, margin, tabs} = this;
 
         if (tabs.length < 2) {
             return 0;

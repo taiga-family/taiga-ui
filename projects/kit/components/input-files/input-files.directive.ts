@@ -8,8 +8,8 @@ import {TUI_INPUT_FILES_OPTIONS, TuiInputFilesOptions} from './input-files.optio
 @Directive({
     selector: 'input[tuiInputFiles]',
     host: {
-        type: 'file',
         class: 't-native',
+        type: 'file',
     },
 })
 export class TuiInputFilesDirective {

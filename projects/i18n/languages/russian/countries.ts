@@ -210,10 +210,10 @@ export const TUI_RUSSIAN_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> =
     [TuiCountryIsoCode.VN]: `Вьетнам`,
     [TuiCountryIsoCode.VU]: `Вануату `,
     [TuiCountryIsoCode.WS]: `Самоа`,
+    [TuiCountryIsoCode.XK]: `Косово`,
     [TuiCountryIsoCode.YE]: `Йемен `,
     [TuiCountryIsoCode.YT]: `Майотта`,
     [TuiCountryIsoCode.ZA]: `Южно-Африканская Респ.`,
     [TuiCountryIsoCode.ZM]: `Замбия`,
     [TuiCountryIsoCode.ZW]: `Зимбабве`,
-    [TuiCountryIsoCode.XK]: `Косово`,
 };

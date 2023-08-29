@@ -24,9 +24,9 @@ export class TuiAlertsExampleComponent2 {
     showWithdrawAlert(): void {
         this.alerts
             .open(this.withdrawTemplate || '', {
+                autoClose: false,
                 label: 'A template sample',
                 status: 'warning',
-                autoClose: false,
             })
             .subscribe();
     }
@@ -34,9 +34,9 @@ export class TuiAlertsExampleComponent2 {
     showDepositAlert(): void {
         this.alerts
             .open(this.depositTemplate || '', {
+                autoClose: false,
                 label: 'A template sample',
                 status: 'success',
-                autoClose: false,
             })
             .subscribe();
     }

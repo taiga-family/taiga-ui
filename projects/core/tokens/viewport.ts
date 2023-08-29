@@ -10,17 +10,17 @@ export const TUI_VIEWPORT = new InjectionToken<TuiRectAccessor>(`[TUI_VIEWPORT]`
         const win = inject(WINDOW);
 
         return {
-            type: `viewport`,
             getClientRect() {
                 return {
-                    top: 0,
+                    bottom: win.innerHeight,
+                    height: win.innerHeight,
                     left: 0,
                     right: win.innerWidth,
-                    bottom: win.innerHeight,
+                    top: 0,
                     width: win.innerWidth,
-                    height: win.innerHeight,
                 };
             },
+            type: `viewport`,
         };
     },
 });

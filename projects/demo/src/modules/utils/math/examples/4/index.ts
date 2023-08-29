@@ -13,12 +13,12 @@ import {tuiQuantize} from '@taiga-ui/cdk';
 })
 export class TuiMathExample4 {
     parametersForm = new FormGroup({
-        value: new FormControl(3),
         quantum: new FormControl(2),
+        value: new FormControl(3),
     });
 
     get quantized(): number {
-        const {value, quantum} = this.parametersForm.value;
+        const {quantum, value} = this.parametersForm.value;
 
         return tuiQuantize(value ?? 3, quantum ?? 2);
     }

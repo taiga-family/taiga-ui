@@ -9,19 +9,19 @@ describe(`TuiDocCodeComponent`, () => {
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
-            declarations: [TuiDocCodeComponent],
             imports: [HighlightModule],
+            declarations: [TuiDocCodeComponent],
             providers: [
                 {
                     provide: HIGHLIGHT_OPTIONS,
                     useValue: {
                         coreLibraryLoader: async () => import(`highlight.js/lib/core`),
-                        lineNumbersLoader: async () =>
-                            import(`highlightjs-line-numbers.js`),
                         languages: {
                             typescript: async () =>
                                 import(`highlight.js/lib/languages/typescript`),
                         },
+                        lineNumbersLoader: async () =>
+                            import(`highlightjs-line-numbers.js`),
                     },
                 },
             ],

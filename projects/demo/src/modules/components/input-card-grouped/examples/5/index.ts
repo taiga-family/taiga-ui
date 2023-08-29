@@ -7,17 +7,17 @@ import {of} from 'rxjs';
 @Component({
     selector: 'tui-input-card-grouped-example-5',
     templateUrl: './index.html',
+    changeDetection,
     providers: [
         {
             provide: TUI_INPUT_CARD_GROUPED_TEXTS,
             useValue: of({
                 cardNumberText: 'Number',
-                expiryText: 'mm/yy',
                 cvcText: 'Code',
+                expiryText: 'mm/yy',
             }),
         },
     ],
-    changeDetection,
 })
 export class TuiInputCardGroupedExample5 {
     readonly control = new FormControl({

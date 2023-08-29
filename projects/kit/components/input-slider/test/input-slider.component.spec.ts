@@ -49,16 +49,16 @@ class TestComponent {
 }
 
 const testContext = {
-    get textInputInsideAutoId() {
-        return `tui-primitive-textfield__native-input`;
+    get customContentAutoId() {
+        return `tui-primitive-textfield__custom-content`;
     },
 
     get textInputCustomValueAutoId() {
         return `tui-primitive-textfield__value`;
     },
 
-    get customContentAutoId() {
-        return `tui-primitive-textfield__custom-content`;
+    get textInputInsideAutoId() {
+        return `tui-primitive-textfield__native-input`;
     },
 
     get valueDecorationAutoId() {

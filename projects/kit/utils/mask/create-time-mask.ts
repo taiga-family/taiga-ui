@@ -25,7 +25,7 @@ export function tuiCreateTimeMask(
     mode: TuiTimeMode,
     maxValues: Partial<Record<TuiTimeFormatParts, number>> = {},
 ): TuiTextMaskList {
-    const {HH, MM, SS, MS} = {
+    const {HH, MM, MS, SS} = {
         ...MAX_TIME_VALUES,
         ...maxValues,
     };

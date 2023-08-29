@@ -35,12 +35,12 @@ export class TuiSelectExample11 {
     ];
 
     customItems: readonly Item[] = [
-        {name: 'Luke Skywalker', id: 1},
-        {name: 'Leia Organa Solo', id: 2},
-        {name: 'Darth Vader', id: 3},
-        {name: 'Han Solo', id: 4},
-        {name: 'Obi-Wan Kenobi', id: 5},
-        {name: 'Yoda', id: 6},
+        {id: 1, name: 'Luke Skywalker'},
+        {id: 2, name: 'Leia Organa Solo'},
+        {id: 3, name: 'Darth Vader'},
+        {id: 4, name: 'Han Solo'},
+        {id: 5, name: 'Obi-Wan Kenobi'},
+        {id: 6, name: 'Yoda'},
     ];
 
     labels = ['Salad', 'Soup'];

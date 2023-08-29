@@ -8,6 +8,8 @@ import type {TuiSelectDirective} from '../select.directive';
 @Component({
     selector: 'select[tuiSelect][labels]:not([multiple])',
     templateUrl: './native-select-group.template.html',
+    styleUrls: ['./native-select.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsDataList(TuiNativeSelectGroupComponent),
         {
@@ -21,14 +23,12 @@ import type {TuiSelectDirective} from '../select.directive';
         },
     ],
     host: {
+        '(change)': 'onValueChange($event.target.options.selectedIndex)',
         '[attr.aria-invalid]': 'host.invalid',
         '[disabled]': 'host.disabled || control.readOnly',
         '[tabIndex]': 'host.focusable ? 0 : -1',
         '[value]': 'host.value',
-        '(change)': 'onValueChange($event.target.options.selectedIndex)',
     },
-    styleUrls: ['./native-select.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiNativeSelectGroupComponent<T> extends AbstractTuiNativeSelect<
     TuiSelectDirective,

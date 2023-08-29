@@ -52,32 +52,27 @@ crypto.createHash = (algorithm: string) =>
     fallbackCreateHash(algorithm === `md4` ? `sha256` : algorithm);
 
 const TERSER_PLUGIN = new TerserPlugin({
-    parallel: true,
     extractComments: false,
+    parallel: true,
     terserOptions: {
-        ecma: 2015,
-        mangle: true,
-        module: true,
-        sourceMap: false,
         compress: {
-            passes: 3,
-            keep_fnames: false,
-            keep_classnames: false,
-            pure_funcs: [`forwardRef`],
             global_defs: GLOBAL_DEFS_FOR_TERSER_WITH_AOT,
+            keep_classnames: false,
+            keep_fnames: false,
+            passes: 3,
+            pure_funcs: [`forwardRef`],
         },
+        ecma: 2015,
         format: {
             comments: false,
         },
+        mangle: true,
+        module: true,
+        sourceMap: false,
     },
 });
 
 const config: Configuration = {
-    resolve: {
-        fallback: {
-            punycode: false,
-        },
-    },
     module: {
         /**
          * With Webpack 5, the raw-loader is no longer needed.
@@ -86,17 +81,22 @@ const config: Configuration = {
          */
         rules: [
             {
-                test: /\.(ts|html|css|less|md|svg)$/i,
                 resourceQuery: RAW_TS_QUERY,
+                test: /\.(ts|html|css|less|md|svg)$/i,
                 type: `asset/source`,
             },
         ],
     },
+    resolve: {
+        fallback: {
+            punycode: false,
+        },
+    },
     ...(CI_MODE
         ? {
               mode: `production`,
-              plugins: [TERSER_PLUGIN],
               optimization: {minimize: true, minimizer: [TERSER_PLUGIN]},
+              plugins: [TERSER_PLUGIN],
           }
         : {}),
 };

@@ -15,9 +15,9 @@ import {race} from 'rxjs';
 import {filter, map, switchMap, take, takeUntil, tap} from 'rxjs/operators';
 
 const STYLE = {
-    transform: 'scale(0.95)',
-    opacity: '0.6',
     background: 'rgba(146, 153, 162, 0.12)',
+    opacity: '0.6',
+    transform: 'scale(0.95)',
 } as const;
 
 @Directive({

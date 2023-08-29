@@ -26,6 +26,6 @@ export class TuiFadeInExample {
 
     @tuiPure
     getAnimation(duration: number): TuiDurationOptions {
-        return {value: '', params: {duration}};
+        return {params: {duration}, value: ''};
     }
 }

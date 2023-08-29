@@ -15,13 +15,13 @@ export interface TuiSheetOptions<I = undefined, O = unknown> {
 }
 
 export const TUI_SHEET_DEFAULT_OPTIONS: Omit<TuiSheetOptions, 'data'> = {
+    closeable: true,
     image: ``,
     imageSlide: true,
-    stops: [],
     initial: 0,
     offset: 16,
-    closeable: true,
     overlay: false,
+    stops: [],
 };
 
 /**

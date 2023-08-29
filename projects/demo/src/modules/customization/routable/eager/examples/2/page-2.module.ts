@@ -12,8 +12,6 @@ import {TuiPage2ExampleComponent} from './page-2.component';
         TuiRoutableDialogModule,
         RouterModule.forChild([
             {
-                path: ``,
-                component: TuiPage2ExampleComponent,
                 children: [
                     // step 3: use tuiGenerateDialogableRoute inside children property
                     {
@@ -23,6 +21,8 @@ import {TuiPage2ExampleComponent} from './page-2.component';
                         outlet: `myOutlet`,
                     },
                 ],
+                component: TuiPage2ExampleComponent,
+                path: ``,
             },
         ]),
         TuiButtonModule,

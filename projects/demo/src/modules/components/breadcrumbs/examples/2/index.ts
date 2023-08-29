@@ -6,6 +6,8 @@ import {tuiBreadcrumbsOptionsProvider} from '@taiga-ui/kit';
 @Component({
     selector: 'tui-breadcrumbs-example-2',
     templateUrl: './index.html',
+    changeDetection,
+    encapsulation,
     providers: [
         tuiBreadcrumbsOptionsProvider({
             icon: 'tuiIconArrowRight',
@@ -13,8 +15,6 @@ import {tuiBreadcrumbsOptionsProvider} from '@taiga-ui/kit';
             size: 'l',
         }),
     ],
-    changeDetection,
-    encapsulation,
 })
 export class TuiBreadcrumbsExample2 {
     readonly items = [

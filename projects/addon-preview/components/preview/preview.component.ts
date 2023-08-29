@@ -103,7 +103,7 @@ export class TuiPreviewComponent {
     }
 
     onMutation(contentWrapper: HTMLElement): void {
-        const {clientWidth, clientHeight} = contentWrapper;
+        const {clientHeight, clientWidth} = contentWrapper;
 
         this.refresh(clientWidth, clientHeight);
     }
@@ -119,7 +119,7 @@ export class TuiPreviewComponent {
             return;
         }
 
-        const {width, height} = contentResizeEntries[0].contentRect;
+        const {height, width} = contentResizeEntries[0].contentRect;
 
         this.refresh(width, height);
     }

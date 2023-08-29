@@ -8,9 +8,9 @@ describe(`tuiGetMaxAllowedPhoneLength`, () => {
         fn = (isoCode: TuiCountryIsoCode) =>
             tuiGetMaxAllowedPhoneLength(
                 {
-                    [TuiCountryIsoCode.US]: `+1 (###) ###-####`,
-                    [TuiCountryIsoCode.GB]: `+44 #### ######`,
                     [TuiCountryIsoCode.AU]: `+61 #### ####`,
+                    [TuiCountryIsoCode.GB]: `+44 #### ######`,
+                    [TuiCountryIsoCode.US]: `+1 (###) ###-####`,
                 } as Record<TuiCountryIsoCode, string>,
                 isoCode,
             );

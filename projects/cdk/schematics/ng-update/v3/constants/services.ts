@@ -14,24 +14,20 @@ export const SERVICES_TO_REPLACE: ReplacementService[] = [
         from: {
             name: `TuiNotificationsService`,
         },
-        to: {
-            name: `TuiAlertService`,
-            moduleSpecifier: `@taiga-ui/core`,
-        },
         replaceMethods: [
             {
                 from: `show`,
                 to: `open`,
             },
         ],
+        to: {
+            name: `TuiAlertService`,
+            moduleSpecifier: `@taiga-ui/core`,
+        },
     },
     {
         from: {
             name: `TuiCodeEditor`,
-        },
-        to: {
-            name: `TuiCodeEditor`,
-            moduleSpecifier: `@taiga-ui/addon-doc`,
         },
         replaceMethods: [
             {
@@ -39,6 +35,10 @@ export const SERVICES_TO_REPLACE: ReplacementService[] = [
                 to: `edit`,
             },
         ],
+        to: {
+            name: `TuiCodeEditor`,
+            moduleSpecifier: `@taiga-ui/addon-doc`,
+        },
     },
     {
         from: {

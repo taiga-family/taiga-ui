@@ -39,7 +39,7 @@ const TRANSFORM = {
     styleUrls: ['./pie-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     viewProviders: [
-        tuiHintOptionsProvider({direction: 'top-right', appearance: 'onDark'}),
+        tuiHintOptionsProvider({appearance: 'onDark', direction: 'top-right'}),
     ],
 })
 export class TuiPieChartComponent {

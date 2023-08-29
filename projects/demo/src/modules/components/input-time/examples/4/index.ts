@@ -11,9 +11,9 @@ import {tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
     encapsulation,
     providers: [
         tuiInputTimeOptionsProvider({
+            maxValues: {HH: 47, MM: 59, MS: 999, SS: 59},
             mode: 'HH:MM',
             postfix: 'left',
-            maxValues: {HH: 47, MM: 59, SS: 59, MS: 999},
         }),
     ],
 })

@@ -20,10 +20,10 @@ export class TuiPushExample2 {
     onClick(): void {
         this.push
             .open('This is <strong>heavy</strong>!', {
-                heading: 'Great Scott!',
-                type: 'Quote',
-                icon: 'tuiIconVideoLarge',
                 buttons: ['Roads?', '1.21 Gigawatts!?!'],
+                heading: 'Great Scott!',
+                icon: 'tuiIconVideoLarge',
+                type: 'Quote',
             })
             .pipe(
                 take(1),

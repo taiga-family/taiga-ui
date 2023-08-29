@@ -33,10 +33,10 @@ export class TuiCalendarSheetPipe implements PipeTransform {
 
             for (let colIndex = 0; colIndex < DAYS_IN_WEEK; colIndex++) {
                 const day = getDayFromMonthRowCol({
-                    month,
-                    rowIndex,
                     colIndex,
                     firstDayOfWeek: this.firstDayOfWeek,
+                    month,
+                    rowIndex,
                 });
 
                 const isPrevMonthDay = (day: TuiDay, relativeToMonth = month): boolean =>

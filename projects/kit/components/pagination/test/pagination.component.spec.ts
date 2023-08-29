@@ -49,9 +49,9 @@ describe(`TuiPaginationComponent`, () => {
     };
 
     function setParams({
+        activePadding,
         index,
         length,
-        activePadding,
         sidePadding,
     }: TuiPaginationParams): void {
         if (tuiIsPresent<number>(index)) {

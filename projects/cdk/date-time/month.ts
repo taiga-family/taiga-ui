@@ -152,7 +152,7 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      * @param offset
      * @return new month and year object as a result of offsetting current
      */
-    override append({year = 0, month = 0}: TuiMonthLike): TuiMonth {
+    override append({month = 0, year = 0}: TuiMonthLike): TuiMonth {
         const totalMonths = (this.year + year) * MONTHS_IN_YEAR + this.month + month;
 
         return new TuiMonth(

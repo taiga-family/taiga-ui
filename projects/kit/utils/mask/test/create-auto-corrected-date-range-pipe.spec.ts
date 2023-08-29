@@ -12,11 +12,11 @@ function wrapper(
 ): string {
     return (
         tuiCreateAutoCorrectedDateRangePipe({
-            min,
-            max,
-            value,
             dateFormat: `DMY`,
             dateSeparator: `.`,
+            max,
+            min,
+            value,
         })(rawString, DUMMY) as TuiTextMaskPipeResult
     ).value;
 }

@@ -20,8 +20,8 @@ import {TuiSheetService} from '../../sheet.service';
     templateUrl: './sheets-host.template.html',
     styleUrls: ['./sheets-host.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService],
     animations: [tuiSlideInTop, tuiFadeIn],
+    providers: [TuiDestroyService],
 })
 export class TuiSheetsHostComponent implements OnInit {
     sheets: ReadonlyArray<TuiSheet<any>> = [];
@@ -43,7 +43,7 @@ export class TuiSheetsHostComponent implements OnInit {
         });
     }
 
-    close({closeable, $implicit}: TuiSheet<unknown>): void {
+    close({$implicit, closeable}: TuiSheet<unknown>): void {
         if (closeable) {
             $implicit.complete();
         }

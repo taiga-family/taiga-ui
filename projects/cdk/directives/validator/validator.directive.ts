@@ -14,8 +14,8 @@ import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
     providers: [
         {
             provide: NG_VALIDATORS,
-            useExisting: forwardRef(() => TuiValidatorDirective),
             multi: true,
+            useExisting: forwardRef(() => TuiValidatorDirective),
         },
     ],
 })

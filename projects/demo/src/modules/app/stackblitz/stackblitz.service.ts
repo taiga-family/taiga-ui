@@ -19,10 +19,10 @@ import {
 } from './utils';
 
 const APP_COMP_META = {
-    SELECTOR: `my-app`,
-    TEMPLATE_URL: `./app.component.html`,
-    STYLE_URLS: [`./app.component.less`],
     CLASS_NAME: `AppComponent`,
+    SELECTOR: `my-app`,
+    STYLE_URLS: [`./app.component.less`],
+    TEMPLATE_URL: `./app.component.html`,
 } as const;
 
 @Injectable()
@@ -74,51 +74,51 @@ export class TuiStackblitzService implements TuiCodeEditor {
 
         return stackblitz.openProject({
             ...(await this.getStackblitzProjectConfig()),
-            title: `${component}-${sampleId}`,
             description: `Taiga UI example of the component ${component}`,
             files: {
                 ...(await this.getBaseAngularProjectFiles()),
                 ...(await this.getStackblitzOnlyFiles(supportModulesTuples)),
                 ...modifiedSupportFiles,
-                [appPrefix`app.module.ts`]: appModule.toString(),
-                [appPrefix`app.component.ts`]: appCompTs.toString(),
                 [appPrefix`app.component.html`]: `<tui-root>\n\n${content.HTML}\n</tui-root>`,
                 [appPrefix`app.component.less`]: prepareLess(content.LESS || ``),
+                [appPrefix`app.component.ts`]: appCompTs.toString(),
+                [appPrefix`app.module.ts`]: appModule.toString(),
             },
+            title: `${component}-${sampleId}`,
         });
     }
 
     async openStarter(
-        {title, description, files}: Pick<Project, 'description' | 'files' | 'title'>,
+        {description, files, title}: Pick<Project, 'description' | 'files' | 'title'>,
         openOptions?: OpenOptions,
     ): Promise<void> {
         return stackblitz.openProject(
             {
                 ...(await this.getStackblitzProjectConfig()),
-                title,
                 description,
                 files: {
                     ...(await this.getBaseAngularProjectFiles()),
                     ...(await this.getStackblitzOnlyFiles()),
                     ...files,
                 },
+                title,
             },
             openOptions,
         );
     }
 
     private async getBaseAngularProjectFiles(): Promise<Project['files']> {
-        const {tsconfig, angularJson, mainTs, polyfills, indexHtml, styles, appModuleTs} =
+        const {styles, angularJson, appModuleTs, indexHtml, mainTs, polyfills, tsconfig} =
             await AbstractTuiStackblitzResourcesLoader.getProjectFiles();
 
         return {
-            'tsconfig.json': tsconfig,
             'angular.json': angularJson,
+            [appPrefix`app.module.ts`]: appModuleTs.toString(),
+            'src/index.html': indexHtml,
             'src/main.ts': mainTs,
             'src/polyfills.ts': polyfills,
-            'src/index.html': indexHtml,
             'src/styles.less': styles,
-            [appPrefix`app.module.ts`]: appModuleTs.toString(),
+            'tsconfig.json': tsconfig,
         };
     }
 

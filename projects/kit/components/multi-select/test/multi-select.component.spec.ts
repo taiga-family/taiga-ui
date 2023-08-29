@@ -292,7 +292,7 @@ describe(`MultiSelect`, () => {
                 providers: [
                     {
                         provide: TUI_ARROW_MODE,
-                        useValue: {interactive: `☆`, disabled: `★`},
+                        useValue: {disabled: `★`, interactive: `☆`},
                     },
                     TUI_SANITIZER_MOCK,
                 ],

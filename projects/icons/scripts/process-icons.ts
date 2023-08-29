@@ -78,7 +78,6 @@ function wrapIcon(source: string, name: string): WrappedContent | string {
     const emHeight = height / 16;
 
     return {
-        width: `${emWidth}em`,
         height: `${emHeight}em`,
         src: `
         <g id="${name}" xmlns="http://www.w3.org/2000/svg">
@@ -86,6 +85,7 @@ function wrapIcon(source: string, name: string): WrappedContent | string {
                 <svg x="${-width / 2}" y="${-height / 2}">${src}</svg>
             </svg>
         </g>`.trim(),
+        width: `${emWidth}em`,
     };
 }
 

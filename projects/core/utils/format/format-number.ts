@@ -16,13 +16,13 @@ export function tuiFormatNumber(
     value: number,
     settings: Partial<TuiNumberFormatSettings> = {},
 ): string {
-    const {decimalLimit, decimalSeparator, thousandSeparator, zeroPadding, rounding} = {
+    const {decimalLimit, decimalSeparator, rounding, thousandSeparator, zeroPadding} = {
         ...TUI_DEFAULT_NUMBER_FORMAT,
         ...settings,
     };
 
     const rounded = Number.isFinite(decimalLimit)
-        ? tuiRoundWith({value, precision: decimalLimit, method: rounding})
+        ? tuiRoundWith({method: rounding, precision: decimalLimit, value})
         : value;
     const integerPartString = String(Math.floor(Math.abs(rounded)));
 

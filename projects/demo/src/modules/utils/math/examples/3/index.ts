@@ -13,13 +13,13 @@ import {tuiNormalizeToIntNumber} from '@taiga-ui/cdk';
 })
 export class TuiMathExample3 {
     parametersForm = new FormGroup({
-        value: new FormControl(0),
-        min: new FormControl(5),
         max: new FormControl(42),
+        min: new FormControl(5),
+        value: new FormControl(0),
     });
 
     get normalized(): number {
-        const {value, min, max} = this.parametersForm.value;
+        const {max, min, value} = this.parametersForm.value;
 
         return tuiNormalizeToIntNumber(value ?? 0, min ?? 5, max ?? 42);
     }

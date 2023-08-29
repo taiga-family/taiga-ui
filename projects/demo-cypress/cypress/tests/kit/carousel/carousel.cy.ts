@@ -23,8 +23,8 @@ describe(`Carousel`, () => {
         cy.get(`#demo-content .t-item`)
             .first()
             .trigger(`mousedown`)
-            .trigger(`mousemove`, {x: 600, y: 100, force: true})
-            .trigger(`mousemove`, {x: -0, y: 100, force: true})
+            .trigger(`mousemove`, {force: true, x: 600, y: 100})
+            .trigger(`mousemove`, {force: true, x: -0, y: 100})
             .tuiWaitBeforeAction()
             .trigger(`mouseup`, {force: true});
 

@@ -21,8 +21,8 @@ export class TuiDialogExampleComponent5 {
     ): void {
         this.dialogs
             .open(content, {
-                label: 'What a cool library set',
                 header,
+                label: 'What a cool library set',
                 size,
             })
             .subscribe();

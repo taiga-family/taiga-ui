@@ -48,9 +48,9 @@ describe(`LineClamp`, () => {
     });
 
     describe(`Single line (break-all) and multiple line (break-words)`, () => {
-        for (const {width, linesLimit} of [
-            {width: 60, linesLimit: 1},
-            {width: 60, linesLimit: 3},
+        for (const {linesLimit, width} of [
+            {linesLimit: 1, width: 60},
+            {linesLimit: 3, width: 60},
         ]) {
             it(`linesLimit=${linesLimit}`, () => {
                 cy.tuiVisit(

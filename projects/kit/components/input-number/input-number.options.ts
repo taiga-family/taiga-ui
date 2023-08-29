@@ -17,15 +17,15 @@ export interface TuiInputNumberOptions {
 
 /** Default values for the input number options. */
 export const TUI_INPUT_NUMBER_DEFAULT_OPTIONS: TuiInputNumberOptions = {
-    icons: {
-        up: `tuiIconPlus`,
-        down: `tuiIconMinus`,
-    },
-    min: Number.MIN_SAFE_INTEGER,
-    max: Number.MAX_SAFE_INTEGER,
-    step: 0,
     decimal: `not-zero`,
+    icons: {
+        down: `tuiIconMinus`,
+        up: `tuiIconPlus`,
+    },
+    max: Number.MAX_SAFE_INTEGER,
+    min: Number.MIN_SAFE_INTEGER,
     precision: 2,
+    step: 0,
 };
 
 /**

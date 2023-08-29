@@ -4,9 +4,9 @@ import {AbstractTuiThemeSwitcher} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'bootstrap',
-    styleUrls: ['./bootstrap.style.less'],
     template: '',
-    encapsulation: ViewEncapsulation.None,
+    styleUrls: ['./bootstrap.style.less'],
     changeDetection,
+    encapsulation: ViewEncapsulation.None,
 })
 export class BootstrapComponent extends AbstractTuiThemeSwitcher {}

@@ -4,7 +4,7 @@ import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/co
     selector: 'tui-ripple',
     template: '',
     styleUrls: ['./ripple.style.less'],
-    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
 })
 export class TuiRippleStylesComponent {}

@@ -13,7 +13,7 @@ export class TuiCheckboxExample1 {
     testForm = new FormGroup({
         testValue1: new FormControl(true),
         testValue2: new FormControl(false),
-        testValue3: new FormControl({value: true, disabled: true}),
-        testValue4: new FormControl({value: false, disabled: true}),
+        testValue3: new FormControl({disabled: true, value: true}),
+        testValue4: new FormControl({disabled: true, value: false}),
     });
 }

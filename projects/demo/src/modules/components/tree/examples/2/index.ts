@@ -6,8 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-tree-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    encapsulation,
     changeDetection,
+    encapsulation,
 })
 export class TuiTreeExample2 {
     readonly data = [

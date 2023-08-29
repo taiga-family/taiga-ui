@@ -6,8 +6,8 @@ export function addUniqueImport(
     moduleSpecifier: string,
 ): void {
     const existingNamedImport = getImports(filePath, {
-        namedImports: namedImport,
         moduleSpecifier,
+        namedImports: namedImport,
     });
 
     if (existingNamedImport.length) {

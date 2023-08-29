@@ -21,7 +21,7 @@ interface Options {
 }
 
 export async function tuiConvertAllCompileFileToAllFile(config: Options): Promise<void> {
-    const {from, to, prt2Options, include} = config;
+    const {from, include, prt2Options, to} = config;
 
     const inputOptions: RollupOptions = {
         input: from,
@@ -40,10 +40,10 @@ export async function tuiConvertAllCompileFileToAllFile(config: Options): Promis
                             name: `preset-default`,
                             params: {
                                 overrides: {
-                                    removeViewBox: false,
-                                    collapseGroups: false,
                                     cleanupIDs: false,
+                                    collapseGroups: false,
                                     removeUnknownsAndDefaults: false,
+                                    removeViewBox: false,
                                 },
                             },
                         },

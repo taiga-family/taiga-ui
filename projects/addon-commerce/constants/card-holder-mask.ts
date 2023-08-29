@@ -50,15 +50,15 @@ function toEnglishUppercase(value: string): string {
 export const TUI_CARD_HOLDER_MASK: MaskitoOptions = {
     mask: /^[a-z\s]+$/i,
     preprocessors: [
-        ({elementState, data}) => {
-            const {value, selection} = elementState;
+        ({data, elementState}) => {
+            const {selection, value} = elementState;
 
             return {
+                data: toEnglishUppercase(data),
                 elementState: {
                     selection,
                     value: toEnglishUppercase(value),
                 },
-                data: toEnglishUppercase(data),
             };
         },
     ],

@@ -40,14 +40,14 @@ export class ExampleProgressSegmentedComponent {
 
     readonly colorsExample: TuiDocExample = {
         HTML: import('./examples/3/index.html?raw'),
-        TypeScript: import('./examples/3/index.ts?raw'),
         LESS: import('./examples/3/index.less?raw'),
+        TypeScript: import('./examples/3/index.ts?raw'),
     };
 
     readonly labelsExample: TuiDocExample = {
         HTML: import('./examples/4/index.html?raw'),
-        TypeScript: import('./examples/4/index.ts?raw'),
         LESS: import('./examples/4/index.less?raw'),
+        TypeScript: import('./examples/4/index.ts?raw'),
     };
 
     readonly exampleModule = import('./examples/import/import-module.md?raw');

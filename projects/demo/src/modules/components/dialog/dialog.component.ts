@@ -25,18 +25,18 @@ export class ExampleTuiDialogComponent {
     );
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
-        'dialog-example/dialog-example.module.ts': import(
-            './examples/2/dialog-example/dialog-example.module.ts?raw'
-        ),
+        TypeScript: import('./examples/2/index.ts?raw'),
         'dialog-example/dialog-example.component.ts': import(
             './examples/2/dialog-example/dialog-example.component.ts?raw'
+        ),
+        'dialog-example/dialog-example.module.ts': import(
+            './examples/2/dialog-example/dialog-example.module.ts?raw'
         ),
         'dialog-example/dialog-example.style.less': import(
             './examples/2/dialog-example/dialog-example.style.less?raw'
@@ -47,65 +47,65 @@ export class ExampleTuiDialogComponent {
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
+        TypeScript: import('./examples/3/index.ts?raw'),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
+        TypeScript: import('./examples/4/index.ts?raw'),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
+        TypeScript: import('./examples/5/index.ts?raw'),
     };
 
     readonly example6: TuiDocExample = {
-        TypeScript: import('./examples/6/index.ts?raw'),
         HTML: import('./examples/6/index.html?raw'),
+        TypeScript: import('./examples/6/index.ts?raw'),
     };
 
     readonly example7: TuiDocExample = {
-        TypeScript: import('./examples/7/index.ts?raw'),
         HTML: import('./examples/7/index.html?raw'),
+        TypeScript: import('./examples/7/index.ts?raw'),
+        'search-example/search-dialog.module.ts': import(
+            './examples/7/search-example/search-dialog.module.ts?raw'
+        ),
+        'search-example/search-dialog-example.component.less': import(
+            './examples/7/search-example/search-dialog-example.component.less?raw'
+        ),
         'search-example/search-dialog-example.component.ts': import(
             './examples/7/search-example/search-dialog-example.component.ts?raw'
         ),
         'search-example/search-dialog-example.template.html': import(
             './examples/7/search-example/search-dialog-example.template.html?raw'
         ),
-        'search-example/search-dialog-example.component.less': import(
-            './examples/7/search-example/search-dialog-example.component.less?raw'
-        ),
-        'search-example/search-dialog.module.ts': import(
-            './examples/7/search-example/search-dialog.module.ts?raw'
-        ),
     };
 
     readonly example8: TuiDocExample = {
-        TypeScript: import('./examples/8/index.ts?raw'),
         HTML: import('./examples/8/index.html?raw'),
+        TypeScript: import('./examples/8/index.ts?raw'),
     };
 
     readonly example9: TuiDocExample = {
-        TypeScript: import('./examples/9/index.ts?raw'),
         HTML: import('./examples/9/index.html?raw'),
         LESS: import('./examples/9/index.less?raw'),
+        TypeScript: import('./examples/9/index.ts?raw'),
         'helpers/mock-cards.ts': import('./examples/9/helpers/mock-cards.ts?raw'),
         'helpers/models.ts': import('./examples/9/helpers/models.ts?raw'),
         'helpers/pay.service.ts': import('./examples/9/helpers/pay.service.ts?raw'),
         'helpers/validator.ts': import('./examples/9/helpers/validator.ts?raw'),
-        'pay-modal/pay-modal.component.ts': import(
-            './examples/9/pay-modal/pay-modal.component.ts?raw'
+        'pay-modal/pay-modal.component.html': import(
+            './examples/9/pay-modal/pay-modal.component.html?raw'
         ),
         'pay-modal/pay-modal.component.less': import(
             './examples/9/pay-modal/pay-modal.component.less?raw'
         ),
-        'pay-modal/pay-modal.component.html': import(
-            './examples/9/pay-modal/pay-modal.component.html?raw'
+        'pay-modal/pay-modal.component.ts': import(
+            './examples/9/pay-modal/pay-modal.component.ts?raw'
         ),
         'pay-modal/pay-modal.module.ts': import(
             './examples/9/pay-modal/pay-modal.module.ts?raw'
@@ -149,10 +149,10 @@ export class ExampleTuiDialogComponent {
     ) {}
 
     showDialog(content: TemplateRef<TuiDialogContext<number, number>>): void {
-        const {data, label, required, closeable, dismissible, size} = this;
+        const {closeable, data, dismissible, label, required, size} = this;
 
         this.dialogs
-            .open(content, {data, label, required, closeable, dismissible, size})
+            .open(content, {closeable, data, dismissible, label, required, size})
             .pipe(switchMap(response => this.alerts.open(String(response))))
             .subscribe();
     }

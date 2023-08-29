@@ -14,9 +14,9 @@ export class IconsBundledComponent {
     injectService = import('./examples/1/inject-service.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
+        './inline-svg.ts': import('./examples/1/inline-svg.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
-        './inline-svg.ts': import('./examples/1/inline-svg.ts?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 }

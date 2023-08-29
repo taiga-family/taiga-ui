@@ -91,13 +91,13 @@ describe(`SVG options`, () => {
                 providers: [
                     {
                         provide: TUI_SVG_SRC_PROCESSOR,
+                        deps: [TUI_ICONS_PLACE],
                         useFactory:
                             (base: string): TuiStringHandler<string> =>
                             src =>
                                 tuiIsString(src) && src.startsWith(`tuiIconTds`)
                                     ? `${base}/${src}.svg`
                                     : src,
-                        deps: [TUI_ICONS_PLACE],
                     },
                 ],
             });
@@ -174,13 +174,13 @@ describe(`SVG options`, () => {
                 providers: [
                     {
                         provide: TUI_SVG_SRC_PROCESSOR,
+                        deps: [TUI_ICONS_PLACE],
                         useFactory:
                             (base: string): TuiStringHandler<string> =>
                             src =>
                                 tuiIsString(src) && src.startsWith(`tuiIconTds`)
                                     ? `${base}/${src}.svg`
                                     : src,
-                        deps: [TUI_ICONS_PLACE],
                     },
                     tuiSvgOptionsProvider({
                         srcProcessor: src => {

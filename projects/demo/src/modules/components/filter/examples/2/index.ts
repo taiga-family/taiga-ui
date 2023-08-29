@@ -14,7 +14,6 @@ interface Operation {
 }
 
 const COMPLETED = {
-    title: 'Done',
     operations: [
         {
             amount: 100,
@@ -23,6 +22,7 @@ const COMPLETED = {
             amount: 200,
         },
     ],
+    title: 'Done',
 };
 
 @Component({
@@ -44,28 +44,27 @@ export class TuiFilterExample2 {
     items: readonly Operations[] = [
         COMPLETED,
         {
+            operations: [
+                {
+                    amount: 100,
+                },
+                {
+                    amount: 200,
+                },
+                {
+                    amount: 100,
+                },
+                {
+                    amount: 100,
+                },
+            ],
             title: 'Drafts',
-            operations: [
-                {
-                    amount: 100,
-                },
-                {
-                    amount: 200,
-                },
-                {
-                    amount: 100,
-                },
-                {
-                    amount: 100,
-                },
-            ],
         },
         {
-            title: 'For sign',
             operations: [],
+            title: 'For sign',
         },
         {
-            title: 'Queue',
             operations: [
                 {
                     amount: 100,
@@ -86,6 +85,7 @@ export class TuiFilterExample2 {
                     amount: 200,
                 },
             ],
+            title: 'Queue',
         },
     ];
 

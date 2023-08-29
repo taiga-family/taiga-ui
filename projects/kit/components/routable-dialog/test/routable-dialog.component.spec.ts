@@ -93,12 +93,6 @@ describe(`TuiRoutableDialog`, () => {
 
     it(`Closing the dialog navigates back to the parent route for lazy loaded case`, fakeAsync(() => {
         createComponent({
-            snapshot: {
-                data: {
-                    dialog: DialogComponent,
-                    isLazy: true,
-                } as unknown as Data,
-            } as unknown as ActivatedRouteSnapshot,
             parent: {
                 snapshot: {
                     url: [
@@ -114,6 +108,12 @@ describe(`TuiRoutableDialog`, () => {
                     ],
                 } as unknown as ActivatedRouteSnapshot,
             } as unknown as ActivatedRoute,
+            snapshot: {
+                data: {
+                    dialog: DialogComponent,
+                    isLazy: true,
+                } as unknown as Data,
+            } as unknown as ActivatedRouteSnapshot,
         });
 
         when(tuiDialogService.open(anything(), anything())).thenReturn(EMPTY);
@@ -132,8 +132,8 @@ describe(`TuiRoutableDialog`, () => {
         createComponent({
             snapshot: {
                 data: {
-                    dialog: DialogComponent,
                     backUrl: `../../..`,
+                    dialog: DialogComponent,
                 } as unknown as Data,
             } as unknown as ActivatedRouteSnapshot,
         });

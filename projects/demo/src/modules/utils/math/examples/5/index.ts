@@ -13,13 +13,13 @@ import {tuiClamp} from '@taiga-ui/cdk';
 })
 export class TuiMathExample5 {
     parametersForm = new FormGroup({
-        value: new FormControl(0),
-        min: new FormControl(5),
         max: new FormControl(42),
+        min: new FormControl(5),
+        value: new FormControl(0),
     });
 
     get clamped(): number {
-        const {value, min, max} = this.parametersForm.value;
+        const {max, min, value} = this.parametersForm.value;
 
         return tuiClamp(value ?? 0, min ?? 5, max ?? 42);
     }

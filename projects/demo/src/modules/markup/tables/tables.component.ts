@@ -10,7 +10,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 })
 export class TablesComponent {
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 }

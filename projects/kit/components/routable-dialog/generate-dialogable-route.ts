@@ -9,16 +9,16 @@ export function tuiGenerateDialogableRoute<I>(
     {path = ``, ...dialogOptions}: Partial<TuiDialogOptions<I>> & {path?: string} = {},
 ): Route {
     return {
-        path,
         component: TuiRoutableDialogComponent,
         data: {
-            dialog: component,
             backUrl: path
                 .split(`/`)
                 .map(() => `..`)
                 .join(`/`),
-            isLazy: path === ``,
+            dialog: component,
             dialogOptions,
+            isLazy: path === ``,
         },
+        path,
     };
 }

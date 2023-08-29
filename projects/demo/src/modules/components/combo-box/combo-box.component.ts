@@ -54,40 +54,40 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
-        'user.ts': import('./examples/2/user.ts?raw'),
-        'request.service.ts': import('./examples/2/request.service.ts?raw'),
+        TypeScript: import('./examples/2/index.ts?raw'),
         'database-mock-data.ts': import('./examples/2/database-mock-data.ts?raw'),
+        'request.service.ts': import('./examples/2/request.service.ts?raw'),
+        'user.ts': import('./examples/2/user.ts?raw'),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
+        TypeScript: import('./examples/3/index.ts?raw'),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
+        TypeScript: import('./examples/4/index.ts?raw'),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
+        TypeScript: import('./examples/5/index.ts?raw'),
         'index-change.directive.ts': import('./examples/5/index-change.directive.ts?raw'),
     };
 
     readonly example6: TuiDocExample = {
-        TypeScript: import('./examples/6/index.ts?raw'),
         HTML: import('./examples/6/index.html?raw'),
+        TypeScript: import('./examples/6/index.ts?raw'),
     };
 
     readonly items = [

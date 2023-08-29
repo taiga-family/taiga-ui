@@ -19,7 +19,7 @@ describe(`TuiSliderKeyStepsDirective`, () => {
         `,
     })
     class TestComponent {
-        @ViewChild(`slider`, {static: true, read: ElementRef})
+        @ViewChild(`slider`, {read: ElementRef, static: true})
         inputElRef!: ElementRef<HTMLInputElement>;
 
         control = new FormControl(720_000);

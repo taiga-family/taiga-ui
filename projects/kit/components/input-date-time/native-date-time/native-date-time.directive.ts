@@ -7,13 +7,13 @@ import type {TuiInputDateTimeDirective} from '../input-date-time.directive';
 @Directive({
     selector: 'input[tuiDateTime]',
     host: {
-        type: 'datetime-local',
+        '(change.stop)': 'onChange($event.target.value)',
+        '(click.stop.silent)': '0',
+        '(input.stop)': 'onChange($event.target.value)',
+        '(mousedown.stop.silent)': '0',
         '[tabIndex]': '-1',
         '[value]': 'value',
-        '(change.stop)': 'onChange($event.target.value)',
-        '(input.stop)': 'onChange($event.target.value)',
-        '(click.stop.silent)': '0',
-        '(mousedown.stop.silent)': '0',
+        type: 'datetime-local',
     },
 })
 export class TuiNativeDateTimeDirective {

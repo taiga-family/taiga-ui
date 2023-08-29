@@ -44,8 +44,8 @@ import {
     selector: 'tui-doc-navigation',
     templateUrl: './navigation.template.html',
     styleUrls: ['./navigation.style.less'],
-    providers: NAVIGATION_PROVIDERS,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: NAVIGATION_PROVIDERS,
 })
 export class TuiDocNavigationComponent {
     @HostBinding('class._open')
@@ -138,7 +138,7 @@ export class TuiDocNavigationComponent {
     ): ReadonlyArray<readonly TuiDocPage[]> {
         return items.map(section =>
             tuiUniqBy(
-                section.filter(({title, keywords = ''}) => {
+                section.filter(({keywords = '', title}) => {
                     title = title.toLowerCase();
                     search = search.toLowerCase();
                     keywords = keywords.toLowerCase();
@@ -177,10 +177,10 @@ export class TuiDocNavigationComponent {
 
     private isActiveRoute(route: string): boolean {
         return this.router.isActive(route, {
-            paths: 'subset',
-            queryParams: 'subset',
             fragment: 'ignored',
             matrixParams: 'ignored',
+            paths: 'subset',
+            queryParams: 'subset',
         });
     }
 
@@ -221,9 +221,9 @@ export class TuiDocNavigationComponent {
 
         element.classList.add('tui-doc-animated-example');
         element.scrollIntoView({
+            behavior: this.scrollBehavior,
             block: 'start',
             inline: 'nearest',
-            behavior: this.scrollBehavior,
         });
     }
 }

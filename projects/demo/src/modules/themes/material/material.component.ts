@@ -4,9 +4,9 @@ import {AbstractTuiThemeSwitcher} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'material',
-    styleUrls: ['./material.style.less'],
     template: '',
-    encapsulation: ViewEncapsulation.None,
+    styleUrls: ['./material.style.less'],
     changeDetection,
+    encapsulation: ViewEncapsulation.None,
 })
 export class MaterialComponent extends AbstractTuiThemeSwitcher {}

@@ -15,9 +15,9 @@ describe(`Dialogs + browser back navigation`, () => {
     beforeEach(() => {
         cy.tuiVisit(`/`, {
             hideHeader: false,
+            hideLanguageSwitcher: false,
             hideNavigation: false,
             hideVersionManager: false,
-            hideLanguageSwitcher: false,
         }); // need to check that browser back navigation is not broken after closing all dialogs
     });
 

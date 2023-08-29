@@ -7,10 +7,10 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 const Department = {
-    IT: 'IT',
+    Delivery: 'Delivery',
     HR: 'HR',
     HeadOffice: 'Heads',
-    Delivery: 'Delivery',
+    IT: 'IT',
 } as const;
 
 @Component({

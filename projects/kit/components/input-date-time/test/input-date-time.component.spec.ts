@@ -47,14 +47,14 @@ describe(`InputDateTime`, () => {
     let pageObject: TuiPageObject<TestComponent>;
 
     const testContext = {
-        get prefix() {
-            return `tui-input-date-time__`;
-        },
         get calendarCellAutomationId() {
             return `tui-primitive-calendar__cell`;
         },
         get nativeInputAutomationId() {
             return `tui-primitive-textfield__native-input`;
+        },
+        get prefix() {
+            return `tui-input-date-time__`;
         },
     };
 

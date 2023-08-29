@@ -53,8 +53,8 @@ export class TuiDocSourceCodeComponent {
         return {
             header,
             package: packageName,
-            type,
             path,
+            type,
         };
     }
 }

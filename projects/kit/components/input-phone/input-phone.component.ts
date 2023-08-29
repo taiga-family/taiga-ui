@@ -256,16 +256,16 @@ export class TuiInputPhoneComponent
               }
             : {
                   mask,
-                  preprocessors,
-                  postprocessors: [
-                      maskitoPrefixPostprocessorGenerator(nonRemovablePrefix),
-                  ],
                   plugins: [
                       maskitoCaretGuard((value, [from, to]) => [
                           from === to ? nonRemovablePrefix.length : 0,
                           value.length,
                       ]),
                   ],
+                  postprocessors: [
+                      maskitoPrefixPostprocessorGenerator(nonRemovablePrefix),
+                  ],
+                  preprocessors,
               };
     }
 

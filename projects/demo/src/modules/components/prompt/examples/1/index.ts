@@ -21,15 +21,15 @@ export class TuiPromptExample1 {
         const data: TuiPromptData = {
             content:
                 'This is <code>PolymorpheusContent</code> so it can be template too!',
-            yes: 'That is great!',
             no: 'Who cares?',
+            yes: 'That is great!',
         };
 
         this.dialogs
             .open<boolean>(TUI_PROMPT, {
+                data,
                 label: 'Do you like Taiga UI?',
                 size: 's',
-                data,
             })
             .pipe(switchMap(response => this.alerts.open(String(response))))
             .subscribe();

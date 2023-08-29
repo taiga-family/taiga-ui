@@ -5,8 +5,8 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 @Component({
     selector: 'wrapper',
     templateUrl: './wrapper.template.html',
-    encapsulation: ViewEncapsulation.None,
     changeDetection,
+    encapsulation: ViewEncapsulation.None,
 })
 export class WrapperComponent {
     readonly example1: TuiDocExample = {

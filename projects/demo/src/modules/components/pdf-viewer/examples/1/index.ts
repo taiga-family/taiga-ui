@@ -36,8 +36,8 @@ export class TuiPdfViewerExample1 {
                         : this.pdf,
                 ),
                 {
-                    label: 'Taiga UI',
                     actions,
+                    label: 'Taiga UI',
                 },
             )
             .subscribe();

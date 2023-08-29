@@ -32,12 +32,12 @@ export class TuiAlertsExampleComponent5 {
                     this.injector,
                 ),
                 {
+                    autoClose: false,
                     label: ({status}) =>
                         status === 'error'
                             ? 'Error label from function'
                             : 'Info label from function',
                     status: 'error',
-                    autoClose: false,
                 },
             )
             .pipe(takeUntil(router.events));
@@ -49,9 +49,9 @@ export class TuiAlertsExampleComponent5 {
                     this.injector,
                 ),
                 {
+                    autoClose: false,
                     label: new PolymorpheusComponent(CustomLabelComponent, this.injector),
                     status: 'warning',
-                    autoClose: false,
                 },
             )
             .pipe(takeUntil(router.events));

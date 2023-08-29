@@ -27,10 +27,10 @@ export class TuiAlertsExampleComponent4 {
             .open<number>(
                 new PolymorpheusComponent(AlertExampleWithDataComponent, this.injector),
                 {
-                    label: 'Heading is so long that it should be shown in two lines of text',
-                    data: 237,
-                    status: 'warning',
                     autoClose: false,
+                    data: 237,
+                    label: 'Heading is so long that it should be shown in two lines of text',
+                    status: 'warning',
                 },
             )
             .pipe(

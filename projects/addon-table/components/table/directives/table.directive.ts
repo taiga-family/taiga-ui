@@ -22,8 +22,8 @@ import {TUI_TABLE_OPTIONS, TuiTableOptions} from '../table.options';
     selector: 'table[tuiTable]',
     providers: TUI_TABLE_PROVIDERS,
     host: {
-        '($.data-mode.attr)': 'mode$',
         '($.class._stuck)': 'stuck$',
+        '($.data-mode.attr)': 'mode$',
         style: 'border-collapse: separate',
     },
 })

@@ -8,24 +8,24 @@ import {filter, map, shareReplay, takeUntil} from 'rxjs/operators';
 @Component({
     selector: 'routable-dialog',
     templateUrl: './routable-dialog.template.html',
-    providers: [TuiDestroyService],
     changeDetection,
+    providers: [TuiDestroyService],
 })
 export class RoutableDialogComponent {
     readonly example1: TuiDocExample = {
-        'page.template.html': import('./examples/1/page-1.component.html?raw'),
-        'page.module.ts': import('./examples/1/page-1.module.ts?raw'),
         'dialog-content.component.ts': import(
             './examples/1/dialog-content.component.ts?raw'
         ),
+        'page.module.ts': import('./examples/1/page-1.module.ts?raw'),
+        'page.template.html': import('./examples/1/page-1.component.html?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        'page.template.html': import('./examples/2/page-2.component.html?raw'),
-        'page.module.ts': import('./examples/2/page-2.module.ts?raw'),
         'dialog-content.component.ts': import(
             './examples/2/dialog-content.component.ts?raw'
         ),
+        'page.module.ts': import('./examples/2/page-2.module.ts?raw'),
+        'page.template.html': import('./examples/2/page-2.component.html?raw'),
     };
 
     readonly addRouterOutlet = import('./examples/setup/add-router-outlet.md?raw');
@@ -38,7 +38,7 @@ export class RoutableDialogComponent {
     readonly isNamedOutletPage$ = this.router.events.pipe(
         filter(isNavigationEndEvent),
         map(event => event.url.includes('NamedOutlet')),
-        shareReplay({refCount: true, bufferSize: 1}),
+        shareReplay({bufferSize: 1, refCount: true}),
     );
 
     constructor(

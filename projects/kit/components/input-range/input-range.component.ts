@@ -45,16 +45,16 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     selector: 'tui-input-range',
     templateUrl: './input-range.template.html',
     styleUrls: ['./input-range.style.less'],
-    host: {
-        '[attr.data-size]': 'controller.size',
-        '[class._label-outside]': 'controller.labelOutside',
-    },
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputRangeComponent),
         tuiAsControl(TuiInputRangeComponent),
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
+    host: {
+        '[attr.data-size]': 'controller.size',
+        '[class._label-outside]': 'controller.labelOutside',
+    },
 })
 export class TuiInputRangeComponent
     extends AbstractTuiControl<[number, number]>

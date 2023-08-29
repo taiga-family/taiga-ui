@@ -7,15 +7,15 @@ import type {TuiInputDateDirective} from '../input-date.directive';
 @Directive({
     selector: 'input[tuiDate]',
     host: {
-        type: 'date',
-        '[tabIndex]': '-1',
-        '[value]': 'value',
         '(change)': 'onChange($event.target.value)',
-        '[max]': 'max',
-        '[min]': 'min',
         '(click.stop.silent)': '0',
         '(input.stop.silent)': '0',
         '(mousedown.stop.silent)': '0',
+        '[max]': 'max',
+        '[min]': 'min',
+        '[tabIndex]': '-1',
+        '[value]': 'value',
+        type: 'date',
     },
 })
 export class TuiNativeDateDirective {

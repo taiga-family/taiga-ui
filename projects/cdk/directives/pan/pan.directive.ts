@@ -4,8 +4,8 @@ import {Observable} from 'rxjs';
 
 @Directive({
     selector: '[tuiPan]',
-    outputs: ['tuiPan'],
     providers: [TuiPanService],
+    outputs: ['tuiPan'],
 })
 export class TuiPanDirective {
     constructor(

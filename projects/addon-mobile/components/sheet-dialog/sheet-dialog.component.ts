@@ -57,11 +57,11 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
 
     @HostBinding('@tuiSlideInTop')
     readonly slideInTop = {
-        value: '',
         params: {
-            start: '100vh',
             duration: this.duration,
+            start: '100vh',
         },
+        value: '',
     };
 
     constructor(

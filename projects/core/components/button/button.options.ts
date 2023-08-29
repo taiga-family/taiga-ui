@@ -14,9 +14,9 @@ export interface TuiButtonOptions {
 }
 
 export const TUI_BUTTON_DEFAULT_OPTIONS: TuiButtonOptions = {
-    size: `l`,
-    shape: null,
     appearance: TuiAppearance.Primary,
+    shape: null,
+    size: `l`,
 };
 
 /**

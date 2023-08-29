@@ -8,8 +8,8 @@ import {appPrefix} from '../utils';
     selector: 'demo-stackblitz-starter',
     templateUrl: './stackblitz-starter.component.html',
     styleUrls: ['./stackblitz-starter.style.less'],
-    providers: [TuiStackblitzService],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [TuiStackblitzService],
 })
 export class StackblitzStarterComponent implements OnInit {
     constructor(
@@ -32,23 +32,23 @@ export class StackblitzStarterComponent implements OnInit {
 
         return this.stackblitz.openStarter(
             {
-                title: 'Taiga UI Starter',
                 description:
                     'A starter with Taiga UI library\nDocumentation: https://taiga-ui.dev',
                 files: {
-                    'src/index.html': indexHtml,
-                    'src/styles.less': stylesLess,
                     [appPrefix`app.component.html`]: appTemplate,
-                    [appPrefix`app.component.ts`]: appComponent,
                     [appPrefix`app.component.less`]:
                         // eslint-disable-next-line @typescript-eslint/quotes
                         "@import '@taiga-ui/core/styles/taiga-ui-local.less';",
+                    [appPrefix`app.component.ts`]: appComponent,
+                    'src/index.html': indexHtml,
+                    'src/styles.less': stylesLess,
                 },
+                title: 'Taiga UI Starter',
             },
             {
+                hideExplorer: true,
                 newWindow: false,
                 openFile: appPrefix`app.component.html`,
-                hideExplorer: true,
             },
         );
     }

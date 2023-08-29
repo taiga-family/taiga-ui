@@ -10,9 +10,9 @@ export class TreeLoader implements TuiTreeLoader<Item> {
     loadChildren({text}: Item): Observable<Item[]> {
         return timer(3000).pipe(
             map(() => [
-                {text: `${text} 1`, children: Math.random() > 0.5},
-                {text: `${text} 2`, children: Math.random() > 0.5},
-                {text: `${text} 3`, children: Math.random() > 0.5},
+                {children: Math.random() > 0.5, text: `${text} 1`},
+                {children: Math.random() > 0.5, text: `${text} 2`},
+                {children: Math.random() > 0.5, text: `${text} 3`},
             ]),
         );
     }

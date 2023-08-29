@@ -17,16 +17,16 @@ export interface TuiInputCountOptions {
 
 /** Default values for the input count options. */
 export const TUI_INPUT_COUNT_DEFAULT_OPTIONS: TuiInputCountOptions = {
-    icons: {
-        up: `tuiIconPlus`,
-        down: `tuiIconMinus`,
-    },
     appearance: `textfield`,
     hideButtons: false,
-    min: 0,
+    icons: {
+        down: `tuiIconMinus`,
+        up: `tuiIconPlus`,
+    },
     max: Number.MAX_SAFE_INTEGER,
-    step: 1,
+    min: 0,
     postfix: ``,
+    step: 1,
 };
 
 /**

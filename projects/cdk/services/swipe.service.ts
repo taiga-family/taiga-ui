@@ -11,7 +11,7 @@ import {filter, map, pairwise} from 'rxjs/operators';
 export class TuiSwipeService extends Observable<TuiSwipe> {
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<Element>,
-        @Inject(TUI_SWIPE_OPTIONS) {timeout, threshold}: TuiSwipeOptions,
+        @Inject(TUI_SWIPE_OPTIONS) {threshold, timeout}: TuiSwipeOptions,
         @Inject(DOCUMENT) doc: Document,
     ) {
         super(subscriber => {

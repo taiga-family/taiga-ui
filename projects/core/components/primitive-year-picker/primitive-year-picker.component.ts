@@ -97,7 +97,7 @@ export class TuiPrimitiveYearPickerComponent {
     }
 
     getItemState(item: number): TuiInteractiveState | null {
-        const {disabledItemHandler, pressedItem, hoveredItem} = this;
+        const {disabledItemHandler, hoveredItem, pressedItem} = this;
         const max = this.computedMax;
 
         if (
@@ -120,7 +120,7 @@ export class TuiPrimitiveYearPickerComponent {
 
     // eslint-disable-next-line complexity
     getItemRange(item: number): TuiRangeState | null {
-        const {value, hoveredItem} = this;
+        const {hoveredItem, value} = this;
 
         if (value === null) {
             return null;
@@ -168,7 +168,7 @@ export class TuiPrimitiveYearPickerComponent {
     }
 
     itemIsInterval(item: number): boolean {
-        const {value, hoveredItem} = this;
+        const {hoveredItem, value} = this;
 
         if (value === null || !this.isRange(value)) {
             return false;

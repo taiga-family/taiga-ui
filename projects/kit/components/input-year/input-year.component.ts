@@ -108,8 +108,8 @@ export class TuiInputYearComponent
     getMaskOptions(min: number, max: number): MaskitoOptions {
         return {
             ...maskitoNumberOptionsGenerator({
-                min,
                 max,
+                min,
                 thousandSeparator: '',
             }),
             mask: UP_TO_4_DIGITS_REG,

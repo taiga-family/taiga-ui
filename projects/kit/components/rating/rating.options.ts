@@ -9,10 +9,10 @@ export interface TuiRatingOptions {
 }
 
 export const TUI_RATING_DEFAULT_OPTIONS: TuiRatingOptions = {
-    min: 0,
-    max: 5,
-    iconNormal: `tuiIconStarLarge`,
     iconFilled: `tuiIconStarLarge`,
+    iconNormal: `tuiIconStarLarge`,
+    max: 5,
+    min: 0,
 };
 
 /**

@@ -6,13 +6,13 @@ import {tuiTablePaginationOptionsProvider} from '@taiga-ui/addon-table';
 @Component({
     selector: 'tui-table-pagination-example-3',
     templateUrl: './index.html',
+    changeDetection,
+    encapsulation,
     providers: [
         tuiTablePaginationOptionsProvider({
             showPages: false,
         }),
     ],
-    changeDetection,
-    encapsulation,
 })
 export class TuiTablePaginationExample3 {
     total = 350;

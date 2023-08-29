@@ -8,8 +8,8 @@ export interface TuiDropdownHoverOptions {
 
 /** Default values for hint options */
 export const TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS: TuiDropdownHoverOptions = {
-    showDelay: 200,
     hideDelay: 500,
+    showDelay: 200,
 };
 
 /**

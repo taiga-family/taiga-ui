@@ -26,9 +26,9 @@ describe(`Loader component options`, () => {
             declarations: [TestComponent],
             providers: [
                 tuiLoaderOptionsProvider({
-                    size: `xxl`,
                     inheritColor: true,
                     overlay: false,
+                    size: `xxl`,
                 }),
             ],
         });

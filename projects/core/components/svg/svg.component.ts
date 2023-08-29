@@ -148,7 +148,7 @@ export class TuiSvgComponent {
     }
 
     private get isCrossDomain(): boolean {
-        const {use, isUse, win} = this;
+        const {isUse, use, win} = this;
 
         return (
             isUse && use.startsWith('http') && !!win.origin && !use.startsWith(win.origin)
@@ -160,8 +160,8 @@ export class TuiSvgComponent {
         const event = new CustomEvent<TuiIconError>(TUI_ICON_ERROR, {
             bubbles: true,
             detail: {
-                message,
                 icon: icon as string,
+                message,
             },
         });
 

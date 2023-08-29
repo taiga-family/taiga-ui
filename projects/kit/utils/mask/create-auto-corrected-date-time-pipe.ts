@@ -48,10 +48,10 @@ export function tuiCreateAutoCorrectedDateTimePipe(
         }
 
         return {
-            value: `${formattedDate}${DATE_TIME_SEPARATOR}${pipedTime.value}`,
             indexesOfPipedChars: pipedTime.indexesOfPipedChars
                 ? pipedTime.indexesOfPipedChars.map(i => i + date.length + 2)
                 : undefined,
+            value: `${formattedDate}${DATE_TIME_SEPARATOR}${pipedTime.value}`,
         };
     };
 }

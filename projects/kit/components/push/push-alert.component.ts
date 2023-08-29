@@ -19,10 +19,10 @@ import {TuiPushAlertDirective} from './push-alert.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiFadeIn, tuiSlideInRight, tuiHeightCollapse],
     host: {
-        role: 'alert',
         '[@tuiFadeIn]': 'animation',
-        '[@tuiSlideInRight]': 'animation',
         '[@tuiHeightCollapse]': 'animation',
+        '[@tuiSlideInRight]': 'animation',
+        role: 'alert',
     },
 })
 export class TuiPushAlertComponent {

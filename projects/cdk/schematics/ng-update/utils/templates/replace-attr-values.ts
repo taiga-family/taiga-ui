@@ -10,10 +10,10 @@ import {TemplateResource} from '../../interfaces/template-resource';
 import {ReplaceableAttributeValue} from '../../v3/interfaces/replaceable-attribute-value';
 
 export function replaceAttrValues({
-    resource,
-    recorder,
     fileSystem,
+    recorder,
     replaceableItems,
+    resource,
 }: {
     fileSystem: DevkitFileSystem;
     recorder: UpdateRecorder;
@@ -44,9 +44,9 @@ export function replaceAttrValues({
 
             values.forEach(({from, to}) => {
                 if (value === from) {
-                    const {startOffset, endOffset} = element.sourceCodeLocation?.attrs?.[
+                    const {endOffset, startOffset} = element.sourceCodeLocation?.attrs?.[
                         name
-                    ] || {startOffset: 0, endOffset: 0};
+                    ] || {endOffset: 0, startOffset: 0};
 
                     recorder.remove(
                         templateOffset + startOffset,

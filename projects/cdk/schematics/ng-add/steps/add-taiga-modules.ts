@@ -65,13 +65,13 @@ export function addTaigaModules(options: TuiSchema): Rule {
         if (bootstrapFunction) {
             addTuiEntitiesToStandalone({
                 bootstrapFunction,
-                options,
                 context,
+                options,
             });
         } else {
             const mainClass = getMainModule(mainFilePath);
 
-            addTuiModules({mainClass, options, context});
+            addTuiModules({context, mainClass, options});
             addExtraTuiProvidersToRootComponent({mainClass, options});
         }
 
@@ -80,9 +80,9 @@ export function addTaigaModules(options: TuiSchema): Rule {
 }
 
 function addTuiModules({
+    context,
     mainClass,
     options,
-    context,
 }: {
     context: SchematicContext;
     mainClass: ClassDeclaration;
@@ -133,8 +133,8 @@ function addExtraTuiProvidersToRootComponent({
 
 function addTuiEntitiesToStandalone({
     bootstrapFunction,
-    options,
     context,
+    options,
 }: {
     bootstrapFunction: CallExpression;
     context: SchematicContext;
@@ -152,7 +152,7 @@ function addTuiEntitiesToStandalone({
     );
 
     if (mainClass) {
-        addMainModuleToRootComponent({mainClass, options, context});
+        addMainModuleToRootComponent({context, mainClass, options});
         addRootTuiProvidersToBootstrapFn(optionsObject);
         addExtraTuiProvidersToRootComponent({mainClass, options, standalone: true});
     }
@@ -203,9 +203,9 @@ function addRootTuiProvidersToBootstrapFn(
 }
 
 function addMainModuleToRootComponent({
+    context,
     mainClass,
     options,
-    context,
 }: {
     context: SchematicContext;
     mainClass: ClassDeclaration;

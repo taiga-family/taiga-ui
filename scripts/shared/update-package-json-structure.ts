@@ -13,34 +13,34 @@ interface UpdatePackageJsonOptions {
 }
 
 export function updatePackageJsonStructure({
-    packageJson,
-    isPackageLockFile,
     ignores,
-    prevVersion,
+    isPackageLockFile,
     newVersion,
+    packageJson,
+    prevVersion,
 }: UpdatePackageJsonOptions): void {
-    const {name, dependencies, peerDependencies, devDependencies, packages} = packageJson;
+    const {name, dependencies, devDependencies, packages, peerDependencies} = packageJson;
 
     if (tuiIsString(name) && isTuiPackageName(name, ignores)) {
         bumpTuiVersionInPackageJson(packageJson, newVersion);
     }
 
     if (tuiIsObject(dependencies)) {
-        bumpTuiDeps({deps: dependencies, prevVersion, newVersion, ignores});
+        bumpTuiDeps({deps: dependencies, ignores, newVersion, prevVersion});
     }
 
     if (tuiIsObject(peerDependencies)) {
         bumpTuiDeps({
             deps: peerDependencies,
-            prevVersion,
-            newVersion,
-            isPeerDependency: true,
             ignores,
+            isPeerDependency: true,
+            newVersion,
+            prevVersion,
         });
     }
 
     if (tuiIsObject(devDependencies)) {
-        bumpTuiDeps({deps: devDependencies, prevVersion, newVersion, ignores});
+        bumpTuiDeps({deps: devDependencies, ignores, newVersion, prevVersion});
     }
 
     if (isPackageLockFile && tuiIsObject(packages)) {
@@ -50,11 +50,11 @@ export function updatePackageJsonStructure({
             }
 
             updatePackageJsonStructure({
+                ignores,
+                isPackageLockFile: true,
+                newVersion,
                 packageJson: packageLockJson,
                 prevVersion,
-                newVersion,
-                isPackageLockFile: true,
-                ignores,
             });
         }
     }

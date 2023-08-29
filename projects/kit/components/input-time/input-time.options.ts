@@ -21,11 +21,11 @@ export interface TuiInputTimeOptions {
 
 export const TUI_INPUT_TIME_DEFAULT_OPTIONS: TuiInputTimeOptions = {
     icon: ({$implicit}) => ($implicit === `s` ? `tuiIconClock` : `tuiIconClockLarge`),
-    mode: `HH:MM`,
-    postfix: ``,
-    maxValues: MAX_TIME_VALUES,
     itemSize: `m`,
+    maxValues: MAX_TIME_VALUES,
+    mode: `HH:MM`,
     nativePicker: false,
+    postfix: ``,
 };
 
 /**

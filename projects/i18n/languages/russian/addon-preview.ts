@@ -5,8 +5,8 @@ export const TUI_RUSSIAN_LANGUAGE_ADDON_PREVIEW: TuiLanguagePreview = {
         rotate: `Повернуть`,
     },
     zoomTexts: {
+        reset: `Сбросить масштаб`,
         zoomIn: `Увеличить масштаб`,
         zoomOut: `Уменьшить масштаб`,
-        reset: `Сбросить масштаб`,
     },
 };

@@ -28,8 +28,8 @@ describe(`Money component options`, () => {
             providers: [
                 tuiMoneyOptionsProvider({
                     currency: TuiCurrency.Euro,
-                    sign: `never`,
                     precision: 1,
+                    sign: `never`,
                 }),
             ],
         });

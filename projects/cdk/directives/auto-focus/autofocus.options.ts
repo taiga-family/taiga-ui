@@ -49,6 +49,15 @@ export const TUI_AUTOFOCUS_HANDLER = new InjectionToken<TuiAutofocusHandler>(
 export const TUI_AUTOFOCUS_PROVIDERS = [
     {
         provide: TUI_AUTOFOCUS_HANDLER,
+        deps: [
+            [new Optional(), new Self(), TUI_FOCUSABLE_ITEM_ACCESSOR],
+            ElementRef,
+            ANIMATION_FRAME,
+            Renderer2,
+            NgZone,
+            WINDOW,
+            TUI_IS_IOS,
+        ],
         useFactory: (
             focusable: TuiFocusableElementAccessor | null,
             el: ElementRef<HTMLElement>,
@@ -61,15 +70,6 @@ export const TUI_AUTOFOCUS_PROVIDERS = [
             isIos
                 ? new TuiIosAutofocusHandler(focusable, el, renderer, zone, win)
                 : new TuiDefaultAutofocusHandler(focusable, el, animationFrame$),
-        deps: [
-            [new Optional(), new Self(), TUI_FOCUSABLE_ITEM_ACCESSOR],
-            ElementRef,
-            ANIMATION_FRAME,
-            Renderer2,
-            NgZone,
-            WINDOW,
-            TUI_IS_IOS,
-        ],
     },
     TuiDestroyService,
 ];

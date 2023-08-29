@@ -42,10 +42,10 @@ describe(`ng-add`, () => {
 
     it(`should add main modules in package.json`, async () => {
         const options: TuiSchema = {
-            addSanitizer: false,
-            addGlobalStyles: false,
-            addDialogsModule: false,
             addAlertModule: false,
+            addDialogsModule: false,
+            addGlobalStyles: false,
+            addSanitizer: false,
             addons: [],
             project: ``,
             'skip-logs': process.env[`TUI_CI`] === `true`,
@@ -68,10 +68,10 @@ describe(`ng-add`, () => {
 
     it(`should add additional modules in package.json`, async () => {
         const options: TuiSchema = {
-            addSanitizer: true,
-            addGlobalStyles: false,
-            addDialogsModule: false,
             addAlertModule: false,
+            addDialogsModule: false,
+            addGlobalStyles: false,
+            addSanitizer: true,
             addons: [`addon-doc`, `addon-mobile`],
             project: ``,
             'skip-logs': process.env[`TUI_CI`] === `true`,
@@ -102,10 +102,10 @@ describe(`ng-add`, () => {
 
     it(`should add additional modules in package.json and global styles`, async () => {
         const options: TuiSchema = {
-            addSanitizer: true,
-            addGlobalStyles: true,
-            addDialogsModule: false,
             addAlertModule: false,
+            addDialogsModule: false,
+            addGlobalStyles: true,
+            addSanitizer: true,
             addons: [`addon-doc`, `addon-mobile`],
             project: ``,
             'skip-logs': process.env[`TUI_CI`] === `true`,
@@ -260,10 +260,10 @@ describe(`ng-add`, () => {
 
     it(`Should add Taiga-ui modules and providers to main module`, async () => {
         const options: TuiSchema = {
-            addSanitizer: true,
-            addGlobalStyles: false,
-            addDialogsModule: true,
             addAlertModule: true,
+            addDialogsModule: true,
+            addGlobalStyles: false,
+            addSanitizer: true,
             addons: [],
             project: ``,
             'skip-logs': process.env[`TUI_CI`] === `true`,

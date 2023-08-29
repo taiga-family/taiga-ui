@@ -5,8 +5,8 @@ export const TUI_GERMAN_LANGUAGE_ADDON_PREVIEW: TuiLanguagePreview = {
         rotate: `Rotieren`,
     },
     zoomTexts: {
-        zoomOut: `Verkleinern`,
-        zoomIn: `Vergrößern`,
         reset: `Zurücksetzen`,
+        zoomIn: `Vergrößern`,
+        zoomOut: `Verkleinern`,
     },
 };

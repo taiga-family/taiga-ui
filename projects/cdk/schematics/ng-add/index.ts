@@ -58,8 +58,8 @@ function addDependencies(tree: Tree, options: TuiSchema): void {
         });
         addPackageJsonDependency(tree, {
             name: `@types/dompurify`,
-            version: DOMPURIFY_TYPES_VERSION,
             type: NodeDependencyType.Dev,
+            version: DOMPURIFY_TYPES_VERSION,
         });
     }
 

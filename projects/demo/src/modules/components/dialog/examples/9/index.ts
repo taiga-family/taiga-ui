@@ -13,9 +13,9 @@ import {PayModalComponent} from './pay-modal/pay-modal.component';
     selector: 'tui-dialog-example-9',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    providers: [TuiDestroyService],
     changeDetection,
     encapsulation,
+    providers: [TuiDestroyService],
 })
 export class TuiDialogExampleComponent9 {
     readonly amountControl = new FormControl(100);
@@ -28,11 +28,11 @@ export class TuiDialogExampleComponent9 {
     payByCard(): void {
         this.dialogs
             .open(new PolymorpheusComponent(PayModalComponent), {
-                size: 'auto',
                 closeable: true,
                 data: {
                     amount: this.amountControl.value,
                 },
+                size: 'auto',
             })
             .pipe(takeUntil(this.destroy$))
             .subscribe();

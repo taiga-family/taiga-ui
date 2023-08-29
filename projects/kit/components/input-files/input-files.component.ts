@@ -280,15 +280,15 @@ export class TuiInputFilesComponent
             this.rejectFiles([
                 ...tooBigFiles.map(file => ({
                     name: file.name,
-                    type: file.type,
-                    size: file.size,
                     content: errors.maxSizeRejection,
+                    size: file.size,
+                    type: file.type,
                 })),
                 ...wrongFormatFiles.map(file => ({
                     name: file.name,
-                    type: file.type,
-                    size: file.size,
                     content: errors.formatRejection,
+                    size: file.size,
+                    type: file.type,
                 })),
             ]);
         }

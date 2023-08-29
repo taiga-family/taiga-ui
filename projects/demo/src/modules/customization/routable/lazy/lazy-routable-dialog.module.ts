@@ -12,20 +12,20 @@ import {LazyRoutableDialogComponent} from './lazy-routable-dialog.component';
         TuiAddonDocModule,
         RouterModule.forChild([
             {
-                path: ``,
-                component: LazyRoutableDialogComponent,
                 children: [
                     {
-                        path: ``,
                         loadChildren: async () =>
                             (await import(`./examples/1/page-1.module`))
                                 .TuiPage1ExampleModule,
+                        path: ``,
                     },
                     {
-                        path: `Setup`,
                         component: LazyRoutableDialogComponent,
+                        path: `Setup`,
                     },
                 ],
+                component: LazyRoutableDialogComponent,
+                path: ``,
             },
         ]),
         TuiButtonModule,

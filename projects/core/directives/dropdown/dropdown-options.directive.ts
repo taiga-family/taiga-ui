@@ -28,12 +28,12 @@ export interface TuiDropdownOptions {
 /** Default values for dropdown options */
 export const TUI_DROPDOWN_DEFAULT_OPTIONS: TuiDropdownOptions = {
     align: 'left',
+    appearance: '',
     direction: null,
     limitWidth: 'auto',
     maxHeight: 400,
     minHeight: 80,
     offset: 4,
-    appearance: '',
 };
 
 /**

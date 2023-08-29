@@ -32,18 +32,18 @@ export class TuiPdfViewerExample2 {
 
     show(): void {
         const options: TuiPdfViewerOptions<Buttons> = {
-            label: 'Taiga UI',
             actions: new PolymorpheusComponent(ActionsContentComponent),
             data: [
                 {
-                    text: 'Sign',
                     onClick: context => context.completeWith('Document signed'),
+                    text: 'Sign',
                 },
                 {
-                    text: 'Deny',
                     onClick: context => context.completeWith('Document denied'),
+                    text: 'Deny',
                 },
             ],
+            label: 'Taiga UI',
         };
 
         this.pdfService

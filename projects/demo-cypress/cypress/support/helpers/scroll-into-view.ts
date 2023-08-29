@@ -4,9 +4,9 @@ export const tuiScrollIntoView = (
     cy
         .wrap($subject, {log: false})
         .scrollIntoView({
-            ensureScrollable: true,
-            easing: `linear`,
             duration: 0,
+            easing: `linear`,
+            ensureScrollable: true,
         })
         .should(`be.inViewport`)
         .should(`be.visible`)

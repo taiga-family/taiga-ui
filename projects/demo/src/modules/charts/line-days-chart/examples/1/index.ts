@@ -32,7 +32,7 @@ export class TuiLineDaysChartExample1 {
     readonly xStringify$: Observable<TuiStringHandler<TuiDay>> = this.months$.pipe(
         map(
             months =>
-                ({month, day}) =>
+                ({day, month}) =>
                     `${months[month]}, ${day}`,
         ),
     );

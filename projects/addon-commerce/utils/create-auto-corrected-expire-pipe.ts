@@ -46,8 +46,8 @@ export function tuiCreateAutoCorrectedExpirePipe(): TuiTextMaskPipeHandler {
         }
 
         return {
-            value: conformedValueArr.join(``),
             indexesOfPipedChars,
+            value: conformedValueArr.join(``),
         };
     };
 }

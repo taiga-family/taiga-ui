@@ -27,16 +27,16 @@ import {TUI_SHEET_PROVIDERS} from './sheet.providers';
     selector: 'tui-sheet',
     templateUrl: './sheet.template.html',
     styleUrls: ['./sheet.style.less'],
-    providers: TUI_SHEET_PROVIDERS,
-    animations: [tuiSlideInTop],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [tuiSlideInTop],
+    providers: TUI_SHEET_PROVIDERS,
     host: {
-        role: 'dialog',
-        '[attr.aria-labelledby]': 'id',
-        '[class._ios]': 'isIos',
+        '($.class._stuck)': 'stuck$',
         // '[class._stuck]': 'true', // Initially disable snapping for Firefox
         '[$.class._stuck]': 'stuck$',
-        '($.class._stuck)': 'stuck$',
+        '[attr.aria-labelledby]': 'id',
+        '[class._ios]': 'isIos',
+        role: 'dialog',
     },
 })
 export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterViewInit {
@@ -102,7 +102,7 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
             fakeSmoothScroll(nativeElement, top - nativeElement.scrollTop - 16);
         }
 
-        nativeElement.scrollTo({top, behavior: 'smooth'});
+        nativeElement.scrollTo({behavior: 'smooth', top});
     }
 
     close(): void {

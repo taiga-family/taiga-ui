@@ -8,9 +8,9 @@ import {PROMPT_PROVIDER} from './prompt.service';
 
 @NgModule({
     imports: [TuiButtonModule, PolymorpheusModule, CommonModule],
+    declarations: [PromptComponent],
     // Add this provider to app module (it is here for stackblitz demonstration purpose only)
     providers: [PROMPT_PROVIDER],
-    declarations: [PromptComponent],
     exports: [PromptComponent],
 })
 export class PromptModule {}

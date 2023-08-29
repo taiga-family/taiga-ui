@@ -18,9 +18,9 @@ import {
         },
         tuiCheckboxOptionsProvider({
             appearances: {
-                unchecked: 'material-checkbox-off',
                 checked: 'material-checkbox-on',
                 indeterminate: 'material-checkbox-on',
+                unchecked: 'material-checkbox-off',
             },
         }),
     ],

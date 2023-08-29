@@ -45,8 +45,8 @@ export const TUI_INPUT_CARD_GROUPED_TEXTS = new InjectionToken<
             ),
             map(([index, cardNumber, expiry, cvcTexts]) => ({
                 cardNumberText: cardNumber[index],
-                expiryText: expiry[index],
                 cvcText: cvcTexts[index],
+                expiryText: expiry[index],
             })),
         );
     },

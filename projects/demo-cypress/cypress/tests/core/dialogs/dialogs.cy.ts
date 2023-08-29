@@ -1,7 +1,7 @@
 describe(`Dialogs`, () => {
-    for (const [index, {width, height}] of [
-        {width: 720, height: 900},
-        {width: 1620, height: 900},
+    for (const [index, {height, width}] of [
+        {height: 900, width: 720},
+        {height: 900, width: 1620},
     ].entries()) {
         describe(`${width}x${height}`, () => {
             beforeEach(() => {
@@ -132,8 +132,8 @@ describe(`Dialogs`, () => {
             cy.tuiWaitBeforeAction()
                 .get(`tui-dialog`)
                 .should(`exist`)
-                .trigger(`mousedown`, {x: 100, y: 100, force: true})
-                .trigger(`mouseup`, {x: 100, y: 100, force: true})
+                .trigger(`mousedown`, {force: true, x: 100, y: 100})
+                .trigger(`mouseup`, {force: true, x: 100, y: 100})
                 .tuiWaitBeforeAction();
             cy.get(`tui-dialog`).should(`be.visible`);
         });
@@ -144,8 +144,8 @@ describe(`Dialogs`, () => {
             cy.get(`tui-doc-page .t-content button`).first().click();
             cy.get(`tui-dialog`)
                 .should(`exist`)
-                .trigger(`mousedown`, {x: 10, y: 10, force: true})
-                .trigger(`mouseup`, {x: 10, y: 10, force: true})
+                .trigger(`mousedown`, {force: true, x: 10, y: 10})
+                .trigger(`mouseup`, {force: true, x: 10, y: 10})
                 .tuiWaitBeforeAction()
                 .should(`not.exist`);
         });
@@ -156,8 +156,8 @@ describe(`Dialogs`, () => {
             cy.get(`tui-doc-page .t-content button`).first().click();
             cy.get(`tui-dialog`)
                 .should(`be.visible`)
-                .trigger(`mousedown`, {x: 100, y: 100, force: true})
-                .trigger(`mouseup`, {x: 100, y: 100, force: true});
+                .trigger(`mousedown`, {force: true, x: 100, y: 100})
+                .trigger(`mouseup`, {force: true, x: 100, y: 100});
 
             cy.getByAutomationId(`tui-dialog__close`).click();
 

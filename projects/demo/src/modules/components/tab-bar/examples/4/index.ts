@@ -19,20 +19,20 @@ export class TuiTabBarExample4 {
             timer(3000).pipe(
                 map(() => [
                     {
-                        text: 'Favorites',
                         icon: 'tuiIconHeartLarge',
+                        text: 'Favorites',
                     },
                     {
-                        text: 'Calls',
                         icon: 'tuiIconPhoneLarge',
+                        text: 'Calls',
                     },
                     {
-                        text: 'Profile',
                         icon: 'tuiIconUserLarge',
+                        text: 'Profile',
                     },
                     {
-                        text: 'Settings and configuration',
                         icon: 'tuiIconSettingsLarge',
+                        text: 'Settings and configuration',
                     },
                 ]),
                 startWith([]),

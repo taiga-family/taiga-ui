@@ -14,7 +14,6 @@ export class TuiDataListExample1 {
 
     readonly groups = [
         {
-            label: $localize`Components`,
             items: [
                 {
                     label: 'Input',
@@ -29,9 +28,9 @@ export class TuiDataListExample1 {
                     routerLink: '/components/data-list',
                 },
             ],
+            label: $localize`Components`,
         },
         {
-            label: $localize`Styles`,
             items: [
                 {
                     label: $localize`Icons`,
@@ -42,15 +41,16 @@ export class TuiDataListExample1 {
                     routerLink: '/typography',
                 },
             ],
+            label: $localize`Styles`,
         },
         {
-            label: '',
             items: [
                 {
                     label: $localize`Changelog`,
                     routerLink: '/changelog',
                 },
             ],
+            label: '',
         },
     ];
 }

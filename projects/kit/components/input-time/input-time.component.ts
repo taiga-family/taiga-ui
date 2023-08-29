@@ -273,15 +273,15 @@ export class TuiInputTimeComponent
 
     @tuiPure
     private calculateMask(mode: TuiTimeMode): MaskitoOptions {
-        const {HH, MM, SS, MS} = this.options.maxValues;
+        const {HH, MM, MS, SS} = this.options.maxValues;
 
         return maskitoTimeOptionsGenerator({
             mode,
             timeSegmentMaxValues: {
                 hours: HH,
+                milliseconds: MS,
                 minutes: MM,
                 seconds: SS,
-                milliseconds: MS,
             },
         });
     }

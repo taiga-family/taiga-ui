@@ -12,19 +12,19 @@ import {TuiDialogService} from '@taiga-ui/core';
 })
 export class TuiDropdownContextExample2 {
     readonly menuItems = [
-        {title: 'View', iconName: 'tuiIconEye'},
-        {title: 'Copy', iconName: 'tuiIconCopy'},
-        {title: 'Delete', iconName: 'tuiIconTrash'},
-        {title: 'Move', iconName: 'tuiIconFolder'},
+        {iconName: 'tuiIconEye', title: 'View'},
+        {iconName: 'tuiIconCopy', title: 'Copy'},
+        {iconName: 'tuiIconTrash', title: 'Delete'},
+        {iconName: 'tuiIconFolder', title: 'Move'},
     ] as const;
 
     readonly tableData = [
-        {character: 'Ross Geller', actor: 'David Schwimmer'},
-        {character: 'Chandler Bing', actor: 'Matthew Perry'},
-        {character: 'Joey Tribbiani', actor: 'Matt LeBlanc'},
-        {character: 'Phoebe Buffay', actor: 'Lisa Kudrow'},
-        {character: 'Monica Geller', actor: 'Courteney Cox'},
-        {character: 'Rachel Green', actor: 'Jennifer Aniston'},
+        {actor: 'David Schwimmer', character: 'Ross Geller'},
+        {actor: 'Matthew Perry', character: 'Chandler Bing'},
+        {actor: 'Matt LeBlanc', character: 'Joey Tribbiani'},
+        {actor: 'Lisa Kudrow', character: 'Phoebe Buffay'},
+        {actor: 'Courteney Cox', character: 'Monica Geller'},
+        {actor: 'Jennifer Aniston', character: 'Rachel Green'},
     ] as const;
 
     readonly tableColumns = Object.keys(this.tableData[0]);

@@ -16,17 +16,17 @@ import {map, scan, startWith} from 'rxjs/operators';
         {
             provide: TUI_VALIDATION_ERRORS,
             useValue: {
-                required: 'Enter this!',
                 email: 'Enter a valid email',
                 maxlength: ({requiredLength}: {requiredLength: string}) =>
                     `Maximum length — ${requiredLength}`,
-                minlength: ({requiredLength}: {requiredLength: string}) =>
-                    of(`Minimum length — ${requiredLength}`),
                 min: interval(2000).pipe(
                     scan(tuiIsFalsy, false),
                     map(val => (val ? 'Fix please' : 'Min number 3')),
                     startWith('Min number 3'),
                 ),
+                minlength: ({requiredLength}: {requiredLength: string}) =>
+                    of(`Minimum length — ${requiredLength}`),
+                required: 'Enter this!',
             },
         },
     ],

@@ -57,14 +57,14 @@ const {LARGE, NORMAL} = ensureIcons();
 
 export const ICONS = (deprecated: TuiStringHandler<string>): DemoTuiIconsTabs => ({
     'Description and examples': {
-        [`Normal / 16px`]: NORMAL.filter(
-            icon => !deprecated(icon) && !DEPRECATED.includes(icon),
-        ),
         [`Large / 24px`]: LARGE.filter(
             icon => !deprecated(icon) && !DEPRECATED.includes(icon),
         ),
-        [`Payment systems`]: COMMERCE_SYSTEMS,
+        [`Normal / 16px`]: NORMAL.filter(
+            icon => !deprecated(icon) && !DEPRECATED.includes(icon),
+        ),
         [`Payment services`]: COMMERCE_SERVICES,
+        [`Payment systems`]: COMMERCE_SYSTEMS,
     },
 });
 

@@ -33,7 +33,7 @@ export function replaceFunctions(options: TuiSchema): void {
 }
 
 function replaceDeprecatedFunction(): void {
-    DEPRECATED_FUNCTIONS.forEach(({from, to, moduleSpecifier}) => {
+    DEPRECATED_FUNCTIONS.forEach(({from, moduleSpecifier, to}) => {
         getNamedImportReferences(from, moduleSpecifier).forEach(ref => {
             if (ref.wasForgotten()) {
                 return;

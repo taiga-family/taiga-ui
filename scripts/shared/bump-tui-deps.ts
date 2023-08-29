@@ -11,10 +11,10 @@ export interface TuiBumpDepsOptions {
 
 export function bumpTuiDeps({
     deps,
-    prevVersion,
-    newVersion,
-    isPeerDependency,
     ignores,
+    isPeerDependency,
+    newVersion,
+    prevVersion,
 }: TuiBumpDepsOptions): void {
     const keys = Object.keys(deps).filter(key => isTuiPackageName(key, ignores));
 
@@ -26,10 +26,10 @@ export function bumpTuiDeps({
         } else if (deps[key]?.hasOwnProperty(`requires`)) {
             bumpTuiDeps({
                 deps: (deps[key] as Record<string, Record<string, string>>).requires,
-                isPeerDependency,
                 ignores,
-                prevVersion,
+                isPeerDependency,
                 newVersion,
+                prevVersion,
             });
         }
     }

@@ -107,7 +107,7 @@ function shadowRootActiveElement(root: Document): Observable<EventTarget | null>
         tuiTypedFromEvent(root, `focusin`).pipe(map(({target}) => target)),
         tuiTypedFromEvent(root, `focusout`).pipe(
             filter(
-                ({target, relatedTarget}) => !!relatedTarget && isValidFocusout(target),
+                ({relatedTarget, target}) => !!relatedTarget && isValidFocusout(target),
             ),
             map(({relatedTarget}) => relatedTarget),
         ),

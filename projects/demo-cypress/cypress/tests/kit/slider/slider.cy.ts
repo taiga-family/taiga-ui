@@ -96,8 +96,8 @@ describe(`Slider`, () => {
                 cy.get(`@minusButton`).click();
 
                 checkSlider(`@slider`, {
-                    expectedValue: `0.75`,
                     expectedFillPercentage: `17%`,
+                    expectedValue: `0.75`,
                 });
 
                 cy.get(`@example`).matchImageSnapshot(
@@ -110,8 +110,8 @@ describe(`Slider`, () => {
                 cy.get(`@plusButton`).click();
 
                 checkSlider(`@slider`, {
-                    expectedValue: `1.25`,
                     expectedFillPercentage: `50%`,
+                    expectedValue: `1.25`,
                 });
 
                 cy.get(`@example`).matchImageSnapshot(
@@ -124,8 +124,8 @@ describe(`Slider`, () => {
                 cy.get(`@plusButton`).click().click();
 
                 checkSlider(`@slider`, {
-                    expectedValue: `1.5`,
                     expectedFillPercentage: `67%`,
+                    expectedValue: `1.5`,
                 });
 
                 cy.get(`@example`).matchImageSnapshot(
@@ -153,8 +153,8 @@ describe(`Slider`, () => {
                 cy.get(`@tickLabels`).first().click();
 
                 checkSlider(`@slider`, {
-                    expectedValue: `0`,
                     expectedFillPercentage: `0%`,
+                    expectedValue: `0`,
                 });
 
                 cy.get(`@example`).matchImageSnapshot(`08-slider-formControl-0`);
@@ -164,8 +164,8 @@ describe(`Slider`, () => {
                 cy.get(`@tickLabels`).eq(2).click();
 
                 checkSlider(`@slider`, {
-                    expectedValue: `500`,
                     expectedFillPercentage: `50%`,
+                    expectedValue: `500`,
                 });
 
                 cy.get(`@example`).matchImageSnapshot(`08-slider-formControl-500`);
@@ -175,8 +175,8 @@ describe(`Slider`, () => {
                 cy.get(`@tickLabels`).eq(3).click();
 
                 checkSlider(`@slider`, {
-                    expectedValue: `750`,
                     expectedFillPercentage: `75%`,
+                    expectedValue: `750`,
                 });
 
                 cy.get(`@example`).matchImageSnapshot(`08-slider-formControl-750`);
@@ -186,8 +186,8 @@ describe(`Slider`, () => {
                 cy.get(`@tickLabels`).last().click();
 
                 checkSlider(`@slider`, {
-                    expectedValue: `1000`,
                     expectedFillPercentage: `100%`,
+                    expectedValue: `1000`,
                 });
 
                 cy.get(`@example`).matchImageSnapshot(`08-slider-formControl-1000`);
@@ -199,8 +199,8 @@ describe(`Slider`, () => {
 function checkSlider(
     sliderSelector: string,
     {
-        expectedValue,
         expectedFillPercentage,
+        expectedValue,
     }: {expectedFillPercentage: string; expectedValue: string},
 ): void {
     cy.get(sliderSelector)

@@ -5,8 +5,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
     selector: 'tui-media-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    encapsulation: ViewEncapsulation.None,
     changeDetection,
+    encapsulation: ViewEncapsulation.None,
 })
 export class TuiMediaExample3 {
     currentTime = 0;

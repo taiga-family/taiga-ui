@@ -12,14 +12,14 @@ import {TuiPage1ExampleComponent} from './page-1.component';
         TuiRoutableDialogModule,
         RouterModule.forChild([
             {
-                path: ``,
-                component: TuiPage1ExampleComponent,
                 children: [
                     // step 3: use tuiGenerateDialogableRoute inside children property
                     tuiGenerateDialogableRoute(DialogContentComponent, {
                         path: `path/to/dialog`,
                     }),
                 ],
+                component: TuiPage1ExampleComponent,
+                path: ``,
             },
         ]),
         TuiButtonModule,

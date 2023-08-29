@@ -128,18 +128,18 @@ describe(`InputRange`, () => {
         });
 
         const testsConditions = [
-            {typedValue: `9`, expectedRoundedValue: `10`},
-            {typedValue: `8`, expectedRoundedValue: `7,5`},
-            {typedValue: `7,6`, expectedRoundedValue: `7,5`},
-            {typedValue: `7.4`, expectedRoundedValue: `7,5`},
-            {typedValue: `7`, expectedRoundedValue: `7,5`},
-            {typedValue: `6`, expectedRoundedValue: `5`},
-            {typedValue: `3.2`, expectedRoundedValue: `2,5`},
-            {typedValue: `1`, expectedRoundedValue: `0`},
-            {typedValue: `0.1`, expectedRoundedValue: `0`},
+            {expectedRoundedValue: `10`, typedValue: `9`},
+            {expectedRoundedValue: `7,5`, typedValue: `8`},
+            {expectedRoundedValue: `7,5`, typedValue: `7,6`},
+            {expectedRoundedValue: `7,5`, typedValue: `7.4`},
+            {expectedRoundedValue: `7,5`, typedValue: `7`},
+            {expectedRoundedValue: `5`, typedValue: `6`},
+            {expectedRoundedValue: `2,5`, typedValue: `3.2`},
+            {expectedRoundedValue: `0`, typedValue: `1`},
+            {expectedRoundedValue: `0`, typedValue: `0.1`},
         ] as const;
 
-        for (const {typedValue, expectedRoundedValue} of testsConditions) {
+        for (const {expectedRoundedValue, typedValue} of testsConditions) {
             it(`${typedValue} => ${expectedRoundedValue}`, () => {
                 cy.get(`@rightTextInput`)
                     .focus()

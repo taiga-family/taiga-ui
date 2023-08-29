@@ -15,8 +15,8 @@ export interface TuiArrowMode {
 }
 
 export const TUI_ARROW_DEFAULT_MODE: TuiArrowMode = {
-    interactive: TUI_ARROW,
     disabled: TUI_ARROW,
+    interactive: TUI_ARROW,
 };
 
 /**

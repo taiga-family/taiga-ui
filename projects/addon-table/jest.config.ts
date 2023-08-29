@@ -4,8 +4,8 @@ import rootConfig from '../../jest.config';
 
 const config: Config = {
     ...rootConfig,
-    coverageDirectory: `<rootDir>/coverage/addon-table`,
     collectCoverageFrom: [`<rootDir>/projects/addon-table/**/*.ts`],
+    coverageDirectory: `<rootDir>/coverage/addon-table`,
     testMatch: [`<rootDir>/projects/addon-table/**/*.spec.ts`],
 };
 

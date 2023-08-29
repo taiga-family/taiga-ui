@@ -21,9 +21,9 @@ import {Observable} from 'rxjs';
     selector: 'tui-error',
     templateUrl: './error.template.html',
     styleUrls: ['./error.style.less'],
-    providers: [MODE_PROVIDER],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiHeightCollapse, tuiFadeIn],
+    providers: [MODE_PROVIDER],
 })
 export class TuiErrorComponent {
     @Input('error')

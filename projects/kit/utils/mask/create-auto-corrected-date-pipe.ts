@@ -17,7 +17,7 @@ export interface TuiAutoCorrectedDatePipeConfigs
  */
 export function tuiNormalizeDateValue(
     dateValue: string,
-    {value, min, max, dateFormat, dateSeparator}: TuiAutoCorrectedDatePipeConfigs,
+    {dateFormat, dateSeparator, max, min, value}: TuiAutoCorrectedDatePipeConfigs,
 ): string {
     return value && value.toString(dateFormat, dateSeparator) === dateValue
         ? dateValue

@@ -30,54 +30,66 @@ export class ExampleTuiAlertsComponent {
     readonly exampleOptions = import('./examples/import/define-options.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
+        TypeScript: import('./examples/2/index.ts?raw'),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
+        TypeScript: import('./examples/3/index.ts?raw'),
         'alert-example/alert-example.component.ts': import(
             './examples/3/alert-example/alert-example.component.ts?raw'
-        ),
-        'alert-example/alert-example.template.html': import(
-            './examples/3/alert-example/alert-example.template.html?raw'
         ),
         'alert-example/alert-example.module.ts': import(
             './examples/3/alert-example/alert-example.module.ts?raw'
         ),
+        'alert-example/alert-example.template.html': import(
+            './examples/3/alert-example/alert-example.template.html?raw'
+        ),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
+        TypeScript: import('./examples/4/index.ts?raw'),
         'alert-example-with-data/alert-example-with-data.component.ts': import(
             './examples/4/alert-example-with-data/alert-example-with-data.component.ts?raw'
-        ),
-        'alert-example-with-data/alert-example-with-data.template.html': import(
-            './examples/4/alert-example-with-data/alert-example-with-data.template.html?raw'
-        ),
-        'alert-example-with-data/alert-example-with-data.style.less': import(
-            './examples/4/alert-example-with-data/alert-example-with-data.style.less?raw'
         ),
         'alert-example-with-data/alert-example-with-data.module.ts': import(
             './examples/4/alert-example-with-data/alert-example-with-data.module.ts?raw'
         ),
+        'alert-example-with-data/alert-example-with-data.style.less': import(
+            './examples/4/alert-example-with-data/alert-example-with-data.style.less?raw'
+        ),
+        'alert-example-with-data/alert-example-with-data.template.html': import(
+            './examples/4/alert-example-with-data/alert-example-with-data.template.html?raw'
+        ),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
-        'custom-label/custom-label.module.ts': import(
-            './examples/5/custom-label/custom-label.module.ts?raw'
-        ),
+        TypeScript: import('./examples/5/index.ts?raw'),
+        'alert-example-with-custom-label/alert-example-with-custom-label.component.ts':
+            import(
+                './examples/5/alert-example-with-custom-label/alert-example-with-custom-label.component.ts?raw'
+            ),
+        'alert-example-with-custom-label/alert-example-with-custom-label.module.ts':
+            import(
+                './examples/5/alert-example-with-custom-label/alert-example-with-custom-label.module.ts?raw'
+            ),
+        'alert-example-with-custom-label/alert-example-with-custom-label.template.html':
+            import(
+                './examples/5/alert-example-with-custom-label/alert-example-with-custom-label.template.html?raw'
+            ),
         'custom-label/custom-label.component.ts': import(
             './examples/5/custom-label/custom-label.component.ts?raw'
+        ),
+        'custom-label/custom-label.module.ts': import(
+            './examples/5/custom-label/custom-label.module.ts?raw'
         ),
         'custom-label/custom-label.style.less': import(
             './examples/5/custom-label/custom-label.style.less?raw'
@@ -85,23 +97,11 @@ export class ExampleTuiAlertsComponent {
         'custom-label/custom-label.template.html': import(
             './examples/5/custom-label/custom-label.template.html?raw'
         ),
-        'alert-example-with-custom-label/alert-example-with-custom-label.module.ts':
-            import(
-                './examples/5/alert-example-with-custom-label/alert-example-with-custom-label.module.ts?raw'
-            ),
-        'alert-example-with-custom-label/alert-example-with-custom-label.component.ts':
-            import(
-                './examples/5/alert-example-with-custom-label/alert-example-with-custom-label.component.ts?raw'
-            ),
-        'alert-example-with-custom-label/alert-example-with-custom-label.template.html':
-            import(
-                './examples/5/alert-example-with-custom-label/alert-example-with-custom-label.template.html?raw'
-            ),
     };
 
     readonly example6: TuiDocExample = {
-        TypeScript: import('./examples/6/index.ts?raw'),
         HTML: import('./examples/6/index.html?raw'),
+        TypeScript: import('./examples/6/index.ts?raw'),
     };
 
     data = 100;
@@ -149,12 +149,12 @@ export class ExampleTuiAlertsComponent {
     showNotification(): void {
         this.alerts
             .open(this.selectedContent, {
-                label: this.label,
-                data: this.data,
-                status: this.status,
                 autoClose: this.autoClose,
+                data: this.data,
                 hasCloseButton: this.hasCloseButton,
                 hasIcon: this.hasIcon,
+                label: this.label,
+                status: this.status,
             })
             .pipe(
                 switchMap(response =>

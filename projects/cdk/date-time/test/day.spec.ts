@@ -698,7 +698,7 @@ describe(`TuiDay`, () => {
                 });
 
                 it(`TuiDay {year: 2000, month: 6, day: 15} if {year: 0, month: 0} was passed`, () => {
-                    const result = y2000m6d15.append({year: 0, month: 0});
+                    const result = y2000m6d15.append({month: 0, year: 0});
 
                     expect(result.year).toBe(2000);
                     expect(result.month).toBe(6);
@@ -707,9 +707,9 @@ describe(`TuiDay`, () => {
 
                 it(`TuiDay {year: 2000, month: 6, day: 15} if {year: 0, month: 0, day: 0} was passed`, () => {
                     const result = y2000m6d15.append({
-                        year: 0,
-                        month: 0,
                         day: 0,
+                        month: 0,
+                        year: 0,
                     });
 
                     expect(result.year).toBe(2000);
@@ -806,7 +806,7 @@ describe(`TuiDay`, () => {
                 });
 
                 it(`TuiDay {year: 2000, month: 2, day: 29} if {month: -4, day: 14} was passed`, () => {
-                    const result = y2000m6d15.append({month: -4, day: 14});
+                    const result = y2000m6d15.append({day: 14, month: -4});
 
                     expect(result.year).toBe(2000);
                     expect(result.month).toBe(2);
@@ -814,7 +814,7 @@ describe(`TuiDay`, () => {
                 });
 
                 it(`TuiDay {year: 1999, month: 11, day: 31} if {month: -6, day: -15} was passed`, () => {
-                    const result = y2000m6d15.append({month: -6, day: -15});
+                    const result = y2000m6d15.append({day: -15, month: -6});
 
                     expect(result.year).toBe(1999);
                     expect(result.month).toBe(11);

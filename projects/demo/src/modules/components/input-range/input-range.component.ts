@@ -30,8 +30,8 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
+        TypeScript: import('./examples/2/index.ts?raw'),
     };
 
     readonly example3: TuiDocExample = {
@@ -46,14 +46,14 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
+        TypeScript: import('./examples/5/index.ts?raw'),
     };
 
     readonly example6: TuiDocExample = {
-        TypeScript: import('./examples/6/index.ts?raw'),
         HTML: import('./examples/6/index.html?raw'),
+        TypeScript: import('./examples/6/index.ts?raw'),
         'transformer.ts': import('./examples/6/transformer.ts?raw'),
     };
 
@@ -80,7 +80,7 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
     override size = this.sizeVariants[1];
 
     readonly pluralizeVariants: ReadonlyArray<Record<string, string>> = [
-        {one: 'thing', few: 'things', many: 'things', other: 'things'},
+        {few: 'things', many: 'things', one: 'thing', other: 'things'},
         {
             one: 'year',
             other: 'years',

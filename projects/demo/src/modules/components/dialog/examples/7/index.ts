@@ -23,9 +23,9 @@ export class TuiDialogExampleComponent7 {
             .open(
                 new PolymorpheusComponent(SearchDialogExampleComponent, this.injector),
                 {
-                    size: 'page',
                     closeable: true,
                     dismissible: true,
+                    size: 'page',
                 },
             )
             .subscribe();

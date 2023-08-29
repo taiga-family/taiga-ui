@@ -50,6 +50,7 @@ const GAP = 4;
     `,
     styleUrls: ['./hint.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [tuiFadeIn],
     providers: [
         TuiDestroyService,
         TuiPositionService,
@@ -57,7 +58,6 @@ const GAP = 4;
         tuiPositionAccessorFor('hint'),
         tuiRectAccessorFor('hint', TuiHintDirective),
     ],
-    animations: [tuiFadeIn],
     host: {
         '[@tuiFadeIn]': 'animation',
         '[class._untouchable]': 'pointer',

@@ -30,12 +30,12 @@ export class TuiMultiSelectExample10 {
     ];
 
     customItems: readonly Item[] = [
-        {name: 'Luke Skywalker', id: 1},
-        {name: 'Leia Organa Solo', id: 2},
-        {name: 'Darth Vader', id: 3},
-        {name: 'Han Solo', id: 4},
-        {name: 'Obi-Wan Kenobi', id: 5},
-        {name: 'Yoda', id: 6},
+        {id: 1, name: 'Luke Skywalker'},
+        {id: 2, name: 'Leia Organa Solo'},
+        {id: 3, name: 'Darth Vader'},
+        {id: 4, name: 'Han Solo'},
+        {id: 5, name: 'Obi-Wan Kenobi'},
+        {id: 6, name: 'Yoda'},
     ];
 
     groupItems = [
@@ -45,13 +45,13 @@ export class TuiMultiSelectExample10 {
 
     customGroupItems: readonly Item[][] = [
         [
-            {name: 'Caesar', id: 1},
-            {name: 'Apple and Chicken', id: 2},
+            {id: 1, name: 'Caesar'},
+            {id: 2, name: 'Apple and Chicken'},
         ],
         [
-            {name: 'Broccoli Cheddar', id: 3},
-            {name: 'Chicken and Rice', id: 4},
-            {name: 'Chicken Noodle', id: 5},
+            {id: 3, name: 'Broccoli Cheddar'},
+            {id: 4, name: 'Chicken and Rice'},
+            {id: 5, name: 'Chicken Noodle'},
         ],
     ];
 

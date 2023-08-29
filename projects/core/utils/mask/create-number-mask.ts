@@ -18,13 +18,13 @@ const NON_ZERO_DIGIT = /[1-9]/;
  */
 export function tuiCreateNumberMask({
     allowDecimal = false,
-    decimalSymbol = `,`,
-    thousandSymbol = CHAR_NO_BREAK_SPACE,
+    allowNegative = false,
     autoCorrectDecimalSymbol = true,
     decimalLimit = 2,
-    requireDecimal = false,
-    allowNegative = false,
+    decimalSymbol = `,`,
     integerLimit = 0,
+    requireDecimal = false,
+    thousandSymbol = CHAR_NO_BREAK_SPACE,
 }: TuiNumberMaskOptions = {}): TuiTextMaskListHandler {
     ngDevMode && tuiAssert.assert(decimalLimit >= 0);
     ngDevMode && tuiAssert.assert(Number.isInteger(integerLimit));

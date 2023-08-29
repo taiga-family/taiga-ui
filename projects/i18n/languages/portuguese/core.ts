@@ -3,6 +3,9 @@ import {TuiLanguageCore} from '@taiga-ui/i18n/interfaces';
 import {TUI_PORTUGUESE_LANGUAGE_COUNTRIES} from './countries';
 
 export const TUI_PORTUGUESE_LANGUAGE_CORE: TuiLanguageCore = {
+    close: `Fechar`,
+    countries: TUI_PORTUGUESE_LANGUAGE_COUNTRIES,
+    defaultErrorMessage: `Valor é inválido`,
     months: [
         `Janeiro`,
         `Fevereiro`,
@@ -17,10 +20,7 @@ export const TUI_PORTUGUESE_LANGUAGE_CORE: TuiLanguageCore = {
         `Novembro`,
         `Dezembro`,
     ],
-    close: `Fechar`,
     nothingFoundMessage: `Nada encontrado`,
-    defaultErrorMessage: `Valor é inválido`,
-    spinTexts: [`Anterior`, `Próximo`],
     shortWeekDays: [`Seg`, `Ter`, `Qua`, `Qui`, `Sex`, `Sáb`, `Dom`],
-    countries: TUI_PORTUGUESE_LANGUAGE_COUNTRIES,
+    spinTexts: [`Anterior`, `Próximo`],
 };

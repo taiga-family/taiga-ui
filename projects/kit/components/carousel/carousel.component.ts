@@ -80,8 +80,8 @@ export class TuiCarouselComponent {
 
         return {
             flexBasis: percent,
-            minWidth: percent,
             maxWidth: percent,
+            minWidth: percent,
         };
     }
 

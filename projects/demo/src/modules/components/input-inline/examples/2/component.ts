@@ -6,9 +6,9 @@ import {TuiAlertService} from '@taiga-ui/core';
 @Component({
     selector: `tui-input-inline-example-2`,
     templateUrl: `./template.html`,
+    styleUrls: [`./style.less`],
     changeDetection,
     encapsulation,
-    styleUrls: [`./style.less`],
 })
 export class TuiInputInlineExample2 {
     heading = `Page heading`;

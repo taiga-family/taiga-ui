@@ -6,8 +6,8 @@ export type TuiMobileAlertOptions = Omit<
 >;
 
 const MOBILE_ALERT_OPTIONS: TuiMobileAlertOptions = {
-    size: `fullscreen`,
     closeable: false,
+    size: `fullscreen`,
 };
 
 export type TuiIosAlertOptions = Omit<

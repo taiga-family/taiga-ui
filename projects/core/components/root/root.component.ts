@@ -28,14 +28,14 @@ import {debounceTime, map} from 'rxjs/operators';
     // So that we do not force OnPush on custom dialogs
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    providers: [TUI_IS_MOBILE_RES_PROVIDER],
     encapsulation: ViewEncapsulation.None,
+    providers: [TUI_IS_MOBILE_RES_PROVIDER],
     host: {
-        'data-tui-version': TUI_VERSION,
-        '[style.--tui-duration.ms]': 'duration',
-        '[class._ios]': 'isIOS',
-        '[class._android]': 'isAndroid',
         '($.class._mobile)': 'isMobileRes$',
+        '[class._android]': 'isAndroid',
+        '[class._ios]': 'isIOS',
+        '[style.--tui-duration.ms]': 'duration',
+        'data-tui-version': TUI_VERSION,
     },
 })
 export class TuiRootComponent {

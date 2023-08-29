@@ -8,9 +8,9 @@ import {
 
 @Component({
     selector: 'tui-block-status',
-    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './block-status.template.html',
     styleUrls: ['./block-status.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })
 export class TuiBlockStatusComponent {

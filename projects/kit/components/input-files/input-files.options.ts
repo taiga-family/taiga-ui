@@ -16,11 +16,11 @@ export interface TuiInputFilesOptions {
 }
 
 export const TUI_INPUT_FILES_DEFAULT_OPTIONS: TuiInputFilesOptions = {
-    capture: null,
     accepts: ``,
+    capture: null,
+    maxFileSize: 30 * 1024 * 1024, // 30 MiB
     multiple: false,
     size: `m`,
-    maxFileSize: 30 * 1024 * 1024, // 30 MiB
 };
 
 /**

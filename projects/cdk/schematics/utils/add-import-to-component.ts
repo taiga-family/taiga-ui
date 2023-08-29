@@ -8,7 +8,7 @@ export function addImportToComponent(
     {unique = true}: {unique?: boolean} = {},
 ): void {
     pushToArrayProperty(classDeclaration, `Component`, `imports`, moduleName, {
-        unique,
         forceToArray: true,
+        unique,
     });
 }

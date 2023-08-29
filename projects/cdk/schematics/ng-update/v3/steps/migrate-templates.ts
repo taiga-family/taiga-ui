@@ -82,7 +82,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
             const isLastAction = actionIndex === actions.length - 1;
 
             !options[`skip-logs`] && progressLog(action.name, isLastAction);
-            action({resource, fileSystem, recorder});
+            action({fileSystem, recorder, resource});
         });
     });
 
@@ -91,31 +91,31 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
 }
 
 function replaceAttrsByDirective({
-    resource,
     fileSystem,
+    resource,
 }: {
     fileSystem: DevkitFileSystem;
     resource: TemplateResource;
 }): void {
     ATTR_TO_DIRECTIVE.forEach(
-        ({componentSelector, directiveModule, directive, inputProperty, filterFn}) => {
+        ({componentSelector, directive, directiveModule, filterFn, inputProperty}) => {
             replaceInputPropertyByDirective({
                 componentSelector,
-                directiveModule,
                 directive,
-                inputProperty,
+                directiveModule,
                 fileSystem,
-                templateResource: resource,
                 filterFn,
+                inputProperty,
+                templateResource: resource,
             });
         },
     );
 }
 
 function replaceAttrs({
-    resource,
-    recorder,
     fileSystem,
+    recorder,
+    resource,
 }: {
     fileSystem: DevkitFileSystem;
     recorder: UpdateRecorder;
@@ -148,9 +148,9 @@ function replaceAttrs({
 }
 
 function replaceTags({
-    resource,
-    recorder,
     fileSystem,
+    recorder,
+    resource,
 }: {
     fileSystem: DevkitFileSystem;
     recorder: UpdateRecorder;
@@ -159,7 +159,7 @@ function replaceTags({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    TAGS_TO_REPLACE.forEach(({from, to, addAttributes}) => {
+    TAGS_TO_REPLACE.forEach(({addAttributes, from, to}) => {
         const elements = findElementsByTagName(template, from);
 
         elements.forEach(({sourceCodeLocation}) => {
@@ -178,9 +178,9 @@ function replaceTags({
 }
 
 function addHTMLCommentTags({
-    resource,
-    recorder,
     fileSystem,
+    recorder,
+    resource,
 }: {
     fileSystem: DevkitFileSystem;
     recorder: UpdateRecorder;
@@ -204,9 +204,9 @@ function addHTMLCommentTags({
 }
 
 function replaceBreadcrumbs({
-    resource,
-    recorder,
     fileSystem,
+    recorder,
+    resource,
 }: {
     fileSystem: DevkitFileSystem;
     recorder: UpdateRecorder;
@@ -240,7 +240,7 @@ function replaceBreadcrumbs({
     </ng-container>`,
         );
 
-        const {startOffset = 0, endOffset = 0} =
+        const {endOffset = 0, startOffset = 0} =
             element.sourceCodeLocation?.attrs?.[`[items]`] || {};
 
         recorder.remove(templateOffset + startOffset - 1, endOffset - startOffset + 1);
@@ -248,9 +248,9 @@ function replaceBreadcrumbs({
 }
 
 function replaceFieldError({
-    resource,
-    recorder,
     fileSystem,
+    recorder,
+    resource,
 }: {
     fileSystem: DevkitFileSystem;
     recorder: UpdateRecorder;
@@ -266,7 +266,7 @@ function replaceFieldError({
         const orderVal = orderAttr?.value;
 
         if (orderAttr) {
-            const {startOffset = 0, endOffset = 0} =
+            const {endOffset = 0, startOffset = 0} =
                 element.sourceCodeLocation?.attrs?.[`[order]`] || {};
 
             recorder.remove(
@@ -297,8 +297,8 @@ function replaceFieldError({
 }
 
 function addEditorProviders({
-    resource,
     fileSystem,
+    resource,
 }: {
     fileSystem: DevkitFileSystem;
     recorder: UpdateRecorder;
@@ -335,9 +335,9 @@ function addEditorProviders({
 const HIDE_SELECTED_PIPE_WITH_ARGS_REG = /\|\s*tuiHideSelected(\s*:\s*[^|'"]*)?/gi;
 
 function migrateTuiHideSelectedPipe({
-    resource,
     fileSystem,
     recorder,
+    resource,
 }: {
     fileSystem: DevkitFileSystem;
     recorder: UpdateRecorder;
@@ -375,9 +375,9 @@ function migrateTuiHideSelectedPipe({
 }
 
 function migrateBinaryAttributes({
-    resource,
     fileSystem,
     recorder,
+    resource,
 }: {
     fileSystem: DevkitFileSystem;
     recorder: UpdateRecorder;
@@ -404,7 +404,7 @@ function migrateBinaryAttributes({
                 return;
             }
 
-            const {startOffset, endOffset} =
+            const {endOffset, startOffset} =
                 attrLocations[`[${attrName.toLowerCase()}]`] ||
                 attrLocations[attrName.toLowerCase()];
 
@@ -415,9 +415,9 @@ function migrateBinaryAttributes({
 }
 
 function addWarningForFormatNumberPipe({
-    resource,
     fileSystem,
     recorder,
+    resource,
 }: {
     fileSystem: DevkitFileSystem;
     recorder: UpdateRecorder;
@@ -435,26 +435,26 @@ function addWarningForFormatNumberPipe({
 }
 
 function replaceInputValues({
-    resource,
-    recorder,
     fileSystem,
+    recorder,
+    resource,
 }: {
     fileSystem: DevkitFileSystem;
     recorder: UpdateRecorder;
     resource: TemplateResource;
 }): void {
     replaceAttrValues({
-        resource,
-        recorder,
         fileSystem,
+        recorder,
         replaceableItems: REPLACE_ATTR_VALUE,
+        resource,
     });
 }
 
 function removeInputs({
-    resource,
     fileSystem,
     recorder,
+    resource,
 }: {
     fileSystem: DevkitFileSystem;
     recorder: UpdateRecorder;

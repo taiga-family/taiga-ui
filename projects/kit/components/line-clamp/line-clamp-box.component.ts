@@ -16,6 +16,7 @@ import {
     `,
     styleUrls: ['./line-clamp-box.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [tuiFadeIn],
     providers: [
         TuiDestroyService,
         TuiPositionService,
@@ -23,7 +24,6 @@ import {
         tuiPositionAccessorFor('hint'),
         tuiRectAccessorFor('hint', TuiHintDirective),
     ],
-    animations: [tuiFadeIn],
 })
 export class TuiLineClampBoxComponent extends TuiHintComponent {
     @HostBinding('style.minWidth.px')

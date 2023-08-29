@@ -52,7 +52,7 @@ export class TuiValueDecorationComponent implements DoCheck {
 
     @HostBinding('class._filler')
     get filler(): string {
-        const {focused, placeholder, exampleText, value, textfield} = this;
+        const {exampleText, focused, placeholder, textfield, value} = this;
 
         if (placeholder && exampleText) {
             return '';

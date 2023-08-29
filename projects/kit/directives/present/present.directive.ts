@@ -42,8 +42,8 @@ export class TuiPresentDirective implements OnDestroy {
         });
 
         observer.observe(nativeElement, {
-            attributes: true,
             attributeFilter: ['style', 'class'],
+            attributes: true,
         });
     }
 

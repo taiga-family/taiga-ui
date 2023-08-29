@@ -30,9 +30,9 @@ export class ExampleTuiTableBarComponent implements OnDestroy {
     readonly exampleHtml = import('./examples/import/template.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 
     readonly modeVariants: readonly TuiBrightness[] = ['onLight', 'onDark'];
@@ -56,8 +56,8 @@ export class ExampleTuiTableBarComponent implements OnDestroy {
         this.subscription = this.tableBarsService
             .open(this.tableBarTemplate || '', {
                 adaptive: this.adaptive,
-                mode: this.mode,
                 hasCloseButton: this.hasCloseButton,
+                mode: this.mode,
             })
             .pipe(takeUntil(this.destroy$))
             .subscribe();

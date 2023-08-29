@@ -4,8 +4,8 @@ import {Observable} from 'rxjs';
 
 @Directive({
     selector: '[tuiResize]',
-    outputs: ['tuiResize'],
     providers: [TuiDestroyService, TuiResizeService],
+    outputs: ['tuiResize'],
 })
 export class TuiResizeDirective {
     constructor(

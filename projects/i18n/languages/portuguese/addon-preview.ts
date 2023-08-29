@@ -5,8 +5,8 @@ export const TUI_PORTUGUESE_LANGUAGE_ADDON_PREVIEW: TuiLanguagePreview = {
         rotate: `Rotate`,
     },
     zoomTexts: {
-        zoomOut: `Zoom out`,
-        zoomIn: `Zoom in`,
         reset: `Reset`,
+        zoomIn: `Zoom in`,
+        zoomOut: `Zoom out`,
     },
 };

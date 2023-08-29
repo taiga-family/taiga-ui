@@ -35,8 +35,8 @@ const isFakeHistoryState = (
     // So that we do not force OnPush on custom dialogs
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    providers: [TuiDestroyService],
     animations: [TUI_PARENT_ANIMATION],
+    providers: [TuiDestroyService],
 })
 export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>>
     implements OnInit

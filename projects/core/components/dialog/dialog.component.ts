@@ -36,24 +36,24 @@ const REQUIRED_ERROR = new Error('Required dialog was dismissed');
     // So we don't force OnPush on dialog content
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    providers: [TuiDestroyService, TuiDialogCloseService],
     animations: [tuiSlideInTop, tuiFadeIn],
+    providers: [TuiDestroyService, TuiDialogCloseService],
 })
 export class TuiDialogComponent<O, I> {
     private readonly animation = {
-        value: '',
         params: {
-            start: '40px',
             duration: this.duration,
+            start: '40px',
         },
+        value: '',
     } as const;
 
     private readonly fullscreenAnimation = {
-        value: '',
         params: {
-            start: '100vh',
             duration: this.duration,
+            start: '100vh',
         },
+        value: '',
     } as const;
 
     readonly close$ = new Subject();

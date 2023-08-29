@@ -16,10 +16,10 @@ import {distinctUntilChanged, map, share, startWith} from 'rxjs/operators';
     selector: 'tui-doc-main',
     templateUrl: './main.template.html',
     styleUrls: ['./main.style.less'],
-    encapsulation: ViewEncapsulation.None,
-    // @note: This one was default on purpose so we can test demo in default mode.
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
+    // @note: This one was default on purpose so we can test demo in default mode.
+    encapsulation: ViewEncapsulation.None,
     providers: [
         {
             provide: TuiModeDirective,

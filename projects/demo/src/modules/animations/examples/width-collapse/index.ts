@@ -20,6 +20,6 @@ export class TuiWidthCollapseExample {
 
     @tuiPure
     getAnimation(duration: number): TuiDurationOptions {
-        return {value: '', params: {duration}};
+        return {params: {duration}, value: ''};
     }
 }

@@ -103,9 +103,9 @@ export class TuiInputExample4 {
     private readonly user = new FormControl('');
 
     readonly testForm = new FormGroup({
-        user: this.user,
         account: new FormControl(''),
         card: new FormControl(''),
+        user: this.user,
     });
 
     lastUser: User | null = null;

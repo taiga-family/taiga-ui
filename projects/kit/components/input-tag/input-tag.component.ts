@@ -223,7 +223,7 @@ export class TuiInputTagComponent
 
     @HostBinding('class._label-outside')
     get labelOutside(): boolean {
-        const {size, labelOutside} = this.controller;
+        const {labelOutside, size} = this.controller;
 
         return size === 's' || labelOutside;
     }

@@ -9,14 +9,14 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 })
 export class LazyRoutableDialogComponent {
     readonly example1: TuiDocExample = {
-        'page.template.html': import('./examples/1/page-1.component.html?raw'),
-        'page.module.ts': import('./examples/1/page-1.module.ts?raw'),
         'dialog-content.component.ts': import(
             './examples/1/dialog-content/dialog-content.component.ts?raw'
         ),
         'dialog-content.module.ts': import(
             './examples/1/dialog-content/dialog-content.module.ts?raw'
         ),
+        'page.module.ts': import('./examples/1/page-1.module.ts?raw'),
+        'page.template.html': import('./examples/1/page-1.component.html?raw'),
     };
 
     readonly addRouterOutlet = import('./examples/setup/add-router-outlet.md?raw');

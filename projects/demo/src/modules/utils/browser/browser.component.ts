@@ -11,7 +11,7 @@ export class ExampleBrowserComponent {
     readonly importComponentExample = import('./examples/import/import-component.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 }

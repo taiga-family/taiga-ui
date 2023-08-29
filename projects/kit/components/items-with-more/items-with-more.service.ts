@@ -28,7 +28,7 @@ export class TuiItemsWithMoreService extends Observable<number> {
     }
 
     private getOverflowIndex(): number {
-        const {clientWidth, children} = this.el.nativeElement;
+        const {children, clientWidth} = this.el.nativeElement;
         const items = Array.from(children, ({clientWidth}) => clientWidth);
         const first = this.directive.required === -1 ? 0 : this.directive.required;
         const last = items.length - 1;

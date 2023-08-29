@@ -41,6 +41,9 @@ import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.direc
     selector: 'tui-dropdown',
     templateUrl: './dropdown.template.html',
     styleUrls: ['./dropdown.style.less'],
+    // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
+    changeDetection: ChangeDetectionStrategy.Default,
+    animations: [tuiDropdownAnimation],
     providers: [
         TuiDestroyService,
         TuiPositionService,
@@ -48,15 +51,12 @@ import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.direc
         tuiRectAccessorFor('dropdown', TuiDropdownDirective),
         MODE_PROVIDER,
     ],
-    animations: [tuiDropdownAnimation],
+    // @bad TODO: OnPush
     host: {
+        '($.data-mode.attr)': 'mode$',
         '[@tuiDropdownAnimation]': 'animation',
         '[attr.data-appearance]': 'options.appearance',
-        '($.data-mode.attr)': 'mode$',
     },
-    // @bad TODO: OnPush
-    // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
-    changeDetection: ChangeDetectionStrategy.Default,
 })
 export class TuiDropdownComponent implements OnDestroy {
     constructor(
@@ -159,10 +159,10 @@ export class TuiDropdownComponent implements OnDestroy {
         const {nativeElement} = this.directive.el;
         const {ownerDocument} = nativeElement;
         const root = ownerDocument ? ownerDocument.body : nativeElement;
-        let focusable = tuiGetClosestFocusable({initial: nativeElement, root, previous});
+        let focusable = tuiGetClosestFocusable({initial: nativeElement, previous, root});
 
         while (focusable !== null && nativeElement.contains(focusable)) {
-            focusable = tuiGetClosestFocusable({initial: focusable, root, previous});
+            focusable = tuiGetClosestFocusable({initial: focusable, previous, root});
         }
 
         focusable?.focus();

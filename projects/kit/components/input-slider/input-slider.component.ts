@@ -43,10 +43,6 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     selector: 'tui-input-slider',
     templateUrl: './input-slider.template.html',
     styleUrls: ['./input-slider.style.less'],
-    host: {
-        '[attr.data-size]': 'controller.size',
-        '[class._label-outside]': 'controller.labelOutside',
-    },
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputSliderComponent),
@@ -54,6 +50,10 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
         tuiSliderOptionsProvider({trackColor: 'transparent'}),
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
+    host: {
+        '[attr.data-size]': 'controller.size',
+        '[class._label-outside]': 'controller.labelOutside',
+    },
 })
 export class TuiInputSliderComponent
     extends AbstractTuiControl<number>
@@ -189,7 +189,7 @@ export class TuiInputSliderComponent
     }
 
     onFocused(focused: boolean): void {
-        const {value, textInputValue, safeCurrentValue, inputNumberRef} = this;
+        const {inputNumberRef, safeCurrentValue, textInputValue, value} = this;
 
         if (!focused && textInputValue !== inputNumberRef?.getFormattedValue(value)) {
             this.updateTextInputValue(value ?? safeCurrentValue);

@@ -13,8 +13,8 @@ export class TuiSheetExample2 {
     open = false;
 
     readonly options: Partial<TuiSheetOptions> = {
-        overlay: true,
         image: 'assets/images/avatar.jpg',
+        overlay: true,
     };
 
     toggle(): void {

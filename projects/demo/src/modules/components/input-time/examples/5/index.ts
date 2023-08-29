@@ -11,15 +11,15 @@ import {tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
     encapsulation,
     providers: [
         tuiInputTimeOptionsProvider({
+            maxValues: {HH: 11, MM: 59, MS: 999, SS: 59},
             mode: 'HH:MM',
-            maxValues: {HH: 11, MM: 59, SS: 59, MS: 999},
         }),
     ],
 })
 export class TuiInputTimeExample5 {
     readonly testForm = new FormGroup({
-        testValue: new FormControl(null),
         isPm: new FormControl(false),
+        testValue: new FormControl(null),
     });
 
     get postfix(): string {

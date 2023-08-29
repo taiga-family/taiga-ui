@@ -11,12 +11,12 @@ export class ExampleTuiPureComponent {
     readonly exampleDecorator = import('./import/example-decorator.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./pure-getter.component.ts?raw'),
         HTML: import('./pure-getter.component.html?raw'),
+        TypeScript: import('./pure-getter.component.ts?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./pure-function.component.ts?raw'),
         HTML: import('./pure-function.component.html?raw'),
+        TypeScript: import('./pure-function.component.ts?raw'),
     };
 }

@@ -3,9 +3,9 @@ import {TuiRounding} from '@taiga-ui/cdk/types';
 import {tuiCeil, tuiFloor, tuiRound, tuiTrunc} from './round';
 
 export function tuiRoundWith({
-    value,
-    precision,
     method,
+    precision,
+    value,
 }: {
     method: TuiRounding;
     precision: number;

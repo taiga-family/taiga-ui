@@ -44,12 +44,12 @@ describe(`InputCount with TUI_INPUT_COUNT_OPTIONS`, () => {
                     useValue: {
                         ...TUI_INPUT_COUNT_DEFAULT_OPTIONS,
                         icons: {
-                            up: `tuiIconChevronUp`,
                             down: `tuiIconChevronDown`,
+                            up: `tuiIconChevronUp`,
                         },
-                        step,
-                        min,
                         max,
+                        min,
+                        step,
                     },
                 },
             ],

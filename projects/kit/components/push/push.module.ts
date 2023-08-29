@@ -30,18 +30,18 @@ import {TuiPushAlertDirective} from './push-alert.directive';
         TuiPushAlertComponent,
         TuiPushAlertDirective,
     ],
+    providers: [
+        {
+            provide: TUI_ALERTS,
+            multi: true,
+            useExisting: TuiPushService,
+        },
+    ],
     exports: [
         TuiPushComponent,
         TuiPushDirective,
         TuiPushAlertComponent,
         TuiPushAlertDirective,
-    ],
-    providers: [
-        {
-            provide: TUI_ALERTS,
-            useExisting: TuiPushService,
-            multi: true,
-        },
     ],
 })
 export class TuiPushModule {}

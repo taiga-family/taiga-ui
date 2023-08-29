@@ -17,8 +17,8 @@ import {takeUntil} from 'rxjs/operators';
     selector: 'tui-svg-defs-host',
     templateUrl: './svg-defs-host.template.html',
     styleUrls: ['./svg-defs-host.style.less'],
-    providers: [TuiDestroyService],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [TuiDestroyService],
 })
 export class TuiSvgDefsHostComponent implements OnInit {
     items!: IterableIterator<SafeHtml>;

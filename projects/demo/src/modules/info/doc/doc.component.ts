@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
     selector: 'doc',
     templateUrl: './doc.template.html',
     styleUrls: ['./doc.style.less'],
-    encapsulation: ViewEncapsulation.None,
     changeDetection,
+    encapsulation: ViewEncapsulation.None,
 })
 export class DocComponent {}

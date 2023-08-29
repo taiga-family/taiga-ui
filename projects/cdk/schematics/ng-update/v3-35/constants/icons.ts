@@ -1,2522 +1,2522 @@
 export const ICONS: Array<{from: string; to: string}> = [
     {
-        to: `tuiIconTdsGridMediumPragmatic`,
         from: `tuiIconAddProductLarge`,
+        to: `tuiIconTdsGridMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsTexMediumPragmatic`,
         from: `tuiIconTeXLarge`,
+        to: `tuiIconTdsTexMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsWysiwygSpoilerMediumPragmatic`,
         from: `tuiIconSpoilerLarge`,
+        to: `tuiIconTdsWysiwygSpoilerMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsWysiwygSpoilerRemoveMediumPragmatic`,
         from: `tuiIconSpoilerDeleteLarge`,
+        to: `tuiIconTdsWysiwygSpoilerRemoveMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsLinkOffMediumPragmatic`,
         from: `tuiIconUnlinkLarge`,
+        to: `tuiIconTdsLinkOffMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsWysiwygHighlighterMediumPragmatic`,
         from: `tuiIconHiliteLarge`,
+        to: `tuiIconTdsWysiwygHighlighterMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsWysiwygTableAddRowMediumPragmatic`,
         from: `tuiIconAddRowLarge`,
+        to: `tuiIconTdsWysiwygTableAddRowMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsExclamationSmallPragmatic`,
         from: `tuiIconAlert`,
-    },
-    {
-        to: `tuiIconTdsAlertSmallPragmatic`,
-        from: `tuiIconAttention`,
-    },
-    {
-        to: `tuiIconTdsAlertSmallPragmatic`,
-        from: `tuiIconAlertCircle`,
-    },
-    {
-        to: `tuiIconTdsAlertMedium`,
-        from: `tuiIconAlertCircleLarge`,
-    },
-    {
-        to: `tuiIconTdsAlertMediumPragmatic`,
-        from: `tuiIconAlertCircleLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsAlertSmallPragmatic`,
-        from: `tuiIconAlertCircleOutline`,
-    },
-    {
-        to: `tuiIconTdsExclamationMediumPragmatic`,
-        from: `tuiIconAlertLarge`,
-    },
-    {
-        to: `tuiIconTdsWysiwygAlignCenterMediumPragmatic`,
-        from: `tuiIconAlignCenterLarge`,
-    },
-    {
-        to: `tuiIconTdsWysiwygAlignJustifyMediumPragmatic`,
-        from: `tuiIconAlignJustifyLarge`,
-    },
-    {
-        to: `tuiIconTdsWysiwygAlignLeftMediumPragmatic`,
-        from: `tuiIconAlignLeftLarge`,
-    },
-    {
-        to: `tuiIconTdsWysiwygAlignRightMediumPragmatic`,
-        from: `tuiIconAlignRightLarge`,
-    },
-    {
-        to: `tuiIconTdsPaymentAlipayLogoSquare`,
-        from: `tuiIconAlipay`,
-    },
-    {
-        to: `tuiIconTdsArrowDownSmallPragmatic`,
-        from: `tuiIconArrowDown`,
-    },
-    {
-        to: `tuiIconTdsArrowDownMediumPragmatic`,
-        from: `tuiIconArrowDownLarge`,
-    },
-    {
-        to: `tuiIconTdsArrowBottomLeftSmallPragmatic`,
-        from: `tuiIconArrowDownLeft`,
-    },
-    {
-        to: `tuiIconTdsArrowBottomRightSmallPragmatic`,
-        from: `tuiIconArrowDownRight`,
-    },
-    {
-        to: `tuiIconTdsArrowLeftSmallPragmatic`,
-        from: `tuiIconArrowLeft`,
-    },
-    {
-        to: `tuiIconTdsArrowLeftCircleMediumPragmatic`,
-        from: `tuiIconBackCircle`,
-    },
-    {
-        to: `tuiIconTdsArrowLeftCircleMediumPragmatic`,
-        from: `tuiIconArrowLeftCircle`,
-    },
-    {
-        to: `tuiIconTdsArrowLeftMediumPragmatic`,
-        from: `tuiIconArrowLeftLarge`,
-    },
-    {
-        to: `tuiIconTdsArrowRightSmallPragmatic`,
-        from: `tuiIconArrowRight`,
-    },
-    {
-        to: `tuiIconTdsArrowRightMediumPragmatic`,
-        from: `tuiIconArrowRightLarge`,
-    },
-    {
-        to: `tuiIconTdsArrowDownSmallPragmatic`,
-        from: `tuiIconArrowShortDown`,
-    },
-    {
-        to: `tuiIconTdsArrowLeftSmallPragmatic`,
-        from: `tuiIconArrowShortLeft`,
-    },
-    {
-        to: `tuiIconTdsArrowRightSmallPragmatic`,
-        from: `tuiIconArrowShortRight`,
-    },
-    {
-        to: `tuiIconTdsArrowUpSmallPragmatic`,
-        from: `tuiIconArrowShortUp`,
-    },
-    {
-        to: `tuiIconTdsArrowUpSmallPragmatic`,
-        from: `tuiIconArrowUp`,
-    },
-    {
-        to: `tuiIconTdsArrowUpMediumPragmatic`,
-        from: `tuiIconArrowUpLarge`,
-    },
-    {
-        to: `tuiIconTdsArrowTopLeftSmallPragmatic`,
-        from: `tuiIconArrowUpLeft`,
-    },
-    {
-        to: `tuiIconTdsArrowTopRightSmallPragmatic`,
-        from: `tuiIconArrowUpRight`,
-    },
-    {
-        to: `tuiIconTdsBackspaceSmallPragmatic`,
-        from: `tuiIconBackspace`,
-    },
-    {
-        to: `tuiIconTdsChartBarSmallPragmatic`,
-        from: `tuiIconChart`,
-    },
-    {
-        to: `tuiIconTdsChartBarSmallPragmatic`,
-        from: `tuiIconChartBar`,
-    },
-    {
-        to: `tuiIconTdsChartBarSmallPragmatic`,
-        from: `tuiIconBarChart`,
-    },
-    {
-        to: `tuiIconTdsBarcodeScanSmallPragmatic`,
-        from: `tuiIconBarCode`,
-    },
-    {
-        to: `tuiIconTdsBarcodeScanMediumPragmatic`,
-        from: `tuiIconBarCodeLarge`,
-    },
-    {
-        to: `tuiIconTdsChartBarMediumPragmatic`,
-        from: `tuiIconBarchartCircleLarge`,
-    },
-    {
-        to: `tuiIconTdsBellSmallPragmatic`,
-        from: `tuiIconBell`,
-    },
-    {
-        to: `tuiIconTdsBellMediumPragmatic`,
-        from: `tuiIconBellLarge`,
-    },
-    {
-        to: `tuiIconTdsBellMediumPragmatic`,
-        from: `tuiIconBellLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsBellOffSmallPragmatic`,
-        from: `tuiIconBellOff`,
-    },
-    {
-        to: `tuiIconTdsBellOffMediumPragmatic`,
-        from: `tuiIconBellOffLarge`,
-    },
-    {
-        to: `tuiIconTdsBellOffMediumPragmatic`,
-        from: `tuiIconBellOffLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsBellOffSmallPragmatic`,
-        from: `tuiIconBellOffOutline`,
-    },
-    {
-        to: `tuiIconTdsBellSmallPragmatic`,
-        from: `tuiIconBellOutline`,
-    },
-    {
-        to: `tuiIconTdsReceiptMediumPragmatic`,
-        from: `tuiIconBillOutLarge`,
-    },
-    {
-        to: `tuiIconTdsBookmarkSmallPragmatic`,
-        from: `tuiIconBookmark`,
-    },
-    {
-        to: `tuiIconTdsBookmarkFilledMedium`,
-        from: `tuiIconBookmarkLarge`,
-    },
-    {
-        to: `tuiIconTdsBookmarkMediumPragmatic`,
-        from: `tuiIconBookmarkLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsBookmarkSmallPragmatic`,
-        from: `tuiIconBookmarkOutline`,
-    },
-    {
-        to: `tuiIconTdsCalendarSmallPragmatic`,
-        from: `tuiIconCalendar`,
-    },
-    {
-        to: `tuiIconTdsCalendarSmallPragmatic`,
-        from: `tuiIconCalendarFilled`,
-    },
-    {
-        to: `tuiIconTdsCalendarMediumPragmatic`,
-        from: `tuiIconCalendarFilledLarge`,
-    },
-    {
-        to: `tuiIconTdsCalendarMediumPragmatic`,
-        from: `tuiIconCalendarLarge`,
-    },
-    {
-        to: `tuiIconTdsCalendarMediumPragmatic`,
-        from: `tuiIconCalendarLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsMathLessCalendarSmallPragmatic`,
-        from: `tuiIconCalendarLess`,
-    },
-    {
-        to: `tuiIconTdsMathLessCalendarMediumPragmatic`,
-        from: `tuiIconCalendarLessLarge`,
-    },
-    {
-        to: `tuiIconTdsMathLessOrEqualCalendarSmallPragmatic`,
-        from: `tuiIconCalendarLessOrEqual`,
-    },
-    {
-        to: `tuiIconTdsMathLessOrEqualCalendarMediumPragmatic`,
-        from: `tuiIconCalendarLessOrEqualLarge`,
-    },
-    {
-        to: `tuiIconTdsMathMoreCalendarSmallPragmatic`,
-        from: `tuiIconCalendarMore`,
-    },
-    {
-        to: `tuiIconTdsMathMoreCalendarMediumPragmatic`,
-        from: `tuiIconCalendarMoreLarge`,
-    },
-    {
-        to: `tuiIconTdsMathMoreOrEqualCalendarSmallPragmatic`,
-        from: `tuiIconCalendarMoreOrEqual`,
-    },
-    {
-        to: `tuiIconTdsMathMoreOrEqualCalendarMediumPragmatic`,
-        from: `tuiIconCalendarMoreOrEqualLarge`,
-    },
-    {
-        to: `tuiIconTdsCalendarSmallPragmatic`,
-        from: `tuiIconCalendarOutline`,
-    },
-    {
-        to: `tuiIconTdsPhoneKeypadSmallPragmatic`,
-        from: `tuiIconCall`,
-    },
-    {
-        to: `tuiIconTdsPhoneArrowSmallPragmatic`,
-        from: `tuiIconCallIn`,
-    },
-    {
-        to: `tuiIconTdsPhoneArrowMediumPragmatic`,
-        from: `tuiIconCallInLarge`,
-    },
-    {
-        to: `tuiIconTdsPhoneKeypadSmallPragmatic`,
-        from: `tuiIconCallKeyboard`,
-    },
-    {
-        to: `tuiIconTdsPhoneKeypadMediumPragmatic`,
-        from: `tuiIconCallKeyboardLarge`,
-    },
-    {
-        to: `tuiIconTdsPhoneArrowRightSmallPragmatic`,
-        from: `tuiIconCallOut`,
-    },
-    {
-        to: `tuiIconTdsPhoneArrowRightMediumPragmatic`,
-        from: `tuiIconCallOutLarge`,
-    },
-    {
-        to: `tuiIconTdsPhoneArrowDoubleRightSmallPragmatic`,
-        from: `tuiIconCallTransfer`,
-    },
-    {
-        to: `tuiIconTdsPhoneArrowDoubleRightMediumPragmatic`,
-        from: `tuiIconCallTransferLarge`,
-    },
-    {
-        to: `tuiIconTdsCameraPhotoSmallPragmatic`,
-        from: `tuiIconCamera`,
-    },
-    {
-        to: `tuiIconTdsCameraPhotoMediumPragmatic`,
-        from: `tuiIconCameraLarge`,
-    },
-    {
-        to: `tuiIconTdsCameraPhotoSmallPragmatic`,
-        from: `tuiIconCameraLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsCameraPhotoMediumPragmatic`,
-        from: `tuiIconCameraOutline`,
-    },
-    {
-        to: `tuiIconTdsCardsMediumPragmatic`,
-        from: `tuiIconCardsLarge`,
-    },
-    {
-        to: `tuiIconTdsCardsMediumPragmatic`,
-        from: `tuiIconCardsLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsShoppingCartSmallPragmatic`,
-        from: `tuiIconCart`,
-    },
-    {
-        to: `tuiIconTdsShoppingCartMediumPragmatic`,
-        from: `tuiIconCartLarge`,
-    },
-    {
-        to: `tuiIconTdsShoppingCartMediumPragmatic`,
-        from: `tuiIconCartLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsShoppingCartMediumPragmatic`,
-        from: `tuiIconCartOutline`,
-    },
-    {
-        to: `tuiIconTdsPercentCircleSmallPragmatic`,
-        from: `tuiIconCashback`,
-    },
-    {
-        to: `tuiIconTdsPercentCircleMediumPragmatic`,
-        from: `tuiIconCashbackLarge`,
-    },
-    {
-        to: `tuiIconTdsPercentCircleSmallPragmatic`,
-        from: `tuiIconCashbackOutline`,
-    },
-    {
-        to: `tuiIconTdsPercentCircleMediumPragmatic`,
-        from: `tuiIconCashbackOutlineLarge`,
-    },
-    {
-        to: `tuiIconTdsChartCandleSmallPragmatic`,
-        from: `tuiIconChartCandle`,
-    },
-    {
-        to: `tuiIconTdsChartCandleMediumPragmatic`,
-        from: `tuiIconChartCandleLarge`,
-    },
-    {
-        to: `tuiIconTdsChartLineSmallPragmatic`,
-        from: `tuiIconChartLine`,
-    },
-    {
-        to: `tuiIconTdsChartLineMediumPragmatic`,
-        from: `tuiIconChartLineLarge`,
-    },
-    {
-        to: `tuiIconTdsChartPieSmallPragmatic`,
-        from: `tuiIconChartPie`,
-    },
-    {
-        to: `tuiIconTdsChatsSmallPragmatic`,
-        from: `tuiIconChat`,
-    },
-    {
-        to: `tuiIconTdsChatsMediumPragmatic`,
-        from: `tuiIconChatLarge`,
-    },
-    {
-        to: `tuiIconTdsChatsMediumPragmatic`,
-        from: `tuiIconChatLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsChatsSmallPragmatic`,
-        from: `tuiIconChatOutline`,
-    },
-    {
-        to: `tuiIconTdsCheckSmallPragmatic`,
-        from: `tuiIconCheck`,
-    },
-    {
-        to: `tuiIconTdsCheckCircleSmallPragmatic`,
-        from: `tuiIconDone`,
-    },
-    {
-        to: `tuiIconTdsCheckCircleSmallPragmatic`,
-        from: `tuiIconCheckCircle`,
-    },
-    {
-        to: `tuiIconTdsCheckCircleMedium`,
-        from: `tuiIconCheckCircleLarge`,
-    },
-    {
-        to: `tuiIconTdsCheckCircleMediumPragmatic`,
-        from: `tuiIconCheckCircleLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsCheckCircleSmallPragmatic`,
-        from: `tuiIconCheckCircleOutline`,
-    },
-    {
-        to: `tuiIconTdsCheckMediumPragmatic`,
-        from: `tuiIconCheckLarge`,
-    },
-    {
-        to: `tuiIconTdsChevronDownSmallPragmatic`,
-        from: `tuiIconChevronDown`,
-    },
-    {
-        to: `tuiIconTdsArrowDownCircleMediumPragmatic`,
-        from: `tuiIconChevronDownCircleLarge`,
-    },
-    {
-        to: `tuiIconTdsChevronDownMediumPragmatic`,
-        from: `tuiIconChevronDownLarge`,
-    },
-    {
-        to: `tuiIconTdsChevronLeftSmallPragmatic`,
-        from: `tuiIconChevronLeft`,
-    },
-    {
-        to: `tuiIconTdsArrowLeftCircleMediumPragmatic`,
-        from: `tuiIconChevronLeftCircleLarge`,
-    },
-    {
-        to: `tuiIconTdsChevronLeftMediumPragmatic`,
-        from: `tuiIconChevronLeftLarge`,
-    },
-    {
-        to: `tuiIconTdsChevronRightSmallPragmatic`,
-        from: `tuiIconChevronRight`,
-    },
-    {
-        to: `tuiIconTdsArrowRightCircleMediumPragmatic`,
-        from: `tuiIconChevronRightCircleLarge`,
-    },
-    {
-        to: `tuiIconTdsChevronRightMediumPragmatic`,
-        from: `tuiIconChevronRightLarge`,
-    },
-    {
-        to: `tuiIconTdsChevronUpSmallPragmatic`,
-        from: `tuiIconChevronUp`,
-    },
-    {
-        to: `tuiIconTdsArrowUpCircleMediumPragmatic`,
-        from: `tuiIconChevronUpCircleLarge`,
-    },
-    {
-        to: `tuiIconTdsChevronUpMediumPragmatic`,
-        from: `tuiIconChevronUpLarge`,
-    },
-    {
-        to: `tuiIconTdsChevronDoubleDownMediumPragmatic`,
-        from: `tuiIconChevronsDownLarge`,
-    },
-    {
-        to: `tuiIconTdsChevronDoubleLeftMediumPragmatic`,
-        from: `tuiIconChevronsLeftLarge`,
-    },
-    {
-        to: `tuiIconTdsChevronRightMediumPragmatic`,
-        from: `tuiIconChevronsRightLarge`,
-    },
-    {
-        to: `tuiIconTdsChevronDoubleUpSmallPragmatic`,
-        from: `tuiIconChevronsUp`,
-    },
-    {
-        to: `tuiIconTdsWysiwygFontStyleClearMediumPragmatic`,
-        from: `tuiIconClearFormatLarge`,
-    },
-    {
-        to: `tuiIconTdsClockCircleSmallPragmatic`,
-        from: `tuiIconTime`,
-    },
-    {
-        to: `tuiIconTdsClockCircleSmallPragmatic`,
-        from: `tuiIconClock`,
-    },
-    {
-        to: `tuiIconTdsClockMediumPragmatic`,
-        from: `tuiIconClockLarge`,
-    },
-    {
-        to: `tuiIconTdsClockMediumPragmatic`,
-        from: `tuiIconClockLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsClockCircleSmallPragmatic`,
-        from: `tuiIconClockOutline`,
-    },
-    {
-        to: `tuiIconTdsCrossSmallPragmatic`,
-        from: `tuiIconClose`,
-    },
-    {
-        to: `tuiIconTdsCrossCircleSmallPragmatic`,
-        from: `tuiIconCloseCircle`,
-    },
-    {
-        to: `tuiIconTdsCrossCircleMediumPragmatic`,
-        from: `tuiIconCloseCircleLarge`,
-    },
-    {
-        to: `tuiIconTdsCrossCircleMediumPragmatic`,
-        from: `tuiIconCloseCircleLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsCrossCircleSmallPragmatic`,
-        from: `tuiIconCloseCircleOutline`,
-    },
-    {
-        to: `tuiIconTdsCrossMediumPragmatic`,
-        from: `tuiIconCloseLarge`,
-    },
-    {
-        to: `tuiIconTdsCloudSmallPragmatic`,
-        from: `tuiIconCloud`,
-    },
-    {
-        to: `tuiIconTdsCloudArrowOutSmallPragmatic`,
-        from: `tuiIconCloudDownload`,
-    },
-    {
-        to: `tuiIconTdsCloudArrowOutMediumPragmatic`,
-        from: `tuiIconCloudDownloadLarge`,
-    },
-    {
-        to: `tuiIconTdsCloudArrowOutMediumPragmatic`,
-        from: `tuiIconCloudDownloadLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsCloudArrowOutSmallPragmatic`,
-        from: `tuiIconCloudDownloadOutline`,
-    },
-    {
-        to: `tuiIconTdsCloudSmallPragmatic`,
-        from: `tuiIconCloudFilled`,
-    },
-    {
-        to: `tuiIconTdsCloudMediumPragmatic`,
-        from: `tuiIconCloudLarge`,
-    },
-    {
-        to: `tuiIconTdsCloudMediumPragmatic`,
-        from: `tuiIconCloudLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsCloudSmallPragmatic`,
-        from: `tuiIconCloudOutline`,
-    },
-    {
-        to: `tuiIconTdsCloudArrowInSmallPragmatic`,
-        from: `tuiIconCloudUpload`,
-    },
-    {
-        to: `tuiIconTdsCloudArrowInMediumPragmatic`,
-        from: `tuiIconCloudUploadLarge`,
-    },
-    {
-        to: `tuiIconTdsCloudArrowInMediumPragmatic`,
-        from: `tuiIconCloudUploadLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsCloudArrowInSmallPragmatic`,
-        from: `tuiIconCloudUploadOutline`,
-    },
-    {
-        to: `tuiIconTdsWysiwygCodeMediumPragmatic`,
-        from: `tuiIconCodeLarge`,
-    },
-    {
-        to: `tuiIconTdsWysiwygFontColorMediumPragmatic`,
-        from: `tuiIconColorLarge`,
-    },
-    {
-        to: `tuiIconTdsCopySmallPragmatic`,
-        from: `tuiIconCopy`,
-    },
-    {
-        to: `tuiIconTdsCopyMediumPragmatic`,
-        from: `tuiIconCopyLarge`,
-    },
-    {
-        to: `tuiIconTdsScissorsMediumPragmatic`,
-        from: `tuiIconCutLarge`,
-    },
-    {
-        to: `tuiIconTdsTrashSmallPragmatic`,
-        from: `tuiIconDelete`,
-    },
-    {
-        to: `tuiIconTdsBackspaceMediumPragmatic`,
-        from: `tuiIconDeleteLarge`,
-    },
-    {
-        to: `tuiIconTdsBackspaceMediumPragmatic`,
-        from: `tuiIconDeleteLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsBackspaceSmallPragmatic`,
-        from: `tuiIconDeleteOutline`,
-    },
-    {
-        to: `tuiIconTdsArrowInDownSmallPragmatic`,
-        from: `tuiIconDownload`,
-    },
-    {
-        to: `tuiIconTdsArrowInDownMediumPragmatic`,
-        from: `tuiIconDownloadLarge`,
-    },
-    {
-        to: `tuiIconTdsPencilSmallPragmatic`,
-        from: `tuiIconDraft`,
-    },
-    {
-        to: `tuiIconTdsPencilMediumPragmatic`,
-        from: `tuiIconDraftFilledLarge`,
-    },
-    {
-        to: `tuiIconTdsPencilMediumPragmatic`,
-        from: `tuiIconDraftLarge`,
-    },
-    {
-        to: `tuiIconTdsPencilSmallPragmatic`,
-        from: `tuiIconDraftOutline`,
-    },
-    {
-        to: `tuiIconTdsDragSmallPragmatic`,
-        from: `tuiIconDrag`,
-    },
-    {
-        to: `tuiIconTdsDragMediumPragmatic`,
-        from: `tuiIconDragLarge`,
-    },
-    {
-        to: `tuiIconTdsEditSmallPragmatic`,
-        from: `tuiIconEdit`,
-    },
-    {
-        to: `tuiIconTdsEditSmallPragmatic`,
-        from: `tuiIconEdit2`,
-    },
-    {
-        to: `tuiIconTdsPencilMediumPragmatic`,
-        from: `tuiIconEdit2Large`,
-    },
-    {
-        to: `tuiIconTdsEditMediumPragmatic`,
-        from: `tuiIconEditFilledLarge`,
-    },
-    {
-        to: `tuiIconTdsEditMediumPragmatic`,
-        from: `tuiIconEditLarge`,
-    },
-    {
-        to: `tuiIconTdsEditMediumPragmatic`,
-        from: `tuiIconEditLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsEditSmallPragmatic`,
-        from: `tuiIconEditOutline`,
-    },
-    {
-        to: `tuiIconTdsMathEqualSmallPragmatic`,
-        from: `tuiIconEqual`,
-    },
-    {
-        to: `tuiIconTdsMathEqualMediumPragmatic`,
-        from: `tuiIconEqualLarge`,
-    },
-    {
-        to: `tuiIconTdsWysiwygListBulletedMediumPragmatic`,
-        from: `tuiIconEventsLarge`,
-    },
-    {
-        to: `tuiIconTdsWysiwygListBulletedMediumPragmatic`,
-        from: `tuiIconEventsLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsArrowOutTopRightSmallPragmatic`,
-        from: `tuiIconExternal`,
-    },
-    {
-        to: `tuiIconTdsArrowOutTopRightSmallPragmatic`,
-        from: `tuiIconExternalLink`,
-    },
-    {
-        to: `tuiIconTdsArrowOutTopRightMediumPragmatic`,
-        from: `tuiIconExternalLinkLarge`,
-    },
-    {
-        to: `tuiIconTdsEyeSmallPragmatic`,
-        from: `tuiIconEyeOpen`,
-    },
-    {
-        to: `tuiIconTdsEyeSmallPragmatic`,
-        from: `tuiIconShow`,
-    },
-    {
-        to: `tuiIconTdsEyeSmallPragmatic`,
-        from: `tuiIconEye`,
-    },
-    {
-        to: `tuiIconTdsEyeMediumPragmatic`,
-        from: `tuiIconEyeLarge`,
-    },
-    {
-        to: `tuiIconTdsEyeOffSmallPragmatic`,
-        from: `tuiIconEyeClosed`,
-    },
-    {
-        to: `tuiIconTdsEyeOffSmallPragmatic`,
-        from: `tuiIconHide`,
-    },
-    {
-        to: `tuiIconTdsEyeOffSmallPragmatic`,
-        from: `tuiIconEyeOff`,
-    },
-    {
-        to: `tuiIconTdsEyeOffMediumPragmatic`,
-        from: `tuiIconEyeOffLarge`,
-    },
-    {
-        to: `tuiIconTdsDenyMediumPragmatic`,
-        from: `tuiIconFailLarge`,
-    },
-    {
-        to: `tuiIconTdsStarMediumPragmatic`,
-        from: `tuiIconFavoriteLarge`,
-    },
-    {
-        to: `tuiIconTdsDocSmallPragmatic`,
-        from: `tuiIconDefaultDoc`,
-    },
-    {
-        to: `tuiIconTdsDocSmallPragmatic`,
-        from: `tuiIconFile`,
-    },
-    {
-        to: `tuiIconTdsDocMediumPragmatic`,
-        from: `tuiIconFileLarge`,
-    },
-    {
-        to: `tuiIconTdsDocMediumPragmatic`,
-        from: `tuiIconFileLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsDocSmallPragmatic`,
-        from: `tuiIconFileOutline`,
-    },
-    {
-        to: `tuiIconTdsFilterSmallPragmatic`,
-        from: `tuiIconFilter`,
-    },
-    {
-        to: `tuiIconTdsFilterCrossSmallPragmatic`,
-        from: `tuiIconFilterClear`,
-    },
-    {
-        to: `tuiIconTdsFilterCrossMediumPragmatic`,
-        from: `tuiIconFilterClearLarge`,
-    },
-    {
-        to: `tuiIconTdsFilterCrossMediumPragmatic`,
-        from: `tuiIconFilterClearLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsFilterCrossSmallPragmatic`,
-        from: `tuiIconFilterClearOutline`,
-    },
-    {
-        to: `tuiIconTdsFilterMediumPragmatic`,
-        from: `tuiIconFilterLarge`,
-    },
-    {
-        to: `tuiIconTdsFilterMediumPragmatic`,
-        from: `tuiIconFilterLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsFilterSmallPragmatic`,
-        from: `tuiIconFilterOutline`,
-    },
-    {
-        to: `tuiIconTdsFilterPlusSmallPragmatic`,
-        from: `tuiIconFilterSave`,
-    },
-    {
-        to: `tuiIconTdsFilterPlusMediumPragmatic`,
-        from: `tuiIconFilterSaveLarge`,
-    },
-    {
-        to: `tuiIconTdsFilterPlusMediumPragmatic`,
-        from: `tuiIconFilterSaveLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsFilterPlusSmallPragmatic`,
-        from: `tuiIconFilterSaveOutline`,
-    },
-    {
-        to: `tuiIconTdsFlagSmallPragmatic`,
-        from: `tuiIconFlag`,
-    },
-    {
-        to: `tuiIconTdsFlagMediumPragmatic`,
-        from: `tuiIconFlagLarge`,
-    },
-    {
-        to: `tuiIconTdsFlagMediumPragmatic`,
-        from: `tuiIconFlagLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsFlagSmallPragmatic`,
-        from: `tuiIconFlagOutline`,
-    },
-    {
-        to: `tuiIconTdsFlashOnSmallPragmatic`,
-        from: `tuiIconFlash`,
-    },
-    {
-        to: `tuiIconTdsFlashMediumPragmatic`,
-        from: `tuiIconFlashLarge`,
-    },
-    {
-        to: `tuiIconTdsFlashMediumPragmatic`,
-        from: `tuiIconFlashLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsFlashOffSmallPragmatic`,
-        from: `tuiIconFlashOff`,
-    },
-    {
-        to: `tuiIconTdsFlashOffMediumPragmatic`,
-        from: `tuiIconFlashOffLarge`,
-    },
-    {
-        to: `tuiIconTdsFlashOffMediumPragmatic`,
-        from: `tuiIconFlashOffLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsFlashOffSmallPragmatic`,
-        from: `tuiIconFlashOffOutline`,
-    },
-    {
-        to: `tuiIconTdsFlashOnSmallPragmatic`,
-        from: `tuiIconFlashOutline`,
-    },
-    {
-        to: `tuiIconTdsFolderSmallPragmatic`,
-        from: `tuiIconFolder`,
-    },
-    {
-        to: `tuiIconTdsFolderMediumPragmatic`,
-        from: `tuiIconFolderLarge`,
-    },
-    {
-        to: `tuiIconTdsFolderMediumPragmatic`,
-        from: `tuiIconFolderLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsFolderSmallPragmatic`,
-        from: `tuiIconFolderOutline`,
-    },
-    {
-        to: `tuiIconTdsWysiwygFontMediumPragmatic`,
-        from: `tuiIconFontLarge`,
-    },
-    {
-        to: `tuiIconTdsDenySmallPragmatic`,
-        from: `tuiIconForbidden`,
-    },
-    {
-        to: `tuiIconTdsWysiwygFontStylesMediumPragmatic`,
-        from: `tuiIconFormatLarge`,
-    },
-    {
-        to: `tuiIconTdsSnowflakeMediumPragmatic`,
-        from: `tuiIconFreezeLarge`,
-    },
-    {
-        to: `tuiIconTdsPhoneHangoffSmallPragmatic`,
-        from: `tuiIconHangup`,
-    },
-    {
-        to: `tuiIconTdsPhoneHangoffMediumPragmatic`,
-        from: `tuiIconHangupLarge`,
-    },
-    {
-        to: `tuiIconTdsHeadsetSmallPragmatic`,
-        from: `tuiIconHeadset`,
-    },
-    {
-        to: `tuiIconTdsHeadsetMediumPragmatic`,
-        from: `tuiIconHeadsetLarge`,
-    },
-    {
-        to: `tuiIconTdsHeartFilledSmall`,
-        from: `tuiIconHeartFilled`,
-    },
-    {
-        to: `tuiIconTdsHeartFilledSmall`,
-        from: `tuiIconHeart`,
-    },
-    {
-        to: `tuiIconTdsHeartFilledOpaqueMedium`,
-        from: `tuiIconHeartLarge`,
-    },
-    {
-        to: `tuiIconTdsHeartMediumPragmatic`,
-        from: `tuiIconHeartLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsHeartSmallPragmatic`,
-        from: `tuiIconHeartOutline`,
-    },
-    {
-        to: `tuiIconTdsQuestionCircleSmall`,
-        from: `tuiIconHelp`,
-    },
-    {
-        to: `tuiIconTdsQuestionCircleSmall`,
-        from: `tuiIconTooltip`,
-    },
-    {
-        to: `tuiIconTdsQuestionCircleSmall`,
-        from: `tuiIconHelpCircle`,
-    },
-    {
-        to: `tuiIconTdsQuestionCircleMediumPragmatic`,
-        from: `tuiIconHelpCircleLarge`,
-    },
-    {
-        to: `tuiIconTdsQuestionCircleMediumPragmatic`,
-        from: `tuiIconHelpCircleLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsQuestionCircleSmallPragmatic`,
-        from: `tuiIconHelpCircleOutline`,
-    },
-    {
-        to: `tuiIconTdsQuestionCircleSmallPragmatic`,
-        from: `tuiIconHelpOutline`,
-    },
-    {
-        to: `tuiIconTdsArrowClockSmallPragmatic`,
-        from: `tuiIconHistory`,
-    },
-    {
-        to: `tuiIconTdsArrowClockMediumPragmatic`,
-        from: `tuiIconHistoryLarge`,
-    },
-    {
-        to: `tuiIconTdsHomeSmallPragmatic`,
-        from: `tuiIconHome`,
-    },
-    {
-        to: `tuiIconTdsHomeMediumPragmatic`,
-        from: `tuiIconHomeLarge`,
-    },
-    {
-        to: `tuiIconTdsHomeMediumPragmatic`,
-        from: `tuiIconHomeLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsHomeSmallPragmatic`,
-        from: `tuiIconHomeOutline`,
-    },
-    {
-        to: `tuiIconTdsWysiwygDividerMediumPragmatic`,
-        from: `tuiIconHrLarge`,
-    },
-    {
-        to: `tuiIconTdsImageSmallPragmatic`,
-        from: `tuiIconImg`,
-    },
-    {
-        to: `tuiIconTdsImageSmallPragmatic`,
-        from: `tuiIconPicture`,
-    },
-    {
-        to: `tuiIconTdsImageSmallPragmatic`,
-        from: `tuiIconImage`,
-    },
-    {
-        to: `tuiIconTdsImageMediumPragmatic`,
-        from: `tuiIconImageLarge`,
-    },
-    {
-        to: `tuiIconTdsImageSmallPragmatic`,
-        from: `tuiIconImageOutline`,
-    },
-    {
-        to: `tuiIconTdsWysiwygTextShiftRightMediumPragmatic`,
-        from: `tuiIconIndentLarge`,
-    },
-    {
-        to: `tuiIconTdsInfoCircleMedium`,
-        from: `tuiIconInfoCircle`,
-    },
-    {
-        to: `tuiIconTdsInfoCircleMedium`,
-        from: `tuiIconInfo`,
-    },
-    {
-        to: `tuiIconTdsInfoCircleMedium`,
-        from: `tuiIconInfoCircleLarge`,
-    },
-    {
-        to: `tuiIconTdsInfoCircleMediumPragmatic`,
-        from: `tuiIconInfoCircleLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsInfoMediumPragmatic`,
-        from: `tuiIconInfoLarge`,
-    },
-    {
-        to: `tuiIconTdsInfoCircleMediumPragmatic`,
-        from: `tuiIconInfoLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsInfoCircleSmallPragmatic`,
-        from: `tuiIconInfoOutline`,
-    },
-    {
-        to: `tuiIconTdsDocMediumPragmatic`,
-        from: `tuiIconInvoiceLarge`,
-    },
-    {
-        to: `tuiIconTdsWysiwygFontItalicMediumPragmatic`,
-        from: `tuiIconItalicLarge`,
-    },
-    {
-        to: `tuiIconTdsThumbUpMediumPragmatic`,
-        from: `tuiIconLarge`,
-    },
-    {
-        to: `tuiIconTdsFrameSmallPragmatic`,
-        from: `tuiIconFrame`,
-    },
-    {
-        to: `tuiIconTdsFrameSmallPragmatic`,
-        from: `tuiIconLayout`,
-    },
-    {
-        to: `tuiIconTdsFrameMediumPragmatic`,
-        from: `tuiIconLayoutLarge`,
-    },
-    {
-        to: `tuiIconTdsFrameMediumPragmatic`,
-        from: `tuiIconLayoutLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsFrameSmallPragmatic`,
-        from: `tuiIconLayoutOutline`,
-    },
-    {
-        to: `tuiIconTdsMathLessSmallPragmatic`,
-        from: `tuiIconLess`,
-    },
-    {
-        to: `tuiIconTdsMathLessMediumPragmatic`,
-        from: `tuiIconLessLarge`,
-    },
-    {
-        to: `tuiIconTdsMathLessOrEqualSmallPragmatic`,
-        from: `tuiIconLessOrEqual`,
-    },
-    {
-        to: `tuiIconTdsMathLessOrEqualMediumPragmatic`,
-        from: `tuiIconLessOrEqualLarge`,
-    },
-    {
-        to: `tuiIconTdsLinkSmallPragmatic`,
-        from: `tuiIconLink`,
-    },
-    {
-        to: `tuiIconTdsLinkMediumPragmatic`,
-        from: `tuiIconLinkLarge`,
-    },
-    {
-        to: `tuiIconTdsListPreviewSmallPragmatic`,
-        from: `tuiIconViewList`,
-    },
-    {
-        to: `tuiIconTdsListPreviewSmallPragmatic`,
-        from: `tuiIconList`,
-    },
-    {
-        to: `tuiIconTdsWysiwygListBulletedMediumPragmatic`,
-        from: `tuiIconListLarge`,
-    },
-    {
-        to: `tuiIconTdsListPreviewSmallPragmatic`,
-        from: `tuiIconListOutline`,
-    },
-    {
-        to: `tuiIconTdsLockSmallPragmatic`,
-        from: `tuiIconLock`,
-    },
-    {
-        to: `tuiIconTdsLockMediumPragmatic`,
-        from: `tuiIconLockLarge`,
-    },
-    {
-        to: `tuiIconTdsLockMediumPragmatic`,
-        from: `tuiIconLockLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsLockOpenMediumPragmatic`,
-        from: `tuiIconLockOpenLarge`,
-    },
-    {
-        to: `tuiIconTdsLockOpenMediumPragmatic`,
-        from: `tuiIconLockOpenLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsLockSmallPragmatic`,
-        from: `tuiIconLockOutline`,
-    },
-    {
-        to: `tuiIconTdsArrowInRightSmallPragmatic`,
-        from: `tuiIconLogin`,
-    },
-    {
-        to: `tuiIconTdsArrowInRightMediumPragmatic`,
-        from: `tuiIconLoginLarge`,
-    },
-    {
-        to: `tuiIconTdsArrowOutRightMediumPragmatic`,
-        from: `tuiIconLogoutLarge`,
-    },
-    {
-        to: `tuiIconTdsArrowOutRightMediumPragmatic`,
-        from: `tuiIconLogoutLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsLetterSmallPragmatic`,
-        from: `tuiIconMail`,
-    },
-    {
-        to: `tuiIconTdsLetterMediumPragmatic`,
-        from: `tuiIconMailLarge`,
-    },
-    {
-        to: `tuiIconTdsLetterMediumPragmatic`,
-        from: `tuiIconMailLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsLetterSmallPragmatic`,
-        from: `tuiIconMailOutline`,
-    },
-    {
-        to: `tuiIconTdsPinGeoSmallPragmatic`,
-        from: `tuiIconGeo`,
-    },
-    {
-        to: `tuiIconTdsPinGeoSmallPragmatic`,
-        from: `tuiIconMapPin`,
-    },
-    {
-        to: `tuiIconTdsPinGeoMediumPragmatic`,
-        from: `tuiIconMapPinLarge`,
-    },
-    {
-        to: `tuiIconTdsPinGeoMediumPragmatic`,
-        from: `tuiIconMapPinLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsPinGeoSmallPragmatic`,
-        from: `tuiIconMapPinOutline`,
-    },
-    {
-        to: `tuiIconTdsArrowsExpandSmallPragmatic`,
-        from: `tuiIconExpand`,
-    },
-    {
-        to: `tuiIconTdsArrowsExpandSmallPragmatic`,
-        from: `tuiIconMaximize`,
-    },
-    {
-        to: `tuiIconTdsWysiwygAlignJustifyMediumPragmatic`,
-        from: `tuiIconMenuLarge`,
-    },
-    {
-        to: `tuiIconTdsChatArrowRightSmallPragmatic`,
-        from: `tuiIconCommentFw`,
-    },
-    {
-        to: `tuiIconTdsChatArrowRightSmallPragmatic`,
-        from: `tuiIconMessageForward`,
-    },
-    {
-        to: `tuiIconTdsChatArrowRightMediumPragmatic`,
-        from: `tuiIconMessageForwardLarge`,
-    },
-    {
-        to: `tuiIconTdsChatArrowRightMediumPragmatic`,
-        from: `tuiIconMessageForwardLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsChatArrowRightSmallPragmatic`,
-        from: `tuiIconMessageForwardOutline`,
-    },
-    {
-        to: `tuiIconTdsChatSmallPragmatic`,
-        from: `tuiIconComment`,
-    },
-    {
-        to: `tuiIconTdsChatSmallPragmatic`,
-        from: `tuiIconMessageSquare`,
-    },
-    {
-        to: `tuiIconTdsChatMediumPragmatic`,
-        from: `tuiIconMessageSquareLarge`,
-    },
-    {
-        to: `tuiIconTdsChatMediumPragmatic`,
-        from: `tuiIconMessageSquareLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsChatSmallPragmatic`,
-        from: `tuiIconMessageSquareOutline`,
-    },
-    {
-        to: `tuiIconTdsMicrophoneOnSmallPragmatic`,
-        from: `tuiIconMic`,
-    },
-    {
-        to: `tuiIconTdsMicMediumPragmatic`,
-        from: `tuiIconMicLarge`,
-    },
-    {
-        to: `tuiIconTdsMicMediumPragmatic`,
-        from: `tuiIconMicLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsMicrophoneOffSmallPragmatic`,
-        from: `tuiIconMicOff`,
-    },
-    {
-        to: `tuiIconTdsMicOffMediumPragmatic`,
-        from: `tuiIconMicOffLarge`,
-    },
-    {
-        to: `tuiIconTdsMicOffMediumPragmatic`,
-        from: `tuiIconMicOffLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsMicrophoneOffSmallPragmatic`,
-        from: `tuiIconMicOffOutline`,
-    },
-    {
-        to: `tuiIconTdsArrowsCollapseSmallPragmatic`,
-        from: `tuiIconCollapse`,
-    },
-    {
-        to: `tuiIconTdsArrowsCollapseSmallPragmatic`,
-        from: `tuiIconMinimize`,
-    },
-    {
-        to: `tuiIconTdsMinus2SmallPragmatic`,
-        from: `tuiIconMinus`,
-    },
-    {
-        to: `tuiIconTdsMinusCircleSmallPragmatic`,
-        from: `tuiIconMinusCircle`,
-    },
-    {
-        to: `tuiIconTdsMinusCircleMediumPragmatic`,
-        from: `tuiIconMinusCircleLarge`,
-    },
-    {
-        to: `tuiIconTdsMinusCircleSmallPragmatic`,
-        from: `tuiIconMinusCircleOutline`,
-    },
-    {
-        to: `tuiIconTdsMinusMediumPragmatic`,
-        from: `tuiIconMinusLarge`,
-    },
-    {
-        to: `tuiIconTdsMicrophoneOnSmallPragmatic`,
-        from: `tuiIconMoc`,
-    },
-    {
-        to: `tuiIconTdsDeviceDesktopSmallPragmatic`,
-        from: `tuiIconMonitor`,
-    },
-    {
-        to: `tuiIconTdsDeviceDesktopMediumPragmatic`,
-        from: `tuiIconMonitorLarge`,
-    },
-    {
-        to: `tuiIconTdsDeviceDesktopMediumPragmatic`,
-        from: `tuiIconMonitorLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsDeviceDesktopOffMediumPragmatic`,
-        from: `tuiIconMonitorOffLarge`,
-    },
-    {
-        to: `tuiIconTdsDeviceDesktopOffMediumPragmatic`,
-        from: `tuiIconMonitorOffLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsDeviceDesktopSmallPragmatic`,
-        from: `tuiIconMonitorOutline`,
-    },
-    {
-        to: `tuiIconTdsMathMoreSmallPragmatic`,
-        from: `tuiIconMore`,
-    },
-    {
-        to: `tuiIconTdsMoreCircleSmallPragmatic`,
-        from: `tuiIconMoreCircle`,
-    },
-    {
-        to: `tuiIconTdsMoreCircleMediumPragmatic`,
-        from: `tuiIconMoreCircleLarge`,
-    },
-    {
-        to: `tuiIconTdsMoreCircleMediumPragmatic`,
-        from: `tuiIconMoreCircleLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsMoreCircleSmallPragmatic`,
-        from: `tuiIconMoreCircleOutline`,
-    },
-    {
-        to: `tuiIconTdsMoreSmallPragmatic`,
-        from: `tuiIconMoreHor`,
-    },
-    {
-        to: `tuiIconTdsMoreSmallPragmatic`,
-        from: `tuiIconMoreHorizontal`,
-    },
-    {
-        to: `tuiIconTdsMoreMediumPragmatic`,
-        from: `tuiIconMoreHorLarge`,
-    },
-    {
-        to: `tuiIconTdsMoreMediumPragmatic`,
-        from: `tuiIconMoreHorizontalLarge`,
-    },
-    {
-        to: `tuiIconTdsMathMoreMediumPragmatic`,
-        from: `tuiIconMoreLarge`,
-    },
-    {
-        to: `tuiIconTdsMathMoreOrEqualSmallPragmatic`,
-        from: `tuiIconMoreOrEqual`,
-    },
-    {
-        to: `tuiIconTdsMathMoreOrEqualMediumPragmatic`,
-        from: `tuiIconMoreOrEqualLarge`,
-    },
-    {
-        to: `tuiIconTdsMoreVerticalSmallPragmatic`,
-        from: `tuiIconMoreVert`,
-    },
-    {
-        to: `tuiIconTdsMoreVerticalSmallPragmatic`,
-        from: `tuiIconMoreVer`,
-    },
-    {
-        to: `tuiIconTdsMoreVerticalSmallPragmatic`,
-        from: `tuiIconMoreVertical`,
-    },
-    {
-        to: `tuiIconTdsMoreVerticalMediumPragmatic`,
-        from: `tuiIconMoreVerticalLarge`,
-    },
-    {
-        to: `tuiIconTdsMoreVerticalMediumPragmatic`,
-        from: `tuiIconMoreVertLarge`,
-    },
-    {
-        to: `tuiIconTdsMusicSmallPragmatic`,
-        from: `tuiIconMusic`,
-    },
-    {
-        to: `tuiIconTdsMusicMediumPragmatic`,
-        from: `tuiIconMusicLarge`,
-    },
-    {
-        to: `tuiIconTdsMusicMediumPragmatic`,
-        from: `tuiIconMusicLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsMusicSmallPragmatic`,
-        from: `tuiIconMusicOutline`,
-    },
-    {
-        to: `tuiIconTdsArrowLeftSmallPragmatic`,
-        from: `tuiIconNavBack`,
-    },
-    {
-        to: `tuiIconTdsListSmallPragmatic`,
-        from: `tuiIconNavMenu`,
-    },
-    {
-        to: `tuiIconTdsBellSmallPragmatic`,
-        from: `tuiIconNotification`,
-    },
-    {
-        to: `tuiIconTdsBellPlusSmallPragmatic`,
-        from: `tuiIconNotificationAdd`,
-    },
-    {
-        to: `tuiIconTdsBellOffSmallPragmatic`,
-        from: `tuiIconNotificationOff`,
-    },
-    {
-        to: `tuiIconTdsBellOffSmallPragmatic`,
-        from: `tuiIconNotificationOffFilled`,
-    },
-    {
-        to: `tuiIconTdsBellOffMediumPragmatic`,
-        from: `tuiIconNotificationOffFilledLarge`,
-    },
-    {
-        to: `tuiIconTdsBellOffMediumPragmatic`,
-        from: `tuiIconNotificationOffLarge`,
-    },
-    {
-        to: `tuiIconTdsBellMediumPragmatic`,
-        from: `tuiIconNotificationOutline`,
-    },
-    {
-        to: `tuiIconTdsWysiwygListNumberedMediumPragmatic`,
-        from: `tuiIconOLLarge`,
-    },
-    {
-        to: `tuiIconTdsWysiwygTextShiftLeftMediumPragmatic`,
-        from: `tuiIconOutdentLarge`,
-    },
-    {
-        to: `tuiIconTdsWysiwygColorMediumPragmatic`,
-        from: `tuiIconPaintLarge`,
-    },
-    {
-        to: `tuiIconTdsPaperClipSmallPragmatic`,
-        from: `tuiIconAttach`,
-    },
-    {
-        to: `tuiIconTdsPaperClipSmallPragmatic`,
-        from: `tuiIconPaperclip`,
-    },
-    {
-        to: `tuiIconTdsPaperClipMediumPragmatic`,
-        from: `tuiIconPaperclipLarge`,
-    },
-    {
-        to: `tuiIconTdsParkingSmallPragmatic`,
-        from: `tuiIconParking`,
-    },
-    {
-        to: `tuiIconTdsParkingMediumPragmatic`,
-        from: `tuiIconParkingLarge`,
-    },
-    {
-        to: `tuiIconTdsParkingMediumPragmatic`,
-        from: `tuiIconParkingLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsParkingSmallPragmatic`,
-        from: `tuiIconParkingOutline`,
-    },
-    {
-        to: `tuiIconTdsPauseSmallPragmatic`,
-        from: `tuiIconPause`,
-    },
-    {
-        to: `tuiIconTdsPauseMediumPragmatic`,
-        from: `tuiIconPauseLarge`,
-    },
-    {
-        to: `tuiIconTdsPercentSmallPragmatic`,
-        from: `tuiIconPercent`,
-    },
-    {
-        to: `tuiIconTdsPercentMediumPragmatic`,
-        from: `tuiIconPercentLarge`,
-    },
-    {
-        to: `tuiIconTdsPhoneSmallPragmatic`,
-        from: `tuiIconCall`,
-    },
-    {
-        to: `tuiIconTdsPhoneSmallPragmatic`,
-        from: `tuiIconPhone`,
-    },
-    {
-        to: `tuiIconTdsPhoneArrowDoubleRightSmallPragmatic`,
-        from: `tuiIconPhoneForwarded`,
-    },
-    {
-        to: `tuiIconTdsPhoneArrowDoubleRightMediumPragmatic`,
-        from: `tuiIconPhoneForwardedLarge`,
-    },
-    {
-        to: `tuiIconTdsPhoneMediumPragmatic`,
-        from: `tuiIconPhoneLarge`,
-    },
-    {
-        to: `tuiIconTdsPhoneMediumPragmatic`,
-        from: `tuiIconPhoneLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsPhoneArrowRightSmallPragmatic`,
-        from: `tuiIconPhoneOutgoing`,
-    },
-    {
-        to: `tuiIconTdsPhoneArrowRightMediumPragmatic`,
-        from: `tuiIconPhoneOutgoingLarge`,
-    },
-    {
-        to: `tuiIconTdsImageSmallPragmatic`,
-        from: `tuiIconPictureOutline`,
-    },
-    {
-        to: `tuiIconTdsChartPieMediumPragmatic`,
-        from: `tuiIconPieChartLarge`,
-    },
-    {
-        to: `tuiIconTdsChartPieMediumPragmatic`,
-        from: `tuiIconPiechartLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsPinSmallPragmatic`,
-        from: `tuiIconPinned`,
-    },
-    {
-        to: `tuiIconTdsPinMediumPragmatic`,
-        from: `tuiIconPinnedLarge`,
-    },
-    {
-        to: `tuiIconTdsPinMediumPragmatic`,
-        from: `tuiIconPinnedLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsPinSmallPragmatic`,
-        from: `tuiIconPinnedOutline`,
-    },
-    {
-        to: `tuiIconTdsPlaySmallPragmatic`,
-        from: `tuiIconPlay`,
-    },
-    {
-        to: `tuiIconTdsPlayMediumPragmatic`,
-        from: `tuiIconPlayLarge`,
-    },
-    {
-        to: `tuiIconTdsPlusSmallPragmatic`,
-        from: `tuiIconPlus`,
-    },
-    {
-        to: `tuiIconTdsPlusCircleSmallPragmatic`,
-        from: `tuiIconPlusCircle`,
-    },
-    {
-        to: `tuiIconTdsPlusCircleMediumPragmatic`,
-        from: `tuiIconPlusCircleLarge`,
-    },
-    {
-        to: `tuiIconTdsPlusCircleMediumPragmatic`,
-        from: `tuiIconPlusCircleLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsPlusCircleSmallPragmatic`,
-        from: `tuiIconPlusCircleOutline`,
-    },
-    {
-        to: `tuiIconTdsPlusMediumPragmatic`,
-        from: `tuiIconPlusLarge`,
-    },
-    {
-        to: `tuiIconTdsPlus2SmallPragmatic`,
-        from: `tuiIconPlusSmall`,
-    },
-    {
-        to: `tuiIconTdsPrinterSmallPragmatic`,
-        from: `tuiIconPrint`,
-    },
-    {
-        to: `tuiIconTdsPrinterSmallPragmatic`,
-        from: `tuiIconPrinter`,
-    },
-    {
-        to: `tuiIconTdsPrinterMediumPragmatic`,
-        from: `tuiIconPrinterLarge`,
-    },
-    {
-        to: `tuiIconTdsPrinterMediumPragmatic`,
-        from: `tuiIconPrinterLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsPrinterSmallPragmatic`,
-        from: `tuiIconPrinterOutline`,
-    },
-    {
-        to: `tuiIconTdsQrCodeSmallPragmatic`,
-        from: `tuiIconQrCode`,
-    },
-    {
-        to: `tuiIconTdsQrCodeMediumPragmatic`,
-        from: `tuiIconQrCodeLarge`,
-    },
-    {
-        to: `tuiIconTdsWysiwygQueueMediumPragmatic`,
-        from: `tuiIconQueueLarge`,
-    },
-    {
-        to: `tuiIconTdsWysiwygQuoteMediumPragmatic`,
-        from: `tuiIconQuoteLarge`,
-    },
-    {
-        to: `tuiIconTdsCheckDoubleSmallPragmatic`,
-        from: `tuiIconRead`,
-    },
-    {
-        to: `tuiIconTdsCheckDoubleMediumPragmatic`,
-        from: `tuiIconReadLarge`,
-    },
-    {
-        to: `tuiIconTdsReceiptSmallPragmatic`,
-        from: `tuiIconReceipt`,
-    },
-    {
-        to: `tuiIconTdsReceiptMediumPragmatic`,
-        from: `tuiIconReceiptLarge`,
-    },
-    {
-        to: `tuiIconTdsReceiptMediumPragmatic`,
-        from: `tuiIconReceiptLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsArrowRepeatSmallPragmatic`,
-        from: `tuiIconRedo`,
-    },
-    {
-        to: `tuiIconTdsArrowRepeatMediumPragmatic`,
-        from: `tuiIconRedoLarge`,
-    },
-    {
-        to: `tuiIconTdsArrowsLeftRightSmallPragmatic`,
-        from: `tuiIconRefresh`,
-    },
-    {
-        to: `tuiIconTdsArrowsLeftRightSmallPragmatic`,
-        from: `tuiIconRefreshCw`,
-    },
-    {
-        to: `tuiIconTdsArrowsLeftRightMediumPragmatic`,
-        from: `tuiIconRefreshCwLarge`,
-    },
-    {
-        to: `tuiIconTdsArrowRepeat2MediumPragmatic`,
-        from: `tuiIconReloadLarge`,
-    },
-    {
-        to: `tuiIconTdsArrowRepeat2MediumPragmatic`,
-        from: `tuiIconRenewLarge`,
-    },
-    {
-        to: `tuiIconTdsArrowReplySmallPragmatic`,
-        from: `tuiIconReply`,
-    },
-    {
-        to: `tuiIconTdsArrowReplyAllSmallPragmatic`,
-        from: `tuiIconReplyAll`,
-    },
-    {
-        to: `tuiIconTdsArrowReplyAllMediumPragmatic`,
-        from: `tuiIconReplyAllLarge`,
-    },
-    {
-        to: `tuiIconTdsArrowReplyAllMediumPragmatic`,
-        from: `tuiIconReplyAllLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsArrowReplyMediumPragmatic`,
-        from: `tuiIconReplyLarge`,
-    },
-    {
-        to: `tuiIconTdsArrowReplyMediumPragmatic`,
-        from: `tuiIconReplyLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsRotateSmallPragmatic`,
-        from: `tuiIconRotate`,
-    },
-    {
-        to: `tuiIconTdsRotateMediumPragmatic`,
-        from: `tuiIconRotateLarge`,
-    },
-    {
-        to: `tuiIconTdsRotateMediumPragmatic`,
-        from: `tuiIconRotateLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsRotateSmallPragmatic`,
-        from: `tuiIconRotateOutline`,
-    },
-    {
-        to: `tuiIconTdsRouteSmallPragmatic`,
-        from: `tuiIconRoute`,
-    },
-    {
-        to: `tuiIconTdsRouteMediumPragmatic`,
-        from: `tuiIconRouteLarge`,
-    },
-    {
-        to: `tuiIconTdsRouteMediumPragmatic`,
-        from: `tuiIconRouteLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsRouteSmallPragmatic`,
-        from: `tuiIconRouteOutline`,
-    },
-    {
-        to: `tuiIconTdsMagnifierSmallPragmatic`,
-        from: `tuiIconSearch`,
-    },
-    {
-        to: `tuiIconTdsMagnifierMediumPragmatic`,
-        from: `tuiIconSearchLarge`,
-    },
-    {
-        to: `tuiIconTdsPaperPlaneMediumPragmatic`,
-        from: `tuiIconSendLarge`,
-    },
-    {
-        to: `tuiIconTdsSettingsSmallPragmatic`,
-        from: `tuiIconSettings`,
-    },
-    {
-        to: `tuiIconTdsSettings2SmallPragmatic`,
-        from: `tuiIconSettings2`,
-    },
-    {
-        to: `tuiIconTdsSettingsMediumPragmatic`,
-        from: `tuiIconSettingsLarge`,
-    },
-    {
-        to: `tuiIconTdsSettings2MediumPragmatic`,
-        from: `tuiIconSettingsLarge2`,
-    },
-    {
-        to: `tuiIconTdsSettingsMediumPragmatic`,
-        from: `tuiIconSettingsLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsSettingsSmallPragmatic`,
-        from: `tuiIconSettingsOutline`,
-    },
-    {
-        to: `tuiIconTdsShare2SmallPragmatic`,
-        from: `tuiIconShare`,
-    },
-    {
-        to: `tuiIconTdsShareMediumPragmatic`,
-        from: `tuiIconShareLarge`,
-    },
-    {
-        to: `tuiIconTdsShareMediumPragmatic`,
-        from: `tuiIconShareLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsShare2SmallPragmatic`,
-        from: `tuiIconShareOutline`,
-    },
-    {
-        to: `tuiIconTdsPencilSmallPragmatic`,
-        from: `tuiIconSign`,
-    },
-    {
-        to: `tuiIconTdsPencilMediumPragmatic`,
-        from: `tuiIconSignLarge`,
-    },
-    {
-        to: `tuiIconTdsPencilSmallPragmatic`,
-        from: `tuiIconSignOutline`,
-    },
-    {
-        to: `tuiIconTdsDenyMediumPragmatic`,
-        from: `tuiIconCancelCircle`,
-    },
-    {
-        to: `tuiIconTdsDenyMediumPragmatic`,
-        from: `tuiIconSlashLarge`,
-    },
-    {
-        to: `tuiIconTdsGridBigSmallPragmatic`,
-        from: `tuiIconSmallGrid`,
-    },
-    {
-        to: `tuiIconTdsGridBigMediumPragmatic`,
-        from: `tuiIconSmallGridLarge`,
-    },
-    {
-        to: `tuiIconTdsSortUpSmallPragmatic`,
-        from: `tuiIconSort`,
-    },
-    {
-        to: `tuiIconTdsArrowSortDownSmallPragmatic`,
-        from: `tuiIconSortAscending`,
-    },
-    {
-        to: `tuiIconTdsArrowSortUpSmallPragmatic`,
-        from: `tuiIconSortDescending`,
-    },
-    {
-        to: `tuiIconTdsSortDownSmallPragmatic`,
-        from: `tuiIconSortDown`,
-    },
-    {
-        to: `tuiIconTdsArrowSortDownSmallPragmatic`,
-        from: `tuiIconSortDown2`,
-    },
-    {
-        to: `tuiIconTdsSortChevronsSmallPragmatic`,
-        from: `tuiIconSortOff`,
-    },
-    {
-        to: `tuiIconTdsSortUpSmallPragmatic`,
-        from: `tuiIconSortUp`,
-    },
-    {
-        to: `tuiIconTdsArrowSortUpSmallPragmatic`,
-        from: `tuiIconSortUp2`,
-    },
-    {
-        to: `tuiIconTdsArrowsSplitSmallPragmatic`,
-        from: `tuiIconSplit`,
-    },
-    {
-        to: `tuiIconTdsArrowsSplitMediumPragmatic`,
-        from: `tuiIconSplitLarge`,
-    },
-    {
-        to: `tuiIconTdsStopSmallPragmatic`,
-        from: `tuiIconStop`,
-    },
-    {
-        to: `tuiIconTdsStopSmallPragmatic`,
-        from: `tuiIconSquare`,
-    },
-    {
-        to: `tuiIconTdsStopMediumPragmatic`,
-        from: `tuiIconSquareLarge`,
-    },
-    {
-        to: `tuiIconTdsStarSmall`,
-        from: `tuiIconStar`,
-    },
-    {
-        to: `tuiIconTdsStarSmall`,
-        from: `tuiIconStarFilled`,
-    },
-    {
-        to: `tuiIconTdsStarMediumPragmatic`,
-        from: `tuiIconStarLarge`,
-    },
-    {
-        to: `tuiIconTdsStarMediumPragmatic`,
-        from: `tuiIconStarLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsStarSmallPragmatic`,
-        from: `tuiIconStarOutline`,
-    },
-    {
-        to: `tuiIconTdsWysiwygFontStrikethroughMediumPragmatic`,
-        from: `tuiIconStrikeThroughLarge`,
-    },
-    {
-        to: `tuiIconTdsArrowSubRightSmallPragmatic`,
-        from: `tuiIconSubitem`,
-    },
-    {
-        to: `tuiIconTdsArrowSubRightMediumPragmatic`,
-        from: `tuiIconSublevelLarge`,
-    },
-    {
-        to: `tuiIconTdsWysiwygSubscriptMediumPragmatic`,
-        from: `tuiIconSubscriptLarge`,
-    },
-    {
-        to: `tuiIconTdsWysiwygSuperscriptMediumPragmatic`,
-        from: `tuiIconSuperscriptLarge`,
-    },
-    {
-        to: `tuiIconTdsWysiwygTableMediumPragmatic`,
-        from: `tuiIconTableLarge`,
-    },
-    {
-        to: `tuiIconTdsWysiwygTableMergeMediumPragmatic`,
-        from: `tuiIconTableMergeLarge`,
-    },
-    {
-        to: `tuiIconTdsWysiwygTableSplitMediumPragmatic`,
-        from: `tuiIconTableSplitLarge`,
-    },
-    {
-        to: `tuiIconTdsTagSmallPragmatic`,
-        from: `tuiIconTag`,
-    },
-    {
-        to: `tuiIconTdsTagMediumPragmatic`,
-        from: `tuiIconTagLarge`,
-    },
-    {
-        to: `tuiIconTdsTagMediumPragmatic`,
-        from: `tuiIconTagLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsTagSmallPragmatic`,
-        from: `tuiIconTagOutline`,
-    },
-    {
-        to: `tuiIconTdsThumbDownMediumPragmatic`,
-        from: `tuiIconThumbsDownLarge`,
-    },
-    {
-        to: `tuiIconTdsThumbUpMediumPragmatic`,
-        from: `tuiIconThumbsUpLarge`,
-    },
-    {
-        to: `tuiIconTdsCheckSmallPragmatic`,
-        from: `tuiIconToggleOn`,
-    },
-    {
-        to: `tuiIconTdsCheckMediumPragmatic`,
-        from: `tuiIconToggleOnLarge`,
-    },
-    {
-        to: `tuiIconTdsPlusCircleMediumPragmatic`,
-        from: `tuiIconTopUpLarge`,
-    },
-    {
-        to: `tuiIconTdsDenyMediumPragmatic`,
-        from: `tuiIconTransparentLarge`,
-    },
-    {
-        to: `tuiIconTdsTrashSmallPragmatic`,
-        from: `tuiIconTrash`,
-    },
-    {
-        to: `tuiIconTdsTrashMediumPragmatic`,
-        from: `tuiIconTrashLarge`,
-    },
-    {
-        to: `tuiIconTdsTrashMediumPragmatic`,
-        from: `tuiIconTrashLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsTrashSmallPragmatic`,
-        from: `tuiIconTrashOutline`,
-    },
-    {
-        to: `tuiIconTdsWysiwygFontUnderlineMediumPragmatic`,
-        from: `tuiIconUnderlineLarge`,
-    },
-    {
-        to: `tuiIconTdsArrowRewindSmallPragmatic`,
-        from: `tuiIconUndo`,
-    },
-    {
-        to: `tuiIconTdsWysiwygFontBoldMediumPragmatic`,
-        from: `tuiIconBoldLarge`,
-    },
-    {
-        to: `tuiIconTdsArrowRewindMediumPragmatic`,
-        from: `tuiIconUndoLarge`,
-    },
-    {
-        to: `tuiIconTdsMathNonEqualSmallPragmatic`,
-        from: `tuiIconUnequal`,
-    },
-    {
-        to: `tuiIconTdsMathNonEqualMediumPragmatic`,
-        from: `tuiIconUnequalLarge`,
-    },
-    {
-        to: `tuiIconTdsSnowflakeOffSmallPragmatic`,
-        from: `tuiIconUnfreeze`,
-    },
-    {
-        to: `tuiIconTdsSnowflakeOffMediumPragmatic`,
-        from: `tuiIconUnfreezeLarge`,
-    },
-    {
-        to: `tuiIconTdsLockOpenSmallPragmatic`,
-        from: `tuiIconLockOpen`,
-    },
-    {
-        to: `tuiIconTdsLockOpenSmallPragmatic`,
-        from: `tuiIconUnlock`,
-    },
-    {
-        to: `tuiIconTdsLockOpenMediumPragmatic`,
-        from: `tuiIconUnlockLarge`,
-    },
-    {
-        to: `tuiIconTdsLockOpenMediumPragmatic`,
-        from: `tuiIconUnlockLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsLockOpenMediumPragmatic`,
-        from: `tuiIconUnlockOutline`,
-    },
-    {
-        to: `tuiIconTdsArrowUpCircleSmallPragmatic`,
-        from: `tuiIconUpCircle`,
-    },
-    {
-        to: `tuiIconTdsShareSmallPragmatic`,
-        from: `tuiIconUpload`,
-    },
-    {
-        to: `tuiIconTdsShare2MediumPragmatic`,
-        from: `tuiIconUploadLarge`,
-    },
-    {
-        to: `tuiIconTdsUserImpersonalSmallPragmatic`,
-        from: `tuiIconUser`,
-    },
-    {
-        to: `tuiIconTdsUserImpersonalSmallPragmatic`,
-        from: `tuiIconUserOutline`,
-    },
-    {
-        to: `tuiIconTdsUserImpersonalMediumPragmatic`,
-        from: `tuiIconUserpicCircleLarge`,
-    },
-    {
-        to: `tuiIconTdsCameraVideoSmallPragmatic`,
-        from: `tuiIconVideo`,
-    },
-    {
-        to: `tuiIconTdsCameraVideoMediumPragmatic`,
-        from: `tuiIconVideoLarge`,
-    },
-    {
-        to: `tuiIconTdsCameraVideoSmallPragmatic`,
-        from: `tuiIconVideoOutline`,
-    },
-    {
-        to: `tuiIconTdsSoundSmallPragmatic`,
-        from: `tuiIconSound`,
-    },
-    {
-        to: `tuiIconTdsSoundSmallPragmatic`,
-        from: `tuiIconVolume`,
-    },
-    {
-        to: `tuiIconTdsSoundMediumPragmatic`,
-        from: `tuiIconVolumeLarge`,
-    },
-    {
-        to: `tuiIconTdsSoundMediumPragmatic`,
-        from: `tuiIconVolumeLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsSoundSmallPragmatic`,
-        from: `tuiIconVolumeOutline`,
-    },
-    {
-        to: `tuiIconTdsSoundOffSmallPragmatic`,
-        from: `tuiIconSoundOff`,
-    },
-    {
-        to: `tuiIconTdsSoundOffSmallPragmatic`,
-        from: `tuiIconVolumeX`,
-    },
-    {
-        to: `tuiIconTdsSoundOffMediumPragmatic`,
-        from: `tuiIconVolumeXLarge`,
-    },
-    {
-        to: `tuiIconTdsSoundOffMediumPragmatic`,
-        from: `tuiIconVolumeXLargeOutline`,
-    },
-    {
-        to: `tuiIconTdsSoundOffSmallPragmatic`,
-        from: `tuiIconVolumeXOutline`,
-    },
-    {
-        to: `tuiIconTdsWalletSmallPragmatic`,
-        from: `tuiIconWallet`,
-    },
-    {
-        to: `tuiIconTdsWalletMediumPragmatic`,
-        from: `tuiIconWalletLarge`,
-    },
-    {
         to: `tuiIconTdsExclamationSmallPragmatic`,
-        from: `tuiIconWarning`,
     },
     {
+        from: `tuiIconAttention`,
+        to: `tuiIconTdsAlertSmallPragmatic`,
+    },
+    {
+        from: `tuiIconAlertCircle`,
+        to: `tuiIconTdsAlertSmallPragmatic`,
+    },
+    {
+        from: `tuiIconAlertCircleLarge`,
+        to: `tuiIconTdsAlertMedium`,
+    },
+    {
+        from: `tuiIconAlertCircleLargeOutline`,
+        to: `tuiIconTdsAlertMediumPragmatic`,
+    },
+    {
+        from: `tuiIconAlertCircleOutline`,
+        to: `tuiIconTdsAlertSmallPragmatic`,
+    },
+    {
+        from: `tuiIconAlertLarge`,
         to: `tuiIconTdsExclamationMediumPragmatic`,
-        from: `tuiIconWarningLarge`,
     },
     {
-        to: `tuiIconTdsPaypassSmallPragmatic`,
-        from: `tuiIconWireless`,
+        from: `tuiIconAlignCenterLarge`,
+        to: `tuiIconTdsWysiwygAlignCenterMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsGlobeMediumPragmatic`,
-        from: `tuiIconWorldLarge`,
+        from: `tuiIconAlignJustifyLarge`,
+        to: `tuiIconTdsWysiwygAlignJustifyMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsCrossSmallPragmatic`,
-        from: `tuiIconRemove`,
+        from: `tuiIconAlignLeftLarge`,
+        to: `tuiIconTdsWysiwygAlignLeftMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsCrossSmallPragmatic`,
-        from: `tuiIconCancelOutline`,
+        from: `tuiIconAlignRightLarge`,
+        to: `tuiIconTdsWysiwygAlignRightMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsCrossSmallPragmatic`,
-        from: `tuiIconX`,
+        from: `tuiIconAlipay`,
+        to: `tuiIconTdsPaymentAlipayLogoSquare`,
     },
     {
-        to: `tuiIconTdsCrossCircleSmallPragmatic`,
-        from: `tuiIconCancel`,
+        from: `tuiIconArrowDown`,
+        to: `tuiIconTdsArrowDownSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsCrossCircleSmallPragmatic`,
-        from: `tuiIconXCircle`,
+        from: `tuiIconArrowDownLarge`,
+        to: `tuiIconTdsArrowDownMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsCrossCircleMediumPragmatic`,
-        from: `tuiIconXCircleLarge`,
+        from: `tuiIconArrowDownLeft`,
+        to: `tuiIconTdsArrowBottomLeftSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsCrossCircleMediumPragmatic`,
-        from: `tuiIconXCircleLargeOutline`,
+        from: `tuiIconArrowDownRight`,
+        to: `tuiIconTdsArrowBottomRightSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsCrossCircleSmallPragmatic`,
-        from: `tuiIconXCircleOutline`,
+        from: `tuiIconArrowLeft`,
+        to: `tuiIconTdsArrowLeftSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsCrossMediumPragmatic`,
-        from: `tuiIconXLarge`,
+        from: `tuiIconBackCircle`,
+        to: `tuiIconTdsArrowLeftCircleMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsLoupePlusSmallPragmatic`,
-        from: `tuiIconZoomIn`,
+        from: `tuiIconArrowLeftCircle`,
+        to: `tuiIconTdsArrowLeftCircleMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsLoupePlusMediumPragmatic`,
-        from: `tuiIconZoomInLarge`,
+        from: `tuiIconArrowLeftLarge`,
+        to: `tuiIconTdsArrowLeftMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsLoupePlusMediumPragmatic`,
-        from: `tuiIconZoomInLargeOutline`,
+        from: `tuiIconArrowRight`,
+        to: `tuiIconTdsArrowRightSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsLoupePlusSmallPragmatic`,
-        from: `tuiIconZoomInOutline`,
+        from: `tuiIconArrowRightLarge`,
+        to: `tuiIconTdsArrowRightMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsLoupeMinusSmallPragmatic`,
-        from: `tuiIconZoomOut`,
+        from: `tuiIconArrowShortDown`,
+        to: `tuiIconTdsArrowDownSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsLoupeMinusMediumPragmatic`,
-        from: `tuiIconZoomOutLarge`,
+        from: `tuiIconArrowShortLeft`,
+        to: `tuiIconTdsArrowLeftSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsLoupeMinusMediumPragmatic`,
-        from: `tuiIconZoomOutLargeOutline`,
+        from: `tuiIconArrowShortRight`,
+        to: `tuiIconTdsArrowRightSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsLoupeMinusSmallPragmatic`,
-        from: `tuiIconZoomOutOutline`,
+        from: `tuiIconArrowShortUp`,
+        to: `tuiIconTdsArrowUpSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsAtmSmallPragmatic`,
-        from: `tuiIconAtm`,
+        from: `tuiIconArrowUp`,
+        to: `tuiIconTdsArrowUpSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsGiftSmallPragmatic`,
-        from: `tuiIconBirthday`,
+        from: `tuiIconArrowUpLarge`,
+        to: `tuiIconTdsArrowUpMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsGiftMediumPragmatic`,
-        from: `tuiIconBirthdayLarge`,
+        from: `tuiIconArrowUpLeft`,
+        to: `tuiIconTdsArrowTopLeftSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsCrownSmallPragmatic`,
-        from: `tuiIconBonus`,
+        from: `tuiIconArrowUpRight`,
+        to: `tuiIconTdsArrowTopRightSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsCrownMediumPragmatic`,
-        from: `tuiIconBonusLarge`,
+        from: `tuiIconBackspace`,
+        to: `tuiIconTdsBackspaceSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsBriefcaseMediumPragmatic`,
-        from: `tuiIconBriefcaseLarge`,
+        from: `tuiIconChart`,
+        to: `tuiIconTdsChartBarSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsChevronDownSmallPragmatic`,
-        from: `tuiIconCardDrop`,
+        from: `tuiIconChartBar`,
+        to: `tuiIconTdsChartBarSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsChevronDownMediumPragmatic`,
-        from: `tuiIconCardDropLarge`,
+        from: `tuiIconBarChart`,
+        to: `tuiIconTdsChartBarSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsChevronDownMediumPragmatic`,
-        from: `tuiIconCardDropLargeOutline`,
+        from: `tuiIconBarCode`,
+        to: `tuiIconTdsBarcodeScanSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsChevronDownSmallPragmatic`,
-        from: `tuiIconCardDropOutline`,
+        from: `tuiIconBarCodeLarge`,
+        to: `tuiIconTdsBarcodeScanMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsCardBacksideSmallPragmatic`,
-        from: `tuiIconCardOutline`,
+        from: `tuiIconBarchartCircleLarge`,
+        to: `tuiIconTdsChartBarMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsClipboardCheckSmallPragmatic`,
-        from: `tuiIconChecklist`,
+        from: `tuiIconBell`,
+        to: `tuiIconTdsBellSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsClipboardCheckMediumPragmatic`,
-        from: `tuiIconChecklistLarge`,
+        from: `tuiIconBellLarge`,
+        to: `tuiIconTdsBellMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsClipboardCheckMediumPragmatic`,
-        from: `tuiIconChecklistLargeOutline`,
+        from: `tuiIconBellLargeOutline`,
+        to: `tuiIconTdsBellMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsClipboardCheckSmallPragmatic`,
-        from: `tuiIconChecklistOutline`,
+        from: `tuiIconBellOff`,
+        to: `tuiIconTdsBellOffSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsChevronDoubleDownSmallPragmatic`,
-        from: `tuiIconChevronsDown`,
+        from: `tuiIconBellOffLarge`,
+        to: `tuiIconTdsBellOffMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsChevronDoubleLeftSmallPragmatic`,
-        from: `tuiIconChevronsLeft`,
+        from: `tuiIconBellOffLargeOutline`,
+        to: `tuiIconTdsBellOffMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsChevronDoubleRightSmallPragmatic`,
-        from: `tuiIconChevronsRight`,
+        from: `tuiIconBellOffOutline`,
+        to: `tuiIconTdsBellOffSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsChevronDoubleUpMediumPragmatic`,
-        from: `tuiIconChevronsUpLarge`,
+        from: `tuiIconBellOutline`,
+        to: `tuiIconTdsBellSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsPlusCircleSmallPragmatic`,
-        from: `tuiIconCompensation`,
+        from: `tuiIconBillOutLarge`,
+        to: `tuiIconTdsReceiptMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsPlusCircleMediumPragmatic`,
-        from: `tuiIconCompensationLarge`,
+        from: `tuiIconBookmark`,
+        to: `tuiIconTdsBookmarkSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsPlusCircleMediumPragmatic`,
-        from: `tuiIconCompensationLargeOutline`,
+        from: `tuiIconBookmarkLarge`,
+        to: `tuiIconTdsBookmarkFilledMedium`,
     },
     {
-        to: `tuiIconTdsCardBacksideSmallPragmatic`,
-        from: `tuiIconCards`,
+        from: `tuiIconBookmarkLargeOutline`,
+        to: `tuiIconTdsBookmarkMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsCardBacksideSmallPragmatic`,
-        from: `tuiIconCard`,
+        from: `tuiIconBookmarkOutline`,
+        to: `tuiIconTdsBookmarkSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsCardBacksideSmallPragmatic`,
-        from: `tuiIconCreditCard`,
+        from: `tuiIconCalendar`,
+        to: `tuiIconTdsCalendarSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsCardsMediumPragmatic`,
-        from: `tuiIconCreditCardLarge`,
+        from: `tuiIconCalendarFilled`,
+        to: `tuiIconTdsCalendarSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsCardsMediumPragmatic`,
-        from: `tuiIconCreditCardLargeOutline`,
+        from: `tuiIconCalendarFilledLarge`,
+        to: `tuiIconTdsCalendarMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsCardBacksideSmallPragmatic`,
-        from: `tuiIconCreditCardOutline`,
+        from: `tuiIconCalendarLarge`,
+        to: `tuiIconTdsCalendarMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsLogoFacebookMedium`,
-        from: `tuiIconFacebookLarge`,
+        from: `tuiIconCalendarLargeOutline`,
+        to: `tuiIconTdsCalendarMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsArrowForwardSmallPragmatic`,
-        from: `tuiIconForward`,
+        from: `tuiIconCalendarLess`,
+        to: `tuiIconTdsMathLessCalendarSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsArrowForwardMediumPragmatic`,
-        from: `tuiIconForwardLarge`,
+        from: `tuiIconCalendarLessLarge`,
+        to: `tuiIconTdsMathLessCalendarMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsArrowForwardMediumPragmatic`,
-        from: `tuiIconForwardLargeOutline`,
+        from: `tuiIconCalendarLessOrEqual`,
+        to: `tuiIconTdsMathLessOrEqualCalendarSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsLogoMastercardMedium`,
-        from: `tuiIconMaestroMono`,
+        from: `tuiIconCalendarLessOrEqualLarge`,
+        to: `tuiIconTdsMathLessOrEqualCalendarMediumPragmatic`,
     },
     {
-        to: `tuiIconMapPinOutline`,
-        from: `tuiIconMap`,
+        from: `tuiIconCalendarMore`,
+        to: `tuiIconTdsMathMoreCalendarSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsPinGeoMediumPragmatic`,
-        from: `tuiIconMapLarge`,
+        from: `tuiIconCalendarMoreLarge`,
+        to: `tuiIconTdsMathMoreCalendarMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsPaymentMastercardLogo`,
-        from: `tuiIconMastercard`,
+        from: `tuiIconCalendarMoreOrEqual`,
+        to: `tuiIconTdsMathMoreOrEqualCalendarSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsLogoMastercardMedium`,
-        from: `tuiIconMastercardMono`,
+        from: `tuiIconCalendarMoreOrEqualLarge`,
+        to: `tuiIconTdsMathMoreOrEqualCalendarMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsPaymentMirLogo`,
-        from: `tuiIconMir`,
+        from: `tuiIconCalendarOutline`,
+        to: `tuiIconTdsCalendarSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsPaymentMirMonochromeLogo`,
-        from: `tuiIconMirMono`,
+        from: `tuiIconCall`,
+        to: `tuiIconTdsPhoneKeypadSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsNightSmallPragmatic`,
-        from: `tuiIconMoon`,
-    },
-    {
-        to: `tuiIconTdsNightMediumPragmatic`,
-        from: `tuiIconMoonLarge`,
-    },
-    {
-        to: `tuiIconTdsLogoOdnoklassnikiMedium`,
-        from: `tuiIconOkLarge`,
-    },
-    {
-        to: `tuiIconTdsPhoneArrowSmallPragmatic`,
         from: `tuiIconCallIn`,
-    },
-    {
         to: `tuiIconTdsPhoneArrowSmallPragmatic`,
-        from: `tuiIconPhoneIncoming`,
     },
     {
+        from: `tuiIconCallInLarge`,
         to: `tuiIconTdsPhoneArrowMediumPragmatic`,
-        from: `tuiIconPhoneIncomingLarge`,
     },
     {
+        from: `tuiIconCallKeyboard`,
+        to: `tuiIconTdsPhoneKeypadSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCallKeyboardLarge`,
+        to: `tuiIconTdsPhoneKeypadMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCallOut`,
+        to: `tuiIconTdsPhoneArrowRightSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCallOutLarge`,
+        to: `tuiIconTdsPhoneArrowRightMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCallTransfer`,
+        to: `tuiIconTdsPhoneArrowDoubleRightSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCallTransferLarge`,
+        to: `tuiIconTdsPhoneArrowDoubleRightMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCamera`,
+        to: `tuiIconTdsCameraPhotoSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCameraLarge`,
+        to: `tuiIconTdsCameraPhotoMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCameraLargeOutline`,
+        to: `tuiIconTdsCameraPhotoSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCameraOutline`,
+        to: `tuiIconTdsCameraPhotoMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCardsLarge`,
+        to: `tuiIconTdsCardsMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCardsLargeOutline`,
+        to: `tuiIconTdsCardsMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCart`,
+        to: `tuiIconTdsShoppingCartSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCartLarge`,
+        to: `tuiIconTdsShoppingCartMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCartLargeOutline`,
+        to: `tuiIconTdsShoppingCartMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCartOutline`,
+        to: `tuiIconTdsShoppingCartMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCashback`,
+        to: `tuiIconTdsPercentCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCashbackLarge`,
+        to: `tuiIconTdsPercentCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCashbackOutline`,
+        to: `tuiIconTdsPercentCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCashbackOutlineLarge`,
+        to: `tuiIconTdsPercentCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconChartCandle`,
+        to: `tuiIconTdsChartCandleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconChartCandleLarge`,
+        to: `tuiIconTdsChartCandleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconChartLine`,
+        to: `tuiIconTdsChartLineSmallPragmatic`,
+    },
+    {
+        from: `tuiIconChartLineLarge`,
+        to: `tuiIconTdsChartLineMediumPragmatic`,
+    },
+    {
+        from: `tuiIconChartPie`,
+        to: `tuiIconTdsChartPieSmallPragmatic`,
+    },
+    {
+        from: `tuiIconChat`,
+        to: `tuiIconTdsChatsSmallPragmatic`,
+    },
+    {
+        from: `tuiIconChatLarge`,
+        to: `tuiIconTdsChatsMediumPragmatic`,
+    },
+    {
+        from: `tuiIconChatLargeOutline`,
+        to: `tuiIconTdsChatsMediumPragmatic`,
+    },
+    {
+        from: `tuiIconChatOutline`,
+        to: `tuiIconTdsChatsSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCheck`,
+        to: `tuiIconTdsCheckSmallPragmatic`,
+    },
+    {
+        from: `tuiIconDone`,
+        to: `tuiIconTdsCheckCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCheckCircle`,
+        to: `tuiIconTdsCheckCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCheckCircleLarge`,
+        to: `tuiIconTdsCheckCircleMedium`,
+    },
+    {
+        from: `tuiIconCheckCircleLargeOutline`,
+        to: `tuiIconTdsCheckCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCheckCircleOutline`,
+        to: `tuiIconTdsCheckCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCheckLarge`,
+        to: `tuiIconTdsCheckMediumPragmatic`,
+    },
+    {
+        from: `tuiIconChevronDown`,
+        to: `tuiIconTdsChevronDownSmallPragmatic`,
+    },
+    {
+        from: `tuiIconChevronDownCircleLarge`,
+        to: `tuiIconTdsArrowDownCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconChevronDownLarge`,
+        to: `tuiIconTdsChevronDownMediumPragmatic`,
+    },
+    {
+        from: `tuiIconChevronLeft`,
+        to: `tuiIconTdsChevronLeftSmallPragmatic`,
+    },
+    {
+        from: `tuiIconChevronLeftCircleLarge`,
+        to: `tuiIconTdsArrowLeftCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconChevronLeftLarge`,
+        to: `tuiIconTdsChevronLeftMediumPragmatic`,
+    },
+    {
+        from: `tuiIconChevronRight`,
+        to: `tuiIconTdsChevronRightSmallPragmatic`,
+    },
+    {
+        from: `tuiIconChevronRightCircleLarge`,
+        to: `tuiIconTdsArrowRightCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconChevronRightLarge`,
+        to: `tuiIconTdsChevronRightMediumPragmatic`,
+    },
+    {
+        from: `tuiIconChevronUp`,
+        to: `tuiIconTdsChevronUpSmallPragmatic`,
+    },
+    {
+        from: `tuiIconChevronUpCircleLarge`,
+        to: `tuiIconTdsArrowUpCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconChevronUpLarge`,
+        to: `tuiIconTdsChevronUpMediumPragmatic`,
+    },
+    {
+        from: `tuiIconChevronsDownLarge`,
+        to: `tuiIconTdsChevronDoubleDownMediumPragmatic`,
+    },
+    {
+        from: `tuiIconChevronsLeftLarge`,
+        to: `tuiIconTdsChevronDoubleLeftMediumPragmatic`,
+    },
+    {
+        from: `tuiIconChevronsRightLarge`,
+        to: `tuiIconTdsChevronRightMediumPragmatic`,
+    },
+    {
+        from: `tuiIconChevronsUp`,
+        to: `tuiIconTdsChevronDoubleUpSmallPragmatic`,
+    },
+    {
+        from: `tuiIconClearFormatLarge`,
+        to: `tuiIconTdsWysiwygFontStyleClearMediumPragmatic`,
+    },
+    {
+        from: `tuiIconTime`,
+        to: `tuiIconTdsClockCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconClock`,
+        to: `tuiIconTdsClockCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconClockLarge`,
+        to: `tuiIconTdsClockMediumPragmatic`,
+    },
+    {
+        from: `tuiIconClockLargeOutline`,
+        to: `tuiIconTdsClockMediumPragmatic`,
+    },
+    {
+        from: `tuiIconClockOutline`,
+        to: `tuiIconTdsClockCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconClose`,
+        to: `tuiIconTdsCrossSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCloseCircle`,
+        to: `tuiIconTdsCrossCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCloseCircleLarge`,
+        to: `tuiIconTdsCrossCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCloseCircleLargeOutline`,
+        to: `tuiIconTdsCrossCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCloseCircleOutline`,
+        to: `tuiIconTdsCrossCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCloseLarge`,
+        to: `tuiIconTdsCrossMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCloud`,
+        to: `tuiIconTdsCloudSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCloudDownload`,
+        to: `tuiIconTdsCloudArrowOutSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCloudDownloadLarge`,
+        to: `tuiIconTdsCloudArrowOutMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCloudDownloadLargeOutline`,
+        to: `tuiIconTdsCloudArrowOutMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCloudDownloadOutline`,
+        to: `tuiIconTdsCloudArrowOutSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCloudFilled`,
+        to: `tuiIconTdsCloudSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCloudLarge`,
+        to: `tuiIconTdsCloudMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCloudLargeOutline`,
+        to: `tuiIconTdsCloudMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCloudOutline`,
+        to: `tuiIconTdsCloudSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCloudUpload`,
+        to: `tuiIconTdsCloudArrowInSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCloudUploadLarge`,
+        to: `tuiIconTdsCloudArrowInMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCloudUploadLargeOutline`,
+        to: `tuiIconTdsCloudArrowInMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCloudUploadOutline`,
+        to: `tuiIconTdsCloudArrowInSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCodeLarge`,
+        to: `tuiIconTdsWysiwygCodeMediumPragmatic`,
+    },
+    {
+        from: `tuiIconColorLarge`,
+        to: `tuiIconTdsWysiwygFontColorMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCopy`,
+        to: `tuiIconTdsCopySmallPragmatic`,
+    },
+    {
+        from: `tuiIconCopyLarge`,
+        to: `tuiIconTdsCopyMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCutLarge`,
+        to: `tuiIconTdsScissorsMediumPragmatic`,
+    },
+    {
+        from: `tuiIconDelete`,
+        to: `tuiIconTdsTrashSmallPragmatic`,
+    },
+    {
+        from: `tuiIconDeleteLarge`,
+        to: `tuiIconTdsBackspaceMediumPragmatic`,
+    },
+    {
+        from: `tuiIconDeleteLargeOutline`,
+        to: `tuiIconTdsBackspaceMediumPragmatic`,
+    },
+    {
+        from: `tuiIconDeleteOutline`,
+        to: `tuiIconTdsBackspaceSmallPragmatic`,
+    },
+    {
+        from: `tuiIconDownload`,
+        to: `tuiIconTdsArrowInDownSmallPragmatic`,
+    },
+    {
+        from: `tuiIconDownloadLarge`,
+        to: `tuiIconTdsArrowInDownMediumPragmatic`,
+    },
+    {
+        from: `tuiIconDraft`,
+        to: `tuiIconTdsPencilSmallPragmatic`,
+    },
+    {
+        from: `tuiIconDraftFilledLarge`,
+        to: `tuiIconTdsPencilMediumPragmatic`,
+    },
+    {
+        from: `tuiIconDraftLarge`,
+        to: `tuiIconTdsPencilMediumPragmatic`,
+    },
+    {
+        from: `tuiIconDraftOutline`,
+        to: `tuiIconTdsPencilSmallPragmatic`,
+    },
+    {
+        from: `tuiIconDrag`,
+        to: `tuiIconTdsDragSmallPragmatic`,
+    },
+    {
+        from: `tuiIconDragLarge`,
+        to: `tuiIconTdsDragMediumPragmatic`,
+    },
+    {
+        from: `tuiIconEdit`,
+        to: `tuiIconTdsEditSmallPragmatic`,
+    },
+    {
+        from: `tuiIconEdit2`,
+        to: `tuiIconTdsEditSmallPragmatic`,
+    },
+    {
+        from: `tuiIconEdit2Large`,
+        to: `tuiIconTdsPencilMediumPragmatic`,
+    },
+    {
+        from: `tuiIconEditFilledLarge`,
+        to: `tuiIconTdsEditMediumPragmatic`,
+    },
+    {
+        from: `tuiIconEditLarge`,
+        to: `tuiIconTdsEditMediumPragmatic`,
+    },
+    {
+        from: `tuiIconEditLargeOutline`,
+        to: `tuiIconTdsEditMediumPragmatic`,
+    },
+    {
+        from: `tuiIconEditOutline`,
+        to: `tuiIconTdsEditSmallPragmatic`,
+    },
+    {
+        from: `tuiIconEqual`,
+        to: `tuiIconTdsMathEqualSmallPragmatic`,
+    },
+    {
+        from: `tuiIconEqualLarge`,
+        to: `tuiIconTdsMathEqualMediumPragmatic`,
+    },
+    {
+        from: `tuiIconEventsLarge`,
+        to: `tuiIconTdsWysiwygListBulletedMediumPragmatic`,
+    },
+    {
+        from: `tuiIconEventsLargeOutline`,
+        to: `tuiIconTdsWysiwygListBulletedMediumPragmatic`,
+    },
+    {
+        from: `tuiIconExternal`,
+        to: `tuiIconTdsArrowOutTopRightSmallPragmatic`,
+    },
+    {
+        from: `tuiIconExternalLink`,
+        to: `tuiIconTdsArrowOutTopRightSmallPragmatic`,
+    },
+    {
+        from: `tuiIconExternalLinkLarge`,
+        to: `tuiIconTdsArrowOutTopRightMediumPragmatic`,
+    },
+    {
+        from: `tuiIconEyeOpen`,
+        to: `tuiIconTdsEyeSmallPragmatic`,
+    },
+    {
+        from: `tuiIconShow`,
+        to: `tuiIconTdsEyeSmallPragmatic`,
+    },
+    {
+        from: `tuiIconEye`,
+        to: `tuiIconTdsEyeSmallPragmatic`,
+    },
+    {
+        from: `tuiIconEyeLarge`,
+        to: `tuiIconTdsEyeMediumPragmatic`,
+    },
+    {
+        from: `tuiIconEyeClosed`,
+        to: `tuiIconTdsEyeOffSmallPragmatic`,
+    },
+    {
+        from: `tuiIconHide`,
+        to: `tuiIconTdsEyeOffSmallPragmatic`,
+    },
+    {
+        from: `tuiIconEyeOff`,
+        to: `tuiIconTdsEyeOffSmallPragmatic`,
+    },
+    {
+        from: `tuiIconEyeOffLarge`,
+        to: `tuiIconTdsEyeOffMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFailLarge`,
+        to: `tuiIconTdsDenyMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFavoriteLarge`,
+        to: `tuiIconTdsStarMediumPragmatic`,
+    },
+    {
+        from: `tuiIconDefaultDoc`,
+        to: `tuiIconTdsDocSmallPragmatic`,
+    },
+    {
+        from: `tuiIconFile`,
+        to: `tuiIconTdsDocSmallPragmatic`,
+    },
+    {
+        from: `tuiIconFileLarge`,
+        to: `tuiIconTdsDocMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFileLargeOutline`,
+        to: `tuiIconTdsDocMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFileOutline`,
+        to: `tuiIconTdsDocSmallPragmatic`,
+    },
+    {
+        from: `tuiIconFilter`,
+        to: `tuiIconTdsFilterSmallPragmatic`,
+    },
+    {
+        from: `tuiIconFilterClear`,
+        to: `tuiIconTdsFilterCrossSmallPragmatic`,
+    },
+    {
+        from: `tuiIconFilterClearLarge`,
+        to: `tuiIconTdsFilterCrossMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFilterClearLargeOutline`,
+        to: `tuiIconTdsFilterCrossMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFilterClearOutline`,
+        to: `tuiIconTdsFilterCrossSmallPragmatic`,
+    },
+    {
+        from: `tuiIconFilterLarge`,
+        to: `tuiIconTdsFilterMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFilterLargeOutline`,
+        to: `tuiIconTdsFilterMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFilterOutline`,
+        to: `tuiIconTdsFilterSmallPragmatic`,
+    },
+    {
+        from: `tuiIconFilterSave`,
+        to: `tuiIconTdsFilterPlusSmallPragmatic`,
+    },
+    {
+        from: `tuiIconFilterSaveLarge`,
+        to: `tuiIconTdsFilterPlusMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFilterSaveLargeOutline`,
+        to: `tuiIconTdsFilterPlusMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFilterSaveOutline`,
+        to: `tuiIconTdsFilterPlusSmallPragmatic`,
+    },
+    {
+        from: `tuiIconFlag`,
+        to: `tuiIconTdsFlagSmallPragmatic`,
+    },
+    {
+        from: `tuiIconFlagLarge`,
+        to: `tuiIconTdsFlagMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFlagLargeOutline`,
+        to: `tuiIconTdsFlagMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFlagOutline`,
+        to: `tuiIconTdsFlagSmallPragmatic`,
+    },
+    {
+        from: `tuiIconFlash`,
+        to: `tuiIconTdsFlashOnSmallPragmatic`,
+    },
+    {
+        from: `tuiIconFlashLarge`,
+        to: `tuiIconTdsFlashMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFlashLargeOutline`,
+        to: `tuiIconTdsFlashMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFlashOff`,
+        to: `tuiIconTdsFlashOffSmallPragmatic`,
+    },
+    {
+        from: `tuiIconFlashOffLarge`,
+        to: `tuiIconTdsFlashOffMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFlashOffLargeOutline`,
+        to: `tuiIconTdsFlashOffMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFlashOffOutline`,
+        to: `tuiIconTdsFlashOffSmallPragmatic`,
+    },
+    {
+        from: `tuiIconFlashOutline`,
+        to: `tuiIconTdsFlashOnSmallPragmatic`,
+    },
+    {
+        from: `tuiIconFolder`,
+        to: `tuiIconTdsFolderSmallPragmatic`,
+    },
+    {
+        from: `tuiIconFolderLarge`,
+        to: `tuiIconTdsFolderMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFolderLargeOutline`,
+        to: `tuiIconTdsFolderMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFolderOutline`,
+        to: `tuiIconTdsFolderSmallPragmatic`,
+    },
+    {
+        from: `tuiIconFontLarge`,
+        to: `tuiIconTdsWysiwygFontMediumPragmatic`,
+    },
+    {
+        from: `tuiIconForbidden`,
+        to: `tuiIconTdsDenySmallPragmatic`,
+    },
+    {
+        from: `tuiIconFormatLarge`,
+        to: `tuiIconTdsWysiwygFontStylesMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFreezeLarge`,
+        to: `tuiIconTdsSnowflakeMediumPragmatic`,
+    },
+    {
+        from: `tuiIconHangup`,
+        to: `tuiIconTdsPhoneHangoffSmallPragmatic`,
+    },
+    {
+        from: `tuiIconHangupLarge`,
+        to: `tuiIconTdsPhoneHangoffMediumPragmatic`,
+    },
+    {
+        from: `tuiIconHeadset`,
+        to: `tuiIconTdsHeadsetSmallPragmatic`,
+    },
+    {
+        from: `tuiIconHeadsetLarge`,
+        to: `tuiIconTdsHeadsetMediumPragmatic`,
+    },
+    {
+        from: `tuiIconHeartFilled`,
+        to: `tuiIconTdsHeartFilledSmall`,
+    },
+    {
+        from: `tuiIconHeart`,
+        to: `tuiIconTdsHeartFilledSmall`,
+    },
+    {
+        from: `tuiIconHeartLarge`,
+        to: `tuiIconTdsHeartFilledOpaqueMedium`,
+    },
+    {
+        from: `tuiIconHeartLargeOutline`,
+        to: `tuiIconTdsHeartMediumPragmatic`,
+    },
+    {
+        from: `tuiIconHeartOutline`,
+        to: `tuiIconTdsHeartSmallPragmatic`,
+    },
+    {
+        from: `tuiIconHelp`,
+        to: `tuiIconTdsQuestionCircleSmall`,
+    },
+    {
+        from: `tuiIconTooltip`,
+        to: `tuiIconTdsQuestionCircleSmall`,
+    },
+    {
+        from: `tuiIconHelpCircle`,
+        to: `tuiIconTdsQuestionCircleSmall`,
+    },
+    {
+        from: `tuiIconHelpCircleLarge`,
+        to: `tuiIconTdsQuestionCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconHelpCircleLargeOutline`,
+        to: `tuiIconTdsQuestionCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconHelpCircleOutline`,
+        to: `tuiIconTdsQuestionCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconHelpOutline`,
+        to: `tuiIconTdsQuestionCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconHistory`,
+        to: `tuiIconTdsArrowClockSmallPragmatic`,
+    },
+    {
+        from: `tuiIconHistoryLarge`,
+        to: `tuiIconTdsArrowClockMediumPragmatic`,
+    },
+    {
+        from: `tuiIconHome`,
+        to: `tuiIconTdsHomeSmallPragmatic`,
+    },
+    {
+        from: `tuiIconHomeLarge`,
+        to: `tuiIconTdsHomeMediumPragmatic`,
+    },
+    {
+        from: `tuiIconHomeLargeOutline`,
+        to: `tuiIconTdsHomeMediumPragmatic`,
+    },
+    {
+        from: `tuiIconHomeOutline`,
+        to: `tuiIconTdsHomeSmallPragmatic`,
+    },
+    {
+        from: `tuiIconHrLarge`,
+        to: `tuiIconTdsWysiwygDividerMediumPragmatic`,
+    },
+    {
+        from: `tuiIconImg`,
+        to: `tuiIconTdsImageSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPicture`,
+        to: `tuiIconTdsImageSmallPragmatic`,
+    },
+    {
+        from: `tuiIconImage`,
+        to: `tuiIconTdsImageSmallPragmatic`,
+    },
+    {
+        from: `tuiIconImageLarge`,
+        to: `tuiIconTdsImageMediumPragmatic`,
+    },
+    {
+        from: `tuiIconImageOutline`,
+        to: `tuiIconTdsImageSmallPragmatic`,
+    },
+    {
+        from: `tuiIconIndentLarge`,
+        to: `tuiIconTdsWysiwygTextShiftRightMediumPragmatic`,
+    },
+    {
+        from: `tuiIconInfoCircle`,
+        to: `tuiIconTdsInfoCircleMedium`,
+    },
+    {
+        from: `tuiIconInfo`,
+        to: `tuiIconTdsInfoCircleMedium`,
+    },
+    {
+        from: `tuiIconInfoCircleLarge`,
+        to: `tuiIconTdsInfoCircleMedium`,
+    },
+    {
+        from: `tuiIconInfoCircleLargeOutline`,
+        to: `tuiIconTdsInfoCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconInfoLarge`,
+        to: `tuiIconTdsInfoMediumPragmatic`,
+    },
+    {
+        from: `tuiIconInfoLargeOutline`,
+        to: `tuiIconTdsInfoCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconInfoOutline`,
+        to: `tuiIconTdsInfoCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconInvoiceLarge`,
+        to: `tuiIconTdsDocMediumPragmatic`,
+    },
+    {
+        from: `tuiIconItalicLarge`,
+        to: `tuiIconTdsWysiwygFontItalicMediumPragmatic`,
+    },
+    {
+        from: `tuiIconLarge`,
+        to: `tuiIconTdsThumbUpMediumPragmatic`,
+    },
+    {
+        from: `tuiIconFrame`,
+        to: `tuiIconTdsFrameSmallPragmatic`,
+    },
+    {
+        from: `tuiIconLayout`,
+        to: `tuiIconTdsFrameSmallPragmatic`,
+    },
+    {
+        from: `tuiIconLayoutLarge`,
+        to: `tuiIconTdsFrameMediumPragmatic`,
+    },
+    {
+        from: `tuiIconLayoutLargeOutline`,
+        to: `tuiIconTdsFrameMediumPragmatic`,
+    },
+    {
+        from: `tuiIconLayoutOutline`,
+        to: `tuiIconTdsFrameSmallPragmatic`,
+    },
+    {
+        from: `tuiIconLess`,
+        to: `tuiIconTdsMathLessSmallPragmatic`,
+    },
+    {
+        from: `tuiIconLessLarge`,
+        to: `tuiIconTdsMathLessMediumPragmatic`,
+    },
+    {
+        from: `tuiIconLessOrEqual`,
+        to: `tuiIconTdsMathLessOrEqualSmallPragmatic`,
+    },
+    {
+        from: `tuiIconLessOrEqualLarge`,
+        to: `tuiIconTdsMathLessOrEqualMediumPragmatic`,
+    },
+    {
+        from: `tuiIconLink`,
+        to: `tuiIconTdsLinkSmallPragmatic`,
+    },
+    {
+        from: `tuiIconLinkLarge`,
+        to: `tuiIconTdsLinkMediumPragmatic`,
+    },
+    {
+        from: `tuiIconViewList`,
+        to: `tuiIconTdsListPreviewSmallPragmatic`,
+    },
+    {
+        from: `tuiIconList`,
+        to: `tuiIconTdsListPreviewSmallPragmatic`,
+    },
+    {
+        from: `tuiIconListLarge`,
+        to: `tuiIconTdsWysiwygListBulletedMediumPragmatic`,
+    },
+    {
+        from: `tuiIconListOutline`,
+        to: `tuiIconTdsListPreviewSmallPragmatic`,
+    },
+    {
+        from: `tuiIconLock`,
+        to: `tuiIconTdsLockSmallPragmatic`,
+    },
+    {
+        from: `tuiIconLockLarge`,
+        to: `tuiIconTdsLockMediumPragmatic`,
+    },
+    {
+        from: `tuiIconLockLargeOutline`,
+        to: `tuiIconTdsLockMediumPragmatic`,
+    },
+    {
+        from: `tuiIconLockOpenLarge`,
+        to: `tuiIconTdsLockOpenMediumPragmatic`,
+    },
+    {
+        from: `tuiIconLockOpenLargeOutline`,
+        to: `tuiIconTdsLockOpenMediumPragmatic`,
+    },
+    {
+        from: `tuiIconLockOutline`,
+        to: `tuiIconTdsLockSmallPragmatic`,
+    },
+    {
+        from: `tuiIconLogin`,
+        to: `tuiIconTdsArrowInRightSmallPragmatic`,
+    },
+    {
+        from: `tuiIconLoginLarge`,
+        to: `tuiIconTdsArrowInRightMediumPragmatic`,
+    },
+    {
+        from: `tuiIconLogoutLarge`,
+        to: `tuiIconTdsArrowOutRightMediumPragmatic`,
+    },
+    {
+        from: `tuiIconLogoutLargeOutline`,
+        to: `tuiIconTdsArrowOutRightMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMail`,
+        to: `tuiIconTdsLetterSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMailLarge`,
+        to: `tuiIconTdsLetterMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMailLargeOutline`,
+        to: `tuiIconTdsLetterMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMailOutline`,
+        to: `tuiIconTdsLetterSmallPragmatic`,
+    },
+    {
+        from: `tuiIconGeo`,
+        to: `tuiIconTdsPinGeoSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMapPin`,
+        to: `tuiIconTdsPinGeoSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMapPinLarge`,
+        to: `tuiIconTdsPinGeoMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMapPinLargeOutline`,
+        to: `tuiIconTdsPinGeoMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMapPinOutline`,
+        to: `tuiIconTdsPinGeoSmallPragmatic`,
+    },
+    {
+        from: `tuiIconExpand`,
+        to: `tuiIconTdsArrowsExpandSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMaximize`,
+        to: `tuiIconTdsArrowsExpandSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMenuLarge`,
+        to: `tuiIconTdsWysiwygAlignJustifyMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCommentFw`,
+        to: `tuiIconTdsChatArrowRightSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMessageForward`,
+        to: `tuiIconTdsChatArrowRightSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMessageForwardLarge`,
+        to: `tuiIconTdsChatArrowRightMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMessageForwardLargeOutline`,
+        to: `tuiIconTdsChatArrowRightMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMessageForwardOutline`,
+        to: `tuiIconTdsChatArrowRightSmallPragmatic`,
+    },
+    {
+        from: `tuiIconComment`,
+        to: `tuiIconTdsChatSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMessageSquare`,
+        to: `tuiIconTdsChatSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMessageSquareLarge`,
+        to: `tuiIconTdsChatMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMessageSquareLargeOutline`,
+        to: `tuiIconTdsChatMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMessageSquareOutline`,
+        to: `tuiIconTdsChatSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMic`,
+        to: `tuiIconTdsMicrophoneOnSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMicLarge`,
+        to: `tuiIconTdsMicMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMicLargeOutline`,
+        to: `tuiIconTdsMicMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMicOff`,
+        to: `tuiIconTdsMicrophoneOffSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMicOffLarge`,
+        to: `tuiIconTdsMicOffMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMicOffLargeOutline`,
+        to: `tuiIconTdsMicOffMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMicOffOutline`,
+        to: `tuiIconTdsMicrophoneOffSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCollapse`,
+        to: `tuiIconTdsArrowsCollapseSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMinimize`,
+        to: `tuiIconTdsArrowsCollapseSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMinus`,
+        to: `tuiIconTdsMinus2SmallPragmatic`,
+    },
+    {
+        from: `tuiIconMinusCircle`,
+        to: `tuiIconTdsMinusCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMinusCircleLarge`,
+        to: `tuiIconTdsMinusCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMinusCircleOutline`,
+        to: `tuiIconTdsMinusCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMinusLarge`,
+        to: `tuiIconTdsMinusMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMoc`,
+        to: `tuiIconTdsMicrophoneOnSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMonitor`,
+        to: `tuiIconTdsDeviceDesktopSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMonitorLarge`,
+        to: `tuiIconTdsDeviceDesktopMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMonitorLargeOutline`,
+        to: `tuiIconTdsDeviceDesktopMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMonitorOffLarge`,
+        to: `tuiIconTdsDeviceDesktopOffMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMonitorOffLargeOutline`,
+        to: `tuiIconTdsDeviceDesktopOffMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMonitorOutline`,
+        to: `tuiIconTdsDeviceDesktopSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMore`,
+        to: `tuiIconTdsMathMoreSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMoreCircle`,
+        to: `tuiIconTdsMoreCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMoreCircleLarge`,
+        to: `tuiIconTdsMoreCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMoreCircleLargeOutline`,
+        to: `tuiIconTdsMoreCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMoreCircleOutline`,
+        to: `tuiIconTdsMoreCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMoreHor`,
+        to: `tuiIconTdsMoreSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMoreHorizontal`,
+        to: `tuiIconTdsMoreSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMoreHorLarge`,
+        to: `tuiIconTdsMoreMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMoreHorizontalLarge`,
+        to: `tuiIconTdsMoreMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMoreLarge`,
+        to: `tuiIconTdsMathMoreMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMoreOrEqual`,
+        to: `tuiIconTdsMathMoreOrEqualSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMoreOrEqualLarge`,
+        to: `tuiIconTdsMathMoreOrEqualMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMoreVert`,
+        to: `tuiIconTdsMoreVerticalSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMoreVer`,
+        to: `tuiIconTdsMoreVerticalSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMoreVertical`,
+        to: `tuiIconTdsMoreVerticalSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMoreVerticalLarge`,
+        to: `tuiIconTdsMoreVerticalMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMoreVertLarge`,
+        to: `tuiIconTdsMoreVerticalMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMusic`,
+        to: `tuiIconTdsMusicSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMusicLarge`,
+        to: `tuiIconTdsMusicMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMusicLargeOutline`,
+        to: `tuiIconTdsMusicMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMusicOutline`,
+        to: `tuiIconTdsMusicSmallPragmatic`,
+    },
+    {
+        from: `tuiIconNavBack`,
+        to: `tuiIconTdsArrowLeftSmallPragmatic`,
+    },
+    {
+        from: `tuiIconNavMenu`,
+        to: `tuiIconTdsListSmallPragmatic`,
+    },
+    {
+        from: `tuiIconNotification`,
+        to: `tuiIconTdsBellSmallPragmatic`,
+    },
+    {
+        from: `tuiIconNotificationAdd`,
+        to: `tuiIconTdsBellPlusSmallPragmatic`,
+    },
+    {
+        from: `tuiIconNotificationOff`,
+        to: `tuiIconTdsBellOffSmallPragmatic`,
+    },
+    {
+        from: `tuiIconNotificationOffFilled`,
+        to: `tuiIconTdsBellOffSmallPragmatic`,
+    },
+    {
+        from: `tuiIconNotificationOffFilledLarge`,
+        to: `tuiIconTdsBellOffMediumPragmatic`,
+    },
+    {
+        from: `tuiIconNotificationOffLarge`,
+        to: `tuiIconTdsBellOffMediumPragmatic`,
+    },
+    {
+        from: `tuiIconNotificationOutline`,
+        to: `tuiIconTdsBellMediumPragmatic`,
+    },
+    {
+        from: `tuiIconOLLarge`,
+        to: `tuiIconTdsWysiwygListNumberedMediumPragmatic`,
+    },
+    {
+        from: `tuiIconOutdentLarge`,
+        to: `tuiIconTdsWysiwygTextShiftLeftMediumPragmatic`,
+    },
+    {
+        from: `tuiIconPaintLarge`,
+        to: `tuiIconTdsWysiwygColorMediumPragmatic`,
+    },
+    {
+        from: `tuiIconAttach`,
+        to: `tuiIconTdsPaperClipSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPaperclip`,
+        to: `tuiIconTdsPaperClipSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPaperclipLarge`,
+        to: `tuiIconTdsPaperClipMediumPragmatic`,
+    },
+    {
+        from: `tuiIconParking`,
+        to: `tuiIconTdsParkingSmallPragmatic`,
+    },
+    {
+        from: `tuiIconParkingLarge`,
+        to: `tuiIconTdsParkingMediumPragmatic`,
+    },
+    {
+        from: `tuiIconParkingLargeOutline`,
+        to: `tuiIconTdsParkingMediumPragmatic`,
+    },
+    {
+        from: `tuiIconParkingOutline`,
+        to: `tuiIconTdsParkingSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPause`,
+        to: `tuiIconTdsPauseSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPauseLarge`,
+        to: `tuiIconTdsPauseMediumPragmatic`,
+    },
+    {
+        from: `tuiIconPercent`,
+        to: `tuiIconTdsPercentSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPercentLarge`,
+        to: `tuiIconTdsPercentMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCall`,
+        to: `tuiIconTdsPhoneSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPhone`,
+        to: `tuiIconTdsPhoneSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPhoneForwarded`,
+        to: `tuiIconTdsPhoneArrowDoubleRightSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPhoneForwardedLarge`,
+        to: `tuiIconTdsPhoneArrowDoubleRightMediumPragmatic`,
+    },
+    {
+        from: `tuiIconPhoneLarge`,
+        to: `tuiIconTdsPhoneMediumPragmatic`,
+    },
+    {
+        from: `tuiIconPhoneLargeOutline`,
+        to: `tuiIconTdsPhoneMediumPragmatic`,
+    },
+    {
+        from: `tuiIconPhoneOutgoing`,
+        to: `tuiIconTdsPhoneArrowRightSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPhoneOutgoingLarge`,
+        to: `tuiIconTdsPhoneArrowRightMediumPragmatic`,
+    },
+    {
+        from: `tuiIconPictureOutline`,
+        to: `tuiIconTdsImageSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPieChartLarge`,
+        to: `tuiIconTdsChartPieMediumPragmatic`,
+    },
+    {
+        from: `tuiIconPiechartLargeOutline`,
+        to: `tuiIconTdsChartPieMediumPragmatic`,
+    },
+    {
+        from: `tuiIconPinned`,
+        to: `tuiIconTdsPinSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPinnedLarge`,
+        to: `tuiIconTdsPinMediumPragmatic`,
+    },
+    {
+        from: `tuiIconPinnedLargeOutline`,
+        to: `tuiIconTdsPinMediumPragmatic`,
+    },
+    {
+        from: `tuiIconPinnedOutline`,
+        to: `tuiIconTdsPinSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPlay`,
+        to: `tuiIconTdsPlaySmallPragmatic`,
+    },
+    {
+        from: `tuiIconPlayLarge`,
+        to: `tuiIconTdsPlayMediumPragmatic`,
+    },
+    {
+        from: `tuiIconPlus`,
+        to: `tuiIconTdsPlusSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPlusCircle`,
+        to: `tuiIconTdsPlusCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPlusCircleLarge`,
+        to: `tuiIconTdsPlusCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconPlusCircleLargeOutline`,
+        to: `tuiIconTdsPlusCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconPlusCircleOutline`,
+        to: `tuiIconTdsPlusCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPlusLarge`,
+        to: `tuiIconTdsPlusMediumPragmatic`,
+    },
+    {
+        from: `tuiIconPlusSmall`,
+        to: `tuiIconTdsPlus2SmallPragmatic`,
+    },
+    {
+        from: `tuiIconPrint`,
+        to: `tuiIconTdsPrinterSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPrinter`,
+        to: `tuiIconTdsPrinterSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPrinterLarge`,
+        to: `tuiIconTdsPrinterMediumPragmatic`,
+    },
+    {
+        from: `tuiIconPrinterLargeOutline`,
+        to: `tuiIconTdsPrinterMediumPragmatic`,
+    },
+    {
+        from: `tuiIconPrinterOutline`,
+        to: `tuiIconTdsPrinterSmallPragmatic`,
+    },
+    {
+        from: `tuiIconQrCode`,
+        to: `tuiIconTdsQrCodeSmallPragmatic`,
+    },
+    {
+        from: `tuiIconQrCodeLarge`,
+        to: `tuiIconTdsQrCodeMediumPragmatic`,
+    },
+    {
+        from: `tuiIconQueueLarge`,
+        to: `tuiIconTdsWysiwygQueueMediumPragmatic`,
+    },
+    {
+        from: `tuiIconQuoteLarge`,
+        to: `tuiIconTdsWysiwygQuoteMediumPragmatic`,
+    },
+    {
+        from: `tuiIconRead`,
+        to: `tuiIconTdsCheckDoubleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconReadLarge`,
+        to: `tuiIconTdsCheckDoubleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconReceipt`,
+        to: `tuiIconTdsReceiptSmallPragmatic`,
+    },
+    {
+        from: `tuiIconReceiptLarge`,
+        to: `tuiIconTdsReceiptMediumPragmatic`,
+    },
+    {
+        from: `tuiIconReceiptLargeOutline`,
+        to: `tuiIconTdsReceiptMediumPragmatic`,
+    },
+    {
+        from: `tuiIconRedo`,
+        to: `tuiIconTdsArrowRepeatSmallPragmatic`,
+    },
+    {
+        from: `tuiIconRedoLarge`,
+        to: `tuiIconTdsArrowRepeatMediumPragmatic`,
+    },
+    {
+        from: `tuiIconRefresh`,
+        to: `tuiIconTdsArrowsLeftRightSmallPragmatic`,
+    },
+    {
+        from: `tuiIconRefreshCw`,
+        to: `tuiIconTdsArrowsLeftRightSmallPragmatic`,
+    },
+    {
+        from: `tuiIconRefreshCwLarge`,
+        to: `tuiIconTdsArrowsLeftRightMediumPragmatic`,
+    },
+    {
+        from: `tuiIconReloadLarge`,
+        to: `tuiIconTdsArrowRepeat2MediumPragmatic`,
+    },
+    {
+        from: `tuiIconRenewLarge`,
+        to: `tuiIconTdsArrowRepeat2MediumPragmatic`,
+    },
+    {
+        from: `tuiIconReply`,
+        to: `tuiIconTdsArrowReplySmallPragmatic`,
+    },
+    {
+        from: `tuiIconReplyAll`,
+        to: `tuiIconTdsArrowReplyAllSmallPragmatic`,
+    },
+    {
+        from: `tuiIconReplyAllLarge`,
+        to: `tuiIconTdsArrowReplyAllMediumPragmatic`,
+    },
+    {
+        from: `tuiIconReplyAllLargeOutline`,
+        to: `tuiIconTdsArrowReplyAllMediumPragmatic`,
+    },
+    {
+        from: `tuiIconReplyLarge`,
+        to: `tuiIconTdsArrowReplyMediumPragmatic`,
+    },
+    {
+        from: `tuiIconReplyLargeOutline`,
+        to: `tuiIconTdsArrowReplyMediumPragmatic`,
+    },
+    {
+        from: `tuiIconRotate`,
+        to: `tuiIconTdsRotateSmallPragmatic`,
+    },
+    {
+        from: `tuiIconRotateLarge`,
+        to: `tuiIconTdsRotateMediumPragmatic`,
+    },
+    {
+        from: `tuiIconRotateLargeOutline`,
+        to: `tuiIconTdsRotateMediumPragmatic`,
+    },
+    {
+        from: `tuiIconRotateOutline`,
+        to: `tuiIconTdsRotateSmallPragmatic`,
+    },
+    {
+        from: `tuiIconRoute`,
+        to: `tuiIconTdsRouteSmallPragmatic`,
+    },
+    {
+        from: `tuiIconRouteLarge`,
+        to: `tuiIconTdsRouteMediumPragmatic`,
+    },
+    {
+        from: `tuiIconRouteLargeOutline`,
+        to: `tuiIconTdsRouteMediumPragmatic`,
+    },
+    {
+        from: `tuiIconRouteOutline`,
+        to: `tuiIconTdsRouteSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSearch`,
+        to: `tuiIconTdsMagnifierSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSearchLarge`,
+        to: `tuiIconTdsMagnifierMediumPragmatic`,
+    },
+    {
+        from: `tuiIconSendLarge`,
+        to: `tuiIconTdsPaperPlaneMediumPragmatic`,
+    },
+    {
+        from: `tuiIconSettings`,
+        to: `tuiIconTdsSettingsSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSettings2`,
+        to: `tuiIconTdsSettings2SmallPragmatic`,
+    },
+    {
+        from: `tuiIconSettingsLarge`,
+        to: `tuiIconTdsSettingsMediumPragmatic`,
+    },
+    {
+        from: `tuiIconSettingsLarge2`,
+        to: `tuiIconTdsSettings2MediumPragmatic`,
+    },
+    {
+        from: `tuiIconSettingsLargeOutline`,
+        to: `tuiIconTdsSettingsMediumPragmatic`,
+    },
+    {
+        from: `tuiIconSettingsOutline`,
+        to: `tuiIconTdsSettingsSmallPragmatic`,
+    },
+    {
+        from: `tuiIconShare`,
+        to: `tuiIconTdsShare2SmallPragmatic`,
+    },
+    {
+        from: `tuiIconShareLarge`,
+        to: `tuiIconTdsShareMediumPragmatic`,
+    },
+    {
+        from: `tuiIconShareLargeOutline`,
+        to: `tuiIconTdsShareMediumPragmatic`,
+    },
+    {
+        from: `tuiIconShareOutline`,
+        to: `tuiIconTdsShare2SmallPragmatic`,
+    },
+    {
+        from: `tuiIconSign`,
+        to: `tuiIconTdsPencilSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSignLarge`,
+        to: `tuiIconTdsPencilMediumPragmatic`,
+    },
+    {
+        from: `tuiIconSignOutline`,
+        to: `tuiIconTdsPencilSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCancelCircle`,
+        to: `tuiIconTdsDenyMediumPragmatic`,
+    },
+    {
+        from: `tuiIconSlashLarge`,
+        to: `tuiIconTdsDenyMediumPragmatic`,
+    },
+    {
+        from: `tuiIconSmallGrid`,
+        to: `tuiIconTdsGridBigSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSmallGridLarge`,
+        to: `tuiIconTdsGridBigMediumPragmatic`,
+    },
+    {
+        from: `tuiIconSort`,
+        to: `tuiIconTdsSortUpSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSortAscending`,
+        to: `tuiIconTdsArrowSortDownSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSortDescending`,
+        to: `tuiIconTdsArrowSortUpSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSortDown`,
+        to: `tuiIconTdsSortDownSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSortDown2`,
+        to: `tuiIconTdsArrowSortDownSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSortOff`,
+        to: `tuiIconTdsSortChevronsSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSortUp`,
+        to: `tuiIconTdsSortUpSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSortUp2`,
+        to: `tuiIconTdsArrowSortUpSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSplit`,
+        to: `tuiIconTdsArrowsSplitSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSplitLarge`,
+        to: `tuiIconTdsArrowsSplitMediumPragmatic`,
+    },
+    {
+        from: `tuiIconStop`,
+        to: `tuiIconTdsStopSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSquare`,
+        to: `tuiIconTdsStopSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSquareLarge`,
+        to: `tuiIconTdsStopMediumPragmatic`,
+    },
+    {
+        from: `tuiIconStar`,
+        to: `tuiIconTdsStarSmall`,
+    },
+    {
+        from: `tuiIconStarFilled`,
+        to: `tuiIconTdsStarSmall`,
+    },
+    {
+        from: `tuiIconStarLarge`,
+        to: `tuiIconTdsStarMediumPragmatic`,
+    },
+    {
+        from: `tuiIconStarLargeOutline`,
+        to: `tuiIconTdsStarMediumPragmatic`,
+    },
+    {
+        from: `tuiIconStarOutline`,
+        to: `tuiIconTdsStarSmallPragmatic`,
+    },
+    {
+        from: `tuiIconStrikeThroughLarge`,
+        to: `tuiIconTdsWysiwygFontStrikethroughMediumPragmatic`,
+    },
+    {
+        from: `tuiIconSubitem`,
+        to: `tuiIconTdsArrowSubRightSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSublevelLarge`,
+        to: `tuiIconTdsArrowSubRightMediumPragmatic`,
+    },
+    {
+        from: `tuiIconSubscriptLarge`,
+        to: `tuiIconTdsWysiwygSubscriptMediumPragmatic`,
+    },
+    {
+        from: `tuiIconSuperscriptLarge`,
+        to: `tuiIconTdsWysiwygSuperscriptMediumPragmatic`,
+    },
+    {
+        from: `tuiIconTableLarge`,
+        to: `tuiIconTdsWysiwygTableMediumPragmatic`,
+    },
+    {
+        from: `tuiIconTableMergeLarge`,
+        to: `tuiIconTdsWysiwygTableMergeMediumPragmatic`,
+    },
+    {
+        from: `tuiIconTableSplitLarge`,
+        to: `tuiIconTdsWysiwygTableSplitMediumPragmatic`,
+    },
+    {
+        from: `tuiIconTag`,
+        to: `tuiIconTdsTagSmallPragmatic`,
+    },
+    {
+        from: `tuiIconTagLarge`,
+        to: `tuiIconTdsTagMediumPragmatic`,
+    },
+    {
+        from: `tuiIconTagLargeOutline`,
+        to: `tuiIconTdsTagMediumPragmatic`,
+    },
+    {
+        from: `tuiIconTagOutline`,
+        to: `tuiIconTdsTagSmallPragmatic`,
+    },
+    {
+        from: `tuiIconThumbsDownLarge`,
+        to: `tuiIconTdsThumbDownMediumPragmatic`,
+    },
+    {
+        from: `tuiIconThumbsUpLarge`,
+        to: `tuiIconTdsThumbUpMediumPragmatic`,
+    },
+    {
+        from: `tuiIconToggleOn`,
+        to: `tuiIconTdsCheckSmallPragmatic`,
+    },
+    {
+        from: `tuiIconToggleOnLarge`,
+        to: `tuiIconTdsCheckMediumPragmatic`,
+    },
+    {
+        from: `tuiIconTopUpLarge`,
+        to: `tuiIconTdsPlusCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconTransparentLarge`,
+        to: `tuiIconTdsDenyMediumPragmatic`,
+    },
+    {
+        from: `tuiIconTrash`,
+        to: `tuiIconTdsTrashSmallPragmatic`,
+    },
+    {
+        from: `tuiIconTrashLarge`,
+        to: `tuiIconTdsTrashMediumPragmatic`,
+    },
+    {
+        from: `tuiIconTrashLargeOutline`,
+        to: `tuiIconTdsTrashMediumPragmatic`,
+    },
+    {
+        from: `tuiIconTrashOutline`,
+        to: `tuiIconTdsTrashSmallPragmatic`,
+    },
+    {
+        from: `tuiIconUnderlineLarge`,
+        to: `tuiIconTdsWysiwygFontUnderlineMediumPragmatic`,
+    },
+    {
+        from: `tuiIconUndo`,
+        to: `tuiIconTdsArrowRewindSmallPragmatic`,
+    },
+    {
+        from: `tuiIconBoldLarge`,
+        to: `tuiIconTdsWysiwygFontBoldMediumPragmatic`,
+    },
+    {
+        from: `tuiIconUndoLarge`,
         to: `tuiIconTdsArrowRewindMediumPragmatic`,
+    },
+    {
+        from: `tuiIconUnequal`,
+        to: `tuiIconTdsMathNonEqualSmallPragmatic`,
+    },
+    {
+        from: `tuiIconUnequalLarge`,
+        to: `tuiIconTdsMathNonEqualMediumPragmatic`,
+    },
+    {
+        from: `tuiIconUnfreeze`,
+        to: `tuiIconTdsSnowflakeOffSmallPragmatic`,
+    },
+    {
+        from: `tuiIconUnfreezeLarge`,
+        to: `tuiIconTdsSnowflakeOffMediumPragmatic`,
+    },
+    {
+        from: `tuiIconLockOpen`,
+        to: `tuiIconTdsLockOpenSmallPragmatic`,
+    },
+    {
+        from: `tuiIconUnlock`,
+        to: `tuiIconTdsLockOpenSmallPragmatic`,
+    },
+    {
+        from: `tuiIconUnlockLarge`,
+        to: `tuiIconTdsLockOpenMediumPragmatic`,
+    },
+    {
+        from: `tuiIconUnlockLargeOutline`,
+        to: `tuiIconTdsLockOpenMediumPragmatic`,
+    },
+    {
+        from: `tuiIconUnlockOutline`,
+        to: `tuiIconTdsLockOpenMediumPragmatic`,
+    },
+    {
+        from: `tuiIconUpCircle`,
+        to: `tuiIconTdsArrowUpCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconUpload`,
+        to: `tuiIconTdsShareSmallPragmatic`,
+    },
+    {
+        from: `tuiIconUploadLarge`,
+        to: `tuiIconTdsShare2MediumPragmatic`,
+    },
+    {
+        from: `tuiIconUser`,
+        to: `tuiIconTdsUserImpersonalSmallPragmatic`,
+    },
+    {
+        from: `tuiIconUserOutline`,
+        to: `tuiIconTdsUserImpersonalSmallPragmatic`,
+    },
+    {
+        from: `tuiIconUserpicCircleLarge`,
+        to: `tuiIconTdsUserImpersonalMediumPragmatic`,
+    },
+    {
+        from: `tuiIconVideo`,
+        to: `tuiIconTdsCameraVideoSmallPragmatic`,
+    },
+    {
+        from: `tuiIconVideoLarge`,
+        to: `tuiIconTdsCameraVideoMediumPragmatic`,
+    },
+    {
+        from: `tuiIconVideoOutline`,
+        to: `tuiIconTdsCameraVideoSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSound`,
+        to: `tuiIconTdsSoundSmallPragmatic`,
+    },
+    {
+        from: `tuiIconVolume`,
+        to: `tuiIconTdsSoundSmallPragmatic`,
+    },
+    {
+        from: `tuiIconVolumeLarge`,
+        to: `tuiIconTdsSoundMediumPragmatic`,
+    },
+    {
+        from: `tuiIconVolumeLargeOutline`,
+        to: `tuiIconTdsSoundMediumPragmatic`,
+    },
+    {
+        from: `tuiIconVolumeOutline`,
+        to: `tuiIconTdsSoundSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSoundOff`,
+        to: `tuiIconTdsSoundOffSmallPragmatic`,
+    },
+    {
+        from: `tuiIconVolumeX`,
+        to: `tuiIconTdsSoundOffSmallPragmatic`,
+    },
+    {
+        from: `tuiIconVolumeXLarge`,
+        to: `tuiIconTdsSoundOffMediumPragmatic`,
+    },
+    {
+        from: `tuiIconVolumeXLargeOutline`,
+        to: `tuiIconTdsSoundOffMediumPragmatic`,
+    },
+    {
+        from: `tuiIconVolumeXOutline`,
+        to: `tuiIconTdsSoundOffSmallPragmatic`,
+    },
+    {
+        from: `tuiIconWallet`,
+        to: `tuiIconTdsWalletSmallPragmatic`,
+    },
+    {
+        from: `tuiIconWalletLarge`,
+        to: `tuiIconTdsWalletMediumPragmatic`,
+    },
+    {
+        from: `tuiIconWarning`,
+        to: `tuiIconTdsExclamationSmallPragmatic`,
+    },
+    {
+        from: `tuiIconWarningLarge`,
+        to: `tuiIconTdsExclamationMediumPragmatic`,
+    },
+    {
+        from: `tuiIconWireless`,
+        to: `tuiIconTdsPaypassSmallPragmatic`,
+    },
+    {
+        from: `tuiIconWorldLarge`,
+        to: `tuiIconTdsGlobeMediumPragmatic`,
+    },
+    {
+        from: `tuiIconRemove`,
+        to: `tuiIconTdsCrossSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCancelOutline`,
+        to: `tuiIconTdsCrossSmallPragmatic`,
+    },
+    {
+        from: `tuiIconX`,
+        to: `tuiIconTdsCrossSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCancel`,
+        to: `tuiIconTdsCrossCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconXCircle`,
+        to: `tuiIconTdsCrossCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconXCircleLarge`,
+        to: `tuiIconTdsCrossCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconXCircleLargeOutline`,
+        to: `tuiIconTdsCrossCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconXCircleOutline`,
+        to: `tuiIconTdsCrossCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconXLarge`,
+        to: `tuiIconTdsCrossMediumPragmatic`,
+    },
+    {
+        from: `tuiIconZoomIn`,
+        to: `tuiIconTdsLoupePlusSmallPragmatic`,
+    },
+    {
+        from: `tuiIconZoomInLarge`,
+        to: `tuiIconTdsLoupePlusMediumPragmatic`,
+    },
+    {
+        from: `tuiIconZoomInLargeOutline`,
+        to: `tuiIconTdsLoupePlusMediumPragmatic`,
+    },
+    {
+        from: `tuiIconZoomInOutline`,
+        to: `tuiIconTdsLoupePlusSmallPragmatic`,
+    },
+    {
+        from: `tuiIconZoomOut`,
+        to: `tuiIconTdsLoupeMinusSmallPragmatic`,
+    },
+    {
+        from: `tuiIconZoomOutLarge`,
+        to: `tuiIconTdsLoupeMinusMediumPragmatic`,
+    },
+    {
+        from: `tuiIconZoomOutLargeOutline`,
+        to: `tuiIconTdsLoupeMinusMediumPragmatic`,
+    },
+    {
+        from: `tuiIconZoomOutOutline`,
+        to: `tuiIconTdsLoupeMinusSmallPragmatic`,
+    },
+    {
+        from: `tuiIconAtm`,
+        to: `tuiIconTdsAtmSmallPragmatic`,
+    },
+    {
+        from: `tuiIconBirthday`,
+        to: `tuiIconTdsGiftSmallPragmatic`,
+    },
+    {
+        from: `tuiIconBirthdayLarge`,
+        to: `tuiIconTdsGiftMediumPragmatic`,
+    },
+    {
+        from: `tuiIconBonus`,
+        to: `tuiIconTdsCrownSmallPragmatic`,
+    },
+    {
+        from: `tuiIconBonusLarge`,
+        to: `tuiIconTdsCrownMediumPragmatic`,
+    },
+    {
+        from: `tuiIconBriefcaseLarge`,
+        to: `tuiIconTdsBriefcaseMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCardDrop`,
+        to: `tuiIconTdsChevronDownSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCardDropLarge`,
+        to: `tuiIconTdsChevronDownMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCardDropLargeOutline`,
+        to: `tuiIconTdsChevronDownMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCardDropOutline`,
+        to: `tuiIconTdsChevronDownSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCardOutline`,
+        to: `tuiIconTdsCardBacksideSmallPragmatic`,
+    },
+    {
+        from: `tuiIconChecklist`,
+        to: `tuiIconTdsClipboardCheckSmallPragmatic`,
+    },
+    {
+        from: `tuiIconChecklistLarge`,
+        to: `tuiIconTdsClipboardCheckMediumPragmatic`,
+    },
+    {
+        from: `tuiIconChecklistLargeOutline`,
+        to: `tuiIconTdsClipboardCheckMediumPragmatic`,
+    },
+    {
+        from: `tuiIconChecklistOutline`,
+        to: `tuiIconTdsClipboardCheckSmallPragmatic`,
+    },
+    {
+        from: `tuiIconChevronsDown`,
+        to: `tuiIconTdsChevronDoubleDownSmallPragmatic`,
+    },
+    {
+        from: `tuiIconChevronsLeft`,
+        to: `tuiIconTdsChevronDoubleLeftSmallPragmatic`,
+    },
+    {
+        from: `tuiIconChevronsRight`,
+        to: `tuiIconTdsChevronDoubleRightSmallPragmatic`,
+    },
+    {
+        from: `tuiIconChevronsUpLarge`,
+        to: `tuiIconTdsChevronDoubleUpMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCompensation`,
+        to: `tuiIconTdsPlusCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCompensationLarge`,
+        to: `tuiIconTdsPlusCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCompensationLargeOutline`,
+        to: `tuiIconTdsPlusCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCards`,
+        to: `tuiIconTdsCardBacksideSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCard`,
+        to: `tuiIconTdsCardBacksideSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCreditCard`,
+        to: `tuiIconTdsCardBacksideSmallPragmatic`,
+    },
+    {
+        from: `tuiIconCreditCardLarge`,
+        to: `tuiIconTdsCardsMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCreditCardLargeOutline`,
+        to: `tuiIconTdsCardsMediumPragmatic`,
+    },
+    {
+        from: `tuiIconCreditCardOutline`,
+        to: `tuiIconTdsCardBacksideSmallPragmatic`,
+    },
+    {
+        from: `tuiIconFacebookLarge`,
+        to: `tuiIconTdsLogoFacebookMedium`,
+    },
+    {
+        from: `tuiIconForward`,
+        to: `tuiIconTdsArrowForwardSmallPragmatic`,
+    },
+    {
+        from: `tuiIconForwardLarge`,
+        to: `tuiIconTdsArrowForwardMediumPragmatic`,
+    },
+    {
+        from: `tuiIconForwardLargeOutline`,
+        to: `tuiIconTdsArrowForwardMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMaestroMono`,
+        to: `tuiIconTdsLogoMastercardMedium`,
+    },
+    {
+        from: `tuiIconMap`,
+        to: `tuiIconMapPinOutline`,
+    },
+    {
+        from: `tuiIconMapLarge`,
+        to: `tuiIconTdsPinGeoMediumPragmatic`,
+    },
+    {
+        from: `tuiIconMastercard`,
+        to: `tuiIconTdsPaymentMastercardLogo`,
+    },
+    {
+        from: `tuiIconMastercardMono`,
+        to: `tuiIconTdsLogoMastercardMedium`,
+    },
+    {
+        from: `tuiIconMir`,
+        to: `tuiIconTdsPaymentMirLogo`,
+    },
+    {
+        from: `tuiIconMirMono`,
+        to: `tuiIconTdsPaymentMirMonochromeLogo`,
+    },
+    {
+        from: `tuiIconMoon`,
+        to: `tuiIconTdsNightSmallPragmatic`,
+    },
+    {
+        from: `tuiIconMoonLarge`,
+        to: `tuiIconTdsNightMediumPragmatic`,
+    },
+    {
+        from: `tuiIconOkLarge`,
+        to: `tuiIconTdsLogoOdnoklassnikiMedium`,
+    },
+    {
+        from: `tuiIconCallIn`,
+        to: `tuiIconTdsPhoneArrowSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPhoneIncoming`,
+        to: `tuiIconTdsPhoneArrowSmallPragmatic`,
+    },
+    {
+        from: `tuiIconPhoneIncomingLarge`,
+        to: `tuiIconTdsPhoneArrowMediumPragmatic`,
+    },
+    {
         from: `tuiIconRepeatCurrencyLarge`,
+        to: `tuiIconTdsArrowRewindMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsSaveSmallPragmatic`,
         from: `tuiIconSave`,
-    },
-    {
-        to: `tuiIconTdsFloppyDiskMediumPragmatic`,
-        from: `tuiIconSaveLarge`,
-    },
-    {
-        to: `tuiIconTdsFloppyDiskMediumPragmatic`,
-        from: `tuiIconSaveLargeOutline`,
-    },
-    {
         to: `tuiIconTdsSaveSmallPragmatic`,
+    },
+    {
+        from: `tuiIconSaveLarge`,
+        to: `tuiIconTdsFloppyDiskMediumPragmatic`,
+    },
+    {
+        from: `tuiIconSaveLargeOutline`,
+        to: `tuiIconTdsFloppyDiskMediumPragmatic`,
+    },
+    {
         from: `tuiIconSaveOutline`,
+        to: `tuiIconTdsSaveSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsDevicePhoneSmallPragmatic`,
         from: `tuiIconMobile`,
-    },
-    {
         to: `tuiIconTdsDevicePhoneSmallPragmatic`,
+    },
+    {
         from: `tuiIconSmartphone`,
+        to: `tuiIconTdsDevicePhoneSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsDevicePhoneMediumPragmatic`,
         from: `tuiIconSmartphoneLarge`,
+        to: `tuiIconTdsDevicePhoneMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsLogoTelegramMedium`,
         from: `tuiIconSocialTelegramLarge`,
+        to: `tuiIconTdsLogoTelegramMedium`,
     },
     {
-        to: `tuiIconTdsLogoViberMedium`,
         from: `tuiIconSocialViberLarge`,
+        to: `tuiIconTdsLogoViberMedium`,
     },
     {
-        to: `tuiIconTdsLogoWhatsappMedium`,
         from: `tuiIconSocialWhatsappLarge`,
+        to: `tuiIconTdsLogoWhatsappMedium`,
     },
     {
-        to: `tuiIconTdsSunSmallPragmatic`,
         from: `tuiIconSun`,
+        to: `tuiIconTdsSunSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsSunMediumPragmatic`,
         from: `tuiIconSunLarge`,
+        to: `tuiIconTdsSunMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsLogoTiktokMedium`,
         from: `tuiIconTiktokLarge`,
+        to: `tuiIconTdsLogoTiktokMedium`,
     },
     {
-        to: `tuiIconTdsChevronDoubleRightCircleSmallPragmatic`,
         from: `tuiIconTransfer`,
-    },
-    {
-        to: `tuiIconTdsChevronDoubleRightCircleMediumPragmatic`,
-        from: `tuiIconTransferLarge`,
-    },
-    {
-        to: `tuiIconTdsChevronDoubleRightCircleMediumPragmatic`,
-        from: `tuiIconTransferLargeOutline`,
-    },
-    {
         to: `tuiIconTdsChevronDoubleRightCircleSmallPragmatic`,
+    },
+    {
+        from: `tuiIconTransferLarge`,
+        to: `tuiIconTdsChevronDoubleRightCircleMediumPragmatic`,
+    },
+    {
+        from: `tuiIconTransferLargeOutline`,
+        to: `tuiIconTdsChevronDoubleRightCircleMediumPragmatic`,
+    },
+    {
         from: `tuiIconTransferOutline`,
+        to: `tuiIconTdsChevronDoubleRightCircleSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsChevronDoubleRightCircleMediumPragmatic`,
         from: `tuiIconTransferTcrmLarge`,
-    },
-    {
         to: `tuiIconTdsChevronDoubleRightCircleMediumPragmatic`,
+    },
+    {
         from: `tuiIconTransferTcrmLargeOutline`,
+        to: `tuiIconTdsChevronDoubleRightCircleMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsLogoTwitterMedium`,
         from: `tuiIconTwitterLarge`,
+        to: `tuiIconTdsLogoTwitterMedium`,
     },
     {
-        to: `tuiIconTdsPaymentUnionpayLogo`,
         from: `tuiIconUnionPay`,
+        to: `tuiIconTdsPaymentUnionpayLogo`,
     },
     {
-        to: `tuiIconTdsUsersSmallPragmatic`,
         from: `tuiIconUsers`,
-    },
-    {
         to: `tuiIconTdsUsersSmallPragmatic`,
+    },
+    {
         from: `tuiIconUsersOutline`,
+        to: `tuiIconTdsUsersSmallPragmatic`,
     },
     {
-        to: `tuiIconTdsPaymentVisaLogo`,
         from: `tuiIconVisa`,
+        to: `tuiIconTdsPaymentVisaLogo`,
     },
     {
-        to: `tuiIconTdsPaymentVisaMonochromeLogoSquare`,
         from: `tuiIconVisaMono`,
+        to: `tuiIconTdsPaymentVisaMonochromeLogoSquare`,
     },
     {
-        to: `tuiIconTdsLogoVkMedium`,
         from: `tuiIconVkLarge`,
+        to: `tuiIconTdsLogoVkMedium`,
     },
     {
-        to: `tuiIconTdsWifiMediumPragmatic`,
         from: `tuiIconWifiLarge`,
+        to: `tuiIconTdsWifiMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsWifiOffMediumPragmatic`,
         from: `tuiIconWifiOffLarge`,
+        to: `tuiIconTdsWifiOffMediumPragmatic`,
     },
     {
-        to: `tuiIconTdsLogoYoutubeMedium`,
         from: `tuiIconYoutubeLarge`,
+        to: `tuiIconTdsLogoYoutubeMedium`,
     },
     {
-        to: `tuiIconTdsAnchorMediumPragmatic`,
         from: `tuiIconAnchorLarge`,
+        to: `tuiIconTdsAnchorMediumPragmatic`,
     },
 ].sort((prev, next) => next.from.length - prev.from.length);

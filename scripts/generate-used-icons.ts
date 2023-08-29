@@ -17,21 +17,21 @@ import {basename, join} from 'path';
     const excludedFiles = [`deprecated-icons.ts`, `used-icons.ts`];
     const excludedNames = [`tuiIconButton`];
 
-    generateUsedIcons(rootDirectory, {excludedFolders, excludedNames, excludedFiles});
+    generateUsedIcons(rootDirectory, {excludedFiles, excludedFolders, excludedNames});
 })();
 
 function generateUsedIcons(
     rootDirectory: string,
     {
+        excludedFiles,
         excludedFolders,
         excludedNames,
-        excludedFiles,
     }: {excludedFiles: string[]; excludedFolders: string[]; excludedNames: string[]},
 ): void {
     const tuiIconNames = findTuiIconNames(rootDirectory, {
+        excludedFiles,
         excludedFolders,
         excludedNames,
-        excludedFiles,
     });
 
     writeFileSync(
@@ -49,9 +49,9 @@ function generateUsedIcons(
 function findTuiIconNames(
     rootDir: string,
     {
+        excludedFiles,
         excludedFolders,
         excludedNames,
-        excludedFiles,
     }: {excludedFiles: string[]; excludedFolders: string[]; excludedNames: string[]},
 ): string[] {
     const tuiIconNames = new Set<string>();

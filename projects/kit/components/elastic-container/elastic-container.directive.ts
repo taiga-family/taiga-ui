@@ -15,8 +15,8 @@ import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
         {
             provide: MUTATION_OBSERVER_INIT,
             useValue: {
-                childList: true,
                 characterData: true,
+                childList: true,
                 subtree: true,
             },
         },

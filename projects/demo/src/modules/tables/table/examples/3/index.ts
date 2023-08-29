@@ -28,48 +28,48 @@ export class TuiTableExample3 {
     pythons: readonly Item[] = [
         {
             name: 'Holy Grail',
+            date: TuiDay.currentLocal(),
             price: 999999,
             quantity: 1,
             unit: this.units[0],
-            date: TuiDay.currentLocal(),
         },
         {
             name: 'Foot',
+            date: TuiDay.currentLocal().append({day: -42}),
             price: 29.95,
             quantity: 5,
             unit: this.units[2],
-            date: TuiDay.currentLocal().append({day: -42}),
         },
         {
             name: 'Shed',
+            date: TuiDay.currentLocal().append({day: -237}),
             price: 499,
             quantity: 2,
             unit: this.units[0],
-            date: TuiDay.currentLocal().append({day: -237}),
         },
     ];
 
     starwars: readonly Item[] = [
         {
             name: 'Lightsaber',
+            date: TuiDay.currentLocal(),
             price: 4999,
             quantity: 3,
             unit: this.units[0],
-            date: TuiDay.currentLocal(),
         },
         {
             name: 'Spaceship',
+            date: TuiDay.currentLocal().append({day: -237}),
             price: 19999,
             quantity: 1,
             unit: this.units[0],
-            date: TuiDay.currentLocal().append({day: -237}),
         },
         {
             name: 'Stormtrooper helmet',
+            date: TuiDay.currentLocal().append({day: -42}),
             price: 14.95,
             quantity: 5,
             unit: this.units[0],
-            date: TuiDay.currentLocal().append({day: -42}),
         },
     ];
 

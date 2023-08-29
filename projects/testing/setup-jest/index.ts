@@ -1,6 +1,6 @@
 /// <reference types="jest" />
 
-const {TextEncoder: TextEncoderMock, TextDecoder: TextDecoderMock} = require(`util`);
+const {TextDecoder: TextDecoderMock, TextEncoder: TextEncoderMock} = require(`util`);
 
 global.TextEncoder = TextEncoderMock;
 global.TextDecoder = TextDecoderMock;
@@ -11,9 +11,9 @@ global.document.execCommand = function execCommandMock() {};
 // you can also pass the mock implementation
 // to jest.fn as an argument
 (global.window as any).IntersectionObserver = jest.fn(() => ({
+    disconnect: jest.fn(),
     observe: jest.fn(),
     unobserve: jest.fn(),
-    disconnect: jest.fn(),
 }));
 
 // Simulate window resize events
@@ -35,8 +35,8 @@ Object.defineProperty(global.window, `CSS`, {value: null});
 Object.defineProperty(global.window, `getComputedStyle`, {
     value: () => {
         return {
-            display: `none`,
             appearance: [`-webkit-appearance`],
+            display: `none`,
         };
     },
 });
@@ -48,58 +48,58 @@ Object.defineProperty(global.document, `doctype`, {
 Object.defineProperty(global.document.body.style, `transform`, {
     value: () => {
         return {
-            enumerable: true,
             configurable: true,
+            enumerable: true,
         };
     },
 });
 
 Object.defineProperty(global.window, `matchMedia`, {
-    writable: true,
     value: jest.fn().mockImplementation(query => ({
+        addEventListener: jest.fn(),
+        addListener: jest.fn(),
+        dispatchEvent: jest.fn(),
         matches: false,
         media: query,
         onchange: null,
-        addListener: jest.fn(),
-        removeListener: jest.fn(),
-        addEventListener: jest.fn(),
         removeEventListener: jest.fn(),
-        dispatchEvent: jest.fn(),
+        removeListener: jest.fn(),
     })),
+    writable: true,
 });
 
 Object.defineProperty(global.document, `elementFromPoint`, {
-    writable: true,
     value: jest.fn().mockImplementation(() => null),
+    writable: true,
 });
 
 Object.defineProperty(global.document, `createRange`, {
-    writable: true,
     value: () => {
         const range = new Range();
 
         range.getBoundingClientRect = () => ({
-            x: 0,
-            y: 0,
             bottom: 0,
             height: 0,
             left: 0,
             right: 0,
+            toJSON: () => {},
             top: 0,
             width: 0,
-            toJSON: () => {},
+            x: 0,
+            y: 0,
         });
 
         range.getClientRects = () => {
             return {
+                [Symbol.iterator]: jest.fn(),
                 item: () => null,
                 length: 0,
-                [Symbol.iterator]: jest.fn(),
             };
         };
 
         return range;
     },
+    writable: true,
 });
 
 Object.defineProperty(window, `scrollTo`, jest.fn());

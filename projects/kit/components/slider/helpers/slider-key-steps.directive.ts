@@ -28,9 +28,9 @@ import {TuiSliderComponent} from '../slider.component';
 @Directive({
     selector: 'input[tuiSlider][keySteps]',
     host: {
-        '[attr.aria-valuenow]': 'safeCurrentValue',
-        '[attr.aria-valuemin]': 'min',
         '[attr.aria-valuemax]': 'max',
+        '[attr.aria-valuemin]': 'min',
+        '[attr.aria-valuenow]': 'safeCurrentValue',
         '[disabled]': 'computedDisabled',
     },
 })
@@ -100,7 +100,7 @@ export class TuiSliderKeyStepsDirective
     }
 
     private transformToNativeValue(controlValue: number): number {
-        const {min, max} = this.slider;
+        const {max, min} = this.slider;
         const newValuePercentage = tuiKeyStepValueToPercentage(
             controlValue,
             this.keySteps,

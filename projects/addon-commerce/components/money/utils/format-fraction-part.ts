@@ -6,7 +6,7 @@ export function tuiFormatFractionPart(options: {
     precision: number;
     value: number;
 }): string {
-    const {value, decimal, numberFormat, precision} = options;
+    const {decimal, numberFormat, precision, value} = options;
     const fraction = tuiFormatNumber(value, {
         ...numberFormat,
         decimalLimit: precision,

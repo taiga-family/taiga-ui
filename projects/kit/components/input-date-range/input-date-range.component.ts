@@ -214,7 +214,7 @@ export class TuiInputDateRangeComponent
     }
 
     get computedValue(): string {
-        const {value, nativeValue, activePeriod} = this;
+        const {activePeriod, nativeValue, value} = this;
 
         if (activePeriod) {
             return String(activePeriod);
@@ -275,24 +275,24 @@ export class TuiInputDateRangeComponent
             .open<TuiDayRange>(
                 new PolymorpheusComponent(this.mobileCalendar, this.injector),
                 {
-                    size: 'fullscreen',
                     closeable: false,
                     data: {
-                        single: false,
-                        min: this.maxLengthMapper(
-                            this.computedMin,
-                            this.value,
-                            this.maxLength,
-                            true,
-                        ),
+                        disabledItemHandler: this.disabledItemHandler,
                         max: this.maxLengthMapper(
                             this.computedMax,
                             this.value,
                             this.maxLength,
                             false,
                         ),
-                        disabledItemHandler: this.disabledItemHandler,
+                        min: this.maxLengthMapper(
+                            this.computedMin,
+                            this.value,
+                            this.maxLength,
+                            true,
+                        ),
+                        single: false,
                     },
+                    size: 'fullscreen',
                 },
             )
             .pipe(takeUntil(this.destroy$))
@@ -385,12 +385,12 @@ export class TuiInputDateRangeComponent
         maxLength: TuiDayLike | null,
     ): MaskitoOptions {
         return maskitoDateRangeOptionsGenerator({
-            separator,
-            mode: TUI_DATE_MODE_MASKITO_ADAPTER[dateFormat],
-            min: min.toLocalNativeDate(),
             max: max.toLocalNativeDate(),
-            minLength: minLength || {},
             maxLength: maxLength || {},
+            min: min.toLocalNativeDate(),
+            minLength: minLength || {},
+            mode: TUI_DATE_MODE_MASKITO_ADAPTER[dateFormat],
+            separator,
         });
     }
 

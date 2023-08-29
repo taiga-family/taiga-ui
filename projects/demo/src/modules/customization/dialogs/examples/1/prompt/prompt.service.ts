@@ -10,8 +10,8 @@ import {PromptOptions} from './prompt-options';
 })
 export class PromptService extends AbstractTuiDialogService<PromptOptions, boolean> {
     readonly defaultOptions = {
-        heading: `Are you sure?`,
         buttons: [`Yes`, `No`],
+        heading: `Are you sure?`,
     } as const;
 
     readonly component = new PolymorpheusComponent(PromptComponent);
@@ -20,6 +20,6 @@ export class PromptService extends AbstractTuiDialogService<PromptOptions, boole
 // Add this provider to app module
 export const PROMPT_PROVIDER: Provider = {
     provide: TUI_DIALOGS,
-    useExisting: PromptService,
     multi: true,
+    useExisting: PromptService,
 };

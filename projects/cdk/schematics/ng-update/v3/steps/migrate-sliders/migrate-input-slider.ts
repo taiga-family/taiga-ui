@@ -29,8 +29,8 @@ export function migrateInputSlider(
     const COMPONENTS_WITH_MIN_MAX_LABELS = new Set<string>();
 
     let progressLog = setupProgressLogger({
-        total: templateResources.length,
         prefix: `[replaceMinMaxLabels]`,
+        total: templateResources.length,
     });
 
     for (const templateResource of templateResources) {
@@ -47,8 +47,8 @@ export function migrateInputSlider(
     setActiveProject(createProject(fileSystem.tree, projectRoot(), ALL_FILES));
 
     progressLog = setupProgressLogger({
-        total: COMPONENTS_WITH_MIN_MAX_LABELS.size,
         prefix: `[addMinMaxLabelMethod]`,
+        total: COMPONENTS_WITH_MIN_MAX_LABELS.size,
     });
 
     for (const componentPath of Array.from(COMPONENTS_WITH_MIN_MAX_LABELS)) {
@@ -65,29 +65,29 @@ function replaceMinMaxLabels(
     modifiedComponentStorage: Set<string>,
 ): void {
     const wasMaxLabelModified = replaceInputProperty({
-        templateResource,
-        fileSystem,
         componentSelector: `tui-input-slider`,
+        fileSystem,
         from: `maxLabel`,
-        to: `[valueContent]`,
         newValue: MIN_MAX_LABELS_MIGRATION_METHOD_NAME,
+        templateResource,
+        to: `[valueContent]`,
     });
     const wasMinLabelModified = replaceInputProperty({
-        templateResource,
-        fileSystem,
         componentSelector: `tui-input-slider`,
-        from: `minLabel`,
-        to: `[valueContent]`,
-        newValue: MIN_MAX_LABELS_MIGRATION_METHOD_NAME,
+        fileSystem,
         filterFn: element => !hasElementAttribute(element, `maxLabel`),
+        from: `minLabel`,
+        newValue: MIN_MAX_LABELS_MIGRATION_METHOD_NAME,
+        templateResource,
+        to: `[valueContent]`,
     });
 
     removeInputProperty({
-        templateResource,
-        fileSystem,
         componentSelector: `tui-input-slider`,
-        inputProperty: `minLabel`,
+        fileSystem,
         filterFn: element => hasElementAttribute(element, `maxLabel`),
+        inputProperty: `minLabel`,
+        templateResource,
     });
 
     if (wasMaxLabelModified || wasMinLabelModified) {
@@ -102,8 +102,8 @@ function addMinMaxLabelMethod(componentPath: string): void {
         addUniqueImport(componentPath, `TuiContextWithImplicit`, `@taiga-ui/cdk`);
         addMethods(ngComponent, {
             name: MIN_MAX_LABELS_MIGRATION_METHOD_NAME,
-            returnType: `string`,
             parameters: [{name: `context`, type: `TuiContextWithImplicit<number>`}],
+            returnType: `string`,
             statements: [
                 `const currentValue = context.$implicit;`,
                 `const maxValue = 100; // TODO: (Taiga UI migration) replace with the MAX value of the input`,

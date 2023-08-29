@@ -63,7 +63,7 @@ function decorateGetter(
 export function tuiPure<T>(
     target: object,
     propertyKey: string,
-    {get, enumerable, value}: TypedPropertyDescriptor<T>,
+    {enumerable, get, value}: TypedPropertyDescriptor<T>,
 ): TypedPropertyDescriptor<T>;
 
 /**
@@ -102,7 +102,7 @@ export function tuiPure(
         throw new TuiPureException();
     }
 
-    const {get, enumerable, value} = descriptor!;
+    const {enumerable, get, value} = descriptor!;
     const propertyKey = propertyKeyOrContext as string;
 
     if (get) {

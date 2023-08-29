@@ -11,15 +11,15 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 })
 export class TuiTilesExample1 {
     items = [
-        {w: 1, h: 1, content: 'Item 1'},
-        {w: 1, h: 1, content: 'Item 2'},
-        {w: 2, h: 1, content: 'Item 3'},
-        {w: 1, h: 1, content: 'Item 4'},
-        {w: 3, h: 1, content: 'Item 5'},
-        {w: 1, h: 1, content: 'Item 6'},
-        {w: 2, h: 2, content: 'rick'},
-        {w: 1, h: 1, content: 'Item 8'},
-        {w: 1, h: 1, content: 'Item 9'},
+        {content: 'Item 1', h: 1, w: 1},
+        {content: 'Item 2', h: 1, w: 1},
+        {content: 'Item 3', h: 1, w: 2},
+        {content: 'Item 4', h: 1, w: 1},
+        {content: 'Item 5', h: 1, w: 3},
+        {content: 'Item 6', h: 1, w: 1},
+        {content: 'rick', h: 2, w: 2},
+        {content: 'Item 8', h: 1, w: 1},
+        {content: 'Item 9', h: 1, w: 1},
     ];
 
     order = new Map();

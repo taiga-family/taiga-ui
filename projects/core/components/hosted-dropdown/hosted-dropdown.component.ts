@@ -197,7 +197,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         this.focusDropdown(event, down);
     }
 
-    onKeydown({key, target, defaultPrevented}: KeyboardEvent): void {
+    onKeydown({defaultPrevented, key, target}: KeyboardEvent): void {
         if (
             !defaultPrevented &&
             tuiIsEditingKey(key) &&
@@ -267,8 +267,8 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
             : this.wrapper.nativeElement.nextElementSibling;
         const focusable = tuiGetClosestFocusable({
             initial,
-            root: this.wrapper.nativeElement,
             previous: !first,
+            root: this.wrapper.nativeElement,
         });
 
         if (!focusable) {

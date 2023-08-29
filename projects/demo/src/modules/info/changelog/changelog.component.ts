@@ -8,8 +8,8 @@ import {switchMap} from 'rxjs/operators';
     selector: 'changelog',
     templateUrl: './changelog.template.html',
     styleUrls: ['./changelog.style.less'],
-    encapsulation: ViewEncapsulation.None,
     changeDetection,
+    encapsulation: ViewEncapsulation.None,
 })
 export class ChangelogComponent {
     readonly changelog = of(import('../../../../../../CHANGELOG.md?raw')).pipe(

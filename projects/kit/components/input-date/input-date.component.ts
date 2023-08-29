@@ -170,7 +170,7 @@ export class TuiInputDateComponent
     }
 
     get computedValue(): string {
-        const {value, nativeValue, activeItem} = this;
+        const {activeItem, nativeValue, value} = this;
 
         if (activeItem) {
             return String(activeItem);
@@ -251,14 +251,14 @@ export class TuiInputDateComponent
 
         this.dialogs
             .open<TuiDay>(new PolymorpheusComponent(this.mobileCalendar, this.injector), {
-                size: 'fullscreen',
                 closeable: false,
                 data: {
-                    single: true,
-                    min: this.min,
-                    max: this.max,
                     disabledItemHandler: this.disabledItemHandler,
+                    max: this.max,
+                    min: this.min,
+                    single: true,
                 },
+                size: 'fullscreen',
             })
             .pipe(takeUntil(this.destroy$))
             .subscribe(value => {
@@ -323,10 +323,10 @@ export class TuiInputDateComponent
         max: TuiDay,
     ): MaskitoOptions {
         return maskitoDateOptionsGenerator({
-            separator,
-            mode: TUI_DATE_MODE_MASKITO_ADAPTER[mode],
-            min: min.toLocalNativeDate(),
             max: max.toLocalNativeDate(),
+            min: min.toLocalNativeDate(),
+            mode: TUI_DATE_MODE_MASKITO_ADAPTER[mode],
+            separator,
         });
     }
 }

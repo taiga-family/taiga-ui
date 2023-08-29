@@ -26,8 +26,8 @@ export class TuiDialogsExample1 {
     ): void {
         this.promptService
             .open(choose, {
-                heading: 'Taiga UI is the best',
                 buttons: ['Absolutely!', 'No way!'],
+                heading: 'Taiga UI is the best',
             })
             .pipe(
                 switchMap(response =>

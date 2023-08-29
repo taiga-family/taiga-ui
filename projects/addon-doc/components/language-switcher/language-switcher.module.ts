@@ -7,8 +7,6 @@ import {TuiSelectModule} from '@taiga-ui/kit';
 import {TuiLanguageSwitcherComponent} from './language-switcher.component';
 
 @NgModule({
-    exports: [TuiLanguageSwitcherComponent],
-    declarations: [TuiLanguageSwitcherComponent],
     imports: [
         CommonModule,
         TuiFlagPipeModule,
@@ -16,5 +14,7 @@ import {TuiLanguageSwitcherComponent} from './language-switcher.component';
         TuiDataListModule,
         ReactiveFormsModule,
     ],
+    declarations: [TuiLanguageSwitcherComponent],
+    exports: [TuiLanguageSwitcherComponent],
 })
 export class TuiLanguageSwitcherModule {}

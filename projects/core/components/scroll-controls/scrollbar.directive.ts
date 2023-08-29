@@ -99,12 +99,12 @@ export class TuiScrollbarDirective {
 
     private get scrolled(): number {
         const {
-            scrollTop,
-            scrollHeight,
             clientHeight,
-            scrollLeft,
-            scrollWidth,
             clientWidth,
+            scrollHeight,
+            scrollLeft,
+            scrollTop,
+            scrollWidth,
         } = this.element;
 
         return this.tuiScrollbar === 'vertical'
@@ -113,7 +113,7 @@ export class TuiScrollbarDirective {
     }
 
     private get compensation(): number {
-        const {clientHeight, scrollHeight, clientWidth, scrollWidth} = this.element;
+        const {clientHeight, clientWidth, scrollHeight, scrollWidth} = this.element;
 
         if (
             ((clientHeight * clientHeight) / scrollHeight > MIN_WIDTH &&
@@ -136,7 +136,7 @@ export class TuiScrollbarDirective {
     }
 
     private get view(): number {
-        const {clientHeight, scrollHeight, clientWidth, scrollWidth} = this.element;
+        const {clientHeight, clientWidth, scrollHeight, scrollWidth} = this.element;
 
         return this.tuiScrollbar === 'vertical'
             ? Math.ceil((clientHeight / scrollHeight) * 100) / 100
@@ -148,12 +148,12 @@ export class TuiScrollbarDirective {
     }
 
     private getScrolled(
-        {clientY, clientX}: MouseEvent,
+        {clientX, clientY}: MouseEvent,
         offsetVertical: number,
         offsetHorizontal: number,
     ): [number, number] {
         const {offsetHeight, offsetWidth} = this.el.nativeElement;
-        const {top, left, width, height} =
+        const {height, left, top, width} =
             this.wrapper.nativeElement.getBoundingClientRect();
 
         const maxTop = this.element.scrollHeight - height;
@@ -167,7 +167,7 @@ export class TuiScrollbarDirective {
     }
 }
 
-function getOffsetVertical({clientY}: MouseEvent, {top, height}: ClientRect): number {
+function getOffsetVertical({clientY}: MouseEvent, {height, top}: ClientRect): number {
     return (clientY - top) / height;
 }
 

@@ -18,10 +18,10 @@ import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
 import {TuiExpandContentDirective} from './expand-content.directive';
 
 const State = {
+    Animated: 3,
     Idle: 0,
     Loading: 1,
     Prepared: 2,
-    Animated: 3,
 } as const;
 
 const LOADER_HEIGHT = 48;
@@ -30,8 +30,8 @@ const LOADER_HEIGHT = 48;
     selector: 'tui-expand',
     templateUrl: './expand.template.html',
     styleUrls: ['./expand.style.less'],
-    animations: [TUI_PARENT_ANIMATION],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [TUI_PARENT_ANIMATION],
 })
 export class TuiExpandComponent {
     @ViewChild('wrapper')
@@ -82,7 +82,7 @@ export class TuiExpandComponent {
 
     @HostBinding('style.height.px')
     get height(): number | null {
-        const {expanded, state, contentWrapper} = this;
+        const {contentWrapper, expanded, state} = this;
 
         if (
             (expanded && state === State.Prepared) ||

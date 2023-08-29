@@ -4,7 +4,7 @@ import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/co
     selector: 'tui-mobile-tabs',
     template: '',
     styleUrls: ['./mobile-tabs.style.less'],
-    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
 })
 export class TuiMobileTabsComponent {}

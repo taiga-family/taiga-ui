@@ -19,10 +19,10 @@ export interface TuiInputCardOptions {
 
 // TODO: Move payment system icons into its own token in 4.0
 export const TUI_INPUT_CARD_DEFAULT_OPTIONS: TuiInputCardOptions = {
-    icons: TUI_PAYMENT_SYSTEM_ICONS,
-    cardSrc: ``,
-    paymentSystemHandler: tuiGetPaymentSystem,
     autocompleteEnabled: false,
+    cardSrc: ``,
+    icons: TUI_PAYMENT_SYSTEM_ICONS,
+    paymentSystemHandler: tuiGetPaymentSystem,
 };
 
 export const TUI_INPUT_CARD_OPTIONS = tuiCreateToken(TUI_INPUT_CARD_DEFAULT_OPTIONS);

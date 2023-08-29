@@ -24,8 +24,8 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {
     customTemplate: PolymorpheusContent;
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 
     readonly exampleModule = import('./examples/import/import-module.md?raw');

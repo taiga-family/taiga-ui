@@ -8,8 +8,8 @@ import {tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
     selector: 'example-tui-progress-circle',
     templateUrl: './progress-circle.template.html',
     styleUrls: ['./progress-circle.style.less'],
-    providers: [tuiInputNumberOptionsProvider({min: 0})],
     changeDetection,
+    providers: [tuiInputNumberOptionsProvider({min: 0})],
 })
 export class ExampleProgressCircleComponent {
     value = 6;

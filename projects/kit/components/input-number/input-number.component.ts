@@ -360,13 +360,13 @@ export class TuiInputNumberComponent
     ): MaskitoOptions {
         const {plugins, ...options} = maskitoNumberOptionsGenerator({
             decimalSeparator,
-            thousandSeparator,
-            min,
+            decimalZeroPadding: decimalMode === 'always',
             max,
-            prefix,
+            min,
             postfix,
             precision: decimalMode === 'never' ? 0 : precision,
-            decimalZeroPadding: decimalMode === 'always',
+            prefix,
+            thousandSeparator,
         });
 
         return {

@@ -39,9 +39,6 @@ export type TuiSvgInterceptorHandler =
     | ((src: TuiSafeHtml) => TuiSafeHtml);
 
 export const TUI_SVG_DEFAULT_OPTIONS: TuiSvgOptions = {
-    iconsPlace: TUI_DEFAULT_ICONS_PLACE,
-    path: tuiIconsPathFactory(TUI_DEFAULT_ICONS_PLACE),
-    srcProcessor: identity,
     contentProcessor: tuiSvgLinearGradientProcessor,
     deprecated: src => {
         const oldIcon = src.replace(`Large`, ``).replace(`Outline`, ``);
@@ -51,6 +48,9 @@ export const TUI_SVG_DEFAULT_OPTIONS: TuiSvgOptions = {
             ? `${oldIcon}/(Large|Outline) is deprecated, use ${newIcon}/(Large|Outline) instead`
             : ``;
     },
+    iconsPlace: TUI_DEFAULT_ICONS_PLACE,
+    path: tuiIconsPathFactory(TUI_DEFAULT_ICONS_PLACE),
+    srcProcessor: identity,
 };
 
 /**
@@ -58,11 +58,11 @@ export const TUI_SVG_DEFAULT_OPTIONS: TuiSvgOptions = {
  */
 export const TUI_SVG_OPTIONS = new InjectionToken<TuiSvgOptions>(`[TUI_SVG_OPTIONS]`, {
     factory: () => ({
+        contentProcessor: inject(TUI_SVG_CONTENT_PROCESSOR),
+        deprecated: TUI_SVG_DEFAULT_OPTIONS.deprecated,
         iconsPlace: inject(TUI_ICONS_PLACE),
         path: inject(TUI_ICONS_PATH),
-        deprecated: TUI_SVG_DEFAULT_OPTIONS.deprecated,
         srcProcessor: inject(TUI_SVG_SRC_PROCESSOR),
-        contentProcessor: inject(TUI_SVG_CONTENT_PROCESSOR),
     }),
 });
 
@@ -98,6 +98,15 @@ export const tuiSvgOptionsProvider: (
         srcProcessor: TuiSvgOptions['srcProcessor'] | null,
         contentProcessor: TuiSvgOptions['contentProcessor'] | null,
     ): TuiSvgOptions => ({
+        contentProcessor:
+            options.contentProcessor ??
+            fallback?.contentProcessor ??
+            contentProcessor ??
+            TUI_SVG_DEFAULT_OPTIONS.contentProcessor,
+        deprecated:
+            options.deprecated ??
+            fallback?.deprecated ??
+            TUI_SVG_DEFAULT_OPTIONS.deprecated,
         iconsPlace:
             options.iconsPlace ??
             fallback?.iconsPlace ??
@@ -106,19 +115,10 @@ export const tuiSvgOptionsProvider: (
         path: tuiIsString(options.path)
             ? tuiIconsPathFactory(options.path)
             : options.path ?? fallback?.path ?? path ?? TUI_SVG_DEFAULT_OPTIONS.path,
-        deprecated:
-            options.deprecated ??
-            fallback?.deprecated ??
-            TUI_SVG_DEFAULT_OPTIONS.deprecated,
         srcProcessor:
             options.srcProcessor ??
             fallback?.srcProcessor ??
             srcProcessor ??
             TUI_SVG_DEFAULT_OPTIONS.srcProcessor,
-        contentProcessor:
-            options.contentProcessor ??
-            fallback?.contentProcessor ??
-            contentProcessor ??
-            TUI_SVG_DEFAULT_OPTIONS.contentProcessor,
     }),
 });

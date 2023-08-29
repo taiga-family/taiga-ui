@@ -25,14 +25,14 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
 
     readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
-        TypeScript: import('./examples/1/index.ts?raw'),
         LESS: import('./examples/1/index.less?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 
     readonly example2: TuiDocExample = {
         HTML: import('./examples/2/index.html?raw'),
-        TypeScript: import('./examples/2/index.ts?raw'),
         LESS: import('./examples/2/index.less?raw'),
+        TypeScript: import('./examples/2/index.ts?raw'),
     };
 
     readonly example3: TuiDocExample = {
@@ -41,19 +41,19 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
+        TypeScript: import('./examples/4/index.ts?raw'),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
+        TypeScript: import('./examples/5/index.ts?raw'),
     };
 
     readonly example6: TuiDocExample = {
-        TypeScript: import('./examples/6/index.ts?raw'),
         HTML: import('./examples/6/index.html?raw'),
+        TypeScript: import('./examples/6/index.ts?raw'),
     };
 
     readonly minVariants: readonly number[] = [-Infinity, -500, 5, 25];

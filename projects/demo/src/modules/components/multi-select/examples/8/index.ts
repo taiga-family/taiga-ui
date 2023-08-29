@@ -37,8 +37,8 @@ const ID_MATCHER_EMPLOYEE: TuiIdentityMatcher<Employee> = (
     encapsulation,
     providers: [
         tuiItemsHandlersProvider({
-            stringify: STRINGIFY_EMPLOYEE,
             identityMatcher: ID_MATCHER_EMPLOYEE,
+            stringify: STRINGIFY_EMPLOYEE,
         }),
     ],
 })

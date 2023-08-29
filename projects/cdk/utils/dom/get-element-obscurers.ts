@@ -19,7 +19,7 @@ export function tuiGetElementObscures(element: Element): readonly Element[] | nu
         return null;
     }
 
-    const {innerWidth, innerHeight} = ownerDocument.defaultView;
+    const {innerHeight, innerWidth} = ownerDocument.defaultView;
     const doc = tuiGetDocumentOrShadowRoot(element);
     const rect = element.getBoundingClientRect();
 

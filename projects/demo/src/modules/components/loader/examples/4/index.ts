@@ -11,9 +11,9 @@ import {tuiLoaderOptionsProvider} from '@taiga-ui/core';
     encapsulation,
     providers: [
         tuiLoaderOptionsProvider({
-            size: 'l',
             inheritColor: false,
             overlay: true,
+            size: 'l',
         }),
     ],
 })

@@ -45,17 +45,17 @@ export class TuiTileService implements OnDestroy {
 
     private getRect([left, top]: readonly [number, number]): ClientRect {
         return {
-            top: Number.isNaN(top) ? this.el.nativeElement.offsetTop : top,
-            left: Number.isNaN(left) ? this.el.nativeElement.offsetLeft : left,
-            width: this.el.nativeElement.clientWidth,
-            height: this.el.nativeElement.clientHeight,
-            right: NaN,
             bottom: NaN,
+            height: this.el.nativeElement.clientHeight,
+            left: Number.isNaN(left) ? this.el.nativeElement.offsetLeft : left,
+            right: NaN,
+            top: Number.isNaN(top) ? this.el.nativeElement.offsetTop : top,
+            width: this.el.nativeElement.clientWidth,
         };
     }
 
     private setRect({style}: HTMLElement, offset: readonly [number, number]): void {
-        const {top, left, width, height} = this.getRect(offset);
+        const {height, left, top, width} = this.getRect(offset);
 
         style.top = tuiPx(top);
         style.left = tuiPx(left);

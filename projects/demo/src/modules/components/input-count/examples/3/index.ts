@@ -11,14 +11,14 @@ import {tuiInputCountOptionsProvider} from '@taiga-ui/kit';
     encapsulation,
     providers: [
         tuiInputCountOptionsProvider({
-            icons: {
-                up: 'tuiIconChevronUp',
-                down: 'tuiIconChevronDown',
-            },
             appearance: 'secondary',
-            step: 10,
-            min: 10,
+            icons: {
+                down: 'tuiIconChevronDown',
+                up: 'tuiIconChevronUp',
+            },
             max: 100,
+            min: 10,
+            step: 10,
         }),
     ],
 })

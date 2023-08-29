@@ -77,8 +77,8 @@ describe(`tuiGetElementObscures`, () => {
                 .mockReturnValueOnce(others[3]);
 
             Object.defineProperty(global.document, `elementFromPoint`, {
-                writable: true,
                 value: mockElementFromPoint,
+                writable: true,
             });
 
             const result = tuiGetElementObscures(element);
@@ -164,8 +164,8 @@ describe(`tuiGetElementObscures`, () => {
                 .mockReturnValueOnce(others[3]);
 
             Object.defineProperty(global.document, `elementFromPoint`, {
-                writable: true,
                 value: mockElementFromPoint,
+                writable: true,
             });
 
             const result = tuiGetElementObscures(element);
@@ -180,8 +180,8 @@ describe(`tuiGetElementObscures`, () => {
 
         // reset global mock
         Object.defineProperty(global.document, `elementFromPoint`, {
-            writable: true,
             value: jest.fn().mockImplementation(() => null),
+            writable: true,
         });
     });
 });

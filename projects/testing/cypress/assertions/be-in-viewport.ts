@@ -16,7 +16,7 @@
 export const tuiBeInViewportAssertion: Chai.ChaiPlugin = _chai => {
     chai.Assertion.addMethod(`inViewport`, function () {
         const subject = this._obj;
-        const {top, bottom} = subject[0].getBoundingClientRect();
+        const {bottom, top} = subject[0].getBoundingClientRect();
 
         const viewportHeight: number =
             // @ts-ignore TS2339: Property 'state' does not exist on type 'cy & CyEventEmitter'.

@@ -3,9 +3,9 @@ describe(`InputFiles`, () => {
         it(`Wrong file type`, () => {
             cy.viewport(800, 500);
             cy.tuiVisit(`/components/input-files/API?accept=application/pdf`, {
-                skipExpectUrl: true,
-                hideNavigation: false,
                 hideLanguageSwitcher: false,
+                hideNavigation: false,
+                skipExpectUrl: true,
             });
 
             cy.get(`[tuiInputFiles]`).selectFile(`cypress/fixtures/stubs/web-api.svg`);
@@ -24,9 +24,9 @@ describe(`InputFiles`, () => {
         it(`File is too large`, () => {
             cy.viewport(850, 500);
             cy.tuiVisit(`/components/input-files/API?accept=image/*&maxFileSize=2000`, {
-                skipExpectUrl: true,
-                hideNavigation: false,
                 hideLanguageSwitcher: false,
+                hideNavigation: false,
+                skipExpectUrl: true,
             });
 
             cy.get(`[tuiInputFiles]`).selectFile(`cypress/fixtures/stubs/web-api.svg`);
@@ -47,9 +47,9 @@ describe(`InputFiles`, () => {
             cy.tuiVisit(
                 `/components/input-files/API?tuiMode=null&link=Select%20a%20file%20with%20a%20too%20long%20name.%20Long%20filename.%20Very%20long%20filename`,
                 {
-                    skipExpectUrl: true,
-                    hideNavigation: false,
                     hideLanguageSwitcher: false,
+                    hideNavigation: false,
+                    skipExpectUrl: true,
                 },
             );
 

@@ -44,75 +44,75 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
     readonly exampleForm = import('./examples/import/declare-form.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
+        TypeScript: import('./examples/2/index.ts?raw'),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
+        TypeScript: import('./examples/3/index.ts?raw'),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
+        TypeScript: import('./examples/4/index.ts?raw'),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
+        TypeScript: import('./examples/5/index.ts?raw'),
     };
 
     readonly example6: TuiDocExample = {
-        TypeScript: import('./examples/6/index.ts?raw'),
         HTML: import('./examples/6/index.html?raw'),
         LESS: import('./examples/6/index.less?raw'),
+        TypeScript: import('./examples/6/index.ts?raw'),
     };
 
     readonly example7: TuiDocExample = {
-        TypeScript: import('./examples/7/index.ts?raw'),
         HTML: import('./examples/7/index.html?raw'),
         LESS: import('./examples/7/index.less?raw'),
+        TypeScript: import('./examples/7/index.ts?raw'),
     };
 
     readonly example8: TuiDocExample = {
-        TypeScript: import('./examples/8/index.ts?raw'),
         HTML: import('./examples/8/index.html?raw'),
         LESS: import('./examples/8/index.less?raw'),
+        TypeScript: import('./examples/8/index.ts?raw'),
     };
 
     readonly example9: TuiDocExample = {
-        TypeScript: import('./examples/9/index.ts?raw'),
-        HTML: import('./examples/9/index.html?raw'),
-        LESS: import('./examples/9/index.less?raw'),
-        './account/my-account.component.ts': import(
-            './examples/9/account/my-account.component.ts?raw'
+        './account/my-account.component.html': import(
+            './examples/9/account/my-account.component.html?raw'
         ),
         './account/my-account.component.less': import(
             './examples/9/account/my-account.component.less?raw'
         ),
-        './account/my-account.component.html': import(
-            './examples/9/account/my-account.component.html?raw'
+        './account/my-account.component.ts': import(
+            './examples/9/account/my-account.component.ts?raw'
         ),
+        HTML: import('./examples/9/index.html?raw'),
+        LESS: import('./examples/9/index.less?raw'),
+        TypeScript: import('./examples/9/index.ts?raw'),
     };
 
     readonly example10: TuiDocExample = {
-        TypeScript: import('./examples/10/index.ts?raw'),
         HTML: import('./examples/10/index.html?raw'),
+        TypeScript: import('./examples/10/index.ts?raw'),
     };
 
     readonly example11: TuiDocExample = {
-        TypeScript: import('./examples/11/index.ts?raw'),
         HTML: import('./examples/11/index.html?raw'),
+        TypeScript: import('./examples/11/index.ts?raw'),
     };
 
     readonly items = [new Account('Ruble', 500), new Account('Dollar', 237)];

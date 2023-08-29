@@ -8,8 +8,8 @@ export function getNamedImportReferences(
     files = ALL_TS_FILES,
 ): Node[] {
     const importDeclarations = getImports(files, {
-        namedImports: [namedImport],
         moduleSpecifier,
+        namedImports: [namedImport],
     });
 
     const namedImports = importDeclarations.map(

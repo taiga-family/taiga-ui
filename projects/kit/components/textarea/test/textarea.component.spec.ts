@@ -56,20 +56,20 @@ describe(`Textarea`, () => {
     let component: TuiTextareaComponent;
 
     const testContext = {
-        get pageObject() {
-            return pageObject;
-        },
         get fixture() {
             return fixture;
-        },
-        get testComponent() {
-            return testComponent;
         },
         get inputPO() {
             return inputPO;
         },
+        get pageObject() {
+            return pageObject;
+        },
         get prefix() {
             return `tui-text-area__`;
+        },
+        get testComponent() {
+            return testComponent;
         },
     };
 

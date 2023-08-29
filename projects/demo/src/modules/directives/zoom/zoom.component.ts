@@ -13,7 +13,7 @@ export class ExampleTuiZoomComponent {
     readonly exampleComponent = import('./examples/import/component.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
     };
 }

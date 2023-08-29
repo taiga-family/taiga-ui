@@ -14,8 +14,8 @@ export class TuiMiscellaneousExample6 implements OnInit {
     userDetailsForm = new FormGroup({
         name: new FormControl('', Validators.required),
         address: new FormGroup({
-            street: new FormControl('', Validators.required),
             city: new FormControl('', Validators.required),
+            street: new FormControl('', Validators.required),
             zipCode: new FormControl('', Validators.required),
         }),
     });

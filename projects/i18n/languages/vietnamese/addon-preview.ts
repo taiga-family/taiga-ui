@@ -5,8 +5,8 @@ export const TUI_VIETNAMESE_LANGUAGE_ADDON_PREVIEW: TuiLanguagePreview = {
         rotate: `Xoay`,
     },
     zoomTexts: {
-        zoomOut: `Thu nhỏ`,
-        zoomIn: `Phóng to`,
         reset: `Đặt lại`,
+        zoomIn: `Phóng to`,
+        zoomOut: `Thu nhỏ`,
     },
 };

@@ -15,16 +15,16 @@ export class TuiCarouselExample5 {
     readonly itemsCount = 3;
 
     readonly items = [
-        {title: 'First', content: 'First content'},
-        {title: 'Title #2', content: 'Much more content here so the height is bigger'},
-        {title: 'Title III', content: 'Small item again'},
-        {title: 'Title four', content: 'Relatively ling content here'},
-        {title: 'Fifth item', content: 'Tiny text'},
+        {content: 'First content', title: 'First'},
+        {content: 'Much more content here so the height is bigger', title: 'Title #2'},
+        {content: 'Small item again', title: 'Title III'},
+        {content: 'Relatively ling content here', title: 'Title four'},
+        {content: 'Tiny text', title: 'Fifth item'},
         // eslint-disable-next-line @typescript-eslint/quotes
-        {title: '6', content: "That one's short too"},
-        {title: 'Lucky 7', content: 'This takes about two lines or so'},
-        {title: 'Eighth card', content: 'Almost the last one'},
-        {title: 'X', content: 'This is the longest item there is in this list'},
+        {content: "That one's short too", title: '6'},
+        {content: 'This takes about two lines or so', title: 'Lucky 7'},
+        {content: 'Almost the last one', title: 'Eighth card'},
+        {content: 'This is the longest item there is in this list', title: 'X'},
     ];
 
     get rounded(): number {

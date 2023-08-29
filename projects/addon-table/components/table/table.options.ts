@@ -16,16 +16,16 @@ export interface TuiTableOptions {
 }
 
 export const TUI_TABLE_DEFAULT_OPTIONS: TuiTableOptions = {
-    sticky: false,
-    resizable: false,
-    open: true,
-    size: `m`,
     direction: 1,
+    open: true,
+    resizable: false,
+    size: `m`,
     sortIcons: {
         asc: `tuiIconSortAscending`,
         desc: `tuiIconSortDescending`,
         off: `tuiIconSortOff`,
     },
+    sticky: false,
 };
 
 export const TUI_TABLE_OPTIONS = tuiCreateToken(TUI_TABLE_DEFAULT_OPTIONS);

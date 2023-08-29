@@ -17,7 +17,7 @@ describe(`tuiGetClosestFocusable`, () => {
         root.appendChild(divElement);
         document.body.appendChild(root);
 
-        expect(tuiGetClosestFocusable({initial: divElement, root, previous: true})).toBe(
+        expect(tuiGetClosestFocusable({initial: divElement, previous: true, root})).toBe(
             buttonElement,
         );
 

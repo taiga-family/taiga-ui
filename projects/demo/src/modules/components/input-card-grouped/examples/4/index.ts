@@ -12,7 +12,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 export class TuiInputCardGroupedExample4 {
     control = new FormControl({
         card: '',
-        expire: '',
         cvc: '***',
+        expire: '',
     });
 }

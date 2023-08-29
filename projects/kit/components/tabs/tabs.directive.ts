@@ -55,7 +55,7 @@ export class TuiTabsDirective implements AfterViewChecked {
     }
 
     ngAfterViewChecked(): void {
-        const {tabs, activeElement} = this;
+        const {activeElement, tabs} = this;
 
         tabs.forEach(nativeElement => {
             const active = nativeElement === activeElement;

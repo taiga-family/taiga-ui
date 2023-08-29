@@ -16,10 +16,10 @@ function defaultSizeOptionContent({$implicit}: TuiContextWithImplicit<number>): 
 }
 
 export const TUI_TABLE_PAGINATION_DEFAULT_OPTIONS: TuiTablePaginationOptions = {
-    sizeOptionContent: defaultSizeOptionContent,
-    showPages: true,
     items: [10, 20, 50, 100],
+    showPages: true,
     size: 10,
+    sizeOptionContent: defaultSizeOptionContent,
 };
 
 /**

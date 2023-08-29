@@ -48,11 +48,11 @@ export class TuiMobileCalendarExample1 {
         );
 
         this.dialog$ = dialogs.open(content, {
-            size: 'fullscreen',
             closeable: false,
             data: {
                 min: TuiDay.currentLocal(),
             },
+            size: 'fullscreen',
         });
     }
 
@@ -65,7 +65,7 @@ export class TuiMobileCalendarExample1 {
             return 'Choose a date';
         }
 
-        const {month, day, year} = value;
+        const {day, month, year} = value;
 
         return `${months[month]} ${day}, ${year}`;
     }

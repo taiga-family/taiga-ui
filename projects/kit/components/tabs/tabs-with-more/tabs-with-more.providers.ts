@@ -20,9 +20,9 @@ export const TUI_TABS_PROVIDERS: Provider[] = [
     {
         provide: MUTATION_OBSERVER_INIT,
         useValue: {
+            characterData: true,
             childList: true,
             subtree: true,
-            characterData: true,
         },
     },
     {

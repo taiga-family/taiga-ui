@@ -38,10 +38,10 @@ describe(`tuiControlValue`, () => {
             let actual = ``;
 
             tuiControlValue({} as AbstractControl).subscribe({
-                next: () => {},
                 error: (err: unknown) => {
                     actual = (err as Error).message;
                 },
+                next: () => {},
             });
 
             expect(actual).toBe(`Control does not have valueChanges`);
@@ -55,10 +55,10 @@ describe(`tuiControlValue`, () => {
             let actual = ``;
 
             tuiControlValue({} as AbstractControl).subscribe({
-                next: () => {},
                 error: (err: unknown) => {
                     actual = (err as Error).message;
                 },
+                next: () => {},
             });
 
             expect(actual).toBe(``);

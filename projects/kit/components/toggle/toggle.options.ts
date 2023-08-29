@@ -19,6 +19,10 @@ export interface TuiToggleOptions {
 
 /** Default values for the toggle options. */
 export const TUI_TOGGLE_DEFAULT_OPTIONS: TuiToggleOptions = {
+    appearances: {
+        checked: TuiAppearance.Primary,
+        unchecked: TuiAppearance.Secondary,
+    },
     icons: {
         toggleOff({$implicit}: TuiContextWithImplicit<TuiSizeL>): string {
             return $implicit === `m` ? `tuiIconToggleOff` : `tuiIconToggleOffLarge`;
@@ -27,12 +31,8 @@ export const TUI_TOGGLE_DEFAULT_OPTIONS: TuiToggleOptions = {
             return $implicit === `m` ? `tuiIconToggleOn` : `tuiIconToggleOnLarge`;
         },
     },
-    appearances: {
-        checked: TuiAppearance.Primary,
-        unchecked: TuiAppearance.Secondary,
-    },
-    singleColor: false,
     showIcons: false,
+    singleColor: false,
     size: `m`,
 };
 

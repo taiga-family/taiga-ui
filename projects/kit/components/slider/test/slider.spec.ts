@@ -31,13 +31,13 @@ describe(`Slider`, () => {
         `,
     })
     class TestComponent {
-        @ViewChild(`controller`, {static: true, read: ElementRef})
+        @ViewChild(`controller`, {read: ElementRef, static: true})
         formControllerElementRef!: ElementRef<HTMLInputElement>;
 
         @ViewChild(`controller`, {static: true})
         formControllerComponentRef!: TuiSliderComponent;
 
-        @ViewChild(`model`, {static: true, read: ElementRef})
+        @ViewChild(`model`, {read: ElementRef, static: true})
         ngModelElementRef!: ElementRef<HTMLInputElement>;
 
         @ViewChild(`model`, {static: true})

@@ -93,7 +93,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
     }
 
     getItemState(item: TuiMonth): TuiInteractiveState | null {
-        const {disabledItemHandlerWithMinMax, pressedItem, hoveredItem} = this;
+        const {disabledItemHandlerWithMinMax, hoveredItem, pressedItem} = this;
 
         if (disabledItemHandlerWithMinMax(item)) {
             return TuiInteractiveState.Disabled;
@@ -111,7 +111,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
     }
 
     getItemRange(item: TuiMonth): TuiRangeState | null {
-        const {value, hoveredItem} = this;
+        const {hoveredItem, value} = this;
 
         if (value === null) {
             return null;
@@ -163,7 +163,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
     }
 
     isItemInsideRange(month: TuiMonth): boolean {
-        const {value, hoveredItem} = this;
+        const {hoveredItem, value} = this;
 
         if (value === null || value instanceof TuiMonth) {
             return false;

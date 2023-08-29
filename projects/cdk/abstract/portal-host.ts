@@ -40,7 +40,7 @@ export abstract class AbstractTuiPortalHostComponent {
         const resolver = parent.get(ComponentFactoryResolver);
         const factory = resolver.resolveComponentFactory(component.component);
         const providers = [{provide: AbstractTuiPortalHostComponent, useValue: this}];
-        const injector = Injector.create({parent, providers});
+        const injector = Injector.create({providers, parent});
         const ref = this.vcr.createComponent(factory, undefined, injector);
 
         ref.changeDetectorRef.detectChanges();

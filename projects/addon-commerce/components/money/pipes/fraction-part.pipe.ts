@@ -11,10 +11,10 @@ export class TuiFractionPartPipe implements PipeTransform {
 
     transform(value: number, decimal: TuiDecimal, precision: number): string {
         return tuiFormatFractionPart({
-            value,
             decimal,
-            precision,
             numberFormat: this.numberFormat,
+            precision,
+            value,
         });
     }
 }

@@ -13,12 +13,12 @@ export class ExampleTuiMapperComponent {
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/component.ts?raw'),
         HTML: import('./examples/1/template.html?raw'),
+        TypeScript: import('./examples/1/component.ts?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/component.ts?raw'),
         HTML: import('./examples/2/template.html?raw'),
+        TypeScript: import('./examples/2/component.ts?raw'),
     };
 }

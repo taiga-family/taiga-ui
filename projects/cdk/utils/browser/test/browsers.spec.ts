@@ -48,8 +48,8 @@ describe(`Browsers`, () => {
                     ownerDocument: {
                         defaultView: {
                             navigator: {
-                                vendor: `Apple Computer, Inc.`,
                                 userAgent: `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15`,
+                                vendor: `Apple Computer, Inc.`,
                             },
                         },
                     },
@@ -61,8 +61,8 @@ describe(`Browsers`, () => {
                     ownerDocument: {
                         defaultView: {
                             navigator: {
-                                vendor: `Google Inc.`,
                                 userAgent: `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36`,
+                                vendor: `Google Inc.`,
                             },
                         },
                     },

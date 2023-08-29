@@ -19,7 +19,7 @@ export class PayService {
     getPrimaryCard(): Observable<FetchedCards> {
         return timer(this.getRandomDelay()).pipe(
             map(() => MOCK_CARDS),
-            map((cards: AccountCard[]) => ({primary: cards[0], cards})),
+            map((cards: AccountCard[]) => ({cards, primary: cards[0]})),
         );
     }
 

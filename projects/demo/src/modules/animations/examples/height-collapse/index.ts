@@ -20,6 +20,6 @@ export class TuiHeightCollapseExample {
 
     @tuiPure
     getAnimation(duration: number): TuiDurationOptions {
-        return {value: '', params: {duration}};
+        return {params: {duration}, value: ''};
     }
 }
