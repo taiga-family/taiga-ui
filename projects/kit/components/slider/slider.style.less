@@ -9,8 +9,8 @@
 @track-height: 0.125rem;
 @ticks-thickness: 0.25rem;
 
-@track-color: var(--tui-slider-track-color);
-@thumb-color: var(--tui-slider-thumb-color);
+@track-color: var(--tui-slider-track-color, var(--tui-base-03));
+@thumb-color: var(--tui-slider-thumb-color, currentColor);
 
 .customize-track(@progress-filling, @thumb-width) {
     height: @track-height;
@@ -66,11 +66,11 @@
         cursor: ew-resize;
 
         &:hover {
-            background: var(--tui-slider-thumb-hover-color);
+            background: var(--tui-slider-thumb-hover-color, var(--tui-primary-hover));
         }
 
         &:active {
-            background: var(--tui-slider-thumb-active-color);
+            background: var(--tui-slider-thumb-active-color, var(--tui-primary-active));
         }
     }
 
