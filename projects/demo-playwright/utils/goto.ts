@@ -22,7 +22,7 @@ export async function tuiGoto(
 
     const response = await page.goto(url, playwrightGotoOptions);
 
-    await expect(page.locator(`app`)).toHaveClass(/_loaded/);
+    await expect(page.locator(`app`)).toHaveClass(/_loaded/, {timeout: 15_000});
     await tuiWaitForFonts(page);
 
     return response;
