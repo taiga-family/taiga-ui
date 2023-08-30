@@ -31,7 +31,13 @@ export class ExampleTuiNotificationComponent {
 
     hasIcon = true;
 
-    readonly statusVariants: TuiNotificationT[] = ['info', 'error', 'warning', 'success'];
+    readonly statusVariants: TuiNotificationT[] = [
+        'info',
+        'error',
+        'warning',
+        'success',
+        'neutral',
+    ];
 
     status = this.statusVariants[0];
 }

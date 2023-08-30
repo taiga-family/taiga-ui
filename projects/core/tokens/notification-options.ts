@@ -14,6 +14,7 @@ export const STATUS_ICON = {
     success: `tuiIconCheckCircle`,
     error: `tuiIconXCircle`,
     warning: `tuiIconAlertCircle`,
+    neutral: `tuiIconInfo`,
 } as const;
 
 /** Default values for the notification options. */
