@@ -122,7 +122,7 @@
         "cspell": "7.2.0",
         "cy2": "4.0.6",
         "cypress": "12.17.4",
-        "cypress-real-events": "1.10.0",
+        "cypress-real-events": "1.10.1",
         "eslint": "8.48.0",
         "find-in-files": "0.5.0",
         "http-server": "0.13.0",
