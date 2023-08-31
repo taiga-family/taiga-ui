@@ -1,3 +1,10 @@
+/* eslint-disable */
+// @ts-nocheck It is used in CI only!
+/**
+ * Canvas has difficult installation guide for ARM CPU, including an Apple M1 or M2
+ * (not friendly for our external contributors).
+ * https://github.com/Automattic/node-canvas/issues/1511
+ */
 import {createCanvas, loadImage} from 'canvas';
 import {readdirSync, writeFileSync} from 'fs';
 
