@@ -8,9 +8,11 @@ import {TuiButtonModule, TuiLabelModule, TuiSvgModule} from '@taiga-ui/core';
 import {TuiSliderModule} from '@taiga-ui/kit';
 
 import {ExampleAnimationsComponent} from './animations.component';
+import {TuiDropdownExample} from './examples/dropdown';
 import {TuiFadeInExample} from './examples/fade-in';
 import {TuiHeightCollapseExample} from './examples/height-collapse';
 import {TuiScaleInExample} from './examples/scale-in';
+import {TuiSlideInExample} from './examples/slide-in';
 import {TuiWidthCollapseExample} from './examples/width-collapse';
 
 @NgModule({
@@ -31,6 +33,8 @@ import {TuiWidthCollapseExample} from './examples/width-collapse';
         TuiWidthCollapseExample,
         TuiFadeInExample,
         TuiScaleInExample,
+        TuiSlideInExample,
+        TuiDropdownExample,
     ],
 })
 export class ExampleAnimationsModule {}

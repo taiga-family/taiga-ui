@@ -1,0 +1,16 @@
+<button
+    appearance="outline"
+    tuiButton
+    type="button"
+    (click)="isOpen = !isOpen"
+>
+    Toggle Dropdown
+</button>
+
+<div
+    *ngIf="isOpen"
+    class="dropdown"
+    [@tuiDropdownAnimation]="getAnimation(speed)"
+>
+    This is a dropdown menu!
+</div>

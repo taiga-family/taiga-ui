@@ -1,0 +1,64 @@
+<div class="button-group">
+    <div class="beaver-wrapper">
+        <button
+            *ngIf="!isLeft"
+            type="button"
+            class="beaver"
+            [@tuiSlideInLeft]="getAnimation(speed)"
+            (click)="isLeft = !isLeft"
+        >
+            <span class="nose"></span>
+            <span class="teeth-left"></span>
+            <span class="teeth-right"></span>
+        </button>
+    </div>
+    <div class="beaver-wrapper">
+        <button
+            *ngIf="!isBottom"
+            type="button"
+            class="beaver"
+            [@tuiSlideInBottom]="getAnimation(speed)"
+            (click)="isBottom = !isBottom"
+        >
+            <span class="nose"></span>
+            <span class="teeth-left"></span>
+            <span class="teeth-right"></span>
+        </button>
+    </div>
+    <div class="beaver-wrapper">
+        <button
+            *ngIf="!isRight"
+            type="button"
+            class="beaver"
+            [@tuiSlideInRight]="getAnimation(speed)"
+            (click)="isRight = !isRight"
+        >
+            <span class="nose"></span>
+            <span class="teeth-left"></span>
+            <span class="teeth-right"></span>
+        </button>
+    </div>
+    <div class="beaver-wrapper">
+        <button
+            *ngIf="!isTop"
+            type="button"
+            class="beaver"
+            [@tuiSlideInTop]="getAnimation(speed)"
+            (click)="isTop = !isTop"
+        >
+            <span class="nose"></span>
+            <span class="teeth-left"></span>
+            <span class="teeth-right"></span>
+        </button>
+    </div>
+</div>
+
+<button
+    appearance="outline"
+    tuiButton
+    type="button"
+    class="button"
+    (click)="reset()"
+>
+    Reset
+</button>
