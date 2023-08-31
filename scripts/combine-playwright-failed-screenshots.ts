@@ -5,11 +5,13 @@
  * (not friendly for our external contributors).
  * https://github.com/Automattic/node-canvas/issues/1511
  */
-import {createCanvas, loadImage} from 'canvas';
+import {createCanvas, loadImage, version} from 'canvas';
 import {readdirSync, writeFileSync} from 'fs';
 
 const FAILED_SCREENSHOTS_PATH = `projects/demo-playwright/tests-results`;
 const DIFF_IMAGE_POSTFIX = `-diff.png`;
+
+console.info(`canvas:`, version);
 
 (async function combinePlaywrightFailedScreenshots(
     rootPath = FAILED_SCREENSHOTS_PATH,
@@ -23,7 +25,7 @@ const DIFF_IMAGE_POSTFIX = `-diff.png`;
     }
 
     const imagesPaths: string[] = filesOrDirs
-        .filter(x => x.isFile())
+        .filter(x => x.isFile() && x.name.endsWith(`.png`))
         .map(({name}) => `${rootPath}/${name}`);
     const diffImage = imagesPaths.find(path => path.endsWith(DIFF_IMAGE_POSTFIX));
 
