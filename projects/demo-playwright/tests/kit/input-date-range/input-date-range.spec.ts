@@ -1,7 +1,7 @@
+/* eslint-disable no-irregular-whitespace */
 import {expect, Locator, test} from '@playwright/test';
 
-import {TuiDocumentationPagePO, tuiGoto} from '../../../utils';
-import {TuiInputDateRangePO} from '../../../utils/page-objects/input-date-range.po';
+import {TuiDocumentationPagePO, tuiGoto, TuiInputDateRangePO} from '../../../utils';
 
 test.describe(`InputDateRange`, () => {
     let example!: Locator;
@@ -14,9 +14,7 @@ test.describe(`InputDateRange`, () => {
     test.beforeEach(async ({page}) => {
         await tuiGoto(page, `components/input-date-range`);
 
-        const {apiPageExample} = new TuiDocumentationPagePO(page);
-
-        example = apiPageExample;
+        example = new TuiDocumentationPagePO(page).apiPageExample;
 
         inputDateRange = new TuiInputDateRangePO(example.locator(`tui-input-date-range`));
     });
@@ -28,7 +26,7 @@ test.describe(`InputDateRange`, () => {
             }) => {
                 await tuiGoto(
                     page,
-                    `components/input-date-range/API?tuiMode=null&tuiTextfieldSize=${size}`,
+                    `components/input-date-range/API?tuiTextfieldSize=${size}`,
                 );
 
                 await inputDateRange.textfield.click();
@@ -94,7 +92,6 @@ test.describe(`InputDateRange`, () => {
 
                 await inputDateRange.textfield.type(`21052023-22052023`);
 
-                // eslint-disable-next-line no-irregular-whitespace
                 await expect(inputDateRange.textfield).toHaveValue(
                     `21.05.2023 – 23.05.2023`,
                 );
@@ -105,7 +102,6 @@ test.describe(`InputDateRange`, () => {
 
                 await inputDateRange.textfield.type(`20052023-29052023`);
 
-                // eslint-disable-next-line no-irregular-whitespace
                 await expect(inputDateRange.textfield).toHaveValue(
                     `20.05.2023 – 24.05.2023`,
                 );
