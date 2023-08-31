@@ -1,6 +1,5 @@
+import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
-
-import {TuiDocumentationPagePO, tuiGoto} from '../../../utils';
 
 test.describe(`TuiPrimitiveTextfield`, () => {
     test.use({viewport: {width: 400, height: 350}});

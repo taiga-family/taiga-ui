@@ -1,6 +1,5 @@
+import {tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
-
-import {tuiGoto} from '../utils';
 
 test(`has title`, async ({page}) => {
     await tuiGoto(page, `/getting-started`);
