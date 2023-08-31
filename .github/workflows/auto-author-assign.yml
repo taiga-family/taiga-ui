@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.6.0
-      - uses: taiga-family/ci/actions/variables@1.11.1
+      - uses: taiga-family/ci/actions/variables@1.12.0
 
       - name: Auto assign
         if: env.IS_OWNER_MODE == 'true'
