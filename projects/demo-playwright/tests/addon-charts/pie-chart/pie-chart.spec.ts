@@ -14,7 +14,10 @@ test.describe(`PieChart`, () => {
 
         for (const [i, segment] of pieChartSegments.entries()) {
             await segment.hover();
+
+            await expect(page.locator(`tui-hint`)).toHaveCount(1);
             await expect(page.locator(`tui-hint`)).toBeAttached();
+
             await expect(example).toHaveScreenshot(
                 `01-pie-chart-with-label--hover-${i + 1}.png`,
             );
