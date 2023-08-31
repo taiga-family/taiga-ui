@@ -1,6 +1,6 @@
+import {tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-import {tuiGoto} from '../../utils';
 import {tuiIsFlakyExample} from './is-flaky-examples';
 
 test.describe(`Demo`, () => {
