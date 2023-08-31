@@ -44,7 +44,8 @@
         "Userpic",
         "Odnoklassniki",
         "Tiktok",
-        "Tcrm"
+        "Tcrm",
+        "nocheck"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
