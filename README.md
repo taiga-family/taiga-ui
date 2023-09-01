@@ -8,6 +8,7 @@
 [![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white)](https://discord.gg/Us8d8JVaTg)
 [![angular-open-source-starter](https://img.shields.io/badge/made%20with-angular--open--source--starter-d81676?logo=angular)](https://github.com/taiga-family/angular-open-source-starter)
 [![Renovate](https://img.shields.io/badge/renovate-configured-green?logo=renovatebot)](https://docs.renovatebot.com/)
+
 [Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) • [Core team](#core-team) •
 [Figma](https://www.figma.com/community/file/1220308188005380608)
 
