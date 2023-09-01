@@ -17,14 +17,14 @@ import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
  */
 export function tuiSvgLinearGradientProcessor(
     svg: TuiSafeHtml,
-    salt?: number | string,
+    salt: number | string = makeRandomSalt(),
+    fallback: string = `rgba(0, 0, 0, 0.7)`,
 ): TuiSafeHtml {
     if (tuiIsString(svg)) {
         const uniqueIds = extractLinearGradientIdsFromSvg(svg);
-
-        return uniqueIds.reduce((newSvg, previousId) => {
+        const rawSvg = uniqueIds.reduce((newSvg, previousId) => {
             const escapedId = escapeRegExp(previousId);
-            const newId = `${previousId}_${salt || makeRandomSalt()}`;
+            const newId = `id_${salt}_${previousId}`;
 
             return newSvg
                 .replace(new RegExp(`"${escapedId}"`, `g`), `"${newId}"`)
@@ -33,6 +33,8 @@ export function tuiSvgLinearGradientProcessor(
                 .replace(new RegExp(`url\\("#${escapedId}"\\)`, `g`), `url("#${newId}")`)
                 .replace(new RegExp(`url\\(#${escapedId}\\)`, `g`), `url(#${newId})`);
         }, svg);
+
+        return setFallbackForGradientFill(rawSvg, fallback);
     }
 
     return svg;
@@ -52,4 +54,19 @@ function extractLinearGradientIdsFromSvg(svg: string): string[] {
     );
 
     return Array.from(new Set(ids));
+}
+
+function setFallbackForGradientFill(svg: string, fallback: string): string {
+    const tree = new DOMParser().parseFromString(svg, `text/html`);
+
+    tree.body
+        .querySelectorAll(`[fill^=url]`) // only gradient
+        .forEach(element =>
+            element.setAttribute(
+                `fill`,
+                `${element.getAttribute(`fill`)} ${fallback}`.trim(),
+            ),
+        );
+
+    return tree.body.innerHTML.trim();
 }
