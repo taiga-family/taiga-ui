@@ -8,7 +8,7 @@ test.describe(`InputDateRange`, () => {
     let inputDateRange!: TuiInputDateRangePO;
 
     test.use({
-        viewport: {width: 650, height: 500},
+        viewport: {width: 650, height: 650},
     });
 
     test.beforeEach(async ({page}) => {
@@ -30,37 +30,58 @@ test.describe(`InputDateRange`, () => {
                 );
 
                 await inputDateRange.textfield.click();
-                await expect(example).toHaveScreenshot(
-                    `input-date-range-size-${size}-empty.png`,
+                await expect(inputDateRange.textfield).toHaveScreenshot(
+                    `01-textfield-size-${size}-empty.png`,
+                );
+                await expect(inputDateRange.calendar).toHaveScreenshot(
+                    `01-calendar-size-${size}-empty.png`,
                 );
 
                 await inputDateRange.textfield.type(`01`);
-                await expect(example).toHaveScreenshot(
-                    `input-date-range-size-${size}-set-day.png`,
+                await expect(inputDateRange.textfield).toHaveScreenshot(
+                    `02-textfield-size-${size}-set-day.png`,
+                );
+                await expect(inputDateRange.calendar).toHaveScreenshot(
+                    `02-calendar-size-${size}-set-day.png`,
                 );
 
                 await inputDateRange.textfield.type(`.06.1994`);
-                await expect(example).toHaveScreenshot(
-                    `input-date-range-size-${size}-set-from-date.png`,
+                await expect(inputDateRange.textfield).toHaveScreenshot(
+                    `03-textfield-size-${size}-set-from-date.png`,
+                );
+                await expect(inputDateRange.calendar).toHaveScreenshot(
+                    `03-calendar-size-${size}-set-from-date.png`,
                 );
 
                 await inputDateRange.textfield.type(`01.01.2022`);
-                await expect(example).toHaveScreenshot(
-                    `input-date-range-size-${size}-set-to-date.png`,
+                await expect(inputDateRange.textfield).toHaveScreenshot(
+                    `04-textfield-size-${size}-set-to-date.png`,
+                );
+                await expect(inputDateRange.calendar).toHaveScreenshot(
+                    `04-calendar-size-${size}-set-to-date.png`,
                 );
             });
         }
 
         test(`Maximum month less than current month`, async ({page}) => {
             await tuiGoto(page, `components/input-date-range/API?min$=3`);
+            await inputDateRange.textfield.click();
 
-            await expect(example).toHaveScreenshot(`input-date-range-maximum-month.png`);
+            await expect(inputDateRange.textfield).toHaveScreenshot(
+                `05-textfield-maximum-month.png`,
+            );
+            await expect(inputDateRange.calendar).toHaveScreenshot(
+                `05-calendar-maximum-month.png`,
+            );
         });
 
         test(`Minimum month more than current month`, async ({page}) => {
             await tuiGoto(page, `components/input-date-range/API?min$=3`);
+            await inputDateRange.textfield.click();
 
-            await expect(example).toHaveScreenshot(`input-date-range-minimum-month.png`);
+            await expect(page).toHaveScreenshot(`06-input-date-range-minimum-month.png`, {
+                mask: [page.locator(`tui-doc-page header`)],
+            });
         });
 
         test.describe(`prevents changes if you enter an invalid date`, () => {
