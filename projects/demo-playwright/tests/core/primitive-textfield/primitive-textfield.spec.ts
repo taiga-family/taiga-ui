@@ -17,7 +17,7 @@ test.describe(`TuiPrimitiveTextfield`, () => {
 
         await expect(page.locator(`tui-hint`)).toBeAttached();
         await expect(page).toHaveScreenshot(`01-hint.png`, {
-            mask: [page.locator(`[tuidocheader]`), page.locator(`tui-doc-page header`)],
+            mask: [page.locator(`tui-doc-page header`)],
         });
     });
 
