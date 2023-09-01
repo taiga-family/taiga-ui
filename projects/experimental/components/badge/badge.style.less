@@ -364,6 +364,14 @@
         :host([data-size='s']):not(._empty-value) & {
             margin-left: 0.0625rem;
         }
+
+        :host([data-padding='m']) & {
+            padding-left: 0.25rem;
+
+            & ~ .t-fade {
+                padding-right: 0.25rem;
+            }
+        }
     }
 
     :host[data-appearance='error'] &,

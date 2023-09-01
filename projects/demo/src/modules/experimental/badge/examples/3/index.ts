@@ -6,6 +6,7 @@ import {TUI_PLATFORM} from '@taiga-ui/cdk';
 @Component({
     selector: 'tui-badge-example-3',
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
     providers: [{provide: TUI_PLATFORM, useValue: 'ios'}],
