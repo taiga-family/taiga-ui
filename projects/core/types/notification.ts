@@ -1,1 +1,1 @@
-export type TuiNotificationT = 'error' | 'info' | 'success' | 'warning';
+export type TuiNotificationT = 'error' | 'info' | 'neutral' | 'success' | 'warning';
