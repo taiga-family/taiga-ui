@@ -18,9 +18,6 @@
         "stylelint": {
             "inputs": ["default", "production", "^production", "{workspaceRoot}/stylelint.config.js"]
         },
-        "lint": {
-            "inputs": ["default", "production", "^production", "{workspaceRoot}/.eslintrc.js"]
-        },
         "build": {
             "inputs": ["default", "production", "^production"]
         },

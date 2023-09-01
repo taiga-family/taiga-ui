@@ -5,12 +5,6 @@
     "projectType": "library",
     "prefix": "tui",
     "targets": {
-        "lint": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "eslint --no-error-on-unmatched-pattern \"**/projects/testing/**/*\""
-            }
-        },
         "stylelint": {
             "executor": "nx:run-commands",
             "options": {

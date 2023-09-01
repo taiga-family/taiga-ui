@@ -38,7 +38,7 @@
         "test:e2e": "nx e2e-ui demo-cypress",
         "*** Workflow ***": "",
         "stylelint": "nx run-many --target stylelint --all --output-style=stream --parallel=1",
-        "lint": "nx run-many --target lint --all --output-style=stream --parallel=1",
+        "lint": "eslint .",
         "cspell": "cspell --relative --dot --gitignore .",
         "prettier": "prettier '**/*.{svg,yml,js,ts,html,md,less,scss,css,json}' --cache node_modules/.cache/prettier",
         "typecheck": "tsc --noEmit --strict --incremental false --tsBuildInfoFile null --project tsconfig.spec.json",

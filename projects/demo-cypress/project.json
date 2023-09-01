@@ -5,12 +5,6 @@
     "projectType": "application",
     "prefix": "app",
     "targets": {
-        "lint": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "eslint --no-error-on-unmatched-pattern \"**/projects/demo-cypress/**/*\""
-            }
-        },
         "stylelint": {
             "executor": "nx:run-commands",
             "options": {
