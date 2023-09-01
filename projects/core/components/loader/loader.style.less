@@ -146,6 +146,13 @@
     overflow: hidden;
     transform: scale(1, -1);
     animation: tuiLoaderRotate 3s linear infinite;
+
+    /* Safari Only */
+    @supports (-webkit-hyphens: none) {
+        & {
+            overflow: visible;
+        }
+    }
 }
 
 .t-circle {
