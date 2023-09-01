@@ -9,6 +9,7 @@
         >
             Type an email
             <input
+                autocomplete="email"
                 tuiTextfield
                 type="email"
             />
@@ -22,6 +23,22 @@
         >
             Type an email
             <input
+                autocomplete="email"
+                tuiTextfield
+                type="email"
+            />
+        </tui-input>
+    </p>
+    <p>
+        <tui-input
+            formControlName="testValue"
+            [tuiTextfieldCleaner]="true"
+            [tuiTextfieldLabelOutside]="true"
+        >
+            Type an email
+            <input
+                autocomplete="email"
+                placeholder="mail@mail.ru"
                 tuiTextfield
                 type="email"
             />
@@ -33,9 +50,10 @@
             tuiHintContent="It will be used for sending documents"
             [tuiTextfieldCleaner]="true"
         >
-            Type an email&nbsp;
+            Type an email
             <span class="tui-required"></span>
             <input
+                autocomplete="email"
                 placeholder="mail@mail.ru"
                 tuiTextfield
                 type="email"
