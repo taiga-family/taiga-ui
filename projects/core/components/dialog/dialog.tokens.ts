@@ -6,11 +6,18 @@ import {EMPTY, Observable} from 'rxjs';
 type TuiDialogDefaultOptions = Omit<TuiDialogOptions<unknown>, 'data'>;
 
 export const TUI_DIALOG_DEFAULT_OPTIONS: TuiDialogDefaultOptions = {
+    border: {
+        radius: `1rem`,
+        width: `2.5rem`,
+        style: `solid`,
+        color: `transparent`,
+    },
     size: `m`,
     required: false,
     closeable: true,
     dismissible: true,
     label: ``,
+    position: `auto`,
     header: ``,
 };
 

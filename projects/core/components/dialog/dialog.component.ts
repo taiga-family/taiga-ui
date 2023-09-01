@@ -38,6 +38,13 @@ const REQUIRED_ERROR = new Error('Required dialog was dismissed');
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [TuiDestroyService, TuiDialogCloseService],
     animations: [tuiSlideInTop, tuiFadeIn],
+    host: {
+        '[style.margin]': 'context.position',
+        '[style.border-radius]': 'context.border.radius',
+        '[style.border-width]': 'context.border.width',
+        '[style.border-style]': 'context.border.style',
+        '[style.border-color]': 'context.border.color',
+    },
 })
 export class TuiDialogComponent<O, I> {
     private readonly animation = {

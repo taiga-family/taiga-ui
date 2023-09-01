@@ -15,11 +15,18 @@ import {Observable} from 'rxjs';
  * data - arbitrary data for dialog (undefined by default)
  */
 export interface TuiDialogOptions<I> {
+    readonly border: {
+        color: string;
+        radius: string;
+        style: string;
+        width: string;
+    };
     readonly closeable: Observable<boolean> | boolean;
     readonly data: I;
     readonly dismissible: Observable<boolean> | boolean;
     readonly header: PolymorpheusContent<TuiDialog<TuiDialogOptions<I>, any>>;
     readonly label: string;
+    readonly position: string;
     readonly required: boolean;
     readonly size: TuiDialogSize;
 }

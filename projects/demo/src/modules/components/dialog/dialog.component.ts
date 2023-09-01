@@ -141,6 +141,16 @@ export class ExampleTuiDialogComponent {
 
     label = '';
 
+    position = 'auto';
+
+    borderWidth = '2.5rem';
+
+    borderRadius = '1rem';
+
+    borderStyle = 'solid';
+
+    borderColor = 'transparent';
+
     constructor(
         @Inject(TuiAlertService)
         private readonly alerts: TuiAlertService,
@@ -149,10 +159,22 @@ export class ExampleTuiDialogComponent {
     ) {}
 
     showDialog(content: TemplateRef<TuiDialogContext<number, number>>): void {
-        const {data, label, required, closeable, dismissible, size} = this;
-
         this.dialogs
-            .open(content, {data, label, required, closeable, dismissible, size})
+            .open(content, {
+                data: this.data,
+                label: this.label,
+                required: this.required,
+                closeable: this.closeable,
+                dismissible: this.dismissible,
+                size: this.size,
+                position: this.position,
+                border: {
+                    width: this.borderWidth,
+                    radius: this.borderRadius,
+                    style: this.borderStyle,
+                    color: this.borderColor,
+                },
+            })
             .pipe(switchMap(response => this.alerts.open(String(response))))
             .subscribe();
     }
