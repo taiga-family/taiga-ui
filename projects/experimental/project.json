@@ -6,12 +6,6 @@
     "prefix": "tui",
     "implicitDependencies": ["!testing"],
     "targets": {
-        "lint": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "eslint --no-error-on-unmatched-pattern \"**/projects/experimental/**/*\""
-            }
-        },
         "stylelint": {
             "executor": "nx:run-commands",
             "options": {
