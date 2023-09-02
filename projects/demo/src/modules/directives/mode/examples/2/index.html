@@ -1,0 +1,27 @@
+<div
+    tuiMode="onLight"
+    class="container"
+>
+    <button
+        tuiButton
+        (click)="openPrompt()"
+    >
+        Open prompt dialog
+    </button>
+
+    <button
+        tuiButton
+        (click)="openComponent()"
+    >
+        Open component dialog
+    </button>
+
+    <button
+        routerLink="lazy"
+        tuiButton
+    >
+        Open lazy routable dialog
+    </button>
+
+    <router-outlet></router-outlet>
+</div>
