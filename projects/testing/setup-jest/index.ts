@@ -33,12 +33,10 @@ global.URL.revokeObjectURL = jest.fn();
 Object.defineProperty(global.window, `CSS`, {value: null});
 
 Object.defineProperty(global.window, `getComputedStyle`, {
-    value: () => {
-        return {
-            display: `none`,
-            appearance: [`-webkit-appearance`],
-        };
-    },
+    value: () => ({
+        display: `none`,
+        appearance: [`-webkit-appearance`],
+    }),
 });
 
 Object.defineProperty(global.document, `doctype`, {
@@ -46,12 +44,10 @@ Object.defineProperty(global.document, `doctype`, {
 });
 
 Object.defineProperty(global.document.body.style, `transform`, {
-    value: () => {
-        return {
-            enumerable: true,
-            configurable: true,
-        };
-    },
+    value: () => ({
+        enumerable: true,
+        configurable: true,
+    }),
 });
 
 Object.defineProperty(global.window, `matchMedia`, {
@@ -90,13 +86,11 @@ Object.defineProperty(global.document, `createRange`, {
             toJSON: () => {},
         });
 
-        range.getClientRects = () => {
-            return {
-                item: () => null,
-                length: 0,
-                [Symbol.iterator]: jest.fn(),
-            };
-        };
+        range.getClientRects = () => ({
+            item: () => null,
+            length: 0,
+            [Symbol.iterator]: jest.fn(),
+        });
 
         return range;
     },
@@ -106,9 +100,7 @@ Object.defineProperty(window, `scrollTo`, jest.fn());
 
 Object.defineProperty(global.window, `getComputedStyle`, {
     value: () => ({
-        getPropertyValue: (_prop: string) => {
-            return ``;
-        },
+        getPropertyValue: (_prop: string) => ``,
     }),
 });
 

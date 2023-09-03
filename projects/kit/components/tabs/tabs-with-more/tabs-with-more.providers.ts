@@ -42,14 +42,13 @@ export const TUI_TABS_PROVIDERS: Provider[] = [
             {body}: Document,
             {nativeElement}: ElementRef<Node>,
             cdr: ChangeDetectorRef,
-        ): Observable<unknown> => {
-            return merge(resize$, mutations$.pipe(tap(() => cdr.detectChanges()))).pipe(
+        ): Observable<unknown> =>
+            merge(resize$, mutations$.pipe(tap(() => cdr.detectChanges()))).pipe(
                 // Ignoring cases when host is detached from DOM
                 filter(() => body.contains(nativeElement)),
                 debounceTime(0),
                 startWith(null),
                 takeUntil(destroy$),
-            );
-        },
+            ),
     },
 ];

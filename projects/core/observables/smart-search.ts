@@ -15,11 +15,13 @@ export function tuiSmartSearch<T>(
     return source =>
         source.pipe(
             debounceTime(searchDebounceTimeMs),
-            scan((previousSearched, current) => {
-                return previousSearched !== `` && current.startsWith(previousSearched)
-                    ? previousSearched
-                    : current;
-            }, ``),
+            scan(
+                (previousSearched, current) =>
+                    previousSearched !== `` && current.startsWith(previousSearched)
+                        ? previousSearched
+                        : current,
+                ``,
+            ),
             distinctUntilChanged(),
             switchMap(value => getSearchFunction(value).pipe(startWith(null))),
             startWith(EMPTY_ARRAY),

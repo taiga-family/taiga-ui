@@ -36,16 +36,15 @@ export const NAVIGATION_PROVIDERS: Provider[] = [
             activatedRoute: ActivatedRoute,
             titlePrefix: string,
             destroy$: Observable<void>,
-        ): Observable<string> => {
-            return router.events.pipe(
+        ): Observable<string> =>
+            router.events.pipe(
                 filter(event => event instanceof NavigationEnd),
                 map(() => activatedRoute.firstChild),
                 filter(tuiIsPresent),
                 mergeMap(({data}) => data),
                 map(({title}) => `${titlePrefix}${title}`),
                 takeUntil(destroy$),
-            );
-        },
+            ),
     },
     {
         provide: NAVIGATION_LABELS,

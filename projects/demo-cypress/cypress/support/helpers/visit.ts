@@ -3,7 +3,7 @@ import {stubExternalIcons} from '@demo-cypress/support/stubs/stub-external-icons
 import {stubMetrics} from '@demo-cypress/support/stubs/stub-metrics';
 
 const NEXT_URL_STORAGE_KEY = `env`;
-const REPEATED_SLASH_REG = new RegExp(`//`, `g`);
+const REPEATED_SLASH_REG = /\/\//g;
 
 interface TuiVisitOptions {
     clock?: Date | null;

@@ -18,14 +18,13 @@ export function tuiCreateCompletePhoneInsertionPreprocessor(
         ``,
     ).length;
 
-    const trimCountryPrefix = (value: string): string => {
-        return countryCode === `+7`
+    const trimCountryPrefix = (value: string): string =>
+        countryCode === `+7`
             ? value.replace(/^(\+?7?\s?8?)\s?/, ``)
             : value.replace(
                   new RegExp(`^(\\+?${countryCode.replace(`+`, ``)}?)\\s?`),
                   ``,
               );
-    };
 
     return ({elementState, data}) => {
         const {value, selection} = elementState;

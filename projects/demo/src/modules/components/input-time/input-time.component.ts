@@ -71,9 +71,7 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
 
     readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<TuiTime>> = [
         ALWAYS_FALSE_HANDLER,
-        (item: TuiTime) => {
-            return String(item) === '06:00' || item > TuiTime.currentLocal();
-        },
+        (item: TuiTime) => String(item) === '06:00' || item > TuiTime.currentLocal(),
     ];
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];

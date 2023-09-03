@@ -13,9 +13,7 @@ const ICON_ASSETS = {
 };
 
 export function addTaigaIcons(options: TuiSchema): Rule {
-    return (_: Tree) => {
-        return addTaigaAssetsToAngularJson(options);
-    };
+    return (_: Tree) => addTaigaAssetsToAngularJson(options);
 }
 
 export function addTaigaAssetsToAngularJson(options: TuiSchema): Rule {
