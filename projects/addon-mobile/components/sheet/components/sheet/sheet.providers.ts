@@ -19,16 +19,15 @@ export const TUI_SHEET_PROVIDERS: Provider[] = [
     {
         provide: TUI_SHEET_DRAGGED,
         deps: [ElementRef],
-        useFactory: ({nativeElement}: ElementRef<HTMLElement>): Observable<boolean> => {
-            return merge(
+        useFactory: ({nativeElement}: ElementRef<HTMLElement>): Observable<boolean> =>
+            merge(
                 tuiTypedFromEvent(nativeElement, `touchstart`, {passive: true}).pipe(
                     map(ALWAYS_TRUE_HANDLER),
                 ),
                 tuiTypedFromEvent(nativeElement, `touchend`).pipe(
                     map(ALWAYS_FALSE_HANDLER),
                 ),
-            );
-        },
+            ),
     },
     {
         provide: TUI_SHEET_SCROLL,
@@ -38,8 +37,8 @@ export const TUI_SHEET_PROVIDERS: Provider[] = [
             zone: NgZone,
             doc: Document,
             isIos: boolean,
-        ): Observable<number> => {
-            return isIos
+        ): Observable<number> =>
+            isIos
                 ? iosScrollFactory(nativeElement, doc, zone)
                 : merge(
                       tuiTypedFromEvent(nativeElement, `scroll`),
@@ -48,8 +47,7 @@ export const TUI_SHEET_PROVIDERS: Provider[] = [
                       map(() => nativeElement.scrollTop),
                       tuiZonefree(zone),
                       share(),
-                  );
-        },
+                  ),
     },
     {
         provide: TUI_SCROLL_REF,

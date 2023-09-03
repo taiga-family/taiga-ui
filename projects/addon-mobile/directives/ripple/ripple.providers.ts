@@ -37,8 +37,8 @@ export const TUI_RIPPLE_PROVIDERS: Provider[] = [
             isIOS: boolean,
             {nativeElement}: ElementRef<HTMLElement>,
             renderer: Renderer2,
-        ): Observable<HTMLElement> => {
-            return isIOS || !touchSupported
+        ): Observable<HTMLElement> =>
+            isIOS || !touchSupported
                 ? EMPTY
                 : tuiTypedFromEvent(nativeElement, `touchstart`).pipe(
                       map(({touches}) => {
@@ -64,8 +64,7 @@ export const TUI_RIPPLE_PROVIDERS: Provider[] = [
 
                           return ripple;
                       }),
-                  );
-        },
+                  ),
     },
     {
         provide: TUI_RIPPLE_END,
@@ -75,15 +74,14 @@ export const TUI_RIPPLE_PROVIDERS: Provider[] = [
             isIOS: boolean,
             {nativeElement}: ElementRef<HTMLElement>,
             destroy$: Observable<void>,
-        ): Observable<EventTarget> => {
-            return isIOS || !touchSupported
+        ): Observable<EventTarget> =>
+            isIOS || !touchSupported
                 ? EMPTY
                 : tuiTypedFromEvent(nativeElement, `animationend`).pipe(
                       filter(({animationName}) => animationName === RIPPLE_OFF),
                       map(({target}) => target),
                       filter(tuiIsPresent),
                       takeUntil(destroy$),
-                  );
-        },
+                  ),
     },
 ];

@@ -4,9 +4,6 @@ import {TuiValidationError} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export function tuiCreateLuhnValidator(message: PolymorpheusContent): ValidatorFn {
-    return ({value}: AbstractControl) => {
-        return tuiIsCardNumberValid(value)
-            ? null
-            : {luhn: new TuiValidationError(message)};
-    };
+    return ({value}: AbstractControl) =>
+        tuiIsCardNumberValid(value) ? null : {luhn: new TuiValidationError(message)};
 }

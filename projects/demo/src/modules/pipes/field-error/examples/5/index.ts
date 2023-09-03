@@ -15,13 +15,12 @@ import {delay} from 'rxjs/operators';
 const latinChars = /^[a-zA-Z]+$/;
 
 function asyncValidatorFn(isE2E: boolean): AsyncValidatorFn {
-    return (field: AbstractControl) => {
-        return field.value && latinChars.test(field.value)
+    return (field: AbstractControl) =>
+        field.value && latinChars.test(field.value)
             ? of(null)
             : of({
                   error: new TuiValidationError('Only latin letters allowed'),
               }).pipe(isE2E ? delay(0) : delay(5000));
-    };
 }
 
 @Component({

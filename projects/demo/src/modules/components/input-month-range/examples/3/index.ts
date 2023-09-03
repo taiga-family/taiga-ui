@@ -19,13 +19,10 @@ export class TuiInputMonthRangeExample3 {
     readonly disabledItemHandler: TuiBooleanHandlerWithContext<
         TuiMonth,
         TuiMonthContext
-    > = (item: TuiMonth, context?: TuiMonthContext) => {
-        return (
-            !!context &&
-            !!context.value &&
-            context.value instanceof TuiMonthRange &&
-            !!context.value.isSingleMonth &&
-            item.month < context.value.from.month + 2
-        );
-    };
+    > = (item: TuiMonth, context?: TuiMonthContext) =>
+        !!context &&
+        !!context.value &&
+        context.value instanceof TuiMonthRange &&
+        !!context.value.isSingleMonth &&
+        item.month < context.value.from.month + 2;
 }

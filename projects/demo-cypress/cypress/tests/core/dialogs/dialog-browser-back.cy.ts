@@ -7,10 +7,7 @@ describe(`Dialogs + browser back navigation`, () => {
     };
 
     const getFullUrl = (path: string): string =>
-        `${Cypress.config().baseUrl || ``}/${path}`.replace(
-            new RegExp(`([^:]/)/+`, `g`),
-            `$1`,
-        );
+        `${Cypress.config().baseUrl || ``}/${path}`.replace(/([^:]\/)\/+/g, `$1`);
 
     beforeEach(() => {
         cy.tuiVisit(`/`, {

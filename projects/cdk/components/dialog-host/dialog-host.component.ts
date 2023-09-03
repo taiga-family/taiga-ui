@@ -61,7 +61,7 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>>
         combineLatest(this.dialogsByType)
             .pipe(
                 map(arr =>
-                    new Array<T>()
+                    ([] as readonly T[])
                         .concat(...arr)
                         .sort((a, b) => a.createdAt - b.createdAt),
                 ),

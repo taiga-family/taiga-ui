@@ -73,11 +73,10 @@ export function migrateTaigaProprietaryIcons(options: TuiSchema): Rule {
                       if (Array.isArray(targetOptions?.assets)) {
                           const tdsSrc = `@taiga-ui/proprietary-tds-icons/src`;
                           const hasIcons = (targetOptions.assets as Asset[]).find(
-                              asset => {
-                                  return tuiIsString(asset)
+                              asset =>
+                                  tuiIsString(asset)
                                       ? asset.includes(tdsSrc)
-                                      : asset?.input?.includes(tdsSrc);
-                              },
+                                      : asset?.input?.includes(tdsSrc),
                           );
 
                           if (hasIcons) {

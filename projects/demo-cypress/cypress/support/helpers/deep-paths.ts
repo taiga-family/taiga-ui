@@ -41,10 +41,10 @@ export function tuiMakeCypressDemoSnapshot(
         .parents(`table.t-table tr`)
         .find(`[automation-id="tui-documentation__property-name"]`)
         .then(propertyName$ => propertyName$.text().trim())
-        .then(property => {
-            return cy
+        .then(property =>
+            cy
                 .get(`#demo-content`)
                 .first()
-                .matchImageSnapshot(`${path}/${stepIndex}-${property}-${optionIndex}`);
-        });
+                .matchImageSnapshot(`${path}/${stepIndex}-${property}-${optionIndex}`),
+        );
 }
