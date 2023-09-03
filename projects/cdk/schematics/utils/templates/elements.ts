@@ -132,8 +132,6 @@ export function getStartOffsetOfAttribute(
     attributeName: string,
 ): number {
     return (
-        (element.sourceCodeLocation?.attrs &&
-            element.sourceCodeLocation.attrs[attributeName.toLowerCase()]?.startOffset) ||
-        0
+        element.sourceCodeLocation?.attrs?.[attributeName.toLowerCase()]?.startOffset || 0
     );
 }
