@@ -28,7 +28,7 @@ jobs:
           ]
     name: ${{ matrix.project }}
     steps:
-      - uses: actions/checkout@v3.6.0
+      - uses: actions/checkout@v4.0.0
       - uses: taiga-family/ci/actions/setup-node@1.12.0
 
       - name: Run tests for ${{ matrix.project }}
@@ -44,7 +44,7 @@ jobs:
     needs: [test]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.6.0
+      - uses: actions/checkout@v4.0.0
       - uses: actions/download-artifact@v3.0.2
         with:
           name: coverage-${{ github.workflow }}-${{ github.run_id }}

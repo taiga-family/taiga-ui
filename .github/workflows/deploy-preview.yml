@@ -7,7 +7,7 @@ jobs:
     name: Firebase
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.6.0
+      - uses: actions/checkout@v4.0.0
       - uses: taiga-family/ci/actions/variables@1.12.0
       - uses: taiga-family/ci/actions/setup-node@1.12.0
 
