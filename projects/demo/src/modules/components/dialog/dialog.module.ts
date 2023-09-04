@@ -43,7 +43,6 @@ import {TuiDialogExampleComponent8} from './examples/8';
 import {TuiDialogExampleComponent9} from './examples/9';
 import {PayExampleModalModule} from './examples/9/pay-modal/pay-modal.module';
 import {TuiDialogExampleComponent10} from './examples/10';
-import {DialogIosExampleComponent} from './examples/10/dialog-example/dialog-example.component';
 
 @NgModule({
     imports: [
@@ -76,7 +75,6 @@ import {DialogIosExampleComponent} from './examples/10/dialog-example/dialog-exa
         TuiTextCodeModule,
     ],
     declarations: [
-        DialogIosExampleComponent,
         ExampleTuiDialogComponent,
         TuiDialogExampleComponent1,
         TuiDialogExampleComponent2,

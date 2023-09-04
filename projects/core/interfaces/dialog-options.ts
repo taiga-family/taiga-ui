@@ -15,6 +15,7 @@ import {Observable} from 'rxjs';
  * data - arbitrary data for dialog (undefined by default)
  */
 export interface TuiDialogOptions<I> {
+    // TODO: change type in v4.0 ('' by default)
     readonly appearance?: string;
     readonly closeable: Observable<boolean> | boolean;
     readonly data: I;
