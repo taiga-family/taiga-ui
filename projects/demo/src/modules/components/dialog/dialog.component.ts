@@ -112,6 +112,21 @@ export class ExampleTuiDialogComponent {
         ),
     };
 
+    readonly example10: TuiDocExample = {
+        TypeScript: import('./examples/10/index.ts?raw'),
+        HTML: import('./examples/10/index.html?raw'),
+        LESS: import('./examples/10/index.less?raw'),
+        'dialog-example/dialog-example.component.ts': import(
+            './examples/10/dialog-example/dialog-example.component.ts?raw'
+        ),
+        'dialog-example/dialog-example.component.html': import(
+            './examples/10/dialog-example/dialog-example.component.html?raw'
+        ),
+        'dialog-example/dialog-example.component.less': import(
+            './examples/10/dialog-example/dialog-example.component.less?raw'
+        ),
+    };
+
     readonly exampleServiceUsage = import('./examples/import/service-usage.md?raw');
 
     readonly exampleCustomDialog = import('./examples/import/custom-dialog.md?raw');
@@ -140,6 +155,8 @@ export class ExampleTuiDialogComponent {
     size: TuiDialogSize = this.sizeVariants[1];
 
     label = '';
+
+    appearance = '';
 
     constructor(
         @Inject(TuiAlertService)

@@ -1,0 +1,60 @@
+.pulldown-menu {
+    background: var(--tui-elevation-01);
+    padding-left: 0;
+    border-radius: 0.75rem;
+    list-style-type: none;
+    font-family: system-ui;
+    backdrop-filter: blur(1.25rem);
+    box-shadow:
+        0 0.19375rem 0.70625rem rgba(0, 0, 0, 0.014),
+        0 0.4625rem 1.20625rem rgba(0, 0, 0, 0.02),
+        0 0.875rem 1.51875rem rgba(0, 0, 0, 0.025),
+        0 1.5625rem 1.70625rem rgba(0, 0, 0, 0.03),
+        0 2.925rem 2.01875rem rgba(0, 0, 0, 0.036),
+        0 7rem 5rem rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease-in-out;
+    position: fixed;
+    bottom: 0.625rem;
+    width: 95%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    overflow: hidden;
+
+    button {
+        appearance: none;
+        border: none;
+        border-bottom: 0.0625rem solid #ccc;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: transparent;
+        width: 100%;
+        margin: 0;
+        height: 2.75rem;
+        padding: 0.5rem 0.8rem 0.5rem 1rem;
+
+        &:first-of-type {
+            padding-top: 0.4375rem;
+            border-radius: 0.5rem 0.5rem 0 0;
+        }
+
+        &:hover {
+            background: rgb(67, 130, 247);
+            color: #fff;
+        }
+
+        &:last-child {
+            border: none;
+        }
+    }
+
+    .feather {
+        padding-left: 1.5rem;
+        padding-right: 0.375rem;
+    }
+
+    .cancel {
+        color: red;
+    }
+}

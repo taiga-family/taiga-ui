@@ -42,6 +42,8 @@ import {SearchDialogExampleModule} from './examples/7/search-example/search-dial
 import {TuiDialogExampleComponent8} from './examples/8';
 import {TuiDialogExampleComponent9} from './examples/9';
 import {PayExampleModalModule} from './examples/9/pay-modal/pay-modal.module';
+import {TuiDialogExampleComponent10} from './examples/10';
+import {DialogIosExampleComponent} from './examples/10/dialog-example/dialog-example.component';
 
 @NgModule({
     imports: [
@@ -74,6 +76,7 @@ import {PayExampleModalModule} from './examples/9/pay-modal/pay-modal.module';
         TuiTextCodeModule,
     ],
     declarations: [
+        DialogIosExampleComponent,
         ExampleTuiDialogComponent,
         TuiDialogExampleComponent1,
         TuiDialogExampleComponent2,
@@ -84,6 +87,7 @@ import {PayExampleModalModule} from './examples/9/pay-modal/pay-modal.module';
         TuiDialogExampleComponent7,
         TuiDialogExampleComponent8,
         TuiDialogExampleComponent9,
+        TuiDialogExampleComponent10,
     ],
     exports: [ExampleTuiDialogComponent],
 })
