@@ -7,5 +7,5 @@ jobs:
   remove_label:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.6.0
+      - uses: actions/checkout@v4.0.0
       - uses: taiga-family/ci/actions/auto-remove-label@1.12.0

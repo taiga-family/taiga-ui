@@ -25,7 +25,7 @@ jobs:
       IS_DRY_MODE: ${{ github.event.inputs.dryRun == 'true' }}
       IS_RRE_RELEASE_MODE: ${{ contains(github.event.inputs.mode, 'prerelease') }}
     steps:
-      - uses: actions/checkout@v3.6.0
+      - uses: actions/checkout@v4.0.0
         with:
           fetch-depth: 0
           persist-credentials: false
