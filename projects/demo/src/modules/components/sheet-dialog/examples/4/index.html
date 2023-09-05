@@ -18,7 +18,7 @@
         <tui-input
             tuiTextfieldIconLeft="tuiIconSearchLarge"
             [formControl]="search"
-            (mousedown)="header.scrollIntoView(true)"
+            (touchstart.passive)="header.scrollIntoView(true)"
         >
             Find user
         </tui-input>
