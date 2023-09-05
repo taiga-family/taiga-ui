@@ -28,6 +28,12 @@ export class ExampleTuiSheetDialogComponent {
         LESS: import('./examples/3/index.less?raw'),
     };
 
+    readonly example4: TuiDocExample = {
+        TypeScript: import('./examples/4/index.ts?raw'),
+        HTML: import('./examples/4/index.html?raw'),
+        LESS: import('./examples/4/index.less?raw'),
+    };
+
     readonly exampleModule = import('./examples/import/import-module.md?raw');
     readonly exampleComponent = import('./examples/import/insert-component.md?raw');
 
