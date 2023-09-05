@@ -2,7 +2,12 @@ import {Component, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_DEFAULT_MATCHER, TUI_WINDOW_HEIGHT, tuiControlValue} from '@taiga-ui/cdk';
+import {
+    TUI_DEFAULT_MATCHER,
+    TUI_WINDOW_HEIGHT,
+    tuiControlValue,
+    tuiIsElement,
+} from '@taiga-ui/cdk';
 import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -54,6 +59,14 @@ export class TuiSheetDialogExample4 {
 
         if (open) {
             this.search.setValue('');
+        }
+    }
+
+    scroll(target: EventTarget | null): void {
+        const container = tuiIsElement(target) && target.closest('tui-sheet-dialog');
+
+        if (container) {
+            container.scrollTop = container.clientHeight;
         }
     }
 }
