@@ -14,9 +14,6 @@ export async function tuiMockDate(page: Page, date: Date): Promise<void> {
             }
         };
 
-        const dateNowOffset = fakeNow - Date.now();
-        const dateNow = Date.now;
-
-        Date.now = () => dateNow() + dateNowOffset;
+        Date.now = () => fakeNow;
     }, date.valueOf());
 }
