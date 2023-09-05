@@ -11,11 +11,14 @@
     [tuiSheetDialogOptions]="{stops: ['29rem']}"
     (tuiSheetDialogChange)="toggle($event)"
 >
-    <header class="header">
+    <header
+        #header
+        class="header"
+    >
         <tui-input
             tuiTextfieldIconLeft="tuiIconSearchLarge"
             [formControl]="search"
-            (focusin)="onFocus($event.currentTarget)"
+            (mousedown)="header.scrollIntoView(true)"
         >
             Find user
         </tui-input>
