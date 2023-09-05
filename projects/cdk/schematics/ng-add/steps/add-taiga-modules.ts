@@ -170,8 +170,14 @@ function addRootTuiProvidersToBootstrapFn(
                 Node.isCallExpression(el) &&
                 el.getExpression().getText() === `importProvidersFrom`,
         );
-
-    const modules = [MAIN_MODULE, BROWSER_ANIMATION_MODULE];
+    const providerAnimation = initializer
+        .getElements()
+        .find(
+            el =>
+                Node.isCallExpression(el) &&
+                el.getExpression().getText() === `provideAnimations`,
+        );
+    const modules = [MAIN_MODULE];
 
     if (Node.isCallExpression(providerFrom)) {
         const existing = providerFrom.getArguments();
@@ -187,8 +193,19 @@ function addRootTuiProvidersToBootstrapFn(
         pushToObjectArrayProperty(
             bootstrapOptions,
             `providers`,
-            `importProvidersFrom(TuiRootModule, BrowserAnimationsModule)`,
+            `importProvidersFrom(TuiRootModule)`,
         );
+    }
+
+    if (!providerAnimation) {
+        modules.push({
+            name: `providerAnimation`,
+            packageName: `@angular/platform-browser/animations`,
+        });
+
+        pushToObjectArrayProperty(bootstrapOptions, `providers`, `providerAnimation()`, {
+            index: 0,
+        });
     }
 
     [...modules, {name: `importProvidersFrom`, packageName: `@angular/core`}].forEach(

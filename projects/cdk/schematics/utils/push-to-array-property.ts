@@ -7,7 +7,8 @@ export function pushToObjectArrayProperty(
     {
         unique = false,
         forceToArray = false,
-    }: {forceToArray?: boolean; unique?: boolean} = {},
+        index = null,
+    }: {forceToArray?: boolean; index?: number | null; unique?: boolean} = {},
 ): void {
     const property =
         objectExpression.getProperty(propertyName) ??
@@ -36,5 +37,10 @@ export function pushToObjectArrayProperty(
         return;
     }
 
-    importsInitializer.addElement(initializer);
+    // eslint-disable-next-line @taiga-ui/experience/no-typeof
+    if (typeof index === `number`) {
+        importsInitializer.insertElement(index, initializer);
+    } else {
+        importsInitializer.addElement(initializer);
+    }
 }
