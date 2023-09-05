@@ -64,6 +64,6 @@ export class TuiSheetDialogExample4 {
 
     onFocus(element: EventTarget | null): void {
         // Wait for keyboard to appear
-        setTimeout(() => tuiIsElement(element) && element.scrollIntoView(true), 500);
+        setTimeout(() => tuiIsElement(element) && element.scrollIntoView(true), 1000);
     }
 }
