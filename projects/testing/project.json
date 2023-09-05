@@ -5,12 +5,6 @@
     "projectType": "library",
     "prefix": "tui",
     "targets": {
-        "stylelint": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "stylelint \"**/testing/**/*.{css,less}\" --allow-empty-input"
-            }
-        },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
             "outputs": ["{workspaceRoot}/dist/testing"],

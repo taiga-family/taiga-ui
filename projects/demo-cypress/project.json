@@ -5,12 +5,6 @@
     "projectType": "application",
     "prefix": "app",
     "targets": {
-        "stylelint": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "stylelint \"**/demo-cypress/**/*.{css,less}\" --allow-empty-input"
-            }
-        },
         "e2e-ui": {
             "executor": "nx:run-commands",
             "options": {
