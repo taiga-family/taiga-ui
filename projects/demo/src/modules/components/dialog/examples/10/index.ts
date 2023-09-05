@@ -10,22 +10,16 @@ import {TuiDialogService} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiDialogExampleComponent10 {
-    constructor(
-        @Inject(TuiDialogService)
-        readonly dialogs: TuiDialogService,
-    ) {}
+    constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) {}
 
     showDialog(): void {
         this.dialogs
             .open(
-                `
-                <div class="pulldown-menu">
-                    <div class="button">Print</div>
-                    <div class="button">Delete List</div>
-                    <div class="button cancel">Cancel</div>
-                </div>
-            `,
-                {appearance: 'ios-style'},
+                'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
+                {
+                    label: 'What is Lorem Ipsum?',
+                    appearance: 'lorem-ipsum',
+                },
             )
             .subscribe();
     }
