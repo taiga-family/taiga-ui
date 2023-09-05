@@ -107,7 +107,7 @@
         "@taiga-ui/cspell-config": "0.7.0",
         "@taiga-ui/eslint-plugin-experience": "0.6.3",
         "@taiga-ui/prettier-config": "0.2.1",
-        "@taiga-ui/stylelint-config": "0.2.0",
+        "@taiga-ui/stylelint-config": "0.2.1",
         "@testing-library/cypress": "9.0.0",
         "@tinkoff/tui-editor": "1.5.0",
         "@types/glob": "8.1.0",
