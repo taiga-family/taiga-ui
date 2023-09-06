@@ -40,6 +40,10 @@ function replaceService(
     const references = getNamedImportReferences(from.name, from.moduleSpecifier);
 
     references.forEach(ref => {
+        if (ref.wasForgotten()) {
+            return;
+        }
+
         const parent = ref.getParent();
 
         if (Node.isImportSpecifier(parent)) {

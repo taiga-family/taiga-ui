@@ -29,6 +29,10 @@ export function removeModule(name: string, moduleSpecifier: string): void {
     const references = getNamedImportReferences(name, moduleSpecifier);
 
     references.forEach(ref => {
+        if (ref.wasForgotten()) {
+            return;
+        }
+
         const parent = ref.getParent();
 
         if (Node.isImportSpecifier(parent)) {
