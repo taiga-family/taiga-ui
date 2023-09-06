@@ -32,6 +32,10 @@ function replaceEnumWithString(
     const references = getNamedImportReferences(enumName);
 
     for (const ref of references) {
+        if (ref.wasForgotten()) {
+            continue;
+        }
+
         const parent = ref.getParent();
 
         if (Node.isImportSpecifier(parent) && !(keepAsType && containTypeRef(parent))) {
