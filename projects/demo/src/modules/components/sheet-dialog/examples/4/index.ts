@@ -2,12 +2,7 @@ import {Component, Inject, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TUI_DEFAULT_MATCHER,
-    TUI_IS_IOS,
-    TUI_WINDOW_HEIGHT,
-    tuiControlValue,
-} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, TUI_WINDOW_HEIGHT, tuiControlValue} from '@taiga-ui/cdk';
 import {TuiInputComponent} from '@taiga-ui/kit';
 import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -55,7 +50,6 @@ export class TuiSheetDialogExample4 {
     );
 
     constructor(
-        @Inject(TUI_IS_IOS) private readonly isIOS: boolean,
         @Inject(TUI_WINDOW_HEIGHT) private readonly height$: Observable<number>,
     ) {}
 
@@ -67,17 +61,15 @@ export class TuiSheetDialogExample4 {
         }
     }
 
-    scroll(event: MouseEvent): void {
+    scroll(): void {
         const input = this.input?.nativeFocusableElement;
         const container = input?.closest('tui-sheet-dialog');
 
-        if (container) {
-            container.scrollTop = container.clientHeight;
+        if (!container) {
+            return;
         }
 
-        if (this.isIOS) {
-            event.preventDefault();
-            input?.focus();
-        }
+        container.scrollTop = container.clientHeight;
+        input?.focus();
     }
 }
