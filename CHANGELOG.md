@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.43.0](https://github.com/taiga-family/taiga-ui/compare/v3.42.1...v3.43.0) (2023-09-06)
+
+### Features
+
+- **core:** add neutral notification status ([#5248](https://github.com/taiga-family/taiga-ui/issues/5248))
+  ([7f7abfd](https://github.com/taiga-family/taiga-ui/commit/7f7abfd73bb81a51d7b0f19fab56fddd93fcd18a))
+- **core:** support appearance in dialog ([#5280](https://github.com/taiga-family/taiga-ui/issues/5280))
+  ([126d3dd](https://github.com/taiga-family/taiga-ui/commit/126d3ddf4882ff4065651bc287cdd566d466d7f3))
+
+### Bug Fixes
+
+- **addon-commerce:** add `automation-id` for cleaner and dropdown buttons
+  ([#5294](https://github.com/taiga-family/taiga-ui/issues/5294))
+  ([7f11f52](https://github.com/taiga-family/taiga-ui/commit/7f11f5201148004b81a609688889addfb9d7f87a))
+- **addon-mobile:** `SheetDialog` fix scrolling flicker ([#5288](https://github.com/taiga-family/taiga-ui/issues/5288))
+  ([e84bf4f](https://github.com/taiga-family/taiga-ui/commit/e84bf4f41d2e76414be74e0e900687f10e355e04))
+- **cdk:** add fallback color in svg for old browsers which doesn't support gradients
+  ([#5227](https://github.com/taiga-family/taiga-ui/issues/5227))
+  ([79af7c2](https://github.com/taiga-family/taiga-ui/commit/79af7c216010c601a3cee831f237b745c2147438))
+- **cdk:** schematic error `Attempted to get information from a node that was removed or forgotten`
+  ([#5303](https://github.com/taiga-family/taiga-ui/issues/5303))
+  ([debf653](https://github.com/taiga-family/taiga-ui/commit/debf653d9caa8ecc71f31f7d4ef85c614ac6204f))
+- **core:** drawing correctly the loader ([#5213](https://github.com/taiga-family/taiga-ui/issues/5213))
+  ([71de5aa](https://github.com/taiga-family/taiga-ui/commit/71de5aa0fd9f55b78b897d0cefdb542abe52e9b6))
+- **core:** overlapped by placeholder in autocomplete mode
+  ([#5269](https://github.com/taiga-family/taiga-ui/issues/5269))
+  ([a812112](https://github.com/taiga-family/taiga-ui/commit/a8121129aa6dab823888ff8c52fe44e946dca742))
+- **kit:** update ticks color for `Slider` & `Range` ([#5266](https://github.com/taiga-family/taiga-ui/issues/5266))
+  ([cd934cb](https://github.com/taiga-family/taiga-ui/commit/cd934cb2f48d8cf0cf05ab9923bde58efc1ebe0b))
+
 ### [3.42.1](https://github.com/taiga-family/taiga-ui/compare/v3.42.0...v3.42.1) (2023-08-28)
 
 ## [3.42.0](https://github.com/taiga-family/taiga-ui/compare/v2.99.0...v3.42.0) (2023-08-28)
