@@ -15,7 +15,7 @@ export const TUI_WINDOW_HEIGHT = new InjectionToken<Observable<number>>(
 
             return tuiTypedFromEvent(win, `resize`).pipe(
                 startWith(null),
-                map(() => win.innerHeight),
+                map(() => Math.max(win.innerHeight, win.visualViewport?.height || 0)),
                 shareReplay({bufferSize: 1, refCount: true}),
             );
         },
