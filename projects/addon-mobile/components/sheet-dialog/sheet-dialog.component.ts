@@ -10,7 +10,6 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {INTERSECTION_ROOT} from '@ng-web-apis/intersection-observer';
 import {EMPTY_QUERY, TuiDialog, tuiPure} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_DURATION,
@@ -36,12 +35,6 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
     styleUrls: ['./sheet-dialog.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop],
-    providers: [
-        {
-            provide: INTERSECTION_ROOT,
-            useExisting: ElementRef,
-        },
-    ],
 })
 export class TuiSheetDialogComponent<I> implements AfterViewInit {
     @ViewChild('sheet')
@@ -51,9 +44,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     private readonly stopsRefs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     private pointers = 0;
-
-    @HostBinding('class._stuck')
-    stuck = false;
 
     @HostBinding('@tuiSlideInTop')
     readonly slideInTop = {
@@ -108,10 +98,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         // TODO: Refactor focus visible on mobile
         this.el.nativeElement.dispatchEvent(new Event('mousedown', {bubbles: true}));
         this.context.$implicit.complete();
-    }
-
-    onIntersection([{isIntersecting}]: IntersectionObserverEntry[]): void {
-        this.stuck = isIntersecting && !this.isSmall;
     }
 
     ngAfterViewInit(): void {

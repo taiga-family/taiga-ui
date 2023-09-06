@@ -8,12 +8,9 @@
 </div>
 <div
     #sheet
-    waIntersectionObserver
-    waIntersectionRootMargin="0px 0px -100% 0px"
     class="t-sheet"
     [class.t-sheet_small]="isSmall"
     (tuiClickOutside)="close()"
-    (waIntersectionObservee)="onIntersection($event)"
 >
     <div class="t-top"></div>
     <h2
@@ -45,3 +42,4 @@
         </ng-container>
     </div>
 </div>
+<div class="t-footer"></div>

@@ -1,0 +1,45 @@
+<button
+    tuiButton
+    type="button"
+    (click)="toggle(true)"
+>
+    Show/Hide
+</button>
+
+<ng-template
+    [tuiSheetDialog]="open"
+    [tuiSheetDialogOptions]="{stops: ['29rem']}"
+    (tuiSheetDialogChange)="toggle($event)"
+>
+    <header class="header">
+        <tui-input
+            tuiTextfieldIconLeft="tuiIconSearchLarge"
+            [formControl]="search"
+            (focus.capture)="scroll($event.currentTarget)"
+        >
+            Find user
+        </tui-input>
+    </header>
+    <button
+        *ngFor="let user of users$ | async"
+        class="item"
+        (click)="toggle(false)"
+    >
+        <tui-avatar
+            size="s"
+            [autoColor]="true"
+            [text]="user"
+        ></tui-avatar>
+        {{ user }}
+    </button>
+    <div [style.height]="buffer$ | async"></div>
+    <footer class="footer">
+        <button
+            tuiButton
+            (click)="toggle(false)"
+        >
+            Invite more users
+        </button>
+        Opens a separate app
+    </footer>
+</ng-template>
