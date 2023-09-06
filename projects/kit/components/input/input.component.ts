@@ -19,6 +19,8 @@ import {
     TuiContextWithImplicit,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
+    tuiIsPresent,
+    tuiIsString,
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_SIZE,
@@ -115,6 +117,16 @@ export class TuiInputComponent
         this.focusInput();
         this.value = String(item);
         this.open = false;
+    }
+
+    override writeValue(value: string): void {
+        if (ngDevMode && tuiIsPresent(value) && !tuiIsString(value)) {
+            console.error(
+                `🌲 [ATTENTION]: Don't use any types other than string in <tui-input />, your current value is ${value} (${typeof value}). More read: https://taiga-ui.dev/components/input`,
+            );
+        }
+
+        super.writeValue(value);
     }
 
     protected getFallbackValue(): string {
