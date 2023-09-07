@@ -57,16 +57,20 @@ function extractLinearGradientIdsFromSvg(svg: string): string[] {
 }
 
 function setFallbackForGradientFill(svg: string, fallback: string): string {
-    const tree = new DOMParser().parseFromString(svg, `text/html`);
+    try {
+        const tree = new DOMParser().parseFromString(svg, `text/html`);
 
-    tree.body
-        .querySelectorAll(`[fill^=url]`) // only gradient
-        .forEach(element =>
-            element.setAttribute(
-                `fill`,
-                `${element.getAttribute(`fill`)} ${fallback}`.trim(),
-            ),
-        );
+        tree.body
+            .querySelectorAll(`[fill^=url]`) // only gradient
+            .forEach(element =>
+                element.setAttribute(
+                    `fill`,
+                    `${element.getAttribute(`fill`)} ${fallback}`.trim(),
+                ),
+            );
 
-    return tree.body.innerHTML.trim();
+        return tree.body.innerHTML.trim();
+    } catch {
+        return svg;
+    }
 }
