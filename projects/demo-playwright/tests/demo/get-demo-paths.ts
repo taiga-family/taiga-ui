@@ -10,6 +10,8 @@ export const EXCLUDED_ROUTES = [
     `/dialog/custom`, // just buttons
     `/dialog/routable`, // just buttons
     `/dialog/lazy-routable`, // just buttons
+    `/components/sheet`, // just buttons
+    `/components/sheet-dialog`, // just buttons
     `/components/error`,
     `/icons/overview`,
     `/icons/mapping`,
