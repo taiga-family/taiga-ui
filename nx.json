@@ -15,9 +15,6 @@
         "production": ["default", "!{projectRoot}/**/*.spec.ts", "!{projectRoot}/**/*.cy.ts", "sharedGlobals"]
     },
     "targetDefaults": {
-        "stylelint": {
-            "inputs": ["default", "production", "^production", "{workspaceRoot}/stylelint.config.js"]
-        },
         "build": {
             "inputs": ["default", "production", "^production"]
         },

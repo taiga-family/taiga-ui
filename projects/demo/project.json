@@ -6,12 +6,6 @@
     "prefix": "app",
     "implicitDependencies": ["!testing"],
     "targets": {
-        "stylelint": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "stylelint \"**/demo/**/*.{css,less}\" --allow-empty-input"
-            }
-        },
         "i18n": {
             "executor": "nx:run-commands",
             "options": {
