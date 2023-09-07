@@ -117,6 +117,8 @@ describe(`MultiSelect`, () => {
         });
 
         describe(`Form changes by updateOn`, () => {
+            test.use({viewport: {width: 400, height: 500}});
+
             ([`submit`, `blur`, `change`] as const).forEach(type => {
                 test(`updateOn: ${type}`, async ({page}) => {
                     await tuiGoto(
@@ -125,6 +127,7 @@ describe(`MultiSelect`, () => {
                     );
 
                     await documentationPage.selectFormControlUpdateOnMethod(type);
+                    await documentationPage.prepareApiPageBeforeScreenshot();
 
                     await expect(apiPageExample).toHaveScreenshot(
                         `06-update-on-${type}__1_initial.png`,
@@ -170,12 +173,12 @@ describe(`MultiSelect`, () => {
             await multiSelect.selectOptions([0, 1, 2, 3, 4]);
 
             await documentationPage.prepareApiPageBeforeScreenshot();
-            await expect(page).toHaveScreenshot(`04-multi-select-before-clear.png`);
+            await expect(page).toHaveScreenshot(`07-multi-select-before-clear.png`);
 
             await multiSelect.arrow.click();
             await multiSelect.cleaner.click();
 
-            await expect(page).toHaveScreenshot(`04-multi-select-after-clear.png`);
+            await expect(page).toHaveScreenshot(`07-multi-select-after-clear.png`);
         });
 
         test(`should scroll to end on focus`, async ({page}) => {
@@ -189,7 +192,7 @@ describe(`MultiSelect`, () => {
 
             await documentationPage.prepareApiPageBeforeScreenshot();
             await expect(page).toHaveScreenshot(
-                `07-multi-select-1-before-scroll-to-end.png`,
+                `08-multi-select-1-before-scroll-to-end.png`,
             );
 
             await multiSelect.closeDropdown();
@@ -197,7 +200,7 @@ describe(`MultiSelect`, () => {
             await multiSelect.arrow.click();
 
             await expect(page).toHaveScreenshot(
-                `07-multi-select-2-after-scroll-to-end.png`,
+                `08-multi-select-2-after-scroll-to-end.png`,
             );
         });
     });
