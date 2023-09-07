@@ -203,7 +203,32 @@ export const ROUTES: Routes = [
         loadChildren: async () =>
             (await import(`../experimental/avatar/avatar.module`)).ExampleTuiAvatarModule,
         data: {
-            title: `Avatar`,
+            title: `Avatar `,
+        },
+    },
+    {
+        path: `experimental/checkbox`,
+        loadChildren: async () =>
+            (await import(`../experimental/checkbox/checkbox.module`))
+                .ExampleTuiCheckboxModule,
+        data: {
+            title: `Checkbox `,
+        },
+    },
+    {
+        path: `experimental/radio`,
+        loadChildren: async () =>
+            (await import(`../experimental/radio/radio.module`)).ExampleTuiRadioModule,
+        data: {
+            title: `Radio `,
+        },
+    },
+    {
+        path: `experimental/toggle`,
+        loadChildren: async () =>
+            (await import(`../experimental/toggle/toggle.module`)).ExampleTuiToggleModule,
+        data: {
+            title: `Toggle `,
         },
     },
     {
