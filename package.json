@@ -120,7 +120,7 @@
         "@taiga-ui/prettier-config": "0.2.1",
         "@taiga-ui/stylelint-config": "0.3.0",
         "@testing-library/cypress": "9.0.0",
-        "@tinkoff/tui-editor": "1.5.0",
+        "@tinkoff/tui-editor": "1.5.1",
         "@types/glob": "8.1.0",
         "@types/node": "18.17.14",
         "@types/parse5": "6.0.3",
