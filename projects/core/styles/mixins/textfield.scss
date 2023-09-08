@@ -220,7 +220,6 @@ $line-height-l: 1.25rem;
         color: var(--tui-text-01);
     }
 
-    /* stylelint-disable selector-max-specificity */
     // textfield-light
     [tuiWrapper][data-mode='onDark'] & {
         color: var(--tui-text-02-night);
@@ -236,7 +235,6 @@ $line-height-l: 1.25rem;
     :host[data-size='l']._focused._label-outside [tuiWrapper][data-mode='onDark'] & {
         color: var(--tui-text-02-night);
     }
-    /* stylelint-enable selector-max-specificity */
 
     @supports (-webkit-hyphens: none) {
         & {
