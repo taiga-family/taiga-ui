@@ -70,7 +70,6 @@
 }
 
 .t-label {
-    .text-overflow-with-fade();
     flex-grow: 1;
     margin: 0;
     font-size: 1.25rem;
@@ -78,32 +77,18 @@
     font-weight: 500;
     letter-spacing: -0.0125rem;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    & + .t-link {
+        padding-left: 1rem;
+    }
 
     :host._ios & {
         font-size: 1.0625rem;
         font-weight: 600;
         letter-spacing: -0.025625rem;
         text-align: center;
-    }
-
-    &:after {
-        background-image: linear-gradient(
-            to right,
-            // --tui-base-01 in rgb
-            rgba(255, 255, 255, 0) 0%,
-            var(--tui-base-01) 80%,
-            var(--tui-base-01) 100%
-        );
-    }
-
-    :host-context([data-mode='onDark']) &:after {
-        background-image: linear-gradient(
-            to right,
-            // --tui-base-01 in rgb
-            rgba(34, 34, 34, 0) 0%,
-            var(--tui-base-01) 80%,
-            var(--tui-base-01) 100%
-        );
     }
 }
 
