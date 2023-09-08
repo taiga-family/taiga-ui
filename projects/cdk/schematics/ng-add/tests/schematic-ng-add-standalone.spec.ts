@@ -318,18 +318,18 @@ export class AppComponent {
 
         expect(tree.readContent(`test/main.ts`))
             .toEqual(`import { importProvidersFrom } from "@angular/core";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { TuiRootModule } from "@taiga-ui/core";
 import { bootstrapApplication } from '@angular/platform-browser';
 import {
   provideRouter,
   withEnabledBlockingInitialNavigation,
 } from '@angular/router';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { appRoutes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, {
-  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), importProvidersFrom(SomeModule, TuiRootModule, BrowserAnimationsModule)],
+  providers: [provideAnimations(), provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), importProvidersFrom(SomeModule, TuiRootModule)],
 }).catch((err) => console.error(err));
 `);
     });
@@ -347,19 +347,49 @@ bootstrapApplication(AppComponent, {
             .toPromise();
 
         expect(tree.readContent(`test/app/app.config.ts`))
-            .toEqual(`import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { TuiRootModule } from "@taiga-ui/core";
+            .toEqual(`import { TuiRootModule } from "@taiga-ui/core";
 
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import {
   provideRouter,
   withEnabledBlockingInitialNavigation,
 } from '@angular/router';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), importProvidersFrom(TuiRootModule, BrowserAnimationsModule)],
+  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), provideAnimations(), importProvidersFrom(TuiRootModule)],
 };`);
+    });
+
+    it(`[Standalone] Should add Taiga-ui modules and provideAnimation`, async () => {
+        createMainWithoutAnimation();
+        saveActiveProject();
+
+        const tree = await runner
+            .runSchematicAsync(
+                `ng-add-setup-project`,
+                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                host,
+            )
+            .toPromise();
+
+        expect(tree.readContent(`test/main.ts`))
+            .toEqual(`import { importProvidersFrom } from "@angular/core";
+import { providerAnimation } from "@angular/platform-browser/animations";
+import { TuiRootModule } from "@taiga-ui/core";
+import { bootstrapApplication } from '@angular/platform-browser';
+import {
+  provideRouter,
+  withEnabledBlockingInitialNavigation,
+} from '@angular/router';
+import { appRoutes } from './app/app.routes';
+import { AppComponent } from './app/app.component';
+
+bootstrapApplication(AppComponent, {
+  providers: [providerAnimation(), provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), importProvidersFrom(TuiRootModule)],
+}).catch((err) => console.error(err));
+`);
     });
 
     afterEach(() => {
@@ -375,13 +405,15 @@ import {
   provideRouter,
   withEnabledBlockingInitialNavigation,
 } from '@angular/router';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { appRoutes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, {
-  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), importProvidersFrom(SomeModule)],
+  providers: [provideAnimations(), provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), importProvidersFrom(SomeModule)],
 }).catch((err) => console.error(err));
 `,
+        {overwrite: true},
     );
 
     createSourceFile(
@@ -399,9 +431,29 @@ import { RouterModule } from '@angular/router';
 export class AppComponent {
   title = 'standalone-test';
 }`,
+        {overwrite: true},
     );
 
-    createSourceFile(`test/app/app.template.html`, `<app></app>`);
+    createSourceFile(`test/app/app.template.html`, `<app></app>`, {overwrite: true});
+}
+
+function createMainWithoutAnimation(): void {
+    createSourceFile(
+        `test/main.ts`,
+        `import { bootstrapApplication } from '@angular/platform-browser';
+import {
+  provideRouter,
+  withEnabledBlockingInitialNavigation,
+} from '@angular/router';
+import { appRoutes } from './app/app.routes';
+import { AppComponent } from './app/app.component';
+
+bootstrapApplication(AppComponent, {
+  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation())],
+}).catch((err) => console.error(err));
+`,
+        {overwrite: true},
+    );
 }
 
 function createMainWithConfig(): void {
@@ -429,10 +481,12 @@ import {
   provideRouter,
   withEnabledBlockingInitialNavigation,
 } from '@angular/router';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation())],
+  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), provideAnimations()],
 };`,
+        {overwrite: true},
     );
 }
