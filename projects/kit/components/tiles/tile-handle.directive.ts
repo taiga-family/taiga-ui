@@ -13,6 +13,7 @@ function isInteracting(this: TuiTileHandleDirective, x = NaN): boolean {
     selector: '[tuiTileHandle]',
     host: {
         '[style.touchAction]': '"none"',
+        '[style.userSelect]': '"none"',
     },
 })
 export class TuiTileHandleDirective {
@@ -24,7 +25,7 @@ export class TuiTileHandleDirective {
         @Inject(TuiTileComponent) private readonly tile: TuiTileComponent,
     ) {}
 
-    @HostListener('pointerdown.silent.prevent', ['$event'])
+    @HostListener('pointerdown.silent', ['$event'])
     onStart(event: PointerEvent): void {
         const target = tuiGetActualTarget(event);
         const {x, y, pointerId} = event;
