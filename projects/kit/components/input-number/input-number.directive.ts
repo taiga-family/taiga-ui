@@ -26,7 +26,10 @@ export class TuiInputNumberDirective
             return;
         }
 
-        this.host.nativeFocusableElement.maxLength = this.host.calculatedMaxLength;
         this.host.nativeFocusableElement.inputMode = this.host.inputMode;
+        this.host.nativeFocusableElement.maxLength =
+            this.host.nativeFocusableElement.maxLength > 0
+                ? this.host.nativeFocusableElement.maxLength
+                : this.host.calculatedMaxLength;
     }
 }

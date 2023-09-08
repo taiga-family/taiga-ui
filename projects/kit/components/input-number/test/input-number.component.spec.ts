@@ -364,4 +364,18 @@ describe(`InputNumber`, () => {
     function getNativeInput(): DebugElement | null {
         return pageObject.getByAutomationId(`tui-primitive-textfield__native-input`);
     }
+
+    beforeEach(() => {
+        document.querySelectorAll(`input`).forEach(el => {
+            const maxlength = el.getAttribute(`maxlength`);
+            const oldSpecification = 52488; // Note: https://bugs.chromium.org/p/chromium/issues/detail?id=450544
+
+            if (typeof maxlength !== `number` || maxlength === oldSpecification) {
+                /**
+                 * -1 is a standard for all browsers
+                 */
+                el.setAttribute(`maxlength`, `-1`);
+            }
+        });
+    });
 });
