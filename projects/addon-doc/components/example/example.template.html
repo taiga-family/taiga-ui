@@ -32,7 +32,10 @@
     class="t-example"
 >
     <ng-container *ngIf="files | tuiDocExampleGetTabs: defaultTab as tabs">
-        <div class="t-tabs-wrapper">
+        <div
+            *ngIf="tabs.length > 1"
+            class="t-tabs-wrapper"
+        >
             <tui-tabs-with-more
                 class="t-tabs"
                 [(activeItemIndex)]="activeItemIndex"
