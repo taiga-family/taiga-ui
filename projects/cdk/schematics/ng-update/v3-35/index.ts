@@ -31,7 +31,9 @@ export function updateToV3_35(options: TuiSchema): Rule {
 
         !options[`skip-logs`] &&
             infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing strings...`);
-        replaceText(ICONS);
+        replaceText(
+            ICONS.map(({from, to}) => ({from: new RegExp(`\\b${from}\\b`, `g`), to})),
+        );
 
         fileSystem.commitEdits();
         saveActiveProject();

@@ -736,6 +736,10 @@ export const ICONS: Array<{from: string; to: string}> = [
         from: `tuiIconShow`,
     },
     {
+        to: `tuiIconTdsEyeMediumPragmatic`,
+        from: `tuiIconShowLarge`,
+    },
+    {
         to: `tuiIconTdsEyeSmallPragmatic`,
         from: `tuiIconEye`,
     },
@@ -750,6 +754,10 @@ export const ICONS: Array<{from: string; to: string}> = [
     {
         to: `tuiIconTdsEyeOffSmallPragmatic`,
         from: `tuiIconHide`,
+    },
+    {
+        to: `tuiIconTdsEyeOffMediumPragmatic`,
+        from: `tuiIconHideLarge`,
     },
     {
         to: `tuiIconTdsEyeOffSmallPragmatic`,
@@ -1682,6 +1690,10 @@ export const ICONS: Array<{from: string; to: string}> = [
     {
         to: `tuiIconTdsArrowsLeftRightSmallPragmatic`,
         from: `tuiIconRefresh`,
+    },
+    {
+        to: `tuiIconTdsArrowsLeftRightMediumPragmatic`,
+        from: `tuiIconRefreshLarge`,
     },
     {
         to: `tuiIconTdsArrowsLeftRightSmallPragmatic`,
