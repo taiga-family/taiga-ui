@@ -35,7 +35,7 @@ describe(`TuiLanguageSwitcherComponent`, () => {
     it(`should correct return path to icon flag`, () => {
         expect(component.getFlagPath).toBeTruthy();
         expect(component.getFlagPath(TuiCountryIsoCode.CN)).toEqual(
-            `/assets/taiga-ui/icons/CN.png`,
+            `assets/taiga-ui/icons/CN.png`,
         );
     });
 });
