@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiSvgModule} from '@taiga-ui/core';
-import {TuiFadeModule} from '@taiga-ui/experimental/components/fade';
+import {TuiFadeModule} from '@taiga-ui/experimental/directives';
 import {TuiFallbackSrcModule, TuiFallbackSrcPipe} from '@taiga-ui/experimental/pipes';
 import {TuiLazyLoadingModule} from '@taiga-ui/kit';
 

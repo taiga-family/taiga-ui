@@ -1,6 +1,5 @@
 import {
-    ChangeDetectionStrategy,
-    Component,
+    Directive,
     ElementRef,
     HostBinding,
     Inject,
@@ -12,16 +11,20 @@ import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
-import {TuiDestroyService, TuiResizeService, tuiZonefree} from '@taiga-ui/cdk';
+import {
+    TuiDestroyService,
+    TuiDirectiveStylesService,
+    TuiResizeService,
+    tuiZonefree,
+} from '@taiga-ui/cdk';
 import {TuiOrientation} from '@taiga-ui/core';
 import {fromEvent, merge, Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
-@Component({
-    selector: 'tui-fade',
-    template: '<ng-content></ng-content>',
-    styleUrls: ['./fade.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+import {TuiFadeComponent} from './fade.component';
+
+@Directive({
+    selector: '[tuiFade]',
     providers: [
         TuiDestroyService,
         TuiResizeService,
@@ -32,22 +35,22 @@ import {takeUntil} from 'rxjs/operators';
         },
     ],
 })
-export class TuiFadeComponent {
-    @Input()
+export class TuiFadeDirective {
+    @Input('tuiFadeHeight')
     @HostBinding('style.--line-height')
-    lineHeight = '100%';
+    lineHeight: string | null = null;
 
-    @Input()
+    @Input('tuiFadeSize')
     @HostBinding('style.--fade-size')
     size = '1.5em';
 
-    @Input()
+    @Input('tuiFadeOffset')
     @HostBinding('style.--fade-offset')
     offset = '0em';
 
-    @Input()
+    @Input('tuiFade')
     @HostBinding('attr.data-orientation')
-    orientation: TuiOrientation = 'horizontal';
+    orientation: TuiOrientation | '' = 'horizontal';
 
     constructor(
         @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
@@ -55,9 +58,11 @@ export class TuiFadeComponent {
         @Inject(MutationObserverService) mutate$: Observable<unknown>,
         @Inject(ElementRef) element: ElementRef<HTMLElement>,
         @Inject(NgZone) zone: NgZone,
+        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
     ) {
         const el = element.nativeElement;
 
+        directiveStyles.addComponent(TuiFadeComponent);
         merge(resize$, mutate$, fromEvent(el, 'scroll'))
             .pipe(tuiZonefree(zone), takeUntil(destroy$))
             .subscribe(() => {

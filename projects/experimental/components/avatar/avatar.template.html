@@ -17,11 +17,11 @@
         class="t-img"
         [src]="value"
     />
-    <tui-fade
+    <div
         *ngSwitchDefault
-        lineHeight="2.5rem"
+        tuiFade
         class="t-content"
     >
         <ng-content></ng-content>
-    </tui-fade>
+    </div>
 </ng-container>

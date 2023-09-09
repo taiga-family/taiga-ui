@@ -1,14 +1,14 @@
 @import 'taiga-ui-local';
 
 // prettier-ignore
-:host {
+[tuiFade] {
     .transition(mask-position);
     display: block;
     overflow: hidden;
     mask-repeat: no-repeat;
 
-    &[data-orientation='horizontal'] {
-        line-height: var(--line-height) !important;
+    &:not([data-orientation='vertical']) {
+        line-height: var(--line-height, inherit) !important;
         mask-image:
             linear-gradient(to right, transparent var(--fade-offset), #000 calc(var(--fade-size) + var(--fade-offset))),
             linear-gradient(to left, transparent var(--fade-offset), #000 calc(var(--fade-size) + var(--fade-offset))),
@@ -18,9 +18,9 @@
             calc(100% + var(--fade-size) + var(--fade-offset)) bottom,
             top;
         mask-size:
-            calc(50% + var(--fade-size) + var(--fade-offset)) var(--line-height),
-            calc(50% + var(--fade-size) + var(--fade-offset)) var(--line-height),
-            100% calc(100% - var(--line-height));
+            calc(50% + var(--fade-size) + var(--fade-offset)) var(--line-height, 100%),
+            calc(50% + var(--fade-size) + var(--fade-offset)) var(--line-height, 100%),
+            100% calc(100% - var(--line-height, 100%));
 
         &._start {
             mask-position:

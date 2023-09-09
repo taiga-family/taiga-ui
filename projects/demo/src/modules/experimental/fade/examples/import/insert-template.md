@@ -1,5 +1,5 @@
 ```html
-<tui-fade>
+<div tuiFade>
   <!-- long text here -->
-</tui-fade>
+</div>
 ```
