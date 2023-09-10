@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.0.0
-      - uses: taiga-family/ci/actions/variables@1.12.1
-      - uses: taiga-family/ci/actions/setup-node@1.12.1
+      - uses: taiga-family/ci/actions/variables@1.12.2
+      - uses: taiga-family/ci/actions/setup-node@1.12.2
 
       - run: npx nx build demo --base-href='/'
 
