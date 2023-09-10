@@ -26,7 +26,7 @@ jobs:
         run: npx nx build demo -c next --output-path ${{ env.DIST }} --base-href='/'
 
       - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/save@v3.3.1
+        uses: actions/cache/save@v3.3.2
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
@@ -64,7 +64,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup-node@1.12.1
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/restore@v3.3.1
+        uses: actions/cache/restore@v3.3.2
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
@@ -120,7 +120,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/restore@v3.3.1
+        uses: actions/cache/restore@v3.3.2
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
