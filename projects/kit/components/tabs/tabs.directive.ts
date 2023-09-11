@@ -8,7 +8,8 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiMoveFocus} from '@taiga-ui/cdk';
+import {tuiIsHTMLElement, tuiMoveFocus} from '@taiga-ui/cdk';
+import {Subject} from 'rxjs';
 
 import {TUI_TAB_ACTIVATE} from './tab/tab.providers';
 
@@ -16,11 +17,17 @@ import {TUI_TAB_ACTIVATE} from './tab/tab.providers';
     selector: 'tui-tabs, nav[tuiTabs]',
 })
 export class TuiTabsDirective implements AfterViewChecked {
-    @Input()
-    activeItemIndex = 0;
+    @Input('activeItemIndex')
+    set activeIndex(index: number) {
+        this.activeItemIndex = index;
+    }
 
     @Output()
     readonly activeItemIndexChange = new EventEmitter<number>();
+
+    readonly checked = new Subject<void>();
+
+    activeItemIndex = 0;
 
     constructor(@Inject(ElementRef) private readonly el: ElementRef<HTMLElement>) {}
 
@@ -63,5 +70,24 @@ export class TuiTabsDirective implements AfterViewChecked {
             nativeElement.classList.toggle('_active', active);
             nativeElement.setAttribute('tabIndex', active ? '0' : '-1');
         });
+
+        this.checked.next();
+    }
+
+    scrollToActiveItem(): void {
+        const tab = this.activeElement;
+
+        if (!tuiIsHTMLElement(tab)) {
+            return;
+        }
+
+        const tabs = this.el.nativeElement;
+        const horizontal =
+            tab.offsetLeft + tab.offsetWidth > tabs.scrollLeft + tabs.offsetWidth ||
+            tabs.scrollLeft > tab.offsetLeft;
+
+        if (horizontal) {
+            tabs.scrollLeft = tab.offsetLeft;
+        }
     }
 }

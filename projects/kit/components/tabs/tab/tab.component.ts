@@ -2,17 +2,26 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
+    forwardRef,
     HostBinding,
     Inject,
     OnDestroy,
+    OnInit,
     Optional,
+    Self,
 } from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
-import {TuiFocusVisibleService, tuiIsNativeFocused} from '@taiga-ui/cdk';
+import {
+    TuiDestroyService,
+    TuiFocusVisibleService,
+    tuiIsNativeFocused,
+} from '@taiga-ui/cdk';
 import {TUI_MODE, TuiBrightness} from '@taiga-ui/core';
 import {TUI_TAB_MARGIN} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
+import {debounceTime, filter, take, takeUntil} from 'rxjs/operators';
 
+import {TuiTabsDirective} from '../tabs.directive';
 import {TUI_TAB_EVENT, TUI_TAB_PROVIDERS} from './tab.providers';
 
 @Component({
@@ -37,7 +46,7 @@ import {TUI_TAB_EVENT, TUI_TAB_PROVIDERS} from './tab.providers';
         type: 'button',
     },
 })
-export class TuiTabComponent implements OnDestroy {
+export class TuiTabComponent implements OnInit, OnDestroy {
     @HostBinding('class._focus-visible')
     focusVisible = false;
 
@@ -50,10 +59,29 @@ export class TuiTabComponent implements OnDestroy {
         @Inject(TUI_TAB_EVENT) readonly event$: Observable<Event>,
         @Inject(TUI_TAB_MARGIN) readonly margin: number,
         @Inject(TuiFocusVisibleService) focusVisible$: TuiFocusVisibleService,
+        @Optional()
+        @Inject(forwardRef(() => TuiTabsDirective))
+        private readonly tabs: TuiTabsDirective | null,
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
     ) {
         focusVisible$.subscribe(visible => {
             this.focusVisible = visible;
         });
+    }
+
+    ngOnInit(): void {
+        this.tabs?.checked
+            .pipe(
+                debounceTime(200),
+                take(1),
+                filter(
+                    () =>
+                        this.tabs?.activeElement === this.el.nativeElement &&
+                        this.tabs?.activeItemIndex > 0,
+                ),
+                takeUntil(this.destroy$),
+            )
+            .subscribe(() => this.tabs?.scrollToActiveItem());
     }
 
     @HostBinding('class._active')
