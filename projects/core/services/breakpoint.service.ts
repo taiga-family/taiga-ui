@@ -26,10 +26,8 @@ export class TuiBreakpointService extends Observable<TuiBreakpointMediaKey | nul
     );
 
     private readonly stream$ = this.size$.pipe(
-        map(
-            ({width}) =>
-                this.invert[this.sorted.find(size => size > width) || this.sorted[0]],
-        ),
+        map(({width}) => this.sorted.find(size => size > width)),
+        map(key => this.invert[key || this.sorted[this.sorted.length - 1]]),
         distinctUntilChanged(),
         shareReplay({bufferSize: 1, refCount: true}),
     );
