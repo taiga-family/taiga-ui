@@ -38,7 +38,8 @@ import {TuiTextareaDirective} from './textarea.directive';
     ],
     host: {
         '($.data-mode.attr)': `mode$`,
-        '[class._ios]': `isIOS`,
+        '[$.class._ios]': `isIOS$`,
+        '($.class._ios)': `isIOS$`,
     },
 })
 export class TuiTextAreaComponent extends TuiTextareaComponent {}

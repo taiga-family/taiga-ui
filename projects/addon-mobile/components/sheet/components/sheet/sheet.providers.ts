@@ -1,9 +1,10 @@
 import {DOCUMENT} from '@angular/common';
 import {ElementRef, forwardRef, NgZone, Provider} from '@angular/core';
+import {WINDOW} from '@ng-web-apis/common';
 import {
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
-    TUI_IS_IOS,
+    tuiIsIos,
     tuiTypedFromEvent,
     tuiZonefree,
 } from '@taiga-ui/cdk';
@@ -31,14 +32,14 @@ export const TUI_SHEET_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_SHEET_SCROLL,
-        deps: [ElementRef, NgZone, DOCUMENT, TUI_IS_IOS],
+        deps: [ElementRef, NgZone, DOCUMENT, WINDOW],
         useFactory: (
             {nativeElement}: ElementRef<HTMLElement>,
             zone: NgZone,
             doc: Document,
-            isIos: boolean,
+            win: Window,
         ): Observable<number> =>
-            isIos
+            tuiIsIos(win.navigator)
                 ? iosScrollFactory(nativeElement, doc, zone)
                 : merge(
                       tuiTypedFromEvent(nativeElement, `scroll`),

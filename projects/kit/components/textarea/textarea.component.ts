@@ -15,7 +15,6 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    TUI_IS_IOS,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
@@ -26,6 +25,7 @@ import {
     MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_ICON_PADDINGS,
+    TUI_IS_IOS_RES,
     TUI_MODE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiBrightness,
@@ -56,7 +56,8 @@ export const LINE_HEIGHT_L = 24;
     ],
     host: {
         '($.data-mode.attr)': 'mode$',
-        '[class._ios]': 'isIOS',
+        '[$.class._ios]': 'isIOS$',
+        '($.class._ios)': 'isIOS$',
     },
 })
 export class TuiTextareaComponent
@@ -85,7 +86,7 @@ export class TuiTextareaComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_IS_IOS) readonly isIOS: boolean,
+        @Inject(TUI_IS_IOS_RES) readonly isIOS$: boolean,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
         readonly controller: TuiTextfieldController,

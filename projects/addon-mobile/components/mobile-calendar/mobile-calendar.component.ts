@@ -16,7 +16,6 @@ import {
     MONTHS_IN_YEAR,
     TUI_FIRST_DAY,
     TUI_IS_E2E,
-    TUI_IS_IOS,
     TUI_LAST_DAY,
     TuiBooleanHandler,
     TuiDay,
@@ -31,6 +30,7 @@ import {
     TUI_ANIMATIONS_DURATION,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
+    TUI_IS_IOS_RES,
     TUI_SHORT_WEEK_DAYS,
     TuiCommonIcons,
 } from '@taiga-ui/core';
@@ -69,7 +69,10 @@ import {
     styleUrls: ['./mobile-calendar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_MOBILE_CALENDAR_PROVIDERS,
-    host: {'[class._ios]': 'isIOS'},
+    host: {
+        '[$.class._ios]': 'isIOS$',
+        '($.class._ios)': 'isIOS$',
+    },
 })
 export class TuiMobileCalendarComponent implements AfterViewInit {
     @ViewChild('yearsScrollRef')
@@ -114,7 +117,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     );
 
     constructor(
-        @Inject(TUI_IS_IOS) readonly isIOS: boolean,
+        @Inject(TUI_IS_IOS_RES) readonly isIOS$: boolean,
         @Inject(TUI_IS_E2E) readonly isE2E: boolean,
         @Inject(DOCUMENT) private readonly doc: Document,
         @Self()

@@ -12,6 +12,8 @@ export * from './i18n';
 export * from './icon-place';
 export * from './icons';
 export * from './icons-path';
+export * from './is-android-resolution';
+export * from './is-ios-resolution';
 export * from './is-mobile-resolution';
 export * from './legacy-mask';
 export * from './media';

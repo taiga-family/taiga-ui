@@ -15,6 +15,8 @@ import {
 import {TUI_IS_MOBILE_RES_PROVIDER} from '@taiga-ui/core/providers';
 import {
     TUI_ANIMATIONS_DURATION,
+    TUI_IS_ANDROID_RES,
+    TUI_IS_IOS_RES,
     TUI_IS_MOBILE_RES,
     TUI_THEME,
 } from '@taiga-ui/core/tokens';
@@ -33,8 +35,11 @@ import {debounceTime, map} from 'rxjs/operators';
     host: {
         'data-tui-version': TUI_VERSION,
         '[style.--tui-duration.ms]': 'duration',
-        '[class._ios]': 'isIOS',
-        '[class._android]': 'isAndroid',
+        '[$.class._ios]': 'isIOS$',
+        '($.class._ios)': 'isIOS$',
+        '[$.class._android]': 'isAndroid$',
+        '($.class._android)': 'isAndroid$',
+        '[$.class._mobile]': 'isMobileRes$',
         '($.class._mobile)': 'isMobileRes$',
     },
 })
@@ -54,6 +59,8 @@ export class TuiRootComponent {
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(TUI_IS_MOBILE_RES) readonly isMobileRes$: Observable<boolean>,
         @Inject(TUI_IS_IOS) readonly isIOS: boolean,
+        @Inject(TUI_IS_ANDROID_RES) readonly isAndroid$: Observable<boolean>,
+        @Inject(TUI_IS_IOS_RES) readonly isIOS$: Observable<boolean>,
         @Inject(TUI_IS_ANDROID) readonly isAndroid: boolean,
         @Inject(DOCUMENT) {body}: Document,
         @Inject(TUI_THEME) theme: string,
