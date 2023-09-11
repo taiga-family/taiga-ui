@@ -1,4 +1,4 @@
-import {Locator, Page} from '@playwright/test';
+import {expect, Locator, Page} from '@playwright/test';
 
 import {tuiHideElement} from '../hide-element';
 
@@ -48,5 +48,10 @@ export class TuiDocumentationPagePO {
         for (const element of hideElements) {
             await tuiHideElement(element);
         }
+
+        await this.apiPageExample.evaluate(el => el.scrollIntoView());
+        await expect(async () => {
+            expect(await this.apiPageExample.boundingBox().then(box => box?.y)).toBe(64);
+        }).toPass();
     }
 }
