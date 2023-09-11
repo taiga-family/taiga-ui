@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/experimental",
-    "version": "3.43.0",
+    "version": "3.44.0",
     "description": "A package with Taiga UI experimental components",
     "keywords": [
         "angular",
@@ -13,9 +13,9 @@
     "peerDependencies": {
         "@angular/common": ">=12.0.0",
         "@angular/core": ">=12.0.0",
-        "@taiga-ui/cdk": ">=3.43.0",
-        "@taiga-ui/core": ">=3.43.0",
-        "@taiga-ui/kit": ">=3.43.0",
+        "@taiga-ui/cdk": ">=3.44.0",
+        "@taiga-ui/core": ">=3.44.0",
+        "@taiga-ui/kit": ">=3.44.0",
         "@tinkoff/ng-polymorpheus": ">=4.0.0",
         "rxjs": ">=6.0.0",
         "tslib": ">=2.0.0"

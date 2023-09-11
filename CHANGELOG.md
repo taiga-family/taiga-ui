@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.44.0](https://github.com/taiga-family/taiga-ui/compare/v3.43.0...v3.44.0) (2023-09-11)
+
+### Features
+
+- **core:** add `TUI_REDUCED_MOTION` ([#5329](https://github.com/taiga-family/taiga-ui/issues/5329))
+  ([e684bdc](https://github.com/taiga-family/taiga-ui/commit/e684bdcc221a5f373a810310a1b2c8641cd1eb57))
+- **experimental:** `Fade` turn into a directive for easier reuse
+  ([#5333](https://github.com/taiga-family/taiga-ui/issues/5333))
+  ([6e67e26](https://github.com/taiga-family/taiga-ui/commit/6e67e26e0e889a6655358888419baaf1cfa4ac72))
+
+### Bug Fixes
+
+- **addon-charts:** `BarSet` fix case with all bars negative
+  ([#5347](https://github.com/taiga-family/taiga-ui/issues/5347))
+  ([98a907f](https://github.com/taiga-family/taiga-ui/commit/98a907f9526aa0dc25eb2db15dac195f6ab6150c))
+- **addon-doc:** `Example` should not show tabs if there is only default one (preview)
+  ([#5331](https://github.com/taiga-family/taiga-ui/issues/5331))
+  ([e651642](https://github.com/taiga-family/taiga-ui/commit/e65164258806294ff237ff5ffba6d9d30750297a))
+- **addon-mobile:** remove shadow background in mobile calendar header
+  ([#5326](https://github.com/taiga-family/taiga-ui/issues/5326))
+  ([c174365](https://github.com/taiga-family/taiga-ui/commit/c17436595d2e49a2af93df14671625d77e5cad8c))
+- **addon-table:** `Reorder` fix toggling on/off
+  ([b3e7408](https://github.com/taiga-family/taiga-ui/commit/b3e7408c7d5d3396bdd6e5edbd443db7e342dd66))
+- **cdk:** `BreakpointService` properly react to window resize
+  ([#5345](https://github.com/taiga-family/taiga-ui/issues/5345))
+  ([878f7ec](https://github.com/taiga-family/taiga-ui/commit/878f7ecb832b9e4920844d05c1795bcb08003dd7))
+- **cdk:** compatibility svg processor with SSR ([#5317](https://github.com/taiga-family/taiga-ui/issues/5317))
+  ([f4a1706](https://github.com/taiga-family/taiga-ui/commit/f4a17060c68ef7ed7de72ceeac6e40ca09b993dd))
+- **core:** break words in notification ([#5330](https://github.com/taiga-family/taiga-ui/issues/5330))
+  ([357837d](https://github.com/taiga-family/taiga-ui/commit/357837da66bcebe4087a9486ce13ed8e55f43e6f))
+- **kit:** `InputNumber` ignores native attribute `maxlength`
+  ([#5307](https://github.com/taiga-family/taiga-ui/issues/5307))
+  ([f3d0c33](https://github.com/taiga-family/taiga-ui/commit/f3d0c335478df303521b2f31f36365034dcb177a))
+- **schematics:** do not provide `BrowserAnimationsModule` for standalone application
+  ([#5290](https://github.com/taiga-family/taiga-ui/issues/5290))
+  ([273f6c1](https://github.com/taiga-family/taiga-ui/commit/273f6c109e4199e54e124716cabe4128b6674c59))
+- **schematics:** replace whole icon name instead of substring
+  ([#5334](https://github.com/taiga-family/taiga-ui/issues/5334))
+  ([cdc0802](https://github.com/taiga-family/taiga-ui/commit/cdc0802fea8d48b05a2d2f16e5cd0c8243b1d0d3))
+
 ## [3.43.0](https://github.com/taiga-family/taiga-ui/compare/v3.42.1...v3.43.0) (2023-09-06)
 
 ### Features
