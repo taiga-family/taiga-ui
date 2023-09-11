@@ -16,33 +16,43 @@ import {createAngularJson} from '../../../utils/create-angular-json';
 const collectionPath = join(__dirname, `../../../migration.json`);
 
 const COMPONENT_BEFORE = `
-import { tuiIconAlertCircleOutline, tuiIconAlertLarge } from '@taiga-ui/proprietary-icons';
+import { tuiIconAlertCircleOutline, tuiIconAlertLarge, tuiIconViewListLarge, tuiIconLinkedLarge } from '@taiga-ui/proprietary-icons';
 
 @Component({templateUrl: './test.template.html'})
 export class TestComponent {
     account = {
             icon: 'tuiIconAlertLarge',
+            icon2: 'tuiIconViewListLarge',
+            icon3: tuiIconLinkedLarge,
             color: 'white',
             background: 'var(--tui-support-12)',
         };
 
     icon = tuiIconAlertCircleOutline;
     icon2 = tuiIconAlertLarge;
-}`;
+    icon3 = tuiIconViewListLarge;
+}
+`;
 
 const COMPONENT_AFTER = `import { tuiIconTdsAlertSmallPragmatic, tuiIconTdsExclamationMediumPragmatic } from "@taiga-ui/proprietary-tds-icons";
+
+import { tuiIconViewListLarge, tuiIconLinkedLarge } from '@taiga-ui/proprietary-icons';
 
 @Component({templateUrl: './test.template.html'})
 export class TestComponent {
     account = {
             icon: 'tuiIconTdsExclamationMediumPragmatic',
+            icon2: 'tuiIconViewListLarge',
+            icon3: tuiIconLinkedLarge,
             color: 'white',
             background: 'var(--tui-support-12)',
         };
 
     icon = tuiIconTdsAlertSmallPragmatic;
     icon2 = tuiIconTdsExclamationMediumPragmatic;
-}`;
+    icon3 = tuiIconViewListLarge;
+}
+`;
 
 const TEMPLATE_BEFORE = `
 <tui-marker-icon
@@ -52,6 +62,8 @@ const TEMPLATE_BEFORE = `
     [size]="iconSize"
 ></tui-marker-icon>
 <custom-component [customAttr]="tuiIconArrowDown"></custom-component>
+<tui-svg src='tuiIconViewListLarge' />
+<tui-svg src="tuiIconLinkedLarge" />
 `;
 
 const TEMPLATE_AFTER = `
@@ -62,6 +74,8 @@ const TEMPLATE_AFTER = `
     [size]="iconSize"
 ></tui-marker-icon>
 <custom-component [customAttr]="tuiIconTdsArrowDownSmallPragmatic"></custom-component>
+<tui-svg src='tuiIconViewListLarge' />
+<tui-svg src="tuiIconLinkedLarge" />
 `;
 
 describe(`ng-update`, () => {

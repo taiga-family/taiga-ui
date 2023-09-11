@@ -3,7 +3,7 @@ import {getSourceFiles} from 'ng-morph';
 import {ALL_FILES} from '../../constants';
 
 export function replaceText(
-    replaceable: Array<{from: string; to: string}>,
+    replaceable: Array<{from: RegExp | string; to: string}>,
     pattern = ALL_FILES,
 ): void {
     const sourceFiles = getSourceFiles(pattern);
