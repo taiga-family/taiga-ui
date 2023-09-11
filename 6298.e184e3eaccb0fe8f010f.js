@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[6298],{6298:e=>{e.exports="```html\n<tui-fade>\n  \x3c!-- long text here --\x3e\n</tui-fade>\n```\n"}}]);
