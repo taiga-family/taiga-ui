@@ -1,17 +1,11 @@
 import {Inject, Injectable} from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
+import {TUI_WINDOW_SIZE} from '@taiga-ui/cdk';
 import {TuiMedia} from '@taiga-ui/core/interfaces';
 import {TUI_MEDIA} from '@taiga-ui/core/tokens';
-import {fromEvent, merge, Observable} from 'rxjs';
-import {map, shareReplay, startWith} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {distinctUntilChanged, map, shareReplay} from 'rxjs/operators';
 
 export type TuiBreakpointMediaKey = keyof Omit<TuiMedia, 'tablet'>;
-
-export interface TuiBreakpoint {
-    name: TuiBreakpointMediaKey;
-    query: string;
-    width: number;
-}
 
 /**
  * Service to provide the current breakpoint based on Taiga UI's media queries
@@ -20,37 +14,28 @@ export interface TuiBreakpoint {
     providedIn: `root`,
 })
 export class TuiBreakpointService extends Observable<TuiBreakpointMediaKey | null> {
-    constructor(@Inject(TUI_MEDIA) media: TuiMedia, @Inject(WINDOW) win: Window) {
-        const breakpoints = getBreakpoints(media);
-        const events$ = breakpoints.map(({query}) =>
-            fromEvent<MediaQueryListEvent>(win.matchMedia(query), `change`),
-        );
-        const media$ = merge(...events$).pipe(
-            map(() => currentBreakpoint(breakpoints, win.innerWidth).name),
-            startWith(currentBreakpoint(breakpoints, win.innerWidth).name),
-            shareReplay({bufferSize: 1, refCount: true}),
-        );
+    private readonly sorted: number[] = Object.values(this.media).sort((a, b) => a - b);
+    private readonly invert: Record<number, TuiBreakpointMediaKey> = Object.keys(
+        this.media,
+    ).reduce(
+        (ret, key) => ({
+            ...ret,
+            [this.media[key as TuiBreakpointMediaKey]]: key,
+        }),
+        {},
+    );
 
-        super(subscriber => media$.subscribe(subscriber));
+    private readonly stream$ = this.size$.pipe(
+        map(({width}) => this.sorted.find(size => size > width)),
+        map(key => this.invert[key || this.sorted[this.sorted.length - 1]]),
+        distinctUntilChanged(),
+        shareReplay({bufferSize: 1, refCount: true}),
+    );
+
+    constructor(
+        @Inject(TUI_MEDIA) private readonly media: TuiMedia,
+        @Inject(TUI_WINDOW_SIZE) private readonly size$: Observable<ClientRect>,
+    ) {
+        super(subscriber => this.stream$.subscribe(subscriber));
     }
-}
-
-function getBreakpoints(media: TuiMedia): TuiBreakpoint[] {
-    return Object.entries(media).map(([name, width]) => ({
-        name: name as TuiBreakpointMediaKey,
-        /**
-         * @note:
-         * min-width query in css is inclusive, but in window.matchMedia it is exclusive
-         * so we need to subtract 1px to get the same result
-         */
-        query: `(max-width: ${width - 1}px)`,
-        width,
-    }));
-}
-
-function currentBreakpoint(
-    breakpoints: TuiBreakpoint[],
-    innerWidth: number,
-): TuiBreakpoint {
-    return breakpoints.find(({width}) => innerWidth < width) ?? breakpoints.slice(-1)[0];
 }

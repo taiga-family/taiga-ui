@@ -58,9 +58,12 @@ export class TuiTileComponent implements OnDestroy, AfterViewInit {
         this.tiles.rearrange(this.element);
     }
 
-    onDrag(dragged: boolean): void {
+    onDrag(offset: readonly [number, number]): void {
+        const dragged = !Number.isNaN(offset[0]);
+
         this.dragged = this.dragged || dragged;
         this.tiles.element = dragged ? this.element : null;
+        this.service.setOffset(offset);
     }
 
     onTransitionEnd(): void {

@@ -4,21 +4,19 @@
     <thead>
         <tr>
             <th>CSS</th>
-            <th>Breakpoint service</th>
+            <th>Service</th>
         </tr>
     </thead>
     <tbody>
         <td>
-            <div class="mobile">Mobile breakpoint</div>
-            <div class="desktop-small">Desktop small breakpoint</div>
-            <div class="desktop-large">Desktop large breakpoint</div>
+            <div class="mobile">Mobile</div>
+            <div class="desktop-small">Desktop small</div>
+            <div class="desktop-large">Desktop large</div>
         </td>
-        <td>
-            <ng-container *ngIf="breakpoint$ | async as breakpoint">
-                <div *ngIf="breakpoint === 'mobile'">Mobile breakpoint</div>
-                <div *ngIf="breakpoint === 'desktopSmall'">Desktop small breakpoint</div>
-                <div *ngIf="breakpoint === 'desktopLarge'">Desktop large breakpoint</div>
-            </ng-container>
+        <td *ngIf="breakpoint$ | async as breakpoint">
+            <div *ngIf="breakpoint === 'mobile'">Mobile</div>
+            <div *ngIf="breakpoint === 'desktopSmall'">Desktop small</div>
+            <div *ngIf="breakpoint === 'desktopLarge'">Desktop large</div>
         </td>
     </tbody>
 </table>

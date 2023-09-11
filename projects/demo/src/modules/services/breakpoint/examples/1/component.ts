@@ -12,7 +12,6 @@ import {TuiBreakpointService} from '@taiga-ui/core';
 })
 export class TuiBreakpointExample {
     constructor(
-        @Inject(TuiBreakpointService)
-        readonly breakpoint$: TuiBreakpointService,
+        @Inject(TuiBreakpointService) readonly breakpoint$: TuiBreakpointService,
     ) {}
 }

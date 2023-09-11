@@ -1,23 +1,15 @@
 import {inject, InjectionToken} from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
-import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {Observable} from 'rxjs';
-import {map, shareReplay, startWith} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
+
+import {TUI_WINDOW_SIZE} from './window-size';
 
 /**
- * Window height accounting for disappearing address bar
+ * @deprecated Use {@link TUI_WINDOW_SIZE} instead
  */
 export const TUI_WINDOW_HEIGHT = new InjectionToken<Observable<number>>(
     `[TUI_WINDOW_HEIGHT]`,
     {
-        factory: () => {
-            const win = inject(WINDOW);
-
-            return tuiTypedFromEvent(win, `resize`).pipe(
-                startWith(null),
-                map(() => Math.max(win.innerHeight, win.visualViewport?.height || 0)),
-                shareReplay({bufferSize: 1, refCount: true}),
-            );
-        },
+        factory: () => inject(TUI_WINDOW_SIZE).pipe(map(({height}) => height)),
     },
 );

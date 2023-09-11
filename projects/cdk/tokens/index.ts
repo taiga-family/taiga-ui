@@ -22,4 +22,5 @@ export * from './swipe-options';
 export * from './take-only-trusted-events';
 export * from './touch-supported';
 export * from './window-height';
+export * from './window-size';
 export * from './zoom-options';
