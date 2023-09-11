@@ -45,6 +45,8 @@ export class TuiBarSetComponent {
 
     @tuiPure
     private getLargest(value: readonly number[]): number {
-        return value.reduce((a, b) => (a > b ? a : b), 0);
+        return value.some(a => a > 0)
+            ? value.reduce((a, b) => (a > b ? a : b), 0)
+            : Math.abs(value.reduce((a, b) => (a < b ? a : b), 0));
     }
 }
