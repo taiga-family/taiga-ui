@@ -5,3 +5,7 @@ export function tuiCreateToken<T>(defaults: T): InjectionToken<T> {
         factory: () => defaults,
     });
 }
+
+export function tuiCreateTokenFromFactory<T>(factory: () => T): InjectionToken<T> {
+    return new InjectionToken<T>(``, {factory});
+}

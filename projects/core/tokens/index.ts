@@ -20,6 +20,7 @@ export * from './notification-options';
 export * from './number-format';
 export * from './option-content';
 export * from './ordered-short-week-days';
+export * from './reduced-motion';
 export * from './sanitizer';
 export * from './scroll-ref';
 export * from './selection-stream';

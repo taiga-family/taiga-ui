@@ -37,6 +37,7 @@ import {
     TUI_DROPDOWN_HOVER_OPTIONS,
     TUI_HINT_DEFAULT_OPTIONS,
     TUI_HINT_OPTIONS,
+    TUI_REDUCED_MOTION,
     TUI_SANITIZER,
 } from '@taiga-ui/core';
 import {TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
@@ -145,7 +146,7 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_ANIMATIONS_DURATION,
-        useFactory: () => (inject(TUI_IS_E2E) ? 0 : 300),
+        useFactory: () => (inject(TUI_IS_E2E) || inject(TUI_REDUCED_MOTION) ? 0 : 300),
     },
     {
         provide: TUI_HINT_OPTIONS,
@@ -163,7 +164,8 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_DOC_SCROLL_BEHAVIOR,
-        useFactory: () => (inject(TUI_IS_E2E) ? `auto` : `smooth`), // https://github.com/cypress-io/cypress/issues/4640
+        useFactory: () =>
+            inject(TUI_IS_E2E) || inject(TUI_REDUCED_MOTION) ? `auto` : `smooth`, // https://github.com/cypress-io/cypress/issues/4640
     },
     {
         provide: TUI_TAKE_ONLY_TRUSTED_EVENTS,
