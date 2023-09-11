@@ -6,3 +6,4 @@ export * from './input-tag.po';
 export * from './input-time.po';
 export * from './multi-select.po';
 export * from './slider.po';
+export * from './textfield-with-data-list.po';
