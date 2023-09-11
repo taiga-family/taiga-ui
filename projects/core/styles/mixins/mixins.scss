@@ -279,7 +279,6 @@
     text-overflow: ellipsis;
 }
 
-/* stylelint-disable selector-max-specificity */
 @mixin text-overflow-with-fade($color: var(--tui-base-01), $transparentColor: transparent, $width: 1.875rem) {
     position: relative;
     overflow: hidden;
@@ -295,7 +294,6 @@
         pointer-events: none;
     }
 }
-/* stylelint-enable selector-max-specificity */
 
 @mixin createStackingContext() {
     position: relative;
