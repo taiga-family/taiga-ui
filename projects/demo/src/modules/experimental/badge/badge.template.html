@@ -38,7 +38,7 @@
 
         <tui-doc-example
             id="fade"
-            heading="Fade"
+            heading="Long value"
             [content]="example4"
         >
             <tui-badge-example-4></tui-badge-example-4>
@@ -57,22 +57,23 @@
         <tui-doc-demo>
             <p>
                 <tui-badge
-                    *ngIf="contentType === 'icon'"
+                    *ngIf="contentType === 'with icon'"
                     [appearance]="appearance"
                     [hoverable]="hoverable"
                     [size]="size"
-                    [value]="values[value]"
                 >
                     <tui-svg src="tuiIconCheck"></tui-svg>
+                    <div tuiFade>Taiga UI</div>
                 </tui-badge>
 
                 <tui-badge
-                    *ngIf="contentType === 'empty'"
+                    *ngIf="contentType === 'text'"
                     [appearance]="appearance"
                     [hoverable]="hoverable"
                     [size]="size"
-                    [value]="values[value]"
-                ></tui-badge>
+                >
+                    Taiga UI
+                </tui-badge>
 
                 <tui-badge
                     *ngIf="contentType === 'image'"
@@ -118,15 +119,6 @@
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="value"
-                documentationPropertyType="string | number"
-                [documentationPropertyValues]="valueVariants"
-                [(documentationPropertyValue)]="value"
-            >
-                Value. If value is a number and is more than 99, it will be replaced with &laquo;99+&raquo;
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
                 documentationPropertyName="hoverable"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="hoverable"
@@ -139,11 +131,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p>
-                    Import
-                    <code>TuiBadgeModule</code>
-                    into a module where you want to use our component
-                </p>
+                <p>Import into a module</p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"

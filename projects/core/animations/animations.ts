@@ -211,7 +211,7 @@ export const tuiScaleIn = trigger(`tuiScaleIn`, [
     ),
 ]);
 
-export const tuiExpressiveEntrance = trigger(`tuiExpressiveEntrance`, [
+export const tuiPop = trigger(`tuiPop`, [
     transition(
         `:enter`,
         [

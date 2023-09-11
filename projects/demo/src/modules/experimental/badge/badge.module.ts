@@ -11,7 +11,7 @@ import {
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiBadgeModule} from '@taiga-ui/experimental';
+import {TuiBadgeModule, TuiFadeModule} from '@taiga-ui/experimental';
 import {TuiRadioListModule} from '@taiga-ui/kit';
 
 import {ExampleTuiBadgeComponent} from './badge.component';
@@ -30,6 +30,7 @@ import {TuiBadgeExample5} from './examples/5';
         TuiRadioListModule,
         FormsModule,
         CommonModule,
+        TuiFadeModule,
         TuiNotificationModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiBadgeComponent)),

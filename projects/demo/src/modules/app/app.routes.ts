@@ -211,7 +211,7 @@ export const ROUTES: Routes = [
         loadChildren: async () =>
             (await import(`../experimental/badge/badge.module`)).ExampleTuiBadgeModule,
         data: {
-            title: `Badge`,
+            title: `Badge `,
         },
     },
     {

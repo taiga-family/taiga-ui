@@ -57,31 +57,17 @@ export class ExampleTuiBadgeComponent {
         'warning',
         'info',
         'neutral',
-        'dark-text',
+        'light',
     ];
 
     appearance = this.appearanceVariants[0];
-
-    values: {[key: string]: number | string} = {
-        Taiga: 'Taiga',
-        'Very long text': 'Very long text',
-        '5': 5,
-        '99': 99,
-        '100': 100,
-        '"100"': '100',
-        '""': '',
-    };
 
     readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeXL> = ['s', 'm', 'l', 'xl'];
 
     size: TuiSizeS | TuiSizeXL = this.sizeVariants[1];
 
-    valueVariants: ReadonlyArray<number | string> = Object.keys(this.values);
-
-    value: number | string = 'Taiga';
-
     hoverable = false;
 
-    contentTypeVariants = ['empty', 'icon', 'image'];
+    contentTypeVariants = ['text', 'with icon', 'image'];
     contentType = this.contentTypeVariants[0];
 }

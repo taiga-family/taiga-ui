@@ -1,20 +1,16 @@
-<div class="t-icon">
-    <ng-content></ng-content>
-</div>
 <div class="t-image">
     <ng-content select="img"></ng-content>
 </div>
-<tui-fade
-    *ngIf="!isEmpty"
-    class="t-fade"
-    [size]="textOverflow(text) ? '1.5rem' : '0'"
-    (tuiResize)="(0)"
+<div
+    class="t-icon"
+    [class._icon-only]="!text.innerHTML"
 >
-    <div
-        #text
-        class="t-text"
-        [title]="titleText(text)"
-    >
-        {{ outputValue }}
-    </div>
-</tui-fade>
+    <ng-content select="tui-svg"></ng-content>
+</div>
+
+<span
+    #text
+    class="t-text"
+>
+    <ng-content></ng-content>
+</span>

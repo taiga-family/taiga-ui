@@ -6,18 +6,17 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {TUI_PLATFORM, tuiIsNumber, tuiIsPresent, TuiPlatform} from '@taiga-ui/cdk';
+import {TUI_PLATFORM, TuiPlatform} from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
     TUI_ANIMATION_OPTIONS,
     TUI_MODE,
     TuiBrightness,
-    tuiExpressiveEntrance,
+    tuiPop,
     TuiSizeS,
     TuiSizeXL,
 } from '@taiga-ui/core';
 import {TuiBadgeAppearance} from '@taiga-ui/experimental/types';
-import {PolymorpheusPrimitive} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -26,15 +25,13 @@ import {Observable} from 'rxjs';
     templateUrl: './badge.template.html',
     styleUrls: ['./badge.style.less'],
     providers: [MODE_PROVIDER],
-    animations: [tuiExpressiveEntrance],
+    animations: [tuiPop],
     host: {
+        '[tabIndex]': 'hoverable ? 0 : -1',
         '($.data-mode.attr)': 'mode$',
     },
 })
 export class TuiBadgeComponent {
-    @Input()
-    value: PolymorpheusPrimitive;
-
     @Input()
     @HostBinding('attr.data-size')
     size: TuiSizeS | TuiSizeXL = 'l';
@@ -50,7 +47,7 @@ export class TuiBadgeComponent {
     @HostBinding('attr.data-platform')
     platform = this.tuiPlatform;
 
-    @HostBinding('@tuiExpressiveEntrance')
+    @HostBinding('@tuiPop')
     readonly entrance = this.animationOption;
 
     constructor(
@@ -58,36 +55,4 @@ export class TuiBadgeComponent {
         @Inject(TUI_PLATFORM) readonly tuiPlatform: TuiPlatform,
         @Inject(TUI_ANIMATION_OPTIONS) private readonly animationOption: AnimationOptions,
     ) {}
-
-    @HostBinding('attr.data-padding')
-    get padding(): string {
-        if (this.isEmpty) {
-            return 'none';
-        }
-
-        return tuiIsNumber(this.value?.valueOf()) ? 'm' : 'l';
-    }
-
-    get outputValue(): string {
-        const value = this.value?.valueOf();
-
-        if (tuiIsNumber(value) && value > 99) {
-            return '99+';
-        }
-
-        return tuiIsPresent(this.value) ? String(this.value) : '';
-    }
-
-    @HostBinding('class._empty-value')
-    get isEmpty(): boolean {
-        return !this.value && this.value !== 0;
-    }
-
-    textOverflow({offsetWidth, scrollWidth}: HTMLElement): boolean {
-        return offsetWidth < scrollWidth;
-    }
-
-    titleText(element: HTMLElement): string {
-        return this.textOverflow(element) ? this.outputValue : '';
-    }
 }
