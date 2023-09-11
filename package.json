@@ -73,6 +73,9 @@
             "prettier --write"
         ]
     },
+    "browserslist": [
+        "extends @taiga-ui/browserslist-config"
+    ],
     "prettier": "@taiga-ui/prettier-config",
     "eslintConfig": {
         "extends": [
@@ -119,6 +122,7 @@
         "@nx/node": "16.8.1",
         "@nx/workspace": "16.8.1",
         "@playwright/test": "1.37.1",
+        "@taiga-ui/browserslist-config": "0.2.0",
         "@taiga-ui/commitlint-config": "0.2.0",
         "@taiga-ui/cspell-config": "0.8.2",
         "@taiga-ui/eslint-plugin-experience": "0.6.5",
