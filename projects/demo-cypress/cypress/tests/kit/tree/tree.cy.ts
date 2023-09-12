@@ -6,6 +6,7 @@ describe(`Tree`, () => {
     it(`Programmatic control`, () => {
         cy.get(`#programmatic button.programmatic`).eq(0).click();
         cy.get(`#programmatic button.programmatic`).eq(1).click();
+        cy.get(`#programmatic button.programmatic`).eq(2).click();
 
         cy.get(`#programmatic`)
             .tuiWaitBeforeScreenshot()

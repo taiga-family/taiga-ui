@@ -48,9 +48,9 @@ export class TuiTreeExample4 {
         this.map.set(this.data, !this.map.get(this.data));
     }
 
-    toggleLevel(): void {
+    toggleLevel(index: number): void {
         const nodes: readonly TreeNode[] = this.data.children || [];
 
-        this.map.set(nodes[0], !this.map.get(nodes[0]));
+        this.map.set(nodes[index], !this.map.get(nodes[index]));
     }
 }
