@@ -362,4 +362,13 @@ describe(`Money`, () => {
             expect(colored).toBe(false);
         });
     });
+
+    it(`if empty string is passed, there is no extra space character`, () => {
+        testComponent.currency = ``;
+        fixture.detectChanges();
+
+        const textContent = fixture.debugElement.nativeElement.textContent;
+
+        expect(textContent).toEqual(`237`);
+    });
 });
