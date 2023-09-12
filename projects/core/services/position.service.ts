@@ -1,10 +1,10 @@
 import {ElementRef, Inject, Injectable, NgZone} from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
-import {tuiZonefree} from '@taiga-ui/cdk';
+import {EMPTY_CLIENT_RECT, tuiZonefree} from '@taiga-ui/cdk';
 import {TuiPositionAccessor} from '@taiga-ui/core/abstract';
 import {TuiPoint} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {finalize, map} from 'rxjs/operators';
 
 @Injectable()
 export class TuiPositionService extends Observable<TuiPoint> {
@@ -21,6 +21,7 @@ export class TuiPositionService extends Observable<TuiPoint> {
                     map(() => el.nativeElement.getBoundingClientRect()),
                     map(rect => accessor.getPosition(rect)),
                     tuiZonefree(zone),
+                    finalize(() => accessor.getPosition(EMPTY_CLIENT_RECT)),
                 )
                 .subscribe(subscriber),
         );
