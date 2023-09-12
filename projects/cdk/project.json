@@ -31,7 +31,7 @@
         "postbuild": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "tsc -p ./tsconfig.schematics.json"
+                "command": "tsc -p ./projects/cdk/schematics/tsconfig.schematics.json"
             }
         },
         "test": {
