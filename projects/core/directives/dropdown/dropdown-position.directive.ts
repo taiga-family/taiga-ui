@@ -31,6 +31,10 @@ export class TuiDropdownPositionDirective extends TuiPositionAccessor {
     }
 
     getPosition({width, height}: ClientRect): TuiPoint {
+        if (!width && !height) {
+            this.previous = undefined;
+        }
+
         const hostRect = this.accessor?.getClientRect() ?? EMPTY_CLIENT_RECT;
         const viewport = this.viewport.getClientRect();
         const {minHeight, align, direction, offset} = this.options;
