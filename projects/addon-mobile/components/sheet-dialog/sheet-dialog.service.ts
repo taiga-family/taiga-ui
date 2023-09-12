@@ -11,8 +11,7 @@ const DIALOG = new PolymorpheusComponent(TuiSheetDialogComponent);
     providedIn: `root`,
 })
 export class TuiSheetDialogService extends AbstractTuiDialogService<
-    TuiSheetDialogOptions<any>,
-    number
+    TuiSheetDialogOptions<any>
 > {
     protected readonly component = DIALOG;
     protected readonly defaultOptions: TuiSheetDialogOptions<any> = {
