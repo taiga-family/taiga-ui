@@ -1,6 +1,7 @@
-import {inject, InjectionToken} from '@angular/core';
+import {inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils';
 
-export const TUI_IS_STACKBLITZ = new InjectionToken<boolean>(`[TUI_IS_STACKBLITZ]`, {
-    factory: () => inject(WINDOW).location.host.endsWith(`stackblitz.io`),
-});
+export const TUI_IS_STACKBLITZ = tuiCreateTokenFromFactory(() =>
+    inject(WINDOW).location.host.endsWith(`stackblitz.io`),
+);

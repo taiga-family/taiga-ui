@@ -1,16 +1,16 @@
-import {InjectionToken} from '@angular/core';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
 import {tuiExtractI18n} from '@taiga-ui/i18n';
 
 /**
  * tui-preview i18n
  */
-export const TUI_PREVIEW_TEXTS = new InjectionToken(`[TUI_PREVIEW_TEXTS]`, {
-    factory: tuiExtractI18n(`previewTexts`),
-});
+export const TUI_PREVIEW_TEXTS = tuiCreateTokenFromFactory(
+    tuiExtractI18n(`previewTexts`),
+);
 
 /**
  * tui-preview zoom i18n
  */
-export const TUI_PREVIEW_ZOOM_TEXTS = new InjectionToken(`[TUI_PREVIEW_ZOOM_TEXTS]`, {
-    factory: tuiExtractI18n(`zoomTexts`),
-});
+export const TUI_PREVIEW_ZOOM_TEXTS = tuiCreateTokenFromFactory(
+    tuiExtractI18n(`zoomTexts`),
+);

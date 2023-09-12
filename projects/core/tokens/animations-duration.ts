@@ -8,6 +8,6 @@ export const TUI_ANIMATIONS_DEFAULT_DURATION = 300;
 /**
  * Duration of all Taiga UI animations in ms
  */
-export const TUI_ANIMATIONS_DURATION = tuiCreateTokenFromFactory(() =>
+export const TUI_ANIMATIONS_DURATION = tuiCreateTokenFromFactory<number>(() =>
     inject(TUI_REDUCED_MOTION) ? 0 : TUI_ANIMATIONS_DEFAULT_DURATION,
 );

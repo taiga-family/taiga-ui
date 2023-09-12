@@ -1,5 +1,5 @@
-import {inject, InjectionToken} from '@angular/core';
-import {TuiStringHandler} from '@taiga-ui/cdk';
+import {inject} from '@angular/core';
+import {tuiCreateTokenFromFactory, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_SVG_OPTIONS} from '@taiga-ui/core';
 import * as allIcons from '@taiga-ui/icons';
 
@@ -68,10 +68,9 @@ export const ICONS = (deprecated: TuiStringHandler<string>): DemoTuiIconsTabs =>
     },
 });
 
-export const TUI_DEMO_ICONS: InjectionToken<DemoTuiIconsTabs> =
-    new InjectionToken<DemoTuiIconsTabs>(`[TUI_DEMO_ICONS]: Icons`, {
-        factory: () => ICONS(inject(TUI_SVG_OPTIONS).deprecated),
-    });
+export const TUI_DEMO_ICONS = tuiCreateTokenFromFactory(() =>
+    ICONS(inject(TUI_SVG_OPTIONS).deprecated),
+);
 
 /**
  * @description:
