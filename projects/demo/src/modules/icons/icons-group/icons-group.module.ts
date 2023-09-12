@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {
+    TuiAutoFocusModule,
     TuiFilterPipeModule,
     TuiForAsyncModule,
     TuiKeysPipeModule,
@@ -25,6 +26,7 @@ import {IconsGroupDirective} from './icons-group.directive';
         TuiTextfieldControllerModule,
         ReactiveFormsModule,
         TuiLetModule,
+        TuiAutoFocusModule,
     ],
     declarations: [IconsGroupComponent, IconsGroupDirective],
     exports: [IconsGroupComponent, IconsGroupDirective],

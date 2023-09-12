@@ -1,8 +1,10 @@
 <h2 class="title">Search by name</h2>
 <tui-input
+    tuiAutoFocus
     tuiHintContent="You can copy icon's name with a click"
     tuiTextfieldSize="m"
     [formControl]="control"
+    [tuiTextfieldCleaner]="true"
     [tuiTextfieldLabelOutside]="true"
 >
     Input icon name to highlight
