@@ -21,6 +21,7 @@ export class TuiDialogCloseService extends Observable<unknown> {
 
             return (
                 event.key === `Escape` &&
+                !event.defaultPrevented &&
                 (this.element.contains(target) || this.isOutside(target))
             );
         }),

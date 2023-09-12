@@ -185,9 +185,9 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     }
 
     @shouldCall(shouldClose)
-    @HostListener('document:keydown.silent', ['$event'])
+    @HostListener('document:keydown.silent.capture', ['$event'])
     onKeyDownEsc(event: Event): void {
-        event.stopPropagation();
+        event.preventDefault();
         this.closeDropdown();
     }
 
