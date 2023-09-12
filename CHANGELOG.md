@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.44.1](https://github.com/taiga-family/taiga-ui/compare/v3.44.0...v3.44.1) (2023-09-12)
+
+### Bug Fixes
+
+- **core:** matchMedia is not a function in SSR ([#5358](https://github.com/taiga-family/taiga-ui/issues/5358))
+  ([7c7cfa5](https://github.com/taiga-family/taiga-ui/commit/7c7cfa51f8b6e746c64542543e939abc10e5dd5c))
+
 ## [3.44.0](https://github.com/taiga-family/taiga-ui/compare/v3.43.0...v3.44.0) (2023-09-11)
 
 ### Features
