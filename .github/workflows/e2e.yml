@@ -111,6 +111,13 @@ jobs:
     if: ${{ !contains(github.head_ref , 'release/') }}
     runs-on: ubuntu-latest
     needs: [build-demo]
+    env:
+      max_parallel: 3
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
+    name: playwright / (${{ matrix.shard }} of 3)
     steps:
       - uses: actions/checkout@v4.0.0
       - uses: taiga-family/ci/actions/variables@1.12.2
@@ -129,7 +136,7 @@ jobs:
         run: npx nx serve-compiled demo --path ${{ env.DIST }} --port ${{ env.NG_SERVER_PORT }}
 
       - name: Run screenshot tests on ${{ env.DIST }}
-        run: npx nx e2e demo-playwright -- --update-snapshots
+        run: npx nx e2e demo-playwright -- --update-snapshots --shard=${{ matrix.shard }}/${{ env.max_parallel }}
 
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
@@ -154,7 +161,7 @@ jobs:
 
       - name: Run screenshot tests on ${{ env.DIST_NEXT }}
         continue-on-error: true
-        run: npx nx e2e demo-playwright
+        run: npx nx e2e demo-playwright --shard=${{ matrix.shard }}/${{ env.max_parallel }}
 
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
