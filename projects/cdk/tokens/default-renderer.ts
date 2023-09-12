@@ -9,5 +9,5 @@ import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils';
  */
 export const TUI_DEFAULT_RENDERER = tuiCreateTokenFromFactory<Renderer2>(
     // @ts-ignore
-    inject(RendererFactory2).createRenderer(null, null),
+    () => inject(RendererFactory2).createRenderer(null, null),
 );
