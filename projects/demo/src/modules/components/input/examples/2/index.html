@@ -6,6 +6,7 @@
         <tui-input
             formControlName="testValue"
             tuiTextfieldSize="s"
+            [tuiTextfieldCleaner]="true"
         >
             Type an email
             <input
@@ -19,7 +20,22 @@
         <tui-input
             formControlName="testValue"
             tuiTextfieldSize="m"
+            [tuiTextfieldCleaner]="true"
             [tuiTextfieldLabelOutside]="true"
+        >
+            Type an email
+            <input
+                autocomplete="email"
+                tuiTextfield
+                type="email"
+            />
+        </tui-input>
+    </p>
+    <p>
+        <tui-input
+            formControlName="testValue"
+            tuiTextfieldSize="m"
+            [tuiTextfieldCleaner]="true"
         >
             Type an email
             <input
