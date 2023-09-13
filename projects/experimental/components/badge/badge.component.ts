@@ -1,9 +1,7 @@
-import {AnimationOptions} from '@angular/animations';
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {TUI_PLATFORM, TuiPlatform} from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
-    TUI_ANIMATION_OPTIONS,
     TUI_MODE,
     TuiBrightness,
     tuiPop,
@@ -25,7 +23,6 @@ import {Observable} from 'rxjs';
         '[attr.data-appearance]': 'appearance',
         '[attr.data-size]': 'size',
         '[class._hoverable]': 'hoverable',
-        '[@tuiPop]': 'animation',
         '[tabIndex]': 'hoverable ? 0 : -1',
         '($.data-mode.attr)': 'mode$',
     },
@@ -43,6 +40,5 @@ export class TuiBadgeComponent {
     constructor(
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_PLATFORM) readonly platform: TuiPlatform,
-        @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
     ) {}
 }
