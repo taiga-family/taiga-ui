@@ -7,6 +7,7 @@ import {
 } from '@angular/common';
 import {inject, PLATFORM_ID, Provider} from '@angular/core';
 import {Title} from '@angular/platform-browser';
+import {ANIMATION_MODULE_TYPE} from '@angular/platform-browser/animations';
 import {UrlTree} from '@angular/router';
 import {SESSION_STORAGE} from '@ng-web-apis/common';
 import {
@@ -143,6 +144,13 @@ export const APP_PROVIDERS: Provider[] = [
     {
         provide: TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
         useValue: exampleContentProcessor,
+    },
+    {
+        provide: ANIMATION_MODULE_TYPE,
+        useFactory: () =>
+            inject(TUI_IS_E2E) || inject(TUI_REDUCED_MOTION)
+                ? `NoopAnimations`
+                : `BrowserAnimations`,
     },
     {
         provide: TUI_ANIMATIONS_DURATION,
