@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
 import {tuiIsString} from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-avatar',
@@ -12,7 +12,7 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 export class TuiAvatarComponent {
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeL | TuiSizeS = 'm';
+    size: TuiSizeXXL | TuiSizeXXS = 'm';
 
     @Input()
     @HostBinding('class._round')

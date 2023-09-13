@@ -2,7 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {RawLoaderContent, TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-avatar',
@@ -34,9 +34,22 @@ export class ExampleTuiAvatarComponent {
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    readonly sizes: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
+    readonly example4: TuiDocExample = {
+        TypeScript: import('./examples/4/index.ts?raw'),
+        HTML: import('./examples/4/index.html?raw'),
+    };
 
-    size = this.sizes[1];
+    readonly sizes: ReadonlyArray<TuiSizeXXL | TuiSizeXXS> = [
+        'xxs',
+        'xs',
+        's',
+        'm',
+        'l',
+        'xl',
+        'xxl',
+    ];
+
+    size = this.sizes[3];
 
     readonly srcVariants: ReadonlyArray<SafeResourceUrl | string> = [
         'MW',

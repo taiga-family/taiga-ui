@@ -3,7 +3,6 @@
 tui-avatar-stack {
     display: flex;
     --gap: 0.125rem;
-    --radius: var(--tui-radius-l);
 
     tui-avatar {
         mask-size:
@@ -35,27 +34,7 @@ tui-avatar-stack {
             bottom;
     }
 
-    tui-avatar[data-size='s'] {
-        margin-right: -1.25rem;
-
-        &._round {
-            --radius: 1.25rem;
-        }
-    }
-
-    tui-avatar[data-size='m'] {
-        margin-right: -1.75rem;
-
-        &._round {
-            --radius: 1.75rem;
-        }
-    }
-
-    tui-avatar[data-size='l'] {
-        margin-right: -2.5rem;
-
-        &._round {
-            --radius: 2.5rem;
-        }
+    tui-avatar:not(:last-child) {
+        margin-right: calc(var(--size) / -2);
     }
 }
