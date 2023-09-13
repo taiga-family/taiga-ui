@@ -18,6 +18,6 @@ jobs:
 
       - name: Run BundleMon
         continue-on-error: true
-        run: npx bundlemon
+        run: npx --yes bundlemon --config .github/.bundlemonrc.json
         env:
           CI_COMMIT_SHA: ${{ env.CI_COMMIT_SHA }}
