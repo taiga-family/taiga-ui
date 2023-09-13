@@ -1,11 +1,5 @@
 import {AnimationOptions} from '@angular/animations';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    Inject,
-    Input,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {TUI_PLATFORM, TuiPlatform} from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
@@ -16,7 +10,7 @@ import {
     TuiSizeS,
     TuiSizeXL,
 } from '@taiga-ui/core';
-import {TuiBadgeAppearance} from '@taiga-ui/experimental/types';
+import {TuiStatus} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -27,32 +21,28 @@ import {Observable} from 'rxjs';
     providers: [MODE_PROVIDER],
     animations: [tuiPop],
     host: {
+        '[attr.data-platform]': 'platform',
+        '[attr.data-appearance]': 'appearance',
+        '[attr.data-size]': 'size',
+        '[class._hoverable]': 'hoverable',
+        '[@tuiPop]': 'animation',
         '[tabIndex]': 'hoverable ? 0 : -1',
         '($.data-mode.attr)': 'mode$',
     },
 })
 export class TuiBadgeComponent {
     @Input()
-    @HostBinding('attr.data-size')
     size: TuiSizeS | TuiSizeXL = 'l';
 
     @Input()
-    @HostBinding('attr.data-appearance')
-    appearance: TuiBadgeAppearance = 'default';
+    appearance: TuiStatus | 'accent' | 'light' = 'default';
 
     @Input()
-    @HostBinding('class._hoverable')
     hoverable = false;
-
-    @HostBinding('attr.data-platform')
-    platform = this.tuiPlatform;
-
-    @HostBinding('@tuiPop')
-    readonly entrance = this.animationOption;
 
     constructor(
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_PLATFORM) readonly tuiPlatform: TuiPlatform,
-        @Inject(TUI_ANIMATION_OPTIONS) private readonly animationOption: AnimationOptions,
+        @Inject(TUI_PLATFORM) readonly platform: TuiPlatform,
+        @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
     ) {}
 }
