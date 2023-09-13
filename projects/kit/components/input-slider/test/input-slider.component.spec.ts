@@ -92,7 +92,7 @@ describe(`InputSlider`, () => {
         inputPO = new TuiNativeInputPO(fixture, testContext.textInputInsideAutoId);
     });
 
-    describe(`\`quantum\` prop`, () => {
+    describe(`[quantum] prop`, () => {
         beforeEach(async () => {
             testComponent.control = new FormControl(0);
             testComponent.prefix = ``;
@@ -261,7 +261,16 @@ describe(`InputSlider`, () => {
                 });
 
                 it(`1_499 => 1_000`, async () => {
-                    inputPO.sendTextAndBlur(`1499`);
+                    inputPO.focus();
+                    await fixture.whenStable();
+
+                    inputPO.sendText(`1499`);
+                    await fixture.whenStable();
+
+                    expect(testComponent.control.value).toBe(1_000);
+                    expect(inputPO.value).toBe(`1 499`);
+
+                    inputPO.blur();
                     await fixture.whenStable();
 
                     expect(testComponent.control.value).toBe(1_000);
@@ -269,7 +278,16 @@ describe(`InputSlider`, () => {
                 });
 
                 it(`2_800 => 3_000`, async () => {
-                    inputPO.sendTextAndBlur(`2800`);
+                    inputPO.focus();
+                    await fixture.whenStable();
+
+                    inputPO.sendText(`2800`);
+                    await fixture.whenStable();
+
+                    expect(testComponent.control.value).toBe(3_000);
+                    expect(inputPO.value).toBe(`2 800`);
+
+                    inputPO.blur();
                     await fixture.whenStable();
 
                     expect(testComponent.control.value).toBe(3_000);
@@ -277,9 +295,27 @@ describe(`InputSlider`, () => {
                 });
             });
         });
+
+        it(`does not rounds to nearest multiple of [quantum] until text field losses focus`, async () => {
+            testComponent.quantum = 100;
+            testComponent.min = 0;
+            testComponent.max = 1000;
+            fixture.detectChanges();
+
+            inputPO.sendText(`150`);
+
+            expect(inputPO.value).toBe(`150`);
+            expect(testComponent.control.value).toBe(200);
+
+            inputPO.blur();
+            await fixture.whenStable();
+
+            expect(inputPO.value).toBe(`200`);
+            expect(testComponent.control.value).toBe(200);
+        });
     });
 
-    describe(`\`valueContent\` prop`, () => {
+    describe(`[valueContent] prop`, () => {
         const customLabel = ({
             $implicit,
         }: TuiContextWithImplicit<number>): number | string => {
@@ -356,7 +392,7 @@ describe(`InputSlider`, () => {
         });
     });
 
-    describe(`\`max\` prop`, () => {
+    describe(`[max] prop`, () => {
         beforeEach(() => {
             testComponent.min = -200;
             testComponent.max = 100;
@@ -396,7 +432,7 @@ describe(`InputSlider`, () => {
         });
     });
 
-    describe(`\`tuiTextfieldCustomContent\` controller`, () => {
+    describe(`[tuiTextfieldCustomContent] controller`, () => {
         describe(`progress percent case`, () => {
             beforeEach(() => {
                 testComponent.textfieldCustomContent =
@@ -444,6 +480,16 @@ describe(`InputSlider`, () => {
                 expect(getTextfieldCustomContent()).toBe(`100%`);
             });
         });
+    });
+
+    it(`programmatic FormControl updates should also update textfield value`, async () => {
+        testComponent.control.patchValue(42);
+
+        fixture.detectChanges();
+        await fixture.whenStable();
+
+        expect(inputPO.value).toBe(`$42 things`);
+        expect(testComponent.control.value).toBe(42);
     });
 });
 
