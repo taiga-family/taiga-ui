@@ -19,7 +19,7 @@
             [textContent]="value | tuiFractionPart: decimal : precision"
         ></span>
     </span>
-    <span *ngIf="alignRight || currencySymbol.length > 1">&nbsp;</span>
+    <span *ngIf="(alignRight && currencySymbol) || currencySymbol.length > 1">&nbsp;</span>
     <span
         automation-id="tui-money__currency"
         class="t-lighter"
