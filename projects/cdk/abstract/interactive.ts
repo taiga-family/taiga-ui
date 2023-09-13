@@ -22,6 +22,7 @@ export abstract class AbstractTuiInteractive {
     pseudoActive: boolean | null = null;
 
     @Input()
+    @HostBinding(`attr.data-focused`)
     pseudoFocus: boolean | null = null;
 
     /**

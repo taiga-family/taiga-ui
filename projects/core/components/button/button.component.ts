@@ -13,7 +13,6 @@ import {
     tuiAsFocusableItemAccessor,
     TuiDestroyService,
     TuiFocusableElementAccessor,
-    TuiFocusVisibleService,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {TuiModeDirective} from '@taiga-ui/core/directives';
@@ -29,11 +28,7 @@ import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button.options';
     templateUrl: './button.template.html',
     styleUrls: ['./button.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        tuiAsFocusableItemAccessor(TuiButtonComponent),
-        TuiDestroyService,
-        TuiFocusVisibleService,
-    ],
+    providers: [tuiAsFocusableItemAccessor(TuiButtonComponent), TuiDestroyService],
 })
 export class TuiButtonComponent
     extends AbstractTuiInteractive
@@ -76,13 +71,9 @@ export class TuiButtonComponent
         @Inject(TuiModeDirective)
         private readonly mode: TuiModeDirective | null,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TuiFocusVisibleService) focusVisible$: TuiFocusVisibleService,
         @Inject(TUI_BUTTON_OPTIONS) private readonly options: TuiButtonOptions,
     ) {
         super();
-        focusVisible$.subscribe(focusVisible => {
-            this.updateFocusVisible(focusVisible);
-        });
     }
 
     get nativeFocusableElement(): HTMLElement | null {
