@@ -65,7 +65,12 @@ const config: Config = {
      * A single or array of regexp pattern strings that are tested
      * against all tests paths before executing the test.
      */
-    testPathIgnorePatterns: [`/demo-cypress/`, `/node_modules/`, `/schematics/`],
+    testPathIgnorePatterns: [
+        `/demo-cypress/`,
+        `/demo-playwright/`,
+        `/node_modules/`,
+        `/schematics/`,
+    ],
 
     /**
      * The directory where Jest should output its coverage files.
