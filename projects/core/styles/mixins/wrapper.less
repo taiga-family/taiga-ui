@@ -41,7 +41,8 @@
 
 .wrapper-focus(@ruleset) {
     // Temporary rule until we get hostDirectives with Angular 15
-    :focus-visible > & {
+    :focus-visible:not([data-focused='false']) > &,
+    [data-focused='true'] > & {
         @ruleset();
     }
 
