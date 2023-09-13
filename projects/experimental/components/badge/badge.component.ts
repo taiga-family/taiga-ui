@@ -23,7 +23,6 @@ import {Observable} from 'rxjs';
         '[attr.data-appearance]': 'appearance',
         '[attr.data-size]': 'size',
         '[class._hoverable]': 'hoverable',
-        '[tabIndex]': 'hoverable ? 0 : -1',
         '($.data-mode.attr)': 'mode$',
     },
 })
