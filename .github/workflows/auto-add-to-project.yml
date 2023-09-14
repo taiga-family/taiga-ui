@@ -7,6 +7,6 @@ jobs:
   automate-project-columns:
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup-project@1.12.3
+      - uses: taiga-family/ci/actions/setup-project@1.12.4
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
