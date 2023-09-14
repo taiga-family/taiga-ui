@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
-import {tuiIsString} from '@taiga-ui/cdk';
+import {TUI_PLATFORM, tuiIsString, TuiPlatform} from '@taiga-ui/cdk';
 import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 
 @Component({
@@ -8,20 +8,25 @@ import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
     templateUrl: './avatar.template.html',
     styleUrls: ['./avatar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[attr.data-size]': 'size',
+        '[attr.data-platform]': 'platform',
+        '[class._round]': 'round',
+        '[class._img]': 'type === "img"',
+    },
 })
 export class TuiAvatarComponent {
     @Input()
-    @HostBinding('attr.data-size')
     size: TuiSizeXXL | TuiSizeXXS = 'm';
 
     @Input()
-    @HostBinding('class._round')
     round = false;
 
     @Input()
     src: SafeResourceUrl | string | null = null;
 
-    @HostBinding('class._img')
+    constructor(@Inject(TUI_PLATFORM) readonly platform: TuiPlatform) {}
+
     get img(): boolean {
         return this.type === 'img';
     }
