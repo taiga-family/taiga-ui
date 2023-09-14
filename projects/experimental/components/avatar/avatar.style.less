@@ -1,50 +1,96 @@
 :host {
+    --size: 3.5rem;
+    --radius: 0.75rem;
     display: inline-flex;
+    width: var(--size);
+    height: var(--size);
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    border-radius: var(--tui-radius-l);
+    white-space: nowrap;
+    border-radius: var(--radius);
     background: var(--tui-secondary);
     color: var(--tui-text-02);
 
-    &[data-size='s'] {
-        width: 2.5rem;
-        height: 2.5rem;
-        font: var(--tui-font-text-l);
-        font-weight: 500;
+    &[data-size='xxs'] {
+        --size: 1.5rem;
+        --radius: 0.5rem;
+        font: var(--tui-font-text-xs);
+        font-weight: bold;
 
         .t-content {
             font: var(--tui-font-text-m);
-            font-weight: 500;
+            font-size: 0.5625rem;
+        }
+    }
+
+    &[data-size='xs'] {
+        --size: 2rem;
+        --radius: 0.5rem;
+        font: var(--tui-font-text-s);
+        font-weight: bold;
+
+        .t-content {
+            font: var(--tui-font-text-xs);
+            font-weight: bold;
+        }
+    }
+
+    &[data-size='s'] {
+        --size: 2.5rem;
+        --radius: 0.75rem;
+        font: var(--tui-font-text-l);
+        font-weight: bold;
+
+        .t-content {
+            font: var(--tui-font-text-m);
+            font-weight: bold;
         }
     }
 
     &[data-size='m'] {
-        width: 3.5rem;
-        height: 3.5rem;
+        --size: 3.5rem;
+        --radius: 0.75rem;
         font: var(--tui-font-heading-5);
-        font-weight: 500;
 
         .t-content {
             font: var(--tui-font-text-l);
-            font-weight: 500;
+            font-weight: bold;
         }
     }
 
     &[data-size='l'] {
-        width: 5rem;
-        height: 5rem;
+        --size: 5rem;
+        --radius: 0.75rem;
         font: var(--tui-font-heading-3);
-        font-weight: 500;
 
         .t-content {
             font: var(--tui-font-heading-4);
-            font-weight: 500;
+        }
+    }
+
+    &[data-size='xl'] {
+        --size: 6rem;
+        --radius: 1rem;
+        font: var(--tui-font-heading-3);
+
+        .t-content {
+            font: var(--tui-font-heading-3);
+        }
+    }
+
+    &[data-size='xxl'] {
+        --size: 8rem;
+        --radius: 1.25rem;
+        font: var(--tui-font-heading-2);
+
+        .t-content {
+            font: var(--tui-font-heading-3);
         }
     }
 
     &._round {
-        border-radius: 100%;
+        --radius: calc(var(--size) / 2);
     }
 
     &._img {
@@ -63,6 +109,7 @@
 }
 
 .t-content {
-    margin: 0.25rem;
-    white-space: nowrap;
+    max-width: 100%;
+    padding: 0.25rem;
+    box-sizing: border-box;
 }

@@ -17,6 +17,10 @@
             heading="Basic"
             [content]="example1"
         >
+            <tui-notification class="tui-space_bottom-4">
+                This example uses pipe from
+                <code>TuiFallbackSrcModule</code>
+            </tui-notification>
             <tui-avatar-example-1></tui-avatar-example-1>
         </tui-doc-example>
 
@@ -25,21 +29,31 @@
             heading="Colors"
             [content]="example2"
         >
+            <tui-notification class="tui-space_bottom-4">
+                This example uses directive from
+                <code>TuiFadeModule</code>
+            </tui-notification>
             <tui-avatar-example-2></tui-avatar-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="size"
+            heading="Sizes"
+            [content]="example3"
+        >
+            <tui-avatar-example-3></tui-avatar-example-3>
         </tui-doc-example>
 
         <tui-doc-example
             id="stacking"
             heading="Stacking"
-            [content]="example3"
-            [description]="importModuleDescription"
+            [content]="example4"
         >
-            <ng-template #importModuleDescription>
-                This example requires import of
+            <tui-notification class="tui-space_bottom-4">
+                This example uses component from
                 <code>TuiAvatarStackModule</code>
-                .
-            </ng-template>
-            <tui-avatar-example-3></tui-avatar-example-3>
+            </tui-notification>
+            <tui-avatar-example-4></tui-avatar-example-4>
         </tui-doc-example>
     </ng-template>
 
