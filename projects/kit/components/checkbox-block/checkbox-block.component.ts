@@ -23,7 +23,7 @@ import {
     TuiHorizontalDirection,
     TuiModeDirective,
     TuiSizeL,
-    TuiSizeS,
+    TuiSizeXS,
 } from '@taiga-ui/core';
 import {TuiCheckboxComponent} from '@taiga-ui/kit/components/checkbox';
 
@@ -54,7 +54,7 @@ export class TuiCheckboxBlockComponent
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeL | TuiSizeS = 'l';
+    size: TuiSizeL | TuiSizeXS = 'l';
 
     constructor(
         @Optional()

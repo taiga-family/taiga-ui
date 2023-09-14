@@ -24,7 +24,7 @@ import {
     TuiHorizontalDirection,
     TuiModeDirective,
     TuiSizeL,
-    TuiSizeS,
+    TuiSizeXS,
 } from '@taiga-ui/core';
 import {TuiRadioComponent} from '@taiga-ui/kit/components/radio';
 
@@ -57,7 +57,7 @@ export class TuiRadioBlockComponent<T>
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeL | TuiSizeS = 'l';
+    size: TuiSizeL | TuiSizeXS = 'l';
 
     @Input()
     @HostBinding('class._hidden_input')

@@ -59,7 +59,7 @@
                         [pseudoHover]="pseudoHovered"
                         [pseudoInvalid]="pseudoInvalid"
                         [readOnly]="readOnly"
-                        [size]="size"
+                        [size]="currentSize"
                     >
                         Oranges
                     </tui-radio-block>
@@ -75,7 +75,7 @@
                         [pseudoHover]="pseudoHovered"
                         [pseudoInvalid]="pseudoInvalid"
                         [readOnly]="readOnly"
-                        [size]="size"
+                        [size]="currentSize"
                     >
                         Apples
                     </tui-radio-block>
@@ -91,7 +91,7 @@
                         [pseudoHover]="pseudoHovered"
                         [pseudoInvalid]="pseudoInvalid"
                         [readOnly]="readOnly"
-                        [size]="size"
+                        [size]="currentSize"
                     >
                         Pinapples
                     </tui-radio-block>
@@ -147,9 +147,9 @@
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="size"
-                documentationPropertyType="TuiSizeS | TuiSizeL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+                documentationPropertyType="TuiSizeXS | TuiSizeL"
+                [documentationPropertyValues]="sizes"
+                [(documentationPropertyValue)]="currentSize"
             >
                 Size
             </ng-template>

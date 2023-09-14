@@ -23,7 +23,7 @@ import {
     TuiIdentityMatcher,
     tuiIsNativeFocusedIn,
 } from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 // @bad TODO: Add active zone to track focus
@@ -42,7 +42,7 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeL | TuiSizeS = 'm';
+    size: TuiSizeL | TuiSizeXS = 'm';
 
     @Input()
     disabledItemHandler: TuiBooleanHandler<T> = ALWAYS_FALSE_HANDLER;

@@ -50,7 +50,7 @@
                         [pseudoHover]="pseudoHovered"
                         [pseudoInvalid]="pseudoInvalid"
                         [readOnly]="readOnly"
-                        [size]="size"
+                        [size]="currentSize"
                     >
                         One option
                     </tui-checkbox-block>
@@ -65,7 +65,7 @@
                         [pseudoHover]="pseudoHovered"
                         [pseudoInvalid]="pseudoInvalid"
                         [readOnly]="readOnly"
-                        [size]="size"
+                        [size]="currentSize"
                     >
                         An alternative one
                     </tui-checkbox-block>
@@ -80,7 +80,7 @@
                         [pseudoHover]="pseudoHovered"
                         [pseudoInvalid]="pseudoInvalid"
                         [readOnly]="readOnly"
-                        [size]="size"
+                        [size]="currentSize"
                     >
                         Other
                     </tui-checkbox-block>
@@ -117,9 +117,9 @@
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="size"
-                documentationPropertyType="TuiSizeS | TuiSizeL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+                documentationPropertyType="TuiSizeXS | TuiSizeL"
+                [documentationPropertyValues]="sizes"
+                [(documentationPropertyValue)]="currentSize"
             >
                 Size
             </ng-template>
