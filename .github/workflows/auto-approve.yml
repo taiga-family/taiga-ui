@@ -8,8 +8,8 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v4.0.0
-      - uses: taiga-family/ci/actions/variables@1.12.2
-      - uses: taiga-family/ci/actions/two-approve@1.12.2
+      - uses: taiga-family/ci/actions/variables@1.12.3
+      - uses: taiga-family/ci/actions/two-approve@1.12.3
         if: env.TAIGA_FAMILY_BOT_IS_AUTHOR == 'true'
         with:
           token1: ${{ secrets.GITHUB_TOKEN }}
