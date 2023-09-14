@@ -823,6 +823,12 @@ export const pages = [
     },
     {
         section: `Experimental`,
+        title: `Badge`,
+        keywords: `бэдж, бейдж, овал, badge, нотификация`,
+        route: `/experimental/badge`,
+    },
+    {
+        section: `Experimental`,
         title: `Fade`,
         keywords: `overflow, ellipsis, gradient, clamp, line`,
         route: `/experimental/fade`,

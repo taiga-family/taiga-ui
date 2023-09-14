@@ -1,0 +1,428 @@
+@import 'taiga-ui-local';
+
+:host {
+    .transition(background);
+
+    --left-content-color: currentColor;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    color: var(--tui-base-01);
+    border-radius: 6rem;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+    font: var(--tui-font-text-s);
+    max-width: 100%;
+
+    &:after {
+        .transition(background);
+        .fullsize();
+        content: '';
+        border-radius: inherit;
+        pointer-events: none;
+    }
+
+    &._hoverable:hover,
+    &._hoverable:active {
+        &[data-appearance='custom']:after {
+            background: var(--tui-clear);
+        }
+    }
+
+    &[data-appearance='primary'] {
+        background: var(--tui-primary);
+        color: var(--tui-primary-text);
+
+        &._hoverable:hover {
+            background: var(--tui-primary-hover);
+        }
+
+        &._hoverable:active {
+            background: var(--tui-primary-active);
+        }
+    }
+
+    &[data-appearance='accent'] {
+        background: var(--tui-accent);
+        color: var(--tui-accent-text);
+
+        &._hoverable:hover {
+            background: var(--tui-accent-hover);
+        }
+
+        &._hoverable:active {
+            background: var(--tui-accent-active);
+        }
+    }
+
+    &[data-appearance='light'] {
+        background: var(--tui-secondary);
+        color: var(--tui-text-01);
+
+        &._hoverable:hover {
+            background: var(--tui-secondary-hover);
+        }
+
+        &._hoverable:active {
+            background: var(--tui-secondary-active);
+        }
+
+        &[data-platform='ios'],
+        &[data-platform='android'] {
+            background: var(--tui-base-06);
+        }
+    }
+
+    &[data-appearance='error'] {
+        --left-content-color: var(--tui-error-fill);
+        background: var(--tui-error-bg);
+        color: var(--tui-text-01);
+
+        &._hoverable:hover,
+        &._hoverable:active {
+            background: var(--tui-error-bg-hover);
+        }
+
+        &[data-mode='onDark'] {
+            background: var(--tui-error-bg-night);
+            color: var(--tui-text-01-night);
+
+            &._hoverable:hover,
+            &._hoverable:active {
+                background: var(--tui-error-bg-night-hover);
+            }
+        }
+    }
+
+    &[data-appearance='success'] {
+        --left-content-color: var(--tui-success-fill);
+        background: var(--tui-success-bg);
+        color: var(--tui-text-01);
+
+        &._hoverable:hover,
+        &._hoverable:active {
+            background: var(--tui-success-bg-hover);
+        }
+
+        &[data-mode='onDark'] {
+            background: var(--tui-success-bg-night);
+            color: var(--tui-text-01-night);
+
+            &._hoverable:hover,
+            &._hoverable:active {
+                background: var(--tui-success-bg-night-hover);
+            }
+        }
+    }
+
+    &[data-appearance='warning'] {
+        --left-content-color: var(--tui-warning-fill);
+        background: var(--tui-warning-bg);
+        color: var(--tui-text-01);
+
+        &._hoverable:hover,
+        &._hoverable:active {
+            background: var(--tui-warning-bg-hover);
+        }
+
+        &[data-mode='onDark'] {
+            background: var(--tui-warning-bg-night);
+            color: var(--tui-text-01-night);
+
+            &._hoverable:hover,
+            &._hoverable:active {
+                background: var(--tui-warning-bg-night-hover);
+            }
+        }
+    }
+
+    &[data-appearance='info'] {
+        --left-content-color: var(--tui-info-fill);
+        background: var(--tui-info-bg);
+        color: var(--tui-text-01);
+
+        &._hoverable:hover,
+        &._hoverable:active {
+            background: var(--tui-info-bg-hover);
+        }
+
+        &[data-mode='onDark'] {
+            background: var(--tui-info-bg-night);
+            color: var(--tui-text-01-night);
+
+            &._hoverable:hover,
+            &._hoverable:active {
+                background: var(--tui-info-bg-night-hover);
+            }
+        }
+    }
+
+    &[data-appearance='neutral'] {
+        --left-content-color: var(--tui-neutral-fill);
+        background: var(--tui-neutral-bg);
+        color: var(--tui-text-01);
+
+        &._hoverable:hover,
+        &._hoverable:active {
+            background: var(--tui-neutral-bg-hover);
+        }
+
+        &[data-mode='onDark'] {
+            background: var(--tui-neutral-bg-night);
+            color: var(--tui-text-01-night);
+
+            &._hoverable:hover,
+            &._hoverable:active {
+                background: var(--tui-neutral-bg-night-hover);
+            }
+        }
+    }
+
+    &[data-appearance='default'] {
+        background: var(--tui-base-06);
+
+        &:not([data-mode]) {
+            &._hoverable:hover {
+                background: var(--tui-base-07);
+            }
+
+            &._hoverable:active {
+                background: var(--tui-base-08);
+            }
+        }
+
+        &[data-mode='onDark'] {
+            background: var(--tui-clear-inverse-hover);
+
+            &._hoverable:hover {
+                background: var(--tui-clear-inverse-active);
+            }
+
+            &._hoverable:active {
+                background: var(--tui-clear-inverse-active);
+            }
+        }
+
+        &[data-mode='onLight'] {
+            background: var(--tui-clear);
+            color: var(--tui-text-01);
+
+            &._hoverable:hover {
+                background: var(--tui-clear-hover);
+            }
+
+            &._hoverable:active {
+                background: var(--tui-clear-active);
+            }
+        }
+    }
+
+    &._hoverable {
+        cursor: pointer;
+    }
+
+    &:not(._empty-value) {
+        padding: 0 0.25rem;
+
+        &[data-size='xl'] {
+            padding: 0 0.375rem;
+        }
+
+        &[data-size='xl'][data-platform='web'] {
+            padding: 0 0.5rem;
+        }
+
+        &[data-size='s'] {
+            padding: 0 0.125rem;
+        }
+
+        &[data-size='s'][data-platform='web'] {
+            padding: 0 0.25rem;
+        }
+    }
+
+    &[data-size='s'] {
+        height: 1.25rem;
+        min-width: 1.25rem;
+
+        &[data-platform='ios'],
+        &[data-platform='android'] {
+            font: var(--tui-font-text-xs);
+            font-weight: bold;
+            height: 1rem;
+            min-width: 1rem;
+        }
+    }
+
+    &[data-size='m'] {
+        height: 1.25rem;
+        min-width: 1.25rem;
+    }
+
+    &[data-size='l'] {
+        height: var(--tui-height-xs);
+        min-width: var(--tui-height-xs);
+
+        &[data-platform='ios'],
+        &[data-platform='android'] {
+            height: 1.5rem;
+            min-width: 1.5rem;
+        }
+    }
+
+    &[data-size='xl'] {
+        height: var(--tui-height-s);
+        min-width: var(--tui-height-s);
+
+        &[data-platform='ios'],
+        &[data-platform='android'] {
+            height: 1.75rem;
+            min-width: 1.75rem;
+        }
+
+        &[data-platform='web'] {
+            font: var(--tui-font-text-m);
+        }
+    }
+
+    &[data-platform='ios'],
+    &[data-platform='android'] {
+        font-weight: bold;
+    }
+}
+
+.t-text {
+    white-space: nowrap;
+    padding: 0 0.125rem;
+    overflow: hidden;
+
+    &:empty {
+        display: none;
+    }
+
+    :host[data-size='xl'][data-platform='web'] & {
+        padding: 0 0.375rem;
+    }
+
+    :host[data-size='xl'] & {
+        padding: 0 0.25rem;
+    }
+
+    :host[data-size='l'] & {
+        padding: 0 0.25rem;
+    }
+}
+
+.t-icon {
+    display: none;
+    color: var(--left-content-color);
+
+    &:not(:empty) {
+        display: flex;
+        width: 1rem;
+        height: 1rem;
+        align-items: center;
+        justify-content: center;
+
+        &:before {
+            content: none;
+        }
+
+        :host[data-size='m'] &,
+        :host[data-size='s'][data-platform='web'] & {
+            width: 0.75rem;
+            transform: scale(0.75);
+        }
+
+        :host[data-size='s'] & {
+            width: 0.625rem;
+            transform: scale(0.625);
+        }
+
+        :host[data-size='s'] &:not(._icon-only) {
+            margin-left: 0.0625rem;
+        }
+    }
+
+    &:before {
+        content: '';
+        display: block;
+        background: currentColor;
+        margin: 0 0.125rem 0 0.25rem;
+        width: 0.25rem;
+        height: 0.25rem;
+        border-radius: 100%;
+    }
+
+    :host[data-appearance='error'] &,
+    :host[data-appearance='success'] &,
+    :host[data-appearance='warning'] &,
+    :host[data-appearance='info'] &,
+    :host[data-appearance='neutral'] & {
+        &:empty {
+            display: block;
+        }
+    }
+
+    :host[data-size='l'] &:before {
+        width: 0.375rem;
+        height: 0.375rem;
+    }
+
+    :host[data-size='xl'] &:before {
+        width: 0.5rem;
+        height: 0.5rem;
+    }
+}
+
+.t-image {
+    display: none;
+
+    :host::ng-deep & img {
+        width: 100%;
+        height: 100%;
+    }
+
+    &:not(:empty) {
+        display: block;
+        width: 1rem;
+        height: 1rem;
+        margin: 0 -0.5rem;
+
+        & ~ .t-text {
+            margin-left: 0.5rem;
+        }
+
+        & ~ .t-icon {
+            display: none;
+        }
+
+        :host[data-size='xl'] & {
+            height: 1.75rem;
+            width: 1.75rem;
+        }
+
+        :host[data-size='l'] & {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+
+        :host[data-size='m'] & {
+            height: 1.25rem;
+            width: 1.25rem;
+        }
+
+        :host[data-size='xl'][data-platform='web'] & {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        :host[data-size='s'][data-platform='web'] & {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+    }
+}

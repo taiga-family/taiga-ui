@@ -1,0 +1,16 @@
+<div class="t-image">
+    <ng-content select="img"></ng-content>
+</div>
+<div
+    class="t-icon"
+    [class._icon-only]="!text.innerHTML.trim()"
+>
+    <ng-content select="tui-svg"></ng-content>
+</div>
+
+<span
+    #text
+    class="t-text"
+>
+    <ng-content></ng-content>
+</span>

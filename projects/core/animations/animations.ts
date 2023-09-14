@@ -211,6 +211,27 @@ export const tuiScaleIn = trigger(`tuiScaleIn`, [
     ),
 ]);
 
+export const tuiPop = trigger(`tuiPop`, [
+    transition(
+        `:enter`,
+        [
+            style({transform: `scale(0)`}),
+            animate(TRANSITION, style({transform: `scale(1.1)`})),
+            animate(TRANSITION, style({transform: `scale(1)`})),
+        ],
+        DURATION,
+    ),
+    transition(
+        `:leave`,
+        [
+            style({transform: `scale(1)`}),
+            animate(TRANSITION, style({transform: `scale(1.1)`})),
+            animate(TRANSITION, style({transform: `scale(0)`})),
+        ],
+        DURATION,
+    ),
+]);
+
 export const tuiScaleInList = trigger(`tuiScaleInList`, [
     transition(
         `* => *`,
