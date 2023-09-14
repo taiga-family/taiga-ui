@@ -1,8 +1,8 @@
 /**
  * TODO: v4.0 delete the whole file
  */
-import {inject, InjectionToken} from '@angular/core';
-import {Observable} from 'rxjs';
+import {inject} from '@angular/core';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
 import {map} from 'rxjs/operators';
 
 import {TUI_FIRST_DAY_OF_WEEK} from './first-day-of-week';
@@ -28,21 +28,17 @@ const convertToSundayFirstWeekFormat = (
  * Ordered calendars i18n texts
  * @deprecated
  */
-export const TUI_ORDERED_SHORT_WEEK_DAYS = new InjectionToken<
-    Observable<WEEK_DAYS_NAMES>
->(`[TUI_ORDERED_SHORT_WEEK_DAYS]`, {
-    factory: () => {
-        const firstDayOfWeekIndex = inject(TUI_FIRST_DAY_OF_WEEK);
+export const TUI_ORDERED_SHORT_WEEK_DAYS = tuiCreateTokenFromFactory(() => {
+    const firstDayOfWeekIndex = inject(TUI_FIRST_DAY_OF_WEEK);
 
-        return inject(TUI_SHORT_WEEK_DAYS).pipe(
-            map(convertToSundayFirstWeekFormat),
-            map(
-                weekDays =>
-                    [
-                        ...weekDays.slice(firstDayOfWeekIndex),
-                        ...weekDays.slice(0, firstDayOfWeekIndex),
-                    ] as WEEK_DAYS_NAMES,
-            ),
-        );
-    },
+    return inject(TUI_SHORT_WEEK_DAYS).pipe(
+        map(convertToSundayFirstWeekFormat),
+        map(
+            weekDays =>
+                [
+                    ...weekDays.slice(firstDayOfWeekIndex),
+                    ...weekDays.slice(0, firstDayOfWeekIndex),
+                ] as WEEK_DAYS_NAMES,
+        ),
+    );
 });

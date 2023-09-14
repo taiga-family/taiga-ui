@@ -1,11 +1,8 @@
-import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
-import {AbstractTuiController} from '@taiga-ui/cdk';
+import {Directive, forwardRef, Input} from '@angular/core';
+import {AbstractTuiController, tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
 
-export const TUI_TEXTFIELD_FILLER = new InjectionToken<TuiTextfieldFillerDirective>(
-    '[TUI_TEXTFIELD_FILLER]',
-    {
-        factory: () => new TuiTextfieldFillerDirective(),
-    },
+export const TUI_TEXTFIELD_FILLER = tuiCreateTokenFromFactory(
+    () => new TuiTextfieldFillerDirective(),
 );
 
 @Directive({

@@ -1,9 +1,10 @@
-import {inject, InjectionToken} from '@angular/core';
+import {inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils';
 
 /**
  * Chromium browser engine detection
  */
-export const TUI_IS_CHROMIUM = new InjectionToken<boolean>(`[TUI_IS_CHROMIUM]`, {
-    factory: () => !!(inject(WINDOW) as Window & {chrome: unknown}).chrome,
-});
+export const TUI_IS_CHROMIUM = tuiCreateTokenFromFactory(
+    () => !!(inject(WINDOW) as Window & {chrome: unknown}).chrome,
+);

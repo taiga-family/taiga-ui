@@ -1,21 +1,20 @@
-import {InjectionToken} from '@angular/core';
-import {tuiCreateToken} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
 import {tuiExtractI18n} from '@taiga-ui/i18n';
 import {Observable, of} from 'rxjs';
 
 /**
  * Number and card number i18n
  */
-export const TUI_CARD_NUMBER_TEXTS = new InjectionToken(`[TUI_CARD_NUMBER_TEXTS]`, {
-    factory: tuiExtractI18n(`cardNumber`),
-});
+export const TUI_CARD_NUMBER_TEXTS = tuiCreateTokenFromFactory(
+    tuiExtractI18n(`cardNumber`),
+);
 
 /**
  * Expiry and card expiry i18n
  */
-export const TUI_CARD_EXPIRY_TEXTS = new InjectionToken(`[TUI_CARD_EXPIRY_TEXTS]`, {
-    factory: tuiExtractI18n(`cardExpiry`),
-});
+export const TUI_CARD_EXPIRY_TEXTS = tuiCreateTokenFromFactory(
+    tuiExtractI18n(`cardExpiry`),
+);
 
 /**
  * Card CVC number text [mobile, desktop]

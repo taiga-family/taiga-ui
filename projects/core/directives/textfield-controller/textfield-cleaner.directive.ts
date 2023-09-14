@@ -1,11 +1,8 @@
-import {Directive, forwardRef, InjectionToken, Input} from '@angular/core';
-import {AbstractTuiController} from '@taiga-ui/cdk';
+import {Directive, forwardRef, Input} from '@angular/core';
+import {AbstractTuiController, tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
 
-export const TUI_TEXTFIELD_CLEANER = new InjectionToken<TuiTextfieldCleanerDirective>(
-    '[TUI_TEXTFIELD_CLEANER]',
-    {
-        factory: () => new TuiTextfieldCleanerDirective(),
-    },
+export const TUI_TEXTFIELD_CLEANER = tuiCreateTokenFromFactory(
+    () => new TuiTextfieldCleanerDirective(),
 );
 
 @Directive({

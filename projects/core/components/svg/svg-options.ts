@@ -7,6 +7,7 @@ import {
     SkipSelf,
 } from '@angular/core';
 import {
+    tuiCreateTokenFromFactory,
     TuiHandler,
     tuiIsString,
     TuiSafeHtml,
@@ -56,15 +57,13 @@ export const TUI_SVG_DEFAULT_OPTIONS: TuiSvgOptions = {
 /**
  * SVG component options
  */
-export const TUI_SVG_OPTIONS = new InjectionToken<TuiSvgOptions>(`[TUI_SVG_OPTIONS]`, {
-    factory: () => ({
-        iconsPlace: inject(TUI_ICONS_PLACE),
-        path: inject(TUI_ICONS_PATH),
-        deprecated: TUI_SVG_DEFAULT_OPTIONS.deprecated,
-        srcProcessor: inject(TUI_SVG_SRC_PROCESSOR),
-        contentProcessor: inject(TUI_SVG_CONTENT_PROCESSOR),
-    }),
-});
+export const TUI_SVG_OPTIONS = tuiCreateTokenFromFactory<TuiSvgOptions>(() => ({
+    iconsPlace: inject(TUI_ICONS_PLACE),
+    path: inject(TUI_ICONS_PATH),
+    deprecated: TUI_SVG_DEFAULT_OPTIONS.deprecated,
+    srcProcessor: inject(TUI_SVG_SRC_PROCESSOR),
+    contentProcessor: inject(TUI_SVG_CONTENT_PROCESSOR),
+}));
 
 export const TUI_SVG_SRC_INTERCEPTORS = new InjectionToken<TuiSvgInterceptorHandler>(
     `[TUI_SVG_SRC_INTERCEPTORS]`,

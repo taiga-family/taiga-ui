@@ -1,5 +1,6 @@
-import {inject, InjectionToken} from '@angular/core';
+import {inject} from '@angular/core';
 import {USER_AGENT} from '@ng-web-apis/common';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils';
 
 // https://stackoverflow.com/a/11381730/2706426 http://detectmobilebrowsers.com/
 const firstRegex =
@@ -10,8 +11,8 @@ const secondRegex =
 /**
  * Mobile browser detection
  */
-export const TUI_IS_MOBILE = new InjectionToken<boolean>(`[TUI_IS_MOBILE]`, {
-    factory: () =>
+export const TUI_IS_MOBILE = tuiCreateTokenFromFactory(
+    () =>
         firstRegex.test(inject(USER_AGENT).toLowerCase()) ||
         secondRegex.test(inject(USER_AGENT).slice(0, 4).toLowerCase()),
-});
+);

@@ -1,4 +1,5 @@
-import {inject, InjectionToken, Renderer2, RendererFactory2} from '@angular/core';
+import {inject, Renderer2, RendererFactory2} from '@angular/core';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils';
 
 /**
  * A Renderer2 for global services
@@ -6,10 +7,7 @@ import {inject, InjectionToken, Renderer2, RendererFactory2} from '@angular/core
  * @deprecated unnecessary
  * TODO: remove in 4.0
  */
-export const TUI_DEFAULT_RENDERER = new InjectionToken<Renderer2>(
-    `[TUI_DEFAULT_RENDERER]`,
-    {
-        // @ts-ignore
-        factory: () => inject(RendererFactory2).createRenderer(null, null),
-    },
+export const TUI_DEFAULT_RENDERER = tuiCreateTokenFromFactory<Renderer2>(
+    // @ts-ignore
+    () => inject(RendererFactory2).createRenderer(null, null),
 );

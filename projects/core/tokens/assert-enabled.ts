@@ -1,4 +1,5 @@
-import {InjectionToken, isDevMode} from '@angular/core';
+import {isDevMode} from '@angular/core';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
 
 /**
  * @deprecated:
@@ -7,6 +8,4 @@ import {InjectionToken, isDevMode} from '@angular/core';
  * The current token no longer matters as
  * it will not be provided in production
  */
-export const TUI_ASSERT_ENABLED = new InjectionToken(`[TUI_ASSERT_ENABLED]`, {
-    factory: () => isDevMode(),
-});
+export const TUI_ASSERT_ENABLED = tuiCreateTokenFromFactory(() => isDevMode());

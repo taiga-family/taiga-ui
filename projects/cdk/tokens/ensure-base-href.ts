@@ -1,21 +1,17 @@
 import {DOCUMENT} from '@angular/common';
-import {inject, InjectionToken} from '@angular/core';
+import {inject} from '@angular/core';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils';
 
-export const TUI_ENSURE_BASE_HREF: InjectionToken<string> = new InjectionToken<string>(
-    `[TUI_ENSURE_BASE_HREF]`,
-    {
-        factory: () => {
-            const baseHref = inject(DOCUMENT).querySelector(`base`)?.href;
+export const TUI_ENSURE_BASE_HREF = tuiCreateTokenFromFactory(() => {
+    const baseHref = inject(DOCUMENT).querySelector(`base`)?.href;
 
-            if (baseHref) {
-                return baseHref;
-            }
+    if (baseHref) {
+        return baseHref;
+    }
 
-            const link = inject(DOCUMENT).createElement(`a`);
+    const link = inject(DOCUMENT).createElement(`a`);
 
-            link.href = ``;
+    link.href = ``;
 
-            return link.pathname;
-        },
-    },
-);
+    return link.pathname;
+});
