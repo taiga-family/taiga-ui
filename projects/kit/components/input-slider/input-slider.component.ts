@@ -94,6 +94,8 @@ export class TuiInputSliderComponent
     @Input('postfix')
     textfieldPostfix = '';
 
+    textfieldValue = this.safeCurrentValue;
+
     constructor(
         @Optional()
         @Self()
@@ -178,28 +180,28 @@ export class TuiInputSliderComponent
 
         if (value !== this.value) {
             this.safelyUpdateValue(value);
+            this.textfieldValue = this.value;
         }
-
-        this.updateTextInputValue(this.valueGuard(value));
     }
 
     onSliderChange(newValue: number): void {
         this.safelyUpdateValue(newValue);
-        this.updateTextInputValue(this.value);
+        this.textfieldValue = this.value;
     }
 
     onFocused(focused: boolean): void {
-        const {value, textInputValue, safeCurrentValue, inputNumberRef} = this;
+        const {value, textfieldValue} = this;
 
-        if (!focused && textInputValue !== inputNumberRef?.getFormattedValue(value)) {
-            this.updateTextInputValue(value ?? safeCurrentValue);
+        if (!focused && textfieldValue !== value) {
+            this.textfieldValue = value;
         }
 
         this.updateFocused(focused);
     }
 
-    private get textInputValue(): string {
-        return this.inputNumberRef?.nativeValue || '';
+    override writeValue(value: number | null): void {
+        super.writeValue(value);
+        this.textfieldValue = this.value;
     }
 
     protected getFallbackValue(): number {
@@ -213,12 +215,5 @@ export class TuiInputSliderComponent
         );
 
         return tuiClamp(roundedValue, this.min, this.max);
-    }
-
-    private updateTextInputValue(value: number): void {
-        if (this.inputNumberRef) {
-            this.inputNumberRef.nativeValue =
-                this.inputNumberRef.getFormattedValue(value);
-        }
     }
 }
