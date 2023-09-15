@@ -149,6 +149,18 @@ describe(`InputRange`, () => {
 
             expect(inputPORight.value).toBe(`5 лет`);
         });
+
+        it(`does not rounds to nearest multiple of [quantum] until text field losses focus`, () => {
+            inputPORight.sendText(`8`);
+
+            expect(inputPORight.value).toBe(`8 лет`);
+            expect(testComponent.control.value[1]).toBe(10);
+
+            inputPORight.blur();
+
+            expect(inputPORight.value).toBe(`10 лет`);
+            expect(testComponent.control.value[1]).toBe(10);
+        });
     });
 
     describe(`Deleting Values`, () => {
@@ -196,6 +208,14 @@ describe(`InputRange`, () => {
                     .toString()
                     .replace(CHAR_HYPHEN, CHAR_MINUS)} лет`,
             );
+        });
+
+        it(`programmatic FormControl updates should also update textfield value`, async () => {
+            testComponent.control.patchValue([5, 10]);
+            await fixture.whenStable();
+
+            expect(inputPOLeft.value).toBe(`5 лет`);
+            expect(inputPORight.value).toBe(`10 лет`);
         });
     });
 

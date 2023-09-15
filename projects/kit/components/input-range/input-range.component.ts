@@ -93,6 +93,8 @@ export class TuiInputRangeComponent
     @Input()
     pluralize: Record<string, string> | null = null;
 
+    leftTextfieldValue = this.safeCurrentValue[0];
+    rightTextfieldValue = this.safeCurrentValue[1];
     lastActiveSide: 'left' | 'right' = 'left';
 
     constructor(
@@ -178,18 +180,12 @@ export class TuiInputRangeComponent
         this.updateFocused(active);
     }
 
-    onTextInputFocused(focused: boolean, right: boolean): void {
+    onTextInputFocused(focused: boolean): void {
         if (focused) {
             return;
         }
 
-        const [leftTextInputRef, rightTextInputRef] = this.inputNumberRefs;
-        const inputRef = right ? rightTextInputRef : leftTextInputRef;
-        const valueIndex = right ? 1 : 0;
-
-        if (!inputRef.nativeValue || inputRef.value !== this.value[valueIndex]) {
-            this.updateTextInputValue(this.safeCurrentValue[valueIndex], right);
-        }
+        this.updateTextfieldValues(this.value);
     }
 
     changeByStep(
@@ -211,10 +207,7 @@ export class TuiInputRangeComponent
 
         if (leftValueChanged || rightValueChanged) {
             this.safelyUpdateValue(newValue);
-            this.updateTextInputValue(
-                newValue[rightValueChanged ? 1 : 0],
-                rightValueChanged,
-            );
+            this.updateTextfieldValues(this.value);
         }
     }
 
@@ -228,13 +221,7 @@ export class TuiInputRangeComponent
 
     onRangeValue(value: [number, number]): void {
         this.safelyUpdateValue(value);
-
-        const rightValueChanged = this.lastActiveSide === 'right';
-
-        this.updateTextInputValue(
-            this.value[rightValueChanged ? 1 : 0],
-            rightValueChanged,
-        );
+        this.updateTextfieldValues(this.value);
     }
 
     focusToTextInput(): void {
@@ -250,6 +237,11 @@ export class TuiInputRangeComponent
 
     onActiveThumbChange(activeThumb: 'left' | 'right'): void {
         this.lastActiveSide = activeThumb;
+    }
+
+    override writeValue(value: [number, number]): void {
+        super.writeValue(value);
+        this.updateTextfieldValues(this.value);
     }
 
     protected getFallbackValue(): [number, number] {
@@ -279,10 +271,8 @@ export class TuiInputRangeComponent
         return tuiClamp(roundedValue, this.min, this.max);
     }
 
-    private updateTextInputValue(value: number, right: boolean): void {
-        const [leftInputRef, rightInputRef] = this.inputNumberRefs;
-        const textInputRef = right ? rightInputRef : leftInputRef;
-
-        textInputRef?.writeValue(value);
+    private updateTextfieldValues([leftValue, rightValue]: [number, number]): void {
+        this.leftTextfieldValue = leftValue;
+        this.rightTextfieldValue = rightValue;
     }
 }
