@@ -79,7 +79,8 @@
     "prettier": "@taiga-ui/prettier-config",
     "eslintConfig": {
         "extends": [
-            "plugin:@taiga-ui/experience/all"
+            "plugin:@taiga-ui/experience/all",
+            "plugin:@taiga-ui/experience/taiga-naming-convention"
         ]
     },
     "stylelint": {
