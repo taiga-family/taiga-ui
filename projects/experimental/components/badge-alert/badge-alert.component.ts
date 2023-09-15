@@ -1,0 +1,40 @@
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Inject,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
+import {TUI_PLATFORM, TuiPlatform} from '@taiga-ui/cdk';
+import {
+    MODE_PROVIDER,
+    TUI_ANIMATION_OPTIONS,
+    TuiAnimationOptions,
+    tuiPop,
+    TuiSizeL,
+    TuiSizeXS,
+} from '@taiga-ui/core';
+
+@Component({
+    selector: 'tui-badge-alert',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    template: '<ng-content></ng-content>',
+    styleUrls: ['./badge-alert.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    providers: [MODE_PROVIDER],
+    animations: [tuiPop],
+    host: {
+        '[attr.data-platform]': 'platform',
+        '[attr.data-size]': 'size',
+        '[@tuiPop]': 'animations',
+    },
+})
+export class TuiBadgeAlertComponent {
+    @Input()
+    size: TuiSizeL | TuiSizeXS = 'l';
+
+    constructor(
+        @Inject(TUI_PLATFORM) readonly platform: TuiPlatform,
+        @Inject(TUI_ANIMATION_OPTIONS) readonly animations: TuiAnimationOptions,
+    ) {}
+}

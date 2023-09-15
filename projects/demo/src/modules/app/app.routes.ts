@@ -215,6 +215,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/badge-alert`,
+        loadChildren: async () =>
+            (await import(`../experimental/badge-alert/badge-alert.module`))
+                .ExampleTuiBadgeAlertModule,
+        data: {
+            title: `BadgeAlert`,
+        },
+    },
+    {
         path: `experimental/button`,
         loadChildren: async () =>
             (await import(`../experimental/button/button.module`)).ExampleTuiButtonModule,

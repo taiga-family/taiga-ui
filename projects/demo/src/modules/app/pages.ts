@@ -824,8 +824,20 @@ export const pages = [
     {
         section: `Experimental`,
         title: `Badge`,
-        keywords: `бэдж, бейдж, овал, badge, нотификация`,
-        route: `/experimental/badge`,
+        subPages: [
+            {
+                section: `Experimental`,
+                title: `Badge`,
+                keywords: `бэдж, бейдж, овал, badge, нотификация`,
+                route: `/experimental/badge`,
+            },
+            {
+                section: `Experimental`,
+                title: `BadgeAlert`,
+                keywords: `бэдж, бейдж, circle, круг, badge, alert, нотификация`,
+                route: `/experimental/badge-alert`,
+            },
+        ],
     },
     {
         section: `Experimental`,
