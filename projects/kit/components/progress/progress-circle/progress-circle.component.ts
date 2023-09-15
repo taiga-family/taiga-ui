@@ -9,8 +9,14 @@ import {
 } from '@angular/core';
 import {USER_AGENT, WINDOW} from '@ng-web-apis/common';
 import {CHROMIUM_EDGE_START_VERSION, tuiIsEdgeOlderThan} from '@taiga-ui/cdk';
-import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
-import {of} from 'rxjs';
+import {
+    MODE_PROVIDER,
+    TUI_MODE,
+    TuiBrightness,
+    TuiSizeS,
+    TuiSizeXL,
+} from '@taiga-ui/core';
+import {Observable, of} from 'rxjs';
 import {delay} from 'rxjs/operators';
 
 @Component({
@@ -18,6 +24,10 @@ import {delay} from 'rxjs/operators';
     templateUrl: './progress-circle.template.html',
     styleUrls: ['./progress-circle.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [MODE_PROVIDER],
+    host: {
+        '($.data-mode.attr)': 'mode$',
+    },
 })
 export class TuiProgressCircleComponent {
     @ViewChild('progressCircle', {static: true})
@@ -37,14 +47,21 @@ export class TuiProgressCircleComponent {
     @HostBinding('attr.data-size')
     size: TuiSizeS | TuiSizeXL = 'm';
 
+    readonly animationDelay$ = of(true).pipe(delay(0));
+
+    constructor(
+        @Inject(USER_AGENT) private readonly userAgent: string,
+        @Inject(WINDOW) private readonly win: Window,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
+        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
+    ) {}
+
     @HostBinding('style.--progress-ratio')
     get progressRatio(): number {
         const ratio = this.value / this.max;
 
         return Number.isFinite(ratio) ? ratio : 0;
     }
-
-    animationDelay$ = of(true).pipe(delay(0));
 
     // TODO: drop support of legacy Edge (EdgeHTML) in v4.x
     get oldEdgeRadiusFallback(): number | null {
@@ -59,10 +76,4 @@ export class TuiProgressCircleComponent {
 
         return (this.el.nativeElement.offsetWidth - strokeWidth) / 2;
     }
-
-    constructor(
-        @Inject(USER_AGENT) private readonly userAgent: string,
-        @Inject(WINDOW) private readonly win: Window,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-    ) {}
 }
