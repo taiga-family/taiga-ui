@@ -61,6 +61,10 @@
     transform-origin: center;
     font-size: 1rem;
 
+    &[data-mode='onDark'] {
+        --tui-clear: var(--tui-clear-inverse);
+    }
+
     &[data-size='s'] {
         .circle-params(s);
     }
@@ -80,7 +84,7 @@
 
 .t-track {
     fill: transparent;
-    stroke: var(--tui-base-03);
+    stroke: var(--tui-clear);
 }
 
 .t-progress {

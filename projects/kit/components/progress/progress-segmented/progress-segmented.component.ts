@@ -1,12 +1,23 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    Inject,
+    Input,
+} from '@angular/core';
 import {tuiIsString} from '@taiga-ui/cdk';
-import {TuiSizeS} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeS} from '@taiga-ui/core';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-progress-segmented',
     templateUrl: './progress-segmented.template.html',
     styleUrls: ['./progress-segmented.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [MODE_PROVIDER],
+    host: {
+        '($.data-mode.attr)': 'mode$',
+    },
 })
 export class TuiProgressSegmentedComponent {
     @Input()
@@ -20,7 +31,9 @@ export class TuiProgressSegmentedComponent {
     size: TuiSizeS = 'm';
 
     @Input()
-    colors: string | readonly string[] = 'var(--tui-primary)';
+    colors: string | readonly string[] = 'currentColor';
+
+    constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
 
     getActiveColor(index: number = 0): string | null {
         return tuiIsString(this.colors)

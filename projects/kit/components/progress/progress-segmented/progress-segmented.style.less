@@ -2,16 +2,21 @@
 
 :host {
     display: flex;
+    color: var(--tui-primary);
+
+    &[data-mode='onDark'] {
+        --tui-clear: var(--tui-clear-inverse);
+    }
 }
 
 .t-segment {
-    .transition(background-color);
+    .transition(background);
     flex: 1 1 100%;
     border-radius: var(--tui-radius-xs);
-    background-color: var(--tui-base-03);
+    background: var(--tui-clear);
 
     &:not(:last-child) {
-        margin-right: @space;
+        margin-right: 0.25rem;
     }
 
     :host[data-size='s'] & {

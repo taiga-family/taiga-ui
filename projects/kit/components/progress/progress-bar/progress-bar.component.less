@@ -7,14 +7,6 @@
     border: none;
 }
 
-/* Used to style outer progress bar (container) */
-.progressContainer(@ruleset) {
-    &::-webkit-progress-bar {
-        @ruleset(); // Chrome | Opera | Safari
-    }
-    @ruleset(); // IE | Edge | Mozilla
-}
-
 /* used to style inner value bar */
 .progressValue(@ruleset) {
     &::-webkit-progress-value {
@@ -44,31 +36,29 @@
 }
 
 :host {
-    @track-color: var(--tui-base-03);
+    @track-color: var(--tui-clear);
     @progress-color: var(--tui-progress-color, currentColor);
 
     .clearProgress();
     .progressAnimation();
-    .progressValue({
-        background: @progress-color;
-    });
-    .progressContainer({
-        background-color: @track-color;
-    });
+    .progressValue({ background: @progress-color });
     display: block;
     width: 100%;
     color: var(--tui-primary);
+    background: @track-color;
     border-radius: var(--tui-radius-xs);
     overflow: hidden;
+
+    &[data-mode='onDark'] {
+        --tui-clear: var(--tui-clear-inverse);
+    }
 
     &[data-size='m'] {
         height: 1.5rem;
     }
 
     &[data-size='s'] {
-        .progressValue({
-            border-radius: var(--tui-radius-xs);
-        });
+        .progressValue({ border-radius: var(--tui-radius-xs) });
         height: 0.5rem;
     }
 
@@ -77,9 +67,7 @@
         &[data-size='xs'],
         &[data-size='s'],
         &[data-size='m'] {
-            .progressValue({
-                border-radius: var(--tui-radius-xs);
-            });
+            .progressValue({ border-radius: var(--tui-radius-xs) });
         }
 
         &[data-size='xs'] {
@@ -108,22 +96,18 @@
     }
 
     &:indeterminate {
-        .progressContainer({
-            background: transparent;
-        });
-        .progressValue({
-            background: transparent;
-        });
-        background-image: linear-gradient(to right, @track-color 0 45%, @progress-color 45% 55%, @track-color 55% 100%);
+        .progressValue({ background: transparent });
+        background: linear-gradient(to right, @track-color 0 45%, @progress-color 45% 55%, @track-color 55% 100%) right;
         background-size: 225%;
-        background-position: right;
         animation: tuiIndeterminateAnimation 3s infinite ease-in-out;
+    }
+
+    &::-webkit-progress-bar {
+        background: transparent;
     }
 }
 
 :host-context(label[tuiProgressLabel]):not(:first-child) {
     .fullsize();
-    .progressContainer({
-        background-color: transparent;
-    });
+    background: transparent;
 }
