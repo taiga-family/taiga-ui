@@ -75,7 +75,7 @@
         [segments]="segments"
         [step]="step"
         (activeThumbChange)="onActiveThumbChange($event)"
-        (ngModelChange)="onRangeValue($event)"
+        (ngModelChange)="onExternalValueUpdate($event)"
         (tuiPressedChange)="focusToTextInput()"
     ></tui-range>
 </div>

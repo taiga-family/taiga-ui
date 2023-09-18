@@ -202,8 +202,7 @@ export class TuiInputRangeComponent
         ]);
 
         if (newValue[0] !== this.value[0] || newValue[1] !== this.value[1]) {
-            this.safelyUpdateValue(newValue);
-            this.updateTextfieldValues(this.value);
+            this.onExternalValueUpdate(newValue);
         }
     }
 
@@ -215,7 +214,7 @@ export class TuiInputRangeComponent
         this.safelyUpdateValue([this.value[0], value ?? this.safeCurrentValue[1]]);
     }
 
-    onRangeValue(value: [number, number]): void {
+    onExternalValueUpdate(value: [number, number]): void {
         this.safelyUpdateValue(value);
         this.updateTextfieldValues(this.value);
     }
