@@ -1,20 +1,20 @@
 :host {
-    --size: 3.5rem;
-    --radius: 0.75rem;
+    --t-size: 3.5rem;
+    --t-radius: 0.75rem;
     display: inline-flex;
-    width: var(--size);
-    height: var(--size);
+    width: var(--t-size);
+    height: var(--t-size);
     align-items: center;
     justify-content: center;
     overflow: hidden;
     white-space: nowrap;
-    border-radius: var(--radius);
+    border-radius: var(--t-radius);
     background: var(--tui-secondary);
     color: var(--tui-text-02);
 
     &[data-size='xxs'] {
-        --size: 1.5rem;
-        --radius: 0.5rem;
+        --t-size: 1.5rem;
+        --t-radius: 0.5rem;
         font: var(--tui-font-text-xs);
         font-weight: bold;
 
@@ -25,8 +25,8 @@
     }
 
     &[data-size='xs'] {
-        --size: 2rem;
-        --radius: 0.5rem;
+        --t-size: 2rem;
+        --t-radius: 0.5rem;
         font: var(--tui-font-text-s);
         font-weight: bold;
 
@@ -37,8 +37,8 @@
     }
 
     &[data-size='s'] {
-        --size: 2.5rem;
-        --radius: 0.75rem;
+        --t-size: 2.5rem;
+        --t-radius: 0.75rem;
         font: var(--tui-font-text-l);
         font-weight: bold;
 
@@ -49,8 +49,8 @@
     }
 
     &[data-size='m'] {
-        --size: 3.5rem;
-        --radius: 0.75rem;
+        --t-size: 3.5rem;
+        --t-radius: 0.75rem;
         font: var(--tui-font-heading-5);
 
         .t-content {
@@ -60,8 +60,8 @@
     }
 
     &[data-size='l'] {
-        --size: 5rem;
-        --radius: 0.75rem;
+        --t-size: 5rem;
+        --t-radius: 0.75rem;
         font: var(--tui-font-heading-3);
 
         .t-content {
@@ -70,8 +70,8 @@
     }
 
     &[data-size='xl'] {
-        --size: 6rem;
-        --radius: 1rem;
+        --t-size: 6rem;
+        --t-radius: 1rem;
         font: var(--tui-font-heading-3);
 
         .t-content {
@@ -80,8 +80,8 @@
     }
 
     &[data-size='xxl'] {
-        --size: 8rem;
-        --radius: 1.25rem;
+        --t-size: 8rem;
+        --t-radius: 1.25rem;
         font: var(--tui-font-heading-2);
 
         .t-content {
@@ -90,7 +90,7 @@
     }
 
     &._round {
-        --radius: calc(var(--size) / 2);
+        --t-radius: calc(var(--t-size) / 2);
     }
 
     &._img {

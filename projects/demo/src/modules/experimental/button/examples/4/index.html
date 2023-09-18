@@ -1,0 +1,8 @@
+<button
+    tuiButton
+    [loading]="!!(loading$ | async)"
+    (click)="trigger$.next()"
+>
+    <tui-svg src="tuiIconClockLarge"></tui-svg>
+    Click to start
+</button>
