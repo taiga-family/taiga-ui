@@ -34,6 +34,7 @@ export * from './main/main.component';
 export * from './main/main.module';
 export * from './navigation/navigation.component';
 export * from './navigation/navigation.module';
+export * from './navigation/navigation.providers';
 export * from './page/page.component';
 export * from './page/page.module';
 export * from './page/page.providers';

@@ -3,6 +3,7 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {TUI_DOC_PAGES, TUI_DOC_TITLE} from '@taiga-ui/addon-doc/tokens';
 import {TuiDocPages} from '@taiga-ui/addon-doc/types';
 import {TuiDestroyService, tuiIsPresent} from '@taiga-ui/cdk';
+import {TuiSizeS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 
@@ -12,6 +13,33 @@ import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 export const NAVIGATION_TITLE = new InjectionToken<Observable<string>>(
     `[NAVIGATION_TITLE]`,
 );
+
+export interface TuiDocNavigationOptions {
+    borders: 'all' | 'top-bottom' | null;
+    closeOthers: boolean;
+    showArrow: boolean;
+    noPadding: boolean;
+    disableHover: boolean;
+    rounded: boolean;
+    opened: boolean;
+    size: TuiSizeS;
+}
+
+export const TUI_DOC_NAVIGATION_DEFAULT_OPTIONS: TuiDocNavigationOptions = {
+    closeOthers: false,
+    rounded: false,
+    opened: false,
+    noPadding: false,
+    disableHover: false,
+    showArrow: true,
+    borders: null,
+    size: `m`,
+};
+
+export const TUI_DOC_NAVIGATION_MENU_OPTIONS =
+    new InjectionToken<TuiDocNavigationOptions>(`[TUI_DOC_NAVIGATION_MENU_OPTIONS]`, {
+        factory: () => TUI_DOC_NAVIGATION_DEFAULT_OPTIONS,
+    });
 
 /**
  * Navigation sections labels for search

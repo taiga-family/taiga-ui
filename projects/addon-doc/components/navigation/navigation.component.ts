@@ -38,6 +38,8 @@ import {
     NAVIGATION_LABELS,
     NAVIGATION_PROVIDERS,
     NAVIGATION_TITLE,
+    TUI_DOC_NAVIGATION_MENU_OPTIONS,
+    TuiDocNavigationOptions,
 } from './navigation.providers';
 
 @Component({
@@ -71,6 +73,8 @@ export class TuiDocNavigationComponent {
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(Title) titleService: Title,
         @Inject(NAVIGATION_TITLE) title$: Observable<string>,
+        @Inject(TUI_DOC_NAVIGATION_MENU_OPTIONS)
+        readonly options: TuiDocNavigationOptions,
         @Inject(DOCUMENT) private readonly doc: Document,
         @Inject(TuiModeDirective)
         private readonly mode: TuiModeDirective,

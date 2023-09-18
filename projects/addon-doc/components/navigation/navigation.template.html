@@ -35,14 +35,18 @@
         [tuiMode]="mode$ | async"
     >
         <tui-accordion
-            [closeOthers]="false"
-            [rounded]="false"
+            [closeOthers]="options.closeOthers"
+            [rounded]="options.rounded"
         >
             <tui-accordion-item
                 *ngFor="let label of labels; index as index"
-                size="s"
-                [borders]="null"
-                [(open)]="!!openPagesArr[index]"
+                [borders]="options.borders"
+                [disableHover]="options.disableHover"
+                [noPadding]="options.noPadding"
+                [open]="options.opened || openPagesArr[index]"
+                [showArrow]="options.showArrow"
+                [size]="options.size"
+                (openChange)="openPagesArr[index] = $event"
             >
                 <span class="t-label">
                     <strong>{{ label }}</strong>
