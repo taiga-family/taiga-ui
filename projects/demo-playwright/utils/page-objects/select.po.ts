@@ -1,3 +1,3 @@
-import {TuiTextfieldWithDataListPO} from '@demo-playwright/utils';
+import {TuiTextfieldWithDataListPO} from './textfield-with-data-list.po';
 
 export class TuiSelectPO extends TuiTextfieldWithDataListPO {}
