@@ -3,7 +3,7 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {ALWAYS_FALSE_HANDLER, TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiAlertService, TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 
 class ItemWithBadge {
     constructor(
@@ -83,9 +83,9 @@ export class ExampleTuiFilterComponent {
 
     control = new FormControl(this.initialItems);
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
+    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeXS> = ['xs', 's', 'm', 'l'];
 
-    size: TuiSizeL | TuiSizeS = this.sizeVariants[1];
+    size = this.sizeVariants[2];
 
     constructor(
         @Inject(TuiAlertService)

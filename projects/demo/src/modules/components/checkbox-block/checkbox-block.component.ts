@@ -2,7 +2,7 @@ import {Component, forwardRef} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiHorizontalDirection, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiHorizontalDirection, TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -46,9 +46,9 @@ export class ExampleTuiCheckboxBlockComponent extends AbstractExampleTuiControl 
 
     hideCheckbox = false;
 
-    override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
+    readonly sizes: ReadonlyArray<TuiSizeL | TuiSizeXS> = ['xs', 's', 'm', 'l'];
 
-    override size: TuiSizeL | TuiSizeS = this.sizeVariants[2];
+    currentSize = this.sizes[3];
 
     readonly control = new FormGroup({
         testValue1: new FormControl(false),

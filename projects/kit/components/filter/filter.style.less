@@ -1,8 +1,6 @@
-@import 'taiga-ui-local';
-
 :host {
     display: block;
-    margin-bottom: -@space;
+    margin-bottom: -0.25rem;
 }
 
 .t-content {
@@ -11,8 +9,8 @@
 }
 
 .t-item {
-    margin-right: @space;
-    margin-bottom: @space;
+    margin-right: 0.25rem;
+    margin-bottom: 0.25rem;
 
     &:last-child,
     :host[data-size='l'] &:last-child {
@@ -20,13 +18,13 @@
     }
 
     :host[data-size='l'] & {
-        margin-right: @space * 2;
-        margin-bottom: @space * 2;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
     }
 }
 
 .t-badge {
-    margin-left: @space;
+    margin-left: 0.25rem;
 
     &_disabled {
         opacity: var(--tui-disabled-opacity);

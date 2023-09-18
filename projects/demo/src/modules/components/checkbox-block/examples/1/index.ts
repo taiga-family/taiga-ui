@@ -14,5 +14,6 @@ export class TuiCheckboxBlockExample1 {
         testValue1: new FormControl(false),
         testValue2: new FormControl(false),
         testValue3: new FormControl(false),
+        testValue4: new FormControl(false),
     });
 }
