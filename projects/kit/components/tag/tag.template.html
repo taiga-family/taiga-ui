@@ -28,7 +28,7 @@
         class="t-icon"
         [src]="icons.close"
         (click)="remove($event)"
-        (mousedown.prevent.silent)="(0)"
+        (mousedown.stop.prevent.silent)="(0)"
     ></tui-svg>
 </div>
 <input
