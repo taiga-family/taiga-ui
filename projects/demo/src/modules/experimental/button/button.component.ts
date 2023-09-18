@@ -18,18 +18,14 @@ export class ExampleTuiButtonComponent {
     );
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
-        LESS: import('./examples/2/index.less?raw'),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
     };
 

@@ -70,8 +70,26 @@
 
 [tuiWrapper][data-appearance='destructive'] {
     color: var(--tui-negative);
+    background: var(--tui-error-bg);
+
+    .wrapper-hover({
+        background: var(--tui-error-bg-hover);
+    });
+
+    .wrapper-active({
+        background: var(--tui-error-bg-hover);
+    });
 
     &[data-mode='onDark'] {
         color: var(--tui-negative-night);
+        background: var(--tui-error-bg-night);
+
+        .wrapper-hover({
+            background: var(--tui-error-bg-night-hover);
+        });
+
+        .wrapper-active({
+            background: var(--tui-error-bg-night-hover);
+        });
     }
 }
