@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.45.0](https://github.com/taiga-family/taiga-ui/compare/v3.44.1...v3.45.0) (2023-09-18)
+
+### Features
+
+- **core:** force use pointer-events auto for dropdown ([#5417](https://github.com/taiga-family/taiga-ui/issues/5417))
+  ([e0ccf9d](https://github.com/taiga-family/taiga-ui/commit/e0ccf9d954088db2850fcb8afdf20832f0504844))
+- **experimental:** `Button` add new component ([#5416](https://github.com/taiga-family/taiga-ui/issues/5416))
+  ([605aaf5](https://github.com/taiga-family/taiga-ui/commit/605aaf58f1cc8d3a35e2e211a353a1c416f4e9a1))
+- **experimental:** add new component `Badge` ([#5247](https://github.com/taiga-family/taiga-ui/issues/5247))
+  ([9f16da7](https://github.com/taiga-family/taiga-ui/commit/9f16da7f95c4b51b74dd264468b254604697f626))
+- **kit:** `CheckboxBlock`/`RadioBlock` add new size ([#5390](https://github.com/taiga-family/taiga-ui/issues/5390))
+  ([45731b6](https://github.com/taiga-family/taiga-ui/commit/45731b61e53d62ae9de62aa4df9a176ee87ec06c))
+
+### Bug Fixes
+
+- **addon-commerce:** `Money` causes an extra space ([#5374](https://github.com/taiga-family/taiga-ui/issues/5374))
+  ([bcf41b9](https://github.com/taiga-family/taiga-ui/commit/bcf41b944838de48ab4187c9af72d173f911005a))
+- **core:** `Dropdown` reset previous position ([#5364](https://github.com/taiga-family/taiga-ui/issues/5364))
+  ([e7542dd](https://github.com/taiga-family/taiga-ui/commit/e7542dda57c93a2bf2ca17e16e3b896be2a7469b))
+- **core:** don't hide placeholder for input size m ([#5382](https://github.com/taiga-family/taiga-ui/issues/5382))
+  ([de88b55](https://github.com/taiga-family/taiga-ui/commit/de88b55321ff370816aea08301e547c9d15d9327))
+- **core:** onmouseout events don't trigger when objects move under mouse in Safari
+  ([#5406](https://github.com/taiga-family/taiga-ui/issues/5406))
+  ([6747a34](https://github.com/taiga-family/taiga-ui/commit/6747a349c4b2a4c2473635d86bb91b4ad0c0df9d))
+- **core:** the order of the escape event is important in the dialog service
+  ([#5350](https://github.com/taiga-family/taiga-ui/issues/5350))
+  ([1e79863](https://github.com/taiga-family/taiga-ui/commit/1e7986326161a9f5c9d43b52d34a105436e346f8))
+- **kit:** `InputRange` should not validate `quantum` if textfield is focused
+  ([#5401](https://github.com/taiga-family/taiga-ui/issues/5401))
+  ([452fc01](https://github.com/taiga-family/taiga-ui/commit/452fc01574ef265b4445012405dd7e897a0f9c28))
+- **kit:** `InputSlider` should not validate `quantum` if textfield is focused
+  ([#5389](https://github.com/taiga-family/taiga-ui/issues/5389))
+  ([2b28fba](https://github.com/taiga-family/taiga-ui/commit/2b28fba99d8e19642c2e617cf5bbc2f002eb175b))
+- **kit:** `Progress` fix colors and mode ([#5394](https://github.com/taiga-family/taiga-ui/issues/5394))
+  ([8cc1e76](https://github.com/taiga-family/taiga-ui/commit/8cc1e76622a34856f04c47383f0c79c42c9d7c45))
+- **kit:** `Select` fix dummy checkmark size ([#5384](https://github.com/taiga-family/taiga-ui/issues/5384))
+  ([71cf753](https://github.com/taiga-family/taiga-ui/commit/71cf75366cd1181f01284d8d5f4dcfd7716a21bc))
+- **kit:** fix tree programmatic control ([#5370](https://github.com/taiga-family/taiga-ui/issues/5370))
+  ([aef8c35](https://github.com/taiga-family/taiga-ui/commit/aef8c353aa03ec11a412ebee21411ec6a67d1b07))
+- **kit:** prevent focusing when remove item from multi-select
+  ([#5412](https://github.com/taiga-family/taiga-ui/issues/5412))
+  ([50a3b41](https://github.com/taiga-family/taiga-ui/commit/50a3b41fb6b0a5f1ad9651bc73156893987cb389))
+- **kit:** update a tab when the active index has changed
+  ([#5402](https://github.com/taiga-family/taiga-ui/issues/5402))
+  ([aef59e0](https://github.com/taiga-family/taiga-ui/commit/aef59e04e37adbd91abcd9deafceddbb33a32a76))
+
 ### [3.44.1](https://github.com/taiga-family/taiga-ui/compare/v3.44.0...v3.44.1) (2023-09-12)
 
 ### Bug Fixes
