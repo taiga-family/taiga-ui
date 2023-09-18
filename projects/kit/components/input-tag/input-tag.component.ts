@@ -382,7 +382,7 @@ export class TuiInputTagComponent
     }
 
     onTagEdited(value: string, index: number): void {
-        this.focusInput();
+        this.focusInput(value === '');
         this.value = this.filterValue(
             this.value
                 .map((tag, tagIndex) =>
@@ -518,9 +518,7 @@ export class TuiInputTagComponent
     }
 
     private focusInput(preventScroll: boolean = false): void {
-        if (this.nativeFocusableElement) {
-            this.nativeFocusableElement.focus({preventScroll});
-        }
+        this.nativeFocusableElement?.focus({preventScroll});
     }
 
     private clippedValue(value: string): string {
