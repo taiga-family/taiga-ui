@@ -1,5 +1,5 @@
 import {Directive, Inject, Input} from '@angular/core';
-import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
+import {EMPTY_CLIENT_RECT, tuiPure} from '@taiga-ui/cdk';
 import {
     tuiAsPositionAccessor,
     TuiPositionAccessor,
@@ -38,12 +38,12 @@ export class TuiDropdownPositionSidedDirective extends TuiPositionAccessor {
         super();
     }
 
-    getPosition(rect: ClientRect): TuiPoint {
+    @tuiPure
+    getPositionBy(width: number, height: number): TuiPoint {
         if (this.tuiDropdownSided === false) {
-            return this.vertical.getPosition(rect);
+            return this.vertical.getPositionBy(width, height);
         }
 
-        const {height, width} = rect;
         const hostRect = this.vertical.accessor?.getClientRect() ?? EMPTY_CLIENT_RECT;
         const viewport = this.viewport.getClientRect();
         const {direction, minHeight, offset} = this.options;
@@ -74,5 +74,9 @@ export class TuiDropdownPositionSidedDirective extends TuiPositionAccessor {
         this.previous = better;
 
         return [position[better], left];
+    }
+
+    getPosition(rect: ClientRect): TuiPoint {
+        return this.getPositionBy(rect.width, rect.height);
     }
 }

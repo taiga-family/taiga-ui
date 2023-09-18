@@ -30,7 +30,13 @@ export class TuiDropdownPositionDirective extends TuiPositionAccessor {
         super();
     }
 
-    getPosition({width, height}: ClientRect): TuiPoint {
+    @tuiPure
+    get accessor(): TuiRectAccessor {
+        return tuiFallbackRectAccessor('dropdown')(this.accessors, this.directive);
+    }
+
+    @tuiPure
+    getPositionBy(width: number, height: number): TuiPoint {
         if (!width && !height) {
             this.previous = undefined;
         }
@@ -68,8 +74,7 @@ export class TuiDropdownPositionDirective extends TuiPositionAccessor {
         return [position[better], position[align]];
     }
 
-    @tuiPure
-    get accessor(): TuiRectAccessor {
-        return tuiFallbackRectAccessor('dropdown')(this.accessors, this.directive);
+    getPosition({width, height}: ClientRect): TuiPoint {
+        return this.getPositionBy(width, height);
     }
 }

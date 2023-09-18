@@ -13,6 +13,7 @@ import {
     AbstractTuiPortalHostComponent,
     TuiDestroyService,
     tuiGetClosestFocusable,
+    tuiPure,
     tuiPx,
 } from '@taiga-ui/cdk';
 import {
@@ -85,9 +86,7 @@ export class TuiDropdownComponent implements OnDestroy {
                 ),
                 takeUntil(destroy$),
             )
-            .subscribe(([top, left]) => {
-                this.update(top, left);
-            });
+            .subscribe(([top, left]) => this.update(top, left));
 
         this.updateWidth(this.accessor.getClientRect().width);
     }
@@ -110,6 +109,7 @@ export class TuiDropdownComponent implements OnDestroy {
         this.moveFocusOutside(false);
     }
 
+    @tuiPure
     private update(top: number, left: number): void {
         const {style} = this.el.nativeElement;
         const {right} = this.el.nativeElement.getBoundingClientRect();
@@ -140,6 +140,7 @@ export class TuiDropdownComponent implements OnDestroy {
         this.updateWidth(rect.width);
     }
 
+    @tuiPure
     private updateWidth(width: number): void {
         const {style} = this.el.nativeElement;
 
