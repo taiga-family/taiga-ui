@@ -27,6 +27,13 @@ export class TuiHoveredService extends Observable<boolean> {
             filter(movedOut),
             map(ALWAYS_FALSE_HANDLER),
         ),
+        /**
+         * NOTE: onmouseout events don't trigger when objects move under mouse in Safari
+         * https://bugs.webkit.org/show_bug.cgi?id=4117
+         */
+        tuiTypedFromEvent(this.el.nativeElement, `transitionend`).pipe(
+            map(() => this.el.nativeElement.matches(`:hover`)),
+        ),
     ).pipe(distinctUntilChanged(), tuiZoneOptimized(this.zone));
 
     constructor(
