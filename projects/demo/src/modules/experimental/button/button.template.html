@@ -1,0 +1,105 @@
+<tui-doc-page
+    header="Button"
+    package="EXPERIMENTAL"
+    type="components"
+>
+    <ng-template pageTab>
+        <tui-notification status="warning">
+            This code is
+            <strong>experimental</strong>
+            and is a subject to change. Expect final solution to be shipped in the next major version
+        </tui-notification>
+
+        <p>New version for Button component following updated design specs.</p>
+
+        <tui-doc-example
+            id="size"
+            heading="Sizes"
+            [content]="example1"
+        >
+            <tui-button-example-1></tui-button-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="appearance"
+            heading="Appearance"
+            [content]="example2"
+        >
+            <tui-button-example-2></tui-button-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="icon"
+            heading="Icons"
+            [content]="example3"
+        >
+            <tui-button-example-3></tui-button-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="loading"
+            heading="Loading"
+            [content]="example4"
+        >
+            <tui-notification class="tui-space_bottom-4">
+                This example requires import of
+                <code>TuiButtonLoaderModule</code>
+            </tui-notification>
+            <tui-button-example-4></tui-button-example-4>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <button
+                tuiButton
+                [appearance]="appearance"
+                [size]="size"
+            >
+                Button
+            </button>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="appearance"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="appearances"
+                [(documentationPropertyValue)]="appearance"
+            >
+                Size
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="size"
+                documentationPropertyType="TuiSizeXS | TuiSizeL"
+                [documentationPropertyValues]="sizes"
+                [(documentationPropertyValue)]="size"
+            >
+                Size
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                <p>Import module</p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p>Add to the template:</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleHtml"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

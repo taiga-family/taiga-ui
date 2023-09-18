@@ -829,6 +829,12 @@ export const pages = [
     },
     {
         section: `Experimental`,
+        title: `Button`,
+        keywords: `кнопка, button, icon-button, иконка`,
+        route: `/experimental/button`,
+    },
+    {
+        section: `Experimental`,
         title: `Fade`,
         keywords: `overflow, ellipsis, gradient, clamp, line`,
         route: `/experimental/fade`,

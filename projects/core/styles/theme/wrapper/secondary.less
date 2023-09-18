@@ -2,7 +2,8 @@
 
 /* stylelint-disable order/order */
 [tuiWrapper][data-appearance='secondary'],
-[tuiWrapper][data-appearance='flat'] {
+[tuiWrapper][data-appearance='flat'],
+[tuiWrapper][data-appearance='destructive'] {
     background: var(--tui-secondary);
     color: var(--tui-link);
 
@@ -12,7 +13,6 @@
 
         .wrapper-hover({
             background: var(--tui-clear-inverse-hover);
-            color: var(--tui-text-01-night);
         });
 
         .wrapper-active({
@@ -30,7 +30,6 @@
 
         .wrapper-hover({
             background: var(--tui-clear-hover);
-            color: var(--tui-text-01);
         });
 
         .wrapper-active({
@@ -40,7 +39,6 @@
 
     .wrapper-hover({
         background: var(--tui-secondary-hover);
-        color: var(--tui-link-hover);
     });
 
     .wrapper-active({
@@ -48,7 +46,7 @@
     });
 
     .wrapper-invalid({
-        color: var(--tui-error-fill);
+        color: var(--tui-negative);
         background: var(--tui-error-bg);
 
         .wrapper-hover({
@@ -56,7 +54,7 @@
         });
 
         .wrapper-focus({
-            --tui-focus: var(--tui-error-fill);
+            --tui-focus: var(--tui-negative);
         });
     });
 }
@@ -67,5 +65,31 @@
     &[data-mode='onDark'],
     &[data-mode='onLight'] {
         background: transparent;
+    }
+}
+
+[tuiWrapper][data-appearance='destructive'] {
+    color: var(--tui-negative);
+    background: var(--tui-error-bg);
+
+    .wrapper-hover({
+        background: var(--tui-error-bg-hover);
+    });
+
+    .wrapper-active({
+        background: var(--tui-error-bg-hover);
+    });
+
+    &[data-mode='onDark'] {
+        color: var(--tui-negative-night);
+        background: var(--tui-error-bg-night);
+
+        .wrapper-hover({
+            background: var(--tui-error-bg-night-hover);
+        });
+
+        .wrapper-active({
+            background: var(--tui-error-bg-night-hover);
+        });
     }
 }

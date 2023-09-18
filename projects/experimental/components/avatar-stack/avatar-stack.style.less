@@ -2,39 +2,39 @@
 // prettier-ignore
 tui-avatar-stack {
     display: flex;
-    --gap: 0.125rem;
+    --t-gap: 0.125rem;
 
     tui-avatar {
         mask-size:
-            calc(var(--radius) + var(--gap)) calc(var(--radius) + var(--gap)),
-            calc(var(--radius) + var(--gap)) calc(var(--radius) + var(--gap)),
+            calc(var(--t-radius) + var(--t-gap)) calc(var(--t-radius) + var(--t-gap)),
+            calc(var(--t-radius) + var(--t-gap)) calc(var(--t-radius) + var(--t-gap)),
             100%;
         mask-repeat: no-repeat;
     }
 
     &[data-direction='left'] tui-avatar:not(:first-child) {
         mask-image:
-            radial-gradient(circle at 0% 100%, transparent calc(var(--radius) + var(--gap)), #000 calc(var(--radius) + var(--gap) + 0.2px)),
-            radial-gradient(circle at 0% 0%, transparent calc(var(--radius) + var(--gap)), #000 calc(var(--radius) + var(--gap) + 0.2px)),
-            linear-gradient(to right, transparent calc(50% + var(--gap)), #000 calc(50% + var(--gap)));
+            radial-gradient(circle at 0% 100%, transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)),
+            radial-gradient(circle at 0% 0%, transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)),
+            linear-gradient(to right, transparent calc(50% + var(--t-gap)), #000 calc(50% + var(--t-gap)));
         mask-position:
-            calc(50% - (var(--radius) - var(--gap)) / 2) calc(-1 * var(--gap)),
-            calc(50% - (var(--radius) - var(--gap)) / 2) calc(100% + var(--gap)),
+            calc(50% - (var(--t-radius) - var(--t-gap)) / 2) calc(-1 * var(--t-gap)),
+            calc(50% - (var(--t-radius) - var(--t-gap)) / 2) calc(100% + var(--t-gap)),
             bottom;
     }
 
     &[data-direction='right'] tui-avatar:not(:last-child) {
         mask-image:
-            radial-gradient(circle at 150% 100%, transparent calc(var(--radius) + var(--gap)), #000 calc(var(--radius) + var(--gap) + 0.2px)),
-            radial-gradient(circle at 150% 0%, transparent calc(var(--radius) + var(--gap)), #000 calc(var(--radius) + var(--gap) + 0.2px)),
-            linear-gradient(to left, transparent calc(50% + var(--gap)), #000 calc(50% + var(--gap)));
+            radial-gradient(circle at 150% 100%, transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)),
+            radial-gradient(circle at 150% 0%, transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)),
+            linear-gradient(to left, transparent calc(50% + var(--t-gap)), #000 calc(50% + var(--t-gap)));
         mask-position:
-            calc(50% - var(--gap)) calc(-1 * var(--gap)),
-            calc(50% - var(--gap)) calc(100% + var(--gap)),
+            calc(50% - var(--t-gap)) calc(-1 * var(--t-gap)),
+            calc(50% - var(--t-gap)) calc(100% + var(--t-gap)),
             bottom;
     }
 
     tui-avatar:not(:last-child) {
-        margin-right: calc(var(--size) / -2);
+        margin-right: calc(var(--t-size) / -2);
     }
 }
