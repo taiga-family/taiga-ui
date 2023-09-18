@@ -181,11 +181,9 @@ export class TuiInputRangeComponent
     }
 
     onTextInputFocused(focused: boolean): void {
-        if (focused) {
-            return;
+        if (!focused) {
+            this.updateTextfieldValues(this.value);
         }
-
-        this.updateTextfieldValues(this.value);
     }
 
     changeByStep(
@@ -202,10 +200,8 @@ export class TuiInputRangeComponent
             this.value[0] + leftCoefficient * this.step,
             this.value[1] + rightCoefficient * this.step,
         ]);
-        const leftValueChanged = newValue[0] !== this.value[0];
-        const rightValueChanged = newValue[1] !== this.value[1];
 
-        if (leftValueChanged || rightValueChanged) {
+        if (newValue[0] !== this.value[0] || newValue[1] !== this.value[1]) {
             this.safelyUpdateValue(newValue);
             this.updateTextfieldValues(this.value);
         }
