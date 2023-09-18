@@ -12,6 +12,7 @@
     box-sizing: border-box;
     /* stylelint-disable-next-line */
     max-width: calc(100% - 8px); // Comes from JS so in pixels
+    pointer-events: auto; // if custom portal host has pointer events none
 
     &.ng-animating {
         pointer-events: none;
