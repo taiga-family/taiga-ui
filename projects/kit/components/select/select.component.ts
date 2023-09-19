@@ -141,11 +141,7 @@ export class TuiSelectComponent<T>
     }
 
     onValueChange(value: T): void {
-        if (!value) {
-            this.value = null;
-        } else {
-            this.value = value || null;
-        }
+        this.value = value || null;
     }
 
     onActiveZone(active: boolean): void {
