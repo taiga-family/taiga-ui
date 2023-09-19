@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.0.0
-      - uses: taiga-family/ci/actions/variables@1.12.5
-      - uses: taiga-family/ci/actions/label-when-approved@1.12.5
+      - uses: taiga-family/ci/actions/variables@1.13.0
+      - uses: taiga-family/ci/actions/label-when-approved@1.13.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}

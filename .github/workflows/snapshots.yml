@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.0.0
-      - uses: taiga-family/ci/actions/variables@1.12.5
-      - uses: taiga-family/ci/actions/setup-node@1.12.5
+      - uses: taiga-family/ci/actions/variables@1.13.0
+      - uses: taiga-family/ci/actions/setup-node@1.13.0
 
       - run: npx nx build demo -c next
       - run: tree ${{ env.DIST }} -P '*.html'
@@ -30,8 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.0.0
-      - uses: taiga-family/ci/actions/variables@1.12.5
-      - uses: taiga-family/ci/actions/setup-node@1.12.5
+      - uses: taiga-family/ci/actions/variables@1.13.0
+      - uses: taiga-family/ci/actions/setup-node@1.13.0
         id: nodejs-workspace
 
       - run: npx nx build demo --configuration production
