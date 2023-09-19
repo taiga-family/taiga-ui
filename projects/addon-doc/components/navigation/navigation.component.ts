@@ -58,7 +58,7 @@ export class TuiDocNavigationComponent {
     readonly search = new FormControl('');
 
     readonly filtered$ = tuiControlValue<string>(this.search).pipe(
-        filter(search => search.length > 2),
+        filter(search => search.trim().length > 2),
         map(search => this.filterItems(this.flattenSubPages(this.items), search)),
     );
 
@@ -139,16 +139,19 @@ export class TuiDocNavigationComponent {
         return items.map(section =>
             tuiUniqBy(
                 section.filter(({title, keywords = ''}) => {
-                    title = title.toLowerCase();
-                    search = search.toLowerCase();
+                    search = search.toLowerCase().trim();
                     keywords = keywords.toLowerCase();
+                    title = title.toLowerCase();
 
                     return (
                         title.includes(search) ||
                         keywords.includes(search) ||
                         title.includes(tuiTransliterateKeyboardLayout(search)) ||
                         keywords.includes(tuiTransliterateKeyboardLayout(search)) ||
-                        search.replace(/-/gi, '').includes(title)
+                        search.replace(/-/gi, '').includes(title) ||
+                        title.includes(search.replace(/\s|tui/g, '')) ||
+                        keywords.includes(search.replace(/\s|tui/g, '')) ||
+                        search.split(/\s/).find(word => title.includes(word))
                     );
                 }),
                 'title',
