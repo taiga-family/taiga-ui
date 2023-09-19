@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.0.0
-      - uses: taiga-family/ci/actions/variables@1.12.4
-      - uses: taiga-family/ci/actions/setup-node@1.12.4
-      - uses: taiga-family/ci/actions/setup-npm@1.12.4
+      - uses: taiga-family/ci/actions/variables@1.12.5
+      - uses: taiga-family/ci/actions/setup-node@1.12.5
+      - uses: taiga-family/ci/actions/setup-npm@1.12.5
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
 
@@ -25,7 +25,7 @@ jobs:
         run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
       - name: Announce
-        uses: taiga-family/ci/actions/announce@1.12.4
+        uses: taiga-family/ci/actions/announce@1.12.5
         with:
           version: ${{ steps.info.outputs.version }}
           url: ${{ secrets.ANNOUNCE_WEBHOOK }}
