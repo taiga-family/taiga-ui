@@ -41,10 +41,6 @@
             heading="Loading"
             [content]="example4"
         >
-            <tui-notification class="tui-space_bottom-4">
-                This example requires import of
-                <code>TuiButtonLoaderModule</code>
-            </tui-notification>
             <tui-button-example-4></tui-button-example-4>
         </tui-doc-example>
     </ng-template>
@@ -54,6 +50,9 @@
             <button
                 tuiButton
                 [appearance]="appearance"
+                [iconLeft]="iconLeft"
+                [iconRight]="iconRight"
+                [loading]="loading"
                 [size]="size"
             >
                 Button
@@ -67,7 +66,33 @@
                 [documentationPropertyValues]="appearances"
                 [(documentationPropertyValue)]="appearance"
             >
-                Size
+                Appearance
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="iconLeft"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="icons"
+                [(documentationPropertyValue)]="iconLeft"
+            >
+                Icon on the left side
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="iconRight"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="icons"
+                [(documentationPropertyValue)]="iconRight"
+            >
+                Icon on the right side
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="loading"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="loading"
+            >
+                Loading indicator
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"

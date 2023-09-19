@@ -79,6 +79,20 @@
         text-indent: 0;
     }
 
+    &._loading {
+        --tui-disabled-opacity: 1;
+        -webkit-text-fill-color: transparent;
+
+        > * {
+            opacity: 0;
+        }
+
+        .t-loader {
+            .fullsize();
+            opacity: 1;
+        }
+    }
+
     &:disabled:not(._loading):not([data-platform='web']) {
         background: var(--tui-clear);
         color: var(--tui-clear-active);

@@ -1,4 +1,11 @@
-import {Directive, Inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    Inject,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 import {TUI_PLATFORM, TuiDirectiveStylesService, TuiPlatform} from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
@@ -10,7 +17,13 @@ import {
 } from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
-import {TuiButtonComponent} from './button.component';
+@Component({
+    template: '',
+    styleUrls: ['./button.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+})
+export class TuiButtonStylesComponent {}
 
 @Directive({
     selector: 'a[tuiButton],button[tuiButton],a[tuiIconButton],button[tuiIconButton]',
@@ -36,6 +49,6 @@ export class TuiButtonDirective {
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
     ) {
-        directiveStyles.addComponent(TuiButtonComponent);
+        directiveStyles.addComponent(TuiButtonStylesComponent);
     }
 }
