@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import {TUI_PLATFORM, TuiPlatform} from '@taiga-ui/cdk';
 import {
-    MODE_PROVIDER,
     TUI_ANIMATION_OPTIONS,
     TuiAnimationOptions,
     tuiPop,
@@ -21,12 +20,11 @@ import {
     template: '<ng-content></ng-content>',
     styleUrls: ['./badge-alert.style.less'],
     encapsulation: ViewEncapsulation.None,
-    providers: [MODE_PROVIDER],
     animations: [tuiPop],
     host: {
         '[attr.data-platform]': 'platform',
         '[attr.data-size]': 'size',
-        '[@tuiPop]': 'animations',
+        '[@tuiPop]': 'animation',
     },
 })
 export class TuiBadgeAlertComponent {
@@ -35,6 +33,6 @@ export class TuiBadgeAlertComponent {
 
     constructor(
         @Inject(TUI_PLATFORM) readonly platform: TuiPlatform,
-        @Inject(TUI_ANIMATION_OPTIONS) readonly animations: TuiAnimationOptions,
+        @Inject(TUI_ANIMATION_OPTIONS) readonly animation: TuiAnimationOptions,
     ) {}
 }
