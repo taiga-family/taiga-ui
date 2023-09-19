@@ -49,6 +49,7 @@ export const TUI_USED_ICONS = [
     `tuiIconCheckCircle`,
     `tuiIconXCircle`,
     `tuiIconChevronLeft`,
+    `tuiIconRight`,
     `tuiIconChevronDown`,
     `tuiIconChevronDownLarge`,
     `tuiIconFileLarge`,
