@@ -29,7 +29,7 @@ jobs:
     name: ${{ matrix.project }}
     steps:
       - uses: actions/checkout@v4.0.0
-      - uses: taiga-family/ci/actions/setup-node@1.12.4
+      - uses: taiga-family/ci/actions/setup-node@1.12.5
 
       - name: Run tests for ${{ matrix.project }}
         run: npx nx test ${{ matrix.project }} --skip-nx-cache
