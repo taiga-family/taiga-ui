@@ -27,9 +27,15 @@ test.describe(`TuiPrimitiveTextfield`, () => {
             `components/primitive-textfield/API?value=TEXT&postfix=__!&prefix=!__`,
         );
 
-        await expect(new TuiDocumentationPagePO(page).apiPageExample).toHaveScreenshot(
-            `02-prefix-postfix.png`,
+        const {apiPageExample} = new TuiDocumentationPagePO(page);
+
+        await expect(apiPageExample.getByRole(`textbox`)).toHaveCSS(
+            `text-indent`,
+            /\d+px/, // Auto-retrying assertions for test stability
         );
+        await page.waitForTimeout(50);
+
+        await expect(apiPageExample).toHaveScreenshot(`02-prefix-postfix.png`);
     });
 
     test(`label should not be visible in focused state with filler`, async ({page}) => {
