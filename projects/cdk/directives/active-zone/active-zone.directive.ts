@@ -50,19 +50,12 @@ export class TuiActiveZoneDirective implements OnDestroy {
         @Inject(TuiActiveZoneDirective)
         private readonly directParentActiveZone: TuiActiveZoneDirective | null,
     ) {
-        if (this.directParentActiveZone) {
-            this.directParentActiveZone.addSubActiveZone(this);
-        }
+        this.directParentActiveZone?.addSubActiveZone(this);
     }
 
     ngOnDestroy(): void {
-        if (this.directParentActiveZone) {
-            this.directParentActiveZone.removeSubActiveZone(this);
-        }
-
-        if (this.tuiActiveZoneParent) {
-            this.tuiActiveZoneParent.removeSubActiveZone(this);
-        }
+        this.directParentActiveZone?.removeSubActiveZone(this);
+        this.tuiActiveZoneParent?.removeSubActiveZone(this);
     }
 
     contains(node: Node): boolean {
@@ -77,14 +70,8 @@ export class TuiActiveZoneDirective implements OnDestroy {
 
     @tuiPure
     private setZone(zone: TuiActiveZoneDirective | null): void {
-        if (this.tuiActiveZoneParent) {
-            this.tuiActiveZoneParent.removeSubActiveZone(this);
-        }
-
-        if (zone) {
-            zone.addSubActiveZone(this);
-        }
-
+        this.tuiActiveZoneParent?.removeSubActiveZone(this);
+        zone?.addSubActiveZone(this);
         this.tuiActiveZoneParent = zone;
     }
 
