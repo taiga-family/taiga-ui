@@ -48,4 +48,11 @@ export class ExampleTuiButtonComponent {
     ];
 
     appearance = this.appearances[0];
+
+    readonly icons = ['', 'tuiIconSearch', 'tuiIconChevronDown'];
+
+    iconLeft = this.icons[0];
+    iconRight = this.icons[0];
+
+    loading = false;
 }

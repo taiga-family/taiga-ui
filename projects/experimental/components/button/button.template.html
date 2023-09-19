@@ -1,0 +1,16 @@
+<tui-svg
+    *ngIf="iconLeft"
+    [src]="iconLeft"
+></tui-svg>
+<ng-content></ng-content>
+<tui-svg
+    *ngIf="iconRight"
+    class="t-icon"
+    [src]="iconRight"
+></tui-svg>
+<tui-loader
+    *ngIf="loading"
+    class="t-loader"
+    [inheritColor]="true"
+    [size]="loaderSize"
+></tui-loader>
