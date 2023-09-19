@@ -1,0 +1,21 @@
+@import 'taiga-ui-local';
+
+.tui-sensitive {
+    position: relative;
+    display: inline-block;
+    line-height: 1em;
+
+    &:before {
+        .fullsize();
+        content: '';
+        background: currentColor;
+        border-radius: inherit;
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg fill='none' height='48' viewBox='0 0 360 48' width='360' xmlns='http://www.w3.org/2000/svg'%0A%3E%3Crect fill='black' height='24' opacity='0.2' width='24' /%3E%3Crect fill='black' height='24' opacity='0.2' transform='rotate(-180 360 48)' width='24' x='360' y='48' /%3E%3Crect fill='black' height='24' opacity='0.35' transform='rotate(-180 144 48)' width='24' x='144' y='48' /%3E%3Crect fill='black' height='24' opacity='0.35' width='24' x='216' /%3E%3Crect fill='black' height='24' opacity='0.36' width='24' x='24' /%3E%3Crect fill='black' height='24' opacity='0.36' transform='rotate(-180 336 48)' width='24' x='336' y='48' /%3E%3Crect fill='black' height='24' opacity='0.25' transform='rotate(-180 168 48)' width='24' x='168' y='48' /%3E%3Crect fill='black' height='24' opacity='0.25' width='24' x='192' /%3E%3Crect fill='black' height='24' opacity='0.30' width='24' x='48' /%3E%3Crect fill='black' height='24' opacity='0.30' transform='rotate(-180 312 48)' width='24' x='312' y='48' /%3E%3Crect fill='black' height='24' opacity='0.30' transform='matrix(1 -8.74228e-08 -8.74228e-08 -1 96 48)' width='24' /%3E%3Crect fill='black' height='24' opacity='0.30' transform='matrix(-1 8.74228e-08 8.74228e-08 1 264 0)' width='24' /%3E%3Crect fill='black' height='24' opacity='0.24' width='24' x='72' /%3E%3Crect fill='black' height='24' opacity='0.24' transform='rotate(-180 288 48)' width='24' x='288' y='48' /%3E%3Crect fill='black' height='24' opacity='0.20' transform='matrix(1 -8.74228e-08 -8.74228e-08 -1 168 48)' width='24' /%3E%3Crect fill='black' height='24' opacity='0.35' width='24' y='24' /%3E%3Crect fill='black' height='24' opacity='0.35' transform='rotate(-180 360 24)' width='24' x='360' y='24' /%3E%3Crect fill='black' height='24' opacity='0.30' transform='rotate(-180 144 24)' width='24' x='144' y='24' /%3E%3Crect fill='black' height='24' opacity='0.30' width='24' x='216' y='24' /%3E%3Crect fill='black' height='24' opacity='0.30' width='24' x='24' y='24' /%3E%3Crect fill='black' height='24' opacity='0.30' transform='rotate(-180 336 24)' width='24' x='336' y='24' /%3E%3Crect fill='black' height='24' opacity='0.36' transform='rotate(-180 168 24)' width='24' x='168' y='24' /%3E%3Crect fill='black' height='24' opacity='0.36' width='24' x='192' y='24' /%3E%3Crect fill='black' height='24' opacity='0.4' width='24' x='48' y='24' /%3E%3Crect fill='black' height='24' opacity='0.4' transform='rotate(-180 312 24)' width='24' x='312' y='24' /%3E%3Crect fill='black' height='24' opacity='0.21' transform='matrix(1 -8.74228e-08 -8.74228e-08 -1 96 24)' width='24' /%3E%3Crect fill='black' height='24' opacity='0.21' transform='matrix(-1 8.74228e-08 8.74228e-08 1 264 24)' width='24' /%3E%3Crect fill='black' height='24' opacity='0.2' width='24' x='72' y='24' /%3E%3Crect fill='black' height='24' opacity='0.2' transform='rotate(-180 288 24)' width='24' x='288' y='24' /%3E%3Crect fill='black' height='24' opacity='0.32' transform='matrix(1 -8.74228e-08 -8.74228e-08 -1 168 24)' width='24' /%3E%3C/svg%3E%0A");
+        -webkit-mask-size: auto 100%;
+        -webkit-mask-position-x: var(--tui-offset, 0);
+    }
+
+    &.tui-sensitive {
+        text-indent: -10000%;
+    }
+}

@@ -231,6 +231,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/sensitive`,
+        loadChildren: async () =>
+            (await import(`../experimental/sensitive/sensitive.module`))
+                .ExampleTuiSensitiveModule,
+        data: {
+            title: `Sensitive`,
+        },
+    },
+    {
         path: `navigation/breadcrumbs`,
         loadChildren: async () =>
             (await import(`../components/breadcrumbs/breadcrumbs.module`))

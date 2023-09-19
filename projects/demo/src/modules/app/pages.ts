@@ -839,6 +839,12 @@ export const pages = [
         keywords: `overflow, ellipsis, gradient, clamp, line`,
         route: `/experimental/fade`,
     },
+    {
+        section: `Experimental`,
+        title: `Sensitive`,
+        keywords: `sensitive, pixel, mask, пиксель, маска`,
+        route: `/experimental/sensitive`,
+    },
     // Charts
     {
         section: `Charts`,
