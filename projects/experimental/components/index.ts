@@ -3,4 +3,5 @@ export * from '@taiga-ui/experimental/components/avatar-stack';
 export * from '@taiga-ui/experimental/components/badge';
 export * from '@taiga-ui/experimental/components/badge-alert';
 export * from '@taiga-ui/experimental/components/button';
+export * from '@taiga-ui/experimental/components/compass';
 export * from '@taiga-ui/experimental/components/sensitive';
