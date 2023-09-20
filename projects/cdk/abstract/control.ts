@@ -215,6 +215,8 @@ export abstract class AbstractTuiControl<T>
      */
     protected updateValue(value: T): void {
         if (this.disabled || this.valueIdenticalComparator(this.value, value)) {
+            this.checkControlUpdate();
+
             return;
         }
 
