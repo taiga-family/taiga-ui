@@ -9,7 +9,6 @@ import {
 import {DEEP_PATHS} from './cypress/support/helpers/deep-paths';
 
 export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
-    projectId: `sorry-cypress`,
     video: false,
     blockHosts,
     viewportWidth,

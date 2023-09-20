@@ -4,7 +4,6 @@ on:
 
 env:
   CYPRESS_failOnSnapshotDiff: 0
-  CYPRESS_API_URL: http://localhost:1234/
   PLAYWRIGHT_SNAPSHOTS_PATH: ./projects/demo-playwright/tests-results
   CYPRESS_SNAPSHOTS_PATH: ./projects/demo-cypress/cypress/snapshots
 
@@ -35,11 +34,6 @@ jobs:
     if: ${{ !contains(github.head_ref , 'release/') }}
     needs: [build-demo]
     runs-on: ubuntu-latest
-    services:
-      sorry-cypress-director:
-        image: agoldis/sorry-cypress-director:2.5.10
-        ports:
-          - 1234:1234
     strategy:
       fail-fast: false
       matrix:
@@ -61,7 +55,7 @@ jobs:
         run: npx nx serve-compiled demo --path ${{ env.DIST }} --port ${{ env.NG_SERVER_PORT }}
 
       - name: Run screenshot tests on ${{ env.DIST }}
-        run: npx nx e2e demo-cypress --key localhost --folder ${{ matrix.project }}
+        run: npx nx e2e demo-cypress --folder ${{ matrix.project }}
 
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
@@ -78,7 +72,7 @@ jobs:
 
       - name: Run screenshot tests on ${{ env.DIST_NEXT }}
         continue-on-error: true
-        run: npx nx e2e demo-cypress --key next --folder ${{ matrix.project }}
+        run: npx nx e2e demo-cypress --folder ${{ matrix.project }}
 
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
