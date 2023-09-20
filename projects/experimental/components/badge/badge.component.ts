@@ -4,7 +4,6 @@ import {
     MODE_PROVIDER,
     TUI_MODE,
     TuiBrightness,
-    tuiPop,
     TuiSizeS,
     TuiSizeXL,
 } from '@taiga-ui/core';
@@ -17,7 +16,6 @@ import {Observable} from 'rxjs';
     templateUrl: './badge.template.html',
     styleUrls: ['./badge.style.less'],
     providers: [MODE_PROVIDER],
-    animations: [tuiPop],
     host: {
         '[attr.data-platform]': 'platform',
         '[attr.data-appearance]': 'appearance',
