@@ -11,5 +11,5 @@ import {TuiThemeNightModule, TuiModeModule} from '@taiga-ui/core';
   ],
   // ...
 })
-export class MyModule {}
+export class AppModule {}
 ```
