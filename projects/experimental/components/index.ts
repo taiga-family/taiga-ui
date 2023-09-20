@@ -4,6 +4,7 @@ export * from '@taiga-ui/experimental/components/badge';
 export * from '@taiga-ui/experimental/components/badge-notification';
 export * from '@taiga-ui/experimental/components/badged-content';
 export * from '@taiga-ui/experimental/components/button';
+export * from '@taiga-ui/experimental/components/cell';
 export * from '@taiga-ui/experimental/components/checkbox';
 export * from '@taiga-ui/experimental/components/compass';
 export * from '@taiga-ui/experimental/components/radio';

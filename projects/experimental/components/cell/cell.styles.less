@@ -1,0 +1,93 @@
+@import 'taiga-ui-local';
+
+:host {
+    .transition(background-color);
+    display: flex;
+    box-sizing: border-box;
+    padding: 0.5rem 1rem;
+    justify-content: space-between;
+    gap: 1rem;
+    background-color: var(--tui-base-01);
+    min-height: var(--tui-height-l);
+    border-radius: var(--tui-radius-l);
+
+    & > * {
+        min-width: 0;
+    }
+
+    &[data-platform='web'][data-size='m'] {
+        min-height: var(--tui-height-m);
+        border-radius: var(--tui-radius-m);
+        padding: 0.375rem 1rem;
+    }
+
+    &[data-platform='web'][data-size='s'] {
+        min-height: var(--tui-height-s);
+        border-radius: var(--tui-radius-s);
+        padding: 0.125rem 1rem;
+    }
+
+    &:hover,
+    &._active,
+    &:focus-within {
+        background-color: var(--tui-secondary);
+    }
+}
+
+.t-left {
+    display: flex;
+    flex-shrink: var(--tui-left-shrink, 1);
+}
+
+.t-left-addition:not(:empty) {
+    margin-right: 1rem;
+}
+
+.t-main {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+
+    & > * {
+        min-width: 0;
+    }
+}
+
+.t-right {
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+    flex-shrink: var(--tui-right-shrink, 1);
+
+    & > * {
+        min-width: 0;
+    }
+}
+
+.t-title {
+    font: var(--tui-font-text-l-2);
+
+    :host[data-platform='web'][data-size='l'] & {
+        font: var(--tui-font-text-m-2);
+    }
+
+    :host[data-platform='web'][data-size='m'] &,
+    :host[data-platform='web'][data-size='s'] & {
+        font: var(--tui-font-text-s-2);
+    }
+
+    &:only-child {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+.t-description {
+    color: var(--tui-text-02);
+    font: var(--tui-font-text-s-2);
+
+    :host[data-platform='web'][data-size='m'] &,
+    :host[data-platform='web'][data-size='s'] & {
+        font: var(--tui-font-text-xs-2);
+    }
+}

@@ -1,0 +1,180 @@
+<tui-doc-page
+    header="Cell"
+    package="EXPERIMENTAL"
+    type="components"
+>
+    <ng-template pageTab>
+        <tui-notification status="warning">
+            This code is
+            <strong>experimental</strong>
+            and is a subject to change. Expect final solution to be shipped in the next major version
+        </tui-notification>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [content]="example1"
+        >
+            <tui-cell-example-1></tui-cell-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="polymorpheus"
+            heading="Power of Polymorpheus"
+            [content]="example2"
+            [description]="moneyDescription"
+        >
+            <ng-template #moneyDescription>
+                All basic properties is
+                <a
+                    href="https://github.com/taiga-family/ng-polymorpheus"
+                    rel="noreferrer"
+                    target="_blank"
+                    tuiLink
+                >
+                    <code>PolymorpheusContent</code>
+                </a>
+                . It provides you with great flexibility to pass any content you wish.
+                <br />
+                This example pass
+                <a
+                    routerLink="/components/money"
+                    tuiLink
+                >
+                    Money
+                </a>
+                /
+                <a
+                    routerLink="/experimental/badge"
+                    tuiLink
+                >
+                    Badge
+                </a>
+                inside
+                <code>secondaryTitle</code>
+                /
+                <code>description</code>
+                properties.
+            </ng-template>
+            <tui-cell-example-2></tui-cell-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="overflow"
+            heading="Overflown content"
+            [content]="example3"
+            [description]="overflownContentDescription"
+        >
+            <ng-template #overflownContentDescription>
+                You can fade out overflown content by
+                <a
+                    routerLink="/experimental/fade"
+                    tuiLink
+                >
+                    Fade
+                </a>
+                directive. Or you can use native
+                <code>text-overflow: ellipsis</code>
+                . Choose any tool you wish!
+            </ng-template>
+
+            <tui-cell-example-3></tui-cell-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="accessories"
+            heading="With accessories"
+            [content]="example4"
+        >
+            <tui-cell-example-4></tui-cell-example-4>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-cell
+                [description]="description"
+                [secondaryDescription]="secondaryDescription"
+                [secondaryTitle]="secondaryTitle"
+                [size]="size"
+                [title]="title"
+            ></tui-cell>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="title"
+                documentationPropertyType="PolymorpheusContent"
+                [(documentationPropertyValue)]="title"
+            >
+                Left-side main large text
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="description"
+                documentationPropertyType="PolymorpheusContent"
+                [(documentationPropertyValue)]="description"
+            >
+                Left-side secondary small text
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="secondaryTitle"
+                documentationPropertyType="PolymorpheusContent"
+                [(documentationPropertyValue)]="secondaryTitle"
+            >
+                Right-side main large text
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="secondaryDescription"
+                documentationPropertyType="PolymorpheusContent"
+                [(documentationPropertyValue)]="secondaryDescription"
+            >
+                Right-side secondary small text
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="size"
+                documentationPropertyType="TuiSizeL | TuiSizeS"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Size of the cell. This property configures min-height, fonts and paddings.
+
+                <p>
+                    <strong>Note</strong>
+                    : this property does not change anything for mobile platform! Mobile devices has only
+                    <code>l</code>
+                    -size.
+                </p>
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                <p>
+                    Import
+                    <code>TuiCellModule</code>
+                    into a module where you want to use our component
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p>Add to the template:</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleHtml"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

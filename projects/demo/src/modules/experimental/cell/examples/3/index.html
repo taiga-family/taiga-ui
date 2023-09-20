@@ -1,0 +1,40 @@
+<tui-cell
+    [description]="description"
+    [secondaryDescription]="secondaryDescription"
+    [secondaryTitle]="secondaryTitle"
+    [title]="title"
+>
+    <img
+        alt="Taiga UI Logo"
+        src="assets/images/taiga.svg"
+        class="logo"
+    />
+
+    <ng-template #title>
+        <span
+            tuiFade
+            class="no-wrap"
+        >
+            Taiga UI: more than UI kit
+        </span>
+    </ng-template>
+
+    <ng-template #description>
+        <span class="no-wrap ellipsis">
+            Taiga UI family is a collection of independent open source Angular libraries
+        </span>
+    </ng-template>
+
+    <ng-template #secondaryTitle>
+        <span class="no-wrap ellipsis">Taiga UI is fully-treeshakable Angular UI Kit</span>
+    </ng-template>
+
+    <ng-template #secondaryDescription>
+        <span
+            tuiFade
+            class="no-wrap"
+        >
+            It is based on ng-polymorpheus and uses Web APIs for Angular
+        </span>
+    </ng-template>
+</tui-cell>

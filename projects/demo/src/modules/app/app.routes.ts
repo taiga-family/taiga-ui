@@ -283,6 +283,14 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/cell`,
+        loadChildren: async () =>
+            (await import(`../experimental/cell/cell.module`)).ExampleTuiCellModule,
+        data: {
+            title: `Cell`,
+        },
+    },
+    {
         path: `experimental/compass`,
         loadChildren: async () =>
             (await import(`../experimental/compass/compass.module`))

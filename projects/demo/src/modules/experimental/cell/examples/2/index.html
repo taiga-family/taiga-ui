@@ -1,0 +1,30 @@
+<tui-cell
+    *ngFor="let transaction of transactions; let last = last"
+    [description]="last ? commentTemplate : transaction.comment"
+    [secondaryDescription]="transaction.date | date"
+    [secondaryTitle]="amountTemplate"
+    [title]="transaction.user"
+>
+    <tui-avatar
+        size="s"
+        [round]="true"
+        [src]="transaction.userAvatarUrl"
+    ></tui-avatar>
+
+    <ng-template #amountTemplate>
+        <tui-money
+            sign="always"
+            [colored]="true"
+            [value]="transaction.amount"
+        ></tui-money>
+    </ng-template>
+
+    <ng-template #commentTemplate>
+        <tui-badge
+            *ngIf="transaction.comment as text"
+            appearance="primary"
+        >
+            {{ text }}
+        </tui-badge>
+    </ng-template>
+</tui-cell>

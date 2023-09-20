@@ -1,0 +1,28 @@
+<tui-cell
+    description="Description"
+    title="Title"
+    [secondaryTitle]="accessories"
+>
+    <tui-marker-icon
+        mode="primary"
+        new
+        size="s"
+        src="tuiIconStarLarge"
+    ></tui-marker-icon>
+
+    <ng-template #accessories>
+        <div class="accessories">
+            <tui-badge-alert size="s">1</tui-badge-alert>
+
+            <tui-tooltip
+                direction="top"
+                [content]="tooltipContent"
+            ></tui-tooltip>
+
+            <tui-toggle
+                size="l"
+                [ngModel]="true"
+            ></tui-toggle>
+        </div>
+    </ng-template>
+</tui-cell>
