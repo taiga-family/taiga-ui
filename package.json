@@ -139,7 +139,6 @@
         "babel-loader": "9.1.3",
         "cpy-cli": "4.2.0",
         "cspell": "7.3.6",
-        "cy2": "4.0.6",
         "cypress": "13.2.0",
         "cypress-real-events": "1.10.3",
         "eslint": "8.49.0",
