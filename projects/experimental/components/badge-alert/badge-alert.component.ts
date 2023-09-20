@@ -1,10 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    Inject,
-    Input,
-    ViewEncapsulation,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {TUI_PLATFORM, TuiPlatform} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATION_OPTIONS,
@@ -19,7 +13,6 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: '<ng-content></ng-content>',
     styleUrls: ['./badge-alert.style.less'],
-    encapsulation: ViewEncapsulation.None,
     animations: [tuiPop],
     host: {
         '[attr.data-platform]': 'platform',
