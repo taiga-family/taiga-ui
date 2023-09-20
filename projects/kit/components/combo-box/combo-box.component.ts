@@ -78,7 +78,7 @@ export class TuiComboBoxComponent<T>
     stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
 
     @Input()
-    strictMatcher: TuiStringMatcher<T> = TUI_STRICT_MATCHER;
+    strictMatcher: TuiStringMatcher<T> | null = TUI_STRICT_MATCHER;
 
     @Input()
     identityMatcher: TuiItemsHandlers<T>['identityMatcher'] =
@@ -220,7 +220,10 @@ export class TuiComboBoxComponent<T>
     }
 
     private isStrictMatch(item: T): boolean {
-        return this.strictMatcher(item, this.search || '', this.stringify);
+        return (
+            !!this.strictMatcher &&
+            this.strictMatcher(item, this.search || '', this.stringify)
+        );
     }
 
     private close(): void {
