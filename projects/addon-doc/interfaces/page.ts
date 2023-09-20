@@ -1,3 +1,5 @@
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
 export interface TuiDocPageBase {
     readonly section?: string;
     readonly title: string;
@@ -7,6 +9,7 @@ export interface TuiDocPage extends TuiDocPageBase {
     readonly fragment?: string;
     readonly keywords?: string;
     readonly route: string;
+    readonly icon?: PolymorpheusContent;
 }
 
 export interface TuiDocPageGroup extends TuiDocPageBase {

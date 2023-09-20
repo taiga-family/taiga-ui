@@ -1,4 +1,6 @@
-export const pages = [
+import {TuiDocPages} from '@taiga-ui/addon-doc';
+
+export const pages: TuiDocPages = [
     // Documentation
     {
         section: `Documentation`,

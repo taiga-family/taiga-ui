@@ -23,6 +23,11 @@
                     (click)="onClick(input)"
                 >
                     {{ item.title }}
+                    <tui-svg
+                        *polymorpheusOutlet="item.icon as icon"
+                        class="t-icon"
+                        [src]="icon"
+                    ></tui-svg>
                 </a>
             </tui-opt-group>
         </tui-data-list>
@@ -81,7 +86,13 @@
                 (click)="closeMenu()"
             >
                 {{ item.title }}
+                <tui-svg
+                    *polymorpheusOutlet="item.icon as icon"
+                    class="t-icon"
+                    [src]="icon"
+                ></tui-svg>
             </a>
+
             <ng-template #subPagesTemplate>
                 <div
                     routerLinkActive
@@ -101,6 +112,11 @@
                             [src]="icons.more"
                         ></tui-svg>
                         {{ item.title }}
+                        <tui-svg
+                            *polymorpheusOutlet="item.icon as icon"
+                            class="t-icon"
+                            [src]="icon"
+                        ></tui-svg>
                     </button>
                     <tui-expand
                         class="t-expand"
@@ -118,6 +134,11 @@
                                 (click)="closeMenu()"
                             >
                                 {{ subPage.title }}
+                                <tui-svg
+                                    *polymorpheusOutlet="item.icon as icon"
+                                    class="t-icon"
+                                    [src]="icon"
+                                ></tui-svg>
                             </a>
                         </div>
                     </tui-expand>
