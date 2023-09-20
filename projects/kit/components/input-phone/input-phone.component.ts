@@ -129,9 +129,10 @@ export class TuiInputPhoneComponent
     }
 
     get nativeValue(): string {
-        return this.nativeFocusableElement
-            ? this.nativeFocusableElement.value
-            : maskitoTransform(this.value, this.maskOptions);
+        return (
+            this.nativeFocusableElement?.value ||
+            maskitoTransform(this.value, this.maskOptions)
+        );
     }
 
     set nativeValue(value: string) {
