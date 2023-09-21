@@ -31,4 +31,12 @@
         pointer-events: none;
         opacity: var(--tui-disabled-opacity);
     });
+
+    // Temporary hide focus in Safari until we figure out a better approach
+    @supports (-webkit-hyphens: none) {
+        :focus-visible &,
+        &:focus-visible {
+            --tui-focus: transparent !important;
+        }
+    }
 }
