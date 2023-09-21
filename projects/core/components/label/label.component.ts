@@ -2,9 +2,12 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChild,
+    ElementRef,
     HostBinding,
+    HostListener,
     Inject,
     Input,
+    ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
@@ -25,6 +28,9 @@ import {Observable} from 'rxjs';
     },
 })
 export class TuiLabelComponent<T> {
+    @ViewChild('content', {static: true})
+    private readonly content?: ElementRef<HTMLElement>;
+
     @Input()
     tuiLabel: PolymorpheusContent<TuiContextWithImplicit<T | null>>;
 
@@ -38,4 +44,10 @@ export class TuiLabelComponent<T> {
     readonly control?: NgControl;
 
     constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
+
+    @HostListener('click', ['$event'])
+    click(event: Event): void {
+        this.content?.nativeElement.querySelector('input')?.focus();
+        event.preventDefault();
+    }
 }

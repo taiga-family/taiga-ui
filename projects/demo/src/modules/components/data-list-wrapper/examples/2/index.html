@@ -1,12 +1,14 @@
-<tui-combo-box
-    [formControl]="control"
-    [stringify]="stringify"
->
-    Account
+<label tuiLabel="Select user">
+    <tui-combo-box
+        [formControl]="control"
+        [stringify]="stringify"
+    >
+        Account
 
-    <tui-data-list-wrapper
-        *tuiDataList
-        [itemContent]="stringify | tuiStringifyContent"
-        [items]="items | tuiFilterByInputWith: stringify"
-    ></tui-data-list-wrapper>
-</tui-combo-box>
+        <tui-data-list-wrapper
+            *tuiDataList
+            [itemContent]="stringify | tuiStringifyContent"
+            [items]="items | tuiFilterByInputWith: stringify"
+        ></tui-data-list-wrapper>
+    </tui-combo-box>
+</label>
