@@ -6,9 +6,12 @@ import {tuiSvgOptionsProvider, tuiSvgSrcInterceptors} from '@taiga-ui/core';
   providers: [
     tuiSvgOptionsProvider({
       /**
-       * The path to the folder with icons.
+       * @description:
+       * Resolve path to your icon by factory
+       * @name -> <tui-svg src="{name}" />
+       * @baseHref(optional) -> <base href="{baseHref}" />
        */
-      path: name => `assets/icons/${MAPPER[name]}.svg#${MAPPER[name]}`,
+      path: (name: string, baseHref: string) => `${baseHref}assets/icons/${MAPPER[name]}.svg#${MAPPER[name]}`,
 
       /**
        * The function that processes the source of the icon.

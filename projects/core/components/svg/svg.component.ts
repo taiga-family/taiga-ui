@@ -12,13 +12,13 @@ import {
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
 import {
+    TUI_BASE_HREF,
     tuiAssert,
     tuiGetDocumentOrShadowRoot,
     tuiIsString,
     tuiPure,
     TuiSafeHtml,
     TuiStaticRequestService,
-    TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {TUI_CACHE_BUSTING_PAYLOAD, TUI_ICON_ERROR} from '@taiga-ui/core/constants';
 import {TuiIconError} from '@taiga-ui/core/interfaces';
@@ -67,6 +67,7 @@ export class TuiSvgComponent {
         private readonly staticRequestService: TuiStaticRequestService,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(ElementRef) private readonly el: ElementRef<Element>,
+        @Inject(TUI_BASE_HREF) private readonly baseHref: string,
     ) {
         this.innerHTML$ = this.src$.pipe(
             switchMap(() => {
@@ -170,8 +171,8 @@ export class TuiSvgComponent {
     }
 
     @tuiPure
-    private resolveName(name: string, iconsPath: TuiStringHandler<string>): string {
-        return iconsPath(name);
+    private resolveName(name: string, iconsPath: TuiSvgOptions['path']): string {
+        return iconsPath(name, this.baseHref);
     }
 
     private getSafeHtml(src: string): SafeHtml {

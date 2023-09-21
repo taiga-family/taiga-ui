@@ -25,8 +25,8 @@ import {
     TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
 import {
+    TUI_BASE_HREF,
     TUI_DIALOG_CLOSES_ON_BACK,
-    TUI_ENSURE_BASE_HREF,
     TUI_IS_E2E,
     TUI_IS_PLAYWRIGHT,
     TUI_TAKE_ONLY_TRUSTED_EVENTS,
@@ -187,7 +187,7 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_DOC_URL_STATE_HANDLER,
-        deps: [TUI_ENSURE_BASE_HREF],
+        deps: [TUI_BASE_HREF],
         useFactory: (baseHref: string) => (tree: UrlTree) =>
             String(tree).replace(baseHref, ``),
     },

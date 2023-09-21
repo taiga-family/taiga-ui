@@ -1,5 +1,5 @@
 import {InjectionToken, Provider} from '@angular/core';
-import {TUI_ENSURE_BASE_HREF} from '@taiga-ui/cdk';
+import {TUI_BASE_HREF} from '@taiga-ui/cdk';
 
 import {TUI_VERSIONS_META_MAP, TuiVersionMeta} from './versions.constants';
 
@@ -10,7 +10,7 @@ export const TUI_SELECTED_VERSION_META = new InjectionToken<TuiVersionMeta | nul
 export const TUI_VERSION_MANAGER_PROVIDERS: Provider[] = [
     {
         provide: TUI_SELECTED_VERSION_META,
-        deps: [TUI_ENSURE_BASE_HREF],
+        deps: [TUI_BASE_HREF],
         useFactory: (baseHref: string): TuiVersionMeta | null =>
             TUI_VERSIONS_META_MAP.get(baseHref) ?? TUI_VERSIONS_META_MAP.get(`/`) ?? null,
     },
