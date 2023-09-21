@@ -16,7 +16,7 @@ export interface TuiDocPageGroup extends TuiDocPageBase {
     readonly subPages: readonly TuiDocPage[];
 }
 
-export type RawLoaderContent = Promise<{default: string}> | string;
+export type RawLoaderContent = Promise<{default: string}> | Promise<unknown> | string;
 
 export const TUI_EXAMPLE_PRIMARY_FILE_NAME = {
     TS: `TypeScript`,
