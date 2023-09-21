@@ -45,6 +45,9 @@ export class ExampleTuiButtonComponent {
         'destructive',
         'flat',
         'outline',
+        'opposite',
+        'glass',
+        'floating',
     ];
 
     appearance = this.appearances[0];
