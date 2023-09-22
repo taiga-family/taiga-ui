@@ -1,46 +1,51 @@
-<tui-combo-box
-    *tuiLet="service.request(search) | async as filtered"
-    class="b-form"
-    [formControl]="control"
-    [valueContent]="value"
-    [(search)]="search"
->
-    Find the best employees
-    <input
-        placeholder="Type a name"
-        tuiTextfield
-    />
-    <ng-template
-        #value
-        let-item
+<label>
+    Type a name:
+
+    <tui-combo-box
+        *tuiLet="service.request(search) | async as filtered"
+        class="b-form"
+        [formControl]="control"
+        [tuiTextfieldLabelOutside]="true"
+        [valueContent]="value"
+        [(search)]="search"
     >
-        <tui-avatar
-            size="xs"
-            class="avatar"
-            [avatarUrl]="item.avatarUrl || null"
-            [text]="item.toString()"
-        ></tui-avatar>
-        <span class="name">{{ item }}</span>
-    </ng-template>
-    <ng-template tuiDataList>
-        <tui-data-list *ngIf="filtered; else loading">
-            <button
-                *ngFor="let item of filtered"
-                tuiOption
-                [disabled]="item.disabled"
-                [value]="item"
-            >
-                <tui-avatar
-                    size="xs"
-                    class="avatar"
-                    [avatarUrl]="item.avatarUrl || null"
-                    [text]="item.toString()"
-                ></tui-avatar>
-                <span class="name">{{ item }}</span>
-            </button>
-        </tui-data-list>
-        <ng-template #loading>
-            <tui-loader class="tui-space_vertical-4"></tui-loader>
+        Find the best employees
+        <input
+            placeholder="Type a name"
+            tuiTextfield
+        />
+        <ng-template
+            #value
+            let-item
+        >
+            <tui-avatar
+                size="xs"
+                class="avatar"
+                [avatarUrl]="item.avatarUrl || null"
+                [text]="item.toString()"
+            ></tui-avatar>
+            <span class="name">{{ item }}</span>
         </ng-template>
-    </ng-template>
-</tui-combo-box>
+        <ng-template tuiDataList>
+            <tui-data-list *ngIf="filtered; else loading">
+                <button
+                    *ngFor="let item of filtered"
+                    tuiOption
+                    [disabled]="item.disabled"
+                    [value]="item"
+                >
+                    <tui-avatar
+                        size="xs"
+                        class="avatar"
+                        [avatarUrl]="item.avatarUrl || null"
+                        [text]="item.toString()"
+                    ></tui-avatar>
+                    <span class="name">{{ item }}</span>
+                </button>
+            </tui-data-list>
+            <ng-template #loading>
+                <tui-loader class="tui-space_vertical-4"></tui-loader>
+            </ng-template>
+        </ng-template>
+    </tui-combo-box>
+</label>

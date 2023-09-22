@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
     TuiComboBoxModule,
     TuiDataListWrapperModule,
@@ -28,6 +29,7 @@ import {TuiDataListWrapperExample3} from './examples/3';
         TuiFilterByInputPipeModule,
         TuiInputModule,
         TuiStringifyContentPipeModule,
+        TuiTextfieldControllerModule,
     ],
     declarations: [
         ExampleTuiDataListWrapperComponent,
