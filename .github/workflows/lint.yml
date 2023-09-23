@@ -9,7 +9,7 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.0.0
+      - uses: actions/checkout@v4.1.0
       - uses: taiga-family/ci/actions/setup-node@1.13.0
       - run: npm run typecheck
 
@@ -17,7 +17,7 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.0.0
+      - uses: actions/checkout@v4.1.0
       - uses: taiga-family/ci/actions/setup-node@1.13.0
       - run: npm run cspell -- --no-progress
 
@@ -25,10 +25,10 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.0.0
+      - uses: actions/checkout@v4.1.0
       - uses: taiga-family/ci/actions/variables@1.13.0
 
-      - uses: actions/checkout@v4.0.0
+      - uses: actions/checkout@v4.1.0
         if: env.SUPPORT_AUTO_PUSH == 'true'
         with:
           ref: ${{ github.head_ref }}
@@ -46,10 +46,10 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.0.0
+      - uses: actions/checkout@v4.1.0
       - uses: taiga-family/ci/actions/variables@1.13.0
 
-      - uses: actions/checkout@v4.0.0
+      - uses: actions/checkout@v4.1.0
         if: env.SUPPORT_AUTO_PUSH == 'true'
         with:
           ref: ${{ github.head_ref }}
@@ -66,10 +66,10 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.0.0
+      - uses: actions/checkout@v4.1.0
       - uses: taiga-family/ci/actions/variables@1.13.0
 
-      - uses: actions/checkout@v4.0.0
+      - uses: actions/checkout@v4.1.0
         if: env.SUPPORT_AUTO_PUSH == 'true'
         with:
           ref: ${{ github.head_ref }}

@@ -7,7 +7,7 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4.0.0
+      - uses: actions/checkout@v4.1.0
       - uses: taiga-family/ci/actions/variables@1.13.0
       - uses: taiga-family/ci/actions/two-approve@1.13.0
         if: env.TAIGA_FAMILY_BOT_IS_AUTHOR == 'true'
