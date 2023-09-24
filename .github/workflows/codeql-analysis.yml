@@ -17,7 +17,7 @@ jobs:
       contents: read
       security-events: write
     steps:
-      - uses: actions/checkout@v4.0.0
+      - uses: actions/checkout@v4.1.0
       - uses: taiga-family/ci/actions/setup-codeql@1.13.0
 
 concurrency:
