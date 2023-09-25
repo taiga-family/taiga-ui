@@ -1,0 +1,18 @@
+@import '../../taiga-ui-local.less';
+
+/* stylelint-disable order/order */
+[tuiWrapper][data-appearance='floating'] {
+    .transition(~'background, box-shadow');
+    background: #fff;
+    color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.1);
+
+    .wrapper-hover({
+        box-shadow: 0 0.875rem 2.625rem rgba(0, 0, 0, 0.14);
+    });
+
+    .wrapper-active({
+        background: #f6f7f8;
+        box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.1);
+    });
+}
