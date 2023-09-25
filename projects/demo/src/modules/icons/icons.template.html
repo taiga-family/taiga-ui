@@ -108,7 +108,7 @@
         <div class="b-full-width">
             <tui-svg
                 [src]="icon"
-                (tui-icon-error)="documentationPropertyIconErrorChange.emitEvent($event)"
+                (error.capture)="documentationPropertyIconErrorChange.emitEvent($event)"
             ></tui-svg>
         </div>
 
@@ -126,10 +126,10 @@
             <ng-template
                 #documentationPropertyIconErrorChange="documentationProperty"
                 documentationPropertyMode="output"
-                documentationPropertyName="tui-icon-error"
-                documentationPropertyType="CustomEvent<TuiIconError>"
+                documentationPropertyName="error"
+                documentationPropertyType="Error"
             >
-                CustomEvent of loading error
+                ErrorEvent of loading error
             </ng-template>
         </tui-doc-documentation>
 

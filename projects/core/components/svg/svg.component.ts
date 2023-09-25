@@ -156,17 +156,24 @@ export class TuiSvgComponent {
     }
 
     onError(message: string = MISSING_EXTERNAL_ICON): void {
-        const {icon} = this;
-        const event = new CustomEvent<TuiIconError>(TUI_ICON_ERROR, {
-            bubbles: true,
-            detail: {
+        ngDevMode && tuiAssert.assert(false, message, this.icon);
+        this.el.nativeElement.dispatchEvent(
+            // TODO: remove in v4.0
+            new CustomEvent<TuiIconError>(TUI_ICON_ERROR, {
+                bubbles: true,
+                detail: {
+                    message,
+                    icon: this.icon as string,
+                },
+            }),
+        );
+        this.el.nativeElement.dispatchEvent(
+            new ErrorEvent('error', {
                 message,
-                icon: icon as string,
-            },
-        });
-
-        ngDevMode && tuiAssert.assert(false, message, icon);
-        this.el.nativeElement.dispatchEvent(event);
+                bubbles: true,
+                filename: this.icon as string,
+            }),
+        );
     }
 
     @tuiPure
