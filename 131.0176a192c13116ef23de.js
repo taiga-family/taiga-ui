@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[131],{131:n=>{n.exports="tui-badge-alert {\n    margin: 0.2rem;\n    background-color: var(--tui-support-10);\n    color: var(--tui-support-11);\n}\n"}}]);
