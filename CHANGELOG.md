@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.46.0](https://github.com/taiga-family/taiga-ui/compare/v3.45.0...v3.46.0) (2023-09-25)
+
+### Features
+
+- **addon-doc:** improve search ([#5422](https://github.com/taiga-family/taiga-ui/issues/5422))
+  ([d24bb94](https://github.com/taiga-family/taiga-ui/commit/d24bb945f7ef2974765c0b62c2459c431d746594))
+- **addon-doc:** improve ui for code links ([#5435](https://github.com/taiga-family/taiga-ui/issues/5435))
+  ([c436b77](https://github.com/taiga-family/taiga-ui/commit/c436b77c22c134911aef6c9973916ffbc160f3ce))
+- **addon-doc:** support icons inside menu ([#5437](https://github.com/taiga-family/taiga-ui/issues/5437))
+  ([c0eef53](https://github.com/taiga-family/taiga-ui/commit/c0eef53808e5c64d1c0d365b5940ef6921d41b7c))
+- **experimental:** `BadgeAlert` add new component ([#5399](https://github.com/taiga-family/taiga-ui/issues/5399))
+  ([2921a21](https://github.com/taiga-family/taiga-ui/commit/2921a21feacfae2ac98ffaf678c6f3d83f934ba3))
+- **experimental:** `Button` add new appearances ([#5448](https://github.com/taiga-family/taiga-ui/issues/5448))
+  ([4942dcc](https://github.com/taiga-family/taiga-ui/commit/4942dcc690e8ca5c1672e602391d4c426af4ad59))
+- **experimental:** `Button` simplify icons ([#5424](https://github.com/taiga-family/taiga-ui/issues/5424))
+  ([5dbd546](https://github.com/taiga-family/taiga-ui/commit/5dbd54618fd6c91766695426d9c68d799d5a42fd))
+- **experimental:** `Sensitive` add new directive ([#5425](https://github.com/taiga-family/taiga-ui/issues/5425))
+  ([6cfb5c1](https://github.com/taiga-family/taiga-ui/commit/6cfb5c1ebcfbf8f944ee86d732da6d118a8ad3de))
+
+### Bug Fixes
+
+- **core:** add break word in alert ([#5456](https://github.com/taiga-family/taiga-ui/issues/5456))
+  ([efb52ab](https://github.com/taiga-family/taiga-ui/commit/efb52ab9ce669216c2a695f1877966b6bcabb18d))
+- **experimental:** `Avatar` with image has redundant gap below itself
+  ([#5449](https://github.com/taiga-family/taiga-ui/issues/5449))
+  ([fbfd5a4](https://github.com/taiga-family/taiga-ui/commit/fbfd5a4b9d212fb11c32f4a51850a4a21f085329))
+- **kit:** `Combobox` return null support for strict matcher
+  ([#5441](https://github.com/taiga-family/taiga-ui/issues/5441))
+  ([5c5ad77](https://github.com/taiga-family/taiga-ui/commit/5c5ad77d440d112a298438665cbe84bd44e9c1cc))
+- **kit:** `InputPhone` fix initial value ([#5438](https://github.com/taiga-family/taiga-ui/issues/5438))
+  ([5b240b8](https://github.com/taiga-family/taiga-ui/commit/5b240b84551f8fbe284f571981b877cf4894d307))
+
 ## [3.45.0](https://github.com/taiga-family/taiga-ui/compare/v3.44.1...v3.45.0) (2023-09-18)
 
 ### Features
