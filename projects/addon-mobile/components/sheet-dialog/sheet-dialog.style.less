@@ -16,16 +16,15 @@
         display: block;
 
         .t-stops {
-            display: flex;
+            scroll-snap-stop: always;
+            scroll-snap-align: start;
         }
     }
 }
 
 .t-stops {
-    display: none;
+    display: flex;
     height: 100%;
-    scroll-snap-stop: always;
-    scroll-snap-align: start;
 }
 
 .t-stop {
