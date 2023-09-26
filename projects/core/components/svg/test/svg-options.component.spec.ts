@@ -1,6 +1,12 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {TUI_VERSION, tuiIsString, TuiSafeHtml, TuiStringHandler} from '@taiga-ui/cdk';
+import {
+    TUI_BASE_HREF,
+    TUI_VERSION,
+    tuiIsString,
+    TuiSafeHtml,
+    TuiStringHandler,
+} from '@taiga-ui/cdk';
 import {
     TUI_ICONS_PATH,
     TUI_ICONS_PLACE,
@@ -79,6 +85,36 @@ describe(`SVG options`, () => {
             expect(testComponent?.svgComponent.src).toBe(`tuiIconMySuperIcon`);
             expect(testComponent?.svgComponent.use).toBe(
                 `https://taiga-ui.dev/icons/public/tuiIconMySuperIcon.svg?v=${TUI_VERSION}#tuiIconMySuperIcon`,
+            );
+        });
+    });
+
+    describe(`path uses baseUrl`, () => {
+        configureTestSuite(() => {
+            TestBed.configureTestingModule({
+                imports: [TuiSvgModule],
+                declarations: [TestComponent],
+                providers: [
+                    {
+                        provide: TUI_BASE_HREF,
+                        useValue: `/my/app/`,
+                    },
+                    tuiSvgOptionsProvider({
+                        path: (name, baseHref) =>
+                            `${baseHref}assets/taiga-ui/icons/${name}.svg`,
+                    }),
+                ],
+            });
+        });
+
+        it(`tuiMyIcon`, () => {
+            testComponent!.icon = `tuiMyIcon`;
+            fixture?.detectChanges();
+
+            expect(testComponent?.svgComponent.isInnerHTML).toBe(false);
+            expect(testComponent?.svgComponent.src).toBe(`tuiMyIcon`);
+            expect(testComponent?.svgComponent.use).toBe(
+                `/my/app/assets/taiga-ui/icons/tuiMyIcon.svg`,
             );
         });
     });

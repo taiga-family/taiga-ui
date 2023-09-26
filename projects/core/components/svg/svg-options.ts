@@ -31,7 +31,7 @@ export interface TuiSvgOptions {
     readonly contentProcessor: TuiHandler<TuiSafeHtml, TuiSafeHtml>;
     readonly deprecated: TuiStringHandler<string>;
     readonly iconsPlace: string;
-    readonly path: TuiStringHandler<string>;
+    readonly path: (name: string, baseHref?: string) => string;
     readonly srcProcessor: TuiHandler<TuiSafeHtml, TuiSafeHtml>;
 }
 
