@@ -68,11 +68,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         return this.context.offset;
     }
 
-    @HostBinding('class._closeable')
-    get closeable(): boolean {
-        return this.context.closeable;
-    }
-
     get isSmall(): boolean {
         return this.sheetTop > (this.sheet?.nativeElement.clientHeight || Infinity);
     }

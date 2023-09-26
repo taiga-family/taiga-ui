@@ -1,4 +1,7 @@
-<div class="t-stops">
+<div
+    class="t-stops"
+    [class.t-stops_snap]="context.closeable"
+>
     <div
         *ngFor="let stop of context.stops"
         #stops
