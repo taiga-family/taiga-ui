@@ -7,6 +7,8 @@
 }
 
 .t-group {
+    align-items: inherit;
+
     :host[data-orientation='horizontal'] & {
         display: flex;
         justify-content: inherit;
@@ -14,6 +16,8 @@
 }
 
 .t-item {
+    align-items: inherit;
+
     :host[data-orientation='horizontal'] &:nth-child(n + 2) {
         margin-left: 1.5rem;
     }
