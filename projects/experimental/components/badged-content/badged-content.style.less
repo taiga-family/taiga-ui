@@ -1,0 +1,35 @@
+@import 'taiga-ui-local';
+
+:host {
+    --t-badge-height: 0;
+    --t-radius: 0.75rem;
+    --t-corner-offset: calc((var(--t-radius) * 1.4142 - var(--t-radius)) * 1 / 1.4142);
+    position: relative;
+    display: inline-block;
+    height: fit-content;
+    width: max-content;
+    color: var(--tui-base-01);
+}
+
+.t-badge {
+    --t-offset: calc(var(--t-badge-height) * -0.5 + var(--t-corner-offset));
+    position: absolute;
+    display: flex;
+
+    &_top {
+        top: var(--t-offset);
+        right: var(--t-offset);
+    }
+
+    &_bottom {
+        bottom: var(--t-offset);
+        right: var(--t-offset);
+    }
+}
+
+.t-border:not(:empty) {
+    --tui-duration: 0;
+    display: flex;
+    border-radius: 6rem;
+    box-shadow: 0 0 0 1px currentColor;
+}

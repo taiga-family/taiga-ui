@@ -1,0 +1,25 @@
+<ng-content></ng-content>
+
+<div
+    #badgeTop
+    class="t-badge t-badge_top"
+    [style.--t-badge-height.px]="badgeTop.offsetHeight"
+    (tuiResize)="(0)"
+>
+    <ng-content select="tui-badge-alert[tuiSlot='top']"></ng-content>
+    <div class="t-border">
+        <ng-content select="[tuiSlot='top']"></ng-content>
+    </div>
+</div>
+
+<div
+    #badgeBottom
+    class="t-badge t-badge_bottom"
+    [style.--t-badge-height.px]="badgeBottom.offsetHeight"
+    (tuiResize)="(0)"
+>
+    <ng-content select="tui-badge-alert[tuiSlot='bottom']"></ng-content>
+    <div class="t-border">
+        <ng-content select="[tuiSlot='bottom']"></ng-content>
+    </div>
+</div>

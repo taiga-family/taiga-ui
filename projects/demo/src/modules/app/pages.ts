@@ -839,6 +839,12 @@ export const pages: TuiDocPages = [
                 keywords: `бэдж, бейдж, circle, круг, badge, alert, нотификация`,
                 route: `/experimental/badge-alert`,
             },
+            {
+                section: `Experimental`,
+                title: `BadgedContent`,
+                keywords: `бэдж, бейдж, circle, овал, круг, badge, нотификация`,
+                route: `/experimental/badged-content`,
+            },
         ],
     },
     {
