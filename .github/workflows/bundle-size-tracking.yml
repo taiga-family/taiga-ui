@@ -10,12 +10,10 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.0
       - uses: taiga-family/ci/actions/variables@1.13.0
+      - uses: actions/checkout@v4.1.0
       - uses: taiga-family/ci/actions/setup-node@1.13.0
-
       - run: npx nx build demo
-
       - name: Run BundleMon
         continue-on-error: true
         run: npx --yes bundlemon --config .github/.bundlemonrc.json

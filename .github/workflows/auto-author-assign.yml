@@ -8,9 +8,7 @@ jobs:
     name: PR author as an assignee
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.0
       - uses: taiga-family/ci/actions/variables@1.13.0
-
       - name: Auto assign
         if: env.IS_OWNER_MODE == 'true'
         uses: toshimaru/auto-author-assign@v2.0.0
