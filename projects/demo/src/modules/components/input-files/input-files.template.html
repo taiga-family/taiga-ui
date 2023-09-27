@@ -136,28 +136,6 @@
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="capture"
-                documentationPropertyType="'user' | 'environment' | null"
-                [documentationPropertyValues]="captureVariants"
-                [(documentationPropertyValue)]="capture"
-            >
-                Allowed capture (for native attribute
-                <code>capture</code>
-                )
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="accept"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="acceptVariants"
-                [(documentationPropertyValue)]="accept"
-            >
-                Allowed formats (for native attribute
-                <code>accept</code>
-                )
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
                 documentationPropertyName="label"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="label"
@@ -183,6 +161,37 @@
                 Max file size in bytes (30 MB by default — 30 * 1000 * 1000)
             </ng-template>
             <ng-template
+                documentationPropertyMode="output"
+                documentationPropertyName="reject"
+                documentationPropertyType="TuiFileLike"
+            >
+                Emits file that was rejected.
+            </ng-template>
+        </tui-doc-documentation>
+
+        <tui-doc-documentation heading="Native <input> inside TuiInputFiles">
+            <tui-doc-code [code]="nativeInputInsideInputFiles"></tui-doc-code>
+
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="accept"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="acceptVariants"
+                [(documentationPropertyValue)]="accept"
+            >
+                Allowed formats
+            </ng-template>
+
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="attr.capture"
+                documentationPropertyType="'user' | 'environment' | null"
+                [documentationPropertyValues]="captureVariants"
+                [(documentationPropertyValue)]="capture"
+            >
+                Allowed capture
+            </ng-template>
+            <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="multiple"
                 documentationPropertyType="boolean"
@@ -190,13 +199,6 @@
                 (documentationPropertyValueChange)="multipleChange($event)"
             >
                 Allows to upload several files
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="output"
-                documentationPropertyName="reject"
-                documentationPropertyType="TuiFileLike"
-            >
-                Emits file that was rejected.
             </ng-template>
         </tui-doc-documentation>
 
