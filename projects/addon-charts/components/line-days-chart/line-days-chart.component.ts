@@ -131,13 +131,8 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
     }
 
     @tuiPure
-    getHintContext(
-        x: number,
-        value: ReadonlyArray<[TuiDay, number]>,
-    ): TuiContextWithImplicit<[TuiDay, number]> {
-        return {
-            $implicit: value[x - value[0][0].day + 1],
-        };
+    getHintContext(x: number, value: ReadonlyArray<[TuiDay, number]>): [TuiDay, number] {
+        return value[x - value[0][0].day + 1];
     }
 
     ngAfterViewInit(): void {
@@ -198,10 +193,7 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
         return this.getDay(index).daysCount * this.months.length;
     }
 
-    getContext(
-        index: number,
-        {value}: TuiLineChartComponent,
-    ): TuiContextWithImplicit<unknown> {
+    getContext(index: number, {value}: TuiLineChartComponent): unknown {
         const x = value[index][0];
 
         return this.hintDirective

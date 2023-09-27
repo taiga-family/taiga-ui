@@ -164,15 +164,10 @@ export class TuiLineChartComponent {
         return `${this.autoIdString}_${index}`;
     }
 
-    getContentContext(
-        $implicit: TuiPoint,
-        index: number,
-    ): TuiLineChartHintContext<TuiPoint | readonly TuiPoint[]> {
+    getImplicit($implicit: TuiPoint): TuiPoint | readonly TuiPoint[] {
         return (
-            this.hintDirective?.getContext(this.value.indexOf($implicit), this) || {
-                $implicit,
-                index,
-            }
+            this.hintDirective?.getContext(this.value.indexOf($implicit), this) ||
+            $implicit
         );
     }
 

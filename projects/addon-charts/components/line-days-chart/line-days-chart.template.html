@@ -17,7 +17,7 @@
     #hint
     let-point
 >
-    <ng-container *polymorpheusOutlet="hintContent as text; context: getHintContext(point[0], value)">
+    <ng-container *polymorpheusOutlet="hintContent as text; context: {$implicit: getHintContext(point[0], value)}">
         {{ text }}
     </ng-container>
 </ng-template>

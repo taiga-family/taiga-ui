@@ -11,7 +11,6 @@ import {
     Renderer2,
     Self,
 } from '@angular/core';
-import {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
 import {
     EMPTY_QUERY,
     TuiContextWithImplicit,
@@ -69,11 +68,8 @@ export class TuiLineChartHintDirective implements AfterViewInit {
     }
 
     // _chart is required by TuiLineDaysChartComponent that impersonates this directive
-    getContext(
-        index: number,
-        _chart: TuiLineChartComponent,
-    ): TuiLineChartHintContext<readonly TuiPoint[]> {
-        return this.computeContext(index, this.charts);
+    getContext(index: number, _chart: TuiLineChartComponent): readonly TuiPoint[] {
+        return this.computeContext(...this.charts.map(({value}) => value))[index];
     }
 
     // _chart is required by TuiLineDaysChartComponent that impersonates this directive
@@ -93,13 +89,9 @@ export class TuiLineChartHintDirective implements AfterViewInit {
 
     @tuiPure
     private computeContext(
-        index: number,
-        charts: QueryList<TuiLineChartComponent>,
-    ): TuiLineChartHintContext<readonly TuiPoint[]> {
-        return {
-            $implicit: charts.map(chart => chart.value[index]),
-            index,
-        };
+        ...values: ReadonlyArray<readonly TuiPoint[]>
+    ): ReadonlyArray<readonly TuiPoint[]> {
+        return (values[0] || []).map((_, index) => values.map(value => value[index]));
     }
 }
 
