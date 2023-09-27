@@ -1,3 +1,4 @@
+import {animateChild, query, style, transition, trigger} from '@angular/animations';
 import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
@@ -9,7 +10,6 @@ import {
 } from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {HISTORY} from '@ng-web-apis/common';
-import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TUI_DIALOGS} from '@taiga-ui/cdk/tokens';
 import {TuiDialog} from '@taiga-ui/cdk/types';
@@ -36,7 +36,18 @@ const isFakeHistoryState = (
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [TuiDestroyService],
-    animations: [TUI_PARENT_ANIMATION],
+    animations: [
+        trigger('host', [
+            transition(':enter', [
+                style({overflow: 'clip'}),
+                query(':scope > *', [animateChild()], {optional: true}),
+            ]),
+            transition(':leave', [
+                style({overflow: 'clip'}),
+                query(':scope > *', [animateChild()], {optional: true}),
+            ]),
+        ]),
+    ],
 })
 export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>>
     implements OnInit

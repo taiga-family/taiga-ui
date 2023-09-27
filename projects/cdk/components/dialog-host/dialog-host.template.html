@@ -6,7 +6,7 @@
     tuiOverscroll="all"
     tuiScrollRef
     class="t-dialog"
-    @tuiParentAnimation
+    @host
     [attr.aria-labelledby]="item.id"
 >
     <ng-container *polymorpheusOutlet="item.component; context: item"></ng-container>

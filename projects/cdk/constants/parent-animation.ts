@@ -1,13 +1,10 @@
-import {animateChild, query, style, transition, trigger} from '@angular/animations';
+import {animateChild, query, transition, trigger} from '@angular/animations';
 
 /**
  * Add to enable child :leave animation (fixes https://github.com/angular/angular/issues/15753)
  */
 export const TUI_PARENT_ANIMATION = trigger(`tuiParentAnimation`, [
-    transition(`* => void`, [
-        style({overflow: `hidden`}),
-        query(`:scope > *`, [animateChild()], {optional: true}),
-    ]),
+    transition(`:leave`, [query(`:scope > *`, [animateChild()], {optional: true})]),
 ]);
 
 /**
