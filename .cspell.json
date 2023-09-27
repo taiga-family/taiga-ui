@@ -79,6 +79,11 @@
             "languageId": "ts",
             "filename": ["**/tests/schematic-migrate-sliders.spec.ts"],
             "ignoreWords": ["Maxxxxx"]
+        },
+        {
+            "languageId": "ts",
+            "filename": ["**/textarea.spec.ts"],
+            "ignoreWords": ["qwertypgj_"]
         }
     ]
 }
