@@ -13,6 +13,6 @@ jobs:
 
       - name: Auto assign
         if: env.IS_OWNER_MODE == 'true'
-        uses: toshimaru/auto-author-assign@v2.0.0
+        uses: toshimaru/auto-author-assign@v2.0.1
         with:
           repo-token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
