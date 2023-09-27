@@ -60,7 +60,7 @@
                 [style.left.%]="getLeft(getX(index))"
                 [style.width.%]="getWidth(index)"
                 [tuiHint]="$any(hintDirective?.hint || hintContent)"
-                [tuiHintContext]="{ $implicit: getImplicit(point), index: index }"
+                [tuiHintContext]="{$implicit: getImplicit(point), index: index}"
                 [tuiHintDescribe]="isFocusable ? getHintId(index) : null"
                 [tuiHintHost]="hintHost"
                 (mouseenter)="onMouseEnter(index)"
