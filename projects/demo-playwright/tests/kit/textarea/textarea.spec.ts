@@ -13,7 +13,7 @@ describe(`Textarea`, () => {
     }) => {
         const placeholder = `qwertypgj_`;
 
-        await tuiGoto(page, `components/textarea/API?placehoder=${placeholder}`);
+        await tuiGoto(page, `components/textarea/API?placeholder=${placeholder}`);
 
         const {apiPageExample} = new TuiDocumentationPagePO(page);
         const textarea = apiPageExample.getByPlaceholder(placeholder);
