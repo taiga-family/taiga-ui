@@ -62,7 +62,7 @@ export class TuiHintDescribeDirective extends TuiDriver implements OnChanges {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
-    ngOnChanges() {
+    ngOnChanges(): void {
         this.id$.next(this.tuiHintDescribe);
     }
 
