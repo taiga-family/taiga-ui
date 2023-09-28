@@ -11,7 +11,7 @@ import {
 import {Title} from '@angular/platform-browser';
 import {HISTORY} from '@ng-web-apis/common';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
-import {TUI_DIALOGS} from '@taiga-ui/cdk/tokens';
+import {TUI_DIALOGS, TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TuiDialog} from '@taiga-ui/cdk/types';
 import {tuiCreateToken} from '@taiga-ui/cdk/utils';
 import {combineLatest, Observable, of} from 'rxjs';
@@ -55,6 +55,7 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>>
     dialogs: readonly T[] = [];
 
     constructor(
+        @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
         @Inject(TUI_DIALOG_CLOSES_ON_BACK)
         readonly isDialogClosesOnBack$: Observable<boolean>,
         @Inject(TUI_DIALOGS)

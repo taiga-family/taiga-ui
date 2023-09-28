@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiScrollControlsModule} from '@taiga-ui/core/components/scroll-controls';
+import {TuiScrollControlsModule} from '@taiga-ui/cdk';
 
 import {TuiScrollRefDirective} from './scroll-ref.directive';
 import {TuiScrollableDirective} from './scrollable.directive';

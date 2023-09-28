@@ -1,8 +1,11 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiLetModule} from '@taiga-ui/cdk/directives';
-import {TuiFocusTrapModule} from '@taiga-ui/cdk/directives/focus-trap';
-import {TuiOverscrollModule} from '@taiga-ui/cdk/directives/overscroll';
+import {TuiScrollControlsModule} from '@taiga-ui/cdk/components/scroll-controls';
+import {
+    TuiFocusTrapModule,
+    TuiLetModule,
+    TuiOverscrollModule,
+} from '@taiga-ui/cdk/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiDialogHostComponent} from './dialog-host.component';
@@ -14,6 +17,7 @@ import {TuiDialogHostComponent} from './dialog-host.component';
         TuiOverscrollModule,
         TuiFocusTrapModule,
         TuiLetModule,
+        TuiScrollControlsModule,
     ],
     declarations: [TuiDialogHostComponent],
     exports: [TuiDialogHostComponent],
