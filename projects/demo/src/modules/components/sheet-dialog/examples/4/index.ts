@@ -2,7 +2,12 @@ import {Component, Inject, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_DEFAULT_MATCHER, TUI_WINDOW_SIZE, tuiControlValue} from '@taiga-ui/cdk';
+import {
+    TUI_DEFAULT_MATCHER,
+    TUI_WINDOW_SIZE,
+    tuiControlValue,
+    TuiSwipeDirection,
+} from '@taiga-ui/cdk';
 import {TuiInputComponent} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -63,7 +68,18 @@ export class TuiSheetDialogExample4 {
         }
     }
 
-    scroll(): void {
+    onSwipe(direction: TuiSwipeDirection): void {
+        if (direction === 'top') {
+            this.scroll();
+        }
+    }
+
+    onFocus(): void {
+        this.scroll();
+        this.input?.nativeFocusableElement?.focus();
+    }
+
+    private scroll(): void {
         const input = this.input?.nativeFocusableElement;
         const container = input?.closest('tui-sheet-dialog');
 
@@ -72,6 +88,5 @@ export class TuiSheetDialogExample4 {
         }
 
         container.scrollTop = container.clientHeight;
-        input?.focus();
     }
 }

@@ -15,7 +15,7 @@
         <tui-input
             tuiTextfieldIconLeft="tuiIconSearchLarge"
             [formControl]="search"
-            (mousedown.prevent)="scroll()"
+            (mousedown.prevent)="onFocus()"
         >
             Find user
         </tui-input>
@@ -23,6 +23,7 @@
     <div
         class="container"
         [style.height]="height$ | async"
+        (tuiSwipe)="onSwipe($event.direction)"
     >
         <button
             *ngFor="let user of users$ | async"
