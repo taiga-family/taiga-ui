@@ -82,11 +82,11 @@ export class TuiSwipeableDirective implements OnChanges {
 
         const current = this.el.nativeElement.getBoundingClientRect();
 
+        this.animation?.finish();
         this.move(0, 0);
 
         const initial = this.el.nativeElement.getBoundingClientRect();
 
-        this.animation?.finish();
         this.update(current.left - initial.left, current.top - initial.top);
         this.move(...this.point);
     }
