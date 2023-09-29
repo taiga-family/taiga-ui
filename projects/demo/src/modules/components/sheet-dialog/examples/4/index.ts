@@ -2,9 +2,9 @@ import {Component, Inject, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_DEFAULT_MATCHER, TUI_WINDOW_HEIGHT, tuiControlValue} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, TUI_WINDOW_SIZE, tuiControlValue} from '@taiga-ui/cdk';
 import {TuiInputComponent} from '@taiga-ui/kit';
-import {combineLatest, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 const USERS = [
@@ -39,18 +39,20 @@ export class TuiSheetDialogExample4 {
 
     open = false;
 
+    readonly offset = 16;
+
     readonly search = new FormControl('');
 
     readonly users$ = tuiControlValue<string>(this.search).pipe(
         map(search => USERS.filter(user => TUI_DEFAULT_MATCHER(user, search))),
     );
 
-    readonly buffer$ = combineLatest([this.users$, this.height$]).pipe(
-        map(([users, height]) => `calc(${height}px - ${15 + users.length * 3}rem)`),
+    readonly height$ = this.size$.pipe(
+        map(({height}) => `calc(${height - this.offset}px - 9.25rem`),
     );
 
     constructor(
-        @Inject(TUI_WINDOW_HEIGHT) private readonly height$: Observable<number>,
+        @Inject(TUI_WINDOW_SIZE) private readonly size$: Observable<ClientRect>,
     ) {}
 
     toggle(open: boolean): void {
