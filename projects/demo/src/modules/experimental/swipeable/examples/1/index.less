@@ -6,6 +6,7 @@
 }
 
 .circle {
+    position: relative;
     width: 6rem;
     height: 6rem;
     border-radius: 100%;
@@ -14,4 +15,25 @@
     box-shadow: 0.25rem 0.25rem 0.5rem 0 rgba(34, 60, 80, 0.2);
     cursor: move;
     will-change: transform;
+}
+
+.arrow {
+    position: absolute;
+    height: 6px;
+    width: var(--w, 0);
+    transform-origin: left;
+    transform: rotate(var(--r, 0deg));
+    background: red;
+    top: calc(50% - 3px);
+    left: 50%;
+
+    &:after {
+        content: '';
+        position: absolute;
+        left: 100%;
+        top: -6px;
+        border-left: 9px solid red;
+        border-top: 9px solid transparent;
+        border-bottom: 9px solid transparent;
+    }
 }
