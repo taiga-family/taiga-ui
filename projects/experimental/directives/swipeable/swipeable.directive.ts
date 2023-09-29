@@ -29,8 +29,8 @@ export class TuiSwipeableDirective {
             const dx = x * time - (drag * time ** 2) / 2;
             const dy = y * time - (drag * time ** 2) / 2;
 
-            x = tuiClamp(this.x + dx, 0, host.width - width);
-            y = tuiClamp(this.y + dy, 0, host.height - height);
+            x = this.x + dx || tuiClamp(this.x + dx, 0, host.width - width);
+            y = this.y + dy || tuiClamp(this.y + dy, 0, host.height - height);
 
             this.move(x, y);
 
@@ -52,7 +52,7 @@ export class TuiSwipeableDirective {
 
         const current = this.el.nativeElement.getBoundingClientRect();
 
-        this.move(NaN, NaN);
+        this.move(0, 0);
 
         const initial = this.el.nativeElement.getBoundingClientRect();
 
@@ -66,10 +66,15 @@ export class TuiSwipeableDirective {
         this.el.nativeElement.style.transform = transform(x, y);
     }
 
-    private animate(x: number, y: number, duration: number): Animation {
+    private animate(
+        x: number,
+        y: number,
+        duration: number,
+        easing = 'ease-out',
+    ): Animation {
         return this.el.nativeElement.animate(
             [{transform: transform(this.x, this.y)}, {transform: transform(x, y)}],
-            {duration, easing: 'ease-out'},
+            {duration, easing},
         );
     }
 }
