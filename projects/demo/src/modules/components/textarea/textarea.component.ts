@@ -80,4 +80,6 @@ export class ExampleTuiTextareaComponent extends AbstractExampleTuiControl {
     override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeM> = ['m', 'l'];
 
     override size: TuiSizeL | TuiSizeM = this.sizeVariants[1];
+
+    placeholder = 'Placeholder';
 }

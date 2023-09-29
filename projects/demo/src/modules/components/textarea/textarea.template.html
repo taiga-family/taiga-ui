@@ -87,8 +87,8 @@
             >
                 Textfield for multiline input. It can grow with its content.
                 <textarea
-                    placeholder="Placeholder"
                     tuiTextfield
+                    [placeholder]="placeholder"
                 ></textarea>
             </tui-textarea>
         </tui-doc-demo>
@@ -142,6 +142,27 @@
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>
+        <tui-doc-documentation heading="Native <textarea> inside TuiTextarea">
+            <p>
+                Learn more how to set some attributes or listen to events on native textarea in this
+                <a
+                    fragment="native"
+                    routerLink="/components/textarea"
+                    tuiLink
+                >
+                    example
+                </a>
+            </p>
+
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="placeholder"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="placeholder"
+            >
+                Text displayed in a text field when the it has no value
+            </ng-template>
+        </tui-doc-documentation>
     </ng-template>
 
     <ng-template pageTab>
