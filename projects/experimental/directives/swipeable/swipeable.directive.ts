@@ -43,25 +43,14 @@ export class TuiSwipeableDirective implements OnChanges {
             this.update(...point);
         });
 
-        pan.pipe(
-            debounceTime(0),
-            // bufferTime(POLLING_TIME),
-            // filter(() => !this.pointer),
-            // map(points => points.reduce(([a, b], [x, y]) => [a + x, b + y], [0, 0])),
-            takeUntil(destroy$),
-        ).subscribe(([x, y]) => {
+        pan.pipe(debounceTime(0), takeUntil(destroy$)).subscribe(([x, y]) => {
             const speed = Math.sqrt(x ** 2 + y ** 2);
             const time = speed / DRAG;
-            const dx = (x * time) / 2;
-            const dy = (y * time) / 2;
-            // const {height, width} = this.el.nativeElement.getBoundingClientRect();
-            // const host = this.el.nativeElement.parentElement!.getBoundingClientRect();
 
+            x = this.point[0] + (x * time) / 2;
+            y = this.point[1] + (y * time) / 2;
             this.el.nativeElement.style.setProperty('--w', `${speed * 10}px`);
             this.el.nativeElement.style.setProperty('--r', `${Math.atan2(y, x)}rad`);
-
-            x = this.point[0] + dx; // tuiClamp(this.point[0] + dx, 0, host.width - width);
-            y = this.point[1] + dy; // tuiClamp(this.point[1] + dy, 0, host.height - height);
 
             if (this.pointer || !speed) {
                 return;
