@@ -48,7 +48,7 @@ export class TuiSheetDialogExample4 {
     );
 
     readonly height$ = this.size$.pipe(
-        map(({height}) => `calc(${height - this.offset}px - 9.25rem`),
+        map(({height}) => `calc(${height - this.offset}px - 14rem`),
     );
 
     constructor(

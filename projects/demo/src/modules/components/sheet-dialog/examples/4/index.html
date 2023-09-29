@@ -11,19 +11,19 @@
     [tuiSheetDialogOptions]="{stops: ['29rem'], offset: offset}"
     (tuiSheetDialogChange)="toggle($event)"
 >
+    <header class="header">
+        <tui-input
+            tuiTextfieldIconLeft="tuiIconSearchLarge"
+            [formControl]="search"
+            (mousedown.prevent)="scroll()"
+        >
+            Find user
+        </tui-input>
+    </header>
     <div
         class="container"
         [style.height]="height$ | async"
     >
-        <header class="header">
-            <tui-input
-                tuiTextfieldIconLeft="tuiIconSearchLarge"
-                [formControl]="search"
-                (mousedown.prevent)="scroll()"
-            >
-                Find user
-            </tui-input>
-        </header>
         <button
             *ngFor="let user of users$ | async"
             class="item"
