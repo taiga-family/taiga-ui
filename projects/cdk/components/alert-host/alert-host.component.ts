@@ -54,7 +54,7 @@ export class TuiAlertHostComponent<T extends TuiDialog<unknown, unknown>>
             });
     }
 
-    readonly mapper: TuiMapper<unknown, Injector> = useValue =>
+    readonly mapper: TuiMapper<[unknown], Injector> = useValue =>
         Injector.create({
             providers: [
                 {

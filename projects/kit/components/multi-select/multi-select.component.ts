@@ -200,15 +200,15 @@ export class TuiMultiSelectComponent<T>
     }
 
     readonly valueMapper: TuiMapper<
-        readonly T[],
+        [readonly T[], TuiStringHandler<T>, boolean?],
         ReadonlyArray<TuiStringifiableItem<T>>
-    > = (value, stringify: TuiStringHandler<T>, group: boolean) =>
+    > = (value, stringify, group) =>
         group
             ? EMPTY_ARRAY
             : value.map(item => new TuiStringifiableItem(item, stringify));
 
     readonly disabledItemHandlerWrapper: TuiMapper<
-        TuiBooleanHandler<T>,
+        [TuiBooleanHandler<T>],
         TuiBooleanHandler<TuiStringifiableItem<T> | string>
     > = handler => stringifiable =>
         tuiIsString(stringifiable) || handler(stringifiable.item);

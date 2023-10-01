@@ -187,7 +187,7 @@ export class TuiInputPhoneInternationalComponent
         this.value = `${CHAR_PLUS}${value}`;
     }
 
-    readonly isoToCountryCodeMapper: TuiMapper<TuiCountryIsoCode, string> = item =>
+    readonly isoToCountryCodeMapper: TuiMapper<[TuiCountryIsoCode], string> = item =>
         tuiIsoToCountryCode(this.countriesMasks, item);
 
     /**

@@ -71,10 +71,10 @@ export class TuiBarChartComponent {
         return this.max || this.getMax(this.value, this.collapsed);
     }
 
-    readonly percentMapper: TuiMapper<readonly number[], number> = (
+    readonly percentMapper: TuiMapper<[readonly number[], boolean, number], number> = (
         set,
-        collapsed: boolean,
-        max: number,
+        collapsed,
+        max,
     ) => (100 * (collapsed ? tuiSum(...set) : Math.max(...set))) / max;
 
     getHintId(index: number): string {

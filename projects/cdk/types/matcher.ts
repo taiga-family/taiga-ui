@@ -4,7 +4,7 @@ import {TuiMapper} from './mapper';
 /**
  * A matcher function to test items against with extra arguments.
  */
-export type TuiMatcher<I> = TuiMapper<I, boolean>;
+export type TuiMatcher<I extends unknown[]> = TuiMapper<I, boolean>;
 
 export type TuiStringMatcher<I> = (
     item: I,

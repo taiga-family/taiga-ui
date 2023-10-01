@@ -10,7 +10,11 @@ export class TuiFilterPipe implements PipeTransform {
      * @param matcher method for filtering
      * @param args arbitrary number of additional arguments
      */
-    transform<T>(items: readonly T[], matcher: TuiMatcher<T>, ...args: any[]): T[] {
+    transform<T, U extends unknown[]>(
+        items: readonly T[],
+        matcher: TuiMatcher<[T, ...U]>,
+        ...args: U
+    ): T[] {
         return items.filter(item => matcher(item, ...args));
     }
 }

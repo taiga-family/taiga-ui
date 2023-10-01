@@ -226,9 +226,9 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     }
 
     readonly disabledItemHandlerMapper: TuiMapper<
-        TuiBooleanHandler<TuiDay>,
+        [TuiBooleanHandler<TuiDay>, TuiDay, TuiDay],
         TuiBooleanHandler<TuiDay>
-    > = (disabledItemHandler, min: TuiDay, max: TuiDay) => item =>
+    > = (disabledItemHandler, min, max) => item =>
         item.dayBefore(min) ||
         (max !== null && item.dayAfter(max)) ||
         disabledItemHandler(item);

@@ -82,16 +82,16 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     year: TuiYear | null = null;
 
     readonly disabledItemHandlerMapper: TuiMapper<
-        TuiBooleanHandler<TuiDay>,
+        [TuiBooleanHandler<TuiDay>, TuiDay, TuiDay],
         TuiBooleanHandler<TuiDay>
-    > = (disabledItemHandler, min: TuiDay, max: TuiDay) => item =>
+    > = (disabledItemHandler, min, max) => item =>
         item.dayBefore(min) || item.dayAfter(max) || disabledItemHandler(item);
 
-    get computedMin(): TuiMonth {
+    get computedMin(): TuiDay {
         return this.min ?? TUI_FIRST_DAY;
     }
 
-    get computedMax(): TuiMonth {
+    get computedMax(): TuiDay {
         return this.max ?? TUI_LAST_DAY;
     }
 

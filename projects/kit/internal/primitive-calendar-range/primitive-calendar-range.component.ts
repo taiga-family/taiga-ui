@@ -96,7 +96,7 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
             : this.userViewedMonthSecond;
     }
 
-    monthOffset: TuiMapper<TuiMonth, TuiMonth> = (value, offset: number) =>
+    monthOffset: TuiMapper<[TuiMonth, number], TuiMonth> = (value, offset) =>
         value.append({month: offset});
 
     ngOnInit(): void {
