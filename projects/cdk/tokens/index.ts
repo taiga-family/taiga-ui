@@ -20,6 +20,7 @@ export * from './is-webkit';
 export * from './platform';
 export * from './range';
 export * from './removed-element';
+export * from './scroll-ref';
 export * from './swipe-options';
 export * from './take-only-trusted-events';
 export * from './touch-supported';

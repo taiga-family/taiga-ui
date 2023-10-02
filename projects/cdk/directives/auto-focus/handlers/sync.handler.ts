@@ -17,6 +17,6 @@ export class TuiSynchronousAutofocusHandler extends AbstractTuiAutofocusHandler 
     }
 
     setFocus(): void {
-        this.element.focus();
+        this.element.focus({preventScroll: true});
     }
 }

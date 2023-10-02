@@ -1,26 +1,16 @@
 import {DOCUMENT} from '@angular/common';
-import {
-    Directive,
-    ElementRef,
-    Inject,
-    Input,
-    NgZone,
-    Renderer2,
-    Self,
-} from '@angular/core';
+import {Directive, ElementRef, Inject, Input, NgZone, Self} from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
+import {POLLING_TIME} from '@taiga-ui/cdk/constants';
 import {
-    POLLING_TIME,
-    TUI_SCROLL_REF,
-    TuiDestroyService,
     tuiPreventDefault,
     tuiScrollFrom,
     tuiStopPropagation,
     tuiTypedFromEvent,
     tuiZonefree,
-} from '@taiga-ui/cdk';
-import {TUI_ELEMENT_REF} from '@taiga-ui/core/tokens';
-import {TuiOrientation} from '@taiga-ui/core/types';
+} from '@taiga-ui/cdk/observables';
+import {TuiDestroyService} from '@taiga-ui/cdk/services';
+import {TUI_SCROLL_REF} from '@taiga-ui/cdk/tokens';
 import {merge, Observable} from 'rxjs';
 import {map, switchMap, takeUntil, throttleTime} from 'rxjs/operators';
 
@@ -32,14 +22,12 @@ const MIN_WIDTH = 24;
 })
 export class TuiScrollbarDirective {
     @Input()
-    tuiScrollbar: TuiOrientation = 'vertical';
+    tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
 
     constructor(
         @Inject(NgZone) zone: NgZone,
-        @Inject(Renderer2) renderer: Renderer2,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
-        @Inject(TUI_ELEMENT_REF) private readonly wrapper: ElementRef<HTMLElement>,
         @Inject(TUI_SCROLL_REF) private readonly container: ElementRef<HTMLElement>,
         @Inject(DOCUMENT) private readonly doc: Document,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
@@ -48,10 +36,7 @@ export class TuiScrollbarDirective {
         const mousedown$ = tuiTypedFromEvent(nativeElement, 'mousedown');
         const mousemove$ = tuiTypedFromEvent(this.doc, 'mousemove');
         const mouseup$ = tuiTypedFromEvent(this.doc, 'mouseup');
-        const mousedownWrapper$ = tuiTypedFromEvent(
-            this.wrapper.nativeElement,
-            'mousedown',
-        );
+        const mousedownWrapper$ = tuiTypedFromEvent(this.wrapper, 'mousedown');
 
         merge(
             mousedownWrapper$.pipe(
@@ -76,9 +61,9 @@ export class TuiScrollbarDirective {
             .pipe(tuiZonefree(zone), takeUntil(destroy$))
             .subscribe(([scrollTop, scrollLeft]) => {
                 if (this.tuiScrollbar === 'vertical') {
-                    renderer.setProperty(this.element, 'scrollTop', scrollTop);
+                    this.element.scrollTop = scrollTop;
                 } else {
-                    renderer.setProperty(this.element, 'scrollLeft', scrollLeft);
+                    this.element.scrollLeft = scrollLeft;
                 }
             });
 
@@ -89,13 +74,17 @@ export class TuiScrollbarDirective {
             .pipe(tuiZonefree(zone), takeUntil(destroy$))
             .subscribe(() => {
                 if (this.tuiScrollbar === 'vertical') {
-                    renderer.setStyle(nativeElement, 'top', `${this.thumb * 100}%`);
-                    renderer.setStyle(nativeElement, 'height', `${this.view * 100}%`);
+                    nativeElement.style.top = `${this.thumb * 100}%`;
+                    nativeElement.style.height = `${this.view * 100}%`;
                 } else {
-                    renderer.setStyle(nativeElement, 'left', `${this.thumb * 100}%`);
-                    renderer.setStyle(nativeElement, 'width', `${this.view * 100}%`);
+                    nativeElement.style.left = `${this.thumb * 100}%`;
+                    nativeElement.style.width = `${this.view * 100}%`;
                 }
             });
+    }
+
+    private get wrapper(): Element {
+        return this.el.nativeElement.parentElement!;
     }
 
     private get scrolled(): number {
@@ -154,8 +143,7 @@ export class TuiScrollbarDirective {
         offsetHorizontal: number,
     ): [number, number] {
         const {offsetHeight, offsetWidth} = this.el.nativeElement;
-        const {top, left, width, height} =
-            this.wrapper.nativeElement.getBoundingClientRect();
+        const {top, left, width, height} = this.wrapper.getBoundingClientRect();
 
         const maxTop = this.element.scrollHeight - height;
         const maxLeft = this.element.scrollWidth - width;

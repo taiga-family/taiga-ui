@@ -4,10 +4,10 @@ import {
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
     TUI_IS_IOS,
+    TUI_SCROLL_REF,
     tuiTypedFromEvent,
     tuiZonefree,
 } from '@taiga-ui/cdk';
-import {TUI_SCROLL_REF} from '@taiga-ui/core';
 import {merge, Observable} from 'rxjs';
 import {map, share} from 'rxjs/operators';
 

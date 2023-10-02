@@ -1,19 +1,17 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiLetModule} from '@taiga-ui/cdk';
 
 import {TuiScrollControlsComponent} from './scroll-controls.component';
+import {TuiScrollRefDirective} from './scroll-ref.directive';
 import {TuiScrollbarDirective} from './scrollbar.directive';
-import {TuiScrollbarWrapperDirective} from './scrollbar-wrapper.directive';
 
-/** @deprecated import from `@taiga-ui/cdk` instead */
 @NgModule({
-    imports: [CommonModule, TuiLetModule],
+    imports: [CommonModule],
     declarations: [
         TuiScrollbarDirective,
-        TuiScrollbarWrapperDirective,
         TuiScrollControlsComponent,
+        TuiScrollRefDirective,
     ],
-    exports: [TuiScrollControlsComponent],
+    exports: [TuiScrollControlsComponent, TuiScrollRefDirective],
 })
 export class TuiScrollControlsModule {}

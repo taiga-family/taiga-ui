@@ -17,8 +17,18 @@
     align-items: flex-start;
     outline: none;
     overflow: auto;
-    //noinspection CssInvalidPropertyValue
-    overflow: overlay;
+
+    /* stylelint-disable*/
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* stylelint-enable*/
+
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-thumb {
+        background: transparent;
+        width: 0;
+        height: 0;
+    }
 }
 
 .t-dialog {
@@ -35,7 +45,7 @@
 
     /* change of useless property 'letter-spacing' to ensure that transitionend event will fire */
     transition:
-        opacity var(--tui-duration),
+        opacity var(--tui-duration, 300ms),
         letter-spacing 0.01s;
     background: rgba(0, 0, 0, 0.75);
     backdrop-filter: var(--tui-backdrop, none);
@@ -48,4 +58,14 @@
 
 .t-dialog:last-of-type {
     z-index: 1;
+}
+
+.t-scrollbars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    color: #747474;
 }
