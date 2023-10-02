@@ -108,6 +108,18 @@ jobs:
           url: ${{ secrets.ANNOUNCE_WEBHOOK_TEST }}
           channel: ${{ secrets.ANNOUNCE_TARGET_TEST }}
 
+      - name: Telegram announce
+        if: ${{ env.IS_DRY_MODE == 'false' && env.IS_RRE_RELEASE_MODE == 'false' }}
+        uses: appleboy/telegram-action@v0.1.1
+        continue-on-error: true
+        with:
+          to: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TAIGA_TELEGRAM_BOT_TOKEN }}
+          message: ${{ steps.get-pr-body.outputs.body }}
+          disable_web_page_preview: true
+          disable_notification: false
+          format: markdown
+
 concurrency:
   group: create-release-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
