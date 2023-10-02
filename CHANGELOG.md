@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.47.0](https://github.com/taiga-family/taiga-ui/compare/v3.46.0...v3.47.0) (2023-10-02)
+
+### Features
+
+- **addon-doc:** add copy button out-of-the-box ([#5508](https://github.com/taiga-family/taiga-ui/issues/5508))
+  ([3a5dede](https://github.com/taiga-family/taiga-ui/commit/3a5dede3c21085fe3be05be27e3d93bdde1b2501))
+- **core:** reuse baseHref in icons path factory ([#5445](https://github.com/taiga-family/taiga-ui/issues/5445))
+  ([c975242](https://github.com/taiga-family/taiga-ui/commit/c9752420186b37793f42c2ed7ddf96f617e707ee))
+- **experimental:** `BadgedContent` add new component ([#5498](https://github.com/taiga-family/taiga-ui/issues/5498))
+  ([ded734c](https://github.com/taiga-family/taiga-ui/commit/ded734c57617ebe9b23005382dd56185519dba36))
+- **experimental:** `Compass` add new component ([#5439](https://github.com/taiga-family/taiga-ui/issues/5439))
+  ([676631d](https://github.com/taiga-family/taiga-ui/commit/676631df22c61a927bfebdb57afcaa2f0cdeaca9))
+- **kit:** allow customize vertical align of `Radio` inside `RadioList`
+  ([#5473](https://github.com/taiga-family/taiga-ui/issues/5473))
+  ([1172151](https://github.com/taiga-family/taiga-ui/commit/117215187c46b180612a3dfeac5c7e5cf4880215))
+
+### Bug Fixes
+
+- **addon-charts:** `LineDaysChart` fix performance leak ([#5484](https://github.com/taiga-family/taiga-ui/issues/5484))
+  ([2446882](https://github.com/taiga-family/taiga-ui/commit/2446882b900f83e217aef36df1f30a5f8de4de15))
+- **addon-doc:** example should enclose inner content ([#5516](https://github.com/taiga-family/taiga-ui/issues/5516))
+  ([be05e44](https://github.com/taiga-family/taiga-ui/commit/be05e446f52074795dfcdbdda6b17682ba81c96a))
+- **addon-doc:** icon should be paste from subPage ([#5517](https://github.com/taiga-family/taiga-ui/issues/5517))
+  ([a66d692](https://github.com/taiga-family/taiga-ui/commit/a66d692f44b88d4e18d7716987b38ba58b21d83f))
+- **addon-table:** `table` controls do not work in heading
+  ([#5450](https://github.com/taiga-family/taiga-ui/issues/5450))
+  ([786a06d](https://github.com/taiga-family/taiga-ui/commit/786a06d9bd887779281d7d9a236c08ad93fe8ece))
+- **addon-table:** improve typings for `tuiTableSort` ([#5513](https://github.com/taiga-family/taiga-ui/issues/5513))
+  ([0176a37](https://github.com/taiga-family/taiga-ui/commit/0176a37baf0f4bb3adc05b9c5c56b85ace76248d))
+- **core:** `Dialog` fix scrollbar width issues ([#5488](https://github.com/taiga-family/taiga-ui/issues/5488))
+  ([75358a8](https://github.com/taiga-family/taiga-ui/commit/75358a81b7e9babb8c0a9fcb028b0423a1209b0f))
+- **core:** `PrimitiveTextfield` with prefix/postfix has CD problem after delayed fonts loading
+  ([#5477](https://github.com/taiga-family/taiga-ui/issues/5477))
+  ([9a3a873](https://github.com/taiga-family/taiga-ui/commit/9a3a873c89cfdb4681c92ff2c41bd0dda03242e7))
+- **core:** clicking label should not open dropdowns
+  ([2c9ee62](https://github.com/taiga-family/taiga-ui/commit/2c9ee62e31636ba2466932ba0a9ab87f6ada5667))
+- **kit:** `Textarea` has character descenders problems ([#5487](https://github.com/taiga-family/taiga-ui/issues/5487))
+  ([f5ca9d3](https://github.com/taiga-family/taiga-ui/commit/f5ca9d377c0fdf09eaabd49dfbcac5d176058040))
+
 ## [3.46.0](https://github.com/taiga-family/taiga-ui/compare/v3.45.0...v3.46.0) (2023-09-25)
 
 ### Features
