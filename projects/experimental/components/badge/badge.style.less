@@ -1,8 +1,6 @@
 @import 'taiga-ui-local';
 
 :host {
-    .transition(background);
-
     --left-content-color: currentColor;
     position: relative;
     display: inline-flex;
@@ -221,6 +219,7 @@
     }
 
     &._hoverable {
+        .transition(background);
         cursor: pointer;
     }
 
