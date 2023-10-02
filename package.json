@@ -125,7 +125,7 @@
         "@playwright/test": "1.38.1",
         "@taiga-ui/browserslist-config": "0.2.0",
         "@taiga-ui/commitlint-config": "0.2.1",
-        "@taiga-ui/cspell-config": "0.11.0",
+        "@taiga-ui/cspell-config": "0.12.0",
         "@taiga-ui/eslint-plugin-experience": "0.7.4",
         "@taiga-ui/prettier-config": "0.3.1",
         "@taiga-ui/stylelint-config": "0.5.1",
