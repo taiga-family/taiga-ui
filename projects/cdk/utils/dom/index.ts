@@ -13,3 +13,4 @@ export * from './is-element-editable';
 export * from './is-inside-iframe';
 export * from './is-node-in';
 export * from './point-to-client-rect';
+export * from './retarget-boundary-crossing';

@@ -14,6 +14,7 @@
         [hover]="pseudoHover"
         [invalid]="computedInvalid"
         [readOnly]="readOnly"
+        (click.prevent.silent)="detectRetargetFromLabel($event)"
         (mousedown)="onMouseDown($event)"
     >
         <div class="t-content">

@@ -11,7 +11,7 @@
     [invalid]="computedInvalid"
     [readOnly]="readOnly"
     [style.--text-indent.px]="decor.pre$ | async"
-    (click.prevent.silent)="(0)"
+    (click.prevent.silent)="detectRetargetFromLabel($event)"
     (mousedown)="onMouseDown($event)"
     (tuiAutofilledChange)="onAutofilled($event)"
 >

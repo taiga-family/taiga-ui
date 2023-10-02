@@ -33,6 +33,7 @@ import {
     tuiGetClipboardDataText,
     tuiIsElement,
     tuiIsNativeFocusedIn,
+    tuiRetargetedBoundaryCrossing,
 } from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
@@ -301,6 +302,12 @@ export class TuiInputTagComponent
 
     get computeMaxHeight(): number | null {
         return this.expandable ? this.rows * this.lineHeight : null;
+    }
+
+    detectRetargetFromLabel(event: Event): void {
+        if (tuiRetargetedBoundaryCrossing(event)) {
+            event.stopImmediatePropagation();
+        }
     }
 
     getLeftContent(tag: string): PolymorpheusContent {

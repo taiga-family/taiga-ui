@@ -19,6 +19,7 @@ import {
     TuiContextWithImplicit,
     tuiIsNativeFocusedIn,
     tuiPure,
+    tuiRetargetedBoundaryCrossing,
 } from '@taiga-ui/cdk';
 import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
 import {
@@ -290,6 +291,12 @@ export class TuiPrimitiveTextfieldComponent
 
     onAutofilled(autofilled: boolean): void {
         this.updateAutofilled(autofilled);
+    }
+
+    detectRetargetFromLabel(event: Event): void {
+        if (tuiRetargetedBoundaryCrossing(event)) {
+            event.stopImmediatePropagation();
+        }
     }
 
     private get iconPaddingLeft(): number {
