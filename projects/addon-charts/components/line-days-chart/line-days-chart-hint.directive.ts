@@ -59,8 +59,8 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
             });
     }
 
-    getContext(day: TuiDay): TuiContextWithImplicit<ReadonlyArray<[TuiDay, number]>> {
-        return this.computeContext(day, this.charts);
+    getContext(day: TuiDay): ReadonlyArray<[TuiDay, number]> {
+        return this.getMap(...this.charts.map(({value}) => value)).get(String(day)) || [];
     }
 
     raise(day: TuiDay): void {
@@ -76,13 +76,17 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
     }
 
     @tuiPure
-    private computeContext(
-        day: TuiDay,
-        charts: QueryList<TuiLineDaysChartComponent>,
-    ): TuiContextWithImplicit<ReadonlyArray<[TuiDay, number]>> {
-        return {
-            $implicit: charts.map(({value}) => find(value, day)),
-        };
+    private getMap(
+        ...values: Array<ReadonlyArray<[TuiDay, number]>>
+    ): Map<string, ReadonlyArray<[TuiDay, number]>> {
+        return (values[0] || []).reduce(
+            (map, [day]) =>
+                map.set(
+                    String(day),
+                    values.map(value => find(value, day)),
+                ),
+            new Map<string, ReadonlyArray<[TuiDay, number]>>(),
+        );
     }
 }
 

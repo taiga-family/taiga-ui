@@ -69,6 +69,10 @@ export class TuiLineDaysChartExample2 {
         const mondayTo = dayOfWeekTo ? to.append({day: 7 - dayOfWeekTo}) : to;
         const mondaysLength = TuiDay.lengthBetween(mondayFrom, mondayTo);
 
+        if (length > 90) {
+            return range;
+        }
+
         if (length > 60) {
             return new TuiDayRange(
                 mondayFrom,
@@ -80,11 +84,7 @@ export class TuiLineDaysChartExample2 {
             return new TuiDayRange(mondayFrom, mondayTo);
         }
 
-        if (length > 7) {
-            return new TuiDayRange(from, to.append({day: length % 2}));
-        }
-
-        return range;
+        return new TuiDayRange(from, to.append({day: length % 2}));
     }
 
     // Random data generation

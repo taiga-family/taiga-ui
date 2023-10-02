@@ -1,13 +1,15 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, ElementRef, Inject, Input, NgZone} from '@angular/core';
+import {Directive, ElementRef, Inject, Input, NgZone, OnChanges} from '@angular/core';
 import {
+    tuiIfMap,
     tuiIsNativeFocused,
+    tuiIsPresent,
     tuiPure,
     tuiTypedFromEvent,
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
-import {merge, of, timer} from 'rxjs';
+import {merge, of, ReplaySubject, timer} from 'rxjs';
 import {
     debounce,
     distinctUntilChanged,
@@ -21,10 +23,17 @@ import {
     selector: '[tuiHintDescribe]',
     providers: [tuiAsDriver(TuiHintDescribeDirective)],
 })
-export class TuiHintDescribeDirective extends TuiDriver {
-    private readonly stream$ = tuiTypedFromEvent(this.doc, 'keydown', {
-        capture: true,
-    }).pipe(
+export class TuiHintDescribeDirective extends TuiDriver implements OnChanges {
+    private readonly id$ = new ReplaySubject(1);
+
+    private readonly stream$ = this.id$.pipe(
+        tuiIfMap(
+            () =>
+                tuiTypedFromEvent(this.doc, 'keydown', {
+                    capture: true,
+                }),
+            tuiIsPresent,
+        ),
         switchMap(() =>
             this.focused
                 ? of(false)
@@ -41,7 +50,7 @@ export class TuiHintDescribeDirective extends TuiDriver {
     );
 
     @Input()
-    tuiHintDescribe: string | '' = '';
+    tuiHintDescribe: string | '' | null = '';
 
     readonly type = 'hint';
 
@@ -53,12 +62,18 @@ export class TuiHintDescribeDirective extends TuiDriver {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
+    ngOnChanges(): void {
+        this.id$.next(this.tuiHintDescribe);
+    }
+
     private get focused(): boolean {
         return tuiIsNativeFocused(this.element);
     }
 
     @tuiPure
     private get element(): HTMLElement {
-        return this.doc.getElementById(this.tuiHintDescribe) || this.el.nativeElement;
+        return (
+            this.doc.getElementById(this.tuiHintDescribe || '') || this.el.nativeElement
+        );
     }
 }
