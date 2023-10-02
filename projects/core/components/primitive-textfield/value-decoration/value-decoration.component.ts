@@ -8,9 +8,13 @@ import {
     Inject,
     ViewChild,
 } from '@angular/core';
-import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk';
+import {
+    TUI_FOCUSABLE_ITEM_ACCESSOR,
+    TUI_FONTS_READY,
+    TuiInjectionTokenType,
+} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core/enums';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, merge} from 'rxjs';
 import {delay, distinctUntilChanged, filter, map} from 'rxjs/operators';
 
 import {TuiPrimitiveTextfield} from '../primitive-textfield-types';
@@ -29,7 +33,7 @@ export class TuiValueDecorationComponent implements DoCheck {
 
     private readonly prefix$ = new BehaviorSubject('');
 
-    readonly pre$ = this.prefix$.pipe(
+    readonly pre$ = merge(this.fontsReady$, this.prefix$).pipe(
         delay(0),
         filter(() => !!this.pre?.nativeElement.isConnected),
         map(() => this.pre?.nativeElement.offsetWidth || 0),
@@ -39,6 +43,8 @@ export class TuiValueDecorationComponent implements DoCheck {
     constructor(
         @Inject(TUI_FOCUSABLE_ITEM_ACCESSOR)
         private readonly textfield: TuiPrimitiveTextfield,
+        @Inject(TUI_FONTS_READY)
+        private readonly fontsReady$: TuiInjectionTokenType<typeof TUI_FONTS_READY>,
     ) {}
 
     @HostBinding('class._table')

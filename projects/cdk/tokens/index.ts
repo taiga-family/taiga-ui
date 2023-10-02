@@ -5,6 +5,7 @@ export * from './default-renderer';
 export * from './dialogs';
 export * from './ensure-base-href';
 export * from './focusable-item-accessor';
+export * from './fonts-ready';
 export * from './is-android';
 export * from './is-apple';
 export * from './is-chromium';
