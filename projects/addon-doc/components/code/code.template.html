@@ -1,4 +1,3 @@
-<!-- eslint-disable @html-eslint/element-newline -->
 <p
     *ngIf="filename"
     class="t-header"
@@ -8,4 +7,7 @@
 <pre
     *ngFor="let content of processor$ | async"
     class="t-code"
-><code [lineNumbers]="true" [highlight]="content"></code></pre>
+>
+    <code [lineNumbers]="true" [highlight]="content"></code>
+    <tui-doc-copy class="t-copy" [cdkCopyToClipboard]="content"></tui-doc-copy>
+</pre>

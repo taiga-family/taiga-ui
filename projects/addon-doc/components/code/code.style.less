@@ -10,11 +10,25 @@
 }
 
 .t-code {
+    position: relative;
     margin: 0;
+    white-space: normal;
+
+    &:hover .t-copy,
+    &:focus-visible .t-copy {
+        opacity: 1;
+    }
 }
 
 .t-code + .t-code {
     margin-top: 1rem;
+}
+
+.t-copy {
+    position: absolute;
+    top: 0.875rem;
+    right: 2rem;
+    opacity: 0;
 }
 
 // highlightjs added class
