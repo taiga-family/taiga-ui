@@ -20,8 +20,8 @@ import {
     tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
     TuiFocusableElementAccessor,
-    TuiMapper,
     tuiPure,
+    TypedTuiMapper,
 } from '@taiga-ui/cdk';
 import {
     TUI_MASK_SYMBOLS_REGEXP,
@@ -187,7 +187,7 @@ export class TuiInputPhoneInternationalComponent
         this.value = `${CHAR_PLUS}${value}`;
     }
 
-    readonly isoToCountryCodeMapper: TuiMapper<[TuiCountryIsoCode], string> = item =>
+    readonly isoToCountryCodeMapper: TypedTuiMapper<[TuiCountryIsoCode], string> = item =>
         tuiIsoToCountryCode(this.countriesMasks, item);
 
     /**
