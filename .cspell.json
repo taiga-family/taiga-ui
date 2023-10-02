@@ -29,7 +29,8 @@
         "letraset",
         "aldus",
         "hangoff",
-        "tcrm"
+        "tcrm",
+        "scrollbar"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [

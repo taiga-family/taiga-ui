@@ -34,9 +34,9 @@ export class TuiDefaultAutofocusHandler extends AbstractTuiAutofocusHandler {
                     skipWhile(Boolean),
                     take(1),
                 ),
-            ).subscribe(() => this.element.focus());
+            ).subscribe(() => this.element.focus({preventScroll: true}));
         } else {
-            this.element.focus();
+            this.element.focus({preventScroll: true});
         }
     }
 }

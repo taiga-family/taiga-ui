@@ -47,7 +47,7 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         if (this.isTextFieldElement) {
             this.zone.runOutsideAngular(() => this.iosWebkitAutofocus());
         } else {
-            this.element.focus();
+            this.element.focus({preventScroll: true});
         }
     }
 
