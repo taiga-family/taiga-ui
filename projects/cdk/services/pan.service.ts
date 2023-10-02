@@ -4,6 +4,7 @@ import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {merge, Observable} from 'rxjs';
 import {filter, map, pairwise, repeat, switchMap, takeUntil} from 'rxjs/operators';
 
+// TODO: Refactor to PointerEvents in 4.0
 @Injectable()
 export class TuiPanService extends Observable<readonly [number, number]> {
     constructor(

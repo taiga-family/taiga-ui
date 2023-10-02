@@ -859,6 +859,12 @@ export const pages: TuiDocPages = [
         keywords: `sensitive, pixel, mask, пиксель, маска`,
         route: `/experimental/sensitive`,
     },
+    {
+        section: `Experimental`,
+        title: `Swipeable`,
+        keywords: `pan, swipe, scroll, touch`,
+        route: `/experimental/swipeable`,
+    },
     // Charts
     {
         section: `Charts`,

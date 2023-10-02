@@ -249,6 +249,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/swipeable`,
+        loadChildren: async () =>
+            (await import(`../experimental/swipeable/swipeable.module`))
+                .ExampleTuiSwipeableModule,
+        data: {
+            title: `Swipeable`,
+        },
+    },
+    {
         path: `navigation/breadcrumbs`,
         loadChildren: async () =>
             (await import(`../components/breadcrumbs/breadcrumbs.module`))
