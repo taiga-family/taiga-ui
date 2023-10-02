@@ -1,9 +1,9 @@
 @import 'taiga-ui-local';
 
 :host {
+    --tui-radius: var(--tui-radius-l);
     --t-badge-height: 0;
-    --t-radius: 0.75rem;
-    --t-corner-offset: calc((var(--t-radius) * 1.4142 - var(--t-radius)) * 1 / 1.4142);
+    --t-corner-offset: calc((var(--tui-radius) * 1.4142 - var(--tui-radius)) * 1 / 1.4142);
     position: relative;
     display: inline-block;
     height: fit-content;
