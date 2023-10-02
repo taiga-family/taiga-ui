@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiSheetDialogModule} from '@taiga-ui/addon-mobile';
+import {TuiSwipeModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiLabelModule,
@@ -33,6 +34,7 @@ import {ExampleTuiSheetDialogComponent} from './sheet-dialog.component';
         TuiSheetDialogModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSheetDialogComponent)),
+        TuiSwipeModule,
     ],
     declarations: [
         ExampleTuiSheetDialogComponent,

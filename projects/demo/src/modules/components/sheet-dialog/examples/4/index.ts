@@ -2,9 +2,14 @@ import {Component, Inject, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_DEFAULT_MATCHER, TUI_WINDOW_HEIGHT, tuiControlValue} from '@taiga-ui/cdk';
+import {
+    TUI_DEFAULT_MATCHER,
+    TUI_WINDOW_SIZE,
+    tuiControlValue,
+    TuiSwipeDirection,
+} from '@taiga-ui/cdk';
 import {TuiInputComponent} from '@taiga-ui/kit';
-import {combineLatest, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 const USERS = [
@@ -39,18 +44,20 @@ export class TuiSheetDialogExample4 {
 
     open = false;
 
+    readonly offset = 16;
+
     readonly search = new FormControl('');
 
     readonly users$ = tuiControlValue<string>(this.search).pipe(
         map(search => USERS.filter(user => TUI_DEFAULT_MATCHER(user, search))),
     );
 
-    readonly buffer$ = combineLatest([this.users$, this.height$]).pipe(
-        map(([users, height]) => `calc(${height}px - ${15 + users.length * 3}rem)`),
+    readonly height$ = this.size$.pipe(
+        map(({height}) => `calc(${height - this.offset}px - 14rem`),
     );
 
     constructor(
-        @Inject(TUI_WINDOW_HEIGHT) private readonly height$: Observable<number>,
+        @Inject(TUI_WINDOW_SIZE) private readonly size$: Observable<ClientRect>,
     ) {}
 
     toggle(open: boolean): void {
@@ -61,7 +68,18 @@ export class TuiSheetDialogExample4 {
         }
     }
 
-    scroll(): void {
+    onSwipe(direction: TuiSwipeDirection): void {
+        if (direction === 'top') {
+            this.scroll();
+        }
+    }
+
+    onFocus(): void {
+        this.scroll();
+        this.input?.nativeFocusableElement?.focus();
+    }
+
+    private scroll(): void {
         const input = this.input?.nativeFocusableElement;
         const container = input?.closest('tui-sheet-dialog');
 
@@ -70,6 +88,5 @@ export class TuiSheetDialogExample4 {
         }
 
         container.scrollTop = container.clientHeight;
-        input?.focus();
     }
 }

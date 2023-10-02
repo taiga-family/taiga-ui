@@ -17,6 +17,6 @@ const COMMON_ICONS: TuiCommonIcons = {
 
 export const TUI_COMMON_ICONS = tuiCreateToken(COMMON_ICONS);
 
-export function tuiCommonIconsProvider(icons: TuiCommonIcons): Provider {
+export function tuiCommonIconsProvider(icons: Partial<TuiCommonIcons>): Provider {
     return tuiProvideOptions(TUI_COMMON_ICONS, icons, COMMON_ICONS);
 }

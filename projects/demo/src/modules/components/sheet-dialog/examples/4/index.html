@@ -8,31 +8,36 @@
 
 <ng-template
     [tuiSheetDialog]="open"
-    [tuiSheetDialogOptions]="{stops: ['29rem']}"
+    [tuiSheetDialogOptions]="{stops: ['29rem'], offset: offset}"
     (tuiSheetDialogChange)="toggle($event)"
 >
     <header class="header">
         <tui-input
             tuiTextfieldIconLeft="tuiIconSearchLarge"
             [formControl]="search"
-            (mousedown.prevent)="scroll()"
+            (mousedown.prevent)="onFocus()"
         >
             Find user
         </tui-input>
     </header>
-    <button
-        *ngFor="let user of users$ | async"
-        class="item"
-        (click)="toggle(false)"
+    <div
+        class="container"
+        [style.height]="height$ | async"
+        (tuiSwipe)="onSwipe($event.direction)"
     >
-        <tui-avatar
-            size="s"
-            [autoColor]="true"
-            [text]="user"
-        ></tui-avatar>
-        {{ user }}
-    </button>
-    <div [style.height]="buffer$ | async"></div>
+        <button
+            *ngFor="let user of users$ | async"
+            class="item"
+            (click)="toggle(false)"
+        >
+            <tui-avatar
+                size="s"
+                [autoColor]="true"
+                [text]="user"
+            ></tui-avatar>
+            {{ user }}
+        </button>
+    </div>
     <footer class="footer">
         <button
             tuiButton
