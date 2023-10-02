@@ -865,6 +865,12 @@ export const pages: TuiDocPages = [
         keywords: `sensitive, pixel, mask, пиксель, маска`,
         route: `/experimental/sensitive`,
     },
+    {
+        section: `Experimental`,
+        title: `Compass`,
+        keywords: `compass, user, point, dot, карта, точка`,
+        route: `/experimental/compass`,
+    },
     // Charts
     {
         section: `Charts`,

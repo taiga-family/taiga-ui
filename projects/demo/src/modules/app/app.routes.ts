@@ -258,6 +258,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/compass`,
+        loadChildren: async () =>
+            (await import(`../experimental/compass/compass.module`))
+                .ExampleTuiCompassModule,
+        data: {
+            title: `Compass`,
+        },
+    },
+    {
         path: `navigation/breadcrumbs`,
         loadChildren: async () =>
             (await import(`../components/breadcrumbs/breadcrumbs.module`))
