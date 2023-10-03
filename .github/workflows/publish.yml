@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.0
-      - uses: taiga-family/ci/actions/variables@1.16.0
-      - uses: taiga-family/ci/actions/setup-node@1.16.0
-      - uses: taiga-family/ci/actions/setup-npm@1.16.0
+      - uses: taiga-family/ci/actions/setup/variables@1.20.0
+      - uses: taiga-family/ci/actions/setup/node@1.20.0
+      - uses: taiga-family/ci/actions/setup/config/npm@1.20.0
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
 
@@ -25,14 +25,14 @@ jobs:
         run: echo "version=v$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
       - name: Announce to Time messenger
-        uses: taiga-family/ci/actions/time/announce@1.19.0
+        uses: taiga-family/ci/actions/messenger/time/announce@1.20.0
         with:
           url: ${{ secrets.ANNOUNCE_WEBHOOK }}
           channel: ${{ secrets.ANNOUNCE_TARGET }}
           version: ${{ steps.info.outputs.version }}
 
       - name: Announce to Telegram messenger
-        uses: taiga-family/ci/actions/telegram/announce@1.19.0
+        uses: taiga-family/ci/actions/messenger/telegram/announce@1.20.0
         with:
           chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
           topicId: ${{ secrets.TAIGA_TELEGRAM_CHAT_THREAD_ID }}
