@@ -9,10 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.0
-      - uses: taiga-family/ci/actions/variables@1.16.0
-
-      - name: Auto assign
+      - uses: taiga-family/ci/actions/setup/variables@1.20.0
+      - uses: toshimaru/auto-author-assign@v2.0.1
         if: env.IS_OWNER_MODE == 'true'
-        uses: toshimaru/auto-author-assign@v2.0.1
         with:
           repo-token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}

@@ -31,8 +31,8 @@ jobs:
           persist-credentials: false
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-      - uses: taiga-family/ci/actions/setup-node@1.16.0
-      - uses: taiga-family/ci/actions/setup-git@1.16.0
+      - uses: taiga-family/ci/actions/setup/node@1.20.0
+      - uses: taiga-family/ci/actions/setup/config/git@1.20.0
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
@@ -99,14 +99,6 @@ jobs:
           tag: ${{ steps.generate_body.outputs.tag_name }}
           bodyFile: 'RELEASE_BODY.md'
           token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Announce
-        if: ${{ env.IS_DRY_MODE == 'true' }}
-        uses: taiga-family/ci/actions/announce@1.16.0
-        with:
-          version: ${{ steps.run-release.outputs.new_version }}
-          url: ${{ secrets.ANNOUNCE_WEBHOOK_TEST }}
-          channel: ${{ secrets.ANNOUNCE_TARGET_TEST }}
 
 concurrency:
   group: create-release-${{ github.workflow }}-${{ github.ref }}
