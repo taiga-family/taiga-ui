@@ -36,7 +36,7 @@ describe(`Getting fractional part from number`, () => {
             expect(tuiGetFractionPartPadded(-10, 2)).toBe(``);
         });
 
-        it(`fractional value with small precision and bigger `, () => {
+        it(`fractional value with small precision and bigger`, () => {
             expect(tuiGetFractionPartPadded(0.0002, 2)).toBe(`00`);
         });
 
@@ -54,7 +54,7 @@ describe(`Getting fractional part from number`, () => {
             expect(tuiGetFractionPartPadded(-10, 8)).toBe(``);
         });
 
-        it(`fractional value with small precision and bigger `, () => {
+        it(`fractional value with small precision and bigger`, () => {
             expect(tuiGetFractionPartPadded(0.0002, 8)).toBe(`0002`);
         });
 

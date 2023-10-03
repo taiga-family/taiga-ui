@@ -108,7 +108,7 @@ describe(`Badge`, () => {
         });
     });
 
-    describe(`states: `, () => {
+    describe(`states:`, () => {
         it(`if value is empty, add appropriate css class`, async () => {
             testComponent.value = ``;
 

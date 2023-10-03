@@ -294,25 +294,25 @@ describe(`TuiDay`, () => {
                     beforeEach(() => tuiSwitchNgDevMode(true));
 
                     it(`'2018-aa-20'`, () => {
-                        expect(() => TuiDay.jsonParse(`2018-aa-20`)).toThrowError(
+                        expect(() => TuiDay.jsonParse(`2018-aa-20`)).toThrow(
                             `Invalid month: NaN`,
                         );
                     });
 
                     it(`'2018-99-20'`, () => {
-                        expect(() => TuiDay.jsonParse(`2018-99-20`)).toThrowError(
+                        expect(() => TuiDay.jsonParse(`2018-99-20`)).toThrow(
                             `Invalid month: 98`,
                         );
                     });
 
                     it(`'2001-02-29'`, () => {
-                        expect(() => TuiDay.jsonParse(`2001-02-29`)).toThrowError(
+                        expect(() => TuiDay.jsonParse(`2001-02-29`)).toThrow(
                             `Invalid day: 29`,
                         );
                     });
 
                     it(`'test'`, () => {
-                        expect(() => TuiDay.jsonParse(`test`)).toThrowError(
+                        expect(() => TuiDay.jsonParse(`test`)).toThrow(
                             `Invalid year: NaN`,
                         );
                     });
@@ -322,19 +322,19 @@ describe(`TuiDay`, () => {
 
                 describe(`production mode`, () => {
                     it(`'2018-aa-20'`, () => {
-                        expect(() => TuiDay.jsonParse(`2018-aa-20`)).toThrowError(``);
+                        expect(() => TuiDay.jsonParse(`2018-aa-20`)).toThrow(``);
                     });
 
                     it(`'2018-99-20'`, () => {
-                        expect(() => TuiDay.jsonParse(`2018-99-20`)).toThrowError(``);
+                        expect(() => TuiDay.jsonParse(`2018-99-20`)).toThrow(``);
                     });
 
                     it(`'2001-02-29'`, () => {
-                        expect(() => TuiDay.jsonParse(`2001-02-29`)).toThrowError(``);
+                        expect(() => TuiDay.jsonParse(`2001-02-29`)).toThrow(``);
                     });
 
                     it(`'test'`, () => {
-                        expect(() => TuiDay.jsonParse(`test`)).toThrowError(``);
+                        expect(() => TuiDay.jsonParse(`test`)).toThrow(``);
                     });
                 });
             });

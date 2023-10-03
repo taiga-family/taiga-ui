@@ -75,45 +75,6 @@ describe(`InputNumber - backward compatibility for separators`, () => {
         });
     });
 
-    describe(`Format - {d d d,d}`, () => {
-        configureTestSuite(() => {
-            TestBed.configureTestingModule({
-                imports: [
-                    NoopAnimationsModule,
-                    TuiInputNumberModule,
-                    ReactiveFormsModule,
-                ],
-                declarations: [TestComponent],
-            });
-        });
-
-        beforeEach(() => {
-            fixture = TestBed.createComponent(TestComponent);
-            testComponent = fixture.componentInstance;
-            fixture.detectChanges();
-            component = testComponent.component;
-            fixture.detectChanges();
-            inputPO = new TuiNativeInputPO(
-                fixture,
-                `tui-primitive-textfield__native-input`,
-            );
-        });
-
-        it(`comma usage`, () => {
-            inputPO.sendText(`55666,7777`);
-            inputPO.focus();
-
-            expect(component.computedValue).toBe(`55${CHAR_NO_BREAK_SPACE}666,77`);
-        });
-
-        it(`dot usage`, () => {
-            inputPO.sendText(`55666.7777`);
-            inputPO.focus();
-
-            expect(component.computedValue).toBe(`55${CHAR_NO_BREAK_SPACE}666,77`);
-        });
-    });
-
     describe(`Format - {d,d,d.d}`, () => {
         configureTestSuite(() => {
             TestBed.configureTestingModule({

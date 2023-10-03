@@ -21,12 +21,6 @@ import {
 import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
 import {Observable, of} from 'rxjs';
 
-export function tuiRangeCalendarTestFactory(
-    control: NgControl | null,
-): Observable<TuiDayRange | null> | null {
-    return control ? tuiControlValue(control) : of(null);
-}
-
 describe(`rangeCalendarComponent`, () => {
     @Component({
         template: `
@@ -43,7 +37,10 @@ describe(`rangeCalendarComponent`, () => {
             {
                 provide: TUI_CALENDAR_DATE_STREAM,
                 deps: [[new Optional(), new Self(), NgControl]],
-                useFactory: tuiRangeCalendarTestFactory,
+                useFactory: (
+                    control: NgControl | null,
+                ): Observable<TuiDayRange | null> | null =>
+                    control ? tuiControlValue(control) : of(null),
             },
         ],
     })

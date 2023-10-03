@@ -14,11 +14,13 @@ xdescribe(`TuiStaticRequest service`, () => {
     beforeEach(() => {
         service = new TuiStaticRequestService({} as any, {} as any);
         // @ts-ignore
+        // eslint-disable-next-line jest/no-jasmine-globals
         jasmine.Ajax.install();
     });
 
     afterEach(() => {
         // @ts-ignore
+        // eslint-disable-next-line jest/no-jasmine-globals
         jasmine.Ajax.uninstall();
     });
 
@@ -50,9 +52,11 @@ xdescribe(`TuiStaticRequest service`, () => {
         });
 
         // @ts-ignore
+        // eslint-disable-next-line jest/no-jasmine-globals
         jasmine.Ajax.requests.mostRecent().respondWith(RESPONSE);
 
         // @ts-ignore
+        // eslint-disable-next-line jest/no-jasmine-globals
         expect(jasmine.Ajax.requests.mostRecent().url).toBe(`test`);
         expect(result).toBe(`awesome response`);
         expect(completed).toBe(true);
@@ -68,6 +72,7 @@ xdescribe(`TuiStaticRequest service`, () => {
         });
 
         // @ts-ignore
+        // eslint-disable-next-line jest/no-jasmine-globals
         jasmine.Ajax.requests.mostRecent().respondWith(RESPONSE);
 
         service.request(`test`).subscribe({
@@ -80,6 +85,7 @@ xdescribe(`TuiStaticRequest service`, () => {
         });
 
         // @ts-ignore
+        // eslint-disable-next-line jest/no-jasmine-globals
         expect(jasmine.Ajax.requests.count()).toBe(1);
         expect(result2).toBe(result1);
         expect(completed).toBe(true);

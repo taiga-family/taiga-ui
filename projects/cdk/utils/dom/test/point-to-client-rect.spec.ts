@@ -17,7 +17,7 @@ describe(`tuiPointToClientRect`, () => {
         );
     });
 
-    it(`default`, () => {
+    it(`x=100,y=200`, () => {
         expect(tuiPointToClientRect(100, 200)).toEqual(
             // @ts-ignore
             expect.objectContaining({

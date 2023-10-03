@@ -1,7 +1,7 @@
 import {tuiMoveFocus} from '@taiga-ui/cdk';
 
 describe(`move focus`, () => {
-    it(`   `, () => {
+    it(`default`, () => {
         const first = document.createElement(`button`);
         const second = document.createElement(`textarea`);
 

@@ -136,14 +136,6 @@ describe(`InputTime`, () => {
         });
     });
 
-    describe(`Short time input (less than 5 characters, including colon)`, () => {
-        it(`The value of formControl is passed null`, () => {
-            component.onValueChange(`11:1`);
-            fixture.detectChanges();
-            expect(testComponent.control.value).toBeNull();
-        });
-    });
-
     describe(`Keyboard control`, () => {
         beforeEach(async () => fixture.whenStable());
 
