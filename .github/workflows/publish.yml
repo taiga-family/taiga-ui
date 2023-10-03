@@ -22,17 +22,17 @@ jobs:
 
       - name: Get new version
         id: info
-        run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+        run: echo "version=v$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
-      - name: Announce to Time
-        uses: taiga-family/ci/actions/announce@1.16.0
+      - name: Announce to Time messenger
+        uses: taiga-family/ci/actions/time/announce@1.19.0
         with:
-          version: ${{ steps.info.outputs.version }}
           url: ${{ secrets.ANNOUNCE_WEBHOOK }}
           channel: ${{ secrets.ANNOUNCE_TARGET }}
+          version: ${{ steps.info.outputs.version }}
 
-      - name: Announce to Telegram
-        uses: taiga-family/ci/actions/telegram/announce@1.18.2
+      - name: Announce to Telegram messenger
+        uses: taiga-family/ci/actions/telegram/announce@1.19.0
         with:
           chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
           topicId: ${{ secrets.TAIGA_TELEGRAM_CHAT_THREAD_ID }}
