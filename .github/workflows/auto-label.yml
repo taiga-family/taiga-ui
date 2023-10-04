@@ -6,7 +6,7 @@ jobs:
     name: Label when approved
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.23.0
       - uses: taiga-family/ci/actions/setup/variables@v1.23.0
       - uses: taiga-family/ci/actions/auto/label-when-approved@v1.23.0
         with:

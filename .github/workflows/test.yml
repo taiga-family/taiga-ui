@@ -28,7 +28,7 @@ jobs:
           ]
     name: ${{ matrix.project }}
     steps:
-      - uses: actions/checkout@v4.1.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.23.0
       - uses: taiga-family/ci/actions/setup/node@v1.23.0
 
       - name: Run tests for ${{ matrix.project }}
