@@ -7,9 +7,9 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.23.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.23.0
-      - uses: taiga-family/ci/actions/auto/approve/double@v1.23.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.25.4
+      - uses: taiga-family/ci/actions/setup/variables@v1.25.4
+      - uses: taiga-family/ci/actions/auto/approve/double@v1.25.4
         if: env.TAIGA_FAMILY_BOT_IS_AUTHOR == 'true'
         with:
           token1: ${{ secrets.GITHUB_TOKEN }}
