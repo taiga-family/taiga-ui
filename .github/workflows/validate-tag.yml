@@ -7,11 +7,11 @@ jobs:
   validate-tag:
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.25.6
+      - uses: taiga-family/ci/actions/setup/checkout@v1.25.8
         with:
           fetch-depth: 0
 
-      - uses: taiga-family/ci/actions/setup/node@v1.25.6
+      - uses: taiga-family/ci/actions/setup/node@v1.25.8
         id: nodejs-workspace
 
       - name: Get last tag
