@@ -39,7 +39,7 @@ jobs:
           token2: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
       - uses: taiga-family/ci/actions/run/merge@v1.25.1
         with:
-          token: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
+          token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
 concurrency:
   group: auto-approve-${{ github.head_ref }}
