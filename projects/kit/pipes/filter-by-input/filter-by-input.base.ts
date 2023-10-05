@@ -5,7 +5,7 @@ import {
     TuiStringHandler,
     TuiStringMatcher,
 } from '@taiga-ui/cdk';
-import {TuiMultiSelectDirective} from '@taiga-ui/kit/components';
+import {TuiMultiSelectDirective} from '@taiga-ui/kit/components/multi-select';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 export type ArrayElement<A> = A extends ReadonlyArray<infer T>

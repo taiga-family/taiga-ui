@@ -19,7 +19,7 @@ import {TuiArrowModule} from '@taiga-ui/kit/components/arrow';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiInputTagModule} from '@taiga-ui/kit/components/input-tag';
 import {TuiMultiSelectOptionModule} from '@taiga-ui/kit/components/multi-select-option';
-import {TuiStringifyContentPipeModule} from '@taiga-ui/kit/pipes';
+import {TuiStringifyContentPipeModule} from '@taiga-ui/kit/pipes/stringify-content';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiHideSelectedPipe} from './hide-selected.pipe';

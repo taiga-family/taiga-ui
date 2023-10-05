@@ -5,7 +5,7 @@ import {
     TuiFocusableElementAccessor,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {TuiMultiSelectDirective} from '@taiga-ui/kit/components';
+import {TuiMultiSelectDirective} from '@taiga-ui/kit/components/multi-select';
 
 import {AbstractTuiFilterByInput, ArrayElement} from './filter-by-input.base';
 

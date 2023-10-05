@@ -7,7 +7,7 @@ import {
     TuiStringMatcher,
 } from '@taiga-ui/cdk';
 import {TUI_DATA_LIST_HOST, TuiDataListHost} from '@taiga-ui/core';
-import {TuiMultiSelectDirective} from '@taiga-ui/kit/components';
+import {TuiMultiSelectDirective} from '@taiga-ui/kit/components/multi-select';
 
 import {AbstractTuiFilterByInput, ArrayElement} from './filter-by-input.base';
 
