@@ -6,6 +6,7 @@ on:
 
 jobs:
   lint:
+    name: Lint
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
