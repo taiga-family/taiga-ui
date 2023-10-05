@@ -41,6 +41,7 @@ jobs:
           path: coverage
 
   codecov:
+    name: Collect coverage
     needs: [test]
     runs-on: ubuntu-latest
     steps:

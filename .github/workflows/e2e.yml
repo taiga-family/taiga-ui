@@ -167,7 +167,7 @@ jobs:
 
   result:
     if: ${{ !contains(github.head_ref , 'release/') }}
-    name: result
+    name: E2E result
     needs: [cypress, playwright]
     runs-on: ubuntu-latest
     steps:
