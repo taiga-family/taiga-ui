@@ -4,7 +4,6 @@ import {
     Component,
     ElementRef,
     Inject,
-    OnDestroy,
     Optional,
     Self,
 } from '@angular/core';
@@ -58,7 +57,7 @@ import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.direc
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
 })
-export class TuiDropdownComponent implements OnDestroy {
+export class TuiDropdownComponent {
     constructor(
         @Inject(TuiVisualViewportService) visualViewportService: TuiVisualViewportService,
         @Inject(TuiPositionService) position$: Observable<TuiPoint>,
@@ -90,10 +89,6 @@ export class TuiDropdownComponent implements OnDestroy {
             });
 
         this.updateWidth(this.accessor.getClientRect().width);
-    }
-
-    ngOnDestroy(): void {
-        this.onHoveredChange(false);
     }
 
     onHoveredChange(hovered: boolean): void {

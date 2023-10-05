@@ -31,6 +31,11 @@ export class ExampleTuiDropdownHoverComponent extends AbstractExampleTuiDropdown
         LESS: import('./examples/2/index.less?raw'),
     };
 
+    readonly example3: TuiDocExample = {
+        TypeScript: import('./examples/3/index.ts?raw'),
+        HTML: import('./examples/3/index.html?raw'),
+    };
+
     showDelay = 200;
 
     hideDelay = 500;
