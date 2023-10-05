@@ -10,8 +10,8 @@ jobs:
     outputs:
       matrix: ${{ steps.matrix.outputs.value }}
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.25.6
-      - uses: taiga-family/ci/actions/setup/variables@v1.25.6
+      - uses: taiga-family/ci/actions/setup/checkout@v1.25.7
+      - uses: taiga-family/ci/actions/setup/variables@v1.25.7
       - id: matrix
         if: env.TAIGA_FAMILY_BOT_IS_AUTHOR == 'true'
         run: echo "value=$JOBS_NAME" >> $GITHUB_OUTPUT
@@ -24,7 +24,7 @@ jobs:
       matrix:
         value: ${{ fromJSON(needs.setup.outputs.matrix) }}
     steps:
-      - uses: taiga-family/ci/actions/run/wait-job@v1.25.6
+      - uses: taiga-family/ci/actions/run/wait-job@v1.25.7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           job: ${{ matrix.value }}
@@ -33,11 +33,11 @@ jobs:
     needs: [wait]
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/auto/approve/double@v1.25.6
+      - uses: taiga-family/ci/actions/auto/approve/double@v1.25.7
         with:
           token1: ${{ secrets.GITHUB_TOKEN }}
           token2: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
-      - uses: taiga-family/ci/actions/run/merge@v1.25.6
+      - uses: taiga-family/ci/actions/run/merge@v1.25.7
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
