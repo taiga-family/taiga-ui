@@ -67,13 +67,23 @@ export const getSupportModules = (
             new TsFileModuleParser(fileContent),
         ]);
 
-export function getAllModules(entryPoint: Record<string, unknown>): string {
-    const allModules = Object.keys(entryPoint)
-        .filter(name => name.endsWith(`Module`))
-        .filter(name => name !== `TuiOrderWeekDaysPipeModule`) // TODO remove after release 3.7.0
-        .join(`,\n\t\t`);
+function getAllModules(entryPoint: Record<string, unknown>, names: Set<string>): string {
+    const modules = Object.keys(entryPoint).reduce((modules, name) => {
+        const unique =
+            name.endsWith(`Module`) &&
+            name !== `TuiOrderWeekDaysPipeModule` &&
+            !names.has(name);
 
-    return `${allModules}`;
+        if (unique) {
+            names.add(name);
+
+            return modules.concat(name);
+        }
+
+        return modules;
+    }, [] as string[]);
+
+    return `${modules.join(`,\n\t\t`)}`;
 }
 
 /**
@@ -106,7 +116,11 @@ export async function getAllTaigaUIModulesFile(
             import(`@taiga-ui/addon-preview`),
             import(`@taiga-ui/addon-table`),
             import(`@taiga-ui/addon-tablebars`),
-        ]).then(modules => modules.map(getAllModules));
+        ]).then(modules => {
+            const allModuleNames = new Set<string>();
+
+            return modules.map(entryPoint => getAllModules(entryPoint, allModuleNames));
+        });
 
     const additionalModulesImports = additionalModules
         .map(
