@@ -198,7 +198,7 @@ describe(`CalendarMonth`, () => {
     });
 
     describe(`year change`, () => {
-        it(`append year on next`, () => {
+        it(`append year by onNextYear`, () => {
             const year = new TuiYear(TODAY.year);
 
             component.year = year;
@@ -209,7 +209,7 @@ describe(`CalendarMonth`, () => {
             expect(testComponent.year.year).toBe(year.year + 1);
         });
 
-        it(`append year on next`, () => {
+        it(`reduce year by onPreviousYear`, () => {
             const year = new TuiYear(TODAY.year);
 
             component.year = year;

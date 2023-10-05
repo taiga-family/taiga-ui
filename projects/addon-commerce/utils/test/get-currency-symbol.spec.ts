@@ -6,11 +6,11 @@ import {
 
 describe(`getCurrencySymbol`, () => {
     describe(`string`, () => {
-        it(`returns founded currency symbol`, () => {
+        it(`returns founded currency symbol by currency`, () => {
             expect(tuiGetCurrencySymbol(`HKD`)).toBe(`HK$`);
         });
 
-        it(`returns founded currency symbol`, () => {
+        it(`returns founded currency symbol by currency code`, () => {
             expect(tuiGetCurrencySymbol(`344`)).toBe(`HK$`);
         });
 

@@ -127,7 +127,7 @@ describe(`InputPhoneInternational`, () => {
             expect(component.countryIsoCode).toBe(TuiCountryIsoCode.UA);
         });
 
-        it(`should set country code on paste event `, () => {
+        it(`should set country code on paste event`, () => {
             const data = new DataTransfer();
 
             data.setData(`text/plain`, `88005553535`);
@@ -143,7 +143,7 @@ describe(`InputPhoneInternational`, () => {
 
         describe(`should set KZ country code on paste event`, () => {
             for (const phone of [`+7(600)555-3535`, `+7 7272 588300`]) {
-                it(phone, () => {
+                it(`${phone}`, () => {
                     const data = new DataTransfer();
 
                     data.setData(`text/plain`, phone);

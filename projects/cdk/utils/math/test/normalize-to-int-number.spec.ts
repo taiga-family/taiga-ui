@@ -16,10 +16,6 @@ describe(`normalizeToIntNumber`, () => {
         expect(tuiNormalizeToIntNumber(5.7, min, max)).toBe(6);
     });
 
-    it(`0.1`, () => {
-        expect(tuiNormalizeToIntNumber(0.1, min, max)).toBe(0);
-    });
-
     it(`Infinity`, () => {
         expect(tuiNormalizeToIntNumber(Infinity, min, max)).toBe(max);
     });

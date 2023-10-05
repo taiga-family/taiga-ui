@@ -134,7 +134,7 @@ describe(`Textarea`, () => {
             expect(getScrollbar().style.maxHeight).toEqual(tuiPx(maxHeight));
         });
 
-        it(`when rows change, MaxHeight is calculated correctly`, () => {
+        it(`when rows (10) change, MaxHeight is calculated correctly`, () => {
             testComponent.expandable = true;
             testComponent.rows = 10;
             fixture.detectChanges();
@@ -144,7 +144,7 @@ describe(`Textarea`, () => {
             expect(getScrollbar().style.maxHeight).toEqual(tuiPx(maxHeight));
         });
 
-        it(`when rows change, MaxHeight is calculated correctly`, () => {
+        it(`when rows (15) change, MaxHeight is calculated correctly`, () => {
             testComponent.expandable = true;
             testComponent.rows = 15;
             fixture.detectChanges();
@@ -180,12 +180,6 @@ describe(`Textarea`, () => {
     });
 
     describe(`counter and maxLength:`, () => {
-        it(`there is no counter by default`, () => {
-            fixture.detectChanges();
-
-            expect(getCounter()).toBeNull();
-        });
-
         it(`there is no counter by default`, () => {
             fixture.detectChanges();
 

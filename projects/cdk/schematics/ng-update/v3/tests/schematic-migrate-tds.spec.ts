@@ -68,7 +68,7 @@ describe(`ng-update angular.json`, () => {
         );
     });
 
-    it(`it included proprietary-tds-icons now`, async () => {
+    it(`included proprietary-tds-icons now`, async () => {
         setActiveProject(createProject(host));
 
         createSourceFile(

@@ -338,7 +338,7 @@ describe(`InputNumber`, () => {
     });
 
     describe(`When decimal === always`, () => {
-        it(`Adds the number of zeros specified by the precision property when updating Value with an integer`, () => {
+        it(`Adds the number of zeros specified by the precision property when updating Value (123) with an integer`, () => {
             const value = `123`;
             const precision = 2;
 
@@ -349,7 +349,7 @@ describe(`InputNumber`, () => {
             expect(component.computedValue).toBe(`${value},00`);
         });
 
-        it(`Adds the number of zeros specified by the precision property when updating Value with an integer`, () => {
+        it(`Adds the number of zeros specified by the precision property when updating Value (0) with an integer`, () => {
             const value = `0`;
             const precision = 2;
 

@@ -75,7 +75,7 @@ describe(`Dialogs + browser back navigation`, () => {
     });
 
     // TODO: change it back after solving https://github.com/taiga-family/taiga-ui/issues/3270
-    describe.skip(`feature is disabled`, () => {
+    xdescribe(`feature is disabled`, () => {
         beforeEach(() => {
             cy.tuiVisit(`components/dialog`, {inIframe: true});
         });
