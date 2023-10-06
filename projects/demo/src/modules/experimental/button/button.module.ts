@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiNotificationModule, TuiSvgModule} from '@taiga-ui/core';
 import {TuiAvatarModule, TuiButtonModule} from '@taiga-ui/experimental';
 
@@ -10,6 +9,7 @@ import {TuiButtonExample1} from './examples/1';
 import {TuiButtonExample2} from './examples/2';
 import {TuiButtonExample3} from './examples/3';
 import {TuiButtonExample4} from './examples/4';
+import {TuiButtonExample5} from './examples/5';
 
 @NgModule({
     imports: [
@@ -18,8 +18,7 @@ import {TuiButtonExample4} from './examples/4';
         TuiNotificationModule,
         TuiSvgModule,
         TuiAvatarModule,
-        TuiAddonDocModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiButtonComponent)),
+        tuiGetDocModules(ExampleTuiButtonComponent),
     ],
     declarations: [
         ExampleTuiButtonComponent,
@@ -27,6 +26,7 @@ import {TuiButtonExample4} from './examples/4';
         TuiButtonExample2,
         TuiButtonExample3,
         TuiButtonExample4,
+        TuiButtonExample5,
     ],
     exports: [ExampleTuiButtonComponent],
 })

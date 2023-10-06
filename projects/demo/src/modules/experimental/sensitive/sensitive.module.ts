@@ -1,8 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiNotificationModule} from '@taiga-ui/core';
 import {
     TuiBadgeModule,
@@ -21,11 +20,10 @@ import {ExampleTuiSensitiveComponent} from './sensitive.component';
         CommonModule,
         TuiSensitiveModule,
         TuiNotificationModule,
-        TuiAddonDocModule,
         TuiToggleModule,
         TuiBadgeModule,
         TuiButtonModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSensitiveComponent)),
+        tuiGetDocModules(ExampleTuiSensitiveComponent),
     ],
     declarations: [
         ExampleTuiSensitiveComponent,

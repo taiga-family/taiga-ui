@@ -1,5 +1,7 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {tuiSizeBigger, TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core';
+import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
+import {tuiSizeBigger, TuiSizeS} from '@taiga-ui/core';
+
+import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button.options';
 
 @Component({
     selector:
@@ -13,7 +15,7 @@ import {tuiSizeBigger, TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core';
 })
 export class TuiButtonComponent {
     @Input()
-    size: TuiSizeL | TuiSizeXS = 'l';
+    size = this.options.size;
 
     @Input()
     loading = false;
@@ -30,4 +32,6 @@ export class TuiButtonComponent {
     get loaderSize(): TuiSizeS {
         return tuiSizeBigger(this.size) ? 'm' : 's';
     }
+
+    constructor(@Inject(TUI_BUTTON_OPTIONS) private readonly options: TuiButtonOptions) {}
 }

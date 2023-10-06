@@ -1,14 +1,9 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {TUI_PLATFORM, TuiPlatform} from '@taiga-ui/cdk';
-import {
-    MODE_PROVIDER,
-    TUI_MODE,
-    TuiBrightness,
-    TuiSizeS,
-    TuiSizeXL,
-} from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit';
+import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
+
+import {TUI_BADGE_OPTIONS, TuiBadgeOptions} from './badge.options';
 
 @Component({
     selector: 'tui-badge',
@@ -26,15 +21,16 @@ import {Observable} from 'rxjs';
 })
 export class TuiBadgeComponent {
     @Input()
-    size: TuiSizeS | TuiSizeXL = 'l';
+    size = this.options.size;
 
     @Input()
-    appearance: TuiStatus | 'accent' | 'light' = 'default';
+    appearance = this.options.appearance;
 
     @Input()
-    hoverable = false;
+    hoverable = this.options.hoverable;
 
     constructor(
+        @Inject(TUI_BADGE_OPTIONS) private readonly options: TuiBadgeOptions,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_PLATFORM) readonly platform: TuiPlatform,
     ) {}

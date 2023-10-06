@@ -93,7 +93,8 @@ tui-opt-group {
             padding-top: calc(0.75rem + var(--tui-data-list-padding));
         }
 
-        &[data-label='']:before {
+        &[data-label='']:before,
+        &:not([data-label]):before {
             padding: var(--tui-data-list-padding) 0;
         }
 
@@ -102,7 +103,8 @@ tui-opt-group {
         }
     }
 
-    &[data-label='']:before {
+    &[data-label='']:before,
+    &:not([data-label]):before {
         padding: 0;
         margin: 0;
     }

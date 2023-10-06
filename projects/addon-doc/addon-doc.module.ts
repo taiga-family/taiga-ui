@@ -1,4 +1,5 @@
-import {NgModule} from '@angular/core';
+import {ModuleWithProviders, NgModule, Type} from '@angular/core';
+import {RouterModule} from '@angular/router';
 import {
     TuiDocCodeModule,
     TuiDocDemoModule,
@@ -6,6 +7,7 @@ import {
     TuiDocExampleModule,
     TuiDocPageModule,
 } from '@taiga-ui/addon-doc/components';
+import {tuiGenerateRoutes} from '@taiga-ui/addon-doc/utils';
 
 @NgModule({
     exports: [
@@ -17,3 +19,9 @@ import {
     ],
 })
 export class TuiAddonDocModule {}
+
+export function tuiGetDocModules(
+    type: Type<unknown>,
+): [Type<TuiAddonDocModule>, ModuleWithProviders<RouterModule>] {
+    return [TuiAddonDocModule, RouterModule.forChild(tuiGenerateRoutes(type))];
+}

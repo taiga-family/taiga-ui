@@ -34,6 +34,11 @@ export class ExampleTuiButtonComponent {
         HTML: import('./examples/4/index.html?raw'),
     };
 
+    readonly example5: TuiDocExample = {
+        TypeScript: import('./examples/5/index.ts?raw'),
+        HTML: import('./examples/5/index.html?raw'),
+    };
+
     readonly sizes: ReadonlyArray<TuiSizeL | TuiSizeXS> = ['xs', 's', 'm', 'l'];
 
     size = this.sizes[3];
