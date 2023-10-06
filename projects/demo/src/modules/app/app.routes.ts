@@ -241,6 +241,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/compass`,
+        loadChildren: async () =>
+            (await import(`../experimental/compass/compass.module`))
+                .ExampleTuiCompassModule,
+        data: {
+            title: `Compass`,
+        },
+    },
+    {
         path: `experimental/fade`,
         loadChildren: async () =>
             (await import(`../experimental/fade/fade.module`)).ExampleTuiFadeModule,
@@ -258,12 +267,12 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: `experimental/compass`,
+        path: `experimental/surface`,
         loadChildren: async () =>
-            (await import(`../experimental/compass/compass.module`))
-                .ExampleTuiCompassModule,
+            (await import(`../experimental/surface/surface.module`))
+                .ExampleTuiSurfaceModule,
         data: {
-            title: `Compass`,
+            title: `Surface`,
         },
     },
     {

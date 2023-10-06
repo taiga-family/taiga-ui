@@ -223,7 +223,7 @@ describe(`SVG options`, () => {
                             const myCustomPrefix = `icons8::`;
 
                             return String(src).startsWith(myCustomPrefix)
-                                ? `assets/icons8/${String(src).replace(
+                                ? `assets/icons/${String(src).replace(
                                       myCustomPrefix,
                                       ``,
                                   )}.svg`
@@ -239,8 +239,8 @@ describe(`SVG options`, () => {
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
-            expect(testComponent?.svgComponent.src).toBe(`assets/icons8/android.svg`);
-            expect(testComponent?.svgComponent.use).toBe(`#assets/icons8/android.svg`);
+            expect(testComponent?.svgComponent.src).toBe(`assets/icons/android.svg`);
+            expect(testComponent?.svgComponent.use).toBe(`#assets/icons/android.svg`);
         });
 
         it(`tuiIconTdsSuperIcon and TUI_SVG_SRC_PROCESSOR should be ignored`, () => {
@@ -308,7 +308,7 @@ describe(`SVG options`, () => {
                     tuiSvgOptionsProvider({path: `assets/default-path-to-icons/`}),
                     tuiSvgSrcInterceptors((src: TuiSafeHtml) =>
                         String(src).startsWith(`icons8::`)
-                            ? `assets/icons8/${String(src).replace(`icons8::`, ``)}.svg`
+                            ? `assets/icons/${String(src).replace(`icons8::`, ``)}.svg`
                             : src,
                     ),
                     tuiSvgSrcInterceptors((src: TuiSafeHtml) =>
@@ -333,7 +333,7 @@ describe(`SVG options`, () => {
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
-            expect(testComponent?.svgComponent.src).toBe(`assets/icons8/android.svg`);
+            expect(testComponent?.svgComponent.src).toBe(`assets/icons/android.svg`);
         });
 
         it(`tuiIconTdsSuperToken`, () => {

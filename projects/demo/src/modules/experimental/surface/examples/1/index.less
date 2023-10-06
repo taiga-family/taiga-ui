@@ -1,0 +1,47 @@
+@import 'taiga-ui-local';
+
+.scale {
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            transform: scale(1.15);
+        }
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+.overlay {
+    &:after {
+        background: var(--tui-info-bg);
+        opacity: 0;
+    }
+
+    &:active:after {
+        opacity: 1;
+    }
+}
+
+.highlight:active:after {
+    backdrop-filter: brightness(0.9);
+}
+
+.offset:hover {
+    transform: translate3d(0, -0.25rem, 0);
+}
+
+.background {
+    &:before {
+        background: url(/assets/images/not-found.svg) top;
+        background-size: 300%;
+    }
+
+    &:hover:before {
+        transform: scale(1.15);
+    }
+}
+
+.shadow:hover {
+    .shadow(5);
+}
