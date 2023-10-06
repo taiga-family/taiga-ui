@@ -13,7 +13,7 @@ import {
     TuiIdService,
     tuiPure,
     tuiSum,
-    TypedTuiMapper,
+    TuiTypedMapper,
 } from '@taiga-ui/cdk';
 import {
     TuiHintHoverDirective,
@@ -71,7 +71,7 @@ export class TuiBarChartComponent {
         return this.max || this.getMax(this.value, this.collapsed);
     }
 
-    readonly percentMapper: TypedTuiMapper<[readonly number[], boolean, number], number> =
+    readonly percentMapper: TuiTypedMapper<[readonly number[], boolean, number], number> =
         (set, collapsed, max) =>
             (100 * (collapsed ? tuiSum(...set) : Math.max(...set))) / max;
 

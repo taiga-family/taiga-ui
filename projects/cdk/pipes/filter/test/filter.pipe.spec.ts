@@ -1,10 +1,10 @@
-import {TuiFilterPipe, TypedTuiMatcher} from '@taiga-ui/cdk';
+import {TuiFilterPipe, TuiTypedMatcher} from '@taiga-ui/cdk';
 
 describe(`TuiFilter pipe`, () => {
     let pipe: TuiFilterPipe;
     const data = [`two`, `eleven`];
     const args = [`two`, `four`];
-    const matcher: TypedTuiMatcher<[string, number, ...string[]]> = (
+    const matcher: TuiTypedMatcher<[string, number, ...string[]]> = (
         item,
         search,
         ...rest

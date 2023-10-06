@@ -3,10 +3,10 @@ import {
     TuiDayLike,
     TuiDayRange,
     tuiObjectFromEntries,
-    TypedTuiMapper,
+    TuiTypedMapper,
 } from '@taiga-ui/cdk';
 
-export const MAX_DAY_RANGE_LENGTH_MAPPER: TypedTuiMapper<
+export const MAX_DAY_RANGE_LENGTH_MAPPER: TuiTypedMapper<
     [TuiDay, TuiDayRange | null, TuiDayLike | null, boolean],
     TuiDay
 > = (min, value, maxLength, backwards) => {

@@ -6,8 +6,8 @@ import {
     TuiDayLike,
     TuiDayRange,
     tuiPure,
-    TypedTuiMapper,
-    TypedTuiMatcher,
+    TuiTypedMapper,
+    TuiTypedMatcher,
 } from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
 
@@ -45,12 +45,12 @@ export class TuiLineDaysChartExample2 {
         return day instanceof TuiDay ? day : date.append({day});
     }
 
-    readonly filter: TypedTuiMatcher<[readonly [TuiDay, number], TuiDayRange]> = (
+    readonly filter: TuiTypedMatcher<[readonly [TuiDay, number], TuiDayRange]> = (
         [day],
         {from, to},
     ) => day.daySameOrAfter(from) && day.daySameOrBefore(to);
 
-    readonly toNumbers: TypedTuiMapper<
+    readonly toNumbers: TuiTypedMapper<
         [ReadonlyArray<readonly [TuiDay, number]>, TuiDayRange],
         readonly TuiPoint[]
     > = (days, {from}) =>

@@ -30,7 +30,7 @@ import {
     tuiIsString,
     tuiPure,
     TuiStringHandler,
-    TypedTuiMapper,
+    TuiTypedMapper,
 } from '@taiga-ui/cdk';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
@@ -199,7 +199,7 @@ export class TuiMultiSelectComponent<T>
         return ({$implicit}) => stringify($implicit);
     }
 
-    readonly valueMapper: TypedTuiMapper<
+    readonly valueMapper: TuiTypedMapper<
         [readonly T[], TuiStringHandler<T>, boolean?],
         ReadonlyArray<TuiStringifiableItem<T>>
     > = (value, stringify, group) =>
@@ -207,7 +207,7 @@ export class TuiMultiSelectComponent<T>
             ? EMPTY_ARRAY
             : value.map(item => new TuiStringifiableItem(item, stringify));
 
-    readonly disabledItemHandlerWrapper: TypedTuiMapper<
+    readonly disabledItemHandlerWrapper: TuiTypedMapper<
         [TuiBooleanHandler<T>],
         TuiBooleanHandler<TuiStringifiableItem<T> | string>
     > = handler => stringifiable =>

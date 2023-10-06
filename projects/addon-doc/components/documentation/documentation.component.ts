@@ -19,8 +19,8 @@ import {
     TuiDestroyService,
     tuiHexToRgb,
     tuiQueryListChanges,
+    TuiTypedMatcher,
     tuiWatch,
-    TypedTuiMatcher,
 } from '@taiga-ui/cdk';
 import {merge} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
@@ -88,7 +88,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         return this.isAPI ? this.texts[0] : this.texts[1];
     }
 
-    matcher: TypedTuiMatcher<
+    matcher: TuiTypedMatcher<
         [TuiDocDocumentationPropertyConnectorDirective<any>, Set<string>]
     > = (item, exclusions) => !exclusions.has(item.documentationPropertyName);
 

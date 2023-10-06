@@ -29,7 +29,7 @@
             class="t-menu"
         >
             <button
-                *ngFor="let item of items | tuiMapper: mapper : min : max : minLength : (otherDateText$ | async) || ''"
+                *ngFor="let item of items | tuiMapper: mapper : min : max : minLength : (otherDateText$ | async)"
                 automation-id="tui-calendar-range__menu__item"
                 role="menuitemradio"
                 tuiOption

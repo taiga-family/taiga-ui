@@ -24,8 +24,8 @@ import {
     tuiNullableSame,
     tuiObjectFromEntries,
     tuiPure,
+    TuiTypedMapper,
     tuiWatch,
-    TypedTuiMapper,
 } from '@taiga-ui/cdk';
 import {
     TUI_COMMON_ICONS,
@@ -118,16 +118,16 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         this.value = this.previousValue;
     }
 
-    readonly mapper: TypedTuiMapper<
+    readonly mapper: TuiTypedMapper<
         [
             readonly TuiDayRangePeriod[],
             TuiDay | null,
             TuiDay | null,
             TuiDayLike | null,
-            string,
+            string?,
         ],
         ReadonlyArray<TuiDayRangePeriod | string>
-    > = (items, min, max, minLength, otherDateText) => [
+    > = (items, min, max, minLength, otherDateText = '') => [
         ...items.filter(
             item =>
                 (minLength === null ||

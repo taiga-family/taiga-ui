@@ -40,7 +40,7 @@ import {
     TuiMonth,
     tuiNullableSame,
     tuiPure,
-    TypedTuiMapper,
+    TuiTypedMapper,
 } from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
@@ -114,7 +114,7 @@ export class TuiInputDateRangeComponent
 
     open = false;
 
-    readonly maxLengthMapper: TypedTuiMapper<
+    readonly maxLengthMapper: TuiTypedMapper<
         [TuiDay, TuiDayRange | null, TuiDayLike | null, boolean],
         TuiDay
     > = MAX_DAY_RANGE_LENGTH_MAPPER;

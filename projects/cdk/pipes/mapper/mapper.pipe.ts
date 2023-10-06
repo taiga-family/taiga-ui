@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {TuiMapper, TypedTuiMapper} from '@taiga-ui/cdk/types';
+import {TuiMapper, TuiTypedMapper} from '@taiga-ui/cdk/types';
 
 @Pipe({name: `tuiMapper`})
 export class TuiMapperPipe implements PipeTransform {
@@ -13,7 +13,7 @@ export class TuiMapperPipe implements PipeTransform {
     transform<T, G>(value: T, mapper: TuiMapper<T, G>, ...args: any[]): G;
     transform<T extends unknown[], U, G>(
         value: U,
-        mapper: TypedTuiMapper<[U, ...T], G>,
+        mapper: TuiTypedMapper<[U, ...T], G>,
         ...args: T
     ): G {
         return mapper(value, ...args);
