@@ -16,7 +16,14 @@ export interface TuiDocPageGroup extends TuiDocPageBase {
     readonly subPages: readonly TuiDocPage[];
 }
 
-export type RawLoaderContent = Promise<{default: string}> | string;
+export type TuiRawLoaderContent = Promise<{default: string}> | string;
+
+/**
+ * @deprecated: use {@link TuiRawLoaderContent}
+ * TODO: remove in v4.0
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export type RawLoaderContent = TuiRawLoaderContent;
 
 export const TUI_EXAMPLE_PRIMARY_FILE_NAME = {
     TS: `TypeScript`,
@@ -25,7 +32,7 @@ export const TUI_EXAMPLE_PRIMARY_FILE_NAME = {
 } as const;
 
 export type TuiDocExample =
-    | Record<string, RawLoaderContent>
+    | Record<string, TuiRawLoaderContent>
     | {
           [TUI_EXAMPLE_PRIMARY_FILE_NAME.HTML]?: string;
           [TUI_EXAMPLE_PRIMARY_FILE_NAME.LESS]?: string;

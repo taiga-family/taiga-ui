@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {RawLoaderContent, TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 
 @Component({
@@ -10,11 +10,11 @@ import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiAvatarComponent {
-    readonly exampleModule: RawLoaderContent = import(
+    readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );
 
-    readonly exampleHtml: RawLoaderContent = import(
+    readonly exampleHtml: TuiRawLoaderContent = import(
         './examples/import/insert-template.md?raw'
     );
 

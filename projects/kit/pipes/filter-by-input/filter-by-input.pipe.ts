@@ -8,7 +8,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_DATA_LIST_HOST, TuiDataListHost} from '@taiga-ui/core';
 
-import {AbstractTuiFilterByInput, ArrayElement} from './filter-by-input.base';
+import {AbstractTuiFilterByInput, TuiArrayElement} from './filter-by-input.base';
 
 @Pipe({
     name: `tuiFilterByInput`,
@@ -27,7 +27,7 @@ export class TuiFilterByInputPipe
         super();
     }
 
-    transform<T>(items: T, matcher?: TuiStringMatcher<ArrayElement<T>>): T;
+    transform<T>(items: T, matcher?: TuiStringMatcher<TuiArrayElement<T>>): T;
     transform<T>(
         items: ReadonlyArray<readonly T[]> | readonly T[] | null,
         matcher: TuiStringMatcher<T> = TUI_DEFAULT_MATCHER,

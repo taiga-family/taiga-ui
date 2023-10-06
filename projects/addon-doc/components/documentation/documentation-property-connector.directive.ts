@@ -17,7 +17,14 @@ import {BehaviorSubject, Subject} from 'rxjs';
 
 const SERIALIZED_SUFFIX = '$';
 
-export type DocumentationPropertyType = 'input-output' | 'input' | 'output' | null;
+export type TuiDocumentationPropertyType = 'input-output' | 'input' | 'output' | null;
+
+/**
+ * @deprecated: use {@link TuiDocumentationPropertyType}
+ * TODO: remove in v4.0
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export type DocumentationPropertyType = TuiDocumentationPropertyType;
 
 // @bad TODO: refactor output and value sync
 @Directive({
@@ -31,7 +38,7 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
     documentationPropertyName = '';
 
     @Input()
-    documentationPropertyMode: DocumentationPropertyType = null;
+    documentationPropertyMode: TuiDocumentationPropertyType = null;
 
     @Input()
     documentationPropertyType = '';

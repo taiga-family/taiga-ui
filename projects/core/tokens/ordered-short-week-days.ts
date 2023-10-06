@@ -11,6 +11,7 @@ import {TUI_SHORT_WEEK_DAYS} from './i18n';
 /**
  * @deprecated
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export type WEEK_DAYS_NAMES = [string, string, string, string, string, string, string];
 
 const convertToSundayFirstWeekFormat = (

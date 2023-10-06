@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {RawLoaderContent, TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 
 @Component({
     selector: 'example-fade',
@@ -9,11 +9,11 @@ import {RawLoaderContent, TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiFadeComponent {
-    readonly exampleModule: RawLoaderContent = import(
+    readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );
 
-    readonly exampleHtml: RawLoaderContent = import(
+    readonly exampleHtml: TuiRawLoaderContent = import(
         './examples/import/insert-template.md?raw'
     );
 
