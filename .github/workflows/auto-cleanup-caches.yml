@@ -12,12 +12,12 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.27.6
-      - uses: taiga-family/ci/actions/auto/cleanup-cache@v1.27.6
+      - uses: taiga-family/ci/actions/setup/checkout@v1.28.0
+      - uses: taiga-family/ci/actions/auto/cleanup-cache@v1.28.0
         if: github.event_name == 'push'
         with:
           branch-name: ${{ github.head_ref || github.ref_name }}
-      - uses: taiga-family/ci/actions/auto/cleanup-cache@v1.27.6
+      - uses: taiga-family/ci/actions/auto/cleanup-cache@v1.28.0
         if: github.event_name == 'pull_request'
         with:
           branch-name: refs/pull/${{ github.event.pull_request.number }}/merge
