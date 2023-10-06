@@ -2,7 +2,8 @@ name: 🤖 Auto approve validation
 on: pull_request
 
 env:
-  JOBS_NAME: '[ "Build packages", "Firebase", "Lint", "Collect coverage", "E2E result" ]'
+  PR_JOBS_NAME: '[ "Build packages", "Firebase", "Lint", "Collect coverage", "E2E result" ]'
+  RELEASE_JOBS_NAME: '[ "Publish", "Validate tag" ]'
 
 jobs:
   setup:
@@ -14,7 +15,12 @@ jobs:
       - uses: taiga-family/ci/actions/setup/variables@v1.25.8
       - id: matrix
         if: env.TAIGA_FAMILY_BOT_IS_AUTHOR == 'true'
-        run: echo "value=$JOBS_NAME" >> $GITHUB_OUTPUT
+        run: |
+          if [[ "${{ env.IS_RELEASE_BRANCH }}" == "false" ]]; then
+              echo "value=$PR_JOBS_NAME" >> $GITHUB_OUTPUT
+          else
+            echo "value=$RELEASE_JOBS_NAME" >> $GITHUB_OUTPUT
+          fi
 
   wait:
     needs: [setup]
@@ -33,11 +39,14 @@ jobs:
     needs: [wait]
     runs-on: ubuntu-latest
     steps:
+      - uses: taiga-family/ci/actions/setup/checkout@v1.25.8
+      - uses: taiga-family/ci/actions/setup/variables@v1.25.8
       - uses: taiga-family/ci/actions/auto/approve/double@v1.25.8
         with:
           token1: ${{ secrets.GITHUB_TOKEN }}
           token2: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
       - uses: taiga-family/ci/actions/run/merge@v1.25.8
+        if: env.IS_RELEASE_BRANCH == 'false'
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
