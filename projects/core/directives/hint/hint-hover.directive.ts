@@ -29,8 +29,8 @@ export class TuiHintHoverDirective extends TuiDriver {
             repeat(),
         ),
     ).pipe(
-        map(value => !tuiGetElementObscures(this.el.nativeElement)?.length && value),
         filter(() => this.enabled),
+        map(value => value && !tuiGetElementObscures(this.el.nativeElement)?.length),
         tap(visible => {
             this.visible = visible;
         }),
