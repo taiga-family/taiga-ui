@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.29.0
-      - uses: taiga-family/ci/actions/setup/node@v1.29.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.29.19
+      - uses: taiga-family/ci/actions/setup/node@v1.29.19
       - run: npx nx build demo
       - run: npx --yes bundlemon --config .github/.bundlemonrc.json
         continue-on-error: true

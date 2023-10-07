@@ -13,11 +13,11 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4.1.0
-      - uses: taiga-family/ci/actions/auto/cleanup-cache@v1.29.0
+      - uses: taiga-family/ci/actions/auto/cleanup-cache@v1.29.19
         if: github.event_name == 'push'
         with:
           branch-name: ${{ github.head_ref || github.ref_name }}
-      - uses: taiga-family/ci/actions/auto/cleanup-cache@v1.29.0
+      - uses: taiga-family/ci/actions/auto/cleanup-cache@v1.29.19
         if: github.event_name == 'pull_request'
         with:
           branch-name: refs/pull/${{ github.event.pull_request.number }}/merge

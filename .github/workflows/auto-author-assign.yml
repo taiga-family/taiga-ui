@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.29.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.29.19
       - uses: toshimaru/auto-author-assign@v2.0.1
         if: env.IS_OWNER_MODE == 'true'
         with:

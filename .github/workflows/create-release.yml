@@ -28,8 +28,8 @@ jobs:
       - uses: actions/checkout@v4.1.0
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-      - uses: taiga-family/ci/actions/setup/node@v1.29.0
-      - uses: taiga-family/ci/actions/setup/config/git@v1.29.0
+      - uses: taiga-family/ci/actions/setup/node@v1.29.19
+      - uses: taiga-family/ci/actions/setup/config/git@v1.29.19
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
