@@ -8,9 +8,9 @@ jobs:
     if: ${{ !contains(github.head_ref , 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.29.0
+      - uses: actions/checkout@v4.1.0
       - uses: taiga-family/ci/actions/setup/variables@v1.29.0
-      - uses: taiga-family/ci/actions/setup/checkout@v1.29.0
+      - uses: actions/checkout@v4.1.0
         if: env.SUPPORT_AUTO_PUSH == 'true'
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}

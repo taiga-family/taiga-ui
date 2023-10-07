@@ -13,7 +13,7 @@ jobs:
     name: Build demo
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.29.0
+      - uses: actions/checkout@v4.1.0
         with:
           fetch-depth: 10
       - uses: taiga-family/ci/actions/setup/variables@v1.29.0
@@ -41,7 +41,7 @@ jobs:
           [addon-doc, addon-charts, addon-commerce, addon-mobile, addon-table, addon-tablebars, icons, core, deep, kit]
     name: ${{ matrix.project }}
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.29.0
+      - uses: actions/checkout@v4.1.0
       - uses: taiga-family/ci/actions/setup/variables@v1.29.0
       - uses: taiga-family/ci/actions/setup/node@v1.29.0
 
@@ -101,7 +101,7 @@ jobs:
         shard: [1, 2, 3]
     name: playwright / (${{ matrix.shard }} of 3)
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.29.0
+      - uses: actions/checkout@v4.1.0
       - uses: taiga-family/ci/actions/setup/variables@v1.29.0
       - uses: taiga-family/ci/actions/setup/node@v1.29.0
 
@@ -171,7 +171,7 @@ jobs:
     needs: [cypress, playwright]
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.29.0
+      - uses: actions/checkout@v4.1.0
       - uses: taiga-family/ci/actions/setup/variables@v1.29.0
 
       - name: Download artifacts / ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}

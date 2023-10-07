@@ -11,7 +11,7 @@ jobs:
     outputs:
       matrix: ${{ steps.matrix.outputs.value }}
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.29.0
+      - uses: actions/checkout@v4.1.0
       - uses: taiga-family/ci/actions/setup/variables@v1.29.0
       - id: matrix
         if: env.TAIGA_FAMILY_BOT_IS_AUTHOR == 'true'
@@ -39,7 +39,7 @@ jobs:
     needs: [wait]
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.29.0
+      - uses: actions/checkout@v4.1.0
       - uses: taiga-family/ci/actions/setup/variables@v1.29.0
       - uses: taiga-family/ci/actions/auto/approve/double@v1.29.0
         with:

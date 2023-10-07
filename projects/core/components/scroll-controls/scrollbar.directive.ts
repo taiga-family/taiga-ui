@@ -13,7 +13,6 @@ import {
     POLLING_TIME,
     TUI_SCROLL_REF,
     TuiDestroyService,
-    tuiPreventDefault,
     tuiScrollFrom,
     tuiStopPropagation,
     tuiTypedFromEvent,
@@ -54,12 +53,8 @@ export class TuiScrollbarDirective {
         );
 
         merge(
-            mousedownWrapper$.pipe(
-                tuiPreventDefault(),
-                map(event => this.getScrolled(event, 0.5, 0.5)),
-            ),
+            mousedownWrapper$.pipe(map(event => this.getScrolled(event, 0.5, 0.5))),
             mousedown$.pipe(
-                tuiPreventDefault(),
                 tuiStopPropagation(),
                 switchMap(event => {
                     const rect = nativeElement.getBoundingClientRect();
