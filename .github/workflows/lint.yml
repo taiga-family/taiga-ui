@@ -10,21 +10,24 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.29.0
-      - uses: actions/checkout@v4.1.0
-        if: env.SUPPORT_AUTO_PUSH == 'true'
-        with:
-          token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-      - uses: taiga-family/ci/actions/setup/node@v1.29.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.29.19
+      - uses: taiga-family/ci/actions/setup/variables@v1.29.19
+      - uses: taiga-family/ci/actions/setup/node@v1.29.19
       - run: npm run typecheck
       - run: npm run cspell -- --no-progress
-      - run: npm run prettier ${{ env.SUPPORT_AUTO_PUSH == 'true' && '-- --write' || '-- --check' }}
-      - run: npm run stylelint ${{ env.SUPPORT_AUTO_PUSH == 'true' && '-- --fix' || '' }}
-      - run: npm run lint ${{ env.SUPPORT_AUTO_PUSH == 'true' && '-- --fix' || '' }}
-      - name: Apply changes after linting
-        if: env.SUPPORT_AUTO_PUSH == 'true'
-        uses: taiga-family/ci/actions/auto/push@v1.29.0
+      - run: |
+          if [[ "${{ env.SUPPORT_AUTO_PUSH }}" == "true" ]]; then
+              npm run prettier -- --write
+              npm run stylelint -- --fix
+              npm run lint -- --fix
+          else
+              npm run prettier -- --check
+              npm run stylelint
+              npm run lint
+          fi
+      - uses: taiga-family/ci/actions/auto/push@v1.29.19
+        with:
+          token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
 concurrency:
   group: lint-${{ github.workflow }}-${{ github.ref }}
