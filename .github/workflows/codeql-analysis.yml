@@ -17,8 +17,8 @@ jobs:
       contents: read
       security-events: write
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.29.19
-      - uses: taiga-family/ci/actions/security/codeql@v1.29.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.30.0
+      - uses: taiga-family/ci/actions/security/codeql@v1.30.0
 
 concurrency:
   group: codeql-${{ github.workflow }}-${{ github.ref }}
