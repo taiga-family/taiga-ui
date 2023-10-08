@@ -161,7 +161,7 @@
         "cspell": "7.3.7",
         "cypress": "13.3.0",
         "cypress-real-events": "1.10.3",
-        "eslint": "8.50.0",
+        "eslint": "8.51.0",
         "find-in-files": "0.5.0",
         "http-server": "0.13.0",
         "husky": "8.0.3",
