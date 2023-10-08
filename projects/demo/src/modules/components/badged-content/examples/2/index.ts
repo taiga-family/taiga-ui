@@ -22,10 +22,6 @@ export class TuiBadgedContentExample2 {
         return this.contentTop === 50 ? 'tuiIconCheck' : 'var(--tui-error-fill)';
     }
 
-    get contentBottom(): string {
-        return this.contentTop === 50 ? '' : '';
-    }
-
     onClick(): void {
         this.contentTop++;
     }
