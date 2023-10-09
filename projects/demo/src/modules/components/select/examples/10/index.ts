@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiStringHandler} from '@taiga-ui/cdk';
 import {tuiItemsHandlersProvider} from '@taiga-ui/kit';
 
 interface Employee {
@@ -14,15 +13,16 @@ interface Employee {
     readonly name: string;
 }
 
-const STRINGIFY_EMPLOYEE: TuiStringHandler<Employee> = (item: Employee) =>
-    `${item.name} (${item.dept.title})`;
-
 @Component({
     selector: 'tui-select-example-10',
     templateUrl: './index.html',
     changeDetection,
     encapsulation,
-    providers: [tuiItemsHandlersProvider({stringify: STRINGIFY_EMPLOYEE})],
+    providers: [
+        tuiItemsHandlersProvider({
+            stringify: (item: Employee) => `${item.name} (${item.dept.title})`,
+        }),
+    ],
 })
 export class TuiSelectExample10 {
     readonly testValue = new FormControl(null);

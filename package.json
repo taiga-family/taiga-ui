@@ -80,26 +80,10 @@
     "eslintConfig": {
         "extends": [
             "plugin:@taiga-ui/experience/all",
-            "plugin:@taiga-ui/experience/taiga-naming-convention"
-        ],
-        "overrides": [
-            {
-                "files": [
-                    "**/*.spec.ts"
-                ],
-                "plugins": [
-                    "jest"
-                ],
-                "extends": [
-                    "plugin:jest/recommended"
-                ],
-                "rules": {
-                    "jest/expect-expect": "off",
-                    "jest/no-disabled-tests": "off",
-                    "jest/no-done-callback": "off",
-                    "jest/no-test-prefixes": "off"
-                }
-            }
+            "plugin:@taiga-ui/experience/taiga-naming-convention",
+            "plugin:@taiga-ui/experience/jest",
+            "plugin:@taiga-ui/experience/cypress",
+            "plugin:@taiga-ui/experience/playwright"
         ]
     },
     "stylelint": {
@@ -126,7 +110,6 @@
         "@angular/platform-server": "12.2.17",
         "@angular/router": "12.2.17",
         "core-js": "2.6.12",
-        "eslint-plugin-jest": "27.4.2",
         "parse5": "6.0.1",
         "rxjs": "6.6.7",
         "zone.js": "0.11.8"
@@ -145,8 +128,8 @@
         "@playwright/test": "1.38.1",
         "@taiga-ui/browserslist-config": "0.2.0",
         "@taiga-ui/commitlint-config": "0.2.1",
-        "@taiga-ui/cspell-config": "0.13.0",
-        "@taiga-ui/eslint-plugin-experience": "0.8.1",
+        "@taiga-ui/cspell-config": "0.14.0",
+        "@taiga-ui/eslint-plugin-experience": "0.9.0",
         "@taiga-ui/prettier-config": "0.3.1",
         "@taiga-ui/stylelint-config": "0.5.1",
         "@testing-library/cypress": "9.0.0",

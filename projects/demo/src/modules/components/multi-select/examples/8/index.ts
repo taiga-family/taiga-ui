@@ -2,11 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiContextWithImplicit,
-    TuiIdentityMatcher,
-    TuiStringHandler,
-} from '@taiga-ui/cdk';
+import {TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {tuiItemsHandlersProvider} from '@taiga-ui/kit';
 
 interface Employee {
@@ -18,18 +14,6 @@ interface Employee {
     readonly name: string;
 }
 
-const STRINGIFY_EMPLOYEE: TuiStringHandler<
-    Employee | TuiContextWithImplicit<Employee>
-> = (item: Employee | TuiContextWithImplicit<Employee>) =>
-    'name' in item
-        ? `${item.name} (${item.dept.title})`
-        : `${item.$implicit.name} (${item.$implicit.dept.title})`;
-
-const ID_MATCHER_EMPLOYEE: TuiIdentityMatcher<Employee> = (
-    item1: Employee,
-    item2: Employee,
-) => item1.id === item2.id;
-
 @Component({
     selector: 'tui-multi-select-example-8',
     templateUrl: './index.html',
@@ -37,8 +21,11 @@ const ID_MATCHER_EMPLOYEE: TuiIdentityMatcher<Employee> = (
     encapsulation,
     providers: [
         tuiItemsHandlersProvider({
-            stringify: STRINGIFY_EMPLOYEE,
-            identityMatcher: ID_MATCHER_EMPLOYEE,
+            identityMatcher: (item1: Employee, item2: Employee) => item1.id === item2.id,
+            stringify: (item: Employee | TuiContextWithImplicit<Employee>) =>
+                'name' in item
+                    ? `${item.name} (${item.dept.title})`
+                    : `${item.$implicit.name} (${item.$implicit.dept.title})`,
         }),
     ],
 })

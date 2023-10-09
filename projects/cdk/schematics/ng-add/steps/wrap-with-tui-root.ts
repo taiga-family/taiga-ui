@@ -112,9 +112,7 @@ function getAppTemplatePath(mainPath: string): string | undefined {
     const appIdentifier = mainInitializer.getElements()[0] as Identifier;
     const appComponent = appIdentifier.getDefinitionNodes()[0] as ClassDeclaration;
 
-    const templateUrlPath = getTemplatePathFromComponent(appComponent);
-
-    return templateUrlPath;
+    return getTemplatePathFromComponent(appComponent);
 }
 
 function getTemplatePathFromComponent(component: ClassDeclaration): string {
@@ -126,11 +124,9 @@ function getTemplatePathFromComponent(component: ClassDeclaration): string {
 
     const appComponentPath = component.getSourceFile().getFilePath().split(`/`);
 
-    const templateUrlPath = `${appComponentPath
+    return `${appComponentPath
         .splice(0, appComponentPath.length - 1)
         .join(`/`)}/${templateInitializer?.getText().replace(/['"]/g, ``)}`;
-
-    return templateUrlPath;
 }
 
 function getTemplateInitializer(
