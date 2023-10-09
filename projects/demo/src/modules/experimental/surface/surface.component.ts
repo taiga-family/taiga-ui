@@ -40,8 +40,8 @@ export class ExampleTuiSurfaceComponent {
     };
 
     readonly example6: TuiDocExample = {
-        HTML: import('./examples/5/index.html?raw'),
-        'surface.less': import('./examples/5/surface.less?raw'),
-        LESS: import('./examples/5/index.less?raw'),
+        HTML: import('./examples/6/index.html?raw'),
+        'surface.less': import('./examples/6/surface.less?raw'),
+        LESS: import('./examples/6/index.less?raw'),
     };
 }

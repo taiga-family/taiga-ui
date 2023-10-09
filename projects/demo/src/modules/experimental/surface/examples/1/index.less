@@ -23,7 +23,7 @@
     }
 }
 
-.highlight:active:after {
+.highlight:active:before {
     backdrop-filter: brightness(0.9);
 }
 
@@ -32,12 +32,12 @@
 }
 
 .background {
-    &:before {
+    &:after {
         background: url(/assets/images/not-found.svg) top;
         background-size: 300%;
     }
 
-    &:hover:before {
+    &:hover:after {
         transform: scale(1.15);
     }
 }

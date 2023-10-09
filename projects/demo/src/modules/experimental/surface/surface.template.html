@@ -51,25 +51,54 @@
         >
             <tui-surface-example-5></tui-surface-example-5>
         </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Layers">
+        You can combine element itself,
+        <code>::before</code>
+        and
+        <code>::after</code>
+        pseudo-elements to create complex surfaces.
+        <p>
+            For more complex cases like you can use
+            <code>tuiSurfaceLayer</code>
+            directive to introduce more layers behind content. But that is mostly necessary for additional elements like
+            <code>input type="radio"</code>
+            or a
+            <code>video</code>
+            tag as seen in the examples on the main tab.
+        </p>
+        <hr />
+        <p>
+            <b>Styles to to be applied to the element:</b>
+            <code>background</code>
+            ,
+            <code>border-radius</code>
+            ,
+            <code>box-shadow</code>
+            ,
+            <code>mask</code>
+            ,
+            <code>padding</code>
+            ,
+            <code>transform</code>
+        </p>
+        <p>
+            <b>Styles to be applied to ::BEFORE pseudo-element:</b>
+            <code>backdrop-filter</code>
+        </p>
+        <p>
+            <b>Styles to be applied to ::AFTER pseudo-element:</b>
+            Any overlays on top of
+            <code>backdrop-filter</code>
+            effect of ::BEFORE pseudo-element
+        </p>
+        <hr />
 
         <tui-doc-example
-            id="layers"
-            heading="Layers"
+            heading="Examples"
             [content]="example6"
-            [description]="layers"
         >
-            <ng-template #layers>
-                You can combine element background,
-                <code>::before</code>
-                and
-                <code>::after</code>
-                pseudo-elements to create complex surfaces.
-                <p>
-                    For more complex cases like the two previous examples you can use
-                    <code>tuiSurfaceLayer</code>
-                    directive to introduce more layers behind content.
-                </p>
-            </ng-template>
             <tui-surface-example-6></tui-surface-example-6>
         </tui-doc-example>
     </ng-template>

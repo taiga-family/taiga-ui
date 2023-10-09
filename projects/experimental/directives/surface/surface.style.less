@@ -14,7 +14,11 @@
     background-size: cover;
     background-repeat: no-repeat;
     transform: translate3d(0, 0, 0);
-    transition-property: border-radius, background, box-shadow, transform, backdrop-filter;
+    transition-property: backdrop-filter, background, border-radius, box-shadow, mask, transform;
+
+    &:before {
+        mix-blend-mode: multiply; // Fix for https://bugs.chromium.org/p/chromium/issues/detail?id=1486408
+    }
 }
 
 button[data-surface] {

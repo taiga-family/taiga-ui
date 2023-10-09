@@ -1,15 +1,14 @@
 :host {
     display: block;
     background: url('/assets/images/big-wallpaper.jpg');
-    padding: 2rem;
     background-size: cover;
+    padding: 2rem;
 }
 
 .blur {
-    flex-direction: column;
+    backdrop-filter: blur(1rem);
     background: var(--tui-clear-inverse);
     color: var(--tui-text-01-night);
-    backdrop-filter: blur(1rem);
 }
 
 .title {
@@ -18,5 +17,5 @@
 }
 
 .text {
-    margin-bottom: -0.125rem;
+    margin-bottom: -0.25rem;
 }

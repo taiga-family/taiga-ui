@@ -1,9 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {RouterModule} from '@angular/router';
 import {TuiMoneyModule, TuiThumbnailCardModule} from '@taiga-ui/addon-commerce';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiRippleModule} from '@taiga-ui/addon-mobile';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
@@ -42,11 +41,10 @@ import {ExampleTuiSurfaceComponent} from './surface.component';
         TuiLinkModule,
         TuiAvatarModule,
         TuiLabelModule,
-        TuiAddonDocModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSurfaceComponent)),
         TuiModeModule,
         TuiMoneyModule,
         TuiThumbnailCardModule,
+        tuiGetDocModules(ExampleTuiSurfaceComponent),
     ],
     declarations: [
         ExampleTuiSurfaceComponent,
