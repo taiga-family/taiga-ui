@@ -1,7 +1,8 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
 import {TUI_PLATFORM, tuiIsString, TuiPlatform} from '@taiga-ui/cdk';
-import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
+
+import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar.options';
 
 @Component({
     selector: 'tui-avatar',
@@ -17,26 +18,25 @@ import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 })
 export class TuiAvatarComponent {
     @Input()
-    size: TuiSizeXXL | TuiSizeXXS = 'm';
+    size = this.options.size;
 
     @Input()
-    round = false;
+    round = this.options.round;
 
     @Input()
     src: SafeResourceUrl | string | null = null;
 
-    constructor(@Inject(TUI_PLATFORM) readonly platform: TuiPlatform) {}
-
-    get img(): boolean {
-        return this.type === 'img';
-    }
+    constructor(
+        @Inject(TUI_AVATAR_OPTIONS) private readonly options: TuiAvatarOptions,
+        @Inject(TUI_PLATFORM) readonly platform: TuiPlatform,
+    ) {}
 
     get value(): SafeResourceUrl | string {
         return this.src || '';
     }
 
     get type(): 'content' | 'icon' | 'img' | 'text' {
-        if (!!this.value && !tuiIsString(this.value)) {
+        if (this.value && !tuiIsString(this.value)) {
             return 'img';
         }
 

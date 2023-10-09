@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiLinkModule, TuiNotificationModule, TuiScrollbarModule} from '@taiga-ui/core';
 import {TuiFadeModule} from '@taiga-ui/experimental';
 
@@ -17,8 +16,7 @@ import {ExampleTuiFadeComponent} from './fade.component';
         TuiNotificationModule,
         TuiScrollbarModule,
         TuiLinkModule,
-        TuiAddonDocModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiFadeComponent)),
+        tuiGetDocModules(ExampleTuiFadeComponent),
     ],
     declarations: [
         ExampleTuiFadeComponent,

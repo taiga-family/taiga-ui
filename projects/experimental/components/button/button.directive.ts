@@ -7,15 +7,10 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_PLATFORM, TuiDirectiveStylesService, TuiPlatform} from '@taiga-ui/cdk';
-import {
-    MODE_PROVIDER,
-    TUI_MODE,
-    TuiAppearance,
-    TuiBrightness,
-    TuiSizeL,
-    TuiSizeXS,
-} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
+
+import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button.options';
 
 @Component({
     template: '',
@@ -39,12 +34,13 @@ export class TuiButtonStylesComponent {}
 })
 export class TuiButtonDirective {
     @Input()
-    size: TuiSizeL | TuiSizeXS = 'l';
+    size = this.options.size;
 
     @Input()
-    appearance: string | keyof Record<TuiAppearance, string> = 'primary';
+    appearance = this.options.appearance;
 
     constructor(
+        @Inject(TUI_BUTTON_OPTIONS) private readonly options: TuiButtonOptions,
         @Inject(TUI_PLATFORM) readonly platform: TuiPlatform,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,

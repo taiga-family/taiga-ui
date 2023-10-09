@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiPlatformModule} from '@taiga-ui/cdk';
 import {TuiNotificationModule} from '@taiga-ui/core';
 import {TuiBadgeAlertModule} from '@taiga-ui/experimental';
@@ -15,9 +14,8 @@ import {TuiBadgeAlertExample2} from './examples/2';
         CommonModule,
         TuiBadgeAlertModule,
         TuiNotificationModule,
-        TuiAddonDocModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiBadgeAlertComponent)),
         TuiPlatformModule,
+        tuiGetDocModules(ExampleTuiBadgeAlertComponent),
     ],
     declarations: [
         ExampleTuiBadgeAlertComponent,

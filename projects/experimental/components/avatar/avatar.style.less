@@ -1,7 +1,11 @@
+@import 'taiga-ui-local';
+
 :host {
     --t-size: 3.5rem;
     --t-radius: 0.75rem;
+    position: relative;
     display: inline-flex;
+    flex-shrink: 0;
     width: var(--t-size);
     height: var(--t-size);
     align-items: center;
@@ -11,6 +15,8 @@
     border-radius: var(--t-radius);
     background: var(--tui-secondary);
     color: var(--tui-text-02);
+    vertical-align: middle;
+    opacity: 0.999; // Kick in hardware rendering layer to avoid artifacts on the edges
 
     &[data-size='xxs'] {
         --t-size: 1.5rem;
@@ -95,19 +101,19 @@
 
     &._img {
         background: transparent;
-        line-height: 0;
-        vertical-align: middle;
+    }
+
+    ::ng-deep img,
+    ::ng-deep picture,
+    ::ng-deep video {
+        .fullsize();
+        object-fit: cover;
     }
 }
 
 .t-icon {
     width: 60%;
     height: 60%;
-}
-
-.t-img {
-    width: 100%;
-    height: 100%;
 }
 
 .t-content {

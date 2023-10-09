@@ -1,8 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
     TuiLabelModule,
@@ -20,6 +19,7 @@ import {TuiBadgeExample2} from './examples/2';
 import {TuiBadgeExample3} from './examples/3';
 import {TuiBadgeExample4} from './examples/4';
 import {TuiBadgeExample5} from './examples/5';
+import {TuiBadgeExample6} from './examples/6';
 
 @NgModule({
     imports: [
@@ -32,11 +32,10 @@ import {TuiBadgeExample5} from './examples/5';
         CommonModule,
         TuiFadeModule,
         TuiNotificationModule,
-        TuiAddonDocModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiBadgeComponent)),
         TuiBadgeModule,
         TuiTextfieldControllerModule,
         TuiLabelModule,
+        tuiGetDocModules(ExampleTuiBadgeComponent),
     ],
     declarations: [
         ExampleTuiBadgeComponent,
@@ -45,6 +44,7 @@ import {TuiBadgeExample5} from './examples/5';
         TuiBadgeExample3,
         TuiBadgeExample4,
         TuiBadgeExample5,
+        TuiBadgeExample6,
     ],
     exports: [ExampleTuiBadgeComponent],
 })
