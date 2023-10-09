@@ -22,6 +22,7 @@ export type ArrayElement<A> = TuiArrayElement<A>;
 
 export abstract class AbstractTuiFilterByInput {
     protected abstract readonly accessor: TuiFocusableElementAccessor;
+    protected abstract readonly multiSelect: unknown;
 
     protected get query(): string {
         return this.accessor.nativeFocusableElement
@@ -53,7 +54,7 @@ export abstract class AbstractTuiFilterByInput {
     ): readonly T[] {
         const match = this.getMatch(items, stringify, query);
 
-        return tuiIsPresent(match)
+        return tuiIsPresent(match) && !this.multiSelect
             ? items
             : items.filter(item => matcher(item, query, stringify));
     }
@@ -68,7 +69,7 @@ export abstract class AbstractTuiFilterByInput {
             tuiIsPresent(this.getMatch(item, stringify, query)),
         );
 
-        return tuiIsPresent(match)
+        return tuiIsPresent(match) && !this.multiSelect
             ? items
             : items.map(inner => this.filterFlat(inner, matcher, stringify, query));
     }

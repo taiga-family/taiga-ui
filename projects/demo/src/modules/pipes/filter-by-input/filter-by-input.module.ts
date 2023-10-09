@@ -3,17 +3,19 @@ import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiDataListModule} from '@taiga-ui/core';
+import {TuiDataListModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
     TuiComboBoxModule,
     TuiDataListWrapperModule,
     TuiFilterByInputPipeModule,
     TuiInputModule,
+    TuiMultiSelectModule,
     TuiStringifyContentPipeModule,
 } from '@taiga-ui/kit';
 
 import {TuiFilterByInputExample1} from './examples/1';
 import {TuiFilterByInputExample2} from './examples/2';
+import {TuiFilterByInputExample3} from './examples/3';
 import {ExampleTuiFilterByInputComponent} from './filter-by-input.component';
 
 @NgModule({
@@ -26,6 +28,8 @@ import {ExampleTuiFilterByInputComponent} from './filter-by-input.component';
         TuiDataListModule,
         TuiDataListWrapperModule,
         TuiComboBoxModule,
+        TuiMultiSelectModule,
+        TuiTextfieldControllerModule,
         TuiStringifyContentPipeModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiFilterByInputComponent)),
     ],
@@ -33,6 +37,7 @@ import {ExampleTuiFilterByInputComponent} from './filter-by-input.component';
         ExampleTuiFilterByInputComponent,
         TuiFilterByInputExample1,
         TuiFilterByInputExample2,
+        TuiFilterByInputExample3,
     ],
     exports: [ExampleTuiFilterByInputComponent],
 })
