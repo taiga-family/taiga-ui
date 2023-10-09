@@ -9,5 +9,8 @@
     class="t-code"
 >
     <code [lineNumbers]="true" [highlight]="content"></code>
-    <tui-doc-copy class="t-copy" [cdkCopyToClipboard]="content"></tui-doc-copy>
+    <div class="t-code-actions">
+        <tui-doc-copy class="t-copy" [cdkCopyToClipboard]="content"></tui-doc-copy>
+        <ng-content></ng-content>
+    </div>
 </pre>

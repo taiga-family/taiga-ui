@@ -14,8 +14,8 @@
     margin: 0;
     white-space: normal;
 
-    &:hover .t-copy,
-    &:focus-visible .t-copy {
+    &:hover .t-code-actions,
+    &:focus-visible .t-code-actions {
         opacity: 1;
     }
 }
@@ -24,11 +24,14 @@
     margin-top: 1rem;
 }
 
-.t-copy {
+.t-code-actions {
     position: absolute;
     top: 0.875rem;
     right: 2rem;
+    display: flex;
     opacity: 0;
+    gap: 0.5rem;
+    flex-direction: row-reverse;
 }
 
 // highlightjs added class
