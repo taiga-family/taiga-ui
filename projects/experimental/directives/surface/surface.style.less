@@ -17,8 +17,11 @@
     transform: translate3d(0, 0, 0);
     transition-property: backdrop-filter, background, border-radius, box-shadow, mask, transform;
 
-    &:before {
-        mix-blend-mode: multiply; // Fix for https://bugs.chromium.org/p/chromium/issues/detail?id=1486408
+    // Fix for https://bugs.chromium.org/p/chromium/issues/detail?id=1486408
+    @media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) {
+        &:before {
+            mix-blend-mode: multiply;
+        }
     }
 }
 
