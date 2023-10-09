@@ -11,6 +11,7 @@ import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiBooleanHandler,
+    TuiDay,
     TuiDayRange,
     tuiInRange,
     TuiMonth,
@@ -34,7 +35,7 @@ export class TuiPrimitiveYearPickerComponent {
     private readonly currentYear = TuiMonth.currentLocal().year;
 
     @Input()
-    value: TuiDayRange | TuiMonthRange | TuiYear | null = null;
+    value: TuiDayRange | TuiMonthRange | TuiYear | readonly TuiDay[] | null = null;
 
     @Input()
     initialItem: TuiYear = TuiMonth.currentLocal();
@@ -61,9 +62,7 @@ export class TuiPrimitiveYearPickerComponent {
 
     @HostBinding('class._single')
     get isSingle(): boolean {
-        const {value} = this;
-
-        return !!value && this.isRange(value) && value.from.yearSame(value.to);
+        return this.isRange(this.value) && this.value.from.yearSame(this.value.to);
     }
 
     get rows(): number {
@@ -84,7 +83,9 @@ export class TuiPrimitiveYearPickerComponent {
         return max.year < initial ? max.year + 1 : initial;
     }
 
-    isRange(item: TuiMonthRange | TuiYear): item is TuiMonthRange {
+    isRange(
+        item: TuiMonthRange | TuiYear | readonly TuiDay[] | null,
+    ): item is TuiMonthRange {
         return item instanceof TuiMonthRange;
     }
 
@@ -127,6 +128,10 @@ export class TuiPrimitiveYearPickerComponent {
 
         if (value instanceof TuiYear) {
             return value.year === item ? TuiRangeState.Single : null;
+        }
+
+        if (!(value instanceof TuiMonthRange)) {
+            return value.find(day => day.year === item) ? TuiRangeState.Single : null;
         }
 
         if (

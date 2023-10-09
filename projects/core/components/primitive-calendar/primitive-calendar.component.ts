@@ -42,7 +42,7 @@ export class TuiPrimitiveCalendarComponent {
     markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
 
     @Input()
-    value: TuiDay | TuiDayRange | null = null;
+    value: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
 
     @Input()
     hoveredItem: TuiDay | null = null;
@@ -64,11 +64,15 @@ export class TuiPrimitiveCalendarComponent {
     ) {}
 
     @HostBinding('class._single')
+    get isSingleDayRange(): boolean {
+        return this.value instanceof TuiDayRange && this.value.isSingleDay;
+    }
+
+    /**
+     * @deprecated: use {@link this.isSingleDayRange}
+     */
     get isSingle(): boolean {
-        return (
-            this.value !== null &&
-            (this.value instanceof TuiDay || this.value.isSingleDay)
-        );
+        return this.isSingleDayRange;
     }
 
     readonly toMarkers = (
@@ -114,6 +118,10 @@ export class TuiPrimitiveCalendarComponent {
             return value.daySame(item) ? TuiRangeState.Single : null;
         }
 
+        if (!(value instanceof TuiDayRange)) {
+            return value.find(day => day.daySame(item)) ? TuiRangeState.Single : null;
+        }
+
         if (
             (value.from.daySame(item) && !value.isSingleDay) ||
             (hoveredItem?.dayAfter(value.from) &&
@@ -154,7 +162,7 @@ export class TuiPrimitiveCalendarComponent {
     itemIsInterval(day: TuiDay): boolean {
         const {value, hoveredItem} = this;
 
-        if (value === null || value instanceof TuiDay) {
+        if (!(value instanceof TuiDayRange)) {
             return false;
         }
 
