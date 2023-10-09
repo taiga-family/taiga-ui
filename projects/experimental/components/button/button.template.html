@@ -9,8 +9,11 @@
     [src]="iconRight"
 ></tui-svg>
 <tui-loader
-    *ngIf="loading"
+    aria-live="polite"
+    role="status"
     class="t-loader"
     [inheritColor]="true"
+    [showLoader]="!!loading"
     [size]="loaderSize"
+    [textContent]="label"
 ></tui-loader>

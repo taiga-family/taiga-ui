@@ -14,6 +14,8 @@ import {map, startWith, switchMap} from 'rxjs/operators';
 export class TuiButtonExample4 {
     readonly trigger$ = new Subject();
     readonly loading$ = this.trigger$.pipe(
-        switchMap(() => timer(2000).pipe(map(ALWAYS_FALSE_HANDLER), startWith(true))),
+        switchMap(() =>
+            timer(2000).pipe(map(ALWAYS_FALSE_HANDLER), startWith('Loading')),
+        ),
     );
 }

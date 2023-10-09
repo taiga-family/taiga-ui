@@ -1,4 +1,11 @@
-import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostListener,
+    Inject,
+    Input,
+} from '@angular/core';
+import {tuiIsString} from '@taiga-ui/cdk';
 import {tuiSizeBigger, TuiSizeS} from '@taiga-ui/core';
 
 import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button.options';
@@ -9,7 +16,7 @@ import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button.options';
     templateUrl: './button.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[disabled]': 'disabled || loading',
+        '[attr.aria-disabled]': 'loading',
         '[class._loading]': 'loading',
     },
 })
@@ -18,7 +25,7 @@ export class TuiButtonComponent {
     size = this.options.size;
 
     @Input()
-    loading = false;
+    loading: boolean | string | null = false;
 
     @Input()
     iconLeft = '';
@@ -26,12 +33,20 @@ export class TuiButtonComponent {
     @Input()
     iconRight = '';
 
-    @Input()
-    disabled = false;
+    constructor(@Inject(TUI_BUTTON_OPTIONS) private readonly options: TuiButtonOptions) {}
 
     get loaderSize(): TuiSizeS {
         return tuiSizeBigger(this.size) ? 'm' : 's';
     }
 
-    constructor(@Inject(TUI_BUTTON_OPTIONS) private readonly options: TuiButtonOptions) {}
+    get label(): string {
+        return tuiIsString(this.loading) ? this.loading : '';
+    }
+
+    @HostListener('click.capture', ['$event'])
+    onClick(event: MouseEvent): void {
+        if (this.loading) {
+            event.stopPropagation();
+        }
+    }
 }
