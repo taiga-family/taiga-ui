@@ -111,12 +111,11 @@
     #codeSection
     let-code
 >
-    <section class="t-code-actions">
+    <tui-doc-code [code]="code">
         <ng-container *ngFor="let action of codeActions">
             <ng-container *polymorpheusOutlet="action as text; context: {$implicit: code}">
                 {{ text }}
             </ng-container>
         </ng-container>
-    </section>
-    <tui-doc-code [code]="code"></tui-doc-code>
+    </tui-doc-code>
 </ng-template>
