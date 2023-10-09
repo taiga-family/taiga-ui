@@ -5,7 +5,7 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {RawLoaderContent} from '@taiga-ui/addon-doc/interfaces';
+import {TuiRawLoaderContent} from '@taiga-ui/addon-doc/interfaces';
 import {TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR} from '@taiga-ui/addon-doc/tokens';
 import {tuiRawLoad} from '@taiga-ui/addon-doc/utils';
 import {TuiHandler} from '@taiga-ui/cdk';
@@ -19,7 +19,7 @@ import {map, switchMap} from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocCodeComponent {
-    private readonly rawLoader$$ = new BehaviorSubject<RawLoaderContent>('');
+    private readonly rawLoader$$ = new BehaviorSubject<TuiRawLoaderContent>('');
 
     @Input()
     filename = '';
@@ -35,7 +35,7 @@ export class TuiDocCodeComponent {
     ) {}
 
     @Input()
-    set code(code: RawLoaderContent) {
+    set code(code: TuiRawLoaderContent) {
         this.rawLoader$$.next(code);
     }
 

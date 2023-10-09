@@ -7,11 +7,18 @@ import {
 } from '@taiga-ui/cdk';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
-export type ArrayElement<A> = A extends ReadonlyArray<infer T>
+export type TuiArrayElement<A> = A extends ReadonlyArray<infer T>
     ? A extends ReadonlyArray<ReadonlyArray<infer G>>
         ? G
         : T
     : never;
+
+/**
+ * @deprecated: use {@link TuiArrayElement}
+ * TODO: remove in v4.0
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export type ArrayElement<A> = TuiArrayElement<A>;
 
 export abstract class AbstractTuiFilterByInput {
     protected abstract readonly accessor: TuiFocusableElementAccessor;

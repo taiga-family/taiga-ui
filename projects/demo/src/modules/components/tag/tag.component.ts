@@ -1,6 +1,6 @@
 import {Component, TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {RawLoaderContent, TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -15,15 +15,15 @@ export class ExampleTuiTagComponent {
     @ViewChild('errorIcon')
     errorTemplate?: TemplateRef<Record<string, unknown>>;
 
-    readonly exampleOptions: RawLoaderContent = import(
+    readonly exampleOptions: TuiRawLoaderContent = import(
         './examples/import/define-options.md?raw'
     );
 
-    readonly exampleModule: RawLoaderContent = import(
+    readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );
 
-    readonly exampleHtml: RawLoaderContent = import(
+    readonly exampleHtml: TuiRawLoaderContent = import(
         './examples/import/insert-template.md?raw'
     );
 

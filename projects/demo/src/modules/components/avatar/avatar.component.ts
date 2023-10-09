@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {RawLoaderContent, TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TuiSafeHtml} from '@taiga-ui/cdk';
 import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 
@@ -10,15 +10,15 @@ import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiAvatarComponent {
-    readonly exampleOptions: RawLoaderContent = import(
+    readonly exampleOptions: TuiRawLoaderContent = import(
         './examples/import/define-options.md?raw'
     );
 
-    readonly exampleModule: RawLoaderContent = import(
+    readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );
 
-    readonly exampleHtml: RawLoaderContent = import(
+    readonly exampleHtml: TuiRawLoaderContent = import(
         './examples/import/insert-template.md?raw'
     );
 

@@ -6,7 +6,7 @@ import {
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 
-import {AbstractTuiFilterByInput, ArrayElement} from './filter-by-input.base';
+import {AbstractTuiFilterByInput, TuiArrayElement} from './filter-by-input.base';
 
 /**
  * @deprecated Use {@link TuiFilterByInputPipe} instead
@@ -26,7 +26,7 @@ export class TuiFilterByInputWithPipe
         super();
     }
 
-    transform<T>(items: T, matcher?: TuiStringHandler<ArrayElement<T>>): T;
+    transform<T>(items: T, matcher?: TuiStringHandler<TuiArrayElement<T>>): T;
     transform<T>(
         items: ReadonlyArray<readonly T[]> | readonly T[] | null,
         stringify: TuiStringHandler<T>,

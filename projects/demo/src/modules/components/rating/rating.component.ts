@@ -2,7 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {RawLoaderContent, TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TUI_RATING_OPTIONS, TuiRatingOptions} from '@taiga-ui/kit';
 
 @Component({
@@ -13,15 +13,15 @@ import {TUI_RATING_OPTIONS, TuiRatingOptions} from '@taiga-ui/kit';
     encapsulation,
 })
 export class ExampleTuiRatingComponent {
-    readonly exampleModule: RawLoaderContent = import(
+    readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );
 
-    readonly exampleHtml: RawLoaderContent = import(
+    readonly exampleHtml: TuiRawLoaderContent = import(
         './examples/import/insert-template.md?raw'
     );
 
-    readonly exampleOptions: RawLoaderContent = import(
+    readonly exampleOptions: TuiRawLoaderContent = import(
         './examples/import/define-options.md?raw'
     );
 
