@@ -3,7 +3,38 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## 3.48.0 (2023-10-09)
+## [3.48.0](https://github.com/taiga-family/taiga-ui/compare/v3.47.0...v3.48.0) (2023-10-09)
+
+### Features
+
+- **core:** introduces `TypedTuiMapper` ([#5507](https://github.com/taiga-family/taiga-ui/issues/5507))
+  ([efd15bd](https://github.com/taiga-family/taiga-ui/commit/efd15bd37ff2770c33e6c372308d705210ab6e4e))
+- **experimental:** `Button` improve loading accessibility
+  ([#5573](https://github.com/taiga-family/taiga-ui/issues/5573))
+  ([e0fd6af](https://github.com/taiga-family/taiga-ui/commit/e0fd6afac0c0a8ede51d4c2adc6bfed478c0ba20))
+- **experimental:** add configuration with DI ([#5552](https://github.com/taiga-family/taiga-ui/issues/5552))
+  ([39ed7d7](https://github.com/taiga-family/taiga-ui/commit/39ed7d7e30bd3aca9592fde321d6c4300e3c5889))
+
+### Bug Fixes
+
+- **addon-commerce:** invalid descriptions in currency code dictionary
+  ([#5578](https://github.com/taiga-family/taiga-ui/issues/5578))
+  ([9182165](https://github.com/taiga-family/taiga-ui/commit/9182165c135138004e3a55f7a62bbb799db9ba99))
+- **addon-doc:** use code actions together ([#5570](https://github.com/taiga-family/taiga-ui/issues/5570))
+  ([9451225](https://github.com/taiga-family/taiga-ui/commit/94512255f4817ca365eb60453885cf9ae8fce110))
+- **cdk:** `Dialog` fix animation in safari ([#5525](https://github.com/taiga-family/taiga-ui/issues/5525))
+  ([25fa994](https://github.com/taiga-family/taiga-ui/commit/25fa994a99b9f1f77b3085dfb3973c39474843d9))
+- **core:** `DropdownHover` fix dropdown closing after child transition
+  ([#5532](https://github.com/taiga-family/taiga-ui/issues/5532))
+  ([a759118](https://github.com/taiga-family/taiga-ui/commit/a759118981e978d1312bac32a7f644f094f0cdda))
+- **core:** `DropdownHover` fix unexpected closing when using nested dropdown
+  ([#5541](https://github.com/taiga-family/taiga-ui/issues/5541))
+  ([4b5d814](https://github.com/taiga-family/taiga-ui/commit/4b5d81483a6473034db058fbffb0185df028e972))
+- **core:** scrollbar behaviour inside iframe ([#5561](https://github.com/taiga-family/taiga-ui/issues/5561))
+  ([839fe33](https://github.com/taiga-family/taiga-ui/commit/839fe33614b46eafaf630332e7597cd3b4aaa51c))
+- **kit:** `FilterByInput` do not reset list on match in multiselect
+  ([#5538](https://github.com/taiga-family/taiga-ui/issues/5538))
+  ([4d3bc9b](https://github.com/taiga-family/taiga-ui/commit/4d3bc9b36dbc2860e869714e2f61c02dc1abd7e9))
 
 ## [3.47.0](https://github.com/taiga-family/taiga-ui/compare/v3.46.0...v3.47.0) (2023-10-02)
 
