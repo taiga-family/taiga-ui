@@ -42,12 +42,12 @@
                         >
                             <div
                                 class="t-dot"
-                                [style.backgroundColor]="markers[0]"
+                                [style.backgroundColor]="markers?.[0]"
                             ></div>
                             <div
                                 *ngIf="markers.length > 1"
                                 class="t-dot"
-                                [style.backgroundColor]="markers[1] || ''"
+                                [style.backgroundColor]="markers?.[1] || ''"
                             ></div>
                         </div>
                     </div>
