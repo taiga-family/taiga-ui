@@ -14,6 +14,7 @@ import {
     tuiClamp,
     TuiContextWithImplicit,
     TuiDestroyService,
+    tuiGetElementObscures,
     TuiHoveredService,
     tuiPure,
     tuiPx,
@@ -108,8 +109,9 @@ export class TuiHintComponent<C = any> {
     @HostListener('document:click', ['$event.target'])
     onClick(target: HTMLElement): void {
         if (
-            !this.el.nativeElement.contains(target) &&
-            !this.hover.el.nativeElement.contains(target)
+            (!this.el.nativeElement.contains(target) &&
+                !this.hover.el.nativeElement.contains(target)) ||
+            tuiGetElementObscures(this.hover.el.nativeElement)?.length
         ) {
             this.hover.toggle(false);
         }

@@ -48,10 +48,7 @@ export class TuiDropdownHoverDirective extends TuiDriver {
     }
 
     toggle(visible: boolean): void {
-        if (this.parentHover) {
-            this.parentHover.toggle(visible);
-        }
-
+        this.parentHover?.toggle(visible);
         this.toggle$.next(visible);
     }
 }
