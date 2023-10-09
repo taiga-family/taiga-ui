@@ -91,7 +91,7 @@
             <ng-template #anotherTab>
                 <ng-container
                     [ngTemplateOutlet]="codeSection"
-                    [ngTemplateOutletContext]="{$implicit: files[tabs[activeItemIndex]] || ''}"
+                    [ngTemplateOutletContext]="{$implicit: files?.[tabs[activeItemIndex]] || ''}"
                 ></ng-container>
             </ng-template>
         </div>
