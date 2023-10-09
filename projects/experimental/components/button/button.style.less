@@ -10,6 +10,7 @@
     width: unset; // To override 100% coming from tuiWrapper
     white-space: nowrap;
     border-radius: var(--t-radius);
+    overflow: hidden;
     user-select: none;
     outline: none;
     cursor: pointer;
@@ -18,6 +19,14 @@
         width: 1rem;
         margin-inline-start: 0.125rem;
         margin-inline-end: -0.125rem;
+    }
+
+    > .t-loader {
+        .fullsize();
+
+        .t-text {
+            position: absolute;
+        }
     }
 
     &[data-size='xs'] {
@@ -103,7 +112,6 @@
         }
 
         > .t-loader {
-            .fullsize();
             opacity: 1;
         }
     }

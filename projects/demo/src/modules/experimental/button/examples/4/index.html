@@ -1,7 +1,7 @@
 <button
     iconLeft="tuiIconClockLarge"
     tuiButton
-    [loading]="!!(loading$ | async)"
+    [loading]="loading$ | async"
     (click)="trigger$.next()"
 >
     Click to start

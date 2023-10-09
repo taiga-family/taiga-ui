@@ -1,5 +1,6 @@
 <fieldset
     class="t-content"
+    [attr.inert]="loading || null"
     [class.t-content_has-overlay]="hasOverlay"
     [class.t-content_loading]="loading"
     [disabled]="loading && !isApple"
