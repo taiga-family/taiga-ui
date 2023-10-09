@@ -8,16 +8,16 @@ jobs:
     if: ${{ !contains(github.head_ref , 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.30.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.30.0
-      - uses: taiga-family/ci/actions/setup/node@v1.30.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.31.1
+      - uses: taiga-family/ci/actions/setup/variables@v1.31.1
+      - uses: taiga-family/ci/actions/setup/node@v1.31.1
       - run: |
           npx nx prebuild icons
           npx nx build icons
           npx ts-node ./scripts/generate-used-icons.ts
           npx eslint ./projects/cdk/constants/used-icons.ts --fix
           npx prettier ./projects/cdk/constants/used-icons.ts --write
-      - uses: taiga-family/ci/actions/auto/push@v1.30.0
+      - uses: taiga-family/ci/actions/auto/push@v1.31.1
         with:
           message: icons have changed
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
