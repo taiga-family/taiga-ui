@@ -10,68 +10,24 @@
 // eslint-disable-next-line no-restricted-syntax
 export enum TuiCurrencyCode {
     /**
-     * Armenian dram
+     * Russian ruble
      *
-     * @description Numeric code: 051
-     * @description Alphabetic code: AMD
-     * @description Countries and territories: Armenia
-     * @description Currency symbol: ֏
+     * @description Numeric code: 643
+     * @description Alphabetic code: RUB
+     * @description Countries and territories: Russia
+     * @description Currency symbol: ₽
      */
-    ArmenianDram = `051`,
+    Ruble = `643`,
 
     /**
-     * Australian dollar
+     * Euro
      *
-     * @description Numeric code: 036
-     * @description Alphabetic code: AUD
-     * @description Countries and territories: Australia, Christmas Island (CX), Cocos (Keeling) Islands (CC), Heard Island and McDonald Islands (HM), Kiribati (KI), Nauru (NR), Norfolk Island (NF), Tuvalu (TV)
-     * @description Currency symbol: A$
+     * @description Numeric code: 978
+     * @description Alphabetic code: EUR
+     * @description Countries and territories: Åland Islands (AX), European Union (EU), Andorra (AD), Austria (AT), Belgium (BE), Cyprus (CY), Estonia (EE), Finland (FI), France (FR), French Southern and Antarctic Lands (TF), Germany (DE), Greece (GR), Guadeloupe (GP), Ireland (IE), Italy (IT), Latvia (LV), Lithuania (LT), Luxembourg (LU), Malta (MT), French Guiana (GF), Martinique (MQ), Mayotte (YT), Monaco (MC), Montenegro (ME), Netherlands (NL), Portugal (PT), Réunion (RE), Saint Barthélemy (BL), Saint Martin (MF), Saint Pierre and Miquelon (PM), San Marino (SM), Slovakia (SK), Slovenia (SI), Spain (ES), Vatican City (VA)
+     * @description Currency symbol: €
      */
-    AustralianDollar = `036`,
-
-    AzerbaijaniManat = `944`,
-
-    /**
-     * Thai baht
-     *
-     * @description Numeric code: 764
-     * @description Alphabetic code: THB
-     * @description Countries and territories: Thailand
-     * @description Currency symbol: ฿
-     */
-    Baht = `764`,
-
-    BelarusianRuble = `933`,
-
-    /**
-     * Brazilian Real
-     *
-     * @description Numeric code: 986
-     * @description Alphabetic code: BRL
-     * @description Countries and territories: Brazilia
-     * @description Currency symbol: R$
-     */
-    BrazilianReal = `986`,
-
-    /**
-     * Canadian dollar
-     *
-     * @description Numeric code: 124
-     * @description Alphabetic code: CAD
-     * @description Countries and territories: Canada
-     * @description Currency symbol: C$
-     */
-    CanadianDollar = `124`,
-
-    /**
-     * United Arab Emirates dirham
-     *
-     * @description Numeric code: 784
-     * @description Alphabetic code: AED
-     * @description Countries and territories: United Arab Emirates
-     * @description Currency symbol: Dh
-     */
-    Dirham = `784`,
+    Euro = `978`,
 
     /**
      * United States dollar
@@ -84,50 +40,54 @@ export enum TuiCurrencyCode {
     Dollar = `840`,
 
     /**
-     * Euro
+     * Pound sterling
      *
-     * @description Numeric code: 978
-     * @description Alphabetic code: EUR
-     * @description Countries and territories: Åland Islands (AX), European Union (EU), Andorra (AD), Austria (AT), Belgium (BE), Cyprus (CY), Estonia (EE), Finland (FI), France (FR), French Southern and Antarctic Lands (TF), Germany (DE), Greece (GR), Guadeloupe (GP), Ireland (IE), Italy (IT), Latvia (LV), Lithuania (LT), Luxembourg (LU), Malta (MT), French Guiana (GF), Martinique (MQ), Mayotte (YT), Monaco (MC), Montenegro (ME), Netherlands (NL), Portugal (PT), Réunion (RE), Saint Barthélemy (BL), Saint Martin (MF), Saint Pierre and Miquelon (PM), San Marino (SM), Slovakia (SK), Slovenia (SI), Spain (ES), Vatican City (VA)
-     * @description Currency symbol: €
+     * @description Numeric code: 826
+     * @description Alphabetic code: GBP
+     * @description Countries and territories: United Kingdom, Isle of Man (IM, see Manx pound), Jersey (JE, see Jersey pound), Guernsey (GG, see Guernsey pound), Tristan da Cunha (SH-TA)
+     * @description Currency symbol: £
      */
-    Euro = `978`,
-
-    GeorgianLari = `981`,
+    Pound = `826`,
 
     /**
-     * Hong Kong dollar
+     * Thai baht
      *
-     * @description Numeric code: 344
-     * @description Alphabetic code: HKD
-     * @description Countries and territories: Hong Kong
-     * @description Currency symbol: HK$
+     * @description Numeric code: 764
+     * @description Alphabetic code: THB
+     * @description Countries and territories: Thailand
+     * @description Currency symbol: ฿
      */
-    HongKongDollar = `344`,
+    Baht = `764`,
 
     /**
-     * Ukrainian hryvnia
+     * Turkish lira
      *
-     * @description Numeric code: 980
-     * @description Alphabetic code: UAH
-     * @description Countries and territories: Ukraine
-     * @description Currency symbol: ₴
+     * @description Numeric code: 949
+     * @description Alphabetic code: TRY
+     * @description Countries and territories: Turkey
+     * @description Currency symbol: ₺
      */
-    Hryvnia = `980`,
+    TurkishLira = `949`,
 
     /**
-     * Indian rupee
+     * Chinese yuan
      *
-     * @description Numeric code: 356
-     * @description Alphabetic code: INR
-     * @description Countries and territories: India, Bhutan
-     * @description Currency symbol: ₹
+     * @description Numeric code: 156
+     * @description Alphabetic code: CNY
+     * @description Countries and territories: China
+     * @description Currency symbol: CN¥
      */
-    IndianRupee = `356`,
+    YuanRenminbi = `156`,
 
-    IndonesianRupiah = `360`,
-
-    IranianRial = `364`,
+    /**
+     * Kazakhstani tenge
+     *
+     * @description Numeric code: 398
+     * @description Alphabetic code: KZT
+     * @description Countries and territories: Kazakhstan
+     * @description Currency symbol: ₸
+     */
+    Tenge = `398`,
 
     /**
      * Israeli new shekel
@@ -140,16 +100,104 @@ export enum TuiCurrencyCode {
     IsraeliShekel = `376`,
 
     /**
-     * Kyrgyzstani som
+     * Indian rupee
      *
-     * @description Numeric code: 417
-     * @description Alphabetic code: KGS
-     * @description Countries and territories: Kyrgyzstan
-     * @description Currency symbol: c
+     * @description Numeric code: 356
+     * @description Alphabetic code: INR
+     * @description Countries and territories: India, Bhutan
+     * @description Currency symbol: ₹
      */
-    KyrgyzstanSom = `417`,
+    IndianRupee = `356`,
 
-    MalaysianRinggit = `458`,
+    /**
+     * Japanese yen
+     *
+     * @description Numeric code: 392
+     * @description Alphabetic code: JPY
+     * @description Countries and territories: Japan
+     * @description Currency symbol: ¥
+     */
+    Yen = `392`,
+
+    /**
+     * South Korean won
+     *
+     * @description Numeric code: 410
+     * @description Alphabetic code: KRW
+     * @description Countries and territories: South Korea
+     * @description Currency symbol: ₩
+     */
+    Won = `410`,
+
+    /**
+     * Swiss franc
+     *
+     * @description Numeric code: 756
+     * @description Alphabetic code: CHF
+     * @description Countries and territories: Switzerland, Liechtenstein (LI)
+     * @description Currency symbol: ₣
+     */
+    SwissFranc = `756`,
+
+    /**
+     * Singapore dollar
+     *
+     * @description Numeric code: 702
+     * @description Alphabetic code: SGD
+     * @description Countries and territories: Singapore
+     * @description Currency symbol: S$
+     */
+    SingaporeDollar = `702`,
+
+    /**
+     * Australian dollar
+     *
+     * @description Numeric code: 036
+     * @description Alphabetic code: AUD
+     * @description Countries and territories: Australia, Christmas Island (CX), Cocos (Keeling) Islands (CC), Heard Island and McDonald Islands (HM), Kiribati (KI), Nauru (NR), Norfolk Island (NF), Tuvalu (TV)
+     * @description Currency symbol: A$
+     */
+    AustralianDollar = `036`,
+
+    /**
+     * Hong Kong dollar
+     *
+     * @description Numeric code: 344
+     * @description Alphabetic code: HKD
+     * @description Countries and territories: Hong Kong
+     * @description Currency symbol: HK$
+     */
+    HongKongDollar = `344`,
+
+    /**
+     * Canadian dollar
+     *
+     * @description Numeric code: 124
+     * @description Alphabetic code: CAD
+     * @description Countries and territories: Canada
+     * @description Currency symbol: C$
+     */
+    CanadianDollar = `124`,
+
+    /**
+     * Armenian dram
+     *
+     * @description Numeric code: 051
+     * @description Alphabetic code: AMD
+     * @description Countries and territories: Armenia
+     * @description Currency symbol: ֏
+     */
+    ArmenianDram = `051`,
+
+    /**
+     * Ukrainian hryvnia
+     *
+     * @description Numeric code: 980
+     * @description Alphabetic code: UAH
+     * @description Countries and territories: Ukraine
+     * @description Currency symbol: ₴
+     */
+    Hryvnia = `980`,
 
     /**
      * Mexican peso
@@ -161,29 +209,45 @@ export enum TuiCurrencyCode {
      */
     MexicanPeso = `484`,
 
-    MongolianTugrik = `496`,
-
-    NewTurkmenManat = `934`,
+    /**
+     * Uzbek sum
+     *
+     * @description Numeric code: 860
+     * @description Alphabetic code: UZS
+     * @description Countries and territories: Uzbekistan
+     * @description Currency symbol: So'm
+     */
+    UzbekSum = `860`,
 
     /**
-     * Pound sterling
+     * Kyrgyzstani som
      *
-     * @description Numeric code: 826
-     * @description Alphabetic code: GBP
-     * @description Countries and territories: United Kingdom, Isle of Man (IM, see Manx pound), Jersey (JE, see Jersey pound), Guernsey (GG, see Guernsey pound), Tristan da Cunha (SH-TA)
-     * @description Currency symbol: £
+     * @description Numeric code: 417
+     * @description Alphabetic code: KGS
+     * @description Countries and territories: Kyrgyzstan
+     * @description Currency symbol: c
      */
-    Pound = `826`,
+    KyrgyzstanSom = `417`,
 
     /**
-     * Russian ruble
+     * United Arab Emirates dirham
      *
-     * @description Numeric code: 643
-     * @description Alphabetic code: RUB
-     * @description Countries and territories: Russia
-     * @description Currency symbol: ₽
+     * @description Numeric code: 784
+     * @description Alphabetic code: AED
+     * @description Countries and territories: United Arab Emirates
+     * @description Currency symbol: Dh
      */
-    Ruble = `643`,
+    Dirham = `784`,
+
+    /**
+     * Tajikistani somoni
+     *
+     * @description Numeric code: 972
+     * @description Alphabetic code: TJS
+     * @description Countries and territories: Tajikistan
+     * @description Currency symbol: SM
+     */
+    TajikistaniSomoni = `972`,
 
     /**
      * Malaysian ringgit
@@ -194,7 +258,7 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: RM
      */
 
-    SaudiRiyal = `682`,
+    MalaysianRinggit = `458`,
     /**
      *
      * Belarusian ruble
@@ -205,7 +269,7 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: Rbl
      */
 
-    SerbianDinar = `941`,
+    BelarusianRuble = `933`,
     /**
      * Georgian lari
      *
@@ -215,15 +279,7 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: ₾
      */
 
-    /**
-     * Singapore dollar
-     *
-     * @description Numeric code: 702
-     * @description Alphabetic code: SGD
-     * @description Countries and territories: Singapore
-     * @description Currency symbol: S$
-     */
-    SingaporeDollar = `702`,
+    GeorgianLari = `981`,
     /**
      * Azerbaijani manat
      *
@@ -233,7 +289,7 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: ₼
      */
 
-    SouthAfricanRand = `710`,
+    AzerbaijaniManat = `944`,
     /**
      * Sri Lankan rupee
      *
@@ -253,15 +309,7 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: DIN
      */
 
-    /**
-     * Swiss franc
-     *
-     * @description Numeric code: 756
-     * @description Alphabetic code: CHF
-     * @description Countries and territories: Switzerland, Liechtenstein (LI)
-     * @description Currency symbol: ₣
-     */
-    SwissFranc = `756`,
+    SerbianDinar = `941`,
     /**
      * Saudi Riyal
      *
@@ -271,15 +319,7 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: SR
      */
 
-    /**
-     * Tajikistani somoni
-     *
-     * @description Numeric code: 972
-     * @description Alphabetic code: TJS
-     * @description Countries and territories: Tajikistan
-     * @description Currency symbol: SM
-     */
-    TajikistaniSomoni = `972`,
+    SaudiRiyal = `682`,
     /**
      * Mongolian tugrik
      *
@@ -289,15 +329,7 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: ₮
      */
 
-    /**
-     * Kazakhstani tenge
-     *
-     * @description Numeric code: 398
-     * @description Alphabetic code: KZT
-     * @description Countries and territories: Kazakhstan
-     * @description Currency symbol: ₸
-     */
-    Tenge = `398`,
+    MongolianTugrik = `496`,
     /**
      * South African rand
      *
@@ -307,15 +339,7 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: R
      */
 
-    /**
-     * Turkish lira
-     *
-     * @description Numeric code: 949
-     * @description Alphabetic code: TRY
-     * @description Countries and territories: Turkey
-     * @description Currency symbol: ₺
-     */
-    TurkishLira = `949`,
+    SouthAfricanRand = `710`,
     /**
      * Iranian rial
      *
@@ -325,15 +349,7 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: IR
      */
 
-    /**
-     * Uzbek sum
-     *
-     * @description Numeric code: 860
-     * @description Alphabetic code: UZS
-     * @description Countries and territories: Uzbekistan
-     * @description Currency symbol: So'm
-     */
-    UzbekSum = `860`,
+    IranianRial = `364`,
     /**
      * Indonesian rupiah
      *
@@ -343,7 +359,7 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: Rp
      */
 
-    VietnameseDong = `704`,
+    IndonesianRupiah = `360`,
     /**
      * Vietnamese dong
      *
@@ -353,15 +369,7 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: đ
      */
 
-    /**
-     * South Korean won
-     *
-     * @description Numeric code: 410
-     * @description Alphabetic code: KRW
-     * @description Countries and territories: South Korea
-     * @description Currency symbol: ₩
-     */
-    Won = `410`,
+    VietnameseDong = `704`,
     /**
      * New Turkmen manat
      *
@@ -371,22 +379,14 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: TMT
      */
 
+    NewTurkmenManat = `934`,
     /**
-     * Japanese yen
+     * Brazilian Real
      *
-     * @description Numeric code: 392
-     * @description Alphabetic code: JPY
-     * @description Countries and territories: Japan
-     * @description Currency symbol: ¥
+     * @description Numeric code: 986
+     * @description Alphabetic code: BRL
+     * @description Countries and territories: Brazilia
+     * @description Currency symbol: R$
      */
-    Yen = `392`,
-    /**
-     * Chinese yuan
-     *
-     * @description Numeric code: 156
-     * @description Alphabetic code: CNY
-     * @description Countries and territories: China
-     * @description Currency symbol: CN¥
-     */
-    YuanRenminbi = `156`,
+    BrazilianReal = `986`,
 }
