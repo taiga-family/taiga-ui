@@ -29,6 +29,14 @@ export enum TuiCurrencyCode {
      */
     AustralianDollar = `036`,
 
+    /**
+     * Azerbaijani manat
+     *
+     * @description Numeric code: 944
+     * @description Alphabetic code: AZN
+     * @description Countries and territories: Azerbaijan
+     * @description Currency symbol: ₼
+     */
     AzerbaijaniManat = `944`,
 
     /**
@@ -41,6 +49,15 @@ export enum TuiCurrencyCode {
      */
     Baht = `764`,
 
+    /**
+     *
+     * Belarusian ruble
+     *
+     * @description Numeric code: 933
+     * @description Alphabetic code: BYN
+     * @description Countries and territories: Belarus
+     * @description Currency symbol: Rbl
+     */
     BelarusianRuble = `933`,
 
     /**
@@ -93,6 +110,14 @@ export enum TuiCurrencyCode {
      */
     Euro = `978`,
 
+    /**
+     * Georgian lari
+     *
+     * @description Numeric code: 981
+     * @description Alphabetic code: GEL
+     * @description Countries and territories: Georgia
+     * @description Currency symbol: ₾
+     */
     GeorgianLari = `981`,
 
     /**
@@ -125,8 +150,24 @@ export enum TuiCurrencyCode {
      */
     IndianRupee = `356`,
 
+    /**
+     * Indonesian rupiah
+     *
+     * @description Numeric code: 360
+     * @description Alphabetic code: IDR
+     * @description Countries and territories: Indonesia
+     * @description Currency symbol: Rp
+     */
     IndonesianRupiah = `360`,
 
+    /**
+     * Iranian rial
+     *
+     * @description Numeric code: 364
+     * @description Alphabetic code: IRR
+     * @description Countries and territories: Iran
+     * @description Currency symbol: IR
+     */
     IranianRial = `364`,
 
     /**
@@ -149,6 +190,14 @@ export enum TuiCurrencyCode {
      */
     KyrgyzstanSom = `417`,
 
+    /**
+     * Malaysian ringgit
+     *
+     * @description Numeric code: 458
+     * @description Alphabetic code: MYR
+     * @description Countries and territories: Malaysia
+     * @description Currency symbol: RM
+     */
     MalaysianRinggit = `458`,
 
     /**
@@ -161,8 +210,24 @@ export enum TuiCurrencyCode {
      */
     MexicanPeso = `484`,
 
+    /**
+     * Mongolian tugrik
+     *
+     * @description Numeric code: 496
+     * @description Alphabetic code: MNT
+     * @description Countries and territories: Mongolia
+     * @description Currency symbol: ₮
+     */
     MongolianTugrik = `496`,
 
+    /**
+     * New Turkmen manat
+     *
+     * @description Numeric code: 934
+     * @description Alphabetic code: TMT
+     * @description Countries and territories: Turkmenistan
+     * @description Currency symbol: TMT
+     */
     NewTurkmenManat = `934`,
 
     /**
@@ -176,6 +241,15 @@ export enum TuiCurrencyCode {
     Pound = `826`,
 
     /**
+     * Tajikistani somoni
+     *
+     * @description Numeric code: 972
+     * @description Alphabetic code: TJS
+     * @description Countries and territories: Tajikistan
+     * @description Currency symbol: SM
+     */
+
+    /**
      * Russian ruble
      *
      * @description Numeric code: 643
@@ -186,34 +260,24 @@ export enum TuiCurrencyCode {
     Ruble = `643`,
 
     /**
-     * Malaysian ringgit
+     * Saudi Riyal
      *
-     * @description Numeric code: 458
-     * @description Alphabetic code: MYR
-     * @description Countries and territories: Malaysia
-     * @description Currency symbol: RM
+     * @description Numeric code: 682
+     * @description Alphabetic code: SAR
+     * @description Countries and territories: Saudi Arabia
+     * @description Currency symbol: SR
      */
-
     SaudiRiyal = `682`,
-    /**
-     *
-     * Belarusian ruble
-     *
-     * @description Numeric code: 933
-     * @description Alphabetic code: BYN
-     * @description Countries and territories: Belarus
-     * @description Currency symbol: Rbl
-     */
 
-    SerbianDinar = `941`,
     /**
-     * Georgian lari
+     * Serbian dinar
      *
-     * @description Numeric code: 981
-     * @description Alphabetic code: GEL
-     * @description Countries and territories: Georgia
-     * @description Currency symbol: ₾
+     * @description Numeric code: 941
+     * @description Alphabetic code: RSD
+     * @description Countries and territories: Serbia
+     * @description Currency symbol: DIN
      */
+    SerbianDinar = `941`,
 
     /**
      * Singapore dollar
@@ -224,16 +288,17 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: S$
      */
     SingaporeDollar = `702`,
-    /**
-     * Azerbaijani manat
-     *
-     * @description Numeric code: 944
-     * @description Alphabetic code: AZN
-     * @description Countries and territories: Azerbaijan
-     * @description Currency symbol: ₼
-     */
 
+    /**
+     * South African rand
+     *
+     * @description Numeric code: 710
+     * @description Alphabetic code: ZAR
+     * @description Countries and territories: South Africa
+     * @description Currency symbol: R
+     */
     SouthAfricanRand = `710`,
+
     /**
      * Sri Lankan rupee
      *
@@ -242,16 +307,7 @@ export enum TuiCurrencyCode {
      * @description Countries and territories: Sri Lanka
      * @description Currency symbol: Rs.
      */
-
     SriLankanRupee = `144`,
-    /**
-     * Serbian dinar
-     *
-     * @description Numeric code: 941
-     * @description Alphabetic code: RSD
-     * @description Countries and territories: Serbia
-     * @description Currency symbol: DIN
-     */
 
     /**
      * Swiss franc
@@ -262,32 +318,8 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: ₣
      */
     SwissFranc = `756`,
-    /**
-     * Saudi Riyal
-     *
-     * @description Numeric code: 682
-     * @description Alphabetic code: SAR
-     * @description Countries and territories: Saudi Arabia
-     * @description Currency symbol: SR
-     */
 
-    /**
-     * Tajikistani somoni
-     *
-     * @description Numeric code: 972
-     * @description Alphabetic code: TJS
-     * @description Countries and territories: Tajikistan
-     * @description Currency symbol: SM
-     */
     TajikistaniSomoni = `972`,
-    /**
-     * Mongolian tugrik
-     *
-     * @description Numeric code: 496
-     * @description Alphabetic code: MNT
-     * @description Countries and territories: Mongolia
-     * @description Currency symbol: ₮
-     */
 
     /**
      * Kazakhstani tenge
@@ -298,14 +330,6 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: ₸
      */
     Tenge = `398`,
-    /**
-     * South African rand
-     *
-     * @description Numeric code: 710
-     * @description Alphabetic code: ZAR
-     * @description Countries and territories: South Africa
-     * @description Currency symbol: R
-     */
 
     /**
      * Turkish lira
@@ -316,14 +340,6 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: ₺
      */
     TurkishLira = `949`,
-    /**
-     * Iranian rial
-     *
-     * @description Numeric code: 364
-     * @description Alphabetic code: IRR
-     * @description Countries and territories: Iran
-     * @description Currency symbol: IR
-     */
 
     /**
      * Uzbek sum
@@ -334,16 +350,7 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: So'm
      */
     UzbekSum = `860`,
-    /**
-     * Indonesian rupiah
-     *
-     * @description Numeric code: 360
-     * @description Alphabetic code: IDR
-     * @description Countries and territories: Indonesia
-     * @description Currency symbol: Rp
-     */
 
-    VietnameseDong = `704`,
     /**
      * Vietnamese dong
      *
@@ -352,6 +359,7 @@ export enum TuiCurrencyCode {
      * @description Countries and territories: Vietnam
      * @description Currency symbol: đ
      */
+    VietnameseDong = `704`,
 
     /**
      * South Korean won
@@ -362,14 +370,6 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: ₩
      */
     Won = `410`,
-    /**
-     * New Turkmen manat
-     *
-     * @description Numeric code: 934
-     * @description Alphabetic code: TMT
-     * @description Countries and territories: Turkmenistan
-     * @description Currency symbol: TMT
-     */
 
     /**
      * Japanese yen
@@ -380,6 +380,7 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: ¥
      */
     Yen = `392`,
+
     /**
      * Chinese yuan
      *
