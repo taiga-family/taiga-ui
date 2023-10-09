@@ -26,7 +26,7 @@ export class TuiFilterByInputPipe
         private readonly host: TuiDataListHost<unknown>,
         @Optional()
         @Inject(TuiMultiSelectDirective)
-        protected readonly multiSelect: TuiMultiSelectDirective | null,
+        protected readonly multiSelect: unknown,
     ) {
         super();
     }

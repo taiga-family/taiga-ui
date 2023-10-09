@@ -5,7 +5,6 @@ import {
     TuiStringHandler,
     TuiStringMatcher,
 } from '@taiga-ui/cdk';
-import {TuiMultiSelectDirective} from '@taiga-ui/kit/components/multi-select';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 export type ArrayElement<A> = A extends ReadonlyArray<infer T>
@@ -16,7 +15,7 @@ export type ArrayElement<A> = A extends ReadonlyArray<infer T>
 
 export abstract class AbstractTuiFilterByInput {
     protected abstract readonly accessor: TuiFocusableElementAccessor;
-    protected abstract readonly multiSelect: TuiMultiSelectDirective | null;
+    protected abstract readonly multiSelect: unknown;
 
     protected get query(): string {
         return this.accessor.nativeFocusableElement

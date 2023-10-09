@@ -25,7 +25,7 @@ export class TuiFilterByInputWithPipe
         protected readonly accessor: TuiFocusableElementAccessor,
         @Optional()
         @Inject(TuiMultiSelectDirective)
-        protected readonly multiSelect: TuiMultiSelectDirective | null,
+        protected readonly multiSelect: unknown,
     ) {
         super();
     }
