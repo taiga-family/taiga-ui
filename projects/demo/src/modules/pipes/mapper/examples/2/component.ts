@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTypedMapper} from '@taiga-ui/cdk';
 
 @Component({
     selector: `tui-mapper-example2`,
@@ -9,8 +10,10 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
 })
 export class TuiMapperExample2 {
-    readonly numbers = [1, 2, 3, 4, 5] as const;
+    numbers = [1, 2, 3, 4, 5] as const;
 
-    readonly mapper = (numbers: readonly number[], multiplier: number): number[] =>
-        numbers.map(number => number * multiplier);
+    readonly mapper: TuiTypedMapper<[readonly number[], number], number[]> = (
+        numbers,
+        multiplier,
+    ) => numbers.map(number => number * multiplier);
 }

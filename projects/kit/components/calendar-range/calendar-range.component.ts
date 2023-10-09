@@ -20,11 +20,11 @@ import {
     TuiDayRange,
     TuiDestroyService,
     tuiIsString,
-    TuiMapper,
     TuiMonth,
     tuiNullableSame,
     tuiObjectFromEntries,
     tuiPure,
+    TuiTypedMapper,
     tuiWatch,
 } from '@taiga-ui/cdk';
 import {
@@ -80,7 +80,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
 
     previousValue: TuiDayRange | null = null;
 
-    readonly maxLengthMapper: TuiMapper<TuiDay, TuiDay> = MAX_DAY_RANGE_LENGTH_MAPPER;
+    readonly maxLengthMapper = MAX_DAY_RANGE_LENGTH_MAPPER;
 
     get computedMin(): TuiDay {
         return this.min ?? TUI_FIRST_DAY;
@@ -118,21 +118,21 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         this.value = this.previousValue;
     }
 
-    readonly mapper: TuiMapper<
-        readonly TuiDayRangePeriod[],
+    readonly mapper: TuiTypedMapper<
+        [
+            readonly TuiDayRangePeriod[],
+            TuiDay | null,
+            TuiDay | null,
+            TuiDayLike | null,
+            string?,
+        ],
         ReadonlyArray<TuiDayRangePeriod | string>
-    > = (
-        items,
-        min: TuiDay,
-        max: TuiDay | null,
-        minLength: TuiDayLike | null,
-        otherDateText: string,
-    ) => [
+    > = (items, min, max, minLength, otherDateText = '') => [
         ...items.filter(
             item =>
                 (minLength === null ||
                     item.range.from.append(minLength).daySameOrBefore(item.range.to)) &&
-                item.range.to.daySameOrAfter(min) &&
+                (min === null || item.range.to.daySameOrAfter(min)) &&
                 (max === null || item.range.from.daySameOrBefore(max)),
         ),
         otherDateText,

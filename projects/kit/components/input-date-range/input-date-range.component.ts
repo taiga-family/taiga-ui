@@ -37,10 +37,10 @@ import {
     TuiDayRange,
     TuiFocusableElementAccessor,
     tuiIsPresent,
-    TuiMapper,
     TuiMonth,
     tuiNullableSame,
     tuiPure,
+    TuiTypedMapper,
 } from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
@@ -114,7 +114,11 @@ export class TuiInputDateRangeComponent
 
     open = false;
 
-    readonly maxLengthMapper: TuiMapper<TuiDay, TuiDay> = MAX_DAY_RANGE_LENGTH_MAPPER;
+    readonly maxLengthMapper: TuiTypedMapper<
+        [TuiDay, TuiDayRange | null, TuiDayLike | null, boolean],
+        TuiDay
+    > = MAX_DAY_RANGE_LENGTH_MAPPER;
+
     readonly dateFiller$ = this.dateTexts$.pipe(
         map(dateTexts =>
             changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),

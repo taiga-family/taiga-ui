@@ -18,8 +18,8 @@ import {
     EMPTY_QUERY,
     TuiDestroyService,
     tuiHexToRgb,
-    TuiMatcher,
     tuiQueryListChanges,
+    TuiTypedMatcher,
     tuiWatch,
 } from '@taiga-ui/cdk';
 import {merge} from 'rxjs';
@@ -88,10 +88,9 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         return this.isAPI ? this.texts[0] : this.texts[1];
     }
 
-    matcher: TuiMatcher<TuiDocDocumentationPropertyConnectorDirective<any>> = (
-        item: TuiDocDocumentationPropertyConnectorDirective<any>,
-        exclusions: Set<string>,
-    ) => !exclusions.has(item.documentationPropertyName);
+    matcher: TuiTypedMatcher<
+        [TuiDocDocumentationPropertyConnectorDirective<any>, Set<string>]
+    > = (item, exclusions) => !exclusions.has(item.documentationPropertyName);
 
     onColorChange(
         connector: TuiDocDocumentationPropertyConnectorDirective<string>,

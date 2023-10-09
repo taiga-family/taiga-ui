@@ -23,9 +23,9 @@ import {
     TuiDayRange,
     TuiDestroyService,
     TuiInjectionTokenType,
-    TuiMapper,
     TuiMonth,
     tuiTypedFromEvent,
+    TuiTypedMapper,
 } from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_DURATION,
@@ -225,10 +225,10 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         });
     }
 
-    readonly disabledItemHandlerMapper: TuiMapper<
-        TuiBooleanHandler<TuiDay>,
+    readonly disabledItemHandlerMapper: TuiTypedMapper<
+        [TuiBooleanHandler<TuiDay>, TuiDay, TuiDay],
         TuiBooleanHandler<TuiDay>
-    > = (disabledItemHandler, min: TuiDay, max: TuiDay) => item =>
+    > = (disabledItemHandler, min, max) => item =>
         item.dayBefore(min) ||
         (max !== null && item.dayAfter(max)) ||
         disabledItemHandler(item);
