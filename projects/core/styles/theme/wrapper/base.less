@@ -33,10 +33,10 @@
     });
 
     // Temporary hide focus in Safari until we figure out a better approach
-    @supports (-webkit-hyphens: none) {
+    .safari-only({
         :focus-visible &,
         &:focus-visible {
             --tui-focus: transparent !important;
         }
-    }
+    });
 }

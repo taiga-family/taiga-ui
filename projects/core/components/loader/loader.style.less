@@ -136,6 +136,11 @@
 }
 
 .t-icon {
+    .safari-only({
+        & {
+            overflow: visible;
+        }
+    });
     display: block;
     min-width: 1em;
     max-width: 1em;
@@ -146,13 +151,6 @@
     overflow: hidden;
     transform: scale(1, -1);
     animation: tuiLoaderRotate 3s linear infinite;
-
-    /* Safari Only */
-    @supports (-webkit-hyphens: none) {
-        & {
-            overflow: visible;
-        }
-    }
 }
 
 .t-circle {
