@@ -1,9 +1,9 @@
 @import '../../styles/taiga-ui-local.less';
 
 :host {
-    .createStackingContext();
     position: relative;
     display: flex;
+    isolation: isolate;
     overflow: auto;
 
     &:not(._legacy) {
@@ -27,7 +27,7 @@
 }
 
 .t-content {
-    .createStackingContext();
+    isolation: isolate;
     flex: 1;
     flex-basis: auto;
     width: 100%;

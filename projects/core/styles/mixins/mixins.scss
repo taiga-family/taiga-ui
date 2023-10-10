@@ -295,6 +295,7 @@
     }
 }
 
+// @deprecated use isolation: isolate instead
 @mixin createStackingContext() {
     position: relative;
     z-index: 0;

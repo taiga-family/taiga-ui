@@ -38,8 +38,8 @@ tui-root > .t-root-scrollbar {
 }
 
 .t-root-content {
-    .createStackingContext();
     height: 100%;
+    isolation: isolate;
 }
 
 // TODO: Required by Firefox: https://bugzilla.mozilla.org/show_bug.cgi?id=1845264

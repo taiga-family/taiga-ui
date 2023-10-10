@@ -1,7 +1,6 @@
 @import '../../styles/taiga-ui-local.less';
 
 :host {
-    .createStackingContext();
     .shadow(2);
     position: absolute;
     display: flex;
@@ -12,6 +11,7 @@
     box-sizing: border-box;
     /* stylelint-disable-next-line */
     max-width: calc(100% - 8px); // Comes from JS so in pixels
+    isolation: isolate;
     pointer-events: auto; // if custom portal host has pointer events none
 
     &.ng-animating {
