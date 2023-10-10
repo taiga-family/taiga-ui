@@ -5,11 +5,11 @@ test.describe(`LineChart`, () => {
     test(`should not show hint`, async ({page}) => {
         await tuiGoto(page, `charts/line-chart`);
         const example = new TuiDocumentationPagePO(page).getExample(`#line`);
-        const lineChart = example
+        const chartColumn = example
             .locator(`tui-line-chart-example-1 tui-line-chart .t-column`)
             .first();
 
-        await lineChart.hover();
+        await chartColumn.hover();
         await expect(example).toHaveScreenshot(`01-line-chart.png`);
     });
 });
