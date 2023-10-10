@@ -59,7 +59,7 @@ describe(`expand`, () => {
         });
 
         it(`content is not processed`, () => {
-            expect(testComponent.content).not.toBeDefined();
+            expect(testComponent.content).toBeUndefined();
         });
 
         describe(`after that expanded changes to true`, () => {
@@ -105,7 +105,7 @@ describe(`expand`, () => {
                 transitionend();
 
                 expect(testComponent.expandComponent.contentVisible).toBeFalsy();
-                expect(testComponent.content).not.toBeDefined();
+                expect(testComponent.content).toBeUndefined();
             }));
         });
     });

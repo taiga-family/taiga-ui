@@ -13,7 +13,7 @@ describe(`tuiControlValue`, () => {
             actual = value;
         });
 
-        expect(actual).toEqual(`hello`);
+        expect(actual).toBe(`hello`);
     }));
 
     it(`takes control and emits its values`, fakeAsync(() => {

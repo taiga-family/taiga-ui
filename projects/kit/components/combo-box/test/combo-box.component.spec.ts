@@ -212,7 +212,7 @@ describe(`ComboBox`, () => {
             it(`empty value opens dropdown`, () => {
                 testComponent.component.onValueChange(``);
                 fixture.detectChanges();
-                expect(testComponent.component.open).toEqual(true);
+                expect(testComponent.component.open).toBe(true);
             });
         });
 

@@ -169,7 +169,7 @@ describe(`InputDateRangeComponent`, () => {
             it(`empty value opens dropdown`, () => {
                 inputPO.sendText(``);
                 fixture.detectChanges();
-                expect(component.open).toEqual(true);
+                expect(component.open).toBe(true);
             });
         });
     });

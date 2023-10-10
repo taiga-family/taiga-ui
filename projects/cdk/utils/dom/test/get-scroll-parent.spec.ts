@@ -2,7 +2,7 @@ import {tuiGetScrollParent} from '@taiga-ui/cdk';
 
 describe(`tuiGetScrollParent`, () => {
     it(`There is no element`, () => {
-        expect(tuiGetScrollParent(null)).toEqual(null);
+        expect(tuiGetScrollParent(null)).toBeNull();
     });
 
     it(`Should return element. Vertical is true`, () => {

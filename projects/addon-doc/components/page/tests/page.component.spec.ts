@@ -21,9 +21,7 @@ describe(`TuiDocPageComponent`, () => {
                 },
             ],
         }).compileComponents();
-    });
 
-    beforeEach(() => {
         fixture = TestBed.createComponent(TuiDocPageComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
@@ -67,6 +65,6 @@ describe(`TuiDocPageComponent`, () => {
     });
 
     it(`should have false value when Input deprecated is not supplied`, () => {
-        expect(component.deprecated).toEqual(false);
+        expect(component.deprecated).toBe(false);
     });
 });

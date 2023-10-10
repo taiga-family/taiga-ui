@@ -125,16 +125,16 @@ describe(`Calendar`, () => {
             TuiCalendarHarness.with({selector: `#max-case`}),
         );
 
-        expect(await calendar.getContentText()).toEqual(`March  2019`);
+        expect(await calendar.getContentText()).toBe(`March  2019`);
 
         await calendar.clickMonthLeft(); // Feb
         await calendar.clickMonthLeft(); // Jan
 
-        expect(await calendar.getContentText()).toEqual(`January  2019`);
+        expect(await calendar.getContentText()).toBe(`January  2019`);
 
         await calendar.clickMonthRight(); // Feb
 
-        expect(await calendar.getContentText()).toEqual(`February  2019`);
+        expect(await calendar.getContentText()).toBe(`February  2019`);
 
         await calendar.clickMonthRight(); // Mar
 
@@ -144,7 +144,7 @@ describe(`Calendar`, () => {
         await calendar.clickMonthRight(); // Mar
         await calendar.clickMonthRight(); // Mar
 
-        expect(await calendar.getContentText()).toEqual(`March  2019`);
+        expect(await calendar.getContentText()).toBe(`March  2019`);
     });
 
     it(`monitors hover on a certain day`, async () => {

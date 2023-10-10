@@ -35,7 +35,7 @@ describe(`TuiResizeService`, () => {
         });
 
         setTimeout(() => {
-            expect(emitCounter).toEqual(1);
+            expect(emitCounter).toBe(1);
             done();
         }, 50);
     });

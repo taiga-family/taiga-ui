@@ -15,7 +15,7 @@ describe(`getCurrencySymbol`, () => {
         });
 
         it(`returns null if symbol not found`, () => {
-            expect(tuiGetCurrencySymbol(`CSTM`)).toBe(null);
+            expect(tuiGetCurrencySymbol(`CSTM`)).toBeNull();
         });
     });
 
@@ -132,7 +132,7 @@ describe(`getCurrencySymbol`, () => {
     });
 
     it(`unknown`, () => {
-        expect(tuiGetCurrencySymbol(`unknown`)).toBe(null);
-        expect(tuiGetCurrencySymbol(`unknown`)).toBe(null);
+        expect(tuiGetCurrencySymbol(`unknown`)).toBeNull();
+        expect(tuiGetCurrencySymbol(`unknown`)).toBeNull();
     });
 });

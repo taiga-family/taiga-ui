@@ -98,7 +98,7 @@ describe(`CalendarMonth`, () => {
         it(`returns null if there is no state`, () => {
             const ordinaryItem = new TuiMonth(TODAY.year, 3);
 
-            expect(component.getItemState(ordinaryItem)).toBe(null);
+            expect(component.getItemState(ordinaryItem)).toBeNull();
         });
     });
 
@@ -160,7 +160,7 @@ describe(`CalendarMonth`, () => {
 
             component.value = null;
 
-            expect(component.getItemRange(month)).toBe(null);
+            expect(component.getItemRange(month)).toBeNull();
         });
 
         it(`returns single if value is single month choice`, () => {

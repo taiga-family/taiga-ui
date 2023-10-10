@@ -7,6 +7,6 @@ describe(`isCurrentTarget`, () => {
         Object.defineProperty(event, `target`, {value: `<button>`});
         Object.defineProperty(event, `currentTarget`, {value: `<button>`});
 
-        expect(tuiIsCurrentTarget(event)).toEqual(true);
+        expect(tuiIsCurrentTarget(event)).toBe(true);
     });
 });

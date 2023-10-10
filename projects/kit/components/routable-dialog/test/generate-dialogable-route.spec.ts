@@ -13,7 +13,7 @@ describe(`tuiGenerateDialogableRoute`, () => {
     it(`if passed path is undefined then route path is empty string`, () => {
         const result = tuiGenerateDialogableRoute(DialogComponent);
 
-        expect(result.path).toEqual(``);
+        expect(result.path).toBe(``);
     });
 
     it(`path passed correctly`, () => {
@@ -21,7 +21,7 @@ describe(`tuiGenerateDialogableRoute`, () => {
             path: `path/to/dialog`,
         });
 
-        expect(result.path).toEqual(`path/to/dialog`);
+        expect(result.path).toBe(`path/to/dialog`);
     });
 
     it(`dialog options are passed correctly`, () => {

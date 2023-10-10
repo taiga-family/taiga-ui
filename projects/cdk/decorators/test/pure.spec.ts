@@ -82,7 +82,7 @@ describe(`tuiPure`, () => {
         expect(testObject.range).toEqual([1, 2, 3, 4, 5]);
         expect(testObject.range).toEqual([1, 2, 3, 4, 5]);
         expect(testObject.range).toEqual([1, 2, 3, 4, 5]);
-        expect(testObject.sideEffect).toEqual(1);
+        expect(testObject.sideEffect).toBe(1);
     });
 
     it(`memoize function without arguments and return undefined by default`, () => {
@@ -100,9 +100,9 @@ describe(`tuiPure`, () => {
 
         const testObject = new TestClass();
 
-        expect(testObject.voidFn()).toEqual(undefined);
-        expect(testObject.voidFn()).toEqual(undefined);
-        expect(testObject.voidFn()).toEqual(undefined);
-        expect(testObject.sideEffect).toEqual(1);
+        expect(testObject.voidFn()).toBeUndefined();
+        expect(testObject.voidFn()).toBeUndefined();
+        expect(testObject.voidFn()).toBeUndefined();
+        expect(testObject.sideEffect).toBe(1);
     });
 });

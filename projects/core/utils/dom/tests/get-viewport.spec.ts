@@ -10,14 +10,14 @@ describe(`viewport`, () => {
     it(`width/height`, () => {
         tuiTestingViewport(770, 600);
 
-        expect(window.document.documentElement.clientWidth).toEqual(755);
-        expect(window.innerWidth).toEqual(770);
+        expect(window.document.documentElement.clientWidth).toBe(755);
+        expect(window.innerWidth).toBe(770);
 
-        expect(window.document.documentElement.clientHeight).toEqual(600);
-        expect(window.innerHeight).toEqual(600);
+        expect(window.document.documentElement.clientHeight).toBe(600);
+        expect(window.innerHeight).toBe(600);
 
-        expect(tuiGetViewportWidth(window)).toEqual(770);
-        expect(tuiGetViewportHeight(window)).toEqual(600);
+        expect(tuiGetViewportWidth(window)).toBe(770);
+        expect(tuiGetViewportHeight(window)).toBe(600);
     });
 
     describe(`iPhone X`, () => {
@@ -34,7 +34,7 @@ describe(`viewport`, () => {
                     } as unknown as Window,
                     {mobile: mobileBreakPoint} as unknown as TuiMedia,
                 ),
-            ).toEqual(false);
+            ).toBe(false);
         });
 
         it(`isMobile when 'content="width=device-width, initial-scale=1, maximum-scale=1"'`, () => {
@@ -46,7 +46,7 @@ describe(`viewport`, () => {
                     } as unknown as Window,
                     {mobile: mobileBreakPoint} as unknown as TuiMedia,
                 ),
-            ).toEqual(true);
+            ).toBe(true);
         });
 
         it(`device-width is not mobile`, () => {
@@ -58,7 +58,7 @@ describe(`viewport`, () => {
                     } as unknown as Window,
                     {mobile: mobileBreakPoint} as unknown as TuiMedia,
                 ),
-            ).toEqual(false);
+            ).toBe(false);
         });
 
         it(`device-width is mobile`, () => {
@@ -70,7 +70,7 @@ describe(`viewport`, () => {
                     } as unknown as Window,
                     {mobile: mobileBreakPoint} as unknown as TuiMedia,
                 ),
-            ).toEqual(true);
+            ).toBe(true);
         });
     });
 });

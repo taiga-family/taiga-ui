@@ -10,25 +10,25 @@ describe(`TuiReplacePipe`, () => {
     it(`should return the replaced string`, () => {
         const result = pipe.transform(`Hello`, `Hello`, `World`);
 
-        expect(result).toEqual(`World`);
+        expect(result).toBe(`World`);
     });
 
     it(`regex`, () => {
         const result = pipe.transform(`111222333`, /1/g, `b`);
 
-        expect(result).toEqual(`bbb222333`);
+        expect(result).toBe(`bbb222333`);
     });
 
     it(`function`, () => {
         const result = pipe.transform(`abcdeabcde`, /a/g, () => `f`);
 
-        expect(result).toEqual(`fbcdefbcde`);
+        expect(result).toBe(`fbcdefbcde`);
     });
 
     it(`unchanged`, () => {
-        expect(pipe.transform(`abc`, ``, ``)).toEqual(`abc`);
-        expect(pipe.transform(``, ``, ``)).toEqual(``);
-        expect(pipe.transform(null, ``, ``)).toEqual(``);
-        expect(pipe.transform(undefined, ``, ``)).toEqual(``);
+        expect(pipe.transform(`abc`, ``, ``)).toBe(`abc`);
+        expect(pipe.transform(``, ``, ``)).toBe(``);
+        expect(pipe.transform(null, ``, ``)).toBe(``);
+        expect(pipe.transform(undefined, ``, ``)).toBe(``);
     });
 });

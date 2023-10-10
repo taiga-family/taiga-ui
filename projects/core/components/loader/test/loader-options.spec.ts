@@ -39,8 +39,8 @@ describe(`Loader component options`, () => {
     });
 
     it(`override by custom options`, () => {
-        expect(testComponent.component.size).toEqual(`xxl`);
-        expect(testComponent.component.inheritColor).toEqual(true);
-        expect(testComponent.component.overlay).toEqual(false);
+        expect(testComponent.component.size).toBe(`xxl`);
+        expect(testComponent.component.inheritColor).toBe(true);
+        expect(testComponent.component.overlay).toBe(false);
     });
 });

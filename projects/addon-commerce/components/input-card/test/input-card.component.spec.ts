@@ -49,13 +49,13 @@ describe(`InputCard`, () => {
         it(`enabled`, () => {
             testComponent.component.autocompleteEnabled = true;
 
-            expect(testComponent.component.autocompleteCard).toEqual(`cc-number`);
+            expect(testComponent.component.autocompleteCard).toBe(`cc-number`);
         });
 
         it(`disabled`, () => {
             testComponent.component.autocompleteEnabled = false;
 
-            expect(testComponent.component.autocompleteCard).toEqual(`off`);
+            expect(testComponent.component.autocompleteCard).toBe(`off`);
         });
     });
 
@@ -63,11 +63,11 @@ describe(`InputCard`, () => {
         it(`touched`, () => {
             testComponent.component.onFocused(true);
 
-            expect(testComponent.component.control?.touched).toEqual(false);
+            expect(testComponent.component.control?.touched).toBe(false);
 
             testComponent.component.onFocused(false);
 
-            expect(testComponent.component.control?.touched).toEqual(true);
+            expect(testComponent.component.control?.touched).toBe(true);
         });
     });
 
@@ -88,8 +88,8 @@ describe(`InputCard`, () => {
             testComponent.component.onValueChange(`1234 5678 1111 2222`);
 
             expect(testComponent.onBinChange).toHaveBeenCalledWith(`123456`);
-            expect(testComponent.component.value).toEqual(`1234567811112222`);
-            expect(testComponent.component.bin).toEqual(`123456`);
+            expect(testComponent.component.value).toBe(`1234567811112222`);
+            expect(testComponent.component.bin).toBe(`123456`);
 
             testComponent.component.onValueChange(`2222 4444 5555 6666`);
             expect(testComponent.onBinChange).toHaveBeenCalledTimes(2);
@@ -205,24 +205,24 @@ describe(`InputCard`, () => {
         beforeEach(() => testComponent.control.setValue(`4111 1111 1111 1111`));
 
         it(`input-card component has a default icon`, () => {
-            expect(testComponent.control.valid).toEqual(true);
-            expect(testComponent.component.icon).toEqual(`tuiIconVisaMono`);
-            expect(testComponent.control.value).toEqual(`4111 1111 1111 1111`);
+            expect(testComponent.control.valid).toBe(true);
+            expect(testComponent.component.icon).toBe(`tuiIconVisaMono`);
+            expect(testComponent.control.value).toBe(`4111 1111 1111 1111`);
         });
 
         it(`input-card component has a tuiIconElectron icon`, () => {
             testComponent.component.cardSrc = `tuiIconElectron`;
-            expect(testComponent.control.valid).toEqual(true);
-            expect(testComponent.component.icon).toEqual(`tuiIconElectron`);
-            expect(testComponent.control.value).toEqual(`4111 1111 1111 1111`);
+            expect(testComponent.control.valid).toBe(true);
+            expect(testComponent.component.icon).toBe(`tuiIconElectron`);
+            expect(testComponent.control.value).toBe(`4111 1111 1111 1111`);
         });
 
         it(`input-card component has an icon source as TemplateRef`, () => {
             testComponent.component.cardSrc =
                 fixture.componentInstance.customIconTemplateRef;
-            expect(testComponent.control.valid).toEqual(true);
+            expect(testComponent.control.valid).toBe(true);
             expect(testComponent.component.icon).toBeInstanceOf(TemplateRef);
-            expect(testComponent.control.value).toEqual(`4111 1111 1111 1111`);
+            expect(testComponent.control.value).toBe(`4111 1111 1111 1111`);
         });
     });
 
