@@ -2,7 +2,6 @@
 
 // prettier-ignore
 [data-surface] {
-    .createStackingContext();
     .clearbtn();
     .transition();
 
@@ -13,8 +12,7 @@
     box-sizing: border-box;
     background-size: cover;
     background-repeat: no-repeat;
-    transform-style: preserve-3d;
-    transform: translate3d(0, 0, 0);
+    isolation: isolate;
     transition-property: backdrop-filter, background, border-radius, box-shadow, mask, transform;
 
     // Fix for https://bugs.chromium.org/p/chromium/issues/detail?id=1486408
