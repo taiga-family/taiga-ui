@@ -18,7 +18,7 @@
     transition-property: backdrop-filter, background, border-radius, box-shadow, mask, transform;
 
     // Fix for https://bugs.chromium.org/p/chromium/issues/detail?id=1486408
-    @media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) {
+    @supports (not (-moz-appearance: none)) and (not (-webkit-hyphens: none)) {
         &:before {
             mix-blend-mode: multiply;
         }
