@@ -10,6 +10,6 @@ test.describe(`LineChart`, () => {
             .first();
 
         await lineChart.hover();
-        await expect(lineChart).toHaveScreenshot(`01-line-chart.png`);
+        await expect(example).toHaveScreenshot(`01-line-chart.png`);
     });
 });
