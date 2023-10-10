@@ -28,8 +28,8 @@ jobs:
           ]
     name: ${{ matrix.project }}
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.31.1
-      - uses: taiga-family/ci/actions/setup/node@v1.31.1
+      - uses: taiga-family/ci/actions/setup/checkout@v1.31.2
+      - uses: taiga-family/ci/actions/setup/node@v1.31.2
 
       - name: Run tests for ${{ matrix.project }}
         run: npx nx test ${{ matrix.project }} --skip-nx-cache
@@ -45,7 +45,7 @@ jobs:
     needs: [test]
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.31.1
+      - uses: taiga-family/ci/actions/setup/checkout@v1.31.2
       - uses: actions/download-artifact@v3.0.2
         with:
           name: coverage-${{ github.workflow }}-${{ github.run_id }}
