@@ -236,7 +236,7 @@ $line-height-l: 1.25rem;
         color: var(--tui-text-02-night);
     }
 
-    @supports (-webkit-hyphens: none) {
+    @include safari-only {
         & {
             will-change: unset;
             transition-property: transform, color, letter-spacing;

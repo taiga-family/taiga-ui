@@ -167,6 +167,13 @@
 
 // TODO: Rename to label in 4.0
 .textfield-placeholder() {
+    .safari-only({
+        & {
+            will-change: unset;
+            transition-property: transform, color, letter-spacing;
+        }
+    });
+
     .transition(~'transform, font-size, color, letter-spacing');
     .text-overflow();
     display: block;
@@ -233,13 +240,6 @@
     :host[data-size='m']._focused._label-outside [tuiWrapper][data-mode='onDark'] &,
     :host[data-size='l']._focused._label-outside [tuiWrapper][data-mode='onDark'] & {
         color: var(--tui-text-02-night);
-    }
-
-    @supports (-webkit-hyphens: none) {
-        & {
-            will-change: unset;
-            transition-property: transform, color, letter-spacing;
-        }
     }
 }
 
