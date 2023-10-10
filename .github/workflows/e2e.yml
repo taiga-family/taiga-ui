@@ -13,13 +13,13 @@ jobs:
     name: Build demo
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.31.2
+      - uses: taiga-family/ci/actions/setup/checkout@v1.32.0
         with:
           fetch-depth: 10
-      - uses: taiga-family/ci/actions/setup/variables@v1.31.2
-      - uses: taiga-family/ci/actions/run/rebase@v1.31.2
+      - uses: taiga-family/ci/actions/setup/variables@v1.32.0
+      - uses: taiga-family/ci/actions/run/rebase@v1.32.0
         continue-on-error: true
-      - uses: taiga-family/ci/actions/setup/node@v1.31.2
+      - uses: taiga-family/ci/actions/setup/node@v1.32.0
 
       - name: Building demo-app of git-branch without cache
         run: npx nx build demo -c next --output-path ${{ env.DIST }} --base-href='/'
@@ -41,9 +41,9 @@ jobs:
           [addon-doc, addon-charts, addon-commerce, addon-mobile, addon-table, addon-tablebars, icons, core, deep, kit]
     name: ${{ matrix.project }}
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.31.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.31.2
-      - uses: taiga-family/ci/actions/setup/node@v1.31.2
+      - uses: taiga-family/ci/actions/setup/checkout@v1.32.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.32.0
+      - uses: taiga-family/ci/actions/setup/node@v1.32.0
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/restore@v3.3.2
@@ -101,9 +101,9 @@ jobs:
         shard: [1, 2, 3]
     name: playwright / (${{ matrix.shard }} of 3)
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.31.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.31.2
-      - uses: taiga-family/ci/actions/setup/node@v1.31.2
+      - uses: taiga-family/ci/actions/setup/checkout@v1.32.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.32.0
+      - uses: taiga-family/ci/actions/setup/node@v1.32.0
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
@@ -171,8 +171,8 @@ jobs:
     needs: [cypress, playwright]
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.31.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.31.2
+      - uses: taiga-family/ci/actions/setup/checkout@v1.32.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.32.0
 
       - name: Download artifacts / ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
         continue-on-error: true
