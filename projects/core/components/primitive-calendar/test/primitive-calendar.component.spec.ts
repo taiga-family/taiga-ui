@@ -75,7 +75,7 @@ describe(`PrimitiveCalendar`, () => {
             const currentItem = getTodayCalendarItem();
 
             expect(currentItem).not.toBeNull();
-            expect(currentItem.nativeElement.innerHTML).toContain(TODAY);
+            expect(currentItem.nativeElement.innerHTML.includes(TODAY)).toBeTruthy();
         });
 
         it(`is not highlighted if not current month and current year were selected`, () => {
