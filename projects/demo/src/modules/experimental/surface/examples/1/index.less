@@ -14,8 +14,21 @@
 
 .overlay {
     &:after {
-        background: var(--tui-info-bg);
         opacity: 0;
+        background: linear-gradient(
+            -45deg,
+            #a1a1b3 0.36%,
+            #d4d1d8 46.96%,
+            #f7fafa 67.14%,
+            #d4d1d8 83.19%,
+            #a1a1b3 93.03%
+        );
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover:after {
+            opacity: 0.5;
+        }
     }
 
     &:active:after {
@@ -23,8 +36,16 @@
     }
 }
 
-.highlight:active:before {
-    backdrop-filter: brightness(0.9);
+.highlight {
+    @media (hover: hover) and (pointer: fine) {
+        &:hover:before {
+            backdrop-filter: brightness(1.1);
+        }
+    }
+
+    &:active:before {
+        backdrop-filter: brightness(0.9);
+    }
 }
 
 .offset:hover {
