@@ -1,0 +1,182 @@
+<button
+    tuiSurface
+    class="card"
+    [style.background-image]="'url(/assets/images/tickets.svg)'"
+    [style.color]="'#d45d8c'"
+>
+    <h3 class="heading">Tickets</h3>
+    <div class="content">Concerts, theater, sports and movies</div>
+    <tui-badge
+        appearance="primary"
+        size="s"
+        class="badge"
+    >
+        20% off
+    </tui-badge>
+</button>
+<button
+    tuiSurface
+    class="card"
+    [style.background-image]="'url(/assets/images/gas.svg)'"
+    [style.color]="'#7caeff'"
+>
+    <h3 class="heading">Gas</h3>
+    <tui-badge
+        appearance="primary"
+        size="s"
+        class="badge"
+    >
+        +2000%
+    </tui-badge>
+</button>
+
+<div
+    tuiSurface
+    class="restaurant"
+>
+    <header
+        tuiMode="onDark"
+        class="header"
+    >
+        <label tuiLabel="RESTAURANT">Eat all you can</label>
+        <button
+            appearance="icon"
+            iconLeft="tuiIconMoreHorizontalLarge"
+            size="xs"
+            tuiIconButton
+        >
+            More
+        </button>
+    </header>
+    <footer class="footer">
+        <button
+            appearance="glass"
+            size="m"
+            tuiButton
+            [style.border-radius.rem]="5"
+        >
+            Book a table
+        </button>
+        <button
+            appearance="glass"
+            iconLeft="tuiIconHeartLarge"
+            size="m"
+            tuiIconButton
+            [style.border-radius.rem]="5"
+        >
+            Favorite
+        </button>
+    </footer>
+</div>
+
+<div
+    tuiMode="onDark"
+    tuiSurface
+    class="blur"
+>
+    <tui-avatar src="/assets/images/avatar.jpg"></tui-avatar>
+    <label tuiLabel="Taiga UI">Alex Inkin</label>
+    <button
+        appearance="glass"
+        iconLeft="tuiIconMailLarge"
+        size="m"
+        tuiIconButton
+        class="button"
+    >
+        Message
+    </button>
+</div>
+
+<div
+    tuiSurface="elevated"
+    class="reviews"
+>
+    <h3 class="heading">
+        Taiga UI reviews
+        <button
+            tuiLink
+            class="link"
+        >
+            Hide
+        </button>
+    </h3>
+    <tui-scrollbar
+        class="scrollbar"
+        [hidden]="true"
+    >
+        <div class="wrapper">
+            <div
+                *ngFor="let review of reviews"
+                tuiSurface="flat"
+                class="review"
+            >
+                {{ review.body }}
+                <footer class="footer">
+                    <tui-avatar
+                        size="s"
+                        src="/assets/images/avatar.jpg"
+                    ></tui-avatar>
+                    <label
+                        class="label"
+                        [tuiLabel]="review.time"
+                    >
+                        {{ review.name }}
+                    </label>
+                </footer>
+            </div>
+        </div>
+    </tui-scrollbar>
+    <button
+        appearance="secondary"
+        size="m"
+        tuiButton
+    >
+        See all
+    </button>
+</div>
+
+<div
+    tuiMode="onDark"
+    tuiSurface
+    class="mask"
+>
+    <h3 class="heading">
+        My bank account
+        <button
+            appearance="secondary"
+            iconLeft="tuiIconEdit2"
+            size="s"
+            tuiIconButton
+            class="button"
+        >
+            Edit name
+        </button>
+    </h3>
+    <tui-money
+        currency="$"
+        currencyAlign="left"
+        class="sum"
+        [value]="23742"
+    ></tui-money>
+    <footer class="footer">
+        <tui-thumbnail-card
+            cardNumber="1234"
+            paymentSystem="mastercard"
+            [style.background]="'#337'"
+        ></tui-thumbnail-card>
+        <tui-thumbnail-card
+            cardNumber="5678"
+            paymentSystem="visa"
+            [style.background]="'#e33'"
+        ></tui-thumbnail-card>
+        <button
+            appearance="secondary"
+            iconLeft="tuiIconPlus"
+            size="s"
+            tuiIconButton
+            class="add"
+        >
+            Add card
+        </button>
+    </footer>
+</div>

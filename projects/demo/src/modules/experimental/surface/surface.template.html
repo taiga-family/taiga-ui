@@ -33,6 +33,20 @@
             heading="Blur"
             [content]="example3"
         >
+            <tui-notification
+                status="warning"
+                class="tui-space_bottom-4"
+            >
+                Text should have vertical compensation to look properly aligned, either with unequal
+                <code>padding</code>
+                as in this example or with negative
+                <code>margin</code>
+                . Typical value is
+                <strong>0.25rem</strong>
+                , smaller line-height might require
+                <strong>0.125rem</strong>
+                instead.
+            </tui-notification>
             <tui-surface-example-3></tui-surface-example-3>
         </tui-doc-example>
 
@@ -50,6 +64,14 @@
             [content]="example5"
         >
             <tui-surface-example-5></tui-surface-example-5>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="spacing"
+            heading="Spacing compensation"
+            [content]="example6"
+        >
+            <tui-surface-example-6></tui-surface-example-6>
         </tui-doc-example>
     </ng-template>
 
@@ -97,9 +119,9 @@
 
         <tui-doc-example
             heading="Examples"
-            [content]="example6"
+            [content]="example7"
         >
-            <tui-surface-example-6></tui-surface-example-6>
+            <tui-surface-example-7></tui-surface-example-7>
         </tui-doc-example>
     </ng-template>
 

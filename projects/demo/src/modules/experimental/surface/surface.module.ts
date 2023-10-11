@@ -11,6 +11,7 @@ import {
     TuiModeModule,
     TuiNotificationModule,
     TuiScrollbarModule,
+    TuiWrapperModule,
 } from '@taiga-ui/core';
 import {
     TuiAvatarModule,
@@ -25,6 +26,7 @@ import {TuiSurfaceExample3} from './examples/3';
 import {TuiSurfaceExample4} from './examples/4';
 import {TuiSurfaceExample5} from './examples/5';
 import {TuiSurfaceExample6} from './examples/6';
+import {TuiSurfaceExample7} from './examples/7';
 import {ExampleTuiSurfaceComponent} from './surface.component';
 
 @NgModule({
@@ -45,6 +47,7 @@ import {ExampleTuiSurfaceComponent} from './surface.component';
         TuiMoneyModule,
         TuiThumbnailCardModule,
         tuiGetDocModules(ExampleTuiSurfaceComponent),
+        TuiWrapperModule,
     ],
     declarations: [
         ExampleTuiSurfaceComponent,
@@ -54,6 +57,7 @@ import {ExampleTuiSurfaceComponent} from './surface.component';
         TuiSurfaceExample4,
         TuiSurfaceExample5,
         TuiSurfaceExample6,
+        TuiSurfaceExample7,
     ],
     exports: [ExampleTuiSurfaceComponent],
 })

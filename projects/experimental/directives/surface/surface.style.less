@@ -14,6 +14,7 @@
     background-repeat: no-repeat;
     overflow: hidden;
     isolation: isolate;
+    outline-color: var(--tui-focus);
     transition-property: backdrop-filter, background, border-radius, box-shadow, mask, transform;
 
     // Fix for https://bugs.chromium.org/p/chromium/issues/detail?id=1486408
@@ -129,6 +130,7 @@ input[tuiSurfaceLayer] {
 button[data-surface='elevated'],
 a[data-surface='elevated'] {
     &:active {
+        .shadow();
         transform: scale(0.95);
     }
 
