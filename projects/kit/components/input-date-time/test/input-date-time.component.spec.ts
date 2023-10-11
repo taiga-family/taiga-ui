@@ -229,7 +229,7 @@ describe(`InputDateTime`, () => {
         it(`empty value opens dropdown`, () => {
             inputPO.sendText(``);
             fixture.detectChanges();
-            expect(component.dateTimeComponent.open).toEqual(true);
+            expect(component.dateTimeComponent.open).toBe(true);
         });
     });
 
@@ -362,21 +362,21 @@ describe(`InputDateTime`, () => {
 
         it(`correctly transforms initial value`, () => {
             expect(inputPO.value).toBe(`19.01.2022, 12:33`);
-            expect(component.control.value).toEqual(`19.01.2022, 12:33`);
+            expect(component.control.value).toBe(`19.01.2022, 12:33`);
         });
 
         it(`transforms typed value`, () => {
             inputPO.sendText(`150520220943`);
 
             expect(inputPO.value).toBe(`15.05.2022, 09:43`);
-            expect(component.control.value).toEqual(`15.05.2022, 09:43`);
+            expect(component.control.value).toBe(`15.05.2022, 09:43`);
         });
 
         it(`transforms min day as output (if typed day is less than min day)`, () => {
             inputPO.sendText(`19.02.1861,1833`);
 
             expect(inputPO.value).toBe(`01.01.1900, 00:00`);
-            expect(component.control.value).toEqual(`01.01.1900, 00:00`);
+            expect(component.control.value).toBe(`01.01.1900, 00:00`);
         });
 
         it(`transforms value which was selected via calendar`, () => {
@@ -398,7 +398,7 @@ describe(`InputDateTime`, () => {
             component.control.patchValue(`09.05.1945, 00:43`);
 
             expect(inputPO.value).toBe(`09.05.1945, 00:43`);
-            expect(component.control.value).toEqual(`09.05.1945, 00:43`);
+            expect(component.control.value).toBe(`09.05.1945, 00:43`);
         });
     });
 

@@ -106,97 +106,97 @@ describe(`AbstractTuiControl and NgControl not injected in MyControlComponent`, 
     it(`default behaviour`, () => {
         expect(controlInstance).toBeTruthy();
         expect(controlInstance.child.parent).toBeInstanceOf(MyControlComponent);
-        expect(controlInstance.readOnly).toEqual(false);
-        expect(controlInstance.nativeId).toEqual(``);
+        expect(controlInstance.readOnly).toBe(false);
+        expect(controlInstance.nativeId).toBe(``);
 
-        expect(controlInstance.getTransformers()).toEqual(null);
-        expect(controlInstance.value).toEqual(`fallback`);
-        expect(controlInstance.safeCurrentValue).toEqual(`fallback`);
-        expect(controlInstance.invalid).toEqual(false);
-        expect(controlInstance.valid).toEqual(false);
-        expect(controlInstance.touched).toEqual(false);
-        expect(controlInstance.disabled).toEqual(false);
-        expect(controlInstance.interactive).toEqual(true);
-        expect(controlInstance.control).toEqual(null);
+        expect(controlInstance.getTransformers()).toBeNull();
+        expect(controlInstance.value).toBe(`fallback`);
+        expect(controlInstance.safeCurrentValue).toBe(`fallback`);
+        expect(controlInstance.invalid).toBe(false);
+        expect(controlInstance.valid).toBe(false);
+        expect(controlInstance.touched).toBe(false);
+        expect(controlInstance.disabled).toBe(false);
+        expect(controlInstance.interactive).toBe(true);
+        expect(controlInstance.control).toBeNull();
     });
 
     it(`pseudo`, () => {
-        expect(controlInstance.pseudoFocus).toEqual(null);
-        expect(controlInstance.pseudoHover).toEqual(null);
-        expect(controlInstance.pseudoActive).toEqual(null);
-        expect(controlInstance.pseudoInvalid).toEqual(null);
+        expect(controlInstance.pseudoFocus).toBeNull();
+        expect(controlInstance.pseudoHover).toBeNull();
+        expect(controlInstance.pseudoActive).toBeNull();
+        expect(controlInstance.pseudoInvalid).toBeNull();
     });
 
     it(`computed`, () => {
-        expect(controlInstance.computedName).toEqual(null);
-        expect(controlInstance.computedDisabled).toEqual(false);
-        expect(controlInstance.computedInvalid).toEqual(false);
-        expect(controlInstance.computedFocusable).toEqual(true);
-        expect(controlInstance.computedFocusVisible).toEqual(false);
-        expect(controlInstance.computedFocused).toEqual(false);
+        expect(controlInstance.computedName).toBeNull();
+        expect(controlInstance.computedDisabled).toBe(false);
+        expect(controlInstance.computedInvalid).toBe(false);
+        expect(controlInstance.computedFocusable).toBe(true);
+        expect(controlInstance.computedFocusVisible).toBe(false);
+        expect(controlInstance.computedFocused).toBe(false);
 
         controlInstance.pseudoFocus = true;
         controlInstance.pseudoHover = true;
         controlInstance.pseudoActive = true;
 
-        expect(controlInstance.computedFocusable).toEqual(true);
-        expect(controlInstance.computedFocusVisible).toEqual(true);
-        expect(controlInstance.computedFocused).toEqual(true);
+        expect(controlInstance.computedFocusable).toBe(true);
+        expect(controlInstance.computedFocusVisible).toBe(true);
+        expect(controlInstance.computedFocused).toBe(true);
     });
 
     it(`focusable`, () => {
         const focusedChange = jest.spyOn(controlInstance.focusedChange, `emit`);
 
-        expect(controlInstance.focused).toEqual(false);
-        expect(controlInstance.focusable).toEqual(true);
-        expect(controlInstance.touched).toEqual(false);
+        expect(controlInstance.focused).toBe(false);
+        expect(controlInstance.focusable).toBe(true);
+        expect(controlInstance.touched).toBe(false);
         expect(focusedChange).not.toHaveBeenCalled();
 
         controlInstance.forceUpdateFocused(true);
 
-        expect(controlInstance.focused).toEqual(true);
-        expect(controlInstance.focusable).toEqual(true);
-        expect(controlInstance.touched).toEqual(false);
+        expect(controlInstance.focused).toBe(true);
+        expect(controlInstance.focusable).toBe(true);
+        expect(controlInstance.touched).toBe(false);
         expect(focusedChange).toHaveBeenCalled();
 
         controlInstance.forceUpdateFocused(false);
 
-        expect(controlInstance.focused).toEqual(false);
-        expect(controlInstance.focusable).toEqual(true);
-        expect(controlInstance.touched).toEqual(false);
+        expect(controlInstance.focused).toBe(false);
+        expect(controlInstance.focusable).toBe(true);
+        expect(controlInstance.touched).toBe(false);
         expect(focusedChange).toHaveBeenCalled();
     });
 
     it(`id`, () => {
-        expect(controlInstance.nativeId).toEqual(``);
+        expect(controlInstance.nativeId).toBe(``);
         expect(controlInstance.id.startsWith(`tui_interactive_`)).toBeTruthy();
     });
 
     it(`setup value`, () => {
-        expect(controlInstance.value).toEqual(`fallback`);
-        expect(controlInstance.safeCurrentValue).toEqual(`fallback`);
+        expect(controlInstance.value).toBe(`fallback`);
+        expect(controlInstance.safeCurrentValue).toBe(`fallback`);
 
         controlInstance.value = `5`;
-        expect(controlInstance.value).toEqual(`5`);
-        expect(controlInstance.safeCurrentValue).toEqual(`fallback`);
+        expect(controlInstance.value).toBe(`5`);
+        expect(controlInstance.safeCurrentValue).toBe(`fallback`);
 
         controlInstance.writeValue(null);
-        expect(controlInstance.value).toEqual(`fallback`);
-        expect(controlInstance.safeCurrentValue).toEqual(`fallback`);
+        expect(controlInstance.value).toBe(`fallback`);
+        expect(controlInstance.safeCurrentValue).toBe(`fallback`);
 
         controlInstance.writeValue(``);
-        expect(controlInstance.value).toEqual(``);
-        expect(controlInstance.safeCurrentValue).toEqual(`fallback`);
+        expect(controlInstance.value).toBe(``);
+        expect(controlInstance.safeCurrentValue).toBe(`fallback`);
     });
 
     it(`lifecycle`, () => {
-        expect(controlInstance.ngOnInitTick).toEqual(true);
-        expect(controlInstance.ngOnDestroyTick).toEqual(false);
+        expect(controlInstance.ngOnInitTick).toBe(true);
+        expect(controlInstance.ngOnDestroyTick).toBe(false);
 
         testComponent.enabled = false;
         fixture.detectChanges();
 
-        expect(controlInstance.ngOnDestroyTick).toEqual(true);
+        expect(controlInstance.ngOnDestroyTick).toBe(true);
         expect(testComponent.myControl).toBeUndefined();
     });
 
@@ -224,12 +224,12 @@ describe(`AbstractTuiControl and NgControl not injected in MyControlComponent`, 
 
         it(`setDisabledState`, () => {
             expect(markForCheckSpy).not.toHaveBeenCalled();
-            expect(controlInstance.disabled).toEqual(false);
+            expect(controlInstance.disabled).toBe(false);
 
             controlInstance.setDisabledState();
 
             expect(markForCheckSpy).toHaveBeenCalled();
-            expect(controlInstance.disabled).toEqual(false);
+            expect(controlInstance.disabled).toBe(false);
         });
     });
 });

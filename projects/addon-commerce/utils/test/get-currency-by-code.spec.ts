@@ -8,7 +8,7 @@ import {
 describe(`tuiGetCurrencyByCode`, () => {
     it(`AED`, () => {
         expect(tuiGetCurrencyByCode(TuiCurrencyCode.Dirham)).toEqual(TuiCurrency.Dirham);
-        expect(tuiGetCurrencyByCode(TuiCurrencyCode.Dirham)?.toString()).toEqual(`AED`);
+        expect(tuiGetCurrencyByCode(TuiCurrencyCode.Dirham)?.toString()).toBe(`AED`);
     });
 
     it(`the same number of keys`, () => {

@@ -2,20 +2,20 @@ import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc';
 
 describe(`tuiTransliterateKeyboardLayout`, () => {
     it(`should return empty string for empty input`, () => {
-        expect(tuiTransliterateKeyboardLayout(``)).toEqual(``);
+        expect(tuiTransliterateKeyboardLayout(``)).toBe(``);
     });
 
     it(`should transliterate Russian layout characters into English layout characters`, () => {
         // cspell:disable-next-line
-        expect(tuiTransliterateKeyboardLayout(`привет мир`)).toEqual(`ghbdtn vbh`);
+        expect(tuiTransliterateKeyboardLayout(`привет мир`)).toBe(`ghbdtn vbh`);
         // cspell:disable-next-line
-        expect(tuiTransliterateKeyboardLayout(`ыудусе`)).toEqual(`select`);
+        expect(tuiTransliterateKeyboardLayout(`ыудусе`)).toBe(`select`);
         // cspell:disable-next-line
-        expect(tuiTransliterateKeyboardLayout(`штзге еуче`)).toEqual(`input text`);
+        expect(tuiTransliterateKeyboardLayout(`штзге еуче`)).toBe(`input text`);
     });
 
     it(`should not change non-Russian layout characters`, () => {
-        expect(tuiTransliterateKeyboardLayout(`hello world`)).toEqual(`hello world`);
-        expect(tuiTransliterateKeyboardLayout(`select`)).toEqual(`select`);
+        expect(tuiTransliterateKeyboardLayout(`hello world`)).toBe(`hello world`);
+        expect(tuiTransliterateKeyboardLayout(`select`)).toBe(`select`);
     });
 });

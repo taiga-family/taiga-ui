@@ -51,6 +51,7 @@ describe(`TableBarsHost`, () => {
         component = testComponent.component;
         service = TestBed.inject(TuiTableBarsService);
         (service.bar$ as any)._events = [];
+        subscription?.unsubscribe();
     });
 
     function getBar(): DebugElement {
@@ -60,12 +61,6 @@ describe(`TableBarsHost`, () => {
     function getCloseButton(): DebugElement {
         return pageObject.getByAutomationId(`${testContext.prefix}close-button`)!;
     }
-
-    beforeEach(() => {
-        if (subscription) {
-            subscription.unsubscribe();
-        }
-    });
 
     it(`Listens to service for adding tableBar`, () => {
         let result: unknown;
@@ -93,7 +88,7 @@ describe(`TableBarsHost`, () => {
 
         tick(100);
 
-        expect(result).toBe(null);
+        expect(result).toBeNull();
     }));
 
     it(`the default tableBar is dark`, () => {
@@ -138,6 +133,6 @@ describe(`TableBarsHost`, () => {
 
         getCloseButton().nativeElement.click();
 
-        expect(result).toBe(null);
+        expect(result).toBeNull();
     });
 });

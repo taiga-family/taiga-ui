@@ -5,7 +5,7 @@ describe(`tuiGetClosestFocusable`, () => {
         const root: Node = {} as unknown as Node;
         const divElement = document.createElement(`div`);
 
-        expect(tuiGetClosestFocusable({initial: divElement, root})).toBe(null);
+        expect(tuiGetClosestFocusable({initial: divElement, root})).toBeNull();
     });
 
     it(`returns closest focusable going backwards`, () => {
@@ -45,7 +45,7 @@ describe(`tuiGetClosestFocusable`, () => {
         root.appendChild(divElement);
         document.body.appendChild(root);
 
-        expect(tuiGetClosestFocusable({initial: divElement, root})).toBe(null);
+        expect(tuiGetClosestFocusable({initial: divElement, root})).toBeNull();
 
         document.body.removeChild(root);
     });

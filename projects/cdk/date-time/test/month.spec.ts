@@ -547,8 +547,8 @@ describe(`TuiMonth`, () => {
                 it(`the primitive value of a TuiMonth object`, () => {
                     const month = new TuiMonth(2000, 5);
 
-                    expect(typeof Number(month)).toEqual(`number`);
-                    expect(typeof month.valueOf()).toEqual(`number`);
+                    expect(typeof Number(month)).toBe(`number`);
+                    expect(typeof month.valueOf()).toBe(`number`);
                     expect(month > new TuiMonth(2000, 4)).toBeTruthy();
                     expect(month < new TuiMonth(2001, 6)).toBeTruthy();
                 });
@@ -558,24 +558,24 @@ describe(`TuiMonth`, () => {
                 it(`a number if the hint is number`, () => {
                     const month = new TuiMonth(1998, 7);
 
-                    expect(typeof Number(month)).toEqual(`number`);
-                    expect(typeof month.valueOf()).toEqual(`number`);
-                    expect(typeof month[Symbol.toPrimitive](`number`)).toEqual(`number`);
+                    expect(typeof Number(month)).toBe(`number`);
+                    expect(typeof month.valueOf()).toBe(`number`);
+                    expect(typeof month[Symbol.toPrimitive](`number`)).toBe(`number`);
                 });
 
                 it(`a string if the hint is string`, () => {
                     const month = new TuiMonth(2030, 1);
 
-                    expect(typeof String(month)).toEqual(`string`);
-                    expect(typeof month.toString()).toEqual(`string`);
-                    expect(typeof month[Symbol.toPrimitive](`string`)).toEqual(`string`);
+                    expect(typeof String(month)).toBe(`string`);
+                    expect(typeof month.toString()).toBe(`string`);
+                    expect(typeof month[Symbol.toPrimitive](`string`)).toBe(`string`);
                 });
 
                 it(`a string if the hint is default`, () => {
                     const month = new TuiMonth(1905, 2);
 
-                    expect(typeof `${month}`).toEqual(`string`);
-                    expect(typeof month[Symbol.toPrimitive](`default`)).toEqual(`string`);
+                    expect(typeof `${month}`).toBe(`string`);
+                    expect(typeof month[Symbol.toPrimitive](`default`)).toBe(`string`);
                 });
             });
         });

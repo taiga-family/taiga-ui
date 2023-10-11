@@ -13,20 +13,20 @@ describe(`tuiDebounce`, () => {
 
         const instance = new MyClass();
 
-        expect(instance.count).toEqual(0);
+        expect(instance.count).toBe(0);
 
         instance.method();
         instance.method();
         instance.method();
 
-        expect(instance.count).toEqual(0);
+        expect(instance.count).toBe(0);
 
         setTimeout(() => instance.method(), 50);
 
-        expect(instance.count).toEqual(0);
+        expect(instance.count).toBe(0);
 
         setTimeout(() => {
-            expect(instance.count).toEqual(1);
+            expect(instance.count).toBe(1);
 
             done();
         }, 200);

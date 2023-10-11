@@ -130,13 +130,13 @@ describe(`InputTag`, () => {
         });
 
         it(`Adds tags separated by commas`, () => {
-            expect(component.value[1]).toEqual(`1234`);
-            expect(component.value[2]).toEqual(`567`);
+            expect(component.value[1]).toBe(`1234`);
+            expect(component.value[2]).toBe(`567`);
             expect(component.value.length).toBe(3);
         });
 
         it(`Leaves the value after the last comma in the input field`, () => {
-            expect(inputPO.value).toEqual(`89`);
+            expect(inputPO.value).toBe(`89`);
         });
 
         it(`Doesn't create empty tags`, () => {
@@ -212,8 +212,8 @@ describe(`InputTag`, () => {
             focusStealer.focus();
             fixture.detectChanges();
 
-            expect(component.value[1]).toEqual(`10,5`);
-            expect(component.value[2]).toEqual(`12,2`);
+            expect(component.value[1]).toBe(`10,5`);
+            expect(component.value[2]).toBe(`12,2`);
         });
     });
 
@@ -225,7 +225,7 @@ describe(`InputTag`, () => {
             focusStealer.focus();
             fixture.detectChanges();
 
-            expect(component.value[1]).toEqual(`1234 567 89`);
+            expect(component.value[1]).toBe(`1234 567 89`);
         });
     });
 
@@ -239,24 +239,24 @@ describe(`InputTag`, () => {
         it(`splits into tags by space`, () => {
             inputPO.sendText(`1234 567 89`);
 
-            expect(component.value[1]).toEqual(`1234`);
-            expect(component.value[2]).toEqual(`567`);
+            expect(component.value[1]).toBe(`1234`);
+            expect(component.value[2]).toBe(`567`);
             expect(component.value.length).toBe(3);
         });
 
         it(`breaks into tags on non-breaking space`, () => {
             inputPO.sendText(`1234${CHAR_NO_BREAK_SPACE}567${CHAR_NO_BREAK_SPACE}89`);
 
-            expect(component.value[1]).toEqual(`1234`);
-            expect(component.value[2]).toEqual(`567`);
+            expect(component.value[1]).toBe(`1234`);
+            expect(component.value[2]).toBe(`567`);
             expect(component.value.length).toBe(3);
         });
 
         it(`splits into tags by comma`, () => {
             inputPO.sendText(`1234,567,89`);
 
-            expect(component.value[1]).toEqual(`1234`);
-            expect(component.value[2]).toEqual(`567`);
+            expect(component.value[1]).toBe(`1234`);
+            expect(component.value[2]).toBe(`567`);
             expect(component.value.length).toBe(3);
         });
 
@@ -405,7 +405,7 @@ describe(`InputTag`, () => {
         expect(component.inputHidden).toBeFalsy();
         expect(component.hasExampleText).toBeFalsy();
         expect(component.hasPlaceholder).toBeFalsy();
-        expect(getPlaceholderText(fixture)).toEqual(`Example`);
+        expect(getPlaceholderText(fixture)).toBe(`Example`);
 
         testComponent.control.reset();
         fixture.detectChanges();
@@ -413,9 +413,9 @@ describe(`InputTag`, () => {
         expect(component.hasValue).toBeFalsy();
         expect(component.labelOutside).toBeTruthy();
         expect(component.inputHidden).toBeFalsy();
-        expect(component.hasExampleText).toEqual(false);
-        expect(component.hasPlaceholder).toEqual(true);
-        expect(getPlaceholderText(fixture)).toEqual(`Placeholder`);
+        expect(component.hasExampleText).toBe(false);
+        expect(component.hasPlaceholder).toBe(true);
+        expect(getPlaceholderText(fixture)).toBe(`Placeholder`);
 
         // noinspection DuplicatedCode
         component.inputHidden = true;
@@ -424,9 +424,9 @@ describe(`InputTag`, () => {
         expect(component.hasValue).toBeFalsy();
         expect(component.labelOutside).toBeTruthy();
         expect(component.inputHidden).toBeTruthy();
-        expect(component.hasExampleText).toEqual(false);
-        expect(component.hasPlaceholder).toEqual(true);
-        expect(getPlaceholderText(fixture)).toEqual(`Placeholder`);
+        expect(component.hasExampleText).toBe(false);
+        expect(component.hasPlaceholder).toBe(true);
+        expect(getPlaceholderText(fixture)).toBe(`Placeholder`);
 
         testComponent.defaultInputs = true;
         testComponent.labelOutside = true;
@@ -437,9 +437,9 @@ describe(`InputTag`, () => {
         expect(component.hasValue).toBeFalsy();
         expect(component.labelOutside).toBeTruthy();
         expect(component.inputHidden).toBeTruthy();
-        expect(component.hasExampleText).toEqual(false);
-        expect(component.hasPlaceholder).toEqual(true);
-        expect(getPlaceholderText(fixture)).toEqual(``);
+        expect(component.hasExampleText).toBe(false);
+        expect(component.hasPlaceholder).toBe(true);
+        expect(getPlaceholderText(fixture)).toBe(``);
     });
 
     tuiTestPlaceholder(testContext, [`test`], []);

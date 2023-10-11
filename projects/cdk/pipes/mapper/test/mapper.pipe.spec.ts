@@ -16,6 +16,6 @@ describe(`TuiMapper pipe`, () => {
     });
 
     it(`Works with extra arguments`, () => {
-        expect(pipe.transform(data, mapper, ...args)).toEqual(`TESTthree eleven`);
+        expect(pipe.transform(data, mapper, ...args)).toBe(`TESTthree eleven`);
     });
 });

@@ -33,9 +33,9 @@ describe(`coercing values`, () => {
     });
 
     it(`string -> null`, () => {
-        expect(tuiCoerceValue(`null`)).toBe(null);
-        expect(tuiCoerceValue(`undefined`)).toBe(null);
-        expect(tuiCoerceValue(`NaN`)).toBe(null);
+        expect(tuiCoerceValue(`null`)).toBeNull();
+        expect(tuiCoerceValue(`undefined`)).toBeNull();
+        expect(tuiCoerceValue(`NaN`)).toBeNull();
     });
 
     it(`string -> array`, () => {

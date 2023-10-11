@@ -44,7 +44,7 @@ describe(`primitiveSpinButton`, () => {
 
         component.onLeftClick();
 
-        expect(result).not.toBeDefined();
+        expect(result).toBeUndefined();
     });
 
     it(`emits right click if it is not disabled`, () => {
@@ -56,7 +56,7 @@ describe(`primitiveSpinButton`, () => {
 
         component.onRightClick();
 
-        expect(result).not.toBeDefined();
+        expect(result).toBeUndefined();
     });
 
     it(`emits focus if it was updated`, () => {

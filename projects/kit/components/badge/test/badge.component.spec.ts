@@ -54,7 +54,7 @@ describe(`Badge`, () => {
             const badge = await loader.getHarness(TuiBadgeHarness);
             const text = await badge.text();
 
-            expect(text).toEqual(`99`);
+            expect(text).toBe(`99`);
         });
 
         it(`if it takes three digits or more, it displays the abbreviation 99+`, async () => {
@@ -63,7 +63,7 @@ describe(`Badge`, () => {
             const badge = await loader.getHarness(TuiBadgeHarness);
             const text = await badge.text();
 
-            expect(text).toEqual(`99+`);
+            expect(text).toBe(`99+`);
         });
 
         it(`if it accepts a string, it outputs it`, async () => {
@@ -71,7 +71,7 @@ describe(`Badge`, () => {
             const badge = await loader.getHarness(TuiBadgeHarness);
             const text = await badge.text();
 
-            expect(text).toEqual(`Text`);
+            expect(text).toBe(`Text`);
         });
 
         it(`if it accepts a string containing a number, it outputs it unchanged`, async () => {
@@ -79,7 +79,7 @@ describe(`Badge`, () => {
             const badge = await loader.getHarness(TuiBadgeHarness);
             const text = await badge.text();
 
-            expect(text).toEqual(`125`);
+            expect(text).toBe(`125`);
         });
     });
 

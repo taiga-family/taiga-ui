@@ -47,12 +47,12 @@ describe(`@tuiDefaultProp and @tuiPure`, () => {
             }
         }
 
-        expect(new A(`_A_`).limitWidth).toEqual(`__B`);
-        expect(new B(`_B_`).limitWidth).toEqual(`__B`);
-        expect(new C(`_C_`).limitWidth).toEqual(`_C_`);
+        expect(new A(`_A_`).limitWidth).toBe(`__B`);
+        expect(new B(`_B_`).limitWidth).toBe(`__B`);
+        expect(new C(`_C_`).limitWidth).toBe(`_C_`);
 
-        expect(new A(`_A_`).update(`A`).width).toEqual(`A`);
-        expect(new B(`_B_`).update(`B`).width).toEqual(`B`);
-        expect(new C(`_C_`).width).toEqual(`_C_`);
+        expect(new A(`_A_`).update(`A`).width).toBe(`A`);
+        expect(new B(`_B_`).update(`B`).width).toBe(`B`);
+        expect(new C(`_C_`).width).toBe(`_C_`);
     });
 });

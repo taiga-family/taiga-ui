@@ -43,14 +43,14 @@ describe(`TuiDirectionOrder directive`, () => {
     it(`sets the sort direction of table to ascending`, () => {
         fixture.detectChanges();
 
-        expect(testComponent.table.direction).toEqual(1);
+        expect(testComponent.table.direction).toBe(1);
     });
 
     it(`sets the sort direction of table to descending`, () => {
         testComponent.directionOrder = `desc`;
         fixture.detectChanges();
 
-        expect(testComponent.table.direction).toEqual(-1);
+        expect(testComponent.table.direction).toBe(-1);
     });
 
     describe(`when table emits direction change`, () => {

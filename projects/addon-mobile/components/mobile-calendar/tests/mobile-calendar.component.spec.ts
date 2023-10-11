@@ -200,7 +200,7 @@ describe(`MobileCalendar`, () => {
 
             const value = testComponent.onConfirm.mock.calls[0][0];
 
-            expect(value.year <= 1950).toBe(true);
+            expect(value.year).toBeLessThanOrEqual(1950);
             done();
         }, waitCdkScrollToIndex);
     });

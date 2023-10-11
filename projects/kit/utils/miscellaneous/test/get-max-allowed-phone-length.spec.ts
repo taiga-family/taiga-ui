@@ -19,18 +19,18 @@ describe(`tuiGetMaxAllowedPhoneLength`, () => {
     it(`should return max allowed phone length for US iso code`, () => {
         const transformed = fn(TuiCountryIsoCode.US);
 
-        expect(transformed).toEqual(12);
+        expect(transformed).toBe(12);
     });
 
     it(`should return max allowed phone length for GB iso code`, () => {
         const transformed = fn(TuiCountryIsoCode.GB);
 
-        expect(transformed).toEqual(13);
+        expect(transformed).toBe(13);
     });
 
     it(`should return max allowed phone length for AU iso code`, () => {
         const transformed = fn(TuiCountryIsoCode.AU);
 
-        expect(transformed).toEqual(11);
+        expect(transformed).toBe(11);
     });
 });

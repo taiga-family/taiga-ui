@@ -19,7 +19,7 @@ describe(`PortalService`, () => {
         } as unknown as EmbeddedViewRef<unknown>;
 
         service.removeTemplate(viewRefStub);
-        expect(called).toEqual(1);
+        expect(called).toBe(1);
     });
 
     it(`HostView removing`, () => {
@@ -29,7 +29,7 @@ describe(`PortalService`, () => {
         } as unknown as ComponentRef<unknown>;
 
         service.remove(componentRefStub);
-        expect(called).toEqual(1);
+        expect(called).toBe(1);
     });
 
     describe(`production mode`, () => {
@@ -43,7 +43,7 @@ describe(`PortalService`, () => {
                 actual = err.message;
             }
 
-            expect(actual).toEqual(``);
+            expect(actual).toBe(``);
         });
     });
 
@@ -60,9 +60,7 @@ describe(`PortalService`, () => {
                 actual = err.message;
             }
 
-            expect(actual).toEqual(
-                `Portals cannot be used without TuiPortalHostComponent`,
-            );
+            expect(actual).toBe(`Portals cannot be used without TuiPortalHostComponent`);
         });
 
         afterEach(() => tuiSwitchNgDevMode(false));
