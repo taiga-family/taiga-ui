@@ -1,10 +1,9 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {TUI_PLATFORM, TuiPlatform} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-cell',
+    selector: '[tuiCell]',
     templateUrl: './cell.template.html',
     styleUrls: ['./cell.styles.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -14,18 +13,6 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     },
 })
 export class TuiCellComponent {
-    @Input()
-    title: PolymorpheusContent = '';
-
-    @Input()
-    description: PolymorpheusContent = '';
-
-    @Input()
-    secondaryTitle: PolymorpheusContent = '';
-
-    @Input()
-    secondaryDescription: PolymorpheusContent = '';
-
     @Input()
     size: TuiSizeL | TuiSizeS = 'l';
 

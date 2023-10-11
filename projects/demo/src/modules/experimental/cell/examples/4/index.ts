@@ -15,4 +15,6 @@ export class TuiCellExample4 {
         <strong>TuiTooltipModule</strong>,
         <strong>TuiToggleModule</strong>
     `;
+
+    toggleValue = true;
 }

@@ -1,8 +1,11 @@
 ```html
-<tui-cell
-  title="Title"
-  description="Description"
-  secondaryTitle="Secondary title"
-  secondaryDescription="Secondary description"
-></tui-cell>
+<div
+  tuiCell
+  size="l"
+>
+  <span tuiSlot="title">Title</span>
+  <span tuiSlot="description">Description</span>
+  <span tuiSlot="secondaryTitle">Secondary title</span>
+  <span tuiSlot="secondaryDescription">Secondary description</span>
+</div>
 ```

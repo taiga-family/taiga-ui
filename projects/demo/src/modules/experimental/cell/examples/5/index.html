@@ -1,0 +1,63 @@
+<button
+    size="l"
+    tuiCell
+    (click)="addMoney()"
+>
+    <tui-progress-circle
+        size="s"
+        class="centralize"
+        [max]="maxMoneyAmount"
+        [value]="moneyAmount"
+    ></tui-progress-circle>
+
+    <ng-container tuiSlot="title">{{ moneyAmount }} out of {{ maxMoneyAmount }}₽</ng-container>
+    <ng-container tuiSlot="description">Savings account</ng-container>
+
+    <tui-money
+        tuiSlot="secondaryTitle"
+        [value]="moneyAmount"
+    ></tui-money>
+    <ng-container tuiSlot="secondaryDescription">Press to add more money</ng-container>
+</button>
+
+<a
+    size="s"
+    tuiCell
+>
+    <tui-thumbnail-card
+        paymentSystem="visa"
+        size="s"
+        class="bank-card centralize"
+    ></tui-thumbnail-card>
+
+    <ng-container tuiSlot="title">NoName bank</ng-container>
+    <ng-container tuiSlot="description">*1234</ng-container>
+    <ng-container tuiSlot="secondaryTitle">
+        <tui-money
+            tuiSlot="secondaryTitle"
+            [value]="-42"
+        ></tui-money>
+    </ng-container>
+    <ng-container tuiSlot="secondaryDescription">Today</ng-container>
+</a>
+
+<div
+    size="s"
+    tuiCell
+>
+    <tui-avatar
+        size="xxs"
+        src="tuiIconShoppingCart"
+        class="centralize"
+    ></tui-avatar>
+
+    <ng-container tuiSlot="title">Carrefour</ng-container>
+    <ng-container tuiSlot="description">Visa</ng-container>
+    <ng-container tuiSlot="secondaryTitle">
+        <tui-money
+            tuiSlot="secondaryTitle"
+            [value]="-100"
+        ></tui-money>
+    </ng-container>
+    <ng-container tuiSlot="secondaryDescription">Yesterday</ng-container>
+</div>

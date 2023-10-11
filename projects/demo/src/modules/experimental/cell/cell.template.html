@@ -19,22 +19,23 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="polymorpheus"
-            heading="Power of Polymorpheus"
+            id="slots-content-projection"
+            heading="Multi-slot content projection"
             [content]="example2"
             [description]="moneyDescription"
         >
             <ng-template #moneyDescription>
-                All basic properties is
+                <code>Cell</code>
+                component makes the most of Angular
                 <a
-                    href="https://github.com/taiga-family/ng-polymorpheus"
+                    href="https://angular.io/guide/content-projection#multi-slot-content-projection"
                     rel="noreferrer"
                     target="_blank"
                     tuiLink
                 >
-                    <code>PolymorpheusContent</code>
+                    "Multi-slot content projection"
                 </a>
-                . It provides you with great flexibility to pass any content you wish.
+                pattern.
                 <br />
                 This example pass
                 <a
@@ -54,7 +55,7 @@
                 <code>secondaryTitle</code>
                 /
                 <code>description</code>
-                properties.
+                slots.
             </ng-template>
             <tui-cell-example-2></tui-cell-example-2>
         </tui-doc-example>
@@ -75,7 +76,9 @@
                 </a>
                 directive. Or you can use native
                 <code>text-overflow: ellipsis</code>
-                . Choose any tool you wish!
+                .
+                <br />
+                Choose any tool you wish!
             </ng-template>
 
             <tui-cell-example-3></tui-cell-example-3>
@@ -88,51 +91,36 @@
         >
             <tui-cell-example-4></tui-cell-example-4>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="size"
+            heading="Sizes"
+            [content]="example5"
+        >
+            <tui-cell-example-5></tui-cell-example-5>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-cell
-                [description]="description"
-                [secondaryDescription]="secondaryDescription"
-                [secondaryTitle]="secondaryTitle"
+            <div
+                tuiCell
                 [size]="size"
-                [title]="title"
-            ></tui-cell>
+            >
+                <tui-marker-icon
+                    mode="primary"
+                    new
+                    src="tuiIconStarLarge"
+                    [size]="markerSize"
+                ></tui-marker-icon>
+
+                <span tuiSlot="title">{{ title }}</span>
+                <span tuiSlot="description">{{ description }}</span>
+                <span tuiSlot="secondaryTitle">{{ secondaryTitle }}</span>
+                <span tuiSlot="secondaryDescription">{{ secondaryDescription }}</span>
+            </div>
         </tui-doc-demo>
         <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="title"
-                documentationPropertyType="PolymorpheusContent"
-                [(documentationPropertyValue)]="title"
-            >
-                Left-side main large text
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="description"
-                documentationPropertyType="PolymorpheusContent"
-                [(documentationPropertyValue)]="description"
-            >
-                Left-side secondary small text
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="secondaryTitle"
-                documentationPropertyType="PolymorpheusContent"
-                [(documentationPropertyValue)]="secondaryTitle"
-            >
-                Right-side main large text
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="secondaryDescription"
-                documentationPropertyType="PolymorpheusContent"
-                [(documentationPropertyValue)]="secondaryDescription"
-            >
-                Right-side secondary small text
-            </ng-template>
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="size"
@@ -148,6 +136,41 @@
                     <code>l</code>
                     -size.
                 </p>
+            </ng-template>
+        </tui-doc-documentation>
+
+        <tui-doc-documentation heading="Slots">
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiSlot='title'"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="title"
+            >
+                Left-side main large text
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiSlot='description'"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="description"
+            >
+                Left-side secondary small text
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiSlot='secondaryTitle'"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="secondaryTitle"
+            >
+                Right-side main large text
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiSlot='secondaryDescription'"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="secondaryDescription"
+            >
+                Right-side secondary small text
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

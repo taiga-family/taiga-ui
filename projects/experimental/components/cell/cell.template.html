@@ -1,39 +1,23 @@
-<section class="t-left">
-    <div class="t-left-addition">
-        <ng-content></ng-content>
-    </div>
+<div class="t-icon">
+    <ng-content></ng-content>
+</div>
 
-    <div class="t-main">
+<div class="t-main">
+    <section class="t-left">
         <span class="t-title">
-            <ng-container *polymorpheusOutlet="title as text">
-                {{ text }}
-            </ng-container>
+            <ng-content select="[tuiSlot='title']"></ng-content>
         </span>
-
-        <span
-            *ngIf="description"
-            class="t-description"
-        >
-            <ng-container *polymorpheusOutlet="description as text">
-                {{ text }}
-            </ng-container>
+        <span class="t-description">
+            <ng-content select="[tuiSlot='description']"></ng-content>
         </span>
-    </div>
-</section>
+    </section>
 
-<section class="t-right">
-    <span class="t-title">
-        <ng-container *polymorpheusOutlet="secondaryTitle as text">
-            {{ text }}
-        </ng-container>
-    </span>
-
-    <span
-        *ngIf="secondaryDescription"
-        class="t-description"
-    >
-        <ng-container *polymorpheusOutlet="secondaryDescription as text">
-            {{ text }}
-        </ng-container>
-    </span>
-</section>
+    <section class="t-right">
+        <span class="t-title">
+            <ng-content select="[tuiSlot='secondaryTitle']"></ng-content>
+        </span>
+        <span class="t-description">
+            <ng-content select="[tuiSlot='secondaryDescription']"></ng-content>
+        </span>
+    </section>
+</div>

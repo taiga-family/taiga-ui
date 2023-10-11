@@ -1,7 +1,6 @@
-<tui-cell
-    description="Description"
-    title="Title"
-    [secondaryTitle]="accessories"
+<button
+    tuiCell
+    (click)="toggleValue = !toggleValue"
 >
     <tui-marker-icon
         mode="primary"
@@ -10,19 +9,23 @@
         src="tuiIconStarLarge"
     ></tui-marker-icon>
 
-    <ng-template #accessories>
-        <div class="accessories">
-            <tui-badge-alert size="s">1</tui-badge-alert>
+    <ng-container tuiSlot="title">Title</ng-container>
+    <ng-container tuiSlot="description">Description</ng-container>
 
-            <tui-tooltip
-                direction="top"
-                [content]="tooltipContent"
-            ></tui-tooltip>
+    <div
+        tuiSlot="secondaryTitle"
+        class="accessories"
+    >
+        <tui-badge-alert size="s">1</tui-badge-alert>
 
-            <tui-toggle
-                size="l"
-                [ngModel]="true"
-            ></tui-toggle>
-        </div>
-    </ng-template>
-</tui-cell>
+        <tui-tooltip
+            direction="top"
+            [content]="tooltipContent"
+        ></tui-tooltip>
+
+        <tui-toggle
+            size="l"
+            [ngModel]="toggleValue"
+        ></tui-toggle>
+    </div>
+</button>

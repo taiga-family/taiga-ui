@@ -1,12 +1,10 @@
-import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiCellComponent} from './cell.component';
+import {TuiCellSlotDirective} from './cell-slot.directive';
 
 @NgModule({
-    imports: [CommonModule, PolymorpheusModule],
-    declarations: [TuiCellComponent],
-    exports: [TuiCellComponent],
+    declarations: [TuiCellComponent, TuiCellSlotDirective],
+    exports: [TuiCellComponent, TuiCellSlotDirective],
 })
 export class TuiCellModule {}

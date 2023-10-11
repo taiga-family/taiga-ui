@@ -1,15 +1,16 @@
 @import 'taiga-ui-local';
 
 :host {
+    .clearbtn();
     .transition(background-color);
     display: flex;
+    align-items: stretch;
     box-sizing: border-box;
     padding: 0.5rem 1rem;
-    justify-content: space-between;
-    gap: 1rem;
     background-color: var(--tui-base-01);
     min-height: var(--tui-height-l);
     border-radius: var(--tui-radius-l);
+    text-decoration: none;
 
     & > * {
         min-width: 0;
@@ -34,19 +35,35 @@
     }
 }
 
-.t-left {
-    display: flex;
-    flex-shrink: var(--tui-left-shrink, 1);
-}
-
-.t-left-addition:not(:empty) {
-    margin-right: 1rem;
+:host(button, a) {
+    cursor: pointer;
+    width: 100%;
 }
 
 .t-main {
     display: flex;
-    min-width: 0;
+    flex: 1;
+    justify-content: space-between;
+    column-gap: 1rem;
+
+    & > * {
+        min-width: 0;
+    }
+}
+
+.t-icon {
+    display: flex;
+
+    &:not(:empty) {
+        margin-right: 1rem;
+    }
+}
+
+.t-left {
+    display: flex;
     flex-direction: column;
+    flex-shrink: var(--tui-left-shrink, 1);
+    text-align: start;
 
     & > * {
         min-width: 0;
@@ -56,7 +73,6 @@
 .t-right {
     display: flex;
     flex-direction: column;
-    text-align: end;
     flex-shrink: var(--tui-right-shrink, 1);
 
     & > * {
@@ -66,6 +82,7 @@
 
 .t-title {
     font: var(--tui-font-text-l-2);
+    color: var(--tui-text-01);
 
     :host[data-platform='web'][data-size='l'] & {
         font: var(--tui-font-text-m-2);
@@ -75,11 +92,6 @@
     :host[data-platform='web'][data-size='s'] & {
         font: var(--tui-font-text-s-2);
     }
-
-    &:only-child {
-        margin-top: auto;
-        margin-bottom: auto;
-    }
 }
 
 .t-description {
@@ -88,6 +100,22 @@
 
     :host[data-platform='web'][data-size='m'] &,
     :host[data-platform='web'][data-size='s'] & {
-        font: var(--tui-font-text-xs-2);
+        font: var(--tui-font-text-xs);
     }
+}
+
+.t-title,
+.t-description {
+    display: flex;
+    flex: 1;
+
+    &:empty {
+        flex: 0;
+    }
+}
+
+.t-right .t-title,
+.t-right .t-description {
+    justify-content: flex-end;
+    text-align: end;
 }
