@@ -60,9 +60,7 @@ describe(`PortalService`, () => {
                 actual = err.message;
             }
 
-            expect(actual).toBe(
-                `Portals cannot be used without TuiPortalHostComponent`,
-            );
+            expect(actual).toBe(`Portals cannot be used without TuiPortalHostComponent`);
         });
 
         afterEach(() => tuiSwitchNgDevMode(false));
