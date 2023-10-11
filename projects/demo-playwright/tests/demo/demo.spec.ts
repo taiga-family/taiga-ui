@@ -1,4 +1,4 @@
-import {tuiGoto} from '@demo-playwright/utils';
+import {tuiGoto, tuiMockImages} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 import {tuiIsFlakyExample} from './is-flaky-examples';
@@ -8,6 +8,7 @@ test.describe(`Demo`, () => {
 
     demoPaths.forEach(path => {
         test(path, async ({page}) => {
+            await tuiMockImages(page);
             await tuiGoto(page, path);
 
             await expect(async () => {
