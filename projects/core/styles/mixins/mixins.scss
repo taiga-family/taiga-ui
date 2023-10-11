@@ -295,6 +295,10 @@
     }
 }
 
+/**
+ * deprecated
+ * use isolation css property
+ */
 @mixin createStackingContext() {
     position: relative;
     z-index: 0;

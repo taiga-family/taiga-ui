@@ -1,10 +1,10 @@
 @import '../../styles/taiga-ui-local.less';
 
 :host {
-    .createStackingContext();
     .shadow(2);
     position: absolute;
     display: flex;
+    isolation: isolate;
     background: var(--tui-elevation-02);
     border-radius: var(--tui-radius-m);
     overflow: hidden;
