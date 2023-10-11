@@ -1,0 +1,19 @@
+@import 'taiga-ui-local';
+
+:host {
+    display: grid;
+    grid-template-columns: repeat(3, 8rem);
+    gap: 1rem;
+
+    * {
+        .shadow(1);
+        font-weight: bold;
+        text-align: center;
+    }
+}
+
+.highlight {
+    background: var(--tui-primary);
+    box-shadow: none;
+    color: var(--tui-primary-text);
+}

@@ -1,0 +1,17 @@
+<label
+    *tuiRepeatTimes="let index of 4"
+    tuiSurface
+>
+    Item {{ index + 1 }}
+    <input
+        tuiSurfaceLayer
+        type="radio"
+        [value]="index"
+        [(ngModel)]="value"
+    />
+    <div
+        tuiRipple
+        tuiSurfaceLayer
+        [style.background-color]="'var(--tui-base-03)'"
+    ></div>
+</label>

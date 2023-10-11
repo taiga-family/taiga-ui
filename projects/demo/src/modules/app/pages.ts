@@ -855,6 +855,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Experimental`,
+        title: `Compass`,
+        keywords: `compass, user, point, dot, карта, точка`,
+        route: `/experimental/compass`,
+    },
+    {
+        section: `Experimental`,
         title: `Fade`,
         keywords: `overflow, ellipsis, gradient, clamp, line`,
         route: `/experimental/fade`,
@@ -867,9 +873,9 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Experimental`,
-        title: `Compass`,
-        keywords: `compass, user, point, dot, карта, точка`,
-        route: `/experimental/compass`,
+        title: `Surface`,
+        keywords: `card, container, wrapper, image, blur, overlay`,
+        route: `/experimental/surface`,
     },
     // Charts
     {

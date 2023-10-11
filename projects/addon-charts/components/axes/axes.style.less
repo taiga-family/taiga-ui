@@ -12,13 +12,14 @@
 }
 
 .t-grid {
-    .createStackingContext();
+    position: relative;
     display: flex;
     flex: 1;
     justify-content: space-around;
     align-items: flex-end;
     border-width: 1px;
     border-color: var(--tui-base-03);
+    isolation: isolate;
 
     :host[data-mode='onDark'] & {
         border-color: rgba(255, 255, 255, 0.48);

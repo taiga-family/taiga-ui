@@ -68,7 +68,7 @@ export class ExampleTuiAvatarComponent {
 
     src = this.srcVariants[0];
 
-    round = false;
+    round = true;
 
     constructor(@Inject(DomSanitizer) private readonly sanitizer: DomSanitizer) {}
 }
