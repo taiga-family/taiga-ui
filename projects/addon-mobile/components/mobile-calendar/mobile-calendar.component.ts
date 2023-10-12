@@ -38,6 +38,7 @@ import {
     TUI_CANCEL_WORD,
     TUI_CHOOSE_DAY_OR_RANGE_TEXTS,
     TUI_DONE_WORD,
+    tuiImmutableUpdateInputDateMulti,
 } from '@taiga-ui/kit';
 import {identity, MonoTypeOperatorFunction, Observable, race, timer} from 'rxjs';
 import {
@@ -98,9 +99,9 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     readonly cancel = new EventEmitter<void>();
 
     @Output()
-    readonly confirm = new EventEmitter<TuiDay | TuiDayRange>();
+    readonly confirm = new EventEmitter<TuiDay | TuiDayRange | readonly TuiDay[]>();
 
-    value: TuiDay | TuiDayRange | null = null;
+    value: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
 
     readonly years = Array.from({length: RANGE}, (_, i) => i + STARTING_YEAR);
 
@@ -167,11 +168,13 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
             return;
         }
 
-        if (
-            this.value === null ||
-            this.value instanceof TuiDay ||
-            !this.value.isSingleDay
-        ) {
+        if (!(this.value instanceof TuiDayRange) && !(this.value instanceof TuiDay)) {
+            this.value = tuiImmutableUpdateInputDateMulti(this.value ?? [], day);
+
+            return;
+        }
+
+        if (this.value instanceof TuiDay || !this.value?.isSingleDay) {
             this.value = new TuiDayRange(day, day);
 
             return;
@@ -242,6 +245,10 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
             return this.value.year;
         }
 
+        if (!(this.value instanceof TuiDayRange)) {
+            return this.value?.[0]?.year ?? this.today.year;
+        }
+
         return this.value.from.year;
     }
 
@@ -252,6 +259,14 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
 
         if (this.value instanceof TuiDay) {
             return this.value.month + (this.value.year - STARTING_YEAR) * MONTHS_IN_YEAR;
+        }
+
+        if (!(this.value instanceof TuiDayRange)) {
+            return (
+                (this.value?.[0]?.month ?? this.today.month) +
+                ((this.value?.[0]?.year ?? this.today.year) - STARTING_YEAR) *
+                    MONTHS_IN_YEAR
+            );
         }
 
         return (

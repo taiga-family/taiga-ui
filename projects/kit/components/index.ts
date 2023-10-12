@@ -20,6 +20,7 @@ export * from '@taiga-ui/kit/components/input';
 export * from '@taiga-ui/kit/components/input-copy';
 export * from '@taiga-ui/kit/components/input-count';
 export * from '@taiga-ui/kit/components/input-date';
+export * from '@taiga-ui/kit/components/input-date-multi';
 export * from '@taiga-ui/kit/components/input-date-range';
 export * from '@taiga-ui/kit/components/input-date-time';
 export * from '@taiga-ui/kit/components/input-files';

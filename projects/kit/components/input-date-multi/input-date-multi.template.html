@@ -1,0 +1,75 @@
+<tui-hosted-dropdown
+    class="t-hosted"
+    [canOpen]="canOpen"
+    [content]="dropdown"
+    [open]="open && canOpen"
+    (openChange)="onOpenChange($event)"
+>
+    <tui-input-tag
+        #inputTag
+        class="t-input"
+        [disabled]="disabled"
+        [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledItemHandlerWrapper"
+        [editable]="editable"
+        [expandable]="expandable"
+        [inputHidden]="inputHidden"
+        [maskito]="maskitoOptions"
+        [nativeId]="nativeId"
+        [ngModel]="value"
+        [placeholder]="placeholder"
+        [pseudoFocus]="pseudoFocus"
+        [pseudoHover]="pseudoHover"
+        [pseudoInvalid]="computedInvalid"
+        [readOnly]="readOnly"
+        [removable]="!nativeDropdownMode"
+        [rows]="rows"
+        [tagValidator]="tagValidator"
+        [tuiTextfieldFiller]="(filler$ | async) || ''"
+        [tuiTextfieldIcon]="calendarIcon && iconContent"
+        (keydown.enter)="onEnter(inputTag.search || '')"
+        (ngModelChange)="onValueChange($event)"
+    >
+        <ng-content></ng-content>
+        <ng-content
+            ngProjectAs="input"
+            select="input"
+        ></ng-content>
+    </tui-input-tag>
+
+    <ng-template #iconContent>
+        <tui-svg
+            *polymorpheusOutlet="calendarIcon as src; context: {$implicit: size}"
+            appearance="icon"
+            tuiWrapper
+            [class.t-icon]="!computedDisabled"
+            [src]="src"
+            (click)="onIconClick()"
+        ></tui-svg>
+    </ng-template>
+
+    <ng-template #dropdown>
+        <tui-calendar
+            [disabledItemHandler]="disabledItemHandler"
+            [markerHandler]="markerHandler"
+            [max]="computedMax"
+            [min]="computedMin"
+            [month]="computedActiveYearMonth"
+            [value]="value"
+            (dayClick)="onDayClick($event)"
+            (monthChange)="onMonthChange($event)"
+            (mousedown.silent.prevent)="(0)"
+        ></tui-calendar>
+        <div
+            class="t-button"
+            (mousedown.silent.prevent)="(0)"
+        >
+            <button
+                tuiLink
+                type="button"
+                (click)="done()"
+            >
+                {{ doneWord$ | async }}
+            </button>
+        </div>
+    </ng-template>
+</tui-hosted-dropdown>

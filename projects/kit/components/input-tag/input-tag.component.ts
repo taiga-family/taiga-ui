@@ -115,7 +115,7 @@ export class TuiInputTagComponent
     separator: RegExp | string = this.options.separator;
 
     @Input()
-    search = '';
+    search: string | null = '';
 
     @Input()
     editable = true;
@@ -504,7 +504,7 @@ export class TuiInputTagComponent
     }
 
     private addTag(): void {
-        const inputValue = this.search.trim();
+        const inputValue = this.search?.trim() ?? '';
 
         if (!inputValue || this.disabledItemHandler(inputValue)) {
             return;
