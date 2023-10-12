@@ -19,7 +19,7 @@ export class TuiSurfaceExample7 {
         {
             name: 'Alex Inkin',
             time: '3 days ago',
-            body: 'I\'m starting to kind of enjoy this library.',
+            body: 'I am starting to kind of enjoy this library.',
         },
         {
             name: 'Alex Inkin',
