@@ -192,7 +192,7 @@ export class TuiInputDateComponent
     }
 
     get nativeValue(): string {
-        return this.nativeFocusableElement ? this.nativeFocusableElement.value : '';
+        return this.nativeFocusableElement?.value || '';
     }
 
     set nativeValue(value: string) {
