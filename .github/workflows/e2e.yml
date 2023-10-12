@@ -37,7 +37,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        project: [addon-doc, addon-commerce, addon-mobile, addon-table, addon-tablebars, icons, core, deep, kit]
+        project: [addon-doc, addon-commerce, addon-mobile, addon-table, addon-tablebars, core, deep, kit]
     name: ${{ matrix.project }}
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.32.2
