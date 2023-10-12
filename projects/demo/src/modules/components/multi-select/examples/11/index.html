@@ -1,0 +1,41 @@
+<tui-multi-select
+    [tuiTextfieldLabelOutside]="true"
+    [valueContent]="valueContent"
+    [(ngModel)]="value"
+>
+    <tui-data-list-wrapper
+        *tuiDataList
+        tuiMultiSelectGroup
+        [items]="items"
+    ></tui-data-list-wrapper>
+</tui-multi-select>
+
+<tui-multi-select
+    class="tui-space_top-4"
+    [valueContent]="content"
+    [(ngModel)]="value"
+>
+    Select
+    <tui-data-list-wrapper
+        *tuiDataList
+        tuiMultiSelectGroup
+        [items]="items"
+    ></tui-data-list-wrapper>
+</tui-multi-select>
+
+<ng-template
+    #valueContent
+    let-list
+>
+    <div class="t-wrapper">
+        <ng-container *ngFor="let item of list">
+            <tui-tag
+                size="l"
+                class="t-tag"
+                [removable]="true"
+                [value]="item"
+                (edited)="remove(item)"
+            ></tui-tag>
+        </ng-container>
+    </div>
+</ng-template>
