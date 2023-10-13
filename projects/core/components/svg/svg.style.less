@@ -12,19 +12,18 @@
     fill: transparent;
     stroke: transparent;
     font-size: 1rem;
-
-    ::ng-deep svg:not(.t-svg) {
-        width: inherit;
-        height: inherit;
-    }
 }
 
 .t-src {
     display: flex;
-    width: inherit;
     height: 100%;
     align-items: center;
     justify-content: center;
+
+    &,
+    ::ng-deep svg {
+        width: inherit;
+    }
 }
 
 .t-svg {
