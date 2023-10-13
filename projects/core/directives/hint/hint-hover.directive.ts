@@ -2,7 +2,7 @@
 import {Directive, ElementRef, Inject, Input} from '@angular/core';
 import {TuiHoveredService} from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
-import {tuiHintIsObscured} from '@taiga-ui/core/utils';
+import {tuiIsObscured} from '@taiga-ui/core/utils';
 import {merge, Observable, of, Subject} from 'rxjs';
 import {delay, filter, map, repeat, switchMap, takeUntil, tap} from 'rxjs/operators';
 
@@ -31,7 +31,7 @@ export class TuiHintHoverDirective extends TuiDriver {
         ),
     ).pipe(
         filter(() => this.enabled),
-        map(value => value && !tuiHintIsObscured(this.el.nativeElement)),
+        map(value => value && !tuiIsObscured(this.el.nativeElement)),
         tap(visible => {
             this.visible = visible;
         }),
