@@ -64,4 +64,19 @@ describe(`LineClamp`, () => {
             });
         }
     });
+
+    describe(`Hovered`, () => {
+        const basicText = `Lorem ipsum Gaudeamus igiturCarpe diem Veni, vidi, vici`;
+
+        it(`linesLimit=2 hovered`, () => {
+            cy.tuiVisit(`/components/line-clamp/API?content=${basicText}&linesLimit=2`);
+
+            cy.get(`#demo-content tui-line-clamp`).realHover();
+
+            cy.get(`tui-line-clamp-box`)
+                .should(`be.visible`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`02-[linesLimit=2]-basicText-hover`);
+        });
+    });
 });
