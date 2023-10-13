@@ -867,6 +867,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Experimental`,
+        title: `Rating `,
+        keywords: `рейтинг, оценка, звезда, rating, star, rate`,
+        route: `/experimental/rating`,
+    },
+    {
+        section: `Experimental`,
         title: `Sensitive`,
         keywords: `sensitive, pixel, mask, пиксель, маска`,
         route: `/experimental/sensitive`,

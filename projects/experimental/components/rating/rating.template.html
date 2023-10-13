@@ -1,0 +1,31 @@
+<div class="t-items">
+    <div
+        *tuiRepeatTimes="let index of max"
+        class="t-item"
+        [class.t-item_active]="isActive(index)"
+        (pointerup)="onClick(max - index)"
+    >
+        <tui-svg
+            *polymorpheusOutlet="icon as src; context: {$implicit: max - index}"
+            class="t-icon t-icon_blank"
+            [class.t-icon_fraction]="isFraction(index)"
+            [src]="src"
+            [style.--t-cut.%]="100 - getCut(index)"
+        ></tui-svg>
+        <tui-svg
+            *polymorpheusOutlet="icon as src; context: {$implicit: max - index}"
+            class="t-icon"
+            [src]="src"
+            [style.--t-cut.%]="getCut(index)"
+        ></tui-svg>
+    </div>
+</div>
+<input
+    min="1"
+    type="range"
+    class="t-range"
+    [attr.aria-disabled]="readOnly"
+    [disabled]="computedDisabled"
+    [max]="max"
+    [(ngModel)]="value"
+/>

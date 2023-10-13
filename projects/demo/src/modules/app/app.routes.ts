@@ -258,6 +258,14 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/rating`,
+        loadChildren: async () =>
+            (await import(`../experimental/rating/rating.module`)).ExampleTuiRatingModule,
+        data: {
+            title: `Rating`,
+        },
+    },
+    {
         path: `experimental/sensitive`,
         loadChildren: async () =>
             (await import(`../experimental/sensitive/sensitive.module`))
