@@ -126,6 +126,11 @@ export class TuiExpandComponent {
         }
     }
 
+    @HostListener('click.silent')
+    checkInsideClick(): void {
+        this.retrigger(this.state);
+    }
+
     private retrigger(state: TuiValuesOf<typeof State>): void {
         this.state = State.Prepared;
 
