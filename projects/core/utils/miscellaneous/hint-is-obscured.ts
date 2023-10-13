@@ -7,7 +7,5 @@ export function tuiHintIsObscured(
     el: HTMLElement,
     exceptSelector = `tui-hints-host`,
 ): boolean {
-    const obscured = tuiGetElementObscures(el);
-
-    return !!obscured?.length && obscured.some(el => !el.closest(exceptSelector));
+    return !!tuiGetElementObscures(el)?.some(el => !el.closest(exceptSelector));
 }
