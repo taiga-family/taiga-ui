@@ -1,4 +1,5 @@
 export * from './get-border';
+export * from './hint-is-obscured';
 export * from './icons-path-factory';
 export * from './is-editing-key';
 export * from './is-presumed-html-string';
