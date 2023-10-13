@@ -18,18 +18,18 @@ describe(`InputCardGrouped`, () => {
     let cleanerIcon: Locator;
 
     describe(`API`, () => {
-        beforeEach(async ({page}) => {
-            await tuiGoto(page, `components/input-card-grouped/API`);
-
+        beforeEach(({page}) => {
             documentationPage = new TuiDocumentationPagePO(page);
-            inputCardGroupedPage = new TuiInputCardGroupedPO(page);
+            example = new TuiDocumentationPagePO(page).apiPageExample;
+            inputCardGroupedPage = new TuiInputCardGroupedPO(example);
             cardGroupInput = inputCardGroupedPage.cardGroupInput;
             cleanerIcon = inputCardGroupedPage.cleanerIcon;
         });
 
-        test(`set value and clear after`, async () => {
-            await cardGroupInput.pressSequentially(`1234 4567 8910 1112`);
+        test(`set value and clear after`, async ({page}) => {
+            await tuiGoto(page, `components/input-card-grouped/API`);
 
+            await cardGroupInput.pressSequentially(`1234 4567 8910 1112`);
             await expect(cardGroupInput).toHaveScreenshot(
                 `01-input-card-grouped-filled.png`,
             );
@@ -48,9 +48,10 @@ describe(`InputCardGrouped`, () => {
             );
         });
 
-        test(`set value and disable`, async () => {
-            await cardGroupInput.pressSequentially(`1234 4567 1000 1112`);
-            await inputCardGroupedPage.disableFormControlToggle.check();
+        test(`disabled input card grouped`, async ({page}) => {
+            await tuiGoto(page, `components/input-card-grouped/API?disabled=true`);
+
+            await expect(cardGroupInput).toHaveCSS(`pointer-events`, `none`);
             await expect(cardGroupInput).toHaveScreenshot(
                 `04-input-card-grouped-disabled.png`,
             );
@@ -64,14 +65,15 @@ describe(`InputCardGrouped`, () => {
             await tuiGoto(page, `components/input-card-grouped`);
 
             documentationPage = new TuiDocumentationPagePO(page);
-            inputCardGroupedPage = new TuiInputCardGroupedPO(page);
         });
 
         test(`input card grouped with validation`, async () => {
             example = documentationPage.getExample(`#validation`);
-            cardGroupInput = inputCardGroupedPage.getExampleCardGroupInput(example);
-            cardExpiryInput = inputCardGroupedPage.getExampleCardExpiryInput(example);
-            cardCvcInput = inputCardGroupedPage.getExampleCardCvcInput(example);
+            inputCardGroupedPage = new TuiInputCardGroupedPO(example);
+            cardGroupInput = inputCardGroupedPage.cardGroupInput;
+            cardExpiryInput = inputCardGroupedPage.cardExpiryInput;
+            cardCvcInput = inputCardGroupedPage.cardCvcInput;
+            cleanerIcon = inputCardGroupedPage.cleanerIcon;
 
             await expect(cardGroupInput).toHaveScreenshot(
                 `05-default-state-input-card.png`,
@@ -100,7 +102,7 @@ describe(`InputCardGrouped`, () => {
                 `10-input-card-with-value-cvc-filled.png`,
             );
 
-            await inputCardGroupedPage.getExampleCleanerIcon(example).click();
+            await cleanerIcon.click();
             await expect(cardGroupInput).toHaveScreenshot(
                 `11-input-card-with-focused-after-clear.png`,
             );
@@ -113,9 +115,10 @@ describe(`InputCardGrouped`, () => {
 
         test(`input card grouped with saved cards`, async () => {
             example = documentationPage.getExample(`#select`);
-            cardGroupInput = inputCardGroupedPage.getExampleCardGroupInput(example);
-            cardCvcInput = inputCardGroupedPage.getExampleCardCvcInput(example);
-            cleanerIcon = inputCardGroupedPage.getExampleCleanerIcon(example);
+            inputCardGroupedPage = new TuiInputCardGroupedPO(example);
+            cardGroupInput = inputCardGroupedPage.cardGroupInput;
+            cardCvcInput = inputCardGroupedPage.cardCvcInput;
+            cleanerIcon = inputCardGroupedPage.cleanerIcon;
 
             await expect(cardGroupInput).toHaveScreenshot(
                 `13-default-prefilled-state-input-card.png`,
@@ -143,10 +146,11 @@ describe(`InputCardGrouped`, () => {
 
         test(`expired field should be clickable after reset of prefilled value`, async () => {
             example = documentationPage.getExample(`#custom-labels`);
-            cardGroupInput = inputCardGroupedPage.getExampleCardGroupInput(example);
-            cardExpiryInput = inputCardGroupedPage.getExampleCardExpiryInput(example);
-            cardCvcInput = inputCardGroupedPage.getExampleCardCvcInput(example);
-            cleanerIcon = inputCardGroupedPage.getExampleCleanerIcon(example);
+            inputCardGroupedPage = new TuiInputCardGroupedPO(example);
+            cardGroupInput = inputCardGroupedPage.cardGroupInput;
+            cardExpiryInput = inputCardGroupedPage.cardExpiryInput;
+            cardCvcInput = inputCardGroupedPage.cardCvcInput;
+            cleanerIcon = inputCardGroupedPage.cleanerIcon;
 
             await cardCvcInput.focus();
             await expect(cardExpiryInput).toHaveCSS(`pointer-events`, `none`);
