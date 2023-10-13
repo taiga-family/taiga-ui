@@ -78,7 +78,7 @@ export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
 
     updateSorterAndDirection(): void {
         this.table?.updateSorterAndDirection(
-            this.isCurrentAndAscDirection() ? null : this.sorter,
+            this.isCurrentAndAscDirection ? null : this.sorter,
         );
     }
 
@@ -86,7 +86,7 @@ export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
         this.width = width;
     }
 
-    private isCurrentAndAscDirection(): boolean {
+    private get isCurrentAndAscDirection(): boolean {
         return this.sorter === this.table?.sorter && this.table?.direction === -1;
     }
 }
