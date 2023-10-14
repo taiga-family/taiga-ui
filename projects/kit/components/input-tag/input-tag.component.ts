@@ -194,9 +194,6 @@ export class TuiInputTagComponent
         readonly controller: TuiTextfieldController,
         @Inject(TUI_INPUT_TAG_OPTIONS)
         private readonly options: TuiInputTagOptions,
-        @Optional()
-        @Inject(TuiHostedDropdownComponent)
-        private readonly parentHostedDropdown: TuiHostedDropdownComponent | null,
         @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
     ) {
         super(control, cdr);
@@ -327,7 +324,6 @@ export class TuiInputTagComponent
         this.updateSearch('');
         this.clear();
         this.focusInput();
-        this.parentHostedDropdown?.updateOpen(true);
     }
 
     onActiveZone(active: boolean): void {
