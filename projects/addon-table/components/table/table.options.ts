@@ -2,8 +2,10 @@ import {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
+export type TuiTableDirection = -1 | 0 | 1;
+
 export interface TuiTableOptions {
-    readonly direction: -1 | 1;
+    readonly direction: TuiTableDirection;
     readonly open: boolean;
     readonly resizable: boolean;
     readonly size: TuiSizeL | TuiSizeS;

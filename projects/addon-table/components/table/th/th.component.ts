@@ -67,10 +67,12 @@ export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
     }
 
     get icon(): string {
-        if (this.isCurrent) {
-            return this.table?.direction === 1
-                ? this.options.sortIcons.desc
-                : this.options.sortIcons.asc;
+        if (this.isCurrent && this.table?.direction === -1) {
+            return this.options.sortIcons.desc;
+        }
+
+        if (this.isCurrent && this.table?.direction === 1) {
+            return this.options.sortIcons.asc;
         }
 
         return this.options.sortIcons.off;

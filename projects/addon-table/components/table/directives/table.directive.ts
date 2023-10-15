@@ -16,7 +16,7 @@ import {Observable} from 'rxjs';
 
 import {TUI_STUCK} from '../providers/stuck.provider';
 import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
-import {TUI_TABLE_OPTIONS, TuiTableOptions} from '../table.options';
+import {TUI_TABLE_OPTIONS, TuiTableDirection, TuiTableOptions} from '../table.options';
 
 @Directive({
     selector: 'table[tuiTable]',
@@ -42,7 +42,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     direction = this.options.direction;
 
     @Output()
-    readonly directionChange = new EventEmitter<-1 | 1>();
+    readonly directionChange = new EventEmitter<TuiTableDirection>();
 
     @Output()
     readonly sorterChange = new EventEmitter<TuiComparator<T> | null>();
@@ -62,11 +62,23 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     sorter: TuiComparator<T> = () => 0;
 
     updateSorterAndDirection(sorter: TuiComparator<T> | null): void {
-        if (this.sorter === sorter) {
-            this.updateDirection(this.direction === 1 ? -1 : 1);
-        } else {
+        if (this.sorter !== sorter) {
             this.updateSorter(sorter);
             this.updateDirection(1);
+
+            return;
+        }
+
+        switch (this.direction) {
+            case -1:
+                this.updateDirection(0);
+                break;
+            case 0:
+                this.updateDirection(1);
+                break;
+            case 1:
+                this.updateDirection(-1);
+                break;
         }
     }
 
@@ -80,7 +92,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
         this.change$.next();
     }
 
-    private updateDirection(direction: -1 | 1): void {
+    private updateDirection(direction: TuiTableDirection): void {
         this.direction = direction;
         this.directionChange.emit(this.direction);
         this.change$.next();

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiComparator} from '@taiga-ui/addon-table';
+import {TuiComparator, TuiTableDirection} from '@taiga-ui/addon-table';
 import {
     TUI_DEFAULT_MATCHER,
     tuiControlValue,
@@ -73,7 +73,7 @@ export class TuiTableExample4 {
     private readonly size$ = new BehaviorSubject(10);
     private readonly page$ = new BehaviorSubject(0);
 
-    readonly direction$ = new BehaviorSubject<-1 | 1>(-1);
+    readonly direction$ = new BehaviorSubject<TuiTableDirection>(-1);
     readonly sorter$ = new BehaviorSubject<Key>('name');
 
     readonly minAge = new FormControl(21);
@@ -122,7 +122,7 @@ export class TuiTableExample4 {
             .map(column => KEYS[column]);
     }
 
-    onDirection(direction: -1 | 1): void {
+    onDirection(direction: TuiTableDirection): void {
         this.direction$.next(direction);
     }
 
@@ -144,7 +144,7 @@ export class TuiTableExample4 {
 
     private getData(
         key: 'age' | 'dob' | 'name',
-        direction: -1 | 1,
+        direction: TuiTableDirection,
         page: number,
         size: number,
         minAge: number,
@@ -163,7 +163,10 @@ export class TuiTableExample4 {
     }
 }
 
-function sortBy(key: 'age' | 'dob' | 'name', direction: -1 | 1): TuiComparator<User> {
+function sortBy(
+    key: 'age' | 'dob' | 'name',
+    direction: TuiTableDirection,
+): TuiComparator<User> {
     return (a, b) =>
         key === 'age'
             ? direction * tuiDefaultSort(getAge(a), getAge(b))

@@ -3,6 +3,7 @@ import {TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiPure} from '@taiga-ui/cdk';
 
 import {TuiTableDirective} from '../directives/table.directive';
+import {TuiTableDirection} from '../table.options';
 
 @Pipe({
     name: `tuiTableSort`,
@@ -22,7 +23,7 @@ export class TuiTableSortPipe<K = Partial<Record<any, any>>> implements PipeTran
     private sort<T extends K>(
         data: readonly T[],
         sorter: TuiComparator<T>,
-        direction: -1 | 1,
+        direction: TuiTableDirection,
     ): readonly T[] {
         return [...data].sort((a, b) => direction * sorter(a, b));
     }
