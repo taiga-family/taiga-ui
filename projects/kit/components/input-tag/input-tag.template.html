@@ -45,7 +45,10 @@
                     [hidden]="!expandable"
                     [style.maxHeight.rem]="computeMaxHeight"
                 >
-                    <div class="t-tags">
+                    <div
+                        class="t-tags"
+                        [class.t-tags_empty]="!focused && !value?.length"
+                    >
                         <ng-container *ngIf="labelOutside; else text">
                             <tui-tag
                                 *ngFor="let item of value; index as index; trackBy: trackByFn"
@@ -105,8 +108,10 @@
                             />
                         </div>
                     </div>
+                    <div class="t-value-content">
+                        <ng-content select="tuiContent"></ng-content>
+                    </div>
                 </tui-scrollbar>
-                <ng-content select="tuiContent"></ng-content>
             </div>
             <ng-content select="select"></ng-content>
             <div

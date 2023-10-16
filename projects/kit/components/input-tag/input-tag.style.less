@@ -62,6 +62,10 @@
         overflow: hidden;
     }
 
+    &_empty {
+        height: 0;
+    }
+
     :host._expandable & {
         flex-wrap: wrap;
         white-space: normal;
@@ -189,14 +193,18 @@
 }
 
 .t-input-wrapper {
-    position: relative;
-    flex: 1;
-    max-width: 100%;
-
     &_collapsed {
         flex: 0;
         margin-inline-start: -0.5rem;
     }
+}
+
+.t-input-wrapper,
+.t-value-content {
+    position: relative;
+    display: flex;
+    flex: 1;
+    max-width: 100%;
 
     :host[data-size='s'] & {
         min-height: 1.25rem + 2 * @tag-vertical-space;
@@ -213,6 +221,10 @@
     :host:not(._label-outside) & {
         min-height: 1rem;
     }
+}
+
+.t-value-content:empty {
+    display: none;
 }
 
 .t-ghost {
