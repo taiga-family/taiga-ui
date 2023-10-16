@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.49.0](https://github.com/taiga-family/taiga-ui/compare/v3.48.0...v3.49.0) (2023-10-16)
+
+### Features
+
+- **addon-table:** table column direction reset on third click
+  ([#5631](https://github.com/taiga-family/taiga-ui/issues/5631))
+  ([85cee09](https://github.com/taiga-family/taiga-ui/commit/85cee09045f76de5ac79e7fc710d7e66c19b68af))
+- **core:** add browser specific style mixins ([#5589](https://github.com/taiga-family/taiga-ui/issues/5589))
+  ([27623c3](https://github.com/taiga-family/taiga-ui/commit/27623c32b63d7584d3a53a4cd5000b653ea9aff1))
+- **core:** support `readonly TuiDay[]` in `calendar` ([#5574](https://github.com/taiga-family/taiga-ui/issues/5574))
+  ([f1cafa8](https://github.com/taiga-family/taiga-ui/commit/f1cafa8f95e7c0029995d077ceebd89ca66ed3e6))
+- **experimental:** `Rating` add new component ([#5633](https://github.com/taiga-family/taiga-ui/issues/5633))
+  ([254e68b](https://github.com/taiga-family/taiga-ui/commit/254e68b638c92db8ccfe0590960b943400427946))
+- **experimental:** `Surface` add new directive ([#5555](https://github.com/taiga-family/taiga-ui/issues/5555))
+  ([62ac52c](https://github.com/taiga-family/taiga-ui/commit/62ac52cf95c914380973237aa37675ec9714516f))
+
+### Bug Fixes
+
+- **addon-commerce:** change `Rbl` to `Br` for Belarus rubles
+  ([#5587](https://github.com/taiga-family/taiga-ui/issues/5587))
+  ([1d4c721](https://github.com/taiga-family/taiga-ui/commit/1d4c72111f5b9cfb8e8f249150db6f384abe8024))
+- **cdk:** `ValueChanges` add `distinctUntilChanged` ([#5586](https://github.com/taiga-family/taiga-ui/issues/5586))
+  ([d3e40ad](https://github.com/taiga-family/taiga-ui/commit/d3e40ad233fad1833e370c47492ff4d2b12d8919))
+- **cdk:** prevent page scrolling when a modal is open ([#5599](https://github.com/taiga-family/taiga-ui/issues/5599))
+  ([50e5320](https://github.com/taiga-family/taiga-ui/commit/50e5320a93ff9945e557d003a31bb67cd8452d3f))
+- **core:** invalid svg alignments in safari ([#5588](https://github.com/taiga-family/taiga-ui/issues/5588))
+  ([6360ab3](https://github.com/taiga-family/taiga-ui/commit/6360ab3de326e02f7057704810f38e7ad34af903))
+- **core:** prevent override height for svg ([#5623](https://github.com/taiga-family/taiga-ui/issues/5623))
+  ([c57b147](https://github.com/taiga-family/taiga-ui/commit/c57b147a5896dc74adb13adcbb63e8b04de72e0f))
+- **experimental:** `Fade` fix line height issue ([#5617](https://github.com/taiga-family/taiga-ui/issues/5617))
+  ([a85ee21](https://github.com/taiga-family/taiga-ui/commit/a85ee219eb7b1d758b02fb78a8b16474e8061d91))
+- **kit:** `LineClamp` fix unexpected closing ([#5630](https://github.com/taiga-family/taiga-ui/issues/5630))
+  ([d6751cd](https://github.com/taiga-family/taiga-ui/commit/d6751cdacf53262e8bdc32485dc61af21b333a32))
+- **kit:** `MultiSelect` fix incorrect height with multiline value content
+  ([#5618](https://github.com/taiga-family/taiga-ui/issues/5618))
+  ([5c41e09](https://github.com/taiga-family/taiga-ui/commit/5c41e0992ed1ae8c39b751d1434d77938ad753be))
+
 ## [3.48.0](https://github.com/taiga-family/taiga-ui/compare/v3.47.0...v3.48.0) (2023-10-09)
 
 ### Features
