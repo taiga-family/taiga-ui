@@ -1,7 +1,9 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
-    selector: 'tui-autofilled-style',
+    host: {
+        class: 'tui-autofilled-styles',
+    },
     template: '',
     styleUrls: ['./autofilled.style.less'],
     encapsulation: ViewEncapsulation.None,
