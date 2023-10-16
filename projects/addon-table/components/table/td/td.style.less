@@ -17,6 +17,10 @@
         left: 0;
     }
 
+    &:not(:last-child) {
+        animation: repaint 2s infinite;
+    }
+
     &:not(:first-child) {
         border-left: none;
     }
@@ -28,6 +32,12 @@
     &._editable {
         padding: 0;
         vertical-align: top;
+    }
+}
+
+@keyframes repaint {
+    to {
+        border-right-color: var(--tui-base-04);
     }
 }
 

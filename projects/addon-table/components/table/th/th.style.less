@@ -22,6 +22,10 @@
         border-left: none;
     }
 
+    &:not(:last-child) {
+        animation: repaint 2s infinite;
+    }
+
     &._sticky,
     :host-context(._stuck) &._sticky {
         position: sticky;
@@ -47,6 +51,12 @@
 
     :host-context(._stuck) & {
         z-index: 20;
+    }
+}
+
+@keyframes repaint {
+    to {
+        border-right-color: var(--tui-base-04);
     }
 }
 
