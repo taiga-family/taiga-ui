@@ -169,7 +169,7 @@ export class TuiInputDateRangeComponent
     }
 
     get focused(): boolean {
-        return !!this.textfield && this.textfield.focused;
+        return !!this.textfield?.focused;
     }
 
     get computedMobile(): boolean {
