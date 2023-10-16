@@ -9,10 +9,10 @@ import {
 } from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-badge-alert',
+    selector: 'tui-badge-notification',
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: '<ng-content></ng-content>',
-    styleUrls: ['./badge-alert.style.less'],
+    styleUrls: ['./badge-notification.style.less'],
     animations: [tuiPop],
     host: {
         '[attr.data-platform]': 'platform',
@@ -20,7 +20,7 @@ import {
         '[@tuiPop]': 'animation',
     },
 })
-export class TuiBadgeAlertComponent {
+export class TuiBadgeNotificationComponent {
     @Input()
     size: TuiSizeL | TuiSizeXS = 'l';
 

@@ -3,10 +3,10 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-badge-alert-example-2',
+    selector: 'tui-badge-notification-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
-export class TuiBadgeAlertExample2 {}
+export class TuiBadgeNotificationExample1 {}
