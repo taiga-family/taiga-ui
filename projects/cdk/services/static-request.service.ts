@@ -1,6 +1,7 @@
 import {isPlatformServer} from '@angular/common';
 import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
+import {LOCATION, WINDOW} from '@ng-web-apis/common';
+import {TUI_BASE_HREF} from '@taiga-ui/cdk/tokens';
 import {defer, from, Observable} from 'rxjs';
 import {fromFetch} from 'rxjs/fetch';
 import {shareReplay, switchMap} from 'rxjs/operators';
@@ -14,6 +15,8 @@ export class TuiStaticRequestService {
     constructor(
         @Inject(WINDOW) private readonly win: Window,
         @Inject(PLATFORM_ID) private readonly platformId: Record<string, unknown>,
+        @Inject(TUI_BASE_HREF) private readonly baseHref: string,
+        @Inject(LOCATION) private readonly locationRef: Location,
     ) {}
 
     request(url: string): Observable<string> {
@@ -21,6 +24,17 @@ export class TuiStaticRequestService {
 
         if (cache) {
             return cache;
+        }
+
+        if (!url.startsWith(`http`)) {
+            const hostname = `${this.locationRef.protocol}//${this.locationRef.hostname}`;
+            const port = this.locationRef.port ? `:${this.locationRef.port}` : ``;
+            const baseUrl =
+                `${hostname}${port}/` !== this.baseHref
+                    ? `${hostname}${port}/${this.baseHref}`
+                    : this.baseHref;
+
+            url = `${baseUrl}/${url}`.replace(/(https?:\/\/)|(\/)+/g, `$1$2`);
         }
 
         const response$ =

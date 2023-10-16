@@ -12,7 +12,7 @@ xdescribe(`TuiStaticRequest service`, () => {
     let service: TuiStaticRequestService;
 
     beforeEach(() => {
-        service = new TuiStaticRequestService({} as any, {} as any);
+        service = new TuiStaticRequestService({} as any, {} as any, ``, {} as any);
         // @ts-ignore
         // eslint-disable-next-line jest/no-jasmine-globals
         jasmine.Ajax.install();
