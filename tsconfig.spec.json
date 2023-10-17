@@ -1,9 +1,6 @@
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
-        "strict": false,
-        "incremental": true,
-        "outDir": "./out-tsc/spec",
         "types": ["jest", "jasmine", "node", "webpack-env", "ng-dev-mode"]
     },
     "exclude": ["**/schematics/**/*", "projects/demo-cypress"]
