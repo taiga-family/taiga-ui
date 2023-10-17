@@ -34,8 +34,8 @@ import {
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject, EMPTY, merge} from 'rxjs';
-import {distinctUntilChanged, skip} from 'rxjs/operators';
+import {BehaviorSubject, combineLatest, EMPTY, merge, Subject} from 'rxjs';
+import {distinctUntilChanged, map, share, skip} from 'rxjs/operators';
 
 import {TuiAccessorProxyDirective} from './accessor-proxy.directive';
 import {TUI_HOSTED_DROPDOWN_COMPONENT} from './hosted-dropdown.token';
@@ -103,8 +103,21 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @Input()
     canOpen = true;
 
+    private readonly onHoverTarget$ = new Subject<HTMLElement>();
+
+    private readonly _hover$ = combineLatest([
+        this.onHoverTarget$,
+        this.hover$ || EMPTY,
+    ]).pipe(
+        map(
+            ([target, hovered]: [HTMLElement, boolean]) =>
+                hovered && this.computedHost.contains(target),
+        ),
+        share(),
+    );
+
     @Output('openChange')
-    readonly open$ = merge(this.openChange, this.hover$ || EMPTY).pipe(
+    readonly open$ = merge(this.openChange, this._hover$ || EMPTY).pipe(
         skip(1),
         distinctUntilChanged(),
     );
@@ -182,6 +195,11 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         ) {
             this.updateOpen(!this.open);
         }
+    }
+
+    @HostListener('mouseover', ['$event.target'])
+    onMouseenter(target: HTMLElement): void {
+        this.onHoverTarget$.next(target);
     }
 
     @shouldCall(shouldClose)
