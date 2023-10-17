@@ -20,7 +20,7 @@ describe(`InputCardGrouped`, () => {
     describe(`API`, () => {
         beforeEach(({page}) => {
             documentationPage = new TuiDocumentationPagePO(page);
-            example = new TuiDocumentationPagePO(page).apiPageExample;
+            example = documentationPage.apiPageExample;
             inputCardGroupedPage = new TuiInputCardGroupedPO(example);
             cardGroupInput = inputCardGroupedPage.cardGroupInput;
             cleanerIcon = inputCardGroupedPage.cleanerIcon;
@@ -39,7 +39,7 @@ describe(`InputCardGrouped`, () => {
                 `02-input-card-grouped-cleared.png`,
             );
 
-            await documentationPage.apiPageExample.click({
+            await example.click({
                 force: true,
                 position: {x: 0, y: 0}, // click top left corner, away from field
             });
