@@ -12,6 +12,7 @@ import {
     Input,
     Output,
     QueryList,
+    Self,
 } from '@angular/core';
 import {
     EMPTY_QUERY,
@@ -26,7 +27,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DURATION, TuiOrientation} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
-import {delay} from 'rxjs/operators';
+import {delay, takeUntil} from 'rxjs/operators';
 
 import {TuiStepComponent} from './step/step.component';
 
@@ -62,6 +63,7 @@ export class TuiStepperComponent {
         @Inject(TuiScrollService) private readonly scrollService: TuiScrollService,
         @Inject(TuiResizeService) resize$: Observable<void>,
         @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
     ) {
         resize$.subscribe(() => this.scrollIntoView(this.activeItemIndex));
     }
@@ -159,6 +161,7 @@ export class TuiStepperComponent {
                 Math.max(0, left),
                 this.duration / 3,
             )
+            .pipe(takeUntil(this.destroy$))
             .subscribe();
     }
 }
