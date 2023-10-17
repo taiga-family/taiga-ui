@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.49.1](https://github.com/taiga-family/taiga-ui/compare/v3.49.0...v3.49.1) (2023-10-17)
+
+### Bug Fixes
+
+- **kit:** `Multiselect` fix broken template in non-editable mode
+  ([#5659](https://github.com/taiga-family/taiga-ui/issues/5659))
+  ([315fda5](https://github.com/taiga-family/taiga-ui/commit/315fda578c8090c3f05afc0a558e1aa8bd85c020))
+
 ## [3.49.0](https://github.com/taiga-family/taiga-ui/compare/v3.48.0...v3.49.0) (2023-10-16)
 
 ### Features
