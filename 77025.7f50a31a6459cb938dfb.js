@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[77025],{77025:e=>{e.exports='<tui-badge-alert>10</tui-badge-alert>\n<tui-badge-alert size="m">11</tui-badge-alert>\n<tui-badge-alert size="s">12</tui-badge-alert>\n<tui-badge-alert size="xs"></tui-badge-alert>\n'}}]);
