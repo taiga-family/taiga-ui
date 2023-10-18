@@ -9,7 +9,7 @@ export function tuiRgbaToHex(color: string): string {
             // eslint-disable-next-line unicorn/no-unsafe-regex
             .match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i) as unknown as number[]) ??
         [];
-    let alpha: number | string = (rgb?.[4] ?? ``).toString().trim();
+    let alpha: number | string = (rgb[4] ?? ``).toString().trim();
     let hex = rgb
         ? (rgb[1] | (1 << 8)).toString(16).slice(1) +
           (rgb[2] | (1 << 8)).toString(16).slice(1) +

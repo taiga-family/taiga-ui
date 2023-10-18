@@ -17,7 +17,7 @@ export class StackblitzDepsService {
 
     private async getAngularPackages(): Promise<Record<string, string>> {
         const {dependencies} = await import(`@demo/root-package`);
-        const ngVersion = `${dependencies[`@angular/cdk`]?.split(`.`)?.[0] ?? ``}.x.x`;
+        const ngVersion = `${dependencies[`@angular/cdk`].split(`.`)[0] ?? ``}.x.x`;
 
         return {
             '@angular/cdk': ngVersion,

@@ -35,7 +35,7 @@ export class TuiDropdownPositionDirective extends TuiPositionAccessor {
             this.previous = undefined;
         }
 
-        const hostRect = this.accessor?.getClientRect() ?? EMPTY_CLIENT_RECT;
+        const hostRect = this.accessor.getClientRect() ?? EMPTY_CLIENT_RECT;
         const viewport = this.viewport.getClientRect();
         const {minHeight, align, direction, offset} = this.options;
         const previous = this.previous || direction || 'bottom';

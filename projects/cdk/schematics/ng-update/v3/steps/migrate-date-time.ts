@@ -248,7 +248,7 @@ function replaceIdentifierReferences(
             }
 
             if (parent?.getText().startsWith(`this`)) {
-                parent = parent?.getParent();
+                parent = parent.getParent();
             }
 
             if (Node.isPropertyAccessExpression(parent)) {

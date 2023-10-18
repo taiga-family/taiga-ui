@@ -87,7 +87,7 @@ describe(`TuiActiveZoneDirective`, () => {
         }
 
         onClick(element: HTMLInputElement): void {
-            element?.focus();
+            element.focus();
         }
     }
 

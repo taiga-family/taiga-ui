@@ -44,7 +44,7 @@ export function replaceConst({from, to}: ReplacementConst): void {
                 to.moduleSpecifier,
             );
         } else {
-            ref?.replaceWithText(to.name);
+            ref.replaceWithText(to.name);
         }
     });
 }

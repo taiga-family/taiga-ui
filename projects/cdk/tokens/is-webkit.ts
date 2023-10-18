@@ -8,5 +8,5 @@ import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils';
 export const TUI_IS_WEBKIT = tuiCreateTokenFromFactory(
     () =>
         !!(inject(WINDOW) as unknown as {webkitConvertPointFromNodeToPage?: unknown})
-            ?.webkitConvertPointFromNodeToPage,
+            .webkitConvertPointFromNodeToPage,
 );

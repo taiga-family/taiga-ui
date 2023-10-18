@@ -52,7 +52,7 @@ export class TuiMultiSelectGroupComponent<T> {
     ) {}
 
     get size(): TuiSizeL | TuiSizeXS {
-        return this.options.first?.size || 'm';
+        return this.options.first.size || 'm';
     }
 
     @tuiPure

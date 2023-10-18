@@ -96,13 +96,13 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
      * we use fallback for correct processing of routing
      */
     private setBaseHrefIfNotPresent(): void {
-        if (this.doc.getElementsByTagName('base')?.[0]?.href) {
+        if (this.doc.getElementsByTagName('base')[0].href) {
             return;
         }
 
         const base = this.doc.createElement('base');
 
         base.href = this.appBaseHref;
-        this.doc.getElementsByTagName('head')?.[0]?.appendChild(base);
+        this.doc.getElementsByTagName('head')[0].appendChild(base);
     }
 }

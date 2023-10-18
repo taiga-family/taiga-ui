@@ -13,7 +13,7 @@ describe(`Deep`, () => {
             cy.tuiVisit(`/${path}/API`);
 
             cy.get(`table.t-table tui-select`).each(($select, selectIndex) => {
-                if (selectExclusions[path]?.includes(selectIndex)) {
+                if (selectExclusions[path].includes(selectIndex)) {
                     return cy.wrap($select, {log: false});
                 }
 
@@ -55,7 +55,7 @@ describe(`Deep`, () => {
                         : [],
                 )
                 .each((toggle$, index) => {
-                    if (toggleExclusions[path]?.includes(index)) {
+                    if (toggleExclusions[path].includes(index)) {
                         return cy.wrap(toggle$, {log: false});
                     }
 

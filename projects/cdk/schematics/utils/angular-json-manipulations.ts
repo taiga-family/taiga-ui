@@ -26,10 +26,10 @@ export async function isInvalidAngularJson(tree: Tree): Promise<boolean> {
 }
 
 function hasTaigaIcons(assets: Asset[]): boolean {
-    return !!assets?.find(asset =>
+    return !!assets.find(asset =>
         tuiIsString(asset)
             ? asset.includes(`taiga-ui`)
-            : asset?.input?.includes(`taiga-ui`),
+            : asset.input.includes(`taiga-ui`),
     );
 }
 

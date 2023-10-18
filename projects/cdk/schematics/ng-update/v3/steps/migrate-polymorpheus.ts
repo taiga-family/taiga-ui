@@ -85,7 +85,7 @@ function insertPolymorpheus({
     {{ text }}
 </ng-container>`;
 
-    const insertTo = element.sourceCodeLocation?.startTag?.endOffset;
+    const insertTo = element.sourceCodeLocation?.startTag.endOffset;
 
     if (insertTo) {
         recorder.insertRight(insertTo + templateOffset, content);

@@ -108,7 +108,7 @@ function insertTuiTextfieldInput({
             ? `<textarea tuiTextfield ${newAttrs}></textarea> `
             : `<input tuiTextfield ${newAttrs}/> `;
 
-    const insertTo = element.sourceCodeLocation?.endTag?.startOffset;
+    const insertTo = element.sourceCodeLocation?.endTag.startOffset;
 
     if (insertTo) {
         recorder.insertRight(insertTo + templateOffset, content);
@@ -166,5 +166,5 @@ const excludedAttrs: Record<string, string[]> = {
 };
 
 function exclusion({tagName}: Element, attrName: string): boolean {
-    return excludedAttrs[tagName]?.includes(attrName);
+    return excludedAttrs[tagName].includes(attrName);
 }

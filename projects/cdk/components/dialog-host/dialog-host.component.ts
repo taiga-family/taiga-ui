@@ -26,7 +26,7 @@ const FAKE_HISTORY_STATE = {label: 'ignoreMe'} as const;
 const isFakeHistoryState = (
     historyState: Record<string, unknown>,
 ): historyState is typeof FAKE_HISTORY_STATE =>
-    historyState?.label === FAKE_HISTORY_STATE.label;
+    historyState.label === FAKE_HISTORY_STATE.label;
 
 @Component({
     selector: 'tui-dialog-host',

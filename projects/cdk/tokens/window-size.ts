@@ -13,8 +13,8 @@ export const TUI_WINDOW_SIZE = new InjectionToken<Observable<ClientRect>>(
             return tuiTypedFromEvent(w, `resize`).pipe(
                 startWith(null),
                 map(() => {
-                    const width = Math.max(w.innerWidth, w.visualViewport?.width || 0);
-                    const height = Math.max(w.innerHeight, w.visualViewport?.height || 0);
+                    const width = Math.max(w.innerWidth, w.visualViewport.width || 0);
+                    const height = Math.max(w.innerHeight, w.visualViewport.height || 0);
 
                     return {
                         width,

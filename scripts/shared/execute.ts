@@ -12,6 +12,6 @@ export function execute(shell: string, options?: Partial<CommonExecOptions>): st
             encoding: `utf8`,
         },
     )
-        ?.toString()
+        .toString()
         .trim();
 }

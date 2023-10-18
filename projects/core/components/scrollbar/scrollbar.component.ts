@@ -83,6 +83,6 @@ export class TuiScrollbarComponent {
         const scrollLeft = offsetLeft + offsetWidth / 2 - clientWidth / 2;
 
         // ?. for our clients on Windows XP and Chrome 49
-        nativeElement.scrollTo?.(scrollLeft, scrollTop);
+        nativeElement.scrollTo(scrollLeft, scrollTop);
     }
 }

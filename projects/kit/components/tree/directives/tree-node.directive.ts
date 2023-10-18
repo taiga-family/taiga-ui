@@ -10,7 +10,7 @@ import {TUI_TREE_ACCESSOR} from '../misc/tree.tokens';
 export class TuiTreeNodeDirective<T> implements OnDestroy {
     @Input('tuiTreeNode')
     set value(value: T) {
-        this.directive?.register(this.component, value);
+        this.directive.register(this.component, value);
     }
 
     constructor(
@@ -22,6 +22,6 @@ export class TuiTreeNodeDirective<T> implements OnDestroy {
     ) {}
 
     ngOnDestroy(): void {
-        this.directive?.unregister(this.component);
+        this.directive.unregister(this.component);
     }
 }

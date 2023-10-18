@@ -29,8 +29,8 @@ export class TuiAppBarComponent {
             () =>
                 2 *
                 Math.max(
-                    this.side.first?.nativeElement.clientWidth,
-                    this.side.last?.nativeElement.clientWidth,
+                    this.side.first.nativeElement.clientWidth,
+                    this.side.last.nativeElement.clientWidth,
                 ),
         ),
     );

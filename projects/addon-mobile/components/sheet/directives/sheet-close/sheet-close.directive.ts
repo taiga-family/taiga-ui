@@ -21,7 +21,7 @@ export class TuiSheetCloseDirective {
                 () => this.scroll$.pipe(startWith(this.el.nativeElement.scrollTop)),
                 tuiIsFalsy,
             ),
-            filter(y => this.sheet.item?.closeable && this.shouldClose(y)),
+            filter(y => this.sheet.item.closeable && this.shouldClose(y)),
             distinctUntilChanged(),
             tuiZonefull(this.zone),
         ),

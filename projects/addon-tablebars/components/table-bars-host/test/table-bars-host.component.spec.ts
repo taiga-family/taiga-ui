@@ -51,7 +51,7 @@ describe(`TableBarsHost`, () => {
         component = testComponent.component;
         service = TestBed.inject(TuiTableBarsService);
         (service.bar$ as any)._events = [];
-        subscription?.unsubscribe();
+        subscription.unsubscribe();
     });
 
     function getBar(): DebugElement {

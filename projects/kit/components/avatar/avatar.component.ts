@@ -59,7 +59,7 @@ export class TuiAvatarComponent {
     }
 
     get iconAvatar(): boolean {
-        return tuiIsString(this.avatarUrl) && !!this.avatarUrl?.startsWith('tuiIcon');
+        return tuiIsString(this.avatarUrl) && !!this.avatarUrl.startsWith('tuiIcon');
     }
 
     get useFallback(): boolean {

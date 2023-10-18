@@ -49,7 +49,7 @@ export class TuiComboBoxExample1 {
     }
 
     extractValueFromEvent(event: Event): string | null {
-        return (event.target as HTMLInputElement)?.value || null;
+        return (event.target as HTMLInputElement).value || null;
     }
 
     /**

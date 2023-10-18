@@ -44,7 +44,7 @@ export class TuiDropdownPositionSidedDirective extends TuiPositionAccessor {
         }
 
         const {height, width} = rect;
-        const hostRect = this.vertical.accessor?.getClientRect() ?? EMPTY_CLIENT_RECT;
+        const hostRect = this.vertical.accessor.getClientRect() ?? EMPTY_CLIENT_RECT;
         const viewport = this.viewport.getClientRect();
         const {direction, minHeight, offset} = this.options;
         const align = this.options.align === 'center' ? 'left' : this.options.align;

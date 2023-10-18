@@ -18,7 +18,7 @@ const FLAKY_EXAMPLES = new Map<string, number[]>([
 export function tuiIsFlakyExample(path: string, exampleIndex: number): boolean {
     const exclusions = FLAKY_EXAMPLES.get(path) ?? [];
 
-    const excluded = !!exclusions?.includes(exampleIndex);
+    const excluded = !!exclusions.includes(exampleIndex);
 
     if (excluded) {
         console.info(`skip test for: ${path}[${exampleIndex}]`);

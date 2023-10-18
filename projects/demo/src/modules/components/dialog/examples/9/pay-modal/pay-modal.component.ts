@@ -50,7 +50,7 @@ export class PayModalComponent implements OnInit {
     paymentMode: TuiValuesOf<typeof PaymentMode> = PaymentMode.ByNewCard;
     loading$ = new BehaviorSubject(false);
     payProcessing$ = new BehaviorSubject(false);
-    amount: number = this.context?.data?.amount ?? 0;
+    amount: number = this.context.data.amount ?? 0;
     readonly PAYMENT_MODE = PaymentMode;
 
     constructor(

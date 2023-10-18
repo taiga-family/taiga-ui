@@ -51,7 +51,7 @@ export function tuiCreateNumberMask({
         }
 
         const isNegative =
-            (rawValue?.startsWith(CHAR_HYPHEN) || rawValue?.startsWith(CHAR_EN_DASH)) &&
+            (rawValue.startsWith(CHAR_HYPHEN) || rawValue.startsWith(CHAR_EN_DASH)) &&
             allowNegative;
 
         if (

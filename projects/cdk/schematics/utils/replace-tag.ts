@@ -13,7 +13,7 @@ export function replaceTag(
     addAttributes: string[] = [],
 ): void {
     const startTagOffset = sourceCodeLocation?.startTag.startOffset;
-    const endTagOffset = sourceCodeLocation?.endTag?.startOffset;
+    const endTagOffset = sourceCodeLocation?.endTag.startOffset;
 
     if (endTagOffset) {
         recorder.remove(endTagOffset + templateOffset + END_TAG_OFFSET, from.length);

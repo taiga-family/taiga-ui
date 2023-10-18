@@ -35,32 +35,32 @@ describe(`tuiGenerateDialogableRoute`, () => {
             ...dialogOptions,
         });
 
-        expect(result?.data?.dialogOptions).toEqual(dialogOptions);
+        expect(result.data?.dialogOptions).toEqual(dialogOptions);
     });
 
     it(`if path is undefined then isLazy: true`, () => {
         const result = tuiGenerateDialogableRoute(DialogComponent);
 
-        expect(result?.data?.isLazy).toBe(true);
+        expect(result.data?.isLazy).toBe(true);
     });
 
     it(`if path is empty string then isLazy: true`, () => {
         const result = tuiGenerateDialogableRoute(DialogComponent, {path: ``});
 
-        expect(result?.data?.isLazy).toBe(true);
+        expect(result.data?.isLazy).toBe(true);
     });
 
     it(`if path is not empty string then isLazy: false`, () => {
         const result = tuiGenerateDialogableRoute(DialogComponent, {path: `path`});
 
-        expect(result?.data?.isLazy).toBe(false);
+        expect(result.data?.isLazy).toBe(false);
     });
 
     describe(`checking back url calculation`, () => {
         it(`back url calculated correctly for undefined path`, () => {
             const result = tuiGenerateDialogableRoute(DialogComponent);
 
-            expect(result?.data?.backUrl).toBe(`..`);
+            expect(result.data?.backUrl).toBe(`..`);
         });
 
         it(`back url calculated correctly for empty path`, () => {
@@ -68,7 +68,7 @@ describe(`tuiGenerateDialogableRoute`, () => {
                 path: ``,
             });
 
-            expect(result?.data?.backUrl).toBe(`..`);
+            expect(result.data?.backUrl).toBe(`..`);
         });
 
         it(`back url calculated correctly for single segment`, () => {
@@ -76,7 +76,7 @@ describe(`tuiGenerateDialogableRoute`, () => {
                 path: `path`,
             });
 
-            expect(result?.data?.backUrl).toBe(`..`);
+            expect(result.data?.backUrl).toBe(`..`);
         });
 
         it(`back url calculated correctly for double segments`, () => {
@@ -84,7 +84,7 @@ describe(`tuiGenerateDialogableRoute`, () => {
                 path: `path/to`,
             });
 
-            expect(result?.data?.backUrl).toBe(`../..`);
+            expect(result.data?.backUrl).toBe(`../..`);
         });
 
         it(`back url calculated correctly for triple segments`, () => {
@@ -92,7 +92,7 @@ describe(`tuiGenerateDialogableRoute`, () => {
                 path: `path/to/dialog`,
             });
 
-            expect(result?.data?.backUrl).toBe(`../../..`);
+            expect(result.data?.backUrl).toBe(`../../..`);
         });
     });
 });

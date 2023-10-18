@@ -189,7 +189,7 @@ export class TuiInputCardGroupedComponent
     }
 
     get hasCleaner(): boolean {
-        return !!this.value?.card?.trim() && !this.readOnly && !this.computedDisabled;
+        return !!this.value?.card.trim() && !this.readOnly && !this.computedDisabled;
     }
 
     get hasDropdown(): boolean {
@@ -201,7 +201,7 @@ export class TuiInputCardGroupedComponent
     }
 
     get hasCardNumber(): boolean {
-        return !!this.value?.card?.trim();
+        return !!this.value?.card.trim();
     }
 
     get idCard(): string {

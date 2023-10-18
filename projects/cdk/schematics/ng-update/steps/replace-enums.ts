@@ -46,7 +46,7 @@ function replaceEnumWithString(
         if (Node.isTypeReferenceNode(parent) && !keepAsType) {
             const declaration = parent.getParent() as VariableDeclaration;
 
-            declaration.removeType?.();
+            declaration.removeType();
             continue;
         }
 

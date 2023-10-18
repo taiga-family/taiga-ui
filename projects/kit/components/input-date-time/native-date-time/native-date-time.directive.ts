@@ -24,10 +24,10 @@ export class TuiNativeDateTimeDirective {
             return '';
         }
 
-        return `${this.host.rawValue[0]?.toString(
+        return `${this.host.rawValue[0].toString(
             'YMD',
             '-',
-        )}T${this.host.rawValue[1]?.toString('HH:MM')}`;
+        )}T${this.host.rawValue[1].toString('HH:MM')}`;
     }
 
     onChange(value: string): void {

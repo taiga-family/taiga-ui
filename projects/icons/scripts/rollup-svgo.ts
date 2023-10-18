@@ -36,10 +36,10 @@ export function tuiRollupSvgo({
             try {
                 const result: SvgoResult = optimize(svgString, {path, ...options});
 
-                data = (result as OptimizedSvg)?.data || {};
+                data = (result as OptimizedSvg).data || {};
                 errorMessage = result.error;
             } catch (err: unknown) {
-                errorMessage = (err as Error)?.message;
+                errorMessage = (err as Error).message;
             }
 
             if (errorMessage) {

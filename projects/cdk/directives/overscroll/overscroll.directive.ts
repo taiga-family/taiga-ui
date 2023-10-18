@@ -102,7 +102,7 @@ export class TuiOverscrollDirective {
         if (
             !cancelable ||
             !tuiIsElement(target) ||
-            (target as HTMLInputElement)?.type === 'range'
+            (target as HTMLInputElement).type === 'range'
         ) {
             return;
         }

@@ -38,7 +38,7 @@ describe(`SVG options`, () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
-        fixture?.autoDetectChanges();
+        fixture.autoDetectChanges();
     });
 
     describe(`Default behaviour`, () => {

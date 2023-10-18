@@ -70,13 +70,13 @@ export function migrateTaigaProprietaryIcons(options: TuiSchema): Rule {
                           return;
                       }
 
-                      if (Array.isArray(targetOptions?.assets)) {
+                      if (Array.isArray(targetOptions.assets)) {
                           const tdsSrc = `@taiga-ui/proprietary-tds-icons/src`;
                           const hasIcons = (targetOptions.assets as Asset[]).find(
                               asset =>
                                   tuiIsString(asset)
                                       ? asset.includes(tdsSrc)
-                                      : asset?.input?.includes(tdsSrc),
+                                      : asset.input.includes(tdsSrc),
                           );
 
                           if (hasIcons) {

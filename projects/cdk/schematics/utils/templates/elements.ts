@@ -55,9 +55,8 @@ export function findElementsWithAttribute(
     html: string,
     attributeName: string,
 ): Element[] {
-    return findElementsInTemplateByFn(
-        html,
-        el => el.attrs?.some(attr => attr.name === attributeName.toLowerCase()),
+    return findElementsInTemplateByFn(html, el =>
+        el.attrs.some(attr => attr.name === attributeName.toLowerCase()),
     );
 }
 
@@ -74,7 +73,7 @@ export function findElementsWithAttributeOnTag(
     return findElementsInTemplateByFn(
         html,
         el =>
-            el.attrs?.some(attr =>
+            el.attrs.some(attr =>
                 attributeNames.map(name => name.toLowerCase()).includes(attr.name),
             ) &&
             (tagNames.includes(el.tagName) || !tagNames.length),
@@ -123,7 +122,7 @@ export function findAttributeOnElementWithAttrs(
 
 /** Shorthand function that checks if the specified element contains the given attribute. */
 export function hasElementAttribute(element: Element, attributeName: string): boolean {
-    return element.attrs?.some(attr => attr.name === attributeName.toLowerCase());
+    return element.attrs.some(attr => attr.name === attributeName.toLowerCase());
 }
 
 /** Gets the start offset of the given attribute from a Parse5 element. */

@@ -21,9 +21,10 @@ export function bumpTuiDeps({
     for (const key of keys) {
         if (tuiIsString(deps[key])) {
             deps[key] = isPeerDependency
-                ? (deps[key] as string)?.replace(prevVersion, newVersion)
+                ? (deps[key] as string | undefined)?.replace(prevVersion, newVersion) ??
+                  ``
                 : `^${newVersion}`;
-        } else if (deps[key]?.hasOwnProperty(`requires`)) {
+        } else if ((deps[key] as string | undefined)?.hasOwnProperty(`requires`)) {
             bumpTuiDeps({
                 deps: (deps[key] as Record<string, Record<string, string>>).requires,
                 isPeerDependency,

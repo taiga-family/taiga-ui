@@ -46,7 +46,7 @@ function wrapIcon(source: string, name: string): WrappedContent | string {
     const src = source.slice(Math.max(0, source.indexOf(START)));
     const attributes = src.slice(0, Math.max(0, src.indexOf(`>`)));
 
-    if (!attributes?.includes(WIDTH_SEARCH) || !attributes.includes(HEIGHT_SEARCH)) {
+    if (!attributes.includes(WIDTH_SEARCH) || !attributes.includes(HEIGHT_SEARCH)) {
         return src;
     }
 

@@ -61,7 +61,7 @@ export class TuiInputRangeComponent
     implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor
 {
     @ViewChildren(TuiInputNumberComponent)
-    private readonly inputNumberRefs: QueryList<TuiInputNumberComponent> = EMPTY_QUERY;
+    private readonly inputNumberRefs: QueryList<TuiInputNumberComponent | null> = EMPTY_QUERY;
 
     @ViewChild(TuiRangeComponent)
     private readonly rangeRef: TuiRangeComponent | null = null;

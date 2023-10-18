@@ -30,7 +30,7 @@ export class TuiAutofilledDirective {
     @HostListener('transitionstart', ['$event'])
     transitionStartHandler({propertyName, target}: TransitionEvent): void {
         const matchedAutofill =
-            propertyName.includes('box-shadow') && (target as Element)?.matches('input');
+            propertyName.includes('box-shadow') && (target as Element).matches('input');
 
         if (matchedAutofill) {
             this.autofilled = !this.autofilled;

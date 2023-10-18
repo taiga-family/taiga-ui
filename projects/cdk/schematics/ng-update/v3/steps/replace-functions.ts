@@ -42,9 +42,9 @@ function replaceDeprecatedFunction(): void {
             const parent = ref.getParent();
 
             if (Node.isImportSpecifier(parent) || Node.isCallExpression(parent)) {
-                parent?.replaceWithText(
+                parent.replaceWithText(
                     parent
-                        ?.getText({includeJsDocComments: false})
+                        .getText({includeJsDocComments: false})
                         .trim()
                         .replace(from, to ?? from),
                 );
@@ -64,7 +64,7 @@ function replacePadStart(references: Node[]): void {
 
             parent.replaceWithText(
                 `${targetString.getText()}.padStart(${length.getText()}, ${
-                    pad?.getText() ?? `" "`
+                    pad.getText() ?? `" "`
                 })`,
             );
         }
@@ -83,7 +83,7 @@ function replaceNativeFocused(references: Node[]): void {
             const setFocused = !focusedArg || focusedArg.getText() === `true`;
 
             const focus = `${targetString.getText()}.focus(${
-                preventScroll?.getText() ? `{preventScroll: true}` : ``
+                preventScroll.getText() ? `{preventScroll: true}` : ``
             })`;
             const blur = `${targetString.getText()}.blur()`;
 

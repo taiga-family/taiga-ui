@@ -28,7 +28,7 @@ export const tuiWaitAllImgInside = (
                 .get(`img`, {log: false})
                 .each((img: JQuery<HTMLImageElement>) => {
                     const nativeImage = img.get(0);
-                    const url = nativeImage?.src || nativeImage?.srcset;
+                    const url = nativeImage.src || nativeImage.srcset;
 
                     if (!url) {
                         return;

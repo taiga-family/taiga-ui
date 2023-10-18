@@ -270,7 +270,7 @@ describe(`InputCardGrouped`, () => {
 
     function expectCardOutlet(): boolean {
         return (
-            fixture.componentRef.location?.nativeElement?.querySelectorAll(
+            fixture.componentRef.location.nativeElement?.querySelectorAll(
                 `.t-icon-outlet`,
             )?.length === 1 || false
         );
