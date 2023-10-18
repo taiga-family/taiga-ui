@@ -29,7 +29,7 @@ export class TestComponent {
 }`;
 
 const COMPONENT_AFTER = `
-import { TuiThumbnailCardModule, TuiThumbnailCardComponent } from '@taiga-ui/addon-commerce';
+import { TuiThumbnailCardComponent, TuiThumbnailCardModule } from '@taiga-ui/addon-commerce';
 
 @Component({
     standalone: true,

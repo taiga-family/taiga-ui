@@ -1,7 +1,6 @@
 /* eslint-disable rxjs/no-topromise */
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-import {expect} from '@jest/globals';
 import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 import {
     createProject,
