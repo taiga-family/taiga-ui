@@ -8,6 +8,4 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
     encapsulation,
 })
-export class TuiDropdownHoverExample4 {
-    open = false;
-}
+export class TuiDropdownHoverExample4 {}

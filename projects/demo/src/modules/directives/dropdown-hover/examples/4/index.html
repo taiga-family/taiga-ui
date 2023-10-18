@@ -2,18 +2,15 @@
     tuiDropdownHover
     tuiDropdownLimitWidth="fixed"
     [content]="dropdown"
-    [(open)]="open"
 >
     <div tuiGroup>
         <button
-            size="l"
             tuiButton
             type="button"
         >
             Dropdown won't open
         </button>
         <button
-            size="l"
             tuiButton
             tuiHostedDropdownHost
             type="button"
@@ -22,9 +19,6 @@
         </button>
     </div>
 </tui-hosted-dropdown>
-<ng-template
-    #dropdown
-    let-activeZone
->
-    <p class="margin">There is in dropdown template</p>
+<ng-template #dropdown>
+    <p>Dropdown content</p>
 </ng-template>
