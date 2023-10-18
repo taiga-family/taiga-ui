@@ -4,11 +4,11 @@ import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 
 @Component({
-    selector: 'example-badge-alert',
-    templateUrl: './badge-alert.template.html',
+    selector: 'example-badge-notification',
+    templateUrl: './badge-notification.template.html',
     changeDetection,
 })
-export class ExampleTuiBadgeAlertComponent {
+export class ExampleTuiBadgeNotificationComponent {
     readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );
