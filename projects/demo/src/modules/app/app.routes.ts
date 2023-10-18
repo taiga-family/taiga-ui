@@ -215,12 +215,12 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: `experimental/badge-alert`,
+        path: `experimental/badge-notification`,
         loadChildren: async () =>
-            (await import(`../experimental/badge-alert/badge-alert.module`))
-                .ExampleTuiBadgeAlertModule,
+            (await import(`../experimental/badge-notification/badge-notification.module`))
+                .ExampleTuiBadgeNotificationModule,
         data: {
-            title: `BadgeAlert`,
+            title: `BadgeNotification`,
         },
     },
     {
