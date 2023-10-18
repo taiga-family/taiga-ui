@@ -1,11 +1,11 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {
-    DevkitFileSystem,
-    SourceFile,
     createProject,
+    DevkitFileSystem,
     getSourceFiles,
     saveActiveProject,
     setActiveProject,
+    SourceFile,
 } from 'ng-morph';
 import {ts} from 'ts-morph';
 
@@ -13,9 +13,9 @@ import {ALL_FILES, ALL_TS_FILES} from '../../../constants';
 import {TuiSchema} from '../../../ng-add/schema';
 import {
     FINISH_SYMBOL,
+    infoLog,
     REPLACE_SYMBOL,
     SMALL_TAB_SYMBOL,
-    infoLog,
     titleLog,
 } from '../../../utils/colored-log';
 import {projectRoot} from '../../../utils/project-root';
@@ -43,6 +43,7 @@ function updateTuiMatcher(options: TuiSchema, fileSystem: DevkitFileSystem): voi
         const replacements = findTuiMatcherFirstTypeArgReplacements(sourceFile);
         const sourceText = sourceFile.getFullText();
         const transformed = replaceSubstrings(sourceText, replacements);
+
         sourceFile.replaceWithText(transformed);
     });
 
@@ -51,8 +52,9 @@ function updateTuiMatcher(options: TuiSchema, fileSystem: DevkitFileSystem): voi
     setActiveProject(createProject(fileSystem.tree, projectRoot(), ALL_FILES));
 }
 
-function findTuiMatcherFirstTypeArgReplacements(sourceFile: SourceFile) {
+function findTuiMatcherFirstTypeArgReplacements(sourceFile: SourceFile): Replacement[] {
     const replacements: Replacement[] = [];
+
     sourceFile.transform(traversal => {
         const node = traversal.visitChildren();
 
@@ -61,18 +63,22 @@ function findTuiMatcherFirstTypeArgReplacements(sourceFile: SourceFile) {
         }
 
         const typeArguments = node.typeArguments;
+
         if (!typeArguments || typeArguments.length !== 1) {
             return node;
         }
 
         const [inputType] = typeArguments;
+
         replacements.push({
             start: inputType.getStart(),
             from: inputType.getText(),
             to: `[${inputType.getText()}, ...any]`,
         });
+
         return node;
     });
+
     return replacements;
 }
 
@@ -86,6 +92,7 @@ function renameTuiTypedMatcher(options: TuiSchema, fileSystem: DevkitFileSystem)
         const replacements = findTuiTypedMatcherReplacements(sourceFile);
         const sourceText = sourceFile.getFullText();
         const transformed = replaceSubstrings(sourceText, replacements);
+
         sourceFile.replaceWithText(transformed);
         sourceFile.organizeImports();
     });
@@ -95,8 +102,9 @@ function renameTuiTypedMatcher(options: TuiSchema, fileSystem: DevkitFileSystem)
     setActiveProject(createProject(fileSystem.tree, projectRoot(), ALL_FILES));
 }
 
-function findTuiTypedMatcherReplacements(sourceFile: SourceFile) {
+function findTuiTypedMatcherReplacements(sourceFile: SourceFile): Replacement[] {
     const replacements: Replacement[] = [];
+
     sourceFile.transform(traversal => {
         const node = traversal.visitChildren();
 
@@ -112,7 +120,9 @@ function findTuiTypedMatcherReplacements(sourceFile: SourceFile) {
             from: `TuiTypedMatcher`,
             to: `TuiMatcher`,
         });
+
         return node;
     });
+
     return replacements;
 }

@@ -1,10 +1,10 @@
-export type Replacement = {
+export interface Replacement {
     start: number;
     from: string;
     to: string;
-};
+}
 
-function replaceSubstring(text: string, replacement: Replacement) {
+function replaceSubstring(text: string, replacement: Replacement): string {
     return (
         text.slice(0, replacement.start) +
         replacement.to +
@@ -12,7 +12,7 @@ function replaceSubstring(text: string, replacement: Replacement) {
     );
 }
 
-export function replaceSubstrings(text: string, replacements: Replacement[]) {
+export function replaceSubstrings(text: string, replacements: Replacement[]): string {
     let transformed = text;
     let acc = 0;
 
