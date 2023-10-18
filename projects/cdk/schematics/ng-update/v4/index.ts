@@ -7,6 +7,8 @@ import {TuiSchema} from '../../ng-add/schema';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../../utils/colored-log';
 import {getExecutionTime} from '../../utils/get-execution-time';
 import {replaceThumbnailCard} from './steps/replace-thumbnail-card';
+import {restoreTuiMapper} from './steps/restore-tui-mapper';
+import {restoreTuiMatcher} from './steps/restore-tui-matcher';
 
 export function updateToV4(options: TuiSchema): Rule {
     const t0 = performance.now();
@@ -18,6 +20,8 @@ export function updateToV4(options: TuiSchema): Rule {
 
     return chain([
         replaceThumbnailCard(options),
+        restoreTuiMapper(options),
+        restoreTuiMatcher(options),
         () => {
             const executionTime = getExecutionTime(t0, performance.now());
 
