@@ -40,7 +40,7 @@ import {TuiLineChartHintDirective} from './line-chart-hint.directive';
     viewProviders: [tuiHintOptionsProvider({direction: 'top', hideDelay: 0})],
 })
 export class TuiLineChartComponent {
-    private readonly _hovered$ = new Subject<number>();
+    private readonly hover$ = new Subject<number>();
 
     private readonly autoIdString: string;
 
@@ -97,7 +97,7 @@ export class TuiLineChartComponent {
 
     @tuiPure
     get hovered$(): Observable<number> {
-        return this._hovered$.pipe(distinctUntilChanged(), tuiZoneOptimized(this.zone));
+        return this.hover$.pipe(distinctUntilChanged(), tuiZoneOptimized(this.zone));
     }
 
     get hintContent(): PolymorpheusContent<TuiLineChartHintContext<TuiPoint>> {
@@ -199,7 +199,7 @@ export class TuiLineChartComponent {
     }
 
     onHovered(index: number): void {
-        this._hovered$.next(index);
+        this.hover$.next(index);
     }
 
     private get isSinglePoint(): boolean {
