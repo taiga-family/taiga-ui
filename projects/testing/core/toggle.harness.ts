@@ -4,10 +4,10 @@ import {TuiSvgHarness} from './svg.harness';
 
 export class TuiToggleHarness extends TuiComponentHarness {
     static hostSelector = `tui-toggle`;
-    protected _input = this.locatorFor(`input`);
+    protected input = this.locatorFor(`input`);
 
     async toggle(): Promise<void> {
-        return (await this._input()).click();
+        return (await this.input()).click();
     }
 
     async getIcons(): Promise<TuiSvgHarness[]> {
