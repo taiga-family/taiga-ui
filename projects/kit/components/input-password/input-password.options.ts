@@ -10,6 +10,7 @@ export interface TuiInputPasswordOptions {
     }>;
 }
 
+// TODO: swap icon names in v4.0
 /** Default values for the input password options. */
 export const TUI_INPUT_PASSWORD_DEFAULT_OPTIONS: TuiInputPasswordOptions = {
     icons: {
