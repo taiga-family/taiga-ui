@@ -33,6 +33,7 @@ import {
     TuiInputNumberModule,
     TuiRadioListModule,
     TuiSelectModule,
+    TuiUnmaskHandlerModule,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -86,6 +87,7 @@ import {ExampleTuiInputComponent} from './input.component';
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputComponent)),
         TuiTextCodeModule,
         MaskitoModule,
+        TuiUnmaskHandlerModule,
     ],
     declarations: [
         ExampleTuiInputComponent,
