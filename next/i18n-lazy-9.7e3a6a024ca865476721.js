@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[29868],{84356:(e,a,n)=>{n.r(a),n.d(a,{TUI_CHINESE_LANGUAGE_ADDON_TABLE:()=>s});const s={showHideText:"显示/隐藏",paginationTexts:{pages:"页面",linesPerPage:"每页行数",of:"于"}}}}]);
