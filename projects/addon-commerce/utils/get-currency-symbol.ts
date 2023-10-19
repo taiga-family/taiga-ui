@@ -79,7 +79,7 @@ export function tuiGetCurrencySymbol(currency: TuiCurrencyVariants): string | nu
             return `RM`;
         case TuiCurrency.BelarusianRuble:
         case TuiCurrencyCode.BelarusianRuble:
-            return `Rbl`;
+            return `Br`;
         case TuiCurrency.GeorgianLari:
         case TuiCurrencyCode.GeorgianLari:
             return `₾`;

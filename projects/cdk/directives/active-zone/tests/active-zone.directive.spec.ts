@@ -113,42 +113,42 @@ describe(`TuiActiveZoneDirective`, () => {
     });
 
     it(`initial composite zone`, () => {
-        expect(getZoneInfo(`#parent-info`)).toEqual(`Parent zone: false`);
-        expect(getZoneInfo(`#child-info`)).toEqual(`Child zone: false`);
+        expect(getZoneInfo(`#parent-info`)).toBe(`Parent zone: false`);
+        expect(getZoneInfo(`#child-info`)).toBe(`Child zone: false`);
     });
 
     it(`mark parent zone when click on button inside zone`, () => {
         el.querySelector<HTMLButtonElement>(`#button-inside-zone`)?.focus();
 
-        expect(getZoneInfo(`#parent-info`)).toEqual(`Parent zone: true`);
-        expect(getZoneInfo(`#child-info`)).toEqual(`Child zone: false`);
+        expect(getZoneInfo(`#parent-info`)).toBe(`Parent zone: true`);
+        expect(getZoneInfo(`#child-info`)).toBe(`Child zone: false`);
     });
 
     it(`mark parent and child zone when focus on input inside zone`, () => {
         el.querySelector<HTMLInputElement>(`#input-inside-zone`)?.focus();
 
-        expect(getZoneInfo(`#parent-info`)).toEqual(`Parent zone: true`);
-        expect(getZoneInfo(`#child-info`)).toEqual(`Child zone: true`);
+        expect(getZoneInfo(`#parent-info`)).toBe(`Parent zone: true`);
+        expect(getZoneInfo(`#child-info`)).toBe(`Child zone: true`);
     });
 
     it(`manual mark parent and child zone`, () => {
         el.querySelector<HTMLButtonElement>(`#focus-input-inside`)?.click();
 
-        expect(getZoneInfo(`#parent-info`)).toEqual(`Parent zone: true`);
-        expect(getZoneInfo(`#child-info`)).toEqual(`Child zone: true`);
+        expect(getZoneInfo(`#parent-info`)).toBe(`Parent zone: true`);
+        expect(getZoneInfo(`#child-info`)).toBe(`Child zone: true`);
     });
 
     it(`not affected when focus input outside zone`, () => {
         el.querySelector<HTMLInputElement>(`#input-outside-zone`)?.focus();
 
-        expect(getZoneInfo(`#parent-info`)).toEqual(`Parent zone: false`);
-        expect(getZoneInfo(`#child-info`)).toEqual(`Child zone: false`);
+        expect(getZoneInfo(`#parent-info`)).toBe(`Parent zone: false`);
+        expect(getZoneInfo(`#child-info`)).toBe(`Child zone: false`);
     });
 
     it(`not affected when click button outside zone`, () => {
         el.querySelector<HTMLButtonElement>(`#button-outside-zone`)?.focus();
 
-        expect(getZoneInfo(`#parent-info`)).toEqual(`Parent zone: false`);
-        expect(getZoneInfo(`#child-info`)).toEqual(`Child zone: false`);
+        expect(getZoneInfo(`#parent-info`)).toBe(`Parent zone: false`);
+        expect(getZoneInfo(`#child-info`)).toBe(`Child zone: false`);
     });
 });

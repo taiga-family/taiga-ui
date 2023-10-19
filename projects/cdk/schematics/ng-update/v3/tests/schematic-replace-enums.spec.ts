@@ -39,7 +39,7 @@ describe(`ng-update`, () => {
             )
             .toPromise();
 
-        expect(tree.readContent(`test/app/app.component.ts`)).toEqual(
+        expect(tree.readContent(`test/app/app.component.ts`)).toBe(
             `import {Component} from '@angular/core';
 import {some} from '@taiga-ui/cdk';
 import {TuiLineType} from '@taiga-ui/cdk';

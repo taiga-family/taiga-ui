@@ -215,12 +215,12 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: `experimental/badge-alert`,
+        path: `experimental/badge-notification`,
         loadChildren: async () =>
-            (await import(`../experimental/badge-alert/badge-alert.module`))
-                .ExampleTuiBadgeAlertModule,
+            (await import(`../experimental/badge-notification/badge-notification.module`))
+                .ExampleTuiBadgeNotificationModule,
         data: {
-            title: `BadgeAlert`,
+            title: `BadgeNotification`,
         },
     },
     {
@@ -241,11 +241,28 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/compass`,
+        loadChildren: async () =>
+            (await import(`../experimental/compass/compass.module`))
+                .ExampleTuiCompassModule,
+        data: {
+            title: `Compass`,
+        },
+    },
+    {
         path: `experimental/fade`,
         loadChildren: async () =>
             (await import(`../experimental/fade/fade.module`)).ExampleTuiFadeModule,
         data: {
             title: `Fade`,
+        },
+    },
+    {
+        path: `experimental/rating`,
+        loadChildren: async () =>
+            (await import(`../experimental/rating/rating.module`)).ExampleTuiRatingModule,
+        data: {
+            title: `Rating`,
         },
     },
     {
@@ -258,12 +275,12 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: `experimental/compass`,
+        path: `experimental/surface`,
         loadChildren: async () =>
-            (await import(`../experimental/compass/compass.module`))
-                .ExampleTuiCompassModule,
+            (await import(`../experimental/surface/surface.module`))
+                .ExampleTuiSurfaceModule,
         data: {
-            title: `Compass`,
+            title: `Surface`,
         },
     },
     {

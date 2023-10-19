@@ -356,8 +356,8 @@ describe(`TuiTime`, () => {
         it(`the primitive value of TuiTime`, () => {
             const time = new TuiTime(6, 36, 0, 0);
 
-            expect(typeof Number(time)).toEqual(`number`);
-            expect(typeof time.valueOf()).toEqual(`number`);
+            expect(typeof Number(time)).toBe(`number`);
+            expect(typeof time.valueOf()).toBe(`number`);
             expect(time > new TuiTime(5, 30, 0, 0)).toBeTruthy();
             expect(time < new TuiTime(7, 36, 0, 0)).toBeTruthy();
         });
@@ -367,24 +367,24 @@ describe(`TuiTime`, () => {
         it(`a number if the hint is number`, () => {
             const time = new TuiTime(10, 36, 5, 0);
 
-            expect(typeof Number(time)).toEqual(`number`);
-            expect(typeof time.valueOf()).toEqual(`number`);
-            expect(typeof time[Symbol.toPrimitive](`number`)).toEqual(`number`);
+            expect(typeof Number(time)).toBe(`number`);
+            expect(typeof time.valueOf()).toBe(`number`);
+            expect(typeof time[Symbol.toPrimitive](`number`)).toBe(`number`);
         });
 
         it(`a string if the hint is string`, () => {
             const time = new TuiTime(1, 12, 5, 10);
 
-            expect(typeof String(time)).toEqual(`string`);
-            expect(typeof time.toString()).toEqual(`string`);
-            expect(typeof time[Symbol.toPrimitive](`string`)).toEqual(`string`);
+            expect(typeof String(time)).toBe(`string`);
+            expect(typeof time.toString()).toBe(`string`);
+            expect(typeof time[Symbol.toPrimitive](`string`)).toBe(`string`);
         });
 
         it(`a string if the hint is default`, () => {
             const time = new TuiTime(15, 54, 0, 0);
 
-            expect(typeof `${time}`).toEqual(`string`);
-            expect(typeof time[Symbol.toPrimitive](`default`)).toEqual(`string`);
+            expect(typeof `${time}`).toBe(`string`);
+            expect(typeof time[Symbol.toPrimitive](`default`)).toBe(`string`);
         });
     });
 });

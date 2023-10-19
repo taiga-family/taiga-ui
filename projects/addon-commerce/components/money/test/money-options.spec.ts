@@ -40,12 +40,12 @@ describe(`Money component options`, () => {
     });
 
     it(`override by custom options`, () => {
-        expect(testComponent.component.currency).toEqual(`EUR`);
-        expect(testComponent.component.sign).toEqual(`never`);
-        expect(testComponent.component.singleColor).toEqual(false);
-        expect(testComponent.component.precision).toEqual(1);
-        expect(testComponent.component.colored).toEqual(false);
-        expect(testComponent.component.red).toEqual(false);
-        expect(testComponent.component.signSymbol).toEqual(``);
+        expect(testComponent.component.currency).toBe(`EUR`);
+        expect(testComponent.component.sign).toBe(`never`);
+        expect(testComponent.component.singleColor).toBe(false);
+        expect(testComponent.component.precision).toBe(1);
+        expect(testComponent.component.colored).toBe(false);
+        expect(testComponent.component.red).toBe(false);
+        expect(testComponent.component.signSymbol).toBe(``);
     });
 });

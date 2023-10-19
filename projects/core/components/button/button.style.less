@@ -144,9 +144,9 @@
 }
 
 .t-wrapper {
-    .createStackingContext();
     box-sizing: border-box;
     cursor: pointer;
+    isolation: isolate;
 
     :host[data-size='xs'] & {
         padding: 0 var(--tui-padding, @padding-xs);

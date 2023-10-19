@@ -17,18 +17,18 @@ describe(`TuiIsoToCountryCodePipe`, () => {
     it(`should transform US iso code to country code`, () => {
         const transformed = pipe.transform(TuiCountryIsoCode.US);
 
-        expect(transformed).toEqual(`+1`);
+        expect(transformed).toBe(`+1`);
     });
 
     it(`should transform GB iso code to country code`, () => {
         const transformed = pipe.transform(TuiCountryIsoCode.GB);
 
-        expect(transformed).toEqual(`+44`);
+        expect(transformed).toBe(`+44`);
     });
 
     it(`should transform AU iso code to country code`, () => {
         const transformed = pipe.transform(TuiCountryIsoCode.AU);
 
-        expect(transformed).toEqual(`+61`);
+        expect(transformed).toBe(`+61`);
     });
 });

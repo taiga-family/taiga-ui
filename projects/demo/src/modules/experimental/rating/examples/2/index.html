@@ -1,0 +1,20 @@
+<label tuiLabel="Are you satisfied with Taiga UI?">
+    <tui-rating
+        class="rating"
+        [attr.data-value]="value"
+        [icon]="icon"
+        [max]="3"
+        [(ngModel)]="value"
+    ></tui-rating>
+    <button
+        *ngIf="value"
+        appearance="icon"
+        iconLeft="tuiIconCloseLarge"
+        size="s"
+        tuiIconButton
+        class="button"
+        (click)="value = 0"
+    >
+        Clear
+    </button>
+</label>

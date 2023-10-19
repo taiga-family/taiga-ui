@@ -45,15 +45,12 @@ describe(`Highlight Directive`, () => {
         }).compileComponents();
 
         loader = TestBed.inject(HighlightLoader);
-    }));
-
-    beforeEach(() => {
         fixture = TestBed.createComponent(TestHighlightComponent);
         component = fixture.componentInstance;
         directiveElement = fixture.debugElement.query(By.directive(Highlight));
         directiveInstance = directiveElement.injector.get(Highlight);
         fixture.detectChanges();
-    });
+    }));
 
     it(`should create highlight directive`, () => {
         expect(directiveInstance).not.toBeNull();

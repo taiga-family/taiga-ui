@@ -56,6 +56,6 @@ describe(`InputTag [TUI_TAG_STATUS=neutral]`, () => {
             fixture.nativeElement
                 .querySelector(`[data-status]`)
                 ?.getAttribute(`data-status`),
-        ).toEqual(`neutral`);
+        ).toBe(`neutral`);
     });
 });

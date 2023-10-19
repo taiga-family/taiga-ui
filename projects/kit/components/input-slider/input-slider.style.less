@@ -1,9 +1,10 @@
 @import 'taiga-ui-local';
 
 :host {
-    .createStackingContext();
+    position: relative;
     display: block;
     height: max-content;
+    isolation: isolate;
 }
 
 // Don't change CSS-selector (we require the such specificity to override default styles without !important)

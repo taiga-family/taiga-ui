@@ -1,7 +1,7 @@
 ```html
 <tui-badged-content>
-  <tui-badge-alert tuiSlot="top">1</tui-badge-alert>
+  <tui-badge-notification tuiSlot="top">1</tui-badge-notification>
   <tui-avatar src="tuiIconUserLarge"></tui-avatar>
-  <tui-badge-alert tuiSlot="bottom">1</tui-badge-alert>
+  <tui-badge-notification tuiSlot="bottom">1</tui-badge-notification>
 </tui-badged-content>
 ```

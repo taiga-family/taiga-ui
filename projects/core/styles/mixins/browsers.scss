@@ -1,0 +1,23 @@
+@mixin firefox-only {
+    @supports (-moz-appearance: none) {
+        @content;
+    }
+}
+
+@mixin safari-only {
+    @supports (-webkit-hyphens: none) {
+        @content;
+    }
+}
+
+@mixin ios-only {
+    @supports (-webkit-touch-callout: none) {
+        @content;
+    }
+}
+
+@mixin chrome-only {
+    @supports (not (-moz-appearance: none)) and (not (-webkit-hyphens: none)) {
+        @content;
+    }
+}

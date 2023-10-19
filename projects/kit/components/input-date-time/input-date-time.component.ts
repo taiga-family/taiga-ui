@@ -170,7 +170,7 @@ export class TuiInputDateTimeComponent
     }
 
     get focused(): boolean {
-        return !!this.textfield && this.textfield.focused;
+        return !!this.textfield?.focused;
     }
 
     get calendarIcon(): TuiInputDateOptions['icon'] {
@@ -228,7 +228,7 @@ export class TuiInputDateTimeComponent
     }
 
     get nativeValue(): string {
-        return this.nativeFocusableElement ? this.nativeFocusableElement.value : '';
+        return this.nativeFocusableElement?.value || '';
     }
 
     set nativeValue(value: string) {

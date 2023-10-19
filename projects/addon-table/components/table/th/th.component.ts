@@ -76,7 +76,17 @@ export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
         return this.options.sortIcons.off;
     }
 
+    updateSorterAndDirection(): void {
+        this.table?.updateSorterAndDirection(
+            this.isCurrentAndAscDirection ? null : this.sorter,
+        );
+    }
+
     onResized(width: number): void {
         this.width = width;
+    }
+
+    private get isCurrentAndAscDirection(): boolean {
+        return this.sorter === this.table?.sorter && this.table?.direction === -1;
     }
 }

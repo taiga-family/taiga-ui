@@ -6,7 +6,7 @@ describe(`tuiIsNodeIn`, () => {
 
         document.body.appendChild(div);
 
-        expect(tuiIsNodeIn(div, `div`)).toEqual(true);
+        expect(tuiIsNodeIn(div, `div`)).toBe(true);
 
         document.body.removeChild(div);
     });
@@ -18,7 +18,7 @@ describe(`tuiIsNodeIn`, () => {
 
         document.body.appendChild(div);
 
-        expect(tuiIsNodeIn(div, `.hello`)).toEqual(true);
+        expect(tuiIsNodeIn(div, `.hello`)).toBe(true);
 
         document.body.removeChild(div);
     });
@@ -31,7 +31,7 @@ describe(`tuiIsNodeIn`, () => {
 
         document.body.appendChild(p);
 
-        expect(tuiIsNodeIn(textNode, `p`)).toEqual(true);
+        expect(tuiIsNodeIn(textNode, `p`)).toBe(true);
 
         document.body.removeChild(p);
     });

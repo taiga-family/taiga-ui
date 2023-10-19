@@ -15,9 +15,7 @@ describe(`TuiLanguageSwitcherComponent`, () => {
             imports: [ReactiveFormsModule, TuiSelectModule, TuiDataListModule],
             providers: [TuiLanguageSwitcher],
         }).compileComponents();
-    });
 
-    beforeEach(() => {
         fixture = TestBed.createComponent(TuiLanguageSwitcherComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
@@ -34,7 +32,7 @@ describe(`TuiLanguageSwitcherComponent`, () => {
 
     it(`should correct return path to icon flag`, () => {
         expect(component.getFlagPath).toBeTruthy();
-        expect(component.getFlagPath(TuiCountryIsoCode.CN)).toEqual(
+        expect(component.getFlagPath(TuiCountryIsoCode.CN)).toBe(
             `assets/taiga-ui/icons/CN.png`,
         );
     });

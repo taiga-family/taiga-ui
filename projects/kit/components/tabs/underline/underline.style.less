@@ -1,14 +1,13 @@
 @import 'taiga-ui-local';
 
 :host {
-    .transition(all);
+    .transition(none);
     position: absolute;
     left: 0;
     height: 100%;
     color: var(--tui-primary);
     transform: scale(0);
     box-shadow: inset 0 -0.1875rem 0 -0.0625rem;
-    transition-property: none;
     pointer-events: none;
 
     &[data-mode='onDark'] {

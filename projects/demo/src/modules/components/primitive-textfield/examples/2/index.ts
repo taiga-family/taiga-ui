@@ -45,7 +45,7 @@ export class TuiPrimitiveTextfieldExample2 extends AbstractTuiControl<string> {
     }
 
     get focused(): boolean {
-        return !!this.textfield && this.textfield.focused;
+        return !!this.textfield?.focused;
     }
 
     onFocused(focused: boolean): void {

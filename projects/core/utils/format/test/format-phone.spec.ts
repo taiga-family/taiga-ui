@@ -2,7 +2,7 @@ import {tuiFormatPhone} from '../format-phone';
 
 describe(`Phone number formatting`, () => {
     it(`inserts parentheses and hyphens correctly`, () => {
-        expect(tuiFormatPhone(`+78005557778`, `+7`, `(###) ###-##-##`)).toEqual(
+        expect(tuiFormatPhone(`+78005557778`, `+7`, `(###) ###-##-##`)).toBe(
             `+7 (800) 555-77-78`,
         );
     });

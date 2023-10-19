@@ -75,7 +75,7 @@ describe(`PrimitiveCalendar`, () => {
             const currentItem = getTodayCalendarItem();
 
             expect(currentItem).not.toBeNull();
-            expect(currentItem.nativeElement.innerHTML.includes(TODAY)).toBe(true);
+            expect(currentItem.nativeElement.innerHTML.includes(TODAY)).toBeTruthy();
         });
 
         it(`is not highlighted if not current month and current year were selected`, () => {
@@ -109,16 +109,16 @@ describe(`PrimitiveCalendar`, () => {
             });
 
             it(`blocked date under condition`, () => {
-                expect(getDisabledCalendarItems().length).toEqual(1);
+                expect(getDisabledCalendarItems().length).toBe(1);
                 expect(
                     getDisabledCalendarItems()[0].nativeElement.textContent.trim(),
-                ).toEqual(`20`);
+                ).toBe(`20`);
             });
 
             it(`click on blocked date does not change value`, () => {
                 getDisabledCalendarItems()[0].nativeElement.click();
                 fixture.detectChanges();
-                expect(testComponent.value).toBe(null);
+                expect(testComponent.value).toBeNull();
             });
 
             it(`can be checked due itemIsDisabled`, () => {

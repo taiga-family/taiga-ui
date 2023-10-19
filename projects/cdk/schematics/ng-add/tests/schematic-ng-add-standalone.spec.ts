@@ -53,7 +53,7 @@ describe(`ng-add [Standalone]`, () => {
 
         const tree = await runner.runSchematicAsync(`ng-add`, options, host).toPromise();
 
-        expect(tree.readContent(`package.json`)).toEqual(
+        expect(tree.readContent(`package.json`)).toBe(
             `{
   "dependencies": {
     "@angular/core": "~13.0.0",
@@ -79,7 +79,7 @@ describe(`ng-add [Standalone]`, () => {
 
         const tree = await runner.runSchematicAsync(`ng-add`, options, host).toPromise();
 
-        expect(tree.readContent(`package.json`)).toEqual(
+        expect(tree.readContent(`package.json`)).toBe(
             `{
   "devDependencies": {
     "@types/dompurify": "${DOMPURIFY_TYPES_VERSION}"
@@ -113,7 +113,7 @@ describe(`ng-add [Standalone]`, () => {
 
         const tree = await runner.runSchematicAsync(`ng-add`, options, host).toPromise();
 
-        expect(tree.readContent(`package.json`)).toEqual(
+        expect(tree.readContent(`package.json`)).toBe(
             `{
   "devDependencies": {
     "@types/dompurify": "${DOMPURIFY_TYPES_VERSION}"
@@ -144,7 +144,7 @@ describe(`ng-add [Standalone]`, () => {
             )
             .toPromise();
 
-        expect(tree.readContent(`angular.json`)).toEqual(`
+        expect(tree.readContent(`angular.json`)).toBe(`
 {
   "version": 1,
   "defaultProject": "demo",
@@ -185,7 +185,7 @@ describe(`ng-add [Standalone]`, () => {
             )
             .toPromise();
 
-        expect(tree.readContent(`angular.json`)).toEqual(`
+        expect(tree.readContent(`angular.json`)).toBe(`
 {
   "version": 1,
   "defaultProject": "demo",
@@ -227,7 +227,7 @@ describe(`ng-add [Standalone]`, () => {
             )
             .toPromise();
 
-        expect(tree.readContent(`angular.json`)).toEqual(`
+        expect(tree.readContent(`angular.json`)).toBe(`
 {
   "version": 1,
   "defaultProject": "demo",
@@ -273,7 +273,7 @@ describe(`ng-add [Standalone]`, () => {
             .runSchematicAsync(`ng-add-setup-project`, options, host)
             .toPromise();
 
-        expect(tree.readContent(`test/app/app.component.ts`)).toEqual(
+        expect(tree.readContent(`test/app/app.component.ts`)).toBe(
             `import { NgDompurifySanitizer } from "@tinkoff/ng-dompurify";
 import { TuiRootModule, TuiDialogModule, TuiAlertModule, TUI_SANITIZER } from "@taiga-ui/core";
 import { Component } from '@angular/core';
@@ -302,7 +302,7 @@ export class AppComponent {
             )
             .toPromise();
 
-        expect(tree.readContent(`test/app/app.template.html`)).toEqual(`<tui-root>
+        expect(tree.readContent(`test/app/app.template.html`)).toBe(`<tui-root>
 <app></app>
 </tui-root>`);
     });
@@ -317,7 +317,7 @@ export class AppComponent {
             .toPromise();
 
         expect(tree.readContent(`test/main.ts`))
-            .toEqual(`import { importProvidersFrom } from "@angular/core";
+            .toBe(`import { importProvidersFrom } from "@angular/core";
 import { TuiRootModule } from "@taiga-ui/core";
 import { bootstrapApplication } from '@angular/platform-browser';
 import {
@@ -347,7 +347,7 @@ bootstrapApplication(AppComponent, {
             .toPromise();
 
         expect(tree.readContent(`test/app/app.config.ts`))
-            .toEqual(`import { TuiRootModule } from "@taiga-ui/core";
+            .toBe(`import { TuiRootModule } from "@taiga-ui/core";
 
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import {
@@ -375,7 +375,7 @@ export const appConfig: ApplicationConfig = {
             .toPromise();
 
         expect(tree.readContent(`test/main.ts`))
-            .toEqual(`import { importProvidersFrom } from "@angular/core";
+            .toBe(`import { importProvidersFrom } from "@angular/core";
 import { providerAnimation } from "@angular/platform-browser/animations";
 import { TuiRootModule } from "@taiga-ui/core";
 import { bootstrapApplication } from '@angular/platform-browser';

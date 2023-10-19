@@ -631,7 +631,7 @@ describe(`ng-update`, () => {
             )
             .toPromise();
 
-        expect(tree.readContent(`angular.json`)).toEqual(
+        expect(tree.readContent(`angular.json`)).toBe(
             `
 {
   "version": 1,

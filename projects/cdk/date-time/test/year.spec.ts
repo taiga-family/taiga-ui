@@ -459,8 +459,8 @@ describe(`TuiYear`, () => {
                 it(`the primitive value of a TuiYear object`, () => {
                     const year = new TuiYear(2000);
 
-                    expect(typeof Number(year)).toEqual(`number`);
-                    expect(typeof year.valueOf()).toEqual(`number`);
+                    expect(typeof Number(year)).toBe(`number`);
+                    expect(typeof year.valueOf()).toBe(`number`);
                     expect(year > new TuiYear(1999)).toBeTruthy();
                     expect(year < new TuiYear(2001)).toBeTruthy();
                 });
@@ -470,24 +470,24 @@ describe(`TuiYear`, () => {
                 it(`a number if the hint is number`, () => {
                     const year = new TuiYear(1701);
 
-                    expect(typeof Number(year)).toEqual(`number`);
-                    expect(typeof year.valueOf()).toEqual(`number`);
-                    expect(typeof year[Symbol.toPrimitive](`number`)).toEqual(`number`);
+                    expect(typeof Number(year)).toBe(`number`);
+                    expect(typeof year.valueOf()).toBe(`number`);
+                    expect(typeof year[Symbol.toPrimitive](`number`)).toBe(`number`);
                 });
 
                 it(`a string if the hint is string`, () => {
                     const year = new TuiYear(2201);
 
-                    expect(typeof String(year)).toEqual(`string`);
-                    expect(typeof year.toString()).toEqual(`string`);
-                    expect(typeof year[Symbol.toPrimitive](`string`)).toEqual(`string`);
+                    expect(typeof String(year)).toBe(`string`);
+                    expect(typeof year.toString()).toBe(`string`);
+                    expect(typeof year[Symbol.toPrimitive](`string`)).toBe(`string`);
                 });
 
                 it(`a string if the hint is default`, () => {
                     const year = new TuiYear(2002);
 
-                    expect(typeof `${year}`).toEqual(`string`);
-                    expect(typeof year[Symbol.toPrimitive](`default`)).toEqual(`string`);
+                    expect(typeof `${year}`).toBe(`string`);
+                    expect(typeof year[Symbol.toPrimitive](`default`)).toBe(`string`);
                 });
             });
         });

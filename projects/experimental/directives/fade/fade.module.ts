@@ -5,6 +5,6 @@ import {TuiFadeDirective} from './fade.directive';
 
 @NgModule({
     declarations: [TuiFadeComponent, TuiFadeDirective],
-    exports: [TuiFadeComponent, TuiFadeDirective],
+    exports: [TuiFadeDirective],
 })
 export class TuiFadeModule {}

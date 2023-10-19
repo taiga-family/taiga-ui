@@ -36,7 +36,9 @@ import {TuiFadeComponent} from './fade.component';
     ],
 })
 export class TuiFadeDirective {
+    // TODO: Remove when lh CSS units are supported: https://caniuse.com/mdn-css_types_length_lh
     @Input('tuiFadeHeight')
+    @HostBinding('style.line-height')
     @HostBinding('style.--line-height')
     lineHeight: string | null = null;
 

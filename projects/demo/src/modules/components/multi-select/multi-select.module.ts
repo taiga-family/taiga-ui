@@ -20,6 +20,7 @@ import {
     TuiDataListWrapperModule,
     TuiMultiSelectModule,
     TuiRadioListModule,
+    TuiTagModule,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -34,6 +35,7 @@ import {TuiMultiSelectExample7} from './examples/7';
 import {TuiMultiSelectExample8} from './examples/8';
 import {TuiMultiSelectExample9} from './examples/9';
 import {TuiMultiSelectExample10} from './examples/10';
+import {TuiMultiSelectExample11} from './examples/11';
 import {ExampleTuiMultiSelectComponent} from './multi-select.component';
 
 @NgModule({
@@ -53,6 +55,7 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         TuiLetModule,
         TuiDropdownModule,
         TuiHintModule,
+        TuiTagModule,
         TuiTextfieldControllerModule,
         InheritedDocumentationModule,
         TuiAddonDocModule,
@@ -72,6 +75,7 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         TuiMultiSelectExample8,
         TuiMultiSelectExample9,
         TuiMultiSelectExample10,
+        TuiMultiSelectExample11,
     ],
     exports: [ExampleTuiMultiSelectComponent],
 })

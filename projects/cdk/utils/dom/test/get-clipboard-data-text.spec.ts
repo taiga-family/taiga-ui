@@ -22,6 +22,6 @@ xdescribe(`getClipboardDataText`, () => {
             },
         });
 
-        expect(tuiGetClipboardDataText(event)).toEqual(`data`);
+        expect(tuiGetClipboardDataText(event)).toBe(`data`);
     });
 });

@@ -835,9 +835,9 @@ export const pages: TuiDocPages = [
             },
             {
                 section: `Experimental`,
-                title: `BadgeAlert`,
+                title: `BadgeNotification`,
                 keywords: `бэдж, бейдж, circle, круг, badge, alert, нотификация`,
-                route: `/experimental/badge-alert`,
+                route: `/experimental/badge-notification`,
             },
             {
                 section: `Experimental`,
@@ -855,9 +855,21 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Experimental`,
+        title: `Compass`,
+        keywords: `compass, user, point, dot, карта, точка`,
+        route: `/experimental/compass`,
+    },
+    {
+        section: `Experimental`,
         title: `Fade`,
         keywords: `overflow, ellipsis, gradient, clamp, line`,
         route: `/experimental/fade`,
+    },
+    {
+        section: `Experimental`,
+        title: `Rating `,
+        keywords: `рейтинг, оценка, звезда, rating, star, rate`,
+        route: `/experimental/rating`,
     },
     {
         section: `Experimental`,
@@ -867,9 +879,9 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Experimental`,
-        title: `Compass`,
-        keywords: `compass, user, point, dot, карта, точка`,
-        route: `/experimental/compass`,
+        title: `Surface`,
+        keywords: `card, container, wrapper, image, blur, overlay`,
+        route: `/experimental/surface`,
     },
     // Charts
     {

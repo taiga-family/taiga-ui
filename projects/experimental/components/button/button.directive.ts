@@ -13,6 +13,9 @@ import {Observable} from 'rxjs';
 import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button.options';
 
 @Component({
+    host: {
+        class: 'tui-button-styles',
+    },
     template: '',
     styleUrls: ['./button.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

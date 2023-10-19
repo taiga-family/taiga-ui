@@ -83,7 +83,6 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>>
                 this.dialogs = dialogs;
                 this.cdr.markForCheck();
 
-                // TODO: Hack for mobile Firefox: https://bugzilla.mozilla.org/show_bug.cgi?id=1845264
                 this.doc.documentElement.classList.toggle(
                     't-overscroll-none',
                     !!dialogs.length,

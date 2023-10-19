@@ -1,7 +1,9 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
-    selector: 'tui-group-style',
+    host: {
+        class: 'tui-group-styles',
+    },
     template: '',
     styleUrls: ['./group.style.less'],
     encapsulation: ViewEncapsulation.None,
