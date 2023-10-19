@@ -17,10 +17,13 @@ export class TuiUnmaskHandlerDirective extends AbstractTuiValueTransformer<strin
     tuiUnmaskHandler: TuiTypedMapper<[string], string> = identity;
 
     @Input()
-    maskito: MaskitoOptions = MASKITO_DEFAULT_OPTIONS;
+    maskito: MaskitoOptions | null = null;
 
     override fromControlValue(controlValue: unknown): string {
-        return maskitoTransform(String(controlValue ?? ''), this.maskito);
+        return maskitoTransform(
+            String(controlValue ?? ''),
+            this.maskito || MASKITO_DEFAULT_OPTIONS,
+        );
     }
 
     override toControlValue(value: string): string {
