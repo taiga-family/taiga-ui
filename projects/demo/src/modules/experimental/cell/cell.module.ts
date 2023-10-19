@@ -7,8 +7,8 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLinkModule, TuiNotificationModule, TuiTooltipModule} from '@taiga-ui/core';
 import {
     TuiAvatarModule,
-    TuiBadgeAlertModule,
     TuiBadgeModule,
+    TuiBadgeNotificationModule,
     TuiCellModule,
     TuiFadeModule,
 } from '@taiga-ui/experimental';
@@ -28,7 +28,7 @@ import {TuiCellExample5} from './examples/5';
         TuiAddonDocModule,
         TuiAvatarModule,
         TuiBadgeModule,
-        TuiBadgeAlertModule,
+        TuiBadgeNotificationModule,
         TuiCellModule,
         TuiFadeModule,
         TuiLinkModule,
