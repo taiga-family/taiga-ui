@@ -102,6 +102,7 @@ export const TUI_USED_ICONS = [
     `tuiIconBox`,
     `tuiIconLock`,
     `tuiIconUsers`,
+    `tuiIconShoppingCart`,
     `tuiIconCloseLarge`,
     `tuiIconFrownLarge`,
     `tuiIconMehLarge`,
