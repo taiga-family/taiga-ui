@@ -29,6 +29,7 @@ export class TuiLanguageSwitcherComponent {
         ['spanish', TuiCountryIsoCode.ES],
         ['turkish', TuiCountryIsoCode.TR],
         ['ukrainian', TuiCountryIsoCode.UA],
+        ['kazakh', TuiCountryIsoCode.KZ],
         ['vietnamese', TuiCountryIsoCode.VN],
     ]);
 
