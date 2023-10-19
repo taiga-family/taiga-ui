@@ -76,6 +76,11 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
         LESS: import('./examples/8/index.less?raw'),
     };
 
+    readonly example9: TuiDocExample = {
+        TypeScript: import('./examples/9/index.ts?raw'),
+        HTML: import('./examples/9/index.html?raw'),
+    };
+
     readonly control = new FormControl(
         ['John Cleese', 'Eric Idle', 'Michael Palin'],
         Validators.required,

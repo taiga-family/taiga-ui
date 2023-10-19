@@ -1,62 +1,12 @@
 {
-    "compileOnSave": false,
+    "extends": "@taiga-ui/tsconfig",
     "include": ["projects/**/*"],
     "exclude": ["projects/**/*.spec.ts", "projects/demo-cypress", "**/schematics/**/*"],
-    "angularCompilerOptions": {
-        "enableIvy": true,
-        "compilationMode": "partial",
-        "preserveWhitespaces": false,
-        "annotateForClosureCompiler": false,
-        "skipTemplateCodegen": true,
-        "strictMetadataEmit": true,
-        "fullTemplateTypeCheck": true,
-        "strictInjectionParameters": true,
-        "enableResourceInlining": true,
-        "strictLiteralTypes": true,
-        "strictInputTypes": true,
-        "strictInputAccessModifiers": true,
-        "strictNullInputTypes": true,
-        "strictAttributeTypes": true,
-        "strictSafeNavigationTypes": true,
-        "strictDomLocalRefTypes": true,
-        "strictOutputEventTypes": true,
-        "strictDomEventTypes": true,
-        "strictContextGenerics": true
-    },
     "compilerOptions": {
-        "strict": true,
         "baseUrl": "./",
         "outDir": "./dist",
-        "target": "es2015",
-        "module": "es2020",
-        "lib": ["es2017", "es2018.asynciterable", "dom"],
         "typeRoots": ["node_modules/@types", "scripts/types"],
         "types": ["ng-dev-mode", "node"],
-        "skipLibCheck": true,
-        "downlevelIteration": true,
-        "skipDefaultLibCheck": true,
-        "declaration": false,
-        "moduleResolution": "node",
-        "experimentalDecorators": true,
-        "resolveJsonModule": true,
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "importHelpers": true,
-        "noFallthroughCasesInSwitch": true,
-        "noUnusedLocals": true,
-        "noImplicitReturns": true,
-        "noUnusedParameters": true,
-        "incremental": true,
-        "newLine": "lf",
-        "alwaysStrict": true,
-        "allowUnreachableCode": false,
-        "allowUnusedLabels": false,
-        "noStrictGenericChecks": false,
-        "allowUmdGlobalAccess": true,
-        "useDefineForClassFields": false,
-        "forceConsistentCasingInFileNames": true,
-        "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo",
-        "noImplicitOverride": true,
         "paths": {
             "@demo-cypress/*": ["projects/demo-cypress/cypress/*"],
             "@demo-playwright/utils": ["projects/demo-playwright/utils/index"],
@@ -95,14 +45,6 @@
             "@taiga-ui/layout/*": ["projects/layout/*"],
             "@taiga-ui/testing": ["projects/testing/index"],
             "@taiga-ui/testing/*": ["projects/testing/*"]
-        }
-    },
-    "ts-node": {
-        "files": true,
-        "transpileOnly": true,
-        "compilerOptions": {
-            "types": ["node"],
-            "module": "commonjs"
         }
     }
 }

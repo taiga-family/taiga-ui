@@ -75,8 +75,8 @@ export class TuiFadeDirective {
 
     private isEnd(el: HTMLElement): boolean {
         return (
-            el.scrollLeft < el.scrollWidth - el.clientWidth ||
-            el.scrollTop < el.scrollHeight - el.clientHeight ||
+            Math.round(el.scrollLeft) < el.scrollWidth - el.clientWidth ||
+            Math.round(el.scrollTop) < el.scrollHeight - el.clientHeight ||
             (this.orientation === 'horizontal' && el.scrollHeight > el.clientHeight)
         );
     }
