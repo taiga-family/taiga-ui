@@ -8,6 +8,6 @@ test.describe(`Table`, () => {
         const dynamicButton = example.locator(`button`).first();
 
         await dynamicButton.click();
-        await expect(example).toHaveScreenshot(`table-dynamic.png`);
+        await expect(example).toHaveScreenshot(`01-table-dynamic.png`);
     });
 });
