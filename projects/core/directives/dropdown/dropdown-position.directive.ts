@@ -40,9 +40,9 @@ export class TuiDropdownPositionDirective extends TuiPositionAccessor {
         const {minHeight, align, direction, offset} = this.options;
         const viewport = {
             top: viewportRect.top - offset,
-            bottom: viewportRect.bottom - offset,
+            bottom: viewportRect.bottom + offset,
             right: viewportRect.right - offset,
-            left: viewportRect.left - offset,
+            left: viewportRect.left + offset,
         } as const;
         const previous = this.previous || direction || 'bottom';
         const available = {

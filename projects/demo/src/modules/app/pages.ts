@@ -1079,6 +1079,12 @@ export const pages: TuiDocPages = [
         keywords: `portal, custom, theme, style`,
         route: `/portals`,
     },
+    {
+        section: `Customization`,
+        title: `Viewport`,
+        keywords: `viewport, вьюпорт, портал, контекст, выпадашка, дропдаун, portal, dropdown`,
+        route: `/viewport`,
+    },
     // Tools
     {
         section: `Tools`,
