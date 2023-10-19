@@ -8,42 +8,41 @@ import {expect, Locator, test} from '@playwright/test';
 const {describe, beforeEach, use} = test;
 
 describe(`InputCardGrouped`, () => {
-    use({viewport: {width: 1280, height: 800}});
-
     let documentationPage: TuiDocumentationPagePO;
-    let inputCardGroupedPage: TuiInputCardGroupedPO;
-    let example: Locator;
-    let cardGroupInput: Locator;
-    let cardExpiryInput: Locator;
-    let cleanerIcon: Locator;
 
     describe(`API`, () => {
+        use({viewport: {width: 700, height: 800}});
+
+        let apiPageExample: Locator;
+
         beforeEach(({page}) => {
-            documentationPage = new TuiDocumentationPagePO(page);
-            example = documentationPage.apiPageExample;
-            inputCardGroupedPage = new TuiInputCardGroupedPO(example);
-            cardGroupInput = inputCardGroupedPage.cardGroupInput;
-            cleanerIcon = inputCardGroupedPage.cleanerIcon;
+            ({apiPageExample} = new TuiDocumentationPagePO(page));
         });
 
         test(`set value and clear after`, async ({page}) => {
             await tuiGoto(page, `components/input-card-grouped/API`);
 
-            await cardGroupInput.pressSequentially(`1234 4567 8910 1112`);
-            await expect(cardGroupInput).toHaveScreenshot(
+            const {numberTextfield, cleanerIcon} = new TuiInputCardGroupedPO(
+                apiPageExample,
+            );
+            const entryValue = `1234 4567 8910 1112`;
+
+            await numberTextfield.pressSequentially(entryValue);
+            await expect(numberTextfield).toHaveValue(entryValue);
+            await expect(numberTextfield).toHaveScreenshot(
                 `01-input-card-grouped-filled.png`,
             );
 
             await cleanerIcon.click();
-            await expect(cardGroupInput).toHaveScreenshot(
+            await expect(numberTextfield).toHaveScreenshot(
                 `02-input-card-grouped-cleared.png`,
             );
 
-            await example.click({
+            await apiPageExample.click({
                 force: true,
                 position: {x: 0, y: 0}, // click top left corner, away from field
             });
-            await expect(cardGroupInput).toHaveScreenshot(
+            await expect(numberTextfield).toHaveScreenshot(
                 `03-input-card-grouped-unfocused.png`,
             );
         });
@@ -51,15 +50,17 @@ describe(`InputCardGrouped`, () => {
         test(`disabled input card grouped`, async ({page}) => {
             await tuiGoto(page, `components/input-card-grouped/API?disabled=true`);
 
-            await expect(cardGroupInput).toHaveCSS(`pointer-events`, `none`);
-            await expect(cardGroupInput).toHaveScreenshot(
+            const {numberTextfield} = new TuiInputCardGroupedPO(apiPageExample);
+
+            await expect(numberTextfield).toHaveCSS(`pointer-events`, `none`);
+            await expect(numberTextfield).toHaveScreenshot(
                 `04-input-card-grouped-disabled.png`,
             );
         });
     });
 
     describe(`Examples`, () => {
-        let cardCvcInput: Locator;
+        use({viewport: {width: 1280, height: 800}});
 
         beforeEach(async ({page}) => {
             await tuiGoto(page, `components/input-card-grouped`);
@@ -68,98 +69,107 @@ describe(`InputCardGrouped`, () => {
         });
 
         test(`input card grouped with validation`, async () => {
-            example = documentationPage.getExample(`#validation`);
-            inputCardGroupedPage = new TuiInputCardGroupedPO(example);
-            cardGroupInput = inputCardGroupedPage.cardGroupInput;
-            cardExpiryInput = inputCardGroupedPage.cardExpiryInput;
-            cardCvcInput = inputCardGroupedPage.cardCvcInput;
-            cleanerIcon = inputCardGroupedPage.cleanerIcon;
+            const example = documentationPage.getExample(`#validation`);
+            const {numberTextfield, expiryTextfield, cvcTextfield, cleanerIcon} =
+                new TuiInputCardGroupedPO(example);
+            const cardInfo = {
+                number: `5213 0000 4039 5834`,
+                expiry: `02/38`,
+                cvc: `123`,
+            };
 
-            await expect(cardGroupInput).toHaveScreenshot(
+            await expect(numberTextfield).toHaveScreenshot(
                 `05-default-state-input-card.png`,
             );
 
-            await cardGroupInput.pressSequentially(`5213 0000 4039 5834`);
-            await expect(cardGroupInput).toHaveScreenshot(`06-input-card-with-value.png`);
+            await numberTextfield.pressSequentially(cardInfo.number);
+            await expect(numberTextfield).toHaveValue(cardInfo.number);
+            await expect(numberTextfield).toHaveScreenshot(
+                `06-input-card-with-value.png`,
+            );
 
-            await cardGroupInput.focus();
-            await expect(cardGroupInput).toHaveScreenshot(
+            await numberTextfield.focus();
+            await expect(numberTextfield).toHaveScreenshot(
                 `07-input-card-with-value-focus-edit-card.png`,
             );
 
-            await cardGroupInput.press(`Tab`);
-            await expect(cardGroupInput).toHaveScreenshot(
+            await numberTextfield.press(`Tab`);
+            await expect(numberTextfield).toHaveScreenshot(
                 `08-input-card-with-value-tab-to-expired.png`,
             );
 
-            await cardExpiryInput.pressSequentially(`02/38`);
-            await expect(cardGroupInput).toHaveScreenshot(
+            await expiryTextfield.pressSequentially(cardInfo.expiry);
+            await expect(expiryTextfield).toHaveValue(cardInfo.expiry);
+            await expect(numberTextfield).toHaveScreenshot(
                 `09-input-card-with-value-expire-filled.png`,
             );
 
-            await cardCvcInput.pressSequentially(`123`);
-            await expect(cardGroupInput).toHaveScreenshot(
+            await cvcTextfield.pressSequentially(`123`);
+            await expect(cvcTextfield).toHaveValue(cardInfo.cvc);
+            await expect(numberTextfield).toHaveScreenshot(
                 `10-input-card-with-value-cvc-filled.png`,
             );
 
             await cleanerIcon.click();
-            await expect(cardGroupInput).toHaveScreenshot(
+            await expect(numberTextfield).toBeEmpty();
+            await expect(numberTextfield).toHaveScreenshot(
                 `11-input-card-with-focused-after-clear.png`,
             );
 
             await example.click({position: {x: 0, y: 0}});
-            await expect(cardGroupInput).toHaveScreenshot(
+            await expect(numberTextfield).toHaveScreenshot(
                 `12-default-state-input-card.png`,
             );
         });
 
         test(`input card grouped with saved cards`, async () => {
-            example = documentationPage.getExample(`#select`);
-            inputCardGroupedPage = new TuiInputCardGroupedPO(example);
-            cardGroupInput = inputCardGroupedPage.cardGroupInput;
-            cardCvcInput = inputCardGroupedPage.cardCvcInput;
-            cleanerIcon = inputCardGroupedPage.cleanerIcon;
+            const example = documentationPage.getExample(`#select`);
+            const {numberTextfield, cvcTextfield, cleanerIcon} =
+                new TuiInputCardGroupedPO(example);
+            const cvc = `123`;
 
-            await expect(cardGroupInput).toHaveScreenshot(
+            await expect(numberTextfield).toHaveScreenshot(
                 `13-default-prefilled-state-input-card.png`,
             );
-            await expect(cardGroupInput).toHaveCSS(`pointer-events`, /none/);
-            await expect(cardGroupInput).toHaveScreenshot(
+            await expect(numberTextfield).toHaveCSS(`pointer-events`, /none/);
+            await expect(numberTextfield).toHaveScreenshot(
                 `14-prefilled-value-cannot-be-edit.png`,
             );
 
-            await cardCvcInput.pressSequentially(`123`);
-            await expect(cardGroupInput).toHaveScreenshot(
+            await cvcTextfield.pressSequentially(cvc);
+            await expect(cvcTextfield).toHaveValue(cvc);
+            await expect(numberTextfield).toHaveScreenshot(
                 `15-input-card-with-value-cvc-filled.png`,
             );
 
             await cleanerIcon.click();
-            await expect(cardGroupInput).toHaveScreenshot(
+            await expect(numberTextfield).toBeEmpty();
+            await expect(numberTextfield).toHaveScreenshot(
                 `16-input-card-with-focused-after-clear.png`,
             );
 
             await example.click({position: {x: 0, y: 0}});
-            await expect(cardGroupInput).toHaveScreenshot(
+            await expect(numberTextfield).toHaveScreenshot(
                 `17-default-prefilled-state-input-card.png`,
             );
         });
 
         test(`expired field should be clickable after reset of prefilled value`, async () => {
-            example = documentationPage.getExample(`#custom-labels`);
-            inputCardGroupedPage = new TuiInputCardGroupedPO(example);
-            cardGroupInput = inputCardGroupedPage.cardGroupInput;
-            cardExpiryInput = inputCardGroupedPage.cardExpiryInput;
-            cardCvcInput = inputCardGroupedPage.cardCvcInput;
-            cleanerIcon = inputCardGroupedPage.cleanerIcon;
+            const example = documentationPage.getExample(`#custom-labels`);
+            const {numberTextfield, expiryTextfield, cvcTextfield, cleanerIcon} =
+                new TuiInputCardGroupedPO(example);
+            const cardInfo = {number: `5586 2000 7149 2158`, expiry: `12/25`};
 
-            await cardCvcInput.focus();
-            await expect(cardExpiryInput).toHaveCSS(`pointer-events`, `none`);
+            await cvcTextfield.focus();
+            await expect(expiryTextfield).toHaveCSS(`pointer-events`, `none`);
 
             await cleanerIcon.click();
-            await cardGroupInput.pressSequentially(`5586 2000 7149 2158`);
-            await expect(cardExpiryInput).toHaveCSS(`pointer-events`, `auto`);
+            await numberTextfield.pressSequentially(cardInfo.number);
+            await expect(numberTextfield).toHaveValue(cardInfo.number);
+            await expect(expiryTextfield).toHaveCSS(`pointer-events`, `auto`);
 
-            await cardExpiryInput.pressSequentially(`12/25`);
+            await expiryTextfield.pressSequentially(cardInfo.expiry);
+            await expect(expiryTextfield).toHaveValue(cardInfo.expiry);
         });
     });
 });
