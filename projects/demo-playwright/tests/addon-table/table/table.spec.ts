@@ -5,9 +5,9 @@ test.describe(`Table`, () => {
     test(`Dynamic column`, async ({page}) => {
         await tuiGoto(page, `components/table`);
         const example = new TuiDocumentationPagePO(page).getExample(`#dynamic`);
-        const dynamicButton = example.locator(`button`).first();
+        const addColumnButton = example.locator(`button`).first();
 
-        await dynamicButton.click();
-        await expect(example).toHaveScreenshot(`01-table-dynamic-chromium-darwin.png`);
+        await addColumnButton.click();
+        await expect(example).toHaveScreenshot(`01-table-dynamic.png`);
     });
 });
