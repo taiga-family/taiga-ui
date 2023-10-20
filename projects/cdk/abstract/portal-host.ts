@@ -31,6 +31,7 @@ export abstract class AbstractTuiPortalHostComponent {
         portalService.attach(this);
     }
 
+    /** @deprecated unused, will be removed in 4.0 **/
     get clientRect(): ClientRect {
         return this.el.nativeElement.getBoundingClientRect();
     }
@@ -39,6 +40,7 @@ export abstract class AbstractTuiPortalHostComponent {
         const parent = component.createInjector(this.injector);
         const resolver = parent.get(ComponentFactoryResolver);
         const factory = resolver.resolveComponentFactory(component.component);
+        // TODO: Remove in 4.0
         const providers = [{provide: AbstractTuiPortalHostComponent, useValue: this}];
         const injector = Injector.create({parent, providers});
         const ref = this.vcr.createComponent(factory, undefined, injector);

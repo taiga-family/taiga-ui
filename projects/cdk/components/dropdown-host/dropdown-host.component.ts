@@ -16,6 +16,7 @@ import {TuiDropdownPortalService} from './dropdown-portal.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {provide: AbstractTuiPortalService, useExisting: TuiDropdownPortalService},
+        // TODO: Remove in 4.0
         {provide: AbstractTuiPortalHostComponent, useExisting: TuiDropdownHostComponent},
     ],
 })

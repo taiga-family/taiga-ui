@@ -7,7 +7,7 @@ import {
 import {tuiAsViewport, TuiRectAccessor} from '@taiga-ui/core';
 
 @Component({
-    selector: `[portalHost]`,
+    selector: `portal-host`,
     template: `
         <ng-content></ng-content>
         <ng-container #viewContainer></ng-container>
@@ -18,10 +18,6 @@ import {tuiAsViewport, TuiRectAccessor} from '@taiga-ui/core';
         {
             provide: AbstractTuiPortalService,
             useExisting: TuiDropdownPortalService,
-        },
-        {
-            provide: AbstractTuiPortalHostComponent,
-            useExisting: PortalHost,
         },
         tuiAsViewport(PortalHost),
     ],
