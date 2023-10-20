@@ -116,6 +116,7 @@ describe(`Input`, () => {
         cy.get(`tui-doc-example[id=mask]`).tuiScrollIntoView().as(`wrapper`);
         cy.get(`@wrapper`).find(`tui-input input[tuiTextfield]`).as(`input`);
         cy.get(`@input`).first().focus().type(`111111111111`).blur();
+        cy.get(`@input`).last().focus().type(`111111111111`).blur();
         cy.get(`@wrapper`).tuiWaitBeforeScreenshot().matchImageSnapshot(`09-mask`);
     });
 

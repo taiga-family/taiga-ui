@@ -13,6 +13,7 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
+    AbstractTuiValueTransformer,
     TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
@@ -75,8 +76,11 @@ export class TuiInputComponent
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
+        @Optional()
+        @Inject(AbstractTuiValueTransformer)
+        valueTransformer?: AbstractTuiValueTransformer<string> | null,
     ) {
-        super(control, cdr);
+        super(control, cdr, valueTransformer);
     }
 
     @HostBinding('attr.data-size')
