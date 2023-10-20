@@ -18,6 +18,7 @@
         <tui-input
             formControlName="testValue2"
             [maskito]="maskOptions2"
+            [tuiUnmaskHandler]="unmask"
         >
             Secret number
             <input
@@ -27,5 +28,5 @@
         </tui-input>
     </p>
 </form>
-<p>Value is stored in control with mask applied:</p>
+<p>Value stored in control:</p>
 <pre>{{ testForm.value | json }}</pre>

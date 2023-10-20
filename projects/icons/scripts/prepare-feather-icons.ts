@@ -1,5 +1,6 @@
 const path = require(`path`);
 const fs = require(`fs`);
+const NO_FILL = [`check.svg`];
 
 (function main(): void {
     const src = path.join(
@@ -18,7 +19,7 @@ const fs = require(`fs`);
 
         const content = fs.readFileSync(path.join(src, filename), `utf-8`);
         const processed = content
-            .replace(` fill="none"`, ``)
+            .replace(` fill="none"`, NO_FILL.includes(filename) ? ` fill="none"` : ``)
             .replace(/class="[a-zA-Z0-9:;.\s()\-,]*"/, ``);
 
         fs.writeFileSync(path.join(dest, processName(filename, `Large`)), processed);

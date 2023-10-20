@@ -1,0 +1,24 @@
+<tui-hosted-dropdown
+    tuiDropdownHover
+    tuiDropdownLimitWidth="fixed"
+    [content]="dropdown"
+>
+    <div tuiGroup>
+        <button
+            tuiButton
+            type="button"
+        >
+            Dropdown won't open
+        </button>
+        <button
+            tuiButton
+            tuiHostedDropdownHost
+            type="button"
+        >
+            it will open here
+        </button>
+    </div>
+</tui-hosted-dropdown>
+<ng-template #dropdown>
+    <p>Dropdown content</p>
+</ng-template>

@@ -29,7 +29,7 @@ export class TestComponent {
 }`;
 
 const COMPONENT_AFTER = `
-import { TuiThumbnailCardModule, TuiThumbnailCardComponent } from '@taiga-ui/addon-commerce';
+import { TuiThumbnailCardComponent, TuiThumbnailCardModule } from '@taiga-ui/addon-commerce';
 
 @Component({
     standalone: true,
@@ -66,7 +66,7 @@ describe(`ng-update`, () => {
         saveActiveProject();
     });
 
-    it(`should migrate textarea tag in template`, async () => {
+    it(`should migrate tui-card tag in template`, async () => {
         const tree = await runner
             .runSchematicAsync(
                 `updateToV4`,
@@ -78,7 +78,7 @@ describe(`ng-update`, () => {
         expect(tree.readContent(`test/app/test.template.html`)).toEqual(TEMPLATE_AFTER);
     });
 
-    it(`should migrate textarea references in ts files`, async () => {
+    it(`should migrate TuiCard(Module|Component) references in ts files`, async () => {
         const tree = await runner
             .runSchematicAsync(
                 `updateToV4`,

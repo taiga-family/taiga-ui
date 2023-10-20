@@ -10,6 +10,7 @@ import {
     Output,
     QueryList,
 } from '@angular/core';
+import {TuiRowContext} from '@taiga-ui/addon-table/interfaces';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
 import {TUI_ARROW_OPTIONS, TuiArrowOptions} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -59,10 +60,10 @@ export class TuiTbodyComponent<T extends Partial<Record<keyof T, any>>> {
         return this.pipe.transform(this.data);
     }
 
-    readonly toContext = (
-        $implicit: T,
-        index: number,
-    ): {$implicit: T; index: number} => ({$implicit, index});
+    readonly toContext = ($implicit: T, index: number): TuiRowContext<T> => ({
+        $implicit,
+        index,
+    });
 
     onClick(): void {
         this.open = !this.open;

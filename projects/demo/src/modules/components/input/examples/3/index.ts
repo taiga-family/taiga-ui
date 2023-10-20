@@ -38,4 +38,6 @@ export class TuiInputExample3 {
             /\d/,
         ],
     };
+
+    readonly unmask = (value: string): string => value.replace(/-/g, '');
 }

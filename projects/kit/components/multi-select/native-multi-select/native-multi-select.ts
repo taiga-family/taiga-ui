@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import {TuiTypedMapper} from '@taiga-ui/cdk';
+import {TuiMapper} from '@taiga-ui/cdk';
 import {AbstractTuiNativeSelect} from '@taiga-ui/kit/abstract';
 import {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 
@@ -10,7 +10,7 @@ export abstract class AbstractTuiNativeMultiSelect<T> extends AbstractTuiNativeS
     TuiMultiSelectDirective<T>,
     T
 > {
-    selectedMapper: TuiTypedMapper<[T, ...any[]], boolean> = (option, value) =>
+    selectedMapper: TuiMapper<[T, ...any[]], boolean> = (option, value) =>
         value.includes(option);
 
     get stringify(): TuiItemsHandlers<T>['stringify'] {

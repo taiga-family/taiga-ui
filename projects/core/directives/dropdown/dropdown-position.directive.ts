@@ -36,23 +36,30 @@ export class TuiDropdownPositionDirective extends TuiPositionAccessor {
         }
 
         const hostRect = this.accessor?.getClientRect() ?? EMPTY_CLIENT_RECT;
-        const viewport = this.viewport.getClientRect();
+        const viewportRect = this.viewport.getClientRect();
         const {minHeight, align, direction, offset} = this.options;
+        const viewport = {
+            top: viewportRect.top - offset,
+            bottom: viewportRect.bottom - offset,
+            right: viewportRect.right - offset,
+            left: viewportRect.left - offset,
+        } as const;
         const previous = this.previous || direction || 'bottom';
-        const right = Math.max(hostRect.right - width, offset);
         const available = {
             top: hostRect.top - 2 * offset - viewport.top,
             bottom: viewport.bottom - hostRect.bottom - 2 * offset,
         } as const;
+        const right = Math.max(hostRect.right - width, offset);
+        const left = hostRect.left + width < viewport.right ? hostRect.left : right;
         const position = {
             top: hostRect.top - offset - height,
             bottom: hostRect.bottom + offset,
-            right,
+            right: Math.max(viewport.left, right),
             center:
-                hostRect.left + hostRect.width / 2 + width / 2 < viewport.right - offset
+                hostRect.left + hostRect.width / 2 + width / 2 < viewport.right
                     ? hostRect.left + hostRect.width / 2 - width / 2
                     : right,
-            left: hostRect.left + width < viewport.right - offset ? hostRect.left : right,
+            left: Math.max(viewport.left, left),
         } as const;
         const better = available.top > available.bottom ? 'top' : 'bottom';
 
