@@ -819,7 +819,7 @@ export const pages: TuiDocPages = [
     // Experimental
     {
         section: `Experimental`,
-        title: `Avatar`,
+        title: `Avatar `,
         keywords: `аватар, image, pic, icon, картинка, изображение, avatar, stack`,
         route: `/experimental/avatar`,
     },
@@ -882,6 +882,24 @@ export const pages: TuiDocPages = [
         title: `Surface`,
         keywords: `card, container, wrapper, image, blur, overlay`,
         route: `/experimental/surface`,
+    },
+    {
+        section: `Experimental`,
+        title: `Checkbox `,
+        keywords: `чек, радио, ввод, форма, form, checkbox, radio, toggle`,
+        route: `/experimental/checkbox`,
+    },
+    {
+        section: `Experimental`,
+        title: `Radio `,
+        keywords: `чек, радио, ввод, форма, form, checkbox, radio, toggle`,
+        route: `/experimental/radio`,
+    },
+    {
+        section: `Experimental`,
+        title: `Toggle `,
+        keywords: `чек, радио, ввод, форма, form, checkbox, radio, toggle`,
+        route: `/experimental/toggle`,
     },
     // Charts
     {
