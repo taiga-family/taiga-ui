@@ -206,9 +206,9 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Components`,
-        title: `Card`,
+        title: `ThumbnailCard`,
         keywords: `карта, карточка, card, visa, mastercard, credit, icon, logo, дебетовая, кредитная, иконка, логотип`,
-        route: `/components/card`,
+        route: `/components/thumbnail-card`,
     },
     {
         section: `Components`,
@@ -835,9 +835,9 @@ export const pages: TuiDocPages = [
             },
             {
                 section: `Experimental`,
-                title: `BadgeAlert`,
+                title: `BadgeNotification`,
                 keywords: `бэдж, бейдж, circle, круг, badge, alert, нотификация`,
-                route: `/experimental/badge-alert`,
+                route: `/experimental/badge-notification`,
             },
             {
                 section: `Experimental`,

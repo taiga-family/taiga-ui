@@ -1,7 +1,7 @@
 import {CdkVirtualScrollViewport, VirtualScrollStrategy} from '@angular/cdk/scrolling';
 import {MONTHS_IN_YEAR, tuiPure, TuiScrollService} from '@taiga-ui/cdk';
 import {Observable, Subject} from 'rxjs';
-import {distinctUntilChanged} from 'rxjs/operators';
+import {distinctUntilChanged, takeUntil} from 'rxjs/operators';
 
 import {
     ANDROID_CYCLE,
@@ -46,6 +46,8 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
 
     private viewport: CdkVirtualScrollViewport | null = null;
 
+    private readonly destroy$ = new Subject<void>();
+
     constructor(
         private readonly isIos: boolean,
         private readonly scrollService: TuiScrollService,
@@ -67,6 +69,8 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
     detach(): void {
         this.index$.complete();
         this.viewport = null;
+        this.destroy$.next();
+        this.destroy$.complete();
     }
 
     onContentScrolled(): void {
@@ -95,6 +99,7 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
 
         this.scrollService
             .scroll$(this.viewport.elementRef.nativeElement, scrollTop)
+            .pipe(takeUntil(this.destroy$))
             .subscribe();
     }
 

@@ -6,6 +6,7 @@ export type TuiLanguageName =
     | 'french'
     | 'german'
     | 'italian'
+    | 'kazakh'
     | 'polish'
     | 'portuguese'
     | 'russian'
