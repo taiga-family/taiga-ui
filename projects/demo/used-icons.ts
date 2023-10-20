@@ -138,4 +138,4 @@ export const TUI_USED_ICONS = [
     `tuiIconUndo`,
     `tuiIconPaperclipLarge`,
     `tuiIconTrashLarge`,
-];
+] as const;
