@@ -1,12 +1,12 @@
 import {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions, TuiTypedMapper} from '@taiga-ui/cdk';
+import {tuiCreateToken, TuiMapper, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 
 export interface TuiCheckboxOptions {
     readonly size: TuiSizeS;
     readonly icons: Readonly<{
-        checked: TuiTypedMapper<[TuiSizeS], string> | string;
-        indeterminate: TuiTypedMapper<[TuiSizeS], string> | string;
+        checked: TuiMapper<[TuiSizeS], string> | string;
+        indeterminate: TuiMapper<[TuiSizeS], string> | string;
     }>;
 }
 
