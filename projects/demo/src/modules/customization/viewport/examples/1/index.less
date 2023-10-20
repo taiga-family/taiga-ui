@@ -1,0 +1,45 @@
+@import 'taiga-ui-local';
+
+.dropdowns {
+    position: relative;
+    height: 18.75rem;
+    width: 50%;
+    display: block;
+    resize: both;
+    overflow: auto;
+    outline: 0.125rem dotted var(--tui-base-04);
+
+    @media @tui-tablet {
+        width: 100%;
+    }
+}
+
+.t1,
+.t2,
+.t3,
+.t4 {
+    position: absolute;
+    width: 3.125rem;
+    height: 3.125rem;
+    background: var(--tui-primary);
+}
+
+.t1 {
+    top: 0.625rem;
+    left: 0.625rem;
+}
+
+.t2 {
+    top: 0.625rem;
+    right: 0.625rem;
+}
+
+.t3 {
+    right: 0.625rem;
+    bottom: 0.625rem;
+}
+
+.t4 {
+    left: 0.625rem;
+    bottom: 0.625rem;
+}

@@ -146,6 +146,15 @@ export const ROUTES: Routes = [
             title: `Portals`,
         },
     },
+    {
+        path: `viewport`,
+        loadChildren: async () =>
+            (await import(`../customization/viewport/viewport.module`))
+                .ExampleTuiViewportModule,
+        data: {
+            title: `Viewport`,
+        },
+    },
     // COMPONENTS
     {
         path: `components/accordion`,

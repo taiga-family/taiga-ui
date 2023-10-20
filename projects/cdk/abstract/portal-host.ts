@@ -25,7 +25,7 @@ export abstract class AbstractTuiPortalHostComponent {
 
     constructor(
         @Inject(INJECTOR) private readonly injector: Injector,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
+        @Inject(ElementRef) protected readonly el: ElementRef<HTMLElement>,
         @Inject(AbstractTuiPortalService) portalService: AbstractTuiPortalService,
     ) {
         portalService.attach(this);
