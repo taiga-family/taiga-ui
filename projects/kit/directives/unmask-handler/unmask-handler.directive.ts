@@ -1,6 +1,6 @@
 import {Directive, Input} from '@angular/core';
 import {MASKITO_DEFAULT_OPTIONS, MaskitoOptions, maskitoTransform} from '@maskito/core';
-import {AbstractTuiValueTransformer, TuiTypedMapper} from '@taiga-ui/cdk';
+import {AbstractTuiValueTransformer, TuiMapper} from '@taiga-ui/cdk';
 import {identity} from 'rxjs';
 
 @Directive({
@@ -14,7 +14,7 @@ import {identity} from 'rxjs';
 })
 export class TuiUnmaskHandlerDirective extends AbstractTuiValueTransformer<string> {
     @Input()
-    tuiUnmaskHandler: TuiTypedMapper<[string], string> = identity;
+    tuiUnmaskHandler: TuiMapper<[string], string> = identity;
 
     @Input()
     maskito: MaskitoOptions | null = null;
