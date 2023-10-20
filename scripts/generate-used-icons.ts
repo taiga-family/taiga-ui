@@ -63,7 +63,7 @@ function generateUsedIcons(
  *
  * Array of icons used in taiga-ui components
  */
- export const TUI_USED_ICONS = ${JSON.stringify(tuiIconNames)}`,
+ export const TUI_USED_ICONS = ${JSON.stringify(tuiIconNames)} as const`,
     );
 }
 
