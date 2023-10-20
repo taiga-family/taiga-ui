@@ -2,7 +2,6 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiThumbnailCardModule} from '@taiga-ui/addon-commerce';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
-import {TuiNotificationModule} from '@taiga-ui/core';
 
 import {TuiThumbnailCardExample1} from './examples/1';
 import {TuiThumbnailCardExample2} from './examples/2';
@@ -14,7 +13,6 @@ import {ExampleTuiThumbnailCardComponent} from './thumbnail-card.component';
     imports: [
         CommonModule,
         TuiThumbnailCardModule,
-        TuiNotificationModule,
         tuiGetDocModules(ExampleTuiThumbnailCardComponent),
     ],
     declarations: [
