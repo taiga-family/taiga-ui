@@ -8,12 +8,7 @@ import {
     Self,
 } from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {
-    AbstractTuiPortalHostComponent,
-    TuiDestroyService,
-    tuiGetClosestFocusable,
-    tuiPx,
-} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiGetClosestFocusable, tuiPx} from '@taiga-ui/cdk';
 import {
     tuiPositionAccessorFor,
     TuiRectAccessor,
@@ -65,8 +60,6 @@ export class TuiDropdownComponent {
         @Inject(TuiDropdownDirective) readonly directive: TuiDropdownDirective,
         @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(AbstractTuiPortalHostComponent)
-        private readonly host: AbstractTuiPortalHostComponent,
         @Inject(TuiRectAccessor) private readonly accessor: TuiRectAccessor,
         @Inject(WINDOW) private readonly win: Window,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
@@ -110,11 +103,11 @@ export class TuiDropdownComponent {
         const {right} = this.el.nativeElement.getBoundingClientRect();
         const {maxHeight, offset} = this.options;
         const {innerHeight} = this.win;
-        const {clientRect} = this.host;
+        const clientRect = this.el.nativeElement.offsetParent?.getBoundingClientRect();
         const {position} = this.directive;
         const rect = this.accessor.getClientRect();
-        const offsetX = position === 'fixed' ? 0 : -clientRect.left;
-        const offsetY = position === 'fixed' ? 0 : -clientRect.top;
+        const offsetX = position === 'fixed' ? 0 : -(clientRect?.left || 0);
+        const offsetY = position === 'fixed' ? 0 : -(clientRect?.top || 0);
 
         top += offsetY;
         left += offsetX;

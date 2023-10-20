@@ -1,0 +1,39 @@
+<tui-doc-page
+    header="Viewport"
+    package="CORE"
+>
+    <ng-template pageTab>
+        <p>
+            <code>TUI_VIEWPORT</code>
+            - define the area relative to which the position constraints will be calculated. Also you can use
+            <code>tuiAsViewport</code>
+            helper instead of token.
+        </p>
+
+        <tui-doc-example
+            id="base"
+            description="Here we just limit viewport relative to which the position of the dropdown will be calculated"
+            heading="Dropdown"
+            class="dropdown"
+            [content]="example1"
+            [fullsize]="true"
+        >
+            <tui-viewport-example-1></tui-viewport-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="portal"
+            description="If you want your dropdown to open in specific viewport in DOM of your web application, then you need to create your own portal"
+            heading="Dropdown with custom portal"
+            class="dropdown"
+            [content]="example2"
+            [fullsize]="true"
+        >
+            <tui-viewport-example-2></tui-viewport-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <tui-doc-code [code]="providers"></tui-doc-code>
+    </ng-template>
+</tui-doc-page>

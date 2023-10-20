@@ -68,4 +68,4 @@ export const TUI_USED_ICONS = [
     `tuiIconToggleOnLarge`,
     `tuiIconCalendar`,
     `tuiIconCalendarLarge`,
-];
+] as const;

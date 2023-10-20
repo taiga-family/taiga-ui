@@ -12,6 +12,7 @@ interface Item {
 @Component({
     selector: 'tui-tab-bar-example-1',
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })

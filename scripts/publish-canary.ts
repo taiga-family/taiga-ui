@@ -8,10 +8,10 @@ import {overwriteVersion} from './shared/overwrite-version';
 (function main(): void {
     const type = `canary`;
     const commit = execute(`git rev-parse HEAD`, {}).slice(0, 7);
-    const [major, minor, patch] = version.split(/[.-]/);
+    const [major, minor, patch] = version.split(/[.-]/) as [string, string, string];
 
     // construct new version from base version x.y.z to become x.y.z-{type}.{shortSha}
-    const newVersion = `${major}.${minor + 1}.${patch}-${type}.${commit}`;
+    const newVersion = `${major}.${Number(minor) + 1}.${patch}-${type}.${commit}`;
 
     infoLog(`New dev version - ${newVersion}`);
 
