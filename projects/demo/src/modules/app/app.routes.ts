@@ -1721,6 +1721,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `services/orientation-service`,
+        loadChildren: async () =>
+            (await import(`../services/orientation/orientation.module`))
+                .ExampleTuiOrientationModule,
+        data: {
+            title: `OrientationService`,
+        },
+    },
+    {
         path: `services/destroy-service`,
         loadChildren: async () =>
             (await import(`../services/destroy/destroy.module`)).ExampleTuiDestroyModule,

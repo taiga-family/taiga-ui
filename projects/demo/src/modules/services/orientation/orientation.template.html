@@ -1,0 +1,55 @@
+<tui-doc-page
+    header="OrientationService"
+    package="CORE"
+    path="core/services/orientation.service.ts"
+>
+    <ng-template pageTab>
+        <p>
+            <b>Landscape-primary</b>
+            is an orientation where the screen width is greater than the screen height. If the device's natural
+            orientation is landscape, then it is in landscape-primary when held in that position. If the device's
+            natural orientation is portrait, the user agent sets landscape-primary from the two options as shown in the
+            screen orientation values table.
+        </p>
+        <p>
+            <b>Landscape-secondary</b>
+            is an orientation where the screen width is greater than the screen height. If the device's natural
+            orientation is landscape, it is in landscape-secondary when rotated 180º from its natural orientation. If
+            the device's natural orientation is portrait, the user agent sets landscape-secondary from the two options
+            as shown in the screen orientation values table.
+        </p>
+        <p>
+            <b>Portrait-primary</b>
+            is an orientation where the screen width is less than or equal to the screen height. If the device's natural
+            orientation is portrait, then it is in portrait-primary when held in that position. If the device's natural
+            orientation is landscape, the user agent sets portrait-primary from the two options as shown in the screen
+            orientation values table.
+        </p>
+        <p>
+            <b>Portrait-secondary</b>
+            is an orientation where the screen width is less than or equal to the screen height. If the device's natural
+            orientation is portrait, then it is in portrait-secondary when rotated 180º from its natural position. If
+            the device's natural orientation is landscape, the user agent sets portrait-secondary from the two options
+            as shown in the screen orientation values table.
+        </p>
+        <tui-doc-example
+            id="basic"
+            heading="Basic"
+            [content]="example"
+        >
+            <tui-orientation-example-1></tui-orientation-example-1>
+        </tui-doc-example>
+    </ng-template>
+    <ng-template pageTab="Setup">
+        <p i18n>
+            Inject
+            <code>TuiOrientationService</code>
+            into your component:
+        </p>
+
+        <tui-doc-code
+            filename="my.component.ts"
+            [code]="injectService"
+        ></tui-doc-code>
+    </ng-template>
+</tui-doc-page>

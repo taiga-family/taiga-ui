@@ -1362,6 +1362,12 @@ export const pages: TuiDocPages = [
                 keywords: `молекула, уведомление, нотификация, бабл, облачко, alert, table, bar`,
                 route: `/services/table-bars-service`,
             },
+            {
+                section: `Tools`,
+                title: `OrientationService`,
+                keywords: `orientation, orientations, media, landscape, portrait`,
+                route: `/services/orientation-service`,
+            },
         ],
     },
     {
