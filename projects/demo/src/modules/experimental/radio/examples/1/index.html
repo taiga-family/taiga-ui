@@ -1,0 +1,59 @@
+<div
+    *ngFor="let platform of platforms; let first = first"
+    class="wrapper"
+    [class.wrapper_web]="platform === 'web'"
+    [tuiPlatform]="platform"
+>
+    <!--
+        This allows platform provider time to initialize.
+        Unnecessary for static platform tuiPlatform="whatever"
+    -->
+    <ng-container *ngIf="getSize(first) as size">
+        <input
+            ngModel="checked"
+            tuiRadio
+            type="radio"
+            value="checked"
+            [size]="size"
+        />
+
+        <input
+            ngModel="checked"
+            tuiRadio
+            type="radio"
+            value="checked"
+            [disabled]="true"
+            [size]="size"
+        />
+
+        <input
+            tuiRadio
+            type="radio"
+            [size]="size"
+        />
+
+        <input
+            ngModel="checked"
+            tuiRadio
+            type="radio"
+            [disabled]="true"
+            [size]="size"
+        />
+
+        <input
+            tuiRadio
+            type="radio"
+            [formControl]="invalidTrue"
+            [size]="size"
+            [value]="true"
+        />
+
+        <input
+            tuiRadio
+            type="radio"
+            [formControl]="invalidFalse"
+            [size]="size"
+            [value]="true"
+        />
+    </ng-container>
+</div>

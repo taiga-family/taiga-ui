@@ -206,9 +206,9 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Components`,
-        title: `Card`,
+        title: `ThumbnailCard`,
         keywords: `карта, карточка, card, visa, mastercard, credit, icon, logo, дебетовая, кредитная, иконка, логотип`,
-        route: `/components/card`,
+        route: `/components/thumbnail-card`,
     },
     {
         section: `Components`,
@@ -819,7 +819,7 @@ export const pages: TuiDocPages = [
     // Experimental
     {
         section: `Experimental`,
-        title: `Avatar`,
+        title: `Avatar `,
         keywords: `аватар, image, pic, icon, картинка, изображение, avatar, stack`,
         route: `/experimental/avatar`,
     },
@@ -835,9 +835,9 @@ export const pages: TuiDocPages = [
             },
             {
                 section: `Experimental`,
-                title: `BadgeAlert`,
+                title: `BadgeNotification`,
                 keywords: `бэдж, бейдж, circle, круг, badge, alert, нотификация`,
-                route: `/experimental/badge-alert`,
+                route: `/experimental/badge-notification`,
             },
             {
                 section: `Experimental`,
@@ -882,6 +882,24 @@ export const pages: TuiDocPages = [
         title: `Surface`,
         keywords: `card, container, wrapper, image, blur, overlay`,
         route: `/experimental/surface`,
+    },
+    {
+        section: `Experimental`,
+        title: `Checkbox `,
+        keywords: `чек, радио, ввод, форма, form, checkbox, radio, toggle`,
+        route: `/experimental/checkbox`,
+    },
+    {
+        section: `Experimental`,
+        title: `Radio `,
+        keywords: `чек, радио, ввод, форма, form, checkbox, radio, toggle`,
+        route: `/experimental/radio`,
+    },
+    {
+        section: `Experimental`,
+        title: `Toggle `,
+        keywords: `чек, радио, ввод, форма, form, checkbox, radio, toggle`,
+        route: `/experimental/toggle`,
     },
     // Charts
     {
@@ -1060,6 +1078,12 @@ export const pages: TuiDocPages = [
         title: `Portals`,
         keywords: `portal, custom, theme, style`,
         route: `/portals`,
+    },
+    {
+        section: `Customization`,
+        title: `Viewport`,
+        keywords: `viewport, вьюпорт, портал, контекст, выпадашка, дропдаун, portal, dropdown`,
+        route: `/viewport`,
     },
     // Tools
     {

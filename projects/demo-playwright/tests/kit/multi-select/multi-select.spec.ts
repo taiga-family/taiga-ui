@@ -203,5 +203,19 @@ describe(`MultiSelect`, () => {
                 `08-multi-select-2-after-scroll-to-end.png`,
             );
         });
+
+        test(`non-editable multiselect with custom value content`, async ({page}) => {
+            await tuiGoto(
+                page,
+                `components/multi-select/API?valueContent$=1&editable=false`,
+            );
+
+            await multiSelect.arrow.click();
+            await multiSelect.selectOptions([0, 1, 2]);
+
+            await documentationPage.prepareApiPageBeforeScreenshot();
+
+            await expect(page).toHaveScreenshot(`09-multi-select-non-editable.png`);
+        });
     });
 });

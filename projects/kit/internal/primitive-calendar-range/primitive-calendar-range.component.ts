@@ -18,8 +18,8 @@ import {
     TuiDay,
     TuiDayRange,
     TuiDestroyService,
+    TuiMapper,
     TuiMonth,
-    TuiTypedMapper,
     tuiWatch,
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER, TuiMarkerHandler} from '@taiga-ui/core';
@@ -96,7 +96,7 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
             : this.userViewedMonthSecond;
     }
 
-    monthOffset: TuiTypedMapper<[TuiMonth, number], TuiMonth> = (value, offset) =>
+    monthOffset: TuiMapper<[TuiMonth, number], TuiMonth> = (value, offset) =>
         value.append({month: offset});
 
     ngOnInit(): void {

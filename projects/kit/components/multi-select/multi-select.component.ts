@@ -28,9 +28,9 @@ import {
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     tuiIsString,
+    TuiMapper,
     tuiPure,
     TuiStringHandler,
-    TuiTypedMapper,
 } from '@taiga-ui/cdk';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
@@ -199,7 +199,7 @@ export class TuiMultiSelectComponent<T>
         return ({$implicit}) => stringify($implicit);
     }
 
-    readonly valueMapper: TuiTypedMapper<
+    readonly valueMapper: TuiMapper<
         [readonly T[], TuiStringHandler<T>, boolean?],
         ReadonlyArray<TuiStringifiableItem<T>>
     > = (value, stringify, group) =>
@@ -207,7 +207,7 @@ export class TuiMultiSelectComponent<T>
             ? EMPTY_ARRAY
             : value.map(item => new TuiStringifiableItem(item, stringify));
 
-    readonly disabledItemHandlerWrapper: TuiTypedMapper<
+    readonly disabledItemHandlerWrapper: TuiMapper<
         [TuiBooleanHandler<T>],
         TuiBooleanHandler<TuiStringifiableItem<T> | string>
     > = handler => stringifiable =>

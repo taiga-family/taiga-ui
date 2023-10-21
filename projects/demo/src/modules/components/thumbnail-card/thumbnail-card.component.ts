@@ -42,6 +42,11 @@ export class ExampleTuiThumbnailCardComponent {
         LESS: import('./examples/3/index.less?raw'),
     };
 
+    readonly example4: TuiDocExample = {
+        HTML: import('./examples/4/index.html?raw'),
+        LESS: import('./examples/4/index.less?raw'),
+    };
+
     paymentSystemVariants: readonly TuiPaymentSystem[] = [
         'visa',
         'maestro',

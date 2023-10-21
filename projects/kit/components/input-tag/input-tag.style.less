@@ -192,13 +192,6 @@
     }
 }
 
-.t-input-wrapper {
-    &_collapsed {
-        flex: 0;
-        margin-inline-start: -0.5rem;
-    }
-}
-
 .t-input-wrapper,
 .t-value-content {
     position: relative;
@@ -220,6 +213,13 @@
 
     :host:not(._label-outside) & {
         min-height: 1rem;
+    }
+}
+
+.t-input-wrapper {
+    &_collapsed {
+        flex: 0;
+        margin-inline-start: -0.5rem;
     }
 }
 

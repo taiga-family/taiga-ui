@@ -146,6 +146,15 @@ export const ROUTES: Routes = [
             title: `Portals`,
         },
     },
+    {
+        path: `viewport`,
+        loadChildren: async () =>
+            (await import(`../customization/viewport/viewport.module`))
+                .ExampleTuiViewportModule,
+        data: {
+            title: `Viewport`,
+        },
+    },
     // COMPONENTS
     {
         path: `components/accordion`,
@@ -203,7 +212,32 @@ export const ROUTES: Routes = [
         loadChildren: async () =>
             (await import(`../experimental/avatar/avatar.module`)).ExampleTuiAvatarModule,
         data: {
-            title: `Avatar`,
+            title: `Avatar `,
+        },
+    },
+    {
+        path: `experimental/checkbox`,
+        loadChildren: async () =>
+            (await import(`../experimental/checkbox/checkbox.module`))
+                .ExampleTuiCheckboxModule,
+        data: {
+            title: `Checkbox `,
+        },
+    },
+    {
+        path: `experimental/radio`,
+        loadChildren: async () =>
+            (await import(`../experimental/radio/radio.module`)).ExampleTuiRadioModule,
+        data: {
+            title: `Radio `,
+        },
+    },
+    {
+        path: `experimental/toggle`,
+        loadChildren: async () =>
+            (await import(`../experimental/toggle/toggle.module`)).ExampleTuiToggleModule,
+        data: {
+            title: `Toggle `,
         },
     },
     {
@@ -215,12 +249,12 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: `experimental/badge-alert`,
+        path: `experimental/badge-notification`,
         loadChildren: async () =>
-            (await import(`../experimental/badge-alert/badge-alert.module`))
-                .ExampleTuiBadgeAlertModule,
+            (await import(`../experimental/badge-notification/badge-notification.module`))
+                .ExampleTuiBadgeNotificationModule,
         data: {
-            title: `BadgeAlert`,
+            title: `BadgeNotification`,
         },
     },
     {
@@ -319,12 +353,12 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: `components/card`,
+        path: `components/thumbnail-card`,
         loadChildren: async () =>
             (await import(`../components/thumbnail-card/thumbnail-card.module`))
                 .ExampleTuiThumbnailCardModule,
         data: {
-            title: `Card`,
+            title: `ThumbnailCard`,
         },
     },
     {

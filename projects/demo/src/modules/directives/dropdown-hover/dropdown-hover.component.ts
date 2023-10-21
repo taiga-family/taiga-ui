@@ -36,6 +36,10 @@ export class ExampleTuiDropdownHoverComponent extends AbstractExampleTuiDropdown
         HTML: import('./examples/3/index.html?raw'),
     };
 
+    readonly example4: TuiDocExample = {
+        HTML: import('./examples/4/index.html?raw'),
+    };
+
     showDelay = 200;
 
     hideDelay = 500;
