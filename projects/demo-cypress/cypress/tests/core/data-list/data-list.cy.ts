@@ -34,9 +34,11 @@ describe(`DataList`, () => {
             .type(`{rightarrow}`)
             .type(`{downarrow}`.repeat(2));
 
-        cy.get(`tui-doc-page`).matchImageSnapshot(`3-#submenu`, {
-            capture: `viewport`,
-        });
+        cy.get(`tui-doc-page`)
+            .tuiWaitBeforeScreenshot()
+            .matchImageSnapshot(`3-#submenu`, {
+                capture: `viewport`,
+            });
     });
 
     it(`Form control`, () => {
@@ -44,7 +46,10 @@ describe(`DataList`, () => {
             .tuiScrollIntoView()
             .click();
 
-        cy.get(`tui-dropdown`).should(`be.visible`).matchImageSnapshot(`4-#control`);
+        cy.get(`tui-dropdown`)
+            .should(`be.visible`)
+            .tuiWaitBeforeScreenshot()
+            .matchImageSnapshot(`4-#control`);
     });
 
     it(`Complex`, {responseTimeout: 30_000}, () => {
