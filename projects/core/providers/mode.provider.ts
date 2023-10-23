@@ -7,10 +7,13 @@ import {map, startWith} from 'rxjs/operators';
 
 export const MODE_PROVIDER: Provider = {
     provide: TUI_MODE,
-    deps: [[new Optional(), TuiModeDirective], ElementRef],
+    deps: [
+        [new Optional(), TuiModeDirective],
+        [new Optional(), ElementRef],
+    ],
     useFactory: (
         mode: TuiModeDirective | null,
-        {nativeElement}: ElementRef,
+        elementRef: ElementRef | null,
     ): Observable<TuiBrightness | null> => {
         const mode$ = mode
             ? mode.change$.pipe(
@@ -19,7 +22,9 @@ export const MODE_PROVIDER: Provider = {
               )
             : of(null);
 
-        nativeElement[`$.data-mode.attr`] = mode$;
+        if (elementRef) {
+            elementRef.nativeElement[`$.data-mode.attr`] = mode$;
+        }
 
         return mode$;
     },
