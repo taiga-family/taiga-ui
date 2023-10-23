@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[21415],{91733:(e,o,t)=>{t.r(o),t.d(o,{TUI_FRENCH_LANGUAGE_ADDON_PREVIEW:()=>i});const i={previewTexts:{rotate:"Faire pivoter"},zoomTexts:{zoomOut:"Zoomer",zoomIn:"Dézoomer",reset:"Réinitialiser"}}}}]);
