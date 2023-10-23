@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.50.0](https://github.com/taiga-family/taiga-ui/compare/v3.49.1...v3.50.0) (2023-10-23)
+
+### Features
+
+- **experimental:** `Toggle`, `Checkbox`, `Radio` add new components
+  ([#5319](https://github.com/taiga-family/taiga-ui/issues/5319))
+  ([f805ed5](https://github.com/taiga-family/taiga-ui/commit/f805ed5975d355b36a793bdd5e6d5c361c108599))
+- **i18n:** add `Kazakh` language ([#5678](https://github.com/taiga-family/taiga-ui/issues/5678))
+  ([72a0136](https://github.com/taiga-family/taiga-ui/commit/72a01369398224f60259b6860d2402a4e7422d93))
+- **kit:** `UnmaskHandler` add new directive ([#5687](https://github.com/taiga-family/taiga-ui/issues/5687))
+  ([defd0be](https://github.com/taiga-family/taiga-ui/commit/defd0be83042606e417c348bfec6b7ecb5e29845))
+- **schematics:** ng update for TuiMapper and TuiMatcher ([#5679](https://github.com/taiga-family/taiga-ui/issues/5679))
+  ([13e4627](https://github.com/taiga-family/taiga-ui/commit/13e4627eac7ab48b0004ca2b77e19ac5328a7435))
+
+### Bug Fixes
+
+- **core:** `Group` bump CSS specificity to fix new buttons
+  ([#5728](https://github.com/taiga-family/taiga-ui/issues/5728))
+  ([85708cc](https://github.com/taiga-family/taiga-ui/commit/85708cceb25c58120f6bc9f7dd434020dfbeba59))
+- **core:** auto break words in notification ([#5716](https://github.com/taiga-family/taiga-ui/issues/5716))
+  ([ace9c3c](https://github.com/taiga-family/taiga-ui/commit/ace9c3c71bbc2c31860c5bc882cddad97ec48fb9))
+- **core:** correct `TuiHostedDropdownComponent` with `tuiHostedDropdownHost`
+  ([#5669](https://github.com/taiga-family/taiga-ui/issues/5669))
+  ([c974b51](https://github.com/taiga-family/taiga-ui/commit/c974b51d3a86d54ecad54a8efb5996779a466d7c))
+- **core:** use correct host portal viewport for dropdown position
+  ([#5662](https://github.com/taiga-family/taiga-ui/issues/5662))
+  ([e90c4a4](https://github.com/taiga-family/taiga-ui/commit/e90c4a4af5a591487957692aff30b667d2a4024c))
+- **experimental:** rename `BadgeAlert` to `BadgeNotification`
+  ([#5652](https://github.com/taiga-family/taiga-ui/issues/5652))
+  ([d27927b](https://github.com/taiga-family/taiga-ui/commit/d27927bb8d65262af4e09e0769e1767ed8c39eb3))
+- **kit:** `Multiselect` fix line height in value content
+  ([#5686](https://github.com/taiga-family/taiga-ui/issues/5686))
+  ([c9fa227](https://github.com/taiga-family/taiga-ui/commit/c9fa227466e814d6b83ceea9b1a73e94bd238d7f))
+- **kit:** prevent memory leak ([#5663](https://github.com/taiga-family/taiga-ui/issues/5663))
+  ([f3c21c1](https://github.com/taiga-family/taiga-ui/commit/f3c21c1ab5f0189f7d2c405bd3bd1270eebee58e))
+
 ### [3.49.1](https://github.com/taiga-family/taiga-ui/compare/v3.49.0...v3.49.1) (2023-10-17)
 
 ### Bug Fixes
