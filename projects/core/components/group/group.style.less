@@ -9,13 +9,13 @@
         flex: 1 1 0;
         min-width: 0;
 
-        &:nth-child(n) {
-            border-radius: 0;
-        }
-
         &:not(:last-child) {
-            margin-right: (@space / 2);
+            margin-right: 0.125rem;
         }
+    }
+
+    && > *:nth-child(n) {
+        border-radius: 0;
     }
 
     /* stylelint-disable */
@@ -83,7 +83,7 @@
 
             &:not(:last-child) {
                 margin-right: 0;
-                margin-bottom: (@space / 2);
+                margin-bottom: 0.125rem;
             }
         }
 
