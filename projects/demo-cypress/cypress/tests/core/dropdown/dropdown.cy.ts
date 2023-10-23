@@ -33,7 +33,7 @@ describe(`Dropdown`, () => {
         it(`Esc -> Hosted Dropdown`, () => {
             cy.tuiVisit(`/components/hosted-dropdown#tui-dropdown-host`);
 
-            cy.get(`tui-hosted-dropdown-example-2 button [src=tuiIconChevronDown]`)
+            cy.get(`tui-hosted-dropdown-example-2 button[tuiHostedDropdownHost]`)
                 .tuiWaitBeforeAction()
                 .click();
 

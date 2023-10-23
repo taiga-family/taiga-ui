@@ -88,8 +88,8 @@ test.describe(`Slider`, () => {
 
                 example = page.locator(`#complex .t-example`);
                 slider = new TuiSliderPO(example.getByRole(`slider`));
-                plusButton = example.locator(`button[icon="tuiIconPlus"]`);
-                minusButton = example.locator(`button[icon="tuiIconMinus"]`);
+                plusButton = example.locator(`button.plus`);
+                minusButton = example.locator(`button.minus`);
             });
 
             test(`decrease value by 1 step`, async ({page}) => {
