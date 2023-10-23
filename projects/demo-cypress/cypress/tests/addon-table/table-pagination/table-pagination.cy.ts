@@ -10,9 +10,11 @@ describe(`TablePagination`, () => {
 
             cy.get(`@linesPerPageSelect`).click();
             waitForCheckmarkIcon();
-            cy.get(`@tablePagination`).matchImageSnapshot(`0-[size]-dropdown-base`, {
-                padding: [0, 0, 150, 0],
-            });
+            cy.get(`@tablePagination`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`0-[size]-dropdown-base`, {
+                    padding: [0, 0, 150, 0],
+                });
         });
 
         it(`With very long option name`, () => {
@@ -25,12 +27,11 @@ describe(`TablePagination`, () => {
 
             cy.get(`@linesPerPageSelect`).click();
             waitForCheckmarkIcon();
-            cy.get(`@tablePagination`).matchImageSnapshot(
-                `1-[size]-dropdown-long-option-name`,
-                {
+            cy.get(`@tablePagination`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`1-[size]-dropdown-long-option-name`, {
                     padding: [0, 0, 100, 0],
-                },
-            );
+                });
         });
     });
 
