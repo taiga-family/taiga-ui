@@ -12,11 +12,11 @@ export function getValueByFlag<T extends string>(flag: string, fallback: T): T {
     const [parsedFlag, parsedValue] = process.argv[index].split(`=`) ?? [];
     const value =
         stringifier(parsedValue) ??
-        (process.argv[index + 1].startsWith(`-`)
+        (process.argv[index + 1]?.startsWith(`-`)
             ? fallback
             : stringifier(process.argv[index + 1]) ?? fallback);
 
-    processLog(`parsed flags: \n${[parsedFlag, value].join(`=`)}`);
+    processLog(`parsed flags: \n${[parsedFlag, value || `''`].join(`=`)}`);
 
     return value as T;
 }
