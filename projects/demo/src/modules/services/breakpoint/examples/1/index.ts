@@ -4,14 +4,15 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBreakpointService} from '@taiga-ui/core';
 
 @Component({
-    selector: `tui-breakpoint-example`,
-    templateUrl: `./template.html`,
-    styleUrls: [`./style.less`],
+    selector: 'tui-breakpoint-example-1',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     encapsulation,
 })
-export class TuiBreakpointExample {
+export class TuiBreakpointExample1 {
     constructor(
-        @Inject(TuiBreakpointService) readonly breakpoint$: TuiBreakpointService,
+        @Inject(TuiBreakpointService)
+        readonly breakpoint$: TuiBreakpointService,
     ) {}
 }
