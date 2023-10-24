@@ -31,7 +31,8 @@
         "hangoff",
         "tcrm",
         "scrollbars",
-        "callout"
+        "callout",
+        "retrowave"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
