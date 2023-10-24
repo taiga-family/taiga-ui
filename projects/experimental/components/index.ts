@@ -8,4 +8,5 @@ export * from '@taiga-ui/experimental/components/checkbox';
 export * from '@taiga-ui/experimental/components/compass';
 export * from '@taiga-ui/experimental/components/radio';
 export * from '@taiga-ui/experimental/components/rating';
+export * from '@taiga-ui/experimental/components/thumbnail-card';
 export * from '@taiga-ui/experimental/components/toggle';

@@ -318,6 +318,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/thumbnail-card`,
+        loadChildren: async () =>
+            (await import(`../experimental/thumbnail-card/thumbnail-card.module`))
+                .ExampleTuiThumbnailCardModule,
+        data: {
+            title: `ThumbnailCard `,
+        },
+    },
+    {
         path: `navigation/breadcrumbs`,
         loadChildren: async () =>
             (await import(`../components/breadcrumbs/breadcrumbs.module`))

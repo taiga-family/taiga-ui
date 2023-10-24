@@ -885,6 +885,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Experimental`,
+        title: `ThumbnailCard `,
+        keywords: `карта, карточка, card, visa, mastercard, credit, icon, logo, дебетовая, кредитная, иконка, логотип`,
+        route: `/experimental/thumbnail-card`,
+    },
+    {
+        section: `Experimental`,
         title: `Checkbox `,
         keywords: `чек, радио, ввод, форма, form, checkbox, radio, toggle`,
         route: `/experimental/checkbox`,

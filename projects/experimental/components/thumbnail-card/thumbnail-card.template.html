@@ -1,0 +1,27 @@
+<div class="t-front">
+    <div
+        *ngIf="iconLeft"
+        class="t-left"
+    >
+        <tui-svg
+            class="t-icon"
+            [src]="iconLeft"
+        ></tui-svg>
+    </div>
+    <div
+        *ngIf="iconRight"
+        class="t-right"
+    >
+        <tui-svg
+            class="t-icon"
+            [src]="iconRight"
+        ></tui-svg>
+    </div>
+    <ng-content></ng-content>
+    <tui-svg
+        *ngIf="paymentSystem"
+        class="t-logo"
+        [src]="options.icons[paymentSystem]"
+    ></tui-svg>
+</div>
+<div class="t-back"></div>

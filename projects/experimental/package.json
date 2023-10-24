@@ -13,6 +13,7 @@
     "peerDependencies": {
         "@angular/common": ">=12.0.0",
         "@angular/core": ">=12.0.0",
+        "@taiga-ui/addon-commerce": ">=3.50.0",
         "@taiga-ui/cdk": ">=3.50.0",
         "@taiga-ui/core": ">=3.50.0",
         "@taiga-ui/kit": ">=3.50.0",
