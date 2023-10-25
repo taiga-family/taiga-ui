@@ -1,4 +1,4 @@
-import {RANGE_SEPARATOR_CHAR} from './date-time';
+import {TUI_RANGE_SEPARATOR_CHAR} from './date-time';
 
 /**
  * @internal 'dd.mm.yyyy'.length
@@ -7,10 +7,23 @@ import {RANGE_SEPARATOR_CHAR} from './date-time';
  * - {@link TuiInputDateRangeComponent}
  * - {@link TuiInputDateTimeComponent}
  */
-export const DATE_FILLER_LENGTH = 10;
+export const TUI_DATE_FILLER_LENGTH = 10;
+
+/**
+ * @deprecated: use {@link TUI_DATE_FILLER_LENGTH}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const DATE_FILLER_LENGTH = TUI_DATE_FILLER_LENGTH;
+
 /**
  * @internal
  * Used in {@link TuiInputDateRangeComponent}
  */
-export const DATE_RANGE_FILLER_LENGTH =
-    2 * DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length;
+export const TUI_DATE_RANGE_FILLER_LENGTH =
+    2 * TUI_DATE_FILLER_LENGTH + TUI_RANGE_SEPARATOR_CHAR.length;
+
+/**
+ * @deprecated: use {@link TUI_DATE_RANGE_FILLER_LENGTH}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const DATE_RANGE_FILLER_LENGTH = TUI_DATE_RANGE_FILLER_LENGTH;

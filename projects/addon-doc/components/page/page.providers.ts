@@ -4,11 +4,19 @@ import {TUI_DOC_SEE_ALSO} from '@taiga-ui/addon-doc/tokens';
 /**
  * Array if related page titles
  */
-export const PAGE_SEE_ALSO = new InjectionToken<readonly string[]>(`[PAGE_SEE_ALSO]`);
+export const TUI_PAGE_SEE_ALSO = new InjectionToken<readonly string[]>(
+    `[TUI_PAGE_SEE_ALSO]`,
+);
 
-export const PAGE_PROVIDERS: Provider[] = [
+/**
+ * @deprecated: use {@link TUI_PAGE_SEE_ALSO}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const PAGE_SEE_ALSO = TUI_PAGE_SEE_ALSO;
+
+export const TUI_PAGE_PROVIDERS: Provider[] = [
     {
-        provide: PAGE_SEE_ALSO,
+        provide: TUI_PAGE_SEE_ALSO,
         deps: [ElementRef, TUI_DOC_SEE_ALSO],
         useFactory: (
             {nativeElement}: ElementRef,
@@ -29,3 +37,9 @@ export const PAGE_PROVIDERS: Provider[] = [
         },
     },
 ];
+
+/**
+ * @deprecated: use {@link TUI_PAGE_PROVIDERS}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const PAGE_PROVIDERS = TUI_PAGE_PROVIDERS;

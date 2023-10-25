@@ -39,9 +39,29 @@ import {
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
-export const DEFAULT_ROWS = 20;
-export const LINE_HEIGHT_M = 20;
-export const LINE_HEIGHT_L = 24;
+export const TUI_DEFAULT_ROWS = 20;
+
+/**
+ * @deprecated: use {@link TUI_DEFAULT_ROWS}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const DEFAULT_ROWS = TUI_DEFAULT_ROWS;
+
+export const TUI_LINE_HEIGHT_M = 20;
+
+/**
+ * @deprecated: use {@link TUI_LINE_HEIGHT_M}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const LINE_HEIGHT_M = TUI_LINE_HEIGHT_M;
+
+export const TUI_LINE_HEIGHT_L = 24;
+
+/**
+ * @deprecated: use {@link TUI_LINE_HEIGHT_L}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const LINE_HEIGHT_L = TUI_LINE_HEIGHT_L;
 
 @Component({
     selector: 'tui-textarea',

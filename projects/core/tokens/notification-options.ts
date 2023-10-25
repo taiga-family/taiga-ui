@@ -8,7 +8,10 @@ export interface TuiNotificationDefaultOptions
     size: TuiSizeL | TuiSizeS;
 }
 
-/** @deprecated remove export */
+/**
+ * @deprecated
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export const STATUS_ICON = {
     info: `tuiIconInfo`,
     success: `tuiIconCheckCircle`,

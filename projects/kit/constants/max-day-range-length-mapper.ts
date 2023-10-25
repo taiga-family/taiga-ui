@@ -6,7 +6,7 @@ import {
     TuiTypedMapper,
 } from '@taiga-ui/cdk';
 
-export const MAX_DAY_RANGE_LENGTH_MAPPER: TuiTypedMapper<
+export const TUI_MAX_DAY_RANGE_LENGTH_MAPPER: TuiTypedMapper<
     [TuiDay, TuiDayRange | null, TuiDayLike | null, boolean],
     TuiDay
 > = (min, value, maxLength, backwards) => {
@@ -32,3 +32,9 @@ export const MAX_DAY_RANGE_LENGTH_MAPPER: TuiTypedMapper<
 
     return dateShift.dayAfter(min) ? min : dateShift;
 };
+
+/**
+ * @deprecated: use {@link TUI_MAX_DAY_RANGE_LENGTH_MAPPER}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const MAX_DAY_RANGE_LENGTH_MAPPER = TUI_MAX_DAY_RANGE_LENGTH_MAPPER;

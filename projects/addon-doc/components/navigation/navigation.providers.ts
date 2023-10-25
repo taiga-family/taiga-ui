@@ -9,27 +9,45 @@ import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 /**
  * Page title
  */
-export const NAVIGATION_TITLE = new InjectionToken<Observable<string>>(
-    `[NAVIGATION_TITLE]`,
+export const TUI_NAVIGATION_TITLE = new InjectionToken<Observable<string>>(
+    `[TUI_NAVIGATION_TITLE]`,
 );
+
+/**
+ * @deprecated: use {@link TUI_NAVIGATION_TITLE}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const NAVIGATION_TITLE = TUI_NAVIGATION_TITLE;
 
 /**
  * Navigation sections labels for search
  */
-export const NAVIGATION_LABELS = new InjectionToken<readonly string[]>(
-    `[NAVIGATION_LABELS]`,
+export const TUI_NAVIGATION_LABELS = new InjectionToken<readonly string[]>(
+    `[TUI_NAVIGATION_LABELS]`,
 );
+
+/**
+ * @deprecated: use {@link TUI_NAVIGATION_LABELS}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const NAVIGATION_LABELS = TUI_NAVIGATION_LABELS;
 
 /**
  * Navigation pages
  */
-export const NAVIGATION_ITEMS: InjectionToken<readonly TuiDocPages[]> =
-    new InjectionToken<readonly TuiDocPages[]>(`[NAVIGATION_ITEMS]`);
+export const TUI_NAVIGATION_ITEMS: InjectionToken<readonly TuiDocPages[]> =
+    new InjectionToken<readonly TuiDocPages[]>(`[TUI_NAVIGATION_ITEMS]`);
 
-export const NAVIGATION_PROVIDERS: Provider[] = [
+/**
+ * @deprecated: use {@link TUI_NAVIGATION_ITEMS}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const NAVIGATION_ITEMS = TUI_NAVIGATION_ITEMS;
+
+export const TUI_NAVIGATION_PROVIDERS: Provider[] = [
     TuiDestroyService,
     {
-        provide: NAVIGATION_TITLE,
+        provide: TUI_NAVIGATION_TITLE,
         deps: [Router, ActivatedRoute, TUI_DOC_TITLE, TuiDestroyService],
         useFactory: (
             router: Router,
@@ -47,12 +65,12 @@ export const NAVIGATION_PROVIDERS: Provider[] = [
             ),
     },
     {
-        provide: NAVIGATION_LABELS,
+        provide: TUI_NAVIGATION_LABELS,
         deps: [TUI_DOC_PAGES],
         useFactory: labelsProviderFactory,
     },
     {
-        provide: NAVIGATION_ITEMS,
+        provide: TUI_NAVIGATION_ITEMS,
         deps: [TUI_DOC_PAGES],
         useFactory: (pages: TuiDocPages): readonly TuiDocPages[] => {
             const labels = labelsProviderFactory(pages);
@@ -64,6 +82,12 @@ export const NAVIGATION_PROVIDERS: Provider[] = [
         },
     },
 ];
+
+/**
+ * @deprecated: use {@link TUI_NAVIGATION_PROVIDERS}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const NAVIGATION_PROVIDERS = TUI_NAVIGATION_PROVIDERS;
 
 function labelsProviderFactory(pages: TuiDocPages): readonly string[] {
     return pages

@@ -10,8 +10,21 @@ import {
 import {EMPTY, Observable} from 'rxjs';
 import {filter, map, takeUntil} from 'rxjs/operators';
 
-export const RIPPLE_ON = `tuiRippleOn`;
-export const RIPPLE_OFF = `tuiRippleOff`;
+export const TUI_RIPPLE_ON = `tuiRippleOn`;
+
+/**
+ * @deprecated: use {@link TUI_RIPPLE_ON}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const RIPPLE_ON = TUI_RIPPLE_ON;
+
+export const TUI_RIPPLE_OFF = `tuiRippleOff`;
+
+/**
+ * @deprecated: use {@link TUI_RIPPLE_OFF}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const RIPPLE_OFF = TUI_RIPPLE_OFF;
 
 /**
  * Stream of ripple elements to add

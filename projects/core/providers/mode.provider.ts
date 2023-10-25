@@ -5,7 +5,7 @@ import {TuiBrightness} from '@taiga-ui/core/types';
 import {Observable, of} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
-export const MODE_PROVIDER: Provider = {
+export const TUI_MODE_PROVIDER: Provider = {
     provide: TUI_MODE,
     deps: [[new Optional(), TuiModeDirective], ElementRef],
     useFactory: (
@@ -24,3 +24,9 @@ export const MODE_PROVIDER: Provider = {
         return mode$;
     },
 };
+
+/**
+ * @deprecated: use {@link TUI_MODE_PROVIDER}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const MODE_PROVIDER: Provider = TUI_MODE_PROVIDER;

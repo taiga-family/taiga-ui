@@ -21,7 +21,13 @@ import {
     TUI_PULL_TO_REFRESH_THRESHOLD,
 } from './pull-to-refresh.providers';
 
-export const MICRO_OFFSET = 10 ** -6;
+export const TUI_MICRO_OFFSET = 10 ** -6;
+
+/**
+ * @deprecated: use {@link TUI_MICRO_OFFSET}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const MICRO_OFFSET = TUI_MICRO_OFFSET;
 
 @Injectable()
 export class TuiPullToRefreshService extends Observable<number> {

@@ -2,6 +2,7 @@
  * @deprecated unused constant
  * TODO: delete in v4.0
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export const GROUP_CLASS_NAMES = [
     `_active`,
     `_disabled`,

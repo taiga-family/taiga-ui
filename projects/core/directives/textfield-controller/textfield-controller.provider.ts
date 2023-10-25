@@ -44,7 +44,7 @@ import {TUI_TEXTFIELD_SIZE, TuiTextfieldSizeDirective} from './textfield-size.di
 export const TUI_TEXTFIELD_WATCHED_CONTROLLER =
     new InjectionToken<TuiTextfieldController>(`[TUI_TEXTFIELD_WATCHED_CONTROLLER]`);
 
-export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
+export const TUI_TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
     TuiDestroyService,
     {
         provide: TUI_TEXTFIELD_WATCHED_CONTROLLER,
@@ -97,3 +97,9 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
         },
     },
 ];
+
+/**
+ * @deprecated: use {@link TEXTFIELD_CONTROLLER_PROVIDER}
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const TEXTFIELD_CONTROLLER_PROVIDER = TUI_TEXTFIELD_CONTROLLER_PROVIDER;
