@@ -173,6 +173,12 @@ export const pages: TuiDocPages = [
         route: `/layout/block-status`,
     },
     {
+        section: `Layout`,
+        title: `Title`,
+        keywords: `subtitle, заголовок, caption, description, подзаголовок`,
+        route: `/layout/title`,
+    },
+    {
         section: `Components`,
         title: `Button`,
         keywords: `кнопка, button, icon-button, иконка`,

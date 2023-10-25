@@ -1,0 +1,47 @@
+[tuiTitle] {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin: 0;
+    font: var(--tui-font-text-m-2);
+
+    &[data-size='s'] {
+        gap: 0.125rem;
+        font: var(--tui-font-text-s);
+
+        [tuiSubtitle] {
+            font: var(--tui-font-text-xs);
+        }
+    }
+
+    &[data-size='m'] {
+        gap: 0.125rem;
+        font: var(--tui-font-heading-5);
+
+        [tuiSubtitle] {
+            font: var(--tui-font-text-m);
+        }
+    }
+
+    &[data-size='l'] {
+        gap: 0.5rem;
+        font: var(--tui-font-heading-3);
+
+        [tuiSubtitle] {
+            font: var(--tui-font-text-m);
+        }
+    }
+
+    &[data-platform='ios'],
+    &[data-platform='android'] {
+        gap: 0.25rem;
+
+        [tuiSubtitle] {
+            color: var(--tui-text-02);
+        }
+    }
+}
+
+[tuiSubtitle] {
+    font: var(--tui-font-text-s-2);
+}
