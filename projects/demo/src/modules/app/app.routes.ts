@@ -208,6 +208,14 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `layout/title`,
+        loadChildren: async () =>
+            (await import(`../directives/title/title.module`)).ExampleTuiTitleModule,
+        data: {
+            title: `Title`,
+        },
+    },
+    {
         path: `experimental/avatar`,
         loadChildren: async () =>
             (await import(`../experimental/avatar/avatar.module`)).ExampleTuiAvatarModule,
