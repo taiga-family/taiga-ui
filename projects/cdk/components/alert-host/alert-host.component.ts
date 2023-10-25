@@ -13,7 +13,7 @@ import {
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/cdk/constants';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TUI_ALERTS} from '@taiga-ui/cdk/tokens';
-import {TuiDialog, TuiMapper} from '@taiga-ui/cdk/types';
+import {TuiDialog, TuiTypedMapper} from '@taiga-ui/cdk/types';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -54,7 +54,7 @@ export class TuiAlertHostComponent<T extends TuiDialog<unknown, unknown>>
             });
     }
 
-    readonly mapper: TuiMapper<[unknown], Injector> = useValue =>
+    readonly mapper: TuiTypedMapper<[unknown], Injector> = useValue =>
         Injector.create({
             providers: [
                 {

@@ -11,9 +11,9 @@ import {
     EMPTY_QUERY,
     TuiContextWithImplicit,
     TuiIdService,
-    TuiMapper,
     tuiPure,
     tuiSum,
+    TuiTypedMapper,
 } from '@taiga-ui/cdk';
 import {
     TuiHintHoverDirective,
@@ -71,11 +71,9 @@ export class TuiBarChartComponent {
         return this.max || this.getMax(this.value, this.collapsed);
     }
 
-    readonly percentMapper: TuiMapper<[readonly number[], boolean, number], number> = (
-        set,
-        collapsed,
-        max,
-    ) => (100 * (collapsed ? tuiSum(...set) : Math.max(...set))) / max;
+    readonly percentMapper: TuiTypedMapper<[readonly number[], boolean, number], number> =
+        (set, collapsed, max) =>
+            (100 * (collapsed ? tuiSum(...set) : Math.max(...set))) / max;
 
     getHintId(index: number): string {
         return `${this.autoIdString}_${index}`;

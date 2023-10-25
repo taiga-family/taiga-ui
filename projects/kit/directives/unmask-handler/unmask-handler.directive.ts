@@ -14,7 +14,7 @@ import {identity} from 'rxjs';
 })
 export class TuiUnmaskHandlerDirective extends AbstractTuiValueTransformer<string> {
     @Input()
-    tuiUnmaskHandler: TuiMapper<[string], string> = identity;
+    tuiUnmaskHandler: TuiMapper<string, string> = identity;
 
     @Input()
     maskito: MaskitoOptions | null = null;
