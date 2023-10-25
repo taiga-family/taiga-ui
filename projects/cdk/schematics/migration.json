@@ -31,6 +31,11 @@
             "version": "3.40.0",
             "factory": "./ng-update/v3-40/index#updateToV3_40"
         },
+        "updateToV3_51": {
+            "description": "Replace TuiTypedMapper to TuiMapper",
+            "version": "3.51.0",
+            "factory": "./ng-update/v3-51/index#updateToV3_51"
+        },
         "updateToV4": {
             "description": "Updates Taiga UI packages to v4",
             "version": "4.0.0",
