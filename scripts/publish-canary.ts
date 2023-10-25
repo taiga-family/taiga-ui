@@ -11,7 +11,7 @@ import {overwriteVersion} from './shared/overwrite-version';
     const [major, minor, patch] = version.split(/[.-]/) as [string, string, string];
 
     // construct new version from base version x.y.z to become x.y.z-{type}.{shortSha}
-    const newVersion = `${major}.${Number(minor) + 1}.${patch}-${type}.${commit}`;
+    const newVersion = `${major}.${minor}.${patch}-${type}.${commit}`;
 
     infoLog(`New dev version - ${newVersion}`);
 
