@@ -5,8 +5,8 @@ import {TuiSizeS} from '@taiga-ui/core';
 export interface TuiCheckboxOptions {
     readonly size: TuiSizeS;
     readonly icons: Readonly<{
-        checked: TuiMapper<[TuiSizeS], string> | string;
-        indeterminate: TuiMapper<[TuiSizeS], string> | string;
+        checked: TuiMapper<TuiSizeS, string> | string;
+        indeterminate: TuiMapper<TuiSizeS, string> | string;
     }>;
 }
 

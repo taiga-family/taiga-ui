@@ -12,9 +12,9 @@ import {
     TuiBooleanHandler,
     TuiDay,
     TuiDayRange,
-    TuiMapper,
     TuiMonth,
     tuiNullableSame,
+    TuiTypedMapper,
     TuiYear,
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
@@ -81,7 +81,7 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
 
     year: TuiYear | null = null;
 
-    readonly disabledItemHandlerMapper: TuiMapper<
+    readonly disabledItemHandlerMapper: TuiTypedMapper<
         [TuiBooleanHandler<TuiDay>, TuiDay, TuiDay],
         TuiBooleanHandler<TuiDay>
     > = (disabledItemHandler, min, max) => item =>

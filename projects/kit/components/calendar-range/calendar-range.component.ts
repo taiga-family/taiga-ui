@@ -20,11 +20,11 @@ import {
     TuiDayRange,
     TuiDestroyService,
     tuiIsString,
-    TuiMapper,
     TuiMonth,
     tuiNullableSame,
     tuiObjectFromEntries,
     tuiPure,
+    TuiTypedMapper,
     tuiWatch,
 } from '@taiga-ui/cdk';
 import {
@@ -118,16 +118,16 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         this.value = this.previousValue;
     }
 
-    readonly mapper: TuiMapper<
+    readonly mapper: TuiTypedMapper<
         [
             readonly TuiDayRangePeriod[],
             TuiDay | null,
             TuiDay | null,
             TuiDayLike | null,
-            string | null,
+            string?,
         ],
         ReadonlyArray<TuiDayRangePeriod | string>
-    > = (items, min, max, minLength, otherDateText) => [
+    > = (items, min, max, minLength, otherDateText = '') => [
         ...items.filter(
             item =>
                 (minLength === null ||
@@ -135,7 +135,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
                 (min === null || item.range.to.daySameOrAfter(min)) &&
                 (max === null || item.range.from.daySameOrBefore(max)),
         ),
-        otherDateText ?? '',
+        otherDateText,
     ];
 
     get calculatedDisabledItemHandler(): TuiBooleanHandler<TuiDay> {
