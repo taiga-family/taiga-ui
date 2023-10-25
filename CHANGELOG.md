@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.51.0](https://github.com/taiga-family/taiga-ui/compare/v3.50.0...v3.51.0) (2023-10-25)
+
+### Features
+
+- **core:** use `TuiBreakpointService` instead of `TUI_IS_MOBILE_RES`
+  ([#5736](https://github.com/taiga-family/taiga-ui/issues/5736))
+  ([bc57278](https://github.com/taiga-family/taiga-ui/commit/bc572784251d6407fa1f662dde9ab76a58af40d2))
+- **experimental:** `ThumbnailCard` add new component ([#5734](https://github.com/taiga-family/taiga-ui/issues/5734))
+  ([97606f7](https://github.com/taiga-family/taiga-ui/commit/97606f79ea159d446ae4cefb0a0543cbd0f1caec))
+
+### Bug Fixes
+
+- **cdk:** revert breaking changes with `TuiMapper` ([#5739](https://github.com/taiga-family/taiga-ui/issues/5739))
+  ([74d34c8](https://github.com/taiga-family/taiga-ui/commit/74d34c83e9382b787c38cff84df003f2d811e97f))
+
 ## [3.50.0](https://github.com/taiga-family/taiga-ui/compare/v3.49.1...v3.50.0) (2023-10-23)
 
 ### Features
