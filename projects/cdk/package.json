@@ -15,9 +15,9 @@
     "repository": "https://github.com/taiga-family/taiga-ui",
     "license": "Apache-2.0",
     "dependencies": {
-        "@ng-web-apis/common": "3.0.3",
-        "@ng-web-apis/mutation-observer": "3.0.3",
-        "@ng-web-apis/resize-observer": "3.0.3",
+        "@ng-web-apis/common": "3.0.5",
+        "@ng-web-apis/mutation-observer": "3.0.5",
+        "@ng-web-apis/resize-observer": "3.0.5",
         "@tinkoff/ng-event-plugins": "3.1.0",
         "@tinkoff/ng-polymorpheus": "4.2.0",
         "tslib": "2.6.2"
