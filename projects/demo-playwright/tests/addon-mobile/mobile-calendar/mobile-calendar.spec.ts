@@ -13,7 +13,7 @@ test.describe(`MobileCalendar`, () => {
 
         await chooseDateButton.click();
         await page.waitForTimeout(2000);
-
+      
         await expect(example).toHaveScreenshot(`01-mobile-calendar.png`);
     });
 
@@ -23,7 +23,7 @@ test.describe(`MobileCalendar`, () => {
 
         await apiPageExample.scrollIntoViewIfNeeded();
         await page.waitForTimeout(2000);
-
+      
         await expect(page).toHaveScreenshot(`01-mobile-calendar-disabled.png`, {
             mask: [page.locator(`tui-mobile-calendar`)],
         });
@@ -35,7 +35,7 @@ test.describe(`MobileCalendar`, () => {
 
         await apiPageExample.scrollIntoViewIfNeeded();
         await page.waitForTimeout(2000);
-
+      
         await expect(page).toHaveScreenshot(`01-mobile-calendar-enabled.png`, {
             mask: [page.locator(`tui-mobile-calendar`)],
         });
