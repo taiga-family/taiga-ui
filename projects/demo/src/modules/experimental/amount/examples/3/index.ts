@@ -11,7 +11,8 @@ import {tuiAmountOptionsProvider} from '@taiga-ui/experimental';
     providers: [
         tuiAmountOptionsProvider({
             sign: 'always',
-            decimal: 'always',
+            currency: 'USD',
+            currencyAlign: 'left',
         }),
     ],
 })

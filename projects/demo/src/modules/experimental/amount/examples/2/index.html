@@ -1,2 +1,7 @@
-<div>{{ -10000000.536 | tuiAmount: 'USD' : 'left' }}</div>
-<div>{{ 200.211 | tuiAmount: 'EUR' }}</div>
+<div>
+    <div [tuiNumberFormat]="{rounding: 'round', thousandSeparator: ',', decimalSeparator: '.'}">
+        {{ -10000000.536 | tuiAmount: 'USD' : 'left' | async }}
+    </div>
+
+    <div>{{ 200.536 | tuiAmount: 'EUR' | async }}</div>
+</div>

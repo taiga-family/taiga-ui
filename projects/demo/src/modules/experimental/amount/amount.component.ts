@@ -30,9 +30,4 @@ export class ExampleTuiAmountComponent {
         HTML: import('./examples/3/index.html?raw'),
         TypeScript: import('./examples/3/index.ts?raw'),
     };
-
-    readonly example4: TuiDocExample = {
-        HTML: import('./examples/4/index.html?raw'),
-        TypeScript: import('./examples/4/index.ts?raw'),
-    };
 }
