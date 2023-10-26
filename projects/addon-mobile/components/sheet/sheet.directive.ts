@@ -15,6 +15,10 @@ import {TuiSheet} from './sheet';
 import {TuiSheetService} from './sheet.service';
 import {TuiSheetOptions} from './sheet-options';
 
+/**
+ * @deprecated: use {@link TuiSheetDialogDirective}
+ * drop in v4.0
+ */
 @Directive({
     selector: 'ng-template[tuiSheet]',
 })
