@@ -141,7 +141,7 @@
         "@types/webpack-env": "1.18.3",
         "angular-http-server": "1.12.0",
         "babel-loader": "9.1.3",
-        "cpy-cli": "4.2.0",
+        "cpy-cli": "5.0.0",
         "cspell": "7.3.8",
         "cypress": "13.3.3",
         "cypress-real-events": "1.10.3",
