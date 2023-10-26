@@ -150,7 +150,7 @@
         "http-server": "14.1.1",
         "husky": "8.0.3",
         "kill-port": "2.0.1",
-        "lint-staged": "13.3.0",
+        "lint-staged": "15.0.2",
         "ng-packagr": "12.2.7",
         "nx": "17.0.2",
         "nx-cloud": "16.5.2",
