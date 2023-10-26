@@ -1,19 +1,5 @@
-[tuiCell] {
-    max-width: 25rem;
-    white-space: nowrap;
-
-    // You can customize shrink ratio of sides by this variables
-    --tui-left-shrink: 4;
-    --tui-right-shrink: 5;
-}
-
-.ellipsis {
-    display: block;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-.logo {
-    align-self: flex-start;
-    width: 2.5rem;
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }

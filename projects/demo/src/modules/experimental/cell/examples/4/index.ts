@@ -10,11 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
 })
 export class TuiCellExample4 {
-    readonly tooltipContent = `This example requires import of
-        <strong>TuiBadgeAlertModule</strong>,
-        <strong>TuiTooltipModule</strong>,
-        <strong>TuiToggleModule</strong>
-    `;
-
-    toggleValue = true;
+    value = false;
 }

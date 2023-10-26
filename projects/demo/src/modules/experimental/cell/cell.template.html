@@ -19,170 +19,50 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="slots-content-projection"
-            heading="Multi-slot content projection"
+            id="label"
+            heading="Label"
             [content]="example2"
-            [description]="moneyDescription"
         >
-            <ng-template #moneyDescription>
-                <code>Cell</code>
-                component makes the most of Angular
-                <a
-                    href="https://angular.io/guide/content-projection#multi-slot-content-projection"
-                    rel="noreferrer"
-                    target="_blank"
-                    tuiLink
-                >
-                    "Multi-slot content projection"
-                </a>
-                pattern.
-                <br />
-                This example pass
-                <a
-                    routerLink="/components/money"
-                    tuiLink
-                >
-                    Money
-                </a>
-                /
-                <a
-                    routerLink="/experimental/badge"
-                    tuiLink
-                >
-                    Badge
-                </a>
-                inside
-                <code>secondaryTitle</code>
-                /
-                <code>description</code>
-                slots.
-            </ng-template>
             <tui-cell-example-2></tui-cell-example-2>
         </tui-doc-example>
 
         <tui-doc-example
-            id="overflow"
-            heading="Overflown content"
+            id="left"
+            heading="Left side"
             [content]="example3"
-            [description]="overflownContentDescription"
         >
-            <ng-template #overflownContentDescription>
-                You can fade out overflown content by
-                <a
-                    routerLink="/experimental/fade"
-                    tuiLink
-                >
-                    Fade
-                </a>
-                directive. Or you can use native
-                <code>text-overflow: ellipsis</code>
-                .
-                <br />
-                Choose any tool you wish!
-            </ng-template>
-
             <tui-cell-example-3></tui-cell-example-3>
         </tui-doc-example>
 
         <tui-doc-example
-            id="accessories"
-            heading="With accessories"
+            id="right"
+            heading="Right side"
             [content]="example4"
         >
             <tui-cell-example-4></tui-cell-example-4>
         </tui-doc-example>
 
         <tui-doc-example
-            id="size"
-            heading="Sizes"
+            id="long"
+            heading="Long content"
             [content]="example5"
         >
             <tui-cell-example-5></tui-cell-example-5>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="combinations"
+            heading="Combinations"
+            [content]="example6"
+        >
+            <tui-cell-example-6></tui-cell-example-6>
+        </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
-        <tui-doc-demo>
-            <div
-                tuiCell
-                [size]="size"
-            >
-                <tui-marker-icon
-                    mode="primary"
-                    new
-                    src="tuiIconStarLarge"
-                    [size]="markerSize"
-                ></tui-marker-icon>
-
-                <span tuiSlot="title">{{ title }}</span>
-                <span tuiSlot="description">{{ description }}</span>
-                <span tuiSlot="secondaryTitle">{{ secondaryTitle }}</span>
-                <span tuiSlot="secondaryDescription">{{ secondaryDescription }}</span>
-            </div>
-        </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeL | TuiSizeS"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
-            >
-                Size of the cell. This property configures min-height, fonts and paddings.
-
-                <p>
-                    <strong>Note</strong>
-                    : this property does not change anything for mobile platform! Mobile devices has only
-                    <code>l</code>
-                    -size.
-                </p>
-            </ng-template>
-        </tui-doc-documentation>
-
-        <tui-doc-documentation heading="Slots">
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiSlot='title'"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="title"
-            >
-                Left-side main large text
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiSlot='description'"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="description"
-            >
-                Left-side secondary small text
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiSlot='secondaryTitle'"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="secondaryTitle"
-            >
-                Right-side main large text
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiSlot='secondaryDescription'"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="secondaryDescription"
-            >
-                Right-side secondary small text
-            </ng-template>
-        </tui-doc-documentation>
-    </ng-template>
-
-    <ng-template pageTab>
+    <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
-                <p>
-                    Import
-                    <code>TuiCellModule</code>
-                    into a module where you want to use our component
-                </p>
+                <p>Import module:</p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"

@@ -9,4 +9,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
     encapsulation,
 })
-export class TuiCellExample3 {}
+export class TuiCellExample3 {
+    value = false;
+}

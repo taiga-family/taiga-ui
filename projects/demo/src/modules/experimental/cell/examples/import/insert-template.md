@@ -1,8 +1,5 @@
 ```html
-<div
-  tuiCell
-  size="l"
->
+<div tuiCell>
   <span tuiSlot="title">Title</span>
   <span tuiSlot="description">Description</span>
   <span tuiSlot="secondaryTitle">Secondary title</span>
