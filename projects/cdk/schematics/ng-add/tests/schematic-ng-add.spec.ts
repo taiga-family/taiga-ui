@@ -281,9 +281,9 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 
 @NgModule({declarations: [AppComponent],
-        imports: [BrowserAnimationsModule, TuiRootModule, TuiDialogModule, TuiAlertModule],
-        providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}]
-    })
+    imports: [BrowserAnimationsModule, TuiRootModule, TuiDialogModule, TuiAlertModule],
+    providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}]
+})
 export class AppModule {}
 `,
         );

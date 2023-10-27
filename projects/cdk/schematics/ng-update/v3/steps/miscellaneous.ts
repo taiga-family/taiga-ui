@@ -56,7 +56,7 @@ function addWarningToMethod(className: string, method: string, message: string):
     references.forEach(ref => {
         const parent = ref.getParent();
 
-        if (Node.isTypeReferenceNode(parent)) {
+        if (Node.isTypeReference(parent)) {
             checkMethod(parent, method, message);
         }
     });
