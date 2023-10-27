@@ -1,0 +1,34 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiCard] {
+    .clearbtn();
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    background: var(--tui-base-02);
+    border-radius: 0.75rem;
+    box-sizing: border-box;
+    padding: 0.75rem;
+    gap: 0.75rem;
+    flex-direction: column;
+    text-decoration: none;
+    width: var(--t-size);
+    height: var(--t-size);
+
+    &[data-size='m'] {
+        --t-size: 8.75rem;
+    }
+
+    [tuiTitle] {
+        font-weight: bold;
+    }
+
+    [tuiSubtitle] {
+        color: var(--tui-text-01);
+    }
+
+    [tuiTitle],
+    [tuiSubtitle] {
+        max-width: 100%;
+    }
+}

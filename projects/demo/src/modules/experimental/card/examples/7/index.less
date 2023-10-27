@@ -1,0 +1,44 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+.surface {
+    height: 6.5rem;
+    width: 6.5rem;
+    padding: 0.75rem;
+    background: var(--tui-base-02);
+    cursor: pointer;
+}
+
+.selected {
+    z-index: 1;
+    color: var(--tui-primary);
+}
+
+.mir {
+    background: #2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%);
+}
+
+.visa {
+    background: linear-gradient(45deg, #ffaa00d1, #ffaa00), url(/assets/taiga-ui/icons/tuiIconStarLarge.svg);
+}
+
+.card-list {
+    .scrollbar-hidden();
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    margin-left: -0.4375rem;
+    padding-left: 0.4375rem;
+    z-index: 2;
+
+    tui-thumbnail-card {
+        flex-shrink: 0;
+    }
+}
