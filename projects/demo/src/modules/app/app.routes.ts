@@ -208,6 +208,14 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/amount`,
+        loadChildren: async () =>
+            (await import(`../experimental/amount/amount.module`)).ExampleTuiAmountModule,
+        data: {
+            title: `Amount `,
+        },
+    },
+    {
         path: `experimental/avatar`,
         loadChildren: async () =>
             (await import(`../experimental/avatar/avatar.module`)).ExampleTuiAvatarModule,
@@ -271,7 +279,7 @@ export const ROUTES: Routes = [
             (await import(`../experimental/badged-content/badged-content.module`))
                 .ExampleTuiBadgedContentModule,
         data: {
-            title: `BadgedContent`,
+            title: `BadgedContent `,
         },
     },
     {

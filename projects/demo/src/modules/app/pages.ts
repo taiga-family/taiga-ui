@@ -925,6 +925,12 @@ export const pages: TuiDocPages = [
         keywords: `чек, радио, ввод, форма, form, checkbox, radio, toggle`,
         route: `/experimental/toggle`,
     },
+    {
+        section: `Experimental`,
+        title: `Amount `,
+        keywords: `amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро`,
+        route: `/experimental/amount`,
+    },
     // Charts
     {
         section: `Charts`,
