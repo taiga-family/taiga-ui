@@ -1,0 +1,61 @@
+<div tuiCell>
+    <div tuiTitle>
+        Single action
+        <div tuiSubtitle>Description of the action</div>
+    </div>
+    <button tuiButton>Action</button>
+</div>
+
+<div tuiCell>
+    <div tuiTitle>
+        Multiple actions
+        <div tuiSubtitle>With no content on the right</div>
+    </div>
+    <tui-hosted-dropdown
+        tuiDropdownAlign="right"
+        [content]="dropdown"
+    >
+        <button
+            appearance="icon"
+            iconLeft="tuiIconMoreHorizontalLarge"
+            tuiIconButton
+        >
+            Action
+        </button>
+        <ng-template
+            #dropdown
+            let-close="close"
+        >
+            <tui-data-list-wrapper
+                [items]="items"
+                (itemClick)="close()"
+            ></tui-data-list-wrapper>
+        </ng-template>
+    </tui-hosted-dropdown>
+</div>
+
+<button tuiCell>
+    <div tuiTitle>
+        Multiple actions
+        <div tuiSubtitle>When there's content on the right</div>
+    </div>
+    <div
+        tuiCellActions
+        tuiGroup
+        tuiMode="onDark"
+        [collapsed]="true"
+    >
+        <button
+            *ngFor="let item of items"
+            appearance="opposite"
+            tuiIconButton
+            [iconLeft]="item.icon"
+        >
+            {{ item }}
+        </button>
+    </div>
+    <div tuiTitle>
+        Hover over
+        <div tuiSubtitle>Put it before the right side</div>
+    </div>
+</button>

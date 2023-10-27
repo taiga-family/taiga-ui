@@ -1,0 +1,50 @@
+<div tuiSurface="elevated">
+    <h3 tuiTitle="m">Inside a block</h3>
+    <div class="actions">
+        <button
+            *ngFor="let item of items"
+            tuiCell
+            class="action"
+        >
+            <tui-avatar
+                appearance="accent"
+                tuiWrapper
+                [src]="item.icon"
+            ></tui-avatar>
+            <span tuiTitle>
+                {{ item.title }}
+                <span tuiSubtitle>{{ item.subtitle }}</span>
+            </span>
+        </button>
+    </div>
+</div>
+
+<label tuiLabel="Inside a dropdown">
+    <tui-select
+        [tuiTextfieldLabelOutside]="true"
+        [valueContent]="content"
+        [(ngModel)]="value"
+    >
+        <tui-data-list-wrapper
+            *tuiDataList
+            [itemContent]="content"
+            [items]="items"
+        ></tui-data-list-wrapper>
+        <ng-template
+            #content
+            let-item
+        >
+            <span tuiCell>
+                <tui-avatar
+                    appearance="primary"
+                    tuiWrapper
+                    [src]="item.icon"
+                ></tui-avatar>
+                <span tuiTitle>
+                    {{ item.title }}
+                    <span tuiSubtitle>{{ item.subtitle }}</span>
+                </span>
+            </span>
+        </ng-template>
+    </tui-select>
+</label>

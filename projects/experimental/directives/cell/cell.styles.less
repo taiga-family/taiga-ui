@@ -1,0 +1,164 @@
+@import 'taiga-ui-local';
+
+[tuiCell] {
+    .transition(background);
+    .clearbtn();
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    box-sizing: content-box;
+    isolation: isolate;
+    color: var(--tui-text-01);
+    padding: var(--t-padding);
+    min-height: var(--t-height);
+
+    --tui-height: calc(var(--tui-height-s) - 0.5rem);
+    --t-padding: 0.125rem 1rem;
+
+    [tuiCellSide] {
+        position: relative;
+        display: flex;
+        max-height: var(--t-height);
+        align-items: center;
+        align-self: stretch;
+    }
+
+    [tuiCellActions] {
+        position: absolute;
+        right: 0;
+        z-index: 1;
+        padding-right: inherit;
+
+        & ~ * {
+            .transition(opacity);
+        }
+
+        & button,
+        & a {
+            .transition(opacity);
+            opacity: 0;
+
+            &:focus-visible {
+                opacity: 1;
+            }
+        }
+    }
+
+    [tuiSubtitle] {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        color: var(--tui-text-02);
+    }
+
+    [tuiTitle] {
+        flex-shrink: 7;
+        margin-inline-end: auto;
+        align-items: normal;
+    }
+
+    [tuiTitle] ~ [tuiTitle] {
+        flex-shrink: 3;
+        margin-inline-end: 0;
+        text-align: right;
+        align-items: flex-end;
+    }
+
+    tui-badge-notification[data-size='xs'] {
+        .center-top();
+        left: -0.625rem;
+    }
+
+    &[data-size='s'] {
+        --t-height: calc(var(--tui-height-s) - 0.5rem);
+        --t-padding: 0.125rem 1rem;
+
+        [tuiTitle] {
+            max-height: 100%;
+            font: var(--tui-font-text-s-2);
+            gap: 0;
+        }
+
+        [tuiSubtitle] {
+            font: var(--tui-font-text-xs-s);
+        }
+
+        & > *:not(:first-child),
+        & > [tuiCellSide] > *:not(:first-child) {
+            margin-inline-start: 0.5rem;
+        }
+
+        & > tui-avatar,
+        & > tui-avatar-stack tui-avatar,
+        & > [tuiCellSide] tui-avatar,
+        & > [tuiCellSide] tui-avatar-stack tui-avatar {
+            --t-size: 1.5rem;
+        }
+    }
+
+    &[data-size='m'] {
+        --t-height: calc(var(--tui-height-m) - 0.75rem);
+        --t-padding: 0.375rem 1rem;
+
+        [tuiTitle] {
+            font: var(--tui-font-text-s-2);
+            gap: 0.125rem;
+        }
+
+        [tuiSubtitle] {
+            font: var(--tui-font-text-xs-2);
+        }
+
+        & > *:not(:first-child),
+        & > [tuiCellSide] > *:not(:first-child) {
+            margin-inline-start: 0.75rem;
+        }
+
+        & > tui-avatar,
+        & > tui-avatar-stack tui-avatar,
+        & > [tuiCellSide] tui-avatar,
+        & > [tuiCellSide] tui-avatar-stack tui-avatar {
+            --t-size: 2rem;
+        }
+    }
+
+    &[data-size='l'] {
+        --t-height: calc(var(--tui-height-l) - 1rem);
+        --t-padding: 0.5rem 1rem;
+
+        & > *:not(:first-child),
+        & > [tuiCellSide] > *:not(:first-child) {
+            margin-inline-start: 1rem;
+        }
+
+        & > tui-avatar,
+        & > tui-avatar-stack tui-avatar,
+        & > [tuiCellSide] tui-avatar,
+        & > [tuiCellSide] tui-avatar-stack tui-avatar {
+            --t-size: 2.5rem;
+        }
+    }
+
+    &:hover [tuiCellActions] ~ * {
+        opacity: 0;
+    }
+
+    &:hover [tuiCellActions] button,
+    &:hover [tuiCellActions] a {
+        opacity: 1;
+    }
+
+    [tuiOption] &,
+    tui-primitive-textfield & {
+        padding: 0;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    a[tuiCell]:hover,
+    button[tuiCell]:hover {
+        background: var(--tui-clear);
+        cursor: pointer;
+    }
+}

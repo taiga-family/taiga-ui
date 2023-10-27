@@ -1,0 +1,90 @@
+<div tuiCell>
+    <label tuiProgressLabel>
+        <tui-svg
+            src="tuiIconSmileLarge"
+            [style.color]="'var(--tui-primary)'"
+        ></tui-svg>
+        <tui-progress-circle [value]="0.3"></tui-progress-circle>
+    </label>
+    <div tuiTitle>
+        <strong>$30 our of $100</strong>
+        <div tuiSubtitle>Saving for a Benjamin Franklin portrait</div>
+    </div>
+    <div tuiTitle>
+        <tui-badge
+            appearance="success"
+            size="s"
+        >
+            +$30
+        </tui-badge>
+        <div tuiSubtitle>&nbsp;</div>
+    </div>
+</div>
+
+<div tuiCell>
+    <tui-avatar-stack>
+        <tui-avatar src="/assets/images/avatar.jpg"></tui-avatar>
+        <tui-avatar src="/assets/images/poorly.png"></tui-avatar>
+        <tui-avatar>+2</tui-avatar>
+    </tui-avatar-stack>
+    <div tuiTitle>
+        Waterplea
+        <div tuiSubtitle>
+            <tui-badge
+                appearance="neutral"
+                size="s"
+            >
+                <tui-svg src="tuiIconLock"></tui-svg>
+                100 ₽
+            </tui-badge>
+            Music
+            <tui-badge
+                appearance="success"
+                size="s"
+            >
+                <tui-svg src="tuiIconBell"></tui-svg>
+            </tui-badge>
+        </div>
+    </div>
+    <a
+        href="https://waterplea.bandcamp.com"
+        tuiLink
+    >
+        Buy
+    </a>
+</div>
+
+<div tuiCell>
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [(ngModel)]="value"
+    />
+    <tui-thumbnail-card
+        paymentSystem="mastercard"
+        size="s"
+    >
+        1234
+    </tui-thumbnail-card>
+    <div tuiTitle>
+        Primary Card
+        <div tuiSubtitle>**** **** **** 1234</div>
+    </div>
+</div>
+
+<div tuiCell>
+    <img
+        alt="Poster"
+        src="https://m.media-amazon.com/images/M/MV5BNzQzMzJhZTEtOWM4NS00MTdhLTg0YjgtMjM4MDRkZjUwZDBlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UY209_CR0,0,140,209_AL_.jpg"
+        [style.border-radius.rem]="0.5"
+        [style.width.rem]="3"
+    />
+    <div tuiTitle>
+        <div tuiSubtitle>Ridley Scott, 1982</div>
+        Blade Runner
+        <div tuiSubtitle>
+            A blade runner must pursue and terminate four replicants who stole a ship in space and have returned to
+            Earth to find their creator.
+        </div>
+    </div>
+</div>

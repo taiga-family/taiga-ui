@@ -1,0 +1,102 @@
+<div tuiCell>
+    <tui-avatar
+        src="tuiIconEyeLarge"
+        tuiCellSide
+    ></tui-avatar>
+    <div tuiTitle>
+        Long title in a cell will wrap to multiple lines and so will the subtitle
+        <div
+            tuiSubtitle
+            [style.display]="'block'"
+        >
+            Use
+            <strong>tuiCellSide</strong>
+            to keep your side content properly aligned if you have many lines of text
+        </div>
+    </div>
+    <div tuiCellSide>
+        <tui-svg
+            src="tuiIconCheckLarge"
+            [style.color]="'var(--tui-positive)'"
+        ></tui-svg>
+    </div>
+</div>
+
+<div
+    tuiCell
+    [style.white-space]="'nowrap'"
+>
+    <div
+        tuiFade
+        tuiTitle
+    >
+        Alternatively you can use fade to hide extra text using nowrap CSS
+        <div tuiSubtitle>Works the same for subtitle when fade directive is applied to the top</div>
+    </div>
+    <tui-badge>Works with the right side</tui-badge>
+</div>
+
+<div
+    tuiCell
+    [style.white-space]="'nowrap'"
+>
+    <tui-avatar
+        src="tuiIconSmileLarge"
+        [round]="false"
+    ></tui-avatar>
+    <div
+        tuiFade
+        tuiTitle
+    >
+        Works with fade on both sides
+        <div tuiSubtitle>You can control proportions</div>
+    </div>
+    <div
+        tuiFade
+        tuiTitle
+    >
+        Proportions are controlled with flex
+        <div tuiSubtitle>Flex shrink is set to 70-30 by default</div>
+    </div>
+    <tui-badge-notification size="xs"></tui-badge-notification>
+</div>
+
+<div tuiCell>
+    <tui-avatar
+        src="/assets/images/avatar.jpg"
+        tuiCellSide
+    ></tui-avatar>
+    <div
+        tuiCellSide
+        tuiTitle
+    >
+        Alexander
+        <div tuiSubtitle>Taiga UI developer</div>
+    </div>
+    <div tuiTitle>
+        <span [style.color]="'var(--tui-positive)'">+$1000</span>
+        <div tuiSubtitle>Bonus for tuiCell component</div>
+        <tui-badge appearance="primary">Awesome!</tui-badge>
+    </div>
+</div>
+
+<div tuiCell>
+    <tui-avatar
+        src="tuiIconHomeLarge"
+        tuiCellSide
+    ></tui-avatar>
+    <div tuiTitle>
+        <strong>Main account</strong>
+        <div tuiSubtitle>USD</div>
+        <tui-badge appearance="neutral">By default unless arrested</tui-badge>
+    </div>
+    <div
+        tuiCellSide
+        tuiTitle
+        [style.white-space]="'nowrap'"
+        [style.width]="0"
+    >
+        $123 456
+        <div tuiSubtitle>Careful, content may overlap</div>
+    </div>
+</div>

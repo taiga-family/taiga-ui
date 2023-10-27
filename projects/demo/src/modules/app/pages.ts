@@ -173,12 +173,6 @@ export const pages: TuiDocPages = [
         route: `/layout/block-status`,
     },
     {
-        section: `Layout`,
-        title: `Title`,
-        keywords: `subtitle, заголовок, caption, description, подзаголовок`,
-        route: `/layout/title`,
-    },
-    {
         section: `Components`,
         title: `Button`,
         keywords: `кнопка, button, icon-button, иконка`,
@@ -861,6 +855,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Experimental`,
+        title: `Cell`,
+        keywords: `cell, feed, item`,
+        route: `/experimental/cell`,
+    },
+    {
+        section: `Experimental`,
         title: `Compass`,
         keywords: `compass, user, point, dot, карта, точка`,
         route: `/experimental/compass`,
@@ -888,6 +888,12 @@ export const pages: TuiDocPages = [
         title: `Surface`,
         keywords: `card, container, wrapper, image, blur, overlay`,
         route: `/experimental/surface`,
+    },
+    {
+        section: `Experimental`,
+        title: `Title`,
+        keywords: `subtitle, заголовок, caption, description, подзаголовок`,
+        route: `/experimental/title`,
     },
     {
         section: `Experimental`,

@@ -208,14 +208,6 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: `layout/title`,
-        loadChildren: async () =>
-            (await import(`../directives/title/title.module`)).ExampleTuiTitleModule,
-        data: {
-            title: `Title`,
-        },
-    },
-    {
         path: `experimental/avatar`,
         loadChildren: async () =>
             (await import(`../experimental/avatar/avatar.module`)).ExampleTuiAvatarModule,
@@ -238,6 +230,14 @@ export const ROUTES: Routes = [
             (await import(`../experimental/radio/radio.module`)).ExampleTuiRadioModule,
         data: {
             title: `Radio `,
+        },
+    },
+    {
+        path: `experimental/title`,
+        loadChildren: async () =>
+            (await import(`../experimental/title/title.module`)).ExampleTuiTitleModule,
+        data: {
+            title: `Title`,
         },
     },
     {
@@ -280,6 +280,14 @@ export const ROUTES: Routes = [
             (await import(`../experimental/button/button.module`)).ExampleTuiButtonModule,
         data: {
             title: `Button `,
+        },
+    },
+    {
+        path: `experimental/cell`,
+        loadChildren: async () =>
+            (await import(`../experimental/cell/cell.module`)).ExampleTuiCellModule,
+        data: {
+            title: `Cell`,
         },
     },
     {

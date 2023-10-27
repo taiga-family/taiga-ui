@@ -1,0 +1,18 @@
+<div
+    *ngFor="let size of sizes"
+    [tuiCell]="size"
+>
+    <tui-avatar
+        appearance="primary"
+        tuiWrapper
+        [src]="size === 's' ? 'tuiIconStar' : 'tuiIconStarLarge'"
+    ></tui-avatar>
+    <div tuiTitle>
+        Title
+        <div tuiSubtitle>Description</div>
+    </div>
+    <div tuiTitle>
+        Secondary title
+        <div tuiSubtitle>Another description</div>
+    </div>
+</div>
