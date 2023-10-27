@@ -1,4 +1,5 @@
-import {TuiContentContainerComponentHarness} from '../utils';
+import {TuiContentContainerComponentHarness} from '@taiga-ui/testing/utils';
+
 import {TuiButtonHarness} from './button.harness';
 
 export class TuiDialogHarness extends TuiContentContainerComponentHarness {
