@@ -816,6 +816,12 @@ export const pages: TuiDocPages = [
         keywords: `tree, view, multi, recursive, folders, рекурсия, дерево, папки`,
         route: `/components/tree`,
     },
+    {
+        section: `Components`,
+        title: `Svg`,
+        keywords: `svg, свг`,
+        route: `/icons/overview/Component`,
+    },
     // Experimental
     {
         section: `Experimental`,
