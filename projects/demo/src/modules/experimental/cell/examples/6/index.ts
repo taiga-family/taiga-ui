@@ -12,21 +12,16 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 export class TuiCellExample6 {
     readonly items = [
         {
-            icon: 'tuiIconEyeLarge',
-            title: 'Show more',
-            subtitle: 'Ctrl + Shift + M',
+            icon: 'tuiIconPhone',
+            toString: () => 'Call now',
         },
         {
-            icon: 'tuiIconMailLarge',
-            title: 'Send message',
-            subtitle: 'Keep it short',
+            icon: 'tuiIconStar',
+            toString: () => 'Add to favorites',
         },
         {
-            icon: 'tuiIconLockLarge',
-            title: 'Access',
-            subtitle: 'Block your account',
+            icon: 'tuiIconTrash',
+            toString: () => 'Remove item',
         },
     ];
-
-    value = this.items[0];
 }

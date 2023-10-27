@@ -9,4 +9,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
     encapsulation,
 })
-export class TuiCellExample1 {}
+export class TuiCellExample1 {
+    readonly sizes = ['s', 'm', 'l'] as const;
+}

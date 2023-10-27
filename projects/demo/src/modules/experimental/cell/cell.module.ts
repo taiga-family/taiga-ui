@@ -1,13 +1,14 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {RouterModule} from '@angular/router';
-import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
+    TuiGroupModule,
+    TuiHostedDropdownModule,
     TuiLabelModule,
     TuiLinkModule,
     TuiLoaderModule,
+    TuiModeModule,
     TuiNotificationModule,
     TuiSvgModule,
     TuiTextfieldControllerModule,
@@ -20,6 +21,7 @@ import {
     TuiBadgedContentModule,
     TuiBadgeModule,
     TuiBadgeNotificationModule,
+    TuiButtonModule,
     TuiCellModule,
     TuiCheckboxModule,
     TuiFadeModule,
@@ -31,7 +33,6 @@ import {
 } from '@taiga-ui/experimental';
 import {
     TuiDataListWrapperModule,
-    TuiMarkerIconModule,
     TuiProgressModule,
     TuiSelectModule,
 } from '@taiga-ui/kit';
@@ -43,33 +44,30 @@ import {TuiCellExample3} from './examples/3';
 import {TuiCellExample4} from './examples/4';
 import {TuiCellExample5} from './examples/5';
 import {TuiCellExample6} from './examples/6';
+import {TuiCellExample7} from './examples/7';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         TuiWrapperModule,
-        TuiAddonDocModule,
         TuiAvatarModule,
+        TuiAvatarStackModule,
         TuiBadgeModule,
         TuiBadgeNotificationModule,
+        TuiBadgedContentModule,
         TuiCellModule,
         TuiFadeModule,
         TuiLinkModule,
-        TuiMarkerIconModule,
-        TuiMoneyModule,
         TuiNotificationModule,
         TuiProgressModule,
         TuiThumbnailCardModule,
         TuiToggleModule,
         TuiTooltipModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiCellComponent)),
         TuiTitleModule,
-        TuiBadgedContentModule,
         TuiToggleModule,
         TuiSvgModule,
         TuiCheckboxModule,
-        TuiAvatarStackModule,
         TuiLoaderModule,
         TuiSensitiveModule,
         TuiSurfaceModule,
@@ -77,6 +75,11 @@ import {TuiCellExample6} from './examples/6';
         TuiDataListWrapperModule,
         TuiTextfieldControllerModule,
         TuiLabelModule,
+        TuiButtonModule,
+        TuiHostedDropdownModule,
+        TuiGroupModule,
+        tuiGetDocModules(ExampleTuiCellComponent),
+        TuiModeModule,
     ],
     declarations: [
         ExampleTuiCellComponent,
@@ -86,6 +89,7 @@ import {TuiCellExample6} from './examples/6';
         TuiCellExample4,
         TuiCellExample5,
         TuiCellExample6,
+        TuiCellExample7,
     ],
     exports: [ExampleTuiCellComponent],
 })

@@ -32,7 +32,8 @@
         "tcrm",
         "scrollbars",
         "callout",
-        "retrowave"
+        "retrowave",
+        "replicants"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [

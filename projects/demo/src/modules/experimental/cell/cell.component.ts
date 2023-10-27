@@ -45,5 +45,11 @@ export class ExampleTuiCellComponent {
 
     readonly example6: TuiDocExample = {
         HTML: import('./examples/6/index.html?raw'),
+        TypeScript: import('./examples/6/index.ts?raw'),
+    };
+
+    readonly example7: TuiDocExample = {
+        HTML: import('./examples/7/index.html?raw'),
+        LESS: import('./examples/7/index.less?raw'),
     };
 }

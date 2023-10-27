@@ -1,8 +1,10 @@
 import {
     Directive,
     ElementRef,
+    EventEmitter,
     forwardRef,
     Input,
+    Output,
     QueryList,
     ViewChildren,
 } from '@angular/core';
@@ -30,6 +32,9 @@ export abstract class AbstractTuiDataListWrapper<T> {
 
     @Input()
     size: TuiSizeL | TuiSizeXS = this.defaultSize;
+
+    @Output()
+    readonly itemClick = new EventEmitter<T>();
 
     constructor(
         protected readonly itemsHandlers: TuiItemsHandlers<T>,

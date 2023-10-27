@@ -4,9 +4,12 @@ tui-avatar-stack {
     display: flex;
     --t-gap: 0.125rem;
 
+    tui-avatar._round {
+        mask-image: radial-gradient(circle at var(--t-x) 50%, transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px));
+    }
+
     &[data-direction='right'] tui-avatar._round {
-        --t-x: 50%;
-        mask-image: radial-gradient(circle at 100% var(--t-x), transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px));
+        --t-x: 100%;
 
         &:last-child {
             mask-image: none;
@@ -14,7 +17,7 @@ tui-avatar-stack {
     }
 
     &[data-direction='left'] tui-avatar._round {
-        --t-x: -50%;
+        --t-x: 0;
 
         &:first-child {
             mask-image: none;
