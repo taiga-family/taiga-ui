@@ -24,4 +24,3 @@ export * from './utils/is-ci';
 export * from './utils/progress';
 export * from './utils/project-root';
 export * from './utils/push-to-array-property';
-export * from './utils/replace-tag';

@@ -16,7 +16,6 @@ import {
     titleLog,
 } from '../../utils/colored-log';
 import {projectRoot} from '../../utils/project-root';
-import {replaceTag} from '../../utils/replace-tag';
 import {findElementsByTagName} from '../../utils/templates/elements';
 import {getComponentTemplates} from '../../utils/templates/get-component-templates';
 import {
@@ -25,6 +24,7 @@ import {
 } from '../../utils/templates/template-resource';
 import {getFileSystem} from '../utils/get-file-system';
 import {replaceText} from '../utils/replace-text';
+import {replaceTag} from '../utils/templates/replace-tag';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function updateToV3_40(options: TuiSchema): Rule {

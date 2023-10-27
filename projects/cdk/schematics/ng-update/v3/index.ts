@@ -17,13 +17,12 @@ import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../../utils/colored-log';
 import {getExecutionTime} from '../../utils/get-execution-time';
 import {removeModules} from '../steps/remove-module';
 import {renameTypes} from '../steps/rename-types';
-import {replaceConstants} from '../steps/replace-const';
 import {replaceDeepImports} from '../steps/replace-deep-import';
 import {replaceEnums} from '../steps/replace-enums';
+import {replaceConstants} from '../steps/replace-identifier';
 import {replaceServices} from '../steps/replace-services';
 import {showWarnings} from '../steps/show-warnings';
 import {getFileSystem} from '../utils/get-file-system';
-import {migrateExpandTemplates} from '../v3-5/steps/migrate-expand-templates';
 import {CONSTANTS_TO_REPLACE} from './constants/constants';
 import {ENUMS_TO_REPLACE} from './constants/enums';
 import {REMOVED_MODULES} from './constants/modules';
@@ -61,23 +60,6 @@ export function updateToV3(options: TuiSchema): Rule {
                 );
         },
     ]);
-}
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function updateToV3_5(options: TuiSchema): Rule {
-    return (tree: Tree, _: SchematicContext) => {
-        const fileSystem = getFileSystem(tree);
-
-        migrateExpandTemplates(fileSystem, options);
-
-        fileSystem.commitEdits();
-        saveActiveProject();
-
-        !options[`skip-logs`] &&
-            titleLog(
-                `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION}\n`,
-            );
-    };
 }
 
 function main(options: TuiSchema): Rule {

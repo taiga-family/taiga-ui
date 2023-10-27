@@ -20,13 +20,13 @@ export function replaceConstants(
     !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing constants...`);
 
-    constants.forEach(constToReplace => replaceConst(constToReplace));
+    constants.forEach(constToReplace => replaceIdentifier(constToReplace));
 
     !options[`skip-logs`] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} constants replaced \n`);
 }
 
-export function replaceConst({from, to}: ReplacementConst): void {
+export function replaceIdentifier({from, to}: ReplacementConst): void {
     const references = getNamedImportReferences(from.name, from.moduleSpecifier);
 
     references.forEach(ref => {

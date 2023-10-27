@@ -139,7 +139,7 @@ describe(`ng-update`, () => {
         );
     });
 
-    it(`should rename TuiTypedMatcher and remove unused imports`, async () => {
+    it(`should rename TuiTypedMatcher`, async () => {
         const tree = await runner
             .runSchematicAsync(
                 `updateToV4`,
