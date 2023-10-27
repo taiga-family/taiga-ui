@@ -8,7 +8,7 @@ export function findElementsByFn(
 
     const visitNodes = (nodes: ChildNode[]): void => {
         nodes.forEach(n => {
-            const node = n as Element;
+            const node = n ;
 
             if (node.childNodes) {
                 visitNodes(node.childNodes);
