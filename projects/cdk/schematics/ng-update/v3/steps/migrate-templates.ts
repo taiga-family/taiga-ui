@@ -15,7 +15,6 @@ import {
 } from '../../../utils/colored-log';
 import {TODO_MARK} from '../../../utils/insert-todo';
 import {setupProgressLogger} from '../../../utils/progress';
-import {replaceTag} from '../../../utils/replace-tag';
 import {
     findAttributeOnElementWithAttrs,
     findAttributeOnElementWithTag,
@@ -25,17 +24,17 @@ import {
     hasElementAttribute,
 } from '../../../utils/templates/elements';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
-import {
-    getInputPropertyOffsets,
-    replaceInputPropertyByDirective,
-} from '../../../utils/templates/ng-component-input-manipulations';
+import {replaceInputPropertyByDirective} from '../../../utils/templates/ng-component-input-manipulations';
 import {
     getPathFromTemplateResource,
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
 import {TemplateResource} from '../../interfaces/template-resource';
+import {removeInputs} from '../../utils/templates/remove-inputs';
 import {replaceAttrValues} from '../../utils/templates/replace-attr-values';
+import {replaceTag} from '../../utils/templates/replace-tag';
+import {replaceTags} from '../../utils/templates/replace-tags';
 import {
     ATTR_TO_DIRECTIVE,
     ATTRS_TO_REPLACE,
@@ -54,7 +53,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
 
     const componentWithTemplatesPaths = getComponentTemplates(ALL_TS_FILES);
     const actions = [
-        replaceTags,
+        replaceV3Tags,
         replaceAttrs,
         replaceAttrsByDirective,
         replaceBreadcrumbs,
@@ -62,7 +61,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         addHTMLCommentTags,
         addEditorProviders,
         migrateTuiHideSelectedPipe,
-        removeInputs,
+        removeV3Inputs,
         migratePolymorpheus,
         migrateTextfieldController,
         replaceInputValues,
@@ -147,7 +146,7 @@ function replaceAttrs({
     });
 }
 
-function replaceTags({
+function replaceV3Tags({
     resource,
     recorder,
     fileSystem,
@@ -156,25 +155,7 @@ function replaceTags({
     recorder: UpdateRecorder;
     resource: TemplateResource;
 }): void {
-    const template = getTemplateFromTemplateResource(resource, fileSystem);
-    const templateOffset = getTemplateOffset(resource);
-
-    TAGS_TO_REPLACE.forEach(({from, to, addAttributes}) => {
-        const elements = findElementsByTagName(template, from);
-
-        elements.forEach(({sourceCodeLocation}) => {
-            if (sourceCodeLocation) {
-                replaceTag(
-                    recorder,
-                    sourceCodeLocation,
-                    from,
-                    to,
-                    templateOffset,
-                    addAttributes,
-                );
-            }
-        });
-    });
+    replaceTags({resource, recorder, fileSystem, replaceableItems: TAGS_TO_REPLACE});
 }
 
 function addHTMLCommentTags({
@@ -451,7 +432,7 @@ function replaceInputValues({
     });
 }
 
-function removeInputs({
+function removeV3Inputs({
     resource,
     fileSystem,
     recorder,
@@ -460,17 +441,5 @@ function removeInputs({
     recorder: UpdateRecorder;
     resource: TemplateResource;
 }): void {
-    const template = getTemplateFromTemplateResource(resource, fileSystem);
-    const templateOffset = getTemplateOffset(resource);
-
-    INPUTS_TO_REMOVE.forEach(({inputName, tags}) => {
-        const offsets = [
-            ...getInputPropertyOffsets(template, inputName, tags),
-            ...getInputPropertyOffsets(template, `[${inputName}]`, tags),
-        ];
-
-        offsets.forEach(([start, end]) => {
-            recorder.remove(start + templateOffset, end - start);
-        });
-    });
+    removeInputs({resource, recorder, fileSystem, replaceableItems: INPUTS_TO_REMOVE});
 }

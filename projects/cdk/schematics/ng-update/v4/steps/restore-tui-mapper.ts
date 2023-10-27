@@ -1,15 +1,5 @@
-import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {
-    createProject,
-    DevkitFileSystem,
-    getSourceFiles,
-    saveActiveProject,
-    setActiveProject,
-    SourceFile,
-} from 'ng-morph';
-import {ts} from 'ts-morph';
+import {Node} from 'ng-morph';
 
-import {ALL_FILES, ALL_TS_FILES} from '../../../constants';
 import {TuiSchema} from '../../../ng-add/schema';
 import {
     FINISH_SYMBOL,
@@ -18,111 +8,53 @@ import {
     SMALL_TAB_SYMBOL,
     titleLog,
 } from '../../../utils/colored-log';
-import {projectRoot} from '../../../utils/project-root';
-import {getFileSystem} from '../../utils/get-file-system';
-import {Replacement, replaceSubstrings} from './utils/replace-substrings';
+import {getNamedImportReferences} from '../../../utils/get-named-import-references';
+import {replaceIdentifier} from '../../steps/replace-identifier';
 
-export function restoreTuiMapper(options: TuiSchema): Rule {
-    return (tree: Tree, _: SchematicContext) => {
-        const fileSystem = getFileSystem(tree);
+export function restoreTuiMapper(options: TuiSchema): void {
+    updateTuiMapper(options);
+    renameTuiTypedMapper(options);
 
-        updateTuiMapper(options, fileSystem);
-        renameTuiTypedMapper(options, fileSystem);
-
-        !options[`skip-logs`] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
-    };
+    !options[`skip-logs`] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
 }
 
-function updateTuiMapper(options: TuiSchema, fileSystem: DevkitFileSystem): void {
+function updateTuiMapper(options: TuiSchema): void {
     !options[`skip-logs`] &&
         infoLog(
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} updating TuiMapper typing to the typed version`,
         );
 
-    getSourceFiles(ALL_TS_FILES).forEach(sourceFile => {
-        const replacements = findTuiMapperFirstTypeArgReplacements(sourceFile);
-        const sourceText = sourceFile.getFullText();
-        const transformed = replaceSubstrings(sourceText, replacements);
+    const refs = getNamedImportReferences(`TuiMapper`, `@taiga-ui/cdk`);
 
-        sourceFile.replaceWithText(transformed);
-    });
-
-    fileSystem.commitEdits();
-    saveActiveProject();
-    setActiveProject(createProject(fileSystem.tree, projectRoot(), ALL_FILES));
-}
-
-function findTuiMapperFirstTypeArgReplacements(sourceFile: SourceFile): Replacement[] {
-    const replacements: Replacement[] = [];
-
-    sourceFile.transform(traversal => {
-        const node = traversal.visitChildren();
-
-        if (!ts.isTypeReferenceNode(node) || node.typeName.getText() !== `TuiMapper`) {
-            return node;
+    for (const ref of refs) {
+        if (ref.wasForgotten()) {
+            return;
         }
 
-        const typeArguments = node.typeArguments;
+        const parent = ref.getParent();
 
-        if (!typeArguments || typeArguments.length !== 2) {
-            return node;
+        if (Node.isTypeReference(parent)) {
+            const typeArguments = parent.getTypeArguments();
+
+            if (!typeArguments || typeArguments.length !== 2) {
+                return;
+            }
+
+            const [inputType] = typeArguments;
+
+            inputType.replaceWithText(`[${inputType.getText()}, ...any]`);
         }
-
-        const [inputType] = typeArguments;
-
-        replacements.push({
-            start: inputType.getStart(),
-            from: inputType.getText(),
-            to: `[${inputType.getText()}, ...any]`,
-        });
-
-        return node;
-    });
-
-    return replacements;
+    }
 }
 
-function renameTuiTypedMapper(options: TuiSchema, fileSystem: DevkitFileSystem): void {
+function renameTuiTypedMapper(options: TuiSchema): void {
     !options[`skip-logs`] &&
         infoLog(
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} renaming TuiTypedMapper to TuiMapper`,
         );
 
-    getSourceFiles(ALL_TS_FILES).forEach(sourceFile => {
-        const replacements = findTuiTypedMapperReplacements(sourceFile);
-        const sourceText = sourceFile.getFullText();
-        const transformed = replaceSubstrings(sourceText, replacements);
-
-        sourceFile.replaceWithText(transformed);
-        sourceFile.organizeImports();
+    replaceIdentifier({
+        from: {name: `TuiTypedMapper`, moduleSpecifier: `@taiga-ui/cdk`},
+        to: {name: `TuiMapper`, moduleSpecifier: `@taiga-ui/cdk`},
     });
-
-    fileSystem.commitEdits();
-    saveActiveProject();
-    setActiveProject(createProject(fileSystem.tree, projectRoot(), ALL_FILES));
-}
-
-function findTuiTypedMapperReplacements(sourceFile: SourceFile): Replacement[] {
-    const replacements: Replacement[] = [];
-
-    sourceFile.transform(traversal => {
-        const node = traversal.visitChildren();
-
-        if (
-            !ts.isTypeReferenceNode(node) ||
-            node.typeName.getText() !== `TuiTypedMapper`
-        ) {
-            return node;
-        }
-
-        replacements.push({
-            start: node.getStart(),
-            from: `TuiTypedMapper`,
-            to: `TuiMapper`,
-        });
-
-        return node;
-    });
-
-    return replacements;
 }

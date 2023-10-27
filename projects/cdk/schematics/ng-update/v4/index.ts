@@ -1,11 +1,13 @@
-// eslint-disable-next-line @typescript-eslint/naming-convention
-import {chain, Rule} from '@angular-devkit/schematics';
+import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {createProject, saveActiveProject} from 'ng-morph';
 import {performance} from 'perf_hooks';
 
+import {ALL_FILES} from '../../constants';
 import {TAIGA_VERSION} from '../../ng-add/constants/versions';
 import {TuiSchema} from '../../ng-add/schema';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../../utils/colored-log';
 import {getExecutionTime} from '../../utils/get-execution-time';
+import {projectRoot} from '../../utils/project-root';
 import {replaceThumbnailCard} from './steps/replace-thumbnail-card';
 import {restoreTuiMapper} from './steps/restore-tui-mapper';
 import {restoreTuiMatcher} from './steps/restore-tui-matcher';
@@ -19,9 +21,7 @@ export function updateToV4(options: TuiSchema): Rule {
         );
 
     return chain([
-        replaceThumbnailCard(options),
-        restoreTuiMapper(options),
-        restoreTuiMatcher(options),
+        main(options),
         () => {
             const executionTime = getExecutionTime(t0, performance.now());
 
@@ -31,4 +31,20 @@ export function updateToV4(options: TuiSchema): Rule {
                 );
         },
     ]);
+}
+
+function main(options: TuiSchema): Rule {
+    return (tree: Tree, _context: SchematicContext) => {
+        const project = createProject(tree, projectRoot(), ALL_FILES);
+
+        const fileSystem = project.getFileSystem().fs;
+
+        replaceThumbnailCard(options, fileSystem);
+
+        restoreTuiMapper(options);
+        restoreTuiMatcher(options);
+
+        fileSystem.commitEdits();
+        saveActiveProject();
+    };
 }

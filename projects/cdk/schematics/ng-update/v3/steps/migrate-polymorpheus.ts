@@ -2,7 +2,6 @@ import {UpdateRecorder} from '@angular-devkit/schematics';
 import {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import {Element} from 'parse5';
 
-import {replaceTag} from '../../../utils/replace-tag';
 import {
     findElementsByFn,
     findElementsWithAttribute,
@@ -14,6 +13,7 @@ import {
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
 import {TemplateResource} from '../../interfaces/template-resource';
+import {replaceTag} from '../../utils/templates/replace-tag';
 
 export function migratePolymorpheus({
     resource,
