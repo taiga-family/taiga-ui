@@ -15,12 +15,12 @@ import {BehaviorSubject} from 'rxjs';
 export class TuiNumberFormatDirective extends BehaviorSubject<TuiNumberFormatSettings> {
     @Input()
     set tuiNumberFormat(format: Partial<TuiNumberFormatSettings>) {
-        this.next({...this.settings, ...format});
+        this.next({...this.settings, decimalLimit: NaN, ...format});
     }
 
     constructor(
         @Inject(TUI_NUMBER_FORMAT) private readonly settings: TuiNumberFormatSettings,
     ) {
-        super(settings);
+        super({...settings, decimalLimit: NaN});
     }
 }

@@ -5,4 +5,6 @@ import {of} from 'rxjs';
 /**
  * Formatting configuration for displayed numbers
  */
-export const TUI_NUMBER_FORMAT_OBSERVABLE = tuiCreateToken(of(TUI_DEFAULT_NUMBER_FORMAT));
+export const TUI_NUMBER_FORMAT_OBSERVABLE = tuiCreateToken(
+    of({...TUI_DEFAULT_NUMBER_FORMAT, decimalLimit: NaN}),
+);

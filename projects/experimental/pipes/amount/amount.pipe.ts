@@ -12,7 +12,7 @@ import {map} from 'rxjs/operators';
 
 import {TUI_AMOUNT_OPTIONS, TuiAmountOptions} from './amount.options';
 
-const MONEY_DECIMAL_LIMIT = 2;
+const DEFAULT_DECIMAL_LIMIT = 2;
 
 @Pipe({
     name: `tuiAmount`,
@@ -37,8 +37,10 @@ export class TuiAmountPipePipe implements PipeTransform {
                     ...format,
                     decimalLimit: this.getDecimalLimit(
                         value,
-                        MONEY_DECIMAL_LIMIT,
-                        format.decimal,
+                        Number.isNaN(format.decimalLimit)
+                            ? DEFAULT_DECIMAL_LIMIT
+                            : format.decimalLimit,
+                        format?.decimal || `not-zero`,
                     ),
                 });
                 const space =
