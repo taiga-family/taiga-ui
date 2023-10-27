@@ -33,7 +33,7 @@ function updateTuiMatcher(options: TuiSchema): void {
 
         const parent = ref.getParent();
 
-        if (Node.isTypeReferenceNode(parent)) {
+        if (Node.isTypeReference(parent)) {
             const typeArguments = parent.getTypeArguments();
 
             if (!typeArguments || typeArguments.length !== 1) {
