@@ -42,7 +42,7 @@ function renameType(
 
         if (Node.isImportSpecifier(parent)) {
             processImport(parent, from, to);
-        } else if (Node.isTypeReferenceNode(parent)) {
+        } else if (Node.isTypeReference(parent)) {
             const targetType =
                 preserveGenerics && to ? addGeneric(to, parent.getTypeArguments()) : to;
 

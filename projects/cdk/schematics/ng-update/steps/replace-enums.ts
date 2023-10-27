@@ -43,7 +43,7 @@ function replaceEnumWithString(
             continue;
         }
 
-        if (Node.isTypeReferenceNode(parent) && !keepAsType) {
+        if (Node.isTypeReference(parent) && !keepAsType) {
             const declaration = parent.getParent() as VariableDeclaration;
 
             declaration.removeType?.();
@@ -66,5 +66,5 @@ function containTypeRef(node: ImportSpecifier): boolean {
     return node
         .getNameNode()
         .findReferencesAsNodes()
-        .some(ref => Node.isTypeReferenceNode(ref.getParent()));
+        .some(ref => Node.isTypeReference(ref.getParent()));
 }
