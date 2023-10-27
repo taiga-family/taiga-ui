@@ -285,8 +285,8 @@ import { RouterModule } from '@angular/router';
   selector: 'standalone-test-root',
   templateUrl: './app.template.html',
   styleUrls: ['./app.component.less'],
-        providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}]
-    })
+    providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}]
+})
 export class AppComponent {
   title = 'standalone-test';
 }`,

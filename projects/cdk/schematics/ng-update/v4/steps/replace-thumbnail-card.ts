@@ -1,12 +1,6 @@
-import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {
-    createProject,
-    DevkitFileSystem,
-    saveActiveProject,
-    setActiveProject,
-} from 'ng-morph';
+import {DevkitFileSystem, UpdateRecorder} from 'ng-morph';
 
-import {ALL_FILES, ALL_TS_FILES} from '../../../constants';
+import {ALL_TS_FILES} from '../../../constants';
 import {TuiSchema} from '../../../ng-add/schema';
 import {
     FINISH_SYMBOL,
@@ -15,28 +9,27 @@ import {
     SMALL_TAB_SYMBOL,
     titleLog,
 } from '../../../utils/colored-log';
-import {projectRoot} from '../../../utils/project-root';
-import {replaceTag} from '../../../utils/replace-tag';
-import {findElementsByTagName} from '../../../utils/templates/elements';
+import {findAttributeOnElementWithTag} from '../../../utils/templates/elements';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {
     getPathFromTemplateResource,
     getTemplateFromTemplateResource,
+    getTemplateOffset,
 } from '../../../utils/templates/template-resource';
-import {getFileSystem} from '../../utils/get-file-system';
-import {replaceText} from '../../utils/replace-text';
+import {replaceIdentifier} from '../../steps/replace-identifier';
+import {removeInputs} from '../../utils/templates/remove-inputs';
+import {replaceTags} from '../../utils/templates/replace-tags';
 
-export function replaceThumbnailCard(options: TuiSchema): Rule {
-    return (tree: Tree, _: SchematicContext) => {
-        const fileSystem = getFileSystem(tree);
-
-        replaceCardTag(options, fileSystem);
-        replaceReferenceTypes(options, fileSystem);
-        !options[`skip-logs`] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
-    };
+export function replaceThumbnailCard(
+    options: TuiSchema,
+    fileSystem: DevkitFileSystem,
+): void {
+    replaceCardTemplate(options, fileSystem);
+    replaceReferenceTypes(options);
+    !options[`skip-logs`] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
 }
 
-function replaceCardTag(options: TuiSchema, fileSystem: DevkitFileSystem): void {
+function replaceCardTemplate(options: TuiSchema, fileSystem: DevkitFileSystem): void {
     !options[`skip-logs`] &&
         infoLog(
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing <tui-card /> to <tui-thumbnail-card />`,
@@ -46,45 +39,87 @@ function replaceCardTag(options: TuiSchema, fileSystem: DevkitFileSystem): void 
 
     for (const resource of templateResources) {
         const template = getTemplateFromTemplateResource(resource, fileSystem);
-        const elements = findElementsByTagName(template, `tui-card`);
+        const templateOffset = getTemplateOffset(resource);
         const path = fileSystem.resolve(getPathFromTemplateResource(resource));
         const recorder = fileSystem.edit(path);
 
-        elements.forEach(({sourceCodeLocation}) => {
-            if (sourceCodeLocation) {
-                replaceTag(
-                    recorder,
-                    sourceCodeLocation,
-                    `tui-card`,
-                    `tui-thumbnail-card`,
-                );
-            }
+        replaceTags({
+            resource,
+            recorder,
+            fileSystem,
+            replaceableItems: [{from: `tui-card`, to: `tui-thumbnail-card`}],
+        });
+
+        replaceCardInputs({template, recorder, templateOffset});
+        removeInputs({
+            resource,
+            recorder,
+            fileSystem,
+            replaceableItems: [
+                {inputName: `active`, tags: [`tui-card`, `tui-thumbnail-card`]},
+            ],
         });
     }
-
-    fileSystem.commitEdits();
-    saveActiveProject();
-    setActiveProject(createProject(fileSystem.tree, projectRoot(), ALL_FILES));
 }
 
-function replaceReferenceTypes(options: TuiSchema, fileSystem: DevkitFileSystem): void {
+function replaceCardInputs({
+    template,
+    recorder,
+    templateOffset,
+}: {
+    template: string;
+    recorder: UpdateRecorder;
+    templateOffset: number;
+}): void {
+    const attrsToReplace = [
+        {
+            from: {
+                attrName: `brandLogo`,
+                withTagNames: [`tui-card`, `tui-thumbnail-card`],
+            },
+            to: {attrName: `iconLeft`},
+        },
+        {
+            from: {
+                attrName: `[brandLogo]`,
+                withTagNames: [`tui-card`, `tui-thumbnail-card`],
+            },
+            to: {attrName: `[iconLeft]`},
+        },
+    ];
+
+    for (const {from, to} of attrsToReplace) {
+        const offsets = [
+            ...findAttributeOnElementWithTag(
+                template,
+                from.attrName,
+                from.withTagNames || [],
+            ),
+        ];
+
+        offsets.forEach(offset => {
+            recorder.remove(offset + templateOffset, from.attrName.length);
+            recorder.insertRight(offset + templateOffset, to.attrName);
+        });
+    }
+}
+
+export function replaceReferenceTypes(options: TuiSchema): void {
     !options[`skip-logs`] &&
         infoLog(
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing TuiCard(Module|Component) to TuiThumbnailCard(Module|Component)`,
         );
 
-    replaceText([
-        {
-            from: `TuiCardModule`,
-            to: `TuiThumbnailCardModule`,
-        },
-        {
-            from: `TuiCardComponent`,
-            to: `TuiThumbnailCardComponent`,
-        },
-    ]);
+    replaceIdentifier({
+        from: {name: `TuiCardModule`, moduleSpecifier: `@taiga-ui/addon-commerce`},
+        to: {name: `TuiThumbnailCardModule`, moduleSpecifier: `@taiga-ui/addon-commerce`},
+    });
 
-    fileSystem.commitEdits();
-    saveActiveProject();
-    setActiveProject(createProject(fileSystem.tree, projectRoot(), ALL_FILES));
+    replaceIdentifier({
+        from: {name: `TuiCardComponent`, moduleSpecifier: `@taiga-ui/addon-commerce`},
+        to: {
+            name: `TuiThumbnailCardComponent`,
+            moduleSpecifier: `@taiga-ui/addon-commerce`,
+        },
+    });
 }

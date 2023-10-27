@@ -56,8 +56,7 @@ export class TestComponent {
 }`;
 
 const TYPED_TUI_MAPPER_COMPONENT = `
-import {TuiMapperPipeModule} from '@taiga-ui/cdk';
-import {TuiMapper, TuiTypedMapper} from '@taiga-ui/cdk';
+import {TuiMapper, TuiTypedMapper, TuiMapperPipeModule} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
@@ -79,7 +78,7 @@ export class TestComponent {
 }`;
 
 const TYPED_TUI_MAPPER_COMPONENT_AFTER = `
-import { TuiMapper, TuiMapperPipeModule } from '@taiga-ui/cdk';
+import {TuiMapper, TuiMapperPipeModule} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,

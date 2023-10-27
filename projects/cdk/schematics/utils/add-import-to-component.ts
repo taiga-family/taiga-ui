@@ -1,5 +1,4 @@
-import {ClassDeclaration} from 'ng-morph';
-import {pushToArrayProperty} from 'ng-morph/ng/helpers/push-to-array-property';
+import {ClassDeclaration, pushToDecoratorArrayProperty} from 'ng-morph';
 
 // TODO: delete after adding to ng-morph
 export function addImportToComponent(
@@ -7,7 +6,7 @@ export function addImportToComponent(
     moduleName: string,
     {unique = true}: {unique?: boolean} = {},
 ): void {
-    pushToArrayProperty(classDeclaration, `Component`, `imports`, moduleName, {
+    pushToDecoratorArrayProperty(classDeclaration, `Component`, `imports`, moduleName, {
         unique,
         forceToArray: true,
     });

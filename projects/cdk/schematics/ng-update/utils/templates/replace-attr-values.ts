@@ -6,8 +6,8 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
+import {ReplaceableAttributeValue} from '../../interfaces/replaceable-attribute-value';
 import {TemplateResource} from '../../interfaces/template-resource';
-import {ReplaceableAttributeValue} from '../../v3/interfaces/replaceable-attribute-value';
 
 export function replaceAttrValues({
     resource,

@@ -1,0 +1,59 @@
+<a
+    href="https://github.com/taiga-family/taiga-ui"
+    tuiCell
+>
+    <div tuiTitle>Notifications</div>
+    <tui-badge-notification>3</tui-badge-notification>
+    <tui-tooltip
+        content="A cell can be a link"
+        (click.prevent)="(0)"
+    ></tui-tooltip>
+    <div tuiSubtitle>
+        Read
+        <tui-svg src="tuiIconChevronRightLarge"></tui-svg>
+    </div>
+</a>
+
+<label tuiCell>
+    <div tuiTitle>
+        A label
+        <div tuiSubtitle>Clicking it will toggle checkbox</div>
+    </div>
+    <tui-loader></tui-loader>
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [(ngModel)]="value"
+    />
+</label>
+
+<button tuiCell>
+    <div tuiTitle>
+        <div tuiSubtitle>
+            <span [style.color]="'var(--tui-positive)'">For sale</span>
+            •
+            <span>ebay</span>
+        </div>
+        It can be a button
+        <div tuiSubtitle>In stock</div>
+    </div>
+    <div tuiTitle>
+        <div tuiSubtitle>&nbsp;</div>
+        $237
+        <div tuiSubtitle>321 items</div>
+    </div>
+</button>
+
+<div tuiCell>
+    <tui-avatar src="/assets/images/avatar.jpg"></tui-avatar>
+    <div tuiTitle>Salary</div>
+    <div tuiTitle>
+        <span
+            [style.color]="'var(--tui-positive)'"
+            [tuiSensitive]="true"
+        >
+            Enough
+        </span>
+        <div tuiSubtitle>Sky's the limit</div>
+    </div>
+</div>

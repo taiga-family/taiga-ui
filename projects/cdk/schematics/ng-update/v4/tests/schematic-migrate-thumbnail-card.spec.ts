@@ -29,7 +29,7 @@ export class TestComponent {
 }`;
 
 const COMPONENT_AFTER = `
-import { TuiThumbnailCardComponent, TuiThumbnailCardModule } from '@taiga-ui/addon-commerce';
+import { TuiThumbnailCardModule, TuiThumbnailCardComponent } from '@taiga-ui/addon-commerce';
 
 @Component({
     standalone: true,
@@ -44,11 +44,17 @@ export class TestComponent {
 const TEMPLATE_BEFORE = `
 <tui-card class="tui-card"></tui-card>
 <tui-card class="tui-card" />
+<tui-card class="tui-card" brandLogo="logo"></tui-card>
+<tui-card class="tui-card" brandLogo="logo" [active]="true"></tui-card>
+<tui-thumbnail-card [brandLogo]="logo"></tui-thumbnail-card>
 `;
 
 const TEMPLATE_AFTER = `
 <tui-thumbnail-card  class="tui-card"></tui-thumbnail-card>
 <tui-thumbnail-card  class="tui-card" />
+<tui-thumbnail-card  class="tui-card" iconLeft="logo"></tui-thumbnail-card>
+<tui-thumbnail-card  class="tui-card" iconLeft="logo" ></tui-thumbnail-card>
+<tui-thumbnail-card [iconLeft]="logo"></tui-thumbnail-card>
 `;
 
 describe(`ng-update`, () => {

@@ -1,9 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
-import {TuiLinkModule, TuiWrapperModule} from '@taiga-ui/core';
-import {TuiAvatarModule, TuiCheckboxModule} from '@taiga-ui/experimental';
-import {TuiTitleModule} from '@taiga-ui/layout';
+import {TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
+import {TuiAvatarModule, TuiTitleModule} from '@taiga-ui/experimental';
 
 import {TuiTitleExample1} from './examples/1';
 import {TuiTitleExample2} from './examples/2';
@@ -14,11 +13,10 @@ import {ExampleTuiTitleComponent} from './title.component';
     imports: [
         CommonModule,
         TuiTitleModule,
-        tuiGetDocModules(ExampleTuiTitleComponent),
         TuiLinkModule,
-        TuiCheckboxModule,
-        TuiWrapperModule,
         TuiAvatarModule,
+        TuiNotificationModule,
+        tuiGetDocModules(ExampleTuiTitleComponent),
     ],
     declarations: [
         ExampleTuiTitleComponent,

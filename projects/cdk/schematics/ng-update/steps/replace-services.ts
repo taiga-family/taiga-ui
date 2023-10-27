@@ -57,7 +57,7 @@ function replaceService(
             return;
         }
 
-        if (Node.isTypeReferenceNode(parent) && replaceMethods?.length) {
+        if (Node.isTypeReference(parent) && replaceMethods?.length) {
             replaceProperties(parent, replaceMethods);
         }
 

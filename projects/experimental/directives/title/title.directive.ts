@@ -5,8 +5,9 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiTitleComponent} from './title.component';
 
 @Directive({
-    selector: '[tuiTitle], [tuiSubtitle]',
+    selector: '[tuiTitle]',
     host: {
+        tuiTitle: '',
         '[attr.data-size]': 'size || null',
         '[attr.data-platform]': 'platform',
     },

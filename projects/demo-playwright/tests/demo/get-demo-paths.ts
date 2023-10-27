@@ -13,6 +13,7 @@ export const EXCLUDED_ROUTES = [
     `/components/sheet`, // just buttons
     `/components/sheet-dialog`, // just buttons
     `/components/error`,
+    `/icons/overview/Component`,
     `/icons/overview`,
     `/icons/mapping`,
     `/components/mobile-calendar`, // TODO: flaky test, need investigate

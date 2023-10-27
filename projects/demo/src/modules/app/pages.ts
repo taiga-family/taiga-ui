@@ -173,12 +173,6 @@ export const pages: TuiDocPages = [
         route: `/layout/block-status`,
     },
     {
-        section: `Layout`,
-        title: `Title`,
-        keywords: `subtitle, заголовок, caption, description, подзаголовок`,
-        route: `/layout/title`,
-    },
-    {
         section: `Components`,
         title: `Button`,
         keywords: `кнопка, button, icon-button, иконка`,
@@ -822,6 +816,12 @@ export const pages: TuiDocPages = [
         keywords: `tree, view, multi, recursive, folders, рекурсия, дерево, папки`,
         route: `/components/tree`,
     },
+    {
+        section: `Components`,
+        title: `Svg`,
+        keywords: `svg, свг`,
+        route: `/icons/overview/Component`,
+    },
     // Experimental
     {
         section: `Experimental`,
@@ -861,6 +861,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Experimental`,
+        title: `Cell`,
+        keywords: `cell, feed, item`,
+        route: `/experimental/cell`,
+    },
+    {
+        section: `Experimental`,
         title: `Compass`,
         keywords: `compass, user, point, dot, карта, точка`,
         route: `/experimental/compass`,
@@ -891,6 +897,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Experimental`,
+        title: `Title`,
+        keywords: `subtitle, заголовок, caption, description, подзаголовок`,
+        route: `/experimental/title`,
+    },
+    {
+        section: `Experimental`,
         title: `ThumbnailCard `,
         keywords: `карта, карточка, card, visa, mastercard, credit, icon, logo, дебетовая, кредитная, иконка, логотип`,
         route: `/experimental/thumbnail-card`,
@@ -912,6 +924,12 @@ export const pages: TuiDocPages = [
         title: `Toggle `,
         keywords: `чек, радио, ввод, форма, form, checkbox, radio, toggle`,
         route: `/experimental/toggle`,
+    },
+    {
+        section: `Experimental`,
+        title: `Amount `,
+        keywords: `amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро`,
+        route: `/experimental/amount`,
     },
     // Charts
     {

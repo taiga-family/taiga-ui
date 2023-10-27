@@ -208,11 +208,11 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: `layout/title`,
+        path: `experimental/amount`,
         loadChildren: async () =>
-            (await import(`../directives/title/title.module`)).ExampleTuiTitleModule,
+            (await import(`../experimental/amount/amount.module`)).ExampleTuiAmountModule,
         data: {
-            title: `Title`,
+            title: `Amount `,
         },
     },
     {
@@ -238,6 +238,14 @@ export const ROUTES: Routes = [
             (await import(`../experimental/radio/radio.module`)).ExampleTuiRadioModule,
         data: {
             title: `Radio `,
+        },
+    },
+    {
+        path: `experimental/title`,
+        loadChildren: async () =>
+            (await import(`../experimental/title/title.module`)).ExampleTuiTitleModule,
+        data: {
+            title: `Title`,
         },
     },
     {
@@ -271,7 +279,7 @@ export const ROUTES: Routes = [
             (await import(`../experimental/badged-content/badged-content.module`))
                 .ExampleTuiBadgedContentModule,
         data: {
-            title: `BadgedContent`,
+            title: `BadgedContent `,
         },
     },
     {
@@ -280,6 +288,14 @@ export const ROUTES: Routes = [
             (await import(`../experimental/button/button.module`)).ExampleTuiButtonModule,
         data: {
             title: `Button `,
+        },
+    },
+    {
+        path: `experimental/cell`,
+        loadChildren: async () =>
+            (await import(`../experimental/cell/cell.module`)).ExampleTuiCellModule,
+        data: {
+            title: `Cell`,
         },
     },
     {

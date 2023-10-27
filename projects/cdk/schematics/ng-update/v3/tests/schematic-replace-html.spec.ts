@@ -28,11 +28,11 @@ export class TestComponent {}
 const COMPONENT_WITH_TEMPLATE_URL_AFTER = `import { TUI_EDITOR_EXTENSIONS, defaultEditorExtensions } from "@taiga-ui/addon-editor";
 
 @Component({templateUrl: './test.template.html',
-        providers: [{
-                        provide: TUI_EDITOR_EXTENSIONS,
-                        useValue: defaultEditorExtensions
-                    }]
-    })
+    providers: [{
+                    provide: TUI_EDITOR_EXTENSIONS,
+                    useValue: defaultEditorExtensions
+                }]
+})
 export class TestComponent {}
 `;
 
