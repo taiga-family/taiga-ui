@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[3429],{3429:(e,a,n)=>{n.r(a),n.d(a,{TUI_KAZAKH_LANGUAGE_ADDON_TABLE:()=>s});const s={showHideText:"Көрсету/Жасыру",paginationTexts:{pages:"Беттер",linesPerPage:"Әр беттегі жолдар",of:"ның"}}}}]);

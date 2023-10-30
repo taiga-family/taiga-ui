@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[81800],{81800:(_,a,c)=>{c.r(a),c.d(a,{TUI_KAZAKH_LANGUAGE_ADDON_COMMERCE:()=>e});const e={cardNumber:["Сан","Карточка нөмірі"],cardExpiry:["Мерзімі бітеді","Арқылы жарамды"]}}}]);
