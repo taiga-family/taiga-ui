@@ -12,9 +12,9 @@
     "repository": "https://github.com/taiga-family/taiga-ui",
     "license": "Apache-2.0",
     "devDependencies": {
-        "@rollup/pluginutils": "4.2.1",
+        "@rollup/pluginutils": "5.0.5",
         "feather-icons": "4.29.1",
-        "rollup": "2.79.1",
+        "rollup": "4.1.5",
         "rollup-plugin-typescript2": "0.36.0",
         "svgo": "3.0.2",
         "tslib": "2.6.2"
