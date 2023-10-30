@@ -21,7 +21,7 @@ export class TuiMobileCalendarDialogComponent {
     constructor(
         @Inject(POLYMORPHEUS_CONTEXT)
         readonly context: TuiDialogContext<
-            TuiDay | TuiDayRange,
+            TuiDay | TuiDayRange | readonly TuiDay[],
             TuiMobileCalendarData | undefined
         >,
     ) {}

@@ -414,6 +414,14 @@ export const pages: TuiDocPages = [
             },
             {
                 section: `Components`,
+                title: `InputDateMulti`,
+                keywords:
+                    `поле, инпут, форма, ввод, input, календарь, день, ` +
+                    `неделя, месяц, год, дата, calendar, multiple`,
+                route: `/components/input-date-multi`,
+            },
+            {
+                section: `Components`,
                 title: `InputDateRange`,
                 keywords: `calendar, календарь, даты, период`,
                 route: `/components/input-date-range`,
