@@ -8,9 +8,9 @@ import {TuiSchema} from '../../ng-add/schema';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../../utils/colored-log';
 import {getExecutionTime} from '../../utils/get-execution-time';
 import {projectRoot} from '../../utils/project-root';
-import {replaceThumbnailCard} from './steps/replace-thumbnail-card';
-import {restoreTuiMapper} from './steps/restore-tui-mapper';
-import {restoreTuiMatcher} from './steps/restore-tui-matcher';
+import {replaceIdentifiers} from '../steps/replace-identifier';
+import {migrateTemplates, restoreTuiMapper, restoreTuiMatcher} from './steps';
+import {IDENTIFIERS_TO_REPLACE} from './steps/constants/identifiers-to-replace';
 
 export function updateToV4(options: TuiSchema): Rule {
     const t0 = performance.now();
@@ -39,10 +39,12 @@ function main(options: TuiSchema): Rule {
 
         const fileSystem = project.getFileSystem().fs;
 
-        replaceThumbnailCard(options, fileSystem);
+        replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE);
 
         restoreTuiMapper(options);
         restoreTuiMatcher(options);
+
+        migrateTemplates(fileSystem, options);
 
         fileSystem.commitEdits();
         saveActiveProject();

@@ -1,6 +1,6 @@
-import {ReplacementConst} from '../../interfaces/replacement-const';
+import {ReplacementIdentifier} from '../../interfaces/replacement-identifier';
 
-export const CONSTANTS_TO_REPLACE: ReplacementConst[] = [
+export const CONSTANTS_TO_REPLACE: ReplacementIdentifier[] = [
     {
         from: {
             name: `EMPTY_VALIDATOR`,

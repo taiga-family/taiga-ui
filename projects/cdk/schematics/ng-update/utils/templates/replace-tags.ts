@@ -6,7 +6,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
-import {ReplaceableTag} from '../../interfaces/replaceable-tag';
+import {ReplacementTag} from '../../interfaces/replacement-tag';
 import {TemplateResource} from '../../interfaces/template-resource';
 import {replaceTag} from './replace-tag';
 
@@ -14,17 +14,17 @@ export function replaceTags({
     resource,
     recorder,
     fileSystem,
-    replaceableItems,
+    data,
 }: {
     fileSystem: DevkitFileSystem;
     recorder: UpdateRecorder;
-    replaceableItems: ReplaceableTag[];
+    data: readonly ReplacementTag[];
     resource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    replaceableItems.forEach(({from, to, addAttributes}) => {
+    data.forEach(({from, to, addAttributes}) => {
         const elements = findElementsByTagName(template, from);
 
         elements.forEach(({sourceCodeLocation}) => {

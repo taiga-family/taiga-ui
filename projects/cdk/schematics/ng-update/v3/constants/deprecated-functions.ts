@@ -1,6 +1,6 @@
-import {TypeToRename} from '../../interfaces/type-to-rename';
+import {ReplacementType} from '../../interfaces/replacement-type';
 
-export const DEPRECATED_FUNCTIONS: readonly TypeToRename[] = [
+export const DEPRECATED_FUNCTIONS: readonly ReplacementType[] = [
     {
         from: `tuiReplayedValueChangesFrom`,
         to: `tuiControlValue`,

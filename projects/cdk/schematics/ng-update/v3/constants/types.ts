@@ -1,6 +1,6 @@
-import {TypeToRename} from '../../interfaces/type-to-rename';
+import {ReplacementType} from '../../interfaces/replacement-type';
 
-export const TYPES_TO_RENAME: readonly TypeToRename[] = [
+export const TYPES_TO_RENAME: readonly ReplacementType[] = [
     {
         from: `ButtonOptions`,
         to: `TuiButtonOptions`,

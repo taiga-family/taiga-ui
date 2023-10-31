@@ -6,24 +6,24 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
-import {ReplaceableAttributeValue} from '../../interfaces/replaceable-attribute-value';
+import {ReplacementAttributeValue} from '../../interfaces/replacement-attribute-value';
 import {TemplateResource} from '../../interfaces/template-resource';
 
 export function replaceAttrValues({
     resource,
     recorder,
     fileSystem,
-    replaceableItems,
+    data,
 }: {
     fileSystem: DevkitFileSystem;
     recorder: UpdateRecorder;
-    replaceableItems: ReplaceableAttributeValue[];
+    data: ReplacementAttributeValue[];
     resource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    replaceableItems.forEach(({attrNames, values, withTagNames}) => {
+    data.forEach(({attrNames, values, withTagNames}) => {
         const elements = [
             ...findElementsWithAttributeOnTag(template, attrNames, withTagNames),
         ];
