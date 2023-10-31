@@ -1,11 +1,11 @@
-import {ProjectDefinition, WorkspaceDefinition} from '@angular-devkit/core/src/workspace';
+import {workspaces} from '@angular-devkit/core';
 
 import {TuiSchema} from '../ng-add/schema';
 
 export function getProjects(
     options: TuiSchema,
-    workspace: WorkspaceDefinition,
-): ProjectDefinition[] {
+    workspace: workspaces.WorkspaceDefinition,
+): workspaces.ProjectDefinition[] {
     const projects = Array.from(workspace.projects.entries())
         .filter(([_, project]) => project.targets.get(`build`))
         .map(([_, project]) => project);

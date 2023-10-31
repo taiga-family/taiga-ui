@@ -63,7 +63,7 @@ export function updateToV3(options: TuiSchema): Rule {
 }
 
 function main(options: TuiSchema): Rule {
-    return (tree: Tree, context: SchematicContext) => {
+    return (tree: Tree, context: SchematicContext): void => {
         const fileSystem = getFileSystem(tree);
 
         replaceDeepImports(options);
@@ -125,7 +125,7 @@ function addTaigaStyles(options: TuiSchema): Rule {
 }
 
 function showNormalizeWarning(): Rule {
-    return (tree: Tree, context: SchematicContext) => {
+    return (tree: Tree, context: SchematicContext): void => {
         try {
             if (getPackageJsonDependency(tree, `@taiga-ui/styles`)?.version) {
                 context.logger.warn(TUI_WARNING_NORMALIZE);

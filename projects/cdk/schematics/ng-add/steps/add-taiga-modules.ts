@@ -37,7 +37,7 @@ import {
 import {TuiSchema} from '../schema';
 
 export function addTaigaModules(options: TuiSchema): Rule {
-    return async (tree: Tree, context: SchematicContext) => {
+    return async (tree: Tree, context: SchematicContext): Promise<Rule | void> => {
         const workspace = await getWorkspace(tree);
         const project = getProjects(options, workspace)[0];
 

@@ -19,7 +19,7 @@ import {getStandaloneBootstrapFunction} from '../../utils/get-standalone-bootstr
 import {TuiSchema} from '../schema';
 
 export function wrapWithTuiRootComponent(options: TuiSchema): Rule {
-    return async (tree: Tree, context: SchematicContext) => {
+    return async (tree: Tree, context: SchematicContext): Promise<Rule | void> => {
         const workspace = await getWorkspace(tree);
         const project = getProjects(options, workspace)[0];
 
