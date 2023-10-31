@@ -1,6 +1,6 @@
 import {Element} from 'parse5';
 
-export interface ReplaceableAttribute {
+export interface ReplacementAttribute {
     readonly from: {
         readonly attrName: string;
         readonly filterFn?: (element: Element) => boolean;

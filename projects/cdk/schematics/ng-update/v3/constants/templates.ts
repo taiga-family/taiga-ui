@@ -1,12 +1,12 @@
 import {hasElementAttribute} from '../../../utils/templates/elements';
 import {RemovableInput} from '../../interfaces/removable-input';
-import {ReplaceableAttribute} from '../../interfaces/replaceable-attribute';
-import {ReplaceableAttributeValue} from '../../interfaces/replaceable-attribute-value';
-import {ReplaceableTag} from '../../interfaces/replaceable-tag';
+import {ReplacementAttribute} from '../../interfaces/replacement-attribute';
+import {ReplacementAttributeValue} from '../../interfaces/replacement-attribute-value';
+import {ReplacementTag} from '../../interfaces/replacement-tag';
 import {AttributeToDirective} from '../interfaces/attribute-to-directive';
 import {TUI_INTERACTIVE_SELECTORS} from './tui-interactive-selectors';
 
-export const ATTRS_TO_REPLACE: ReplaceableAttribute[] = [
+export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
     {
         from: {attrName: `tuiResizableColumn`, withAttrsNames: [`tuiResizableColumn`]},
         to: {attrName: `tuiTh [resizable]="true"`},
@@ -504,7 +504,7 @@ export const INPUTS_TO_REMOVE: RemovableInput[] = [
     },
 ];
 
-export const TAGS_TO_REPLACE: ReplaceableTag[] = [
+export const TAGS_TO_REPLACE: ReplacementTag[] = [
     {
         from: `tui-group`,
         to: `div`,
@@ -731,7 +731,7 @@ export const TEMPLATE_COMMENTS = [
     },
 ] as const;
 
-export const REPLACE_ATTR_VALUE: ReplaceableAttributeValue[] = [
+export const REPLACE_ATTR_VALUE: ReplacementAttributeValue[] = [
     {
         attrNames: [`tuiHintDirection`],
         values: [

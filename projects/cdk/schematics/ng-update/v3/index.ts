@@ -19,7 +19,7 @@ import {removeModules} from '../steps/remove-module';
 import {renameTypes} from '../steps/rename-types';
 import {replaceDeepImports} from '../steps/replace-deep-import';
 import {replaceEnums} from '../steps/replace-enums';
-import {replaceConstants} from '../steps/replace-identifier';
+import {replaceIdentifiers} from '../steps/replace-identifier';
 import {replaceServices} from '../steps/replace-services';
 import {showWarnings} from '../steps/show-warnings';
 import {getFileSystem} from '../utils/get-file-system';
@@ -69,7 +69,7 @@ function main(options: TuiSchema): Rule {
         replaceDeepImports(options);
         replaceEnums(options, ENUMS_TO_REPLACE);
         renameTypes(options, TYPES_TO_RENAME);
-        replaceConstants(options, CONSTANTS_TO_REPLACE);
+        replaceIdentifiers(options, CONSTANTS_TO_REPLACE);
         replaceServices(options, SERVICES_TO_REPLACE);
         replaceStyles();
         showWarnings(context, MIGRATION_WARNINGS);

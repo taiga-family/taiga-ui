@@ -16,8 +16,6 @@ import {
 import {TODO_MARK} from '../../../utils/insert-todo';
 import {setupProgressLogger} from '../../../utils/progress';
 import {
-    findAttributeOnElementWithAttrs,
-    findAttributeOnElementWithTag,
     findElementsByTagName,
     findElementsInTemplateByFn,
     findElementsWithAttribute,
@@ -33,6 +31,7 @@ import {
 import {TemplateResource} from '../../interfaces/template-resource';
 import {removeInputs} from '../../utils/templates/remove-inputs';
 import {replaceAttrValues} from '../../utils/templates/replace-attr-values';
+import {replaceAttrs} from '../../utils/templates/replace-attrs';
 import {replaceTag} from '../../utils/templates/replace-tag';
 import {replaceTags} from '../../utils/templates/replace-tags';
 import {
@@ -54,7 +53,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
     const componentWithTemplatesPaths = getComponentTemplates(ALL_TS_FILES);
     const actions = [
         replaceV3Tags,
-        replaceAttrs,
+        replaceV3Attrs,
         replaceAttrsByDirective,
         replaceBreadcrumbs,
         replaceFieldError,
@@ -111,7 +110,7 @@ function replaceAttrsByDirective({
     );
 }
 
-function replaceAttrs({
+function replaceV3Attrs({
     resource,
     recorder,
     fileSystem,
@@ -120,29 +119,11 @@ function replaceAttrs({
     recorder: UpdateRecorder;
     resource: TemplateResource;
 }): void {
-    const template = getTemplateFromTemplateResource(resource, fileSystem);
-    const templateOffset = getTemplateOffset(resource);
-
-    ATTRS_TO_REPLACE.forEach(({from, to}) => {
-        const offsets = [
-            ...findAttributeOnElementWithTag(
-                template,
-                from.attrName,
-                from.withTagNames || [],
-                from.filterFn,
-            ),
-            ...findAttributeOnElementWithAttrs(
-                template,
-                from.attrName,
-                from.withAttrsNames || [],
-                from.filterFn,
-            ),
-        ];
-
-        offsets.forEach(offset => {
-            recorder.remove(offset + templateOffset, from.attrName.length);
-            recorder.insertRight(offset + templateOffset, to.attrName);
-        });
+    replaceAttrs({
+        resource,
+        recorder,
+        fileSystem,
+        data: ATTRS_TO_REPLACE,
     });
 }
 
@@ -155,7 +136,7 @@ function replaceV3Tags({
     recorder: UpdateRecorder;
     resource: TemplateResource;
 }): void {
-    replaceTags({resource, recorder, fileSystem, replaceableItems: TAGS_TO_REPLACE});
+    replaceTags({resource, recorder, fileSystem, data: TAGS_TO_REPLACE});
 }
 
 function addHTMLCommentTags({
@@ -428,7 +409,7 @@ function replaceInputValues({
         resource,
         recorder,
         fileSystem,
-        replaceableItems: REPLACE_ATTR_VALUE,
+        data: REPLACE_ATTR_VALUE,
     });
 }
 
@@ -441,5 +422,5 @@ function removeV3Inputs({
     recorder: UpdateRecorder;
     resource: TemplateResource;
 }): void {
-    removeInputs({resource, recorder, fileSystem, replaceableItems: INPUTS_TO_REMOVE});
+    removeInputs({resource, recorder, fileSystem, data: INPUTS_TO_REMOVE});
 }

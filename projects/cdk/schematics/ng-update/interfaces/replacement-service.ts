@@ -1,6 +1,6 @@
-import {ReplacementConst} from './replacement-const';
+import {ReplacementIdentifier} from './replacement-identifier';
 
-export interface ReplacementService extends ReplacementConst {
+export interface ReplacementService extends ReplacementIdentifier {
     readonly replaceMethods?: Array<{
         from: string;
         to: string;

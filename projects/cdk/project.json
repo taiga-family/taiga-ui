@@ -53,7 +53,7 @@
                 "parallel": false,
                 "commands": [
                     "tsc -p ./projects/cdk/schematics/tsconfig.spec.json",
-                    "jasmine ./dist/cdk/schematics/**/*.spec.js"
+                    "jasmine ./dist/cdk/schematics/ng-update/v4/**/*.spec.js"
                 ]
             },
             "dependsOn": [

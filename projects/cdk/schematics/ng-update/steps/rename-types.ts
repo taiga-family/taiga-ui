@@ -11,9 +11,9 @@ import {
 } from '../../utils/colored-log';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {removeImport, renameImport} from '../../utils/import-manipulations';
-import {TypeToRename} from '../interfaces/type-to-rename';
+import {ReplacementType} from '../interfaces/replacement-type';
 
-export function renameTypes(options: TuiSchema, types: readonly TypeToRename[]): void {
+export function renameTypes(options: TuiSchema, types: readonly ReplacementType[]): void {
     !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} renaming types...`);
 
