@@ -50,9 +50,13 @@ export class LandingComponent implements OnInit {
         return this.current ? '#5f6ed0' : '#3dc67c';
     }
 
-    onIntersection([{isIntersecting}]: IntersectionObserverEntry[], index: number): void {
+    onIntersection(
+        [{isIntersecting, target}]: IntersectionObserverEntry[],
+        index: number,
+    ): void {
         if (isIntersecting) {
             this.current = index;
+            target.scrollIntoView({behavior: 'smooth'});
         }
     }
 
@@ -63,7 +67,7 @@ export class LandingComponent implements OnInit {
     onClick(): void {
         this.blocks.forEach(({nativeElement}, index) => {
             if (index === this.current + 1) {
-                nativeElement.scrollIntoView();
+                nativeElement.scrollIntoView({behavior: 'smooth'});
             }
         });
     }

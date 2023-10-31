@@ -17,7 +17,7 @@ import {
 import {TuiSchema} from './schema';
 
 export function ngAdd(options: TuiSchema): Rule {
-    return (tree: Tree, context: SchematicContext) => {
+    return (tree: Tree, context: SchematicContext): void => {
         context.logger.info(`The main packages will be installed - ${MAIN_PACKAGES}`);
 
         addDependencies(tree, options);

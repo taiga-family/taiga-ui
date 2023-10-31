@@ -589,6 +589,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `components/input-date-multi`,
+        loadChildren: async () =>
+            (await import(`../components/input-date-multi/input-date-multi.module`))
+                .ExampleTuiInputDateMultiModule,
+        data: {
+            title: `InputDateMulti`,
+        },
+    },
+    {
         path: `components/input-card`,
         loadChildren: async () =>
             (await import(`../components/input-card/input-card.module`))

@@ -7,6 +7,10 @@ import {BehaviorSubject, EMPTY, Observable} from 'rxjs';
 import {TuiSheet} from './sheet';
 import {TUI_SHEET_OPTIONS, TuiSheetOptions} from './sheet-options';
 
+/**
+ * @deprecated: use {@link TuiSheetDialogService}
+ * drop in v4.0
+ */
 @Injectable({
     providedIn: `root`,
 })

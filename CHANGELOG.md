@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.52.0](https://github.com/taiga-family/taiga-ui/compare/v3.51.0...v3.52.0) (2023-10-31)
+
+### Features
+
+- **experimental:** `TuiAmount` add new pipe ([#5735](https://github.com/taiga-family/taiga-ui/issues/5735))
+  ([33588c3](https://github.com/taiga-family/taiga-ui/commit/33588c38c0bf9a424de3f887a55c64c0ad96c49b))
+- **experimental:** new component `Cell` ([#5460](https://github.com/taiga-family/taiga-ui/issues/5460))
+  ([343f2e8](https://github.com/taiga-family/taiga-ui/commit/343f2e8b0b59dbb265509a45b1f249639b56b498))
+- **kit:** add `InputMultiDate` ([#5620](https://github.com/taiga-family/taiga-ui/issues/5620))
+  ([180930e](https://github.com/taiga-family/taiga-ui/commit/180930e44561f27ef551bdab5cd8fa2b1a3e66df))
+- **layout:** `Title` add new component ([#5743](https://github.com/taiga-family/taiga-ui/issues/5743))
+  ([93b51ff](https://github.com/taiga-family/taiga-ui/commit/93b51ff5fa394f1a7dcc7873fcf8bb26978248e1))
+- **testing:** adds harness for dialog ([#5785](https://github.com/taiga-family/taiga-ui/issues/5785))
+  ([eed5765](https://github.com/taiga-family/taiga-ui/commit/eed5765c88d33deba596fa03bffcd850d4635281))
+
+### Bug Fixes
+
+- **cdk:** don't use `layerX` and `layerY` for detect retargated element
+  ([#5796](https://github.com/taiga-family/taiga-ui/issues/5796))
+  ([8873fad](https://github.com/taiga-family/taiga-ui/commit/8873fadbd5a94b838fdb397dfef20fafe4d8dce9))
+- **core:** don't remove any comments from bundled artifacts
+  ([#5795](https://github.com/taiga-family/taiga-ui/issues/5795))
+  ([2ff6569](https://github.com/taiga-family/taiga-ui/commit/2ff656960878be6b56bf52630479d6cf43ebf7bb))
+
 ## [3.51.0](https://github.com/taiga-family/taiga-ui/compare/v3.50.0...v3.51.0) (2023-10-25)
 
 ### Features
