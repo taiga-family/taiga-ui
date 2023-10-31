@@ -42,8 +42,11 @@ export async function tuiConvertAllCompileFileToAllFile(config: Options): Promis
                                 overrides: {
                                     removeViewBox: false,
                                     collapseGroups: false,
-                                    cleanupIDs: false,
                                     removeUnknownsAndDefaults: false,
+                                    cleanupIds: {},
+                                    sortAttrs: {
+                                        xmlnsOrder: `alphabetical`,
+                                    },
                                 },
                             },
                         },
