@@ -6,6 +6,7 @@ const DEFAULT_MOCKS = [
             /.*avatar.jpg/,
             /.*avatars.githubusercontent.com.*/,
             /https:\/\/github.com\/.*.png.*/,
+            /https:\/\/m.media-amazon.com\/.*.jpg.*/,
             /.*bf2e94ae58ee713717faf397958a8e3d.jpg/, // filename - MD5 hash value of file content (waterplea avatar)
         ],
         mockImage: `${__dirname}/../stubs/github-avatar.jpeg`,
