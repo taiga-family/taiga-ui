@@ -13,17 +13,17 @@ export function removeInputs({
     resource,
     recorder,
     fileSystem,
-    replaceableItems,
+    data,
 }: {
     fileSystem: DevkitFileSystem;
     recorder: UpdateRecorder;
-    replaceableItems: RemovableInput[];
+    data: readonly RemovableInput[];
     resource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    replaceableItems.forEach(({inputName, tags}) => {
+    data.forEach(({inputName, tags}) => {
         const offsets = [
             ...getInputPropertyOffsets(template, inputName, tags),
             ...getInputPropertyOffsets(template, `[${inputName}]`, tags),

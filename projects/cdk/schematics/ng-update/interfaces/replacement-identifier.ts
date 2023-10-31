@@ -1,4 +1,4 @@
-export interface ReplacementConst {
+export interface ReplacementIdentifier {
     readonly from: {
         readonly moduleSpecifier?: string[] | string;
         readonly name: string;
