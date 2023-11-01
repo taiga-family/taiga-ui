@@ -30,7 +30,7 @@ export class ExampleTuiHintDescribeComponent extends AbstractExampleTuiHint {
     readonly hintBaseProperties: Record<string, TuiDocumentationProperty> = {
         placeholder: {
             type: null,
-            value: "My id is 'qwerty'",
+            value: 'My id is "qwerty"',
         },
         tuiHint: {
             type: null,

@@ -37,7 +37,7 @@ export class ExampleTuiHintManualComponent extends AbstractExampleTuiHint {
         },
         tuiHint: {
             type: null,
-            value: "It says 'Hi all!' into console",
+            value: 'It says "Hi all!" into console',
         },
         click: {
             type: 'output',
