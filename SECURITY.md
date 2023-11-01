@@ -1,11 +1,11 @@
 # Security Policy
 
-## Supported Versions
+## Version compatibility
 
-| Version | Supported           | Angular          |
-| ------- | ------------------- | ---------------- |
-| 2.x.y   | No longer supported | ^9.0.0 - ^15.0.0 |
-| 3.x.y   | ✅ Current          | ^12.0.0 - latest |
+| Taiga UI | Angular              | Supported           |
+| -------- | -------------------- | ------------------- |
+| `3.x.y`  | `^12.0.0` - `latest` | ✅ Current          |
+| `2.x.y`  | `^9.0.0` - `^15.0.0` | No longer supported |
 
 ## Reporting a Vulnerability
 
