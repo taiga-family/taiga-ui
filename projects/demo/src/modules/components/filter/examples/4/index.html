@@ -5,14 +5,15 @@
         size="m"
         tuiButton
         type="button"
-        class="tui-space_right-1"
-        [appearance]="(buttonAppearance$ | async) || ''"
+        class="item tui-space_right-1"
+        [appearance]="buttonAppearance$ | async"
         (click)="toggleAll()"
     >
         All
     </button>
 
     <tui-filter
+        class="item"
         [items]="items"
         [ngModel]="model$ | async"
         (ngModelChange)="onModelChange($event)"
