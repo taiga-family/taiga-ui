@@ -127,9 +127,10 @@ export class TuiPaginationComponent
             }
         }
 
-        const activeElement = this.els.find((_, index) => index === activeElementIndex);
-
-        return activeElement ? activeElement.nativeFocusableElement : null;
+        return (
+            this.els.find((_, index) => index === activeElementIndex)
+                ?.nativeFocusableElement ?? null
+        );
     }
 
     get focused(): boolean {

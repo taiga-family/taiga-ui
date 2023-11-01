@@ -71,7 +71,7 @@ describe(`TuiAutoFocus directive`, () => {
             focusedChange = EMPTY;
 
             get nativeFocusableElement(): HTMLInputElement | null {
-                return this.input ? this.input.nativeElement : null;
+                return this.input?.nativeElement ?? null;
             }
 
             get focused(): boolean {

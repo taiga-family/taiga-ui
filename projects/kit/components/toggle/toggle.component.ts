@@ -80,7 +80,7 @@ export class TuiToggleComponent
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        return this.focusableElement ? this.focusableElement.nativeElement : null;
+        return this.focusableElement?.nativeElement ?? null;
     }
 
     get focused(): boolean {
@@ -103,7 +103,7 @@ export class TuiToggleComponent
 
     @HostBinding('attr.data-mode')
     get hostMode(): TuiBrightness | null {
-        return this.modeDirective ? this.modeDirective.mode : null;
+        return this.modeDirective?.mode ?? null;
     }
 
     /** @deprecated use 'value' setter */

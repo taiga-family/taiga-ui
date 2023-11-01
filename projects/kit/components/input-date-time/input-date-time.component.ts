@@ -166,7 +166,7 @@ export class TuiInputDateTimeComponent
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
-        return this.textfield ? this.textfield.nativeFocusableElement : null;
+        return this.textfield?.nativeFocusableElement ?? null;
     }
 
     get focused(): boolean {
@@ -178,7 +178,7 @@ export class TuiInputDateTimeComponent
     }
 
     private get nativePicker(): boolean {
-        return !!this.options.nativePicker && this.isMobile;
+        return this.options.nativePicker && this.isMobile;
     }
 
     get showNativePicker(): boolean {
