@@ -82,7 +82,7 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
             radioButton => radioButton.nativeFocusableElement !== null,
         );
 
-        return focusableRadioButton ? focusableRadioButton.nativeFocusableElement : null;
+        return focusableRadioButton?.nativeFocusableElement ?? null;
     }
 
     get focused(): boolean {

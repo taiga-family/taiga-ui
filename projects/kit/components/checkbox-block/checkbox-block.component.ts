@@ -70,7 +70,7 @@ export class TuiCheckboxBlockComponent
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        return this.checkbox ? this.checkbox.nativeFocusableElement : null;
+        return this.checkbox?.nativeFocusableElement ?? null;
     }
 
     @HostBinding('class._active')

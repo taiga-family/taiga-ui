@@ -71,7 +71,7 @@ export class TuiCheckboxLabeledComponent
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        return this.checkbox ? this.checkbox.nativeFocusableElement : null;
+        return this.checkbox?.nativeFocusableElement ?? null;
     }
 
     onFocused(focused: boolean): void {

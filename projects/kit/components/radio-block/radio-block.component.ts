@@ -80,7 +80,7 @@ export class TuiRadioBlockComponent<T>
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        return this.radio ? this.radio.nativeFocusableElement : null;
+        return this.radio?.nativeFocusableElement ?? null;
     }
 
     get focused(): boolean {

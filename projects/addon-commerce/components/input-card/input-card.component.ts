@@ -64,7 +64,7 @@ export class TuiInputCardComponent extends AbstractTuiInputCard<string> {
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
-        return this.input ? this.input.nativeFocusableElement : null;
+        return this.input?.nativeFocusableElement ?? null;
     }
 
     get focused(): boolean {

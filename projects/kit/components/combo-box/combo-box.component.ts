@@ -135,7 +135,7 @@ export class TuiComboBoxComponent<T>
     get focused(): boolean {
         return (
             tuiIsNativeFocused(this.nativeFocusableElement) ||
-            (!!this.hostedDropdown && this.hostedDropdown.focused)
+            !!this.hostedDropdown?.focused
         );
     }
 
@@ -220,10 +220,7 @@ export class TuiComboBoxComponent<T>
     }
 
     private isStrictMatch(item: T): boolean {
-        return (
-            !!this.strictMatcher &&
-            this.strictMatcher(item, this.search || '', this.stringify)
-        );
+        return !!this.strictMatcher?.(item, this.search || '', this.stringify);
     }
 
     private close(): void {
