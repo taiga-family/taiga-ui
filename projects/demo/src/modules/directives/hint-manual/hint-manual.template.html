@@ -15,7 +15,13 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        documentationTemplateContent="A strange button"
+        documentationTemplateTagName="button"
+        pageTab
+        [documentationTemplateBaseProperties]="hintBaseProperties"
+    >
         <tui-doc-demo>
             <button
                 tuiButton
@@ -41,6 +47,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="tuiHintManual"
                 documentationPropertyType="boolean"
+                [documentationPropertyDefaultValue]="undefined"
                 [(documentationPropertyValue)]="show"
             >
                 Show/hide hint

@@ -69,9 +69,13 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <tui-mobile-calendar
+                documentationTemplateTagName="tui-mobile-calendar"
                 class="calendar"
                 [disabledItemHandler]="disabledItemHandler"
                 [max]="max"

@@ -62,7 +62,13 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        documentationTemplateTagName="button"
+        pageTab
+        [documentationTemplateBaseProperties]="dropdownBaseProperties"
+        [documentationTemplateContent]="content"
+    >
         <tui-doc-demo>
             <span (tuiActiveZoneChange)="onActiveZone($event)">
                 <button

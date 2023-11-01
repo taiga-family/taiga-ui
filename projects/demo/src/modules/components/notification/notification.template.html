@@ -31,9 +31,14 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <tui-notification
+                documentationTemplateContent="A short simple informative message"
+                documentationTemplateTagName="tui-notification"
                 [hasIcon]="hasIcon"
                 [status]="status"
                 (close)="documentationPropertyClose.emitEvent($event)"

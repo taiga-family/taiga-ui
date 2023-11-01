@@ -15,7 +15,13 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        documentationTemplateTagName="span"
+        pageTab
+        [documentationTemplateBaseProperties]="hintBaseProperties"
+        [documentationTemplateContent]="content"
+    >
         <tui-doc-demo>
             <ng-template #hint>
                 To be accessible, hint should be set to a focusable element. See

@@ -62,7 +62,13 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        documentationTemplateTagName="button"
+        pageTab
+        [documentationTemplateBaseProperties]="actionBaseProperties"
+        [documentationTemplateContent]="content"
+    >
         <tui-doc-demo>
             <button
                 tuiAction
@@ -92,6 +98,7 @@
             <ng-template
                 documentationPropertyName="--tui-action-color"
                 documentationPropertyType="string"
+                [documentationPropertyPreventUpdateApiHost]="true"
                 [(documentationPropertyValue)]="color"
             >
                 Color of the icon
@@ -99,6 +106,7 @@
             <ng-template
                 documentationPropertyName="--tui-action-background"
                 documentationPropertyType="string"
+                [documentationPropertyPreventUpdateApiHost]="true"
                 [(documentationPropertyValue)]="background"
             >
                 Background of the icon

@@ -49,9 +49,14 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <tui-primitive-textfield
+                documentationTemplateContent="Component label"
+                documentationTemplateTagName="tui-primitive-textfield"
                 [disabled]="disabled"
                 [editable]="editable"
                 [filler]="filler"

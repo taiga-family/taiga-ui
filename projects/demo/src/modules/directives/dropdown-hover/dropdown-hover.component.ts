@@ -1,9 +1,24 @@
 import {Component, forwardRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 
 import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
+
+const content = `Hover pointer over
+<strong>to see a dropdown</strong>
+<ng-template #dropdownContent>
+    <div class="dropdown">
+        Here you can have any content
+        <p>You can select a text inside a dropdown and it will not close a dropdown</p>
+        <button
+            tuiButton
+            type="button"
+        >
+            Button
+        </button>
+    </div>
+</ng-template>`;
 
 @Component({
     selector: 'example-tui-dropdown-hover',
@@ -43,4 +58,16 @@ export class ExampleTuiDropdownHoverComponent extends AbstractExampleTuiDropdown
     showDelay = 200;
 
     hideDelay = 500;
+
+    readonly content = content;
+
+    readonly dropdownBaseProperties: Record<string, TuiDocumentationProperty> = {
+        tuiDropdownHover: {
+            type: null,
+        },
+        tuiDropdown: {
+            type: 'input',
+            value: 'dropdownContent',
+        },
+    };
 }

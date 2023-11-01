@@ -43,10 +43,15 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input
+                    documentationTemplateContent="Hello"
+                    documentationTemplateTagName="tui-input"
                     [formControl]="control"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldLabelOutside]="labelOutside"

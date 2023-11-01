@@ -2,7 +2,7 @@ import {Component, forwardRef, Inject} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiCodeCVCLength, tuiCreateLuhnValidator} from '@taiga-ui/addon-commerce';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 import {TuiAlertService, TuiHintOptions} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -72,6 +72,34 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
         expire: new FormControl('', Validators.required),
         cvc: new FormControl('', Validators.required),
     });
+
+    readonly inputCardBaseProperties: Record<string, TuiDocumentationProperty> = {
+        formControlName: {
+            type: null,
+            value: 'card',
+        },
+    };
+
+    readonly inputExpireBaseProperties: Record<string, TuiDocumentationProperty> = {
+        formControlName: {
+            type: null,
+            value: 'expire',
+        },
+    };
+
+    readonly inputCVCBaseProperties: Record<string, TuiDocumentationProperty> = {
+        formControlName: {
+            type: null,
+            value: 'cvc',
+        },
+    };
+
+    readonly errorBaseProperties: Record<string, TuiDocumentationProperty> = {
+        error: {
+            type: 'input',
+            value: '[] | tuiFieldError | async',
+        },
+    };
 
     constructor(
         @Inject(TuiAlertService)

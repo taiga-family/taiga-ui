@@ -31,11 +31,16 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <audio
             controls
+            documentationTemplateTagName="audio"
             src="assets/media/strays.mp3"
             tuiMedia
+            [documentationTemplateBaseProperties]="audioBaseProperties"
             [playbackRate]="playbackRate"
             [(currentTime)]="currentTime"
             [(paused)]="paused"

@@ -168,6 +168,20 @@
                 </tui-expand>
             </form>
             <ng-content></ng-content>
+            <div
+                *ngIf="canCopyCode"
+                class="t-copy-code"
+            >
+                <button
+                    appearance="outline"
+                    size="s"
+                    tuiButton
+                    (click)="copy()"
+                >
+                    <tui-svg src="tuiIconCopy"></tui-svg>
+                    Copy code
+                </button>
+            </div>
         </div>
     </div>
     <div

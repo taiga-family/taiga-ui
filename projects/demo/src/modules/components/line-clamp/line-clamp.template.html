@@ -47,10 +47,18 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        documentationTemplateTagName=""
+        pageTab
+        [documentationTemplateContent]="content ? '' : defaultExampleContentCode"
+    >
         <tui-doc-demo>
             <tui-line-clamp
+                documentationTemplateTagName="tui-line-clamp"
                 [content]="content || defaultExampleContent"
+                [documentationTemplateApiHost]="lineClampDocumentationApiHost"
+                [documentationTemplateBaseProperties]="lineClampBaseProperties"
                 [lineHeight]="lineHeight"
                 [linesLimit]="linesLimit"
                 [style.maxWidth.px]="maxWidth"
@@ -65,7 +73,10 @@
                 Veni, vidi, vici
             </ng-template>
         </tui-doc-demo>
-        <tui-doc-documentation>
+        <tui-doc-documentation
+            #lineClampDocumentationApiHost="documentationApiHost"
+            documentationApiHost
+        >
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="content"

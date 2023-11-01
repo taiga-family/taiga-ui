@@ -7,6 +7,12 @@ import {TuiSizeL, TuiSizeM} from '@taiga-ui/core';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
+const content = `Textfield for multiline input. It can grow with its content.
+<textarea
+    tuiTextfield
+    [placeholder]="placeholder"
+></textarea>`;
+
 @Component({
     selector: 'example-tui-textarea',
     templateUrl: './textarea.template.html',
@@ -82,4 +88,6 @@ export class ExampleTuiTextareaComponent extends AbstractExampleTuiControl {
     override size: TuiSizeL | TuiSizeM = this.sizeVariants[1];
 
     placeholder = 'Placeholder';
+
+    readonly content = content;
 }

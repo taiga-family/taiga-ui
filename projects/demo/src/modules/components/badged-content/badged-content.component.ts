@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -59,4 +59,10 @@ export class ExampleTuiBadgedContentComponent {
         'Template',
         'tuiIconCheckCircleLarge',
     ];
+
+    readonly avatarBaseProperties: Record<string, TuiDocumentationProperty> = {
+        new: {
+            type: null,
+        },
+    };
 }

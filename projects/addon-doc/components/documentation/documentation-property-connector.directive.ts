@@ -6,18 +6,20 @@ import {
     Input,
     OnChanges,
     OnInit,
+    Optional,
     Output,
+    SimpleChanges,
     TemplateRef,
 } from '@angular/core';
 import {ActivatedRoute, Params, UrlSerializer, UrlTree} from '@angular/router';
+import {TuiApiHostService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
-import {tuiCoerceValue} from '@taiga-ui/addon-doc/utils';
+import {TuiDocumentationPropertyType} from '@taiga-ui/addon-doc/types';
+import {tuiCoerceValue, tuiGetAttrName, tuiInspectAny} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber, TuiStringHandler} from '@taiga-ui/cdk';
 import {BehaviorSubject, Subject} from 'rxjs';
 
 const SERIALIZED_SUFFIX = '$';
-
-export type TuiDocumentationPropertyType = 'input-output' | 'input' | 'output' | null;
 
 /**
  * @deprecated: use {@link TuiDocumentationPropertyType}
@@ -50,6 +52,12 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
     documentationPropertyDeprecated = false;
 
     @Input()
+    documentationPropertyDefaultValue?: T;
+
+    @Input()
+    documentationPropertyPreventUpdateApiHost = false;
+
+    @Input()
     documentationPropertyValues: readonly T[] | null = null;
 
     @Output()
@@ -66,23 +74,24 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         @Inject(UrlSerializer) private readonly urlSerializer: UrlSerializer,
         @Inject(TUI_DOC_URL_STATE_HANDLER)
         private readonly urlStateHandler: TuiStringHandler<UrlTree>,
+        @Inject(TuiApiHostService)
+        @Optional()
+        readonly apiHostService: TuiApiHostService | null,
     ) {}
+
+    @Input()
+    documentationPropertyApiValueTransformer: (value: T) => string = value =>
+        value !== undefined ? tuiInspectAny(value, 2) : '';
 
     ngOnInit(): void {
         this.parseParams(this.activatedRoute.snapshot.queryParams);
     }
 
     get attrName(): string {
-        switch (this.documentationPropertyMode) {
-            case 'input':
-                return `[${this.documentationPropertyName}]`;
-            case 'output':
-                return `(${this.documentationPropertyName})`;
-            case 'input-output':
-                return `[(${this.documentationPropertyName})]`;
-            default:
-                return this.documentationPropertyName;
-        }
+        return tuiGetAttrName(
+            this.documentationPropertyMode,
+            this.documentationPropertyName,
+        );
     }
 
     get hasItems(): boolean {
@@ -93,14 +102,33 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         return this.documentationPropertyMode !== 'output';
     }
 
-    ngOnChanges(): void {
+    ngOnChanges(changes: SimpleChanges): void {
         this.changed$.next();
+
+        if ('documentationPropertyName' in changes) {
+            const change = changes['documentationPropertyName'];
+
+            if (!change.firstChange) {
+                this.apiHostService?.deleteProperty(change.previousValue);
+            }
+        }
+
+        if ('documentationPropertyValue' in changes) {
+            const change = changes['documentationPropertyValue'];
+
+            if (change.firstChange && !('documentationPropertyDefaultValue' in changes)) {
+                this.documentationPropertyDefaultValue = change.currentValue;
+            }
+        }
+
+        this.#updateApiHostProperty();
     }
 
     onValueChange(value: T): void {
         this.documentationPropertyValue = value;
         this.documentationPropertyValueChange.emit(value);
         this.setQueryParam(value);
+        this.#updateApiHostProperty();
     }
 
     emitEvent(event: unknown): void {
@@ -139,15 +167,68 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
             isValueAvailableByKey && this.documentationPropertyValues
                 ? this.documentationPropertyValues.indexOf(value as T)
                 : value;
+        const computedDefaultValue =
+            isValueAvailableByKey &&
+            this.documentationPropertyValues &&
+            this.documentationPropertyDefaultValue !== undefined
+                ? this.documentationPropertyValues.indexOf(
+                      this.documentationPropertyDefaultValue,
+                  )
+                : this.documentationPropertyDefaultValue;
 
         const suffix = isValueAvailableByKey ? SERIALIZED_SUFFIX : '';
         const propName = this.documentationPropertyName + suffix;
 
-        tree.queryParams = {
-            ...tree.queryParams,
-            [propName]: computedValue,
-        };
+        if (computedDefaultValue === computedValue) {
+            delete tree.queryParams[propName];
+        } else {
+            tree.queryParams[propName] = computedValue;
+        }
 
         this.locationRef.go(this.urlStateHandler(tree));
+    }
+
+    #updateApiHostProperty(): void {
+        if (this.documentationPropertyPreventUpdateApiHost) {
+            return;
+        }
+
+        const {
+            documentationPropertyValue: value,
+            documentationPropertyDefaultValue: defaultValue,
+            documentationPropertyMode: mode,
+            documentationPropertyName: name,
+        } = this;
+
+        if (mode === 'input-output') {
+            this.apiHostService?.setProperty(name, {
+                type: mode,
+                value: name,
+            });
+
+            return;
+        }
+
+        if (mode === 'output') {
+            this.apiHostService?.setProperty(name, {
+                type: mode,
+                value: `on${name[0].toUpperCase()}${name.slice(1)}()`,
+            });
+
+            return;
+        }
+
+        const valueInspected = value !== undefined ? tuiInspectAny(value, 2) : '';
+        const defaultValueInspected =
+            defaultValue !== undefined ? tuiInspectAny(defaultValue, 2) : '';
+
+        if (valueInspected === defaultValueInspected) {
+            this.apiHostService?.deleteProperty(this.documentationPropertyName);
+        } else {
+            this.apiHostService?.setProperty(this.documentationPropertyName, {
+                type: this.documentationPropertyMode,
+                value: this.documentationPropertyApiValueTransformer(value),
+            });
+        }
     }
 }

@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 import {TuiContextWithImplicit, TuiDay, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -93,6 +93,21 @@ export class ExampleTuiLineDaysChartComponent {
     y = 0;
 
     height = 200;
+
+    readonly axesBaseProperties: Record<string, TuiDocumentationProperty> = {
+        horizontalLines: {
+            type: 'input',
+            value: '4',
+        },
+        verticalLines: {
+            type: 'input',
+            value: '3',
+        },
+        axisXLabels: {
+            type: 'input',
+            value: '(labels$ | async) || []',
+        },
+    };
 
     constructor(@Inject(TUI_MONTHS) readonly months$: Observable<readonly string[]>) {}
 }

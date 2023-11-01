@@ -1,7 +1,11 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample, tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
+import {
+    TuiDocExample,
+    tuiDocExcludeProperties,
+    TuiDocumentationProperty,
+} from '@taiga-ui/addon-doc';
 import {
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
@@ -16,6 +20,14 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
+
+const content = `Choose an account
+<tui-data-list-wrapper
+    *tuiDataList
+    tuiMultiSelectGroup
+    [disabledItemHandler]="disabledItemHandler"
+    [items]="items"
+></tui-data-list-wrapper>`;
 
 class Account {
     constructor(
@@ -180,6 +192,15 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
     ];
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];
+
+    readonly multiSelectBaseProperties: Record<string, TuiDocumentationProperty> = {
+        formControlName: {
+            type: null,
+            value: 'testValue',
+        },
+    };
+
+    readonly content = content;
 
     setValue(): void {
         this.control.setValue([new Account('Dollar', 237)]);

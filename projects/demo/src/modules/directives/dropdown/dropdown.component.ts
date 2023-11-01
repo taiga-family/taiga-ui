@@ -1,9 +1,26 @@
 import {Component, forwardRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 
 import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
+
+const content = `PRESS!
+<i>* There is also a pretty long text to check its width limitations</i>
+<ng-template #dropdownContent>
+    <div class="dropdown">
+        Here can be any content
+        <p>You can even insert other components:</p>
+        <button
+            tuiButton
+            type="button"
+        >
+            Do not touch!
+        </button>
+        <p>Everything you want... *</p>
+        <sub>* except cases of human rights violation</sub>
+    </div>
+</ng-template>`;
 
 @Component({
     selector: 'example-tui-dropdown',
@@ -43,6 +60,18 @@ export class ExampleTuiDropdownComponent extends AbstractExampleTuiDropdown {
     };
 
     open = false;
+
+    readonly dropdownBaseProperties: Record<string, TuiDocumentationProperty> = {
+        tuiButton: {
+            type: null,
+        },
+        tuiDropdown: {
+            type: 'input',
+            value: 'dropdownContent',
+        },
+    };
+
+    readonly content = content;
 
     onClick(): void {
         this.open = !this.open;

@@ -23,12 +23,17 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <tui-legend-item
+                documentationTemplateTagName="tui-legend-item"
                 [active]="active"
                 [color]="color"
                 [disabled]="disabled"
+                [documentationTemplateContent]="content"
                 [size]="size"
                 [text]="text"
             >
@@ -81,6 +86,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="value"
                 documentationPropertyType="string"
+                [documentationPropertyDefaultValue]="undefined"
                 [(documentationPropertyValue)]="text"
             >
                 Text inside

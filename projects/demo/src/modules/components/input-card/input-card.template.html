@@ -23,7 +23,10 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo [control]="control">
             <ng-template>
                 <form
@@ -31,10 +34,14 @@
                     [formGroup]="control"
                 >
                     <tui-input-card
+                        documentationTemplateContent="Card number"
+                        documentationTemplateTagName="tui-input-card"
                         formControlName="card"
                         class="control"
                         [autocompleteEnabled]="autocompleteEnabledCard"
                         [cardSrc]="cardSrc"
+                        [documentationTemplateApiHost]="inputCardDocumentationApiHost"
+                        [documentationTemplateBaseProperties]="inputCardBaseProperties"
                         [focusable]="focusable"
                         [pseudoActive]="pseudoPressed"
                         [pseudoFocus]="pseudoFocused"
@@ -52,9 +59,13 @@
                         Card number
                     </tui-input-card>
                     <tui-input-expire
+                        documentationTemplateContent="Expire date"
+                        documentationTemplateTagName="tui-input-expire"
                         formControlName="expire"
                         class="control"
                         [autocompleteEnabled]="autocompleteEnabledExpire"
+                        [documentationTemplateApiHost]="inputExpireDocumentationApiHost"
+                        [documentationTemplateBaseProperties]="inputExpireBaseProperties"
                         [focusable]="focusable"
                         [pseudoActive]="pseudoPressed"
                         [pseudoFocus]="pseudoFocused"
@@ -67,9 +78,13 @@
                         Expire date
                     </tui-input-expire>
                     <tui-input-cvc
+                        documentationTemplateContent="CVC/CVV"
+                        documentationTemplateTagName="tui-input-cvc"
                         formControlName="cvc"
                         class="control"
                         [autocompleteEnabled]="autocompleteEnabledCVC"
+                        [documentationTemplateApiHost]="inputCVCDocumentationApiHost"
+                        [documentationTemplateBaseProperties]="inputCVCBaseProperties"
                         [focusable]="focusable"
                         [length]="length"
                         [pseudoActive]="pseudoPressed"
@@ -86,8 +101,11 @@
                         CVC/CVV
                     </tui-input-cvc>
                     <tui-error
+                        documentationApiHost
+                        documentationTemplateTagName="tui-error"
                         formControlName="card"
                         class="error"
+                        [documentationTemplateBaseProperties]="errorBaseProperties"
                         [error]="[] | tuiFieldError | async"
                     ></tui-error>
                 </form>
@@ -104,11 +122,16 @@
             class="b-full-width"
             [closeOthers]="false"
         >
-            <tui-accordion-item [open]="true">
+            <tui-accordion-item
+                #inputCardDocumentationApiHost="documentationApiHost"
+                documentationApiHost
+                [open]="true"
+            >
                 TuiInputCardComponent
                 <ng-template tuiAccordionItemContent>
                     <tui-doc-documentation>
                         <ng-template
+                            documentationPropertyMode="input"
                             documentationPropertyName="disabled"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="disabledCard"
@@ -146,11 +169,16 @@
                 </ng-template>
             </tui-accordion-item>
 
-            <tui-accordion-item [open]="false">
+            <tui-accordion-item
+                #inputExpireDocumentationApiHost="documentationApiHost"
+                documentationApiHost
+                [open]="false"
+            >
                 TuiInputExpireComponent
                 <ng-template tuiAccordionItemContent>
                     <tui-doc-documentation>
                         <ng-template
+                            documentationPropertyMode="input"
                             documentationPropertyName="disabled"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="disabledExpire"
@@ -172,11 +200,16 @@
                 </ng-template>
             </tui-accordion-item>
 
-            <tui-accordion-item [open]="false">
+            <tui-accordion-item
+                #inputCVCDocumentationApiHost="documentationApiHost"
+                documentationApiHost
+                [open]="false"
+            >
                 TuiInputCVCComponent
                 <ng-template tuiAccordionItemContent>
                     <tui-doc-documentation>
                         <ng-template
+                            documentationPropertyMode="input"
                             documentationPropertyName="disabled"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="disabledCVC"

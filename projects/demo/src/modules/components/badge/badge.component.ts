@@ -68,4 +68,6 @@ export class ExampleTuiBadgeComponent {
     hoverable = false;
 
     withIcon = false;
+
+    readonly content = '<tui-svg src="tuiIconHelpCircle"></tui-svg>';
 }

@@ -122,7 +122,12 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        documentationTemplateContent="Choose a date"
+        documentationTemplateTagName="tui-input-date"
+        pageTab
+    >
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-date
@@ -154,6 +159,7 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"

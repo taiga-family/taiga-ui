@@ -50,7 +50,11 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        documentationTemplateTagName="tui-input-card-grouped"
+        pageTab
+    >
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-card-grouped
@@ -88,6 +92,7 @@
 
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"

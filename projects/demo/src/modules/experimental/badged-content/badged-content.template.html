@@ -45,12 +45,29 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
-            <tui-badged-content [style.--tui-radius]="radius">
-                <tui-badge-notification tuiSlot="top">1</tui-badge-notification>
+            <tui-badged-content
+                documentationTemplateTagName="tui-badged-content"
+                [style.--tui-radius]="radius"
+            >
+                <tui-badge-notification
+                    documentationApiHost
+                    documentationTemplateContent="1"
+                    documentationTemplateTagName="tui-badge-notification"
+                    tuiSlot="top"
+                    [documentationTemplateBaseProperties]="badgeNotificationBaseProperties"
+                >
+                    1
+                </tui-badge-notification>
                 <tui-avatar
+                    documentationApiHost
+                    documentationTemplateTagName="tui-avatar"
                     size="l"
+                    [documentationTemplateBaseProperties]="getAvatarBaseProperties()"
                     [round]="radius === '50%'"
                     [src]="
                         'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: 'tuiIconUserLarge' | async

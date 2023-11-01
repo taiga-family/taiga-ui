@@ -1,6 +1,6 @@
 import {Component, forwardRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 
 import {AbstractExampleTuiDropdown} from '../abstract/dropdown';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -63,6 +63,13 @@ export class ExampleTuiHostedDropdownComponent extends AbstractExampleTuiDropdow
     readonly contentVariants = ['Template', 'Custom string'];
 
     content = this.contentVariants[0];
+
+    readonly hostedDropdownBaseProperties: Record<string, TuiDocumentationProperty> = {
+        ngModel: {
+            type: 'input-output',
+            value: 'value',
+        },
+    };
 
     get template(): boolean {
         return this.content === 'Template';

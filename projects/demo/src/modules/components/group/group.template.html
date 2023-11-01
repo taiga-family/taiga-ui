@@ -74,7 +74,12 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        documentationTemplateTagName="div"
+        pageTab
+        [documentationTemplateBaseProperties]="groupBaseProperties"
+    >
         <tui-doc-demo>
             <div
                 tuiGroup
@@ -87,25 +92,37 @@
             >
                 <button
                     appearance="outline"
+                    documentationApiHost
+                    documentationTemplateContent="Button 1"
+                    documentationTemplateTagName="button"
                     size="l"
                     tuiButton
                     type="button"
+                    [documentationTemplateBaseProperties]="buttonBaseProperties"
                 >
                     Button 1
                 </button>
                 <button
                     appearance="outline"
+                    documentationApiHost
+                    documentationTemplateContent="Button 2"
+                    documentationTemplateTagName="button"
                     size="l"
                     tuiButton
                     type="button"
+                    [documentationTemplateBaseProperties]="buttonBaseProperties"
                 >
                     Button 2
                 </button>
                 <button
                     appearance="outline"
+                    documentationApiHost
+                    documentationTemplateContent="Button 3"
+                    documentationTemplateTagName="button"
                     size="l"
                     tuiButton
                     type="button"
+                    [documentationTemplateBaseProperties]="buttonBaseProperties"
                 >
                     Button 3
                 </button>

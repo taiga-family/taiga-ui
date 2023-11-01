@@ -30,9 +30,14 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <tui-push
+                documentationTemplateTagName="tui-push"
+                [documentationTemplateContent]="content"
                 [heading]="heading"
                 [timestamp]="timestamp"
                 [type]="type"

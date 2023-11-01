@@ -77,9 +77,13 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <tui-money
+                documentationTemplateTagName="tui-money"
                 [colored]="colored"
                 [currency]="currency"
                 [currencyAlign]="currencyAlign"

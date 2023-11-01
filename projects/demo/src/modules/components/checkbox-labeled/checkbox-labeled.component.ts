@@ -1,7 +1,7 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 import {TuiSizeL} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -43,6 +43,13 @@ export class ExampleTuiCheckboxLabeledComponent extends AbstractExampleTuiContro
         testValue2: new FormControl(),
         testValue3: new FormControl(true),
     });
+
+    readonly checkboxBaseProperties: Record<string, TuiDocumentationProperty> = {
+        formControlName: {
+            type: null,
+            value: 'testValue',
+        },
+    };
 
     constructor() {
         super();

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 import {TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
 
@@ -79,4 +79,15 @@ export class ExampleTuiLineChartComponent {
     filled = false;
 
     dots = false;
+
+    readonly axesBaseProperties: Record<string, TuiDocumentationProperty> = {
+        horizontalLines: {
+            type: 'input',
+            value: '2',
+        },
+        verticalLines: {
+            type: 'input',
+            value: '4',
+        },
+    };
 }

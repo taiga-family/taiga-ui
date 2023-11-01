@@ -61,12 +61,17 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <p>
                 <tui-badge
                     *ngIf="contentType === 'with icon'"
+                    documentationTemplateTagName="tui-badge"
                     [appearance]="appearance"
+                    [documentationTemplateContent]="iconBadgeContent"
                     [hoverable]="hoverable"
                     [size]="size"
                 >
@@ -76,6 +81,8 @@
 
                 <tui-badge
                     *ngIf="contentType === 'text'"
+                    documentationTemplateContent="Taiga UI"
+                    documentationTemplateTagName="tui-badge"
                     [appearance]="appearance"
                     [hoverable]="hoverable"
                     [size]="size"
@@ -85,7 +92,9 @@
 
                 <tui-badge
                     *ngIf="contentType === 'image'"
+                    documentationTemplateTagName="tui-badge"
                     [appearance]="appearance"
+                    [documentationTemplateContent]="imageBadgeContent"
                     [hoverable]="hoverable"
                     [size]="size"
                 >

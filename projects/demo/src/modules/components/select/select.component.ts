@@ -1,13 +1,23 @@
 import {Component, forwardRef, ViewChild} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample, tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
+import {
+    TuiDocExample,
+    tuiDocExcludeProperties,
+    TuiDocumentationProperty,
+} from '@taiga-ui/addon-doc';
 import {ALWAYS_FALSE_HANDLER, TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {TuiValueContentContext} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
+
+const content = `Choose an account
+<tui-data-list-wrapper
+    *tuiDataList
+    [items]="items"
+></tui-data-list-wrapper>`;
 
 class Account {
     constructor(
@@ -138,6 +148,15 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
         ALWAYS_FALSE_HANDLER,
         (item: Account) => item.balance < 300,
     ];
+
+    readonly selectBaseProperties: Record<string, TuiDocumentationProperty> = {
+        formControlName: {
+            type: null,
+            value: 'testValue',
+        },
+    };
+
+    readonly content = content;
 
     get valueContent(): PolymorpheusContent<TuiValueContentContext<Account>> {
         return this.valueTemplateRef && this.selectedValueTemplate

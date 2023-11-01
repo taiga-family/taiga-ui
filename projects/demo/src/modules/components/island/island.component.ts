@@ -3,6 +3,26 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
+const content = `<div class="tui-island__content">
+    <figure class="tui-island__figure">
+        <div class="some-figure"></div>
+    </figure>
+    <div>
+        <h3 class="tui-island__title">Some heading</h3>
+        <p class="tui-island__paragraph">Some information</p>
+        <p class="tui-island__paragraph tui-island__paragraph_button">
+            <button
+                appearance="secondary"
+                tuiButton
+                type="button"
+                [size]="size"
+            >
+                Button
+            </button>
+        </p>
+    </div>
+</div>`;
+
 @Component({
     selector: 'example-island',
     templateUrl: './island.template.html',
@@ -40,4 +60,6 @@ export class ExampleTuiIslandComponent {
     readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
     size: TuiSizeL | TuiSizeS = this.sizeVariants[0];
+
+    readonly content = content;
 }

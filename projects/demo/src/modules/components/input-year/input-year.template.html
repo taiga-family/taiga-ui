@@ -30,10 +30,15 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-year
+                    documentationTemplateContent="Year"
+                    documentationTemplateTagName="tui-input-year"
                     [disabledItemHandler]="disabledItemHandler"
                     [focusable]="focusable"
                     [formControl]="control"
@@ -59,6 +64,7 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"

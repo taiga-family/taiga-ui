@@ -56,14 +56,21 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <tui-axes
+                documentationTemplateTagName="tui-axes"
                 class="axes"
+                [documentationTemplateBaseProperties]="axesBaseProperties"
                 [horizontalLines]="2"
                 [verticalLines]="4"
             >
                 <tui-line-chart
+                    documentationTemplateTagName="tui-line-chart"
+                    [documentationTemplateApiHost]="lineChartApiHost"
                     [dots]="dots"
                     [filled]="filled"
                     [height]="height"
@@ -77,7 +84,10 @@
                 ></tui-line-chart>
             </tui-axes>
         </tui-doc-demo>
-        <tui-doc-documentation>
+        <tui-doc-documentation
+            #lineChartApiHost="documentationApiHost"
+            documentationApiHost
+        >
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="dots"
@@ -98,6 +108,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="height"
                 documentationPropertyType="number"
+                [documentationPropertyDefaultValue]="undefined"
                 [(documentationPropertyValue)]="height"
             >
                 Axis Y range, pixel scale is 1:1
@@ -114,6 +125,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="width"
                 documentationPropertyType="number"
+                [documentationPropertyDefaultValue]="undefined"
                 [(documentationPropertyValue)]="width"
             >
                 Axis X range, pixel scale is 1:1
@@ -138,6 +150,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="value"
                 documentationPropertyType="TuiPoint[]"
+                [documentationPropertyDefaultValue]="undefined"
             >
                 Array of data
             </ng-template>

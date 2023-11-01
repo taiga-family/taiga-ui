@@ -90,10 +90,15 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <tui-island
+                documentationTemplateTagName="tui-island"
                 class="island"
+                [documentationTemplateContent]="content"
                 [hoverable]="hoverable"
                 [size]="size"
                 [textAlign]="textAlign"

@@ -32,7 +32,11 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo>
+        <tui-doc-demo
+            #badgedContentDocumentationApiHost="documentationApiHost"
+            documentationApiHost
+            documentationTemplateTagName="tui-badged-content"
+        >
             <tui-badged-content
                 [colorBottom]="colorBottom"
                 [colorTop]="colorTop"
@@ -42,8 +46,12 @@
                 [size]="size"
             >
                 <tui-avatar
+                    #avatarDocumentationApiHost="documentationApiHost"
+                    documentationApiHost
+                    documentationTemplateTagName="tui-avatar"
                     new
                     text="daenerys targaryen"
+                    [documentationTemplateBaseProperties]="avatarBaseProperties"
                     [rounded]="rounded"
                     [size]="size"
                 ></tui-avatar>
@@ -63,6 +71,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="contentBottom"
                 documentationPropertyType="PolymorpheusContent"
+                [bindDocumentationTemplates]="[badgedContentDocumentationApiHost]"
                 [documentationPropertyValues]="contentVariants"
                 [(documentationPropertyValue)]="contentBottom"
             >
@@ -74,6 +83,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="contentTop"
                 documentationPropertyType="PolymorpheusContent"
+                [bindDocumentationTemplates]="[badgedContentDocumentationApiHost]"
                 [documentationPropertyValues]="contentVariants"
                 [(documentationPropertyValue)]="contentTop"
             >
@@ -85,6 +95,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="colorBottom"
                 documentationPropertyType="string"
+                [bindDocumentationTemplates]="[badgedContentDocumentationApiHost]"
                 [(documentationPropertyValue)]="colorBottom"
             >
                 Bottom right content color. If there is no content, shows a small circle of this color.
@@ -93,6 +104,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="colorTop"
                 documentationPropertyType="string"
+                [bindDocumentationTemplates]="[badgedContentDocumentationApiHost]"
                 [(documentationPropertyValue)]="colorTop"
             >
                 Top right content color. If there is no content, shows a small circle of this color.
@@ -101,6 +113,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="size"
                 documentationPropertyType="TuiSizeXS | TuiSizeXXL"
+                [bindDocumentationTemplates]="[badgedContentDocumentationApiHost, avatarDocumentationApiHost]"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
@@ -110,6 +123,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="rounded"
                 documentationPropertyType="boolean"
+                [bindDocumentationTemplates]="[badgedContentDocumentationApiHost, avatarDocumentationApiHost]"
                 [(documentationPropertyValue)]="rounded"
             >
                 Rounded mode

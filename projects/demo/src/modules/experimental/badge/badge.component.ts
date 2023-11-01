@@ -4,6 +4,14 @@ import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit';
 
+const iconBadgeContent = `<tui-svg src="tuiIconCheck"></tui-svg>
+<div tuiFade>Taiga UI</div>`;
+
+const imageBadgeContent = `<img
+    alt="market"
+    src="assets/images/avatar.jpg"
+/>`;
+
 @Component({
     selector: 'example-badge',
     templateUrl: './badge.template.html',
@@ -75,4 +83,8 @@ export class ExampleTuiBadgeComponent {
 
     contentTypeVariants = ['text', 'with icon', 'image'];
     contentType = this.contentTypeVariants[0];
+
+    readonly iconBadgeContent = iconBadgeContent;
+
+    readonly imageBadgeContent = imageBadgeContent;
 }

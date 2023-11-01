@@ -39,11 +39,17 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <ng-container *ngIf="!pseudo; else pseudoLink">
                 <a
+                    documentationTemplateContent="Link example"
+                    documentationTemplateTagName="a"
                     tuiLink
+                    [documentationTemplateBaseProperties]="aBaseProperties"
                     [icon]="icon"
                     [iconAlign]="iconAlign"
                     [iconRotated]="iconRotated"
@@ -55,8 +61,11 @@
             </ng-container>
             <ng-template #pseudoLink>
                 <button
+                    documentationTemplateContent="It is a pseudo-link because it is actually a button"
+                    documentationTemplateTagName="button"
                     tuiLink
                     type="button"
+                    [documentationTemplateBaseProperties]="buttonBaseProperties"
                     [icon]="icon"
                     [iconAlign]="iconAlign"
                     [iconRotated]="iconRotated"
@@ -125,7 +134,7 @@
         </tui-doc-documentation>
         <tui-doc-documentation heading="CSS customization">
             <ng-template
-                documentationPropertyName="--tui-link-icon-size"
+                documentationPropertyName="[style.--tui-link-icon-size]"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="size"
             >

@@ -15,7 +15,13 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        documentationTemplateContent="It is followed inside the block"
+        documentationTemplateTagName="div"
+        pageTab
+        [documentationTemplateBaseProperties]="hintBaseProperties"
+    >
         <tui-doc-demo>
             <div
                 tuiHint="Some information"

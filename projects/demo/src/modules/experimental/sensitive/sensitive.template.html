@@ -32,15 +32,25 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
-            <span [tuiSensitive]="sensitive">Confidential information</span>
+            <span
+                documentationTemplateContent="Confidential information"
+                documentationTemplateTagName="span"
+                [tuiSensitive]="sensitive"
+            >
+                Confidential information
+            </span>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="tuiSensitive"
                 documentationPropertyType="boolean"
+                [documentationPropertyDefaultValue]="undefined"
                 [(documentationPropertyValue)]="sensitive"
             >
                 Sensitive mode

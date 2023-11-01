@@ -15,7 +15,12 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        documentationTemplateTagName="input"
+        pageTab
+        [documentationTemplateBaseProperties]="hintBaseProperties"
+    >
         <tui-doc-demo>
             <input
                 placeholder="My id is 'qwerty'"

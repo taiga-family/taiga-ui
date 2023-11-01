@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 import {TuiHorizontalDirection} from '@taiga-ui/core';
 
 @Component({
@@ -48,4 +48,20 @@ export class ExampleTuiLinkComponent {
     iconAlign: TuiHorizontalDirection = this.iconAlignValues[0];
 
     size = '1.5rem';
+
+    readonly aBaseProperties: Record<string, TuiDocumentationProperty> = {
+        tuiLink: {
+            type: null,
+        },
+    };
+
+    readonly buttonBaseProperties: Record<string, TuiDocumentationProperty> = {
+        tuiLink: {
+            type: null,
+        },
+        type: {
+            type: null,
+            value: 'button',
+        },
+    };
 }

@@ -31,9 +31,18 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
-            <label [tuiLabel]="getLabel(template)">Content inside label</label>
+            <label
+                documentationTemplateContent="Content inside label"
+                documentationTemplateTagName="label"
+                [tuiLabel]="getLabel(template)"
+            >
+                Content inside label
+            </label>
         </tui-doc-demo>
         <ng-template #template>
             Label is a template
@@ -42,8 +51,9 @@
         <tui-doc-documentation>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="label"
+                documentationPropertyName="tuiLabel"
                 documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="labelVariants"
                 [(documentationPropertyValue)]="label"
             >

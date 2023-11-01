@@ -125,10 +125,15 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-date-range
+                    documentationTemplateContent="Choose dates"
+                    documentationTemplateTagName="tui-input-date-range"
                     class="b-demo-control"
                     [defaultViewedMonth]="defaultViewedMonth"
                     [disabledItemHandler]="disabledItemHandler"
@@ -159,6 +164,7 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"

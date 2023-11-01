@@ -10,12 +10,14 @@ import {
     Inject,
     Input,
     OnInit,
+    Optional,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
 import {AbstractControl, FormGroup} from '@angular/forms';
 import {Params, UrlSerializer, UrlTree} from '@angular/router';
 import {TuiDemoParams} from '@taiga-ui/addon-doc/interfaces';
+import {TuiApiHostService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
 import {
@@ -92,7 +94,14 @@ export class TuiDocDemoComponent implements OnInit {
         @Inject(TUI_DOC_DEMO_TEXTS) readonly texts: [string, string, string],
         @Inject(TUI_DOC_URL_STATE_HANDLER)
         private readonly urlStateHandler: TuiStringHandler<UrlTree>,
+        @Inject(TuiApiHostService)
+        @Optional()
+        private readonly apiHostService: TuiApiHostService | null,
     ) {}
+
+    get canCopyCode(): boolean {
+        return this.apiHostService !== null;
+    }
 
     @HostListener('window:resize')
     onResize(): void {
@@ -145,6 +154,10 @@ export class TuiDocDemoComponent implements OnInit {
         this.resizer.nativeElement.textContent = String(clamped || '-');
         this.resizeable.nativeElement.style.width = validated ? tuiPx(safe) : '';
         this.sandboxWidth = validated;
+    }
+
+    copy(): void {
+        void this.apiHostService?.copyToClipboard();
     }
 
     private get delta(): number {

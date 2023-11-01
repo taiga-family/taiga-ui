@@ -8,6 +8,13 @@ import {TuiFileLike, TuiInputFilesOptions} from '@taiga-ui/kit';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
+const content = `<input
+    tuiInputFiles
+    [accept]="accept"
+    [attr.capture]="capture"
+    [multiple]="multiple"
+/>`;
+
 @Component({
     selector: 'example-tui-input-files',
     templateUrl: './input-files.template.html',
@@ -80,6 +87,8 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
     override size = this.sizeVariants[0];
     rejectedFiles: TuiFileLike[] = [];
     maxFileSize = this.maxFileSizeVariants[2];
+
+    readonly content = content;
 
     removeFile(file: TuiFileLike): void {
         this.control.setValue(

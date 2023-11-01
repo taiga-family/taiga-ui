@@ -48,9 +48,13 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <tui-bar-set
+                documentationTemplateTagName="tui-bar-set"
                 class="bars"
                 [collapsed]="collapsed"
                 [size]="size"
@@ -81,6 +85,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="value"
                 documentationPropertyType="readonly number[]"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"
             >

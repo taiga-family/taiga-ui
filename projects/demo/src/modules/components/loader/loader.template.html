@@ -37,10 +37,15 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <div class="example">
                 <tui-loader
+                    documentationTemplateTagName="tui-loader"
+                    [documentationTemplateContent]="content"
                     [inheritColor]="inheritColor"
                     [overlay]="overlay"
                     [showLoader]="showLoader"

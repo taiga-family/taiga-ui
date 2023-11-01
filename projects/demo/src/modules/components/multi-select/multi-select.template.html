@@ -115,11 +115,17 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-multi-select
+                    documentationTemplateTagName="tui-multi-select"
                     [disabledItemHandler]="disabledItemHandler"
+                    [documentationTemplateBaseProperties]="multiSelectBaseProperties"
+                    [documentationTemplateContent]="content"
                     [editable]="editable"
                     [expandable]="expandable"
                     [focusable]="focusable"
@@ -181,6 +187,7 @@
 
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"

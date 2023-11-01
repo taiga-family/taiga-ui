@@ -146,10 +146,15 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-number
+                    documentationTemplateContent="Type a sum"
+                    documentationTemplateTagName="tui-input-number"
                     [decimal]="decimal"
                     [focusable]="focusable"
                     [formControl]="control"
@@ -183,6 +188,7 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"

@@ -91,10 +91,15 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-combo-box
+                    documentationTemplateTagName="tui-combo-box"
+                    [documentationTemplateBaseProperties]="comboBoxBaseProperties"
                     [focusable]="focusable"
                     [formControl]="control"
                     [identityMatcher]="identityMatcher"

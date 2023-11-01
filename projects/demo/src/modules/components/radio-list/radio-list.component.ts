@@ -1,7 +1,7 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 import {
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
@@ -77,4 +77,11 @@ export class ExampleTuiRadioListComponent extends AbstractExampleTuiControl {
     disabledItemHandler = this.disabledItemHandlerVariants[0];
 
     control = new FormControl(this.items[0]);
+
+    readonly radioBaseProperties: Record<string, TuiDocumentationProperty> = {
+        formControlName: {
+            type: null,
+            value: 'testValue',
+        },
+    };
 }
