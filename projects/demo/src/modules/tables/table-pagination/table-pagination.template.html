@@ -46,9 +46,13 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <tui-table-pagination
+                documentationTemplateTagName="tui-table-pagination"
                 [items]="items"
                 [total]="total"
                 [(page)]="page"

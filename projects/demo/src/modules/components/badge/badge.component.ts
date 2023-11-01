@@ -66,4 +66,6 @@ export class ExampleTuiBadgeComponent {
     contentType = this.contentTypeVariants[0];
 
     dot = false;
+
+    readonly content = '<tui-svg src="tuiIconHelpCircle"></tui-svg>';
 }

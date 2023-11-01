@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 
 @Component({
     selector: 'example-tui-media',
@@ -34,4 +34,17 @@ export class ExampleTuiMediaComponent {
     currentTime = 0;
     volume = this.volumeVariants[0];
     paused = true;
+
+    readonly audioBaseProperties: Record<string, TuiDocumentationProperty> = {
+        controls: {
+            type: null,
+        },
+        tuiMedia: {
+            type: null,
+        },
+        src: {
+            type: null,
+            value: 'assets/media/strays.mp3',
+        },
+    };
 }

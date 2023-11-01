@@ -1,0 +1,1599 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TuiApiHostService code rendering with tagName "button"; with input base property; with html content; with additional input property; should render correct code 1`] = `
+"<button [foo]="bar" [prop]="prop">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with input base property; with html content; with no additional properties; should render correct code 1`] = `
+"<button [prop]="prop">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with input base property; with html content; with overridden base property; should render correct code 1`] = `
+"<button prop>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with input base property; with no content; with additional input property; should render correct code 1`] = `"<button [foo]="bar" [prop]="prop"></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with input base property; with no content; with no additional properties; should render correct code 1`] = `"<button [prop]="prop"></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with input base property; with no content; with overridden base property; should render correct code 1`] = `"<button prop></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with input base property; with text content; with additional input property; should render correct code 1`] = `
+"<button [foo]="bar" [prop]="prop">
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with input base property; with text content; with no additional properties; should render correct code 1`] = `
+"<button [prop]="prop">
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with input base property; with text content; with overridden base property; should render correct code 1`] = `
+"<button prop>
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with multiple base property; with html content; with additional input property; should render correct code 1`] = `
+"<button
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [foo]="bar"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with multiple base property; with html content; with no additional properties; should render correct code 1`] = `
+"<button
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with multiple base property; with html content; with overridden base property; should render correct code 1`] = `
+"<button
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    prop
+    propA
+    propB
+>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with multiple base property; with no content; with additional input property; should render correct code 1`] = `
+"<button
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [foo]="bar"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+></button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with multiple base property; with no content; with no additional properties; should render correct code 1`] = `
+"<button
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+></button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with multiple base property; with no content; with overridden base property; should render correct code 1`] = `
+"<button
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    prop
+    propA
+    propB
+></button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with multiple base property; with text content; with additional input property; should render correct code 1`] = `
+"<button
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [foo]="bar"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+>
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with multiple base property; with text content; with no additional properties; should render correct code 1`] = `
+"<button
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+>
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with multiple base property; with text content; with overridden base property; should render correct code 1`] = `
+"<button
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    prop
+    propA
+    propB
+>
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with no baseProperties; with html content; with additional input property; should render correct code 1`] = `
+"<button [foo]="bar">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with no baseProperties; with html content; with no additional properties; should render correct code 1`] = `
+"<button>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with no baseProperties; with html content; with overridden base property; should render correct code 1`] = `
+"<button prop>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with no baseProperties; with no content; with additional input property; should render correct code 1`] = `"<button [foo]="bar"></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with no baseProperties; with no content; with no additional properties; should render correct code 1`] = `"<button></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with no baseProperties; with no content; with overridden base property; should render correct code 1`] = `"<button prop></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with no baseProperties; with text content; with additional input property; should render correct code 1`] = `
+"<button [foo]="bar">
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with no baseProperties; with text content; with no additional properties; should render correct code 1`] = `
+"<button>
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with no baseProperties; with text content; with overridden base property; should render correct code 1`] = `
+"<button prop>
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with null base property with value; with html content; with additional input property; should render correct code 1`] = `
+"<button [foo]="bar" prop="'123'">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with null base property with value; with html content; with no additional properties; should render correct code 1`] = `
+"<button prop="'123'">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with null base property with value; with html content; with overridden base property; should render correct code 1`] = `
+"<button prop>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with null base property with value; with no content; with additional input property; should render correct code 1`] = `"<button [foo]="bar" prop="'123'"></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with null base property with value; with no content; with no additional properties; should render correct code 1`] = `"<button prop="'123'"></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with null base property with value; with no content; with overridden base property; should render correct code 1`] = `"<button prop></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with null base property with value; with text content; with additional input property; should render correct code 1`] = `
+"<button [foo]="bar" prop="'123'">
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with null base property with value; with text content; with no additional properties; should render correct code 1`] = `
+"<button prop="'123'">
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with null base property with value; with text content; with overridden base property; should render correct code 1`] = `
+"<button prop>
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with null base property without value; with html content; with additional input property; should render correct code 1`] = `
+"<button [foo]="bar" prop>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with null base property without value; with html content; with no additional properties; should render correct code 1`] = `
+"<button prop>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with null base property without value; with html content; with overridden base property; should render correct code 1`] = `
+"<button prop>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with null base property without value; with no content; with additional input property; should render correct code 1`] = `"<button [foo]="bar" prop></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with null base property without value; with no content; with no additional properties; should render correct code 1`] = `"<button prop></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with null base property without value; with no content; with overridden base property; should render correct code 1`] = `"<button prop></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with null base property without value; with text content; with additional input property; should render correct code 1`] = `
+"<button [foo]="bar" prop>
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with null base property without value; with text content; with no additional properties; should render correct code 1`] = `
+"<button prop>
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with null base property without value; with text content; with overridden base property; should render correct code 1`] = `
+"<button prop>
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with output base property; with html content; with additional input property; should render correct code 1`] = `
+"<button [foo]="bar" (prop)="onProp()">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with output base property; with html content; with no additional properties; should render correct code 1`] = `
+"<button (prop)="onProp()">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with output base property; with html content; with overridden base property; should render correct code 1`] = `
+"<button prop>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with output base property; with no content; with additional input property; should render correct code 1`] = `"<button [foo]="bar" (prop)="onProp()"></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with output base property; with no content; with no additional properties; should render correct code 1`] = `"<button (prop)="onProp()"></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with output base property; with no content; with overridden base property; should render correct code 1`] = `"<button prop></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with output base property; with text content; with additional input property; should render correct code 1`] = `
+"<button [foo]="bar" (prop)="onProp()">
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with output base property; with text content; with no additional properties; should render correct code 1`] = `
+"<button (prop)="onProp()">
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with output base property; with text content; with overridden base property; should render correct code 1`] = `
+"<button prop>
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with string input base property; with html content; with additional input property; should render correct code 1`] = `
+"<button [foo]="bar" prop="prop">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with string input base property; with html content; with no additional properties; should render correct code 1`] = `
+"<button prop="prop">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with string input base property; with html content; with overridden base property; should render correct code 1`] = `
+"<button prop>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with string input base property; with no content; with additional input property; should render correct code 1`] = `"<button [foo]="bar" prop="prop"></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with string input base property; with no content; with no additional properties; should render correct code 1`] = `"<button prop="prop"></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with string input base property; with no content; with overridden base property; should render correct code 1`] = `"<button prop></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with string input base property; with text content; with additional input property; should render correct code 1`] = `
+"<button [foo]="bar" prop="prop">
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with string input base property; with text content; with no additional properties; should render correct code 1`] = `
+"<button prop="prop">
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with string input base property; with text content; with overridden base property; should render correct code 1`] = `
+"<button prop>
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with two-way-binding base property; with html content; with additional input property; should render correct code 1`] = `
+"<button [(prop)]="prop" [foo]="bar">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with two-way-binding base property; with html content; with no additional properties; should render correct code 1`] = `
+"<button [(prop)]="prop">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with two-way-binding base property; with html content; with overridden base property; should render correct code 1`] = `
+"<button prop>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with two-way-binding base property; with no content; with additional input property; should render correct code 1`] = `"<button [(prop)]="prop" [foo]="bar"></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with two-way-binding base property; with no content; with no additional properties; should render correct code 1`] = `"<button [(prop)]="prop"></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with two-way-binding base property; with no content; with overridden base property; should render correct code 1`] = `"<button prop></button>"`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with two-way-binding base property; with text content; with additional input property; should render correct code 1`] = `
+"<button [(prop)]="prop" [foo]="bar">
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with two-way-binding base property; with text content; with no additional properties; should render correct code 1`] = `
+"<button [(prop)]="prop">
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "button"; with two-way-binding base property; with text content; with overridden base property; should render correct code 1`] = `
+"<button prop>
+    Hello world!
+</button>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with input base property; with html content; with additional input property; should render correct code 1`] = `
+"<div [foo]="bar" [prop]="prop">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with input base property; with html content; with no additional properties; should render correct code 1`] = `
+"<div [prop]="prop">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with input base property; with html content; with overridden base property; should render correct code 1`] = `
+"<div prop>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with input base property; with no content; with additional input property; should render correct code 1`] = `"<div [foo]="bar" [prop]="prop"></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with input base property; with no content; with no additional properties; should render correct code 1`] = `"<div [prop]="prop"></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with input base property; with no content; with overridden base property; should render correct code 1`] = `"<div prop></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with input base property; with text content; with additional input property; should render correct code 1`] = `
+"<div [foo]="bar" [prop]="prop">
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with input base property; with text content; with no additional properties; should render correct code 1`] = `
+"<div [prop]="prop">
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with input base property; with text content; with overridden base property; should render correct code 1`] = `
+"<div prop>
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with multiple base property; with html content; with additional input property; should render correct code 1`] = `
+"<div
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [foo]="bar"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with multiple base property; with html content; with no additional properties; should render correct code 1`] = `
+"<div
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with multiple base property; with html content; with overridden base property; should render correct code 1`] = `
+"<div
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    prop
+    propA
+    propB
+>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with multiple base property; with no content; with additional input property; should render correct code 1`] = `
+"<div
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [foo]="bar"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+></div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with multiple base property; with no content; with no additional properties; should render correct code 1`] = `
+"<div
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+></div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with multiple base property; with no content; with overridden base property; should render correct code 1`] = `
+"<div
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    prop
+    propA
+    propB
+></div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with multiple base property; with text content; with additional input property; should render correct code 1`] = `
+"<div
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [foo]="bar"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+>
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with multiple base property; with text content; with no additional properties; should render correct code 1`] = `
+"<div
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+>
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with multiple base property; with text content; with overridden base property; should render correct code 1`] = `
+"<div
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    prop
+    propA
+    propB
+>
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with no baseProperties; with html content; with additional input property; should render correct code 1`] = `
+"<div [foo]="bar">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with no baseProperties; with html content; with no additional properties; should render correct code 1`] = `
+"<div>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with no baseProperties; with html content; with overridden base property; should render correct code 1`] = `
+"<div prop>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with no baseProperties; with no content; with additional input property; should render correct code 1`] = `"<div [foo]="bar"></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with no baseProperties; with no content; with no additional properties; should render correct code 1`] = `"<div></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with no baseProperties; with no content; with overridden base property; should render correct code 1`] = `"<div prop></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with no baseProperties; with text content; with additional input property; should render correct code 1`] = `
+"<div [foo]="bar">
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with no baseProperties; with text content; with no additional properties; should render correct code 1`] = `
+"<div>
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with no baseProperties; with text content; with overridden base property; should render correct code 1`] = `
+"<div prop>
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with null base property with value; with html content; with additional input property; should render correct code 1`] = `
+"<div [foo]="bar" prop="'123'">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with null base property with value; with html content; with no additional properties; should render correct code 1`] = `
+"<div prop="'123'">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with null base property with value; with html content; with overridden base property; should render correct code 1`] = `
+"<div prop>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with null base property with value; with no content; with additional input property; should render correct code 1`] = `"<div [foo]="bar" prop="'123'"></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with null base property with value; with no content; with no additional properties; should render correct code 1`] = `"<div prop="'123'"></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with null base property with value; with no content; with overridden base property; should render correct code 1`] = `"<div prop></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with null base property with value; with text content; with additional input property; should render correct code 1`] = `
+"<div [foo]="bar" prop="'123'">
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with null base property with value; with text content; with no additional properties; should render correct code 1`] = `
+"<div prop="'123'">
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with null base property with value; with text content; with overridden base property; should render correct code 1`] = `
+"<div prop>
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with null base property without value; with html content; with additional input property; should render correct code 1`] = `
+"<div [foo]="bar" prop>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with null base property without value; with html content; with no additional properties; should render correct code 1`] = `
+"<div prop>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with null base property without value; with html content; with overridden base property; should render correct code 1`] = `
+"<div prop>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with null base property without value; with no content; with additional input property; should render correct code 1`] = `"<div [foo]="bar" prop></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with null base property without value; with no content; with no additional properties; should render correct code 1`] = `"<div prop></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with null base property without value; with no content; with overridden base property; should render correct code 1`] = `"<div prop></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with null base property without value; with text content; with additional input property; should render correct code 1`] = `
+"<div [foo]="bar" prop>
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with null base property without value; with text content; with no additional properties; should render correct code 1`] = `
+"<div prop>
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with null base property without value; with text content; with overridden base property; should render correct code 1`] = `
+"<div prop>
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with output base property; with html content; with additional input property; should render correct code 1`] = `
+"<div [foo]="bar" (prop)="onProp()">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with output base property; with html content; with no additional properties; should render correct code 1`] = `
+"<div (prop)="onProp()">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with output base property; with html content; with overridden base property; should render correct code 1`] = `
+"<div prop>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with output base property; with no content; with additional input property; should render correct code 1`] = `"<div [foo]="bar" (prop)="onProp()"></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with output base property; with no content; with no additional properties; should render correct code 1`] = `"<div (prop)="onProp()"></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with output base property; with no content; with overridden base property; should render correct code 1`] = `"<div prop></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with output base property; with text content; with additional input property; should render correct code 1`] = `
+"<div [foo]="bar" (prop)="onProp()">
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with output base property; with text content; with no additional properties; should render correct code 1`] = `
+"<div (prop)="onProp()">
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with output base property; with text content; with overridden base property; should render correct code 1`] = `
+"<div prop>
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with string input base property; with html content; with additional input property; should render correct code 1`] = `
+"<div [foo]="bar" prop="prop">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with string input base property; with html content; with no additional properties; should render correct code 1`] = `
+"<div prop="prop">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with string input base property; with html content; with overridden base property; should render correct code 1`] = `
+"<div prop>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with string input base property; with no content; with additional input property; should render correct code 1`] = `"<div [foo]="bar" prop="prop"></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with string input base property; with no content; with no additional properties; should render correct code 1`] = `"<div prop="prop"></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with string input base property; with no content; with overridden base property; should render correct code 1`] = `"<div prop></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with string input base property; with text content; with additional input property; should render correct code 1`] = `
+"<div [foo]="bar" prop="prop">
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with string input base property; with text content; with no additional properties; should render correct code 1`] = `
+"<div prop="prop">
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with string input base property; with text content; with overridden base property; should render correct code 1`] = `
+"<div prop>
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with two-way-binding base property; with html content; with additional input property; should render correct code 1`] = `
+"<div [(prop)]="prop" [foo]="bar">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with two-way-binding base property; with html content; with no additional properties; should render correct code 1`] = `
+"<div [(prop)]="prop">
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with two-way-binding base property; with html content; with overridden base property; should render correct code 1`] = `
+"<div prop>
+    <div class="test">
+        <p>Hello <b>World</b>!</p>
+    </div>
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with two-way-binding base property; with no content; with additional input property; should render correct code 1`] = `"<div [(prop)]="prop" [foo]="bar"></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with two-way-binding base property; with no content; with no additional properties; should render correct code 1`] = `"<div [(prop)]="prop"></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with two-way-binding base property; with no content; with overridden base property; should render correct code 1`] = `"<div prop></div>"`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with two-way-binding base property; with text content; with additional input property; should render correct code 1`] = `
+"<div [(prop)]="prop" [foo]="bar">
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with two-way-binding base property; with text content; with no additional properties; should render correct code 1`] = `
+"<div [(prop)]="prop">
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "div"; with two-way-binding base property; with text content; with overridden base property; should render correct code 1`] = `
+"<div prop>
+    Hello world!
+</div>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with input base property; with html content; with additional input property; should render correct code 1`] = `"<img [foo]="bar" [prop]="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with input base property; with html content; with no additional properties; should render correct code 1`] = `"<img [prop]="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with input base property; with html content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with input base property; with no content; with additional input property; should render correct code 1`] = `"<img [foo]="bar" [prop]="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with input base property; with no content; with no additional properties; should render correct code 1`] = `"<img [prop]="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with input base property; with no content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with input base property; with text content; with additional input property; should render correct code 1`] = `"<img [foo]="bar" [prop]="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with input base property; with text content; with no additional properties; should render correct code 1`] = `"<img [prop]="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with input base property; with text content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with multiple base property; with html content; with additional input property; should render correct code 1`] = `
+"<img
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [foo]="bar"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+/>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with multiple base property; with html content; with no additional properties; should render correct code 1`] = `
+"<img
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+/>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with multiple base property; with html content; with overridden base property; should render correct code 1`] = `
+"<img
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    prop
+    propA
+    propB
+/>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with multiple base property; with no content; with additional input property; should render correct code 1`] = `
+"<img
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [foo]="bar"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+/>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with multiple base property; with no content; with no additional properties; should render correct code 1`] = `
+"<img
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+/>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with multiple base property; with no content; with overridden base property; should render correct code 1`] = `
+"<img
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    prop
+    propA
+    propB
+/>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with multiple base property; with text content; with additional input property; should render correct code 1`] = `
+"<img
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [foo]="bar"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+/>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with multiple base property; with text content; with no additional properties; should render correct code 1`] = `
+"<img
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+/>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with multiple base property; with text content; with overridden base property; should render correct code 1`] = `
+"<img
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    prop
+    propA
+    propB
+/>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with no baseProperties; with html content; with additional input property; should render correct code 1`] = `"<img [foo]="bar"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with no baseProperties; with html content; with no additional properties; should render correct code 1`] = `"<img/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with no baseProperties; with html content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with no baseProperties; with no content; with additional input property; should render correct code 1`] = `"<img [foo]="bar"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with no baseProperties; with no content; with no additional properties; should render correct code 1`] = `"<img/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with no baseProperties; with no content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with no baseProperties; with text content; with additional input property; should render correct code 1`] = `"<img [foo]="bar"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with no baseProperties; with text content; with no additional properties; should render correct code 1`] = `"<img/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with no baseProperties; with text content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with null base property with value; with html content; with additional input property; should render correct code 1`] = `"<img [foo]="bar" prop="'123'"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with null base property with value; with html content; with no additional properties; should render correct code 1`] = `"<img prop="'123'"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with null base property with value; with html content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with null base property with value; with no content; with additional input property; should render correct code 1`] = `"<img [foo]="bar" prop="'123'"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with null base property with value; with no content; with no additional properties; should render correct code 1`] = `"<img prop="'123'"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with null base property with value; with no content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with null base property with value; with text content; with additional input property; should render correct code 1`] = `"<img [foo]="bar" prop="'123'"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with null base property with value; with text content; with no additional properties; should render correct code 1`] = `"<img prop="'123'"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with null base property with value; with text content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with null base property without value; with html content; with additional input property; should render correct code 1`] = `"<img [foo]="bar" prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with null base property without value; with html content; with no additional properties; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with null base property without value; with html content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with null base property without value; with no content; with additional input property; should render correct code 1`] = `"<img [foo]="bar" prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with null base property without value; with no content; with no additional properties; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with null base property without value; with no content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with null base property without value; with text content; with additional input property; should render correct code 1`] = `"<img [foo]="bar" prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with null base property without value; with text content; with no additional properties; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with null base property without value; with text content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with output base property; with html content; with additional input property; should render correct code 1`] = `"<img [foo]="bar" (prop)="onProp()"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with output base property; with html content; with no additional properties; should render correct code 1`] = `"<img (prop)="onProp()"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with output base property; with html content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with output base property; with no content; with additional input property; should render correct code 1`] = `"<img [foo]="bar" (prop)="onProp()"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with output base property; with no content; with no additional properties; should render correct code 1`] = `"<img (prop)="onProp()"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with output base property; with no content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with output base property; with text content; with additional input property; should render correct code 1`] = `"<img [foo]="bar" (prop)="onProp()"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with output base property; with text content; with no additional properties; should render correct code 1`] = `"<img (prop)="onProp()"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with output base property; with text content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with string input base property; with html content; with additional input property; should render correct code 1`] = `"<img [foo]="bar" prop="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with string input base property; with html content; with no additional properties; should render correct code 1`] = `"<img prop="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with string input base property; with html content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with string input base property; with no content; with additional input property; should render correct code 1`] = `"<img [foo]="bar" prop="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with string input base property; with no content; with no additional properties; should render correct code 1`] = `"<img prop="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with string input base property; with no content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with string input base property; with text content; with additional input property; should render correct code 1`] = `"<img [foo]="bar" prop="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with string input base property; with text content; with no additional properties; should render correct code 1`] = `"<img prop="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with string input base property; with text content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with two-way-binding base property; with html content; with additional input property; should render correct code 1`] = `"<img [(prop)]="prop" [foo]="bar"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with two-way-binding base property; with html content; with no additional properties; should render correct code 1`] = `"<img [(prop)]="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with two-way-binding base property; with html content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with two-way-binding base property; with no content; with additional input property; should render correct code 1`] = `"<img [(prop)]="prop" [foo]="bar"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with two-way-binding base property; with no content; with no additional properties; should render correct code 1`] = `"<img [(prop)]="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with two-way-binding base property; with no content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with two-way-binding base property; with text content; with additional input property; should render correct code 1`] = `"<img [(prop)]="prop" [foo]="bar"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with two-way-binding base property; with text content; with no additional properties; should render correct code 1`] = `"<img [(prop)]="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "img"; with two-way-binding base property; with text content; with overridden base property; should render correct code 1`] = `"<img prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with input base property; with html content; with additional input property; should render correct code 1`] = `"<input [foo]="bar" [prop]="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with input base property; with html content; with no additional properties; should render correct code 1`] = `"<input [prop]="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with input base property; with html content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with input base property; with no content; with additional input property; should render correct code 1`] = `"<input [foo]="bar" [prop]="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with input base property; with no content; with no additional properties; should render correct code 1`] = `"<input [prop]="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with input base property; with no content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with input base property; with text content; with additional input property; should render correct code 1`] = `"<input [foo]="bar" [prop]="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with input base property; with text content; with no additional properties; should render correct code 1`] = `"<input [prop]="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with input base property; with text content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with multiple base property; with html content; with additional input property; should render correct code 1`] = `
+"<input
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [foo]="bar"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+/>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with multiple base property; with html content; with no additional properties; should render correct code 1`] = `
+"<input
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+/>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with multiple base property; with html content; with overridden base property; should render correct code 1`] = `
+"<input
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    prop
+    propA
+    propB
+/>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with multiple base property; with no content; with additional input property; should render correct code 1`] = `
+"<input
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [foo]="bar"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+/>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with multiple base property; with no content; with no additional properties; should render correct code 1`] = `
+"<input
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+/>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with multiple base property; with no content; with overridden base property; should render correct code 1`] = `
+"<input
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    prop
+    propA
+    propB
+/>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with multiple base property; with text content; with additional input property; should render correct code 1`] = `
+"<input
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [foo]="bar"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+/>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with multiple base property; with text content; with no additional properties; should render correct code 1`] = `
+"<input
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    propA
+    propB
+/>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with multiple base property; with text content; with overridden base property; should render correct code 1`] = `
+"<input
+    [(propAT)]="prop"
+    [(propBT)]="prop"
+    [propAI]="prop"
+    [propBI]="prop"
+    (propAO)="onProp()"
+    (propBO)="onProp()"
+    propAIS="prop"
+    propAV="123"
+    propBIS="prop"
+    propBV="321"
+    prop
+    propA
+    propB
+/>"
+`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with no baseProperties; with html content; with additional input property; should render correct code 1`] = `"<input [foo]="bar"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with no baseProperties; with html content; with no additional properties; should render correct code 1`] = `"<input/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with no baseProperties; with html content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with no baseProperties; with no content; with additional input property; should render correct code 1`] = `"<input [foo]="bar"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with no baseProperties; with no content; with no additional properties; should render correct code 1`] = `"<input/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with no baseProperties; with no content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with no baseProperties; with text content; with additional input property; should render correct code 1`] = `"<input [foo]="bar"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with no baseProperties; with text content; with no additional properties; should render correct code 1`] = `"<input/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with no baseProperties; with text content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with null base property with value; with html content; with additional input property; should render correct code 1`] = `"<input [foo]="bar" prop="'123'"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with null base property with value; with html content; with no additional properties; should render correct code 1`] = `"<input prop="'123'"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with null base property with value; with html content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with null base property with value; with no content; with additional input property; should render correct code 1`] = `"<input [foo]="bar" prop="'123'"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with null base property with value; with no content; with no additional properties; should render correct code 1`] = `"<input prop="'123'"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with null base property with value; with no content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with null base property with value; with text content; with additional input property; should render correct code 1`] = `"<input [foo]="bar" prop="'123'"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with null base property with value; with text content; with no additional properties; should render correct code 1`] = `"<input prop="'123'"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with null base property with value; with text content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with null base property without value; with html content; with additional input property; should render correct code 1`] = `"<input [foo]="bar" prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with null base property without value; with html content; with no additional properties; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with null base property without value; with html content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with null base property without value; with no content; with additional input property; should render correct code 1`] = `"<input [foo]="bar" prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with null base property without value; with no content; with no additional properties; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with null base property without value; with no content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with null base property without value; with text content; with additional input property; should render correct code 1`] = `"<input [foo]="bar" prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with null base property without value; with text content; with no additional properties; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with null base property without value; with text content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with output base property; with html content; with additional input property; should render correct code 1`] = `"<input [foo]="bar" (prop)="onProp()"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with output base property; with html content; with no additional properties; should render correct code 1`] = `"<input (prop)="onProp()"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with output base property; with html content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with output base property; with no content; with additional input property; should render correct code 1`] = `"<input [foo]="bar" (prop)="onProp()"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with output base property; with no content; with no additional properties; should render correct code 1`] = `"<input (prop)="onProp()"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with output base property; with no content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with output base property; with text content; with additional input property; should render correct code 1`] = `"<input [foo]="bar" (prop)="onProp()"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with output base property; with text content; with no additional properties; should render correct code 1`] = `"<input (prop)="onProp()"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with output base property; with text content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with string input base property; with html content; with additional input property; should render correct code 1`] = `"<input [foo]="bar" prop="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with string input base property; with html content; with no additional properties; should render correct code 1`] = `"<input prop="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with string input base property; with html content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with string input base property; with no content; with additional input property; should render correct code 1`] = `"<input [foo]="bar" prop="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with string input base property; with no content; with no additional properties; should render correct code 1`] = `"<input prop="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with string input base property; with no content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with string input base property; with text content; with additional input property; should render correct code 1`] = `"<input [foo]="bar" prop="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with string input base property; with text content; with no additional properties; should render correct code 1`] = `"<input prop="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with string input base property; with text content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with two-way-binding base property; with html content; with additional input property; should render correct code 1`] = `"<input [(prop)]="prop" [foo]="bar"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with two-way-binding base property; with html content; with no additional properties; should render correct code 1`] = `"<input [(prop)]="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with two-way-binding base property; with html content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with two-way-binding base property; with no content; with additional input property; should render correct code 1`] = `"<input [(prop)]="prop" [foo]="bar"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with two-way-binding base property; with no content; with no additional properties; should render correct code 1`] = `"<input [(prop)]="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with two-way-binding base property; with no content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with two-way-binding base property; with text content; with additional input property; should render correct code 1`] = `"<input [(prop)]="prop" [foo]="bar"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with two-way-binding base property; with text content; with no additional properties; should render correct code 1`] = `"<input [(prop)]="prop"/>"`;
+
+exports[`TuiApiHostService code rendering with tagName "input"; with two-way-binding base property; with text content; with overridden base property; should render correct code 1`] = `"<input prop/>"`;
+
+exports[`TuiApiHostService should create with default parameters 1`] = `""`;

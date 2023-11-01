@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tuiRenderProperty with type input with value undefined, should render correct code 1`] = `undefined`;
+
+exports[`tuiRenderProperty with type input with value value, should render correct code 1`] = `"[name]="value""`;
+
+exports[`tuiRenderProperty with type input-output with value undefined, should render correct code 1`] = `undefined`;
+
+exports[`tuiRenderProperty with type input-output with value value, should render correct code 1`] = `"[(name)]="value""`;
+
+exports[`tuiRenderProperty with type null with value undefined, should render correct code 1`] = `"name"`;
+
+exports[`tuiRenderProperty with type null with value value, should render correct code 1`] = `"name="value""`;
+
+exports[`tuiRenderProperty with type output with value undefined, should render correct code 1`] = `undefined`;
+
+exports[`tuiRenderProperty with type output with value value, should render correct code 1`] = `"(name)="value""`;

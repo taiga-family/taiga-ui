@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 
 @Component({
@@ -76,4 +76,13 @@ export class ExampleProgressBarComponent {
 
     readonly exampleModule = import('./examples/import/import-module.md?raw');
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+
+    readonly progressBaseProperties: Record<string, TuiDocumentationProperty> = {
+        new: {
+            type: null,
+        },
+        tuiProgressBar: {
+            type: null,
+        },
+    };
 }

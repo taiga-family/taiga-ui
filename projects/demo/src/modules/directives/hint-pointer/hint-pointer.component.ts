@@ -1,6 +1,6 @@
 import {Component, forwardRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 
 import {AbstractExampleTuiHint} from '../../components/abstract/hint';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
@@ -27,4 +27,14 @@ export class ExampleTuiHintPointerComponent extends AbstractExampleTuiHint {
 
     showDelay = 0;
     hideDelay = 0;
+
+    readonly hintBaseProperties: Record<string, TuiDocumentationProperty> = {
+        tuiHint: {
+            type: null,
+            value: 'Some information',
+        },
+        tuiHintPointer: {
+            type: null,
+        },
+    };
 }

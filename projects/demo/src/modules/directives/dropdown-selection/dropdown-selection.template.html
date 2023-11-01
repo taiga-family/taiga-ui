@@ -26,7 +26,13 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        documentationTemplateTagName="p"
+        pageTab
+        [documentationTemplateBaseProperties]="dropdownBaseProperties"
+        [documentationTemplateContent]="content"
+    >
         <tui-doc-demo>
             <p
                 tuiDropdownSelection

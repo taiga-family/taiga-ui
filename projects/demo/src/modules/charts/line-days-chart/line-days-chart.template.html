@@ -24,15 +24,22 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <tui-axes
+                documentationTemplateTagName="tui-axes"
                 class="axes"
                 [axisXLabels]="(labels$ | async) || []"
+                [documentationTemplateBaseProperties]="axesBaseProperties"
                 [horizontalLines]="4"
                 [verticalLines]="3"
             >
                 <tui-line-days-chart
+                    documentationTemplateTagName="tui-line-days-chart"
+                    [documentationTemplateApiHost]="lineChartApiHost"
                     [dots]="dots"
                     [height]="height"
                     [hintContent]="hintContent"
@@ -44,7 +51,10 @@
                 ></tui-line-days-chart>
             </tui-axes>
         </tui-doc-demo>
-        <tui-doc-documentation>
+        <tui-doc-documentation
+            #lineChartApiHost="documentationApiHost"
+            documentationApiHost
+        >
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="dots"
@@ -69,6 +79,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="height"
                 documentationPropertyType="number"
+                [documentationPropertyDefaultValue]="undefined"
                 [(documentationPropertyValue)]="height"
             >
                 Axis Y range, pixel scale is 1:1
@@ -93,6 +104,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="value"
                 documentationPropertyType="[TuiDay, number][]"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"
             >

@@ -1,6 +1,6 @@
 import {Component, forwardRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 
 import {AbstractExampleTuiHint} from '../../components/abstract/hint';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
@@ -26,6 +26,24 @@ export class ExampleTuiHintManualComponent extends AbstractExampleTuiHint {
     };
 
     show = false;
+
+    readonly hintBaseProperties: Record<string, TuiDocumentationProperty> = {
+        tuiButton: {
+            type: null,
+        },
+        type: {
+            type: null,
+            value: 'button',
+        },
+        tuiHint: {
+            type: null,
+            value: 'It says "Hi all!" into console',
+        },
+        click: {
+            type: 'output',
+            value: 'sayHi()',
+        },
+    };
 
     sayHi(): void {
         console.info('Hi all!');

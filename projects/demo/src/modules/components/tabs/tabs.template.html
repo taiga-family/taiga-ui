@@ -95,9 +95,14 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <tui-tabs-with-more
+                documentationTemplateTagName="tui-tabs-with-more"
+                [documentationTemplateContent]="content"
                 [itemsLimit]="itemsLimit"
                 [moreContent]="moreContent"
                 [underline]="underline"
@@ -165,6 +170,7 @@
                 documentationPropertyMode="input-output"
                 documentationPropertyName="activeItemIndex"
                 documentationPropertyType="number"
+                [documentationPropertyDefaultValue]="undefined"
                 [(documentationPropertyValue)]="activeItemIndex"
             >
                 Active index item

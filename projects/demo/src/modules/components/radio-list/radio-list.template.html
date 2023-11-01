@@ -25,12 +25,17 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-radio-list
+                    documentationTemplateTagName="tui-radio-list"
                     class="tui-space_bottom-3"
                     [disabledItemHandler]="disabledItemHandler"
+                    [documentationTemplateBaseProperties]="radioBaseProperties"
                     [focusable]="focusable"
                     [formControl]="control"
                     [itemContent]="itemContent"
@@ -54,6 +59,7 @@
         </ng-template>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"

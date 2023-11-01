@@ -25,9 +25,19 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        documentationTemplateTagName=""
+        pageTab
+        [documentationTemplateContent]="selectedError === errorVariants[0] ? '' : errorTemplateContent"
+    >
         <tui-doc-demo>
-            <tui-error [error]="error"></tui-error>
+            <tui-error
+                #errorDocumentationApiHost="documentationApiHost"
+                documentationApiHost
+                documentationTemplateTagName="tui-error"
+                [error]="error"
+            ></tui-error>
         </tui-doc-demo>
 
         <ng-template #errorContent>
@@ -37,11 +47,13 @@
             </em>
         </ng-template>
 
-        <tui-doc-documentation>
+        <tui-doc-documentation [bindDocumentationTemplates]="[errorDocumentationApiHost]">
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="error"
                 documentationPropertyType="TuiValidationError | string | null"
+                [documentationPropertyApiValueTransformer]="valueTransformer"
+                [documentationPropertyDefaultValue]="''"
                 [documentationPropertyValues]="errorVariants"
                 [(documentationPropertyValue)]="selectedError"
             >

@@ -23,11 +23,16 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-rating
                     #rating
+                    documentationTemplateTagName="tui-rating"
+                    [documentationTemplateContent]="content"
                     [formControl]="control"
                     [iconFilled]="iconFilled"
                     [iconNormal]="iconNormal"

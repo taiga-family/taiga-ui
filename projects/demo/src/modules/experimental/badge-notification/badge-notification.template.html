@@ -32,9 +32,18 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
-            <tui-badge-notification [size]="size">11</tui-badge-notification>
+            <tui-badge-notification
+                documentationTemplateContent="11"
+                documentationTemplateTagName="tui-badge-notification"
+                [size]="size"
+            >
+                11
+            </tui-badge-notification>
         </tui-doc-demo>
         <label
             tuiLabel="Content type"

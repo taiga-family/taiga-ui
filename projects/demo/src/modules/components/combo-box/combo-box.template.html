@@ -114,10 +114,15 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-combo-box
+                    documentationTemplateTagName="tui-combo-box"
+                    [documentationTemplateBaseProperties]="comboBoxBaseProperties"
                     [focusable]="focusable"
                     [formControl]="control"
                     [identityMatcher]="identityMatcher"
@@ -187,6 +192,7 @@
 
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -219,6 +225,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="strict"
                 documentationPropertyType="boolean"
+                [documentationPropertyDefaultValue]="undefined"
                 [(documentationPropertyValue)]="strict"
             >
                 Value must only be an item of suggestions&nbsp;

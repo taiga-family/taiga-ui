@@ -1,6 +1,10 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
+import {
+    TuiDocExample,
+    TuiDocumentationProperty,
+    TuiRawLoaderContent,
+} from '@taiga-ui/addon-doc';
 import {TuiSafeHtml} from '@taiga-ui/cdk';
 import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 
@@ -92,4 +96,10 @@ export class ExampleTuiAvatarComponent {
     color = 'var(--tui-text-01)';
 
     background = 'var(--tui-secondary-active)';
+
+    readonly avatarBaseProperties: Record<string, TuiDocumentationProperty> = {
+        new: {
+            type: null,
+        },
+    };
 }

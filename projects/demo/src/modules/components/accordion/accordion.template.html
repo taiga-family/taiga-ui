@@ -51,15 +51,23 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo>
+        <tui-doc-demo
+            #accordionDocumentationApiHost="documentationApiHost"
+            documentationApiHost
+        >
             <tui-accordion
+                documentationTemplateTagName="tui-accordion"
                 [closeOthers]="closeOthers"
                 [rounded]="rounded"
             >
                 <tui-accordion-item
+                    #accordionFirstItemDocumentationApiHost="documentationApiHost"
+                    documentationApiHost
+                    documentationTemplateTagName="tui-accordion-item"
                     [borders]="borders"
                     [disabled]="disabled"
                     [disableHover]="disableHover"
+                    [documentationTemplateContent]="accordionFirstItemContent"
                     [noPadding]="noPadding"
                     [showArrow]="showArrow"
                     [size]="size"
@@ -71,10 +79,14 @@
                     </ng-template>
                 </tui-accordion-item>
                 <tui-accordion-item
+                    #accordionSecondItemDocumentationApiHost="documentationApiHost"
+                    documentationApiHost
+                    documentationTemplateTagName="tui-accordion-item"
                     [async]="async"
                     [borders]="borders"
                     [disabled]="disabled"
                     [disableHover]="disableHover"
+                    [documentationTemplateContent]="accordionSecondItemContent"
                     [noPadding]="noPadding"
                     [open]="open"
                     [showArrow]="showArrow"
@@ -96,7 +108,10 @@
             class="b-full-width"
             [closeOthers]="false"
         >
-            <tui-accordion-item [open]="true">
+            <tui-accordion-item
+                [bindDocumentationTemplates]="[accordionDocumentationApiHost]"
+                [open]="true"
+            >
                 TuiAccordionComponent
                 <ng-template tuiAccordionItemContent>
                     <tui-doc-documentation>
@@ -127,6 +142,7 @@
                             documentationPropertyMode="input"
                             documentationPropertyName="async"
                             documentationPropertyType="boolean"
+                            [bindDocumentationTemplates]="[accordionSecondItemDocumentationApiHost]"
                             [(documentationPropertyValue)]="async"
                         >
                             Waits for a custom event
@@ -137,6 +153,10 @@
                             documentationPropertyMode="input"
                             documentationPropertyName="borders"
                             documentationPropertyType="'all' | 'top-bottom' | null"
+                            [bindDocumentationTemplates]="[
+                                accordionFirstItemDocumentationApiHost,
+                                accordionSecondItemDocumentationApiHost
+                            ]"
                             [documentationPropertyValues]="bordersVariants"
                             [(documentationPropertyValue)]="borders"
                         >
@@ -146,6 +166,10 @@
                             documentationPropertyMode="input"
                             documentationPropertyName="disabled"
                             documentationPropertyType="boolean"
+                            [bindDocumentationTemplates]="[
+                                accordionFirstItemDocumentationApiHost,
+                                accordionSecondItemDocumentationApiHost
+                            ]"
                             [(documentationPropertyValue)]="disabled"
                         >
                             Disabled state for an item
@@ -154,6 +178,10 @@
                             documentationPropertyMode="input"
                             documentationPropertyName="noPadding"
                             documentationPropertyType="boolean"
+                            [bindDocumentationTemplates]="[
+                                accordionFirstItemDocumentationApiHost,
+                                accordionSecondItemDocumentationApiHost
+                            ]"
                             [(documentationPropertyValue)]="noPadding"
                         >
                             Removes default paddings
@@ -162,6 +190,10 @@
                             documentationPropertyMode="input"
                             documentationPropertyName="disableHover"
                             documentationPropertyType="boolean"
+                            [bindDocumentationTemplates]="[
+                                accordionFirstItemDocumentationApiHost,
+                                accordionSecondItemDocumentationApiHost
+                            ]"
                             [(documentationPropertyValue)]="disableHover"
                         >
                             Disabled header hover state
@@ -170,6 +202,7 @@
                             documentationPropertyMode="input-output"
                             documentationPropertyName="open"
                             documentationPropertyType="boolean"
+                            [bindDocumentationTemplates]="[accordionSecondItemDocumentationApiHost]"
                             [documentationPropertyValue]="open"
                             (documentationPropertyValueChange)="onOpenChange($event)"
                         >
@@ -179,6 +212,10 @@
                             documentationPropertyMode="input"
                             documentationPropertyName="size"
                             documentationPropertyType="TuiSizeS"
+                            [bindDocumentationTemplates]="[
+                                accordionFirstItemDocumentationApiHost,
+                                accordionSecondItemDocumentationApiHost
+                            ]"
                             [documentationPropertyValues]="sizeVariants"
                             [(documentationPropertyValue)]="size"
                         >
@@ -188,6 +225,10 @@
                             documentationPropertyMode="input"
                             documentationPropertyName="showArrow"
                             documentationPropertyType="boolean"
+                            [bindDocumentationTemplates]="[
+                                accordionFirstItemDocumentationApiHost,
+                                accordionSecondItemDocumentationApiHost
+                            ]"
                             [(documentationPropertyValue)]="showArrow"
                         >
                             Show / hide an arrow

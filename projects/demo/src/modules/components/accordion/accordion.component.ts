@@ -3,6 +3,20 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TUI_EXPAND_LOADED, TuiSizeS} from '@taiga-ui/core';
 
+const accordionFirstItemContent = `Taiga UI cdk
+<ng-template tuiAccordionItemContent>
+    Development kit consisting of the low level tools and abstractions used to develop Taiga UI
+    Angular entities
+</ng-template>`;
+
+const accordionSecondItemContent = `Taiga UI core
+<ng-template tuiAccordionItemContent>
+    <div #content>
+        Basic elements needed to develop components, directives and more using Taiga UI design
+        system
+    </div>
+</ng-template>`;
+
 @Component({
     selector: 'example-accordion',
     templateUrl: './accordion.template.html',
@@ -60,6 +74,10 @@ export class ExampleTuiAccordionComponent {
     readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
 
     size: TuiSizeS = this.sizeVariants[1];
+
+    readonly accordionFirstItemContent = accordionFirstItemContent;
+
+    readonly accordionSecondItemContent = accordionSecondItemContent;
 
     onOpenChange(open: boolean): void {
         this.open = open;

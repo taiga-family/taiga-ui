@@ -1,9 +1,13 @@
 import {Component, forwardRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 
 import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
+
+const content = `Right click on me to
+<strong>see a dropdown</strong>
+<ng-template #dropdownContent>Hello there!</ng-template>`;
 
 @Component({
     selector: 'example-dropdown-context',
@@ -37,4 +41,16 @@ export class ExampleTuiDropdownContextComponent extends AbstractExampleTuiDropdo
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
     };
+
+    readonly dropdownBaseProperties: Record<string, TuiDocumentationProperty> = {
+        tuiDropdownContext: {
+            type: null,
+        },
+        tuiDropdown: {
+            type: 'input',
+            value: 'dropdownContent',
+        },
+    };
+
+    readonly content = content;
 }

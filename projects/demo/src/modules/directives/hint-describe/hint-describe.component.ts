@@ -1,6 +1,6 @@
 import {Component, forwardRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 
 import {AbstractExampleTuiHint} from '../../components/abstract/hint';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
@@ -26,4 +26,19 @@ export class ExampleTuiHintDescribeComponent extends AbstractExampleTuiHint {
     };
 
     id = '';
+
+    readonly hintBaseProperties: Record<string, TuiDocumentationProperty> = {
+        placeholder: {
+            type: null,
+            value: 'My id is "qwerty"',
+        },
+        tuiHint: {
+            type: null,
+            value: 'I will be visible upon keyboard focus',
+        },
+        tuiHintDescribe: {
+            type: null,
+            value: 'qwerty',
+        },
+    };
 }

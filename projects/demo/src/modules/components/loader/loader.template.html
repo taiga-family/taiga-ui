@@ -37,10 +37,15 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <div class="example">
                 <tui-loader
+                    documentationTemplateTagName="tui-loader"
+                    [documentationTemplateContent]="content"
                     [inheritColor]="inheritColor"
                     [overlay]="overlay"
                     [showLoader]="showLoader"
@@ -55,9 +60,9 @@
                         <b>Rambo:</b>
                         Nothing is over! Nothing! You just don't turn it off! It wasn't my war! You asked me I didn't
                         ask you! And I did what I had to do to win, for somebody who wouldn't let us win! Then I come
-                        back to the world, and I see all those maggots at the airport, protestin' me, spittin', callin'
+                        back to the world, and I see all those maggots at the airport, protesting me, spitting, calling
                         me a baby killer and all kinds of vile crap! Who are they to protest me?! Huh?! Who are they?!
-                        Unless they been me and been there and know what the hell they yellin' about!
+                        Unless they been me and been there and know what the hell they yelling about!
                     </div>
                 </tui-loader>
                 <ng-template #textTemplate>

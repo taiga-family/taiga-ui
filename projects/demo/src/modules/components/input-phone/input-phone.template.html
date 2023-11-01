@@ -42,10 +42,15 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-phone
+                    documentationTemplateContent="Type a phone number"
+                    documentationTemplateTagName="tui-input-phone"
                     [countryCode]="countryCode"
                     [focusable]="focusable"
                     [formControl]="control"
@@ -81,6 +86,7 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -93,6 +99,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="countryCode"
                 documentationPropertyType="string"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="countryCodes"
                 [(documentationPropertyValue)]="countryCode"
             >
@@ -102,6 +109,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="phoneMaskAfterCountryCode"
                 documentationPropertyType="string"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="phoneMasksAfterCountryCode"
                 [(documentationPropertyValue)]="phoneMaskAfterCountryCode"
             >

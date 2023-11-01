@@ -39,7 +39,12 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        documentationTemplateTagName="tui-radio"
+        pageTab
+        [documentationTemplateBaseProperties]="radioBaseProperties"
+    >
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-radio
@@ -96,6 +101,7 @@
         </button>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"

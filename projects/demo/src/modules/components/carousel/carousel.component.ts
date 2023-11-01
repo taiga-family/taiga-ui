@@ -2,6 +2,23 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 
+const carouselContent = `<ng-container *tuiRepeatTimes="let item of 9">
+    <div
+        *tuiItem
+        class="plate"
+    >
+        {{ item }}
+        <button
+            size="s"
+            tuiButton
+            type="button"
+            class="button"
+        >
+            I'm focusable
+        </button>
+    </div>
+</ng-container>`;
+
 @Component({
     selector: 'example-carousel',
     templateUrl: './carousel.template.html',
@@ -47,4 +64,6 @@ export class ExampleTuiCarouselComponent {
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
     };
+
+    readonly carouselContent = carouselContent;
 }

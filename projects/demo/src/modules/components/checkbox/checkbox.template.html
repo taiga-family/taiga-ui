@@ -43,7 +43,12 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        documentationTemplateTagName="tui-checkbox"
+        pageTab
+        [documentationTemplateBaseProperties]="checkboxBaseProperties"
+    >
         <tui-doc-demo [control]="control">
             <ng-template>
                 <form [formGroup]="control">
@@ -83,6 +88,7 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -95,6 +101,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="size"
                 documentationPropertyType="TuiSizeL"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >

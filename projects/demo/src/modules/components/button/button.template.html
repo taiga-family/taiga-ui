@@ -81,7 +81,13 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        documentationTemplateTagName="button"
+        pageTab
+        [documentationTemplateBaseProperties]="iconButton ? iconButtonBaseProperties : buttonBaseProperties"
+        [documentationTemplateContent]="iconButton ? '' : 'Content'"
+    >
         <tui-doc-demo>
             <p>
                 <button
@@ -89,7 +95,6 @@
                     tuiIconButton
                     type="button"
                     [appearance]="appearance"
-                    [disabled]="disabled"
                     [icon]="icon"
                     [pseudoActive]="pseudoPressed"
                     [pseudoFocus]="pseudoFocused"
@@ -104,7 +109,6 @@
                         type="button"
                         class="tui-space_right-4"
                         [appearance]="appearance"
-                        [disabled]="disabled"
                         [icon]="icon"
                         [iconRight]="iconRight"
                         [pseudoActive]="pseudoPressed"

@@ -61,9 +61,13 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <tui-progress-segmented
+                documentationTemplateTagName="tui-progress-segmented"
                 [colors]="color"
                 [max]="max"
                 [size]="size"

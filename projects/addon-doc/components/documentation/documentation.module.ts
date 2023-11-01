@@ -22,8 +22,11 @@ import {
 } from '@taiga-ui/kit';
 
 import {TuiInputOpacityModule} from '../internal/input-opacity/input-opacity.module';
+import {TuiBindDocumentationTemplatesDirective} from './directives/bind-documentation-templates.directive';
+import {TuiDocumentationApiHostDirective} from './directives/documentation-api-host.directive';
+import {TuiDocDocumentationPropertyConnectorDirective} from './directives/documentation-property-connector.directive';
+import {TuiDocDocumentationTemplateConnectorDirective} from './directives/documentation-template-connector.directive';
 import {TuiDocDocumentationComponent} from './documentation.component';
-import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
 import {TuiShowCleanerPipe} from './pipes/cleaner.pipe';
 import {TuiGetColorPipe} from './pipes/color.pipe';
 import {TuiInspectPipe} from './pipes/inspect.pipe';
@@ -65,11 +68,17 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiDocDocumentationComponent,
         TuiIsPrimitivePolymorpheusContentPipe,
         TuiDocDocumentationPropertyConnectorDirective,
+        TuiDocDocumentationTemplateConnectorDirective,
+        TuiBindDocumentationTemplatesDirective,
+        TuiDocumentationApiHostDirective,
     ],
     exports: [
         TuiDocTypeReferencePipe,
         TuiDocDocumentationComponent,
         TuiDocDocumentationPropertyConnectorDirective,
+        TuiDocDocumentationTemplateConnectorDirective,
+        TuiBindDocumentationTemplatesDirective,
+        TuiDocumentationApiHostDirective,
     ],
 })
 export class TuiDocDocumentationModule {}

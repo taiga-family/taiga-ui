@@ -22,7 +22,12 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        documentationTemplateContent="Type a text"
+        documentationTemplateTagName="tui-input-copy"
+        pageTab
+    >
         <tui-doc-demo>
             <tui-input-copy
                 [focusable]="focusable"
@@ -47,6 +52,7 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"

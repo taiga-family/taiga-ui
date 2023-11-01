@@ -43,7 +43,11 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        documentationTemplateTagName="tui-filter"
+        pageTab
+    >
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-filter
@@ -101,6 +105,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="items"
                 documentationPropertyType="T[]"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="itemsVariants"
                 [(documentationPropertyValue)]="items"
             >

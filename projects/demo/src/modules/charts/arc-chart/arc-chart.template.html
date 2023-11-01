@@ -21,9 +21,13 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <tui-arc-chart
+                documentationTemplateTagName="tui-arc-chart"
                 class="chart"
                 [max]="max"
                 [maxLabel]="maxLabel"
@@ -38,6 +42,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="max"
                 documentationPropertyType="number"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
             >
@@ -47,6 +52,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="maxLabel"
                 documentationPropertyType="string"
+                [documentationPropertyDefaultValue]="undefined"
                 [(documentationPropertyValue)]="maxLabel"
             >
                 Label for maximum value
@@ -55,6 +61,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="minLabel"
                 documentationPropertyType="string"
+                [documentationPropertyDefaultValue]="undefined"
                 [(documentationPropertyValue)]="minLabel"
             >
                 Label for minimum value
@@ -72,6 +79,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="value"
                 documentationPropertyType="readonly number[]"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"
             >

@@ -97,7 +97,11 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        documentationTemplateTagName="tui-calendar"
+        pageTab
+    >
         <tui-doc-demo>
             <tui-calendar
                 [disabledItemHandler]="disabledItemHandler"
@@ -154,6 +158,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="max"
                 documentationPropertyType="TuiDay | null"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
             >

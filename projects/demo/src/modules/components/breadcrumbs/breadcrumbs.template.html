@@ -24,9 +24,16 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
-            <tui-breadcrumbs [size]="size">
+            <tui-breadcrumbs
+                documentationTemplateTagName="tui-breadcrumbs"
+                [documentationTemplateContent]="content"
+                [size]="size"
+            >
                 <ng-container *ngFor="let item of items">
                     <a
                         *tuiItem

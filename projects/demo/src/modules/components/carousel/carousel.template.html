@@ -67,7 +67,12 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        documentationTemplateTagName="tui-carousel"
+        pageTab
+        [documentationTemplateContent]="carouselContent"
+    >
         <tui-doc-demo>
             <tui-carousel
                 class="carousel"

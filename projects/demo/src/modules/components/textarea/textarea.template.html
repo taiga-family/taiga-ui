@@ -62,10 +62,15 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <tui-textarea
+                documentationTemplateTagName="tui-textarea"
                 class="b-form"
+                [documentationTemplateContent]="content"
                 [expandable]="expandable"
                 [focusable]="focusable"
                 [formControl]="control"

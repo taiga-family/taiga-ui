@@ -32,23 +32,63 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo>
             <tui-stepper
+                documentationTemplateTagName="tui-stepper"
                 [orientation]="orientation"
                 [(activeItemIndex)]="activeItemIndex"
             >
-                <button tuiStep>Simple step</button>
-                <button tuiStep>Simple step</button>
                 <button
+                    documentationApiHost
+                    documentationTemplateContent="Simple step"
+                    documentationTemplateTagName="button"
                     tuiStep
+                    [documentationTemplateBaseProperties]="stepBaseProperties"
+                >
+                    Simple step
+                </button>
+                <button
+                    documentationApiHost
+                    documentationTemplateContent="Simple step"
+                    documentationTemplateTagName="button"
+                    tuiStep
+                    [documentationTemplateBaseProperties]="stepBaseProperties"
+                >
+                    Simple step
+                </button>
+                <button
+                    documentationTemplateContent="Simple step"
+                    documentationTemplateTagName="button"
+                    tuiStep
+                    [documentationTemplateApiHost]="stepApiHost"
+                    [documentationTemplateBaseProperties]="stepBaseProperties"
                     [icon]="icon"
                     [stepState]="state"
                 >
                     Simple step
                 </button>
-                <button tuiStep>Simple step</button>
-                <button tuiStep>Simple step</button>
+                <button
+                    documentationApiHost
+                    documentationTemplateContent="Simple step"
+                    documentationTemplateTagName="button"
+                    tuiStep
+                    [documentationTemplateBaseProperties]="stepBaseProperties"
+                >
+                    Simple step
+                </button>
+                <button
+                    documentationApiHost
+                    documentationTemplateContent="Simple step"
+                    documentationTemplateTagName="button"
+                    tuiStep
+                    [documentationTemplateBaseProperties]="stepBaseProperties"
+                >
+                    Simple step
+                </button>
             </tui-stepper>
         </tui-doc-demo>
         <tui-doc-documentation heading="Stepper">
@@ -56,6 +96,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="orientation"
                 documentationPropertyType="TuiOrientation"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="orientationVariants"
                 [(documentationPropertyValue)]="orientation"
             >
@@ -70,7 +111,11 @@
                 Active step index
             </ng-template>
         </tui-doc-documentation>
-        <tui-doc-documentation heading="Step">
+        <tui-doc-documentation
+            #stepApiHost="documentationApiHost"
+            documentationApiHost
+            heading="Step"
+        >
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="state"

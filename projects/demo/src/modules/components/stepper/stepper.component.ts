@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 import {TuiOrientation} from '@taiga-ui/core';
 import {TuiStepState} from '@taiga-ui/kit';
 
@@ -41,4 +41,10 @@ export class ExampleTuiStepperComponent {
     readonly stateVariants: TuiStepState[] = ['normal', 'pass', 'error'];
 
     state: TuiStepState = this.stateVariants[0];
+
+    readonly stepBaseProperties: Record<string, TuiDocumentationProperty> = {
+        tuiStep: {
+            type: null,
+        },
+    };
 }

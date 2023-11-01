@@ -1,6 +1,10 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
+import {
+    TuiDocExample,
+    TuiDocumentationProperty,
+    TuiRawLoaderContent,
+} from '@taiga-ui/addon-doc';
 
 @Component({
     selector: 'example-badged-content',
@@ -30,4 +34,10 @@ export class ExampleTuiBadgedContentComponent {
 
     radiusVariants = ['0.75rem', '50%'];
     radius = this.radiusVariants[0];
+
+    readonly avatarBaseProperties: Record<string, TuiDocumentationProperty> = {
+        new: {
+            type: null,
+        },
+    };
 }

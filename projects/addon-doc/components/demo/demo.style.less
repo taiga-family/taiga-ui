@@ -8,36 +8,46 @@
     position: relative;
     display: block;
     min-width: 100%;
-    margin: 1.5rem 0;
-    pointer-events: none;
-}
+    margin: 0 0 1.5rem;
+    border: 1px solid var(--tui-base-03);
+    border-radius: var(--tui-radius-m);
+    background: var(--tui-base-02);
+    box-shadow: var(--tui-shadow-dropdown);
 
-.t-bg-toggle {
-    position: absolute;
-    bottom: ~'calc(100% + 0.75rem)';
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    pointer-events: none;
-    width: 100%;
-
-    & > * {
-        pointer-events: auto;
+    @media screen and (min-height: 37.5rem) {
+        &._sticky {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
     }
 }
 
-.t-wrapper {
-    box-shadow: var(--tui-shadow-dropdown);
+.t-tabs {
+    padding: 0 1.5rem;
+    background: var(--tui-base-01);
+    border-radius: var(--tui-radius-m) var(--tui-radius-m) 0 0;
+}
+
+.t-options {
+    min-width: 10rem;
+}
+
+.t-mode-option {
     display: flex;
-    border: 1px solid var(--tui-base-03);
-    border-radius: var(--tui-radius-m);
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.t-wrapper {
+    display: flex;
     max-width: 100%;
     min-height: 6rem;
     width: 100%;
     min-width: 10rem;
     background-color: var(--tui-base-01);
     overflow: hidden;
-    pointer-events: auto;
+    border-radius: 0 0 var(--tui-radius-m) var(--tui-radius-m);
 
     &.t-wrapper_transparent {
         background-image: linear-gradient(45deg, var(--tui-base-02) 25%, transparent 25%),
@@ -122,10 +132,6 @@
     border-radius: 0.25rem;
 }
 
-.t-mode {
-    width: 12.5rem;
-}
-
 .t-select {
     max-width: 15rem;
 }
@@ -179,7 +185,6 @@
     }
 }
 
-.t-group,
 .t-checkbox {
     margin-left: 0.75rem;
 }
@@ -189,14 +194,7 @@
     margin-top: 0.75rem;
 }
 
-@supports (position: sticky) {
-    @media screen and (min-height: 37.5rem) {
-        :host {
-            &._sticky {
-                position: sticky;
-                top: 4.625rem;
-                z-index: 2;
-            }
-        }
-    }
+.t-code-container {
+    background: var(--tui-base-01);
+    border-radius: 0 0 var(--tui-radius-m) var(--tui-radius-m);
 }

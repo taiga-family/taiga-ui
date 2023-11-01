@@ -1,7 +1,7 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -75,4 +75,10 @@ export class ExampleTuiInputDateMultiComponent extends AbstractExampleTuiControl
     markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];
 
     control = new FormControl<TuiDay[]>([], Validators.required);
+
+    readonly inputBaseProperties: Record<string, TuiDocumentationProperty> = {
+        multiple: {
+            type: null,
+        },
+    };
 }

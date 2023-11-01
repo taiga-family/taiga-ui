@@ -108,10 +108,15 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template
+        documentationApiHost
+        pageTab
+    >
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-range
+                    documentationTemplateContent="Just a very long label. Don't afraid it does not overflow the wrapper, the label is just cut off with ellipsis when it does not fit the wrapper."
+                    documentationTemplateTagName="tui-input-range"
                     [formControl]="control"
                     [keySteps]="keySteps"
                     [leftValueContent]="leftValueContent"
@@ -133,6 +138,7 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -145,6 +151,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="min"
                 documentationPropertyType="number | null"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="minVariants"
                 [(documentationPropertyValue)]="min"
             >
@@ -154,6 +161,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="max"
                 documentationPropertyType="number | null"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
             >
@@ -163,6 +171,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="quantum"
                 documentationPropertyType="number"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="quantumVariants"
                 [(documentationPropertyValue)]="quantum"
             >
