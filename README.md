@@ -35,9 +35,16 @@ is developed with `strict` TypeScript mode
 📦 **It's big!** We have 130+ components, 100+ directives, dozens of tokens, utils and tools. And it isn't over yet 🚀
 
 🏗 **Maintained!** The library started as an internal product in our company. It is used by 50+ projects in production
-now and it is here to stay.
+now, and it is here to stay.
 
 Read more about Taiga UI main features in [this article](https://indepth.dev/posts/1413/taiga-ui) on inDepth
+
+## Version compatibility
+
+| Taiga UI | Angular              | Supported           | Latest version (npm)                                                                        |
+| -------- | -------------------- | ------------------- | ------------------------------------------------------------------------------------------- |
+| `3.x.y`  | `^12.0.0` - `latest` | ✅ Current          | ![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk?label=%40taiga-ui%2Fcdk%20~%20v3) |
+| `2.x.y`  | `^9.0.0` - `^15.0.0` | No longer supported | ![v2](https://img.shields.io/npm/v/@taiga-ui/cdk/v2-lts?label=%40taiga-ui%2Fcdk%20~%20v2)   |
 
 ## How to start
 
@@ -60,13 +67,6 @@ design your app with Taiga UI components.
 
 See our [CONTRIBUTING.md](/CONTRIBUTING.md) guide. Try to
 [make pull request](https://pr.new/github.com/taiga-family/taiga-ui) online from Web IDE.
-
-## Status
-
-| Version | Status                                                                                            | Latest tag (npm)                                                                            |
-| ------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| v3.x    | ![v3](https://github.com/taiga-family/taiga-ui/actions/workflows/build.yml/badge.svg?branch=main) | ![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk?label=%40taiga-ui%2Fcdk%20~%20v3) |
-| v2.x    | ![v2](https://github.com/taiga-family/taiga-ui/actions/workflows/build.yml/badge.svg?branch=v2.x) | ![v2](https://img.shields.io/npm/v/@taiga-ui/cdk/v2-lts?label=%40taiga-ui%2Fcdk%20~%20v2)   |
 
 ## Core team
 

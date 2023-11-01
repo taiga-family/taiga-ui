@@ -165,7 +165,7 @@ export class TuiInputCardGroupedComponent
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
-        return this.inputCard ? this.inputCard.nativeElement : null;
+        return this.inputCard?.nativeElement ?? null;
     }
 
     get focused(): boolean {
