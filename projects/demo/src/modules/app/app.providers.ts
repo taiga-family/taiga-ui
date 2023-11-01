@@ -24,6 +24,7 @@ import {
     tuiDocExampleOptionsProvider,
     TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
+import {tuiSortPages} from '@taiga-ui/addon-doc';
 import {
     TUI_BASE_HREF,
     TUI_DIALOG_CLOSES_ON_BACK,
@@ -124,7 +125,7 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_DOC_PAGES,
-        useValue: pages,
+        useValue: tuiSortPages(pages, new Set([`Documentation`, `Foundations`])),
     },
     {
         provide: TUI_DOC_SEE_ALSO,
