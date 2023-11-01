@@ -11,6 +11,14 @@ const Department = {
     HR: 'HR',
     HeadOffice: 'Heads',
     Delivery: 'Delivery',
+    Admin: 'Administrative',
+    Business: 'Business lines',
+    MB: 'Business technologies',
+    Finance: 'Corporate Finance',
+    Payment: 'Payment Systems',
+    Operating: 'Operating service lines',
+    Marketing: 'Media-marketing',
+    Security: 'Security Service',
 } as const;
 
 @Component({
