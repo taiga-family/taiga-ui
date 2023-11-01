@@ -1,6 +1,7 @@
 import {Directive, Input, OnDestroy} from '@angular/core';
 import {TuiDocumentationProperty} from '@taiga-ui/addon-doc/interfaces';
 import {TuiApiHostService} from '@taiga-ui/addon-doc/services';
+import {NEVER} from 'rxjs';
 
 import {TuiDocumentationApiHostDirective} from './documentation-api-host.directive';
 
@@ -21,10 +22,7 @@ export class TuiBindDocumentationTemplatesDirective
     @Input()
     bindDocumentationTemplates: readonly TuiDocumentationApiHostDirective[] = [];
 
-    // eslint-disable-next-line @typescript-eslint/require-await
-    async copyToClipboard(): Promise<void> {
-        throw new Error('Not implemented');
-    }
+    readonly code$ = NEVER;
 
     deleteContent(): void {
         throw new Error('Not implemented');

@@ -33,7 +33,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {TUI_ARROW_OPTIONS, TuiArrowOptions} from '@taiga-ui/kit';
-import {Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 
 const MIN_WIDTH = 160;
 
@@ -99,8 +99,8 @@ export class TuiDocDemoComponent implements OnInit {
         private readonly apiHostService: TuiApiHostService | null,
     ) {}
 
-    get canCopyCode(): boolean {
-        return this.apiHostService !== null;
+    get code$(): Observable<string> | undefined {
+        return this.apiHostService?.code$;
     }
 
     @HostListener('window:resize')
@@ -156,8 +156,11 @@ export class TuiDocDemoComponent implements OnInit {
         this.sandboxWidth = validated;
     }
 
-    copy(): void {
-        void this.apiHostService?.copyToClipboard();
+    onResizeCode([entry]: ResizeObserverEntry[]): void {
+        this.el.nativeElement.style.setProperty(
+            '--tui-code-height',
+            `${entry.borderBoxSize[0].blockSize}px`,
+        );
     }
 
     private get delta(): number {

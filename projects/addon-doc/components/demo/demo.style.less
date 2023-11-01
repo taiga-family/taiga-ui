@@ -5,20 +5,27 @@
 @color-dark-resizer: #3e464e;
 
 :host {
+    --tui-code-height: 0;
+
+    .shadow(2);
+
     position: relative;
     display: block;
     min-width: 100%;
-    margin: 1.5rem 0;
+    margin: 0 0 1.5rem;
+    border: 1px solid var(--tui-base-03);
+    border-radius: var(--tui-radius-m);
+    background: var(--tui-base-02);
 }
 
 .t-bg-toggle {
-    position: absolute;
-    bottom: ~'calc(100% + 0.75rem)';
     display: flex;
     align-items: center;
     justify-content: flex-end;
     pointer-events: none;
-    width: 100%;
+    padding: var(--tui-padding-s);
+    background-color: var(--tui-base-01);
+    border-radius: var(--tui-radius-m) var(--tui-radius-m) 0 0;
 
     & > * {
         pointer-events: auto;
@@ -26,16 +33,17 @@
 }
 
 .t-wrapper {
-    .shadow(2);
     display: flex;
-    border: 1px solid var(--tui-base-03);
-    border-radius: var(--tui-radius-m);
     max-width: 100%;
     min-height: 6rem;
     width: 100%;
     min-width: 10rem;
     background-color: var(--tui-base-01);
     overflow: hidden;
+    outline: 1px solid var(--tui-base-03);
+    position: relative;
+    z-index: 2;
+    border-radius: 0 0 var(--tui-radius-m) var(--tui-radius-m);
 
     &.t-wrapper_transparent {
         background-image: linear-gradient(45deg, var(--tui-base-02) 25%, transparent 25%),
@@ -188,13 +196,35 @@
     margin-top: 0.75rem;
 }
 
+.t-code-container {
+    margin-top: calc(var(--tui-radius-m) * -1);
+    background: var(--tui-base-02);
+    border-radius: 0 0 var(--tui-radius-m) var(--tui-radius-m);
+}
+
+.t-code {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    height: 100%;
+
+    --tui-code-padding: calc(var(--tui-radius-m) + 1.5rem) 2rem 1.5rem;
+    --tui-code-action-top: calc(var(--tui-radius-m) + 1rem);
+    --tui-code-background: transparent;
+}
+
 @supports (position: sticky) {
     @media screen and (min-height: 37.5rem) {
         :host {
             &._sticky {
                 position: sticky;
-                top: 4.625rem;
+                top: calc(var(--tui-code-height) * -1 + 1.1rem);
                 z-index: 2;
+
+                > .t-wrapper {
+                    position: sticky;
+                    top: 3.9rem;
+                }
             }
         }
     }

@@ -26,7 +26,7 @@
 
 .t-code-actions {
     position: absolute;
-    top: 0.875rem;
+    top: var(--tui-code-action-top, 0.875rem);
     right: 2rem;
     display: flex;
     opacity: 0;
@@ -38,9 +38,9 @@
 .hljs:not(:empty) {
     .customize-scroll();
     font: var(--tui-font-text-m);
-    padding: 1.5rem 2rem;
+    padding: var(--tui-code-padding, 1.5rem 2rem);
     font-family: monospace;
-    background: var(--tui-clear);
+    background: var(--tui-code-background, var(--tui-clear));
     word-wrap: break-word;
     white-space: pre-wrap;
 

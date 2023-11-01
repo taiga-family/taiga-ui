@@ -168,20 +168,6 @@
                 </tui-expand>
             </form>
             <ng-content></ng-content>
-            <div
-                *ngIf="canCopyCode"
-                class="t-copy-code"
-            >
-                <button
-                    appearance="outline"
-                    size="s"
-                    tuiButton
-                    (click)="copy()"
-                >
-                    <tui-svg src="tuiIconCopy"></tui-svg>
-                    Copy code
-                </button>
-            </div>
         </div>
     </div>
     <div
@@ -191,3 +177,14 @@
         (tuiSizeChange)="updateWidth($event[0])"
     ></div>
 </div>
+
+<tui-elastic-container
+    *ngIf="code$ | async as code"
+    class="t-code-container"
+    (waResizeObserver)="onResizeCode($event)"
+>
+    <tui-doc-code
+        class="t-code"
+        [code]="code!"
+    ></tui-doc-code>
+</tui-elastic-container>

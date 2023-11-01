@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
 import {TuiResizerModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
@@ -18,10 +19,12 @@ import {
 import {
     TuiCheckboxLabeledModule,
     TuiDataListWrapperModule,
+    TuiElasticContainerModule,
     TuiRadioBlockModule,
     TuiSelectModule,
 } from '@taiga-ui/kit';
 
+import {TuiDocCodeModule} from '../code/code.module';
 import {TuiDocDemoComponent} from './demo.component';
 
 @NgModule({
@@ -45,6 +48,9 @@ import {TuiDocDemoComponent} from './demo.component';
         TuiTextfieldControllerModule,
         TuiHintModule,
         TuiResizerModule,
+        TuiDocCodeModule,
+        ResizeObserverModule,
+        TuiElasticContainerModule,
     ],
     declarations: [TuiDocDemoComponent],
     exports: [TuiDocDemoComponent],

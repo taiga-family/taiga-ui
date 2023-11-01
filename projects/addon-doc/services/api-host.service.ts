@@ -6,7 +6,6 @@ import {
     Optional,
     SkipSelf,
 } from '@angular/core';
-import {NAVIGATOR} from '@ng-web-apis/common';
 import {
     TuiDocumentationProperty,
     TuiDocumentationPropertyType,
@@ -16,8 +15,7 @@ import {
     tuiGetAttrValue,
     TuiGetAttrValueUndefinedValueError,
 } from '@taiga-ui/addon-doc/utils';
-import {TuiAlertService} from '@taiga-ui/core';
-import {distinctUntilChanged, map} from 'rxjs/operators';
+import {distinctUntilChanged, map, shareReplay} from 'rxjs/operators';
 
 const indent = 4;
 
@@ -77,26 +75,26 @@ export class TuiApiHostService implements OnDestroy {
 
     #contentIndex?: number;
 
+    readonly code$ = this.#onChange.pipe(
+        map(() => this.#renderTemplate()),
+        distinctUntilChanged(),
+        shareReplay({
+            bufferSize: 1,
+            refCount: true,
+        }),
+    );
+
     constructor(
-        @Inject(TuiAlertService)
-        private readonly alertService: TuiAlertService,
-        @Inject(NAVIGATOR)
-        private readonly navigator: Navigator,
         @Inject(TuiApiHostService)
         @Optional()
         @SkipSelf()
         private readonly parent: TuiApiHostService | null,
     ) {
-        this.#onChange
-            .pipe(
-                map(() => this.#renderTemplate()),
-                distinctUntilChanged(),
-            )
-            .subscribe(template => {
-                if (parent) {
-                    this.#contentIndex = parent.setContent(template, this.#contentIndex);
-                }
-            });
+        this.code$.subscribe(code => {
+            if (parent) {
+                this.#contentIndex = parent.setContent(code, this.#contentIndex);
+            }
+        });
     }
 
     setTemplate(
@@ -128,23 +126,6 @@ export class TuiApiHostService implements OnDestroy {
     deleteContent(index: number): void {
         this.#contents.delete(index);
         this.#onChange.emit();
-    }
-
-    async copyToClipboard(): Promise<void> {
-        try {
-            await this.navigator.clipboard.writeText(this.#renderTemplate());
-            this.alertService
-                .open(`Copied successfully`, {
-                    status: `success`,
-                })
-                .subscribe();
-        } catch {
-            this.alertService
-                .open(`Can't copy to clipboard`, {
-                    status: `error`,
-                })
-                .subscribe();
-        }
     }
 
     ngOnDestroy(): void {
