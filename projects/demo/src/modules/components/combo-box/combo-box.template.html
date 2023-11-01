@@ -169,6 +169,7 @@
 
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -201,6 +202,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="strict"
                 documentationPropertyType="boolean"
+                [documentationPropertyDefaultValue]="undefined"
                 [(documentationPropertyValue)]="strict"
             >
                 Value must only be an item of suggestions&nbsp;
