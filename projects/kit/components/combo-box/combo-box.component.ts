@@ -220,7 +220,7 @@ export class TuiComboBoxComponent<T>
     }
 
     private isStrictMatch(item: T): boolean {
-        return this.strictMatcher?.(item, this.search || '', this.stringify) ?? false;
+        return !!this.strictMatcher?.(item, this.search || '', this.stringify);
     }
 
     private close(): void {
