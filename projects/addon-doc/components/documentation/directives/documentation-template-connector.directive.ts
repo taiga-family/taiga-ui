@@ -1,7 +1,8 @@
 import {Directive, Inject, Input, OnChanges, OnDestroy, Optional} from '@angular/core';
-import {TuiDocumentationApiHostDirective} from '@taiga-ui/addon-doc/components/documentation/documentation-api-host.directive';
 import {TuiDocumentationProperty} from '@taiga-ui/addon-doc/interfaces';
 import {TuiApiHostService} from '@taiga-ui/addon-doc/services';
+
+import {TuiDocumentationApiHostDirective} from './documentation-api-host.directive';
 
 @Directive({
     selector: '[documentationTemplateTagName]',

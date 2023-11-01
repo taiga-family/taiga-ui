@@ -1,4 +1,4 @@
-import {TuiDocumentationPropertyType} from '@taiga-ui/addon-doc/types';
+export type TuiDocumentationPropertyType = 'input-output' | 'input' | 'output' | null;
 
 export interface TuiDocumentationProperty {
     type: TuiDocumentationPropertyType;

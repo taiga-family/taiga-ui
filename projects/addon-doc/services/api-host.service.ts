@@ -10,9 +10,12 @@ import {NAVIGATOR} from '@ng-web-apis/common';
 import {
     TuiDocumentationProperty,
     TuiDocumentationPropertyType,
+} from '@taiga-ui/addon-doc/interfaces';
+import {
     tuiGetAttrName,
     tuiGetAttrValue,
-} from '@taiga-ui/addon-doc';
+    TuiGetAttrValueUndefinedValueError,
+} from '@taiga-ui/addon-doc/utils';
 import {TuiAlertService} from '@taiga-ui/core';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 
@@ -197,7 +200,7 @@ export class TuiApiHostService implements OnDestroy {
                 try {
                     return this.#renderProperty(name, property);
                 } catch (error) {
-                    if (error instanceof tuiGetAttrValue.UndefinedValueError) {
+                    if (error instanceof TuiGetAttrValueUndefinedValueError) {
                         console.error(name, property);
 
                         return undefined;

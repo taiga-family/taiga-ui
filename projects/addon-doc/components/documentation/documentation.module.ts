@@ -23,11 +23,11 @@ import {
 } from '@taiga-ui/kit';
 
 import {TuiInputOpacityModule} from '../internal/input-opacity/input-opacity.module';
-import {TuiBindDocumentationTemplatesDirective} from './bind-documentation-templates.directive';
+import {TuiBindDocumentationTemplatesDirective} from './directives/bind-documentation-templates.directive';
+import {TuiDocumentationApiHostDirective} from './directives/documentation-api-host.directive';
+import {TuiDocDocumentationPropertyConnectorDirective} from './directives/documentation-property-connector.directive';
+import {TuiDocDocumentationTemplateConnectorDirective} from './directives/documentation-template-connector.directive';
 import {TuiDocDocumentationComponent} from './documentation.component';
-import {TuiDocumentationApiHostDirective} from './documentation-api-host.directive';
-import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
-import {TuiDocDocumentationTemplateConnectorDirective} from './documentation-template-connector.directive';
 import {TuiShowCleanerPipe} from './pipes/cleaner.pipe';
 import {TuiGetColorPipe} from './pipes/color.pipe';
 import {TuiShowContentTooltip} from './pipes/content-tooltip.pipe';

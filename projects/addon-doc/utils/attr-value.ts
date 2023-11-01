@@ -1,6 +1,6 @@
-import {TuiDocumentationPropertyType} from '@taiga-ui/addon-doc/types';
+import {TuiDocumentationPropertyType} from '@taiga-ui/addon-doc/interfaces';
 
-class UndefinedValueError extends Error {
+export class TuiGetAttrValueUndefinedValueError extends Error {
     override readonly name = `UndefinedValueError`;
 
     constructor(mode: TuiDocumentationPropertyType) {
@@ -17,7 +17,7 @@ export function tuiGetAttrValue(
         case `input`:
         case `output`:
             if (!value) {
-                throw new UndefinedValueError(mode);
+                throw new TuiGetAttrValueUndefinedValueError(mode);
             }
 
             return value;
@@ -25,5 +25,3 @@ export function tuiGetAttrValue(
             return value ?? ``;
     }
 }
-
-tuiGetAttrValue.UndefinedValueError = UndefinedValueError;

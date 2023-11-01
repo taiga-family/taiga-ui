@@ -1,4 +1,4 @@
-import {TuiDocumentationPropertyType} from '@taiga-ui/addon-doc/types';
+import {TuiDocumentationPropertyType} from '@taiga-ui/addon-doc/interfaces';
 
 export function tuiGetAttrName(mode: TuiDocumentationPropertyType, name: string): string {
     switch (mode) {

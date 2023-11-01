@@ -12,9 +12,9 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {ActivatedRoute, Params, UrlSerializer, UrlTree} from '@angular/router';
+import {TuiDocumentationPropertyType} from '@taiga-ui/addon-doc/interfaces';
 import {TuiApiHostService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
-import {TuiDocumentationPropertyType} from '@taiga-ui/addon-doc/types';
 import {tuiCoerceValue, tuiGetAttrName, tuiInspectAny} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber, TuiStringHandler} from '@taiga-ui/cdk';
 import {BehaviorSubject, Subject} from 'rxjs';
