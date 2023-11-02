@@ -29,4 +29,18 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
         },
         to: {attrName: `appearance`},
     },
+    {
+        from: {
+            attrName: `item`,
+            withTagNames: [`tui-radio`],
+        },
+        to: {attrName: `value`},
+    },
+    {
+        from: {
+            attrName: `[item]`,
+            withTagNames: [`tui-radio`],
+        },
+        to: {attrName: `[value]`},
+    },
 ];

@@ -19,7 +19,7 @@ import {replaceTags} from '../../utils/templates/replace-tags';
 import {ATTRS_TO_REPLACE} from './constants/attrs-to-replace';
 import {INPUTS_TO_REMOVE} from './constants/inputs-to-remove';
 import {TAGS_TO_REPLACE} from './constants/tags-to-replace';
-import {migrateBadgeValue} from './templates/migrate-badge';
+import {migrateBadgeValue, migrateCheckbox, migrateRadio} from './templates';
 
 export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchema): void {
     !options[`skip-logs`] &&
@@ -32,6 +32,8 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         getAction({action: replaceAttrs, requiredData: ATTRS_TO_REPLACE}),
         getAction({action: removeInputs, requiredData: INPUTS_TO_REMOVE}),
         migrateBadgeValue,
+        migrateCheckbox,
+        migrateRadio,
     ] as const;
 
     const progressLog = setupProgressLogger({
