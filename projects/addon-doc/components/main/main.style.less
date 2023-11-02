@@ -4,7 +4,8 @@
 
 html {
     scroll-padding-top: @sticky-header-height;
-    height: auto;
+    box-sizing: border-box;
+    height: 100%;
 }
 
 tui-root > tui-scroll-controls > .t-bar_vertical {
@@ -37,11 +38,14 @@ tui-root > tui-scroll-controls > .t-bar_vertical {
 
 body {
     background: var(--tui-base-01);
-    height: auto;
+    box-sizing: border-box;
+    height: 100%;
 }
 
 tui-doc-main {
     display: block;
+    box-sizing: border-box;
+    height: 100%;
 }
 
 // prevent override styles
@@ -77,6 +81,8 @@ a:focus code {
 .tui-doc-page {
     isolation: isolate;
     padding-top: 4rem;
+    box-sizing: border-box;
+    height: 100%;
 }
 
 tui-doc-navigation.tui-doc-navigation {
@@ -93,6 +99,8 @@ tui-doc-navigation.tui-doc-navigation {
 
 .tui-doc-content {
     margin-left: @sidebar-width;
+    height: 100%;
+    box-sizing: border-box;
 
     @media @tui-mobile {
         margin-left: 0;
@@ -101,6 +109,8 @@ tui-doc-navigation.tui-doc-navigation {
 
 .tui-doc-outlet + * {
     display: block;
+    box-sizing: border-box;
+    height: 100%;
 }
 
 .tui-doc-animated-example {
