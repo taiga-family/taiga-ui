@@ -1,0 +1,37 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.tiles {
+    width: 100%;
+    grid-template-rows: 1.5rem;
+}
+
+.drop {
+    width: 100%;
+    position: absolute;
+    height: 0.5rem;
+    margin-top: -0.25rem;
+    background: skyblue;
+    border-radius: 1rem;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.tree._dragged {
+    .drop {
+        pointer-events: auto;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

@@ -1,0 +1,49 @@
+<tui-tree
+    class="tree"
+    [childrenHandler]="handler"
+    [content]="content"
+    [tuiProjectClass]="['_dragged']"
+    [tuiTreeController]="true"
+    [value]="data"
+></tui-tree>
+
+<ng-template
+    #content
+    let-value
+>
+    <div
+        *ngIf="!value.children; else parent"
+        class="wrapper"
+    >
+        <div
+            class="drop"
+            (pointerup)="onDrop(value)"
+        ></div>
+        <tui-tiles class="tiles">
+            <tui-tile>
+                <div
+                    tuiTileHandle
+                    class="content"
+                    (pointerdown)="onDrag(value)"
+                >
+                    <tui-svg
+                        *ngIf="value.icon"
+                        [src]="value.icon"
+                    ></tui-svg>
+                    {{ value.text }}
+                </div>
+            </tui-tile>
+        </tui-tiles>
+        <div
+            class="drop"
+            (pointerup)="onDrop(value, 1)"
+        ></div>
+    </div>
+    <ng-template #parent>
+        <tui-svg
+            *ngIf="value.icon"
+            [src]="value.icon"
+        ></tui-svg>
+        {{ value.text }}
+    </ng-template>
+</ng-template>
