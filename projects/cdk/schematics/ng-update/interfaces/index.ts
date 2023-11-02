@@ -1,4 +1,5 @@
 export * from './asset';
+export * from './html-comment';
 export * from './migration-warning';
 export * from './removable-input';
 export * from './removed-module';
