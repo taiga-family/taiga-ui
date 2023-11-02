@@ -28,7 +28,7 @@ import {TuiMarkerHandler} from '@taiga-ui/core/types';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
-    private _value: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
+    private day: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
 
     @Input()
     month: TuiMonth = TuiMonth.currentLocal();
@@ -59,7 +59,7 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
 
     @Input()
     set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
-        this._value = value;
+        this.day = value;
 
         if (this.showAdjacent && value instanceof TuiDay) {
             this.month = value;
@@ -67,7 +67,7 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     }
 
     get value(): TuiDay | TuiDayRange | readonly TuiDay[] | null {
-        return this._value;
+        return this.day;
     }
 
     @Output()
