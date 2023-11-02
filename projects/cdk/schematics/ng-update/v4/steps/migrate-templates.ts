@@ -13,13 +13,24 @@ import {setupProgressLogger} from '../../../utils/progress';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {getPathFromTemplateResource} from '../../../utils/templates/template-resource';
 import {TemplateResource} from '../../interfaces/template-resource';
-import {removeInputs} from '../../utils/templates/remove-inputs';
-import {replaceAttrs} from '../../utils/templates/replace-attrs';
-import {replaceTags} from '../../utils/templates/replace-tags';
-import {ATTRS_TO_REPLACE} from './constants/attrs-to-replace';
-import {INPUTS_TO_REMOVE} from './constants/inputs-to-remove';
-import {TAGS_TO_REPLACE} from './constants/tags-to-replace';
-import {migrateBadgeValue, migrateCheckbox, migrateRadio} from './templates';
+import {
+    addHTMLCommentTags,
+    removeInputs,
+    replaceAttrs,
+    replaceTags,
+} from '../../utils/templates';
+import {
+    ATTRS_TO_REPLACE,
+    HTML_COMMENTS,
+    INPUTS_TO_REMOVE,
+    TAGS_TO_REPLACE,
+} from './constants';
+import {
+    migrateBadgeValue,
+    migrateCheckbox,
+    migrateRadio,
+    migrateToggle,
+} from './templates';
 
 export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchema): void {
     !options[`skip-logs`] &&
@@ -28,12 +39,14 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
     const componentWithTemplatesPaths = getComponentTemplates(ALL_TS_FILES);
 
     const actions = [
+        getAction({action: addHTMLCommentTags, requiredData: HTML_COMMENTS}),
         getAction({action: replaceTags, requiredData: TAGS_TO_REPLACE}),
         getAction({action: replaceAttrs, requiredData: ATTRS_TO_REPLACE}),
         getAction({action: removeInputs, requiredData: INPUTS_TO_REMOVE}),
         migrateBadgeValue,
         migrateCheckbox,
         migrateRadio,
+        migrateToggle,
     ] as const;
 
     const progressLog = setupProgressLogger({
