@@ -1,6 +1,6 @@
 import {Element} from 'parse5';
 
-export interface AttributeToDirective {
+export interface ReplacementAttributeToDirective {
     readonly componentSelector: string[] | string;
     readonly directive: string;
     readonly directiveModule: {
