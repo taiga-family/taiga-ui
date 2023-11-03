@@ -1,7 +1,7 @@
 ```html
 <div
+  class="block"
   [tuiHighlight]="query"
-  [tuiHighlightColor]="'#228B22'"
 >
   ...
 </div>

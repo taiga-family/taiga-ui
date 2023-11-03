@@ -35,6 +35,9 @@ export class TuiSetupComponent {
     @Input()
     public template: TuiRawLoaderContent = '';
 
+    @Input()
+    public styles: TuiRawLoaderContent = '';
+
     @tuiPure
     protected get computedImport(): TuiRawLoaderContent {
         return (

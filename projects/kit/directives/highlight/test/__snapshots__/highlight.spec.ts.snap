@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TuiHighlight should clean up the DOM and component on unsubscribe 1`] = `
+<div>
+  Hello, world!
+</div>
+`;
+
+exports[`TuiHighlight should create a component and insert it into a DOM Range 1`] = `
+<div>
+  
+  <mark
+    tuihighlightmark=""
+  >
+    Hello
+  </mark>
+  , world!
+</div>
+`;

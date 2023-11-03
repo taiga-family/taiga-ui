@@ -1,61 +1,73 @@
 import {Component} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiHighlightDirective} from '@taiga-ui/kit';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiHighlight directive', () => {
-    @Component({
-        template: `
-            <div
-                id="ica"
-                tuiHighlight="ica"
-            >
-                HAPICA
-            </div>
-            <div
-                id="dong"
-                tuiHighlight="dong"
-            >
-                ding
-            </div>
-            <div
-                id="aaa"
-                tuiHighlight="aaa"
-                tuiHighlightColor="yellow"
-            >
-                aaabbb
-            </div>
-        `,
-    })
-    class TestComponent {}
+    let fixture: ComponentFixture<unknown>;
 
-    beforeEach(async () => {
-        TestBed.configureTestingModule({
-            imports: [TuiHighlightDirective],
-            declarations: [TestComponent],
-            providers: [NG_EVENT_PLUGINS],
+    describe.each([
+        {
+            name: 'in single occurrence mode',
+            isMulti: false,
+        },
+        {
+            name: 'in multi occurrences mode',
+            isMulti: true,
+        },
+    ])('$name', ({isMulti}) => {
+        describe.each([
+            {
+                name: 'with one string variant',
+                value: 'ng Ar',
+            },
+            {
+                name: 'with several string variants',
+                value: ['Ar', 'Ng'],
+            },
+            {
+                name: 'with one regExp variant',
+                value: /[ink]+/gi,
+            },
+            {
+                name: 'with several regExp variants',
+                value: [/a/gi, /[ink]+/gi],
+            },
+        ])('$name', ({value}) => {
+            @Component({
+                standalone: true,
+                imports: [TuiHighlightDirective],
+                template: `
+                    <div
+                        [tuiHighlight]="value"
+                        [tuiHighlightMultiOccurrences]="isMulti"
+                    >
+                        <p>
+                            <b>King</b>
+                            Arthur
+                        </p>
+                        <p>King Arthur</p>
+                        <p>King Arthur</p>
+                        <p>
+                            <b>King</b>
+                            Arthur
+                        </p>
+                    </div>
+                `,
+            })
+            class TestComponent {
+                public readonly isMulti = isMulti;
+                public readonly value = value;
+            }
+
+            beforeEach(() => {
+                fixture = TestBed.createComponent(TestComponent);
+                fixture.detectChanges();
+            });
+
+            it('Highlight should shown properly', () => {
+                expect(fixture).toMatchSnapshot();
+            });
         });
-        await TestBed.compileComponents();
-        const fixture = TestBed.createComponent(TestComponent);
-
-        fixture.detectChanges();
-    });
-
-    it('Highlight is shown', () => {
-        const element = document.querySelector('#ica')?.firstElementChild as HTMLElement;
-
-        expect(element.style.display).toBe('block');
-    });
-
-    it('Highlight is not shown', () => {
-        const element = document.querySelector('#dong')?.firstElementChild as HTMLElement;
-
-        expect(element.style.display).toBe('none');
-    });
-
-    it('Highlight color is yellow', () => {
-        const element = document.querySelector('#aaa')?.firstElementChild as HTMLElement;
-
-        expect(element.style.background).toBe('yellow');
     });
 });
