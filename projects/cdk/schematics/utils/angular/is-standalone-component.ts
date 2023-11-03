@@ -1,5 +1,6 @@
 import {ClassDeclaration, Node} from 'ng-morph';
 
+// TODO: add to ng-morph
 export function isStandaloneComponent(component: ClassDeclaration): boolean {
     const decorator = component.getDecorator(`Component`);
 
