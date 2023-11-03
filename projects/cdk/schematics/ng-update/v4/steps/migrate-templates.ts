@@ -19,7 +19,9 @@ import {
     replaceAttrs,
     replaceTags,
 } from '../../utils/templates';
+import {replaceAttrsByDirective} from '../../utils/templates/replace-attrs-by-directives';
 import {
+    ATTRS_TO_DIRECTIVE_REPLACE,
     ATTRS_TO_REPLACE,
     HTML_COMMENTS,
     INPUTS_TO_REMOVE,
@@ -40,6 +42,10 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
 
     const actions = [
         getAction({action: addHTMLCommentTags, requiredData: HTML_COMMENTS}),
+        getAction({
+            action: replaceAttrsByDirective,
+            requiredData: ATTRS_TO_DIRECTIVE_REPLACE,
+        }),
         getAction({action: replaceTags, requiredData: TAGS_TO_REPLACE}),
         getAction({action: replaceAttrs, requiredData: ATTRS_TO_REPLACE}),
         getAction({action: removeInputs, requiredData: INPUTS_TO_REMOVE}),

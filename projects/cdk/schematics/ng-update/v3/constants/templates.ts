@@ -1,9 +1,9 @@
 import {hasElementAttribute} from '../../../utils/templates/elements';
+import {ReplacementAttributeToDirective} from '../../interfaces';
 import {RemovableInput} from '../../interfaces/removable-input';
 import {ReplacementAttribute} from '../../interfaces/replacement-attribute';
 import {ReplacementAttributeValue} from '../../interfaces/replacement-attribute-value';
 import {ReplacementTag} from '../../interfaces/replacement-tag';
-import {AttributeToDirective} from '../interfaces/attribute-to-directive';
 import {TUI_INTERACTIVE_SELECTORS} from './tui-interactive-selectors';
 
 export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
@@ -527,7 +527,7 @@ export const TAGS_TO_REPLACE: ReplacementTag[] = [
     },
 ];
 
-export const ATTR_TO_DIRECTIVE: AttributeToDirective[] = [
+export const ATTR_TO_DIRECTIVE: ReplacementAttributeToDirective[] = [
     {
         componentSelector: `tui-primitive-textfield`,
         inputProperty: `(autofilledChange)`,
