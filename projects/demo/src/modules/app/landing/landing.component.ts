@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {INTERSECTION_ROOT} from '@ng-web-apis/intersection-observer';
-import {EMPTY_QUERY, TuiDay} from '@taiga-ui/cdk';
+import {EMPTY_QUERY} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'landing',
@@ -29,12 +29,6 @@ export class LandingComponent implements OnInit {
     private readonly blocks: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     current = 0;
-
-    tags = ['Angular', 'Open source'];
-
-    date: TuiDay | null = null;
-
-    readonly labels = ['New', 'Read', 'Archived', 'Junk'];
 
     constructor(
         @Inject(Router) private readonly router: Router,
@@ -58,10 +52,6 @@ export class LandingComponent implements OnInit {
             this.current = index;
             target.scrollIntoView({behavior: 'smooth'});
         }
-    }
-
-    onDay(date: TuiDay): void {
-        this.date = date;
     }
 
     onClick(): void {
