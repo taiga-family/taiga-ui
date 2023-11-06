@@ -115,6 +115,8 @@ export class TuiTableExample4 {
         startWith([]),
     );
 
+    readonly getAge = getAge;
+
     onEnabled(enabled: readonly string[]): void {
         this.enabled = enabled;
         this.columns = this.initial
@@ -136,10 +138,6 @@ export class TuiTableExample4 {
 
     isMatch(value: unknown): boolean {
         return !!this.search && TUI_DEFAULT_MATCHER(value, this.search);
-    }
-
-    getAge(user: User): number {
-        return getAge(user);
     }
 
     private getData(
