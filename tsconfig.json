@@ -46,5 +46,14 @@
             "@taiga-ui/testing": ["projects/testing/index"],
             "@taiga-ui/testing/*": ["projects/testing/*"]
         }
-    }
+    },
+    "references": [
+        {"path": "./projects/cdk/schematics/tsconfig.schematics.json"},
+        {"path": "./projects/demo-cypress/tsconfig.json"},
+        {"path": "./projects/demo/tsconfig.server.json"},
+        {"path": "./projects/demo/tsconfig.app.json"},
+        {"path": "./tsconfig.build.json"},
+        {"path": "./tsconfig.spec.json"},
+        {"path": "./tsconfig.eslint.json"}
+    ]
 }

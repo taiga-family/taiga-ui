@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
-
 export const tuiWaitAllImgInside = (
     prevSubject: Cypress.PrevSubjectMap<void>[Cypress.PrevSubject],
     enabled: boolean = true,

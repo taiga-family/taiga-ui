@@ -1,6 +1,3 @@
-/// <reference types="cypress" />
-/// <reference types="node" />
-
 /**
  * Check if element is inside viewport
  *

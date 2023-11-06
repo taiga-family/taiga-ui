@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import {clearLine, cursorTo} from 'readline';
 
 import {SMALL_TAB_SYMBOL, SUCCESS_SYMBOL} from './colored-log';

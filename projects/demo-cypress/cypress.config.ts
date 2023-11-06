@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import {defineConfig} from 'cypress';
 
 import {

@@ -1,5 +1,3 @@
-/// <reference types="node" />
-
 export function tuiIsCI(): boolean {
     return (
         process.env.TUI_CI === `true` ||

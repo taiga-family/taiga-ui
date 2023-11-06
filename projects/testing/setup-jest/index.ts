@@ -1,5 +1,3 @@
-/// <reference types="jest" />
-
 const {TextEncoder: TextEncoderMock, TextDecoder: TextDecoderMock} = require(`util`);
 
 global.TextEncoder = TextEncoderMock;

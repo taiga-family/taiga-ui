@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
-
 export const DEEP_PATHS = [
     /* CORE */
     `components/button`,
