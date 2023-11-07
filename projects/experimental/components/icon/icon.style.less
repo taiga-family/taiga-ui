@@ -1,0 +1,17 @@
+@import 'taiga-ui-local';
+
+:host {
+    position: relative;
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    vertical-align: middle;
+    mask: var(--t-mask) no-repeat center/contain;
+
+    &:after {
+        .fullsize();
+        content: '';
+        mask: inherit;
+        background: currentColor;
+    }
+}

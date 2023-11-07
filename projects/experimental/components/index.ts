@@ -6,6 +6,7 @@ export * from '@taiga-ui/experimental/components/badged-content';
 export * from '@taiga-ui/experimental/components/button';
 export * from '@taiga-ui/experimental/components/checkbox';
 export * from '@taiga-ui/experimental/components/compass';
+export * from '@taiga-ui/experimental/components/icon';
 export * from '@taiga-ui/experimental/components/radio';
 export * from '@taiga-ui/experimental/components/rating';
 export * from '@taiga-ui/experimental/components/thumbnail-card';
