@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.53.0](https://github.com/taiga-family/taiga-ui/compare/v3.52.0...v3.53.0) (2023-11-07)
+
+### Features
+
+- **addon-doc:** add `tuiSortPages` ([#5817](https://github.com/taiga-family/taiga-ui/issues/5817))
+  ([00f10e8](https://github.com/taiga-family/taiga-ui/commit/00f10e8d2092bbf94fcb1aea3ea2bd6c33aec42d))
+
+### Bug Fixes
+
+- **cdk:** remove redundant dependencies ([#5864](https://github.com/taiga-family/taiga-ui/issues/5864))
+  ([50d0dbe](https://github.com/taiga-family/taiga-ui/commit/50d0dbe3cce3c3b01b26b1965ac68f8f49db2574))
+- **core:** expression has changed after it was checked ([#5827](https://github.com/taiga-family/taiga-ui/issues/5827))
+  ([f0408ed](https://github.com/taiga-family/taiga-ui/commit/f0408ed056f653c6f1ef2dbb94bbffe133ae5223))
+- **kit:** `Toggle` fix loader position ([#5832](https://github.com/taiga-family/taiga-ui/issues/5832))
+  ([b894fe7](https://github.com/taiga-family/taiga-ui/commit/b894fe766577430a326008c5ab4be673e7117a47))
+
 ## [3.52.0](https://github.com/taiga-family/taiga-ui/compare/v3.51.0...v3.52.0) (2023-10-31)
 
 ### Features
