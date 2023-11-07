@@ -48,4 +48,8 @@ export class IconsComponent {
         @Inject(TUI_DEMO_ICONS) readonly icons: DemoTuiIconsTabs,
         @Inject(TuiModeDirective) private readonly mode: TuiModeDirective,
     ) {}
+
+    onIntersection(entries: IntersectionObserverEntry[]): boolean {
+        return entries[entries.length - 1]?.isIntersecting ?? false;
+    }
 }

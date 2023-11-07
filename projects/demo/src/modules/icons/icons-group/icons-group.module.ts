@@ -4,7 +4,6 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {
     TuiAutoFocusModule,
     TuiFilterPipeModule,
-    TuiForAsyncModule,
     TuiKeysPipeModule,
     TuiLetModule,
 } from '@taiga-ui/cdk';
@@ -19,7 +18,6 @@ import {IconsGroupDirective} from './icons-group.directive';
         CommonModule,
         TuiInputModule,
         TuiBadgeModule,
-        TuiForAsyncModule,
         TuiKeysPipeModule,
         TuiFilterPipeModule,
         TuiHintModule,

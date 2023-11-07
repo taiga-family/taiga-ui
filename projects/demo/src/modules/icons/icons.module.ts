@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
@@ -32,6 +33,7 @@ import {IconsGroupModule} from './icons-group/icons-group.module';
         TuiHostedDropdownModule,
         TuiColorSelectorModule,
         TuiActiveZoneModule,
+        IntersectionObserverModule,
     ],
     declarations: [IconsComponent],
     exports: [IconsComponent],
