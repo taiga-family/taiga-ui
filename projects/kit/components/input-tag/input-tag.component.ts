@@ -6,6 +6,7 @@ import {
     ElementRef,
     EventEmitter,
     HostBinding,
+    HostListener,
     Inject,
     Input,
     Optional,
@@ -302,6 +303,12 @@ export class TuiInputTagComponent
 
     get computeMaxHeight(): number | null {
         return this.expandable ? this.rows * this.lineHeight : null;
+    }
+
+    @HostListener('focusin.capture.silent')
+    @HostListener('focusout.capture.silent')
+    onFocusInOut(): void {
+        this.cdr.detectChanges();
     }
 
     detectRetargetFromLabel(event: Event): void {
