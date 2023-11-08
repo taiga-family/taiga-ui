@@ -7,8 +7,8 @@ import {assets} from '@demo/utils';
     selector: 'tui-dropdown-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiDropdownExample2 {
     open = false;

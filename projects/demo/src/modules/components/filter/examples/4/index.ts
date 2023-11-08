@@ -25,8 +25,8 @@ const Department = {
     selector: 'tui-filter-example-4',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiFilterExample4 {
     readonly items = Object.values(Department);

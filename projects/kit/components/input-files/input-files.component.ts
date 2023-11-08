@@ -44,8 +44,8 @@ import {TUI_INPUT_FILES_OPTIONS, TuiInputFilesOptions} from './input-files.optio
     selector: 'tui-input-files',
     templateUrl: './input-files.template.html',
     styleUrls: ['./input-files.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [MODE_PROVIDER, tuiAsFocusableItemAccessor(TuiInputFilesComponent)],
 })
 export class TuiInputFilesComponent

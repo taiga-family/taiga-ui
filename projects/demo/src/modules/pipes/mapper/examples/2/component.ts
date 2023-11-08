@@ -6,8 +6,8 @@ import {TuiTypedMapper} from '@taiga-ui/cdk';
 @Component({
     selector: `tui-mapper-example2`,
     templateUrl: `./template.html`,
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiMapperExample2 {
     numbers = [1, 2, 3, 4, 5] as const;

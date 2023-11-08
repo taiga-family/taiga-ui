@@ -29,8 +29,8 @@ const COMPLETED = {
     selector: 'tui-filter-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiFilterExample2 {
     readonly form = new FormGroup({

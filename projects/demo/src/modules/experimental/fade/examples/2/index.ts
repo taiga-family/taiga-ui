@@ -7,9 +7,9 @@ import {tuiFadeIn} from '@taiga-ui/core';
     selector: 'tui-fade-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    animations: [tuiFadeIn],
-    changeDetection,
     encapsulation,
+    changeDetection,
+    animations: [tuiFadeIn],
 })
 export class TuiFadeExample2 {
     expanded = false;

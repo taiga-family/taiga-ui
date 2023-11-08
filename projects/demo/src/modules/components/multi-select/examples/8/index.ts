@@ -17,8 +17,8 @@ interface Employee {
 @Component({
     selector: 'tui-multi-select-example-8',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         tuiItemsHandlersProvider({
             identityMatcher: (item1: Employee, item2: Employee) => item1.id === item2.id,

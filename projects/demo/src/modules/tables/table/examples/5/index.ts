@@ -47,8 +47,8 @@ const DATA: readonly User[] = Array.from({length: 300}, () => ({
     selector: 'tui-table-example-5',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTableExample5 {
     readonly data = DATA;

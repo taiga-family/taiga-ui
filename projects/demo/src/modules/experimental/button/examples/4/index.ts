@@ -8,8 +8,8 @@ import {map, startWith, switchMap} from 'rxjs/operators';
 @Component({
     selector: 'tui-button-example-4',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiButtonExample4 {
     readonly trigger$ = new Subject();

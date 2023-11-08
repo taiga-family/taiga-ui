@@ -8,6 +8,7 @@ import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
     selector: 'tui-icons-customization-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
+    changeDetection,
     providers: [
         /**
          * @note:
@@ -31,6 +32,5 @@ import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
                 : src,
         ),
     ],
-    changeDetection,
 })
 export class TuiIconsCustomizationExample1 {}

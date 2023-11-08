@@ -6,8 +6,8 @@ import {TUI_IS_ANDROID, TUI_IS_IOS, TUI_IS_MOBILE} from '@taiga-ui/cdk';
 @Component({
     selector: 'tui-mobile-themes-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         {
             provide: TUI_IS_MOBILE,

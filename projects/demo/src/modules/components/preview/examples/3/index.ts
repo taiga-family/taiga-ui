@@ -11,8 +11,8 @@ import {filter, map, startWith, switchMap} from 'rxjs/operators';
     selector: 'tui-preview-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiPreviewExample3 {
     @ViewChild('preview')

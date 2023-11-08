@@ -7,8 +7,8 @@ import {TuiSheetOptions} from '@taiga-ui/addon-mobile';
     selector: 'tui-sheet-example-4',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiSheetExample4 {
     open = false;

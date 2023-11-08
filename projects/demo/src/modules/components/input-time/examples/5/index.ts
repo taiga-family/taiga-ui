@@ -7,8 +7,8 @@ import {tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
 @Component({
     selector: 'tui-input-time-example-5',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         tuiInputTimeOptionsProvider({
             mode: 'HH:MM',

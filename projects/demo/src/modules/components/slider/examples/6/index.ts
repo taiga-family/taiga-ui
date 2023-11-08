@@ -9,8 +9,8 @@ import {distinctUntilChanged, map, switchMap} from 'rxjs/operators';
     selector: 'tui-slider-example-6',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiSliderExample6 {
     min = 0.5;

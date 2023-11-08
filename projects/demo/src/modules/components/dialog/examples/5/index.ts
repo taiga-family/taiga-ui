@@ -8,8 +8,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     selector: 'tui-dialog-example-5',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiDialogExampleComponent5 {
     constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) {}

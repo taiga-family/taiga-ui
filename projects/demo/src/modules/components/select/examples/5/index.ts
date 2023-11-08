@@ -23,8 +23,8 @@ const ITEMS: readonly Python[] = [
     selector: 'tui-select-example-5',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiSelectExample5 {
     value = 42;

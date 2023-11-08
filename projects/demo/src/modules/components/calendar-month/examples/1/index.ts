@@ -6,8 +6,8 @@ import {TuiMonth} from '@taiga-ui/cdk';
 @Component({
     selector: 'tui-calendar-month-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiMonthExample1 {
     value: TuiMonth | null = null;

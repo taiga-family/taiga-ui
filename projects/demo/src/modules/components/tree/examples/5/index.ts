@@ -16,14 +16,14 @@ interface TreeNode {
     selector: 'tui-tree-example-5',
     templateUrl: './index.html',
     styleUrls: ['index.less'],
+    encapsulation,
+    changeDetection,
     providers: [
         {
             provide: TUI_TREE_CONTENT,
             useValue: new PolymorpheusComponent(FoldersComponent),
         },
     ],
-    changeDetection,
-    encapsulation,
 })
 export class TuiTreeExample5 {
     readonly data: TreeNode = {

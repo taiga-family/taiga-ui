@@ -4,7 +4,6 @@ import {
     ContentChild,
     ElementRef,
     EventEmitter,
-    HostBinding,
     HostListener,
     Inject,
     Input,
@@ -79,8 +78,14 @@ function shouldClose(
             useExisting: TuiHostedDropdownComponent,
         },
     ],
+    host: {
+        '[$.class._hosted_dropdown_focused]': 'focus$',
+        '($.class._hosted_dropdown_focused)': 'focus$',
+    },
 })
 export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
+    readonly focus$ = new BehaviorSubject(false);
+
     @ContentChild(TuiHostedDropdownConnectorDirective, {read: ElementRef})
     private readonly dropdownHost?: ElementRef<HTMLElement>;
 
@@ -173,7 +178,6 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
               });
     }
 
-    @HostBinding('class._hosted_dropdown_focused')
     get focused(): boolean {
         return (
             tuiIsNativeFocusedIn(this.host) ||
@@ -181,6 +185,12 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
                 !!this.wrapper &&
                 tuiIsNativeFocusedIn(this.wrapper.nativeElement))
         );
+    }
+
+    @HostListener('focusin.capture.silent')
+    @HostListener('focusout.capture.silent')
+    onFocusInOut(): void {
+        this.focus$.next(this.focused);
     }
 
     @HostListener('focusin', ['$event.target'])

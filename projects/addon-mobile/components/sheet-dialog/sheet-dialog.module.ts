@@ -11,7 +11,7 @@ import {TuiSheetDialogService} from './sheet-dialog.service';
 @NgModule({
     imports: [CommonModule, PolymorpheusModule, TuiClickOutsideModule, TuiButtonModule],
     declarations: [TuiSheetDialogComponent, TuiSheetDialogDirective],
-    exports: [TuiSheetDialogComponent, TuiSheetDialogDirective],
     providers: [tuiAsDialog(TuiSheetDialogService)],
+    exports: [TuiSheetDialogComponent, TuiSheetDialogDirective],
 })
 export class TuiSheetDialogModule {}

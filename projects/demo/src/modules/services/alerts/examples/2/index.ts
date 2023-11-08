@@ -7,8 +7,8 @@ import {TuiAlertOptions, TuiAlertService} from '@taiga-ui/core';
 @Component({
     selector: 'tui-alerts-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiAlertsExampleComponent2 {
     @ViewChild('withdrawTemplate')

@@ -9,8 +9,8 @@ import {takeUntil} from 'rxjs/operators';
     selector: 'tui-scroll-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [TuiDestroyService],
 })
 export class TuiScrollExample1 {

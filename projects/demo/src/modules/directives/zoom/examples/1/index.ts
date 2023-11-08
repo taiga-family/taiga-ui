@@ -9,8 +9,8 @@ import {map, scan, startWith} from 'rxjs/operators';
     selector: 'tui-zoom-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiZoomExample1 {
     readonly delta$ = new Subject<number>();

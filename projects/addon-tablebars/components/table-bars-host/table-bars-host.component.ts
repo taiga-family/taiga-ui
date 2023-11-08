@@ -21,9 +21,9 @@ import {TuiTableBarsService} from '../../services/table-bars.service';
 // TODO: Accessibility
 @Component({
     selector: 'tui-table-bars-host',
-    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './table-bars-host.template.html',
     styleUrls: ['./table-bars-host.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop, TUI_PARENT_ANIMATION],
 })
 export class TuiTableBarsHostComponent {

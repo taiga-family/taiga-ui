@@ -7,8 +7,8 @@ import {TuiLineHandler} from '@taiga-ui/addon-charts';
     selector: 'tui-axes-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiAxesExample1 {
     readonly axisXLabels = ['Jan 2019', 'Feb', 'Mar'];

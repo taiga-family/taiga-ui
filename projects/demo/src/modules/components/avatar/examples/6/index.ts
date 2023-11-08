@@ -6,8 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-avatar-example-6',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiAvatarExample6 {
     readonly waterplea = 'https://avatars.githubusercontent.com/u/11832552?v=4';

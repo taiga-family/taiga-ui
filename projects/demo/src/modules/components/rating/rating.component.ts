@@ -9,8 +9,8 @@ import {TUI_RATING_OPTIONS, TuiRatingOptions} from '@taiga-ui/kit';
     selector: 'example-rating',
     templateUrl: './rating.template.html',
     styleUrls: ['./rating.template.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class ExampleTuiRatingComponent {
     readonly exampleModule: TuiRawLoaderContent = import(

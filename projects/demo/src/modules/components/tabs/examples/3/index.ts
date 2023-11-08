@@ -6,8 +6,8 @@ import {TuiAlertService} from '@taiga-ui/core';
 @Component({
     selector: 'tui-tabs-example-3',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTabsExample3 {
     activeItemIndex = 0;

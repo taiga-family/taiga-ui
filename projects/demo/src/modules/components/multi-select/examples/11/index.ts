@@ -8,8 +8,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     selector: 'tui-multi-select-example-11',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiMultiSelectExample11 {
     readonly items = [

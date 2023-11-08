@@ -16,8 +16,8 @@ import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
     selector: 'tui-primitive-textfield-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiPrimitiveTextfieldExample1 extends AbstractTuiControl<string> {
     @ViewChild(TuiPrimitiveTextfieldComponent)

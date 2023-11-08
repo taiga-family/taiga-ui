@@ -6,8 +6,8 @@ import {TuiDialogService} from '@taiga-ui/core';
 @Component({
     selector: 'tui-dialog-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiDialogExampleComponent1 {
     constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) {}

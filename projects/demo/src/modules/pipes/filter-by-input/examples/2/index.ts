@@ -11,8 +11,8 @@ interface User {
 @Component({
     selector: 'tui-filter-by-input-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiFilterByInputExample2 {
     readonly items = [

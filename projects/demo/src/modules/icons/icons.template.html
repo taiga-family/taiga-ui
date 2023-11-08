@@ -35,7 +35,11 @@
             token, which is responsible for removing malicious code from the svg.
         </p>
 
-        <icons-group [icons]="icons[key]">
+        <icons-group
+            waIntersectionObserver
+            waIntersectionThreshold="0.5"
+            [icons]="icons[key]"
+        >
             <div class="icons-customization">
                 <tui-hosted-dropdown
                     tuiDropdownAlign="left"
@@ -82,24 +86,31 @@
             <ng-template
                 iconGroup
                 let-copyPath="copyPath"
+                let-entry="entry"
                 let-icon="icon"
             >
-                <button
-                    appearance="icon"
-                    size="m"
-                    title="Copy"
-                    tuiIconButton
-                    type="button"
-                    class="icon"
-                    [attr.aria-label]="icon"
-                    [class.t-appearance]="appearance"
-                    [class.t-background]="transparent"
-                    [class.t-wrapper-icons_dark]="(mode$ | async) === 'onDark'"
-                    [icon]="icon"
-                    [style.--tui-text-01-night]="color"
-                    [style.--tui-text-01]="color"
-                    (click)="copyPath(icon)"
-                ></button>
+                <div
+                    class="icon-place"
+                    (waIntersectionObservee)="entry.isIntersecting = entry.isIntersecting || onIntersection($event)"
+                >
+                    <button
+                        *ngIf="entry.isIntersecting"
+                        appearance="icon"
+                        size="m"
+                        title="Copy"
+                        tuiIconButton
+                        type="button"
+                        class="icon"
+                        [attr.aria-label]="icon"
+                        [class.t-appearance]="appearance"
+                        [class.t-background]="transparent"
+                        [class.t-wrapper-icons_dark]="(mode$ | async) === 'onDark'"
+                        [icon]="icon"
+                        [style.--tui-text-01-night]="color"
+                        [style.--tui-text-01]="color"
+                        (click)="copyPath(icon)"
+                    ></button>
+                </div>
             </ng-template>
         </icons-group>
     </ng-template>

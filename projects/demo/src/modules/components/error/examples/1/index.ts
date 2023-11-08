@@ -6,8 +6,8 @@ import {TuiValidationError} from '@taiga-ui/cdk';
 @Component({
     selector: 'tui-error-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiErrorExample1 {
     enabled = false;

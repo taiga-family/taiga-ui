@@ -27,7 +27,7 @@ import {ExampleTuiScrollComponent} from './scroll.component';
         TuiTextCodeModule,
     ],
     declarations: [ExampleTuiScrollComponent, TuiScrollExample1],
-    exports: [ExampleTuiScrollComponent],
     providers: [TuiScrollService],
+    exports: [ExampleTuiScrollComponent],
 })
 export class ExampleTuiScrollModule {}

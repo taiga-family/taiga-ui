@@ -10,8 +10,8 @@ import {MyAccount} from './account/my-account.component';
     selector: 'tui-select-example-9',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiSelectExample9 {
     readonly accounts: MyAccount[] = [

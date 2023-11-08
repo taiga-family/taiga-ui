@@ -6,6 +6,8 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select';
 @Component({
     selector: 'select[multiple][tuiSelect][labels]',
     templateUrl: './native-multi-select-group.template.html',
+    styleUrls: ['./native-multi-select.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsDataList(TuiNativeMultiSelectGroupComponent),
         {
@@ -27,8 +29,6 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select';
         '(click.stop.silent)': '0',
         '(mousedown.stop.silent)': '0',
     },
-    styleUrls: ['./native-multi-select.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiNativeMultiSelectGroupComponent<
     T,

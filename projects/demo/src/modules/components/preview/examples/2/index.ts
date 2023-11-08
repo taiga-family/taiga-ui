@@ -8,8 +8,8 @@ import {TuiDialogContext} from '@taiga-ui/core';
     selector: 'tui-preview-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiPreviewExample2 {
     @ViewChild('preview')

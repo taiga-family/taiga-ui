@@ -14,8 +14,8 @@ import {
     selector: 'tui-slide-in-example',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
     animations: [tuiSlideInLeft, tuiSlideInTop, tuiSlideInBottom, tuiSlideInRight],
 })
 export class TuiSlideInExample {

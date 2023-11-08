@@ -8,8 +8,8 @@ import {tuiIsPresent} from '@taiga-ui/cdk';
     selector: 'tui-miscellaneous-example-5',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiMiscellaneousExample5 {
     readonly items = ['String', 'null', 'undefined'];

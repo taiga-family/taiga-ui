@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-surface-example-1',
     templateUrl: './index.html',
     styleUrls: ['./base.less', './index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiSurfaceExample1 {}

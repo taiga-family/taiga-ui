@@ -7,8 +7,8 @@ import {TUI_ARROW} from '@taiga-ui/kit';
 @Component({
     selector: 'tui-hosted-dropdown-example-4',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiHostedDropdownExample4 {
     readonly form = new FormGroup({

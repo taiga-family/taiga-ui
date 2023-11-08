@@ -7,8 +7,8 @@ import {TuiAlertService} from '@taiga-ui/core';
 @Component({
     selector: 'tui-value-changes-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiValueChangesExample2 {
     readonly form = new FormGroup({

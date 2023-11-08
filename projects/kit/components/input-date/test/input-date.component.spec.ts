@@ -19,406 +19,409 @@ import {TuiInputDateComponent, TuiInputDateModule} from '@taiga-ui/kit';
 import {TUI_DATE_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
 import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
-@Component({
-    template: `
-        <tui-root>
-            <tui-input-date
-                [formControl]="control"
-                [min]="min"
-                [readOnly]="readOnly"
-                [tuiHintContent]="hintContent"
-                [tuiTextfieldCleaner]="cleaner"
-                [tuiTextfieldLabelOutside]="labelOutside"
-                [tuiTextfieldSize]="size"
-            >
-                Select date
-            </tui-input-date>
-        </tui-root>
-    `,
-})
-class TestComponent {
-    @ViewChild(TuiInputDateComponent)
-    readonly component!: TuiInputDateComponent;
+describe(`InputDate`, () => {
+    @Component({
+        template: `
+            <tui-root>
+                <tui-input-date
+                    [formControl]="control"
+                    [min]="min"
+                    [readOnly]="readOnly"
+                    [tuiHintContent]="hintContent"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                >
+                    Select date
+                </tui-input-date>
+            </tui-root>
+        `,
+    })
+    class TestComponent {
+        @ViewChild(TuiInputDateComponent)
+        readonly component!: TuiInputDateComponent;
 
-    control = new FormControl(new TuiDay(2017, 2, 1));
+        control = new FormControl(new TuiDay(2017, 2, 1));
 
-    cleaner = false;
+        cleaner = false;
 
-    readOnly = false;
+        readOnly = false;
 
-    min = new TuiDay(1900, 0, 1);
+        min = new TuiDay(1900, 0, 1);
 
-    labelOutside = false;
+        labelOutside = false;
 
-    size: TuiSizeL | TuiSizeS = `m`;
+        size: TuiSizeL | TuiSizeS = `m`;
 
-    hintContent: string | null = `prompt`;
-}
+        hintContent: string | null = `prompt`;
+    }
 
-let fixture: ComponentFixture<TestComponent>;
-let testComponent: TestComponent;
-let pageObject: TuiPageObject<TestComponent>;
-let inputPO: TuiNativeInputPO;
+    let fixture: ComponentFixture<TestComponent>;
+    let testComponent: TestComponent;
+    let pageObject: TuiPageObject<TestComponent>;
+    let inputPO: TuiNativeInputPO;
 
-const testContext = {
-    get pageObject() {
-        return pageObject;
-    },
-    get fixture() {
-        return fixture;
-    },
-    get testComponent() {
-        return testComponent;
-    },
-    get inputPO() {
-        return inputPO;
-    },
-    get prefix() {
-        return `tui-input-date__`;
-    },
-};
+    const testContext = {
+        get pageObject() {
+            return pageObject;
+        },
+        get fixture() {
+            return fixture;
+        },
+        get testComponent() {
+            return testComponent;
+        },
+        get inputPO() {
+            return inputPO;
+        },
+        get prefix() {
+            return `tui-input-date__`;
+        },
+    };
 
-const DEFAULT_TESTING_MODULE_META = {
-    imports: [
-        TuiRootModule,
-        NoopAnimationsModule,
-        TuiInputDateModule,
-        ReactiveFormsModule,
-        TuiHintModule,
-        TuiTextfieldControllerModule,
-    ],
-    declarations: [TestComponent],
-};
+    const meta = {
+        imports: [
+            TuiRootModule,
+            NoopAnimationsModule,
+            TuiInputDateModule,
+            ReactiveFormsModule,
+            TuiHintModule,
+            TuiTextfieldControllerModule,
+        ],
+        declarations: [TestComponent],
+    };
 
-const initializeEnvironment = async (
-    component: Type<TestComponent> = TestComponent,
-): Promise<void> => {
-    fixture = TestBed.createComponent(component);
-    fixture.detectChanges();
-
-    pageObject = new TuiPageObject(fixture);
-    testComponent = fixture.componentInstance;
-    inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
-
-    await fixture.whenStable();
-};
-
-describe(`InputDate (base cases when TUI_DATE_FORMAT = DMY)`, () => {
-    configureTestSuite(() => {
-        TestBed.configureTestingModule(DEFAULT_TESTING_MODULE_META);
-    });
-
-    beforeEach(async () => {
-        await initializeEnvironment();
-    });
-
-    it(`sets valid day if date selected via calendar`, async () => {
-        mouseDownOnTextfield();
-
-        expect(getCalendar()).not.toBeNull();
-
-        const calendarCell = getCalendarCell(14);
-
-        calendarCell?.nativeElement.click();
+    const initializeEnvironment = async (
+        component: Type<TestComponent> = TestComponent,
+    ): Promise<void> => {
+        fixture = TestBed.createComponent(component);
         fixture.detectChanges();
+
+        pageObject = new TuiPageObject(fixture);
+        testComponent = fixture.componentInstance;
+        inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
+
         await fixture.whenStable();
+    };
 
-        expect(inputPO.value).toBe(`14.03.2017`);
-    });
-
-    describe(`Keyboard input`, () => {
-        it(`The passed date is inserted into the field`, () => {
-            inputPO.sendText(`01.03.2017`);
-
-            expect(inputPO.value).toBe(`01.03.2017`);
+    describe(`InputDate (base cases when TUI_DATE_FORMAT = DMY)`, () => {
+        configureTestSuite(() => {
+            TestBed.configureTestingModule(meta);
         });
 
-        it(`When entering an incomplete date, leaves it in the field`, () => {
-            inputPO.sendText(`31.12.20`);
-
-            expect(inputPO.value).toBe(`31.12.20`);
+        beforeEach(async () => {
+            await initializeEnvironment();
         });
 
-        it(`When entering an incomplete date, the control value is null`, () => {
-            inputPO.sendText(`31.12.20`);
+        it(`sets valid day if date selected via calendar`, async () => {
+            mouseDownOnTextfield();
 
-            expect(testComponent.control.value).toBeNull();
+            expect(getCalendar()).not.toBeNull();
+
+            const calendarCell = getCalendarCell(14);
+
+            calendarCell?.nativeElement.click();
+            fixture.detectChanges();
+            await fixture.whenStable();
+
+            expect(inputPO.value).toBe(`14.03.2017`);
         });
-    });
 
-    describe(`textfield`, () => {
-        describe(`when mousedown on it`, () => {
-            describe(`unless the field is locked and not read-only`, () => {
-                it(`opens the calendar`, () => {
-                    mouseDownOnTextfield();
+        describe(`Keyboard input`, () => {
+            it(`The passed date is inserted into the field`, () => {
+                inputPO.sendText(`01.03.2017`);
 
-                    expect(getCalendar()).not.toBeNull();
-                });
+                expect(inputPO.value).toBe(`01.03.2017`);
+            });
 
-                it(`on repeated mousedown will close the calendar`, () => {
-                    mouseDownOnTextfield();
-                    mouseDownOnTextfield();
+            it(`When entering an incomplete date, leaves it in the field`, () => {
+                inputPO.sendText(`31.12.20`);
 
-                    expect(getCalendar()).toBeNull();
-                });
+                expect(inputPO.value).toBe(`31.12.20`);
+            });
 
-                describe(`if the field is locked`, () => {
-                    it(`the calendar does not open`, () => {
-                        testComponent.control.disable();
-                        fixture.detectChanges();
+            it(`When entering an incomplete date, the control value is null`, () => {
+                inputPO.sendText(`31.12.20`);
+
+                expect(testComponent.control.value).toBeNull();
+            });
+        });
+
+        describe(`textfield`, () => {
+            describe(`when mousedown on it`, () => {
+                describe(`unless the field is locked and not read-only`, () => {
+                    it(`opens the calendar`, () => {
+                        mouseDownOnTextfield();
+
+                        expect(getCalendar()).not.toBeNull();
+                    });
+
+                    it(`on repeated mousedown will close the calendar`, () => {
+                        mouseDownOnTextfield();
                         mouseDownOnTextfield();
 
                         expect(getCalendar()).toBeNull();
                     });
-                });
 
-                describe(`if the readOnly field`, () => {
-                    it(`the calendar does not open`, () => {
-                        testComponent.readOnly = true;
-                        fixture.detectChanges();
-                        mouseDownOnTextfield();
+                    describe(`if the field is locked`, () => {
+                        it(`the calendar does not open`, () => {
+                            testComponent.control.disable();
+                            fixture.detectChanges();
+                            mouseDownOnTextfield();
 
-                        expect(getCalendar()).toBeNull();
+                            expect(getCalendar()).toBeNull();
+                        });
+                    });
+
+                    describe(`if the readOnly field`, () => {
+                        it(`the calendar does not open`, () => {
+                            testComponent.readOnly = true;
+                            fixture.detectChanges();
+                            mouseDownOnTextfield();
+
+                            expect(getCalendar()).toBeNull();
+                        });
                     });
                 });
             });
         });
     });
-});
 
-describe(`InputDate + TUI_DATE_FORMAT = YMD integration`, () => {
-    configureTestSuite(() => {
-        TestBed.configureTestingModule({
-            ...DEFAULT_TESTING_MODULE_META,
-            providers: [{provide: TUI_DATE_FORMAT, useValue: `YMD`}],
+    describe(`InputDate + TUI_DATE_FORMAT = YMD integration`, () => {
+        configureTestSuite(() => {
+            TestBed.configureTestingModule({
+                ...meta,
+                providers: [{provide: TUI_DATE_FORMAT, useValue: `YMD`}],
+            });
+        });
+
+        beforeEach(async () => {
+            await initializeEnvironment();
+        });
+
+        it(`accepts yyyy.mm.dd`, () => {
+            inputPO.sendText(`2021.12.23`);
+
+            const typedDay = testComponent.control.value;
+
+            expect(inputPO.value).toBe(`2021.12.23`);
+            expect(typedDay.day).toBe(23);
+            expect(typedDay.month).toBe(11);
+            expect(typedDay.year).toBe(2021);
+        });
+
+        it(`does not accept mm.dd.yyyy (and set min day if it is less min day)`, () => {
+            inputPO.sendText(`12.23.2021`);
+
+            const typedDay = testComponent.control.value;
+
+            expect(inputPO.value).toBe(`1900.01.01`);
+            expect(typedDay.day).toBe(1);
+            expect(typedDay.month).toBe(0);
+            expect(typedDay.year).toBe(1900);
+        });
+
+        it(`sets valid day if date selected via calendar`, async () => {
+            mouseDownOnTextfield();
+
+            expect(getCalendar()).not.toBeNull();
+
+            const calendarCell = getCalendarCell(22);
+
+            calendarCell?.nativeElement.click();
+            fixture.detectChanges();
+            await fixture.whenStable();
+
+            expect(inputPO.value).toBe(`2017.03.22`);
         });
     });
 
-    beforeEach(async () => {
-        await initializeEnvironment();
-    });
+    describe(`InputDate + TUI_DATE_FORMAT = MDY integration`, () => {
+        configureTestSuite(() => {
+            TestBed.configureTestingModule({
+                ...meta,
+                providers: [{provide: TUI_DATE_FORMAT, useValue: `MDY`}],
+            });
+        });
 
-    it(`accepts yyyy.mm.dd`, () => {
-        inputPO.sendText(`2021.12.23`);
+        beforeEach(async () => {
+            await initializeEnvironment();
+        });
 
-        const typedDay = testComponent.control.value;
+        it(`accepts mm.dd.yyyy`, () => {
+            inputPO.sendText(`12.23.2021`);
 
-        expect(inputPO.value).toBe(`2021.12.23`);
-        expect(typedDay.day).toBe(23);
-        expect(typedDay.month).toBe(11);
-        expect(typedDay.year).toBe(2021);
-    });
+            const typedDay = testComponent.control.value;
 
-    it(`does not accept mm.dd.yyyy (and set min day if it is less min day)`, () => {
-        inputPO.sendText(`12.23.2021`);
+            expect(inputPO.value).toBe(`12.23.2021`);
+            expect(typedDay.day).toBe(23);
+            expect(typedDay.month).toBe(11);
+            expect(typedDay.year).toBe(2021);
+        });
 
-        const typedDay = testComponent.control.value;
+        it(`does not accept yyyy.mm.dd (and set min day if it is less min day)`, () => {
+            inputPO.sendText(`2021.12.23`);
 
-        expect(inputPO.value).toBe(`1900.01.01`);
-        expect(typedDay.day).toBe(1);
-        expect(typedDay.month).toBe(0);
-        expect(typedDay.year).toBe(1900);
-    });
+            const typedDay = testComponent.control.value;
 
-    it(`sets valid day if date selected via calendar`, async () => {
-        mouseDownOnTextfield();
+            expect(inputPO.value).toBe(`01.01.1900`);
+            expect(typedDay.day).toBe(1);
+            expect(typedDay.month).toBe(0);
+            expect(typedDay.year).toBe(1900);
+        });
 
-        expect(getCalendar()).not.toBeNull();
+        it(`sets valid day if date selected via calendar`, async () => {
+            mouseDownOnTextfield();
 
-        const calendarCell = getCalendarCell(22);
+            expect(getCalendar()).not.toBeNull();
 
-        calendarCell?.nativeElement.click();
-        fixture.detectChanges();
-        await fixture.whenStable();
+            const calendarCell = getCalendarCell(9);
 
-        expect(inputPO.value).toBe(`2017.03.22`);
-    });
-});
+            calendarCell?.nativeElement.click();
+            fixture.detectChanges();
+            await fixture.whenStable();
 
-describe(`InputDate + TUI_DATE_FORMAT = MDY integration`, () => {
-    configureTestSuite(() => {
-        TestBed.configureTestingModule({
-            ...DEFAULT_TESTING_MODULE_META,
-            providers: [{provide: TUI_DATE_FORMAT, useValue: `MDY`}],
+            expect(inputPO.value).toBe(`03.09.2017`);
         });
     });
 
-    beforeEach(async () => {
-        await initializeEnvironment();
-    });
+    describe(`InputDate + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR ="/" (USA format)`, () => {
+        configureTestSuite(() => {
+            TestBed.configureTestingModule({
+                ...meta,
+                providers: [
+                    {provide: TUI_DATE_FORMAT, useValue: `MDY`},
+                    {provide: TUI_DATE_SEPARATOR, useValue: `/`},
+                ],
+            });
+        });
 
-    it(`accepts mm.dd.yyyy`, () => {
-        inputPO.sendText(`12.23.2021`);
+        beforeEach(async () => {
+            await initializeEnvironment();
+        });
 
-        const typedDay = testComponent.control.value;
+        it(`accepts valid mm/dd/yyyy`, () => {
+            inputPO.sendText(`12272021`);
 
-        expect(inputPO.value).toBe(`12.23.2021`);
-        expect(typedDay.day).toBe(23);
-        expect(typedDay.month).toBe(11);
-        expect(typedDay.year).toBe(2021);
-    });
+            const typedDay = testComponent.control.value;
 
-    it(`does not accept yyyy.mm.dd (and set min day if it is less min day)`, () => {
-        inputPO.sendText(`2021.12.23`);
+            expect(inputPO.value).toBe(`12/27/2021`);
+            expect(typedDay.day).toBe(27);
+            expect(typedDay.month).toBe(11);
+            expect(typedDay.year).toBe(2021);
+        });
 
-        const typedDay = testComponent.control.value;
+        it(`replaces dots by custom separator`, () => {
+            inputPO.sendText(`05.14.1988`);
 
-        expect(inputPO.value).toBe(`01.01.1900`);
-        expect(typedDay.day).toBe(1);
-        expect(typedDay.month).toBe(0);
-        expect(typedDay.year).toBe(1900);
-    });
+            const typedDay = testComponent.control.value;
 
-    it(`sets valid day if date selected via calendar`, async () => {
-        mouseDownOnTextfield();
-
-        expect(getCalendar()).not.toBeNull();
-
-        const calendarCell = getCalendarCell(9);
-
-        calendarCell?.nativeElement.click();
-        fixture.detectChanges();
-        await fixture.whenStable();
-
-        expect(inputPO.value).toBe(`03.09.2017`);
-    });
-});
-
-describe(`InputDate + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR ="/" (USA format)`, () => {
-    configureTestSuite(() => {
-        TestBed.configureTestingModule({
-            ...DEFAULT_TESTING_MODULE_META,
-            providers: [
-                {provide: TUI_DATE_FORMAT, useValue: `MDY`},
-                {provide: TUI_DATE_SEPARATOR, useValue: `/`},
-            ],
+            expect(inputPO.value).toBe(`05/14/1988`);
+            expect(typedDay.day).toBe(14);
+            expect(typedDay.month).toBe(4);
+            expect(typedDay.year).toBe(1988);
         });
     });
 
-    beforeEach(async () => {
-        await initializeEnvironment();
-    });
+    describe(`InputDate + TUI_DATE_VALUE_TRANSFORMER`, () => {
+        class TestTransformer extends AbstractTuiValueTransformer<
+            TuiDay | null,
+            Date | null
+        > {
+            fromControlValue(controlValue: Date | null): TuiDay | null {
+                return controlValue && TuiDay.fromLocalNativeDate(controlValue);
+            }
 
-    it(`accepts valid mm/dd/yyyy`, () => {
-        inputPO.sendText(`12272021`);
-
-        const typedDay = testComponent.control.value;
-
-        expect(inputPO.value).toBe(`12/27/2021`);
-        expect(typedDay.day).toBe(27);
-        expect(typedDay.month).toBe(11);
-        expect(typedDay.year).toBe(2021);
-    });
-
-    it(`replaces dots by custom separator`, () => {
-        inputPO.sendText(`05.14.1988`);
-
-        const typedDay = testComponent.control.value;
-
-        expect(inputPO.value).toBe(`05/14/1988`);
-        expect(typedDay.day).toBe(14);
-        expect(typedDay.month).toBe(4);
-        expect(typedDay.year).toBe(1988);
-    });
-});
-
-describe(`InputDate + TUI_DATE_VALUE_TRANSFORMER`, () => {
-    class TestTransformer extends AbstractTuiValueTransformer<
-        TuiDay | null,
-        Date | null
-    > {
-        fromControlValue(controlValue: Date | null): TuiDay | null {
-            return controlValue && TuiDay.fromLocalNativeDate(controlValue);
+            toControlValue(componentValue: TuiDay | null): Date | null {
+                return componentValue?.toLocalNativeDate() || null;
+            }
         }
 
-        toControlValue(componentValue: TuiDay | null): Date | null {
-            return componentValue?.toLocalNativeDate() || null;
+        class TransformerTestComponent extends TestComponent {
+            override control = new FormControl(new Date(2022, 0, 31));
         }
-    }
 
-    class TransformerTestComponent extends TestComponent {
-        override control = new FormControl(new Date(2022, 0, 31));
-    }
+        configureTestSuite(() => {
+            TestBed.configureTestingModule({
+                ...meta,
+                declarations: [TransformerTestComponent],
+                providers: [
+                    {
+                        provide: TUI_DATE_VALUE_TRANSFORMER,
+                        useClass: TestTransformer,
+                    },
+                ],
+            });
+        });
 
-    configureTestSuite(() => {
-        TestBed.configureTestingModule({
-            ...DEFAULT_TESTING_MODULE_META,
-            declarations: [TransformerTestComponent],
-            providers: [
-                {
-                    provide: TUI_DATE_VALUE_TRANSFORMER,
-                    useClass: TestTransformer,
-                },
-            ],
+        beforeEach(async () => {
+            await initializeEnvironment(TransformerTestComponent);
+        });
+
+        it(`correctly transforms initial value`, () => {
+            expect(inputPO.value).toBe(`31.01.2022`);
+            expect(testComponent.control.value).toEqual(new Date(2022, 0, 31));
+        });
+
+        it(`transforms typed value`, () => {
+            inputPO.sendText(`09011905`);
+
+            expect(inputPO.value).toBe(`09.01.1905`);
+            expect(testComponent.control.value).toEqual(new Date(1905, 0, 9));
+        });
+
+        it(`transforms min day as output (if typed day is less than min day)`, () => {
+            inputPO.sendText(`19.02.1861`);
+
+            expect(inputPO.value).toBe(`01.01.1900`);
+            expect(testComponent.control.value).toEqual(new Date(1900, 0, 1));
+        });
+
+        it(`transforms value which was selected via calendar`, async () => {
+            mouseDownOnTextfield();
+
+            expect(getCalendar()).not.toBeNull();
+
+            const calendarCell = getCalendarCell(20);
+
+            calendarCell?.nativeElement.click();
+            fixture.detectChanges();
+            await fixture.whenStable();
+
+            expect(inputPO.value).toBe(`20.01.2022`);
+            expect(testComponent.control.value).toEqual(new Date(2022, 0, 20));
+        });
+
+        it(`transforms value which was programmatically patched`, () => {
+            testComponent.control.patchValue(new Date(1991, 11, 26));
+
+            expect(inputPO.value).toBe(`26.12.1991`);
+            expect(testComponent.control.value).toEqual(new Date(1991, 11, 26));
         });
     });
 
-    beforeEach(async () => {
-        await initializeEnvironment(TransformerTestComponent);
-    });
-
-    it(`correctly transforms initial value`, () => {
-        expect(inputPO.value).toBe(`31.01.2022`);
-        expect(testComponent.control.value).toEqual(new Date(2022, 0, 31));
-    });
-
-    it(`transforms typed value`, () => {
-        inputPO.sendText(`09011905`);
-
-        expect(inputPO.value).toBe(`09.01.1905`);
-        expect(testComponent.control.value).toEqual(new Date(1905, 0, 9));
-    });
-
-    it(`transforms min day as output (if typed day is less than min day)`, () => {
-        inputPO.sendText(`19.02.1861`);
-
-        expect(inputPO.value).toBe(`01.01.1900`);
-        expect(testComponent.control.value).toEqual(new Date(1900, 0, 1));
-    });
-
-    it(`transforms value which was selected via calendar`, async () => {
-        mouseDownOnTextfield();
-
-        expect(getCalendar()).not.toBeNull();
-
-        const calendarCell = getCalendarCell(20);
-
-        calendarCell?.nativeElement.click();
+    function mouseDownOnTextfield(): void {
+        getTextfield()!.nativeElement.dispatchEvent(
+            new MouseEvent(`mousedown`, {bubbles: true}),
+        );
+        getTextfield()!.nativeElement.click();
         fixture.detectChanges();
-        await fixture.whenStable();
+    }
 
-        expect(inputPO.value).toBe(`20.01.2022`);
-        expect(testComponent.control.value).toEqual(new Date(2022, 0, 20));
-    });
+    function getTextfield(): DebugElement | null {
+        return pageObject.getByAutomationId(`tui-input-date-range__textfield`);
+    }
 
-    it(`transforms value which was programmatically patched`, () => {
-        testComponent.control.patchValue(new Date(1991, 11, 26));
+    function getCalendar(): DebugElement | null {
+        return pageObject.getByAutomationId(`${testContext.prefix}calendar`);
+    }
 
-        expect(inputPO.value).toBe(`26.12.1991`);
-        expect(testComponent.control.value).toEqual(new Date(1991, 11, 26));
-    });
+    function getCalendarCell(dayNumber: number): DebugElement | null {
+        return (
+            pageObject
+                .getAllByAutomationId(`tui-primitive-calendar__cell`)
+                .find(el => Number(el.nativeElement.textContent.trim()) === dayNumber) ||
+            null
+        );
+    }
 });
-
-function mouseDownOnTextfield(): void {
-    getTextfield()!.nativeElement.dispatchEvent(
-        new MouseEvent(`mousedown`, {bubbles: true}),
-    );
-    getTextfield()!.nativeElement.click();
-    fixture.detectChanges();
-}
-
-function getTextfield(): DebugElement | null {
-    return pageObject.getByAutomationId(`tui-input-date-range__textfield`);
-}
-
-function getCalendar(): DebugElement | null {
-    return pageObject.getByAutomationId(`${testContext.prefix}calendar`);
-}
-
-function getCalendarCell(dayNumber: number): DebugElement | null {
-    return (
-        pageObject
-            .getAllByAutomationId(`tui-primitive-calendar__cell`)
-            .find(el => Number(el.nativeElement.textContent.trim()) === dayNumber) || null
-    );
-}

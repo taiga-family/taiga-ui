@@ -7,8 +7,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: `tui-input-inline-example-1`,
     templateUrl: `./template.html`,
     styleUrls: [`./style.less`],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputInlineExample1 {
     testForm = new FormGroup({

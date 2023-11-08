@@ -16,99 +16,12 @@
         />
     </div>
     <div class="container">
-        <h2 class="title">
-            Dozens of
-            <br />
-            components
-        </h2>
-        <tui-input-tag
-            tuiHintContent="Customizable for any use case"
-            class="tui-space_vertical-10"
-            [tuiTextfieldLabelOutside]="true"
-            [(ngModel)]="tags"
-        ></tui-input-tag>
-        <div class="flex">
-            <div class="date">
-                <tui-input-date
-                    required
-                    [(ngModel)]="date"
-                    (click.capture.stop)="(0)"
-                    (keydown.capture.stop)="(0)"
-                    (mousedown.capture.stop)="(0)"
-                >
-                    Choose date
-                    <input
-                        placeholder="dd.mm.yyyy"
-                        tuiTextfield
-                    />
-                </tui-input-date>
-                <tui-calendar
-                    class="calendar"
-                    [value]="date"
-                    (dayClick)="onDay($event)"
-                    (event.prevent.silent)="(0)"
-                ></tui-calendar>
-            </div>
-            <div>
-                <tui-checkbox-labeled
-                    *ngFor="let label of labels"
-                    size="l"
-                    class="tui-space_bottom-4"
-                    [ngModel]="label === labels[1]"
-                >
-                    {{ label }}
-                </tui-checkbox-labeled>
-            </div>
-            <div class="controls">
-                <label>
-                    <tui-toggle
-                        size="l"
-                        class="tui-space_right-3"
-                        [ngModel]="true"
-                        [showIcons]="true"
-                    ></tui-toggle>
-                    Push notifications
-                </label>
-                <input
-                    size="m"
-                    step="any"
-                    tuiSlider
-                    type="range"
-                    class="tui-space_vertical-6"
-                    [max]="140"
-                    [ngModel]="80"
-                />
-                <div class="icons">
-                    <button
-                        appearance=""
-                        icon="tuiIconVolumeXLarge"
-                        shape="rounded"
-                        title="Mute speaker"
-                        tuiIconButton
-                        type="button"
-                        class="button"
-                    ></button>
-                    <button
-                        appearance=""
-                        icon="tuiIconMicOffLarge"
-                        shape="rounded"
-                        title="Mute microphone"
-                        tuiIconButton
-                        type="button"
-                        class="button"
-                    ></button>
-                    <button
-                        appearance=""
-                        icon="tuiIconPhoneForwardedLarge"
-                        shape="rounded"
-                        title="Forward call"
-                        tuiIconButton
-                        type="button"
-                        class="error"
-                    ></button>
-                </div>
-            </div>
-        </div>
+        <iframe
+            height="100%"
+            src="https://taiga-family.github.io/preview-landing-components/"
+            title="Preview of components"
+            width="100%"
+        ></iframe>
     </div>
     <div class="make">
         <svg

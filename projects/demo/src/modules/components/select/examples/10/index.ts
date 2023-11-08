@@ -16,8 +16,8 @@ interface Employee {
 @Component({
     selector: 'tui-select-example-10',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         tuiItemsHandlersProvider({
             stringify: (item: Employee) => `${item.name} (${item.dept.title})`,

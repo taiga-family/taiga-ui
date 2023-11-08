@@ -8,8 +8,8 @@ import {of, timer} from 'rxjs';
     selector: 'tui-progress-bar-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiProgressBarExample2 {
     readonly fastValue$ = this.isE2E ? of(80) : timer(500, 100);

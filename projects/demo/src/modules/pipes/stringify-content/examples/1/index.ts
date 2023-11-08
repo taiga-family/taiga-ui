@@ -10,8 +10,8 @@ interface User {
 @Component({
     selector: 'tui-stringify-content-example1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiStringifyContentExample1 {
     value = null;

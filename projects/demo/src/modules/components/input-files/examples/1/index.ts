@@ -9,8 +9,8 @@ import {finalize, map, switchMap} from 'rxjs/operators';
 @Component({
     selector: 'tui-input-files-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputFilesExample1 {
     readonly control = new FormControl();

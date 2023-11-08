@@ -28,8 +28,8 @@ const databaseMockData: readonly User[] = [
     selector: 'tui-combo-box-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiComboBoxExample1 {
     readonly search$ = new Subject<string | null>();

@@ -13,9 +13,9 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
     selector: 'tui-preview-dialog',
     templateUrl: './preview-dialog.template.html',
     styleUrls: ['./preview-dialog.style.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop],
-    encapsulation: ViewEncapsulation.None,
 })
 export class TuiPreviewDialogComponent {
     constructor(

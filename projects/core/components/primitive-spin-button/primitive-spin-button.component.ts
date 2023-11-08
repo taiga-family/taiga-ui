@@ -14,9 +14,9 @@ import {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-primitive-spin-button',
-    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './primitive-spin-button.template.html',
     styleUrls: ['./primitive-spin-button.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '(mousedown.silent.prevent)': '(0)',
     },

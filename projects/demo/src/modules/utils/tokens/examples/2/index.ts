@@ -7,8 +7,8 @@ import {Observable} from 'rxjs';
 @Component({
     selector: 'tui-token-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTokensExample2 {
     constructor(

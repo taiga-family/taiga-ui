@@ -1,13 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {GettingStartedComponent} from './getting-started/getting-started.component';
-import {LandingComponent} from './landing/landing.component';
-
 export const ROUTES: Routes = [
     {
         path: ``,
-        component: LandingComponent,
+        loadChildren: async () =>
+            (await import(`./landing/landing.module`)).LandingModule,
         data: {
             title: `A powerful set of open source components for Angular`,
         },
@@ -15,7 +13,9 @@ export const ROUTES: Routes = [
     // Documentation
     {
         path: `getting-started`,
-        component: GettingStartedComponent,
+        loadChildren: async () =>
+            (await import(`./getting-started/getting-started.module`))
+                .GettingStartedModule,
         data: {
             title: `Getting started`,
         },
@@ -313,6 +313,14 @@ export const ROUTES: Routes = [
             (await import(`../experimental/fade/fade.module`)).ExampleTuiFadeModule,
         data: {
             title: `Fade`,
+        },
+    },
+    {
+        path: `experimental/icon`,
+        loadChildren: async () =>
+            (await import(`../experimental/icon/icon.module`)).ExampleTuiIconModule,
+        data: {
+            title: `Icon`,
         },
     },
     {

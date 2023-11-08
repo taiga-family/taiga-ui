@@ -7,8 +7,8 @@ import {tuiToggleOptionsProvider} from '@taiga-ui/kit';
 @Component({
     selector: 'tui-toggle-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         tuiToggleOptionsProvider({
             icons: {

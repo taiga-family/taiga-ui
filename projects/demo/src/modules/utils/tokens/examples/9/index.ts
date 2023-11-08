@@ -7,14 +7,14 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
 @Component({
     selector: 'tui-token-example-9',
     templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
     providers: [
         {
             provide: TUI_FIRST_DAY_OF_WEEK,
             useValue: TuiDayOfWeek.Sunday,
         },
     ],
-    changeDetection,
-    encapsulation,
 })
 export class TuiTokensExample9 {
     readonly provideFirstDayOfWeekToken = import(

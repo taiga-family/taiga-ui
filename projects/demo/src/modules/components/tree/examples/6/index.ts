@@ -11,8 +11,8 @@ interface TreeNode {
 @Component({
     selector: 'tui-tree-example-6',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTreeExample6 {
     map = new Map<TreeNode, boolean>();

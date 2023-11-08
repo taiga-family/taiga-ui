@@ -4,6 +4,7 @@ export * from './migration-warning';
 export * from './removable-input';
 export * from './removed-module';
 export * from './replacement-attribute';
+export * from './replacement-attribute-to-directive';
 export * from './replacement-attribute-value';
 export * from './replacement-enum';
 export * from './replacement-identifier';

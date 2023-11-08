@@ -6,8 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 @Component({
     selector: 'tui-radio-labeled-example-3',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiRadioLabeledExample3 {
     items = [{name: 'ownership'}, {name: 'lease'}, {name: 'sublease'}];

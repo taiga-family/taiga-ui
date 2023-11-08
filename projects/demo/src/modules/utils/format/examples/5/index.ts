@@ -8,8 +8,8 @@ import {tuiFormatNumber} from '@taiga-ui/core';
     selector: 'tui-format-example-5',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiFormatExample5 {
     parametersForm = new FormGroup({

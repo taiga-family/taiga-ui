@@ -7,8 +7,8 @@ import {TuiDay} from '@taiga-ui/cdk';
 @Component({
     selector: 'tui-input-date-time-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputDateTimeExample2 {
     readonly testForm = new FormGroup({

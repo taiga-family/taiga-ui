@@ -11,8 +11,8 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     selector: 'tui-calendar-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiCalendarExample3 {
     value: TuiDayRange | null = null;

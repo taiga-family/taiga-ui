@@ -28,6 +28,7 @@ import {TuiMoreDirective} from './more.directive';
     selector: 'tui-items-with-more',
     templateUrl: './items-with-more.template.html',
     styleUrls: ['./items-with-more.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         MutationObserverService,
         TuiResizeService,
@@ -42,7 +43,6 @@ import {TuiMoreDirective} from './more.directive';
             },
         },
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiItemsWithMoreComponent {
     @ContentChildren(TuiItemDirective, {read: TemplateRef, descendants: true})

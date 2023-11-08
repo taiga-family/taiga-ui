@@ -7,8 +7,8 @@ import {TuiKeySteps} from '@taiga-ui/kit';
     selector: 'tui-range-example-4',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiRangeExample4 {
     readonly ticksLabels = ['0', '10K', '100K', '500k', '1000K'];

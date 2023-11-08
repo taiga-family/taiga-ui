@@ -6,8 +6,8 @@ import {tuiAmountOptionsProvider} from '@taiga-ui/experimental';
 @Component({
     selector: 'tui-amount-example-3',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         tuiAmountOptionsProvider({
             sign: 'always',

@@ -7,12 +7,12 @@ import {TuiLinkModule} from '@taiga-ui/core';
 import {ScreenshotGithubBotComponent} from './screenshot-github-bot.component';
 
 @NgModule({
-    declarations: [ScreenshotGithubBotComponent],
     imports: [
         CommonModule,
         TuiAddonDocModule,
         TuiLinkModule,
         RouterModule.forChild(tuiGenerateRoutes(ScreenshotGithubBotComponent)),
     ],
+    declarations: [ScreenshotGithubBotComponent],
 })
 export class ScreenshotGithubBotModule {}

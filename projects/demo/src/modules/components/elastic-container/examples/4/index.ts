@@ -7,8 +7,8 @@ import {tuiArrayRemove} from '@taiga-ui/cdk';
     selector: 'tui-elastic-container-example-4',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiElasticContainerExample4 {
     items = [

@@ -8,8 +8,8 @@ import {Subject} from 'rxjs';
     selector: 'tui-swipe-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiSwipeExample2 {
     readonly open$ = new Subject<boolean>();

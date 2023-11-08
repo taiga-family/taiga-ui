@@ -8,8 +8,8 @@ import {tuiQuantize} from '@taiga-ui/cdk';
     selector: 'tui-math-example-4',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiMathExample4 {
     parametersForm = new FormGroup({

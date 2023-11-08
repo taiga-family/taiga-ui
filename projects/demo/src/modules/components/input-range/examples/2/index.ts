@@ -14,8 +14,8 @@ import {tuiNumberFormatProvider} from '@taiga-ui/core';
             }
         `,
     ],
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         tuiNumberFormatProvider({
             decimalSeparator: '.',

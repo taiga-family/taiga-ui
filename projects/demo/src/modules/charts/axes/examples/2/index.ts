@@ -10,8 +10,8 @@ const BENJI = 100;
     selector: 'tui-axes-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiAxesExample2 {
     private readonly setNames = ['cdk', 'core', 'kit', 'charts'];

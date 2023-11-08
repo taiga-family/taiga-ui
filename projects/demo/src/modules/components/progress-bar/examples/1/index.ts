@@ -8,8 +8,8 @@ import {map, startWith} from 'rxjs/operators';
 @Component({
     selector: 'tui-progress-bar-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiProgressBarExample1 {
     readonly value$ = this.isE2E

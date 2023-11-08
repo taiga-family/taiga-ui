@@ -9,8 +9,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 @Component({
     selector: 'tui-pdf-viewer-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiPdfViewerExample1 {
     private readonly pdf = 'assets/media/taiga.pdf';

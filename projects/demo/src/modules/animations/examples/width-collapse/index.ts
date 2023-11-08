@@ -8,8 +8,8 @@ import {TuiDurationOptions, tuiWidthCollapse} from '@taiga-ui/core';
     selector: 'tui-width-collapse-example',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
     animations: [tuiWidthCollapse],
 })
 export class TuiWidthCollapseExample {
