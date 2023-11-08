@@ -28,6 +28,7 @@ import {
     TAGS_TO_REPLACE,
 } from './constants';
 import {
+    migrateAvatar,
     migrateBadgeValue,
     migrateCheckbox,
     migrateRadio,
@@ -53,6 +54,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateCheckbox,
         migrateRadio,
         migrateToggle,
+        migrateAvatar,
     ] as const;
 
     const progressLog = setupProgressLogger({
