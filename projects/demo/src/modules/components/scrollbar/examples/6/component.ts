@@ -6,8 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: `tui-scrollbar-example-6`,
     templateUrl: `./template.html`,
     styleUrls: [`./style.less`],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiScrollbarExample6Component {
     items = Array.from({length: 10000}).map((_, i) => `Item #${i}`);

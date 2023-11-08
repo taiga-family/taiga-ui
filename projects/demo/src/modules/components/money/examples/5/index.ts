@@ -6,6 +6,8 @@ import {tuiNumberFormatProvider} from '@taiga-ui/core';
 @Component({
     selector: 'tui-money-example-5',
     templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
     providers: [
         tuiNumberFormatProvider({
             decimalSeparator: '.',
@@ -13,7 +15,5 @@ import {tuiNumberFormatProvider} from '@taiga-ui/core';
             zeroPadding: true,
         }),
     ],
-    changeDetection,
-    encapsulation,
 })
 export class TuiMoneyExample5 {}

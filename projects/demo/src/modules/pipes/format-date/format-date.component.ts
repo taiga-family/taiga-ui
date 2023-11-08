@@ -6,8 +6,8 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 @Component({
     selector: 'example-tui-format-date',
     templateUrl: './format-date.template.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class ExampleTuiFormatDateComponent {
     readonly exampleModule = import('./examples/import/import-module.md?raw');

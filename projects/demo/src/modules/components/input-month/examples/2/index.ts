@@ -6,8 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 @Component({
     selector: 'input-month-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class InputMonthExample2 {
     readonly testForm = new FormGroup({

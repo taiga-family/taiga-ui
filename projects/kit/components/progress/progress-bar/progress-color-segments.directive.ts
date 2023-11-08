@@ -23,11 +23,11 @@ function calculateColorSegments(colors: string[], progressWidth: number): string
 
 @Directive({
     selector: 'progress[tuiProgressBar][tuiProgressColorSegments]',
+    providers: [TuiDestroyService, TuiResizeService],
     host: {
         '[$.style.--tui-progress-color]': 'calcSegments$',
         '($.style.--tui-progress-color)': '0',
     },
-    providers: [TuiDestroyService, TuiResizeService],
 })
 export class TuiProgressColorSegmentsDirective {
     // TODO: drop support of legacy Edge (EdgeHTML) in v4.x

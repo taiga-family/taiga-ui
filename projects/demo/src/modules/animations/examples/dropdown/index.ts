@@ -8,8 +8,8 @@ import {tuiDropdownAnimation, TuiDurationOptions} from '@taiga-ui/core';
     selector: 'tui-dropdown-example',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
     animations: [tuiDropdownAnimation],
 })
 export class TuiDropdownExample {

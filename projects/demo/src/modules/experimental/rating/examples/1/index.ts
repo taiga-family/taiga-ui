@@ -6,8 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-rating-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiRatingExample1 {
     value = 0;

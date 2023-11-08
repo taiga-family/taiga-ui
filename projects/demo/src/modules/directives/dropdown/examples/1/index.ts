@@ -6,8 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-dropdown-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiDropdownExample1 {
     open = false;

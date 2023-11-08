@@ -7,9 +7,9 @@ import {tuiAsViewport, TuiRectAccessor} from '@taiga-ui/core';
     selector: 'tui-viewport-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    providers: [tuiAsViewport(TuiViewportExample1)],
-    changeDetection,
     encapsulation,
+    changeDetection,
+    providers: [tuiAsViewport(TuiViewportExample1)],
 })
 export class TuiViewportExample1 extends TuiRectAccessor {
     readonly type = 'viewport';

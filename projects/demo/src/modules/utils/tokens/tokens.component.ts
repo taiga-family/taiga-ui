@@ -5,8 +5,13 @@ import {TUI_DOC_CODE_EDITOR, TuiDocExample} from '@taiga-ui/addon-doc';
 @Component({
     selector: 'example-tokens',
     templateUrl: './tokens.template.html',
-    providers: [{provide: TUI_DOC_CODE_EDITOR, useValue: null}],
     changeDetection,
+    providers: [
+        {
+            provide: TUI_DOC_CODE_EDITOR,
+            useValue: null,
+        },
+    ],
 })
 export class ExampleTokensComponent {
     readonly example1: TuiDocExample = {

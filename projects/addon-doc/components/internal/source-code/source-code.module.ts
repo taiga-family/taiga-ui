@@ -6,8 +6,8 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TuiDocSourceCodeComponent} from './source-code.component';
 
 @NgModule({
-    declarations: [TuiDocSourceCodeComponent],
     imports: [CommonModule, PolymorpheusModule, TuiButtonModule],
+    declarations: [TuiDocSourceCodeComponent],
     exports: [TuiDocSourceCodeComponent],
 })
 export class TuiDocSourceCodeModule {}

@@ -6,8 +6,8 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 @Component({
     selector: 'example-action',
     templateUrl: './action.template.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class ExampleTuiActionComponent {
     readonly exampleModule = import('./examples/import/import-module.md?raw');

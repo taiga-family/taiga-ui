@@ -6,8 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-line-clamp-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiLineClampExample2 {
     linesLimit = 2;

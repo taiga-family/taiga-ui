@@ -10,8 +10,8 @@ import {concatMap, delay, repeat, startWith} from 'rxjs/operators';
     selector: 'tui-fade-in-example',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
     animations: [tuiFadeIn],
 })
 export class TuiFadeInExample {

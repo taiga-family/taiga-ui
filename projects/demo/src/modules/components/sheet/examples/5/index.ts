@@ -9,8 +9,8 @@ const FRAMES = 166;
     selector: 'tui-sheet-example-5',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiSheetExample5 {
     open = false;

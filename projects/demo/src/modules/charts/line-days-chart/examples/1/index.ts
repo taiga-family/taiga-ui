@@ -18,8 +18,8 @@ import {map} from 'rxjs/operators';
     selector: 'tui-line-days-chart-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiLineDaysChartExample1 {
     range = new TuiDayRange(

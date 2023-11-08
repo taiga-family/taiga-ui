@@ -8,8 +8,8 @@ import {TuiBooleanHandler} from '@taiga-ui/cdk';
     selector: 'tui-filter-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiFilterExample1 {
     readonly form = new FormGroup({

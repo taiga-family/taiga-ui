@@ -7,8 +7,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-slider-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiSliderExample3 {
     readonly labels: number[] = [0, 250, 500, 750, 1000];

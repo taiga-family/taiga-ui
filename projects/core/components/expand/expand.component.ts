@@ -30,8 +30,8 @@ const LOADER_HEIGHT = 48;
     selector: 'tui-expand',
     templateUrl: './expand.template.html',
     styleUrls: ['./expand.style.less'],
-    animations: [TUI_PARENT_ANIMATION],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [TUI_PARENT_ANIMATION],
 })
 export class TuiExpandComponent {
     @ViewChild('wrapper')

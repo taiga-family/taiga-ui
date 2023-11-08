@@ -6,8 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-bar-set-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiBarSetExample3 {
     readonly value = [30, -15];

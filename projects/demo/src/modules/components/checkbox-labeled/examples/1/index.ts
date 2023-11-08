@@ -7,8 +7,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-checkbox-labeled-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiCheckboxLabeledExample1 {
     testForm = new FormGroup({

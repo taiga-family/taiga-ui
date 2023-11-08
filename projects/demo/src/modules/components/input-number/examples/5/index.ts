@@ -6,8 +6,8 @@ import {tuiNumberFormatProvider} from '@taiga-ui/core';
 @Component({
     selector: 'tui-input-number-example-5',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [tuiNumberFormatProvider({decimalSeparator: ',', thousandSeparator: '.'})],
 })
 export class TuiInputNumberExample5 {

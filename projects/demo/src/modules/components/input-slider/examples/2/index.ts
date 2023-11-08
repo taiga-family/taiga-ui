@@ -7,8 +7,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-input-slider-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputSliderExample2 {
     readonly control = new FormControl(40);

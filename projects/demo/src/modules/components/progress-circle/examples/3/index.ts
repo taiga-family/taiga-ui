@@ -9,8 +9,8 @@ import {map, startWith, takeWhile} from 'rxjs/operators';
     selector: 'tui-progress-circle-example-3',
     templateUrl: './index.html',
     styleUrls: ['index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiProgressCircleExample3 {
     readonly max = 100;

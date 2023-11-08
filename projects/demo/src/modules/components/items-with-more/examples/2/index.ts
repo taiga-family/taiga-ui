@@ -7,8 +7,8 @@ import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk';
     selector: 'tui-items-with-more-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiItemsWithMoreExample2 {
     readonly items = [

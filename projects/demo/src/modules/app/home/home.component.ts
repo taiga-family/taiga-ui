@@ -6,8 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'demo-home',
     templateUrl: './home.template.html',
     styleUrls: ['./home.style.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class HomeComponent {
     readonly angularJsonStyles = import('./examples/angular-json-styles.md?raw');

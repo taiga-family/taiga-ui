@@ -7,8 +7,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-table-filters-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTableFiltersExample1 {
     readonly form = new FormGroup({

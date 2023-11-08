@@ -6,8 +6,8 @@ import {TUI_ARROW} from '@taiga-ui/kit';
 @Component({
     selector: 'tui-data-list-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiDataListExample1 {
     readonly arrow = TUI_ARROW;

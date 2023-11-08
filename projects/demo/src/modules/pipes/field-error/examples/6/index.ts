@@ -8,8 +8,8 @@ import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
     selector: 'tui-field-error-content-pipe-example-6',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         {
             provide: TUI_VALIDATION_ERRORS,

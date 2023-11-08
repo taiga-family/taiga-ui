@@ -8,8 +8,8 @@ import {TuiFileLike} from '@taiga-ui/kit';
     selector: 'tui-input-files-example-5',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputFilesExample5 {
     readonly control = new FormControl();

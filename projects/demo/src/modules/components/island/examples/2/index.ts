@@ -7,8 +7,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-island-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiIslandExample2 {
     testForm = new FormGroup({

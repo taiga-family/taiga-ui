@@ -17,8 +17,8 @@ interface Item {
     selector: 'tui-table-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTableExample3 {
     readonly options = {updateOn: 'blur'} as const;

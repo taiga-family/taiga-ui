@@ -8,8 +8,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     selector: 'tui-rating-example-2',
     templateUrl: 'index.html',
     styleUrls: ['index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiRatingExample2 {
     value = 0;

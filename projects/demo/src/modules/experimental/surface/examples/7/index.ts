@@ -6,8 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-surface-example-7',
     templateUrl: './index.html',
     styleUrls: ['./index.less', './surface.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiSurfaceExample7 {
     readonly reviews = [

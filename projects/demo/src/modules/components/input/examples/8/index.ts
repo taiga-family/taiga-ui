@@ -30,8 +30,8 @@ const DATA: readonly User[] = [
     selector: 'tui-input-example-8',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputExample8 {
     readonly control = new FormControl('');

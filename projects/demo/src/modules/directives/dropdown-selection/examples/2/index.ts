@@ -16,8 +16,8 @@ export interface User {
     selector: 'tui-dropdown-selection-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiDropdownSelectionExample2 {
     @ViewChildren(TuiOptionComponent, {read: ElementRef})

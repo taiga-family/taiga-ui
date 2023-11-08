@@ -6,8 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 @Component({
     selector: 'tui-input-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputExample1 {
     readonly testForm = new FormGroup({

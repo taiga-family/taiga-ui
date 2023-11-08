@@ -10,9 +10,9 @@ import {
     selector: 'example-cell',
     templateUrl: './cell.template.html',
     styleUrls: ['./cell.styles.less'],
-    providers: [tuiDocExampleOptionsProvider({fullsize: true})],
     encapsulation: ViewEncapsulation.None,
     changeDetection,
+    providers: [tuiDocExampleOptionsProvider({fullsize: true})],
 })
 export class ExampleTuiCellComponent {
     readonly exampleModule: TuiRawLoaderContent = import(

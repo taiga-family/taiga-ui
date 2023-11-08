@@ -8,8 +8,8 @@ import {TuiCountryIsoCode} from '@taiga-ui/i18n';
     selector: 'tui-input-phone-international-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputPhoneExample2 {
     readonly testForm = new FormGroup({

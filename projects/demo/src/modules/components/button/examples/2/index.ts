@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 @Component({
     selector: 'tui-button-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiButtonExample2 {}

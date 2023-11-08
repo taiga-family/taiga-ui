@@ -10,8 +10,8 @@ import {RequestService} from './request.service';
     selector: 'tui-combo-box-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    providers: [RequestService, TuiDestroyService],
     changeDetection,
+    providers: [RequestService, TuiDestroyService],
 })
 export class TuiComboBoxExample2 {
     search: string | null = '';

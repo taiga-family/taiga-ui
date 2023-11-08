@@ -6,8 +6,8 @@ import {tuiAvatarOptionsProvider} from '@taiga-ui/kit';
 @Component({
     selector: 'tui-avatar-example-3',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         tuiAvatarOptionsProvider({
             size: 'l',

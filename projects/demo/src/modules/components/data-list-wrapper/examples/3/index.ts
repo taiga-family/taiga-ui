@@ -6,8 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 @Component({
     selector: 'tui-data-list-wrapper-example-3',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiDataListWrapperExample3 {
     readonly control = new FormControl();

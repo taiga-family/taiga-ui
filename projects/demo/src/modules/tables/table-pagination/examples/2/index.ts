@@ -23,11 +23,11 @@ const customOptionContent: TuiTablePaginationOptions['sizeOptionContent'] = ({
 @Component({
     selector: 'tui-table-pagination-example-2',
     templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
     providers: [
         tuiTablePaginationOptionsProvider({sizeOptionContent: customOptionContent}),
     ],
-    changeDetection,
-    encapsulation,
 })
 export class TuiTablePaginationExample2 {
     total = 350;

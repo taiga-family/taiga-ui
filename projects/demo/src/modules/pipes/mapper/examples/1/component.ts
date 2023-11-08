@@ -5,8 +5,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 @Component({
     selector: `tui-mapper-example1`,
     templateUrl: `./template.html`,
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiMapperExample1 {
     readonly mapper = (amount: number, currencySymbol: string): string =>

@@ -1,10 +1,12 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
-    host: {class: 'tui-title'},
     template: '',
     styleUrls: ['./title.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-title',
+    },
 })
 export class TuiTitleComponent {}

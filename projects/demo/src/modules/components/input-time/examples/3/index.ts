@@ -7,8 +7,8 @@ import {tuiCreateTimePeriods, tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
 @Component({
     selector: 'tui-input-time-example-3',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         tuiInputTimeOptionsProvider({
             icon: 'tuiIconCheckCircleLarge',

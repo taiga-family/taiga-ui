@@ -7,8 +7,8 @@ import {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
     selector: 'tui-thumbnail-card-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiThumbnailCardExample3 {
     readonly paymentSystem: TuiPaymentSystem = 'mir';

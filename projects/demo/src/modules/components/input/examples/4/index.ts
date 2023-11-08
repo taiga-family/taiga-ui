@@ -93,8 +93,8 @@ const USERS = [
     selector: 'tui-input-example-4',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputExample4 {
     @ViewChild('avatar')

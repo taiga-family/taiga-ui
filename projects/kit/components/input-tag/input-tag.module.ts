@@ -34,8 +34,8 @@ import {TuiInputTagComponent} from './input-tag.component';
         TuiTagModule,
         TuiWrapperModule,
     ],
-    providers: [TuiScrollService],
     declarations: [TuiInputTagComponent],
+    providers: [TuiScrollService],
     exports: [TuiInputTagComponent],
 })
 export class TuiInputTagModule {}

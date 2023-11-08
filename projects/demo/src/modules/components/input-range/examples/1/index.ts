@@ -13,8 +13,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
             }
         `,
     ],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputRangeExample1 {
     readonly min = 0;

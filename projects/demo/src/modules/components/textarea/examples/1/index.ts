@@ -6,8 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 @Component({
     selector: 'tui-textarea-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTextareaExample1 {
     testForm = new FormGroup({

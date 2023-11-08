@@ -32,8 +32,8 @@ const databaseMockData: readonly User[] = [
     selector: 'tui-select-example-6',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiSelectExample6 {
     value = null;

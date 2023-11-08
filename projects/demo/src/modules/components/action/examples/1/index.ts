@@ -7,8 +7,8 @@ import {TuiAlertService} from '@taiga-ui/core';
     selector: 'tui-action-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiActionExample1 {
     constructor(

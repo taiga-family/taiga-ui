@@ -6,8 +6,8 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 @Component({
     selector: 'example-tui-table-pagination',
     templateUrl: './table-pagination.template.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class ExampleTuiTablePaginationComponent {
     readonly itemsVariants = [

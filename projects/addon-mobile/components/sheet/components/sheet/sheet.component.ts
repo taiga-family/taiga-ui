@@ -27,9 +27,8 @@ import {TUI_SHEET_PROVIDERS} from './sheet.providers';
     selector: 'tui-sheet',
     templateUrl: './sheet.template.html',
     styleUrls: ['./sheet.style.less'],
-    providers: TUI_SHEET_PROVIDERS,
-    animations: [tuiSlideInTop],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: TUI_SHEET_PROVIDERS,
     host: {
         role: 'dialog',
         '[attr.aria-labelledby]': 'id',
@@ -38,6 +37,7 @@ import {TUI_SHEET_PROVIDERS} from './sheet.providers';
         '[$.class._stuck]': 'stuck$',
         '($.class._stuck)': 'stuck$',
     },
+    animations: [tuiSlideInTop],
 })
 export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterViewInit {
     @ViewChild('sheet')

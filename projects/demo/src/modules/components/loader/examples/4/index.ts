@@ -7,8 +7,8 @@ import {tuiLoaderOptionsProvider} from '@taiga-ui/core';
     selector: 'tui-loader-example-4',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         tuiLoaderOptionsProvider({
             size: 'l',

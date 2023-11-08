@@ -8,8 +8,8 @@ import {TuiContextWithImplicit} from '@taiga-ui/cdk';
     selector: 'tui-input-slider-example-5',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputSliderExample5 {
     readonly max = 100;

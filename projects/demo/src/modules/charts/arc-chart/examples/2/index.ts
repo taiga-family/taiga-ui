@@ -7,8 +7,8 @@ import {tuiSum} from '@taiga-ui/cdk';
     selector: 'tui-arc-chart-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiArcChartExample2 {
     private readonly labels = ['Food', 'Cafe', 'Open Source', 'Taxi', 'other'];

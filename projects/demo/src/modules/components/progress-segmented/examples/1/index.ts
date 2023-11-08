@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 @Component({
     selector: 'tui-progress-segmented-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiProgressSegmentedExample1 {}

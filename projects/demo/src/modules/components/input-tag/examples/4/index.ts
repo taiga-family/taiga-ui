@@ -31,8 +31,8 @@ function tagValidator(tag: string): boolean {
 @Component({
     selector: 'tui-input-tag-example-4',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputTagExample4 {
     search = '';

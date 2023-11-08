@@ -9,8 +9,8 @@ import {Subscription} from 'rxjs';
     selector: 'tui-table-bar-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTableBarExampleComponent1 {
     @ViewChild('tableBarTemplate')

@@ -9,8 +9,8 @@ import {map} from 'rxjs/operators';
     selector: 'tui-block-status-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiBlockStatusExample3 {
     size$: Observable<TuiSizeL> = this.breakpointService.pipe(

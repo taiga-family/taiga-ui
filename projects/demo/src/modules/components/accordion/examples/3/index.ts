@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-accordion-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiAccordionExample3 {}

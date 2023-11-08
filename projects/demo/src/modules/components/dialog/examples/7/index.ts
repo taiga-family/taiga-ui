@@ -9,8 +9,8 @@ import {SearchDialogExampleComponent} from './search-example/search-dialog-examp
 @Component({
     selector: 'tui-dialog-example-7',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiDialogExampleComponent7 {
     constructor(

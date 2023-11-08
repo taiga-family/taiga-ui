@@ -7,8 +7,8 @@ import {tuiIsEdge, tuiIsEdgeOlderThan, tuiIsFirefox, tuiIsSafari} from '@taiga-u
 @Component({
     selector: 'tui-browser-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiBrowserExample1 {
     constructor(

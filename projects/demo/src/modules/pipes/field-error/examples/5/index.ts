@@ -27,8 +27,8 @@ function asyncValidatorFn(isE2E: boolean): AsyncValidatorFn {
     selector: 'tui-field-error-pipe-example-5',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiFieldErrorPipeExample5 {
     readonly form: FormGroup;

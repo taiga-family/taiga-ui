@@ -9,8 +9,8 @@ import {TuiSizeS} from '@taiga-ui/core';
     selector: 'tui-toggle-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiToggleExample1 implements OnInit {
     readonly platforms: readonly TuiPlatform[] = ['web', 'web', 'android', 'ios'];

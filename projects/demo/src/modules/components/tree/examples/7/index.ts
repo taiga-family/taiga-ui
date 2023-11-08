@@ -20,8 +20,8 @@ export interface Item {
     selector: 'tui-tree-example-7',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         TuiTreeService,
         {

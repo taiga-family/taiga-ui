@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-elastic-container-example-2',
     templateUrl: './index.html',
     styleUrls: ['index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiElasticContainerExample2 {}

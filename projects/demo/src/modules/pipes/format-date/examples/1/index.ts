@@ -8,8 +8,8 @@ import {FormatService} from './service';
 @Component({
     selector: 'tui-format-date-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         {
             provide: TuiFormatDateService,

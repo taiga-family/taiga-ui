@@ -12,8 +12,8 @@ interface Item {
 @Component({
     selector: 'tui-select-example-11',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiSelectExample11 {
     itemStringControl = new FormControl();

@@ -6,8 +6,8 @@ import {BehaviorSubject} from 'rxjs';
 @Component({
     selector: 'tui-for-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiForExample1 {
     readonly items$ = new BehaviorSubject<readonly string[] | null>([]);

@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-progress-bar-example-5',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiProgressBarExample5 {}

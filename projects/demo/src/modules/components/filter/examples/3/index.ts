@@ -15,8 +15,8 @@ const getIcon: Record<string, string> = {
     selector: 'tui-filter-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiFilterExample3 {
     items = ['Calendar', 'Favorite', 'Messages', 'FAQ', 'Settings'];

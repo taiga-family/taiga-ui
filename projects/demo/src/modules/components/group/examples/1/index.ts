@@ -7,8 +7,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-group-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.style.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiGroupExample1 {
     readonly items = ['Option 1', 'Option 2', 'Option 3'];

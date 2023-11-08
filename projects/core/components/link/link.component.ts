@@ -28,17 +28,17 @@ import {map} from 'rxjs/operators';
     selector: 'a[tuiLink], button[tuiLink]',
     templateUrl: './link.template.html',
     styleUrls: ['./link.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiLinkComponent),
         TuiFocusVisibleService,
         TuiDestroyService,
         MODE_PROVIDER,
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    exportAs: 'tuiLink',
     host: {
         '($.data-mode.attr)': 'mode$',
     },
+    exportAs: 'tuiLink',
 })
 export class TuiLinkComponent implements TuiFocusableElementAccessor {
     @Input()

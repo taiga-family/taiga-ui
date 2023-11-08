@@ -7,8 +7,8 @@ import {TuiDialogService} from '@taiga-ui/core';
     selector: 'tui-dropdown-context-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiDropdownContextExample2 {
     readonly menuItems = [

@@ -35,8 +35,6 @@ const EXPENSES = {
 @Component({
     selector: 'tui-data-list-example-4',
     templateUrl: './index.html',
-    changeDetection,
-    encapsulation,
     styles: [
         `
             .control {
@@ -44,6 +42,8 @@ const EXPENSES = {
             }
         `,
     ],
+    encapsulation,
+    changeDetection,
 })
 export class TuiDataListExample4 {
     value = [];

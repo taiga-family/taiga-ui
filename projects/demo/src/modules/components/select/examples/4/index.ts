@@ -8,8 +8,8 @@ import {TuiSelectComponent} from '@taiga-ui/kit';
     selector: 'tui-select-example-4',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiSelectExample4 {
     readonly pythons = [

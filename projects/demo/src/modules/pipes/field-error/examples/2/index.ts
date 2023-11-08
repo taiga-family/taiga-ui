@@ -10,8 +10,8 @@ import {map, scan, startWith} from 'rxjs/operators';
 @Component({
     selector: 'tui-field-error-pipe-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         {
             provide: TUI_VALIDATION_ERRORS,

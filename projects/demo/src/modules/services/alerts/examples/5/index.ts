@@ -13,8 +13,8 @@ import {CustomLabelComponent} from './custom-label/custom-label.component';
 @Component({
     selector: 'tui-alerts-example-5',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiAlertsExampleComponent5 {
     readonly notification: Observable<void>;

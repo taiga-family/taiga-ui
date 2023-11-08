@@ -4,7 +4,7 @@ import {TuiAutofilledDirective} from './autofilled.directive';
 import {TuiAutofilledStyleComponent} from './autofilled-style.component';
 
 @NgModule({
-    exports: [TuiAutofilledDirective],
     declarations: [TuiAutofilledDirective, TuiAutofilledStyleComponent],
+    exports: [TuiAutofilledDirective],
 })
 export class TuiAutofilledModule {}

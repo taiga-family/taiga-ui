@@ -7,8 +7,8 @@ import {TuiPoint} from '@taiga-ui/core';
     selector: 'tui-line-chart-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiLineChartExample3 {
     readonly dotted: readonly TuiPoint[] = [

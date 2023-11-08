@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-viewport-example-2',
     templateUrl: './index.html',
     styleUrls: ['../1/index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiViewportExample2 {}

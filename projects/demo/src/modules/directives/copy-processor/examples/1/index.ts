@@ -12,8 +12,8 @@ import {
     selector: 'tui-copy-processor-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiCopyProcessorExample1 {
     value = 12345.67;

@@ -19,7 +19,6 @@ import {TuiFileComponent} from './file/file.component';
 import {TuiFilesComponent} from './files.component';
 
 @NgModule({
-    declarations: [TuiFilesComponent, TuiFileComponent],
     imports: [
         CommonModule,
         TuiGroupModule,
@@ -32,6 +31,7 @@ import {TuiFilesComponent} from './files.component';
         TuiExpandModule,
         TuiPreventDefaultModule,
     ],
+    declarations: [TuiFilesComponent, TuiFileComponent],
     exports: [TuiFilesComponent, TuiFileComponent, TuiItemDirective],
 })
 export class TuiFilesModule {}

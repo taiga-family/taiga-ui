@@ -18,8 +18,8 @@ import {Observable} from 'rxjs';
     selector: 'tui-files',
     templateUrl: './files.component.html',
     styleUrls: ['./files.component.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFilesComponent {
     @ContentChildren(TuiItemDirective, {read: TemplateRef})

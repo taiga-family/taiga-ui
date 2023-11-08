@@ -8,8 +8,8 @@ import {tuiCapitalize} from '@taiga-ui/core';
     selector: 'tui-format-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiFormatExample3 {
     parametersForm = new FormGroup({

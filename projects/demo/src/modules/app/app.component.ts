@@ -29,14 +29,14 @@ import {TuiVersionMeta} from './version-manager/versions.constants';
     selector: 'app',
     templateUrl: './app.template.html',
     styleUrls: ['./app.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection,
     providers: [
         TuiResizeService,
         TuiDestroyService,
         DEMO_PAGE_LOADED_PROVIDER,
         TUI_VERSION_MANAGER_PROVIDERS,
     ],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection,
 })
 export class AppComponent extends AbstractDemoComponent implements OnInit {
     readonly isLanding$ = this.router.events.pipe(

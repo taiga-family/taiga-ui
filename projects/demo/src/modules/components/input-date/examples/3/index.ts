@@ -7,8 +7,8 @@ import {TuiNamedDay} from '@taiga-ui/kit';
 @Component({
     selector: 'tui-input-date-example-3',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputDateExample3 {
     from: TuiDay | null = null;

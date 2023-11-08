@@ -7,7 +7,6 @@ import {TUI_TREE_ACCESSOR, TUI_TREE_CONTROLLER} from '../misc/tree.tokens';
 
 @Directive({
     selector: '[tuiTreeController][map]',
-    exportAs: 'tuiTreeController',
     providers: [
         {
             provide: TUI_TREE_ACCESSOR,
@@ -18,6 +17,7 @@ import {TUI_TREE_ACCESSOR, TUI_TREE_CONTROLLER} from '../misc/tree.tokens';
             useExisting: TuiTreeControllerDirective,
         },
     ],
+    exportAs: 'tuiTreeController',
 })
 export class TuiTreeControllerDirective<T>
     implements TuiTreeController, TuiTreeAccessor<T>

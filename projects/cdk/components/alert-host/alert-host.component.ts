@@ -22,12 +22,12 @@ import {takeUntil} from 'rxjs/operators';
     selector: 'tui-alert-host',
     templateUrl: './alert-host.template.html',
     styleUrls: ['./alert-host.style.less'],
+    encapsulation: ViewEncapsulation.None,
     // So that we do not force OnPush on custom alerts
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [TuiDestroyService],
     animations: [TUI_PARENT_ANIMATION],
-    encapsulation: ViewEncapsulation.None,
 })
 export class TuiAlertHostComponent<T extends TuiDialog<unknown, unknown>>
     implements OnInit

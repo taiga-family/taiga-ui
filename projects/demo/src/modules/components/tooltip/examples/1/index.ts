@@ -9,9 +9,9 @@ import {takeUntil} from 'rxjs/operators';
     selector: 'tui-tooltip-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    providers: [TuiDestroyService],
-    changeDetection,
     encapsulation,
+    changeDetection,
+    providers: [TuiDestroyService],
 })
 export class TuiTooltipExample1 {
     loader = true;

@@ -9,8 +9,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     selector: 'tui-dialog-example-4',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiDialogExampleComponent4 {
     filters = false;

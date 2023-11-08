@@ -8,8 +8,8 @@ import {tuiNormalizeToIntNumber} from '@taiga-ui/cdk';
     selector: 'tui-math-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiMathExample3 {
     parametersForm = new FormGroup({

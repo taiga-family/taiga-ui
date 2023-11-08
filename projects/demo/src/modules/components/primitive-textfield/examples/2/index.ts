@@ -18,8 +18,8 @@ import {
 @Component({
     selector: 'tui-primitive-textfield-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         tuiTextfieldOptionsProvider({iconCleaner: 'tuiIconEdit2', hintOnDisabled: true}),
     ],

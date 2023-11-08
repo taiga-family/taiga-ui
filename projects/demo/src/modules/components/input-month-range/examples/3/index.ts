@@ -8,8 +8,8 @@ import {TuiBooleanHandlerWithContext, TuiMonthContext} from '@taiga-ui/kit';
 @Component({
     selector: 'tui-input-month-range-example-3',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputMonthRangeExample3 {
     readonly testForm = new FormGroup({

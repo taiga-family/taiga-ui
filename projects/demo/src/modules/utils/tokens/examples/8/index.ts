@@ -6,8 +6,8 @@ import {TUI_NUMBER_FORMAT, TuiNumberFormatSettings} from '@taiga-ui/core';
 @Component({
     selector: 'tui-token-example-8',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTokensExample8 {
     constructor(

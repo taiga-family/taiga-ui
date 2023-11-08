@@ -19,9 +19,9 @@ import {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-badge',
-    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './badge.template.html',
     styleUrls: ['./badge.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [MODE_PROVIDER],
     host: {
         '($.data-mode.attr)': 'mode$',

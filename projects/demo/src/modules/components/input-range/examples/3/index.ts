@@ -13,8 +13,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
             }
         `,
     ],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputRangeExample3 {
     readonly control = new FormControl([0, 7]);

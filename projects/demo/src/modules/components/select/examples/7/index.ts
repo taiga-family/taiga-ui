@@ -44,8 +44,8 @@ const CASH: Account = {
     selector: 'tui-select-example-7',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiSelectExample7 {
     value = EMPTY_ARRAY;

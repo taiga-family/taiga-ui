@@ -8,8 +8,8 @@ import {tuiFormatPhone} from '@taiga-ui/core';
     selector: 'tui-format-example-4',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiFormatExample4 {
     parametersForm = new FormGroup({

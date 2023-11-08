@@ -49,6 +49,7 @@ import {TuiPreviewZoomComponent} from './zoom/preview-zoom.component';
         TuiPreviewPaginationComponent,
         TuiPreviewZoomComponent,
     ],
+    providers: [tuiAsDialog(TuiPreviewDialogService)],
     exports: [
         TuiPreviewComponent,
         TuiPreviewActionDirective,
@@ -56,6 +57,5 @@ import {TuiPreviewZoomComponent} from './zoom/preview-zoom.component';
         TuiPreviewPaginationComponent,
         TuiPreviewZoomComponent,
     ],
-    providers: [tuiAsDialog(TuiPreviewDialogService)],
 })
 export class TuiPreviewModule {}

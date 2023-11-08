@@ -8,8 +8,8 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
     selector: 'tui-pdf-viewer-example-3',
     templateUrl: 'index.html',
     styleUrls: ['index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiPdfViewerExample3 {
     private readonly pdf = 'assets/media/taiga.pdf';

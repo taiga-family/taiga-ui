@@ -7,8 +7,8 @@ import {TuiAlertService} from '@taiga-ui/core';
 @Component({
     selector: 'example-tui-push',
     templateUrl: './push.template.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class ExampleTuiPushComponent {
     readonly exampleImportModule = import('./examples/import/import-module.md?raw');

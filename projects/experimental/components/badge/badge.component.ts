@@ -7,9 +7,9 @@ import {TUI_BADGE_OPTIONS, TuiBadgeOptions} from './badge.options';
 
 @Component({
     selector: 'tui-badge',
-    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './badge.template.html',
     styleUrls: ['./badge.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [MODE_PROVIDER],
     host: {
         '[attr.data-platform]': 'platform',

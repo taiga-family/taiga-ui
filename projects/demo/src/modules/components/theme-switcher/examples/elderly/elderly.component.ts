@@ -4,8 +4,8 @@ import {AbstractTuiThemeSwitcher} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'elderly',
-    styleUrls: ['./elderly.style.less'],
     template: '',
+    styleUrls: ['./elderly.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
