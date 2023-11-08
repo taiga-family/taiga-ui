@@ -21,6 +21,6 @@ export class TuiIconPipe implements PipeTransform {
     ) {}
 
     transform(icon: string): string {
-        return this.resolver(icon);
+        return icon && this.resolver(icon);
     }
 }

@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiLabelModule, TuiNotificationModule} from '@taiga-ui/core';
-import {TuiButtonModule, TuiRatingModule} from '@taiga-ui/experimental';
+import {TuiButtonModule, TuiIconModule, TuiRatingModule} from '@taiga-ui/experimental';
 
 import {TuiRatingExample1} from './examples/1';
 import {TuiRatingExample2} from './examples/2';
@@ -17,8 +17,9 @@ import {ExampleTuiRatingComponent} from './rating.component';
         TuiRatingModule,
         TuiNotificationModule,
         TuiLabelModule,
-        tuiGetDocModules(ExampleTuiRatingComponent),
         TuiButtonModule,
+        TuiIconModule,
+        tuiGetDocModules(ExampleTuiRatingComponent),
     ],
     declarations: [
         ExampleTuiRatingComponent,

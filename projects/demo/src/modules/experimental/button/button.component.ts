@@ -59,7 +59,7 @@ export class ExampleTuiButtonComponent {
 
     readonly icons = ['', 'tuiIconSearch', 'tuiIconChevronDown'];
 
-    iconLeft = this.icons[0];
+    icon = this.icons[0];
     iconRight = this.icons[0];
 
     loading = false;

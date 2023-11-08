@@ -1,6 +1,6 @@
 <button
-    iconLeft="tuiIconClockLarge"
     tuiButton
+    [icon]="'tuiIconCheckLarge' | tuiIcon"
     [loading]="loading$ | async"
     (click)="trigger$.next()"
 >

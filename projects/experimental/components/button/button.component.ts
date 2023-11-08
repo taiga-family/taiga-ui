@@ -12,7 +12,7 @@ import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button.options';
 
 @Component({
     selector:
-        '[tuiButton][loading],[tuiIconButton][loading],[tuiButton][iconLeft],[tuiButton][iconRight],[tuiIconButton][iconLeft]',
+        '[tuiButton][loading],[tuiIconButton][loading],[tuiButton],[tuiButton][iconRight]',
     templateUrl: './button.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
@@ -26,9 +26,6 @@ export class TuiButtonComponent {
 
     @Input()
     loading: boolean | string | null = false;
-
-    @Input()
-    iconLeft = '';
 
     @Input()
     iconRight = '';

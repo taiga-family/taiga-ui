@@ -29,6 +29,8 @@ export class TuiButtonStylesComponent {}
     host: {
         tuiButtonNew: '',
         tuiAppearance: '',
+        '[class._icon]': 'icon',
+        '[style.--t-mask]': '"url(" + icon + ")"',
         '[attr.data-size]': 'size',
         '[attr.data-appearance]': 'appearance',
         '[attr.data-platform]': 'platform',
@@ -41,6 +43,9 @@ export class TuiButtonDirective {
 
     @Input()
     appearance = this.options.appearance;
+
+    @Input()
+    icon = '';
 
     constructor(
         @Inject(TUI_BUTTON_OPTIONS) private readonly options: TuiButtonOptions,

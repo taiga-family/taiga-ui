@@ -33,6 +33,12 @@
             heading="Icons"
             [content]="example3"
         >
+            <tui-notification class="tui-space_bottom-4">
+                You can use
+                <code>SVG</code>
+                component inside or pass an icon as input to be shown on the left. Use icons ending with "Outline" for
+                this new component.
+            </tui-notification>
             <tui-button-example-3></tui-button-example-3>
         </tui-doc-example>
 
@@ -63,7 +69,7 @@
             <button
                 tuiButton
                 [appearance]="appearance"
-                [iconLeft]="iconLeft"
+                [icon]="icon | tuiIcon"
                 [iconRight]="iconRight"
                 [loading]="loading"
                 [size]="size"
@@ -83,12 +89,14 @@
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="iconLeft"
+                documentationPropertyName="icon"
                 documentationPropertyType="string"
                 [documentationPropertyValues]="icons"
-                [(documentationPropertyValue)]="iconLeft"
+                [(documentationPropertyValue)]="icon"
             >
-                Icon on the left side
+                Icon on the left side (use in conjunction with
+                <code>tuiIcon</code>
+                pipe)
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
