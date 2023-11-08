@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[87808],{87808:i=>{i.exports='<tui-icon\n    icon="https://upload.wikimedia.org/wikipedia/commons/2/22/Wikipedia-Logo-black-and-white.png"\n    class="icon"\n></tui-icon>\n'}}]);
