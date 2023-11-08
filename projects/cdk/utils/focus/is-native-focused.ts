@@ -12,6 +12,6 @@ export function tuiIsNativeFocused(node: Node | null): boolean {
     return (
         !!node?.ownerDocument &&
         tuiGetNativeFocused(node.ownerDocument) === node &&
-        node?.ownerDocument?.hasFocus()
+        node.ownerDocument.hasFocus()
     );
 }
