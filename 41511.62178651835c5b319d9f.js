@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[41511],{41511:n=>{n.exports=".icon {\n    width: 3rem;\n    height: 3rem;\n    color: pink;\n    background: purple;\n\n    &:after {\n        mask-mode: luminance;\n    }\n}\n"}}]);
