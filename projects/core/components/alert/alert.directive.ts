@@ -6,14 +6,14 @@ import {TuiAlertService} from './alert.service';
 
 @Directive({
     selector: 'ng-template[tuiAlert]',
+    inputs: ['options: tuiAlertOptions', 'open: tuiAlert'],
+    outputs: ['openChange: tuiAlertChange'],
     providers: [
         {
             provide: AbstractTuiDialogService,
             useExisting: TuiAlertService,
         },
     ],
-    inputs: ['options: tuiAlertOptions', 'open: tuiAlert'],
-    outputs: ['openChange: tuiAlertChange'],
 })
 export class TuiAlertDirective<T> extends AbstractTuiDialogDirective<
     TuiAlertOptions<T>

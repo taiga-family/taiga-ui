@@ -10,9 +10,9 @@ import {
 
 @Component({
     selector: 'tui-badge-notification',
-    changeDetection: ChangeDetectionStrategy.OnPush,
     template: '<ng-content></ng-content>',
     styleUrls: ['./badge-notification.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiPop],
     host: {
         '[attr.data-platform]': 'platform',

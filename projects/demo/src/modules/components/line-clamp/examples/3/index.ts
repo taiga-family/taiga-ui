@@ -7,8 +7,8 @@ import {WINDOW} from '@ng-web-apis/common';
     selector: 'tui-line-clamp-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiLineClampExample3 {
     constructor(@Inject(WINDOW) private readonly win: Window) {}

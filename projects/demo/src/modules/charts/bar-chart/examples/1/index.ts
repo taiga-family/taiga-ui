@@ -7,8 +7,8 @@ import {tuiCeil} from '@taiga-ui/cdk';
     selector: 'tui-bar-chart-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiBarChartExample1 {
     readonly value = [

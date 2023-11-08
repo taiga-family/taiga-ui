@@ -8,8 +8,8 @@ import {of} from 'rxjs';
 @Component({
     selector: 'tui-input-password-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         tuiInputPasswordOptionsProvider({
             icons: {

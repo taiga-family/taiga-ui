@@ -6,8 +6,8 @@ import {TuiAlertService} from '@taiga-ui/core';
 @Component({
     selector: 'tui-alerts-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiAlertsExampleComponent1 {
     constructor(@Inject(TuiAlertService) private readonly alerts: TuiAlertService) {}

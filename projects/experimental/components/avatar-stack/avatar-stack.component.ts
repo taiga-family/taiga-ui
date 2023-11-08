@@ -11,8 +11,8 @@ import {TuiHorizontalDirection} from '@taiga-ui/core';
     selector: 'tui-avatar-stack',
     template: '<ng-content></ng-content>',
     styleUrls: ['./avatar-stack.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiAvatarStackComponent {
     @Input()

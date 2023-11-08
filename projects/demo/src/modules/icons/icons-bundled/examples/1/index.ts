@@ -16,8 +16,8 @@ import {INLINE_SVG} from './inline-svg';
     selector: 'tui-icons-bundled-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         {
             provide: TUI_SANITIZER,

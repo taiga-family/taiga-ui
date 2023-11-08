@@ -8,8 +8,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 @Component({
     selector: 'tui-multi-select-example-9',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiMultiSelectExample9 {
     readonly testValue = new FormControl([]);

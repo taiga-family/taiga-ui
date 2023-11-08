@@ -7,8 +7,8 @@ import {TuiFileLike} from '@taiga-ui/kit';
 @Component({
     selector: 'tui-input-files-example-4',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputFilesExample4 {
     height = 3;

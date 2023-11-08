@@ -8,8 +8,8 @@ import {tuiPx} from '@taiga-ui/cdk';
     selector: 'tui-format-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiFormatExample1 {
     parametersForm = new FormGroup({

@@ -66,8 +66,8 @@ const KEYS: Record<string, Key> = {
     selector: 'tui-table-example-4',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTableExample4 {
     private readonly size$ = new BehaviorSubject(10);

@@ -7,8 +7,8 @@ import {Observable} from 'rxjs';
 @Component({
     selector: 'tui-token-example-7',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTokensExample7 {
     constructor(@Inject(TUI_IS_MOBILE_RES) readonly isMobileRes$: Observable<boolean>) {}

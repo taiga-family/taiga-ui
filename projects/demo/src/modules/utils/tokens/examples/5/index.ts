@@ -6,8 +6,8 @@ import {TUI_IS_IOS} from '@taiga-ui/cdk';
 @Component({
     selector: 'tui-token-example-5',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTokensExample5 {
     constructor(@Inject(TUI_IS_IOS) readonly isIos: boolean) {}

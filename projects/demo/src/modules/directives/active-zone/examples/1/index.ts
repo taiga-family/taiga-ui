@@ -8,8 +8,8 @@ import {TuiInputComponent} from '@taiga-ui/kit';
     selector: 'tui-active-zone-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiActiveZoneExample1 {
     readonly control = new FormControl();

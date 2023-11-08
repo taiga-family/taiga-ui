@@ -13,8 +13,8 @@ interface TreeNode {
     selector: 'tui-tree-example-3',
     templateUrl: './index.html',
     styleUrls: ['index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTreeExample3 {
     readonly data: TreeNode = {

@@ -8,8 +8,8 @@ import {TuiCurrencyVariants, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerc
     selector: 'tui-format-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiFormatExample2 {
     readonly items = ['USD', 'RUB', '643', 'KZT', '051', 'KRW', 'CHF', 'EUR', 'GBP'];

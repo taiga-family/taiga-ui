@@ -16,9 +16,9 @@ import {TUI_BREADCRUMBS_OPTIONS, TuiBreadcrumbsOptions} from './breadcrumbs.opti
 
 @Component({
     selector: 'tui-breadcrumbs',
-    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './breadcrumbs.template.html',
     styleUrls: ['./breadcrumbs.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: TuiModeDirective,

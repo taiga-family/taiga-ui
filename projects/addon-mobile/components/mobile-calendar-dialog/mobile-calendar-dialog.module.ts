@@ -7,12 +7,12 @@ import {TuiMobileCalendarDialogComponent} from './mobile-calendar-dialog.compone
 @NgModule({
     imports: [TuiMobileCalendarModule],
     declarations: [TuiMobileCalendarDialogComponent],
-    exports: [TuiMobileCalendarDialogComponent],
     providers: [
         {
             provide: TUI_MOBILE_CALENDAR,
             useValue: TuiMobileCalendarDialogComponent,
         },
     ],
+    exports: [TuiMobileCalendarDialogComponent],
 })
 export class TuiMobileCalendarDialogModule {}

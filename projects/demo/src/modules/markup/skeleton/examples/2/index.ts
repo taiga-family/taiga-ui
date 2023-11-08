@@ -8,8 +8,8 @@ import {TuiTime} from '@taiga-ui/cdk';
     selector: 'tui-skeleton-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiSkeletonExample2 {
     testForm = new FormGroup({

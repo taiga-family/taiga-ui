@@ -6,8 +6,8 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 @Component({
     selector: 'tui-token-example-6',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTokensExample6 {
     constructor(@Inject(TUI_IS_MOBILE) readonly isMobile: boolean) {}

@@ -8,8 +8,8 @@ import fileWithBreakpoints from '@taiga-ui/core/styles/variables/media.less?raw'
     selector: 'css-breakpoints',
     templateUrl: './breakpoints.template.html',
     styleUrls: ['./breakpoints.style.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class BreakpointsComponent {
     readonly breakpoints = parseBreakpoints(fileWithBreakpoints);

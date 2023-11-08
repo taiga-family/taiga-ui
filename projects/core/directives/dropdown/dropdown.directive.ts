@@ -37,12 +37,12 @@ import {TuiDropdownOpenDirective} from './dropdown-open.directive';
 
 @Directive({
     selector: '[tuiDropdown]:not(ng-container)',
-    exportAs: 'tuiDropdown',
     providers: [
         TuiDestroyService,
         tuiAsRectAccessor(TuiDropdownDirective),
         tuiAsVehicle(TuiDropdownDirective),
     ],
+    exportAs: 'tuiDropdown',
 })
 export class TuiDropdownDirective
     implements

@@ -8,8 +8,8 @@ import {filter, map, shareReplay, takeUntil} from 'rxjs/operators';
 @Component({
     selector: 'routable-dialog',
     templateUrl: './routable-dialog.template.html',
-    providers: [TuiDestroyService],
     changeDetection,
+    providers: [TuiDestroyService],
 })
 export class RoutableDialogComponent {
     readonly example1: TuiDocExample = {

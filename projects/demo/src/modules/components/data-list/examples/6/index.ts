@@ -14,8 +14,8 @@ import {TUI_ARROW} from '@taiga-ui/kit';
             }
         `,
     ],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiDataListExample6 {
     open = false;

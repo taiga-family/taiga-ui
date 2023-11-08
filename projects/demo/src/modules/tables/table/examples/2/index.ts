@@ -13,8 +13,8 @@ interface User {
     selector: 'tui-table-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTableExample2 {
     readonly columns = ['name', 'email', 'status', 'tags', 'actions'];

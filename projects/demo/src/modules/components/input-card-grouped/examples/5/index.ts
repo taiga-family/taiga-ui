@@ -7,6 +7,7 @@ import {of} from 'rxjs';
 @Component({
     selector: 'tui-input-card-grouped-example-5',
     templateUrl: './index.html',
+    changeDetection,
     providers: [
         {
             provide: TUI_INPUT_CARD_GROUPED_TEXTS,
@@ -17,7 +18,6 @@ import {of} from 'rxjs';
             }),
         },
     ],
-    changeDetection,
 })
 export class TuiInputCardGroupedExample5 {
     readonly control = new FormControl({

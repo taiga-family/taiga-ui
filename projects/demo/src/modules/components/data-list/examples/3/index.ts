@@ -7,8 +7,8 @@ import {TUI_ARROW} from '@taiga-ui/kit';
     selector: 'tui-data-list-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiDataListExample3 {
     value = [];

@@ -7,11 +7,11 @@ import {TuiCountryIsoCode, TuiLanguageName, TuiLanguageSwitcher} from '@taiga-ui
     selector: 'tui-language-switcher',
     templateUrl: './language-switcher.component.html',
     styleUrls: ['./language-switcher.component.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         // TODO: for backward compatibility only. Drop in v4.0
         TuiFlagPipe,
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiLanguageSwitcherComponent {
     readonly language = new FormControl(tuiCapitalizeFirstLetter(this.switcher.language));

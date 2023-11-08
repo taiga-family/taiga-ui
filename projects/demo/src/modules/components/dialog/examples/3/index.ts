@@ -7,8 +7,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 @Component({
     selector: 'tui-dialog-example-3',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiDialogExampleComponent3 {
     money = 1000;

@@ -8,8 +8,8 @@ import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce';
     selector: 'tui-miscellaneous-example-4',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiMiscellaneousExample4 {
     readonly items = [

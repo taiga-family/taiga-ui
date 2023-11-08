@@ -9,8 +9,8 @@ const SOME_OFFSET_CONST = 20;
     selector: `tui-scrollbar-example-3`,
     templateUrl: `./template.html`,
     styleUrls: [`./style.less`],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiScrollbarExample3Component {
     @ViewChild(TuiScrollbarComponent, {read: ElementRef})

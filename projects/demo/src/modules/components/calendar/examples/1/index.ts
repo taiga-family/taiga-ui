@@ -6,8 +6,8 @@ import {TuiDay} from '@taiga-ui/cdk';
 @Component({
     selector: 'tui-calendar-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiCalendarExample1 {
     value: TuiDay | null = null;

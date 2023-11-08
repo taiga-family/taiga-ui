@@ -20,8 +20,8 @@ const STRINGIFY_EMPLOYEE: TuiStringHandler<Employee> = (item: Employee) =>
 @Component({
     selector: 'tui-combo-box-example-6',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [tuiItemsHandlersProvider({stringify: STRINGIFY_EMPLOYEE})],
 })
 export class TuiComboBoxExample6 {

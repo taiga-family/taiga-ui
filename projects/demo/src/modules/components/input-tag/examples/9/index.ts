@@ -9,8 +9,8 @@ import {TuiBooleanHandler, TuiDay} from '@taiga-ui/cdk';
 @Component({
     selector: 'tui-input-tag-example-9',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputTagExample9 {
     readonly control = new FormControl([]);

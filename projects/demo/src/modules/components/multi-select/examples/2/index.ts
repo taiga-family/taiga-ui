@@ -33,8 +33,8 @@ const databaseMockData: readonly User[] = [
     selector: 'tui-multi-select-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiMultiSelectExample2 {
     readonly search$ = new Subject<string | null>();

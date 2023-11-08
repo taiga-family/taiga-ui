@@ -6,8 +6,8 @@ import {TUI_FOCUSABLE_ITEM_ACCESSOR, TuiFocusableElementAccessor} from '@taiga-u
 @Component({
     selector: 'tui-token-example-3',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTokensExample3 {
     constructor(

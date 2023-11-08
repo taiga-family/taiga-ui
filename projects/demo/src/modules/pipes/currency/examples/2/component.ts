@@ -6,8 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 @Component({
     selector: `tui-currency-example2`,
     templateUrl: `./template.html`,
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiCurrencyExample2 {
     readonly testForm = new FormGroup({

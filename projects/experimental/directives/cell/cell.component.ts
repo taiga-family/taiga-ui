@@ -1,10 +1,12 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
-    host: {class: 'tui-cell'},
     template: '',
     styleUrls: ['./cell.styles.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-cell',
+    },
 })
 export class TuiCellComponent {}

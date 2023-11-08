@@ -6,8 +6,8 @@ import {tuiNotificationOptionsProvider} from '@taiga-ui/core';
 @Component({
     selector: 'tui-notification-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         tuiNotificationOptionsProvider({
             icon: 'tuiIconHelpCircle',

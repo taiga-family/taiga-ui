@@ -7,8 +7,8 @@ import {TuiAlertService} from '@taiga-ui/core';
     selector: 'tui-push-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiPushExample1 {
     constructor(@Inject(TuiAlertService) private readonly alert: TuiAlertService) {}

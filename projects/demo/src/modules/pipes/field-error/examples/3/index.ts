@@ -26,8 +26,8 @@ export function innValidator(field: AbstractControl): unknown {
 @Component({
     selector: 'tui-field-error-pipe-example-3',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiFieldErrorPipeExample3 implements OnInit {
     @ViewChild('errorContent')

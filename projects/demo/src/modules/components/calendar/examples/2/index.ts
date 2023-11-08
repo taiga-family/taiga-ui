@@ -7,8 +7,8 @@ import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
     selector: 'tui-calendar-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiCalendarExample2 {
     value: TuiDayRange | null = null;

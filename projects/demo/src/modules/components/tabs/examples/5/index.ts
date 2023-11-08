@@ -7,8 +7,8 @@ import {tuiIsString} from '@taiga-ui/cdk';
     selector: 'tui-tabs-example-5',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTabsExample5 {
     readonly collaborators = ['Carol Cleveland', 'Neil Innes'];

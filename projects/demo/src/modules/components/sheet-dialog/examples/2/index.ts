@@ -7,8 +7,8 @@ import {TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
     selector: 'tui-sheet-dialog-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiSheetDialogExample2 {
     open = false;

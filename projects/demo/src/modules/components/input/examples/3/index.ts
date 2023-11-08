@@ -7,8 +7,8 @@ import {MaskitoOptions} from '@maskito/core';
 @Component({
     selector: 'tui-input-example-3',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputExample3 {
     readonly testForm = new FormGroup({

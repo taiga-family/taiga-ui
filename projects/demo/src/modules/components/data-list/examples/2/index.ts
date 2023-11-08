@@ -6,8 +6,8 @@ import {TuiDialogService, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 @Component({
     selector: 'tui-data-list-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiDataListExample2 {
     dropdownOpen = false;

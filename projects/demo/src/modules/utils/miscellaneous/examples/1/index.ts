@@ -6,8 +6,8 @@ import {tuiAssert} from '@taiga-ui/cdk';
 @Component({
     selector: 'tui-miscellaneous-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiMiscellaneousExample1 {
     get assertResult(): string {

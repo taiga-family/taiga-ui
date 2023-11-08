@@ -8,8 +8,8 @@ import {tuiInRange} from '@taiga-ui/cdk';
     selector: 'tui-math-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiMathExample2 {
     parametersForm = new FormGroup({

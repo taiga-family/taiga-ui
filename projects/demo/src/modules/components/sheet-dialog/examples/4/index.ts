@@ -35,8 +35,8 @@ const USERS = [
     selector: 'tui-sheet-dialog-example-4',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiSheetDialogExample4 {
     @ViewChild(TuiInputComponent)

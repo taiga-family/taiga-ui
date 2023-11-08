@@ -7,12 +7,12 @@ import {TUI_DATE_FORMAT, TUI_DATE_SEPARATOR, TuiDay, TuiDayRange} from '@taiga-u
 @Component({
     selector: 'tui-input-date-range-example-3',
     templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
     providers: [
         {provide: TUI_DATE_FORMAT, useValue: 'YMD'},
         {provide: TUI_DATE_SEPARATOR, useValue: '/'},
     ],
-    changeDetection,
-    encapsulation,
 })
 export class TuiInputDateRangeExample3 {
     readonly control = new FormControl(

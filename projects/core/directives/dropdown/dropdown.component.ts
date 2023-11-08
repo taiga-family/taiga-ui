@@ -35,6 +35,9 @@ import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.direc
     selector: 'tui-dropdown',
     templateUrl: './dropdown.template.html',
     styleUrls: ['./dropdown.style.less'],
+    // @bad TODO: OnPush
+    // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
+    changeDetection: ChangeDetectionStrategy.Default,
     providers: [
         TuiDestroyService,
         TuiPositionService,
@@ -42,15 +45,12 @@ import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.direc
         tuiRectAccessorFor('dropdown', TuiDropdownDirective),
         MODE_PROVIDER,
     ],
-    animations: [tuiDropdownAnimation],
     host: {
         '[@tuiDropdownAnimation]': 'animation',
         '[attr.data-appearance]': 'options.appearance',
         '($.data-mode.attr)': 'mode$',
     },
-    // @bad TODO: OnPush
-    // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
-    changeDetection: ChangeDetectionStrategy.Default,
+    animations: [tuiDropdownAnimation],
 })
 export class TuiDropdownComponent {
     constructor(

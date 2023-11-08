@@ -15,6 +15,8 @@ import {
 @Component({
     selector: 'tui-input-date-range-example-4',
     templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
     providers: [
         {
             provide: TUI_DATE_VALUE_TRANSFORMER,
@@ -26,8 +28,6 @@ import {
             useFactory: getExampleDateRangeTransformer,
         },
     ],
-    changeDetection,
-    encapsulation,
 })
 export class TuiInputDateRangeExample4 {
     readonly control = new FormControl([new Date(2018, 2, 10), new Date(2018, 3, 20)]);

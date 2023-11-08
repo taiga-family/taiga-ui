@@ -9,8 +9,8 @@ import {map} from 'rxjs/operators';
     selector: 'tui-line-clamp-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiLineClampExample1 {
     value$ = timer(this.isE2E ? 0 : 4000).pipe(

@@ -6,8 +6,8 @@ import {tuiButtonOptionsProvider} from '@taiga-ui/experimental';
 @Component({
     selector: 'tui-button-example-5',
     templateUrl: './index.html',
-    providers: [tuiButtonOptionsProvider({size: 's'})],
-    changeDetection,
     encapsulation,
+    changeDetection,
+    providers: [tuiButtonOptionsProvider({size: 's'})],
 })
 export class TuiButtonExample5 {}

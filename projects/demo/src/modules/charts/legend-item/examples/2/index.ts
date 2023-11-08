@@ -8,8 +8,8 @@ import {TuiAlertService, tuiFormatNumber} from '@taiga-ui/core';
     selector: 'tui-legend-item-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiLegendItemExample2 {
     private enabled = new Array(5).fill(true);

@@ -7,8 +7,8 @@ import {tuiIconResolverProvider} from '@taiga-ui/experimental';
     selector: 'tui-icon-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    providers: [tuiIconResolverProvider(icon => `/assets/icons/${icon}.svg`)],
-    changeDetection,
     encapsulation,
+    changeDetection,
+    providers: [tuiIconResolverProvider(icon => `/assets/icons/${icon}.svg`)],
 })
 export class TuiIconExample2 {}

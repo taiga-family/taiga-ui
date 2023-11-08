@@ -6,8 +6,8 @@ import {tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
 @Component({
     selector: 'tui-input-number-example-6',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         tuiInputNumberOptionsProvider({
             decimal: 'never',

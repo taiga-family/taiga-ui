@@ -9,8 +9,8 @@ import {TUI_IS_E2E} from '@taiga-ui/cdk';
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     host: {'[class._e2e]': 'isE2E'},
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiButtonExample1 {
     readonly avatarUrl = assets`/images/avatar.jpg`;

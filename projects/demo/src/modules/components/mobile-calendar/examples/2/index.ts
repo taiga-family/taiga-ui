@@ -7,8 +7,8 @@ import {TuiDay} from '@taiga-ui/cdk';
     selector: 'tui-mobile-calendar-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiMobileCalendarExample2 {
     min = new TuiDay(new Date().getFullYear(), new Date().getMonth(), 1);

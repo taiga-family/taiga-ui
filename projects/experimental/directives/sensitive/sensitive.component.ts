@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
-    host: {
-        class: 'tui-sensitive-styles',
-    },
-    changeDetection: ChangeDetectionStrategy.OnPush,
     template: '',
     styleUrls: ['./sensitive.style.less'],
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-sensitive-styles',
+    },
 })
 export class TuiSensitiveComponent {}

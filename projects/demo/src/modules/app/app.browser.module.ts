@@ -40,7 +40,6 @@ const PRODUCTION_MODULES = environment.production
     : [];
 
 @NgModule({
-    bootstrap: [AppComponent],
     imports: [
         BrowserModule.withServerTransition({appId: `tui-demo`}),
         AppRoutingModule,
@@ -75,5 +74,6 @@ const PRODUCTION_MODULES = environment.production
     ],
     declarations: [AppComponent],
     providers: APP_PROVIDERS,
+    bootstrap: [AppComponent],
 })
 export class AppBrowserModule {}

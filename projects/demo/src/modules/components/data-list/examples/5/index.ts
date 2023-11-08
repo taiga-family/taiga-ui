@@ -8,8 +8,8 @@ import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
     selector: 'tui-data-list-example-5',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiDataListExample5 {
     dropdownOpen = false;

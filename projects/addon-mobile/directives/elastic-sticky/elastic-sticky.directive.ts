@@ -6,8 +6,8 @@ import {TuiElasticStickyService} from './elastic-sticky.service';
 
 @Directive({
     selector: '[tuiElasticSticky]',
-    exportAs: 'tuiElasticSticky',
     providers: [TuiElasticStickyService, TuiDestroyService],
+    exportAs: 'tuiElasticSticky',
 })
 export class TuiElasticStickyDirective {
     @Output()

@@ -8,8 +8,8 @@ import {tuiFormatNumber} from '@taiga-ui/core';
     selector: 'tui-bar-chart-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiBarChartExample2 {
     readonly value = [

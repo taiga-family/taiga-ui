@@ -21,10 +21,10 @@ import {debounceTime, map} from 'rxjs/operators';
     selector: 'tui-root',
     templateUrl: './root.template.html',
     styleUrls: ['./root.style.less'],
+    encapsulation: ViewEncapsulation.None,
     // So that we do not force OnPush on custom dialogs
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    encapsulation: ViewEncapsulation.None,
     host: {
         'data-tui-version': TUI_VERSION,
         '[style.--tui-duration.ms]': 'duration',

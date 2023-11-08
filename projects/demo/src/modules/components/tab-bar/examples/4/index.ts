@@ -7,8 +7,8 @@ import {map, startWith, switchMap} from 'rxjs/operators';
 @Component({
     selector: 'tui-tab-bar-example-4',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTabBarExample4 {
     readonly load$ = new Subject<void>();

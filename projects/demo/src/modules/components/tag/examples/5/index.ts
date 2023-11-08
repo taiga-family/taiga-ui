@@ -6,8 +6,8 @@ import {tuiTagOptionsProvider} from '@taiga-ui/kit';
 @Component({
     selector: 'tui-tag-example-5',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         tuiTagOptionsProvider({
             size: 'l',

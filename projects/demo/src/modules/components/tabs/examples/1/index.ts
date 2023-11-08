@@ -7,8 +7,8 @@ import {TuiAlertService} from '@taiga-ui/core';
 @Component({
     selector: 'tui-tabs-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         {
             provide: TUI_IS_IOS,

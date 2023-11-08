@@ -8,8 +8,8 @@ import {TuiDurationOptions, tuiHeightCollapse} from '@taiga-ui/core';
     selector: 'tui-height-collapse-example',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
     animations: [tuiHeightCollapse],
 })
 export class TuiHeightCollapseExample {

@@ -3,8 +3,8 @@ import {AbstractTuiThemeSwitcher} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tui-theme-ios',
-    styleUrls: ['./theme-ios.style.less'],
     template: '',
+    styleUrls: ['./theme-ios.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
