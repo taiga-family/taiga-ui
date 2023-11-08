@@ -11,6 +11,7 @@ import {
 import {ActivatedRoute, Router} from '@angular/router';
 import {INTERSECTION_ROOT} from '@ng-web-apis/intersection-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
+import {tuiFadeIn} from '@taiga-ui/core';
 
 @Component({
     selector: 'landing',
@@ -23,6 +24,7 @@ import {EMPTY_QUERY} from '@taiga-ui/cdk';
             useExisting: ElementRef,
         },
     ],
+    animations: [tuiFadeIn],
 })
 export class LandingComponent implements OnInit {
     @ViewChildren('block', {read: ElementRef})
