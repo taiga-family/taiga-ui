@@ -44,6 +44,7 @@
     .progressValue({ background: @progress-color });
     display: block;
     width: 100%;
+    height: var(--t-height);
     color: var(--tui-primary);
     background: @track-color;
     border-radius: var(--tui-radius-xs);
@@ -54,12 +55,13 @@
     }
 
     &[data-size='m'] {
-        height: 1.5rem;
+        --t-height: 1.5rem;
     }
 
     &[data-size='s'] {
         .progressValue({ border-radius: var(--tui-radius-xs) });
-        height: 0.5rem;
+
+        --t-height: 0.5rem;
     }
 
     // TODO: drop new attribute in v4.0
@@ -71,27 +73,27 @@
         }
 
         &[data-size='xs'] {
-            height: 0.25rem;
+            --t-height: 0.25rem;
         }
 
         &[data-size='s'] {
-            height: 0.5rem;
+            --t-height: 0.5rem;
         }
 
         &[data-size='m'] {
-            height: 0.75rem;
+            --t-height: 0.75rem;
         }
 
         &[data-size='l'] {
-            height: 1rem;
+            --t-height: 1rem;
         }
 
         &[data-size='xl'] {
-            height: 1.25rem;
+            --t-height: 1.25rem;
         }
 
         &[data-size='xxl'] {
-            height: 1.5rem;
+            --t-height: 1.5rem;
         }
     }
 

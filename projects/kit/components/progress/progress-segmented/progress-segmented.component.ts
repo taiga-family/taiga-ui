@@ -9,6 +9,10 @@ import {tuiIsString} from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
+/**
+ * @deprecated Use {@link http://taiga-ui.dev/experimental/progress-segmented TuiProgressSegmentedModule} (from `@taiga-ui/experimental`)
+ * TODO: delete in v4.0
+ */
 @Component({
     selector: 'tui-progress-segmented',
     templateUrl: './progress-segmented.template.html',
