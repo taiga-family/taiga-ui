@@ -7,8 +7,8 @@ import {
     tuiPure,
     TuiResizeService,
 } from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
+import {distinctUntilChanged, map} from 'rxjs/operators';
 
 function calculateColorSegments(colors: string[], progressWidth: number): string {
     const segmentWidth = Math.ceil(progressWidth / colors.length);
@@ -36,19 +36,24 @@ export class TuiProgressColorSegmentsDirective {
         this.userAgent,
     );
 
+    private readonly colors$ = new BehaviorSubject<string[]>([]);
+
     @Input('tuiProgressColorSegments')
-    colors: string[] = [];
+    set colors(colors: string[]) {
+        this.colors$.next(colors);
+    }
 
     @tuiPure
     get calcSegments$(): Observable<string> {
-        return this.resize$.pipe(
-            map(() =>
-                this.isOldBrowsers
-                    ? this.colors[0]
-                    : calculateColorSegments(
-                          this.colors,
-                          this.el.nativeElement.offsetWidth,
-                      ),
+        return combineLatest([
+            this.colors$,
+            this.resize$.pipe(
+                map(() => this.el.nativeElement.offsetWidth),
+                distinctUntilChanged(),
+            ),
+        ]).pipe(
+            map(([colors, width]) =>
+                this.isOldBrowsers ? colors[0] : calculateColorSegments(colors, width),
             ),
         );
     }
