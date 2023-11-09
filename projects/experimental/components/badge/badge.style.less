@@ -24,50 +24,19 @@
         pointer-events: none;
     }
 
-    &._hoverable:hover,
-    &._hoverable:active {
-        &[data-appearance='custom']:after {
-            background: var(--tui-clear);
-        }
-    }
-
     &[data-appearance='primary'] {
         background: var(--tui-primary);
         color: var(--tui-primary-text);
-
-        &._hoverable:hover {
-            background: var(--tui-primary-hover);
-        }
-
-        &._hoverable:active {
-            background: var(--tui-primary-active);
-        }
     }
 
     &[data-appearance='accent'] {
         background: var(--tui-accent);
         color: var(--tui-accent-text);
-
-        &._hoverable:hover {
-            background: var(--tui-accent-hover);
-        }
-
-        &._hoverable:active {
-            background: var(--tui-accent-active);
-        }
     }
 
     &[data-appearance='light'] {
         background: var(--tui-secondary);
         color: var(--tui-text-01);
-
-        &._hoverable:hover {
-            background: var(--tui-secondary-hover);
-        }
-
-        &._hoverable:active {
-            background: var(--tui-secondary-active);
-        }
 
         &[data-platform='ios'],
         &[data-platform='android'] {
@@ -80,19 +49,9 @@
         background: var(--tui-error-bg);
         color: var(--tui-text-01);
 
-        &._hoverable:hover,
-        &._hoverable:active {
-            background: var(--tui-error-bg-hover);
-        }
-
         &[data-mode='onDark'] {
             background: var(--tui-error-bg-night);
             color: var(--tui-text-01-night);
-
-            &._hoverable:hover,
-            &._hoverable:active {
-                background: var(--tui-error-bg-night-hover);
-            }
         }
     }
 
@@ -101,19 +60,9 @@
         background: var(--tui-success-bg);
         color: var(--tui-text-01);
 
-        &._hoverable:hover,
-        &._hoverable:active {
-            background: var(--tui-success-bg-hover);
-        }
-
         &[data-mode='onDark'] {
             background: var(--tui-success-bg-night);
             color: var(--tui-text-01-night);
-
-            &._hoverable:hover,
-            &._hoverable:active {
-                background: var(--tui-success-bg-night-hover);
-            }
         }
     }
 
@@ -122,19 +71,9 @@
         background: var(--tui-warning-bg);
         color: var(--tui-text-01);
 
-        &._hoverable:hover,
-        &._hoverable:active {
-            background: var(--tui-warning-bg-hover);
-        }
-
         &[data-mode='onDark'] {
             background: var(--tui-warning-bg-night);
             color: var(--tui-text-01-night);
-
-            &._hoverable:hover,
-            &._hoverable:active {
-                background: var(--tui-warning-bg-night-hover);
-            }
         }
     }
 
@@ -143,19 +82,9 @@
         background: var(--tui-info-bg);
         color: var(--tui-text-01);
 
-        &._hoverable:hover,
-        &._hoverable:active {
-            background: var(--tui-info-bg-hover);
-        }
-
         &[data-mode='onDark'] {
             background: var(--tui-info-bg-night);
             color: var(--tui-text-01-night);
-
-            &._hoverable:hover,
-            &._hoverable:active {
-                background: var(--tui-info-bg-night-hover);
-            }
         }
     }
 
@@ -164,64 +93,23 @@
         background: var(--tui-neutral-bg);
         color: var(--tui-text-01);
 
-        &._hoverable:hover,
-        &._hoverable:active {
-            background: var(--tui-neutral-bg-hover);
-        }
-
         &[data-mode='onDark'] {
             background: var(--tui-neutral-bg-night);
             color: var(--tui-text-01-night);
-
-            &._hoverable:hover,
-            &._hoverable:active {
-                background: var(--tui-neutral-bg-night-hover);
-            }
         }
     }
 
     &[data-appearance='default'] {
         background: var(--tui-base-06);
 
-        &:not([data-mode]) {
-            &._hoverable:hover {
-                background: var(--tui-base-07);
-            }
-
-            &._hoverable:active {
-                background: var(--tui-base-08);
-            }
-        }
-
         &[data-mode='onDark'] {
             background: var(--tui-clear-inverse-hover);
-
-            &._hoverable:hover {
-                background: var(--tui-clear-inverse-active);
-            }
-
-            &._hoverable:active {
-                background: var(--tui-clear-inverse-active);
-            }
         }
 
         &[data-mode='onLight'] {
             background: var(--tui-clear);
             color: var(--tui-text-01);
-
-            &._hoverable:hover {
-                background: var(--tui-clear-hover);
-            }
-
-            &._hoverable:active {
-                background: var(--tui-clear-active);
-            }
         }
-    }
-
-    &._hoverable {
-        .transition(background);
-        cursor: pointer;
     }
 
     &:not(._empty-value) {
