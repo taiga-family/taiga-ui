@@ -20,7 +20,8 @@ import {
 } from '@taiga-ui/core';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
+import {distinctUntilChanged, map} from 'rxjs/operators';
 
 import {TuiSheetDialogOptions} from './sheet-dialog.options';
 
@@ -35,6 +36,10 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
     styleUrls: ['./sheet-dialog.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop],
+    host: {
+        '[$.class._stuck]': 'stuck$',
+        '($.class._stuck)': 'stuck$',
+    },
 })
 export class TuiSheetDialogComponent<I> implements AfterViewInit {
     @ViewChild('sheet')
@@ -43,6 +48,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     @ViewChildren('stops')
     private readonly stopsRefs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
+    private readonly scroll$ = new Subject();
     private pointers = 0;
 
     @HostBinding('@tuiSlideInTop')
@@ -53,6 +59,11 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
             duration: this.duration,
         },
     };
+
+    stuck$ = this.scroll$.pipe(
+        map(() => this.el.nativeElement.scrollTop > this.sheetTop),
+        distinctUntilChanged(),
+    );
 
     constructor(
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
@@ -83,6 +94,10 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     @HostListener('scroll.silent', ['0'])
     onPointerChange(delta: number): void {
         this.pointers += delta;
+
+        if (!delta) {
+            this.scroll$.next();
+        }
 
         if (
             this.context.closeable &&
