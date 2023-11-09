@@ -50,7 +50,7 @@ export function addTaigaModules(options: TuiSchema): Rule {
         }
 
         const buildOptions = getProjectTargetOptions(project, `build`);
-        const mainFilePath = buildOptions.main as string;
+        const mainFilePath = (buildOptions.main || buildOptions.browser) as string;
 
         if (!mainFilePath) {
             context.logger.error(`[ERROR]: Could not find the project main file`);
