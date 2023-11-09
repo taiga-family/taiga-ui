@@ -15,7 +15,6 @@ import {TUI_BADGE_OPTIONS, TuiBadgeOptions} from './badge.options';
         '[attr.data-platform]': 'platform',
         '[attr.data-appearance]': 'appearance',
         '[attr.data-size]': 'size',
-        '[class._hoverable]': 'hoverable',
         '($.data-mode.attr)': 'mode$',
     },
 })
@@ -25,9 +24,6 @@ export class TuiBadgeComponent {
 
     @Input()
     appearance = this.options.appearance;
-
-    @Input()
-    hoverable = this.options.hoverable;
 
     constructor(
         @Inject(TUI_BADGE_OPTIONS) private readonly options: TuiBadgeOptions,

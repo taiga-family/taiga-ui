@@ -1,32 +1,32 @@
 <tui-doc-page
-    deprecated
-    header="ProgressSegmented"
-    package="KIT"
-    path="kit/components/progress/progress-segmented"
+    header="ProgressSegmented "
+    package="EXPERIMENTAL"
+    type="directives"
 >
     <ng-template pageTab>
-        <tui-notification status="error">
-            <strong>Deprecated</strong>
-            . Use
+        <code>ProgressSegmented</code>
+        is a component to visually represent the completion of a process or operation (as a segmented bar). It shows how
+        much has been completed and how much remains.
+
+        <p>
+            Actually, this component is the same
             <a
-                routerLink="/experimental/progress-segmented"
+                routerLink="/components/progress-bar"
                 tuiLink
             >
-                new version of
-                <code>ProgressSegmented</code>
+                <code>ProgressBar</code>
             </a>
-            instead.
-        </tui-notification>
-
-        <dl>
-            <dt>
-                <code tuiText="<tui-progress-segmented />"></code>
-            </dt>
-            <dd>
-                is a component to visually represent the completion of a process or operation (as a segmented bar). It
-                shows how much has been completed and how much remains.
-            </dd>
-        </dl>
+            processed by css-property
+            <a
+                href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask"
+                rel="noreferrer"
+                target="_blank"
+                tuiLink
+            >
+                <code>mask</code>
+            </a>
+            .
+        </p>
 
         <tui-doc-example
             id="basic"
@@ -63,15 +63,33 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-progress-segmented
-                [colors]="color"
+            <progress
+                tuiProgressBar
                 [max]="max"
+                [segments]="segments"
                 [size]="size"
+                [tuiProgressColorSegments]="computedColors"
                 [value]="value"
-            ></tui-progress-segmented>
+            ></progress>
         </tui-doc-demo>
 
         <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="segments"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="segments"
+            >
+                A number of visual segments.
+                <p>
+                    It must be a valid
+                    <strong>integer</strong>
+                    number between 0 and
+                    <code>max</code>
+                    .
+                </p>
+            </ng-template>
+
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="value"
@@ -107,7 +125,7 @@
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="size"
-                documentationPropertyType="TuiSizeS"
+                documentationPropertyType="TuiSizeXS | TuiSizeXXL"
                 [documentationPropertyValues]="sizeVariants"
                 [(documentationPropertyValue)]="size"
             >
@@ -116,13 +134,20 @@
 
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="colors"
-                documentationPropertyType="string | string[]"
-                [documentationPropertyValues]="colorVariants"
-                [(documentationPropertyValue)]="color"
+                documentationPropertyName="tuiProgressColorSegments"
+                documentationPropertyType="string[]"
+                [documentationPropertyValues]="colorsVariants"
+                [(documentationPropertyValue)]="colors"
             >
-                Color of the progress segments.
-                <p>It can be a single color-string or array of color-strings for each segment.</p>
+                Colors of the progress segments.
+
+                <p>
+                    Use CSS-property
+                    <code>color</code>
+                    to set
+                    <strong>single</strong>
+                    solid color of progress indicator.
+                </p>
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -133,6 +158,8 @@
                 <p>
                     Import
                     <code>TuiProgressModule</code>
+                    and
+                    <code>TuiProgressSegmentedModule</code>
                     into a module where you want to use our component
                 </p>
 
