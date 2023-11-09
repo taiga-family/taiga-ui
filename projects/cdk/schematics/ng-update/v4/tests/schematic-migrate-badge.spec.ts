@@ -40,6 +40,7 @@ const TEMPLATE_BEFORE = `
 <tui-badge
     status="primary"
     [value]="value"
+    [hoverable]="true"
 ></tui-badge>
 <tui-badge
     status="success"
@@ -53,6 +54,7 @@ const TEMPLATE_AFTER = `
 <tui-badge
     appearance="primary"
    ${``}
+    ${``}
 >{{ value }}</tui-badge>
 <tui-badge
     appearance="success"

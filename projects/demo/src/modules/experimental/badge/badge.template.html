@@ -67,7 +67,6 @@
                 <tui-badge
                     *ngIf="contentType === 'with icon'"
                     [appearance]="appearance"
-                    [hoverable]="hoverable"
                     [size]="size"
                 >
                     <tui-svg src="tuiIconCheck"></tui-svg>
@@ -77,7 +76,6 @@
                 <tui-badge
                     *ngIf="contentType === 'text'"
                     [appearance]="appearance"
-                    [hoverable]="hoverable"
                     [size]="size"
                 >
                     Taiga UI
@@ -86,7 +84,6 @@
                 <tui-badge
                     *ngIf="contentType === 'image'"
                     [appearance]="appearance"
-                    [hoverable]="hoverable"
                     [size]="size"
                 >
                     <img
@@ -124,14 +121,6 @@
                 [(documentationPropertyValue)]="appearance"
             >
                 Appearance
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="hoverable"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="hoverable"
-            >
-                Enable hovered state
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
