@@ -1,0 +1,23 @@
+@radius: calc(var(--t-height) / 2);
+@segment-gap: 0.5rem;
+@mask-color: #999;
+
+/* stylelint-disable meowtec/no-px */
+@jagged-edges-hack:
+    @mask-color 0 99%,
+    transparent calc(99% + 0.6px) 100%;
+/* stylelint-enable meowtec/no-px */
+
+@left-circle: radial-gradient(circle closest-side at @radius center, @jagged-edges-hack);
+@right-circle: radial-gradient(circle closest-side at calc(100% - @radius - @segment-gap) center, @jagged-edges-hack);
+@rectangle: linear-gradient(
+    to right,
+    transparent 0 @radius,
+    @mask-color @radius calc(100% - @radius - @segment-gap),
+    transparent calc(100% - @radius - @segment-gap)
+);
+
+[tuiProgressBar]._segmented {
+    mask-image: @left-circle, @right-circle, @rectangle;
+    mask-size: calc(100% * var(--t-segment-width) + @segment-gap * var(--t-segment-width));
+}
