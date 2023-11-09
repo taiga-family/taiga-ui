@@ -4,7 +4,7 @@ import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/co
     host: {class: 'tui-progress-segmented'},
     template: '',
     styleUrls: ['./progress-segmented.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiProgressSegmentedComponent {}
