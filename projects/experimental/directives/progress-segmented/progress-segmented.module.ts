@@ -9,6 +9,6 @@ import {TuiProgressSegmentedDirective} from './progress-segmented.directive';
  */
 @NgModule({
     declarations: [TuiProgressSegmentedComponent, TuiProgressSegmentedDirective],
-    exports: [TuiProgressSegmentedComponent, TuiProgressSegmentedDirective],
+    exports: [TuiProgressSegmentedDirective],
 })
 export class TuiProgressSegmentedModule {}
