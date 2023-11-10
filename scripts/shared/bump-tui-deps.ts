@@ -3,7 +3,7 @@ import {isTuiPackageName} from './is-tui-package-name';
 
 export interface TuiBumpDepsOptions {
     deps: Record<string, Record<string, unknown> | string>;
-    ignores: string[];
+    ignores: readonly string[];
     isPeerDependency?: boolean;
     newVersion: string;
     prevVersion: string;
