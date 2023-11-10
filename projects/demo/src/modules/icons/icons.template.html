@@ -38,6 +38,7 @@
         <icons-group
             waIntersectionObserver
             waIntersectionThreshold="0.5"
+            [color]="color$ | async"
             [icons]="icons[key]"
         >
             <div class="icons-customization">
@@ -50,7 +51,7 @@
                     <div class="icons-color">
                         <div
                             class="color-picker"
-                            [style.background-color]="color || 'var(--tui-text-01)'"
+                            [style.background-color]="color$ | async"
                         ></div>
                         <div>Icon color</div>
                     </div>
@@ -60,9 +61,9 @@
                     let-activeZone
                 >
                     <tui-color-selector
-                        [color]="color || ''"
+                        [color]="(color$ | async) || ''"
                         [tuiActiveZoneParent]="activeZone"
-                        (colorChange)="color = $event"
+                        (colorChange)="colorChange($event)"
                     ></tui-color-selector>
                 </ng-template>
 
@@ -106,8 +107,6 @@
                         [class.t-background]="transparent"
                         [class.t-wrapper-icons_dark]="(mode$ | async) === 'onDark'"
                         [icon]="icon"
-                        [style.--tui-text-01-night]="color"
-                        [style.--tui-text-01]="color"
                         (click)="copyPath(icon)"
                     ></button>
                 </div>

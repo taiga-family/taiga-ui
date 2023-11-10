@@ -2,8 +2,8 @@ import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {assets} from '@demo/utils';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {debounceTime, map, share, startWith} from 'rxjs/operators';
 
 import {DemoTuiIconsTabs, TUI_DEMO_ICONS} from './icons.tokens';
 
@@ -14,13 +14,15 @@ import {DemoTuiIconsTabs, TUI_DEMO_ICONS} from './icons.tokens';
     changeDetection,
 })
 export class IconsComponent {
+    private readonly currentColor$ = new BehaviorSubject('');
     readonly keys = Object.keys(this.icons);
     readonly exampleModule = import('./import/import-module.md?raw');
-    readonly exampleHtml = import('./import/insert-template.md?raw');
 
+    readonly exampleHtml = import('./import/insert-template.md?raw');
     appearance = false;
     transparent = false;
-    color: string | null = null;
+
+    color$ = this.currentColor$.pipe(debounceTime(200), share());
 
     readonly iconVariants: readonly string[] = [
         'https://ng-web-apis.github.io/dist/assets/images/web-api.svg',
@@ -51,5 +53,9 @@ export class IconsComponent {
 
     onIntersection(entries: IntersectionObserverEntry[]): boolean {
         return entries[entries.length - 1]?.isIntersecting ?? false;
+    }
+
+    colorChange(color: string): void {
+        this.currentColor$.next(color);
     }
 }
