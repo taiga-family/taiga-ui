@@ -16,6 +16,7 @@
         "**/addon-commerce/utils/get-currency-symbol.ts"
     ],
     "ignoreWords": [
+        "avatarurl",
         "benji",
         "meowtec",
         "hapica",
