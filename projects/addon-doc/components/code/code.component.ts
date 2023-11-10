@@ -9,8 +9,8 @@ import {TuiRawLoaderContent} from '@taiga-ui/addon-doc/interfaces';
 import {TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR} from '@taiga-ui/addon-doc/tokens';
 import {tuiRawLoad} from '@taiga-ui/addon-doc/utils';
 import {TuiHandler} from '@taiga-ui/cdk';
-import {BehaviorSubject} from 'rxjs';
-import {map, switchMap} from 'rxjs/operators';
+import {BehaviorSubject, Subject, timer} from 'rxjs';
+import {map, startWith, switchMap} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-doc-code',
@@ -23,6 +23,17 @@ export class TuiDocCodeComponent {
 
     @Input()
     filename = '';
+
+    readonly copy$ = new Subject<void>();
+
+    readonly icon$ = this.copy$.pipe(
+        switchMap(() =>
+            timer(2000).pipe(
+                map(() => 'tuiIconCopyLarge'),
+                startWith('tuiIconCheckLarge'),
+            ),
+        ),
+    );
 
     readonly processor$ = this.rawLoader$$.pipe(
         switchMap(tuiRawLoad),

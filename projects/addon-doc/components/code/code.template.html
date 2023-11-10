@@ -10,7 +10,15 @@
 >
     <code [lineNumbers]="true" [highlight]="content"></code>
     <div class="t-code-actions">
-        <tui-doc-copy class="t-copy" [cdkCopyToClipboard]="content"></tui-doc-copy>
         <ng-content></ng-content>
+        <button
+            tuiIconButton
+            appearance="icon"
+            size="xs"
+            [icon]="(icon$ | async) || 'tuiIconCopyLarge'"
+            [cdkCopyToClipboard]="content"
+            (click)="copy$.next()"
+        >
+        </button>
     </div>
 </pre>

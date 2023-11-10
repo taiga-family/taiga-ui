@@ -13,11 +13,6 @@
     position: relative;
     margin: 0;
     white-space: normal;
-
-    &:hover .t-code-actions,
-    &:focus-visible .t-code-actions {
-        opacity: 1;
-    }
 }
 
 .t-code + .t-code {
@@ -26,12 +21,12 @@
 
 .t-code-actions {
     position: absolute;
-    top: 0.875rem;
-    right: 2rem;
+    top: 0.75rem;
+    right: 0.75rem;
     display: flex;
-    opacity: 0;
-    gap: 0.5rem;
-    flex-direction: row-reverse;
+    gap: 0.375rem;
+    justify-content: center;
+    align-items: center;
 }
 
 // highlightjs added class
