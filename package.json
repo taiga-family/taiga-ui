@@ -134,6 +134,7 @@
         "@taiga-ui/stylelint-config": "0.6.0",
         "@taiga-ui/tsconfig": "0.3.1",
         "@testing-library/cypress": "10.0.1",
+        "@tinkoff/ng-event-plugins": "3.1.0",
         "@tinkoff/tui-editor": "1.8.3",
         "@types/glob": "8.1.0",
         "@types/node": "20.9.0",
