@@ -20,8 +20,7 @@ import {
 } from '@taiga-ui/core';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {Observable, Subject} from 'rxjs';
-import {distinctUntilChanged, map} from 'rxjs/operators';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 import {TuiSheetDialogOptions} from './sheet-dialog.options';
 
@@ -48,7 +47,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     @ViewChildren('stops')
     private readonly stopsRefs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    private readonly scroll$ = new Subject();
     private pointers = 0;
 
     @HostBinding('@tuiSlideInTop')
@@ -60,10 +58,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         },
     };
 
-    stuck$ = this.scroll$.pipe(
-        map(() => this.el.nativeElement.scrollTop > this.sheetTop),
-        distinctUntilChanged(),
-    );
+    stuck$ = new BehaviorSubject(false);
 
     constructor(
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
@@ -96,7 +91,9 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         this.pointers += delta;
 
         if (!delta) {
-            this.scroll$.next();
+            const stuck = this.el.nativeElement.scrollTop > this.sheetTop;
+
+            this.stuck$.value !== stuck && this.stuck$.next(stuck);
         }
 
         if (
