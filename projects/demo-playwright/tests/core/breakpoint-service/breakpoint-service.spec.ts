@@ -10,9 +10,7 @@ test.describe(`Breakpoint service`, () => {
         test(`${width}x${height}`, async ({page}) => {
             await page.setViewportSize({width, height});
             await tuiGoto(page, `/services/breakpoint-service`);
-            const example = page.locator(
-                `tui-doc-example[heading="Basic"] [automation-id=tui-doc-example]`,
-            );
+            const example = new TuiDocumentationPagePO(page).getExample(`#basic`)
 
             await example.waitFor({state: `visible`});
             await example.scrollIntoViewIfNeeded();
