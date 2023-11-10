@@ -5,9 +5,6 @@
     ],
     "dest": "../../dist/experimental",
     "lib": {
-        "entryFile": "index.ts",
-        "styleIncludePaths": [
-            "../core/styles"
-        ]
+        "entryFile": "index.ts"
     }
 }

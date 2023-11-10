@@ -43,4 +43,11 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
         },
         to: {attrName: `[value]`},
     },
+    {
+        from: {
+            attrName: `[rounded]`,
+            withTagNames: [`tui-avatar`],
+        },
+        to: {attrName: `[round]`},
+    },
 ];

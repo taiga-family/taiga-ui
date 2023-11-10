@@ -25,6 +25,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         to: {name: `TuiRadioModule`, moduleSpecifier: `@taiga-ui/kit`},
     },
     {
+        from: {name: `TuiAvatarModule`, moduleSpecifier: `@taiga-ui/experimental`},
+        to: {name: `TuiAvatarModule`, moduleSpecifier: `@taiga-ui/kit`},
+    },
+    {
         from: {name: `TuiToggleModule`, moduleSpecifier: `@taiga-ui/experimental`},
         to: {name: `TuiToggleModule`, moduleSpecifier: `@taiga-ui/kit`},
     },

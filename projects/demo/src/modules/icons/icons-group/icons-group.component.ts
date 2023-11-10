@@ -31,6 +31,9 @@ export class IconsGroupComponent implements OnInit {
     @Input()
     icons: Record<string, readonly string[]> = {};
 
+    @Input()
+    color: string | null = null;
+
     matcher = TUI_DEFAULT_MATCHER;
 
     control = new FormControl('');

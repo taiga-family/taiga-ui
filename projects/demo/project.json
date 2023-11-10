@@ -50,9 +50,6 @@
                     "projects/demo/src/styles.scss",
                     "node_modules/prismjs/themes/prism-okaidia.css"
                 ],
-                "stylePreprocessorOptions": {
-                    "includePaths": ["projects/core/styles"]
-                },
                 "scripts": [
                     "node_modules/marked/lib/marked.js",
                     "node_modules/prismjs/prism.js",
@@ -235,9 +232,6 @@
                 "outputPath": "dist/demo/server",
                 "main": "projects/demo/server.ts",
                 "tsConfig": "projects/demo/tsconfig.server.json",
-                "stylePreprocessorOptions": {
-                    "includePaths": ["projects/core/styles"]
-                },
                 "sourceMap": true,
                 "optimization": false
             },

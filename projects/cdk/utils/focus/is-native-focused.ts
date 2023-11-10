@@ -9,5 +9,9 @@ import {tuiGetNativeFocused} from './get-native-focused';
  * @return true if focused
  */
 export function tuiIsNativeFocused(node: Node | null): boolean {
-    return !!node?.ownerDocument && tuiGetNativeFocused(node.ownerDocument) === node;
+    return (
+        !!node?.ownerDocument &&
+        tuiGetNativeFocused(node.ownerDocument) === node &&
+        node.ownerDocument.hasFocus()
+    );
 }
