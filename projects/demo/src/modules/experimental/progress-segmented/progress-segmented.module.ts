@@ -15,6 +15,7 @@ import {TuiProgressSegmentedExample1} from './examples/1';
 import {TuiProgressSegmentedExample2} from './examples/2';
 import {TuiProgressSegmentedExample3} from './examples/3';
 import {TuiProgressSegmentedExample4} from './examples/4';
+import {TuiProgressSegmentedExample5} from './examples/5';
 import {ExampleProgressSegmentedComponent} from './progress-segmented.component';
 
 @NgModule({
@@ -35,6 +36,7 @@ import {ExampleProgressSegmentedComponent} from './progress-segmented.component'
         TuiProgressSegmentedExample2,
         TuiProgressSegmentedExample3,
         TuiProgressSegmentedExample4,
+        TuiProgressSegmentedExample5,
     ],
 })
 export class ExampleTuiProgressSegmentedModule {}
