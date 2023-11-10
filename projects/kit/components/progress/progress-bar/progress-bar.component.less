@@ -47,7 +47,7 @@
     height: var(--t-height);
     color: var(--tui-primary);
     background: @track-color;
-    border-radius: var(--tui-radius-xs);
+    clip-path: inset(0 round var(--tui-radius-xs));
     overflow: hidden;
 
     &[data-mode='onDark'] {
@@ -64,13 +64,11 @@
         --t-height: 0.5rem;
     }
 
-    // TODO: drop new attribute in v4.0
+    // TODO: drop new attribute in v4.0 and make all these styles as default ones
     &[new] {
-        &[data-size='xs'],
-        &[data-size='s'],
-        &[data-size='m'] {
-            .progressValue({ border-radius: var(--tui-radius-xs) });
-        }
+        clip-path: inset(0 round var(--tui-radius-m));
+        border-radius: 1rem;
+        .progressValue({ border-radius: inherit });
 
         &[data-size='xs'] {
             --t-height: 0.25rem;
@@ -104,8 +102,13 @@
         animation: tuiIndeterminateAnimation 3s infinite ease-in-out;
     }
 
+    &::-webkit-progress-inner-element {
+        border-radius: inherit;
+    }
+
     &::-webkit-progress-bar {
         background: transparent;
+        border-radius: inherit;
     }
 }
 
