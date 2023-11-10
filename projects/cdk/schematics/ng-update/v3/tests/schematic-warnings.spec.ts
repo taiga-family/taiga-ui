@@ -1,4 +1,3 @@
-/* eslint-disable rxjs/no-topromise */
 import {LogEntry} from '@angular-devkit/core/src/logger/logger';
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
