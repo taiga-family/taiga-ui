@@ -67,6 +67,7 @@
                 <tui-badge
                     *ngIf="contentType === 'with icon'"
                     [appearance]="appearance"
+                    [dot]="dot"
                     [size]="size"
                 >
                     <tui-svg src="tuiIconCheck"></tui-svg>
@@ -76,6 +77,7 @@
                 <tui-badge
                     *ngIf="contentType === 'text'"
                     [appearance]="appearance"
+                    [dot]="dot"
                     [size]="size"
                 >
                     Taiga UI
@@ -84,6 +86,7 @@
                 <tui-badge
                     *ngIf="contentType === 'image'"
                     [appearance]="appearance"
+                    [dot]="dot"
                     [size]="size"
                 >
                     <img
@@ -104,6 +107,14 @@
             ></tui-radio-list>
         </label>
         <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="dot"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="dot"
+            >
+                Show dot on the left side
+            </ng-template>
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="size"

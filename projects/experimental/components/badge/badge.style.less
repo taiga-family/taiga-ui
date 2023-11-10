@@ -7,6 +7,7 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+    background: #959595;
     color: var(--tui-base-01);
     border-radius: 6rem;
     white-space: nowrap;
@@ -16,99 +17,28 @@
     flex-shrink: 0;
     max-width: 100%;
 
-    &:after {
-        .transition(background);
-        .fullsize();
-        content: '';
-        border-radius: inherit;
-        pointer-events: none;
-    }
-
-    &[data-appearance='primary'] {
-        background: var(--tui-primary);
-        color: var(--tui-primary-text);
-    }
-
-    &[data-appearance='accent'] {
-        background: var(--tui-accent);
-        color: var(--tui-accent-text);
-    }
-
-    &[data-appearance='light'] {
-        background: var(--tui-secondary);
-        color: var(--tui-text-01);
-
-        &[data-platform='ios'],
-        &[data-platform='android'] {
-            background: var(--tui-base-06);
-        }
-    }
-
     &[data-appearance='error'] {
         --left-content-color: var(--tui-error-fill);
-        background: var(--tui-error-bg);
-        color: var(--tui-text-01);
-
-        &[data-mode='onDark'] {
-            background: var(--tui-error-bg-night);
-            color: var(--tui-text-01-night);
-        }
     }
 
     &[data-appearance='success'] {
         --left-content-color: var(--tui-success-fill);
-        background: var(--tui-success-bg);
-        color: var(--tui-text-01);
-
-        &[data-mode='onDark'] {
-            background: var(--tui-success-bg-night);
-            color: var(--tui-text-01-night);
-        }
     }
 
     &[data-appearance='warning'] {
         --left-content-color: var(--tui-warning-fill);
-        background: var(--tui-warning-bg);
-        color: var(--tui-text-01);
-
-        &[data-mode='onDark'] {
-            background: var(--tui-warning-bg-night);
-            color: var(--tui-text-01-night);
-        }
     }
 
     &[data-appearance='info'] {
         --left-content-color: var(--tui-info-fill);
-        background: var(--tui-info-bg);
-        color: var(--tui-text-01);
-
-        &[data-mode='onDark'] {
-            background: var(--tui-info-bg-night);
-            color: var(--tui-text-01-night);
-        }
     }
 
     &[data-appearance='neutral'] {
         --left-content-color: var(--tui-neutral-fill);
-        background: var(--tui-neutral-bg);
-        color: var(--tui-text-01);
 
-        &[data-mode='onDark'] {
-            background: var(--tui-neutral-bg-night);
-            color: var(--tui-text-01-night);
-        }
-    }
-
-    &[data-appearance='default'] {
-        background: var(--tui-base-06);
-
-        &[data-mode='onDark'] {
-            background: var(--tui-clear-inverse-hover);
-        }
-
-        &[data-mode='onLight'] {
-            background: var(--tui-clear);
-            color: var(--tui-text-01);
+        &[data-platform='ios'],
+        &[data-platform='android'] {
+            background: var(--tui-base-06);
         }
     }
 
@@ -245,11 +175,7 @@
         border-radius: 100%;
     }
 
-    :host[data-appearance='error'] &,
-    :host[data-appearance='success'] &,
-    :host[data-appearance='warning'] &,
-    :host[data-appearance='info'] &,
-    :host[data-appearance='neutral'] & {
+    :host._dot & {
         &:empty {
             display: block;
         }

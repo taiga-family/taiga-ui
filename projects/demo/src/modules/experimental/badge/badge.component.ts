@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit';
 
 @Component({
     selector: 'example-badge',
@@ -52,7 +51,7 @@ export class ExampleTuiBadgeComponent {
         HTML: import('./examples/6/index.html?raw'),
     };
 
-    readonly appearanceVariants: ReadonlyArray<TuiStatus | 'accent' | 'light'> = [
+    readonly appearanceVariants = [
         'accent',
         'default',
         'primary',
@@ -62,7 +61,6 @@ export class ExampleTuiBadgeComponent {
         'warning',
         'info',
         'neutral',
-        'light',
     ];
 
     appearance = this.appearanceVariants[0];
@@ -73,4 +71,6 @@ export class ExampleTuiBadgeComponent {
 
     contentTypeVariants = ['text', 'with icon', 'image'];
     contentType = this.contentTypeVariants[0];
+
+    dot = false;
 }

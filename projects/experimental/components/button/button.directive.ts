@@ -28,7 +28,7 @@ export class TuiButtonStylesComponent {}
     providers: [MODE_PROVIDER],
     host: {
         tuiButtonNew: '',
-        tuiWrapper: '',
+        tuiAppearance: '',
         '[attr.data-size]': 'size',
         '[attr.data-appearance]': 'appearance',
         '[attr.data-platform]': 'platform',

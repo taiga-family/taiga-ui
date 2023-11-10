@@ -1,18 +1,17 @@
 import {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit';
 
 export interface TuiBadgeOptions {
-    readonly appearance: TuiStatus | 'accent' | 'light';
+    readonly appearance: string;
     readonly size: TuiSizeS | TuiSizeXL;
-    readonly hoverable: boolean;
+    readonly dot: boolean;
 }
 
 export const TUI_BADGE_DEFAULT_OPTIONS: TuiBadgeOptions = {
     size: `l`,
     appearance: `default`,
-    hoverable: false,
+    dot: false,
 };
 
 export const TUI_BADGE_OPTIONS = tuiCreateToken(TUI_BADGE_DEFAULT_OPTIONS);

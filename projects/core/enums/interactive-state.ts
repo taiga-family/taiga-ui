@@ -9,3 +9,5 @@ export enum TuiInteractiveState {
     Hover = `hover`,
     Readonly = `readonly`,
 }
+
+export type TuiInteractiveStateT = 'active' | 'disabled' | 'hover';

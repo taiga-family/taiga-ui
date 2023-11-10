@@ -1,0 +1,16 @@
+@import '../../taiga-ui-local.less';
+
+[tuiAppearance][data-appearance='floating'] {
+    background: #fff;
+    color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.1);
+
+    .appearance-hover({
+        box-shadow: 0 0.875rem 2.625rem rgba(0, 0, 0, 0.14);
+    });
+
+    .appearance-active({
+        background: #f6f7f8;
+        box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.1);
+    });
+}
