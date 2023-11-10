@@ -3,7 +3,9 @@ import {resolve} from 'path';
 import {version} from '../package.json';
 import {infoLog} from '../projects/cdk/schematics/utils/colored-log';
 import {execute} from './shared/execute';
+import {IGNORABLE_TAIGA_PACKAGES} from './shared/ignorable-packages';
 import {overwriteVersion} from './shared/overwrite-version';
+import {syncVersions} from './shared/sync-versions';
 
 (function main(): void {
     const type = `canary`;
@@ -14,6 +16,8 @@ import {overwriteVersion} from './shared/overwrite-version';
     const newVersion = `${major}.${minor}.${patch}-${type}.${commit}`;
 
     infoLog(`New dev version - ${newVersion}`);
+
+    syncVersions([`./dist`], newVersion, IGNORABLE_TAIGA_PACKAGES);
 
     overwriteVersion(resolve(`./projects/cdk/constants/version.ts`), newVersion);
 
