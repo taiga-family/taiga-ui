@@ -32,6 +32,8 @@ export class LandingComponent implements OnInit {
 
     current = 0;
 
+    intersected = false;
+
     constructor(
         @Inject(Router) private readonly router: Router,
         @Inject(ActivatedRoute) private readonly activatedRoute: ActivatedRoute,
