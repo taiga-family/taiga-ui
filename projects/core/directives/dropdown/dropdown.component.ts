@@ -85,9 +85,7 @@ export class TuiDropdownComponent {
     }
 
     onHoveredChange(hovered: boolean): void {
-        if (this.hoverDirective) {
-            this.hoverDirective.toggle(hovered);
-        }
+        this.hoverDirective?.toggle(hovered);
     }
 
     onTopFocus(): void {

@@ -324,6 +324,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/progress-segmented`,
+        loadChildren: async () =>
+            (await import(`../experimental/progress-segmented/progress-segmented.module`))
+                .ExampleTuiProgressSegmentedModule,
+        data: {
+            title: `ProgressSegmented`,
+        },
+    },
+    {
         path: `experimental/rating`,
         loadChildren: async () =>
             (await import(`../experimental/rating/rating.module`)).ExampleTuiRatingModule,

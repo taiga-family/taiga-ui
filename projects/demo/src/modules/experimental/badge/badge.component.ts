@@ -71,8 +71,6 @@ export class ExampleTuiBadgeComponent {
 
     size: TuiSizeS | TuiSizeXL = this.sizeVariants[1];
 
-    hoverable = false;
-
     contentTypeVariants = ['text', 'with icon', 'image'];
     contentType = this.contentTypeVariants[0];
 }

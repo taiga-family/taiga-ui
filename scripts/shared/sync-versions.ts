@@ -9,7 +9,7 @@ const INDENTATION = 4;
 export function syncVersions(
     filesOrDirectories: string[],
     newVersion: string,
-    ignores: string[] = [],
+    ignores: readonly string[] = [],
 ): void {
     const patterns = filesOrDirectories.map(pattern =>
         pattern.endsWith(`.json`)

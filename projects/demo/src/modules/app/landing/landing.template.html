@@ -1,5 +1,6 @@
 <img
-    alt=""
+    alt="taiga"
+    loading="lazy"
     src="assets/images/taiga.svg"
     class="taiga"
 />
@@ -11,16 +12,19 @@
 >
     <div class="topography">
         <img
-            alt=""
+            alt="topography"
+            loading="lazy"
             src="assets/images/topography.svg"
         />
     </div>
     <div class="container">
         <iframe
+            *ngIf="current === 1"
             height="100%"
             src="https://taiga-family.github.io/preview-landing-components/"
             title="Preview of components"
             width="100%"
+            @tuiFadeIn
         ></iframe>
     </div>
     <div class="make">
@@ -66,7 +70,11 @@
             />
         </svg>
     </div>
-    <div class="container container_dark">
+    <div
+        *ngIf="current === 2"
+        class="container container_dark"
+        @tuiFadeIn
+    >
         <h2 class="opensource">It’s open source</h2>
         <p class="contributions">
             We use these components in our work ourselves, so we often release updates. Contributions are welcome —
@@ -112,7 +120,8 @@
 >
     <div class="map">
         <img
-            alt=""
+            alt="topography"
+            loading="lazy"
             src="assets/images/topography.svg"
         />
     </div>
@@ -120,19 +129,22 @@
         class="wrapper"
         [class.wrapper_hidden]="current"
     >
-        <span class="block">
-            Taiga UI
-            <span class="dash">——</span>
-            <img
-                alt=""
-                src="assets/images/taiga.svg"
-                class="logo"
-            />
-        </span>
-        <span class="block">powerful set of</span>
-        <span class="block">open source</span>
-        <span class="block">components</span>
-        <span class="block">for Angular</span>
+        Taiga UI
+        <span class="dash">——</span>
+        <img
+            alt="logo"
+            loading="lazy"
+            src="assets/images/taiga.svg"
+            class="logo"
+        />
+        <br />
+        powerful set of
+        <br />
+        open source
+        <br />
+        components
+        <br />
+        for Angular
     </h1>
 </section>
 
@@ -165,6 +177,7 @@
         Browse components
     </a>
     <button
+        aria-label="scroller"
         type="button"
         class="scroll"
         [class.scroll_hidden]="current === 2"
@@ -172,6 +185,7 @@
     ></button>
     <img
         alt="by Tinkoff"
+        loading="lazy"
         src="assets/images/by.svg"
         class="by"
     />

@@ -5,7 +5,7 @@ import {bumpTuiVersionInPackageJson} from './bump-tui-version-in-package-json';
 import {isTuiPackageName} from './is-tui-package-name';
 
 interface UpdatePackageJsonOptions {
-    ignores: string[];
+    ignores: readonly string[];
     isPackageLockFile: boolean;
     newVersion: string;
     packageJson: Record<string, Record<string, any> | string>;

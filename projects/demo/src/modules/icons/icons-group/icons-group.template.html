@@ -29,7 +29,11 @@
         </div>
         <p *ngIf="!filtered.length">Nothing found</p>
 
-        <div class="icons">
+        <div
+            class="icons"
+            [style.--tui-text-01-night]="color"
+            [style.--tui-text-01]="color"
+        >
             <ng-container
                 *ngFor="let icon of filtered"
                 [ngTemplateOutlet]="iconGroup?.template || null"
