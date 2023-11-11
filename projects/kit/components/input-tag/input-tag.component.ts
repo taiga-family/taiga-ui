@@ -397,7 +397,7 @@ export class TuiInputTagComponent
                         ? tag
                         : value
                               .split(this.separator)
-                              .map(tag => tag.trim())
+                              .map(item => item.trim())
                               .filter(Boolean),
                 )
                 .reduce<string[]>(

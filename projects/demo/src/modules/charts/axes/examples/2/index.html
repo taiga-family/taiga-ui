@@ -11,7 +11,7 @@
     <tui-bar-chart
         class="chart"
         [tuiHintContent]="hint"
-        [value]="value"
+        [value]="matrix"
     ></tui-bar-chart>
 </tui-axes>
 
@@ -20,7 +20,7 @@
     let-setIndex
 >
     <p
-        *ngFor="let item of value; let index = index"
+        *ngFor="let item of matrix; let index = index"
         class="hint"
     >
         <span

@@ -45,9 +45,7 @@ export class TuiScrollService {
               );
 
         return observable.pipe(
-            tap(([scrollTop, scrollLeft]) => {
-                elementOrWindow.scrollTo?.(scrollLeft, scrollTop);
-            }),
+            tap(([top, left]) => elementOrWindow.scrollTo?.(left, top)),
         );
     }
 }

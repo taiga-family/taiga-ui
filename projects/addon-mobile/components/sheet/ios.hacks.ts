@@ -29,7 +29,10 @@ export function iosScrollFactory(
                 return concat(
                     // Sometimes touch is triggered without scroll in iOS, filter that
                     zip(touchmove$, scroll$).pipe(
-                        map(([{touches}]) => scrollTop + screenY - touches[0].screenY),
+                        map(
+                            ([{touches: touchesList}]) =>
+                                scrollTop + screenY - touchesList[0].screenY,
+                        ),
                         takeUntil(touchend$),
                     ),
                     scroll$,

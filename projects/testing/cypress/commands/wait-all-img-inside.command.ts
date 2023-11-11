@@ -26,15 +26,15 @@ export const tuiWaitAllImgInside = (
 
             cy.wrap($target, {log: false})
                 .get(`img`, {log: false})
-                .each((img: JQuery<HTMLImageElement>) => {
-                    const nativeImage = img.get(0);
+                .each((childImg: JQuery<HTMLImageElement>) => {
+                    const nativeImage = childImg.get(0);
                     const url = nativeImage?.src || nativeImage?.srcset;
 
                     if (!url) {
                         return;
                     }
 
-                    const offsetParent = img.prop(`offsetParent`);
+                    const offsetParent = childImg.prop(`offsetParent`);
 
                     return cy.window({log: false}).then((win: Window) => {
                         const rect = nativeImage.getBoundingClientRect();
@@ -61,7 +61,7 @@ export const tuiWaitAllImgInside = (
                                     log: false,
                                 }).then(resp => {
                                     if (resp.status === 200) {
-                                        cy.get(img as any, {log: false}).should(
+                                        cy.get(childImg as any, {log: false}).should(
                                             (el: JQuery<HTMLImageElement>) =>
                                                 (expect as any)(
                                                     el[0].naturalWidth,

@@ -9,8 +9,8 @@ import {
 export const MAX_DAY_RANGE_LENGTH_MAPPER: TuiTypedMapper<
     [TuiDay, TuiDayRange | null, TuiDayLike | null, boolean],
     TuiDay
-> = (min, value, maxLength, backwards) => {
-    if (!value?.isSingleDay || !maxLength) {
+> = (min, dayRange, maxLength, backwards) => {
+    if (!dayRange?.isSingleDay || !maxLength) {
         return min;
     }
 
@@ -18,7 +18,7 @@ export const MAX_DAY_RANGE_LENGTH_MAPPER: TuiTypedMapper<
         Object.entries(maxLength).map(([key, value]) => [key, -value]),
     );
 
-    const dateShift = value.from
+    const dateShift = dayRange.from
         .append(backwards ? negativeMaxLength : maxLength)
         .append({day: !backwards ? -1 : 1});
 

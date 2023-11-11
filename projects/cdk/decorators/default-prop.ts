@@ -48,17 +48,17 @@ export function tuiDefaultProp<T extends Record<string, any>, K extends keyof T>
                         return currentValue;
                     },
                     set(this: T, value: T[K]) {
-                        const isValid = value !== undefined;
+                        const setterValueIsValid = value !== undefined;
                         const backupValue = initialValue;
 
                         ngDevMode &&
                             tuiAssert.assert(
-                                isValid,
+                                setterValueIsValid,
                                 errorSetDefaultMessage,
                                 String(backupValue),
                             );
 
-                        if (ngDevMode && isValid && assertion && tuiAssert) {
+                        if (ngDevMode && setterValueIsValid && assertion && tuiAssert) {
                             tuiAssert.assert(
                                 assertion.call(this, value),
                                 `${String(key)} in ${name} received:`,
@@ -67,7 +67,7 @@ export function tuiDefaultProp<T extends Record<string, any>, K extends keyof T>
                             );
                         }
 
-                        currentValue = isValid ? value : backupValue;
+                        currentValue = setterValueIsValid ? value : backupValue;
                     },
                 });
             },

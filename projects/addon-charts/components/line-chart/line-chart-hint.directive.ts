@@ -73,11 +73,11 @@ export class TuiLineChartHintDirective implements AfterViewInit {
     }
 
     // _chart is required by TuiLineDaysChartComponent that impersonates this directive
-    raise(index: number, _chart: TuiLineChartComponent): void {
-        const current = this.charts.map(chart => chart.value[index]);
+    raise(pointIndex: number, _chart: TuiLineChartComponent): void {
+        const current = this.charts.map(chart => chart.value[pointIndex]);
         const sorted = [...current].sort((a, b) => a[1] - b[1]);
 
-        this.charts.forEach(chart => chart.onHovered(index));
+        this.charts.forEach(chart => chart.onHovered(pointIndex));
         this.chartsRef.forEach(({nativeElement}, index) =>
             this.renderer.setStyle(
                 nativeElement,
@@ -101,7 +101,9 @@ export function tuiLineChartDrivers(
     return combineLatest(
         charts.map(({drivers}) =>
             tuiQueryListChanges(drivers).pipe(
-                map(drivers => drivers.map(driver => driver.pipe(startWith(false)))),
+                map(observedDrivers =>
+                    observedDrivers.map(driver => driver.pipe(startWith(false))),
+                ),
             ),
         ),
     ).pipe(

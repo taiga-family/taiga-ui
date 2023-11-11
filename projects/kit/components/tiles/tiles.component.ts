@@ -40,8 +40,8 @@ export class TuiTilesComponent {
     debounce = 0;
 
     @Input()
-    set order(map: Map<number, number>) {
-        this.order$.next(map);
+    set order(value: Map<number, number>) {
+        this.order$.next(value);
     }
 
     get order(): Map<number, number> {

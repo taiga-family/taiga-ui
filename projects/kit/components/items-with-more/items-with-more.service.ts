@@ -29,7 +29,7 @@ export class TuiItemsWithMoreService extends Observable<number> {
 
     private getOverflowIndex(): number {
         const {clientWidth, children} = this.el.nativeElement;
-        const items = Array.from(children, ({clientWidth}) => clientWidth);
+        const items = Array.from(children, ({clientWidth: width}) => width);
         const first = this.directive.required === -1 ? 0 : this.directive.required;
         const last = items.length - 1;
         const more = children[last]?.tagName === `SPAN` ? items[last] : 0;

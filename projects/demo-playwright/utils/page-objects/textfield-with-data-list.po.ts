@@ -25,7 +25,7 @@ export class TuiTextfieldWithDataListPO {
     async scrollDropdown(...args: any[]): Promise<void> {
         await this.dropdown
             .locator(`tui-scrollbar`)
-            .evaluate((el, args) => el.scrollTo(...args), args);
+            .evaluate((el, arg) => el.scrollTo(...arg), args);
 
         return this.host.page().waitForTimeout(100); // flaky free
     }

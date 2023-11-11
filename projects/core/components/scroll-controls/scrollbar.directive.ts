@@ -53,7 +53,9 @@ export class TuiScrollbarDirective {
         );
 
         merge(
-            mousedownWrapper$.pipe(map(event => this.getScrolled(event, 0.5, 0.5))),
+            mousedownWrapper$.pipe(
+                map(downEvent => this.getScrolled(downEvent, 0.5, 0.5)),
+            ),
             mousedown$.pipe(
                 tuiStopPropagation(),
                 switchMap(event => {
@@ -62,7 +64,9 @@ export class TuiScrollbarDirective {
                     const horizontal = getOffsetHorizontal(event, rect);
 
                     return mousemove$.pipe(
-                        map(event => this.getScrolled(event, vertical, horizontal)),
+                        map(moveEvent =>
+                            this.getScrolled(moveEvent, vertical, horizontal),
+                        ),
                         takeUntil(mouseup$),
                     );
                 }),

@@ -44,12 +44,12 @@ export class TuiTreeExample6 {
     readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = item =>
         item.children || EMPTY_ARRAY;
 
-    readonly getValue = (item: TreeNode, map: Map<TreeNode, boolean>): boolean | null => {
-        const flat = flatten(item);
-        const result = !!map.get(flat[0]);
+    readonly getValue = (node: TreeNode, map: Map<TreeNode, boolean>): boolean | null => {
+        const flattenNodes = flatten(node);
+        const result = !!map.get(flattenNodes[0]);
 
-        for (const item of flat) {
-            if (result !== !!map.get(item)) {
+        for (const flatNode of flattenNodes) {
+            if (result !== !!map.get(flatNode)) {
                 return null;
             }
         }
@@ -64,8 +64,8 @@ export class TuiTreeExample6 {
     }
 }
 
-function flatten(item: TreeNode): readonly TreeNode[] {
-    return item.children
-        ? item.children.map(flatten).reduce((arr, item) => [...arr, ...item], [])
-        : [item];
+function flatten(node: TreeNode): readonly TreeNode[] {
+    return node.children
+        ? node.children.map(flatten).reduce((arr, item) => [...arr, ...item], [])
+        : [node];
 }

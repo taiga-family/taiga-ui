@@ -66,25 +66,25 @@ function replaceService(
 }
 
 function replaceProperties(
-    parent: TypeReferenceNode,
-    replaceProperties: ReplacementService['replaceMethods'],
+    typeReferenceNode: TypeReferenceNode,
+    properties: ReplacementService['replaceMethods'],
 ): void {
-    const statement = parent.getParent();
+    const statement = typeReferenceNode.getParent();
     const identifier = statement.getChildrenOfKind(SyntaxKind.Identifier)[0];
 
     identifier?.findReferencesAsNodes().forEach(ref => {
-        let parent = ref.getParent();
+        let parentNode = ref.getParent();
 
         if (
-            (Node.isPropertyAccessExpression(parent) &&
-                parent.getText().startsWith(`this.`)) ||
-            Node.isCallExpression(parent)
+            (Node.isPropertyAccessExpression(parentNode) &&
+                parentNode.getText().startsWith(`this.`)) ||
+            Node.isCallExpression(parentNode)
         ) {
-            parent = parent.getParentIfKind(SyntaxKind.PropertyAccessExpression);
+            parentNode = parentNode.getParentIfKind(SyntaxKind.PropertyAccessExpression);
         }
 
-        if (Node.isPropertyAccessExpression(parent)) {
-            replaceProperty(parent, replaceProperties);
+        if (Node.isPropertyAccessExpression(parentNode)) {
+            replaceProperty(parentNode, properties);
         }
     });
 }

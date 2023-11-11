@@ -15,7 +15,9 @@ export class TuiTreeService<T> {
         switchMap(item =>
             this.loader.loadChildren(item).pipe(
                 tap(children => this.map.set(item, children)),
-                map(children => children.filter(item => !this.loader.hasChildren(item))),
+                map(children =>
+                    children.filter(child => !this.loader.hasChildren(child)),
+                ),
                 tap(children => children.forEach(child => this.map.set(child, []))),
             ),
         ),

@@ -6,6 +6,12 @@ import {getDayFromMonthRowCol} from './utils';
 
 const CALENDAR_ROWS_COUNT = 6;
 
+const isPrevMonthDay = (day: TuiDay, relativeToMonth: TuiMonth): boolean =>
+    day.year < relativeToMonth.year || day.month < relativeToMonth.month;
+
+const isNextMonthDay = (day: TuiDay, relativeToMonth: TuiMonth): boolean =>
+    day.year > relativeToMonth.year || day.month > relativeToMonth.month;
+
 @Pipe({
     name: `tuiCalendarSheet`,
 })
@@ -39,17 +45,11 @@ export class TuiCalendarSheetPipe implements PipeTransform {
                     firstDayOfWeek: this.firstDayOfWeek,
                 });
 
-                const isPrevMonthDay = (day: TuiDay, relativeToMonth = month): boolean =>
-                    day.year < relativeToMonth.year || day.month < relativeToMonth.month;
-
-                const isNextMonthDay = (day: TuiDay, relativeToMonth = month): boolean =>
-                    day.year > relativeToMonth.year || day.month > relativeToMonth.month;
-
-                if (isPrevMonthDay(day) && !showAdjacentDays) {
+                if (isPrevMonthDay(day, month) && !showAdjacentDays) {
                     continue;
                 }
 
-                if (isNextMonthDay(day) && !showAdjacentDays) {
+                if (isNextMonthDay(day, month) && !showAdjacentDays) {
                     break;
                 }
 

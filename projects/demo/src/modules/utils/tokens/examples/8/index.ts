@@ -1,7 +1,6 @@
-import {Component, Inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_NUMBER_FORMAT, TuiNumberFormatSettings} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-token-example-8',
@@ -9,9 +8,4 @@ import {TUI_NUMBER_FORMAT, TuiNumberFormatSettings} from '@taiga-ui/core';
     encapsulation,
     changeDetection,
 })
-export class TuiTokensExample8 {
-    constructor(
-        @Inject(TUI_NUMBER_FORMAT)
-        readonly TuiNumberFormatSettings: TuiNumberFormatSettings,
-    ) {}
-}
+export class TuiTokensExample8 {}

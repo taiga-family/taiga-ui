@@ -55,8 +55,8 @@ export class TuiMultiSelectExample4 {
         map(items => new Map(items.map<[number, string]>(({id, name}) => [id, name]))),
         startWith(new Map()),
         map(
-            map => (id: TuiContextWithImplicit<number> | number) =>
-                (tuiIsNumber(id) ? map.get(id) : map.get(id.$implicit)) || 'Loading...',
+            data => (id: TuiContextWithImplicit<number> | number) =>
+                (tuiIsNumber(id) ? data.get(id) : data.get(id.$implicit)) || 'Loading...',
         ),
     );
 

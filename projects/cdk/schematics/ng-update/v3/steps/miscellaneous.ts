@@ -104,9 +104,9 @@ function checkMethod(node: TypeReferenceNode, method: string, message: string): 
         }
 
         if (Node.isPropertyAccessExpression(parent)) {
-            parent.getChildrenOfKind(SyntaxKind.Identifier).forEach(identifier => {
-                if (identifier.getText() === method) {
-                    insertTodo(identifier, message);
+            parent.getChildrenOfKind(SyntaxKind.Identifier).forEach(childIdentifier => {
+                if (childIdentifier.getText() === method) {
+                    insertTodo(childIdentifier, message);
                 }
             });
         }

@@ -14,10 +14,10 @@ import {TuiFieldErrorPipeModule} from '@taiga-ui/kit/pipes';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
 import {configureTestSuite} from '@taiga-ui/testing';
 
-describe(`TuiFieldErrorContentPipe`, () => {
-    const testError = `testError`;
-    const max = 15;
+const TEST_ERROR = `testError`;
+const MAX = 15;
 
+describe(`TuiFieldErrorContentPipe`, () => {
     @Component({
         template: `
             <tui-root>
@@ -46,14 +46,14 @@ describe(`TuiFieldErrorContentPipe`, () => {
             {
                 provide: TUI_VALIDATION_ERRORS,
                 useValue: {
-                    min: testError,
+                    min: TEST_ERROR,
                     max: ({max}: {max: number}) => `error ${max}`,
                 },
             },
         ],
     })
     class TestComponent {
-        control = new FormControl(6, [Validators.min(10), Validators.max(max)]);
+        control = new FormControl(6, [Validators.min(10), Validators.max(MAX)]);
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -84,14 +84,14 @@ describe(`TuiFieldErrorContentPipe`, () => {
         it(`shows validation error`, fakeAsync(() => {
             showHint();
             fixture.detectChanges();
-            expect(getTooltip()?.textContent?.trim()).toBe(testError);
+            expect(getTooltip()?.textContent?.trim()).toBe(TEST_ERROR);
         }));
 
         it(`shows validation error (function error)`, fakeAsync(() => {
             component.control.setValue(22);
             showHint();
             fixture.detectChanges();
-            expect(getTooltip()?.textContent?.trim()).toBe(`error ${max}`);
+            expect(getTooltip()?.textContent?.trim()).toBe(`error ${MAX}`);
         }));
     });
 

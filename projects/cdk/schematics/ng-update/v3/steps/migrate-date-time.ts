@@ -187,11 +187,7 @@ function migrateProperty({
     });
 }
 
-function replaceIdentifier(
-    node: Node,
-    from: string,
-    callback: (node: Node) => void,
-): void {
+function replaceIdentifier(node: Node, from: string, callback: (_: Node) => void): void {
     const declaration =
         node.getFirstAncestorByKind(SyntaxKind.VariableDeclaration) ||
         node.getFirstAncestorByKind(SyntaxKind.PropertyDeclaration);
@@ -254,7 +250,7 @@ function replaceIdentifierReferences(
             if (Node.isPropertyAccessExpression(parent)) {
                 const searched = parent
                     .getChildrenOfKind(SyntaxKind.Identifier)
-                    .find(identifier => identifier.getText() === from);
+                    .find(childIdentifier => childIdentifier.getText() === from);
 
                 if (searched) {
                     callback(parent);

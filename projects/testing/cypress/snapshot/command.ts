@@ -7,6 +7,7 @@ import {matchImageSnapshotCommand} from 'cypress-image-snapshot/command';
 import {tuiWaitAllImgInside} from '../commands/wait-all-img-inside.command';
 
 declare module 'cypress-image-snapshot/command' {
+    // eslint-disable-next-line @typescript-eslint/no-shadow
     function matchImageSnapshotCommand(options: Options): (...args: unknown[]) => void;
 }
 
@@ -36,12 +37,12 @@ export function tuiAddMatchImageSnapshotCommand(
         (
             prevSubject,
             nameOrOptions: string | (Options & TuiSnapshotCommandOptions),
-            options?: Options & TuiSnapshotCommandOptions,
+            localOptions?: Options & TuiSnapshotCommandOptions,
         ) => {
             const name = tuiIsString(nameOrOptions) ? nameOrOptions : undefined;
             const overloadedOptions = tuiIsObject(nameOrOptions)
                 ? nameOrOptions
-                : options;
+                : localOptions;
 
             tuiWaitAllImgInside(prevSubject, overloadedOptions?.waitAllImages ?? true);
 

@@ -208,19 +208,21 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     @tuiPure
     private calculateDisabledItemHandler(
         disabledItemHandler: TuiBooleanHandler<TuiDay>,
-        value: TuiDayRange | null,
+        dayRange: TuiDayRange | null,
         minLength: TuiDayLike | null,
     ): TuiBooleanHandler<TuiDay> {
         return item => {
-            if (!value?.isSingleDay || !minLength) {
+            if (!dayRange?.isSingleDay || !minLength) {
                 return disabledItemHandler(item);
             }
 
             const negativeMinLength = tuiObjectFromEntries(
                 Object.entries(minLength).map(([key, value]) => [key, -value]),
             );
-            const disabledBefore = value.from.append(negativeMinLength).append({day: 1});
-            const disabledAfter = value.from.append(minLength).append({day: -1});
+            const disabledBefore = dayRange.from
+                .append(negativeMinLength)
+                .append({day: 1});
+            const disabledAfter = dayRange.from.append(minLength).append({day: -1});
             const inDisabledRange =
                 disabledBefore.dayBefore(item) && disabledAfter.dayAfter(item);
 

@@ -20,14 +20,14 @@ export class TuiLineClampExample4 {
 
 function randomString(len: number): string {
     const charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let randomString = '';
+    let result = '';
 
     for (let i = 0; i < len; i++) {
         const randomPoz = Math.floor(Math.random() * charSet.length);
 
         // eslint-disable-next-line unicorn/prefer-string-slice
-        randomString += charSet.substring(randomPoz, randomPoz + 1);
+        result += charSet.substring(randomPoz, randomPoz + 1);
     }
 
-    return randomString;
+    return result;
 }

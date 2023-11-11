@@ -1,7 +1,7 @@
 import {ChildNode, Element, parseFragment} from 'parse5';
 
 export function findElementsByFn(
-    nodes: ChildNode[],
+    childNodes: ChildNode[],
     predicateFn: (el: Element) => boolean,
 ): Element[] {
     const elements: Element[] = [];
@@ -20,7 +20,7 @@ export function findElementsByFn(
         });
     };
 
-    visitNodes(nodes);
+    visitNodes(childNodes);
 
     return elements;
 }

@@ -65,9 +65,14 @@ describe(`Matcher functions`, () => {
 
         it(`returns true by equal stringified values, case insensitive`, () => {
             const uppedCasedItemSearch = item.toString().toLocaleUpperCase();
-            const stringify = (item: Item): string => item.toString();
 
-            expect(strictMatcher(item, uppedCasedItemSearch, stringify)).toBe(true);
+            expect(
+                strictMatcher(
+                    item,
+                    uppedCasedItemSearch,
+                    (stringifiedItem: Item): string => stringifiedItem.toString(),
+                ),
+            ).toBe(true);
         });
     });
 

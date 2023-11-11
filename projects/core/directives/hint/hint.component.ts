@@ -94,7 +94,9 @@ export class TuiHintComponent<C = any> {
                 this.update(top, left);
             });
 
-        hovered$.pipe(takeUntil(destroy$)).subscribe(hover => this.hover.toggle(hover));
+        hovered$
+            .pipe(takeUntil(destroy$))
+            .subscribe(visible => this.hover.toggle(visible));
     }
 
     get content(): PolymorpheusContent<C> {
