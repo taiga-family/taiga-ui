@@ -109,13 +109,13 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
         this.cd.detectChanges();
     }
 
-    ngAfterViewInit(): void {
-        this.initialized = true;
-    }
-
     ngDoCheck(): void {
         this.update();
         this.isOverflown$.next(this.overflown);
+    }
+
+    ngAfterViewInit(): void {
+        this.initialized = true;
     }
 
     private skipInitialTransition(): void {
