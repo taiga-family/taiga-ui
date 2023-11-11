@@ -21,7 +21,6 @@ test.describe(`MobileCalendar`, () => {
         await tuiGoto(page, `components/mobile-calendar/API?tuiMode=null&max$=1`);
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-        await apiPageExample.waitFor({state: `visible`});
         await apiPageExample.scrollIntoViewIfNeeded();
         await page.waitForTimeout(2000);
 

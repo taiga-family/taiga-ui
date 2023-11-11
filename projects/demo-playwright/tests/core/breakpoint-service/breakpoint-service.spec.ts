@@ -12,8 +12,6 @@ test.describe(`Breakpoint service`, () => {
             await tuiGoto(page, `/services/breakpoint-service`);
             const example = new TuiDocumentationPagePO(page).getExample(`#basic`);
 
-            await example.waitFor({state: `visible`});
-
             await expect(example).toHaveScreenshot(`breakpoint_${width}x${height}.png`);
         });
     }
