@@ -58,20 +58,90 @@ export class TuiHintOptionsDirective
     extends AbstractTuiController
     implements TuiHintOptions
 {
-    @Input('tuiHintContent')
-    content: PolymorpheusContent;
+    @Input()
+    tuiHintContent: PolymorpheusContent;
 
-    @Input('tuiHintDirection')
-    direction = this.options.direction;
+    /**
+     * @deprecated use {@link tuiHintContent}
+     */
+    set content(val: PolymorpheusContent) {
+        this.tuiHintContent = val;
+    }
 
-    @Input('tuiHintAppearance')
-    appearance = this.options.appearance;
+    /**
+     * @deprecated use {@link tuiHintContent}
+     */
+    get content(): PolymorpheusContent {
+        return this.tuiHintContent;
+    }
 
-    @Input('tuiHintShowDelay')
-    showDelay = this.options.showDelay;
+    @Input()
+    tuiHintDirection = this.options.direction;
 
-    @Input('tuiHintHideDelay')
-    hideDelay = this.options.hideDelay;
+    /**
+     * @deprecated use {@link tuiHintDirection}
+     */
+    set direction(val: TuiHintDirection) {
+        this.tuiHintDirection = val;
+    }
+
+    /**
+     * @deprecated use {@link tuiHintDirection}
+     */
+    get direction(): TuiHintDirection {
+        return this.tuiHintDirection;
+    }
+
+    @Input()
+    tuiHintAppearance = this.options.appearance;
+
+    /**
+     * @deprecated use {@link tuiHintAppearance}
+     */
+    set appearance(val: string) {
+        this.tuiHintAppearance = val;
+    }
+
+    /**
+     * @deprecated use {@link tuiHintAppearance}
+     */
+    get appearance(): string {
+        return this.tuiHintAppearance;
+    }
+
+    @Input()
+    tuiHintShowDelay = this.options.showDelay;
+
+    /**
+     * @deprecated use {@link tuiHintShowDelay}
+     */
+    set showDelay(val: number) {
+        this.tuiHintShowDelay = val;
+    }
+
+    /**
+     * @deprecated use {@link tuiHintShowDelay}
+     */
+    get showDelay(): number {
+        return this.tuiHintShowDelay;
+    }
+
+    @Input()
+    tuiHintHideDelay = this.options.hideDelay;
+
+    /**
+     * @deprecated use {@link tuiHintHideDelay}
+     */
+    set hideDelay(val: number) {
+        this.tuiHintHideDelay = val;
+    }
+
+    /**
+     * @deprecated use {@link tuiHintHideDelay}
+     */
+    get hideDelay(): number {
+        return this.tuiHintHideDelay;
+    }
 
     icon = this.options.icon;
 

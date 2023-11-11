@@ -6,6 +6,7 @@ import {TuiSheetDialogService} from './sheet-dialog.service';
 
 @Directive({
     selector: 'ng-template[tuiSheetDialog]',
+    // eslint-disable-next-line @angular-eslint/no-input-rename
     inputs: ['options: tuiSheetDialogOptions', 'open: tuiSheetDialog'],
     outputs: ['openChange: tuiSheetDialogChange'],
     providers: [

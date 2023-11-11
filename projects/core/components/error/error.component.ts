@@ -26,12 +26,23 @@ import {Observable} from 'rxjs';
     animations: [tuiHeightCollapse, tuiFadeIn],
 })
 export class TuiErrorComponent {
-    @Input('error')
+    private currentError: TuiValidationError | null = null;
+
+    /**
+     * @deprecated use {@link error}
+     */
     set errorSetter(error: TuiValidationError | string | null) {
-        this.error = tuiIsString(error) ? new TuiValidationError(error) : error;
+        this.error = error;
     }
 
-    error: TuiValidationError | null = null;
+    @Input()
+    set error(error: TuiValidationError | string | null) {
+        this.currentError = tuiIsString(error) ? new TuiValidationError(error) : error;
+    }
+
+    get error(): TuiValidationError | null {
+        return this.currentError;
+    }
 
     visible = true;
 

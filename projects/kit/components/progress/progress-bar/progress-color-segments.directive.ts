@@ -38,9 +38,16 @@ export class TuiProgressColorSegmentsDirective {
 
     private readonly colors$ = new BehaviorSubject<string[]>([]);
 
-    @Input('tuiProgressColorSegments')
-    set colors(colors: string[]) {
+    @Input()
+    set tuiProgressColorSegments(colors: string[]) {
         this.colors$.next(colors);
+    }
+
+    /**
+     * @deprecated use {@link tuiProgressColorSegments}
+     */
+    set colors(colors: string[]) {
+        this.tuiProgressColorSegments = colors;
     }
 
     @tuiPure

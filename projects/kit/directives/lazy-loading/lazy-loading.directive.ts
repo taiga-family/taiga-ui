@@ -17,10 +17,25 @@ import {TuiLazyLoadingService} from './lazy-loading.service';
     providers: [TuiLazyLoadingService, IntersectionObserverService, TuiDestroyService],
 })
 export class TuiLazyLoadingDirective {
-    @Input('src')
+    @HostBinding('attr.src')
+    private internalSrc: SafeResourceUrl | string | null = null;
+
+    /**
+     * @deprecated: use {@link src}
+     * @param src
+     */
     set srcSetter(src: SafeResourceUrl | string) {
-        this.src = this.supported ? src : null;
+        this.src = src;
+    }
+
+    @Input()
+    set src(src: SafeResourceUrl | string) {
+        this.internalSrc = this.supported ? src : null;
         this.src$.next(src);
+    }
+
+    get src(): SafeResourceUrl | string {
+        return this.internalSrc ?? '';
     }
 
     @HostBinding('style.animation')
@@ -28,9 +43,6 @@ export class TuiLazyLoadingDirective {
 
     @HostBinding('style.background')
     background = 'var(--tui-clear-hover)';
-
-    @HostBinding('attr.src')
-    src: SafeResourceUrl | string | null = null;
 
     constructor(
         @Inject(TuiLazyLoadingService)

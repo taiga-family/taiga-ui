@@ -36,11 +36,12 @@ import {TuiFadeComponent} from './fade.component';
     ],
 })
 export class TuiFadeDirective {
-    // TODO: Remove when lh CSS units are supported: https://caniuse.com/mdn-css_types_length_lh
-    @Input('tuiFadeHeight')
+    // TODO: Remove when lh CSS units are supported:
+    // https://caniuse.com/mdn-css_types_length_lh
+    @Input()
     @HostBinding('style.line-height')
     @HostBinding('style.--line-height')
-    lineHeight: string | null = null;
+    tuiFadeHeight: string | null = null;
 
     @Input('tuiFadeSize')
     @HostBinding('style.--fade-size')
@@ -71,6 +72,20 @@ export class TuiFadeDirective {
                 el.classList.toggle('_start', !!el.scrollLeft || !!el.scrollTop);
                 el.classList.toggle('_end', this.isEnd(el));
             });
+    }
+
+    /**
+     * @deprecated use {link tuiFadeHeight}
+     */
+    set lineHeight(height: string | null) {
+        this.tuiFadeHeight = height;
+    }
+
+    /**
+     * @deprecated use {link tuiFadeHeight}
+     */
+    get lineHeight(): string | null {
+        return this.tuiFadeHeight;
     }
 
     private isEnd(el: HTMLElement): boolean {

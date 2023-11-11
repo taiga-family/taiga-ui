@@ -71,12 +71,25 @@ export class TuiInputPhoneComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    @Input('countryCode')
-    set countryCodeSetter(newCountryCode: string) {
-        const prevCountryCode = this.countryCode;
+    private currentCountryCode = this.options.countryCode;
 
+    /**
+     * @deprecated use {@link countryCode}
+     */
+    set countryCodeSetter(newCountryCode: string) {
         this.countryCode = newCountryCode;
+    }
+
+    @Input()
+    set countryCode(newCountryCode: string) {
+        const prevCountryCode = this.currentCountryCode;
+
+        this.currentCountryCode = newCountryCode;
         this.updateValueWithNewCountryCode(prevCountryCode, newCountryCode);
+    }
+
+    get countryCode(): string {
+        return this.currentCountryCode;
     }
 
     @Input()
@@ -93,8 +106,6 @@ export class TuiInputPhoneComponent
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist?: TemplateRef<TuiContextWithImplicit<TuiActiveZoneDirective>>;
-
-    countryCode = this.options.countryCode;
 
     open = false;
 
@@ -157,7 +168,7 @@ export class TuiInputPhoneComponent
 
     get maskOptions(): MaskitoOptions {
         return this.calculateMask(
-            this.countryCode,
+            this.currentCountryCode,
             this.phoneMaskAfterCountryCode,
             this.nonRemovablePrefix,
             this.allowText,
@@ -190,7 +201,7 @@ export class TuiInputPhoneComponent
             : value.replace(TUI_MASK_SYMBOLS_REGEXP, '').slice(0, this.maxPhoneLength);
 
         this.updateSearch(parsed);
-        this.value = parsed === this.countryCode || isText(parsed) ? '' : parsed;
+        this.value = parsed === this.currentCountryCode || isText(parsed) ? '' : parsed;
         this.open = true;
     }
 
@@ -218,12 +229,12 @@ export class TuiInputPhoneComponent
     }
 
     private get nonRemovablePrefix(): string {
-        return `${this.countryCode} `;
+        return `${this.currentCountryCode} `;
     }
 
     private get maxPhoneLength(): number {
         return (
-            this.countryCode.length +
+            this.currentCountryCode.length +
             this.phoneMaskAfterCountryCode.replace(/[^#]+/g, '').length
         );
     }

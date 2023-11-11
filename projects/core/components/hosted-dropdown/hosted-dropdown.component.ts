@@ -116,7 +116,9 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
             switchMap(visible =>
                 of(visible).pipe(
                     delay(
-                        (visible ? this.hover$?.showDelay : this.hover$?.hideDelay) || 0,
+                        (visible
+                            ? this.hover$?.tuiDropdownShowDelay
+                            : this.hover$?.tuiDropdownHideDelay) || 0,
                     ),
                 ),
             ),

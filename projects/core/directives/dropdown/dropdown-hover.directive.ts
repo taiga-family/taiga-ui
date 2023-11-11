@@ -17,7 +17,9 @@ export class TuiDropdownHoverDirective extends TuiDriver {
     private readonly toggle$ = new Subject<boolean>();
     private readonly stream$ = merge(this.toggle$, this.hovered$).pipe(
         switchMap(visible =>
-            of(visible).pipe(delay(visible ? this.showDelay : this.hideDelay)),
+            of(visible).pipe(
+                delay(visible ? this.tuiDropdownShowDelay : this.tuiDropdownHideDelay),
+            ),
         ),
         tap(visible => {
             this.hovered = visible;
@@ -25,11 +27,39 @@ export class TuiDropdownHoverDirective extends TuiDriver {
         share(),
     );
 
-    @Input('tuiDropdownShowDelay')
-    showDelay = this.options.showDelay;
+    @Input()
+    tuiDropdownShowDelay = this.options.showDelay;
 
-    @Input('tuiDropdownHideDelay')
-    hideDelay = this.options.hideDelay;
+    /**
+     * @deprecated use {@link tuiDropdownShowDelay}
+     */
+    set showDelay(val: number) {
+        this.tuiDropdownShowDelay = val;
+    }
+
+    /**
+     * @deprecated use {@link tuiDropdownShowDelay}
+     */
+    get showDelay(): number {
+        return this.tuiDropdownShowDelay;
+    }
+
+    @Input()
+    tuiDropdownHideDelay = this.options.hideDelay;
+
+    /**
+     * @deprecated use {@link tuiDropdownHideDelay}
+     */
+    set hideDelay(val: number) {
+        this.tuiDropdownHideDelay = val;
+    }
+
+    /**
+     * @deprecated use {@link tuiDropdownHideDelay}
+     */
+    get hideDelay(): number {
+        return this.tuiDropdownHideDelay;
+    }
 
     hovered = false;
 

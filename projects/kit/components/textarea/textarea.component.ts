@@ -147,7 +147,7 @@ export class TuiTextareaComponent
     @HostBinding('class._has-tooltip')
     get hasTooltip(): boolean {
         return (
-            !!this.hintOptions?.content &&
+            !!this.hintOptions?.tuiHintContent &&
             (this.controller.options.hintOnDisabled || !this.computedDisabled)
         );
     }

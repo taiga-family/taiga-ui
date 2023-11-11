@@ -74,14 +74,27 @@ export class TuiInputPhoneInternationalComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;
 
-    @Input('countryIsoCode')
+    private currentCountryIsoCode = this.options.countryIsoCode;
+
+    /**
+     * @deprecated use {@link countryIsoCode}
+     */
     set isoCode(code: TuiCountryIsoCode) {
-        if (this.countryIsoCode === code) {
+        this.countryIsoCode = code;
+    }
+
+    @Input()
+    set countryIsoCode(code: TuiCountryIsoCode) {
+        if (this.currentCountryIsoCode === code) {
             return;
         }
 
         this.inputPhoneComponent?.writeValue(this.value);
-        this.countryIsoCode = code;
+        this.currentCountryIsoCode = code;
+    }
+
+    get countryIsoCode(): TuiCountryIsoCode {
+        return this.currentCountryIsoCode;
     }
 
     @Input()
@@ -89,8 +102,6 @@ export class TuiInputPhoneInternationalComponent
 
     @Output()
     readonly countryIsoCodeChange = new EventEmitter<TuiCountryIsoCode>();
-
-    countryIsoCode = this.options.countryIsoCode;
 
     open = false;
 
@@ -139,14 +150,14 @@ export class TuiInputPhoneInternationalComponent
     }
 
     get inputPhoneCountryCode(): string {
-        return tuiIsoToCountryCode(this.countriesMasks, this.countryIsoCode);
+        return tuiIsoToCountryCode(this.countriesMasks, this.currentCountryIsoCode);
     }
 
     get phoneMaskAfterCountryCode(): string {
         const countryCode = this.inputPhoneCountryCode;
 
         return this.calculateMaskAfterCountryCode(
-            this.countriesMasks[this.countryIsoCode],
+            this.countriesMasks[this.currentCountryIsoCode],
             countryCode,
         );
     }
@@ -156,7 +167,7 @@ export class TuiInputPhoneInternationalComponent
      * TODO drop in v4.0
      */
     get countryFlagPath(): string {
-        return this.getFlagPath(this.countryIsoCode);
+        return this.getFlagPath(this.currentCountryIsoCode);
     }
 
     @HostListener('paste.capture.prevent.stop', ['$event'])
@@ -173,7 +184,10 @@ export class TuiInputPhoneInternationalComponent
                 .replace(TUI_MASK_SYMBOLS_REGEXP, '')
                 .slice(
                     0,
-                    tuiGetMaxAllowedPhoneLength(this.countriesMasks, this.countryIsoCode),
+                    tuiGetMaxAllowedPhoneLength(
+                        this.countriesMasks,
+                        this.currentCountryIsoCode,
+                    ),
                 );
 
             return;
@@ -251,7 +265,7 @@ export class TuiInputPhoneInternationalComponent
     }
 
     private updateCountryIsoCode(code: TuiCountryIsoCode): void {
-        this.countryIsoCode = code;
+        this.currentCountryIsoCode = code;
         this.countryIsoCodeChange.emit(code);
     }
 }

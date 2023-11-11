@@ -34,6 +34,10 @@ const LOADER_HEIGHT = 48;
     animations: [TUI_PARENT_ANIMATION],
 })
 export class TuiExpandComponent {
+    @HostBinding('class._expanded')
+    @HostBinding('attr.aria-expanded')
+    private currentExpanded: boolean | null = null;
+
     @ViewChild('wrapper')
     private readonly contentWrapper?: ElementRef<HTMLDivElement>;
 
@@ -42,31 +46,38 @@ export class TuiExpandComponent {
     @Input()
     async = false;
 
-    @Input('expanded')
+    /**
+     * @deprecated use {@link expanded}
+     */
     set expandedSetter(expanded: boolean | null) {
-        if (this.expanded === null) {
-            this.expanded = expanded;
+        this.expanded = expanded;
+    }
+
+    @Input()
+    set expanded(expanded: boolean | null) {
+        if (this.currentExpanded === null) {
+            this.currentExpanded = expanded;
 
             return;
         }
 
         if (this.state !== State.Idle) {
-            this.expanded = expanded;
+            this.currentExpanded = expanded;
             this.state = State.Animated;
 
             return;
         }
 
-        this.expanded = expanded;
+        this.currentExpanded = expanded;
         this.retrigger(this.async && expanded ? State.Loading : State.Animated);
+    }
+
+    get expanded(): boolean | null {
+        return this.currentExpanded;
     }
 
     @ContentChild(TuiExpandContentDirective, {read: TemplateRef})
     content: TemplateRef<NgIfContext<boolean>> | null = null;
-
-    @HostBinding('class._expanded')
-    @HostBinding('attr.aria-expanded')
-    expanded: boolean | null = null;
 
     constructor(@Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef) {}
 
@@ -77,29 +88,29 @@ export class TuiExpandComponent {
 
     @HostBinding('class._loading')
     get loading(): boolean {
-        return !!this.expanded && this.async && this.state === State.Loading;
+        return !!this.currentExpanded && this.async && this.state === State.Loading;
     }
 
     @HostBinding('style.height.px')
     get height(): number | null {
-        const {expanded, state, contentWrapper} = this;
+        const {currentExpanded, state, contentWrapper} = this;
 
         if (
-            (expanded && state === State.Prepared) ||
-            (!expanded && state === State.Animated)
+            (currentExpanded && state === State.Prepared) ||
+            (!currentExpanded && state === State.Animated)
         ) {
             return 0;
         }
 
         if (
             contentWrapper &&
-            ((!expanded && state === State.Prepared) ||
-                (expanded && state === State.Animated))
+            ((!currentExpanded && state === State.Prepared) ||
+                (currentExpanded && state === State.Animated))
         ) {
             return contentWrapper.nativeElement.offsetHeight;
         }
 
-        if (contentWrapper && expanded && state === State.Loading) {
+        if (contentWrapper && currentExpanded && state === State.Loading) {
             return Math.max(contentWrapper.nativeElement.offsetHeight, LOADER_HEIGHT);
         }
 
@@ -107,7 +118,7 @@ export class TuiExpandComponent {
     }
 
     get contentVisible(): boolean {
-        return this.expanded || this.state !== State.Idle;
+        return this.currentExpanded || this.state !== State.Idle;
     }
 
     @HostListener('transitionend.self', ['$event'])

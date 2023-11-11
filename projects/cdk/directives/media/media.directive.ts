@@ -14,15 +14,26 @@ import {
     exportAs: 'tuiMedia',
 })
 export class TuiMediaDirective {
-    private playbackRate = 1;
+    private currentPlaybackRate = 1;
 
     @Input()
     @HostBinding('volume')
     volume = 1;
 
-    @Input('playbackRate')
+    /**
+     * @deprecated use {@link playbackRate}
+     */
     set playbackRateSetter(playbackRate: number) {
+        this.playbackRate = playbackRate;
+    }
+
+    @Input()
+    set playbackRate(playbackRate: number) {
         this.updatePlaybackRate(playbackRate);
+    }
+
+    get playbackRate(): number {
+        return this.currentPlaybackRate;
     }
 
     @Output()
@@ -57,7 +68,7 @@ export class TuiMediaDirective {
         } else {
             // eslint-disable-next-line @typescript-eslint/no-floating-promises
             this.el.nativeElement.play();
-            this.updatePlaybackRate(this.playbackRate);
+            this.updatePlaybackRate(this.currentPlaybackRate);
         }
     }
 
@@ -71,7 +82,7 @@ export class TuiMediaDirective {
     @HostListener('play', ['false'])
     onPausedChange(paused: boolean): void {
         this.pausedChange.emit(paused);
-        this.updatePlaybackRate(this.playbackRate);
+        this.updatePlaybackRate(this.currentPlaybackRate);
     }
 
     @HostListener('volumechange')
@@ -93,7 +104,7 @@ export class TuiMediaDirective {
     }
 
     private updatePlaybackRate(playbackRate: number): void {
-        this.playbackRate = playbackRate;
-        this.el.nativeElement.playbackRate = this.playbackRate;
+        this.currentPlaybackRate = playbackRate;
+        this.el.nativeElement.playbackRate = this.currentPlaybackRate;
     }
 }

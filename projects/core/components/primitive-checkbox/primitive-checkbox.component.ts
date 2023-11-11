@@ -18,6 +18,8 @@ import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions} from './checkbox.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveCheckboxComponent {
+    private currentValue: boolean | null = false;
+
     @Input()
     @HostBinding('attr.data-size')
     size: TuiSizeL = this.options.size;
@@ -37,26 +39,35 @@ export class TuiPrimitiveCheckboxComponent {
     @Input()
     invalid = false;
 
-    @Input('value')
+    /**
+     * @deprecated use {@link value}
+     */
     set valueSetter(value: boolean | null) {
+        this.value = value;
+    }
+
+    @Input()
+    set value(value: boolean | null) {
         if (value !== false) {
             this.setCurrentIcon(value);
         }
 
-        this.value = value;
+        this.currentValue = value;
+    }
+
+    get value(): boolean | null {
+        return this.currentValue;
     }
 
     icon: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> =
         this.options.icons.checked;
-
-    value: boolean | null = false;
 
     constructor(
         @Inject(TUI_CHECKBOX_OPTIONS) private readonly options: TuiCheckboxOptions,
     ) {}
 
     get appearance(): string {
-        switch (this.value) {
+        switch (this.currentValue) {
             case false:
                 return this.options.appearances.unchecked;
             case true:
@@ -67,7 +78,7 @@ export class TuiPrimitiveCheckboxComponent {
     }
 
     get empty(): boolean {
-        return this.value === false;
+        return this.currentValue === false;
     }
 
     private setCurrentIcon(value: boolean | null): void {

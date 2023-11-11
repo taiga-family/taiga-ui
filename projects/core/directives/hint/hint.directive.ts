@@ -38,11 +38,11 @@ import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 export class TuiHintDirective<C>
     implements OnDestroy, OnChanges, TuiPortalItem<C>, TuiRectAccessor, TuiVehicle
 {
-    @Input('tuiHint')
-    content: PolymorpheusContent<C>;
+    @Input()
+    tuiHint: PolymorpheusContent<C>;
 
-    @Input('tuiHintContext')
-    context?: C;
+    @Input()
+    tuiHintContext?: C;
 
     @Input()
     tuiHintAppearance: string | null = null;
@@ -60,12 +60,40 @@ export class TuiHintDirective<C>
         readonly activeZone?: TuiActiveZoneDirective | null,
     ) {}
 
+    /**
+     * @deprecated: use {@link tuiHint}
+     */
+    set content(val: PolymorpheusContent<C>) {
+        this.tuiHint = val;
+    }
+
+    /**
+     * @deprecated: use {@link tuiHint}
+     */
+    get content(): PolymorpheusContent<C> {
+        return this.tuiHint;
+    }
+
+    /**
+     * @deprecated: use {@link tuiHintContext}
+     */
+    set context(val: C | undefined) {
+        this.tuiHintContext = val;
+    }
+
+    /**
+     * @deprecated: use {@link tuiHintContext}
+     */
+    get context(): C | undefined {
+        return this.tuiHintContext;
+    }
+
     get appearance(): string {
         return this.tuiHintAppearance ?? this.options.appearance;
     }
 
     ngOnChanges(): void {
-        if (!this.content) {
+        if (!this.tuiHint) {
             this.toggle(false);
         }
     }
@@ -79,7 +107,7 @@ export class TuiHintDirective<C>
     }
 
     toggle(show: boolean): void {
-        if (show && this.content) {
+        if (show && this.tuiHint) {
             this.hintService.add(this);
         } else {
             this.hintService.remove(this);

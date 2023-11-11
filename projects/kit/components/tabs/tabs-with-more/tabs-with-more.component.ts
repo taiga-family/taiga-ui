@@ -58,10 +58,14 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     @HostBinding('class._underline')
     underline = this.options.underline;
 
-    @Input('activeItemIndex')
-    set itemIndex(activeItemIndex: number) {
-        this.activeItemIndex = activeItemIndex;
+    @Input()
+    set activeItemIndex(index: number) {
+        this.currentIndex = index;
         this.maxIndex = this.getMaxIndex();
+    }
+
+    get activeItemIndex(): number {
+        return this.currentIndex;
     }
 
     @Input()
@@ -73,7 +77,14 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     @ContentChildren(TuiItemDirective, {read: TemplateRef})
     readonly items: QueryList<TemplateRef<Record<string, unknown>>> = EMPTY_QUERY;
 
-    activeItemIndex = 0;
+    /**
+     * @deprecated {@link activeItemIndex}
+     */
+    set itemIndex(index: number) {
+        this.activeItemIndex = index;
+    }
+
+    currentIndex = 0;
 
     open = false;
 
@@ -241,7 +252,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     }
 
     private updateActiveItemIndex(activeItemIndex: number): void {
-        this.itemIndex = activeItemIndex;
+        this.activeItemIndex = activeItemIndex;
         this.activeItemIndexChange.emit(activeItemIndex);
     }
 }

@@ -19,14 +19,24 @@ import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiAvatarComponent {
+    private currentAvatar: SafeResourceUrl | string | null = null;
+
     @Input()
     @HostBinding('attr.data-size')
     size = this.options.size;
 
-    @Input('avatarUrl')
+    @Input()
+    set avatarUrl(avatarUrl: SafeResourceUrl | string | null) {
+        this.currentAvatar = avatarUrl;
+        this.isUrlValid = !!avatarUrl && !this.iconAvatar;
+    }
+
+    get avatarUrl(): SafeResourceUrl | string | null {
+        return this.currentAvatar;
+    }
+
     set avatarUrlSetter(avatarUrl: SafeResourceUrl | string | null) {
         this.avatarUrl = avatarUrl;
-        this.isUrlValid = !!avatarUrl && !this.iconAvatar;
     }
 
     @Input()
@@ -41,8 +51,6 @@ export class TuiAvatarComponent {
     @Input()
     @HostBinding('class._rounded')
     rounded: boolean = this.options.rounded;
-
-    avatarUrl: SafeResourceUrl | string | null = null;
 
     isUrlValid = false;
 

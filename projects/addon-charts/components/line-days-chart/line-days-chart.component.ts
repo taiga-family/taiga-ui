@@ -56,13 +56,22 @@ const DUMMY: TuiPoint = [NaN, NaN];
     ],
 })
 export class TuiLineDaysChartComponent implements AfterViewInit {
+    private currentValue: ReadonlyArray<[TuiDay, number]> = [];
+
     @ViewChildren(TuiLineChartComponent)
     readonly charts: QueryList<TuiLineChartComponent> = EMPTY_QUERY;
 
-    @Input('value')
+    /**
+     * @deprecated: use {@link value}
+     */
     set valueSetter(value: ReadonlyArray<[TuiDay, number]>) {
+        this.value = value;
+    }
+
+    @Input()
+    set value(value: ReadonlyArray<[TuiDay, number]>) {
         if (!value.length) {
-            this.value = [];
+            this.currentValue = [];
 
             return;
         }
@@ -71,13 +80,17 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
         const mutable = [...value];
         const length = TuiDay.lengthBetween(start, value[value.length - 1][0]) + 1;
 
-        this.value = Array.from({length}, (_, day) => {
+        this.currentValue = Array.from({length}, (_, day) => {
             const currentDay = start.append({day});
             const shifted = currentDay.daySame(mutable[0][0]) ? mutable.shift() : null;
             const currentValue = shifted ? shifted[1] : NaN;
 
             return [currentDay, currentValue] as [TuiDay, number];
         });
+    }
+
+    get value(): ReadonlyArray<[TuiDay, number]> {
+        return this.currentValue;
     }
 
     @Input()
@@ -103,8 +116,6 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
 
     @HostBinding('style.zIndex')
     zIndex = 0;
-
-    value: ReadonlyArray<[TuiDay, number]> = [];
 
     constructor(
         @Optional()

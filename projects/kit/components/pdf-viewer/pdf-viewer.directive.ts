@@ -6,6 +6,7 @@ import {TuiPdfViewerService} from './pdf-viewer.service';
 
 @Directive({
     selector: 'ng-template[tuiPdfViewer]',
+    // eslint-disable-next-line @angular-eslint/no-input-rename
     inputs: ['options: tuiPdfViewerOptions', 'open: tuiPdfViewer'],
     outputs: ['openChange: tuiPdfViewerChange'],
     providers: [

@@ -60,7 +60,7 @@ export class TuiBarChartComponent {
     }
 
     get hintContent(): PolymorpheusContent<TuiContextWithImplicit<number>> {
-        return this.hintOptions?.content || '';
+        return this.hintOptions?.tuiHintContent || '';
     }
 
     get transposed(): ReadonlyArray<readonly number[]> {

@@ -68,6 +68,7 @@ export class TuiPrimitiveTextfieldComponent
     editable = true;
 
     /** @deprecated use `tuiTextfieldFiller` from {@link TuiTextfieldControllerModule} instead */
+    // eslint-disable-next-line @angular-eslint/no-input-rename
     @Input('filler')
     textfieldFiller = '';
 
@@ -89,10 +90,12 @@ export class TuiPrimitiveTextfieldComponent
     disabled = false;
 
     /** @deprecated use `tuiTextfieldPrefix` from {@link TuiTextfieldControllerModule} instead */
+    // eslint-disable-next-line @angular-eslint/no-input-rename
     @Input('prefix')
     textfieldPrefix = '';
 
     /** @deprecated use `tuiTextfieldPostfix` from {@link TuiTextfieldControllerModule} instead */
+    // eslint-disable-next-line @angular-eslint/no-input-rename
     @Input('postfix')
     textfieldPostfix = '';
 
@@ -180,7 +183,7 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     get hasTooltip(): boolean {
-        return !!this.hintOptions?.content && !this.computedDisabled;
+        return !!this.hintOptions?.tuiHintContent && !this.computedDisabled;
     }
 
     get hasCustomContent(): boolean {
@@ -237,7 +240,7 @@ export class TuiPrimitiveTextfieldComponent
 
     get showHint(): boolean {
         return (
-            !!this.hintOptions?.content &&
+            !!this.hintOptions?.tuiHintContent &&
             (this.options.hintOnDisabled || !this.computedDisabled)
         );
     }

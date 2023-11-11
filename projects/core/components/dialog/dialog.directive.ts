@@ -6,6 +6,7 @@ import {TuiDialogService} from './dialog.service';
 
 @Directive({
     selector: 'ng-template[tuiDialog]',
+    // eslint-disable-next-line @angular-eslint/no-input-rename
     inputs: ['options: tuiDialogOptions', 'open: tuiDialog'],
     outputs: ['openChange: tuiDialogChange'],
     providers: [

@@ -25,8 +25,22 @@ import {TuiSheetOptions} from './sheet-options';
 export class TuiSheetDirective extends PolymorpheusTemplate<TuiSheet<never>> {
     private readonly open$ = new Subject<boolean>();
 
-    @Input('tuiSheetOptions')
-    options: Partial<TuiSheetOptions> = {};
+    @Input()
+    tuiSheetOptions: Partial<TuiSheetOptions> = {};
+
+    /**
+     * @deprecated: use {@link tuiSheetOptions}
+     */
+    set options(val: Partial<TuiSheetOptions>) {
+        this.tuiSheetOptions = val;
+    }
+
+    /**
+     * @deprecated: use {@link tuiSheetOptions}
+     */
+    get options(): Partial<TuiSheetOptions> {
+        return this.tuiSheetOptions;
+    }
 
     @Input()
     set tuiSheet(open: boolean) {
@@ -36,7 +50,9 @@ export class TuiSheetDirective extends PolymorpheusTemplate<TuiSheet<never>> {
     @Output()
     readonly tuiSheetChange = this.open$.pipe(
         tuiIfMap(() =>
-            this.service.open(this, this.options).pipe(ignoreElements(), endWith(false)),
+            this.service
+                .open(this, this.tuiSheetOptions)
+                .pipe(ignoreElements(), endWith(false)),
         ),
         share(),
     );

@@ -87,10 +87,12 @@ export class TuiInputSliderComponent
     valueContent: PolymorpheusContent<TuiContextWithImplicit<number>>;
 
     /** @deprecated use `tuiTextfieldPrefix` from {@link TuiTextfieldControllerModule} instead */
+    // eslint-disable-next-line @angular-eslint/no-input-rename
     @Input('prefix')
     textfieldPrefix = '';
 
     /** @deprecated use `tuiTextfieldPostfix` from {@link TuiTextfieldControllerModule} instead */
+    // eslint-disable-next-line @angular-eslint/no-input-rename
     @Input('postfix')
     textfieldPostfix = '';
 

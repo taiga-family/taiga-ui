@@ -152,13 +152,20 @@ export class TuiInputTagComponent
     disabledItemHandler: TuiBooleanHandler<TuiStringifiableItem<any> | string> =
         ALWAYS_FALSE_HANDLER;
 
-    @Input('pseudoFocused')
-    set pseudoFocusedSetter(value: boolean | null) {
+    @Input()
+    set pseudoFocused(value: boolean | null) {
         if (!value && !this.focused) {
             this.scrollTo(0);
         }
 
         this.pseudoFocus = value;
+    }
+
+    /**
+     * @deprecated use {@link pseudoFocused}
+     */
+    set pseudoFocusedSetter(value: boolean | null) {
+        this.pseudoFocused = value;
     }
 
     @Output()
@@ -281,13 +288,13 @@ export class TuiInputTagComponent
         return (
             this.hasCleaner ||
             !!this.icon ||
-            (!!this.hintOptions?.content && !this.computedDisabled)
+            (!!this.hintOptions?.tuiHintContent && !this.computedDisabled)
         );
     }
 
     get showHint(): boolean {
         return (
-            !!this.hintOptions?.content &&
+            !!this.hintOptions?.tuiHintContent &&
             (this.controller.options.hintOnDisabled || !this.computedDisabled)
         );
     }

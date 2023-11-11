@@ -29,8 +29,22 @@ export class TuiHintPositionDirective extends TuiPositionAccessor {
             {} as any,
         );
 
-    @Input('tuiHintDirection')
-    direction: TuiHintOptions['direction'] = this.options.direction;
+    @Input()
+    tuiHintDirection: TuiHintOptions['direction'] = this.options.direction;
+
+    /**
+     * @deprecated use {@link tuiHintDirection}
+     */
+    set direction(val: TuiHintOptions['direction']) {
+        this.tuiHintDirection = val;
+    }
+
+    /**
+     * @deprecated use {@link tuiHintDirection}
+     */
+    get direction(): TuiHintOptions['direction'] {
+        return this.tuiHintDirection;
+    }
 
     readonly type = 'hint';
 

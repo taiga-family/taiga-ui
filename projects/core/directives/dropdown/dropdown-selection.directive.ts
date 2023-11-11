@@ -72,8 +72,22 @@ export class TuiDropdownSelectionDirective
 
     private ghost?: HTMLElement;
 
-    @Input('tuiDropdownSelectionPosition')
-    position: 'selection' | 'tag' | 'word' = 'selection';
+    @Input()
+    tuiDropdownSelectionPosition: 'selection' | 'tag' | 'word' = 'selection';
+
+    /**
+     * @deprecated: use {@link tuiDropdownSelectionPosition}
+     */
+    set position(val: 'selection' | 'tag' | 'word') {
+        this.tuiDropdownSelectionPosition = val;
+    }
+
+    /**
+     * @deprecated: use {@link tuiDropdownSelectionPosition}
+     */
+    get position(): 'selection' | 'tag' | 'word' {
+        return this.tuiDropdownSelectionPosition;
+    }
 
     @Input()
     set tuiDropdownSelection(visible: TuiBooleanHandler<Range> | string) {
@@ -96,7 +110,7 @@ export class TuiDropdownSelectionDirective
     }
 
     getClientRect(): ClientRect {
-        switch (this.position) {
+        switch (this.tuiDropdownSelectionPosition) {
             case 'tag': {
                 const {commonAncestorContainer} = this.range;
                 const element = tuiIsElement(commonAncestorContainer)

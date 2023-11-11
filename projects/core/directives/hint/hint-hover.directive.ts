@@ -18,13 +18,17 @@ export class TuiHintHoverDirective extends TuiDriver {
     private readonly toggle$ = new Subject<boolean>();
     private readonly stream$ = merge(
         this.toggle$.pipe(
-            switchMap(visible => of(visible).pipe(delay(visible ? 0 : this.hideDelay))),
+            switchMap(visible =>
+                of(visible).pipe(delay(visible ? 0 : this.tuiHintHideDelay)),
+            ),
             takeUntil(this.hovered$),
             repeat(),
         ),
         this.hovered$.pipe(
             switchMap(visible =>
-                of(visible).pipe(delay(visible ? this.showDelay : this.hideDelay)),
+                of(visible).pipe(
+                    delay(visible ? this.tuiHintShowDelay : this.tuiHintHideDelay),
+                ),
             ),
             takeUntil(this.toggle$),
             repeat(),
@@ -37,11 +41,39 @@ export class TuiHintHoverDirective extends TuiDriver {
         }),
     );
 
-    @Input('tuiHintShowDelay')
-    showDelay: TuiHintOptions['showDelay'] = this.options.showDelay;
+    @Input()
+    tuiHintShowDelay: TuiHintOptions['showDelay'] = this.options.showDelay;
 
-    @Input('tuiHintHideDelay')
-    hideDelay: TuiHintOptions['hideDelay'] = this.options.hideDelay;
+    /**
+     * @deprecated use {@link tuiHintShowDelay}
+     */
+    set showDelay(val: TuiHintOptions['showDelay']) {
+        this.tuiHintShowDelay = val;
+    }
+
+    /**
+     * @deprecated use {@link tuiHintShowDelay}
+     */
+    get showDelay(): number {
+        return this.tuiHintShowDelay;
+    }
+
+    @Input()
+    tuiHintHideDelay: TuiHintOptions['hideDelay'] = this.options.hideDelay;
+
+    /**
+     * @deprecated use {@link tuiHintHideDelay}
+     */
+    set hideDelay(val: TuiHintOptions['hideDelay']) {
+        this.tuiHintHideDelay = val;
+    }
+
+    /**
+     * @deprecated use {@link tuiHintHideDelay}
+     */
+    get hideDelay(): TuiHintOptions['hideDelay'] {
+        return this.tuiHintHideDelay;
+    }
 
     readonly type = 'hint';
 

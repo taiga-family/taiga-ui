@@ -40,6 +40,8 @@ import {TuiLineChartHintDirective} from './line-chart-hint.directive';
     viewProviders: [tuiHintOptionsProvider({direction: 'top', hideDelay: 0})],
 })
 export class TuiLineChartComponent {
+    private currentValue: readonly TuiPoint[] = [];
+
     private readonly hover$ = new Subject<number>();
 
     private readonly autoIdString: string;
@@ -47,9 +49,20 @@ export class TuiLineChartComponent {
     @ViewChildren(TuiHintHoverDirective)
     readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
-    @Input('value')
+    /**
+     * @deprecated: use {@link value}
+     */
     set valueSetter(value: readonly TuiPoint[]) {
-        this.value = value.filter(item => !item.some(Number.isNaN));
+        this.value = value;
+    }
+
+    @Input()
+    set value(value: readonly TuiPoint[]) {
+        this.currentValue = value.filter(item => !item.some(Number.isNaN));
+    }
+
+    get value(): readonly TuiPoint[] {
+        return this.currentValue;
     }
 
     @Input()
@@ -79,8 +92,6 @@ export class TuiLineChartComponent {
     @Input()
     dots = this.options.dots;
 
-    value: readonly TuiPoint[] = [];
-
     constructor(
         @Inject(TuiIdService) idService: TuiIdService,
         @Inject(NgZone) private readonly zone: NgZone,
@@ -101,7 +112,7 @@ export class TuiLineChartComponent {
     }
 
     get hintContent(): PolymorpheusContent<TuiLineChartHintContext<TuiPoint>> {
-        return this.hintOptions?.content || '';
+        return this.hintOptions?.tuiHintContent || '';
     }
 
     get fillId(): string {

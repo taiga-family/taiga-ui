@@ -42,20 +42,31 @@ export class TuiStepperComponent {
     @ContentChildren(forwardRef(() => TuiStepComponent), {read: ElementRef})
     private readonly steps: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
+    private currentActiveItemIndex = 0;
+
     @Input()
     @HostBinding('attr.data-orientation')
     orientation: TuiOrientation = 'horizontal';
 
-    @Input('activeItemIndex')
+    /**
+     * @deprecated use {@link activeItemIndex}
+     */
     set activeIndex(index: number) {
         this.activeItemIndex = index;
+    }
+
+    @Input()
+    set activeItemIndex(index: number) {
+        this.currentActiveItemIndex = index;
         this.scrollIntoView(index);
+    }
+
+    get activeItemIndex(): number {
+        return this.currentActiveItemIndex;
     }
 
     @Output()
     readonly activeItemIndexChange = new EventEmitter<number>();
-
-    activeItemIndex = 0;
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
@@ -65,7 +76,7 @@ export class TuiStepperComponent {
         @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
     ) {
-        resize$.subscribe(() => this.scrollIntoView(this.activeItemIndex));
+        resize$.subscribe(() => this.scrollIntoView(this.currentActiveItemIndex));
     }
 
     @tuiPure
@@ -104,15 +115,15 @@ export class TuiStepperComponent {
     }
 
     isActive(index: number): boolean {
-        return index === this.activeItemIndex;
+        return index === this.currentActiveItemIndex;
     }
 
     activate(index: number): void {
-        if (this.activeItemIndex === index) {
+        if (this.currentActiveItemIndex === index) {
             return;
         }
 
-        this.activeItemIndex = index;
+        this.currentActiveItemIndex = index;
         this.activeItemIndexChange.emit(index);
         this.cdr.markForCheck();
         this.scrollIntoView(index);
