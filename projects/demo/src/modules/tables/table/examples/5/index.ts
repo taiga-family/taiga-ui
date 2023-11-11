@@ -55,11 +55,9 @@ export class TuiTableExample5 {
 
     readonly columns = ['name', 'dob', 'age'];
 
-    readonly ageSorter: TuiComparator<User> = (a: User, b: User) => getAge(a) - getAge(b);
+    readonly getAge = getAge;
 
-    getAge(user: User): number {
-        return getAge(user);
-    }
+    readonly ageSorter: TuiComparator<User> = (a: User, b: User) => getAge(a) - getAge(b);
 }
 
 function getAge({dob}: User): number {

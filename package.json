@@ -83,7 +83,8 @@
             "plugin:@taiga-ui/experience/taiga-naming-convention",
             "plugin:@taiga-ui/experience/jest",
             "plugin:@taiga-ui/experience/cypress",
-            "plugin:@taiga-ui/experience/playwright"
+            "plugin:@taiga-ui/experience/playwright",
+            "plugin:@taiga-ui/experience/functional"
         ]
     },
     "stylelint": {

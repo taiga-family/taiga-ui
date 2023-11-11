@@ -20,7 +20,7 @@ export function replaceIdentifiers(
     !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing identifiers...`);
 
-    constants.forEach(constToReplace => replaceIdentifier(constToReplace));
+    constants.forEach(replaceIdentifier);
 
     !options[`skip-logs`] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} identifiers replaced \n`);
