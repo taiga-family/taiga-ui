@@ -42,12 +42,7 @@ const GAP = 4;
 
 @Component({
     selector: 'tui-hint',
-    template: `
-        <span
-            *polymorpheusOutlet="content as text; context: context"
-            [innerHTML]="text"
-        ></span>
-    `,
+    templateUrl: './hint.component.html',
     styleUrls: ['./hint.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

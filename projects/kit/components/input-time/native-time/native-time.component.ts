@@ -6,17 +6,7 @@ import type {TuiInputTimeDirective} from '../input-time.directive';
 
 @Component({
     selector: 'input[tuiTime]',
-    template: `
-        <datalist
-            *ngIf="items.length"
-            [id]="autoIdString"
-        >
-            <option
-                *ngFor="let item of items"
-                value="{{ item }}"
-            ></option>
-        </datalist>
-    `,
+    templateUrl: './native-time.component.html',
     host: {
         type: 'time',
         '[attr.list]': 'autoIdString',

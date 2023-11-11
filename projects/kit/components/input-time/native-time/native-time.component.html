@@ -1,0 +1,9 @@
+<datalist
+    *ngIf="items.length"
+    [id]="autoIdString"
+>
+    <option
+        *ngFor="let item of items"
+        value="{{ item }}"
+    ></option>
+</datalist>
