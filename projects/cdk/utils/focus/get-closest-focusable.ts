@@ -53,7 +53,6 @@ export function tuiGetClosestFocusable({
 
     treeWalker.currentNode = initial;
 
-    // eslint-disable-next-line functional/no-loop-statements
     while (previous ? treeWalker.previousNode() : treeWalker.nextNode()) {
         if (tuiIsHTMLElement(treeWalker.currentNode)) {
             initial = treeWalker.currentNode;

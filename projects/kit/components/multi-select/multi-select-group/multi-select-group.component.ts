@@ -73,7 +73,6 @@ export class TuiMultiSelectGroupComponent<T> {
             map(([items, current]) => {
                 let result = false;
 
-                // eslint-disable-next-line functional/no-loop-statements
                 for (let i = 0; i < items.length; i++) {
                     const selected = current.some(selected =>
                         this.matcher(selected, items[i]),

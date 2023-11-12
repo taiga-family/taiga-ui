@@ -16,7 +16,6 @@ function canScrollVertical(
 ): boolean {
     let currentElement = element;
 
-    // eslint-disable-next-line functional/no-loop-statements
     while (currentElement !== rootElement.parentElement) {
         if (
             (Math.floor(currentElement.scrollTop) > 0 && !scrollEnd) ||
@@ -44,7 +43,6 @@ function canScrollHorizontal(
 ): boolean {
     let currentElement = element;
 
-    // eslint-disable-next-line functional/no-loop-statements
     while (currentElement !== rootElement.parentElement) {
         if (
             (Math.floor(currentElement.scrollLeft) > 0 && !scrollEnd) ||

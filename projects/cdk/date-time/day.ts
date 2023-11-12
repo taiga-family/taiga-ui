@@ -315,7 +315,6 @@ export class TuiDay extends TuiMonth {
                 TuiMonth.getMonthDaysCount(months, TuiYear.isLeapYear(years)),
             ) + day;
 
-        // eslint-disable-next-line functional/no-loop-statements
         while (days > TuiMonth.getMonthDaysCount(months, TuiYear.isLeapYear(years))) {
             days -= TuiMonth.getMonthDaysCount(months, TuiYear.isLeapYear(years));
 
@@ -327,7 +326,6 @@ export class TuiDay extends TuiMonth {
             }
         }
 
-        // eslint-disable-next-line functional/no-loop-statements
         while (days < MIN_DAY) {
             if (months === TuiMonthNumber.January) {
                 years--;

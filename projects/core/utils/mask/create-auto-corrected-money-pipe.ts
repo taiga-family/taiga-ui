@@ -130,7 +130,6 @@ function calculateSafariCaret(
 }
 
 function calculateChangedTailIndex(previous: string, current: string): number {
-    // eslint-disable-next-line functional/no-loop-statements
     for (let i = 0; i < current.length; i++) {
         if (previous[i] !== current[i]) {
             return current[i] === `0` ? i : i + 1;

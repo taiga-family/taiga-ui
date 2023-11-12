@@ -24,7 +24,6 @@ export function tuiGetWordRange(currentRange: Range): Range {
 
     treeWalker.currentNode = startContainer;
 
-    // eslint-disable-next-line functional/no-loop-statements
     do {
         const container = treeWalker.currentNode;
         const textContent = container.textContent || ``;
@@ -49,7 +48,6 @@ export function tuiGetWordRange(currentRange: Range): Range {
 
     treeWalker.currentNode = endContainer;
 
-    // eslint-disable-next-line functional/no-loop-statements
     do {
         const container = treeWalker.currentNode;
         const textContent = container.textContent || ``;

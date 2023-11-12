@@ -28,11 +28,9 @@ export class TuiCalendarSheetPipe implements PipeTransform {
 
         const sheet: Array<readonly TuiDay[]> = [];
 
-        // eslint-disable-next-line functional/no-loop-statements
         for (let rowIndex = 0; rowIndex < CALENDAR_ROWS_COUNT; rowIndex++) {
             const row: TuiDay[] = [];
 
-            // eslint-disable-next-line functional/no-loop-statements
             for (let colIndex = 0; colIndex < DAYS_IN_WEEK; colIndex++) {
                 const day = getDayFromMonthRowCol({
                     month,

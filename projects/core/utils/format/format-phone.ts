@@ -45,7 +45,7 @@ export function tuiFormatPhone(
         return result;
     }
 
-    // eslint-disable-next-line functional/no-loop-statements
+    // eslint-disable-next-line no-restricted-syntax
     for (const mask of splitPhoneMask) {
         if (splitValue.length === 0) {
             break;

@@ -46,7 +46,6 @@ export function tuiFormatNumber(
     const sign = value < 0 ? CHAR_HYPHEN : ``;
     let result = sign + integerPartString.charAt(0);
 
-    // eslint-disable-next-line functional/no-loop-statements
     for (let i = 1; i < integerPartString.length; i++) {
         if (i % 3 === remainder && integerPartString.length > 3) {
             result += thousandSeparator;

@@ -54,7 +54,6 @@ export class TuiHighlightDirective implements OnChanges {
 
         this.treeWalker.currentNode = this.el.nativeElement;
 
-        // eslint-disable-next-line functional/no-loop-statements
         do {
             const index = this.indexOf(this.treeWalker.currentNode.nodeValue);
 

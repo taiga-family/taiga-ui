@@ -46,7 +46,6 @@ test.describe(`InputSlider`, () => {
             await inputSlider.textfield.clear();
             await inputSlider.textfield.fill(`0`);
 
-            // eslint-disable-next-line functional/no-loop-statements
             for (let i = 1; i <= 10; i++) {
                 await inputSlider.textfield.focus();
                 await inputSlider.textfield.press(`ArrowUp`);
@@ -57,7 +56,6 @@ test.describe(`InputSlider`, () => {
                 await expect(example).toHaveScreenshot(`2-0-arrow-up-checks-${i}.png`);
             }
 
-            // eslint-disable-next-line functional/no-loop-statements
             for (let i = 9; i >= 0; i--) {
                 await inputSlider.textfield.focus();
                 await inputSlider.textfield.press(`ArrowDown`);

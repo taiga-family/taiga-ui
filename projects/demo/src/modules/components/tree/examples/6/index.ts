@@ -48,7 +48,7 @@ export class TuiTreeExample6 {
         const flat = flatten(item);
         const result = !!map.get(flat[0]);
 
-        // eslint-disable-next-line functional/no-loop-statements
+        // eslint-disable-next-line no-restricted-syntax
         for (const item of flat) {
             if (result !== !!map.get(item)) {
                 return null;

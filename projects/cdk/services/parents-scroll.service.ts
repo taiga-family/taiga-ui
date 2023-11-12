@@ -21,7 +21,6 @@ export class TuiParentsScrollService extends Observable<Event> {
             let {nativeElement} = el;
             const eventTargets: Array<Element | Window> = [win, nativeElement];
 
-            // eslint-disable-next-line functional/no-loop-statements
             while (nativeElement.parentElement) {
                 nativeElement = nativeElement.parentElement;
                 eventTargets.push(nativeElement);

@@ -10,7 +10,6 @@ export function tuiGetNativeFocused({activeElement}: Document): Element | null {
 
     let element = activeElement.shadowRoot.activeElement;
 
-    // eslint-disable-next-line functional/no-loop-statements
     while (element?.shadowRoot) {
         element = element.shadowRoot.activeElement;
     }

@@ -11,11 +11,9 @@ function nextTabbable($referenceElement: JQuery, direction = `forward`): JQuery 
 
     element = $referenceElement.get(0);
 
-    // eslint-disable-next-line functional/no-loop-statements
     while (element) {
         let sibling = element[siblingProp];
 
-        // eslint-disable-next-line functional/no-loop-statements
         while (sibling) {
             stack.unshift(sibling);
             sibling = sibling[siblingProp];
@@ -24,7 +22,6 @@ function nextTabbable($referenceElement: JQuery, direction = `forward`): JQuery 
         element = element.parentElement;
     }
 
-    // eslint-disable-next-line functional/no-loop-statements
     while (stack.length > 0) {
         element = stack.pop();
 

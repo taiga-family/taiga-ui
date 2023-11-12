@@ -115,7 +115,6 @@ export class TuiPaginationComponent
         let activeElementIndex = 0;
         const {elementsLength} = this;
 
-        // eslint-disable-next-line functional/no-loop-statements
         for (let i = 0; i < elementsLength; i++) {
             const itemIndex = this.getItemIndexByElementIndex(i);
 

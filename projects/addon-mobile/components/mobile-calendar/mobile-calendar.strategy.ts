@@ -118,9 +118,7 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
 
         let accumulator = 0;
 
-        // eslint-disable-next-line functional/no-loop-statements
         for (let year = 0; year < cycle.length; year++) {
-            // eslint-disable-next-line functional/no-loop-statements
             for (let month = 0; month < cycle[year].length; month++) {
                 accumulator += cycle[year][month];
 

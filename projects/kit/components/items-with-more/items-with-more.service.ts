@@ -42,7 +42,6 @@ export class TuiItemsWithMoreService extends Observable<number> {
             return this.maxItems;
         }
 
-        // eslint-disable-next-line functional/no-loop-statements
         for (let i = last - 1; i > 0; i--) {
             total -= items[i];
 

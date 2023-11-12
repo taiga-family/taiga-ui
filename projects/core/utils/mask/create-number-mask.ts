@@ -106,7 +106,6 @@ export function tuiCreateNumberMask({
 
             mask.push(decimalSymbol, MASK_CARET_TRAP, ...fractionCapped);
 
-            // eslint-disable-next-line functional/no-loop-statements
             for (let i = 0; i < Math.min(decimalLimit - fractionCapped.length, 20); i++) {
                 mask.push(TUI_DIGIT_REGEXP);
             }

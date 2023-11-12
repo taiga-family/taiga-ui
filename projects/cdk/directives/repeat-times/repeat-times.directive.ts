@@ -40,7 +40,6 @@ export class TuiRepeatTimesDirective {
     ) {}
 
     private addContainers(count: number): void {
-        // eslint-disable-next-line functional/no-loop-statements
         for (let index = this.viewContainer.length; index < count; index++) {
             this.viewContainer.createEmbeddedView<TuiRepeatTimesContext>(
                 this.templateRef,
@@ -50,7 +49,6 @@ export class TuiRepeatTimesDirective {
     }
 
     private removeContainers(amount: number): void {
-        // eslint-disable-next-line functional/no-loop-statements
         for (let index = 0; index < amount; index++) {
             this.viewContainer.remove();
         }

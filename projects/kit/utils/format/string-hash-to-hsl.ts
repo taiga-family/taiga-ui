@@ -11,7 +11,6 @@ export function tuiStringHashToHsl(value: string): string {
 
     let hash = 0;
 
-    // eslint-disable-next-line functional/no-loop-statements
     for (let i = 0; i < value.length; i++) {
         hash = value.charCodeAt(i) + ((hash << 5) - hash);
         hash &= hash;
