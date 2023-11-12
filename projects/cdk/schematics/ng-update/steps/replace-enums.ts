@@ -29,29 +29,29 @@ function replaceEnumWithString(
     replaceValues: Record<string, string>,
     keepAsType = true,
 ): void {
-    const references = getNamedImportReferences(enumName);
-
-    for (const ref of references) {
+    getNamedImportReferences(enumName).forEach(ref => {
         if (ref.wasForgotten()) {
-            continue;
+            return;
         }
 
         const parent = ref.getParent();
 
         if (Node.isImportSpecifier(parent) && !(keepAsType && containTypeRef(parent))) {
             removeImport(parent);
-            continue;
+
+            return;
         }
 
         if (Node.isTypeReference(parent) && !keepAsType) {
             const declaration = parent.getParent() as VariableDeclaration;
 
             declaration.removeType?.();
-            continue;
+
+            return;
         }
 
         if (!Node.isPropertyAccessExpression(parent)) {
-            continue;
+            return;
         }
 
         const key = Object.keys(replaceValues).find(key => parent.getName() === key);
@@ -59,7 +59,7 @@ function replaceEnumWithString(
         if (key) {
             parent.replaceWithText(`'${replaceValues[key]}'`);
         }
-    }
+    });
 }
 
 function containTypeRef(node: ImportSpecifier): boolean {

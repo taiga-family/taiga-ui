@@ -5,7 +5,7 @@ import {
 } from '@demo-cypress/support/helpers/deep-paths';
 
 describe(`Deep`, () => {
-    for (const path of Cypress.env(`DEEP_PATHS`) ?? []) {
+    (Cypress.env(`DEEP_PATHS`) ?? []).forEach((path: string) => {
         it(path, () => {
             let counter = 1;
 
@@ -64,5 +64,5 @@ describe(`Deep`, () => {
                     return tuiMakeCypressDemoSnapshot(path, counter++, toggle$, 0);
                 });
         });
-    }
+    });
 });

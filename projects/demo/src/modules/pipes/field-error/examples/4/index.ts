@@ -44,6 +44,7 @@ export class TuiFieldErrorPipeExample4 {
 
         let n = 0;
 
+        // eslint-disable-next-line functional/no-loop-statements
         while (n <= 1 && this.formData.controls[n]) {
             this.formData.controls[n].setValidators([
                 Validators.required,

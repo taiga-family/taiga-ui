@@ -167,6 +167,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         const {tabs} = this;
         let index = tabs.length - 2;
 
+        // eslint-disable-next-line functional/no-loop-statements
         while (index >= 0) {
             tabs[index].focus();
 
@@ -222,6 +223,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
             return Infinity;
         }
 
+        // eslint-disable-next-line functional/no-loop-statements
         while (maxIndex) {
             total -= tabs[maxIndex].scrollWidth + margin;
             maxIndex--;

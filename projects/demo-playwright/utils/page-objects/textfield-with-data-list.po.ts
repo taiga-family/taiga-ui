@@ -15,9 +15,7 @@ export class TuiTextfieldWithDataListPO {
     async selectOptions(indexes: number[]): Promise<void> {
         const options = await this.getOptions();
 
-        for (const optionIndex of indexes) {
-            await options[optionIndex].click();
-        }
+        await Promise.all(indexes.map(async optionIndex => options[optionIndex].click()));
     }
 
     async scrollDropdown(x: number, y: number): Promise<void>;

@@ -49,9 +49,7 @@ export class TuiDocumentationPagePO {
             ...(await wrapper.locator(`> .t-content > *:not(tui-doc-demo)`).all()),
         ];
 
-        for (const element of hideElements) {
-            await tuiHideElement(element);
-        }
+        await Promise.all(hideElements.map(async element => tuiHideElement(element)));
 
         await this.apiPageExample.evaluate(el => el.scrollIntoView());
         await expect(async () => {

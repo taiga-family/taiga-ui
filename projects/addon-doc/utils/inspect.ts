@@ -6,6 +6,7 @@ function inspectArray(array: readonly unknown[], depth: number): string {
     let result = ``;
     let first = true;
 
+    // eslint-disable-next-line functional/no-loop-statements
     for (let index = 0; index < array.length; index++) {
         if (first) {
             first = false;
@@ -28,6 +29,7 @@ function inspectObject(object: {[key: string]: unknown}, depth: number): string 
 
     let first = true;
 
+    // eslint-disable-next-line functional/no-loop-statements
     for (const key in object) {
         if (!object.hasOwnProperty(key)) {
             continue;

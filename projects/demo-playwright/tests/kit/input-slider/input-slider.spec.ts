@@ -26,15 +26,17 @@ test.describe(`InputSlider`, () => {
                 {value: 20, step: 15},
             ];
 
-            for (const {value, step} of valueToSliderStep) {
-                await inputSlider.textfield.clear();
-                await inputSlider.textfield.fill(`${value}`);
+            await Promise.all(
+                valueToSliderStep.map(async ({value, step}) => {
+                    await inputSlider.textfield.clear();
+                    await inputSlider.textfield.fill(`${value}`);
 
-                await expect(inputSlider.slider).toHaveValue(`${step}`);
-                await expect(example).toHaveScreenshot(
-                    `1-slider-check-${value}-${step}.png`,
-                );
-            }
+                    await expect(inputSlider.slider).toHaveValue(`${step}`);
+                    await expect(example).toHaveScreenshot(
+                        `1-slider-check-${value}-${step}.png`,
+                    );
+                }),
+            );
         });
 
         test(`pressing ArrowUp/ArrowDown change textInput value and slider position`, async () => {
@@ -44,6 +46,7 @@ test.describe(`InputSlider`, () => {
             await inputSlider.textfield.clear();
             await inputSlider.textfield.fill(`0`);
 
+            // eslint-disable-next-line functional/no-loop-statements
             for (let i = 1; i <= 10; i++) {
                 await inputSlider.textfield.focus();
                 await inputSlider.textfield.press(`ArrowUp`);
@@ -54,6 +57,7 @@ test.describe(`InputSlider`, () => {
                 await expect(example).toHaveScreenshot(`2-0-arrow-up-checks-${i}.png`);
             }
 
+            // eslint-disable-next-line functional/no-loop-statements
             for (let i = 9; i >= 0; i--) {
                 await inputSlider.textfield.focus();
                 await inputSlider.textfield.press(`ArrowDown`);

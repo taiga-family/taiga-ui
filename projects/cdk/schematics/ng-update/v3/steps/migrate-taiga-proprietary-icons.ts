@@ -57,7 +57,7 @@ export function migrateTaigaProprietaryIcons(options: TuiSchema): Rule {
                       return;
                   }
 
-                  for (const project of projects) {
+                  projects.forEach(project => {
                       let targetOptions;
 
                       try {
@@ -85,7 +85,7 @@ export function migrateTaigaProprietaryIcons(options: TuiSchema): Rule {
 
                           targetOptions.assets.push(PROPRIETARY_TDS_ICON_ASSETS);
                       }
-                  }
+                  });
               })
             : () => {};
     };

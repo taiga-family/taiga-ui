@@ -26,7 +26,7 @@ function updateTuiMatcher(options: TuiSchema): void {
 
     const refs = getNamedImportReferences(`TuiMatcher`, `@taiga-ui/cdk`);
 
-    for (const ref of refs) {
+    refs.forEach(ref => {
         if (ref.wasForgotten()) {
             return;
         }
@@ -44,7 +44,7 @@ function updateTuiMatcher(options: TuiSchema): void {
 
             inputType.replaceWithText(`[${inputType.getText()}, ...any]`);
         }
-    }
+    });
 }
 
 function renameTuiTypedMatcher(options: TuiSchema): void {

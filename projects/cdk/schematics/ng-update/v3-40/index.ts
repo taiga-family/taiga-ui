@@ -43,20 +43,24 @@ function replaceTextareaTag(options: TuiSchema, fileSystem: DevkitFileSystem): v
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing <tui-text-area /> to <tui-textarea />`,
         );
 
-    const templateResources = getComponentTemplates(ALL_TS_FILES);
-
-    for (const resource of templateResources) {
+    getComponentTemplates(ALL_TS_FILES).forEach(resource => {
         const template = getTemplateFromTemplateResource(resource, fileSystem);
-        const elements = findElementsByTagName(template, `tui-text-area`);
         const path = fileSystem.resolve(getPathFromTemplateResource(resource));
         const recorder = fileSystem.edit(path);
 
-        elements.forEach(({sourceCodeLocation}) => {
-            if (sourceCodeLocation) {
-                replaceTag(recorder, sourceCodeLocation, `tui-text-area`, `tui-textarea`);
-            }
-        });
-    }
+        findElementsByTagName(template, `tui-text-area`).forEach(
+            ({sourceCodeLocation}) => {
+                if (sourceCodeLocation) {
+                    replaceTag(
+                        recorder,
+                        sourceCodeLocation,
+                        `tui-text-area`,
+                        `tui-textarea`,
+                    );
+                }
+            },
+        );
+    });
 
     fileSystem.commitEdits();
     saveActiveProject();

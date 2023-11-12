@@ -159,10 +159,10 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
     private patchCssStyles(): void {
         const doc = this.win.document;
 
-        for (const element of [doc.documentElement, doc.body]) {
+        [doc.documentElement, doc.body].forEach(element => {
             element.style.setProperty(`overflow`, `auto`);
             element.style.setProperty(`height`, `100%`);
-        }
+        });
     }
 
     /**

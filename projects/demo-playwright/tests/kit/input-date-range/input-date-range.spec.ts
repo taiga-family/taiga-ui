@@ -20,7 +20,7 @@ test.describe(`InputDateRange`, () => {
     });
 
     test.describe(`API`, () => {
-        for (const size of [`s`, `m`, `l`]) {
+        [`s`, `m`, `l`].forEach(size => {
             test(`correct filler display for size ${size.toUpperCase()}`, async ({
                 page,
             }) => {
@@ -61,7 +61,7 @@ test.describe(`InputDateRange`, () => {
                     `04-calendar-size-${size}-set-to-date.png`,
                 );
             });
-        }
+        });
 
         test(`Maximum month less than current month`, async ({page}) => {
             await tuiGoto(page, `components/input-date-range/API?min$=3`);

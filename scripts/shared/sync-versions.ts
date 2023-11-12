@@ -11,45 +11,43 @@ export function syncVersions(
     newVersion: string,
     ignores: readonly string[] = [],
 ): void {
-    const patterns = filesOrDirectories.map(pattern =>
-        pattern.endsWith(`.json`)
-            ? pattern
-            : `${pattern}/**/*(package.json|package-lock.json)`,
-    );
-
-    const files = patterns
+    filesOrDirectories
+        .map(pattern =>
+            pattern.endsWith(`.json`)
+                ? pattern
+                : `${pattern}/**/*(package.json|package-lock.json)`,
+        )
         .map(pattern => glob.sync(pattern, {ignore: `**/node_modules/**`}))
         .flatMap(files => files)
-        .filter(file => !file.includes(`node_modules`));
+        .filter(file => !file.includes(`node_modules`))
+        .forEach(file => {
+            const originalJSON = `${JSON.stringify(
+                JSON.parse(readFileSync(file).toString()),
+                null,
+                INDENTATION,
+            )}`;
+            const packageJson = JSON.parse(originalJSON);
+            const prevVersion = packageJson.version;
 
-    for (const file of files) {
-        const originalJSON = `${JSON.stringify(
-            JSON.parse(readFileSync(file).toString()),
-            null,
-            INDENTATION,
-        )}`;
-        const packageJson = JSON.parse(originalJSON);
-        const prevVersion = packageJson.version;
+            if (!prevVersion) {
+                return;
+            }
 
-        if (!prevVersion) {
-            continue;
-        }
+            updatePackageJsonStructure({
+                isPackageLockFile: file.endsWith(`-lock.json`),
+                packageJson,
+                prevVersion,
+                newVersion,
+                ignores,
+            });
 
-        updatePackageJsonStructure({
-            isPackageLockFile: file.endsWith(`-lock.json`),
-            packageJson,
-            prevVersion,
-            newVersion,
-            ignores,
+            const updatedJSON = `${JSON.stringify(packageJson, null, INDENTATION)}`;
+
+            if (originalJSON !== updatedJSON) {
+                writeFileSync(file, `${updatedJSON}\n`);
+                successLog(`[synchronized]: ${file}`);
+            } else {
+                processLog(`[no changes]: ${file}`);
+            }
         });
-
-        const updatedJSON = `${JSON.stringify(packageJson, null, INDENTATION)}`;
-
-        if (originalJSON !== updatedJSON) {
-            writeFileSync(file, `${updatedJSON}\n`);
-            successLog(`[synchronized]: ${file}`);
-        } else {
-            processLog(`[no changes]: ${file}`);
-        }
-    }
 }

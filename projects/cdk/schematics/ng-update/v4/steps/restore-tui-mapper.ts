@@ -26,7 +26,7 @@ function updateTuiMapper(options: TuiSchema): void {
 
     const refs = getNamedImportReferences(`TuiMapper`, `@taiga-ui/cdk`);
 
-    for (const ref of refs) {
+    refs.forEach(ref => {
         if (ref.wasForgotten()) {
             return;
         }
@@ -44,7 +44,7 @@ function updateTuiMapper(options: TuiSchema): void {
 
             inputType.replaceWithText(`[${inputType.getText()}, ...any]`);
         }
-    }
+    });
 }
 
 function renameTuiTypedMapper(options: TuiSchema): void {

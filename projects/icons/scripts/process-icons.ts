@@ -14,7 +14,7 @@ interface WrappedContent {
 type ContentInterceptor = (src: string) => string;
 
 export function tuiProcessIcons(files: string[], interceptor?: ContentInterceptor): void {
-    for (const file of files) {
+    files.forEach(file => {
         const baseContent = String(fs.readFileSync(file));
         const src = interceptor ? interceptor(baseContent) : baseContent;
 
@@ -22,7 +22,8 @@ export function tuiProcessIcons(files: string[], interceptor?: ContentIntercepto
 
         if (src.includes(`id="${name}"`)) {
             console.info(`\x1B[33m%s\x1B[0m`, `[skip]:`, file);
-            continue;
+
+            return;
         }
 
         const wrapped = wrapIcon(src, name);
@@ -39,7 +40,7 @@ export function tuiProcessIcons(files: string[], interceptor?: ContentIntercepto
         fs.writeFileSync(file, final);
 
         console.info(`\x1B[32m%s\x1B[0m`, `[preprocessed]:`, file);
-    }
+    });
 }
 
 function wrapIcon(source: string, name: string): WrappedContent | string {

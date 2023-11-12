@@ -21,9 +21,11 @@ export async function tuiMockImages(
         mockImage: string;
     }> = DEFAULT_MOCKS,
 ): Promise<void> {
-    for (const {patterns, mockImage} of imagesMocks) {
-        const pattern = new RegExp(patterns.map(reg => reg.source).join(`|`));
+    await Promise.all(
+        imagesMocks.map(async ({patterns, mockImage}) => {
+            const pattern = new RegExp(patterns.map(reg => reg.source).join(`|`));
 
-        await page.route(pattern, async route => route.fulfill({path: mockImage}));
-    }
+            await page.route(pattern, async route => route.fulfill({path: mockImage}));
+        }),
+    );
 }

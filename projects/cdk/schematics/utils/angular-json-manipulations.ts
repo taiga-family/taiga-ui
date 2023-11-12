@@ -57,7 +57,7 @@ export function addStylesToAngularJson(
             return;
         }
 
-        for (const project of projects) {
+        projects.forEach(project => {
             let targetOptions;
 
             try {
@@ -109,6 +109,6 @@ export function addStylesToAngularJson(
 
                 context.addTask(new NodePackageInstallTask());
             }
-        }
+        });
     });
 }

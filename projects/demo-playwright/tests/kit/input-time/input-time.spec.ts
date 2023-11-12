@@ -9,13 +9,15 @@ test.describe(`InputTime`, () => {
     test.describe(`Examples`, () => {
         let documentationPage: TuiDocumentationPagePO;
 
-        for (const [exampleIndex, id] of [
-            `base`,
-            `dropdown`,
-            `options`,
-            `options-max`,
-            `options-max-and-postfix`,
-        ].entries()) {
+        Array.from(
+            [
+                `base`,
+                `dropdown`,
+                `options`,
+                `options-max`,
+                `options-max-and-postfix`,
+            ].entries(),
+        ).forEach(([exampleIndex, id]) => {
             test(id, async ({page}) => {
                 await tuiGoto(page, `components/input-time`, {date: MOCK_DATE});
 
@@ -24,19 +26,23 @@ test.describe(`InputTime`, () => {
                 const example = documentationPage.getExample(`#${id}`);
                 const inputTimeLocators = await example.locator(`tui-input-time`).all();
 
-                for (const [i, inputTimeLocator] of inputTimeLocators.entries()) {
-                    const inputTime = new TuiInputTimePO(inputTimeLocator);
+                await Promise.all(
+                    Array.from(inputTimeLocators.entries()).map(
+                        async ([i, inputTimeLocator]) => {
+                            const inputTime = new TuiInputTimePO(inputTimeLocator);
 
-                    await inputTime.textfield.click();
-                    await inputTime.textfield.clear();
+                            await inputTime.textfield.click();
+                            await inputTime.textfield.clear();
 
-                    await expect(inputTime.textfield).toBeFocused();
-                    await expect(page).toHaveScreenshot(
-                        `0${exampleIndex + 1}-input-time-${id}-${i + 1}.png`,
-                    );
-                }
+                            await expect(inputTime.textfield).toBeFocused();
+                            await expect(page).toHaveScreenshot(
+                                `0${exampleIndex + 1}-input-time-${id}-${i + 1}.png`,
+                            );
+                        },
+                    ),
+                );
             });
-        }
+        });
     });
 
     test.describe(`API`, () => {
@@ -48,7 +54,7 @@ test.describe(`InputTime`, () => {
             inputTime = new TuiInputTimePO(apiPageExample.locator(`tui-input-time`));
         });
 
-        for (const mode of [`HH:MM`, `HH:MM:SS`, `HH:MM:SS.MSS`]) {
+        [`HH:MM`, `HH:MM:SS`, `HH:MM:SS.MSS`].forEach(mode => {
             test(`the input is configured for ${mode} mode`, async ({page}) => {
                 await tuiGoto(page, `components/input-time/API?mode=${mode}`, {
                     date: MOCK_DATE,
@@ -57,7 +63,7 @@ test.describe(`InputTime`, () => {
                 await inputTime.textfield.click();
                 await expect(apiPageExample).toHaveScreenshot(`time_mode_${mode}.png`);
             });
-        }
+        });
 
         test.describe(`items are passed`, () => {
             test(`the dropdown is visible when the input is focused`, async ({page}) => {
@@ -90,7 +96,7 @@ test.describe(`InputTime`, () => {
                 );
             });
 
-            for (const size of [`s`, `m`, `l`]) {
+            [`s`, `m`, `l`].forEach(size => {
                 test(`the dropdown is configured for ${size} size`, async ({page}) => {
                     await tuiGoto(
                         page,
@@ -106,7 +112,7 @@ test.describe(`InputTime`, () => {
                         `dropdown_size_${size}.png`,
                     );
                 });
-            }
+            });
 
             test(`strict forces to select the closest value from items`, async ({
                 page,

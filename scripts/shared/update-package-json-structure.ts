@@ -44,18 +44,16 @@ export function updatePackageJsonStructure({
     }
 
     if (isPackageLockFile && tuiIsObject(packages)) {
-        for (const packageLockJson of Object.values(packages)) {
-            if (!isTuiPackageName(packageLockJson?.name, ignores)) {
-                continue;
+        Object.values(packages).forEach(packageLockJson => {
+            if (isTuiPackageName(packageLockJson?.name, ignores)) {
+                updatePackageJsonStructure({
+                    packageJson: packageLockJson,
+                    prevVersion,
+                    newVersion,
+                    isPackageLockFile: true,
+                    ignores,
+                });
             }
-
-            updatePackageJsonStructure({
-                packageJson: packageLockJson,
-                prevVersion,
-                newVersion,
-                isPackageLockFile: true,
-                ignores,
-            });
-        }
+        });
     }
 }

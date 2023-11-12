@@ -43,7 +43,7 @@ describe(`InputNumber`, () => {
                 .matchImageSnapshot(`02-input-number-prefix-postfix`);
         });
 
-        for (const align of [`left`, `right`]) {
+        [`left`, `right`].forEach(align => {
             it(`align=${align}`, () => {
                 const readableFormatText = `Very long text`;
 
@@ -55,10 +55,10 @@ describe(`InputNumber`, () => {
                     .tuiWaitBeforeScreenshot()
                     .matchImageSnapshot(`03-input-number-align-${align}`);
             });
-        }
+        });
 
         describe(`overflow`, () => {
-            for (const sandboxWidth of [`75`, `140`, `158`]) {
+            [`75`, `140`, `158`].forEach(sandboxWidth => {
                 it(`sandboxWidth=${sandboxWidth}`, () => {
                     cy.tuiVisit(
                         `components/input-number/API?tuiTextfieldPostfix=$&tuiTextfieldPrefix=VeryLongText&sandboxWidth=${sandboxWidth}`,
@@ -68,7 +68,7 @@ describe(`InputNumber`, () => {
                         `input-number-sandboxWidth-${sandboxWidth}`,
                     );
                 });
-            }
+            });
         });
     });
 
@@ -84,18 +84,20 @@ describe(`InputNumber`, () => {
                 .tuiWaitBeforeScreenshot()
                 .matchImageSnapshot(`03-input-number-currency`);
 
-            for (const [index, currency] of [`dollar`, `eur`, `pounds`].entries()) {
-                cy.get(`@currency`)
-                    .findByAutomationId(`tui-primitive-textfield__native-input`)
-                    .eq(index)
-                    .focus()
-                    .type(`{selectall}{backspace}`)
-                    .focused();
+            Array.from([`dollar`, `eur`, `pounds`].entries()).forEach(
+                ([index, currency]) => {
+                    cy.get(`@currency`)
+                        .findByAutomationId(`tui-primitive-textfield__native-input`)
+                        .eq(index)
+                        .focus()
+                        .type(`{selectall}{backspace}`)
+                        .focused();
 
-                cy.get(`@currency`)
-                    .tuiWaitBeforeScreenshot()
-                    .matchImageSnapshot(`0${4 + index}-currency-${currency}`);
-            }
+                    cy.get(`@currency`)
+                        .tuiWaitBeforeScreenshot()
+                        .matchImageSnapshot(`0${4 + index}-currency-${currency}`);
+                },
+            );
         });
     });
 

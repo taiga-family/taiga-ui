@@ -35,11 +35,9 @@ export function migrateProgress(fileSystem: DevkitFileSystem, options: TuiSchema
     !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating progress bars...`);
 
-    const templateResources = getComponentTemplates(ALL_TS_FILES);
-
-    for (const templateResource of templateResources) {
+    getComponentTemplates(ALL_TS_FILES).forEach(templateResource => {
         replaceProgressColorSegmentsPipe(templateResource, fileSystem);
-    }
+    });
 
     fileSystem.commitEdits();
     saveActiveProject();
@@ -63,7 +61,7 @@ function replaceProgressColorSegmentsPipe(
         PROPERTY_FOR_DEPRECATED_PIPES,
     ).filter(isProgressWithDeprecatedPipe);
 
-    for (const progressEl of progressElements) {
+    progressElements.forEach(progressEl => {
         const oldValue =
             progressEl.attrs.find(attr => attr.name === PROPERTY_FOR_DEPRECATED_PIPES)
                 ?.value || ``;
@@ -80,7 +78,7 @@ function replaceProgressColorSegmentsPipe(
                 `[tuiProgressColorSegments]="${newValue}"`,
             );
         }
-    }
+    });
 }
 
 function isProgressWithDeprecatedPipe(element: Element): boolean {

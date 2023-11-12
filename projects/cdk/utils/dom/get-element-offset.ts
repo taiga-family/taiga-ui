@@ -17,6 +17,7 @@ export function tuiGetElementOffset(
 
     let {offsetTop, offsetLeft, offsetParent} = element;
 
+    // eslint-disable-next-line functional/no-loop-statements
     while (tuiIsHTMLElement(offsetParent) && offsetParent !== host) {
         offsetTop += offsetParent.offsetTop;
         offsetLeft += offsetParent.offsetLeft;

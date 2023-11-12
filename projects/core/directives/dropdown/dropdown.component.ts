@@ -147,6 +147,7 @@ export class TuiDropdownComponent {
         const root = ownerDocument ? ownerDocument.body : nativeElement;
         let focusable = tuiGetClosestFocusable({initial: nativeElement, root, previous});
 
+        // eslint-disable-next-line functional/no-loop-statements
         while (focusable !== null && nativeElement.contains(focusable)) {
             focusable = tuiGetClosestFocusable({initial: focusable, root, previous});
         }

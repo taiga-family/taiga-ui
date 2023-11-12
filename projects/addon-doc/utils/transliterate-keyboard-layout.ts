@@ -41,6 +41,7 @@ const MAP: Record<string, string> = {
 export function tuiTransliterateKeyboardLayout(string: string): string {
     let newStr = ``;
 
+    // eslint-disable-next-line functional/no-loop-statements
     for (let i = 0; i < string.length; i++) {
         newStr += string.charAt(i) in MAP ? MAP[string.charAt(i)] : string.charAt(i);
     }

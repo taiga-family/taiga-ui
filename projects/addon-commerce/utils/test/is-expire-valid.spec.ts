@@ -46,12 +46,14 @@ describe(`tuiIsExpireValid`, () => {
         ],
     };
 
-    for (const expire in specs) {
-        describe(`${expire}`, () => {
-            for (const {today, valid} of specs[expire as keyof typeof specs]) {
-                it(`It's ${valid ? `valid` : `invalid`} when today is ${today}`, () =>
-                    expect(tuiIsExpireValid(expire, new Date(today))).toBe(valid));
-            }
+    Object.keys(specs)
+        .filter(expire => expire in specs)
+        .forEach(expire => {
+            describe(`${expire}`, () => {
+                specs[expire as keyof typeof specs].forEach(({today, valid}) => {
+                    it(`It's ${valid ? `valid` : `invalid`} when today is ${today}`, () =>
+                        expect(tuiIsExpireValid(expire, new Date(today))).toBe(valid));
+                });
+            });
         });
-    }
 });

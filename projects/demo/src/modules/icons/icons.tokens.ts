@@ -81,22 +81,24 @@ function ensureIcons(): {LARGE: DemoTuiIcon[]; NORMAL: DemoTuiIcon[]} {
     const normal: DemoTuiIcon[] = [];
     const commerceSet = new Set([...COMMERCE_SYSTEMS, ...COMMERCE_SERVICES]);
 
-    for (const icon in allIcons) {
-        const shouldSkip =
-            commerceSet.has(icon as DemoTuiIcon) ||
-            icon === `tuiCoreIcons` ||
-            icon === `tuiKitIcons`;
+    Object.keys(allIcons)
+        .filter(icon => icon in allIcons)
+        .forEach(icon => {
+            const shouldSkip =
+                commerceSet.has(icon as DemoTuiIcon) ||
+                icon === `tuiCoreIcons` ||
+                icon === `tuiKitIcons`;
 
-        if (shouldSkip) {
-            continue;
-        }
+            if (shouldSkip) {
+                return;
+            }
 
-        if (icon.includes(`Large`)) {
-            large.push(icon as DemoTuiIcon);
-        } else {
-            normal.push(icon as DemoTuiIcon);
-        }
-    }
+            if (icon.includes(`Large`)) {
+                large.push(icon as DemoTuiIcon);
+            } else {
+                normal.push(icon as DemoTuiIcon);
+            }
+        });
 
     return {LARGE: large, NORMAL: normal};
 }

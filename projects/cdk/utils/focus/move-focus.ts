@@ -14,6 +14,7 @@ export function tuiMoveFocus(
 ): void {
     currentIndex += step;
 
+    // eslint-disable-next-line functional/no-loop-statements
     while (currentIndex >= 0 && currentIndex < elements.length) {
         elements[currentIndex].focus();
 

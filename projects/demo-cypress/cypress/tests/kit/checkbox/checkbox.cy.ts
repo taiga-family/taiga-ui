@@ -1,6 +1,6 @@
 describe(`Checkbox`, () => {
     describe(`API`, () => {
-        for (const size of [`m`, `l`]) {
+        [`m`, `l`].forEach(size => {
             it(`size=${size}`, () => {
                 cy.tuiVisit(`components/checkbox/API?size=${size}`);
 
@@ -8,6 +8,6 @@ describe(`Checkbox`, () => {
                     .tuiWaitBeforeScreenshot()
                     .matchImageSnapshot(`checkbox-size-${size}`);
             });
-        }
+        });
     });
 });

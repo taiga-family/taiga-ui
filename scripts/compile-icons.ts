@@ -35,26 +35,27 @@ import {
         config: {...config, parser: `typescript`},
     });
 
-    const icons = readdirSync(iconsSrc)
-        .filter(file => file.endsWith(`.svg`))
-        .map(file => `${iconsSrc}/${file}`);
+    await Promise.all(
+        readdirSync(iconsSrc)
+            .filter(file => file.endsWith(`.svg`))
+            .map(file => `${iconsSrc}/${file}`)
+            .map(async file => {
+                await tuiPostPrettierFormat({
+                    file,
+                    config: {...config, ...svg, parser: `angular`},
+                });
 
-    for (const file of icons) {
-        await tuiPostPrettierFormat({
-            file,
-            config: {...config, ...svg, parser: `angular`},
-        });
-
-        await tuiPostPrettierFormat({
-            file,
-            config: {
-                ...config,
-                ...svg,
-                parser: `xml`,
-                plugins: [require.resolve(`@prettier/plugin-xml`)],
-            },
-        });
-    }
+                await tuiPostPrettierFormat({
+                    file,
+                    config: {
+                        ...config,
+                        ...svg,
+                        parser: `xml`,
+                        plugins: [require.resolve(`@prettier/plugin-xml`)],
+                    },
+                });
+            }),
+    );
 
     try {
         unlinkSync(allToCompilePath);

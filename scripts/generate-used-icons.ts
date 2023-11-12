@@ -78,9 +78,7 @@ function findTuiIconNames(
     const tuiIconNames = new Set<string>();
 
     function traverseDirectory(directory: string): void {
-        const files = readdirSync(directory);
-
-        for (const file of files) {
+        readdirSync(directory).forEach(file => {
             const filePath = join(directory, file);
             const stat = statSync(filePath);
 
@@ -108,7 +106,7 @@ function findTuiIconNames(
                     });
                 }
             }
-        }
+        });
     }
 
     traverseDirectory(rootDir);

@@ -34,11 +34,11 @@ export function migrateInputRange(
         prefix: `[replaceMinMaxLabel]`,
     });
 
-    for (const templateResource of templateResources) {
+    templateResources.forEach(templateResource => {
         !options[`skip-logs`] && progressLog(templateResource.componentPath);
         replaceMinLabel(templateResource, fileSystem, COMPONENTS_WITH_MIN_LABELS);
         replaceMaxLabel(templateResource, fileSystem, COMPONENTS_WITH_MAX_LABELS);
-    }
+    });
 
     save(fileSystem);
 
@@ -47,7 +47,7 @@ export function migrateInputRange(
         prefix: `[COMPONENTS_WITH_MIN_LABELS]`,
     });
 
-    for (const componentPath of Array.from(COMPONENTS_WITH_MIN_LABELS)) {
+    Array.from(COMPONENTS_WITH_MIN_LABELS).forEach(componentPath => {
         !options[`skip-logs`] && progressLog(componentPath);
         addMinMaxLabelMethod(componentPath, MIN_LABELS_MIGRATION_METHOD_NAME, [
             `const currentValue = context.$implicit;`,
@@ -56,14 +56,14 @@ export function migrateInputRange(
             `if (currentValue === minValue) return minLabelText;`,
             `return String(currentValue);`,
         ]);
-    }
+    });
 
     progressLog = setupProgressLogger({
         total: COMPONENTS_WITH_MAX_LABELS.size,
         prefix: `[COMPONENTS_WITH_MAX_LABELS]`,
     });
 
-    for (const componentPath of Array.from(COMPONENTS_WITH_MAX_LABELS)) {
+    Array.from(COMPONENTS_WITH_MAX_LABELS).forEach(componentPath => {
         !options[`skip-logs`] && progressLog(componentPath);
         addMinMaxLabelMethod(componentPath, MAX_LABELS_MIGRATION_METHOD_NAME, [
             `const currentValue = context.$implicit;`,
@@ -72,7 +72,7 @@ export function migrateInputRange(
             `if (currentValue === maxValue) return maxLabelText;`,
             `return String(currentValue);`,
         ]);
-    }
+    });
 }
 
 function replaceMinLabel(

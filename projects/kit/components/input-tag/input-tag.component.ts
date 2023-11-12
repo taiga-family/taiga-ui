@@ -515,6 +515,7 @@ export class TuiInputTagComponent
     }
 
     private deleteLastEnabledItem(): void {
+        // eslint-disable-next-line functional/no-loop-statements
         for (let index = this.value.length - 1; index >= 0; index--) {
             if (!this.disabledItemHandler(this.value[index])) {
                 this.value = tuiArrayRemove(this.value, index);
