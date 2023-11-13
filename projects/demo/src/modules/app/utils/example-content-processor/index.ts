@@ -19,11 +19,11 @@ function getProcessor(fileName: string): (item: string) => string {
 export function exampleContentProcessor<T extends Record<string, any>>(content: T): T {
     const processedContent: Record<string, string> = {};
 
-    for (const [fileName, fileContent] of Object.entries(content)) {
+    Object.entries(content).forEach(([fileName, fileContent]) => {
         const processor = getProcessor(fileName);
 
         processedContent[fileName] = processor(fileContent);
-    }
+    });
 
     return processedContent as T;
 }

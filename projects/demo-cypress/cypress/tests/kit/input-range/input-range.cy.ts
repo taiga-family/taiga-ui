@@ -1,5 +1,4 @@
-// eslint-disable-next-line @taiga-ui/experience/no-deep-imports
-import {CHAR_MINUS} from '@taiga-ui/cdk/constants';
+import {CHAR_MINUS} from '@taiga-ui/cdk';
 
 describe(`InputRange`, () => {
     beforeEach(() => {
@@ -139,7 +138,7 @@ describe(`InputRange`, () => {
             {typedValue: `0.1`, expectedRoundedValue: `0`},
         ] as const;
 
-        for (const {typedValue, expectedRoundedValue} of testsConditions) {
+        testsConditions.forEach(({typedValue, expectedRoundedValue}) => {
             it(`${typedValue} => ${expectedRoundedValue}`, () => {
                 cy.get(`@rightTextInput`)
                     .focus()
@@ -148,7 +147,7 @@ describe(`InputRange`, () => {
                     .blur()
                     .should(`have.value`, expectedRoundedValue);
             });
-        }
+        });
     });
 
     describe(`Range interactions`, () => {

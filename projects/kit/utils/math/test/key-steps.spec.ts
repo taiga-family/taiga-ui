@@ -25,18 +25,18 @@ describe(`KeySteps utils`, () => {
     ] as const;
 
     describe(`tuiPercentageToKeyStepValue`, () => {
-        for (const {percentage, value} of testContexts) {
+        testContexts.forEach(({percentage, value}) => {
             it(`${percentage}% => ${value}`, () => {
                 expect(tuiPercentageToKeyStepValue(percentage, keySteps)).toBe(value);
             });
-        }
+        });
     });
 
     describe(`tuiKeyStepValueToPercentage`, () => {
-        for (const {value, percentage} of testContexts) {
+        testContexts.forEach(({value, percentage}) => {
             it(`${value} => ${percentage}%`, () => {
                 expect(tuiKeyStepValueToPercentage(value, keySteps)).toBe(percentage);
             });
-        }
+        });
     });
 });

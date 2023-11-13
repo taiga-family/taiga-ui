@@ -1,4 +1,3 @@
-/* eslint-disable no-irregular-whitespace */
 import {expect, Locator, test} from '@playwright/test';
 
 import {TuiDocumentationPagePO, tuiGoto, TuiInputDateRangePO} from '../../../utils';
@@ -20,7 +19,7 @@ test.describe(`InputDateRange`, () => {
     });
 
     test.describe(`API`, () => {
-        for (const size of [`s`, `m`, `l`]) {
+        [`s`, `m`, `l`].forEach(size => {
             test(`correct filler display for size ${size.toUpperCase()}`, async ({
                 page,
             }) => {
@@ -61,7 +60,7 @@ test.describe(`InputDateRange`, () => {
                     `04-calendar-size-${size}-set-to-date.png`,
                 );
             });
-        }
+        });
 
         test(`Maximum month less than current month`, async ({page}) => {
             await tuiGoto(page, `components/input-date-range/API?min$=3`);
@@ -114,7 +113,7 @@ test.describe(`InputDateRange`, () => {
                 await inputDateRange.textfield.type(`21052023-22052023`);
 
                 await expect(inputDateRange.textfield).toHaveValue(
-                    `21.05.2023 – 23.05.2023`,
+                    `21.05.2023 – 23.05.2023`,
                 );
             });
 
@@ -124,7 +123,7 @@ test.describe(`InputDateRange`, () => {
                 await inputDateRange.textfield.type(`20052023-29052023`);
 
                 await expect(inputDateRange.textfield).toHaveValue(
-                    `20.05.2023 – 24.05.2023`,
+                    `20.05.2023 – 24.05.2023`,
                 );
             });
         });

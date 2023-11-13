@@ -30,7 +30,6 @@ export function tuiCreateNumberMask({
     ngDevMode && tuiAssert.assert(Number.isInteger(integerLimit));
     ngDevMode && tuiAssert.assert(integerLimit >= 0);
 
-    // eslint-disable-next-line max-statements
     return (rawValue, {previousConformedValue}) => {
         if (previousConformedValue && requireDecimal) {
             const conformedWithoutSeparator = rawValue.split(thousandSymbol).join(``);

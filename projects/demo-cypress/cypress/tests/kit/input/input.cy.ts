@@ -121,7 +121,7 @@ describe(`Input`, () => {
     });
 
     describe(`check tuiTextfieldCleaner`, () => {
-        for (const size of [`s`, `m`, `l`]) {
+        [`s`, `m`, `l`].forEach(size => {
             it(`size=${size}`, () => {
                 cy.tuiVisit(
                     `components/input/API?tuiTextfieldIcon=tuiIconCalendarLarge&tuiTextfieldCleaner=true&tuiTextfieldSize=${size}`,
@@ -131,6 +131,6 @@ describe(`Input`, () => {
                     `input-tuiTextfieldIcon-tuiTextfieldCleaner-tuiTextfieldSize-${size}`,
                 );
             });
-        }
+        });
     });
 });

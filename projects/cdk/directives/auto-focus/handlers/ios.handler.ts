@@ -157,12 +157,10 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
      * so that when focusing the dialogs don't shake
      */
     private patchCssStyles(): void {
-        const doc = this.win.document;
-
-        for (const element of [doc.documentElement, doc.body]) {
+        [this.win.document.documentElement, this.win.document.body].forEach(element => {
             element.style.setProperty(`overflow`, `auto`);
             element.style.setProperty(`height`, `100%`);
-        }
+        });
     }
 
     /**

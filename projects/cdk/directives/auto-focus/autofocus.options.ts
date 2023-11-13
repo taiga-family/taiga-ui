@@ -15,7 +15,6 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneo
 import {Observable} from 'rxjs';
 
 import {TuiDefaultAutofocusHandler} from './handlers/default.handler';
-// eslint-disable-next-line import/no-cycle
 import {TuiIosAutofocusHandler} from './handlers/ios.handler';
 
 export interface TuiAutofocusHandler {

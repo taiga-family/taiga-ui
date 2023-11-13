@@ -4,7 +4,7 @@ describe(`InputDate`, () => {
     });
 
     describe(`Examples`, () => {
-        for (const size of [`s`, `m`, `l`]) {
+        [`s`, `m`, `l`].forEach(size => {
             it(`correct filler display for size ${size.toUpperCase()}`, () => {
                 cy.tuiVisit(`components/input-date`);
 
@@ -20,7 +20,7 @@ describe(`InputDate`, () => {
                 getInputBy(size).type(`06.1994`);
                 matchImageSnapshot(`examples-input-date-size-${size}-set-full`);
             });
-        }
+        });
 
         function getInputBy(size: string): Cypress.Chainable<JQuery> {
             return cy
@@ -33,7 +33,7 @@ describe(`InputDate`, () => {
     });
 
     describe(`API`, () => {
-        for (const size of [`s`, `m`, `l`]) {
+        [`s`, `m`, `l`].forEach(size => {
             it(`correct filler display for size ${size.toUpperCase()}`, () => {
                 cy.tuiVisit(
                     `components/input-date/API?tuiMode=null&tuiTextfieldSize=${size}`,
@@ -48,7 +48,7 @@ describe(`InputDate`, () => {
                 getInput().type(`06.1994`, {force: true});
                 matchImageSnapshot(`api-input-date-size-${size}-set-full`);
             });
-        }
+        });
 
         it(`Maximum month less than current month`, () => {
             cy.tuiVisit(`components/input-date/API?tuiMode=null&max$=1`);

@@ -76,10 +76,9 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
          * (for example, inside {@link https://github.com/angular/angular/blob/main/packages/forms/src/directives/ng_control_status.ts#L99 NgControlStatus}).
          * Microtask keeps it in the same frame but allows change detection to run.
          */
-        // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        Promise.resolve().then(() => {
-            if (tuiIsPresent(this.option.value) && this.host.checkOption) {
-                this.host.checkOption(this.option.value);
+        void Promise.resolve().then(() => {
+            if (tuiIsPresent(this.option.value)) {
+                this.host.checkOption?.(this.option.value);
             }
         });
     }

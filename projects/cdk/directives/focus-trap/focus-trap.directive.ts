@@ -34,10 +34,7 @@ export class TuiFocusTrapDirective implements OnDestroy {
          * but it might cause ExpressionChanged error due to potential HostBinding.
          * Microtask keeps it in the same frame but allows change detection to run
          */
-        // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        Promise.resolve().then(() => {
-            this.el.nativeElement.focus();
-        });
+        void Promise.resolve().then(() => this.el.nativeElement.focus());
     }
 
     @HostListener('blur')

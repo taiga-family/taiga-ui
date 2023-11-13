@@ -33,10 +33,10 @@ export function migrateInputSlider(
         prefix: `[replaceMinMaxLabels]`,
     });
 
-    for (const templateResource of templateResources) {
+    templateResources.forEach(templateResource => {
         !options[`skip-logs`] && progressLog(templateResource.componentPath);
         replaceMinMaxLabels(templateResource, fileSystem, COMPONENTS_WITH_MIN_MAX_LABELS);
-    }
+    });
 
     /**
      * We should update virtual file tree
@@ -51,10 +51,10 @@ export function migrateInputSlider(
         prefix: `[addMinMaxLabelMethod]`,
     });
 
-    for (const componentPath of Array.from(COMPONENTS_WITH_MIN_MAX_LABELS)) {
+    Array.from(COMPONENTS_WITH_MIN_MAX_LABELS).forEach(componentPath => {
         !options[`skip-logs`] && progressLog(componentPath);
         addMinMaxLabelMethod(componentPath);
-    }
+    });
 }
 
 const MIN_MAX_LABELS_MIGRATION_METHOD_NAME = `tuiMigrationMinMaxLabel`;
