@@ -87,6 +87,21 @@
     &:last-child {
         margin-bottom: -0.75rem;
     }
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--tui-base-03);
+        opacity: 0;
+    }
+
+    :host._stuck &:after {
+        opacity: 1;
+    }
 }
 
 .t-close {
