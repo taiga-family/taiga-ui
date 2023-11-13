@@ -227,7 +227,7 @@
             "executor": "@angular-builders/custom-webpack:server",
             "options": {
                 "customWebpackConfig": {
-                    "path": "projects/demo/webpack.config.ts"
+                    "path": "projects/demo/webpack.server.config.ts"
                 },
                 "outputPath": "dist/demo/server",
                 "main": "projects/demo/server.ts",
@@ -250,11 +250,19 @@
             "options": {
                 "browserTarget": "demo:build:production",
                 "serverTarget": "demo:server:production",
+                "guessRoutes": false,
                 "routes": ["/"]
             },
             "configurations": {
                 "production": {}
-            }
+            },
+            "dependsOn": [
+                {
+                    "target": "i18n",
+                    "params": "ignore"
+                }
+            ],
+            "defaultConfiguration": "production"
         },
         "test": {
             "executor": "@nx/jest:jest",

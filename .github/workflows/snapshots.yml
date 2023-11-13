@@ -34,7 +34,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.39.1
         id: nodejs-workspace
 
-      - run: npx nx build demo --configuration production
+      - run: npx nx prerender demo
       - run: tree ${{ env.DIST }} -P '*.html'
       - name: Publish snapshots
         uses: s0/git-publish-subdir-action@v2.6.0

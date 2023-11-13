@@ -1,10 +1,14 @@
 import {GLOBAL_DEFS_FOR_TERSER_WITH_AOT} from '@angular/compiler-cli';
 import {tuiIsObject} from '@taiga-ui/cdk';
 import TerserPlugin from 'terser-webpack-plugin';
-import {Configuration} from 'webpack';
+import {Configuration, RuleSetRule} from 'webpack';
 import {merge} from 'webpack-merge';
 
-const CI_MODE = process.env[`TUI_CI`] === `true`;
+interface Options {
+    server: boolean;
+}
+
+type WebpackConf = (ngConfigs: Configuration) => Configuration;
 
 /**
  * We can't just import TS-file to get its content
@@ -51,70 +55,79 @@ const fallbackCreateHash = crypto.createHash;
 crypto.createHash = (algorithm: string) =>
     fallbackCreateHash(algorithm === `md4` ? `sha256` : algorithm);
 
-const TERSER_PLUGIN = new TerserPlugin({
-    parallel: true,
-    extractComments: false,
-    terserOptions: {
-        ecma: 2015,
-        mangle: true,
-        module: true,
-        sourceMap: false,
-        compress: {
-            passes: 3,
-            keep_fnames: false,
-            keep_classnames: false,
-            pure_funcs: [`forwardRef`],
-            global_defs: GLOBAL_DEFS_FOR_TERSER_WITH_AOT,
-        },
-        format: {
-            comments: false,
-        },
-    },
-});
-
-const config: Configuration = {
-    resolve: {
-        fallback: {
-            punycode: false,
-        },
-    },
-    module: {
-        /**
-         * With Webpack 5, the raw-loader is no longer needed.
-         * Asset modules provide a built-in way to provide raw-loader functionality without additional dependencies.
-         * @see https://webpack.js.org/guides/asset-modules/
-         */
-        rules: [
-            {
-                test: /\.(ts|html|css|less|md|svg)$/i,
-                resourceQuery: RAW_TS_QUERY,
-                type: `asset/source`,
+export function makeWebpackConfig({server}: Options): WebpackConf {
+    const terserPlugin = new TerserPlugin({
+        parallel: true,
+        extractComments: false,
+        terserOptions: {
+            ecma: 2015,
+            mangle: true,
+            module: true,
+            sourceMap: false,
+            compress: {
+                passes: 3,
+                keep_fnames: false,
+                keep_classnames: false,
+                pure_funcs: [`forwardRef`],
+                global_defs: GLOBAL_DEFS_FOR_TERSER_WITH_AOT,
             },
-        ],
-    },
-    ...(CI_MODE
-        ? {
-              mode: `production`,
-              plugins: [TERSER_PLUGIN],
-              optimization: {minimize: true, minimizer: [TERSER_PLUGIN]},
-          }
-        : {}),
-};
+            format: {
+                comments: false,
+            },
+        },
+    });
 
-// noinspection JSUnusedGlobalSymbols
-export default (ngConfigs: Configuration): Configuration => {
-    const ngRules = [...(ngConfigs.module?.rules || [])].map(rule => {
-        if (
+    return (ngConfigs: Configuration): Configuration => {
+        const ngRules = [...(ngConfigs.module?.rules || [])].map(rule =>
             tuiIsObject(rule) &&
             DO_NOT_MUTATE_RAW_FILE_CONTENTS.some(
                 pattern => rule.test instanceof RegExp && rule.test?.test(pattern),
             )
-        ) {
-            return {...rule, resourceQuery: {not: [RAW_TS_QUERY]}};
-        }
+                ? {
+                      ...(rule as unknown as RuleSetRule),
+                      resourceQuery: {not: [RAW_TS_QUERY]},
+                  }
+                : rule,
+        );
 
-        return rule;
-    });
+        return merge(
+            {
+                ...ngConfigs,
+                module: {
+                    ...ngConfigs.module,
+                    rules: ngRules,
+                },
+            },
+            {
+                resolve: {
+                    fallback: {
+                        punycode: false,
+                    },
+                },
+                module: {
+                    /**
+                     * With Webpack 5, the raw-loader is no longer needed.
+                     * Asset modules provide a built-in way to provide raw-loader functionality without additional dependencies.
+                     * @see https://webpack.js.org/guides/asset-modules/
+                     */
+                    rules: [
+                        {
+                            test: /\.(ts|html|css|less|md|svg)$/i,
+                            resourceQuery: RAW_TS_QUERY,
+                            type: `asset/source`,
+                        },
+                    ],
+                },
+                ...(process.env[`TUI_CI`] === `true` && !server
+                    ? {
+                          mode: `production`,
+                          plugins: [terserPlugin],
+                          optimization: {minimize: true, minimizer: [terserPlugin]},
+                      }
+                    : {}),
+            },
+        );
+    };
+}
 
-    return merge({...ngConfigs, module: {...ngConfigs.module, rules: ngRules}}, config);
-};
+export default makeWebpackConfig({server: false});
