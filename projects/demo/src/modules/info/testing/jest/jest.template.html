@@ -6,13 +6,13 @@
 
     <p>
         Taiga UI uses
-        <code>@ng-web-apis/common</code>
+        <code>&#64;ng-web-apis/common</code>
         to avoid accessing global variables like
         <code>window</code>
         or
         <code>navigator</code>
         directly. Which requires Server Side Rendering (SSR) with the help of its sister library
-        <code>@ng-web-apis/universal</code>
+        <code>&#64;ng-web-apis/universal</code>
         for Jest to run properly.
     </p>
 
@@ -23,7 +23,7 @@
 
     <h2>
         Using
-        <code>@angular-builders/jest</code>
+        <code>&#64;angular-builders/jest</code>
         or
         <code>jest-preset-angular</code>
     </h2>
@@ -33,7 +33,7 @@
     <ol class="tui-list">
         <li class="tui-list__item">
             Install
-            <code>npm i @ng-web-apis/universal --save-dev</code>
+            <code>npm i &#64;ng-web-apis/universal --save-dev</code>
             (install it as a devDependency only if you will use it for Jest, otherwise install it as a regular
             dependency). Install 2.0 and above for Taiga UI 3.0 and above, otherwise install 1.x.x.
         </li>
@@ -68,7 +68,7 @@
             Add the following line to the
             <code>setup-jest.js</code>
             :
-            <code>import '@ng-web-apis/universal/mocks';</code>
+            <code>import '&#64;ng-web-apis/universal/mocks';</code>
             .
 
             <tui-doc-code
