@@ -125,7 +125,7 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_DOC_PAGES,
-        useValue: tuiSortPages(pages, new Set([`Documentation`, `Foundations`])),
+        useValue: tuiSortPages(pages, new Set([`Documentation`, `Foundations`, `Icons`])),
     },
     {
         provide: TUI_DOC_SEE_ALSO,

@@ -27,7 +27,12 @@
                 [value]="filtered.length.toString()"
             ></tui-badge>
         </div>
-        <p *ngIf="!filtered.length">Nothing found</p>
+        <p
+            *ngIf="!filtered.length"
+            class="nothing"
+        >
+            Nothing found
+        </p>
 
         <div
             class="icons"
