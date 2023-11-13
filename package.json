@@ -157,7 +157,7 @@
         "nx": "17.1.1",
         "nx-cloud": "16.5.2",
         "prettier": "3.0.3",
-        "rollup": "4.3.0",
+        "rollup": "4.4.0",
         "standard-version": "9.5.0",
         "stylelint": "15.11.0",
         "ts-loader": "9.5.0",
