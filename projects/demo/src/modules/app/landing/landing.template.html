@@ -19,12 +19,13 @@
     </div>
     <div class="container">
         <iframe
-            *ngIf="current === 1"
+            *ngIf="intersected || current === 1"
             height="100%"
             src="https://taiga-family.github.io/preview-landing-components/"
             title="Preview of components"
             width="100%"
             @tuiFadeIn
+            (load)="intersected = true"
         ></iframe>
     </div>
     <div class="make">
