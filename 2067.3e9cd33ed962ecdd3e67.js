@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[2067],{2067:n=>{n.exports="@import 'taiga-ui-local';\n\n.item {\n    display: inline;\n}\n"}}]);

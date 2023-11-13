@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[43634],{43634:n=>{n.exports="<tui-icon\n    [icon]=\"'tuiIconHeartLarge' | tuiIcon\"\n    [style.color]=\"'var(--tui-primary)'\"\n></tui-icon>\n"}}]);
