@@ -21,7 +21,7 @@ export function tuiToFlatMapPages(pages: TuiDocPages): Map<string, TuiDocPage> {
 
 function assertTitle(page: TuiDocPage, map: Map<string, TuiDocPage>): void {
     if (map.has(page.title) && map.get(page.title)?.route !== page.route) {
-        console.warn(
+        console.error(
             `Title for page should be unique for prevent inconsistent page names`,
             page,
             `<== Collisions between ==>`,

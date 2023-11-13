@@ -1,4 +1,6 @@
 import {expect, Locator, test} from '@playwright/test';
+// eslint-disable-next-line @taiga-ui/experience/no-deep-imports
+import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 
 import {TuiDocumentationPagePO, tuiGoto, TuiInputDateRangePO} from '../../../utils';
 
@@ -113,7 +115,7 @@ test.describe(`InputDateRange`, () => {
                 await inputDateRange.textfield.type(`21052023-22052023`);
 
                 await expect(inputDateRange.textfield).toHaveValue(
-                    `21.05.2023 – 23.05.2023`,
+                    `21.05.2023${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}23.05.2023`,
                 );
             });
 
@@ -123,7 +125,7 @@ test.describe(`InputDateRange`, () => {
                 await inputDateRange.textfield.type(`20052023-29052023`);
 
                 await expect(inputDateRange.textfield).toHaveValue(
-                    `20.05.2023 – 24.05.2023`,
+                    `20.05.2023${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}24.05.2023`,
                 );
             });
         });

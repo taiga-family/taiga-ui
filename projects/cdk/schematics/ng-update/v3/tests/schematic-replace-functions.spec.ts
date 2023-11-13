@@ -10,6 +10,7 @@ import {
 } from 'ng-morph';
 import {join} from 'path';
 
+import {CHAR_NO_BREAK_SPACE} from '../../../../constants';
 import {createAngularJson} from '../../../utils/create-angular-json';
 
 const collectionPath = join(__dirname, `../../../migration.json`);
@@ -29,8 +30,8 @@ element.blur();
 element.focus({preventScroll: true});
 
 tuiFormatNumber(1000);
-tuiFormatNumber(1.234, {decimalLimit: 2, decimalSeparator: ',', thousandSeparator: ' ', zeroPadding: true});
-tuiFormatNumber(123.45, {decimalLimit: 3, decimalSeparator: '.', thousandSeparator: ' ', zeroPadding: true});
+tuiFormatNumber(1.234, {decimalLimit: 2, decimalSeparator: ',', thousandSeparator: '${CHAR_NO_BREAK_SPACE}', zeroPadding: true});
+tuiFormatNumber(123.45, {decimalLimit: 3, decimalSeparator: '.', thousandSeparator: '${CHAR_NO_BREAK_SPACE}', zeroPadding: true});
 tuiFormatNumber(12345.67, {decimalLimit: 4, decimalSeparator: ',', thousandSeparator: '.', zeroPadding: true});
 tuiFormatNumber(27, {decimalLimit: 5, decimalSeparator: ',', thousandSeparator: '.', zeroPadding: false});
 

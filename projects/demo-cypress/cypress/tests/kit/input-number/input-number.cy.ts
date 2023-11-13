@@ -1,4 +1,10 @@
-import {CHAR_EM_DASH, CHAR_EN_DASH, CHAR_HYPHEN, CHAR_MINUS} from '@taiga-ui/cdk';
+/* eslint-disable @taiga-ui/experience/no-deep-imports */
+import {
+    CHAR_EM_DASH,
+    CHAR_EN_DASH,
+    CHAR_HYPHEN,
+    CHAR_MINUS,
+} from '@taiga-ui/cdk/constants';
 
 describe(`InputNumber`, () => {
     beforeEach(() => {
