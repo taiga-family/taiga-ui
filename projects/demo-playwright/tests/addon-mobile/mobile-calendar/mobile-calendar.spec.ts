@@ -12,32 +12,22 @@ test.describe(`MobileCalendar`, () => {
             .first();
 
         await chooseDateButton.click();
-        await page.waitForTimeout(2000);
+        await page.waitForTimeout(100);
 
-        await expect(example).toHaveScreenshot(`01-mobile-calendar.png`);
+        await expect(page).toHaveScreenshot(`01-mobile-calendar.png`);
     });
 
     test(`check disabled state`, async ({page}) => {
-        await tuiGoto(page, `components/mobile-calendar/API?tuiMode=null&max$=1`);
+        await tuiGoto(page, `components/mobile-calendar/API?max$=1`);
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-        await apiPageExample.scrollIntoViewIfNeeded();
-        await page.waitForTimeout(2000);
-
-        await expect(page).toHaveScreenshot(`01-mobile-calendar-disabled.png`, {
-            mask: [page.locator(`tui-mobile-calendar`)],
-        });
+        await expect(apiPageExample).toHaveScreenshot(`02-mobile-calendar-disabled.png`);
     });
 
     test(`check enabled state`, async ({page}) => {
-        await tuiGoto(page, `components/mobile-calendar/API?tuiMode=null&max$=0`);
+        await tuiGoto(page, `components/mobile-calendar/API?max$=0`);
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-        await apiPageExample.scrollIntoViewIfNeeded();
-        await page.waitForTimeout(2000);
-
-        await expect(page).toHaveScreenshot(`01-mobile-calendar-enabled.png`, {
-            mask: [page.locator(`tui-mobile-calendar`)],
-        });
+        await expect(apiPageExample).toHaveScreenshot(`03-mobile-calendar-enabled.png`);
     });
 });

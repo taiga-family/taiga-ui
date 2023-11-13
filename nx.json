@@ -36,7 +36,7 @@
         "default": {
             "runner": "nx-cloud",
             "options": {
-                "cacheableOperations": ["test", "build"],
+                "cacheableOperations": ["test", "build", "prerender"],
                 "parallel": 1
             }
         }
