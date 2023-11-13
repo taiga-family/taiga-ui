@@ -69,10 +69,6 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
         return this.host.identityMatcher || TUI_DEFAULT_IDENTITY_MATCHER;
     }
 
-    ngDoCheck(): void {
-        this.changeDetection$.next();
-    }
-
     ngOnInit(): void {
         /**
          * This would cause changes inside already checked parent component (during the same change detection cycle),
@@ -86,6 +82,10 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
                 this.host.checkOption(this.option.value);
             }
         });
+    }
+
+    ngDoCheck(): void {
+        this.changeDetection$.next();
     }
 
     protected get value(): T | null {
