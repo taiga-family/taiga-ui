@@ -257,6 +257,14 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/card`,
+        loadChildren: async () =>
+            (await import(`../experimental/card/card.module`)).ExampleTuiCardModule,
+        data: {
+            title: `Card`,
+        },
+    },
+    {
         path: `experimental/badge`,
         loadChildren: async () =>
             (await import(`../experimental/badge/badge.module`)).ExampleTuiBadgeModule,
