@@ -368,6 +368,14 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/ripple`,
+        loadChildren: async () =>
+            (await import(`../experimental/ripple/ripple.module`)).ExampleTuiRippleModule,
+        data: {
+            title: `ThumbnailCard `,
+        },
+    },
+    {
         path: `navigation/breadcrumbs`,
         loadChildren: async () =>
             (await import(`../components/breadcrumbs/breadcrumbs.module`))

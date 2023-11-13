@@ -951,6 +951,12 @@ export const pages: TuiDocPages = [
         keywords: `amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро`,
         route: `/experimental/amount`,
     },
+    {
+        section: `Experimental`,
+        title: `Ripple`,
+        keywords: `ripple`,
+        route: `/experimental/ripple`,
+    },
     // Charts
     {
         section: `Charts`,
