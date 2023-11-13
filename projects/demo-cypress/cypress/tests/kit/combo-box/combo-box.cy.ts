@@ -1,6 +1,6 @@
 describe(`ComboBox`, () => {
     describe(`API`, () => {
-        for (const strict of [true, false]) {
+        [true, false].forEach(strict => {
             it(`search shouldn't be reset if an exact match is entered when strict is ${strict}`, () => {
                 visitBy(strict);
                 openFormValue();
@@ -93,7 +93,7 @@ describe(`ComboBox`, () => {
                     },
                 );
             });
-        }
+        });
 
         function visitBy(strict: boolean): void {
             cy.tuiVisit(`components/combo-box/API?tuiMode=null&strict=${strict}`);

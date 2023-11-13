@@ -139,7 +139,7 @@ describe(`InputRange`, () => {
             {typedValue: `0.1`, expectedRoundedValue: `0`},
         ] as const;
 
-        for (const {typedValue, expectedRoundedValue} of testsConditions) {
+        testsConditions.forEach(({typedValue, expectedRoundedValue}) => {
             it(`${typedValue} => ${expectedRoundedValue}`, () => {
                 cy.get(`@rightTextInput`)
                     .focus()
@@ -148,7 +148,7 @@ describe(`InputRange`, () => {
                     .blur()
                     .should(`have.value`, expectedRoundedValue);
             });
-        }
+        });
     });
 
     describe(`Range interactions`, () => {

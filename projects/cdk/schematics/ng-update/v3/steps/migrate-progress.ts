@@ -35,11 +35,9 @@ export function migrateProgress(fileSystem: DevkitFileSystem, options: TuiSchema
     !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating progress bars...`);
 
-    const templateResources = getComponentTemplates(ALL_TS_FILES);
-
-    for (const templateResource of templateResources) {
-        replaceProgressColorSegmentsPipe(templateResource, fileSystem);
-    }
+    getComponentTemplates(ALL_TS_FILES).forEach(templateResource =>
+        replaceProgressColorSegmentsPipe(templateResource, fileSystem),
+    );
 
     fileSystem.commitEdits();
     saveActiveProject();
@@ -58,29 +56,27 @@ function replaceProgressColorSegmentsPipe(
     const path = fileSystem.resolve(getPathFromTemplateResource(templateResource));
     const recorder = fileSystem.edit(path);
 
-    const progressElements = findElementsWithAttribute(
-        template,
-        PROPERTY_FOR_DEPRECATED_PIPES,
-    ).filter(isProgressWithDeprecatedPipe);
+    findElementsWithAttribute(template, PROPERTY_FOR_DEPRECATED_PIPES)
+        .filter(isProgressWithDeprecatedPipe)
+        .forEach(progressEl => {
+            const oldValue =
+                progressEl.attrs.find(attr => attr.name === PROPERTY_FOR_DEPRECATED_PIPES)
+                    ?.value || ``;
+            const newValue = oldValue.replace(DEPRECATED_PROGRESS_PIPES_REG, ``);
 
-    for (const progressEl of progressElements) {
-        const oldValue =
-            progressEl.attrs.find(attr => attr.name === PROPERTY_FOR_DEPRECATED_PIPES)
-                ?.value || ``;
-        const newValue = oldValue.replace(DEPRECATED_PROGRESS_PIPES_REG, ``);
+            const attrLocations = progressEl.sourceCodeLocation?.attrs;
 
-        const attrLocations = progressEl.sourceCodeLocation?.attrs;
+            if (attrLocations) {
+                const {startOffset, endOffset} =
+                    attrLocations[PROPERTY_FOR_DEPRECATED_PIPES];
 
-        if (attrLocations) {
-            const {startOffset, endOffset} = attrLocations[PROPERTY_FOR_DEPRECATED_PIPES];
-
-            recorder.remove(templateOffset + startOffset, endOffset - startOffset);
-            recorder.insertRight(
-                templateOffset + startOffset,
-                `[tuiProgressColorSegments]="${newValue}"`,
-            );
-        }
-    }
+                recorder.remove(templateOffset + startOffset, endOffset - startOffset);
+                recorder.insertRight(
+                    templateOffset + startOffset,
+                    `[tuiProgressColorSegments]="${newValue}"`,
+                );
+            }
+        });
 }
 
 function isProgressWithDeprecatedPipe(element: Element): boolean {

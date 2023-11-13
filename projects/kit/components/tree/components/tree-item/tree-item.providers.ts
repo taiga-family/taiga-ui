@@ -1,7 +1,6 @@
 import {forwardRef, Provider, SkipSelf} from '@angular/core';
 
 import {TUI_TREE_LEVEL, TUI_TREE_NODE} from '../../misc/tree.tokens';
-// eslint-disable-next-line import/no-cycle
 import {TuiTreeItemComponent} from './tree-item.component';
 
 export const TUI_TREE_ITEM_PROVIDERS: Provider[] = [

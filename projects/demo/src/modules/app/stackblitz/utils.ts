@@ -33,13 +33,13 @@ export const prepareSupportFiles = (
 ): Project['files'] => {
     const processedContent: Project['files'] = {};
 
-    for (const [fileName, fileContent] of files) {
+    files.forEach(([fileName, fileContent]) => {
         const prefixedFileName = appPrefix`${fileName}`;
 
         processedContent[prefixedFileName] = isLess(fileName)
             ? prepareLess(fileContent)
             : fileContent;
-    }
+    });
 
     return processedContent;
 };

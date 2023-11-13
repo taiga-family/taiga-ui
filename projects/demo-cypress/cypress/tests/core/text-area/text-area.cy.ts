@@ -1,12 +1,12 @@
 describe(`Textarea`, () => {
-    for (const size of [`m`, `l`]) {
+    [`m`, `l`].forEach(size => {
         it(`size of ${size}`, () => {
             cy.tuiVisit(`components/textarea/API?tuiMode=null&tuiTextfieldSize=${size}`);
             cy.get(`#demo-content`)
                 .should(`be.visible`)
                 .matchImageSnapshot(`textarea-tuiTextfieldSize-${size}`);
         });
-    }
+    });
 
     it(`line break text`, () => {
         cy.tuiVisit(`components/textarea/API`);

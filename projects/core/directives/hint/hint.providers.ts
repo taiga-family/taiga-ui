@@ -1,7 +1,6 @@
 import {Type} from '@angular/core';
 import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
 
-// eslint-disable-next-line import/no-cycle
 import {TuiHintComponent} from './hint.component';
 
 /**

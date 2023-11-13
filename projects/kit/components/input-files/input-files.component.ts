@@ -36,7 +36,6 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-// eslint-disable-next-line import/no-cycle
 import {TuiInputFilesDirective} from './input-files.directive';
 import {TUI_INPUT_FILES_OPTIONS, TuiInputFilesOptions} from './input-files.options';
 

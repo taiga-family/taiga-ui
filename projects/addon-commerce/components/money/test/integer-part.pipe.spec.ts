@@ -1,7 +1,7 @@
 import {TuiIntegerPartPipe} from '@taiga-ui/addon-commerce';
+import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_NUMBER_FORMAT} from '@taiga-ui/core';
 
-/* eslint-disable no-irregular-whitespace */
 describe(`TuiIntegerPart`, () => {
     it(`Config with decimal limit`, () => {
         const pipe = new TuiIntegerPartPipe({
@@ -9,8 +9,8 @@ describe(`TuiIntegerPart`, () => {
             decimalLimit: 2,
         });
 
-        expect(pipe.transform(10123.123)).toBe(`10 123`);
-        expect(pipe.transform(10123)).toBe(`10 123`);
+        expect(pipe.transform(10123.123)).toBe(`10${CHAR_NO_BREAK_SPACE}123`);
+        expect(pipe.transform(10123)).toBe(`10${CHAR_NO_BREAK_SPACE}123`);
         expect(pipe.transform(null as unknown as number)).toBe(`0`);
         expect(pipe.transform(undefined as unknown as number)).toBe(`NaN`);
         expect(pipe.transform(`` as unknown as number)).toBe(`0`);
@@ -25,8 +25,8 @@ describe(`TuiIntegerPart`, () => {
                 rounding: `round`,
             });
 
-            expect(pipe.transform(2004.87)).toBe(`2 004`);
-            expect(pipe.transform(1000.87)).toBe(`1 000`);
+            expect(pipe.transform(2004.87)).toBe(`2${CHAR_NO_BREAK_SPACE}004`);
+            expect(pipe.transform(1000.87)).toBe(`1${CHAR_NO_BREAK_SPACE}000`);
             expect(pipe.transform(100.99, 1)).toBe(`101`);
         });
 
@@ -36,8 +36,8 @@ describe(`TuiIntegerPart`, () => {
                 rounding: `ceil`,
             });
 
-            expect(pipe.transform(2004.87)).toBe(`2 004`);
-            expect(pipe.transform(1000.87)).toBe(`1 000`);
+            expect(pipe.transform(2004.87)).toBe(`2${CHAR_NO_BREAK_SPACE}004`);
+            expect(pipe.transform(1000.87)).toBe(`1${CHAR_NO_BREAK_SPACE}000`);
             expect(pipe.transform(100.99, 1)).toBe(`101`);
         });
 
@@ -47,8 +47,8 @@ describe(`TuiIntegerPart`, () => {
                 rounding: `floor`,
             });
 
-            expect(pipe.transform(2004.87)).toBe(`2 004`);
-            expect(pipe.transform(1000.87)).toBe(`1 000`);
+            expect(pipe.transform(2004.87)).toBe(`2${CHAR_NO_BREAK_SPACE}004`);
+            expect(pipe.transform(1000.87)).toBe(`1${CHAR_NO_BREAK_SPACE}000`);
             expect(pipe.transform(100.99, 1)).toBe(`100`);
         });
     });

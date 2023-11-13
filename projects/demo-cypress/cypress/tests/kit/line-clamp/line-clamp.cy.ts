@@ -48,10 +48,10 @@ describe(`LineClamp`, () => {
     });
 
     describe(`Single line (break-all) and multiple line (break-words)`, () => {
-        for (const {width, linesLimit} of [
+        [
             {width: 60, linesLimit: 1},
             {width: 60, linesLimit: 3},
-        ]) {
+        ].forEach(({width, linesLimit}) => {
             it(`linesLimit=${linesLimit}`, () => {
                 cy.tuiVisit(
                     `components/line-clamp/API?tuiMode=null&style.maxWidth.px=${width}&linesLimit=${linesLimit}`,
@@ -62,7 +62,7 @@ describe(`LineClamp`, () => {
                     .tuiWaitBeforeScreenshot()
                     .matchImageSnapshot(`05-[linesLimit=${linesLimit}]-[width=${width}]`);
             });
-        }
+        });
     });
 
     describe(`Hovered`, () => {

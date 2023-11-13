@@ -38,7 +38,7 @@ describe(`Tabs`, () => {
     });
 
     describe(`API`, () => {
-        for (const index of [-2, -1, 0, 1, 2, 3, 4, 5, 100, 1000]) {
+        [-2, -1, 0, 1, 2, 3, 4, 5, 100, 1000].forEach(index => {
             it(`clamp active activeItemIndex=${index}`, () => {
                 cy.tuiVisit(`/navigation/tabs/API?tuiMode=null&activeItemIndex=${index}`);
 
@@ -47,6 +47,6 @@ describe(`Tabs`, () => {
                     .tuiWaitBeforeAction()
                     .matchImageSnapshot(`03-activeItemIndex-${index}`);
             });
-        }
+        });
     });
 });

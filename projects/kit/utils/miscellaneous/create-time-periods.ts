@@ -8,11 +8,11 @@ export function tuiCreateTimePeriods(
     const timeArray: TuiTime[] = [];
 
     for (let i = minHour; i < maxHour; i++) {
-        for (const minute of minutes) {
+        minutes.forEach(minute => {
             const time = new TuiTime(i, minute);
 
             timeArray.push(time);
-        }
+        });
     }
 
     return timeArray;

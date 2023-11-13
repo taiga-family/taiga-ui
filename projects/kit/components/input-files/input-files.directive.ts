@@ -1,7 +1,6 @@
 import {Directive, ElementRef, forwardRef, HostBinding, Inject} from '@angular/core';
 import {TuiIdService} from '@taiga-ui/cdk';
 
-// eslint-disable-next-line import/no-cycle
 import {TuiInputFilesComponent} from './input-files.component';
 import {TUI_INPUT_FILES_OPTIONS, TuiInputFilesOptions} from './input-files.options';
 

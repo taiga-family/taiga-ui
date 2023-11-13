@@ -21,7 +21,6 @@ import {
     TUI_TREE_LEVEL,
     TUI_TREE_NODE,
 } from '../../misc/tree.tokens';
-// eslint-disable-next-line import/no-cycle
 import {TUI_TREE_ITEM_PROVIDERS} from './tree-item.providers';
 
 @Component({

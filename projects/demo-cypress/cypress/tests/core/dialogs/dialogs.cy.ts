@@ -1,8 +1,10 @@
 describe(`Dialogs`, () => {
-    for (const [index, {width, height}] of [
-        {width: 720, height: 900},
-        {width: 1620, height: 900},
-    ].entries()) {
+    Array.from(
+        [
+            {width: 720, height: 900},
+            {width: 1620, height: 900},
+        ].entries(),
+    ).forEach(([index, {width, height}]) => {
         describe(`${width}x${height}`, () => {
             beforeEach(() => {
                 cy.viewport(width, height);
@@ -122,7 +124,7 @@ describe(`Dialogs`, () => {
                 });
             });
         });
-    }
+    });
 
     describe(`dismissible & closeable`, () => {
         it(`dismissible = false, closeable = false`, () => {
