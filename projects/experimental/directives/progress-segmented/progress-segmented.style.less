@@ -2,11 +2,9 @@
 @segment-gap: 0.5rem;
 @mask-color: #999;
 
-/* stylelint-disable meowtec/no-px */
 @jagged-edges-hack:
     @mask-color 0 99%,
     transparent calc(99% + 0.6px) 100%;
-/* stylelint-enable meowtec/no-px */
 
 @left-circle: radial-gradient(circle closest-side at @radius center, @jagged-edges-hack);
 @right-circle: radial-gradient(circle closest-side at calc(100% - @radius - @segment-gap) center, @jagged-edges-hack);
