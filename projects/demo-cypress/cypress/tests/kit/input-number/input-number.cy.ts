@@ -4,6 +4,7 @@ import {
     CHAR_EN_DASH,
     CHAR_HYPHEN,
     CHAR_MINUS,
+    CHAR_NO_BREAK_SPACE,
 } from '@taiga-ui/cdk/constants';
 
 describe(`InputNumber`, () => {
@@ -165,7 +166,7 @@ describe(`InputNumber`, () => {
                     .type(`1000`)
                     .type(`{moveToStart}{rightArrow}`)
                     .type(`{del}`)
-                    .should(`have.value`, `1 000`)
+                    .should(`have.value`, `1${CHAR_NO_BREAK_SPACE}000`)
                     .should(`have.prop`, `selectionStart`, `1 `.length)
                     .should(`have.prop`, `selectionEnd`, `1 `.length);
             });
@@ -177,7 +178,7 @@ describe(`InputNumber`, () => {
                     .should(`have.prop`, `selectionStart`, `1 `.length)
                     .should(`have.prop`, `selectionEnd`, `1 `.length)
                     .type(`{backspace}`)
-                    .should(`have.value`, `1 000`)
+                    .should(`have.value`, `1${CHAR_NO_BREAK_SPACE}000`)
                     .should(`have.prop`, `selectionStart`, `1`.length)
                     .should(`have.prop`, `selectionEnd`, `1`.length);
             });
