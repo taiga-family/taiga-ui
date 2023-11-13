@@ -66,11 +66,9 @@
 
     // TODO: drop new attribute in v4.0 and make all these styles as default ones
     &[new] {
-        /* stylelint-disable meowtec/no-px */
         clip-path: inset(
             0 0.5px round var(--tui-radius-m)
         ); // 0.5px is a hack to prevent jagged edges on low dpi screens
-        /* stylelint-enable meowtec/no-px */
         border-radius: 1rem;
         .progressValue({ border-radius: inherit });
 
