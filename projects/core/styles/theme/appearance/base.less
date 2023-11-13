@@ -1,0 +1,15 @@
+@import '../../taiga-ui-local.less';
+
+[tuiAppearance] {
+    .transition(~'color, background, opacity, box-shadow');
+    outline: -0.125rem solid transparent;
+
+    .appearance-focus({
+        outline-color: var(--tui-focus);
+    });
+
+    .appearance-disabled({
+        pointer-events: none;
+        opacity: var(--tui-disabled-opacity);
+    });
+}

@@ -13,7 +13,6 @@ import {
     TuiSvgModule,
     TuiTextfieldControllerModule,
     TuiTooltipModule,
-    TuiWrapperModule,
 } from '@taiga-ui/core';
 import {
     TuiAvatarModule,
@@ -50,7 +49,6 @@ import {TuiCellExample7} from './examples/7';
     imports: [
         CommonModule,
         FormsModule,
-        TuiWrapperModule,
         TuiAvatarModule,
         TuiAvatarStackModule,
         TuiBadgeModule,
@@ -78,8 +76,8 @@ import {TuiCellExample7} from './examples/7';
         TuiButtonModule,
         TuiHostedDropdownModule,
         TuiGroupModule,
-        tuiGetDocModules(ExampleTuiCellComponent),
         TuiModeModule,
+        tuiGetDocModules(ExampleTuiCellComponent),
     ],
     declarations: [
         ExampleTuiCellComponent,

@@ -10,6 +10,8 @@ import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar.options';
     styleUrls: ['./avatar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        tuiAppearance: '',
+        '[attr.data-appearance]': 'appearance',
         '[attr.data-size]': 'size',
         '[attr.data-platform]': 'platform',
         '[class._round]': 'round',
@@ -25,6 +27,9 @@ export class TuiAvatarComponent {
 
     @Input()
     src: SafeResourceUrl | string | null = null;
+
+    @Input()
+    appearance = '';
 
     constructor(
         @Inject(TUI_AVATAR_OPTIONS) private readonly options: TuiAvatarOptions,

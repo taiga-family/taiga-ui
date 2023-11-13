@@ -1,0 +1,63 @@
+.appearance-interactive(@ruleset) {
+    // TODO switch to :is after Safari 14 and FF 78 support
+    &:-webkit-any(a, button, select, textarea, input) {
+        @ruleset();
+    }
+
+    &:-moz-any(a, button, select, textarea, input) {
+        @ruleset();
+    }
+}
+
+.appearance-hover(@ruleset) {
+    .appearance-interactive({
+        @media (hover: hover) {
+            &:hover:not([data-state]) {
+                @ruleset();
+            }
+        }
+    });
+
+    &[data-state='hover'] {
+        @ruleset();
+    }
+}
+
+.appearance-active(@ruleset) {
+    .appearance-interactive({
+        &:active:not([data-state]) {
+            @ruleset();
+        }
+    });
+
+    &[data-state='active'] {
+        @ruleset();
+    }
+}
+
+.appearance-disabled(@ruleset) {
+    &:disabled:not([data-state]),
+    &[data-state='disabled'] {
+        @ruleset();
+    }
+}
+
+.appearance-focus(@ruleset) {
+    &:focus-visible:not([data-focus='false']),
+    &[data-focus='true'] {
+        @ruleset();
+    }
+}
+
+.appearance-readonly(@ruleset) {
+    &[data-mode='readonly'] {
+        @ruleset();
+    }
+}
+
+.appearance-invalid(@ruleset) {
+    &:invalid,
+    &[data-mode='invalid'] {
+        @ruleset();
+    }
+}

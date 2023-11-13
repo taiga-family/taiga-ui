@@ -1,0 +1,24 @@
+@import '../../taiga-ui-local.less';
+
+[tuiAppearance][data-appearance='secondary'],
+[tuiAppearance][data-appearance='flat'],
+[tuiAppearance][data-appearance='destructive'] {
+    background: var(--tui-secondary);
+    color: var(--tui-link);
+
+    .appearance-hover({
+        background: var(--tui-secondary-hover);
+    });
+
+    .appearance-active({
+        background: var(--tui-secondary-active);
+    });
+}
+
+[tuiAppearance][data-appearance='flat'] {
+    background: transparent;
+}
+
+[tuiAppearance][data-appearance='destructive'] {
+    color: var(--tui-negative);
+}

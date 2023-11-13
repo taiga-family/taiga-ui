@@ -1,0 +1,30 @@
+@import '../../taiga-ui-local.less';
+
+/* stylelint-disable order/order */
+[tuiAppearance][data-appearance='glass'] {
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    backdrop-filter: blur(1rem);
+
+    --tui-focus: rgba(255, 255, 255, 0.64);
+
+    .appearance-hover({
+        background: rgba(0, 0, 0, 0.48);
+    });
+
+    .appearance-active({
+        background: rgba(0, 0, 0, 0.6);
+    });
+
+    [tuiTheme='night'] & {
+        background: rgba(255, 255, 255, 0.3);
+
+        .appearance-hover({
+            background: rgba(255, 255, 255, 0.4);
+        });
+
+        .appearance-active({
+            background: rgba(255, 255, 255, 0.5);
+        });
+    }
+}

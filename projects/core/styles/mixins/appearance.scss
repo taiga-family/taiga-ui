@@ -1,0 +1,49 @@
+@mixin appearance-interactive {
+    a[tuiAppearance],
+    button[tuiAppearance],
+    select[tuiAppearance],
+    textarea[tuiAppearance],
+    input[tuiAppearance] {
+        @content;
+    }
+}
+
+@mixin appearance-hover {
+    @include appearance-interactive {
+        @media (hover: hover) {
+            &:hover:not([data-state]) {
+                @content;
+            }
+        }
+    }
+
+    &[data-state='hover'] {
+        @content;
+    }
+}
+
+@mixin appearance-active {
+    @include appearance-interactive {
+        &:active:not([data-state]) {
+            @content;
+        }
+    }
+
+    &[data-state='active'] {
+        @content;
+    }
+}
+
+@mixin appearance-disabled {
+    &:disabled:not([data-state]),
+    &[data-state='disabled'] {
+        @content;
+    }
+}
+
+@mixin appearance-focus {
+    &:focus-visible:not([data-focus='false']),
+    &[data-focus='true'] {
+        @content;
+    }
+}
