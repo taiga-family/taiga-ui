@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.54.0](https://github.com/taiga-family/taiga-ui/compare/v3.53.0...v3.54.0) (2023-11-13)
+
+### Features
+
+- **cdk:** check document has focus after leave iframe ([#5883](https://github.com/taiga-family/taiga-ui/issues/5883))
+  ([31a9483](https://github.com/taiga-family/taiga-ui/commit/31a948382cbdd5ae2e11f22cd44697c49edb4304))
+- **experimental:** `Icon` add new component ([#5872](https://github.com/taiga-family/taiga-ui/issues/5872))
+  ([6b278eb](https://github.com/taiga-family/taiga-ui/commit/6b278eb64840906d4c1fcc409d3cfaff3541a60c))
+- **experimental:** add `TuiCard` ([#5777](https://github.com/taiga-family/taiga-ui/issues/5777))
+  ([d2c5e86](https://github.com/taiga-family/taiga-ui/commit/d2c5e86ed883b847293b3a961d87c81498aa091d))
+- **experimental:** new version of `ProgressSegmented` ([#5892](https://github.com/taiga-family/taiga-ui/issues/5892))
+  ([a643191](https://github.com/taiga-family/taiga-ui/commit/a6431914e5c662f121bff7f719870a5c17eae24f))
+- **kit:** round corners of progress can be toggled off in new version of `ProgressBar`
+  ([#5912](https://github.com/taiga-family/taiga-ui/issues/5912))
+  ([244f368](https://github.com/taiga-family/taiga-ui/commit/244f3687e1f0b70dd8de077d29a01b8a87449bc8))
+
+### Bug Fixes
+
+- **addon-mobile:** `SheetDialog` add missing label divider
+  ([#5905](https://github.com/taiga-family/taiga-ui/issues/5905))
+  ([5c08ef3](https://github.com/taiga-family/taiga-ui/commit/5c08ef38592a9c87cfa66cbf3d10af109bf34a2c))
+- **addon-table:** `Table` disappearing borders ([#5914](https://github.com/taiga-family/taiga-ui/issues/5914))
+  ([8b16199](https://github.com/taiga-family/taiga-ui/commit/8b16199a407f360447877989264d7cb876de40e5))
+- **cdk:** add Angular 17 support for schematic `ng add taiga-ui`
+  ([#5899](https://github.com/taiga-family/taiga-ui/issues/5899))
+  ([aa776ec](https://github.com/taiga-family/taiga-ui/commit/aa776ec3fc30fbe4990ece121d159012555d1560))
+- **experimental:** `Badge` remove hover state ([#5893](https://github.com/taiga-family/taiga-ui/issues/5893))
+  ([085538c](https://github.com/taiga-family/taiga-ui/commit/085538cf4a656f612a272ef1b1a8dd9f485cd303))
+- **kit:** `tuiProgressColorSegments` should support runtime changes of input property
+  ([#5891](https://github.com/taiga-family/taiga-ui/issues/5891))
+  ([16475cc](https://github.com/taiga-family/taiga-ui/commit/16475ccf7b7bcf59288bae76b63368af565890b8))
+- **kit:** expression has changed in inputTag ([#5867](https://github.com/taiga-family/taiga-ui/issues/5867))
+  ([615e829](https://github.com/taiga-family/taiga-ui/commit/615e82958e13a299f4a225790de95afd38b0a7aa))
+
 ## [3.53.0](https://github.com/taiga-family/taiga-ui/compare/v3.52.0...v3.53.0) (2023-11-07)
 
 ### Features
