@@ -3,7 +3,6 @@ on:
   push:
     branches: [main]
   pull_request:
-    types: [synchronize, opened, reopened]
 
 jobs:
   tracking:
@@ -13,7 +12,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/checkout@v1.39.1
       - uses: taiga-family/ci/actions/setup/variables@v1.39.1
       - uses: taiga-family/ci/actions/setup/node@v1.39.1
-      - run: npx nx build demo
+      - run: npx nx prerender demo
       - run: npx --yes bundlemon --config .github/.bundlemonrc.json
         continue-on-error: true
         env:

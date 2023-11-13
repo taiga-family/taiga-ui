@@ -250,11 +250,19 @@
             "options": {
                 "browserTarget": "demo:build:production",
                 "serverTarget": "demo:server:production",
+                "guessRoutes": false,
                 "routes": ["/"]
             },
             "configurations": {
                 "production": {}
-            }
+            },
+            "dependsOn": [
+                {
+                    "target": "i18n",
+                    "params": "ignore"
+                }
+            ],
+            "defaultConfiguration": "production"
         },
         "test": {
             "executor": "@nx/jest:jest",
