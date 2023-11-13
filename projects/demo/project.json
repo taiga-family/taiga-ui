@@ -7,6 +7,7 @@
     "implicitDependencies": ["!testing"],
     "targets": {
         "i18n": {
+            "outputs": ["{workspaceRoot}/dist/i18n"],
             "executor": "nx:run-commands",
             "options": {
                 "command": "nx build i18n"
@@ -247,11 +248,12 @@
         },
         "prerender": {
             "executor": "@nguniversal/builders:prerender",
+            "outputs": ["{workspaceRoot}/dist/demo"],
             "options": {
                 "browserTarget": "demo:build:production",
                 "serverTarget": "demo:server:production",
-                "guessRoutes": false,
-                "routes": ["/"]
+                "routesFile": "projects/demo/routes.txt",
+                "guessRoutes": false
             },
             "configurations": {
                 "production": {}
