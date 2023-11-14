@@ -49,8 +49,7 @@ export class TuiToggleComponent {
     get icon(): string {
         const {options, resolver, size} = this;
         const icon = tuiIsString(options.icon) ? options.icon : options.icon(size);
-        const mask = icon.includes('/') ? icon : resolver(icon);
 
-        return `url(${mask})`;
+        return `url(${resolver(icon)})`;
     }
 }

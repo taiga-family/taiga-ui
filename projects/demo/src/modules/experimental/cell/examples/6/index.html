@@ -17,8 +17,8 @@
     >
         <button
             appearance="icon"
+            iconLeft="tuiIconMoreHorizontalLarge"
             tuiIconButton
-            [iconLeft]="'tuiIconMoreHorizontalLarge' | tuiIcon"
         >
             Action
         </button>
@@ -48,8 +48,8 @@
         <button
             *ngFor="let item of items"
             appearance="opposite"
+            iconLeft="item.icon"
             tuiIconButton
-            [iconLeft]="item.icon | tuiIcon"
         >
             {{ item }}
         </button>

@@ -68,8 +68,8 @@
             <button
                 tuiButton
                 [appearance]="appearance"
-                [iconLeft]="iconLeft | tuiIcon"
-                [iconRight]="iconRight | tuiIcon"
+                [iconLeft]="iconLeft"
+                [iconRight]="iconRight"
                 [loading]="loading"
                 [size]="size"
             >
@@ -93,9 +93,7 @@
                 [documentationPropertyValues]="icons"
                 [(documentationPropertyValue)]="iconLeft"
             >
-                Icon on the left side (use in conjunction with
-                <code>tuiIcon</code>
-                pipe)
+                Icon on the left side
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"

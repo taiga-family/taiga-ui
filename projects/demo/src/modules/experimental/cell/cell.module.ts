@@ -23,7 +23,6 @@ import {
     TuiCellModule,
     TuiCheckboxModule,
     TuiFadeModule,
-    TuiIconModule,
     TuiSensitiveModule,
     TuiSurfaceModule,
     TuiThumbnailCardModule,
@@ -75,7 +74,6 @@ import {TuiCellExample7} from './examples/7';
         TuiButtonModule,
         TuiHostedDropdownModule,
         TuiGroupModule,
-        TuiIconModule,
         tuiGetDocModules(ExampleTuiCellComponent),
     ],
     declarations: [

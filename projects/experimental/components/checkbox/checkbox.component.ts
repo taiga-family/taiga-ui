@@ -63,9 +63,8 @@ export class TuiCheckboxComponent implements OnInit {
             ? this.options.icons.indeterminate
             : this.options.icons.checked;
         const icon = tuiIsString(option) ? option : option(this.size);
-        const mask = icon.includes('/') ? icon : this.resolver(icon);
 
-        return `url(${mask})`;
+        return `url(${this.resolver(icon)})`;
     }
 
     ngOnInit(): void {

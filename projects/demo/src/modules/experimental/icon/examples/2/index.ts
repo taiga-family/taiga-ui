@@ -9,6 +9,10 @@ import {tuiIconResolverProvider} from '@taiga-ui/experimental';
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    providers: [tuiIconResolverProvider(icon => `/assets/icons/${icon}.svg`)],
+    providers: [
+        tuiIconResolverProvider(icon =>
+            icon.includes('/') ? icon : `/assets/icons/${icon}.svg`,
+        ),
+    ],
 })
 export class TuiIconExample2 {}
