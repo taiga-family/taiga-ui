@@ -1,16 +1,6 @@
-import {Inject, Pipe, PipeTransform, Provider} from '@angular/core';
-import {tuiCreateTokenFromFactory, TuiStringHandler} from '@taiga-ui/cdk';
-
-export const TUI_ICON_RESOLVER = tuiCreateTokenFromFactory<TuiStringHandler<string>>(
-    () => icon => `/assets/taiga-ui/icons/${icon}.svg`,
-);
-
-export function tuiIconResolverProvider(useValue: TuiStringHandler<string>): Provider {
-    return {
-        provide: TUI_ICON_RESOLVER,
-        useValue,
-    };
-}
+import {Inject, Pipe, PipeTransform} from '@angular/core';
+import {TuiStringHandler} from '@taiga-ui/cdk';
+import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
 
 @Pipe({
     name: `tuiIcon`,

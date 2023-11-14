@@ -1,0 +1,20 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+.like {
+    width: var(--tui-height-m);
+    height: var(--tui-height-m);
+    border-radius: 100%;
+    cursor: pointer;
+
+    &:before {
+        .fullsize();
+        content: '';
+        background: currentColor;
+        mask: url(https://taiga-ui.dev/assets/taiga-ui/icons/tuiIconHeartOutline.svg) no-repeat center;
+    }
+
+    &:checked:before {
+        color: var(--tui-negative);
+        mask: url(https://taiga-ui.dev/assets/taiga-ui/icons/tuiIconHeartLarge.svg) no-repeat center;
+    }
+}

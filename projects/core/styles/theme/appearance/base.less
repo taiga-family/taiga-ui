@@ -2,7 +2,10 @@
 
 [tuiAppearance] {
     .transition(~'color, background, opacity, box-shadow');
-    outline: -0.125rem solid transparent;
+    position: relative;
+    appearance: none;
+    outline: 0.125rem solid transparent;
+    outline-offset: -0.125rem;
 
     .appearance-focus({
         outline-color: var(--tui-focus);

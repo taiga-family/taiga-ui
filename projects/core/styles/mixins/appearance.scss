@@ -1,9 +1,10 @@
 @mixin appearance-interactive {
-    a[tuiAppearance],
-    button[tuiAppearance],
-    select[tuiAppearance],
-    textarea[tuiAppearance],
-    input[tuiAppearance] {
+    // TODO switch to :is after Safari 14 and FF 78 support
+    &:-webkit-any(a, button, select, textarea, input) {
+        @content;
+    }
+
+    &:-moz-any(a, button, select, textarea, input) {
         @content;
     }
 }

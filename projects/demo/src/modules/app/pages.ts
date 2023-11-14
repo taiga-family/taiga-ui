@@ -953,6 +953,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Experimental`,
+        title: `Appearance`,
+        keywords: `colors, css, theme, custom, style`,
+        route: `/experimental/appearance`,
+    },
+    {
+        section: `Experimental`,
         title: `Card`,
         keywords: `card, block, карточка, блок`,
         route: `/experimental/card`,

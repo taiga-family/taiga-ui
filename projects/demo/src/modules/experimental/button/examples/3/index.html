@@ -20,9 +20,9 @@
 
 <button
     appearance="outline"
-    iconRight="tuiIconChevronDown"
     size="s"
     tuiButton
+    [iconRight]="'tuiIconChevronDown' | tuiIcon"
 >
     More
 </button>
@@ -31,7 +31,7 @@
     appearance="destructive"
     size="xs"
     tuiIconButton
-    [icon]="'tuiIconHeart' | tuiIcon"
+    [iconLeft]="'tuiIconHeart' | tuiIcon"
     [style.border-radius.%]="100"
 >
     Favorite

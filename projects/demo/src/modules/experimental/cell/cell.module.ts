@@ -8,7 +8,6 @@ import {
     TuiLabelModule,
     TuiLinkModule,
     TuiLoaderModule,
-    TuiModeModule,
     TuiNotificationModule,
     TuiSvgModule,
     TuiTextfieldControllerModule,
