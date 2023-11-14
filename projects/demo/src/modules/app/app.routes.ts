@@ -308,6 +308,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/button-vertical`,
+        loadChildren: async () =>
+            (await import(`../experimental/button-vertical/button-vertical.module`))
+                .ExampleTuiButtonModule,
+        data: {
+            title: `Button vertical`,
+        },
+    },
+    {
         path: `experimental/cell`,
         loadChildren: async () =>
             (await import(`../experimental/cell/cell.module`)).ExampleTuiCellModule,
