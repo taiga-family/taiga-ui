@@ -313,7 +313,7 @@ export const ROUTES: Routes = [
             (await import(`../experimental/button-vertical/button-vertical.module`))
                 .ExampleTuiButtonModule,
         data: {
-            title: `Button vertical`,
+            title: `ButtonVertical`,
         },
     },
     {
