@@ -13,8 +13,8 @@ import {
     MODE_PROVIDER,
     TUI_MODE,
     TuiBrightness,
-    TuiSizeS,
-    TuiSizeXL,
+    TuiSizeXXL,
+    TuiSizeXXS,
 } from '@taiga-ui/core';
 import {Observable, of} from 'rxjs';
 import {delay} from 'rxjs/operators';
@@ -45,7 +45,7 @@ export class TuiProgressCircleComponent {
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeS | TuiSizeXL = 'm';
+    size: TuiSizeXXL | TuiSizeXXS = 'm';
 
     readonly animationDelay$ = of(true).pipe(delay(0));
 

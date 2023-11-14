@@ -1,6 +1,16 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 /* Safari doesn't support rem units inside svg (but supports em units) */
+@diameter: {
+    xxs: 2rem;
+    xs: 2.5rem;
+    s: 3.5rem;
+    m: 4rem;
+    l: 5rem;
+    xl: 6rem;
+    xxl: 8rem;
+};
+
 // TODO: delete in v4.0
 @legacy-width: {
     @s: 2em;
@@ -61,6 +71,39 @@
         --t-diameter: @legacy-width[@xl];
         --t-track-stroke: @legacy-track-stroke[@xl];
         --t-progress-stroke: @legacy-progress-stroke[@xl];
+    }
+
+    &[new] {
+        --t-track-stroke: var(--tui-thickness, 0.375em);
+        --t-progress-stroke: var(--tui-thickness, 0.375em);
+    }
+
+    &[new][data-size='xxs'] {
+        --t-diameter: @diameter[xxs];
+    }
+
+    &[new][data-size='xs'] {
+        --t-diameter: @diameter[xs];
+    }
+
+    &[new][data-size='s'] {
+        --t-diameter: @diameter[s];
+    }
+
+    &[new][data-size='m'] {
+        --t-diameter: @diameter[m];
+    }
+
+    &[new][data-size='l'] {
+        --t-diameter: @diameter[l];
+    }
+
+    &[new][data-size='xl'] {
+        --t-diameter: @diameter[xl];
+    }
+
+    &[new][data-size='xxl'] {
+        --t-diameter: @diameter[xxl];
     }
 }
 
