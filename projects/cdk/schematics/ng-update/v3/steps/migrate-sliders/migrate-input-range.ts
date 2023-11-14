@@ -24,9 +24,7 @@ export function migrateInputRange(
     options: TuiSchema,
 ): void {
     const templateResources = getComponentTemplates(ALL_TS_FILES);
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     const COMPONENTS_WITH_MIN_LABELS = new Set<string>();
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     const COMPONENTS_WITH_MAX_LABELS = new Set<string>();
 
     let progressLog = setupProgressLogger({

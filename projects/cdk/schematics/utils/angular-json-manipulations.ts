@@ -41,7 +41,6 @@ export function addStylesToAngularJson(
     stylesToReplace?: {from: string; to: string[]},
     tree?: Tree,
 ): Rule {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     const MANUAL_MIGRATION_TIPS = `Add styles ${taigaStyles.join(
         `,`,
     )} to angular.json manually.`;
