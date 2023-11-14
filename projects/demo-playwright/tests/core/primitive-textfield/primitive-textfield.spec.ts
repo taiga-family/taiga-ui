@@ -2,12 +2,12 @@ import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe(`TuiPrimitiveTextfield`, () => {
-    test.use({viewport: {width: 400, height: 350}});
+    test.use({viewport: {width: 400, height: 500}});
 
     test(`Tooltip in primitive-textfield works`, async ({page}) => {
         await tuiGoto(
             page,
-            `components/primitive-textfield/API?tuiHintContent=Ivan%20Ivanov`,
+            `components/primitive-textfield/API?tuiHintContent=Ivan%20Ivanov&tuiHintDirection=left`,
         );
 
         const {apiPageExample} = new TuiDocumentationPagePO(page);
@@ -16,9 +16,7 @@ test.describe(`TuiPrimitiveTextfield`, () => {
         await apiPageExample.locator(`tui-tooltip`).click();
 
         await expect(page.locator(`tui-hint`)).toBeAttached();
-        await expect(page).toHaveScreenshot(`01-hint.png`, {
-            mask: [page.locator(`tui-doc-page header`)],
-        });
+        await expect(apiPageExample).toHaveScreenshot(`01-hint.png`);
     });
 
     test(`prefix + postfix align on the same line with input's value`, async ({page}) => {
