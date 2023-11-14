@@ -106,11 +106,20 @@ describe(`MultiSelect`, () => {
                     inputPO.focus();
                 });
 
-                it(`opens a dropdown`, () => {
-                    getInputTag(pageObject).nativeElement.click();
-                    fixture.detectChanges();
+                describe(`opens the dropdown`, () => {
+                    it(`on click`, () => {
+                        getInputTag(pageObject).nativeElement.click();
+                        fixture.detectChanges();
 
-                    expect(getDropdown(pageObject)).not.toBeNull();
+                        expect(getDropdown(pageObject)).not.toBeNull();
+                    });
+
+                    it(`on search`, () => {
+                        testComponent.component.onSearch(`Marsi`);
+                        fixture.detectChanges();
+
+                        expect(getDropdown(pageObject)).not.toBeNull();
+                    });
                 });
 
                 describe(`does not open the dropdown`, () => {
@@ -127,6 +136,13 @@ describe(`MultiSelect`, () => {
                         testComponent.control.disable();
                         fixture.detectChanges();
                         getInputTag(pageObject).nativeElement.click();
+                        fixture.detectChanges();
+
+                        expect(getDropdown(pageObject)).toBeNull();
+                    });
+
+                    it(`on empty search`, () => {
+                        testComponent.component.onSearch(``);
                         fixture.detectChanges();
 
                         expect(getDropdown(pageObject)).toBeNull();
