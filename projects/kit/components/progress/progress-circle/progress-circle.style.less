@@ -22,27 +22,27 @@
     @xl: 0.375em;
 };
 
-.circle-params(@size) {
-    width: @width[@@size];
-    height: @width[@@size];
+.circle-params() {
+    width: var(--t-diameter);
+    height: var(--t-diameter);
 
     .t-track {
         /* clean-css ignore:start */
-        r: ((@width[@@size] - @track-stroke[@@size]) / 2);
+        r: calc((var(--t-diameter) - var(--t-track-stroke)) / 2);
 
         /* clean-css ignore:end */
-        stroke-width: @track-stroke[@@size];
+        stroke-width: var(--t-track-stroke);
     }
 
     .t-progress {
-        @radius: ((@width[@@size] - @progress-stroke[@@size]) / 2);
-        @circumference: 2 * pi() * @radius;
+        @radius: calc((var(--t-diameter) - var(--t-progress-stroke)) / 2);
+        @circumference: calc(2 * pi() * @radius);
 
         /* clean-css ignore:start */
         r: @radius;
 
         /* clean-css ignore:end */
-        stroke-width: @progress-stroke[@@size];
+        stroke-width: var(--t-progress-stroke);
         stroke-dasharray: @circumference;
         stroke-dashoffset: @circumference;
 
@@ -54,6 +54,7 @@
 }
 
 :host {
+    .circle-params();
     position: relative;
     display: block;
     color: var(--tui-primary);
@@ -66,19 +67,27 @@
     }
 
     &[data-size='s'] {
-        .circle-params(s);
+        --t-diameter: @width[@s];
+        --t-track-stroke: @track-stroke[@s];
+        --t-progress-stroke: @progress-stroke[@s];
     }
 
     &[data-size='m'] {
-        .circle-params(m);
+        --t-diameter: @width[@m];
+        --t-track-stroke: @track-stroke[@m];
+        --t-progress-stroke: @progress-stroke[@m];
     }
 
     &[data-size='l'] {
-        .circle-params(l);
+        --t-diameter: @width[@l];
+        --t-track-stroke: @track-stroke[@l];
+        --t-progress-stroke: @progress-stroke[@l];
     }
 
     &[data-size='xl'] {
-        .circle-params(xl);
+        --t-diameter: @width[@xl];
+        --t-track-stroke: @track-stroke[@xl];
+        --t-progress-stroke: @progress-stroke[@xl];
     }
 }
 
