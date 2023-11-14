@@ -22,45 +22,15 @@
     @xl: 0.375em;
 };
 
-.circle-params() {
-    width: var(--t-diameter);
-    height: var(--t-diameter);
-
-    .t-track {
-        /* clean-css ignore:start */
-        r: calc((var(--t-diameter) - var(--t-track-stroke)) / 2);
-
-        /* clean-css ignore:end */
-        stroke-width: var(--t-track-stroke);
-    }
-
-    .t-progress {
-        @radius: calc((var(--t-diameter) - var(--t-progress-stroke)) / 2);
-        @circumference: calc(2 * pi() * @radius);
-
-        /* clean-css ignore:start */
-        r: @radius;
-
-        /* clean-css ignore:end */
-        stroke-width: var(--t-progress-stroke);
-        stroke-dasharray: @circumference;
-        stroke-dashoffset: @circumference;
-
-        &_filled {
-            transition: stroke-dashoffset var(--tui-duration) linear;
-            stroke-dashoffset: calc(@circumference - var(--progress-ratio) * @circumference);
-        }
-    }
-}
-
 :host {
-    .circle-params();
     position: relative;
     display: block;
     color: var(--tui-primary);
     transform: rotate(-90deg);
     transform-origin: center;
-    font-size: 1rem;
+    font-size: 1rem; // to use em units inside svg (Safari doesn't support rem units inside svg)
+    width: var(--t-diameter);
+    height: var(--t-diameter);
 
     &[data-mode='onDark'] {
         --tui-clear: var(--tui-clear-inverse);
@@ -94,12 +64,33 @@
 .t-track {
     fill: transparent;
     stroke: var(--tui-clear);
+    stroke-width: var(--t-track-stroke);
+
+    /* clean-css ignore:start */
+    r: calc((var(--t-diameter) - var(--t-track-stroke)) / 2);
+
+    /* clean-css ignore:end */
 }
 
 .t-progress {
+    @radius: calc((var(--t-diameter) - var(--t-progress-stroke)) / 2);
+    @circumference: calc(2 * pi() * @radius);
     fill: transparent;
     stroke: var(--tui-progress-color, currentColor);
     stroke-linecap: round;
+    stroke-width: var(--t-progress-stroke);
+    stroke-dasharray: @circumference;
+    stroke-dashoffset: @circumference;
+
+    /* clean-css ignore:start */
+    r: @radius;
+
+    /* clean-css ignore:end */
+
+    &_filled {
+        transition: stroke-dashoffset var(--tui-duration) linear;
+        stroke-dashoffset: calc(@circumference - var(--progress-ratio) * @circumference);
+    }
 }
 
 .t-hidden-progress {
