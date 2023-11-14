@@ -48,16 +48,9 @@
                 "styles": [
                     "projects/demo/src/normalize.less",
                     "projects/demo/src/styles.less",
-                    "projects/demo/src/styles.scss",
-                    "node_modules/prismjs/themes/prism-okaidia.css"
+                    "projects/demo/src/styles.scss"
                 ],
-                "scripts": [
-                    "node_modules/marked/lib/marked.js",
-                    "node_modules/prismjs/prism.js",
-                    "node_modules/prismjs/components/prism-less.min.js",
-                    "node_modules/prismjs/components/prism-markup.min.js",
-                    "node_modules/prismjs/components/prism-typescript.min.js"
-                ],
+                "scripts": [],
                 "allowedCommonJsDependencies": ["text-mask-core", "markdown-it"],
                 "vendorChunk": true,
                 "extractLicenses": false,
