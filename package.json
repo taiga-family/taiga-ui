@@ -151,7 +151,6 @@
         "lint-staged": "15.1.0",
         "ng-packagr": "12.2.7",
         "nx": "17.1.2",
-        "nx-cloud": "16.5.2",
         "prettier": "3.1.0",
         "rollup": "4.4.1",
         "standard-version": "9.5.0",

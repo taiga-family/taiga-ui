@@ -93,12 +93,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build-demo]
     env:
-      max_parallel: 3
+      max_parallel: 4
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3]
-    name: playwright / (${{ matrix.shard }} of 3)
+        shard: [1, 2, 3, 4]
+    name: playwright / (${{ matrix.shard }} of 4)
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.42.0
       - uses: taiga-family/ci/actions/setup/variables@v1.42.0

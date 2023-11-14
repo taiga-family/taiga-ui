@@ -17,7 +17,8 @@
     },
     "targetDefaults": {
         "build": {
-            "inputs": ["default", "production", "^production"]
+            "inputs": ["default", "production", "^production"],
+            "cache": true
         },
         "test": {
             "inputs": [
@@ -26,19 +27,11 @@
                 "^production",
                 "{workspaceRoot}/setup-jest.ts",
                 "{workspaceRoot}/jest.config.ts"
-            ]
+            ],
+            "cache": true
         },
         "e2e": {
             "inputs": ["default", "production", "^production"]
-        }
-    },
-    "tasksRunnerOptions": {
-        "default": {
-            "runner": "nx-cloud",
-            "options": {
-                "cacheableOperations": ["test", "build", "prerender"],
-                "parallel": 1
-            }
         }
     },
     "affected": {

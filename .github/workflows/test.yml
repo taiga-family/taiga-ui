@@ -32,7 +32,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.42.0
 
       - name: Run tests for ${{ matrix.project }}
-        run: npx nx test ${{ matrix.project }} --skip-nx-cache
+        run: npx nx test ${{ matrix.project }}
 
       - name: Archive coverage artifacts
         uses: actions/upload-artifact@v3.1.3
