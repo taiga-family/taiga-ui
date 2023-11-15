@@ -1,13 +1,14 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
+import {TuiInteractiveStateT} from '@taiga-ui/core';
 
 @Component({
-    selector: 'example-icon',
-    templateUrl: './icon.template.html',
+    selector: 'example-appearance',
+    templateUrl: './appearance.template.html',
     changeDetection,
 })
-export class ExampleTuiIconComponent {
+export class ExampleTuiAppearanceComponent {
     readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );
@@ -17,18 +18,24 @@ export class ExampleTuiIconComponent {
     );
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
+        LESS: import('./examples/3/index.less?raw'),
     };
+
+    appearances = ['primary', 'secondary', 'flat'];
+    appearance = this.appearances[0];
+
+    states: readonly TuiInteractiveStateT[] = ['hover', 'active', 'disabled'];
+    state: TuiInteractiveStateT | null = null;
+
+    focus: boolean | null = null;
 }

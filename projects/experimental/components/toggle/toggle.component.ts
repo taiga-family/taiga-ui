@@ -7,14 +7,9 @@ import {
     Optional,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {TUI_BASE_HREF, TUI_PLATFORM, tuiIsString, TuiPlatform} from '@taiga-ui/cdk';
-import {
-    MODE_PROVIDER,
-    TUI_MODE,
-    TUI_SVG_OPTIONS,
-    TuiBrightness,
-    TuiSvgOptions,
-} from '@taiga-ui/core';
+import {TUI_PLATFORM, tuiIsString, TuiPlatform, TuiStringHandler} from '@taiga-ui/cdk';
+import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
+import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
 import {Observable} from 'rxjs';
 
 import {TUI_TOGGLE_OPTIONS, TuiToggleOptions} from './toggle.options';
@@ -43,8 +38,7 @@ export class TuiToggleComponent {
     showIcons = this.options.showIcons;
 
     constructor(
-        @Inject(TUI_BASE_HREF) private readonly baseHref: string,
-        @Inject(TUI_SVG_OPTIONS) private readonly svg: TuiSvgOptions,
+        @Inject(TUI_ICON_RESOLVER) private readonly resolver: TuiStringHandler<string>,
         @Inject(TUI_TOGGLE_OPTIONS) private readonly options: TuiToggleOptions,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_PLATFORM) readonly platform: TuiPlatform,
@@ -53,10 +47,9 @@ export class TuiToggleComponent {
 
     @HostBinding('style.--t-mask')
     get icon(): string {
-        const {options, svg, baseHref, size} = this;
+        const {options, resolver, size} = this;
         const icon = tuiIsString(options.icon) ? options.icon : options.icon(size);
-        const mask = icon.includes('/') ? icon : svg.path(icon, baseHref);
 
-        return `url(${mask})`;
+        return `url(${resolver(icon)})`;
     }
 }

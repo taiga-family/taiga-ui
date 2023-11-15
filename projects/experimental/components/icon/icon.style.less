@@ -6,12 +6,12 @@
     width: 1.5rem;
     height: 1.5rem;
     vertical-align: middle;
-    mask: var(--t-mask) no-repeat center/contain;
+    mask: var(--t-mask-bg, var(--t-mask)) no-repeat center/contain;
 
     &:after {
         .fullsize();
         content: '';
-        mask: inherit;
+        mask: var(--t-mask) no-repeat center/contain;
         background: currentColor;
     }
 }

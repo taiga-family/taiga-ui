@@ -17,8 +17,8 @@ import {ExampleTuiRatingComponent} from './rating.component';
         TuiRatingModule,
         TuiNotificationModule,
         TuiLabelModule,
-        tuiGetDocModules(ExampleTuiRatingComponent),
         TuiButtonModule,
+        tuiGetDocModules(ExampleTuiRatingComponent),
     ],
     declarations: [
         ExampleTuiRatingComponent,
