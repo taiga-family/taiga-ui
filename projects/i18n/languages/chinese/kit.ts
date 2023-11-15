@@ -7,7 +7,7 @@ export const TUI_CHINESE_LANGUAGE_KIT: TuiLanguageKit = {
     otherDate: `其他日期...`,
     showAll: `显示所有`,
     hide: `隐藏`,
-    mobileCalendarTexts: [`选择日期`, `选择范围`],
+    mobileCalendarTexts: [`选择日期`, `选择范围`, `選擇日期`],
     range: [`从`, `至`],
     countTexts: [`加`, `减`],
     time: {

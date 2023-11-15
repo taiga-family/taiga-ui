@@ -133,7 +133,8 @@ export class TuiInputDateRangeComponent
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(Injector) private readonly injector: Injector,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
+        @Inject(TuiDialogService)
+        private readonly dialogs: TuiDialogService,
         @Optional()
         @Inject(TUI_MOBILE_CALENDAR)
         private readonly mobileCalendar: Type<Record<string, any>> | null,
@@ -290,7 +291,6 @@ export class TuiInputDateRangeComponent
                     size: 'fullscreen',
                     closeable: false,
                     data: {
-                        single: false,
                         min: this.maxLengthMapper(
                             this.computedMin,
                             this.value,
