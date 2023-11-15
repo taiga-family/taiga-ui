@@ -9,6 +9,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {INTERSECTION_ROOT} from '@ng-web-apis/intersection-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
 import {tuiFadeIn} from '@taiga-ui/core';
@@ -24,6 +25,9 @@ import {tuiFadeIn} from '@taiga-ui/core';
             useExisting: ElementRef,
         },
     ],
+    host: {
+        '[class._hide]': 'hidden',
+    },
     animations: [tuiFadeIn],
 })
 export class LandingComponent implements OnInit {
@@ -37,10 +41,15 @@ export class LandingComponent implements OnInit {
     constructor(
         @Inject(Router) private readonly router: Router,
         @Inject(ActivatedRoute) private readonly activatedRoute: ActivatedRoute,
+        @Inject(LOCAL_STORAGE) protected readonly storage: Storage,
     ) {}
 
     async ngOnInit(): Promise<void> {
         await this.clearQueryParams();
+    }
+
+    get hidden(): boolean {
+        return !!this.storage.getItem(`env`);
     }
 
     @HostBinding('style.background')
