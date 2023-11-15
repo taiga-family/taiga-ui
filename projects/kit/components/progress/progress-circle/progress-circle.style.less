@@ -1,57 +1,39 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 /* Safari doesn't support rem units inside svg (but supports em units) */
-@width: {
+@diameter: {
+    xxs: 2rem;
+    xs: 2.5rem;
+    s: 3.5rem;
+    m: 4rem;
+    l: 5rem;
+    xl: 6rem;
+    xxl: 8rem;
+};
+
+// TODO: delete in v4.0
+@legacy-width: {
     @s: 2em;
     @m: 3em;
     @l: 4em;
     @xl: 7em;
 };
 
-@track-stroke: {
+// TODO: delete in v4.0
+@legacy-track-stroke: {
     @s: 0.5em;
     @m: 0.375em;
     @l: 0.375em;
     @xl: 0.375em;
 };
 
-@progress-stroke: {
+// TODO: delete in v4.0
+@legacy-progress-stroke: {
     @s: 0.5em;
     @m: 0.375em;
     @l: 0.375em;
     @xl: 0.375em;
 };
-
-.circle-params(@size) {
-    width: @width[@@size];
-    height: @width[@@size];
-
-    .t-track {
-        /* clean-css ignore:start */
-        r: ((@width[@@size] - @track-stroke[@@size]) / 2);
-
-        /* clean-css ignore:end */
-        stroke-width: @track-stroke[@@size];
-    }
-
-    .t-progress {
-        @radius: ((@width[@@size] - @progress-stroke[@@size]) / 2);
-        @circumference: 2 * pi() * @radius;
-
-        /* clean-css ignore:start */
-        r: @radius;
-
-        /* clean-css ignore:end */
-        stroke-width: @progress-stroke[@@size];
-        stroke-dasharray: @circumference;
-        stroke-dashoffset: @circumference;
-
-        &_filled {
-            transition: stroke-dashoffset var(--tui-duration) linear;
-            stroke-dashoffset: calc(@circumference - var(--progress-ratio) * @circumference);
-        }
-    }
-}
 
 :host {
     position: relative;
@@ -59,38 +41,102 @@
     color: var(--tui-primary);
     transform: rotate(-90deg);
     transform-origin: center;
-    font-size: 1rem;
+    font-size: 1rem; // to use em units inside svg (Safari doesn't support rem units inside svg)
+    width: var(--t-diameter);
+    height: var(--t-diameter);
 
     &[data-mode='onDark'] {
         --tui-clear: var(--tui-clear-inverse);
     }
 
     &[data-size='s'] {
-        .circle-params(s);
+        --t-diameter: @legacy-width[@s];
+        --t-track-stroke: @legacy-track-stroke[@s];
+        --t-progress-stroke: @legacy-progress-stroke[@s];
     }
 
     &[data-size='m'] {
-        .circle-params(m);
+        --t-diameter: @legacy-width[@m];
+        --t-track-stroke: @legacy-track-stroke[@m];
+        --t-progress-stroke: @legacy-progress-stroke[@m];
     }
 
     &[data-size='l'] {
-        .circle-params(l);
+        --t-diameter: @legacy-width[@l];
+        --t-track-stroke: @legacy-track-stroke[@l];
+        --t-progress-stroke: @legacy-progress-stroke[@l];
     }
 
     &[data-size='xl'] {
-        .circle-params(xl);
+        --t-diameter: @legacy-width[@xl];
+        --t-track-stroke: @legacy-track-stroke[@xl];
+        --t-progress-stroke: @legacy-progress-stroke[@xl];
+    }
+
+    &[new] {
+        --t-track-stroke: var(--tui-thickness, 0.375em);
+        --t-progress-stroke: var(--tui-thickness, 0.375em);
+    }
+
+    &[new][data-size='xxs'] {
+        --t-diameter: @diameter[xxs];
+    }
+
+    &[new][data-size='xs'] {
+        --t-diameter: @diameter[xs];
+    }
+
+    &[new][data-size='s'] {
+        --t-diameter: @diameter[s];
+    }
+
+    &[new][data-size='m'] {
+        --t-diameter: @diameter[m];
+    }
+
+    &[new][data-size='l'] {
+        --t-diameter: @diameter[l];
+    }
+
+    &[new][data-size='xl'] {
+        --t-diameter: @diameter[xl];
+    }
+
+    &[new][data-size='xxl'] {
+        --t-diameter: @diameter[xxl];
     }
 }
 
 .t-track {
     fill: transparent;
     stroke: var(--tui-clear);
+    stroke-width: var(--t-track-stroke);
+
+    /* clean-css ignore:start */
+    r: calc((var(--t-diameter) - var(--t-track-stroke)) / 2);
+
+    /* clean-css ignore:end */
 }
 
 .t-progress {
+    @radius: calc((var(--t-diameter) - var(--t-progress-stroke)) / 2);
+    @circumference: calc(2 * pi() * @radius);
     fill: transparent;
     stroke: var(--tui-progress-color, currentColor);
     stroke-linecap: round;
+    stroke-width: var(--t-progress-stroke);
+    stroke-dasharray: @circumference;
+    stroke-dashoffset: @circumference;
+
+    /* clean-css ignore:start */
+    r: @radius;
+
+    /* clean-css ignore:end */
+
+    &_filled {
+        transition: stroke-dashoffset var(--tui-duration) linear;
+        stroke-dashoffset: calc(@circumference - var(--progress-ratio) * @circumference);
+    }
 }
 
 .t-hidden-progress {
