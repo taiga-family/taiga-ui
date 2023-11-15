@@ -1,27 +1,39 @@
-<div [tuiPin]="true">
+<button
+    tuiPin
+    [open]="a"
+    (click)="a = !a"
+>
     <img
         alt="avatar"
         src="assets/images/avatar.jpg"
     />
-</div>
+</button>
 
-<div [tuiPin]="true">
-    <tui-svg src="assets/images/atm.svg"></tui-svg>
-</div>
-
-<div
-    class="custom-background"
-    [tuiPin]="true"
+<button
+    tuiPin
+    [open]="b"
+    [style.left.rem]="5"
+    (click)="b = !b"
 >
-    <tui-svg
-        src="assets/images/atm.svg"
-        class="custom-border"
-    ></tui-svg>
-</div>
+    <tui-icon icon="assets/images/atm.svg"></tui-icon>
+</button>
 
-<div
-    class="custom-background"
-    [tuiPin]="true"
+<button
+    tuiPin
+    class="link"
+    [open]="c"
+    [style.left.rem]="10"
+    (click)="c = !c"
 >
-    <div class="custom-border">4.5</div>
-</div>
+    <tui-icon icon="assets/images/atm.svg"></tui-icon>
+</button>
+
+<button
+    tuiPin
+    class="crazy"
+    [open]="d"
+    [style.left.rem]="15"
+    (click)="d = !d"
+>
+    4.5
+</button>

@@ -1,3 +1,3 @@
 ```html
-<div [tuiPin]="open">16</div>
+<tui-pin [open]="open">16</tui-pin>
 ```
