@@ -45,6 +45,37 @@
         >
             <tui-progress-circle-example-4></tui-progress-circle-example-4>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="anti-clockwise-direction"
+            heading="Anti-clockwise direction"
+            [content]="reversedDirectionExample"
+            [description]="antiClockwiseDirectionDescription"
+        >
+            <ng-template #antiClockwiseDirectionDescription>
+                <p>
+                    Use power of CSS property
+                    <a
+                        href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform"
+                        rel="noreferrer"
+                        target="_blank"
+                        tuiLink
+                    >
+                        <code>transform</code>
+                    </a>
+                    to customize direction and starting point of progress circle.
+                </p>
+
+                <p>
+                    By default,
+                    <code>ProgressCircle</code>
+                    has clockwise direction and starts from the top (i.e. it already contains
+                    <code>transform: rotate(-90deg)</code>
+                    ).
+                </p>
+            </ng-template>
+            <tui-progress-circle-example-5></tui-progress-circle-example-5>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
