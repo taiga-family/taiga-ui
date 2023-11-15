@@ -16,9 +16,9 @@ import {TuiAppearanceExample3} from './examples/3';
         FormsModule,
         TuiAppearanceModule,
         TuiNotificationModule,
-        tuiGetDocModules(ExampleTuiAppearanceComponent),
         TuiButtonModule,
         TuiHostedDropdownModule,
+        tuiGetDocModules(ExampleTuiAppearanceComponent),
     ],
     declarations: [
         ExampleTuiAppearanceComponent,
