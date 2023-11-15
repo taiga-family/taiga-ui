@@ -81,7 +81,8 @@
         "extends": [
             "plugin:@taiga-ui/experience/all",
             "plugin:@taiga-ui/experience/taiga-naming"
-        ]
+        ],
+        "root": true
     },
     "stylelint": {
         "extends": [
