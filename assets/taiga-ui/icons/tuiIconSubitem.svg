@@ -12,6 +12,7 @@
         >
             <svg x="-8" y="-8">
                 <path
+                    vector-effect="non-scaling-stroke"
                     d="M10 6.667L13.333 10 10 13.333"
                     stroke="currentColor"
                     stroke-linecap="round"
@@ -19,6 +20,7 @@
                     stroke-width="2"
                 />
                 <path
+                    vector-effect="non-scaling-stroke"
                     d="M3 3v4.455c0 .675.263 1.322.732 1.8A2.478 2.478 0 0 0 5.5 10H13"
                     stroke="currentColor"
                     stroke-linecap="round"
