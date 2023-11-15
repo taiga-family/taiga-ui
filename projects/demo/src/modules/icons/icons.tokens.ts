@@ -93,7 +93,7 @@ function ensureIcons(): {LARGE: DemoTuiIcon[]; NORMAL: DemoTuiIcon[]} {
 
         if (icon.includes(`Large`)) {
             large.push(icon as DemoTuiIcon);
-        } else {
+        } else if (!icon.includes(`Outline`)) {
             normal.push(icon as DemoTuiIcon);
         }
     }

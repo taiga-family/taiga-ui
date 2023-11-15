@@ -13,7 +13,15 @@
             xml:space="preserve"
         >
             <svg x="-8" y="-8">
-                <circle cx="8" cy="8" fill="none" r="4" stroke="currentColor" stroke-width="2" />
+                <circle
+                    vector-effect="non-scaling-stroke"
+                    cx="8"
+                    cy="8"
+                    fill="none"
+                    r="4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                />
             </svg>
         </svg>
     </g>
