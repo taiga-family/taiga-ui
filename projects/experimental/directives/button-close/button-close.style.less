@@ -1,0 +1,43 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiButtonClose] {
+    .clearbtn();
+    position: relative;
+    display: inline-flex;
+    height: var(--t-size, 1.875rem);
+    width: var(--t-size, 1.875rem);
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    font-size: 0;
+    overflow: hidden;
+    user-select: none;
+    cursor: pointer;
+    color: var(--tui-text-03);
+    background: var(--tui-neutral-bg);
+
+    &:before {
+        content: '';
+        width: 1rem;
+        height: 1rem;
+        background: currentColor;
+        mask: var(--t-mask) no-repeat center/contain;
+    }
+
+    &[data-size='xs'] {
+        --t-size: var(--tui-height-xs);
+
+        &:before {
+            width: 0.875rem;
+            height: 0.875rem;
+        }
+    }
+
+    .appearance-hover({
+        background: var(--tui-neutral-bg-hover);
+    });
+
+    .appearance-active({
+        background: var(--tui-neutral-bg-active);
+    });
+}
