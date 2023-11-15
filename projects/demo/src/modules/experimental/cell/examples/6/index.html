@@ -48,8 +48,8 @@
         <button
             *ngFor="let item of items"
             appearance="opposite"
-            iconLeft="item.icon"
             tuiIconButton
+            [iconLeft]="item.icon"
         >
             {{ item }}
         </button>
