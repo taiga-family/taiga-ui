@@ -90,6 +90,11 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
         HTML: import('./examples/6/index.html?raw'),
     };
 
+    readonly example7: TuiDocExample = {
+        TypeScript: import('./examples/7/index.ts?raw'),
+        HTML: import('./examples/7/index.html?raw'),
+    };
+
     readonly items = [
         new Account('Rubles', 500),
         new Account('Dollars', 237),
