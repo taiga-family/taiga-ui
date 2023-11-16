@@ -25,6 +25,10 @@
 
     &:empty {
         --t-size: 0.75rem;
+
+        &:before {
+            display: none;
+        }
     }
 
     ::ng-deep > img {
@@ -78,7 +82,8 @@
         right: -0.25rem;
         bottom: -0.625rem;
         box-sizing: border-box;
-        border: 3rem solid currentColor;
+        border-width: 2.2rem 2rem;
+        border-style: solid;
         border-color: inherit;
         opacity: 0;
         transform: scale(0.57) translate(-1.875rem, -1.875rem);
