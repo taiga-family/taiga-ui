@@ -62,7 +62,7 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
     label = 'or drop\u00A0it\u00A0here';
     multiple = true;
     showSize = true;
-    showDelete = true;
+    showDelete: boolean | 'always' = true;
     expanded = false;
     maxFilesCount = 3;
     accept = '';
@@ -74,6 +74,7 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
         'environment',
     ];
 
+    readonly showDeleteVariants: Array<boolean | 'always'> = [true, false, 'always'];
     readonly maxFileSizeVariants = [100, 512000, 30 * 1000 * 1000, 2.2 * 1000 * 1000];
     override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
