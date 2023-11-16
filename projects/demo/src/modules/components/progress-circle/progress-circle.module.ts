@@ -9,6 +9,7 @@ import {TuiProgressCircleExample2} from './examples/2';
 import {TuiProgressCircleExample3} from './examples/3';
 import {TuiProgressCircleExample4} from './examples/4';
 import {TuiProgressCircleExample5} from './examples/5';
+import {TuiProgressCircleExample6} from './examples/6';
 import {ExampleProgressCircleComponent} from './progress-circle.component';
 
 @NgModule({
@@ -27,6 +28,7 @@ import {ExampleProgressCircleComponent} from './progress-circle.component';
         TuiProgressCircleExample3,
         TuiProgressCircleExample4,
         TuiProgressCircleExample5,
+        TuiProgressCircleExample6,
     ],
 })
 export class ExampleTuiProgressCircleModule {}
