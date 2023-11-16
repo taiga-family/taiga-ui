@@ -375,7 +375,7 @@ export const appConfig: ApplicationConfig = {
 
         expect(tree.readContent(`test/main.ts`))
             .toBe(`import { importProvidersFrom } from "@angular/core";
-import { providerAnimation } from "@angular/platform-browser/animations";
+import { provideAnimations } from "@angular/platform-browser/animations";
 import { TuiRootModule } from "@taiga-ui/core";
 import { bootstrapApplication } from '@angular/platform-browser';
 import {
@@ -386,7 +386,7 @@ import { appRoutes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, {
-  providers: [providerAnimation(), provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), importProvidersFrom(TuiRootModule)],
+  providers: [provideAnimations(), provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), importProvidersFrom(TuiRootModule)],
 }).catch((err) => console.error(err));
 `);
     });
