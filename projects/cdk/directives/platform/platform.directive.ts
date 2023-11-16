@@ -1,4 +1,4 @@
-import {Directive, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {TUI_PLATFORM, tuiPlatformFactory} from '@taiga-ui/cdk/tokens';
 import {TuiPlatform} from '@taiga-ui/cdk/types';
 
@@ -15,5 +15,6 @@ import {TuiPlatform} from '@taiga-ui/cdk/types';
 })
 export class TuiPlatformDirective {
     @Input()
+    @HostBinding('attr.data-platform')
     tuiPlatform: TuiPlatform | '' = '';
 }
