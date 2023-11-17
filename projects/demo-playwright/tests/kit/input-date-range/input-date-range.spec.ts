@@ -2,7 +2,12 @@ import {expect, Locator, test} from '@playwright/test';
 // eslint-disable-next-line @taiga-ui/experience/no-deep-imports
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 
-import {TuiDocumentationPagePO, tuiGoto, TuiInputDateRangePO} from '../../../utils';
+import {
+    TuiCalendarPO,
+    TuiDocumentationPagePO,
+    tuiGoto,
+    TuiInputDateRangePO,
+} from '../../../utils';
 
 test.describe(`InputDateRange`, () => {
     let example!: Locator;
@@ -34,7 +39,7 @@ test.describe(`InputDateRange`, () => {
                 await expect(inputDateRange.textfield).toHaveScreenshot(
                     `01-textfield-size-${size}-empty.png`,
                 );
-                await expect(inputDateRange.calendar).toHaveScreenshot(
+                await expect(inputDateRange.calendarRange).toHaveScreenshot(
                     `01-calendar-size-${size}-empty.png`,
                 );
 
@@ -42,7 +47,7 @@ test.describe(`InputDateRange`, () => {
                 await expect(inputDateRange.textfield).toHaveScreenshot(
                     `02-textfield-size-${size}-set-day.png`,
                 );
-                await expect(inputDateRange.calendar).toHaveScreenshot(
+                await expect(inputDateRange.calendarRange).toHaveScreenshot(
                     `02-calendar-size-${size}-set-day.png`,
                 );
 
@@ -50,7 +55,7 @@ test.describe(`InputDateRange`, () => {
                 await expect(inputDateRange.textfield).toHaveScreenshot(
                     `03-textfield-size-${size}-set-from-date.png`,
                 );
-                await expect(inputDateRange.calendar).toHaveScreenshot(
+                await expect(inputDateRange.calendarRange).toHaveScreenshot(
                     `03-calendar-size-${size}-set-from-date.png`,
                 );
 
@@ -58,7 +63,7 @@ test.describe(`InputDateRange`, () => {
                 await expect(inputDateRange.textfield).toHaveScreenshot(
                     `04-textfield-size-${size}-set-to-date.png`,
                 );
-                await expect(inputDateRange.calendar).toHaveScreenshot(
+                await expect(inputDateRange.calendarRange).toHaveScreenshot(
                     `04-calendar-size-${size}-set-to-date.png`,
                 );
             });
@@ -71,7 +76,7 @@ test.describe(`InputDateRange`, () => {
             await expect(inputDateRange.textfield).toHaveScreenshot(
                 `05-textfield-maximum-month.png`,
             );
-            await expect(inputDateRange.calendar).toHaveScreenshot(
+            await expect(inputDateRange.calendarRange).toHaveScreenshot(
                 `05-calendar-maximum-month.png`,
             );
         });
@@ -128,6 +133,29 @@ test.describe(`InputDateRange`, () => {
                     `20.05.2023${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}24.05.2023`,
                 );
             });
+        });
+
+        test(`Select from [items] => select date range from calendar`, async ({page}) => {
+            const calendar = new TuiCalendarPO(
+                inputDateRange.calendarRange.locator('tui-calendar'),
+            );
+
+            await tuiGoto(
+                page,
+                `components/input-date-range/API?items$=1&sandboxExpanded=true`,
+            );
+
+            await inputDateRange.textfield.click();
+            await inputDateRange.selectItem(1);
+            await expect(inputDateRange.textfield).toHaveValue('Today');
+
+            await inputDateRange.textfield.click();
+            await calendar.clickOnCalendarDay(21);
+
+            await expect(inputDateRange.textfield).toHaveValue('21.09.2020 – 25.09.2020');
+            await expect(example).toHaveScreenshot(
+                '07-item-and-calendar-interactions.png',
+            );
         });
     });
 });
