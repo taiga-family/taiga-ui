@@ -79,10 +79,17 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
         }
     }
 
-    /** These do not matter for this case */
-    onDataLengthChanged(): void {}
-    onContentRendered(): void {}
-    onRenderedOffsetChanged(): void {}
+    onDataLengthChanged(): void {
+        /** These do not matter for this case */
+    }
+
+    onContentRendered(): void {
+        /** These do not matter for this case */
+    }
+
+    onRenderedOffsetChanged(): void {
+        /** These do not matter for this case */
+    }
 
     scrollToIndex(index: number, behavior: ScrollBehavior): void {
         if (!this.viewport) {

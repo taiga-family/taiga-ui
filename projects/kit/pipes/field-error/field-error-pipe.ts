@@ -53,13 +53,21 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
         return (this.invalid && this.touched && this.error) || of(null);
     }
 
-    registerOnChange(): void {}
+    registerOnChange(): void {
+        /** These do not matter for this case */
+    }
 
-    registerOnTouched(): void {}
+    registerOnTouched(): void {
+        /** These do not matter for this case */
+    }
 
-    setDisabledState(): void {}
+    setDisabledState(): void {
+        /** These do not matter for this case */
+    }
 
-    writeValue(): void {}
+    writeValue(): void {
+        /** These do not matter for this case */
+    }
 
     private get error(): Observable<TuiValidationError> | null {
         const {errorId} = this;

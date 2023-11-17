@@ -34,5 +34,7 @@ export abstract class AbstractTuiTextfieldHost<T extends AbstractTuiControl<any>
 
     abstract onValueChange(value: string): void;
 
-    process(_input: HTMLInputElement): void {}
+    process(_input: HTMLInputElement): void {
+        /** These do not matter for this case */
+    }
 }

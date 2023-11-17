@@ -32,7 +32,6 @@ describe(`PrimitiveCalendar`, () => {
                 [disabledItemHandler]="disabledItemHandler"
                 [month]="month"
                 [value]="value"
-                (dayClick)="onDayClick($event)"
             ></tui-primitive-calendar>
         `,
     })
@@ -45,8 +44,6 @@ describe(`PrimitiveCalendar`, () => {
         value: TuiDayRange | null = null;
 
         disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
-
-        onDayClick(_: TuiDay): void {}
     }
 
     let fixture: ComponentFixture<TestComponent>;
