@@ -10,8 +10,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiPinExample3 {
-    a = false;
+    a = true;
     b = false;
-    c = false;
+    c = true;
     d = false;
 }

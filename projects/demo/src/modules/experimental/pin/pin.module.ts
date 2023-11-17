@@ -1,8 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiAddonDocModule, tuiGetDocModules} from '@taiga-ui/addon-doc';
-import {TuiNotificationModule, TuiSvgModule} from '@taiga-ui/core';
-import {TuiAppearanceModule, TuiIconModule, TuiPinModule} from '@taiga-ui/experimental';
+import {tuiGetDocModules} from '@taiga-ui/addon-doc';
+import {TuiNotificationModule} from '@taiga-ui/core';
+import {TuiIconModule, TuiPinModule} from '@taiga-ui/experimental';
 
 import {TuiPinExample1} from './examples/1';
 import {TuiPinExample2} from './examples/2';
@@ -12,13 +12,10 @@ import {ExampleTuiPinComponent} from './pin.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiSvgModule,
         TuiPinModule,
-        TuiAddonDocModule,
         TuiNotificationModule,
         TuiIconModule,
         tuiGetDocModules(ExampleTuiPinComponent),
-        TuiAppearanceModule,
     ],
     declarations: [
         ExampleTuiPinComponent,
