@@ -100,9 +100,6 @@ export class TuiDayRange extends TuiMonthRange {
         dateFormat: TuiDateMode = `DMY`,
         dateSeparator: string = `.`,
     ): string {
-        const from = this.from.getFormattedDay(dateFormat, dateSeparator);
-        const to = this.to.getFormattedDay(dateFormat, dateSeparator);
-
-        return `${from}${RANGE_SEPARATOR_CHAR}${to}`;
+        return this.getFormattedDayRange(dateFormat, dateSeparator);
     }
 }
