@@ -23,8 +23,8 @@ import {
     TUI_DOC_URL_STATE_HANDLER,
     tuiDocExampleOptionsProvider,
     TuiDocSourceCodePathOptions,
+    tuiSortPages,
 } from '@taiga-ui/addon-doc';
-import {tuiSortPages} from '@taiga-ui/addon-doc';
 import {
     TUI_BASE_HREF,
     TUI_DIALOG_CLOSES_ON_BACK,

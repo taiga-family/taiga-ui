@@ -7,8 +7,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
-import {TemplateResource} from '../../interfaces';
-import {HtmlComment} from '../../interfaces';
+import {HtmlComment, TemplateResource} from '../../interfaces';
 
 export function addHTMLCommentTags({
     resource,
