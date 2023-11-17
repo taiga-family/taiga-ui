@@ -1,0 +1,21 @@
+<span
+    #driver="tuiHintHover"
+    automation-id="tui-tooltip__icon"
+    tuiAppearance="icon"
+    class="t-tooltip-icon"
+    [attr.tabindex]="describeId ? -1 : 0"
+    [tuiAppearanceState]="!!(driver | async) ? 'active' : null"
+    [tuiHint]="content"
+    [tuiHintAppearance]="computedAppearance"
+    [tuiHintContext]="context"
+    [tuiHintDescribe]="describeId"
+    [tuiHintDirection]="direction"
+    [tuiHintHideDelay]="hideDelay"
+    [tuiHintShowDelay]="showDelay"
+>
+    <tui-icon
+        *polymorpheusOutlet="tooltipIcon as src"
+        class="t-icon"
+        [icon]="src.toString()"
+    ></tui-icon>
+</span>
