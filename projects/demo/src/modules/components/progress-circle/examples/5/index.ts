@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
 import {of, timer} from 'rxjs';
-import {map, share, takeWhile} from 'rxjs/operators';
+import {map, repeat, share, takeWhile} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-progress-circle-example-5',
@@ -20,6 +20,7 @@ export class TuiProgressCircleExample5 {
         : timer(300, 200).pipe(
               takeWhile(value => value <= this.max),
               share(),
+              repeat(),
           );
 
     readonly color$ = this.value$.pipe(
