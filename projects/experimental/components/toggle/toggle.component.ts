@@ -7,10 +7,8 @@ import {
     Optional,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {TUI_PLATFORM, tuiIsString, TuiPlatform, TuiStringHandler} from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
+import {tuiIsString, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
-import {Observable} from 'rxjs';
 
 import {TUI_TOGGLE_OPTIONS, TuiToggleOptions} from './toggle.options';
 
@@ -19,12 +17,10 @@ import {TUI_TOGGLE_OPTIONS, TuiToggleOptions} from './toggle.options';
     template: '',
     styleUrls: ['./toggle.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [MODE_PROVIDER],
     host: {
-        '($.data-mode.attr)': 'mode$',
+        tuiAppearance: '', // Apply base appearance
         '[disabled]': '!control || control.disabled',
         '[attr.data-size]': 'size',
-        '[attr.data-platform]': 'platform',
         '[class._invalid]': 'control?.invalid && control?.touched',
         '[class._readonly]': '!control',
         '[class._icons]': 'showIcons',
@@ -40,8 +36,6 @@ export class TuiToggleComponent {
     constructor(
         @Inject(TUI_ICON_RESOLVER) private readonly resolver: TuiStringHandler<string>,
         @Inject(TUI_TOGGLE_OPTIONS) private readonly options: TuiToggleOptions,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_PLATFORM) readonly platform: TuiPlatform,
         @Optional() @Inject(NgControl) readonly control: NgControl | null,
     ) {}
 

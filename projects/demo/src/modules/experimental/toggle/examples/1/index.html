@@ -4,58 +4,52 @@
     [class.wrapper_web]="platform === 'web'"
     [tuiPlatform]="platform"
 >
-    <!--
-        This allows platform provider time to initialize.
-        Unnecessary for static platform tuiPlatform="whatever"
-    -->
-    <ng-container *ngIf="getSize(first) as size">
-        <input
-            tuiToggle
-            type="checkbox"
-            [ngModel]="true"
-            [showIcons]="first"
-            [size]="size"
-        />
+    <input
+        tuiToggle
+        type="checkbox"
+        [ngModel]="true"
+        [showIcons]="first"
+        [size]="getSize(first)"
+    />
 
-        <input
-            tuiToggle
-            type="checkbox"
-            [disabled]="true"
-            [ngModel]="true"
-            [showIcons]="first"
-            [size]="size"
-        />
+    <input
+        tuiToggle
+        type="checkbox"
+        [disabled]="true"
+        [ngModel]="true"
+        [showIcons]="first"
+        [size]="getSize(first)"
+    />
 
-        <input
-            tuiToggle
-            type="checkbox"
-            [showIcons]="first"
-            [size]="size"
-        />
+    <input
+        tuiToggle
+        type="checkbox"
+        [showIcons]="first"
+        [size]="getSize(first)"
+    />
 
-        <input
-            tuiToggle
-            type="checkbox"
-            [disabled]="true"
-            [ngModel]="false"
-            [showIcons]="first"
-            [size]="size"
-        />
+    <input
+        tuiToggle
+        type="checkbox"
+        [disabled]="true"
+        [ngModel]="false"
+        [showIcons]="first"
+        [size]="getSize(first)"
+    />
 
-        <input
-            tuiToggle
-            type="checkbox"
-            [formControl]="invalidTrue"
-            [showIcons]="first"
-            [size]="size"
-        />
+    <input
+        tuiToggle
+        type="checkbox"
+        [formControl]="invalidTrue"
+        [showIcons]="first"
+        [size]="getSize(first)"
+    />
 
-        <input
-            tuiToggle
-            type="checkbox"
-            [formControl]="invalidFalse"
-            [showIcons]="first"
-            [size]="size"
-        />
-    </ng-container>
+    <input
+        tuiToggle
+        type="checkbox"
+        [formControl]="invalidFalse"
+        [showIcons]="first"
+        [size]="getSize(first)"
+    />
 </div>

@@ -1,0 +1,64 @@
+input[tuiToggle],
+input[tuiToggle]& {
+    .transition(~'color, opacity');
+    height: 1.25rem;
+    width: 2.5rem;
+    color: var(--tui-base-05);
+    background: transparent;
+    overflow: visible;
+
+    &:before {
+        content: '';
+        display: block;
+        height: 100%;
+        width: 100%;
+        border: 0.1875rem solid transparent;
+        box-sizing: border-box;
+        border-radius: 2rem;
+        background: currentColor;
+        background-clip: content-box;
+        opacity: 0.5;
+        transform: none;
+        mask: none;
+    }
+
+    &:after {
+        .transition(transform);
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 100%;
+        background: #ececec;
+        transform: none;
+        box-shadow:
+            0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.24),
+            0 0 0.0625rem rgba(0, 0, 0, 0.12),
+            inset 0 0.0625rem rgba(255, 255, 255, 0.12) !important;
+    }
+
+    &:checked {
+        color: var(--tui-accent);
+        background: transparent;
+
+        &:after {
+            background: currentColor;
+            transform: translateX(1.25rem);
+        }
+    }
+
+    &._invalid {
+        color: var(--tui-error-fill);
+
+        &:not(:checked) {
+            background: transparent;
+            opacity: 0.4;
+        }
+
+        &:after {
+            background: var(--tui-error-fill);
+        }
+    }
+}
