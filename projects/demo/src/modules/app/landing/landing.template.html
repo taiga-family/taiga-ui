@@ -6,6 +6,8 @@
 />
 
 <section
+    waIntersectionObserver
+    waIntersectionThreshold="0.5"
     class="components"
     [class.components_first]="current === 1"
     [class.components_second]="current === 2"
@@ -17,15 +19,18 @@
             src="assets/images/topography.svg"
         />
     </div>
-    <div class="container">
+    <div
+        class="container"
+        (waIntersectionObservee)="intersected = $event?.[0]?.isIntersecting || intersected"
+    >
         <iframe
             *ngIf="intersected || current === 1"
             height="100%"
+            loading="lazy"
             src="https://taiga-family.github.io/preview-landing-components/"
             title="Preview of components"
             width="100%"
             @tuiFadeIn
-            (load)="intersected = true"
         ></iframe>
     </div>
     <div class="make">
