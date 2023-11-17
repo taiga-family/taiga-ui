@@ -17,6 +17,9 @@
     border: 1px solid var(--tui-base-04);
     // Create new viewport for fixed positioning
     filter: opacity(1);
+    .safari-only({
+        transform: translate3d(0, 0, 0);
+    });
 
     &:not(:first-child) {
         border-left: none;
