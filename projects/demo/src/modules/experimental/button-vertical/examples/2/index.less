@@ -1,0 +1,20 @@
+@import '~@taiga-ui/core/styles/taiga-ui-local';
+
+button {
+    margin: 0.5rem;
+    width: 6.5rem;
+}
+
+[tuiAppearance][data-appearance='custom'] {
+    color: var(--tui-error-fill);
+    background: var(--tui-error-bg);
+
+    .appearance-hover({
+        background: var(--tui-error-bg-hover);
+    });
+
+    .appearance-active({
+        background: var(--tui-error-bg-hover);
+        opacity: 0.8;
+    });
+}

@@ -864,8 +864,20 @@ export const pages: TuiDocPages = [
     {
         section: `Experimental`,
         title: `Button`,
-        keywords: `кнопка, button, icon-button, иконка`,
-        route: `/experimental/button`,
+        subPages: [
+            {
+                section: `Experimental`,
+                title: `Button`,
+                keywords: `кнопка, button, icon-button, иконка`,
+                route: `/experimental/button`,
+            },
+            {
+                section: `Experimental`,
+                title: `ButtonVertical`,
+                keywords: `кнопка, button, vertical-button, вертикальная`,
+                route: `/experimental/button-vertical`,
+            },
+        ],
     },
     {
         section: `Experimental`,
