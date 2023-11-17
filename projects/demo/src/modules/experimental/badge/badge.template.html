@@ -83,17 +83,15 @@
                     Taiga UI
                 </tui-badge>
 
-                <tui-badge
+                <img
                     *ngIf="contentType === 'image'"
+                    alt="market"
+                    src="assets/images/avatar.jpg"
+                    tuiBadge
                     [appearance]="appearance"
                     [dot]="dot"
                     [size]="size"
-                >
-                    <img
-                        alt="market"
-                        src="assets/images/avatar.jpg"
-                    />
-                </tui-badge>
+                />
             </p>
         </tui-doc-demo>
         <label
