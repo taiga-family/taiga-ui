@@ -5,7 +5,9 @@ export class TuiMockEvent<T> extends Event {
         const event = new Event(type);
 
         for (const key in options) {
-            Object.defineProperty(event, key, {value: options[key]});
+            if (options.hasOwnProperty(key)) {
+                Object.defineProperty(event, key, {value: options[key]});
+            }
         }
 
         // @ts-ignore

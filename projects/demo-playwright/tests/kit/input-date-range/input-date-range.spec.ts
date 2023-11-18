@@ -137,7 +137,7 @@ test.describe(`InputDateRange`, () => {
 
         test(`Select from [items] => select date range from calendar`, async ({page}) => {
             const calendar = new TuiCalendarPO(
-                inputDateRange.calendarRange.locator('tui-calendar'),
+                inputDateRange.calendarRange.locator(`tui-calendar`),
             );
 
             await tuiGoto(
@@ -147,14 +147,16 @@ test.describe(`InputDateRange`, () => {
 
             await inputDateRange.textfield.click();
             await inputDateRange.selectItem(1);
-            await expect(inputDateRange.textfield).toHaveValue('Today');
+            await expect(inputDateRange.textfield).toHaveValue(`Today`);
 
             await inputDateRange.textfield.click();
             await calendar.clickOnCalendarDay(21);
 
-            await expect(inputDateRange.textfield).toHaveValue('21.09.2020 – 25.09.2020');
+            await expect(inputDateRange.textfield).toHaveValue(
+                `21.09.2020${CHAR_NO_BREAK_SPACE}–${CHAR_NO_BREAK_SPACE}25.09.2020`,
+            );
             await expect(example).toHaveScreenshot(
-                '07-item-and-calendar-interactions.png',
+                `07-item-and-calendar-interactions.png`,
             );
         });
     });

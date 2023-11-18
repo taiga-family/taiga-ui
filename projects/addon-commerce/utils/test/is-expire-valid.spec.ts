@@ -47,11 +47,13 @@ describe(`tuiIsExpireValid`, () => {
     };
 
     for (const expire in specs) {
-        describe(`${expire}`, () => {
-            specs[expire as keyof typeof specs].forEach(({today, valid}) =>
-                it(`It's ${valid ? `valid` : `invalid`} when today is ${today}`, () =>
-                    expect(tuiIsExpireValid(expire, new Date(today))).toBe(valid)),
-            );
-        });
+        if (specs.hasOwnProperty(expire)) {
+            describe(`${expire}`, () => {
+                specs[expire as keyof typeof specs].forEach(({today, valid}) =>
+                    it(`It's ${valid ? `valid` : `invalid`} when today is ${today}`, () =>
+                        expect(tuiIsExpireValid(expire, new Date(today))).toBe(valid)),
+                );
+            });
+        }
     }
 });
