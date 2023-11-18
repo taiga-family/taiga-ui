@@ -1,11 +1,11 @@
 <tui-scrollbar
-    *ngIf="year; else calendar"
+    *ngIf="isInYearView; else calendar"
     automation-id="tui-calendar__scrollbar"
     class="t-scrollbar"
 >
     <tui-primitive-year-picker
         automation-id="tui-calendar__year"
-        [initialItem]="year"
+        [initialItem]="month"
         [max]="computedMax"
         [min]="computedMin"
         [value]="value"
@@ -20,7 +20,7 @@
         [min]="computedMinViewedMonth"
         [value]="month"
         (valueChange)="onPaginationValueChange($event)"
-        (yearClick)="onPaginationYearClick($event)"
+        (yearClick)="onPaginationYearClick()"
     ></tui-primitive-year-month-pagination>
     <tui-primitive-calendar
         automation-id="tui-calendar__calendar"
