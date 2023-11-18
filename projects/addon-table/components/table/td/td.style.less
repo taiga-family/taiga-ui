@@ -12,6 +12,9 @@
     box-sizing: border-box;
     // Create new viewport for fixed positioning
     filter: opacity(1);
+    .safari-only({
+        transform: translate3d(0, 0, 0);
+    });
 
     &:first-child {
         left: 0;

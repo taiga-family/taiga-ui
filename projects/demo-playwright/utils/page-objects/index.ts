@@ -1,3 +1,4 @@
+export * from './calendar.po';
 export * from './documentation-page.po';
 export * from './input-card.po';
 export * from './input-card-grouped.po';

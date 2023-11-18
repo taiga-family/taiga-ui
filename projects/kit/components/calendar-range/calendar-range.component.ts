@@ -156,6 +156,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         return (tuiIsString(item) && activePeriod === null) || activePeriod === item;
     }
 
+    // TODO: investigate if it is used anywhere and (if not) delete it in v4.0
     onRangeChange(dayRange: TuiDayRange): void {
         this.updateValue(dayRange);
     }

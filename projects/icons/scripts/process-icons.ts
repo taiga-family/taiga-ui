@@ -20,7 +20,7 @@ export function tuiProcessIcons(files: string[], interceptor?: ContentIntercepto
 
         const name = parse(file).base.replace(`.svg`, ``);
 
-        if (src.includes(`id="${name}"`)) {
+        if (src.includes(`id="${name}"`) || name.includes(`Outline`)) {
             console.info(`\x1B[33m%s\x1B[0m`, `[skip]:`, file);
             continue;
         }

@@ -216,6 +216,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/appearance`,
+        loadChildren: async () =>
+            (await import(`../experimental/appearance/appearance.module`))
+                .ExampleTuiAppearanceModule,
+        data: {
+            title: `Appearance`,
+        },
+    },
+    {
         path: `experimental/avatar`,
         loadChildren: async () =>
             (await import(`../experimental/avatar/avatar.module`)).ExampleTuiAvatarModule,
@@ -296,6 +305,15 @@ export const ROUTES: Routes = [
             (await import(`../experimental/button/button.module`)).ExampleTuiButtonModule,
         data: {
             title: `Button `,
+        },
+    },
+    {
+        path: `experimental/button-vertical`,
+        loadChildren: async () =>
+            (await import(`../experimental/button-vertical/button-vertical.module`))
+                .ExampleTuiButtonModule,
+        data: {
+            title: `ButtonVertical`,
         },
     },
     {

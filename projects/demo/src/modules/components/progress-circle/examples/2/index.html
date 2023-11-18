@@ -1,23 +1,7 @@
 <tui-progress-circle
-    size="xl"
+    *ngFor="let size of sizes"
+    new
     [max]="100"
-    [value]="60"
-></tui-progress-circle>
-
-<tui-progress-circle
-    size="l"
-    [max]="100"
-    [value]="60"
-></tui-progress-circle>
-
-<tui-progress-circle
-    size="m"
-    [max]="100"
-    [value]="60"
-></tui-progress-circle>
-
-<tui-progress-circle
-    size="s"
-    [max]="100"
+    [size]="size"
     [value]="60"
 ></tui-progress-circle>

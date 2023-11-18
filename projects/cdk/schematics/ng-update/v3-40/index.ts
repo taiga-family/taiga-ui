@@ -26,7 +26,6 @@ import {getFileSystem} from '../utils/get-file-system';
 import {replaceText} from '../utils/replace-text';
 import {replaceTag} from '../utils/templates/replace-tag';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export function updateToV3_40(options: TuiSchema): Rule {
     return (tree: Tree, _: SchematicContext) => {
         const fileSystem = getFileSystem(tree);

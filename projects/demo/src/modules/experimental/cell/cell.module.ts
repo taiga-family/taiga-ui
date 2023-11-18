@@ -8,7 +8,6 @@ import {
     TuiLabelModule,
     TuiLinkModule,
     TuiLoaderModule,
-    TuiModeModule,
     TuiNotificationModule,
     TuiSvgModule,
     TuiTextfieldControllerModule,
@@ -63,7 +62,6 @@ import {TuiCellExample7} from './examples/7';
         TuiToggleModule,
         TuiTooltipModule,
         TuiTitleModule,
-        TuiToggleModule,
         TuiSvgModule,
         TuiCheckboxModule,
         TuiLoaderModule,
@@ -76,7 +74,6 @@ import {TuiCellExample7} from './examples/7';
         TuiButtonModule,
         TuiHostedDropdownModule,
         TuiGroupModule,
-        TuiModeModule,
         tuiGetDocModules(ExampleTuiCellComponent),
     ],
     declarations: [

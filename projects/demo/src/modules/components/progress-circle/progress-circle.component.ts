@@ -51,6 +51,18 @@ export class ExampleProgressCircleComponent {
         TypeScript: import('./examples/4/index.ts?raw'),
     };
 
+    readonly dynamicColorExample: TuiDocExample = {
+        HTML: import('./examples/5/index.html?raw'),
+        LESS: import('./examples/5/index.less?raw'),
+        TypeScript: import('./examples/5/index.ts?raw'),
+    };
+
+    readonly reversedDirectionExample: TuiDocExample = {
+        HTML: import('./examples/6/index.html?raw'),
+        LESS: import('./examples/6/index.less?raw'),
+        TypeScript: import('./examples/6/index.ts?raw'),
+    };
+
     readonly exampleModule = import('./examples/import/import-module.md?raw');
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 }

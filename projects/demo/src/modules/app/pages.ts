@@ -864,8 +864,20 @@ export const pages: TuiDocPages = [
     {
         section: `Experimental`,
         title: `Button`,
-        keywords: `кнопка, button, icon-button, иконка`,
-        route: `/experimental/button`,
+        subPages: [
+            {
+                section: `Experimental`,
+                title: `Button`,
+                keywords: `кнопка, button, icon-button, иконка`,
+                route: `/experimental/button`,
+            },
+            {
+                section: `Experimental`,
+                title: `ButtonVertical`,
+                keywords: `кнопка, button, vertical-button, вертикальная`,
+                route: `/experimental/button-vertical`,
+            },
+        ],
     },
     {
         section: `Experimental`,
@@ -950,6 +962,12 @@ export const pages: TuiDocPages = [
         title: `Amount `,
         keywords: `amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро`,
         route: `/experimental/amount`,
+    },
+    {
+        section: `Experimental`,
+        title: `Appearance`,
+        keywords: `colors, css, theme, custom, style`,
+        route: `/experimental/appearance`,
     },
     {
         section: `Experimental`,

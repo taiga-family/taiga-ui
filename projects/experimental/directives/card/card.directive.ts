@@ -1,24 +1,8 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    Directive,
-    Inject,
-    Input,
-    ViewEncapsulation,
-} from '@angular/core';
+import {Directive, Inject, Input} from '@angular/core';
 import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
 import {TuiSizeL} from '@taiga-ui/core';
 
-@Component({
-    template: '',
-    styleUrls: ['./card.styles.less'],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-card',
-    },
-})
-export class TuiCardComponent {}
+import {TuiCardComponent} from './card.component';
 
 @Directive({
     selector: '[tuiCard]',

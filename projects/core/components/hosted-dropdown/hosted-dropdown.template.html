@@ -21,7 +21,7 @@
             class="t-dropdown"
             (keydown)="onKeydown($event)"
         >
-            <ng-container
+            <div
                 *polymorpheusOutlet="
                     content as text;
                     context: {
@@ -29,9 +29,10 @@
                         close: close
                     }
                 "
+                class="t-primitive"
             >
                 {{ text }}
-            </ng-container>
+            </div>
         </div>
         <!--This DIV is here to start backwards TreeWalker for focusing last focusable item on ArrowUp-->
         <div></div>

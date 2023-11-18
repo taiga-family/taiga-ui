@@ -12,21 +12,16 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
-    TUI_BASE_HREF,
     TUI_PLATFORM,
     tuiControlValue,
     TuiDestroyService,
     tuiIsString,
     TuiPlatform,
+    TuiStringHandler,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import {
-    MODE_PROVIDER,
-    TUI_MODE,
-    TUI_SVG_OPTIONS,
-    TuiBrightness,
-    TuiSvgOptions,
-} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
+import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, takeUntil} from 'rxjs/operators';
 
@@ -53,8 +48,7 @@ export class TuiCheckboxComponent implements OnInit {
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
-        @Inject(TUI_BASE_HREF) private readonly baseHref: string,
-        @Inject(TUI_SVG_OPTIONS) private readonly svg: TuiSvgOptions,
+        @Inject(TUI_ICON_RESOLVER) private readonly resolver: TuiStringHandler<string>,
         @Inject(TUI_CHECKBOX_OPTIONS) private readonly options: TuiCheckboxOptions,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<unknown>,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLInputElement>,
@@ -69,9 +63,8 @@ export class TuiCheckboxComponent implements OnInit {
             ? this.options.icons.indeterminate
             : this.options.icons.checked;
         const icon = tuiIsString(option) ? option : option(this.size);
-        const mask = icon.includes('/') ? icon : this.svg.path(icon, this.baseHref);
 
-        return `url(${mask})`;
+        return `url(${this.resolver(icon)})`;
     }
 
     ngOnInit(): void {

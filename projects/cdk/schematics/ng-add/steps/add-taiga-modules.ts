@@ -170,7 +170,7 @@ function addRootTuiProvidersToBootstrapFn(
                 Node.isCallExpression(el) &&
                 el.getExpression().getText() === `importProvidersFrom`,
         );
-    const providerAnimation = initializer
+    const provideAnimations = initializer
         .getElements()
         .find(
             el =>
@@ -197,13 +197,13 @@ function addRootTuiProvidersToBootstrapFn(
         );
     }
 
-    if (!providerAnimation) {
+    if (!provideAnimations) {
         modules.push({
-            name: `providerAnimation`,
+            name: `provideAnimations`,
             packageName: `@angular/platform-browser/animations`,
         });
 
-        pushToObjectArrayProperty(bootstrapOptions, `providers`, `providerAnimation()`, {
+        pushToObjectArrayProperty(bootstrapOptions, `providers`, `provideAnimations()`, {
             index: 0,
         });
     }

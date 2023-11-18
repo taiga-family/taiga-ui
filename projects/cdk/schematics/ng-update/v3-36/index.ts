@@ -23,7 +23,6 @@ const OLD_PACKAGE = `@taiga-ui/addon-editor`;
 const NEW_PACKAGE = `@tinkoff/tui-editor`;
 const NEW_PACKAGE_VERSION = `^1.0.1`;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export function updateToV3_36(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext): void => {
         if (!getPackageJsonDependency(tree, OLD_PACKAGE)) {

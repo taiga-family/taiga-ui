@@ -1,0 +1,25 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+button {
+    border: none;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+[tuiAppearance][data-appearance='acid'] {
+    color: var(--tui-support-06);
+    background: var(--tui-support-09);
+
+    --tui-focus: var(--tui-support-06);
+
+    .appearance-hover({
+        color: var(--tui-support-09);
+        background: var(--tui-support-14);
+    });
+
+    .appearance-active({
+        color: var(--tui-support-08);
+        background: var(--tui-support-10);
+    });
+}

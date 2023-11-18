@@ -12,8 +12,8 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                 >
-                    <line x1="12" y1="5" x2="12" y2="19" />
-                    <polyline points="19 12 12 19 5 12" />
+                    <line vector-effect="non-scaling-stroke" x1="12" y1="5" x2="12" y2="19" />
+                    <polyline vector-effect="non-scaling-stroke" points="19 12 12 19 5 12" />
                 </svg>
             </svg>
         </svg>

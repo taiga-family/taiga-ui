@@ -13,7 +13,6 @@ const FLAKY_EXAMPLES = new Map<string, number[]>([
     [`/icons/customization`, [0]], // TODO: investigate flaky test
     [`/navigation/stepper`, [2]], // TODO: flaky test for proprietary demo (autoscroll problems)
     [`/navigation/tab-bar`, [3]], // Imitating server response (timer(3000))
-    [`/experimental/icon`, [2]], // It contains "@supports not (mask-mode: luminance) {display: none}"
 ]);
 
 export function tuiIsFlakyExample(path: string, exampleIndex: number): boolean {

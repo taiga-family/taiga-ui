@@ -5,7 +5,6 @@ import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 @Component({
     selector: 'example-icon',
     templateUrl: './icon.template.html',
-    styleUrls: ['./icon.style.less'],
     changeDetection,
 })
 export class ExampleTuiIconComponent {
@@ -31,6 +30,5 @@ export class ExampleTuiIconComponent {
     readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
-        LESS: import('./examples/3/index.less?raw'),
     };
 }

@@ -9,4 +9,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
     changeDetection,
 })
-export class TuiProgressCircleExample2 {}
+export class TuiProgressCircleExample2 {
+    readonly sizes = ['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl'] as const;
+}
