@@ -49,7 +49,7 @@ export class LandingComponent implements OnInit {
     }
 
     get hidden(): boolean {
-        return !!this.storage.getItem(`env`);
+        return !!this.storage.getItem('env');
     }
 
     @HostBinding('style.background')

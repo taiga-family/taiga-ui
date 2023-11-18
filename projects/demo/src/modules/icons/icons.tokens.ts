@@ -81,7 +81,7 @@ function ensureIcons(): {LARGE: DemoTuiIcon[]; NORMAL: DemoTuiIcon[]} {
     const normal: DemoTuiIcon[] = [];
     const commerceSet = new Set([...COMMERCE_SYSTEMS, ...COMMERCE_SERVICES]);
 
-    for (const icon in allIcons) {
+    for (const [icon] of Object.entries(allIcons)) {
         const shouldSkip =
             commerceSet.has(icon as DemoTuiIcon) ||
             icon === `tuiCoreIcons` ||
