@@ -87,7 +87,7 @@ describe(`Calendar`, () => {
         expect(await calendar.primitiveCalendarShown()).toBe(true);
     });
 
-    it('Year selection is initially visible in "year" view', async () => {
+    it(`Year selection is initially visible in "year" view`, async () => {
         const calendar = await loader.getHarness(
             TuiCalendarHarness.with({selector: `#year-view`}),
         );
