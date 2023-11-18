@@ -1,4 +1,4 @@
-import {tuiGoto} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe(`Button`, () => {
@@ -11,12 +11,11 @@ test.describe(`Button`, () => {
     });
 
     test(`dropdown`, async ({page}) => {
-        const rotatingBlock = page.locator(`tui-doc-example[heading="Rotating"]`);
+        const example = new TuiDocumentationPagePO(page).getExample(`#dropdown`);
 
-        const button = rotatingBlock.locator(`button[data-appearance=primary]`);
+        const button = example.locator(`button[data-appearance=primary]`);
 
-        await button.click();
-        await button.click();
+        await button.scrollIntoViewIfNeeded();
 
         await expect(page).toHaveScreenshot(`button-dropdown-1.png`);
         await button.click();
