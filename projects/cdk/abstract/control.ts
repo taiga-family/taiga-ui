@@ -2,6 +2,7 @@ import {
     ChangeDetectorRef,
     Directive,
     HostBinding,
+    HostListener,
     Inject,
     Input,
     OnDestroy,
@@ -15,7 +16,7 @@ import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {TuiControlValueTransformer} from '@taiga-ui/cdk/interfaces';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils';
-import {merge, Subject} from 'rxjs';
+import {merge, Subject, timer} from 'rxjs';
 import {
     delay,
     distinctUntilChanged,
@@ -200,6 +201,18 @@ export abstract class AbstractTuiControl<T>
                 : value;
 
         this.refreshLocalValue(this.fromControlValue(controlValue));
+    }
+
+    /**
+     * @note:
+     * In firefox `document.hasFocus()` return false
+     * in next macrotask after window.blur()
+     */
+    @HostListener(`focusout.silent`)
+    protected focusout(): void {
+        timer(0)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(() => this.cdr.detectChanges());
     }
 
     protected override updateFocused(focused: boolean): void {
