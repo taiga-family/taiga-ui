@@ -30,13 +30,19 @@ export class ExampleTuiAxesComponent {
         LESS: import('./examples/2/index.less?raw'),
     };
 
+    readonly example3: TuiDocExample = {
+        TypeScript: import('./examples/3/index.ts?raw'),
+        HTML: import('./examples/3/index.html?raw'),
+        LESS: import('./examples/3/index.less?raw'),
+    };
+
     readonly lineVariants: readonly TuiLineType[] = ['solid', 'dashed', 'none', 'hidden'];
 
     readonly labelsXVariants: ReadonlyArray<ReadonlyArray<string | null>> = [
         [],
         ['', '25%', '50%', '100%'],
         ['One', 'Two', 'Three'],
-        ['One', null, '', 'Two and a half', 'Three', null],
+        ['One', null, '', 'Two and a half', 'Three', null, null],
     ];
 
     readonly labelsYVariants: ReadonlyArray<readonly string[]> = [
