@@ -21,16 +21,12 @@ test.describe(`MobileCalendar`, () => {
         await tuiGoto(page, `components/mobile-calendar/API?max$=1`);
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-
-
         await expect(apiPageExample).toHaveScreenshot(`02-mobile-calendar-disabled.png`);
     });
 
     test(`check enabled state`, async ({page}) => {
         await tuiGoto(page, `components/mobile-calendar/API?max$=0`);
         const {apiPageExample} = new TuiDocumentationPagePO(page);
-
-
 
         await expect(apiPageExample).toHaveScreenshot(`03-mobile-calendar-enabled.png`);
     });
