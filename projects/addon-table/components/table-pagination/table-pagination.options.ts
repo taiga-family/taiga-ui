@@ -2,6 +2,10 @@ import {Provider} from '@angular/core';
 import {TuiContextWithImplicit, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
+function defaultSizeOptionContent({$implicit}: TuiContextWithImplicit<number>): string {
+    return `${$implicit}`;
+}
+
 export interface TuiTablePaginationOptions {
     readonly items: readonly number[];
     readonly showPages: boolean;
@@ -9,10 +13,6 @@ export interface TuiTablePaginationOptions {
     readonly sizeOptionContent: PolymorpheusContent<
         TuiContextWithImplicit<number> & {total: number}
     >;
-}
-
-function defaultSizeOptionContent({$implicit}: TuiContextWithImplicit<number>): string {
-    return `${$implicit}`;
 }
 
 export const TUI_TABLE_PAGINATION_DEFAULT_OPTIONS: TuiTablePaginationOptions = {

@@ -43,6 +43,15 @@ const DATA: readonly User[] = Array.from({length: 300}, () => ({
     dob: TODAY.append({day: -Math.floor(Math.random() * 4000) - 7500}),
 }));
 
+function getAge({dob}: User): number {
+    const years = TODAY.year - dob.year;
+    const months = TODAY.month - dob.month;
+    const days = TODAY.day - dob.day;
+    const offset = tuiToInt(months > 0 || (!months && days > 9));
+
+    return years + offset;
+}
+
 @Component({
     selector: 'tui-table-example-5',
     templateUrl: './index.html',
@@ -58,13 +67,4 @@ export class TuiTableExample5 {
     readonly getAge = getAge;
 
     readonly ageSorter: TuiComparator<User> = (a: User, b: User) => getAge(a) - getAge(b);
-}
-
-function getAge({dob}: User): number {
-    const years = TODAY.year - dob.year;
-    const months = TODAY.month - dob.month;
-    const days = TODAY.day - dob.day;
-    const offset = tuiToInt(months > 0 || (!months && days > 9));
-
-    return years + offset;
 }

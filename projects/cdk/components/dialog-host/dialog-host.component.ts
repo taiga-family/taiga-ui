@@ -17,16 +17,17 @@ import {tuiCreateToken} from '@taiga-ui/cdk/utils';
 import {combineLatest, Observable, of} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
-/**
- * Is closing dialog on browser backward navigation enabled
- */
-export const TUI_DIALOG_CLOSES_ON_BACK = tuiCreateToken(of(false));
-
 const FAKE_HISTORY_STATE = {label: 'ignoreMe'} as const;
+
 const isFakeHistoryState = (
     historyState: Record<string, unknown>,
 ): historyState is typeof FAKE_HISTORY_STATE =>
     historyState?.label === FAKE_HISTORY_STATE.label;
+
+/**
+ * Is closing dialog on browser backward navigation enabled
+ */
+export const TUI_DIALOG_CLOSES_ON_BACK = tuiCreateToken(of(false));
 
 @Component({
     selector: 'tui-dialog-host',

@@ -3,6 +3,18 @@ import {tuiCreateTokenFromFactory, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_SVG_OPTIONS} from '@taiga-ui/core';
 import * as allIcons from '@taiga-ui/icons';
 
+// TODO: remove in 4.0
+const DEPRECATED: DemoTuiIcon[] = [
+    `tuiIconRedo`,
+    `tuiIconRefresh`,
+    `tuiIconRefreshLarge`,
+    `tuiIconSortUp`,
+    `tuiIconSortDown`,
+    `tuiIconUndo`,
+];
+
+const {LARGE, NORMAL} = ensureIcons();
+
 export type DemoTuiIcon = keyof typeof import('@taiga-ui/icons');
 
 export type DemoTuiIconsList = ReadonlyArray<DemoTuiIcon | string>;
@@ -43,40 +55,11 @@ export const COMMERCE_SERVICES: DemoTuiIcon[] = [
     `tuiIconAndroidPay`,
 ];
 
-// TODO: remove in 4.0
-const DEPRECATED: DemoTuiIcon[] = [
-    `tuiIconRedo`,
-    `tuiIconRefresh`,
-    `tuiIconRefreshLarge`,
-    `tuiIconSortUp`,
-    `tuiIconSortDown`,
-    `tuiIconUndo`,
-];
-
-const {LARGE, NORMAL} = ensureIcons();
-
-export const ICONS = (deprecated: TuiStringHandler<string>): DemoTuiIconsTabs => ({
-    'Description and examples': {
-        [`Normal / 16px`]: NORMAL.filter(
-            icon => !deprecated(icon) && !DEPRECATED.includes(icon),
-        ),
-        [`Large / 24px`]: LARGE.filter(
-            icon => !deprecated(icon) && !DEPRECATED.includes(icon),
-        ),
-        [`Payment systems`]: COMMERCE_SYSTEMS,
-        [`Payment services`]: COMMERCE_SERVICES,
-    },
-});
-
-export const TUI_DEMO_ICONS = tuiCreateTokenFromFactory(() =>
-    ICONS(inject(TUI_SVG_OPTIONS).deprecated),
-);
-
 /**
  * @description:
  * Algorithm: O(n), where `n` - count of icons
  */
-function ensureIcons(): {LARGE: DemoTuiIcon[]; NORMAL: DemoTuiIcon[]} {
+export function ensureIcons(): {LARGE: DemoTuiIcon[]; NORMAL: DemoTuiIcon[]} {
     const large: DemoTuiIcon[] = [];
     const normal: DemoTuiIcon[] = [];
     const commerceSet = new Set([...COMMERCE_SYSTEMS, ...COMMERCE_SERVICES]);
@@ -100,3 +83,20 @@ function ensureIcons(): {LARGE: DemoTuiIcon[]; NORMAL: DemoTuiIcon[]} {
 
     return {LARGE: large, NORMAL: normal};
 }
+
+export const ICONS = (deprecated: TuiStringHandler<string>): DemoTuiIconsTabs => ({
+    'Description and examples': {
+        [`Normal / 16px`]: NORMAL.filter(
+            icon => !deprecated(icon) && !DEPRECATED.includes(icon),
+        ),
+        [`Large / 24px`]: LARGE.filter(
+            icon => !deprecated(icon) && !DEPRECATED.includes(icon),
+        ),
+        [`Payment systems`]: COMMERCE_SYSTEMS,
+        [`Payment services`]: COMMERCE_SERVICES,
+    },
+});
+
+export const TUI_DEMO_ICONS = tuiCreateTokenFromFactory(() =>
+    ICONS(inject(TUI_SVG_OPTIONS).deprecated),
+);

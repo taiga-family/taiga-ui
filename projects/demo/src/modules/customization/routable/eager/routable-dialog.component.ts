@@ -1,5 +1,5 @@
 import {Component, Inject, Self} from '@angular/core';
-import {Event, NavigationEnd, Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiDestroyService} from '@taiga-ui/cdk';
@@ -36,7 +36,7 @@ export class RoutableDialogComponent {
      * Helps to destroy router-outlet for named outlet example
      */
     readonly isNamedOutletPage$ = this.router.events.pipe(
-        filter(isNavigationEndEvent),
+        filter((event): event is NavigationEnd => event instanceof NavigationEnd),
         map(event => event.url.includes('NamedOutlet')),
         shareReplay({refCount: true, bufferSize: 1}),
     );
@@ -47,8 +47,4 @@ export class RoutableDialogComponent {
     ) {
         this.isNamedOutletPage$.pipe(takeUntil(destroy$)).subscribe();
     }
-}
-
-function isNavigationEndEvent<T>(event: Event | T): event is NavigationEnd {
-    return event instanceof NavigationEnd;
 }

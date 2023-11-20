@@ -8,12 +8,6 @@ import {map} from 'rxjs/operators';
 import {TUI_FIRST_DAY_OF_WEEK} from './first-day-of-week';
 import {TUI_SHORT_WEEK_DAYS} from './i18n';
 
-/**
- * @deprecated
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export type WEEK_DAYS_NAMES = [string, string, string, string, string, string, string];
-
 const convertToSundayFirstWeekFormat = (
     weekDaysNames: WEEK_DAYS_NAMES,
 ): WEEK_DAYS_NAMES => {
@@ -24,6 +18,12 @@ const convertToSundayFirstWeekFormat = (
         ...weekDaysNames.slice(0, sundayIndex),
     ] as WEEK_DAYS_NAMES;
 };
+
+/**
+ * @deprecated
+ */
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export type WEEK_DAYS_NAMES = [string, string, string, string, string, string, string];
 
 /**
  * Ordered calendars i18n texts
