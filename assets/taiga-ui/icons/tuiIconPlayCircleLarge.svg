@@ -12,8 +12,8 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                 >
-                    <circle cx="12" cy="12" r="10" />
-                    <polygon points="10 8 16 12 10 16 10 8" />
+                    <circle vector-effect="non-scaling-stroke" cx="12" cy="12" r="10" />
+                    <polygon vector-effect="non-scaling-stroke" points="10 8 16 12 10 16 10 8" />
                 </svg>
             </svg>
         </svg>
