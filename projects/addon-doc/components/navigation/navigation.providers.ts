@@ -6,6 +6,13 @@ import {TuiDestroyService, tuiIsPresent} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 
+function labelsProviderFactory(pages: TuiDocPages): readonly string[] {
+    return pages
+        .map(({section}) => section)
+        .filter(tuiIsPresent)
+        .filter((item, index, array) => array.indexOf(item) === index);
+}
+
 /**
  * Page title
  */
@@ -64,10 +71,3 @@ export const NAVIGATION_PROVIDERS: Provider[] = [
         },
     },
 ];
-
-function labelsProviderFactory(pages: TuiDocPages): readonly string[] {
-    return pages
-        .map(({section}) => section)
-        .filter(tuiIsPresent)
-        .filter((item, index, array) => array.indexOf(item) === index);
-}

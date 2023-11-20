@@ -4,30 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import fileWithBreakpoints from '@taiga-ui/core/styles/variables/media.less?raw';
 
-@Component({
-    selector: 'css-breakpoints',
-    templateUrl: './breakpoints.template.html',
-    styleUrls: ['./breakpoints.style.less'],
-    encapsulation,
-    changeDetection,
-})
-export class BreakpointsComponent {
-    readonly breakpoints = parseBreakpoints(fileWithBreakpoints);
-    readonly columnsNames = Object.keys(this.breakpoints[0]);
-
-    readonly importTaigaUILocalLess = import(
-        './examples/import/import-taiga-ui-local-less.md?raw'
-    );
-
-    readonly exampleBaseUsage = import('./examples/import/base-breakpoint-usage.md?raw');
-
-    readonly example1: TuiDocExample = {
-        HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
-        TypeScript: import('./examples/1/index.ts?raw'),
-    };
-}
-
 /**
  * Match all code comments.
  *
@@ -51,4 +27,28 @@ function parseBreakpoints(file: string): Array<{name: string; value: string}> {
 
             return {name, value: value.join(':').replace(/[~'"]/g, '').trim()};
         });
+}
+
+@Component({
+    selector: 'css-breakpoints',
+    templateUrl: './breakpoints.template.html',
+    styleUrls: ['./breakpoints.style.less'],
+    encapsulation,
+    changeDetection,
+})
+export class BreakpointsComponent {
+    readonly breakpoints = parseBreakpoints(fileWithBreakpoints);
+    readonly columnsNames = Object.keys(this.breakpoints[0]);
+
+    readonly importTaigaUILocalLess = import(
+        './examples/import/import-taiga-ui-local-less.md?raw'
+    );
+
+    readonly exampleBaseUsage = import('./examples/import/base-breakpoint-usage.md?raw');
+
+    readonly example1: TuiDocExample = {
+        HTML: import('./examples/1/index.html?raw'),
+        LESS: import('./examples/1/index.less?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
+    };
 }

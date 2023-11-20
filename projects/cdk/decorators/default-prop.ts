@@ -1,6 +1,24 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 
+function errorGetDefault(key: string | symbol, component: string): string {
+    return `Default value for ${String(
+        key,
+    )} was not provided in ${component}, error in Taiga UI Angular Kit`;
+}
+
+function errorSetDefault(key: string | symbol, component: string): string {
+    return `Undefined was passed as ${String(
+        key,
+    )} to ${component}, which is invalid input, using default value:`;
+}
+
+function errorSetDefaultInitial(key: string | symbol, component: string): string {
+    return `Undefined was passed as default value for ${String(
+        key,
+    )} to ${component}, error in Taiga UI Angular Kit`;
+}
+
 /**
  * @deprecated:
  * not compatible with TypeScript 5
@@ -73,22 +91,4 @@ export function tuiDefaultProp<T extends Record<string, any>, K extends keyof T>
             },
         });
     };
-}
-
-function errorGetDefault(key: string | symbol, component: string): string {
-    return `Default value for ${String(
-        key,
-    )} was not provided in ${component}, error in Taiga UI Angular Kit`;
-}
-
-function errorSetDefault(key: string | symbol, component: string): string {
-    return `Undefined was passed as ${String(
-        key,
-    )} to ${component}, which is invalid input, using default value:`;
-}
-
-function errorSetDefaultInitial(key: string | symbol, component: string): string {
-    return `Undefined was passed as default value for ${String(
-        key,
-    )} to ${component}, error in Taiga UI Angular Kit`;
 }

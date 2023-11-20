@@ -29,6 +29,10 @@ import {TuiDialogCloseService} from './dialog-close.service';
 
 const REQUIRED_ERROR = new Error('Required dialog was dismissed');
 
+function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
+    return isObservable(valueOrStream) ? valueOrStream : of(valueOrStream);
+}
+
 @Component({
     selector: 'tui-dialog',
     templateUrl: './dialog.template.html',
@@ -111,8 +115,4 @@ export class TuiDialogComponent<O, I> {
             this.context.$implicit.complete();
         }
     }
-}
-
-function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
-    return isObservable(valueOrStream) ? valueOrStream : of(valueOrStream);
 }

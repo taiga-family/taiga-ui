@@ -11,13 +11,6 @@ import {
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 import {replaceIdentifier} from '../../steps/replace-identifier';
 
-export function restoreTuiMatcher(options: TuiSchema): void {
-    updateTuiMatcher(options);
-    renameTuiTypedMatcher(options);
-
-    !options[`skip-logs`] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
-}
-
 function updateTuiMatcher(options: TuiSchema): void {
     !options[`skip-logs`] &&
         infoLog(
@@ -57,4 +50,11 @@ function renameTuiTypedMatcher(options: TuiSchema): void {
         from: {name: `TuiTypedMatcher`, moduleSpecifier: `@taiga-ui/cdk`},
         to: {name: `TuiMatcher`, moduleSpecifier: `@taiga-ui/cdk`},
     });
+}
+
+export function restoreTuiMatcher(options: TuiSchema): void {
+    updateTuiMatcher(options);
+    renameTuiTypedMatcher(options);
+
+    !options[`skip-logs`] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
 }

@@ -18,40 +18,6 @@ import {getProjects} from '../../utils/get-projects';
 import {getStandaloneBootstrapFunction} from '../../utils/get-standalone-bootstrap-function';
 import {TuiSchema} from '../schema';
 
-export function wrapWithTuiRootComponent(options: TuiSchema): Rule {
-    return async (tree: Tree, context: SchematicContext): Promise<Rule | void> => {
-        const workspace = await getWorkspace(tree);
-        const project = getProjects(options, workspace)[0];
-
-        if (!project) {
-            return;
-        }
-
-        const buildOptions = getProjectTargetOptions(project, `build`);
-
-        setActiveProject(createProject(tree, `/`, ALL_FILES));
-        const appTemplatePath = getAppTemplatePath(buildOptions.main as string);
-
-        saveActiveProject();
-
-        if (!appTemplatePath) {
-            context.logger.error(
-                `Could not find the default main template file for this project.`,
-            );
-            context.logger.info(
-                `Consider manually wrapping content of your app with tui-root`,
-            );
-            context.logger.info(
-                `More information at https://taiga-ui.dev/getting-started`,
-            );
-
-            return;
-        }
-
-        addTuiRootComponent(appTemplatePath, context, tree);
-    };
-}
-
 function addTuiRootComponent(
     filePath: string,
     context: SchematicContext,
@@ -153,4 +119,38 @@ function getTemplateInitializer(
     }
 
     return property.getInitializer();
+}
+
+export function wrapWithTuiRootComponent(options: TuiSchema): Rule {
+    return async (tree: Tree, context: SchematicContext): Promise<Rule | void> => {
+        const workspace = await getWorkspace(tree);
+        const project = getProjects(options, workspace)[0];
+
+        if (!project) {
+            return;
+        }
+
+        const buildOptions = getProjectTargetOptions(project, `build`);
+
+        setActiveProject(createProject(tree, `/`, ALL_FILES));
+        const appTemplatePath = getAppTemplatePath(buildOptions.main as string);
+
+        saveActiveProject();
+
+        if (!appTemplatePath) {
+            context.logger.error(
+                `Could not find the default main template file for this project.`,
+            );
+            context.logger.info(
+                `Consider manually wrapping content of your app with tui-root`,
+            );
+            context.logger.info(
+                `More information at https://taiga-ui.dev/getting-started`,
+            );
+
+            return;
+        }
+
+        addTuiRootComponent(appTemplatePath, context, tree);
+    };
 }

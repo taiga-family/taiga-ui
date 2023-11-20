@@ -12,18 +12,6 @@ import {getNamedImportReferences} from '../../utils/get-named-import-references'
 import {removeImport} from '../../utils/import-manipulations';
 import {ReplacementEnum} from '../interfaces/replacement-enum';
 
-export function replaceEnums(options: TuiSchema, enums: ReplacementEnum[]): void {
-    !options[`skip-logs`] &&
-        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing enums imports...`);
-
-    enums.forEach(({name, replaceValues, keepAsType}) =>
-        replaceEnumWithString(name, replaceValues, keepAsType),
-    );
-
-    !options[`skip-logs`] &&
-        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} enums replaced \n`);
-}
-
 function replaceEnumWithString(
     enumName: string,
     replaceValues: Record<string, string>,
@@ -67,4 +55,16 @@ function containTypeRef(node: ImportSpecifier): boolean {
         .getNameNode()
         .findReferencesAsNodes()
         .some(ref => Node.isTypeReference(ref.getParent()));
+}
+
+export function replaceEnums(options: TuiSchema, enums: ReplacementEnum[]): void {
+    !options[`skip-logs`] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing enums imports...`);
+
+    enums.forEach(({name, replaceValues, keepAsType}) =>
+        replaceEnumWithString(name, replaceValues, keepAsType),
+    );
+
+    !options[`skip-logs`] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} enums replaced \n`);
 }

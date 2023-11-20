@@ -13,35 +13,6 @@ interface WrappedContent {
 
 type ContentInterceptor = (src: string) => string;
 
-export function tuiProcessIcons(files: string[], interceptor?: ContentInterceptor): void {
-    for (const file of files) {
-        const baseContent = String(fs.readFileSync(file));
-        const src = interceptor ? interceptor(baseContent) : baseContent;
-
-        const name = parse(file).base.replace(`.svg`, ``);
-
-        if (src.includes(`id="${name}"`) || name.includes(`Outline`)) {
-            console.info(`\x1B[33m%s\x1B[0m`, `[skip]:`, file);
-            continue;
-        }
-
-        const wrapped = wrapIcon(src, name);
-
-        const final =
-            // eslint-disable-next-line @taiga-ui/experience/no-typeof
-            typeof wrapped === `string`
-                ? `${wrapped.replace(
-                      START,
-                      `<svg xmlns="http://www.w3.org/2000/svg"><g id="${name}" xmlns="http://www.w3.org/2000/svg"><svg`,
-                  )}</g></svg>`
-                : `<svg xmlns="http://www.w3.org/2000/svg" width="${wrapped.width}" height="${wrapped.height}">${wrapped.src}</svg>`;
-
-        fs.writeFileSync(file, final);
-
-        console.info(`\x1B[32m%s\x1B[0m`, `[preprocessed]:`, file);
-    }
-}
-
 function wrapIcon(source: string, name: string): WrappedContent | string {
     const src = source.slice(Math.max(0, source.indexOf(START)));
     const attributes = src.slice(0, Math.max(0, src.indexOf(`>`)));
@@ -87,6 +58,35 @@ function wrapIcon(source: string, name: string): WrappedContent | string {
             </svg>
         </g>`.trim(),
     };
+}
+
+export function tuiProcessIcons(files: string[], interceptor?: ContentInterceptor): void {
+    for (const file of files) {
+        const baseContent = String(fs.readFileSync(file));
+        const src = interceptor ? interceptor(baseContent) : baseContent;
+
+        const name = parse(file).base.replace(`.svg`, ``);
+
+        if (src.includes(`id="${name}"`) || name.includes(`Outline`)) {
+            console.info(`\x1B[33m%s\x1B[0m`, `[skip]:`, file);
+            continue;
+        }
+
+        const wrapped = wrapIcon(src, name);
+
+        const final =
+            // eslint-disable-next-line @taiga-ui/experience/no-typeof
+            typeof wrapped === `string`
+                ? `${wrapped.replace(
+                      START,
+                      `<svg xmlns="http://www.w3.org/2000/svg"><g id="${name}" xmlns="http://www.w3.org/2000/svg"><svg`,
+                  )}</g></svg>`
+                : `<svg xmlns="http://www.w3.org/2000/svg" width="${wrapped.width}" height="${wrapped.height}">${wrapped.src}</svg>`;
+
+        fs.writeFileSync(file, final);
+
+        console.info(`\x1B[32m%s\x1B[0m`, `[preprocessed]:`, file);
+    }
 }
 
 /**

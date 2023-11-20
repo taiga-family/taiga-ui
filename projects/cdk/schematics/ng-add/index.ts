@@ -16,18 +16,6 @@ import {
 } from './constants/versions';
 import {TuiSchema} from './schema';
 
-export function ngAdd(options: TuiSchema): Rule {
-    return (tree: Tree, context: SchematicContext): void => {
-        context.logger.info(`The main packages will be installed - ${MAIN_PACKAGES}`);
-
-        addDependencies(tree, options);
-
-        context.addTask(new NodePackageInstallTask(), [
-            context.addTask(new RunSchematicTask(`ng-add-setup-project`, options)),
-        ]);
-    };
-}
-
 function addDependencies(tree: Tree, options: TuiSchema): void {
     const packages = [...MAIN_PACKAGES, ...options.addons];
 
@@ -93,4 +81,16 @@ function removeTaigaSchematicsPackage(tree: Tree): void {
     } catch {
         // noop
     }
+}
+
+export function ngAdd(options: TuiSchema): Rule {
+    return (tree: Tree, context: SchematicContext): void => {
+        context.logger.info(`The main packages will be installed - ${MAIN_PACKAGES}`);
+
+        addDependencies(tree, options);
+
+        context.addTask(new NodePackageInstallTask(), [
+            context.addTask(new RunSchematicTask(`ng-add-setup-project`, options)),
+        ]);
+    };
 }
