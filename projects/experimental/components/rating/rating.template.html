@@ -5,19 +5,19 @@
         [class.t-item_active]="isActive(index)"
         (pointerup)="onClick(max - index)"
     >
-        <tui-svg
+        <tui-icon
             *polymorpheusOutlet="icon as src; context: {$implicit: max - index}"
             class="t-icon t-icon_blank"
             [class.t-icon_fraction]="isFraction(index)"
-            [src]="src"
+            [icon]="src.toString()"
             [style.--t-cut.%]="100 - getCut(index)"
-        ></tui-svg>
-        <tui-svg
+        ></tui-icon>
+        <tui-icon
             *polymorpheusOutlet="icon as src; context: {$implicit: max - index}"
             class="t-icon"
-            [src]="src"
+            [icon]="src.toString()"
             [style.--t-cut.%]="getCut(index)"
-        ></tui-svg>
+        ></tui-icon>
     </div>
 </div>
 <input
