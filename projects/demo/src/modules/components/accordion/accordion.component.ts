@@ -48,6 +48,11 @@ export class ExampleTuiAccordionComponent {
         LESS: import('./examples/4/index.less?raw'),
     };
 
+    readonly example5: TuiDocExample = {
+        TypeScript: import('./examples/5/index.ts?raw'),
+        HTML: import('./examples/5/index.html?raw'),
+    };
+
     readonly bordersVariants = ['all', 'top-bottom'] as const;
 
     borders: 'all' | 'top-bottom' = this.bordersVariants[0];
