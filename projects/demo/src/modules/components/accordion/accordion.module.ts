@@ -23,6 +23,7 @@ import {TuiAccordionExample1} from './examples/1';
 import {TuiAccordionExample2} from './examples/2';
 import {TuiAccordionExample3} from './examples/3';
 import {TuiAccordionExample4} from './examples/4';
+import {TuiAccordionExample5} from './examples/5';
 
 @NgModule({
     imports: [
@@ -48,6 +49,7 @@ import {TuiAccordionExample4} from './examples/4';
         TuiAccordionExample2,
         TuiAccordionExample3,
         TuiAccordionExample4,
+        TuiAccordionExample5,
     ],
     exports: [ExampleTuiAccordionComponent],
 })
