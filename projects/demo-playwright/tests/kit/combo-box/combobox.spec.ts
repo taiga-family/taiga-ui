@@ -15,10 +15,10 @@ describe(`ComboBox`, () => {
         await input.click();
         await expect(page).toHaveScreenshot(`01-combobox-dont-allow-disabled-01.png`);
 
-        await input.fill('Graham Chapman');
+        await input.fill(`Graham Chapman`);
         await expect(page).toHaveScreenshot(`01-combobox-dont-allow-disabled-02.png`);
 
-        await page.click('body');
+        await page.click(`body`);
         await expect(page).toHaveScreenshot(`01-combobox-dont-allow-disabled-03.png`);
 
         await input.click();
