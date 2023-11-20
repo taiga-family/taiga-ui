@@ -15,123 +15,6 @@ import {getExecutionTime} from '../../../utils/get-execution-time';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 import {insertTodo} from '../../../utils/insert-todo';
 
-export function dateTimeMigrations(options: TuiSchema): void {
-    !options[`skip-logs`] &&
-        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating taiga date/time...`);
-
-    let start = performance.now();
-
-    migrateProperty({
-        namedImport: `TuiDay`,
-        moduleSpecifier: `@taiga-ui/cdk`,
-        from: `formattedDay`,
-        callback: node =>
-            node.replaceWithText(
-                node.getText().replace(`formattedDay`, `getFormattedDay("DMY", ".")`),
-            ),
-    });
-
-    !options[`skip-logs`] &&
-        processLog(
-            `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}TuiDay.formattedDay ` +
-                `(${getExecutionTime(start, performance.now())})`,
-        );
-
-    start = performance.now();
-    migrateProperty({
-        namedImport: `TuiDayRange`,
-        moduleSpecifier: `@taiga-ui/cdk`,
-        from: `formattedDayRange`,
-        callback: node =>
-            node.replaceWithText(
-                node
-                    .getText()
-                    .replace(`formattedDayRange`, `getFormattedDayRange("DMY", ".")`),
-            ),
-    });
-
-    !options[`skip-logs`] &&
-        processLog(
-            `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}TuiDayRange.formattedDayRange ` +
-                `(${getExecutionTime(start, performance.now())})`,
-        );
-
-    start = performance.now();
-    migrateProperty({
-        namedImport: `TuiDayRange`,
-        moduleSpecifier: `@taiga-ui/cdk`,
-        from: `normalizeParse`,
-        callback: node => {
-            const parent = node.getParent();
-
-            if (Node.isCallExpression(parent)) {
-                changeNormalizeArgs(parent);
-            }
-        },
-    });
-
-    !options[`skip-logs`] &&
-        processLog(
-            `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}TuiDayRange.normalizeParse ` +
-                `(${getExecutionTime(start, performance.now())})`,
-        );
-
-    [
-        {
-            namedImport: `TuiMonthRange`,
-            field: `formattedMonthRange`,
-            message: `formattedMonthRange has been removed in 3.0. Please use TUI_MONTH_FORMATTER from @taiga-ui/kit`,
-        },
-        {
-            namedImport: `TuiMonth`,
-            field: `formattedMonth`,
-            message: `formattedMonth has been removed in 3.0. Please use TUI_MONTH_FORMATTER from @taiga-ui/kit`,
-        },
-        {
-            namedImport: `TuiDay`,
-            field: `getDayFromMonthRowCol`,
-            message: `getDayFromMonthRowCol has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
-        },
-        {
-            namedImport: `TuiMonth`,
-            field: `monthStartDaysOffset`,
-            message: `monthStartDaysOffset has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
-        },
-        {
-            namedImport: `TuiMonth`,
-            field: `weeksRowsCount`,
-            message: `weeksRowsCount has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
-        },
-        {
-            namedImport: `TuiYear`,
-            field: `getYearStartDaysOffset`,
-            message: `getYearStartDaysOffset has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
-        },
-        {
-            namedImport: `TuiYear`,
-            field: `weeksRowsCount`,
-            message: `weeksRowsCount has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
-        },
-    ].forEach(({namedImport, field, message}) => {
-        start = performance.now();
-        migrateProperty({
-            namedImport,
-            moduleSpecifier: `@taiga-ui/cdk`,
-            from: field,
-            callback: node => insertTodoBeforeNode(node, message),
-        });
-
-        !options[`skip-logs`] &&
-            processLog(
-                `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}${namedImport}.${field} ` +
-                    `(${getExecutionTime(start, performance.now())})`,
-            );
-    });
-
-    !options[`skip-logs`] &&
-        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} date/time migrated \n`);
-}
-
 function migrateProperty({
     namedImport,
     moduleSpecifier,
@@ -288,4 +171,121 @@ function areBothObjectDestructuring(ref: Node, identifier: Identifier): boolean 
         identifier.getFirstAncestorByKind(SyntaxKind.BindingElement) &&
             ref.getFirstAncestorByKind(SyntaxKind.BindingElement),
     );
+}
+
+export function dateTimeMigrations(options: TuiSchema): void {
+    !options[`skip-logs`] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating taiga date/time...`);
+
+    let start = performance.now();
+
+    migrateProperty({
+        namedImport: `TuiDay`,
+        moduleSpecifier: `@taiga-ui/cdk`,
+        from: `formattedDay`,
+        callback: node =>
+            node.replaceWithText(
+                node.getText().replace(`formattedDay`, `getFormattedDay("DMY", ".")`),
+            ),
+    });
+
+    !options[`skip-logs`] &&
+        processLog(
+            `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}TuiDay.formattedDay ` +
+                `(${getExecutionTime(start, performance.now())})`,
+        );
+
+    start = performance.now();
+    migrateProperty({
+        namedImport: `TuiDayRange`,
+        moduleSpecifier: `@taiga-ui/cdk`,
+        from: `formattedDayRange`,
+        callback: node =>
+            node.replaceWithText(
+                node
+                    .getText()
+                    .replace(`formattedDayRange`, `getFormattedDayRange("DMY", ".")`),
+            ),
+    });
+
+    !options[`skip-logs`] &&
+        processLog(
+            `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}TuiDayRange.formattedDayRange ` +
+                `(${getExecutionTime(start, performance.now())})`,
+        );
+
+    start = performance.now();
+    migrateProperty({
+        namedImport: `TuiDayRange`,
+        moduleSpecifier: `@taiga-ui/cdk`,
+        from: `normalizeParse`,
+        callback: node => {
+            const parent = node.getParent();
+
+            if (Node.isCallExpression(parent)) {
+                changeNormalizeArgs(parent);
+            }
+        },
+    });
+
+    !options[`skip-logs`] &&
+        processLog(
+            `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}TuiDayRange.normalizeParse ` +
+                `(${getExecutionTime(start, performance.now())})`,
+        );
+
+    [
+        {
+            namedImport: `TuiMonthRange`,
+            field: `formattedMonthRange`,
+            message: `formattedMonthRange has been removed in 3.0. Please use TUI_MONTH_FORMATTER from @taiga-ui/kit`,
+        },
+        {
+            namedImport: `TuiMonth`,
+            field: `formattedMonth`,
+            message: `formattedMonth has been removed in 3.0. Please use TUI_MONTH_FORMATTER from @taiga-ui/kit`,
+        },
+        {
+            namedImport: `TuiDay`,
+            field: `getDayFromMonthRowCol`,
+            message: `getDayFromMonthRowCol has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
+        },
+        {
+            namedImport: `TuiMonth`,
+            field: `monthStartDaysOffset`,
+            message: `monthStartDaysOffset has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
+        },
+        {
+            namedImport: `TuiMonth`,
+            field: `weeksRowsCount`,
+            message: `weeksRowsCount has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
+        },
+        {
+            namedImport: `TuiYear`,
+            field: `getYearStartDaysOffset`,
+            message: `getYearStartDaysOffset has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
+        },
+        {
+            namedImport: `TuiYear`,
+            field: `weeksRowsCount`,
+            message: `weeksRowsCount has been removed in 3.0. If you need this utils check out this pipe https://github.com/taiga-family/taiga-ui/tree/main/projects/core/pipes/calendar-sheet`,
+        },
+    ].forEach(({namedImport, field, message}) => {
+        start = performance.now();
+        migrateProperty({
+            namedImport,
+            moduleSpecifier: `@taiga-ui/cdk`,
+            from: field,
+            callback: node => insertTodoBeforeNode(node, message),
+        });
+
+        !options[`skip-logs`] &&
+            processLog(
+                `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}${namedImport}.${field} ` +
+                    `(${getExecutionTime(start, performance.now())})`,
+            );
+    });
+
+    !options[`skip-logs`] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} date/time migrated \n`);
 }

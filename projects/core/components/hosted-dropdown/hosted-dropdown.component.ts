@@ -42,11 +42,6 @@ import {TuiAccessorProxyDirective} from './accessor-proxy.directive';
 import {TUI_HOSTED_DROPDOWN_COMPONENT} from './hosted-dropdown.token';
 import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.directive';
 
-export interface TuiHostedDropdownContext
-    extends TuiContextWithImplicit<TuiActiveZoneDirective> {
-    close(): void;
-}
-
 function shouldClose(
     this: TuiHostedDropdownComponent,
     event: Event | KeyboardEvent,
@@ -58,6 +53,11 @@ function shouldClose(
         this.open &&
         !this.dropdown?.nextElementSibling
     );
+}
+
+export interface TuiHostedDropdownContext
+    extends TuiContextWithImplicit<TuiActiveZoneDirective> {
+    close(): void;
 }
 
 /* eslint-disable @typescript-eslint/member-ordering */

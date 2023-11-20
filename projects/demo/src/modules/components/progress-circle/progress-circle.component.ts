@@ -63,6 +63,12 @@ export class ExampleProgressCircleComponent {
         TypeScript: import('./examples/6/index.ts?raw'),
     };
 
+    readonly thicknessExample: TuiDocExample = {
+        HTML: import('./examples/7/index.html?raw'),
+        LESS: import('./examples/7/index.less?raw'),
+        TypeScript: import('./examples/7/index.ts?raw'),
+    };
+
     readonly exampleModule = import('./examples/import/import-module.md?raw');
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 }

@@ -11,45 +11,6 @@ import {
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 import {insertTodo} from '../../../utils/insert-todo';
 
-export function miscellaneousMigrations(options: TuiSchema): void {
-    !options[`skip-logs`] &&
-        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} miscellaneous migrating...`);
-
-    replaceEnumProperty({
-        enumName: `TuiCurrency`,
-        from: `HongKong_dollar`,
-        to: `HongKongDollar`,
-    });
-    replaceEnumProperty({
-        enumName: `TuiCurrencyCode`,
-        from: `HongKong_dollar`,
-        to: `HongKongDollar`,
-    });
-    replaceEnumProperty({
-        enumName: `TuiCreditCardAutofillName`,
-        /**
-         * Do not mark `mounth` as incorrect.
-         * cspell:ignore mounth
-         */
-        from: `CcExp_mounth`,
-        to: `CcExpMonth`,
-    });
-    replaceEnumProperty({
-        enumName: `TuiCreditCardAutofillName`,
-        from: `CcExp_year`,
-        to: `CcExpYear`,
-    });
-
-    addWarningToMethod(
-        `TuiDirectiveStylesService`,
-        `addStyle`,
-        `addStyle method has been removed. Use components approach`,
-    );
-
-    !options[`skip-logs`] &&
-        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} miscellaneous migrated \n`);
-}
-
 function addWarningToMethod(className: string, method: string, message: string): void {
     const references = getNamedImportReferences(className);
 
@@ -111,4 +72,43 @@ function checkMethod(node: TypeReferenceNode, method: string, message: string): 
             });
         }
     });
+}
+
+export function miscellaneousMigrations(options: TuiSchema): void {
+    !options[`skip-logs`] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} miscellaneous migrating...`);
+
+    replaceEnumProperty({
+        enumName: `TuiCurrency`,
+        from: `HongKong_dollar`,
+        to: `HongKongDollar`,
+    });
+    replaceEnumProperty({
+        enumName: `TuiCurrencyCode`,
+        from: `HongKong_dollar`,
+        to: `HongKongDollar`,
+    });
+    replaceEnumProperty({
+        enumName: `TuiCreditCardAutofillName`,
+        /**
+         * Do not mark `mounth` as incorrect.
+         * cspell:ignore mounth
+         */
+        from: `CcExp_mounth`,
+        to: `CcExpMonth`,
+    });
+    replaceEnumProperty({
+        enumName: `TuiCreditCardAutofillName`,
+        from: `CcExp_year`,
+        to: `CcExpYear`,
+    });
+
+    addWarningToMethod(
+        `TuiDirectiveStylesService`,
+        `addStyle`,
+        `addStyle method has been removed. Use components approach`,
+    );
+
+    !options[`skip-logs`] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} miscellaneous migrated \n`);
 }

@@ -37,7 +37,8 @@ export class TuiFileComponent {
     size: TuiSizeL = 'm';
 
     @Input()
-    showDelete = true;
+    @HostBinding('attr.data-delete')
+    showDelete: boolean | 'always' = true;
 
     @Input()
     showSize = true;

@@ -7,6 +7,7 @@ import {
     EventEmitter,
     Inject,
     Input,
+    NgZone,
     Output,
     Self,
     ViewChild,
@@ -131,6 +132,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         @Inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS)
         readonly chooseDayOrRangeTexts$: Observable<[string, string]>,
         @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
+        @Inject(NgZone) private readonly ngZone: NgZone,
     ) {
         valueChanges.pipe(takeUntil(this.destroy$)).subscribe(value => {
             this.value = value;
@@ -222,9 +224,9 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         this.activeYear = year;
         this.scrollToActiveYear('smooth');
 
-        // Delay is required to run months scroll in the next frame to prevent flicker
-        setTimeout(() => {
-            this.scrollToActiveMonth();
+        this.ngZone.runOutsideAngular(() => {
+            // Delay is required to run months scroll in the next frame to prevent flicker
+            setTimeout(() => this.scrollToActiveMonth());
         });
     }
 
@@ -317,10 +319,12 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         const touchstart$ = tuiTypedFromEvent(
             yearsScrollRef.elementRef.nativeElement,
             'touchstart',
+            {passive: true},
         );
         const touchend$ = tuiTypedFromEvent(
             yearsScrollRef.elementRef.nativeElement,
             'touchend',
+            {passive: true},
         );
         const click$ = tuiTypedFromEvent(
             yearsScrollRef.elementRef.nativeElement,
@@ -387,6 +391,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         const touchend$ = tuiTypedFromEvent(
             monthsScrollRef.elementRef.nativeElement,
             'touchend',
+            {passive: true},
         );
 
         // Smooth scroll to the closest month after scrolling is done

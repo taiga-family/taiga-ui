@@ -25,6 +25,17 @@ declare global {
     }
 }
 
+function makeScreenshotName(name?: string): string {
+    return (
+        name ??
+        Cypress.currentTest.titlePath
+            .join(`-`)
+            .replace(/\s|-/g, `.`)
+            .replace(/['[\]`()]/g, ``)
+            .toLowerCase()
+    );
+}
+
 export function tuiAddMatchImageSnapshotCommand(
     options: Options & TuiSnapshotCommandOptions,
 ): void {
@@ -47,16 +58,5 @@ export function tuiAddMatchImageSnapshotCommand(
 
             matchSnapshotFn(prevSubject, makeScreenshotName(name), overloadedOptions);
         },
-    );
-}
-
-function makeScreenshotName(name?: string): string {
-    return (
-        name ??
-        Cypress.currentTest.titlePath
-            .join(`-`)
-            .replace(/\s|-/g, `.`)
-            .replace(/['[\]`()]/g, ``)
-            .toLowerCase()
     );
 }

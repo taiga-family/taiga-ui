@@ -170,6 +170,18 @@
         border: none;
         margin: 0;
     }
+
+    :host[new]:not(._centered) & {
+        &:last-child:not(:first-child) {
+            flex: 0.5;
+            text-align: right;
+            border-left: none;
+        }
+
+        &:nth-last-child(2) {
+            flex: 0.5;
+        }
+    }
 }
 
 .t-label-y {

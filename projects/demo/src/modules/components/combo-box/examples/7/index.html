@@ -1,0 +1,24 @@
+<tui-combo-box
+    [stringify]="stringify"
+    [(ngModel)]="value"
+>
+    Find the best employees
+    <input
+        placeholder="Type a name"
+        tuiTextfield
+    />
+    <ng-container *tuiDataList>
+        <tui-data-list>
+            <button
+                *ngFor="let item of items | tuiFilterByInputWith: stringify"
+                tuiOption
+                [disabled]="item.disabled"
+                [value]="item"
+            >
+                {{ stringify(item) }}
+            </button>
+        </tui-data-list>
+    </ng-container>
+</tui-combo-box>
+
+<p class="tui-space_top-2">Selected value: {{ value | json }}</p>

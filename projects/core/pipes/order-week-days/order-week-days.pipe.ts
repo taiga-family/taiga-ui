@@ -6,6 +6,15 @@ import {map} from 'rxjs/operators';
 
 type WeekDays<T> = [T, T, T, T, T, T, T];
 
+function convertToSundayFirstWeekFormat<T>(weekDaysNames: WeekDays<T>): WeekDays<T> {
+    const sundayIndex = weekDaysNames.length - 1;
+
+    return [
+        weekDaysNames[sundayIndex],
+        ...weekDaysNames.slice(0, sundayIndex),
+    ] as WeekDays<T>;
+}
+
 @Pipe({
     name: `tuiOrderWeekDays`,
 })
@@ -29,13 +38,4 @@ export class TuiOrderWeekDaysPipe implements PipeTransform {
             ),
         );
     }
-}
-
-function convertToSundayFirstWeekFormat<T>(weekDaysNames: WeekDays<T>): WeekDays<T> {
-    const sundayIndex = weekDaysNames.length - 1;
-
-    return [
-        weekDaysNames[sundayIndex],
-        ...weekDaysNames.slice(0, sundayIndex),
-    ] as WeekDays<T>;
 }

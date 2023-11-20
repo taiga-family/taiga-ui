@@ -20,42 +20,6 @@ import {
 } from '../../../../utils/templates/ng-component-input-manipulations';
 import {TemplateResource} from '../../../interfaces/template-resource';
 
-export function migrateInputSlider(
-    fileSystem: DevkitFileSystem,
-    options: TuiSchema,
-): void {
-    const templateResources = getComponentTemplates(ALL_TS_FILES);
-    const COMPONENTS_WITH_MIN_MAX_LABELS = new Set<string>();
-
-    let progressLog = setupProgressLogger({
-        total: templateResources.length,
-        prefix: `[replaceMinMaxLabels]`,
-    });
-
-    templateResources.forEach(templateResource => {
-        !options[`skip-logs`] && progressLog(templateResource.componentPath);
-        replaceMinMaxLabels(templateResource, fileSystem, COMPONENTS_WITH_MIN_MAX_LABELS);
-    });
-
-    /**
-     * We should update virtual file tree
-     * otherwise all following ng-morph commands will overwrite all previous template manipulations
-     * */
-    fileSystem.commitEdits();
-    saveActiveProject();
-    setActiveProject(createProject(fileSystem.tree, projectRoot(), ALL_FILES));
-
-    progressLog = setupProgressLogger({
-        total: COMPONENTS_WITH_MIN_MAX_LABELS.size,
-        prefix: `[addMinMaxLabelMethod]`,
-    });
-
-    Array.from(COMPONENTS_WITH_MIN_MAX_LABELS).forEach(componentPath => {
-        !options[`skip-logs`] && progressLog(componentPath);
-        addMinMaxLabelMethod(componentPath);
-    });
-}
-
 const MIN_MAX_LABELS_MIGRATION_METHOD_NAME = `tuiMigrationMinMaxLabel`;
 
 function replaceMinMaxLabels(
@@ -115,4 +79,40 @@ function addMinMaxLabelMethod(componentPath: string): void {
             ],
         });
     }
+}
+
+export function migrateInputSlider(
+    fileSystem: DevkitFileSystem,
+    options: TuiSchema,
+): void {
+    const templateResources = getComponentTemplates(ALL_TS_FILES);
+    const COMPONENTS_WITH_MIN_MAX_LABELS = new Set<string>();
+
+    let progressLog = setupProgressLogger({
+        total: templateResources.length,
+        prefix: `[replaceMinMaxLabels]`,
+    });
+
+    templateResources.forEach(templateResource => {
+        !options[`skip-logs`] && progressLog(templateResource.componentPath);
+        replaceMinMaxLabels(templateResource, fileSystem, COMPONENTS_WITH_MIN_MAX_LABELS);
+    });
+
+    /**
+     * We should update virtual file tree
+     * otherwise all following ng-morph commands will overwrite all previous template manipulations
+     * */
+    fileSystem.commitEdits();
+    saveActiveProject();
+    setActiveProject(createProject(fileSystem.tree, projectRoot(), ALL_FILES));
+
+    progressLog = setupProgressLogger({
+        total: COMPONENTS_WITH_MIN_MAX_LABELS.size,
+        prefix: `[addMinMaxLabelMethod]`,
+    });
+
+    Array.from(COMPONENTS_WITH_MIN_MAX_LABELS).forEach(componentPath => {
+        !options[`skip-logs`] && progressLog(componentPath);
+        addMinMaxLabelMethod(componentPath);
+    });
 }

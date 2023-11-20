@@ -13,18 +13,6 @@ import {getNamedImportReferences} from '../../utils/get-named-import-references'
 import {removeImport, renameImport} from '../../utils/import-manipulations';
 import {ReplacementType} from '../interfaces/replacement-type';
 
-export function renameTypes(options: TuiSchema, types: readonly ReplacementType[]): void {
-    !options[`skip-logs`] &&
-        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} renaming types...`);
-
-    types.forEach(({from, to, moduleSpecifier, preserveGenerics}) =>
-        renameType(from, to, moduleSpecifier, preserveGenerics),
-    );
-
-    !options[`skip-logs`] &&
-        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} types renamed \n`);
-}
-
 function renameType(
     from: string,
     to?: string,
@@ -73,4 +61,16 @@ function addGeneric(typeName: string, generics: TypeNode[]): string {
     const genericType = typeArgs.length ? `<${typeArgs.join(`, `)}>` : ``;
 
     return typeName + genericType;
+}
+
+export function renameTypes(options: TuiSchema, types: readonly ReplacementType[]): void {
+    !options[`skip-logs`] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} renaming types...`);
+
+    types.forEach(({from, to, moduleSpecifier, preserveGenerics}) =>
+        renameType(from, to, moduleSpecifier, preserveGenerics),
+    );
+
+    !options[`skip-logs`] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} types renamed \n`);
 }

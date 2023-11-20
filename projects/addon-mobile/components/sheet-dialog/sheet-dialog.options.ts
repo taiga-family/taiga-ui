@@ -2,6 +2,8 @@ import {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
+type TuiSheetDialogDefaultOptions = Omit<TuiSheetDialogOptions<unknown>, 'data'>;
+
 export interface TuiSheetDialogOptions<I = never> {
     readonly closeable: boolean;
     readonly data: I;
@@ -10,8 +12,6 @@ export interface TuiSheetDialogOptions<I = never> {
     readonly offset: number;
     readonly stops: readonly string[];
 }
-
-type TuiSheetDialogDefaultOptions = Omit<TuiSheetDialogOptions<unknown>, 'data'>;
 
 export const TUI_SHEET_DIALOG_DEFAULT_OPTIONS: TuiSheetDialogDefaultOptions = {
     label: ``,

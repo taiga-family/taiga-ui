@@ -23,6 +23,30 @@ import {
 
 import {TUI_REMOVED_ELEMENT} from './removed-element';
 
+// Checks if focusout event should be considered leaving active zone
+function isValidFocusout(target: any, removedElement: Element | null = null): boolean {
+    return (
+        // Not due to switching tabs/going to DevTools
+        tuiGetDocumentOrShadowRoot(target).activeElement !== target &&
+        // Not due to button/input becoming disabled or under disabled fieldset
+        !target.matches(`:disabled`) &&
+        // Not due to element being removed from DOM
+        !removedElement?.contains(target)
+    );
+}
+
+function shadowRootActiveElement(root: Document): Observable<EventTarget | null> {
+    return merge(
+        tuiTypedFromEvent(root, `focusin`).pipe(map(({target}) => target)),
+        tuiTypedFromEvent(root, `focusout`).pipe(
+            filter(
+                ({target, relatedTarget}) => !!relatedTarget && isValidFocusout(target),
+            ),
+            map(({relatedTarget}) => relatedTarget),
+        ),
+    );
+}
+
 /**
  * Active element on the document for ActiveZone
  */
@@ -90,27 +114,3 @@ export const TUI_ACTIVE_ELEMENT = tuiCreateTokenFromFactory<
         ),
     ).pipe(distinctUntilChanged(), share());
 });
-
-// Checks if focusout event should be considered leaving active zone
-function isValidFocusout(target: any, removedElement: Element | null = null): boolean {
-    return (
-        // Not due to switching tabs/going to DevTools
-        tuiGetDocumentOrShadowRoot(target).activeElement !== target &&
-        // Not due to button/input becoming disabled or under disabled fieldset
-        !target.matches(`:disabled`) &&
-        // Not due to element being removed from DOM
-        !removedElement?.contains(target)
-    );
-}
-
-function shadowRootActiveElement(root: Document): Observable<EventTarget | null> {
-    return merge(
-        tuiTypedFromEvent(root, `focusin`).pipe(map(({target}) => target)),
-        tuiTypedFromEvent(root, `focusout`).pipe(
-            filter(
-                ({target, relatedTarget}) => !!relatedTarget && isValidFocusout(target),
-            ),
-            map(({relatedTarget}) => relatedTarget),
-        ),
-    );
-}

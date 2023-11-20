@@ -1,14 +1,14 @@
 import {TuiDialogOptions} from '@taiga-ui/core';
 
-export type TuiMobileAlertOptions = Omit<
-    TuiDialogOptions<unknown>,
-    'data' | 'dismissible' | 'header' | 'label' | 'required'
->;
-
 const MOBILE_ALERT_OPTIONS: TuiMobileAlertOptions = {
     size: `fullscreen`,
     closeable: false,
 };
+
+export type TuiMobileAlertOptions = Omit<
+    TuiDialogOptions<unknown>,
+    'data' | 'dismissible' | 'header' | 'label' | 'required'
+>;
 
 export type TuiIosAlertOptions = Omit<
     TuiDialogOptions<unknown>,
