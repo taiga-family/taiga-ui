@@ -9,7 +9,7 @@ test.describe(`Button`, () => {
         );
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-        await apiPageExample.waitFor({state: `visible`});
+        await expect(apiPageExample).toBeVisible();
         const button = apiPageExample.locator(`[tuiButton]`);
 
         await button.hover();
