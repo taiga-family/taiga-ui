@@ -15,19 +15,6 @@ import {getNamedImportReferences} from '../../utils/get-named-import-references'
 import {removeImport} from '../../utils/import-manipulations';
 import {ReplacementService} from '../interfaces/replacement-service';
 
-export function replaceServices(
-    options: TuiSchema,
-    services: readonly ReplacementService[],
-): void {
-    !options[`skip-logs`] &&
-        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing services...`);
-
-    services.forEach(service => replaceService(service, options));
-
-    !options[`skip-logs`] &&
-        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} services replaced \n`);
-}
-
 function replaceService(
     {from, to, replaceMethods}: ReplacementService,
     options: TuiSchema,
@@ -104,4 +91,17 @@ function replaceProperty(
             identifier.replaceWithText(property.to);
         }
     });
+}
+
+export function replaceServices(
+    options: TuiSchema,
+    services: readonly ReplacementService[],
+): void {
+    !options[`skip-logs`] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing services...`);
+
+    services.forEach(service => replaceService(service, options));
+
+    !options[`skip-logs`] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} services replaced \n`);
 }

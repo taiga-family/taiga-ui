@@ -13,6 +13,20 @@ import {map} from 'rxjs/operators';
 
 const EMPTY_RECORD = {};
 
+function unwrapObservable(
+    content: Observable<PolymorpheusContent>,
+    context: any,
+): Observable<TuiValidationError> {
+    return content.pipe(map(error => new TuiValidationError(error || ``, context)));
+}
+
+function defaultError(
+    content: PolymorpheusContent,
+    context: any,
+): Observable<TuiValidationError> {
+    return of(new TuiValidationError(content || ``, context));
+}
+
 @Pipe({
     name: `tuiFieldError`,
     pure: false,
@@ -134,18 +148,4 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
 
         return defaultError(content, context);
     }
-}
-
-function unwrapObservable(
-    content: Observable<PolymorpheusContent>,
-    context: any,
-): Observable<TuiValidationError> {
-    return content.pipe(map(error => new TuiValidationError(error || ``, context)));
-}
-
-function defaultError(
-    content: PolymorpheusContent,
-    context: any,
-): Observable<TuiValidationError> {
-    return of(new TuiValidationError(content || ``, context));
 }

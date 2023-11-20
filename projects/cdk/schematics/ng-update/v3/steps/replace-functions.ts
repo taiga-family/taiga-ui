@@ -12,26 +12,6 @@ import {getNamedImportReferences} from '../../../utils/get-named-import-referenc
 import {removeImport} from '../../../utils/import-manipulations';
 import {DEPRECATED_FUNCTIONS} from '../constants/deprecated-functions';
 
-export function replaceFunctions(options: TuiSchema): void {
-    !options[`skip-logs`] &&
-        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} functions replacing...`);
-
-    replacePadStart(getNamedImportReferences(`padStart`, `@taiga-ui/cdk`));
-    replaceFallbackValue(getNamedImportReferences(`fallbackValue`, `@taiga-ui/cdk`));
-    replaceCustomEvent(getNamedImportReferences(`tuiCustomEvent`, `@taiga-ui/cdk`));
-    replaceClosestElement(getNamedImportReferences(`getClosestElement`, `@taiga-ui/cdk`));
-    replaceNativeFocused([
-        ...getNamedImportReferences(`tuiSetNativeFocused`, `@taiga-ui/cdk`),
-        ...getNamedImportReferences(`setNativeFocused`, `@taiga-ui/cdk`),
-    ]);
-    replaceDeprecatedFunction();
-    modifyFormatNumberArgs();
-    modifyClosestFocusable();
-
-    !options[`skip-logs`] &&
-        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} functions replaced \n`);
-}
-
 function replaceDeprecatedFunction(): void {
     DEPRECATED_FUNCTIONS.forEach(({from, to, moduleSpecifier}) => {
         getNamedImportReferences(from, moduleSpecifier).forEach(ref => {
@@ -188,4 +168,24 @@ function modifyClosestFocusable(): void {
                 );
             }
         });
+}
+
+export function replaceFunctions(options: TuiSchema): void {
+    !options[`skip-logs`] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} functions replacing...`);
+
+    replacePadStart(getNamedImportReferences(`padStart`, `@taiga-ui/cdk`));
+    replaceFallbackValue(getNamedImportReferences(`fallbackValue`, `@taiga-ui/cdk`));
+    replaceCustomEvent(getNamedImportReferences(`tuiCustomEvent`, `@taiga-ui/cdk`));
+    replaceClosestElement(getNamedImportReferences(`getClosestElement`, `@taiga-ui/cdk`));
+    replaceNativeFocused([
+        ...getNamedImportReferences(`tuiSetNativeFocused`, `@taiga-ui/cdk`),
+        ...getNamedImportReferences(`setNativeFocused`, `@taiga-ui/cdk`),
+    ]);
+    replaceDeprecatedFunction();
+    modifyFormatNumberArgs();
+    modifyClosestFocusable();
+
+    !options[`skip-logs`] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} functions replaced \n`);
 }

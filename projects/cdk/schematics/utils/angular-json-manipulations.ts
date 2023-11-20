@@ -11,6 +11,14 @@ import {Asset} from '../ng-update/interfaces/asset';
 import {getProjectTargetOptions} from './get-project-target-options';
 import {getProjects} from './get-projects';
 
+function hasTaigaIcons(assets: Asset[]): boolean {
+    return !!assets?.find(asset =>
+        tuiIsString(asset)
+            ? asset.includes(`taiga-ui`)
+            : asset?.input?.includes(`taiga-ui`),
+    );
+}
+
 export async function isInvalidAngularJson(tree: Tree): Promise<boolean> {
     return (
         getWorkspace(tree)
@@ -22,14 +30,6 @@ export async function isInvalidAngularJson(tree: Tree): Promise<boolean> {
              */
             // eslint-disable-next-line no-restricted-syntax
             .catch(() => true)
-    );
-}
-
-function hasTaigaIcons(assets: Asset[]): boolean {
-    return !!assets?.find(asset =>
-        tuiIsString(asset)
-            ? asset.includes(`taiga-ui`)
-            : asset?.input?.includes(`taiga-ui`),
     );
 }
 

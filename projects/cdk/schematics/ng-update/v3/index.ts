@@ -38,30 +38,6 @@ import {miscellaneousMigrations} from './steps/miscellaneous';
 import {replaceFunctions} from './steps/replace-functions';
 import {replaceStyles, TUI_WARNING_NORMALIZE} from './steps/replace-styles';
 
-export function updateToV3(options: TuiSchema): Rule {
-    const t0 = performance.now();
-
-    !options[`skip-logs`] &&
-        titleLog(
-            `\n\n${START_SYMBOL} Your packages will be updated to @taiga-ui/*@${TAIGA_VERSION}\n`,
-        );
-
-    return chain([
-        main(options),
-        addTaigaStyles(options),
-        migrateTaigaProprietaryIcons(options),
-        showNormalizeWarning(),
-        () => {
-            const executionTime = getExecutionTime(t0, performance.now());
-
-            !options[`skip-logs`] &&
-                titleLog(
-                    `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION} in ${executionTime}. \n`,
-                );
-        },
-    ]);
-}
-
 function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext): void => {
         const fileSystem = getFileSystem(tree);
@@ -134,4 +110,28 @@ function showNormalizeWarning(): Rule {
             // noop
         }
     };
+}
+
+export function updateToV3(options: TuiSchema): Rule {
+    const t0 = performance.now();
+
+    !options[`skip-logs`] &&
+        titleLog(
+            `\n\n${START_SYMBOL} Your packages will be updated to @taiga-ui/*@${TAIGA_VERSION}\n`,
+        );
+
+    return chain([
+        main(options),
+        addTaigaStyles(options),
+        migrateTaigaProprietaryIcons(options),
+        showNormalizeWarning(),
+        () => {
+            const executionTime = getExecutionTime(t0, performance.now());
+
+            !options[`skip-logs`] &&
+                titleLog(
+                    `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION} in ${executionTime}. \n`,
+                );
+        },
+    ]);
 }

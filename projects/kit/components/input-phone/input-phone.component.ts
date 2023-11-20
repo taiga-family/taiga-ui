@@ -49,6 +49,10 @@ import {
     tuiCreatePhoneMaskExpression,
 } from './utils';
 
+function isText(value: string): boolean {
+    return Number.isNaN(parseInt(value.replace(TUI_MASK_SYMBOLS_REGEXP, ''), 10));
+}
+
 @Component({
     selector: 'tui-input-phone',
     templateUrl: './input-phone.template.html',
@@ -294,8 +298,4 @@ export class TuiInputPhoneComponent
             this.nativeValue = maskitoTransform(this.value, this.maskOptions);
         }
     }
-}
-
-function isText(value: string): boolean {
-    return Number.isNaN(parseInt(value.replace(TUI_MASK_SYMBOLS_REGEXP, ''), 10));
 }
