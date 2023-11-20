@@ -4,15 +4,16 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
     selector: 'stackblitz-edit-button',
     template: `
         <button
-            appearance="flat"
-            icon="assets/icons/stackblitz.svg"
-            size="s"
-            tuiButton
+            tuiLink
             type="button"
         >
-            Edit
+            <span class="t-content">
+                <tui-svg src="assets/icons/stackblitz.svg"></tui-svg>
+                Edit
+            </span>
         </button>
     `,
+    styleUrls: ['./stackblitz-edit-button.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StackblitzEditButtonComponent {}
