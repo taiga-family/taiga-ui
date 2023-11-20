@@ -1,0 +1,15 @@
+<tui-axes
+    new
+    class="axes"
+    [axisXLabels]="axisXLabels"
+    [verticalLines]="4"
+>
+    <div class="t-horizontal-bars">
+        <tui-bar
+            *ngFor="let bar of value; let i = index"
+            size="m"
+            [style.background-color]="getBackground(i)"
+            [style.height.%]="getHeight(bar)"
+        ></tui-bar>
+    </div>
+</tui-axes>

@@ -57,9 +57,9 @@ describe(`TuiDocCodeComponent`, () => {
         expect(fixture.nativeElement.querySelector(`.t-code`)?.innerHTML.trim()).toEqual(
             `<code class="hljs"><span class="hljs-keyword">const</span> a = <span class="hljs-number">5</span>;</code>
     <div class="t-code-actions">
-\t
-        <button tuiiconbutton="" appearance="icon" size="xs">
+        <button tuiiconbutton="" appearance="icon" size="xs" class="t-copy-button">
         </button>
+\t
     </div>`.replace(`\t`, `        `), // prettier problem
         );
     });
@@ -73,9 +73,9 @@ describe(`TuiDocCodeComponent`, () => {
         expect(fixture.nativeElement.querySelector(`.t-code`)?.innerHTML.trim()).toEqual(
             `<code class="hljs"><span class="hljs-keyword">const</span> a = <span class="hljs-number">10</span>;</code>
     <div class="t-code-actions">
-\t
-        <button tuiiconbutton="" appearance="icon" size="xs">
+        <button tuiiconbutton="" appearance="icon" size="xs" class="t-copy-button">
         </button>
+\t
     </div>`.replace(`\t`, `        `), // prettier problem
         );
     });
@@ -91,9 +91,9 @@ describe(`TuiDocCodeComponent`, () => {
         expect(fixture.nativeElement.querySelector(`.t-code`)?.innerHTML.trim()).toEqual(
             `<code class="hljs"><span class="hljs-keyword">const</span> a = <span class="hljs-number">15</span>;</code>
     <div class="t-code-actions">
-\t
-        <button tuiiconbutton="" appearance="icon" size="xs">
+        <button tuiiconbutton="" appearance="icon" size="xs" class="t-copy-button">
         </button>
+\t
     </div>`.replace(`\t`, `        `), // prettier problem
         );
     });

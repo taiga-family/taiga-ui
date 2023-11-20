@@ -37,6 +37,15 @@ const GAP: Record<TuiSizeXL, number> = {
     xl: 0.25,
 };
 
+function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<number>> {
+    return arcs.map(({nativeElement}, index) =>
+        merge(
+            tuiTypedFromEvent(nativeElement, 'mouseenter').pipe(map(() => index)),
+            tuiTypedFromEvent(nativeElement, 'mouseleave').pipe(map(() => NaN)),
+        ),
+    );
+}
+
 @Component({
     selector: 'tui-arc-chart',
     templateUrl: './arc-chart.template.html',
@@ -132,13 +141,4 @@ export class TuiArcChartComponent {
             `var(--tui-chart-${index}, var(--tui-support-0${index + 1}))`,
         );
     }
-}
-
-function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<number>> {
-    return arcs.map(({nativeElement}, index) =>
-        merge(
-            tuiTypedFromEvent(nativeElement, 'mouseenter').pipe(map(() => index)),
-            tuiTypedFromEvent(nativeElement, 'mouseleave').pipe(map(() => NaN)),
-        ),
-    );
 }

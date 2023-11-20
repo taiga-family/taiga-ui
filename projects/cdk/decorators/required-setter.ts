@@ -1,6 +1,12 @@
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 
+function errorSet(key: string | symbol, component: string): string {
+    return `Undefined was passed as ${String(
+        key,
+    )} to ${component}, setter will not be called`;
+}
+
 /**
  * @deprecated:
  * not compatible with TypeScript 5
@@ -46,10 +52,4 @@ export function tuiRequiredSetter<T extends Record<string, any>, K extends keyof
             },
         };
     };
-}
-
-function errorSet(key: string | symbol, component: string): string {
-    return `Undefined was passed as ${String(
-        key,
-    )} to ${component}, setter will not be called`;
 }

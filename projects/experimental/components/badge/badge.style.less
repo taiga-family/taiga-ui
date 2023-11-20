@@ -1,11 +1,11 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-:host {
-    --left-content-color: currentColor;
+tui-badge,
+[tuiBadge] {
+    .clearbtn();
     position: relative;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
     box-sizing: border-box;
     background: #959595;
     color: var(--tui-base-01);
@@ -16,25 +16,47 @@
     font: var(--tui-font-text-s);
     flex-shrink: 0;
     max-width: 100%;
+    padding: var(--t-padding);
+    height: var(--t-size);
+    min-width: var(--t-size);
+
+    --t-dot: currentColor;
+    --t-icon-size: 1rem;
+
+    &._dot:before {
+        content: '';
+        display: block;
+        background: var(--t-dot);
+        margin: 0 0.125rem 0 0.25rem;
+        width: 0.25rem;
+        height: 0.25rem;
+        border-radius: 100%;
+    }
+
+    > tui-svg,
+    > tui-icon {
+        width: var(--t-icon-size) !important;
+        height: var(--t-icon-size) !important;
+    }
 
     &[data-appearance='error'] {
-        --left-content-color: var(--tui-error-fill);
+        --t-dot: var(--tui-error-fill);
     }
 
     &[data-appearance='success'] {
-        --left-content-color: var(--tui-success-fill);
+        --t-dot: var(--tui-success-fill);
     }
 
     &[data-appearance='warning'] {
-        --left-content-color: var(--tui-warning-fill);
+        --t-dot: var(--tui-warning-fill);
     }
 
     &[data-appearance='info'] {
-        --left-content-color: var(--tui-info-fill);
+        --t-dot: var(--tui-info-fill);
     }
 
     &[data-appearance='neutral'] {
-        --left-content-color: var(--tui-neutral-fill);
+        --t-dot: var(--tui-neutral-fill);
 
         &[data-platform='ios'],
         &[data-platform='android'] {
@@ -42,67 +64,49 @@
         }
     }
 
-    &:not(._empty-value) {
-        padding: 0 0.25rem;
-
-        &[data-size='xl'] {
-            padding: 0 0.375rem;
-        }
-
-        &[data-size='xl'][data-platform='web'] {
-            padding: 0 0.5rem;
-        }
-
-        &[data-size='s'] {
-            padding: 0 0.125rem;
-        }
-
-        &[data-size='s'][data-platform='web'] {
-            padding: 0 0.25rem;
-        }
-    }
-
     &[data-size='s'] {
-        height: 1.25rem;
-        min-width: 1.25rem;
+        text-indent: 0.125rem;
+
+        --t-padding: 0 0.3125rem 0 0.1875rem;
+        --t-size: 1rem;
+        --t-icon-size: 0.625rem;
 
         &[data-platform='ios'],
         &[data-platform='android'] {
             font: var(--tui-font-text-xs);
             font-weight: bold;
-            height: 1rem;
-            min-width: 1rem;
         }
     }
 
     &[data-size='m'] {
-        height: 1.25rem;
-        min-width: 1.25rem;
+        text-indent: 0.125rem;
+
+        --t-padding: 0 0.375rem 0 0.25rem;
+        --t-size: 1.25rem;
+        --t-icon-size: 0.75rem;
     }
 
     &[data-size='l'] {
-        height: var(--tui-height-xs);
-        min-width: var(--tui-height-xs);
+        text-indent: 0.25rem;
 
-        &[data-platform='ios'],
-        &[data-platform='android'] {
-            height: 1.5rem;
-            min-width: 1.5rem;
-        }
+        --t-padding: 0 0.5rem 0 0.25rem;
+        --t-size: var(--tui-height-xs);
     }
 
     &[data-size='xl'] {
-        height: var(--tui-height-s);
-        min-width: var(--tui-height-s);
+        font: var(--tui-font-text-m);
+        text-indent: 0.25rem;
+
+        --t-padding: 0 0.75rem 0 0.5rem;
+        --t-size: var(--tui-height-s);
 
         &[data-platform='ios'],
         &[data-platform='android'] {
-            height: 1.75rem;
-            min-width: 1.75rem;
-        }
+            font: var(--tui-font-text-s);
+            font-weight: bold;
 
-        &[data-platform='web'] {
-            font: var(--tui-font-text-m);
+            --t-padding: 0 0.625rem 0 0.375rem;
+            --t-size: 1.75rem;
         }
     }
 
@@ -112,131 +116,25 @@
     }
 }
 
-.t-text {
-    white-space: nowrap;
-    padding: 0 0.125rem;
-    overflow: hidden;
-
-    &:empty {
-        display: none;
-    }
-
-    :host[data-size='xl'][data-platform='web'] & {
-        padding: 0 0.375rem;
-    }
-
-    :host[data-size='xl'] & {
-        padding: 0 0.25rem;
-    }
-
-    :host[data-size='l'] & {
-        padding: 0 0.25rem;
-    }
+img[tuiBadge] {
+    padding: 0;
 }
 
-.t-icon {
-    display: none;
-    color: var(--left-content-color);
+tui-icon[tuiBadge] {
+    mask: none;
+    height: var(--t-size);
+    width: var(--t-size);
 
-    &:not(:empty) {
-        display: flex;
-        width: 1rem;
-        height: 1rem;
-        align-items: center;
-        justify-content: center;
-
-        &:before {
-            content: none;
-        }
-
-        :host[data-size='m'] &,
-        :host[data-size='s'][data-platform='web'] & {
-            width: 0.75rem;
-            transform: scale(0.75);
-        }
-
-        :host[data-size='s'] & {
-            width: 0.625rem;
-            transform: scale(0.625);
-        }
-
-        :host[data-size='s'] &:not(._icon-only) {
-            margin-left: 0.0625rem;
-        }
+    &[data-size='s']:after {
+        mask-size: 0.625rem;
     }
 
-    &:before {
-        content: '';
-        display: block;
-        background: currentColor;
-        margin: 0 0.125rem 0 0.25rem;
-        width: 0.25rem;
-        height: 0.25rem;
-        border-radius: 100%;
+    &[data-size='m']:after {
+        mask-size: 0.75rem;
     }
 
-    :host._dot & {
-        &:empty {
-            display: block;
-        }
-    }
-
-    :host[data-size='l'] &:before {
-        width: 0.375rem;
-        height: 0.375rem;
-    }
-
-    :host[data-size='xl'] &:before {
-        width: 0.5rem;
-        height: 0.5rem;
-    }
-}
-
-.t-image {
-    display: none;
-
-    :host::ng-deep & img {
-        width: 100%;
-        height: 100%;
-    }
-
-    &:not(:empty) {
-        display: block;
-        width: 1rem;
-        height: 1rem;
-        margin: 0 -0.5rem;
-
-        & ~ .t-text {
-            margin-left: 0.5rem;
-        }
-
-        & ~ .t-icon {
-            display: none;
-        }
-
-        :host[data-size='xl'] & {
-            height: 1.75rem;
-            width: 1.75rem;
-        }
-
-        :host[data-size='l'] & {
-            height: 1.5rem;
-            width: 1.5rem;
-        }
-
-        :host[data-size='m'] & {
-            height: 1.25rem;
-            width: 1.25rem;
-        }
-
-        :host[data-size='xl'][data-platform='web'] & {
-            width: 2rem;
-            height: 2rem;
-        }
-
-        :host[data-size='s'][data-platform='web'] & {
-            width: 1.25rem;
-            height: 1.25rem;
-        }
+    &[data-size='l']:after,
+    &[data-size='xl']:after {
+        mask-size: 1rem;
     }
 }

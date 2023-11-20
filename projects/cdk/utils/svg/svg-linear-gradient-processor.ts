@@ -1,6 +1,41 @@
 import {TuiSafeHtml} from '@taiga-ui/cdk/interfaces';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 
+function makeRandomSalt(): number {
+    return Math.floor(Math.random() * Date.now());
+}
+
+function escapeRegExp(search: string): string {
+    return search.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, `\\$&`);
+}
+
+function extractLinearGradientIdsFromSvg(svg: string): string[] {
+    const ids = (svg.match(/url\(("?)('*)#(.*?)('*)\)/g) ?? []).map(url =>
+        url.slice(4, url.length - 1).replace(/['"#]+/g, ``),
+    );
+
+    return Array.from(new Set(ids));
+}
+
+function setFallbackForGradientFill(svg: string, fallback: string): string {
+    try {
+        const tree = new DOMParser().parseFromString(svg, `text/html`);
+
+        tree.body
+            .querySelectorAll(`[fill^=url]`) // only gradient
+            .forEach(element =>
+                element.setAttribute(
+                    `fill`,
+                    `${element.getAttribute(`fill`)} ${fallback}`.trim(),
+                ),
+            );
+
+        return tree.body.innerHTML.trim();
+    } catch {
+        return svg;
+    }
+}
+
 /**
  * @description:
  * Any ‘linearGradient’ attributes which are defined on the referenced
@@ -38,39 +73,4 @@ export function tuiSvgLinearGradientProcessor(
     }
 
     return svg;
-}
-
-function makeRandomSalt(): number {
-    return Math.floor(Math.random() * Date.now());
-}
-
-function escapeRegExp(search: string): string {
-    return search.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, `\\$&`);
-}
-
-function extractLinearGradientIdsFromSvg(svg: string): string[] {
-    const ids = (svg.match(/url\(("?)('*)#(.*?)('*)\)/g) ?? []).map(url =>
-        url.slice(4, url.length - 1).replace(/['"#]+/g, ``),
-    );
-
-    return Array.from(new Set(ids));
-}
-
-function setFallbackForGradientFill(svg: string, fallback: string): string {
-    try {
-        const tree = new DOMParser().parseFromString(svg, `text/html`);
-
-        tree.body
-            .querySelectorAll(`[fill^=url]`) // only gradient
-            .forEach(element =>
-                element.setAttribute(
-                    `fill`,
-                    `${element.getAttribute(`fill`)} ${fallback}`.trim(),
-                ),
-            );
-
-        return tree.body.innerHTML.trim();
-    } catch {
-        return svg;
-    }
 }

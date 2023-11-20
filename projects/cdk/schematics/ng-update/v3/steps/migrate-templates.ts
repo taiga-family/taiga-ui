@@ -46,48 +46,6 @@ import {
 import {migratePolymorpheus} from './migrate-polymorpheus';
 import {migrateTextfieldController} from './migrate-textfield-controller';
 
-export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchema): void {
-    !options[`skip-logs`] &&
-        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
-
-    const componentWithTemplatesPaths = getComponentTemplates(ALL_TS_FILES);
-    const actions = [
-        replaceV3Tags,
-        replaceV3Attrs,
-        replaceAttrsByDirective,
-        replaceBreadcrumbs,
-        replaceFieldError,
-        addHTMLCommentTags,
-        addEditorProviders,
-        migrateTuiHideSelectedPipe,
-        removeV3Inputs,
-        migratePolymorpheus,
-        migrateTextfieldController,
-        replaceInputValues,
-        migrateBinaryAttributes,
-        addWarningForFormatNumberPipe,
-    ];
-
-    const progressLog = setupProgressLogger({
-        total: componentWithTemplatesPaths.length,
-    });
-
-    componentWithTemplatesPaths.forEach(resource => {
-        const path = fileSystem.resolve(getPathFromTemplateResource(resource));
-        const recorder = fileSystem.edit(path);
-
-        actions.forEach((action, actionIndex) => {
-            const isLastAction = actionIndex === actions.length - 1;
-
-            !options[`skip-logs`] && progressLog(action.name, isLastAction);
-            action({resource, fileSystem, recorder});
-        });
-    });
-
-    !options[`skip-logs`] &&
-        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} templates migrated \n`);
-}
-
 function replaceAttrsByDirective({
     resource,
     fileSystem,
@@ -188,6 +146,7 @@ function replaceBreadcrumbs({
             return;
         }
 
+        // noinspection AngularMissingRequiredDirectiveInputBinding
         recorder.insertRight(
             insertTo + templateOffset,
             `
@@ -423,4 +382,46 @@ function removeV3Inputs({
     resource: TemplateResource;
 }): void {
     removeInputs({resource, recorder, fileSystem, data: INPUTS_TO_REMOVE});
+}
+
+export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchema): void {
+    !options[`skip-logs`] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
+
+    const componentWithTemplatesPaths = getComponentTemplates(ALL_TS_FILES);
+    const actions = [
+        replaceV3Tags,
+        replaceV3Attrs,
+        replaceAttrsByDirective,
+        replaceBreadcrumbs,
+        replaceFieldError,
+        addHTMLCommentTags,
+        addEditorProviders,
+        migrateTuiHideSelectedPipe,
+        removeV3Inputs,
+        migratePolymorpheus,
+        migrateTextfieldController,
+        replaceInputValues,
+        migrateBinaryAttributes,
+        addWarningForFormatNumberPipe,
+    ];
+
+    const progressLog = setupProgressLogger({
+        total: componentWithTemplatesPaths.length,
+    });
+
+    componentWithTemplatesPaths.forEach(resource => {
+        const path = fileSystem.resolve(getPathFromTemplateResource(resource));
+        const recorder = fileSystem.edit(path);
+
+        actions.forEach((action, actionIndex) => {
+            const isLastAction = actionIndex === actions.length - 1;
+
+            !options[`skip-logs`] && progressLog(action.name, isLastAction);
+            action({resource, fileSystem, recorder});
+        });
+    });
+
+    !options[`skip-logs`] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} templates migrated \n`);
 }

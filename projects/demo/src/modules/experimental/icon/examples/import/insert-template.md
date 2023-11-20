@@ -1,3 +1,3 @@
 ```html
-<tui-icon [icon]="'tuiIconCheck' | tuiIcon"></tui-icon>
+<tui-icon icon="tuiIconCheck"></tui-icon>
 ```

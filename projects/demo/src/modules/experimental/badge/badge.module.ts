@@ -7,10 +7,9 @@ import {
     TuiLabelModule,
     TuiModeModule,
     TuiNotificationModule,
-    TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiBadgeModule, TuiFadeModule} from '@taiga-ui/experimental';
+import {TuiBadgeModule, TuiFadeModule, TuiIconModule} from '@taiga-ui/experimental';
 import {TuiRadioListModule} from '@taiga-ui/kit';
 
 import {ExampleTuiBadgeComponent} from './badge.component';
@@ -26,7 +25,7 @@ import {TuiBadgeExample6} from './examples/6';
         TuiBadgeModule,
         TuiModeModule,
         TuiRepeatTimesModule,
-        TuiSvgModule,
+        TuiIconModule,
         TuiRadioListModule,
         FormsModule,
         CommonModule,

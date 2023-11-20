@@ -8,6 +8,18 @@ import {endWith, map, switchMap, takeUntil, tap} from 'rxjs/operators';
 
 const SCROLL_TIME = 300;
 
+function getX(elementOrWindow: Element | Window): number {
+    return `scrollX` in elementOrWindow
+        ? elementOrWindow.scrollX
+        : elementOrWindow.scrollLeft;
+}
+
+function getY(elementOrWindow: Element | Window): number {
+    return `scrollY` in elementOrWindow
+        ? elementOrWindow.scrollY
+        : elementOrWindow.scrollTop;
+}
+
 @Injectable({
     providedIn: `root`,
 })
@@ -50,16 +62,4 @@ export class TuiScrollService {
             }),
         );
     }
-}
-
-function getX(elementOrWindow: Element | Window): number {
-    return `scrollX` in elementOrWindow
-        ? elementOrWindow.scrollX
-        : elementOrWindow.scrollLeft;
-}
-
-function getY(elementOrWindow: Element | Window): number {
-    return `scrollY` in elementOrWindow
-        ? elementOrWindow.scrollY
-        : elementOrWindow.scrollTop;
 }

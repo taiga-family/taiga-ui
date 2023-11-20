@@ -16,7 +16,15 @@
     background: var(--tui-secondary);
     color: var(--tui-text-02);
     vertical-align: middle;
+    box-sizing: border-box;
+    padding: 0.25rem;
     opacity: 0.999; // Kick in hardware rendering layer to avoid artifacts on the edges
+
+    &:before {
+        .fullsize();
+        background: currentColor;
+        mask: var(--t-mask) no-repeat center/60%;
+    }
 
     &[data-size='xxs'] {
         --t-size: 1.5rem;
@@ -24,7 +32,7 @@
         font: var(--tui-font-text-xs);
         font-weight: bold;
 
-        .t-content {
+        &[data-type='content'] {
             font: var(--tui-font-text-m);
             font-size: 0.5625rem;
         }
@@ -36,7 +44,7 @@
         font: var(--tui-font-text-s);
         font-weight: bold;
 
-        .t-content {
+        &[data-type='content'] {
             font: var(--tui-font-text-xs);
             font-weight: bold;
         }
@@ -48,7 +56,7 @@
         font: var(--tui-font-text-l);
         font-weight: bold;
 
-        .t-content {
+        &[data-type='content'] {
             font: var(--tui-font-text-m);
             font-weight: bold;
         }
@@ -59,7 +67,7 @@
         --t-radius: 0.75rem;
         font: var(--tui-font-heading-5);
 
-        .t-content {
+        &[data-type='content'] {
             font: var(--tui-font-text-l);
             font-weight: bold;
         }
@@ -70,7 +78,7 @@
         --t-radius: 0.75rem;
         font: var(--tui-font-heading-3);
 
-        .t-content {
+        &[data-type='content'] {
             font: var(--tui-font-heading-4);
         }
     }
@@ -80,7 +88,7 @@
         --t-radius: 1rem;
         font: var(--tui-font-heading-3);
 
-        .t-content {
+        &[data-type='content'] {
             font: var(--tui-font-heading-3);
         }
     }
@@ -90,17 +98,21 @@
         --t-radius: 1.25rem;
         font: var(--tui-font-heading-2);
 
-        .t-content {
+        &[data-type='content'] {
             font: var(--tui-font-heading-3);
         }
     }
 
-    &._round {
-        --t-radius: calc(var(--t-size) / 2);
+    &[data-type='img'] {
+        background: transparent;
     }
 
-    &._img {
-        background: transparent;
+    &[data-type='icon']:before {
+        content: '';
+    }
+
+    &._round {
+        --t-radius: calc(var(--t-size) / 2);
     }
 
     ::ng-deep img,
@@ -109,15 +121,4 @@
         .fullsize();
         object-fit: cover;
     }
-}
-
-.t-icon {
-    width: 60%;
-    height: 60%;
-}
-
-.t-content {
-    max-width: 100%;
-    padding: 0.25rem;
-    box-sizing: border-box;
 }

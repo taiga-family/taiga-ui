@@ -11,6 +11,80 @@ import {tuiOtherDecimalSymbol} from '@taiga-ui/core/utils/format';
 
 const NON_ZERO_DIGIT = /[1-9]/;
 
+function preventLeadingZeroes(
+    mask: Array<RegExp | string>,
+    isOnlyZeroDigit: boolean = false,
+    leadingZerosAmount: number = 0,
+): Array<RegExp | string> {
+    if (isOnlyZeroDigit || leadingZerosAmount === 0) {
+        return mask;
+    }
+
+    const firstDigitIndex = mask.indexOf(TUI_DIGIT_REGEXP);
+
+    if (firstDigitIndex === -1) {
+        return mask;
+    }
+
+    const secondMaskDigit = mask[firstDigitIndex + 1];
+    const isCaretTrap = secondMaskDigit === MASK_CARET_TRAP;
+
+    if (isCaretTrap && leadingZerosAmount === 1) {
+        return mask;
+    }
+
+    if (isCaretTrap) {
+        mask.unshift(NON_ZERO_DIGIT);
+
+        return mask;
+    }
+
+    mask[firstDigitIndex] = NON_ZERO_DIGIT;
+
+    return mask;
+}
+
+function getDecimalSymbolIndex(
+    str: string,
+    decimalSymbol: TuiDecimalSymbol,
+    autoCorrectDecimalSymbol: boolean,
+): number {
+    if (!autoCorrectDecimalSymbol) {
+        return str.lastIndexOf(decimalSymbol);
+    }
+
+    return Math.max(
+        str.lastIndexOf(decimalSymbol),
+        str.lastIndexOf(tuiOtherDecimalSymbol(decimalSymbol)),
+    );
+}
+
+function isDecimalSymbol(
+    str: string,
+    decimalSymbol: TuiDecimalSymbol,
+    autoCorrectDecimalSymbol: boolean,
+): boolean {
+    if (autoCorrectDecimalSymbol) {
+        return /^[,.]$/.test(str);
+    }
+
+    return str === decimalSymbol;
+}
+
+function convertToMask(strNumber: string): Array<RegExp | string> {
+    return strNumber
+        .split(``)
+        .map(char => (TUI_DIGIT_REGEXP.test(char) ? TUI_DIGIT_REGEXP : char));
+}
+
+function addThousandsSeparator(strNumber: string, thousandSymbol: string): string {
+    return strNumber.length > 3
+        ? // TODO: investigate to disallow potentially catastrophic exponential-time regular expressions.
+          // eslint-disable-next-line unicorn/no-unsafe-regex
+          strNumber.replace(/\B(?=(\d{3})+(?!\d))/g, thousandSymbol)
+        : strNumber;
+}
+
 /**
  * TODO: delete in v4.0
  * @deprecated Use {@link https://maskito.dev/kit/number Number} from {@link https://github.com/taiga-family/maskito Maskito} instead <br/>
@@ -122,78 +196,4 @@ export function tuiCreateNumberMask({
 
         return preventLeadingZeroes(mask, isOnlyZeroDigit, leadingZerosAmount);
     };
-}
-
-function preventLeadingZeroes(
-    mask: Array<RegExp | string>,
-    isOnlyZeroDigit: boolean = false,
-    leadingZerosAmount: number = 0,
-): Array<RegExp | string> {
-    if (isOnlyZeroDigit || leadingZerosAmount === 0) {
-        return mask;
-    }
-
-    const firstDigitIndex = mask.indexOf(TUI_DIGIT_REGEXP);
-
-    if (firstDigitIndex === -1) {
-        return mask;
-    }
-
-    const secondMaskDigit = mask[firstDigitIndex + 1];
-    const isCaretTrap = secondMaskDigit === MASK_CARET_TRAP;
-
-    if (isCaretTrap && leadingZerosAmount === 1) {
-        return mask;
-    }
-
-    if (isCaretTrap) {
-        mask.unshift(NON_ZERO_DIGIT);
-
-        return mask;
-    }
-
-    mask[firstDigitIndex] = NON_ZERO_DIGIT;
-
-    return mask;
-}
-
-function getDecimalSymbolIndex(
-    str: string,
-    decimalSymbol: TuiDecimalSymbol,
-    autoCorrectDecimalSymbol: boolean,
-): number {
-    if (!autoCorrectDecimalSymbol) {
-        return str.lastIndexOf(decimalSymbol);
-    }
-
-    return Math.max(
-        str.lastIndexOf(decimalSymbol),
-        str.lastIndexOf(tuiOtherDecimalSymbol(decimalSymbol)),
-    );
-}
-
-function isDecimalSymbol(
-    str: string,
-    decimalSymbol: TuiDecimalSymbol,
-    autoCorrectDecimalSymbol: boolean,
-): boolean {
-    if (autoCorrectDecimalSymbol) {
-        return /^[,.]$/.test(str);
-    }
-
-    return str === decimalSymbol;
-}
-
-function convertToMask(strNumber: string): Array<RegExp | string> {
-    return strNumber
-        .split(``)
-        .map(char => (TUI_DIGIT_REGEXP.test(char) ? TUI_DIGIT_REGEXP : char));
-}
-
-function addThousandsSeparator(strNumber: string, thousandSymbol: string): string {
-    return strNumber.length > 3
-        ? // TODO: investigate to disallow potentially catastrophic exponential-time regular expressions.
-          // eslint-disable-next-line unicorn/no-unsafe-regex
-          strNumber.replace(/\B(?=(\d{3})+(?!\d))/g, thousandSymbol)
-        : strNumber;
 }

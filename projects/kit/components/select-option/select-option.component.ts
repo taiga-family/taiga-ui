@@ -77,7 +77,7 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
          * Microtask keeps it in the same frame but allows change detection to run.
          */
         void Promise.resolve().then(() => {
-            if (tuiIsPresent(this.option.value)) {
+            if (tuiIsPresent(this.option.value) && !this.option.disabled) {
                 this.host.checkOption?.(this.option.value);
             }
         });

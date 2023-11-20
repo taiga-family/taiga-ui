@@ -15,56 +15,6 @@ import {
 import {TemplateResource} from '../../interfaces/template-resource';
 import {replaceTag} from '../../utils/templates/replace-tag';
 
-export function migratePolymorpheus({
-    resource,
-    fileSystem,
-    recorder,
-}: {
-    fileSystem: DevkitFileSystem;
-    recorder: UpdateRecorder;
-    resource: TemplateResource;
-}): void {
-    const template = getTemplateFromTemplateResource(resource, fileSystem);
-    const templateOffset = getTemplateOffset(resource);
-
-    const elements = findElementsWithAttribute(template, `polymorpheus-outlet`);
-
-    elements.forEach(element => {
-        const contentVal = element.attrs.find(attr => attr.name === `[content]`)?.value;
-        const contextVal = element.attrs.find(attr => attr.name === `[context]`)?.value;
-
-        const defaultTemplateEl = findElementsByFn(
-            element.childNodes,
-            el => el.tagName === `ng-template`,
-        )[0];
-
-        if (!contentVal) {
-            return;
-        }
-
-        if (defaultTemplateEl) {
-            insertPolymorpheusWithDefault({
-                template,
-                defaultTemplateEl,
-                recorder,
-                templateOffset,
-                contentVal,
-                contextVal,
-            });
-        } else {
-            insertPolymorpheus({
-                element,
-                contentVal,
-                contextVal,
-                recorder,
-                templateOffset,
-            });
-        }
-    });
-
-    removeOldInputs(recorder, template, templateOffset);
-}
-
 function insertPolymorpheus({
     element,
     contentVal,
@@ -160,4 +110,54 @@ function insertPolymorpheusWithDefault({
             templateVar.name.length,
         );
     }
+}
+
+export function migratePolymorpheus({
+    resource,
+    fileSystem,
+    recorder,
+}: {
+    fileSystem: DevkitFileSystem;
+    recorder: UpdateRecorder;
+    resource: TemplateResource;
+}): void {
+    const template = getTemplateFromTemplateResource(resource, fileSystem);
+    const templateOffset = getTemplateOffset(resource);
+
+    const elements = findElementsWithAttribute(template, `polymorpheus-outlet`);
+
+    elements.forEach(element => {
+        const contentVal = element.attrs.find(attr => attr.name === `[content]`)?.value;
+        const contextVal = element.attrs.find(attr => attr.name === `[context]`)?.value;
+
+        const defaultTemplateEl = findElementsByFn(
+            element.childNodes,
+            el => el.tagName === `ng-template`,
+        )[0];
+
+        if (!contentVal) {
+            return;
+        }
+
+        if (defaultTemplateEl) {
+            insertPolymorpheusWithDefault({
+                template,
+                defaultTemplateEl,
+                recorder,
+                templateOffset,
+                contentVal,
+                contextVal,
+            });
+        } else {
+            insertPolymorpheus({
+                element,
+                contentVal,
+                contextVal,
+                recorder,
+                templateOffset,
+            });
+        }
+    });
+
+    removeOldInputs(recorder, template, templateOffset);
 }

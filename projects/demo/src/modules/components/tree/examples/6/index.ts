@@ -8,6 +8,12 @@ interface TreeNode {
     readonly text: string;
 }
 
+function flatten(item: TreeNode): readonly TreeNode[] {
+    return item.children
+        ? item.children.map(flatten).reduce((arr, item) => [...arr, ...item], [])
+        : [item];
+}
+
 @Component({
     selector: 'tui-tree-example-6',
     templateUrl: './index.html',
@@ -62,10 +68,4 @@ export class TuiTreeExample6 {
 
         this.map = new Map(this.map.entries());
     }
-}
-
-function flatten(item: TreeNode): readonly TreeNode[] {
-    return item.children
-        ? item.children.map(flatten).reduce((arr, item) => [...arr, ...item], [])
-        : [item];
 }

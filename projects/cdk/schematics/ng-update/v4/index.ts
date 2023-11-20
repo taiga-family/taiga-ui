@@ -12,6 +12,24 @@ import {replaceIdentifiers} from '../steps/replace-identifier';
 import {migrateTemplates, restoreTuiMapper, restoreTuiMatcher} from './steps';
 import {IDENTIFIERS_TO_REPLACE} from './steps/constants/identifiers-to-replace';
 
+function main(options: TuiSchema): Rule {
+    return (tree: Tree, _context: SchematicContext) => {
+        const project = createProject(tree, projectRoot(), ALL_FILES);
+
+        const fileSystem = project.getFileSystem().fs;
+
+        replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE);
+
+        restoreTuiMapper(options);
+        restoreTuiMatcher(options);
+
+        migrateTemplates(fileSystem, options);
+
+        fileSystem.commitEdits();
+        saveActiveProject();
+    };
+}
+
 export function updateToV4(options: TuiSchema): Rule {
     const t0 = performance.now();
 
@@ -31,22 +49,4 @@ export function updateToV4(options: TuiSchema): Rule {
                 );
         },
     ]);
-}
-
-function main(options: TuiSchema): Rule {
-    return (tree: Tree, _context: SchematicContext) => {
-        const project = createProject(tree, projectRoot(), ALL_FILES);
-
-        const fileSystem = project.getFileSystem().fs;
-
-        replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE);
-
-        restoreTuiMapper(options);
-        restoreTuiMatcher(options);
-
-        migrateTemplates(fileSystem, options);
-
-        fileSystem.commitEdits();
-        saveActiveProject();
-    };
 }
