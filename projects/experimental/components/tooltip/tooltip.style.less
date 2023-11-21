@@ -6,25 +6,24 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1.5rem;
-    height: 1.5rem;
     vertical-align: middle;
     font-size: 0;
     line-height: 0;
     pointer-events: auto;
+    border-radius: 100%;
     cursor: pointer;
 }
 
-.t-tooltip-icon {
-    border-radius: 100%;
-    outline-offset: 1px;
+.t-tooltip-button {
+    border-radius: inherit;
+    outline-offset: -4px;
+
+    &:before {
+        width: 1rem;
+        height: 1rem;
+    }
 
     :host-context([tuiWrapper][data-appearance='textfield'][data-state='disabled']) & {
         opacity: 1;
     }
-}
-
-.t-icon {
-    width: 1rem;
-    height: 1rem;
 }

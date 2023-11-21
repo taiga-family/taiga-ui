@@ -10,7 +10,7 @@ import {tuiTooltipOptionsProvider} from '@taiga-ui/experimental';
     changeDetection,
     providers: [
         tuiTooltipOptionsProvider({
-            icons: 'tuiIconCamera',
+            icons: 'tuiIconInfo',
         }),
     ],
 })

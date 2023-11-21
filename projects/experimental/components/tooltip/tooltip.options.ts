@@ -1,9 +1,8 @@
 import {Provider} from '@angular/core';
 import {tuiCreateToken, TuiPlatform, tuiProvideOptions} from '@taiga-ui/cdk';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiTooltipOptions {
-    readonly icons: Record<TuiPlatform, PolymorpheusContent> | string;
+    readonly icons: Record<TuiPlatform, string> | string;
 }
 
 export const TUI_TOOLTIP_DEFAULT_OPTIONS: TuiTooltipOptions = {

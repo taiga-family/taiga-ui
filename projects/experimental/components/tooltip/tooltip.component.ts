@@ -4,6 +4,7 @@ import {
     HostListener,
     Inject,
     Input,
+    Optional,
     Self,
     ViewChild,
 } from '@angular/core';
@@ -17,7 +18,7 @@ import {
 import {MODE_PROVIDER} from '@taiga-ui/core';
 import {TUI_MODE} from '@taiga-ui/core';
 import {TuiBrightness} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {TuiAppearanceDirective} from '@taiga-ui/experimental/directives';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -32,6 +33,8 @@ import {TUI_TOOLTIP_OPTIONS, TuiTooltipOptions} from './tooltip.options';
     inputs: ['content', 'direction', 'appearance', 'showDelay', 'hideDelay'],
 })
 export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
+    private mode: TuiBrightness | null = null;
+
     @ViewChild(TuiHintHoverDirective)
     readonly driver$?: TuiHintHoverDirective;
 
@@ -41,14 +44,15 @@ export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     @Input()
     context?: C;
 
-    mode: TuiBrightness | null = null;
-
     constructor(
         @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_HINT_OPTIONS) options: TuiHintOptions,
         @Inject(TUI_TOOLTIP_OPTIONS) readonly tooltipOptions: TuiTooltipOptions,
         @Inject(TUI_PLATFORM) private readonly platform: TuiPlatform,
+        @Optional()
+        @Inject(TuiAppearanceDirective)
+        readonly iconAppearance: TuiAppearanceDirective | null,
     ) {
         super(options);
 
@@ -61,7 +65,7 @@ export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
         return this.appearance || this.mode || '';
     }
 
-    get tooltipIcon(): PolymorpheusContent {
+    get tooltipIcon(): string {
         const {icons} = this.tooltipOptions;
 
         return tuiIsString(icons) ? icons : icons[this.platform];

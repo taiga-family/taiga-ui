@@ -8,7 +8,6 @@ import {TuiTooltipModule} from '@taiga-ui/experimental';
   imports: [
     // ...
     TuiTooltipModule,
-    TuiHintModule,
   ],
   // ...
 })
