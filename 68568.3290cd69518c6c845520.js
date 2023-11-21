@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[68568],{68568:n=>{n.exports=".container {\n    min-width: 18rem;\n}\n"}}]);
