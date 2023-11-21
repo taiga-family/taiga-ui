@@ -57,11 +57,6 @@ tui-badge,
 
     &[data-appearance='neutral'] {
         --t-dot: var(--tui-neutral-fill);
-
-        &[data-platform='ios'],
-        &[data-platform='android'] {
-            background: var(--tui-base-06);
-        }
     }
 
     &[data-size='s'] {
@@ -70,12 +65,6 @@ tui-badge,
         --t-padding: 0 0.3125rem 0 0.1875rem;
         --t-size: 1rem;
         --t-icon-size: 0.625rem;
-
-        &[data-platform='ios'],
-        &[data-platform='android'] {
-            font: var(--tui-font-text-xs);
-            font-weight: bold;
-        }
     }
 
     &[data-size='m'] {
@@ -99,20 +88,6 @@ tui-badge,
 
         --t-padding: 0 0.75rem 0 0.5rem;
         --t-size: var(--tui-height-s);
-
-        &[data-platform='ios'],
-        &[data-platform='android'] {
-            font: var(--tui-font-text-s);
-            font-weight: bold;
-
-            --t-padding: 0 0.625rem 0 0.375rem;
-            --t-size: 1.75rem;
-        }
-    }
-
-    &[data-platform='ios'],
-    &[data-platform='android'] {
-        font-weight: bold;
     }
 }
 

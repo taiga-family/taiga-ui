@@ -1,5 +1,5 @@
 import {Directive, Inject, Input} from '@angular/core';
-import {TUI_PLATFORM, TuiDirectiveStylesService, TuiPlatform} from '@taiga-ui/cdk';
+import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
 
 import {TuiBadgeComponent} from './badge.component';
 import {TUI_BADGE_OPTIONS, TuiBadgeOptions} from './badge.options';
@@ -9,7 +9,6 @@ import {TUI_BADGE_OPTIONS, TuiBadgeOptions} from './badge.options';
     host: {
         tuiAppearance: '',
         '[class._dot]': 'dot',
-        '[attr.data-platform]': 'platform',
         '[attr.data-appearance]': 'appearance',
         '[attr.data-size]': 'size',
     },
@@ -26,7 +25,6 @@ export class TuiBadgeDirective {
 
     constructor(
         @Inject(TUI_BADGE_OPTIONS) private readonly options: TuiBadgeOptions,
-        @Inject(TUI_PLATFORM) readonly platform: TuiPlatform,
         @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
     ) {
         directiveStyles.addComponent(TuiBadgeComponent);

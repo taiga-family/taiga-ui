@@ -17,7 +17,6 @@ import {TuiCellComponent} from './cell.component';
     host: {
         tuiCell: '',
         '[attr.data-size]': 'platform !== "web" ? "l" : size || "l"',
-        '[attr.data-platform]': 'platform',
     },
 })
 export class TuiCellDirective {
