@@ -8,6 +8,6 @@ import {TuiButtonCloseDirective} from './button-close.directive';
 @NgModule({
     imports: [CommonModule, TuiSvgModule, TuiLoaderModule],
     declarations: [TuiButtonCloseDirective, TuiButtonCloseStylesComponent],
-    exports: [TuiButtonCloseDirective, TuiButtonCloseStylesComponent],
+    exports: [TuiButtonCloseDirective],
 })
 export class TuiButtonCloseModule {}

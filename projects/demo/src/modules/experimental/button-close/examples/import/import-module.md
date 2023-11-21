@@ -6,6 +6,7 @@ import {TuiButtonCloseModule} from '@taiga-ui/experimental';
 @NgModule({
   imports: [
     // ...
+    TuiButtonModule,
     TuiButtonCloseModule,
   ],
 })

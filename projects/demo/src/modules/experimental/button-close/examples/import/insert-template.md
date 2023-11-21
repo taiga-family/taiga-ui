@@ -1,3 +1,6 @@
 ```html
-<button tuiButtonClose></button>
+<button
+  tuiIconButton
+  tuiButtonClose
+></button>
 ```

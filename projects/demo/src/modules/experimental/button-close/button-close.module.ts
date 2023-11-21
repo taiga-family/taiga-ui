@@ -1,8 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
-import {TuiNotificationModule, TuiSvgModule} from '@taiga-ui/core';
-import {TuiAvatarModule} from '@taiga-ui/experimental';
+import {TuiNotificationModule} from '@taiga-ui/core';
+import {TuiButtonModule} from '@taiga-ui/experimental';
 import {TuiButtonCloseModule} from '@taiga-ui/experimental';
 
 import {ExampleTuiButtonCloseComponent} from './button-close.component';
@@ -13,8 +13,7 @@ import {TuiButtonCloseExample1} from './examples/1';
         CommonModule,
         TuiButtonCloseModule,
         TuiNotificationModule,
-        TuiSvgModule,
-        TuiAvatarModule,
+        TuiButtonModule,
         tuiGetDocModules(ExampleTuiButtonCloseComponent),
     ],
     declarations: [ExampleTuiButtonCloseComponent, TuiButtonCloseExample1],

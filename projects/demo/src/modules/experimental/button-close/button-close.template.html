@@ -19,39 +19,7 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
-        <tui-doc-demo>
-            <button
-                tuiButtonClose
-                [appearance]="appearance"
-                [size]="size"
-            >
-                Button
-            </button>
-        </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="s | xs"
-                [documentationPropertyValues]="sizes"
-                [(documentationPropertyValue)]="size"
-            >
-                Size
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="appearance"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="appearances"
-                [(documentationPropertyValue)]="appearance"
-            >
-                Appearance
-            </ng-template>
-        </tui-doc-documentation>
-    </ng-template>
-
-    <ng-template pageTab>
+    <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
                 <p>Import module:</p>

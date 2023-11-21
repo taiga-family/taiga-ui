@@ -19,12 +19,4 @@ export class ExampleTuiButtonCloseComponent {
     readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
     };
-
-    readonly sizes: ReadonlyArray<'s' | 'xs'> = ['s', 'xs'];
-
-    size = this.sizes[3];
-
-    readonly appearances = ['', 'glass'];
-
-    appearance = this.appearances[0];
 }
