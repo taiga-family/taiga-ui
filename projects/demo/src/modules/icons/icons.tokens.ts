@@ -13,8 +13,6 @@ const DEPRECATED: DemoTuiIcon[] = [
     `tuiIconUndo`,
 ];
 
-const {LARGE, NORMAL} = ensureIcons();
-
 export type DemoTuiIcon = keyof typeof import('@taiga-ui/icons');
 
 export type DemoTuiIconsList = ReadonlyArray<DemoTuiIcon | string>;
@@ -84,18 +82,22 @@ export function ensureIcons(): {LARGE: DemoTuiIcon[]; NORMAL: DemoTuiIcon[]} {
     return {LARGE: large, NORMAL: normal};
 }
 
-export const ICONS = (deprecated: TuiStringHandler<string>): DemoTuiIconsTabs => ({
-    'Description and examples': {
-        [`Normal / 16px`]: NORMAL.filter(
-            icon => !deprecated(icon) && !DEPRECATED.includes(icon),
-        ),
-        [`Large / 24px`]: LARGE.filter(
-            icon => !deprecated(icon) && !DEPRECATED.includes(icon),
-        ),
-        [`Payment systems`]: COMMERCE_SYSTEMS,
-        [`Payment services`]: COMMERCE_SERVICES,
-    },
-});
+export const ICONS = (deprecated: TuiStringHandler<string>): DemoTuiIconsTabs => {
+    const {LARGE, NORMAL} = ensureIcons();
+
+    return {
+        'Description and examples': {
+            [`Normal / 16px`]: NORMAL.filter(
+                icon => !deprecated(icon) && !DEPRECATED.includes(icon),
+            ),
+            [`Large / 24px`]: LARGE.filter(
+                icon => !deprecated(icon) && !DEPRECATED.includes(icon),
+            ),
+            [`Payment systems`]: COMMERCE_SYSTEMS,
+            [`Payment services`]: COMMERCE_SERVICES,
+        },
+    };
+};
 
 export const TUI_DEMO_ICONS = tuiCreateTokenFromFactory(() =>
     ICONS(inject(TUI_SVG_OPTIONS).deprecated),
