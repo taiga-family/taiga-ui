@@ -79,10 +79,10 @@
     border: ((@hitbox - @thumb-diameters[@@size]) / 2) solid transparent;
     border-left: 0;
     border-right: 0;
+    transform: var(--tui-slider-thumb-transform, @transform-noop);
 
     :not(:disabled)& {
         cursor: ew-resize;
-        transform: var(--slider-thumb-transform, @transform-noop);
 
         &:hover {
             background-color: var(--tui-primary-hover);
@@ -94,7 +94,7 @@
 
         &:hover,
         :active& {
-            transform: var(--slider-thumb-transform, @transform-noop) scale(@active-thumb-scale-factor[@@size]);
+            transform: var(--tui-slider-thumb-transform, @transform-noop) scale(@active-thumb-scale-factor[@@size]);
         }
     }
 
@@ -115,7 +115,7 @@
     width: @thumb-diameters[@@size];
     height: @thumb-diameters[@@size];
     border-radius: 50%;
-    transform: var(--slider-thumb-transform, @transform-noop);
+    transform: var(--tui-slider-thumb-transform, @transform-noop);
 }
 
 .thumb-overlay(@size) {
@@ -130,7 +130,7 @@
 
     &:active:before {
         opacity: 0.2;
-        transform: var(--slider-thumb-transform, @transform-noop) scale(2.33);
+        transform: var(--tui-slider-thumb-transform, @transform-noop) scale(2.33);
     }
 }
 
