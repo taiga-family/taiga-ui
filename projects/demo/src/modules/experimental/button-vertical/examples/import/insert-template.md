@@ -2,8 +2,8 @@
 <button
   tuiButton
   tuiButtonVertical
+  iconLeft="tuiIconStarLarge"
 >
-  <tui-svg src="tuiIconStarLarge"></tui-svg>
   Press me
 </button>
 ```

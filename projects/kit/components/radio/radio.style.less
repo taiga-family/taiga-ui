@@ -28,9 +28,15 @@
 }
 
 .t-mark {
+    .transition(transform);
     position: absolute;
     background-color: currentColor;
     border-radius: 100%;
+    transform: scale(0);
+
+    &_visible {
+        transform: scale(1);
+    }
 
     :host[data-size='m'] & {
         margin: 0.25rem;

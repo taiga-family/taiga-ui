@@ -17,6 +17,7 @@ import {
     TuiCardModule,
     TuiFadeModule,
     TuiFallbackSrcModule,
+    TuiIconModule,
     TuiInitialsModule,
     TuiSurfaceModule,
     TuiThumbnailCardModule,
@@ -53,6 +54,7 @@ import {TuiCardExample7} from './examples/7';
         TuiRippleModule,
         TuiThumbnailCardModule,
         tuiGetDocModules(ExampleTuiCardComponent),
+        TuiIconModule,
     ],
     declarations: [
         ExampleTuiCardComponent,

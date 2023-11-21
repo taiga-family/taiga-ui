@@ -843,7 +843,7 @@ export const pages: TuiDocPages = [
         subPages: [
             {
                 section: `Experimental`,
-                title: `Badge`,
+                title: `Badge `,
                 keywords: `бэдж, бейдж, овал, badge, нотификация`,
                 route: `/experimental/badge`,
             },
@@ -855,7 +855,7 @@ export const pages: TuiDocPages = [
             },
             {
                 section: `Experimental`,
-                title: `BadgedContent`,
+                title: `BadgedContent `,
                 keywords: `бэдж, бейдж, circle, овал, круг, badge, нотификация`,
                 route: `/experimental/badged-content`,
             },
@@ -867,7 +867,7 @@ export const pages: TuiDocPages = [
         subPages: [
             {
                 section: `Experimental`,
-                title: `Button`,
+                title: `Button `,
                 keywords: `кнопка, button, icon-button, иконка`,
                 route: `/experimental/button`,
             },
@@ -905,7 +905,7 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Experimental`,
-        title: `ProgressSegmented`,
+        title: `ProgressSegmented `,
         keywords: `progress, progress-segmented, индикатор, загрузка, прогресс, segment, segments, segmented`,
         route: `/experimental/progress-segmented`,
     },

@@ -8,9 +8,8 @@
     [invalid]="computedInvalid"
 >
     <div
-        *ngIf="checked"
         class="t-mark"
-        [@tuiScaleIn]="animation"
+        [class.t-mark_visible]="checked"
     ></div>
     <input
         #focusableElement
