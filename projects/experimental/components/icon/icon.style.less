@@ -6,7 +6,10 @@
     width: 1.5rem;
     height: 1.5rem;
     vertical-align: middle;
-    mask: var(--t-mask-bg, var(--t-mask)) no-repeat center/contain;
+
+    &._duo {
+        mask: var(--t-mask-bg) no-repeat center/contain;
+    }
 
     &:after {
         .fullsize();

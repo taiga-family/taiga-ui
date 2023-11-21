@@ -16,6 +16,7 @@ import {TuiCellComponent} from './cell.component';
     ],
     host: {
         tuiCell: '',
+        '[attr.data-size]': 'size || "l"',
     },
 })
 export class TuiCellDirective {

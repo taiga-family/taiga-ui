@@ -1,15 +1,18 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-[data-platform='ios'] {
-    @import './ios/toggle';
-}
-
 [data-platform='android'] {
+    @import './android/checkbox';
+    @import './android/radio';
     @import './android/toggle';
 
     tui-badge-notification[data-size='l'] {
         --t-size: 1.375rem;
     }
+}
+
+[data-platform='ios'] {
+    @import './ios/checkbox';
+    @import './ios/toggle';
 }
 
 [data-platform='android'],

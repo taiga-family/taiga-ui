@@ -1,0 +1,38 @@
+input[tuiCheckbox],
+input[tuiRadio] {
+    width: 1.375rem;
+    height: 1.375rem;
+    border-radius: 100%;
+    color: var(--tui-base-01);
+    transition: none;
+
+    &:checked,
+    &:not([tuiRadio]):indeterminate {
+        background: var(--tui-accent);
+        box-shadow: none;
+
+        &:disabled:not(._readonly) {
+            background: var(--tui-base-04);
+        }
+
+        &:before {
+            display: block;
+            transform: none;
+            mask: var(--t-mask) center/100%;
+        }
+
+        &._invalid {
+            background: var(--tui-error-fill);
+        }
+    }
+
+    &:before {
+        display: none;
+
+        --t-mask: url('data:image/svg+xml,<svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M6.75 11.25L9.8 15.2L15.2 7" fill="none" stroke="black" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    }
+
+    &:not([tuiRadio]):indeterminate:before {
+        --t-mask: url('data:image/svg+xml,<svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M6 11H16" fill="none" stroke="black" stroke-width="1.75" stroke-linecap="round"/></svg>');
+    }
+}
