@@ -17,6 +17,10 @@ function extractLinearGradientIdsFromSvg(svg: string): string[] {
     return Array.from(new Set(ids));
 }
 
+/**
+ * TODO: remove in v4.0
+ * @deprecated
+ */
 function setFallbackForGradientFill(svg: string, fallback: string): string {
     try {
         const tree = new DOMParser().parseFromString(svg, `text/html`);
@@ -53,6 +57,10 @@ function setFallbackForGradientFill(svg: string, fallback: string): string {
 export function tuiSvgLinearGradientProcessor(
     svg: TuiSafeHtml,
     salt: number | string = makeRandomSalt(),
+    /**
+     * TODO: remove in v4.0
+     * @deprecated
+     */
     fallback: string = `rgba(0, 0, 0, 0.7)`,
 ): TuiSafeHtml {
     if (tuiIsString(svg)) {
