@@ -68,16 +68,17 @@
     isolation: isolate;
     appearance: none;
     background-color: @thumb-color;
-    border: none;
     box-shadow: none;
     border-radius: 50%;
     height: @thumb-diameters[@@size];
     width: @thumb-diameters[@@size];
 
-    /* Increase vertical hitbox by trasparent paddings */
+    /* Increase vertical hitbox by trasparent borders */
     box-sizing: content-box;
     background-clip: content-box;
-    padding: ((@hitbox - @thumb-diameters[@@size]) / 2) 0;
+    border: ((@hitbox - @thumb-diameters[@@size]) / 2) solid transparent;
+    border-left: 0;
+    border-right: 0;
 
     :not(:disabled)& {
         cursor: ew-resize;
