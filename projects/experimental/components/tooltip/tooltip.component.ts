@@ -10,15 +10,15 @@ import {
 } from '@angular/core';
 import {TUI_PLATFORM, TuiDestroyService, tuiIsString, TuiPlatform} from '@taiga-ui/cdk';
 import {
+    MODE_PROVIDER,
     TUI_HINT_OPTIONS,
+    TUI_MODE,
+    TuiBrightness,
     TuiHintHoverDirective,
     TuiHintOptions,
     TuiHintOptionsDirective,
 } from '@taiga-ui/core';
-import {MODE_PROVIDER} from '@taiga-ui/core';
-import {TUI_MODE} from '@taiga-ui/core';
-import {TuiBrightness} from '@taiga-ui/core';
-import {TuiAppearanceDirective} from '@taiga-ui/experimental/directives';
+import {TuiAppearanceDirective} from '@taiga-ui/experimental/directives/appearance';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
