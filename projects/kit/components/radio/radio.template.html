@@ -8,8 +8,8 @@
     [invalid]="computedInvalid"
 >
     <div
-        *ngIf="checked"
         class="t-mark"
+        [class.t-mark_visible]="checked"
     ></div>
     <input
         #focusableElement

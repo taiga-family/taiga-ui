@@ -28,10 +28,15 @@
 }
 
 .t-mark {
+    .transition(transform);
     position: absolute;
     background-color: currentColor;
     border-radius: 100%;
-    animation: scaleIn 300ms;
+    transform: scale(0);
+
+    &_visible {
+        transform: scale(1);
+    }
 
     :host[data-size='m'] & {
         margin: 0.25rem;
@@ -43,16 +48,6 @@
         margin: 0.4375rem;
         width: @dotSizeL;
         height: @dotSizeL;
-    }
-}
-
-@keyframes scaleIn {
-    0% {
-        transform: scale(0);
-    }
-
-    100% {
-        transform: scale(1);
     }
 }
 
