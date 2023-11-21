@@ -8,9 +8,9 @@ export interface TuiButtonCloseOptions {
 }
 
 export const TUI_BUTTON_CLOSE_DEFAULT_OPTIONS: TuiButtonCloseOptions = {
-    size: 's',
-    appearance: 'close',
-    icons: 'tuiIconClose',
+    size: `s`,
+    appearance: `close`,
+    icons: `tuiIconClose`,
 };
 
 export const TUI_BUTTON_CLOSE_OPTIONS = tuiCreateToken(TUI_BUTTON_CLOSE_DEFAULT_OPTIONS);
