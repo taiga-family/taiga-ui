@@ -19,24 +19,8 @@
     height: var(--t-size);
     min-width: var(--t-size);
 
-    &[data-size='l'] {
-        &[data-platform='android'] {
-            --t-size: 1.375rem;
-        }
-
-        &[data-platform='ios'],
-        &[data-platform='android'] {
-            font: var(--tui-font-text-m);
-        }
-    }
-
     &[data-size='m'] {
         --t-size: 1.25rem;
-
-        &[data-platform='ios'],
-        &[data-platform='android'] {
-            --t-size: 1.125rem;
-        }
     }
 
     &[data-size='s'] {
