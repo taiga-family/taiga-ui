@@ -84,10 +84,17 @@
     :not(:disabled)& {
         cursor: ew-resize;
 
+        /*
+        TODO: delete it in v4.0
+        New version of slider doesn't change color for ":hover" or ":active" states.
+        Don't forget to update this example (just use css property "color" for host):
+        https://taiga-ui.dev/components/slider#colors
+         */
         &:hover {
             background-color: var(--tui-primary-hover);
         }
 
+        // TODO: delete it in v4.0
         :active& {
             background-color: var(--tui-primary-active);
         }
