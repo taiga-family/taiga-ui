@@ -23,9 +23,9 @@ test.describe(`Carousel`, () => {
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
         await page.mouse.move(650, 350);
-        await page.mouse.down({button: `left`});
+        await page.mouse.down();
         await page.mouse.move(300, 350, {steps: 10});
-        await page.mouse.up({button: `left`});
+        await page.mouse.up();
 
         await expect(apiPageExample).toHaveScreenshot(`carousel-draggable.png`);
     });
