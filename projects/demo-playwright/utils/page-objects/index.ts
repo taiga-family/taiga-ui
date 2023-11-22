@@ -5,6 +5,7 @@ export * from './input-card-grouped.po';
 export * from './input-date-range.po';
 export * from './input-date-time.po';
 export * from './input-month.po';
+export * from './input-phone.po';
 export * from './input-slider.po';
 export * from './input-tag.po';
 export * from './input-time.po';

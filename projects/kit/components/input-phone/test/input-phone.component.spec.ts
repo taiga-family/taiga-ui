@@ -12,6 +12,7 @@ describe(`InputPhone`, () => {
         template: `
             <tui-root>
                 <tui-input-phone
+                    [allowText]="allowText"
                     [countryCode]="countryCode"
                     [formControl]="control"
                     [phoneMaskAfterCountryCode]="phoneMaskAfterCountryCode"
@@ -25,6 +26,7 @@ describe(`InputPhone`, () => {
         component!: TuiInputPhoneComponent;
 
         control = new FormControl(`+79110330102`);
+        allowText = false;
         countryCode = `+7`;
         phoneMaskAfterCountryCode = `### ###-##-##`;
         readOnly = false;
@@ -224,22 +226,51 @@ describe(`InputPhone`, () => {
             expect(inputPO.value).toBe(`+7 `);
         });
 
-        it(`If the value was, and then deleted to +7`, async () => {
-            testComponent.control.setValue(`+7999`);
+        describe(`If the value was, and then deleted to +7`, () => {
+            it(`allowText is false`, async () => {
+                testComponent.control.setValue(`+7999`);
 
-            await fixture.whenStable();
-            fixture.detectChanges();
-            await fixture.whenStable();
+                await fixture.whenStable();
+                fixture.detectChanges();
+                await fixture.whenStable();
 
-            expect(inputPO.value).toBe(`+7 999`);
-            expect(testComponent.control.value).toBe(`+7999`);
+                expect(inputPO.value).toBe(`+7 999`);
+                expect(testComponent.control.value).toBe(`+7999`);
 
-            inputPO.sendText(`+7 `);
-            await fixture.whenStable();
-            fixture.detectChanges();
+                inputPO.sendText(`+7 `);
+                await fixture.whenStable();
+                fixture.detectChanges();
 
-            expect(inputPO.value).toBe(`+7 `);
-            expect(testComponent.control.value).toBe(``);
+                expect(inputPO.value).toBe(`+7 `);
+                expect(testComponent.control.value).toBe(`+7`);
+            });
+
+            it(`allowText is true`, async () => {
+                testComponent.allowText = true;
+                testComponent.countryCode = `+52`;
+                testComponent.control.setValue(`+5252`);
+
+                await fixture.whenStable();
+                fixture.detectChanges();
+                await fixture.whenStable();
+
+                expect(inputPO.value).toBe(`+52 52`);
+                expect(testComponent.control.value).toBe(`+5252`);
+
+                inputPO.sendText(`+52 `);
+                await fixture.whenStable();
+                fixture.detectChanges();
+
+                expect(inputPO.value).toBe(`+52 `);
+                expect(testComponent.control.value).toBe(``);
+
+                inputPO.sendText(`52 `);
+                await fixture.whenStable();
+                fixture.detectChanges();
+
+                expect(inputPO.value).toBe(`+52 `);
+                expect(testComponent.control.value).toBe(``);
+            });
         });
     });
 

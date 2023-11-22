@@ -194,7 +194,10 @@ export class TuiInputPhoneComponent
             : value.replace(TUI_MASK_SYMBOLS_REGEXP, '').slice(0, this.maxPhoneLength);
 
         this.updateSearch(parsed);
-        this.value = parsed === this.countryCode || isText(parsed) ? '' : parsed;
+
+        const prepared = parsed === this.countryCode || isText(parsed) ? '' : parsed;
+
+        this.value = prepared === '' && !this.allowText ? this.countryCode : prepared;
         this.open = true;
     }
 
