@@ -4,33 +4,29 @@ import {expect, test} from '@playwright/test';
 test.describe(`Carousel`, () => {
     test(`default padding`, async ({page}) => {
         await tuiGoto(page, `components/carousel/API`);
-        const documentationPage = new TuiDocumentationPagePO(page);
-        const example = documentationPage.apiPageExample;
+        const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-        await expect(example).toBeVisible();
-        await expect(example).toHaveScreenshot(`carousel-padding-default.png`);
+        await expect(apiPageExample).toBeVisible();
+        await expect(apiPageExample).toHaveScreenshot(`carousel-padding-default.png`);
     });
 
     test(`padding has zero value`, async ({page}) => {
         await tuiGoto(page, `components/carousel/API?style.--tui-carousel-padding=0`);
-        const documentationPage = new TuiDocumentationPagePO(page);
-        const example = documentationPage.apiPageExample;
+        const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-        await expect(example).toBeVisible();
-        await expect(example).toHaveScreenshot(`carousel-padding-0.png`);
+        await expect(apiPageExample).toBeVisible();
+        await expect(apiPageExample).toHaveScreenshot(`carousel-padding-0.png`);
     });
 
     test(`should show next item after drag`, async ({page}) => {
         await tuiGoto(page, `components/carousel/API?draggable=true`);
-        const documentationPage = new TuiDocumentationPagePO(page);
-        const example = documentationPage.apiPageExample;
-        const itemExample = example.locator(`.t-item`).first();
+        const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-        await itemExample.dispatchEvent(`mousedown`);
-        await itemExample.dispatchEvent(`mousedown`, {x: 600, y: 100});
-        await itemExample.dispatchEvent(`mousedown`, {x: -0, y: 100});
-        await itemExample.dispatchEvent(`mouseup`);
+        await page.mouse.move(650, 350);
+        await page.mouse.down({button: `left`});
+        await page.mouse.move(300, 350, {steps: 10});
+        await page.mouse.up({button: `left`});
 
-        await expect(example).toHaveScreenshot(`carousel-draggable.png`);
+        await expect(apiPageExample).toHaveScreenshot(`carousel-draggable.png`);
     });
 });
