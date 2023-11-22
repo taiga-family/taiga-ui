@@ -5,24 +5,8 @@ import {
 } from '@angular/cdk/testing';
 import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 
-export class TuiPrimitiveCalendarHarness extends TuiComponentHarness {
-    static hostSelector = `tui-primitive-calendar`;
-
-    async clickDay(day: number): Promise<void> {
-        const dayCell = await this.locatorFor(
-            TuiDayCellHarness.with({day, ancestor: `#date-rows`}),
-        )();
-
-        return dayCell.click();
-    }
-
-    async hoverDay(day: number): Promise<void> {
-        const dayCell = await this.locatorFor(
-            TuiDayCellHarness.with({day, ancestor: `#date-rows`}),
-        )();
-
-        return dayCell.hover();
-    }
+interface TuiDayCellHarnessFilters extends BaseHarnessFilters {
+    day: number;
 }
 
 class TuiDayCellHarness extends ComponentHarness {
@@ -50,6 +34,22 @@ class TuiDayCellHarness extends ComponentHarness {
     }
 }
 
-interface TuiDayCellHarnessFilters extends BaseHarnessFilters {
-    day: number;
+export class TuiPrimitiveCalendarHarness extends TuiComponentHarness {
+    static hostSelector = `tui-primitive-calendar`;
+
+    async clickDay(day: number): Promise<void> {
+        const dayCell = await this.locatorFor(
+            TuiDayCellHarness.with({day, ancestor: `#date-rows`}),
+        )();
+
+        return dayCell.click();
+    }
+
+    async hoverDay(day: number): Promise<void> {
+        const dayCell = await this.locatorFor(
+            TuiDayCellHarness.with({day, ancestor: `#date-rows`}),
+        )();
+
+        return dayCell.hover();
+    }
 }

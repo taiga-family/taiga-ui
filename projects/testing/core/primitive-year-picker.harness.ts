@@ -5,14 +5,8 @@ import {
 } from '@angular/cdk/testing';
 import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 
-export class TuiPrimitiveYearPickerHarness extends TuiComponentHarness {
-    static hostSelector = `tui-primitive-year-picker`;
-
-    async clickYear(year: string): Promise<void> {
-        const yearCell = await this.locatorFor(TuiYearCellHarness.with({year}))();
-
-        return yearCell.click();
-    }
+interface TuiYearCellHarnessFilters extends BaseHarnessFilters {
+    year: string;
 }
 
 class TuiYearCellHarness extends ComponentHarness {
@@ -38,6 +32,12 @@ class TuiYearCellHarness extends ComponentHarness {
     }
 }
 
-interface TuiYearCellHarnessFilters extends BaseHarnessFilters {
-    year: string;
+export class TuiPrimitiveYearPickerHarness extends TuiComponentHarness {
+    static hostSelector = `tui-primitive-year-picker`;
+
+    async clickYear(year: string): Promise<void> {
+        const yearCell = await this.locatorFor(TuiYearCellHarness.with({year}))();
+
+        return yearCell.click();
+    }
 }

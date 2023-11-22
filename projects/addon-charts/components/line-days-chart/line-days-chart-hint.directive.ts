@@ -26,6 +26,10 @@ import {filter, takeUntil} from 'rxjs/operators';
 
 import {TuiLineDaysChartComponent} from './line-days-chart.component';
 
+function find(value: ReadonlyArray<[TuiDay, number]>, current: TuiDay): [TuiDay, number] {
+    return value.find(([day]) => day.daySame(current)) || [current, NaN];
+}
+
 // TODO: Consider extending TuiLineChartHintDirective
 @Directive({
     selector: '[tuiLineChartHint]',
@@ -88,8 +92,4 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
             new Map<string, ReadonlyArray<[TuiDay, number]>>(),
         );
     }
-}
-
-function find(value: ReadonlyArray<[TuiDay, number]>, current: TuiDay): [TuiDay, number] {
-    return value.find(([day]) => day.daySame(current)) || [current, NaN];
 }

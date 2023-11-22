@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.55.0](https://github.com/taiga-family/taiga-ui/compare/v3.54.0...v3.55.0) (2023-11-20)
+
+### Features
+
+- **addon-charts:** `Axes` allows to add label for the end of axisX
+  ([#6016](https://github.com/taiga-family/taiga-ui/issues/6016))
+  ([3a2e611](https://github.com/taiga-family/taiga-ui/commit/3a2e6118c51d97b2dd14ace31916d4f5051bcdc4))
+- **addon-doc:** improve code block ([#5970](https://github.com/taiga-family/taiga-ui/issues/5970))
+  ([179178d](https://github.com/taiga-family/taiga-ui/commit/179178d05b312bc4a01c583ae9f5a1d6de818931))
+- **addon-doc:** improve UX for copy code ([#5918](https://github.com/taiga-family/taiga-ui/issues/5918))
+  ([23e7c65](https://github.com/taiga-family/taiga-ui/commit/23e7c653f3236ae3d334e779c79228015b06a7d5))
+- **addon-mobile:** initial mobile theme ([#5988](https://github.com/taiga-family/taiga-ui/issues/5988))
+  ([679290a](https://github.com/taiga-family/taiga-ui/commit/679290aee119225702b32c693d4e4b6d79e2ed80))
+- **experimental:** `Appearance` add new directive ([#5913](https://github.com/taiga-family/taiga-ui/issues/5913))
+  ([d573ad6](https://github.com/taiga-family/taiga-ui/commit/d573ad6add6463af01b112d27834af4b0c4f1d9a))
+- **experimental:** `Button` add `icon` input for new icons approach
+  ([6b79aeb](https://github.com/taiga-family/taiga-ui/commit/6b79aebf02e4f37f0df3f52c3f491b830270961b))
+- **experimental:** `ButtonVertical` add new directive ([#5949](https://github.com/taiga-family/taiga-ui/issues/5949))
+  ([b19b33f](https://github.com/taiga-family/taiga-ui/commit/b19b33f302195713355baaac342725468a6631bb))
+- **experimental:** `ProgressSegmented` can be customized to have no round corners
+  ([#5933](https://github.com/taiga-family/taiga-ui/issues/5933))
+  ([79fb39d](https://github.com/taiga-family/taiga-ui/commit/79fb39d73a741777fda47049f86421d26ff9db94))
+- **kit:** `File` change `showDelete` type to `boolean | 'always'`
+  ([#5968](https://github.com/taiga-family/taiga-ui/issues/5968))
+  ([d468aa4](https://github.com/taiga-family/taiga-ui/commit/d468aa4ef8b9531d84dca8ccb7eb7d1d7b8253e7))
+- **kit:** `ProgressCircle` has new sizes (add `new` attribute to enable them)
+  ([#5950](https://github.com/taiga-family/taiga-ui/issues/5950))
+  ([d36cc10](https://github.com/taiga-family/taiga-ui/commit/d36cc107ccdfa134f6c1d8b601f71f5f8b96a600))
+- **kit:** prevent combobox dropdown opening on value reset
+  ([#5641](https://github.com/taiga-family/taiga-ui/issues/5641))
+  ([1664665](https://github.com/taiga-family/taiga-ui/commit/1664665b632f83128af373c548cc0fff96c699be))
+
+### Bug Fixes
+
+- **addon-table:** `Table` disappearing borders ([#5999](https://github.com/taiga-family/taiga-ui/issues/5999))
+  ([6dcdb66](https://github.com/taiga-family/taiga-ui/commit/6dcdb666a0d692f7d85ae5176ee4d2c15eda3ae6))
+- **core:** use overflow wrap for notification content ([#5944](https://github.com/taiga-family/taiga-ui/issues/5944))
+  ([cd3920c](https://github.com/taiga-family/taiga-ui/commit/cd3920c0225c8eca0124cbc500983fb29da49632))
+- **kit:** `InputDateRange` can have empty control value after selecting something from `[items]`
+  ([#6006](https://github.com/taiga-family/taiga-ui/issues/6006))
+  ([d0711da](https://github.com/taiga-family/taiga-ui/commit/d0711da595516b1636fe24e4108817d7a00d3d7d))
+- **kit:** don't allow disabled options to be selected ([#5985](https://github.com/taiga-family/taiga-ui/issues/5985))
+  ([948be22](https://github.com/taiga-family/taiga-ui/commit/948be225e0ad8559696779830335ecd761c8ce52))
+- **kit:** preventing hover from being transmitted to nested accordion item
+  ([#6028](https://github.com/taiga-family/taiga-ui/issues/6028))
+  ([ac18f0f](https://github.com/taiga-family/taiga-ui/commit/ac18f0f7b948377741807070c8699c47cbbcf64f))
+- **schematics:** typo in provideAnimations for animations
+  ([#5975](https://github.com/taiga-family/taiga-ui/issues/5975))
+  ([6be1190](https://github.com/taiga-family/taiga-ui/commit/6be1190d9f8d2a2bd9813efacf70da9530d73a21))
+
 ## [3.54.0](https://github.com/taiga-family/taiga-ui/compare/v3.53.0...v3.54.0) (2023-11-13)
 
 ### Features

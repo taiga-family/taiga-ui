@@ -3,7 +3,6 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
-    HostBinding,
     Inject,
     Input,
     OnInit,
@@ -12,15 +11,12 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
-    TUI_PLATFORM,
     tuiControlValue,
     TuiDestroyService,
     tuiIsString,
-    TuiPlatform,
     TuiStringHandler,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
 import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, takeUntil} from 'rxjs/operators';
@@ -32,14 +28,14 @@ import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions} from './checkbox.options';
     template: '',
     styleUrls: ['./checkbox.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [MODE_PROVIDER, TuiDestroyService],
+    providers: [TuiDestroyService],
     host: {
-        '($.data-mode.attr)': 'mode$',
+        tuiAppearance: '', // Apply base appearance
         '[disabled]': '!control || control.disabled',
         '[attr.data-size]': 'size',
-        '[attr.data-platform]': 'platform',
         '[class._invalid]': 'control?.invalid && control?.touched',
         '[class._readonly]': '!control',
+        '[style.--t-mask]': 'icon',
     },
 })
 export class TuiCheckboxComponent implements OnInit {
@@ -52,12 +48,9 @@ export class TuiCheckboxComponent implements OnInit {
         @Inject(TUI_CHECKBOX_OPTIONS) private readonly options: TuiCheckboxOptions,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<unknown>,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLInputElement>,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_PLATFORM) readonly platform: TuiPlatform,
         @Optional() @Inject(NgControl) readonly control: NgControl | null,
     ) {}
 
-    @HostBinding('style.--t-mask')
     get icon(): string {
         const option = this.el.nativeElement.indeterminate
             ? this.options.icons.indeterminate

@@ -126,15 +126,15 @@
     }
 
     &_hoverable {
-        :host:hover:not([data-mode]) & {
+        .t-wrapper:hover:not([data-mode]) > & {
             background: var(--tui-base-02);
         }
 
-        :host:hover[data-mode='onDark'] & {
+        .t-wrapper:hover[data-mode='onDark'] > & {
             background: var(--tui-clear-inverse);
         }
 
-        :host:hover[data-mode='onLight'] & {
+        .t-wrapper:hover[data-mode='onLight'] > & {
             background: var(--tui-clear);
         }
     }

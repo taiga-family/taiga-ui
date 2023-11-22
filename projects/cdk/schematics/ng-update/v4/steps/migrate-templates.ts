@@ -35,6 +35,34 @@ import {
     migrateToggle,
 } from './templates';
 
+function getAction<T>({
+    action,
+    requiredData,
+}: {
+    action: ({
+        resource,
+        fileSystem,
+        recorder,
+        data,
+    }: {
+        fileSystem: DevkitFileSystem;
+        recorder: UpdateRecorder;
+        data: T;
+        resource: TemplateResource;
+    }) => void;
+    requiredData: T;
+}) {
+    return ({
+        resource,
+        fileSystem,
+        recorder,
+    }: {
+        fileSystem: DevkitFileSystem;
+        recorder: UpdateRecorder;
+        resource: TemplateResource;
+    }) => action({resource, fileSystem, recorder, data: requiredData});
+}
+
 export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchema): void {
     !options[`skip-logs`] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
@@ -75,32 +103,4 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
 
     !options[`skip-logs`] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} templates migrated \n`);
-}
-
-function getAction<T>({
-    action,
-    requiredData,
-}: {
-    action: ({
-        resource,
-        fileSystem,
-        recorder,
-        data,
-    }: {
-        fileSystem: DevkitFileSystem;
-        recorder: UpdateRecorder;
-        data: T;
-        resource: TemplateResource;
-    }) => void;
-    requiredData: T;
-}) {
-    return ({
-        resource,
-        fileSystem,
-        recorder,
-    }: {
-        fileSystem: DevkitFileSystem;
-        recorder: UpdateRecorder;
-        resource: TemplateResource;
-    }) => action({resource, fileSystem, recorder, data: requiredData});
 }

@@ -2,31 +2,21 @@
 
 :host {
     .transition(~'background, box-shadow');
-
-    --t-size: 1.5rem;
-    position: relative;
     width: var(--t-size);
     height: var(--t-size);
-    appearance: none;
     cursor: pointer;
     margin: 0;
     border-radius: 100%;
-    outline: none;
     box-shadow: inset 0 0 0 0.0625rem var(--tui-clear-active);
+    color: var(--tui-primary-text);
 
-    &:disabled {
-        pointer-events: none;
+    --t-size: 1.5rem;
 
-        &:not(._readonly) {
-            opacity: var(--tui-disabled-opacity);
-        }
+    &:disabled._readonly {
+        opacity: 1;
     }
 
-    &:focus-visible {
-        box-shadow: inset 0 0 0 0.125rem var(--tui-focus) !important;
-    }
-
-    &:after {
+    &:before {
         .fullsize();
         .transition(transform);
         content: '';
@@ -35,97 +25,31 @@
         transform: scale(0);
     }
 
-    &:checked:after {
-        transform: scale(0.5);
+    &:checked {
+        box-shadow: none;
+        background: var(--tui-primary);
+
+        &:hover {
+            background: var(--tui-primary-hover);
+        }
+
+        &:active {
+            background: var(--tui-primary-active);
+        }
+
+        &:before {
+            transform: scale(0.5);
+        }
+    }
+
+    &[data-size='s'] {
+        --t-size: 1rem;
     }
 
     &._invalid {
         box-shadow: inset 0 0 0 0.0625rem var(--tui-error-bg-hover);
-    }
-
-    &[data-platform='ios'] {
-        width: 1.375rem;
-        height: 1.375rem;
-        border-radius: 100%;
-        box-shadow: inset 0 0 0 0.0625rem var(--tui-base-04);
-        color: var(--tui-base-01);
-        transition: none;
 
         &:checked {
-            background: var(--tui-accent);
-            box-shadow: none;
-
-            &:disabled:not(._readonly) {
-                background: var(--tui-base-04);
-            }
-
-            &:before {
-                .fullsize();
-                content: '';
-                background: var(--tui-base-01);
-                mask-image: url('data:image/svg+xml,<svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M6.75 11.25L9.8 15.2L15.2 7" fill="none" stroke="black" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-                mask-size: 100%;
-            }
-
-            &._invalid {
-                background: var(--tui-error-fill);
-            }
-        }
-
-        &:after {
-            display: none;
-        }
-    }
-
-    &[data-platform='android'] {
-        .transition(color);
-
-        --t-size: 1.125rem;
-        box-shadow: inset 0 0 0 0.125rem;
-        color: var(--tui-base-04);
-
-        &:disabled:not(._readonly) {
-            color: var(--tui-base-04);
-        }
-
-        &:checked {
-            color: var(--tui-accent);
-
-            &:after {
-                transform: scale(0.555);
-            }
-        }
-
-        &._invalid {
-            color: var(--tui-error-bg-hover);
-
-            &:checked {
-                color: var(--tui-error-fill);
-            }
-        }
-    }
-
-    &[data-platform='web'] {
-        color: var(--tui-primary-text);
-
-        &[data-size='s'] {
-            --t-size: 1rem;
-        }
-
-        &:checked {
-            box-shadow: none;
-            background: var(--tui-primary);
-
-            &:hover {
-                background: var(--tui-primary-hover);
-            }
-
-            &:active {
-                background: var(--tui-primary-active);
-            }
-        }
-
-        &._invalid:checked {
             background: var(--tui-error-fill);
         }
     }

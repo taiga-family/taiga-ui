@@ -12,17 +12,6 @@ import * as path from 'path';
 
 import {TemplateResource} from '../../ng-update/interfaces/template-resource';
 
-export function getComponentTemplates(
-    pattern: Pattern,
-    query?: Query<Omit<StructureType<ClassDeclaration>, 'kind'>>,
-): TemplateResource[] {
-    return getClasses(pattern, query)
-        .map(declaration => declaration.getDecorator(`Component`))
-        .filter((decorator): decorator is Decorator => !!decorator)
-        .map(decoratorToTemplateResource)
-        .filter(<T>(x: T | null): x is T => Boolean(x));
-}
-
 function decoratorToTemplateResource(decorator: Decorator): TemplateResource | null {
     const [metadata] = decorator.getArguments() as ObjectLiteralExpression[];
 
@@ -61,4 +50,15 @@ function getFullTemplatePath(
         templatePath.dir,
         templatePath.name + templatePath.ext,
     );
+}
+
+export function getComponentTemplates(
+    pattern: Pattern,
+    query?: Query<Omit<StructureType<ClassDeclaration>, 'kind'>>,
+): TemplateResource[] {
+    return getClasses(pattern, query)
+        .map(declaration => declaration.getDecorator(`Component`))
+        .filter((decorator): decorator is Decorator => !!decorator)
+        .map(decoratorToTemplateResource)
+        .filter(<T>(x: T | null): x is T => Boolean(x));
 }

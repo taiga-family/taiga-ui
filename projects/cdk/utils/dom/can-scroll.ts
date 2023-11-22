@@ -1,14 +1,3 @@
-export function tuiCanScroll(
-    element: Element,
-    rootElement: Element,
-    vertical: boolean,
-    scrollEnd: boolean,
-): boolean {
-    return vertical
-        ? canScrollVertical(element, rootElement, scrollEnd)
-        : canScrollHorizontal(element, rootElement, scrollEnd);
-}
-
 function canScrollVertical(
     element: Element,
     rootElement: Element,
@@ -61,4 +50,15 @@ function canScrollHorizontal(
     }
 
     return false;
+}
+
+export function tuiCanScroll(
+    element: Element,
+    rootElement: Element,
+    vertical: boolean,
+    scrollEnd: boolean,
+): boolean {
+    return vertical
+        ? canScrollVertical(element, rootElement, scrollEnd)
+        : canScrollHorizontal(element, rootElement, scrollEnd);
 }

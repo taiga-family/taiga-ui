@@ -26,16 +26,6 @@ import {getFileSystem} from '../utils/get-file-system';
 import {replaceText} from '../utils/replace-text';
 import {replaceTag} from '../utils/templates/replace-tag';
 
-export function updateToV3_40(options: TuiSchema): Rule {
-    return (tree: Tree, _: SchematicContext) => {
-        const fileSystem = getFileSystem(tree);
-
-        replaceTextareaTag(options, fileSystem);
-        replaceTextareaReferenceTypes(options, fileSystem);
-        !options[`skip-logs`] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
-    };
-}
-
 function replaceTextareaTag(options: TuiSchema, fileSystem: DevkitFileSystem): void {
     !options[`skip-logs`] &&
         infoLog(
@@ -87,4 +77,14 @@ function replaceTextareaReferenceTypes(
     fileSystem.commitEdits();
     saveActiveProject();
     setActiveProject(createProject(fileSystem.tree, projectRoot(), ALL_FILES));
+}
+
+export function updateToV3_40(options: TuiSchema): Rule {
+    return (tree: Tree, _: SchematicContext) => {
+        const fileSystem = getFileSystem(tree);
+
+        replaceTextareaTag(options, fileSystem);
+        replaceTextareaReferenceTypes(options, fileSystem);
+        !options[`skip-logs`] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+    };
 }

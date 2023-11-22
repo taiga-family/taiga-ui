@@ -11,13 +11,6 @@ import {
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 import {replaceIdentifier} from '../../steps/replace-identifier';
 
-export function restoreTuiMapper(options: TuiSchema): void {
-    updateTuiMapper(options);
-    renameTuiTypedMapper(options);
-
-    !options[`skip-logs`] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
-}
-
 function updateTuiMapper(options: TuiSchema): void {
     !options[`skip-logs`] &&
         infoLog(
@@ -57,4 +50,11 @@ function renameTuiTypedMapper(options: TuiSchema): void {
         from: {name: `TuiTypedMapper`, moduleSpecifier: `@taiga-ui/cdk`},
         to: {name: `TuiMapper`, moduleSpecifier: `@taiga-ui/cdk`},
     });
+}
+
+export function restoreTuiMapper(options: TuiSchema): void {
+    updateTuiMapper(options);
+    renameTuiTypedMapper(options);
+
+    !options[`skip-logs`] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
 }

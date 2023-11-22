@@ -1,3 +1,23 @@
+function isEmptyParamValue(value: string): boolean {
+    return [`undefined`, `null`, `NaN`].includes(value);
+}
+
+function isBooleanParamValue(value: string): boolean {
+    return value === `true` || value === `false`;
+}
+
+function isNumberParamValue(value: string): boolean {
+    return !!value.trim() && !Number.isNaN(Number(value)) && !value.startsWith(`+`);
+}
+
+function isPossibleArray(value: string): boolean {
+    return value.startsWith(`[`) && value.endsWith(`]`);
+}
+
+function isPossibleObject(value: string): boolean {
+    return value.startsWith(`{`) && value.endsWith(`}`);
+}
+
 export function tuiCoerceValue<T>(
     value?: T,
 ): Record<string, any> | T | boolean | number | string | null {
@@ -24,24 +44,4 @@ export function tuiCoerceValue<T>(
     } catch {
         return decodedValue;
     }
-}
-
-function isEmptyParamValue(value: string): boolean {
-    return [`undefined`, `null`, `NaN`].includes(value);
-}
-
-function isBooleanParamValue(value: string): boolean {
-    return value === `true` || value === `false`;
-}
-
-function isNumberParamValue(value: string): boolean {
-    return !!value.trim() && !Number.isNaN(Number(value)) && !value.startsWith(`+`);
-}
-
-function isPossibleArray(value: string): boolean {
-    return value.startsWith(`[`) && value.endsWith(`]`);
-}
-
-function isPossibleObject(value: string): boolean {
-    return value.startsWith(`{`) && value.endsWith(`}`);
 }

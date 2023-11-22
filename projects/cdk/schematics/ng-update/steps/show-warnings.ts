@@ -4,13 +4,6 @@ import {getImports} from 'ng-morph';
 import {ALL_TS_FILES} from '../../constants';
 import {MigrationWarning} from '../interfaces/migration-warning';
 
-export function showWarnings(
-    context: SchematicContext,
-    warnings: readonly MigrationWarning[],
-): void {
-    warnings.forEach(warning => showWarning(warning, context));
-}
-
 function showWarning(
     {name, message, moduleSpecifier = `**/**`}: MigrationWarning,
     {logger}: SchematicContext,
@@ -47,4 +40,11 @@ function showWarning(
         logger.warn(`[WARNING] in ${filePath}: ${message}`);
         sourceFile.insertText(startLinePos, `// TODO: (Taiga UI migration) ${message}\n`);
     });
+}
+
+export function showWarnings(
+    context: SchematicContext,
+    warnings: readonly MigrationWarning[],
+): void {
+    warnings.forEach(warning => showWarning(warning, context));
 }

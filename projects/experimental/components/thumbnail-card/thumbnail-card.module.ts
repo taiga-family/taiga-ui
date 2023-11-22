@@ -1,11 +1,11 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiSvgModule} from '@taiga-ui/core';
+import {TuiIconModule} from '@taiga-ui/experimental/components/icon';
 
 import {TuiThumbnailCardComponent} from './thumbnail-card.component';
 
 @NgModule({
-    imports: [CommonModule, TuiSvgModule],
+    imports: [CommonModule, TuiIconModule],
     declarations: [TuiThumbnailCardComponent],
     exports: [TuiThumbnailCardComponent],
 })

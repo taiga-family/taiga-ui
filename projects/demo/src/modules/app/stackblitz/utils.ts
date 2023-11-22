@@ -3,6 +3,29 @@ import type {Project} from '@stackblitz/sdk';
 import {TsFileComponentParser, TsFileModuleParser, TsFileParser} from '../classes';
 import {isLess, isPrimaryComponentFile, isTS} from '../utils';
 
+type FileName = string;
+
+type FileContent = string;
+
+function getAllModules(entryPoint: Record<string, unknown>, names: Set<string>): string {
+    const modules = Object.keys(entryPoint).reduce((modules, name) => {
+        const unique =
+            name.endsWith(`Module`) &&
+            name !== `TuiOrderWeekDaysPipeModule` &&
+            !names.has(name);
+
+        if (unique) {
+            names.add(name);
+
+            return modules.concat(name);
+        }
+
+        return modules;
+    }, [] as string[]);
+
+    return `${modules.join(`,\n\t\t`)}`;
+}
+
 export const prepareLess = (content: string): string =>
     content.replace(
         /@import.+taiga-ui-local(.less)?';/g,
@@ -16,10 +39,6 @@ export const stackblitzPrefix = (
     stringsPart: TemplateStringsArray,
     path: string = ``,
 ): string => `src/app/@stackblitz/${stringsPart.join(``)}${path}`;
-
-type FileName = string;
-
-type FileContent = string;
 
 export const getSupportFiles = <T extends Record<string, string>>(
     files: T,
@@ -66,25 +85,6 @@ export const getSupportModules = (
             fileName,
             new TsFileModuleParser(fileContent),
         ]);
-
-function getAllModules(entryPoint: Record<string, unknown>, names: Set<string>): string {
-    const modules = Object.keys(entryPoint).reduce((modules, name) => {
-        const unique =
-            name.endsWith(`Module`) &&
-            name !== `TuiOrderWeekDaysPipeModule` &&
-            !names.has(name);
-
-        if (unique) {
-            names.add(name);
-
-            return modules.concat(name);
-        }
-
-        return modules;
-    }, [] as string[]);
-
-    return `${modules.join(`,\n\t\t`)}`;
-}
 
 /**
  * We can't just dynamically import all modules from packages.
