@@ -51,6 +51,7 @@
             "@taiga-ui/addon-table",
             "@taiga-ui/addon-mobile",
             "@taiga-ui/layout",
+            "@taiga-ui/experimental",
             "@taiga-ui/proprietary-banking",
             "@taiga-ui/proprietary-core",
             "@taiga-ui/proprietary-icons",
