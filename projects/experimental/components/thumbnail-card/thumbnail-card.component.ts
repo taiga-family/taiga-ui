@@ -10,7 +10,9 @@ import {
     TuiInputCardOptions,
     TuiPaymentSystem,
 } from '@taiga-ui/addon-commerce';
+import {TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
 
 @Component({
     selector: 'tui-thumbnail-card',
@@ -32,5 +34,20 @@ export class TuiThumbnailCardComponent {
     @Input()
     iconRight = '';
 
-    constructor(@Inject(TUI_INPUT_CARD_OPTIONS) readonly options: TuiInputCardOptions) {}
+    constructor(
+        @Inject(TUI_ICON_RESOLVER) readonly resolver: TuiStringHandler<string>,
+        @Inject(TUI_INPUT_CARD_OPTIONS) readonly options: TuiInputCardOptions,
+    ) {}
+
+    // TODO: Revisit this approach in 4.0 when icons are moved away from InputCard options
+    get isMono(): boolean {
+        switch (this.paymentSystem) {
+            case 'mir':
+            case 'visa':
+            case 'electron':
+                return true;
+            default:
+                return false;
+        }
+    }
 }

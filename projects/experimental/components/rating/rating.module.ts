@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
-import {TuiSvgModule} from '@taiga-ui/core';
+import {TuiIconModule} from '@taiga-ui/experimental/components/icon';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiRatingComponent} from './rating.component';
@@ -10,8 +10,8 @@ import {TuiRatingComponent} from './rating.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiSvgModule,
         FormsModule,
+        TuiIconModule,
         TuiRepeatTimesModule,
         PolymorpheusModule,
     ],

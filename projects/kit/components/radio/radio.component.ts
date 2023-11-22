@@ -1,4 +1,3 @@
-import {AnimationOptions} from '@angular/animations';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -22,7 +21,7 @@ import {
     tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TUI_ANIMATION_OPTIONS, tuiScaleIn, TuiSizeL} from '@taiga-ui/core';
+import {TuiSizeL} from '@taiga-ui/core';
 import {TuiRadioGroupComponent} from '@taiga-ui/kit/components/radio-group';
 
 import {TUI_RADIO_OPTIONS, TuiRadioOptions} from './radio.options';
@@ -36,7 +35,6 @@ import {TUI_RADIO_OPTIONS, TuiRadioOptions} from './radio.options';
         tuiAsFocusableItemAccessor(TuiRadioComponent),
         tuiAsControl(TuiRadioComponent),
     ],
-    animations: [tuiScaleIn],
 })
 export class TuiRadioComponent<T>
     extends AbstractTuiNullableControl<T>
@@ -67,7 +65,6 @@ export class TuiRadioComponent<T>
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
         @Inject(TUI_RADIO_OPTIONS) private readonly options: TuiRadioOptions,
         @Optional()
         @Inject(TuiRadioGroupComponent)

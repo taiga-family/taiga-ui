@@ -3,6 +3,11 @@ on:
   push:
     branches: [main, 'v[0-9]+.x', 'release/**']
   workflow_dispatch:
+    inputs:
+      updateMain:
+        type: boolean
+        required: false
+        description: update main snapshots
 
 jobs:
   snapshots-next:
@@ -25,7 +30,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
   snapshots-of-release:
-    if: ${{ contains(github.head_ref || github.ref_name, 'release/') }}
+    if: ${{ contains(github.head_ref || github.ref_name, 'release/') || github.event.inputs.updateMain == 'true' }}
     name: production
     runs-on: ubuntu-latest
     steps:
