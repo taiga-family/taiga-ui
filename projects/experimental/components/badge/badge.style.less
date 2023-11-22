@@ -34,9 +34,10 @@ tui-badge,
     }
 
     > tui-svg,
-    > tui-icon {
-        width: var(--t-icon-size) !important;
-        height: var(--t-icon-size) !important;
+    > tui-icon,
+    &[tuiIcons]:before,
+    &[tuiIcons]:after {
+        font-size: var(--t-icon-size) !important;
     }
 
     &[data-appearance='error'] {
