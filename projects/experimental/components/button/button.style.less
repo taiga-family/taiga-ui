@@ -33,7 +33,7 @@
         tui-svg,
         tui-icon,
         &:before {
-            width: 1rem;
+            font-size: 1rem;
         }
     }
 
@@ -48,8 +48,7 @@
         tui-svg,
         tui-icon,
         &:not([tuiIconButton][data-appearance='icon']):before {
-            width: 1rem;
-            height: 1rem;
+            font-size: 1rem;
         }
     }
 
@@ -101,28 +100,10 @@
         }
     }
 
-    &._icon-left:before {
-        content: '';
-    }
-
-    &._icon-right:after {
-        content: '';
-    }
-
-    &:before {
-        width: 1.5rem;
-        height: 1.5rem;
-        background: currentColor;
-        mask: var(--t-mask-left) no-repeat center/contain;
-    }
-
-    &:after {
-        width: 1rem;
-        height: 1rem;
-        background: currentColor;
+    &[tuiIcons]:after {
+        font-size: 1rem;
         margin-inline-start: 0.125rem;
         margin-inline-end: -0.125rem;
-        mask: var(--t-mask-right) no-repeat center/contain;
     }
 }
 
