@@ -155,44 +155,42 @@
     }
 }
 
-// shadow
+// @TODO: remove in v4.0
+// shadow @deprecated
 .shadow(@mode: 1) {
     // Default
     & when (@mode = 1) {
-        box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.12);
+        box-shadow: var(--tui-shadow);
     }
 
     // Dropdown
     & when (@mode = 2) {
-        box-shadow:
-            0 1.5rem 1rem rgba(0, 0, 0, 0.03),
-            0 0.75rem 0.75rem rgba(0, 0, 0, 0.04),
-            0 0.25rem 0.375rem rgba(0, 0, 0, 0.05);
+        box-shadow: var(--tui-shadow-dropdown);
     }
 
     // Modal
     & when (@mode = 3) {
-        box-shadow: 0 1.125rem 1.875rem rgba(0, 0, 0, 0.48);
+        box-shadow: var(--tui-shadow-modal);
     }
 
     // Sidebar
     & when (@mode = 4) {
-        box-shadow: 0.25rem 0 1.5rem rgba(0, 0, 0, 0.12);
+        box-shadow: var(--tui-shadow-sidebar);
     }
 
     // Hover
     & when (@mode = 5) {
-        box-shadow: 0 0.75rem 2.25rem rgba(0, 0, 0, 0.2);
+        box-shadow: var(--tui-shadow-hover);
     }
 
     // Navigation
     & when (@mode = 6) {
-        box-shadow: 0 0.125rem 1rem rgba(0, 0, 0, 0.08);
+        box-shadow: var(--tui-shadow-basic-navigation);
     }
 
     // Modal mobile
     & when (@mode = 7) {
-        box-shadow: 0 -1rem 1.75rem rgba(0, 0, 0, 0.24);
+        box-shadow: var(--tui-shadow-sheet);
     }
 }
 
