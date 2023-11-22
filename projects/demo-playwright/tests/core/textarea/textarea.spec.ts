@@ -3,7 +3,7 @@ import {expect, test} from '@playwright/test';
 
 test.describe(`Textarea`, () => {
     test.beforeEach(async ({page}) => {
-        await page.setViewportSize({width: 600, height: 600});
+        await page.setViewportSize({width: 400, height: 600});
     });
 
     [`m`, `l`].forEach(size => {
