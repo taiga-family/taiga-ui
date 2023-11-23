@@ -4,59 +4,53 @@
     [class.wrapper_web]="platform === 'web'"
     [tuiPlatform]="platform"
 >
-    <!--
-        This allows platform provider time to initialize.
-        Unnecessary for static platform tuiPlatform="whatever"
-    -->
-    <ng-container *ngIf="getSize(first) as size">
-        <input
-            tuiCheckbox
-            type="checkbox"
-            [ngModel]="true"
-            [size]="size"
-        />
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [ngModel]="true"
+        [size]="getSize(first)"
+    />
 
-        <input
-            tuiCheckbox
-            type="checkbox"
-            [indeterminate]="true"
-            [size]="size"
-        />
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [indeterminate]="true"
+        [size]="getSize(first)"
+    />
 
-        <input
-            tuiCheckbox
-            type="checkbox"
-            [disabled]="true"
-            [ngModel]="true"
-            [size]="size"
-        />
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [disabled]="true"
+        [ngModel]="true"
+        [size]="getSize(first)"
+    />
 
-        <input
-            tuiCheckbox
-            type="checkbox"
-            [size]="size"
-        />
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [size]="getSize(first)"
+    />
 
-        <input
-            tuiCheckbox
-            type="checkbox"
-            [disabled]="true"
-            [ngModel]="false"
-            [size]="size"
-        />
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [disabled]="true"
+        [ngModel]="false"
+        [size]="getSize(first)"
+    />
 
-        <input
-            tuiCheckbox
-            type="checkbox"
-            [formControl]="invalidTrue"
-            [size]="size"
-        />
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [formControl]="invalidTrue"
+        [size]="getSize(first)"
+    />
 
-        <input
-            tuiCheckbox
-            type="checkbox"
-            [formControl]="invalidFalse"
-            [size]="size"
-        />
-    </ng-container>
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [formControl]="invalidFalse"
+        [size]="getSize(first)"
+    />
 </div>

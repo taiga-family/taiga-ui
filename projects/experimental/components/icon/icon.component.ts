@@ -6,6 +6,7 @@ import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
     selector: 'tui-icon',
     template: '',
     host: {
+        '[class._duo]': 'background',
         '[style.--t-mask]': '"url(" + resolver(icon) + ")"',
         // TODO: remove Outline hack in 4.0
         '[style.--t-mask-bg]':
