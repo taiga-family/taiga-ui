@@ -10,6 +10,9 @@ export const TUI_UKRAINIAN_LANGUAGE_KIT: TuiLanguageKit = {
     mobileCalendarTexts: [`Виберіть день`, `Виберіть період`, `Виберіть дні`],
     range: [`від`, `до`],
     countTexts: [`Плюс`, `Мінус`],
+    asideTexts: {
+        title: `On this page`,
+    },
     time: {
         'HH:MM': `ГГ:ХХ`,
         'HH:MM:SS': `ГГ:ХХ:СС`,

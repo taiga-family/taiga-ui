@@ -32,6 +32,9 @@ export interface TuiLanguageKit {
      * [@string 'plus', @param 'minus']
      */
     countTexts: [string, string];
+    asideTexts: {
+        title: string;
+    };
     dateTexts: {
         DMY: string;
         MDY: string;

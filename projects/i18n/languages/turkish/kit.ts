@@ -10,6 +10,9 @@ export const TUI_TURKISH_LANGUAGE_KIT: TuiLanguageKit = {
     mobileCalendarTexts: [`Gün seç`, `Aralık seç`, `Günleri seçin`],
     range: [`dan`, `a`],
     countTexts: [`Artı`, `Eksi`],
+    asideTexts: {
+        title: `On this page`,
+    },
     time: {
         'HH:MM': `HH:MM`,
         'HH:MM:SS': `HH:MM:SS`,

@@ -10,6 +10,9 @@ export const TUI_RUSSIAN_LANGUAGE_KIT: TuiLanguageKit = {
     mobileCalendarTexts: [`Выберите день`, `Выберите период`, `Выбрать дни`],
     range: [`от`, `до`],
     countTexts: [`Плюс`, `Минус`],
+    asideTexts: {
+        title: `Содержимое`,
+    },
     time: {
         'HH:MM': `ЧЧ:ММ`,
         'HH:MM:SS': `ЧЧ:ММ:СС`,

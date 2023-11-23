@@ -10,6 +10,9 @@ export const TUI_ENGLISH_LANGUAGE_KIT: TuiLanguageKit = {
     mobileCalendarTexts: [`Choose day`, `Choose range`, `Choose days`],
     range: [`from`, `to`],
     countTexts: [`Plus`, `Minus`],
+    asideTexts: {
+        title: `On this page`,
+    },
     time: {
         'HH:MM': `HH:MM`,
         'HH:MM:SS': `HH:MM:SS`,

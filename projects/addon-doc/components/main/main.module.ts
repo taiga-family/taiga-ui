@@ -10,6 +10,7 @@ import {
     TuiThemeNightModule,
 } from '@taiga-ui/core';
 
+import {TuiDocAsideModule} from '../aside/aside.module';
 import {TuiDocHeaderModule} from '../internal/header/header.module';
 import {TuiDocNavigationModule} from '../navigation/navigation.module';
 import {TuiDocMainComponent} from './main.component';
@@ -26,6 +27,7 @@ import {TuiDocMainComponent} from './main.component';
         TuiButtonModule,
         TuiModeModule,
         TuiDocNavigationModule,
+        TuiDocAsideModule,
     ],
     declarations: [TuiDocMainComponent],
     exports: [TuiDocMainComponent],

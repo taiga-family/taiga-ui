@@ -97,6 +97,27 @@ tui-doc-navigation.tui-doc-navigation {
     }
 }
 
+.tui-doc-aside {
+    position: fixed;
+    top: 6rem;
+    right: 1rem;
+    width: 14.5rem;
+
+    &:not(._empty) {
+        & + .tui-doc-content {
+            margin-right: calc(15.5rem);
+        }
+
+        @media not @tui-desktop-lg-min {
+            display: none;
+
+            & + .tui-doc-content {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
 .tui-doc-content {
     margin-left: @sidebar-width;
 
@@ -107,10 +128,6 @@ tui-doc-navigation.tui-doc-navigation {
 
 .tui-doc-outlet + * {
     display: block;
-}
-
-.tui-doc-animated-example {
-    animation: 1s 300ms tuiShaking;
 }
 
 .tui-doc-night-mode-switch {

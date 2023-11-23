@@ -10,6 +10,9 @@ export const TUI_VIETNAMESE_LANGUAGE_KIT: TuiLanguageKit = {
     mobileCalendarTexts: [`Chọn ngày`, `Chọn phạm vi`, `Chọn ngày`],
     range: [`từ`, `đến`],
     countTexts: [`Cộng`, `Trừ`],
+    asideTexts: {
+        title: `On this page`,
+    },
     time: {
         'HH:MM': `HH:MM`,
         'HH:MM:SS': `HH:MM:SS`,

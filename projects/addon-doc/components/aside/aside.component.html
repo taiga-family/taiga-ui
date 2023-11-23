@@ -1,0 +1,14 @@
+<ng-content></ng-content>
+<nav
+    tuiTabs
+    vertical="right"
+    [(activeItemIndex)]="activeIndex"
+>
+    <a
+        *ngFor="let item of menuList"
+        tuiTab
+        (click)="go(item.id)"
+    >
+        <span class="t-text">{{ item.title }}</span>
+    </a>
+</nav>

@@ -38,6 +38,8 @@ export const TUI_DIGITAL_INFORMATION_UNITS = tuiCreateTokenFromFactory(
 
 export const TUI_COPY_TEXTS = tuiCreateTokenFromFactory(tuiExtractI18n(`copyTexts`));
 
+export const TUI_ASIDE_TEXTS = tuiCreateTokenFromFactory(tuiExtractI18n(`asideTexts`));
+
 export const TUI_PASSWORD_TEXTS = tuiCreateTokenFromFactory(
     tuiExtractI18n(`passwordTexts`),
 );

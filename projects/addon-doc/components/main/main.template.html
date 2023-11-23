@@ -4,6 +4,12 @@
         <tui-doc-navigation class="tui-doc-navigation">
             <ng-content select="tuiDocNavigation"></ng-content>
         </tui-doc-navigation>
+        <tui-doc-aside
+            class="tui-doc-aside"
+            [menu]="aside$ | async"
+        >
+            <h2>{{ (asideTexts$ | async)?.title }}</h2>
+        </tui-doc-aside>
         <div class="tui-doc-content">
             <router-outlet class="tui-doc-outlet"></router-outlet>
         </div>

@@ -1,3 +1,5 @@
+export * from './aside/aside.component';
+export * from './aside/aside.module';
 export * from './code/code.component';
 export * from './code/code.module';
 export * from './copy/copy.component';

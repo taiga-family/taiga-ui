@@ -10,6 +10,9 @@ export const TUI_DUTCH_LANGUAGE_KIT: TuiLanguageKit = {
     mobileCalendarTexts: [`Kies een dag`, `Kies bereik`, `Kies dagen`],
     range: [`van`, `tot`],
     countTexts: [`Plus`, `Min`],
+    asideTexts: {
+        title: `On this page`,
+    },
     time: {
         'HH:MM': `HH:MM`,
         'HH:MM:SS': `HH:MM:SS`,

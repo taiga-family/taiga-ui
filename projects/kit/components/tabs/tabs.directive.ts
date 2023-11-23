@@ -7,13 +7,17 @@ import {
     Inject,
     Input,
     Output,
+    Self,
 } from '@angular/core';
-import {tuiMoveFocus} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiMoveFocus} from '@taiga-ui/cdk';
+import {Observable, timer} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 import {TUI_TAB_ACTIVATE} from './tab/tab.providers';
 
 @Directive({
     selector: 'tui-tabs, nav[tuiTabs]',
+    providers: [TuiDestroyService],
 })
 export class TuiTabsDirective implements AfterViewChecked {
     @Input()
@@ -22,7 +26,10 @@ export class TuiTabsDirective implements AfterViewChecked {
     @Output()
     readonly activeItemIndexChange = new EventEmitter<number>();
 
-    constructor(@Inject(ElementRef) private readonly el: ElementRef<HTMLElement>) {}
+    constructor(
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
+    ) {}
 
     get tabs(): readonly HTMLElement[] {
         return Array.from(
@@ -55,13 +62,17 @@ export class TuiTabsDirective implements AfterViewChecked {
     }
 
     ngAfterViewChecked(): void {
-        const {tabs, activeElement} = this;
+        timer(0)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(() => {
+                const {tabs, activeElement} = this;
 
-        tabs.forEach(nativeElement => {
-            const active = nativeElement === activeElement;
+                tabs.forEach(nativeElement => {
+                    const active = nativeElement === activeElement;
 
-            nativeElement.classList.toggle('_active', active);
-            nativeElement.setAttribute('tabIndex', active ? '0' : '-1');
-        });
+                    nativeElement.classList.toggle('_active', active);
+                    nativeElement.setAttribute('tabIndex', active ? '0' : '-1');
+                });
+            });
     }
 }

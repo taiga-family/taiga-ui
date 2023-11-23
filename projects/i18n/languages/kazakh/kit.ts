@@ -10,6 +10,9 @@ export const TUI_KAZAKH_LANGUAGE_KIT: TuiLanguageKit = {
     mobileCalendarTexts: [`Күнді таңдаңыз`, `Аралықты таңдаңыз`, `Күндерді таңдаңыз`],
     range: [`бастап`, `дейін`],
     countTexts: [`Плюс`, `Минус`],
+    asideTexts: {
+        title: `On this page`,
+    },
     time: {
         'HH:MM': `HH:MM`,
         'HH:MM:SS': `HH:MM:SS`,

@@ -10,6 +10,9 @@ export const TUI_MALAY_LANGUAGE_KIT: TuiLanguageKit = {
     mobileCalendarTexts: [`Pilih hari`, `Pilih julat`, `Pilih hari`],
     range: [`dari`, `ke`],
     countTexts: [`Tambah`, `Tolak`],
+    asideTexts: {
+        title: `On this page`,
+    },
     time: {
         'HH:MM': `HH:MM`,
         'HH:MM:SS': `HH:MM:SS`,

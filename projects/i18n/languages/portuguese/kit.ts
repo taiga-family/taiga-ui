@@ -10,6 +10,9 @@ export const TUI_PORTUGUESE_LANGUAGE_KIT: TuiLanguageKit = {
     mobileCalendarTexts: [`Escolha o dia`, `Escolha o intervalo`, `Escolha os dias`],
     range: [`de`, `para`],
     countTexts: [`Mais`, `Menos`],
+    asideTexts: {
+        title: `On this page`,
+    },
     time: {
         'HH:MM': `HH:MM`,
         'HH:MM:SS': `HH:MM:SS`,

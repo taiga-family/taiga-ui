@@ -10,6 +10,9 @@ export const TUI_CHINESE_LANGUAGE_KIT: TuiLanguageKit = {
     mobileCalendarTexts: [`选择日期`, `选择范围`, `選擇日期`],
     range: [`从`, `至`],
     countTexts: [`加`, `减`],
+    asideTexts: {
+        title: `On this page`,
+    },
     time: {
         'HH:MM': `HH:MM`,
         'HH:MM:SS': `HH:MM:SS`,
