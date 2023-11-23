@@ -7,12 +7,12 @@ import {TUI_DATE_FORMAT, TUI_DATE_SEPARATOR, TuiDay, TuiTime} from '@taiga-ui/cd
 @Component({
     selector: 'tui-input-date-time-example-3',
     templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
     providers: [
         {provide: TUI_DATE_FORMAT, useValue: 'YMD'},
         {provide: TUI_DATE_SEPARATOR, useValue: '/'},
     ],
-    changeDetection,
-    encapsulation,
 })
 export class TuiInputDateTimeExample3 {
     readonly control = new FormControl([new TuiDay(2017, 2, 15), new TuiTime(12, 30)]);

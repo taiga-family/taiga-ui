@@ -11,7 +11,7 @@ import {TuiMobileDialogService} from './mobile-dialog.service';
 @NgModule({
     imports: [CommonModule, TuiButtonModule, TuiRippleModule, PolymorpheusModule],
     declarations: [TuiMobileDialogComponent],
-    exports: [TuiMobileDialogComponent],
     providers: [tuiAsDialog(TuiMobileDialogService)],
+    exports: [TuiMobileDialogComponent],
 })
 export class TuiMobileDialogModule {}

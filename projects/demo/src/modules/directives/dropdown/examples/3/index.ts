@@ -9,9 +9,9 @@ import {takeUntil} from 'rxjs/operators';
     selector: 'tui-dropdown-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    providers: [TuiDestroyService],
-    changeDetection,
     encapsulation,
+    changeDetection,
+    providers: [TuiDestroyService],
 })
 export class TuiDropdownExample3 {
     open = false;

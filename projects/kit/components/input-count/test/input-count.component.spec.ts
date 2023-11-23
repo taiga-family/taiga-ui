@@ -75,7 +75,7 @@ describe(`InputCount`, () => {
                 await fixture.whenStable();
 
                 expect(inputPO.value).toBe(``);
-                expect(testComponent.control.value).toBe(null);
+                expect(testComponent.control.value).toBeNull();
             });
         });
 
@@ -266,7 +266,7 @@ describe(`InputCount`, () => {
             await fixture.whenStable();
 
             fixture.detectChanges();
-            expect(testComponent.control.value).toBe(null);
+            expect(testComponent.control.value).toBeNull();
         });
 
         it(`Entering in the field negative value changes the value control correctly`, () => {

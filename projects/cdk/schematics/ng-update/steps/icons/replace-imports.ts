@@ -6,10 +6,10 @@ import {addUniqueImport} from '../../../utils/add-unique-import';
 import {SMALL_TAB_SYMBOL, SUCCESS_SYMBOL, successLog} from '../../../utils/colored-log';
 import {removeImport} from '../../../utils/import-manipulations';
 import {setupProgressLogger} from '../../../utils/progress';
-import {ReplacementConst} from '../../interfaces/replacement-const';
+import {ReplacementIdentifier} from '../../interfaces/replacement-identifier';
 
 export function replaceImports(
-    replaceable: ReplacementConst[],
+    replaceable: ReplacementIdentifier[],
     options: TuiSchema,
 ): void {
     const allImports = getImports(ALL_TS_FILES);

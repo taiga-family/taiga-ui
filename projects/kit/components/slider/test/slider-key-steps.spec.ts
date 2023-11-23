@@ -89,8 +89,7 @@ describe(`TuiSliderKeyStepsDirective`, () => {
             {controlValue: 5_000, nativeValue: 0},
         ] as const;
 
-        for (const {controlValue, nativeValue} of controlNativeValuesMap) {
-            // eslint-disable-next-line no-loop-func
+        controlNativeValuesMap.forEach(({controlValue, nativeValue}) => {
             it(`${controlValue} => ${nativeValue}/30`, () => {
                 testComponent.control = new FormControl(controlValue);
                 fixture.detectChanges();
@@ -100,7 +99,7 @@ describe(`TuiSliderKeyStepsDirective`, () => {
                     Number(testComponent.inputElRef.nativeElement.value).toFixed(0),
                 ).toBe(`${nativeValue}`);
             });
-        }
+        });
     });
 
     describe(`makes correct approximation for native input value from formControl's initial values (which don't satisfy input's steps)`, () => {
@@ -120,8 +119,7 @@ describe(`TuiSliderKeyStepsDirective`, () => {
             {controlValue: 12_500, expectedNativeValue: 1},
         ] as const;
 
-        for (const {controlValue, expectedNativeValue} of testsConditions) {
-            // eslint-disable-next-line no-loop-func
+        testsConditions.forEach(({controlValue, expectedNativeValue}) => {
             it(`${controlValue} => ${expectedNativeValue}/30`, () => {
                 testComponent.control = new FormControl(controlValue);
                 fixture.detectChanges();
@@ -131,7 +129,7 @@ describe(`TuiSliderKeyStepsDirective`, () => {
                     Number(testComponent.inputElRef.nativeElement.value).toFixed(0),
                 ).toBe(`${expectedNativeValue}`);
             });
-        }
+        });
     });
 
     describe(`works with float numbers (even if value doesn't satisfy input's steps)`, () => {
@@ -176,8 +174,7 @@ describe(`TuiSliderKeyStepsDirective`, () => {
             {controlValue: 1, expectedNativeValue: 100},
         ] as const;
 
-        for (const {controlValue, expectedNativeValue} of testsConditions) {
-            // eslint-disable-next-line no-loop-func
+        testsConditions.forEach(({controlValue, expectedNativeValue}) => {
             it(`${controlValue} => ${expectedNativeValue}/100`, () => {
                 testComponent.control = new FormControl(controlValue);
                 fixture.detectChanges();
@@ -187,7 +184,7 @@ describe(`TuiSliderKeyStepsDirective`, () => {
                     Number(testComponent.inputElRef.nativeElement.value).toFixed(0),
                 ).toBe(`${expectedNativeValue}`);
             });
-        }
+        });
     });
 
     describe(`works even if slider has negative \`min\`-property`, () => {
@@ -235,8 +232,7 @@ describe(`TuiSliderKeyStepsDirective`, () => {
             {controlValue: 1_000_000, expectedNativeValue: 10},
         ] as const;
 
-        for (const {controlValue, expectedNativeValue} of testsConditions) {
-            // eslint-disable-next-line no-loop-func
+        testsConditions.forEach(({controlValue, expectedNativeValue}) => {
             it(`${controlValue} => ${expectedNativeValue} (min = -10 | max = 10)`, () => {
                 testComponent.control = new FormControl(controlValue);
                 fixture.detectChanges();
@@ -246,7 +242,7 @@ describe(`TuiSliderKeyStepsDirective`, () => {
                     Number(testComponent.inputElRef.nativeElement.value).toFixed(0),
                 ).toBe(`${expectedNativeValue}`);
             });
-        }
+        });
     });
 
     it(`sets the thumb to the \`min\`-value when the lowest keyStep value equals to the uppermost one`, () => {

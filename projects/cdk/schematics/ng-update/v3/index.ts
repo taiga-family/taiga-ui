@@ -17,13 +17,12 @@ import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../../utils/colored-log';
 import {getExecutionTime} from '../../utils/get-execution-time';
 import {removeModules} from '../steps/remove-module';
 import {renameTypes} from '../steps/rename-types';
-import {replaceConstants} from '../steps/replace-const';
 import {replaceDeepImports} from '../steps/replace-deep-import';
 import {replaceEnums} from '../steps/replace-enums';
+import {replaceIdentifiers} from '../steps/replace-identifier';
 import {replaceServices} from '../steps/replace-services';
 import {showWarnings} from '../steps/show-warnings';
 import {getFileSystem} from '../utils/get-file-system';
-import {migrateExpandTemplates} from '../v3-5/steps/migrate-expand-templates';
 import {CONSTANTS_TO_REPLACE} from './constants/constants';
 import {ENUMS_TO_REPLACE} from './constants/enums';
 import {REMOVED_MODULES} from './constants/modules';
@@ -39,55 +38,14 @@ import {miscellaneousMigrations} from './steps/miscellaneous';
 import {replaceFunctions} from './steps/replace-functions';
 import {replaceStyles, TUI_WARNING_NORMALIZE} from './steps/replace-styles';
 
-export function updateToV3(options: TuiSchema): Rule {
-    const t0 = performance.now();
-
-    !options[`skip-logs`] &&
-        titleLog(
-            `\n\n${START_SYMBOL} Your packages will be updated to @taiga-ui/*@${TAIGA_VERSION}\n`,
-        );
-
-    return chain([
-        main(options),
-        addTaigaStyles(options),
-        migrateTaigaProprietaryIcons(options),
-        showNormalizeWarning(),
-        () => {
-            const executionTime = getExecutionTime(t0, performance.now());
-
-            !options[`skip-logs`] &&
-                titleLog(
-                    `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION} in ${executionTime}. \n`,
-                );
-        },
-    ]);
-}
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function updateToV3_5(options: TuiSchema): Rule {
-    return (tree: Tree, _: SchematicContext) => {
-        const fileSystem = getFileSystem(tree);
-
-        migrateExpandTemplates(fileSystem, options);
-
-        fileSystem.commitEdits();
-        saveActiveProject();
-
-        !options[`skip-logs`] &&
-            titleLog(
-                `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION}\n`,
-            );
-    };
-}
-
 function main(options: TuiSchema): Rule {
-    return (tree: Tree, context: SchematicContext) => {
+    return (tree: Tree, context: SchematicContext): void => {
         const fileSystem = getFileSystem(tree);
 
         replaceDeepImports(options);
         replaceEnums(options, ENUMS_TO_REPLACE);
         renameTypes(options, TYPES_TO_RENAME);
-        replaceConstants(options, CONSTANTS_TO_REPLACE);
+        replaceIdentifiers(options, CONSTANTS_TO_REPLACE);
         replaceServices(options, SERVICES_TO_REPLACE);
         replaceStyles();
         showWarnings(context, MIGRATION_WARNINGS);
@@ -143,7 +101,7 @@ function addTaigaStyles(options: TuiSchema): Rule {
 }
 
 function showNormalizeWarning(): Rule {
-    return (tree: Tree, context: SchematicContext) => {
+    return (tree: Tree, context: SchematicContext): void => {
         try {
             if (getPackageJsonDependency(tree, `@taiga-ui/styles`)?.version) {
                 context.logger.warn(TUI_WARNING_NORMALIZE);
@@ -152,4 +110,28 @@ function showNormalizeWarning(): Rule {
             // noop
         }
     };
+}
+
+export function updateToV3(options: TuiSchema): Rule {
+    const t0 = performance.now();
+
+    !options[`skip-logs`] &&
+        titleLog(
+            `\n\n${START_SYMBOL} Your packages will be updated to @taiga-ui/*@${TAIGA_VERSION}\n`,
+        );
+
+    return chain([
+        main(options),
+        addTaigaStyles(options),
+        migrateTaigaProprietaryIcons(options),
+        showNormalizeWarning(),
+        () => {
+            const executionTime = getExecutionTime(t0, performance.now());
+
+            !options[`skip-logs`] &&
+                titleLog(
+                    `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION} in ${executionTime}. \n`,
+                );
+        },
+    ]);
 }

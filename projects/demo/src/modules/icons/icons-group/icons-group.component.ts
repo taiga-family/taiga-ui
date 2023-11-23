@@ -21,8 +21,8 @@ import {IconsGroupDirective} from './icons-group.directive';
     selector: 'icons-group',
     templateUrl: './icons-group.template.html',
     styleUrls: ['./icons-group.style.less'],
-    providers: [TuiDestroyService],
     changeDetection,
+    providers: [TuiDestroyService],
 })
 export class IconsGroupComponent implements OnInit {
     @ContentChild(IconsGroupDirective)
@@ -30,6 +30,9 @@ export class IconsGroupComponent implements OnInit {
 
     @Input()
     icons: Record<string, readonly string[]> = {};
+
+    @Input()
+    color: string | null = null;
 
     matcher = TUI_DEFAULT_MATCHER;
 

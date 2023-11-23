@@ -7,8 +7,8 @@ import {SECONDS_IN_MINUTE} from '@taiga-ui/cdk';
     selector: 'tui-media-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiMediaExample2 {
     currentTime = 0;

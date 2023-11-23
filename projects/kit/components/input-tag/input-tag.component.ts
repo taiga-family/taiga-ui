@@ -6,6 +6,7 @@ import {
     ElementRef,
     EventEmitter,
     HostBinding,
+    HostListener,
     Inject,
     Input,
     Optional,
@@ -115,7 +116,7 @@ export class TuiInputTagComponent
     separator: RegExp | string = this.options.separator;
 
     @Input()
-    search = '';
+    search: string | null = '';
 
     @Input()
     editable = true;
@@ -193,9 +194,6 @@ export class TuiInputTagComponent
         readonly controller: TuiTextfieldController,
         @Inject(TUI_INPUT_TAG_OPTIONS)
         private readonly options: TuiInputTagOptions,
-        @Optional()
-        @Inject(TuiHostedDropdownComponent)
-        private readonly parentHostedDropdown: TuiHostedDropdownComponent | null,
         @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
     ) {
         super(control, cdr);
@@ -304,6 +302,12 @@ export class TuiInputTagComponent
         return this.expandable ? this.rows * this.lineHeight : null;
     }
 
+    @HostListener('focusin.capture.silent')
+    @HostListener('focusout.capture.silent')
+    onFocusInOut(): void {
+        this.cdr.detectChanges();
+    }
+
     detectRetargetFromLabel(event: Event): void {
         if (tuiRetargetedBoundaryCrossing(event)) {
             event.stopImmediatePropagation();
@@ -320,7 +324,6 @@ export class TuiInputTagComponent
         this.updateSearch('');
         this.clear();
         this.focusInput();
-        this.parentHostedDropdown?.updateOpen(true);
     }
 
     onActiveZone(active: boolean): void {
@@ -504,7 +507,7 @@ export class TuiInputTagComponent
     }
 
     private addTag(): void {
-        const inputValue = this.search.trim();
+        const inputValue = this.search?.trim() ?? '';
 
         if (!inputValue || this.disabledItemHandler(inputValue)) {
             return;

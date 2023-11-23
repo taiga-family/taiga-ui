@@ -166,7 +166,7 @@ describe(`Accordion`, () => {
     it(`content is hidden by default`, async () => {
         const accordionItem = await accordion.getHarness(TuiAccordionItemHarness);
 
-        expect(await accordionItem.getContent()).toBe(null);
+        expect(await accordionItem.getContent()).toBeNull();
     });
 
     it(`content opens on click`, async () => {

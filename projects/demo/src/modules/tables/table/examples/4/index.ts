@@ -22,6 +22,7 @@ interface User {
 }
 
 const TODAY = TuiDay.currentLocal();
+
 const FIRST = [
     'John',
     'Jane',
@@ -56,18 +57,35 @@ const DATA: readonly User[] = Array.from({length: 300}, () => ({
     }`,
     dob: TODAY.append({day: -Math.floor(Math.random() * 4000) - 7500}),
 }));
+
 const KEYS: Record<string, Key> = {
     Name: 'name',
     Age: 'age',
     'Date of Birth': 'dob',
 };
 
+function sortBy(key: 'age' | 'dob' | 'name', direction: -1 | 1): TuiComparator<User> {
+    return (a, b) =>
+        key === 'age'
+            ? direction * tuiDefaultSort(getAge(a), getAge(b))
+            : direction * tuiDefaultSort(a[key], b[key]);
+}
+
+function getAge({dob}: User): number {
+    const years = TODAY.year - dob.year;
+    const months = TODAY.month - dob.month;
+    const days = TODAY.day - dob.day;
+    const offset = tuiToInt(months > 0 || (!months && days > 9));
+
+    return years + offset;
+}
+
 @Component({
     selector: 'tui-table-example-4',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTableExample4 {
     private readonly size$ = new BehaviorSubject(10);
@@ -115,6 +133,8 @@ export class TuiTableExample4 {
         startWith([]),
     );
 
+    readonly getAge = getAge;
+
     onEnabled(enabled: readonly string[]): void {
         this.enabled = enabled;
         this.columns = this.initial
@@ -138,10 +158,6 @@ export class TuiTableExample4 {
         return !!this.search && TUI_DEFAULT_MATCHER(value, this.search);
     }
 
-    getAge(user: User): number {
-        return getAge(user);
-    }
-
     private getData(
         key: 'age' | 'dob' | 'name',
         direction: -1 | 1,
@@ -161,20 +177,4 @@ export class TuiTableExample4 {
         // Imitating server response
         return timer(3000).pipe(map(() => result));
     }
-}
-
-function sortBy(key: 'age' | 'dob' | 'name', direction: -1 | 1): TuiComparator<User> {
-    return (a, b) =>
-        key === 'age'
-            ? direction * tuiDefaultSort(getAge(a), getAge(b))
-            : direction * tuiDefaultSort(a[key], b[key]);
-}
-
-function getAge({dob}: User): number {
-    const years = TODAY.year - dob.year;
-    const months = TODAY.month - dob.month;
-    const days = TODAY.day - dob.day;
-    const offset = tuiToInt(months > 0 || (!months && days > 9));
-
-    return years + offset;
 }

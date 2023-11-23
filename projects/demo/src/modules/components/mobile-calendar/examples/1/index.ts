@@ -14,8 +14,8 @@ import {map} from 'rxjs/operators';
     selector: 'tui-mobile-calendar-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiMobileCalendarExample1 {
     private readonly control = new FormControl(new TuiDay(2024, 6, 3));

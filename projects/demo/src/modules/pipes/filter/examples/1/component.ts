@@ -10,8 +10,8 @@ export interface Item {
 @Component({
     selector: `tui-filter-example1`,
     templateUrl: `./template.html`,
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiFilterExample1 {
     readonly items: readonly Item[] = [

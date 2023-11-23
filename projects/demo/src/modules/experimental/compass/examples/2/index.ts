@@ -7,8 +7,8 @@ import {TuiCompassComponent} from '@taiga-ui/experimental';
 @Component({
     selector: 'tui-compass-example-2',
     template: '<tui-compass [degrees]="degrees"></tui-compass>',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiCompassExample2 {
     @ViewChild(TuiCompassComponent, {read: ElementRef})

@@ -6,13 +6,13 @@ import {TUI_TREE_CONTROLLER} from '../misc/tree.tokens';
 
 @Directive({
     selector: '[tuiTreeController]:not([map])',
-    exportAs: 'tuiTreeController',
     providers: [
         {
             provide: TUI_TREE_CONTROLLER,
             useExisting: TuiTreeItemControllerDirective,
         },
     ],
+    exportAs: 'tuiTreeController',
 })
 export class TuiTreeItemControllerDirective implements TuiTreeController {
     private readonly map = new WeakMap<TuiTreeItemComponent, boolean>();

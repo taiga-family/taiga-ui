@@ -8,8 +8,8 @@ import {tuiInputDateOptionsProvider} from '@taiga-ui/kit';
 @Component({
     selector: 'tui-input-date-example-6',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [tuiInputDateOptionsProvider({nativePicker: true})],
 })
 export class TuiInputDateExample6 {

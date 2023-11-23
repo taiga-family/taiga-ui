@@ -6,8 +6,8 @@ import {tuiFlatLength} from '@taiga-ui/cdk';
 @Component({
     selector: 'tui-miscellaneous-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiMiscellaneousExample2 {
     get flatted(): number {

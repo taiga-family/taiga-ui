@@ -6,8 +6,8 @@ import {tuiHintOptionsProvider} from '@taiga-ui/core';
 @Component({
     selector: 'tui-tooltip-example-4',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         tuiHintOptionsProvider({
             icon: 'tuiIconCameraLarge',

@@ -1,4 +1,3 @@
-/* eslint-disable rxjs/no-topromise */
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
 import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
@@ -28,11 +27,11 @@ export class TestComponent {}
 const COMPONENT_WITH_TEMPLATE_URL_AFTER = `import { TUI_EDITOR_EXTENSIONS, defaultEditorExtensions } from "@taiga-ui/addon-editor";
 
 @Component({templateUrl: './test.template.html',
-        providers: [{
-                        provide: TUI_EDITOR_EXTENSIONS,
-                        useValue: defaultEditorExtensions
-                    }]
-    })
+    providers: [{
+                    provide: TUI_EDITOR_EXTENSIONS,
+                    useValue: defaultEditorExtensions
+                }]
+})
 export class TestComponent {}
 `;
 
@@ -631,7 +630,7 @@ describe(`ng-update`, () => {
             )
             .toPromise();
 
-        expect(tree.readContent(`angular.json`)).toEqual(
+        expect(tree.readContent(`angular.json`)).toBe(
             `
 {
   "version": 1,

@@ -18,8 +18,8 @@ class Account {
     selector: 'tui-accordion-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiAccordionExample2 {
     readonly accounts = [

@@ -10,8 +10,8 @@ import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
     selector: 'tui-elastic-sticky-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiElasticStickyExample1 implements AfterViewInit {
     @ViewChild(TuiElasticStickyDirective)

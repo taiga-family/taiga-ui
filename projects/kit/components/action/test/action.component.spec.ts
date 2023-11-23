@@ -105,7 +105,7 @@ describe(`Action`, () => {
             );
             const text = await (await action.host()).text();
 
-            expect(text).toEqual(`Foo`);
+            expect(text).toBe(`Foo`);
         });
     });
 

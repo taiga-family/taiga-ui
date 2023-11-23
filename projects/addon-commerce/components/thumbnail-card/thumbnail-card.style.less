@@ -1,4 +1,4 @@
-@import 'taiga-ui-local';
+@import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
     position: relative;
@@ -18,6 +18,14 @@
     &[data-size='m'] {
         width: 3rem;
         height: 2rem;
+    }
+
+    &:before {
+        .fullsize();
+        content: '';
+        box-shadow: inset 0 0 0 1px;
+        border-radius: inherit;
+        color: var(--tui-clear);
     }
 
     &._active {

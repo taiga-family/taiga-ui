@@ -12,8 +12,9 @@ interface Item {
 @Component({
     selector: 'tui-tab-bar-example-1',
     templateUrl: './index.html',
-    changeDetection,
+    styleUrls: ['./index.less'],
     encapsulation,
+    changeDetection,
 })
 export class TuiTabBarExample1 {
     activeItemIndex = 1;

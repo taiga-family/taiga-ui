@@ -36,12 +36,12 @@ import {TuiGetOpacityPipe} from './pipes/opacity.pipe';
     templateUrl: './documentation.template.html',
     styleUrls: ['./documentation.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [TuiGetColorPipe, TuiGetOpacityPipe, TuiDestroyService],
     animations: [
         trigger('emitEvent', [
             transition(':increment', [style({opacity: 1}), animate('500ms ease-in')]),
         ]),
     ],
-    providers: [TuiGetColorPipe, TuiGetOpacityPipe, TuiDestroyService],
 })
 export class TuiDocDocumentationComponent implements AfterContentInit {
     @Input()

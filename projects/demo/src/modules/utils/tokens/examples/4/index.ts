@@ -6,8 +6,8 @@ import {TUI_IS_ANDROID} from '@taiga-ui/cdk';
 @Component({
     selector: 'tui-token-example-4',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTokensExample4 {
     constructor(@Inject(TUI_IS_ANDROID) readonly isAndroid: boolean) {}

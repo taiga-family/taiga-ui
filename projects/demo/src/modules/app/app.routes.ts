@@ -1,13 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {GettingStartedComponent} from './getting-started/getting-started.component';
-import {LandingComponent} from './landing/landing.component';
-
 export const ROUTES: Routes = [
     {
         path: ``,
-        component: LandingComponent,
+        loadChildren: async () =>
+            (await import(`./landing/landing.module`)).LandingModule,
         data: {
             title: `A powerful set of open source components for Angular`,
         },
@@ -15,7 +13,9 @@ export const ROUTES: Routes = [
     // Documentation
     {
         path: `getting-started`,
-        component: GettingStartedComponent,
+        loadChildren: async () =>
+            (await import(`./getting-started/getting-started.module`))
+                .GettingStartedModule,
         data: {
             title: `Getting started`,
         },
@@ -146,6 +146,15 @@ export const ROUTES: Routes = [
             title: `Portals`,
         },
     },
+    {
+        path: `viewport`,
+        loadChildren: async () =>
+            (await import(`../customization/viewport/viewport.module`))
+                .ExampleTuiViewportModule,
+        data: {
+            title: `Viewport`,
+        },
+    },
     // COMPONENTS
     {
         path: `components/accordion`,
@@ -199,11 +208,69 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/amount`,
+        loadChildren: async () =>
+            (await import(`../experimental/amount/amount.module`)).ExampleTuiAmountModule,
+        data: {
+            title: `Amount `,
+        },
+    },
+    {
+        path: `experimental/appearance`,
+        loadChildren: async () =>
+            (await import(`../experimental/appearance/appearance.module`))
+                .ExampleTuiAppearanceModule,
+        data: {
+            title: `Appearance`,
+        },
+    },
+    {
         path: `experimental/avatar`,
         loadChildren: async () =>
             (await import(`../experimental/avatar/avatar.module`)).ExampleTuiAvatarModule,
         data: {
-            title: `Avatar`,
+            title: `Avatar `,
+        },
+    },
+    {
+        path: `experimental/checkbox`,
+        loadChildren: async () =>
+            (await import(`../experimental/checkbox/checkbox.module`))
+                .ExampleTuiCheckboxModule,
+        data: {
+            title: `Checkbox `,
+        },
+    },
+    {
+        path: `experimental/radio`,
+        loadChildren: async () =>
+            (await import(`../experimental/radio/radio.module`)).ExampleTuiRadioModule,
+        data: {
+            title: `Radio `,
+        },
+    },
+    {
+        path: `experimental/title`,
+        loadChildren: async () =>
+            (await import(`../experimental/title/title.module`)).ExampleTuiTitleModule,
+        data: {
+            title: `Title`,
+        },
+    },
+    {
+        path: `experimental/toggle`,
+        loadChildren: async () =>
+            (await import(`../experimental/toggle/toggle.module`)).ExampleTuiToggleModule,
+        data: {
+            title: `Toggle `,
+        },
+    },
+    {
+        path: `experimental/card`,
+        loadChildren: async () =>
+            (await import(`../experimental/card/card.module`)).ExampleTuiCardModule,
+        data: {
+            title: `Card`,
         },
     },
     {
@@ -215,12 +282,12 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: `experimental/badge-alert`,
+        path: `experimental/badge-notification`,
         loadChildren: async () =>
-            (await import(`../experimental/badge-alert/badge-alert.module`))
-                .ExampleTuiBadgeAlertModule,
+            (await import(`../experimental/badge-notification/badge-notification.module`))
+                .ExampleTuiBadgeNotificationModule,
         data: {
-            title: `BadgeAlert`,
+            title: `BadgeNotification`,
         },
     },
     {
@@ -229,7 +296,7 @@ export const ROUTES: Routes = [
             (await import(`../experimental/badged-content/badged-content.module`))
                 .ExampleTuiBadgedContentModule,
         data: {
-            title: `BadgedContent`,
+            title: `BadgedContent `,
         },
     },
     {
@@ -241,11 +308,62 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/button-vertical`,
+        loadChildren: async () =>
+            (await import(`../experimental/button-vertical/button-vertical.module`))
+                .ExampleTuiButtonModule,
+        data: {
+            title: `ButtonVertical`,
+        },
+    },
+    {
+        path: `experimental/cell`,
+        loadChildren: async () =>
+            (await import(`../experimental/cell/cell.module`)).ExampleTuiCellModule,
+        data: {
+            title: `Cell`,
+        },
+    },
+    {
+        path: `experimental/compass`,
+        loadChildren: async () =>
+            (await import(`../experimental/compass/compass.module`))
+                .ExampleTuiCompassModule,
+        data: {
+            title: `Compass`,
+        },
+    },
+    {
         path: `experimental/fade`,
         loadChildren: async () =>
             (await import(`../experimental/fade/fade.module`)).ExampleTuiFadeModule,
         data: {
             title: `Fade`,
+        },
+    },
+    {
+        path: `experimental/icon`,
+        loadChildren: async () =>
+            (await import(`../experimental/icon/icon.module`)).ExampleTuiIconModule,
+        data: {
+            title: `Icon`,
+        },
+    },
+    {
+        path: `experimental/progress-segmented`,
+        loadChildren: async () =>
+            (await import(`../experimental/progress-segmented/progress-segmented.module`))
+                .ExampleTuiProgressSegmentedModule,
+        data: {
+            title: `ProgressSegmented`,
+        },
+    },
+    {
+        path: `experimental/rating`,
+        loadChildren: async () =>
+            (await import(`../experimental/rating/rating.module`)).ExampleTuiRatingModule,
+        data: {
+            title: `Rating`,
         },
     },
     {
@@ -258,12 +376,21 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: `experimental/compass`,
+        path: `experimental/surface`,
         loadChildren: async () =>
-            (await import(`../experimental/compass/compass.module`))
-                .ExampleTuiCompassModule,
+            (await import(`../experimental/surface/surface.module`))
+                .ExampleTuiSurfaceModule,
         data: {
-            title: `Compass`,
+            title: `Surface`,
+        },
+    },
+    {
+        path: `experimental/thumbnail-card`,
+        loadChildren: async () =>
+            (await import(`../experimental/thumbnail-card/thumbnail-card.module`))
+                .ExampleTuiThumbnailCardModule,
+        data: {
+            title: `ThumbnailCard `,
         },
     },
     {
@@ -302,12 +429,12 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: `components/card`,
+        path: `components/thumbnail-card`,
         loadChildren: async () =>
             (await import(`../components/thumbnail-card/thumbnail-card.module`))
                 .ExampleTuiThumbnailCardModule,
         data: {
-            title: `Card`,
+            title: `ThumbnailCard`,
         },
     },
     {
@@ -502,6 +629,15 @@ export const ROUTES: Routes = [
                 .ExampleTuiInputDateModule,
         data: {
             title: `InputDate`,
+        },
+    },
+    {
+        path: `components/input-date-multi`,
+        loadChildren: async () =>
+            (await import(`../components/input-date-multi/input-date-multi.module`))
+                .ExampleTuiInputDateMultiModule,
+        data: {
+            title: `InputDateMulti`,
         },
     },
     {

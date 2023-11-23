@@ -11,19 +11,7 @@ import {
 } from '../../utils/colored-log';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {removeImport, renameImport} from '../../utils/import-manipulations';
-import {TypeToRename} from '../interfaces/type-to-rename';
-
-export function renameTypes(options: TuiSchema, types: readonly TypeToRename[]): void {
-    !options[`skip-logs`] &&
-        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} renaming types...`);
-
-    types.forEach(({from, to, moduleSpecifier, preserveGenerics}) =>
-        renameType(from, to, moduleSpecifier, preserveGenerics),
-    );
-
-    !options[`skip-logs`] &&
-        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} types renamed \n`);
-}
+import {ReplacementType} from '../interfaces/replacement-type';
 
 function renameType(
     from: string,
@@ -42,7 +30,7 @@ function renameType(
 
         if (Node.isImportSpecifier(parent)) {
             processImport(parent, from, to);
-        } else if (Node.isTypeReferenceNode(parent)) {
+        } else if (Node.isTypeReference(parent)) {
             const targetType =
                 preserveGenerics && to ? addGeneric(to, parent.getTypeArguments()) : to;
 
@@ -73,4 +61,16 @@ function addGeneric(typeName: string, generics: TypeNode[]): string {
     const genericType = typeArgs.length ? `<${typeArgs.join(`, `)}>` : ``;
 
     return typeName + genericType;
+}
+
+export function renameTypes(options: TuiSchema, types: readonly ReplacementType[]): void {
+    !options[`skip-logs`] &&
+        infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} renaming types...`);
+
+    types.forEach(({from, to, moduleSpecifier, preserveGenerics}) =>
+        renameType(from, to, moduleSpecifier, preserveGenerics),
+    );
+
+    !options[`skip-logs`] &&
+        successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} types renamed \n`);
 }

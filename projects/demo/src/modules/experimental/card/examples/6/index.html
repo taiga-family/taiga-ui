@@ -1,0 +1,46 @@
+<div tuiCard>
+    <h2 tuiTitle>
+        <tui-scrollbar [hidden]="true">
+            <b
+                tuiFade
+                tuiScrollable
+                class="fade"
+            >
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </b>
+        </tui-scrollbar>
+
+        <span tuiSubtitle>
+            <tui-scrollbar>
+                <span
+                    tuiFade="vertical"
+                    tuiScrollable
+                    class="fade-vertical"
+                >
+                    It is a long established fact that a reader will be distracted by the readable content of a page
+                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                    distribution of letters, as opposed to using 'Content here, content here', making it look like
+                    readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their
+                    default model text.
+                </span>
+            </tui-scrollbar>
+        </span>
+    </h2>
+</div>
+
+<div tuiCard>
+    <h2 tuiTitle>Text without fade out when overflow content</h2>
+
+    <div
+        #text
+        tuiHintDirection="top"
+        class="nowrap"
+        [tuiHint]="tooltip"
+    >
+        It is a long established fact that a reader will be distracted by the readable content of a page when looking at
+        its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
+        opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing
+        packages and web page editors now use Lorem Ipsum as their default model text.
+    </div>
+    <ng-template #tooltip>{{ text.innerText }}</ng-template>
+</div>

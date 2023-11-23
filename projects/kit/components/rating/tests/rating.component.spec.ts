@@ -41,51 +41,51 @@ describe(`Rating`, () => {
 
         // noinspection DuplicatedCode
         it(`should be update value by setRate`, () => {
-            expect(testComponent.rate).toEqual(2);
-            expect(component.percent).toEqual(40);
-            expect(component.value).toEqual(2);
+            expect(testComponent.rate).toBe(2);
+            expect(component.percent).toBe(40);
+            expect(component.value).toBe(2);
 
             component.setRate(1);
 
-            expect(component.percent).toEqual(20);
-            expect(testComponent.rate).toEqual(1);
-            expect(component.value).toEqual(1);
+            expect(component.percent).toBe(20);
+            expect(testComponent.rate).toBe(1);
+            expect(component.value).toBe(1);
 
             component.setRate(4);
 
-            expect(component.percent).toEqual(80);
-            expect(testComponent.rate).toEqual(4);
-            expect(component.value).toEqual(4);
+            expect(component.percent).toBe(80);
+            expect(testComponent.rate).toBe(4);
+            expect(component.value).toBe(4);
         });
 
         // noinspection DuplicatedCode
         it(`should be update value by setRateByReverseIndex`, () => {
-            expect(testComponent.rate).toEqual(2);
-            expect(component.percent).toEqual(40);
-            expect(component.value).toEqual(2);
+            expect(testComponent.rate).toBe(2);
+            expect(component.percent).toBe(40);
+            expect(component.value).toBe(2);
 
             component.setRateByReverseIndex(1);
 
-            expect(component.percent).toEqual(80);
-            expect(component.value).toEqual(4);
+            expect(component.percent).toBe(80);
+            expect(component.value).toBe(4);
         });
 
         it(`try set invalid value`, () => {
-            expect(testComponent.rate).toEqual(2);
-            expect(component.value).toEqual(2);
-            expect(component.percent).toEqual(40);
+            expect(testComponent.rate).toBe(2);
+            expect(component.value).toBe(2);
+            expect(component.percent).toBe(40);
 
             component.setRate(4.5);
 
-            expect(testComponent.rate).toEqual(4.5);
-            expect(component.value).toEqual(4.5);
-            expect(component.percent).toEqual(90);
+            expect(testComponent.rate).toBe(4.5);
+            expect(component.value).toBe(4.5);
+            expect(component.percent).toBe(90);
 
             component.setRate(0.4);
 
-            expect(testComponent.rate).toEqual(0.4);
-            expect(component.value).toEqual(0.4);
-            expect(component.percent).toEqual(8);
+            expect(testComponent.rate).toBe(0.4);
+            expect(component.value).toBe(0.4);
+            expect(component.percent).toBe(8);
         });
     });
 
@@ -125,54 +125,54 @@ describe(`Rating`, () => {
 
         // noinspection DuplicatedCode
         it(`should be update value by setRate`, () => {
-            expect(testComponent.rate).toEqual(0);
-            expect(component.percent).toEqual(0);
-            expect(component.value).toEqual(0);
+            expect(testComponent.rate).toBe(0);
+            expect(component.percent).toBe(0);
+            expect(component.value).toBe(0);
 
             component.setRate(2);
 
-            expect(component.percent).toEqual(40);
-            expect(component.value).toEqual(2);
+            expect(component.percent).toBe(40);
+            expect(component.value).toBe(2);
 
             component.setRate(3);
             fixture.detectChanges();
 
-            expect(component.percent).toEqual(60);
-            expect(component.value).toEqual(3);
+            expect(component.percent).toBe(60);
+            expect(component.value).toBe(3);
         });
 
         // noinspection DuplicatedCode
         it(`should be update value by setRateByReverseIndex`, () => {
-            expect(testComponent.rate).toEqual(0);
-            expect(component.percent).toEqual(0);
-            expect(component.value).toEqual(0);
+            expect(testComponent.rate).toBe(0);
+            expect(component.percent).toBe(0);
+            expect(component.value).toBe(0);
 
             component.setRateByReverseIndex(1);
             fixture.detectChanges();
 
-            expect(testComponent.rate).toEqual(4);
-            expect(component.percent).toEqual(80);
-            expect(component.value).toEqual(4);
+            expect(testComponent.rate).toBe(4);
+            expect(component.percent).toBe(80);
+            expect(component.value).toBe(4);
         });
 
         it(`try set invalid value`, () => {
-            expect(testComponent.rate).toEqual(0);
-            expect(component.value).toEqual(0);
-            expect(component.percent).toEqual(0);
+            expect(testComponent.rate).toBe(0);
+            expect(component.value).toBe(0);
+            expect(component.percent).toBe(0);
 
             component.setRate(100);
             fixture.detectChanges();
 
-            expect(testComponent.rate).toEqual(100);
-            expect(component.value).toEqual(100);
-            expect(component.percent).toEqual(100);
+            expect(testComponent.rate).toBe(100);
+            expect(component.value).toBe(100);
+            expect(component.percent).toBe(100);
 
             component.setRate(-1);
             fixture.detectChanges();
 
-            expect(testComponent.rate).toEqual(-1);
-            expect(component.value).toEqual(-1);
-            expect(component.percent).toEqual(0);
+            expect(testComponent.rate).toBe(-1);
+            expect(component.value).toBe(-1);
+            expect(component.percent).toBe(0);
         });
     });
 });

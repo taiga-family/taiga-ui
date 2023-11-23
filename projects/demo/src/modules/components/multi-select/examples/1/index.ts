@@ -16,8 +16,8 @@ const ITEMS: readonly string[] = [
 @Component({
     selector: 'tui-multi-select-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiMultiSelectExample1 {
     search: string | null = '';

@@ -20,7 +20,7 @@ import {
 } from '@taiga-ui/core';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 import {TuiSheetDialogOptions} from './sheet-dialog.options';
 
@@ -35,6 +35,10 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
     styleUrls: ['./sheet-dialog.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop],
+    host: {
+        '[$.class._stuck]': 'stuck$',
+        '($.class._stuck)': 'stuck$',
+    },
 })
 export class TuiSheetDialogComponent<I> implements AfterViewInit {
     @ViewChild('sheet')
@@ -53,6 +57,8 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
             duration: this.duration,
         },
     };
+
+    stuck$ = new BehaviorSubject(false);
 
     constructor(
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
@@ -83,6 +89,12 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     @HostListener('scroll.silent', ['0'])
     onPointerChange(delta: number): void {
         this.pointers += delta;
+
+        if (!delta) {
+            const stuck = this.el.nativeElement.scrollTop > this.sheetTop;
+
+            this.stuck$.value !== stuck && this.stuck$.next(stuck);
+        }
 
         if (
             this.context.closeable &&

@@ -41,8 +41,8 @@ import {TuiOptionComponent} from './option/option.component';
     selector: 'tui-data-list',
     templateUrl: './data-list.template.html',
     styleUrls: ['./data-list.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsDataListAccessor(TuiDataListComponent),
         TEXTFIELD_CONTROLLER_PROVIDER,

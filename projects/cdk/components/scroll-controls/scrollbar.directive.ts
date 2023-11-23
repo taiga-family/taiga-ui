@@ -15,6 +15,14 @@ import {map, switchMap, takeUntil, throttleTime} from 'rxjs/operators';
 
 const MIN_WIDTH = 24;
 
+function getOffsetVertical({clientY}: MouseEvent, {top, height}: ClientRect): number {
+    return (clientY - top) / height;
+}
+
+function getOffsetHorizontal({clientX}: MouseEvent, {left, width}: ClientRect): number {
+    return (clientX - left) / width;
+}
+
 @Directive({
     selector: '[tuiScrollbar]',
     providers: [TuiDestroyService],
@@ -149,12 +157,4 @@ export class TuiScrollbarDirective {
 
         return [maxTop * scrolledTop, maxLeft * scrolledLeft];
     }
-}
-
-function getOffsetVertical({clientY}: MouseEvent, {top, height}: ClientRect): number {
-    return (clientY - top) / height;
-}
-
-function getOffsetHorizontal({clientX}: MouseEvent, {left, width}: ClientRect): number {
-    return (clientX - left) / width;
 }

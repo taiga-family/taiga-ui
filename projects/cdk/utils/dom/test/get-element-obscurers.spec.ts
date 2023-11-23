@@ -84,7 +84,7 @@ describe(`tuiGetElementObscures`, () => {
             const result = tuiGetElementObscures(element);
 
             expect(result).toEqual(others);
-            expect(result?.length).toEqual(4);
+            expect(result?.length).toBe(4);
             expect(mockElementFromPoint).toHaveBeenCalledTimes(4);
         });
 

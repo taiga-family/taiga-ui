@@ -16,8 +16,8 @@ const databaseMockData: readonly string[] = [
 @Component({
     selector: 'tui-input-tag-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputTagExample2 {
     private readonly search$ = new Subject<string>();

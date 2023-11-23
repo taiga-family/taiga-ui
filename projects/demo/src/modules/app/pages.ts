@@ -206,9 +206,9 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Components`,
-        title: `Card`,
+        title: `ThumbnailCard`,
         keywords: `карта, карточка, card, visa, mastercard, credit, icon, logo, дебетовая, кредитная, иконка, логотип`,
-        route: `/components/card`,
+        route: `/components/thumbnail-card`,
     },
     {
         section: `Components`,
@@ -411,6 +411,14 @@ export const pages: TuiDocPages = [
                     `поле, инпут, форма, ввод, input, календарь, день, ` +
                     `неделя, месяц, год, дата, calendar`,
                 route: `/components/input-date`,
+            },
+            {
+                section: `Components`,
+                title: `InputDateMulti`,
+                keywords:
+                    `поле, инпут, форма, ввод, input, календарь, день, ` +
+                    `неделя, месяц, год, дата, calendar, multiple`,
+                route: `/components/input-date-multi`,
             },
             {
                 section: `Components`,
@@ -816,10 +824,16 @@ export const pages: TuiDocPages = [
         keywords: `tree, view, multi, recursive, folders, рекурсия, дерево, папки`,
         route: `/components/tree`,
     },
+    {
+        section: `Components`,
+        title: `Svg`,
+        keywords: `svg, свг`,
+        route: `/icons/overview/Component`,
+    },
     // Experimental
     {
         section: `Experimental`,
-        title: `Avatar`,
+        title: `Avatar `,
         keywords: `аватар, image, pic, icon, картинка, изображение, avatar, stack`,
         route: `/experimental/avatar`,
     },
@@ -829,19 +843,19 @@ export const pages: TuiDocPages = [
         subPages: [
             {
                 section: `Experimental`,
-                title: `Badge`,
+                title: `Badge `,
                 keywords: `бэдж, бейдж, овал, badge, нотификация`,
                 route: `/experimental/badge`,
             },
             {
                 section: `Experimental`,
-                title: `BadgeAlert`,
+                title: `BadgeNotification`,
                 keywords: `бэдж, бейдж, circle, круг, badge, alert, нотификация`,
-                route: `/experimental/badge-alert`,
+                route: `/experimental/badge-notification`,
             },
             {
                 section: `Experimental`,
-                title: `BadgedContent`,
+                title: `BadgedContent `,
                 keywords: `бэдж, бейдж, circle, овал, круг, badge, нотификация`,
                 route: `/experimental/badged-content`,
             },
@@ -850,8 +864,32 @@ export const pages: TuiDocPages = [
     {
         section: `Experimental`,
         title: `Button`,
-        keywords: `кнопка, button, icon-button, иконка`,
-        route: `/experimental/button`,
+        subPages: [
+            {
+                section: `Experimental`,
+                title: `Button `,
+                keywords: `кнопка, button, icon-button, иконка`,
+                route: `/experimental/button`,
+            },
+            {
+                section: `Experimental`,
+                title: `ButtonVertical`,
+                keywords: `кнопка, button, vertical-button, вертикальная`,
+                route: `/experimental/button-vertical`,
+            },
+        ],
+    },
+    {
+        section: `Experimental`,
+        title: `Cell`,
+        keywords: `cell, feed, item`,
+        route: `/experimental/cell`,
+    },
+    {
+        section: `Experimental`,
+        title: `Compass`,
+        keywords: `compass, user, point, dot, карта, точка`,
+        route: `/experimental/compass`,
     },
     {
         section: `Experimental`,
@@ -861,15 +899,81 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Experimental`,
+        title: `Icon`,
+        keywords: `icons, image, картинка, свг, svg, графика, иконка`,
+        route: `/experimental/icon`,
+    },
+    {
+        section: `Experimental`,
+        title: `ProgressSegmented `,
+        keywords: `progress, progress-segmented, индикатор, загрузка, прогресс, segment, segments, segmented`,
+        route: `/experimental/progress-segmented`,
+    },
+    {
+        section: `Experimental`,
+        title: `Rating `,
+        keywords: `рейтинг, оценка, звезда, rating, star, rate`,
+        route: `/experimental/rating`,
+    },
+    {
+        section: `Experimental`,
         title: `Sensitive`,
         keywords: `sensitive, pixel, mask, пиксель, маска`,
         route: `/experimental/sensitive`,
     },
     {
         section: `Experimental`,
-        title: `Compass`,
-        keywords: `compass, user, point, dot, карта, точка`,
-        route: `/experimental/compass`,
+        title: `Surface`,
+        keywords: `card, container, wrapper, image, blur, overlay`,
+        route: `/experimental/surface`,
+    },
+    {
+        section: `Experimental`,
+        title: `Title`,
+        keywords: `subtitle, заголовок, caption, description, подзаголовок`,
+        route: `/experimental/title`,
+    },
+    {
+        section: `Experimental`,
+        title: `ThumbnailCard `,
+        keywords: `карта, карточка, card, visa, mastercard, credit, icon, logo, дебетовая, кредитная, иконка, логотип`,
+        route: `/experimental/thumbnail-card`,
+    },
+    {
+        section: `Experimental`,
+        title: `Checkbox `,
+        keywords: `чек, радио, ввод, форма, form, checkbox, radio, toggle`,
+        route: `/experimental/checkbox`,
+    },
+    {
+        section: `Experimental`,
+        title: `Radio `,
+        keywords: `чек, радио, ввод, форма, form, checkbox, radio, toggle`,
+        route: `/experimental/radio`,
+    },
+    {
+        section: `Experimental`,
+        title: `Toggle `,
+        keywords: `чек, радио, ввод, форма, form, checkbox, radio, toggle`,
+        route: `/experimental/toggle`,
+    },
+    {
+        section: `Experimental`,
+        title: `Amount `,
+        keywords: `amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро`,
+        route: `/experimental/amount`,
+    },
+    {
+        section: `Experimental`,
+        title: `Appearance`,
+        keywords: `colors, css, theme, custom, style`,
+        route: `/experimental/appearance`,
+    },
+    {
+        section: `Experimental`,
+        title: `Card`,
+        keywords: `card, block, карточка, блок`,
+        route: `/experimental/card`,
     },
     // Charts
     {
@@ -1048,6 +1152,12 @@ export const pages: TuiDocPages = [
         title: `Portals`,
         keywords: `portal, custom, theme, style`,
         route: `/portals`,
+    },
+    {
+        section: `Customization`,
+        title: `Viewport`,
+        keywords: `viewport, вьюпорт, портал, контекст, выпадашка, дропдаун, portal, dropdown`,
+        route: `/viewport`,
     },
     // Tools
     {

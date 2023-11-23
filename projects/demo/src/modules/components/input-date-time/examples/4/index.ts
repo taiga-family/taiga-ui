@@ -9,14 +9,14 @@ import {ExampleDateTimeTransformer} from './value-transformer';
 @Component({
     selector: 'tui-input-date-time-example-4',
     templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
     providers: [
         {
             provide: TUI_DATE_TIME_VALUE_TRANSFORMER,
             useClass: ExampleDateTimeTransformer,
         },
     ],
-    changeDetection,
-    encapsulation,
 })
 export class TuiInputDateTimeExample4 {
     readonly control = new FormControl('19.01.2022, 12:33');

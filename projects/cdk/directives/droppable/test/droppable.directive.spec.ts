@@ -45,7 +45,7 @@ describe(`TuiDroppable Directive`, () => {
         const dataTransfer = new DataTransfer();
         const event = new TuiMockEvent(`drop`, {dataTransfer});
 
-        event.preventDefault = jest.fn();
+        jest.spyOn(event, `preventDefault`).mockImplementation();
         directiveElement.dispatchEvent(event);
 
         expect(event.preventDefault).toHaveBeenCalled();
@@ -54,7 +54,7 @@ describe(`TuiDroppable Directive`, () => {
     it(`DragOver event is prevented`, () => {
         const event = new Event(`dragover`);
 
-        event.preventDefault = jest.fn();
+        jest.spyOn(event, `preventDefault`).mockImplementation();
         directiveElement.dispatchEvent(event);
 
         expect(event.preventDefault).toHaveBeenCalled();

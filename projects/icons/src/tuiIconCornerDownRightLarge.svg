@@ -12,8 +12,8 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                 >
-                    <polyline points="15 10 20 15 15 20" />
-                    <path d="M4 4v7a4 4 0 0 0 4 4h12" />
+                    <polyline vector-effect="non-scaling-stroke" points="15 10 20 15 15 20" />
+                    <path vector-effect="non-scaling-stroke" d="M4 4v7a4 4 0 0 0 4 4h12" />
                 </svg>
             </svg>
         </svg>

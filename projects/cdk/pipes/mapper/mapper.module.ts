@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {TuiMapperPipe} from './mapper.pipe';
 
 @NgModule({
-    exports: [TuiMapperPipe],
     declarations: [TuiMapperPipe],
+    exports: [TuiMapperPipe],
 })
 export class TuiMapperPipeModule {}

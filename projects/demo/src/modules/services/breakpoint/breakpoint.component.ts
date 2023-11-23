@@ -11,7 +11,8 @@ export class ExampleTuiBreakpointComponent {
     injectService = import('./examples/inject-service.md?raw');
 
     readonly example: TuiDocExample = {
-        TypeScript: import('./examples/1/component.ts?raw'),
-        HTML: import('./examples/1/template.html?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
+        LESS: import('./examples/1/index.less?raw'),
     };
 }

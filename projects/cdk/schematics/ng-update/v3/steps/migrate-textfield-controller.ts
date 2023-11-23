@@ -48,47 +48,6 @@ const ATTRS_MAP: Record<string, string> = {
 
 const CONTROLLER_ITEMS = Object.keys(ATTRS_MAP).map(attr => attr.toLowerCase());
 
-export function migrateTextfieldController({
-    resource,
-    fileSystem,
-    recorder,
-}: {
-    fileSystem: DevkitFileSystem;
-    recorder: UpdateRecorder;
-    resource: TemplateResource;
-}): void {
-    const template = getTemplateFromTemplateResource(resource, fileSystem);
-    const templateOffset = getTemplateOffset(resource);
-
-    const elements = findElementsByTagNames(template, TEXTFIELDS);
-
-    elements.forEach(element => {
-        const attrs = element.attrs.filter(
-            attr =>
-                CONTROLLER_ITEMS.includes(attr.name) && !exclusion(element, attr.name),
-        );
-
-        if (!attrs.length) {
-            return;
-        }
-
-        const existingInput = findElementsByFn(
-            element.childNodes,
-            el =>
-                (el.tagName === `input` || el.tagName === `textarea`) &&
-                hasElementAttribute(el, `tuiTextfield`),
-        )[0];
-
-        if (existingInput) {
-            addAttrToExistingInput({existingInput, attrs, recorder, templateOffset});
-        } else {
-            insertTuiTextfieldInput({element, attrs, recorder, templateOffset});
-        }
-    });
-
-    removeOldInputs(recorder, template, templateOffset);
-}
-
 function insertTuiTextfieldInput({
     element,
     attrs,
@@ -167,4 +126,45 @@ const excludedAttrs: Record<string, string[]> = {
 
 function exclusion({tagName}: Element, attrName: string): boolean {
     return excludedAttrs[tagName]?.includes(attrName);
+}
+
+export function migrateTextfieldController({
+    resource,
+    fileSystem,
+    recorder,
+}: {
+    fileSystem: DevkitFileSystem;
+    recorder: UpdateRecorder;
+    resource: TemplateResource;
+}): void {
+    const template = getTemplateFromTemplateResource(resource, fileSystem);
+    const templateOffset = getTemplateOffset(resource);
+
+    const elements = findElementsByTagNames(template, TEXTFIELDS);
+
+    elements.forEach(element => {
+        const attrs = element.attrs.filter(
+            attr =>
+                CONTROLLER_ITEMS.includes(attr.name) && !exclusion(element, attr.name),
+        );
+
+        if (!attrs.length) {
+            return;
+        }
+
+        const existingInput = findElementsByFn(
+            element.childNodes,
+            el =>
+                (el.tagName === `input` || el.tagName === `textarea`) &&
+                hasElementAttribute(el, `tuiTextfield`),
+        )[0];
+
+        if (existingInput) {
+            addAttrToExistingInput({existingInput, attrs, recorder, templateOffset});
+        } else {
+            insertTuiTextfieldInput({element, attrs, recorder, templateOffset});
+        }
+    });
+
+    removeOldInputs(recorder, template, templateOffset);
 }

@@ -8,8 +8,8 @@ import {TuiKeySteps} from '@taiga-ui/kit';
     selector: 'tui-input-slider-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputSliderExample3 {
     readonly control = new FormControl(10_000);

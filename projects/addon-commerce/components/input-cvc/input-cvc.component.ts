@@ -85,7 +85,7 @@ export class TuiInputCVCComponent
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        return this.input ? this.input.nativeFocusableElement : null;
+        return this.input?.nativeFocusableElement ?? null;
     }
 
     get focused(): boolean {

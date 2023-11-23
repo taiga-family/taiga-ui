@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit';
 
 @Component({
     selector: 'example-badge',
@@ -19,30 +18,24 @@ export class ExampleTuiBadgeComponent {
     );
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
-        LESS: import('./examples/3/index.less?raw'),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
     };
@@ -52,7 +45,7 @@ export class ExampleTuiBadgeComponent {
         HTML: import('./examples/6/index.html?raw'),
     };
 
-    readonly appearanceVariants: ReadonlyArray<TuiStatus | 'accent' | 'light'> = [
+    readonly appearanceVariants = [
         'accent',
         'default',
         'primary',
@@ -62,7 +55,6 @@ export class ExampleTuiBadgeComponent {
         'warning',
         'info',
         'neutral',
-        'light',
     ];
 
     appearance = this.appearanceVariants[0];
@@ -71,8 +63,8 @@ export class ExampleTuiBadgeComponent {
 
     size: TuiSizeS | TuiSizeXL = this.sizeVariants[1];
 
-    hoverable = false;
-
     contentTypeVariants = ['text', 'with icon', 'image'];
     contentType = this.contentTypeVariants[0];
+
+    dot = false;
 }

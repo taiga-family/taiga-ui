@@ -6,8 +6,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-stepper-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiStepperExample3 {
     readonly steps = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'];

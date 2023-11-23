@@ -66,34 +66,32 @@
             <p>
                 <tui-badge
                     *ngIf="contentType === 'with icon'"
+                    iconLeft="tuiIconCheck"
                     [appearance]="appearance"
-                    [hoverable]="hoverable"
+                    [dot]="dot"
                     [size]="size"
                 >
-                    <tui-svg src="tuiIconCheck"></tui-svg>
                     <div tuiFade>Taiga UI</div>
                 </tui-badge>
 
                 <tui-badge
                     *ngIf="contentType === 'text'"
                     [appearance]="appearance"
-                    [hoverable]="hoverable"
+                    [dot]="dot"
                     [size]="size"
                 >
                     Taiga UI
                 </tui-badge>
 
-                <tui-badge
+                <img
                     *ngIf="contentType === 'image'"
+                    alt="market"
+                    src="assets/images/avatar.jpg"
+                    tuiBadge
                     [appearance]="appearance"
-                    [hoverable]="hoverable"
+                    [dot]="dot"
                     [size]="size"
-                >
-                    <img
-                        alt="market"
-                        src="assets/images/avatar.jpg"
-                    />
-                </tui-badge>
+                />
             </p>
         </tui-doc-demo>
         <label
@@ -107,6 +105,14 @@
             ></tui-radio-list>
         </label>
         <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="dot"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="dot"
+            >
+                Show dot on the left side
+            </ng-template>
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="size"
@@ -125,21 +131,13 @@
             >
                 Appearance
             </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="hoverable"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="hoverable"
-            >
-                Enable hovered state
-            </ng-template>
         </tui-doc-documentation>
     </ng-template>
 
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p>Import into a module</p>
+                <p>Import module:</p>
 
                 <tui-doc-code
                     filename="myComponent.module.ts"

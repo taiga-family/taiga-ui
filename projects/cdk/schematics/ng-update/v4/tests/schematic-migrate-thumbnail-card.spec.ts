@@ -1,4 +1,3 @@
-/* eslint-disable rxjs/no-topromise */
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
 import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
@@ -44,11 +43,17 @@ export class TestComponent {
 const TEMPLATE_BEFORE = `
 <tui-card class="tui-card"></tui-card>
 <tui-card class="tui-card" />
+<tui-card class="tui-card" brandLogo="logo"></tui-card>
+<tui-card class="tui-card" brandLogo="logo" [active]="true"></tui-card>
+<tui-thumbnail-card [brandLogo]="logo"></tui-thumbnail-card>
 `;
 
 const TEMPLATE_AFTER = `
 <tui-thumbnail-card  class="tui-card"></tui-thumbnail-card>
 <tui-thumbnail-card  class="tui-card" />
+<tui-thumbnail-card  class="tui-card" iconLeft="logo"></tui-thumbnail-card>
+<tui-thumbnail-card  class="tui-card" iconLeft="logo" ></tui-thumbnail-card>
+<tui-thumbnail-card [iconLeft]="logo"></tui-thumbnail-card>
 `;
 
 describe(`ng-update`, () => {
@@ -66,7 +71,7 @@ describe(`ng-update`, () => {
         saveActiveProject();
     });
 
-    it(`should migrate textarea tag in template`, async () => {
+    it(`should migrate tui-card tag in template`, async () => {
         const tree = await runner
             .runSchematicAsync(
                 `updateToV4`,
@@ -78,7 +83,7 @@ describe(`ng-update`, () => {
         expect(tree.readContent(`test/app/test.template.html`)).toEqual(TEMPLATE_AFTER);
     });
 
-    it(`should migrate textarea references in ts files`, async () => {
+    it(`should migrate TuiCard(Module|Component) references in ts files`, async () => {
         const tree = await runner
             .runSchematicAsync(
                 `updateToV4`,

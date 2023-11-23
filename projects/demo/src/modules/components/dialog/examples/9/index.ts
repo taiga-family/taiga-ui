@@ -13,9 +13,9 @@ import {PayModalComponent} from './pay-modal/pay-modal.component';
     selector: 'tui-dialog-example-9',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    providers: [TuiDestroyService],
-    changeDetection,
     encapsulation,
+    changeDetection,
+    providers: [TuiDestroyService],
 })
 export class TuiDialogExampleComponent9 {
     readonly amountControl = new FormControl(100);

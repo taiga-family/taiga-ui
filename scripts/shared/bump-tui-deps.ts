@@ -3,7 +3,7 @@ import {isTuiPackageName} from './is-tui-package-name';
 
 export interface TuiBumpDepsOptions {
     deps: Record<string, Record<string, unknown> | string>;
-    ignores: string[];
+    ignores: readonly string[];
     isPeerDependency?: boolean;
     newVersion: string;
     prevVersion: string;
@@ -16,21 +16,21 @@ export function bumpTuiDeps({
     isPeerDependency,
     ignores,
 }: TuiBumpDepsOptions): void {
-    const keys = Object.keys(deps).filter(key => isTuiPackageName(key, ignores));
-
-    for (const key of keys) {
-        if (tuiIsString(deps[key])) {
-            deps[key] = isPeerDependency
-                ? (deps[key] as string)?.replace(prevVersion, newVersion)
-                : `^${newVersion}`;
-        } else if (deps[key]?.hasOwnProperty(`requires`)) {
-            bumpTuiDeps({
-                deps: (deps[key] as Record<string, Record<string, string>>).requires,
-                isPeerDependency,
-                ignores,
-                prevVersion,
-                newVersion,
-            });
-        }
-    }
+    Object.keys(deps)
+        .filter(key => isTuiPackageName(key, ignores))
+        .forEach(key => {
+            if (tuiIsString(deps[key])) {
+                deps[key] = isPeerDependency
+                    ? (deps[key] as string)?.replace(prevVersion, newVersion)
+                    : `^${newVersion}`;
+            } else if (deps[key]?.hasOwnProperty(`requires`)) {
+                bumpTuiDeps({
+                    deps: (deps[key] as Record<string, Record<string, string>>).requires,
+                    isPeerDependency,
+                    ignores,
+                    prevVersion,
+                    newVersion,
+                });
+            }
+        });
 }

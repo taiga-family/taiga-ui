@@ -9,9 +9,9 @@ import {takeUntil} from 'rxjs/operators';
     selector: `tui-input-inline-example-3`,
     templateUrl: `./template.html`,
     styleUrls: [`./style.less`],
-    providers: [TuiDestroyService],
-    changeDetection,
     encapsulation,
+    changeDetection,
+    providers: [TuiDestroyService],
 })
 export class TuiInputInlineExample3 implements OnInit {
     count = `0`;

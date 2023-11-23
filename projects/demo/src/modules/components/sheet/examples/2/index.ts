@@ -6,8 +6,8 @@ import {TuiSheetOptions} from '@taiga-ui/addon-mobile';
 @Component({
     selector: 'tui-sheet-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiSheetExample2 {
     open = false;

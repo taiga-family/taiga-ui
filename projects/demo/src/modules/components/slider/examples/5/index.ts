@@ -8,8 +8,8 @@ import {TuiKeySteps} from '@taiga-ui/kit';
     selector: 'tui-slider-example-5',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiSliderExample5 {
     readonly labels: string[] = ['5 000', '100 000', '300 000', '1 000 000'];

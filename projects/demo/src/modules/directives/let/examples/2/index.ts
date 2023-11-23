@@ -6,8 +6,8 @@ import {TuiAlertService} from '@taiga-ui/core';
 @Component({
     selector: 'tui-let-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiLetExample2 {
     constructor(

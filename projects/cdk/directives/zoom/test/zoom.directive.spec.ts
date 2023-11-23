@@ -48,7 +48,7 @@ xdescribe(`TuiZoom directive`, () => {
 
         fixture.detectChanges();
 
-        expect(tuiFloor(testComponent.scale, 2)).toEqual(0.85);
+        expect(tuiFloor(testComponent.scale, 2)).toBe(0.85);
     });
 
     it(`wheel`, () => {
@@ -58,7 +58,7 @@ xdescribe(`TuiZoom directive`, () => {
 
         fixture.detectChanges();
 
-        expect(tuiFloor(testComponent.scale, 2)).toEqual(1.01);
+        expect(tuiFloor(testComponent.scale, 2)).toBe(1.01);
     });
 
     function sendTouchEvent(

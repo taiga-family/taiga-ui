@@ -118,7 +118,7 @@ export class TuiInputMonthComponent
     }
 
     get focused(): boolean {
-        return !!this.textfield && this.textfield.focused;
+        return !!this.textfield?.focused;
     }
 
     get calendarIcon(): TuiInputDateOptions['icon'] {

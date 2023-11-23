@@ -10,7 +10,7 @@ describe(`Code blocks`, () => {
         });
     });
 
-    for (const [index, title] of [`HTML`, `TypeScript`, `LESS`].entries()) {
+    Array.from([`HTML`, `TypeScript`, `LESS`].entries()).forEach(([index, title]) => {
         it(title, () => {
             cy.tuiVisit(`/components/line-clamp`);
             cy.get(`#basic tui-tabs-with-more [tuiTab]`).contains(title).click();
@@ -21,5 +21,5 @@ describe(`Code blocks`, () => {
                 .tuiWaitBeforeScreenshot()
                 .matchImageSnapshot(`01-${index}-code-block-${title}`);
         });
-    }
+    });
 });

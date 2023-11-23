@@ -7,8 +7,8 @@ import {TuiHostedDropdownComponent} from '@taiga-ui/core';
     selector: 'tui-hosted-dropdown-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiHostedDropdownExample2 {
     @ViewChild(TuiHostedDropdownComponent)

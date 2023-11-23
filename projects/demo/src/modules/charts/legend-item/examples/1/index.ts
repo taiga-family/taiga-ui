@@ -7,8 +7,8 @@ import {tuiSum} from '@taiga-ui/cdk';
     selector: 'tui-legend-item-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiLegendItemExample1 {
     activeItemIndex = NaN;

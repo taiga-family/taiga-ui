@@ -9,8 +9,8 @@ import {DialogExampleComponent} from './dialog-example/dialog-example.component'
 @Component({
     selector: 'tui-dialog-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiDialogExampleComponent2 {
     private readonly dialog = this.dialogs.open<number>(

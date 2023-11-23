@@ -6,15 +6,15 @@ import {TUI_ARROW} from '@taiga-ui/kit';
 @Component({
     selector: 'tui-data-list-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiDataListExample1 {
     readonly arrow = TUI_ARROW;
 
     readonly groups = [
         {
-            label: $localize`Components`,
+            label: 'Components',
             items: [
                 {
                     label: 'Input',
@@ -31,14 +31,14 @@ export class TuiDataListExample1 {
             ],
         },
         {
-            label: $localize`Styles`,
+            label: 'Styles',
             items: [
                 {
-                    label: $localize`Icons`,
+                    label: 'Icons',
                     routerLink: '/icons',
                 },
                 {
-                    label: $localize`Typography`,
+                    label: 'Typography',
                     routerLink: '/typography',
                 },
             ],
@@ -47,7 +47,7 @@ export class TuiDataListExample1 {
             label: '',
             items: [
                 {
-                    label: $localize`Changelog`,
+                    label: 'Changelog',
                     routerLink: '/changelog',
                 },
             ],

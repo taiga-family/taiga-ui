@@ -1,7 +1,9 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
-    selector: 'tui-mobile-tabs',
+    host: {
+        class: 'tui-mobile-tabs-styles',
+    },
     template: '',
     styleUrls: ['./mobile-tabs.style.less'],
     encapsulation: ViewEncapsulation.None,

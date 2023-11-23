@@ -10,6 +10,10 @@ import {
 import {from, of, Subject} from 'rxjs';
 import {concatMap, delay, takeUntil} from 'rxjs/operators';
 
+/**
+ * @deprecated:
+ * remove in v4.0
+ */
 @Directive({selector: '[tuiForAsync][tuiForAsyncOf]'})
 export class TuiForAsyncDirective<T extends readonly any[]>
     implements OnChanges, OnDestroy

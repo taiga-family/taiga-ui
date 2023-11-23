@@ -14,7 +14,6 @@ import {
     tuiClamp,
     TuiContextWithImplicit,
     TuiDestroyService,
-    tuiGetElementObscures,
     TuiHoveredService,
     tuiPure,
     tuiPx,
@@ -30,11 +29,11 @@ import {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATION_OPTIONS, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {TuiPoint} from '@taiga-ui/core/types';
+import {tuiIsObscured} from '@taiga-ui/core/utils';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
-// eslint-disable-next-line import/no-cycle
 import {TuiHintDirective} from './hint.directive';
 import {TuiHintHoverDirective} from './hint-hover.directive';
 import {TuiHintPointerDirective} from './hint-pointer.directive';
@@ -111,7 +110,7 @@ export class TuiHintComponent<C = any> {
         if (
             (!this.el.nativeElement.contains(target) &&
                 !this.hover.el.nativeElement.contains(target)) ||
-            tuiGetElementObscures(this.hover.el.nativeElement)?.length
+            tuiIsObscured(this.hover.el.nativeElement)
         ) {
             this.hover.toggle(false);
         }

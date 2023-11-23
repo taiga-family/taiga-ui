@@ -1,8 +1,10 @@
-import {Component, DebugElement} from '@angular/core';
+import {HarnessLoader} from '@angular/cdk/testing';
+import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
+import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiIdService} from '@taiga-ui/cdk';
-import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
+import {configureTestSuite, TuiDialogHarness} from '@taiga-ui/testing';
 
 import {TuiRootModule} from '../../root/root.module';
 import {TuiDialogModule} from '../dialog.module';
@@ -21,11 +23,7 @@ describe(`Dialog with TUI_DIALOG_OPTIONS`, () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let tuiDialogService: TuiDialogService;
-    let pageObject: TuiPageObject<TestComponent>;
-
-    function getCloseButton(): DebugElement {
-        return pageObject.getByAutomationId(`tui-dialog__close`)!;
-    }
+    let loader: HarnessLoader;
 
     configureTestSuite(() => {
         TestBed.configureTestingModule({
@@ -43,16 +41,18 @@ describe(`Dialog with TUI_DIALOG_OPTIONS`, () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
+        loader = TestbedHarnessEnvironment.loader(fixture);
         tuiDialogService = TestBed.inject(TuiDialogService);
-        pageObject = new TuiPageObject(fixture);
     });
 
     describe(`close button`, () => {
-        it(`when closeable = false is absent`, () => {
+        it(`when closeable = false is absent`, async () => {
             tuiDialogService.open(`Test`).subscribe();
             fixture.detectChanges();
 
-            expect(getCloseButton()).toBeNull();
+            const dialog = await loader.getHarness(TuiDialogHarness);
+
+            expect(await dialog.getCloseButton()).toBeNull();
         });
     });
 });

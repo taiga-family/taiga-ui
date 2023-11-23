@@ -6,7 +6,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {TUI_PLATFORM, TuiDirectiveStylesService, TuiPlatform} from '@taiga-ui/cdk';
+import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
@@ -15,8 +15,11 @@ import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button.options';
 @Component({
     template: '',
     styleUrls: ['./button.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-button-styles',
+    },
 })
 export class TuiButtonStylesComponent {}
 
@@ -25,10 +28,9 @@ export class TuiButtonStylesComponent {}
     providers: [MODE_PROVIDER],
     host: {
         tuiButtonNew: '',
-        tuiWrapper: '',
+        tuiAppearance: '',
         '[attr.data-size]': 'size',
         '[attr.data-appearance]': 'appearance',
-        '[attr.data-platform]': 'platform',
         '($.data-mode.attr)': 'mode$',
     },
 })
@@ -41,7 +43,6 @@ export class TuiButtonDirective {
 
     constructor(
         @Inject(TUI_BUTTON_OPTIONS) private readonly options: TuiButtonOptions,
-        @Inject(TUI_PLATFORM) readonly platform: TuiPlatform,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
     ) {

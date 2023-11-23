@@ -16,8 +16,8 @@ interface Hero {
 @Component({
     selector: 'tui-multi-select-example-3',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiMultiSelectExample3 {
     readonly items: readonly Hero[] = [

@@ -11,7 +11,7 @@ import {TuiPdfViewerService} from './pdf-viewer.service';
 @NgModule({
     imports: [CommonModule, TuiButtonModule, PolymorpheusModule],
     declarations: [TuiPdfViewerComponent, TuiPdfViewerDirective],
-    exports: [TuiPdfViewerComponent, TuiPdfViewerDirective],
     providers: [tuiAsDialog(TuiPdfViewerService)],
+    exports: [TuiPdfViewerComponent, TuiPdfViewerDirective],
 })
 export class TuiPdfViewerModule {}

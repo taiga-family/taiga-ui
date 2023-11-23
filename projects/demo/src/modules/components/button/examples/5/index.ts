@@ -6,8 +6,8 @@ import {TuiAppearance, tuiButtonOptionsProvider} from '@taiga-ui/core';
 @Component({
     selector: 'tui-button-example-5',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         tuiButtonOptionsProvider({
             shape: 'rounded',

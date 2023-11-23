@@ -6,6 +6,7 @@ export * from './badge.harness';
 export * from './button.harness';
 export * from './calendar.harness';
 export * from './card.harness';
+export * from './dialog.harness';
 export * from './hosted-dropdown.harness';
 export * from './island.harness';
 export * from './loader.harness';

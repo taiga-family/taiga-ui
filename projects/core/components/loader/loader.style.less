@@ -1,4 +1,4 @@
-@import '../../styles/taiga-ui-local.less';
+@import '@taiga-ui/core/styles/taiga-ui-local';
 
 @size-xs: 0.75rem;
 @size-s: 1rem;
@@ -44,6 +44,7 @@
 :host {
     position: relative;
     display: flex;
+    min-width: 1.5rem;
 
     &._loading {
         overflow: hidden;
@@ -136,6 +137,11 @@
 }
 
 .t-icon {
+    .safari-only({
+        & {
+            overflow: visible;
+        }
+    });
     display: block;
     min-width: 1em;
     max-width: 1em;
@@ -146,13 +152,6 @@
     overflow: hidden;
     transform: scale(1, -1);
     animation: tuiLoaderRotate 3s linear infinite;
-
-    /* Safari Only */
-    @supports (-webkit-hyphens: none) {
-        & {
-            overflow: visible;
-        }
-    }
 }
 
 .t-circle {

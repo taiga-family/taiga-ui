@@ -1,0 +1,27 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    display: flex;
+    gap: 1rem;
+}
+
+.fade {
+    .scrollbar-hidden();
+    width: 100%;
+    height: 2rem;
+    white-space: nowrap;
+    overflow: auto;
+}
+
+.fade-vertical {
+    .scrollbar-hidden();
+    height: 5rem;
+    overflow: auto;
+}
+
+.nowrap {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+}

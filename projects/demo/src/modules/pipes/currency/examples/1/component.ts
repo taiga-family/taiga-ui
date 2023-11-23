@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 @Component({
     selector: `tui-currency-example1`,
     templateUrl: `./template.html`,
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiCurrencyExample1 {}

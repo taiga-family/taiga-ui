@@ -8,9 +8,9 @@ import {tuiInputDateOptionsProvider} from '@taiga-ui/kit';
 @Component({
     selector: 'input-month-example-3',
     templateUrl: './index.html',
-    providers: [tuiInputDateOptionsProvider({nativePicker: true})],
-    changeDetection,
     encapsulation,
+    changeDetection,
+    providers: [tuiInputDateOptionsProvider({nativePicker: true})],
 })
 export class InputMonthExample3 {
     readonly control = new FormControl();

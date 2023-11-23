@@ -81,6 +81,26 @@
             </ng-template>
             <tui-progress-bar-example-6></tui-progress-bar-example-6>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="customizable-corners"
+            heading="Customizable corners"
+            [content]="customizableCornersExample"
+            [description]="customizableCornersDescription"
+        >
+            <ng-template #customizableCornersDescription>
+                You can toggle off round corners of the progress bar by setting
+                <code>border-radius: 0</code>
+                .
+                <tui-notification
+                    status="warning"
+                    class="tui-space_top-1"
+                >
+                    This customization properly works only for "new"-mode.
+                </tui-notification>
+            </ng-template>
+            <tui-progress-bar-example-7></tui-progress-bar-example-7>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>

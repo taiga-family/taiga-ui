@@ -6,7 +6,7 @@ global.TextEncoder = TextEncoderMock;
 global.TextDecoder = TextDecoderMock;
 
 // @ts-ignore
-global.document.execCommand = function execCommandMock() {};
+global.document.execCommand = () => {};
 
 // you can also pass the mock implementation
 // to jest.fn as an argument

@@ -8,8 +8,8 @@ import {takeUntil} from 'rxjs/operators';
 @Component({
     selector: `tui-destroy-example`,
     templateUrl: `./template.html`,
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [TuiDestroyService],
 })
 export class TuiDestroyExample {

@@ -9,8 +9,8 @@ import {map} from 'rxjs/operators';
     selector: 'tui-pan-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiPanExample1 {
     readonly coordinates$ = new BehaviorSubject([0, 0]);

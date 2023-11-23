@@ -9,9 +9,6 @@ import {CustomPortalService} from './custom-portal.service';
     templateUrl: './custom-host.template.html',
     styleUrls: ['./custom-host.style.less'],
     changeDetection,
-    providers: [
-        {provide: AbstractTuiPortalService, useExisting: CustomPortalService},
-        {provide: AbstractTuiPortalHostComponent, useExisting: CustomHostComponent},
-    ],
+    providers: [{provide: AbstractTuiPortalService, useExisting: CustomPortalService}],
 })
 export class CustomHostComponent extends AbstractTuiPortalHostComponent {}

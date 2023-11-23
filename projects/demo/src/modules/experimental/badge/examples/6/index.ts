@@ -6,8 +6,8 @@ import {tuiBadgeOptionsProvider} from '@taiga-ui/experimental';
 @Component({
     selector: 'tui-badge-example-6',
     templateUrl: './index.html',
-    providers: [tuiBadgeOptionsProvider({appearance: 'primary'})],
-    changeDetection,
     encapsulation,
+    changeDetection,
+    providers: [tuiBadgeOptionsProvider({appearance: 'primary'})],
 })
 export class TuiBadgeExample6 {}

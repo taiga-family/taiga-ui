@@ -7,8 +7,8 @@ import {startWith} from 'rxjs/operators';
 @Component({
     selector: 'tui-let-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiLetExample1 {
     timer$ = interval(1000).pipe(startWith(0));

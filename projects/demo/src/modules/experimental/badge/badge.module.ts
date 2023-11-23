@@ -2,15 +2,14 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
-import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {TuiPlatformModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
     TuiLabelModule,
     TuiModeModule,
     TuiNotificationModule,
-    TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiBadgeModule, TuiFadeModule} from '@taiga-ui/experimental';
+import {TuiBadgeModule, TuiFadeModule, TuiIconModule} from '@taiga-ui/experimental';
 import {TuiRadioListModule} from '@taiga-ui/kit';
 
 import {ExampleTuiBadgeComponent} from './badge.component';
@@ -26,7 +25,7 @@ import {TuiBadgeExample6} from './examples/6';
         TuiBadgeModule,
         TuiModeModule,
         TuiRepeatTimesModule,
-        TuiSvgModule,
+        TuiIconModule,
         TuiRadioListModule,
         FormsModule,
         CommonModule,
@@ -36,6 +35,7 @@ import {TuiBadgeExample6} from './examples/6';
         TuiTextfieldControllerModule,
         TuiLabelModule,
         tuiGetDocModules(ExampleTuiBadgeComponent),
+        TuiPlatformModule,
     ],
     declarations: [
         ExampleTuiBadgeComponent,

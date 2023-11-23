@@ -7,8 +7,8 @@ import {tuiCreateTimePeriods} from '@taiga-ui/kit';
 @Component({
     selector: 'tui-input-time-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputTimeExample2 {
     readonly testForm = new FormGroup({

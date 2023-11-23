@@ -15,7 +15,10 @@ import {replaceText} from '../utils/replace-text';
 import {ICONS_TS} from './constants/constants';
 import {ICONS} from './constants/icons';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
+function hasProprietaryIcons(tree: Tree): boolean {
+    return !!getPackageJsonDependency(tree, `@taiga-ui/proprietary-icons`);
+}
+
 export function updateToV3_35(options: TuiSchema): Rule {
     return (tree: Tree, _: SchematicContext) => {
         if (!hasProprietaryIcons(tree)) {
@@ -41,8 +44,4 @@ export function updateToV3_35(options: TuiSchema): Rule {
         !options[`skip-logs`] &&
             titleLog(`${FINISH_SYMBOL} Icons successfully migrated \n`);
     };
-}
-
-function hasProprietaryIcons(tree: Tree): boolean {
-    return !!getPackageJsonDependency(tree, `@taiga-ui/proprietary-icons`);
 }

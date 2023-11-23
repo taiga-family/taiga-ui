@@ -42,13 +42,13 @@ describe(`PreviewPagination`, () => {
             testComponent.component.onArrowClick(1);
             fixture.detectChanges();
 
-            expect(testComponent.index).toEqual(1);
+            expect(testComponent.index).toBe(1);
         });
 
         it(`left arrow disabled`, () => {
             const arrowLeft = getLeftArrow();
 
-            expect(arrowLeft.hasAttribute(`disabled`)).toEqual(true);
+            expect(arrowLeft.hasAttribute(`disabled`)).toBe(true);
         });
 
         it(`left arrow enabled`, () => {
@@ -57,7 +57,7 @@ describe(`PreviewPagination`, () => {
 
             const arrowLeft = getLeftArrow();
 
-            expect(arrowLeft.hasAttribute(`disabled`)).toEqual(false);
+            expect(arrowLeft.hasAttribute(`disabled`)).toBe(false);
         });
 
         it(`right arrow disabled`, () => {
@@ -66,13 +66,13 @@ describe(`PreviewPagination`, () => {
 
             const arrowRight = getRightArrow();
 
-            expect(arrowRight.hasAttribute(`disabled`)).toEqual(true);
+            expect(arrowRight.hasAttribute(`disabled`)).toBe(true);
         });
 
         it(`right arrow enabled`, () => {
             const arrowRight = getRightArrow();
 
-            expect(arrowRight.hasAttribute(`disabled`)).toEqual(false);
+            expect(arrowRight.hasAttribute(`disabled`)).toBe(false);
         });
     });
 

@@ -3,9 +3,9 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-island, a[tuiIsland]',
-    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './island.template.html',
     styleUrls: ['./island.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         class: 'tui-island',
     },

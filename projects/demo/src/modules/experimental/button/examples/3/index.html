@@ -5,7 +5,6 @@
     <tui-avatar
         size="xxs"
         src="https://avatars.githubusercontent.com/u/11832552"
-        [round]="true"
     ></tui-avatar>
     Alex Inkin
 </button>
@@ -15,7 +14,10 @@
     size="m"
     tuiButton
 >
-    <tui-svg src="tuiIconUsers"></tui-svg>
+    <tui-icon
+        icon="tuiIconUsers"
+        [style.height.rem]="1"
+    ></tui-icon>
     Users
 </button>
 
@@ -30,10 +32,10 @@
 
 <button
     appearance="destructive"
+    iconLeft="tuiIconHeart"
     size="xs"
     tuiIconButton
     [style.border-radius.%]="100"
 >
-    <tui-svg src="tuiIconHeart"></tui-svg>
     Favorite
 </button>

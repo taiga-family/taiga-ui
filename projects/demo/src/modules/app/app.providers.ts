@@ -23,6 +23,7 @@ import {
     TUI_DOC_URL_STATE_HANDLER,
     tuiDocExampleOptionsProvider,
     TuiDocSourceCodePathOptions,
+    tuiSortPages,
 } from '@taiga-ui/addon-doc';
 import {
     TUI_BASE_HREF,
@@ -124,7 +125,7 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_DOC_PAGES,
-        useValue: pages,
+        useValue: tuiSortPages(pages, new Set([`Documentation`, `Foundations`, `Icons`])),
     },
     {
         provide: TUI_DOC_SEE_ALSO,

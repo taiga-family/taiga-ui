@@ -1,4 +1,4 @@
-@import 'taiga-ui-local';
+@import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
     display: flex;
@@ -12,13 +12,14 @@
 }
 
 .t-grid {
-    .createStackingContext();
+    position: relative;
     display: flex;
     flex: 1;
     justify-content: space-around;
     align-items: flex-end;
     border-width: 1px;
     border-color: var(--tui-base-03);
+    isolation: isolate;
 
     :host[data-mode='onDark'] & {
         border-color: rgba(255, 255, 255, 0.48);
@@ -168,6 +169,18 @@
         text-align: center;
         border: none;
         margin: 0;
+    }
+
+    :host[new]:not(._centered) & {
+        &:last-child:not(:first-child) {
+            flex: 0.5;
+            text-align: right;
+            border-left: none;
+        }
+
+        &:nth-last-child(2) {
+            flex: 0.5;
+        }
     }
 }
 

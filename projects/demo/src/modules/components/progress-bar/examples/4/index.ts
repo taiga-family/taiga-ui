@@ -9,8 +9,8 @@ import {map, startWith, takeWhile} from 'rxjs/operators';
     selector: 'tui-progress-bar-example-4',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiProgressBarExample4 {
     readonly max = 100;

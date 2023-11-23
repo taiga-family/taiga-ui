@@ -36,7 +36,9 @@ import {TuiFadeComponent} from './fade.component';
     ],
 })
 export class TuiFadeDirective {
+    // TODO: Remove when lh CSS units are supported: https://caniuse.com/mdn-css_types_length_lh
     @Input('tuiFadeHeight')
+    @HostBinding('style.line-height')
     @HostBinding('style.--line-height')
     lineHeight: string | null = null;
 
@@ -73,8 +75,8 @@ export class TuiFadeDirective {
 
     private isEnd(el: HTMLElement): boolean {
         return (
-            el.scrollLeft < el.scrollWidth - el.clientWidth ||
-            el.scrollTop < el.scrollHeight - el.clientHeight ||
+            Math.round(el.scrollLeft) < el.scrollWidth - el.clientWidth ||
+            Math.round(el.scrollTop) < el.scrollHeight - el.clientHeight ||
             (this.orientation === 'horizontal' && el.scrollHeight > el.clientHeight)
         );
     }

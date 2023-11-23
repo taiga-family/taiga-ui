@@ -5,11 +5,11 @@ import {Observable} from 'rxjs';
 
 @Directive({
     selector: '[tuiHighlight]',
+    providers: [TuiDestroyService, TuiResizeService],
     host: {
         '[style.position]': '"relative"',
         '[style.zIndex]': '0',
     },
-    providers: [TuiDestroyService, TuiResizeService],
 })
 export class TuiHighlightDirective implements OnChanges {
     private readonly highlight: HTMLElement = this.setUpHighlight();

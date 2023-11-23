@@ -18,8 +18,8 @@ import {
 @Component({
     selector: 'tui-primitive-textfield-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         tuiTextfieldOptionsProvider({iconCleaner: 'tuiIconEdit2', hintOnDisabled: true}),
     ],
@@ -45,7 +45,7 @@ export class TuiPrimitiveTextfieldExample2 extends AbstractTuiControl<string> {
     }
 
     get focused(): boolean {
-        return !!this.textfield && this.textfield.focused;
+        return !!this.textfield?.focused;
     }
 
     onFocused(focused: boolean): void {

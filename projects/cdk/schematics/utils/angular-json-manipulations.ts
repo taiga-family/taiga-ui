@@ -11,6 +11,14 @@ import {Asset} from '../ng-update/interfaces/asset';
 import {getProjectTargetOptions} from './get-project-target-options';
 import {getProjects} from './get-projects';
 
+function hasTaigaIcons(assets: Asset[]): boolean {
+    return !!assets?.find(asset =>
+        tuiIsString(asset)
+            ? asset.includes(`taiga-ui`)
+            : asset?.input?.includes(`taiga-ui`),
+    );
+}
+
 export async function isInvalidAngularJson(tree: Tree): Promise<boolean> {
     return (
         getWorkspace(tree)
@@ -25,14 +33,6 @@ export async function isInvalidAngularJson(tree: Tree): Promise<boolean> {
     );
 }
 
-function hasTaigaIcons(assets: Asset[]): boolean {
-    return !!assets?.find(asset =>
-        tuiIsString(asset)
-            ? asset.includes(`taiga-ui`)
-            : asset?.input?.includes(`taiga-ui`),
-    );
-}
-
 export function addStylesToAngularJson(
     options: TuiSchema,
     context: SchematicContext,
@@ -41,7 +41,6 @@ export function addStylesToAngularJson(
     stylesToReplace?: {from: string; to: string[]},
     tree?: Tree,
 ): Rule {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     const MANUAL_MIGRATION_TIPS = `Add styles ${taigaStyles.join(
         `,`,
     )} to angular.json manually.`;

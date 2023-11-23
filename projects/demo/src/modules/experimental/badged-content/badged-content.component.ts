@@ -7,7 +7,7 @@ import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
     templateUrl: './badged-content.template.html',
     changeDetection,
 })
-export class ExampleTuiBadgeAlertComponent {
+export class ExampleTuiBadgedContentComponent {
     readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );

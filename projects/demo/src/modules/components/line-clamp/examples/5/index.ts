@@ -13,8 +13,8 @@ interface User {
     selector: 'tui-line-clamp-example-5',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiLineClampExample5 {
     readonly user: User = {

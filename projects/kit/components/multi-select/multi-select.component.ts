@@ -264,7 +264,11 @@ export class TuiMultiSelectComponent<T>
     }
 
     onSearch(search: string | null): void {
-        this.hostedDropdown?.updateOpen(true);
+        // Clearing sets the empty value, the dropdown should not be opened on clear.
+        if (search !== '') {
+            this.hostedDropdown?.updateOpen(true);
+        }
+
         this.updateSearch(search);
     }
 

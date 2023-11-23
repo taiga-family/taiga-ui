@@ -48,10 +48,10 @@ describe(`LineClamp`, () => {
     });
 
     describe(`Single line (break-all) and multiple line (break-words)`, () => {
-        for (const {width, linesLimit} of [
+        [
             {width: 60, linesLimit: 1},
             {width: 60, linesLimit: 3},
-        ]) {
+        ].forEach(({width, linesLimit}) => {
             it(`linesLimit=${linesLimit}`, () => {
                 cy.tuiVisit(
                     `components/line-clamp/API?tuiMode=null&style.maxWidth.px=${width}&linesLimit=${linesLimit}`,
@@ -62,6 +62,21 @@ describe(`LineClamp`, () => {
                     .tuiWaitBeforeScreenshot()
                     .matchImageSnapshot(`05-[linesLimit=${linesLimit}]-[width=${width}]`);
             });
-        }
+        });
+    });
+
+    describe(`Hovered`, () => {
+        const basicText = `Lorem ipsum Gaudeamus igiturCarpe diem Veni, vidi, vici`;
+
+        it(`linesLimit=2 hovered`, () => {
+            cy.tuiVisit(`/components/line-clamp/API?content=${basicText}&linesLimit=2`);
+
+            cy.get(`#demo-content tui-line-clamp`).realHover();
+
+            cy.get(`tui-line-clamp-box`)
+                .should(`be.visible`)
+                .tuiWaitBeforeScreenshot()
+                .matchImageSnapshot(`02-[linesLimit=2]-basicText-hover`);
+        });
     });
 });

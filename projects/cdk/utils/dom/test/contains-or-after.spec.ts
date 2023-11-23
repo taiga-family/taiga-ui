@@ -7,7 +7,7 @@ describe(`tuiContainsOrAfter`, () => {
 
         parent.appendChild(child);
 
-        expect(tuiContainsOrAfter(parent, child)).toEqual(true);
+        expect(tuiContainsOrAfter(parent, child)).toBe(true);
     });
 
     it(`Child does not contain parent`, () => {
@@ -16,7 +16,7 @@ describe(`tuiContainsOrAfter`, () => {
 
         parent.appendChild(child);
 
-        expect(tuiContainsOrAfter(child, parent)).toEqual(false);
+        expect(tuiContainsOrAfter(child, parent)).toBe(false);
     });
 
     it(`catch error`, () => {
@@ -29,6 +29,6 @@ describe(`tuiContainsOrAfter`, () => {
                 } as unknown as Node,
                 document.createElement(`button`),
             ),
-        ).toEqual(false);
+        ).toBe(false);
     });
 });

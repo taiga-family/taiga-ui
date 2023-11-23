@@ -34,8 +34,8 @@ const DATA: readonly User[] = [
     selector: 'tui-input-phone-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputPhoneExample3 {
     private readonly search$ = new Subject<string>();

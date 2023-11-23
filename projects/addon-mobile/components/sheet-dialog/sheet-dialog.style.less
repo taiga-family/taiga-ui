@@ -1,4 +1,4 @@
-@import 'taiga-ui-local';
+@import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
     .fullsize(fixed, inset);
@@ -87,6 +87,21 @@
     &:last-child {
         margin-bottom: -0.75rem;
     }
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--tui-base-03);
+        opacity: 0;
+    }
+
+    :host._stuck &:after {
+        opacity: 1;
+    }
 }
 
 .t-close {
@@ -96,7 +111,8 @@
 }
 
 .t-content {
-    .createStackingContext();
+    position: relative;
+    isolation: isolate;
 
     &:nth-child(3) {
         margin-top: 1rem;

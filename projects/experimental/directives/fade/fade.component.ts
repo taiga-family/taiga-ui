@@ -3,7 +3,10 @@ import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/co
 @Component({
     template: '',
     styleUrls: ['./fade.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-fade-styles',
+    },
 })
 export class TuiFadeComponent {}

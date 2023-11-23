@@ -1,0 +1,23 @@
+.firefox-only(@ruleset) {
+    @supports (-moz-appearance: none) {
+        @ruleset();
+    }
+}
+
+.safari-only(@ruleset) {
+    @supports (-webkit-hyphens: none) {
+        @ruleset();
+    }
+}
+
+.ios-only(@ruleset) {
+    @supports (-webkit-touch-callout: none) {
+        @ruleset();
+    }
+}
+
+.chrome-only(@ruleset) {
+    @supports (not (-moz-appearance: none)) and (not (-webkit-hyphens: none)) {
+        @ruleset();
+    }
+}

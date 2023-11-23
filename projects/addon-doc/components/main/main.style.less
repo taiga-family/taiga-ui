@@ -1,4 +1,4 @@
-@import '../../../core/styles/taiga-ui-local';
+@import '@taiga-ui/core/styles/taiga-ui-local';
 
 @sticky-header-height: 4rem;
 
@@ -75,7 +75,7 @@ a:focus code {
 }
 
 .tui-doc-page {
-    .createStackingContext();
+    isolation: isolate;
     padding-top: 4rem;
 }
 

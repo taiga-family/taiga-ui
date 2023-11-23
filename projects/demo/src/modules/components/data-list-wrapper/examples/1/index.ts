@@ -7,8 +7,8 @@ import {TuiBooleanHandler} from '@taiga-ui/cdk';
 @Component({
     selector: 'tui-data-list-wrapper-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiDataListWrapperExample1 {
     readonly control = new FormControl();

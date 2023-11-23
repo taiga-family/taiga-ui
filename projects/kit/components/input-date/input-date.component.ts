@@ -150,11 +150,11 @@ export class TuiInputDateComponent
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
-        return this.textfield ? this.textfield.nativeFocusableElement : null;
+        return this.textfield?.nativeFocusableElement ?? null;
     }
 
     get focused(): boolean {
-        return !!this.textfield && this.textfield.focused;
+        return !!this.textfield?.focused;
     }
 
     get computedMobile(): boolean {
@@ -192,7 +192,7 @@ export class TuiInputDateComponent
     }
 
     get nativeValue(): string {
-        return this.nativeFocusableElement ? this.nativeFocusableElement.value : '';
+        return this.nativeFocusableElement?.value || '';
     }
 
     set nativeValue(value: string) {

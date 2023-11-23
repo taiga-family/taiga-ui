@@ -6,8 +6,8 @@ import {TuiStepState} from '@taiga-ui/kit';
 
 @Component({
     selector: 'example-tui-stepper',
-    changeDetection,
     templateUrl: './stepper.template.html',
+    changeDetection,
 })
 export class ExampleTuiStepperComponent {
     readonly exampleModule = import('./examples/import/import-module.md?raw');

@@ -4,7 +4,6 @@ import {
     ContentChild,
     ElementRef,
     EventEmitter,
-    HostBinding,
     HostListener,
     Inject,
     Input,
@@ -18,6 +17,7 @@ import {
     tuiAsFocusableItemAccessor,
     TuiContextWithImplicit,
     TuiFocusableElementAccessor,
+    tuiGetActualTarget,
     tuiGetClosestFocusable,
     tuiIsElement,
     tuiIsElementEditable,
@@ -25,6 +25,7 @@ import {
     tuiIsNativeFocusedIn,
     tuiIsNativeKeyboardFocusable,
     TuiNativeFocusableElement,
+    tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiPositionAccessor} from '@taiga-ui/core/abstract';
 import {
@@ -34,17 +35,12 @@ import {
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject, EMPTY, merge} from 'rxjs';
-import {distinctUntilChanged, skip} from 'rxjs/operators';
+import {BehaviorSubject, combineLatest, EMPTY, merge, of} from 'rxjs';
+import {delay, distinctUntilChanged, map, share, skip, switchMap} from 'rxjs/operators';
 
 import {TuiAccessorProxyDirective} from './accessor-proxy.directive';
 import {TUI_HOSTED_DROPDOWN_COMPONENT} from './hosted-dropdown.token';
 import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.directive';
-
-export interface TuiHostedDropdownContext
-    extends TuiContextWithImplicit<TuiActiveZoneDirective> {
-    close(): void;
-}
 
 function shouldClose(
     this: TuiHostedDropdownComponent,
@@ -57,6 +53,11 @@ function shouldClose(
         this.open &&
         !this.dropdown?.nextElementSibling
     );
+}
+
+export interface TuiHostedDropdownContext
+    extends TuiContextWithImplicit<TuiActiveZoneDirective> {
+    close(): void;
 }
 
 /* eslint-disable @typescript-eslint/member-ordering */
@@ -77,8 +78,14 @@ function shouldClose(
             useExisting: TuiHostedDropdownComponent,
         },
     ],
+    host: {
+        '[$.class._hosted_dropdown_focused]': 'focus$',
+        '($.class._hosted_dropdown_focused)': 'focus$',
+    },
 })
 export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
+    readonly focus$ = new BehaviorSubject(false);
+
     @ContentChild(TuiHostedDropdownConnectorDirective, {read: ElementRef})
     private readonly dropdownHost?: ElementRef<HTMLElement>;
 
@@ -103,10 +110,25 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @Input()
     canOpen = true;
 
+    private readonly hostHover$ = combineLatest([
+        tuiTypedFromEvent(this.el.nativeElement, 'mouseover').pipe(
+            map(e => this.computedHost.contains(tuiGetActualTarget(e))),
+            switchMap(visible =>
+                of(visible).pipe(
+                    delay(
+                        (visible ? this.hover$?.showDelay : this.hover$?.hideDelay) || 0,
+                    ),
+                ),
+            ),
+        ),
+        this.hover$ || EMPTY,
+    ]).pipe(map(([visible, hovered]) => visible && hovered));
+
     @Output('openChange')
-    readonly open$ = merge(this.openChange, this.hover$ || EMPTY).pipe(
+    readonly open$ = merge(this.openChange, this.hostHover$).pipe(
         skip(1),
         distinctUntilChanged(),
+        share(),
     );
 
     @Output()
@@ -156,7 +178,6 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
               });
     }
 
-    @HostBinding('class._hosted_dropdown_focused')
     get focused(): boolean {
         return (
             tuiIsNativeFocusedIn(this.host) ||
@@ -164,6 +185,12 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
                 !!this.wrapper &&
                 tuiIsNativeFocusedIn(this.wrapper.nativeElement))
         );
+    }
+
+    @HostListener('focusin.capture.silent')
+    @HostListener('focusout.capture.silent')
+    onFocusInOut(): void {
+        this.focus$.next(this.focused);
     }
 
     @HostListener('focusin', ['$event.target'])

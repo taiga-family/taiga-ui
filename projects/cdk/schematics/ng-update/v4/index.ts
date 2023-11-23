@@ -1,12 +1,34 @@
-// eslint-disable-next-line @typescript-eslint/naming-convention
-import {chain, Rule} from '@angular-devkit/schematics';
+import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {createProject, saveActiveProject} from 'ng-morph';
 import {performance} from 'perf_hooks';
 
+import {ALL_FILES} from '../../constants';
 import {TAIGA_VERSION} from '../../ng-add/constants/versions';
 import {TuiSchema} from '../../ng-add/schema';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../../utils/colored-log';
 import {getExecutionTime} from '../../utils/get-execution-time';
-import {replaceThumbnailCard} from './steps/replace-thumbnail-card';
+import {projectRoot} from '../../utils/project-root';
+import {replaceIdentifiers} from '../steps/replace-identifier';
+import {migrateTemplates, restoreTuiMapper, restoreTuiMatcher} from './steps';
+import {IDENTIFIERS_TO_REPLACE} from './steps/constants/identifiers-to-replace';
+
+function main(options: TuiSchema): Rule {
+    return (tree: Tree, _context: SchematicContext) => {
+        const project = createProject(tree, projectRoot(), ALL_FILES);
+
+        const fileSystem = project.getFileSystem().fs;
+
+        replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE);
+
+        restoreTuiMapper(options);
+        restoreTuiMatcher(options);
+
+        migrateTemplates(fileSystem, options);
+
+        fileSystem.commitEdits();
+        saveActiveProject();
+    };
+}
 
 export function updateToV4(options: TuiSchema): Rule {
     const t0 = performance.now();
@@ -17,7 +39,7 @@ export function updateToV4(options: TuiSchema): Rule {
         );
 
     return chain([
-        replaceThumbnailCard(options),
+        main(options),
         () => {
             const executionTime = getExecutionTime(t0, performance.now());
 

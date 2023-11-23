@@ -42,7 +42,7 @@ import {tuiSvgOptionsProvider, tuiSvgSrcInterceptors} from '@taiga-ui/core';
      */
     tuiSvgSrcInterceptors(src => src.replace(/#.*$/, '')),
     tuiSvgSrcInterceptors(src =>
-      String(src).startsWith('icons8::') ? `assets/icons8/${String(src).replace('icons8::', '')}.svg` : src,
+      String(src).startsWith('icons8::') ? `assets/icons/${String(src).replace('icons8::', '')}.svg` : src,
     ),
   ],
 })

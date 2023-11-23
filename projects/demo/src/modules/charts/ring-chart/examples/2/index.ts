@@ -7,8 +7,8 @@ import {tuiSum} from '@taiga-ui/cdk';
     selector: 'tui-ring-chart-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiRingChartExample2 {
     private readonly labels = ['Food', 'Cafe', 'Open Source', 'Taxi', 'other'];

@@ -8,9 +8,9 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 @Component({
     selector: 'tui-dialog-example-8',
     templateUrl: './index.html',
-    providers: [TuiDialogFormService],
-    changeDetection,
     encapsulation,
+    changeDetection,
+    providers: [TuiDialogFormService],
 })
 export class TuiDialogExampleComponent8 {
     value = '';

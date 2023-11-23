@@ -6,8 +6,8 @@ import {TuiButtonComponent} from '@taiga-ui/core';
 @Component({
     selector: 'tui-element-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiElementExample1 {
     isButton(component: unknown): boolean {

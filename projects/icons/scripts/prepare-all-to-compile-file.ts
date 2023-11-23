@@ -11,13 +11,13 @@ export function tuiPrepareAllToCompileFile(iconsSrc: string, entryPointTs: strin
     let importDeclarations = ``;
     let exportDeclarations = ``;
 
-    for (const iconPath of icons) {
+    icons.forEach(iconPath => {
         const fileName = iconPath.split(`.`).shift();
         const filePath = `./src/${fileName}.svg`;
 
         importDeclarations += `import ${fileName} from '${filePath}';\n`;
         exportDeclarations += `${fileName}, `;
-    }
+    });
 
     writeFileSync(
         entryPointTs,

@@ -3,6 +3,222 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.55.0](https://github.com/taiga-family/taiga-ui/compare/v3.54.0...v3.55.0) (2023-11-20)
+
+### Features
+
+- **addon-charts:** `Axes` allows to add label for the end of axisX
+  ([#6016](https://github.com/taiga-family/taiga-ui/issues/6016))
+  ([3a2e611](https://github.com/taiga-family/taiga-ui/commit/3a2e6118c51d97b2dd14ace31916d4f5051bcdc4))
+- **addon-doc:** improve code block ([#5970](https://github.com/taiga-family/taiga-ui/issues/5970))
+  ([179178d](https://github.com/taiga-family/taiga-ui/commit/179178d05b312bc4a01c583ae9f5a1d6de818931))
+- **addon-doc:** improve UX for copy code ([#5918](https://github.com/taiga-family/taiga-ui/issues/5918))
+  ([23e7c65](https://github.com/taiga-family/taiga-ui/commit/23e7c653f3236ae3d334e779c79228015b06a7d5))
+- **addon-mobile:** initial mobile theme ([#5988](https://github.com/taiga-family/taiga-ui/issues/5988))
+  ([679290a](https://github.com/taiga-family/taiga-ui/commit/679290aee119225702b32c693d4e4b6d79e2ed80))
+- **experimental:** `Appearance` add new directive ([#5913](https://github.com/taiga-family/taiga-ui/issues/5913))
+  ([d573ad6](https://github.com/taiga-family/taiga-ui/commit/d573ad6add6463af01b112d27834af4b0c4f1d9a))
+- **experimental:** `Button` add `icon` input for new icons approach
+  ([6b79aeb](https://github.com/taiga-family/taiga-ui/commit/6b79aebf02e4f37f0df3f52c3f491b830270961b))
+- **experimental:** `ButtonVertical` add new directive ([#5949](https://github.com/taiga-family/taiga-ui/issues/5949))
+  ([b19b33f](https://github.com/taiga-family/taiga-ui/commit/b19b33f302195713355baaac342725468a6631bb))
+- **experimental:** `ProgressSegmented` can be customized to have no round corners
+  ([#5933](https://github.com/taiga-family/taiga-ui/issues/5933))
+  ([79fb39d](https://github.com/taiga-family/taiga-ui/commit/79fb39d73a741777fda47049f86421d26ff9db94))
+- **kit:** `File` change `showDelete` type to `boolean | 'always'`
+  ([#5968](https://github.com/taiga-family/taiga-ui/issues/5968))
+  ([d468aa4](https://github.com/taiga-family/taiga-ui/commit/d468aa4ef8b9531d84dca8ccb7eb7d1d7b8253e7))
+- **kit:** `ProgressCircle` has new sizes (add `new` attribute to enable them)
+  ([#5950](https://github.com/taiga-family/taiga-ui/issues/5950))
+  ([d36cc10](https://github.com/taiga-family/taiga-ui/commit/d36cc107ccdfa134f6c1d8b601f71f5f8b96a600))
+- **kit:** prevent combobox dropdown opening on value reset
+  ([#5641](https://github.com/taiga-family/taiga-ui/issues/5641))
+  ([1664665](https://github.com/taiga-family/taiga-ui/commit/1664665b632f83128af373c548cc0fff96c699be))
+
+### Bug Fixes
+
+- **addon-table:** `Table` disappearing borders ([#5999](https://github.com/taiga-family/taiga-ui/issues/5999))
+  ([6dcdb66](https://github.com/taiga-family/taiga-ui/commit/6dcdb666a0d692f7d85ae5176ee4d2c15eda3ae6))
+- **core:** use overflow wrap for notification content ([#5944](https://github.com/taiga-family/taiga-ui/issues/5944))
+  ([cd3920c](https://github.com/taiga-family/taiga-ui/commit/cd3920c0225c8eca0124cbc500983fb29da49632))
+- **kit:** `InputDateRange` can have empty control value after selecting something from `[items]`
+  ([#6006](https://github.com/taiga-family/taiga-ui/issues/6006))
+  ([d0711da](https://github.com/taiga-family/taiga-ui/commit/d0711da595516b1636fe24e4108817d7a00d3d7d))
+- **kit:** don't allow disabled options to be selected ([#5985](https://github.com/taiga-family/taiga-ui/issues/5985))
+  ([948be22](https://github.com/taiga-family/taiga-ui/commit/948be225e0ad8559696779830335ecd761c8ce52))
+- **kit:** preventing hover from being transmitted to nested accordion item
+  ([#6028](https://github.com/taiga-family/taiga-ui/issues/6028))
+  ([ac18f0f](https://github.com/taiga-family/taiga-ui/commit/ac18f0f7b948377741807070c8699c47cbbcf64f))
+- **schematics:** typo in provideAnimations for animations
+  ([#5975](https://github.com/taiga-family/taiga-ui/issues/5975))
+  ([6be1190](https://github.com/taiga-family/taiga-ui/commit/6be1190d9f8d2a2bd9813efacf70da9530d73a21))
+
+## [3.54.0](https://github.com/taiga-family/taiga-ui/compare/v3.53.0...v3.54.0) (2023-11-13)
+
+### Features
+
+- **cdk:** check document has focus after leave iframe ([#5883](https://github.com/taiga-family/taiga-ui/issues/5883))
+  ([31a9483](https://github.com/taiga-family/taiga-ui/commit/31a948382cbdd5ae2e11f22cd44697c49edb4304))
+- **experimental:** `Icon` add new component ([#5872](https://github.com/taiga-family/taiga-ui/issues/5872))
+  ([6b278eb](https://github.com/taiga-family/taiga-ui/commit/6b278eb64840906d4c1fcc409d3cfaff3541a60c))
+- **experimental:** add `TuiCard` ([#5777](https://github.com/taiga-family/taiga-ui/issues/5777))
+  ([d2c5e86](https://github.com/taiga-family/taiga-ui/commit/d2c5e86ed883b847293b3a961d87c81498aa091d))
+- **experimental:** new version of `ProgressSegmented` ([#5892](https://github.com/taiga-family/taiga-ui/issues/5892))
+  ([a643191](https://github.com/taiga-family/taiga-ui/commit/a6431914e5c662f121bff7f719870a5c17eae24f))
+- **kit:** round corners of progress can be toggled off in new version of `ProgressBar`
+  ([#5912](https://github.com/taiga-family/taiga-ui/issues/5912))
+  ([244f368](https://github.com/taiga-family/taiga-ui/commit/244f3687e1f0b70dd8de077d29a01b8a87449bc8))
+
+### Bug Fixes
+
+- **addon-mobile:** `SheetDialog` add missing label divider
+  ([#5905](https://github.com/taiga-family/taiga-ui/issues/5905))
+  ([5c08ef3](https://github.com/taiga-family/taiga-ui/commit/5c08ef38592a9c87cfa66cbf3d10af109bf34a2c))
+- **addon-table:** `Table` disappearing borders ([#5914](https://github.com/taiga-family/taiga-ui/issues/5914))
+  ([8b16199](https://github.com/taiga-family/taiga-ui/commit/8b16199a407f360447877989264d7cb876de40e5))
+- **cdk:** add Angular 17 support for schematic `ng add taiga-ui`
+  ([#5899](https://github.com/taiga-family/taiga-ui/issues/5899))
+  ([aa776ec](https://github.com/taiga-family/taiga-ui/commit/aa776ec3fc30fbe4990ece121d159012555d1560))
+- **experimental:** `Badge` remove hover state ([#5893](https://github.com/taiga-family/taiga-ui/issues/5893))
+  ([085538c](https://github.com/taiga-family/taiga-ui/commit/085538cf4a656f612a272ef1b1a8dd9f485cd303))
+- **kit:** `tuiProgressColorSegments` should support runtime changes of input property
+  ([#5891](https://github.com/taiga-family/taiga-ui/issues/5891))
+  ([16475cc](https://github.com/taiga-family/taiga-ui/commit/16475ccf7b7bcf59288bae76b63368af565890b8))
+- **kit:** expression has changed in inputTag ([#5867](https://github.com/taiga-family/taiga-ui/issues/5867))
+  ([615e829](https://github.com/taiga-family/taiga-ui/commit/615e82958e13a299f4a225790de95afd38b0a7aa))
+
+## [3.53.0](https://github.com/taiga-family/taiga-ui/compare/v3.52.0...v3.53.0) (2023-11-07)
+
+### Features
+
+- **addon-doc:** add `tuiSortPages` ([#5817](https://github.com/taiga-family/taiga-ui/issues/5817))
+  ([00f10e8](https://github.com/taiga-family/taiga-ui/commit/00f10e8d2092bbf94fcb1aea3ea2bd6c33aec42d))
+
+### Bug Fixes
+
+- **cdk:** remove redundant dependencies ([#5864](https://github.com/taiga-family/taiga-ui/issues/5864))
+  ([50d0dbe](https://github.com/taiga-family/taiga-ui/commit/50d0dbe3cce3c3b01b26b1965ac68f8f49db2574))
+- **core:** expression has changed after it was checked ([#5827](https://github.com/taiga-family/taiga-ui/issues/5827))
+  ([f0408ed](https://github.com/taiga-family/taiga-ui/commit/f0408ed056f653c6f1ef2dbb94bbffe133ae5223))
+- **kit:** `Toggle` fix loader position ([#5832](https://github.com/taiga-family/taiga-ui/issues/5832))
+  ([b894fe7](https://github.com/taiga-family/taiga-ui/commit/b894fe766577430a326008c5ab4be673e7117a47))
+
+## [3.52.0](https://github.com/taiga-family/taiga-ui/compare/v3.51.0...v3.52.0) (2023-10-31)
+
+### Features
+
+- **experimental:** `TuiAmount` add new pipe ([#5735](https://github.com/taiga-family/taiga-ui/issues/5735))
+  ([33588c3](https://github.com/taiga-family/taiga-ui/commit/33588c38c0bf9a424de3f887a55c64c0ad96c49b))
+- **experimental:** new component `Cell` ([#5460](https://github.com/taiga-family/taiga-ui/issues/5460))
+  ([343f2e8](https://github.com/taiga-family/taiga-ui/commit/343f2e8b0b59dbb265509a45b1f249639b56b498))
+- **kit:** add `InputMultiDate` ([#5620](https://github.com/taiga-family/taiga-ui/issues/5620))
+  ([180930e](https://github.com/taiga-family/taiga-ui/commit/180930e44561f27ef551bdab5cd8fa2b1a3e66df))
+- **layout:** `Title` add new component ([#5743](https://github.com/taiga-family/taiga-ui/issues/5743))
+  ([93b51ff](https://github.com/taiga-family/taiga-ui/commit/93b51ff5fa394f1a7dcc7873fcf8bb26978248e1))
+- **testing:** adds harness for dialog ([#5785](https://github.com/taiga-family/taiga-ui/issues/5785))
+  ([eed5765](https://github.com/taiga-family/taiga-ui/commit/eed5765c88d33deba596fa03bffcd850d4635281))
+
+### Bug Fixes
+
+- **cdk:** don't use `layerX` and `layerY` for detect retargated element
+  ([#5796](https://github.com/taiga-family/taiga-ui/issues/5796))
+  ([8873fad](https://github.com/taiga-family/taiga-ui/commit/8873fadbd5a94b838fdb397dfef20fafe4d8dce9))
+- **core:** don't remove any comments from bundled artifacts
+  ([#5795](https://github.com/taiga-family/taiga-ui/issues/5795))
+  ([2ff6569](https://github.com/taiga-family/taiga-ui/commit/2ff656960878be6b56bf52630479d6cf43ebf7bb))
+
+## [3.51.0](https://github.com/taiga-family/taiga-ui/compare/v3.50.0...v3.51.0) (2023-10-25)
+
+### Features
+
+- **core:** use `TuiBreakpointService` instead of `TUI_IS_MOBILE_RES`
+  ([#5736](https://github.com/taiga-family/taiga-ui/issues/5736))
+  ([bc57278](https://github.com/taiga-family/taiga-ui/commit/bc572784251d6407fa1f662dde9ab76a58af40d2))
+- **experimental:** `ThumbnailCard` add new component ([#5734](https://github.com/taiga-family/taiga-ui/issues/5734))
+  ([97606f7](https://github.com/taiga-family/taiga-ui/commit/97606f79ea159d446ae4cefb0a0543cbd0f1caec))
+
+### Bug Fixes
+
+- **cdk:** revert breaking changes with `TuiMapper` ([#5739](https://github.com/taiga-family/taiga-ui/issues/5739))
+  ([74d34c8](https://github.com/taiga-family/taiga-ui/commit/74d34c83e9382b787c38cff84df003f2d811e97f))
+
+## [3.50.0](https://github.com/taiga-family/taiga-ui/compare/v3.49.1...v3.50.0) (2023-10-23)
+
+### Features
+
+- **experimental:** `Toggle`, `Checkbox`, `Radio` add new components
+  ([#5319](https://github.com/taiga-family/taiga-ui/issues/5319))
+  ([f805ed5](https://github.com/taiga-family/taiga-ui/commit/f805ed5975d355b36a793bdd5e6d5c361c108599))
+- **i18n:** add `Kazakh` language ([#5678](https://github.com/taiga-family/taiga-ui/issues/5678))
+  ([72a0136](https://github.com/taiga-family/taiga-ui/commit/72a01369398224f60259b6860d2402a4e7422d93))
+- **kit:** `UnmaskHandler` add new directive ([#5687](https://github.com/taiga-family/taiga-ui/issues/5687))
+  ([defd0be](https://github.com/taiga-family/taiga-ui/commit/defd0be83042606e417c348bfec6b7ecb5e29845))
+- **schematics:** ng update for TuiMapper and TuiMatcher ([#5679](https://github.com/taiga-family/taiga-ui/issues/5679))
+  ([13e4627](https://github.com/taiga-family/taiga-ui/commit/13e4627eac7ab48b0004ca2b77e19ac5328a7435))
+
+### Bug Fixes
+
+- **core:** `Group` bump CSS specificity to fix new buttons
+  ([#5728](https://github.com/taiga-family/taiga-ui/issues/5728))
+  ([85708cc](https://github.com/taiga-family/taiga-ui/commit/85708cceb25c58120f6bc9f7dd434020dfbeba59))
+- **core:** auto break words in notification ([#5716](https://github.com/taiga-family/taiga-ui/issues/5716))
+  ([ace9c3c](https://github.com/taiga-family/taiga-ui/commit/ace9c3c71bbc2c31860c5bc882cddad97ec48fb9))
+- **core:** correct `TuiHostedDropdownComponent` with `tuiHostedDropdownHost`
+  ([#5669](https://github.com/taiga-family/taiga-ui/issues/5669))
+  ([c974b51](https://github.com/taiga-family/taiga-ui/commit/c974b51d3a86d54ecad54a8efb5996779a466d7c))
+- **core:** use correct host portal viewport for dropdown position
+  ([#5662](https://github.com/taiga-family/taiga-ui/issues/5662))
+  ([e90c4a4](https://github.com/taiga-family/taiga-ui/commit/e90c4a4af5a591487957692aff30b667d2a4024c))
+- **experimental:** rename `BadgeAlert` to `BadgeNotification`
+  ([#5652](https://github.com/taiga-family/taiga-ui/issues/5652))
+  ([d27927b](https://github.com/taiga-family/taiga-ui/commit/d27927bb8d65262af4e09e0769e1767ed8c39eb3))
+- **kit:** `Multiselect` fix line height in value content
+  ([#5686](https://github.com/taiga-family/taiga-ui/issues/5686))
+  ([c9fa227](https://github.com/taiga-family/taiga-ui/commit/c9fa227466e814d6b83ceea9b1a73e94bd238d7f))
+- **kit:** prevent memory leak ([#5663](https://github.com/taiga-family/taiga-ui/issues/5663))
+  ([f3c21c1](https://github.com/taiga-family/taiga-ui/commit/f3c21c1ab5f0189f7d2c405bd3bd1270eebee58e))
+
+### [3.49.1](https://github.com/taiga-family/taiga-ui/compare/v3.49.0...v3.49.1) (2023-10-17)
+
+### Bug Fixes
+
+- **kit:** `Multiselect` fix broken template in non-editable mode
+  ([#5659](https://github.com/taiga-family/taiga-ui/issues/5659))
+  ([315fda5](https://github.com/taiga-family/taiga-ui/commit/315fda578c8090c3f05afc0a558e1aa8bd85c020))
+
+## [3.49.0](https://github.com/taiga-family/taiga-ui/compare/v3.48.0...v3.49.0) (2023-10-16)
+
+### Features
+
+- **addon-table:** table column direction reset on third click
+  ([#5631](https://github.com/taiga-family/taiga-ui/issues/5631))
+  ([85cee09](https://github.com/taiga-family/taiga-ui/commit/85cee09045f76de5ac79e7fc710d7e66c19b68af))
+- **core:** add browser specific style mixins ([#5589](https://github.com/taiga-family/taiga-ui/issues/5589))
+  ([27623c3](https://github.com/taiga-family/taiga-ui/commit/27623c32b63d7584d3a53a4cd5000b653ea9aff1))
+- **core:** support `readonly TuiDay[]` in `calendar` ([#5574](https://github.com/taiga-family/taiga-ui/issues/5574))
+  ([f1cafa8](https://github.com/taiga-family/taiga-ui/commit/f1cafa8f95e7c0029995d077ceebd89ca66ed3e6))
+- **experimental:** `Rating` add new component ([#5633](https://github.com/taiga-family/taiga-ui/issues/5633))
+  ([254e68b](https://github.com/taiga-family/taiga-ui/commit/254e68b638c92db8ccfe0590960b943400427946))
+- **experimental:** `Surface` add new directive ([#5555](https://github.com/taiga-family/taiga-ui/issues/5555))
+  ([62ac52c](https://github.com/taiga-family/taiga-ui/commit/62ac52cf95c914380973237aa37675ec9714516f))
+
+### Bug Fixes
+
+- **addon-commerce:** change `Rbl` to `Br` for Belarus rubles
+  ([#5587](https://github.com/taiga-family/taiga-ui/issues/5587))
+  ([1d4c721](https://github.com/taiga-family/taiga-ui/commit/1d4c72111f5b9cfb8e8f249150db6f384abe8024))
+- **cdk:** `ValueChanges` add `distinctUntilChanged` ([#5586](https://github.com/taiga-family/taiga-ui/issues/5586))
+  ([d3e40ad](https://github.com/taiga-family/taiga-ui/commit/d3e40ad233fad1833e370c47492ff4d2b12d8919))
+- **cdk:** prevent page scrolling when a modal is open ([#5599](https://github.com/taiga-family/taiga-ui/issues/5599))
+  ([50e5320](https://github.com/taiga-family/taiga-ui/commit/50e5320a93ff9945e557d003a31bb67cd8452d3f))
+- **experimental:** `Fade` fix line height issue ([#5617](https://github.com/taiga-family/taiga-ui/issues/5617))
+  ([a85ee21](https://github.com/taiga-family/taiga-ui/commit/a85ee219eb7b1d758b02fb78a8b16474e8061d91))
+- **kit:** `LineClamp` fix unexpected closing ([#5630](https://github.com/taiga-family/taiga-ui/issues/5630))
+  ([d6751cd](https://github.com/taiga-family/taiga-ui/commit/d6751cdacf53262e8bdc32485dc61af21b333a32))
+- **kit:** `MultiSelect` fix incorrect height with multiline value content
+  ([#5618](https://github.com/taiga-family/taiga-ui/issues/5618))
+  ([5c41e09](https://github.com/taiga-family/taiga-ui/commit/5c41e0992ed1ae8c39b751d1434d77938ad753be))
+
 ## [3.48.0](https://github.com/taiga-family/taiga-ui/compare/v3.47.0...v3.48.0) (2023-10-09)
 
 ### Features

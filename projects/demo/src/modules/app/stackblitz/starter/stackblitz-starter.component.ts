@@ -8,8 +8,8 @@ import {appPrefix} from '../utils';
     selector: 'demo-stackblitz-starter',
     templateUrl: './stackblitz-starter.component.html',
     styleUrls: ['./stackblitz-starter.style.less'],
-    providers: [TuiStackblitzService],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [TuiStackblitzService],
 })
 export class StackblitzStarterComponent implements OnInit {
     constructor(

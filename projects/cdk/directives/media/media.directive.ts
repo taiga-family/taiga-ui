@@ -55,8 +55,7 @@ export class TuiMediaDirective {
         if (paused) {
             this.el.nativeElement.pause();
         } else {
-            // eslint-disable-next-line @typescript-eslint/no-floating-promises
-            this.el.nativeElement.play();
+            void this.el.nativeElement.play();
             this.updatePlaybackRate(this.playbackRate);
         }
     }

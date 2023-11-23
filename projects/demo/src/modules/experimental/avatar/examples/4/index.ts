@@ -6,8 +6,8 @@ import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 @Component({
     selector: 'tui-avatar-example-4',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiAvatarExample4 {
     readonly names = ['Jason Statham', 'Silvester Stallone', 'Jackie Chan'];

@@ -12,6 +12,7 @@
         tuiOption
         [disabled]="disabledItemHandler(item)"
         [value]="item"
+        (click)="itemClick.emit(item)"
     >
         <span class="t-content">
             <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">

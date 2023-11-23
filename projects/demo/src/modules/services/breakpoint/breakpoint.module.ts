@@ -4,7 +4,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 
 import {ExampleTuiBreakpointComponent} from './breakpoint.component';
-import {TuiBreakpointExample} from './examples/1/component';
+import {TuiBreakpointExample1} from './examples/1';
 
 @NgModule({
     imports: [
@@ -12,7 +12,7 @@ import {TuiBreakpointExample} from './examples/1/component';
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiBreakpointComponent)),
     ],
-    declarations: [ExampleTuiBreakpointComponent, TuiBreakpointExample],
+    declarations: [ExampleTuiBreakpointComponent, TuiBreakpointExample1],
     exports: [ExampleTuiBreakpointComponent],
 })
 export class ExampleTuiBreakpointModule {}

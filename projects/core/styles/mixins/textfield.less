@@ -169,6 +169,12 @@
 .textfield-placeholder() {
     .transition(~'transform, font-size, color, letter-spacing');
     .text-overflow();
+    .safari-only({
+        & {
+            will-change: unset;
+            transition-property: transform, color, letter-spacing;
+        }
+    });
     display: block;
     width: 100%;
     user-select: none;
@@ -233,13 +239,6 @@
     :host[data-size='m']._focused._label-outside [tuiWrapper][data-mode='onDark'] &,
     :host[data-size='l']._focused._label-outside [tuiWrapper][data-mode='onDark'] & {
         color: var(--tui-text-02-night);
-    }
-
-    @supports (-webkit-hyphens: none) {
-        & {
-            will-change: unset;
-            transition-property: transform, color, letter-spacing;
-        }
     }
 }
 

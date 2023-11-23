@@ -7,8 +7,8 @@ import {TUI_ARROW} from '@taiga-ui/kit';
     selector: 'tui-button-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiButtonExample3 {
     readonly arrow = TUI_ARROW;

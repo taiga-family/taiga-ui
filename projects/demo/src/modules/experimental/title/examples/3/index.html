@@ -1,0 +1,36 @@
+<h2 tuiTitle>
+    <b>I am a title</b>
+    <div
+        tuiSubtitle
+        [style.color]="'var(--tui-text-02)'"
+    >
+        I'm a subtitle
+    </div>
+</h2>
+
+<a
+    href="https://github.com/taiga-family/taiga-ui"
+    tuiLink
+    tuiTitle
+    [style.font-size.rem]="1"
+    [style.line-height.rem]="1.25"
+>
+    Taiga UI — GitHub
+    <div
+        tuiSubtitle
+        [style.font]="'var(--tui-font-text-s)'"
+    >
+        Drop us a star!
+    </div>
+</a>
+
+<label class="flex">
+    <tui-avatar
+        size="s"
+        src="/assets/images/avatar.jpg"
+    ></tui-avatar>
+    <div tuiTitle="s">
+        <strong>Alex Inkin</strong>
+        <div tuiSubtitle>Available</div>
+    </div>
+</label>

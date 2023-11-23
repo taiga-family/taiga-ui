@@ -6,8 +6,8 @@ import {tuiNumberFormatProvider} from '@taiga-ui/core';
 @Component({
     selector: 'tui-money-example-6',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [tuiNumberFormatProvider({rounding: 'round'})],
 })
 export class TuiMoneyExample6 {}

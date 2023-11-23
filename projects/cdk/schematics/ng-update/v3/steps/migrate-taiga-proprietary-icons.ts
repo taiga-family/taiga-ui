@@ -22,7 +22,7 @@ const MANUAL_MIGRATION_TIPS = `Add ${JSON.stringify(
 )} to angular.json manually`;
 
 export function migrateTaigaProprietaryIcons(options: TuiSchema): Rule {
-    return async (tree: Tree, context: SchematicContext) => {
+    return async (tree: Tree, context: SchematicContext): Promise<Rule | void> => {
         let proprietaryIcons: string | null = null;
 
         try {

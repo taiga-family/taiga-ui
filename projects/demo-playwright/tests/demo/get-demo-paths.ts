@@ -1,5 +1,15 @@
 import {TuiDocPage, TuiDocPages} from '@taiga-ui/addon-doc';
 
+function flatPages(pages: TuiDocPages): readonly TuiDocPage[] {
+    return pages.reduce(
+        (prev: readonly TuiDocPage[], next) => [
+            ...prev,
+            ...(`subPages` in next ? next.subPages : [next]),
+        ],
+        [],
+    );
+}
+
 export const EXCLUDED_SECTIONS = [`Documentation`, `Foundations`, `Tools`, `Testing`];
 export const EXCLUDED_ROUTES = [
     `/i18n`,
@@ -13,6 +23,7 @@ export const EXCLUDED_ROUTES = [
     `/components/sheet`, // just buttons
     `/components/sheet-dialog`, // just buttons
     `/components/error`,
+    `/icons/overview/Component`,
     `/icons/overview`,
     `/icons/mapping`,
     `/components/mobile-calendar`, // TODO: flaky test, need investigate
@@ -33,15 +44,5 @@ export function tuiGetDemoPathsForE2E(
                 )
                 .map(({route}) => route),
         ),
-    );
-}
-
-function flatPages(pages: TuiDocPages): readonly TuiDocPage[] {
-    return pages.reduce(
-        (prev: readonly TuiDocPage[], next) => [
-            ...prev,
-            ...(`subPages` in next ? next.subPages : [next]),
-        ],
-        [],
     );
 }

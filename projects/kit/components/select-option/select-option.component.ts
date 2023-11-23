@@ -69,10 +69,6 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
         return this.host.identityMatcher || TUI_DEFAULT_IDENTITY_MATCHER;
     }
 
-    ngDoCheck(): void {
-        this.changeDetection$.next();
-    }
-
     ngOnInit(): void {
         /**
          * This would cause changes inside already checked parent component (during the same change detection cycle),
@@ -80,12 +76,15 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
          * (for example, inside {@link https://github.com/angular/angular/blob/main/packages/forms/src/directives/ng_control_status.ts#L99 NgControlStatus}).
          * Microtask keeps it in the same frame but allows change detection to run.
          */
-        // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        Promise.resolve().then(() => {
-            if (tuiIsPresent(this.option.value) && this.host.checkOption) {
-                this.host.checkOption(this.option.value);
+        void Promise.resolve().then(() => {
+            if (tuiIsPresent(this.option.value) && !this.option.disabled) {
+                this.host.checkOption?.(this.option.value);
             }
         });
+    }
+
+    ngDoCheck(): void {
+        this.changeDetection$.next();
     }
 
     protected get value(): T | null {

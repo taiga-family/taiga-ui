@@ -4,14 +4,14 @@ import {tuiSizeBigger, TuiSizeL, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-const BADGE_SIZE: {[key: string]: TuiSizeL | TuiSizeXS} = {
+const BADGE_SIZE = {
     xs: 'xs',
     s: 's',
     m: 's',
     l: 'm',
     xl: 'm',
     xxl: 'l',
-};
+} as const;
 
 @Component({
     selector: 'tui-badged-content',

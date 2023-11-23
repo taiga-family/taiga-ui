@@ -9,9 +9,9 @@ import {switchMap, takeUntil} from 'rxjs/operators';
 @Component({
     selector: 'tui-sheet-example-1',
     templateUrl: './index.html',
-    providers: [TuiDestroyService],
-    changeDetection,
     encapsulation,
+    changeDetection,
+    providers: [TuiDestroyService],
 })
 export class TuiSheetExample1 {
     readonly stream$ = new Subject<void>();

@@ -1,12 +1,11 @@
-<!-- eslint-disable @html-eslint/no-inline-styles -->
 <ng-container *tuiLet="rotate$ | async as deg">
     <div
-        style="transform: rotate(-{{ deg }}deg)"
         class="t-bar"
+        [ngStyle]="{transform: 'rotate(-' + deg + 'deg)'}"
     ></div>
     <ng-content *ngIf="deg"></ng-content>
     <div
-        style="transform: rotate({{ deg }}deg)"
         class="t-bar"
+        [ngStyle]="{transform: 'rotate(' + deg + 'deg)'}"
     ></div>
 </ng-container>

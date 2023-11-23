@@ -138,8 +138,8 @@ export class TuiDay extends TuiMonth {
                     year: parseInt(date.slice(6, 10), 10),
                 };
 
-            default:
             case `DMY`:
+            default:
                 return {
                     day: parseInt(date.slice(0, 2), 10),
                     month: parseInt(date.slice(3, 5), 10) - 1,

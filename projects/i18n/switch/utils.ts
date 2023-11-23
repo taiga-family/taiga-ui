@@ -6,12 +6,9 @@ import type {
 import {from, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-export function tuiAsyncLoadLanguage(
-    language: TuiLanguageName | null,
-    loader: TuiLanguageLoader | null,
-    fallback: TuiLanguage,
-): Observable<TuiLanguage> {
-    return language && loader ? tuiLoadLanguage(language, loader) : of(fallback);
+// CommonJS `module.exports` is wrapped as `default` in ESModule.
+async function normalizeCommonJSImport<T>(importPromise: Promise<T>): Promise<T> {
+    return importPromise.then((m: any) => m.default || m);
 }
 
 export function tuiLoadLanguage(
@@ -23,7 +20,10 @@ export function tuiLoadLanguage(
     );
 }
 
-// CommonJS `module.exports` is wrapped as `default` in ESModule.
-async function normalizeCommonJSImport<T>(importPromise: Promise<T>): Promise<T> {
-    return importPromise.then((m: any) => m.default || m);
+export function tuiAsyncLoadLanguage(
+    language: TuiLanguageName | null,
+    loader: TuiLanguageLoader | null,
+    fallback: TuiLanguage,
+): Observable<TuiLanguage> {
+    return language && loader ? tuiLoadLanguage(language, loader) : of(fallback);
 }

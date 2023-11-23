@@ -64,7 +64,7 @@ describe(`TuiDropdownDirective`, () => {
     });
 
     it(`when tuiDropdownManual = false, dropdown is not shown`, () => {
-        expect(getDropdown()).toBe(null);
+        expect(getDropdown()).toBeNull();
     });
 
     it(`when tuiDropdownManual = true, dropdown is shown`, () => {

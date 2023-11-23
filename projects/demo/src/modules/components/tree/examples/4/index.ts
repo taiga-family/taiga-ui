@@ -11,8 +11,8 @@ interface TreeNode {
 @Component({
     selector: 'tui-tree-example-4',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiTreeExample4 {
     readonly data: TreeNode = {

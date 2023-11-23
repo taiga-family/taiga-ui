@@ -3,14 +3,14 @@ import {Component} from '@angular/core';
 import {TuiRootModule} from '@taiga-ui/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./my.component.scss', './my.component.less'],
   standalone: true,
+  selector: 'app-root',
   imports: [
     TuiRootModule,
     // ...
   ],
+  templateUrl: './app.component.html',
+  styleUrls: ['./my.component.scss', './my.component.less'],
 })
 export class AppComponent {}
 ```

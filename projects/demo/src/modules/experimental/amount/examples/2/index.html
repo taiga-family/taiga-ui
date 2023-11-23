@@ -1,0 +1,9 @@
+<div [tuiNumberFormat]="{rounding: 'round', thousandSeparator: ',', decimalSeparator: '.'}">
+    {{ -10000000.536 | tuiAmount: 'USD' : 'left' | async }}
+</div>
+
+<div>{{ 200.536 | tuiAmount: 'EUR' | async }}</div>
+
+<div [tuiNumberFormat]="{rounding: 'ceil', decimalLimit: 1}">
+    {{ 54000.643 | tuiAmount: 'USD' : 'left' | async }}
+</div>

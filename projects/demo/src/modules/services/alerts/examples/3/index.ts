@@ -12,8 +12,8 @@ import {AlertExampleComponent} from './alert-example/alert-example.component';
 @Component({
     selector: 'tui-alerts-example-3',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiAlertsExampleComponent3 {
     readonly notification: Observable<void>;

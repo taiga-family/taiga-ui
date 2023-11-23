@@ -8,14 +8,14 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
     selector: 'tui-mobile-calendar-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
+    encapsulation,
+    changeDetection,
     providers: [
         {
             provide: TUI_FIRST_DAY_OF_WEEK,
             useValue: TuiDayOfWeek.Sunday,
         },
     ],
-    changeDetection,
-    encapsulation,
 })
 export class TuiMobileCalendarExample3 {
     min = TuiDay.currentLocal();

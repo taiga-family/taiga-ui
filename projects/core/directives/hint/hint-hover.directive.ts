@@ -1,7 +1,8 @@
 /* eslint-disable rxjs/no-unsafe-takeuntil */
 import {Directive, ElementRef, Inject, Input} from '@angular/core';
-import {tuiGetElementObscures, TuiHoveredService} from '@taiga-ui/cdk';
+import {TuiHoveredService} from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
+import {tuiIsObscured} from '@taiga-ui/core/utils';
 import {merge, Observable, of, Subject} from 'rxjs';
 import {delay, filter, map, repeat, switchMap, takeUntil, tap} from 'rxjs/operators';
 
@@ -9,8 +10,8 @@ import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 
 @Directive({
     selector: '[tuiHint]:not(ng-container)',
-    exportAs: 'tuiHintHover',
     providers: [tuiAsDriver(TuiHintHoverDirective), TuiHoveredService],
+    exportAs: 'tuiHintHover',
 })
 export class TuiHintHoverDirective extends TuiDriver {
     private visible = false;
@@ -30,7 +31,7 @@ export class TuiHintHoverDirective extends TuiDriver {
         ),
     ).pipe(
         filter(() => this.enabled),
-        map(value => value && !tuiGetElementObscures(this.el.nativeElement)?.length),
+        map(value => value && !tuiIsObscured(this.el.nativeElement)),
         tap(visible => {
             this.visible = visible;
         }),

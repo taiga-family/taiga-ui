@@ -85,7 +85,7 @@ describe(`InputPhone`, () => {
             inputPO.focus();
             await fixture.whenStable();
             fixture.detectChanges();
-            expect(testComponent.control.value).toBe(null);
+            expect(testComponent.control.value).toBeNull();
         });
 
         it(`When focusing on an empty field in readOnly mode, the field is not set "+7 "`, async () => {

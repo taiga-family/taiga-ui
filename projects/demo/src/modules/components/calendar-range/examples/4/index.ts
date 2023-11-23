@@ -7,13 +7,13 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
 @Component({
     selector: 'tui-calendar-range-example-4',
     templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
     providers: [
         {
             provide: TUI_FIRST_DAY_OF_WEEK,
             useValue: TuiDayOfWeek.Sunday,
         },
     ],
-    changeDetection,
-    encapsulation,
 })
 export class TuiCalendarRangeExample4 {}

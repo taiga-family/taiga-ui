@@ -1,0 +1,43 @@
+import {UpdateRecorder} from '@angular-devkit/schematics';
+import {DevkitFileSystem} from 'ng-morph';
+
+import {findElementsByTagName} from '../../../utils/templates/elements';
+import {
+    getTemplateFromTemplateResource,
+    getTemplateOffset,
+} from '../../../utils/templates/template-resource';
+import {ReplacementTag} from '../../interfaces/replacement-tag';
+import {TemplateResource} from '../../interfaces/template-resource';
+import {replaceTag} from './replace-tag';
+
+export function replaceTags({
+    resource,
+    recorder,
+    fileSystem,
+    data,
+}: {
+    fileSystem: DevkitFileSystem;
+    recorder: UpdateRecorder;
+    data: readonly ReplacementTag[];
+    resource: TemplateResource;
+}): void {
+    const template = getTemplateFromTemplateResource(resource, fileSystem);
+    const templateOffset = getTemplateOffset(resource);
+
+    data.forEach(({from, to, addAttributes}) => {
+        const elements = findElementsByTagName(template, from);
+
+        elements.forEach(({sourceCodeLocation}) => {
+            if (sourceCodeLocation) {
+                replaceTag(
+                    recorder,
+                    sourceCodeLocation,
+                    from,
+                    to,
+                    templateOffset,
+                    addAttributes,
+                );
+            }
+        });
+    });
+}

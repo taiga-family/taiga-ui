@@ -48,6 +48,6 @@ describe(`AbstractTuiController`, () => {
 
         expect(changeSpy).toHaveBeenCalled();
 
-        expect(fixture.componentInstance.element.message).toEqual(`world`);
+        expect(fixture.componentInstance.element.message).toBe(`world`);
     });
 });

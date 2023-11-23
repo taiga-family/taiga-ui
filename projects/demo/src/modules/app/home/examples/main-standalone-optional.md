@@ -1,8 +1,19 @@
 ```ts
-import {provideAnimations} from '@angular/platform-browser/animations';
-import {TuiAlertModule, TuiDialogModule, TuiRootModule} from '@taiga-ui/core';
+// ...
+import {TuiRootModule, TuiDialogModule, TuiAlertModule, TuiPushModule} from '@taiga-ui/core';
 
 bootstrapApplication(AppComponent, {
-  providers: [importProvidersFrom(TuiRootModule, TuiDialogModule, TuiAlertModule), provideAnimations()],
+  providers: [
+    provideAnimations(),
+    provideRouter(routes),
+    provideClientHydration(),
+    importProvidersFrom(
+      TuiRootModule,
+      TuiDialogModule,
+      TuiAlertModule,
+      TuiPushModule,
+      // ...
+    ),
+  ],
 }).catch(err => console.error(err));
 ```

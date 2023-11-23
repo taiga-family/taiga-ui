@@ -25,8 +25,8 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
 @Component({
     selector: 'tui-field-error-pipe-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiFieldErrorPipeExample1 {
     readonly testValue1 = new FormControl('', [Validators.required, passwordValidator]);

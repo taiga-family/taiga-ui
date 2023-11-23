@@ -24,6 +24,29 @@ import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 // Safety offset for shadow
 const OFFSET = 16;
 
+function processDragged(
+    dragged$: Observable<boolean>,
+    scroll$: Observable<unknown>,
+): Observable<boolean> {
+    const touchstart$ = dragged$.pipe(filter(Boolean));
+    const touchend$ = dragged$.pipe(filter(tuiIsFalsy));
+    const race$ = race(scroll$, timer(100)).pipe(
+        debounceTime(200),
+        take(1),
+        map(ALWAYS_FALSE_HANDLER),
+    );
+
+    return touchstart$.pipe(
+        switchMap(() =>
+            touchend$.pipe(
+                switchMap(() => race$),
+                startWith(true),
+            ),
+        ),
+        startWith(false),
+    );
+}
+
 @Directive({
     selector: '[tuiSheetWrapper]',
     exportAs: 'tuiSheetWrapper',
@@ -79,27 +102,4 @@ export class TuiSheetWrapperDirective {
             ? value
             : value - this.sheet.imageHeight;
     }
-}
-
-function processDragged(
-    dragged$: Observable<boolean>,
-    scroll$: Observable<unknown>,
-): Observable<boolean> {
-    const touchstart$ = dragged$.pipe(filter(Boolean));
-    const touchend$ = dragged$.pipe(filter(tuiIsFalsy));
-    const race$ = race(scroll$, timer(100)).pipe(
-        debounceTime(200),
-        take(1),
-        map(ALWAYS_FALSE_HANDLER),
-    );
-
-    return touchstart$.pipe(
-        switchMap(() =>
-            touchend$.pipe(
-                switchMap(() => race$),
-                startWith(true),
-            ),
-        ),
-        startWith(false),
-    );
 }

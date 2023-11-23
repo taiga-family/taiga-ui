@@ -20,8 +20,8 @@ export type Buttons = ReadonlyArray<
 @Component({
     selector: 'tui-pdf-viewer-example-2',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiPdfViewerExample2 {
     constructor(

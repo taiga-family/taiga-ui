@@ -5,7 +5,7 @@
  * Array of icons used in taiga-ui components
  */
 export const TUI_USED_ICONS = [
-    `tuiIconMir`,
+    `tuiIconMirMono`,
     `tuiIconVisaMono`,
     `tuiIconElectronMono`,
     `tuiIconMastercard`,
@@ -19,6 +19,8 @@ export const TUI_USED_ICONS = [
     `tuiIconUnionPay`,
     `tuiIconUzcard`,
     `tuiIconVerve`,
+    `tuiIconCopyLarge`,
+    `tuiIconCheckLarge`,
     `tuiIconLink`,
     `tuiIconSearch`,
     `tuiIconSun`,
@@ -38,7 +40,6 @@ export const TUI_USED_ICONS = [
     `tuiIconSortDescending`,
     `tuiIconSortOff`,
     `tuiIconCheck`,
-    `tuiIconCheckLarge`,
     `tuiIconMinusLarge`,
     `tuiIconChevronUp`,
     `tuiIconHelpCircle`,
@@ -49,6 +50,7 @@ export const TUI_USED_ICONS = [
     `tuiIconCheckCircle`,
     `tuiIconXCircle`,
     `tuiIconChevronLeft`,
+    `tuiIconStarLarge`,
     `tuiIconChevronDown`,
     `tuiIconChevronDownLarge`,
     `tuiIconFileLarge`,
@@ -56,16 +58,14 @@ export const TUI_USED_ICONS = [
     `tuiIconAlertCircleLarge`,
     `tuiIconCheckCircleLarge`,
     `tuiIconCopy`,
-    `tuiIconCopyLarge`,
     `tuiIconEyeOffLarge`,
     `tuiIconEyeLarge`,
     `tuiIconClock`,
     `tuiIconClockLarge`,
-    `tuiIconStarLarge`,
     `tuiIconToggleOff`,
     `tuiIconToggleOffLarge`,
     `tuiIconToggleOn`,
     `tuiIconToggleOnLarge`,
     `tuiIconCalendar`,
     `tuiIconCalendarLarge`,
-];
+] as const;

@@ -9,8 +9,8 @@ import {switchMap} from 'rxjs/operators';
 @Component({
     selector: 'tui-mobile-dialog-example-1',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
     providers: [
         {
             provide: TUI_IS_IOS,

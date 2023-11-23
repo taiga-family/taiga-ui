@@ -1,4 +1,4 @@
-@import '../../../core/styles/taiga-ui-local';
+@import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
     display: block;
@@ -9,14 +9,18 @@
     font-weight: bold;
 }
 
+.t-header + .t-code {
+    border-radius: 0.25rem;
+}
+
 .t-code {
     position: relative;
     margin: 0;
     white-space: normal;
+    outline: 1px solid var(--tui-base-03);
 
-    &:hover .t-code-actions,
-    &:focus-visible .t-code-actions {
-        opacity: 1;
+    ::ng-deep .hljs-ln {
+        width: max-content;
     }
 }
 
@@ -26,29 +30,44 @@
 
 .t-code-actions {
     position: absolute;
-    top: 0.875rem;
-    right: 2rem;
+    top: 0.75rem;
+    right: 0.75rem;
     display: flex;
-    opacity: 0;
-    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
     flex-direction: row-reverse;
+
+    :host-context(tui-root._mobile) & {
+        padding: 0.3125rem;
+        border-radius: 0.25rem;
+        border: 1px solid var(--tui-base-04);
+    }
+}
+
+.t-copy-button::ng-deep + *:not(:empty) {
+    margin-right: 0.375rem;
 }
 
 // highlightjs added class
 .hljs:not(:empty) {
     .customize-scroll();
     font: var(--tui-font-text-m);
+    font-size: 0.875rem;
     padding: 1.5rem 2rem;
     font-family: monospace;
-    background: var(--tui-clear);
     word-wrap: break-word;
     white-space: pre-wrap;
 
-    :host._has-filename & {
-        border-radius: 0.75rem;
-    }
-
     :host-context(tui-root._mobile) & {
         padding: 1rem;
+    }
+}
+
+.t-code-actions,
+.hljs:not(:empty) {
+    background: var(--tui-base-01);
+
+    @supports (background: color-mix(in srgb, var(--tui-base-01), #222 2%)) {
+        background: color-mix(in srgb, var(--tui-base-01), #222 2%);
     }
 }

@@ -1,4 +1,4 @@
-@import 'taiga-ui-local';
+@import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
     position: relative;
@@ -24,22 +24,10 @@
 }
 
 .t-content {
-    .fullsize(absolute, inset);
-    top: 38%;
     display: flex;
     align-items: center;
     pointer-events: none;
     box-sizing: border-box;
-    font: var(--tui-font-text-s);
-
-    &_fullsize,
-    :host[data-size='s'] & {
-        top: 0;
-    }
-
-    :host[data-size='l'] & {
-        font: var(--tui-font-text-m);
-    }
 }
 
 .t-primitive {

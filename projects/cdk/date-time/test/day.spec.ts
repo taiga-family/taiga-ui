@@ -944,8 +944,8 @@ describe(`TuiDay`, () => {
                 it(`the primitive value of a TuiDay object`, () => {
                     const day = new TuiDay(2000, 5, 13);
 
-                    expect(typeof Number(day)).toEqual(`number`);
-                    expect(typeof day.valueOf()).toEqual(`number`);
+                    expect(typeof Number(day)).toBe(`number`);
+                    expect(typeof day.valueOf()).toBe(`number`);
                     expect(day > new TuiDay(2000, 5, 10)).toBeTruthy();
                     expect(day < new TuiDay(2001, 5, 10)).toBeTruthy();
                 });
@@ -955,24 +955,24 @@ describe(`TuiDay`, () => {
                 it(`a number if the hint is number`, () => {
                     const day = new TuiDay(2009, 2, 28);
 
-                    expect(typeof Number(day)).toEqual(`number`);
-                    expect(typeof day.valueOf()).toEqual(`number`);
-                    expect(typeof day[Symbol.toPrimitive](`number`)).toEqual(`number`);
+                    expect(typeof Number(day)).toBe(`number`);
+                    expect(typeof day.valueOf()).toBe(`number`);
+                    expect(typeof day[Symbol.toPrimitive](`number`)).toBe(`number`);
                 });
 
                 it(`a string if the hint is string`, () => {
                     const day = new TuiDay(2004, 3, 22);
 
-                    expect(typeof String(day)).toEqual(`string`);
-                    expect(typeof day.toString()).toEqual(`string`);
-                    expect(typeof day[Symbol.toPrimitive](`string`)).toEqual(`string`);
+                    expect(typeof String(day)).toBe(`string`);
+                    expect(typeof day.toString()).toBe(`string`);
+                    expect(typeof day[Symbol.toPrimitive](`string`)).toBe(`string`);
                 });
 
                 it(`a string if the hint is default`, () => {
                     const day = new TuiDay(2012, 7, 18);
 
-                    expect(typeof `${day}`).toEqual(`string`);
-                    expect(typeof day[Symbol.toPrimitive](`default`)).toEqual(`string`);
+                    expect(typeof `${day}`).toBe(`string`);
+                    expect(typeof day[Symbol.toPrimitive](`default`)).toBe(`string`);
                 });
             });
         });

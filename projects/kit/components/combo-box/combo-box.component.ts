@@ -135,7 +135,7 @@ export class TuiComboBoxComponent<T>
     get focused(): boolean {
         return (
             tuiIsNativeFocused(this.nativeFocusableElement) ||
-            (!!this.hostedDropdown && this.hostedDropdown.focused)
+            !!this.hostedDropdown?.focused
         );
     }
 
@@ -207,7 +207,10 @@ export class TuiComboBoxComponent<T>
             this.value = null;
         }
 
-        this.hostedDropdown?.updateOpen(true);
+        // Clearing sets the empty value, the dropdown should not be opened on clear.
+        if (this.search !== '') {
+            this.hostedDropdown?.updateOpen(true);
+        }
     }
 
     /** @deprecated use 'value' setter */
@@ -220,10 +223,7 @@ export class TuiComboBoxComponent<T>
     }
 
     private isStrictMatch(item: T): boolean {
-        return (
-            !!this.strictMatcher &&
-            this.strictMatcher(item, this.search || '', this.stringify)
-        );
+        return !!this.strictMatcher?.(item, this.search || '', this.stringify);
     }
 
     private close(): void {

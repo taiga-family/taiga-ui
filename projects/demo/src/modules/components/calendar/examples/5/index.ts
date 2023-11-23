@@ -15,8 +15,8 @@ const handler: TuiHandler<TuiDay, string> = (day: TuiDay) => {
     selector: 'tui-calendar-example-5',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation: ViewEncapsulation.None,
+    changeDetection,
     providers: [{provide: TUI_DAY_TYPE_HANDLER, useValue: handler}],
 })
 export class TuiCalendarExample5 {}

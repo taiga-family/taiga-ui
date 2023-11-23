@@ -1,4 +1,3 @@
-/* eslint-disable rxjs/no-topromise */
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
 import {
@@ -53,7 +52,7 @@ describe(`ng-add`, () => {
 
         const tree = await runner.runSchematicAsync(`ng-add`, options, host).toPromise();
 
-        expect(tree.readContent(`package.json`)).toEqual(
+        expect(tree.readContent(`package.json`)).toBe(
             `{
   "dependencies": {
     "@angular/core": "~13.0.0",
@@ -79,7 +78,7 @@ describe(`ng-add`, () => {
 
         const tree = await runner.runSchematicAsync(`ng-add`, options, host).toPromise();
 
-        expect(tree.readContent(`package.json`)).toEqual(
+        expect(tree.readContent(`package.json`)).toBe(
             `{
   "devDependencies": {
     "@types/dompurify": "${DOMPURIFY_TYPES_VERSION}"
@@ -113,7 +112,7 @@ describe(`ng-add`, () => {
 
         const tree = await runner.runSchematicAsync(`ng-add`, options, host).toPromise();
 
-        expect(tree.readContent(`package.json`)).toEqual(
+        expect(tree.readContent(`package.json`)).toBe(
             `{
   "devDependencies": {
     "@types/dompurify": "${DOMPURIFY_TYPES_VERSION}"
@@ -144,7 +143,7 @@ describe(`ng-add`, () => {
             )
             .toPromise();
 
-        expect(tree.readContent(`angular.json`)).toEqual(`
+        expect(tree.readContent(`angular.json`)).toBe(`
 {
   "version": 1,
   "defaultProject": "demo",
@@ -185,7 +184,7 @@ describe(`ng-add`, () => {
             )
             .toPromise();
 
-        expect(tree.readContent(`angular.json`)).toEqual(`
+        expect(tree.readContent(`angular.json`)).toBe(`
 {
   "version": 1,
   "defaultProject": "demo",
@@ -227,7 +226,7 @@ describe(`ng-add`, () => {
             )
             .toPromise();
 
-        expect(tree.readContent(`angular.json`)).toEqual(`
+        expect(tree.readContent(`angular.json`)).toBe(`
 {
   "version": 1,
   "defaultProject": "demo",
@@ -273,7 +272,7 @@ describe(`ng-add`, () => {
             .runSchematicAsync(`ng-add-setup-project`, options, host)
             .toPromise();
 
-        expect(tree.readContent(`test/app/app.module.ts`)).toEqual(
+        expect(tree.readContent(`test/app/app.module.ts`)).toBe(
             `import { NgDompurifySanitizer } from "@tinkoff/ng-dompurify";
 import { TuiRootModule, TuiDialogModule, TuiAlertModule, TUI_SANITIZER } from "@taiga-ui/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -281,9 +280,9 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 
 @NgModule({declarations: [AppComponent],
-        imports: [BrowserAnimationsModule, TuiRootModule, TuiDialogModule, TuiAlertModule],
-        providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}]
-    })
+    imports: [BrowserAnimationsModule, TuiRootModule, TuiDialogModule, TuiAlertModule],
+    providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}]
+})
 export class AppModule {}
 `,
         );
@@ -298,7 +297,7 @@ export class AppModule {}
             )
             .toPromise();
 
-        expect(tree.readContent(`test/app/app.template.html`)).toEqual(`<tui-root>
+        expect(tree.readContent(`test/app/app.template.html`)).toBe(`<tui-root>
 <app></app>
 </tui-root>`);
     });

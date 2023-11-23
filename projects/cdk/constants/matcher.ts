@@ -2,6 +2,10 @@ import {TuiHandler, TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 
 import {TUI_DEFAULT_STRINGIFY} from './stringify';
 
+function bothEmpty(item1: unknown, item2: unknown): boolean {
+    return Array.isArray(item1) && Array.isArray(item2) && !item1.length && !item2.length;
+}
+
 /**
  * Default handler for matching stringified version of an item and a search query
  * @param item arbitrary element to match with a string
@@ -35,7 +39,3 @@ export const TUI_STRICT_MATCHER = <T>(
  */
 export const TUI_DEFAULT_IDENTITY_MATCHER: TuiIdentityMatcher<unknown> = (item1, item2) =>
     item1 === item2 || bothEmpty(item1, item2);
-
-function bothEmpty(item1: unknown, item2: unknown): boolean {
-    return Array.isArray(item1) && Array.isArray(item2) && !item1.length && !item2.length;
-}

@@ -9,8 +9,10 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {INTERSECTION_ROOT} from '@ng-web-apis/intersection-observer';
-import {EMPTY_QUERY, TuiDay} from '@taiga-ui/cdk';
+import {EMPTY_QUERY} from '@taiga-ui/cdk';
+import {tuiFadeIn} from '@taiga-ui/core';
 
 @Component({
     selector: 'landing',
@@ -23,6 +25,10 @@ import {EMPTY_QUERY, TuiDay} from '@taiga-ui/cdk';
             useExisting: ElementRef,
         },
     ],
+    host: {
+        '[class._hide]': 'hidden',
+    },
+    animations: [tuiFadeIn],
 })
 export class LandingComponent implements OnInit {
     @ViewChildren('block', {read: ElementRef})
@@ -30,19 +36,20 @@ export class LandingComponent implements OnInit {
 
     current = 0;
 
-    tags = ['Angular', 'Open source'];
-
-    date: TuiDay | null = null;
-
-    readonly labels = ['New', 'Read', 'Archived', 'Junk'];
+    intersected = false;
 
     constructor(
         @Inject(Router) private readonly router: Router,
         @Inject(ActivatedRoute) private readonly activatedRoute: ActivatedRoute,
+        @Inject(LOCAL_STORAGE) protected readonly storage: Storage,
     ) {}
 
     async ngOnInit(): Promise<void> {
         await this.clearQueryParams();
+    }
+
+    get hidden(): boolean {
+        return !!this.storage.getItem('env');
     }
 
     @HostBinding('style.background')
@@ -50,20 +57,20 @@ export class LandingComponent implements OnInit {
         return this.current ? '#5f6ed0' : '#3dc67c';
     }
 
-    onIntersection([{isIntersecting}]: IntersectionObserverEntry[], index: number): void {
+    onIntersection(
+        [{isIntersecting, target}]: IntersectionObserverEntry[],
+        index: number,
+    ): void {
         if (isIntersecting) {
             this.current = index;
+            target.scrollIntoView({behavior: 'smooth'});
         }
-    }
-
-    onDay(date: TuiDay): void {
-        this.date = date;
     }
 
     onClick(): void {
         this.blocks.forEach(({nativeElement}, index) => {
             if (index === this.current + 1) {
-                nativeElement.scrollIntoView();
+                nativeElement.scrollIntoView({behavior: 'smooth'});
             }
         });
     }

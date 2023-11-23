@@ -95,7 +95,7 @@ describe(`TuiPrimitiveYearPickerComponent`, () => {
 
             component.value = null;
 
-            expect(component.getItemRange(item)).toBe(null);
+            expect(component.getItemRange(item)).toBeNull();
         });
 
         it(`returns start correctly`, () => {

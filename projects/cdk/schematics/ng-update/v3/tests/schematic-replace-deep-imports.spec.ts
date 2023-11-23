@@ -1,4 +1,3 @@
-/* eslint-disable rxjs/no-topromise */
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
 import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
@@ -40,7 +39,7 @@ describe(`ng-update`, () => {
             )
             .toPromise();
 
-        expect(tree.readContent(`test/app/app.component.ts`)).toEqual(
+        expect(tree.readContent(`test/app/app.component.ts`)).toBe(
             `import { Component } from '@angular/core';
 import { some } from '@taiga-ui/kit';
 import { any } from '@taiga-ui/cdk'
@@ -50,11 +49,11 @@ import { unknown } from '@taiga-ui/core'
 export class AppComponent {}`,
         );
 
-        expect(tree.readContent(`test/style.less`)).toEqual(
+        expect(tree.readContent(`test/style.less`)).toBe(
             `${TUI_WARNING_NORMALIZE}\n@import '@taiga-ui/styles/taiga-ui-global.less';`,
         );
 
-        expect(tree.readContent(`test/app/app.template.less`)).toEqual(
+        expect(tree.readContent(`test/app/app.template.less`)).toBe(
             `@import '@taiga-ui/core/styles/taiga-ui-local.less';`,
         );
     });

@@ -8,8 +8,8 @@ import {tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
     selector: 'example-tui-progress-circle',
     templateUrl: './progress-circle.template.html',
     styleUrls: ['./progress-circle.style.less'],
-    providers: [tuiInputNumberOptionsProvider({min: 0})],
     changeDetection,
+    providers: [tuiInputNumberOptionsProvider({min: 0})],
 })
 export class ExampleProgressCircleComponent {
     value = 6;
@@ -49,6 +49,24 @@ export class ExampleProgressCircleComponent {
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
         TypeScript: import('./examples/4/index.ts?raw'),
+    };
+
+    readonly dynamicColorExample: TuiDocExample = {
+        HTML: import('./examples/5/index.html?raw'),
+        LESS: import('./examples/5/index.less?raw'),
+        TypeScript: import('./examples/5/index.ts?raw'),
+    };
+
+    readonly reversedDirectionExample: TuiDocExample = {
+        HTML: import('./examples/6/index.html?raw'),
+        LESS: import('./examples/6/index.less?raw'),
+        TypeScript: import('./examples/6/index.ts?raw'),
+    };
+
+    readonly thicknessExample: TuiDocExample = {
+        HTML: import('./examples/7/index.html?raw'),
+        LESS: import('./examples/7/index.less?raw'),
+        TypeScript: import('./examples/7/index.ts?raw'),
     };
 
     readonly exampleModule = import('./examples/import/import-module.md?raw');

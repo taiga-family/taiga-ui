@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-spaces-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.style.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiSpacingExample1 {}

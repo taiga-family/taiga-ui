@@ -6,7 +6,7 @@ describe(`InputTable`, () => {
             .tuiScrollIntoView()
             .as(`wrapper`);
 
-        for (const index of [0, 1, 2, 3, 4]) {
+        [0, 1, 2, 3, 4].forEach(index => {
             cy.get(`@wrapper`)
                 .find(`tbody tr td`)
                 .eq(index)
@@ -38,6 +38,6 @@ describe(`InputTable`, () => {
                     .tuiWaitBeforeScreenshot()
                     .matchImageSnapshot(`components/input_table__${index}_3`);
             }
-        }
+        });
     });
 });

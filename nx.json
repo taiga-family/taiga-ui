@@ -1,6 +1,7 @@
 {
     "$schema": "./node_modules/nx/schemas/nx-schema.json",
     "defaultProject": "demo",
+    "nxCloudAccessToken": "NWEyY2I2MGUtYjZhNS00ODQ3LTg2OTgtZDQyMDA5YmQyMjNifHJlYWQtd3JpdGU=",
     "namedInputs": {
         "sharedGlobals": [
             "{workspaceRoot}/nx.json",
@@ -16,7 +17,8 @@
     },
     "targetDefaults": {
         "build": {
-            "inputs": ["default", "production", "^production"]
+            "inputs": ["default", "production", "^production"],
+            "cache": true
         },
         "test": {
             "inputs": [
@@ -25,19 +27,11 @@
                 "^production",
                 "{workspaceRoot}/setup-jest.ts",
                 "{workspaceRoot}/jest.config.ts"
-            ]
+            ],
+            "cache": true
         },
         "e2e": {
             "inputs": ["default", "production", "^production"]
-        }
-    },
-    "tasksRunnerOptions": {
-        "default": {
-            "runner": "nx-cloud",
-            "options": {
-                "cacheableOperations": ["test", "build"],
-                "parallel": 1
-            }
         }
     },
     "affected": {

@@ -8,8 +8,8 @@ import {TuiKeySteps} from '@taiga-ui/kit';
     selector: 'tui-input-range-example-5',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputRangeExample5 {
     readonly control = new FormControl([100_000, 500_000]);

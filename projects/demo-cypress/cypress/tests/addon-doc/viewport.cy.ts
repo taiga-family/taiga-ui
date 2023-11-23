@@ -54,12 +54,12 @@ describe(`Viewport`, () => {
             Cypress.env(`fonts`) ?? [],
         );
 
-        for (const [breakpoint, {width, font}] of fonts) {
+        fonts.forEach(([breakpoint, {width, font}]) => {
             it(breakpoint, () => {
                 cy.viewport(width, 900).tuiVisit(`/breakpoints`, {
                     waitRenderedFont: new RegExp(font),
                 });
             });
-        }
+        });
     });
 });

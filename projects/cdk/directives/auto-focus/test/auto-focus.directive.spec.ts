@@ -52,6 +52,7 @@ describe(`TuiAutoFocus directive`, () => {
 
     describe(`works for TUI_FOCUSABLE_ITEM_ACCESSOR`, () => {
         @Component({
+            selector: `focusable-component`,
             template: `
                 <p>
                     <input
@@ -60,7 +61,6 @@ describe(`TuiAutoFocus directive`, () => {
                     />
                 </p>
             `,
-            selector: `focusable-component`,
             changeDetection: ChangeDetectionStrategy.OnPush,
             providers: [tuiAsFocusableItemAccessor(TestFocusableComponent)],
         })
@@ -71,7 +71,7 @@ describe(`TuiAutoFocus directive`, () => {
             focusedChange = EMPTY;
 
             get nativeFocusableElement(): HTMLInputElement | null {
-                return this.input ? this.input.nativeElement : null;
+                return this.input?.nativeElement ?? null;
             }
 
             get focused(): boolean {

@@ -7,8 +7,8 @@ import {tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
 @Component({
     selector: 'tui-miscellaneous-example-6',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiMiscellaneousExample6 implements OnInit {
     userDetailsForm = new FormGroup({

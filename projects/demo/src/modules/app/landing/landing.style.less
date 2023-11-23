@@ -1,4 +1,4 @@
-@import 'taiga-ui-local';
+@import '@taiga-ui/core/styles/taiga-ui-local';
 
 @keyframes scroll {
     0% {
@@ -30,6 +30,10 @@
     overflow-x: hidden;
     scroll-snap-stop: always;
     scroll-snap-type: y mandatory;
+
+    &._hide {
+        display: none;
+    }
 }
 
 .footer {
@@ -120,10 +124,11 @@
 
 .wrapper {
     position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
     transition: opacity 0.6s 0.4s;
     white-space: nowrap;
     margin: 0;
-    font-size: ~'min(6vw, 10vh)';
+    font-size: ~'min(7vw, 11vh)';
 
     @media all and (max-width: 43.75rem) {
         font-size: ~'min(10vw, 10vh)';
@@ -208,7 +213,6 @@
     height: 31.25rem;
     background: white;
     border-radius: 3.75rem;
-    padding: 2.75rem 3rem;
     box-sizing: border-box;
     overflow: hidden;
 

@@ -36,7 +36,6 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-// eslint-disable-next-line import/no-cycle
 import {TuiInputFilesDirective} from './input-files.directive';
 import {TUI_INPUT_FILES_OPTIONS, TuiInputFilesOptions} from './input-files.options';
 
@@ -44,8 +43,8 @@ import {TUI_INPUT_FILES_OPTIONS, TuiInputFilesOptions} from './input-files.optio
     selector: 'tui-input-files',
     templateUrl: './input-files.template.html',
     styleUrls: ['./input-files.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [MODE_PROVIDER, tuiAsFocusableItemAccessor(TuiInputFilesComponent)],
 })
 export class TuiInputFilesComponent

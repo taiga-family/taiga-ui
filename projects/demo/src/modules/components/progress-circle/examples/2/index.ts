@@ -6,7 +6,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: 'tui-progress-circle-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
-export class TuiProgressCircleExample2 {}
+export class TuiProgressCircleExample2 {
+    readonly sizes = ['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl'] as const;
+}

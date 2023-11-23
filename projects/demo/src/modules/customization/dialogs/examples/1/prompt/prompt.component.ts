@@ -12,8 +12,8 @@ import {PromptOptions} from './prompt-options';
     selector: 'prompt',
     templateUrl: './prompt.template.html',
     styleUrls: ['./prompt.style.less'],
-    providers: [TuiDestroyService, TuiDialogCloseService],
     changeDetection,
+    providers: [TuiDestroyService, TuiDialogCloseService],
 })
 export class PromptComponent {
     // Here you get options + content + id + observer

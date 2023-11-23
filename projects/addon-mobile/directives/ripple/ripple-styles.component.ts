@@ -1,7 +1,9 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
-    selector: 'tui-ripple',
+    host: {
+        class: 'tui-ripple-styles',
+    },
     template: '',
     styleUrls: ['./ripple.style.less'],
     encapsulation: ViewEncapsulation.None,

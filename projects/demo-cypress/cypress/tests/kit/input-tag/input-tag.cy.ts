@@ -9,7 +9,7 @@ describe(`InputTag`, () => {
 
         cy.get(`@wrapper`)
             .findByAutomationId(`tui-input-tag__native`)
-            .type(`Very looooooooooooooooooooooooong Text{enter}`);
+            .type(`Very looooooooooooooooooooooooong Text{enter}`, {force: true});
 
         cy.get(`@wrapper`)
             .tuiWaitBeforeScreenshot()

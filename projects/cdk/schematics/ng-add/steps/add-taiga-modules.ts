@@ -36,49 +36,6 @@ import {
 } from '../constants/modules';
 import {TuiSchema} from '../schema';
 
-export function addTaigaModules(options: TuiSchema): Rule {
-    return async (tree: Tree, context: SchematicContext) => {
-        const workspace = await getWorkspace(tree);
-        const project = getProjects(options, workspace)[0];
-
-        if (!project) {
-            context.logger.warn(
-                `[WARNING]: Target project not found in current workspace`,
-            );
-
-            return;
-        }
-
-        const buildOptions = getProjectTargetOptions(project, `build`);
-        const mainFilePath = buildOptions.main as string;
-
-        if (!mainFilePath) {
-            context.logger.error(`[ERROR]: Could not find the project main file`);
-
-            return;
-        }
-
-        setActiveProject(createProject(tree, `/`, ALL_FILES));
-
-        const bootstrapFunction = getStandaloneBootstrapFunction(mainFilePath);
-
-        if (bootstrapFunction) {
-            addTuiEntitiesToStandalone({
-                bootstrapFunction,
-                options,
-                context,
-            });
-        } else {
-            const mainClass = getMainModule(mainFilePath);
-
-            addTuiModules({mainClass, options, context});
-            addExtraTuiProvidersToRootComponent({mainClass, options});
-        }
-
-        saveActiveProject();
-    };
-}
-
 function addTuiModules({
     mainClass,
     options,
@@ -170,7 +127,7 @@ function addRootTuiProvidersToBootstrapFn(
                 Node.isCallExpression(el) &&
                 el.getExpression().getText() === `importProvidersFrom`,
         );
-    const providerAnimation = initializer
+    const provideAnimations = initializer
         .getElements()
         .find(
             el =>
@@ -197,13 +154,13 @@ function addRootTuiProvidersToBootstrapFn(
         );
     }
 
-    if (!providerAnimation) {
+    if (!provideAnimations) {
         modules.push({
-            name: `providerAnimation`,
+            name: `provideAnimations`,
             packageName: `@angular/platform-browser/animations`,
         });
 
-        pushToObjectArrayProperty(bootstrapOptions, `providers`, `providerAnimation()`, {
+        pushToObjectArrayProperty(bootstrapOptions, `providers`, `provideAnimations()`, {
             index: 0,
         });
     }
@@ -264,4 +221,47 @@ function getOptionsObject(
     const definition = options.getDefinitionNodes()[0];
 
     return definition.getChildrenOfKind(SyntaxKind.ObjectLiteralExpression)[0];
+}
+
+export function addTaigaModules(options: TuiSchema): Rule {
+    return async (tree: Tree, context: SchematicContext): Promise<Rule | void> => {
+        const workspace = await getWorkspace(tree);
+        const project = getProjects(options, workspace)[0];
+
+        if (!project) {
+            context.logger.warn(
+                `[WARNING]: Target project not found in current workspace`,
+            );
+
+            return;
+        }
+
+        const buildOptions = getProjectTargetOptions(project, `build`);
+        const mainFilePath = (buildOptions.main || buildOptions.browser) as string;
+
+        if (!mainFilePath) {
+            context.logger.error(`[ERROR]: Could not find the project main file`);
+
+            return;
+        }
+
+        setActiveProject(createProject(tree, `/`, ALL_FILES));
+
+        const bootstrapFunction = getStandaloneBootstrapFunction(mainFilePath);
+
+        if (bootstrapFunction) {
+            addTuiEntitiesToStandalone({
+                bootstrapFunction,
+                options,
+                context,
+            });
+        } else {
+            const mainClass = getMainModule(mainFilePath);
+
+            addTuiModules({mainClass, options, context});
+            addExtraTuiProvidersToRootComponent({mainClass, options});
+        }
+
+        saveActiveProject();
+    };
 }

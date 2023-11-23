@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     selector: `tui-scrollbar-example-2`,
     templateUrl: `./template.html`,
     styleUrls: [`./style.less`],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiScrollbarExample2Component {}

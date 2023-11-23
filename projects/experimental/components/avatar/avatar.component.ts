@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
-import {TUI_PLATFORM, tuiIsString, TuiPlatform} from '@taiga-ui/cdk';
+import {tuiIsString, TuiStringHandler} from '@taiga-ui/cdk';
+import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
 
 import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar.options';
 
@@ -10,10 +11,12 @@ import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar.options';
     styleUrls: ['./avatar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        tuiAppearance: '',
+        '[attr.data-appearance]': 'appearance',
         '[attr.data-size]': 'size',
-        '[attr.data-platform]': 'platform',
+        '[attr.data-type]': 'type',
+        '[style.--t-mask]': '"url(" + resolver(src) + ")"',
         '[class._round]': 'round',
-        '[class._img]': 'type === "img"',
     },
 })
 export class TuiAvatarComponent {
@@ -26,9 +29,12 @@ export class TuiAvatarComponent {
     @Input()
     src: SafeResourceUrl | string | null = null;
 
+    @Input()
+    appearance = '';
+
     constructor(
         @Inject(TUI_AVATAR_OPTIONS) private readonly options: TuiAvatarOptions,
-        @Inject(TUI_PLATFORM) readonly platform: TuiPlatform,
+        @Inject(TUI_ICON_RESOLVER) readonly resolver: TuiStringHandler<string>,
     ) {}
 
     get value(): SafeResourceUrl | string {

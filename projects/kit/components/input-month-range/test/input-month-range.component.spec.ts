@@ -134,7 +134,7 @@ describe(`InputMonthRange`, () => {
         it(`empty value opens dropdown`, () => {
             component.onValueChange(``);
             fixture.detectChanges();
-            expect(component.open).toEqual(true);
+            expect(component.open).toBe(true);
         });
     });
 });

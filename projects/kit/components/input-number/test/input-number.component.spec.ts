@@ -79,6 +79,18 @@ describe(`InputNumber`, () => {
         component = testComponent.component;
 
         inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
+
+        document.querySelectorAll(`input`).forEach(el => {
+            const maxlength = el.getAttribute(`maxlength`);
+            const oldSpecification = 52488; // Note: https://bugs.chromium.org/p/chromium/issues/detail?id=450544
+
+            if (typeof maxlength !== `number` || maxlength === oldSpecification) {
+                /**
+                 * -1 is a standard for all browsers
+                 */
+                el.setAttribute(`maxlength`, `-1`);
+            }
+        });
     });
 
     describe(`Default values:`, () => {
@@ -157,25 +169,25 @@ describe(`InputNumber`, () => {
             it(`Value ''`, () => {
                 component.onValueChange(``);
 
-                expect(testComponent.control.value).toBe(null);
+                expect(testComponent.control.value).toBeNull();
             });
 
             it(`Value '-'`, () => {
                 component.onValueChange(`-`);
 
-                expect(testComponent.control.value).toBe(null);
+                expect(testComponent.control.value).toBeNull();
             });
 
             it(`Value ','`, () => {
                 component.onValueChange(`,`);
 
-                expect(testComponent.control.value).toBe(null);
+                expect(testComponent.control.value).toBeNull();
             });
 
             it(`Value '-,'`, () => {
                 component.onValueChange(`-,`);
 
-                expect(testComponent.control.value).toBe(null);
+                expect(testComponent.control.value).toBeNull();
             });
 
             it(`Value does not depend on the separator`, () => {
@@ -199,7 +211,7 @@ describe(`InputNumber`, () => {
                 testComponent.component.min = 15;
                 inputPO.sendText(`10`);
 
-                expect(testComponent.control.value).toBe(null);
+                expect(testComponent.control.value).toBeNull();
             });
 
             it(`A value less than positive min is clipped to min when element lose focus`, () => {
@@ -223,7 +235,7 @@ describe(`InputNumber`, () => {
                 testComponent.component.max = -15;
                 inputPO.sendText(`-10`);
 
-                expect(testComponent.control.value).toBe(null);
+                expect(testComponent.control.value).toBeNull();
             });
 
             it(`A value greater than negative max is clipped to max when element lose focus`, () => {
@@ -364,18 +376,4 @@ describe(`InputNumber`, () => {
     function getNativeInput(): DebugElement | null {
         return pageObject.getByAutomationId(`tui-primitive-textfield__native-input`);
     }
-
-    beforeEach(() => {
-        document.querySelectorAll(`input`).forEach(el => {
-            const maxlength = el.getAttribute(`maxlength`);
-            const oldSpecification = 52488; // Note: https://bugs.chromium.org/p/chromium/issues/detail?id=450544
-
-            if (typeof maxlength !== `number` || maxlength === oldSpecification) {
-                /**
-                 * -1 is a standard for all browsers
-                 */
-                el.setAttribute(`maxlength`, `-1`);
-            }
-        });
-    });
 });

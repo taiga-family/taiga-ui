@@ -116,11 +116,12 @@ describe(`Input`, () => {
         cy.get(`tui-doc-example[id=mask]`).tuiScrollIntoView().as(`wrapper`);
         cy.get(`@wrapper`).find(`tui-input input[tuiTextfield]`).as(`input`);
         cy.get(`@input`).first().focus().type(`111111111111`).blur();
+        cy.get(`@input`).last().focus().type(`111111111111`).blur();
         cy.get(`@wrapper`).tuiWaitBeforeScreenshot().matchImageSnapshot(`09-mask`);
     });
 
     describe(`check tuiTextfieldCleaner`, () => {
-        for (const size of [`s`, `m`, `l`]) {
+        [`s`, `m`, `l`].forEach(size => {
             it(`size=${size}`, () => {
                 cy.tuiVisit(
                     `components/input/API?tuiTextfieldIcon=tuiIconCalendarLarge&tuiTextfieldCleaner=true&tuiTextfieldSize=${size}`,
@@ -130,6 +131,6 @@ describe(`Input`, () => {
                     `input-tuiTextfieldIcon-tuiTextfieldCleaner-tuiTextfieldSize-${size}`,
                 );
             });
-        }
+        });
     });
 });

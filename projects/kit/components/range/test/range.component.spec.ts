@@ -281,7 +281,7 @@ xdescribe(`Range`, () => {
                 },
             ] as const;
 
-            for (const {value, leftOffset, rightOffset} of testsContexts) {
+            testsContexts.forEach(({value, leftOffset, rightOffset}) => {
                 it(`${JSON.stringify(value)}`, () => {
                     testComponent.testValue.setValue(value);
                     fixture.detectChanges();
@@ -289,7 +289,7 @@ xdescribe(`Range`, () => {
                     expect(getFilledRangeOffset().left).toBe(leftOffset);
                     expect(getFilledRangeOffset().right).toBe(rightOffset);
                 });
-            }
+            });
         });
     });
 });

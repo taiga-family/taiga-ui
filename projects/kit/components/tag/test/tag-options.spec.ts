@@ -35,8 +35,8 @@ describe(`Tag component options`, () => {
     });
 
     it(`override by custom options`, () => {
-        expect(testComponent.component.size).toEqual(`l`);
-        expect(testComponent.component.status).toEqual(`error`);
-        expect(testComponent.component.autoColor).toEqual(true);
+        expect(testComponent.component.size).toBe(`l`);
+        expect(testComponent.component.status).toBe(`error`);
+        expect(testComponent.component.autoColor).toBe(true);
     });
 });

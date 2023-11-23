@@ -16,7 +16,6 @@ import {
     titleLog,
 } from '../../utils/colored-log';
 import {projectRoot} from '../../utils/project-root';
-import {replaceTag} from '../../utils/replace-tag';
 import {findElementsByTagName} from '../../utils/templates/elements';
 import {getComponentTemplates} from '../../utils/templates/get-component-templates';
 import {
@@ -25,17 +24,7 @@ import {
 } from '../../utils/templates/template-resource';
 import {getFileSystem} from '../utils/get-file-system';
 import {replaceText} from '../utils/replace-text';
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function updateToV3_40(options: TuiSchema): Rule {
-    return (tree: Tree, _: SchematicContext) => {
-        const fileSystem = getFileSystem(tree);
-
-        replaceTextareaTag(options, fileSystem);
-        replaceTextareaReferenceTypes(options, fileSystem);
-        !options[`skip-logs`] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
-    };
-}
+import {replaceTag} from '../utils/templates/replace-tag';
 
 function replaceTextareaTag(options: TuiSchema, fileSystem: DevkitFileSystem): void {
     !options[`skip-logs`] &&
@@ -43,9 +32,7 @@ function replaceTextareaTag(options: TuiSchema, fileSystem: DevkitFileSystem): v
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing <tui-text-area /> to <tui-textarea />`,
         );
 
-    const templateResources = getComponentTemplates(ALL_TS_FILES);
-
-    for (const resource of templateResources) {
+    getComponentTemplates(ALL_TS_FILES).forEach(resource => {
         const template = getTemplateFromTemplateResource(resource, fileSystem);
         const elements = findElementsByTagName(template, `tui-text-area`);
         const path = fileSystem.resolve(getPathFromTemplateResource(resource));
@@ -56,7 +43,7 @@ function replaceTextareaTag(options: TuiSchema, fileSystem: DevkitFileSystem): v
                 replaceTag(recorder, sourceCodeLocation, `tui-text-area`, `tui-textarea`);
             }
         });
-    }
+    });
 
     fileSystem.commitEdits();
     saveActiveProject();
@@ -90,4 +77,14 @@ function replaceTextareaReferenceTypes(
     fileSystem.commitEdits();
     saveActiveProject();
     setActiveProject(createProject(fileSystem.tree, projectRoot(), ALL_FILES));
+}
+
+export function updateToV3_40(options: TuiSchema): Rule {
+    return (tree: Tree, _: SchematicContext) => {
+        const fileSystem = getFileSystem(tree);
+
+        replaceTextareaTag(options, fileSystem);
+        replaceTextareaReferenceTypes(options, fileSystem);
+        !options[`skip-logs`] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+    };
 }

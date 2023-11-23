@@ -142,7 +142,7 @@ describe(`InputPhoneInternational`, () => {
         });
 
         describe(`should set KZ country code on paste event`, () => {
-            for (const phone of [`+7(600)555-3535`, `+7 7272 588300`]) {
+            [`+7(600)555-3535`, `+7 7272 588300`].forEach(phone => {
                 it(`${phone}`, () => {
                     const data = new DataTransfer();
 
@@ -156,7 +156,7 @@ describe(`InputPhoneInternational`, () => {
 
                     expect(component.countryIsoCode).toBe(TuiCountryIsoCode.KZ);
                 });
-            }
+            });
         });
 
         it(`should replace code 8 on paste event`, () => {
@@ -170,7 +170,7 @@ describe(`InputPhoneInternational`, () => {
 
             component.onPaste(pasteEvent);
 
-            expect(testComponent.control.value).toEqual(`+78005553535`);
+            expect(testComponent.control.value).toBe(`+78005553535`);
         });
 
         it(`should replace code +8 on paste event`, () => {
@@ -184,7 +184,7 @@ describe(`InputPhoneInternational`, () => {
 
             component.onPaste(pasteEvent);
 
-            expect(testComponent.control.value).toEqual(`+79112223344`);
+            expect(testComponent.control.value).toBe(`+79112223344`);
         });
 
         it(`should update value on paste`, () => {
@@ -198,7 +198,7 @@ describe(`InputPhoneInternational`, () => {
 
             component.onPaste(pasteEvent);
 
-            expect(testComponent.control.value).toEqual(`+380123456789`);
+            expect(testComponent.control.value).toBe(`+380123456789`);
         });
 
         it(`should update value without "+" on paste`, () => {
@@ -212,7 +212,7 @@ describe(`InputPhoneInternational`, () => {
 
             component.onPaste(pasteEvent);
 
-            expect(testComponent.control.value).toEqual(`+380123456789`);
+            expect(testComponent.control.value).toBe(`+380123456789`);
         });
 
         it(`should set country code on paste event 8(863)`, () => {

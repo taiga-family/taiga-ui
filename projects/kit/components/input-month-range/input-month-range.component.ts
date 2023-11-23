@@ -99,7 +99,7 @@ export class TuiInputMonthRangeComponent
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
-        return this.textfield ? this.textfield.nativeFocusableElement : null;
+        return this.textfield?.nativeFocusableElement ?? null;
     }
 
     get computedDefaultActiveYear(): TuiYear {
@@ -109,7 +109,7 @@ export class TuiInputMonthRangeComponent
     }
 
     get focused(): boolean {
-        return !!this.textfield && this.textfield.focused;
+        return !!this.textfield?.focused;
     }
 
     get calendarIcon(): TuiInputDateOptions['icon'] {

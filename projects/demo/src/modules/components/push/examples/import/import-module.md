@@ -6,9 +6,10 @@ import {TuiPushModule} from '@taiga-ui/kit';
 @NgModule({
   imports: [
     // ...
+    TuiRootModule,
     TuiPushModule,
   ],
   // ...
 })
-export class MyModule {}
+export class AppModule {}
 ```

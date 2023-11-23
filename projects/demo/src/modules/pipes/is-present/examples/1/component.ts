@@ -7,8 +7,8 @@ import {delayWhen} from 'rxjs/operators';
 @Component({
     selector: `tui-is-present-example1`,
     templateUrl: `./template.html`,
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiIsPresentExample1 {
     private readonly loadCountSubject = new Subject<void>();

@@ -7,6 +7,7 @@
     "implicitDependencies": ["!testing"],
     "targets": {
         "i18n": {
+            "outputs": ["{workspaceRoot}/dist/i18n"],
             "executor": "nx:run-commands",
             "options": {
                 "command": "nx build i18n"
@@ -47,19 +48,9 @@
                 "styles": [
                     "projects/demo/src/normalize.less",
                     "projects/demo/src/styles.less",
-                    "projects/demo/src/styles.scss",
-                    "node_modules/prismjs/themes/prism-okaidia.css"
+                    "projects/demo/src/styles.scss"
                 ],
-                "stylePreprocessorOptions": {
-                    "includePaths": ["projects/core/styles"]
-                },
-                "scripts": [
-                    "node_modules/marked/lib/marked.js",
-                    "node_modules/prismjs/prism.js",
-                    "node_modules/prismjs/components/prism-less.min.js",
-                    "node_modules/prismjs/components/prism-markup.min.js",
-                    "node_modules/prismjs/components/prism-typescript.min.js"
-                ],
+                "scripts": [],
                 "allowedCommonJsDependencies": ["text-mask-core", "markdown-it"],
                 "vendorChunk": true,
                 "extractLicenses": false,
@@ -230,14 +221,11 @@
             "executor": "@angular-builders/custom-webpack:server",
             "options": {
                 "customWebpackConfig": {
-                    "path": "projects/demo/webpack.config.ts"
+                    "path": "projects/demo/webpack.server.config.ts"
                 },
                 "outputPath": "dist/demo/server",
                 "main": "projects/demo/server.ts",
                 "tsConfig": "projects/demo/tsconfig.server.json",
-                "stylePreprocessorOptions": {
-                    "includePaths": ["projects/core/styles"]
-                },
                 "sourceMap": true,
                 "optimization": false
             },
@@ -253,14 +241,23 @@
         },
         "prerender": {
             "executor": "@nguniversal/builders:prerender",
+            "outputs": ["{workspaceRoot}/dist/demo"],
             "options": {
                 "browserTarget": "demo:build:production",
                 "serverTarget": "demo:server:production",
-                "routes": ["/"]
+                "routesFile": "projects/demo/routes.txt",
+                "guessRoutes": false
             },
             "configurations": {
                 "production": {}
-            }
+            },
+            "dependsOn": [
+                {
+                    "target": "i18n",
+                    "params": "ignore"
+                }
+            ],
+            "defaultConfiguration": "production"
         },
         "test": {
             "executor": "@nx/jest:jest",

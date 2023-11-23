@@ -7,6 +7,7 @@ import {
     EventEmitter,
     Inject,
     Input,
+    NgZone,
     Output,
     Self,
     ViewChild,
@@ -38,6 +39,7 @@ import {
     TUI_CANCEL_WORD,
     TUI_CHOOSE_DAY_OR_RANGE_TEXTS,
     TUI_DONE_WORD,
+    tuiImmutableUpdateInputDateMulti,
 } from '@taiga-ui/kit';
 import {identity, MonoTypeOperatorFunction, Observable, race, timer} from 'rxjs';
 import {
@@ -98,9 +100,9 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     readonly cancel = new EventEmitter<void>();
 
     @Output()
-    readonly confirm = new EventEmitter<TuiDay | TuiDayRange>();
+    readonly confirm = new EventEmitter<TuiDay | TuiDayRange | readonly TuiDay[]>();
 
-    value: TuiDay | TuiDayRange | null = null;
+    value: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
 
     readonly years = Array.from({length: RANGE}, (_, i) => i + STARTING_YEAR);
 
@@ -130,6 +132,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         @Inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS)
         readonly chooseDayOrRangeTexts$: Observable<[string, string]>,
         @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
+        @Inject(NgZone) private readonly ngZone: NgZone,
     ) {
         valueChanges.pipe(takeUntil(this.destroy$)).subscribe(value => {
             this.value = value;
@@ -167,11 +170,13 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
             return;
         }
 
-        if (
-            this.value === null ||
-            this.value instanceof TuiDay ||
-            !this.value.isSingleDay
-        ) {
+        if (!(this.value instanceof TuiDayRange) && !(this.value instanceof TuiDay)) {
+            this.value = tuiImmutableUpdateInputDateMulti(this.value ?? [], day);
+
+            return;
+        }
+
+        if (this.value instanceof TuiDay || !this.value?.isSingleDay) {
             this.value = new TuiDayRange(day, day);
 
             return;
@@ -219,9 +224,9 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         this.activeYear = year;
         this.scrollToActiveYear('smooth');
 
-        // Delay is required to run months scroll in the next frame to prevent flicker
-        setTimeout(() => {
-            this.scrollToActiveMonth();
+        this.ngZone.runOutsideAngular(() => {
+            // Delay is required to run months scroll in the next frame to prevent flicker
+            setTimeout(() => this.scrollToActiveMonth());
         });
     }
 
@@ -242,6 +247,10 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
             return this.value.year;
         }
 
+        if (!(this.value instanceof TuiDayRange)) {
+            return this.value?.[0]?.year ?? this.today.year;
+        }
+
         return this.value.from.year;
     }
 
@@ -252,6 +261,14 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
 
         if (this.value instanceof TuiDay) {
             return this.value.month + (this.value.year - STARTING_YEAR) * MONTHS_IN_YEAR;
+        }
+
+        if (!(this.value instanceof TuiDayRange)) {
+            return (
+                (this.value?.[0]?.month ?? this.today.month) +
+                ((this.value?.[0]?.year ?? this.today.year) - STARTING_YEAR) *
+                    MONTHS_IN_YEAR
+            );
         }
 
         return (
@@ -302,10 +319,12 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         const touchstart$ = tuiTypedFromEvent(
             yearsScrollRef.elementRef.nativeElement,
             'touchstart',
+            {passive: true},
         );
         const touchend$ = tuiTypedFromEvent(
             yearsScrollRef.elementRef.nativeElement,
             'touchend',
+            {passive: true},
         );
         const click$ = tuiTypedFromEvent(
             yearsScrollRef.elementRef.nativeElement,
@@ -372,6 +391,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         const touchend$ = tuiTypedFromEvent(
             monthsScrollRef.elementRef.nativeElement,
             'touchend',
+            {passive: true},
         );
 
         // Smooth scroll to the closest month after scrolling is done

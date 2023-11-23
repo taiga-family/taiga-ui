@@ -8,8 +8,8 @@ import {TuiDurationOptions, tuiScaleIn} from '@taiga-ui/core';
     selector: 'tui-scale-in-example',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
     animations: [tuiScaleIn],
 })
 export class TuiScaleInExample {

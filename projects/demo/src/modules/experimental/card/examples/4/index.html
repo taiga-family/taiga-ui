@@ -1,0 +1,33 @@
+<div tuiCard>
+    <tui-avatar-stack direction="left">
+        <tui-avatar
+            *ngFor="let url of urls"
+            size="s"
+            [round]="true"
+            [src]="url | tuiFallbackSrc: 'tuiIconUserLarge' | async"
+            [style.background]="url | tuiAutoColor"
+        ></tui-avatar>
+    </tui-avatar-stack>
+
+    <h2 tuiTitle>
+        Title
+        <span tuiSubtitle>Subtitle</span>
+    </h2>
+</div>
+
+<div tuiCard>
+    <h2 tuiTitle>
+        Title
+        <span tuiSubtitle>Subtitle</span>
+    </h2>
+
+    <tui-avatar-stack direction="left">
+        <tui-avatar
+            *ngFor="let url of urls"
+            size="s"
+            [round]="true"
+            [src]="url | tuiFallbackSrc: 'tuiIconUserLarge' | async"
+            [style.background]="url | tuiAutoColor"
+        ></tui-avatar>
+    </tui-avatar-stack>
+</div>

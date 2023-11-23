@@ -165,11 +165,11 @@ export class TuiInputDateRangeComponent
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
-        return this.textfield ? this.textfield.nativeFocusableElement : null;
+        return this.textfield?.nativeFocusableElement ?? null;
     }
 
     get focused(): boolean {
-        return !!this.textfield && this.textfield.focused;
+        return !!this.textfield?.focused;
     }
 
     get computedMobile(): boolean {
@@ -191,7 +191,15 @@ export class TuiInputDateRangeComponent
     }
 
     get computedMask(): MaskitoOptions {
-        return this.activePeriod
+        /**
+         * TODO: we can delete this workaround in v4.0
+         * after solving this issue:
+         * https://github.com/taiga-family/maskito/issues/604
+         */
+        const nativeValueIsNotSynced =
+            this.textfield?.nativeFocusableElement?.value !== this.computedValue;
+
+        return this.activePeriod || nativeValueIsNotSynced
             ? MASKITO_DEFAULT_OPTIONS
             : this.calculateMask(
                   this.dateFormat,
@@ -250,7 +258,7 @@ export class TuiInputDateRangeComponent
     }
 
     get nativeValue(): string {
-        return this.nativeFocusableElement ? this.nativeFocusableElement.value : '';
+        return this.nativeFocusableElement?.value || '';
     }
 
     set nativeValue(value: string) {
@@ -335,6 +343,7 @@ export class TuiInputDateRangeComponent
         this.value = range;
     }
 
+    // TODO: investigate if it is used anywhere and (if not) delete it in v4.0
     onItemSelect(item: TuiDayRangePeriod | string): void {
         this.toggle();
         this.focusInput();

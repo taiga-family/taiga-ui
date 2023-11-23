@@ -11,8 +11,8 @@ const yesterday = today.append({day: -1});
 @Component({
     selector: 'tui-input-date-range-example-5',
     templateUrl: './index.html',
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiInputDateRangeExample5 {
     readonly control = new FormControl(new TuiDayRange(today, today));

@@ -16,8 +16,8 @@ import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
     selector: 'tui-primitive-textfield-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection,
     encapsulation,
+    changeDetection,
 })
 export class TuiPrimitiveTextfieldExample1 extends AbstractTuiControl<string> {
     @ViewChild(TuiPrimitiveTextfieldComponent)
@@ -42,11 +42,11 @@ export class TuiPrimitiveTextfieldExample1 extends AbstractTuiControl<string> {
     }
 
     get focused(): boolean {
-        return !!this.textfield && this.textfield.focused;
+        return !!this.textfield?.focused;
     }
 
     get icon(): string {
-        return this.isPasswordHidden ? 'tuiIconEyeOffLarge' : 'tuiIconEyeLarge';
+        return this.isPasswordHidden ? 'tuiIconEyeLarge' : 'tuiIconEyeOffLarge';
     }
 
     get hint(): string {

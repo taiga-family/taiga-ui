@@ -229,7 +229,7 @@
 }
 
 // transition
-@mixin transition($param, $speed: var(--tui-duration, 300ms)) {
+@mixin transition($param: all, $speed: var(--tui-duration, 300ms)) {
     transition-property: $param;
     transition-duration: $speed;
     transition-timing-function: ease-in-out;
@@ -295,6 +295,7 @@
     }
 }
 
+// @deprecated use isolation: isolate instead
 @mixin createStackingContext() {
     position: relative;
     z-index: 0;
