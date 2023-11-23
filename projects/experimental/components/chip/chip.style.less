@@ -1,0 +1,99 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+tui-chip,
+[tuiChip] {
+    .chip();
+    gap: 0.125rem;
+    text-indent: 0.125rem;
+    border-radius: var(--tui-radius-m);
+    padding: var(--t-padding);
+    height: var(--t-size);
+
+    --t-icon-size: 1rem;
+
+    .interactive({
+        cursor: pointer;
+    });
+
+    > tui-icon,
+    &[tuiIcons]:before,
+    &[tuiIcons]:after {
+        font-size: var(--t-icon-size) !important;
+    }
+
+    &[data-size='xxs'] {
+        font: var(--tui-font-text-xs);
+        border-radius: var(--tui-radius-xs);
+        gap: 0;
+
+        --t-padding: 0 0.25rem 0 0.125rem;
+        --t-size: 1rem;
+        --t-icon-size: 0.75rem;
+
+        &:after {
+            transform: translateX(0.125rem);
+        }
+
+        & > [tuiIconButton] {
+            transform: translateX(0.125rem) scale(0.75);
+        }
+    }
+
+    &[data-size='xs'] {
+        border-radius: var(--tui-radius-xs);
+
+        --t-padding: 0 0.375rem 0 0.25rem;
+        --t-size: 1.25rem;
+
+        &:after,
+        & > [tuiIconButton] {
+            transform: translateX(0.125rem);
+        }
+    }
+
+    &[data-size='s'] {
+        --t-padding: 0 0.625rem 0 0.5rem;
+        --t-size: var(--tui-height-s);
+
+        &:after,
+        & > [tuiIconButton] {
+            transform: translateX(0.125rem);
+        }
+
+        & > img,
+        tui-avatar {
+            margin-inline-start: -0.25rem;
+        }
+    }
+
+    &[data-size='m'] {
+        font: var(--tui-font-text-m);
+        text-indent: 0.375rem;
+
+        --t-icon-size: 1.5rem;
+        --t-padding: 0 1rem 0 0.625rem;
+        --t-size: var(--tui-height-m);
+
+        &:after,
+        & > [tuiIconButton] {
+            transform: translateX(0.25rem);
+        }
+    }
+
+    & > img {
+        width: 1.5rem;
+    }
+
+    & > [tuiIconButton] {
+        margin: -0.25rem;
+    }
+
+    &[data-size='m'] > [tuiIconButton],
+    &[data-size='xxs'] > [tuiIconButton] {
+        margin: -0.375rem;
+    }
+
+    & > input[tuiChip] {
+        .fullsize();
+    }
+}

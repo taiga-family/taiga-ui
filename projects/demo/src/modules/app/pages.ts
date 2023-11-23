@@ -887,6 +887,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Experimental`,
+        title: `Chip`,
+        keywords: `tag, тэг, badge`,
+        route: `/experimental/chip`,
+    },
+    {
+        section: `Experimental`,
         title: `Compass`,
         keywords: `compass, user, point, dot, карта, точка`,
         route: `/experimental/compass`,
