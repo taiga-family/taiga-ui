@@ -941,6 +941,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Experimental`,
+        title: `Tooltip`,
+        keywords: `tooltip, тултип, hint, подсказка, помощь, help`,
+        route: `/experimental/tooltip`,
+    },
+    {
+        section: `Experimental`,
         title: `Checkbox `,
         keywords: `чек, радио, ввод, форма, form, checkbox, radio, toggle`,
         route: `/experimental/checkbox`,

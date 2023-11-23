@@ -1,0 +1,29 @@
+<ng-template #tooltip>Allowed symbols: ♠ ♣ ♦ ♥</ng-template>
+
+<tui-input
+    tuiTextfieldSize="m"
+    class="input"
+    [tuiTextfieldLabelOutside]="true"
+    [(ngModel)]="value"
+></tui-input>
+<tui-tooltip
+    direction="bottom"
+    [content]="tooltip"
+></tui-tooltip>
+
+<tui-input
+    tuiTextfieldSize="m"
+    class="input"
+    [(ngModel)]="value"
+>
+    <input
+        id="describe-id-example"
+        placeholder="With describeId"
+        tuiTextfield
+    />
+</tui-input>
+<tui-tooltip
+    describeId="described-example-id"
+    direction="right"
+    [content]="tooltip"
+></tui-tooltip>
