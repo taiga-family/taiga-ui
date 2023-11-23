@@ -615,6 +615,9 @@ const tuiIconCloseCircleLarge =
 const tuiIconCloseLarge =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" d="M8.707 7.293a1 1 0 0 0-1.414 1.414L10.586 12l-3.293 3.293a1 1 0 1 0 1.414 1.414L12 13.414l3.293 3.293a1 1 0 0 0 1.414-1.414L13.414 12l3.293-3.293a1 1 0 0 0-1.414-1.414L12 10.586z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
+const tuiIconCloseOutline =
+    '<svg width="1em" height="1em" focusable="false" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m4 4 8 8M12 4l-8 8" vector-effect="non-scaling-stroke"/></svg>';
+
 const tuiIconCloud =
     '<svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" overflow="visible" viewBox="0 0 16 16"><svg x="-8" y="-8"><svg width="16" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10"/></svg></svg></svg></g></svg>';
 
@@ -3222,6 +3225,7 @@ export {
     tuiIconClose,
     tuiIconCloseCircleLarge,
     tuiIconCloseLarge,
+    tuiIconCloseOutline,
     tuiIconCloud,
     tuiIconCloudDrizzle,
     tuiIconCloudDrizzleLarge,
