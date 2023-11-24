@@ -233,6 +233,14 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/chip`,
+        loadChildren: async () =>
+            (await import(`../experimental/chip/chip.module`)).ExampleTuiChipModule,
+        data: {
+            title: `Chip`,
+        },
+    },
+    {
         path: `experimental/checkbox`,
         loadChildren: async () =>
             (await import(`../experimental/checkbox/checkbox.module`))

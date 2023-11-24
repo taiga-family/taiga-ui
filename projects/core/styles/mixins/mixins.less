@@ -1,3 +1,14 @@
+.interactive(@ruleset) {
+    // TODO switch to :is after Safari 14 and FF 78 support
+    &:-webkit-any(a, button, select, textarea, input, label) {
+        @ruleset();
+    }
+
+    &:-moz-any(a, button, select, textarea, input, label) {
+        @ruleset();
+    }
+}
+
 // centering with translate
 .center-left() {
     position: absolute;
@@ -52,6 +63,19 @@
     font-size: inherit;
     line-height: inherit;
     text-decoration: none;
+}
+
+.chip() {
+    .clearbtn();
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+    max-width: 100%;
+    font: var(--tui-font-text-s);
 }
 
 .autofill(@mode:default) {
