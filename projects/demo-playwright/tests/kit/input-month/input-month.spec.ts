@@ -10,7 +10,7 @@ describe(`InputMonth`, () => {
         let inputMonth: TuiInputMonthPO;
 
         test.use({
-            viewport: {width: 360, height: 500},
+            viewport: {width: 360, height: 410},
         });
 
         beforeEach(async ({page}) => {
