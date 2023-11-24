@@ -21,7 +21,7 @@ describe(`InputMonth`, () => {
         });
 
         test(`Maximum month less than current month`, async ({page}) => {
-            await tuiGoto(page, `components/input-month/API?tuiMode=null&max$=1`);
+            await tuiGoto(page, `components/input-month/API?max$=1`);
             await inputMonth.textfield.click();
 
             await documentationPage.prepareApiPageBeforeScreenshot();
