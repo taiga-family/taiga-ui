@@ -20,6 +20,7 @@ import {
     TUI_DOC_SEE_ALSO,
     TUI_DOC_SOURCE_CODE,
     TUI_DOC_TITLE,
+    TUI_DOC_TYPE_REFERENCE_HANDLER,
     TUI_DOC_URL_STATE_HANDLER,
     tuiDocExampleOptionsProvider,
     TuiDocSourceCodePathOptions,
@@ -196,6 +197,35 @@ export const APP_PROVIDERS: Provider[] = [
         deps: [TUI_BASE_HREF],
         useFactory: (baseHref: string) => (tree: UrlTree) =>
             String(tree).replace(baseHref, ``),
+    },
+    {
+        provide: TUI_DOC_TYPE_REFERENCE_HANDLER,
+        useValue: (type: string) => {
+            switch (type) {
+                case `any`:
+                case `null`:
+                case `unknown`:
+                case `undefined`:
+                case `boolean`:
+                case `string`:
+                case `void`:
+                case `number`:
+                case `Map`:
+                case `Set`:
+                    return null;
+                case `CustomEvent`:
+                case `Element`:
+                    return `https://developer.mozilla.org/en-US/docs/Web/API/${type}`;
+                case `PolymorpheusContent`:
+                    return `https://github.com/taiga-family/ng-polymorpheus`;
+                case `TrackByFunction`:
+                    return `https://angular.dev/api/core/TrackByFunction`;
+                case `SafeResourceUrl`:
+                    return `https://angular.dev/api/platform-browser/SafeResourceUrl`;
+                default:
+                    return `https://github.com/search?q=%2F%28enum%7Ctype%7Cinterface%7Cclass%7Cfunction%7Cconst%29+${type}%28%3C%7C%5Cs%29%2F+language%3ATypeScript+org%3Ataiga-family&type=code`;
+            }
+        },
     },
     tuiDocExampleOptionsProvider({fullsize: false}),
     tuiLanguageSwitcher(
