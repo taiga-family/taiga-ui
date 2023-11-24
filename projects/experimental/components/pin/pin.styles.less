@@ -1,7 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    .transition(~'transform, width, height, font, border');
+    .transition(~'width, height, font, border, margin');
     .clearbtn();
     position: relative;
     display: flex;
@@ -36,6 +36,8 @@
     }
 
     ::ng-deep > img {
+        max-height: 100%;
+        box-sizing: border-box;
         border-radius: 100%;
         background: var(--tui-base-01);
     }
@@ -52,7 +54,7 @@
         font: var(--tui-font-text-m);
         font-weight: bold;
         border-width: 0;
-        transform: translate(-50%, calc(-2.75rem - 50%));
+        margin-top: -2.75rem;
 
         --t-size: 3.5rem;
 
