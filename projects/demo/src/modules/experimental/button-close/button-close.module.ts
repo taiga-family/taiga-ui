@@ -10,9 +10,9 @@ import {TuiButtonCloseExample1} from './examples/1';
 @NgModule({
     imports: [
         CommonModule,
-        TuiButtonCloseModule,
         TuiNotificationModule,
         TuiButtonModule,
+        TuiButtonCloseModule,
         tuiGetDocModules(ExampleTuiButtonCloseComponent),
     ],
     declarations: [ExampleTuiButtonCloseComponent, TuiButtonCloseExample1],
