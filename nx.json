@@ -13,11 +13,11 @@
             "{workspaceRoot}/*.md"
         ],
         "default": ["{projectRoot}/**/*", "sharedGlobals"],
-        "production": ["default", "!{projectRoot}/**/*.spec.ts", "!{projectRoot}/**/*.cy.ts", "sharedGlobals"]
+        "production": ["default"]
     },
     "targetDefaults": {
         "build": {
-            "inputs": ["default", "production", "^production"],
+            "inputs": ["default", "^default"],
             "cache": true
         },
         "test": {
@@ -31,7 +31,7 @@
             "cache": true
         },
         "e2e": {
-            "inputs": ["default", "production", "^production"]
+            "inputs": ["default", "^default"]
         }
     },
     "affected": {
