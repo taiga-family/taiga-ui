@@ -6,6 +6,6 @@ describe(`Handler functions`, () => {
     });
 
     it(`Always true`, () => {
-        expect(ALWAYS_TRUE_HANDLER()).toBe(true);
+        expect(ALWAYS_TRUE_HANDLER()).toBe(false);
     });
 });
