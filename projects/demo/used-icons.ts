@@ -117,6 +117,7 @@ export const TUI_USED_ICONS = [
     `tuiIconThumbsUp`,
     `tuiIconThumbsDown`,
     `tuiIconCloud`,
+    `tuiIconInfo`,
     `tuiIconDeleteLarge`,
     `tuiIconRedo`,
     `tuiIconRefresh`,

@@ -90,7 +90,7 @@ export const MIGRATION_WARNINGS: readonly MigrationWarning[] = [
     {
         name: `TuiInputSearchModule`,
         moduleSpecifier: `@taiga-ui/proprietary-core`,
-        message: `Use TuiInputModule (@taiga-ui/kit) with icon "tuiIconSearchLarge": https://taiga-ui.dev/components/input/API?iconAlign=left&icon=tuiIconSearchLarge`,
+        message: `Use MultiSelect (@taiga-ui/kit) with icon "tuiIconSearchLarge": https://taiga-ui.dev/components/multi-select/API?tuiTextfieldIconLeft=tuiIconSearchLarge`,
     },
     {
         name: `TuiCarouselModule`,
