@@ -29,7 +29,7 @@ describe(`InputMonth`, () => {
         });
 
         test(`Minimum month more than current month`, async ({page}) => {
-            await tuiGoto(page, `components/input-month/API?tuiMode=null&min$=3`);
+            await tuiGoto(page, `components/input-month/API?min$=3`);
             await inputMonth.textfield.click();
 
             await documentationPage.prepareApiPageBeforeScreenshot();
