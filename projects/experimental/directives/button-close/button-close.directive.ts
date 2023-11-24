@@ -5,6 +5,7 @@ import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
 
 import {TUI_BUTTON_CLOSE_ICON} from './button-close.options';
 
+// TODO: 4.0 revisit after turning tuiIcon to host directive
 @Directive({
     selector: '[tuiIconButton][tuiButtonClose]',
     providers: [tuiButtonOptionsProvider({appearance: 'neutral', size: 's'})],

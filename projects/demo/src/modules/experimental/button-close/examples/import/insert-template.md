@@ -2,5 +2,7 @@
 <button
   tuiIconButton
   tuiButtonClose
-></button>
+>
+  Close
+</button>
 ```
