@@ -334,6 +334,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/button-close`,
+        loadChildren: async () =>
+            (await import(`../experimental/button-close/button-close.module`))
+                .ExampleTuiButtonCloseModule,
+        data: {
+            title: `ButtonClose`,
+        },
+    },
+    {
         path: `experimental/cell`,
         loadChildren: async () =>
             (await import(`../experimental/cell/cell.module`)).ExampleTuiCellModule,
