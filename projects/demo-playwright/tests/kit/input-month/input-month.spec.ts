@@ -14,7 +14,6 @@ describe(`InputMonth`, () => {
         });
 
         beforeEach(async ({page}) => {
-            await tuiGoto(page, `components/input-month/`);
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.apiPageExample;
             inputMonth = new TuiInputMonthPO(example.locator(`tui-input-month`));
