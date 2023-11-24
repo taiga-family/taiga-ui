@@ -148,7 +148,6 @@ tui-doc-code {
     .hljs-comment,
     .hljs-quote {
         color: var(--tui-text-02);
-        font-style: italic;
     }
 
     .hljs-meta {
@@ -167,10 +166,15 @@ tui-doc-code {
         color: var(--tui-link);
     }
 
+    .hljs-attr {
+        color: var(--tui-link);
+    }
+
     .hljs-attribute,
     .hljs-number,
     .hljs-regexp,
-    .hljs-link {
+    .hljs-link,
+    .hljs-built_in {
         font-weight: bold;
         color: var(--tui-support-06);
     }
