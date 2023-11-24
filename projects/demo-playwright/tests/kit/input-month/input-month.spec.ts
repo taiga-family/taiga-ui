@@ -13,7 +13,7 @@ describe(`InputMonth`, () => {
             viewport: {width: 360, height: 410},
         });
 
-        beforeEach(async ({page}) => {
+        beforeEach(({page}) => {
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.apiPageExample;
             inputMonth = new TuiInputMonthPO(example.locator(`tui-input-month`));
