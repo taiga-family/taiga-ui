@@ -2,6 +2,10 @@ import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe(`Carousel`, () => {
+    test.use({
+        viewport: {width: 500, height: 400},
+    });
+
     test(`default padding`, async ({page}) => {
         await tuiGoto(page, `components/carousel/API`);
         const {apiPageExample} = new TuiDocumentationPagePO(page);
@@ -22,9 +26,9 @@ test.describe(`Carousel`, () => {
         await tuiGoto(page, `components/carousel/API?draggable=true`);
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-        await page.mouse.move(650, 350);
+        await page.mouse.move(375, 300);
         await page.mouse.down();
-        await page.mouse.move(300, 350, {steps: 10});
+        await page.mouse.move(125, 300, {steps: 10});
         await page.mouse.up();
 
         await expect(apiPageExample).toHaveScreenshot(`carousel-draggable.png`);
