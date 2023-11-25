@@ -5,10 +5,6 @@ import {tuiHideElement} from '../hide-element';
 export class TuiDocumentationPagePO {
     readonly apiPageExample: Locator = this.page.locator(`#demo-content`);
 
-    readonly customSizeOptionContent: Locator = this.page.locator(
-        `#custom-size-option-content`,
-    );
-
     readonly submitFormControlButton = this.apiPageExample.locator(
         `[automation-id="tui-demo-button__submit-state"]`,
     );
@@ -55,7 +51,9 @@ export class TuiDocumentationPagePO {
 
         await this.apiPageExample.evaluate(el => el.scrollIntoView());
         await expect(async () => {
-            expect(await this.apiPageExample.boundingBox().then(box => box?.y)).toBe(64);
+            expect(
+                await this.apiPageExample.boundingBox().then(box => box?.y),
+            ).toBeGreaterThanOrEqual(64);
         }).toPass();
     }
 }

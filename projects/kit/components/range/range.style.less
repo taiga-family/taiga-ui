@@ -4,6 +4,8 @@
 @extra-click-area-space: 0.4375rem;
 @tick-thickness: 0.25rem;
 
+@thumb-shift: 1px;
+
 :host {
     position: relative;
     display: block;
@@ -47,7 +49,7 @@
         right: var(--right);
         height: 100%;
         background: var(--tui-primary);
-        margin: 0 (-@thumb-width / 2);
+        margin: 0 calc(-@thumb-width / 2 - @thumb-shift);
     }
 
     /* Ticks */
@@ -124,22 +126,15 @@
     right: 0;
     z-index: 1;
     transform: translate(0, -50%);
+    // TODO: drop in v4.0 (it will be already done inside Slider)
     margin: 0; /* Drop browser default margins */
 
-    &:last-of-type::-webkit-slider-thumb {
-        transform: translate(50%, 0);
+    &:last-of-type {
+        --tui-slider-thumb-transform: translateX(50%) translateX(@thumb-shift);
     }
 
-    &:first-of-type::-webkit-slider-thumb {
-        transform: translate(-50%, 0);
-    }
-
-    &:last-of-type::-moz-range-thumb {
-        transform: translate(50%, 0);
-    }
-
-    &:first-of-type::-moz-range-thumb {
-        transform: translate(-50%, 0);
+    &:first-of-type {
+        --tui-slider-thumb-transform: translateX(-50%) translateX(-@thumb-shift);
     }
 
     :host._disabled & {

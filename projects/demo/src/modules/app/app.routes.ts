@@ -233,6 +233,14 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `experimental/chip`,
+        loadChildren: async () =>
+            (await import(`../experimental/chip/chip.module`)).ExampleTuiChipModule,
+        data: {
+            title: `Chip`,
+        },
+    },
+    {
         path: `experimental/checkbox`,
         loadChildren: async () =>
             (await import(`../experimental/checkbox/checkbox.module`))
@@ -263,6 +271,15 @@ export const ROUTES: Routes = [
             (await import(`../experimental/toggle/toggle.module`)).ExampleTuiToggleModule,
         data: {
             title: `Toggle `,
+        },
+    },
+    {
+        path: `experimental/tooltip`,
+        loadChildren: async () =>
+            (await import(`../experimental/tooltip/tooltip.module`))
+                .ExampleTuiTooltipModule,
+        data: {
+            title: `Tooltip `,
         },
     },
     {
@@ -314,6 +331,15 @@ export const ROUTES: Routes = [
                 .ExampleTuiButtonModule,
         data: {
             title: `ButtonVertical`,
+        },
+    },
+    {
+        path: `experimental/button-close`,
+        loadChildren: async () =>
+            (await import(`../experimental/button-close/button-close.module`))
+                .ExampleTuiButtonCloseModule,
+        data: {
+            title: `ButtonClose`,
         },
     },
     {
@@ -391,6 +417,14 @@ export const ROUTES: Routes = [
                 .ExampleTuiThumbnailCardModule,
         data: {
             title: `ThumbnailCard `,
+        },
+    },
+    {
+        path: `experimental/pin`,
+        loadChildren: async () =>
+            (await import(`../experimental/pin/pin.module`)).ExampleTuiPinModule,
+        data: {
+            title: `Pin`,
         },
     },
     {

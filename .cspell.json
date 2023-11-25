@@ -35,7 +35,8 @@
         "callout",
         "retrowave",
         "replicants",
-        "tuiiconbutton"
+        "tuiiconbutton",
+        "hitbox"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
