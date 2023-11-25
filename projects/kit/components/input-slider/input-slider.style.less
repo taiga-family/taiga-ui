@@ -9,12 +9,13 @@
 
 // Don't change CSS-selector (we require the such specificity to override default styles without !important)
 input[type='range'] {
+    @left-gap: calc(var(--tui-radius-m) / 2);
     position: absolute;
     top: 100%;
-    left: 0;
+    left: @left-gap;
     right: 0;
+    width: calc(100% - @left-gap); // Double check Firefox if you want to set `width: auto`
     box-sizing: border-box;
-    padding-left: calc(var(--tui-radius-m) / 2);
     height: 1rem;
     margin: -0.5625rem 0 0;
     border-top-left-radius: 0;

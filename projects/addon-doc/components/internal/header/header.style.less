@@ -14,6 +14,11 @@
     padding: 0 1.25rem;
     background: var(--tui-base-01);
     border-bottom: 1px solid var(--tui-base-03);
+
+    @supports (background: color-mix(in srgb, var(--tui-base-01), transparent 50%)) {
+        background: color-mix(in srgb, var(--tui-base-01), transparent 50%);
+        backdrop-filter: blur(1.25rem);
+    }
 }
 
 .t-logo {

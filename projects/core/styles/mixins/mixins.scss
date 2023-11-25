@@ -1,3 +1,14 @@
+@mixin interactive {
+    // TODO switch to :is after Safari 14 and FF 78 support
+    &:-webkit-any(a, button, select, textarea, input) {
+        @content;
+    }
+
+    &:-moz-any(a, button, select, textarea, input) {
+        @content;
+    }
+}
+
 // centering with translate
 @mixin center-left() {
     position: absolute;
@@ -51,6 +62,22 @@
     background: none;
     font-size: inherit;
     line-height: inherit;
+}
+
+@mixin chip() {
+    @include clearbtn();
+
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+    max-width: 100%;
+    padding: var(--t-padding);
+    height: var(--t-size);
+    font: var(--tui-font-text-s);
 }
 
 @mixin autofill($mode: default) {

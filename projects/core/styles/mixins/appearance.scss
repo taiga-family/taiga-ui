@@ -1,16 +1,7 @@
-@mixin appearance-interactive {
-    // TODO switch to :is after Safari 14 and FF 78 support
-    &:-webkit-any(a, button, select, textarea, input) {
-        @content;
-    }
-
-    &:-moz-any(a, button, select, textarea, input) {
-        @content;
-    }
-}
+@import 'mixins.scss';
 
 @mixin appearance-hover {
-    @include appearance-interactive {
+    @include interactive {
         @media (hover: hover) {
             &:hover:not([data-state]) {
                 @content;
@@ -24,7 +15,7 @@
 }
 
 @mixin appearance-active {
-    @include appearance-interactive {
+    @include interactive {
         &:active:not([data-state]) {
             @content;
         }

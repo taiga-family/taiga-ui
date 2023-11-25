@@ -9,7 +9,7 @@
         "composite": false,
         "incremental": false,
         "tsBuildInfoFile": null,
-        "types": ["jasmine", "node", "webpack-env", "ng-dev-mode"]
+        "types": ["node", "webpack-env", "ng-dev-mode"]
     },
     "include": ["../constants/version.ts", "./**/*", "./**/collection.json", "./**/migration.json", "./**/schema.json"],
     "exclude": ["./**/*.spec.ts"]

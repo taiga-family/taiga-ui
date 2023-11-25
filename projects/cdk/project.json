@@ -42,22 +42,6 @@
             },
             "dependsOn": [
                 {
-                    "target": "test-schematics",
-                    "params": "forward"
-                }
-            ]
-        },
-        "test-schematics": {
-            "executor": "nx:run-commands",
-            "options": {
-                "parallel": false,
-                "commands": [
-                    "tsc -p ./projects/cdk/schematics/tsconfig.spec.json",
-                    "jasmine ./dist/cdk/schematics/**/*.spec.js"
-                ]
-            },
-            "dependsOn": [
-                {
                     "target": "postbuild",
                     "params": "forward"
                 }
