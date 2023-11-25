@@ -40,25 +40,30 @@ describe(`ComboBox`, () => {
                     `search-should-not-be-reset-strict-${strict}.png`,
                 );
 
-                await getInput(apiPageExample).fill(`Rubles (500)`);
+                await getInput(apiPageExample).click();
+                await page.keyboard.type(`Rubles (500)`);
                 await waitCheckmark(page);
                 await expect(page).toHaveScreenshot(
                     `search-should-not-be-reset-strict-waited-mark-${strict}.png`,
                 );
 
+                // await getInput(apiPageExample).click({force: true});
                 await clickFirstOption(page);
                 await focusWrapper(apiPageExample);
                 await expect(page).toHaveScreenshot(
                     `search-should-not-be-reset-strict-focused-${strict}.png`,
                 );
 
-                await getInput(apiPageExample).fill(`{backspace}`);
+                await getInput(apiPageExample).click();
+                await page.keyboard.press(`Backspace`);
                 await focusWrapper(apiPageExample);
                 await expect(page).toHaveScreenshot(
                     `search-should-not-be-reset-strict-backspaced-${strict}.png`,
                 );
 
-                await getInput(apiPageExample).fill(`{selectall}{backspace}`);
+                await getInput(apiPageExample).click();
+                await page.keyboard.press(`Control+A`);
+                await page.keyboard.press(`Backspace`);
                 await focusWrapper(apiPageExample);
                 await expect(page).toHaveScreenshot(
                     `search-should-not-be-reset-strict-remove-all-${strict}.png`,
@@ -71,25 +76,30 @@ describe(`ComboBox`, () => {
                 await visitBy(page, strict);
                 await openFormValue(apiPageExample);
 
-                await getInput(apiPageExample).fill(`dOlLaRs (237)`, {});
+                await getInput(apiPageExample).click();
+                await page.keyboard.type(`dOlLaRs (237)`);
                 await waitCheckmark(page);
                 await expect(page).toHaveScreenshot(
                     `correct-word-match-when-strict-${strict}.png`,
                 );
 
-                await getInput(apiPageExample).fill(`{backspace}`, {force: true});
+                await getInput(apiPageExample).click();
+                await page.keyboard.press(`Backspace`);
 
                 await page.waitForTimeout(200);
 
-                await getInput(apiPageExample).fill(`{backspace}`, {force: true});
+                await getInput(apiPageExample).click();
+                await page.keyboard.press(`Backspace`);
 
                 await page.waitForTimeout(200);
 
-                await getInput(apiPageExample).fill(`{backspace}`, {force: true});
+                await getInput(apiPageExample).click();
+                await page.keyboard.press(`Backspace`);
 
                 await page.waitForTimeout(200);
 
-                await getInput(apiPageExample).fill(`{backspace}`, {force: true});
+                await getInput(apiPageExample).click();
+                await page.keyboard.press(`Backspace`);
 
                 await expect(page).toHaveScreenshot(
                     `correct-word-match-when-strict-backspaced-${strict}.png`,
@@ -101,9 +111,9 @@ describe(`ComboBox`, () => {
                     `correct-word-match-when-strict-focused-${strict}.png`,
                 );
 
-                await getInput(apiPageExample).fill(`{selectall}{backspace}`, {
-                    force: true,
-                });
+                await getInput(apiPageExample).click();
+                await page.keyboard.press(`Control+A`);
+                await page.keyboard.press(`Backspace`);
 
                 await expect(page).toHaveScreenshot(
                     `correct-word-match-when-strict-remove-all-${strict}.png`,
@@ -142,6 +152,6 @@ async function waitCheckmark(page: Page): Promise<void> {
 }
 
 async function clickFirstOption(page: Page): Promise<void> {
-    await expect(page.getByTestId(`tui-data-list-wrapper__option`)).toBeVisible();
-    await page.getByTestId(`tui-data-list-wrapper__option`).click({force: true});
+    await expect(page.getByTestId(`tui-data-list-wrapper__option`).first()).toBeVisible();
+    await page.getByTestId(`tui-data-list-wrapper__option`).first().click({force: true});
 }
