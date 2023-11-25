@@ -1,4 +1,4 @@
-/// <reference types="jasmine" />
+/// <reference types="jest" />
 
 import {DebugElement} from '@angular/core';
 import {ComponentFixture} from '@angular/core/testing';

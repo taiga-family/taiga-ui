@@ -6,14 +6,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TUI_DEFAULT_MATCHER, TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
-import {
-    debounceTime,
-    distinctUntilChanged,
-    filter,
-    map,
-    share,
-    takeUntil,
-} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, filter, map, takeUntil} from 'rxjs/operators';
 
 import {IconsGroupDirective} from './icons-group.directive';
 
@@ -38,12 +31,10 @@ export class IconsGroupComponent implements OnInit {
 
     control = new FormControl('');
 
-    search$: Observable<string> = this.route.queryParams
-        .pipe(
-            map(queryParams => queryParams['name'] ?? ''),
-            distinctUntilChanged(),
-        )
-        .pipe(share());
+    search$: Observable<string> = this.route.queryParams.pipe(
+        map(queryParams => queryParams['search'] ?? ''),
+        distinctUntilChanged(),
+    );
 
     constructor(
         @Inject(Clipboard) private readonly clipboard: Clipboard,
@@ -54,16 +45,16 @@ export class IconsGroupComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.control.patchValue(this.route.snapshot.queryParams['name'] ?? '');
+        this.control.patchValue(this.route.snapshot.queryParams['search'] ?? '');
         this.control.valueChanges
             .pipe(
                 debounceTime(500),
                 filter((search: string) => search.length > 2 || search.length === 0),
-                map(name => name || null),
+                map(search => search || null),
                 takeUntil(this.destroy$),
             )
-            .subscribe(name => {
-                void this.router.navigate([], {queryParams: {name}});
+            .subscribe(search => {
+                void this.router.navigate([], {queryParams: {search}});
             });
     }
 

@@ -16,15 +16,15 @@ describe(`Observable.prototype.tuiIsAlive`, () => {
             result.push(alive);
         });
 
-        expect<boolean | null>(result).toEqual([]);
+        expect<Array<boolean | null>>(result).toEqual([]);
 
         $.next(999);
 
-        expect<boolean | null>(result).toEqual([true]);
+        expect<Array<boolean | null>>(result).toEqual([true]);
 
         tick();
 
-        expect<boolean | null>(result).toEqual([true, false]);
+        expect<Array<boolean | null>>(result).toEqual([true, false]);
     }));
 
     it(`if during a lifespan another event comes, "true" is not emitted again`, fakeAsync(() => {
@@ -37,6 +37,6 @@ describe(`Observable.prototype.tuiIsAlive`, () => {
         $.next(222);
         tick(300);
 
-        expect<boolean | null>(result).toEqual([true, false]);
+        expect<Array<boolean | null>>(result).toEqual([true, false]);
     }));
 });
