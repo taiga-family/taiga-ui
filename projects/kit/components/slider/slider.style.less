@@ -12,6 +12,15 @@
 @track-color: var(--tui-slider-track-color);
 @thumb-color: currentColor;
 
+@hitbox: 1rem;
+
+@transform-noop: scale(1);
+
+@active-thumb-scale-factor: {
+    @s: 1.5;
+    @m: 1.333;
+};
+
 .customize-track(@progress-filling, @thumb-width) {
     height: @track-height;
     border-radius: inherit;
@@ -55,22 +64,44 @@
 }
 
 .customize-thumb(@size) {
+    .transition(transform);
+    isolation: isolate;
     appearance: none;
     background-color: @thumb-color;
-    border: none;
+    box-shadow: none;
     border-radius: 50%;
     height: @thumb-diameters[@@size];
     width: @thumb-diameters[@@size];
 
+    /* Increase vertical hitbox by trasparent borders */
+    box-sizing: content-box;
+    background-clip: content-box;
+    border: ((@hitbox - @thumb-diameters[@@size]) / 2) solid transparent;
+    border-left: 0;
+    border-right: 0;
+    transform: var(--tui-slider-thumb-transform, @transform-noop);
+
     :not(:disabled)& {
         cursor: ew-resize;
 
+        /*
+        TODO: delete it in v4.0
+        New version of slider doesn't change color for ":hover" or ":active" states.
+        Don't forget to update this example (just use css property "color" for host):
+        https://taiga-ui.dev/components/slider#colors
+         */
         &:hover {
-            background: var(--tui-primary-hover);
+            background-color: var(--tui-primary-hover);
         }
 
-        &:active {
-            background: var(--tui-primary-active);
+        // TODO: delete it in v4.0
+        :active& {
+            background-color: var(--tui-primary-active);
+        }
+
+        &:hover,
+        :active& {
+            transform: var(--tui-slider-thumb-transform, @transform-noop) scale(@active-thumb-scale-factor[@@size]);
         }
     }
 
@@ -80,11 +111,38 @@
 }
 
 /* Vertically centers thumb on the track (webkit only) */
-.vertically-align-thumb(@size) {
-    margin-top: (@track-height / 2) - (@thumb-diameters[@@size] / 2);
+.vertically-align-thumb() {
+    margin-top: (@track-height / 2) - (@hitbox / 2);
+}
+
+.thumb-ghost(@size) {
+    position: absolute;
+    top: ((@hitbox - @thumb-diameters[@@size]) / 2);
+    left: calc(var(--tui-slider-fill-percentage) - var(--tui-slider-fill-ratio) * @thumb-diameters[@@size]);
+    width: @thumb-diameters[@@size];
+    height: @thumb-diameters[@@size];
+    border-radius: 50%;
+    transform: var(--tui-slider-thumb-transform, @transform-noop);
+}
+
+.thumb-overlay(@size) {
+    &:not(:disabled):before {
+        .transition(~'transform, opacity');
+        .thumb-ghost(@size);
+        content: '';
+        cursor: ew-resize;
+        background: @thumb-color;
+        opacity: 0;
+    }
+
+    &:active:before {
+        opacity: 0.2;
+        transform: var(--tui-slider-thumb-transform, @transform-noop) scale(2.33);
+    }
 }
 
 :host {
+    position: relative;
     display: block;
     width: 100%;
     color: var(--tui-primary); /* See currentColor inside this file */
@@ -100,12 +158,20 @@
         opacity: var(--tui-disabled-opacity);
         cursor: auto;
     }
+
+    &[data-size='s'] {
+        .thumb-overlay(s);
+    }
+
+    &[data-size='m'] {
+        .thumb-overlay(m);
+    }
 }
 
 :host:not(._old-edge) {
     appearance: none;
     height: @track-height;
-    padding: 0.4375rem 0; /* To catch click events nearby THIN input's track */
+    padding: ((@hitbox - @track-height) / 2) 0; /* To catch click events nearby THIN input's track */
     background-color: transparent;
     background-clip: content-box; /* To clip filling of paddings */
     outline: none;
@@ -133,12 +199,12 @@
 
     &[data-size='m']::-webkit-slider-thumb {
         .customize-thumb(m);
-        .vertically-align-thumb(m);
+        .vertically-align-thumb();
     }
 
     &[data-size='s']::-webkit-slider-thumb {
         .customize-thumb(s);
-        .vertically-align-thumb(s);
+        .vertically-align-thumb();
     }
 
     &[data-size='m']::-moz-range-thumb {

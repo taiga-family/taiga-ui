@@ -27,9 +27,9 @@ describe(`Navigation`, () => {
         });
 
         it(`scroll to \`tui-doc-code\``, () => {
-            cy.tuiVisit(`/getting-started#options`);
+            cy.tuiVisit(`/getting-started#icons`);
 
-            cy.get(`#options`).should(`be.visible`).should(`be.inViewport`);
+            cy.get(`#icons`).should(`be.visible`).should(`be.inViewport`);
         });
 
         it(`scroll after click on link with anchor`, () => {

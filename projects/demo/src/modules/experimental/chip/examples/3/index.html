@@ -1,0 +1,97 @@
+<h3>Checkbox</h3>
+<section>
+    <tui-chip
+        *tuiRepeatTimes="let i of checked.length"
+        appearance=""
+    >
+        Checkbox {{ i + 1 }}
+        <input
+            appearance="whiteblock"
+            tuiChip
+            type="checkbox"
+            [(ngModel)]="checked[i]"
+        />
+    </tui-chip>
+</section>
+
+<h3>Radio</h3>
+<section>
+    <tui-chip
+        *tuiRepeatTimes="let i of 3"
+        appearance=""
+    >
+        Radio {{ i + 1 }}
+        <input
+            appearance="whiteblock"
+            name="radio"
+            tuiChip
+            type="radio"
+            [value]="i"
+        />
+    </tui-chip>
+</section>
+
+<h3>Label whiteblock</h3>
+<section>
+    <label
+        *tuiRepeatTimes="let i of checked.length"
+        appearance="whiteblock"
+        tuiChip
+    >
+        <input
+            tuiCheckbox
+            type="checkbox"
+            [(ngModel)]="checked[i]"
+        />
+        Label {{ i + 1 }}
+    </label>
+</section>
+
+<h3>Label accent</h3>
+<section>
+    <label
+        *tuiRepeatTimes="let i of checked.length"
+        tuiChip
+        [appearance]="checked[i] ? 'accent' : 'neutral'"
+    >
+        <input
+            hidden
+            type="checkbox"
+            [(ngModel)]="checked[i]"
+        />
+        Label {{ i + 1 }}
+    </label>
+</section>
+
+<h3>Button</h3>
+<section>
+    <button
+        *tuiRepeatTimes="let i of 3"
+        tuiChip
+        (click)="onChip(i)"
+    >
+        Button {{ i + 1 }}
+        <button
+            iconLeft="tuiIconClose"
+            tuiIconButton
+            (click.stop)="onX(i)"
+        >
+            Remove
+        </button>
+    </button>
+</section>
+
+<h3>Input</h3>
+<section>
+    <tui-chip
+        *tuiRepeatTimes="let i of values.length"
+        appearance=""
+        [style.color]="'transparent'"
+    >
+        {{ values[i] }}
+        <input
+            tuiChip
+            [(ngModel)]="values[i]"
+        />
+    </tui-chip>
+</section>

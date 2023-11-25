@@ -60,7 +60,6 @@ export interface TuiHostedDropdownContext
     close(): void;
 }
 
-/* eslint-disable @typescript-eslint/member-ordering */
 @Component({
     selector: 'tui-hosted-dropdown',
     templateUrl: './hosted-dropdown.template.html',
@@ -84,8 +83,6 @@ export interface TuiHostedDropdownContext
     },
 })
 export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
-    readonly focus$ = new BehaviorSubject(false);
-
     @ContentChild(TuiHostedDropdownConnectorDirective, {read: ElementRef})
     private readonly dropdownHost?: ElementRef<HTMLElement>;
 
@@ -95,20 +92,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @ViewChild(TuiDropdownDirective)
     private readonly dropdownDirective?: TuiDropdownDirective;
 
-    /** TODO: rename in 4.0 */
-    readonly openChange = new BehaviorSubject(false);
-
-    @ViewChild(TuiActiveZoneDirective)
-    readonly activeZone!: TuiActiveZoneDirective;
-
-    @Input()
-    content: PolymorpheusContent<TuiHostedDropdownContext>;
-
-    @Input()
-    sided = false;
-
-    @Input()
-    canOpen = true;
+    private readonly openChange$ = new BehaviorSubject(false);
 
     private readonly hostHover$ = combineLatest([
         tuiTypedFromEvent(this.el.nativeElement, 'mouseover').pipe(
@@ -124,8 +108,20 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         this.hover$ || EMPTY,
     ]).pipe(map(([visible, hovered]) => visible && hovered));
 
+    @ViewChild(TuiActiveZoneDirective)
+    readonly activeZone!: TuiActiveZoneDirective;
+
+    @Input()
+    content: PolymorpheusContent<TuiHostedDropdownContext>;
+
+    @Input()
+    sided = false;
+
+    @Input()
+    canOpen = true;
+
     @Output('openChange')
-    readonly open$ = merge(this.openChange, this.hostHover$).pipe(
+    readonly open$ = merge(this.openChange$, this.hostHover$).pipe(
         skip(1),
         distinctUntilChanged(),
         share(),
@@ -133,6 +129,11 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
 
     @Output()
     readonly focusedChange = new EventEmitter<boolean>();
+
+    readonly focus$ = new BehaviorSubject(false);
+
+    /** TODO: rename in 4.0 */
+    readonly openChange = this.openChange$;
 
     readonly context!: TuiContextWithImplicit<TuiActiveZoneDirective>;
 

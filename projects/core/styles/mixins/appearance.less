@@ -1,16 +1,7 @@
-.appearance-interactive(@ruleset) {
-    // TODO switch to :is after Safari 14 and FF 78 support
-    &:-webkit-any(a, button, select, textarea, input) {
-        @ruleset();
-    }
-
-    &:-moz-any(a, button, select, textarea, input) {
-        @ruleset();
-    }
-}
+@import 'mixins';
 
 .appearance-hover(@ruleset) {
-    .appearance-interactive({
+    .interactive({
         @media (hover: hover) {
             &:hover:not([data-state]) {
                 @ruleset();
@@ -24,7 +15,7 @@
 }
 
 .appearance-active(@ruleset) {
-    .appearance-interactive({
+    .interactive({
         &:active:not([data-state]) {
             @ruleset();
         }

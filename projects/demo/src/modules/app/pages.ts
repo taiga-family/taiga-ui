@@ -877,6 +877,12 @@ export const pages: TuiDocPages = [
                 keywords: `кнопка, button, vertical-button, вертикальная`,
                 route: `/experimental/button-vertical`,
             },
+            {
+                section: `Experimental`,
+                title: `ButtonClose`,
+                keywords: `кнопка, button, close, закрыть`,
+                route: `/experimental/button-close`,
+            },
         ],
     },
     {
@@ -884,6 +890,12 @@ export const pages: TuiDocPages = [
         title: `Cell`,
         keywords: `cell, feed, item`,
         route: `/experimental/cell`,
+    },
+    {
+        section: `Experimental`,
+        title: `Chip`,
+        keywords: `tag, тэг, badge`,
+        route: `/experimental/chip`,
     },
     {
         section: `Experimental`,
@@ -941,6 +953,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Experimental`,
+        title: `Tooltip`,
+        keywords: `tooltip, тултип, hint, подсказка, помощь, help`,
+        route: `/experimental/tooltip`,
+    },
+    {
+        section: `Experimental`,
         title: `Checkbox `,
         keywords: `чек, радио, ввод, форма, form, checkbox, radio, toggle`,
         route: `/experimental/checkbox`,
@@ -974,6 +992,12 @@ export const pages: TuiDocPages = [
         title: `Card`,
         keywords: `card, block, карточка, блок`,
         route: `/experimental/card`,
+    },
+    {
+        section: `Experimental`,
+        title: `Pin`,
+        keywords: `пин, pin, map, карта, точка, dot, point`,
+        route: `/experimental/pin`,
     },
     // Charts
     {

@@ -1,7 +1,7 @@
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
-        "types": ["jest", "jasmine", "node", "webpack-env", "ng-dev-mode"]
+        "types": ["jest", "node", "webpack-env", "ng-dev-mode"]
     },
-    "exclude": ["**/schematics/**/*", "projects/demo-cypress"]
+    "exclude": ["projects/demo-cypress"]
 }
