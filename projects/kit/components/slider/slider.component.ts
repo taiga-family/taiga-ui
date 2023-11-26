@@ -84,9 +84,14 @@ export class TuiSliderComponent {
         this.el.nativeElement.value = `${newValue}`;
     }
 
+    @HostBinding('style.--tui-slider-fill-ratio')
+    get valueRatio(): number {
+        return (this.value - this.min) / (this.max - this.min) || 0;
+    }
+
     @HostBinding('style.--tui-slider-fill-percentage.%')
     get valuePercentage(): number {
-        return (100 * (this.value - this.min)) / (this.max - this.min) || 0;
+        return 100 * this.valueRatio;
     }
 
     @HostBinding('style.--tui-slider-segment-width.%')

@@ -1,0 +1,39 @@
+<button
+    tuiPin
+    [open]="a"
+    (click)="a = !a"
+>
+    <img
+        alt="avatar"
+        src="assets/images/avatar.jpg"
+    />
+</button>
+
+<button
+    tuiPin
+    [open]="b"
+    [style.left.rem]="5"
+    (click)="b = !b"
+>
+    <tui-icon icon="tuiIconDollarSign"></tui-icon>
+</button>
+
+<button
+    tuiPin
+    class="link"
+    [open]="c"
+    [style.left.rem]="10"
+    (click)="c = !c"
+>
+    <tui-icon icon="tuiIconDollarSign"></tui-icon>
+</button>
+
+<button
+    tuiPin
+    class="crazy"
+    [open]="d"
+    [style.left.rem]="15"
+    (click)="d = !d"
+>
+    4.5
+</button>

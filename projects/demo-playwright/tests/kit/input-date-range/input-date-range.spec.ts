@@ -1,5 +1,4 @@
 import {expect, Locator, test} from '@playwright/test';
-// eslint-disable-next-line @taiga-ui/experience/no-deep-imports
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 
 import {

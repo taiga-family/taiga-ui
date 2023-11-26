@@ -1,4 +1,3 @@
-/* eslint-disable */
 // @ts-nocheck It is used in CI only!
 /**
  * Canvas has difficult installation guide for ARM CPU, including an Apple M1 or M2
@@ -34,7 +33,7 @@ console.info(`canvas:`, version);
     }
 
     const images = await Promise.all(imagesPaths.map(loadImage));
-    const totalWidth = images.reduce((acc, {width}) => acc + width, 0);
+    const totalWidth = images.reduce((acc: number, {width}) => acc + width, 0);
     const maxHeight = Math.max(...images.map(({height}) => height));
     const canvas = createCanvas(totalWidth, maxHeight);
     const ctx = canvas.getContext(`2d`);

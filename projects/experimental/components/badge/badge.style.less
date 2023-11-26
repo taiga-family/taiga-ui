@@ -2,20 +2,10 @@
 
 tui-badge,
 [tuiBadge] {
-    .clearbtn();
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    box-sizing: border-box;
+    .chip();
     background: #959595;
     color: var(--tui-base-01);
     border-radius: 6rem;
-    white-space: nowrap;
-    overflow: hidden;
-    vertical-align: middle;
-    font: var(--tui-font-text-s);
-    flex-shrink: 0;
-    max-width: 100%;
     padding: var(--t-padding);
     height: var(--t-size);
     min-width: var(--t-size);
@@ -33,7 +23,6 @@ tui-badge,
         border-radius: 100%;
     }
 
-    > tui-svg,
     > tui-icon,
     &[tuiIcons]:before,
     &[tuiIcons]:after {

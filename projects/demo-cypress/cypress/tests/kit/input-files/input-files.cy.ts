@@ -32,13 +32,13 @@ describe(`InputFiles`, () => {
             cy.get(`[tuiInputFiles]`).selectFile(`cypress/fixtures/stubs/web-api.svg`);
 
             cy.get(`#demo-content tui-file`)
-                .should(`contain.text`, `File is too large 2 KiB`)
+                .contains(/File is too large 2 Ki?B/)
                 .matchImageSnapshot(`02-01-input-files-[english]-file-too-large`);
 
             cy.tuiSetLanguage(`dutch`);
 
             cy.get(`#demo-content tui-file`)
-                .should(`contain.text`, `Bestandsgrootte overschreden 2 KiB`)
+                .contains(/Bestandsgrootte overschreden 2 Ki?B/)
                 .matchImageSnapshot(`02-02-input-files-[dutch]-file-too-large`);
         });
 

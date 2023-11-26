@@ -1,9 +1,10 @@
 ```json
 {
   "projects": {
-    "your-app": {
+    "my-project": {
       "architect": {
         "build": {
+          // ...
           "options": {
             "styles": [
               "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",

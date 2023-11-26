@@ -28,7 +28,9 @@ export abstract class AbstractTuiPortalService {
     }
 
     remove<C>({hostView}: ComponentRef<C>): void {
-        hostView.destroy();
+        if (!hostView.destroyed) {
+            hostView.destroy();
+        }
     }
 
     addTemplate<C>(templateRef: TemplateRef<C>, context?: C): EmbeddedViewRef<C> {
@@ -36,6 +38,8 @@ export abstract class AbstractTuiPortalService {
     }
 
     removeTemplate<C>(viewRef: EmbeddedViewRef<C>): void {
-        viewRef.destroy();
+        if (!viewRef.destroyed) {
+            viewRef.destroy();
+        }
     }
 }
