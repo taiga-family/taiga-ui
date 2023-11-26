@@ -47,7 +47,6 @@ describe(`ComboBox`, () => {
                     `search-should-not-be-reset-strict-waited-mark-${strict}.png`,
                 );
 
-                // await getInput(apiPageExample).click({force: true});
                 await clickFirstOption(page);
                 await focusWrapper(apiPageExample);
                 await expect(page).toHaveScreenshot(
@@ -119,7 +118,7 @@ describe(`ComboBox`, () => {
                     `correct-word-match-when-strict-remove-all-${strict}.png`,
                 );
 
-                await focusWrapper(apiPageExample);
+                await getInput(apiPageExample).click();
 
                 await expect(page).toHaveScreenshot(
                     `correct-word-match-when-strict-focused-2-${strict}.png`,
