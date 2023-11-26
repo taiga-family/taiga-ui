@@ -116,7 +116,7 @@ describe('ComboBox', () => {
                     `correct-word-match-when-strict-remove-all-${strict}.png`,
                 );
 
-                await focusWrapper(apiPageExample);
+                await getInput(apiPageExample).click();
 
                 await expect(page).toHaveScreenshot(
                     `correct-word-match-when-strict-focused-2-${strict}.png`,
