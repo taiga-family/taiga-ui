@@ -1,0 +1,18 @@
+<button
+    #driver="tuiHintHover"
+    automation-id="tui-tooltip__icon"
+    size="xs"
+    tuiIconButton
+    class="t-tooltip-button"
+    [attr.tabindex]="describeId ? -1 : 0"
+    [iconLeft]="tooltipIcon"
+    [tuiAppearance]="iconAppearance?.tuiAppearance || 'icon'"
+    [tuiAppearanceState]="(driver | async) ? 'active' : null"
+    [tuiHint]="content"
+    [tuiHintAppearance]="computedAppearance"
+    [tuiHintContext]="context"
+    [tuiHintDescribe]="describeId"
+    [tuiHintDirection]="direction"
+    [tuiHintHideDelay]="hideDelay"
+    [tuiHintShowDelay]="showDelay"
+></button>

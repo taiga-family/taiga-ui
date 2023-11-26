@@ -11,3 +11,27 @@
         color: var(--tui-text-01);
     });
 }
+
+// Icons with the directive
+[tuiAppearance][data-appearance='whiteblock'],
+[tuiAppearance][data-appearance='neutral'],
+[tuiAppearance][data-appearance='floating'] {
+    &:before,
+    &:after {
+        color: var(--tui-text-03);
+    }
+
+    .appearance-hover({
+        &:before,
+        &:after {
+            color: var(--tui-text-02);
+        }
+    });
+
+    .appearance-active({
+        &:before,
+        &:after {
+            color: var(--tui-text-01);
+        }
+    });
+}
