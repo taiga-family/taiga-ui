@@ -1,25 +1,22 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 [tuiIcons] {
-    &._icon-left:before {
-        content: '';
-    }
-
-    &._icon-right:after {
-        content: '';
-    }
-
     &:before,
     &:after {
+        font-size: 1.5rem;
+    }
+
+    &._icon-left:before,
+    &._icon-right:after {
+        content: '';
         width: 1em;
         height: 1em;
-        font-size: 1.5rem;
         flex-shrink: 0;
         background: currentColor;
         mask: var(--t-mask-left) no-repeat center/contain;
     }
 
-    &:after {
+    &._icon-right:after {
         mask: var(--t-mask-right) no-repeat center/contain;
     }
 }

@@ -64,9 +64,10 @@
     line-height: inherit;
 }
 
-@mixin chip() {
+@mixin button-base() {
     @include clearbtn();
 
+    position: relative;
     display: inline-flex;
     align-items: center;
     flex-shrink: 0;
@@ -75,9 +76,21 @@
     overflow: hidden;
     vertical-align: middle;
     max-width: 100%;
-    padding: var(--t-padding);
-    height: var(--t-size);
-    font: var(--tui-font-text-s);
+    gap: calc(var(--t-gap) - 2 * var(--t-margin));
+
+    > img,
+    > tui-svg,
+    > tui-icon,
+    > tui-avatar,
+    > tui-badge,
+    > [tuiBadge],
+    > [tuiRadio],
+    > [tuiToggle],
+    > [tuiCheckbox],
+    &._icon-left:before,
+    &._icon-right:after {
+        margin: var(--t-margin);
+    }
 }
 
 @mixin autofill($mode: default) {

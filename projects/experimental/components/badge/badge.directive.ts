@@ -7,6 +7,7 @@ import {TUI_BADGE_OPTIONS, TuiBadgeOptions} from './badge.options';
 @Directive({
     selector: 'tui-badge,[tuiBadge]',
     host: {
+        tuiBadgeNew: '',
         tuiAppearance: '',
         '[class._dot]': 'dot',
         '[attr.data-appearance]': 'appearance',
