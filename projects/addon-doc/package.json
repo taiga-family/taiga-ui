@@ -31,6 +31,6 @@
         "@taiga-ui/core": ">=3.55.0",
         "@taiga-ui/kit": ">=3.55.0",
         "@tinkoff/ng-polymorpheus": ">=4.3.0",
-        "tslib": ">=2.0.0"
+        "tslib": ">=2.6.2"
     }
 }
