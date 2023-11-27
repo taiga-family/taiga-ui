@@ -1,7 +1,9 @@
-import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
+import {
+    TuiDocumentationPagePO,
+    tuiGoto,
+    TuiInputMonthRangePO,
+} from '@demo-playwright/utils';
 import {expect, Locator, test} from '@playwright/test';
-
-import {TuiInputMonthRangePO} from '../../../utils/page-objects/input-month-range.po';
 
 const {describe, beforeEach} = test;
 
@@ -24,7 +26,7 @@ describe(`InputMonthRange`, () => {
         });
 
         test(`Maximum month less than current month`, async ({page}) => {
-            await tuiGoto(page, `components/input-month-range/API?tuiMode=null&max$=1`);
+            await tuiGoto(page, `components/input-month-range/API?max$=1`);
             await inputMonthRange.textfield.click();
 
             await documentationPage.prepareApiPageBeforeScreenshot();
@@ -32,7 +34,7 @@ describe(`InputMonthRange`, () => {
         });
 
         test(`Minimum month more than current month`, async ({page}) => {
-            await tuiGoto(page, `components/input-month-range/API?tuiMode=null&min$=3`);
+            await tuiGoto(page, `components/input-month-range/API?min$=3`);
             await inputMonthRange.textfield.click();
 
             await documentationPage.prepareApiPageBeforeScreenshot();
