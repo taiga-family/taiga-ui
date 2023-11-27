@@ -78,8 +78,6 @@
     max-width: 100%;
     gap: calc(var(--t-gap) - 2 * var(--t-margin));
 
-    &:before,
-    &:after,
     > img,
     > tui-svg,
     > tui-icon,
@@ -88,7 +86,9 @@
     > [tuiBadge],
     > [tuiRadio],
     > [tuiToggle],
-    > [tuiCheckbox] {
+    > [tuiCheckbox],
+    &._icon-left:before,
+    &._icon-right:after {
         margin: var(--t-margin);
     }
 }
