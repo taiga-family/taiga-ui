@@ -3,7 +3,7 @@
     class="t-title"
 >
     <span
-        *polymorpheusOutlet="heading | tuiDocExampleCapitalize as text"
+        *polymorpheusOutlet="heading as text"
         [textContent]="text"
     ></span>
     <button
@@ -22,7 +22,7 @@
     *ngIf="description"
     class="t-description"
 >
-    <ng-container *polymorpheusOutlet="description | tuiDocExampleCapitalize as text">
+    <ng-container *polymorpheusOutlet="description as text">
         {{ text }}
     </ng-container>
 </h4>
