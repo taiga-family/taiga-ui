@@ -2,12 +2,14 @@
 
 tui-chip,
 [tuiChip] {
-    .chip();
-    gap: 0.25rem;
+    .button-base();
+    font: var(--tui-font-text-s);
     border-radius: var(--tui-radius-m);
     padding: var(--t-padding);
     height: var(--t-size);
 
+    --t-gap: 0.125rem;
+    --t-margin: -0.125rem;
     --t-icon-size: 1rem;
 
     .interactive({
@@ -20,27 +22,18 @@ tui-chip,
         font-size: var(--t-icon-size) !important;
     }
 
-    & > img,
-    tui-avatar,
-    &:before {
-        transform: translateX(-0.125rem);
-    }
-
-    &:after {
-        transform: translateX(0.125rem);
-    }
-
     &[data-size='xxs'] {
         font: var(--tui-font-text-xs);
         border-radius: var(--tui-radius-xs);
-        gap: 0.125rem;
 
+        --t-gap: 0rem;
         --t-padding: 0 0.25rem;
         --t-size: 1rem;
         --t-icon-size: 0.75rem;
 
         & > [tuiIconButton] {
-            transform: translateX(0.125rem) scale(0.75);
+            margin: -0.5rem;
+            transform: scale(0.75);
         }
     }
 
@@ -49,49 +42,41 @@ tui-chip,
 
         --t-padding: 0 0.375rem;
         --t-size: 1.25rem;
+
+        & > [tuiIconButton] {
+            margin: -0.375rem;
+        }
     }
 
     &[data-size='s'] {
         --t-padding: 0 0.625rem;
         --t-size: var(--tui-height-s);
 
+        & > [tuiIconButton] {
+            margin: -0.375rem;
+        }
+
         & > img,
         tui-avatar {
-            margin-inline-start: -0.25rem;
+            margin-inline-start: -0.375rem;
         }
     }
 
     &[data-size='m'] {
         font: var(--tui-font-text-m);
 
+        --t-margin: -0.375rem;
         --t-icon-size: 1.5rem;
         --t-padding: 0 1rem;
         --t-size: var(--tui-height-m);
 
-        & > img,
-        tui-avatar,
-        &:before {
-            transform: translateX(-0.25rem);
-        }
-
-        &:after,
         & > [tuiIconButton] {
-            transform: translateX(0.25rem);
+            margin: -0.75rem;
         }
     }
 
     & > img {
         width: 1.5rem;
-    }
-
-    & > [tuiIconButton] {
-        margin: -0.25rem;
-        transform: translateX(0.125rem) scale(0.75);
-    }
-
-    &[data-size='m'] > [tuiIconButton],
-    &[data-size='xxs'] > [tuiIconButton] {
-        margin: -0.375rem;
     }
 
     & > input[tuiChip] {

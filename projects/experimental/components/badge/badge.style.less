@@ -2,15 +2,16 @@
 
 tui-badge,
 [tuiBadge] {
-    .chip();
+    .button-base();
+    border-radius: 6rem;
     background: #959595;
     color: var(--tui-base-01);
-    border-radius: 6rem;
     padding: var(--t-padding);
     height: var(--t-size);
     min-width: var(--t-size);
-    gap: 0.125rem;
+    font: var(--tui-font-text-s);
 
+    --t-gap: 0rem;
     --t-dot: currentColor;
     --t-icon-size: 1rem;
 
@@ -28,14 +29,6 @@ tui-badge,
     &[tuiIcons]:before,
     &[tuiIcons]:after {
         font-size: var(--t-icon-size) !important;
-    }
-
-    &[tuiIcons]:before {
-        transform: translateX(-0.125rem);
-    }
-
-    &[tuiIcons]:after {
-        transform: translateX(0.125rem);
     }
 
     &[data-appearance='error'] {
@@ -59,46 +52,30 @@ tui-badge,
     }
 
     &[data-size='s'] {
-        --t-padding: 0 0.3125rem;
+        --t-padding: 0 0.25rem;
         --t-size: 1rem;
         --t-icon-size: 0.625rem;
+        --t-margin: -0.125rem;
     }
 
     &[data-size='m'] {
         --t-padding: 0 0.375rem;
         --t-size: 1.25rem;
         --t-icon-size: 0.75rem;
+        --t-margin: -0.125rem;
     }
 
     &[data-size='l'] {
-        gap: 0.25rem;
-
         --t-padding: 0 0.5rem;
         --t-size: var(--tui-height-xs);
-
-        &[tuiIcons]:before {
-            transform: translateX(-0.25rem);
-        }
-
-        &[tuiIcons]:after {
-            transform: translateX(0.25rem);
-        }
+        --t-margin: -0.25rem;
     }
 
     &[data-size='xl'] {
-        gap: 0.25rem;
-        font: var(--tui-font-text-m);
-
+        --t-margin: -0.25rem;
         --t-padding: 0 0.75rem;
         --t-size: var(--tui-height-s);
-
-        &[tuiIcons]:before {
-            transform: translateX(-0.25rem);
-        }
-
-        &[tuiIcons]:after {
-            transform: translateX(0.25rem);
-        }
+        font: var(--tui-font-text-m);
     }
 }
 
@@ -110,6 +87,8 @@ tui-icon[tuiBadge] {
     mask: none;
     height: var(--t-size);
     width: var(--t-size);
+
+    --t-margin: 0 !important;
 
     &[data-size='s']:after {
         mask-size: 0.625rem;
