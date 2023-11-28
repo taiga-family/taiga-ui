@@ -19,7 +19,7 @@ const TOP = 0;
 const LEFT = 1;
 
 @Directive({
-    selector: '[tuiHint]:not([tuiHintCustomPosition])',
+    selector: '[tuiHint]:not([tuiHintCustomPosition]):not(ng-container):not(ng-template)',
     providers: [tuiAsPositionAccessor(TuiHintPositionDirective)],
 })
 export class TuiHintPositionDirective extends TuiPositionAccessor {
