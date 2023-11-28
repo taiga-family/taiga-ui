@@ -4,7 +4,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiDialogService} from '@taiga-ui/core';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {takeUntil} from 'rxjs/operators';
 
 import {PayModalComponent} from './pay-modal/pay-modal.component';
@@ -27,7 +26,7 @@ export class TuiDialogExampleComponent9 {
 
     payByCard(): void {
         this.dialogs
-            .open(new PolymorpheusComponent(PayModalComponent), {
+            .open(PayModalComponent, {
                 size: 'auto',
                 closeable: true,
                 data: {

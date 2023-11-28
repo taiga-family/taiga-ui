@@ -1,3 +1,4 @@
+export * from '@taiga-ui/cdk/utils/angular';
 export * from '@taiga-ui/cdk/utils/browser';
 export * from '@taiga-ui/cdk/utils/color';
 export * from '@taiga-ui/cdk/utils/dom';

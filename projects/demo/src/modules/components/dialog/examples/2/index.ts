@@ -1,8 +1,7 @@
-import {Component, Inject, Injector} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDialogService} from '@taiga-ui/core';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {DialogExampleComponent} from './dialog-example/dialog-example.component';
 
@@ -13,19 +12,13 @@ import {DialogExampleComponent} from './dialog-example/dialog-example.component'
     changeDetection,
 })
 export class TuiDialogExampleComponent2 {
-    private readonly dialog = this.dialogs.open<number>(
-        new PolymorpheusComponent(DialogExampleComponent, this.injector),
-        {
-            data: 237,
-            dismissible: true,
-            label: 'Heading',
-        },
-    );
+    private readonly dialog = this.dialogs.open<number>(DialogExampleComponent, {
+        data: 237,
+        dismissible: true,
+        label: 'Heading',
+    });
 
-    constructor(
-        @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
-        @Inject(Injector) private readonly injector: Injector,
-    ) {}
+    constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) {}
 
     showDialog(): void {
         this.dialog.subscribe({
