@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[29818],{29818:n=>{n.exports="label {\n    display: block;\n    margin-top: 2rem;\n}\n"}}]);
