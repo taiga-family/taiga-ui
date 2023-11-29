@@ -13,7 +13,6 @@ import {tuiDefaultSort, TuiTableSortKeyException} from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 
 import {TuiHeadDirective} from '../directives/head.directive';
-import {TuiSortByDirective} from '../directives/sort-by.directive';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_TABLE_OPTIONS, TuiTableOptions} from '../table.options';
 
@@ -53,9 +52,6 @@ export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
         @Optional()
         @Inject(forwardRef(() => TuiTableDirective))
         readonly table: TuiTableDirective<T> | null,
-        @Optional()
-        @Inject(forwardRef(() => TuiSortByDirective))
-        private readonly sortBy: TuiSortByDirective<T> | null,
     ) {}
 
     get key(): keyof T {
@@ -81,10 +77,6 @@ export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
     }
 
     updateSorterAndDirection(): void {
-        if (this.sortBy) {
-            this.sortBy.tuiSortBy = this.key;
-        }
-
         this.table?.updateSorterAndDirection(
             this.isCurrentAndAscDirection ? null : this.sorter,
         );
