@@ -1,0 +1,17 @@
+<tui-avatar
+    size="l"
+    text="❤"
+    tuiHint
+    [autoColor]="true"
+    [rounded]="true"
+>
+    <tui-hint
+        *tuiHint
+        class="hint"
+        [@.disabled]="true"
+    >
+        You can expose the bubble component with
+        <code>*tuiHint</code>
+        directive to customize it
+    </tui-hint>
+</tui-avatar>

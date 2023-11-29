@@ -9,7 +9,7 @@ import {delay, filter, map, repeat, switchMap, takeUntil, tap} from 'rxjs/operat
 import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 
 @Directive({
-    selector: '[tuiHint]:not(ng-container)',
+    selector: '[tuiHint]:not(ng-container):not(ng-template)',
     providers: [tuiAsDriver(TuiHintHoverDirective), TuiHoveredService],
     exportAs: 'tuiHintHover',
 })
