@@ -19,7 +19,7 @@
     },
     "peerDependencies": {
         "@taiga-ui/cdk": ">=3.56.0",
-        "tslib": ">=2.6.2"
+        "tslib": "2.3.0"
     },
     "schematics": "../@taiga-ui/cdk/schematics/collection.json"
 }
