@@ -7,7 +7,7 @@ export const TUI_GERMAN_LANGUAGE_KIT: TuiLanguageKit = {
     otherDate: `Anderes Datum...`,
     showAll: `Show all`,
     hide: `Hide`,
-    mobileCalendarTexts: [`Tag auswählen`, `Zeitraum auswählen`],
+    mobileCalendarTexts: [`Tag auswählen`, `Zeitraum auswählen`, `Wählen Sie Tage`],
     range: [`von`, `bis`],
     countTexts: [`Plus`, `Minus`],
     time: {
