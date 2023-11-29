@@ -1,8 +1,11 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
 :host {
+    .transition(~'opacity, height, visibility');
     display: block;
-    transition-property: opacity, height, visibility;
-    transition-duration: var(--tui-duration, 300ms);
     opacity: 0;
+    // To trigger transition event when duration is 0
+    transition-delay: 1ms;
 
     &._overflow {
         overflow: hidden;
