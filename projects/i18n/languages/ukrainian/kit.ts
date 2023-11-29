@@ -7,7 +7,7 @@ export const TUI_UKRAINIAN_LANGUAGE_KIT: TuiLanguageKit = {
     otherDate: `Інша дата ...`,
     showAll: `Show all`,
     hide: `Hide`,
-    mobileCalendarTexts: [`Виберіть день`, `Виберіть період`],
+    mobileCalendarTexts: [`Виберіть день`, `Виберіть період`, `Виберіть дні`],
     range: [`від`, `до`],
     countTexts: [`Плюс`, `Мінус`],
     time: {

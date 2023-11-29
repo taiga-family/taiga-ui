@@ -7,7 +7,7 @@ export const TUI_RUSSIAN_LANGUAGE_KIT: TuiLanguageKit = {
     otherDate: `Другая дата...`,
     showAll: `Показать все`,
     hide: `Скрыть`,
-    mobileCalendarTexts: [`Выберите день`, `Выберите период`],
+    mobileCalendarTexts: [`Выберите день`, `Выберите период`, `Выбрать дни`],
     range: [`от`, `до`],
     countTexts: [`Плюс`, `Минус`],
     time: {

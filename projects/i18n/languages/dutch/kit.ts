@@ -7,7 +7,7 @@ export const TUI_DUTCH_LANGUAGE_KIT: TuiLanguageKit = {
     otherDate: `Andere datum ...`,
     showAll: `Show all`,
     hide: `Hide`,
-    mobileCalendarTexts: [`Kies een dag`, `Kies bereik`],
+    mobileCalendarTexts: [`Kies een dag`, `Kies bereik`, `Kies dagen`],
     range: [`van`, `tot`],
     countTexts: [`Plus`, `Min`],
     time: {

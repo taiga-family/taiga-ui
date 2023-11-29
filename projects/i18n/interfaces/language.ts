@@ -60,9 +60,9 @@ export interface TuiLanguageKit {
         maxSizeRejectionReason: string;
     };
     /**
-     * [@string 'choose day', @param 'choose range']
+     * [@string 'choose day', @param 'choose range', @param 'choose days']
      */
-    mobileCalendarTexts: [string, string];
+    mobileCalendarTexts: [string, string, string];
     more: string;
     multiSelectTexts: {
         all: string;

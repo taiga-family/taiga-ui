@@ -1,35 +1,28 @@
+<button
+    appearance="destructive"
+    size="m"
+    tuiButton
+>
+    <span>
+        Pay
+        <span [tuiSensitive]="sensitive">1000$</span>
+    </span>
+</button>
+<button
+    appearance="flat"
+    size="m"
+    tuiButton
+    class="tui-space_left-2"
+>
+    <span>
+        Pay
+        <span [tuiSensitive]="sensitive">1000$</span>
+    </span>
+</button>
+
 <p>
-    <button
-        appearance="destructive"
-        size="m"
-        tuiButton
-    >
-        Pay
-        <span
-            class="text"
-            [tuiSensitive]="sensitive"
-        >
-            1000$
-        </span>
-    </button>
-    <button
-        appearance="flat"
-        size="m"
-        tuiButton
-        class="tui-space_left-2"
-    >
-        Pay
-        <span
-            class="text"
-            [tuiSensitive]="sensitive"
-        >
-            1000$
-        </span>
-    </button>
-</p>
-<p class="tui-space_top-10">
     <tui-badge
-        appearance="light"
+        [style.background]="'var(--tui-positive)'"
         [tuiSensitive]="sensitive"
     >
         12 000$
@@ -44,5 +37,5 @@
 
 <label>
     <tui-toggle [(ngModel)]="sensitive"></tui-toggle>
-    hide
+    Hide
 </label>

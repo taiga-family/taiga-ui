@@ -26,6 +26,10 @@ describe(`Calendar`, () => {
                 [maxViewedMonth]="maxViewedMonth"
                 [(month)]="month"
             ></tui-calendar>
+            <tui-calendar
+                id="year-view"
+                initialView="year"
+            ></tui-calendar>
         `,
     })
     class TestComponent {
@@ -81,6 +85,30 @@ describe(`Calendar`, () => {
         const calendar = await loader.getHarness(TuiCalendarHarness);
 
         expect(await calendar.primitiveCalendarShown()).toBe(true);
+    });
+
+    it(`Year selection is initially visible in "year" view`, async () => {
+        const calendar = await loader.getHarness(
+            TuiCalendarHarness.with({selector: `#year-view`}),
+        );
+
+        expect(await calendar.yearPickerShown()).toBe(true);
+    });
+
+    it(`Month selection is not initially visible in "year" view`, async () => {
+        const calendar = await loader.getHarness(
+            TuiCalendarHarness.with({selector: `#year-view`}),
+        );
+
+        expect(await calendar.yearMonthPaginationShown()).toBe(false);
+    });
+
+    it(`Day selection is initially visible in "year" view`, async () => {
+        const calendar = await loader.getHarness(
+            TuiCalendarHarness.with({selector: `#year-view`}),
+        );
+
+        expect(await calendar.primitiveCalendarShown()).toBe(false);
     });
 
     it(`onPaginationYearClick shows primitive year picker component`, async () => {

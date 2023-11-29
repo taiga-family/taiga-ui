@@ -19,7 +19,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
 import {TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
-import {TuiMarkerHandler} from '@taiga-ui/core/types';
+import {TuiCalendarView, TuiMarkerHandler} from '@taiga-ui/core/types';
 
 @Component({
     selector: 'tui-calendar',
@@ -29,6 +29,13 @@ import {TuiMarkerHandler} from '@taiga-ui/core/types';
 })
 export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     private day: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
+
+    private view: TuiCalendarView = 'month';
+
+    @Input()
+    set initialView(view: TuiCalendarView) {
+        this.view = view;
+    }
 
     @Input()
     month: TuiMonth = TuiMonth.currentLocal();
@@ -79,7 +86,9 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     @Output()
     readonly hoveredItemChange = new EventEmitter<TuiDay | null>();
 
-    year: TuiYear | null = null;
+    get isInYearView(): boolean {
+        return this.view === 'year';
+    }
 
     readonly disabledItemHandlerMapper: TuiTypedMapper<
         [TuiBooleanHandler<TuiDay>, TuiDay, TuiDay],
@@ -109,12 +118,12 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
         return maxViewed.monthSameOrBefore(max) ? maxViewed : max;
     }
 
-    onPaginationYearClick(year: TuiYear): void {
-        this.year = year;
+    onPaginationYearClick(): void {
+        this.view = 'year';
     }
 
     onPickerYearClick({year}: TuiYear): void {
-        this.year = null;
+        this.view = 'month';
         this.updateViewedMonth(new TuiMonth(year, this.month.month));
     }
 

@@ -7,7 +7,7 @@ export const TUI_VIETNAMESE_LANGUAGE_KIT: TuiLanguageKit = {
     otherDate: `Ngày khác...`,
     showAll: `Hiển thị tất cả`,
     hide: `Ẩn`,
-    mobileCalendarTexts: [`Chọn ngày`, `Chọn phạm vi`],
+    mobileCalendarTexts: [`Chọn ngày`, `Chọn phạm vi`, `Chọn ngày`],
     range: [`từ`, `đến`],
     countTexts: [`Cộng`, `Trừ`],
     time: {

@@ -21,8 +21,12 @@ export class ExampleTuiHintComponent extends AbstractExampleTuiHint {
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
+    };
+
+    readonly example2: TuiDocExample = {
+        HTML: import('./examples/2/index.html?raw'),
+        LESS: import('./examples/2/index.less?raw'),
     };
 
     showDelay = 500;

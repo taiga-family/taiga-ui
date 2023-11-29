@@ -7,7 +7,7 @@ export const TUI_KAZAKH_LANGUAGE_KIT: TuiLanguageKit = {
     otherDate: `Басқа күн...`,
     showAll: `Барлығын көрсету`,
     hide: `Жасыру`,
-    mobileCalendarTexts: [`Күнді таңдаңыз`, `Аралықты таңдаңыз`],
+    mobileCalendarTexts: [`Күнді таңдаңыз`, `Аралықты таңдаңыз`, `Күндерді таңдаңыз`],
     range: [`бастап`, `дейін`],
     countTexts: [`Плюс`, `Минус`],
     time: {

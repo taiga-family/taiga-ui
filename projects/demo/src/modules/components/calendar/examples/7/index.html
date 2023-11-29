@@ -1,0 +1,6 @@
+<tui-calendar
+    initialView="year"
+    [value]="value"
+    (dayClick)="onDayClick($event)"
+></tui-calendar>
+<div *ngIf="value">Chosen date: {{ value }}</div>

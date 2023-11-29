@@ -43,6 +43,7 @@ const GAP = 4;
 @Component({
     selector: 'tui-hint',
     template: `
+        <ng-content></ng-content>
         <span
             *polymorpheusOutlet="content as text; context: context"
             [innerHTML]="text"
