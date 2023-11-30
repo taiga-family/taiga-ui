@@ -14,11 +14,15 @@ tui-tiles {
 
         tui-tile:not(._dragged) > .t-wrapper {
             .transition(all);
+            // To trigger transition event when duration is 0
+            transition-delay: 1ms;
         }
     }
 
     &:not(._dragged) tui-tile._dragged > .t-wrapper {
         .transition(all);
+        // To trigger transition event when duration is 0
+        transition-delay: 1ms;
     }
 }
 
