@@ -1,4 +1,4 @@
-import {Directive, DoCheck, forwardRef, Inject, OnInit} from '@angular/core';
+import {Directive, forwardRef, Inject, OnInit} from '@angular/core';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
 
 import {TuiThComponent} from '../th/th.component';
@@ -9,7 +9,7 @@ import {TuiTableDirective} from './table.directive';
     selector: 'th[tuiTh][tuiSortable]',
 })
 export class TuiSortableDirective<T extends Partial<Record<keyof T, any>>>
-    implements DoCheck, OnInit
+    implements OnInit
 {
     constructor(
         @Inject(forwardRef(() => TuiSortByDirective))
@@ -29,7 +29,7 @@ export class TuiSortableDirective<T extends Partial<Record<keyof T, any>>>
         this.th.sorter = this.sorter;
     }
 
-    ngDoCheck(): void {
+    check(): void {
         if (this.match && this.table.sorter !== this.sorter) {
             this.table.updateSorter(this.sorter);
         }
