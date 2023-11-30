@@ -26,6 +26,9 @@ export default defineConfig({
         baseURL: `http://localhost:${process.env.NG_SERVER_PORT || 3333}`,
         trace: `on-first-retry`,
         viewport: DEFAULT_VIEWPORT,
+        contextOptions: {
+            reducedMotion: `reduce`,
+        },
     },
     projects: [
         {
