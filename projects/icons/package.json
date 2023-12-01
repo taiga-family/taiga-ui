@@ -16,7 +16,7 @@
         "feather-icons": "4.29.1",
         "rollup": "4.6.1",
         "rollup-plugin-typescript2": "0.36.0",
-        "svgo": "3.0.4"
+        "svgo": "3.0.5"
     },
     "peerDependencies": {
         "@taiga-ui/cdk": ">=3.56.0",
