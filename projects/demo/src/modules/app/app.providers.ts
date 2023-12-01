@@ -7,7 +7,6 @@ import {
 } from '@angular/common';
 import {inject, PLATFORM_ID, Provider} from '@angular/core';
 import {Title} from '@angular/platform-browser';
-import {ANIMATION_MODULE_TYPE} from '@angular/platform-browser/animations';
 import {UrlTree} from '@angular/router';
 import {SESSION_STORAGE} from '@ng-web-apis/common';
 import {
@@ -16,7 +15,6 @@ import {
     TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
     TUI_DOC_LOGO,
     TUI_DOC_PAGES,
-    TUI_DOC_SCROLL_BEHAVIOR,
     TUI_DOC_SEE_ALSO,
     TUI_DOC_SOURCE_CODE,
     TUI_DOC_TITLE,
@@ -36,12 +34,10 @@ import {
     tuiAssert,
 } from '@taiga-ui/cdk';
 import {
-    TUI_ANIMATIONS_DURATION,
     TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
     TUI_DROPDOWN_HOVER_OPTIONS,
     TUI_HINT_DEFAULT_OPTIONS,
     TUI_HINT_OPTIONS,
-    TUI_REDUCED_MOTION,
     TUI_SANITIZER,
 } from '@taiga-ui/core';
 import {TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
@@ -153,17 +149,6 @@ export const APP_PROVIDERS: Provider[] = [
         useValue: {timeout: 300, threshold: 60},
     },
     {
-        provide: ANIMATION_MODULE_TYPE,
-        useFactory: () =>
-            inject(TUI_IS_E2E) || inject(TUI_REDUCED_MOTION)
-                ? `NoopAnimations`
-                : `BrowserAnimations`,
-    },
-    {
-        provide: TUI_ANIMATIONS_DURATION,
-        useFactory: () => (inject(TUI_IS_E2E) || inject(TUI_REDUCED_MOTION) ? 0 : 300),
-    },
-    {
         provide: TUI_HINT_OPTIONS,
         useFactory: () =>
             inject(TUI_IS_E2E)
@@ -176,11 +161,6 @@ export const APP_PROVIDERS: Provider[] = [
             inject(TUI_IS_E2E)
                 ? {...TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS, showDelay: 0, hideDelay: 0}
                 : TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
-    },
-    {
-        provide: TUI_DOC_SCROLL_BEHAVIOR,
-        useFactory: () =>
-            inject(TUI_IS_E2E) || inject(TUI_REDUCED_MOTION) ? `auto` : `smooth`, // https://github.com/cypress-io/cypress/issues/4640
     },
     {
         provide: TUI_TAKE_ONLY_TRUSTED_EVENTS,
