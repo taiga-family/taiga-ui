@@ -110,3 +110,30 @@
 .t-heading {
     font: var(--tui-font-heading-4);
 }
+
+.t-code-type {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+}
+
+.t-code-reference {
+    display: inline-flex;
+    color: var(--tui-link);
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+
+    &:after {
+        content: '';
+        font-size: 1rem;
+        width: 1rem;
+        height: 1rem;
+        background: currentColor;
+        // TODO: migrate to <tui-icon /> in v4.0
+        mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>')
+            center/100%;
+    }
+}
