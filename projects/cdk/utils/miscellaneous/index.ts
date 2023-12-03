@@ -20,4 +20,5 @@ export * from './mark-control-as-touched-and-validate';
 export * from './nullable-same';
 export * from './object-from-entries';
 export * from './provide-options';
+export * from './to-array';
 export * from './uniq-by';

@@ -1,3 +1,4 @@
+export * from './array-or-value';
 export * from './autocomplete';
 export * from './date-mode';
 export * from './deep-partial';

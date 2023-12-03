@@ -1,13 +1,8 @@
-<tui-input
-    tuiTextfieldIconLeft="tuiIconSearchLarge"
-    [(ngModel)]="search"
->
-    Search
-</tui-input>
 <table
     class="tui-space_top-4"
-    [tuiHighlight]="search"
+    [tuiHighlight]="regexp"
     [tuiHighlightColor]="'#228B22'"
+    [tuiHighlightMultiOccurrences]="true"
 >
     <thead>
         <tr>

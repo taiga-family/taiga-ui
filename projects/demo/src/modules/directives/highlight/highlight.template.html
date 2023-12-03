@@ -7,11 +7,35 @@
         <p>Directive is used to highlight text in element</p>
 
         <tui-doc-example
-            id="usage"
-            heading="Usage"
+            id="single-occurrence-usage"
+            heading="Single Occurrence Usage"
             [content]="example1"
         >
             <tui-highlight-example-1></tui-highlight-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="multi-occurrences-usage"
+            heading="Multi Occurrences Usage"
+            [content]="example2"
+        >
+            <tui-highlight-example-2></tui-highlight-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="regexp-array-usage"
+            heading="Regexp Array Usage"
+            [content]="example3"
+        >
+            <tui-highlight-example-3></tui-highlight-example-3>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="search-array-usage"
+            heading="Search Array Usage"
+            [content]="example4"
+        >
+            <tui-highlight-example-4></tui-highlight-example-4>
         </tui-doc-example>
     </ng-template>
 
