@@ -32,7 +32,6 @@ interface TuiVisitOptions {
     rootSelector?: string;
     skipDecodingUrl?: boolean;
     skipExpectUrl?: boolean;
-    stopAnimation?: boolean;
     waitAllIcons?: boolean;
     waitRenderedFont?: RegExp;
 }
@@ -57,9 +56,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         enableNightMode = false,
         hideCursor = true,
         hideScrollbar = true,
-        noSmoothScroll = true,
         hideHeader = true,
-        stopAnimation = true,
         skipExpectUrl = false,
         skipDecodingUrl = false,
         hideNavigation = true,
@@ -150,20 +147,12 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
 
     cy.get(`${rootSelector}._is-cypress-mode`).as(`app`);
 
-    if (stopAnimation) {
-        cy.get(`@app`).invoke(`addClass`, `_stop-animation`);
-    }
-
     if (hideCursor) {
         cy.get(`@app`).invoke(`addClass`, `_hide-cursor`);
     }
 
     if (hideScrollbar) {
         cy.get(`@app`).invoke(`addClass`, `_hide-scrollbar`);
-    }
-
-    if (noSmoothScroll) {
-        cy.get(`@app`).invoke(`addClass`, `_no-smooth-scroll`);
     }
 
     cy.get(rootSelector).should(`have.class`, `_loaded`);

@@ -7,7 +7,6 @@ import {
 } from '@angular/common';
 import {inject, PLATFORM_ID, Provider} from '@angular/core';
 import {Title} from '@angular/platform-browser';
-import {ANIMATION_MODULE_TYPE} from '@angular/platform-browser/animations';
 import {UrlTree} from '@angular/router';
 import {SESSION_STORAGE} from '@ng-web-apis/common';
 import {
@@ -16,10 +15,10 @@ import {
     TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
     TUI_DOC_LOGO,
     TUI_DOC_PAGES,
-    TUI_DOC_SCROLL_BEHAVIOR,
     TUI_DOC_SEE_ALSO,
     TUI_DOC_SOURCE_CODE,
     TUI_DOC_TITLE,
+    TUI_DOC_TYPE_REFERENCE_HANDLER,
     TUI_DOC_URL_STATE_HANDLER,
     tuiDocExampleOptionsProvider,
     TuiDocSourceCodePathOptions,
@@ -35,12 +34,10 @@ import {
     tuiAssert,
 } from '@taiga-ui/cdk';
 import {
-    TUI_ANIMATIONS_DURATION,
     TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
     TUI_DROPDOWN_HOVER_OPTIONS,
     TUI_HINT_DEFAULT_OPTIONS,
     TUI_HINT_OPTIONS,
-    TUI_REDUCED_MOTION,
     TUI_SANITIZER,
 } from '@taiga-ui/core';
 import {TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
@@ -152,17 +149,6 @@ export const APP_PROVIDERS: Provider[] = [
         useValue: {timeout: 300, threshold: 60},
     },
     {
-        provide: ANIMATION_MODULE_TYPE,
-        useFactory: () =>
-            inject(TUI_IS_E2E) || inject(TUI_REDUCED_MOTION)
-                ? `NoopAnimations`
-                : `BrowserAnimations`,
-    },
-    {
-        provide: TUI_ANIMATIONS_DURATION,
-        useFactory: () => (inject(TUI_IS_E2E) || inject(TUI_REDUCED_MOTION) ? 0 : 300),
-    },
-    {
         provide: TUI_HINT_OPTIONS,
         useFactory: () =>
             inject(TUI_IS_E2E)
@@ -175,11 +161,6 @@ export const APP_PROVIDERS: Provider[] = [
             inject(TUI_IS_E2E)
                 ? {...TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS, showDelay: 0, hideDelay: 0}
                 : TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
-    },
-    {
-        provide: TUI_DOC_SCROLL_BEHAVIOR,
-        useFactory: () =>
-            inject(TUI_IS_E2E) || inject(TUI_REDUCED_MOTION) ? `auto` : `smooth`, // https://github.com/cypress-io/cypress/issues/4640
     },
     {
         provide: TUI_TAKE_ONLY_TRUSTED_EVENTS,
@@ -196,6 +177,35 @@ export const APP_PROVIDERS: Provider[] = [
         deps: [TUI_BASE_HREF],
         useFactory: (baseHref: string) => (tree: UrlTree) =>
             String(tree).replace(baseHref, ``),
+    },
+    {
+        provide: TUI_DOC_TYPE_REFERENCE_HANDLER,
+        useValue: (type: string) => {
+            switch (type) {
+                case `any`:
+                case `null`:
+                case `unknown`:
+                case `undefined`:
+                case `boolean`:
+                case `string`:
+                case `void`:
+                case `number`:
+                case `Map`:
+                case `Set`:
+                    return null;
+                case `CustomEvent`:
+                case `Element`:
+                    return `https://developer.mozilla.org/en-US/docs/Web/API/${type}`;
+                case `PolymorpheusContent`:
+                    return `https://github.com/taiga-family/ng-polymorpheus`;
+                case `TrackByFunction`:
+                    return `https://angular.dev/api/core/TrackByFunction`;
+                case `SafeResourceUrl`:
+                    return `https://angular.dev/api/platform-browser/SafeResourceUrl`;
+                default:
+                    return `https://github.com/search?q=%2F%28enum%7Ctype%7Cinterface%7Cclass%7Cfunction%7Cconst%29+${type}%28%3C%7C%5Cs%29%2F+language%3ATypeScript+org%3Ataiga-family&type=code`;
+            }
+        },
     },
     tuiDocExampleOptionsProvider({fullsize: false}),
     tuiLanguageSwitcher(

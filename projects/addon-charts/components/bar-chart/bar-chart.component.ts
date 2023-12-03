@@ -94,6 +94,7 @@ export class TuiBarChartComponent {
     private getMax(values: ReadonlyArray<readonly number[]>, collapsed: boolean): number {
         return collapsed
             ? Math.max(
+                  // eslint-disable-next-line no-restricted-syntax
                   ...values.reduce((result, next) =>
                       result.map((value, index) => value + next[index]),
                   ),

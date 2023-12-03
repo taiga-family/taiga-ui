@@ -12,7 +12,6 @@ import {
     TuiNotificationModule,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
-    TuiTooltipModule,
 } from '@taiga-ui/core';
 import {
     TuiBadgeModule,
@@ -27,12 +26,12 @@ import {TuiDocDocumentationComponent} from './documentation.component';
 import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
 import {TuiShowCleanerPipe} from './pipes/cleaner.pipe';
 import {TuiGetColorPipe} from './pipes/color.pipe';
-import {TuiShowContentTooltip} from './pipes/content-tooltip.pipe';
 import {TuiInspectPipe} from './pipes/inspect.pipe';
 import {TuiGetOpacityPipe} from './pipes/opacity.pipe';
 import {TuiIsOptionalPipe} from './pipes/optional.pipe';
 import {TuiIsPrimitivePolymorpheusContentPipe} from './pipes/primitive-polymorpheus-content.pipe';
 import {TuiStripOptionalPipe} from './pipes/strip-optional.pipe';
+import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
 
 @NgModule({
     imports: [
@@ -42,7 +41,6 @@ import {TuiStripOptionalPipe} from './pipes/strip-optional.pipe';
         TuiBadgeModule,
         TuiSelectModule,
         TuiToggleModule,
-        TuiTooltipModule,
         TuiLinkModule,
         TuiInputNumberModule,
         TuiModeModule,
@@ -63,7 +61,7 @@ import {TuiStripOptionalPipe} from './pipes/strip-optional.pipe';
         TuiIsOptionalPipe,
         TuiShowCleanerPipe,
         TuiStripOptionalPipe,
-        TuiShowContentTooltip,
+        TuiDocTypeReferencePipe,
         TuiDocDocumentationComponent,
         TuiIsPrimitivePolymorpheusContentPipe,
         TuiDocDocumentationPropertyConnectorDirective,
