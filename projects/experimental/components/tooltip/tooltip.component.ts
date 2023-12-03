@@ -24,6 +24,8 @@ import {takeUntil} from 'rxjs/operators';
 
 import {TUI_TOOLTIP_OPTIONS, TuiTooltipOptions} from './tooltip.options';
 
+// TODO: Turn into a directive with hint as hostDirective in 4.0
+
 @Component({
     selector: 'tui-tooltip',
     templateUrl: './tooltip.template.html',

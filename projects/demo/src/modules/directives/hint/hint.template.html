@@ -13,6 +13,21 @@
         >
             <tui-hint-example-1></tui-hint-example-1>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="custom"
+            heading="Customizing bubble"
+            [content]="example2"
+        >
+            <tui-notification class="tui-space_bottom-4">
+                Make sure
+                <code>*tuiHint</code>
+                directive is nested inside
+                <code>tuiHint</code>
+                directive so that dependency injection works properly
+            </tui-notification>
+            <tui-hint-example-2></tui-hint-example-2>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>

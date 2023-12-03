@@ -88,6 +88,9 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     single = true;
 
     @Input()
+    multi = false;
+
+    @Input()
     min = TUI_FIRST_DAY;
 
     @Input()
@@ -130,7 +133,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         @Inject(TUI_SHORT_WEEK_DAYS)
         readonly unorderedWeekDays$: TuiInjectionTokenType<typeof TUI_SHORT_WEEK_DAYS>,
         @Inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS)
-        readonly chooseDayOrRangeTexts$: Observable<[string, string]>,
+        readonly chooseDayOrRangeTexts$: Observable<[string, string, string]>,
         @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
         @Inject(NgZone) private readonly ngZone: NgZone,
     ) {
@@ -166,23 +169,15 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     onDayClick(day: TuiDay): void {
         if (this.single) {
             this.value = day;
-
-            return;
-        }
-
-        if (!(this.value instanceof TuiDayRange) && !(this.value instanceof TuiDay)) {
-            this.value = tuiImmutableUpdateInputDateMulti(this.value ?? [], day);
-
-            return;
-        }
-
-        if (this.value instanceof TuiDay || !this.value?.isSingleDay) {
+        } else if (this.isMultiValue(this.value)) {
+            this.value = tuiImmutableUpdateInputDateMulti(this.value, day);
+        } else if (this.isSingleValue(this.value)) {
             this.value = new TuiDayRange(day, day);
-
-            return;
+        } else if (this.value instanceof TuiDayRange) {
+            this.value = TuiDayRange.sort(this.value.from, day);
+        } else if (!this.value) {
+            this.value = new TuiDayRange(day, day);
         }
-
-        this.value = TuiDayRange.sort(this.value.from, day);
     }
 
     getState(index: number): 'active' | 'adjacent' | null {
@@ -237,6 +232,14 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         item.dayBefore(min) ||
         (max !== null && item.dayAfter(max)) ||
         disabledItemHandler(item);
+
+    private isMultiValue(day: any): day is readonly TuiDay[] | undefined {
+        return !(day instanceof TuiDay) && !(day instanceof TuiDayRange) && this.multi;
+    }
+
+    private isSingleValue(day: any): day is TuiDay {
+        return day instanceof TuiDay || (day instanceof TuiDayRange && !day.isSingleDay);
+    }
 
     private get initialYear(): number {
         if (!this.value) {

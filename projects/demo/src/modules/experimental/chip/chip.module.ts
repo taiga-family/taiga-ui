@@ -13,7 +13,6 @@ import {
     TuiCheckboxModule,
     TuiChipModule,
     TuiFadeModule,
-    TuiIconModule,
 } from '@taiga-ui/experimental';
 
 import {ExampleTuiChipComponent} from './chip.component';
@@ -28,7 +27,6 @@ import {TuiChipExample4} from './examples/4';
         FormsModule,
         TuiChipModule,
         TuiRepeatTimesModule,
-        TuiIconModule,
         TuiFadeModule,
         TuiNotificationModule,
         TuiButtonModule,

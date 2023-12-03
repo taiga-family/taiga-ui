@@ -4,7 +4,7 @@ import {AbstractTuiDriverDirective, TuiDriver, TuiVehicle} from '@taiga-ui/core/
 import {Observable} from 'rxjs';
 
 @Directive({
-    selector: '[tuiHint]',
+    selector: '[tuiHint]:not(ng-container):not(ng-template)',
     providers: [TuiDestroyService],
 })
 export class TuiHintDriverDirective extends AbstractTuiDriverDirective {

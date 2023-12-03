@@ -1,4 +1,5 @@
 export * from './brightness';
+export * from './calendar-view';
 export * from './data-list-role';
 export * from './decimal';
 export * from './decimal-symbol';
