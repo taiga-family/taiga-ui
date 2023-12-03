@@ -1,5 +1,6 @@
 import {
     AfterViewChecked,
+    AfterViewInit,
     ComponentRef,
     Directive,
     ElementRef,
@@ -47,6 +48,7 @@ import {TuiDropdownOpenDirective} from './dropdown-open.directive';
 export class TuiDropdownDirective
     implements
         AfterViewChecked,
+        AfterViewInit,
         OnDestroy,
         OnChanges,
         TuiPortalItem,
@@ -97,6 +99,12 @@ export class TuiDropdownDirective
         this.refresh$.next();
     }
 
+    ngAfterViewInit(): void {
+        if (this.open) {
+            this.toggle(this.open.tuiDropdownOpen);
+        }
+    }
+
     ngOnChanges(): void {
         if (!this.content) {
             this.toggle(false);
@@ -118,11 +126,11 @@ export class TuiDropdownDirective
     toggle(show: boolean): void {
         if (show && this.content && !this.dropdownBoxRef) {
             this.dropdownBoxRef = this.dropdownService.add(this.component);
-            this.open?.tuiDropdownOpenChange.emit(true);
+            this.open?.update(true);
         } else if (!show && this.dropdownBoxRef) {
             this.dropdownService.remove(this.dropdownBoxRef);
             this.dropdownBoxRef = null;
-            this.open?.tuiDropdownOpenChange.emit(false);
+            this.open?.update(false);
         }
     }
 }

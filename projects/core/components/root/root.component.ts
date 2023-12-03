@@ -13,7 +13,11 @@ import {
     TUI_VERSION,
 } from '@taiga-ui/cdk';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
-import {TUI_ANIMATIONS_DURATION, TUI_THEME} from '@taiga-ui/core/tokens';
+import {
+    TUI_ANIMATIONS_DURATION,
+    TUI_REDUCED_MOTION,
+    TUI_THEME,
+} from '@taiga-ui/core/tokens';
 import {combineLatest, Observable, of} from 'rxjs';
 import {debounceTime, map} from 'rxjs/operators';
 
@@ -30,6 +34,7 @@ import {debounceTime, map} from 'rxjs/operators';
         '[style.--tui-duration.ms]': 'duration',
         '[class._ios]': 'isIOS',
         '[class._android]': 'isAndroid',
+        '[class._reduced-motion]': 'reducedMotion',
         '[$.class._mobile]': 'isMobileRes$',
         '($.class._mobile)': 'isMobileRes$',
     },
@@ -48,6 +53,7 @@ export class TuiRootComponent {
             : of(!this.isMobile);
 
     constructor(
+        @Inject(TUI_REDUCED_MOTION) readonly reducedMotion: boolean,
         @Inject(TUI_ANIMATIONS_DURATION) readonly duration: number,
         @Inject(TUI_DIALOGS)
         readonly dialogs: ReadonlyArray<Observable<readonly unknown[]>>,

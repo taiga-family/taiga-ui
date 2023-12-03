@@ -224,7 +224,7 @@
 
     // Navigation
     & when (@mode = 6) {
-        box-shadow: var(--tui-shadow-basic-navigation);
+        box-shadow: var(--tui-shadow-navigation);
     }
 
     // Modal mobile
@@ -425,14 +425,10 @@
     padding: 0;
 }
 
-/**
- * @description:
- * disable smooth scrolling when users have prefers-reduced-motion enabled
- */
 .scroll-behavior(@mode: smooth) {
     scroll-behavior: @mode;
 
-    @media screen and (prefers-reduced-motion: reduce) {
+    :host-context(tui-root._reduced-motion) & {
         scroll-behavior: auto;
     }
 }

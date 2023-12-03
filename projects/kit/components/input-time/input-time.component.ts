@@ -296,11 +296,13 @@ export class TuiInputTimeComponent
     }
 
     private findNearestTimeFromItems(value: TuiTime): TuiTime | null {
-        return this.items.reduce((previous, current) =>
-            Math.abs(current.toAbsoluteMilliseconds() - value.toAbsoluteMilliseconds()) <
-            Math.abs(previous.toAbsoluteMilliseconds() - value.toAbsoluteMilliseconds())
-                ? current
-                : previous,
+        return this.items.reduce(
+            (previous, current) =>
+                Math.abs(current.valueOf() - value.valueOf()) <
+                Math.abs(previous.valueOf() - value.valueOf())
+                    ? current
+                    : previous,
+            new TuiTime(0, 0),
         );
     }
 
