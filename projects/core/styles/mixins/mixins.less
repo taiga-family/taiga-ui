@@ -310,14 +310,14 @@
 }
 
 .hoverable-with-shadow() {
-    .shadow();
+    box-shadow: var(--tui-shadow);
     .transition();
     cursor: pointer;
     transition-property: transform, box-shadow;
     will-change: transform, box-shadow;
 
     &:hover {
-        .shadow(5);
+        box-shadow: var(--tui-shadow-hover);
         transform: translateY(-@space);
     }
 }
