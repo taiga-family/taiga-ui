@@ -1,18 +1,25 @@
-import {Directive, EventEmitter, Input, Output} from '@angular/core';
+import {Directive, EventEmitter, Input, OnChanges, Output} from '@angular/core';
 
 import type {TuiDropdownDirective} from './dropdown.directive';
 
 @Directive({
     selector: '[tuiDropdownOpen],[tuiDropdownOpenChange]',
 })
-export class TuiDropdownOpenDirective {
+export class TuiDropdownOpenDirective implements OnChanges {
     @Input()
-    set tuiDropdownOpen(open: boolean) {
-        this.dropdown?.toggle(open);
-    }
+    tuiDropdownOpen = false;
 
     @Output()
     readonly tuiDropdownOpenChange = new EventEmitter<boolean>();
 
     dropdown?: TuiDropdownDirective;
+
+    update(open: boolean): void {
+        this.tuiDropdownOpen = open;
+        this.tuiDropdownOpenChange.emit(open);
+    }
+
+    ngOnChanges(): void {
+        this.dropdown?.toggle(this.tuiDropdownOpen);
+    }
 }

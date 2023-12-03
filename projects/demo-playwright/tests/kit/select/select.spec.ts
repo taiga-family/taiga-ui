@@ -24,5 +24,15 @@ describe(`Select`, () => {
 
             await expect(example).toHaveScreenshot(`01-checkmark-size.png`);
         });
+
+        test(`opens dropdown by click on icon`, async () => {
+            const example = documentationPage.getExample(`#base`);
+            const select = new TuiSelectPO(example.locator(`tui-select`).last());
+
+            await select.textfield.click({position: {x: 200, y: 30}});
+            await expect(select.dropdown).toBeVisible();
+
+            await expect(select.dropdown).toHaveScreenshot(`01-click-arrow.png`);
+        });
     });
 });

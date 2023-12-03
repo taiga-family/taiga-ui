@@ -49,25 +49,27 @@
             </td>
             <td class="t-cell">
                 <span class="type">
-                    <code>{{ propertyConnector.documentationPropertyType }}</code>
-                    <tui-tooltip
-                        *ngIf="propertyConnector.documentationPropertyType | tuiShowContentTooltip"
-                        [content]="content"
-                        [describeId]="propertyConnector.attrName"
-                    >
-                        <ng-template #content>
-                            {{ texts[4] }}
+                    <code class="t-code-type">
+                        <ng-container
+                            *ngFor="
+                                let item of propertyConnector.documentationPropertyType | tuiDocTypeReference;
+                                let last = last
+                            "
+                        >
                             <a
-                                href="https://github.com/taiga-family/ng-polymorpheus"
-                                rel="noreferrer"
+                                *ngIf="item.reference; else default"
                                 target="_blank"
-                                tuiLink
-                                tuiMode="onDark"
+                                class="t-code-reference"
+                                [attr.href]="item.reference"
                             >
-                                <code>ng-polymorpheus</code>
+                                {{ item.type }}
                             </a>
-                        </ng-template>
-                    </tui-tooltip>
+                            <ng-template #default>
+                                {{ item.type }}
+                            </ng-template>
+                            <span *ngIf="!last">&nbsp;|&nbsp;</span>
+                        </ng-container>
+                    </code>
                 </span>
             </td>
             <td
