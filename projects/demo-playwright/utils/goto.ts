@@ -18,8 +18,8 @@ export async function tuiGoto(
         date = new Date(2020, 8, 25, 19, 19),
         hideHeader = true,
         enableNightMode = false,
-        hideVersionManager = true,
-        hideLanguageSwitcher = true,
+        hideVersionManager = false,
+        hideLanguageSwitcher = false,
         ...playwrightGotoOptions
     }: TuiGotoOptions = {},
 ): ReturnType<Page['goto']> {

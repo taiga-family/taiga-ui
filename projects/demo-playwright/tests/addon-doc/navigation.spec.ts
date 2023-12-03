@@ -4,7 +4,11 @@ import {expect, test} from '@playwright/test';
 test.describe(`Navigation`, () => {
     test.use({viewport: {width: 1080, height: 522}});
     test(`getting started / [light mode]`, async ({page}) => {
-        await tuiGoto(page, `/getting-started`, {hideHeader: false});
+        await tuiGoto(page, `/getting-started`, {
+            hideHeader: false,
+            hideLanguageSwitcher: true,
+            hideVersionManager: true,
+        });
         const example = page.locator(`tui-doc-navigation`);
 
         await example.isVisible();
@@ -15,6 +19,8 @@ test.describe(`Navigation`, () => {
         await tuiGoto(page, `/getting-started`, {
             hideHeader: false,
             enableNightMode: true,
+            hideLanguageSwitcher: true,
+            hideVersionManager: true,
         });
         const example = page.locator(`tui-doc-navigation`);
 
