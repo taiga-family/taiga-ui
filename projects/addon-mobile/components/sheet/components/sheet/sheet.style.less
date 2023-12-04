@@ -49,15 +49,15 @@
     scroll-snap-align: start;
 
     &_shadow {
-        .shadow();
+        box-shadow: var(--tui-shadow);
     }
 }
 
 .t-top {
-    .shadow();
     position: sticky;
     top: 0;
     border-radius: 0.8rem 0.8rem 0 0;
+    box-shadow: var(--tui-shadow);
     transform: scaleX(-1);
     overflow: hidden;
 

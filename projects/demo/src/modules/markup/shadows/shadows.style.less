@@ -1,51 +1,61 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-.example {
+.title {
+    text-align: center;
+}
+
+.examples {
     display: flex;
-    flex: 1;
+    gap: 2.5rem;
     flex-wrap: wrap;
-    padding: 1.25rem;
+    align-items: center;
+    justify-content: center;
 }
 
 .item {
     .transition(box-shadow);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 2.5rem;
-    margin-left: 2.5rem;
     width: 17.5rem;
     height: 5rem;
+    padding: 0.3125rem;
     border-radius: var(--tui-radius-m);
+    border: 1px solid var(--tui-base-02);
     color: var(--tui-text-03);
     cursor: pointer;
     text-align: center;
 
     &_default {
-        .shadow();
+        box-shadow: var(--tui-shadow);
 
         &:hover {
-            .shadow(5);
+            box-shadow: var(--tui-shadow-hover);
         }
     }
 
     &_dropdown {
-        .shadow(2);
+        box-shadow: var(--tui-shadow-dropdown);
     }
 
     &_modal {
-        .shadow(3);
+        box-shadow: var(--tui-shadow-modal);
     }
 
     &_sidebar {
-        .shadow(4);
+        box-shadow: var(--tui-shadow-sidebar);
     }
 
     &_navigation {
-        .shadow(6);
+        box-shadow: var(--tui-shadow-navigation);
     }
 
     &_mobile {
-        .shadow(7);
+        box-shadow: var(--tui-shadow-sheet);
     }
+}
+
+.code:not(pre code) {
+    color: var(--tui-link);
 }
