@@ -38,7 +38,10 @@
             "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/cdk"],
             "options": {
-                "jestConfig": "projects/cdk/jest.config.ts"
+                "jestConfig": "jest.config.ts",
+                "coverageDirectory": "coverage/cdk",
+                "collectCoverageFrom": ["<rootDir>/projects/cdk/**/*.ts"],
+                "testMatch": ["<rootDir>/projects/cdk/**/*.spec.ts"]
             },
             "dependsOn": [
                 {

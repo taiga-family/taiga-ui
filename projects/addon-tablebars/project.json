@@ -25,7 +25,10 @@
             "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/addon-tablebars"],
             "options": {
-                "jestConfig": "projects/addon-tablebars/jest.config.ts"
+                "jestConfig": "jest.config.ts",
+                "coverageDirectory": "coverage/addon-tablebars",
+                "collectCoverageFrom": ["<rootDir>/projects/addon-tablebars/**/*.ts"],
+                "testMatch": ["<rootDir>/projects/addon-tablebars/**/*.spec.ts"]
             }
         },
         "publish": {

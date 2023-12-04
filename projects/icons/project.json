@@ -36,7 +36,9 @@
             "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/icons"],
             "options": {
-                "jestConfig": "projects/icons/jest.config.ts"
+                "jestConfig": "jest.config.ts",
+                "collectCoverage": false,
+                "testMatch": ["<rootDir>/projects/icons/**/*.spec.ts"]
             }
         },
         "publish": {
