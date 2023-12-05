@@ -3,8 +3,6 @@ import {expect, Locator, Page, test} from '@playwright/test';
 
 const {describe} = test;
 
-test.use({testIdAttribute: `automation-id`});
-
 describe(`ComboBox`, () => {
     test(`Don't allow disabled options to be selected by typing them`, async ({page}) => {
         await tuiGoto(page, `components/combo-box`);
