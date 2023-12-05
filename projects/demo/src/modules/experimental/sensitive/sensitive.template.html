@@ -28,6 +28,13 @@
             heading="Components"
             [content]="example2"
         >
+            <tui-notification class="tui-space_bottom-4">
+                Buttons have
+                <code>gap</code>
+                style configured for icons, avatars and other similar content. Wrap your text in
+                <code>span</code>
+                so it does not affect you.
+            </tui-notification>
             <tui-sensitive-example-2></tui-sensitive-example-2>
         </tui-doc-example>
     </ng-template>
@@ -54,7 +61,7 @@
                 <p>Import module:</p>
 
                 <tui-doc-code
-                    filename="myComponent.module.ts"
+                    filename="my.module.ts"
                     [code]="exampleModule"
                 ></tui-doc-code>
             </li>
@@ -63,7 +70,7 @@
                 <p>Add to the template:</p>
 
                 <tui-doc-code
-                    filename="myComponent.template.html"
+                    filename="my.component.html"
                     [code]="exampleHtml"
                 ></tui-doc-code>
             </li>

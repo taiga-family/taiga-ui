@@ -12,4 +12,5 @@ export * from './scroll-behavior';
 export * from './see-also';
 export * from './source-code';
 export * from './title';
+export * from './type-reference-handler';
 export * from './url-state-handler';

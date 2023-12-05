@@ -7,7 +7,7 @@ export const TUI_TURKISH_LANGUAGE_KIT: TuiLanguageKit = {
     otherDate: `Farklı bir tarih...`,
     showAll: `Show all`,
     hide: `Hide`,
-    mobileCalendarTexts: [`Gün seç`, `Aralık seç`],
+    mobileCalendarTexts: [`Gün seç`, `Aralık seç`, `Günleri seçin`],
     range: [`dan`, `a`],
     countTexts: [`Artı`, `Eksi`],
     time: {

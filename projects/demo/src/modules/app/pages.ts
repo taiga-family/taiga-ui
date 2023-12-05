@@ -953,7 +953,7 @@ export const pages: TuiDocPages = [
     },
     {
         section: `Experimental`,
-        title: `Tooltip`,
+        title: `Tooltip `,
         keywords: `tooltip, тултип, hint, подсказка, помощь, help`,
         route: `/experimental/tooltip`,
     },

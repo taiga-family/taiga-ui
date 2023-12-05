@@ -3,6 +3,86 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.57.0](https://github.com/taiga-family/taiga-ui/compare/v3.56.0...v3.57.0) (2023-12-04)
+
+### Features
+
+- **addon-doc:** add type reference handler for improve documentation
+  ([#6086](https://github.com/taiga-family/taiga-ui/issues/6086))
+  ([e139770](https://github.com/taiga-family/taiga-ui/commit/e13977086bc63bee462fb9b8e94a5d2b8c60f936))
+- **core:** `*tuiHint` add new directive for customizing hint bubble
+  ([#6119](https://github.com/taiga-family/taiga-ui/issues/6119))
+  ([c343d3e](https://github.com/taiga-family/taiga-ui/commit/c343d3e394aeb9da678f645d4e15137f8c6411ab))
+- **i18n:** add Malay language ([#6150](https://github.com/taiga-family/taiga-ui/issues/6150))
+  ([d60064e](https://github.com/taiga-family/taiga-ui/commit/d60064e7729847331547d398ab791a59a1f33bce))
+
+### Bug Fixes
+
+- **addon-table:** fix sorting on table with dynamic columns
+  ([#6103](https://github.com/taiga-family/taiga-ui/issues/6103))
+  ([e0fc02b](https://github.com/taiga-family/taiga-ui/commit/e0fc02b31593c2e90528d81fc8b25d49e387839a))
+- **core:** `Dropdown` fix for initial open state ([#6130](https://github.com/taiga-family/taiga-ui/issues/6130))
+  ([a641af5](https://github.com/taiga-family/taiga-ui/commit/a641af53f5fcd8acd9a29ae89b351cb5f77d5cf8))
+- **core:** `Expand` fix for disabled animation ([#6129](https://github.com/taiga-family/taiga-ui/issues/6129))
+  ([bcbafc5](https://github.com/taiga-family/taiga-ui/commit/bcbafc56e9beefb4c122eb6479e0e1f2afcef8df))
+- **core:** invalid css variable name for shadow of navigation
+  ([#6128](https://github.com/taiga-family/taiga-ui/issues/6128))
+  ([47dff9f](https://github.com/taiga-family/taiga-ui/commit/47dff9f05e70d7bae5c1f7bd8b8b8d76e3add53d))
+- **experimental:** `Sensitive` fix svg interruption in safari
+  ([#6118](https://github.com/taiga-family/taiga-ui/issues/6118))
+  ([ed02bda](https://github.com/taiga-family/taiga-ui/commit/ed02bda71ad8f67498c8638dc8a530f0bb8a0b1b))
+- **kit:** correct resolve date range in mobile calendar ([#5974](https://github.com/taiga-family/taiga-ui/issues/5974))
+  ([016242e](https://github.com/taiga-family/taiga-ui/commit/016242ec71075687582e73ae4a34e76665213ee7))
+- **kit:** possible type error reduce of empty array with no initial value
+  ([#6107](https://github.com/taiga-family/taiga-ui/issues/6107))
+  ([ee9d470](https://github.com/taiga-family/taiga-ui/commit/ee9d470a3b6e9c47f5c33a62a72ae2c6fa7ee98e))
+
+## [3.56.0](https://github.com/taiga-family/taiga-ui/compare/v3.55.0...v3.56.0) (2023-11-28)
+
+### Features
+
+- **addon-doc:** add color for attrs ([#6100](https://github.com/taiga-family/taiga-ui/issues/6100))
+  ([2cb4e62](https://github.com/taiga-family/taiga-ui/commit/2cb4e623c86c689c2540ac8d096d148985e63671))
+- **addon-doc:** add ios beauty effect for header component
+  ([#6062](https://github.com/taiga-family/taiga-ui/issues/6062))
+  ([d23b342](https://github.com/taiga-family/taiga-ui/commit/d23b342f7ab9ca5cf439124c859031ceaf3b3126))
+- **addon-doc:** improve preview inputs ([#6030](https://github.com/taiga-family/taiga-ui/issues/6030))
+  ([224e946](https://github.com/taiga-family/taiga-ui/commit/224e9460559e4f2b271b4746d85e533e6b9408aa))
+- **core:** add calendar initial view ([#6015](https://github.com/taiga-family/taiga-ui/issues/6015))
+  ([900cb64](https://github.com/taiga-family/taiga-ui/commit/900cb646b7e303a8d8bb58c64fba9cc0dd9d1ac1))
+- **core:** add shadow css variables ([#6057](https://github.com/taiga-family/taiga-ui/issues/6057))
+  ([b5f7211](https://github.com/taiga-family/taiga-ui/commit/b5f7211070887e310fa09207dd43a17d273c1cef))
+- **experimental:** `ButtonClose` add new directive ([#5980](https://github.com/taiga-family/taiga-ui/issues/5980))
+  ([8c79059](https://github.com/taiga-family/taiga-ui/commit/8c7905967b5db7d03b22e74a469c53aa68ee804b))
+- **experimental:** `Chip` add new component ([#6076](https://github.com/taiga-family/taiga-ui/issues/6076))
+  ([49cd976](https://github.com/taiga-family/taiga-ui/commit/49cd976afb03e68971752d9b4876510866addd12))
+- **experimental:** `Icons` add new directive ([#6053](https://github.com/taiga-family/taiga-ui/issues/6053))
+  ([6883895](https://github.com/taiga-family/taiga-ui/commit/68838955599d1c3e710d33c4c39d32b5ac6cb570))
+- **experimental:** `Tooltip` add new component ([#6000](https://github.com/taiga-family/taiga-ui/issues/6000))
+  ([84cc401](https://github.com/taiga-family/taiga-ui/commit/84cc4014cc44715d45d3b3156099c190b4637da0))
+- **experimental:** add pin ([#5221](https://github.com/taiga-family/taiga-ui/issues/5221))
+  ([57f33a9](https://github.com/taiga-family/taiga-ui/commit/57f33a93975f4e965ec511c11850ff37fc916497))
+- **kit:** `Slider` new design ([#4927](https://github.com/taiga-family/taiga-ui/issues/4927))
+  ([e7f9769](https://github.com/taiga-family/taiga-ui/commit/e7f97693077779c944ee663a3a458132ea4478bd))
+
+### Bug Fixes
+
+- **addon-doc:** add border radius for copy element ([#6082](https://github.com/taiga-family/taiga-ui/issues/6082))
+  ([aca4040](https://github.com/taiga-family/taiga-ui/commit/aca404031a5d56953d5c06dbf0003a1a802da9e0))
+- **cdk:** add `@taiga-ui/experimental` to ng-update package group
+  ([#6054](https://github.com/taiga-family/taiga-ui/issues/6054))
+  ([92fbc0e](https://github.com/taiga-family/taiga-ui/commit/92fbc0ec7c5d64c1a412ede8d71df65e5c34364e))
+- **cdk:** add checks before destroying hostView and viewRef
+  ([#6083](https://github.com/taiga-family/taiga-ui/issues/6083))
+  ([8ef84b5](https://github.com/taiga-family/taiga-ui/commit/8ef84b52c10e19b6639a3bfce90d7d421077eae2))
+- **kit:** `.t-mark` in `Radio` disappears after toggling `Expand`
+  ([#6037](https://github.com/taiga-family/taiga-ui/issues/6037))
+  ([6999a19](https://github.com/taiga-family/taiga-ui/commit/6999a1957cb3a2bff0243d456258cd7165a114fc))
+- **kit:** prevent clear country code prefix ([#6060](https://github.com/taiga-family/taiga-ui/issues/6060))
+  ([1ec578e](https://github.com/taiga-family/taiga-ui/commit/1ec578e4b0aa00b6a3521ab57d6884dcd251e9bb))
+- **testing:** remove jasmine dependency ([#6072](https://github.com/taiga-family/taiga-ui/issues/6072))
+  ([4757034](https://github.com/taiga-family/taiga-ui/commit/47570349973bb8cce8e5f0cdeff4a47b12ef2b8e))
+
 ## [3.55.0](https://github.com/taiga-family/taiga-ui/compare/v3.54.0...v3.55.0) (2023-11-20)
 
 ### Features
