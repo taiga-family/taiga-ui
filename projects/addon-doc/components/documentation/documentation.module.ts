@@ -67,6 +67,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiDocDocumentationPropertyConnectorDirective,
     ],
     exports: [
+        TuiDocTypeReferencePipe,
         TuiDocDocumentationComponent,
         TuiDocDocumentationPropertyConnectorDirective,
     ],
