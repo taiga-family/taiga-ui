@@ -1,25 +1,26 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-tui-badge,
-[tuiBadge] {
-    .chip();
+// TODO: Change to [tuiBadge] in 4.0
+[tuiBadgeNew] {
+    .button-base();
+    border-radius: 6rem;
     background: #959595;
     color: var(--tui-base-01);
-    border-radius: 6rem;
     padding: var(--t-padding);
     height: var(--t-size);
     min-width: var(--t-size);
+    font: var(--tui-font-text-s);
 
+    --t-gap: 0rem;
     --t-dot: currentColor;
     --t-icon-size: 1rem;
 
     &._dot:before {
         content: '';
         display: block;
+        width: 0.375rem;
+        height: 0.375rem;
         background: var(--t-dot);
-        margin: 0 0.125rem 0 0.25rem;
-        width: 0.25rem;
-        height: 0.25rem;
         border-radius: 100%;
     }
 
@@ -50,34 +51,46 @@ tui-badge,
     }
 
     &[data-size='s'] {
-        text-indent: 0.125rem;
-
-        --t-padding: 0 0.3125rem 0 0.1875rem;
+        --t-padding: 0 0.3125rem;
         --t-size: 1rem;
         --t-icon-size: 0.625rem;
+        --t-margin: -0.125rem;
+
+        &._dot:before {
+            width: 0.25rem;
+            height: 0.25rem;
+            margin-inline-end: -0.125rem;
+        }
     }
 
     &[data-size='m'] {
-        text-indent: 0.125rem;
-
-        --t-padding: 0 0.375rem 0 0.25rem;
+        --t-padding: 0 0.375rem;
         --t-size: 1.25rem;
         --t-icon-size: 0.75rem;
+        --t-margin: -0.125rem;
     }
 
     &[data-size='l'] {
-        text-indent: 0.25rem;
-
-        --t-padding: 0 0.5rem 0 0.25rem;
+        --t-padding: 0 0.5rem;
         --t-size: var(--tui-height-xs);
+        --t-margin: -0.25rem;
+
+        &._dot:before {
+            margin-inline-end: -0.25rem;
+        }
     }
 
     &[data-size='xl'] {
-        font: var(--tui-font-text-m);
-        text-indent: 0.25rem;
-
-        --t-padding: 0 0.75rem 0 0.5rem;
+        --t-margin: -0.25rem;
+        --t-padding: 0 0.75rem;
         --t-size: var(--tui-height-s);
+        font: var(--tui-font-text-m);
+
+        &._dot:before {
+            width: 0.5rem;
+            height: 0.5rem;
+            margin-inline-end: -0.125rem;
+        }
     }
 }
 
@@ -89,6 +102,8 @@ tui-icon[tuiBadge] {
     mask: none;
     height: var(--t-size);
     width: var(--t-size);
+
+    --t-margin: 0 !important;
 
     &[data-size='s']:after {
         mask-size: 0.625rem;

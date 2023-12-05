@@ -19,7 +19,6 @@ export class ExampleTuiBadgeComponent {
 
     readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
     };
 
     readonly example2: TuiDocExample = {

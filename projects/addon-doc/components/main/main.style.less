@@ -57,9 +57,10 @@ code:not(pre code) {
         align-items: center;
         border-radius: 0.25rem;
         font-weight: 500;
-        border: 1px solid var(--tui-base-04);
+        outline: 1px solid var(--tui-base-04);
         font-size: 0.75rem;
-        padding: 0 0.125rem;
+        padding: 0 0.3125rem;
+        margin: 0.125rem 0;
         //noinspection CssInvalidPropertyValue
         text-wrap: wrap;
 
@@ -145,6 +146,10 @@ tui-doc-code {
         color: var(--tui-text-01);
     }
 
+    .hljs-property {
+        color: var(--tui-support-14);
+    }
+
     .hljs-comment,
     .hljs-quote {
         color: var(--tui-text-02);
@@ -167,10 +172,15 @@ tui-doc-code {
         color: var(--tui-link);
     }
 
+    .hljs-attr {
+        color: var(--tui-link);
+    }
+
     .hljs-attribute,
     .hljs-number,
     .hljs-regexp,
-    .hljs-link {
+    .hljs-link,
+    .hljs-built_in {
         font-weight: bold;
         color: var(--tui-support-06);
     }

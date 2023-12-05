@@ -10,3 +10,4 @@ export * from './hint-manual.directive';
 export * from './hint-options.directive';
 export * from './hint-pointer.directive';
 export * from './hint-position.directive';
+export * from './hint-unstyled.component';

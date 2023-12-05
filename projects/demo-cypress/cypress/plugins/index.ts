@@ -22,6 +22,7 @@ export default async (
                 `--window-size=${TUI_CYPRESS_DESKTOP_VIEWPORT_WIDTH},${TUI_CYPRESS_DESKTOP_VIEWPORT_HEIGHT}`,
                 `--force-device-scale-factor=2`,
                 `--high-dpi-support=1`,
+                `--force-prefers-reduced-motion`,
                 `--force-color-profile=srgb`,
                 `--disable-dev-shm-usage`,
                 `--disable-gpu`,

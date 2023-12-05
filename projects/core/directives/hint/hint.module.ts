@@ -12,6 +12,10 @@ import {TuiHintManualDirective} from './hint-manual.directive';
 import {TuiHintOptionsDirective} from './hint-options.directive';
 import {TuiHintPointerDirective} from './hint-pointer.directive';
 import {TuiHintPositionDirective} from './hint-position.directive';
+import {
+    TuiHintUnstyledComponent,
+    TuiHintUnstyledDirective,
+} from './hint-unstyled.component';
 
 @NgModule({
     imports: [CommonModule, PolymorpheusModule],
@@ -26,6 +30,8 @@ import {TuiHintPositionDirective} from './hint-position.directive';
         TuiHintDescribeDirective,
         TuiHintPositionDirective,
         TuiHintOptionsDirective,
+        TuiHintUnstyledComponent,
+        TuiHintUnstyledDirective,
     ],
     exports: [
         TuiHintComponent,
@@ -38,6 +44,7 @@ import {TuiHintPositionDirective} from './hint-position.directive';
         TuiHintDescribeDirective,
         TuiHintPositionDirective,
         TuiHintOptionsDirective,
+        TuiHintUnstyledDirective,
     ],
 })
 export class TuiHintModule {}

@@ -141,7 +141,8 @@ export class TuiInputDateMultiComponent
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(Injector) private readonly injector: Injector,
         @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
-        @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
+        @Inject(TuiDialogService)
+        private readonly dialogs: TuiDialogService,
         @Optional()
         @Inject(TUI_MOBILE_CALENDAR)
         private readonly mobileCalendar: Type<Record<string, any>> | null,
@@ -247,7 +248,7 @@ export class TuiInputDateMultiComponent
                     size: 'fullscreen',
                     closeable: false,
                     data: {
-                        single: false,
+                        multi: true,
                         min: this.min,
                         max: this.max,
                         disabledItemHandler: this.disabledItemHandler,

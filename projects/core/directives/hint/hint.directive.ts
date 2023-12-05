@@ -23,7 +23,7 @@ import {TUI_HINT_COMPONENT} from './hint.providers';
 import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 
 @Directive({
-    selector: '[tuiHint]:not(ng-container)',
+    selector: '[tuiHint]:not(ng-container):not(ng-template)',
     providers: [
         tuiAsRectAccessor(TuiHintDirective),
         tuiAsVehicle(TuiHintDirective),
@@ -50,8 +50,7 @@ export class TuiHintDirective<C>
 
     constructor(
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(PolymorpheusComponent)
-        readonly component: PolymorpheusComponent<unknown>,
+        @Inject(PolymorpheusComponent) public component: PolymorpheusComponent<unknown>,
         @Inject(TuiHintService) private readonly hintService: TuiHintService,
         @Inject(TUI_HINT_OPTIONS) private readonly options: TuiHintOptions,
         @Optional()
