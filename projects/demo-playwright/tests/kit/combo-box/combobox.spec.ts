@@ -1,6 +1,8 @@
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, Locator, Page, test} from '@playwright/test';
 
+import {TuiComboBoxPO} from '../../../utils/page-objects/tui-combo-box.po';
+
 const {describe} = test;
 
 describe(`ComboBox`, () => {
@@ -32,13 +34,15 @@ describe(`ComboBox`, () => {
             }) => {
                 const {apiPageExample} = new TuiDocumentationPagePO(page);
 
+                const {comboboxTextfield} = new TuiComboBoxPO(apiPageExample);
+
                 await visitBy(page, strict);
                 await openFormValue(apiPageExample);
                 await expect(page).toHaveScreenshot(
                     `search-should-not-be-reset-strict-${strict}.png`,
                 );
 
-                await getInput(apiPageExample).click();
+                await comboboxTextfield.click();
                 await page.keyboard.type(`Rubles (500)`);
                 await waitCheckmark(page);
                 await expect(page).toHaveScreenshot(
@@ -51,14 +55,14 @@ describe(`ComboBox`, () => {
                     `search-should-not-be-reset-strict-focused-${strict}.png`,
                 );
 
-                await getInput(apiPageExample).click();
+                await comboboxTextfield.click();
                 await page.keyboard.press(`Backspace`);
                 await focusWrapper(apiPageExample);
                 await expect(page).toHaveScreenshot(
                     `search-should-not-be-reset-strict-backspaced-${strict}.png`,
                 );
 
-                await getInput(apiPageExample).click();
+                await comboboxTextfield.click();
                 await page.keyboard.press(`Control+A`);
                 await page.keyboard.press(`Backspace`);
                 await focusWrapper(apiPageExample);
@@ -69,33 +73,34 @@ describe(`ComboBox`, () => {
 
             test(`correct word match when strict is ${strict}`, async ({page}) => {
                 const {apiPageExample} = new TuiDocumentationPagePO(page);
+                const {comboboxTextfield} = new TuiComboBoxPO(apiPageExample);
 
                 await visitBy(page, strict);
                 await openFormValue(apiPageExample);
 
-                await getInput(apiPageExample).click();
+                await comboboxTextfield.click();
                 await page.keyboard.type(`dOlLaRs (237)`);
                 await waitCheckmark(page);
                 await expect(page).toHaveScreenshot(
                     `correct-word-match-when-strict-${strict}.png`,
                 );
 
-                await getInput(apiPageExample).click();
+                await comboboxTextfield.click();
                 await page.keyboard.press(`Backspace`);
 
                 await page.waitForTimeout(200);
 
-                await getInput(apiPageExample).click();
+                await comboboxTextfield.click();
                 await page.keyboard.press(`Backspace`);
 
                 await page.waitForTimeout(200);
 
-                await getInput(apiPageExample).click();
+                await comboboxTextfield.click();
                 await page.keyboard.press(`Backspace`);
 
                 await page.waitForTimeout(200);
 
-                await getInput(apiPageExample).click();
+                await comboboxTextfield.click();
                 await page.keyboard.press(`Backspace`);
 
                 await expect(page).toHaveScreenshot(
@@ -108,7 +113,7 @@ describe(`ComboBox`, () => {
                     `correct-word-match-when-strict-focused-${strict}.png`,
                 );
 
-                await getInput(apiPageExample).click();
+                await comboboxTextfield.click();
                 await page.keyboard.press(`Control+A`);
                 await page.keyboard.press(`Backspace`);
 
@@ -116,7 +121,7 @@ describe(`ComboBox`, () => {
                     `correct-word-match-when-strict-remove-all-${strict}.png`,
                 );
 
-                await getInput(apiPageExample).click();
+                await comboboxTextfield.click();
 
                 await expect(page).toHaveScreenshot(
                     `correct-word-match-when-strict-focused-2-${strict}.png`,
@@ -136,12 +141,6 @@ async function openFormValue(locator: Locator): Promise<void> {
 
 async function focusWrapper(locator: Locator): Promise<void> {
     await locator.click({force: true});
-}
-
-function getInput(locator: Locator): Locator {
-    return locator
-        .getByTestId(`tui-combo-box__textfield`)
-        .getByTestId(`tui-primitive-textfield__native-input`);
 }
 
 async function waitCheckmark(page: Page): Promise<void> {
