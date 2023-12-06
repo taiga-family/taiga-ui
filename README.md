@@ -9,7 +9,6 @@
 [![Deploy](https://github.com/taiga-family/taiga-ui/actions/workflows/deploy-gh-pages.yml/badge.svg?branch=main)](https://github.com/taiga-family/taiga-ui/actions/workflows/deploy-gh-pages.yml)
 [![Downloads per month](https://img.shields.io/npm/dm/@taiga-ui/cdk?color=dark-green)](https://www.npmjs.com/package/@taiga-ui/cdk)
 [![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white)](https://discord.gg/Us8d8JVaTg)
-[![angular-open-source-starter](https://img.shields.io/badge/made%20with-angular--open--source--starter-d81676?logo=angular)](https://github.com/taiga-family/angular-open-source-starter)
 [![Renovate](https://img.shields.io/badge/renovate-configured-green?logo=renovatebot)](https://docs.renovatebot.com/)
 ![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/y/taiga-family/taiga-ui)
 [![Code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
