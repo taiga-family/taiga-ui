@@ -61,7 +61,7 @@ export const TUI_MALAY_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> = {
     [TuiCountryIsoCode.EE]: `Estonia`,
     [TuiCountryIsoCode.EG]: `Mesir`,
     [TuiCountryIsoCode.ER]: `Eritrea`,
-    [TuiCountryIsoCode.ES]: `Spain`,
+    [TuiCountryIsoCode.ES]: `Sepanyol`,
     [TuiCountryIsoCode.ET]: `Habsyah (Ethiopia)`,
     [TuiCountryIsoCode.FI]: `Finland`,
     [TuiCountryIsoCode.FJ]: `Fiji`,
