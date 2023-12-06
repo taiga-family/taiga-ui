@@ -25,7 +25,10 @@
             "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/addon-mobile"],
             "options": {
-                "jestConfig": "projects/addon-mobile/jest.config.ts"
+                "jestConfig": "jest.config.ts",
+                "coverageDirectory": "coverage/addon-mobile",
+                "collectCoverageFrom": ["<rootDir>/projects/addon-mobile/**/*.ts"],
+                "testMatch": ["<rootDir>/projects/addon-mobile/**/*.spec.ts"]
             }
         },
         "publish": {
