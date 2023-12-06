@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 @Component({
     selector: 'disable-animation',
     templateUrl: './disable-animation.template.html',
-    styleUrls: ['../../../../modules/app/home/home.style.less'],
+    styleUrls: ['./disable-animation.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisableAnimationComponent {
