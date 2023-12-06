@@ -1,17 +1,23 @@
-# <img src="projects/demo/src/assets/images/taiga.svg" alt="taiga ui logo" width="48px"> Taiga UI
+<center>
 
+# <img src="projects/demo/src/assets/images/taiga.svg" alt="taiga ui logo" width="36px"> Taiga UI
+
+[![CodeFactor](https://www.codefactor.io/repository/github/taiga-family/taiga-ui/badge)](https://www.codefactor.io/repository/github/taiga-family/taiga-ui)
 [![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk.svg)](https://npmjs.com/package/@taiga-ui/cdk)
 [![codecov](https://codecov.io/gh/tinkoff/taiga-ui/branch/main/graphs/badge.svg)](https://app.codecov.io/gh/Tinkoff/taiga-ui/tree/main/projects)
 [![All packages CI](https://github.com/taiga-family/taiga-ui/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/taiga-family/taiga-ui/actions/workflows/build.yml)
 [![Deploy](https://github.com/taiga-family/taiga-ui/actions/workflows/deploy-gh-pages.yml/badge.svg?branch=main)](https://github.com/taiga-family/taiga-ui/actions/workflows/deploy-gh-pages.yml)
 [![Downloads per month](https://img.shields.io/npm/dm/@taiga-ui/cdk?color=dark-green)](https://www.npmjs.com/package/@taiga-ui/cdk)
 [![Discord](https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23taiga-ui&logo=discord&logoColor=white)](https://discord.gg/Us8d8JVaTg)
-[![angular-open-source-starter](https://img.shields.io/badge/made%20with-angular--open--source--starter-d81676?logo=angular)](https://github.com/taiga-family/angular-open-source-starter)
 [![Renovate](https://img.shields.io/badge/renovate-configured-green?logo=renovatebot)](https://docs.renovatebot.com/)
+![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/y/taiga-family/taiga-ui)
+[![Code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 [Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) • [Core team](#core-team) •
 [Figma](https://www.figma.com/community/file/1220308188005380608)
+
+</center>
 
 **Taiga UI** is fully-treeshakable Angular UI Kit consisting of multiple base libraries and several add-ons.
 
