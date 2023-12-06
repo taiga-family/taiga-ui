@@ -1,9 +1,17 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
 /* You can add global styles to this file, and also import other style files */
 @sidebar-width: 15.5rem;
 
+html,
 body {
+    .scroll-behavior();
     font: var(--tui-font-text-m);
     overflow-x: hidden;
+
+    @media (prefers-reduced-motion) {
+        scroll-behavior: auto;
+    }
 }
 
 .b-demo-steps {
