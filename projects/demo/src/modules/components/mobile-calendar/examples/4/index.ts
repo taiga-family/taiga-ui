@@ -3,7 +3,7 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMobileCalendarDialogComponent} from '@taiga-ui/addon-mobile';
-import {tuiControlValue, TuiDay} from '@taiga-ui/cdk';
+import {tuiControlValue, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {TUI_MONTHS, TuiDialogService} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
@@ -11,16 +11,16 @@ import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-mobile-calendar-example-1',
+    selector: 'tui-mobile-calendar-example-4',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiMobileCalendarExample1 {
+export class TuiMobileCalendarExample4 {
     private readonly control = new FormControl(null);
 
-    private readonly dialog$: Observable<TuiDay> = this.dialogs.open(
+    private readonly dialog$: Observable<TuiDayRange> = this.dialogs.open(
         new PolymorpheusComponent(
             TuiMobileCalendarDialogComponent,
             Injector.create({
@@ -37,21 +37,26 @@ export class TuiMobileCalendarExample1 {
             size: 'fullscreen',
             closeable: false,
             data: {
-                single: true,
-                min: TuiDay.currentLocal(),
+                min: new TuiDay(2018, 2, 10),
             },
         },
     );
 
     readonly date$ = combineLatest([
-        tuiControlValue<TuiDay>(this.control),
+        tuiControlValue<TuiDayRange>(this.control),
         this.months$,
     ]).pipe(
-        map(([value, months]) =>
-            !value
-                ? 'Choose a date'
-                : `${months[value.month]} ${value.day}, ${value.year}`,
-        ),
+        map(([value, months]) => {
+            if (!value) {
+                return 'Choose a date range';
+            }
+
+            return value.isSingleDay
+                ? `${months[value.from.month]} ${value.from.day}, ${value.from.year}`
+                : `${months[value.from.month]} ${value.from.day}, ${value.from.year} - ${
+                      months[value.to.month]
+                  } ${value.to.day}, ${value.to.year}`;
+        }),
     );
 
     constructor(
