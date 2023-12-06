@@ -40,6 +40,7 @@ import {
 import {
     TUI_DEFAULT_MARKER_HANDLER,
     TUI_TEXTFIELD_SIZE,
+    TuiDialogOptions,
     TuiDialogService,
     TuiMarkerHandler,
     TuiPrimitiveTextfieldComponent,
@@ -50,6 +51,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiNamedDay} from '@taiga-ui/kit/classes';
 import {TUI_DATE_MODE_MASKITO_ADAPTER} from '@taiga-ui/kit/constants';
+import {TuiMobileCalendarData} from '@taiga-ui/kit/interfaces';
 import {
     TUI_DATE_TEXTS,
     TUI_DATE_VALUE_TRANSFORMER,
@@ -251,16 +253,19 @@ export class TuiInputDateComponent
         }
 
         this.dialogs
-            .open<TuiDay>(new PolymorpheusComponent(this.mobileCalendar, this.injector), {
-                size: 'fullscreen',
-                closeable: false,
-                data: {
-                    single: true,
-                    min: this.min,
-                    max: this.max,
-                    disabledItemHandler: this.disabledItemHandler,
+            .open<TuiDay, TuiDialogOptions<TuiMobileCalendarData>>(
+                new PolymorpheusComponent(this.mobileCalendar, this.injector),
+                {
+                    size: 'fullscreen',
+                    closeable: false,
+                    data: {
+                        single: true,
+                        min: this.min,
+                        max: this.max,
+                        disabledItemHandler: this.disabledItemHandler,
+                    },
                 },
-            })
+            )
             .pipe(takeUntil(this.destroy$))
             .subscribe(value => {
                 this.value = value;

@@ -45,6 +45,7 @@ import {
 import {
     TUI_DEFAULT_MARKER_HANDLER,
     TUI_TEXTFIELD_SIZE,
+    TuiDialogOptions,
     TuiDialogService,
     TuiMarkerHandler,
     TuiPrimitiveTextfieldComponent,
@@ -58,6 +59,7 @@ import {
     MAX_DAY_RANGE_LENGTH_MAPPER,
     TUI_DATE_MODE_MASKITO_ADAPTER,
 } from '@taiga-ui/kit/constants';
+import {TuiMobileCalendarData} from '@taiga-ui/kit/interfaces';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_TEXTS,
@@ -285,7 +287,7 @@ export class TuiInputDateRangeComponent
         }
 
         this.dialogs
-            .open<TuiDayRange>(
+            .open<TuiDayRange, TuiDialogOptions<TuiMobileCalendarData>>(
                 new PolymorpheusComponent(this.mobileCalendar, this.injector),
                 {
                     size: 'fullscreen',

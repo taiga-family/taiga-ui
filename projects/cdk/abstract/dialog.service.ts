@@ -21,9 +21,9 @@ export abstract class AbstractTuiDialogService<T, K = void> extends Observable<
         super(observer => this.dialogs$.subscribe(observer));
     }
 
-    open<G = void>(
-        content: PolymorpheusContent<T & TuiBaseDialogContext<K extends void ? G : K>>,
-        options: Partial<T> = {},
+    open<G = void, V extends T = T>(
+        content: PolymorpheusContent<TuiBaseDialogContext<K extends void ? G : K> & V>,
+        options: Partial<V> = {},
     ): Observable<K extends void ? G : K> {
         return new Observable(observer => {
             const completeWith = (result: K extends void ? G : K): void => {
