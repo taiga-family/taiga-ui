@@ -1,9 +1,12 @@
-import {Component, forwardRef, Inject} from '@angular/core';
+import {Component, forwardRef, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiCodeCVCLength, tuiCreateLuhnValidator} from '@taiga-ui/addon-commerce';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiAlertService, TuiHintOptions} from '@taiga-ui/core';
+import {
+    TuiDocDocumentationPropertyConnectorDirective,
+    TuiDocExample,
+} from '@taiga-ui/addon-doc';
+import {TuiHintOptions} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -21,6 +24,11 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
+    @ViewChild('documentationPropertyBinChange', {
+        read: TuiDocDocumentationPropertyConnectorDirective,
+    })
+    binChangeProperty?: TuiDocDocumentationPropertyConnectorDirective<unknown>;
+
     readonly exampleModule = import('./examples/import/import-module.md?raw');
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
@@ -73,13 +81,6 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
         cvc: new FormControl('', Validators.required),
     });
 
-    constructor(
-        @Inject(TuiAlertService)
-        private readonly alerts: TuiAlertService,
-    ) {
-        super();
-    }
-
     get cardSrc(): string | null {
         return this.cardSrcSelected === null ? null : this.cards[this.cardSrcSelected];
     }
@@ -120,9 +121,5 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
         }
 
         this.control.get(control)!.enable();
-    }
-
-    onBinChange(bin: string | null): void {
-        this.alerts.open(`bin: ${bin}`).subscribe();
     }
 }

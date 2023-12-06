@@ -54,6 +54,7 @@
                 [(page)]="page"
                 [(size)]="size"
                 (pageChange)="documentationPropertyPageChange.emitEvent($event)"
+                (paginationChange)="documentationPropertyPaginationChange.emitEvent($event)"
                 (sizeChange)="documentationPropertySizeChange.emitEvent($event)"
             ></tui-table-pagination>
         </tui-doc-demo>

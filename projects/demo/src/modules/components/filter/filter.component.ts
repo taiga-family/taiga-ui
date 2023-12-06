@@ -1,9 +1,9 @@
-import {Component, Inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {ALWAYS_FALSE_HANDLER, TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
+import {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 
 class ItemWithBadge {
     constructor(
@@ -86,13 +86,4 @@ export class ExampleTuiFilterComponent {
     readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeXS> = ['xs', 's', 'm', 'l'];
 
     size = this.sizeVariants[2];
-
-    constructor(
-        @Inject(TuiAlertService)
-        private readonly alerts: TuiAlertService,
-    ) {}
-
-    onToggledItemChange(item: unknown): void {
-        this.alerts.open(String(item)).subscribe();
-    }
 }

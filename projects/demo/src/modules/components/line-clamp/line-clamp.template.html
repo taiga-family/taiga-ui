@@ -54,6 +54,7 @@
                 [lineHeight]="lineHeight"
                 [linesLimit]="linesLimit"
                 [style.maxWidth.px]="maxWidth"
+                (overflownChange)="documentationPropertyOverflownChange.emitEvent($event)"
             ></tui-line-clamp>
             <ng-template #defaultExampleContent>
                 Lorem ipsum
@@ -91,6 +92,7 @@
                 Number of visible lines
             </ng-template>
             <ng-template
+                #documentationPropertyOverflownChange="documentationProperty"
                 documentationPropertyMode="output"
                 documentationPropertyName="overflownChange"
                 documentationPropertyType="boolean"
