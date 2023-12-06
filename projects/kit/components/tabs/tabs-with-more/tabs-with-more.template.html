@@ -54,6 +54,7 @@
         >
             <div
                 *ngFor="let item of items; let index = index"
+                class="t-dropdown-item"
                 (tui-tab-activate)="onClick(index)"
             >
                 <ng-container
