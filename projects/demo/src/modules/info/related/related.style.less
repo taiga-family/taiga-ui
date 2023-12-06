@@ -25,6 +25,10 @@
 .grid {
     display: grid;
     grid-gap: 20px;
+
+    .tui-island {
+        border: 1px solid var(--tui-base-03);
+    }
 }
 
 .grid-container {
@@ -43,6 +47,7 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 0;
+    border: none;
     overflow: hidden;
 
     .title {
@@ -57,7 +62,7 @@
         border-radius-right-bottom: 0;
         border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
-        background: #fff;
+        background: var(--tui-base-01);
         transform: translateY(2.5rem);
     }
 
