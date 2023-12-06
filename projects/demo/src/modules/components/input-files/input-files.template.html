@@ -72,7 +72,7 @@
                 [pseudoActive]="pseudoPressed"
                 [pseudoFocus]="pseudoFocused"
                 [pseudoHover]="pseudoHovered"
-                (reject)="updateRejected($event)"
+                (reject)="updateRejected($event); documentationPropertyReject.emitEvent($event)"
             >
                 <input
                     tuiInputFiles
@@ -94,7 +94,7 @@
                             [showDelete]="showDelete"
                             [showSize]="showSize"
                             [size]="size"
-                            (removed)="removeFile(file)"
+                            (removed)="removeFile(file); documentationPropertyRemoved.emitEvent($event)"
                         ></tui-file>
                     </ng-container>
                 </ng-container>
@@ -161,6 +161,7 @@
                 Max file size in bytes (30 MB by default — 30 * 1000 * 1000)
             </ng-template>
             <ng-template
+                #documentationPropertyReject="documentationProperty"
                 documentationPropertyMode="output"
                 documentationPropertyName="reject"
                 documentationPropertyType="TuiFileLike"
@@ -263,6 +264,7 @@
                 Component size
             </ng-template>
             <ng-template
+                #documentationPropertyRemoved="documentationProperty"
                 documentationPropertyMode="output"
                 documentationPropertyName="removed"
                 documentationPropertyType="TuiFileLike"

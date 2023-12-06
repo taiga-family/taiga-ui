@@ -11,8 +11,9 @@ import {
 } from '@angular/core';
 import {ActivatedRoute, Params, UrlSerializer, UrlTree} from '@angular/router';
 import {TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
-import {tuiCoerceValue} from '@taiga-ui/addon-doc/utils';
+import {tuiCoerceValue, tuiInspectAny} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber, TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiAlertService} from '@taiga-ui/core';
 import {BehaviorSubject, Subject} from 'rxjs';
 
 const SERIALIZED_SUFFIX = '$';
@@ -66,6 +67,7 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         @Inject(UrlSerializer) private readonly urlSerializer: UrlSerializer,
         @Inject(TUI_DOC_URL_STATE_HANDLER)
         private readonly urlStateHandler: TuiStringHandler<UrlTree>,
+        @Inject(TuiAlertService) private readonly alerts: TuiAlertService,
     ) {}
 
     ngOnInit(): void {
@@ -108,6 +110,14 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         console.info(this.attrName, event);
 
         this.emits$.next(this.emits$.value + 1);
+
+        let content: string | undefined;
+
+        if (event !== undefined) {
+            content = tuiInspectAny(event, 2);
+        }
+
+        this.alerts.open(content, {label: this.attrName}).subscribe();
     }
 
     private parseParams(params: Params): void {
