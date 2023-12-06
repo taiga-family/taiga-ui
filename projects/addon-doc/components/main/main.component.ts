@@ -12,6 +12,7 @@ import {TuiThemeNightService, TuiThemeService} from '@taiga-ui/addon-doc/service
 import {TUI_DOC_ICONS, TuiDocIcons} from '@taiga-ui/addon-doc/tokens';
 import {TuiSwipeService} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
+import {TUI_ASIDE_TEXTS} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
 import {
     delay,
@@ -22,7 +23,6 @@ import {
     shareReplay,
     startWith,
 } from 'rxjs/operators';
-import {TUI_ASIDE_TEXTS} from '@taiga-ui/kit';
 
 @Component({
     selector: 'tui-doc-main',
