@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
@@ -71,5 +71,5 @@ export class ExampleInputMonthComponent extends AbstractExampleTuiControl {
 
     override cleaner = false;
 
-    control = new FormControl(null, Validators.required);
+    control = new UntypedFormControl(null, Validators.required);
 }

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_DEFAULT_MATCHER, TuiBooleanHandler, tuiPure} from '@taiga-ui/cdk';
@@ -22,7 +22,7 @@ const ITEMS: readonly string[] = [
 export class TuiMultiSelectExample1 {
     search: string | null = '';
 
-    readonly control = new FormControl([ITEMS[0]]);
+    readonly control = new UntypedFormControl([ITEMS[0]]);
 
     @tuiPure
     filter(search: string | null): readonly string[] {

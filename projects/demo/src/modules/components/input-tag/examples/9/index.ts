@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {MaskitoOptions} from '@maskito/core';
@@ -13,7 +13,7 @@ import {TuiBooleanHandler, TuiDay} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiInputTagExample9 {
-    readonly control = new FormControl([]);
+    readonly control = new UntypedFormControl([]);
     readonly min = new Date(2000, 0, 1);
     readonly max = new Date(2025, 4, 10);
 

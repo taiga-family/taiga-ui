@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -13,9 +13,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 export class TuiSelectExample3 {
     readonly items = ['https://twitter.com/marsibarsi', 'https://twitter.com/waterplea'];
 
-    readonly testForm = new FormGroup({
-        email: new FormControl(null),
-        signature: new FormControl(''),
+    readonly testForm = new UntypedFormGroup({
+        email: new UntypedFormControl(null),
+        signature: new UntypedFormControl(''),
     });
 
     signatureVisible = false;

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
@@ -11,8 +11,8 @@ import {TuiDay} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiInputDateMultiExample1 {
-    readonly testForm = new FormGroup({
-        testValue: new FormControl([
+    readonly testForm = new UntypedFormGroup({
+        testValue: new UntypedFormControl([
             new TuiDay(2017, 0, 7),
             new TuiDay(2017, 0, 10),
             new TuiDay(2017, 0, 15),

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
@@ -15,7 +15,7 @@ const yesterday = today.append({day: -1});
     changeDetection,
 })
 export class TuiInputDateRangeExample5 {
-    readonly control = new FormControl(new TuiDayRange(today, today));
+    readonly control = new UntypedFormControl(new TuiDayRange(today, today));
 
     readonly items = [
         new TuiDayRangePeriod(

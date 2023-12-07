@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
@@ -57,7 +57,7 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
         'transformer.ts': import('./examples/6/transformer.ts?raw'),
     };
 
-    control = new FormControl([0, 10]);
+    control = new UntypedFormControl([0, 10]);
 
     minVariants: readonly number[] = [0, 5, 7.77, -10];
 

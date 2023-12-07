@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiHorizontalDirection, TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
@@ -56,7 +56,7 @@ export class ExampleTuiRadioBlockComponent extends AbstractExampleTuiControl {
 
     pseudoDisabled = false;
 
-    readonly control = new FormControl('orange');
+    readonly control = new UntypedFormControl('orange');
 
     override get disabled(): boolean {
         return this.control.disabled;

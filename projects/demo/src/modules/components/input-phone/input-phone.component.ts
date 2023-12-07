@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 
@@ -41,7 +41,7 @@ export class ExampleTuiInputPhoneComponent extends AbstractExampleTuiControl {
 
     override cleaner = false;
 
-    control = new FormControl('', [Validators.required, Validators.minLength(12)]);
+    control = new UntypedFormControl('', [Validators.required, Validators.minLength(12)]);
 
     countryCodes = ['+7', '+850', '+1', '+52'];
 

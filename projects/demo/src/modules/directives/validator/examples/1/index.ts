@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -14,9 +14,9 @@ export class TuiValidatorExample1 {
 
     type = this.items[0];
 
-    readonly group = new FormGroup({
-        name: new FormControl('', Validators.required),
-        contact: new FormControl('', Validators.required),
+    readonly group = new UntypedFormGroup({
+        name: new UntypedFormControl('', Validators.required),
+        contact: new UntypedFormControl('', Validators.required),
     });
 
     readonly validator = Validators.email;

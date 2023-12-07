@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiKeySteps} from '@taiga-ui/kit';
@@ -12,7 +12,7 @@ import {TuiKeySteps} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiInputRangeExample5 {
-    readonly control = new FormControl([100_000, 500_000]);
+    readonly control = new UntypedFormControl([100_000, 500_000]);
     readonly max = 1_000_000;
     readonly min = 0;
     readonly totalSteps = 100;

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
@@ -46,5 +46,5 @@ export class ExampleTuiTextfieldControllerComponent {
     inputMode = this.inputModeVariants[0];
     maxLength: number | null = null;
 
-    readonly control = new FormControl('111', Validators.required);
+    readonly control = new UntypedFormControl('111', Validators.required);
 }

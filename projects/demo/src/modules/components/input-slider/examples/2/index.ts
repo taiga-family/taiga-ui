@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -11,7 +11,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputSliderExample2 {
-    readonly control = new FormControl(40);
+    readonly control = new UntypedFormControl(40);
     readonly segments = 5;
     readonly max = 100;
     readonly min = 0;

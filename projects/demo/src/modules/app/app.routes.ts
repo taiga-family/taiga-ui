@@ -901,7 +901,7 @@ export const ROUTES: Routes = [
     {
         path: `components/push`,
         loadChildren: async () =>
-            import(`../components/push/push.module`).then(m => m.ExampleTuiPushModule),
+            (await import(`../components/push/push.module`)).ExampleTuiPushModule,
         data: {
             title: `Push`,
         },
@@ -1761,9 +1761,8 @@ export const ROUTES: Routes = [
     {
         path: `pipes/format-date`,
         loadChildren: async () =>
-            import(`../pipes/format-date/format-date.module`).then(
-                m => m.ExampleTuiFormatDateModule,
-            ),
+            (await import(`../pipes/format-date/format-date.module`))
+                .ExampleTuiFormatDateModule,
         data: {
             title: `FormatDate`,
         },
@@ -1958,7 +1957,7 @@ export const ROUTES: Routes = [
     {
         path: `cypress`,
         loadChildren: async () =>
-            import(`../cypress/cypress.module`).then(m => m.CypressDocPageModule),
+            (await import(`../cypress/cypress.module`)).CypressDocPageModule,
         data: {
             title: `Cypress tests 🤫`,
         },

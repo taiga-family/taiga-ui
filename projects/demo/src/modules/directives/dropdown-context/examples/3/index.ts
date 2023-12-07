@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -11,8 +11,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiDropdownContextExample3 {
-    testForm = new FormGroup({
-        reportText: new FormControl('Misspell HERE!'),
+    testForm = new UntypedFormGroup({
+        reportText: new UntypedFormControl('Misspell HERE!'),
     });
 
     report(): void {

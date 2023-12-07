@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeS} from '@taiga-ui/core';
@@ -38,7 +38,7 @@ export class ExampleTuiRangeComponent {
         LESS: import('./examples/4/index.less?raw'),
     };
 
-    readonly control = new FormControl([0, 0]);
+    readonly control = new UntypedFormControl([0, 0]);
 
     get disabled(): boolean {
         return this.control.disabled;

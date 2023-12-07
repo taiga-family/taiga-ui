@@ -43,14 +43,24 @@ export class TuiTileService implements OnDestroy {
         this.sub.unsubscribe();
     }
 
-    private getRect([left, top]: readonly [number, number]): ClientRect {
-        return {
-            top: Number.isNaN(top) ? this.el.nativeElement.offsetTop : top,
-            left: Number.isNaN(left) ? this.el.nativeElement.offsetLeft : left,
+    private getRect([left, top]: readonly [number, number]): DOMRect {
+        const elTop = Number.isNaN(top) ? this.el.nativeElement.offsetTop : top;
+        const elLeft = Number.isNaN(left) ? this.el.nativeElement.offsetLeft : left;
+
+        const rect = {
+            top: elTop,
+            left: elLeft,
             width: this.el.nativeElement.clientWidth,
             height: this.el.nativeElement.clientHeight,
             right: NaN,
             bottom: NaN,
+            y: elTop,
+            x: elLeft,
+        };
+
+        return {
+            ...rect,
+            toJSON: () => rect,
         };
     }
 

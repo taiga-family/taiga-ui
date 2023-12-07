@@ -1,7 +1,11 @@
 export type TuiDocTypeReferenceParsed = ReadonlyArray<{type: string; extracted: string}>;
 
 export function tuiTypeReferenceParser(types: string): TuiDocTypeReferenceParsed {
-    const generics = types.match(/<([^>]+)>/g) ?? [];
+    const generics = types.match(/<([^>]+)>/g);
+
+    if (!generics) {
+        return [];
+    }
 
     const escaped = generics
         .reduce(

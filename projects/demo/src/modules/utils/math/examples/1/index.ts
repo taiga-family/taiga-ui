@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiCeil, tuiFloor, tuiRound} from '@taiga-ui/cdk';
@@ -12,9 +12,9 @@ import {tuiCeil, tuiFloor, tuiRound} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiMathExample1 {
-    parametersForm = new FormGroup({
-        value: new FormControl(1.005),
-        precision: new FormControl(2),
+    parametersForm = new UntypedFormGroup({
+        value: new UntypedFormControl(1.005),
+        precision: new UntypedFormControl(2),
     });
 
     get rounded(): number {

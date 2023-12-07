@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
@@ -69,7 +69,7 @@ export class ExampleTuiMobileCalendarComponent {
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];
 
-    control = new FormControl();
+    control = new UntypedFormControl();
 
     stream = tuiControlValue<TuiDay>(this.control);
 }

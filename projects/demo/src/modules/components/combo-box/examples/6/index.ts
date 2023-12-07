@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiStringHandler} from '@taiga-ui/cdk';
@@ -25,7 +25,7 @@ const STRINGIFY_EMPLOYEE: TuiStringHandler<Employee> = (item: Employee) =>
     providers: [tuiItemsHandlersProvider({stringify: STRINGIFY_EMPLOYEE})],
 })
 export class TuiComboBoxExample6 {
-    readonly testValue = new FormControl(null);
+    readonly testValue = new UntypedFormControl(null);
 
     readonly items: readonly Employee[] = [
         {id: 42, name: 'John Cleese', dept: {id: 566, title: 'Financial'}},

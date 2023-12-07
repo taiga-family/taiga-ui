@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -11,7 +11,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiIslandExample2 {
-    testForm = new FormGroup({
-        testValue: new FormControl(true),
+    testForm = new UntypedFormGroup({
+        testValue: new UntypedFormControl(true),
     });
 }

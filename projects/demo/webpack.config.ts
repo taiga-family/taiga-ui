@@ -1,5 +1,3 @@
-import {GLOBAL_DEFS_FOR_TERSER_WITH_AOT} from '@angular/compiler-cli';
-import {tuiIsObject} from '@taiga-ui/cdk';
 import TerserPlugin from 'terser-webpack-plugin';
 import {Configuration, RuleSetRule} from 'webpack';
 import {merge} from 'webpack-merge';
@@ -69,7 +67,6 @@ export function makeWebpackConfig({server}: Options): WebpackConf {
                 keep_fnames: false,
                 keep_classnames: false,
                 pure_funcs: [`forwardRef`],
-                global_defs: GLOBAL_DEFS_FOR_TERSER_WITH_AOT,
             },
             format: {
                 comments: false,
@@ -79,7 +76,9 @@ export function makeWebpackConfig({server}: Options): WebpackConf {
 
     return (ngConfigs: Configuration): Configuration => {
         const ngRules = [...(ngConfigs.module?.rules || [])].map(rule =>
-            tuiIsObject(rule) &&
+            // eslint-disable-next-line @taiga-ui/experience/no-typeof
+            typeof rule === `object` &&
+            !!rule &&
             DO_NOT_MUTATE_RAW_FILE_CONTENTS.some(
                 pattern => rule.test instanceof RegExp && rule.test?.test(pattern),
             )

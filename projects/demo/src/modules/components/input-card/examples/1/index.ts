@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -10,10 +10,10 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputCardExample1 {
-    readonly form = new FormGroup({
-        card: new FormControl(''),
-        expire: new FormControl(''),
-        cvc: new FormControl(''),
+    readonly form = new UntypedFormGroup({
+        card: new UntypedFormControl(''),
+        expire: new UntypedFormControl(''),
+        cvc: new UntypedFormControl(''),
     });
 
     get card(): string | null {

@@ -30,6 +30,7 @@ describe(`Button`, () => {
         TestBed.configureTestingModule({
             imports: [TuiButtonModule],
             declarations: [TestComponent],
+            teardown: {destroyAfterEach: true},
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

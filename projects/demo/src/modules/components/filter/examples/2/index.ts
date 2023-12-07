@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
@@ -33,8 +33,8 @@ const COMPLETED = {
     changeDetection,
 })
 export class TuiFilterExample2 {
-    readonly form = new FormGroup({
-        filters: new FormControl([
+    readonly form = new UntypedFormGroup({
+        filters: new UntypedFormControl([
             {
                 title: 'Drafts',
             },

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiFileLike} from '@taiga-ui/kit';
@@ -12,7 +12,7 @@ import {TuiFileLike} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiInputFilesExample5 {
-    readonly control = new FormControl();
+    readonly control = new UntypedFormControl();
 
     readonly file: TuiFileLike = {
         name: 'custom.txt',

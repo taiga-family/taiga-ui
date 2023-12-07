@@ -1,9 +1,9 @@
 import {Component, ViewChild} from '@angular/core';
 import {
     AbstractControl,
-    FormArray,
-    FormControl,
-    FormGroup,
+    UntypedFormArray,
+    UntypedFormControl,
+    UntypedFormGroup,
     ValidationErrors,
     ValidatorFn,
     Validators,
@@ -24,19 +24,24 @@ export class TuiFieldErrorPipeExample4 {
     @ViewChild('phoneErrorContent')
     phoneErrorContent: PolymorpheusContent;
 
-    testForm = new FormGroup({
-        phones: new FormArray(
-            [new FormControl('', [Validators.required, this.getPhoneLengthValidator()])],
+    testForm = new UntypedFormGroup({
+        phones: new UntypedFormArray(
+            [
+                new UntypedFormControl('', [
+                    Validators.required,
+                    this.getPhoneLengthValidator(),
+                ]),
+            ],
             [this.getPhoneArrayValidator()],
         ),
     });
 
-    get formData(): FormArray {
-        return this.testForm.get('phones') as FormArray;
+    get formData(): UntypedFormArray {
+        return this.testForm.get('phones') as UntypedFormArray;
     }
 
     addPhone(): void {
-        this.formData.push(new FormControl('', this.addValidators()));
+        this.formData.push(new UntypedFormControl('', this.addValidators()));
     }
 
     removePhone(index: number): void {
@@ -71,7 +76,7 @@ export class TuiFieldErrorPipeExample4 {
     }
 
     private getPhoneArrayValidator(): ValidatorFn {
-        return ((array: FormArray): ValidationErrors | null =>
+        return ((array: UntypedFormArray): ValidationErrors | null =>
             array.controls.length < 2 ||
             (!!array.controls.filter(item => item.errors).length && array.controls.length)
                 ? {

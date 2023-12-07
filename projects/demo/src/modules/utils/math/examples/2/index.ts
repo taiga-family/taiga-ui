@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiInRange} from '@taiga-ui/cdk';
@@ -12,10 +12,10 @@ import {tuiInRange} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiMathExample2 {
-    parametersForm = new FormGroup({
-        value: new FormControl(13),
-        fromInclude: new FormControl(5),
-        toExclude: new FormControl(42),
+    parametersForm = new UntypedFormGroup({
+        value: new UntypedFormControl(13),
+        fromInclude: new UntypedFormControl(5),
+        toExclude: new UntypedFormControl(42),
     });
 
     get ranged(): boolean {

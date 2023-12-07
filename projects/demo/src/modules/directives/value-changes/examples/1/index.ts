@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService} from '@taiga-ui/core';
@@ -11,8 +11,8 @@ import {TuiAlertService} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiValueChangesExample1 {
-    readonly form = new FormGroup({
-        control: new FormControl('', {updateOn: 'blur'}),
+    readonly form = new UntypedFormGroup({
+        control: new UntypedFormControl('', {updateOn: 'blur'}),
     });
 
     constructor(@Inject(TuiAlertService) private readonly alerts: TuiAlertService) {}
