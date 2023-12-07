@@ -14,7 +14,7 @@
             }
         },
         "build": {
-            "executor": "@angular-builders/custom-webpack:browser",
+            "executor": "@nx/angular:webpack-browser",
             "outputs": ["{workspaceRoot}/dist/demo"],
             "dependsOn": [
                 {
@@ -145,7 +145,7 @@
             }
         },
         "serve": {
-            "executor": "@angular-builders/custom-webpack:dev-server",
+            "executor": "@nx/angular:webpack-dev-server",
             "dependsOn": [
                 {
                     "target": "i18n",
@@ -159,26 +159,26 @@
             },
             "configurations": {
                 "production": {
-                    "browserTarget": "demo:build:production",
+                    "buildTarget": "demo:build:production",
                     "aot": true
                 },
                 "ru": {
-                    "browserTarget": "demo:build:ru"
+                    "buildTarget": "demo:build:ru"
                 },
                 "development": {
-                    "browserTarget": "demo:build:development"
+                    "buildTarget": "demo:build:development"
                 },
                 "def": {
-                    "browserTarget": "demo:build:def"
+                    "buildTarget": "demo:build:def"
                 },
                 "fast": {
-                    "browserTarget": "demo:build:fast"
+                    "buildTarget": "demo:build:fast"
                 },
                 "shadow": {
-                    "browserTarget": "demo:build:shadow"
+                    "buildTarget": "demo:build:shadow"
                 },
                 "coalescing": {
-                    "browserTarget": "demo:build:coalescing"
+                    "buildTarget": "demo:build:coalescing"
                 }
             },
             "defaultConfiguration": "development"

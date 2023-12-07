@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -12,7 +12,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 export class TuiRadioLabeledExample3 {
     items = [{name: 'ownership'}, {name: 'lease'}, {name: 'sublease'}];
 
-    testForm = new FormGroup({
-        testValue1: new FormControl(this.items[0]),
+    testForm = new UntypedFormGroup({
+        testValue1: new UntypedFormControl(this.items[0]),
     });
 }

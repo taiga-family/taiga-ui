@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiFormatNumber} from '@taiga-ui/core';
@@ -12,11 +12,11 @@ import {tuiFormatNumber} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiFormatExample5 {
-    parametersForm = new FormGroup({
-        value: new FormControl(123456.789),
-        decimalLimit: new FormControl(2),
-        decimalSeparator: new FormControl('.'),
-        thousandSeparator: new FormControl(' '),
+    parametersForm = new UntypedFormGroup({
+        value: new UntypedFormControl(123456.789),
+        decimalLimit: new UntypedFormControl(2),
+        decimalSeparator: new UntypedFormControl('.'),
+        thousandSeparator: new UntypedFormControl(' '),
     });
 
     get formattedNumber(): string {

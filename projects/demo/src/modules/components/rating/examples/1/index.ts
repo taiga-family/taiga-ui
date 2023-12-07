@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 
 @Component({
@@ -9,7 +9,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
     changeDetection,
 })
 export class TuiRatingExample1 {
-    rateControl = new FormControl(2);
+    rateControl = new UntypedFormControl(2);
     rateValue = 2;
 
     enableOrDisable(): void {

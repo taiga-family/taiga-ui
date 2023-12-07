@@ -1,5 +1,10 @@
 import {Component} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {
+    AbstractControl,
+    UntypedFormControl,
+    UntypedFormGroup,
+    Validators,
+} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {distinctUntilChanged} from 'rxjs/operators';
@@ -29,20 +34,28 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
     changeDetection,
 })
 export class TuiFieldErrorPipeExample1 {
-    readonly testValue1 = new FormControl('', [Validators.required, passwordValidator]);
+    readonly testValue1 = new UntypedFormControl('', [
+        Validators.required,
+        passwordValidator,
+    ]);
 
-    readonly testValue3 = new FormControl('', [Validators.required, passwordValidator]);
+    readonly testValue3 = new UntypedFormControl('', [
+        Validators.required,
+        passwordValidator,
+    ]);
 
-    readonly testForm = new FormGroup(
+    readonly testForm = new UntypedFormGroup(
         {
             testValue1: this.testValue1,
-            testValue2: new FormControl('', [
+            testValue2: new UntypedFormControl('', [
                 Validators.required,
                 superComputerValidator,
             ]),
         },
         control =>
-            Object.values((control as FormGroup).controls).every(({valid}) => valid)
+            Object.values((control as UntypedFormGroup).controls).every(
+                ({valid}) => valid,
+            )
                 ? null
                 : {other: 'Form is invalid'},
     );

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 
@@ -24,5 +24,5 @@ export class ExampleTuiCurrencyComponent {
     readonly currencyVariants = [null, 826, 840, 'EUR', 'RUB', 'UGX', 'USD'];
     currency = this.currencyVariants[0];
 
-    readonly control = new FormControl(6432, Validators.required);
+    readonly control = new UntypedFormControl(6432, Validators.required);
 }

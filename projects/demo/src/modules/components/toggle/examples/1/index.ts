@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -10,14 +10,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiToggleExample1 {
-    testForm = new FormGroup({
-        testValue1: new FormControl(true),
-        testValue2: new FormControl(false),
-        testValue3: new FormControl(true),
-        testValue4: new FormControl(false),
-        testValue5: new FormControl(true),
-        testValue6: new FormControl(false),
-        testValue7: new FormControl(true),
-        testValue8: new FormControl(false),
+    testForm = new UntypedFormGroup({
+        testValue1: new UntypedFormControl(true),
+        testValue2: new UntypedFormControl(false),
+        testValue3: new UntypedFormControl(true),
+        testValue4: new UntypedFormControl(false),
+        testValue5: new UntypedFormControl(true),
+        testValue6: new UntypedFormControl(false),
+        testValue7: new UntypedFormControl(true),
+        testValue8: new UntypedFormControl(false),
     });
 }

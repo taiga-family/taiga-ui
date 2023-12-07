@@ -1,5 +1,5 @@
 import {AfterViewInit, Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
@@ -34,8 +34,8 @@ export function maxLengthMessageFactory(context: {requiredLength: string}): stri
 export class TuiTextareaExample4 implements AfterViewInit {
     readonly maxLength = 97;
 
-    readonly testForm = new FormGroup({
-        testValue1: new FormControl(LONG_TEXT_EXAMPLE.trim(), [
+    readonly testForm = new UntypedFormGroup({
+        testValue1: new UntypedFormControl(LONG_TEXT_EXAMPLE.trim(), [
             Validators.required,
             Validators.maxLength(this.maxLength),
         ]),

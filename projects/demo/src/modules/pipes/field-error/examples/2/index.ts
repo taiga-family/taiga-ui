@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsFalsy} from '@taiga-ui/cdk';
@@ -32,16 +32,19 @@ import {map, scan, startWith} from 'rxjs/operators';
     ],
 })
 export class TuiFieldErrorPipeExample2 {
-    readonly testValue1 = new FormControl('', [
+    readonly testValue1 = new UntypedFormControl('', [
         Validators.minLength(4),
         Validators.maxLength(4),
     ]);
 
-    readonly testValue2 = new FormControl('', [Validators.required, Validators.email]);
+    readonly testValue2 = new UntypedFormControl('', [
+        Validators.required,
+        Validators.email,
+    ]);
 
-    readonly testValue3 = new FormControl(2, [Validators.min(3)]);
+    readonly testValue3 = new UntypedFormControl(2, [Validators.min(3)]);
 
-    readonly testForm = new FormGroup({
+    readonly testForm = new UntypedFormGroup({
         testValue1: this.testValue1,
         testValue2: this.testValue2,
         testValue3: this.testValue3,

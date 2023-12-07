@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TUI_INPUT_CARD_GROUPED_TEXTS} from '@taiga-ui/addon-commerce';
 import {of} from 'rxjs';
@@ -20,7 +20,7 @@ import {of} from 'rxjs';
     ],
 })
 export class TuiInputCardGroupedExample5 {
-    readonly control = new FormControl({
+    readonly control = new UntypedFormControl({
         card: '558620******2158',
         expire: '12/25',
     });

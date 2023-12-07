@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDialogContext, TuiDialogService, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
@@ -12,7 +12,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     changeDetection,
 })
 export class TuiMultiSelectExample9 {
-    readonly testValue = new FormControl([]);
+    readonly testValue = new UntypedFormControl([]);
 
     readonly items: readonly string[] = [
         'Luke Skywalker',

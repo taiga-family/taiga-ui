@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TUI_DEFAULT_MATCHER,
@@ -60,7 +60,7 @@ export class TuiMultiSelectExample4 {
         ),
     );
 
-    readonly control = new FormControl([2, 3]);
+    readonly control = new UntypedFormControl([2, 3]);
 
     onSearch(search: string | null): void {
         this.search$.next(search || '');

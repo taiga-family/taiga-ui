@@ -12,13 +12,20 @@ export const TUI_VIEWPORT = tuiCreateTokenFromFactory<TuiRectAccessor>(() => {
     return {
         type: `viewport`,
         getClientRect() {
-            return {
+            const rect = {
                 top: 0,
                 left: 0,
                 right: win.innerWidth,
                 bottom: win.innerHeight,
                 width: win.innerWidth,
                 height: win.innerHeight,
+                x: 0,
+                y: 0,
+            };
+
+            return {
+                ...rect,
+                toJSON: () => rect,
             };
         },
     };

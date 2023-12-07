@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -32,8 +32,8 @@ export class TuiAccordionExample2 {
         rubles: import('./rubles.svg?raw'),
     };
 
-    testForm = new FormGroup({
-        name: new FormControl(''),
-        accounts: new FormControl(this.accounts[0]),
+    testForm = new UntypedFormGroup({
+        name: new UntypedFormControl(''),
+        accounts: new UntypedFormControl(this.accounts[0]),
     });
 }

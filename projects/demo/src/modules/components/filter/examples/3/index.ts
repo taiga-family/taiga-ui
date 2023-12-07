@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -21,8 +21,8 @@ const getIcon: Record<string, string> = {
 export class TuiFilterExample3 {
     items = ['Calendar', 'Favorite', 'Messages', 'FAQ', 'Settings'];
 
-    form = new FormGroup({
-        filters: new FormControl([]),
+    form = new UntypedFormGroup({
+        filters: new UntypedFormControl([]),
     });
 
     getItemIcon(title: string): string {

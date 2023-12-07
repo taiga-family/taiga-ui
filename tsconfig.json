@@ -5,6 +5,9 @@
     "compilerOptions": {
         "baseUrl": "./",
         "outDir": "./dist",
+        "useDefineForClassFields": false,
+        "target": "ES2022",
+        "module": "ES2022",
         "typeRoots": [
             "node_modules/@types",
             "node_modules/@taiga-ui/tsconfig/@types",
