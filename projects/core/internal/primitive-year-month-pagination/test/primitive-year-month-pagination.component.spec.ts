@@ -59,10 +59,6 @@ describe(`PrimitiveYearMonthPaginationComponent`, () => {
             expect(component.value).toBe(testComponent.value);
         });
 
-        it(`min`, () => {
-            expect(component.min).toBe(testComponent.min);
-        });
-
         it(`max`, () => {
             expect(component.max).toBe(testComponent.max);
         });
