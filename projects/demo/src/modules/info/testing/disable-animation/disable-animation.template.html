@@ -1,12 +1,9 @@
 <tui-doc-page header="Disable animation">
     <p>
         During integration testing you can face with problem of flaky tests caused by animation. It is especially
-        crucial if you are writing screenshot tests.
-    </p>
-
-    <p>
-        For example, you want to make screenshot of dialog content: you click button which opens dialog and make
-        screenshot. Sometimes screenshots can be made too early (before dialog fully opens) and test fails.
+        crucial if you are writing screenshot tests. For example, you want to make screenshot of dialog content: you
+        click button which opens dialog and make screenshot. Sometimes screenshots can be made too early (before dialog
+        fully opens) and test fails.
     </p>
 
     <p>
@@ -15,32 +12,49 @@
     </p>
 
     <p>
-        For example, we use
-        <a
-            href="https://www.cypress.io/"
-            rel="noreferrer"
-            target="_blank"
-            tuiLink
-        >
-            Cypress
-        </a>
-        for screenshot testing of our ui-kit components.
-    </p>
-    <ol class="tui-list">
-        <li class="tui-list__item">
-            To detect if app is running under Cypress we use token
-            <code>TUI_IS_CYPRESS</code>
-            .
-        </li>
-        <li class="tui-list__item">
-            To disable animation in ALL Taiga UI components we use token
-            <code>TUI_ANIMATIONS_DURATION</code>
-            .
-        </li>
-    </ol>
+        <code>&#64;taiga-ui/cdk</code>
+        used
+        <code *ngFor="let ref of 'TUI_REDUCED_MOTION' | tuiDocTypeReference">
+            <a
+                rel="noreferrer"
+                target="_blank"
+                tuiLink
+                [attr.href]="ref.reference"
+            >
+                {{ ref.type }}
+            </a>
+        </code>
 
+        token which disables all animations for taiga-ui components. That token based on
+        <code>prefers-reduced-motion</code>
+        . The prefers-reduced-motion CSS media feature is used to detect if a user has enabled a setting on their device
+        to minimize the amount of non-essential motion.. The setting is used to convey to the browser on the device that
+        the user prefers an interface that removes, reduces, or replaces motion-based animations.
+    </p>
+
+    <tui-tabs-with-more
+        #tabs
+        class="tabs"
+    >
+        <button
+            *tuiItem
+            tuiTab
+        >
+            <tui-doc-tab src="assets/icons/cypress.svg">cypress.config.ts</tui-doc-tab>
+        </button>
+        <button
+            *tuiItem
+            tuiTab
+        >
+            <tui-doc-tab src="assets/icons/playwright.svg">playwright.config.ts</tui-doc-tab>
+        </button>
+    </tui-tabs-with-more>
     <tui-doc-code
-        filename="app.module.ts"
-        [code]="disableAnimationExample"
+        *ngIf="tabs.activeItemIndex === 0"
+        [code]="cypress"
+    ></tui-doc-code>
+    <tui-doc-code
+        *ngIf="tabs.activeItemIndex === 1"
+        [code]="playwright"
     ></tui-doc-code>
 </tui-doc-page>
