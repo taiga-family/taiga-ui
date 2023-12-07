@@ -8,6 +8,7 @@ import {
 import {inject, PLATFORM_ID, Provider} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {UrlTree} from '@angular/router';
+import {environment} from '@demo/environments/environment';
 import {SESSION_STORAGE} from '@ng-web-apis/common';
 import {
     TUI_DOC_CODE_EDITOR,
@@ -49,6 +50,7 @@ import {PROMPT_PROVIDER} from '../customization/dialogs/examples/1/prompt/prompt
 import {SEE_ALSO_GROUPS} from './app.const';
 import {TUI_DEFAULT_TABS} from './app.tabs';
 import {LOGO_CONTENT} from './logo/logo.component';
+import {metrikaOptionsProvider} from './metrika/metrika.service';
 import {pages} from './pages';
 import {TuiStackblitzService} from './stackblitz/stackblitz.service';
 import {exampleContentProcessor} from './utils';
@@ -208,6 +210,7 @@ export const APP_PROVIDERS: Provider[] = [
         },
     },
     tuiDocExampleOptionsProvider({fullsize: false}),
+    metrikaOptionsProvider({id: environment.ym}),
     tuiLanguageSwitcher(
         async (language: TuiLanguageName): Promise<unknown> =>
             import(
