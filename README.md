@@ -1,4 +1,4 @@
-<center>
+<div align="center">
 
 # <img src="projects/demo/src/assets/images/taiga.svg" alt="taiga ui logo" width="36px"> Taiga UI
 
@@ -17,7 +17,7 @@
 [Website](https://taiga-ui.dev) • [Documentation](https://taiga-ui.dev/getting-started) • [Core team](#core-team) •
 [Figma](https://www.figma.com/community/file/1220308188005380608)
 
-</center>
+</div>
 
 **Taiga UI** is fully-treeshakable Angular UI Kit consisting of multiple base libraries and several add-ons.
 
