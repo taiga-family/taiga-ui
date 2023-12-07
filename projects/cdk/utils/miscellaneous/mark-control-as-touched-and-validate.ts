@@ -1,13 +1,13 @@
-import {AbstractControl, FormArray, FormGroup} from '@angular/forms';
+import {AbstractControl, UntypedFormArray, UntypedFormGroup} from '@angular/forms';
 
 export function tuiMarkControlAsTouchedAndValidate(control: AbstractControl): void {
-    if (control instanceof FormArray) {
+    if (control instanceof UntypedFormArray) {
         control.controls.forEach(nestedControl => {
             tuiMarkControlAsTouchedAndValidate(nestedControl);
         });
     }
 
-    if (control instanceof FormGroup) {
+    if (control instanceof UntypedFormGroup) {
         Object.values(control.controls).forEach(nestedControl => {
             tuiMarkControlAsTouchedAndValidate(nestedControl);
         });
