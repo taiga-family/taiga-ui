@@ -263,7 +263,9 @@
             "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/demo"],
             "options": {
-                "jestConfig": "projects/demo/jest.config.ts"
+                "jestConfig": "jest.config.ts",
+                "collectCoverage": false,
+                "testMatch": ["<rootDir>/projects/demo/**/*.spec.ts"]
             }
         }
     }

@@ -65,7 +65,7 @@
                     [pseudoHover]="pseudoHovered"
                     [pseudoInvalid]="pseudoInvalid"
                     [readOnly]="readOnly"
-                    (binChange)="onBinChange($event)"
+                    (binChange)="documentationPropertyBinChange.emitEvent($event)"
                 ></tui-input-card-grouped>
             </ng-template>
         </tui-doc-demo>
@@ -131,6 +131,7 @@
                 Code length
             </ng-template>
             <ng-template
+                #documentationPropertyBinChange="documentationProperty"
                 documentationPropertyMode="output"
                 documentationPropertyName="binChange"
                 documentationPropertyType="string | null"

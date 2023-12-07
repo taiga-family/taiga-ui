@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
@@ -11,7 +11,6 @@ import {
     TuiMonthRange,
     TuiYear,
 } from '@taiga-ui/cdk';
-import {TuiAlertService} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-tui-calendar-month',
@@ -68,13 +67,4 @@ export class ExampleTuiCalendarMonthComponent {
     ];
 
     year = this.yearVariants[0];
-
-    constructor(
-        @Inject(TuiAlertService)
-        private readonly alerts: TuiAlertService,
-    ) {}
-
-    onMonthClick(month: TuiMonth): void {
-        this.alerts.open(String(month)).subscribe();
-    }
 }

@@ -1,36 +1,34 @@
 <tui-doc-page header="Shadows">
-    <ng-template pageTab>
-        <p>Different kinds of shadows can be applied with mixin:</p>
-        <div class="example">
-            <div class="item item_default">
-                <span>
-                    Basic shadow:
-                    <code>.shadow(1)</code>
-                    with
-                    <code>.shadow(5)</code>
-                    when hovered
-                </span>
-            </div>
-            <div class="item item_dropdown">
-                Dropdown shadow:
-                <code>.shadow(2)</code>
-            </div>
-            <div class="item item_modal">
-                Modal shadow:
-                <code>.shadow(3)</code>
-            </div>
-            <div class="item item_sidebar">
-                Sidebar shadow:
-                <code>.shadow(4)</code>
-            </div>
-            <div class="item item_navigation">
-                Navigation shadow:
-                <code>.shadow(6)</code>
-            </div>
-            <div class="item item_mobile">
-                Mobile modal shadow:
-                <code>.shadow(7)</code>
-            </div>
+    <p class="title tui-space_bottom-5">Different kinds of shadows can be applied with css variables:</p>
+    <div class="examples">
+        <div class="item item_default">
+            <span>
+                Basic shadow:
+                <code class="code">--tui-shadow</code>
+                with
+                <code class="code">--tui-shadow-hovered</code>
+                when hovered
+            </span>
         </div>
-    </ng-template>
+        <div class="item item_dropdown">
+            Dropdown shadow:
+            <code class="code">--tui-shadow-dropdown</code>
+        </div>
+        <div class="item item_modal">
+            Modal shadow:
+            <code class="code">--tui-shadow-modal</code>
+        </div>
+        <div class="item item_sidebar">
+            Sidebar shadow:
+            <code class="code">--tui-shadow-sidebar</code>
+        </div>
+        <div class="item item_navigation">
+            Navigation shadow:
+            <code class="code">--tui-shadow-navigation</code>
+        </div>
+        <div class="item item_mobile">
+            Mobile modal shadow:
+            <code class="code">--tui-shadow-sheet</code>
+        </div>
+    </div>
 </tui-doc-page>

@@ -110,7 +110,7 @@
                 [value]="value"
                 [(hoveredItem)]="hoveredItem"
                 [(month)]="month"
-                (dayClick)="onDayClick($event)"
+                (dayClick)="documentationPropertyDayClick.emitEvent($event)"
             ></tui-calendar>
         </tui-doc-demo>
         <tui-doc-documentation>
@@ -204,6 +204,7 @@
                 Selected day or range
             </ng-template>
             <ng-template
+                #documentationPropertyDayClick="documentationProperty"
                 documentationPropertyMode="output"
                 documentationPropertyName="dayClick"
                 documentationPropertyType="TuiDay"

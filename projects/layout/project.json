@@ -25,7 +25,10 @@
             "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/layout"],
             "options": {
-                "jestConfig": "projects/layout/jest.config.ts"
+                "jestConfig": "jest.config.ts",
+                "coverageDirectory": "coverage/layout",
+                "collectCoverageFrom": ["<rootDir>/projects/layout/**/*.ts"],
+                "testMatch": ["<rootDir>/projects/layout/**/*.spec.ts"]
             }
         },
         "publish": {

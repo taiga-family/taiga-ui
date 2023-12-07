@@ -1,8 +1,7 @@
-import {Component, Inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiAlertService} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-tui-push',
@@ -34,12 +33,4 @@ export class ExampleTuiPushComponent {
     heading = '';
     type = '';
     timestamp = 0;
-
-    constructor(@Inject(TuiAlertService) private readonly alert: TuiAlertService) {}
-
-    onClose(): void {
-        this.alert
-            .open('Close button is visible when you subscribe to (close) output')
-            .subscribe();
-    }
 }

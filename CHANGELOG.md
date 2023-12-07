@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.57.0](https://github.com/taiga-family/taiga-ui/compare/v3.56.0...v3.57.0) (2023-12-04)
+
+### Features
+
+- **addon-doc:** add type reference handler for improve documentation
+  ([#6086](https://github.com/taiga-family/taiga-ui/issues/6086))
+  ([e139770](https://github.com/taiga-family/taiga-ui/commit/e13977086bc63bee462fb9b8e94a5d2b8c60f936))
+- **core:** `*tuiHint` add new directive for customizing hint bubble
+  ([#6119](https://github.com/taiga-family/taiga-ui/issues/6119))
+  ([c343d3e](https://github.com/taiga-family/taiga-ui/commit/c343d3e394aeb9da678f645d4e15137f8c6411ab))
+- **i18n:** add Malay language ([#6150](https://github.com/taiga-family/taiga-ui/issues/6150))
+  ([d60064e](https://github.com/taiga-family/taiga-ui/commit/d60064e7729847331547d398ab791a59a1f33bce))
+
+### Bug Fixes
+
+- **addon-table:** fix sorting on table with dynamic columns
+  ([#6103](https://github.com/taiga-family/taiga-ui/issues/6103))
+  ([e0fc02b](https://github.com/taiga-family/taiga-ui/commit/e0fc02b31593c2e90528d81fc8b25d49e387839a))
+- **core:** `Dropdown` fix for initial open state ([#6130](https://github.com/taiga-family/taiga-ui/issues/6130))
+  ([a641af5](https://github.com/taiga-family/taiga-ui/commit/a641af53f5fcd8acd9a29ae89b351cb5f77d5cf8))
+- **core:** `Expand` fix for disabled animation ([#6129](https://github.com/taiga-family/taiga-ui/issues/6129))
+  ([bcbafc5](https://github.com/taiga-family/taiga-ui/commit/bcbafc56e9beefb4c122eb6479e0e1f2afcef8df))
+- **core:** invalid css variable name for shadow of navigation
+  ([#6128](https://github.com/taiga-family/taiga-ui/issues/6128))
+  ([47dff9f](https://github.com/taiga-family/taiga-ui/commit/47dff9f05e70d7bae5c1f7bd8b8b8d76e3add53d))
+- **experimental:** `Sensitive` fix svg interruption in safari
+  ([#6118](https://github.com/taiga-family/taiga-ui/issues/6118))
+  ([ed02bda](https://github.com/taiga-family/taiga-ui/commit/ed02bda71ad8f67498c8638dc8a530f0bb8a0b1b))
+- **kit:** correct resolve date range in mobile calendar ([#5974](https://github.com/taiga-family/taiga-ui/issues/5974))
+  ([016242e](https://github.com/taiga-family/taiga-ui/commit/016242ec71075687582e73ae4a34e76665213ee7))
+- **kit:** possible type error reduce of empty array with no initial value
+  ([#6107](https://github.com/taiga-family/taiga-ui/issues/6107))
+  ([ee9d470](https://github.com/taiga-family/taiga-ui/commit/ee9d470a3b6e9c47f5c33a62a72ae2c6fa7ee98e))
+
 ## [3.56.0](https://github.com/taiga-family/taiga-ui/compare/v3.55.0...v3.56.0) (2023-11-28)
 
 ### Features
