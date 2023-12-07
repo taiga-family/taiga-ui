@@ -8,5 +8,5 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 })
 export class TuiDocTabComponent {
     @Input()
-    src: string = '';
+    src = '';
 }
