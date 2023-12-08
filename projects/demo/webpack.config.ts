@@ -67,6 +67,7 @@ export function makeWebpackConfig({server}: Options): WebpackConf {
                 keep_fnames: false,
                 keep_classnames: false,
                 pure_funcs: [`forwardRef`],
+                global_defs: {ngDevMode: false},
             },
             format: {
                 comments: false,
