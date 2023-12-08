@@ -1,5 +1,6 @@
 import {Directive, Inject, Input} from '@angular/core';
 import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
+import {TuiSizeXXS} from '@taiga-ui/core';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/experimental/components/avatar';
 import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components/button';
 import {tuiCheckboxOptionsProvider} from '@taiga-ui/experimental/components/checkbox';
@@ -27,7 +28,7 @@ import {TUI_CHIP_OPTIONS, TuiChipOptions} from './chip.options';
 })
 export class TuiChipDirective {
     @Input()
-    size = this.options.size;
+    size: TuiSizeXXS = this.options.size;
 
     @Input()
     appearance = this.options.appearance;
