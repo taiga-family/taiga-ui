@@ -9,7 +9,6 @@ import {
     TuiIosAutofocusHandler,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
-import {configureTestSuite} from '@taiga-ui/testing';
 import {EMPTY} from 'rxjs';
 
 describe(`TuiAutoFocus directive`, () => {
@@ -31,14 +30,12 @@ describe(`TuiAutoFocus directive`, () => {
         let fixture: ComponentFixture<TestComponentWithDiv>;
         let testComponent: TestComponentWithDiv;
 
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [TuiAutoFocusModule],
                 declarations: [TestComponentWithDiv],
             });
-        });
-
-        beforeEach(() => {
+            await TestBed.compileComponents();
             fixture = TestBed.createComponent(TestComponentWithDiv);
             testComponent = fixture.componentInstance;
         });
@@ -130,7 +127,7 @@ describe(`TuiAutoFocus directive`, () => {
         let fixture: ComponentFixture<TestComponentIos>;
         let testComponent: TestComponentIos;
 
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [TuiAutoFocusModule],
                 declarations: [TestComponentIos],
@@ -141,9 +138,7 @@ describe(`TuiAutoFocus directive`, () => {
                     },
                 ],
             });
-        });
-
-        beforeEach(() => {
+            await TestBed.compileComponents();
             fixture = TestBed.createComponent(TestComponentIos);
             testComponent = fixture.componentInstance;
         });

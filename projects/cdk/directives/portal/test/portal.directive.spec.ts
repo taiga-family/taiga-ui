@@ -3,7 +3,6 @@ import {Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiDropdownHostModule, TuiPortalModule} from '@taiga-ui/cdk';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`Portal directive`, () => {
     @Component({
@@ -27,14 +26,12 @@ describe(`Portal directive`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [CommonModule, TuiPortalModule, TuiDropdownHostModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

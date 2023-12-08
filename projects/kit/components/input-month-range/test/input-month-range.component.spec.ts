@@ -4,7 +4,6 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiMonth, TuiMonthRange} from '@taiga-ui/cdk';
 import {TuiInputMonthRangeComponent, TuiInputMonthRangeModule} from '@taiga-ui/kit';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`InputMonthRange`, () => {
     @Component({
@@ -23,7 +22,7 @@ describe(`InputMonthRange`, () => {
     let testComponent: TestComponent;
     let component: TuiInputMonthRangeComponent;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 ReactiveFormsModule,
@@ -32,9 +31,7 @@ describe(`InputMonthRange`, () => {
             ],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         component = testComponent.component;

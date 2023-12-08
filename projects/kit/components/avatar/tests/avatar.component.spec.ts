@@ -3,7 +3,7 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiAvatarModule} from '@taiga-ui/kit';
-import {configureTestSuite, TuiAvatarHarness, TuiPageObject} from '@taiga-ui/testing';
+import {TuiAvatarHarness, TuiPageObject} from '@taiga-ui/testing';
 
 describe(`Avatar`, () => {
     @Component({
@@ -51,14 +51,12 @@ describe(`Avatar`, () => {
             .nativeElement;
     }
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiAvatarModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         loader = TestbedHarnessEnvironment.loader(fixture);
     });

@@ -12,7 +12,7 @@ import {
     TuiRootModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {configureTestSuite, tuiDispatchOnActive, TuiPageObject} from '@taiga-ui/testing';
+import {tuiDispatchOnActive, TuiPageObject} from '@taiga-ui/testing';
 
 describe(`TuiHostedDropdown`, () => {
     @Component({
@@ -115,7 +115,7 @@ describe(`TuiHostedDropdown`, () => {
     let pageObject: TuiPageObject<TestComponent>;
     let nativeButton: HTMLElement | null;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 NoopAnimationsModule,
@@ -129,9 +129,7 @@ describe(`TuiHostedDropdown`, () => {
             ],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         pageObject = new TuiPageObject(fixture);

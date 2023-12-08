@@ -2,7 +2,6 @@ import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiPreviewModule, TuiPreviewPaginationComponent} from '@taiga-ui/addon-preview';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`PreviewPagination`, () => {
     let fixture: ComponentFixture<TestComponent>;
@@ -24,14 +23,12 @@ describe(`PreviewPagination`, () => {
         length = 11;
     }
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiPreviewModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

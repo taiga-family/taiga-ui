@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiSizeL, TuiSizeS, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
+import {TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiInputPasswordComponent} from '../input-password.component';
 import {TuiInputPasswordModule} from '../input-password.module';
@@ -36,7 +36,7 @@ describe(`InputPassword`, () => {
         return pageObject.getByAutomationId(`tui-password__icon`);
     }
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 ReactiveFormsModule,
@@ -46,9 +46,7 @@ describe(`InputPassword`, () => {
             ],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;

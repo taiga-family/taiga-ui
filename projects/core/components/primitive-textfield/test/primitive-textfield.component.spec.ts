@@ -9,7 +9,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiRootModule} from '@taiga-ui/core/components/root';
-import {configureTestSuite, TuiPrimitiveTextfieldHarness} from '@taiga-ui/testing';
+import {TuiPrimitiveTextfieldHarness} from '@taiga-ui/testing';
 
 describe(`PrimitiveTextfield`, () => {
     @Component({
@@ -49,7 +49,7 @@ describe(`PrimitiveTextfield`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let loader: HarnessLoader;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 NoopAnimationsModule,
@@ -60,9 +60,7 @@ describe(`PrimitiveTextfield`, () => {
             ],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         loader = TestbedHarnessEnvironment.loader(fixture);
     });

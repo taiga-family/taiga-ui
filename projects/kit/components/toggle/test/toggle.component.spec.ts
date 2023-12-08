@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiToggleModule, tuiToggleOptionsProvider} from '@taiga-ui/kit';
-import {configureTestSuite, TuiToggleHarness} from '@taiga-ui/testing';
+import {TuiToggleHarness} from '@taiga-ui/testing';
 
 describe(`Toggle`, () => {
     describe(`Without options`, () => {
@@ -46,14 +46,12 @@ describe(`Toggle`, () => {
 
         let toggle: TuiToggleHarness;
 
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [ReactiveFormsModule, TuiToggleModule],
                 declarations: [TestComponent],
             });
-        });
-
-        beforeEach(async () => {
+            await TestBed.compileComponents();
             fixture = TestBed.createComponent(TestComponent);
             loader = TestbedHarnessEnvironment.loader(fixture);
             testComponent = fixture.componentInstance;
@@ -196,7 +194,7 @@ describe(`Toggle`, () => {
         let testComponent: TestComponent;
         let toggle: TuiToggleHarness;
 
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [ReactiveFormsModule, TuiToggleModule],
                 declarations: [TestComponent],
@@ -206,9 +204,7 @@ describe(`Toggle`, () => {
                     }),
                 ],
             });
-        });
-
-        beforeEach(async () => {
+            await TestBed.compileComponents();
             fixture = TestBed.createComponent(TestComponent);
             loader = TestbedHarnessEnvironment.loader(fixture);
             testComponent = fixture.componentInstance;

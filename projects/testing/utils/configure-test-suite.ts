@@ -1,5 +1,6 @@
 import {ComponentFixture, getTestBed, TestBed} from '@angular/core/testing';
 
+/** deprecated, will be removed in 4.0 */
 export const configureTestSuite = (configureModule?: () => void): void => {
     const testBedApi = getTestBed();
     const originReset = TestBed.resetTestingModule;

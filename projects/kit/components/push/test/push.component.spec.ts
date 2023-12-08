@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiIdService} from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
-import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
+import {TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiPushModule} from '../push.module';
 import {tuiPushOptionsProvider} from '../push.options';
@@ -27,7 +27,7 @@ describe(`Push with TUI_PUSH_OPTIONS`, () => {
         return pageObject.getByAutomationId(`tui-push__heading`)!;
     }
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [NoopAnimationsModule, TuiRootModule, TuiPushModule],
             declarations: [TestComponent],
@@ -39,9 +39,7 @@ describe(`Push with TUI_PUSH_OPTIONS`, () => {
                 },
             ],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         tuiPushService = TestBed.inject(TuiPushService);
         pageObject = new TuiPageObject(fixture);

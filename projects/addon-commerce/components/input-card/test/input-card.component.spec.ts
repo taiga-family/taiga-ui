@@ -2,7 +2,6 @@ import {Component, TemplateRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiInputCardComponent, TuiInputCardModule} from '@taiga-ui/addon-commerce';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`InputCard`, () => {
     @Component({
@@ -32,14 +31,12 @@ describe(`InputCard`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [ReactiveFormsModule, TuiInputCardModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

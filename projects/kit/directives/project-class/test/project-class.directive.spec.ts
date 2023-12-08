@@ -7,7 +7,7 @@ import {
     TuiDataListWrapperModule,
     TuiProjectClassModule,
 } from '@taiga-ui/kit';
-import {configureTestSuite, TuiNativeInputPO} from '@taiga-ui/testing';
+import {TuiNativeInputPO} from '@taiga-ui/testing';
 
 describe(`Directive TuiProjectClassDirective`, () => {
     @Component({
@@ -39,7 +39,7 @@ describe(`Directive TuiProjectClassDirective`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let inputPO: TuiNativeInputPO;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 TuiProjectClassModule,
@@ -50,9 +50,7 @@ describe(`Directive TuiProjectClassDirective`, () => {
             ],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();
         inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);

@@ -19,7 +19,7 @@ import {
     TuiInputDateRangeComponent,
     TuiInputDateRangeModule,
 } from '@taiga-ui/kit';
-import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 describe(`InputDateRangeComponent`, () => {
     @Component({
@@ -86,11 +86,11 @@ describe(`InputDateRangeComponent`, () => {
     }
 
     describe(`Default`, () => {
-        configureTestSuite(() =>
-            TestBed.configureTestingModule(defaultTestingModuleMeta),
-        );
-
-        beforeEach(() => initializeEnvironment());
+        beforeEach(async () => {
+            TestBed.configureTestingModule(defaultTestingModuleMeta);
+            await TestBed.compileComponents();
+            initializeEnvironment();
+        });
 
         describe(`Click on the input field`, () => {
             it(`opens the calendar`, () => {
@@ -175,7 +175,7 @@ describe(`InputDateRangeComponent`, () => {
     });
 
     describe(`InputDateRangeComponent + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR="/"`, () => {
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 ...defaultTestingModuleMeta,
                 providers: [
@@ -183,9 +183,9 @@ describe(`InputDateRangeComponent`, () => {
                     {provide: TUI_DATE_SEPARATOR, useValue: `/`},
                 ],
             });
+            await TestBed.compileComponents();
+            initializeEnvironment();
         });
-
-        beforeEach(() => initializeEnvironment());
 
         it(`accepts dd.mm.yyyy format`, () => {
             inputPO.sendTextAndBlur(`1201202102142022`);
@@ -214,7 +214,7 @@ describe(`InputDateRangeComponent`, () => {
     });
 
     describe(`InputDateRangeComponent + TUI_DATE_FORMAT="YMD" + TUI_DATE_SEPARATOR="-"`, () => {
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 ...defaultTestingModuleMeta,
                 providers: [
@@ -222,9 +222,9 @@ describe(`InputDateRangeComponent`, () => {
                     {provide: TUI_DATE_SEPARATOR, useValue: `-`},
                 ],
             });
+            await TestBed.compileComponents();
+            initializeEnvironment();
         });
-
-        beforeEach(() => initializeEnvironment());
 
         it(`accepts dd.mm.yyyy format`, () => {
             inputPO.sendTextAndBlur(`2021120120220214`);
@@ -315,7 +315,7 @@ describe(`InputDateRangeComponent`, () => {
             ]);
         }
 
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 ...defaultTestingModuleMeta,
                 declarations: [TransformerTestComponent],
@@ -331,9 +331,9 @@ describe(`InputDateRangeComponent`, () => {
                     },
                 ],
             });
+            await TestBed.compileComponents();
+            initializeEnvironment(TransformerTestComponent);
         });
-
-        beforeEach(() => initializeEnvironment(TransformerTestComponent));
 
         it(`correctly transforms initial value`, () => {
             expect(inputPO.value).toBe(`31.01.2022 – 14.06.2022`);

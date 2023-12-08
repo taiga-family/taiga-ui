@@ -1,7 +1,7 @@
 import {Component, ElementRef} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
+import {TuiPageObject} from '@taiga-ui/testing';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiRootModule} from '../../../components/root/root.module';
@@ -44,7 +44,7 @@ describe(`TuiDropdownDirective`, () => {
         },
     };
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 TuiDropdownModule,
@@ -54,9 +54,7 @@ describe(`TuiDropdownDirective`, () => {
             ],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;

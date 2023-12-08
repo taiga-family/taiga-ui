@@ -4,7 +4,7 @@ import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiCardComponent, TuiCardModule} from '@taiga-ui/addon-commerce';
 import {TuiSizeS} from '@taiga-ui/core';
-import {configureTestSuite, TuiCardHarness} from '@taiga-ui/testing';
+import {TuiCardHarness} from '@taiga-ui/testing';
 
 describe(`TuiCard`, () => {
     @Component({
@@ -29,14 +29,12 @@ describe(`TuiCard`, () => {
     let testComponent: TestComponent;
     let loader: HarnessLoader;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiCardModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         loader = TestbedHarnessEnvironment.loader(fixture);
         testComponent = fixture.componentInstance;

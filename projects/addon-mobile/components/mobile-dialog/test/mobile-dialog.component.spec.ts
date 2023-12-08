@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiIdService} from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
-import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
+import {TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiMobileDialogModule} from '../mobile-dialog.module';
 import {tuiMobileDialogOptionsProvider} from '../mobile-dialog.options';
@@ -27,7 +27,7 @@ describe(`Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS`, () => {
         return pageObject.getByAutomationId(`tui-mobile-dialog__label`)!;
     }
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [NoopAnimationsModule, TuiRootModule, TuiMobileDialogModule],
             declarations: [TestComponent],
@@ -40,9 +40,7 @@ describe(`Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS`, () => {
                 },
             ],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         tuiMobileDialogService = TestBed.inject(TuiMobileDialogService);
         pageObject = new TuiPageObject(fixture);
