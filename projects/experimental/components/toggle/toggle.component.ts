@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {tuiIsString, TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiSizeS} from '@taiga-ui/core';
 import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
 
 import {TUI_TOGGLE_OPTIONS, TuiToggleOptions} from './toggle.options';
@@ -28,7 +29,7 @@ import {TUI_TOGGLE_OPTIONS, TuiToggleOptions} from './toggle.options';
 })
 export class TuiToggleComponent {
     @Input()
-    size = this.options.size;
+    size: TuiSizeS = this.options.size;
 
     @Input()
     showIcons = this.options.showIcons;

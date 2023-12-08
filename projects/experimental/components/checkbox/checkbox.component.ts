@@ -17,6 +17,7 @@ import {
     TuiStringHandler,
     tuiWatch,
 } from '@taiga-ui/cdk';
+import {TuiSizeS} from '@taiga-ui/core';
 import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, takeUntil} from 'rxjs/operators';
@@ -40,7 +41,7 @@ import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions} from './checkbox.options';
 })
 export class TuiCheckboxComponent implements OnInit {
     @Input()
-    size = this.options.size;
+    size: TuiSizeS = this.options.size;
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
