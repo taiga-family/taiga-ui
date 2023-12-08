@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiDroppableDirective} from '@taiga-ui/cdk';
-import {configureTestSuite, TuiMockEvent} from '@taiga-ui/testing';
+import {TuiMockEvent} from '@taiga-ui/testing';
 
 describe(`TuiDroppable Directive`, () => {
     @Component({
@@ -24,14 +24,12 @@ describe(`TuiDroppable Directive`, () => {
     let testComponent: TestComponent;
     let directiveElement: HTMLElement;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [],
             declarations: [TestComponent, TuiDroppableDirective],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
 

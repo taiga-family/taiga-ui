@@ -23,7 +23,7 @@ import {
     TUI_ARROW_MODE,
     TuiDataListWrapperModule,
 } from '@taiga-ui/kit/components';
-import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 class Beast {
     constructor(
@@ -99,7 +99,7 @@ describe(`ComboBox`, () => {
     let pageObject: TuiPageObject<TestComponent>;
     let inputPO: TuiNativeInputPO;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 NoopAnimationsModule,
@@ -119,9 +119,7 @@ describe(`ComboBox`, () => {
                 },
             ],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;

@@ -4,7 +4,6 @@ import {
     TuiPrimitiveSpinButtonComponent,
     TuiPrimitiveSpinButtonModule,
 } from '@taiga-ui/core';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`primitiveSpinButton`, () => {
     @Component({
@@ -21,14 +20,12 @@ describe(`primitiveSpinButton`, () => {
     let testComponent: TestComponent;
     let component: TuiPrimitiveSpinButtonComponent;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiPrimitiveSpinButtonModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         component = testComponent.component;

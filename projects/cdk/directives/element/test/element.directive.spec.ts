@@ -5,7 +5,6 @@ import {
     TuiDropdownHostComponent,
     TuiDropdownHostModule,
 } from '@taiga-ui/cdk/components/dropdown-host';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`TuiElement directive`, () => {
     @Component({
@@ -35,14 +34,12 @@ describe(`TuiElement directive`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiDropdownHostModule, TuiElementModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

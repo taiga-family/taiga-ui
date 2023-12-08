@@ -7,7 +7,7 @@ import {
     TuiThumbnailCardModule,
 } from '@taiga-ui/addon-commerce';
 import {TuiSizeS} from '@taiga-ui/core';
-import {configureTestSuite, TuiThumbnailCardHarness} from '@taiga-ui/testing';
+import {TuiThumbnailCardHarness} from '@taiga-ui/testing';
 
 describe(`TuiThumbnailCard`, () => {
     @Component({
@@ -32,14 +32,12 @@ describe(`TuiThumbnailCard`, () => {
     let testComponent: TestComponent;
     let loader: HarnessLoader;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiThumbnailCardModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         loader = TestbedHarnessEnvironment.loader(fixture);
         testComponent = fixture.componentInstance;

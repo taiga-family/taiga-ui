@@ -17,7 +17,6 @@ import {
 } from '@taiga-ui/core';
 import {TuiInputTagComponent, TuiInputTagModule} from '@taiga-ui/kit';
 import {
-    configureTestSuite,
     tuiIsActive,
     TuiNativeInputPO,
     TuiPageObject,
@@ -95,7 +94,7 @@ describe(`InputTag`, () => {
         },
     };
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 ReactiveFormsModule,
@@ -108,9 +107,7 @@ describe(`InputTag`, () => {
             ],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;

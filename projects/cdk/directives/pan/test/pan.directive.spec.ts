@@ -2,7 +2,6 @@ import {Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiPanModule} from '@taiga-ui/cdk';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 // TODO: Move to cypress, jest doesn't support touch events
 xdescribe(`TuiPan directive`, () => {
@@ -26,14 +25,12 @@ xdescribe(`TuiPan directive`, () => {
     let testComponent: TestComponent;
     let testElement: DebugElement & {nativeElement: HTMLDivElement};
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiPanModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         testElement = fixture.debugElement.query(By.css(`.main`));

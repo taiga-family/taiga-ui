@@ -15,7 +15,6 @@ import {
     TuiInputPhoneInternationalComponent,
     TuiInputPhoneInternationalModule,
 } from '@taiga-ui/kit';
-import {configureTestSuite} from '@taiga-ui/testing';
 import {of} from 'rxjs';
 
 describe(`InputPhoneInternational`, () => {
@@ -56,7 +55,7 @@ describe(`InputPhoneInternational`, () => {
     let component: TuiInputPhoneInternationalComponent;
 
     const initializeTestModule = (language: TuiLanguage = TUI_ENGLISH_LANGUAGE): void => {
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [
                     TuiRootModule,
@@ -75,15 +74,13 @@ describe(`InputPhoneInternational`, () => {
                     },
                 ],
             });
+            await TestBed.compileComponents();
+            fixture = TestBed.createComponent(TestComponent);
+            testComponent = fixture.componentInstance;
+            component = testComponent.component;
+            fixture.detectChanges();
         });
     };
-
-    beforeEach(() => {
-        fixture = TestBed.createComponent(TestComponent);
-        testComponent = fixture.componentInstance;
-        component = testComponent.component;
-        fixture.detectChanges();
-    });
 
     describe(`country codes`, () => {
         initializeTestModule();

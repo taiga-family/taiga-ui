@@ -3,7 +3,6 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiPressedModule} from '@taiga-ui/cdk';
 import {TUI_TAKE_ONLY_TRUSTED_EVENTS} from '@taiga-ui/cdk/tokens';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`TuiPressed directive`, () => {
     @Component({
@@ -32,15 +31,13 @@ describe(`TuiPressed directive`, () => {
     let wrapperElement: DebugElement & {nativeElement: HTMLDivElement};
     let innerElement: DebugElement & {nativeElement: HTMLDivElement};
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiPressedModule],
             declarations: [TestComponent],
             providers: [{provide: TUI_TAKE_ONLY_TRUSTED_EVENTS, useValue: false}],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         wrapperElement = fixture.debugElement.query(By.css(`.wrapper`));

@@ -2,7 +2,7 @@ import {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {configureTestSuite, TuiActionHarness} from '@taiga-ui/testing';
+import {TuiActionHarness} from '@taiga-ui/testing';
 
 import {TuiActionComponent} from '../action.component';
 import {TuiActionModule} from '../action.module';
@@ -42,14 +42,12 @@ describe(`Action`, () => {
     let testComponent: TestComponent;
     let loader: HarnessLoader;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiActionModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         loader = TestbedHarnessEnvironment.loader(fixture);
         testComponent = fixture.componentInstance;

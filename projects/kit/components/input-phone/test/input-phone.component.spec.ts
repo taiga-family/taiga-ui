@@ -4,7 +4,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiHintModule, TuiRootModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputPhoneComponent, TuiInputPhoneModule} from '@taiga-ui/kit';
-import {configureTestSuite, TuiNativeInputPO} from '@taiga-ui/testing';
+import {TuiNativeInputPO} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe(`InputPhone`, () => {
@@ -37,7 +37,7 @@ describe(`InputPhone`, () => {
     let component: TuiInputPhoneComponent;
     let inputPO: TuiNativeInputPO;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 TuiRootModule,
@@ -50,9 +50,7 @@ describe(`InputPhone`, () => {
             declarations: [TestComponent],
             providers: NG_EVENT_PLUGINS,
         });
-    });
-
-    beforeEach(async () => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         component = testComponent.component;

@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiIdService} from '@taiga-ui/cdk';
-import {configureTestSuite, TuiDialogHarness} from '@taiga-ui/testing';
+import {TuiDialogHarness} from '@taiga-ui/testing';
 
 import {TuiRootModule} from '../../root/root.module';
 import {TuiDialogModule} from '../dialog.module';
@@ -25,7 +25,7 @@ describe(`Dialog with TUI_DIALOG_OPTIONS`, () => {
     let tuiDialogService: TuiDialogService;
     let loader: HarnessLoader;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [NoopAnimationsModule, TuiRootModule, TuiDialogModule],
             declarations: [TestComponent],
@@ -37,9 +37,7 @@ describe(`Dialog with TUI_DIALOG_OPTIONS`, () => {
                 },
             ],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         loader = TestbedHarnessEnvironment.loader(fixture);
         tuiDialogService = TestBed.inject(TuiDialogService);

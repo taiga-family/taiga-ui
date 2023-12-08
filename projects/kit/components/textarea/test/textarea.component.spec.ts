@@ -11,7 +11,6 @@ import {
     TuiTextareaModule,
 } from '@taiga-ui/kit';
 import {
-    configureTestSuite,
     TuiNativeInputPO,
     TuiPageObject,
     tuiTestFormControlState,
@@ -90,7 +89,7 @@ describe(`Textarea`, () => {
         return pageObject.getByAutomationId(`${testContext.prefix}counter`)!;
     }
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 NoopAnimationsModule,
@@ -101,9 +100,7 @@ describe(`Textarea`, () => {
             ],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;

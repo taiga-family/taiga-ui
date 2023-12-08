@@ -1,11 +1,10 @@
 import {TestBed} from '@angular/core/testing';
 import {NAVIGATOR} from '@ng-web-apis/common';
 import {TUI_IS_IOS} from '@taiga-ui/cdk';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`TUI_IS_IOS`, () => {
     describe(`basic is IOS positive`, () => {
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 providers: [
                     {
@@ -17,6 +16,7 @@ describe(`TUI_IS_IOS`, () => {
                     },
                 ],
             });
+            await TestBed.compileComponents();
         });
 
         it(`return true if iPhone`, () => {
@@ -25,7 +25,7 @@ describe(`TUI_IS_IOS`, () => {
     });
 
     describe(`Mac OS mobile positive`, () => {
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 providers: [
                     {
@@ -40,6 +40,7 @@ describe(`TUI_IS_IOS`, () => {
                     },
                 ],
             });
+            await TestBed.compileComponents();
         });
 
         it(`return true if apple and maxTouchPoints > 1`, () => {
@@ -48,7 +49,7 @@ describe(`TUI_IS_IOS`, () => {
     });
 
     describe(`Mac OS desktop negative`, () => {
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 providers: [
                     {
@@ -63,6 +64,7 @@ describe(`TUI_IS_IOS`, () => {
                     },
                 ],
             });
+            await TestBed.compileComponents();
         });
 
         it(`return false if MacOS Desktop`, () => {
@@ -71,7 +73,7 @@ describe(`TUI_IS_IOS`, () => {
     });
 
     describe(`Android / or Android WebView`, () => {
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 providers: [
                     {
@@ -88,6 +90,7 @@ describe(`TUI_IS_IOS`, () => {
                     },
                 ],
             });
+            await TestBed.compileComponents();
         });
 
         it(`return false if Android devices`, () => {

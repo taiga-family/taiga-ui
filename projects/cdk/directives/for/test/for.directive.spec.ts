@@ -1,7 +1,6 @@
 import {Component, ElementRef, Inject} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiForModule} from '@taiga-ui/cdk';
-import {configureTestSuite} from '@taiga-ui/testing';
 import {Subject} from 'rxjs';
 
 describe(`TuiFor directive`, () => {
@@ -23,14 +22,12 @@ describe(`TuiFor directive`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiForModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

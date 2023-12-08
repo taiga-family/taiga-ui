@@ -8,7 +8,6 @@ import {
 } from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiHintModule, TuiRootModule} from '@taiga-ui/core';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 type Hint = TemplateRef<Record<string, unknown>> | string | null | undefined;
 
@@ -44,7 +43,7 @@ describe(`Hint`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let component: TestComponent;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 NoopAnimationsModule,
@@ -54,9 +53,7 @@ describe(`Hint`, () => {
             ],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         document.body.style.margin = `0`;
         fixture = TestBed.createComponent(TestComponent);
         component = fixture.componentInstance;

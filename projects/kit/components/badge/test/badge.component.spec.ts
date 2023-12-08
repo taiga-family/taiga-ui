@@ -5,7 +5,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiSizeL} from '@taiga-ui/core';
 import {TuiBadgeComponent, TuiBadgeModule} from '@taiga-ui/kit';
 import {TuiStatus} from '@taiga-ui/kit/types';
-import {configureTestSuite, TuiBadgeHarness} from '@taiga-ui/testing';
+import {TuiBadgeHarness} from '@taiga-ui/testing';
 
 describe(`Badge`, () => {
     @Component({
@@ -33,14 +33,12 @@ describe(`Badge`, () => {
     let testComponent: TestComponent;
     let loader: HarnessLoader;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiBadgeModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         loader = TestbedHarnessEnvironment.loader(fixture);
         testComponent = fixture.componentInstance;

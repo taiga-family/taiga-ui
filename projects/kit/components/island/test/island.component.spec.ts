@@ -3,7 +3,7 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiIslandComponent, TuiIslandModule} from '@taiga-ui/kit';
-import {configureTestSuite, TuiIslandHarness} from '@taiga-ui/testing';
+import {TuiIslandHarness} from '@taiga-ui/testing';
 
 describe(`Island`, () => {
     @Component({
@@ -43,14 +43,12 @@ describe(`Island`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let loader: HarnessLoader;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiIslandModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         loader = TestbedHarnessEnvironment.loader(fixture);
 

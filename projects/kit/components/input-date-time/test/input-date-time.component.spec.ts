@@ -17,7 +17,7 @@ import {
     TuiInputDateTimeComponent,
     TuiInputDateTimeModule,
 } from '@taiga-ui/kit/components';
-import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 describe(`InputDateTime`, () => {
     @Component({
@@ -79,11 +79,11 @@ describe(`InputDateTime`, () => {
     }
 
     describe(`Default`, () => {
-        configureTestSuite(() =>
-            TestBed.configureTestingModule(defaultTestingModuleMeta),
-        );
-
-        beforeEach(() => initializeEnvironment());
+        beforeEach(async () => {
+            TestBed.configureTestingModule(defaultTestingModuleMeta);
+            await TestBed.compileComponents();
+            initializeEnvironment();
+        });
 
         it(`displays initial value`, () => {
             expect(inputPO.value).toBe(`12.07.2021`);
@@ -234,7 +234,7 @@ describe(`InputDateTime`, () => {
     });
 
     describe(`InputDateTime + TUI_DATE_FORMAT="DMY" + TUI_DATE_SEPARATOR="/"`, () => {
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 ...defaultTestingModuleMeta,
                 providers: [
@@ -242,9 +242,9 @@ describe(`InputDateTime`, () => {
                     {provide: TUI_DATE_SEPARATOR, useValue: `/`},
                 ],
             });
+            await TestBed.compileComponents();
+            initializeEnvironment();
         });
-
-        beforeEach(() => initializeEnvironment());
 
         it(`displays correctly initial value`, () => {
             expect(inputPO.value).toBe(`07/12/2021`);
@@ -272,7 +272,7 @@ describe(`InputDateTime`, () => {
     });
 
     describe(`InputDateTime + TUI_DATE_FORMAT="YMD" + TUI_DATE_SEPARATOR="-"`, () => {
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 ...defaultTestingModuleMeta,
                 providers: [
@@ -280,9 +280,9 @@ describe(`InputDateTime`, () => {
                     {provide: TUI_DATE_SEPARATOR, useValue: `-`},
                 ],
             });
+            await TestBed.compileComponents();
+            initializeEnvironment();
         });
-
-        beforeEach(() => initializeEnvironment());
 
         it(`displays correctly initial value`, () => {
             expect(inputPO.value).toBe(`2021-07-12`);
@@ -345,7 +345,7 @@ describe(`InputDateTime`, () => {
             override min = new TuiDay(1900, 0, 1);
         }
 
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 ...defaultTestingModuleMeta,
                 declarations: [TransformerTestComponent],
@@ -356,9 +356,9 @@ describe(`InputDateTime`, () => {
                     },
                 ],
             });
+            await TestBed.compileComponents();
+            initializeEnvironment(TransformerTestComponent);
         });
-
-        beforeEach(() => initializeEnvironment(TransformerTestComponent));
 
         it(`correctly transforms initial value`, () => {
             expect(inputPO.value).toBe(`19.01.2022, 12:33`);

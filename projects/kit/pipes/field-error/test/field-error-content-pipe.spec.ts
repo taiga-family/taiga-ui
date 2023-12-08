@@ -12,7 +12,6 @@ import {TuiHintModule, TuiRootModule} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/kit/components';
 import {TuiFieldErrorPipeModule} from '@taiga-ui/kit/pipes';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`TuiFieldErrorContentPipe`, () => {
     const testError = `testError`;
@@ -59,7 +58,7 @@ describe(`TuiFieldErrorContentPipe`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let component: TestComponent;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 NoopAnimationsModule,
@@ -71,9 +70,7 @@ describe(`TuiFieldErrorContentPipe`, () => {
             ],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         document.body.style.margin = `0`;
         fixture = TestBed.createComponent(TestComponent);
         component = fixture.componentInstance;
