@@ -54,16 +54,16 @@ describe(`ng-update angular.json`, () => {
 
         expect(tree.readContent(`angular.json`)).toEqual(
             makeAngularJsonWithAssets(`
-              {
-                "glob": "**/*",
-                "input": "node_modules/@taiga-ui/proprietary-icons/src",
-                "output": "assets/taiga-ui/icons"
-              },
-              {
-                "glob": "**/*",
-                "input": "node_modules/@taiga-ui/proprietary-tds-icons/src",
-                "output": "assets/taiga-ui/icons"
-              }`),
+                {
+                  "glob": "**/*",
+                  "input": "node_modules/@taiga-ui/proprietary-icons/src",
+                  "output": "assets/taiga-ui/icons"
+                },
+                {
+                  "glob": "**/*",
+                  "input": "node_modules/@taiga-ui/proprietary-tds-icons/src",
+                  "output": "assets/taiga-ui/icons"
+                }`),
         );
     });
 
@@ -163,6 +163,7 @@ function makeAngularJsonWithAssets(assets: string): string {
   "defaultProject": "demo",
   "projects": {
     "demo": {
+        "root": "",
         "architect": {
           "build": {
             "options": {
