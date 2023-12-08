@@ -25,7 +25,10 @@ import {
 import {merge} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
 
-import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
+import {
+    TuiDocDocumentationPropertyConnectorDirective,
+    TuiOutputEvent,
+} from './documentation-property-connector.directive';
 import {TuiGetColorPipe} from './pipes/color.pipe';
 import {TuiGetOpacityPipe} from './pipes/opacity.pipe';
 
@@ -59,6 +62,8 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
 
     activeItemIndex = 0;
 
+    outputs: readonly TuiOutputEvent[] = [];
+
     constructor(
         @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
         @Inject(TUI_DOC_DOCUMENTATION_TEXTS)
@@ -82,6 +87,15 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
                 takeUntil(this.destroy$),
             )
             .subscribe();
+
+        tuiQueryListChanges(this.propertiesConnectors)
+            .pipe(
+                switchMap(items => merge(...items.map(({outputs$}) => outputs$))),
+                takeUntil(this.destroy$),
+            )
+            .subscribe(event => {
+                this.outputs = [...this.outputs, event];
+            });
     }
 
     get type(): string {
@@ -121,5 +135,9 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         const result = `rgba(${rgb}, ${(opacity || 0) / 100})`;
 
         connector.onValueChange(result);
+    }
+
+    clearEventsTerminal(): void {
+        this.outputs = [];
     }
 }

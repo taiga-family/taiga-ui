@@ -13,12 +13,18 @@ import {ActivatedRoute, Params, UrlSerializer, UrlTree} from '@angular/router';
 import {TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {tuiCoerceValue, tuiInspectAny} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber, TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiAlertService} from '@taiga-ui/core';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Subject} from 'rxjs';
 
 const SERIALIZED_SUFFIX = '$';
 
 export type TuiDocumentationPropertyType = 'input-output' | 'input' | 'output' | null;
+
+export interface TuiOutputEvent {
+    content: PolymorpheusContent;
+    label: string;
+    timestamp: number;
+}
 
 /**
  * @deprecated: use {@link TuiDocumentationPropertyType}
@@ -56,6 +62,8 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
     @Output()
     readonly documentationPropertyValueChange = new EventEmitter<T>();
 
+    readonly outputs$ = new Subject<TuiOutputEvent>();
+
     readonly changed$ = new Subject<void>();
 
     readonly emits$ = new BehaviorSubject(1);
@@ -67,7 +75,6 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         @Inject(UrlSerializer) private readonly urlSerializer: UrlSerializer,
         @Inject(TUI_DOC_URL_STATE_HANDLER)
         private readonly urlStateHandler: TuiStringHandler<UrlTree>,
-        @Inject(TuiAlertService) private readonly alerts: TuiAlertService,
     ) {}
 
     ngOnInit(): void {
@@ -106,9 +113,6 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
     }
 
     emitEvent(event: unknown): void {
-        // For more convenient debugging
-        console.info(this.attrName, event);
-
         this.emits$.next(this.emits$.value + 1);
 
         let content: string | undefined;
@@ -117,7 +121,11 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
             content = tuiInspectAny(event, 2);
         }
 
-        this.alerts.open(content, {label: this.attrName}).subscribe();
+        this.outputs$.next({
+            content,
+            label: this.attrName,
+            timestamp: Date.now(),
+        });
     }
 
     private parseParams(params: Params): void {

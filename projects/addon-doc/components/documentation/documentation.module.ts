@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiFilterPipeModule} from '@taiga-ui/cdk';
 import {
+    TuiButtonModule,
     TuiDataListModule,
     TuiDropdownModule,
     TuiGroupModule,
@@ -11,15 +12,18 @@ import {
     TuiModeModule,
     TuiNotificationModule,
     TuiPrimitiveTextfieldModule,
+    TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
+    TuiAccordionModule,
     TuiBadgeModule,
     TuiDataListWrapperModule,
     TuiInputNumberModule,
     TuiSelectModule,
     TuiToggleModule,
 } from '@taiga-ui/kit';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputOpacityModule} from '../internal/input-opacity/input-opacity.module';
 import {TuiDocDocumentationComponent} from './documentation.component';
@@ -53,6 +57,10 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiDataListWrapperModule,
         TuiNotificationModule,
         TuiFilterPipeModule,
+        PolymorpheusModule,
+        TuiAccordionModule,
+        TuiSvgModule,
+        TuiButtonModule,
     ],
     declarations: [
         TuiInspectPipe,

@@ -4,7 +4,52 @@
 >
     {{ heading }}
 </h1>
+
+<tui-accordion class="t-outputs">
+    <tui-accordion-item size="s">
+        <div class="t-outputs-title">
+            <div>&#64;Output() events</div>
+            <div class="t-outputs-count">
+                <tui-svg src="tuiIconInfo"></tui-svg>
+                {{ outputs.length }}
+            </div>
+        </div>
+        <ng-template tuiAccordionItemContent>
+            <div
+                *ngIf="outputs.length; else notFound"
+                class="t-terminal"
+            >
+                <button
+                    size="xs"
+                    tuiButton
+                    class="t-outputs-clear"
+                    (click)="clearEventsTerminal()"
+                >
+                    Clear
+                </button>
+                <div
+                    *ngFor="let output of outputs"
+                    class="t-output-content"
+                >
+                    <div>
+                        <span class="t-attr-name">{{ output.label }}</span>
+                        <span class="t-attr-action">&#20;&#20;emitted --></span>
+                        <ng-container *polymorpheusOutlet="output.content as text">
+                            {{ text }}
+                        </ng-container>
+                    </div>
+                    <div>
+                        {{ output.timestamp | date: 'h:mm:ss a zzzz' }}
+                    </div>
+                </div>
+            </div>
+            <ng-template #notFound>No found events</ng-template>
+        </ng-template>
+    </tui-accordion-item>
+</tui-accordion>
+
 <ng-content></ng-content>
+
 <ng-container *ngIf="$any(propertiesConnectors) | tuiFilter: matcher : excludedProperties as properties">
     <table
         *ngIf="properties.length"
