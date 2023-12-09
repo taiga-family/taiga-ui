@@ -1,6 +1,9 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 [tuiButton][tuiButtonVertical] {
+    --t-line-height: 1rem;
+    --t-margin: 0rem !important;
+
     flex-direction: column;
     height: auto;
     padding: 0.75rem;
@@ -8,9 +11,6 @@
     min-width: 5rem;
     white-space: pre-line;
     font: var(--tui-font-text-s-2);
-
-    --t-line-height: 1rem;
-    --t-margin: 0rem !important;
 
     & > * {
         max-height: calc(var(--t-line-height) * 2);
