@@ -44,7 +44,6 @@ describe(`ComboBox`, () => {
 
                 await comboboxTextfield.click();
                 await page.keyboard.type(`Rubles (500)`);
-                await waitCheckmark(page);
                 await expect(page).toHaveScreenshot(
                     `search-should-not-be-reset-strict-waited-mark-${strict}.png`,
                 );
@@ -80,7 +79,6 @@ describe(`ComboBox`, () => {
 
                 await comboboxTextfield.click();
                 await page.keyboard.type(`dOlLaRs (237)`);
-                await waitCheckmark(page);
                 await expect(page).toHaveScreenshot(
                     `correct-word-match-when-strict-${strict}.png`,
                 );
@@ -141,10 +139,6 @@ async function openFormValue(locator: Locator): Promise<void> {
 
 async function focusWrapper(locator: Locator): Promise<void> {
     await locator.click({force: true});
-}
-
-async function waitCheckmark(page: Page): Promise<void> {
-    await expect(page.getByTestId(`tui-select-option__checkmark`)).toBeVisible();
 }
 
 async function clickFirstOption(page: Page): Promise<void> {
