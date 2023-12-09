@@ -86,8 +86,11 @@
     },
     "stylelint": {
         "extends": [
-            "@taiga-ui/stylelint-config/taiga"
+            "@taiga-ui/stylelint-config"
         ],
+        "rules": {
+            "selector-class-pattern": "^(_.*)|(t-.*)|(tui-.*)|(ng-.*)|(hljs.*)$"
+        },
         "ignoreFiles": [
             "**/demo/**",
             "**/dist/**",
@@ -129,7 +132,7 @@
         "@taiga-ui/cspell-config": "0.25.0",
         "@taiga-ui/eslint-plugin-experience": "0.41.0",
         "@taiga-ui/prettier-config": "0.7.0",
-        "@taiga-ui/stylelint-config": "0.11.0",
+        "@taiga-ui/stylelint-config": "0.12.2",
         "@taiga-ui/tsconfig": "0.11.0",
         "@testing-library/cypress": "10.0.1",
         "@tinkoff/ng-event-plugins": "3.1.0",
@@ -155,7 +158,7 @@
         "prettier": "3.1.0",
         "rollup": "4.7.0",
         "standard-version": "9.5.0",
-        "stylelint": "15.11.0",
+        "stylelint": "16.0.1",
         "ts-loader": "9.5.1",
         "ts-mockito": "2.6.1",
         "ts-node": "10.9.2",

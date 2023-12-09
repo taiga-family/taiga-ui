@@ -1,6 +1,8 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
+    --t-size: 2rem;
+
     .transition(~'width, height, border, margin');
     .clearbtn();
     position: relative;
@@ -24,8 +26,6 @@
     .interactive({
         cursor: pointer;
     });
-
-    --t-size: 2rem;
 
     &:empty {
         --t-size: 0.75rem;
@@ -51,12 +51,12 @@
     }
 
     &._open {
+        --t-size: 3.5rem;
+
         font: var(--tui-font-text-m);
         font-weight: bold;
         border-width: 0;
         margin-top: -2.75rem;
-
-        --t-size: 3.5rem;
 
         ::ng-deep > img {
             padding: 0.125rem;
