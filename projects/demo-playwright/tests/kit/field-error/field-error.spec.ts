@@ -17,9 +17,7 @@ describe(`TuiFieldError`, () => {
 
         await errorPipeInput.blur();
 
-        const example = page
-            .locator(`tui-doc-example [automation-id="tui-doc-example"]`)
-            .first();
+        const example = page.getByTestId(`tui-doc-example`).first();
 
         await expect(example).toHaveScreenshot(`shows-error-under-field.png`, {
             animations: `allow`,
