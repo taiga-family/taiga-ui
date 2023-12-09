@@ -14,12 +14,7 @@ import {
     TuiDataListWrapperModule,
     TuiMultiSelectComponent,
 } from '@taiga-ui/kit/components';
-import {
-    configureTestSuite,
-    TUI_SANITIZER_MOCK,
-    TuiNativeInputPO,
-    TuiPageObject,
-} from '@taiga-ui/testing';
+import {TUI_SANITIZER_MOCK, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 describe(`MultiSelect`, () => {
     describe(`Basic`, () => {
@@ -73,7 +68,7 @@ describe(`MultiSelect`, () => {
             readOnly = false;
         }
 
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [
                     ReactiveFormsModule,
@@ -88,9 +83,7 @@ describe(`MultiSelect`, () => {
                 declarations: [TestComponent],
                 providers: [TUI_SANITIZER_MOCK],
             });
-        });
-
-        beforeEach(() => {
+            await TestBed.compileComponents();
             fixture = TestBed.createComponent(TestComponent);
             pageObject = new TuiPageObject(fixture);
             testComponent = fixture.componentInstance;
@@ -291,8 +284,7 @@ describe(`MultiSelect`, () => {
             readOnly = false;
         }
 
-        // noinspection DuplicatedCode
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [
                     ReactiveFormsModule,
@@ -313,9 +305,7 @@ describe(`MultiSelect`, () => {
                     TUI_SANITIZER_MOCK,
                 ],
             });
-        });
-
-        beforeEach(() => {
+            await TestBed.compileComponents();
             fixture = TestBed.createComponent(TestComponent);
             pageObject = new TuiPageObject(fixture);
             testComponent = fixture.componentInstance;

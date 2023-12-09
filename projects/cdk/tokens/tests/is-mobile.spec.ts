@@ -1,12 +1,11 @@
 import {TestBed} from '@angular/core/testing';
 import {NAVIGATOR} from '@ng-web-apis/common';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`TUI_IS_MOBILE`, () => {
     describe(`MacOS / iOS`, () => {
         describe(`Iphone 12 Pro`, () => {
-            configureTestSuite(() => {
+            beforeEach(async () => {
                 TestBed.configureTestingModule({
                     providers: [
                         {
@@ -17,6 +16,8 @@ describe(`TUI_IS_MOBILE`, () => {
                         },
                     ],
                 });
+
+                await TestBed.compileComponents();
             });
 
             it(`is mobile`, () => {
@@ -25,7 +26,7 @@ describe(`TUI_IS_MOBILE`, () => {
         });
 
         describe(`Ipad Air`, () => {
-            configureTestSuite(() => {
+            beforeEach(async () => {
                 TestBed.configureTestingModule({
                     providers: [
                         {
@@ -36,6 +37,7 @@ describe(`TUI_IS_MOBILE`, () => {
                         },
                     ],
                 });
+                await TestBed.compileComponents();
             });
 
             it(`is tablet`, () => {
@@ -44,7 +46,7 @@ describe(`TUI_IS_MOBILE`, () => {
         });
 
         describe(`Ipad Mini`, () => {
-            configureTestSuite(() => {
+            beforeEach(async () => {
                 TestBed.configureTestingModule({
                     providers: [
                         {
@@ -55,6 +57,7 @@ describe(`TUI_IS_MOBILE`, () => {
                         },
                     ],
                 });
+                await TestBed.compileComponents();
             });
 
             it(`is tablet`, () => {
@@ -63,7 +66,7 @@ describe(`TUI_IS_MOBILE`, () => {
         });
 
         describe(`Mac OS desktop`, () => {
-            configureTestSuite(() => {
+            beforeEach(async () => {
                 TestBed.configureTestingModule({
                     providers: [
                         {
@@ -76,6 +79,8 @@ describe(`TUI_IS_MOBILE`, () => {
                         },
                     ],
                 });
+
+                await TestBed.compileComponents();
             });
 
             it(`is desktop`, () => {
@@ -86,7 +91,7 @@ describe(`TUI_IS_MOBILE`, () => {
 
     describe(`Android OS`, () => {
         describe(`Samsung Galaxy`, () => {
-            configureTestSuite(() => {
+            beforeEach(async () => {
                 TestBed.configureTestingModule({
                     providers: [
                         {
@@ -97,6 +102,7 @@ describe(`TUI_IS_MOBILE`, () => {
                         },
                     ],
                 });
+                await TestBed.compileComponents();
             });
 
             it(`is mobile`, () => {
@@ -105,7 +111,7 @@ describe(`TUI_IS_MOBILE`, () => {
         });
 
         describe(`Android WebView`, () => {
-            configureTestSuite(() => {
+            beforeEach(async () => {
                 TestBed.configureTestingModule({
                     providers: [
                         {
@@ -122,6 +128,7 @@ describe(`TUI_IS_MOBILE`, () => {
                         },
                     ],
                 });
+                await TestBed.compileComponents();
             });
 
             it(`is mobile`, () => {
@@ -130,7 +137,7 @@ describe(`TUI_IS_MOBILE`, () => {
         });
 
         describe(`Nest Hub`, () => {
-            configureTestSuite(() => {
+            beforeEach(async () => {
                 TestBed.configureTestingModule({
                     providers: [
                         {
@@ -141,6 +148,7 @@ describe(`TUI_IS_MOBILE`, () => {
                         },
                     ],
                 });
+                await TestBed.compileComponents();
             });
 
             it(`is desktop`, () => {

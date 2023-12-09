@@ -4,7 +4,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiIdService} from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
-import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
+import {TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiPdfViewerModule} from '../pdf-viewer.module';
 import {tuiPdfViewerOptionsProvider} from '../pdf-viewer.options';
@@ -29,7 +29,7 @@ describe(`Pdf Viewer with TUI_PDF_VIEWER_OPTIONS`, () => {
         return pageObject.getByAutomationId(`tui-pdf-viewer__label`)!;
     }
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [NoopAnimationsModule, TuiRootModule, TuiPdfViewerModule],
             declarations: [TestComponent],
@@ -42,9 +42,7 @@ describe(`Pdf Viewer with TUI_PDF_VIEWER_OPTIONS`, () => {
                 },
             ],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         tuiPdfViewerService = TestBed.inject(TuiPdfViewerService);
         pageObject = new TuiPageObject(fixture);

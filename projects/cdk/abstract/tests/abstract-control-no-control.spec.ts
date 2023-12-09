@@ -13,7 +13,6 @@ import {
     tuiAsControl,
     TuiControlValueTransformer,
 } from '@taiga-ui/cdk';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`AbstractTuiControl and NgControl not injected in MyControlComponent`, () => {
     @Component({
@@ -89,13 +88,11 @@ describe(`AbstractTuiControl and NgControl not injected in MyControlComponent`, 
     let testComponent: TestComponent;
     let controlInstance: MyControlComponent;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             declarations: [TestComponent, MyControlComponent, ChildComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();
 

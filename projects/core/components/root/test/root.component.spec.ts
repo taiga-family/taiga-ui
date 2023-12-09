@@ -1,6 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiRootComponent} from '../root.component';
 import {TuiRootModule} from '../root.module';
@@ -9,13 +8,11 @@ describe(`root`, () => {
     let fixture: ComponentFixture<TuiRootComponent>;
     let root: HTMLElement;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiRootModule, NoopAnimationsModule],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TuiRootComponent);
         root = fixture.nativeElement;
 

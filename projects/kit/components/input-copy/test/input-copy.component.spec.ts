@@ -4,7 +4,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiSizeL, TuiSizeS, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputCopyComponent, TuiInputCopyModule} from '@taiga-ui/kit';
-import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
+import {TuiPageObject} from '@taiga-ui/testing';
 
 describe(`InputCopy`, () => {
     @Component({
@@ -33,7 +33,7 @@ describe(`InputCopy`, () => {
         return pageObject.getByAutomationId(`tui-copy__icon`);
     }
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 ReactiveFormsModule,
@@ -43,9 +43,7 @@ describe(`InputCopy`, () => {
             ],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;

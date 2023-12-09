@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
@@ -10,11 +10,7 @@ import {
     TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk';
-import {
-    TUI_DEFAULT_MARKER_HANDLER,
-    TuiAlertService,
-    TuiMarkerHandler,
-} from '@taiga-ui/core';
+import {TUI_DEFAULT_MARKER_HANDLER, TuiMarkerHandler} from '@taiga-ui/core';
 
 const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
 const ONE_DOT: [string] = ['var(--tui-success-fill)'];
@@ -123,13 +119,4 @@ export class ExampleTuiCalendarComponent {
     month = TuiMonth.currentLocal();
 
     hoveredItem: TuiDay | null = null;
-
-    constructor(
-        @Inject(TuiAlertService)
-        private readonly alerts: TuiAlertService,
-    ) {}
-
-    onDayClick(day: TuiDay): void {
-        this.alerts.open(String(day)).subscribe();
-    }
 }

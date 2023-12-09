@@ -15,7 +15,6 @@ import {
 } from '@taiga-ui/kit';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
 import {
-    configureTestSuite,
     TuiAccordionHarness,
     TuiAccordionItemHarness,
     TuiSelectHarness,
@@ -133,7 +132,7 @@ describe(`Accordion`, () => {
         });
     }
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 TuiInputModule,
@@ -147,9 +146,7 @@ describe(`Accordion`, () => {
             ],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(async () => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         loader = TestbedHarnessEnvironment.loader(fixture);
         accordion = await loader.getHarness(TuiAccordionHarness);

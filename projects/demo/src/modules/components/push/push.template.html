@@ -36,7 +36,7 @@
                 [heading]="heading"
                 [timestamp]="timestamp"
                 [type]="type"
-                (close)="onClose()"
+                (close)="documentationPropertyClose.emitEvent($event)"
             >
                 <img
                     alt=""
@@ -91,6 +91,7 @@
                 pipe.
             </ng-template>
             <ng-template
+                #documentationPropertyClose="documentationProperty"
                 documentationPropertyMode="output"
                 documentationPropertyName="close"
                 documentationPropertyType="void"

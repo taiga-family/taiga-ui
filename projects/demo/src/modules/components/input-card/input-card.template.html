@@ -47,7 +47,7 @@
                         [tuiTextfieldCleaner]="cleaner"
                         [tuiTextfieldLabelOutside]="labelOutside"
                         [tuiTextfieldSize]="size"
-                        (binChange)="onBinChange($event)"
+                        (binChange)="binChangeProperty?.emitEvent($event)"
                     >
                         Card number
                     </tui-input-card>
@@ -135,6 +135,7 @@
                             SVG card icon
                         </ng-template>
                         <ng-template
+                            #documentationPropertyBinChange
                             documentationPropertyMode="output"
                             documentationPropertyName="binChange"
                             documentationPropertyType="string | null"

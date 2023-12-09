@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
 import {TuiHighlightModule} from '@taiga-ui/kit';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`TuiHighlight directive`, () => {
     @Component({
@@ -29,14 +28,12 @@ describe(`TuiHighlight directive`, () => {
     })
     class TestComponent {}
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiHighlightModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         const fixture = TestBed.createComponent(TestComponent);
 
         fixture.detectChanges();

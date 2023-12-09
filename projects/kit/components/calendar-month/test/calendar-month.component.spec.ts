@@ -3,7 +3,6 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiDay, TuiMonth, TuiMonthRange, TuiYear} from '@taiga-ui/cdk';
 import {TuiInteractiveState, TuiRangeState} from '@taiga-ui/core';
 import {TuiCalendarMonthComponent, TuiCalendarMonthModule} from '@taiga-ui/kit';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 const TODAY = TuiDay.currentLocal();
 
@@ -36,14 +35,12 @@ describe(`CalendarMonth`, () => {
     let testComponent: TestComponent;
     let component: TuiCalendarMonthComponent;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiCalendarMonthModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         component = testComponent.component;

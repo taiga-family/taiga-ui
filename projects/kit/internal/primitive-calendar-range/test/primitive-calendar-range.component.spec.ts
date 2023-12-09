@@ -6,7 +6,6 @@ import {
     TuiPrimitiveCalendarRangeComponent,
     TuiPrimitiveCalendarRangeModule,
 } from '@taiga-ui/kit';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`PrimitiveRangeCalendar component`, () => {
     @Component({
@@ -23,14 +22,12 @@ describe(`PrimitiveRangeCalendar component`, () => {
     let testComponent: TestComponent;
     let component: TuiPrimitiveCalendarRangeComponent;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiPrimitiveCalendarRangeModule, NoopAnimationsModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

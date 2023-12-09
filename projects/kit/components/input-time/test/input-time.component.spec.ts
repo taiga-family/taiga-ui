@@ -12,12 +12,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputTimeComponent, TuiInputTimeModule} from '@taiga-ui/kit';
-import {
-    configureTestSuite,
-    tuiCreateKeyboardEvent,
-    TuiNativeInputPO,
-    TuiPageObject,
-} from '@taiga-ui/testing';
+import {tuiCreateKeyboardEvent, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 const TIMES = [
     new TuiTime(0, 0),
@@ -71,7 +66,7 @@ describe(`InputTime`, () => {
         return pageObject.getByAutomationId(`tui-input-time__dropdown`);
     }
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 TuiRootModule,
@@ -83,9 +78,7 @@ describe(`InputTime`, () => {
             ],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(async () => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;

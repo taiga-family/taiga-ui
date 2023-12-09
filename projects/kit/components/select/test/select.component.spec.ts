@@ -14,7 +14,7 @@ import {
     TuiSelectComponent,
     TuiSelectModule,
 } from '@taiga-ui/kit';
-import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 class Beast {
     constructor(
@@ -70,7 +70,7 @@ describe(`Select`, () => {
     let pageObject: TuiPageObject<TestComponent>;
     let inputPO: TuiNativeInputPO;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 ReactiveFormsModule,
@@ -84,9 +84,8 @@ describe(`Select`, () => {
             ],
             declarations: [TestComponent],
         });
-    });
+        await TestBed.compileComponents();
 
-    beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;

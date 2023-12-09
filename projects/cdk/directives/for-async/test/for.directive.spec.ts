@@ -1,7 +1,6 @@
 import {Component, Directive, ElementRef} from '@angular/core';
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {TuiForAsyncModule} from '@taiga-ui/cdk';
-import {configureTestSuite} from '@taiga-ui/testing';
 import {Subject} from 'rxjs';
 
 describe(`TuiForAsync directive`, () => {
@@ -25,14 +24,12 @@ describe(`TuiForAsync directive`, () => {
         })
         class TestComponent extends AbstractTuiTestComponent {}
 
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [TuiForAsyncModule],
                 declarations: [TestComponent],
             });
-        });
-
-        beforeEach(() => {
+            await TestBed.compileComponents();
             fixture = TestBed.createComponent(TestComponent);
             testComponent = fixture.componentInstance;
             fixture.detectChanges();
@@ -143,14 +140,12 @@ describe(`TuiForAsync directive`, () => {
         })
         class TestComponent extends AbstractTuiTestComponent {}
 
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [TuiForAsyncModule],
                 declarations: [TestComponent],
             });
-        });
-
-        beforeEach(() => {
+            await TestBed.compileComponents();
             fixture = TestBed.createComponent(TestComponent);
             testComponent = fixture.componentInstance;
             fixture.detectChanges();

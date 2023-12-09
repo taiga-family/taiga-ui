@@ -25,7 +25,10 @@
             "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/addon-preview"],
             "options": {
-                "jestConfig": "projects/addon-preview/jest.config.ts"
+                "jestConfig": "jest.config.ts",
+                "coverageDirectory": "coverage/addon-preview",
+                "collectCoverageFrom": ["<rootDir>/projects/addon-preview/**/*.ts"],
+                "testMatch": ["<rootDir>/projects/addon-preview/**/*.spec.ts"]
             }
         },
         "publish": {

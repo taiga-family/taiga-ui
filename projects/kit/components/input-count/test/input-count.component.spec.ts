@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_HYPHEN, CHAR_MINUS} from '@taiga-ui/cdk';
 import {TuiInputCountComponent, TuiInputCountModule} from '@taiga-ui/kit';
-import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 describe(`InputCount`, () => {
     @Component({
@@ -49,14 +49,12 @@ describe(`InputCount`, () => {
         },
     };
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [ReactiveFormsModule, TuiInputCountModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;

@@ -17,11 +17,7 @@ import {
     TuiRangeState,
 } from '@taiga-ui/core';
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
-import {
-    configureTestSuite,
-    tuiMockCurrentDate,
-    tuiRestoreRealDate,
-} from '@taiga-ui/testing';
+import {tuiMockCurrentDate, tuiRestoreRealDate} from '@taiga-ui/testing';
 
 describe(`PrimitiveCalendar`, () => {
     const today = 23;
@@ -53,199 +49,203 @@ describe(`PrimitiveCalendar`, () => {
     let testComponent: TestComponent;
     let component: TuiPrimitiveCalendarComponent;
 
-    configureTestSuite(() => {
-        TestBed.configureTestingModule({
-            imports: [TuiPrimitiveCalendarModule],
-            declarations: [TestComponent],
-        });
-    });
+    describe(`main case`, () => {
+        beforeEach(async () => {
+            TestBed.configureTestingModule({
+                imports: [TuiPrimitiveCalendarModule],
+                declarations: [TestComponent],
+            });
+            await TestBed.compileComponents();
+            tuiMockCurrentDate(new Date(2018, 1, today));
 
-    beforeEach(() => {
-        tuiMockCurrentDate(new Date(2018, 1, today));
+            fixture = TestBed.createComponent(TestComponent);
+            testComponent = fixture.componentInstance;
+            component = testComponent.component;
 
-        fixture = TestBed.createComponent(TestComponent);
-        testComponent = fixture.componentInstance;
-        component = testComponent.component;
-
-        fixture.detectChanges();
-    });
-
-    describe(`today`, () => {
-        it(`is highlighted if current month and year were selected`, () => {
-            const currentItem = getTodayCalendarItem();
-
-            expect(currentItem).not.toBeNull();
-            expect(currentItem.nativeElement.innerHTML.includes(today)).toBeTruthy();
-        });
-
-        it(`is not highlighted if not current month and current year were selected`, () => {
-            testComponent.month = new TuiMonth(2017, 9);
             fixture.detectChanges();
-
-            const todayItem = getTodayCalendarItem();
-
-            expect(todayItem).toBeNull();
         });
 
-        it(`is not highlighted if current month and not current year were selected`, () => {
-            testComponent.month = new TuiMonth(2018, 10);
-            fixture.detectChanges();
+        describe(`today`, () => {
+            it(`is highlighted if current month and year were selected`, () => {
+                const currentItem = getTodayCalendarItem();
 
-            const todayItem = getTodayCalendarItem();
+                expect(currentItem).not.toBeNull();
+                expect(currentItem.nativeElement.innerHTML.includes(today)).toBeTruthy();
+            });
 
-            expect(todayItem).toBeNull();
-        });
-    });
-
-    describe(`disabledItemHandler`, () => {
-        it(`all dates are not disabled as default`, () => {
-            expect(getDisabledCalendarItems()).toEqual([]);
-        });
-
-        describe(`if there are dates under condition`, () => {
-            beforeEach(() => {
-                testComponent.disabledItemHandler = ({day}) => day === 20;
+            it(`is not highlighted if not current month and current year were selected`, () => {
+                testComponent.month = new TuiMonth(2017, 9);
                 fixture.detectChanges();
+
+                const todayItem = getTodayCalendarItem();
+
+                expect(todayItem).toBeNull();
             });
 
-            it(`blocked date under condition`, () => {
-                expect(getDisabledCalendarItems().length).toBe(1);
-                expect(
-                    getDisabledCalendarItems()[0].nativeElement.textContent.trim(),
-                ).toBe(`20`);
-            });
-
-            it(`click on blocked date does not change value`, () => {
-                getDisabledCalendarItems()[0].nativeElement.click();
+            it(`is not highlighted if current month and not current year were selected`, () => {
+                testComponent.month = new TuiMonth(2018, 10);
                 fixture.detectChanges();
-                expect(testComponent.value).toBeNull();
+
+                const todayItem = getTodayCalendarItem();
+
+                expect(todayItem).toBeNull();
+            });
+        });
+
+        describe(`disabledItemHandler`, () => {
+            it(`all dates are not disabled as default`, () => {
+                expect(getDisabledCalendarItems()).toEqual([]);
             });
 
-            it(`can be checked due itemIsDisabled`, () => {
-                const disabledDay = new TuiDay(2010, 4, 20);
+            describe(`if there are dates under condition`, () => {
+                beforeEach(() => {
+                    testComponent.disabledItemHandler = ({day}) => day === 20;
+                    fixture.detectChanges();
+                });
 
-                expect(component.getItemState(disabledDay)).toBe(
-                    TuiInteractiveState.Disabled,
+                it(`blocked date under condition`, () => {
+                    expect(getDisabledCalendarItems().length).toBe(1);
+                    expect(
+                        getDisabledCalendarItems()[0].nativeElement.textContent.trim(),
+                    ).toBe(`20`);
+                });
+
+                it(`click on blocked date does not change value`, () => {
+                    getDisabledCalendarItems()[0].nativeElement.click();
+                    fixture.detectChanges();
+                    expect(testComponent.value).toBeNull();
+                });
+
+                it(`can be checked due itemIsDisabled`, () => {
+                    const disabledDay = new TuiDay(2010, 4, 20);
+
+                    expect(component.getItemState(disabledDay)).toBe(
+                        TuiInteractiveState.Disabled,
+                    );
+                });
+            });
+        });
+
+        describe(`getItemState`, () => {
+            it(`returns pressed state if it is not disabled`, () => {
+                const dayToPress = new TuiDay(2019, 4, 16);
+
+                component.onItemPressed(dayToPress);
+
+                expect(component.getItemState(dayToPress)).toBe(
+                    TuiInteractiveState.Active,
+                );
+            });
+
+            it(`returns hovered state if it is not disabled and pressed`, () => {
+                const dayToHover = new TuiDay(2019, 4, 16);
+
+                component.onItemHovered(dayToHover);
+
+                expect(component.getItemState(dayToHover)).toBe(
+                    TuiInteractiveState.Hover,
                 );
             });
         });
-    });
 
-    describe(`getItemState`, () => {
-        it(`returns pressed state if it is not disabled`, () => {
-            const dayToPress = new TuiDay(2019, 4, 16);
+        describe(`getItemRange`, () => {
+            it(`returns start correctly if there is range in value`, () => {
+                const day1 = new TuiDay(2019, 4, 16);
+                const day2 = new TuiDay(2020, 1, 1);
+                const range = new TuiDayRange(day1, day2);
 
-            component.onItemPressed(dayToPress);
+                component.value = range;
 
-            expect(component.getItemState(dayToPress)).toBe(TuiInteractiveState.Active);
+                expect(component.getItemRange(day1)).toBe(TuiRangeState.Start);
+            });
+
+            it(`returns end correctly if there is range in value`, () => {
+                const day1 = new TuiDay(2019, 4, 16);
+                const day2 = new TuiDay(2020, 1, 1);
+                const range = new TuiDayRange(day1, day2);
+
+                component.value = range;
+
+                expect(component.getItemRange(day2)).toBe(TuiRangeState.End);
+            });
+
+            it(`returns single if value is single day and item equals this`, () => {
+                const day1 = new TuiDay(2019, 4, 24);
+                const range = new TuiDayRange(day1, day1);
+
+                component.value = range;
+
+                expect(component.getItemRange(day1)).toBe(TuiRangeState.Single);
+            });
         });
 
-        it(`returns hovered state if it is not disabled and pressed`, () => {
-            const dayToHover = new TuiDay(2019, 4, 16);
+        describe(`itemIsInterval`, () => {
+            it(`returns false if there is single day range value but no hoveredItem`, () => {
+                const day = new TuiDay(2019, 4, 16);
 
-            component.onItemHovered(dayToHover);
+                component.value = new TuiDayRange(day, day);
+                component.hoveredItem = null;
 
-            expect(component.getItemState(dayToHover)).toBe(TuiInteractiveState.Hover);
+                expect(component.itemIsInterval(day)).toBe(false);
+            });
+
+            it(`returns true if item is between single day range value and hoveredItem`, () => {
+                const singleDayRangeValue = new TuiDayRange(
+                    new TuiDay(2019, 4, 14),
+                    new TuiDay(2019, 4, 14),
+                );
+                const day = new TuiDay(2019, 4, 16);
+                const hoveredDay = new TuiDay(2019, 4, 18);
+
+                component.value = singleDayRangeValue;
+                component.onItemHovered(hoveredDay);
+
+                expect(component.itemIsInterval(day)).toBe(true);
+            });
+
+            it(`returns true if item is between day range value`, () => {
+                const dayRangeValue = new TuiDayRange(
+                    new TuiDay(2019, 4, 14),
+                    new TuiDay(2019, 4, 24),
+                );
+                const day = new TuiDay(2019, 4, 16);
+
+                component.value = dayRangeValue;
+
+                expect(component.itemIsInterval(day)).toBe(true);
+            });
         });
-    });
 
-    describe(`getItemRange`, () => {
-        it(`returns start correctly if there is range in value`, () => {
-            const day1 = new TuiDay(2019, 4, 16);
-            const day2 = new TuiDay(2020, 1, 1);
-            const range = new TuiDayRange(day1, day2);
-
-            component.value = range;
-
-            expect(component.getItemRange(day1)).toBe(TuiRangeState.Start);
-        });
-
-        it(`returns end correctly if there is range in value`, () => {
-            const day1 = new TuiDay(2019, 4, 16);
-            const day2 = new TuiDay(2020, 1, 1);
-            const range = new TuiDayRange(day1, day2);
-
-            component.value = range;
-
-            expect(component.getItemRange(day2)).toBe(TuiRangeState.End);
-        });
-
-        it(`returns single if value is single day and item equals this`, () => {
-            const day1 = new TuiDay(2019, 4, 24);
-            const range = new TuiDayRange(day1, day1);
-
-            component.value = range;
-
-            expect(component.getItemRange(day1)).toBe(TuiRangeState.Single);
-        });
-    });
-
-    describe(`itemIsInterval`, () => {
-        it(`returns false if there is single day range value but no hoveredItem`, () => {
+        it(`emits hovered item`, () => {
+            let result: unknown;
             const day = new TuiDay(2019, 4, 16);
 
-            component.value = new TuiDayRange(day, day);
-            component.hoveredItem = null;
+            component.hoveredItemChange.subscribe((hoveredDay: TuiDay) => {
+                result = hoveredDay;
+            });
 
-            expect(component.itemIsInterval(day)).toBe(false);
+            component.onItemHovered(day);
+
+            expect(result).toBe(day);
         });
 
-        it(`returns true if item is between single day range value and hoveredItem`, () => {
-            const singleDayRangeValue = new TuiDayRange(
-                new TuiDay(2019, 4, 14),
-                new TuiDay(2019, 4, 14),
-            );
-            const day = new TuiDay(2019, 4, 16);
-            const hoveredDay = new TuiDay(2019, 4, 18);
+        it(`does not recalculate month and sheet if it has already been set with the same month`, () => {
+            const firstlySetMonth = new TuiMonth(2019, 4);
+            const candidateToSecondSet = new TuiMonth(2019, 4);
 
-            component.value = singleDayRangeValue;
-            component.onItemHovered(hoveredDay);
+            const getSheetPipe = new TuiCalendarSheetPipe(TuiDayOfWeek.Monday);
 
-            expect(component.itemIsInterval(day)).toBe(true);
+            const savedSheet = getSheetPipe.transform(firstlySetMonth);
+
+            expect(getSheetPipe.transform(candidateToSecondSet)).toBe(savedSheet);
         });
-
-        it(`returns true if item is between day range value`, () => {
-            const dayRangeValue = new TuiDayRange(
-                new TuiDay(2019, 4, 14),
-                new TuiDay(2019, 4, 24),
-            );
-            const day = new TuiDay(2019, 4, 16);
-
-            component.value = dayRangeValue;
-
-            expect(component.itemIsInterval(day)).toBe(true);
-        });
-    });
-
-    it(`emits hovered item`, () => {
-        let result: unknown;
-        const day = new TuiDay(2019, 4, 16);
-
-        component.hoveredItemChange.subscribe((hoveredDay: TuiDay) => {
-            result = hoveredDay;
-        });
-
-        component.onItemHovered(day);
-
-        expect(result).toBe(day);
-    });
-
-    it(`does not recalculate month and sheet if it has already been set with the same month`, () => {
-        const firstlySetMonth = new TuiMonth(2019, 4);
-        const candidateToSecondSet = new TuiMonth(2019, 4);
-
-        const getSheetPipe = new TuiCalendarSheetPipe(TuiDayOfWeek.Monday);
-
-        const savedSheet = getSheetPipe.transform(firstlySetMonth);
-
-        expect(getSheetPipe.transform(candidateToSecondSet)).toBe(savedSheet);
     });
 
     describe(`integration with TUI_FIRST_DAY_OF_WEEK token`, () => {
         let fixture: ComponentFixture<TestComponent>;
         let testComponent: TestComponent;
 
-        beforeEach(() => {
+        const createComponent: () => void = () => {
             tuiRestoreRealDate();
 
             fixture = TestBed.createComponent(TestComponent);
@@ -253,10 +253,10 @@ describe(`PrimitiveCalendar`, () => {
 
             testComponent.month = new TuiMonth(2021, 5);
             fixture.detectChanges();
-        });
+        };
 
         describe(`Week starts with Sunday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Sunday`, () => {
-            configureTestSuite(() => {
+            beforeEach(async () => {
                 TestBed.configureTestingModule({
                     imports: [TuiPrimitiveCalendarModule],
                     declarations: [TestComponent],
@@ -267,6 +267,8 @@ describe(`PrimitiveCalendar`, () => {
                         },
                     ],
                 });
+                await TestBed.compileComponents();
+                createComponent();
             });
 
             it(`contains calendar header (with days of week names) which starts with Sunday`, () => {
@@ -291,7 +293,7 @@ describe(`PrimitiveCalendar`, () => {
         });
 
         describe(`Week starts with Monday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Monday`, () => {
-            configureTestSuite(() => {
+            beforeEach(async () => {
                 TestBed.configureTestingModule({
                     imports: [TuiPrimitiveCalendarModule],
                     declarations: [TestComponent],
@@ -302,6 +304,8 @@ describe(`PrimitiveCalendar`, () => {
                         },
                     ],
                 });
+                await TestBed.compileComponents();
+                createComponent();
             });
 
             it(`contains calendar header (with days of week names) which starts with Monday`, () => {
@@ -326,7 +330,7 @@ describe(`PrimitiveCalendar`, () => {
         });
 
         describe(`Week starts with Wednesday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Wednesday`, () => {
-            configureTestSuite(() => {
+            beforeEach(async () => {
                 TestBed.configureTestingModule({
                     imports: [TuiPrimitiveCalendarModule],
                     declarations: [TestComponent],
@@ -337,6 +341,8 @@ describe(`PrimitiveCalendar`, () => {
                         },
                     ],
                 });
+                await TestBed.compileComponents();
+                createComponent();
             });
 
             it(`contains calendar header (with days of week names) which starts with Wednesday`, () => {

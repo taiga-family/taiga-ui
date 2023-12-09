@@ -3,7 +3,6 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiInputCVCComponent, TuiInputCVCModule} from '@taiga-ui/addon-commerce';
 import {TUI_DIGIT_REGEXP} from '@taiga-ui/core';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`InputCVC`, () => {
     @Component({
@@ -32,14 +31,12 @@ describe(`InputCVC`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [ReactiveFormsModule, TuiInputCVCModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

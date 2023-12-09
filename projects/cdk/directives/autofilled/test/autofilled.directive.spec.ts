@@ -3,7 +3,6 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {TuiAutofilledDirective, TuiAutofilledModule} from '@taiga-ui/cdk/directives';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`TuiAutofillModule`, () => {
     @Component({
@@ -25,14 +24,12 @@ describe(`TuiAutofillModule`, () => {
     let testComponent: TestComponent;
     let directiveInstance: TuiAutofilledDirective;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [FormsModule, TuiAutofilledModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

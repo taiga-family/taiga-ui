@@ -2,7 +2,6 @@ import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiAxesComponent, TuiAxesModule} from '@taiga-ui/addon-charts';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`Axes`, () => {
     @Component({
@@ -39,14 +38,12 @@ describe(`Axes`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiAxesModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

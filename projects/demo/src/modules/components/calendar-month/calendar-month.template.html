@@ -39,7 +39,7 @@
                 [min]="min"
                 [value]="value"
                 [year]="year"
-                (monthClick)="onMonthClick($event)"
+                (monthClick)="documentationPropertyMonthClick.emitEvent($event)"
             ></tui-calendar-month>
         </tui-doc-demo>
         <tui-doc-documentation>
@@ -91,6 +91,7 @@
                 Current year
             </ng-template>
             <ng-template
+                #documentationPropertyMonthClick="documentationProperty"
                 documentationPropertyMode="output"
                 documentationPropertyName="monthClick"
                 documentationPropertyType="TuiMonth"

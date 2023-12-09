@@ -3,7 +3,7 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiTagComponent, TuiTagModule} from '@taiga-ui/kit';
-import {configureTestSuite, TuiTagHarness} from '@taiga-ui/testing';
+import {TuiTagHarness} from '@taiga-ui/testing';
 
 describe(`Tag`, () => {
     @Component({
@@ -30,14 +30,13 @@ describe(`Tag`, () => {
     let testComponent: TestComponent;
     let loader: HarnessLoader;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiTagModule],
             declarations: [TestComponent],
         });
-    });
+        await TestBed.compileComponents();
 
-    beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
         loader = TestbedHarnessEnvironment.loader(fixture);
         testComponent = fixture.componentInstance;

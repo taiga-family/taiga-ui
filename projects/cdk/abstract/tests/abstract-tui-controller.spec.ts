@@ -1,7 +1,6 @@
 import {Component, Input, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {AbstractTuiController} from '@taiga-ui/cdk';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`AbstractTuiController`, () => {
     @Component({
@@ -27,13 +26,11 @@ describe(`AbstractTuiController`, () => {
 
     let fixture: ComponentFixture<TestComponent>;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             declarations: [TestComponent, MyElementComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         fixture.autoDetectChanges();
     });

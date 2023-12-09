@@ -4,7 +4,7 @@ import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TuiSizeL} from '@taiga-ui/core';
 import {TuiBreadcrumbsComponent, TuiBreadcrumbsModule} from '@taiga-ui/kit';
-import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
+import {TuiPageObject} from '@taiga-ui/testing';
 
 const ITEMS = [
     {
@@ -62,14 +62,12 @@ describe(`Breadcrumbs Wrapper`, () => {
         return pageObject.getByAutomationId(`${testContext.prefix}component`)!;
     }
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiBreadcrumbsModule, RouterTestingModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;

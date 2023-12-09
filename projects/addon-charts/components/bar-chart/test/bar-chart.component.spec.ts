@@ -1,7 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiBarChartComponent, TuiBarChartModule} from '@taiga-ui/addon-charts';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`BarChart`, () => {
     @Component({
@@ -27,14 +26,12 @@ describe(`BarChart`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiBarChartModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

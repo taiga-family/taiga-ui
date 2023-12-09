@@ -4,7 +4,7 @@ import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiDay, TuiMonth} from '@taiga-ui/cdk';
 import {TuiCalendarComponent, TuiCalendarModule} from '@taiga-ui/core';
-import {configureTestSuite, TuiCalendarHarness} from '@taiga-ui/testing';
+import {TuiCalendarHarness} from '@taiga-ui/testing';
 
 describe(`Calendar`, () => {
     @Component({
@@ -54,14 +54,12 @@ describe(`Calendar`, () => {
     let testComponent: TestComponent;
     let component: TuiCalendarComponent;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiCalendarModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         loader = TestbedHarnessEnvironment.loader(fixture);
         testComponent = fixture.componentInstance;

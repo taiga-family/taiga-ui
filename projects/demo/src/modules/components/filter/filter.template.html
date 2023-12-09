@@ -52,7 +52,7 @@
                     [formControl]="control"
                     [items]="items"
                     [size]="size"
-                    (toggledItem)="onToggledItemChange($event)"
+                    (toggledItem)="documentationPropertyToggledItem.emitEvent($event)"
                 ></tui-filter>
             </ng-template>
         </tui-doc-demo>
@@ -118,6 +118,7 @@
                 Size
             </ng-template>
             <ng-template
+                #documentationPropertyToggledItem="documentationProperty"
                 documentationPropertyMode="output"
                 documentationPropertyName="toggledItem"
                 documentationPropertyType="T"

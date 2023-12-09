@@ -9,7 +9,7 @@ import {
     TuiNotificationT,
     TuiSvgService,
 } from '@taiga-ui/core';
-import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
+import {TuiPageObject} from '@taiga-ui/testing';
 
 describe(`Notification`, () => {
     describe(`Without options`, () => {
@@ -51,15 +51,13 @@ describe(`Notification`, () => {
             return pageObject.getByAutomationId(`tui-notification__close`)!;
         }
 
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [NoopAnimationsModule, TuiNotificationModule],
                 declarations: [TestComponent],
                 providers: [TuiSvgService],
             });
-        });
-
-        beforeEach(() => {
+            await TestBed.compileComponents();
             fixture = TestBed.createComponent(TestComponent);
             pageObject = new TuiPageObject(fixture);
             testComponent = fixture.componentInstance;
@@ -106,7 +104,7 @@ describe(`Notification`, () => {
             return pageObject.getByAutomationId(`tui-notification__icon`)!;
         }
 
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [NoopAnimationsModule, TuiNotificationModule],
                 declarations: [TestComponent],
@@ -122,9 +120,8 @@ describe(`Notification`, () => {
                     },
                 ],
             });
-        });
+            await TestBed.compileComponents();
 
-        beforeEach(() => {
             fixture = TestBed.createComponent(TestComponent);
             pageObject = new TuiPageObject(fixture);
             fixture.detectChanges();

@@ -1,13 +1,12 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiDocCodeComponent} from '@taiga-ui/addon-doc';
-import {configureTestSuite} from '@taiga-ui/testing';
 import {HIGHLIGHT_OPTIONS, HighlightModule} from 'ngx-highlightjs';
 
 describe(`TuiDocCodeComponent`, () => {
     let component: TuiDocCodeComponent;
     let fixture: ComponentFixture<TuiDocCodeComponent>;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             declarations: [TuiDocCodeComponent],
             imports: [HighlightModule],
@@ -26,9 +25,7 @@ describe(`TuiDocCodeComponent`, () => {
                 },
             ],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TuiDocCodeComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();

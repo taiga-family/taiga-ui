@@ -5,7 +5,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiDay, TuiMonth} from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
 import {TuiInputMonthComponent, TuiInputMonthModule} from '@taiga-ui/kit';
-import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 describe(`InputMonth`, () => {
     @Component({
@@ -28,7 +28,7 @@ describe(`InputMonth`, () => {
     let component: TuiInputMonthComponent;
     let inputPO: TuiNativeInputPO;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 TuiRootModule,
@@ -38,9 +38,7 @@ describe(`InputMonth`, () => {
             ],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;

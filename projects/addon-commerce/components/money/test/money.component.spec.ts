@@ -10,7 +10,7 @@ import {
 } from '@taiga-ui/addon-commerce';
 import {CHAR_MINUS} from '@taiga-ui/cdk';
 import {TuiDecimal} from '@taiga-ui/core';
-import {configureTestSuite, TuiPageObject, tuiReplaceNbsp} from '@taiga-ui/testing';
+import {TuiPageObject, tuiReplaceNbsp} from '@taiga-ui/testing';
 
 describe(`Money`, () => {
     @Component({
@@ -47,14 +47,12 @@ describe(`Money`, () => {
         },
     };
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiMoneyModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
