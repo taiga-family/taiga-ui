@@ -155,7 +155,7 @@
         "lint-staged": "15.2.0",
         "ng-packagr": "12.2.7",
         "nx": "17.2.0",
-        "prettier": "3.1.0",
+        "prettier": "3.1.1",
         "rollup": "4.7.0",
         "standard-version": "9.5.0",
         "stylelint": "16.0.1",
