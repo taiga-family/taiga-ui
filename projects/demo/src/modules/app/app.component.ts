@@ -1,24 +1,15 @@
 import {APP_BASE_HREF, DOCUMENT} from '@angular/common';
-import {
-    Component,
-    Inject,
-    InjectFlags,
-    Injector,
-    OnInit,
-    Self,
-    ViewEncapsulation,
-} from '@angular/core';
+import {Component, Inject, OnInit, Self, ViewEncapsulation} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
 import {TUI_IS_E2E, TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
-import {Metrika} from 'ng-yandex-metrika';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, filter, map, takeUntil} from 'rxjs/operators';
 
-import {environment} from '../../environments/environment';
 import {AbstractDemoComponent, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
+import {YaMetrikaService} from './metrika/metrika.service';
 import {
     TUI_SELECTED_VERSION_META,
     TUI_VERSION_MANAGER_PROVIDERS,
@@ -51,9 +42,9 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
         @Inject(Router) protected readonly router: Router,
         @Inject(LOCAL_STORAGE) protected readonly storage: Storage,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
-        @Inject(Injector) private readonly injector: Injector,
         @Inject(DOCUMENT) private readonly doc: Document,
         @Inject(APP_BASE_HREF) private readonly appBaseHref: string,
+        @Inject(YaMetrikaService) private readonly ym: YaMetrikaService,
     ) {
         super(isE2E, pageLoaded$, selectedVersion);
     }
@@ -65,29 +56,14 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
     }
 
     private enableYandexMetrika(): void {
-        if (ngDevMode && (!environment.production || this.isE2E)) {
-            console.info('Yandex.Metrika disabled for non-production mode.');
-
-            return;
-        }
-
-        try {
-            const metrika = this.injector.get(Metrika, null, InjectFlags.Optional);
-
-            this.router.events
-                .pipe(
-                    filter(
-                        (event): event is NavigationEnd => event instanceof NavigationEnd,
-                    ),
-                    takeUntil(this.destroy$),
-                )
-                .subscribe(event => {
-                    // eslint-disable-next-line
-                    metrika?.hit(event.urlAfterRedirects, {referer: event.url});
-                });
-        } catch {
-            ngDevMode && console.error('You forgot to import MetrikaModule!');
-        }
+        this.router.events
+            .pipe(
+                filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+                takeUntil(this.destroy$),
+            )
+            .subscribe(event =>
+                this.ym.hit(event.urlAfterRedirects, {referer: event.url}),
+            );
     }
 
     /**

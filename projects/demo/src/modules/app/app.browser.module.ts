@@ -18,10 +18,8 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiPdfViewerModule, TuiPushModule} from '@taiga-ui/kit';
-import {MetrikaModule} from 'ng-yandex-metrika';
 import {MarkdownModule} from 'ngx-markdown';
 
-import {environment} from '../../environments/environment';
 import {CustomHostModule} from '../customization/portals/examples/1/portal/custom-host.module';
 import {AppComponent} from './app.component';
 import {APP_PROVIDERS} from './app.providers';
@@ -32,12 +30,6 @@ import {HomeModule} from './home/home.module';
 import {LandingModule} from './landing/landing.module';
 import {LogoModule} from './logo/logo.module';
 import {VersionManagerModule} from './version-manager/version-manager.module';
-
-const PRODUCTION_MODULES = environment.production
-    ? ([
-          MetrikaModule.forRoot({id: environment.ym, webvisor: false, clickmap: false}),
-      ] as const)
-    : [];
 
 @NgModule({
     imports: [
@@ -70,7 +62,6 @@ const PRODUCTION_MODULES = environment.production
             loader: HttpClient,
             sanitize: SecurityContext.NONE,
         }),
-        ...PRODUCTION_MODULES,
     ],
     declarations: [AppComponent],
     providers: APP_PROVIDERS,
