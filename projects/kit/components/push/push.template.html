@@ -21,7 +21,7 @@
     <span
         *ngIf="timestamp"
         class="t-time"
-        [textContent]="timestamp | tuiFormatDate | async"
+        [textContent]="isString(timestamp) ? timestamp : (timestamp | tuiFormatDate | async)"
     ></span>
 </div>
 <h3

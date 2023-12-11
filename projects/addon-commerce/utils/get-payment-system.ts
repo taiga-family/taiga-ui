@@ -28,7 +28,6 @@ export const TUI_BIN_TABLE: ReadonlyArray<
     [`maestro`, 5893],
     [`rupay`, 508],
     [`maestro`, 50],
-    [`dinersclub`, 54],
     [`mastercard`, 51, 55],
     [`maestro`, 56],
     [`maestro`, 58],

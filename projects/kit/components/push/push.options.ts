@@ -7,14 +7,14 @@ export interface TuiPushOptions {
     readonly icon: string;
     readonly iconColor: string;
     readonly image: string;
-    readonly timestamp: number;
+    readonly timestamp: number | string;
     readonly type: string;
 }
 
 export const TUI_PUSH_DEFAULT_OPTIONS: TuiPushOptions = {
     heading: ``,
     type: ``,
-    timestamp: 0,
+    timestamp: ``,
     image: ``,
     icon: ``,
     iconColor: ``,
