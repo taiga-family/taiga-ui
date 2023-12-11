@@ -1,53 +1,51 @@
-<tui-hosted-dropdown
+<button
+    tuiButton
     tuiDropdownHover
-    [content]="dropdown"
-    [(open)]="open"
+    type="button"
+    [tuiDropdown]="dropdown"
+    [(tuiDropdownOpen)]="open"
 >
-    <button
-        tuiButton
-        type="button"
-    >
-        Dropdown hover
-    </button>
+    Dropdown hover
     <ng-template
         #dropdown
         let-activeZone
     >
-        <p class="margin">
-            There is
-            <code>let-activeZone</code>
-            in dropdown template context to work with nested dropdowns
-        </p>
+        <div [style.padding]="'0 1rem'">
+            <p>
+                There is
+                <code>let-activeZone</code>
+                in dropdown template context to work with nested dropdowns
+            </p>
 
-        <tui-select
-            class="margin"
-            [formControl]="selected"
-            [tuiActiveZoneParent]="activeZone"
-        >
-            Nested select
-            <tui-data-list-wrapper
-                *tuiDataList
-                [items]="selectItems"
-            ></tui-data-list-wrapper>
-        </tui-select>
-
-        <tui-hosted-dropdown
-            tuiDropdownHover
-            class="margin"
-            [content]="content"
-            [tuiActiveZoneParent]="activeZone"
-        >
-            <button
-                size="s"
-                tuiButton
-                type="button"
+            <tui-select
+                class="margin"
+                [formControl]="selected"
+                [tuiActiveZoneParent]="activeZone"
             >
-                Nested dropdown hover
-            </button>
-            <ng-template #content>
-                <p class="tui-space_horizontal-2">Nested content!</p>
-            </ng-template>
-        </tui-hosted-dropdown>
+                Nested select
+                <tui-data-list-wrapper
+                    *tuiDataList
+                    [items]="selectItems"
+                ></tui-data-list-wrapper>
+            </tui-select>
+
+            <p>
+                <button
+                    size="s"
+                    tuiButton
+                    tuiDropdownHover
+                    tuiDropdownOpen
+                    type="button"
+                    [tuiActiveZoneParent]="activeZone"
+                    [tuiDropdown]="content"
+                >
+                    Nested dropdown hover
+                </button>
+                <ng-template #content>
+                    <p class="tui-space_horizontal-2">Nested content!</p>
+                </ng-template>
+            </p>
+        </div>
 
         <tui-data-list>
             <button
@@ -58,4 +56,4 @@
             </button>
         </tui-data-list>
     </ng-template>
-</tui-hosted-dropdown>
+</button>

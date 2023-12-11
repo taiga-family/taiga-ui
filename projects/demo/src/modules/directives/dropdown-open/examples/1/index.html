@@ -1,0 +1,38 @@
+<button
+    appearance="flat"
+    iconRight="tuiIconChevronRight"
+    size="m"
+    tuiButton
+    tuiDropdownAlign="right"
+    type="button"
+    [pseudoActive]="open || null"
+    [tuiDropdown]="dropdown"
+    [tuiDropdownSided]="true"
+    [(tuiDropdownOpen)]="open"
+>
+    Button
+</button>
+<ng-template
+    #dropdown
+    let-close="close"
+>
+    <tui-data-list>
+        <tui-opt-group>
+            <button
+                *ngFor="let item of items"
+                tuiOption
+                (click)="onClick()"
+            >
+                {{ item }}
+            </button>
+        </tui-opt-group>
+        <tui-opt-group>
+            <button
+                tuiOption
+                (click)="close()"
+            >
+                Nevermind
+            </button>
+        </tui-opt-group>
+    </tui-data-list>
+</ng-template>

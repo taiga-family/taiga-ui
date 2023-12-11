@@ -2,4 +2,4 @@
     *polymorpheusOutlet="arrowIcon as src"
     [src]="src"
 ></tui-svg>
-<ng-container *ngIf="dropdown.openChange | async"></ng-container>
+<ng-container *ngIf="component?.openChange || directive?.tuiDropdownOpenChange | async"></ng-container>

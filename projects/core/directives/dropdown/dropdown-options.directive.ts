@@ -2,7 +2,7 @@ import {
     Directive,
     FactoryProvider,
     forwardRef,
-    Inject,
+    inject,
     Input,
     Optional,
     SkipSelf,
@@ -55,6 +55,7 @@ export const tuiDropdownOptionsProvider: (
 @Directive({
     selector:
         '[tuiDropdownAlign], [tuiDropdownAppearance], [tuiDropdownDirection], [tuiDropdownLimitWidth], [tuiDropdownMinHeight], [tuiDropdownMaxHeight], [tuiDropdownOffset]',
+    standalone: true,
     providers: [
         {
             provide: TUI_DROPDOWN_OPTIONS,
@@ -63,6 +64,8 @@ export const tuiDropdownOptionsProvider: (
     ],
 })
 export class TuiDropdownOptionsDirective implements TuiDropdownOptions {
+    private readonly options = inject(TUI_DROPDOWN_OPTIONS, {skipSelf: true});
+
     @Input('tuiDropdownAlign')
     align = this.options.align;
 
@@ -83,10 +86,4 @@ export class TuiDropdownOptionsDirective implements TuiDropdownOptions {
 
     @Input('tuiDropdownOffset')
     offset = this.options.offset;
-
-    constructor(
-        @SkipSelf()
-        @Inject(TUI_DROPDOWN_OPTIONS)
-        private readonly options: TuiDropdownOptions,
-    ) {}
 }

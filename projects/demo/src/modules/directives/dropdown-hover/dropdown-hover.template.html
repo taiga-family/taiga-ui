@@ -59,7 +59,7 @@
                 <strong>to see a dropdown</strong>
             </p>
             <ng-template #dropdownContent>
-                <div class="dropdown">
+                <div [style.padding.rem]="1">
                     Here you can have any content
                     <p>You can select a text inside a dropdown and it will not close a dropdown</p>
                     <button
@@ -95,11 +95,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p>
-                    Import
-                    <code>TuiDropdownModule</code>
-                    into a module where you want to use our component
-                </p>
+                <p>Import module:</p>
 
                 <tui-doc-code
                     filename="my.module.ts"

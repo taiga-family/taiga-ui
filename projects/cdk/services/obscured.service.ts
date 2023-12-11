@@ -1,55 +1,28 @@
-import {ElementRef, Inject, Injectable, NgZone, Self} from '@angular/core';
-import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
+import {ElementRef, inject, Injectable, NgZone} from '@angular/core';
+import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {POLLING_TIME} from '@taiga-ui/cdk/constants';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiGetElementObscures} from '@taiga-ui/cdk/utils/dom';
-import {
-    delay,
-    distinctUntilChanged,
-    fromEvent,
-    map,
-    merge,
-    Observable,
-    startWith,
-    takeUntil,
-    throttleTime,
-} from 'rxjs';
-
-import {TuiDestroyService} from './destroy.service';
-import {TuiParentsScrollService} from './parents-scroll.service';
+import {Observable} from 'rxjs';
+import {distinctUntilChanged, map, startWith, throttleTime} from 'rxjs/operators';
 
 // @bad TODO: Consider Intersection Observer with fallback to current implementation
 /**
- * Service that monitors element visibility by subscribing to scrolls
- * and polling with set interval, returns either null or an array
- * of elements that overlap given element edges
+ * Service that monitors element visibility by polling and returning
+ * either null or an array of elements that overlap given element edges
  */
 @Injectable()
 export class TuiObscuredService extends Observable<readonly Element[] | null> {
-    private readonly obscured$: Observable<readonly Element[] | null>;
+    private readonly el = inject(ElementRef<HTMLElement>).nativeElement;
+    private readonly obscured$ = inject(ANIMATION_FRAME).pipe(
+        throttleTime(POLLING_TIME),
+        map(() => tuiGetElementObscures(this.el)),
+        startWith(null),
+        distinctUntilChanged(),
+        tuiZoneOptimized(inject(NgZone)),
+    );
 
-    constructor(
-        @Inject(TuiParentsScrollService)
-        @Self()
-        parentsScroll$: TuiParentsScrollService,
-        @Inject(ElementRef) {nativeElement}: ElementRef<Element>,
-        @Inject(NgZone) zone: NgZone,
-        @Inject(WINDOW) win: Window,
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
-        @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
-    ) {
+    constructor() {
         super(subscriber => this.obscured$.subscribe(subscriber));
-
-        this.obscured$ = merge(
-            // delay is added so it will not interfere with other listeners
-            merge(parentsScroll$, fromEvent(win, `resize`)).pipe(delay(0)),
-            animationFrame$.pipe(throttleTime(POLLING_TIME)),
-        ).pipe(
-            map(() => tuiGetElementObscures(nativeElement)),
-            startWith(null),
-            distinctUntilChanged(),
-            tuiZoneOptimized(zone),
-            takeUntil(destroy$),
-        );
     }
 }

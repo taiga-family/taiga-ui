@@ -1,4 +1,4 @@
-import {ExistingProvider, FactoryProvider, SkipSelf, Type} from '@angular/core';
+import {ExistingProvider, FactoryProvider, Optional, SkipSelf, Type} from '@angular/core';
 import {TuiPoint} from '@taiga-ui/core/types';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -7,12 +7,17 @@ export abstract class TuiPositionAccessor {
     abstract getPosition(rect: ClientRect): TuiPoint;
 }
 
-export function tuiPositionAccessorFor(type: string): FactoryProvider {
+export function tuiPositionAccessorFor(
+    type: string,
+    fallback: Type<TuiPositionAccessor>,
+): FactoryProvider {
     return {
         provide: TuiPositionAccessor,
-        deps: [[new SkipSelf(), TuiPositionAccessor]],
-        useFactory: (accessors: readonly TuiPositionAccessor[]) =>
-            accessors.find(accessor => accessor.type === type),
+        deps: [[new SkipSelf(), new Optional(), TuiPositionAccessor], fallback],
+        useFactory: (
+            accessors: readonly TuiPositionAccessor[] | null,
+            accessor: TuiPositionAccessor,
+        ) => accessors?.find(accessor => accessor.type === type) || accessor,
     };
 }
 

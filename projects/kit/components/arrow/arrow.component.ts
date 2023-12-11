@@ -1,6 +1,13 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    Inject,
+    Optional,
+} from '@angular/core';
 import {
     TUI_TEXTFIELD_SIZE,
+    TuiDropdownOpenDirective,
     TuiHostedDropdownComponent,
     tuiSizeBigger,
     TuiTextfieldSizeDirective,
@@ -17,8 +24,12 @@ import {TUI_ARROW_OPTIONS, TuiArrowOptions} from './arrow.options';
 })
 export class TuiArrowComponent {
     constructor(
+        @Optional()
+        @Inject(TuiDropdownOpenDirective)
+        readonly directive: TuiDropdownOpenDirective | null,
+        @Optional()
         @Inject(TuiHostedDropdownComponent)
-        readonly dropdown: TuiHostedDropdownComponent,
+        readonly component: TuiHostedDropdownComponent | null,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
         @Inject(TUI_ARROW_OPTIONS) private readonly options: TuiArrowOptions,
@@ -26,7 +37,7 @@ export class TuiArrowComponent {
 
     @HostBinding('class._rotated')
     get rotated(): boolean {
-        return this.dropdown.open;
+        return this.component?.open || this.directive?.tuiDropdownOpen || false;
     }
 
     get arrowIcon(): PolymorpheusContent {

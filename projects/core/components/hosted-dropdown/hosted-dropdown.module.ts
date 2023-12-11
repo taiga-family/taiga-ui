@@ -12,6 +12,9 @@ import {TuiDropdownOpenMonitorDirective} from './dropdown-open-monitor.directive
 import {TuiHostedDropdownComponent} from './hosted-dropdown.component';
 import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.directive';
 
+/**
+ * @deprecated use {@link TuiDropdownOpenDirective} instead
+ */
 @NgModule({
     imports: [
         CommonModule,

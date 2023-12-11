@@ -3,19 +3,14 @@
     [(activeItemIndex)]="index"
 >
     <button tuiTab>Just a tab</button>
-    <tui-hosted-dropdown
-        tuiDropdownAlign="right"
+    <button
         tuiDropdownHover
-        [content]="content"
-        [(open)]="open"
+        tuiTab
+        [tuiDropdown]="content"
+        [(tuiDropdownOpen)]="open"
+        (tui-tab-activate.stop)="(0)"
     >
-        <button
-            tuiHostedDropdownHost
-            tuiTab
-            (tui-tab-activate.stop)="(0)"
-        >
-            Hoverable/Clickable
-        </button>
+        Hoverable/Clickable
         <ng-template #content>
             <tui-data-list (click)="onClick()">
                 <button tuiOption>Option 1</button>
@@ -23,22 +18,16 @@
                 <button tuiOption>Option 3</button>
             </tui-data-list>
         </ng-template>
-    </tui-hosted-dropdown>
+    </button>
     <button tuiTab>Another tab</button>
-    <tui-hosted-dropdown
-        tuiDropdownAlign="right"
+    <button
         tuiDropdownHover
-        [content]="settings"
-        [(open)]="openSettings"
+        tuiTab
+        [tuiDropdown]="settings"
+        [(tuiDropdownOpen)]="openSettings"
+        (tui-tab-activate.stop)="(0)"
     >
-        <button
-            tuiHostedDropdownHost
-            tuiTab
-            (tui-tab-activate.stop)="(0)"
-        >
-            <tui-svg src="tuiIconSettingsLarge"></tui-svg>
-        </button>
-
+        <tui-icon name="tuiIconSettings"></tui-icon>
         <ng-template #settings>
             <div
                 class="settings"
@@ -51,6 +40,6 @@
                 Turn option
             </div>
         </ng-template>
-    </tui-hosted-dropdown>
+    </button>
 </nav>
 <p>Current state: {{ open ? 'open' : 'closed' }}</p>

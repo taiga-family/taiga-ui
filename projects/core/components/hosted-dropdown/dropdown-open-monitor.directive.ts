@@ -21,7 +21,10 @@ export class TuiDropdownOpenMonitorDirective {
     ) {
         open?.tuiDropdownOpenChange
             .pipe(
-                filter(value => value && open.dropdown === dropdown && !hosted.focused),
+                filter(
+                    value =>
+                        value && open.dropdown === (dropdown as any) && !hosted.focused,
+                ),
                 takeUntil(destroy$),
             )
             .subscribe(() => {
