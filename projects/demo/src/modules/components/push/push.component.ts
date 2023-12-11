@@ -32,5 +32,7 @@ export class ExampleTuiPushComponent {
 
     heading = '';
     type = '';
-    timestamp = 0;
+
+    readonly timestampVars = ['', 'A moment ago', 123456789];
+    timestamp = this.timestampVars[0];
 }

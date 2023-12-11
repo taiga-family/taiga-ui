@@ -78,7 +78,8 @@
             </ng-template>
             <ng-template
                 documentationPropertyName="timestamp"
-                documentationPropertyType="number"
+                documentationPropertyType="number | string"
+                [documentationPropertyValues]="timestampVars"
                 [(documentationPropertyValue)]="timestamp"
             >
                 Timestamp of the arrival. Formatted with
@@ -88,7 +89,7 @@
                 >
                     <code>FormatDate</code>
                 </a>
-                pipe.
+                pipe if the number is passed.
             </ng-template>
             <ng-template
                 #documentationPropertyClose="documentationProperty"
