@@ -3,17 +3,16 @@ export type TuiDocTypeReferenceParsed = ReadonlyArray<{type: string; extracted: 
 export function tuiTypeReferenceParser(types: string): TuiDocTypeReferenceParsed {
     const generics = types.match(/<([^>]+)>/g);
 
-    if (!generics) {
-        return [];
-    }
-
     const escaped = generics
-        .reduce(
-            (result, current) => result.replace(current, current.replace(/\|/g, `&`)),
-            types,
-        )
-        .split(`|`)
-        .map(item => item.trim());
+        ? generics
+              .reduce(
+                  (result, current) =>
+                      result.replace(current, current.replace(/\|/g, `&`)),
+                  types,
+              )
+              .split(`|`)
+              .map(item => item.trim())
+        : types.split(`|`).map(item => item.trim());
 
     return escaped.reduce<TuiDocTypeReferenceParsed>((result, type) => {
         let extracted = type
