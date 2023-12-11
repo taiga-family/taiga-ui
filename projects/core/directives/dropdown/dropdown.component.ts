@@ -24,7 +24,9 @@ import {TuiScrollbarModule} from '@taiga-ui/core/components/scrollbar';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATION_OPTIONS, TUI_MODE} from '@taiga-ui/core/tokens';
+import {TuiBrightness} from '@taiga-ui/core/types';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
 import {TuiDropdownDirective} from './dropdown.directive';
@@ -70,7 +72,7 @@ export class TuiDropdownComponent implements OnInit {
     private readonly win = inject(WINDOW);
     private readonly viewport = inject(TuiVisualViewportService);
 
-    readonly mode$ = inject(TUI_MODE);
+    readonly mode$: Observable<TuiBrightness | null> = inject(TUI_MODE);
     readonly animation = inject(TUI_ANIMATION_OPTIONS);
     readonly options = inject(TUI_DROPDOWN_OPTIONS);
     readonly directive = inject(TuiDropdownDirective);
