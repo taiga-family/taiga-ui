@@ -11,10 +11,10 @@ import {TuiTooltipComponent} from './tooltip.component';
 @NgModule({
     imports: [
         CommonModule,
+        TuiButtonModule,
         TuiAppearanceModule,
         TuiHintModule,
         TuiIconModule,
-        TuiButtonModule,
         PolymorpheusModule,
     ],
     declarations: [TuiTooltipComponent],
