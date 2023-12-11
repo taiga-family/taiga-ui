@@ -6,7 +6,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiIsObserved} from '@taiga-ui/cdk';
+import {tuiIsObserved, tuiIsString} from '@taiga-ui/cdk';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS, TuiCommonIcons} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
@@ -24,11 +24,13 @@ export class TuiPushComponent {
     type = '';
 
     @Input()
-    timestamp = 0;
+    timestamp: number | string = '';
 
     @Output()
     // eslint-disable-next-line @angular-eslint/no-output-native
     readonly close = new EventEmitter<void>();
+
+    readonly isString = tuiIsString;
 
     constructor(
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,

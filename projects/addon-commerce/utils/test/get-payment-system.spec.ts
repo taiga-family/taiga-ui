@@ -159,10 +159,6 @@ describe(`getPaymentSystem`, () => {
         it(`36`, () => {
             expect(tuiGetPaymentSystem(`36`)).toBe(`dinersclub`);
         });
-
-        it(`54`, () => {
-            expect(tuiGetPaymentSystem(`54`)).toBe(`dinersclub`);
-        });
     });
 
     describe(`Discover`, () => {

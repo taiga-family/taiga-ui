@@ -2,6 +2,10 @@
 
 // TODO: Change to [tuiBadge] in 4.0
 [tuiBadgeNew] {
+    --t-gap: 0rem;
+    --t-dot: currentColor;
+    --t-icon-size: 1rem;
+
     .button-base();
     border-radius: 6rem;
     background: #959595;
@@ -10,10 +14,6 @@
     height: var(--t-size);
     min-width: var(--t-size);
     font: var(--tui-font-text-s);
-
-    --t-gap: 0rem;
-    --t-dot: currentColor;
-    --t-icon-size: 1rem;
 
     &._dot:before {
         content: '';
@@ -99,11 +99,11 @@ img[tuiBadge] {
 }
 
 tui-icon[tuiBadge] {
+    --t-margin: 0 !important;
+
     mask: none;
     height: var(--t-size);
     width: var(--t-size);
-
-    --t-margin: 0 !important;
 
     &[data-size='s']:after {
         mask-size: 0.625rem;
