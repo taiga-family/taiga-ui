@@ -24,6 +24,7 @@ import {
     tuiIsHTMLElement,
     tuiIsNativeFocusedIn,
     tuiIsNativeKeyboardFocusable,
+    tuiIsPresent,
     TuiNativeFocusableElement,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
@@ -35,8 +36,16 @@ import {
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject, combineLatest, EMPTY, merge, of} from 'rxjs';
-import {delay, distinctUntilChanged, map, share, skip, switchMap} from 'rxjs/operators';
+import {BehaviorSubject, combineLatestWith, EMPTY, merge, Observable, of} from 'rxjs';
+import {
+    delay,
+    distinctUntilChanged,
+    filter,
+    map,
+    share,
+    skip,
+    switchMap,
+} from 'rxjs/operators';
 
 import {TuiAccessorProxyDirective} from './accessor-proxy.directive';
 import {TUI_HOSTED_DROPDOWN_COMPONENT} from './hosted-dropdown.token';
@@ -94,8 +103,8 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
 
     private readonly openChange$ = new BehaviorSubject(false);
 
-    private readonly hostHover$ = combineLatest([
-        tuiTypedFromEvent(this.el.nativeElement, 'mouseover').pipe(
+    private readonly hostHover$ = tuiTypedFromEvent(this.el.nativeElement, 'mouseover')
+        .pipe(
             map(e => this.computedHost.contains(tuiGetActualTarget(e))),
             switchMap(visible =>
                 of(visible).pipe(
@@ -104,9 +113,9 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
                     ),
                 ),
             ),
-        ),
-        this.hover$ || EMPTY,
-    ]).pipe(map(([visible, hovered]) => visible && hovered));
+            combineLatestWith((this.hover$ || EMPTY) as Observable<boolean | never>),
+        )
+        .pipe(map(([visible, hovered]) => visible && hovered));
 
     @ViewChild(TuiActiveZoneDirective)
     readonly activeZone!: TuiActiveZoneDirective;
@@ -122,6 +131,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
 
     @Output('openChange')
     readonly open$ = merge(this.openChange$, this.hostHover$).pipe(
+        filter(tuiIsPresent),
         skip(1),
         distinctUntilChanged(),
         share(),

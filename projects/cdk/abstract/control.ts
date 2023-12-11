@@ -38,7 +38,7 @@ export abstract class AbstractTuiControl<T>
     implements OnDestroy, OnInit, ControlValueAccessor
 {
     private previousInternalValue?: T | null;
-    private readonly refresh$ = new Subject();
+    private readonly refresh$ = new Subject<void>();
 
     private onTouched = EMPTY_FUNCTION;
 
