@@ -240,7 +240,7 @@ describe(`InputPhone`, () => {
                 fixture.detectChanges();
 
                 expect(inputPO.value).toBe(`+7 `);
-                expect(testComponent.control.value).toBe(`+7`);
+                expect(testComponent.control.value).toBe(``);
             });
 
             it(`allowText is true`, async () => {
