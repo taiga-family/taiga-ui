@@ -4,7 +4,6 @@ import {
     TuiTablePaginationComponent,
     TuiTablePaginationModule,
 } from '@taiga-ui/addon-table';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`TablePagination`, () => {
     let fixture: ComponentFixture<TestComponent>;
@@ -27,14 +26,12 @@ describe(`TablePagination`, () => {
         size = 10;
     }
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiTablePaginationModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

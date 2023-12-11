@@ -4,7 +4,7 @@ import {Component, Inject, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiStaticRequestService} from '@taiga-ui/cdk';
 import {TuiSvgComponent, TuiSvgModule, TuiSvgService} from '@taiga-ui/core';
-import {configureTestSuite, TUI_SANITIZER_MOCK, TuiSvgHarness} from '@taiga-ui/testing';
+import {TUI_SANITIZER_MOCK, TuiSvgHarness} from '@taiga-ui/testing';
 import {of, throwError} from 'rxjs';
 
 const SVG_ICON = `<svg xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ describe(`Svg`, () => {
     let testComponent: TestComponent;
     let loader: HarnessLoader;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiSvgModule],
             declarations: [TestComponent],
@@ -60,9 +60,7 @@ describe(`Svg`, () => {
                 TUI_SANITIZER_MOCK,
             ],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         loader = TestbedHarnessEnvironment.loader(fixture);

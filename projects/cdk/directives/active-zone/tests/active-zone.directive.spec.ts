@@ -3,7 +3,6 @@ import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`TuiActiveZoneDirective`, () => {
     @Component({
@@ -98,14 +97,12 @@ describe(`TuiActiveZoneDirective`, () => {
         return el.querySelector(selector)?.innerHTML ?? ``;
     }
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [CommonModule, TuiActiveZoneModule, ReactiveFormsModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         fixture.autoDetectChanges();
 

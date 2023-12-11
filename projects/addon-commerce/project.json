@@ -25,7 +25,10 @@
             "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/addon-commerce"],
             "options": {
-                "jestConfig": "projects/addon-commerce/jest.config.ts"
+                "jestConfig": "jest.config.ts",
+                "coverageDirectory": "coverage/addon-commerce",
+                "collectCoverageFrom": ["<rootDir>/projects/addon-commerce/**/*.ts"],
+                "testMatch": ["<rootDir>/projects/addon-commerce/**/*.spec.ts"]
             }
         },
         "publish": {

@@ -2,7 +2,6 @@ import {Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiFocusableDirective, TuiFocusableModule} from '@taiga-ui/cdk';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`TuiFocusable directive`, () => {
     @Component({
@@ -18,14 +17,12 @@ describe(`TuiFocusable directive`, () => {
     let testComponent: TestComponent;
     let testElement: DebugElement & {nativeElement: HTMLDivElement};
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiFocusableModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         testElement = fixture.debugElement.query(By.directive(TuiFocusableDirective));

@@ -2,7 +2,6 @@ import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiInputExpireComponent} from '../input-expire.component';
 import {TuiInputExpireModule} from '../input-expire.module';
@@ -24,14 +23,12 @@ describe(`InputExpire`, () => {
     let testComponent: TestComponent;
     let input: HTMLInputElement;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [FormsModule, TuiInputExpireModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(async () => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

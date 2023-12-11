@@ -3,7 +3,6 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';
 import {TuiScrollbarModule} from '@taiga-ui/core';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`TuiElasticStickyDirective`, () => {
     @Component({
@@ -31,14 +30,12 @@ describe(`TuiElasticStickyDirective`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let component: TestComponent;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiScrollbarModule, TuiElasticStickyModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();

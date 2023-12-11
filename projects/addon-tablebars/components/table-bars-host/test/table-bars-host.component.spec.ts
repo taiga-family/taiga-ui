@@ -6,7 +6,7 @@ import {
     TuiTableBarsHostModule,
     TuiTableBarsService,
 } from '@taiga-ui/addon-tablebars';
-import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
+import {TuiPageObject} from '@taiga-ui/testing';
 import {Subscription, timer} from 'rxjs';
 import {skip, take, takeUntil} from 'rxjs/operators';
 
@@ -35,15 +35,13 @@ describe(`TableBarsHost`, () => {
         },
     };
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiTableBarsHostModule, NoopAnimationsModule],
             declarations: [TestComponent],
             providers: [TuiTableBarsService],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;

@@ -2,7 +2,6 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiSliderComponent, TuiSliderModule} from '@taiga-ui/kit';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`Slider`, () => {
     @Component({
@@ -56,14 +55,12 @@ describe(`Slider`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [FormsModule, ReactiveFormsModule, TuiSliderModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(async () => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

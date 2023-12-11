@@ -77,7 +77,7 @@
                 [size]="size"
                 [status]="status"
                 [value]="value"
-                (edited)="editTag($event)"
+                (edited)="editTag($event); documentationPropertyModeEdited.emitEvent($event)"
             ></tui-tag>
             <ng-template #errorIcon>
                 <tui-svg
@@ -180,6 +180,7 @@
                 String value of tag
             </ng-template>
             <ng-template
+                #documentationPropertyModeEdited="documentationProperty"
                 documentationPropertyMode="output"
                 documentationPropertyName="edited"
                 documentationPropertyType="string"

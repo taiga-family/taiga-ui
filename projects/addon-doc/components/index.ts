@@ -4,6 +4,8 @@ export * from './copy/copy.component';
 export * from './copy/copy.module';
 export * from './demo/demo.component';
 export * from './demo/demo.module';
+export * from './doc-tab/doc-tab.component';
+export * from './doc-tab/doc-tab.module';
 export * from './documentation/documentation.component';
 export * from './documentation/documentation.module';
 export * from './documentation/documentation-property-connector.directive';

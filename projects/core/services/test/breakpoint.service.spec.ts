@@ -1,6 +1,5 @@
 import {TestBed} from '@angular/core/testing';
 import {WINDOW} from '@ng-web-apis/common';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiMedia} from '../../interfaces';
 import {TUI_MEDIA} from '../../tokens';
@@ -22,7 +21,7 @@ describe(`TuiBreakpointService`, () => {
         innerWidth: 700,
     };
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             providers: [
                 TuiBreakpointService,
@@ -36,9 +35,7 @@ describe(`TuiBreakpointService`, () => {
                 },
             ],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         service = TestBed.inject(TuiBreakpointService);
     });
 

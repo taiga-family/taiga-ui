@@ -6,6 +6,9 @@ import {tuiWaitForFonts} from './wait-for-fonts';
 interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
     date?: Date;
     hideHeader?: boolean;
+    enableNightMode?: boolean;
+    hideVersionManager?: boolean;
+    hideLanguageSwitcher?: boolean;
 }
 
 export async function tuiGoto(
@@ -14,6 +17,9 @@ export async function tuiGoto(
     {
         date = new Date(2020, 8, 25, 19, 19),
         hideHeader = true,
+        enableNightMode = false,
+        hideVersionManager = false,
+        hideLanguageSwitcher = false,
         ...playwrightGotoOptions
     }: TuiGotoOptions = {},
 ): ReturnType<Page['goto']> {
@@ -23,6 +29,13 @@ export async function tuiGoto(
     await page.addInitScript(() =>
         globalThis.sessionStorage.setItem(`playwright`, `true`),
     );
+
+    if (enableNightMode) {
+        await page.addInitScript(() =>
+            globalThis.localStorage.setItem(`tuiNight`, `true`),
+        );
+    }
+
     await tuiMockDate(page, date);
 
     const response = await page.goto(url, playwrightGotoOptions);
@@ -32,6 +45,14 @@ export async function tuiGoto(
 
     if (hideHeader) {
         await page.locator(`[tuidocheader]`).evaluate(el => el.remove());
+    }
+
+    if (hideVersionManager) {
+        await page.locator(`version-manager`).evaluate(el => el.remove());
+    }
+
+    if (hideLanguageSwitcher) {
+        await page.locator(`tui-language-switcher`).evaluate(el => el.remove());
     }
 
     return response;

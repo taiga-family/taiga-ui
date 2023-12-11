@@ -13,7 +13,7 @@ import {
     TuiDayRange,
 } from '@taiga-ui/cdk';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
-import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
+import {TuiPageObject} from '@taiga-ui/testing';
 import {of} from 'rxjs';
 
 const today = TuiDay.currentLocal();
@@ -55,14 +55,12 @@ describe(`MobileCalendar`, () => {
     let testComponent: TestComponent;
     let pageObject: TuiPageObject<TestComponent>;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [NoopAnimationsModule, TuiMobileCalendarModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;

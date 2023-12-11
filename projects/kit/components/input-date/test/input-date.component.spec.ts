@@ -17,7 +17,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiInputDateComponent, TuiInputDateModule} from '@taiga-ui/kit';
 import {TUI_DATE_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
-import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 describe(`InputDate`, () => {
     @Component({
@@ -105,11 +105,9 @@ describe(`InputDate`, () => {
     };
 
     describe(`InputDate (base cases when TUI_DATE_FORMAT = DMY)`, () => {
-        configureTestSuite(() => {
-            TestBed.configureTestingModule(meta);
-        });
-
         beforeEach(async () => {
+            TestBed.configureTestingModule(meta);
+            await TestBed.compileComponents();
             await initializeEnvironment();
         });
 
@@ -188,14 +186,12 @@ describe(`InputDate`, () => {
     });
 
     describe(`InputDate + TUI_DATE_FORMAT = YMD integration`, () => {
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 ...meta,
                 providers: [{provide: TUI_DATE_FORMAT, useValue: `YMD`}],
             });
-        });
-
-        beforeEach(async () => {
+            await TestBed.compileComponents();
             await initializeEnvironment();
         });
 
@@ -237,14 +233,12 @@ describe(`InputDate`, () => {
     });
 
     describe(`InputDate + TUI_DATE_FORMAT = MDY integration`, () => {
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 ...meta,
                 providers: [{provide: TUI_DATE_FORMAT, useValue: `MDY`}],
             });
-        });
-
-        beforeEach(async () => {
+            await TestBed.compileComponents();
             await initializeEnvironment();
         });
 
@@ -286,7 +280,7 @@ describe(`InputDate`, () => {
     });
 
     describe(`InputDate + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR ="/" (USA format)`, () => {
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 ...meta,
                 providers: [
@@ -294,9 +288,7 @@ describe(`InputDate`, () => {
                     {provide: TUI_DATE_SEPARATOR, useValue: `/`},
                 ],
             });
-        });
-
-        beforeEach(async () => {
+            await TestBed.compileComponents();
             await initializeEnvironment();
         });
 
@@ -341,7 +333,7 @@ describe(`InputDate`, () => {
             override control = new FormControl(new Date(2022, 0, 31));
         }
 
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 ...meta,
                 declarations: [TransformerTestComponent],
@@ -352,9 +344,7 @@ describe(`InputDate`, () => {
                     },
                 ],
             });
-        });
-
-        beforeEach(async () => {
+            await TestBed.compileComponents();
             await initializeEnvironment(TransformerTestComponent);
         });
 

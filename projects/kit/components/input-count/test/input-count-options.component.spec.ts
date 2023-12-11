@@ -7,7 +7,7 @@ import {
     TuiInputCountComponent,
     TuiInputCountModule,
 } from '@taiga-ui/kit';
-import {configureTestSuite, TuiNativeInputPO} from '@taiga-ui/testing';
+import {TuiNativeInputPO} from '@taiga-ui/testing';
 
 describe(`InputCount with TUI_INPUT_COUNT_OPTIONS`, () => {
     @Component({
@@ -34,7 +34,7 @@ describe(`InputCount with TUI_INPUT_COUNT_OPTIONS`, () => {
     const max = 12;
     const step = 5;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [ReactiveFormsModule, TuiInputCountModule],
             declarations: [TestComponent],
@@ -54,9 +54,7 @@ describe(`InputCount with TUI_INPUT_COUNT_OPTIONS`, () => {
                 },
             ],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
 

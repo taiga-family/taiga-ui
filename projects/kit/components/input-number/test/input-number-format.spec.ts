@@ -5,7 +5,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {TuiDecimal, tuiNumberFormatProvider} from '@taiga-ui/core';
 import {TuiInputNumberComponent, TuiInputNumberModule} from '@taiga-ui/kit';
-import {configureTestSuite, TuiNativeInputPO} from '@taiga-ui/testing';
+import {TuiNativeInputPO} from '@taiga-ui/testing';
 
 describe(`InputNumber - backward compatibility for separators`, () => {
     @Component({
@@ -36,7 +36,7 @@ describe(`InputNumber - backward compatibility for separators`, () => {
     let inputPO: TuiNativeInputPO;
 
     describe(`Format - {d d d,d}`, () => {
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [
                     NoopAnimationsModule,
@@ -45,9 +45,7 @@ describe(`InputNumber - backward compatibility for separators`, () => {
                 ],
                 declarations: [TestComponent],
             });
-        });
-
-        beforeEach(() => {
+            await TestBed.compileComponents();
             fixture = TestBed.createComponent(TestComponent);
             testComponent = fixture.componentInstance;
             fixture.detectChanges();
@@ -76,7 +74,7 @@ describe(`InputNumber - backward compatibility for separators`, () => {
     });
 
     describe(`Format - {d,d,d.d}`, () => {
-        configureTestSuite(() => {
+        beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [
                     NoopAnimationsModule,
@@ -91,9 +89,7 @@ describe(`InputNumber - backward compatibility for separators`, () => {
                     }),
                 ],
             });
-        });
-
-        beforeEach(() => {
+            await TestBed.compileComponents();
             fixture = TestBed.createComponent(TestComponent);
             testComponent = fixture.componentInstance;
             fixture.detectChanges();

@@ -25,7 +25,9 @@
             "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/i18n"],
             "options": {
-                "jestConfig": "projects/i18n/jest.config.ts"
+                "jestConfig": "jest.config.ts",
+                "collectCoverage": false,
+                "testMatch": ["<rootDir>/projects/i18n/**/*.spec.ts"]
             }
         },
         "publish": {

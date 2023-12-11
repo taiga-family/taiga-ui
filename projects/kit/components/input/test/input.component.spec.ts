@@ -14,7 +14,6 @@ import {
 import {TuiInputComponent, TuiInputModule} from '@taiga-ui/kit';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
 import {
-    configureTestSuite,
     tuiActiveText,
     tuiDispatchOnActive,
     TuiNativeInputPO,
@@ -106,7 +105,7 @@ describe(`Input`, () => {
         return pageObject.getByAutomationId(`tui-data-list-wrapper`);
     }
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 TuiRootModule,
@@ -120,9 +119,7 @@ describe(`Input`, () => {
             ],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;

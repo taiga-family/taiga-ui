@@ -2,7 +2,7 @@ import {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {configureTestSuite, TuiLoaderHarness} from '@taiga-ui/testing';
+import {TuiLoaderHarness} from '@taiga-ui/testing';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiLoaderComponent} from '../loader.component';
@@ -38,14 +38,12 @@ describe(`Loader`, () => {
     let component: TestComponent;
     let loader: HarnessLoader;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiLoaderModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         loader = TestbedHarnessEnvironment.loader(fixture);
         component = fixture.componentInstance;

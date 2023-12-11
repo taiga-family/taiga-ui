@@ -4,7 +4,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_MINUS, TuiContextWithImplicit} from '@taiga-ui/cdk';
 import {TuiRootModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputSliderComponent, TuiInputSliderModule} from '@taiga-ui/kit';
-import {configureTestSuite, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 @Component({
     template: `
@@ -72,7 +72,7 @@ let pageObject: TuiPageObject<TestComponent>;
 let inputPO: TuiNativeInputPO;
 
 describe(`InputSlider`, () => {
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
                 TuiRootModule,
@@ -82,9 +82,7 @@ describe(`InputSlider`, () => {
             ],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;

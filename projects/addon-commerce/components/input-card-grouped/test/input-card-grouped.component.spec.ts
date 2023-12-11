@@ -20,7 +20,7 @@ import {
     TuiSynchronousAutofocusHandler,
 } from '@taiga-ui/cdk';
 import {TuiSvgModule} from '@taiga-ui/core';
-import {configureTestSuite, TuiNativeInputPO} from '@taiga-ui/testing';
+import {TuiNativeInputPO} from '@taiga-ui/testing';
 
 describe(`InputCardGrouped`, () => {
     @Component({
@@ -53,7 +53,7 @@ describe(`InputCardGrouped`, () => {
     let inputExpirePO: TuiNativeInputPO;
     let inputCVCPO: TuiNativeInputPO;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.overrideDirective(TuiAutoFocusDirective, {
             set: {
                 selector: `[tuiAutoFocus]`,
@@ -73,9 +73,7 @@ describe(`InputCardGrouped`, () => {
             imports: [ReactiveFormsModule, TuiInputCardGroupedModule, TuiSvgModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

@@ -1,6 +1,5 @@
 import {TestBed} from '@angular/core/testing';
 import {WINDOW} from '@ng-web-apis/common';
-import {configureTestSuite} from '@taiga-ui/testing';
 import {take} from 'rxjs/operators';
 
 import {TuiNightThemeService} from '../night-theme.service';
@@ -9,7 +8,7 @@ describe(`TuiNightThemeService`, () => {
     const mock: HTMLDivElement = document.createElement(`div`);
     let service!: TuiNightThemeService;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             providers: [
                 {
@@ -22,9 +21,7 @@ describe(`TuiNightThemeService`, () => {
                 },
             ],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         service = TestBed.inject(TuiNightThemeService);
         mock.matches = true as any;
     });

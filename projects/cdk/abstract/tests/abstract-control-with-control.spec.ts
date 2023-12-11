@@ -14,7 +14,6 @@ import {
     tuiAsControl,
     TuiControlValueTransformer,
 } from '@taiga-ui/cdk';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 describe(`AbstractTuiControl and FormControl`, () => {
     @Component({
@@ -89,14 +88,12 @@ describe(`AbstractTuiControl and FormControl`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let controlInstance: MyControlComponent;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [FormsModule, ReactiveFormsModule],
             declarations: [TestComponent, MyControlComponent, ChildComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();
         controlInstance = fixture.componentInstance.myControl.child.parent!;

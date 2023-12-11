@@ -77,6 +77,8 @@
                 [max]="max"
                 [min]="min"
                 [single]="single"
+                (cancel)="documentationPropertyCancel.emitEvent($event)"
+                (confirm)="documentationPropertyConfirm.emitEvent($event)"
             ></tui-mobile-calendar>
         </tui-doc-demo>
 
@@ -119,6 +121,7 @@
                 Single date or a range
             </ng-template>
             <ng-template
+                #documentationPropertyCancel="documentationProperty"
                 documentationPropertyMode="output"
                 documentationPropertyName="cancel"
                 documentationPropertyType="void"
@@ -126,6 +129,7 @@
                 "Cancel" clicked
             </ng-template>
             <ng-template
+                #documentationPropertyConfirm="documentationProperty"
                 documentationPropertyMode="output"
                 documentationPropertyName="confirm"
                 documentationPropertyType="TuiDayRange | TuiDay"

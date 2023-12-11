@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiLazyLoadingModule} from '@taiga-ui/kit/directives';
-import {configureTestSuite} from '@taiga-ui/testing';
 import {fromEvent} from 'rxjs';
 
 // TODO: migrate to cypress, jest doesn't support img load event
@@ -24,16 +23,15 @@ xdescribe(`TuiLazyLoading directive`, () => {
     })
     class TestComponent {}
 
-    configureTestSuite(() => {
+    let fixture: ComponentFixture<TestComponent>;
+
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiLazyLoadingModule],
             declarations: [TestComponent],
         });
-    });
+        await TestBed.compileComponents();
 
-    let fixture: ComponentFixture<TestComponent>;
-
-    beforeEach(() => {
         fixture = TestBed.createComponent(TestComponent);
 
         fixture.detectChanges();

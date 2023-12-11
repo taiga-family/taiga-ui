@@ -7,7 +7,7 @@ import {
     TuiPrimitiveYearPickerModule,
     TuiRangeState,
 } from '@taiga-ui/core';
-import {configureTestSuite, TuiPageObject} from '@taiga-ui/testing';
+import {TuiPageObject} from '@taiga-ui/testing';
 
 describe(`TuiPrimitiveYearPickerComponent`, () => {
     @Component({
@@ -42,14 +42,12 @@ describe(`TuiPrimitiveYearPickerComponent`, () => {
         },
     };
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiPrimitiveYearPickerModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         component = testComponent.component;

@@ -30,7 +30,7 @@ export class TuiLanguageSwitcherComponent {
         ['turkish', TuiCountryIsoCode.TR],
         ['ukrainian', TuiCountryIsoCode.UA],
         ['kazakh', TuiCountryIsoCode.KZ],
-        ['malay', TuiCountryIsoCode.MS],
+        ['malay', TuiCountryIsoCode.MY],
         ['vietnamese', TuiCountryIsoCode.VN],
     ]);
 

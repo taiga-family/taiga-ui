@@ -1,7 +1,6 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
-import {configureTestSuite} from '@taiga-ui/testing';
 
 import {TuiPrimitiveTextfieldModule} from '../primitive-textfield.module';
 
@@ -40,7 +39,7 @@ describe(`Textfield`, () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiPrimitiveTextfieldModule],
             declarations: [TestComponent],
@@ -53,9 +52,7 @@ describe(`Textfield`, () => {
                 },
             ],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();

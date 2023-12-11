@@ -2,7 +2,7 @@ import {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {configureTestSuite, TuiButtonHarness, TuiLoaderHarness} from '@taiga-ui/testing';
+import {TuiButtonHarness, TuiLoaderHarness} from '@taiga-ui/testing';
 
 import {TuiButtonModule} from '../button.module';
 
@@ -26,14 +26,12 @@ describe(`Button`, () => {
     let component: TestComponent;
     let loader: HarnessLoader;
 
-    configureTestSuite(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiButtonModule],
             declarations: [TestComponent],
         });
-    });
-
-    beforeEach(() => {
+        await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         loader = TestbedHarnessEnvironment.loader(fixture);
         component = fixture.componentInstance;
