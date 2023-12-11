@@ -179,6 +179,7 @@
         "Roman Sedov <79601794011@ya.ru>"
     ],
     "overrides": {
+        "highlight.js": "11.5.1",
         "webpack": "$webpack",
         "babel-loader": "$babel-loader"
     },
