@@ -63,7 +63,7 @@ export class TuiDialogComponent<O, I> {
         },
     } as const;
 
-    readonly close$ = new Subject();
+    readonly close$ = new Subject<void>();
 
     constructor(
         @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,

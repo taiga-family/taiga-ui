@@ -12,7 +12,7 @@ import {map, startWith, switchMap} from 'rxjs/operators';
     changeDetection,
 })
 export class TuiButtonExample4 {
-    readonly trigger$ = new Subject();
+    readonly trigger$ = new Subject<void>();
     readonly loading$ = this.trigger$.pipe(
         switchMap(() =>
             timer(2000).pipe(map(ALWAYS_FALSE_HANDLER), startWith('Loading')),

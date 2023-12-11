@@ -132,8 +132,8 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
             return of(new TuiValidationError(context));
         }
 
-        if (isObservable<PolymorpheusContent>(content)) {
-            return unwrapObservable(content, context);
+        if (isObservable(content)) {
+            return unwrapObservable(content as Observable<PolymorpheusContent>, context);
         }
 
         if (content instanceof Function) {
@@ -141,8 +141,8 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
                 | Observable<PolymorpheusContent>
                 | PolymorpheusContent;
 
-            return isObservable<PolymorpheusContent>(message)
-                ? unwrapObservable(message, context)
+            return isObservable(message)
+                ? unwrapObservable(message as Observable<PolymorpheusContent>, context)
                 : defaultError(message, context);
         }
 

@@ -36,7 +36,7 @@ import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
-    private readonly changeDetection$ = new Subject();
+    private readonly changeDetection$ = new Subject<void>();
 
     readonly selected$ = merge(
         this.changeDetection$,
