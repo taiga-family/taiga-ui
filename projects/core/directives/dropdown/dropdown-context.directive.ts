@@ -14,8 +14,8 @@ function activeZoneFilter(this: TuiDropdownContextDirective, target: Element): b
 }
 
 @Directive({
-    selector: '[tuiDropdownContext]',
     standalone: true,
+    selector: '[tuiDropdownContext]',
     providers: [
         TuiActiveZoneDirective,
         TuiDropdownDriver,

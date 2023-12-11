@@ -53,9 +53,9 @@ export const tuiDropdownOptionsProvider: (
 });
 
 @Directive({
+    standalone: true,
     selector:
         '[tuiDropdownAlign], [tuiDropdownAppearance], [tuiDropdownDirection], [tuiDropdownLimitWidth], [tuiDropdownMinHeight], [tuiDropdownMaxHeight], [tuiDropdownOffset]',
-    standalone: true,
     providers: [
         {
             provide: TUI_DROPDOWN_OPTIONS,

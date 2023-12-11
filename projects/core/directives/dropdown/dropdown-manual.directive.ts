@@ -4,8 +4,8 @@ import {tuiAsDriver} from '@taiga-ui/core/abstract';
 import {TuiDropdownDriver} from './dropdown.driver';
 
 @Directive({
-    selector: '[tuiDropdownManual]',
     standalone: true,
+    selector: '[tuiDropdownManual]',
     providers: [TuiDropdownDriver, tuiAsDriver(TuiDropdownDriver)],
 })
 export class TuiDropdownManualDirective implements OnChanges {

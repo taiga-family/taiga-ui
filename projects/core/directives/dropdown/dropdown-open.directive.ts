@@ -45,8 +45,8 @@ function shouldClose(
 }
 
 @Directive({
-    selector: '[tuiDropdownOpen],[tuiDropdownOpenChange]',
     standalone: true,
+    selector: '[tuiDropdownOpen],[tuiDropdownOpenChange]',
     providers: [
         TuiDestroyService,
         TuiActiveZoneDirective,

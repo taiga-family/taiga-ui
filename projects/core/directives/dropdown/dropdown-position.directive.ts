@@ -11,10 +11,7 @@ import {TuiPoint, TuiVerticalDirection} from '@taiga-ui/core/types';
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
 
-@Directive({
-    selector: '[tuiDropdownPosition]',
-    standalone: true,
-})
+@Directive({standalone: true, selector: '[tuiDropdownPosition]'})
 export class TuiDropdownPositionDirective extends TuiPositionAccessor {
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
     private readonly viewport = inject(TUI_VIEWPORT);

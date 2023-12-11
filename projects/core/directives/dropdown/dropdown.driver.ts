@@ -9,8 +9,8 @@ export class TuiDropdownDriver extends Subject<boolean> implements TuiDriver {
 }
 
 @Directive({
-    selector: `[tuiDropdownDriver]`,
     standalone: true,
+    selector: `[tuiDropdownDriver]`,
     providers: [TuiDestroyService],
 })
 export class TuiDropdownDriverDirective extends AbstractTuiDriverDirective {

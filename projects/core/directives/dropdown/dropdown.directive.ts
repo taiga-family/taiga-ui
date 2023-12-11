@@ -39,15 +39,15 @@ import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
 import {TuiDropdownPositionDirective} from './dropdown-position.directive';
 
 @Directive({
-    selector: '[tuiDropdown]:not(ng-container):not(ng-template)',
     standalone: true,
+    selector: '[tuiDropdown]:not(ng-container):not(ng-template)',
     providers: [
         TuiDestroyService,
         tuiAsRectAccessor(TuiDropdownDirective),
         tuiAsVehicle(TuiDropdownDirective),
     ],
-    hostDirectives: [TuiDropdownDriverDirective, TuiDropdownPositionDirective],
     exportAs: 'tuiDropdown',
+    hostDirectives: [TuiDropdownDriverDirective, TuiDropdownPositionDirective],
 })
 export class TuiDropdownDirective
     implements
