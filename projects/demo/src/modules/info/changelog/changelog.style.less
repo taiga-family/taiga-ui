@@ -1,5 +1,4 @@
-/* stylelint-disable selector-type-no-unknown */
-markdown {
+.changelog ::ng-deep {
     & > :nth-child(1),
     & > :nth-child(2) {
         display: none;
@@ -7,6 +6,10 @@ markdown {
 
     > * {
         margin-left: 1.25rem;
+    }
+
+    & h2[id]:nth-of-type(1) {
+        margin-top: 0;
     }
 
     & h3:not([id^='feat']):not([id^='bug']):not([id^='deprecations']) {
