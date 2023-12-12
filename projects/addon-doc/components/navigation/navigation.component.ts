@@ -10,12 +10,11 @@ import {
 } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, Scroll} from '@angular/router';
 import {TuiDocPage} from '@taiga-ui/addon-doc/interfaces';
 import {
     TUI_DOC_ICONS,
     TUI_DOC_PAGE_LOADED,
-    TUI_DOC_SCROLL_BEHAVIOR,
     TUI_DOC_SEARCH_TEXT,
     TuiDocIcons,
 } from '@taiga-ui/addon-doc/tokens';
@@ -30,8 +29,8 @@ import {
     TuiModeDirective,
 } from '@taiga-ui/core';
 import {TuiInputComponent} from '@taiga-ui/kit';
-import {Observable} from 'rxjs';
-import {filter, map, startWith, take, takeUntil} from 'rxjs/operators';
+import {combineLatest, Observable} from 'rxjs';
+import {filter, map, startWith, switchMap, take, takeUntil} from 'rxjs/operators';
 
 import {
     NAVIGATION_ITEMS,
@@ -70,8 +69,7 @@ export class TuiDocNavigationComponent {
     constructor(
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(Title) titleService: Title,
-        @Inject(NAVIGATION_TITLE) title$: Observable<string>,
-        @Inject(DOCUMENT) private readonly doc: Document,
+        @Inject(NAVIGATION_TITLE) private readonly title$: Observable<string>,
         @Inject(TuiModeDirective)
         private readonly mode: TuiModeDirective,
         @Optional()
@@ -82,22 +80,33 @@ export class TuiDocNavigationComponent {
         readonly items: readonly TuiDocPages[],
         @Inject(TUI_DOC_SEARCH_TEXT) readonly searchText: string,
         @Inject(Router) private readonly router: Router,
-        @Inject(ActivatedRoute) private readonly activatedRoute: ActivatedRoute,
+        @Inject(ActivatedRoute) readonly activatedRoute: ActivatedRoute,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
         @Inject(TUI_DOC_PAGE_LOADED)
         private readonly readyToScroll$: Observable<boolean>,
-        @Inject(TUI_DOC_SCROLL_BEHAVIOR) private readonly scrollBehavior: ScrollBehavior,
         @Inject(TUI_DOC_ICONS) readonly docIcons: TuiDocIcons,
         @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
+        @Inject(DOCUMENT) private readonly doc: Document,
     ) {
-        // Angular can't navigate no anchor links
-        // https://stackoverflow.com/questions/36101756/angular2-routing-with-hashtag-to-page-anchor
         title$.subscribe(title => {
             cdr.markForCheck();
             titleService.setTitle(title);
             this.openActivePageGroup();
-            this.handleAnchorLink(this.activatedRoute.snapshot.fragment || '');
         });
+
+        combineLatest([
+            this.router.events.pipe(
+                filter((event): event is Scroll => event instanceof Scroll),
+            ),
+            this.title$.pipe(switchMap(() => this.readyToScroll$.pipe(filter(Boolean)))),
+        ])
+            .pipe(
+                take(1),
+                map(([event]) => event.anchor || ''),
+                filter<string>(Boolean),
+                takeUntil(this.destroy$),
+            )
+            .subscribe(anchor => this.navigateToAnchorLink(anchor));
     }
 
     get canOpen(): boolean {
@@ -187,12 +196,6 @@ export class TuiDocNavigationComponent {
         });
     }
 
-    private handleAnchorLink(hash: string): void {
-        this.readyToScroll$
-            .pipe(filter(Boolean), take(1), takeUntil(this.destroy$))
-            .subscribe(() => this.navigateToAnchorLink(hash));
-    }
-
     private openActivePageGroup(): void {
         this.items.forEach((pages, pagesIndex) => {
             pages.forEach((page, pageIndex) => {
@@ -222,11 +225,14 @@ export class TuiDocNavigationComponent {
             return;
         }
 
-        element.classList.add('tui-doc-animated-example');
-        element.scrollIntoView({
-            block: 'start',
-            inline: 'nearest',
-            behavior: this.scrollBehavior,
-        });
+        // emulate :target event
+        const target = this.doc.createElement('a');
+
+        target.href = `${this.doc.location.pathname}#${fragment}`;
+        target.style.display = 'none';
+        target.style.position = 'absolute';
+        this.doc.body.appendChild(target);
+        target.click();
+        target.remove();
     }
 }

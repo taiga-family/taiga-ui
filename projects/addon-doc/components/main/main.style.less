@@ -1,14 +1,8 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-@sticky-header-height: 4rem;
-
 html {
-    scroll-padding-top: @sticky-header-height;
+    scroll-padding-top: 4rem;
     height: auto;
-}
-
-tui-root > tui-scroll-controls > .t-bar_vertical {
-    top: @sticky-header-height !important;
 }
 
 @keyframes tuiShaking {
@@ -106,10 +100,6 @@ tui-doc-navigation.tui-doc-navigation {
 
 .tui-doc-outlet + * {
     display: block;
-}
-
-.tui-doc-animated-example {
-    animation: 1s 300ms tuiShaking;
 }
 
 .tui-doc-night-mode-switch {
