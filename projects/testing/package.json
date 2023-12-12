@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/testing",
-    "version": "3.57.0",
+    "version": "3.58.0",
     "description": "Utils functions for testing Taiga UI packages",
     "dependencies": {
         "cypress-image-snapshot": "4.0.1"
@@ -13,7 +13,7 @@
         "ts-jest": "29.1.1"
     },
     "peerDependencies": {
-        "@taiga-ui/cdk": ">=3.57.0",
+        "@taiga-ui/cdk": ">=3.58.0",
         "tslib": "2.6.2"
     }
 }
