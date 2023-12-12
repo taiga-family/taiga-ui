@@ -329,6 +329,23 @@ describe(`InputDate`, () => {
             }
         }
 
+        @Component({
+            template: `
+                <tui-root>
+                    <tui-input-date
+                        [formControl]="control"
+                        [min]="min"
+                        [readOnly]="readOnly"
+                        [tuiHintContent]="hintContent"
+                        [tuiTextfieldCleaner]="cleaner"
+                        [tuiTextfieldLabelOutside]="labelOutside"
+                        [tuiTextfieldSize]="size"
+                    >
+                        Select date
+                    </tui-input-date>
+                </tui-root>
+            `,
+        })
         class TransformerTestComponent extends TestComponent {
             override control = new FormControl(new Date(2022, 0, 31));
         }

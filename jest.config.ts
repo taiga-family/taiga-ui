@@ -37,7 +37,6 @@ const config: Config = {
             isolatedModules: true,
         },
     },
-
     /**
      * Jest will run .mjs and .js files with nearest package.json's type
      * field set to module as ECMAScript Modules. If you have any other files
@@ -54,7 +53,10 @@ const config: Config = {
     /**
      * A map from regular expressions to paths to transformers.
      */
-    transform: {'^.+\\.(ts|js|mjs|html|svg)$': `jest-preset-angular`},
+    transform: {
+        '^.+\\.(ts|js|mjs|html|svg)$': `jest-preset-angular`,
+    },
+    transformIgnorePatterns: [`node_modules/(?!@angular|rxjs|ngx-highlightjs)`],
 
     /**
      * The glob patterns Jest uses to detect test files.
