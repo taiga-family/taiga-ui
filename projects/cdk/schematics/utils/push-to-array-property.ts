@@ -37,7 +37,6 @@ export function pushToObjectArrayProperty(
         return;
     }
 
-    // eslint-disable-next-line @taiga-ui/experience/no-typeof
     if (typeof index === `number`) {
         importsInitializer.insertElement(index, initializer);
     } else {
