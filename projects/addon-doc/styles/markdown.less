@@ -1,0 +1,118 @@
+/* stylelint-disable-next-line */
+markdown {
+    display: block;
+    max-width: 58.25rem;
+
+    h1 {
+        font: var(--tui-font-heading-1);
+    }
+
+    h2 {
+        font: var(--tui-font-heading-2);
+    }
+
+    h3 {
+        font: var(--tui-font-heading-3);
+    }
+
+    h4 {
+        font: var(--tui-font-heading-4);
+    }
+
+    h5 {
+        font: var(--tui-font-heading-5);
+    }
+
+    h6 {
+        font: var(--tui-font-heading-6);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 3rem 0 1rem;
+    }
+
+    & a {
+        text-decoration: none;
+        color: var(--tui-link);
+
+        &:hover,
+        &:active {
+            color: var(--tui-link-hover);
+        }
+    }
+
+    & h2 {
+        font-size: 2em;
+        padding-bottom: 0.5em;
+        margin-left: 0;
+        border-bottom: 1px solid var(--tui-base-03);
+    }
+
+    & h3 {
+        text-transform: uppercase;
+        font-weight: normal;
+        font-size: 1.5rem;
+        margin: 1rem 0;
+    }
+
+    img {
+        margin: 0.625rem 3rem 1.5rem 0;
+        max-width: 27.5rem;
+
+        &:nth-child(2n) {
+            margin-right: 0;
+        }
+    }
+
+    ul {
+        &:extend(.tui-list);
+    }
+
+    li {
+        position: relative;
+        padding-left: 1.5rem;
+        word-wrap: break-word;
+        margin-top: 0.75rem;
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 100%;
+            background-color: var(--tui-primary);
+        }
+    }
+
+    & a {
+        text-decoration: none;
+        color: var(--tui-link);
+
+        &:hover,
+        &:active {
+            color: var(--tui-link-hover);
+        }
+    }
+
+    & code {
+        color: #d45d8c;
+    }
+
+    & blockquote {
+        box-shadow: inset 4px 0 #f5f5f5;
+        margin-left: 0;
+        padding-left: 1.875rem;
+        font-style: italic;
+    }
+
+    & td {
+        padding: 0.375rem 1.5rem 0.375rem 0;
+    }
+}

@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {from} from 'rxjs';
@@ -7,8 +7,6 @@ import {map} from 'rxjs/operators';
 @Component({
     selector: 'i18n',
     templateUrl: './i18n.template.html',
-    styleUrls: ['./i18n.style.less'],
-    encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
 export class I18nComponent {
