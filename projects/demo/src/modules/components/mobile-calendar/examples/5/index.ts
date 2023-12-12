@@ -11,16 +11,16 @@ import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-mobile-calendar-example-1',
+    selector: 'tui-mobile-calendar-example-5',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiMobileCalendarExample1 {
+export class TuiMobileCalendarExample5 {
     private readonly control = new FormControl(null);
 
-    private readonly dialog$: Observable<TuiDay> = this.dialogs.open(
+    private readonly dialog$: Observable<readonly TuiDay[]> = this.dialogs.open(
         new PolymorpheusComponent(
             TuiMobileCalendarDialogComponent,
             Injector.create({
@@ -37,21 +37,25 @@ export class TuiMobileCalendarExample1 {
             size: 'fullscreen',
             closeable: false,
             data: {
-                single: true,
-                min: TuiDay.currentLocal(),
+                multi: true,
+                min: new TuiDay(2018, 2, 10),
             },
         },
     );
 
     readonly date$ = combineLatest([
-        tuiControlValue<TuiDay>(this.control),
+        tuiControlValue<readonly TuiDay[]>(this.control),
         this.months$,
     ]).pipe(
-        map(([value, months]) =>
-            !value
-                ? 'Choose a date'
-                : `${months[value.month]} ${value.day}, ${value.year}`,
-        ),
+        map(([value, months]) => {
+            if (!value?.length) {
+                return 'Choose dates';
+            }
+
+            return value
+                .map(day => `${months[day.month]} ${day.day}, ${day.year}`)
+                .join('; ');
+        }),
     );
 
     constructor(
@@ -61,7 +65,7 @@ export class TuiMobileCalendarExample1 {
     ) {}
 
     get empty(): boolean {
-        return !this.control.value;
+        return !this.control.value?.length;
     }
 
     onClick(): void {
