@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" style="width: inherit; height: inherit">
+    <g id="tuiIconUzcard" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            x="50%"
+            y="50%"
+            xmlns="http://www.w3.org/2000/svg"
+            overflow="visible"
+            preserveAspectRatio="xMidYMid meet"
+            style="width: inherit; height: inherit"
+            viewBox="0 0 32 32"
+        >
+            <svg x="-16" y="-16">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 1440 1440"
+                    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                    xmlns:svg="http://www.w3.org/2000/svg"
+                >
+                    <defs id="defs6">
+                        <clipPath id="clipPath16" clipPathUnits="userSpaceOnUse">
+                            <path id="path14" vector-effect="non-scaling-stroke" d="M 0,1080 H 1080 V 0 H 0 Z" />
+                        </clipPath>
+                    </defs>
+                    <g
+                        id="g8"
+                        inkscape:groupmode="layer"
+                        inkscape:label="Uzcard"
+                        transform="matrix(1.3333333,0,0,-1.3333333,0,1440)"
+                    >
+                        <g id="g10">
+                            <g id="g12" clip-path="url(#clipPath16)">
+                                <g id="g18" transform="translate(738.8252,587.4331)">
+                                    <path
+                                        vector-effect="non-scaling-stroke"
+                                        d="m 0,0 c 0,-74.009 -16.912,-129.162 -50.707,-165.098 -33.796,-35.937 -86.015,-53.897 -156.414,-53.897 -65.774,0 -115.674,17.966 -149.702,53.897 -34.028,35.931 -51.039,90.121 -51.035,162.57 v 243.07 c 0.016,5.694 4.627,10.307 10.321,10.327 h 119.263 c 5.696,-0.017 10.31,-4.631 10.327,-10.327 V -7.841 c 0,-29.583 5.472,-52.349 16.609,-68.411 20.05,-26.581 57.852,-31.874 84.433,-11.825 3.988,3.009 7.587,6.501 10.713,10.397 10.886,15.07 16.311,37.28 16.276,66.627 V 35.461 L 0,35.461 Z"
+                                        style="fill: #203e7a; fill-opacity: 1; fill-rule: evenodd; stroke: none"
+                                    />
+                                </g>
+                                <g id="g22" transform="translate(728.0107,650.0625)">
+                                    <path
+                                        vector-effect="non-scaling-stroke"
+                                        d="m 0,0 h -129.09 v 177.424 c 0.016,5.966 4.849,10.799 10.815,10.815 h 19.322 C -98.911,127.659 -49.789,78.572 10.791,78.572 H 10.82 V 0 Z"
+                                        style="fill: #203e7a; fill-opacity: 1; fill-rule: evenodd; stroke: none"
+                                    />
+                                </g>
+                                <g id="g26" transform="translate(656.5527,838.3018)">
+                                    <path
+                                        vector-effect="non-scaling-stroke"
+                                        d="M 0,0 H 71.464 C 77.43,-0.017 82.263,-4.849 82.278,-10.815 V -82.368 C 36.838,-82.368 0,-45.531 0,-0.089 Z"
+                                        style="fill: #f4821f; fill-opacity: 1; fill-rule: evenodd; stroke: none"
+                                    />
+                                </g>
+                                <g id="g30" transform="translate(711.3242,261.0264)">
+                                    <path
+                                        vector-effect="non-scaling-stroke"
+                                        d="M 0,0 H -9.411 V 32.433 H 0 c 8.361,0.617 15.641,-5.662 16.258,-14.023 0.054,-0.742 0.054,-1.487 0,-2.229 C 16.62,7.609 9.966,0.368 1.396,0.006 0.92,-0.014 0.445,-0.012 -0.03,0.012 Z m 0,-9.721 c 16.258,0 27.537,10.268 27.537,25.902 C 27.537,31.814 16.234,42.159 0,42.159 H -20.458 V -9.721 Z M -68.191,18.436 H -79.78 v 13.997 h 11.552 c 3.866,0.407 7.33,-2.397 7.736,-6.262 0.407,-3.865 -2.397,-7.329 -6.262,-7.735 -0.49,-0.052 -0.983,-0.052 -1.474,0 z m 26.739,-41.161 -19.036,32.76 c 7.024,1.694 11.815,8.192 11.356,15.402 0.34,8.917 -6.612,16.421 -15.529,16.761 -0.632,0.025 -1.265,0.011 -1.895,-0.039 h -24.277 v -51.88 h 11.047 V 8.721 h 8.091 l 17.56,-31.434 z m -93.397,31.529 h -16.18 l 8.09,22.326 z m 18.823,-18.513 -19.989,51.88 h -13.842 l -20.072,-51.88 h 12.6 l 3.266,8.793 h 22.249 l 3.188,-8.793 z m -96.502,-0.934 c 9.069,-0.211 17.476,4.733 21.701,12.76 l -9.518,4.587 c -2.36,-4.582 -7.059,-7.484 -12.213,-7.543 -9.408,0.466 -16.657,8.47 -16.192,17.878 0.434,8.756 7.435,15.758 16.192,16.191 5.144,-0.091 9.828,-2.984 12.213,-7.543 l 9.518,4.669 c -4.223,8.021 -12.642,12.939 -21.701,12.678 -14.821,0.443 -27.195,-11.213 -27.638,-26.033 -0.442,-14.821 11.213,-27.194 26.034,-27.638 0.534,-0.015 1.069,-0.015 1.604,0 z m -52.79,0.934 v 9.721 h -25.045 l 24.503,33.313 v 8.869 h -38.971 v -9.726 h 24.504 l -24.504,-33.212 v -8.923 z m -91.613,-0.934 c 15.789,0 23.415,8.792 23.415,21.702 v 31.112 h -11.303 V 11.368 c 0,-6.723 -5.45,-12.175 -12.174,-12.175 -6.724,0 -12.174,5.452 -12.174,12.175 v 30.803 h -11.202 V 10.963 c 0,-12.754 7.62,-21.624 23.415,-21.624 z"
+                                        style="fill: #233c7e; fill-opacity: 1; fill-rule: evenodd; stroke: none"
+                                    />
+                                </g>
+                                <g id="g34" transform="translate(752.2764,304.1729)">
+                                    <path
+                                        vector-effect="non-scaling-stroke"
+                                        d="m 0,0 v -0.125 c 0.003,-5.335 -4.319,-9.663 -9.655,-9.667 -5.336,-0.003 -9.664,4.319 -9.667,9.655 -0.003,5.335 4.319,9.663 9.655,9.667 h 0.006 9.654 z"
+                                        style="fill: #233c7e; fill-opacity: 1; fill-rule: evenodd; stroke: none"
+                                    />
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </svg>
+        </svg>
+    </g>
+</svg>

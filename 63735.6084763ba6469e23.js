@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[63735],{63735:e=>{e.exports="```less\n.logo {\n  color: var(--tui-base-01);\n  background-color: #c86dd7;\n  background-image: linear-gradient(45deg, #c86dd7 0%, #3023ae 100%);\n}\n```\n"}}]);

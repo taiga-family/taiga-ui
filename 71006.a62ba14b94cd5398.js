@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[71006],{71006:e=>{e.exports="<p>{{ flatted }} = flatLength([[1, 2], [3, 4], [5, 6]]);</p>\n"}}]);
