@@ -53,7 +53,9 @@ export class TuiDropdownSelectionDirective
         this.handler$,
         this.selection$.pipe(
             map(() => this.getRange()),
-            distinctUntilChanged(),
+            distinctUntilChanged(
+                (x, y) => x.startOffset === y.startOffset && x.endOffset === y.endOffset,
+            ),
         ),
     ]).pipe(
         map(([handler, range]) => {
@@ -123,12 +125,12 @@ export class TuiDropdownSelectionDirective
     private getRange(): Range {
         const active = tuiGetNativeFocused(this.doc);
         const selection = this.doc.getSelection();
+        const range =
+            active && tuiIsTextfield(active) && this.el.nativeElement.contains(active)
+                ? this.veryVerySadInputFix(active)
+                : (selection?.rangeCount && selection.getRangeAt(0)) || this.range;
 
-        if (active && tuiIsTextfield(active) && this.el.nativeElement.contains(active)) {
-            return this.veryVerySadInputFix(active);
-        }
-
-        return selection?.rangeCount ? selection.getRangeAt(0) : this.range;
+        return range.cloneRange();
     }
 
     /**
