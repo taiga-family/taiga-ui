@@ -1,6 +1,6 @@
 <tui-doc-page header="Internationalization">
     <ng-template pageTab="Supported languages">
-        <markdown [data]="(readme | async) || ''"></markdown>
+        <tui-doc-code [code]="(readme | async) || ''"></tui-doc-code>
     </ng-template>
 
     <ng-template pageTab="Dynamic loader">

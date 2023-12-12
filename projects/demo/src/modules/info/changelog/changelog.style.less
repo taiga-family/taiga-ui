@@ -9,30 +9,6 @@ markdown {
         margin-left: 1.25rem;
     }
 
-    & a {
-        text-decoration: none;
-        color: var(--tui-link);
-
-        &:hover,
-        &:active {
-            color: var(--tui-link-hover);
-        }
-    }
-
-    & h2 {
-        font-size: 2em;
-        padding-bottom: 0.5em;
-        margin-left: 0;
-        border-bottom: 1px solid var(--tui-base-03);
-    }
-
-    & h3 {
-        text-transform: uppercase;
-        font-weight: normal;
-        font-size: 1.5rem;
-        margin: 1rem 0;
-    }
-
     & h3:not([id^='feat']):not([id^='bug']):not([id^='deprecations']) {
         font-size: 1.75rem;
         padding-bottom: 0.5em;
@@ -43,10 +19,6 @@ markdown {
     & h3[id^='breaking'] {
         margin-left: 1.25rem;
         color: var(--tui-error-fill);
-    }
-
-    & code {
-        color: #d45d8c;
     }
 
     & h3[id^='feat']:before {
