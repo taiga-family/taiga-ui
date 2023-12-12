@@ -2,15 +2,17 @@ input[tuiRadio] {
     --t-size: 1.125rem;
 
     .transition(color);
-    box-shadow: inset 0 0 0 0.125rem;
     color: var(--tui-base-04);
+    outline: 0.125rem solid;
+    outline-offset: -0.125rem;
+    box-shadow: none !important;
+    background: transparent !important;
 
     &:disabled:not(._readonly) {
         color: var(--tui-base-04);
     }
 
     &:checked {
-        background: transparent;
         color: var(--tui-accent);
 
         &:after {
@@ -18,7 +20,7 @@ input[tuiRadio] {
         }
     }
 
-    &._invalid {
+    &:invalid {
         color: var(--tui-error-bg-hover);
 
         &:checked {

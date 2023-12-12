@@ -15,6 +15,10 @@
     padding: var(--t-padding);
     min-height: var(--t-height);
 
+    &:disabled {
+        pointer-events: none;
+    }
+
     [tuiCellSide] {
         position: relative;
         display: flex;

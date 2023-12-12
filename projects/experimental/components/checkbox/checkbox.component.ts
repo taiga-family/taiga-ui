@@ -2,27 +2,29 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    DoCheck,
     ElementRef,
-    Inject,
+    inject,
     Input,
     OnInit,
-    Optional,
-    Self,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
     tuiControlValue,
     TuiDestroyService,
     tuiIsString,
-    TuiStringHandler,
+    TuiNativeValidatorDirective,
     tuiWatch,
 } from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
+import {
+    TUI_APPEARANCE,
+    TuiAppearanceDirective,
+} from '@taiga-ui/experimental/directives/appearance';
 import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
-import {Observable} from 'rxjs';
 import {distinctUntilChanged, takeUntil} from 'rxjs/operators';
 
-import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions} from './checkbox.options';
+import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
 
 @Component({
     selector: 'input[type="checkbox"][tuiCheckbox]',
@@ -30,30 +32,29 @@ import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions} from './checkbox.options';
     styleUrls: ['./checkbox.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
+    hostDirectives: [TUI_APPEARANCE, TuiNativeValidatorDirective],
     host: {
-        tuiAppearance: '', // Apply base appearance
         '[disabled]': '!control || control.disabled',
         '[attr.data-size]': 'size',
-        '[class._invalid]': 'control?.invalid && control?.touched',
         '[class._readonly]': '!control',
         '[style.--t-mask]': 'icon',
     },
 })
-export class TuiCheckboxComponent implements OnInit {
+export class TuiCheckboxComponent implements OnInit, DoCheck {
+    private readonly cdr = inject(ChangeDetectorRef);
+    private readonly appearance = inject(TuiAppearanceDirective);
+    private readonly options = inject(TUI_CHECKBOX_OPTIONS);
+    private readonly resolver = inject(TUI_ICON_RESOLVER);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
+
     @Input()
     size: TuiSizeS = this.options.size;
 
-    constructor(
-        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
-        @Inject(TUI_ICON_RESOLVER) private readonly resolver: TuiStringHandler<string>,
-        @Inject(TUI_CHECKBOX_OPTIONS) private readonly options: TuiCheckboxOptions,
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<unknown>,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLInputElement>,
-        @Optional() @Inject(NgControl) readonly control: NgControl | null,
-    ) {}
+    readonly control: NgControl | null = inject(NgControl, {optional: true});
 
     get icon(): string {
-        const option = this.el.nativeElement.indeterminate
+        const option = this.el.indeterminate
             ? this.options.icons.indeterminate
             : this.options.icons.checked;
         const icon = tuiIsString(option) ? option : option(this.size);
@@ -69,7 +70,11 @@ export class TuiCheckboxComponent implements OnInit {
         tuiControlValue(this.control)
             .pipe(distinctUntilChanged(), tuiWatch(this.cdr), takeUntil(this.destroy$))
             .subscribe(value => {
-                this.el.nativeElement.indeterminate = value === null;
+                this.el.indeterminate = value === null;
             });
+    }
+
+    ngDoCheck(): void {
+        this.appearance.tuiAppearance = this.options.appearance(this.el);
     }
 }

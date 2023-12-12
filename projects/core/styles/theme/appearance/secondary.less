@@ -13,9 +13,23 @@
     .appearance-active({
         background: var(--tui-secondary-active);
     });
+
+    &:invalid {
+        color: var(--tui-error-fill);
+        background: var(--tui-error-bg);
+
+        .appearance-hover({
+            background: var(--tui-error-bg-hover);
+        });
+
+        .appearance-active({
+            background: var(--tui-error-bg-hover);
+        });
+    }
 }
 
-[tuiAppearance][data-appearance='flat'] {
+[tuiAppearance][data-appearance='flat'],
+[tuiAppearance][data-appearance='flat']:invalid {
     background: transparent;
 }
 

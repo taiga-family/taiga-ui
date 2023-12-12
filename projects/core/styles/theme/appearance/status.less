@@ -1,66 +1,94 @@
 @import '../../taiga-ui-local.less';
 
-[tuiAppearance][data-appearance='error'] {
+[tuiAppearance][data-appearance='error'],
+[tuiAppearance][data-appearance='success'],
+[tuiAppearance][data-appearance='warning'],
+[tuiAppearance][data-appearance='info'],
+[tuiAppearance][data-appearance='neutral'] {
     color: var(--tui-text-01);
-    background: var(--tui-error-bg);
+    background: var(--t-bg);
+
+    &:checked {
+        color: var(--tui-text-01-night);
+    }
+}
+
+[tuiAppearance][data-appearance='error'] {
+    --t-bg: var(--tui-error-bg);
 
     .appearance-hover({
-        background: var(--tui-error-bg-hover);
+        --t-bg: var(--tui-error-bg-hover);
     });
 
     .appearance-active({
-        background: var(--tui-error-bg-hover);
+        --t-bg: var(--tui-error-bg-hover);
     });
+
+    &:checked {
+        background: var(--tui-error-fill);
+    }
 }
 
 [tuiAppearance][data-appearance='success'] {
-    color: var(--tui-text-01);
-    background: var(--tui-success-bg);
+    --t-bg: var(--tui-success-bg);
 
     .appearance-hover({
-        background: var(--tui-success-bg-hover);
+        --t-bg: var(--tui-success-bg-hover);
     });
 
     .appearance-active({
-        background: var(--tui-success-bg-hover);
+        --t-bg: var(--tui-success-bg-hover);
     });
+
+    &:checked {
+        background: var(--tui-success-fill);
+    }
 }
 
 [tuiAppearance][data-appearance='warning'] {
-    color: var(--tui-text-01);
-    background: var(--tui-warning-bg);
+    --t-bg: var(--tui-warning-bg);
 
     .appearance-hover({
-        background: var(--tui-warning-bg-hover);
+        --t-bg: var(--tui-warning-bg-hover);
     });
 
     .appearance-active({
-        background: var(--tui-warning-bg-hover);
+        --t-bg: var(--tui-warning-bg-hover);
     });
+
+    &:checked {
+        background: var(--tui-warning-fill);
+    }
 }
 
 [tuiAppearance][data-appearance='info'] {
-    color: var(--tui-text-01);
-    background: var(--tui-info-bg);
+    --t-bg: var(--tui-info-bg);
 
     .appearance-hover({
-        background: var(--tui-info-bg-hover);
+        --t-bg: var(--tui-info-bg-hover);
     });
 
     .appearance-active({
-        background: var(--tui-info-bg-hover);
+        --t-bg: var(--tui-info-bg-hover);
     });
+
+    &:checked {
+        background: var(--tui-info-fill);
+    }
 }
 
 [tuiAppearance][data-appearance='neutral'] {
-    color: var(--tui-text-01);
-    background: var(--tui-neutral-bg);
+    --t-bg: var(--tui-neutral-bg);
 
     .appearance-hover({
-        background: var(--tui-neutral-bg-hover);
+        --t-bg: var(--tui-neutral-bg-hover);
     });
 
     .appearance-active({
-        background: var(--tui-neutral-bg-hover);
+        --t-bg: var(--tui-neutral-bg-hover);
     });
+
+    &:checked {
+        background: var(--tui-neutral-fill);
+    }
 }
