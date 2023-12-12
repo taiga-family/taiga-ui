@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.58.0](https://github.com/taiga-family/taiga-ui/compare/v3.57.0...v3.58.0) (2023-12-12)
+
+### Features
+
+- **addon-doc:** add markdown theme ([#6221](https://github.com/taiga-family/taiga-ui/issues/6221))
+  ([b73f1da](https://github.com/taiga-family/taiga-ui/commit/b73f1daeb91c8ffc94436452c524e9542f4aa70c))
+- **addon-doc:** display emission in `@Output` wherever possible
+  ([#6171](https://github.com/taiga-family/taiga-ui/issues/6171))
+  ([8282585](https://github.com/taiga-family/taiga-ui/commit/828258501f8d4bca947592bea7e0215fc09370a7))
+- **addon-doc:** improve code block ui ([#6180](https://github.com/taiga-family/taiga-ui/issues/6180))
+  ([be39861](https://github.com/taiga-family/taiga-ui/commit/be39861fe7392f34ffbd4d3c8f6095988af236c5))
+- **addon-doc:** use `anchorScrolling` by default ([#6182](https://github.com/taiga-family/taiga-ui/issues/6182))
+  ([af24c82](https://github.com/taiga-family/taiga-ui/commit/af24c82a22a9f15e81a812af46067def1060a191))
+- **addon-doc:** use white color for deprecated tag ([#6165](https://github.com/taiga-family/taiga-ui/issues/6165))
+  ([bdd946f](https://github.com/taiga-family/taiga-ui/commit/bdd946f46fe835960334ac0d916f457f5264b2a0))
+- **kit:** `Push` allow string in timestamp for custom formatting
+  ([#6209](https://github.com/taiga-family/taiga-ui/issues/6209))
+  ([33525f6](https://github.com/taiga-family/taiga-ui/commit/33525f6d0f19c90b928414326d53cc85ddc292bc))
+- **kit:** support null in `tuiImmutableUpdateInputDateMulti`
+  ([#6176](https://github.com/taiga-family/taiga-ui/issues/6176))
+  ([3ef4f48](https://github.com/taiga-family/taiga-ui/commit/3ef4f4892ff6a01333ca8a185bd8de283c675d62))
+
+### Bug Fixes
+
+- **addon-commerce:** treat US Diners as Mastercard internationally
+  ([#6210](https://github.com/taiga-family/taiga-ui/issues/6210))
+  ([58b04a6](https://github.com/taiga-family/taiga-ui/commit/58b04a619b007aafa041824d5bcf08792a89f9f8))
+- **core:** use immutable range for trigger stream in Safari
+  ([#6220](https://github.com/taiga-family/taiga-ui/issues/6220))
+  ([ddb07f9](https://github.com/taiga-family/taiga-ui/commit/ddb07f9611c345eb9e5d0944b37a46227cc92250))
+- **i18n:** fix Malay translation ([#6161](https://github.com/taiga-family/taiga-ui/issues/6161))
+  ([79aa68a](https://github.com/taiga-family/taiga-ui/commit/79aa68ae3fd6f6298bdb60355a25c074f33adef5))
+- **kit:** `InputPhone` should erase value on blur if it's just country code
+  ([#6214](https://github.com/taiga-family/taiga-ui/issues/6214))
+  ([0b0abe9](https://github.com/taiga-family/taiga-ui/commit/0b0abe9011cd20570cb8f83a87955d1bd765510b))
+
 ## [3.57.0](https://github.com/taiga-family/taiga-ui/compare/v3.56.0...v3.57.0) (2023-12-04)
 
 ### Features
