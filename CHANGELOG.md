@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.59.0](https://github.com/taiga-family/taiga-ui/compare/v3.58.0...v3.59.0) (2023-12-12)
+
+### Features
+
+- **layout:** add tuiSlot `action` to be able to template any element into the action container of BlockStatus
+  ([#6191](https://github.com/taiga-family/taiga-ui/issues/6191))
+  ([a9a5cc8](https://github.com/taiga-family/taiga-ui/commit/a9a5cc8c80b00cd0d79e63ece7ebd8f0570a39e5))
+
+### Bug Fixes
+
+- **kit:** don't hide input if search isn't empty ([#6225](https://github.com/taiga-family/taiga-ui/issues/6225))
+  ([ea1c3a0](https://github.com/taiga-family/taiga-ui/commit/ea1c3a05b9d16c4184d4ea4804f530f9db429570))
+- **kit:** prevent stretching to full height ([#6224](https://github.com/taiga-family/taiga-ui/issues/6224))
+  ([54eb4db](https://github.com/taiga-family/taiga-ui/commit/54eb4db4c348e5f64dd07e8942388e6cb7cf1834))
+
 ## [3.58.0](https://github.com/taiga-family/taiga-ui/compare/v3.57.0...v3.58.0) (2023-12-12)
 
 ### Features
