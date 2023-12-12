@@ -25,7 +25,7 @@ export const TUI_VIEWPORT = tuiCreateTokenFromFactory<TuiRectAccessor>(() => {
 
             return {
                 ...rect,
-                toJSON: () => rect,
+                toJSON: () => JSON.stringify(rect),
             };
         },
     };

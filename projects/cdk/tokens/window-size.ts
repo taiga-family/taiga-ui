@@ -28,7 +28,7 @@ export const TUI_WINDOW_SIZE = new InjectionToken<Observable<DOMRect>>(
 
                     return {
                         ...rect,
-                        toJSON: () => rect,
+                        toJSON: () => JSON.stringify(rect),
                     };
                 }),
                 shareReplay({bufferSize: 1, refCount: true}),

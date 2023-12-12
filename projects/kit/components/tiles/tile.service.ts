@@ -60,7 +60,7 @@ export class TuiTileService implements OnDestroy {
 
         return {
             ...rect,
-            toJSON: () => rect,
+            toJSON: () => JSON.stringify(rect),
         };
     }
 
