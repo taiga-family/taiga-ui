@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[288],{288:e=>{e.exports=".footer {\n    display: flex;\n    flex-direction: column;\n    gap: 1rem;\n}\n"}}]);

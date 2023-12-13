@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[50887],{50887:n=>{n.exports='```html\n<button\n  tuiButton\n  tuiButtonVertical\n  iconLeft="tuiIconStarLarge"\n>\n  Press me\n</button>\n```\n'}}]);

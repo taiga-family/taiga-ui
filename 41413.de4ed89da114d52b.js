@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[41413],{41413:e=>{e.exports='```html\n<form [formGroup]="testForm">\n  <tui-input-date-range formControlName="testValue">Choose dates</tui-input-date-range>\n</form>\n```\n'}}]);

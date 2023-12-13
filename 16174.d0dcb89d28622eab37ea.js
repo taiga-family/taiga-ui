@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[16174],{16174:n=>{n.exports=".input {\n    color: orange;\n}\n"}}]);

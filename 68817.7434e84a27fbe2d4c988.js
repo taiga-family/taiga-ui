@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[68817],{68817:n=>{n.exports='```html\n<div (tuiSwipe)="..."></div>\n```\n'}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[48521],{48521:e=>{e.exports=".badge {\n    max-width: 10rem;\n}\n\n.t-ellipsis {\n    overflow: hidden;\n    text-overflow: ellipsis;\n}\n"}}]);

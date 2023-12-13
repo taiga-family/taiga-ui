@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[50335],{50335:n=>{n.exports='```html\n<input\n  [formControl]="control"\n  (tuiValueChanges)="onChanges($event)"\n/>\n```\n'}}]);

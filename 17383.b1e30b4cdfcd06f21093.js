@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[17383],{17383:n=>{n.exports='```html\n<tui-expand [expanded]="expanded">\n  <ng-template tuiExpandContent>...</ng-template>\n</tui-expand>\n```\n'}}]);

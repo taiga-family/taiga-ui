@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[40870],{40870:a=>{a.exports="tui-dropdown[data-appearance='round'] {\n    border-radius: 10rem;\n}\n"}}]);

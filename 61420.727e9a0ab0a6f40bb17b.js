@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[61420],{61420:t=>{t.exports='<tui-table-pagination\n    [items]="sizeOptions"\n    [total]="total"\n></tui-table-pagination>\n'}}]);

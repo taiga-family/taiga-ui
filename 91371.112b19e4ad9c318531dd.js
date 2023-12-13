@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[91371],{91371:n=>{n.exports=".context-menu {\n    width: 8rem;\n}\n"}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[78359],{78359:n=>{n.exports=".dropdown {\n    width: 13rem;\n    padding: 0 1rem 1rem;\n    line-height: 2;\n}\n"}}]);

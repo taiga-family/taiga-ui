@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[35511],{35511:a=>{a.exports=".card {\n    background-color: var(--tui-base-02);\n}\n"}}]);

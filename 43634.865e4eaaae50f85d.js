@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[43634],{43634:e=>{e.exports='<tui-icon\n    icon="tuiIconHeartLarge"\n    [style.color]="\'var(--tui-primary)\'"\n></tui-icon>\n'}}]);

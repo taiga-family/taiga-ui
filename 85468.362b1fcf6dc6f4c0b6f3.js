@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[85468],{85468:n=>{n.exports='<form [formGroup]="testForm">\n    <tui-input-number\n        formControlName="testValue"\n        [tuiTextfieldPostfix]="826 | tuiCurrency"\n    >\n        Type a sum\n    </tui-input-number>\n</form>\n'}}]);

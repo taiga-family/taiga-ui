@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[18302],{18302:e=>{e.exports=".example {\n    color: var(--tui-text-03);\n}\n"}}]);

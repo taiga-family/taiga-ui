@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[67419],{67419:n=>{n.exports=".island {\n    width: 20rem;\n    margin-bottom: 1rem;\n    box-sizing: border-box;\n}\n\n.email {\n    margin: 0;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n}\n"}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[19166],{19166:e=>{e.exports=".poster {\n    height: 4rem;\n    display: flex;\n    align-items: center;\n    border: 5px solid var(--tui-base-03);\n    text-align: center;\n}\n"}}]);

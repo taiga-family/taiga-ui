@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[8115],{8115:i=>{i.exports='<tui-pin class="blue"></tui-pin>\n<tui-pin class="yellow"></tui-pin>\n<tui-pin class="green"></tui-pin>\n<tui-pin class="red"></tui-pin>\n'}}]);

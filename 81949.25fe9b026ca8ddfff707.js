@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[81949],{81949:n=>{n.exports=".tabs {\n    color: var(--tui-link);\n\n    --tui-active-color: var(--tui-accent);\n}\n"}}]);

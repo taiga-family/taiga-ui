@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[47321],{47321:n=>{n.exports="tui-progress-circle {\n    transition: color 2s;\n}\n"}}]);

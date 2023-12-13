@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[62229],{26955:(_,a,c)=>{c.r(a),c.d(a,{TUI_RUSSIAN_LANGUAGE_ADDON_COMMERCE:()=>e});const e={cardNumber:["Номер","Номер карты"],cardExpiry:["Срок","Срок действия"]}}}]);
