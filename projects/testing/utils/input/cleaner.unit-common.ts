@@ -2,7 +2,7 @@
 
 import {DebugElement} from '@angular/core';
 import {ComponentFixture} from '@angular/core/testing';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 
 import {TuiNativeInputPO} from '../native-input.page-object';
 import {TuiPageObject} from '../page-object';
@@ -17,7 +17,7 @@ interface TestParams {
 
 interface TestComponent {
     cleaner: boolean;
-    control?: UntypedFormControl;
+    control?: FormControl;
     disabled?: boolean;
     readOnly: boolean;
     value?: unknown;

@@ -37,6 +37,7 @@ const config: Config = {
             isolatedModules: true,
         },
     },
+
     /**
      * Jest will run .mjs and .js files with nearest package.json's type
      * field set to module as ECMAScript Modules. If you have any other files
