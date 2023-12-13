@@ -1,3 +1,4 @@
+import {DOCUMENT} from '@angular/common';
 import {InjectionToken, Provider} from '@angular/core';
 import {TUI_BASE_HREF} from '@taiga-ui/cdk';
 
@@ -10,8 +11,13 @@ export const TUI_SELECTED_VERSION_META = new InjectionToken<TuiVersionMeta | nul
 export const TUI_VERSION_MANAGER_PROVIDERS: Provider[] = [
     {
         provide: TUI_SELECTED_VERSION_META,
-        deps: [TUI_BASE_HREF],
-        useFactory: (baseHref: string): TuiVersionMeta | null =>
-            TUI_VERSIONS_META_MAP.get(baseHref) ?? TUI_VERSIONS_META_MAP.get(`/`) ?? null,
+        deps: [TUI_BASE_HREF, DOCUMENT],
+        useFactory: (baseHref: string, doc: Document): TuiVersionMeta | null => {
+            const base = baseHref.replace(doc.location.origin, ``);
+
+            return (
+                TUI_VERSIONS_META_MAP.get(base) ?? TUI_VERSIONS_META_MAP.get(`/`) ?? null
+            );
+        },
     },
 ];
