@@ -77,9 +77,6 @@ export function makeWebpackConfig({server}: Options): WebpackConf {
 
     return (ngConfigs: Configuration): Configuration => {
         const ngRules = [...(ngConfigs.module?.rules || [])].map(rule =>
-            // eslint-disable-next-line @taiga-ui/experience/no-typeof
-            typeof rule === `object` &&
-            !!rule &&
             typeof rule === `object` &&
             !!rule &&
             DO_NOT_MUTATE_RAW_FILE_CONTENTS.some(
