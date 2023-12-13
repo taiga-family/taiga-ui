@@ -9,7 +9,7 @@
         "@tinkoff/ng-dompurify": "4.0.0",
         "date-fns": "2.30.0",
         "dompurify": "3.0.6",
-        "marked": "4.0.17",
+        "marked": "11.1.0",
         "ngx-markdown": "15.1.2"
     },
     "devDependencies": {
