@@ -1,10 +1,5 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-html {
-    scroll-padding-top: 4rem;
-    height: auto;
-}
-
 @keyframes tuiShaking {
     from,
     to {
@@ -28,10 +23,17 @@ html {
 }
 
 @sidebar-width: 16.25rem;
+@sticky-header-height: 4rem;
 
+html,
 body {
+    scroll-padding-top: @sticky-header-height;
     background: var(--tui-base-01);
     height: auto;
+}
+
+tui-root > tui-scroll-controls > .t-bar_vertical {
+    top: @sticky-header-height !important;
 }
 
 tui-doc-main {
