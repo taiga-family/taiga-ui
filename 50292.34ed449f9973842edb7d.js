@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[50292],{50292:n=>{n.exports='<tui-input-date-range\n    class="b-form"\n    [formControl]="control"\n    [items]="items"\n>\n    Choose dates\n</tui-input-date-range>\n'}}]);

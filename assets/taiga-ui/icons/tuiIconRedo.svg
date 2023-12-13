@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" focusable="false" height="1em" width="1em">
+    <g id="tuiIconRedo" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            x="50%"
+            y="50%"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            height="1em"
+            overflow="visible"
+            viewBox="0 0 16 16"
+            width="1em"
+        >
+            <svg x="-8" y="-8">
+                <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path vector-effect="non-scaling-stroke" d="M15.333 2.667v4h-4" />
+                    <path vector-effect="non-scaling-stroke" d="M13.66 10a6 6 0 1 1-1.413-6.24l3.086 2.907" />
+                </g>
+                <defs>
+                    <clipPath>
+                        <path vector-effect="non-scaling-stroke" d="M0 0h16v16H0z" fill="#fff" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </svg>
+    </g>
+</svg>

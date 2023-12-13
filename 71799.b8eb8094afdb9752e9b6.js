@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[71799],{71799:a=>{a.exports='```html\n<tui-avatar>"Batman"</tui-avatar>\n```\n'}}]);

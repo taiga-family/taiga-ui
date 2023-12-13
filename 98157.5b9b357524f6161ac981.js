@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[98157],{98157:n=>{n.exports=".content {\n    padding: 0.5rem 0;\n    white-space: normal;\n}\n"}}]);

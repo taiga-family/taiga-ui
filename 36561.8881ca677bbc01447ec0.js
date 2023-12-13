@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[36561],{36561:n=>{n.exports='<h4>Start content</h4>\n<ng-container *polymorpheusOutlet="context.label as text; context: context">\n    {{ text }}\n</ng-container>\n<h4>End content</h4>\n'}}]);

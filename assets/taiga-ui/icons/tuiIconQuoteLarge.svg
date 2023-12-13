@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" focusable="false" height="1.5em" width="1.5em">
+    <g id="tuiIconQuoteLarge" xmlns="http://www.w3.org/2000/svg">
+        <svg x="50%" y="50%" fill="none" height="1.5em" overflow="visible" viewBox="0 0 24 24" width="1.5em">
+            <svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg">
+                <rect
+                    x="2"
+                    y="5"
+                    vector-effect="non-scaling-stroke"
+                    height="9"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    width="8"
+                />
+                <rect
+                    x="14"
+                    y="5"
+                    vector-effect="non-scaling-stroke"
+                    height="9"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    width="8"
+                />
+                <path
+                    vector-effect="non-scaling-stroke"
+                    d="M10 12C10 17.625 6 21 6 21"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-width="2"
+                />
+                <path
+                    vector-effect="non-scaling-stroke"
+                    d="M22 12C22 17.625 18 21 18 21"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-width="2"
+                />
+            </svg>
+        </svg>
+    </g>
+</svg>
