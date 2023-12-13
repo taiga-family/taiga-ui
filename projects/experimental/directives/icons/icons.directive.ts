@@ -7,7 +7,6 @@ import {TuiIconsComponent} from './icons.component';
 @Directive({
     standalone: true,
     selector: '[tuiIcons]:is(never)',
-    // '[iconLeft]:is(button,tui-badge,tui-chip),[iconRight]:is(button,tui-badge,tui-chip),[tuiBadge][iconLeft],[tuiBadge][iconRight],[tuiChip][iconLeft],[tuiChip][iconRight],[tuiButtonClose]',
     host: {
         tuiIcons: '',
         '[class._icon-left]': 'iconLeft',
