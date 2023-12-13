@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -26,7 +26,7 @@ export class TuiRadioListExample1 {
         },
     ];
 
-    readonly testForm = new FormGroup({
-        tariff: new FormControl(this.items[0]),
+    readonly testForm = new UntypedFormGroup({
+        tariff: new UntypedFormControl(this.items[0]),
     });
 }

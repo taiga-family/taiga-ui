@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -11,8 +11,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiDropdownHoverExample2 {
-    readonly testForm = new FormGroup({
-        option: new FormControl(false),
+    readonly testForm = new UntypedFormGroup({
+        option: new UntypedFormControl(false),
     });
 
     open = false;

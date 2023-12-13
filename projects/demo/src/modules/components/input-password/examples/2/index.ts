@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_PASSWORD_TEXTS, tuiInputPasswordOptionsProvider} from '@taiga-ui/kit';
@@ -24,7 +24,7 @@ import {of} from 'rxjs';
     ],
 })
 export class TuiInputPasswordExample2 {
-    testForm = new FormGroup({
-        testValue: new FormControl('password', Validators.required),
+    testForm = new UntypedFormGroup({
+        testValue: new UntypedFormControl('password', Validators.required),
     });
 }

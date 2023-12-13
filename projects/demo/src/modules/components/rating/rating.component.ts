@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
@@ -37,7 +37,7 @@ export class ExampleTuiRatingComponent {
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    control = new FormControl(5);
+    control = new UntypedFormControl(5);
     colorVariants = ['var(--tui-accent)', '#faaf00', 'pink'];
     color = this.colorVariants[0];
     sizeVariants = [null, '10px', '50px', '4rem'];

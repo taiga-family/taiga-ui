@@ -1,5 +1,5 @@
 import {Component, forwardRef, ViewChild} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample, tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -32,7 +32,7 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
     readonly exampleForm = import('./examples/import/declare-form.md?raw');
 
-    readonly control = new FormControl('', Validators.required);
+    readonly control = new UntypedFormControl('', Validators.required);
 
     override readonly maxLengthVariants: readonly number[] = [10];
 

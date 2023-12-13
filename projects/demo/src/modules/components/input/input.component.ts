@@ -1,5 +1,5 @@
 import {Component, forwardRef, TemplateRef, ViewChild} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -92,7 +92,7 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
     icon = this.iconVariants[0];
     override iconLeft = this.iconVariants[0];
 
-    readonly control = new FormControl('111', Validators.required);
+    readonly control = new UntypedFormControl('111', Validators.required);
 
     placeholder = 'Field placeholder';
 

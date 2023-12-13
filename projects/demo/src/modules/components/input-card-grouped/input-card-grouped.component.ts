@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
@@ -74,7 +74,7 @@ export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInter
 
     readOnly = false;
 
-    control = new FormControl();
+    control = new UntypedFormControl();
 
     get cardSrc(): PolymorpheusContent {
         return tuiIsString(this.cardSrcSelected)

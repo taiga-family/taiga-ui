@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputTagExample3 {
-    readonly testForm = new FormGroup({
-        testValue: new FormControl(['I', 'love', 'Angular']),
+    readonly testForm = new UntypedFormGroup({
+        testValue: new UntypedFormControl(['I', 'love', 'Angular']),
     });
 }

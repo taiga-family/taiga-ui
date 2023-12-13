@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -13,9 +13,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 export class TuiGroupExample1 {
     readonly items = ['Option 1', 'Option 2', 'Option 3'];
 
-    testForm = new FormGroup({
-        testValue: new FormControl('', Validators.required),
-        multiSelectControl: new FormControl([], Validators.required),
-        testValue3: new FormControl('', Validators.required),
+    testForm = new UntypedFormGroup({
+        testValue: new UntypedFormControl('', Validators.required),
+        multiSelectControl: new UntypedFormControl([], Validators.required),
+        testValue3: new UntypedFormControl('', Validators.required),
     });
 }

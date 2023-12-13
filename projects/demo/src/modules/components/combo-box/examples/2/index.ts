@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 
@@ -16,7 +16,7 @@ import {RequestService} from './request.service';
 export class TuiComboBoxExample2 {
     search: string | null = '';
 
-    readonly control = new FormControl(databaseMockData[0]);
+    readonly control = new UntypedFormControl(databaseMockData[0]);
 
     constructor(@Inject(RequestService) readonly service: RequestService) {}
 }

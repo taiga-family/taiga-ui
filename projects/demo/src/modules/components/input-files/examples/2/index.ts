@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormControl, ValidatorFn} from '@angular/forms';
+import {AbstractControl, UntypedFormControl, ValidatorFn} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
@@ -12,7 +12,7 @@ import {TuiFileLike} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiInputFilesExample2 implements OnInit {
-    readonly control = new FormControl([], [maxFilesLength(5)]);
+    readonly control = new UntypedFormControl([], [maxFilesLength(5)]);
     rejectedFiles: readonly TuiFileLike[] = [];
 
     ngOnInit(): void {

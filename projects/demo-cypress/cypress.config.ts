@@ -89,6 +89,34 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
                 newSnapshotMarkEnabled: config.baseUrl === `http://localhost:3333/`,
             });
 
+            const webpackPreprocessor = require(
+                `@cypress/webpack-batteries-included-preprocessor`,
+            );
+            const webpackOptions = webpackPreprocessor.defaultOptions.webpackOptions;
+
+            webpackOptions.module.rules.unshift({
+                test: /[/\\]@angular[/\\].+\.m?js$/,
+                resolve: {
+                    fullySpecified: false,
+                },
+                use: {
+                    loader: `babel-loader`,
+                    options: {
+                        plugins: [`@angular/compiler-cli/linker/babel`],
+                        compact: false,
+                        cacheDirectory: true,
+                    },
+                },
+            });
+
+            on(
+                `file:preprocessor`,
+                webpackPreprocessor({
+                    webpackOptions,
+                    typescript: require.resolve(`typescript`),
+                }),
+            );
+
             on(`before:browser:launch`, (browser, launchOptions) => {
                 if (browser.name === `chrome`) {
                     launchOptions.args.push(

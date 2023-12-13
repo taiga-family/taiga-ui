@@ -11,6 +11,7 @@ export function createAngularJson(
   "defaultProject": "demo",
   "projects": {
     "demo": {
+        "root": "",
         "architect": {
           "build": {
             "options": {
@@ -42,6 +43,7 @@ export function createAngularJsonWithAssets(): void {
   "defaultProject": "demo",
   "projects": {
     "demo": {
+        "root": "",
         "architect": {
           "build": {
             "options": {

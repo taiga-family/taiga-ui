@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample, tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import {
@@ -81,7 +81,7 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
         HTML: import('./examples/9/index.html?raw'),
     };
 
-    readonly control = new FormControl(
+    readonly control = new UntypedFormControl(
         ['John Cleese', 'Eric Idle', 'Michael Palin'],
         Validators.required,
     );

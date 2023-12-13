@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_DATE_FORMAT, TUI_DATE_SEPARATOR, TuiDay, TuiTime} from '@taiga-ui/cdk';
@@ -15,5 +15,8 @@ import {TUI_DATE_FORMAT, TUI_DATE_SEPARATOR, TuiDay, TuiTime} from '@taiga-ui/cd
     ],
 })
 export class TuiInputDateTimeExample3 {
-    readonly control = new FormControl([new TuiDay(2017, 2, 15), new TuiTime(12, 30)]);
+    readonly control = new UntypedFormControl([
+        new TuiDay(2017, 2, 15),
+        new TuiTime(12, 30),
+    ]);
 }

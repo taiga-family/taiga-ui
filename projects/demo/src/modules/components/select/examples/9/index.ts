@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCurrency} from '@taiga-ui/addon-commerce';
@@ -35,5 +35,5 @@ export class TuiSelectExample9 {
         },
     ];
 
-    account = new FormControl(this.accounts[0]);
+    account = new UntypedFormControl(this.accounts[0]);
 }

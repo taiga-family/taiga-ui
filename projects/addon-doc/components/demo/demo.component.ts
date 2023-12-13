@@ -13,7 +13,7 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {AbstractControl, FormGroup} from '@angular/forms';
+import {AbstractControl, UntypedFormGroup} from '@angular/forms';
 import {Params, UrlSerializer, UrlTree} from '@angular/router';
 import {TuiDemoParams} from '@taiga-ui/addon-doc/interfaces';
 import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
@@ -68,7 +68,7 @@ export class TuiDocDemoComponent implements OnInit {
     @ContentChild(TemplateRef)
     readonly template: TemplateRef<Record<string, unknown>> | null = null;
 
-    testForm?: FormGroup;
+    testForm?: UntypedFormGroup;
 
     readonly updateOnVariants = ['change', 'blur', 'submit'] as const;
 
@@ -174,7 +174,7 @@ export class TuiDocDemoComponent implements OnInit {
         const {control, updateOn} = this;
 
         if (control) {
-            this.testForm = new FormGroup({testValue: control}, {updateOn});
+            this.testForm = new UntypedFormGroup({testValue: control}, {updateOn});
         }
     }
 

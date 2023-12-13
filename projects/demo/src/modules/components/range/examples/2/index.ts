@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -13,5 +13,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 export class TuiRangeExample2 {
     smallRangeValue = [0, 40];
 
-    readonly bigRangeControl = new FormControl([40, 60]);
+    readonly bigRangeControl = new UntypedFormControl([40, 60]);
 }

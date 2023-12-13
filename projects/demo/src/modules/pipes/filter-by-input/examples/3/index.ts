@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -19,5 +19,5 @@ export class TuiFilterByInputExample3 {
         'Yoda',
     ];
 
-    readonly control = new FormControl([this.items[0]]);
+    readonly control = new UntypedFormControl([this.items[0]]);
 }

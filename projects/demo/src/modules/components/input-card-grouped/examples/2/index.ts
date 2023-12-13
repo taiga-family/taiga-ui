@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiInputCardGroupedComponent} from '@taiga-ui/addon-commerce';
 
@@ -22,7 +22,7 @@ export class TuiInputCardGroupedExample2 {
         {card: '4200***9000', name: 'Dogecoins', bank: 'Crypto'},
     ];
 
-    readonly card = new FormGroup({meta: new FormControl(this.items[0])});
+    readonly card = new UntypedFormGroup({meta: new UntypedFormControl(this.items[0])});
 
     onClick(component: TuiInputCardGroupedComponent): void {
         this.card.get('meta')?.setValue(null);

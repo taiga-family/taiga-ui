@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -11,11 +11,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputInlineExample1 {
-    testForm = new FormGroup({
-        testValue1: new FormControl(`Hello 1`),
-        testValue2: new FormControl(`Hello 2`),
-        testValue3: new FormControl(`Hello 3`),
-        testValue4: new FormControl(``),
+    testForm = new UntypedFormGroup({
+        testValue1: new UntypedFormControl(`Hello 1`),
+        testValue2: new UntypedFormControl(`Hello 2`),
+        testValue3: new UntypedFormControl(`Hello 3`),
+        testValue4: new UntypedFormControl(``),
     });
 
     get toggleContent(): string {

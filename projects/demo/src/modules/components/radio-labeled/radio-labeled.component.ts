@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeL} from '@taiga-ui/core';
@@ -48,5 +48,5 @@ export class ExampleTuiRadioLabeledComponent extends AbstractExampleTuiControl {
 
     pseudoDisabled = false;
 
-    readonly control = new FormControl(this.items[0]);
+    readonly control = new UntypedFormControl(this.items[0]);
 }

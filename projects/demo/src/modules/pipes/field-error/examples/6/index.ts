@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
@@ -24,8 +24,12 @@ import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
 export class TuiFieldErrorContentPipeExample6 {
     readonly data = [{name: 'Latte'}, {name: 'Cappuccino'}] as const;
 
-    latteControl = new FormControl(null, [Validators.required, Validators.max(6)]);
-    cappuccinoControl = new FormControl(null, [Validators.required, Validators.max(5)]);
+    latteControl = new UntypedFormControl(null, [Validators.required, Validators.max(6)]);
+    cappuccinoControl = new UntypedFormControl(null, [
+        Validators.required,
+        Validators.max(5),
+    ]);
+
     controls = [this.latteControl, this.cappuccinoControl];
 
     readonly columns = ['name', 'price'];
