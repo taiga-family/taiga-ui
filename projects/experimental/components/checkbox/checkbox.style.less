@@ -27,12 +27,16 @@
     &:checked,
     &:indeterminate {
         &:before {
-            mask-image: var(--t-mask);
+            mask-image: var(--t-checked);
             transform: scale(1);
             transition:
                 transform var(--tui-duration) ease-in-out,
                 mask 0s ease-in-out;
         }
+    }
+
+    &:indeterminate :before {
+        mask-image: var(--t-indeterminate);
     }
 
     &[data-size='s'] {

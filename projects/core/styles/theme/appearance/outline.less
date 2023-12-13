@@ -2,18 +2,9 @@
 
 [tuiAppearance][data-appearance='outline'],
 [tuiAppearance][data-appearance='whiteblock'] {
+    --t-bs: var(--tui-base-04);
     color: var(--tui-link);
-    box-shadow: inset 0 0 0 1px var(--t-bs, var(--tui-base-04));
-
-    .appearance-hover({
-        background: var(--tui-clear);
-        --t-bs: var(--tui-base-05);
-    });
-
-    .appearance-active({
-        background: var(--tui-clear);
-        --t-bs: var(--tui-base-06);
-    });
+    box-shadow: inset 0 0 0 1px var(--t-bs);
 
     &:checked {
         box-shadow: inset 0 0 0 2px var(--t-bs, var(--tui-primary));
@@ -34,6 +25,16 @@
     &:checked:invalid {
         box-shadow: inset 0 0 0 2px var(--tui-error-fill);
     }
+
+    .appearance-hover({
+        background: var(--tui-clear);
+        --t-bs: var(--tui-base-05);
+    });
+
+    .appearance-active({
+        background: var(--tui-clear);
+        --t-bs: var(--tui-base-06);
+    });
 }
 
 [tuiAppearance][data-appearance='whiteblock'] {

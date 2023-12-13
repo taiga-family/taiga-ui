@@ -1,10 +1,10 @@
 import {Directive, Inject, Input} from '@angular/core';
 import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
 import {
-    TUI_APPEARANCE,
+    TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
 } from '@taiga-ui/experimental/directives/appearance';
-import {TUI_ICONS} from '@taiga-ui/experimental/directives/icons';
+import {TuiIconsDirective} from '@taiga-ui/experimental/directives/icons';
 
 import {TuiBadgeComponent} from './badge.component';
 import {TUI_BADGE_OPTIONS, TuiBadgeOptions} from './badge.options';
@@ -12,7 +12,20 @@ import {TUI_BADGE_OPTIONS, TuiBadgeOptions} from './badge.options';
 @Directive({
     selector: 'tui-badge,[tuiBadge]',
     providers: [tuiAppearanceOptionsProvider(TUI_BADGE_OPTIONS)],
-    hostDirectives: [TUI_APPEARANCE, TUI_ICONS],
+    hostDirectives: [
+        {
+            directive: TuiAppearanceDirective,
+            inputs: [
+                'tuiAppearance: appearance',
+                'tuiAppearanceState',
+                'tuiAppearanceFocus',
+            ],
+        },
+        {
+            directive: TuiIconsDirective,
+            inputs: ['iconLeft', 'iconRight'],
+        },
+    ],
     host: {
         tuiBadgeNew: '',
         '[class._dot]': 'dot',

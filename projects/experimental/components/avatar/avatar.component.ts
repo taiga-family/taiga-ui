@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
 import {tuiIsString, TuiStringHandler} from '@taiga-ui/cdk';
 import {
-    TUI_APPEARANCE,
+    TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
 } from '@taiga-ui/experimental/directives/appearance';
 import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
@@ -15,7 +15,16 @@ import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar.options';
     styleUrls: ['./avatar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAppearanceOptionsProvider(TUI_AVATAR_OPTIONS)],
-    hostDirectives: [TUI_APPEARANCE],
+    hostDirectives: [
+        {
+            directive: TuiAppearanceDirective,
+            inputs: [
+                'tuiAppearance: appearance',
+                'tuiAppearanceState',
+                'tuiAppearanceFocus',
+            ],
+        },
+    ],
     host: {
         '[attr.data-size]': 'size',
         '[attr.data-type]': 'type',

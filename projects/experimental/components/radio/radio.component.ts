@@ -8,10 +8,7 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidatorDirective} from '@taiga-ui/cdk';
-import {
-    TUI_APPEARANCE,
-    TuiAppearanceDirective,
-} from '@taiga-ui/experimental/directives/appearance';
+import {TuiAppearanceDirective} from '@taiga-ui/experimental/directives/appearance';
 
 import {TUI_RADIO_OPTIONS} from './radio.options';
 
@@ -20,7 +17,17 @@ import {TUI_RADIO_OPTIONS} from './radio.options';
     template: '',
     styleUrls: ['./radio.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TUI_APPEARANCE, TuiNativeValidatorDirective],
+    hostDirectives: [
+        {
+            directive: TuiAppearanceDirective,
+            inputs: [
+                'tuiAppearance: appearance',
+                'tuiAppearanceState',
+                'tuiAppearanceFocus',
+            ],
+        },
+        TuiNativeValidatorDirective,
+    ],
     host: {
         '[disabled]': '!control || control.disabled',
         '[attr.data-size]': 'size',

@@ -9,10 +9,10 @@ import {
 import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
 import {
-    TUI_APPEARANCE,
+    TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
 } from '@taiga-ui/experimental/directives/appearance';
-import {TUI_ICONS} from '@taiga-ui/experimental/directives/icons';
+import {TuiIconsDirective} from '@taiga-ui/experimental/directives/icons';
 import {Observable} from 'rxjs';
 
 import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button.options';
@@ -31,7 +31,20 @@ export class TuiButtonStylesComponent {}
 @Directive({
     selector: 'a[tuiButton],button[tuiButton],a[tuiIconButton],button[tuiIconButton]',
     providers: [MODE_PROVIDER, tuiAppearanceOptionsProvider(TUI_BUTTON_OPTIONS)],
-    hostDirectives: [TUI_APPEARANCE, TUI_ICONS],
+    hostDirectives: [
+        {
+            directive: TuiAppearanceDirective,
+            inputs: [
+                'tuiAppearance: appearance',
+                'tuiAppearanceState',
+                'tuiAppearanceFocus',
+            ],
+        },
+        {
+            directive: TuiIconsDirective,
+            inputs: ['iconLeft', 'iconRight'],
+        },
+    ],
     host: {
         tuiButtonNew: '',
         '[attr.data-size]': 'size',

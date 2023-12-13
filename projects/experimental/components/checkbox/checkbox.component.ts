@@ -1,6 +1,5 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     DoCheck,
     ElementRef,
@@ -14,15 +13,11 @@ import {
     TuiDestroyService,
     tuiIsString,
     TuiNativeValidatorDirective,
-    tuiWatch,
 } from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
-import {
-    TUI_APPEARANCE,
-    TuiAppearanceDirective,
-} from '@taiga-ui/experimental/directives/appearance';
+import {TuiAppearanceDirective} from '@taiga-ui/experimental/directives/appearance';
 import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
-import {distinctUntilChanged, takeUntil} from 'rxjs/operators';
+import {takeUntil} from 'rxjs/operators';
 
 import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
 
@@ -32,16 +27,26 @@ import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
     styleUrls: ['./checkbox.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
-    hostDirectives: [TUI_APPEARANCE, TuiNativeValidatorDirective],
+    hostDirectives: [
+        {
+            directive: TuiAppearanceDirective,
+            inputs: [
+                'tuiAppearance: appearance',
+                'tuiAppearanceState',
+                'tuiAppearanceFocus',
+            ],
+        },
+        TuiNativeValidatorDirective,
+    ],
     host: {
         '[disabled]': '!control || control.disabled',
         '[attr.data-size]': 'size',
         '[class._readonly]': '!control',
-        '[style.--t-mask]': 'icon',
+        '[style.--t-checked]': 'getIcon("checked")',
+        '[style.--t-indeterminate]': 'getIcon("indeterminate")',
     },
 })
 export class TuiCheckboxComponent implements OnInit, DoCheck {
-    private readonly cdr = inject(ChangeDetectorRef);
     private readonly appearance = inject(TuiAppearanceDirective);
     private readonly options = inject(TUI_CHECKBOX_OPTIONS);
     private readonly resolver = inject(TUI_ICON_RESOLVER);
@@ -53,22 +58,13 @@ export class TuiCheckboxComponent implements OnInit, DoCheck {
 
     readonly control: NgControl | null = inject(NgControl, {optional: true});
 
-    get icon(): string {
-        const option = this.el.indeterminate
-            ? this.options.icons.indeterminate
-            : this.options.icons.checked;
-        const icon = tuiIsString(option) ? option : option(this.size);
-
-        return `url(${this.resolver(icon)})`;
-    }
-
     ngOnInit(): void {
         if (!this.control?.valueChanges) {
             return;
         }
 
         tuiControlValue(this.control)
-            .pipe(distinctUntilChanged(), tuiWatch(this.cdr), takeUntil(this.destroy$))
+            .pipe(takeUntil(this.destroy$))
             .subscribe(value => {
                 this.el.indeterminate = value === null;
             });
@@ -76,5 +72,12 @@ export class TuiCheckboxComponent implements OnInit, DoCheck {
 
     ngDoCheck(): void {
         this.appearance.tuiAppearance = this.options.appearance(this.el);
+    }
+
+    getIcon(state: 'checked' | 'indeterminate'): string {
+        const option = this.options.icons[state];
+        const icon = tuiIsString(option) ? option : option(this.size);
+
+        return `url(${this.resolver(icon)})`;
     }
 }

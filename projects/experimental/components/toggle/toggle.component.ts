@@ -10,10 +10,7 @@ import {
 import {NgControl} from '@angular/forms';
 import {tuiIsString, TuiNativeValidatorDirective} from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
-import {
-    TUI_APPEARANCE,
-    TuiAppearanceDirective,
-} from '@taiga-ui/experimental/directives/appearance';
+import {TuiAppearanceDirective} from '@taiga-ui/experimental/directives/appearance';
 import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
 
 import {TUI_TOGGLE_OPTIONS} from './toggle.options';
@@ -23,7 +20,17 @@ import {TUI_TOGGLE_OPTIONS} from './toggle.options';
     template: '',
     styleUrls: ['./toggle.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TUI_APPEARANCE, TuiNativeValidatorDirective],
+    hostDirectives: [
+        {
+            directive: TuiAppearanceDirective,
+            inputs: [
+                'tuiAppearance: appearance',
+                'tuiAppearanceState',
+                'tuiAppearanceFocus',
+            ],
+        },
+        TuiNativeValidatorDirective,
+    ],
     host: {
         '[disabled]': '!control || control.disabled',
         '[attr.data-size]': 'size',
