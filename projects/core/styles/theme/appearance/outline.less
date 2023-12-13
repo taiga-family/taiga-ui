@@ -7,14 +7,15 @@
     box-shadow: inset 0 0 0 1px var(--t-bs);
 
     &:checked {
-        box-shadow: inset 0 0 0 2px var(--t-bs, var(--tui-primary));
+        --t-bs: var(--tui-primary);
+        box-shadow: inset 0 0 0 2px var(--t-bs);
 
         .appearance-hover({
-            --t-bs: inset 0 0 0 2px var(--tui-primary-hover);
+            --t-bs: var(--tui-primary-hover);
         });
 
         .appearance-active({
-            --t-bs: inset 0 0 0 2px var(--tui-primary-active);
+            --t-bs: var(--tui-primary-active);
         });
     }
 
