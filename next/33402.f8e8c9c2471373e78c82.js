@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[33402],{33402:n=>{n.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n:host {\n    display: block;\n    width: 27rem;\n}\n\n.ticks-labels {\n    .tui-slider-ticks-labels(m);\n}\n"}}]);

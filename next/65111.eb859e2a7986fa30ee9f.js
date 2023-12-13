@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[65111],{65111:n=>{n.exports='<input\n    tuiAppearance="secondary"\n    type="checkbox"\n    class="like"\n/>\n'}}]);

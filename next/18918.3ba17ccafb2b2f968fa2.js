@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[18918],{18918:n=>{n.exports='<button\n    size="l"\n    status="custom"\n    tuiTag\n    value="Hey there"\n    class="tag"\n    [hoverable]="true"\n></button>\n'}}]);

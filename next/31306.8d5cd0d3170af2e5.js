@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[31306],{31306:e=>{e.exports="```ts\n// ...\nimport {TuiSvgService, tuiIconTrashLarge} from '@taiga-ui/core';\n\n@Component({\n  // ...\n})\nexport class MyComponent {\n  constructor(@Inject(TuiSvgService) tuiSvgService: TuiSvgService) {\n    tuiSvgService.define({tuiIconTrashLarge});\n  }\n}\n```\n"}}]);

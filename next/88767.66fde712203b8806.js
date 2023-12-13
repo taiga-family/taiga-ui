@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[88767],{88767:e=>{e.exports=".list {\n    width: 12rem;\n}\n"}}]);

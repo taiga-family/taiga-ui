@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[14847],{14847:n=>{n.exports='```html\n<ng-container [formGroup]="testForm">\n  <tui-input-count formControlName="testValue"></tui-input-count>\n</ng-container>\n```\n'}}]);

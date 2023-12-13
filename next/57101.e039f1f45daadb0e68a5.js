@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[57101],{57101:e=>{e.exports='<tui-progress-segmented\n    class="green"\n    [max]="8"\n    [value]="6"\n></tui-progress-segmented>\n\n<tui-progress-segmented\n    [colors]="arrayColors"\n    [max]="arrayColors.length"\n    [value]="arrayColors.length"\n></tui-progress-segmented>\n'}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[37648],{37648:n=>{n.exports='```html\n<img\n  alt="United Arab Emirates"\n  [src]="\'AE\' | tuiFlag"\n/>\n```\n'}}]);

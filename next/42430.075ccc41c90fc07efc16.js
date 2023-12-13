@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[42430],{42430:a=>{a.exports='```html\n<tui-chip appearance="primary">{{ value }}</tui-chip>\n```\n'}}]);

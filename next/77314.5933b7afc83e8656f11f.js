@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[77314],{77314:n=>{n.exports="```ts\n@Component({\n  // ...\n})\nexport class AppComponent {\n  constructor(@Inject(TuiThemeNightService) readonly night: TuiThemeNightService) {}\n\n  get mode(): TuiBrightness | null {\n    return this.night.value ? 'onDark' : null;\n  }\n}\n```\n"}}]);

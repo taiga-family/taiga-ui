@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[19597],{19597:n=>{n.exports='<p>This notification will be removed after router change (see component sample)</p>\n<button\n    size="m"\n    tuiButton\n    type="button"\n    (click)="showNotification()"\n>\n    Show\n</button>\n'}}]);

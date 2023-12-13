@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[27115],{27115:t=>{t.exports='<tui-input-tag\n    tuiTextfieldIcon="tuiIconCalendarLarge"\n    [formControl]="control"\n    [maskito]="options"\n    [tagValidator]="tagValidator"\n    [tuiTextfieldLabelOutside]="true"\n>\n    dd.mm.yyyy\n</tui-input-tag>\n'}}]);

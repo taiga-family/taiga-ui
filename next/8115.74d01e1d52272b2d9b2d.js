@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[8115],{8115:i=>{i.exports='<tui-pin class="blue"></tui-pin>\n<tui-pin class="yellow"></tui-pin>\n<tui-pin class="green"></tui-pin>\n<tui-pin class="red"></tui-pin>\n'}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[31067],{31067:n=>{n.exports='<iframe\n    *ngIf="src$ | async as src; else loading"\n    title="pdf"\n    [src]="src"\n></iframe>\n\n<ng-template #loading>\n    <tui-loader size="xl"></tui-loader>\n</ng-template>\n'}}]);

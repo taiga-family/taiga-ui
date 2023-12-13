@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[59549],{59549:a=>{a.exports="tui-dialog[data-appearance='lorem-ipsum'] {\n    margin: 1.25rem auto;\n    border: none;\n    border-radius: 0;\n}\n"}}]);

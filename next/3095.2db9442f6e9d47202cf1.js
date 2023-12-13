@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[3095],{3095:n=>{n.exports="import {Component} from '@angular/core';\n\n@Component({\n    selector: 'tui-icons-mapping-example-3',\n    templateUrl: './index.html',\n})\nexport class TuiIconsMappingExample3 {}\n"}}]);

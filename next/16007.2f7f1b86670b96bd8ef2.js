@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[16007],{16007:n=>{n.exports='<button\n    tuiButton\n    type="button"\n    (click)="stream$.next()"\n>\n    Show\n</button>\n'}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[1778],{1778:n=>{n.exports='<div\n    *ngIf="show"\n    class="tui-space_bottom-2"\n>\n    fibonacci(42) = {{ fibonacci42 }}\n</div>\n<button\n    tuiButton\n    type="button"\n    (click)="show = !show"\n>\n    Show/hide\n</button>\n'}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[88767],{88767:n=>{n.exports=".list {\n    width: 12rem;\n}\n"}}]);

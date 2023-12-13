@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[78407],{78407:n=>{n.exports=".control {\n    height: 10rem;\n    margin-bottom: 1rem;\n}\n\n.content {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    gap: 1rem;\n}\n"}}]);

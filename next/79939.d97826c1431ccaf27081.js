@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[79939],{79939:e=>{e.exports='<tui-progress-circle\n    *tuiRepeatTimes="let _ of 4"\n    new\n    size="l"\n    [max]="100"\n    [value]="60"\n></tui-progress-circle>\n'}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[78400],{78400:e=>{e.exports='```html\n<div *ngIf="item | tuiIsPresent">{{item}}</div>\n```\n'}}]);

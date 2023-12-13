@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[70377],{70377:n=>{n.exports=":host {\n    display: flex;\n    gap: 1rem;\n}\n\n.badge {\n    background: #aff218;\n    color: #333;\n}\n"}}]);

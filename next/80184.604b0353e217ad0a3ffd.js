@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[80184],{80184:n=>{n.exports=".success {\n    color: var(--tui-success-fill);\n}\n\n.error {\n    color: var(--tui-error-fill);\n}\n"}}]);

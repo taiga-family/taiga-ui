@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[79120],{79120:e=>{e.exports='<tui-badge\n    size="l"\n    class="badge"\n    [hoverable]="true"\n    [value]="100"\n></tui-badge>\n'}}]);

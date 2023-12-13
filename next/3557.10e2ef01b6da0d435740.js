@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[3557],{3557:n=>{n.exports=".wrapper {\n    display: flex;\n    align-items: center;\n}\n\n.date {\n    margin-left: 1rem;\n\n    &_empty {\n        color: var(--tui-text-03);\n    }\n}\n"}}]);

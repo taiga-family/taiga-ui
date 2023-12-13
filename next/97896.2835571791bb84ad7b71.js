@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[97896],{97896:t=>{t.exports="```html\n<router-outlet></router-outlet>\n```\n"}}]);
