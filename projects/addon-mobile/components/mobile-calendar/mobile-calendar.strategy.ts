@@ -1,7 +1,6 @@
 import {CdkVirtualScrollViewport, VirtualScrollStrategy} from '@angular/cdk/scrolling';
 import {MONTHS_IN_YEAR, tuiPure, TuiScrollService} from '@taiga-ui/cdk';
-import {Observable, Subject} from 'rxjs';
-import {distinctUntilChanged, takeUntil} from 'rxjs/operators';
+import {distinctUntilChanged, Observable, Subject, takeUntil} from 'rxjs';
 
 import {
     ANDROID_CYCLE,

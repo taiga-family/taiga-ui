@@ -1,5 +1,5 @@
 import {Directive, Inject, Input, Output} from '@angular/core';
-import {map} from 'rxjs/operators';
+import {map} from 'rxjs';
 
 import {TuiTableDirective} from './table.directive';
 

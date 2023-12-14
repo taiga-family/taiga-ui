@@ -41,18 +41,22 @@ import {
     TUI_DONE_WORD,
     tuiImmutableUpdateInputDateMulti,
 } from '@taiga-ui/kit';
-import {identity, MonoTypeOperatorFunction, Observable, race, timer} from 'rxjs';
 import {
     debounceTime,
     delay,
     filter,
+    identity,
     map,
     mergeMap,
+    MonoTypeOperatorFunction,
+    Observable,
+    race,
     switchMap,
     take,
     takeUntil,
+    timer,
     windowToggle,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 import {
     RANGE,

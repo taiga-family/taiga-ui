@@ -1,7 +1,6 @@
 import {fakeAsync, tick} from '@angular/core/testing';
 import {tuiMustBePresent} from '@taiga-ui/cdk/observables/must-be-present';
-import {Subject} from 'rxjs';
-import {first} from 'rxjs/operators';
+import {first, Subject} from 'rxjs';
 
 describe(`tuiMustBePresent operator function`, () => {
     it(`not throws on NaN`, fakeAsync(() => {

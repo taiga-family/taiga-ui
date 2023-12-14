@@ -19,6 +19,8 @@ describe(`TuiBreakpointService`, () => {
             .fn()
             .mockReturnValue({...mock, matches: true, media: `(max-width: 767px)`}),
         innerWidth: 700,
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
     };
 
     beforeEach(async () => {

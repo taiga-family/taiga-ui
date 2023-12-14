@@ -1,8 +1,7 @@
 import {ChangeDetectorRef, Directive, ElementRef, Inject, Self} from '@angular/core';
 import {TuiDestroyService, tuiWatch} from '@taiga-ui/cdk';
 import {TuiRouterLinkActiveService} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
-import {filter, takeUntil} from 'rxjs/operators';
+import {filter, Observable, takeUntil} from 'rxjs';
 
 import {TuiTabBarComponent} from './tab-bar.component';
 

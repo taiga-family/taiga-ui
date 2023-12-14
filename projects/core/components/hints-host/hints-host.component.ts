@@ -9,8 +9,7 @@ import {
 import {TUI_PARENT_ANIMATION, TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiHintService} from '@taiga-ui/core/services';
-import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {Observable, takeUntil} from 'rxjs';
 
 @Component({
     selector: 'tui-hints-host',

@@ -4,8 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsFalsy} from '@taiga-ui/cdk';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
-import {interval, of} from 'rxjs';
-import {map, scan, startWith} from 'rxjs/operators';
+import {interval, map, of, scan, startWith} from 'rxjs';
 
 @Component({
     selector: 'tui-field-error-pipe-example-2',

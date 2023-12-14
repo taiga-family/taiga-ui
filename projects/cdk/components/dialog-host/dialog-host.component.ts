@@ -14,8 +14,7 @@ import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TUI_DIALOGS, TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TuiDialog} from '@taiga-ui/cdk/types';
 import {tuiCreateToken} from '@taiga-ui/cdk/utils';
-import {combineLatest, Observable, of} from 'rxjs';
-import {map, takeUntil} from 'rxjs/operators';
+import {combineLatest, map, Observable, of, takeUntil} from 'rxjs';
 
 const FAKE_HISTORY_STATE = {label: 'ignoreMe'} as const;
 

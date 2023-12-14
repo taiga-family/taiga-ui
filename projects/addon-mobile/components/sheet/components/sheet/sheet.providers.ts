@@ -8,8 +8,7 @@ import {
     tuiTypedFromEvent,
     tuiZonefree,
 } from '@taiga-ui/cdk';
-import {merge, Observable} from 'rxjs';
-import {map, share} from 'rxjs/operators';
+import {map, merge, Observable, share} from 'rxjs';
 
 import {iosScrollFactory} from '../../ios.hacks';
 import {TUI_SHEET, TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';

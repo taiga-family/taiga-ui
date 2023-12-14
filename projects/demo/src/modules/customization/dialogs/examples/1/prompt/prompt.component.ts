@@ -3,8 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDestroyService, TuiDialog} from '@taiga-ui/cdk';
 import {TuiDialogCloseService} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {Observable, takeUntil} from 'rxjs';
 
 import {PromptOptions} from './prompt-options';
 

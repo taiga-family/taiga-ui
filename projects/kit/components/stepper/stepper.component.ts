@@ -26,8 +26,7 @@ import {
     TuiScrollService,
 } from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DURATION, TuiOrientation} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
-import {delay, takeUntil} from 'rxjs/operators';
+import {delay, Observable, takeUntil} from 'rxjs';
 
 import {TuiStepComponent} from './step/step.component';
 

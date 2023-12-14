@@ -14,8 +14,7 @@ import {
 import {EMPTY_QUERY, TUI_IS_IOS, tuiPure, tuiZonefull} from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {TUI_MORE_WORD} from '@taiga-ui/kit';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, Observable} from 'rxjs';
 
 import {fakeSmoothScroll} from '../../ios.hacks';
 import {TuiSheet, TuiSheetRequiredProps} from '../../sheet';

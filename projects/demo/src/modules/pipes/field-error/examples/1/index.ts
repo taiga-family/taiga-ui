@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {distinctUntilChanged} from 'rxjs/operators';
+import {distinctUntilChanged} from 'rxjs';
 
 const latinChars = /^[a-zA-Z]+$/;
 

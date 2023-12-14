@@ -14,8 +14,7 @@ import {
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
-import {BehaviorSubject, Subject, timer} from 'rxjs';
-import {debounce, filter, map} from 'rxjs/operators';
+import {BehaviorSubject, debounce, filter, map, Subject, timer} from 'rxjs';
 
 @Component({
     selector: 'tui-tiles',

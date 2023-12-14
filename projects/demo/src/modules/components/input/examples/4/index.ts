@@ -6,7 +6,7 @@ import {assets} from '@demo/utils';
 import {TuiCurrency} from '@taiga-ui/addon-commerce';
 import {TUI_DEFAULT_MATCHER, tuiControlValue} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {map} from 'rxjs/operators';
+import {map} from 'rxjs';
 
 class User {
     constructor(

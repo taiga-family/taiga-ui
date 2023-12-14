@@ -10,8 +10,7 @@ import {
 } from '@angular/core';
 import {TuiHandler} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Subject} from 'rxjs';
-import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
+import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
 import {TuiTreeChildrenDirective} from '../../directives/tree-children.directive';
 import {TuiTreeContext} from '../../misc/tree.interfaces';

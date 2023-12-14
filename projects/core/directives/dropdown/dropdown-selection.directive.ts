@@ -29,8 +29,13 @@ import {
 } from '@taiga-ui/core/abstract';
 import {TUI_SELECTION_STREAM} from '@taiga-ui/core/tokens';
 import {tuiGetWordRange} from '@taiga-ui/core/utils';
-import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
-import {distinctUntilChanged, map} from 'rxjs/operators';
+import {
+    BehaviorSubject,
+    combineLatest,
+    distinctUntilChanged,
+    map,
+    Observable,
+} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 

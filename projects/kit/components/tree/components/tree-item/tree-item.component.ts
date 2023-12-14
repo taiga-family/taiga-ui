@@ -11,8 +11,7 @@ import {
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Subject} from 'rxjs';
-import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
+import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
 import type {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interfaces';
 import {

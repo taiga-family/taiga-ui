@@ -7,8 +7,7 @@ import {
     TuiHandler,
     tuiIsNumber,
 } from '@taiga-ui/cdk';
-import {Observable, Subject, timer} from 'rxjs';
-import {map, shareReplay, startWith, switchMap} from 'rxjs/operators';
+import {map, Observable, shareReplay, startWith, Subject, switchMap, timer} from 'rxjs';
 
 const DICTIONARY = [
     {id: 1, name: 'Luke Skywalker'},

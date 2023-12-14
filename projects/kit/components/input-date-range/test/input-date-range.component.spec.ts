@@ -308,6 +308,20 @@ describe(`InputDateRangeComponent`, () => {
             return dateTransformer && new TestDateRangeTransformer(dateTransformer);
         }
 
+        @Component({
+            template: `
+                <tui-root>
+                    <tui-input-date-range
+                        [formControl]="control"
+                        [items]="items"
+                        [max]="max"
+                        [min]="min"
+                        [readOnly]="readOnly"
+                        [tuiTextfieldCleaner]="cleaner"
+                    ></tui-input-date-range>
+                </tui-root>
+            `,
+        })
         class TransformerTestComponent extends TestComponent {
             override control = new FormControl([
                 new Date(2022, 0, 31),

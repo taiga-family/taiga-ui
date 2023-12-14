@@ -3,8 +3,15 @@ import {ANIMATION_FRAME, PERFORMANCE} from '@ng-web-apis/common';
 import {tuiDescribeSector} from '@taiga-ui/addon-charts/utils';
 import {tuiClamp, TuiDestroyService, tuiEaseInOutQuad, tuiZonefree} from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DURATION} from '@taiga-ui/core';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {map, pairwise, switchMap, takeUntil, takeWhile} from 'rxjs/operators';
+import {
+    BehaviorSubject,
+    map,
+    Observable,
+    pairwise,
+    switchMap,
+    takeUntil,
+    takeWhile,
+} from 'rxjs';
 
 @Directive({
     selector: 'path[tuiPieChart]',

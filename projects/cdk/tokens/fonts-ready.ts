@@ -1,7 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import {inject, InjectionToken} from '@angular/core';
-import {EMPTY, from, Observable} from 'rxjs';
-import {shareReplay} from 'rxjs/operators';
+import {EMPTY, from, Observable, shareReplay} from 'rxjs';
 
 export const TUI_FONTS_READY = new InjectionToken<Observable<unknown>>(
     `[TUI_FONTS_READY]`,

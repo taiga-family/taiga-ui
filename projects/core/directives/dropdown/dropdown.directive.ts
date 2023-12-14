@@ -30,8 +30,7 @@ import {
 import {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable, Subject} from 'rxjs';
-import {takeUntil, throttleTime} from 'rxjs/operators';
+import {Observable, Subject, takeUntil, throttleTime} from 'rxjs';
 
 import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
 import {TuiDropdownOpenDirective} from './dropdown-open.directive';

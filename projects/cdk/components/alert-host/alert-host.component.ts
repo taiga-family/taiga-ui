@@ -15,8 +15,7 @@ import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TUI_ALERTS} from '@taiga-ui/cdk/tokens';
 import {TuiDialog, TuiTypedMapper} from '@taiga-ui/cdk/types';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {combineLatest, Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {combineLatest, Observable, takeUntil} from 'rxjs';
 
 @Component({
     selector: 'tui-alert-host',

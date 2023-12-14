@@ -11,8 +11,7 @@ import {TuiTouchMode} from '@taiga-ui/addon-mobile/types';
 import {tuiFindTouchIndex} from '@taiga-ui/addon-mobile/utils';
 import {TUI_IS_IOS, TuiDestroyService, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
-import {race} from 'rxjs';
-import {filter, map, switchMap, take, takeUntil, tap} from 'rxjs/operators';
+import {filter, map, race, switchMap, take, takeUntil, tap} from 'rxjs';
 
 const STYLE = {
     transform: 'scale(0.95)',

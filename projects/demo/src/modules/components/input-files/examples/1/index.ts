@@ -3,8 +3,7 @@ import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiFileLike} from '@taiga-ui/kit';
-import {Observable, of, Subject, timer} from 'rxjs';
-import {finalize, map, switchMap} from 'rxjs/operators';
+import {finalize, map, Observable, of, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
     selector: 'tui-input-files-example-1',

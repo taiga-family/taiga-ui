@@ -22,8 +22,7 @@ import {
     TuiTypedMatcher,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import {merge} from 'rxjs';
-import {switchMap, takeUntil} from 'rxjs/operators';
+import {merge, switchMap, takeUntil} from 'rxjs';
 
 import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
 import {TuiGetColorPipe} from './pipes/color.pipe';

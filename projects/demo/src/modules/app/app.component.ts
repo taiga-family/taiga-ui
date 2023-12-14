@@ -5,8 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
 import {TUI_IS_E2E, TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
-import {distinctUntilChanged, filter, map, takeUntil} from 'rxjs/operators';
+import {distinctUntilChanged, filter, map, Observable, takeUntil} from 'rxjs';
 
 import {AbstractDemoComponent, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
 import {YaMetrikaService} from './metrika/metrika.service';

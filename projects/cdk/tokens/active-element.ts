@@ -7,19 +7,22 @@ import {
     tuiGetActualTarget,
     tuiGetDocumentOrShadowRoot,
 } from '@taiga-ui/cdk/utils';
-import {merge, Observable, of, timer} from 'rxjs';
 import {
     distinctUntilChanged,
     filter,
     map,
+    merge,
+    Observable,
+    of,
     repeatWhen,
     share,
     startWith,
     switchMap,
     take,
     takeUntil,
+    timer,
     withLatestFrom,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 import {TUI_REMOVED_ELEMENT} from './removed-element';
 

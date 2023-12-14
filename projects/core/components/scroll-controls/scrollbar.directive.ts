@@ -20,8 +20,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core/tokens';
 import {TuiOrientation} from '@taiga-ui/core/types';
-import {merge, Observable} from 'rxjs';
-import {map, switchMap, takeUntil, throttleTime} from 'rxjs/operators';
+import {map, merge, Observable, switchMap, takeUntil, throttleTime} from 'rxjs';
 
 const MIN_WIDTH = 24;
 

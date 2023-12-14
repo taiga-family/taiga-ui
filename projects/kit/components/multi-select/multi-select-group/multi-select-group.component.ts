@@ -27,8 +27,7 @@ import {
     TuiSizeXS,
 } from '@taiga-ui/core';
 import {TUI_MULTI_SELECT_TEXTS} from '@taiga-ui/kit/tokens';
-import {combineLatest, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {combineLatest, map, Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-opt-group[tuiMultiSelectGroup]',

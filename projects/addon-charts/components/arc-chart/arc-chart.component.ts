@@ -13,9 +13,7 @@ import {
 import {DomSanitizer, SafeValue} from '@angular/platform-browser';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TuiSizeXL} from '@taiga-ui/core';
-import {merge, Observable, ReplaySubject} from 'rxjs';
-import {map, startWith, switchMap, tap} from 'rxjs/operators';
-
+import {map, merge, Observable, ReplaySubject, startWith, switchMap, tap} from 'rxjs';
 // 3/4 with 1% safety offset
 const ARC = 0.76;
 

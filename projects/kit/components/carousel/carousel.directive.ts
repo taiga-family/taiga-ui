@@ -6,8 +6,7 @@ import {
     tuiIfMap,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
-import {BehaviorSubject, combineLatest, interval, merge, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {BehaviorSubject, combineLatest, interval, map, merge, Observable} from 'rxjs';
 
 @Directive({
     selector: 'tui-carousel',

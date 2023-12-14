@@ -3,7 +3,7 @@ import {NavigationEnd, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {filter, map, shareReplay, takeUntil} from 'rxjs/operators';
+import {filter, map, shareReplay, takeUntil} from 'rxjs';
 
 @Component({
     selector: 'routable-dialog',

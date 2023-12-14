@@ -3,7 +3,7 @@ import {ActivatedRoute, Router, UrlSegment} from '@angular/router';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {takeUntil} from 'rxjs/operators';
+import {takeUntil} from 'rxjs';
 
 @Component({
     selector: 'tui-routable-dialog',

@@ -8,8 +8,7 @@ import {
 } from '@angular/core';
 import {USER_AGENT} from '@ng-web-apis/common';
 import {tuiIsFirefox} from '@taiga-ui/cdk';
-import {BehaviorSubject} from 'rxjs';
-import {distinctUntilChanged, skip} from 'rxjs/operators';
+import {BehaviorSubject, distinctUntilChanged, skip} from 'rxjs';
 
 @Directive({
     selector: '[tuiPresentChange]',

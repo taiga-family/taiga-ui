@@ -340,6 +340,17 @@ describe(`InputDateTime`, () => {
             }
         }
 
+        @Component({
+            template: `
+                <tui-root>
+                    <tui-input-date-time
+                        [formControl]="control"
+                        [max]="max"
+                        [min]="min"
+                    ></tui-input-date-time>
+                </tui-root>
+            `,
+        })
         class TransformerTestComponent extends TestComponent {
             override control = new FormControl(`19.01.2022, 12:33`);
             override min = new TuiDay(1900, 0, 1);

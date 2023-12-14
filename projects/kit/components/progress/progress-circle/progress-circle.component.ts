@@ -16,8 +16,7 @@ import {
     TuiSizeXXL,
     TuiSizeXXS,
 } from '@taiga-ui/core';
-import {Observable, of} from 'rxjs';
-import {delay} from 'rxjs/operators';
+import {delay, Observable, of} from 'rxjs';
 
 @Component({
     selector: 'tui-progress-circle',

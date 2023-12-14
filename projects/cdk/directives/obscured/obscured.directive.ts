@@ -6,8 +6,7 @@ import {
     TuiObscuredService,
     TuiParentsScrollService,
 } from '@taiga-ui/cdk/services';
-import {Observable, Subject} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, Observable, Subject} from 'rxjs';
 
 /**
  * Directive that monitors element visibility

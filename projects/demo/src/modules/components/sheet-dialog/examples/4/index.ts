@@ -9,8 +9,7 @@ import {
     TuiSwipeDirection,
 } from '@taiga-ui/cdk';
 import {TuiInputComponent} from '@taiga-ui/kit';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, Observable} from 'rxjs';
 
 const USERS = [
     'John Doe',

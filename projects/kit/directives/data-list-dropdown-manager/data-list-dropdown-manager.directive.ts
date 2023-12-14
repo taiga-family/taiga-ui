@@ -17,17 +17,19 @@ import {
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core';
-import {EMPTY, merge, Observable} from 'rxjs';
 import {
     debounceTime,
+    EMPTY,
     filter,
     map,
+    merge,
+    Observable,
     shareReplay,
     switchMap,
     take,
     takeUntil,
     tap,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 @Directive({
     selector: 'tui-data-list[tuiDataListDropdownManager]',

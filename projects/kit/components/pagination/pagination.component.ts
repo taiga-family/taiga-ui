@@ -36,8 +36,7 @@ import {
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiHorizontalDirectionToNumber} from '@taiga-ui/kit/utils/math';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {EMPTY, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {EMPTY, map, Observable} from 'rxjs';
 
 const DOTS_LENGTH = 1;
 const ACTIVE_ITEM_LENGTH = 1;

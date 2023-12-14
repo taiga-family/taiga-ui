@@ -2,8 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
-import {of, timer} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {map, of, startWith, timer} from 'rxjs';
 
 @Component({
     selector: 'tui-progress-bar-example-1',

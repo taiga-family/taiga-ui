@@ -17,8 +17,7 @@ import {
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {EMPTY_QUERY, TuiDestroyService, tuiPure, TuiResizeService} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
-import {filter} from 'rxjs/operators';
+import {filter, Observable} from 'rxjs';
 
 import {TuiTabComponent} from '../tab/tab.component';
 import {TuiTabsDirective} from '../tabs.directive';

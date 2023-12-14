@@ -1,8 +1,7 @@
 import {Directive, Inject, Optional, Self} from '@angular/core';
 import {TuiDestroyService, TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {TuiDropdownDirective, TuiDropdownOpenDirective} from '@taiga-ui/core/directives';
-import {Observable} from 'rxjs';
-import {filter, takeUntil} from 'rxjs/operators';
+import {filter, Observable, takeUntil} from 'rxjs';
 
 import {TUI_HOSTED_DROPDOWN_COMPONENT} from './hosted-dropdown.token';
 

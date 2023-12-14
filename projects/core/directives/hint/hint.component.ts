@@ -31,8 +31,7 @@ import {TUI_ANIMATION_OPTIONS, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {TuiPoint} from '@taiga-ui/core/types';
 import {tuiIsObscured} from '@taiga-ui/core/utils';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
-import {map, takeUntil} from 'rxjs/operators';
+import {map, Observable, takeUntil} from 'rxjs';
 
 import {TuiHintDirective} from './hint.directive';
 import {TuiHintHoverDirective} from './hint-hover.directive';

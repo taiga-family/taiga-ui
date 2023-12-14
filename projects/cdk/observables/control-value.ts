@@ -1,7 +1,6 @@
 import {AbstractControl, AbstractControlDirective} from '@angular/forms';
 import {TuiValueChangesException} from '@taiga-ui/cdk/exceptions';
-import {Observable} from 'rxjs';
-import {startWith} from 'rxjs/operators';
+import {Observable, startWith} from 'rxjs';
 
 /**
  * Turns AbstractControl/Abstract-control-directive valueChanges into ReplaySubject(1)

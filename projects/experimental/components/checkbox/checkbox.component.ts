@@ -17,7 +17,7 @@ import {
 import {TuiSizeS} from '@taiga-ui/core';
 import {TuiAppearanceDirective} from '@taiga-ui/experimental/directives/appearance';
 import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
-import {takeUntil} from 'rxjs/operators';
+import {takeUntil} from 'rxjs';
 
 import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
 

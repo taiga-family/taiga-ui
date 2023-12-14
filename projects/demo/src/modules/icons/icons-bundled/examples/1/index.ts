@@ -7,8 +7,7 @@ import {ALWAYS_TRUE_HANDLER} from '@taiga-ui/cdk';
 import {TUI_SANITIZER, TuiSvgService} from '@taiga-ui/core';
 import {tuiIconClockLarge, tuiIconMaestro, tuiIconMastercard} from '@taiga-ui/icons';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
-import {timer} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, timer} from 'rxjs';
 
 import {INLINE_SVG} from './inline-svg';
 

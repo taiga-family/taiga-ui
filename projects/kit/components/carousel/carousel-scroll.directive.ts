@@ -1,6 +1,6 @@
 import {Directive, ElementRef, Inject, Output} from '@angular/core';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk';
-import {filter, map, tap, throttleTime} from 'rxjs/operators';
+import {filter, map, tap, throttleTime} from 'rxjs';
 
 @Directive({
     selector: '[tuiCarouselScroll]',

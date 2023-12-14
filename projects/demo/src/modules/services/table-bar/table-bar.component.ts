@@ -4,8 +4,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
 import {TuiBrightness} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Subject, Subscription} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {Subject, Subscription, takeUntil} from 'rxjs';
 
 @Component({
     selector: 'example-tui-table-bar',
