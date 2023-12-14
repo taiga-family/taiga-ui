@@ -1,14 +1,19 @@
 @import '../../taiga-ui-local.less';
 
 [tuiAppearance][data-appearance='primary'] {
-    background: var(--tui-primary);
+    --t-bg: var(--tui-primary);
+    background: var(--t-bg);
     color: var(--tui-primary-text);
 
+    &:invalid {
+        background: var(--tui-error-fill);
+    }
+
     .appearance-hover({
-        background: var(--tui-primary-hover);
+        --t-bg: var(--tui-primary-hover);
     });
 
     .appearance-active({
-        background: var(--tui-primary-active);
+        --t-bg: var(--tui-primary-active);
     });
 }

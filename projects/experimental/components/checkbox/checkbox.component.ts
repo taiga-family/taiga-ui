@@ -1,28 +1,25 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
+    DoCheck,
     ElementRef,
-    Inject,
+    inject,
     Input,
     OnInit,
-    Optional,
-    Self,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
     tuiControlValue,
     TuiDestroyService,
     tuiIsString,
-    TuiStringHandler,
-    tuiWatch,
+    TuiNativeValidatorDirective,
 } from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
+import {TuiAppearanceDirective} from '@taiga-ui/experimental/directives/appearance';
 import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
-import {Observable} from 'rxjs';
-import {distinctUntilChanged, takeUntil} from 'rxjs/operators';
+import {takeUntil} from 'rxjs/operators';
 
-import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions} from './checkbox.options';
+import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
 
 @Component({
     selector: 'input[type="checkbox"][tuiCheckbox]',
@@ -30,36 +27,36 @@ import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions} from './checkbox.options';
     styleUrls: ['./checkbox.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
+    hostDirectives: [
+        {
+            directive: TuiAppearanceDirective,
+            inputs: [
+                'tuiAppearance: appearance',
+                'tuiAppearanceState',
+                'tuiAppearanceFocus',
+            ],
+        },
+        TuiNativeValidatorDirective,
+    ],
     host: {
-        tuiAppearance: '', // Apply base appearance
         '[disabled]': '!control || control.disabled',
         '[attr.data-size]': 'size',
-        '[class._invalid]': 'control?.invalid && control?.touched',
         '[class._readonly]': '!control',
-        '[style.--t-mask]': 'icon',
+        '[style.--t-checked]': 'getIcon("checked")',
+        '[style.--t-indeterminate]': 'getIcon("indeterminate")',
     },
 })
-export class TuiCheckboxComponent implements OnInit {
+export class TuiCheckboxComponent implements OnInit, DoCheck {
+    private readonly appearance = inject(TuiAppearanceDirective);
+    private readonly options = inject(TUI_CHECKBOX_OPTIONS);
+    private readonly resolver = inject(TUI_ICON_RESOLVER);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
+
     @Input()
     size: TuiSizeS = this.options.size;
 
-    constructor(
-        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
-        @Inject(TUI_ICON_RESOLVER) private readonly resolver: TuiStringHandler<string>,
-        @Inject(TUI_CHECKBOX_OPTIONS) private readonly options: TuiCheckboxOptions,
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<unknown>,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLInputElement>,
-        @Optional() @Inject(NgControl) readonly control: NgControl | null,
-    ) {}
-
-    get icon(): string {
-        const option = this.el.nativeElement.indeterminate
-            ? this.options.icons.indeterminate
-            : this.options.icons.checked;
-        const icon = tuiIsString(option) ? option : option(this.size);
-
-        return `url(${this.resolver(icon)})`;
-    }
+    readonly control: NgControl | null = inject(NgControl, {optional: true});
 
     ngOnInit(): void {
         if (!this.control?.valueChanges) {
@@ -67,9 +64,20 @@ export class TuiCheckboxComponent implements OnInit {
         }
 
         tuiControlValue(this.control)
-            .pipe(distinctUntilChanged(), tuiWatch(this.cdr), takeUntil(this.destroy$))
+            .pipe(takeUntil(this.destroy$))
             .subscribe(value => {
-                this.el.nativeElement.indeterminate = value === null;
+                this.el.indeterminate = value === null;
             });
+    }
+
+    ngDoCheck(): void {
+        this.appearance.tuiAppearance = this.options.appearance(this.el);
+    }
+
+    getIcon(state: 'checked' | 'indeterminate'): string {
+        const option = this.options.icons[state];
+        const icon = tuiIsString(option) ? option : option(this.size);
+
+        return `url(${this.resolver(icon)})`;
     }
 }

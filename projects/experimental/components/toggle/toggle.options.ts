@@ -1,17 +1,19 @@
 import {Provider} from '@angular/core';
-import {tuiCreateToken, TuiMapper, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions, TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 
 export interface TuiToggleOptions {
     readonly showIcons: boolean;
     readonly size: TuiSizeS;
-    readonly icon: TuiMapper<TuiSizeS, string> | string;
+    readonly icon: TuiStringHandler<TuiSizeS> | string;
+    readonly appearance: TuiStringHandler<HTMLInputElement>;
 }
 
 export const TUI_TOGGLE_DEFAULT_OPTIONS: TuiToggleOptions = {
     showIcons: true,
     size: `m`,
     icon: `tuiIconCheck`,
+    appearance: el => (el.checked ? `primary` : `secondary`),
 };
 
 export const TUI_TOGGLE_OPTIONS = tuiCreateToken(TUI_TOGGLE_DEFAULT_OPTIONS);

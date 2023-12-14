@@ -4,9 +4,9 @@
     size="xs"
     tuiIconButton
     class="t-tooltip-button"
+    [appearance]="iconAppearance?.tuiAppearance || 'icon'"
     [attr.tabindex]="describeId ? -1 : 0"
     [iconLeft]="tooltipIcon"
-    [tuiAppearance]="iconAppearance?.tuiAppearance || 'icon'"
     [tuiAppearanceState]="(driver | async) ? 'active' : null"
     [tuiHint]="content"
     [tuiHintAppearance]="computedAppearance"

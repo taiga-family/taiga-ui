@@ -5,6 +5,11 @@ import {tuiAvatarOptionsProvider} from '@taiga-ui/experimental/components/avatar
 import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components/button';
 import {tuiCheckboxOptionsProvider} from '@taiga-ui/experimental/components/checkbox';
 import {tuiToggleOptionsProvider} from '@taiga-ui/experimental/components/toggle';
+import {
+    TuiAppearanceDirective,
+    tuiAppearanceOptionsProvider,
+} from '@taiga-ui/experimental/directives/appearance';
+import {TuiIconsDirective} from '@taiga-ui/experimental/directives/icons';
 
 import {TuiChipComponent} from './chip.component';
 import {TUI_CHIP_OPTIONS, TuiChipOptions} from './chip.options';
@@ -12,6 +17,7 @@ import {TUI_CHIP_OPTIONS, TuiChipOptions} from './chip.options';
 @Directive({
     selector: 'tui-chip,[tuiChip]',
     providers: [
+        tuiAppearanceOptionsProvider(TUI_CHIP_OPTIONS),
         tuiToggleOptionsProvider({size: 's'}),
         tuiCheckboxOptionsProvider({size: 's'}),
         tuiAvatarOptionsProvider({size: 'xxs'}),
@@ -20,18 +26,25 @@ import {TUI_CHIP_OPTIONS, TuiChipOptions} from './chip.options';
             appearance: 'icon',
         }),
     ],
-    host: {
-        tuiAppearance: '',
-        '[attr.data-appearance]': 'appearance',
-        '[attr.data-size]': 'size',
-    },
+    hostDirectives: [
+        {
+            directive: TuiAppearanceDirective,
+            inputs: [
+                'tuiAppearance: appearance',
+                'tuiAppearanceState',
+                'tuiAppearanceFocus',
+            ],
+        },
+        {
+            directive: TuiIconsDirective,
+            inputs: ['iconLeft', 'iconRight'],
+        },
+    ],
+    host: {'[attr.data-size]': 'size'},
 })
 export class TuiChipDirective {
     @Input()
     size: TuiSizeXXS = this.options.size;
-
-    @Input()
-    appearance = this.options.appearance;
 
     constructor(
         @Inject(TUI_CHIP_OPTIONS) private readonly options: TuiChipOptions,
