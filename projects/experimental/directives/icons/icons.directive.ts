@@ -29,8 +29,3 @@ export class TuiIconsDirective {
         directiveStyles.addComponent(TuiIconsComponent);
     }
 }
-
-export const TUI_ICONS = {
-    directive: TuiIconsDirective,
-    inputs: ['iconLeft', 'iconRight'],
-};

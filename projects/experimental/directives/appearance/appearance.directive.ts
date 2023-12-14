@@ -23,8 +23,3 @@ export class TuiAppearanceDirective {
     @Input()
     tuiAppearanceFocus: boolean | null = null;
 }
-
-export const TUI_APPEARANCE = {
-    directive: TuiAppearanceDirective,
-    inputs: ['tuiAppearance: appearance', 'tuiAppearanceState', 'tuiAppearanceFocus'],
-};
