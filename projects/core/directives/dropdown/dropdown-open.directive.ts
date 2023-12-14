@@ -59,8 +59,9 @@ export class TuiDropdownOpenDirective implements OnChanges {
     @ContentChild('tuiDropdownHost', {descendants: true, read: ElementRef})
     private readonly dropdownHost?: ElementRef<HTMLElement>;
 
+    // TODO: Remove optional after refactor is complete
+    private readonly directive = inject(TuiDropdownDirective, {optional: true});
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
-    private readonly directive = inject(TuiDropdownDirective);
     private readonly driver = inject(TuiDropdownDriver);
     private readonly obscured = inject(TuiObscuredDirective);
 
@@ -85,7 +86,7 @@ export class TuiDropdownOpenDirective implements OnChanges {
         .subscribe(() => this.toggle(false));
 
     get dropdown(): HTMLElement | undefined {
-        return this.directive.dropdownBoxRef?.location.nativeElement;
+        return this.directive?.dropdownBoxRef?.location.nativeElement;
     }
 
     @HostListener('click', ['$event.target', '$event.defaultPrevented'])
@@ -190,9 +191,3 @@ export class TuiDropdownOpenDirective implements OnChanges {
         focusable?.focus();
     }
 }
-
-export const TUI_DROPDOWN_OPEN = {
-    directive: TuiDropdownOpenDirective,
-    inputs: ['tuiDropdownOpen', 'tuiDropdownEnabled'],
-    outputs: ['tuiDropdownOpenChange'],
-};
