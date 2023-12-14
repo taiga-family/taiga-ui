@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk';
-import {Subject, timer} from 'rxjs';
-import {map, startWith, switchMap} from 'rxjs/operators';
+import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
     selector: 'tui-button-example-4',

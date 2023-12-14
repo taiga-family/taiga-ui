@@ -2,8 +2,7 @@ import {Inject, Injectable, NgZone} from '@angular/core';
 import {TUI_WINDOW_SIZE, tuiZoneOptimized} from '@taiga-ui/cdk';
 import {TuiMedia} from '@taiga-ui/core/interfaces';
 import {TUI_MEDIA} from '@taiga-ui/core/tokens';
-import {Observable} from 'rxjs';
-import {distinctUntilChanged, map, shareReplay} from 'rxjs/operators';
+import {distinctUntilChanged, map, Observable, shareReplay} from 'rxjs';
 
 export type TuiBreakpointMediaKey = keyof Omit<TuiMedia, 'tablet'>;
 

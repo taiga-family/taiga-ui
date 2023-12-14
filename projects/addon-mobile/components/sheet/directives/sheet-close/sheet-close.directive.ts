@@ -1,8 +1,7 @@
 import {Directive, ElementRef, Inject, NgZone, Output} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiIfMap, tuiIsFalsy, tuiTypedFromEvent, tuiZonefull} from '@taiga-ui/cdk';
-import {merge, Observable} from 'rxjs';
-import {distinctUntilChanged, filter, startWith} from 'rxjs/operators';
+import {distinctUntilChanged, filter, merge, Observable, startWith} from 'rxjs';
 
 import {TuiSheetComponent} from '../../components/sheet/sheet.component';
 import {TUI_SHEET_CLOSE} from '../../components/sheet-heading/sheet-heading.component';

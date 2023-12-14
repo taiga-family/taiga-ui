@@ -1,6 +1,13 @@
 import {Directive} from '@angular/core';
-import {identity, merge, Observable, ReplaySubject} from 'rxjs';
-import {map, startWith, switchMap} from 'rxjs/operators';
+import {
+    identity,
+    map,
+    merge,
+    Observable,
+    ReplaySubject,
+    startWith,
+    switchMap,
+} from 'rxjs';
 
 import {TuiTableFilter} from './table-filter';
 

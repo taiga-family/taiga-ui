@@ -1,6 +1,13 @@
 import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import {OperatorFunction, pipe, timer} from 'rxjs';
-import {distinctUntilChanged, map, startWith, switchMap} from 'rxjs/operators';
+import {
+    distinctUntilChanged,
+    map,
+    OperatorFunction,
+    pipe,
+    startWith,
+    switchMap,
+    timer,
+} from 'rxjs';
 
 /**
  * Operator to set lifespan after which current value is considered obsolete

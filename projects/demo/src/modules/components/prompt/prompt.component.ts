@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiAlertService, TuiDialogService} from '@taiga-ui/core';
 import {TUI_PROMPT, TuiPromptData} from '@taiga-ui/kit';
-import {switchMap} from 'rxjs/operators';
+import {switchMap} from 'rxjs';
 
 @Component({
     selector: 'example-tui-prompt',

@@ -1,7 +1,6 @@
 import {Directive, Inject, OnInit, Self} from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {merge, Observable} from 'rxjs';
-import {distinctUntilChanged, takeUntil} from 'rxjs/operators';
+import {distinctUntilChanged, merge, Observable, takeUntil} from 'rxjs';
 
 import {TuiDriver} from './driver';
 import {TuiVehicle} from './vehicle';

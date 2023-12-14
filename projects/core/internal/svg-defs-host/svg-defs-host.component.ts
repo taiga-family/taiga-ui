@@ -11,7 +11,7 @@ import {
 import {SafeHtml} from '@angular/platform-browser';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiSvgService} from '@taiga-ui/core/services';
-import {takeUntil} from 'rxjs/operators';
+import {takeUntil} from 'rxjs';
 
 @Component({
     selector: 'tui-svg-defs-host',

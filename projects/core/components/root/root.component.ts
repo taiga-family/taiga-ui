@@ -18,8 +18,7 @@ import {
     TUI_REDUCED_MOTION,
     TUI_THEME,
 } from '@taiga-ui/core/tokens';
-import {combineLatest, Observable, of} from 'rxjs';
-import {debounceTime, map} from 'rxjs/operators';
+import {combineLatest, debounceTime, map, Observable, of} from 'rxjs';
 
 @Component({
     selector: 'tui-root',

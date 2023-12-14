@@ -1,9 +1,7 @@
 import {ɵAnimationEngine as AnimationEngine} from '@angular/animations/browser';
 import {inject, InjectFlags} from '@angular/core';
 import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils';
-import {BehaviorSubject, timer} from 'rxjs';
-import {map, share, startWith, switchMap} from 'rxjs/operators';
-
+import {BehaviorSubject, map, share, startWith, switchMap, timer} from 'rxjs';
 /**
  * Element currently being removed by AnimationEngine
  */

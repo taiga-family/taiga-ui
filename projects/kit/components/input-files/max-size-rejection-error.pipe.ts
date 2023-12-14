@@ -2,8 +2,7 @@ import {Inject, Pipe, PipeTransform} from '@angular/core';
 import {TuiInjectionTokenType} from '@taiga-ui/cdk';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiFormatSize} from '@taiga-ui/kit/utils';
-import {combineLatest, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {combineLatest, map, Observable} from 'rxjs';
 
 @Pipe({name: `tuiMaxSizeRejectionError`})
 export class TuiMaxSizeRejectionErrorPipe implements PipeTransform {

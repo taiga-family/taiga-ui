@@ -34,8 +34,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {combineLatest, Observable} from 'rxjs';
-import {filter, takeUntil} from 'rxjs/operators';
+import {combineLatest, filter, Observable, takeUntil} from 'rxjs';
 
 import {TuiLineDaysChartHintDirective} from './line-days-chart-hint.directive';
 

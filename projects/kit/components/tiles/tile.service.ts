@@ -1,8 +1,16 @@
 import {ElementRef, Inject, Injectable, OnDestroy} from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {tuiArrayShallowEquals, tuiPx, TuiResizeService} from '@taiga-ui/cdk';
-import {BehaviorSubject, combineLatest, Observable, Subscription} from 'rxjs';
-import {debounceTime, distinctUntilChanged, map, startWith} from 'rxjs/operators';
+import {
+    BehaviorSubject,
+    combineLatest,
+    debounceTime,
+    distinctUntilChanged,
+    map,
+    Observable,
+    startWith,
+    Subscription,
+} from 'rxjs';
 
 import {TuiTilesComponent} from './tiles.component';
 

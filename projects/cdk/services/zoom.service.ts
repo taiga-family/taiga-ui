@@ -3,8 +3,7 @@ import {TuiZoom, TuiZoomOptions} from '@taiga-ui/cdk/interfaces';
 import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_ZOOM_OPTIONS} from '@taiga-ui/cdk/tokens';
 import {tuiDistanceBetweenTouches} from '@taiga-ui/cdk/utils';
-import {merge, Observable} from 'rxjs';
-import {filter, map, scan, switchMap, takeUntil} from 'rxjs/operators';
+import {filter, map, merge, Observable, scan, switchMap, takeUntil} from 'rxjs';
 
 const TOUCH_SENSITIVITY = 0.01;
 

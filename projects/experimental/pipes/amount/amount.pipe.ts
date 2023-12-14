@@ -7,8 +7,7 @@ import {
     tuiFormatNumber,
     TuiNumberFormatSettings,
 } from '@taiga-ui/core';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, Observable} from 'rxjs';
 
 import {TUI_AMOUNT_OPTIONS, TuiAmountOptions} from './amount.options';
 

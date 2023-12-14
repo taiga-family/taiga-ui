@@ -24,8 +24,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER, TuiMarkerHandler} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit/tokens';
-import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {Observable, takeUntil} from 'rxjs';
 
 /**
  * @internal

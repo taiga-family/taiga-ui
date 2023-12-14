@@ -1,8 +1,7 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {timer} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, timer} from 'rxjs';
 
 @Component({
     selector: 'tui-pdf-content',

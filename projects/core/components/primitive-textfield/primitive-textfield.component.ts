@@ -32,8 +32,7 @@ import {
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {tuiGetBorder} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent, PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
-import {fromEvent, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {fromEvent, map, Observable} from 'rxjs';
 
 import {TuiPrimitiveTextfield} from './primitive-textfield-types';
 

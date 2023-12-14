@@ -36,16 +36,21 @@ import {
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject, combineLatestWith, EMPTY, merge, Observable, of} from 'rxjs';
 import {
+    BehaviorSubject,
+    combineLatestWith,
     delay,
     distinctUntilChanged,
+    EMPTY,
     filter,
     map,
+    merge,
+    Observable,
+    of,
     share,
     skip,
     switchMap,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 import {TuiAccessorProxyDirective} from './accessor-proxy.directive';
 import {TUI_HOSTED_DROPDOWN_COMPONENT} from './hosted-dropdown.token';

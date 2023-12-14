@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiClamp, TuiZoom} from '@taiga-ui/cdk';
-import {Subject} from 'rxjs';
-import {map, scan, startWith} from 'rxjs/operators';
+import {map, scan, startWith, Subject} from 'rxjs';
 
 @Component({
     selector: 'tui-zoom-example-1',

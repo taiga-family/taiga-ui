@@ -14,8 +14,7 @@ import {
     tuiIsPresent,
     tuiQueryListChanges,
 } from '@taiga-ui/cdk';
-import {identity, merge} from 'rxjs';
-import {filter, map, pairwise, switchMap, takeUntil} from 'rxjs/operators';
+import {filter, identity, map, merge, pairwise, switchMap, takeUntil} from 'rxjs';
 
 import {TuiAccordionItemComponent} from './accordion-item/accordion-item.component';
 

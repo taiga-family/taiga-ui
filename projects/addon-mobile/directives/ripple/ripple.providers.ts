@@ -7,8 +7,7 @@ import {
     tuiPx,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
-import {EMPTY, Observable} from 'rxjs';
-import {filter, map, takeUntil} from 'rxjs/operators';
+import {EMPTY, filter, map, Observable, takeUntil} from 'rxjs';
 
 export const RIPPLE_ON = `tuiRippleOn`;
 export const RIPPLE_OFF = `tuiRippleOff`;

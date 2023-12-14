@@ -29,8 +29,16 @@ import {
     TuiModeDirective,
 } from '@taiga-ui/core';
 import {TuiInputComponent} from '@taiga-ui/kit';
-import {combineLatest, Observable} from 'rxjs';
-import {filter, map, startWith, switchMap, take, takeUntil} from 'rxjs/operators';
+import {
+    combineLatest,
+    filter,
+    map,
+    Observable,
+    startWith,
+    switchMap,
+    take,
+    takeUntil,
+} from 'rxjs';
 
 import {
     NAVIGATION_ITEMS,

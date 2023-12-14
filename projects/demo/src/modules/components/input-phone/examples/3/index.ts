@@ -3,8 +3,18 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TUI_DEFAULT_MATCHER, tuiPure} from '@taiga-ui/cdk';
-import {combineLatest, merge, Observable, of, Subject} from 'rxjs';
-import {map, share, startWith, switchMap, tap} from 'rxjs/operators';
+import {
+    combineLatest,
+    map,
+    merge,
+    Observable,
+    of,
+    share,
+    startWith,
+    Subject,
+    switchMap,
+    tap,
+} from 'rxjs';
 
 class User {
     constructor(

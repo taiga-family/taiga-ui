@@ -4,7 +4,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiBaseDialogContext} from '@taiga-ui/cdk';
 import {TuiAlertOptions, TuiAlertService, TuiNotificationT} from '@taiga-ui/core';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {switchMap} from 'rxjs/operators';
+import {switchMap} from 'rxjs';
 
 import {AlertExampleWithDataComponent} from './examples/4/alert-example-with-data/alert-example-with-data.component';
 

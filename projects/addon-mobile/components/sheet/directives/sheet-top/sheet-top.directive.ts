@@ -1,8 +1,7 @@
 import {Directive, Inject, Input} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiClamp} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, Observable} from 'rxjs';
 
 import {TuiSheetRequiredProps} from '../../sheet';
 import {TUI_SHEET, TUI_SHEET_SCROLL} from '../../sheet-tokens';

@@ -1,8 +1,7 @@
 import {AfterViewInit, Directive, Inject, Input, Self} from '@angular/core';
 import {tuiCoerceBooleanProperty} from '@taiga-ui/cdk/coercion';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
-import {timer} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {takeUntil, timer} from 'rxjs';
 
 import {
     TUI_AUTOFOCUS_HANDLER,

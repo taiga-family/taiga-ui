@@ -1,7 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
-import {Observable, timer} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, Observable, timer} from 'rxjs';
 
 import {MOCK_CARDS} from './mock-cards';
 import {AccountCard, FetchedCards} from './models';

@@ -1,8 +1,7 @@
 import {Directive, Inject, Input, Optional, SkipSelf} from '@angular/core';
 import {TuiHoveredService} from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
-import {merge, Observable, of, Subject} from 'rxjs';
-import {delay, share, switchMap, tap} from 'rxjs/operators';
+import {delay, merge, Observable, of, share, Subject, switchMap, tap} from 'rxjs';
 
 import {
     TUI_DROPDOWN_HOVER_OPTIONS,

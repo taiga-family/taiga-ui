@@ -44,8 +44,7 @@ import {
 import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, Observable} from 'rxjs';
 
 import {TUI_INPUT_TIME_OPTIONS, TuiInputTimeOptions} from './input-time.options';
 

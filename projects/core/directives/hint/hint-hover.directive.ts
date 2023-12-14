@@ -3,8 +3,19 @@ import {Directive, ElementRef, Inject, Input} from '@angular/core';
 import {TuiHoveredService} from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {tuiIsObscured} from '@taiga-ui/core/utils';
-import {merge, Observable, of, Subject} from 'rxjs';
-import {delay, filter, map, repeat, switchMap, takeUntil, tap} from 'rxjs/operators';
+import {
+    delay,
+    filter,
+    map,
+    merge,
+    Observable,
+    of,
+    repeat,
+    Subject,
+    switchMap,
+    takeUntil,
+    tap,
+} from 'rxjs';
 
 import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 

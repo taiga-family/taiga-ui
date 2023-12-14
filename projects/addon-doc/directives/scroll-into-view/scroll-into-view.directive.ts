@@ -1,8 +1,14 @@
 import {Directive, ElementRef, Inject, Input, Self} from '@angular/core';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc/tokens';
 import {TuiDestroyService, tuiGetElementObscures} from '@taiga-ui/cdk';
-import {Observable, ReplaySubject} from 'rxjs';
-import {debounceTime, filter, switchMap, takeUntil} from 'rxjs/operators';
+import {
+    debounceTime,
+    filter,
+    Observable,
+    ReplaySubject,
+    switchMap,
+    takeUntil,
+} from 'rxjs';
 
 @Directive({
     selector: '[tuiScrollIntoViewLink]',

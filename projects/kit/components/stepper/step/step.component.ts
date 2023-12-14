@@ -13,8 +13,7 @@ import {
     TuiCommonIcons,
     TuiRouterLinkActiveService,
 } from '@taiga-ui/core';
-import {identity, Observable} from 'rxjs';
-import {filter} from 'rxjs/operators';
+import {filter, identity, Observable} from 'rxjs';
 
 import {TuiStepperComponent} from '../stepper.component';
 

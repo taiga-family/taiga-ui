@@ -16,15 +16,19 @@ import {
 import {tuiIsCurrentTarget, tuiPx, tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
 import {TUI_HINT_COMPONENT, TuiHintDirective} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject, Observable, of, Subject, timer} from 'rxjs';
 import {
+    BehaviorSubject,
     distinctUntilChanged,
     filter,
     map,
+    Observable,
+    of,
     pairwise,
     startWith,
+    Subject,
     switchMap,
-} from 'rxjs/operators';
+    timer,
+} from 'rxjs';
 
 import {TUI_LINE_CLAMP_OPTIONS, TuiLineClampOptions} from './line-clamp.options';
 import {TuiLineClampBoxComponent} from './line-clamp-box.component';

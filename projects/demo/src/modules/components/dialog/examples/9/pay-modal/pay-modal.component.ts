@@ -15,8 +15,7 @@ import {
 import {TUI_IS_IOS, TuiDestroyService, TuiValuesOf} from '@taiga-ui/cdk';
 import {TuiDialogContext} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject} from 'rxjs';
-import {map, switchMap, takeUntil} from 'rxjs/operators';
+import {BehaviorSubject, map, switchMap, takeUntil} from 'rxjs';
 
 import {
     AccountCard,

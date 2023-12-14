@@ -31,8 +31,7 @@ import {TuiDataListAccessor} from '@taiga-ui/core/interfaces';
 import {TUI_NOTHING_FOUND_MESSAGE, tuiAsDataListAccessor} from '@taiga-ui/core/tokens';
 import {TuiDataListRole} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, Observable} from 'rxjs';
 
 import {TuiOptionComponent} from './option/option.component';
 

@@ -7,8 +7,13 @@ import {
     tuiPure,
     TuiResizeService,
 } from '@taiga-ui/cdk';
-import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
-import {distinctUntilChanged, map} from 'rxjs/operators';
+import {
+    BehaviorSubject,
+    combineLatest,
+    distinctUntilChanged,
+    map,
+    Observable,
+} from 'rxjs';
 
 function calculateColorSegments(colors: string[], progressWidth: number): string {
     const segmentWidth = Math.ceil(progressWidth / colors.length);

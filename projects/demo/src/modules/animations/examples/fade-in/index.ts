@@ -3,8 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure} from '@taiga-ui/cdk';
 import {TuiDurationOptions, tuiFadeIn} from '@taiga-ui/core';
-import {from, of} from 'rxjs';
-import {concatMap, delay, repeat, startWith} from 'rxjs/operators';
+import {concatMap, delay, from, of, repeat, startWith} from 'rxjs';
 
 @Component({
     selector: 'tui-fade-in-example',

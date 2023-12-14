@@ -7,9 +7,7 @@ import {
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TuiRouterLinkActiveService} from '@taiga-ui/core';
-import {EMPTY, identity, merge, Observable} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
-
+import {EMPTY, filter, identity, map, merge, Observable} from 'rxjs';
 /**
  * Stream of tab activation events
  */

@@ -9,8 +9,7 @@ import {
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E, TuiValidationError} from '@taiga-ui/cdk';
-import {of} from 'rxjs';
-import {delay} from 'rxjs/operators';
+import {delay, of} from 'rxjs';
 
 const latinChars = /^[a-zA-Z]+$/;
 

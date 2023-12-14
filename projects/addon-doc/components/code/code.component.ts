@@ -9,8 +9,7 @@ import {TuiRawLoaderContent} from '@taiga-ui/addon-doc/interfaces';
 import {TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR} from '@taiga-ui/addon-doc/tokens';
 import {tuiRawLoad} from '@taiga-ui/addon-doc/utils';
 import {TuiHandler} from '@taiga-ui/cdk';
-import {BehaviorSubject, Subject, timer} from 'rxjs';
-import {map, startWith, switchMap} from 'rxjs/operators';
+import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
     selector: 'tui-doc-code',

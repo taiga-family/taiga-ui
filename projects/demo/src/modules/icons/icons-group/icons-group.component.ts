@@ -5,8 +5,14 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TUI_DEFAULT_MATCHER, TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
-import {debounceTime, distinctUntilChanged, filter, map, takeUntil} from 'rxjs/operators';
+import {
+    debounceTime,
+    distinctUntilChanged,
+    filter,
+    map,
+    Observable,
+    takeUntil,
+} from 'rxjs';
 
 import {IconsGroupDirective} from './icons-group.directive';
 

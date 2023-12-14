@@ -6,8 +6,17 @@ import {
     TuiDirectiveStylesService,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
-import {Observable, race, timer} from 'rxjs';
-import {map, mergeMap, switchMap, take, takeUntil, tap} from 'rxjs/operators';
+import {
+    map,
+    mergeMap,
+    Observable,
+    race,
+    switchMap,
+    take,
+    takeUntil,
+    tap,
+    timer,
+} from 'rxjs';
 
 import {
     RIPPLE_OFF,

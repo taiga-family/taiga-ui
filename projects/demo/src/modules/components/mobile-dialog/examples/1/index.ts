@@ -4,7 +4,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMobileDialogService} from '@taiga-ui/addon-mobile';
 import {TUI_IS_IOS} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
-import {switchMap} from 'rxjs/operators';
+import {switchMap} from 'rxjs';
 
 @Component({
     selector: 'tui-mobile-dialog-example-1',

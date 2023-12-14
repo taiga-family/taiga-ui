@@ -14,8 +14,7 @@ import {
     TuiInjectionTokenType,
 } from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core/enums';
-import {BehaviorSubject, merge} from 'rxjs';
-import {delay, distinctUntilChanged, filter, map} from 'rxjs/operators';
+import {BehaviorSubject, delay, distinctUntilChanged, filter, map, merge} from 'rxjs';
 
 import {TuiPrimitiveTextfield} from '../primitive-textfield-types';
 

@@ -1,5 +1,5 @@
 import {tuiDragAndDropFrom, TuiDragStage} from '@taiga-ui/cdk';
-import {skip, take} from 'rxjs/operators';
+import {skip, take} from 'rxjs';
 
 describe(`tuiDragAndDropFrom`, () => {
     it(`throws an error if there is no document`, () => {

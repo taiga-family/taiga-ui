@@ -8,8 +8,7 @@ import {
 import {tuiIsString, tuiPure, TuiValidationError} from '@taiga-ui/cdk';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {isObservable, Observable, of} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, Observable, of} from 'rxjs';
 
 const EMPTY_RECORD = {};
 
@@ -132,8 +131,8 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
             return of(new TuiValidationError(context));
         }
 
-        if (isObservable(content)) {
-            return unwrapObservable(content as Observable<PolymorpheusContent>, context);
+        if (content instanceof Observable) {
+            return unwrapObservable(content, context);
         }
 
         if (content instanceof Function) {
@@ -141,8 +140,8 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
                 | Observable<PolymorpheusContent>
                 | PolymorpheusContent;
 
-            return isObservable(message)
-                ? unwrapObservable(message as Observable<PolymorpheusContent>, context)
+            return message instanceof Observable
+                ? unwrapObservable(message, context)
                 : defaultError(message, context);
         }
 

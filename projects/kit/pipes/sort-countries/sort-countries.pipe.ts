@@ -1,8 +1,7 @@
 import {Inject, Pipe, PipeTransform} from '@angular/core';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, Observable} from 'rxjs';
 
 @Pipe({
     name: `tuiSortCountries`,

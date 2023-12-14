@@ -6,7 +6,7 @@ import {
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
 import {tuiIsMobile} from '@taiga-ui/core/utils';
-import {distinctUntilChanged, map, share, startWith} from 'rxjs/operators';
+import {distinctUntilChanged, map, share, startWith} from 'rxjs';
 
 import {TUI_MEDIA} from './media';
 

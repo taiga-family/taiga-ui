@@ -2,8 +2,7 @@ import {ChangeDetectorRef, Component, Inject, NgZone, OnInit, Self} from '@angul
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E, TuiDestroyService, tuiWatch, tuiZoneOptimized} from '@taiga-ui/cdk';
-import {Observable, timer} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {Observable, takeUntil, timer} from 'rxjs';
 
 @Component({
     selector: `tui-input-inline-example-3`,

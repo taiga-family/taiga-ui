@@ -13,8 +13,18 @@ import {
     tuiToInt,
 } from '@taiga-ui/cdk';
 import {TUI_ARROW} from '@taiga-ui/kit';
-import {BehaviorSubject, combineLatest, Observable, timer} from 'rxjs';
-import {debounceTime, filter, map, share, startWith, switchMap} from 'rxjs/operators';
+import {
+    BehaviorSubject,
+    combineLatest,
+    debounceTime,
+    filter,
+    map,
+    Observable,
+    share,
+    startWith,
+    switchMap,
+    timer,
+} from 'rxjs';
 
 interface User {
     readonly dob: TuiDay;

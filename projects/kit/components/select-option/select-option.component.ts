@@ -26,8 +26,7 @@ import {
     TuiOptionComponent,
 } from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {EMPTY, merge, Subject} from 'rxjs';
-import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
+import {distinctUntilChanged, EMPTY, map, merge, startWith, Subject} from 'rxjs';
 
 @Component({
     selector: 'tui-select-option',

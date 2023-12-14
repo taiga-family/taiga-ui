@@ -1,9 +1,8 @@
 import {isPlatformServer} from '@angular/common';
 import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {defer, from, Observable} from 'rxjs';
+import {defer, from, Observable, shareReplay, switchMap} from 'rxjs';
 import {fromFetch} from 'rxjs/fetch';
-import {shareReplay, switchMap} from 'rxjs/operators';
 
 @Injectable({
     providedIn: `root`,

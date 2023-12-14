@@ -12,8 +12,7 @@ import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_ANIMATION_OPTIONS, TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness} from '@taiga-ui/core/types';
-import {Observable} from 'rxjs';
-import {distinctUntilChanged, map, startWith, throttleTime} from 'rxjs/operators';
+import {distinctUntilChanged, map, Observable, startWith, throttleTime} from 'rxjs';
 
 @Component({
     selector: 'tui-scroll-controls',

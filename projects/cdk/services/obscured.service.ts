@@ -3,15 +3,17 @@ import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
 import {POLLING_TIME} from '@taiga-ui/cdk/constants';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiGetElementObscures} from '@taiga-ui/cdk/utils/dom';
-import {fromEvent, merge, Observable} from 'rxjs';
 import {
     delay,
     distinctUntilChanged,
+    fromEvent,
     map,
+    merge,
+    Observable,
     startWith,
     takeUntil,
     throttleTime,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 import {TuiDestroyService} from './destroy.service';
 import {TuiParentsScrollService} from './parents-scroll.service';

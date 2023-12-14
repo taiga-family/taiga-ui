@@ -8,8 +8,7 @@ import {
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {tuiGetViewportWidth} from '@taiga-ui/core/utils';
-import {merge, Observable} from 'rxjs';
-import {filter, map, switchMap, take} from 'rxjs/operators';
+import {filter, map, merge, Observable, switchMap, take} from 'rxjs';
 
 const SCROLLBAR_PLACEHOLDER = 17;
 
