@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[9261],{9261:(e,o,n)=>{n.r(o),n.d(o,{ScreenshotGithubBotModule:()=>l});var u=n(88692),r=n(22864),t=n(11205),c=n(78129),d=n(83594),i=n(64537);let l=(()=>{class e{}return e.ɵfac=function(o){return new(o||e)},e.ɵmod=i.oAB({type:e}),e.ɵinj=i.cJS({imports:[u.ez,t.fV,c.TuiLinkModule,r.Bz.forChild((0,t.Ve)(d.jX))]}),e})()}}]);
