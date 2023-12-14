@@ -21,7 +21,7 @@
     </div>
     <div
         class="container"
-        (waIntersectionObservee)="intersected = $event?.[0]?.isIntersecting || intersected"
+        (waIntersectionObservee)="intersected = $event[0]?.isIntersecting || intersected"
     >
         <iframe
             *ngIf="intersected || current === 1"

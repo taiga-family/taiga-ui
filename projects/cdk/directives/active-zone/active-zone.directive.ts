@@ -16,6 +16,7 @@ import {tuiArrayRemove} from '@taiga-ui/cdk/utils';
 import {distinctUntilChanged, map, Observable, skip, startWith} from 'rxjs';
 
 @Directive({
+    standalone: true,
     selector:
         '[tuiActiveZone]:not(ng-container), [tuiActiveZoneChange]:not(ng-container), [tuiActiveZoneParent]:not(ng-container)',
     exportAs: 'tuiActiveZone',

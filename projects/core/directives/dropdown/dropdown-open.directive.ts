@@ -20,7 +20,6 @@ import {
     tuiIsNativeFocusedIn,
     tuiIsNativeKeyboardFocusable,
     TuiObscuredDirective,
-    TuiObscuredService,
 } from '@taiga-ui/cdk';
 import {tuiAsDriver} from '@taiga-ui/core/abstract';
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
@@ -29,6 +28,7 @@ import {filter, fromEvent, map, merge, takeUntil} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TuiDropdownDriver} from './dropdown.driver';
+import {TUI_DROPDOWN_CONTEXT} from './dropdown.providers';
 
 function shouldClose(
     this: TuiDropdownOpenDirective,
@@ -46,13 +46,22 @@ function shouldClose(
 @Directive({
     standalone: true,
     selector: '[tuiDropdownOpen],[tuiDropdownOpenChange]',
+    hostDirectives: [TuiObscuredDirective, TuiActiveZoneDirective],
     providers: [
         TuiDestroyService,
-        TuiActiveZoneDirective,
-        TuiObscuredService,
-        TuiObscuredDirective,
         TuiDropdownDriver,
         tuiAsDriver(TuiDropdownDriver),
+        {
+            provide: TUI_DROPDOWN_CONTEXT,
+            deps: [TuiActiveZoneDirective, TuiDropdownOpenDirective],
+            useFactory: (
+                $implicit: TuiActiveZoneDirective,
+                self: TuiDropdownOpenDirective,
+            ) => ({
+                $implicit,
+                close: () => self.toggle.call(self, false),
+            }),
+        },
     ],
 })
 export class TuiDropdownOpenDirective implements OnChanges {

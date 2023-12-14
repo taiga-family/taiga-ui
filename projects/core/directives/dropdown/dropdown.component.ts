@@ -29,6 +29,7 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {map, Observable, takeUntil} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
+import {TUI_DROPDOWN_CONTEXT} from './dropdown.providers';
 import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
 import {TuiDropdownPositionDirective} from './dropdown-position.directive';
 
@@ -75,6 +76,7 @@ export class TuiDropdownComponent implements OnInit {
     readonly animation = inject(TUI_ANIMATION_OPTIONS);
     readonly options = inject(TUI_DROPDOWN_OPTIONS);
     readonly directive = inject(TuiDropdownDirective);
+    readonly context = inject(TUI_DROPDOWN_CONTEXT, {optional: true});
 
     readonly sub = inject(TuiPositionService)
         .pipe(

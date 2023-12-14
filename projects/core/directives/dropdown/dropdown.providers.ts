@@ -1,4 +1,4 @@
-import {Type} from '@angular/core';
+import {InjectionToken, Type} from '@angular/core';
 import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
 
 import {TuiDropdownComponent} from './dropdown.component';
@@ -9,3 +9,5 @@ import {TuiDropdownComponent} from './dropdown.component';
 export const TUI_DROPDOWN_COMPONENT = tuiCreateTokenFromFactory<Type<any>>(
     () => TuiDropdownComponent,
 );
+
+export const TUI_DROPDOWN_CONTEXT = new InjectionToken<Record<any, any>>(``);

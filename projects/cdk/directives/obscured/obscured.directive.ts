@@ -1,7 +1,7 @@
 import {Directive, inject, Input, Output} from '@angular/core';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiIfMap} from '@taiga-ui/cdk/observables';
-import {TuiDestroyService, TuiObscuredService} from '@taiga-ui/cdk/services';
+import {TuiObscuredService} from '@taiga-ui/cdk/services';
 import {Subject} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -9,8 +9,9 @@ import {map} from 'rxjs/operators';
  * Directive that monitors element visibility
  */
 @Directive({
+    standalone: true,
     selector: '[tuiObscured]',
-    providers: [TuiObscuredService, TuiDestroyService],
+    providers: [TuiObscuredService],
 })
 export class TuiObscuredDirective {
     private readonly activeZone = inject(TuiActiveZoneDirective, {optional: true});
