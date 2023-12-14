@@ -16,8 +16,7 @@ import {
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
-import {merge, of} from 'rxjs';
-import {delay, distinctUntilChanged, map, share, switchMap, tap} from 'rxjs/operators';
+import {delay, distinctUntilChanged, map, merge, of, share, switchMap, tap} from 'rxjs';
 
 import {TUI_DROPDOWN_HOVER_OPTIONS} from './dropdown-hover.options';
 import {TuiDropdownOpenDirective} from './dropdown-open.directive';

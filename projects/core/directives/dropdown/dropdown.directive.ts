@@ -31,8 +31,7 @@ import {
     PolymorpheusContent,
     PolymorpheusTemplate,
 } from '@tinkoff/ng-polymorpheus';
-import {Subject} from 'rxjs';
-import {takeUntil, throttleTime} from 'rxjs/operators';
+import {Subject, takeUntil, throttleTime} from 'rxjs';
 
 import {TuiDropdownDriverDirective} from './dropdown.driver';
 import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';

@@ -26,8 +26,7 @@ import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/servi
 import {TUI_ANIMATION_OPTIONS, TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness} from '@taiga-ui/core/types';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
-import {map, takeUntil} from 'rxjs/operators';
+import {map, Observable, takeUntil} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';

@@ -25,8 +25,7 @@ import {
 import {tuiAsDriver} from '@taiga-ui/core/abstract';
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
-import {fromEvent, merge} from 'rxjs';
-import {filter, map, takeUntil} from 'rxjs/operators';
+import {filter, fromEvent, map, merge, takeUntil} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TuiDropdownDriver} from './dropdown.driver';
