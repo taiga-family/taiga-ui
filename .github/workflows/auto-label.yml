@@ -1,8 +1,11 @@
 name: 🤖 Auto label
-on: pull_request_review
+on:
+  pull_request_review:
+    types: [submitted]
 
 jobs:
   label-when-approved:
+    if: github.event.review.state == 'APPROVED'
     name: Label when approved
     runs-on: ubuntu-latest
     steps:
