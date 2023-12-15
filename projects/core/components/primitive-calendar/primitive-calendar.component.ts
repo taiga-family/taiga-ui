@@ -79,12 +79,13 @@ export class TuiPrimitiveCalendarComponent {
         day: TuiDay,
         today: boolean,
         inRange: boolean,
+        markerHandler: TuiMarkerHandler,
     ): [string, string] | [string] | null => {
         if (today || inRange) {
             return null;
         }
 
-        const markers = this.markerHandler(day);
+        const markers = markerHandler(day);
 
         return markers.length === 0 ? null : markers;
     };
