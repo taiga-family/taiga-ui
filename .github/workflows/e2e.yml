@@ -175,14 +175,14 @@ jobs:
 
       - name: Download artifacts / ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
         continue-on-error: true
-        uses: actions/download-artifact@v3.0.2
+        uses: actions/download-artifact@v4.0.0
         with:
           name: ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
           path: ./total/cypress
 
       - name: Download artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         continue-on-error: true
-        uses: actions/download-artifact@v3.0.2
+        uses: actions/download-artifact@v4.0.0
         with:
           name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
           path: ./total/playwright
