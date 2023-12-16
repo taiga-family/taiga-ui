@@ -1,7 +1,7 @@
 {
     "hosting": {
-        "public": "dist/demo/browser",
-        "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+        "public": "../dist/demo/browser",
+        "ignore": ["firebase.json", "**/.*"],
         "rewrites": [
             {
                 "source": "**",
