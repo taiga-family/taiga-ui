@@ -84,16 +84,10 @@ describe(`ComboBox`, () => {
                 );
 
                 await textfield.click();
-                await page.keyboard.press(`Backspace`);
 
-                await textfield.click();
-                await page.keyboard.press(`Backspace`);
-
-                await textfield.click();
-                await page.keyboard.press(`Backspace`);
-
-                await textfield.click();
-                await page.keyboard.press(`Backspace`);
+                for (let i = 0; i < 4; i++) {
+                    await page.keyboard.press(`Backspace`);
+                }
 
                 await expect(page).toHaveScreenshot(
                     `correct-word-match-when-strict-backspaced-${strict}.png`,
