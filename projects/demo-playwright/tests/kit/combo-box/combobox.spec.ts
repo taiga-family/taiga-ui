@@ -38,7 +38,6 @@ describe(`ComboBox`, () => {
                 const textfield = comboBoxPO.textfield.first();
 
                 await visitBy(page, strict);
-                await openFormValue(apiPageExample);
                 await expect(page).toHaveScreenshot(
                     `search-should-not-be-reset-strict-${strict}.png`,
                 );
@@ -77,7 +76,6 @@ describe(`ComboBox`, () => {
                 const textfield = comboBoxPO.textfield.first();
 
                 await visitBy(page, strict);
-                await openFormValue(apiPageExample);
 
                 await textfield.click();
                 await page.keyboard.type(`dOlLaRs (237)`);
@@ -126,11 +124,7 @@ describe(`ComboBox`, () => {
 });
 
 async function visitBy(page: Page, strict: boolean): Promise<void> {
-    await tuiGoto(page, `components/combo-box/API?strict=${strict}`);
-}
-
-async function openFormValue(locator: Locator): Promise<void> {
-    await locator.locator(`button span`).getByText(`Form value`).click();
+    await tuiGoto(page, `components/combo-box/API?strict=${strict}&sandboxExpanded=true`);
 }
 
 async function focusWrapper(locator: Locator): Promise<void> {
