@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
@@ -37,7 +37,7 @@ export class ExampleTuiInputPhoneInternationalComponent extends AbstractExampleT
 
     override cleaner = false;
 
-    control = new FormControl('', [Validators.required, Validators.minLength(9)]);
+    control = new UntypedFormControl('', [Validators.required, Validators.minLength(9)]);
 
     readonly countriesVariants: ReadonlyArray<readonly TuiCountryIsoCode[]> = [
         [

@@ -19,7 +19,7 @@ import {
     tuiWatch,
 } from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
-import {take} from 'rxjs/operators';
+import {take} from 'rxjs';
 
 import {TuiSliderKeyStepsDirective} from './helpers/slider-key-steps.directive';
 import {TUI_SLIDER_OPTIONS, TuiSliderOptions} from './slider.options';

@@ -1,7 +1,6 @@
 import {NgZone} from '@angular/core';
 import {tuiZonefull} from '@taiga-ui/cdk';
-import {OperatorFunction, pipe} from 'rxjs';
-import {distinctUntilChanged, map} from 'rxjs/operators';
+import {distinctUntilChanged, map, OperatorFunction, pipe} from 'rxjs';
 
 /**
  * Works like regular map + distinctUntilChanged

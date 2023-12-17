@@ -8,8 +8,14 @@ import {
 } from '@taiga-ui/cdk';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
-import {combineLatest, Observable, Subject} from 'rxjs';
-import {distinctUntilChanged, switchMap, takeUntil} from 'rxjs/operators';
+import {
+    combineLatest,
+    distinctUntilChanged,
+    Observable,
+    Subject,
+    switchMap,
+    takeUntil,
+} from 'rxjs';
 
 import {TuiInputMonthRangeComponent} from './input-month-range.component';
 

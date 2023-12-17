@@ -3,8 +3,7 @@ import {Component, HostBinding, Inject, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiThemeService} from '@taiga-ui/addon-doc';
-import {Observable} from 'rxjs';
-import {delay} from 'rxjs/operators';
+import {delay, Observable} from 'rxjs';
 
 import {Color} from '../colors.constants';
 

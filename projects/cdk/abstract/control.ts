@@ -15,16 +15,17 @@ import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {TuiControlValueTransformer} from '@taiga-ui/cdk/interfaces';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils';
-import {merge, Subject} from 'rxjs';
 import {
     delay,
     distinctUntilChanged,
     filter,
     map,
+    merge,
     startWith,
+    Subject,
     switchMap,
     takeUntil,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 import {AbstractTuiInteractive} from './interactive';
 import {AbstractTuiValueTransformer} from './value-transformer';
@@ -38,7 +39,7 @@ export abstract class AbstractTuiControl<T>
     implements OnDestroy, OnInit, ControlValueAccessor
 {
     private previousInternalValue?: T | null;
-    private readonly refresh$ = new Subject();
+    private readonly refresh$ = new Subject<void>();
 
     private onTouched = EMPTY_FUNCTION;
 

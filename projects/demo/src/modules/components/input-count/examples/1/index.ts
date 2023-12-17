@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -10,9 +10,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputCountExample1 {
-    readonly testForm = new FormGroup({
-        testValue1: new FormControl(10, Validators.required),
-        testValue2: new FormControl(10, Validators.required),
-        testValue3: new FormControl(-10, Validators.required),
+    readonly testForm = new UntypedFormGroup({
+        testValue1: new UntypedFormControl(10, Validators.required),
+        testValue2: new UntypedFormControl(10, Validators.required),
+        testValue3: new UntypedFormControl(-10, Validators.required),
     });
 }

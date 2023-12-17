@@ -37,8 +37,7 @@ import {
 import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 import {MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
 import {TUI_CALENDAR_DATE_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
-import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {Observable, takeUntil} from 'rxjs';
 
 @Component({
     selector: 'tui-calendar-range',

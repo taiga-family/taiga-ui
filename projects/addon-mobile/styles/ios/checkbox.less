@@ -1,18 +1,22 @@
 input[tuiCheckbox],
 input[tuiRadio] {
-    width: 1.375rem;
-    height: 1.375rem;
+    --t-size: 1.375rem;
+
     border-radius: 100%;
     color: var(--tui-base-01);
+    outline: 1px solid var(--tui-base-04);
+    outline-offset: -1px;
     transition: none;
+    box-shadow: none !important;
+    background: var(--t-background) !important;
 
     &:checked,
     &:not([tuiRadio]):indeterminate {
-        background: var(--tui-accent);
-        box-shadow: none;
+        --t-background: var(--tui-accent);
+        outline: none;
 
         &:disabled:not(._readonly) {
-            background: var(--tui-base-04);
+            --t-background: var(--tui-base-04);
         }
 
         &:before {
@@ -21,8 +25,8 @@ input[tuiRadio] {
             mask: var(--t-mask) center/100%;
         }
 
-        &._invalid {
-            background: var(--tui-error-fill);
+        &:invalid {
+            --t-background: var(--tui-error-fill);
         }
     }
 
@@ -34,5 +38,9 @@ input[tuiRadio] {
 
     &:not([tuiRadio]):indeterminate:before {
         --t-mask: url('data:image/svg+xml,<svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M6 11H16" fill="none" stroke="black" stroke-width="1.75" stroke-linecap="round"/></svg>');
+    }
+
+    &:invalid {
+        outline-color: var(--tui-error-bg-hover);
     }
 }

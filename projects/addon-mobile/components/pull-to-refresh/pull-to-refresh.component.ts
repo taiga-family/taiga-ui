@@ -19,8 +19,7 @@ import {
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
-import {distinctUntilChanged, filter, map, startWith, takeUntil} from 'rxjs/operators';
+import {distinctUntilChanged, filter, map, Observable, startWith, takeUntil} from 'rxjs';
 
 import {
     TUI_PULL_TO_REFRESH_COMPONENT,

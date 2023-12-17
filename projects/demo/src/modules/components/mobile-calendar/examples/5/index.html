@@ -1,0 +1,16 @@
+<div class="wrapper">
+    <button
+        appearance="secondary"
+        icon="tuiIconCalendarLarge"
+        shape="rounded"
+        tuiIconButton
+        type="button"
+        (click)="onClick()"
+    ></button>
+    <span
+        class="date"
+        [class.date_empty]="empty"
+    >
+        {{ date$ | async }}
+    </span>
+</div>

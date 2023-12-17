@@ -6,8 +6,7 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core';
-import {merge, Observable} from 'rxjs';
-import {debounceTime, filter, startWith, takeUntil, tap} from 'rxjs/operators';
+import {debounceTime, filter, merge, Observable, startWith, takeUntil, tap} from 'rxjs';
 
 export const TUI_TABS_REFRESH = new InjectionToken<Observable<unknown>>(
     `[TUI_TABS_REFRESH]`,

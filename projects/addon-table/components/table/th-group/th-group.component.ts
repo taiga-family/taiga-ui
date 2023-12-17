@@ -9,8 +9,7 @@ import {
     QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {map, Observable, startWith} from 'rxjs';
 
 import {TuiHeadDirective} from '../directives/head.directive';
 import {TuiTableDirective} from '../directives/table.directive';

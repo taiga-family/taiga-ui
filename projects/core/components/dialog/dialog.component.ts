@@ -21,8 +21,17 @@ import {
 } from '@taiga-ui/core/tokens';
 import {TuiDialogSize} from '@taiga-ui/core/types';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {isObservable, merge, Observable, of, Subject} from 'rxjs';
-import {filter, map, switchMap, takeUntil} from 'rxjs/operators';
+import {
+    filter,
+    isObservable,
+    map,
+    merge,
+    Observable,
+    of,
+    Subject,
+    switchMap,
+    takeUntil,
+} from 'rxjs';
 
 import {TUI_DIALOGS_CLOSE} from './dialog.tokens';
 import {TuiDialogCloseService} from './dialog-close.service';
@@ -63,7 +72,7 @@ export class TuiDialogComponent<O, I> {
         },
     } as const;
 
-    readonly close$ = new Subject();
+    readonly close$ = new Subject<void>();
 
     constructor(
         @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,

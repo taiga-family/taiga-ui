@@ -10,8 +10,7 @@ import {
 } from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TUI_SCROLL_REF} from '@taiga-ui/cdk/tokens';
-import {merge, Observable} from 'rxjs';
-import {map, switchMap, takeUntil, throttleTime} from 'rxjs/operators';
+import {map, merge, Observable, switchMap, takeUntil, throttleTime} from 'rxjs';
 
 const MIN_WIDTH = 24;
 

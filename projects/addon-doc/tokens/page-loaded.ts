@@ -1,7 +1,5 @@
 import {tuiCreateToken} from '@taiga-ui/cdk';
-import {defer, of, timer} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
-
+import {defer, of, switchMap, timer} from 'rxjs';
 /**
  * Stream that emits if loading of page is over (for example, to begin scrollIntoView)
  */

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -12,11 +12,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 })
 export class TuiInputExample6 {
     readonly items = ['Black', 'Gold', 'Silver'];
-    readonly form = new FormGroup({
-        name: new FormControl('', Validators.required),
-        date: new FormControl(null, Validators.required),
-        color: new FormControl(null, Validators.required),
-        quantity: new FormControl(),
-        sum: new FormControl(255),
+    readonly form = new UntypedFormGroup({
+        name: new UntypedFormControl('', Validators.required),
+        date: new UntypedFormControl(null, Validators.required),
+        color: new UntypedFormControl(null, Validators.required),
+        quantity: new UntypedFormControl(),
+        sum: new UntypedFormControl(255),
     });
 }

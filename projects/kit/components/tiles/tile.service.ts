@@ -1,8 +1,16 @@
 import {ElementRef, Inject, Injectable, OnDestroy} from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {tuiArrayShallowEquals, tuiPx, TuiResizeService} from '@taiga-ui/cdk';
-import {BehaviorSubject, combineLatest, Observable, Subscription} from 'rxjs';
-import {debounceTime, distinctUntilChanged, map, startWith} from 'rxjs/operators';
+import {
+    BehaviorSubject,
+    combineLatest,
+    debounceTime,
+    distinctUntilChanged,
+    map,
+    Observable,
+    startWith,
+    Subscription,
+} from 'rxjs';
 
 import {TuiTilesComponent} from './tiles.component';
 
@@ -43,14 +51,24 @@ export class TuiTileService implements OnDestroy {
         this.sub.unsubscribe();
     }
 
-    private getRect([left, top]: readonly [number, number]): ClientRect {
-        return {
-            top: Number.isNaN(top) ? this.el.nativeElement.offsetTop : top,
-            left: Number.isNaN(left) ? this.el.nativeElement.offsetLeft : left,
+    private getRect([left, top]: readonly [number, number]): DOMRect {
+        const elTop = Number.isNaN(top) ? this.el.nativeElement.offsetTop : top;
+        const elLeft = Number.isNaN(left) ? this.el.nativeElement.offsetLeft : left;
+
+        const rect = {
+            top: elTop,
+            left: elLeft,
             width: this.el.nativeElement.clientWidth,
             height: this.el.nativeElement.clientHeight,
             right: NaN,
             bottom: NaN,
+            y: elTop,
+            x: elLeft,
+        };
+
+        return {
+            ...rect,
+            toJSON: () => JSON.stringify(rect),
         };
     }
 

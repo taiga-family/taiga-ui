@@ -2,7 +2,7 @@ import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, Inject, Output} from '@angular/core';
 import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
-import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs/operators';
+import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs';
 
 @Directive({
     selector: '[tuiResized]',

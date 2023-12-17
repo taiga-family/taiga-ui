@@ -1,5 +1,5 @@
 import {Component, forwardRef, ViewChild} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample, tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import {
@@ -136,7 +136,7 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
 
     identityMatcher = this.identityMatcherVariants[0];
 
-    readonly control = new FormControl(null, Validators.required);
+    readonly control = new UntypedFormControl(null, Validators.required);
 
     get valueContent(): PolymorpheusContent<TuiValueContentContext<Account>> {
         return this.valueTemplateRef && this.selectedValueTemplate

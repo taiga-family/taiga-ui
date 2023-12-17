@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
@@ -17,12 +17,12 @@ export class TuiDataListExample5 {
     euro = 87; // 1 euro = 87 rub
     dollar = 75; // 1 dollar = 75 rub
 
-    readonly testForm = new FormGroup({
-        testValue: new FormControl('mail@mail.ru'),
+    readonly testForm = new UntypedFormGroup({
+        testValue: new UntypedFormControl('mail@mail.ru'),
     });
 
-    readonly moneyForm = new FormGroup({
-        moneyValue: new FormControl(1000),
+    readonly moneyForm = new UntypedFormGroup({
+        moneyValue: new UntypedFormControl(1000),
     });
 
     rangeValue = new TuiDayRange(

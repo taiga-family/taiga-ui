@@ -1,14 +1,12 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {tuiRawLoad} from '@taiga-ui/addon-doc';
-import {of} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
+import {of, switchMap} from 'rxjs';
 
 @Component({
     selector: 'changelog',
     templateUrl: './changelog.template.html',
     styleUrls: ['./changelog.style.less'],
-    encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
 export class ChangelogComponent {

@@ -1,5 +1,5 @@
 import {Component, Inject, ViewChild} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
@@ -9,8 +9,7 @@ import {
     TuiSwipeDirection,
 } from '@taiga-ui/cdk';
 import {TuiInputComponent} from '@taiga-ui/kit';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, Observable} from 'rxjs';
 
 const USERS = [
     'John Doe',
@@ -46,7 +45,7 @@ export class TuiSheetDialogExample4 {
 
     readonly offset = 16;
 
-    readonly search = new FormControl('');
+    readonly search = new UntypedFormControl('');
 
     readonly users$ = tuiControlValue<string>(this.search).pipe(
         map(search => USERS.filter(user => TUI_DEFAULT_MATCHER(user, search))),

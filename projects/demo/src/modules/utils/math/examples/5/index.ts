@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiClamp} from '@taiga-ui/cdk';
@@ -12,10 +12,10 @@ import {tuiClamp} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiMathExample5 {
-    parametersForm = new FormGroup({
-        value: new FormControl(0),
-        min: new FormControl(5),
-        max: new FormControl(42),
+    parametersForm = new UntypedFormGroup({
+        value: new UntypedFormControl(0),
+        min: new UntypedFormControl(5),
+        max: new UntypedFormControl(42),
     });
 
     get clamped(): number {

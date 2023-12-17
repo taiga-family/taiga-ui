@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
@@ -12,8 +12,8 @@ import {TuiCountryIsoCode} from '@taiga-ui/i18n';
     changeDetection,
 })
 export class TuiInputPhoneExample2 {
-    readonly testForm = new FormGroup({
-        testValue: new FormControl('', Validators.minLength(12)),
+    readonly testForm = new UntypedFormGroup({
+        testValue: new UntypedFormControl('', Validators.minLength(12)),
     });
 
     readonly countries = Object.values(TuiCountryIsoCode);

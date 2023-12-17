@@ -8,8 +8,7 @@ import {
     tuiWatch,
 } from '@taiga-ui/cdk';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
-import {EMPTY, Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {EMPTY, Observable, takeUntil} from 'rxjs';
 
 import {TuiMobileCalendarStrategy} from './mobile-calendar.strategy';
 

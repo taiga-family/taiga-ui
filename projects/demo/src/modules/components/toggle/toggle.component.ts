@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeL} from '@taiga-ui/core';
@@ -40,7 +40,7 @@ export class ExampleTuiToggleComponent extends AbstractExampleTuiInteractive {
 
     singleColor = false;
 
-    readonly control = new FormControl(false);
+    readonly control = new UntypedFormControl(false);
 
     readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 

@@ -1,6 +1,6 @@
 import {inject} from '@angular/core';
 import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils';
-import {map} from 'rxjs/operators';
+import {map} from 'rxjs';
 
 import {TUI_WINDOW_SIZE} from './window-size';
 

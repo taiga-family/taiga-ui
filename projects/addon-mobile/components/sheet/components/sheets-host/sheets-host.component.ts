@@ -9,8 +9,7 @@ import {
 } from '@angular/core';
 import {TUI_WINDOW_HEIGHT, TuiDestroyService} from '@taiga-ui/cdk';
 import {TUI_ANIMATION_OPTIONS, tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {Observable, takeUntil} from 'rxjs';
 
 import {TuiSheet} from '../../sheet';
 import {TuiSheetService} from '../../sheet.service';

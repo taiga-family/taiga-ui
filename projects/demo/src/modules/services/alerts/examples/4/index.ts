@@ -4,8 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
-import {switchMap, takeUntil} from 'rxjs/operators';
+import {Observable, switchMap, takeUntil} from 'rxjs';
 
 import {AlertExampleWithDataComponent} from './alert-example-with-data/alert-example-with-data.component';
 

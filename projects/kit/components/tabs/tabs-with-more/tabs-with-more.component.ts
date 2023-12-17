@@ -28,8 +28,7 @@ import {
 import {TUI_ARROW_OPTIONS, TuiArrowOptions} from '@taiga-ui/kit/components/arrow';
 import {TUI_MORE_WORD, TUI_TAB_MARGIN} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
+import {filter, map, Observable} from 'rxjs';
 
 import {TuiTabComponent} from '../tab/tab.component';
 import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs.options';

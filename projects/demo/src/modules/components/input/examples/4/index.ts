@@ -1,12 +1,12 @@
 import {Component, ViewChild} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TuiCurrency} from '@taiga-ui/addon-commerce';
 import {TUI_DEFAULT_MATCHER, tuiControlValue} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {map} from 'rxjs/operators';
+import {map} from 'rxjs';
 
 class User {
     constructor(
@@ -100,12 +100,12 @@ export class TuiInputExample4 {
     @ViewChild('avatar')
     private readonly avatar: PolymorpheusContent;
 
-    private readonly user = new FormControl('');
+    private readonly user = new UntypedFormControl('');
 
-    readonly testForm = new FormGroup({
+    readonly testForm = new UntypedFormGroup({
         user: this.user,
-        account: new FormControl(''),
-        card: new FormControl(''),
+        account: new UntypedFormControl(''),
+        card: new UntypedFormControl(''),
     });
 
     lastUser: User | null = null;

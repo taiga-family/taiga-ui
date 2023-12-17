@@ -2,15 +2,14 @@ import {Component, Inject} from '@angular/core';
 import {
     AbstractControl,
     AsyncValidatorFn,
-    FormBuilder,
-    FormGroup,
+    UntypedFormBuilder,
+    UntypedFormGroup,
     Validators,
 } from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E, TuiValidationError} from '@taiga-ui/cdk';
-import {of} from 'rxjs';
-import {delay} from 'rxjs/operators';
+import {delay, of} from 'rxjs';
 
 const latinChars = /^[a-zA-Z]+$/;
 
@@ -31,10 +30,10 @@ function asyncValidatorFn(isE2E: boolean): AsyncValidatorFn {
     changeDetection,
 })
 export class TuiFieldErrorPipeExample5 {
-    readonly form: FormGroup;
+    readonly form: UntypedFormGroup;
 
     constructor(
-        @Inject(FormBuilder) private readonly fb: FormBuilder,
+        @Inject(UntypedFormBuilder) private readonly fb: UntypedFormBuilder,
         @Inject(TUI_IS_E2E) isE2E: boolean,
     ) {
         this.form = this.fb.group({

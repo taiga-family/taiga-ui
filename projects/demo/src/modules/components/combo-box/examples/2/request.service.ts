@@ -1,14 +1,16 @@
 import {Inject, Injectable, Self} from '@angular/core';
 import {TUI_DEFAULT_MATCHER, TuiDestroyService} from '@taiga-ui/cdk';
-import {Observable, of, Subject} from 'rxjs';
 import {
     delay,
     distinctUntilChanged,
+    Observable,
+    of,
     shareReplay,
     startWith,
+    Subject,
     switchMap,
     takeUntil,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 import {databaseMockData} from './database-mock-data';
 import {User} from './user';

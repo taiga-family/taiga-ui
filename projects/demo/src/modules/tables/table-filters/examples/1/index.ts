@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -11,8 +11,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiTableFiltersExample1 {
-    readonly form = new FormGroup({
-        balance: new FormControl(0),
+    readonly form = new UntypedFormGroup({
+        balance: new UntypedFormControl(0),
     });
 
     readonly data = [

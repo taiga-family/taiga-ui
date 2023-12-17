@@ -2,8 +2,7 @@ import {ElementRef, Inject, Injectable, NgZone} from '@angular/core';
 import {ALWAYS_FALSE_HANDLER, ALWAYS_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiIsElement} from '@taiga-ui/cdk/utils';
-import {merge, Observable} from 'rxjs';
-import {distinctUntilChanged, filter, map} from 'rxjs/operators';
+import {distinctUntilChanged, filter, map, merge, Observable} from 'rxjs';
 
 function movedOut({currentTarget, relatedTarget}: MouseEvent): boolean {
     return (

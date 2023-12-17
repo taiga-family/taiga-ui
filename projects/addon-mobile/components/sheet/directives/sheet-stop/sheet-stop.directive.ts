@@ -1,14 +1,14 @@
 import {Directive, ElementRef, Inject, Self} from '@angular/core';
 import {TUI_SCROLL_REF, TuiDestroyService} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
 import {
     distinctUntilChanged,
     filter,
     map,
+    Observable,
     takeUntil,
     throttleTime,
     withLatestFrom,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 

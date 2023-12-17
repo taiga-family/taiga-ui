@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeS} from '@taiga-ui/core';
 
@@ -10,7 +10,7 @@ import {TuiSizeS} from '@taiga-ui/core';
 })
 export class ExampleTuiSliderComponent {
     readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
-    readonly control = new FormControl(1);
+    readonly control = new UntypedFormControl(1);
 
     max = 5;
     min = 0;

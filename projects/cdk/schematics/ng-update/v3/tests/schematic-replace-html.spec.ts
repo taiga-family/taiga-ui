@@ -637,6 +637,7 @@ describe(`ng-update`, () => {
   "defaultProject": "demo",
   "projects": {
     "demo": {
+        "root": "",
         "architect": {
           "build": {
             "options": {

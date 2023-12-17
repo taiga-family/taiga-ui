@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeL} from '@taiga-ui/core';
@@ -57,7 +57,7 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
         HTML: import('./examples/6/index.html?raw'),
     };
 
-    readonly control = new FormControl();
+    readonly control = new UntypedFormControl();
     link = 'Choose a file';
     label = 'or drop\u00A0it\u00A0here';
     multiple = true;

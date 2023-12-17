@@ -6,8 +6,7 @@ import {
     TuiDayRange,
     TuiTime,
 } from '@taiga-ui/cdk';
-import {Observable, of} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, Observable, of} from 'rxjs';
 
 /**
  * @internal

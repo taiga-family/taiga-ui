@@ -8,8 +8,7 @@ import {
     QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY, tuiQueryListChanges} from '@taiga-ui/cdk';
-import {ReplaySubject} from 'rxjs';
-import {map, switchMap} from 'rxjs/operators';
+import {map, ReplaySubject, switchMap} from 'rxjs';
 
 import {TuiCellDirective} from '../directives/cell.directive';
 import {TuiTableDirective} from '../directives/table.directive';

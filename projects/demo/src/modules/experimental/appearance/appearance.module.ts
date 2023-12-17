@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiHostedDropdownModule, TuiNotificationModule} from '@taiga-ui/core';
-import {TuiAppearanceModule, TuiButtonModule} from '@taiga-ui/experimental';
+import {TuiAppearanceDirective, TuiButtonModule} from '@taiga-ui/experimental';
 
 import {ExampleTuiAppearanceComponent} from './appearance.component';
 import {TuiAppearanceExample1} from './examples/1';
@@ -14,7 +14,7 @@ import {TuiAppearanceExample3} from './examples/3';
     imports: [
         CommonModule,
         FormsModule,
-        TuiAppearanceModule,
+        TuiAppearanceDirective,
         TuiNotificationModule,
         TuiButtonModule,
         TuiHostedDropdownModule,

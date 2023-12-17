@@ -10,7 +10,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
-    TuiAppearanceModule,
+    TuiAppearanceDirective,
     TuiIconModule,
     TuiTooltipModule,
 } from '@taiga-ui/experimental';
@@ -32,7 +32,7 @@ import {ExampleTuiTooltipComponent} from './tooltip.component';
         TuiModeModule,
         CommonModule,
         FormsModule,
-        TuiAppearanceModule,
+        TuiAppearanceDirective,
         TuiTextfieldControllerModule,
         tuiGetDocModules(ExampleTuiTooltipComponent),
         TuiNotificationModule,

@@ -149,21 +149,22 @@ describe(`ng-add [Standalone]`, () => {
   "defaultProject": "demo",
   "projects": {
     "demo": {
+        "root": "",
         "architect": {
           "build": {
             "options": {
               "main": "test/main.ts",
-            "styles": [
-              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
-              "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less"
-            ],
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "node_modules/@taiga-ui/icons/src",
-                "output": "assets/taiga-ui/icons"
-              }
-            ]
+              "styles": [
+                "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+                "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less"
+              ],
+              "assets": [
+                {
+                  "glob": "**/*",
+                  "input": "node_modules/@taiga-ui/icons/src",
+                  "output": "assets/taiga-ui/icons"
+                }
+              ],
             }
           }
         }
@@ -190,6 +191,7 @@ describe(`ng-add [Standalone]`, () => {
   "defaultProject": "demo",
   "projects": {
     "demo": {
+        "root": "",
         "architect": {
           "build": {
             "options": {
@@ -232,6 +234,7 @@ describe(`ng-add [Standalone]`, () => {
   "defaultProject": "demo",
   "projects": {
     "demo": {
+        "root": "",
         "architect": {
           "build": {
             "options": {

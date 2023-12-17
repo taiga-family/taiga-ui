@@ -1,7 +1,6 @@
 import {fakeAsync} from '@angular/core/testing';
 import {tuiStopPropagation} from '@taiga-ui/cdk';
-import {Subject} from 'rxjs';
-import {first} from 'rxjs/operators';
+import {first, Subject} from 'rxjs';
 
 describe(`tuiStopPropagation operator function`, () => {
     it(`stops event propagation`, fakeAsync(() => {

@@ -4,8 +4,16 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPreviewDialogService} from '@taiga-ui/addon-preview';
 import {tuiIsPresent} from '@taiga-ui/cdk';
 import {TuiDialogContext} from '@taiga-ui/core';
-import {BehaviorSubject, Observable, of, timer} from 'rxjs';
-import {filter, map, startWith, switchMap} from 'rxjs/operators';
+import {
+    BehaviorSubject,
+    filter,
+    map,
+    Observable,
+    of,
+    startWith,
+    switchMap,
+    timer,
+} from 'rxjs';
 
 @Component({
     selector: 'tui-preview-example-3',

@@ -11,8 +11,7 @@ import {
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-line-days-chart-example-1',

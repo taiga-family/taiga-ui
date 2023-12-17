@@ -29,8 +29,7 @@ import {
 import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {merge, Observable, of, Subject, timer} from 'rxjs';
-import {map, startWith, switchMap} from 'rxjs/operators';
+import {map, merge, Observable, of, startWith, Subject, switchMap, timer} from 'rxjs';
 
 import {TUI_INPUT_COPY_OPTIONS, TuiInputCopyOptions} from './input-copy.options';
 

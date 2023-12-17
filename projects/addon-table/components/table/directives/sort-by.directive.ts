@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
-import {delay, filter, map} from 'rxjs/operators';
+import {delay, filter, map} from 'rxjs';
 
 import {TuiSortableDirective} from './sortable.directive';
 import {TuiTableDirective} from './table.directive';

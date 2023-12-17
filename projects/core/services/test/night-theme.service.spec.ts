@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {WINDOW} from '@ng-web-apis/common';
-import {take} from 'rxjs/operators';
+import {take} from 'rxjs';
 
 import {TuiNightThemeService} from '../night-theme.service';
 

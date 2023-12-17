@@ -28,23 +28,27 @@
             <td class="t-cell">
                 <div
                     automation-id="tui-documentation__property-name"
-                    class="t-property"
+                    class="t-property t-additional-info"
                 >
-                    <code [style.color]="'var(--tui-accent-active)'">
+                    <code
+                        class="t-property-code"
+                        [style.color]="'var(--tui-accent-active)'"
+                    >
                         {{ propertyConnector.attrName | tuiStripOptionalPipe }}
                     </code>
                     <tui-badge
                         *ngIf="propertyConnector.attrName | tuiIsOptionalPipe"
                         size="s"
+                        status="neutral"
                         value="Optional"
                     ></tui-badge>
+                    <tui-badge
+                        *ngIf="propertyConnector.documentationPropertyDeprecated"
+                        size="s"
+                        status="error"
+                        value="Deprecated"
+                    ></tui-badge>
                 </div>
-                <span
-                    *ngIf="propertyConnector.documentationPropertyDeprecated"
-                    class="t-deprecated-label"
-                >
-                    deprecated
-                </span>
                 <ng-container [ngTemplateOutlet]="propertyConnector.template"></ng-container>
             </td>
             <td class="t-cell">

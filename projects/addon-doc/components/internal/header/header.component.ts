@@ -8,8 +8,7 @@ import {
 } from '@taiga-ui/addon-doc/tokens';
 import {ALWAYS_FALSE_HANDLER, TuiSwipeService} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {merge, Subject} from 'rxjs';
-import {distinctUntilChanged, filter, map, startWith} from 'rxjs/operators';
+import {distinctUntilChanged, filter, map, merge, startWith, Subject} from 'rxjs';
 
 @Component({
     selector: 'header[tuiDocHeader]',

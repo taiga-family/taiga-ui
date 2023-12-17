@@ -28,10 +28,10 @@ describe(`DataList`, () => {
         cy.get(`body`)
             .type(`{downarrow}`.repeat(2))
             .wait(dataListDebounce)
-            .type(`{rightarrow}`)
+            .type(`{enter}{rightarrow}`)
             .type(`{downarrow}`.repeat(3))
             .wait(dataListDebounce)
-            .type(`{rightarrow}`)
+            .type(`{enter}{rightarrow}`)
             .type(`{downarrow}`.repeat(2));
 
         cy.get(`tui-doc-page`)

@@ -11,8 +11,7 @@ import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TuiEventWith, TuiOverscrollMode} from '@taiga-ui/cdk/types';
 import {tuiCanScroll, tuiGetScrollParent, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
-import {Observable} from 'rxjs';
-import {filter, switchMap, takeUntil, tap} from 'rxjs/operators';
+import {filter, Observable, switchMap, takeUntil, tap} from 'rxjs';
 
 /**
  * Directive to isolate scrolling, i.e. prevent body scroll behind modal dialog

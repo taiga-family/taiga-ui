@@ -1,7 +1,6 @@
 import {ElementRef, Inject, Pipe, PipeTransform} from '@angular/core';
 import {TUI_ICON_ERROR} from '@taiga-ui/core';
-import {fromEvent, merge, Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {fromEvent, map, merge, Observable, startWith} from 'rxjs';
 
 @Pipe({
     name: `tuiFallbackSrc`,

@@ -19,8 +19,7 @@ import {
     TuiHintOptionsDirective,
 } from '@taiga-ui/core';
 import {TuiAppearanceDirective} from '@taiga-ui/experimental/directives/appearance';
-import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {Observable, takeUntil} from 'rxjs';
 
 import {TUI_TOOLTIP_OPTIONS, TuiTooltipOptions} from './tooltip.options';
 

@@ -25,8 +25,7 @@ import {TuiIconError} from '@taiga-ui/core/interfaces';
 import {TuiSvgService} from '@taiga-ui/core/services';
 import {TUI_SANITIZER} from '@taiga-ui/core/tokens';
 import {tuiIsPresumedHTMLString} from '@taiga-ui/core/utils/miscellaneous';
-import {Observable, of, ReplaySubject} from 'rxjs';
-import {catchError, map, startWith, switchMap} from 'rxjs/operators';
+import {catchError, map, Observable, of, ReplaySubject, startWith, switchMap} from 'rxjs';
 
 import {
     TUI_SVG_OPTIONS,

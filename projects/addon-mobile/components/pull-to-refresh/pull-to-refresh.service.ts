@@ -1,11 +1,12 @@
 import {ElementRef, Inject, Injectable} from '@angular/core';
 import {TUI_SCROLL_REF, tuiScrollFrom, tuiTypedFromEvent} from '@taiga-ui/cdk';
-import {EMPTY, Observable} from 'rxjs';
 import {
     distinctUntilChanged,
+    EMPTY,
     endWith,
     filter,
     map,
+    Observable,
     scan,
     share,
     startWith,
@@ -13,7 +14,7 @@ import {
     takeUntil,
     takeWhile,
     tap,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 import {
     TUI_PULL_TO_REFRESH_COMPONENT,

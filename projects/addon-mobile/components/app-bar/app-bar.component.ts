@@ -8,8 +8,7 @@ import {
 } from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {EMPTY_QUERY, TuiResizeService} from '@taiga-ui/cdk';
-import {merge, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, merge, Observable} from 'rxjs';
 
 import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
 

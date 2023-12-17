@@ -1,8 +1,7 @@
 import {ChangeDetectorRef, InjectionToken, Provider} from '@angular/core';
 import {TuiDestroyService, tuiWatch} from '@taiga-ui/cdk';
 import {TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/core/tokens';
-import {merge, NEVER, Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {merge, NEVER, Observable, takeUntil} from 'rxjs';
 
 import {TuiTextfieldController} from './textfield.controller';
 import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptions} from './textfield.options';

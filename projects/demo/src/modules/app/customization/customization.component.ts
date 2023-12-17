@@ -4,8 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocDemoComponent} from '@taiga-ui/addon-doc';
 import {TuiDestroyService, tuiIsString, tuiPure, tuiPx} from '@taiga-ui/cdk';
 import {TuiBrightness} from '@taiga-ui/core';
-import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {Subject, takeUntil} from 'rxjs';
 
 import {
     TUI_DOC_CUSTOMIZATION_PROVIDERS,

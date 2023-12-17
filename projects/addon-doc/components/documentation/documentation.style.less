@@ -86,15 +86,21 @@
 }
 
 .t-deprecated {
-    background-color: var(--tui-error-bg);
-    box-shadow:
-        -1rem 0 var(--tui-error-bg),
-        1rem 0 var(--tui-error-bg);
+    .t-property-code {
+        text-decoration: line-through;
+    }
 }
 
 .t-deprecated-label {
     margin-right: 0.125rem;
     color: var(--tui-error-fill);
+    font-size: 0.75rem;
+}
+
+.t-additional-info {
+    display: flex;
+    gap: 0.3125rem;
+    align-items: center;
 }
 
 .t-exception {

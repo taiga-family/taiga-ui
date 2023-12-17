@@ -2,8 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
-import {of, timer} from 'rxjs';
-import {repeat, takeWhile} from 'rxjs/operators';
+import {of, repeat, takeWhile, timer} from 'rxjs';
 
 @Component({
     selector: 'tui-progress-circle-example-6',

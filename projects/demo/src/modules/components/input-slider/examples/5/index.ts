@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
@@ -15,8 +15,8 @@ export class TuiInputSliderExample5 {
     readonly max = 100;
     readonly min = 0;
 
-    readonly smallControl = new FormControl(this.min);
-    readonly bigControl = new FormControl(this.max);
+    readonly smallControl = new UntypedFormControl(this.min);
+    readonly bigControl = new UntypedFormControl(this.max);
 
     readonly customLabel = ({
         $implicit,

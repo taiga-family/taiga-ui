@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {of, Subject} from 'rxjs';
-import {delayWhen} from 'rxjs/operators';
+import {delayWhen, of, Subject} from 'rxjs';
 
 @Component({
     selector: `tui-is-present-example1`,

@@ -8,8 +8,7 @@ import {
 import {tuiIfMap} from '@taiga-ui/cdk/observables';
 import {TuiDialog} from '@taiga-ui/cdk/types';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
-import {Subject} from 'rxjs';
-import {distinctUntilChanged, endWith, ignoreElements, share} from 'rxjs/operators';
+import {distinctUntilChanged, endWith, ignoreElements, share, Subject} from 'rxjs';
 
 import {AbstractTuiDialogService} from './dialog.service';
 

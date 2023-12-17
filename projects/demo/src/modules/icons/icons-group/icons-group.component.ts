@@ -1,12 +1,18 @@
 import {Clipboard} from '@angular/cdk/clipboard';
 import {Component, ContentChild, Inject, Input, OnInit, Self} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TUI_DEFAULT_MATCHER, TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
-import {debounceTime, distinctUntilChanged, filter, map, takeUntil} from 'rxjs/operators';
+import {
+    debounceTime,
+    distinctUntilChanged,
+    filter,
+    map,
+    Observable,
+    takeUntil,
+} from 'rxjs';
 
 import {IconsGroupDirective} from './icons-group.directive';
 
@@ -29,7 +35,7 @@ export class IconsGroupComponent implements OnInit {
 
     matcher = TUI_DEFAULT_MATCHER;
 
-    control = new FormControl('');
+    control = new UntypedFormControl('');
 
     search$: Observable<string> = this.route.queryParams.pipe(
         map(queryParams => queryParams['search'] ?? ''),

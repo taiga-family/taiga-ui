@@ -12,8 +12,7 @@ import {tuiFadeIn, tuiHeightCollapse, tuiSlideIn} from '@taiga-ui/core/animation
 import {TuiAlertOptions} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {fromEvent, timer} from 'rxjs';
-import {repeatWhen, takeUntil} from 'rxjs/operators';
+import {fromEvent, repeatWhen, takeUntil, timer} from 'rxjs';
 
 import {TUI_ALERT_POSITION} from './alert.providers';
 

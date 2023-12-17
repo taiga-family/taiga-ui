@@ -4,8 +4,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiContextWithImplicit, TuiDay, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, Observable} from 'rxjs';
 
 @Component({
     selector: 'example-tui-line-days-chart',

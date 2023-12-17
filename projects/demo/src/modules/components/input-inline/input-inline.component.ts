@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -33,7 +33,7 @@ export class ExampleTuiInputInlineComponent extends AbstractExampleTuiControl {
         LESS: import('./examples/3/style.less?raw'),
     };
 
-    control = new FormControl('111', Validators.required);
+    control = new UntypedFormControl('111', Validators.required);
 
     override readonly maxLengthVariants: readonly number[] = [10];
 

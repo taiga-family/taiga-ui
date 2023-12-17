@@ -3,7 +3,7 @@
  */
 import {inject} from '@angular/core';
 import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
-import {map} from 'rxjs/operators';
+import {map} from 'rxjs';
 
 import {TUI_FIRST_DAY_OF_WEEK} from './first-day-of-week';
 import {TUI_SHORT_WEEK_DAYS} from './i18n';

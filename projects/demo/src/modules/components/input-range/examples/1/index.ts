@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -23,5 +23,5 @@ export class TuiInputRangeExample1 {
     readonly steps = (this.max - this.min) / this.sliderStep;
     readonly quantum = 0.00001;
 
-    readonly control = new FormControl([3.14159, 15]);
+    readonly control = new UntypedFormControl([3.14159, 15]);
 }

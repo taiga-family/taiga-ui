@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
@@ -14,8 +14,8 @@ import {TuiSizeS} from '@taiga-ui/core';
 })
 export class TuiRadioExample1 implements OnInit {
     readonly platforms: readonly TuiPlatform[] = ['web', 'web', 'android', 'ios'];
-    readonly invalidTrue = new FormControl(true, () => ({invalid: true}));
-    readonly invalidFalse = new FormControl(false, () => ({invalid: true}));
+    readonly invalidTrue = new UntypedFormControl(true, () => ({invalid: true}));
+    readonly invalidFalse = new UntypedFormControl(false, () => ({invalid: true}));
 
     ngOnInit(): void {
         this.invalidTrue.markAsTouched();

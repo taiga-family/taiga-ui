@@ -3,8 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialogService} from '@taiga-ui/addon-mobile';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {Observable, Subject} from 'rxjs';
-import {switchMap, takeUntil} from 'rxjs/operators';
+import {Observable, Subject, switchMap, takeUntil} from 'rxjs';
 
 @Component({
     selector: 'tui-sheet-dialog-example-1',

@@ -2,8 +2,7 @@ import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, Inject, NgZone, Output} from '@angular/core';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiContainsOrAfter, tuiGetActualTarget} from '@taiga-ui/cdk/utils';
-import {fromEvent, Observable} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
+import {filter, fromEvent, map, Observable} from 'rxjs';
 
 @Directive({
     selector: '[tuiClickOutside]',

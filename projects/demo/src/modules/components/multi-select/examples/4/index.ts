@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TUI_DEFAULT_MATCHER,
@@ -7,8 +7,7 @@ import {
     TuiHandler,
     tuiIsNumber,
 } from '@taiga-ui/cdk';
-import {Observable, Subject, timer} from 'rxjs';
-import {map, shareReplay, startWith, switchMap} from 'rxjs/operators';
+import {map, Observable, shareReplay, startWith, Subject, switchMap, timer} from 'rxjs';
 
 const DICTIONARY = [
     {id: 1, name: 'Luke Skywalker'},
@@ -60,7 +59,7 @@ export class TuiMultiSelectExample4 {
         ),
     );
 
-    readonly control = new FormControl([2, 3]);
+    readonly control = new UntypedFormControl([2, 3]);
 
     onSearch(search: string | null): void {
         this.search$.next(search || '');
