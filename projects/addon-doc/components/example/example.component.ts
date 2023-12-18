@@ -22,8 +22,7 @@ import {TUI_IS_E2E, TuiContextWithImplicit, TuiHandler} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {map, switchMap} from 'rxjs/operators';
+import {BehaviorSubject, map, Observable, Subject, switchMap} from 'rxjs';
 
 import {TUI_DOC_EXAMPLE_OPTIONS, TuiDocExampleOptions} from './example.options';
 

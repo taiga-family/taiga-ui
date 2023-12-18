@@ -1,21 +1,25 @@
 input[tuiCheckbox] {
-    width: 1.125rem;
-    height: 1.125rem;
+    --t-size: 1.125rem;
+
     color: var(--tui-base-01);
     border-radius: 0.125rem;
-    box-shadow: inset 0 0 0 0.125rem var(--tui-base-04);
+    outline: 0.125rem solid var(--tui-base-04);
+    outline-offset: -0.125rem;
+    transition: none;
+    box-shadow: none !important;
+    background: var(--t-background) !important;
 
     &:checked,
     &:indeterminate {
-        background: var(--tui-accent);
-        box-shadow: none;
+        --t-background: var(--tui-accent);
+        outline: none;
 
-        &._invalid {
-            background: var(--tui-error-fill);
+        &:invalid {
+            --t-background: var(--tui-error-fill);
         }
 
         &:disabled:not(._readonly) {
-            background: var(--tui-base-04);
+            --t-background: var(--tui-base-04);
         }
 
         &:before {
@@ -25,7 +29,7 @@ input[tuiCheckbox] {
     }
 
     &:before {
-        --t-mask: url('data:image/svg+xml,<svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M2.7 8.5L7 12.7L15.3 4.7" fill="none" stroke="black" stroke-width="2"/></svg>');
+        mask-image: url('data:image/svg+xml,<svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M2.7 8.5L7 12.7L15.3 4.7" fill="none" stroke="black" stroke-width="2"/></svg>');
         transition:
             clip-path var(--tui-duration) ease-in-out,
             mask 0s var(--tui-duration) ease-in-out;
@@ -33,10 +37,10 @@ input[tuiCheckbox] {
     }
 
     &:indeterminate:before {
-        --t-mask: url('data:image/svg+xml,<svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M3 9H15" fill="none" stroke="black" stroke-width="2"/></svg>');
+        mask-image: url('data:image/svg+xml,<svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M3 9H15" fill="none" stroke="black" stroke-width="2"/></svg>');
     }
 
-    &._invalid {
-        box-shadow: inset 0 0 0 0.125rem var(--tui-error-bg-hover);
+    &:invalid {
+        outline-color: var(--tui-error-bg-hover);
     }
 }

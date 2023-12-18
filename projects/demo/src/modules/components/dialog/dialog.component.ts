@@ -7,7 +7,7 @@ import {
     TuiDialogService,
     TuiDialogSize,
 } from '@taiga-ui/core';
-import {switchMap} from 'rxjs/operators';
+import {switchMap} from 'rxjs';
 
 @Component({
     selector: 'example-tui-dialog',

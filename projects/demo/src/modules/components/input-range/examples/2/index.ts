@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiNumberFormatProvider} from '@taiga-ui/core';
@@ -28,5 +28,5 @@ export class TuiInputRangeExample2 {
     readonly max = 50_000_001;
     readonly min = 5_001;
 
-    readonly control = new FormControl([this.min, this.max / 2]);
+    readonly control = new UntypedFormControl([this.min, this.max / 2]);
 }

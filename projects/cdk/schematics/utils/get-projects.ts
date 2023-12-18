@@ -11,7 +11,6 @@ export function getProjects(
         .map(([_, project]) => project);
 
     const nameFromContext =
-        // eslint-disable-next-line @typescript-eslint/no-base-to-string
         options.project || workspace.extensions.defaultProject?.toString() || ``;
     const projectFromContext = workspace.projects.get(nameFromContext);
 

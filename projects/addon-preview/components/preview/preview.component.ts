@@ -22,8 +22,7 @@ import {
 } from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {TuiLanguagePreview} from '@taiga-ui/i18n';
-import {BehaviorSubject, combineLatest, merge, Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {BehaviorSubject, combineLatest, map, merge, Observable, startWith} from 'rxjs';
 
 const INITIAL_SCALE_COEF = 0.8;
 const EMPTY_COORDINATES: [number, number] = [0, 0];

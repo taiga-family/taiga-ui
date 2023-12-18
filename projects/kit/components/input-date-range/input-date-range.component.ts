@@ -67,8 +67,7 @@ import {
     TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
-import {map, takeUntil} from 'rxjs/operators';
+import {map, Observable, takeUntil} from 'rxjs';
 
 @Component({
     selector: 'tui-input-date-range',

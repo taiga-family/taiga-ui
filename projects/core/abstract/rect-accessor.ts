@@ -4,7 +4,7 @@ import {ExistingProvider, FactoryProvider, SkipSelf, Type} from '@angular/core';
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export abstract class TuiRectAccessor {
     abstract readonly type: string;
-    abstract getClientRect(): ClientRect;
+    abstract getClientRect(): DOMRect;
 }
 
 export function tuiRectAccessorFor(

@@ -2,8 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {assets} from '@demo/utils';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {debounceTime, map, share, startWith} from 'rxjs/operators';
+import {BehaviorSubject, debounceTime, map, Observable, share, startWith} from 'rxjs';
 
 import {DemoTuiIconsTabs, TUI_DEMO_ICONS} from './icons.tokens';
 

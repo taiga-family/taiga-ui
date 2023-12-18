@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {Subject, timer} from 'rxjs';
-import {map, startWith, switchMap} from 'rxjs/operators';
+import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
     selector: 'tui-tab-bar-example-4',

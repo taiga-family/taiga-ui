@@ -7,8 +7,7 @@ import {
     TemplateRef,
     ViewContainerRef,
 } from '@angular/core';
-import {from, of, Subject} from 'rxjs';
-import {concatMap, delay, takeUntil} from 'rxjs/operators';
+import {concatMap, delay, from, of, Subject, takeUntil} from 'rxjs';
 
 /**
  * @deprecated:

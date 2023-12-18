@@ -1,6 +1,7 @@
 import {TuiDocumentationPagePO, tuiGoto, TuiInputSliderPO} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
-import {CHAR_MINUS} from '@taiga-ui/cdk/constants';
+
+import {CHAR_MINUS} from '../../../utils/common';
 
 test.describe(`InputSlider`, () => {
     test.use({viewport: {width: 400, height: 500}});

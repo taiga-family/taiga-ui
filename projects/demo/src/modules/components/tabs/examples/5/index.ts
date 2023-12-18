@@ -25,8 +25,6 @@ export class TuiTabsExample5 {
 
     activeElement = String(this.tabs[0]);
 
-    open = false;
-
     get activeItemIndex(): number {
         if (this.collaborators.includes(this.activeElement)) {
             return this.tabs.indexOf(this.collaborators);
@@ -42,7 +40,6 @@ export class TuiTabsExample5 {
 
     onClick(activeElement: string): void {
         this.activeElement = activeElement;
-        this.open = false;
     }
 
     isString(tab: unknown): tab is string {

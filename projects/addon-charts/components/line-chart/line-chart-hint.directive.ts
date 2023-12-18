@@ -22,15 +22,16 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {combineLatest, Observable} from 'rxjs';
 import {
+    combineLatest,
     distinctUntilChanged,
     filter,
     map,
+    Observable,
     startWith,
     switchMap,
     takeUntil,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 import {TuiLineChartComponent} from './line-chart.component';
 

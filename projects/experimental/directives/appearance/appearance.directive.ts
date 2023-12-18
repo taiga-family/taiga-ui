@@ -1,7 +1,10 @@
-import {Directive, Input} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
 import {TuiInteractiveStateT} from '@taiga-ui/core';
 
+import {TUI_APPEARANCE_OPTIONS} from './appearance.options';
+
 @Directive({
+    standalone: true,
     selector: '[tuiAppearance]',
     host: {
         tuiAppearance: '',
@@ -12,7 +15,7 @@ import {TuiInteractiveStateT} from '@taiga-ui/core';
 })
 export class TuiAppearanceDirective {
     @Input()
-    tuiAppearance = '';
+    tuiAppearance = inject(TUI_APPEARANCE_OPTIONS).appearance;
 
     @Input()
     tuiAppearanceState: TuiInteractiveStateT | null = null;

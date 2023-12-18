@@ -2,7 +2,7 @@ import {fakeAsync} from '@angular/core/testing';
 import {AbstractControl, FormControl} from '@angular/forms';
 import {tuiControlValue} from '@taiga-ui/cdk';
 import {tuiSwitchNgDevMode} from '@taiga-ui/testing';
-import {skip} from 'rxjs/operators';
+import {skip} from 'rxjs';
 
 describe(`tuiControlValue`, () => {
     it(`takes control and starts with its value`, fakeAsync(() => {

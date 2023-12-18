@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsPresent} from '@taiga-ui/cdk';
@@ -14,8 +14,8 @@ import {tuiIsPresent} from '@taiga-ui/cdk';
 export class TuiMiscellaneousExample5 {
     readonly items = ['String', 'null', 'undefined'];
 
-    parametersForm = new FormGroup({
-        value: new FormControl(null),
+    parametersForm = new UntypedFormGroup({
+        value: new UntypedFormControl(null),
     });
 
     get isPresent(): boolean {

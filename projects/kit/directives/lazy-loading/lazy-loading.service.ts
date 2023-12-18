@@ -2,8 +2,17 @@ import {ChangeDetectorRef, Inject, Injectable, Self} from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {TuiDestroyService, tuiWatch} from '@taiga-ui/cdk';
-import {Observable, of, Subject} from 'rxjs';
-import {catchError, filter, map, switchMap, take, takeUntil} from 'rxjs/operators';
+import {
+    catchError,
+    filter,
+    map,
+    Observable,
+    of,
+    Subject,
+    switchMap,
+    take,
+    takeUntil,
+} from 'rxjs';
 
 @Injectable()
 export class TuiLazyLoadingService extends Observable<SafeResourceUrl | string> {

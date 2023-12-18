@@ -20,9 +20,7 @@ import {
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness, TuiHorizontalDirection} from '@taiga-ui/core/types';
-import {merge, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-
+import {map, merge, Observable} from 'rxjs';
 // @bad TODO: Think about extending Interactive
 @Component({
     selector: 'a[tuiLink], button[tuiLink]',

@@ -13,8 +13,7 @@ import {
 } from '@taiga-ui/addon-preview/tokens';
 import {ALWAYS_FALSE_HANDLER, tuiClamp} from '@taiga-ui/cdk';
 import {TuiLanguagePreview} from '@taiga-ui/i18n';
-import {merge, Observable, of, timer} from 'rxjs';
-import {map, startWith, switchMap} from 'rxjs/operators';
+import {map, merge, Observable, of, startWith, switchMap, timer} from 'rxjs';
 
 const STEP = 0.5;
 

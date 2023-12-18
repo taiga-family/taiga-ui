@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {MaskitoOptions} from '@maskito/core';
@@ -11,9 +11,9 @@ import {MaskitoOptions} from '@maskito/core';
     changeDetection,
 })
 export class TuiInputExample3 {
-    readonly testForm = new FormGroup({
-        testValue1: new FormControl(''),
-        testValue2: new FormControl(''),
+    readonly testForm = new UntypedFormGroup({
+        testValue1: new UntypedFormControl(''),
+        testValue2: new UntypedFormControl(''),
     });
 
     readonly maskOptions1: MaskitoOptions = {

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMonth, TuiMonthRange} from '@taiga-ui/cdk';
@@ -12,8 +12,8 @@ import {TuiBooleanHandlerWithContext, TuiMonthContext} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiInputMonthRangeExample3 {
-    readonly testForm = new FormGroup({
-        testValue: new FormControl(null),
+    readonly testForm = new UntypedFormGroup({
+        testValue: new UntypedFormControl(null),
     });
 
     readonly disabledItemHandler: TuiBooleanHandlerWithContext<

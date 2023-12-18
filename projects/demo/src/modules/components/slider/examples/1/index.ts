@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -11,5 +11,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 })
 export class TuiSliderExample1 {
     value = 4;
-    formControl = new FormControl(60);
+    formControl = new UntypedFormControl(60);
 }

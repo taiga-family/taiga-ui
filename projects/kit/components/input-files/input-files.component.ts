@@ -33,8 +33,7 @@ import {TuiFileLike} from '@taiga-ui/kit/interfaces';
 import {TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiGetAcceptArray} from '@taiga-ui/kit/utils/files';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable, of} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, Observable, of} from 'rxjs';
 
 import {TuiInputFilesDirective} from './input-files.directive';
 import {TUI_INPUT_FILES_OPTIONS, TuiInputFilesOptions} from './input-files.options';

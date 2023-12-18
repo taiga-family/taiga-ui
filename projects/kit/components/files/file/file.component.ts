@@ -15,8 +15,7 @@ import {TuiFileLike} from '@taiga-ui/kit/interfaces';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {TuiFileState} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable, of} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, Observable, of} from 'rxjs';
 
 import {TUI_FILE_OPTIONS} from './file-options';
 

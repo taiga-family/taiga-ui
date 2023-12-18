@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService} from '@taiga-ui/core';
 import {TuiPushService} from '@taiga-ui/kit';
-import {switchMap, take} from 'rxjs/operators';
+import {switchMap, take} from 'rxjs';
 
 @Component({
     selector: 'tui-push-example-2',

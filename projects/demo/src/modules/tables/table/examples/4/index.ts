@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiComparator} from '@taiga-ui/addon-table';
@@ -13,8 +13,18 @@ import {
     tuiToInt,
 } from '@taiga-ui/cdk';
 import {TUI_ARROW} from '@taiga-ui/kit';
-import {BehaviorSubject, combineLatest, Observable, timer} from 'rxjs';
-import {debounceTime, filter, map, share, startWith, switchMap} from 'rxjs/operators';
+import {
+    BehaviorSubject,
+    combineLatest,
+    debounceTime,
+    filter,
+    map,
+    Observable,
+    share,
+    startWith,
+    switchMap,
+    timer,
+} from 'rxjs';
 
 interface User {
     readonly dob: TuiDay;
@@ -94,7 +104,7 @@ export class TuiTableExample4 {
     readonly direction$ = new BehaviorSubject<-1 | 1>(-1);
     readonly sorter$ = new BehaviorSubject<Key>('name');
 
-    readonly minAge = new FormControl(21);
+    readonly minAge = new UntypedFormControl(21);
 
     readonly request$ = combineLatest([
         this.sorter$,

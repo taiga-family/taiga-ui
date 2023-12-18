@@ -1,8 +1,7 @@
 import {Inject, Pipe, PipeTransform} from '@angular/core';
 import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
-import {Observable, of} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, Observable, of} from 'rxjs';
 
 function onlyMondays(range: readonly TuiDay[]): readonly string[] {
     return range.filter(day => !day.dayOfWeek()).map(String);

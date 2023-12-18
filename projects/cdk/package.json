@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/cdk",
-    "version": "3.57.0",
+    "version": "3.59.0",
     "description": "Base library for creating Angular components and applications using Taiga UI principles regarding of actual visual appearance",
     "keywords": [
         "angular",
@@ -16,7 +16,7 @@
     "license": "Apache-2.0",
     "dependencies": {
         "@ng-web-apis/common": "3.0.6",
-        "@ng-web-apis/mutation-observer": "3.0.6",
+        "@ng-web-apis/mutation-observer": "3.1.0",
         "@ng-web-apis/resize-observer": "3.0.6",
         "@tinkoff/ng-event-plugins": "3.1.0",
         "@tinkoff/ng-polymorpheus": "4.3.0",
@@ -30,7 +30,7 @@
         "rxjs": ">=6.0.0"
     },
     "optionalDependencies": {
-        "ng-morph": "4.0.5",
+        "ng-morph": "4.0.6",
         "parse5": "6.0.1"
     },
     "ng-update": {

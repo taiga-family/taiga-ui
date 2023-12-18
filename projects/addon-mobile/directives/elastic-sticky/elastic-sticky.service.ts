@@ -7,16 +7,16 @@ import {
     tuiScrollFrom,
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
 import {
     distinctUntilChanged,
     map,
+    Observable,
     skip,
     startWith,
     switchMap,
     take,
     takeUntil,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 @Injectable()
 export class TuiElasticStickyService extends Observable<number> {

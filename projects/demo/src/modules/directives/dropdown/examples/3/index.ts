@@ -2,8 +2,7 @@ import {ChangeDetectorRef, Component, Inject, Self} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDestroyService, tuiWatch} from '@taiga-ui/cdk';
-import {interval} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {interval, takeUntil} from 'rxjs';
 
 @Component({
     selector: 'tui-dropdown-example-3',

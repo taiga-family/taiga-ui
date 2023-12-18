@@ -181,6 +181,8 @@ export class TuiInputPhoneComponent
         if (this.nativeValue === this.nonRemovablePrefix || this.isTextValue) {
             this.updateSearch('');
             this.nativeValue = '';
+
+            return;
         }
 
         if (!active && !this.allowText && this.nativeFocusableElement) {
@@ -194,11 +196,12 @@ export class TuiInputPhoneComponent
             : value.replace(TUI_MASK_SYMBOLS_REGEXP, '').slice(0, this.maxPhoneLength);
 
         this.updateSearch(parsed);
-
-        const prepared = parsed === this.countryCode || isText(parsed) ? '' : parsed;
-
-        this.value = prepared === '' && !this.allowText ? this.countryCode : prepared;
+        this.value = parsed === this.countryCode || isText(parsed) ? '' : parsed;
         this.open = true;
+
+        if (!this.value && !this.allowText) {
+            this.nativeValue = this.nonRemovablePrefix;
+        }
     }
 
     handleOption(item: string): void {

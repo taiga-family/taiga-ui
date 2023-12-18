@@ -21,8 +21,8 @@
             <ng-template #submenu>
                 <tui-hosted-dropdown
                     *tuiItem
+                    #hosted
                     [content]="dropdown"
-                    [(open)]="open"
                 >
                     <button
                         tuiTab
@@ -32,7 +32,7 @@
                         <tui-svg
                             src="tuiIconChevronDown"
                             class="icon"
-                            [class.icon_rotated]="open"
+                            [class.icon_rotated]="hosted.open"
                         ></tui-svg>
                     </button>
                 </tui-hosted-dropdown>
@@ -41,12 +41,16 @@
     </tui-tabs-with-more>
 </div>
 <section class="content">Currently active: {{ activeElement }}</section>
-<ng-template #dropdown>
-    <tui-data-list>
+<ng-template
+    #dropdown
+    let-activeZone
+    let-close="close"
+>
+    <tui-data-list [tuiActiveZoneParent]="activeZone">
         <button
             *ngFor="let collaborator of collaborators"
             tuiOption
-            (click)="onClick(collaborator)"
+            (click)="onClick(collaborator); close()"
         >
             {{ collaborator }}
         </button>

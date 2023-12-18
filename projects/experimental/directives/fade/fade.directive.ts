@@ -18,8 +18,7 @@ import {
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {TuiOrientation} from '@taiga-ui/core';
-import {fromEvent, merge, Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {fromEvent, merge, Observable, takeUntil} from 'rxjs';
 
 import {TuiFadeComponent} from './fade.component';
 

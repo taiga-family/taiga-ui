@@ -1,7 +1,7 @@
 import {ElementRef} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
 import {TuiParentsScrollService} from '@taiga-ui/cdk/services';
-import {take} from 'rxjs/operators';
+import {take} from 'rxjs';
 
 describe(`TuiParentsScrollService`, () => {
     let element: HTMLElement;

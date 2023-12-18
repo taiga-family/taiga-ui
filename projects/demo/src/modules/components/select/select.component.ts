@@ -1,5 +1,5 @@
 import {Component, forwardRef, ViewChild} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample, tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import {ALWAYS_FALSE_HANDLER, TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
@@ -132,7 +132,7 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
 
     identityMatcher = this.identityMatcherVariants[0];
 
-    control = new FormControl(null, Validators.required);
+    control = new UntypedFormControl(null, Validators.required);
 
     readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<Account>> = [
         ALWAYS_FALSE_HANDLER,

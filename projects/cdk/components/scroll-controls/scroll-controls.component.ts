@@ -8,8 +8,7 @@ import {
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_SCROLL_REF} from '@taiga-ui/cdk/tokens';
-import {Observable} from 'rxjs';
-import {distinctUntilChanged, map, startWith, throttleTime} from 'rxjs/operators';
+import {distinctUntilChanged, map, Observable, startWith, throttleTime} from 'rxjs';
 
 @Component({
     selector: 'tui-scroll-controls',

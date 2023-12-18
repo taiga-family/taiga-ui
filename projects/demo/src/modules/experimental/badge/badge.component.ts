@@ -45,8 +45,8 @@ export class ExampleTuiBadgeComponent {
     };
 
     readonly appearanceVariants = [
+        '',
         'accent',
-        'default',
         'primary',
         'custom',
         'success',

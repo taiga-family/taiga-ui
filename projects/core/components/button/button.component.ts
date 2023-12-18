@@ -18,8 +18,7 @@ import {
 import {TuiModeDirective} from '@taiga-ui/core/directives';
 import {TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {EMPTY, Observable} from 'rxjs';
-import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
+import {distinctUntilChanged, EMPTY, map, Observable, startWith} from 'rxjs';
 
 import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button.options';
 

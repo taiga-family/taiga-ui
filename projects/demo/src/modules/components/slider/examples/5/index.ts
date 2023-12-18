@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiKeySteps} from '@taiga-ui/kit';
@@ -13,7 +13,7 @@ import {TuiKeySteps} from '@taiga-ui/kit';
 })
 export class TuiSliderExample5 {
     readonly labels: string[] = ['5 000', '100 000', '300 000', '1 000 000'];
-    readonly formControl = new FormControl(720_000);
+    readonly formControl = new UntypedFormControl(720_000);
     readonly segments = this.labels.length - 1;
 
     readonly keySteps: TuiKeySteps = [

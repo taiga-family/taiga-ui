@@ -2,8 +2,7 @@ import {Component, ElementRef, Inject, Self} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDestroyService, TuiScrollService} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {Observable, takeUntil} from 'rxjs';
 
 @Component({
     selector: 'tui-scroll-example-1',

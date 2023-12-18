@@ -1,6 +1,6 @@
 import {DebugElement} from '@angular/core';
 import {ComponentFixture} from '@angular/core/testing';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 
 import {TuiNativeInputPO} from '../native-input.page-object';
 import {TuiPageObject} from '../page-object';
@@ -14,7 +14,7 @@ interface TestParams {
 }
 
 interface TestComponent {
-    control: FormControl;
+    control: UntypedFormControl;
 }
 
 export function tuiTestFiller(

@@ -31,8 +31,7 @@ import {
 } from '@taiga-ui/core';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {combineLatest, EMPTY, Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {combineLatest, EMPTY, map, Observable, startWith} from 'rxjs';
 
 import {
     TUI_INPUT_PASSWORD_OPTIONS,

@@ -1,7 +1,6 @@
 import {ChangeDetectorRef, ElementRef, Inject, Injectable, Self} from '@angular/core';
 import {tuiFocusVisibleObservable, tuiWatch} from '@taiga-ui/cdk/observables';
-import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {Observable, takeUntil} from 'rxjs';
 
 import {TuiDestroyService} from './destroy.service';
 

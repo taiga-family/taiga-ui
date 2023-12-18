@@ -9,15 +9,18 @@ import {
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
-import {merge, of, ReplaySubject, timer} from 'rxjs';
 import {
     debounce,
     distinctUntilChanged,
     map,
+    merge,
+    of,
+    ReplaySubject,
     skip,
     startWith,
     switchMap,
-} from 'rxjs/operators';
+    timer,
+} from 'rxjs';
 
 @Directive({
     selector: '[tuiHintDescribe]',

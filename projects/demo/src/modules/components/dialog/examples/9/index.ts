@@ -1,11 +1,11 @@
 import {Component, Inject, Self} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {takeUntil} from 'rxjs/operators';
+import {takeUntil} from 'rxjs';
 
 import {PayModalComponent} from './pay-modal/pay-modal.component';
 
@@ -18,7 +18,7 @@ import {PayModalComponent} from './pay-modal/pay-modal.component';
     providers: [TuiDestroyService],
 })
 export class TuiDialogExampleComponent9 {
-    readonly amountControl = new FormControl(100);
+    readonly amountControl = new UntypedFormControl(100);
 
     constructor(
         @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,

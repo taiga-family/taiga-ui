@@ -5,7 +5,7 @@ import {TuiDialog} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
 import {TuiPdfViewerOptions, TuiPdfViewerService} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {switchMap} from 'rxjs/operators';
+import {switchMap} from 'rxjs';
 
 import {ActionsContentComponent} from './actions-content.component';
 import {PdfContentComponent} from './pdf-content.component';

@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiDecimal} from '@taiga-ui/core';
@@ -74,7 +74,7 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
 
     precision = this.precisionVariants[0];
 
-    readonly control = new FormControl(6432, Validators.required);
+    readonly control = new UntypedFormControl(6432, Validators.required);
 
     step = 0;
 }

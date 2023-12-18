@@ -8,6 +8,11 @@ import {
 } from '@angular/core';
 import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
+import {
+    TuiAppearanceDirective,
+    tuiAppearanceOptionsProvider,
+} from '@taiga-ui/experimental/directives/appearance';
+import {TuiIconsDirective} from '@taiga-ui/experimental/directives/icons';
 import {Observable} from 'rxjs';
 
 import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button.options';
@@ -25,21 +30,30 @@ export class TuiButtonStylesComponent {}
 
 @Directive({
     selector: 'a[tuiButton],button[tuiButton],a[tuiIconButton],button[tuiIconButton]',
-    providers: [MODE_PROVIDER],
+    providers: [MODE_PROVIDER, tuiAppearanceOptionsProvider(TUI_BUTTON_OPTIONS)],
+    hostDirectives: [
+        {
+            directive: TuiAppearanceDirective,
+            inputs: [
+                'tuiAppearance: appearance',
+                'tuiAppearanceState',
+                'tuiAppearanceFocus',
+            ],
+        },
+        {
+            directive: TuiIconsDirective,
+            inputs: ['iconLeft', 'iconRight'],
+        },
+    ],
     host: {
         tuiButtonNew: '',
-        tuiAppearance: '',
         '[attr.data-size]': 'size',
-        '[attr.data-appearance]': 'appearance',
         '($.data-mode.attr)': 'mode$',
     },
 })
 export class TuiButtonDirective {
     @Input()
     size = this.options.size;
-
-    @Input()
-    appearance = this.options.appearance;
 
     constructor(
         @Inject(TUI_BUTTON_OPTIONS) private readonly options: TuiButtonOptions,

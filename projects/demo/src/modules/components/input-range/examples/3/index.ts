@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -17,7 +17,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputRangeExample3 {
-    readonly control = new FormControl([0, 7]);
+    readonly control = new UntypedFormControl([0, 7]);
 
     // See https://angular.io/api/common/I18nPluralPipe
     readonly pluralize = {

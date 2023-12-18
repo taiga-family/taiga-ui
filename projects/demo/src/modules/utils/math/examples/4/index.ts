@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiQuantize} from '@taiga-ui/cdk';
@@ -12,9 +12,9 @@ import {tuiQuantize} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiMathExample4 {
-    parametersForm = new FormGroup({
-        value: new FormControl(3),
-        quantum: new FormControl(2),
+    parametersForm = new UntypedFormGroup({
+        value: new UntypedFormControl(3),
+        quantum: new UntypedFormControl(2),
     });
 
     get quantized(): number {

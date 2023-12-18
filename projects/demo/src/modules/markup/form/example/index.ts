@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiCurrency} from '@taiga-ui/addon-commerce';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
@@ -54,25 +54,25 @@ export class TuiExample {
         new Account(`4`, `Mutation`, 100, TuiCurrency.Pound, this.svgIcons.mutation),
     ];
 
-    testForm = new FormGroup({
-        nameValue: new FormControl(``, Validators.required),
-        textValue: new FormControl(``, Validators.required),
-        passwordValue: new FormControl(``, Validators.required),
-        phoneValue: new FormControl(``, Validators.required),
-        moneyValue: new FormControl(`100`, Validators.required),
-        periodValue: new FormControl(new TuiDay(2017, 2, 15), Validators.required),
-        timeValue: new FormControl(new TuiTime(12, 30), Validators.required),
-        personValue: new FormControl(this.persons[0]),
-        quantityValue: new FormControl(50_000, Validators.required),
-        radioValue: new FormControl(`with-commission`),
-        accountWherefrom: new FormControl(null),
-        accountWhere: new FormControl(null),
-        checkboxValue: new FormControl(false),
-        osnoValue: new FormControl(false),
-        usnValue: new FormControl(false),
-        eshnValue: new FormControl(false),
-        envdValue: new FormControl(false),
-        usn2Value: new FormControl(false),
-        patentValue: new FormControl(false),
+    testForm = new UntypedFormGroup({
+        nameValue: new UntypedFormControl(``, Validators.required),
+        textValue: new UntypedFormControl(``, Validators.required),
+        passwordValue: new UntypedFormControl(``, Validators.required),
+        phoneValue: new UntypedFormControl(``, Validators.required),
+        moneyValue: new UntypedFormControl(`100`, Validators.required),
+        periodValue: new UntypedFormControl(new TuiDay(2017, 2, 15), Validators.required),
+        timeValue: new UntypedFormControl(new TuiTime(12, 30), Validators.required),
+        personValue: new UntypedFormControl(this.persons[0]),
+        quantityValue: new UntypedFormControl(50_000, Validators.required),
+        radioValue: new UntypedFormControl(`with-commission`),
+        accountWherefrom: new UntypedFormControl(null),
+        accountWhere: new UntypedFormControl(null),
+        checkboxValue: new UntypedFormControl(false),
+        osnoValue: new UntypedFormControl(false),
+        usnValue: new UntypedFormControl(false),
+        eshnValue: new UntypedFormControl(false),
+        envdValue: new UntypedFormControl(false),
+        usn2Value: new UntypedFormControl(false),
+        patentValue: new UntypedFormControl(false),
     });
 }

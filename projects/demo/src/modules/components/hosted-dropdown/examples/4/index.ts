@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_ARROW} from '@taiga-ui/kit';
@@ -11,8 +11,8 @@ import {TUI_ARROW} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiHostedDropdownExample4 {
-    readonly form = new FormGroup({
-        control: new FormControl([]),
+    readonly form = new UntypedFormGroup({
+        control: new UntypedFormControl([]),
     });
 
     open = false;

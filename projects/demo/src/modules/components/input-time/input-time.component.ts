@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample, tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import {
@@ -67,7 +67,7 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
 
     override cleaner = false;
 
-    control = new FormControl(TuiTime.currentLocal(), Validators.required);
+    control = new UntypedFormControl(TuiTime.currentLocal(), Validators.required);
 
     readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<TuiTime>> = [
         ALWAYS_FALSE_HANDLER,

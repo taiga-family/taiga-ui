@@ -1,10 +1,9 @@
-input[tuiToggle],
-input[tuiToggle]& {
+input[tuiToggle] {
     .transition(~'color, opacity');
     height: 1.25rem;
     width: 2.5rem;
     color: var(--tui-base-05);
-    background: transparent;
+    background: transparent !important;
     overflow: visible;
 
     &:before {
@@ -49,7 +48,7 @@ input[tuiToggle]& {
         }
     }
 
-    &._invalid {
+    &:invalid {
         color: var(--tui-error-fill);
 
         &:not(:checked) {

@@ -5,5 +5,5 @@ import {Directive, Input} from '@angular/core';
 })
 export class TuiBlockStatusDirective {
     @Input()
-    tuiSlot: string | 'top' = 'top';
+    tuiSlot: string | 'action' | 'top' = 'top';
 }

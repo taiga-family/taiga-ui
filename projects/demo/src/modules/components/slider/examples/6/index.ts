@@ -2,8 +2,7 @@ import {Component, HostListener} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {ALWAYS_FALSE_HANDLER, tuiClamp} from '@taiga-ui/cdk';
-import {BehaviorSubject, of, timer} from 'rxjs';
-import {distinctUntilChanged, map, switchMap} from 'rxjs/operators';
+import {BehaviorSubject, distinctUntilChanged, map, of, switchMap, timer} from 'rxjs';
 
 @Component({
     selector: 'tui-slider-example-6',

@@ -8,8 +8,7 @@ import {
 } from '@angular/core';
 import {tuiIfMap} from '@taiga-ui/cdk';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
-import {Subject} from 'rxjs';
-import {endWith, ignoreElements, share} from 'rxjs/operators';
+import {endWith, ignoreElements, share, Subject} from 'rxjs';
 
 import {TuiSheet} from './sheet';
 import {TuiSheetService} from './sheet.service';

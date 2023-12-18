@@ -1,5 +1,4 @@
-input[tuiToggle],
-input[tuiToggle]& {
+input[tuiToggle] {
     height: 1.9375rem;
     width: 3.1875rem;
     border-radius: 2rem;
@@ -28,8 +27,14 @@ input[tuiToggle]& {
         width: 2.3rem;
     }
 
-    &:checked {
+    &:checked,
+    &:checked:hover,
+    &:checked:active {
         background: var(--tui-accent);
+
+        &:invalid {
+            background: var(--tui-error-fill);
+        }
 
         &:after {
             transform: scale(0.871) translateX(1.44rem);
@@ -37,14 +42,6 @@ input[tuiToggle]& {
 
         &:active:after {
             transform: scale(0.871) translateX(1.0775rem);
-        }
-    }
-
-    &._invalid {
-        background: var(--tui-error-bg);
-
-        &:checked {
-            background: var(--tui-error-fill);
         }
     }
 }

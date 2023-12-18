@@ -2,19 +2,21 @@ import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiOwnerDocumentException} from '@taiga-ui/cdk/exceptions';
 import {tuiIsFalsy} from '@taiga-ui/cdk/utils';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
-import {concat, merge, Observable} from 'rxjs';
 import {
+    concat,
     distinctUntilChanged,
     filter,
     ignoreElements,
     map,
+    merge,
+    Observable,
     repeat,
     shareReplay,
     startWith,
     switchMap,
     take,
     withLatestFrom,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 import {tuiIsAlive} from './is-alive';
 import {tuiTypedFromEvent} from './typed-from-event';

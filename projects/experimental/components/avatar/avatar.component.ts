@@ -1,6 +1,10 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
 import {tuiIsString, TuiStringHandler} from '@taiga-ui/cdk';
+import {
+    TuiAppearanceDirective,
+    tuiAppearanceOptionsProvider,
+} from '@taiga-ui/experimental/directives/appearance';
 import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
 
 import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar.options';
@@ -10,9 +14,18 @@ import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar.options';
     templateUrl: './avatar.template.html',
     styleUrls: ['./avatar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiAppearanceOptionsProvider(TUI_AVATAR_OPTIONS)],
+    hostDirectives: [
+        {
+            directive: TuiAppearanceDirective,
+            inputs: [
+                'tuiAppearance: appearance',
+                'tuiAppearanceState',
+                'tuiAppearanceFocus',
+            ],
+        },
+    ],
     host: {
-        tuiAppearance: '',
-        '[attr.data-appearance]': 'appearance',
         '[attr.data-size]': 'size',
         '[attr.data-type]': 'type',
         '[style.--t-mask]': '"url(" + resolver(src) + ")"',
@@ -28,9 +41,6 @@ export class TuiAvatarComponent {
 
     @Input()
     src: SafeResourceUrl | string | null = null;
-
-    @Input()
-    appearance = '';
 
     constructor(
         @Inject(TUI_AVATAR_OPTIONS) private readonly options: TuiAvatarOptions,

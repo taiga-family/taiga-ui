@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiFormatPhone} from '@taiga-ui/core';
@@ -12,10 +12,10 @@ import {tuiFormatPhone} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiFormatExample4 {
-    parametersForm = new FormGroup({
-        value: new FormControl('+79991234567'),
-        countryCode: new FormControl('+7'),
-        phoneMask: new FormControl('### ###-##-##'),
+    parametersForm = new UntypedFormGroup({
+        value: new UntypedFormControl('+79991234567'),
+        countryCode: new UntypedFormControl('+7'),
+        phoneMask: new UntypedFormControl('### ###-##-##'),
     });
 
     get formattedPhone(): string {

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
@@ -29,7 +29,7 @@ export class TuiMultiSelectExample3 {
         {id: 6, name: 'Yoda'},
     ];
 
-    readonly control = new FormControl([this.items[3], this.items[4]]);
+    readonly control = new UntypedFormControl([this.items[3], this.items[4]]);
 
     readonly stringify: TuiStringHandler<Hero | TuiContextWithImplicit<Hero>> = item =>
         'name' in item ? item.name : item.$implicit.name;

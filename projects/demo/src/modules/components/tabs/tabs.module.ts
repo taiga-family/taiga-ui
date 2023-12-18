@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiMobileTabsModule, TuiRippleModule} from '@taiga-ui/addon-mobile';
+import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
@@ -43,6 +44,7 @@ import {ExampleTuiTabsComponent} from './tabs.component';
         TuiMobileTabsModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTabsComponent)),
         TuiScrollbarModule,
+        TuiActiveZoneModule,
     ],
     declarations: [
         ExampleTuiTabsComponent,

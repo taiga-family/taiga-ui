@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
@@ -76,5 +76,5 @@ export class ExampleTuiInputDateMultiComponent extends AbstractExampleTuiControl
 
     expandable = false;
 
-    control = new FormControl([], Validators.required);
+    control = new UntypedFormControl([], Validators.required);
 }

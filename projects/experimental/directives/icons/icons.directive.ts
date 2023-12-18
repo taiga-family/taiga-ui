@@ -4,10 +4,9 @@ import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
 
 import {TuiIconsComponent} from './icons.component';
 
-// TODO: Turn into a hostDirective in 4.0
 @Directive({
-    selector:
-        '[iconLeft]:is(button,tui-badge,tui-chip),[iconRight]:is(button,tui-badge,tui-chip),[tuiBadge][iconLeft],[tuiBadge][iconRight],[tuiChip][iconLeft],[tuiChip][iconRight],[tuiButtonClose]',
+    standalone: true,
+    selector: '[tuiIcons]:is(never)',
     host: {
         tuiIcons: '',
         '[class._icon-left]': 'iconLeft',

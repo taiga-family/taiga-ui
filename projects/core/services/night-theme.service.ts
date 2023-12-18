@@ -1,7 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {fromEvent, Observable} from 'rxjs';
-import {map, share, startWith} from 'rxjs/operators';
+import {fromEvent, map, Observable, share, startWith} from 'rxjs';
 
 @Injectable({
     providedIn: `root`,

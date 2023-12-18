@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -12,7 +12,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 })
 export class TuiRadioBlockExample4 {
     readonly items = ['Kiwi', 'Orange', 'Apple'];
-    readonly form = new FormGroup({
-        control: new FormControl(this.items[1]),
+    readonly form = new UntypedFormGroup({
+        control: new UntypedFormControl(this.items[1]),
     });
 }

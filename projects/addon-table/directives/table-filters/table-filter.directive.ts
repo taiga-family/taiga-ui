@@ -2,8 +2,7 @@ import {Directive, Inject, Input, OnDestroy, OnInit, Optional} from '@angular/co
 import {NgControl} from '@angular/forms';
 import {TuiHeadDirective} from '@taiga-ui/addon-table/components';
 import {TuiValuesOf} from '@taiga-ui/cdk';
-import {defer, EMPTY, merge} from 'rxjs';
-import {distinctUntilChanged} from 'rxjs/operators';
+import {defer, distinctUntilChanged, EMPTY, merge} from 'rxjs';
 
 import {AbstractTuiTableFilter} from './abstract-table-filter';
 import {TuiTableFilter} from './table-filter';

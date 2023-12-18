@@ -19,8 +19,7 @@ import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATION_OPTIONS, TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness, TuiPoint} from '@taiga-ui/core/types';
-import {Observable} from 'rxjs';
-import {map, takeUntil} from 'rxjs/operators';
+import {map, Observable, takeUntil} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TuiDropdownHoverDirective} from './dropdown-hover.directive';

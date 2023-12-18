@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
@@ -30,5 +30,8 @@ import {
     ],
 })
 export class TuiInputDateRangeExample4 {
-    readonly control = new FormControl([new Date(2018, 2, 10), new Date(2018, 3, 20)]);
+    readonly control = new UntypedFormControl([
+        new Date(2018, 2, 10),
+        new Date(2018, 3, 20),
+    ]);
 }

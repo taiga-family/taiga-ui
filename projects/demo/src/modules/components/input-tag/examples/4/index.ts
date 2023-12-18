@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AbstractControl, FormControl, ValidatorFn} from '@angular/forms';
+import {AbstractControl, UntypedFormControl, ValidatorFn} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
@@ -39,7 +39,7 @@ export class TuiInputTagExample4 {
 
     readonly tagValidator = tagValidator;
 
-    readonly control = new FormControl([], createControlValidator(tagValidator));
+    readonly control = new UntypedFormControl([], createControlValidator(tagValidator));
 
     get filtered(): readonly string[] {
         return this.filterBy(this.search, this.control.value ?? []);

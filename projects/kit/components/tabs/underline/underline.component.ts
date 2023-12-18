@@ -11,8 +11,7 @@ import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {tuiZonefree} from '@taiga-ui/cdk';
 import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
 import {asCallable} from '@tinkoff/ng-event-plugins';
-import {Observable, of, ReplaySubject} from 'rxjs';
-import {debounceTime, map, share, switchMap} from 'rxjs/operators';
+import {debounceTime, map, Observable, of, ReplaySubject, share, switchMap} from 'rxjs';
 
 @Component({
     selector: 'tui-underline',

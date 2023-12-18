@@ -7,8 +7,7 @@ import {
     TuiTableBarsService,
 } from '@taiga-ui/addon-tablebars';
 import {TuiPageObject} from '@taiga-ui/testing';
-import {Subscription, timer} from 'rxjs';
-import {skip, take, takeUntil} from 'rxjs/operators';
+import {skip, Subscription, take, takeUntil, timer} from 'rxjs';
 
 describe(`TableBarsHost`, () => {
     @Component({

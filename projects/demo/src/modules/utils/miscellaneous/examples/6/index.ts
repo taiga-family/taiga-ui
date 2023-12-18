@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
@@ -11,12 +11,12 @@ import {tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiMiscellaneousExample6 implements OnInit {
-    userDetailsForm = new FormGroup({
-        name: new FormControl('', Validators.required),
-        address: new FormGroup({
-            street: new FormControl('', Validators.required),
-            city: new FormControl('', Validators.required),
-            zipCode: new FormControl('', Validators.required),
+    userDetailsForm = new UntypedFormGroup({
+        name: new UntypedFormControl('', Validators.required),
+        address: new UntypedFormGroup({
+            street: new UntypedFormControl('', Validators.required),
+            city: new UntypedFormControl('', Validators.required),
+            zipCode: new UntypedFormControl('', Validators.required),
         }),
     });
 
