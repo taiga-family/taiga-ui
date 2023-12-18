@@ -37,7 +37,14 @@
                     >
                         {{ item.day }}
                         <div
-                            *ngIf="item | tuiMapper: toMarkers : itemIsToday(item) : !!getItemRange(item) as markers"
+                            *ngIf="
+                                item
+                                    | tuiMapper
+                                        : toMarkers
+                                        : itemIsToday(item)
+                                        : !!getItemRange(item)
+                                        : markerHandler as markers
+                            "
                             class="t-dots"
                         >
                             <div
