@@ -3,8 +3,7 @@ import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {POLLING_TIME} from '@taiga-ui/cdk/constants';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiGetElementObscures} from '@taiga-ui/cdk/utils/dom';
-import {Observable} from 'rxjs';
-import {distinctUntilChanged, map, startWith, throttleTime} from 'rxjs/operators';
+import {distinctUntilChanged, map, Observable, startWith, throttleTime} from 'rxjs';
 
 // @bad TODO: Consider Intersection Observer with fallback to current implementation
 /**
