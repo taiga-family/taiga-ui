@@ -2,7 +2,7 @@
 <ng-container *ngIf="heads$ | async as headings">
     <ng-container
         *ngFor="let key of table.columns"
-        [ngTemplateOutlet]="headings[key.toString()]?.template || plain"
+        [ngTemplateOutlet]="headings[key.toString()].template || plain"
     >
         <ng-template #plain>
             <th
