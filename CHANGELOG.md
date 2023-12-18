@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.60.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.60.0) (2023-12-18)
+
+### Bug Fixes
+
+- **core:** `Calendar` properly react to markers change ([#6258](https://github.com/taiga-family/taiga-ui/issues/6258))
+  ([fcea78d](https://github.com/taiga-family/taiga-ui/commit/fcea78da92d07baa404de0ea47fcf8cfc8cde5e4))
+
 ## [3.59.0](https://github.com/taiga-family/taiga-ui/compare/v3.58.0...v3.59.0) (2023-12-12)
 
 ### Features
