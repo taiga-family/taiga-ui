@@ -7,7 +7,7 @@ import {
     TUI_PLAYWRIGHT_MOBILE_VIEWPORT_WIDTH,
 } from '../../../playwright.options';
 
-test.describe(`Select`, () => {
+test.describe('Select', () => {
     test.use({
         viewport: {
             width: TUI_PLAYWRIGHT_MOBILE_VIEWPORT_WIDTH,
@@ -16,14 +16,14 @@ test.describe(`Select`, () => {
         userAgent: TUI_PLAYWRIGHT_MOBILE_USER_AGENT,
     });
 
-    test(`native select value`, async ({page}) => {
-        await tuiGoto(page, `components/select`);
-        const dropdown = page.locator(`#native-select select`).first();
+    test('native select value', async ({page}) => {
+        await tuiGoto(page, 'components/select');
+        const dropdown = page.locator('#native-select select').first();
 
         await dropdown.selectOption({index: 1});
 
-        await expect(page.locator(`#native-select`)).toHaveScreenshot(
-            `01-native-select-value.png`,
+        await expect(page.locator('#native-select')).toHaveScreenshot(
+            '01-native-select-value.png',
         );
     });
 });

@@ -1,7 +1,7 @@
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/cdk';
 
-describe(`tuiAsControl`, () => {
-    it(`is not assignable to control interface`, () => {
+describe('tuiAsControl', () => {
+    it('is not assignable to control interface', () => {
         class MyNoControlComponent {}
 
         // @ts-expect-error
@@ -11,12 +11,12 @@ describe(`tuiAsControl`, () => {
         });
     });
 
-    it(`implement control interface`, () => {
+    it('implement control interface', () => {
         class MyControlComponent extends AbstractTuiControl<string> {
             focused = false;
 
             protected getFallbackValue(): string {
-                return ``;
+                return '';
             }
         }
 

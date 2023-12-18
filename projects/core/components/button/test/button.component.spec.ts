@@ -6,7 +6,7 @@ import {TuiButtonHarness, TuiLoaderHarness} from '@taiga-ui/testing';
 
 import {TuiButtonModule} from '../button.module';
 
-describe(`Button`, () => {
+describe('Button', () => {
     @Component({
         template: `
             <button
@@ -39,7 +39,7 @@ describe(`Button`, () => {
         fixture.detectChanges();
     });
 
-    it(`Show loader`, async () => {
+    it('Show loader', async () => {
         component.showLoader = true;
         fixture.detectChanges();
 
@@ -49,13 +49,13 @@ describe(`Button`, () => {
         expect(shown).toBe(true);
     });
 
-    it(`When loader is shown, native button is disabled`, async () => {
+    it('When loader is shown, native button is disabled', async () => {
         component.showLoader = true;
         fixture.detectChanges();
 
         const harness = await loader.getHarness(TuiButtonHarness);
         const host = await harness.host();
-        const disabled = await host.matchesSelector(`:disabled`);
+        const disabled = await host.matchesSelector(':disabled');
 
         expect(disabled).toBe(true);
     });

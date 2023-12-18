@@ -1,6 +1,6 @@
 import {Directive, EventEmitter, HostBinding, Input, Output} from '@angular/core';
 
-const TUI = `tui_interactive_`;
+const TUI = 'tui_interactive_';
 
 /**
  * The most basic class for interactive components
@@ -22,7 +22,7 @@ export abstract class AbstractTuiInteractive {
     pseudoActive: boolean | null = null;
 
     @Input()
-    @HostBinding(`attr.data-focused`)
+    @HostBinding('attr.data-focused')
     pseudoFocus: boolean | null = null;
 
     /**
@@ -32,7 +32,7 @@ export abstract class AbstractTuiInteractive {
     focusable = true;
 
     @Input()
-    nativeId = ``;
+    nativeId = '';
 
     /**
      * Emits 'true' on focus and 'false' on blur.
@@ -49,7 +49,7 @@ export abstract class AbstractTuiInteractive {
         this.autoIdString = `${TUI}${AbstractTuiInteractive.autoId++}${Date.now()}`;
     }
 
-    @HostBinding(`class._disabled`)
+    @HostBinding('class._disabled')
     get computedDisabled(): boolean {
         return this.disabled;
     }
@@ -58,12 +58,12 @@ export abstract class AbstractTuiInteractive {
         return !this.computedDisabled && (this.focusable || this.focused);
     }
 
-    @HostBinding(`class._focused`)
+    @HostBinding('class._focused')
     get computedFocused(): boolean {
         return !this.computedDisabled && (this.pseudoFocus ?? this.focused);
     }
 
-    @HostBinding(`class._focus-visible`)
+    @HostBinding('class._focus-visible')
     get computedFocusVisible(): boolean {
         return !this.computedDisabled && (this.pseudoFocus ?? this.focusVisible);
     }

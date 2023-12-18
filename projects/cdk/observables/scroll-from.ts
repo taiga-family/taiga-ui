@@ -10,6 +10,6 @@ export function tuiScrollFrom(element: Element): Observable<Event> {
         element === element.ownerDocument.documentElement
             ? element.ownerDocument
             : element,
-        `scroll`,
+        'scroll',
     );
 }

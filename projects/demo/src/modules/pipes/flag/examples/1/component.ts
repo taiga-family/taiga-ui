@@ -4,8 +4,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 
 @Component({
-    selector: `tui-flag-example1`,
-    templateUrl: `./template.html`,
+    selector: 'tui-flag-example1',
+    templateUrl: './template.html',
     encapsulation,
     changeDetection,
 })

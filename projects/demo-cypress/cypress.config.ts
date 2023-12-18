@@ -16,8 +16,8 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
     blockHosts,
     viewportWidth,
     viewportHeight,
-    fixturesFolder: `cypress/fixtures`,
-    screenshotsFolder: `cypress/screenshots`,
+    fixturesFolder: 'cypress/fixtures',
+    screenshotsFolder: 'cypress/screenshots',
 
     /**
      * @description:
@@ -54,27 +54,27 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
     env: {
         DEEP_PATHS,
         componentsExclusion: [
-            [`components/select`, [5]],
-            [`components/multi-select`, [4]],
-            [`components/mobile-calendar`, [2, 3]], // flaky test, need investigate
-            [`components/table`, [4, 5]], // randomly generated data
-            [`components/preview`, [1, 2, 3]],
-            [`components/progress-bar`, [6]], // indeterminate progress bar
+            ['components/select', [5]],
+            ['components/multi-select', [4]],
+            ['components/mobile-calendar', [2, 3]], // flaky test, need investigate
+            ['components/table', [4, 5]], // randomly generated data
+            ['components/preview', [1, 2, 3]],
+            ['components/progress-bar', [6]], // indeterminate progress bar
         ],
         waitBeforeScreenshot: 1000,
         waitBeforeAction: 50,
         fonts: {
-            '@tui-mobile-min': {width: 360, font: `Manrope`},
-            '@tui-mobile': {width: 767, font: `Manrope`},
-            '@tui-tablet': {width: 1024, font: `Manrope`},
-            '@tui-desktop': {width: 1280, font: `Manrope`},
+            '@tui-mobile-min': {width: 360, font: 'Manrope'},
+            '@tui-mobile': {width: 767, font: 'Manrope'},
+            '@tui-tablet': {width: 1024, font: 'Manrope'},
+            '@tui-desktop': {width: 1280, font: 'Manrope'},
         },
     },
 
     e2e: {
-        specPattern: `cypress/tests/**/*.cy.ts`,
-        supportFile: `cypress/support/e2e.ts`,
-        baseUrl: `http://localhost:3333`,
+        specPattern: 'cypress/tests/**/*.cy.ts',
+        supportFile: 'cypress/support/e2e.ts',
+        baseUrl: 'http://localhost:3333',
         /**
          * @description:
          * We've imported your old cypress plugins here.
@@ -86,12 +86,10 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
         ) {
             await tuiAddSnapshotPlugin(on, config, {
                 newSnapshotMarkFn: oldFileName => `==new==${oldFileName}`,
-                newSnapshotMarkEnabled: config.baseUrl === `http://localhost:3333/`,
+                newSnapshotMarkEnabled: config.baseUrl === 'http://localhost:3333/',
             });
 
-            const webpackPreprocessor = require(
-                `@cypress/webpack-batteries-included-preprocessor`,
-            );
+            const webpackPreprocessor = require('@cypress/webpack-batteries-included-preprocessor');
             const webpackOptions = webpackPreprocessor.defaultOptions.webpackOptions;
 
             webpackOptions.module.rules.unshift({
@@ -100,9 +98,9 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
                     fullySpecified: false,
                 },
                 use: {
-                    loader: `babel-loader`,
+                    loader: 'babel-loader',
                     options: {
-                        plugins: [`@angular/compiler-cli/linker/babel`],
+                        plugins: ['@angular/compiler-cli/linker/babel'],
                         compact: false,
                         cacheDirectory: true,
                     },
@@ -110,25 +108,25 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
             });
 
             on(
-                `file:preprocessor`,
+                'file:preprocessor',
                 webpackPreprocessor({
                     webpackOptions,
-                    typescript: require.resolve(`typescript`),
+                    typescript: require.resolve('typescript'),
                 }),
             );
 
-            on(`before:browser:launch`, (browser, launchOptions) => {
-                if (browser.name === `chrome`) {
+            on('before:browser:launch', (browser, launchOptions) => {
+                if (browser.name === 'chrome') {
                     launchOptions.args.push(
-                        `--font-render-hinting=none`, // prevent inconsistent text rendering in headless mode
+                        '--font-render-hinting=none', // prevent inconsistent text rendering in headless mode
                         `--window-size=${TUI_CYPRESS_DESKTOP_VIEWPORT_WIDTH},${TUI_CYPRESS_DESKTOP_VIEWPORT_HEIGHT}`,
-                        `--force-device-scale-factor=2`,
-                        `--high-dpi-support=1`,
-                        `--force-prefers-reduced-motion`,
-                        `--force-color-profile=srgb`,
-                        `--disable-dev-shm-usage`,
-                        `--disable-gpu`,
-                        `--incognito`,
+                        '--force-device-scale-factor=2',
+                        '--high-dpi-support=1',
+                        '--force-prefers-reduced-motion',
+                        '--force-color-profile=srgb',
+                        '--disable-dev-shm-usage',
+                        '--disable-gpu',
+                        '--incognito',
                     );
                 }
 

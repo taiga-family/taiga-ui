@@ -4,7 +4,7 @@ import {TUI_IS_WEBKIT} from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core/types';
 
 @Injectable({
-    providedIn: `root`,
+    providedIn: 'root',
 })
 export class TuiVisualViewportService {
     constructor(

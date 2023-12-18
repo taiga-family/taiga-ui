@@ -1,29 +1,29 @@
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-test.describe(`Carousel`, () => {
+test.describe('Carousel', () => {
     test.use({
         viewport: {width: 500, height: 400},
     });
 
-    test(`default padding`, async ({page}) => {
-        await tuiGoto(page, `components/carousel/API`);
+    test('default padding', async ({page}) => {
+        await tuiGoto(page, 'components/carousel/API');
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
         await expect(apiPageExample).toBeVisible();
-        await expect(apiPageExample).toHaveScreenshot(`carousel-padding-default.png`);
+        await expect(apiPageExample).toHaveScreenshot('carousel-padding-default.png');
     });
 
-    test(`padding has zero value`, async ({page}) => {
-        await tuiGoto(page, `components/carousel/API?style.--tui-carousel-padding=0`);
+    test('padding has zero value', async ({page}) => {
+        await tuiGoto(page, 'components/carousel/API?style.--tui-carousel-padding=0');
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
         await expect(apiPageExample).toBeVisible();
-        await expect(apiPageExample).toHaveScreenshot(`carousel-padding-0.png`);
+        await expect(apiPageExample).toHaveScreenshot('carousel-padding-0.png');
     });
 
-    test(`should show next item after drag`, async ({page}) => {
-        await tuiGoto(page, `components/carousel/API?draggable=true`);
+    test('should show next item after drag', async ({page}) => {
+        await tuiGoto(page, 'components/carousel/API?draggable=true');
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
         await page.mouse.move(375, 300);
@@ -31,6 +31,6 @@ test.describe(`Carousel`, () => {
         await page.mouse.move(125, 300, {steps: 10});
         await page.mouse.up();
 
-        await expect(apiPageExample).toHaveScreenshot(`carousel-draggable.png`);
+        await expect(apiPageExample).toHaveScreenshot('carousel-draggable.png');
     });
 });

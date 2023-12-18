@@ -26,9 +26,9 @@ import {TuiTextareaDirective} from './textarea.directive';
  * @deprecated use {@link TuiTextareaComponent}
  */
 @Component({
-    selector: `tui-text-area`,
-    templateUrl: `./textarea.template.html`,
-    styleUrls: [`./textarea.style.less`],
+    selector: 'tui-text-area',
+    templateUrl: './textarea.template.html',
+    styleUrls: ['./textarea.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiTextAreaComponent),
@@ -37,8 +37,8 @@ import {TuiTextareaDirective} from './textarea.directive';
         MODE_PROVIDER,
     ],
     host: {
-        '($.data-mode.attr)': `mode$`,
-        '[class._ios]': `isIOS`,
+        '($.data-mode.attr)': 'mode$',
+        '[class._ios]': 'isIOS',
     },
 })
 export class TuiTextAreaComponent extends TuiTextareaComponent {}
@@ -47,7 +47,7 @@ export class TuiTextAreaComponent extends TuiTextareaComponent {}
  * @deprecated use {@link TuiTextareaDirective}
  */
 @Directive({
-    selector: `tui-text-area`,
+    selector: 'tui-text-area',
     providers: [tuiAsTextfieldHost(TuiTextAreaDirective)],
 })
 export class TuiTextAreaDirective extends TuiTextareaDirective {}

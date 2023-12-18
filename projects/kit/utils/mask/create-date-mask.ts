@@ -12,14 +12,14 @@ export function tuiCreateDateMask(mode: TuiDateMode, separator: string): TuiText
     ngDevMode &&
         tuiAssert.assert(
             separator.length === 1,
-            `Separator should consist of only 1 symbol`,
+            'Separator should consist of only 1 symbol',
         );
 
     switch (mode) {
-        case `YMD`:
+        case 'YMD':
             return [...FOUR_DIGITS, separator, ...TWO_DIGITS, separator, ...TWO_DIGITS];
-        case `MDY`:
-        case `DMY`:
+        case 'MDY':
+        case 'DMY':
         default:
             return [...TWO_DIGITS, separator, ...TWO_DIGITS, separator, ...FOUR_DIGITS];
     }

@@ -8,7 +8,7 @@ import {TUI_POLISH_LANGUAGE_CORE} from './core';
 import {TUI_POLISH_LANGUAGE_KIT} from './kit';
 
 export const TUI_POLISH_LANGUAGE: TuiLanguage = {
-    name: `polish`,
+    name: 'polish',
     ...TUI_POLISH_LANGUAGE_CORE,
     ...TUI_POLISH_LANGUAGE_KIT,
     ...TUI_POLISH_LANGUAGE_ADDON_TABLE,

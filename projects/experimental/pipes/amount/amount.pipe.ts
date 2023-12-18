@@ -14,7 +14,7 @@ import {TUI_AMOUNT_OPTIONS, TuiAmountOptions} from './amount.options';
 const DEFAULT_DECIMAL_LIMIT = 2;
 
 @Pipe({
-    name: `tuiAmount`,
+    name: 'tuiAmount',
 })
 export class TuiAmountPipePipe implements PipeTransform {
     constructor(
@@ -39,15 +39,15 @@ export class TuiAmountPipePipe implements PipeTransform {
                         Number.isNaN(format.decimalLimit)
                             ? DEFAULT_DECIMAL_LIMIT
                             : format.decimalLimit,
-                        format?.decimal || `not-zero`,
+                        format?.decimal || 'not-zero',
                     ),
                 });
                 const space =
-                    currencySymbol?.length > 1 || currencyAlign === `right`
+                    currencySymbol?.length > 1 || currencyAlign === 'right'
                         ? CHAR_NO_BREAK_SPACE
-                        : ``;
+                        : '';
 
-                return currencyAlign === `right`
+                return currencyAlign === 'right'
                     ? `${sign}${formatted}${space}${currencySymbol}`
                     : `${sign}${currencySymbol}${space}${formatted}`;
             }),
@@ -55,6 +55,6 @@ export class TuiAmountPipePipe implements PipeTransform {
     }
 
     private getDecimalLimit(value: number, limit: number, decimal: TuiDecimal): number {
-        return decimal === `always` || (decimal === `not-zero` && value % 1) ? limit : 0;
+        return decimal === 'always' || (decimal === 'not-zero' && value % 1) ? limit : 0;
     }
 }

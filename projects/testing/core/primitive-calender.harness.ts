@@ -10,11 +10,11 @@ interface TuiDayCellHarnessFilters extends BaseHarnessFilters {
 }
 
 class TuiDayCellHarness extends ComponentHarness {
-    static hostSelector = `.t-cell:not(.t-cell_unavailable)`;
+    static hostSelector = '.t-cell:not(.t-cell_unavailable)';
 
     static with(options: TuiDayCellHarnessFilters): HarnessPredicate<TuiDayCellHarness> {
         return new HarnessPredicate(TuiDayCellHarness, options).addOption(
-            `day`,
+            'day',
             options.day,
             async (harness, text) =>
                 HarnessPredicate.stringMatches(harness.getText(), `${text}`),
@@ -22,7 +22,7 @@ class TuiDayCellHarness extends ComponentHarness {
     }
 
     async getText(): Promise<string> {
-        return (await this.locatorFor(`.t-item`)()).text();
+        return (await this.locatorFor('.t-item')()).text();
     }
 
     async click(): Promise<void> {
@@ -35,11 +35,11 @@ class TuiDayCellHarness extends ComponentHarness {
 }
 
 export class TuiPrimitiveCalendarHarness extends TuiComponentHarness {
-    static hostSelector = `tui-primitive-calendar`;
+    static hostSelector = 'tui-primitive-calendar';
 
     async clickDay(day: number): Promise<void> {
         const dayCell = await this.locatorFor(
-            TuiDayCellHarness.with({day, ancestor: `#date-rows`}),
+            TuiDayCellHarness.with({day, ancestor: '#date-rows'}),
         )();
 
         return dayCell.click();
@@ -47,7 +47,7 @@ export class TuiPrimitiveCalendarHarness extends TuiComponentHarness {
 
     async hoverDay(day: number): Promise<void> {
         const dayCell = await this.locatorFor(
-            TuiDayCellHarness.with({day, ancestor: `#date-rows`}),
+            TuiDayCellHarness.with({day, ancestor: '#date-rows'}),
         )();
 
         return dayCell.hover();

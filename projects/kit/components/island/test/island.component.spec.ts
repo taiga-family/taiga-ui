@@ -5,7 +5,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiIslandComponent, TuiIslandModule} from '@taiga-ui/kit';
 import {TuiIslandHarness} from '@taiga-ui/testing';
 
-describe(`Island`, () => {
+describe('Island', () => {
     @Component({
         template: `
             <tui-island
@@ -55,50 +55,50 @@ describe(`Island`, () => {
         fixture.detectChanges();
     });
 
-    describe(`size:`, () => {
-        it(`if not specified, island size m`, async () => {
+    describe('size:', () => {
+        it('if not specified, island size m', async () => {
             const harness = await loader.getHarness(
-                TuiIslandHarness.with({selector: `#size-m`}),
+                TuiIslandHarness.with({selector: '#size-m'}),
             );
             const size = await harness.getSize();
 
-            expect(size).toBe(`m`);
+            expect(size).toBe('m');
         });
 
-        it(`if the value is l, the size of the island is l`, async () => {
+        it('if the value is l, the size of the island is l', async () => {
             const harness = await loader.getHarness(
-                TuiIslandHarness.with({selector: `#size-l`}),
+                TuiIslandHarness.with({selector: '#size-l'}),
             );
             const size = await harness.getSize();
 
-            expect(size).toBe(`l`);
+            expect(size).toBe('l');
         });
     });
 
-    describe(`textAlign:`, () => {
-        it(`if no value is specified, the text is left aligned`, async () => {
+    describe('textAlign:', () => {
+        it('if no value is specified, the text is left aligned', async () => {
             const harness = await loader.getHarness(
-                TuiIslandHarness.with({selector: `#text-align-left`}),
+                TuiIslandHarness.with({selector: '#text-align-left'}),
             );
             const textAlign = await harness.getTextAlign();
 
-            expect(textAlign).toBe(`left`);
+            expect(textAlign).toBe('left');
         });
 
-        it(`if you pass center, the text will be centered`, async () => {
+        it('if you pass center, the text will be centered', async () => {
             const harness = await loader.getHarness(
-                TuiIslandHarness.with({selector: `#text-align-center`}),
+                TuiIslandHarness.with({selector: '#text-align-center'}),
             );
             const textAlign = await harness.getTextAlign();
 
-            expect(textAlign).toBe(`center`);
+            expect(textAlign).toBe('center');
         });
     });
 
-    describe(`hoverable:`, () => {
-        it(`if true, hover works`, async () => {
+    describe('hoverable:', () => {
+        it('if true, hover works', async () => {
             const harness = await loader.getHarness(
-                TuiIslandHarness.with({selector: `#hoverable`}),
+                TuiIslandHarness.with({selector: '#hoverable'}),
             );
             const isHoverable = await harness.isHoverable();
 

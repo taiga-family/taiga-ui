@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiFocusableDirective, TuiFocusableModule} from '@taiga-ui/cdk';
 
-describe(`TuiFocusable directive`, () => {
+describe('TuiFocusable directive', () => {
     @Component({
         template: `
             <div [tuiFocusable]="focusable"></div>
@@ -28,13 +28,13 @@ describe(`TuiFocusable directive`, () => {
         testElement = fixture.debugElement.query(By.directive(TuiFocusableDirective));
     });
 
-    it(`when tuiFocusable === false tabindex attribute is "-1"`, () => {
+    it('when tuiFocusable === false tabindex attribute is "-1"', () => {
         testComponent.focusable = false;
         fixture.detectChanges();
         expect(testElement.nativeElement.tabIndex).toBe(-1);
     });
 
-    it(`when tuiFocusable === true tabindex attribute is "0"`, () => {
+    it('when tuiFocusable === true tabindex attribute is "0"', () => {
         testComponent.focusable = true;
         fixture.detectChanges();
         expect(testElement.nativeElement.tabIndex).toBe(0);

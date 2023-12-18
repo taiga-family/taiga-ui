@@ -13,7 +13,7 @@ import {
     tuiInputTagOptionsProvider,
 } from '@taiga-ui/kit';
 
-describe(`InputTag [TUI_TAG_STATUS=neutral]`, () => {
+describe('InputTag [TUI_TAG_STATUS=neutral]', () => {
     @Component({
         template: `
             <tui-root>
@@ -24,21 +24,21 @@ describe(`InputTag [TUI_TAG_STATUS=neutral]`, () => {
                 ></tui-input-tag>
             </tui-root>
         `,
-        providers: [tuiInputTagOptionsProvider({tagStatus: `neutral`})],
+        providers: [tuiInputTagOptionsProvider({tagStatus: 'neutral'})],
     })
     class TestComponent {
         @ViewChild(TuiInputTagComponent)
         component!: TuiInputTagComponent;
 
-        tags = [`Tag1`, `Tag2`];
+        tags = ['Tag1', 'Tag2'];
 
         labelOutside = true;
-        size: TuiSizeL | TuiSizeS = `s`;
+        size: TuiSizeL | TuiSizeS = 's';
     }
 
     let fixture: ComponentFixture<TestComponent>;
 
-    it(`correct status for tag when tuiMode emitted null`, async () => {
+    it('correct status for tag when tuiMode emitted null', async () => {
         await TestBed.configureTestingModule({
             imports: [
                 FormsModule,
@@ -54,8 +54,8 @@ describe(`InputTag [TUI_TAG_STATUS=neutral]`, () => {
 
         expect(
             fixture.nativeElement
-                .querySelector(`[data-status]`)
-                ?.getAttribute(`data-status`),
-        ).toBe(`neutral`);
+                .querySelector('[data-status]')
+                ?.getAttribute('data-status'),
+        ).toBe('neutral');
     });
 });

@@ -19,11 +19,11 @@ export function iosScrollFactory(
     doc: Document,
     zone: NgZone,
 ): Observable<number> {
-    const load$ = tuiTypedFromEvent(element, `load`, {capture: true});
-    const touchstart$ = tuiTypedFromEvent(element, `touchstart`, {passive: true});
-    const touchmove$ = tuiTypedFromEvent(doc, `touchmove`, {passive: true});
-    const touchend$ = tuiTypedFromEvent(doc, `touchend`);
-    const scroll$ = tuiTypedFromEvent(element, `scroll`).pipe(
+    const load$ = tuiTypedFromEvent(element, 'load', {capture: true});
+    const touchstart$ = tuiTypedFromEvent(element, 'touchstart', {passive: true});
+    const touchmove$ = tuiTypedFromEvent(doc, 'touchmove', {passive: true});
+    const touchend$ = tuiTypedFromEvent(doc, 'touchend');
+    const scroll$ = tuiTypedFromEvent(element, 'scroll').pipe(
         map(() => element.scrollTop),
     );
     const result$ = merge(
@@ -53,11 +53,11 @@ export function iosScrollFactory(
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function fakeSmoothScroll({style}: HTMLElement, offset: number): void {
-    style.transition = `none`;
+    style.transition = 'none';
     style.transform = `scaleX(-1) translate3d(0, ${offset}px, 0)`;
 
     setTimeout(() => {
-        style.transition = ``;
-        style.transform = ``;
+        style.transition = '';
+        style.transform = '';
     });
 }

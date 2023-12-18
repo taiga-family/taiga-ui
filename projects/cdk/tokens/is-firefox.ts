@@ -8,5 +8,5 @@ import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils';
 export const TUI_IS_FIREFOX = tuiCreateTokenFromFactory(
     () =>
         typeof (inject(WINDOW) as Window & {mozCancelFullScreen: unknown})
-            ?.mozCancelFullScreen !== `undefined`,
+            ?.mozCancelFullScreen !== 'undefined',
 );

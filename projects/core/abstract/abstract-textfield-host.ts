@@ -25,11 +25,11 @@ export abstract class AbstractTuiTextfieldHost<T extends AbstractTuiControl<any>
     }
 
     get inputMode(): TuiTextfieldHost['inputMode'] {
-        return `text`;
+        return 'text';
     }
 
     get value(): string {
-        return this.host.value?.toString() || ``;
+        return this.host.value?.toString() || '';
     }
 
     abstract onValueChange(value: string): void;

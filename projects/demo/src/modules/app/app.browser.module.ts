@@ -33,7 +33,7 @@ import {VersionManagerModule} from './version-manager/version-manager.module';
 
 @NgModule({
     imports: [
-        BrowserModule.withServerTransition({appId: `tui-demo`}),
+        BrowserModule.withServerTransition({appId: 'tui-demo'}),
         AppRoutingModule,
         BrowserAnimationsModule,
         TuiDocMainModule,

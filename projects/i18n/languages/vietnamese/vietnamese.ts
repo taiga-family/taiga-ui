@@ -8,7 +8,7 @@ import {TUI_VIETNAMESE_LANGUAGE_CORE} from './core';
 import {TUI_VIETNAMESE_LANGUAGE_KIT} from './kit';
 
 export const TUI_VIETNAMESE_LANGUAGE: TuiLanguage = {
-    name: `vietnamese`,
+    name: 'vietnamese',
     ...TUI_VIETNAMESE_LANGUAGE_CORE,
     ...TUI_VIETNAMESE_LANGUAGE_KIT,
     ...TUI_VIETNAMESE_LANGUAGE_ADDON_TABLE,

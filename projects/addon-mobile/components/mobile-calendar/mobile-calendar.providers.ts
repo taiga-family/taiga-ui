@@ -16,7 +16,7 @@ import {TuiMobileCalendarStrategy} from './mobile-calendar.strategy';
  * Stream for updating value
  */
 export const TUI_VALUE_STREAM = new InjectionToken<Observable<TuiDayRange | null>>(
-    `[TUI_VALUE_STREAM]`,
+    '[TUI_VALUE_STREAM]',
 );
 
 export const TUI_MOBILE_CALENDAR_PROVIDERS: Provider[] = [

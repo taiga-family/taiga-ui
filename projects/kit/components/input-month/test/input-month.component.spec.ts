@@ -7,7 +7,7 @@ import {TuiRootModule} from '@taiga-ui/core';
 import {TuiInputMonthComponent, TuiInputMonthModule} from '@taiga-ui/kit';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
-describe(`InputMonth`, () => {
+describe('InputMonth', () => {
     @Component({
         template: `
             <tui-root>
@@ -45,29 +45,29 @@ describe(`InputMonth`, () => {
         component = testComponent.component;
         fixture.detectChanges();
 
-        inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
+        inputPO = new TuiNativeInputPO(fixture, 'tui-primitive-textfield__native-input');
     });
 
-    describe(`computedValue`, () => {
-        it(`returns empty string if no value`, () => {
+    describe('computedValue', () => {
+        it('returns empty string if no value', () => {
             testComponent.control.setValue(null);
 
-            expect(component.nativeFocusableElement?.value).toBe(``);
+            expect(component.nativeFocusableElement?.value).toBe('');
         });
 
-        it(`returns the whole stringified value if there is`, fakeAsync(() => {
+        it('returns the whole stringified value if there is', fakeAsync(() => {
             testComponent.control.setValue(new TuiMonth(2020, 4));
 
             fixture.detectChanges();
 
             tick(50);
 
-            expect(component.nativeFocusableElement?.value).toBe(`May 2020`);
+            expect(component.nativeFocusableElement?.value).toBe('May 2020');
         }));
     });
 
-    describe(`onMonthClick`, () => {
-        it(`set value`, () => {
+    describe('onMonthClick', () => {
+        it('set value', () => {
             const newMonth = new TuiMonth(2020, 5);
 
             component.onMonthClick(newMonth);
@@ -75,7 +75,7 @@ describe(`InputMonth`, () => {
             expect(component.value).toBe(newMonth);
         });
 
-        it(`closes dropdown`, () => {
+        it('closes dropdown', () => {
             const newMonth = new TuiMonth(2020, 5);
 
             component.onMonthClick(newMonth);
@@ -84,8 +84,8 @@ describe(`InputMonth`, () => {
         });
     });
 
-    describe(`open calendar`, () => {
-        it(`shows current year (if NO value is selected)`, async () => {
+    describe('open calendar', () => {
+        it('shows current year (if NO value is selected)', async () => {
             testComponent.control.setValue(null);
             fixture.detectChanges();
             inputPO.click();
@@ -95,22 +95,22 @@ describe(`InputMonth`, () => {
             expect(getActiveYear()).toBe(`${TuiDay.currentLocal().year}`);
         });
 
-        it(`shows year of the selected value (control has selected value)`, async () => {
+        it('shows year of the selected value (control has selected value)', async () => {
             testComponent.control.setValue(new TuiMonth(2020, 4));
             fixture.detectChanges();
             inputPO.click();
             fixture.detectChanges();
             await fixture.whenStable();
 
-            expect(getActiveYear()).toBe(`2020`);
+            expect(getActiveYear()).toBe('2020');
         });
     });
 
     function getActiveYear(): string {
         return (
             pageObject
-                .getByAutomationId(`tui-calendar-month__active-year`)
-                ?.nativeElement?.textContent.trim() || ``
+                .getByAutomationId('tui-calendar-month__active-year')
+                ?.nativeElement?.textContent.trim() || ''
         );
     }
 });

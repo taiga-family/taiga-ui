@@ -1,9 +1,9 @@
 import fs from 'fs';
 import {parse} from 'path';
 
-const START = `<svg`;
-const WIDTH_SEARCH = `width="`;
-const HEIGHT_SEARCH = `height="`;
+const START = '<svg';
+const WIDTH_SEARCH = 'width="';
+const HEIGHT_SEARCH = 'height="';
 
 interface WrappedContent {
     height: string;
@@ -15,7 +15,7 @@ type ContentInterceptor = (src: string) => string;
 
 function wrapIcon(source: string, name: string): WrappedContent | string {
     const src = source.slice(Math.max(0, source.indexOf(START)));
-    const attributes = src.slice(0, Math.max(0, src.indexOf(`>`)));
+    const attributes = src.slice(0, Math.max(0, src.indexOf('>')));
 
     if (!attributes?.includes(WIDTH_SEARCH) || !attributes.includes(HEIGHT_SEARCH)) {
         return src;
@@ -27,18 +27,18 @@ function wrapIcon(source: string, name: string): WrappedContent | string {
     const heightOffset = indexOfHeight + HEIGHT_SEARCH.length;
     const widthString = attributes.slice(
         widthOffset,
-        attributes.indexOf(`"`, widthOffset),
+        attributes.indexOf('"', widthOffset),
     );
     const heightString = attributes.slice(
         heightOffset,
-        attributes.indexOf(`"`, heightOffset),
+        attributes.indexOf('"', heightOffset),
     );
 
     if (
         !heightString ||
         !widthString ||
-        widthString.includes(`%`) ||
-        heightString.includes(`%`)
+        widthString.includes('%') ||
+        heightString.includes('%')
     ) {
         return src.replace(START, `<svg id="${name}"`);
     }
@@ -65,17 +65,17 @@ export function tuiProcessIcons(files: string[], interceptor?: ContentIntercepto
         const baseContent = String(fs.readFileSync(file));
         const src = interceptor ? interceptor(baseContent) : baseContent;
 
-        const name = parse(file).base.replace(`.svg`, ``);
+        const name = parse(file).base.replace('.svg', '');
 
-        if (src.includes(`id="${name}"`) || name.includes(`Outline`)) {
-            console.info(`\x1B[33m%s\x1B[0m`, `[skip]:`, file);
+        if (src.includes(`id="${name}"`) || name.includes('Outline')) {
+            console.info('\x1B[33m%s\x1B[0m', '[skip]:', file);
             continue;
         }
 
         const wrapped = wrapIcon(src, name);
 
         const final =
-            typeof wrapped === `string`
+            typeof wrapped === 'string'
                 ? `${wrapped.replace(
                       START,
                       `<svg xmlns="http://www.w3.org/2000/svg"><g id="${name}" xmlns="http://www.w3.org/2000/svg"><svg`,
@@ -84,7 +84,7 @@ export function tuiProcessIcons(files: string[], interceptor?: ContentIntercepto
 
         fs.writeFileSync(file, final);
 
-        console.info(`\x1B[32m%s\x1B[0m`, `[preprocessed]:`, file);
+        console.info('\x1B[32m%s\x1B[0m', '[preprocessed]:', file);
     }
 }
 

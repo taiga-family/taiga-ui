@@ -10,13 +10,13 @@ interface TuiYearCellHarnessFilters extends BaseHarnessFilters {
 }
 
 class TuiYearCellHarness extends ComponentHarness {
-    static hostSelector = `.t-cell`;
+    static hostSelector = '.t-cell';
 
     static with(
         options: TuiYearCellHarnessFilters,
     ): HarnessPredicate<TuiYearCellHarness> {
         return new HarnessPredicate(TuiYearCellHarness, options).addOption(
-            `year`,
+            'year',
             options.year,
             async (harness, text) =>
                 HarnessPredicate.stringMatches(harness.getText(), text),
@@ -24,7 +24,7 @@ class TuiYearCellHarness extends ComponentHarness {
     }
 
     async getText(): Promise<string> {
-        return (await this.locatorFor(`.t-item`)()).text();
+        return (await this.locatorFor('.t-item')()).text();
     }
 
     async click(): Promise<void> {
@@ -33,7 +33,7 @@ class TuiYearCellHarness extends ComponentHarness {
 }
 
 export class TuiPrimitiveYearPickerHarness extends TuiComponentHarness {
-    static hostSelector = `tui-primitive-year-picker`;
+    static hostSelector = 'tui-primitive-year-picker';
 
     async clickYear(year: string): Promise<void> {
         const yearCell = await this.locatorFor(TuiYearCellHarness.with({year}))();

@@ -10,9 +10,9 @@ import {getProjects} from '../../../utils/get-projects';
 import {Asset} from '../../interfaces/asset';
 
 const PROPRIETARY_TDS_ICON_ASSETS = {
-    glob: `**/*`,
-    input: `node_modules/@taiga-ui/proprietary-tds-icons/src`,
-    output: `assets/taiga-ui/icons`,
+    glob: '**/*',
+    input: 'node_modules/@taiga-ui/proprietary-tds-icons/src',
+    output: 'assets/taiga-ui/icons',
 };
 
 const MANUAL_MIGRATION_TIPS = `Add ${JSON.stringify(
@@ -27,7 +27,7 @@ export function migrateTaigaProprietaryIcons(options: TuiSchema): Rule {
 
         try {
             proprietaryIcons =
-                getPackageJsonDependency(tree, `@taiga-ui/proprietary-icons`)?.version ||
+                getPackageJsonDependency(tree, '@taiga-ui/proprietary-icons')?.version ||
                 null;
         } catch {
             // noop
@@ -41,7 +41,7 @@ export function migrateTaigaProprietaryIcons(options: TuiSchema): Rule {
             return;
         }
 
-        return getSourceFiles(`**/angular.json`).length > 0
+        return getSourceFiles('**/angular.json').length > 0
             ? updateWorkspace(workspace => {
                   if (proprietaryIcons === null) {
                       return;
@@ -61,7 +61,7 @@ export function migrateTaigaProprietaryIcons(options: TuiSchema): Rule {
                       let targetOptions;
 
                       try {
-                          targetOptions = getProjectTargetOptions(project, `build`);
+                          targetOptions = getProjectTargetOptions(project, 'build');
                       } catch {
                           context.logger.warn(
                               `[WARNING]: No buildable project was found. ${MANUAL_MIGRATION_TIPS}`,
@@ -71,7 +71,7 @@ export function migrateTaigaProprietaryIcons(options: TuiSchema): Rule {
                       }
 
                       if (Array.isArray(targetOptions?.assets)) {
-                          const tdsSrc = `@taiga-ui/proprietary-tds-icons/src`;
+                          const tdsSrc = '@taiga-ui/proprietary-tds-icons/src';
                           const hasIcons = (targetOptions.assets as Asset[]).find(
                               asset =>
                                   tuiIsString(asset)

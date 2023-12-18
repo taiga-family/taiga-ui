@@ -4,7 +4,7 @@ import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
 import {map, Observable} from 'rxjs';
 
 @Pipe({
-    name: `tuiSortCountries`,
+    name: 'tuiSortCountries',
 })
 export class TuiSortCountriesPipe implements PipeTransform {
     constructor(

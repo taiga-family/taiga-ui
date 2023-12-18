@@ -5,117 +5,117 @@ export function tuiGetCurrencySymbol(currency: TuiCurrencyVariants): string | nu
     switch (currency) {
         case TuiCurrency.Ruble:
         case TuiCurrencyCode.Ruble:
-            return `₽`;
+            return '₽';
         case TuiCurrency.Dollar:
         case TuiCurrencyCode.Dollar:
         case TuiCurrency.MexicanPeso:
         case TuiCurrencyCode.MexicanPeso:
-            return `$`;
+            return '$';
         case TuiCurrency.SingaporeDollar:
         case TuiCurrencyCode.SingaporeDollar:
-            return `S$`;
+            return 'S$';
         case TuiCurrency.AustralianDollar:
         case TuiCurrencyCode.AustralianDollar:
-            return `A$`;
+            return 'A$';
         case TuiCurrency.HongKongDollar:
         case TuiCurrencyCode.HongKongDollar:
-            return `HK$`;
+            return 'HK$';
         case TuiCurrency.CanadianDollar:
         case TuiCurrencyCode.CanadianDollar:
-            return `C$`;
+            return 'C$';
         case TuiCurrency.Euro:
         case TuiCurrencyCode.Euro:
-            return `€`;
+            return '€';
         case TuiCurrency.Pound:
         case TuiCurrencyCode.Pound:
-            return `£`;
+            return '£';
         case TuiCurrency.Baht:
         case TuiCurrencyCode.Baht:
-            return `฿`;
+            return '฿';
         case TuiCurrency.TurkishLira:
         case TuiCurrencyCode.TurkishLira:
-            return `₺`;
+            return '₺';
         case TuiCurrency.YuanRenminbi:
         case TuiCurrencyCode.YuanRenminbi:
-            return `CN¥`;
+            return 'CN¥';
         case TuiCurrency.Yen:
         case TuiCurrencyCode.Yen:
-            return `¥`;
+            return '¥';
         case TuiCurrency.IsraeliShekel:
         case TuiCurrencyCode.IsraeliShekel:
-            return `₪`;
+            return '₪';
         case TuiCurrency.IndianRupee:
         case TuiCurrencyCode.IndianRupee:
-            return `₹`;
+            return '₹';
         case TuiCurrency.SwissFranc:
         case TuiCurrencyCode.SwissFranc:
-            return `₣`;
+            return '₣';
         case TuiCurrency.ArmenianDram:
         case TuiCurrencyCode.ArmenianDram:
-            return `֏`;
+            return '֏';
         case TuiCurrency.Won:
         case TuiCurrencyCode.Won:
-            return `₩`;
+            return '₩';
         case TuiCurrency.Tenge:
         case TuiCurrencyCode.Tenge:
-            return `₸`;
+            return '₸';
         case TuiCurrency.Hryvnia:
         case TuiCurrencyCode.Hryvnia:
-            return `₴`;
+            return '₴';
         case TuiCurrency.UzbekSum:
         case TuiCurrencyCode.UzbekSum:
-            return `So'm`;
+            return "So'm";
         case TuiCurrency.KyrgyzstanSom:
         case TuiCurrencyCode.KyrgyzstanSom:
-            return `c`;
+            return 'c';
         case TuiCurrency.Dirham:
         case TuiCurrencyCode.Dirham:
-            return `Dh`;
+            return 'Dh';
         case TuiCurrency.TajikistaniSomoni:
         case TuiCurrencyCode.TajikistaniSomoni:
-            return `SM`;
+            return 'SM';
         case TuiCurrency.MalaysianRinggit:
         case TuiCurrencyCode.MalaysianRinggit:
-            return `RM`;
+            return 'RM';
         case TuiCurrency.BelarusianRuble:
         case TuiCurrencyCode.BelarusianRuble:
-            return `Br`;
+            return 'Br';
         case TuiCurrency.GeorgianLari:
         case TuiCurrencyCode.GeorgianLari:
-            return `₾`;
+            return '₾';
         case TuiCurrency.AzerbaijaniManat:
         case TuiCurrencyCode.AzerbaijaniManat:
-            return `₼`;
+            return '₼';
         case TuiCurrency.SriLankanRupee:
         case TuiCurrencyCode.SriLankanRupee:
-            return `Rs.`;
+            return 'Rs.';
         case TuiCurrency.SerbianDinar:
         case TuiCurrencyCode.SerbianDinar:
-            return `DIN`;
+            return 'DIN';
         case TuiCurrency.SaudiRiyal:
         case TuiCurrencyCode.SaudiRiyal:
-            return `SR`;
+            return 'SR';
         case TuiCurrency.MongolianTugrik:
         case TuiCurrencyCode.MongolianTugrik:
-            return `₮`;
+            return '₮';
         case TuiCurrency.SouthAfricanRand:
         case TuiCurrencyCode.SouthAfricanRand:
-            return `R`;
+            return 'R';
         case TuiCurrency.IranianRial:
         case TuiCurrencyCode.IranianRial:
-            return `IR`;
+            return 'IR';
         case TuiCurrency.IndonesianRupiah:
         case TuiCurrencyCode.IndonesianRupiah:
-            return `Rp`;
+            return 'Rp';
         case TuiCurrency.VietnameseDong:
         case TuiCurrencyCode.VietnameseDong:
-            return `đ`;
+            return 'đ';
         case TuiCurrency.NewTurkmenManat:
         case TuiCurrencyCode.NewTurkmenManat:
-            return `TMT`;
+            return 'TMT';
         case TuiCurrency.BrazilianReal:
         case TuiCurrencyCode.BrazilianReal:
-            return `R$`;
+            return 'R$';
         default:
             return null;
     }

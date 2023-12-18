@@ -18,18 +18,18 @@ export abstract class AbstractDemoComponent implements OnInit {
     protected abstract readonly storage: Storage;
     protected abstract readonly router: Router;
 
-    @HostBinding(`attr.data-tui-major-version`)
+    @HostBinding('attr.data-tui-major-version')
     protected readonly majorVersion = this.selectedVersion?.title;
 
     // TODO: use inject(TUI_IS_E2E) in angular v14+
-    @HostBinding(`class._is-cypress-mode`)
+    @HostBinding('class._is-cypress-mode')
     protected readonly isE2EMode = this.isE2E;
 
-    @HostBinding(`class._loaded`)
-    protected readonly pageLoadedInit = `0`;
+    @HostBinding('class._loaded')
+    protected readonly pageLoadedInit = '0';
 
     // TODO: use inject(TUI_DOC_PAGE_LOADED) in angular v14+
-    @HostBinding(`$.class._loaded`)
+    @HostBinding('$.class._loaded')
     protected readonly pageLoaded = this.pageLoaded$;
 
     constructor(
@@ -53,10 +53,10 @@ export abstract class AbstractDemoComponent implements OnInit {
     }
 
     protected async replaceEnvInURI(): Promise<void> {
-        const env = this.storage.getItem(`env`);
+        const env = this.storage.getItem('env');
 
         if (env) {
-            this.storage.removeItem(`env`);
+            this.storage.removeItem('env');
             await this.router.navigateByUrl(env);
         }
     }

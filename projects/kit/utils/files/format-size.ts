@@ -19,5 +19,5 @@ export function tuiFormatSize(
         return `${(size / BYTES_PER_KIB).toFixed(0)} ${units[1]}`;
     }
 
-    return `${tuiRound(size / BYTES_PER_MIB, 2).toLocaleString(`ru-RU`)} ${units[2]}`;
+    return `${tuiRound(size / BYTES_PER_MIB, 2).toLocaleString('ru-RU')} ${units[2]}`;
 }

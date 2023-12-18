@@ -13,19 +13,19 @@ const SVG_ICON = `<svg xmlns="http://www.w3.org/2000/svg"
      viewBox="0 0 32 32"></svg>
 `;
 
-const STATIC_REQUEST_MOCK_RESULT = `result`;
-const BAD_URL = `http://bad-url.ru/qwe.svg#test`;
+const STATIC_REQUEST_MOCK_RESULT = 'result';
+const BAD_URL = 'http://bad-url.ru/qwe.svg#test';
 const STATIC_REQUEST_MOCK = {
     request: (url: string) => {
         if (url === BAD_URL) {
-            return throwError(() => new Error(`error`));
+            return throwError(() => new Error('error'));
         }
 
         return of(STATIC_REQUEST_MOCK_RESULT);
     },
 };
 
-describe(`Svg`, () => {
+describe('Svg', () => {
     @Component({
         template: `
             <tui-svg [src]="icon"></tui-svg>
@@ -35,7 +35,7 @@ describe(`Svg`, () => {
         @ViewChild(TuiSvgComponent)
         svgComponent!: TuiSvgComponent;
 
-        icon = ``;
+        icon = '';
 
         constructor(@Inject(TuiSvgService) svgService: TuiSvgService) {
             svgService.define({
@@ -67,19 +67,19 @@ describe(`Svg`, () => {
         fixture.detectChanges();
     });
 
-    describe(`source svg code`, () => {
+    describe('source svg code', () => {
         beforeEach(() => {
-            testComponent.icon = `<svg>Text</svg>`;
+            testComponent.icon = '<svg>Text</svg>';
         });
 
-        it(`inserts content SVG into DOM`, async () => {
+        it('inserts content SVG into DOM', async () => {
             const svg = await loader.getHarness(TuiSvgHarness);
             const textContent = await svg.text();
 
-            expect(textContent).toBe(`Text`);
+            expect(textContent).toBe('Text');
         });
 
-        it(`isInnerHtml`, async () => {
+        it('isInnerHtml', async () => {
             const svg = await loader.getHarness(TuiSvgHarness);
             const isInnerHTML = await svg.isInnerHTML();
 
@@ -87,53 +87,53 @@ describe(`Svg`, () => {
         });
     });
 
-    describe(`named icon`, () => {
+    describe('named icon', () => {
         beforeEach(() => {
-            testComponent.icon = `customIcon`;
+            testComponent.icon = 'customIcon';
         });
 
-        it(`not isInnerHtml`, async () => {
+        it('not isInnerHtml', async () => {
             const svg = await loader.getHarness(TuiSvgHarness);
             const isInnerHTML = await svg.isInnerHTML();
 
             expect(isInnerHTML).toBe(false);
         });
 
-        it(`returns correct use`, async () => {
+        it('returns correct use', async () => {
             const svg = await loader.getHarness(TuiSvgHarness);
             const use = await svg.getUse();
 
-            expect(use).toBe(`#customIcon`);
+            expect(use).toBe('#customIcon');
         });
     });
 
-    describe(`external`, () => {
-        const extLink = `https://google.com/test.svg`;
+    describe('external', () => {
+        const extLink = 'https://google.com/test.svg';
 
         beforeEach(() => {
             testComponent.icon = extLink;
         });
 
-        it(`isInnerHtml`, async () => {
+        it('isInnerHtml', async () => {
             const svg = await loader.getHarness(TuiSvgHarness);
             const isInnerHTML = await svg.isInnerHTML();
 
             expect(isInnerHTML).toBe(true);
         });
 
-        it(`innerHTML$ emits correctly downloaded svg`, async () => {
+        it('innerHTML$ emits correctly downloaded svg', async () => {
             const svg = await loader.getHarness(TuiSvgHarness);
             const result = await svg.text();
 
             expect(result).toBe(STATIC_REQUEST_MOCK_RESULT);
         });
 
-        it(`innerHTML$ handles error correctly`, async () => {
+        it('innerHTML$ handles error correctly', async () => {
             testComponent.icon = BAD_URL;
             const svg = await loader.getHarness(TuiSvgHarness);
             const result = await svg.text();
 
-            expect(result).toBe(``);
+            expect(result).toBe('');
         });
     });
 });

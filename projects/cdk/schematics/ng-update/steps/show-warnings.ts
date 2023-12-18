@@ -5,7 +5,7 @@ import {ALL_TS_FILES} from '../../constants';
 import {MigrationWarning} from '../interfaces/migration-warning';
 
 function showWarning(
-    {name, message, moduleSpecifier = `**/**`}: MigrationWarning,
+    {name, message, moduleSpecifier = '**/**'}: MigrationWarning,
     {logger}: SchematicContext,
 ): void {
     const references = getImports(ALL_TS_FILES, {

@@ -86,16 +86,16 @@ export function tuiPure(
         | string,
     descriptor?: TypedPropertyDescriptor<(...args: unknown[]) => unknown>,
 ): TypedPropertyDescriptor<unknown> | ((...args: unknown[]) => unknown) {
-    if (typeof target === `function`) {
+    if (typeof target === 'function') {
         const context = propertyKeyOrContext as
             | ClassGetterDecoratorContext
             | ClassMethodDecoratorContext;
 
-        if (context.kind === `getter`) {
+        if (context.kind === 'getter') {
             return decorateGetter(target as () => unknown, context.name);
         }
 
-        if (context.kind === `method`) {
+        if (context.kind === 'method') {
             return decorateMethod(target as (...args: unknown[]) => unknown);
         }
 
@@ -113,7 +113,7 @@ export function tuiPure(
         };
     }
 
-    if (typeof value !== `function`) {
+    if (typeof value !== 'function') {
         throw new TuiPureException();
     }
 

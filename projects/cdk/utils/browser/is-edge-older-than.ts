@@ -1,4 +1,4 @@
-const EDGE = `edge/`;
+const EDGE = 'edge/';
 
 export function tuiIsEdgeOlderThan(version: number, userAgent: string): boolean {
     const currentVersion = parseInt(

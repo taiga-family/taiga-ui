@@ -20,10 +20,10 @@ export const TUI_SHEET_PROVIDERS: Provider[] = [
         deps: [ElementRef],
         useFactory: ({nativeElement}: ElementRef<HTMLElement>): Observable<boolean> =>
             merge(
-                tuiTypedFromEvent(nativeElement, `touchstart`, {passive: true}).pipe(
+                tuiTypedFromEvent(nativeElement, 'touchstart', {passive: true}).pipe(
                     map(ALWAYS_TRUE_HANDLER),
                 ),
-                tuiTypedFromEvent(nativeElement, `touchend`).pipe(
+                tuiTypedFromEvent(nativeElement, 'touchend').pipe(
                     map(ALWAYS_FALSE_HANDLER),
                 ),
             ),
@@ -40,8 +40,8 @@ export const TUI_SHEET_PROVIDERS: Provider[] = [
             isIos
                 ? iosScrollFactory(nativeElement, doc, zone)
                 : merge(
-                      tuiTypedFromEvent(nativeElement, `scroll`),
-                      tuiTypedFromEvent(nativeElement, `load`, {capture: true}),
+                      tuiTypedFromEvent(nativeElement, 'scroll'),
+                      tuiTypedFromEvent(nativeElement, 'load', {capture: true}),
                   ).pipe(
                       map(() => nativeElement.scrollTop),
                       tuiZonefree(zone),

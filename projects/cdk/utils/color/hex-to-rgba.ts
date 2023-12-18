@@ -1,15 +1,15 @@
 const getChunksFromString = (hex: string, chunkSize: number): RegExpMatchArray | null =>
-    hex.match(new RegExp(`.{${chunkSize}}`, `g`));
+    hex.match(new RegExp(`.{${chunkSize}}`, 'g'));
 
 const convertHexUnitTo256 = (hexStr: string): number =>
     parseInt(hexStr.repeat(2 / hexStr.length), 16);
 
 const getAlphaFloat = (a: number, alpha?: number): number => {
-    if (typeof a !== `undefined`) {
+    if (typeof a !== 'undefined') {
         return Number((a / 255).toFixed(2));
     }
 
-    if (typeof alpha !== `number` || alpha < 0 || alpha > 1) {
+    if (typeof alpha !== 'number' || alpha < 0 || alpha > 1) {
         return 1;
     }
 
@@ -32,7 +32,7 @@ export function tuiParseHex(
     alpha?: number,
 ): [number, number, number, number] {
     if (!tuiIsValidHex(hex)) {
-        throw new Error(`Invalid HEX`);
+        throw new Error('Invalid HEX');
     }
 
     const chunkSize = Math.floor((hex.length - 1) / 3);

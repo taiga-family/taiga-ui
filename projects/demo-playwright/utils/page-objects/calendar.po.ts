@@ -4,7 +4,7 @@ export class TuiCalendarPO {
     constructor(private readonly host: Locator) {}
 
     async getDays(): Promise<Locator[]> {
-        return this.host.locator(`[automation-id="tui-primitive-calendar__cell"]`).all();
+        return this.host.locator('[automation-id="tui-primitive-calendar__cell"]').all();
     }
 
     async clickOnCalendarDay(day: number): Promise<void> {

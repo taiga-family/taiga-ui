@@ -10,4 +10,4 @@ export const TUI_DROPDOWN_COMPONENT = tuiCreateTokenFromFactory<Type<any>>(
     () => TuiDropdownComponent,
 );
 
-export const TUI_DROPDOWN_CONTEXT = new InjectionToken<Record<any, any>>(``);
+export const TUI_DROPDOWN_CONTEXT = new InjectionToken<Record<any, any>>('');

@@ -19,15 +19,15 @@ import {
 } from './utils';
 
 const APP_COMP_META = {
-    SELECTOR: `my-app`,
-    TEMPLATE_URL: `./app.component.html`,
-    STYLE_URLS: [`./app.component.less`],
-    CLASS_NAME: `AppComponent`,
+    SELECTOR: 'my-app',
+    TEMPLATE_URL: './app.component.html',
+    STYLE_URLS: ['./app.component.less'],
+    CLASS_NAME: 'AppComponent',
 } as const;
 
 @Injectable()
 export class TuiStackblitzService implements TuiCodeEditor {
-    readonly name = `Stackblitz`;
+    readonly name = 'Stackblitz';
     readonly content = new PolymorpheusComponent(StackblitzEditButtonComponent);
 
     constructor(
@@ -83,7 +83,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
                 [appPrefix`app.module.ts`]: appModule.toString(),
                 [appPrefix`app.component.ts`]: appCompTs.toString(),
                 [appPrefix`app.component.html`]: `<tui-root>\n\n${content.HTML}\n</tui-root>`,
-                [appPrefix`app.component.less`]: prepareLess(content.LESS || ``),
+                [appPrefix`app.component.less`]: prepareLess(content.LESS || ''),
             },
         });
     }
@@ -140,9 +140,9 @@ export class TuiStackblitzService implements TuiCodeEditor {
         Pick<Project, 'dependencies' | 'tags' | 'template'>
     > {
         return {
-            template: `angular-cli`,
+            template: 'angular-cli',
             dependencies: await this.deps.get(),
-            tags: [`Angular`, `Taiga UI`, `Angular components`, `UI Kit`],
+            tags: ['Angular', 'Taiga UI', 'Angular components', 'UI Kit'],
         };
     }
 }

@@ -9,9 +9,9 @@ export interface TuiBreadcrumbsOptions {
 }
 
 export const TUI_BREADCRUMBS_DEFAULT_OPTIONS: TuiBreadcrumbsOptions = {
-    icon: `tuiIconChevronRight`,
-    size: `m`,
-    mode: `onLight`,
+    icon: 'tuiIconChevronRight',
+    size: 'm',
+    mode: 'onLight',
 };
 
 export const TUI_BREADCRUMBS_OPTIONS = tuiCreateToken(TUI_BREADCRUMBS_DEFAULT_OPTIONS);

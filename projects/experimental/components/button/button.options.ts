@@ -8,8 +8,8 @@ export interface TuiButtonOptions extends TuiAppearanceOptions {
 }
 
 export const TUI_BUTTON_DEFAULT_OPTIONS: TuiButtonOptions = {
-    appearance: `primary`,
-    size: `l`,
+    appearance: 'primary',
+    size: 'l',
 };
 
 export const TUI_BUTTON_OPTIONS = tuiCreateToken(TUI_BUTTON_DEFAULT_OPTIONS);

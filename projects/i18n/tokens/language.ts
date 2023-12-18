@@ -7,7 +7,7 @@ import {Observable, of} from 'rxjs';
  * Default Language for Taiga UI libraries i18n
  */
 export const TUI_DEFAULT_LANGUAGE = new InjectionToken<TuiLanguage>(
-    `[TUI_DEFAULT_LANGUAGE]`,
+    '[TUI_DEFAULT_LANGUAGE]',
     {
         factory: () => TUI_ENGLISH_LANGUAGE,
     },
@@ -17,7 +17,7 @@ export const TUI_DEFAULT_LANGUAGE = new InjectionToken<TuiLanguage>(
  * Language for Taiga UI libraries i18n
  */
 export const TUI_LANGUAGE = new InjectionToken<Observable<TuiLanguage>>(
-    `[TUI_LANGUAGE]`,
+    '[TUI_LANGUAGE]',
     {
         factory: () => of(inject(TUI_DEFAULT_LANGUAGE)),
     },

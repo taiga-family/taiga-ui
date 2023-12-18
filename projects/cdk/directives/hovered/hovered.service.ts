@@ -15,14 +15,14 @@ function movedOut({currentTarget, relatedTarget}: MouseEvent): boolean {
 @Injectable()
 export class TuiHoveredService extends Observable<boolean> {
     private readonly stream$ = merge(
-        tuiTypedFromEvent(this.el.nativeElement, `mouseenter`).pipe(
+        tuiTypedFromEvent(this.el.nativeElement, 'mouseenter').pipe(
             map(ALWAYS_TRUE_HANDLER),
         ),
-        tuiTypedFromEvent(this.el.nativeElement, `mouseleave`).pipe(
+        tuiTypedFromEvent(this.el.nativeElement, 'mouseleave').pipe(
             map(ALWAYS_FALSE_HANDLER),
         ),
         // Hello, Safari
-        tuiTypedFromEvent(this.el.nativeElement, `mouseout`).pipe(
+        tuiTypedFromEvent(this.el.nativeElement, 'mouseout').pipe(
             filter(movedOut),
             map(ALWAYS_FALSE_HANDLER),
         ),

@@ -5,5 +5,5 @@ export function tuiIsoToCountryCode(
     countriesMasks: Record<TuiCountryIsoCode, string>,
     isoCode: TuiCountryIsoCode,
 ): string {
-    return countriesMasks[isoCode].replace(MASK_AFTER_CODE_REGEXP, ``);
+    return countriesMasks[isoCode].replace(MASK_AFTER_CODE_REGEXP, '');
 }

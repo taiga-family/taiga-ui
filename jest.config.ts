@@ -2,12 +2,12 @@ import {Config} from 'jest';
 import {resolve} from 'path';
 import {pathsToModuleNameMapper} from 'ts-jest';
 
-process.env.TZ = `Europe/Moscow`;
-process.env.FORCE_COLOR = `true`;
-process.env.TS_JEST_DISABLE_VER_CHECKER = `true`;
+process.env.TZ = 'Europe/Moscow';
+process.env.FORCE_COLOR = 'true';
+process.env.TS_JEST_DISABLE_VER_CHECKER = 'true';
 
-const {compilerOptions} = require(resolve(__dirname, `tsconfig.json`));
-const maxParallel = require(`os`).cpus().length / 2;
+const {compilerOptions} = require(resolve(__dirname, 'tsconfig.json'));
+const maxParallel = require('os').cpus().length / 2;
 
 const config: Config = {
     rootDir: __dirname,
@@ -18,14 +18,14 @@ const config: Config = {
      * All of the configuration options can be overwritten
      * just as they can be customized when no preset is used.
      */
-    preset: `jest-preset-angular`,
+    preset: 'jest-preset-angular',
 
     /**
      * The test environment that will be used for testing.
      * The default environment in Jest is a Node.js environment.
      * If you are building a web app, you can use a browser-like environment through jsdom instead.
      */
-    testEnvironment: `jsdom`,
+    testEnvironment: 'jsdom',
 
     /**
      * A set of global variables that need
@@ -33,7 +33,7 @@ const config: Config = {
      */
     globals: {
         'ts-jest': {
-            tsconfig: resolve(__dirname, `tsconfig.spec.json`),
+            tsconfig: resolve(__dirname, 'tsconfig.spec.json'),
             isolatedModules: true,
         },
     },
@@ -43,37 +43,37 @@ const config: Config = {
      * field set to module as ECMAScript Modules. If you have any other files
      * that should run with native ESM, you need to specify their file extension here.
      */
-    extensionsToTreatAsEsm: [`.ts`],
+    extensionsToTreatAsEsm: ['.ts'],
 
     /**
      * A list of paths to modules that run some code to configure
      * or to set up the testing framework before each test.
      */
-    setupFilesAfterEnv: [`<rootDir>/setup-jest.ts`],
+    setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
 
     /**
      * A map from regular expressions to paths to transformers.
      */
     transform: {
-        '^.+\\.(ts|js|mjs|html|svg)$': `jest-preset-angular`,
+        '^.+\\.(ts|js|mjs|html|svg)$': 'jest-preset-angular',
     },
-    transformIgnorePatterns: [`node_modules/(?!@angular|rxjs|ngx-highlightjs)`],
+    transformIgnorePatterns: ['node_modules/(?!@angular|rxjs|ngx-highlightjs)'],
 
     /**
      * The glob patterns Jest uses to detect test files.
      */
-    testMatch: [`<rootDir>/projects/**/*.spec.ts`],
+    testMatch: ['<rootDir>/projects/**/*.spec.ts'],
 
     /**
      * A single or array of regexp pattern strings that are tested
      * against all tests paths before executing the test.
      */
-    testPathIgnorePatterns: [`/demo-cypress/`, `/demo-playwright/`, `/node_modules/`],
+    testPathIgnorePatterns: ['/demo-cypress/', '/demo-playwright/', '/node_modules/'],
 
     /**
      * The directory where Jest should output its coverage files.
      */
-    coverageDirectory: `<rootDir>/coverage`,
+    coverageDirectory: '<rootDir>/coverage',
 
     /**
      * An array of glob patterns indicating a set of files for which coverage
@@ -81,7 +81,7 @@ const config: Config = {
      * coverage information will be collected for it even if no tests exist for this file and
      * it's never required in the test suite.
      */
-    collectCoverageFrom: [`<rootDir>/projects/**/*.ts`],
+    collectCoverageFrom: ['<rootDir>/projects/**/*.ts'],
 
     /**
      * An array of regexp pattern strings that are matched against
@@ -89,11 +89,11 @@ const config: Config = {
      * any of the patterns, coverage information will be skipped.
      */
     coveragePathIgnorePatterns: [
-        `node_modules`,
-        `schematics`,
-        `load-assets.ts`,
-        `.spec.ts`,
-        `.cy.ts`,
+        'node_modules',
+        'schematics',
+        'load-assets.ts',
+        '.spec.ts',
+        '.cy.ts',
     ],
 
     /**
@@ -105,8 +105,8 @@ const config: Config = {
      */
     moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
         prefix: `<rootDir>/${compilerOptions.baseUrl}/`
-            .replace(/\.\//g, `/`)
-            .replace(/\/\/+/g, `/`),
+            .replace(/\.\//g, '/')
+            .replace(/\/\/+/g, '/'),
     }),
 
     /**
@@ -114,18 +114,18 @@ const config: Config = {
      * paths are to be considered 'visible' to the module loader. If a given module's path
      * matches any of the patterns, it will not be require()-able in the test environment.
      */
-    modulePathIgnorePatterns: [`.cache`, `dist`, `<rootDir>/dist/`],
+    modulePathIgnorePatterns: ['.cache', 'dist', '<rootDir>/dist/'],
 
     /**
      * A list of reporter names that Jest uses when writing coverage reports.
      * Any istanbul reporter can be used.
      */
-    coverageReporters: [`text`, `lcov`, `clover`],
+    coverageReporters: ['text', 'lcov', 'clover'],
 
     /**
      * The directory where Jest should store its cached dependency information.
      */
-    cacheDirectory: `<rootDir>/node_modules/.cache/jest`,
+    cacheDirectory: '<rootDir>/node_modules/.cache/jest',
     /**
      * A number limiting the number of tests that are allowed to run at the same time when
      * using test.concurrent. any test above this limit will be queued and executed once
@@ -155,7 +155,7 @@ const config: Config = {
     /**
      * Run tests with specified reporters
      */
-    reporters: [`default`],
+    reporters: ['default'],
 
     /**
      * Allows the test suite to pass when no files are found.

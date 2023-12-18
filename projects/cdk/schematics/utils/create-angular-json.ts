@@ -4,7 +4,7 @@ export function createAngularJson(
     {stylesExist}: {stylesExist: boolean} = {stylesExist: false},
 ): void {
     createSourceFile(
-        `angular.json`,
+        'angular.json',
         `
 {
   "version": 1,
@@ -23,7 +23,7 @@ export function createAngularJson(
                   "some.style"
                 ]
                 `
-                    : ``
+                    : ''
             }}
           }
         }
@@ -36,7 +36,7 @@ export function createAngularJson(
 
 export function createAngularJsonWithAssets(): void {
     createSourceFile(
-        `angular.json`,
+        'angular.json',
         `
 {
   "version": 1,

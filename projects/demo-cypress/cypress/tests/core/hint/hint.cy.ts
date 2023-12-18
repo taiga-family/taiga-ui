@@ -1,69 +1,69 @@
-describe(`TuiHint`, () => {
+describe('TuiHint', () => {
     beforeEach(() => cy.viewport(720, 700));
 
-    it(`TuiHint works`, () => {
-        cy.tuiVisit(`/directives/hint`);
+    it('TuiHint works', () => {
+        cy.tuiVisit('/directives/hint');
 
-        cy.get(`tui-hint-example-1 tui-avatar`).trigger(`mouseenter`).tick(1000);
+        cy.get('tui-hint-example-1 tui-avatar').trigger('mouseenter').tick(1000);
 
-        cy.get(`tui-hint-example-1`)
+        cy.get('tui-hint-example-1')
             .first()
             .tuiWaitBeforeScreenshot()
-            .matchImageSnapshot(`hint`);
+            .matchImageSnapshot('hint');
     });
 
-    it(`Manual hint works`, () => {
-        cy.tuiVisit(`/directives/hint-manual/API?tuiHintManual=true`);
+    it('Manual hint works', () => {
+        cy.tuiVisit('/directives/hint-manual/API?tuiHintManual=true');
 
-        cy.get(`tui-hint`)
+        cy.get('tui-hint')
             .first()
             .tuiWaitBeforeScreenshot()
-            .matchImageSnapshot(`manual-hint`);
+            .matchImageSnapshot('manual-hint');
     });
 
-    it(`Dark mode hint`, () => {
-        cy.tuiVisit(`/directives/hint/API?tuiMode=onDark`);
+    it('Dark mode hint', () => {
+        cy.tuiVisit('/directives/hint/API?tuiMode=onDark');
 
-        cy.get(`#demo-content span`)
-            .trigger(`mouseenter`)
+        cy.get('#demo-content span')
+            .trigger('mouseenter')
             .tick(1000)
             .tuiWaitBeforeScreenshot();
 
-        cy.get(`tui-hint`).matchImageSnapshot(`on-dark-hint`);
+        cy.get('tui-hint').matchImageSnapshot('on-dark-hint');
     });
 
-    it(`Light mode hint`, () => {
-        cy.tuiVisit(`/directives/hint/API?tuiMode=onLight`);
+    it('Light mode hint', () => {
+        cy.tuiVisit('/directives/hint/API?tuiMode=onLight');
 
-        cy.get(`#demo-content span`)
-            .trigger(`mouseenter`)
+        cy.get('#demo-content span')
+            .trigger('mouseenter')
             .tick(1000)
             .tuiWaitBeforeScreenshot();
 
-        cy.get(`tui-hint`).matchImageSnapshot(`on-light-hint`);
+        cy.get('tui-hint').matchImageSnapshot('on-light-hint');
     });
 
-    it(`Tooltip horizontal direction`, () => {
-        cy.tuiVisit(`/components/tooltip`);
-        cy.get(`tui-doc-example`)
+    it('Tooltip horizontal direction', () => {
+        cy.tuiVisit('/components/tooltip');
+        cy.get('tui-doc-example')
             .first()
-            .trigger(`mouseenter`, {x: 35, y: 200})
+            .trigger('mouseenter', {x: 35, y: 200})
             .tick(1000)
             .tuiWaitBeforeScreenshot();
 
-        cy.get(`tui-doc-example`).first().matchImageSnapshot(`tooltip-left`);
+        cy.get('tui-doc-example').first().matchImageSnapshot('tooltip-left');
     });
 
-    it(`Tooltip vertical direction`, () => {
-        cy.tuiVisit(`/components/tooltip`);
-        cy.get(`tui-doc-example`)
+    it('Tooltip vertical direction', () => {
+        cy.tuiVisit('/components/tooltip');
+        cy.get('tui-doc-example')
             .eq(2)
-            .find(`tui-tooltip`)
+            .find('tui-tooltip')
             .first()
-            .trigger(`mouseenter`)
+            .trigger('mouseenter')
             .tick(1000)
             .tuiWaitBeforeScreenshot();
 
-        cy.get(`tui-doc-example`).eq(2).matchImageSnapshot(`tooltip-bottom`);
+        cy.get('tui-doc-example').eq(2).matchImageSnapshot('tooltip-bottom');
     });
 });

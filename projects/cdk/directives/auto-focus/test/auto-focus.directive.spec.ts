@@ -11,8 +11,8 @@ import {
 } from '@taiga-ui/cdk';
 import {EMPTY} from 'rxjs';
 
-describe(`TuiAutoFocus directive`, () => {
-    describe(`works for focusable HTML element`, () => {
+describe('TuiAutoFocus directive', () => {
+    describe('works for focusable HTML element', () => {
         @Component({
             template: `
                 <div
@@ -40,16 +40,16 @@ describe(`TuiAutoFocus directive`, () => {
             testComponent = fixture.componentInstance;
         });
 
-        it(`focuses`, fakeAsync(() => {
+        it('focuses', fakeAsync(() => {
             fixture.detectChanges();
             tick(100);
             expect(tuiIsNativeFocused(testComponent.element.nativeElement)).toBe(true);
         }));
     });
 
-    describe(`works for TUI_FOCUSABLE_ITEM_ACCESSOR`, () => {
+    describe('works for TUI_FOCUSABLE_ITEM_ACCESSOR', () => {
         @Component({
-            selector: `focusable-component`,
+            selector: 'focusable-component',
             template: `
                 <p>
                     <input
@@ -62,7 +62,7 @@ describe(`TuiAutoFocus directive`, () => {
             providers: [tuiAsFocusableItemAccessor(TestFocusableComponent)],
         })
         class TestFocusableComponent implements TuiFocusableElementAccessor {
-            @ViewChild(`input`)
+            @ViewChild('input')
             input?: ElementRef<HTMLInputElement>;
 
             focusedChange = EMPTY;
@@ -102,7 +102,7 @@ describe(`TuiAutoFocus directive`, () => {
             testComponent = fixture.componentInstance;
         });
 
-        it(`Focuses native element of a TUI_FOCUSABLE_ITEM_ACCESSOR`, fakeAsync(() => {
+        it('Focuses native element of a TUI_FOCUSABLE_ITEM_ACCESSOR', fakeAsync(() => {
             fixture.detectChanges();
             tick(100);
             expect(testComponent.focusable.focused).toBe(true);
@@ -112,7 +112,7 @@ describe(`TuiAutoFocus directive`, () => {
         }));
     });
 
-    describe(`works for iOS decoy method`, () => {
+    describe('works for iOS decoy method', () => {
         @Component({
             template: `
                 <input tuiAutoFocus />
@@ -143,14 +143,14 @@ describe(`TuiAutoFocus directive`, () => {
             testComponent = fixture.componentInstance;
         });
 
-        it(`focuses`, fakeAsync(() => {
+        it('focuses', fakeAsync(() => {
             fixture.detectChanges();
             tick(100);
             expect(tuiIsNativeFocused(testComponent.element.nativeElement)).toBe(true);
         }));
     });
 
-    describe(`autoFocus flag is false`, () => {
+    describe('autoFocus flag is false', () => {
         @Component({
             template: `
                 <div
@@ -180,7 +180,7 @@ describe(`TuiAutoFocus directive`, () => {
             testComponent = fixture.componentInstance;
         });
 
-        it(`does not focus element`, fakeAsync(() => {
+        it('does not focus element', fakeAsync(() => {
             fixture.detectChanges();
             tick(100);
             expect(tuiIsNativeFocused(testComponent.element.nativeElement)).toBe(false);

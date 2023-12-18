@@ -2,8 +2,8 @@ import {UpdateRecorder} from '@angular-devkit/schematics';
 import {Attribute, ElementLocation} from 'parse5';
 
 const sizeMap: Record<string, string> = {
-    l: `m`,
-    m: `s`,
+    l: 'm',
+    m: 's',
 };
 export function replaceOpenTag(
     sourceCodeLocation: ElementLocation,
@@ -14,7 +14,7 @@ export function replaceOpenTag(
     const {startTag} = sourceCodeLocation;
     const {startOffset, startCol} = startTag;
 
-    const spaces = ` `.repeat(startCol + 3);
+    const spaces = ' '.repeat(startCol + 3);
 
     recorder.remove(templateOffset + startOffset, `<${tag}`.length);
     recorder.insertRight(
@@ -29,7 +29,7 @@ export function replaceSizeAttr(
     recorder: UpdateRecorder,
     templateOffset: number,
 ): void {
-    const sizeAttr = attrs.find(attr => attr.name === `size`);
+    const sizeAttr = attrs.find(attr => attr.name === 'size');
 
     if (sizeAttr) {
         const {startOffset, endOffset} = sourceCodeLocation.attrs?.[sizeAttr.name] || {
@@ -64,5 +64,5 @@ export function closeStartTag(
     recorder: UpdateRecorder,
     templateOffset: number,
 ): void {
-    recorder.insertRight(templateOffset + startTag.endOffset - 1, `/`);
+    recorder.insertRight(templateOffset + startTag.endOffset - 1, '/');
 }

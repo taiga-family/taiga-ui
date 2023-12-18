@@ -18,19 +18,19 @@ import {
 const SCROLL_TIME = 300;
 
 function getX(elementOrWindow: Element | Window): number {
-    return `scrollX` in elementOrWindow
+    return 'scrollX' in elementOrWindow
         ? elementOrWindow.scrollX
         : elementOrWindow.scrollLeft;
 }
 
 function getY(elementOrWindow: Element | Window): number {
-    return `scrollY` in elementOrWindow
+    return 'scrollY' in elementOrWindow
         ? elementOrWindow.scrollY
         : elementOrWindow.scrollTop;
 }
 
 @Injectable({
-    providedIn: `root`,
+    providedIn: 'root',
 })
 export class TuiScrollService {
     constructor(
@@ -44,9 +44,9 @@ export class TuiScrollService {
         scrollLeft: number = getX(elementOrWindow),
         duration: number = SCROLL_TIME,
     ): Observable<[number, number]> {
-        ngDevMode && tuiAssert.assert(duration >= 0, `Duration cannot be negative`);
-        ngDevMode && tuiAssert.assert(scrollTop >= 0, `scrollTop cannot be negative`);
-        ngDevMode && tuiAssert.assert(scrollLeft >= 0, `scrollLeft cannot be negative`);
+        ngDevMode && tuiAssert.assert(duration >= 0, 'Duration cannot be negative');
+        ngDevMode && tuiAssert.assert(scrollTop >= 0, 'scrollTop cannot be negative');
+        ngDevMode && tuiAssert.assert(scrollLeft >= 0, 'scrollLeft cannot be negative');
 
         const initialTop = getY(elementOrWindow);
         const initialLeft = getX(elementOrWindow);

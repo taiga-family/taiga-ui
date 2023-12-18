@@ -33,18 +33,18 @@ export class TuiPullToRefreshService extends Observable<number> {
     private readonly pulling$ = this.loaded$.pipe(
         startWith(null),
         switchMap(() =>
-            tuiTypedFromEvent(this.element, `touchstart`, {passive: true}).pipe(
+            tuiTypedFromEvent(this.element, 'touchstart', {passive: true}).pipe(
                 filter(() => !this.scrollTop),
                 map(({touches}) => touches[0].clientY),
                 switchMap(start =>
-                    tuiTypedFromEvent(this.element, `touchmove`).pipe(
+                    tuiTypedFromEvent(this.element, 'touchmove').pipe(
                         tap((): void => {
                             this.touched = true;
                         }),
                         map(({touches}) => touches[0].clientY - start),
                         filter(distance => distance > 0),
                         takeUntil(
-                            tuiTypedFromEvent(this.element, `touchend`).pipe(
+                            tuiTypedFromEvent(this.element, 'touchend').pipe(
                                 tap((): void => {
                                     this.touched = false;
                                 }),

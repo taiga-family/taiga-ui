@@ -24,7 +24,7 @@ viewBox="0 0 24 24">
    s3,1.3,3,3v0.1c2.3,0.6,4,3,4,5.9v3.8l1.4,4.2h-4.5c-0.4,1.8-2,3-3.9,3c-1.8,0-3.4-1.2-3.9-3H3.6z"/>
 </svg>`;
 
-const CUSTOM_SVG_NAME = `Bell`;
+const CUSTOM_SVG_NAME = 'Bell';
 
 type TuiPossibleGenericType = any;
 
@@ -34,33 +34,33 @@ export abstract class AbstractExampleTuiControl
 {
     abstract readonly control: AbstractControl;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [`s`, `m`, `l`];
+    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
-    readonly hintContentVariants: readonly string[] = [``, `Some content`];
+    readonly hintContentVariants: readonly string[] = ['', 'Some content'];
 
     readonly hintDirectionVariants = TUI_HINT_DIRECTIONS;
 
-    readonly hintAppearanceVariants = [``, `error`, `onDark`];
+    readonly hintAppearanceVariants = ['', 'error', 'onDark'];
 
     readonly typeVariants: readonly TuiInputType[] = [
-        `text`,
-        `email`,
-        `password`,
-        `tel`,
-        `url`,
+        'text',
+        'email',
+        'password',
+        'tel',
+        'url',
     ];
 
     readonly maxLengthVariants: readonly TuiPossibleGenericType[] = [10];
 
-    readonly inputModeVariants: readonly TuiInputMode[] = [`text`, `numeric`];
+    readonly inputModeVariants: readonly TuiInputMode[] = ['text', 'numeric'];
 
     readonly customContentVariants: PolymorpheusContent[] = [
-        ``,
+        '',
         CUSTOM_SVG_NAME,
-        `tuiIconSearchLarge`,
-        `tuiIconCalendarLarge`,
-        `tuiIconVisaMono`,
-        `tuiIconMastercardMono`,
+        'tuiIconSearchLarge',
+        'tuiIconCalendarLarge',
+        'tuiIconVisaMono',
+        'tuiIconMastercardMono',
     ];
 
     customContentSelected = this.customContentVariants[0];
@@ -83,15 +83,15 @@ export abstract class AbstractExampleTuiControl
 
     size: TuiSizeL | TuiSizeS = this.sizeVariants[2];
 
-    exampleText = ``;
+    exampleText = '';
 
-    filler = ``;
+    filler = '';
 
     minHeight: number | null = null;
 
     maxHeight: number | null = null;
 
-    readonly iconLeftVariants = [``, `tuiIconMailLarge`, `tuiIconPieChartLarge`];
+    readonly iconLeftVariants = ['', 'tuiIconMailLarge', 'tuiIconPieChartLarge'];
 
     iconLeft = this.iconLeftVariants[0];
 
@@ -104,24 +104,24 @@ export abstract class AbstractExampleTuiControl
     dropdownOpen = new BehaviorSubject(false);
 
     readonly dropdownAlignVariants: readonly TuiDropdownAlign[] = [
-        `left`,
-        `right`,
-        `center`,
+        'left',
+        'right',
+        'center',
     ];
 
     dropdownAlign = TUI_DROPDOWN_DEFAULT_OPTIONS.align;
 
     readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = [
-        `fixed`,
-        `min`,
-        `auto`,
+        'fixed',
+        'min',
+        'auto',
     ];
 
     dropdownLimitWidth = this.dropdownLimitWidthVariants[0];
 
     readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        `bottom`,
-        `top`,
+        'bottom',
+        'top',
     ];
 
     dropdownDirection: TuiVerticalDirection | null =
@@ -131,7 +131,7 @@ export abstract class AbstractExampleTuiControl
 
     dropdownMaxHeight = TUI_DROPDOWN_DEFAULT_OPTIONS.maxHeight;
 
-    readonly prefixVariants: readonly string[] = [``, `$`, `GBP`, `Very long text`];
+    readonly prefixVariants: readonly string[] = ['', '$', 'GBP', 'Very long text'];
 
     prefix = this.prefixVariants[0];
 

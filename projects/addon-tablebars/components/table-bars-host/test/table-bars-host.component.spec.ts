@@ -9,7 +9,7 @@ import {
 import {TuiPageObject} from '@taiga-ui/testing';
 import {skip, Subscription, take, takeUntil, timer} from 'rxjs';
 
-describe(`TableBarsHost`, () => {
+describe('TableBarsHost', () => {
     @Component({
         template: `
             <tui-table-bars-host></tui-table-bars-host>
@@ -27,10 +27,10 @@ describe(`TableBarsHost`, () => {
     let service: TuiTableBarsService;
     let subscription: Subscription;
 
-    const title = `Breaking news!`;
+    const title = 'Breaking news!';
     const testContext = {
         get prefix() {
-            return `tui-table-bar__`;
+            return 'tui-table-bar__';
         },
     };
 
@@ -59,7 +59,7 @@ describe(`TableBarsHost`, () => {
         return pageObject.getByAutomationId(`${testContext.prefix}close-button`)!;
     }
 
-    it(`Listens to service for adding tableBar`, () => {
+    it('Listens to service for adding tableBar', () => {
         let result: unknown;
 
         component.service.bar$.pipe(take(1)).subscribe(bar => {
@@ -71,7 +71,7 @@ describe(`TableBarsHost`, () => {
         expect(result).toBe(title);
     });
 
-    it(`tableBar removed by unsubscribe`, fakeAsync(() => {
+    it('tableBar removed by unsubscribe', fakeAsync(() => {
         let result: unknown;
 
         component.service.bar$.pipe(skip(1), take(1)).subscribe(bar => {
@@ -88,22 +88,22 @@ describe(`TableBarsHost`, () => {
         expect(result).toBeNull();
     }));
 
-    it(`the default tableBar is dark`, () => {
+    it('the default tableBar is dark', () => {
         service.open(title).pipe(take(1)).subscribe();
 
         fixture.detectChanges();
 
-        expect(getBar().nativeElement.classList.contains(`t-bar_light`)).toBe(false);
+        expect(getBar().nativeElement.classList.contains('t-bar_light')).toBe(false);
     });
 
-    it(`pi mode: light tableBar light`, () => {
-        service.open(title, {mode: `onDark`}).pipe(take(1)).subscribe();
+    it('pi mode: light tableBar light', () => {
+        service.open(title, {mode: 'onDark'}).pipe(take(1)).subscribe();
         fixture.detectChanges();
 
-        expect(getBar().nativeElement.classList.contains(`t-bar_light`)).toBe(true);
+        expect(getBar().nativeElement.classList.contains('t-bar_light')).toBe(true);
     });
 
-    it(`there is no close button by default`, () => {
+    it('there is no close button by default', () => {
         service.open(title).pipe(take(1)).subscribe();
 
         fixture.detectChanges();
@@ -111,14 +111,14 @@ describe(`TableBarsHost`, () => {
         expect(getCloseButton()).toBeNull();
     });
 
-    it(`when hasCloseButton: true tableBar there is a close button`, () => {
+    it('when hasCloseButton: true tableBar there is a close button', () => {
         service.open(title, {hasCloseButton: true}).pipe(take(1)).subscribe();
         fixture.detectChanges();
 
         expect(getCloseButton()).not.toBeNull();
     });
 
-    it(`pressing closeButton removes the current tableBar`, () => {
+    it('pressing closeButton removes the current tableBar', () => {
         let result: unknown;
 
         service.bar$.pipe(skip(1), take(1)).subscribe(bar => {

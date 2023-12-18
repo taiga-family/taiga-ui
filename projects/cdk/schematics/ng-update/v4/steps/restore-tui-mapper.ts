@@ -12,12 +12,12 @@ import {getNamedImportReferences} from '../../../utils/get-named-import-referenc
 import {replaceIdentifier} from '../../steps/replace-identifier';
 
 function updateTuiMapper(options: TuiSchema): void {
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         infoLog(
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} updating TuiMapper typing to the typed version`,
         );
 
-    const refs = getNamedImportReferences(`TuiMapper`, `@taiga-ui/cdk`);
+    const refs = getNamedImportReferences('TuiMapper', '@taiga-ui/cdk');
 
     for (const ref of refs) {
         if (ref.wasForgotten()) {
@@ -41,14 +41,14 @@ function updateTuiMapper(options: TuiSchema): void {
 }
 
 function renameTuiTypedMapper(options: TuiSchema): void {
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         infoLog(
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} renaming TuiTypedMapper to TuiMapper`,
         );
 
     replaceIdentifier({
-        from: {name: `TuiTypedMapper`, moduleSpecifier: `@taiga-ui/cdk`},
-        to: {name: `TuiMapper`, moduleSpecifier: `@taiga-ui/cdk`},
+        from: {name: 'TuiTypedMapper', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiMapper', moduleSpecifier: '@taiga-ui/cdk'},
     });
 }
 
@@ -56,5 +56,5 @@ export function restoreTuiMapper(options: TuiSchema): void {
     updateTuiMapper(options);
     renameTuiTypedMapper(options);
 
-    !options[`skip-logs`] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+    !options['skip-logs'] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
 }

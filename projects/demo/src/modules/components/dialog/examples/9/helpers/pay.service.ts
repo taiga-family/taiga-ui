@@ -6,7 +6,7 @@ import {MOCK_CARDS} from './mock-cards';
 import {AccountCard, FetchedCards} from './models';
 
 @Injectable({
-    providedIn: `root`,
+    providedIn: 'root',
 })
 export class PayService {
     constructor(@Inject(TUI_IS_E2E) private readonly isE2E: boolean) {}

@@ -13,7 +13,7 @@ export function tuiGetElementOffset(
     host: Element,
     element: HTMLElement,
 ): {offsetLeft: number; offsetTop: number} {
-    ngDevMode && tuiAssert.assert(host.contains(element), `Host must contain element`);
+    ngDevMode && tuiAssert.assert(host.contains(element), 'Host must contain element');
 
     let {offsetTop, offsetLeft, offsetParent} = element;
 

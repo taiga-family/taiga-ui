@@ -1,9 +1,9 @@
 import {TuiFilterPipe, TuiTypedMatcher} from '@taiga-ui/cdk';
 
-describe(`TuiFilter pipe`, () => {
+describe('TuiFilter pipe', () => {
     let pipe: TuiFilterPipe;
-    const data = [`two`, `eleven`];
-    const args = [`two`, `four`];
+    const data = ['two', 'eleven'];
+    const args = ['two', 'four'];
     const matcher: TuiTypedMatcher<[string, number, ...string[]]> = (
         item,
         search,
@@ -14,15 +14,15 @@ describe(`TuiFilter pipe`, () => {
         pipe = new TuiFilterPipe();
     });
 
-    it(`Filter works`, () => {
+    it('Filter works', () => {
         expect(pipe.transform(data, matcher, 6)).toEqual([data[1]]);
     });
 
-    it(`Filter returns empty array if nothing matched`, () => {
+    it('Filter returns empty array if nothing matched', () => {
         expect(pipe.transform(data, matcher, 5)).toEqual([]);
     });
 
-    it(`Filter works with extra arguments`, () => {
+    it('Filter works with extra arguments', () => {
         expect(pipe.transform(data, matcher, 5, ...args)).toEqual([data[0]]);
     });
 });

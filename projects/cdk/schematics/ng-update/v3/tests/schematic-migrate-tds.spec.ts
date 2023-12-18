@@ -12,28 +12,28 @@ import {join} from 'path';
 
 import {TAIGA_VERSION} from '../../../ng-add/constants/versions';
 
-const collectionPath = join(__dirname, `../../../migration.json`);
+const collectionPath = join(__dirname, '../../../migration.json');
 
-describe(`ng-update angular.json`, () => {
+describe('ng-update angular.json', () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
     beforeEach(() => {
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner(`schematics`, collectionPath);
+        runner = new SchematicTestRunner('schematics', collectionPath);
     });
 
-    it(`include @taiga-ui/proprietary-icons inside a package.json`, async () => {
+    it('include @taiga-ui/proprietary-icons inside a package.json', async () => {
         setActiveProject(createProject(host));
 
         createSourceFile(
-            `package.json`,
+            'package.json',
             `{"dependencies": {"@angular/core": "~13.0.0", "@taiga-ui/proprietary-icons": "${TAIGA_VERSION}"}}`,
             {overwrite: true},
         );
 
         createSourceFile(
-            `angular.json`,
+            'angular.json',
             makeAngularJsonWithAssets(`
               {
                 "glob": "**/*",
@@ -46,13 +46,13 @@ describe(`ng-update angular.json`, () => {
 
         const tree = await runner
             .runSchematicAsync(
-                `updateToV3`,
-                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                'updateToV3',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent(`angular.json`)).toEqual(
+        expect(tree.readContent('angular.json')).toEqual(
             makeAngularJsonWithAssets(`
                 {
                   "glob": "**/*",
@@ -67,16 +67,16 @@ describe(`ng-update angular.json`, () => {
         );
     });
 
-    it(`included proprietary-tds-icons now`, async () => {
+    it('included proprietary-tds-icons now', async () => {
         setActiveProject(createProject(host));
 
         createSourceFile(
-            `package.json`,
+            'package.json',
             `{"dependencies": {"@angular/core": "~13.0.0", "@taiga-ui/proprietary-icons": "${TAIGA_VERSION}"}}`,
         );
 
         createSourceFile(
-            `angular.json`,
+            'angular.json',
             makeAngularJsonWithAssets(`
               {
                 "glob": "**/*",
@@ -94,13 +94,13 @@ describe(`ng-update angular.json`, () => {
 
         const tree = await runner
             .runSchematicAsync(
-                `updateToV3`,
-                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                'updateToV3',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent(`angular.json`)).toEqual(
+        expect(tree.readContent('angular.json')).toEqual(
             makeAngularJsonWithAssets(`
               {
                 "glob": "**/*",
@@ -115,16 +115,16 @@ describe(`ng-update angular.json`, () => {
         );
     });
 
-    it(`doesn't include @taiga-ui/proprietary-icons inside a package.json`, async () => {
+    it("doesn't include @taiga-ui/proprietary-icons inside a package.json", async () => {
         setActiveProject(createProject(host));
 
         createSourceFile(
-            `package.json`,
-            `{"dependencies": {"@angular/core": "~13.0.0"}}`,
+            'package.json',
+            '{"dependencies": {"@angular/core": "~13.0.0"}}',
         );
 
         createSourceFile(
-            `angular.json`,
+            'angular.json',
             makeAngularJsonWithAssets(`
               {
                 "glob": "**/*",
@@ -137,13 +137,13 @@ describe(`ng-update angular.json`, () => {
 
         const tree = await runner
             .runSchematicAsync(
-                `updateToV3`,
-                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                'updateToV3',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent(`angular.json`)).toEqual(
+        expect(tree.readContent('angular.json')).toEqual(
             makeAngularJsonWithAssets(`
               {
                 "glob": "**/*",

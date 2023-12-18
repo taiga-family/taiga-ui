@@ -45,12 +45,12 @@ export const TUI_SVG_DEFAULT_OPTIONS: TuiSvgOptions = {
     srcProcessor: identity,
     contentProcessor: tuiSvgLinearGradientProcessor,
     deprecated: src => {
-        const oldIcon = src.replace(`Large`, ``).replace(`Outline`, ``);
+        const oldIcon = src.replace('Large', '').replace('Outline', '');
         const newIcon = TUI_DEPRECATED_ICONS[oldIcon];
 
         return newIcon
             ? `${oldIcon}/(Large|Outline) is deprecated, use ${newIcon}/(Large|Outline) instead`
-            : ``;
+            : '';
     },
 };
 
@@ -66,7 +66,7 @@ export const TUI_SVG_OPTIONS = tuiCreateTokenFromFactory<TuiSvgOptions>(() => ({
 }));
 
 export const TUI_SVG_SRC_INTERCEPTORS = new InjectionToken<TuiSvgInterceptorHandler>(
-    `[TUI_SVG_SRC_INTERCEPTORS]`,
+    '[TUI_SVG_SRC_INTERCEPTORS]',
 );
 
 export function tuiSvgSrcInterceptors(interceptor: TuiSvgInterceptorHandler): Provider {

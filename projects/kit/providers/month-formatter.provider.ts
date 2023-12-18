@@ -14,5 +14,5 @@ export const TUI_MONTH_FORMATTER_PROVIDER: FactoryProvider = {
                 ? pipe
                       .transform(month)
                       .pipe(map(formatted => `${formatted} ${month.formattedYear}`))
-                : of(``),
+                : of(''),
 };

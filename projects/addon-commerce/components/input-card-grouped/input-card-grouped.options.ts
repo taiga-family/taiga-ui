@@ -15,8 +15,8 @@ export interface TuiInputCardGroupedOptions extends TuiInputCardOptions {
 export const TUI_INPUT_CARD_GROUPED_DEFAULT_OPTIONS: TuiInputCardGroupedOptions = {
     ...TUI_INPUT_CARD_DEFAULT_OPTIONS,
     cardValidator: tuiDefaultCardValidator,
-    exampleText: `0000 0000 0000 0000`,
-    exampleTextCVC: `000`,
+    exampleText: '0000 0000 0000 0000',
+    exampleTextCVC: '000',
 };
 
 export const TUI_INPUT_CARD_GROUPED_OPTIONS = tuiCreateToken(

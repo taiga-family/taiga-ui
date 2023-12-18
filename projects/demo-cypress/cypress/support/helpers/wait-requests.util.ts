@@ -1,7 +1,7 @@
 const getNotLoadedRequests = (alias: string): Cypress.Chainable =>
     cy
         .get<Array<{state: string}>>(`${alias}.all`, {log: false})
-        .then(requests => requests.filter(req => req.state !== `Complete`));
+        .then(requests => requests.filter(req => req.state !== 'Complete'));
 
 export const waitAllRequests = (alias: string): void => {
     getNotLoadedRequests(alias)

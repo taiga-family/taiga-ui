@@ -7,7 +7,7 @@ import {TuiBadgeComponent, TuiBadgeModule} from '@taiga-ui/kit';
 import {TuiStatus} from '@taiga-ui/kit/types';
 import {TuiBadgeHarness} from '@taiga-ui/testing';
 
-describe(`Badge`, () => {
+describe('Badge', () => {
     @Component({
         template: `
             <tui-badge
@@ -24,9 +24,9 @@ describe(`Badge`, () => {
         @ViewChild(TuiBadgeComponent, {read: ElementRef, static: true})
         element!: ElementRef<Element>;
 
-        size: TuiSizeL = `m`;
+        size: TuiSizeL = 'm';
         value!: number | string;
-        status: TuiStatus = `default`;
+        status: TuiStatus = 'default';
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -45,73 +45,73 @@ describe(`Badge`, () => {
         fixture.detectChanges();
     });
 
-    describe(`value:`, () => {
-        it(`if it accepts a two-digit number, it outputs it`, async () => {
+    describe('value:', () => {
+        it('if it accepts a two-digit number, it outputs it', async () => {
             testComponent.value = 99;
 
             const badge = await loader.getHarness(TuiBadgeHarness);
             const text = await badge.text();
 
-            expect(text).toBe(`99`);
+            expect(text).toBe('99');
         });
 
-        it(`if it takes three digits or more, it displays the abbreviation 99+`, async () => {
+        it('if it takes three digits or more, it displays the abbreviation 99+', async () => {
             testComponent.value = 999;
 
             const badge = await loader.getHarness(TuiBadgeHarness);
             const text = await badge.text();
 
-            expect(text).toBe(`99+`);
+            expect(text).toBe('99+');
         });
 
-        it(`if it accepts a string, it outputs it`, async () => {
-            testComponent.value = `Text`;
+        it('if it accepts a string, it outputs it', async () => {
+            testComponent.value = 'Text';
             const badge = await loader.getHarness(TuiBadgeHarness);
             const text = await badge.text();
 
-            expect(text).toBe(`Text`);
+            expect(text).toBe('Text');
         });
 
-        it(`if it accepts a string containing a number, it outputs it unchanged`, async () => {
-            testComponent.value = `125`;
+        it('if it accepts a string containing a number, it outputs it unchanged', async () => {
+            testComponent.value = '125';
             const badge = await loader.getHarness(TuiBadgeHarness);
             const text = await badge.text();
 
-            expect(text).toBe(`125`);
+            expect(text).toBe('125');
         });
     });
 
-    describe(`padding:`, () => {
-        it(`if value is a number, padding has size m`, async () => {
+    describe('padding:', () => {
+        it('if value is a number, padding has size m', async () => {
             testComponent.value = 99;
             const badge = await loader.getHarness(TuiBadgeHarness);
             const padding = await badge.padding();
 
-            expect(padding).toBe(`m`);
+            expect(padding).toBe('m');
         });
 
-        it(`if value is a string, padding has size l`, async () => {
-            testComponent.value = `99`;
+        it('if value is a string, padding has size l', async () => {
+            testComponent.value = '99';
             const badge = await loader.getHarness(TuiBadgeHarness);
             const padding = await badge.padding();
 
-            expect(padding).toBe(`l`);
+            expect(padding).toBe('l');
         });
 
-        it(`if value is empty, padding is none`, async () => {
+        it('if value is empty, padding is none', async () => {
             const badge = await loader.getHarness(TuiBadgeHarness);
             const padding = await badge.padding();
 
-            expect(padding).toBe(`none`);
+            expect(padding).toBe('none');
         });
     });
 
-    describe(`states:`, () => {
-        it(`if value is empty, add appropriate css class`, async () => {
-            testComponent.value = ``;
+    describe('states:', () => {
+        it('if value is empty, add appropriate css class', async () => {
+            testComponent.value = '';
 
             const badge = await loader.getHarness(TuiBadgeHarness);
-            const hasClass = await badge.hasClass(`_empty-value`);
+            const hasClass = await badge.hasClass('_empty-value');
 
             expect(hasClass).toBeTruthy();
         });

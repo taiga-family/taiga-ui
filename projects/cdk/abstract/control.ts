@@ -50,7 +50,7 @@ export abstract class AbstractTuiControl<T>
     protected readonly destroy$ = new Subject<void>();
 
     @Input()
-    @HostBinding(`class._readonly`)
+    @HostBinding('class._readonly')
     readOnly = false;
 
     @Input()
@@ -70,7 +70,7 @@ export abstract class AbstractTuiControl<T>
             tuiAssert.assert(
                 false,
                 `NgControl not injected in ${this.constructor.name}!\n`,
-                `Use [(ngModel)] or [formControl] or formControlName for correct work.`,
+                'Use [(ngModel)] or [formControl] or formControlName for correct work.',
             );
         }
 
@@ -81,7 +81,7 @@ export abstract class AbstractTuiControl<T>
 
     protected abstract getFallbackValue(): T;
 
-    @HostBinding(`class._invalid`)
+    @HostBinding('class._invalid')
     get computedInvalid(): boolean {
         return (
             this.interactive &&

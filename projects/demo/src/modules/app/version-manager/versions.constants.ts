@@ -10,19 +10,19 @@ export const TUI_CURRENT_MAJOR_VERSION = parseInt(TUI_VERSION, 10);
 
 export const TUI_VERSIONS_META: readonly TuiVersionMeta[] = [
     {
-        label: `next`,
-        baseHref: `/next/`,
+        label: 'next',
+        baseHref: '/next/',
         title: `v${TUI_CURRENT_MAJOR_VERSION}.next`,
     },
     {
         label: `latest (v${TUI_VERSION})`,
-        baseHref: `/`,
+        baseHref: '/',
         title: `v${TUI_CURRENT_MAJOR_VERSION}`,
     },
     {
-        label: `v2`,
-        baseHref: `/v2/`,
-        title: `v2`,
+        label: 'v2',
+        baseHref: '/v2/',
+        title: 'v2',
     },
 ];
 

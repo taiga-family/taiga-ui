@@ -4,7 +4,7 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiPreviewDialogComponent} from './preview-dialog.component';
 
-@Injectable({providedIn: `root`})
+@Injectable({providedIn: 'root'})
 export class TuiPreviewDialogService extends AbstractTuiDialogService<unknown> {
     readonly defaultOptions = {};
     readonly component = new PolymorpheusComponent(TuiPreviewDialogComponent);

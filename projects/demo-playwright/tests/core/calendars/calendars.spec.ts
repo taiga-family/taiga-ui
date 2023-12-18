@@ -1,60 +1,60 @@
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-test.describe(`Calendars`, () => {
+test.describe('Calendars', () => {
     test.use({viewport: {width: 720, height: 700}});
 
-    test(`Calendar`, async ({page}) => {
+    test('Calendar', async ({page}) => {
         await tuiGoto(
             page,
-            `components/calendar/API?tuiMode=null&value$=2&maxViewedMonth$=1&max$=0`,
+            'components/calendar/API?tuiMode=null&value$=2&maxViewedMonth$=1&max$=0',
         );
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-        const calendar = apiPageExample.locator(`tui-calendar`).first();
+        const calendar = apiPageExample.locator('tui-calendar').first();
 
         await expect(calendar).toBeVisible();
         await calendar.scrollIntoViewIfNeeded();
 
-        await expect(calendar).toHaveScreenshot(`01-calendar.png`);
+        await expect(calendar).toHaveScreenshot('01-calendar.png');
     });
 
-    test(`Open calendar from start value`, async ({page}) => {
-        await tuiGoto(page, `components/calendar/API?value$=2`);
+    test('Open calendar from start value', async ({page}) => {
+        await tuiGoto(page, 'components/calendar/API?value$=2');
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-        const calendar = apiPageExample.locator(`tui-calendar`).first();
+        const calendar = apiPageExample.locator('tui-calendar').first();
 
         await expect(calendar).toBeVisible();
         await calendar.scrollIntoViewIfNeeded();
 
-        await expect(calendar).toHaveScreenshot(`01-calendar-is-april-2020.png`);
+        await expect(calendar).toHaveScreenshot('01-calendar-is-april-2020.png');
     });
 
-    test(`Set range between two days`, async ({page}) => {
-        await tuiGoto(page, `components/calendar/API?value$=1`);
+    test('Set range between two days', async ({page}) => {
+        await tuiGoto(page, 'components/calendar/API?value$=1');
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-        const calendar = apiPageExample.locator(`tui-calendar`).first();
+        const calendar = apiPageExample.locator('tui-calendar').first();
 
         await expect(calendar).toBeVisible();
         await calendar.scrollIntoViewIfNeeded();
 
-        await expect(calendar).toHaveScreenshot(`01-range-calendar.png`);
+        await expect(calendar).toHaveScreenshot('01-range-calendar.png');
     });
 
-    test(`Month`, async ({page}) => {
+    test('Month', async ({page}) => {
         await tuiGoto(
             page,
-            `components/calendar-month/API?tuiMode=null&year$=1&value$=2`,
+            'components/calendar-month/API?tuiMode=null&year$=1&value$=2',
         );
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-        const calendar = apiPageExample.locator(`tui-calendar-month`).first();
+        const calendar = apiPageExample.locator('tui-calendar-month').first();
 
         await expect(calendar).toBeVisible();
         await calendar.scrollIntoViewIfNeeded();
 
-        await expect(calendar).toHaveScreenshot(`01-calendar-month.png`);
+        await expect(calendar).toHaveScreenshot('01-calendar-month.png');
     });
 });

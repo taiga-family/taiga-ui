@@ -19,7 +19,7 @@ export const TUI_APP_BAR_PROVIDERS: Provider[] = [
         },
     },
     tuiButtonOptionsProvider({
-        size: `m`,
-        appearance: ``,
+        size: 'm',
+        appearance: '',
     }),
 ];

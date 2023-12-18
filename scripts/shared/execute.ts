@@ -8,8 +8,8 @@ export function execute(shell: string, options?: Partial<CommonExecOptions>): st
     return execSync(
         shell,
         options ?? {
-            stdio: `inherit`,
-            encoding: `utf8`,
+            stdio: 'inherit',
+            encoding: 'utf8',
         },
     )
         ?.toString()

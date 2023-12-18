@@ -15,13 +15,13 @@ import {TemplateResource} from '../../ng-update/interfaces/template-resource';
 function decoratorToTemplateResource(decorator: Decorator): TemplateResource | null {
     const [metadata] = decorator.getArguments() as ObjectLiteralExpression[];
 
-    const templateUrl = metadata.getProperty(`templateUrl`) as PropertyAssignment;
-    const template = metadata.getProperty(`template`) as PropertyAssignment;
+    const templateUrl = metadata.getProperty('templateUrl') as PropertyAssignment;
+    const template = metadata.getProperty('template') as PropertyAssignment;
     const componentPath = decorator.getSourceFile().getFilePath();
 
     if (templateUrl) {
         const templatePath = path.parse(
-            templateUrl?.getInitializer()?.getText().replace(/['"`]/g, ``) || ``,
+            templateUrl?.getInitializer()?.getText().replace(/['"`]/g, '') || '',
         );
 
         return {
@@ -33,7 +33,7 @@ function decoratorToTemplateResource(decorator: Decorator): TemplateResource | n
     if (template) {
         return {
             componentPath,
-            template: template.getInitializer()?.getText() || ``,
+            template: template.getInitializer()?.getText() || '',
             offset: template.getInitializer()?.getStart() || 0,
         };
     }
@@ -57,7 +57,7 @@ export function getComponentTemplates(
     query?: Query<Omit<StructureType<ClassDeclaration>, 'kind'>>,
 ): TemplateResource[] {
     return getClasses(pattern, query)
-        .map(declaration => declaration.getDecorator(`Component`))
+        .map(declaration => declaration.getDecorator('Component'))
         .filter((decorator): decorator is Decorator => !!decorator)
         .map(decoratorToTemplateResource)
         .filter(<T>(x: T | null): x is T => Boolean(x));

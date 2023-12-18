@@ -6,7 +6,7 @@ import {By} from '@angular/platform-browser';
 import {TuiInputExpireComponent} from '../input-expire.component';
 import {TuiInputExpireModule} from '../input-expire.module';
 
-describe(`InputExpire`, () => {
+describe('InputExpire', () => {
     @Component({
         template: `
             <tui-input-expire [(ngModel)]="value"></tui-input-expire>
@@ -16,7 +16,7 @@ describe(`InputExpire`, () => {
         @ViewChild(TuiInputExpireComponent)
         input!: TuiInputExpireComponent;
 
-        value = ``;
+        value = '';
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -32,16 +32,16 @@ describe(`InputExpire`, () => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
-        input = fixture.debugElement.query(By.css(`input`)).nativeElement;
+        input = fixture.debugElement.query(By.css('input')).nativeElement;
 
         await fixture.whenStable();
     });
 
-    it(`does not change the correct input`, () => {
-        input.value = `12/12`;
-        input.dispatchEvent(new Event(`input`, {bubbles: true}));
+    it('does not change the correct input', () => {
+        input.value = '12/12';
+        input.dispatchEvent(new Event('input', {bubbles: true}));
 
-        expect(testComponent.value).toBe(`12/12`);
-        expect(input.value).toBe(`12/12`);
+        expect(testComponent.value).toBe('12/12');
+        expect(input.value).toBe('12/12');
     });
 });

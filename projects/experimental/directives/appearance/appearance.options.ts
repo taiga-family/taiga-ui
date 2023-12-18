@@ -6,7 +6,7 @@ export interface TuiAppearanceOptions {
 }
 
 export const TUI_APPEARANCE_DEFAULT_OPTIONS: TuiAppearanceOptions = {
-    appearance: ``,
+    appearance: '',
 };
 
 export const TUI_APPEARANCE_OPTIONS = tuiCreateToken(TUI_APPEARANCE_DEFAULT_OPTIONS);

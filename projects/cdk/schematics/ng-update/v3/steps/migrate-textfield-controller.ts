@@ -16,34 +16,34 @@ import {
 import {TemplateResource} from '../../interfaces/template-resource';
 
 const TEXTFIELDS = [
-    `tui-input`,
-    `tui-primitive-textfield`,
-    `tui-text-area`,
-    `tui-combo-box`,
-    `tui-input-copy`,
-    `tui-input-date`,
-    `tui-input-date-range`,
-    `tui-input-date-time`,
-    `tui-input-number`,
-    `tui-input-password`,
-    `tui-input-count`,
-    `tui-input-number`,
-    `tui-input-phone`,
-    `tui-input-slider`,
-    `tui-input-card`,
+    'tui-input',
+    'tui-primitive-textfield',
+    'tui-text-area',
+    'tui-combo-box',
+    'tui-input-copy',
+    'tui-input-date',
+    'tui-input-date-range',
+    'tui-input-date-time',
+    'tui-input-number',
+    'tui-input-password',
+    'tui-input-count',
+    'tui-input-number',
+    'tui-input-phone',
+    'tui-input-slider',
+    'tui-input-card',
 ];
 
 const ATTRS_MAP: Record<string, string> = {
-    tuitextfieldautocomplete: `autocomplete`,
-    tuitextfieldinputmode: `inputmode`,
-    tuitextfieldmaxlength: `maxlength`,
-    tuitextfieldtype: `type`,
-    tuitextfieldexampletext: `placeholder`,
-    '[tuitextfieldautocomplete]': `[attr.autocomplete]`,
-    '[tuitextfieldinputmode]': `[attr.inputmode]`,
-    '[tuitextfieldmaxlength]': `[attr.maxlength]`,
-    '[tuitextfieldtype]': `[attr.type]`,
-    '[tuitextfieldexampletext]': `[attr.placeholder]`,
+    tuitextfieldautocomplete: 'autocomplete',
+    tuitextfieldinputmode: 'inputmode',
+    tuitextfieldmaxlength: 'maxlength',
+    tuitextfieldtype: 'type',
+    tuitextfieldexampletext: 'placeholder',
+    '[tuitextfieldautocomplete]': '[attr.autocomplete]',
+    '[tuitextfieldinputmode]': '[attr.inputmode]',
+    '[tuitextfieldmaxlength]': '[attr.maxlength]',
+    '[tuitextfieldtype]': '[attr.type]',
+    '[tuitextfieldexampletext]': '[attr.placeholder]',
 };
 
 const CONTROLLER_ITEMS = Object.keys(ATTRS_MAP).map(attr => attr.toLowerCase());
@@ -61,9 +61,9 @@ function insertTuiTextfieldInput({
 }): void {
     const newAttrs = attrs
         .map(attr => `${ATTRS_MAP[attr.name]}="${attr.value}"`)
-        .join(`\n`);
+        .join('\n');
     const content =
-        element.tagName === `tui-text-area`
+        element.tagName === 'tui-text-area'
             ? `<textarea tuiTextfield ${newAttrs}></textarea> `
             : `<input tuiTextfield ${newAttrs}/> `;
 
@@ -87,7 +87,7 @@ function addAttrToExistingInput({
 }): void {
     attrs.forEach(attr => {
         const insertTo =
-            existingInput.sourceCodeLocation?.attrs?.[`tuitextfield`]?.endOffset;
+            existingInput.sourceCodeLocation?.attrs?.['tuitextfield']?.endOffset;
 
         if (insertTo) {
             recorder.insertLeft(
@@ -115,13 +115,13 @@ function removeOldInputs(
 }
 
 function getTagsToRemove(attrName: string): string[] {
-    return [`[tuitextfieldmaxlength]`, `tuitextfieldmaxlength`].includes(attrName)
-        ? TEXTFIELDS.filter(tag => tag !== `tui-text-area`)
+    return ['[tuitextfieldmaxlength]', 'tuitextfieldmaxlength'].includes(attrName)
+        ? TEXTFIELDS.filter(tag => tag !== 'tui-text-area')
         : TEXTFIELDS;
 }
 
 const excludedAttrs: Record<string, string[]> = {
-    'tui-text-area': [`[tuitextfieldmaxlength]`, `tuitextfieldmaxlength`],
+    'tui-text-area': ['[tuitextfieldmaxlength]', 'tuitextfieldmaxlength'],
 };
 
 function exclusion({tagName}: Element, attrName: string): boolean {
@@ -155,8 +155,8 @@ export function migrateTextfieldController({
         const existingInput = findElementsByFn(
             element.childNodes,
             el =>
-                (el.tagName === `input` || el.tagName === `textarea`) &&
-                hasElementAttribute(el, `tuiTextfield`),
+                (el.tagName === 'input' || el.tagName === 'textarea') &&
+                hasElementAttribute(el, 'tuiTextfield'),
         )[0];
 
         if (existingInput) {

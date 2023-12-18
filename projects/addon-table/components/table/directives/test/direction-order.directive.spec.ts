@@ -2,7 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiTableDirective, TuiTableModule} from '@taiga-ui/addon-table';
 
-describe(`TuiDirectionOrder directive`, () => {
+describe('TuiDirectionOrder directive', () => {
     @Component({
         template: `
             <table
@@ -18,7 +18,7 @@ describe(`TuiDirectionOrder directive`, () => {
         @ViewChild(TuiTableDirective)
         readonly table!: TuiTableDirective<any>;
 
-        directionOrder = `asc`;
+        directionOrder = 'asc';
         directionOrderChange = jest.fn();
     }
 
@@ -37,33 +37,33 @@ describe(`TuiDirectionOrder directive`, () => {
         fixture.detectChanges();
     });
 
-    it(`sets the sort direction of table to ascending`, () => {
+    it('sets the sort direction of table to ascending', () => {
         fixture.detectChanges();
 
         expect(testComponent.table.direction).toBe(1);
     });
 
-    it(`sets the sort direction of table to descending`, () => {
-        testComponent.directionOrder = `desc`;
+    it('sets the sort direction of table to descending', () => {
+        testComponent.directionOrder = 'desc';
         fixture.detectChanges();
 
         expect(testComponent.table.direction).toBe(-1);
     });
 
-    describe(`when table emits direction change`, () => {
-        it(`emits ascending directionOrder`, () => {
+    describe('when table emits direction change', () => {
+        it('emits ascending directionOrder', () => {
             testComponent.table.directionChange.emit(1);
 
-            expect(testComponent.directionOrderChange).toHaveBeenCalledWith(`asc`);
+            expect(testComponent.directionOrderChange).toHaveBeenCalledWith('asc');
         });
 
-        it(`emits descending directionOrder`, () => {
+        it('emits descending directionOrder', () => {
             testComponent.table.directionChange.emit(-1);
 
-            expect(testComponent.directionOrderChange).toHaveBeenCalledWith(`desc`);
+            expect(testComponent.directionOrderChange).toHaveBeenCalledWith('desc');
         });
 
-        it(`should not emit directionChange when updating sorter programmatically`, () => {
+        it('should not emit directionChange when updating sorter programmatically', () => {
             testComponent.table.updateSorter(() => -1);
 
             expect(testComponent.directionOrderChange).not.toHaveBeenCalled();

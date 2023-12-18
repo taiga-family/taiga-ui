@@ -27,20 +27,20 @@ import {replaceText} from '../utils/replace-text';
 import {replaceTag} from '../utils/templates/replace-tag';
 
 function replaceTextareaTag(options: TuiSchema, fileSystem: DevkitFileSystem): void {
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         infoLog(
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing <tui-text-area /> to <tui-textarea />`,
         );
 
     getComponentTemplates(ALL_TS_FILES).forEach(resource => {
         const template = getTemplateFromTemplateResource(resource, fileSystem);
-        const elements = findElementsByTagName(template, `tui-text-area`);
+        const elements = findElementsByTagName(template, 'tui-text-area');
         const path = fileSystem.resolve(getPathFromTemplateResource(resource));
         const recorder = fileSystem.edit(path);
 
         elements.forEach(({sourceCodeLocation}) => {
             if (sourceCodeLocation) {
-                replaceTag(recorder, sourceCodeLocation, `tui-text-area`, `tui-textarea`);
+                replaceTag(recorder, sourceCodeLocation, 'tui-text-area', 'tui-textarea');
             }
         });
     });
@@ -54,23 +54,23 @@ function replaceTextareaReferenceTypes(
     options: TuiSchema,
     fileSystem: DevkitFileSystem,
 ): void {
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         infoLog(
             `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing TuiTextArea(Module|Directive|Component) to TuiTextarea(Module|Directive|Component)`,
         );
 
     replaceText([
         {
-            from: `TuiTextAreaModule`,
-            to: `TuiTextareaModule`,
+            from: 'TuiTextAreaModule',
+            to: 'TuiTextareaModule',
         },
         {
-            from: `TuiTextAreaDirective`,
-            to: `TuiTextareaDirective`,
+            from: 'TuiTextAreaDirective',
+            to: 'TuiTextareaDirective',
         },
         {
-            from: `TuiTextAreaComponent`,
-            to: `TuiTextareaComponent`,
+            from: 'TuiTextAreaComponent',
+            to: 'TuiTextareaComponent',
         },
     ]);
 
@@ -85,6 +85,6 @@ export function updateToV3_40(options: TuiSchema): Rule {
 
         replaceTextareaTag(options, fileSystem);
         replaceTextareaReferenceTypes(options, fileSystem);
-        !options[`skip-logs`] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+        !options['skip-logs'] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
     };
 }

@@ -58,13 +58,13 @@ function containTypeRef(node: ImportSpecifier): boolean {
 }
 
 export function replaceEnums(options: TuiSchema, enums: ReplacementEnum[]): void {
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing enums imports...`);
 
     enums.forEach(({name, replaceValues, keepAsType}) =>
         replaceEnumWithString(name, replaceValues, keepAsType),
     );
 
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} enums replaced \n`);
 }

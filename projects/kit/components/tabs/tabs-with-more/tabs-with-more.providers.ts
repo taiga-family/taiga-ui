@@ -9,13 +9,13 @@ import {tuiDropdownOptionsProvider} from '@taiga-ui/core';
 import {debounceTime, filter, merge, Observable, startWith, takeUntil, tap} from 'rxjs';
 
 export const TUI_TABS_REFRESH = new InjectionToken<Observable<unknown>>(
-    `[TUI_TABS_REFRESH]`,
+    '[TUI_TABS_REFRESH]',
 );
 export const TUI_TABS_PROVIDERS: Provider[] = [
     TuiResizeService,
     TuiDestroyService,
     MutationObserverService,
-    tuiDropdownOptionsProvider({align: `right`}),
+    tuiDropdownOptionsProvider({align: 'right'}),
     {
         provide: MUTATION_OBSERVER_INIT,
         useValue: {

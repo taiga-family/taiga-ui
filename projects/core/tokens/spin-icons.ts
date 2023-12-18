@@ -7,6 +7,6 @@ export interface TuiSpinIcons {
 }
 
 export const TUI_SPIN_ICONS = tuiCreateToken<TuiSpinIcons>({
-    decrement: `tuiIconChevronLeft`,
-    increment: `tuiIconChevronRight`,
+    decrement: 'tuiIconChevronLeft',
+    increment: 'tuiIconChevronRight',
 });

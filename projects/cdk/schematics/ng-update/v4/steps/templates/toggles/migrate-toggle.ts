@@ -21,7 +21,7 @@ export function migrateToggle({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    const elements = findElementsByTagName(template, `tui-toggle`);
+    const elements = findElementsByTagName(template, 'tui-toggle');
 
     elements.forEach(({attrs, sourceCodeLocation}) => {
         if (!sourceCodeLocation) {
@@ -30,9 +30,9 @@ export function migrateToggle({
 
         replaceSizeAttr(attrs, sourceCodeLocation, recorder, templateOffset);
         replaceOpenTag(sourceCodeLocation, recorder, templateOffset, {
-            tag: `tui-toggle`,
-            directive: `tuiToggle`,
-            type: `checkbox`,
+            tag: 'tui-toggle',
+            directive: 'tuiToggle',
+            type: 'checkbox',
         });
         closeStartTag(sourceCodeLocation, recorder, templateOffset);
         removeClosingTag(sourceCodeLocation, recorder, templateOffset);

@@ -13,7 +13,7 @@ import {join} from 'path';
 import {CHAR_NO_BREAK_SPACE} from '../../../../constants';
 import {createAngularJson} from '../../../utils/create-angular-json';
 
-const collectionPath = join(__dirname, `../../../migration.json`);
+const collectionPath = join(__dirname, '../../../migration.json');
 
 const AFTER = `import {Component} from '@angular/core';
 import { tuiGetClosestFocusable } from '@taiga-ui/cdk';
@@ -176,13 +176,13 @@ const event = tuiCustomEvent(
        );
 `;
 
-describe(`replace functions (depth of file structure = 1)`, () => {
+describe('replace functions (depth of file structure = 1)', () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
     beforeEach(() => {
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner(`schematics`, collectionPath);
+        runner = new SchematicTestRunner('schematics', collectionPath);
 
         setActiveProject(createProject(host));
 
@@ -191,16 +191,16 @@ describe(`replace functions (depth of file structure = 1)`, () => {
         saveActiveProject();
     });
 
-    it(`should replace functions`, async () => {
+    it('should replace functions', async () => {
         const tree = await runner
             .runSchematicAsync(
-                `updateToV3`,
-                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                'updateToV3',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent(`test/app.component.ts`)).toEqual(AFTER);
+        expect(tree.readContent('test/app.component.ts')).toEqual(AFTER);
     });
 
     afterEach(() => {
@@ -209,10 +209,10 @@ describe(`replace functions (depth of file structure = 1)`, () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile(`test/app.component.ts`, BEFORE);
+    createSourceFile('test/app.component.ts', BEFORE);
 
-    createSourceFile(`test/app.template.html`, `<app></app>`);
+    createSourceFile('test/app.template.html', '<app></app>');
 
     createAngularJson();
-    createSourceFile(`package.json`, `{"dependencies": {"@angular/core": "~13.0.0"}}`);
+    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
 }

@@ -5,14 +5,14 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiDropdownPortalService} from '../dropdown-portal.service';
 
-describe(`PortalService`, () => {
+describe('PortalService', () => {
     let service: TuiDropdownPortalService;
 
     beforeEach(() => {
         service = new TuiDropdownPortalService();
     });
 
-    it(`Template removing`, () => {
+    it('Template removing', () => {
         let called = 0;
         const viewRefStub: EmbeddedViewRef<unknown> = {
             destroy: () => called++,
@@ -22,7 +22,7 @@ describe(`PortalService`, () => {
         expect(called).toBe(1);
     });
 
-    it(`HostView removing`, () => {
+    it('HostView removing', () => {
         let called = 0;
         const componentRefStub: ComponentRef<unknown> = {
             hostView: {destroy: () => called++},
@@ -32,9 +32,9 @@ describe(`PortalService`, () => {
         expect(called).toBe(1);
     });
 
-    describe(`production mode`, () => {
-        it(`throws an error with no host`, () => {
-            let actual = ``;
+    describe('production mode', () => {
+        it('throws an error with no host', () => {
+            let actual = '';
             const a = null as unknown as PolymorpheusComponent<unknown>;
 
             try {
@@ -43,15 +43,15 @@ describe(`PortalService`, () => {
                 actual = err.message;
             }
 
-            expect(actual).toBe(``);
+            expect(actual).toBe('');
         });
     });
 
-    describe(`dev mode`, () => {
+    describe('dev mode', () => {
         beforeEach(() => tuiSwitchNgDevMode(true));
 
-        it(`throws an error with no host`, () => {
-            let actual = ``;
+        it('throws an error with no host', () => {
+            let actual = '';
             const a = null as unknown as PolymorpheusComponent<unknown>;
 
             try {
@@ -60,13 +60,13 @@ describe(`PortalService`, () => {
                 actual = err.message;
             }
 
-            expect(actual).toBe(`Portals cannot be used without TuiPortalHostComponent`);
+            expect(actual).toBe('Portals cannot be used without TuiPortalHostComponent');
         });
 
         afterEach(() => tuiSwitchNgDevMode(false));
     });
 
-    it(`addTemplateChild with host attached`, () => {
+    it('addTemplateChild with host attached', () => {
         const a: TemplateRef<unknown> = null as unknown as TemplateRef<unknown>;
         const result: EmbeddedViewRef<unknown> =
             {} as unknown as EmbeddedViewRef<unknown>;

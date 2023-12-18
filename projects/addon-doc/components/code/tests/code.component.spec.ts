@@ -2,7 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiDocCodeComponent} from '@taiga-ui/addon-doc';
 import {HIGHLIGHT_OPTIONS, HighlightModule} from 'ngx-highlightjs';
 
-describe(`TuiDocCodeComponent`, () => {
+describe('TuiDocCodeComponent', () => {
     let component: TuiDocCodeComponent;
     let fixture: ComponentFixture<TuiDocCodeComponent>;
 
@@ -14,12 +14,12 @@ describe(`TuiDocCodeComponent`, () => {
                 {
                     provide: HIGHLIGHT_OPTIONS,
                     useValue: {
-                        coreLibraryLoader: async () => import(`highlight.js/lib/core`),
+                        coreLibraryLoader: async () => import('highlight.js/lib/core'),
                         lineNumbersLoader: async () =>
-                            import(`highlightjs-line-numbers.js`),
+                            import('highlightjs-line-numbers.js'),
                         languages: {
                             typescript: async () =>
-                                import(`highlight.js/lib/languages/typescript`),
+                                import('highlight.js/lib/languages/typescript'),
                         },
                     },
                 },
@@ -31,67 +31,67 @@ describe(`TuiDocCodeComponent`, () => {
         fixture.detectChanges();
     });
 
-    it(`should create`, () => {
+    it('should create', () => {
         expect(component).toBeTruthy();
     });
 
-    it(`should have the ".t-header" class when the filename input is set`, () => {
-        component.filename = `my-file.ts`;
+    it('should have the ".t-header" class when the filename input is set', () => {
+        component.filename = 'my-file.ts';
         fixture.detectChanges();
 
-        const header = fixture.nativeElement.querySelector(`.t-header`);
+        const header = fixture.nativeElement.querySelector('.t-header');
 
         expect(header).toBeTruthy();
         expect(component.hasFilename).toBeTruthy();
     });
 
-    it(`should sync load simple text and process the code when the code input is set`, async () => {
-        component.code = `const a = 5;`;
+    it('should sync load simple text and process the code when the code input is set', async () => {
+        component.code = 'const a = 5;';
         fixture.detectChanges();
 
         await waitHighlightJsParseContent();
 
-        expect(fixture.nativeElement.querySelector(`.t-code`)?.innerHTML.trim()).toEqual(
+        expect(fixture.nativeElement.querySelector('.t-code')?.innerHTML.trim()).toEqual(
             `<code class="hljs"><span class="hljs-keyword">const</span> a = <span class="hljs-number">5</span>;</code>
     <div class="t-code-actions">
         <button tuiiconbutton="" appearance="icon" size="xs" class="t-copy-button">
         </button>
 \t
-    </div>`.replace(`\t`, `        `), // prettier problem
+    </div>`.replace('\t', '        '), // prettier problem
         );
     });
 
-    it(`should async load simple text and process the code when the code input is set`, async () => {
-        component.code = Promise.resolve({default: `const a = 10;`});
+    it('should async load simple text and process the code when the code input is set', async () => {
+        component.code = Promise.resolve({default: 'const a = 10;'});
         fixture.detectChanges();
 
         await waitHighlightJsParseContent();
 
-        expect(fixture.nativeElement.querySelector(`.t-code`)?.innerHTML.trim()).toEqual(
+        expect(fixture.nativeElement.querySelector('.t-code')?.innerHTML.trim()).toEqual(
             `<code class="hljs"><span class="hljs-keyword">const</span> a = <span class="hljs-number">10</span>;</code>
     <div class="t-code-actions">
         <button tuiiconbutton="" appearance="icon" size="xs" class="t-copy-button">
         </button>
 \t
-    </div>`.replace(`\t`, `        `), // prettier problem
+    </div>`.replace('\t', '        '), // prettier problem
         );
     });
 
-    it(`should async load markdown code and process the code when the code input is set`, async () => {
+    it('should async load markdown code and process the code when the code input is set', async () => {
         component.code = Promise.resolve({
-            default: `\`\`\`ts\nconst a = 15;\n\`\`\``, // markdown
+            default: '```ts\nconst a = 15;\n```', // markdown
         });
         fixture.detectChanges();
 
         await waitHighlightJsParseContent();
 
-        expect(fixture.nativeElement.querySelector(`.t-code`)?.innerHTML.trim()).toEqual(
+        expect(fixture.nativeElement.querySelector('.t-code')?.innerHTML.trim()).toEqual(
             `<code class="hljs"><span class="hljs-keyword">const</span> a = <span class="hljs-number">15</span>;</code>
     <div class="t-code-actions">
         <button tuiiconbutton="" appearance="icon" size="xs" class="t-copy-button">
         </button>
 \t
-    </div>`.replace(`\t`, `        `), // prettier problem
+    </div>`.replace('\t', '        '), // prettier problem
         );
     });
 

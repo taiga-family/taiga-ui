@@ -12,7 +12,7 @@ import {join} from 'path';
 
 import {createAngularJson} from '../../../utils/create-angular-json';
 
-const collectionPath = join(__dirname, `../../../migration.json`);
+const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_WITH_TEMPLATE_URL = `
 @Component({templateUrl: './test.template.html'})
@@ -64,7 +64,7 @@ const TEMPLATE_AFTER = `
 <tui-input
     tuiTextfieldSize="s"
     formControlName="testValue"
-    ${``}
+    ${''}
 >
     Type an email
 <input tuiTextfield placeholder="Test"/> </tui-input>
@@ -81,11 +81,11 @@ const TEMPLATE_AFTER = `
 
 <tui-input-count
     formControlName="testValue1"
-    ${``}
-    ${``}
+    ${''}
+    ${''}
     [min]="1"
     [max]="200"
-    ${``}
+    ${''}
 >
     Count something
     <input
@@ -95,22 +95,22 @@ const TEMPLATE_AFTER = `
 </tui-input-count>
 
 <div
-    ${``}
-    ${``}
-    ${``}
+    ${''}
+    ${''}
+    ${''}
 >
 <ng-container *polymorpheusOutlet="content as text; context: context">
     {{ text }}
 </ng-container></div>
 `;
 
-describe(`ng-update (flat file structure)`, () => {
+describe('ng-update (flat file structure)', () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
     beforeEach(() => {
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner(`schematics`, collectionPath);
+        runner = new SchematicTestRunner('schematics', collectionPath);
 
         setActiveProject(createProject(host));
 
@@ -119,16 +119,16 @@ describe(`ng-update (flat file structure)`, () => {
         saveActiveProject();
     });
 
-    it(`should migrate textfields`, async () => {
+    it('should migrate textfields', async () => {
         const tree = await runner
             .runSchematicAsync(
-                `updateToV3`,
-                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                'updateToV3',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent(`test.template.html`)).toEqual(TEMPLATE_AFTER);
+        expect(tree.readContent('test.template.html')).toEqual(TEMPLATE_AFTER);
     });
 
     afterEach(() => {
@@ -137,10 +137,10 @@ describe(`ng-update (flat file structure)`, () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile(`test.component.ts`, COMPONENT_WITH_TEMPLATE_URL);
+    createSourceFile('test.component.ts', COMPONENT_WITH_TEMPLATE_URL);
 
-    createSourceFile(`test.template.html`, TEMPLATE_BEFORE);
+    createSourceFile('test.template.html', TEMPLATE_BEFORE);
 
     createAngularJson();
-    createSourceFile(`package.json`, `{"dependencies": {"@angular/core": "~13.0.0"}}`);
+    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
 }

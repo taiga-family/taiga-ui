@@ -21,7 +21,7 @@ import {
 } from '@taiga-ui/kit';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
-describe(`InputDateRangeComponent`, () => {
+describe('InputDateRangeComponent', () => {
     @Component({
         template: `
             <tui-root>
@@ -81,25 +81,25 @@ describe(`InputDateRangeComponent`, () => {
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
         component = testComponent.component;
-        inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
+        inputPO = new TuiNativeInputPO(fixture, 'tui-primitive-textfield__native-input');
         fixture.detectChanges();
     }
 
-    describe(`Default`, () => {
+    describe('Default', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule(defaultTestingModuleMeta);
             await TestBed.compileComponents();
             initializeEnvironment();
         });
 
-        describe(`Click on the input field`, () => {
-            it(`opens the calendar`, () => {
+        describe('Click on the input field', () => {
+            it('opens the calendar', () => {
                 clickOnTextfield();
 
                 expect(getCalendarsWrapper()).not.toBeNull();
             });
 
-            it(`close the calendar when clicked again`, () => {
+            it('close the calendar when clicked again', () => {
                 clickOnTextfield();
                 clickOnTextfield();
 
@@ -107,7 +107,7 @@ describe(`InputDateRangeComponent`, () => {
             });
         });
 
-        describe(`dropdown calendar`, () => {
+        describe('dropdown calendar', () => {
             let y2000m0d1: TuiDay;
             let y2000m0d2: TuiDay;
 
@@ -118,15 +118,15 @@ describe(`InputDateRangeComponent`, () => {
                 fixture.detectChanges();
             });
 
-            describe(`closes when selected`, () => {
-                it(`same date`, () => {
+            describe('closes when selected', () => {
+                it('same date', () => {
                     component.onRangeChange(new TuiDayRange(y2000m0d1, y2000m0d1));
                     fixture.detectChanges();
 
                     expect(getCalendarsWrapper()).toBeNull();
                 });
 
-                it(`another date`, () => {
+                it('another date', () => {
                     component.onRangeChange(new TuiDayRange(y2000m0d2, y2000m0d2));
                     fixture.detectChanges();
 
@@ -135,66 +135,66 @@ describe(`InputDateRangeComponent`, () => {
             });
         });
 
-        describe(`Keyboard input`, () => {
+        describe('Keyboard input', () => {
             beforeEach(async () => {
                 await fixture.whenStable();
                 fixture.detectChanges();
             });
 
-            it(`When entering the first date, the control value is null`, () => {
-                inputPO.sendText(`31.12.2012`);
+            it('When entering the first date, the control value is null', () => {
+                inputPO.sendText('31.12.2012');
 
                 expect(testComponent.control.value).toBeNull();
             });
 
-            it(`When entering two dates, the control value is updated`, () => {
+            it('When entering two dates, the control value is updated', () => {
                 inputPO.sendText(`15.07.2000${RANGE_SEPARATOR_CHAR}15.07.2020`);
 
-                expect(testComponent.control.value.getFormattedDayRange(`DMY`, `.`)).toBe(
+                expect(testComponent.control.value.getFormattedDayRange('DMY', '.')).toBe(
                     `15.07.2000${RANGE_SEPARATOR_CHAR}15.07.2020`,
                 );
             });
 
-            it(`When entering two dates, the value is truncated by min / max is updated`, () => {
+            it('When entering two dates, the value is truncated by min / max is updated', () => {
                 testComponent.min = new TuiDay(2001, 6, 15);
                 testComponent.max = new TuiDay(2019, 6, 15);
                 fixture.detectChanges();
                 inputPO.sendText(`15.07.2000${RANGE_SEPARATOR_CHAR}15.07.2020`);
 
-                expect(testComponent.control.value.getFormattedDayRange(`DMY`, `.`)).toBe(
+                expect(testComponent.control.value.getFormattedDayRange('DMY', '.')).toBe(
                     `15.07.2001${RANGE_SEPARATOR_CHAR}15.07.2019`,
                 );
             });
 
-            it(`empty value opens dropdown`, () => {
-                inputPO.sendText(``);
+            it('empty value opens dropdown', () => {
+                inputPO.sendText('');
                 fixture.detectChanges();
                 expect(component.open).toBe(true);
             });
         });
     });
 
-    describe(`InputDateRangeComponent + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR="/"`, () => {
+    describe('InputDateRangeComponent + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR="/"', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 ...defaultTestingModuleMeta,
                 providers: [
-                    {provide: TUI_DATE_FORMAT, useValue: `MDY`},
-                    {provide: TUI_DATE_SEPARATOR, useValue: `/`},
+                    {provide: TUI_DATE_FORMAT, useValue: 'MDY'},
+                    {provide: TUI_DATE_SEPARATOR, useValue: '/'},
                 ],
             });
             await TestBed.compileComponents();
             initializeEnvironment();
         });
 
-        it(`accepts dd.mm.yyyy format`, () => {
-            inputPO.sendTextAndBlur(`1201202102142022`);
+        it('accepts dd.mm.yyyy format', () => {
+            inputPO.sendTextAndBlur('1201202102142022');
 
-            expect(inputPO.value).toBe(`12/01/2021 – 02/14/2022`);
+            expect(inputPO.value).toBe('12/01/2021 – 02/14/2022');
         });
 
-        it(`correctly sets stringify selected range via calendar`, async () => {
-            inputPO.sendTextAndBlur(`12/01/2021-02/14/2022`);
+        it('correctly sets stringify selected range via calendar', async () => {
+            inputPO.sendTextAndBlur('12/01/2021-02/14/2022');
 
             clickOnTextfield();
 
@@ -209,32 +209,32 @@ describe(`InputDateRangeComponent`, () => {
 
             await fixture.whenStable();
 
-            expect(inputPO.value).toBe(`12/16/2021 – 01/27/2022`);
+            expect(inputPO.value).toBe('12/16/2021 – 01/27/2022');
         });
     });
 
-    describe(`InputDateRangeComponent + TUI_DATE_FORMAT="YMD" + TUI_DATE_SEPARATOR="-"`, () => {
+    describe('InputDateRangeComponent + TUI_DATE_FORMAT="YMD" + TUI_DATE_SEPARATOR="-"', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 ...defaultTestingModuleMeta,
                 providers: [
-                    {provide: TUI_DATE_FORMAT, useValue: `YMD`},
-                    {provide: TUI_DATE_SEPARATOR, useValue: `-`},
+                    {provide: TUI_DATE_FORMAT, useValue: 'YMD'},
+                    {provide: TUI_DATE_SEPARATOR, useValue: '-'},
                 ],
             });
             await TestBed.compileComponents();
             initializeEnvironment();
         });
 
-        it(`accepts dd.mm.yyyy format`, () => {
-            inputPO.sendTextAndBlur(`2021120120220214`);
-            expect(inputPO.value).toBe(`2021-12-01 – 2022-02-14`);
+        it('accepts dd.mm.yyyy format', () => {
+            inputPO.sendTextAndBlur('2021120120220214');
+            expect(inputPO.value).toBe('2021-12-01 – 2022-02-14');
         });
 
-        it(`correctly sets stringify selected range via calendar`, () => {
+        it('correctly sets stringify selected range via calendar', () => {
             fixture.autoDetectChanges();
 
-            inputPO.sendTextAndBlur(`2021-12-01-2022-02-14`);
+            inputPO.sendTextAndBlur('2021-12-01-2022-02-14');
 
             clickOnTextfield();
 
@@ -248,11 +248,11 @@ describe(`InputDateRangeComponent`, () => {
 
             fixture.detectChanges();
 
-            expect(inputPO.value).toBe(`2021-12-12 – 2022-01-18`);
+            expect(inputPO.value).toBe('2021-12-12 – 2022-01-18');
         });
     });
 
-    describe(`InputDateRangeComponent + TUI_DATE_RANGE_VALUE_TRANSFORMER`, () => {
+    describe('InputDateRangeComponent + TUI_DATE_RANGE_VALUE_TRANSFORMER', () => {
         class TestDateTransformer extends AbstractTuiValueTransformer<
             TuiDay | null,
             Date | null
@@ -349,38 +349,38 @@ describe(`InputDateRangeComponent`, () => {
             initializeEnvironment(TransformerTestComponent);
         });
 
-        it(`correctly transforms initial value`, () => {
-            expect(inputPO.value).toBe(`31.01.2022 – 14.06.2022`);
+        it('correctly transforms initial value', () => {
+            expect(inputPO.value).toBe('31.01.2022 – 14.06.2022');
             expect(testComponent.control.value).toEqual([
                 new Date(2022, 0, 31),
                 new Date(2022, 5, 14),
             ]);
         });
 
-        it(`transforms typed value`, () => {
-            inputPO.sendText(`20022000-17062020`);
+        it('transforms typed value', () => {
+            inputPO.sendText('20022000-17062020');
 
-            expect(inputPO.value).toBe(`20.02.2000 – 17.06.2020`);
+            expect(inputPO.value).toBe('20.02.2000 – 17.06.2020');
             expect(testComponent.control.value).toEqual([
                 new Date(2000, 1, 20),
                 new Date(2020, 5, 17),
             ]);
         });
 
-        it(`transforms min day as output (if typed day is less than min day)`, () => {
-            inputPO.sendText(`19.02.1861-10.03.1995`);
+        it('transforms min day as output (if typed day is less than min day)', () => {
+            inputPO.sendText('19.02.1861-10.03.1995');
 
-            expect(inputPO.value).toBe(`01.01.1900 – 10.03.1995`);
+            expect(inputPO.value).toBe('01.01.1900 – 10.03.1995');
             expect(testComponent.control.value).toEqual([
                 new Date(1900, 0, 1),
                 new Date(1995, 2, 10),
             ]);
         });
 
-        it(`transforms value which was selected via calendar`, () => {
+        it('transforms value which was selected via calendar', () => {
             fixture.autoDetectChanges();
 
-            inputPO.sendTextAndBlur(`01.09.2021-01.11.2022`);
+            inputPO.sendTextAndBlur('01.09.2021-01.11.2022');
 
             clickOnTextfield();
 
@@ -394,16 +394,16 @@ describe(`InputDateRangeComponent`, () => {
 
             fixture.detectChanges();
 
-            expect(inputPO.value).toBe(`12.09.2021 – 18.10.2021`);
+            expect(inputPO.value).toBe('12.09.2021 – 18.10.2021');
         });
 
-        it(`transforms value which was programmatically patched`, () => {
+        it('transforms value which was programmatically patched', () => {
             testComponent.control.patchValue([
                 new Date(1922, 11, 30),
                 new Date(1991, 11, 26),
             ]);
 
-            expect(inputPO.value).toBe(`30.12.1922 – 26.12.1991`);
+            expect(inputPO.value).toBe('30.12.1922 – 26.12.1991');
             expect(testComponent.control.value).toEqual([
                 new Date(1922, 11, 30),
                 new Date(1991, 11, 26),
@@ -417,11 +417,11 @@ describe(`InputDateRangeComponent`, () => {
     }
 
     function getCalendarsWrapper(): DebugElement | null {
-        return pageObject.getByAutomationId(`tui-calendar-range__calendars`);
+        return pageObject.getByAutomationId('tui-calendar-range__calendars');
     }
 
     function getTextfield(): DebugElement | null {
-        return pageObject.getByAutomationId(`tui-input-date-range__textfield`);
+        return pageObject.getByAutomationId('tui-input-date-range__textfield');
     }
 
     function getCalendars(): DebugElement[] {
@@ -432,7 +432,7 @@ describe(`InputDateRangeComponent`, () => {
         }
 
         return pageObject.getAllByAutomationId(
-            `tui-calendar__calendar`,
+            'tui-calendar__calendar',
             calendarsWrapper,
         );
     }
@@ -443,7 +443,7 @@ describe(`InputDateRangeComponent`, () => {
     ): DebugElement | null {
         return (
             pageObject
-                .getAllByAutomationId(`tui-primitive-calendar__cell`, calendarEl)
+                .getAllByAutomationId('tui-primitive-calendar__cell', calendarEl)
                 .find(el => Number(el.nativeElement.textContent.trim()) === dayNumber) ||
             null
         );

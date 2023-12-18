@@ -12,11 +12,11 @@ export function tuiRoundWith({
     value: number;
 }): number {
     switch (method) {
-        case `round`:
+        case 'round':
             return tuiRound(value, precision);
-        case `ceil`:
+        case 'ceil':
             return tuiCeil(value, precision);
-        case `floor`:
+        case 'floor':
             return tuiFloor(value, precision);
         default:
             return tuiTrunc(value, precision);

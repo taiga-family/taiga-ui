@@ -11,8 +11,8 @@ import {
 } from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 
-describe(`Notification`, () => {
-    describe(`Without options`, () => {
+describe('Notification', () => {
+    describe('Without options', () => {
         @Component({
             template: `
                 <tui-notification
@@ -34,7 +34,7 @@ describe(`Notification`, () => {
             component!: TuiNotificationComponent;
 
             hasCloseButton = true;
-            status: TuiNotificationT = `info`;
+            status: TuiNotificationT = 'info';
 
             onClose(): void {}
         }
@@ -44,11 +44,11 @@ describe(`Notification`, () => {
         let pageObject: TuiPageObject<TestComponent>;
 
         function getIcon(): DebugElement {
-            return pageObject.getByAutomationId(`tui-notification__icon`)!;
+            return pageObject.getByAutomationId('tui-notification__icon')!;
         }
 
         function getClose(): DebugElement {
-            return pageObject.getByAutomationId(`tui-notification__close`)!;
+            return pageObject.getByAutomationId('tui-notification__close')!;
         }
 
         beforeEach(async () => {
@@ -64,18 +64,18 @@ describe(`Notification`, () => {
             fixture.detectChanges();
         });
 
-        describe(`icon`, () => {
-            it(`present by default`, () => {
+        describe('icon', () => {
+            it('present by default', () => {
                 expect(getIcon()).not.toBeNull();
             });
         });
 
-        describe(`closing cross`, () => {
-            it(`present when subscribing to close`, () => {
+        describe('closing cross', () => {
+            it('present when subscribing to close', () => {
                 expect(getClose()).not.toBeNull();
             });
 
-            it(`without subscription to close is missing`, () => {
+            it('without subscription to close is missing', () => {
                 testComponent.hasCloseButton = false;
                 fixture.detectChanges();
 
@@ -84,7 +84,7 @@ describe(`Notification`, () => {
         });
     });
 
-    describe(`With options`, () => {
+    describe('With options', () => {
         @Component({
             template: `
                 <tui-notification>Short simple informational message</tui-notification>
@@ -95,13 +95,13 @@ describe(`Notification`, () => {
             component!: TuiNotificationComponent;
         }
 
-        const status = `error`;
+        const status = 'error';
 
         let fixture: ComponentFixture<TestComponent>;
         let pageObject: TuiPageObject<TestComponent>;
 
         function getIcon(): DebugElement {
-            return pageObject.getByAutomationId(`tui-notification__icon`)!;
+            return pageObject.getByAutomationId('tui-notification__icon')!;
         }
 
         beforeEach(async () => {
@@ -127,8 +127,8 @@ describe(`Notification`, () => {
             fixture.detectChanges();
         });
 
-        describe(`icon`, () => {
-            it(`when icon = null is absent`, () => {
+        describe('icon', () => {
+            it('when icon = null is absent', () => {
                 expect(getIcon()).toBeNull();
             });
         });

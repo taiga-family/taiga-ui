@@ -29,7 +29,7 @@ export const TUI_INPUT_CARD_GROUPED_TEXTS = tuiCreateTokenFromFactory<
 
     const media = win.matchMedia(`screen and (min-width: ${(desktopSmall - 1) / 16}em)`);
 
-    return tuiTypedFromEvent(media, `change`).pipe(
+    return tuiTypedFromEvent(media, 'change').pipe(
         startWith(null),
         switchMap(() =>
             combineLatest([

@@ -1,3 +1,3 @@
 export function assets(path: TemplateStringsArray): string {
-    return `./assets/${path.join(``)}`;
+    return `./assets/${path.join('')}`;
 }

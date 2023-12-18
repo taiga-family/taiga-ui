@@ -9,7 +9,7 @@ export interface TuiMultiSelectOptions<T> {
 
 export const TUI_MULTI_SELECT_DEFAULT_OPTIONS: TuiMultiSelectOptions<unknown> = {
     expandable: true,
-    valueContent: ``,
+    valueContent: '',
 };
 
 /**

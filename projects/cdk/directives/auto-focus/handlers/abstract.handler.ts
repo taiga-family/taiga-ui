@@ -18,7 +18,7 @@ export abstract class AbstractTuiAutofocusHandler implements TuiAutofocusHandler
     }
 
     protected get isTextFieldElement(): boolean {
-        return this.element.matches(`input, textarea, [contenteditable]`);
+        return this.element.matches('input, textarea, [contenteditable]');
     }
 
     abstract setFocus(): void;

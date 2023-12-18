@@ -7,5 +7,5 @@ import type {TuiLanguageLoader} from '@taiga-ui/i18n/interfaces';
  * ReferenceError: Cannot access 'TUI_LANGUAGE_LOADER' before initialization
  */
 export const TUI_LANGUAGE_LOADER = new InjectionToken<TuiLanguageLoader>(
-    `[TUI_LANGUAGE_LOADER]`,
+    '[TUI_LANGUAGE_LOADER]',
 );

@@ -2,14 +2,14 @@ import {Component, Input, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {AbstractTuiController} from '@taiga-ui/cdk';
 
-describe(`AbstractTuiController`, () => {
+describe('AbstractTuiController', () => {
     @Component({
-        selector: `my-element`,
-        template: ``,
+        selector: 'my-element',
+        template: '',
     })
     class MyElementComponent extends AbstractTuiController {
         @Input()
-        message = ``;
+        message = '';
     }
 
     @Component({
@@ -21,7 +21,7 @@ describe(`AbstractTuiController`, () => {
         @ViewChild(MyElementComponent)
         element!: MyElementComponent;
 
-        message = `hello`;
+        message = 'hello';
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -35,16 +35,16 @@ describe(`AbstractTuiController`, () => {
         fixture.autoDetectChanges();
     });
 
-    it(`triggered ngOnChanges in control`, () => {
-        const changeSpy = jest.spyOn(fixture.componentInstance.element.change$, `next`);
+    it('triggered ngOnChanges in control', () => {
+        const changeSpy = jest.spyOn(fixture.componentInstance.element.change$, 'next');
 
         expect(changeSpy).not.toHaveBeenCalled();
 
-        fixture.componentInstance.message = `world`;
+        fixture.componentInstance.message = 'world';
         fixture.detectChanges();
 
         expect(changeSpy).toHaveBeenCalled();
 
-        expect(fixture.componentInstance.element.message).toBe(`world`);
+        expect(fixture.componentInstance.element.message).toBe('world');
     });
 });

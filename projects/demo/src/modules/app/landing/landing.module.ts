@@ -14,7 +14,7 @@ import {LandingComponent} from './landing.component';
         TuiRepeatTimesModule,
         TuiAutoFocusModule,
         IntersectionObserverModule,
-        RouterModule.forChild([{path: ``, component: LandingComponent}]),
+        RouterModule.forChild([{path: '', component: LandingComponent}]),
     ],
     declarations: [LandingComponent],
     exports: [LandingComponent],

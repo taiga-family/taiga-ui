@@ -25,7 +25,7 @@ interface YaMetrikaOptions {
 }
 
 const YA_METRIKA_DEFAULT_OPTIONS: YaMetrikaOptions = {
-    id: ``,
+    id: '',
     debug: false,
 };
 
@@ -37,7 +37,7 @@ export function metrikaOptionsProvider(options: Partial<YaMetrikaOptions>): Prov
     return tuiProvideOptions(YA_METRIKA_OPTIONS, options, YA_METRIKA_DEFAULT_OPTIONS);
 }
 
-@Injectable({providedIn: `root`})
+@Injectable({providedIn: 'root'})
 export class YaMetrikaService {
     constructor(
         @Inject(YA_METRIKA_OPTIONS)
@@ -47,7 +47,7 @@ export class YaMetrikaService {
         @Inject(TUI_IS_E2E) isE2E: boolean,
     ) {
         if (options.debug || (isPlatformBrowser(platformId) && !ngDevMode && !isE2E)) {
-            const script = this.doc.createElement(`script`);
+            const script = this.doc.createElement('script');
 
             script.async = true;
             // https://yandex.ru/support/metrica/code/counter-initialize.html
@@ -58,6 +58,6 @@ export class YaMetrikaService {
     }
 
     hit(url: string, options: HitOptions = {}): void {
-        this.doc.defaultView?.ym?.(this.options.id, `hit`, url, options);
+        this.doc.defaultView?.ym?.(this.options.id, 'hit', url, options);
     }
 }

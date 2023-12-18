@@ -4,7 +4,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiInputCVCComponent, TuiInputCVCModule} from '@taiga-ui/addon-commerce';
 import {TUI_DIGIT_REGEXP} from '@taiga-ui/core';
 
-describe(`InputCVC`, () => {
+describe('InputCVC', () => {
     @Component({
         template: `
             <tui-input-cvc
@@ -19,13 +19,13 @@ describe(`InputCVC`, () => {
         `,
     })
     class TestComponent {
-        @ViewChild(`default`)
+        @ViewChild('default')
         default!: TuiInputCVCComponent;
 
-        @ViewChild(`custom`)
+        @ViewChild('custom')
         custom!: TuiInputCVCComponent;
 
-        control = new FormControl(``);
+        control = new FormControl('');
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -42,24 +42,24 @@ describe(`InputCVC`, () => {
         fixture.detectChanges();
     });
 
-    describe(`Default`, () => {
-        it(`exampleText`, () => {
-            expect(testComponent.default.exampleText).toBe(`000`);
+    describe('Default', () => {
+        it('exampleText', () => {
+            expect(testComponent.default.exampleText).toBe('000');
         });
 
-        it(`MaskOptions`, () => {
+        it('MaskOptions', () => {
             expect(testComponent.default.maskOptions).toEqual({
                 mask: [TUI_DIGIT_REGEXP, TUI_DIGIT_REGEXP, TUI_DIGIT_REGEXP],
             });
         });
     });
 
-    describe(`Modified`, () => {
-        it(`exampleText`, () => {
-            expect(testComponent.custom.exampleText).toBe(`0000`);
+    describe('Modified', () => {
+        it('exampleText', () => {
+            expect(testComponent.custom.exampleText).toBe('0000');
         });
 
-        it(`MaskOptions`, () => {
+        it('MaskOptions', () => {
             expect(testComponent.custom.maskOptions).toEqual({
                 mask: [
                     TUI_DIGIT_REGEXP,
