@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {TuiFormatDateService} from '@taiga-ui/core';
-import formatDistance from 'date-fns/formatDistance';
+import {formatDistance} from 'date-fns';
 import {map, Observable, timer} from 'rxjs';
 
 @Injectable()
